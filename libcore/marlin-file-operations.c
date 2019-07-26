@@ -156,6 +156,8 @@ typedef struct {
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
+#define CANCEL _("_Cancel")
+#define DELETE _("_Delete")
 #define SKIP _("_Skip")
 #define SKIP_ALL _("S_kip All")
 #define RETRY _("_Retry")
@@ -1237,7 +1239,7 @@ confirm_delete_from_trash (CommonJob *job,
                             f (_("If you delete an item, it will be permanently lost.")),
                             NULL,
                             FALSE,
-                            GTK_STOCK_CANCEL, GTK_STOCK_DELETE,
+                            CANCEL, DELETE,
                             NULL);
 
     return (response == 1);
@@ -1275,7 +1277,7 @@ confirm_empty_trash (EmptyTrashJob *job)
                             secondary_text,
                             NULL,
                             FALSE,
-                            GTK_STOCK_CANCEL, _("Empty _Trash"),
+                            CANCEL, _("Empty _Trash"),
                             NULL);
 
     return (response == 1);
@@ -1319,7 +1321,7 @@ confirm_delete_directly (CommonJob *job,
                             f (_("If you delete an item, it will be permanently lost.")),
                             NULL,
                             FALSE,
-                            GTK_STOCK_CANCEL, GTK_STOCK_DELETE,
+                            CANCEL, DELETE,
                             NULL);
 
     return response == 1;
@@ -1456,7 +1458,7 @@ retry:
                                     secondary,
                                     details,
                                     FALSE,
-                                    GTK_STOCK_CANCEL, _("_Skip files"),
+                                    CANCEL, _("_Skip files"),
                                     NULL);
 
             g_error_free (error);
@@ -1493,7 +1495,7 @@ retry:
                                 secondary,
                                 details,
                                 FALSE,
-                                GTK_STOCK_CANCEL, SKIP, RETRY,
+                                CANCEL, SKIP, RETRY,
                                 NULL);
 
         g_error_free (error);
@@ -1527,7 +1529,7 @@ retry:
                                     secondary,
                                     details,
                                     (source_info->num_files - transfer_info->num_files) > 1,
-                                    GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                    CANCEL, SKIP_ALL, SKIP,
                                     NULL);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -1605,7 +1607,7 @@ delete_file (CommonJob *job, GFile *file,
                                 secondary,
                                 details,
                                 (source_info->num_files - transfer_info->num_files) > 1,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -1813,7 +1815,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                                          secondary,
                                          details,
                                          (total_files - files_trashed) > 1,
-                                         GTK_STOCK_CANCEL, SKIP_ALL, SKIP, DELETE_ALL, GTK_STOCK_DELETE,
+                                         CANCEL, SKIP_ALL, SKIP, DELETE_ALL, DELETE,
                                          NULL);
             } else {
                 response = run_question (job,
@@ -1821,7 +1823,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                                          secondary,
                                          details,
                                          (total_files - files_trashed) > 1,
-                                         GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                         CANCEL, SKIP_ALL, SKIP,
                                          NULL);
 
             }
@@ -2439,7 +2441,7 @@ retry:
                                     secondary,
                                     details,
                                     FALSE,
-                                    GTK_STOCK_CANCEL, RETRY, SKIP,
+                                    CANCEL, RETRY, SKIP,
                                     NULL);
 
             g_error_free (error);
@@ -2484,7 +2486,7 @@ retry:
                                 secondary,
                                 details,
                                 TRUE,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP, RETRY,
+                                CANCEL, SKIP_ALL, SKIP, RETRY,
                                 NULL);
 
         g_error_free (error);
@@ -2568,7 +2570,7 @@ retry:
                                 secondary,
                                 details,
                                 TRUE,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP, RETRY,
+                                CANCEL, SKIP_ALL, SKIP, RETRY,
                                 NULL);
 
         g_error_free (error);
@@ -2673,7 +2675,7 @@ retry:
                               secondary,
                               details,
                               FALSE,
-                              GTK_STOCK_CANCEL, RETRY,
+                              CANCEL, RETRY,
                               NULL);
 
         g_error_free (error);
@@ -2710,7 +2712,7 @@ retry:
                               secondary,
                               NULL,
                               FALSE,
-                              GTK_STOCK_CANCEL,
+                              CANCEL,
                               NULL);
 
         abort_job (job);
@@ -2749,7 +2751,7 @@ retry:
                                     secondary,
                                     details,
                                     FALSE,
-                                    GTK_STOCK_CANCEL,
+                                    CANCEL,
                                     COPY_FORCE,
                                     RETRY,
                                     NULL);
@@ -2779,7 +2781,7 @@ retry:
                               secondary,
                               NULL,
                               FALSE,
-                              GTK_STOCK_CANCEL,
+                              CANCEL,
                               NULL);
 
         g_error_free (error);
@@ -3340,7 +3342,7 @@ retry:
                                 secondary,
                                 details,
                                 FALSE,
-                                GTK_STOCK_CANCEL, SKIP, RETRY,
+                                CANCEL, SKIP, RETRY,
                                 NULL);
 
         g_error_free (error);
@@ -3477,7 +3479,7 @@ retry:
                                     secondary,
                                     details,
                                     FALSE,
-                                    GTK_STOCK_CANCEL, _("_Skip files"),
+                                    CANCEL, _("_Skip files"),
                                     NULL);
 
             g_error_free (error);
@@ -3526,7 +3528,7 @@ retry:
                                 secondary,
                                 details,
                                 FALSE,
-                                GTK_STOCK_CANCEL, SKIP, RETRY,
+                                CANCEL, SKIP, RETRY,
                                 NULL);
 
         g_error_free (error);
@@ -3570,7 +3572,7 @@ retry:
                                     secondary,
                                     details,
                                     (source_info->num_files - transfer_info->num_files) > 1,
-                                    GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                    CANCEL, SKIP_ALL, SKIP,
                                     NULL);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -3661,7 +3663,7 @@ remove_target_recursively (CommonJob *job,
                                 secondary,
                                 details,
                                 TRUE,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -3705,7 +3707,7 @@ skip1:
                                 secondary,
                                 details,
                                 TRUE,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -4021,7 +4023,7 @@ copy_move_file (CopyMoveJob *copy_job,
                                 secondary,
                                 NULL,
                                 (source_info->num_files - transfer_info->num_files) > 1,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -4054,7 +4056,7 @@ copy_move_file (CopyMoveJob *copy_job,
                                 secondary,
                                 NULL,
                                 (source_info->num_files - transfer_info->num_files) > 1,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -4294,7 +4296,7 @@ retry:
                                         secondary,
                                         details,
                                         TRUE,
-                                        GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                        CANCEL, SKIP_ALL, SKIP,
                                         NULL);
 
                 g_error_free (error);
@@ -4360,7 +4362,7 @@ retry:
                                 secondary,
                                 details,
                                 (source_info->num_files - transfer_info->num_files) > 1,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         g_error_free (error);
@@ -4704,7 +4706,7 @@ move_file_prepare (CopyMoveJob *move_job,
                                 secondary,
                                 NULL,
                                 files_left > 1,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
@@ -4866,7 +4868,7 @@ retry:
                                 secondary,
                                 details,
                                 files_left > 1,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         g_error_free (error);
@@ -5310,7 +5312,7 @@ retry:
                                 secondary,
                                 details,
                                 files_left > 1,
-                                GTK_STOCK_CANCEL, SKIP_ALL, SKIP,
+                                CANCEL, SKIP_ALL, SKIP,
                                 NULL);
 
         if (error) {
@@ -6048,7 +6050,7 @@ retry:
                                     secondary,
                                     details,
                                     FALSE,
-                                    GTK_STOCK_CANCEL, SKIP,
+                                    CANCEL, SKIP,
                                     NULL);
 
             g_error_free (error);
