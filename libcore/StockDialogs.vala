@@ -95,6 +95,12 @@ namespace PF.Dialogs {
             case Gtk.MessageType.ERROR:
                 image_name = "dialog-error";
                 break;
+            case Gtk.MessageType.WARNING:
+                image_name = "dialog-warning";
+                break;
+            case Gtk.MessageType.QUESTION:
+                image_name = "dialog-question";
+                break;
             default:
                 image_name = "dialog-information";
                 break;
