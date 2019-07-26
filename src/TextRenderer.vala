@@ -22,6 +22,9 @@ namespace Marlin {
         const int MAX_LINES = 5;
         private int border_radius;
         private int double_border_radius;
+        private Gtk.CssProvider text_css;
+        private Gdk.RGBA previous_background_rgba;
+        private Gdk.RGBA previous_contrasting_rgba;
 
         private Marlin.ZoomLevel _zoom_level;
         public Marlin.ZoomLevel zoom_level {
@@ -69,6 +72,9 @@ namespace Marlin {
 
         construct {
             this.mode = Gtk.CellRendererMode.EDITABLE;
+            text_css = new Gtk.CssProvider ();
+            previous_background_rgba = { 0, 0, 0, 0 };
+            previous_contrasting_rgba = { 0, 0, 0, 0 };
         }
 
         public TextRenderer (Marlin.ViewMode viewmode) {
@@ -126,12 +132,41 @@ namespace Marlin {
                 x_offset += border_radius;
             }
 
+            if (background_set) {
+                if (!background_rgba.equal (previous_background_rgba)) {
+                    /* Using Gdk.RGBA copy () causes a segfault for some reason */
+                    previous_background_rgba.red = background_rgba.red;
+                    previous_background_rgba.green = background_rgba.green;
+                    previous_background_rgba.blue = background_rgba.blue;
+                    previous_background_rgba.alpha = background_rgba.alpha;
+
+                    var contrasting_foreground_rgba = Granite.contrasting_foreground_color (background_rgba);
+                    if (!contrasting_foreground_rgba.equal (previous_contrasting_rgba)) {
+                    /* Using Gdk.RGBA copy () causes a segfault for some reason */
+                        previous_contrasting_rgba.red = contrasting_foreground_rgba.red;
+                        previous_contrasting_rgba.green = contrasting_foreground_rgba.green;
+                        previous_contrasting_rgba.blue = contrasting_foreground_rgba.blue;
+                        previous_contrasting_rgba.alpha = contrasting_foreground_rgba.alpha;
+                        string data = "* {color: %s;}".printf (contrasting_foreground_rgba.to_string ());
+                        try {
+                            text_css.load_from_data (data);
+                        } catch (Error e) {
+                            critical (e.message);
+                        }
+                    }
+                }
+
+                style_context.add_provider (text_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            }
+
             style_context.render_layout (cr,
                                          cell_area.x + x_offset,
                                          cell_area.y + y_offset,
                                          layout);
 
-            style_context.restore ();
+            style_context.restore (); /* NOTE: This does not remove added classes */
+            style_context.remove_provider (text_css); /* No error if provider not added */
+
 
             /* The render call should always be preceded by a set_property call
                from GTK. It should be safe to unreference or free the allocated

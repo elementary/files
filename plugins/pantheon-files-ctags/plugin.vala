@@ -357,7 +357,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private class ColorWidget : Gtk.MenuItem {
         public signal void color_changed (int ncolor);
-
         private Gee.ArrayList<ColorButton> color_buttons;
         private const int COLORBOX_SPACING = 3;
 
