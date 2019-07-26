@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 elementary LLC (https://elementary.io)
+/* Copyright (c) 2018-19 elementary LLC (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -18,7 +18,7 @@
 
 namespace Marlin {
     public struct RunSimpleDialogData {
-        Gtk.Window parent_window;
+        unowned Gtk.Window parent_window;
         bool ignore_close_box;
         Gtk.MessageType message_type;
         string primary_text;
@@ -31,8 +31,6 @@ namespace Marlin {
 }
 
 namespace PF.Dialogs {
-
-
     public Granite.MessageDialog show_error_dialog (string primary_text,
                                                     string secondary_text,
                                                     Gtk.Window? parent) {
@@ -51,7 +49,7 @@ namespace PF.Dialogs {
     }
 
     private Granite.MessageDialog display_dialog (Granite.MessageDialog dialog, Gtk.Window? parent) {
-        if (parent != null) {
+        if (parent != null && parent is Gtk.Window) {
             dialog.set_transient_for (parent);
         }
 

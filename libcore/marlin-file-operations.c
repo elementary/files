@@ -1063,7 +1063,7 @@ run_simple_dialog_va (CommonJob *job,
     g_timer_stop (job->time);
 
     data = g_new0 (MarlinRunSimpleDialogData, 1);
-    data->parent_window = &job->parent_window;
+    data->parent_window = GTK_WINDOW (job->parent_window);
     data->ignore_close_box = ignore_close_box;
     data->message_type = message_type;
     data->primary_text = primary_text;
