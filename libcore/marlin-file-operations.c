@@ -5692,6 +5692,10 @@ marlin_file_operations_copy_move_link   (GList                  *files,
     target_is_mapping = FALSE;
     have_nonmapping_source = FALSE;
 
+    if (done_callback_data == NULL) {
+        done_callback_data = (void*)parent_view;
+    }
+
     if (g_file_has_uri_scheme (target_dir, "burn")) {
         target_is_mapping = TRUE;
     }
@@ -5723,8 +5727,9 @@ marlin_file_operations_copy_move_link   (GList                  *files,
                                           secondary,
                                           parent_window);
 
-            if (done_callback != NULL)
+            if (done_callback != NULL) {
                 ((MarlinDeleteCallback)done_callback) (TRUE, done_callback_data);
+            }
 
             return;
         }
