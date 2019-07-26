@@ -78,7 +78,10 @@ namespace PF.Dialogs {
                 break;
         }
 
-        var dialog = new Granite.MessageDialog.with_image_from_icon_name (data.primary_text, data.secondary_text, image_name, Gtk.ButtonsType.NONE);
+        var dialog = new Granite.MessageDialog.with_image_from_icon_name (data.primary_text,
+                                                                          data.secondary_text,
+                                                                          image_name,
+                                                                          Gtk.ButtonsType.NONE);
 
         if (data.button_titles.length == 0) {
             dialog.add_button (Gtk.Stock.CLOSE, 0);
