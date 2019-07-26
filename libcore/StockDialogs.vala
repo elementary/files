@@ -84,7 +84,7 @@ namespace PF.Dialogs {
                                                                           Gtk.ButtonsType.NONE);
 
         if (data.button_titles.length == 0) {
-            dialog.add_button (Gtk.Stock.CLOSE, 0);
+            dialog.add_button (_("Close"), 0);
         } else {
             var response_id = 0;
             foreach (string title in data.button_titles) {
