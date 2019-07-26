@@ -1031,70 +1031,12 @@ can_delete_files_without_confirm (GList *files)
     return TRUE;
 }
 
-typedef struct {
-    GtkWindow **parent_window;
-    gboolean ignore_close_box;
-    GtkMessageType message_type;
-    const char *primary_text;
-    const char *secondary_text;
-    const char *details_text;
-    const char **button_titles;
-    gboolean show_all;
-
-    int result;
-} RunSimpleDialogData;
-
 static gboolean
 do_run_simple_dialog (gpointer _data)
 {
-    RunSimpleDialogData *data = _data;
-    const char *button_title;
-    GtkWidget *dialog;
-    int result;
-    int response_id;
+    MarlinRunSimpleDialogData *data = _data;
 
-    /* Create the dialog. */
-    dialog = gtk_message_dialog_new (*data->parent_window,
-                                     0,
-                                     data->message_type,
-                                     GTK_BUTTONS_NONE,
-                                     NULL);
-    gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
-
-    g_object_set (dialog,
-                  "text", data->primary_text,
-                  "secondary-text", data->secondary_text,
-                  NULL);
-
-    for (response_id = 0;
-         data->button_titles[response_id] != NULL;
-         response_id++) {
-        button_title = data->button_titles[response_id];
-        if (!data->show_all && is_all_button_text (button_title)) {
-            continue;
-        }
-
-        gtk_dialog_add_button (GTK_DIALOG (dialog), button_title, response_id);
-        gtk_dialog_set_default_response (GTK_DIALOG (dialog), response_id);
-    }
-
-    if (data->details_text) {
-        pf_dialogs_gtk_message_dialog_set_details_label (GTK_MESSAGE_DIALOG (dialog),
-                                                         data->details_text);
-    }
-
-    /* Run it. */
-    gtk_widget_show (dialog);
-    result = gtk_dialog_run (GTK_DIALOG (dialog));
-
-    while ((result == GTK_RESPONSE_NONE || result == GTK_RESPONSE_DELETE_EVENT) && data->ignore_close_box) {
-        gtk_widget_show (GTK_WIDGET (dialog));
-        result = gtk_dialog_run (GTK_DIALOG (dialog));
-    }
-
-    gtk_widget_destroy (dialog);
-
-    data->result = result;
+    data->result = pf_dialogs_run_simple_file_operation_dialog (data);
 
     return FALSE;
 }
@@ -1112,15 +1054,16 @@ run_simple_dialog_va (CommonJob *job,
                       gboolean show_all,
                       va_list varargs)
 {
-    RunSimpleDialogData *data;
+    MarlinRunSimpleDialogData *data;
     int res;
+    int n_titles;
     const char *button_title;
     GPtrArray *ptr_array;
 
     g_timer_stop (job->time);
 
-    data = g_new0 (RunSimpleDialogData, 1);
-    data->parent_window = &job->parent_window;
+    data = g_new0 (MarlinRunSimpleDialogData, 1);
+    data->parent_window = GTK_WINDOW (job->parent_window);
     data->ignore_close_box = ignore_close_box;
     data->message_type = message_type;
     data->primary_text = primary_text;
@@ -1129,11 +1072,14 @@ run_simple_dialog_va (CommonJob *job,
     data->show_all = show_all;
 
     ptr_array = g_ptr_array_new ();
+    n_titles = 0;
     while ((button_title = va_arg (varargs, const char *)) != NULL) {
         g_ptr_array_add (ptr_array, (char *)button_title);
+        n_titles++;
     }
     g_ptr_array_add (ptr_array, NULL);
     data->button_titles = (const char **)g_ptr_array_free (ptr_array, FALSE);
+    data->button_titles_length1 = n_titles;
 
     pf_progress_info_pause (job->progress);
     g_io_scheduler_job_send_to_mainloop (job->io_job,
