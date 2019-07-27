@@ -520,32 +520,32 @@ namespace PF.FileUtils {
         switch (now_weekday - disp_weekday) {
             case 0:
                 if (clock_is_24h) {
-                    ///TRANSLATORS Used when 24h clock has been selected
-                    format_string = _("Today at %-H:%M");
+                    ///TRANSLATORS '%s' is a placeholder time in 24hr format. It may be moved but not changed.
+                    format_string = _("Today at %s").printf ("%R");
                 } else {
-                    ///TRANSLATORS Used when 12h clock has been selected
-                    format_string = _("Today at %-I:%M %p");
+                    ///TRANSLATORS '%s' is a placeholder time in 12hr format. It may be moved but not changed.
+                    format_string = _("Today at %s").printf ("%-I:%M %p");
                 }
 
                 break;
             case 1:
                 if (clock_is_24h) {
-                    ///TRANSLATORS Used when 24h clock has been selected
-                    format_string = _("Yesterday at %-H:%M");
+                    ///TRANSLATORS '%s' is a placeholder time in 24hr format. It may be moved but not changed.
+                    format_string = _("Yesterday at %s").printf ("%R");
                 } else {
-                    ///TRANSLATORS Used when 12h clock has been selected
-                    format_string = _("Yesterday at %-I:%M %p");
+                    ///TRANSLATORS '%s' is a placeholder time in 12hr format. It may be moved but not changed.
+                    format_string = _("Yesterday at %s").printf ("%-I:%M %p");
                 }
 
                 break;
 
             default:
                 if (clock_is_24h) {
-                    ///TRANSLATORS Used when 24h clock has been selected
-                    format_string = _("%A at %-H:%M");
+                    ///TRANSLATORS '%s' are a placeholders for the day name and the time in 24hr format. They may be moved but not changed.
+                    format_string = _("%s at %s").printf ("%A","%R");
                 } else {
-                    ///TRANSLATORS Used when 12h clock has been selected
-                    format_string = _("%A at %-I:%M %p");
+                    ///TRANSLATORS '%s' are a placeholders for the day name and the time in 12hr format. They may be moved but not changed.
+                    format_string = _("%s at %s").printf ("%A"," %-I:%M %p");
                 }
 
                 break;
