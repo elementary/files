@@ -519,34 +519,20 @@ namespace PF.FileUtils {
 
         switch (now_weekday - disp_weekday) {
             case 0:
-                if (clock_is_24h) {
-                    ///TRANSLATORS Used when 24h clock has been selected
-                    format_string = _("Today at %-H:%M");
-                } else {
-                    ///TRANSLATORS Used when 12h clock has been selected
-                    format_string = _("Today at %-I:%M %p");
-                }
+                ///TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
+                format_string = _("Today at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
 
                 break;
             case 1:
-                if (clock_is_24h) {
-                    ///TRANSLATORS Used when 24h clock has been selected
-                    format_string = _("Yesterday at %-H:%M");
-                } else {
-                    ///TRANSLATORS Used when 12h clock has been selected
-                    format_string = _("Yesterday at %-I:%M %p");
-                }
+            case -6: /* Yesterday is Sunday */
+                ///TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
+                format_string = _("Yesterday at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
 
                 break;
 
             default:
-                if (clock_is_24h) {
-                    ///TRANSLATORS Used when 24h clock has been selected
-                    format_string = _("%A at %-H:%M");
-                } else {
-                    ///TRANSLATORS Used when 12h clock has been selected
-                    format_string = _("%A at %-I:%M %p");
-                }
+                ///TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
+                format_string = _("%%A at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
 
                 break;
         }
