@@ -519,34 +519,18 @@ namespace PF.FileUtils {
 
         switch (now_weekday - disp_weekday) {
             case 0:
-                if (clock_is_24h) {
-                    ///TRANSLATORS '%s' is a placeholder time in 24hr format. It may be moved but not changed.
-                    format_string = _("Today at %s").printf ("%R");
-                } else {
-                    ///TRANSLATORS '%s' is a placeholder time in 12hr format. It may be moved but not changed.
-                    format_string = _("Today at %s").printf ("%-I:%M %p");
-                }
+                format_string = _("Today at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
 
                 break;
             case 1:
-                if (clock_is_24h) {
-                    ///TRANSLATORS '%s' is a placeholder time in 24hr format. It may be moved but not changed.
-                    format_string = _("Yesterday at %s").printf ("%R");
-                } else {
-                    ///TRANSLATORS '%s' is a placeholder time in 12hr format. It may be moved but not changed.
-                    format_string = _("Yesterday at %s").printf ("%-I:%M %p");
-                }
+            case -6: /* Yesterday is Sunday */
+                format_string = _("Yesterday at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
 
                 break;
 
             default:
-                if (clock_is_24h) {
-                    ///TRANSLATORS '%s' are a placeholders for the day name and the time in 24hr format. They may be moved but not changed.
-                    format_string = _("%s at %s").printf ("%A","%R");
-                } else {
-                    ///TRANSLATORS '%s' are a placeholders for the day name and the time in 12hr format. They may be moved but not changed.
-                    format_string = _("%s at %s").printf ("%A"," %-I:%M %p");
-                }
+                ///TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
+                format_string = _("%%A at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
 
                 break;
         }
