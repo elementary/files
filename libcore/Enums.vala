@@ -63,9 +63,10 @@ namespace Marlin {
 
 
     public enum ViewMode {
-        ICON,
-        LIST,
-        MILLER_COLUMNS,
+        /* First three modes must match the corresponding mode switch indices */
+        ICON = 0,
+        LIST = 1,
+        MILLER_COLUMNS = 2,
         CURRENT,
         PREFERRED,
         INVALID

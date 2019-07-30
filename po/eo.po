@@ -7,44 +7,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-03-26 00:08+0000\n"
-"Last-Translator: gpl34 <gpl@mac.com>\n"
-"Language-Team: Esperanto <https://weblate.elementary.io/projects/files/files/"
-"eo/>\n"
+"POT-Creation-Date: 2019-07-29 10:01-0700\n"
+"PO-Revision-Date: 2019-07-14 20:28+0000\n"
+"Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
+"Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
+">\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: src/Application.vala:120
+#: src/Application.vala:124
 msgid "Show the version of the program"
-msgstr ""
-
-#: src/Application.vala:122
-msgid "Open one or more URIs, each in their own tab"
-msgstr ""
-
-#: src/Application.vala:124 src/View/directory_view_popup.ui:83
-msgid "New Window"
-msgstr ""
+msgstr "Montri la version de la programo"
 
 #: src/Application.vala:126
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Malfermi unu aŭ plurajn URI-adresojn, en propraj langetoj"
+
+#: src/Application.vala:128 src/View/directory_view_popup.ui:87
+msgid "New Window"
+msgstr "Nova fenestro"
+
+#: src/Application.vala:130
 msgid "Quit Files"
-msgstr ""
+msgstr "Eliri el Dosieroj"
 
-#: src/Application.vala:128
+#: src/Application.vala:132
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Ebligi senciman protokolon"
 
-#: src/Application.vala:131
+#: src/Application.vala:135
 msgid "[URI…]"
-msgstr ""
+msgstr "[URI…]"
 
-#: src/Application.vala:134
+#: src/Application.vala:138
 msgid ""
 "\n"
 "\n"
@@ -52,103 +52,104 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Foliumi dosiersistemon per dosieradministrilo"
+"Foliumi dosiersistemon per dosiermastrumilo"
 
-#: src/Application.vala:162
+#: src/Application.vala:166
 msgid "--quit cannot be used with URIs."
-msgstr "--quit ne uzeblas kun URI."
+msgstr "--quit ne uzeblas kun URI-adresoj."
 
-#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
+#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Dosieraj operacioj"
 
-#: src/ProgressUIHandler.vala:185
+#. TRANSLATORS: %s will be replaced by the title of the file operation
+#: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "Finis %s"
 
-#: src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Ĉiuj dosieraj operacioj finiĝis"
 
-#: src/ProgressUIHandler.vala:236
+#: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Montri kopian dialogon"
 
-#: src/ProgressUIHandler.vala:248
+#: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Rezigni ĉiujn aktivajn agojn"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Informoj"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
 msgstr "Ĝenerala"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:76
+#: src/Dialogs/AbstractPropertiesDialog.vala:76 libcore/StockDialogs.vala:87
 msgid "Close"
-msgstr ""
+msgstr "Fermi"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:136
+#: src/Dialogs/AbstractPropertiesDialog.vala:135
 msgid "Device Usage"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:152
-msgid "Capacity:"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:153
-#: src/Dialogs/AbstractPropertiesDialog.vala:156
-#: src/Dialogs/AbstractPropertiesDialog.vala:159
-#: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
-msgid "Unknown"
-msgstr ""
+msgstr "Aparata uzo"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
-msgid "Available:"
-msgstr ""
+msgid "Capacity:"
+msgstr "Kapacito:"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:156
+#: src/Dialogs/AbstractPropertiesDialog.vala:159
+#: src/Dialogs/AbstractPropertiesDialog.vala:162
+#: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
+msgid "Unknown"
+msgstr "Nekonata"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
+msgid "Available:"
+msgstr "Disponebla:"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:161
 msgid "Used:"
-msgstr ""
+msgstr "Uzita:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
-msgstr ""
+msgstr "Difini kiel apriora"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
-#: src/View/directory_view_popup.ui:91
+#: src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Atributoj"
 
 #: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
-msgstr ""
+msgstr "Permesoj"
 
 #: src/Dialogs/PropertiesWindow.vala:244
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i dosiero ne legeblas pro permeso aŭ alia eraro."
+msgstr[1] "%i dosieroj ne legeblas pro permeso aŭ alia eraro."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Tio povas esti efektive pli granda"
 
 #: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
-msgstr ""
+msgstr "nekonata"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr ""
+msgstr "Ŝargiĝanta…"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr ""
+msgstr "Ne eblis determini"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
@@ -162,45 +163,45 @@ msgstr "Tipo:"
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr ""
+msgstr "Entenas:"
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
-msgstr ""
+msgstr "Kreita:"
 
 #: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
-msgstr ""
+msgstr "Modifita:"
 
 #: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
-msgstr ""
+msgstr "Forigita:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
-msgid "MIME type:"
-msgstr ""
+msgid "Media type:"
+msgstr "Aŭdvida tipo:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
-msgstr ""
+msgstr "Distingivo:"
 
 #: src/Dialogs/PropertiesWindow.vala:588
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "Loko:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr ""
+msgstr "Celo:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr ""
+msgstr "Devena loko:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2140
 msgid "Other Application…"
-msgstr ""
+msgstr "Alia aplikaĵo…"
 
 #: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
@@ -208,116 +209,118 @@ msgstr "Malfermi per:"
 
 #: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
-msgstr ""
+msgstr "Posedanto:"
 
 #: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
-msgstr ""
+msgstr "Grupo:"
 
 #: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
-msgstr ""
+msgstr "Ĉiuj:"
 
 #: src/Dialogs/PropertiesWindow.vala:1213
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u subdosierujo"
+msgstr[1] "%u subdosierujoj"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u dosiero"
+msgstr[1] "%u dosieroj"
 
+#. TRANSLATORS: folders, files
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u dosierujo"
+msgstr[1] "%u dosierujoj"
 
 #: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u elektita elemento"
+msgstr[1] "%u elektitaj elementoj"
 
+#. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Diskaj atributoj"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/ViewContainer.vala:379
-#: src/View/Sidebar.vala:658 libwidgets/Resources.vala:68
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:658
+#: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Dosiersistemo"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:86
+#: src/Dialogs/VolumePropertiesWindow.vala:88
 msgid "Format:"
-msgstr ""
+msgstr "Formato:"
 
 #: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Pluraj dosiertipoj elektitaj"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Ne unu aplikaĵo kapablas malfermi ĉiujn dosiertipojn"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
-msgstr ""
+msgstr "Neeblis malfermi la dosierojn"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr ""
+msgstr "Ne eblis malfermi la URI-adresojn"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "Neeblis malfermi la dosierojn aŭ URI-adresojn per ĉi aplikaĵo"
 
-#: src/View/Window.vala:495 src/View/Window.vala:505
+#: src/View/Window.vala:496 src/View/Window.vala:506
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(kiel administranto)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Dosiernomo"
 
-#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
+#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:153
 msgid "Size"
 msgstr "Grando"
 
-#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
+#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:158
 msgid "Type"
-msgstr "Speco"
+msgstr "Tipo"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Modifita"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:409
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "La dosierujo ne ekzistas"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "La dosiero „%s“ ne troveblas."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -326,178 +329,174 @@ msgstr "Krei"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Krei la dosieron „%s“"
 
-#: src/View/DirectoryNotFound.vala:44
-#, c-format
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
+#: src/View/DirectoryNotFound.vala:45
+msgid "Failed to create the folder"
+msgstr "Neeblis krei la dosierujon"
 
-#: src/View/AbstractDirectoryView.vala:807
-#: src/View/AbstractDirectoryView.vala:1092
+#: src/View/AbstractDirectoryView.vala:827
+#: src/View/AbstractDirectoryView.vala:1112
 msgid "Cannot execute this file"
-msgstr ""
+msgstr "Neeblas ruli la dosieron"
 
-#: src/View/AbstractDirectoryView.vala:828
+#: src/View/AbstractDirectoryView.vala:848
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Neeblas malfermi ĉi dosieron"
 
-#: src/View/AbstractDirectoryView.vala:841
+#: src/View/AbstractDirectoryView.vala:861
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Neeblas identigi la dosiertipon malfermota"
 
-#: src/View/AbstractDirectoryView.vala:1571
+#: src/View/AbstractDirectoryView.vala:1576
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Neeblas demeti la dosieron"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1577
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Nevalida provizita dosiernomo"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Invalid"
-msgstr ""
+msgstr "Nevalida"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2066
 msgid "Run"
-msgstr ""
+msgstr "Ruli"
 
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2070
 #, c-format
 msgid "Open in %s"
-msgstr ""
+msgstr "Malfermi per %s"
 
-#: src/View/AbstractDirectoryView.vala:2072
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Open in"
-msgstr ""
+msgstr "Malfermi per"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2082
 #: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
-msgstr ""
+msgstr "Malfermi per"
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2173
 msgid "Templates"
-msgstr ""
+msgstr "Ŝablonoj"
 
-#: src/View/AbstractDirectoryView.vala:2408
+#: src/View/AbstractDirectoryView.vala:2420
 #, c-format
 msgid "Untitled %s"
-msgstr ""
+msgstr "Sentitola %s"
 
-#: src/View/AbstractDirectoryView.vala:2756
-#: src/View/AbstractDirectoryView.vala:2940
+#: src/View/AbstractDirectoryView.vala:2768
+#: src/View/AbstractDirectoryView.vala:2963
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Neeblas forigi dosierojn de ĉi tie"
 
-#: src/View/AbstractDirectoryView.vala:2757
-#: src/View/AbstractDirectoryView.vala:2925
-#: src/View/AbstractDirectoryView.vala:2941
+#: src/View/AbstractDirectoryView.vala:2769
+#: src/View/AbstractDirectoryView.vala:2948
+#: src/View/AbstractDirectoryView.vala:2964
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Vi ne havas la permeson modifi la lokon"
 
-#: src/View/AbstractDirectoryView.vala:2900
+#: src/View/AbstractDirectoryView.vala:2923
 msgid "Cannot copy files that are in the trash"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2901
-msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Neeblas kopii dosierojn en la rubujo"
 
 #: src/View/AbstractDirectoryView.vala:2924
+msgid "Cutting the selection instead"
+msgstr "Eltondi la elektaĵon anstataŭe"
+
+#: src/View/AbstractDirectoryView.vala:2947
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Neeblas alglui dosierojn ĉi tien"
 
 #: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:591
 msgid "Home"
 msgstr "Hejmo"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:399
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Neeblas krei dosierujon ĉi tie."
+
+#: src/View/ViewContainer.vala:402
+msgid "The network is unavailable"
+msgstr "La reto ne disponeblas"
+
+#: src/View/ViewContainer.vala:403
+msgid "A working network is needed to reach this folder"
+msgstr "Funkcianta reto necesas por atingi ĉi dosierujon"
+
+#: src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Belong to You"
+msgstr "Ĉi dosierujo ne apartenas al vi"
+
+#: src/View/ViewContainer.vala:407
+msgid "You don't have permission to view this folder."
+msgstr "Vi ne havas permeson vidi ĉi dosierujon."
+
+#: src/View/ViewContainer.vala:409
+msgid "Unable to Mount Folder"
+msgstr "Neeblas munti la dosierujon"
+
+#: src/View/ViewContainer.vala:410
+msgid "Could not connect to the server for this folder."
+msgstr "Neeblis konekti al la servilo de tiu ĉi dosierujo."
 
 #: src/View/ViewContainer.vala:413
-msgid "The network is unavailable"
-msgstr ""
+msgid "Unable to Display Folder Contents"
+msgstr "Neeblas montri la dosierujan enhavon"
 
 #: src/View/ViewContainer.vala:414
-msgid "A working network is needed to reach this folder"
-msgstr ""
+msgid "The operation timed out."
+msgstr "La operacio eltempiĝis."
+
+#: src/View/ViewContainer.vala:416
+msgid "Unable to Show Folder"
+msgstr "Neeblas montri la dosierujon"
 
 #: src/View/ViewContainer.vala:417
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: src/View/ViewContainer.vala:418
-msgid "You don't have permission to view this folder."
-msgstr ""
-
-#: src/View/ViewContainer.vala:420
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: src/View/ViewContainer.vala:421
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: src/View/ViewContainer.vala:424
-msgid "Unable to Display Folder Contents"
-msgstr ""
-
-#: src/View/ViewContainer.vala:425
-msgid "The operation timed out."
-msgstr ""
-
-#: src/View/ViewContainer.vala:427
-msgid "Unable to Show Folder"
-msgstr ""
+msgid "The server for this folder could not be located."
+msgstr "Neeblas lokigi la servilon de ĉi dosierujo."
 
 #: src/View/ViewContainer.vala:428
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: src/View/ViewContainer.vala:439
 msgid "File not Found"
-msgstr ""
+msgstr "Netrovita dosiero"
 
-#: src/View/ViewContainer.vala:440
+#: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "La elektita dosiero ne plu ekzistas."
 
 #: src/View/Sidebar.vala:578
 msgid "Personal"
-msgstr ""
+msgstr "Persona"
 
 #: src/View/Sidebar.vala:579
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Viaj komunaj lokoj kaj paĝosignoj"
 
 #: src/View/Sidebar.vala:598
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Malfermi vian personan dosierujon"
 
 #: src/View/Sidebar.vala:613
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Vidi liston de freŝe uzitaj dosieroj"
 
 #: src/View/Sidebar.vala:639 libwidgets/Resources.vala:65
 msgid "Trash"
-msgstr ""
+msgstr "Rubujo"
 
 #: src/View/Sidebar.vala:646
 msgid "Open the Trash"
-msgstr ""
+msgstr "Malfermi la rubujon"
 
 #: src/View/Sidebar.vala:651
 msgid "Devices"
-msgstr ""
+msgstr "Aparatoj"
 
 #: src/View/Sidebar.vala:652
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Viaj lokaj submemorujoj kaj aparatoj"
 
 #: src/View/Sidebar.vala:780 libwidgets/Resources.vala:62
 msgid "Network"
@@ -505,318 +504,321 @@ msgstr "Reto"
 
 #: src/View/Sidebar.vala:781
 msgid "Your network places"
-msgstr ""
+msgstr "Viaj retaj lokoj"
 
 #: src/View/Sidebar.vala:813
 msgid "Entire Network"
-msgstr ""
+msgstr "Tuta Reto"
 
 #: src/View/Sidebar.vala:820
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Foliumi la enhavon de la reto"
 
 #: src/View/Sidebar.vala:823
-#, fuzzy
 msgid "Connect Server"
 msgstr "Konekti al servilo"
 
 #: src/View/Sidebar.vala:824
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Konekti al servilo"
+msgstr "Konekti al reta servilo"
 
 #: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s liberaj el %s)"
 
 #: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Eraris munto de la portilo %s"
 
 #: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Neeblas startigi %s"
 
-#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1280
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Malplenigi _Rubujon"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Ĉi dosierujo malplenas"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Rubujo malplenas"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Estas neniu freŝuzata dosiero"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
-msgstr ""
+msgstr "Aliro malpermesita"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Privata reĝimo ŝaltita"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Neniu freŝuzata dosiero memorita"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Ŝanĝi sekurecajn agordojn"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Malfermi la aplikaĵon pri sistem-sekureca kaj privateca agordoj"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
-msgstr ""
+msgstr "Malfermi"
 
 #: src/View/PopupMenuBuilder.vala:38
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Malfermi en nova _Langeto"
 
 #: src/View/PopupMenuBuilder.vala:42
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Malfermi en _Nova Fenestro"
 
 #: src/View/PopupMenuBuilder.vala:46
 msgid "Remove"
-msgstr ""
+msgstr "Forigi"
 
 #: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr ""
+msgstr "Renomi"
 
 #: src/View/PopupMenuBuilder.vala:54
 msgid "_Mount"
-msgstr ""
+msgstr "_Munti"
 
 #: src/View/PopupMenuBuilder.vala:58
 msgid "_Unmount"
-msgstr ""
+msgstr "_Malmunti"
 
 #: src/View/PopupMenuBuilder.vala:62
 msgid "_Eject"
-msgstr ""
+msgstr "_Elĵeti"
 
 #: src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Restaŭri el rubujo"
 
 #: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
-#, fuzzy
 msgid "Delete permanently"
-msgstr "_Forigi ĉiujn"
+msgstr "Forigi definitive"
 
 #: src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Malfermi parencan dosierujon"
 
 #: src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Forigi el historio"
 
 #: src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Movi rubujen"
 
 #: src/View/directory_view_popup.ui:51
-#, fuzzy
 msgid "New"
-msgstr "Reto"
+msgstr "Nova"
 
 #: src/View/directory_view_popup.ui:53
-#, fuzzy
 msgid "Folder"
-msgstr "Dosierujo:"
+msgstr "Dosierujo"
 
 #: src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Malplena dosiero"
 
 #: src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Montri kaŝitajn dosierojn"
 
 #: src/View/directory_view_popup.ui:71
-#, fuzzy
 msgid "Show Remote Thumbnails"
-msgstr "Montri pli da _detaloj"
+msgstr "Montri forajn miniaturojn"
 
-#: src/View/directory_view_popup.ui:78
+#: src/View/directory_view_popup.ui:75
+msgid "Hide Local Thumbnails"
+msgstr "Kaŝi lokajn bildetojn"
+
+#: src/View/directory_view_popup.ui:82
 msgid "New Tab"
-msgstr ""
+msgstr "Nova langeto"
 
-#: src/View/directory_view_popup.ui:98
+#: src/View/directory_view_popup.ui:102
 msgid "Bookmark"
-msgstr ""
+msgstr "Paĝosigno"
 
-#: src/View/directory_view_popup.ui:105
+#: src/View/directory_view_popup.ui:109
 msgid "Paste"
-msgstr ""
+msgstr "Alglui"
 
-#: src/View/directory_view_popup.ui:111
+#: src/View/directory_view_popup.ui:115
 msgid "Paste Link"
-msgstr ""
-
-#: src/View/directory_view_popup.ui:118
-msgid "Cut"
-msgstr ""
+msgstr "Alglui ligilon"
 
 #: src/View/directory_view_popup.ui:122
-msgid "Copy"
-msgstr ""
+msgid "Cut"
+msgstr "Tondi"
 
 #: src/View/directory_view_popup.ui:126
-msgid "Copy as Link"
-msgstr ""
+msgid "Copy"
+msgstr "Kopii"
 
 #: src/View/directory_view_popup.ui:130
-msgid "Paste into Folder"
-msgstr ""
+msgid "Copy as Link"
+msgstr "Kopii kiel ligilo"
 
 #: src/View/directory_view_popup.ui:134
+msgid "Paste into Folder"
+msgstr "Alglui en dosierujon"
+
+#: src/View/directory_view_popup.ui:138
 msgid "Paste Link into Folder"
-msgstr ""
+msgstr "Alglui ligilon en dosierujon"
 
-#: src/View/directory_view_popup.ui:141
+#: src/View/directory_view_popup.ui:145
 msgid "Sort by"
-msgstr ""
+msgstr "Ordigi laŭ"
 
-#: src/View/directory_view_popup.ui:144
+#: src/View/directory_view_popup.ui:148
 msgid "Name"
-msgstr ""
+msgstr "Nomo"
 
-#: src/View/directory_view_popup.ui:159
+#: src/View/directory_view_popup.ui:163
 msgid "Date"
-msgstr ""
-
-#: src/View/directory_view_popup.ui:166
-msgid "Reversed Order"
-msgstr ""
+msgstr "Dato"
 
 #: src/View/directory_view_popup.ui:170
+msgid "Reversed Order"
+msgstr "Inversa ordigo"
+
+#: src/View/directory_view_popup.ui:174
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Dosierujoj antaŭ dosieroj"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:130
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Serĉi aŭ tajpi dosierindikon"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Malfermi en nova langeto"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
-msgstr ""
+msgstr "Malfermi en nova fenestro"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Malfermi en alia aplikaĵo…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
+msgstr "Reŝargi la dosierujon"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
-msgstr ""
+msgstr "Serĉanta…"
 
 #: src/View/Widgets/OverlayBar.vala:216
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u dosierujoj"
 
 #: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " kaj %u alia elemento (%s) elektita(j)"
 
 #: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " kaj %u aliaj elementoj (%s) elektitaj"
 
 #: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
 msgid " selected"
-msgstr ""
+msgstr " elektita(j)"
 
 #: src/View/Widgets/OverlayBar.vala:235
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u elementoj elektitaj (%s)"
 
+#. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u subdosierujo, "
 
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u subdosierujoj, "
 
+#. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
 msgid "%u file, "
-msgstr ""
+msgstr "%u dosiero, "
 
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
 msgid "%u files, "
-msgstr ""
+msgstr "%u dosieroj, "
 
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s proksim."
 
+#. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:298
 msgid "unknown size"
-msgstr ""
+msgstr "nekonata grando"
 
+#. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u dosiero nelegebla"
 
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u dosieroj nelegeblaj"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
-msgstr ""
+msgstr "Legi"
 
 #: src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr ""
+msgstr "Skribi"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr ""
+msgstr "Ruli"
 
 #: src/View/Widgets/TopMenu.vala:63
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
-msgstr ""
+msgstr "Antaŭa"
 
 #: src/View/Widgets/TopMenu.vala:68
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
-msgstr ""
+msgstr "Sekvanta"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -827,17 +829,16 @@ msgid "FTP (with login)"
 msgstr "FTP (necesas ensaluti)"
 
 #: libcore/ConnectServerDialog.vala:59
-#, fuzzy
 msgid "SSH"
 msgstr "SSH"
 
 #: libcore/ConnectServerDialog.vala:65
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (ret-komunika protokolo el Apple)"
+msgstr "AFP (ret-komunika protokolo de Apple)"
 
 #: libcore/ConnectServerDialog.vala:71
 msgid "Windows share"
-msgstr ""
+msgstr "Vindoza kunhavigo"
 
 #: libcore/ConnectServerDialog.vala:77
 msgid "WebDAV (HTTP)"
@@ -853,33 +854,29 @@ msgstr "Servilaj detaloj"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Servila nomo aŭ IP-adreso"
 
 #: libcore/ConnectServerDialog.vala:135
-#, fuzzy
 msgid "Server:"
-msgstr "_Servilo:"
+msgstr "Servilo:"
 
 #: libcore/ConnectServerDialog.vala:142
-#, fuzzy
 msgid "Port:"
-msgstr "_Pordo:"
+msgstr "Pordo:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
-msgstr ""
+msgstr "Servila nomo de la kunhavigo"
 
 #: libcore/ConnectServerDialog.vala:168
-#, fuzzy
 msgid "Share:"
-msgstr "Retdividejo:"
+msgstr "Kunhavigi:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Servila dosierindiko de kunhaviga dosierujo"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
 msgstr "Dosierujo:"
 
@@ -889,50 +886,44 @@ msgstr "Uzanto-detaloj"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "Nomo de vindoza retregiono"
 
 #: libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Domajna nomo:"
+msgstr "Retregiona nomo:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
-msgstr ""
+msgstr "Servila uzantonomo"
 
 #: libcore/ConnectServerDialog.vala:179
-#, fuzzy
 msgid "User name:"
-msgstr "_Uzantonomo:"
+msgstr "Uzantonomo:"
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
 msgid "Password:"
 msgstr "Pasvorto:"
 
 #: libcore/ConnectServerDialog.vala:186
-#, fuzzy
 msgid "Remember this password"
-msgstr "Memo_ri tiun pasvorton"
+msgstr "Memori ĉi pasvorton"
 
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:101
 #: libcore/FileConflictDialog.vala:189
 msgid "Cancel"
-msgstr "Nuligi"
+msgstr "Rezigni"
 
 #: libcore/ConnectServerDialog.vala:193
-#, fuzzy
 msgid "Connect"
-msgstr "K_onekti"
+msgstr "Konekti"
 
 #: libcore/ConnectServerDialog.vala:200
 msgid "Continue"
 msgstr "Daŭrigi"
 
 #: libcore/ConnectServerDialog.vala:245
-#, fuzzy
 msgid "Connecting…"
-msgstr "Konektante..."
+msgstr "Konektanta…"
 
 #: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
@@ -941,57 +932,19 @@ msgstr "Bonvolu kontroli viajn uzanto-detalojn."
 #: libcore/DndHandler.vala:47
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Neeblis ruli „%s“"
 
 #: libcore/DndHandler.vala:96
 msgid "Move Here"
-msgstr ""
+msgstr "Movi ĉi tien"
 
 #: libcore/DndHandler.vala:97
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopii ĉi tien"
 
 #: libcore/DndHandler.vala:98
 msgid "Link Here"
-msgstr ""
-
-#: libcore/FileUtils.vala:86
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr ""
-
-#: libcore/FileUtils.vala:87
-msgid "The item cannot be restored from trash"
-msgstr ""
-
-#: libcore/FileUtils.vala:429
-#, c-format
-msgid "Could not rename to '%s'"
-msgstr ""
-
-#: libcore/FileUtils.vala:518
-msgid "Today at %-H:%M"
-msgstr ""
-
-#: libcore/FileUtils.vala:520
-msgid "Today at %-I:%M %p"
-msgstr ""
-
-#: libcore/FileUtils.vala:526
-msgid "Yesterday at %-H:%M"
-msgstr ""
-
-#: libcore/FileUtils.vala:528
-msgid "Yesterday at %-I:%M %p"
-msgstr ""
-
-#: libcore/FileUtils.vala:535
-msgid "%A at %-H:%M"
-msgstr ""
-
-#: libcore/FileUtils.vala:537
-msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "Ligi ĉi tien"
 
 #: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
@@ -1011,7 +964,7 @@ msgstr "Anstataŭigi per"
 
 #: libcore/FileConflictDialog.vala:171
 msgid "Reset"
-msgstr "Reagordi"
+msgstr "Restarigi"
 
 #: libcore/FileConflictDialog.vala:181
 msgid "_Select a new name for the destination"
@@ -1021,21 +974,21 @@ msgstr "_Elekti alian nomon por la celo"
 msgid "Apply this action to all files"
 msgstr "Apliki tion al ĉiuj dosieroj"
 
-#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:161
 msgid "_Skip"
-msgstr "Preterpa_si"
+msgstr "_Preterpasi"
 
 #: libcore/FileConflictDialog.vala:187
 msgid "Re_name"
-msgstr "Ali_nomi"
+msgstr "_Alinomi"
 
 #: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
-msgstr ""
+msgstr "Konservi la plej freŝdatan"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Preterpasi originalan pli freŝdata"
 
 #: libcore/FileConflictDialog.vala:194
 msgid "Replace"
@@ -1044,35 +997,35 @@ msgstr "Anstataŭigi"
 #: libcore/FileConflictDialog.vala:310
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Ĉu kunigi dosierujon \"%s\"?"
+msgstr "Ĉu kunigi dosierujon „%s“?"
 
 #: libcore/FileConflictDialog.vala:311
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Kunfando demandas konfirmon antaŭ ol ajna dosiero en la dosierujo estas "
-"anstataŭigata per konfliktanta dosiero."
+"Kunfando petas konfirmon pri anstataŭigo konflikta je kopio de dosiero en la "
+"dosierujo."
 
 #: libcore/FileConflictDialog.vala:313
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli malnova dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli malnova samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:315
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli nova dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli nova samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:317
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas alia dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:320
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Ĉu anstataŭigi dosierujon \"%s\"?"
+msgstr "Ĉu anstataŭigi dosierujon „%s“?"
 
 #: libcore/FileConflictDialog.vala:321
 msgid "Replacing it will remove all files in the folder."
@@ -1081,153 +1034,193 @@ msgstr "Anstataŭo de ĝi kaŭzas forigon de ĉiuj dosieroj en la dosierujo."
 #: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:325
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Ĉu anstataŭigi dosieron\"%s\"?"
+msgstr "Ĉu anstataŭigi dosieron „%s“?"
 
 #: libcore/FileConflictDialog.vala:326
 msgid "Replacing it will overwrite its content."
-msgstr "Anstataŭo de ĝi kaŭzas anstataŭigon de ĝia enhavo."
+msgstr "Anstataŭigo surskribos la enhavon."
 
 #: libcore/FileConflictDialog.vala:329
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli malnova dosiero kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli malnova dosiero kun la sama nomo en „%s“."
 
 #: libcore/FileConflictDialog.vala:331
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli nova dosiero kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli nova dosiero kun la sama nomo en „%s“."
 
 #: libcore/FileConflictDialog.vala:333
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas alia dosiero kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas alia dosiero kun la sama nomo en „%s“."
 
 #: libcore/FileConflictDialog.vala:359
 msgid "Merge"
 msgstr "Kunfandi"
 
-#: libcore/gof-directory-async.vala:683
+#: libcore/FileUtils.vala:87
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Neeblis difini la devenan lokon de „%s“ "
+
+#: libcore/FileUtils.vala:88
+msgid "The item cannot be restored from trash"
+msgstr "Neeblas restaŭri la elementon el rubujo"
+
+#: libcore/FileUtils.vala:434
+#, c-format
+msgid "Could not rename to '%s'"
+msgstr "Neeblis renomi al „%s“"
+
+#. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
+#: libcore/FileUtils.vala:523
+#, fuzzy, c-format
+msgid "Today at %s"
+msgstr "Hodiaŭ je %-H:%M"
+
+#. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
+#: libcore/FileUtils.vala:529
+#, fuzzy, c-format
+msgid "Yesterday at %s"
+msgstr "Hieraŭ je %-H:%M"
+
+#. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
+#: libcore/FileUtils.vala:535
+#, fuzzy, c-format
+msgid "%%A at %s"
+msgstr "%A je %-H:%M"
+
+#: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Servilo ne respondis en la tempolimo"
 
 #: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
 #: libcore/ProgressInfo.vala:79
 msgid "Preparing"
-msgstr ""
+msgstr "Pretiganta"
 
-#: libcore/StockDialogs.vala:52
-msgid "Show more _details"
-msgstr "Montri pli da _detaloj"
+#: libcore/marlin-file-operations.c:159
+#, fuzzy
+msgid "_Cancel"
+msgstr "Rezigni"
 
-#: libcore/marlin-file-operations.c:161
+#: libcore/marlin-file-operations.c:160
+#, fuzzy
+msgid "_Delete"
+msgstr "Forigita:"
+
+#: libcore/marlin-file-operations.c:162
 msgid "S_kip All"
 msgstr "_Preterpasi ĉiujn"
 
-#: libcore/marlin-file-operations.c:162
+#: libcore/marlin-file-operations.c:163
 msgid "_Retry"
 msgstr "_Reprovi"
 
-#: libcore/marlin-file-operations.c:163
+#: libcore/marlin-file-operations.c:164
 msgid "Delete _All"
 msgstr "_Forigi ĉiujn"
 
-#: libcore/marlin-file-operations.c:164
+#: libcore/marlin-file-operations.c:165
 msgid "_Replace"
 msgstr "_Anstataŭigi"
 
-#: libcore/marlin-file-operations.c:165
+#: libcore/marlin-file-operations.c:166
 msgid "Replace _All"
 msgstr "_Anstataŭigi ĉiujn"
 
-#: libcore/marlin-file-operations.c:166
+#: libcore/marlin-file-operations.c:167
 msgid "_Merge"
 msgstr "_Kunfandi"
 
-#: libcore/marlin-file-operations.c:167
+#: libcore/marlin-file-operations.c:168
 msgid "Merge _All"
 msgstr "Kunf_andi ĉion"
 
-#: libcore/marlin-file-operations.c:168
+#: libcore/marlin-file-operations.c:169
 msgid "Copy _Anyway"
 msgstr "Kopii t_amen"
 
-#: libcore/marlin-file-operations.c:249
+#: libcore/marlin-file-operations.c:250
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekundo"
 msgstr[1] "%'d sekundoj"
 
-#: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
+#: libcore/marlin-file-operations.c:255 libcore/marlin-file-operations.c:266
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minuto"
 msgstr[1] "%'d minutoj"
 
-#: libcore/marlin-file-operations.c:264
+#: libcore/marlin-file-operations.c:265
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d horo"
 msgstr[1] "%'d horoj"
 
-#: libcore/marlin-file-operations.c:272
+#: libcore/marlin-file-operations.c:273
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "proksimume %'d horo"
 msgstr[1] "proksimume %'d horoj"
 
-#: libcore/marlin-file-operations.c:348
+#: libcore/marlin-file-operations.c:349
 #, c-format
 msgid "Link to %s"
 msgstr "Ligo al %s"
 
-#: libcore/marlin-file-operations.c:352
+#: libcore/marlin-file-operations.c:353
 #, c-format
 msgid "Another link to %s"
 msgstr "Alia ligo al %s"
 
-#: libcore/marlin-file-operations.c:368
+#: libcore/marlin-file-operations.c:369
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d-a ligilo al %s"
 
-#: libcore/marlin-file-operations.c:372
+#: libcore/marlin-file-operations.c:373
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d-a ligilo al %s"
 
-#: libcore/marlin-file-operations.c:376
+#: libcore/marlin-file-operations.c:377
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d-a ligilo al %s"
 
-#: libcore/marlin-file-operations.c:380
+#: libcore/marlin-file-operations.c:381
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d-a ligilo al %s"
 
-#: libcore/marlin-file-operations.c:572
+#: libcore/marlin-file-operations.c:573
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:580
+#: libcore/marlin-file-operations.c:581
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: libcore/marlin-file-operations.c:1258
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:1226
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Ĉu vi certas, ke vi volas definitive forigi „%B“ el la rubujo?"
 
-#: libcore/marlin-file-operations.c:1261
+#: libcore/marlin-file-operations.c:1229
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1242,913 +1235,1013 @@ msgstr[1] ""
 "Ĉu vi certas, ke vi volas definitive forigi la %'d elektitajn elementojn el "
 "la rubujo?"
 
-#: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
+#: libcore/marlin-file-operations.c:1239 libcore/marlin-file-operations.c:1321
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Se vi forigas elementon, ĝi definitive perdiĝos."
 
-#: libcore/marlin-file-operations.c:1296
+#: libcore/marlin-file-operations.c:1264
 msgid "Permanently delete all items from Trash?"
-msgstr "Definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
 
-#: libcore/marlin-file-operations.c:1297
+#: libcore/marlin-file-operations.c:1265
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Ĉiuj elementoj en ĉiuj rubujaj dosierujoj, inkluzive en muntitaj eksteraj "
+"memorujoj, estos definitive forigitaj."
 
-#: libcore/marlin-file-operations.c:1300
-#, fuzzy
+#: libcore/marlin-file-operations.c:1268
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Ĉu definitive forigi ĉiujn elementojn el ĉi muntaĵa rubujo?"
 
-#: libcore/marlin-file-operations.c:1301
+#: libcore/marlin-file-operations.c:1269
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Ĉiuj elementoj en la muntaĵa rubujo estos definitive forigitaj."
 
-#: libcore/marlin-file-operations.c:1339
-#, fuzzy
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:1309
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Ĉu vi certas, ke vi volas definitive forigi „%B“ el la rubujo?"
+msgstr "Ĉu vi certas, ke vi volas definitive forigi „%B“?"
 
-#: libcore/marlin-file-operations.c:1342
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1312
+#, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] ""
-"Ĉu vi certas, ke vi volas definitive forigi la elektitan elementon el la "
-"rubujo?"
+"Ĉu vi certas, ke vi volas definitive forigi la %'d elektitan elementon?"
 msgstr[1] ""
-"Ĉu vi certas, ke vi volas definitive forigi la %'d elektitajn elementojn el "
-"la rubujo?"
+"Ĉu vi certas, ke vi volas definitive forigi la %'d elektitajn elementojn?"
 
-#: libcore/marlin-file-operations.c:1385
+#: libcore/marlin-file-operations.c:1355
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosiero forigota"
+msgstr[1] "%'d dosieroj forigotaj"
 
-#: libcore/marlin-file-operations.c:1391
+#: libcore/marlin-file-operations.c:1361
 msgid "Deleting files"
-msgstr ""
+msgstr "Foriganta dosierojn"
 
-#: libcore/marlin-file-operations.c:1404
+#. TRANSLATORS: %T will expand to a time like "2 minutes". It must not be translated or removed.
+#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#: libcore/marlin-file-operations.c:1374
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T restanta"
+msgstr[1] "%T restantaj"
 
-#: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
-#: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
-#: libcore/marlin-file-operations.c:2375
+#: libcore/marlin-file-operations.c:1441 libcore/marlin-file-operations.c:1479
+#: libcore/marlin-file-operations.c:1522 libcore/marlin-file-operations.c:1600
+#: libcore/marlin-file-operations.c:2372
 msgid "Error while deleting."
-msgstr ""
+msgstr "Eraro dum forigado."
 
-#: libcore/marlin-file-operations.c:1475
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:1447
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Neeblas forigi dosierojn en la dosierujo „%B“, pro manko de la permesoj vidi "
+"ilin."
 
-#: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
-#: libcore/marlin-file-operations.c:3401
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:1452 libcore/marlin-file-operations.c:2435
+#: libcore/marlin-file-operations.c:3473
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "Okazis eraro akirante informojn pri dosieroj en la dosierujo „%B“."
 
-#: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
-#, fuzzy
+#: libcore/marlin-file-operations.c:1461 libcore/marlin-file-operations.c:3482
 msgid "_Skip files"
-msgstr "Preterpa_si"
+msgstr "_Ignori dosierojn"
 
-#: libcore/marlin-file-operations.c:1508
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:1484
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Neeblas forigi la dosieron „%B“, pro manko de la permeso legi ĝin."
 
-#: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
-#: libcore/marlin-file-operations.c:3446
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:1489 libcore/marlin-file-operations.c:2478
+#: libcore/marlin-file-operations.c:3522
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Okazis eraro dum legado de la dosierujo „%B“."
 
-#: libcore/marlin-file-operations.c:1545
+#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:1524
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Neeblas forigi la dosierujon „%B“."
 
-#: libcore/marlin-file-operations.c:1622
+#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:1602
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Okazis eraro dum forigo de „%B“."
 
-#: libcore/marlin-file-operations.c:1706
+#: libcore/marlin-file-operations.c:1686
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Enrubujiganta dosierojn"
 
-#: libcore/marlin-file-operations.c:1708
+#: libcore/marlin-file-operations.c:1688
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosiero enrubujigota"
+msgstr[1] "%'d dosieroj enrubujigotaj"
 
-#: libcore/marlin-file-operations.c:1802 libcore/marlin-file-operations.c:1805
-#: libcore/marlin-file-operations.c:1808
+#: libcore/marlin-file-operations.c:1786 libcore/marlin-file-operations.c:1789
+#: libcore/marlin-file-operations.c:1792
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Neeblas enrubujigi aŭ forigi la dosieron"
 
-#: libcore/marlin-file-operations.c:1803
+#: libcore/marlin-file-operations.c:1787
 msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
+msgstr "Malpermesas enrubujigo aŭ forigo de dosieroj en nurlega dosiersistemo."
 
-#: libcore/marlin-file-operations.c:1806
+#: libcore/marlin-file-operations.c:1790
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Malpermesas enrubujigo aŭ forigo de dosiero en dosierujoj sen skribaj "
+"permesoj."
 
-#: libcore/marlin-file-operations.c:1809
+#: libcore/marlin-file-operations.c:1793
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
+msgstr "Malpermesas enrubujigo aŭ forigo de dosierujo sen skriba permeso."
 
-#: libcore/marlin-file-operations.c:1811
+#: libcore/marlin-file-operations.c:1795
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Neeblas enrubujigi la dosieron. Ĉu forigi ĝin tuj?"
 
-#: libcore/marlin-file-operations.c:1812
+#: libcore/marlin-file-operations.c:1796
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Neeblis enrubujigi la dosieron. Vidu malsuprajn detalojn por pliaj informoj."
 
-#: libcore/marlin-file-operations.c:1816
+#: libcore/marlin-file-operations.c:1800
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Neeblas enrubujigi la dosieron. Ĉu forigi ĝin?"
 
-#: libcore/marlin-file-operations.c:1817
+#: libcore/marlin-file-operations.c:1801
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "Neeblis enrubujugi la dosieron. Eble, vi ankaŭ ne povos forigi ĝin."
 
-#: libcore/marlin-file-operations.c:1822
+#: libcore/marlin-file-operations.c:1806
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Forigo de dosiero estas definitiva"
 
-#: libcore/marlin-file-operations.c:2012
+#: libcore/marlin-file-operations.c:1996
 msgid "Trashing Files"
-msgstr ""
+msgstr "Enrubujiganta dosierojn"
 
-#: libcore/marlin-file-operations.c:2014
+#: libcore/marlin-file-operations.c:1998
 msgid "Deleting Files"
-msgstr ""
+msgstr "Foriganta dosierojn"
 
-#: libcore/marlin-file-operations.c:2083
+#. TRANSLATORS: %V is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
+#: libcore/marlin-file-operations.c:2068
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Neeblas eligi volumon %V"
 
-#: libcore/marlin-file-operations.c:2085
+#: libcore/marlin-file-operations.c:2070
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Neeblas munti volumon %V"
 
-#: libcore/marlin-file-operations.c:2299
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2284
+#, c-format
 msgid "Unable to mount %s"
-msgstr "Analizado de labortabla dosiero fiaskis: %s"
+msgstr "Maleblas munti %s"
 
-#: libcore/marlin-file-operations.c:2322
+#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. So this represents something like "Preparing to copy 100 files (200 MB)"
+#. The order in which %'d and %S appear must not change.
+#: libcore/marlin-file-operations.c:2311
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pretiganta kopion de %'d dosiero (%S)"
+msgstr[1] "Pretiganta kopion de %'d dosieroj (%S)"
 
-#: libcore/marlin-file-operations.c:2328
+#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. So this represents something like "Preparing to move 100 files (200 MB)"
+#. The order in which %'d and %S appear must not change.
+#: libcore/marlin-file-operations.c:2321
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pretiganta movon de %'d dosiero (%S)"
+msgstr[1] "Pretiganta movon de %'d dosieroj (%S)"
 
-#: libcore/marlin-file-operations.c:2334
+#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. So this represents something like "Preparing to delete 100 files (200 MB)"
+#. The order in which %'d and %S appear must not change.
+#: libcore/marlin-file-operations.c:2331
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pretiganta forigon de %'d dosiero (%S)"
+msgstr[1] "Pretiganta forigon de %'d dosieroj (%S)"
 
-#: libcore/marlin-file-operations.c:2340
+#: libcore/marlin-file-operations.c:2337
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pretiganta enrubujigon de %'d dosiero"
+msgstr[1] "Pretiganta enrubujigon de %'d dosieroj"
 
-#: libcore/marlin-file-operations.c:2371 libcore/marlin-file-operations.c:3261
-#: libcore/marlin-file-operations.c:3393 libcore/marlin-file-operations.c:3438
+#: libcore/marlin-file-operations.c:2368 libcore/marlin-file-operations.c:3325
+#: libcore/marlin-file-operations.c:3461 libcore/marlin-file-operations.c:3510
 msgid "Error while copying."
-msgstr ""
+msgstr "Okazis eraro dum kopiado."
 
-#: libcore/marlin-file-operations.c:2373 libcore/marlin-file-operations.c:3391
-#: libcore/marlin-file-operations.c:3436
+#: libcore/marlin-file-operations.c:2370 libcore/marlin-file-operations.c:3459
+#: libcore/marlin-file-operations.c:3508
 msgid "Error while moving."
-msgstr ""
+msgstr "Okazis eraro dum movo."
 
-#: libcore/marlin-file-operations.c:2377
+#: libcore/marlin-file-operations.c:2374
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Okazis eraro dum enrubujigo."
 
-#: libcore/marlin-file-operations.c:2431
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:2430
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"Neeblas pritrakti dosierojn en la dosierujo „%B“ pro manko de ties vida "
+"permeso."
 
-#: libcore/marlin-file-operations.c:2470
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:2473
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Neeblas pritrakti la dosierujon „%B“ pro manko de ties vida permeso."
 
-#: libcore/marlin-file-operations.c:2546
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:2557
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Neeblas pritrakti la dosieron „%B“ pro manko de ties vida permeso."
 
-#: libcore/marlin-file-operations.c:2549
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:2562
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "Okazis eraro akirante informojn pri „%B“."
 
-#: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
-#: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:2663 libcore/marlin-file-operations.c:2707
+#: libcore/marlin-file-operations.c:2742 libcore/marlin-file-operations.c:2776
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "Okazis eraro dum kopiado de „%B“."
 
-#: libcore/marlin-file-operations.c:2653
+#: libcore/marlin-file-operations.c:2667
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Vi ne havas permeson atingi la celan dosierujon."
 
-#: libcore/marlin-file-operations.c:2655
+#: libcore/marlin-file-operations.c:2669
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "Okazis eraro pri akiri informojn pri la celo."
 
-#: libcore/marlin-file-operations.c:2692
+#: libcore/marlin-file-operations.c:2708
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "La celo ne estas dosierujo."
 
-#: libcore/marlin-file-operations.c:2725
+#: libcore/marlin-file-operations.c:2743
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"Ne restas sufiĉa memoro en la celo. Provu forigi dosierojn por krei "
+"memorspacon."
 
-#: libcore/marlin-file-operations.c:2727
+#. TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. So this represents something like "There is 100 MB available, but 150 MB is required".
+#: libcore/marlin-file-operations.c:2747
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "Estas %S disponebla, sed necesas %S."
 
-#: libcore/marlin-file-operations.c:2755
+#: libcore/marlin-file-operations.c:2777
 msgid "The destination is read-only."
-msgstr ""
+msgstr "Celo estas nurlega."
 
-#: libcore/marlin-file-operations.c:2814
-msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+#. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+#. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+#: libcore/marlin-file-operations.c:2849
+#, fuzzy, c-format
+msgid "Moving \"%s\" to \"%s\""
+msgstr "Movanta „%B“ al „%B“"
 
-#: libcore/marlin-file-operations.c:2815
-msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+#: libcore/marlin-file-operations.c:2850
+#, fuzzy, c-format
+msgid "Copying \"%s\" to \"%s\""
+msgstr "Kopianta „%B“ al „%B“"
 
-#: libcore/marlin-file-operations.c:2819
-msgid "Duplicating \"%B\""
-msgstr ""
+#. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+#. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+#: libcore/marlin-file-operations.c:2854
+#, fuzzy, c-format
+msgid "Duplicating \"%s\""
+msgstr "Duobliganta „%B“"
 
-#: libcore/marlin-file-operations.c:2823
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+#. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+#. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+#. %'d is a placeholder for a number. It must not be translated or removed.
+#. Placeholders must appear in the same order but otherwise may change position.
+#: libcore/marlin-file-operations.c:2862
+#, fuzzy, c-format
+msgid "Moving %'d file (in \"%s\") to \"%s\""
+msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
+msgstr[0] "Movanta %'d dosiero (en „%B“) al „%B“"
+msgstr[1] "Movanta %'d dosieroj (en „%B“) al „%B“"
 
-#: libcore/marlin-file-operations.c:2826
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+#: libcore/marlin-file-operations.c:2865
+#, fuzzy, c-format
+msgid "Copying %'d file (in \"%s\") to \"%s\""
+msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
+msgstr[0] "Kopianta %'d dosiero (en „%B“) al „%B“"
+msgstr[1] "Kopianta %'d dosieroj (en „%B“) al „%B“"
 
-#: libcore/marlin-file-operations.c:2833
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+#. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+#. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+#: libcore/marlin-file-operations.c:2874
+#, fuzzy, c-format
+msgid "Duplicating %'d file (in \"%s\")"
+msgid_plural "Duplicating %'d files (in \"%s\")"
+msgstr[0] "Duobliganta %'d dosiero (en „%B“) al „%B“"
+msgstr[1] "Duobliganta %'d dosieroj (en „%B“) al „%B“"
 
-#: libcore/marlin-file-operations.c:2842
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+#. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+#. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+#. %'d is a placeholder for a number. It must not be translated or removed.
+#. Placeholders must appear in the same order but otherwise may change position.
+#: libcore/marlin-file-operations.c:2887
+#, fuzzy, c-format
+msgid "Moving %'d file to \"%s\""
+msgid_plural "Moving %'d files to \"%s\""
+msgstr[0] "Movanta %'d dosiero al „%B“"
+msgstr[1] "Movanta %'d dosieroj al „%B“"
 
-#: libcore/marlin-file-operations.c:2846
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+#: libcore/marlin-file-operations.c:2890
+#, fuzzy, c-format
+msgid "Copying %'d file to \"%s\""
+msgid_plural "Copying %'d files to \"%s\""
+msgstr[0] "Kopianta %'d dosiero al „%B“"
+msgstr[1] "Kopianta %'d dosieroj al „%B“"
 
-#: libcore/marlin-file-operations.c:2851
+#: libcore/marlin-file-operations.c:2896
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Duobliganta %'d dosiero"
+msgstr[1] "Duobliganta %'d dosieroj"
 
-#: libcore/marlin-file-operations.c:2877
+#. TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
+#: libcore/marlin-file-operations.c:2924
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S el %S"
 
-#: libcore/marlin-file-operations.c:2887
+#. TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+#. "2 minutes". It must not be translated or removed.
+#. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#. The order in which %S and %T appear must not change.
+#: libcore/marlin-file-operations.c:2936
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S el %S — restas %T (%S/s)"
+msgstr[1] "%S el %S — restas %T (%S/s)"
 
-#: libcore/marlin-file-operations.c:3265
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:3331
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"Neeblas kopii la dosierujon „%B“, ĉar vi ne havas permeson krei tion en la "
+"celitaĵo."
 
-#: libcore/marlin-file-operations.c:3268
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:3336
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "Okazis eraro dum kreado de la dosierujo „%B“."
 
-#: libcore/marlin-file-operations.c:3398
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:3468
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"Neeblas kopii la dosierojn el la dosierujo „%B“, ĉar vi ne havas permeson "
+"vidi ilin."
 
-#: libcore/marlin-file-operations.c:3443
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:3517
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Neeblas kopii la dosierujon „%B“, ĉar vi ne havas permeson vidi ĝin."
 
-#: libcore/marlin-file-operations.c:3488 libcore/marlin-file-operations.c:4152
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:3566 libcore/marlin-file-operations.c:4281
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "Okazis eraro movanta „%B“."
 
-#: libcore/marlin-file-operations.c:3489
+#: libcore/marlin-file-operations.c:3567
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "Neeblis forigi la fontan dosierujon."
 
-#: libcore/marlin-file-operations.c:3574 libcore/marlin-file-operations.c:3615
-#: libcore/marlin-file-operations.c:4154
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:3653 libcore/marlin-file-operations.c:3697
+#: libcore/marlin-file-operations.c:4285
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "Okazis eraro dum kopiado de „%B“."
 
-#: libcore/marlin-file-operations.c:3575
+#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3655
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "Neeblis forigi la dosierojn en la jam ekzistanta dosierujo %F."
 
-#: libcore/marlin-file-operations.c:3616
-#, fuzzy, c-format
+#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3699
+#, c-format
 msgid "Could not remove the already existing file %F."
-msgstr "Jam ekzistas dosierujo kun la sama nomo en \"%s\"."
+msgstr "Maleblis forigi la jam ekzistantan dosieron %F."
 
-#: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
+#: libcore/marlin-file-operations.c:4017 libcore/marlin-file-operations.c:4700
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "Neeblas movi dosierujon en sin."
 
-#: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
+#: libcore/marlin-file-operations.c:4018 libcore/marlin-file-operations.c:4701
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "Neeblas kopii dosierujon en sin."
 
-#: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
+#: libcore/marlin-file-operations.c:4019 libcore/marlin-file-operations.c:4702
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "La cela dosierujo troviĝas en la fonta dosierujo."
 
-#: libcore/marlin-file-operations.c:3923
+#: libcore/marlin-file-operations.c:4050
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Neeblas movi dosieron sur sin."
 
-#: libcore/marlin-file-operations.c:3924
+#: libcore/marlin-file-operations.c:4051
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Neeblas kopii dosieron en sin."
 
-#: libcore/marlin-file-operations.c:3925
+#: libcore/marlin-file-operations.c:4052
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "La fonta dosiero estus surskribita de la celo."
 
-#: libcore/marlin-file-operations.c:4156
+#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4288
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "Maleblis forigi la jam ekzistantan samnoman dosieron %F."
 
-#: libcore/marlin-file-operations.c:4221
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:4355
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Neeblas kopii „%B“ ĉi tie."
 
-#: libcore/marlin-file-operations.c:4222
+#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4357
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Okazis eraro dum kopiado de la dosiero „%B“."
 
-#: libcore/marlin-file-operations.c:4444
+#: libcore/marlin-file-operations.c:4581
 msgid "Copying Files"
-msgstr ""
+msgstr "Kopianta dosierojn"
 
-#: libcore/marlin-file-operations.c:4470
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:4609
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "Pretiganta movon al „%B“"
 
-#: libcore/marlin-file-operations.c:4474
+#: libcore/marlin-file-operations.c:4613
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pretiganta movon de %'d dosiero"
+msgstr[1] "Pretiganta movon de %'d dosieroj"
 
-#: libcore/marlin-file-operations.c:4720
+#. TRANSLATORS: \"%F\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:4861
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Okazis eraro movanta „%F“."
 
-#: libcore/marlin-file-operations.c:4721
+#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4863
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "Okazis eraro dum movado de la dosiero en %F."
 
-#: libcore/marlin-file-operations.c:4978
+#: libcore/marlin-file-operations.c:5121
 msgid "Moving Files"
-msgstr ""
+msgstr "Movanta dosierojn"
 
-#: libcore/marlin-file-operations.c:5007
+#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:5152
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "Kreanta ligilojn en „%B“"
 
-#: libcore/marlin-file-operations.c:5011
+#: libcore/marlin-file-operations.c:5156
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kreanta ligilon al %'d dosiero"
+msgstr[1] "Kreanta ligilojn al %'d dosieroj"
 
-#: libcore/marlin-file-operations.c:5151
+#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5297
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "Okazis eraro dum kreado de ligilo al %B."
 
-#: libcore/marlin-file-operations.c:5153
+#: libcore/marlin-file-operations.c:5299
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Simbolaj ligiloj estas permesitaj nur por lokaj dosieroj"
 
-#: libcore/marlin-file-operations.c:5156
+#: libcore/marlin-file-operations.c:5302
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "La celo ne akceptas simbolajn ligilojn."
 
-#: libcore/marlin-file-operations.c:5159
+#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5306
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "Okazis eraro dum kreado de la simbolaligilo en %F."
 
-#: libcore/marlin-file-operations.c:5477
+#: libcore/marlin-file-operations.c:5624
 msgid "Setting permissions"
-msgstr ""
+msgstr "Agordaj permesoj"
 
-#: libcore/marlin-file-operations.c:5573
+#: libcore/marlin-file-operations.c:5724
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Neeblas kopii en la rubujo."
 
-#: libcore/marlin-file-operations.c:5574
+#: libcore/marlin-file-operations.c:5725
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Neeblas kopii dosieron en la rubujon"
 
-#: libcore/marlin-file-operations.c:5712
+#: libcore/marlin-file-operations.c:5864
 msgid "untitled folder"
-msgstr ""
+msgstr "sentitotola dosierujo"
 
-#: libcore/marlin-file-operations.c:5720
+#: libcore/marlin-file-operations.c:5872
 msgid "new file"
-msgstr ""
+msgstr "nova dosiero"
 
-#: libcore/marlin-file-operations.c:5891
+#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:6044
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "Okazis eraro kreanta la dosierujon %B."
 
-#: libcore/marlin-file-operations.c:5893
+#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:6047
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "Okazis eraro kreanta la dosieron %B."
 
-#: libcore/marlin-file-operations.c:5895
+#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:6050
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "Okazis eraro dum kreado de la dosierujo „%F“."
 
-#: libcore/marlin-file-operations.c:6205
+#: libcore/marlin-file-operations.c:6360
 msgid "Emptying Trash"
-msgstr ""
+msgstr "Malpleniganta la rubujon"
 
-#: libcore/marlin-undostack-manager.c:580
+#: libcore/marlin-undostack-manager.c:578
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Neeblis difini la devenan indikon"
 
-#: libcore/marlin-undostack-manager.c:581
+#: libcore/marlin-undostack-manager.c:579
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Malfermi la rubujon kaj restaŭri mane"
 
-#: libcore/marlin-undostack-manager.c:1118
+#: libcore/marlin-undostack-manager.c:1116
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Forigi %d kopiitajn elementojn"
 
-#: libcore/marlin-undostack-manager.c:1121
-#: libcore/marlin-undostack-manager.c:1131
-#: libcore/marlin-undostack-manager.c:1162
-#, fuzzy, c-format
+#: libcore/marlin-undostack-manager.c:1119
+#: libcore/marlin-undostack-manager.c:1129
+#: libcore/marlin-undostack-manager.c:1160
+#, c-format
 msgid "Delete '%s'"
-msgstr "_Forigi ĉiujn"
+msgstr "Forigi „%s“"
 
-#: libcore/marlin-undostack-manager.c:1128
+#: libcore/marlin-undostack-manager.c:1126
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Forigi %d duoblajn elementojn"
 
-#: libcore/marlin-undostack-manager.c:1139
+#: libcore/marlin-undostack-manager.c:1137
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Movi %d elementojn ree al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1143
+#: libcore/marlin-undostack-manager.c:1141
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Movi „%s“ ree al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1152
-#: libcore/marlin-undostack-manager.c:1319
+#: libcore/marlin-undostack-manager.c:1150
+#: libcore/marlin-undostack-manager.c:1317
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Renomi „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1171
-#: libcore/marlin-undostack-manager.c:1366
-#, fuzzy, c-format
+#: libcore/marlin-undostack-manager.c:1169
+#: libcore/marlin-undostack-manager.c:1364
+#, c-format
 msgid "Restore %d items from trash"
-msgstr "Definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Restaŭri %d elementojn el la rubujo"
 
-#: libcore/marlin-undostack-manager.c:1179
+#: libcore/marlin-undostack-manager.c:1177
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Restaŭri „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1190
+#: libcore/marlin-undostack-manager.c:1188
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Movi %d elementojn reen al la rubujo"
 
-#: libcore/marlin-undostack-manager.c:1193
+#: libcore/marlin-undostack-manager.c:1191
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Movi „%s“ reen al la rubujo"
 
-#: libcore/marlin-undostack-manager.c:1202
-#, fuzzy, c-format
+#: libcore/marlin-undostack-manager.c:1200
+#, c-format
 msgid "Delete links to %d items"
-msgstr "Alia ligo al %s"
+msgstr "Forigi ligilojn al %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1205
-#, fuzzy, c-format
+#: libcore/marlin-undostack-manager.c:1203
+#, c-format
 msgid "Delete link to '%s'"
-msgstr "Alia ligo al %s"
+msgstr "Forigi ligon al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1215
+#: libcore/marlin-undostack-manager.c:1213
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Restaŭri la originajn permesojn de la elementoj entenitaj en „%s“"
 
-#: libcore/marlin-undostack-manager.c:1223
+#: libcore/marlin-undostack-manager.c:1221
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Restaŭri la originajn permesojn de „%s“"
 
-#: libcore/marlin-undostack-manager.c:1232
+#: libcore/marlin-undostack-manager.c:1230
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Restaŭri grupon de „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1242
+#: libcore/marlin-undostack-manager.c:1240
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Restaŭri posedanton de „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1281
+#: libcore/marlin-undostack-manager.c:1279
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Kopio de %d elementoj al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1285
+#: libcore/marlin-undostack-manager.c:1283
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopii „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1293
+#: libcore/marlin-undostack-manager.c:1291
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Duobligo de %d elementoj en „%s“"
 
-#: libcore/marlin-undostack-manager.c:1298
+#: libcore/marlin-undostack-manager.c:1296
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Duobligo de „%s“ en „%s“"
 
-#: libcore/marlin-undostack-manager.c:1306
+#: libcore/marlin-undostack-manager.c:1304
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Movi %d elementojn al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1310
+#: libcore/marlin-undostack-manager.c:1308
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Movo de „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1328
+#: libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Krei novan dosieron „%s“ el ŝablono "
 
-#: libcore/marlin-undostack-manager.c:1335
+#: libcore/marlin-undostack-manager.c:1333
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Kreanta malplenan dosieron „%s“"
 
-#: libcore/marlin-undostack-manager.c:1342
+#: libcore/marlin-undostack-manager.c:1340
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Krei novan dosierujon „%s“"
 
-#: libcore/marlin-undostack-manager.c:1350
+#: libcore/marlin-undostack-manager.c:1348
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Movi %d elementojn al rubujo"
 
-#: libcore/marlin-undostack-manager.c:1356
+#: libcore/marlin-undostack-manager.c:1354
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Movo de „%s“ al rubujo"
 
-#: libcore/marlin-undostack-manager.c:1369
+#: libcore/marlin-undostack-manager.c:1367
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Restaŭri „%s“ el rubujo"
 
-#: libcore/marlin-undostack-manager.c:1378
-#, fuzzy, c-format
+#: libcore/marlin-undostack-manager.c:1376
+#, c-format
 msgid "Create links to %d items"
-msgstr "Alia ligo al %s"
+msgstr "Krei ligojn al %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1381
-#, fuzzy, c-format
+#: libcore/marlin-undostack-manager.c:1379
+#, c-format
 msgid "Create link to '%s'"
-msgstr "Alia ligo al %s"
+msgstr "Krei ligon al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1390
+#: libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Difini permesojn de elementoj entenitaj en „%s“"
 
-#: libcore/marlin-undostack-manager.c:1398
+#: libcore/marlin-undostack-manager.c:1396
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Difini permesojn de „%s“"
 
-#: libcore/marlin-undostack-manager.c:1407
+#: libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Difini grupon de „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1417
+#: libcore/marlin-undostack-manager.c:1415
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Difini posedanton de „%s“ al „%s“"
 
-#: libcore/marlin-undostack-manager.c:1449
+#: libcore/marlin-undostack-manager.c:1447
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari kopiadon de %d elemento"
+msgstr[1] "_Malfari kopiadon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1454
+#: libcore/marlin-undostack-manager.c:1452
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari duobligon de %d elemento"
+msgstr[1] "_Malfari duobligon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1459
+#: libcore/marlin-undostack-manager.c:1457
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari movon de %d elemento"
+msgstr[1] "_Malfari movon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1464
+#: libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari renomadon de %d elemento"
+msgstr[1] "_Malfari renomadon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1468
+#: libcore/marlin-undostack-manager.c:1466
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Malfari kreadon de malplena dosiero"
 
-#: libcore/marlin-undostack-manager.c:1471
+#: libcore/marlin-undostack-manager.c:1469
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Malfari kreadon de dosiero el ŝablono"
 
-#: libcore/marlin-undostack-manager.c:1475
+#: libcore/marlin-undostack-manager.c:1473
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari kreadon de %d dosierujo"
+msgstr[1] "_Malfari kreadon de %d dosierujoj"
 
-#: libcore/marlin-undostack-manager.c:1480
+#: libcore/marlin-undostack-manager.c:1478
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari rubujigon de %d elemento"
+msgstr[1] "_Malfari rubujigon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1485
+#: libcore/marlin-undostack-manager.c:1483
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari elrubujan restaŭron de %d elemento"
+msgstr[1] "_Malfari elrubujan restaŭron de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1490
-#, fuzzy, c-format
+#: libcore/marlin-undostack-manager.c:1488
+#, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "Alia ligo al %s"
-msgstr[1] "Alia ligo al %s"
+msgstr[0] "Malfari kreadon de ligo al %d elemento"
+msgstr[1] "Malfari kreadon de ligo al %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1495
+#: libcore/marlin-undostack-manager.c:1493
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Malfari forigon de %d elemento"
+msgstr[1] "_Malfari forigon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1500
+#: libcore/marlin-undostack-manager.c:1498
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Malfari rikuran permesan ŝanĝon de %d elemento"
+msgstr[1] "Malfari rikuran permesan ŝanĝon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1506
+#: libcore/marlin-undostack-manager.c:1504
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Malfari permesan ŝanĝon de %d elemento"
+msgstr[1] "Malfari permesan ŝanĝon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1511
+#: libcore/marlin-undostack-manager.c:1509
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Malfari grupan ŝanĝon de %d elemento"
+msgstr[1] "Malfari grupan ŝanĝon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1516
+#: libcore/marlin-undostack-manager.c:1514
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Malfari posedantan ŝanĝon de %d elemento"
+msgstr[1] "Malfari posedantan ŝanĝon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1544
+#: libcore/marlin-undostack-manager.c:1542
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari kopiadon de %d elemento"
+msgstr[1] "_Refari kopiadon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1549
+#: libcore/marlin-undostack-manager.c:1547
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari duobligon de %d elemento"
+msgstr[1] "_Refari duobligon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1554
+#: libcore/marlin-undostack-manager.c:1552
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari movadon de %d elemento"
+msgstr[1] "_Refari movadon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1559
+#: libcore/marlin-undostack-manager.c:1557
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari renomigon de %d elemento"
+msgstr[1] "_Refari renomigon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1563
+#: libcore/marlin-undostack-manager.c:1561
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Refari kreadon de malplena dosiero"
 
-#: libcore/marlin-undostack-manager.c:1566
+#: libcore/marlin-undostack-manager.c:1564
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Refari kreadon de dosiero el ŝablono"
 
-#: libcore/marlin-undostack-manager.c:1570
+#: libcore/marlin-undostack-manager.c:1568
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari kreadon de %d dosierujo"
+msgstr[1] "_Refari kreadon de %d dosierujoj"
 
-#: libcore/marlin-undostack-manager.c:1575
+#: libcore/marlin-undostack-manager.c:1573
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari movadon de %d elemento"
+msgstr[1] "_Refari movadon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1580
+#: libcore/marlin-undostack-manager.c:1578
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari elrubujan restaŭron de %d elemento"
+msgstr[1] "_Refari elrubujan restaŭron de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1585
+#: libcore/marlin-undostack-manager.c:1583
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari kreadon de ligo de %d elemento"
+msgstr[1] "_Refari kreadon de ligo de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1590
+#: libcore/marlin-undostack-manager.c:1588
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refari forigon de %d elemento"
+msgstr[1] "_Refari forigon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1595
+#: libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Refari rikuran permesan ŝanĝon de %d elemento"
+msgstr[1] "Refari rikuran permesan ŝanĝon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1601
+#: libcore/marlin-undostack-manager.c:1599
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Refari permesan ŝanĝon de %d elemento"
+msgstr[1] "Refari permesan ŝanĝon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1606
+#: libcore/marlin-undostack-manager.c:1604
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Refari grupan ŝanĝon de %d elemento"
+msgstr[1] "Refari grupan ŝanĝon de %d elementoj"
 
-#: libcore/marlin-undostack-manager.c:1611
+#: libcore/marlin-undostack-manager.c:1609
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Refari posedantan ŝanĝon de %d elemento"
+msgstr[1] "Refari posedantan ŝanĝon de %d elementoj"
 
-#: libcore/gof-file.c:332 libcore/gof-file.c:506
-msgid "Inaccessible"
-msgstr ""
-
-#: libcore/gof-file.c:347
-#, c-format
-msgid "link to %s"
-msgstr "ligo al  %s"
-
-#: libwidgets/Chrome/BasicLocationBar.vala:89
+#: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
-msgstr ""
+msgstr "Tajpi dosierindikon"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
 #, c-format
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Navigi al %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
@@ -2156,96 +2249,109 @@ msgid "Go to %s"
 msgstr "Iri al %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
-msgstr "Speco"
+msgstr "Tajpu dosierindikon"
 
-#: libwidgets/View/SearchResults.vala:222
+#: libwidgets/View/SearchResults.vala:82
+msgid "More Results …"
+msgstr ""
+
+#: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
-msgstr ""
+msgstr "En ĉi dosierujo"
 
-#: libwidgets/View/SearchResults.vala:227
+#: libwidgets/View/SearchResults.vala:230
 msgid "Below This Folder"
-msgstr ""
+msgstr "Sub ĉi dosierujo"
 
-#: libwidgets/View/SearchResults.vala:232
+#: libwidgets/View/SearchResults.vala:235
 msgid "Bookmarks"
-msgstr ""
+msgstr "Paĝosignoj"
 
-#: libwidgets/View/SearchResults.vala:237
+#: libwidgets/View/SearchResults.vala:240
 msgid "Recently used"
-msgstr ""
+msgstr "Freŝe uzitaj"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:80
+#: libwidgets/Chrome/ViewSwitcher.vala:35
 msgid "View as Grid"
-msgstr ""
+msgstr "Prezenti laŭ krado"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:85
+#: libwidgets/Chrome/ViewSwitcher.vala:40
 msgid "View as List"
-msgstr ""
+msgstr "Prezenti laŭ listo"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:90
+#: libwidgets/Chrome/ViewSwitcher.vala:45
 msgid "View in Columns"
-msgstr ""
+msgstr "Prezenti laŭ kolumnoj"
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
-msgstr ""
+msgstr "Dosieroj"
 
 #: libwidgets/Resources.vala:58
 msgid "AFP"
-msgstr ""
+msgstr "AFP-prezento"
 
 #: libwidgets/Resources.vala:59
 msgid "DAV"
-msgstr ""
+msgstr "DAV-protokolo"
 
 #: libwidgets/Resources.vala:60
 msgid "DAVS"
-msgstr ""
+msgstr "Sekura DAVS-protokolo"
 
 #: libwidgets/Resources.vala:61
 msgid "FTP"
-msgstr ""
+msgstr "FTP-protokolo"
 
 #: libwidgets/Resources.vala:63
 msgid "SFTP"
-msgstr ""
+msgstr "Sekura SFTP-protokolo"
 
 #: libwidgets/Resources.vala:64
 msgid "SMB"
-msgstr ""
+msgstr "SMB-protokolo"
 
 #: libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr ""
+msgstr "Freŝa"
 
 #: libwidgets/Resources.vala:67
 msgid "MTP"
-msgstr ""
+msgstr "MTP-protokolo"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
-msgstr ""
+msgstr "Ĉion restaŭri"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Malplenigi la rubujon"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
-msgstr ""
+msgstr "Restaŭri elektaĵojn"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr "_Forigi ĉiujn"
+msgstr "Forigi elektitojn"
+
+#~ msgid "Today at %-I:%M %p"
+#~ msgstr "Hodiaŭ je %-I:%M %p"
+
+#~ msgid "Yesterday at %-I:%M %p"
+#~ msgstr "Hieraŭ je %-I:%M %p"
+
+#~ msgid "%A at %-I:%M %p"
+#~ msgstr "%A je %-I:%M %p"
+
+#~ msgid "Show more _details"
+#~ msgstr "Montri pli da _detaloj"
+
+#~ msgid "link to %s"
+#~ msgstr "ligo al  %s"
 
 #~ msgid "Failed to parse the desktop file: %s"
-#~ msgstr "Analizado de labortabla dosiero fiaskis: %s"
-
-#, fuzzy
-#~ msgid "Failed to parse the desktop file"
 #~ msgstr "Analizado de labortabla dosiero fiaskis: %s"
 
 #, fuzzy

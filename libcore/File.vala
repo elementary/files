@@ -427,7 +427,7 @@ public class GOF.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = FM.ListModel.get_column_id_from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
+                sort_column_id = FM.ListModel.ColumnID.from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
             }
 
             if (info.has_attribute ("metadata::marlin-sort-reversed")) {

@@ -365,6 +365,9 @@ namespace Marlin.View {
         }
 
         private void on_size_prepared (int width, int height) {
+            if (goffile == null) { /* This can occur during rapid rubberband selection */
+                return;
+            }
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;

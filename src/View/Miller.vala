@@ -582,6 +582,8 @@ namespace Marlin.View {
         }
 
         public override void close () {
+            current_slot = null;
+
             if (scroll_to_slot_timeout_id > 0) {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
             }
