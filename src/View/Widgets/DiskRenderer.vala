@@ -32,7 +32,6 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         is_disk = false;
         disk_size = 0;
         free_space = 0;
-
     }
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
