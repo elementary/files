@@ -58,6 +58,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         uint fill_width = total_width - (int) (((double) free_space / (double) disk_size) * (double) total_width);
 
         var context = widget.get_style_context ();
+        context.save ();
 
         /* White full length and height background */
         context.add_class ("level-bar");
@@ -67,5 +68,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         /* Blue part of bar */
         context.add_class ("fill-block");
         context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
+
+        context.restore ();
     }
 }
