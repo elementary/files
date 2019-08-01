@@ -143,6 +143,7 @@ namespace Marlin {
                 /* 50% translucent for cutted files */
                 pb = PF.PixbufUtils.lucent (pixbuf, 50);
             }
+
             if (file.is_hidden) {
                 /* 75% translucent for hidden files */
                 pb = PF.PixbufUtils.lucent (pixbuf, 75);
@@ -167,10 +168,8 @@ namespace Marlin {
 
                 if (focused) {
                     var bg = style_context.get_property ("background-color", state);
-
                     if (bg.holds (typeof (Gdk.RGBA))) {
                         var color = (Gdk.RGBA) bg;
-
                         /* if background-color is black something probably is wrong */
                         if (color.red != 0 || color.green != 0 || color.blue != 0) {
                             pb = PF.PixbufUtils.colorize (pb, color);
@@ -183,14 +182,17 @@ namespace Marlin {
                 }
             }
 
-            if (pb == null) {
-                return;
+            if (file.is_image () ) {
+                style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
+                style_context.add_class (Granite.STYLE_CLASS_CARD);
             }
 
             cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
-
+            style_context.render_background (cr, draw_rect.x * icon_scale, draw_rect.y * icon_scale, draw_rect.width * icon_scale, draw_rect.height * icon_scale);
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
+
             style_context.restore ();
+
             int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
             int v_overlap = int.min (draw_rect.height, Marlin.IconSize.EMBLEM) / 2;
 
@@ -224,7 +226,6 @@ namespace Marlin {
                         helper_rect.y = int.max (cell_area.y, draw_rect.y - helper_size + v_overlap);
 
                         style_context.render_icon (cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale);
-                        cr.paint ();
                     }
                 }
 
@@ -272,7 +273,6 @@ namespace Marlin {
                     emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
 
                     style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
-                    cr.paint ();
                     pos++;
                 }
             }
