@@ -29,6 +29,7 @@
 namespace Marlin {
 
     public class IconRenderer : Gtk.CellRenderer {
+        private Gtk.CssProvider shadow_provider;
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
@@ -71,6 +72,17 @@ namespace Marlin {
         private ClipboardManager clipboard;
 
         construct {
+            shadow_provider = new Gtk.CssProvider ();
+            var data = """
+
+            """;
+
+            try {
+                shadow_provider.load_from_data ("* {-gtk-icon-shadow: 3px 6px 2px alpha(#000, 0.22);}");
+            } catch (Error e) {
+                critical (e.message);
+            }
+
             clipboard = Marlin.ClipboardManager.get_for_display ();
             hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
@@ -143,6 +155,7 @@ namespace Marlin {
                 /* 50% translucent for cutted files */
                 pb = PF.PixbufUtils.lucent (pixbuf, 50);
             }
+
             if (file.is_hidden) {
                 /* 75% translucent for hidden files */
                 pb = PF.PixbufUtils.lucent (pixbuf, 75);
@@ -182,14 +195,16 @@ namespace Marlin {
             }
 
             if (file.is_image () ) {
-                style_context.add_class (Granite.STYLE_CLASS_CARD);
                 style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
+                style_context.remove_provider (shadow_provider);
+            } else {
+                style_context.add_provider (shadow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             }
 
             cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
-            style_context.render_background (cr, background_area.x, background_area.y, background_area.width, background_area.height);
-            style_context.render_frame (cr, cell_area.x, cell_area.y, cell_area.width, cell_area.height);
+            style_context.render_background (cr, cell_area.x, cell_area.y, cell_area.width, cell_area.height);
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
+
             style_context.restore ();
 
             int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
