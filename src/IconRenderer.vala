@@ -176,10 +176,6 @@ namespace Marlin {
                         }
                     }
                 }
-
-                if (prelit || focused) {
-                    pb = PF.PixbufUtils.lighten (pb);
-                }
             }
 
             if (file.is_image () ) {
@@ -187,9 +183,24 @@ namespace Marlin {
                 style_context.add_class (Granite.STYLE_CLASS_CARD);
             }
 
+            style_context.set_junction_sides (Gtk.JunctionSides.TOP | Gtk.JunctionSides.BOTTOM);
+
             cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
-            style_context.render_background (cr, draw_rect.x * icon_scale, draw_rect.y * icon_scale, draw_rect.width * icon_scale, draw_rect.height * icon_scale);
+            style_context.render_background (cr, draw_rect.x * icon_scale,
+                                             draw_rect.y * icon_scale,
+                                             draw_rect.width * icon_scale,
+                                             draw_rect.height * icon_scale);
+
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
+
+            if (prelit || focused) {
+                style_context.add_class ("frame");
+                style_context.render_frame (cr, draw_rect.x * icon_scale,
+                                            draw_rect.y * icon_scale,
+                                            draw_rect.width * icon_scale,
+                                            draw_rect.height * icon_scale);
+            }
+
 
             style_context.restore ();
 
