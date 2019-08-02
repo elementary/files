@@ -90,9 +90,17 @@ public class Marlin.IconInfo : GLib.Object {
 
             var names = ((GLib.ThemedIcon) icon).get_names ();
             var theme = get_icon_theme ();
-            var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+
+            /* Looks in default theme and hicolor theme for primary icon name first */
+            var gtkicon_info = theme.lookup_icon_for_scale (names[0], size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+
             if (gtkicon_info == null) {
-                return new Marlin.IconInfo.for_pixbuf (null);
+                /* Look for fallback icons in default theme only */
+                var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+                /* As last resort use "missing" icon */
+                if (gtkicon_info == null) {
+                    return new Marlin.IconInfo.for_pixbuf (null);
+                }
             }
 
             var filename = gtkicon_info.get_filename ();
