@@ -96,7 +96,7 @@ public class Marlin.IconInfo : GLib.Object {
 
             if (gtkicon_info == null) {
                 /* Look for fallback icons in default theme only */
-                var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+                gtkicon_info = theme.choose_icon_for_scale (names, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
                 /* As last resort use "missing" icon */
                 if (gtkicon_info == null) {
                     return new Marlin.IconInfo.for_pixbuf (null);
