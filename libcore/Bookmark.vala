@@ -87,6 +87,14 @@ namespace Marlin {
             return gof_file.icon;
         }
 
+        public string? get_color () {
+            if (gof_file != null && gof_file.color > 0) {
+                return GOF.Preferences.TAGS_COLORS[gof_file.color];
+            }
+
+            return null;
+        }
+
         public bool uri_known_not_to_exist () {
             if (!gof_file.location.is_native ()) {
                 return false;

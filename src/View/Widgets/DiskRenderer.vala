@@ -19,7 +19,7 @@
 
 ***/
 
-public class Marlin.CellRendererDisk : Gtk.CellRendererText {
+public class Marlin.CellRendererDisk : Marlin.TextRenderer {
     // padding to the right of the disk usage graphic
     public int rpad { set; get; }
     public uint64 free_space { set; get; }
@@ -29,12 +29,14 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     private const int OFFSET = 2;
     private const int LEVEL_BAR_HEIGHT = 4;
 
-    public CellRendererDisk () {
+    public CellRendererDisk (Marlin.ViewMode mode = Marlin.ViewMode.LIST) {
+        base (mode);
         rpad = 0;
     }
 
     public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle area, Gtk.CellRendererState flags) {
+
         base.render (cr, widget, bg_area, area, flags);
         area.x += OFFSET;
         area.width -= OFFSET;
