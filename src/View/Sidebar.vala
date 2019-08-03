@@ -180,11 +180,11 @@ namespace Marlin.Places {
             col.pack_start (crt, false);
             col.set_attributes (crt, "visible", Column.NOT_CATEGORY);
 
-            var crpb = new Gtk.CellRendererPixbuf (); /* Icon for bookmark or device */
-            crpb.stock_size = Gtk.IconSize.MENU;
-            crpb.ypad = BOOKMARK_YPAD;
-            col.pack_start (crpb, false);
-            col.set_attributes (crpb,
+            var mir = new Marlin.IconRenderer (); /* Icon for bookmark or device */
+            mir.ypad = BOOKMARK_YPAD;
+            col.pack_start (mir, false);
+            col.set_attributes (mir,
+                                "tag_color", Column.COLOR,
                                 "gicon", Column.ICON,
                                 "visible", Column.NOT_CATEGORY);
 
@@ -213,7 +213,7 @@ namespace Marlin.Places {
                                 "active", Column.SHOW_SPINNER,
                                 "pulse", Column.SPINNER_PULSE);
 
-            crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
+            var crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
             this.eject_spinner_cell_renderer = crpb;
             crpb.stock_size = Gtk.IconSize.MENU;
             crpb.xpad = ICON_XPAD;
@@ -375,6 +375,7 @@ namespace Marlin.Places {
                                            null,
                                            null,
                                            null,
+                                           null,
                                            0,
                                            tooltip);
 
@@ -389,6 +390,7 @@ namespace Marlin.Places {
         protected override Gtk.TreeIter add_place (Marlin.PlaceType place_type,
                                                    Gtk.TreeIter? parent,
                                                    string name,
+                                                   string? color,
                                                    Icon? icon,
                                                    string? uri,
                                                    Drive? drive,
@@ -439,6 +441,7 @@ namespace Marlin.Places {
                             Column.VOLUME, volume,
                             Column.MOUNT, mount,
                             Column.NAME, converted_name,
+                            Column.COLOR, color,
                             Column.ICON, icon,
                             Column.INDEX, index,
                             Column.CAN_EJECT, show_eject_button,
@@ -589,6 +592,7 @@ namespace Marlin.Places {
             add_place (Marlin.PlaceType.BUILT_IN,
                        iter,
                        _("Home"),
+                       null,
                        new ThemedIcon (Marlin.ICON_HOME),
                        mount_uri,
                        null,
@@ -604,6 +608,7 @@ namespace Marlin.Places {
                 add_place (Marlin.PlaceType.BUILT_IN,
                     iter,
                     _(Marlin.PROTOCOL_NAME_RECENT),
+                    null,
                     new ThemedIcon (Marlin.ICON_RECENT),
                     Marlin.RECENT_URI,
                     null,
@@ -637,6 +642,7 @@ namespace Marlin.Places {
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,
                            _("Trash"),
+                           null,
                            monitor.get_icon (),
                            Marlin.TrashMonitor.URI,
                            null,
@@ -656,6 +662,7 @@ namespace Marlin.Places {
             last_iter = add_place (Marlin.PlaceType.BUILT_IN,
                                        iter,
                                        _("File System"),
+                                       null,
                                        new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
                                        Marlin.ROOT_FS_URI,
                                        null,
@@ -689,6 +696,7 @@ namespace Marlin.Places {
                     add_place (Marlin.PlaceType.BUILT_IN,
                                iter,
                                name,
+                               null,
                                drive.get_icon (),
                                null,
                                drive,
@@ -711,6 +719,7 @@ namespace Marlin.Places {
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
+                                           null,
                                            mount.get_icon (),
                                            root.get_uri (),
                                            null,
@@ -726,6 +735,7 @@ namespace Marlin.Places {
                     add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                iter,
                                name,
+                               null,
                                volume.get_icon (),
                                null,
                                null,
@@ -763,6 +773,7 @@ namespace Marlin.Places {
                 last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                        iter,
                                        mount.get_name (),
+                                       null,
                                        mount.get_icon (),
                                        root.get_uri (),
                                        null,
@@ -796,6 +807,7 @@ namespace Marlin.Places {
                     last_iter = add_place (Marlin.PlaceType.BUILT_IN,
                                            iter,
                                            mount.get_name (),
+                                           null,
                                            mount.get_icon (),
                                            uri,
                                            null,
@@ -811,6 +823,7 @@ namespace Marlin.Places {
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,
                            _("Entire Network"),
+                           null,
                            new GLib.ThemedIcon (Marlin.ICON_NETWORK),
                            "network:///",
                            null,
@@ -851,6 +864,7 @@ namespace Marlin.Places {
             add_place ( Marlin.PlaceType.BOOKMARK,
                         iter,
                         bm.label.dup (),
+                        bm.get_color (),
                         bm.get_icon (),
                         bm.get_uri (),
                         null,
@@ -872,6 +886,7 @@ namespace Marlin.Places {
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
+                                           null,
                                            mount.get_icon (),
                                            root.get_uri (),
                                            drive,
@@ -894,6 +909,7 @@ namespace Marlin.Places {
                     add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                iter,
                                name,
+                               null,
                                volume.get_icon (),
                                null,
                                drive,

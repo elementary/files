@@ -33,6 +33,7 @@ namespace Marlin {
         public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
+        public string? tag_color {get; set;}
 
         public Marlin.ZoomLevel zoom_level {
             get {
@@ -57,6 +58,8 @@ namespace Marlin {
             }
         }
 
+        public GLib.Icon gicon { get; set; }
+
         private bool show_emblems = true;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
@@ -79,23 +82,38 @@ namespace Marlin {
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
                                      Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
 
-            if (file == null || pixbuf == null) {
+            if (gicon == null && (file == null || pixbuf == null)) {
                 return;
             }
 
             if (widget.get_scale_factor () != icon_scale) {
                 icon_scale = widget.get_scale_factor ();
-                file.update_icon (icon_size, icon_scale);
+                if (file != null) {
+                    file.update_icon (icon_size, icon_scale);
+                }
             }
 
-            Gdk.Pixbuf? pb = pixbuf;
+
+            Gdk.Pixbuf? pb = null;
+
+            if (file != null) {
+                pb = pixbuf;
+            } else if (gicon != null) {
+                var info = Marlin.IconInfo.lookup (gicon, cell_area.width, icon_scale);
+                pb = info.get_pixbuf_nodefault ();
+            }
+
+            if (pb == null) {
+                return;
+            }
 
             var pix_rect = Gdk.Rectangle ();
 
-            pix_rect.width = pixbuf.width / icon_scale;
-            pix_rect.height = pixbuf.height / icon_scale;
+            pix_rect.width = pb.width / icon_scale;
+            pix_rect.height = pb.height / icon_scale;
             pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
+
 
             var draw_rect = Gdk.Rectangle ();
             if (!cell_area.intersect (pix_rect, out draw_rect)) {
@@ -103,51 +121,53 @@ namespace Marlin {
             }
 
             string? special_icon_name = null;
-            string suffix = "";
-            bool is_drop_file = (file == drop_file);
+            if (file != null) {
+                string suffix = "";
+                bool is_drop_file = (file == drop_file);
 
-            if (file.is_directory) {
-                var names = ((GLib.ThemedIcon) file.icon).get_names ();
-                if (names.length > 0) {
-                    special_icon_name = names[0];
-                } else {
-                    special_icon_name = "folder";
-                }
+                if (file.is_directory) {
+                    var names = ((GLib.ThemedIcon) file.icon).get_names ();
+                    if (names.length > 0) {
+                        special_icon_name = names[0];
+                    } else {
+                        special_icon_name = "folder";
+                    }
 
-                bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0 || file.is_expanded;
+                    bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0 || file.is_expanded;
 
-                if (expanded) {
-                    suffix = "-open";
+                    if (expanded) {
+                        suffix = "-open";
+                    } else if (is_drop_file) {
+                        suffix = "-drag-accept";
+                    }
                 } else if (is_drop_file) {
-                    suffix = "-drag-accept";
+                    special_icon_name = "system-run";
                 }
-            } else if (is_drop_file) {
-                special_icon_name = "system-run";
-            }
 
-            if (is_drop_file) {
-                flags |= Gtk.CellRendererState.PRELIT;
-            }
-
-            if (special_icon_name != null) {
-                special_icon_name = special_icon_name + suffix;
-                var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
-                if (nicon != null) {
-                    pb = nicon.get_pixbuf_nodefault ();
-                } else {
-                    special_icon_name = null;
+                if (is_drop_file) {
+                    flags |= Gtk.CellRendererState.PRELIT;
                 }
-            }
 
-            if (clipboard.has_cutted_file (file)) {
-                /* 50% translucent for cutted files */
-                pb = PF.PixbufUtils.lucent (pixbuf, 50);
-            }
+                if (special_icon_name != null) {
+                    special_icon_name = special_icon_name + suffix;
+                    var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
+                    if (nicon != null) {
+                        pb = nicon.get_pixbuf_nodefault ();
+                    } else {
+                        special_icon_name = null;
+                    }
+                }
 
-            if (file.is_hidden) {
-                /* 75% translucent for hidden files */
-                pb = PF.PixbufUtils.lucent (pixbuf, 75);
-                pb = PF.PixbufUtils.darken (pb, 150, 200);
+                if (clipboard.has_cutted_file (file)) {
+                    /* 50% translucent for cutted files */
+                    pb = PF.PixbufUtils.lucent (pixbuf, 50);
+                }
+
+                if (file.is_hidden) {
+                    /* 75% translucent for hidden files */
+                    pb = PF.PixbufUtils.lucent (pixbuf, 75);
+                    pb = PF.PixbufUtils.darken (pb, 150, 200);
+                }
             }
 
             var style_context = widget.get_parent ().get_style_context ();
@@ -180,9 +200,13 @@ namespace Marlin {
                 if (prelit || focused) {
                     pb = PF.PixbufUtils.lighten (pb);
                 }
+            } else if (gicon != null && tag_color != null) {
+                Gdk.RGBA tag_rgba = {};
+                tag_rgba.parse (tag_color);
+                pb = PF.PixbufUtils.colorize (pb, tag_rgba);
             }
 
-            if (file.is_image () ) {
+            if (file != null && file.is_image () ) {
                 style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
                 style_context.add_class (Granite.STYLE_CLASS_CARD);
             }
@@ -196,7 +220,7 @@ namespace Marlin {
             int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
             int v_overlap = int.min (draw_rect.height, Marlin.IconSize.EMBLEM) / 2;
 
-            if ((selected || prelit) && file != drop_file) {
+            if (file != null && (selected || prelit) && file != drop_file) {
                 special_icon_name = null;
                 if (selected && prelit) {
                     special_icon_name = "selection-remove";
@@ -240,7 +264,7 @@ namespace Marlin {
             /* Do not show emblems for very small icons */
             /* Still show emblems when selection helpers hidden in double click mode */
             /* How many emblems can be shown depends on icon icon_size (zoom lebel) */
-            if (show_emblems) {
+            if (file != null && show_emblems) {
                 int emblem_size = (int) Marlin.IconSize.EMBLEM;
                 int pos = 0;
                 var emblem_area = Gdk.Rectangle ();

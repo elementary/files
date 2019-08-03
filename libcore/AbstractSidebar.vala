@@ -58,6 +58,7 @@ namespace Marlin {
             DISK_SIZE,
             PLUGIN_CALLBACK,
             MENU_MODEL,
+            COLOR,
             COUNT
         }
 
@@ -88,7 +89,8 @@ namespace Marlin {
                                         typeof (uint64),            /* Free space */
                                         typeof (uint64),            /* For disks, total size */
                                         typeof (Marlin.PluginCallbackFunc),
-                                        typeof (GLib.MenuModel)
+                                        typeof (GLib.MenuModel),
+                                        typeof (string)
                                         );
 
             content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -110,6 +112,7 @@ namespace Marlin {
             iter = add_place (PlaceType.PLUGIN_ITEM,
                              iter,
                              text,
+                             null,
                              icon,
                              null,
                              null,
@@ -126,6 +129,7 @@ namespace Marlin {
        protected abstract Gtk.TreeIter add_place (Marlin.PlaceType place_type,
                                                   Gtk.TreeIter? parent,
                                                   string name,
+                                                  string? color,
                                                   Icon? icon,
                                                   string? uri,
                                                   Drive? drive,
