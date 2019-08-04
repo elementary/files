@@ -17,9 +17,9 @@
  */
 
 namespace PF.PixbufUtils {
-    private uint8 lighten_component (uint8 cur_value) {
+    private uint8 lighten_component (uint8 cur_value, uint power) {
         uint new_value = cur_value;
-        new_value += 24 + (new_value >> 3);
+        new_value += (24 * power + (new_value >> 3));
         if (new_value > uint8.MAX) {
             new_value = uint8.MAX;
         }
@@ -27,7 +27,7 @@ namespace PF.PixbufUtils {
         return (uint8) new_value;
     }
 
-    public Gdk.Pixbuf lighten (Gdk.Pixbuf src) {
+    public Gdk.Pixbuf lighten (Gdk.Pixbuf src, uint power = 1) {
         GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4),
                                  src);
         GLib.return_val_if_fail (src.bits_per_sample == 8, src);
@@ -46,9 +46,9 @@ namespace PF.PixbufUtils {
             int dst_row = i * dst_row_stride;
             for (int j = 0; j < width; j++) {
                 var width_offset = j * channels;
-                target_pix[dst_row + width_offset] = lighten_component (original_pix[src_row + width_offset]);
-                target_pix[dst_row + width_offset + 1] = lighten_component (original_pix[src_row + width_offset + 1]);
-                target_pix[dst_row + width_offset + 2] = lighten_component (original_pix[src_row + width_offset + 2]);
+                target_pix[dst_row + width_offset] = lighten_component (original_pix[src_row + width_offset], power);
+                target_pix[dst_row + width_offset + 1] = lighten_component (original_pix[src_row + width_offset + 1], power);
+                target_pix[dst_row + width_offset + 2] = lighten_component (original_pix[src_row + width_offset + 2], power);
                 if (has_alpha) {
                     target_pix[dst_row + width_offset + 3] = original_pix[src_row + width_offset + 3];
                 }

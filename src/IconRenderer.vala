@@ -200,10 +200,6 @@ namespace Marlin {
                 if (prelit || focused) {
                     pb = PF.PixbufUtils.lighten (pb);
                 }
-            } else if (gicon != null && tag_color != null) {
-                Gdk.RGBA tag_rgba = {};
-                tag_rgba.parse (tag_color);
-                pb = PF.PixbufUtils.colorize (pb, tag_rgba);
             }
 
             if (file != null && file.is_image () ) {
@@ -216,7 +212,6 @@ namespace Marlin {
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
             style_context.restore ();
-
             int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
             int v_overlap = int.min (draw_rect.height, Marlin.IconSize.EMBLEM) / 2;
 
@@ -257,6 +252,31 @@ namespace Marlin {
                     /* Save position of icon that is being hovered */
                     hover_rect = draw_rect;
                     hover_helper_rect = helper_rect;
+                }
+            } else if (gicon != null && tag_color != null) {
+                Gdk.RGBA tag_rgba = {};
+                tag_rgba.parse (tag_color);
+
+                var tag_size = 12;
+                Gdk.Rectangle tag_rect = {0, 0, 1, 1};
+                tag_rect.width = tag_size;
+                tag_rect.height = tag_size;
+
+                var nicon = Marlin.IconInfo.lookup_from_name ("emblem-favorite-symbolic", tag_size, icon_scale);
+                Gdk.Pixbuf? pix = null;
+
+                if (nicon != null) {
+                    pix = nicon.get_pixbuf_nodefault ();
+                }
+
+                if (pix != null) {
+                    pix = PF.PixbufUtils.lighten (pix, 4);
+                    pix = PF.PixbufUtils.colorize (pix, tag_rgba);
+
+                    tag_rect.x = background_area.x;
+                    tag_rect.y = background_area.y;
+
+                    style_context.render_icon (cr, pix, tag_rect.x * icon_scale, tag_rect.y * icon_scale);
                 }
             }
 
