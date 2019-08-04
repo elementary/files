@@ -253,7 +253,10 @@ namespace Marlin {
                     hover_rect = draw_rect;
                     hover_helper_rect = helper_rect;
                 }
-            } else if (gicon != null && tag_color != null || file != null && file.color > 0) {
+            }
+
+
+            if (gicon != null && tag_color != null || file != null && file.color > 0) {
                 Gdk.RGBA tag_rgba = {};
                 if (gicon != null) {
                     tag_rgba.parse (tag_color);
@@ -263,7 +266,7 @@ namespace Marlin {
                     tag_rgba.parse (GOF.Preferences.TAGS_COLORS[file.color]);
                 }
 
-                var tag_size = gicon != null ? 12 : background_area.width / 4;
+                var tag_size = int.max (gicon != null ? 12 : 16, draw_rect.width / 4);
                 Gdk.Rectangle tag_rect = {0, 0, 1, 1};
                 tag_rect.width = tag_size;
                 tag_rect.height = tag_size;
@@ -280,8 +283,8 @@ namespace Marlin {
                     pix = PF.PixbufUtils.colorize (pix, tag_rgba);
 
 
-                    tag_rect.x = int.max (cell_area.x, draw_rect.x - tag_size + h_overlap);
-                    tag_rect.y = int.max (cell_area.y, draw_rect.y - tag_size + v_overlap);
+                    tag_rect.y = int.min (draw_rect.y + draw_rect.height + tag_size, cell_area.y + cell_area.height) - tag_size;
+                    tag_rect.x = int.max (draw_rect.x - tag_size, cell_area.x);
 
                     style_context.render_icon (cr, pix, tag_rect.x * icon_scale, tag_rect.y * icon_scale);
                 }
@@ -314,15 +317,10 @@ namespace Marlin {
                         continue;
                     }
 
-                    emblem_area.y = draw_rect.y + pix_rect.height - v_overlap;
-                    emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
+                    emblem_area.y = int.min (draw_rect.y + draw_rect.height + emblem_size, cell_area.y + cell_area.height) - emblem_size;
+                    emblem_area.x = int.min (draw_rect.x + draw_rect.width + emblem_size, cell_area.x + cell_area.width) - emblem_size;
 
                     emblem_area.y -= emblem_size * pos;
-                    emblem_area.y = int.max (cell_area.y, emblem_area.y);
-
-                    emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
-                    emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
-
                     style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                     pos++;
                 }
