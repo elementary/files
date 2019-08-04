@@ -212,9 +212,9 @@ namespace Marlin {
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
             style_context.restore ();
+
             int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
             int v_overlap = int.min (draw_rect.height, Marlin.IconSize.EMBLEM) / 2;
-
             if (file != null && (selected || prelit) && file != drop_file) {
                 special_icon_name = null;
                 if (selected && prelit) {
@@ -253,11 +253,17 @@ namespace Marlin {
                     hover_rect = draw_rect;
                     hover_helper_rect = helper_rect;
                 }
-            } else if (gicon != null && tag_color != null) {
+            } else if (gicon != null && tag_color != null || file != null && file.color > 0) {
                 Gdk.RGBA tag_rgba = {};
-                tag_rgba.parse (tag_color);
+                if (gicon != null) {
+                    tag_rgba.parse (tag_color);
+                    h_overlap = 0;
+                    v_overlap = 0;
+                } else {
+                    tag_rgba.parse (GOF.Preferences.TAGS_COLORS[file.color]);
+                }
 
-                var tag_size = 12;
+                var tag_size = gicon != null ? 12 : background_area.width / 4;
                 Gdk.Rectangle tag_rect = {0, 0, 1, 1};
                 tag_rect.width = tag_size;
                 tag_rect.height = tag_size;
@@ -273,8 +279,9 @@ namespace Marlin {
                     pix = PF.PixbufUtils.lighten (pix, 4);
                     pix = PF.PixbufUtils.colorize (pix, tag_rgba);
 
-                    tag_rect.x = background_area.x;
-                    tag_rect.y = background_area.y;
+
+                    tag_rect.x = int.max (cell_area.x, draw_rect.x - tag_size + h_overlap);
+                    tag_rect.y = int.max (cell_area.y, draw_rect.y - tag_size + v_overlap);
 
                     style_context.render_icon (cr, pix, tag_rect.x * icon_scale, tag_rect.y * icon_scale);
                 }
