@@ -289,6 +289,10 @@ namespace Marlin {
                                               int.min (cell_area.y + cell_area.height - emblem_size, draw_rect.y + draw_rect.height),
                                               emblem_size, emblem_size };
 
+                var top_y_limit = int.max (cell_area.y, draw_rect.y - emblem_size);
+
+                int y_offset = (emblem_rect.y - top_y_limit);
+
                 foreach (string emblem in file.emblems_list) {
                     Gdk.Pixbuf? pix = null;
                     var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
@@ -304,7 +308,7 @@ namespace Marlin {
                     }
 
                     style_context.render_icon (cr, pix, emblem_rect.x, emblem_rect.y);
-                    emblem_rect.y -= emblem_size;
+                    emblem_rect.y -= y_offset;
                 }
             }
         }
