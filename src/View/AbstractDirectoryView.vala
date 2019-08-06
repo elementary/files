@@ -289,6 +289,12 @@ namespace FM {
             recent = app.get_recent_manager ();
 
             icon_renderer = new Marlin.IconRenderer ();
+            icon_renderer.xpad = 4;
+            icon_renderer.ypad = 4;
+            icon_renderer.xalign = 0.5f;
+            icon_renderer.yalign = 0.5f;
+
+
             thumbnailer = Marlin.Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {

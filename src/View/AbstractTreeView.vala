@@ -57,6 +57,7 @@ namespace FM {
 
         protected void set_up_icon_renderer () {
             icon_renderer.set_property ("follow-state", true);
+            icon_renderer.xpad = 8;
         }
 
         protected void set_up_view () {

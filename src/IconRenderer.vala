@@ -62,7 +62,8 @@ namespace Marlin {
         private bool show_emblems = true;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
-        private Marlin.IconSize icon_size;
+        public Marlin.IconSize icon_size;
+
         private int icon_scale = 1;
         private unowned Gdk.Pixbuf? pixbuf {
             get {
@@ -98,7 +99,7 @@ namespace Marlin {
             if (file != null) {
                 pb = pixbuf;
             } else if (gicon != null) {
-                var info = Marlin.IconInfo.lookup (gicon, cell_area.width, icon_scale);
+                var info = Marlin.IconInfo.lookup (gicon, icon_size, icon_scale);
                 pb = info.get_pixbuf_nodefault ();
             }
 
@@ -110,8 +111,8 @@ namespace Marlin {
 
             pix_rect.width = pb.width / icon_scale;
             pix_rect.height = pb.height / icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
-            pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
+            pix_rect.x = cell_area.x + (int)((double)((cell_area.width - pix_rect.width)) * xalign);
+            pix_rect.y = cell_area.y + (int)(((double)(cell_area.height - pix_rect.height)) * yalign);
 
 
             var draw_rect = Gdk.Rectangle ();
@@ -309,12 +310,12 @@ namespace Marlin {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) icon_size + hover_helper_rect.width;
+            minimum_size = (int) icon_size + (int)xpad * 2;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) icon_size + hover_helper_rect.height / 2;
+            minimum_size = (int) icon_size + (int)ypad * 2;
             natural_size = minimum_size;
         }
 
