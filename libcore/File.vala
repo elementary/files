@@ -84,6 +84,7 @@ public class GOF.File : GLib.Object {
     public bool is_connected = true;
     public string? utf8_collation_key = null;
     public time_t trash_time;
+    public Ggit.StatusFlags git_status = 0;
 
     public static new GOF.File @get (GLib.File location) {
         var parent = location.get_parent ();
@@ -318,6 +319,12 @@ public class GOF.File : GLib.Object {
         }
 
         return false;
+    }
+
+    public bool is_in_git_repo () {
+        var async_dir = GOF.Directory.Async.cache_lookup (directory);
+
+        return (async_dir != null ? async_dir.git_repo != null : false);
     }
 
     public unowned string get_display_name () {
@@ -977,6 +984,21 @@ public class GOF.File : GLib.Object {
                 add_emblem ("emblem-readonly");
             } else {
                 add_emblem ("emblem-unreadable");
+            }
+        }
+
+        if (is_in_git_repo ()) {
+            switch (git_status) {
+                case Ggit.StatusFlags.CURRENT:
+                    add_emblem ("mail-read-symbolic");
+                    break;
+
+                case Ggit.StatusFlags.INDEX_MODIFIED:
+                    add_emblem ("mail-unread-symbolic");
+                    break;
+
+                default:
+                    break;
             }
         }
     }
