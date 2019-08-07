@@ -105,6 +105,7 @@ public class Async : Object {
     public bool allow_user_interaction {get; set; default = true;}
     public bool is_in_git_repo { get { return git_repo != null; } }
     public Ggit.Repository? git_repo { get; set; }
+    private GLib.File? git_root = null;
 
     private bool is_ready = false;
 
@@ -231,13 +232,13 @@ public class Async : Object {
 
         if (success) {
             file.update ();
-
             git_repo = null;
 
             try {
-                var git_root = Ggit.Repository.discover (file.location);
-                git_repo = Ggit.Repository.open (git_root);
-                update_git_status ();
+                var gitdir = Ggit.Repository.discover (file.location);
+                git_repo = Ggit.Repository.open (gitdir);
+                git_root = gitdir.get_parent ();
+                update_all_git_status ();
             } catch (Error e) {
                 critical ("Unable to open git repo");
             }
@@ -249,27 +250,22 @@ public class Async : Object {
         yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
 
-    public void update_git_status () {
-        if (git_repo == null) {
-            return;
-        }
-
+    public void update_all_git_status () {
         var options = new Ggit.StatusOptions (Ggit.StatusOption.INCLUDE_UNTRACKED, Ggit.StatusShow.INDEX_AND_WORKDIR, null);
-
         try {
-            /* FIXME This seg faults for unknown reasons */
-            git_repo.file_status_foreach (options, check_each_git_status);
+            git_repo.file_status_foreach (options, update_git_status);
         } catch (Error e) {
             critical ("Error enumerating git status: %s", e.message);
         }
     }
 
-    private int check_each_git_status (string path, Ggit.StatusFlags flags) {
-        var gof = file_hash_lookup_location (GLib.File.new_for_uri (path));
-        if (gof != null) {
+    public int update_git_status (string path, Ggit.StatusFlags flags) {
+        string this_path = file.location.get_path ();
+        if (this_path.has_suffix (GLib.Path.get_dirname (path))) {
+            var abs_location = git_root.resolve_relative_path (path);
+            var gof = GOF.File.@get (abs_location);
             gof.git_status = flags;
         }
-
         return 0;
     }
 
