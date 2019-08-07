@@ -34,7 +34,7 @@ namespace Marlin.Places {
         private const int MAX_BOOKMARKS_DROPPED = 100;
         /* Indents */
         private const int ROOT_INDENTATION_XPAD = 4; /* Left Indent for all rows*/
-
+        private const int EXPANDER_EJECT_XPAD = 8; /* Right indent for expander and spinner/eject button */
         private const int BOOKMARK_YPAD = 1; /* Affects vertical spacing of bookmarks */
         private const int CATEGORY_YPAD = 3; /* Affects height of category headers */
 
@@ -211,6 +211,7 @@ namespace Marlin.Places {
             col.set_cell_data_func (name_renderer, category_renderer_func);
 
             var crsp = new Gtk.CellRendererSpinner (); /* Spinner shown while ejecting */
+            crsp.xpad = EXPANDER_EJECT_XPAD;
             crsp.ypad = BOOKMARK_YPAD;
             col.pack_end (crsp, false);
             col.set_attributes (crsp,
@@ -221,6 +222,7 @@ namespace Marlin.Places {
             var crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
             this.eject_spinner_cell_renderer = crpb;
             crpb.stock_size = Gtk.IconSize.MENU;
+            crpb.xpad = EXPANDER_EJECT_XPAD;
             crpb.ypad = BOOKMARK_YPAD;
 
             col.pack_start (crpb, false);
@@ -231,6 +233,7 @@ namespace Marlin.Places {
             expander_renderer = cre;
             cre.is_category_expander = true;
             cre.is_expander = true;
+            cre.xpad = EXPANDER_EJECT_XPAD;
             cre.ypad = BOOKMARK_YPAD;
 
             col.pack_end (cre, false);
@@ -1831,7 +1834,7 @@ namespace Marlin.Places {
                     /* Make disk space graphic same length whether or not eject button displayed */
                     var crd = renderer as Marlin.CellRendererDisk;
                     if (!show_eject_button) {
-                        crd.rpad = eject_button_size;
+                        crd.rpad = eject_button_size + 8;
                     } else {
                         crd.rpad = 0;
                     }
