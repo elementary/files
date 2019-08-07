@@ -325,9 +325,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 foreach (unowned GOF.File file in files) {
                     if (file.location.has_uri_scheme ("recent")) {
                         update_file_info (file);
-                        file.icon_changed (); /* Just need to trigger redraw */
                     }
+
+                    file.icon_changed ();
                 }
+
             } catch (Error err) {
                 warning ("%s", err.message);
             }
@@ -453,6 +455,19 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             }
 
             return true;
+        }
+    }
+
+    public override void update_sidebar (Gtk.Widget widget) {
+        Marlin.AbstractSidebar sidebar;
+        if (widget is Marlin.AbstractSidebar) {
+            sidebar = (Marlin.AbstractSidebar)widget;
+        } else {
+            return;
+        }
+
+        foreach (GOF.File gof in sidebar.bookmarks.get_gof_file_list ()) {
+            update_file_info (gof);
         }
     }
 }

@@ -45,7 +45,6 @@ namespace Marlin.Places {
         Gtk.CellRenderer eject_spinner_cell_renderer;
         Gtk.CellRenderer expander_renderer;
         Marlin.View.Window window;
-        Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
         unowned Marlin.TrashMonitor monitor;
         Gtk.IconTheme theme;
@@ -136,6 +135,7 @@ namespace Marlin.Places {
 
             window.loading_uri.connect (loading_uri_callback);
             window.free_space_change.connect (reload);
+            window.icon_changed.connect (update_places);
 
             construct_tree_view ();
             configure_tree_view ();
@@ -144,7 +144,10 @@ namespace Marlin.Places {
             this.content_box.pack_start (this.tree_view, true);
 
             this.bookmarks = Marlin.BookmarkList.get_instance ();
-            bookmarks.contents_changed.connect (update_places);
+            bookmarks.contents_changed.connect (() => { /* Also called after initial loading of bookmarks */
+                plugins.update_sidebar (this); /* Update bookmark color tags */
+                update_places ();
+            });
 
             monitor = Marlin.TrashMonitor.get_default ();
             monitor.notify["is-empty"].connect (() => update_places ());
@@ -155,7 +158,6 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
-            request_update.connect (update_places);
         }
 
         private void construct_tree_view () {
@@ -556,7 +558,20 @@ namespace Marlin.Places {
             return false;
         }
 
+        private uint schedule_update_places_timeout_id = 0;
         private void update_places () {
+            if (schedule_update_places_timeout_id > 0) {
+                return;
+            } else {
+                schedule_update_places_timeout_id = Timeout.add (200, () => {
+                    real_update_places ();
+                    schedule_update_places_timeout_id = 0;
+                    return Source.REMOVE;
+                });
+            }
+        }
+
+        private void real_update_places () {
             Gtk.TreeIter iter, last_iter;
             string mount_uri;
             GLib.File root;

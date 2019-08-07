@@ -73,6 +73,7 @@ namespace Marlin.View {
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
+        public signal void icon_changed (GOF.File file);
 
         public Window (Marlin.Application application, Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
             Object (

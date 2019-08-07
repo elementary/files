@@ -270,7 +270,7 @@ namespace Marlin {
             });
         }
 
-        private GLib.List<GOF.File> get_gof_file_list () {
+        public GLib.List<GOF.File> get_gof_file_list () {
             GLib.List<GOF.File> files = null;
             list.@foreach ((bm) => {
                 files.prepend (bm.gof_file);
@@ -279,7 +279,7 @@ namespace Marlin {
         }
 
         private void files_ready (GLib.List<GOF.File> files) {
-            /* Sidebar does not use file.info when updating display so do not signal contents changed */
+            contents_changed ();
             call_when_ready = null;
         }
 

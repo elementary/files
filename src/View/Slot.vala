@@ -142,11 +142,13 @@ namespace Marlin.View {
         private void connect_dir_signals () {
             directory.done_loading.connect (on_directory_done_loading);
             directory.need_reload.connect (on_directory_need_reload);
+            directory.icon_changed.connect (on_icon_changed);
         }
 
         private void disconnect_dir_signals () {
             directory.done_loading.disconnect (on_directory_done_loading);
             directory.need_reload.disconnect (on_directory_need_reload);
+            directory.icon_changed.disconnect (on_icon_changed);
         }
 
         private void on_directory_done_loading (GOF.Directory.Async dir) {
@@ -217,6 +219,10 @@ namespace Marlin.View {
                 reload_timeout_id = 0;
                 return GLib.Source.REMOVE;
             });
+        }
+
+        private void on_icon_changed (GOF.Directory.Async dir, GOF.File file) {
+            ctab.window.icon_changed (file);
         }
 
         private void set_up_directory (GLib.File loc) {

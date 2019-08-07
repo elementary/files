@@ -65,6 +65,7 @@ namespace Marlin {
         protected Gtk.TreeStore store;
         protected Gtk.TreeRowReference network_category_reference;
         protected Gtk.Box content_box;
+        public Marlin.BookmarkList bookmarks { get; protected set; }
 
         protected void init () {
             store = new Gtk.TreeStore (((int)Column.COUNT),
