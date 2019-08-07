@@ -34,7 +34,6 @@ namespace Marlin.Places {
         private const int MAX_BOOKMARKS_DROPPED = 100;
         /* Indents */
         private const int ROOT_INDENTATION_XPAD = 4; /* Left Indent for all rows*/
-        private const int BOOKMARK_XPAD = 4; /* Extra indent for sub-category rows */
 
         private const int BOOKMARK_YPAD = 1; /* Affects vertical spacing of bookmarks */
         private const int CATEGORY_YPAD = 3; /* Affects height of category headers */
@@ -176,16 +175,16 @@ namespace Marlin.Places {
             col.pack_start (crt, false);
 
             crt = new Gtk.CellRendererText (); /* Extra indent for sub-category rows (bookmarks)*/
-            crt.xpad = BOOKMARK_XPAD;
             crt.ypad = BOOKMARK_YPAD;
             col.pack_start (crt, false);
             col.set_attributes (crt, "visible", Column.NOT_CATEGORY);
 
             var mir = new Marlin.IconRenderer (); /* Icon for bookmark or device */
             mir.icon_size = Marlin.IconSize.SMALLEST;
-            mir.xpad = 2;
+            mir.xpad = 4; /* Space for color tag if present */
+            mir.ypad = 1; /* Space for color tag if present */
             mir.xalign = 1.0f;
-            mir.ypad = BOOKMARK_YPAD;
+            mir.yalign = 0.0f;
             col.pack_start (mir, false);
             col.set_attributes (mir,
                                 "tag_color", Column.COLOR,
@@ -220,7 +219,6 @@ namespace Marlin.Places {
             var crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
             this.eject_spinner_cell_renderer = crpb;
             crpb.stock_size = Gtk.IconSize.MENU;
-            crpb.xpad = BOOKMARK_XPAD;
             crpb.ypad = BOOKMARK_YPAD;
 
             col.pack_start (crpb, false);
@@ -231,7 +229,6 @@ namespace Marlin.Places {
             expander_renderer = cre;
             cre.is_category_expander = true;
             cre.is_expander = true;
-            cre.xpad = BOOKMARK_XPAD;
             cre.ypad = BOOKMARK_YPAD;
 
             col.pack_end (cre, false);
@@ -1819,7 +1816,7 @@ namespace Marlin.Places {
                     /* Make disk space graphic same length whether or not eject button displayed */
                     var crd = renderer as Marlin.CellRendererDisk;
                     if (!show_eject_button) {
-                        crd.rpad = eject_button_size + BOOKMARK_XPAD * 2;
+                        crd.rpad = eject_button_size;
                     } else {
                         crd.rpad = 0;
                     }
