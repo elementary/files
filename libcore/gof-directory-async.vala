@@ -29,6 +29,8 @@ public class Async : Object {
     static construct {
         directory_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
+
+        Ggit.init ();
     }
 
     public delegate void GOFFileLoadedFunc (GOF.File file);
