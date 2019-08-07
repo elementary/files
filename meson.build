@@ -43,6 +43,7 @@ gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22')
 granite_dep = dependency('granite', version: '>=5.2.5')
+ggit_dep = dependency('libgit2-glib-1.0')
 
 common_deps = [
     glib_dep,
@@ -53,6 +54,7 @@ common_deps = [
     gee_dep,
     gtk_dep,
     granite_dep,
+    ggit_dep
 ]
 
 pango_dep = dependency('pango', version: '>=1.1.2')
@@ -77,6 +79,11 @@ if get_option('with-unity')
         add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
     endif
 endif
+
+add_project_arguments(
+    ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
+    language: 'vala'
+)
 
 #
 # Configuration file

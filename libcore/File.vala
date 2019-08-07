@@ -84,6 +84,20 @@ public class GOF.File : GLib.Object {
     public bool is_connected = true;
     public string? utf8_collation_key = null;
     public time_t trash_time;
+    private Ggit.StatusFlags _git_status = Ggit.StatusFlags.CURRENT;
+    public Ggit.StatusFlags git_status {
+        get {
+            return _git_status;
+        }
+
+        set {
+            if (_git_status != value) {
+                _git_status = value;
+                update_emblem ();
+                icon_changed ();
+            }
+        }
+    }
 
     public static new GOF.File @get (GLib.File location) {
         var parent = location.get_parent ();
@@ -318,6 +332,13 @@ public class GOF.File : GLib.Object {
         }
 
         return false;
+    }
+
+    public bool is_in_git_repo (out Ggit.Repository? git_repo) {
+        var async_dir = GOF.Directory.Async.cache_lookup (directory);
+
+        git_repo = async_dir != null ? async_dir.git_repo : null;
+        return git_repo != null;
     }
 
     public unowned string get_display_name () {
@@ -981,6 +1002,24 @@ public class GOF.File : GLib.Object {
             } else {
                 add_emblem ("emblem-unreadable");
             }
+        }
+
+        switch (git_status) {
+            case Ggit.StatusFlags.CURRENT:
+                break;
+
+            case Ggit.StatusFlags.INDEX_MODIFIED:
+            case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
+                add_emblem ("mail-unread-symbolic");
+                break;
+
+            case Ggit.StatusFlags.IGNORED:
+            case Ggit.StatusFlags.WORKING_TREE_NEW:
+                add_emblem ("mail-read-symbolic");
+                break;
+
+            default:
+                break;
         }
     }
 
