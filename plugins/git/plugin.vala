@@ -83,7 +83,32 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     }
 
     public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> selected_files) {
+        if (selected_files.length () != 1) {
+            return;
+        }
 
+        var gof = selected_files.data;
+        Ggit.Repository? git_repo = null;
+
+        if (!gof.is_in_git_repo (out git_repo)) {
+            return;
+        }
+
+        var menu = widget as Gtk.Menu;
+        var git_menu_item = new Gtk.MenuItem.with_label ("Git Information");
+        git_menu_item.activate.connect (show_git_info);
+
+        add_menuitem (menu, new Gtk.SeparatorMenuItem ());
+        add_menuitem (menu, git_menu_item);
+    }
+
+    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
+        menu.append (menu_item);
+        menu_item.show ();
+    }
+
+    private void show_git_info () {
+warning ("Show git info");
     }
 }
 
