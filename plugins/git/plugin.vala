@@ -19,6 +19,10 @@
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     public override void update_file_info (GOF.File file) {
         Ggit.Repository? git_repo;
+        /* Ignore e.g. .git and .githib folders, but include e.g. .travis.yml file */
+        if (file.is_hidden && file.is_directory) {
+            return;
+        }
 
         if (file.is_in_git_repo (out git_repo)) {
             file.git_status = update_git_status (file.location, git_repo, file.is_directory);
@@ -90,7 +94,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         var gof = selected_files.data;
         Ggit.Repository? git_repo = null;
 
-        if (!gof.is_in_git_repo (out git_repo)) {
+        if ((gof.is_hidden && gof.is_directory) || !gof.is_in_git_repo (out git_repo)) {
             return;
         }
 
