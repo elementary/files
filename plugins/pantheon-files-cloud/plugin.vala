@@ -20,10 +20,10 @@
 public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     Marlin.AbstractSidebar? sidebar;
     CloudProviders.Collector collector;
-    CloudProviders.Provider[] providers_connected;
+    Gee.ArrayList<CloudProviders.Provider> providers_connected;
 
     public Plugin () {
-        providers_connected = {};
+        providers_connected = new Gee.ArrayList<CloudProviders.Provider> ();
         collector = CloudProviders.Collector.dup_singleton ();
         collector.providers_changed.connect (on_providers_changes);
     }
@@ -58,8 +58,16 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
         foreach (var provider in providers) {
             //  Avoid listening to same provider again
             if (!(provider in providers_connected)) {
-                providers_connected += provider;
+                providers_connected.add (provider);
                 provider.accounts_changed.connect (on_accounts_changed);
+            }
+        }
+
+        /* Remove any lost providers */
+        foreach (var provider in providers_connected) {
+            if (providers.find (provider) == null) {
+                provider.accounts_changed.disconnect (on_accounts_changed);
+                providers_connected.remove (provider);
             }
         }
 
