@@ -116,11 +116,6 @@
       <summary>Minimum width of the side pane</summary>
       <description>The minimum width of the side pane.</description>
     </key>
-    <key type="b" name="confirm-trash">
-      <default>true</default>
-      <summary>Confirm trash</summary>
-      <description>Confirm when permanently deleting files and emptying trash</description>
-    </key>
     <key type="b" name="restore-tabs">
       <default>true</default>
       <summary>Whether to restore tabs on start up</summary>
