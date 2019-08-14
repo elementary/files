@@ -101,8 +101,11 @@ namespace Marlin.View {
 
             connect_signals ();
 
-            default_width = Preferences.settings.get_int ("window-width");
-            default_height = Preferences.settings.get_int ("window-height");
+            int width, height;
+            Preferences.settings.get ("window-size", "(ii)", out width, out height);
+
+            default_width = width;
+            default_height = height;
 
             if (is_first_window) {
                 Preferences.settings.bind ("sidebar-width", lside_pane,
@@ -113,8 +116,8 @@ namespace Marlin.View {
                 if (state.is_maximized ()) {
                     maximize ();
                 } else {
-                    var default_x = Preferences.settings.get_int ("window-x");
-                    var default_y = Preferences.settings.get_int ("window-y");
+                    int default_x, default_y;
+                    Preferences.settings.get ("window-position", "(ii)", out default_x, out default_y);
 
                     if (default_x != -1 && default_y != -1) {
                         int shadow_size = 64; // An approximation. TODO retrieve from style context?
@@ -883,11 +886,8 @@ namespace Marlin.View {
             Preferences.settings.set_enum ("window-state",
                                            Marlin.WindowState.from_gdk_window_state (gdk_state, start));
 
-            Preferences.settings.set_int ("window-width", width);
-            Preferences.settings.set_int ("window-height", height);
-
-            Preferences.settings.set_int ("window-x", x);
-            Preferences.settings.set_int ("window-y", y);
+            Preferences.settings.set ("window-size", "(ii)", width, height);
+            Preferences.settings.set ("window-position", "(ii)", x, y);
         }
 
         private void save_tabs () {
