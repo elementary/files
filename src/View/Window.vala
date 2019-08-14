@@ -119,21 +119,23 @@ namespace Marlin.View {
                     int default_x, default_y;
                     Preferences.settings.get ("window-position", "(ii)", out default_x, out default_y);
 
-                    int shadow_size = 64; // An approximation. TODO retrieve from style context?
+                    if (default_x != -1 && default_y != -1) {
+                        int shadow_size = 64; // An approximation. TODO retrieve from style context?
 
-                    // Will be created as a normal window even if saved tiled so allow for added shadow
-                    // and approximate a tiled window on restoration
-                    if (state == Marlin.WindowState.TILED_START ||
-                        state == Marlin.WindowState.TILED_END) {
+                        // Will be created as a normal window even if saved tiled so allow for added shadow
+                        // and approximate a tiled window on restoration
+                        if (state == Marlin.WindowState.TILED_START ||
+                            state == Marlin.WindowState.TILED_END) {
 
-                        default_x -= shadow_size;
-                        default_y -= shadow_size;
+                            default_x -= shadow_size;
+                            default_y -= shadow_size;
 
-                        default_width += shadow_size * 2;
-                        default_height += shadow_size * 2;
+                            default_width += shadow_size * 2;
+                            default_height += shadow_size * 2;
+                        }
+
+                        move (default_x, default_y);
                     }
-
-                    move (default_x, default_y);
                 }
             }
 
