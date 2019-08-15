@@ -32,6 +32,8 @@ public class Marlin.SidebarPluginItem : Object {
     public bool show_spinner { get; set; default = false; }
     public uint64 free_space { get; set; default = 0; }
     public uint64 disk_size { get; set; default = 0; }
+    public ActionGroup? action_group { get; set; }
+    public string? action_group_namespace { get; set; }
     public MenuModel? menu_model { get; set; }
     public PluginCallbackFunc? cb { get; set; }
 }
