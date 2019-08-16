@@ -52,34 +52,34 @@ filechooser-module/Plugin.vala
 
 libcore/AbstractSidebar.vala
 libcore/AbstractSlot.vala
-libcore/Bookmark.vala
 libcore/BookmarkList.vala
-libcore/ConnectServerOperation.vala
+libcore/Bookmark.vala
 libcore/ConnectServerDialog.vala
+libcore/ConnectServerOperation.vala
 libcore/DndHandler.vala
 libcore/Enums.vala
-libcore/PixbufUtils.vala
-libcore/FileUtils.vala
+libcore/FileChanges.vala
 libcore/FileConflictDialog.vala
+libcore/FileUtils.vala
 libcore/gof-callwhenready.vala
 libcore/gof-directory-async.vala
 libcore/gof-preferences.vala
+libcore/IconInfo.vala
+libcore/PixbufUtils.vala
 libcore/PluginManager.vala
 libcore/Plugin.vala
-libcore/ProgressInfo.vala
 libcore/ProgressInfoManager.vala
+libcore/ProgressInfo.vala
 libcore/SidebarPluginItem.vala
 libcore/SoundManager.vala
 libcore/StockDialogs.vala
+libcore/Thumbnailer.vala
 libcore/TrashMonitor.vala
 libcore/UserUtils.vala
-libcore/IconInfo.vala
-libcore/Thumbnailer.vala
 
 libcore/eel-string.c
 libcore/marlin-file-operations.c
 libcore/marlin-undostack-manager.c
-libcore/marlin-file-changes-queue.c
 libcore/fm-list-model.c
 
 libwidgets/Interfaces/LocatableInterface.vala

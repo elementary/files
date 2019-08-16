@@ -26,7 +26,9 @@ namespace FM
             SCALE_FACTOR,
             TYPE,
             MODIFIED,
-            NUM_COLUMNS
+            NUM_COLUMNS;
+            public unowned string to_string ();
+            public static ColumnID from_string (string colstr);
         }
 
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
@@ -39,12 +41,11 @@ namespace FM
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
+        public uint get_length ();
         public GOF.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
         public void set_should_sort_directories_first (bool directories_first);
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
-        public static string get_string_from_column_id (FM.ListModel.ColumnID id);
-        public static FM.ListModel.ColumnID get_column_id_from_string (string colstr);
     }
 }
 
@@ -74,23 +75,6 @@ namespace Marlin {
     public delegate void CopyCallback ();
 }
 
-[CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
-namespace EelGtk.Window {
-    public string get_geometry_string (Gtk.Window win);
-    public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position, int left_offset, int top_offset);
-}
-
-[CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_widget_", cheader_filename = "eel-gtk-extensions.h")]
-namespace EelGtk.Widget {
-    public Gdk.Screen get_screen ();
-}
-
-[CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
-namespace Eel {
-    [CCode (cheader_filename = "eel-string.h")]
-    public string? str_double_underscores (string? str);
-}
-
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
@@ -116,17 +100,4 @@ namespace Marlin
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
-
-//    [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
-//    namespace ConnectServer {
-//        [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
-//        public class Dialog : Gtk.Dialog {
-//            public Dialog (Gtk.Window window);
-//            public async bool display_location_async (GLib.File location) throws GLib.Error;
-//            public async bool fill_details_async (GLib.MountOperation operation,
-//                                                 string default_user,
-//                                                 string default_domain,
-//                                                 GLib.AskPasswordFlags flags);
-//        }
-//    }
 }
