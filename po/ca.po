@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2019-07-15 18:53+0000\n"
+"PO-Revision-Date: 2019-08-13 15:21+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +146,7 @@ msgstr "desconegut"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr "S'està carregant…"
+msgstr "Es carrega…"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
@@ -730,7 +730,7 @@ msgstr "Recarrega aquesta carpeta"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
-msgstr "S'està cercant…"
+msgstr "Se cerca…"
 
 #: src/View/Widgets/OverlayBar.vala:216
 #, c-format
@@ -1082,21 +1082,21 @@ msgstr "No s'ha pogut canviar el nom a \"%s\""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:523
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "Avui a les %-H.%M"
+msgstr "Avui a les %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:529
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Ahir a les %-H.%M"
+msgstr "Ahir a les %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:535
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A a les %-H.%M"
+msgstr "%%A a les %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1105,17 +1105,15 @@ msgstr "El servidor no ha respost dins del límit de temps."
 #: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
 #: libcore/ProgressInfo.vala:79
 msgid "Preparing"
-msgstr "S'està preparant"
+msgstr "Se'n fa la preparació"
 
 #: libcore/marlin-file-operations.c:159
-#, fuzzy
 msgid "_Cancel"
-msgstr "Canceŀla"
+msgstr "_Canceŀla"
 
 #: libcore/marlin-file-operations.c:160
-#, fuzzy
 msgid "_Delete"
-msgstr "Suprimit:"
+msgstr "_Suprimeix"
 
 #: libcore/marlin-file-operations.c:162
 msgid "S_kip All"
@@ -1289,7 +1287,7 @@ msgstr[1] "queden %'d fitxers per suprimir"
 
 #: libcore/marlin-file-operations.c:1361
 msgid "Deleting files"
-msgstr "S'estan suprimint els fitxers"
+msgstr "Se suprimeixen els fitxers"
 
 #. TRANSLATORS: %T will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
@@ -1357,7 +1355,7 @@ msgstr "S'ha produït un error en suprimir %B."
 
 #: libcore/marlin-file-operations.c:1686
 msgid "Moving files to trash"
-msgstr "S'estan movent els fitxers a la paperera"
+msgstr "Es mouen els fitxers a la paperera"
 
 #: libcore/marlin-file-operations.c:1688
 #, c-format
@@ -1429,11 +1427,11 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:1996
 msgid "Trashing Files"
-msgstr "S'estan movent els fitxers a la paperera"
+msgstr "Es mouen els fitxers a la paperera"
 
 #: libcore/marlin-file-operations.c:1998
 msgid "Deleting Files"
-msgstr "S'estan suprimint els fitxers"
+msgstr "Se suprimeixen els fitxers"
 
 #. TRANSLATORS: %V is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
 #: libcore/marlin-file-operations.c:2068
@@ -1457,8 +1455,8 @@ msgstr "No s'ha pogut muntar %s"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "S'està preparant per copiar %'d fitxer (%S)"
-msgstr[1] "S'està preparant per copiar %'d fitxers (%S)"
+msgstr[0] "Es fa la preparació per copiar %'d fitxer (%S)"
+msgstr[1] "Es fa la preparació per copiar %'d fitxers (%S)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1468,8 +1466,8 @@ msgstr[1] "S'està preparant per copiar %'d fitxers (%S)"
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "S'està preparant per moure %'d fitxer (%S)"
-msgstr[1] "S'està preparant per moure %'d fitxers (%S)"
+msgstr[0] "Es fa la preparació per moure %'d fitxer (%S)"
+msgstr[1] "Es fa la preparació per moure %'d fitxers (%S)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1479,15 +1477,15 @@ msgstr[1] "S'està preparant per moure %'d fitxers (%S)"
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "S'està preparant per suprimir %'d fitxer (%S)"
-msgstr[1] "S'està preparant per suprimir %'d fitxers (%S)"
+msgstr[0] "Es fa la preparació per suprimir %'d fitxer (%S)"
+msgstr[1] "Es fa la preparació per suprimir %'d fitxers (%S)"
 
 #: libcore/marlin-file-operations.c:2337
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "S'està preparant per moure a la paperera %'d fitxer"
-msgstr[1] "S'està preparant per moure a la paperera %'d fitxers"
+msgstr[0] "Es fa la preparació per moure a la paperera %'d fitxer"
+msgstr[1] "Es fa la preparació per moure a la paperera %'d fitxers"
 
 #: libcore/marlin-file-operations.c:2368 libcore/marlin-file-operations.c:3325
 #: libcore/marlin-file-operations.c:3461 libcore/marlin-file-operations.c:3510
@@ -1578,73 +1576,73 @@ msgstr "La destinació només és de lectura."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2849
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "S'està movent «%B» a «%B»"
+msgstr "Es mou «%s» a «%s»"
 
 #: libcore/marlin-file-operations.c:2850
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "S'està copiant «%B» a «%B»"
+msgstr "Es copia «%s» a «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2854
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "S'està duplicant «%B»"
+msgstr "Es duplica «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2862
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "S'està movent %'d fitxer (des de «%B») a «%B»"
-msgstr[1] "S'estan movent %'d fitxers (des de «%B») a «%B»"
+msgstr[0] "Es mou %'d fitxer (de «%s») a «%s»"
+msgstr[1] "Es mouen %'d fitxers (de «%s») a «%s»"
 
 #: libcore/marlin-file-operations.c:2865
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "S'està copiant %'d fitxer (des de «%B») a «%B»"
-msgstr[1] "S'estan copiant %'d fitxers (des de «%B») a «%B»"
+msgstr[0] "Es copia %'d fitxer (de «%s») a «%s»"
+msgstr[1] "Es copien %'d fitxers (de «%s») a «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2874
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "S'està duplicant %'d fitxer (des de «%B»)"
-msgstr[1] "S'estan duplicant %'d fitxers (des de «%B»)"
+msgstr[0] "Es duplica %'d fitxer (de «%s»)"
+msgstr[1] "Es dupliquen %'d fitxers (de «%s»)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2887
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "S'està movent %'d fitxer a «%B»"
-msgstr[1] "S'estan movent %'d fitxers a «%B»"
+msgstr[0] "Es mou %'d fitxer a «%s»"
+msgstr[1] "Es mouen %'d fitxers a «%s»"
 
 #: libcore/marlin-file-operations.c:2890
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "S'està copiant %'d fitxer a «%B»"
-msgstr[1] "S'estan copiant %'d fitxers a «%B»"
+msgstr[0] "Es copia %'d fitxer a «%s»"
+msgstr[1] "Es copien %'d fitxers a «%s»"
 
 #: libcore/marlin-file-operations.c:2896
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "S'està duplicant %'d fitxer"
-msgstr[1] "S'estan duplicant %'d fitxers"
+msgstr[0] "Es duplica %'d fitxer"
+msgstr[1] "Es dupliquen %'d fitxers"
 
 #. TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:2924
@@ -1769,20 +1767,20 @@ msgstr "S’ha produït un error en copiar el fitxer en %B."
 
 #: libcore/marlin-file-operations.c:4581
 msgid "Copying Files"
-msgstr "S'estan copiant els fitxers"
+msgstr "Es copien els fitxers"
 
 #. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:4609
 msgid "Preparing to move to \"%B\""
-msgstr "S'està preparant per moure a «B»"
+msgstr "Es fa la preparació per moure-ho a «%B»"
 
 #: libcore/marlin-file-operations.c:4613
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "S'està preparant per moure %'d fitxer"
-msgstr[1] "S'està preparant per moure %'d fitxers"
+msgstr[0] "Es fa la preparació per moure %'d fitxer"
+msgstr[1] "Es fa la preparació per moure %'d fitxers"
 
 #. TRANSLATORS: \"%F\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1799,20 +1797,20 @@ msgstr "S'ha produït un error en moure el fitxer a %F."
 
 #: libcore/marlin-file-operations.c:5121
 msgid "Moving Files"
-msgstr "S'estan movent els fitxers"
+msgstr "Es mouen els fitxers"
 
 #. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:5152
 msgid "Creating links in \"%B\""
-msgstr "S'estan creant els enllaços a «%B»"
+msgstr "Es creen els enllaços a «%B»"
 
 #: libcore/marlin-file-operations.c:5156
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "S'està creant l'enllaç a %'d fitxer"
-msgstr[1] "S'estan creant els enllaços a %'d fitxers"
+msgstr[0] "Es crea l'enllaç a %'d fitxer"
+msgstr[1] "Es creen els enllaços a %'d fitxers"
 
 #. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5297
@@ -1835,7 +1833,7 @@ msgstr "S'ha produït un error en crear l'enllaç simbòlic a %F."
 
 #: libcore/marlin-file-operations.c:5624
 msgid "Setting permissions"
-msgstr "S'estan establint els permisos"
+msgstr "S'estableixen els permisos"
 
 #: libcore/marlin-file-operations.c:5724
 msgid "Cannot copy into trash."
@@ -1871,7 +1869,7 @@ msgstr "S'ha produït un error en crear el directori a %F."
 
 #: libcore/marlin-file-operations.c:6360
 msgid "Emptying Trash"
-msgstr "S'està buidant la paperera"
+msgstr "Es buida la paperera"
 
 #: libcore/marlin-undostack-manager.c:578
 msgid "Original location could not be determined"
@@ -2273,7 +2271,7 @@ msgstr "Escriviu un camí"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "Més resultats…"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"

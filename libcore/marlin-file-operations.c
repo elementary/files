@@ -1212,13 +1212,10 @@ confirm_delete_from_trash (CommonJob *job,
     int file_count;
     int response;
 
-    /* Just Say Yes if the preference says not to confirm. */
-    if (!should_confirm_trash ()) {
-        return TRUE;
-    }
-
     file_count = g_list_length (files);
     g_assert (file_count > 0);
+
+    /* Only called if confirmation known to be required - do not second guess */
 
     if (file_count == 1) {
         /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -1252,11 +1249,9 @@ confirm_empty_trash (EmptyTrashJob *job)
     gchar* secondary_text;
     int response;
 
-    /* Just Say Yes if the preference says not to confirm. */
-    if (!should_confirm_trash ())
-        return TRUE;
-
     GList *files = job->trash_dirs;
+
+    /* Only called if confirmation known to be required - do not second guess */
 
     if (files != NULL && g_list_first (files) != NULL) {
         if (g_file_has_uri_scheme (files->data, "trash")) {
@@ -1291,17 +1286,10 @@ confirm_delete_directly (CommonJob *job,
     int file_count;
     int response;
 
-    /* Just Say Yes if the preference says not to confirm. */
-    if (!should_confirm_trash ()) {
-        return TRUE;
-    }
+    /* Only called if confirmation known to be required - do not second guess */
 
     file_count = g_list_length (files);
     g_assert (file_count > 0);
-
-    if (can_delete_files_without_confirm (files)) {
-        return TRUE;
-    }
 
     if (file_count == 1) {
         /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -1939,10 +1927,11 @@ delete_job (GIOSchedulerJob *io_job,
         to_delete_files = g_list_reverse (to_delete_files);
         confirmed = TRUE;
         if (must_confirm_delete_in_trash) {
-            confirmed = confirm_delete_from_trash (common, to_delete_files);
+            confirmed = !should_confirm_trash || confirm_delete_from_trash (common, to_delete_files);
         } else if (must_confirm_delete) {
             confirmed = confirm_delete_directly (common, to_delete_files);
         }
+
         if (confirmed) {
             delete_files (common, to_delete_files, &files_skipped);
         } else {
@@ -6290,7 +6279,7 @@ empty_trash_job (GIOSchedulerJob *io_job,
     common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
-    if (confirm_empty_trash (job)) {
+    if (!should_confirm_trash () || confirm_empty_trash (job)) {
         for (l = job->trash_dirs;
              l != NULL && !job_aborted (common);
              l = l->next) {
