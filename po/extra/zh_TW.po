@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2018-02-13 09:30+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
-"files/extra/zh_TW/>\n"
+"PO-Revision-Date: 2019-05-22 16:03+0000\n"
+"Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
+"files/extra/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -38,15 +38,16 @@ msgstr ""
 msgid "File Manager"
 msgstr "檔案管理員"
 
-#: data/io.elementary.files.desktop.in.in:8
+#. TRANSLATORS This string is an icon name and should not be translated.
+#: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
-#: data/io.elementary.files.desktop.in.in:19
+#: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
 msgstr "新視窗"
 
-#: data/io.elementary.files.desktop.in.in:23
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
 msgstr "以管理員身份新開視窗"
 
@@ -66,79 +67,336 @@ msgstr ""
 "置上、或是使用 FTP、SFTP、AFP、Webdav、或 Windows 網路芳鄰等遠端上，都能存取"
 "您的所有檔案。"
 
-#: data/io.elementary.files.appdata.xml.in.in:166
-msgid "elementary LLC."
+#: data/io.elementary.files.appdata.xml.in.in:64
+msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:65
+msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:86
+#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:165
+#, fuzzy
+msgid "Updated translations"
+msgstr "新翻譯"
+
+#: data/io.elementary.files.appdata.xml.in.in:73
+msgid "Minor spacing adjustments to location bar"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:74
+msgid "Fix F2 renaming behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:82
+msgid "Minor spacing adjustments to location breadcrumbs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:83
+msgid "Consistently remember color tags"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:84
+msgid ""
+"Reload thumbnails when changing zoom level to avoid showing placeholder "
+"unnecessarily"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:85
+msgid "Fix running scripts with spaces in filename"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:93
+msgid "Fix high CPU regression in version 4.1.4"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:94
+#, fuzzy
+msgid "File sorting fixes"
+msgstr "小臭蟲修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:102
+msgid "Meson: fix soversion names"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:103
+msgid "Remove CMake build system"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:104
+msgid "Fix missing File System properties menu"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:105
+msgid "Drop intltool dependency"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:106
+msgid "Fix default file type handler logic"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:107
+msgid "Fix initial search window size too small"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:108
+msgid "Add option to disable local file thumbnails"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:109
+#, fuzzy
+msgid "Fix crash when opening multiple video files"
+msgstr "修正從垃圾桶中還原項目時的崩潰"
+
+#: data/io.elementary.files.appdata.xml.in.in:110
+msgid "Fix some timing issues around adding and removing files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:111
+msgid "Meson: fix missing library headers"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:112
+msgid "Fix color tag display"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:113
+msgid "Show reserved space in Properties window"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:121
+msgid "Add border radius to text background"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:122
+msgid "Fix file mimetype association regression"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:123
+msgid "New pathbar tooltips"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:124
+#, fuzzy
+msgid "Build fixes"
+msgstr "安全性修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:132
+#, fuzzy
+msgid "Plugin build fixes"
+msgstr "小臭蟲修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:140
+msgid "Fix Ctrl+Tab behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:141
+msgid "Fix building without Unity library"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:148
+msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:149
+msgid "Style error dialogs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:150
+msgid "Right click fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:151
+msgid "Reload recent view when privacy setting changes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:152
+msgid "`Connect Server` fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:153
+msgid "Do not activate multiple files with single click"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:154
+msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:155
+msgid "Delete color tag database entries for trashed files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:156
+msgid "Throttle tab closing"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:157
+msgid "`Ctrl` key fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:158
+msgid "Drag and drop fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:159
+msgid "Show icons in `Open with` menus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:160
+msgid "Tooltip fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:161
+#, fuzzy
+msgid "Memory leak fixes"
+msgstr "小臭蟲修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:162
+#, fuzzy
+msgid "Crash fixes"
+msgstr "多項崩潰修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:163
+msgid "Trash: respect sound setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:164
+msgid "Localization fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:172
+msgid "Over 100 major and minor bug fixes and improvements"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:179
+msgid "Honor 12/24hr system setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:180
+msgid "Distinguish between tabs with the same name"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:181
+msgid "Support launching from other applications with a target file selected"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:195
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:230
+msgid "New translations"
+msgstr "新翻譯"
+
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:196
+#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:245
+#: data/io.elementary.files.appdata.xml.in.in:269
+msgid "Minor bug fixes"
+msgstr "小臭蟲修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:190
+msgid "Improved networking support"
+msgstr "改善網路連線支持"
+
+#: data/io.elementary.files.appdata.xml.in.in:191
+msgid "Correct window geometry when snapping to left or right"
+msgstr "當附貼至左側或右側時校正視窗的幾何形態"
+
+#: data/io.elementary.files.appdata.xml.in.in:192
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr "當「揭開指標」設定啟用時，若按下 Ctrl 鍵不會取消重新命名"
+
+#: data/io.elementary.files.appdata.xml.in.in:193
+msgid "Switching input language cancels actions"
+msgstr "切換輸入語言會取消動作"
+
+#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:229
+msgid "Various crash fixes"
+msgstr "多項崩潰修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:203
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr "網頁瀏覽器如 Firefox 現在會記住最近使用的下載資料夾"
+
+#: data/io.elementary.files.appdata.xml.in.in:204
+msgid "Remember preferred zoom level"
+msgstr "記住偏好的遠近層級"
+
+#: data/io.elementary.files.appdata.xml.in.in:205
+msgid "Improved input method support"
+msgstr "改善的輸入法支援"
+
+#: data/io.elementary.files.appdata.xml.in.in:206
+msgid "910x640 minimum window size"
+msgstr "910x640 最小視窗大小"
+
+#: data/io.elementary.files.appdata.xml.in.in:207
+msgid "Security fixes"
+msgstr "安全性修正"
+
+#: data/io.elementary.files.appdata.xml.in.in:217
+msgid "Enable drag and drop tabs between windows"
+msgstr "允許視窗之間的分頁拖放"
+
+#: data/io.elementary.files.appdata.xml.in.in:227
+msgid "Merge search functionality into Ctrl+F"
+msgstr "將搜尋功能合併至 Ctrl+F"
+
+#: data/io.elementary.files.appdata.xml.in.in:228
+msgid "Improved translation support"
+msgstr "改善的翻譯支援"
+
+#: data/io.elementary.files.appdata.xml.in.in:252
+msgid "Fix appdata release dates"
+msgstr "修正 appdata 發行日期"
+
+#: data/io.elementary.files.appdata.xml.in.in:259
+msgid "Improve file opening over Samba shares"
+msgstr "改善 Samba 分享的檔案開啟"
+
+#: data/io.elementary.files.appdata.xml.in.in:260
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "修正從垃圾桶中還原項目時的崩潰"
+
+#: data/io.elementary.files.appdata.xml.in.in:261
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "改善情境選單中的剪下/複製/貼上敏感度"
+
+#: data/io.elementary.files.appdata.xml.in.in:262
+msgid "Translation updates"
+msgstr "翻譯更新"
+
+#: data/io.elementary.files.appdata.xml.in.in:274
+#, fuzzy
+msgid "elementary LLC."
+msgstr "elementary LLC."
+
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "以管理員身份執行 Pantheon 檔案"
+
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "若要以管理員身份執行必須通過身份核對"
 
 #~ msgid "About Files"
 #~ msgstr "關於《檔案》"
-
-#~ msgid "Improved networking support"
-#~ msgstr "改善網路連線支持"
-
-#~ msgid "Correct window geometry when snapping to left or right"
-#~ msgstr "當附貼至左側或右側時校正視窗的幾何形態"
-
-#~ msgid ""
-#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-#~ "setting is active"
-#~ msgstr "當「揭開指標」設定啟用時，若按下 Ctrl 鍵不會取消重新命名"
-
-#~ msgid "Switching input language cancels actions"
-#~ msgstr "切換輸入語言會取消動作"
-
-#~ msgid "Various crash fixes"
-#~ msgstr "多項崩潰修正"
-
-#~ msgid "New translations"
-#~ msgstr "新翻譯"
-
-#~ msgid "Minor bug fixes"
-#~ msgstr "小臭蟲修正"
-
-#~ msgid ""
-#~ "Web browsers like Firefox now remember the most recently used downloads "
-#~ "directory"
-#~ msgstr "網頁瀏覽器如 Firefox 現在會記住最近使用的下載資料夾"
-
-#~ msgid "Remember preferred zoom level"
-#~ msgstr "記住偏好的遠近層級"
-
-#~ msgid "Improved input method support"
-#~ msgstr "改善的輸入法支援"
-
-#~ msgid "910x640 minimum window size"
-#~ msgstr "910x640 最小視窗大小"
-
-#~ msgid "Security fixes"
-#~ msgstr "安全性修正"
-
-#~ msgid "Enable drag and drop tabs between windows"
-#~ msgstr "允許視窗之間的分頁拖放"
-
-#~ msgid "Merge search functionality into Ctrl+F"
-#~ msgstr "將搜尋功能合併至 Ctrl+F"
-
-#~ msgid "Improved translation support"
-#~ msgstr "改善的翻譯支援"
-
-#~ msgid "Fix appdata release dates"
-#~ msgstr "修正 appdata 發行日期"
-
-#~ msgid "Improve file opening over Samba shares"
-#~ msgstr "改善 Samba 分享的檔案開啟"
-
-#~ msgid "Fix a crash when restoring items from the Trash"
-#~ msgstr "修正從垃圾桶中還原項目時的崩潰"
-
-#~ msgid "Improve cut/copy/paste sensitivity in context menu"
-#~ msgstr "改善情境選單中的剪下/複製/貼上敏感度"
-
-#~ msgid "Translation updates"
-#~ msgstr "翻譯更新"
-
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "以管理員身份執行 Pantheon 檔案"
-
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "若要以管理員身份執行必須通過身份核對"

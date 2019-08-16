@@ -278,6 +278,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         var menu = widget as Gtk.Menu;
         var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+
+        /* Check the colors currently set */
+        foreach (GOF.File gof in current_selected_files) {
+            color_menu_item.check_color (gof.color);
+        }
+
         color_menu_item.color_changed.connect ((ncolor) => {
             set_color.begin (current_selected_files, ncolor);
         });
@@ -328,146 +334,125 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
+    private class ColorButton : Gtk.CheckButton {
+        private static Gtk.CssProvider css_provider;
+        public string color_name { get; construct; }
+
+        static construct {
+            css_provider = new Gtk.CssProvider ();
+            css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
+        }
+
+        public ColorButton (string color_name) {
+            Object (color_name: color_name);
+        }
+
+        construct {
+            var style_context = get_style_context ();
+            style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            style_context.add_class ("color-button");
+            style_context.add_class (color_name);
+        }
+    }
+
     private class ColorWidget : Gtk.MenuItem {
-        private new bool has_focus;
-        private int height;
         public signal void color_changed (int ncolor);
+        private Gee.ArrayList<ColorButton> color_buttons;
+        private const int COLORBOX_SPACING = 3;
 
-        public ColorWidget () {
-            set_size_request (150, 20);
-            height = 20;
+        construct {
+            var color_button_remove = new ColorButton ("none");
+            color_buttons = new Gee.ArrayList<ColorButton> ();
+            color_buttons.add (new ColorButton ("red"));
+            color_buttons.add (new ColorButton ("orange"));
+            color_buttons.add (new ColorButton ("yellow"));
+            color_buttons.add (new ColorButton ("green"));
+            color_buttons.add (new ColorButton ("blue"));
+            color_buttons.add (new ColorButton ("purple"));
+            color_buttons.add (new ColorButton ("brown"));
+            color_buttons.add (new ColorButton ("slate"));
 
+            var colorbox = new Gtk.Grid ();
+            colorbox.column_spacing = COLORBOX_SPACING;
+            colorbox.margin_start = 3;
+            colorbox.halign = Gtk.Align.START;
+            colorbox.add (color_button_remove);
+
+            for (int i = 0; i < color_buttons.size; i++) {
+                colorbox.add (color_buttons[i]);
+            }
+
+            add (colorbox);
+
+            try {
+                string css = ".nohover { background: none; }";
+
+                var css_provider = new Gtk.CssProvider ();
+                css_provider.load_from_data (css, -1);
+
+                var style_context = get_style_context ();
+                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                style_context.add_class ("nohover");
+            } catch (GLib.Error e) {
+                warning ("Failed to parse css style : %s", e.message);
+            }
+
+            show_all ();
+
+            // Cannot use this for every button due to this being a MenuItem
             button_press_event.connect (button_pressed_cb);
-            draw.connect (on_draw);
+        }
 
-            select.connect (() => {
-                has_focus = true;
-            });
+        private void clear_checks () {
+            color_buttons.foreach ((b) => { b.active = false; return true;});
+        }
 
-            deselect.connect (() => {
-                has_focus = false;
-            });
+        public void check_color (int color) {
+            if (color == 0 || color > color_buttons.size) {
+                return;
+            }
+
+            color_buttons[color - 1].active = true;
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-            determine_button_pressed_event (event);
-            return true;
-        }
+            var color_button_width = color_buttons[0].get_allocated_width ();
 
-        private void determine_button_pressed_event (Gdk.EventButton event) {
-            int i;
-            int btnw = 10;
-            int btnh = 10;
-            int y0 = (height - btnh) /2;
-            int x0 = btnw+5;
-            int xpad = 9;
+            int y0 = (get_allocated_height () - color_button_width) / 2;
+            int x0 = COLORBOX_SPACING + color_button_width;
 
-            if (event.y >= y0 && event.y <= y0+btnh) {
-                for (i=1; i<=10; i++) {
-                    if (event.x>= xpad+x0*i && event.x <= xpad+x0*i+btnw) {
-                        color_changed (i-1);
+            if (event.y < y0 || event.y > y0 + color_button_width) {
+                return true;
+            }
+
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                var width = get_allocated_width ();
+                int x = width - 27;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    if (event.x <= x && event.x >= x - color_button_width) {
+                        color_changed (i);
+                        clear_checks ();
+                        check_color (i);
                         break;
                     }
+
+                    x -= x0;
                 }
-            }
-        }
+            } else {
+                int x = 27;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    if (event.x >= x && event.x <= x + color_button_width) {
+                        color_changed (i);
+                        clear_checks ();
+                        check_color (i);
+                        break;
+                    }
 
-        protected bool on_draw (Cairo.Context cr) {
-            int i;
-            int btnw = 10;
-            int btnh = 10;
-            int y0 = (height - btnh) /2;
-            int x0 = btnw+5;
-            int xpad = 9;
-
-            for (i = 1; i <= 10; i++) {
-                if (i == 1) {
-                    DrawCross (cr, xpad + x0 * i, y0 + 1, btnw - 2, btnh - 2);
-                } else {
-                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "stroke", i - 1);
-                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "fill", i - 1);
-                    DrawGradientOverlay (cr, xpad + x0 * i, y0, btnw, btnh);
+                    x += x0;
                 }
             }
 
             return true;
-        }
-
-        private void DrawCross (Cairo.Context cr, int x, int y, int w, int h) {
-            cr.new_path ();
-            cr.set_line_width (2.0);
-            cr.move_to (x, y);
-            cr.rel_line_to (w, h);
-            cr.move_to (x, y+h);
-            cr.rel_line_to (w, -h);
-            cr.set_source_rgba (0,0,0,0.6);
-            cr.stroke ();
-
-            cr.close_path ();
-        }
-
-        /*
-         * Create a rounded rectangle using the Bezier curve.
-         * Adapted from http://cairographics.org/cookbook/roundedrectangles/
-         */
-        private void DrawRoundedRectangle (Cairo.Context cr, int x, int y, int w, int h, string style, int color) {
-            int radius_x=2;
-            int radius_y=2;
-            double ARC_TO_BEZIER = 0.55228475;
-
-            if (radius_x > w - radius_x) {
-                radius_x = w / 2;
-            }
-
-            if (radius_y > h - radius_y) {
-                radius_y = h / 2;
-            }
-
-            /* approximate (quite close) the arc using a bezier curve */
-            double ca = ARC_TO_BEZIER * radius_x;
-            double cb = ARC_TO_BEZIER * radius_y;
-
-            cr.new_path ();
-            cr.set_line_width (0.7);
-            cr.set_tolerance (0.1);
-            cr.move_to (x + radius_x, y);
-            cr.rel_line_to (w - 2 * radius_x, 0.0);
-            cr.rel_curve_to (ca, 0.0, radius_x, cb, radius_x, radius_y);
-            cr.rel_line_to (0, h - 2 * radius_y);
-            cr.rel_curve_to (0.0, cb, ca - radius_x, radius_y, -radius_x, radius_y);
-            cr.rel_line_to (-w + 2 * radius_x, 0);
-            cr.rel_curve_to (-ca, 0, -radius_x, -cb, -radius_x, -radius_y);
-            cr.rel_line_to (0, -h + 2 * radius_y);
-            cr.rel_curve_to (0.0, -cb, radius_x - ca, -radius_y, radius_x, -radius_y);
-
-            switch (style) {
-            default:
-            case "fill":
-                Gdk.RGBA rgba = Gdk.RGBA ();
-                rgba.parse (GOF.Preferences.TAGS_COLORS[color]);
-                Gdk.cairo_set_source_rgba (cr, rgba);
-                cr.fill ();
-                break;
-            case "stroke":
-                cr.set_source_rgba (0,0,0,0.5);
-                cr.stroke ();
-                break;
-            }
-
-            cr.close_path ();
-        }
-
-        /*
-         * Draw the overlaying gradient
-         */
-        private void DrawGradientOverlay (Cairo.Context cr, int x, int y, int w, int h) {
-            var radial = new Cairo.Pattern.radial (w, h, 1, 0.0, 0.0, 0.0);
-            radial.add_color_stop_rgba (0, 0.3, 0.3, 0.3,0.0);
-            radial.add_color_stop_rgba (1, 0.0, 0.0, 0.0,0.5);
-
-            cr.set_source (radial);
-            cr.rectangle (x,y,w,h);
-            cr.fill ();
         }
     }
 }
@@ -475,4 +460,3 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 public Marlin.Plugins.Base module_init () {
     return new Marlin.Plugins.CTags ();
 }
-

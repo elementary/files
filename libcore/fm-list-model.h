@@ -45,7 +45,7 @@ typedef struct _GOFDirectoryAsync GOFDirectoryAsync;
 #define FM_LIST_MODEL_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_LIST_MODEL, FMListModelClass))
 
-enum {
+typedef enum {
     FM_LIST_MODEL_FILE_COLUMN,
     FM_LIST_MODEL_COLOR,
     FM_LIST_MODEL_PIXBUF,
@@ -54,7 +54,7 @@ enum {
     FM_LIST_MODEL_TYPE,
     FM_LIST_MODEL_MODIFIED,
     FM_LIST_MODEL_NUM_COLUMNS
-};
+} FMListModelColumnID;
 
 typedef struct FMListModelDetails FMListModelDetails;
 
@@ -94,7 +94,7 @@ gboolean        fm_list_model_get_directory_file (FMListModel *model, GtkTreePat
 gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory);
 void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter);
 
-const gchar     *fm_list_model_get_string_from_column_id (gint id);
-gint            fm_list_model_get_column_id_from_string (const gchar *colstr);
+const gchar *       fm_list_model_column_id_to_string (FMListModelColumnID id);
+FMListModelColumnID fm_list_model_column_id_from_string (const gchar *colstr);
 
 #endif /* FM_LIST_MODEL_H */

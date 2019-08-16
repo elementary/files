@@ -116,6 +116,12 @@ public class Marlin.Progress.UIHandler : Object {
         var progress_widget = new Marlin.Progress.InfoWidget (info);
         (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
 
+        progress_widget.cancelled.connect ((info) => {
+            info.finished.disconnect (progress_info_finished_cb);
+            progress_info_finished_cb (info);
+            progress_widget.hide ();
+        });
+
         progress_widget.show ();
         if (this.progress_window.visible) {
             (this.progress_window as Gtk.Window).present ();
@@ -147,6 +153,7 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void progress_info_finished_cb (PF.Progress.Info info) {
+        /* Must only be called once for each info */
         application.release ();
 
         if (active_infos > 0) {
@@ -157,13 +164,17 @@ public class Marlin.Progress.UIHandler : Object {
              * because it steals focus from the application main window. This also means that a notification
              * is only sent after last operation finishes and the progress window closes.
              * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
-            Timeout.add (100, () => {
-                if (!application.get_active_window ().has_toplevel_focus) {
-                    show_operation_complete_notification (info, active_infos < 1);
-                }
 
-                return GLib.Source.REMOVE;
-            });
+            if (!info.get_cancellable ().is_cancelled ()) {
+                var title = info.get_title ();  /* Do not keep ref to info */
+                Timeout.add (100, () => {
+                    if (!application.get_active_window ().has_toplevel_focus) {
+                        show_operation_complete_notification (title, active_infos < 1);
+                    }
+                    
+                    return GLib.Source.REMOVE;
+                });
+            }
         } else {
             warning ("Attempt to decrement zero active infos");
         }
@@ -176,13 +187,9 @@ public class Marlin.Progress.UIHandler : Object {
 #endif
     }
 
-    private void show_operation_complete_notification (PF.Progress.Info info, bool all_finished) {
-        if (info.get_cancellable ().is_cancelled ()) {
-            return; /* No notification of cancellation action required */
-        }
-
+    private void show_operation_complete_notification (string title, bool all_finished) {
         /// TRANSLATORS: %s will be replaced by the title of the file operation
-        var result = (_("Completed %s")).printf (info.get_title ());
+        var result = (_("Completed %s")).printf (title);
 
         if (all_finished) {
             result = result + "\n" + _("All file operations have ended");

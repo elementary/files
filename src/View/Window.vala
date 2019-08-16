@@ -101,8 +101,11 @@ namespace Marlin.View {
 
             connect_signals ();
 
-            default_width = Preferences.settings.get_int ("window-width");
-            default_height = Preferences.settings.get_int ("window-height");
+            int width, height;
+            Preferences.settings.get ("window-size", "(ii)", out width, out height);
+
+            default_width = width;
+            default_height = height;
 
             if (is_first_window) {
                 Preferences.settings.bind ("sidebar-width", lside_pane,
@@ -113,24 +116,26 @@ namespace Marlin.View {
                 if (state.is_maximized ()) {
                     maximize ();
                 } else {
-                    var default_x = Preferences.settings.get_int ("window-x");
-                    var default_y = Preferences.settings.get_int ("window-y");
+                    int default_x, default_y;
+                    Preferences.settings.get ("window-position", "(ii)", out default_x, out default_y);
 
-                    int shadow_size = 64; // An approximation. TODO retrieve from style context?
+                    if (default_x != -1 && default_y != -1) {
+                        int shadow_size = 64; // An approximation. TODO retrieve from style context?
 
-                    // Will be created as a normal window even if saved tiled so allow for added shadow
-                    // and approximate a tiled window on restoration
-                    if (state == Marlin.WindowState.TILED_START ||
-                        state == Marlin.WindowState.TILED_END) {
+                        // Will be created as a normal window even if saved tiled so allow for added shadow
+                        // and approximate a tiled window on restoration
+                        if (state == Marlin.WindowState.TILED_START ||
+                            state == Marlin.WindowState.TILED_END) {
 
-                        default_x -= shadow_size;
-                        default_y -= shadow_size;
+                            default_x -= shadow_size;
+                            default_y -= shadow_size;
 
-                        default_width += shadow_size * 2;
-                        default_height += shadow_size * 2;
+                            default_width += shadow_size * 2;
+                            default_height += shadow_size * 2;
+                        }
+
+                        move (default_x, default_y);
                     }
-
-                    move (default_x, default_y);
                 }
             }
 
@@ -140,7 +145,7 @@ namespace Marlin.View {
 
         private void build_window () {
             view_switcher = new Chrome.ViewSwitcher (lookup_action ("view-mode") as SimpleAction);
-            view_switcher.mode = Preferences.settings.get_enum ("default-viewmode");
+            view_switcher.selected = Preferences.settings.get_enum ("default-viewmode");
 
             top_menu = new Chrome.TopMenu (view_switcher);
             top_menu.show_close_button = true;
@@ -649,8 +654,9 @@ namespace Marlin.View {
                     break;
 
                 default:
-                    break;
+                    return;
             }
+
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
         }
@@ -879,11 +885,8 @@ namespace Marlin.View {
             Preferences.settings.set_enum ("window-state",
                                            Marlin.WindowState.from_gdk_window_state (gdk_state, start));
 
-            Preferences.settings.set_int ("window-width", width);
-            Preferences.settings.set_int ("window-height", height);
-
-            Preferences.settings.set_int ("window-x", x);
-            Preferences.settings.set_int ("window-y", y);
+            Preferences.settings.set ("window-size", "(ii)", width, height);
+            Preferences.settings.set ("window-position", "(ii)", x, y);
         }
 
         private void save_tabs () {
@@ -1038,7 +1041,7 @@ namespace Marlin.View {
 
             /* Update viewmode switch, action state and settings */
             var mode = current_tab.view_mode;
-            view_switcher.mode = mode;
+            view_switcher.selected = mode;
             view_switcher.sensitive = current_tab.can_show_folder;
             get_action ("view-mode").set_state (mode_strings [(int)mode]);
             Preferences.settings.set_enum ("default-viewmode", mode);

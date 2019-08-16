@@ -81,25 +81,15 @@
       <summary>Categorie Network expander</summary>
       <description>Expand/Collapse categorie Network</description>
     </key>
-    <key type="i" name="window-width">
-      <default>1000</default>
-      <summary>Window width.</summary>
-      <description>Default window width.</description>
+    <key name="window-position" type="(ii)">
+      <default>(-1, -1)</default>
+      <summary>Window position</summary>
+      <description>Most recent window position (x, y)</description>
     </key>
-    <key type="i" name="window-height">
-      <default>680</default>
-      <summary>Window height.</summary>
-      <description>Default window height.</description>
-    </key>
-    <key type="i" name="window-x">
-      <default>-1</default>
-      <summary>Window x position</summary>
-      <description>Horizontal position of last closed window</description>
-    </key>
-    <key type="i" name="window-y">
-      <default>-1</default>
-      <summary>Window y position</summary>
-      <description>Vertical position of last closed window</description>
+    <key name="window-size" type="(ii)">
+      <default>(1000, 680)</default>
+      <summary>Most recent window size</summary>
+      <description>Most recent window size (width, height)</description>
     </key>
     <key name="window-state" enum="windowstate">
       <default>'normal'</default>
@@ -115,11 +105,6 @@
       <default>96</default>
       <summary>Minimum width of the side pane</summary>
       <description>The minimum width of the side pane.</description>
-    </key>
-    <key type="b" name="confirm-trash">
-      <default>true</default>
-      <summary>Confirm trash</summary>
-      <description>Confirm when permanently deleting files and emptying trash</description>
     </key>
     <key type="i" name="active-tab-position">
       <default>0</default>

@@ -1,0 +1,3 @@
+[Plugin]
+Name=Cloud
+File=libpantheon-files-cloudproviders.so

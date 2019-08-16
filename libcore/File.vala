@@ -228,6 +228,20 @@ public class GOF.File : GLib.Object {
         return is_desktop_file && !basename.has_suffix (".directory");
     }
 
+    public bool is_image () {
+        if (info == null) {
+            return false;
+        }
+
+        bool is_image = false;
+        unowned string? content_type = get_ftype ();
+        if (content_type != null) {
+            is_image = GLib.ContentType.is_mime_type (content_type, "image/*");
+        }
+
+        return is_image;
+    }
+
     public bool is_trashed () {
         return PF.FileUtils.location_is_in_trash (get_target_location ());
     }
@@ -427,7 +441,7 @@ public class GOF.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = FM.ListModel.get_column_id_from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
+                sort_column_id = FM.ListModel.ColumnID.from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
             }
 
             if (info.has_attribute ("metadata::marlin-sort-reversed")) {

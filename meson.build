@@ -1,4 +1,4 @@
-project('io.elementary.files', 'vala', 'c', version: '4.1.8', meson_version: '>= 0.42.0')
+project('io.elementary.files', 'vala', 'c', version: '4.1.9', meson_version: '>= 0.42.0')
 
 #
 # Meson module imports
@@ -98,6 +98,13 @@ config_file = configure_file(
 project_config_dep = declare_dependency(
     sources: config_file,
     include_directories: include_directories('.')
+)
+
+gnome = import('gnome')
+resources = gnome.compile_resources(
+    'files-resources', 'data/files.gresource.xml',
+    source_dir: 'data',
+    c_name: 'files'
 )
 
 subdir('libcore')

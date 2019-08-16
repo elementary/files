@@ -8,48 +8,52 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2016-09-23 12:22+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
+"PO-Revision-Date: 2019-07-22 01:24+0000\n"
+"Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
+"Language-Team: Esperanto <https://l10n.elementary.io/projects/files/extra/eo/"
+">\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr ""
+msgstr "Dosieroj"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr ""
+msgstr "Foliumu viajn dosierojn"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
+"dosiero;dosierujo;mastrumilo;foliumilo;memorujo;dosiersistemo;esplorilo;"
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr ""
+msgstr "Dosiermastrumilo"
 
-#: data/io.elementary.files.desktop.in.in:8
+#. TRANSLATORS This string is an icon name and should not be translated.
+#: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
-#: data/io.elementary.files.desktop.in.in:19
+#: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr ""
+msgstr "Nova fenestro"
 
-#: data/io.elementary.files.desktop.in.in:23
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Nova administranta fenestro"
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr ""
+msgstr "Foliumi kaj mastrumi dosierojn kaj dosierujojn"
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
@@ -58,7 +62,340 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
+"Facile kopiu, movu, kaj renomu viajn dosierojn, aŭ uzu dosierujojn por "
+"organiziĝi. Sendepende ĉu vi emas ordigi en listo, krado aŭ kolumnoj, eblas "
+"trovi ilin tuj. Aliru ĉiujn viajn dosierojn, ĉu surloke, aŭ en eksterna "
+"memorujo, aŭ defore per FTP-, SFTP-, AFP-, Webdav-aŭ Vindoza kunhavigo-"
+"protokoloj."
 
-#: data/io.elementary.files.appdata.xml.in.in:166
-msgid "elementary LLC."
+#: data/io.elementary.files.appdata.xml.in.in:64
+msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+"Riparo pri klavara navigado por elekte pluki dosierojn montrataj kiel bildojn"
+
+#: data/io.elementary.files.appdata.xml.in.in:65
+msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
+msgstr ""
+"Ne fiksi en la programkodo la stilon de la serĉokampo, ripari problemojn de "
+"malhela temo"
+
+#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:86
+#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:165
+msgid "Updated translations"
+msgstr "Ĝisdatigitaj tradukoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:73
+msgid "Minor spacing adjustments to location bar"
+msgstr "Malgravaj spacigaj alĝustigoj de la dosierindika breto"
+
+#: data/io.elementary.files.appdata.xml.in.in:74
+msgid "Fix F2 renaming behavior"
+msgstr "Ripari konduton de renomigo per F2"
+
+#: data/io.elementary.files.appdata.xml.in.in:82
+msgid "Minor spacing adjustments to location breadcrumbs"
+msgstr "Malgravaj spacigaj alĝustigoj de la paĝnivela dosierindika breto"
+
+#: data/io.elementary.files.appdata.xml.in.in:83
+msgid "Consistently remember color tags"
+msgstr "Kohere memori kolorajn etikedojn"
+
+#: data/io.elementary.files.appdata.xml.in.in:84
+msgid ""
+"Reload thumbnails when changing zoom level to avoid showing placeholder "
+"unnecessarily"
+msgstr "Reŝargi miniaturojn je ŝanĝo de zomo, por eviti tro montri lokokupilojn"
+
+#: data/io.elementary.files.appdata.xml.in.in:85
+msgid "Fix running scripts with spaces in filename"
+msgstr "Ripari rulajn procedurojn kun spacoj en la dosiernomo"
+
+#: data/io.elementary.files.appdata.xml.in.in:93
+msgid "Fix high CPU regression in version 4.1.4"
+msgstr "Ripari gravan operaciuman regreson en versio 4.1.4"
+
+#: data/io.elementary.files.appdata.xml.in.in:94
+msgid "File sorting fixes"
+msgstr "Riparoj pri dosiera ordigo"
+
+#: data/io.elementary.files.appdata.xml.in.in:102
+msgid "Meson: fix soversion names"
+msgstr "Meson: ripari soversion-nomojn"
+
+#: data/io.elementary.files.appdata.xml.in.in:103
+msgid "Remove CMake build system"
+msgstr "Forigi CMake-versian sistemon"
+
+#: data/io.elementary.files.appdata.xml.in.in:104
+msgid "Fix missing File System properties menu"
+msgstr "Ripari mankantan agordan menuon de la dosiera sistemo"
+
+#: data/io.elementary.files.appdata.xml.in.in:105
+msgid "Drop intltool dependency"
+msgstr "Demeti intltool-dependecon"
+
+#: data/io.elementary.files.appdata.xml.in.in:106
+msgid "Fix default file type handler logic"
+msgstr "Ripari la aprioran logikon pri dosiertipado"
+
+#: data/io.elementary.files.appdata.xml.in.in:107
+msgid "Fix initial search window size too small"
+msgstr "Ripari troan malgrandecon de la komenca serĉa fenestro"
+
+#: data/io.elementary.files.appdata.xml.in.in:108
+msgid "Add option to disable local file thumbnails"
+msgstr "Aldoni agordon por malebligi miniaturojn de lokaj dosieroj"
+
+#: data/io.elementary.files.appdata.xml.in.in:109
+msgid "Fix crash when opening multiple video files"
+msgstr "Ripari kraŝon ĉe malfermo de pluraj videoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:110
+msgid "Fix some timing issues around adding and removing files"
+msgstr "Ripari iujn horajn problemojn ĉe aldono kaj forigo de dosieroj"
+
+#: data/io.elementary.files.appdata.xml.in.in:111
+msgid "Meson: fix missing library headers"
+msgstr "Meson: ripari mankantajn kodotekajn kapdatumojn"
+
+#: data/io.elementary.files.appdata.xml.in.in:112
+msgid "Fix color tag display"
+msgstr "Ripari la aperon de kolora etikedo"
+
+#: data/io.elementary.files.appdata.xml.in.in:113
+msgid "Show reserved space in Properties window"
+msgstr "Montri rizervitajn spacojn ĉe la agorda fenestro"
+
+#: data/io.elementary.files.appdata.xml.in.in:121
+msgid "Add border radius to text background"
+msgstr "Aldoni randan radiuson al fona teksto"
+
+#: data/io.elementary.files.appdata.xml.in.in:122
+msgid "Fix file mimetype association regression"
+msgstr "Ripari regreson pro dosiera MIME-tipa asociigo"
+
+#: data/io.elementary.files.appdata.xml.in.in:123
+msgid "New pathbar tooltips"
+msgstr "Novaj dosierindikaj ŝpruchelpiloj"
+
+#: data/io.elementary.files.appdata.xml.in.in:124
+msgid "Build fixes"
+msgstr "Versiaj riparoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:132
+msgid "Plugin build fixes"
+msgstr "Kromaĵaj versiaj riparoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:140
+msgid "Fix Ctrl+Tab behavior"
+msgstr "Ripari konduton de Stir.+Tabo"
+
+#: data/io.elementary.files.appdata.xml.in.in:141
+msgid "Fix building without Unity library"
+msgstr "Ripari versiigon sen la kodoteko Unity"
+
+#: data/io.elementary.files.appdata.xml.in.in:148
+msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
+msgstr ""
+"Kaŝi la paĝnivelan navigilon kaj montri lokokupilon kaj serĉan bildeton en "
+"la hejma dosierujo"
+
+#: data/io.elementary.files.appdata.xml.in.in:149
+msgid "Style error dialogs"
+msgstr "Dialogoj pri stilaj eraroj"
+
+#: data/io.elementary.files.appdata.xml.in.in:150
+msgid "Right click fixes"
+msgstr "Riparoj pri dekstra klako"
+
+#: data/io.elementary.files.appdata.xml.in.in:151
+msgid "Reload recent view when privacy setting changes"
+msgstr "Reŝargi freŝvidon ĉe ŝanĝo de la privatecaj agordoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:152
+msgid "`Connect Server` fixes"
+msgstr "Riparoj pri  „Konekti servilon“"
+
+#: data/io.elementary.files.appdata.xml.in.in:153
+msgid "Do not activate multiple files with single click"
+msgstr "Ne aktivigi pli ol unu dosieron per unuopa klako"
+
+#: data/io.elementary.files.appdata.xml.in.in:154
+msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
+msgstr "Uzi klavon „Tabo“ por baskuli foskuson inter Vido kaj Flanka klavaro"
+
+#: data/io.elementary.files.appdata.xml.in.in:155
+msgid "Delete color tag database entries for trashed files"
+msgstr "Forigi la koloretikadajn datumbazaĵojn de rubujaĵoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:156
+msgid "Throttle tab closing"
+msgstr "Plirapidigi langetan fermon"
+
+#: data/io.elementary.files.appdata.xml.in.in:157
+msgid "`Ctrl` key fixes"
+msgstr "Riparoj de klavo „Stir.“"
+
+#: data/io.elementary.files.appdata.xml.in.in:158
+msgid "Drag and drop fixes"
+msgstr "Riparoj pri ŝovodemeto"
+
+#: data/io.elementary.files.appdata.xml.in.in:159
+msgid "Show icons in `Open with` menus"
+msgstr "Montri bildetojn en menuo „Malfermi per“"
+
+#: data/io.elementary.files.appdata.xml.in.in:160
+msgid "Tooltip fixes"
+msgstr "Ŝpruchelpaj riparoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:161
+msgid "Memory leak fixes"
+msgstr "Riparoj pri memoraj likoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:162
+msgid "Crash fixes"
+msgstr "Kraŝaj riparoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:163
+msgid "Trash: respect sound setting"
+msgstr "Rubujo: respekti la sonan agordon"
+
+#: data/io.elementary.files.appdata.xml.in.in:164
+msgid "Localization fixes"
+msgstr "Lokumigaj riparoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:172
+msgid "Over 100 major and minor bug fixes and improvements"
+msgstr "Pli ol 100 sencimigoj gravaj kaj mal-, kaj plibonigoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:179
+msgid "Honor 12/24hr system setting"
+msgstr "Respekti la sisteman agordon pri 12/24 horoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:180
+msgid "Distinguish between tabs with the same name"
+msgstr "Distingi inter samnomaj langetoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:181
+msgid "Support launching from other applications with a target file selected"
+msgstr "Subteni"
+
+#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:195
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:230
+msgid "New translations"
+msgstr "Novaj tradukoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:196
+#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:245
+#: data/io.elementary.files.appdata.xml.in.in:269
+msgid "Minor bug fixes"
+msgstr "Malgravaj sencimigoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:190
+msgid "Improved networking support"
+msgstr "Plibonigita reta subteno"
+
+#: data/io.elementary.files.appdata.xml.in.in:191
+msgid "Correct window geometry when snapping to left or right"
+msgstr "Korekti fenestran amplekson ĉe algluo dekstre aŭ mal-"
+
+#: data/io.elementary.files.appdata.xml.in.in:192
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+"Dum la agordo „Montri indikilon“ aktivas, premo de Stir. ne plu nuligas "
+"renomigon"
+
+#: data/io.elementary.files.appdata.xml.in.in:193
+msgid "Switching input language cancels actions"
+msgstr "Ŝanĝo de la eniga lingvo nuligas agojn"
+
+#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:229
+msgid "Various crash fixes"
+msgstr "Diversaj kraŝaj riparoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:203
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+"Foliumiloj kiel Mozila Fajrovulpo nun memoras la plej freŝdate uzitan "
+"dosierujon por elŝuto"
+
+#: data/io.elementary.files.appdata.xml.in.in:204
+msgid "Remember preferred zoom level"
+msgstr "Memori la zomnivelon"
+
+#: data/io.elementary.files.appdata.xml.in.in:205
+msgid "Improved input method support"
+msgstr "Plibonigi subtenon de eniga metodo"
+
+#: data/io.elementary.files.appdata.xml.in.in:206
+msgid "910x640 minimum window size"
+msgstr "910 × 640 minimuma fenestra amplekso"
+
+#: data/io.elementary.files.appdata.xml.in.in:207
+msgid "Security fixes"
+msgstr "Sekurecaj riparoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:217
+msgid "Enable drag and drop tabs between windows"
+msgstr "Ebligi ŝovdemeton de langetoj inter fenestroj"
+
+#: data/io.elementary.files.appdata.xml.in.in:227
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Kunfandi serĉajn funkciojn ĉe Stir.+F"
+
+#: data/io.elementary.files.appdata.xml.in.in:228
+msgid "Improved translation support"
+msgstr "Plibonigita traduka subteno"
+
+#: data/io.elementary.files.appdata.xml.in.in:252
+msgid "Fix appdata release dates"
+msgstr "Ripari eldonajn datojn de appdata"
+
+#: data/io.elementary.files.appdata.xml.in.in:259
+msgid "Improve file opening over Samba shares"
+msgstr "Plibonigi malfermon de dosieroj el Samba-kunhavigo"
+
+#: data/io.elementary.files.appdata.xml.in.in:260
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Ripari kraŝon ĉe restaŭro de elementoj el la rubujo"
+
+#: data/io.elementary.files.appdata.xml.in.in:261
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "Plibonigi tond/kopi/gluan sentivecon ĉe kunteksta menuo"
+
+#: data/io.elementary.files.appdata.xml.in.in:262
+msgid "Translation updates"
+msgstr "Tradukaj ĝisdatigoj"
+
+#: data/io.elementary.files.appdata.xml.in.in:274
+msgid "elementary LLC."
+msgstr "elementary LLC."
+
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "Lanĉi programon Dosieroj kiel administranto"
+
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Necesas aŭtentigon por lanĉi programon Dosieroj kiel administranto"
