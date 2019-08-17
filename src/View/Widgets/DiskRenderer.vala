@@ -20,36 +20,56 @@
 ***/
 
 public class Marlin.CellRendererDisk : Gtk.CellRendererText {
-    // padding to the right of the disk usage graphic
-    public int rpad { set; get; }
     public uint64 free_space { set; get; }
     public uint64 disk_size { set; get; }
+    public bool is_disk { set; get; }
 
     // offset to left align disk usage graphic with the text
     private const int OFFSET = 2;
-    private const int LEVEL_BAR_HEIGHT = 4;
+    private const int BAR_HEIGHT = 5;
 
-    public CellRendererDisk () {
-        rpad = 0;
+    construct {
+        is_disk = false;
+        disk_size = 0;
+        free_space = 0;
+    }
+
+    public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
+                                                         out int minimum_size, out int natural_size) {
+        int min, nat;
+        base.get_preferred_height_for_width (widget, width, out min, out nat);
+        natural_size = nat + BAR_HEIGHT;
+        minimum_size = min + BAR_HEIGHT;
     }
 
     public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle area, Gtk.CellRendererState flags) {
+
         base.render (cr, widget, bg_area, area, flags);
-        area.x += OFFSET;
-        area.width -= OFFSET;
 
-        if (free_space > 0) {
-            var context = widget.get_style_context ();
-            context.add_class ("level-bar");
-            uint width = area.width - rpad;
-            uint fill_width = width - (int) (((double) free_space / (double) disk_size) * ((double) area.width - 2));
-
-            context.render_background (cr, area.x, area.y + area.height - 3, width, LEVEL_BAR_HEIGHT);
-            context.add_class ("fill-block");
-            context.render_background (cr, area.x, area.y + area.height - 3, fill_width, LEVEL_BAR_HEIGHT);
-            context.remove_class ("fill-block");
-            context.render_frame (cr, area.x, area.y + area.height - 3, width, LEVEL_BAR_HEIGHT);
+        if (!is_disk) {
+            return;
         }
+
+        var x = area.x += OFFSET;
+        /* Draw bar on background area to allow room for space between bar and text */
+        var y = bg_area.y + bg_area.height - BAR_HEIGHT - 3;
+        var total_width = area.width - OFFSET - 2;
+        uint fill_width = total_width - (int) (((double) free_space / (double) disk_size) * (double) total_width);
+
+        var context = widget.get_style_context ();
+        context.save ();
+
+        /* White full length and height background */
+        context.add_class (Gtk.STYLE_CLASS_LEVEL_BAR);
+        context.add_class (Gtk.STYLE_CLASS_FRAME);
+        context.render_background (cr, x, y, total_width, BAR_HEIGHT);
+        context.render_frame (cr, x, y, total_width, BAR_HEIGHT);
+        /* Blue part of bar */
+        context.add_class ("fill-block");
+        context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
+        context.render_frame (cr, x, y, fill_width, BAR_HEIGHT);
+
+        context.restore ();
     }
 }
