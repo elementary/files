@@ -61,13 +61,14 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         context.save ();
 
         /* White full length and height background */
-        context.add_class ("level-bar");
-        context.add_class ("frame");
+        context.add_class (Gtk.STYLE_CLASS_LEVEL_BAR);
+        context.add_class (Gtk.STYLE_CLASS_FRAME);
         context.render_background (cr, x, y, total_width, BAR_HEIGHT);
         context.render_frame (cr, x, y, total_width, BAR_HEIGHT);
         /* Blue part of bar */
         context.add_class ("fill-block");
         context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
+        context.render_frame (cr, x, y, fill_width, BAR_HEIGHT);
 
         context.restore ();
     }
