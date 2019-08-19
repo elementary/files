@@ -1,6 +1,6 @@
 cloudproviders_plugin_dir = join_paths(plugin_dir, 'core')
 
-cloudproviders_dep = dependency('cloudproviders')
+cloudproviders_dep = dependency('cloudproviders', version: '>=0.3.0')
 
 shared_module(
     'pantheon-files-cloudproviders',
