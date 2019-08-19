@@ -19,7 +19,7 @@ Build-Depends: meson,
                libsqlite3-dev,
                libunity-dev (>= 4.0.0),
                libzeitgeist-2.0-dev,
-               libcloudproviders-dev,
+               libcloudproviders-dev (>= 0.3.0),
                valac (>= 0.28)
 Homepage: https://github.com/elementary/files
 Standards-Version: 4.1.1
