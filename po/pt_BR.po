@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2019-07-14 20:28+0000\n"
+"PO-Revision-Date: 2019-08-20 04:22+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.6.1\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: src/Application.vala:124
@@ -1085,21 +1085,21 @@ msgstr "Não foi possível renomear para '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:523
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "Hoje às %-H:%M"
+msgstr "Hoje às %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:529
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Ontem às %-H:%M"
+msgstr "Ontem às %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:535
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A às %-H:%M"
+msgstr "%%A às %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1111,14 +1111,12 @@ msgid "Preparing"
 msgstr "Preparando"
 
 #: libcore/marlin-file-operations.c:159
-#, fuzzy
 msgid "_Cancel"
-msgstr "Cancelar"
+msgstr "_Cancelar"
 
 #: libcore/marlin-file-operations.c:160
-#, fuzzy
 msgid "_Delete"
-msgstr "Removido:"
+msgstr "_Remover"
 
 #: libcore/marlin-file-operations.c:162
 msgid "S_kip All"
@@ -1581,66 +1579,66 @@ msgstr "O destino é somente para leitura."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2849
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Movendo \"%B\" para \"%B\""
+msgstr "Movendo \"%s\" para \"%s\""
 
 #: libcore/marlin-file-operations.c:2850
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Copiando \"%B\" para \"%B\""
+msgstr "Copiando \"%s\" para \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2854
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "Duplicando \"%B\""
+msgstr "Duplicando \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2862
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Movendo %'d arquivo (em \"%B\") para \"%B\""
-msgstr[1] "Movendo %'d arquivos (em \"%B\") para \"%B\""
+msgstr[0] "Movendo %'d arquivo (em \"%s\") para \"%s\""
+msgstr[1] "Movendo %'d arquivos (em \"%s\") para \"%s\""
 
 #: libcore/marlin-file-operations.c:2865
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Copiando %'d arquivo (em \"%B\") para \"%B\""
-msgstr[1] "Copiando %'d arquivos (em \"%B\") para \"%B\""
+msgstr[0] "Copiando %'d arquivo (em \"%s\") para \"%s\""
+msgstr[1] "Copiando %'d arquivos (em \"%s\") para \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2874
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Duplicando %'d arquivo (em \"%B\")"
-msgstr[1] "Duplicando %'d arquivos (em \"%B\")"
+msgstr[0] "Duplicando %'d arquivo (em \"%s\")"
+msgstr[1] "Duplicando %'d arquivos (em \"%s\")"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2887
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Movendo %'d arquivo para \"%B\""
-msgstr[1] "Movendo %'d arquivos para \"%B\""
+msgstr[0] "Movendo %'d arquivo para \"%s\""
+msgstr[1] "Movendo %'d arquivos para \"%s\""
 
 #: libcore/marlin-file-operations.c:2890
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Copiando %'d arquivo para \"%B\""
-msgstr[1] "Copiando %'d arquivos para \"%B\""
+msgstr[0] "Copiando %'d arquivo para \"%s\""
+msgstr[1] "Copiando %'d arquivos para \"%s\""
 
 #: libcore/marlin-file-operations.c:2896
 #, c-format
@@ -2279,7 +2277,7 @@ msgstr "Digite um caminho"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "Mais resultados …"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
