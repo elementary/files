@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2019-01-28 08:10+0000\n"
+"PO-Revision-Date: 2019-08-22 00:22+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@posteo.net>\n"
-"Language-Team: English (United Kingdom) <https://weblate.elementary.io/"
-"projects/files/files/en_GB/>\n"
+"Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
+"files/files/en_GB/>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: src/Application.vala:124
@@ -178,9 +178,8 @@ msgid "Deleted:"
 msgstr "Deleted:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
-#, fuzzy
 msgid "Media type:"
-msgstr "MIME type:"
+msgstr "Media type:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
@@ -333,12 +332,8 @@ msgid "Create the folder \"%s\""
 msgstr "Create the folder '%s'"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"Failed to create the folder\n"
-"\n"
-"%s"
+msgstr "Failed to create the folder"
 
 #: src/View/AbstractDirectoryView.vala:827
 #: src/View/AbstractDirectoryView.vala:1112
@@ -651,9 +646,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Show Remote Thumbnails"
 
 #: src/View/directory_view_popup.ui:75
-#, fuzzy
 msgid "Hide Local Thumbnails"
-msgstr "Show Remote Thumbnails"
+msgstr "Hide Local Thumbnails"
 
 #: src/View/directory_view_popup.ui:82
 msgid "New Tab"
@@ -1086,21 +1080,21 @@ msgstr "Could not rename to '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:523
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "Today at %-H:%M"
+msgstr "Today at %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:529
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Yesterday at %-H:%M"
+msgstr "Yesterday at %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:535
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A at %-H:%M"
+msgstr "%%A at %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1112,14 +1106,12 @@ msgid "Preparing"
 msgstr "Preparing"
 
 #: libcore/marlin-file-operations.c:159
-#, fuzzy
 msgid "_Cancel"
-msgstr "Cancel"
+msgstr "_Cancel"
 
 #: libcore/marlin-file-operations.c:160
-#, fuzzy
 msgid "_Delete"
-msgstr "Deleted:"
+msgstr "_Delete"
 
 #: libcore/marlin-file-operations.c:162
 msgid "S_kip All"
@@ -1579,66 +1571,66 @@ msgstr "The destination is read-only."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2849
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Moving '%B' to '%B'"
+msgstr "Moving \"%s\" to \"%s\""
 
 #: libcore/marlin-file-operations.c:2850
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Copying '%B' to '%B'"
+msgstr "Copying \"%s\" to \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2854
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "Duplicating '%B'"
+msgstr "Duplicating \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2862
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Moving %'d file (in '%B') to '%B'"
-msgstr[1] "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Moving %'d file (in \"%s\") to \"%s\""
+msgstr[1] "Moving %'d files (in \"%s\") to \"%s\""
 
 #: libcore/marlin-file-operations.c:2865
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Copying %'d file (in '%B') to '%B'"
-msgstr[1] "Copying %'d files (in '%B') to '%B'"
+msgstr[0] "Copying %'d file (in \"%s\") to \"%s\""
+msgstr[1] "Copying %'d files (in \"%s\") to \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2874
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Duplicating %'d file (in '%B')"
-msgstr[1] "Duplicating %'d files (in '%B')"
+msgstr[0] "Duplicating %'d file (in \"%s\")"
+msgstr[1] "Duplicating %'d files (in \"%s\")"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2887
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Moving %'d file to '%B'"
-msgstr[1] "Moving %'d files to '%B'"
+msgstr[0] "Moving %'d file to \"%s\""
+msgstr[1] "Moving %'d files to \"%s\""
 
 #: libcore/marlin-file-operations.c:2890
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Copying %'d file to '%B'"
-msgstr[1] "Copying %'d files to '%B'"
+msgstr[0] "Copying %'d file to \"%s\""
+msgstr[1] "Copying %'d files to \"%s\""
 
 #: libcore/marlin-file-operations.c:2896
 #, c-format
@@ -2276,7 +2268,7 @@ msgstr "Type Path"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "More Results …"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
