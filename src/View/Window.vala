@@ -434,7 +434,10 @@ namespace Marlin.View {
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                              bool ignore_duplicate = false) {
 
-            if (ignore_duplicate && location_is_duplicate (location)) {
+            if (ignore_duplicate) {
+                var existing_tab_position = location_is_duplicate (location);
+                tabs.current = tabs.get_tab_by_index (existing_tab_position);
+                change_tab (existing_tab_position);
                 return;
             }
 
@@ -464,16 +467,18 @@ namespace Marlin.View {
             content.add_view (mode, location);
         }
 
-        private bool location_is_duplicate (GLib.File location) {
+        private int location_is_duplicate (GLib.File location) {
+            int existing_position = -1;
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
+                existing_position++;
                 var content = (ViewContainer)(tab.page);
                 var tab_location = content.location;
                 if (location.equal (tab_location)) {
-                    return true;
+                    return existing_position;
                 }
             }
 
-            return false;
+            return -1;
         }
 
         private string check_for_tab_with_same_name (int id, string path) {
