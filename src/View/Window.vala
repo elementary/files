@@ -396,7 +396,10 @@ namespace Marlin.View {
             open_tabs ({file}, mode);
         }
 
-        public void open_tabs (File[]? files = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        public void open_tabs (File[]? files = null,
+                               Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                               bool ignore_duplicate = false) {
+
             if (files == null || files.length == 0 || files[0] == null) {
                 /* Restore session if not root and settings allow */
                 if (Posix.getuid () == 0 ||
@@ -413,7 +416,7 @@ namespace Marlin.View {
             } else {
                 /* Open tabs at each requested location */
                 foreach (var file in files) {
-                    add_tab (file, mode);
+                    add_tab (file, mode, ignore_duplicate);
                 }
             }
         }
@@ -428,7 +431,13 @@ namespace Marlin.View {
         }
 
         private void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
-                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                             bool ignore_duplicate = false) {
+
+            if (ignore_duplicate && location_is_duplicate (location)) {
+                return;
+            }
+
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
             var tab = new Granite.Widgets.Tab ("", null, content);
@@ -453,6 +462,18 @@ namespace Marlin.View {
             });
 
             content.add_view (mode, location);
+        }
+
+        private bool location_is_duplicate (GLib.File location) {
+            foreach (Granite.Widgets.Tab tab in tabs.tabs) {
+                var content = (ViewContainer)(tab.page);
+                var tab_location = content.location;
+                if (location.equal (tab_location)) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private string check_for_tab_with_same_name (int id, string path) {
