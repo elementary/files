@@ -126,8 +126,9 @@ public class MarlinTags : Object {
         foreach (var location_variant in locations) {
             VariantIter iter = location_variant.iterator ();
 
-            var uri = iter.next_value ().get_string ();
-            var directory = PF.FileUtils.escape_uri (PF.FileUtils.get_parent_path_from_path (uri));
+            var raw_uri = iter.next_value ().get_string ();
+            var uri = escape (raw_uri);
+            var directory = escape (PF.FileUtils.get_parent_path_from_path (raw_uri));
             var content_type = iter.next_value ().get_string ();
             var modified_time = iter.next_value ().get_string ();
             var color = iter.next_value ().get_string ();
@@ -145,7 +146,7 @@ public class MarlinTags : Object {
     }
 
     private string escape (string input) {
-        return input.replace ("'", "''");
+        return PF.FileUtils.escape_uri (input, true, false);
     }
 
     public async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError {

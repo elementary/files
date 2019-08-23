@@ -57,6 +57,7 @@ namespace Marlin.View.Chrome {
             public Icon icon { get; construct; }
             public File? file { get; construct; }
             public string sortkey { get; construct; }
+            public Category category { get; construct; }
 
             public Match (FileInfo info, string path_string, File parent, SearchResults.Category category) {
                 var _name = info.get_display_name ();
@@ -78,12 +79,12 @@ namespace Marlin.View.Chrome {
             }
 
             public Match.ellipsis (SearchResults.Category category) {
-                Object (name: "…",
+                Object (name: "<b>" + _("More Results …") + "</b>",
                         mime: "",
                         icon: null,
                         path_string: "",
                         file: null,
-                        sortkey: category.to_string ());
+                        sortkey: category.to_string () + "ELLIPSIS");
             }
         }
 
@@ -113,6 +114,8 @@ namespace Marlin.View.Chrome {
 
         int current_count;
         int deep_count;
+        int max_results = MAX_RESULTS;
+        int max_depth = MAX_DEPTH;
 
         bool local_search_finished = false;
         bool global_search_finished = false;
@@ -259,7 +262,11 @@ namespace Marlin.View.Chrome {
 
         public void search (string term, File folder) {
             device = Gtk.get_current_event_device ();
-            search_term = term.normalize ().casefold ();
+            if (term.normalize ().casefold () != search_term) {
+                search_term = term.normalize ().casefold ();
+                max_results = MAX_RESULTS;
+                max_depth = MAX_DEPTH;
+            }
 
             if (device != null && device.input_source == Gdk.InputSource.KEYBOARD) {
                 device = device.associated_device;
@@ -811,17 +818,25 @@ namespace Marlin.View.Chrome {
             }
 
             File? file = null;
-
+            string sortkey = "";
             /* It is important that the next line is not put into an if clause.
              * For reasons unknown, doing so causes a segmentation fault on some systems but not
              * others.  Any changes to the format and content of the accept () function should be
              * carefully checked for stability on a range of systems which differ in architecture,
              * speed and configuration.
              */
-            list.@get (accepted, 3, out file);
 
+
+            list.@get (accepted, 3, out file);
+            list.@get (accepted, 5, out sortkey);
             if (file == null) {
-                Gdk.beep ();
+                if (sortkey.contains ("ELLIPSIS")) {
+                    max_results += MAX_RESULTS;
+                    max_depth += 1;
+                    search (search_term, current_root);
+                } else {
+                    Gdk.beep ();
+                }
                 return;
             }
 
@@ -928,7 +943,7 @@ namespace Marlin.View.Chrome {
                 depth++;
             }
 
-            if (depth > MAX_DEPTH) {
+            if (depth > max_depth) {
                 return;
             }
 
@@ -947,7 +962,7 @@ namespace Marlin.View.Chrome {
             try {
                 while (!cancel.is_cancelled () &&
                        (info = enumerator.next_file (null)) != null &&
-                       category_count < MAX_RESULTS) {
+                       category_count < max_results) {
 
                     if (info.get_is_hidden () && !include_hidden) {
                         continue;
@@ -987,13 +1002,13 @@ namespace Marlin.View.Chrome {
                     return GLib.Source.REMOVE;
                 });
 
-                if (category_count >= MAX_RESULTS) {
+                if (category_count >= max_results) {
                     cat = in_root ? Category.CURRENT_ELLIPSIS : Category.DEEP_ELLIPSIS;
                     new_results.add (new Match.ellipsis (cat));
                     return;
                 }
 
-                if (current_count >= MAX_RESULTS && deep_count >= MAX_RESULTS) {
+                if (current_count >= max_results && deep_count >= max_results) {
                     cancel.cancel ();
                 }
             }
@@ -1008,7 +1023,7 @@ namespace Marlin.View.Chrome {
                                                  new Zeitgeist.TimeRange.anytime (),
                                                  templates,
                                                  0, /* offset */
-                                                 MAX_RESULTS * 3,
+                                                 max_results * 3,
                                                  Zeitgeist.ResultType.MOST_POPULAR_SUBJECTS,
                                                  current_operation);
             } catch (IOError.CANCELLED e) {
@@ -1030,7 +1045,7 @@ namespace Marlin.View.Chrome {
             while (results.has_next () && !current_operation.is_cancelled () && !global_search_finished) {
                 var result = results.next_value ();
                 foreach (var subject in result.subjects.data) {
-                    if (i == MAX_RESULTS) {
+                    if (i == max_results) {
                         matches.add (new Match.ellipsis (Category.ZEITGEIST_ELLIPSIS));
                         global_search_finished = true;
                         break;

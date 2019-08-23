@@ -20,44 +20,46 @@
  * Authored by: Corentin Noël <tintou@mailoo.org>
  */
 
-public class PantheonModule.FileChooserDialog : GLib.Object {
-    /* Catching dialogs section by: tintou (https://launchpad.net/~tintou) */
-    Gee.TreeSet<unowned Gtk.FileChooserDialog> tree_set;
-    public FileChooserDialog () {
-        tree_set = new Gee.TreeSet<unowned Gtk.FileChooserDialog> ();
-        /* We need to register the Gtk.Dialog class first */
-        (typeof (Gtk.Dialog)).class_ref ();
-        /* It's the only way to get every new window */
-        var map_id = GLib.Signal.lookup ("window-state-event", typeof (Gtk.Dialog));
-        GLib.Signal.add_emission_hook (map_id, 0, (ihint, param_values) => {
-            if (param_values[0].type () == typeof (Gtk.FileChooserDialog)) {
-                var dialog = (Gtk.FileChooserDialog)param_values [0];//.dup_object ();
-                if (tree_set.contains (dialog) == false) {
-                    tree_set.add (dialog);
-                    var dialog_new = new CustomFileChooserDialog (dialog);
-                    dialog.set_data<CustomFileChooserDialog> ("pantheon_dialog", dialog_new);
-                    dialog.destroy.connect (() => {
-                        dialog.steal_data<CustomFileChooserDialog> ("pantheon_dialog");
-                        tree_set.remove (dialog);
-                    });
-                }
-            }
+private static Gee.HashMap<unowned Gtk.FileChooserDialog, CustomFileChooserDialog> hash_map;
+private static bool window_state_event_hook (GLib.SignalInvocationHint ihint, GLib.Value[] param_values) {
 
-            return true;
-#if VALA_0_42
-        });
-#else
-        }, null);
-#endif
+    if (!param_values[0].type ().is_a (typeof (Gtk.FileChooserDialog))) {
+        return true;
     }
+
+    if (hash_map == null) {
+        hash_map = new Gee.HashMap<unowned Gtk.FileChooserDialog, CustomFileChooserDialog> ();
+    }
+
+    // We grab a reference here
+    Gtk.FileChooserDialog dialog = (Gtk.FileChooserDialog)param_values[0];
+    if (!hash_map.has_key (dialog)) {
+        var custom_dialog = new CustomFileChooserDialog (dialog);
+        hash_map[dialog] = custom_dialog;
+        dialog.destroy.connect (() => {
+            hash_map.unset (dialog);
+            if (hash_map.is_empty) {
+                hash_map = null;
+            }
+        });
+    }
+
+    return true;
 }
 
-public static PantheonModule.FileChooserDialog filechooser_module = null;
 public void gtk_module_init ([CCode (array_length_cname = "argc", array_length_pos = 0.5)] ref unowned string[]? argv) {
     if (Gtk.check_version (3, 14, 0) == null) {
         var appinfo = AppInfo.get_default_for_type ("inode/directory", true);
         if (appinfo.get_executable () == "io.elementary.files") {
-            filechooser_module = new PantheonModule.FileChooserDialog ();
+            /* We need to register the Gtk.Dialog class first */
+            (typeof (Gtk.Dialog)).class_ref ();
+            /* It's the only way to get every new window */
+            var map_id = GLib.Signal.lookup ("window-state-event", typeof (Gtk.Dialog));
+#if VALA_0_42
+            GLib.Signal.add_emission_hook (map_id, 0, window_state_event_hook);
+#else
+            GLib.Signal.add_emission_hook (map_id, 0, window_state_event_hook, null);
+#endif
         }
     } else {
         warning ("The required GTK version is 3.14");

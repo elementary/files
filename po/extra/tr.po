@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2019-04-07 16:53+0000\n"
+"POT-Creation-Date: 2019-07-15 10:30-0700\n"
+"PO-Revision-Date: 2019-08-23 00:22+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -37,15 +37,16 @@ msgstr "klasör;yönetici;keşfet;disk;dosya sistemi;"
 msgid "File Manager"
 msgstr "Dosya Yöneticisi"
 
-#: data/io.elementary.files.desktop.in.in:8
+#. TRANSLATORS This string is an icon name and should not be translated.
+#: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: data/io.elementary.files.desktop.in.in:19
+#: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-#: data/io.elementary.files.desktop.in.in:23
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
 msgstr "Yönetici Olarak Yeni Pencere"
 
@@ -66,84 +67,332 @@ msgstr ""
 "bulabilirsiniz. Tüm dosyalarınıza erişebilir, yerel dosyalarınızı harici "
 "cihazla ya da FTP, SFTP, AFP, Webdav ve Windows ile paylaşabilirsiniz."
 
-#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:64
+msgid "Keyboard navigation fix for cherry picking select files in icon view"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:65
+msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:86
+#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:165
+msgid "Updated translations"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:73
+msgid "Minor spacing adjustments to location bar"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:74
+msgid "Fix F2 renaming behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:82
+msgid "Minor spacing adjustments to location breadcrumbs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:83
+msgid "Consistently remember color tags"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:84
+msgid ""
+"Reload thumbnails when changing zoom level to avoid showing placeholder "
+"unnecessarily"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:85
+msgid "Fix running scripts with spaces in filename"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:93
+msgid "Fix high CPU regression in version 4.1.4"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:94
+msgid "File sorting fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:102
+msgid "Meson: fix soversion names"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:103
+msgid "Remove CMake build system"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:104
+msgid "Fix missing File System properties menu"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:105
+msgid "Drop intltool dependency"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:106
+msgid "Fix default file type handler logic"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:107
+msgid "Fix initial search window size too small"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:108
+msgid "Add option to disable local file thumbnails"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:109
+msgid "Fix crash when opening multiple video files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:110
+msgid "Fix some timing issues around adding and removing files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:111
+msgid "Meson: fix missing library headers"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:112
+msgid "Fix color tag display"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:113
+msgid "Show reserved space in Properties window"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:121
+msgid "Add border radius to text background"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:122
+msgid "Fix file mimetype association regression"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:123
+msgid "New pathbar tooltips"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:124
+msgid "Build fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:132
+msgid "Plugin build fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:140
+msgid "Fix Ctrl+Tab behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:141
+msgid "Fix building without Unity library"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:148
+msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:149
+msgid "Style error dialogs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:150
+msgid "Right click fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:151
+msgid "Reload recent view when privacy setting changes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:152
+msgid "`Connect Server` fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:153
+msgid "Do not activate multiple files with single click"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:154
+msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:155
+msgid "Delete color tag database entries for trashed files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:156
+msgid "Throttle tab closing"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:157
+msgid "`Ctrl` key fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:158
+msgid "Drag and drop fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:159
+msgid "Show icons in `Open with` menus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:160
+msgid "Tooltip fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:161
+msgid "Memory leak fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:162
+msgid "Crash fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:163
+msgid "Trash: respect sound setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:164
+msgid "Localization fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:172
+msgid "Over 100 major and minor bug fixes and improvements"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:179
+msgid "Honor 12/24hr system setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:180
+msgid "Distinguish between tabs with the same name"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:181
+msgid "Support launching from other applications with a target file selected"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:195
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:230
+msgid "New translations"
+msgstr "Yeni çeviriler"
+
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:196
+#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:245
+#: data/io.elementary.files.appdata.xml.in.in:269
+msgid "Minor bug fixes"
+msgstr "Küçük hata düzeltmeleri"
+
+#: data/io.elementary.files.appdata.xml.in.in:190
+msgid "Improved networking support"
+msgstr "Geliştirilmiş ağ desteği"
+
+#: data/io.elementary.files.appdata.xml.in.in:191
+msgid "Correct window geometry when snapping to left or right"
+msgstr "Sola veya sağa yapıştırmada doğru pencere geometrisi"
+
+#: data/io.elementary.files.appdata.xml.in.in:192
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+"\"İşaretçiyi Göster\" ayarı etkinken Ctrl'ye basmak artık yeniden "
+"adlandırmayı iptal etmiyor"
+
+#: data/io.elementary.files.appdata.xml.in.in:193
+msgid "Switching input language cancels actions"
+msgstr "Giriş dilinin değiştirilmesi işlemleri iptal eder"
+
+#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:229
+msgid "Various crash fixes"
+msgstr "Çeşitli kilitlenme düzeltmeleri"
+
+#: data/io.elementary.files.appdata.xml.in.in:203
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+"Firefox gibi tarayıcılar artık en son kullanılan indirme klasörünü "
+"hatırlayacak"
+
+#: data/io.elementary.files.appdata.xml.in.in:204
+msgid "Remember preferred zoom level"
+msgstr "Tercih edilen yakınlaştırma seviyesini ayarla"
+
+#: data/io.elementary.files.appdata.xml.in.in:205
+msgid "Improved input method support"
+msgstr "Geliştirilmiş giriş metodu desteği"
+
+#: data/io.elementary.files.appdata.xml.in.in:206
+msgid "910x640 minimum window size"
+msgstr "Minimum pencere boyutu(910x640)"
+
+#: data/io.elementary.files.appdata.xml.in.in:207
+msgid "Security fixes"
+msgstr "Güvenlik Güncellemeleri"
+
+#: data/io.elementary.files.appdata.xml.in.in:217
+msgid "Enable drag and drop tabs between windows"
+msgstr "Pencelere arasında sürükle ve bırak özelliğini etkinleştirin"
+
+#: data/io.elementary.files.appdata.xml.in.in:227
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Arama işlevselliğini Ctrl+F 'ye birleştir"
+
+#: data/io.elementary.files.appdata.xml.in.in:228
+msgid "Improved translation support"
+msgstr "Geliştirilmiş çeviri desteği"
+
+#: data/io.elementary.files.appdata.xml.in.in:252
+msgid "Fix appdata release dates"
+msgstr "Uygulama verisi sürüm tarihlerini düzelt"
+
+#: data/io.elementary.files.appdata.xml.in.in:259
+msgid "Improve file opening over Samba shares"
+msgstr "Samba paylaşımları üzerinden dosya açmayı geliştirin"
+
+#: data/io.elementary.files.appdata.xml.in.in:260
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Çöp kutusundaki öğeleri geri yüklerken bir kilitlenme düzeltildi"
+
+#: data/io.elementary.files.appdata.xml.in.in:261
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "Bağlam menüsünde kesme/kopyalama/ yapıştırma hassasiyetini geliştirin"
+
+#: data/io.elementary.files.appdata.xml.in.in:262
+msgid "Translation updates"
+msgstr "Çeviri güncellemeleri"
+
+#: data/io.elementary.files.appdata.xml.in.in:274
 msgid "elementary LLC."
 msgstr "elementary LLC."
 
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "Pantheon Dosyalar'ı yönetici olarak çalıştır"
+
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Dosyaları Yönetici olarak çalıştırmak için kimlik doğrulama gerekir"
+
 #~ msgid "About Files"
 #~ msgstr "Dosyalar Hakkında"
-
-#~ msgid "Improved networking support"
-#~ msgstr "Geliştirilmiş ağ desteği"
-
-#~ msgid "Correct window geometry when snapping to left or right"
-#~ msgstr "Sola veya sağa yapıştırmada doğru pencere geometrisi"
-
-#~ msgid ""
-#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-#~ "setting is active"
-#~ msgstr ""
-#~ "\"İşaretçiyi Göster\" ayarı etkinken Ctrl'ye basmak artık yeniden "
-#~ "adlandırmayı iptal etmiyor"
-
-#~ msgid "Switching input language cancels actions"
-#~ msgstr "Giriş dilinin değiştirilmesi işlemleri iptal eder"
-
-#~ msgid "Various crash fixes"
-#~ msgstr "Çeşitli kilitlenme düzeltmeleri"
-
-#~ msgid "New translations"
-#~ msgstr "Yeni çeviriler"
-
-#~ msgid "Minor bug fixes"
-#~ msgstr "Küçük hata düzeltmeleri"
-
-#~ msgid ""
-#~ "Web browsers like Firefox now remember the most recently used downloads "
-#~ "directory"
-#~ msgstr ""
-#~ "Firefox gibi tarayıcılar artık en son kullanılan indirme klasörünü "
-#~ "hatırlayacak"
-
-#~ msgid "Remember preferred zoom level"
-#~ msgstr "Tercih edilen yakınlaştırma seviyesini ayarla"
-
-#~ msgid "Improved input method support"
-#~ msgstr "Geliştirilmiş giriş metodu desteği"
-
-#~ msgid "910x640 minimum window size"
-#~ msgstr "Minimum pencere boyutu(910x640)"
-
-#~ msgid "Security fixes"
-#~ msgstr "Güvenlik Güncellemeleri"
-
-#~ msgid "Enable drag and drop tabs between windows"
-#~ msgstr "Pencelere arasında sürükle ve bırak özelliğini etkinleştirin"
-
-#~ msgid "Merge search functionality into Ctrl+F"
-#~ msgstr "Arama işlevselliğini Ctrl+F 'ye birleştir"
-
-#~ msgid "Improved translation support"
-#~ msgstr "Geliştirilmiş çeviri desteği"
-
-#~ msgid "Fix appdata release dates"
-#~ msgstr "Uygulama verisi sürüm tarihlerini düzelt"
-
-#~ msgid "Improve file opening over Samba shares"
-#~ msgstr "Samba paylaşımları üzerinden dosya açmayı geliştirin"
-
-#~ msgid "Fix a crash when restoring items from the Trash"
-#~ msgstr "Çöp kutusundaki öğeleri geri yüklerken bir kilitlenme düzeltildi"
-
-#~ msgid "Improve cut/copy/paste sensitivity in context menu"
-#~ msgstr ""
-#~ "Bağlam menüsünde kesme/kopyalama/ yapıştırma hassasiyetini geliştirin"
-
-#~ msgid "Translation updates"
-#~ msgstr "Çeviri güncellemeleri"
-
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "Pantheon Dosyalar'ı yönetici olarak çalıştır"
-
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "Dosyaları Yönetici olarak çalıştırmak için kimlik doğrulama gerekir"

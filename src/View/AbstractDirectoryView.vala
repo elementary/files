@@ -213,9 +213,6 @@ namespace FM {
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
 
-        /* Rapid keyboard paste support */
-        protected bool select_added_files = false;
-
         public bool renaming {get; protected set; default = false;}
 
         private bool _is_frozen = false;
@@ -249,7 +246,7 @@ namespace FM {
             }
         }
 
-        protected bool tree_frozen = false;
+        protected bool tree_frozen { get; set; default = false; }
         private bool in_trash = false;
         private bool in_recent = false;
         private bool in_network_root = false;
@@ -438,43 +435,55 @@ namespace FM {
             }
         }
 
+        /* This function is only called by Slot in order to select a file item after loading has completed.
+         * If called before initial loading is complete then tree_frozen is true.  Otherwise, e.g. when selecting search items
+         * tree_frozen is false.
+         */
+        private ulong select_source_handler = 0;
         public void select_glib_files_when_thawed (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
-            GLib.List<GOF.File>? file_list = null;
-
+            var files_to_select_list = new Gee.LinkedList<GOF.File> ();
             location_list.@foreach ((loc) => {
-                file_list.prepend (GOF.File.@get (loc));
+                files_to_select_list.add (GOF.File.@get (loc));
             });
 
-            GLib.File? focus = focus_location != null ? focus_location.dup () : null;
+            GLib.File? focus_after_select = focus_location != null ? focus_location.dup () : null;
 
             /* Because the Icon View disconnects the model while loading, we need to wait until
-             * the tree is thawed and the model reconnected before selecting the files */
-            Idle.add_full (GLib.Priority.LOW, () => {
-                if (!tree_frozen) {
-                    select_file_paths (file_list, focus);
-                    /* Update menu and selected file list now in case autoselected */
-                    update_selected_files_and_menu ();
-                    return GLib.Source.REMOVE;
-                } else {
-                    return GLib.Source.CONTINUE;
-                }
-            });
+             * the tree is thawed and the model reconnected before selecting the files.
+             * Using a timeout helps ensure that the files appear in the model before selecting. Using an Idle
+             * sometimes results in the pasted file not being selected because it is not found yet in the model. */
+            if (tree_frozen) {
+                select_source_handler = notify["tree-frozen"].connect (() => {
+                    select_files_and_update_if_thawed (files_to_select_list, focus_after_select);
+                });
+            } else {
+                select_files_and_update_if_thawed (files_to_select_list, focus_after_select);
+            }
         }
 
-        private void select_file_paths (GLib.List<GOF.File> files, GLib.File? focus) {
+        private void select_files_and_update_if_thawed (Gee.LinkedList<GOF.File> files_to_select, GLib.File? focus_file) {
+            if (tree_frozen) {
+                return;
+            }
+
+            if (select_source_handler > 0) {
+                disconnect (select_source_handler);
+                select_source_handler = 0;
+            }
+
             Gtk.TreeIter iter;
             disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
 
             uint count = 0;
 
-            foreach (GOF.File f in files) {
+            foreach (GOF.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
                 if (model.get_first_iter_for_file (f, out iter)) {
                     count++;
                     var path = model.get_path (iter);
                     /* Cursor follows if matches focus location*/
-                    select_path (path, focus != null && focus.equal (f.location));
+                    select_path (path, focus_file != null && focus_file.equal (f.location));
                 }
             }
 
@@ -484,6 +493,8 @@ namespace FM {
 
             connect_tree_signals ();
             on_view_selection_changed (); /* Mark selected_file list as invalid */
+            /* Update menu and selected file list now in case autoselected */
+            update_selected_files_and_menu ();
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -904,10 +915,10 @@ namespace FM {
             }
         }
 
-        private void add_file (GOF.File file, GOF.Directory.Async dir) {
+        private void add_file (GOF.File file, GOF.Directory.Async dir, bool select = true) {
             model.add_file (file, dir);
 
-            if (select_added_files) {
+            if (select) { /* This true once view finished loading */
                 add_gof_file_to_selection (file);
             }
         }
@@ -1181,7 +1192,7 @@ namespace FM {
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
-                    sort_column_id = get_column_id_from_string (col_name);
+                    sort_column_id = FM.ListModel.ColumnID.from_string (col_name);
                 }
 
                 if (reverse) {
@@ -1228,32 +1239,9 @@ namespace FM {
         }
 
         public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
-            if (pointer == null) {
-                return;
-            }
+            /* Pasted and dragged files are automatically selected now */
 
-            var view = pointer as FM.AbstractDirectoryView;
-            if (view == null) {
-                warning ("view no longer valid after pasting files");
-                return;
-            }
-
-            if (uris == null || uris.size () == 0) {
-                return;
-            }
-
-            Idle.add (() => {
-                /* Select the most recently pasted files */
-                GLib.List<GLib.File> pasted_files_list = null;
-                uris.foreach ((k, v) => {
-                    if (k is GLib.File) {
-                        pasted_files_list.prepend (k as File);
-                    }
-                });
-
-                view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
-                return GLib.Source.REMOVE;
-            });
+            /* This function can be used if any other process is needed on the pasted files */
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1283,7 +1271,7 @@ namespace FM {
 
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File? file) {
             if (file != null) {
-                add_file (file, dir);
+                add_file (file, dir, true); /* Always select files added to view after initial load */
                 handle_free_space_change ();
             } else {
                 critical ("Null file added");
@@ -1291,8 +1279,8 @@ namespace FM {
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
-            select_added_files = false;
-            add_file (file, dir); /* no freespace change signal required */
+            add_file (file, dir, false); /* Do not select files added during initial load */
+            /* no freespace change signal required */
         }
 
         private void on_directory_file_changed (GOF.Directory.Async dir, GOF.File file) {
@@ -1644,7 +1632,6 @@ namespace FM {
                                     unselect_all ();
                                 }
 
-                                select_added_files = true;
                                 success = dnd_handler.handle_file_drag_actions (get_real_view (),
                                                                                 window,
                                                                                 context,
@@ -2161,7 +2148,11 @@ namespace FM {
         private GLib.MenuModel? build_menu_templates () {
             /* Potential optimisation - do just once when app starts or view created */
             templates = null;
-            var template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            if (template_path == null) {
+                return null;
+            }
+
             var template_folder = GLib.File.new_for_path (template_path);
             load_templates_from_folder (template_folder);
 
@@ -2273,7 +2264,7 @@ namespace FM {
             Gtk.SortType sort_order;
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                GLib.Variant val = new GLib.Variant.string (get_string_from_column_id (sort_column_id));
+                GLib.Variant val = new GLib.Variant.string (((FM.ListModel.ColumnID)sort_column_id).to_string ());
                 action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
@@ -2903,6 +2894,17 @@ namespace FM {
                     }
 
                     res = move_cursor (keyval, only_shift_pressed, control_pressed);
+                    break;
+
+                case Gdk.Key.Home:
+                    res = only_shift_pressed &&
+                          handle_multi_select (new Gtk.TreePath.from_indices (0));
+
+                    break;
+
+                case Gdk.Key.End:
+                    res = only_shift_pressed &&
+                          handle_multi_select (new Gtk.TreePath.from_indices (model.get_length ()));
 
                     break;
 
@@ -3209,14 +3211,18 @@ namespace FM {
         }
 
         protected void block_drag_and_drop () {
-            drag_data = view.get_data ("gtk-site-data");
-            GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
-            dnd_disabled = true;
+            if (!dnd_disabled) {
+                drag_data = view.get_data ("gtk-site-data");
+                GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                dnd_disabled = true;
+            }
         }
 
         protected void unblock_drag_and_drop () {
-            GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
-            dnd_disabled = false;
+            if (dnd_disabled) {
+                GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                dnd_disabled = false;
+            }
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
@@ -3395,9 +3401,7 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
-            if (dnd_disabled) {
-                unblock_drag_and_drop ();
-            }
+            unblock_drag_and_drop ();
 
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
