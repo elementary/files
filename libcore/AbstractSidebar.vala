@@ -59,6 +59,8 @@ namespace Marlin {
             PLUGIN_CALLBACK,
             MENU_MODEL,
             COLOR,
+            ACTION_GROUP_NAMESPACE,
+            ACTION_GROUP,
             COUNT
         }
 
@@ -91,7 +93,10 @@ namespace Marlin {
                                         typeof (uint64),            /* For disks, total size */
                                         typeof (Marlin.PluginCallbackFunc),
                                         typeof (GLib.MenuModel),
-                                        typeof (string)
+                                        typeof (string),
+                                        typeof (GLib.MenuModel),    /* MenuModel for external menus */
+                                        typeof (string),            /* Action group namespace */
+                                        typeof (GLib.ActionGroup)   /* Action group with MenuModel's actions */
                                         );
 
             content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);

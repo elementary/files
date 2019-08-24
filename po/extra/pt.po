@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-07-26 23:57+0000\n"
+"PO-Revision-Date: 2019-08-23 00:22+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -70,10 +70,14 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+"Correção de navegação do teclado para seleção de ficheiros selecionados no "
+"modo de exibição de ícones"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
+"Não codifique o estilo de texto do marcador de posição da pesquisa, corrige "
+"a questão do tema escuro"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:75
@@ -96,25 +100,27 @@ msgstr "Corrigir comportamento de renomeação do F2"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "Ajustes de espaçamento menores para a localização de breadcrumbs"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Consistently remember color tags"
-msgstr ""
+msgstr "Lembrar consistentemente as etiquetas coloridas"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
 msgstr ""
+"Recarregue as miniaturas ao alterar o nível de zoom para evitar exibir "
+"espaço reservado desnecessariamente"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Fix running scripts with spaces in filename"
-msgstr ""
+msgstr "Corrigir a execução de scripts com espaços no nome do ficheiro"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr ""
+msgstr "Corrigir regressão de CPU elevado na versão 4.1.4"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "File sorting fixes"
@@ -122,166 +128,172 @@ msgstr "Correções de classificação de ficheiros"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Meson: fix soversion names"
-msgstr ""
+msgstr "Meson: corrige nomes de soversion"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Remove CMake build system"
-msgstr ""
+msgstr "Remover o sistema de compilação do CMake"
 
 #: data/io.elementary.files.appdata.xml.in.in:104
 msgid "Fix missing File System properties menu"
-msgstr ""
+msgstr "Corrigir o menu de propriedades do sistema de ficheiros ausente"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Drop intltool dependency"
-msgstr ""
+msgstr "Larga a dependência do intltool"
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Fix default file type handler logic"
-msgstr ""
+msgstr "Corrige a lógica do manipulador de tipo de ficheiro padrão"
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Fix initial search window size too small"
-msgstr ""
+msgstr "Corrige o tamanho da janela de pesquisa inicial muito pequena"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Add option to disable local file thumbnails"
-msgstr ""
+msgstr "Adicionar opção para desativar miniaturas de ficheiros locais"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Fix crash when opening multiple video files"
-msgstr "Corrigir falha ao abrir vários ficheiros de vídeo"
+msgstr "Corrige falha ao abrir vários ficheiros de vídeo"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix some timing issues around adding and removing files"
 msgstr ""
+"Corrige alguns problemas de tempo em torno de adicionar e remover ficheiros"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Meson: fix missing library headers"
-msgstr ""
+msgstr "Meson: corrige cabeçalhos de biblioteca ausentes"
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Fix color tag display"
-msgstr ""
+msgstr "Corrige exibição da cor da etiqueta"
 
 #: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Show reserved space in Properties window"
-msgstr ""
+msgstr "Mostrar espaço reservado na janela Propriedades"
 
 #: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Add border radius to text background"
-msgstr ""
+msgstr "Adicionar raio de borda ao plano de fundo do texto"
 
 #: data/io.elementary.files.appdata.xml.in.in:122
 msgid "Fix file mimetype association regression"
-msgstr ""
+msgstr "Corrige a regressão de associação de tipo MIME"
 
 #: data/io.elementary.files.appdata.xml.in.in:123
 msgid "New pathbar tooltips"
-msgstr ""
+msgstr "Novas dicas da barra de caminho"
 
 #: data/io.elementary.files.appdata.xml.in.in:124
 msgid "Build fixes"
 msgstr "Correções de criação"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
-#, fuzzy
 msgid "Plugin build fixes"
-msgstr "Pequenas correções de erros"
+msgstr "Correções de construção de plugins"
 
 #: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Fix Ctrl+Tab behavior"
-msgstr ""
+msgstr "Corrigir o comportamento do Ctrl+Tab"
 
 #: data/io.elementary.files.appdata.xml.in.in:141
 msgid "Fix building without Unity library"
-msgstr ""
+msgstr "Corrige a construção sem biblioteca de Unidades"
 
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
+"Ocultar breadcrumbs e mostrar espaço reservado e ícone de pesquisa na pasta "
+"inicial"
 
 #: data/io.elementary.files.appdata.xml.in.in:149
 msgid "Style error dialogs"
-msgstr ""
+msgstr "Diálogos de erro de estilo"
 
 #: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Right click fixes"
-msgstr ""
+msgstr "Correcções com o botão direito do rato"
 
 #: data/io.elementary.files.appdata.xml.in.in:151
 msgid "Reload recent view when privacy setting changes"
 msgstr ""
+"Recarregue a visualização recente quando a configuração de privacidade "
+"alterar"
 
 #: data/io.elementary.files.appdata.xml.in.in:152
 msgid "`Connect Server` fixes"
-msgstr ""
+msgstr "Correções do `Conectar Servidor`"
 
 #: data/io.elementary.files.appdata.xml.in.in:153
 msgid "Do not activate multiple files with single click"
-msgstr ""
+msgstr "Não ative vários ficheiros com um único clique"
 
 #: data/io.elementary.files.appdata.xml.in.in:154
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
+msgstr "Use `Tab` para alternar a vista e barra lateral no foco do teclado"
 
 #: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Delete color tag database entries for trashed files"
 msgstr ""
+"Eliminar entradas do banco de dados da cor das etiquetas para os ficheiros "
+"do lixo"
 
 #: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Throttle tab closing"
-msgstr ""
+msgstr "Fecho do separador do acelerador"
 
 #: data/io.elementary.files.appdata.xml.in.in:157
 msgid "`Ctrl` key fixes"
-msgstr ""
+msgstr "Correções da tecla `Ctrl`"
 
 #: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Drag and drop fixes"
-msgstr ""
+msgstr "Correções do arrastar e largar"
 
 #: data/io.elementary.files.appdata.xml.in.in:159
 msgid "Show icons in `Open with` menus"
-msgstr ""
+msgstr "Mostrar ícones nos menus `Abrir com`"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Tooltip fixes"
-msgstr ""
+msgstr "Correções de dica de ferramenta"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
-#, fuzzy
 msgid "Memory leak fixes"
-msgstr "Pequenas correções de erros"
+msgstr "Correções de vazamento de memória"
 
 #: data/io.elementary.files.appdata.xml.in.in:162
-#, fuzzy
 msgid "Crash fixes"
-msgstr "Várias correções de crashes"
+msgstr "Correções de falhas"
 
 #: data/io.elementary.files.appdata.xml.in.in:163
 msgid "Trash: respect sound setting"
-msgstr ""
+msgstr "Lixo: respeite a definição do som"
 
 #: data/io.elementary.files.appdata.xml.in.in:164
 msgid "Localization fixes"
-msgstr ""
+msgstr "Correções de localização"
 
 #: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr ""
+msgstr "Mais de 100 correções e melhorias de erros principais e menores"
 
 #: data/io.elementary.files.appdata.xml.in.in:179
 msgid "Honor 12/24hr system setting"
-msgstr ""
+msgstr "Honra a definição do sistema de 12/24hr"
 
 #: data/io.elementary.files.appdata.xml.in.in:180
 msgid "Distinguish between tabs with the same name"
-msgstr ""
+msgstr "Distinguir entre separadores com o mesmo nome"
 
 #: data/io.elementary.files.appdata.xml.in.in:181
 msgid "Support launching from other applications with a target file selected"
 msgstr ""
+"Suporte ao lançamento de outras aplicações com um ficheiro de destino "
+"selecionado"
 
 #: data/io.elementary.files.appdata.xml.in.in:182
 #: data/io.elementary.files.appdata.xml.in.in:195

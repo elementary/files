@@ -30,6 +30,18 @@ public class PopupMenuBuilder : Object {
         return popupmenu;
     }
 
+    public Gtk.Menu build_from_model (MenuModel model, string? action_group_namespace = null, ActionGroup? action_group = null) {
+        var menu = new Gtk.Menu.from_model (model);
+        menu.insert_action_group (action_group_namespace, action_group);
+
+        for (int i = 0; i < menu_items.length; i++) {
+            menu.append (menu_items[i]);
+            menu.reorder_child (menu_items[i], i);
+        }
+
+        return menu;
+    }
+
     public PopupMenuBuilder add_open (MenuitemCallback open_cb) {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), open_cb);
     }
