@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2019-07-14 20:28+0000\n"
+"PO-Revision-Date: 2019-08-26 04:22+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6.1\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:124
@@ -1075,21 +1075,21 @@ msgstr "'%s' या नावाने पुनर्नामित करण�
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:523
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "आज %-H:%M वाजता"
+msgstr "आज %s वाजता"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:529
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "काल %-H:%M वाजता"
+msgstr "काल %s वाजता"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:535
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A %-H:%M वाजता"
+msgstr "%%A %s वाजता"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1101,14 +1101,12 @@ msgid "Preparing"
 msgstr "तयार करीत आहे"
 
 #: libcore/marlin-file-operations.c:159
-#, fuzzy
 msgid "_Cancel"
-msgstr "रद्द करा"
+msgstr "_(C) रद्द करा"
 
 #: libcore/marlin-file-operations.c:160
-#, fuzzy
 msgid "_Delete"
-msgstr "हटविले:"
+msgstr "(_D) हटवा"
 
 #: libcore/marlin-file-operations.c:162
 msgid "S_kip All"
@@ -1547,66 +1545,66 @@ msgstr "गंतव्य केवळ वाचनीय आहे."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2849
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "\"%B\" \"%B\" वर हलवित आहे"
+msgstr "\"%s\" \"%s\" वर हलवित आहे"
 
 #: libcore/marlin-file-operations.c:2850
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "\"%B\" \"%B\" वर कॉपी करत आहे"
+msgstr "\"%s\" \"%s\" वर कॉपी करत आहे"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2854
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "\"%B\" डुप्लिकेट करीत आहे"
+msgstr "\"%s\" डुप्लिकेट करीत आहे"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2862
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d  फाईल (\"%B\" मधील) \"%B\" मध्ये हलवत आहे"
-msgstr[1] "%'d  फायली (\"%B\" मधील) \"%B\" मध्ये हलवत आहे"
+msgstr[0] "%'d  फाईल (\"%s\" मधील) \"%s\" मध्ये हलवत आहे"
+msgstr[1] "%'d  फायली (\"%s\" मधील) \"%s\" मध्ये हलवत आहे"
 
 #: libcore/marlin-file-operations.c:2865
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d फाईल (\"%B\" मधील) \"%B\" मध्ये कॉपी करत आहे"
-msgstr[1] "%'d फायली (\"%B\" मधील) \"%B\" मध्ये कॉपी करत आहे"
+msgstr[0] "%'d फाईल (\"%s\" मधील) \"%s\" मध्ये कॉपी करत आहे"
+msgstr[1] "%'d फायली (\"%s\" मधील) \"%s\" मध्ये कॉपी करत आहे"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2874
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "%'d फाईल (\"%B\" मधील) डुप्लिकेट करीत आहे"
-msgstr[1] "%'d फायली (\"%B\" मधील) डुप्लिकेट करीत आहे"
+msgstr[0] "%'d फाईल (\"%s\" मधील) डुप्लिकेट करीत आहे"
+msgstr[1] "%'d फायली (\"%s\" मधील) डुप्लिकेट करीत आहे"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2887
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "%'d  फाईल \"%B\" मध्ये हलवत आहे"
-msgstr[1] "%'d फायली \"%B\" मध्ये हलवत आहे"
+msgstr[0] "%'d  फाईल \"%s\" मध्ये हलवत आहे"
+msgstr[1] "%'d फायली \"%s\" मध्ये हलवत आहे"
 
 #: libcore/marlin-file-operations.c:2890
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "%'d  फाईल \"%B\" मध्ये कॉपी करत आहे"
-msgstr[1] "%'d फायली \"%B\" मध्ये कॉपी करत आहे"
+msgstr[0] "%'d  फाईल \"%s\" मध्ये कॉपी करत आहे"
+msgstr[1] "%'d फायली \"%s\" मध्ये कॉपी करत आहे"
 
 #: libcore/marlin-file-operations.c:2896
 #, c-format
@@ -2241,7 +2239,7 @@ msgstr "प्रकार"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "अधिक परिणाम …"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
