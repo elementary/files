@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2019-08-17 11:22+0000\n"
+"PO-Revision-Date: 2019-08-28 10:22+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -94,7 +94,7 @@ msgstr "关闭"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:135
 msgid "Device Usage"
-msgstr "设备用量"
+msgstr "用量"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
@@ -153,16 +153,16 @@ msgstr "无法确定"
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
-msgstr "大小："
+msgstr "占用空间："
 
 #: src/Dialogs/PropertiesWindow.vala:515 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
-msgstr "类型："
+msgstr "文件类型："
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr "包含："
+msgstr "包含内容："
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
@@ -191,7 +191,7 @@ msgstr "存储目录："
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr "目标："
+msgstr "目标位置："
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
@@ -247,7 +247,7 @@ msgstr[0] "%u 个文件夹"
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] "%u 选中项"
+msgstr[0] "%u 个选中项"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1246
@@ -1520,61 +1520,61 @@ msgstr "目标为只读。"
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2849
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "正在将“%B”移至“%B”"
+msgstr "正在将 \"%s\" 移动至 \"%s\""
 
 #: libcore/marlin-file-operations.c:2850
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "正在将“%B”复制到“%B”"
+msgstr "正在将 \"%s\" 复制到 \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2854
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "正在复制“%B”"
+msgstr "正在复制 \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2862
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "正在移动 %'d 个文件(位于“%B”)到“%B”"
+msgstr[0] "正在移动 %'d 个文件 (位于 \"%s\") 到 \"%s\""
 
 #: libcore/marlin-file-operations.c:2865
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "正在复制 %'d 个文件(位于“%B”)到“%B”"
+msgstr[0] "正在复制 %'d 个文件 (位于 \"%s\") 到 \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2874
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "正在重复 %'d 个文件(位于“%B”)"
+msgstr[0] "正在复制 %'d 个文件 (位于 \"%s\")"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2887
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "正在移动 %'d 个文件到“%B”"
+msgstr[0] "正在移动 %'d 个文件到 \"%s\""
 
 #: libcore/marlin-file-operations.c:2890
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "正在复制 %'d 个文件到“%B”"
+msgstr[0] "正在复制 %'d 个文件到 \"%s\""
 
 #: libcore/marlin-file-operations.c:2896
 #, c-format
@@ -1596,7 +1596,7 @@ msgstr "%S / %S"
 #: libcore/marlin-file-operations.c:2936
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S of %S — 剩余 %T(%S/秒)"
+msgstr[0] "%S / %S — 剩余 %T(%S/秒)"
 
 #. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
