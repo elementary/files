@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2019-08-13 15:21+0000\n"
+"PO-Revision-Date: 2019-08-28 10:22+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
 "\n"
@@ -564,7 +564,7 @@ msgstr "El mode de privadesa està activat"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr "No es recorden fitxers recents."
+msgstr "No es recorda cap fitxer recent."
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
