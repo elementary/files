@@ -54,11 +54,6 @@
       <summary>Date Format</summary>
       <description>The format of file dates. Possible values are "locale", "iso", and "informal".</description>
     </key>
-    <key type="b" name="single-click">
-      <default>true</default>
-      <summary>single click</summary>
-      <description>Whether items are activated by single clicks instead of dubble clicks</description>
-    </key>
     <key name="default-viewmode" enum="viewmode">
       <default>'icon'</default>
       <summary>Default viewmode when browsing</summary>

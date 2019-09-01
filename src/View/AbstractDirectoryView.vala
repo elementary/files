@@ -303,7 +303,6 @@ namespace FM {
             Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
-              * Currently, "activate on blank" is enabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
               */
 

@@ -134,7 +134,7 @@ namespace FM {
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
             }
 
-            if (file == null || !file.is_folder () || !Preferences.settings.get_boolean ("single-click")) {
+            if (file == null || !file.is_folder ()) {
                 return base.handle_primary_button_click (event, path);
             }
 
