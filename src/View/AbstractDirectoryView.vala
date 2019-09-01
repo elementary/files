@@ -3318,7 +3318,7 @@ namespace FM {
                              * the item is unselected.
                              */
 
-                            if (!no_mods || (on_blank && (!path_selected))) {
+                            if (!no_mods || (on_blank && !path_selected)) {
                                 update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
@@ -3605,7 +3605,7 @@ namespace FM {
                 selection_changed (selected_files);
             }
 
-            one_or_less = selected_files == null || selected_files.next == null;
+            one_or_less = (selected_files == null || selected_files.next == null);
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
