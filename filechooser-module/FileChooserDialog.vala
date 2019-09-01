@@ -47,7 +47,6 @@ public class CustomFileChooserDialog : Object {
     private string current_path = null;
     private bool is_previous = false;
     private bool is_button_next = false;
-    private bool is_single_click = true;
     private bool can_activate = true;
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
@@ -59,9 +58,6 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog.deletable = false;
         /* If not local only during creation, strange bug occurs on fresh installs */
         chooser_dialog.local_only = true;
-
-        var settings = new Settings ("io.elementary.files.preferences");
-        is_single_click = settings.get_boolean ("single-click");
 
         var chooser_settings = new Settings ("io.elementary.files.file-chooser");
 
@@ -264,14 +260,10 @@ public class CustomFileChooserDialog : Object {
             } else if (w3.get_name () == "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
                 if (tv != null) {
-                    /* set its click behaviour the same as io.elementary.files setting */
-                    tv.set_activate_on_single_click (is_single_click);
-                    if (is_single_click) {
-                        /* We need to modify native behaviour to only activate on folders */
-                        tv.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
-                        tv.button_press_event.connect (on_tv_button_press_event);
-                        tv.button_release_event.connect (on_tv_button_release_event);
-                    }
+                    /* We need to modify native behaviour to only activate on folders */
+                    tv.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
+                    tv.button_press_event.connect (on_tv_button_press_event);
+                    tv.button_release_event.connect (on_tv_button_release_event);
                 }
             }
         });

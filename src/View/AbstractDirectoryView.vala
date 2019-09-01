@@ -185,9 +185,9 @@ namespace FM {
         private Gtk.TreePath deleted_path;
 
         /* UI options for button press handling */
-        protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
-        public bool single_click_mode { get; set; }
+        protected bool on_directory = false;
+        protected bool one_or_less = true;
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
@@ -297,8 +297,8 @@ namespace FM {
 
                 draw_when_idle ();
             });
+
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
-            Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
             Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
 
@@ -2984,44 +2984,23 @@ namespace FM {
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
             Gtk.TreePath? path = null;
+            GOF.File? file = null;
 
-            if (renaming) {
+            if (renaming || is_frozen) {
                 return true;
-            }
-
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
-
-            if (click_zone != previous_click_zone) {
-                var win = view.get_window ();
-                switch (click_zone) {
-                    case ClickZone.ICON:
-                    case ClickZone.NAME:
-                        if (single_click_mode) {
-                            win.set_cursor (activatable_cursor);
-                        }
-                        break;
-
-                    default:
-                        win.set_cursor (selectable_cursor);
-                        break;
-                }
-
-                previous_click_zone = click_zone;
-            }
-
-            if (is_frozen) {
-                return false;
             }
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
 
+                on_directory = false;
                 /* cannot get file info while network disconnected */
                 if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
                     /* cannot get file info while network disconnected. */
                     GOF.File? target_file;
-                    GOF.File? file = path != null ? model.file_for_path (path) : null;
+                    file = path != null ? model.file_for_path (path) : null;
+
 
                     if (file != null && slot.directory.is_recent) {
                         target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
@@ -3030,9 +3009,33 @@ namespace FM {
                         target_file = file;
                     }
 
+                    if (target_file != null) {
+                        on_directory = target_file.is_directory;
+                    }
+
                     item_hovered (target_file);
                     hover_path = path;
                 }
+            }
+
+            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
+            if (click_zone != previous_click_zone) {
+                var win = view.get_window ();
+                switch (click_zone) {
+                    case ClickZone.ICON:
+                    case ClickZone.NAME:
+                        if (on_directory && one_or_less) {
+                            win.set_cursor (activatable_cursor);
+                        }
+
+                        break;
+
+                    default:
+                        win.set_cursor (selectable_cursor);
+                        break;
+                }
+
+                previous_click_zone = click_zone;
             }
 
             return false;
@@ -3308,17 +3311,15 @@ namespace FM {
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
                             update_selected_files_and_menu ();
-                            bool one_or_less = (selected_files == null || selected_files.next == null);
                             should_activate = no_mods &&
-                                              (!on_blank || activate_on_blank) &&
-                                              (single_click_mode && one_or_less  || double_click_event);
+                                              (on_directory && one_or_less || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
-                             * the item is unselected or activate_on_blank is not enabled.
+                             * the item is unselected.
                              */
 
-                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
+                            if (!no_mods || (on_blank && (!path_selected))) {
                                 update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
@@ -3604,6 +3605,8 @@ namespace FM {
                 update_menu_actions ();
                 selection_changed (selected_files);
             }
+
+            one_or_less = selected_files == null || selected_files.next == null;
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
