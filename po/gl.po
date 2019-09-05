@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2018-10-23 00:03+0000\n"
-"Last-Translator: Pablo Varela <pablovarela182@gmail.com>\n"
-"Language-Team: Galician <https://weblate.elementary.io/projects/files/files/"
-"gl/>\n"
+"PO-Revision-Date: 2019-09-05 16:22+0000\n"
+"Last-Translator: Daniel <riesp@protonmail.com>\n"
+"Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/>"
+"\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:124
@@ -25,9 +25,8 @@ msgid "Show the version of the program"
 msgstr "Amosar a versión do programa."
 
 #: src/Application.vala:126
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Abrir URI nunha lapela nova"
+msgstr "Abre un ou varios URIs, cada un na súa propia lapela"
 
 #: src/Application.vala:128 src/View/directory_view_popup.ui:87
 msgid "New Window"
@@ -35,7 +34,7 @@ msgstr "Nova xanela"
 
 #: src/Application.vala:130
 msgid "Quit Files"
-msgstr "Saír de «Files»."
+msgstr "Saír de Ficheiros."
 
 #: src/Application.vala:132
 msgid "Enable debug logging"
@@ -68,11 +67,11 @@ msgstr "Operacións de ficheiro"
 #: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "Completado %s"
 
 #: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Todas as operacións con arquivos finalizaron"
 
 #: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
@@ -84,7 +83,7 @@ msgstr "Cancelar as accións en proceso"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Información"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
@@ -96,26 +95,26 @@ msgstr "Pechar"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:135
 msgid "Device Usage"
-msgstr ""
+msgstr "Uso do dispositivo"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
-msgstr ""
+msgstr "Capacidade:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/AbstractPropertiesDialog.vala:162
 #: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
-msgstr ""
+msgstr "Descoñecido"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Available:"
-msgstr ""
+msgstr "Dispoñible:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:161
 msgid "Used:"
-msgstr ""
+msgstr "En uso:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
@@ -128,18 +127,18 @@ msgstr "Propiedades"
 
 #: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: src/Dialogs/PropertiesWindow.vala:244
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i arquivo non se puido ler debido a permisos ou outros erros."
+msgstr[1] "%i arquivos non se puideron ler debido a permisos ou outros erros."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "O tamaño real podería ser maior"
 
 #: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
@@ -147,11 +146,11 @@ msgstr "descoñecido"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr ""
+msgstr "Cargando…"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr ""
+msgstr "Non se puido determinar"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
@@ -165,45 +164,45 @@ msgstr "Tipo:"
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr ""
+msgstr "Contén:"
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
-msgstr ""
+msgstr "Creación:"
 
 #: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
-msgstr ""
+msgstr "Modificación:"
 
 #: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
-msgstr ""
+msgstr "Eliminación:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
 msgid "Media type:"
-msgstr ""
+msgstr "Tipo de medio:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
-msgstr ""
+msgstr "Resolución:"
 
 #: src/Dialogs/PropertiesWindow.vala:588
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "Localización:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr ""
+msgstr "Obxectivo:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr ""
+msgstr "Localización orixinal:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
 #: src/View/AbstractDirectoryView.vala:2140
 msgid "Other Application…"
-msgstr ""
+msgstr "Outra aplicación…"
 
 #: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
@@ -211,60 +210,60 @@ msgstr "Abrir con:"
 
 #: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
-msgstr ""
+msgstr "Propietario:"
 
 #: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
-msgstr ""
+msgstr "Grupo:"
 
 #: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
-msgstr ""
+msgstr "Todos:"
 
 #: src/Dialogs/PropertiesWindow.vala:1213
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u subdirectorio"
+msgstr[1] "%u subdirectorios"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u arquivo"
+msgstr[1] "%u arquivos"
 
 #. TRANSLATORS: folders, files
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u directorio"
+msgstr[1] "%u directorios"
 
 #: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u obxecto seleccionado"
+msgstr[1] "%u obxectos seleccionados"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Propiedades do disco"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:658
 #: libwidgets/Resources.vala:68
@@ -273,27 +272,28 @@ msgstr "Sistema de ficheiros"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:88
 msgid "Format:"
-msgstr ""
+msgstr "Formato:"
 
 #: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Arquivos de múltiples tipos seleccionados"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
 msgstr ""
+"Ningunha aplicación concreta é capaz de abrir todos eses tipos de arquivos"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
-msgstr ""
+msgstr "Erro ao abrir os arquivos"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr ""
+msgstr "Non se puideron abrir as URIs"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "Non se puido abrir os arquivos ou URI con esta aplicación"
 
 #: src/View/Window.vala:496 src/View/Window.vala:506
 msgid "(as Administrator)"
@@ -317,7 +317,7 @@ msgstr "Modificado"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Este cartafol non existe"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
@@ -349,11 +349,11 @@ msgstr "Non é posíbel arrastar este ficheiro"
 
 #: src/View/AbstractDirectoryView.vala:848
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Non se pode abrir este arquivo"
 
 #: src/View/AbstractDirectoryView.vala:861
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Non se pode identificar o tipo de arquivo a abrir"
 
 #: src/View/AbstractDirectoryView.vala:1576
 msgid "Cannot drop this file"
@@ -387,7 +387,7 @@ msgstr "Abrir con"
 
 #: src/View/AbstractDirectoryView.vala:2173
 msgid "Templates"
-msgstr ""
+msgstr "Modelos"
 
 #: src/View/AbstractDirectoryView.vala:2420
 #, c-format
@@ -397,21 +397,21 @@ msgstr "Sen título %s"
 #: src/View/AbstractDirectoryView.vala:2768
 #: src/View/AbstractDirectoryView.vala:2963
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Non se poden eliminar arquivos desde aquí"
 
 #: src/View/AbstractDirectoryView.vala:2769
 #: src/View/AbstractDirectoryView.vala:2948
 #: src/View/AbstractDirectoryView.vala:2964
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Non tes permiso para cambiar esta localización"
 
 #: src/View/AbstractDirectoryView.vala:2923
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Non se poden copiar os arquivos que están na papeleira"
 
 #: src/View/AbstractDirectoryView.vala:2924
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Cortouse a selección no seu lugar"
 
 #: src/View/AbstractDirectoryView.vala:2947
 msgid "Cannot paste files here"
