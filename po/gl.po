@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-29 10:01-0700\n"
-"PO-Revision-Date: 2019-09-05 16:22+0000\n"
+"PO-Revision-Date: 2019-09-07 11:22+0000\n"
 "Last-Translator: Daniel <riesp@protonmail.com>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/>"
 "\n"
@@ -110,7 +110,7 @@ msgstr "Descoñecido"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Available:"
-msgstr "Dispoñible:"
+msgstr "Dispoñíbel:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:161
 msgid "Used:"
