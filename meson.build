@@ -42,7 +42,7 @@ gio_unix_dep = dependency('gio-unix-2.0', version: '>='+min_glib_version)
 gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22')
-granite_dep = dependency('granite', version: '>=5.2.0')
+granite_dep = dependency('granite', version: '>=5.2.5')
 
 common_deps = [
     glib_dep,
