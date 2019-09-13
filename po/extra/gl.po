@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-09-05 16:22+0000\n"
+"PO-Revision-Date: 2019-09-14 12:22+0000\n"
 "Last-Translator: Daniel <riesp@protonmail.com>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/extra/gl/>"
 "\n"
@@ -16,7 +16,7 @@ msgstr ""
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr ""
+msgstr "Ficheiros"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
