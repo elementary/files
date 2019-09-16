@@ -11,6 +11,7 @@ You'll need the following dependencies:
 * meson
 * valac
 * libcanberra-dev
+* libcloudproviders-dev >= 0.3.0
 * libdbus-glib-1-dev
 * libgail-3-dev
 * libgee-0.8-dev
