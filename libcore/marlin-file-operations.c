@@ -1927,7 +1927,7 @@ delete_job (GIOSchedulerJob *io_job,
         to_delete_files = g_list_reverse (to_delete_files);
         confirmed = TRUE;
         if (must_confirm_delete_in_trash) {
-            confirmed = !should_confirm_trash || confirm_delete_from_trash (common, to_delete_files);
+            confirmed = !should_confirm_trash () || confirm_delete_from_trash (common, to_delete_files);
         } else if (must_confirm_delete) {
             confirmed = confirm_delete_directly (common, to_delete_files);
         }
