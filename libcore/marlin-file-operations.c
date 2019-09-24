@@ -114,18 +114,6 @@ typedef struct {
     gpointer done_callback_data;
 } EmptyTrashJob;
 
-
-typedef enum {
-    JOB_COPY,
-    JOB_MOVE,
-    JOB_LINK,
-    JOB_DELETE,
-    JOB_CREATE,
-    JOB_EMPTY_TRASH,
-    JOB_MARK_TRUSTES,
-    JOB_SET_PERMISSIONS
-} JobTypes;
-
 typedef enum {
     OP_KIND_COPY,
     OP_KIND_MOVE,
@@ -897,11 +885,10 @@ f (const char *format, ...) {
     return res;
 }
 
-#define op_job_new(jobtype, __type, parent_window) ((__type *)(init_common (jobtype, sizeof(__type), parent_window)))
+#define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
 
 static gpointer
-init_common (JobTypes jobtype,
-             gsize job_size,
+init_common (gsize job_size,
              GtkWindow *parent_window)
 {
     CommonJob *common;
@@ -1974,7 +1961,7 @@ trash_or_delete_internal (GList                  *files,
 
     /* TODO: special case desktop icon link files ... */
 
-    job = op_job_new (JOB_DELETE, DeleteJob, parent_window);
+    job = op_job_new (DeleteJob, parent_window);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->try_trash = try_trash;
     job->user_cancel = FALSE;
@@ -2694,7 +2681,7 @@ retry:
         /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while copying to \"%B\"."), dest);
-        secondary = f (_("The destination is not a folder."));
+        secondary = g_strdup (_("The destination is not a folder."));
 
         response = run_error (job,
                               primary,
@@ -2729,7 +2716,7 @@ retry:
             /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             primary = f (_("Error while copying to \"%B\"."), dest);
-            secondary = f(_("There is not enough space on the destination. Try to remove files to make space."));
+            secondary = g_strdup (_("There is not enough space on the destination. Try to remove files to make space."));
 
             /// TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
             /// So this represents something like "There is 100 MB available, but 150 MB is required".
@@ -2763,7 +2750,7 @@ retry:
         /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while copying to \"%B\"."), dest);
-        secondary = f (_("The destination is read-only."));
+        secondary = g_strdup (_("The destination is read-only."));
 
         response = run_error (job,
                               primary,
@@ -3445,9 +3432,9 @@ retry:
             g_error_free (error);
         } else if (error) {
             if (copy_job->is_move) {
-                primary = f (_("Error while moving."));
+                primary = g_strdup (_("Error while moving."));
             } else {
-                primary = f (_("Error while copying."));
+                primary = g_strdup (_("Error while copying."));
             }
             details = NULL;
 
@@ -3494,9 +3481,9 @@ retry:
         g_error_free (error);
     } else {
         if (copy_job->is_move) {
-            primary = f (_("Error while moving."));
+            primary = g_strdup (_("Error while moving."));
         } else {
-            primary = f (_("Error while copying."));
+            primary = g_strdup (_("Error while copying."));
         }
         details = NULL;
 
@@ -4552,7 +4539,7 @@ marlin_file_operations_copy (GList *files,
 {
 
     CopyMoveJob *job;
-    job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
+    job = op_job_new (CopyMoveJob, parent_window);
     //job->desktop_location = marlin_get_desktop_location ();
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
@@ -4599,9 +4586,9 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
 
     pf_progress_info_take_status (job->progress, s);
     pf_progress_info_take_details (job->progress,
-                                       f (ngettext ("Preparing to move %'d file",
-                                                    "Preparing to move %'d files",
-                                                    left), left));
+                                       g_strdup_printf (ngettext ("Preparing to move %'d file",
+                                                                  "Preparing to move %'d files",
+                                                                  left), left));
 
     pf_progress_info_pulse_progress (job->progress);
 }
@@ -5092,7 +5079,7 @@ marlin_file_operations_move (GList *files,
 {
 
     CopyMoveJob *job;
-    job = op_job_new (JOB_MOVE, CopyMoveJob, parent_window);
+    job = op_job_new (CopyMoveJob, parent_window);
     job->is_move = TRUE;
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
@@ -5142,9 +5129,9 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
 
     pf_progress_info_take_status (job->progress, s);
     pf_progress_info_take_details (job->progress,
-                                       f (ngettext ("Making link to %'d file",
-                                                    "Making links to %'d files",
-                                                    left), left));
+                                   g_strdup_printf (ngettext ("Making link to %'d file",
+                                                              "Making links to %'d files",
+                                                              left), left));
 
     pf_progress_info_set_progress (job->progress, left, total);
 }
@@ -5285,10 +5272,10 @@ retry:
         /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         primary = f (_("Error while creating link to %B."), src);
         if (not_local) {
-            secondary = f (_("Symbolic links only supported for local files"));
+            secondary = g_strdup (_("Symbolic links only supported for local files"));
             details = NULL;
         } else if (IS_IO_ERROR (error, NOT_SUPPORTED)) {
-            secondary = f (_("The target doesn't support symbolic links."));
+            secondary = g_strdup (_("The target doesn't support symbolic links."));
             details = NULL;
         } else {
             /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
@@ -5424,7 +5411,7 @@ marlin_file_operations_link (GList *files,
 {
     CopyMoveJob *job;
 
-    job = op_job_new (JOB_LINK, CopyMoveJob, parent_window);
+    job = op_job_new (CopyMoveJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
@@ -5465,7 +5452,7 @@ marlin_file_operations_duplicate (GList *files,
 {
     CopyMoveJob *job;
 
-    job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
+    job = op_job_new (CopyMoveJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
@@ -5634,7 +5621,7 @@ marlin_file_set_permissions_recursive (const char *directory,
 {
     SetPermissionsJob *job;
 
-    job = op_job_new (JOB_SET_PERMISSIONS, SetPermissionsJob, NULL);
+    job = op_job_new (SetPermissionsJob, NULL);
     job->file = g_file_new_for_uri (directory);
     job->file_permissions = file_permissions;
     job->file_mask = file_mask;
@@ -5710,8 +5697,8 @@ marlin_file_operations_copy_move_link   (GList                  *files,
 
     if (copy_action == GDK_ACTION_COPY) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
-            char *primary = f (_("Cannot copy into trash."));
-            char *secondary = f (_("It is not permitted to copy files into the trash"));
+            char *primary = g_strdup (_("Cannot copy into trash."));
+            char *secondary = g_strdup (_("It is not permitted to copy files into the trash"));
             pf_dialogs_show_error_dialog (primary,
                                           secondary,
                                           parent_window);
@@ -6088,7 +6075,7 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
+    job = op_job_new (CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->dest_dir = g_object_ref (parent_dir);
@@ -6128,7 +6115,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
+    job = op_job_new (CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     g_object_ref (parent_dir); /* job->dest_dir unref'd in create_job done */
@@ -6173,7 +6160,7 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
+    job = op_job_new (CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->dest_dir = g_file_new_for_uri (parent_dir);
@@ -6335,7 +6322,7 @@ void
 marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
 {
     EmptyTrashJob *job;
-    job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
+    job = op_job_new (EmptyTrashJob, parent_window);
 
     job->done_callback = NULL;
     job->done_callback_data = NULL;
