@@ -40,8 +40,6 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "eel-string.h"
-
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
@@ -728,23 +726,48 @@ has_invalid_xml_char (char *str)
 }
 
 static char *
-custom_full_name_to_string (char *format, va_list va)
+eel_str_middle_truncate (const char *string,
+                         guint truncate_length)
 {
-    GFile *file;
+    char *truncated;
+    guint length;
+    guint num_left_chars;
+    guint num_right_chars;
 
-    file = va_arg (va, GFile *);
-    if (!G_IS_FILE (file)) {
-        g_critical ("Invalid file");
-        return strdup ("");
+    const char delimter[] = "…";
+    const guint delimter_length = strlen (delimter);
+    const guint min_truncate_length = delimter_length + 2;
+
+    if (string == NULL) {
+        return NULL;
     }
 
-    return g_file_get_parse_name (file);
-}
+    /* It doesnt make sense to truncate strings to less than
+     * the size of the delimiter plus 2 characters (one on each
+     * side)
+     */
+    if (truncate_length < min_truncate_length) {
+        return g_strdup (string);
+    }
 
-static void
-custom_full_name_skip (va_list *va)
-{
-    (void) va_arg (*va, GFile *);
+    length = g_utf8_strlen (string, -1);
+
+    /* Make sure the string is not already small enough. */
+    if (length <= truncate_length) {
+        return g_strdup (string);
+    }
+
+    /* Find the 'middle' where the truncation will occur. */
+    num_left_chars = (truncate_length - delimter_length) / 2;
+    num_right_chars = truncate_length - num_left_chars - delimter_length;
+
+    truncated = g_new (char, strlen (string) + 1);
+
+    g_utf8_strncpy (truncated, string, num_left_chars);
+    strcat (truncated, delimter);
+    strcat (truncated, g_utf8_offset_to_pointer  (string, length - num_right_chars));
+
+    return truncated;
 }
 
 static char *
@@ -795,94 +818,6 @@ custom_basename_from_file (GFile *file) {
 
 
     return name;
-}
-
-static char *
-custom_basename_to_string (char *format, va_list va)
-{
-    GFile *file;
-
-    file = va_arg (va, GFile *);
-
-    return custom_basename_from_file (file);
-}
-
-static void
-custom_basename_skip (va_list *va)
-{
-    (void) va_arg (*va, GFile *);
-}
-
-static char *
-custom_size_to_string (char *format, va_list va)
-{
-    goffset size;
-
-    size = va_arg (va, goffset);
-    return g_format_size (size);
-}
-
-static void
-custom_size_skip (va_list *va)
-{
-    (void) va_arg (*va, goffset);
-}
-
-static char *
-custom_time_to_string (char *format, va_list va)
-{
-    int secs;
-
-    secs = va_arg (va, int);
-    return format_time (secs);
-}
-
-static void
-custom_time_skip (va_list *va)
-{
-    (void) va_arg (*va, int);
-}
-
-static char *
-custom_mount_to_string (char *format, va_list va)
-{
-    GMount *mount;
-
-    mount = va_arg (va, GMount *);
-    if (!G_IS_MOUNT (mount)) {
-        g_critical ("Invalid mount");
-        return strdup ("");
-    }
-    return g_mount_get_name (mount);
-}
-
-static void
-custom_mount_skip (va_list *va)
-{
-    (void) va_arg (*va, GMount *);
-}
-
-
-static EelPrintfHandler handlers[] = {
-    { 'F', custom_full_name_to_string, custom_full_name_skip },
-    { 'B', custom_basename_to_string, custom_basename_skip },
-    { 'S', custom_size_to_string, custom_size_skip },
-    { 'T', custom_time_to_string, custom_time_skip },
-    { 'V', custom_mount_to_string, custom_mount_skip },
-    { 0 }
-};
-
-static char *
-f (const char *format, ...) {
-    va_list va;
-    char *res;
-
-
-    va_start (va, format);
-    res = eel_strdup_vprintf_with_custom (handlers, format, va);
-    va_end (va);
-
-    return res;
 }
 
 #define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
@@ -1205,22 +1140,24 @@ confirm_delete_from_trash (CommonJob *job,
     /* Only called if confirmation known to be required - do not second guess */
 
     if (file_count == 1) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *basename = custom_basename_from_file (files->data);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = f (_("Are you sure you want to permanently delete \"%B\" "
-                      "from the trash?"), files->data);
+        prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\" "
+                                  "from the trash?"), basename);
+        g_free (basename);
     } else {
-        prompt = f (ngettext("Are you sure you want to permanently delete "
-                             "the %'d selected item from the trash?",
-                             "Are you sure you want to permanently delete "
-                             "the %'d selected items from the trash?",
-                             file_count),
-                    file_count);
+        prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
+                                           "the %'d selected item from the trash?",
+                                           "Are you sure you want to permanently delete "
+                                           "the %'d selected items from the trash?",
+                                           file_count),
+                                  file_count);
     }
 
     response = run_warning (job,
                             prompt,
-                            f (_("If you delete an item, it will be permanently lost.")),
+                            g_strdup (_("If you delete an item, it will be permanently lost.")),
                             NULL,
                             FALSE,
                             CANCEL, DELETE,
@@ -1243,16 +1180,16 @@ confirm_empty_trash (EmptyTrashJob *job)
     if (files != NULL && g_list_first (files) != NULL) {
         if (g_file_has_uri_scheme (files->data, "trash")) {
                 /* Empty all trash */
-                prompt = f (_("Permanently delete all items from Trash?"));
-                secondary_text = f (_("All items in all trash directories, including those on any mounted external drives, will be permanently deleted."));
+                prompt = g_strdup (_("Permanently delete all items from Trash?"));
+                secondary_text = g_strdup (_("All items in all trash directories, including those on any mounted external drives, will be permanently deleted."));
         } else {
                 /* Empty trash on a particular mounted volume */
-                prompt = f (_("Permanently delete all items from Trash on this mount?"));
-                secondary_text = f (_("All items in the trash on this mount, will be permanently deleted."));
+                prompt = g_strdup (_("Permanently delete all items from Trash on this mount?"));
+                secondary_text = g_strdup (_("All items in the trash on this mount, will be permanently deleted."));
         }
     }
 
-    /* The strings are freed by f () */
+    /* The strings are freed */
 
     response = run_warning (job,
                             prompt,
@@ -1279,21 +1216,22 @@ confirm_delete_directly (CommonJob *job,
     g_assert (file_count > 0);
 
     if (file_count == 1) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *basename = custom_basename_from_file (files->data);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = f (_("Are you sure you want to permanently delete \"%B\"?"),
-                    files->data);
+        prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\"?"), basename);
+        g_free (basename);
     } else {
-        prompt = f (ngettext("Are you sure you want to permanently delete "
-                             "the %'d selected item?",
-                             "Are you sure you want to permanently delete "
-                             "the %'d selected items?", file_count),
-                    file_count);
+        prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
+                                           "the %'d selected item?",
+                                           "Are you sure you want to permanently delete "
+                                           "the %'d selected items?", file_count),
+                                  file_count);
     }
 
     response = run_warning (job,
                             prompt,
-                            f (_("If you delete an item, it will be permanently lost.")),
+                            g_strdup (_("If you delete an item, it will be permanently lost.")),
                             NULL,
                             FALSE,
                             CANCEL, DELETE,
@@ -1327,13 +1265,12 @@ report_delete_progress (CommonJob *job,
         files_left = 1;
     }
 
-    files_left_s = f (ngettext ("%'d file left to delete",
-                                "%'d files left to delete",
-                                files_left),
-                      files_left);
+    files_left_s = g_strdup_printf (ngettext ("%'d file left to delete",
+                                              "%'d files left to delete",
+                                              files_left),
+                                    files_left);
 
-    pf_progress_info_take_status (job->progress,
-                                      f (_("Deleting files")));
+    pf_progress_info_take_status (job->progress, g_strdup (_("Deleting files")));
 
     elapsed = g_timer_elapsed (job->time, NULL);
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
@@ -1341,15 +1278,18 @@ report_delete_progress (CommonJob *job,
         pf_progress_info_set_details (job->progress, files_left_s);
     } else {
         char *details, *time_left_s;
+        gchar *formated_time;
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
+        formated_time = format_time (seconds_count_format_time_units (remaining_time));
 
-        /// TRANSLATORS: %T will expand to a time like "2 minutes". It must not be translated or removed.
-        /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-        time_left_s = f (ngettext ("%T left",
-                                   "%T left",
-                                   seconds_count_format_time_units (remaining_time)),
-                         remaining_time);
+        /// TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
+        /// The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+        time_left_s = g_strdup_printf (ngettext ("%s left",
+                                                 "%s left",
+                                                 formated_time),
+                                       remaining_time);
+        g_free (formated_time);
 
         details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL);
         pf_progress_info_take_details (job->progress, details);
@@ -1413,21 +1353,23 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
-            primary = f (_("Error while deleting."));
+            gchar *dir_basename = custom_basename_from_file (dir);
+            primary = g_strdup (_("Error while deleting."));
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("Files in the folder \"%B\" cannot be deleted because you do "
-                                 "not have permissions to see them."), dir);
+                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be deleted because you do "
+                                             "not have permissions to see them."), dir_basename);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), dir);
+                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), dir_basename);
                 details = error->message;
             }
 
+            g_free (dir_basename);
             response = run_warning (job,
                                     primary,
                                     secondary,
@@ -1451,20 +1393,22 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        primary = f (_("Error while deleting."));
+        gchar *dir_basename = custom_basename_from_file (dir);
+        primary = g_strdup (_("Error while deleting."));
         details = NULL;
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be deleted because you do not have "
-                             "permissions to read it."), dir);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be deleted because you do not have "
+                             "permissions to read it."), dir_basename);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error reading the folder \"%B\"."), dir);
+            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), dir_basename);
             details = error->message;
         }
 
+        g_free (dir);
         response = run_warning (job,
                                 primary,
                                 secondary,
@@ -1491,12 +1435,17 @@ retry:
         /* Don't delete dir if there was a skipped file */
         !local_skipped_file) {
         if (!g_file_delete (dir, job->cancellable, &error)) {
+            gchar *dir_basename;
             if (job->skip_all_error) {
                 goto skip;
             }
-            primary = f (_("Error while deleting."));
-            /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-            secondary = f (_("Could not remove the folder %B."), dir);
+
+            primary = g_strdup (_("Error while deleting."));
+            dir_basename = custom_basename_from_file (dir);
+            /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+            secondary = g_strdup_printf (_("Could not remove the folder %s."), dir_basename);
+            g_free (dir_basename);
+
             details = error->message;
 
             response = run_warning (job,
@@ -1569,12 +1518,15 @@ delete_file (CommonJob *job, GFile *file,
         g_error_free (error);
 
     } else {
+        gchar *dir_basename;
         if (job->skip_all_error) {
             goto skip;
         }
-        primary = f (_("Error while deleting."));
-        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        secondary = f (_("There was an error deleting %B."), file);
+        primary = g_strdup (_("Error while deleting."));
+        dir_basename = custom_basename_from_file (file);
+        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("There was an error deleting %s."), dir_basename);
+        g_free (dir_basename);
         details = error->message;
 
         response = run_warning (job,
@@ -1658,12 +1610,12 @@ report_trash_progress (CommonJob *job,
     files_left = total_files - files_trashed;
 
     pf_progress_info_take_status (job->progress,
-                                      f (_("Moving files to trash")));
+                                  g_strdup (_("Moving files to trash")));
 
-    s = f (ngettext ("%'d file left to trash",
-                     "%'d files left to trash",
-                     files_left),
-           files_left);
+    s = g_strdup_printf (ngettext ("%'d file left to trash",
+                                   "%'d files left to trash",
+                                   files_left),
+                         files_left);
     pf_progress_info_take_details (job->progress, s);
 
     if (total_files != 0) {
@@ -1758,27 +1710,30 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
             if (have_info) {
                 can_delete = FALSE;
                 if (have_filesystem_info && readonly_fs) {
-                    primary = f (_("Cannot move file to trash or delete it"));
-                    secondary = f (_("It is not permitted to trash or delete files on a read only filesystem."));
+                    primary = g_strdup (_("Cannot move file to trash or delete it"));
+                    secondary = g_strdup (_("It is not permitted to trash or delete files on a read only filesystem."));
                 } else if (have_parent_info && !parent_can_write) {
-                    primary = f (_("Cannot move file to trash or delete it"));
-                    secondary = f (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
+                    primary = g_strdup (_("Cannot move file to trash or delete it"));
+                    secondary = g_strdup (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
                 } else if (is_folder && !can_write ) {
-                    primary = f (_("Cannot move file to trash or delete it"));
-                    secondary = f (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
+                    primary = g_strdup (_("Cannot move file to trash or delete it"));
+                    secondary = g_strdup (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
                 } else {
-                    primary = f (_("Cannot move file to trash. Try to delete it immediately?"));
-                    secondary = f (_("This file could not be moved to trash. See details below for further information."));
+                    primary = g_strdup (_("Cannot move file to trash. Try to delete it immediately?"));
+                    secondary = g_strdup (_("This file could not be moved to trash. See details below for further information."));
                     can_delete = TRUE;
                 }
             } else {
-                primary = f (_("Cannot move file to trash.  Try to delete it?"));
-                secondary = f (_("This file could not be moved to trash. You may not be able to delete it either."));
+                primary = g_strdup (_("Cannot move file to trash.  Try to delete it?"));
+                secondary = g_strdup (_("This file could not be moved to trash. You may not be able to delete it either."));
                 can_delete = TRUE;
             }
 
-            if (can_delete)
-                secondary = g_strconcat (secondary, f (_("\n Deleting a file removes it permanently")), NULL);
+            if (can_delete) {
+                gchar *old_secondary = g_steal_pointer (&secondary);
+                secondary = g_strconcat (old_secondary, _("\n Deleting a file removes it permanently"), NULL);
+                g_free (old_secondary);
+            }
 
             details = NULL;
             details = error->message;
@@ -2023,6 +1978,7 @@ unmount_mount_callback (GObject *source_object,
                         GAsyncResult *res,
                         gpointer user_data)
 {
+    GMount *mount = G_MOUNT (source_object);
     UnmountData *data = user_data;
     GError *error;
     char *primary;
@@ -2030,21 +1986,22 @@ unmount_mount_callback (GObject *source_object,
 
     error = NULL;
     if (data->eject) {
-        unmounted = g_mount_eject_with_operation_finish (G_MOUNT (source_object),
-                                                         res, &error);
+        unmounted = g_mount_eject_with_operation_finish (mount, res, &error);
     } else {
-        unmounted = g_mount_unmount_with_operation_finish (G_MOUNT (source_object),
-                                                           res, &error);
+        unmounted = g_mount_unmount_with_operation_finish (mount, res, &error);
     }
 
     if (! unmounted) {
         if (error->code != G_IO_ERROR_FAILED_HANDLED) {
+            gchar *mount_name = g_mount_get_name (mount);
             if (data->eject) {
-                /// TRANSLATORS: %V is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
-                primary = f (_("Unable to eject %V"), source_object);
+                /// TRANSLATORS: %s is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
+                primary = g_strdup_printf (_("Unable to eject %s"), mount_name);
             } else {
-                primary = f (_("Unable to unmount %V"), source_object);
+                /// TRANSLATORS: %s is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
+                primary = g_strdup_printf (_("Unable to unmount %s"), mount_name);
             }
+            g_free (mount_name);
             pf_dialogs_show_error_dialog (primary,
                                           error->message,
                                           data->parent_window);
@@ -2276,44 +2233,51 @@ report_count_progress (CommonJob *job,
                        SourceInfo *source_info)
 {
     char *s;
+    gchar *num_bytes_format;
 
     switch (source_info->op) {
     default:
     case OP_KIND_COPY:
+        num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to copy 100 files (200 MB)"
-        /// The order in which %'d and %S appear must not change.
-        s = f (ngettext("Preparing to copy %'d file (%S)",
-                        "Preparing to copy %'d files (%S)",
-                        source_info->num_files),
-               source_info->num_files, source_info->num_bytes);
+        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext("Preparing to copy %'d file (%s)",
+                                      "Preparing to copy %'d files (%s)",
+                                      source_info->num_files),
+                             source_info->num_files, num_bytes_format);
+        g_free (num_bytes_format);
         break;
     case OP_KIND_MOVE:
+        num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to move 100 files (200 MB)"
-        /// The order in which %'d and %S appear must not change.
-        s = f (ngettext("Preparing to move %'d file (%S)",
-                        "Preparing to move %'d files (%S)",
-                        source_info->num_files),
-               source_info->num_files, source_info->num_bytes);
+        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext("Preparing to move %'d file (%s)",
+                                      "Preparing to move %'d files (%s)",
+                                      source_info->num_files),
+                             source_info->num_files, num_bytes_format);
+        g_free (num_bytes_format);
         break;
     case OP_KIND_DELETE:
+        num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to delete 100 files (200 MB)"
-        /// The order in which %'d and %S appear must not change.
-        s = f (ngettext("Preparing to delete %'d file (%S)",
-                        "Preparing to delete %'d files (%S)",
-                        source_info->num_files),
-               source_info->num_files, source_info->num_bytes);
+        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext("Preparing to delete %'d file (%s)",
+                                      "Preparing to delete %'d files (%s)",
+                                      source_info->num_files),
+                             source_info->num_files, num_bytes_format);
+        g_free (num_bytes_format);
         break;
     case OP_KIND_TRASH:
-        s = f (ngettext("Preparing to trash %'d file",
-                        "Preparing to trash %'d files",
-                        source_info->num_files),
-               source_info->num_files);
+        s = g_strdup_printf (ngettext("Preparing to trash %'d file",
+                                      "Preparing to trash %'d files",
+                                      source_info->num_files),
+                             source_info->num_files);
         break;
     }
 
@@ -2341,13 +2305,13 @@ get_scan_primary (OpKind kind)
     switch (kind) {
     default:
     case OP_KIND_COPY:
-        return f (_("Error while copying."));
+        return g_strdup (_("Error while copying."));
     case OP_KIND_MOVE:
-        return f (_("Error while moving."));
+        return g_strdup (_("Error while moving."));
     case OP_KIND_DELETE:
-        return f (_("Error while deleting."));
+        return g_strdup (_("Error while deleting."));
     case OP_KIND_TRASH:
-        return f (_("Error while moving files to trash."));
+        return g_strdup (_("Error while moving files to trash."));
     }
 }
 
@@ -2397,21 +2361,23 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
+            gchar *dir_basename = custom_basename_from_file (dir);
             primary = get_scan_primary (source_info->op);
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("Files in the folder \"%B\" cannot be handled because you do "
-                                 "not have permissions to see them."), dir);
+                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be handled because you do "
+                                             "not have permissions to see them."), dir_basename);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), dir);
+                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), dir_basename);
                 details = error->message;
             }
 
+            g_free (dir_basename);
             response = run_warning (job,
                                     primary,
                                     secondary,
@@ -2440,20 +2406,23 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *dir_basename = custom_basename_from_file (dir);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be handled because you do not have "
-                             "permissions to read it."), dir);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be handled because you do not have "
+                                         "permissions to read it."), dir_basename);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error reading the folder \"%B\"."), dir);
+            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), dir_basename);
             details = error->message;
         }
+
+        g_free (dir_basename);
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
@@ -2524,20 +2493,23 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *file_basename = custom_basename_from_file (file);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The file \"%B\" cannot be handled because you do not have "
-                             "permissions to read it."), file);
+            secondary = g_strdup_printf (_("The file \"%s\" cannot be handled because you do not have "
+                                         "permissions to read it."), file_basename);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error getting information about \"%B\"."), file);
+            secondary = g_strdup_printf (_("There was an error getting information about \"%s\"."), file_basename);
             details = error->message;
         }
+
+        g_free (file_basename);
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
@@ -2630,19 +2602,23 @@ retry:
                               &error);
 
     if (info == NULL) {
+        gchar *dest_basename;
         if (IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
             return;
         }
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+
+        dest_basename = custom_basename_from_file (dest);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying to \"%B\"."), dest);
+        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_basename);
+        g_free (dest_basename);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            secondary = f (_("You do not have permissions to access the destination folder."));
+            secondary = g_strdup (_("You do not have permissions to access the destination folder."));
         } else {
-            secondary = f (_("There was an error getting information about the destination."));
+            secondary = g_strdup (_("There was an error getting information about the destination."));
             details = error->message;
         }
 
@@ -2678,10 +2654,12 @@ retry:
     g_object_unref (info);
 
     if (file_type != G_FILE_TYPE_DIRECTORY) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *dest_name = g_file_get_parse_name (dest);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying to \"%B\"."), dest);
+        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
         secondary = g_strdup (_("The destination is not a folder."));
+        g_free (dest_name);
 
         response = run_error (job,
                               primary,
@@ -2713,14 +2691,21 @@ retry:
                                                       G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
 
         if (free_size < required_size) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            gchar *free_size_format, required_size_format;
+            gchar *dest_name = g_file_get_parse_name (dest);
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            primary = f (_("Error while copying to \"%B\"."), dest);
+            primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
+            g_free (dest_name);
             secondary = g_strdup (_("There is not enough space on the destination. Try to remove files to make space."));
 
-            /// TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+            free_size_format = g_format_size (free_size);
+            required_size_format = g_format_size (required_size);
+            /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
             /// So this represents something like "There is 100 MB available, but 150 MB is required".
-            details = f (_("There is %S available, but %S is required."), free_size, required_size);
+            details = g_strdup_printf (_("There is %s available, but %s is required."), free_size_format, required_size_format);
+            g_free (free_size_format);
+            g_free (required_size_format);
 
             response = run_warning (job,
                                     primary,
@@ -2747,9 +2732,11 @@ retry:
     if (!job_aborted (job) &&
         g_file_info_get_attribute_boolean (fsinfo,
                                            G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *dest_name = g_file_get_parse_name (dest);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying to \"%B\"."), dest);
+        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
+        g_free (dest_name);
         secondary = g_strdup (_("The destination is read-only."));
 
         response = run_error (job,
@@ -2896,25 +2883,38 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
         transfer_rate > 0) {
         char *s;
-        /// TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-        s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
+        gchar *num_bytes_format = g_format_size (transfer_info->num_bytes);
+        gchar *total_size_format = g_format_size (total_size);
+        /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
+        s = g_strdup_printf (_("%s of %s"), num_bytes_format, total_size_format);
+        g_free (num_bytes_format);
+        g_free (total_size_format);
         pf_progress_info_take_details (job->progress, s);
     } else {
-        char *s;
+        char *s, *formated_remaining_time;
+        gchar *num_bytes_format = g_format_size (transfer_info->num_bytes);
+        gchar *total_size_format = g_format_size (total_size);
+        gchar *transfer_rate_format = g_format_size (transfer_rate);
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
+        formated_remaining_time = format_time (seconds_count_format_time_units (remaining_time));
 
 
-        /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+        /// TRANSLATORS: The two first %s and the last %s will expand to a size
+        /// like "2 bytes" or "3 MB", the third %s to a time duration like
         /// "2 minutes". It must not be translated or removed.
         /// So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-        /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-        /// The order in which %S and %T appear must not change.
-        s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
-                 "%S of %S \xE2\x80\x94 %T left (%S/sec)",
-                 seconds_count_format_time_units (remaining_time)),
-               transfer_info->num_bytes, total_size,
-               remaining_time,
-               (goffset)transfer_rate);
+        /// The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
+        /// The order in which %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext ("%s of %s \xE2\x80\x94 %s left (%s/sec)",
+                                       "%s of %s \xE2\x80\x94 %s left (%s/sec)",
+                                       remaining_time),
+                             num_bytes_format, total_size_format,
+                             formated_remaining_time,
+                             transfer_rate_format);
+        g_free (num_bytes_format);
+        g_free (total_size_format);
+        g_free (formated_remaining_time);
+        g_free (transfer_rate_format);
         pf_progress_info_take_details (job->progress, s);
     }
 
@@ -3270,6 +3270,7 @@ retry:
 
     error = NULL;
     if (!g_file_make_directory (*dest, job->cancellable, &error)) {
+        gchar *src_name;
         if (IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
             return CREATE_DEST_DIR_FAILED;
@@ -3298,20 +3299,23 @@ retry:
             }
         }
 
-        primary = f (_("Error while copying."));
+        primary = g_strdup (_("Error while copying."));
         details = NULL;
 
+        src_name = g_file_get_parse_name (src);
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be copied because you do not have "
-                             "permissions to create it in the destination."), src);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be copied because you do not have "
+                                         "permissions to create it in the destination."), src_name);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error creating the folder \"%B\"."), src);
+            secondary = g_strdup_printf (_("There was an error creating the folder \"%s\"."), src_name);
             details = error->message;
         }
+
+        g_free (src_name);
 
         response = run_warning (job,
                                 primary,
@@ -3431,6 +3435,7 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
+            gchar *src_name;
             if (copy_job->is_move) {
                 primary = g_strdup (_("Error while moving."));
             } else {
@@ -3438,18 +3443,20 @@ retry:
             }
             details = NULL;
 
+            src_name = g_file_get_parse_name (src);
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("Files in the folder \"%B\" cannot be copied because you do "
-                                 "not have permissions to see them."), src);
+                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be copied because you do "
+                                             "not have permissions to see them."), src_name);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), src);
+                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), src_name);
                 details = error->message;
             }
 
+            g_free (src_name);
             response = run_warning (job,
                                     primary,
                                     secondary,
@@ -3480,6 +3487,7 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *src_name;
         if (copy_job->is_move) {
             primary = g_strdup (_("Error while moving."));
         } else {
@@ -3487,18 +3495,20 @@ retry:
         }
         details = NULL;
 
+        src_name = g_file_get_parse_name (src);
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be copied because you do not have "
-                             "permissions to read it."), src);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be copied because you do not have "
+                                         "permissions to read it."), src_name);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error reading the folder \"%B\"."), src);
+            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), src_name);
             details = error->message;
         }
 
+        g_free (src_name);
         response = run_warning (job,
                                 primary,
                                 secondary,
@@ -3534,13 +3544,17 @@ retry:
         /* Don't delete source if there was a skipped file */
         !local_skipped_file) {
         if (!g_file_delete (src, job->cancellable, &error)) {
+            gchar *src_name;
             if (job->skip_all_error) {
                 goto skip;
             }
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+
+            src_name = g_file_get_parse_name (src);
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            primary = f (_("Error while moving \"%B\"."), src);
-            secondary = f (_("Could not remove the source folder."));
+            primary = g_strdup_printf (_("Error while moving \"%s\"."), src_name);
+            g_free (src_name);
+            secondary = g_strdup (_("Could not remove the source folder."));
             details = error->message;
 
             response = run_warning (job,
@@ -3621,14 +3635,21 @@ remove_target_recursively (CommonJob *job,
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *file_name, *src_name;
         if (job->skip_all_error) {
             goto skip1;
         }
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        
+        src_name = g_file_get_parse_name (src);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying \"%B\"."), src);
-        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-        secondary = f (_("Could not remove files from the already existing folder %F."), file);
+        primary = g_strdup_printf (_("Error while copying \"%s\"."), src_name);
+        g_free (src_name);
+
+        file_name = g_file_get_parse_name (file);
+        /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("Could not remove files from the already existing folder %s."), file_name);
+        g_free (file_name);
         details = error->message;
 
         /* set show_all to TRUE here, as we don't know how many
@@ -3664,15 +3685,22 @@ skip1:
     error = NULL;
 
     if (!g_file_delete (file, job->cancellable, &error)) {
+        gchar *file_name, *src_name;
         if (job->skip_all_error ||
             IS_IO_ERROR (error, CANCELLED)) {
             goto skip2;
         }
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+
+        src_name = g_file_get_parse_name (src);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying \"%B\"."), src);
-        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-        secondary = f (_("Could not remove the already existing file %F."), file);
+        primary = g_strdup_printf (_("Error while copying \"%s\"."), src_name);
+        g_free (src_name);
+
+        file_name = g_file_get_parse_name (file);
+        /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("Could not remove the already existing file %s."), file_name);
+        g_free (file_name);
         details = error->message;
 
         /* set show_all to TRUE here, as we don't know how many
@@ -4247,21 +4275,28 @@ retry:
             /* Copying a dir onto file, first remove the file */
             if (!g_file_delete (dest, job->cancellable, &error) &&
                 !IS_IO_ERROR (error, NOT_FOUND)) {
+                gchar *file_name;
                 if (job->skip_all_error) {
                     g_error_free (error);
                     goto out;
                 }
+
+                file_name = g_file_get_parse_name (src);
                 if (copy_job->is_move) {
-                    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                    primary = f (_("Error while moving \"%B\"."), src);
+                    primary = g_strdup_printf (_("Error while moving \"%s\"."), file_name);
                 } else {
-                    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                    primary = f (_("Error while copying \"%B\"."), src);
+                    primary = g_strdup_printf (_("Error while copying \"%s\"."), file_name);
                 }
-                /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-                secondary = f (_("Could not remove the already existing file with the same name in %F."), dest_dir);
+                g_free (file_name);
+
+                file_name = g_file_get_parse_name (dest);
+                /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+                secondary = g_strdup_printf (_("Could not remove the already existing file with the same name in %s."), file_name);
+                g_free (file_name);
                 details = error->message;
 
                 /* setting TRUE on show_all here, as we could have
@@ -4321,16 +4356,22 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else { /* Other error */
+        gchar *src_basename, *dest_basename;
         if (job->skip_all_error) {
             g_error_free (error);
             goto out;
         }
 
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        src_basename = custom_basename_from_file (src);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Cannot copy \"%B\" here."), src);
-        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        secondary = f (_("There was an error copying the file into %B."), dest_dir);
+        primary = g_strdup_printf (_("Cannot copy \"%s\" here."), src_basename);
+        g_free (src_basename);
+
+        dest_basename = custom_basename_from_file (dest_dir);
+        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("There was an error copying the file into %s."), dest_basename);
+        g_free (dest_basename);
         details = error->message;
 
         response = run_warning (job,
@@ -4388,9 +4429,9 @@ copy_files (CopyMoveJob *job,
     /* Query the source dir, not the file because if its a symlink we'll follow it */
     source_dir = g_file_get_parent ((GFile *) job->files->data);
     if (source_dir) {
-        inf = g_file_query_filesystem_info (source_dir, "filesystem::readonly", NULL, NULL);
+        inf = g_file_query_filesystem_info (source_dir, G_FILE_ATTRIBUTE_FILESYSTEM_READONLY, NULL, NULL);
         if (inf != NULL) {
-            readonly_source_fs = g_file_info_get_attribute_boolean (inf, "filesystem::readonly");
+            readonly_source_fs = g_file_info_get_attribute_boolean (inf, G_FILE_ATTRIBUTE_FILESYSTEM_READONLY);
             g_object_unref (inf);
         }
         g_object_unref (source_dir);
@@ -4577,12 +4618,14 @@ static void
 report_move_progress (CopyMoveJob *move_job, int total, int left)
 {
     CommonJob *job;
-    gchar *s;
+    gchar *s, *dest_basename;
 
     job = (CommonJob *)move_job;
-    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+    dest_basename = custom_basename_from_file (move_job->destination);
+    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-    s = f (_("Preparing to move to \"%B\""), move_job->destination);
+    s = g_strdup_printf (_("Preparing to move to \"%s\""), dest_basename);
+    g_free (dest_basename);
 
     pf_progress_info_take_status (job->progress, s);
     pf_progress_info_take_details (job->progress,
@@ -4829,14 +4872,19 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else { /* Other error */
+        gchar *src_name, *dest_name;
         if (job->skip_all_error) {
             goto out;
         }
-        /// TRANSLATORS: \"%F\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
+        src_name = g_file_get_parse_name (src);
+        /// TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while moving \"%F\"."), src);
-        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-        secondary = f (_("There was an error moving the file into %F."), dest_dir);
+        primary = g_strdup_printf (_("Error while moving \"%s\"."), src_name);
+        g_free (src_name);
+        dest_name = g_file_get_parse_name (dest_dir);
+        /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("There was an error moving the file into %s."), dest_name);
+        g_free (dest_name);
         details = error->message;
 
         response = run_warning (job,
@@ -5123,9 +5171,11 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     gchar *s;
 
     job = (CommonJob *)link_job;
-    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+    gchar *dest_name = g_file_get_parse_name (link_job->destination);
+    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-    s = f (_("Creating links in \"%B\""), link_job->destination);
+    s = g_strdup_printf (_("Creating links in \"%s\""), dest_name);
+    g_free (dest_name);
 
     pf_progress_info_take_status (job->progress, s);
     pf_progress_info_take_details (job->progress,
@@ -5266,11 +5316,14 @@ retry:
 
     /* Other error */
     else {
+        gchar *src_basename;
         if (common->skip_all_error) {
             goto out;
         }
-        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        primary = f (_("Error while creating link to %B."), src);
+        src_basename = custom_basename_from_file (src);
+        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+        primary = g_strdup_printf (_("Error while creating link to %s."), src_basename);
+        g_free (src_basename);
         if (not_local) {
             secondary = g_strdup (_("Symbolic links only supported for local files"));
             details = NULL;
@@ -5278,8 +5331,10 @@ retry:
             secondary = g_strdup (_("The target doesn't support symbolic links."));
             details = NULL;
         } else {
-            /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-            secondary = f (_("There was an error creating the symlink in %F."), dest_dir);
+            gchar *dest_dir_name = g_file_get_parse_name (dest_dir);
+            /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+            secondary = g_strdup_printf (_("There was an error creating the symlink in %s."), dest_dir_name);
+            g_free (dest_dir_name);
             details = error->message;
         }
 
@@ -6015,15 +6070,20 @@ retry:
 
         /* Other error */
         else {
+            gchar *dest_basename = custom_basename_from_file (dest);
             if (job->make_dir) {
-                /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                primary = f (_("Error while creating directory %B."), dest);
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+                primary = g_strdup_printf (_("Error while creating directory %s."), dest_basename);
             } else {
-                /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                primary = f (_("Error while creating file %B."), dest);
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+                primary = g_strdup_printf (_("Error while creating file %s."), dest_basename);
             }
-            /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-            secondary = f (_("There was an error creating the directory in %F."), job->dest_dir);
+            g_free (dest_basename);
+
+            gchar *dest_dir_name = g_file_get_parse_name (job->dest_dir);
+            /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+            secondary = g_strdup_printf (_("There was an error creating the directory in %s."), dest_dir_name);
+            g_free (dest_dir_name);
             details = error->message;
 
             response = run_warning (common,

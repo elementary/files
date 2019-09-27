@@ -77,7 +77,6 @@ libcore/Thumbnailer.vala
 libcore/TrashMonitor.vala
 libcore/UserUtils.vala
 
-libcore/eel-string.c
 libcore/marlin-file-operations.c
 libcore/marlin-undostack-manager.c
 libcore/fm-list-model.c
