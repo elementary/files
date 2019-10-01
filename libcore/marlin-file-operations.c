@@ -1287,8 +1287,8 @@ report_delete_progress (CommonJob *job,
         /// The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
         time_left_s = g_strdup_printf (ngettext ("%s left",
                                                  "%s left",
-                                                 formated_time),
-                                       remaining_time);
+                                                 remaining_time),
+                                       formated_time);
         g_free (formated_time);
 
         details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL);
