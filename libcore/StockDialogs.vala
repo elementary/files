@@ -23,7 +23,7 @@ namespace Marlin {
         Gtk.MessageType message_type;
         string primary_text;
         string secondary_text;
-        string? details_text;
+        unowned string? details_text;
         string[] button_titles;
         bool show_all;
         int result;

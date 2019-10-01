@@ -154,17 +154,6 @@ typedef struct {
 #define MERGE_ALL _("Merge _All")
 #define COPY_FORCE _("Copy _Anyway")
 
-static gboolean
-is_all_button_text (const char *button_text)
-{
-    g_assert (button_text != NULL);
-
-    return !strcmp (button_text, SKIP_ALL) ||
-        !strcmp (button_text, REPLACE_ALL) ||
-        !strcmp (button_text, DELETE_ALL) ||
-        !strcmp (button_text, MERGE_ALL);
-}
-
 static void scan_sources (GList *files,
                           SourceInfo *source_info,
                           CommonJob *job,
@@ -937,22 +926,6 @@ can_delete_without_confirm (GFile *file)
     }
 
     return FALSE;
-}
-
-static gboolean
-can_delete_files_without_confirm (GList *files)
-{
-    g_assert (files != NULL);
-
-    while (files != NULL) {
-        if (!can_delete_without_confirm (files->data)) {
-            return FALSE;
-        }
-
-        files = files->next;
-    }
-
-    return TRUE;
 }
 
 static gboolean
@@ -1973,82 +1946,6 @@ typedef struct {
     gpointer callback_data;
 } UnmountData;
 
-static void
-unmount_mount_callback (GObject *source_object,
-                        GAsyncResult *res,
-                        gpointer user_data)
-{
-    GMount *mount = G_MOUNT (source_object);
-    UnmountData *data = user_data;
-    GError *error;
-    char *primary;
-    gboolean unmounted;
-
-    error = NULL;
-    if (data->eject) {
-        unmounted = g_mount_eject_with_operation_finish (mount, res, &error);
-    } else {
-        unmounted = g_mount_unmount_with_operation_finish (mount, res, &error);
-    }
-
-    if (! unmounted) {
-        if (error->code != G_IO_ERROR_FAILED_HANDLED) {
-            gchar *mount_name = g_mount_get_name (mount);
-            if (data->eject) {
-                /// TRANSLATORS: %s is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
-                primary = g_strdup_printf (_("Unable to eject %s"), mount_name);
-            } else {
-                /// TRANSLATORS: %s is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
-                primary = g_strdup_printf (_("Unable to unmount %s"), mount_name);
-            }
-            g_free (mount_name);
-            pf_dialogs_show_error_dialog (primary,
-                                          error->message,
-                                          data->parent_window);
-            g_free (primary);
-        }
-    }
-
-    if (data->callback) {
-        data->callback (data->callback_data);
-    }
-
-    if (error != NULL) {
-        g_error_free (error);
-    }
-
-    if (data->parent_window) {
-        g_object_remove_weak_pointer (data->parent_window, &data->parent_window);
-    }
-
-    g_object_unref (data->mount);
-    g_free (data);
-}
-
-static void
-do_unmount (UnmountData *data)
-{
-    GMountOperation *mount_op;
-
-    mount_op = gtk_mount_operation_new (data->parent_window);
-    if (data->eject) {
-        g_mount_eject_with_operation (data->mount,
-                                      0,
-                                      mount_op,
-                                      NULL,
-                                      unmount_mount_callback,
-                                      data);
-    } else {
-        g_mount_unmount_with_operation (data->mount,
-                                        0,
-                                        mount_op,
-                                        NULL,
-                                        unmount_mount_callback,
-                                        data);
-    }
-    g_object_unref (mount_op);
-}
-
 static gboolean
 dir_has_files (GFile *dir)
 {
@@ -2691,7 +2588,7 @@ retry:
                                                       G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
 
         if (free_size < required_size) {
-            gchar *free_size_format, required_size_format;
+            gchar *free_size_format, *required_size_format;
             gchar *dest_name = g_file_get_parse_name (dest);
             /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -2838,7 +2735,6 @@ report_copy_progress (CopyMoveJob *copy_job,
                                                "Duplicating %'d files (in \"%s\")",
                                                files_left),
                                      files_left,
-                                     srcname,
                                      destname);
             }
         } else {
@@ -3021,17 +2917,16 @@ get_unique_target_file (GFile *src,
     const char *editname, *end;
     char *basename, *new_name;
     GFileInfo *info;
-    GFile *dest;
+    GFile *dest = NULL;
     int max_length;
 
     if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
-        g_critical ("get_unique_target_file:  %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  !G_IS_FILE (dest) ? "dest" : "");
+        g_critical ("get_unique_target_file:  %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  !G_IS_FILE (dest_dir) ? "dest" : "");
         return NULL;
     }
 
     max_length = get_max_name_length (dest_dir);
 
-    dest = NULL;
     info = g_file_query_info (src,
                               G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
                               0, NULL, NULL);
@@ -5393,8 +5288,6 @@ link_job (GIOSchedulerJob *io_job,
 {
     CopyMoveJob *job;
     CommonJob *common;
-    GList *copy_files;
-    GArray *copy_positions;
     GFile *src;
     GdkPoint *point;
     char *dest_fs_type;
@@ -5405,9 +5298,6 @@ link_job (GIOSchedulerJob *io_job,
     job = user_data;
     common = &job->common;
     common->io_job = io_job;
-
-    copy_files = NULL;
-    copy_positions = NULL;
 
     dest_fs_type = NULL;
 
@@ -6347,12 +6237,9 @@ empty_trash_job (GIOSchedulerJob *io_job,
 void
 marlin_file_operations_empty_trash (GtkWidget *parent_view)
 {
-    EmptyTrashJob *job;
-    GtkWindow *parent_window;
-
-    parent_window = NULL;
+    GtkWidget *parent_window = NULL;
     if (parent_view) {
-        parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
+        parent_window = gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
     marlin_file_operations_empty_trash_dirs (parent_window, NULL);
@@ -6361,18 +6248,17 @@ marlin_file_operations_empty_trash (GtkWidget *parent_view)
 void
 marlin_file_operations_empty_trash_for_mount (GtkWidget *parent_view, GMount *mount)
 {
+    GtkWidget *parent_window = NULL;
+    GList *dirs;
+
     g_return_if_fail (mount != NULL);
 
-    GList *dirs = get_trash_dirs_for_mount (mount);
+    dirs = get_trash_dirs_for_mount (mount);
 
     g_return_if_fail (dirs != NULL);
 
-    EmptyTrashJob *job;
-    GtkWindow *parent_window;
-
-    parent_window = NULL;
     if (parent_view) {
-        parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
+        parent_window = gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
     marlin_file_operations_empty_trash_dirs (parent_window, dirs);
@@ -6382,7 +6268,7 @@ void
 marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
 {
     EmptyTrashJob *job;
-    job = op_job_new (EmptyTrashJob, parent_window);
+    job = op_job_new (EmptyTrashJob, GTK_WINDOW (parent_window));
 
     job->done_callback = NULL;
     job->done_callback_data = NULL;
