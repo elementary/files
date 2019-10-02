@@ -37,22 +37,22 @@ namespace FM {
 
         const int MAX_TEMPLATES = 32;
 
-        const Gtk.TargetEntry [] drag_targets = {
+        const Gtk.TargetEntry [] DRAG_TARGETS = {
             {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.STRING},
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
         };
 
-        const Gtk.TargetEntry [] drop_targets = {
+        const Gtk.TargetEntry [] DROP_TARGETS = {
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST},
             {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.TEXT_URI_LIST},
             {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.XDND_DIRECT_SAVE0},
             {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.NETSCAPE_URL}
         };
 
-        const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+        const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
         /* Menu Handling */
-        const GLib.ActionEntry [] selection_entries = {
+        const GLib.ActionEntry [] SELECTION_ENTRIES = {
             {"open", on_selection_action_open_executable},
             {"open-with-app", on_selection_action_open_with_app, "u"},
             {"open-with-default", on_selection_action_open_with_default},
@@ -66,7 +66,7 @@ namespace FM {
             {"restore", on_selection_action_restore}
         };
 
-        const GLib.ActionEntry [] background_entries = {
+        const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
@@ -77,7 +77,7 @@ namespace FM {
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
-        const GLib.ActionEntry [] common_entries = {
+        const GLib.ActionEntry [] COMMON_ENTRIES = {
             {"copy", on_common_action_copy},
             {"paste-into", on_common_action_paste_into},
             {"open-in", on_common_action_open_in, "s"},
@@ -383,15 +383,15 @@ namespace FM {
 
         private void set_up__menu_actions () {
             selection_actions = new GLib.SimpleActionGroup ();
-            selection_actions.add_action_entries (selection_entries, this);
+            selection_actions.add_action_entries (SELECTION_ENTRIES, this);
             insert_action_group ("selection", selection_actions);
 
             background_actions = new GLib.SimpleActionGroup ();
-            background_actions.add_action_entries (background_entries, this);
+            background_actions.add_action_entries (BACKGROUND_ENTRIES, this);
             insert_action_group ("background", background_actions);
 
             common_actions = new GLib.SimpleActionGroup ();
-            common_actions.add_action_entries (common_entries, this);
+            common_actions.add_action_entries (COMMON_ENTRIES, this);
             insert_action_group ("common", common_actions);
 
             action_set_state (background_actions, "show-hidden",
@@ -461,7 +461,8 @@ namespace FM {
             }
         }
 
-        private void select_files_and_update_if_thawed (Gee.LinkedList<GOF.File> files_to_select, GLib.File? focus_file) {
+        private void select_files_and_update_if_thawed (Gee.LinkedList<GOF.File> files_to_select,
+                                                        GLib.File? focus_file) {
             if (tree_frozen) {
                 return;
             }
@@ -686,14 +687,14 @@ namespace FM {
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
             /* Set up as drop site */
-            Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, drop_targets, Gdk.DragAction.ASK | file_drag_actions);
+            Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, DROP_TARGETS, Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
             widget.drag_drop.connect (on_drag_drop);
             widget.drag_data_received.connect (on_drag_data_received);
             widget.drag_leave.connect (on_drag_leave);
             widget.drag_motion.connect (on_drag_motion);
 
             /* Set up as drag source */
-            Gtk.drag_source_set (widget, Gdk.ModifierType.BUTTON1_MASK, drag_targets, file_drag_actions);
+            Gtk.drag_source_set (widget, Gdk.ModifierType.BUTTON1_MASK, DRAG_TARGETS, FILE_DRAG_ACTIONS);
             widget.drag_begin.connect (on_drag_begin);
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);
@@ -1079,7 +1080,7 @@ namespace FM {
                 warning ("Cannot rename multiple files (yet) - renaming first only");
             }
 
-            /**TODO** invoke batch renamer see bug #1014122*/
+            /* Batch renaming will be provided by a contractor */
 
             rename_file (selected_files.first ().data);
         }
@@ -1292,7 +1293,9 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if ((slot.directory.is_local && !hide_local_thumbnails) || (show_remote_thumbnails && slot.directory.can_open_files)) {
+                if ((slot.directory.is_local && !hide_local_thumbnails) ||
+                    (show_remote_thumbnails && slot.directory.can_open_files)) {
+
                     thumbnailer.queue_file (file, null, large_thumbnails);
                     if (plugins != null) {
                         plugins.update_file_info (file);
@@ -1442,8 +1445,8 @@ namespace FM {
             if (Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 cancel_drag_timer ();
                 should_activate = false;
-                var target_list = new Gtk.TargetList (drag_targets);
-                var actions = file_drag_actions;
+                var target_list = new Gtk.TargetList (DRAG_TARGETS);
+                var actions = FILE_DRAG_ACTIONS;
 
                 if (drag_button == Gdk.BUTTON_SECONDARY) {
                     actions |= Gdk.DragAction.ASK;
@@ -1627,7 +1630,7 @@ namespace FM {
                             break;
 
                         case Marlin.TargetType.TEXT_URI_LIST:
-                            if ((current_actions & file_drag_actions) != 0) {
+                            if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
                                 if (selected_files != null) {
                                     unselect_all ();
                                 }
@@ -2120,7 +2123,10 @@ namespace FM {
                         unowned string label = app_info.get_display_name ();
                         unowned string exec = app_info.get_executable ().split (" ")[0];
                         if (label != last_label || exec != last_exec) {
-                             var menu_item = new GLib.MenuItem (label, GLib.Action.print_detailed_name ("selection.open-with-app", new GLib.Variant.uint32 (count)));
+                            var detailed_name = GLib.Action.print_detailed_name ("selection.open-with-app",
+                                                                                  new GLib.Variant.uint32 (count));
+                            var menu_item = new GLib.MenuItem (label, detailed_name);
+
                             menu_item.set_icon (app_info.get_icon ());
                             apps_section.append_item (menu_item);
                         }
@@ -2342,7 +2348,7 @@ namespace FM {
             }
 
             if (file_list.length () > 0) {
-                file_list.sort ((a,b) => {
+                file_list.sort ((a, b) => {
                     return strcmp (a.get_basename ().down (), b.get_basename ().down ());
                 });
 
@@ -3150,7 +3156,9 @@ namespace FM {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
+        public async GLib.File? set_file_display_name (GLib.File old_location, string new_name,
+                                                       GLib.Cancellable? cancellable = null) throws GLib.Error {
+
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
             try {
@@ -3311,7 +3319,7 @@ namespace FM {
                             bool one_or_less = (selected_files == null || selected_files.next == null);
                             should_activate = no_mods &&
                                               (!on_blank || activate_on_blank) &&
-                                              (single_click_mode && one_or_less  || double_click_event);
+                                              (single_click_mode && one_or_less || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
@@ -3748,4 +3756,3 @@ namespace FM {
 */
     }
 }
-
