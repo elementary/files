@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-01 18:30+0200\n"
-"PO-Revision-Date: 2019-09-28 17:23+0000\n"
+"PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/>"
 "\n"
@@ -26,7 +26,7 @@ msgstr "Amosar a versión do programa"
 
 #: src/Application.vala:126
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Abre un ou varios URIs, cada un na súa propia lapela"
+msgstr "Abrir un ou varios URIs, cada un na súa propia lapela"
 
 #: src/Application.vala:128 src/View/directory_view_popup.ui:87
 msgid "New Window"
@@ -1095,7 +1095,7 @@ msgstr "Onte ás %s"
 #: libcore/FileUtils.vala:535
 #, c-format
 msgid "%%A at %s"
-msgstr "%%A en %s"
+msgstr "%%A ás %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1108,7 +1108,7 @@ msgstr "Preparando"
 
 #: libcore/marlin-file-operations.c:145
 msgid "_Cancel"
-msgstr "Cancelar"
+msgstr "_Cancelar"
 
 #: libcore/marlin-file-operations.c:146
 msgid "_Delete"
@@ -1216,9 +1216,9 @@ msgstr " (%'d"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1119
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "Confirma que quere eliminar «%B» do lixo permanentemente?"
+msgstr "Está seguro de que quere eliminar permanentemente a «%s» do lixo?"
 
 #: libcore/marlin-file-operations.c:1123
 #, c-format
