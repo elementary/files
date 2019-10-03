@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-01 18:30+0200\n"
 "PO-Revision-Date: 2019-10-03 16:05+0000\n"
-"Last-Translator: Daniel R. <riesp@pm.me>\n"
+"Last-Translator: Juan Campos <juan.camposzambrana@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
 "Language: es\n"
@@ -341,9 +341,8 @@ msgstr "No fue posible crear la carpeta"
 
 #: src/View/AbstractDirectoryView.vala:827
 #: src/View/AbstractDirectoryView.vala:1112
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "No se puede abrir este archivo"
+msgstr "No se puede ejecutar este archivo"
 
 #: src/View/AbstractDirectoryView.vala:848
 msgid "Cannot open this file"
