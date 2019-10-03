@@ -173,7 +173,7 @@ namespace Marlin {
                                                target_file,
                                                action,
                                                widget,
-                                               new_files_callback);
+                                               (Marlin.CopyCallback) new_files_callback);
             }
 
             /* clear the clipboard if it contained "cutted data"
