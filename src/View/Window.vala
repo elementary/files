@@ -891,8 +891,11 @@ namespace Marlin.View {
         }
 
         private void save_tabs () {
-            VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
+            if (!GOF.Preferences.get_default ().remember_history) {
+                return;  /* Do not clear existing settings if history is off */
+            }
 
+            VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
             foreach (var tab in tabs.tabs) {
                 assert (tab != null);
                 var view_container = tab.page as ViewContainer;
@@ -915,8 +918,8 @@ namespace Marlin.View {
         }
 
         public uint restore_tabs () {
-            /* Do not restore tabs more than once */
-            if (tabs_restored || !is_first_window) {
+            /* Do not restore tabs if history off nor more than once */
+            if (!GOF.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) {
                 return 0;
             } else {
                 tabs_restored = true;
