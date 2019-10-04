@@ -890,28 +890,30 @@ namespace Marlin.View {
         }
 
         private void save_tabs () {
+            if (!GOF.Preferences.get_default ().remember_history) {
+                return;  /* Do not clear existing settings if history is off */
+            }
+
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
-            if (GOF.Preferences.get_default ().remember_history) {
-                foreach (var tab in tabs.tabs) {
-                    assert (tab != null);
-                    var view_container = tab.page as ViewContainer;
+            foreach (var tab in tabs.tabs) {
+                assert (tab != null);
+                var view_container = tab.page as ViewContainer;
 
-                    /* Do not save if "File does not exist" or "Does not belong to you" */
-                    if (!view_container.can_show_folder) {
-                        continue;
-                    }
-
-                    /* ViewContainer is responsible for returning valid uris */
-                    vb.add ("(uss)",
-                            view_container.view_mode,
-                            view_container.get_root_uri () ?? PF.UserUtils.get_real_user_home (),
-                            view_container.get_tip_uri () ?? ""
-                           );
+                /* Do not save if "File does not exist" or "Does not belong to you" */
+                if (!view_container.can_show_folder) {
+                    continue;
                 }
 
-                Preferences.settings.set_value ("tab-info-list", vb.end ());
-                Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
-            } /* Do not clear existing settings if history is off */
+                /* ViewContainer is responsible for returning valid uris */
+                vb.add ("(uss)",
+                        view_container.view_mode,
+                        view_container.get_root_uri () ?? PF.UserUtils.get_real_user_home (),
+                        view_container.get_tip_uri () ?? ""
+                       );
+            }
+
+            Preferences.settings.set_value ("tab-info-list", vb.end ());
+            Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
         }
 
         public uint restore_tabs () {
