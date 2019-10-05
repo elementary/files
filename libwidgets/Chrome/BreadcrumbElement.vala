@@ -82,7 +82,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
     public double draw (Cairo.Context cr, double x, double y, double height, Gtk.Widget widget) {
         weak Gtk.StyleContext button_context = widget.get_style_context ();
         var state = button_context.get_state ();
-        var is_RTL = Gtk.StateFlags.DIR_RTL in state;
+        var is_rtl = Gtk.StateFlags.DIR_RTL in state;
         var scale = widget.scale_factor;
         button_context.save ();
         if (pressed) {
@@ -100,7 +100,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         var y_half_height = y + half_height;
         var y_height = y + height;
 
-        cr.set_source_rgb (0,0,0);
+        cr.set_source_rgb (0, 0, 0);
 
         var width = this.real_width;
         var frame_width = width - padding.right;
@@ -108,7 +108,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         /* Erase area for drawing and outline */
         if (offset > 0.0) {
             double x_frame_width, x_half_height, x_frame_width_half_height;
-            if (is_RTL) {
+            if (is_rtl) {
                 x_frame_width = x - frame_width;
                 x_half_height = x + half_height;
                 x_frame_width_half_height = x_frame_width - half_height;
@@ -132,7 +132,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.save ();
             double base_x, left_x, right_x, arrow_right_x;
             base_x = x;
-            if (is_RTL) {
+            if (is_rtl) {
                 left_x = base_x + half_height - line_width;
                 right_x = base_x - frame_width;
                 arrow_right_x = right_x - half_height;
@@ -166,12 +166,12 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         var room_for_icon = icon_info != null ? true : false;
         double layout_width = (width - padding.left - padding.right);
 
-        if (is_RTL) {
+        if (is_rtl) {
             x -= padding.left;
-            x += Math.sin (offset*Math.PI_2) * width;
+            x += Math.sin (offset * Math.PI_2) * width;
         } else {
             x += padding.left;
-            x -= Math.sin (offset*Math.PI_2) * width;
+            x -= Math.sin (offset * Math.PI_2) * width;
         }
 
         if (layout_width < iw) {
@@ -198,7 +198,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
 
         /* Draw the text and icon (if present and there is room) */
-        if (is_RTL) {
+        if (is_rtl) {
             if (icon_to_draw == null) {
                 if (room_for_text) {
                     button_context.render_layout (cr, x - width,
@@ -211,7 +211,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
                                                 Math.round ((x - ICON_MARGIN - icon_info.icon_width) * scale),
-                                                Math.round ((y_half_height - icon_info.icon_height/2) * scale));
+                                                Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
@@ -238,7 +238,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
                                                 Math.round ((x + ICON_MARGIN) * scale),
-                                                Math.round ((y_half_height - icon_info.icon_height/2) * scale));
+                                                Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text && x > 0) {
@@ -251,16 +251,16 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
 
         /* Move to end of breadcrumb */
-        if (is_RTL) {
+        if (is_rtl) {
             x -= frame_width;
         } else {
             x += frame_width;
         }
 
         /* Draw the arrow-shaped separator */
-        if (is_RTL) {
+        if (is_rtl) {
             cr.save ();
-            cr.translate (x + height/4, y_half_height);
+            cr.translate (x + height / 4, y_half_height);
             cr.rectangle (0, -height / 2 + line_width, -height, height - 2 * line_width);
             cr.clip ();
             cr.rotate (Math.PI_4);
@@ -283,7 +283,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
 
         /* Move to end of separator */
-        if (is_RTL) {
+        if (is_rtl) {
             x -= half_height;
         } else {
             x += half_height;
