@@ -63,7 +63,7 @@ namespace Marlin.View {
         public Chrome.ViewSwitcher view_switcher;
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
-        public Marlin.Places.Sidebar sidebar;
+        public Marlin.Sidebar sidebar;
         public ViewContainer? current_tab = null;
 
         private bool tabs_restored = false;
@@ -168,7 +168,7 @@ namespace Marlin.View {
             tabs.show ();
 
             /* Show only local places in sidebar when running as root */
-            sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
+            sidebar = new Marlin.Sidebar (this, Posix.getuid () == 0);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
