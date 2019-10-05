@@ -158,6 +158,7 @@ public class Marlin.PluginManager : Object {
 
         if (plug != null) {
             plugin_hash.set (file_path, plug);
+            plug.initialize ();
         }
 
         if (in_available) {

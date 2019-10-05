@@ -23,6 +23,7 @@ public abstract class Marlin.Plugins.Base {
     public virtual void sidebar_loaded (Gtk.Widget widget) { }
     public virtual void update_sidebar (Gtk.Widget widget) { }
     public virtual void update_file_info (GOF.File file) { }
+    public virtual void initialize () { }
 
     public Gtk.Widget window;
 

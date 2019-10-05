@@ -58,8 +58,6 @@ public class Marlin.Application : Gtk.Application {
 
         init_schemas ();
 
-        Ggit.init ();
-
         Gtk.IconTheme.get_default ().changed.connect (() => {
             Marlin.IconInfo.clear_caches ();
         });

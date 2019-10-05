@@ -43,7 +43,6 @@ gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22')
 granite_dep = dependency('granite', version: '>=5.2.5')
-ggit_dep = dependency('libgit2-glib-1.0')
 
 common_deps = [
     glib_dep,
@@ -53,8 +52,7 @@ common_deps = [
     gmodule_dep,
     gee_dep,
     gtk_dep,
-    granite_dep,
-    ggit_dep
+    granite_dep
 ]
 
 pango_dep = dependency('pango', version: '>=1.1.2')
@@ -85,9 +83,9 @@ add_project_arguments(
     language: 'vala'
 )
 
-#
-# Configuration file
-#
+
+#Configuration file
+
 config_data = configuration_data()
 config_data.set('plugin_dir', plugin_dir)
 config_data.set('version', meson.project_version())

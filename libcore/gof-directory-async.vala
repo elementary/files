@@ -101,8 +101,6 @@ public class Async : Object {
     public bool can_open_files {get; private set;}
     public bool can_stream_files {get; private set;}
     public bool allow_user_interaction {get; set; default = true;}
-    public bool is_in_git_repo { get { return git_repo != null; } }
-    public Ggit.Repository? git_repo { get; set; }
 
     private bool is_ready = false;
 
@@ -229,14 +227,6 @@ public class Async : Object {
 
         if (success) {
             file.update ();
-            git_repo = null;
-
-            try {
-                var gitdir = Ggit.Repository.discover (file.location);
-                git_repo = Ggit.Repository.open (gitdir);
-            } catch (Error e) {
-                critical ("Unable to open git repo");
-            }
         }
 
         debug ("success %s; enclosing mount %s", success.to_string (),

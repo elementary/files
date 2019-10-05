@@ -17,15 +17,53 @@
 ***/
 
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
+    private static HashTable<File, Ggit.Repository> repo_map;
+
+    public override void initialize () {
+        Ggit.init ();
+        repo_map = new HashTable<File, Ggit.Repository> (file_hash, file_equal);
+    }
+
+    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+        try {
+            var key = directory.location;
+            var gitdir = Ggit.Repository.discover (key);
+            var git_repo = Ggit.Repository.open (gitdir);
+            if (git_repo != null && !(repo_map.contains (key))) {
+                repo_map.insert (key, (owned)git_repo);
+            }
+        } catch (Error e) {
+            warning ("Error opening git repository at %s - %s", directory.uri, e.message);
+        }
+    }
+
     public override void update_file_info (GOF.File file) {
-        Ggit.Repository? git_repo;
         /* Ignore e.g. .git and .githib folders, but include e.g. .travis.yml file */
         if (file.is_hidden && file.is_directory) {
             return;
         }
 
-        if (file.is_in_git_repo (out git_repo)) {
-            file.git_status = update_git_status (file.location, git_repo, file.is_directory);
+        Ggit.Repository git_repo = repo_map.lookup (file.directory);
+
+        if (git_repo != null) {
+            var git_status = update_git_status (file.location, git_repo, file.is_directory);
+            switch (git_status) {
+                case Ggit.StatusFlags.CURRENT:
+                    break;
+
+                case Ggit.StatusFlags.INDEX_MODIFIED:
+                case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
+                    file.add_emblem ("mail-unread-symbolic");
+                    break;
+
+                case Ggit.StatusFlags.IGNORED:
+                case Ggit.StatusFlags.WORKING_TREE_NEW:
+                    file.add_emblem ("mail-read-symbolic");
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
@@ -92,9 +130,13 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         }
 
         var gof = selected_files.data;
-        Ggit.Repository? git_repo = null;
 
-        if ((gof.is_hidden && gof.is_directory) || !gof.is_in_git_repo (out git_repo)) {
+        if (gof.is_hidden && gof.is_directory) {
+            return;
+        }
+
+        Ggit.Repository? git_repo = repo_map.lookup (gof.directory);
+        if (git_repo == null) {
             return;
         }
 
@@ -112,7 +154,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     }
 
     private void show_git_info () {
-warning ("Show git info");
+        warning ("Show git info");
     }
 }
 
