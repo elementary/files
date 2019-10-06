@@ -109,11 +109,11 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         if (offset > 0.0) {
             double x_frame_width, x_half_height, x_frame_width_half_height;
             if (is_rtl) {
-                x_frame_width = x - frame_width;
+                x_frame_width = x - frame_width - line_width;
                 x_half_height = x + half_height;
                 x_frame_width_half_height = x_frame_width - half_height;
             } else {
-                x_frame_width = x + frame_width;
+                x_frame_width = x + frame_width + line_width;
                 x_half_height = x - half_height;
                 x_frame_width_half_height = x_frame_width + half_height;
             }
