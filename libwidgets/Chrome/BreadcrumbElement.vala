@@ -168,10 +168,10 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
         if (is_rtl) {
             x -= padding.left;
-            x += Math.sin (offset * Math.PI_2) * width;
+            x += offset * width;
         } else {
             x += padding.left;
-            x -= Math.sin (offset * Math.PI_2) * width;
+            x -= offset * width;
         }
 
         if (layout_width < iw) {

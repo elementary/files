@@ -584,6 +584,11 @@ namespace Marlin.View.Chrome {
             }
         }
 
+        private double ease_out_cubic (double t) {
+            double p = t - 1;
+            return 1 + p * p * p;
+        }
+
         private uint make_animation (Gee.Collection<BreadcrumbElement> els,
                                      double initial_offset,
                                      double final_offset,
@@ -594,7 +599,8 @@ namespace Marlin.View.Chrome {
             var anim = add_tick_callback ((widget, frame_clock) => {
                 int64 time = frame_clock.get_frame_time ();
                 double t = (double) (time - start_time) / LOCATION_BAR_ANIMATION_TIME_USEC;
-                t = 1 - t.clamp (0, 1);
+                t = 1 - ease_out_cubic (t.clamp (0, 1));
+
                 anim_state = final_offset + (initial_offset - final_offset) * t;
 
                 foreach (BreadcrumbElement bread in els) {
