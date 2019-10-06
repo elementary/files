@@ -17,12 +17,7 @@
 ***/
 
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
-    private static HashTable<File, Ggit.Repository> repo_map;
-
-    public override void initialize () {
-        Ggit.init ();
-        repo_map = new HashTable<File, Ggit.Repository> (file_hash, file_equal);
-    }
+    internal static HashTable<File, Ggit.Repository> repo_map;
 
     public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
         try {
@@ -33,7 +28,8 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                 repo_map.insert (key, (owned)git_repo);
             }
         } catch (Error e) {
-            warning ("Error opening git repository at %s - %s", directory.uri, e.message);
+            /* An error is normal if the directory is not a git repo */
+            debug ("Error opening git repository at %s - %s", directory.uri, e.message);
         }
     }
 
@@ -159,5 +155,8 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 }
 
 public Marlin.Plugins.Base module_init () {
-    return new Marlin.Plugins.Git ();
+    var plug =  new Marlin.Plugins.Git ();
+    Ggit.init ();
+    plug.repo_map = new HashTable<File, Ggit.Repository> (file_hash, file_equal);
+    return plug;
 }
