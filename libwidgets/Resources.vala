@@ -68,7 +68,7 @@ namespace Marlin {
     public const string PROTOCOL_NAME_FILE = N_("File System");
 
     public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
-    public const uint64 LOCATION_BAR_ANIMATION_TIME_USEC = 300000;
+    public const uint64 LOCATION_BAR_ANIMATION_TIME_USEC = 200000;
     public const uint BUTTON_LONG_PRESS = 300;
 
     public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT = 2;
