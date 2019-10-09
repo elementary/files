@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2017-07-11 11:49+0000\n"
-"Last-Translator: Mattias Ezequiel Mignone <memignone@gmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"PO-Revision-Date: 2019-10-10 14:23+0000\n"
+"Last-Translator: Daniel R. <riesp@pm.me>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -40,7 +40,7 @@ msgstr "Gestor de archivos"
 #. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -61,16 +61,18 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Copia, mueve y renombra fácilmente tus archivos para mantenerte organizado. "
-"Tenlos siempre a mano eligiendo la visualización que más te guste, ya sea en "
-"forma de  listas, cuadrículas o columnas.  Accede a todos tus archivos "
-"independientemente de que accedas a estos estén en local, a través de un "
+"Copie, mueve y renombre fácilmente sus archivos para mantenerse organizado. "
+"Téngalos siempre a mano eligiendo la visualización que más le guste, ya sea "
+"en forma de listas, cuadrículas o columnas. Acceda a todos sus archivos "
+"independientemente de que el acceso a estos sea en local, a través de un "
 "dispositivo externo o remotamente utilizando FTP, SFTP, AFP, Webdav o "
 "Windows Share."
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+"Corrección de navegación del teclado para seleccionar archivos seleccionados "
+"en la vista de iconos"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
@@ -84,9 +86,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:125
 #: data/io.elementary.files.appdata.xml.in.in:133
 #: data/io.elementary.files.appdata.xml.in.in:165
-#, fuzzy
 msgid "Updated translations"
-msgstr "Nuevas traducciones"
+msgstr "Traducciones actualizadas"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Minor spacing adjustments to location bar"
@@ -119,9 +120,8 @@ msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:94
-#, fuzzy
 msgid "File sorting fixes"
-msgstr "Reparar errores menores"
+msgstr "Reparaciones de la ordenación de archivos"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Meson: fix soversion names"
@@ -152,9 +152,8 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:109
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
-msgstr "Reparar un fallo mientras se restauraban objetos de la papelera"
+msgstr "Corrección del bloqueo al abrir varios archivos de vídeo"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix some timing issues around adding and removing files"
@@ -185,14 +184,12 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:124
-#, fuzzy
 msgid "Build fixes"
-msgstr "Actualizaciones de seguridad"
+msgstr "Corrección de compilación"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
-#, fuzzy
 msgid "Plugin build fixes"
-msgstr "Reparar errores menores"
+msgstr "Corrección de la compilación de complementos"
 
 #: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Fix Ctrl+Tab behavior"
@@ -255,14 +252,12 @@ msgid "Tooltip fixes"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:161
-#, fuzzy
 msgid "Memory leak fixes"
-msgstr "Reparar errores menores"
+msgstr "Correcciones de pérdida de memoria"
 
 #: data/io.elementary.files.appdata.xml.in.in:162
-#, fuzzy
 msgid "Crash fixes"
-msgstr "Corrección de varios errores"
+msgstr "Corrección de errores"
 
 #: data/io.elementary.files.appdata.xml.in.in:163
 msgid "Trash: respect sound setting"
