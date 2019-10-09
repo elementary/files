@@ -20,6 +20,9 @@
 
 namespace Marlin.View.Chrome {
     public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
+        /** Support disabling the entry during long operations without making it insensitive **/
+        public bool working { get; set; }
+
         /** Breadcrumb context menu support **/
         ulong files_menu_dir_handler_id = 0;
         Gtk.Menu menu;
@@ -74,6 +77,10 @@ namespace Marlin.View.Chrome {
     /** Overridden Navigatable interface functions **/
     /************************************************/
         public override bool on_key_press_event (Gdk.EventKey event) {
+            if (working) {
+                return Gdk.EVENT_STOP;
+            }
+
             autocompleted = false;
             multiple_completions = false;
 
@@ -101,6 +108,10 @@ namespace Marlin.View.Chrome {
         }
 
         protected override bool on_button_release_event (Gdk.EventButton event) {
+            if (working) {
+                return Gdk.EVENT_STOP;
+            }
+
             if (button_press_timeout_id > 0) {
                 Source.remove (button_press_timeout_id);
                 button_press_timeout_id = 0;
@@ -535,6 +546,10 @@ namespace Marlin.View.Chrome {
         }
 
         protected override bool on_button_press_event (Gdk.EventButton event) {
+            if (working) {
+                return Gdk.EVENT_STOP;
+            }
+
             if (icon_event (event) || has_focus) {
                 return base.on_button_press_event (event);
             } else {

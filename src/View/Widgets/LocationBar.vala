@@ -35,13 +35,13 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        public new bool sensitive {
+        public bool working {
             set {
-                bread.sensitive = value;
+                bread.working = value;
             }
 
             get {
-                return bread.sensitive;
+                return bread.working;
             }
         }
 

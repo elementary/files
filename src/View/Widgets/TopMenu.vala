@@ -32,7 +32,7 @@ namespace Marlin.View.Chrome {
 
         public bool working {
             set {
-                location_bar.sensitive = !value;
+                location_bar.working = value;
             }
         }
 
