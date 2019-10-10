@@ -636,7 +636,7 @@ namespace Marlin.View.Chrome {
             var state = style_context.get_state ();
             var is_RTL = Gtk.StateFlags.DIR_RTL in state;
             var padding = style_context.get_padding (state);
-            base.draw (cr);
+
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
@@ -707,39 +707,43 @@ namespace Marlin.View.Chrome {
                     }
                 }
                 cr.restore ();
-            } else if (placeholder != "") {
-                assert (placeholder != null);
-                assert (text != null);
-                int layout_width, layout_height;
-                double text_width, text_height;
-                Pango.Layout layout;
-                /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
+            } else {
+                base.draw (cr);
+                if (placeholder != "") {
+                    assert (placeholder != null);
+                    assert (text != null);
 
-                Gdk.RGBA rgba;
-                var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
-                if (colored) {
-                    cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
-                } else {
-                    cr.set_source_rgba (0, 0, 0, 0.5);
-                }
+                    int layout_width, layout_height;
+                    double text_width, text_height;
+                    Pango.Layout layout;
+                    /** TODO - Get offset due to margins from style context **/
+                    int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
 
-                if (is_RTL) {
-                    layout = create_pango_layout (text + placeholder);
-                } else {
-                    layout = create_pango_layout (text);
+                    Gdk.RGBA rgba;
+                    var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
+                    if (colored) {
+                        cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
+                    } else {
+                        cr.set_source_rgba (0, 0, 0, 0.5);
+                    }
+
+                    if (is_RTL) {
+                        layout = create_pango_layout (text + placeholder);
+                    } else {
+                        layout = create_pango_layout (text);
+                    }
+                    layout.get_size (out layout_width, out layout_height);
+                    text_width = Pango.units_to_double (layout_width);
+                    text_height = Pango.units_to_double (layout_height);
+                    /** TODO - Get offset due to margins from style context **/
+                    if (is_RTL) {
+                       cr.move_to (width - (text_width + icon_width + 6), text_height / 4);
+                    } else {
+                       cr.move_to (text_width + icon_width + 6, text_height / 4);
+                    }
+                    layout.set_text (placeholder, -1);
+                    Pango.cairo_show_layout (cr, layout);
                 }
-                layout.get_size (out layout_width, out layout_height);
-                text_width = Pango.units_to_double (layout_width);
-                text_height = Pango.units_to_double (layout_height);
-                /** TODO - Get offset due to margins from style context **/
-                if (is_RTL) {
-                   cr.move_to (width - (text_width + icon_width + 6), text_height / 4);
-                } else {
-                   cr.move_to (text_width + icon_width + 6, text_height / 4);
-                }
-                layout.set_text (placeholder, -1);
-                Pango.cairo_show_layout (cr, layout);
             }
 
             return true;
