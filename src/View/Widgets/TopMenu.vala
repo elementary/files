@@ -88,7 +88,14 @@ namespace Marlin.View.Chrome {
             location_bar.show_all ();
             pack_start (location_bar);
 
-            show ();
+            var app_menu = new Gtk.MenuButton ();
+            app_menu.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
+            app_menu.tooltip_text = _("Menu");
+            app_menu.popover = new PF.AppMenuPopover ();
+
+            pack_end (app_menu);
+
+            show_all ();
         }
 
         private void connect_location_bar_signals () {

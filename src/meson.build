@@ -56,6 +56,7 @@ pantheon_files_exec = executable (
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SingleLineEditableLabel.vala',
     'View/Widgets/TopMenu.vala',
+    'View/Widgets/AppMenuPopover.vala',
 
     dependencies : [
         pantheon_files_deps,
