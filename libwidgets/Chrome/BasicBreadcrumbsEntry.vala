@@ -552,7 +552,7 @@ namespace Marlin.View.Chrome {
         private void replace_elements (Gee.ArrayList<BreadcrumbElement> new_elements) {
             /* Stop any animation */
             if (animation_timeout_id > 0) {
-                Source.remove (animation_timeout_id);
+                remove_tick_callback (animation_timeout_id);
                 animation_timeout_id = 0;
             }
             old_elements = null;
@@ -584,33 +584,36 @@ namespace Marlin.View.Chrome {
             }
         }
 
+        private double ease_out_cubic (double t) {
+            double p = t - 1;
+            return 1 + p * p * p;
+        }
+
         private uint make_animation (Gee.Collection<BreadcrumbElement> els,
                                      double initial_offset,
                                      double final_offset,
-                                     uint time_msec) {
+                                     uint64 time_usec) {
             prepare_to_animate (els, initial_offset);
             var anim_state = initial_offset;
-            double frame_time_msec = 1000 / Marlin.FRAME_RATE_HZ;
-            double frames = time_msec / frame_time_msec;
-            double step = (final_offset - initial_offset) / frames;
-            var anim = Timeout.add ((uint)frame_time_msec, () => {
-                anim_state += step;
+            int64 start_time = get_frame_clock ().get_frame_time ();
+            var anim = add_tick_callback ((widget, frame_clock) => {
+                int64 time = frame_clock.get_frame_time ();
+                double t = (double) (time - start_time) / LOCATION_BAR_ANIMATION_TIME_USEC;
+                t = 1 - ease_out_cubic (t.clamp (0, 1));
 
-                if (Math.fabs (final_offset - anim_state) < Math.fabs (step)) {
-                    foreach (BreadcrumbElement bread in els) {
-                        bread.offset = final_offset;
-                    }
+                anim_state = final_offset + (initial_offset - final_offset) * t;
 
+                foreach (BreadcrumbElement bread in els) {
+                    bread.offset = anim_state;
+                }
+
+                queue_draw ();
+
+                if (time >= start_time + LOCATION_BAR_ANIMATION_TIME_USEC) {
                     old_elements = null;
-                    queue_draw ();
                     animation_timeout_id = 0;
                     return GLib.Source.REMOVE;
                 } else {
-                    foreach (BreadcrumbElement bread in els) {
-                        bread.offset = anim_state;
-                    }
-
-                    queue_draw ();
                     return GLib.Source.CONTINUE;
                 }
             });
@@ -619,11 +622,11 @@ namespace Marlin.View.Chrome {
         }
 
         private void animate_adding_elements (Gee.Collection<BreadcrumbElement> els) {
-            animation_timeout_id = make_animation (els, 1.0, 0.0, Marlin.LOCATION_BAR_ANIMATION_TIME_MSEC);
+            animation_timeout_id = make_animation (els, 1.0, 0.0, Marlin.LOCATION_BAR_ANIMATION_TIME_USEC);
         }
 
         private void animate_removing_elements (Gee.Collection<BreadcrumbElement> els) {
-            animation_timeout_id = make_animation (els, 0.0, 1.0, Marlin.LOCATION_BAR_ANIMATION_TIME_MSEC);
+            animation_timeout_id = make_animation (els, 0.0, 1.0, Marlin.LOCATION_BAR_ANIMATION_TIME_USEC);
         }
 
         public override bool draw (Cairo.Context cr) {

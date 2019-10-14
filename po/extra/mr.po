@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2018-12-29 20:16+0000\n"
+"PO-Revision-Date: 2019-09-20 19:22+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://weblate.elementary.io/projects/files/extra/"
-"mr/>\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
@@ -62,10 +62,12 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+"आयकॉन व्ह्यूमध्ये चेरी पिकिंगसाठी फायली निवडण्यासाठी कीबोर्ड नेव्हिगेशन फिक्स"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
+"शोध प्लेसहोल्डर मजकूर शैली हार्डकोड करू नका, हे गडद थीम समस्येचे निराकरण करते"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:75
@@ -76,133 +78,136 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:133
 #: data/io.elementary.files.appdata.xml.in.in:165
 msgid "Updated translations"
-msgstr ""
+msgstr "अद्ययावत भाषांतर"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Minor spacing adjustments to location bar"
-msgstr ""
+msgstr "स्थान बारमध्ये किरकोळ अंतर समायोजन"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix F2 renaming behavior"
-msgstr ""
+msgstr "F2 चे नाव बदलण्याचे वर्तन निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "स्थान ब्रेडक्रॅमसाठी लहान अंतर समायोजन"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Consistently remember color tags"
-msgstr ""
+msgstr "सातत्याने रंग टॅग लक्षात ठेवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
 msgstr ""
+"प्लेसहोल्डर अनावश्यकपणे दर्शविणे टाळण्यासाठी झूम पातळी बदलताना लघुप्रतिमा "
+"रीलोड करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Fix running scripts with spaces in filename"
-msgstr ""
+msgstr "फाईलनावमधील रिक्त स्थानांसह स्क्रिप्ट चालू करणे निश्चित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr ""
+msgstr "आवृत्ती 4.1.4 मध्ये उच्च सीपीयू रीग्रेशनचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "File sorting fixes"
-msgstr ""
+msgstr "फाइल वर्गीकरण निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Meson: fix soversion names"
-msgstr ""
+msgstr "मेसन: सोव्हर्शन नावांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Remove CMake build system"
-msgstr ""
+msgstr "सीमेक बिल्ड सिस्टम काढा"
 
 #: data/io.elementary.files.appdata.xml.in.in:104
 msgid "Fix missing File System properties menu"
-msgstr ""
+msgstr "गहाळ फाइल सिस्टम गुणधर्म मेनूचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Drop intltool dependency"
-msgstr ""
+msgstr "intltool अवलंबन ड्रॉप करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Fix default file type handler logic"
-msgstr ""
+msgstr "डीफॉल्ट फाइल प्रकार हँडलर लॉजिकचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Fix initial search window size too small"
-msgstr ""
+msgstr "प्रारंभिक शोध विंडो आकार खूपच लहान करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Add option to disable local file thumbnails"
-msgstr ""
+msgstr "स्थानिक फाइल लघुप्रतिमा अक्षम करण्यासाठी पर्याय जोडा"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Fix crash when opening multiple video files"
-msgstr ""
+msgstr "एकाधिक व्हिडिओ फायली उघडताना क्रॅशचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix some timing issues around adding and removing files"
-msgstr ""
+msgstr "फायली जोडणे आणि काढणे यासारख्या वेळेच्या काही समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Meson: fix missing library headers"
-msgstr ""
+msgstr "मेसन: लायब्ररीच्या गहाळ झालेल्या शीर्षलेखाचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Fix color tag display"
-msgstr ""
+msgstr "रंग टॅग प्रदर्शन निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Show reserved space in Properties window"
-msgstr ""
+msgstr "प्रॉपर्टी विंडोमध्ये आरक्षित जागा दाखवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Add border radius to text background"
-msgstr ""
+msgstr "मजकूर पार्श्वभूमीवर सीमा त्रिज्या जोडा"
 
 #: data/io.elementary.files.appdata.xml.in.in:122
 msgid "Fix file mimetype association regression"
-msgstr ""
+msgstr "फाईल माइमटाइप असोसिएशन रीग्रेशनचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:123
 msgid "New pathbar tooltips"
-msgstr ""
+msgstr "नवीन पथबार टूलटिप्स"
 
 #: data/io.elementary.files.appdata.xml.in.in:124
 msgid "Build fixes"
-msgstr ""
+msgstr "निराकरणे बिल्ड करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
 msgid "Plugin build fixes"
-msgstr ""
+msgstr "प्लगइन बिल्ड निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Fix Ctrl+Tab behavior"
-msgstr ""
+msgstr "Ctrl + Tab वर्तन निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:141
 msgid "Fix building without Unity library"
-msgstr ""
+msgstr "युनिटी लायब्ररीशिवाय बिल्डींग निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
+"मुख्यपृष्ठ फोल्डरमध्ये ब्रेडक्रंब लपवा आणि प्लेसहोल्डर आणि शोध चिन्ह दर्शवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:149
 msgid "Style error dialogs"
-msgstr ""
+msgstr "शैली त्रुटी संवाद"
 
 #: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Right click fixes"
-msgstr ""
+msgstr "राईट क्लिक फिक्स"
 
 #: data/io.elementary.files.appdata.xml.in.in:151
 msgid "Reload recent view when privacy setting changes"
-msgstr ""
+msgstr "गोपनीयता सेटिंग बदलल्यास अलीकडील दृश्य रीलोड करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:152
 msgid "`Connect Server` fixes"
