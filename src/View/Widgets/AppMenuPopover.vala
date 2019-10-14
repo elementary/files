@@ -17,7 +17,6 @@
 ***/
 
 public class PF.AppMenuPopover : Gtk.Popover {
-
     construct {
         var menu_grid = new Gtk.Grid ();
         menu_grid.margin = 6;
@@ -38,5 +37,20 @@ public class PF.AppMenuPopover : Gtk.Popover {
 
         menu_grid.show_all ();
         add (menu_grid);
+
+        single_button.clicked.connect (() => {
+            GOF.Preferences.get_default ().click_mode = Marlin.ClickMode.SINGLE;
+            hide ();
+        });
+
+        double_button.clicked.connect (() => {
+            GOF.Preferences.get_default ().click_mode = Marlin.ClickMode.DOUBLE;
+            hide ();
+        });
+
+        mixed_button.clicked.connect (() => {
+            GOF.Preferences.get_default ().click_mode = Marlin.ClickMode.MIXED;
+            hide ();
+        });
     }
 }
