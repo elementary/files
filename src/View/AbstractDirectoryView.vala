@@ -194,6 +194,7 @@ namespace FM {
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
+        public Marlin.ClickMode click_mode { get; set; }
 
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
@@ -301,6 +302,7 @@ namespace FM {
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
             Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
+            Preferences.settings.bind ("click-mode", this, "click-mode", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -2989,6 +2991,8 @@ namespace FM {
                 return true;
             }
 
+            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
+
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
@@ -3017,20 +3021,30 @@ namespace FM {
                 }
             }
 
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
+                win.set_cursor (selectable_cursor);
+
                 switch (click_zone) {
                     case ClickZone.ICON:
                     case ClickZone.NAME:
-                        if (on_directory && one_or_less) {
-                            win.set_cursor (activatable_cursor);
+                        switch (click_mode) {
+                            case Marlin.ClickMode.SINGLE:
+                                if (one_or_less) {
+                                    win.set_cursor (activatable_cursor);
+                                }
+                                break;
+                            case Marlin.ClickMode.MIXED:
+                                if (on_directory && one_or_less) {
+                                    win.set_cursor (activatable_cursor);
+                                }
+
+                                break;
                         }
 
                         break;
 
                     default:
-                        win.set_cursor (selectable_cursor);
                         break;
                 }
 
@@ -3310,9 +3324,26 @@ namespace FM {
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
                             update_selected_files_and_menu ();
-                            should_activate = no_mods &&
-                                              (on_directory && one_or_less || double_click_event);
+                            should_activate = false;
+                            if (no_mods) {
+                                switch (click_mode) {
 
+                                    case Marlin.ClickMode.SINGLE:
+                                        should_activate = true;
+                                        break;
+
+                                    case Marlin.ClickMode.DOUBLE:
+                                        should_activate = double_click_event;
+                                        break;
+
+                                    case Marlin.ClickMode.MIXED:
+                                        should_activate = on_directory || double_click_event;
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
                              * the item is unselected.
