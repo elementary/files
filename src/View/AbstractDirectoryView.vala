@@ -2595,17 +2595,19 @@ namespace FM {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
-                Gtk.Widget widget = (this as Gtk.Bin).get_child ();
-                Gdk.Device pointer = context.get_device ();
-                Gdk.Window window = widget.get_window ();
-                int x, y, w, h;
+                Gtk.Widget? widget = (this as Gtk.Bin).get_child ();
+                if (widget != null) {
+                    Gdk.Device pointer = context.get_device ();
+                    Gdk.Window window = widget.get_window ();
+                    int x, y, w, h;
 
-                window.get_device_position (pointer, out x, out y, null);
-                window.get_geometry (null, null, out w, out h);
+                    window.get_device_position (pointer, out x, out y, null);
+                    window.get_geometry (null, null, out w, out h);
 
-                scroll_if_near_edge (y, h, 20, get_vadjustment ());
-                scroll_if_near_edge (x, w, 20, get_hadjustment ());
-                return GLib.Source.CONTINUE;
+                    scroll_if_near_edge (y, h, 20, get_vadjustment ());
+                    scroll_if_near_edge (x, w, 20, get_hadjustment ());
+                    return GLib.Source.CONTINUE;
+                }
             });
         }
 
