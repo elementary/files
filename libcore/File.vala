@@ -580,10 +580,13 @@ public class GOF.File : GLib.Object {
     }
 
     public void update_type () {
-        unowned string? ftype = get_ftype ();
         update_formated_type ();
 
-        icon = GLib.ContentType.get_icon (ftype);
+        unowned string? ftype = get_ftype ();
+        if (ftype != null) {
+            icon = GLib.ContentType.get_icon (ftype);
+        }
+
         if (pix_size > 1 && pix_scale > 0) {
             update_icon (pix_size, pix_scale);
             icon_changed ();
