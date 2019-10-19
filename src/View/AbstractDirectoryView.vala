@@ -2607,6 +2607,8 @@ namespace FM {
                     scroll_if_near_edge (y, h, 20, get_vadjustment ());
                     scroll_if_near_edge (x, w, 20, get_hadjustment ());
                     return GLib.Source.CONTINUE;
+                } else {
+                    return GLib.Source.REMOVE;
                 }
             });
         }
