@@ -17,7 +17,11 @@
 ***/
 
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
-    internal static HashTable<File, Ggit.Repository> repo_map;
+    public GLib.HashTable<GLib.File, Ggit.Repository> repo_map;
+
+    public Git () {
+        repo_map = new GLib.HashTable<GLib.File, Ggit.Repository> (GLib.File.hash, GLib.File.equal);
+    }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
         try {
@@ -78,7 +82,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 
             GLib.FileInfo? child_info = null;
             try {
-                var e = location.enumerate_children ("standard*", FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                var e = location.enumerate_children (GLib.FileAttribute.STANDARD_TYPE + "," + GLib.FileAttribute.STANDARD_NAME, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                 child_info = e.next_file ();
                 while (child_info != null) {
 
@@ -137,7 +141,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         }
 
         var menu = widget as Gtk.Menu;
-        var git_menu_item = new Gtk.MenuItem.with_label ("Git Information");
+        var git_menu_item = new Gtk.MenuItem.with_label (_("Git Information"));
         git_menu_item.activate.connect (show_git_info);
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
@@ -155,8 +159,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 }
 
 public Marlin.Plugins.Base module_init () {
-    var plug =  new Marlin.Plugins.Git ();
     Ggit.init ();
-    plug.repo_map = new HashTable<File, Ggit.Repository> (file_hash, file_equal);
+    var plug =  new Marlin.Plugins.Git ();
     return plug;
 }
