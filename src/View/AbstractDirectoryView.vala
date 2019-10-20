@@ -715,10 +715,6 @@ namespace FM {
             cancel_timeout (ref thumbnail_source_id);
         }
 
-        protected bool is_drag_pending () {
-            return drag_has_begun;
-        }
-
         protected bool selection_only_contains_folders (GLib.List<GOF.File> list) {
             bool only_folders = true;
 
