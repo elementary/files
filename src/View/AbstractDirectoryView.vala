@@ -158,7 +158,6 @@ namespace FM {
 
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
-        private bool drag_has_begun = false;
         protected bool dnd_disabled = false;
         private void* drag_data;
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
@@ -713,10 +712,6 @@ namespace FM {
             }
 
             cancel_timeout (ref thumbnail_source_id);
-        }
-
-        protected bool is_drag_pending () {
-            return drag_has_begun;
         }
 
         protected bool selection_only_contains_folders (GLib.List<GOF.File> list) {
@@ -1480,7 +1475,6 @@ namespace FM {
     /** Handle Drag source signals*/
 
         private void on_drag_begin (Gdk.DragContext context) {
-            drag_has_begun = true;
             should_activate = false;
         }
 
@@ -1526,7 +1520,6 @@ namespace FM {
 
             current_suggested_action = Gdk.DragAction.DEFAULT;
             current_actions = Gdk.DragAction.DEFAULT;
-            drag_has_begun = false;
             drop_occurred = false;
         }
 
