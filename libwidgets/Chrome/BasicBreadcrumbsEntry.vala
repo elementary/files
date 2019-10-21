@@ -593,6 +593,11 @@ namespace Marlin.View.Chrome {
                                      double initial_offset,
                                      double final_offset,
                                      uint64 time_usec) {
+            if (!get_settings ().gtk_enable_animations) {
+                prepare_to_animate (els, final_offset);
+                return 0;
+            }
+
             prepare_to_animate (els, initial_offset);
             var anim_state = initial_offset;
             int64 start_time = get_frame_clock ().get_frame_time ();
