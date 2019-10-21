@@ -119,24 +119,9 @@ namespace Marlin {
          * Pastes the contents from the clipboard to the directory
          * referenced by @target_file.
         **/
-        public void paste_files (GLib.File target_file,
-                                 Gtk.Widget? widget = null,
-                                 GLib.Callback? new_files_callback = null) {
-
-            /**
-             *  @cb the clipboard.
-             *  @sd selection_data returned from the clipboard.
-            **/
-            clipboard.request_contents (x_special_gnome_copied_files, (cb, sd) => {
-                contents_received (sd, target_file, widget, new_files_callback);
-            });
-
-        }
-
-        private void contents_received (Gtk.SelectionData sd,
-                                        GLib.File target_file,
-                                        Gtk.Widget? widget = null,
-                                        GLib.Callback? new_files_callback = null) {
+        public async void paste_files (GLib.File target_file,
+                                       Gtk.Widget? widget = null) {
+            SelectionData? sd = clipboard.wait_for_contents (x_special_gnome_copied_files);
 
             /* check whether the retrieval worked */
             string? text;
@@ -168,12 +153,12 @@ namespace Marlin {
             var file_list = PF.FileUtils.files_from_uris (text);
 
             if (file_list != null) {
-                FileOperations.copy_move_link (file_list,
-                                               null,
-                                               target_file,
-                                               action,
-                                               widget,
-                                               (Marlin.CopyCallback) new_files_callback);
+                FileOperations.copy_move_link.begin (file_list,
+                                                     null,
+                                                     target_file,
+                                                     action,
+                                                     widget,
+                                                     (Marlin.CopyCallback) new_files_callback);
             }
 
             /* clear the clipboard if it contained "cutted data"
