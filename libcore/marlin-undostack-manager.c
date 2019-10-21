@@ -460,8 +460,8 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
                 GList *uri_to_trash = g_hash_table_get_keys (action->trashed);
                 uris = uri_list_to_gfile_list (uri_to_trash);
                 self->undo_redo_flag = TRUE;
-                marlin_file_operations_trash_or_delete
-                    (uris, NULL, undo_redo_done_delete_callback, action);
+                marlin_file_operations_delete
+                    (uris, NULL, TRUE, undo_redo_done_delete_callback, action);
                 g_list_free (uri_to_trash);
                 g_list_free_full (uris, g_object_unref);
             }
@@ -528,7 +528,7 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
                 uris = g_list_reverse (uris); // Deleting must be done in reverse
             }
             if (self->confirm_delete) {
-                marlin_file_operations_delete (uris, NULL,
+                marlin_file_operations_delete (uris, NULL, FALSE,
                                                undo_redo_done_delete_callback, action);
                 g_list_free_full (uris, g_object_unref);
             } else {
@@ -549,8 +549,8 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
             break;
         case MARLIN_UNDO_RESTOREFROMTRASH:
             uris = construct_gfile_list (action->destinations, action->dest_dir);
-            marlin_file_operations_trash_or_delete (uris, NULL,
-                                                    undo_redo_done_delete_callback, action);
+            marlin_file_operations_delete (uris, NULL, TRUE,
+                                           undo_redo_done_delete_callback, action);
             g_list_free_full (uris, g_object_unref);
             break;
         case MARLIN_UNDO_MOVETOTRASH:
