@@ -46,6 +46,15 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         Ggit.Repository git_repo = repo_map.lookup (file.directory);
 
         if (git_repo != null) {
+            /* Ignore other files specified by .gitignore */
+            try {
+                if (git_repo.path_is_ignored (file.location.get_path ())) {
+                    return;
+                }
+            } catch (GLib.Error e) {
+                return; /* If this fails then unlikely to be able to get git_status */
+            }
+
             var git_status = update_git_status (file.location, git_repo, file.is_directory);
             switch (git_status) {
                 case Ggit.StatusFlags.CURRENT:
@@ -56,7 +65,6 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                     file.add_emblem ("user-away");
                     break;
 
-                case Ggit.StatusFlags.IGNORED:
                 case Ggit.StatusFlags.WORKING_TREE_NEW:
                     file.add_emblem ("user-available");
                     break;
@@ -68,7 +76,9 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     }
 
     private Ggit.StatusFlags update_git_status (GLib.File location, Ggit.Repository git_repo, bool is_directory) {
-        Ggit.StatusFlags status = Ggit.StatusFlags.CURRENT;
+        /* Fallback to ignored status */
+        Ggit.StatusFlags status = Ggit.StatusFlags.IGNORED;
+
         if (!is_directory) {
             try {
                 status = git_repo.file_status (location);
@@ -79,7 +89,6 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             bool modified = false;
             bool ignored = true;
             bool new_file = false;
-
             GLib.FileInfo? child_info = null;
             try {
                 var e = location.enumerate_children (GLib.FileAttribute.STANDARD_TYPE + "," + GLib.FileAttribute.STANDARD_NAME, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
