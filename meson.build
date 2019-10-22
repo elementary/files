@@ -52,7 +52,7 @@ common_deps = [
     gmodule_dep,
     gee_dep,
     gtk_dep,
-    granite_dep,
+    granite_dep
 ]
 
 pango_dep = dependency('pango', version: '>=1.1.2')
@@ -78,9 +78,14 @@ if get_option('with-unity')
     endif
 endif
 
-#
-# Configuration file
-#
+add_project_arguments(
+    ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
+    language: 'vala'
+)
+
+
+#Configuration file
+
 config_data = configuration_data()
 config_data.set('plugin_dir', plugin_dir)
 config_data.set('version', meson.project_version())
