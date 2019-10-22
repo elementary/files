@@ -56,8 +56,7 @@ namespace Marlin {
         static void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file,Marlin.CreateCallback? create_callback = null);
         static void mount_volume (GLib.Volume volume, Gtk.Window? parent_window = null);
         static async void mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) throws GLib.Error;
-        static void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null);
-        static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null);
+        static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, bool try_trash, DeleteCallback? callback = null);
         static bool has_trash_files (GLib.Mount mount);
         static GLib.List<GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
         static void empty_trash (Gtk.Widget? widget);

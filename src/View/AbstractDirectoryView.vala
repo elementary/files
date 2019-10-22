@@ -894,15 +894,10 @@ namespace FM {
                 locations.reverse ();
 
                 slot.directory.block_monitor ();
-                if (delete_immediately) {
-                    Marlin.FileOperations.@delete (locations,
-                                                   window as Gtk.Window,
-                                                   after_trash_or_delete);
-                } else {
-                    Marlin.FileOperations.trash_or_delete (locations,
-                                                           window as Gtk.Window,
-                                                           after_trash_or_delete);
-                }
+                Marlin.FileOperations.@delete (locations,
+                                               window as Gtk.Window,
+                                               !delete_immediately,
+                                               after_trash_or_delete);
             }
 
             /* If in recent "folder" we need to refresh the view. */
