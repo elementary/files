@@ -88,27 +88,26 @@ public class Marlin.IconInfo : GLib.Object {
                                                                                         ThemedIconKey.equal);
             }
 
-            var names = ((GLib.ThemedIcon) icon).get_names ();
-            var theme = get_icon_theme ();
-            var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
-            if (gtkicon_info == null) {
-                return new Marlin.IconInfo.for_pixbuf (null);
-            }
-
-            var filename = gtkicon_info.get_filename ();
-            if (filename == null) {
-                return new Marlin.IconInfo.for_pixbuf (null);
-            }
-
-            var themed_key = new ThemedIconKey (filename, size, scale);
-
+            var themed_key = new ThemedIconKey ((GLib.ThemedIcon) icon, size, scale);
             var icon_info = themed_icon_cache.lookup (themed_key);
             if (icon_info != null) {
                 return icon_info;
             }
 
-            icon_info = new Marlin.IconInfo.for_icon_info (gtkicon_info);
-            themed_icon_cache.insert (themed_key.dup (), icon_info);
+            var theme = get_icon_theme ();
+            Gtk.IconInfo? gtkicon_info = null;
+            // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
+            foreach (unowned string name in ((GLib.ThemedIcon) icon).get_names ()) {
+                gtkicon_info = theme.lookup_icon_for_scale (name, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+                if (gtkicon_info != null)
+                    break;
+            }
+
+            if (gtkicon_info != null) {
+                icon_info = new Marlin.IconInfo.for_icon_info (gtkicon_info);
+                themed_icon_cache.insert ((owned) themed_key, icon_info);
+            }
+
             return icon_info;
         } else {
             var theme = get_icon_theme ();
@@ -227,26 +226,25 @@ public class Marlin.IconInfo : GLib.Object {
 
     [Compact]
     private class ThemedIconKey {
-        public string filename;
+        public GLib.ThemedIcon icon;
         public int size;
         public int scale;
 
-        public ThemedIconKey (string _filename, int _size, int _scale) {
-            filename = _filename;
+        public ThemedIconKey (GLib.ThemedIcon _icon, int _size, int _scale) {
+            icon = _icon;
             size = _size;
             scale = _scale;
         }
 
-        public ThemedIconKey dup () {
-            return new ThemedIconKey (filename, size, scale);
+        public uint hash () {
+            return icon.hash () ^ (size * scale);
         }
 
-        public static uint hash (ThemedIconKey a) {
-            return a.filename.hash () ^ (a.size * a.scale);
-        }
+        public bool equal (ThemedIconKey other) {
+            if (this.size != other.size || this.scale != other.scale)
+                return false;
 
-        public static bool equal (ThemedIconKey a, ThemedIconKey b) {
-            return (a.size == b.size && a.scale == b.scale && a.filename == b.filename);
+            return this.icon.equal (other.icon);
         }
     }
 

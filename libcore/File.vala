@@ -374,7 +374,7 @@ public class GOF.File : GLib.Object {
         GLib.return_val_if_fail (size >= 1, null);
 
         var nicon = get_icon (size, scale, flags);
-        return nicon.get_pixbuf_nodefault ();
+        return nicon != null ? nicon.get_pixbuf_nodefault () : null;
     }
 
     public void get_folder_icon_from_uri_or_path () {
