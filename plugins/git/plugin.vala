@@ -53,12 +53,12 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 
                 case Ggit.StatusFlags.INDEX_MODIFIED:
                 case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
-                    file.add_emblem ("mail-unread-symbolic");
+                    file.add_emblem ("user-away");
                     break;
 
                 case Ggit.StatusFlags.IGNORED:
                 case Ggit.StatusFlags.WORKING_TREE_NEW:
-                    file.add_emblem ("mail-read-symbolic");
+                    file.add_emblem ("user-available");
                     break;
 
                 default:
