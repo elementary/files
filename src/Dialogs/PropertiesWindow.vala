@@ -190,8 +190,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
-        var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
-        overlay_emblems (file_icon, goffile.emblems_list);
+        if (file_pix != null) {
+            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
+            overlay_emblems (file_icon, goffile.emblems_list);
+        }
 
         /* Build header box */
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
