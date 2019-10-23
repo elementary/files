@@ -1,1 +1,3 @@
+usr/include/pantheon-files-widgets
 usr/lib/*/*widgets.so
+usr/lib/*/pkgconfig/pantheon-files-widgets.pc
