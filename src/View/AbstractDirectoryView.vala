@@ -3271,6 +3271,11 @@ namespace FM {
              */
             block_drag_and_drop ();
 
+            /* Native Gtk behaviour for all clicks on empty space */
+            if (click_zone == ClickZone.BLANK_NO_PATH) {
+                return false;
+            }
+
             /* Handle un-modified clicks or control-clicks here else pass on.
              */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
