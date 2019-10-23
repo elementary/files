@@ -1,4 +1,4 @@
 usr/bin
+usr/lib/*/gtk-3.0/modules/libpantheon-filechooser-module.so
 usr/lib/*/io.elementary.files
 usr/share
-usr/lib/*/gtk-3.0/modules/libpantheon-filechooser-module.so

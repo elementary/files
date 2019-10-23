@@ -2,14 +2,15 @@ Source: pantheon-files
 Section: x11
 Priority: optional
 Maintainer: Cody Garver <cody@elementary.io>
-Build-Depends: meson,
-               debhelper (>= 10.5.1),
+Build-Depends: debhelper (>= 10.5.1),
                gettext,
                gnome-common,
                libcanberra-dev (>= 0.30),
+               libcloudproviders-dev (>= 0.3.0),
                libdbus-glib-1-dev,
                libgail-3-dev,
                libgee-0.8-dev,
+               libgit2-glib-1.0-dev,
                libglib2.0-dev (>= 2.29.0),
                libgranite-dev (>= 0.3.0~),
                libgtk-3-dev (>= 3.14),
@@ -19,7 +20,7 @@ Build-Depends: meson,
                libsqlite3-dev,
                libunity-dev (>= 4.0.0),
                libzeitgeist-2.0-dev,
-               libcloudproviders-dev (>= 0.3.0),
+               meson,
                valac (>= 0.28)
 Homepage: https://github.com/elementary/files
 Standards-Version: 4.1.1
@@ -32,7 +33,7 @@ Depends: gvfs,
          tumbler,
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: contractor, gvfs-backends, exfat-fuse, tumbler-plugins-extra
+Recommends: contractor, exfat-fuse, gvfs-backends, tumbler-plugins-extra
 Description: File manager for the Pantheon desktop
  Pantheon Files is a modern file manager originally
  designed for the Pantheon desktop environment.
