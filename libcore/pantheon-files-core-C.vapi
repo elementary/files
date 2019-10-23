@@ -86,17 +86,14 @@ namespace Marlin
     }
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
-    public delegate void UndoFinishCallback ();
-
-    [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public class UndoManager : GLib.Object
     {
         public static unowned UndoManager instance ();
 
         public signal void request_menu_update (UndoMenuData data);
 
-        public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
-        public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
+        public async bool undo (Gtk.Widget widget, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        public async void redo (Gtk.Widget widget, GLib.Cancellable? cancellable = null) throws GLib.Error;
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
 }
