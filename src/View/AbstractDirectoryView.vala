@@ -1561,14 +1561,20 @@ namespace FM {
                     }
                 }
             } else {
+                /* Uncertain whether "drag-drop" emitted if dropped with target == Gdk.Atom.NONE so this
+                 * may be unnecessary */
                 ok_to_drop = (target != Gdk.Atom.NONE);
             }
 
             if (ok_to_drop) {
                 drop_occurred = true;
-                /* request the drag data from the source (initiates
-                 * saving in case of XdndDirectSave).*/
+                /* request the drag data from the source. initiates
+                 * saving in case of XdndDirectSave).  Destination data will be reset after drop handling ends
+                 * in "on_drag_data_received ()"  */
                 Gtk.drag_get_data (get_real_view (), context, target, timestamp);
+            } else {
+                /* Ensure destination data reset if not ok to drop (may never be reached) */
+                clear_destination_data ();
             }
 
             return ok_to_drop;
@@ -1635,13 +1641,7 @@ namespace FM {
             if (drop_occurred) { /* Only true for valid drop site */
                 /* Prepare to receive another drop */
                 drop_occurred = false;
-                drop_target_file = null;
-                drop_file_list = null;
-                drop_data_ready = false;
-
-                current_target_type = Gdk.Atom.NONE;
-                current_suggested_action = Gdk.DragAction.DEFAULT;
-                current_actions = Gdk.DragAction.DEFAULT;
+                clear_destination_data ();
 
                 Gtk.drag_finish (context, success, false, timestamp);
             }
@@ -1671,6 +1671,16 @@ namespace FM {
         }
 
 /** DnD helpers */
+
+        private void clear_destination_data () {
+            drop_target_file = null;
+            drop_file_list = null;
+            drop_data_ready = false;
+
+            current_target_type = Gdk.Atom.NONE;
+            current_suggested_action = Gdk.DragAction.DEFAULT;
+            current_actions = Gdk.DragAction.DEFAULT;
+        }
 
         private GOF.File? get_drop_target_file (int win_x, int win_y, out Gtk.TreePath? path_return) {
             Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
