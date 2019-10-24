@@ -119,24 +119,23 @@ namespace FM {
         protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST;
         protected bool large_thumbnails = false;
 
-        /* drag support */
-        uint drag_scroll_timer_id = 0;
-        uint drag_timer_id = 0;
-        uint drag_enter_timer_id = 0;
+        /* Used only when acting as drag source */
         int drag_x = 0;
         int drag_y = 0;
         int drag_button;
-        protected int drag_delay = 300;
-        protected int drag_enter_delay = 1000;
-
-        Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
-        Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
-
-        GLib.List<GOF.File> drag_file_list = null;
-        GOF.File? drop_target_file = null;
+        uint drag_timer_id = 0;
+        GLib.List<GOF.File> source_drag_file_list = null;
         Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
-        /* drop site support */
+        /* Used only when acting as drag destination */
+        uint drag_scroll_timer_id = 0;
+        uint drag_enter_timer_id = 0;
+        private bool destination_data_ready = false; /* whether the drop data was received already */
+        private bool drop_occurred = false; /* whether the data was dropped */
+        GOF.File? drop_target_file = null;
+        private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
+        Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
+        Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
         bool _drop_highlight;
         bool drop_highlight {
             get {
@@ -156,11 +155,9 @@ namespace FM {
             }
         }
 
-        private bool drop_data_ready = false; /* whether the drop data was received already */
-        private bool drop_occurred = false; /* whether the data was dropped */
+        /* Used for blocking and unblocking DnD */
         protected bool dnd_disabled = false;
         private void* drag_data;
-        private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
 
         /* support for generating thumbnails */
         int thumbnail_request = -1;
@@ -1465,32 +1462,29 @@ namespace FM {
             queue_draw ();
         }
 
-/** DRAG AND DROP */
+/** DRAG AND DROP SOURCE */
 
-    /** Handle Drag source signals*/
-
+        /* Signal emitted on source when drag begins */
         private void on_drag_begin (Gdk.DragContext context) {
             should_activate = false;
         }
 
+        /* Signal emitted on source when destination requests data, either to inspect
+         * during motion or to process on dropping by calling Gdk.drag_data_get () */
         private void on_drag_data_get (Gdk.DragContext context,
                                        Gtk.SelectionData selection_data,
                                        uint info,
                                        uint timestamp) {
 
-            /* get file list only once in case view changes location automatically
-             * while dragging (which loses file selection.
-             */
-
-            if (drag_file_list == null) {
-                drag_file_list = get_selected_files_for_transfer ();
+            if (source_drag_file_list == null) {
+                source_drag_file_list = get_selected_files_for_transfer ();
             }
 
-            if (drag_file_list == null) {
+            if (source_drag_file_list == null) {
                 return;
             }
 
-            GOF.File file = drag_file_list.first ().data;
+            GOF.File file = source_drag_file_list.first ().data;
 
             if (file != null && file.pix != null) {
                 Gtk.drag_set_icon_gicon (context, file.pix, 0, 0);
@@ -1498,39 +1492,35 @@ namespace FM {
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
             }
 
-            Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
+            Marlin.DndHandler.set_selection_data_from_file_list (selection_data, source_drag_file_list);
         }
 
+        /* Signal emitted on source after a DND move operation */
         private void on_drag_data_delete (Gdk.DragContext context) {
             /* block real_view default handler because handled in on_drag_end */
             GLib.Signal.stop_emission_by_name (get_real_view (), "drag-data-delete");
         }
 
+        /* Signal emitted on source after completion of DnD. */
         private void on_drag_end (Gdk.DragContext context) {
-            cancel_timeout (ref drag_scroll_timer_id);
-            drag_file_list = null;
-            drop_target_file = null;
-            drop_file_list = null;
-            drop_data_ready = false;
-
-            current_suggested_action = Gdk.DragAction.DEFAULT;
-            current_actions = Gdk.DragAction.DEFAULT;
-            drop_occurred = false;
+            source_drag_file_list = null;
         }
 
+/** DRAG AND DROP DESTINATION */
 
-/** Handle Drop target signals*/
+        /* Signal emitted on destination while drag moving over it */
         private bool on_drag_motion (Gdk.DragContext context,
                                      int x,
                                      int y,
                                      uint timestamp) {
 
-            if (!drop_data_ready && !get_drop_data (context, x, y, timestamp)) {
-                /* We don't have drop data already ... */
-                return false;
-            } else {
+            if (destination_data_ready) {
                 /* We have the drop data - check whether we can drop here*/
                 check_destination_actions_and_target_file (context, x, y, timestamp);
+                /* We don't have drop data already ... */
+            } else {
+                get_drag_data (context, x, y, timestamp);
+                return false;
             }
 
             if (drag_scroll_timer_id == 0) {
@@ -1541,6 +1531,7 @@ namespace FM {
             return true;
         }
 
+        /* Signal emitted on destination when drag button released */
         private bool on_drag_drop (Gdk.DragContext context,
                                    int x,
                                    int y,
@@ -1548,41 +1539,36 @@ namespace FM {
 
             Gtk.TargetList list = null;
             string? uri = null;
-            bool ok_to_drop = false;
+            drop_occurred = true;
 
             Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, list);
-
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
-                GOF.File? target_file = get_drop_target_file (x, y, null);
-                if (target_file != null) {
-                    /* get XdndDirectSave file name from DnD source window */
-                    string? filename = dnd_handler.get_source_filename (context);
-                    if (filename != null) {
-                        /* Get uri of source file when dropped */
-                        uri = target_file.get_target_location ().resolve_relative_path (filename).get_uri ();
-                        /* Setup the XdndDirectSave property on the source window */
-                        dnd_handler.set_source_uri (context, uri);
-                        ok_to_drop = true;
-                    } else {
-                        PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
-                                                      _("Invalid file name provided"), window);
-                    }
+                GOF.File? target_file = get_drop_target_file (x, y);
+                /* get XdndDirectSave file name from DnD source window */
+                string? filename = dnd_handler.get_source_filename (context);
+                if (target_file != null && filename != null) {
+                    /* Get uri of source file when dropped */
+                    uri = target_file.get_target_location ().resolve_relative_path (filename).get_uri ();
+                    /* Setup the XdndDirectSave property on the source window */
+                    dnd_handler.set_source_uri (context, uri);
+                } else {
+                    PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
+                                                  _("Invalid file name provided"), window);
+
+                    return false;
                 }
-            } else {
-                ok_to_drop = (target != Gdk.Atom.NONE);
             }
 
-            if (ok_to_drop) {
-                drop_occurred = true;
-                /* request the drag data from the source (initiates
-                 * saving in case of XdndDirectSave).*/
-                Gtk.drag_get_data (get_real_view (), context, target, timestamp);
-            }
+            /* request the drag data from the source (initiates
+             * saving in case of XdndDirectSave).*/
+            Gtk.drag_get_data (get_real_view (), context, target, timestamp);
 
-            return ok_to_drop;
+            return true;
         }
 
 
+        /* Signal emitted on destination when selection data received from source
+         * either during drag motion or on dropping */
         private void on_drag_data_received (Gdk.DragContext context,
                                             int x,
                                             int y,
@@ -1590,60 +1576,64 @@ namespace FM {
                                             uint info,
                                             uint timestamp
                                             ) {
-            bool success = false;
-
-            if (!drop_data_ready) {
-                /* We don't have the drop data - extract uri list from selection data */
+            /* Annoyingly drag-leave is emitted before "drag-drop" and this clears the destination drag data.
+             * So we have to reset some it here and clear it again after processing the drop. */
+            if (info == Marlin.TargetType.TEXT_URI_LIST && destination_drop_file_list == null) {
                 string? text;
                 if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = PF.FileUtils.files_from_uris (text);
-                    drop_data_ready = true;
+                    destination_drop_file_list = PF.FileUtils.files_from_uris (text);
+                    destination_data_ready = true;
                 }
             }
 
-            if (drop_occurred && drop_data_ready) {
+            if (drop_occurred) {
+                bool success = false;
                 drop_occurred = false;
-                if (current_actions != Gdk.DragAction.DEFAULT) {
-                    switch (info) {
-                        case Marlin.TargetType.XDND_DIRECT_SAVE0:
-                            success = dnd_handler.handle_xdnddirectsave (context,
-                                                                         drop_target_file,
-                                                                         selection_data);
+
+                switch (info) {
+                    case Marlin.TargetType.XDND_DIRECT_SAVE0:
+                        success = dnd_handler.handle_xdnddirectsave (context,
+                                                                     drop_target_file,
+                                                                     selection_data);
+                        break;
+
+                    case Marlin.TargetType.NETSCAPE_URL:
+                        success = dnd_handler.handle_netscape_url (context,
+                                                                   drop_target_file,
+                                                                   selection_data);
+                        break;
+
+                    case Marlin.TargetType.TEXT_URI_LIST:
+                        if ((current_actions & FILE_DRAG_ACTIONS) == 0) {
                             break;
+                        }
 
-                        case Marlin.TargetType.NETSCAPE_URL:
-                            success = dnd_handler.handle_netscape_url (context,
-                                                                       drop_target_file,
-                                                                       selection_data);
-                            break;
+                        if (selected_files != null) {
+                            unselect_all ();
+                        }
 
-                        case Marlin.TargetType.TEXT_URI_LIST:
-                            if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
-                                if (selected_files != null) {
-                                    unselect_all ();
-                                }
+                        success = dnd_handler.handle_file_drag_actions (get_real_view (),
+                                                                        window,
+                                                                        context,
+                                                                        drop_target_file,
+                                                                        destination_drop_file_list,
+                                                                        current_actions,
+                                                                        current_suggested_action,
+                                                                        timestamp);
 
-                                success = dnd_handler.handle_file_drag_actions (get_real_view (),
-                                                                                window,
-                                                                                context,
-                                                                                drop_target_file,
-                                                                                drop_file_list,
-                                                                                current_actions,
-                                                                                current_suggested_action,
-                                                                                timestamp);
-                            }
+                        break;
 
-                            break;
-
-                        default:
-                            break;
-                    }
+                    default:
+                        break;
                 }
+
+                /* Complete XDnDDirectSave0 */
                 Gtk.drag_finish (context, success, false, timestamp);
-                on_drag_leave (context, timestamp);
+                clear_destination_drag_data ();
             }
         }
 
+        /* Signal emitted on destination when drag leaves the widget or *before* dropping */
         private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
             /* reset the drop-file for the icon renderer */
             icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
@@ -1660,13 +1650,20 @@ namespace FM {
             /* disable the highlighting of the items in the view */
             highlight_path (null);
 
-            /* Prepare to receive another drop */
-            drop_data_ready = false;
+            /* Clear data */
+            clear_destination_drag_data ();
         }
 
-/** DnD helpers */
+/** DnD destination helpers */
 
-        private GOF.File? get_drop_target_file (int win_x, int win_y, out Gtk.TreePath? path_return) {
+        private void clear_destination_drag_data () {
+            destination_data_ready = false;
+            current_target_type = Gdk.Atom.NONE;
+            destination_drop_file_list = null;
+            cancel_timeout (ref drag_scroll_timer_id);
+        }
+
+        private GOF.File? get_drop_target_file (int win_x, int win_y) {
             Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
             GOF.File? file = null;
 
@@ -1691,73 +1688,66 @@ namespace FM {
                 file = slot.directory.file;
             }
 
-            path_return = path;
             return file;
         }
 
-        private bool get_drop_data (Gdk.DragContext context, int x, int y, uint timestamp) {
+        /* Called by destination during drag motion */
+        private void get_drag_data (Gdk.DragContext context, int x, int y, uint timestamp) {
             Gtk.TargetList? list = null;
             Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, list);
-            bool result = false;
             current_target_type = target;
+
             /* Check if we can handle it yet */
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0") ||
                 target == Gdk.Atom.intern_static_string ("_NETSCAPE_URL")) {
 
-                /* Determine file at current position (if any) */
-                Gtk.TreePath? path = null;
-                GOF.File? file = get_drop_target_file (x, y, out path);
+                if (drop_target_file != null &&
+                    drop_target_file.is_folder () &&
+                    drop_target_file.is_writable ()) {
 
-
-                if (file != null &&
-                    file.is_folder () &&
-                    file.is_writable ()) {
-
-                    icon_renderer.@set ("drop-file", file);
-                    highlight_path (path);
-                    drop_data_ready = true;
-                    result = true;
+                    icon_renderer.@set ("drop-file", drop_target_file);
+                    highlight_path (get_path_at_pos (x, y));
                 }
-            } else if (target != Gdk.Atom.NONE) {
-                /* request the drag data from the source */
-                Gtk.drag_get_data (get_real_view (), context, target, timestamp); /* emits "drag_data_received" */
-            }
 
-            return result;
+                destination_data_ready = true;
+            } else if (target != Gdk.Atom.NONE && destination_drop_file_list == null) {
+                /* request the drag data from the source.
+                 * See {Source]on_drag_data_get () and [Destination]on_drag_data_received () */
+                Gtk.drag_get_data (get_real_view (), context, target, timestamp);
+            }
         }
 
+        /* Called by DnD destination during drag_motion */
         private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
-            Gtk.TreePath? path;
-            GOF.File? file = get_drop_target_file (x, y, out path);
-            string uri = file != null ? file.uri : "";
             string current_uri = drop_target_file != null ? drop_target_file.uri : "";
+            drop_target_file = get_drop_target_file (x, y);
+            string uri = drop_target_file != null ? drop_target_file.uri : "";
 
-            Gdk.drag_status (context, Gdk.DragAction.MOVE, timestamp);
             if (uri != current_uri) {
                 cancel_timeout (ref drag_enter_timer_id);
-                drop_target_file = file;
                 current_actions = Gdk.DragAction.DEFAULT;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
 
-                if (file != null) {
+                if (drop_target_file != null) {
                     if (current_target_type == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
                     } else {
-                        current_actions = PF.FileUtils.file_accepts_drop (file,
-                                                                      drop_file_list, context,
+
+                        current_actions = PF.FileUtils.file_accepts_drop (drop_target_file,
+                                                                      destination_drop_file_list, context,
                                                                       out current_suggested_action);
                     }
 
-                    highlight_drop_file (drop_target_file, current_actions, path);
+                    highlight_drop_file (drop_target_file, current_actions, get_path_at_pos (x, y));
 
-                    if (file.is_folder () && is_valid_drop_folder (file)) {
+                    if (drop_target_file.is_folder () && is_valid_drop_folder (drop_target_file)) {
                         /* open the target folder after a short delay */
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                                     drag_enter_delay,
+                                                                     1000,
                                                                      () => {
 
-                            load_location (file.get_target_location ());
+                            load_location (drop_target_file.get_target_location ());
                             drag_enter_timer_id = 0;
                             return GLib.Source.REMOVE;
                         });
@@ -1769,8 +1759,8 @@ namespace FM {
         private bool is_valid_drop_folder (GOF.File file) {
             /* Cannot drop onto a file onto its parent or onto itself */
             if (file.uri != slot.uri &&
-                drag_file_list != null &&
-                drag_file_list.index (file) < 0) {
+                source_drag_file_list != null &&
+                source_drag_file_list.index (file) < 0) {
 
                 return true;
             } else {
@@ -1816,7 +1806,7 @@ namespace FM {
             drag_button = (int)(button_event.button);
 
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                   drag_delay,
+                                                   300,
                                                    () => {
                 on_drag_timeout_button_release ((Gdk.EventButton)event);
                 return GLib.Source.REMOVE;

@@ -200,6 +200,7 @@ namespace Marlin {
                     case 'E':
                         /* No fallback for XdndDirectSave stage (3), result "E" ("Error") yet.
                          * Note this result may be obtained even if the file was successfully saved */
+                        success = true;
                         break;
                     case 'S':
                         /* XdndDirectSave "Success" */
