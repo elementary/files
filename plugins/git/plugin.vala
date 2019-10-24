@@ -46,17 +46,44 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         Ggit.Repository git_repo = repo_map.lookup (file.directory);
 
         if (git_repo != null) {
+            string file_path = file.location.get_path ();
             /* Ignore other files specified by .gitignore */
             try {
-                if (git_repo.path_is_ignored (file.location.get_path ())) {
+                if (git_repo.path_is_ignored (file_path)) {
                     return;
                 }
             } catch (GLib.Error e) {
                 return; /* If this fails then unlikely to be able to get git_status */
             }
 
-            var git_status = update_git_status (file.location, git_repo, file.is_directory);
-            switch (git_status) {
+            Ggit.StatusFlags new_flag = Ggit.StatusFlags.CURRENT;
+            try {
+                if (file.is_directory) {
+                    git_repo.file_status_foreach (new Ggit.StatusOptions (0, Ggit.StatusShow.WORKDIR_ONLY, null), (path, status_flags) => {
+                        switch (status_flags) {
+                            case Ggit.StatusFlags.WORKING_TREE_NEW:
+                            case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
+                                if (new_flag != Ggit.StatusFlags.WORKING_TREE_NEW) {
+                                    new_flag = Ggit.StatusFlags.WORKING_TREE_MODIFIED;
+                                }
+                                return 0;
+                            default:
+                                if (new_flag != Ggit.StatusFlags.WORKING_TREE_NEW &&
+                                    new_flag != Ggit.StatusFlags.WORKING_TREE_MODIFIED) {
+                                    new_flag = status_flags;
+                                }
+
+                                return 0;
+                        }
+                    });
+                } else {
+                    new_flag = git_repo.file_status (file.location);
+                }
+            } catch (Error e) {
+                critical ("Error getting git status for %s: %s", file.location.get_path (), e.message);
+            }
+
+            switch (new_flag) {
                 case Ggit.StatusFlags.CURRENT:
                     break;
 
@@ -73,64 +100,6 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                     break;
             }
         }
-    }
-
-    private Ggit.StatusFlags update_git_status (GLib.File location, Ggit.Repository git_repo, bool is_directory) {
-        /* Fallback to ignored status */
-        Ggit.StatusFlags status = Ggit.StatusFlags.IGNORED;
-
-        if (!is_directory) {
-            try {
-                status = git_repo.file_status (location);
-            } catch (Error e) {
-                critical ("Error getting git status for %s: %s", location.get_path (), e.message);
-            }
-        } else {
-            bool modified = false;
-            bool ignored = true;
-            bool new_file = false;
-            GLib.FileInfo? child_info = null;
-            try {
-                var e = location.enumerate_children (GLib.FileAttribute.STANDARD_TYPE + "," + GLib.FileAttribute.STANDARD_NAME, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-                child_info = e.next_file ();
-                while (child_info != null) {
-
-                    var child = location.get_child (child_info.get_name ());
-                    var child_status = update_git_status (child, git_repo, (child_info.get_file_type () == GLib.FileType.DIRECTORY));
-
-                    switch (child_status) {
-                        case Ggit.StatusFlags.INDEX_MODIFIED:
-                        case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
-                            return Ggit.StatusFlags.WORKING_TREE_MODIFIED;
-
-                        case Ggit.StatusFlags.WORKING_TREE_NEW:
-                            new_file = true;
-                            break;
-
-                        case Ggit.StatusFlags.IGNORED:
-                            break;
-
-                        default:
-                            ignored = false;
-                            break;
-                    }
-
-                    child_info = e.next_file ();
-                }
-            } catch (Error e) {
-                warning ("Error enumerating %s", e.message);
-            }
-
-            if (modified) {
-                status = Ggit.StatusFlags.WORKING_TREE_MODIFIED;
-            } else if (new_file) {
-                status = Ggit.StatusFlags.WORKING_TREE_NEW;
-            } else if (ignored) {
-                status = Ggit.StatusFlags.IGNORED;
-            }
-        }
-
-        return status;
     }
 }
 
