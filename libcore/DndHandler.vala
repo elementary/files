@@ -188,6 +188,7 @@ namespace Marlin {
         public bool handle_xdnddirectsave (Gdk.DragContext context,
                                            GOF.File drop_target,
                                            Gtk.SelectionData selection) {
+
             bool success = false;
 
             if (selection.get_length () == 1 && selection.get_format () == 8) {

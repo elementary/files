@@ -1633,12 +1633,20 @@ namespace FM {
             }
 
             if (drop_occurred) {
+                /* Prepare to receive another drop */
                 drop_occurred = false;
+                drop_target_file = null;
+                drop_file_list = null;
+                drop_data_ready = false;
+                current_target_type = Gdk.Atom.NONE;
+                current_suggested_action = Gdk.DragAction.DEFAULT;
+                current_actions = Gdk.DragAction.DEFAULT;
                 Gtk.drag_finish (context, success, false, timestamp);
-                on_drag_leave (context, timestamp);
             }
         }
 
+        /* Signal emitted on destination *before* "Drag-drop" signal is emitted
+         * Do not clear data needed during drop processing */
         private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
             /* reset the drop-file for the icon renderer */
             icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
@@ -1654,12 +1662,6 @@ namespace FM {
 
             /* disable the highlighting of the items in the view */
             highlight_path (null);
-
-            /* Prepare to receive another drop */
-            cancel_timeout (ref drag_scroll_timer_id);
-            current_target_type = Gdk.Atom.NONE;
-            drop_file_list = null;
-            drop_data_ready = false;
         }
 
 /** DnD helpers */
