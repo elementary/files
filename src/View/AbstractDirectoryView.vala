@@ -1594,7 +1594,6 @@ namespace FM {
             }
 
             if (drop_occurred && drop_data_ready) {
-                drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
                     switch (info) {
                         case Marlin.TargetType.XDND_DIRECT_SAVE0:
@@ -1631,6 +1630,10 @@ namespace FM {
                             break;
                     }
                 }
+            }
+
+            if (drop_occurred) {
+                drop_occurred = false;
                 Gtk.drag_finish (context, success, false, timestamp);
                 on_drag_leave (context, timestamp);
             }
