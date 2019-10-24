@@ -1632,15 +1632,17 @@ namespace FM {
                 }
             }
 
-            if (drop_occurred) {
+            if (drop_occurred) { /* Only true for valid drop site */
                 /* Prepare to receive another drop */
                 drop_occurred = false;
                 drop_target_file = null;
                 drop_file_list = null;
                 drop_data_ready = false;
+
                 current_target_type = Gdk.Atom.NONE;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
                 current_actions = Gdk.DragAction.DEFAULT;
+
                 Gtk.drag_finish (context, success, false, timestamp);
             }
         }
@@ -1662,6 +1664,10 @@ namespace FM {
 
             /* disable the highlighting of the items in the view */
             highlight_path (null);
+
+            /* Ensure destination data is refreshed after invalid drop but do not clear
+               data needed for valid drop, which is handled after this signal. */
+            drop_data_ready = false;
         }
 
 /** DnD helpers */
