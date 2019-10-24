@@ -1507,15 +1507,7 @@ namespace FM {
         }
 
         private void on_drag_end (Gdk.DragContext context) {
-            cancel_timeout (ref drag_scroll_timer_id);
             drag_file_list = null;
-            drop_target_file = null;
-            drop_file_list = null;
-            drop_data_ready = false;
-
-            current_suggested_action = Gdk.DragAction.DEFAULT;
-            current_actions = Gdk.DragAction.DEFAULT;
-            drop_occurred = false;
         }
 
 
@@ -1661,6 +1653,9 @@ namespace FM {
             highlight_path (null);
 
             /* Prepare to receive another drop */
+            cancel_timeout (ref drag_scroll_timer_id);
+            current_target_type = Gdk.Atom.NONE;
+            drop_file_list = null;
             drop_data_ready = false;
         }
 
