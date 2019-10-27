@@ -27,7 +27,7 @@ namespace Marlin.View.Chrome {
         private bool freeze_update = false;
         public GLib.SimpleAction view_mode_action { get; construct; }
         private uint mode_change_timeout_id = 0;
-        private int last_selected;
+        private ViewMode last_selected;
 
         construct {
             /* Item 0 */
@@ -46,27 +46,15 @@ namespace Marlin.View.Chrome {
             append (miller);
 
             mode_changed.connect (() => {
-                last_selected = selected;
+                last_selected = (ViewMode)selected;
+
                 if (mode_change_timeout_id > 0) {
                     return;
                 }
 
                 mode_change_timeout_id = Timeout.add (SWITCH_DELAY_MSEC, () => {
-                    switch (last_selected) {
-                        case 0:
-                            view_mode_action.activate (new GLib.Variant.string ("ICON"));
-                            break;
-                        case 1:
-                            view_mode_action.activate (new GLib.Variant.string ("LIST"));
-                            break;
-                        case 2:
-                            view_mode_action.activate (new GLib.Variant.string ("MILLER"));
-                            break;
-
-                        default:
-                            break;
-                    }
-
+                    var action = new GLib.Variant.string (last_selected.to_string ());
+                    view_mode_action.activate (action);
                     mode_change_timeout_id = 0;
                     return Source.REMOVE;
                 });
