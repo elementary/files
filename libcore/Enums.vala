@@ -60,8 +60,6 @@ namespace Marlin {
         }
     }
 
-
-
     public enum ViewMode {
         /* First three modes must match the corresponding mode switch indices */
         ICON = 0,
@@ -69,7 +67,39 @@ namespace Marlin {
         MILLER_COLUMNS = 2,
         CURRENT,
         PREFERRED,
-        INVALID
+        INVALID;
+
+        public string to_string () {
+            switch (this) {
+                case ICON:
+                    return "ICON";
+                case LIST:
+                    return "LIST";
+                case MILLER_COLUMNS:
+                    return "MILLER";
+                case PREFERRED:
+                    return "PREFERRED";
+                default:
+                    return "INVALID";
+            }
+        }
+
+        public static ViewMode from_string (string mode_string) {
+            switch (mode_string) {
+                case "ICON":
+                    return ViewMode.ICON;
+                case "LIST":
+                    return ViewMode.LIST;
+                case "MILLER":
+                    return ViewMode.MILLER_COLUMNS;
+                case "CURRENT":
+                    return ViewMode.CURRENT;
+                case "PREFERRED":
+                    return ViewMode.PREFERRED;
+                default:
+                    return ViewMode.INVALID;
+            }
+        }
     }
 
     public enum OpenFlag {

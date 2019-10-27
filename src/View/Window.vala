@@ -43,12 +43,6 @@ namespace Marlin.View {
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
-        const string [] mode_strings = {
-            "ICON",
-            "LIST",
-            "MILLER"
-        };
-
         public uint window_number { get; construct; }
 
         public bool is_first_window {
@@ -639,24 +633,7 @@ namespace Marlin.View {
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-            string mode_string = param.get_string ();
-            Marlin.ViewMode mode = Marlin.ViewMode.MILLER_COLUMNS;
-            switch (mode_string) {
-                case "ICON":
-                    mode = Marlin.ViewMode.ICON;
-                    break;
-
-                case "LIST":
-                    mode = Marlin.ViewMode.LIST;
-                    break;
-
-                case "MILLER":
-                    mode = Marlin.ViewMode.MILLER_COLUMNS;
-                    break;
-
-                default:
-                    return;
-            }
+            var mode = real_mode (ViewMode.from_string (param.get_string ()));
 
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
@@ -844,6 +821,7 @@ namespace Marlin.View {
                 default:
                     break;
             }
+
             return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
         }
 
@@ -1046,7 +1024,7 @@ namespace Marlin.View {
             var mode = current_tab.view_mode;
             view_switcher.selected = mode;
             view_switcher.sensitive = current_tab.can_show_folder;
-            get_action ("view-mode").set_state (mode_strings [(int)mode]);
+            get_action ("view-mode").set_state (mode.to_string ());
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
