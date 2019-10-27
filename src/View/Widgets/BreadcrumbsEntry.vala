@@ -36,7 +36,7 @@ namespace Marlin.View.Chrome {
         public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
-        protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY |
+        protected const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY |
                                                             Gdk.DragAction.MOVE |
                                                             Gdk.DragAction.LINK);
 
@@ -64,7 +64,10 @@ namespace Marlin.View.Chrome {
         private void set_up_drag_drop () {
             /* Drag and drop */
             Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Marlin.TargetType.TEXT_URI_LIST};
-            Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION, {target_uri_list}, Gdk.DragAction.ASK|file_drag_actions);
+            Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION,
+                               {target_uri_list},
+                               Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
+
             drag_leave.connect (on_drag_leave);
             drag_motion.connect (on_drag_motion);
             drag_data_received.connect (on_drag_data_received);
@@ -361,7 +364,7 @@ namespace Marlin.View.Chrome {
                                                                      context,
                                                                      out current_suggested_action);
 
-                    if ((current_actions & file_drag_actions) != 0) {
+                    if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
                         success = dnd_handler.handle_file_drag_actions (this,
                                                                         this.get_toplevel () as Gtk.ApplicationWindow,
                                                                         context,
