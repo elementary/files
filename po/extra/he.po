@@ -2,16 +2,15 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2018-12-19 08:25+0000\n"
+"PO-Revision-Date: 2019-10-27 19:23+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://weblate.elementary.io/projects/files/extra/he/"
-">\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
@@ -63,7 +62,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
-msgstr ""
+msgstr "תיקון ניווט בעזרת מקלדת לבחירה נקודתית של קבצים בתצוגת סמלים"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
@@ -78,23 +77,23 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:133
 #: data/io.elementary.files.appdata.xml.in.in:165
 msgid "Updated translations"
-msgstr ""
+msgstr "התרגומים עודכנו"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Minor spacing adjustments to location bar"
-msgstr ""
+msgstr "התאמות ריווח מזעריות לסרגל הכתובות"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix F2 renaming behavior"
-msgstr ""
+msgstr "תיקון התנהגות שינוי השם עם F2"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "התאמות ריווח מזעריות לסמני הדרך של המיקום"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Consistently remember color tags"
-msgstr ""
+msgstr "תגיות הצבע נשמרות באופן עקבי"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
@@ -104,31 +103,31 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Fix running scripts with spaces in filename"
-msgstr ""
+msgstr "תיקון הרצת סקריפטים עם רווח בשם הקובץ"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr ""
+msgstr "תיקון רגרסיה שהעמיסה על המעבד בגרסה 4.1.4"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "File sorting fixes"
-msgstr ""
+msgstr "תיקונים במיון קבצים"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Meson: fix soversion names"
-msgstr ""
+msgstr "Meson: תיקון שמות soversion"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Remove CMake build system"
-msgstr ""
+msgstr "הסרת מערכת הבנייה CMake"
 
 #: data/io.elementary.files.appdata.xml.in.in:104
 msgid "Fix missing File System properties menu"
-msgstr ""
+msgstr "תיקון תפריט מאפיינים חסר למערכת הקבצים"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Drop intltool dependency"
-msgstr ""
+msgstr "הסרת התלות ב־intltool"
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Fix default file type handler logic"
@@ -136,35 +135,35 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Fix initial search window size too small"
-msgstr ""
+msgstr "תיקון מצב בו חלון החיפוש קטן מדי בזמן ההפעלה"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Add option to disable local file thumbnails"
-msgstr ""
+msgstr "הוספת אפשרות להשבתת תמונות ממוזערות לקבצים מקומיים"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Fix crash when opening multiple video files"
-msgstr ""
+msgstr "תיקון קריסה בעת פתיחת מספר קובצי וידאו יחדיו"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix some timing issues around adding and removing files"
-msgstr ""
+msgstr "תיקון תקלות תזמון סביב הוספה והסרה של קבצים"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Meson: fix missing library headers"
-msgstr ""
+msgstr "Meson: תיקון כותרות ספריות חסרות"
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Fix color tag display"
-msgstr ""
+msgstr "תיקון תצוגת תגיות צבעוניות"
 
 #: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Show reserved space in Properties window"
-msgstr ""
+msgstr "הצגת מקום שמור בחלון המאפיינים"
 
 #: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Add border radius to text background"
-msgstr ""
+msgstr "הוספת רדיוס מסגרת לרקע הטקסט"
 
 #: data/io.elementary.files.appdata.xml.in.in:122
 msgid "Fix file mimetype association regression"
@@ -362,15 +361,15 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:260
 msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
+msgstr "תיקון קריסה בעת שחזור קבצים מהאשפה"
 
 #: data/io.elementary.files.appdata.xml.in.in:261
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
+msgstr "שיפור רגישות גזירה/העתקה/הדבקה בתפריט ההקשר"
 
 #: data/io.elementary.files.appdata.xml.in.in:262
 msgid "Translation updates"
-msgstr ""
+msgstr "עדכוני תרגומים"
 
 #: data/io.elementary.files.appdata.xml.in.in:274
 msgid "elementary LLC."
@@ -383,4 +382,4 @@ msgstr "חלון חדש בתור מנהל"
 
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
-msgstr ""
+msgstr "נדרש אימות כדי להפעיל את היישום קבצים כמנהל המערכת"

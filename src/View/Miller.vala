@@ -307,7 +307,7 @@ namespace Marlin.View {
         }
 
         private void on_slot_folder_deleted (Slot slot, GOF.File file, GOF.Directory.Async dir) {
-            Slot? next_slot = slot_list.nth_data (slot.slot_number +1);
+            Slot? next_slot = slot_list.nth_data (slot.slot_number + 1);
             if (next_slot != null && next_slot.directory == dir) {
                 truncate_list_after_slot (slot);
             }
@@ -499,7 +499,7 @@ namespace Marlin.View {
                 new_value = previous_width;
             }
 
-            int offset = slot.slot_number < slot_list.length () -1 ? 90 : 0;
+            int offset = slot.slot_number < slot_list.length () - 1 ? 90 : 0;
             int val = page_size - (width + slot.width + offset);
 
             if (val < 0) { /*scroll left until right hand edge of active slot is in view*/

@@ -24,7 +24,7 @@
 namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow {
-        const GLib.ActionEntry [] win_entries = {
+        const GLib.ActionEntry [] WIN_ENTRIES = {
             {"new-window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
@@ -85,7 +85,7 @@ namespace Marlin.View {
         }
 
         construct {
-            add_action_entries (win_entries, this);
+            add_action_entries (WIN_ENTRIES, this);
 
             undo_actions_set_insensitive ();
 
