@@ -37,16 +37,10 @@ namespace Marlin.View {
             {"go-to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
             {"info", action_info, "s"},
-            {"view-mode", action_view_mode, "s", "'MILLER'"},
+            {"view-mode", action_view_mode, "u", "0" },
             {"show-hidden", null, null, "false", change_state_show_hidden},
             {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
-        };
-
-        const string [] mode_strings = {
-            "ICON",
-            "LIST",
-            "MILLER"
         };
 
         public uint window_number { get; construct; }
@@ -639,25 +633,7 @@ namespace Marlin.View {
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-            string mode_string = param.get_string ();
-            Marlin.ViewMode mode = Marlin.ViewMode.MILLER_COLUMNS;
-            switch (mode_string) {
-                case "ICON":
-                    mode = Marlin.ViewMode.ICON;
-                    break;
-
-                case "LIST":
-                    mode = Marlin.ViewMode.LIST;
-                    break;
-
-                case "MILLER":
-                    mode = Marlin.ViewMode.MILLER_COLUMNS;
-                    break;
-
-                default:
-                    return;
-            }
-
+            Marlin.ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
         }
@@ -844,6 +820,7 @@ namespace Marlin.View {
                 default:
                     break;
             }
+
             return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
         }
 
@@ -1046,7 +1023,7 @@ namespace Marlin.View {
             var mode = current_tab.view_mode;
             view_switcher.selected = mode;
             view_switcher.sensitive = current_tab.can_show_folder;
-            get_action ("view-mode").set_state (mode_strings [(int)mode]);
+            get_action ("view-mode").change_state (new Variant.uint32 (mode));
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
@@ -1136,9 +1113,9 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
             application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
-            application.set_accels_for_action ("win.view-mode::ICON", {"<Ctrl>1"});
-            application.set_accels_for_action ("win.view-mode::LIST", {"<Ctrl>2"});
-            application.set_accels_for_action ("win.view-mode::MILLER", {"<Ctrl>3"});
+            application.set_accels_for_action ("win.view-mode(0)", {"<Ctrl>1"});
+            application.set_accels_for_action ("win.view-mode(1)", {"<Ctrl>2"});
+            application.set_accels_for_action ("win.view-mode(2)", {"<Ctrl>3"});
             application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
