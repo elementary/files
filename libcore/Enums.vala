@@ -69,7 +69,7 @@ namespace Marlin {
         PREFERRED,
         INVALID;
 
-        public string to_string () {
+        public unowned string to_string () {
             switch (this) {
                 case ICON:
                     return "ICON";
