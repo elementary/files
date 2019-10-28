@@ -915,13 +915,12 @@ namespace Marlin.View.Chrome {
             return false;
         }
 
-        string file_attributes = string.join (",",
-                                        FileAttribute.STANDARD_NAME,
-                                        FileAttribute.STANDARD_DISPLAY_NAME,
-                                        FileAttribute.STANDARD_CONTENT_TYPE,
-                                        FileAttribute.STANDARD_IS_HIDDEN,
-                                        FileAttribute.STANDARD_TYPE,
-                                        FileAttribute.STANDARD_ICON);
+        const string ATTRIBUTES = FileAttribute.STANDARD_NAME + "," +
+                                  FileAttribute.STANDARD_DISPLAY_NAME + "," +
+                                  FileAttribute.STANDARD_CONTENT_TYPE + "," +
+                                  FileAttribute.STANDARD_IS_HIDDEN + "," +
+                                  FileAttribute.STANDARD_TYPE + "," +
+                                  FileAttribute.STANDARD_ICON;
 
         void visit (string term, bool include_hidden, Cancellable cancel, File root_folder) {
             var folder = directory_queue.poll ();
@@ -950,7 +949,7 @@ namespace Marlin.View.Chrome {
 
             FileEnumerator enumerator;
             try {
-                enumerator = folder.enumerate_children (file_attributes, 0, cancel);
+                enumerator = folder.enumerate_children (ATTRIBUTES, 0, cancel);
             } catch (Error e) {
                 return;
             }
@@ -1091,7 +1090,7 @@ namespace Marlin.View.Chrome {
                             }
 
                             if (!found) {
-                                var info = yield file.query_info_async (file_attributes, 0, Priority.DEFAULT,
+                                var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT,
                                                                         current_operation);
                                 var name = info.get_display_name ();
                                 cat = name.has_prefix (term) ? Category.ZEITGEIST_BEGINS : Category.ZEITGEIST_CONTAINS;
