@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-10-27 19:23+0000\n"
+"PO-Revision-Date: 2019-10-29 19:23+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -167,7 +167,7 @@ msgstr "הוספת רדיוס מסגרת לרקע הטקסט"
 
 #: data/io.elementary.files.appdata.xml.in.in:122
 msgid "Fix file mimetype association regression"
-msgstr ""
+msgstr "תיקון רגרסיה בשיוך לפי סיווג mime"
 
 #: data/io.elementary.files.appdata.xml.in.in:123
 msgid "New pathbar tooltips"
