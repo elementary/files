@@ -24,7 +24,7 @@
 namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow {
-        const GLib.ActionEntry [] win_entries = {
+        const GLib.ActionEntry [] WIN_ENTRIES = {
             {"new-window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
@@ -43,7 +43,7 @@ namespace Marlin.View {
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
-        const string [] mode_strings = {
+        const string [] MODE_STRINGS = {
             "ICON",
             "LIST",
             "MILLER"
@@ -91,7 +91,7 @@ namespace Marlin.View {
         }
 
         construct {
-            add_action_entries (win_entries, this);
+            add_action_entries (WIN_ENTRIES, this);
 
             undo_actions_set_insensitive ();
 
@@ -1046,7 +1046,7 @@ namespace Marlin.View {
             var mode = current_tab.view_mode;
             view_switcher.selected = mode;
             view_switcher.sensitive = current_tab.can_show_folder;
-            get_action ("view-mode").set_state (mode_strings [(int)mode]);
+            get_action ("view-mode").set_state (MODE_STRINGS [(int)mode]);
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
