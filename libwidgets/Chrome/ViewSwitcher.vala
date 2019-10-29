@@ -84,4 +84,3 @@ namespace Marlin.View.Chrome {
         }
     }
 }
-
