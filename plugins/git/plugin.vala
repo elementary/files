@@ -59,7 +59,8 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             Ggit.StatusFlags new_flag = Ggit.StatusFlags.CURRENT;
             try {
                 if (file.is_directory) {
-                    git_repo.file_status_foreach (new Ggit.StatusOptions (0, Ggit.StatusShow.WORKDIR_ONLY, null), (path, status_flags) => {
+                    var pathspec = "*".concat (file.basename, "*");
+                    git_repo.file_status_foreach (new Ggit.StatusOptions (0, Ggit.StatusShow.WORKDIR_ONLY, {pathspec}), (path, status_flags) => {
                         switch (status_flags) {
                             case Ggit.StatusFlags.WORKING_TREE_NEW:
                             case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
