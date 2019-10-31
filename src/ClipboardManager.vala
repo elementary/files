@@ -34,7 +34,7 @@ namespace Marlin {
 
         private static GLib.Quark marlin_clipboard_manager_quark;
         private static Gdk.Atom x_special_gnome_copied_files;
-        private const Gtk.TargetEntry[] clipboard_targets = {
+        private const Gtk.TargetEntry[] CLIPBOARD_TARGETS = {
             {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
             {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
         };
@@ -173,7 +173,7 @@ namespace Marlin {
                                                target_file,
                                                action,
                                                widget,
-                                               new_files_callback);
+                                               (Marlin.CopyCallback) new_files_callback);
             }
 
             /* clear the clipboard if it contained "cutted data"
@@ -225,7 +225,7 @@ namespace Marlin {
             }
 
             /* acquire the Clipboard ownership */
-            clipboard.set_with_owner (clipboard_targets, get_callback, clear_callback, this);
+            clipboard.set_with_owner (CLIPBOARD_TARGETS, get_callback, clear_callback, this);
 
             /* Need to fake a "owner-change" event here if the Xserver doesn't support clipboard notification */
             if (!clipboard.get_display ().supports_selection_notification ()) {

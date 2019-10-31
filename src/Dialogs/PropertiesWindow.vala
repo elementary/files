@@ -190,8 +190,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
-        var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
-        overlay_emblems (file_icon, goffile.emblems_list);
+        if (file_pix != null) {
+            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
+            overlay_emblems (file_icon, goffile.emblems_list);
+        }
 
         /* Build header box */
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
@@ -441,7 +443,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* get image size in pixels using an asynchronous method to stop the interface blocking on
          * large images. */
         if (file.width > 0) { /* resolution has already been determined */
-            return goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+            return goffile.width.to_string () + " × " + goffile.height.to_string () + " px";
         } else {
             /* Async function will update info when resolution determined */
             get_resolution.begin (file);
@@ -453,7 +455,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (view.is_in_recent ()) {
             string original_location = file.get_display_target_uri ().replace ("%20", " ");
             string file_name = file.get_display_name ().replace ("%20", " ");
-            string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
+            string location_folder = original_location.slice (0, -file_name.length).replace ("%20", " ");
             string location_name = location_folder.slice (7, -1);
 
             return "<a href=\"" + Markup.escape_text (location_folder) +
@@ -489,7 +491,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 var pixbuf = yield new Gdk.Pixbuf.from_stream_async (stream, cancellable);
                 goffile.width = pixbuf.get_width ();
                 goffile.height = pixbuf.get_height ();
-                resolution = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+                resolution = goffile.width.to_string () + " × " + goffile.height.to_string () + " px";
             }
         } catch (Error e) {
             warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
@@ -686,13 +688,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private void update_perm_codes (Permissions.Type pt, int val, int mult) {
         switch (pt) {
         case Permissions.Type.USER:
-            owner_perm_code += mult*val;
+            owner_perm_code += mult * val;
             break;
         case Permissions.Type.GROUP:
-            group_perm_code += mult*val;
+            group_perm_code += mult * val;
             break;
         case Permissions.Type.OTHER:
-            everyone_perm_code += mult*val;
+            everyone_perm_code += mult * val;
             break;
         }
     }
@@ -742,7 +744,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         int[] chmod_types = { 4, 2, 1};
 
         int i = 0;
-        for (; i<3; i++) {
+        for (; i < 3; i++) {
             int div = nb / chmod_types[i];
             int modulo = nb % chmod_types[i];
             if (div >= 1) {
@@ -793,8 +795,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                                             uint32 val, Cancellable? _cancellable = null) {
         FileInfo info = new FileInfo ();
 
-        /**TODO** use marlin jobs*/
-
         try {
             info.set_attribute_uint32 (attr, val);
             yield file.location.set_attributes_async (info,
@@ -831,8 +831,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                     } else {
                         warning ("can't change permission on %s", gof.uri);
                     }
-                        /**TODO** add a list of permissions set errors in the property dialog.*/
                 }
+
                 timeout_perm = 0;
 
                 return GLib.Source.REMOVE;

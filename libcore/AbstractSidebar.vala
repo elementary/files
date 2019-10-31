@@ -127,7 +127,7 @@ namespace Marlin {
             }
         }
 
-       protected abstract Gtk.TreeIter add_place (Marlin.PlaceType place_type,
+       protected abstract Gtk.TreeIter add_place (PlaceType place_type,
                                                   Gtk.TreeIter? parent,
                                                   string name,
                                                   Icon? icon,
@@ -144,11 +144,11 @@ namespace Marlin {
          *
          * @param a {@link Marlin.SidebarPluginItem}
          *
-         * @param {@link Marlin.PlaceType} with the category it should be appended
+         * @param {@link PlaceType} with the category it should be appended
          *
          * @return TreeRowReference to update later the item or null if add failed
          */
-        public abstract Gtk.TreeRowReference? add_plugin_item (SidebarPluginItem item, Marlin.PlaceType category);
+        public abstract Gtk.TreeRowReference? add_plugin_item (SidebarPluginItem item, PlaceType category);
 
          /**
          * Update plugin item on TreeStore

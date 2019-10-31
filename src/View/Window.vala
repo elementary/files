@@ -24,7 +24,7 @@
 namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow {
-        const GLib.ActionEntry [] win_entries = {
+        const GLib.ActionEntry [] WIN_ENTRIES = {
             {"new-window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
@@ -37,16 +37,10 @@ namespace Marlin.View {
             {"go-to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
             {"info", action_info, "s"},
-            {"view-mode", action_view_mode, "s", "'MILLER'"},
+            {"view-mode", action_view_mode, "u", "0" },
             {"show-hidden", null, null, "false", change_state_show_hidden},
             {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
-        };
-
-        const string [] mode_strings = {
-            "ICON",
-            "LIST",
-            "MILLER"
         };
 
         public uint window_number { get; construct; }
@@ -63,7 +57,7 @@ namespace Marlin.View {
         public Chrome.ViewSwitcher view_switcher;
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
-        public Marlin.Places.Sidebar sidebar;
+        public Marlin.Sidebar sidebar;
         public ViewContainer? current_tab = null;
 
         private bool tabs_restored = false;
@@ -91,7 +85,7 @@ namespace Marlin.View {
         }
 
         construct {
-            add_action_entries (win_entries, this);
+            add_action_entries (WIN_ENTRIES, this);
 
             undo_actions_set_insensitive ();
 
@@ -168,7 +162,7 @@ namespace Marlin.View {
             tabs.show ();
 
             /* Show only local places in sidebar when running as root */
-            sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
+            sidebar = new Marlin.Sidebar (this, Posix.getuid () == 0);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
@@ -639,25 +633,7 @@ namespace Marlin.View {
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-            string mode_string = param.get_string ();
-            Marlin.ViewMode mode = Marlin.ViewMode.MILLER_COLUMNS;
-            switch (mode_string) {
-                case "ICON":
-                    mode = Marlin.ViewMode.ICON;
-                    break;
-
-                case "LIST":
-                    mode = Marlin.ViewMode.LIST;
-                    break;
-
-                case "MILLER":
-                    mode = Marlin.ViewMode.MILLER_COLUMNS;
-                    break;
-
-                default:
-                    return;
-            }
-
+            Marlin.ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
         }
@@ -844,6 +820,7 @@ namespace Marlin.View {
                 default:
                     break;
             }
+
             return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
         }
 
@@ -891,8 +868,11 @@ namespace Marlin.View {
         }
 
         private void save_tabs () {
-            VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
+            if (!GOF.Preferences.get_default ().remember_history) {
+                return;  /* Do not clear existing settings if history is off */
+            }
 
+            VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
             foreach (var tab in tabs.tabs) {
                 assert (tab != null);
                 var view_container = tab.page as ViewContainer;
@@ -915,8 +895,8 @@ namespace Marlin.View {
         }
 
         public uint restore_tabs () {
-            /* Do not restore tabs more than once */
-            if (tabs_restored || !is_first_window) {
+            /* Do not restore tabs if history off nor more than once */
+            if (!GOF.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) {
                 return 0;
             } else {
                 tabs_restored = true;
@@ -1043,7 +1023,7 @@ namespace Marlin.View {
             var mode = current_tab.view_mode;
             view_switcher.selected = mode;
             view_switcher.sensitive = current_tab.can_show_folder;
-            get_action ("view-mode").set_state (mode_strings [(int)mode]);
+            get_action ("view-mode").change_state (new Variant.uint32 (mode));
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
@@ -1133,9 +1113,9 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
             application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
-            application.set_accels_for_action ("win.view-mode::ICON", {"<Ctrl>1"});
-            application.set_accels_for_action ("win.view-mode::LIST", {"<Ctrl>2"});
-            application.set_accels_for_action ("win.view-mode::MILLER", {"<Ctrl>3"});
+            application.set_accels_for_action ("win.view-mode(0)", {"<Ctrl>1"});
+            application.set_accels_for_action ("win.view-mode(1)", {"<Ctrl>2"});
+            application.set_accels_for_action ("win.view-mode(2)", {"<Ctrl>3"});
             application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});

@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-01 18:30+0200\n"
-"PO-Revision-Date: 2019-09-14 10:22+0000\n"
-"Last-Translator: Daniel <riesp@protonmail.com>\n"
-"Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
-">\n"
+"PO-Revision-Date: 2019-10-05 11:23+0000\n"
+"Last-Translator: Daniel R. <riesp@pm.me>\n"
+"Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/>"
+"\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "Amosar a versión do programa"
 
 #: src/Application.vala:126
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Abre un ou varios URIs, cada un na súa propia lapela"
+msgstr "Abrir un ou varios URIs, cada un na súa propia lapela"
 
 #: src/Application.vala:128 src/View/directory_view_popup.ui:87
 msgid "New Window"
@@ -409,7 +409,7 @@ msgstr "Cortouse a selección no seu lugar"
 
 #: src/View/AbstractDirectoryView.vala:2947
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Non se poden pegar os arquivos aquí"
 
 #: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:593
 msgid "Home"
@@ -417,19 +417,19 @@ msgstr "Inicio"
 
 #: src/View/ViewContainer.vala:399
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Non se pode crear un cartafol aquí."
 
 #: src/View/ViewContainer.vala:402
 msgid "The network is unavailable"
-msgstr ""
+msgstr "A rede non está dispoñíbel"
 
 #: src/View/ViewContainer.vala:403
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Necesítase unha rede activa para chegar a este cartafol"
 
 #: src/View/ViewContainer.vala:406
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Este cartafol non lle pertence"
 
 #: src/View/ViewContainer.vala:407
 msgid "You don't have permission to view this folder."
@@ -437,35 +437,35 @@ msgstr "Vostede non ten permiso para ver este cartafol."
 
 #: src/View/ViewContainer.vala:409
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Non se pode montar o cartafol"
 
 #: src/View/ViewContainer.vala:410
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Non se pode conectar co servidor para acceder a este cartafol."
 
 #: src/View/ViewContainer.vala:413
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Non se pode amosar o contido do cartafol"
 
 #: src/View/ViewContainer.vala:414
 msgid "The operation timed out."
-msgstr ""
+msgstr "Esgotouse o tempo para a operación."
 
 #: src/View/ViewContainer.vala:416
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Non é posíbel amosar o cartafol"
 
 #: src/View/ViewContainer.vala:417
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Non se atopou o servidor que aloxa estr cartafol."
 
 #: src/View/ViewContainer.vala:428
 msgid "File not Found"
-msgstr ""
+msgstr "Non se atopou o ficheiro"
 
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "O ficheiro seleccionado xa non existe."
 
 #: src/View/Sidebar.vala:580
 msgid "Personal"
@@ -481,7 +481,7 @@ msgstr "Abre o seu cartafol persoal"
 
 #: src/View/Sidebar.vala:615
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Ver a lista de ficheiros usados recentemente"
 
 #: src/View/Sidebar.vala:641 libwidgets/Resources.vala:65
 msgid "Trash"
@@ -526,12 +526,12 @@ msgstr "Conectar con un servidor de rede"
 #: src/View/Sidebar.vala:965
 #, c-format
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s libre(s) de %s)"
 
 #: src/View/Sidebar.vala:1458
 #, c-format
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Erro montando o volume %s"
 
 #: src/View/Sidebar.vala:1473
 #, c-format
@@ -544,35 +544,35 @@ msgstr "Baleirar o _lixo"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Este cartafol está baleiro"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "O lixo está baleiro"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Non hai ficheiros recentes"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
-msgstr ""
+msgstr "Acceso denegado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "O modo de privacidade está activado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Non se recordan ficheiros recentes"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Cambiar axustes de seguridade"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Abrir a aplicación de axustes de seguridade e privacidade do sistema"
 
 #: src/View/PopupMenuBuilder.vala:46
 msgid "Open"
@@ -620,7 +620,7 @@ msgstr "Abrir o cartafol contedor"
 
 #: src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Eliminar do historial"
 
 #: src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
@@ -704,12 +704,12 @@ msgstr "Orde inversa"
 
 #: src/View/directory_view_popup.ui:174
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Cartafoles antes de ficheiros"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:130
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Procure ou escriba unha ruta"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
@@ -717,19 +717,19 @@ msgstr "Abrir nunha nova lapela"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
-msgstr ""
+msgstr "Abrir nunha xanela nova"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Abrir con outra aplicación…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
+msgstr "Cargar de novo este cartafol"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
-msgstr ""
+msgstr "Procurando…"
 
 #: src/View/Widgets/OverlayBar.vala:216
 #, c-format
@@ -759,45 +759,45 @@ msgstr "%u elementos seleccionados (%s)"
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u subcartafol, "
 
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u sub-cartafoles, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
 msgid "%u file, "
-msgstr ""
+msgstr "%u ficheiro, "
 
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
 msgid "%u files, "
-msgstr ""
+msgstr "%u ficheiros, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s aprox."
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:298
 msgid "unknown size"
-msgstr ""
+msgstr "tamaño descoñecido"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u ficheiro non lexíbel"
 
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u ficheiros non lexíbeis"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -855,7 +855,7 @@ msgstr "Información do servidor"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Nome de servidor ou enderezo IP"
 
 #: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
@@ -867,7 +867,7 @@ msgstr "Porto:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
-msgstr ""
+msgstr "Nome do recurso no servidor"
 
 #: libcore/ConnectServerDialog.vala:168
 msgid "Share:"
@@ -875,7 +875,7 @@ msgstr "Recurso compartido:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Ruta do cartafol compartido no servidor"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -895,7 +895,7 @@ msgstr "Nome de dominio:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
-msgstr ""
+msgstr "Nome de usuario no servidor"
 
 #: libcore/ConnectServerDialog.vala:179
 msgid "User name:"
@@ -985,11 +985,11 @@ msgstr "Re_nomear"
 
 #: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
-msgstr ""
+msgstr "Manter máis recente"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Saltar se o orixinal se modificou máis recentemente"
 
 #: libcore/FileConflictDialog.vala:194
 msgid "Replace"
@@ -1077,7 +1077,7 @@ msgstr "Non foi posíbel recuperar o elemento do lixo"
 #: libcore/FileUtils.vala:434
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Non se puido cambiar o nome a «%s»"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:523
@@ -1095,11 +1095,11 @@ msgstr "Onte ás %s"
 #: libcore/FileUtils.vala:535
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%%A ás %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "O servidor non respondeu dentro do tempo límite"
 
 #: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
 #: libcore/ProgressInfo.vala:79
@@ -1108,7 +1108,7 @@ msgstr "Preparando"
 
 #: libcore/marlin-file-operations.c:145
 msgid "_Cancel"
-msgstr "Cancelar"
+msgstr "_Cancelar"
 
 #: libcore/marlin-file-operations.c:146
 msgid "_Delete"
@@ -1216,9 +1216,9 @@ msgstr " (%'d"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1119
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "Confirma que quere eliminar «%B» do lixo permanentemente?"
+msgstr "Está seguro de que quere eliminar permanentemente a «%s» do lixo?"
 
 #: libcore/marlin-file-operations.c:1123
 #, c-format
@@ -2269,12 +2269,12 @@ msgstr[1] "_Refacer o cambio de propietario de %d elementos"
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
-msgstr ""
+msgstr "Escriba unha ruta"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
 #, c-format
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Navegar a %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
@@ -2287,7 +2287,7 @@ msgstr "Tipo de ruta"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "Máis resultados…"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
@@ -2303,7 +2303,7 @@ msgstr "Marcadores"
 
 #: libwidgets/View/SearchResults.vala:240
 msgid "Recently used"
-msgstr ""
+msgstr "Usados recentemente"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:35
 msgid "View as Grid"
@@ -2347,15 +2347,15 @@ msgstr "SMB"
 
 #: libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr ""
+msgstr "Recentes"
 
 #: libwidgets/Resources.vala:67
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
-msgstr ""
+msgstr "Restaurar todo"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"

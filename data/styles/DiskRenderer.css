@@ -6,9 +6,17 @@
     border-radius: 99px;
 }
 
+.source-list.level-bar:backdrop {
+    background-color: alpha (@text_color, 0.1);
+}
+
 .source-list.fill-block,
 .source-list.fill-block:hover,
 .source-list.fill-block:selected,
 .source-list.fill-block:selected:focus {
     background-color: alpha (@text_color, 0.6);
+}
+
+.source-list.fill-block:backdrop {
+    background-color: alpha (@text_color, 0.2);
 }

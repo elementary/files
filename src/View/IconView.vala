@@ -451,7 +451,7 @@ namespace FM {
                 before_first = previous_linear_selection_direction > 0;
                 after_last = previous_linear_selection_direction < 0;
             } else { /* fallback to most recent selection or if that is invalid, the first selected in the view */
-                end_path =  most_recently_selected != null ? most_recently_selected : first_selected;
+                end_path = most_recently_selected != null ? most_recently_selected : first_selected;
             }
 
             unselect_all (); /* This clears previous linear selection details */

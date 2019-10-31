@@ -46,14 +46,9 @@ void marlin_file_operations_mount_volume_full (GVolume                        *v
 gboolean marlin_file_operations_mount_volume_full_finish (GAsyncResult  *result,
                                                           GError       **error);
 
-void marlin_file_operations_trash_or_delete (GList                  *files,
-                                             GtkWindow              *parent_window,
-                                             MarlinDeleteCallback   done_callback,
-                                             gpointer               done_callback_data);
-
-/* TODO:  Merge with marlin_file_operations_trash_or_delete */
 void marlin_file_operations_delete          (GList                  *files,
                                              GtkWindow              *parent_window,
+                                             gboolean               try_trash,
                                              MarlinDeleteCallback   done_callback,
                                              gpointer               done_callback_data);
 
