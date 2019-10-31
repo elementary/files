@@ -430,9 +430,11 @@ namespace Marlin.View {
 
             if (ignore_duplicate) {
                 var existing_tab_position = location_is_duplicate (location);
-                tabs.current = tabs.get_tab_by_index (existing_tab_position);
-                change_tab (existing_tab_position);
-                return;
+                if (existing_tab_position >= 0) {
+                    tabs.current = tabs.get_tab_by_index (existing_tab_position);
+                    change_tab (existing_tab_position);
+                    return;
+                }
             }
 
             mode = real_mode (mode);
