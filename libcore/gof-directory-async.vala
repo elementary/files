@@ -145,7 +145,7 @@ public class Async : Object {
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
 
         if (is_recent) {
-           GOF.Preferences.get_default().notify["remember-history"].connect (() => {
+           GOF.Preferences.get_default ().notify["remember-history"].connect (() => {
                 need_reload (true);
             });
         }
@@ -910,11 +910,11 @@ public class Async : Object {
         gof.remove_from_caches ();
     }
 
-    private struct fchanges {
+    private struct FChanges {
         GLib.File file;
         FileMonitorEvent event;
     }
-    private List <fchanges?> list_fchanges = null;
+    private List <FChanges?> list_fchanges = null;
     private uint list_fchanges_count = 0;
     /* number of monitored changes to store after that simply reload the dir */
     private const uint FCHANGES_MAX = 20;
@@ -923,7 +923,7 @@ public class Async : Object {
         /* If view is frozen, store events for processing later */
         if (freeze_update) {
             if (list_fchanges_count < FCHANGES_MAX) {
-                var fc = fchanges ();
+                var fc = FChanges ();
                 fc.file = _file;
                 fc.event = event;
                 list_fchanges.prepend (fc);
@@ -1248,4 +1248,3 @@ public class Async : Object {
     }
 }
 }
-

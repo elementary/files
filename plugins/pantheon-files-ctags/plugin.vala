@@ -19,7 +19,7 @@
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
     public abstract async bool record_uris (Variant[] entries) throws GLib.DBusError, GLib.IOError;
-    public abstract async bool deleteEntry (string uri) throws GLib.DBusError, GLib.IOError;
+    public abstract async bool delete_entry (string uri) throws GLib.DBusError, GLib.IOError;
 
 }
 
@@ -49,12 +49,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     /* Arbitrary user dir list */
-    private const string users_dirs[2] = {
+    private const string USER_DIRS[2] = {
         "file:///home",
         "file:///media"
     };
 
-    private const string ignore_schemes [5] = {
+    private const string IGNORE_SCHEMES [5] = {
         "ftp",
         "sftp",
         "afp",
@@ -66,7 +66,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return_val_if_fail (dir != null, false);
         var uri = dir.get_uri ();
 
-        foreach (var duri in users_dirs) {
+        foreach (var duri in USER_DIRS) {
             if (Posix.strncmp (uri, duri, duri.length) == 0) {
                 return true;
             }
@@ -84,7 +84,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         var uri_scheme = Uri.parse_scheme (uri);
-        foreach (var scheme in ignore_schemes) {
+        foreach (var scheme in IGNORE_SCHEMES) {
             if (scheme == uri_scheme) {
                 return true;
             }
@@ -187,7 +187,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         try {
             if (!file.exists) {
-                yield daemon.deleteEntry (file.uri);
+                yield daemon.delete_entry (file.uri);
                 return;
             }
 
