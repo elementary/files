@@ -1076,6 +1076,16 @@ public class Async : Object {
         }
 
         var gfile = GLib.File.new_for_uri (escaped_uri);
+
+        /* Avoid adding a new Async that will be a duplicate of an existing one, when called
+         * with non-folder location. */
+        if (gfile.is_native () && gfile.has_parent (null)) {
+            var ftype = gfile.query_file_type (0, null);
+            if (ftype != FileType.DIRECTORY) {
+                gfile = gfile.get_parent ();
+            }
+        }
+
         /* Note: cache_lookup creates directory_cache if necessary */
         Async? dir = cache_lookup (gfile);
         /* Both local and non-local files can be cached */

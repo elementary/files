@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-08-20 04:22+0000\n"
+"PO-Revision-Date: 2019-08-23 00:22+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -259,7 +259,7 @@ msgstr "Mostrar ícones nos menus `Abrir com`"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Tooltip fixes"
-msgstr ""
+msgstr "Correções de dica de ferramenta"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
 msgid "Memory leak fixes"
@@ -271,27 +271,29 @@ msgstr "Correções de falhas"
 
 #: data/io.elementary.files.appdata.xml.in.in:163
 msgid "Trash: respect sound setting"
-msgstr ""
+msgstr "Lixo: respeite a definição do som"
 
 #: data/io.elementary.files.appdata.xml.in.in:164
 msgid "Localization fixes"
-msgstr ""
+msgstr "Correções de localização"
 
 #: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr ""
+msgstr "Mais de 100 correções e melhorias de erros principais e menores"
 
 #: data/io.elementary.files.appdata.xml.in.in:179
 msgid "Honor 12/24hr system setting"
-msgstr ""
+msgstr "Honra a definição do sistema de 12/24hr"
 
 #: data/io.elementary.files.appdata.xml.in.in:180
 msgid "Distinguish between tabs with the same name"
-msgstr ""
+msgstr "Distinguir entre separadores com o mesmo nome"
 
 #: data/io.elementary.files.appdata.xml.in.in:181
 msgid "Support launching from other applications with a target file selected"
 msgstr ""
+"Suporte ao lançamento de outras aplicações com um ficheiro de destino "
+"selecionado"
 
 #: data/io.elementary.files.appdata.xml.in.in:182
 #: data/io.elementary.files.appdata.xml.in.in:195

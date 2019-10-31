@@ -171,7 +171,7 @@ public class Marlin.Progress.UIHandler : Object {
                     if (!application.get_active_window ().has_toplevel_focus) {
                         show_operation_complete_notification (title, active_infos < 1);
                     }
-                    
+
                     return GLib.Source.REMOVE;
                 });
             }

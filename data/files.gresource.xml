@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/io/elementary/files/">
     <file alias="ColorButton.css" compressed="true">styles/ColorButton.css</file>
+    <file alias="DiskRenderer.css" compressed="true">styles/DiskRenderer.css</file>
   </gresource>
 </gresources>
