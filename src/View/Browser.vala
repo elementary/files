@@ -98,7 +98,7 @@ namespace Marlin.View {
             if (n <= 1) {
                 return uri;
             } else {
-                return go_forward (n-1);
+                return go_forward (n - 1);
             }
         }
 

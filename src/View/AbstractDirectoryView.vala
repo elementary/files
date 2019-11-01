@@ -643,7 +643,6 @@ namespace FM {
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
-
             if (dir.is_loading ()) {
                 disconnect_directory_loading_handlers (dir);
             }
@@ -3270,6 +3269,11 @@ namespace FM {
              * dragging on blank areas
              */
             block_drag_and_drop ();
+
+            /* Native Gtk behaviour for all clicks on empty space */
+            if (click_zone == ClickZone.BLANK_NO_PATH) {
+                return false;
+            }
 
             /* Handle un-modified clicks or control-clicks here else pass on.
              */
