@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-10-29 19:23+0000\n"
+"PO-Revision-Date: 2019-11-01 18:23+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -171,23 +171,23 @@ msgstr "תיקון רגרסיה בשיוך לפי סיווג mime"
 
 #: data/io.elementary.files.appdata.xml.in.in:123
 msgid "New pathbar tooltips"
-msgstr ""
+msgstr "חלוניות עצה חדשות לסרגל הנתיב"
 
 #: data/io.elementary.files.appdata.xml.in.in:124
 msgid "Build fixes"
-msgstr ""
+msgstr "תיקוני בנייה"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
 msgid "Plugin build fixes"
-msgstr ""
+msgstr "תיקוני בניית תוספים"
 
 #: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Fix Ctrl+Tab behavior"
-msgstr ""
+msgstr "תיקון התנהגות Ctrl+Tab"
 
 #: data/io.elementary.files.appdata.xml.in.in:141
 msgid "Fix building without Unity library"
-msgstr ""
+msgstr "תיקון בנייה בלי ספריית Unity"
 
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
