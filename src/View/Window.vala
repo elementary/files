@@ -738,7 +738,14 @@ namespace Marlin.View {
                 return;
             }
             before_undo_redo ();
-            undo_manager.undo (this, after_undo_redo);
+            undo_manager.undo.begin (this, null, (obj, res) => {
+                try {
+                    undo_manager.undo.end (res);
+                    after_undo_redo ();
+                } catch (Error e) {
+                    critical (e.message);
+                }
+            });
         }
 
         private void action_redo (GLib.SimpleAction action, GLib.Variant? param) {
@@ -746,7 +753,14 @@ namespace Marlin.View {
                 return;
             }
             before_undo_redo ();
-            undo_manager.redo (this, after_undo_redo);
+            undo_manager.redo.begin (this, null, (obj, res) => {
+                try {
+                    undo_manager.redo.end (res);
+                    after_undo_redo ();
+                } catch (Error e) {
+                    critical (e.message);
+                }
+            });
         }
 
         private void before_undo_redo () {

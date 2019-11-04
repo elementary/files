@@ -370,11 +370,13 @@ marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
  * Redoes the last file operation
 ** ****************************************************************/
 void
-marlin_undo_manager_redo (MarlinUndoManager *self,
-                          GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb,
-                          gpointer callback_data)
+marlin_undo_manager_redo (MarlinUndoManager   *self,
+                          GtkWidget           *parent_view,
+                          GCancellable        *cancellable,
+                          GAsyncReadyCallback  callback,
+                          gpointer             user_data)
 {
+    GTask *task;
     GList *uris;
     GFile *file;
     char *new_name;
@@ -382,6 +384,7 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
     GFile *fparent;
 
     g_return_if_fail (MARLIN_IS_UNDO_MANAGER (self));
+    task = g_task_new (self, cancellable, callback, user_data);
 
     g_mutex_lock (&self->mutex);
 
@@ -481,25 +484,39 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
         }
     }
 
-    if (cb != NULL)
-        (*cb) ((gpointer) parent_view);
+    g_task_return_boolean (task, TRUE);
+    g_object_unref (task);
+}
+
+gboolean
+marlin_undo_manager_redo_finish (MarlinUndoManager  *manager,
+                                 GAsyncResult       *result,
+                                 GError            **error)
+{
+    g_return_val_if_fail (MARLIN_IS_UNDO_MANAGER (manager), FALSE);
+    g_return_val_if_fail (g_task_is_valid (result, manager), FALSE);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 /** ****************************************************************
  * Undoes the last file operation
 ** ****************************************************************/
 void
-marlin_undo_manager_undo (MarlinUndoManager *self,
-                          GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb,
-                          gpointer done_callback_data)
+marlin_undo_manager_undo (MarlinUndoManager   *self,
+                          GtkWidget           *parent_view,
+                          GCancellable        *cancellable,
+                          GAsyncReadyCallback  callback,
+                          gpointer             user_data)
 {
+    GTask *task;
     GList *uris = NULL;
     GHashTable *files_to_restore;
     GFile *file;
     gchar *new_name;
 
     g_return_if_fail (MARLIN_IS_UNDO_MANAGER (self));
+    task = g_task_new (self, cancellable, callback, user_data);
 
     g_mutex_lock (&self->mutex);
 
@@ -610,8 +627,19 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
         }
     }
 
-    if (cb != NULL)
-        (*cb) ((gpointer) parent_view);
+    g_task_return_boolean (task, TRUE);
+    g_object_unref (task);
+}
+
+gboolean
+marlin_undo_manager_undo_finish (MarlinUndoManager  *manager,
+                                 GAsyncResult       *result,
+                                 GError            **error)
+{
+    g_return_val_if_fail (MARLIN_IS_UNDO_MANAGER (manager), FALSE);
+    g_return_val_if_fail (g_task_is_valid (result, manager), FALSE);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 /** ****************************************************************
