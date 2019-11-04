@@ -61,9 +61,6 @@ struct _MarlinUndoMenuData {
 
 /* End action structures */
 
-typedef void
-(*MarlinUndoFinishCallback)(gpointer data);
-
 #define TYPE_MARLIN_UNDO_MANAGER (marlin_undo_manager_get_type())
 G_DECLARE_FINAL_TYPE (MarlinUndoManager, marlin_undo_manager, MARLIN, UNDO_MANAGER, GObject)
 
@@ -75,14 +72,30 @@ void
 marlin_undo_manager_add_rename_action (MarlinUndoManager* manager,
                                        GFile* file,
                                        const char* original_name);
- 
-void
-marlin_undo_manager_undo (MarlinUndoManager* manager,
-                          GtkWidget *parent_view, MarlinUndoFinishCallback cb, gpointer done_callback_data);
 
 void
-marlin_undo_manager_redo (MarlinUndoManager* manager,
-                          GtkWidget *parent_view, MarlinUndoFinishCallback cb, gpointer done_callback_data);
+marlin_undo_manager_undo (MarlinUndoManager   *manager,
+                          GtkWidget           *parent_view,
+                          GCancellable        *cancellable,
+                          GAsyncReadyCallback  callback,
+                          gpointer             user_data);
+
+gboolean
+marlin_undo_manager_undo_finish (MarlinUndoManager  *manager,
+                                 GAsyncResult       *result,
+                                 GError            **error);
+
+void
+marlin_undo_manager_redo (MarlinUndoManager   *manager,
+                          GtkWidget           *parent_view,
+                          GCancellable        *cancellable,
+                          GAsyncReadyCallback  callback,
+                          gpointer             user_data);
+
+gboolean
+marlin_undo_manager_redo_finish (MarlinUndoManager  *manager,
+                                 GAsyncResult       *result,
+                                 GError            **error);
 
 MarlinUndoActionData*
 marlin_undo_manager_data_new (MarlinUndoActionType type,

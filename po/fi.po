@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-01 18:30+0200\n"
+"POT-Creation-Date: 2019-11-04 19:20+0000\n"
 "PO-Revision-Date: 2019-09-02 20:22+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -103,7 +103,7 @@ msgstr "Tallennustila:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
+#: src/Dialogs/PropertiesWindow.vala:439 src/Dialogs/PropertiesWindow.vala:478
 msgid "Unknown"
 msgstr "Tuntematon"
 
@@ -119,16 +119,16 @@ msgstr "Käytetty:"
 msgid "Set as default"
 msgstr "Aseta oletukseksi"
 
-#: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:78
+#: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:81
 #: src/View/directory_view_popup.ui:95
 msgid "Properties"
 msgstr "Ominaisuudet"
 
-#: src/Dialogs/PropertiesWindow.vala:223
+#: src/Dialogs/PropertiesWindow.vala:225
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
-#: src/Dialogs/PropertiesWindow.vala:244
+#: src/Dialogs/PropertiesWindow.vala:246
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -137,75 +137,75 @@ msgstr[0] ""
 msgstr[1] ""
 "%i tiedostoa ei voitu lukea käyttöoikeuksien tai muiden virheiden vuoksi."
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:250
 msgid "Actual Size Could Be Larger"
 msgstr "Todellinen koko voi olla suurempi"
 
-#: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
+#: src/Dialogs/PropertiesWindow.vala:270 src/Dialogs/PropertiesWindow.vala:289
 msgid "unknown"
 msgstr "tuntematon"
 
-#: src/Dialogs/PropertiesWindow.vala:448
+#: src/Dialogs/PropertiesWindow.vala:450
 msgid "Loading…"
 msgstr "Ladataan…"
 
-#: src/Dialogs/PropertiesWindow.vala:482
+#: src/Dialogs/PropertiesWindow.vala:484
 msgid "Could not be determined"
 msgstr "Ei voitu määrittää"
 
-#: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
+#: src/Dialogs/PropertiesWindow.vala:510 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
 msgstr "Koko:"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/ConnectServerDialog.vala:164
+#: src/Dialogs/PropertiesWindow.vala:517 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
 msgstr "Tyyppi:"
 
-#: src/Dialogs/PropertiesWindow.vala:518
+#: src/Dialogs/PropertiesWindow.vala:520
 msgid "Contains:"
 msgstr "Sisältää:"
 
-#: src/Dialogs/PropertiesWindow.vala:541
+#: src/Dialogs/PropertiesWindow.vala:543
 msgid "Created:"
 msgstr "Luotu:"
 
-#: src/Dialogs/PropertiesWindow.vala:551
+#: src/Dialogs/PropertiesWindow.vala:553
 msgid "Modified:"
 msgstr "Muokattu:"
 
-#: src/Dialogs/PropertiesWindow.vala:563
+#: src/Dialogs/PropertiesWindow.vala:565
 msgid "Deleted:"
 msgstr "Poistettu:"
 
-#: src/Dialogs/PropertiesWindow.vala:573
+#: src/Dialogs/PropertiesWindow.vala:575
 msgid "Media type:"
 msgstr "Mediatyyppi:"
 
-#: src/Dialogs/PropertiesWindow.vala:580
+#: src/Dialogs/PropertiesWindow.vala:582
 msgid "Resolution:"
 msgstr "Resoluutio:"
 
-#: src/Dialogs/PropertiesWindow.vala:588
+#: src/Dialogs/PropertiesWindow.vala:590
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "Sijainti:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:600
 msgid "Target:"
 msgstr "Kohde:"
 
-#: src/Dialogs/PropertiesWindow.vala:606
+#: src/Dialogs/PropertiesWindow.vala:608
 msgid "Original Location:"
 msgstr "Alkuperäinen sijainti:"
 
-#: src/Dialogs/PropertiesWindow.vala:629
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/Dialogs/PropertiesWindow.vala:631
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Other Application…"
 msgstr "Muu sovellus…"
 
-#: src/Dialogs/PropertiesWindow.vala:649
+#: src/Dialogs/PropertiesWindow.vala:651
 msgid "Open with:"
 msgstr "Avaa sovelluksella:"
 
@@ -266,7 +266,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Levyn ominaisuudet"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:660
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:645
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Tiedostojärjestelmä"
@@ -295,7 +295,7 @@ msgstr "URI:en avaaminen ei onnistunut"
 msgid "Could not open files or URIs with this app"
 msgstr "Tiedostojen tai URI:en avaaminen tällä sovelluksella ei onnistu"
 
-#: src/View/Window.vala:501 src/View/Window.vala:511
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(ylläpitäjänä)"
 
@@ -337,82 +337,82 @@ msgstr "Luo kansio \"%s\""
 msgid "Failed to create the folder"
 msgstr "Kansion luominen epäonnistui"
 
-#: src/View/AbstractDirectoryView.vala:827
-#: src/View/AbstractDirectoryView.vala:1112
+#: src/View/AbstractDirectoryView.vala:822
+#: src/View/AbstractDirectoryView.vala:1102
 msgid "Cannot execute this file"
 msgstr "Tätä tiedostoa ei voida suorittaa"
 
-#: src/View/AbstractDirectoryView.vala:848
+#: src/View/AbstractDirectoryView.vala:843
 msgid "Cannot open this file"
 msgstr "Tämän tiedoston avaaminen ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:861
+#: src/View/AbstractDirectoryView.vala:856
 msgid "Cannot identify file type to open"
 msgstr "Avattavan tiedoston tiedostotyyppiä ei tunnistettu"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1566
 msgid "Cannot drop this file"
 msgstr "Tämän tiedoston pudottaminen ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:1577
+#: src/View/AbstractDirectoryView.vala:1567
 msgid "Invalid file name provided"
 msgstr "Virheellinen tiedostonimi"
 
-#: src/View/AbstractDirectoryView.vala:2060
+#: src/View/AbstractDirectoryView.vala:2050
 msgid "Invalid"
 msgstr "Virheellinen"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Run"
 msgstr "Suorita"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2060
 #, c-format
 msgid "Open in %s"
 msgstr "Avaa sovelluksella %s"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:2070
 msgid "Open in"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:2082
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/AbstractDirectoryView.vala:2072
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:2173
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Templates"
 msgstr "Mallit"
 
-#: src/View/AbstractDirectoryView.vala:2420
+#: src/View/AbstractDirectoryView.vala:2413
 #, c-format
 msgid "Untitled %s"
 msgstr "Nimetön %s"
 
-#: src/View/AbstractDirectoryView.vala:2768
-#: src/View/AbstractDirectoryView.vala:2963
+#: src/View/AbstractDirectoryView.vala:2765
+#: src/View/AbstractDirectoryView.vala:2960
 msgid "Cannot remove files from here"
 msgstr "Tiedostojen poistaminen täältä ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:2769
-#: src/View/AbstractDirectoryView.vala:2948
-#: src/View/AbstractDirectoryView.vala:2964
+#: src/View/AbstractDirectoryView.vala:2766
+#: src/View/AbstractDirectoryView.vala:2945
+#: src/View/AbstractDirectoryView.vala:2961
 msgid "You do not have permission to change this location"
 msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
 
-#: src/View/AbstractDirectoryView.vala:2923
+#: src/View/AbstractDirectoryView.vala:2920
 msgid "Cannot copy files that are in the trash"
 msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
 
-#: src/View/AbstractDirectoryView.vala:2924
+#: src/View/AbstractDirectoryView.vala:2921
 msgid "Cutting the selection instead"
 msgstr "Sen sijaan leikataan valinta"
 
-#: src/View/AbstractDirectoryView.vala:2947
+#: src/View/AbstractDirectoryView.vala:2944
 msgid "Cannot paste files here"
 msgstr "Tiedostoja ei voi liittää tänne"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:593
+#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Koti"
 
@@ -468,78 +468,78 @@ msgstr "Tiedostoa ei löytynyt"
 msgid "The file selected no longer exists."
 msgstr "Valittua tiedostoa ei ole enää olemassa."
 
-#: src/View/Sidebar.vala:580
+#: src/View/Sidebar.vala:565
 msgid "Personal"
 msgstr "Henkilökohtaiset"
 
-#: src/View/Sidebar.vala:581
+#: src/View/Sidebar.vala:566
 msgid "Your common places and bookmarks"
 msgstr "Yleiset sijainnit ja kirjanmerkit"
 
-#: src/View/Sidebar.vala:600
+#: src/View/Sidebar.vala:585
 msgid "Open your personal folder"
 msgstr "Avaa henkilökohtainen kansiosi"
 
-#: src/View/Sidebar.vala:615
+#: src/View/Sidebar.vala:600
 msgid "View the list of recently used files"
 msgstr "Näytä luettelo äskettäin käytetyistä tiedostoista"
 
-#: src/View/Sidebar.vala:641 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:626 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Roskakori"
 
-#: src/View/Sidebar.vala:648
+#: src/View/Sidebar.vala:633
 msgid "Open the Trash"
 msgstr "Avaa roskakori"
 
-#: src/View/Sidebar.vala:653
+#: src/View/Sidebar.vala:638
 msgid "Devices"
 msgstr "Laitteet"
 
-#: src/View/Sidebar.vala:654
+#: src/View/Sidebar.vala:639
 msgid "Your local partitions and devices"
 msgstr "Paikalliset osiot ja laitteet"
 
-#: src/View/Sidebar.vala:782 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Verkko"
 
-#: src/View/Sidebar.vala:783
+#: src/View/Sidebar.vala:768
 msgid "Your network places"
 msgstr "Verkkosijainnit"
 
-#: src/View/Sidebar.vala:815
+#: src/View/Sidebar.vala:800
 msgid "Entire Network"
 msgstr "Koko verkko"
 
-#: src/View/Sidebar.vala:822
+#: src/View/Sidebar.vala:807
 msgid "Browse the contents of the network"
 msgstr "Selaa verkon sisältöä"
 
-#: src/View/Sidebar.vala:825
+#: src/View/Sidebar.vala:810
 msgid "Connect Server"
 msgstr "Yhdistä palvelimeen"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:811
 msgid "Connect to a network server"
 msgstr "Yhdistä verkkopalvelimeen"
 
-#: src/View/Sidebar.vala:965
+#: src/View/Sidebar.vala:950
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(vapaana %s, kokonaistila %s)"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1443
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Virhe liittäessä taltiota %s"
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1458
 #, c-format
 msgid "Unable to start %s"
 msgstr "Asemaa %s ei voi käynnistää"
 
-#: src/View/Sidebar.vala:1661 libcore/marlin-file-operations.c:1172
+#: src/View/Sidebar.vala:1646 libcore/marlin-file-operations.c:1172
 msgid "Empty _Trash"
 msgstr "Tyhjennä _roskakori"
 
@@ -575,35 +575,35 @@ msgstr "Vaihda turva-asetuksia"
 msgid "Open the system security and privacy settings app"
 msgstr "Avaa järjestelmän turvallisuus- ja yksityisyyssovellus"
 
-#: src/View/PopupMenuBuilder.vala:46
+#: src/View/PopupMenuBuilder.vala:49
 msgid "Open"
 msgstr "Avaa"
 
-#: src/View/PopupMenuBuilder.vala:50
+#: src/View/PopupMenuBuilder.vala:53
 msgid "Open in New _Tab"
 msgstr "Avaa uudessa _välilehdessä"
 
-#: src/View/PopupMenuBuilder.vala:54
+#: src/View/PopupMenuBuilder.vala:57
 msgid "Open in New _Window"
 msgstr "Avaa uudessa _ikkunassa"
 
-#: src/View/PopupMenuBuilder.vala:58
+#: src/View/PopupMenuBuilder.vala:61
 msgid "Remove"
 msgstr "Poista"
 
-#: src/View/PopupMenuBuilder.vala:62 src/View/directory_view_popup.ui:30
+#: src/View/PopupMenuBuilder.vala:65 src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Nimeä uudelleen"
 
-#: src/View/PopupMenuBuilder.vala:66
+#: src/View/PopupMenuBuilder.vala:69
 msgid "_Mount"
 msgstr "_Liitä"
 
-#: src/View/PopupMenuBuilder.vala:70
+#: src/View/PopupMenuBuilder.vala:73
 msgid "_Unmount"
 msgstr "_Irrota"
 
-#: src/View/PopupMenuBuilder.vala:74
+#: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Avaa asema"
 
@@ -707,20 +707,20 @@ msgstr "Käänteinen järjestys"
 msgid "Folders Before Files"
 msgstr "Kansiot ennen tiedostoja"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/BreadcrumbsEntry.vala:133
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Etsi tai kirjoita polku"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:449
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Avaa uudessa välilehdessä"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:456
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Avaa uudessa ikkunassa"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
 msgstr "Avaa muussa sovelluksessa…"
 
@@ -1295,7 +1295,7 @@ msgstr[1] "%T jäljellä"
 
 #: libcore/marlin-file-operations.c:1330 libcore/marlin-file-operations.c:1370
 #: libcore/marlin-file-operations.c:1416 libcore/marlin-file-operations.c:1498
-#: libcore/marlin-file-operations.c:2209
+#: libcore/marlin-file-operations.c:2187
 msgid "Error while deleting."
 msgstr "Virhe poistaessa."
 
@@ -1312,14 +1312,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1341 libcore/marlin-file-operations.c:2273
-#: libcore/marlin-file-operations.c:3350
+#: libcore/marlin-file-operations.c:1341 libcore/marlin-file-operations.c:2251
+#: libcore/marlin-file-operations.c:3328
 #, fuzzy, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr "Virhe haettaessa tietoja tiedostoista kansiossa ”%B”."
 
-#: libcore/marlin-file-operations.c:1351 libcore/marlin-file-operations.c:3360
+#: libcore/marlin-file-operations.c:1351 libcore/marlin-file-operations.c:3338
 msgid "_Skip files"
 msgstr "_Ohita tiedostot"
 
@@ -1335,8 +1335,8 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1380 libcore/marlin-file-operations.c:2318
-#: libcore/marlin-file-operations.c:3402
+#: libcore/marlin-file-operations.c:1380 libcore/marlin-file-operations.c:2296
+#: libcore/marlin-file-operations.c:3380
 #, fuzzy, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "Virhe luettaessa kansiota ”%B”."
@@ -1434,7 +1434,7 @@ msgstr "Siirretään tiedostoja roskakoriin"
 msgid "Deleting Files"
 msgstr "Poistetaan tiedostoja"
 
-#: libcore/marlin-file-operations.c:2114
+#: libcore/marlin-file-operations.c:2092
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Kohdetta %s ei voi liittää"
@@ -1443,7 +1443,7 @@ msgstr "Kohdetta %s ei voi liittää"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2143
+#: libcore/marlin-file-operations.c:2121
 #, fuzzy, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1454,7 +1454,7 @@ msgstr[1] "Valmistellaan %'d tiedoston kopiointia (%S)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2155
+#: libcore/marlin-file-operations.c:2133
 #, fuzzy, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1465,37 +1465,37 @@ msgstr[1] "Valmistellaan %'d tiedoston siirtoa (%S)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2167
+#: libcore/marlin-file-operations.c:2145
 #, fuzzy, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "Valmistellaan %'d tiedoston poistamista (%S)"
 msgstr[1] "Valmistellaan %'d tiedoston poistamista (%S)"
 
-#: libcore/marlin-file-operations.c:2174
+#: libcore/marlin-file-operations.c:2152
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Valmistellaan %'d tiedoston siirtämistä roskakoriin"
 msgstr[1] "Valmistellaan %'d tiedoston siirtämistä roskakoriin"
 
-#: libcore/marlin-file-operations.c:2205 libcore/marlin-file-operations.c:3197
-#: libcore/marlin-file-operations.c:3337 libcore/marlin-file-operations.c:3389
+#: libcore/marlin-file-operations.c:2183 libcore/marlin-file-operations.c:3175
+#: libcore/marlin-file-operations.c:3315 libcore/marlin-file-operations.c:3367
 msgid "Error while copying."
 msgstr "Virhe kopioidessa."
 
-#: libcore/marlin-file-operations.c:2207 libcore/marlin-file-operations.c:3335
-#: libcore/marlin-file-operations.c:3387
+#: libcore/marlin-file-operations.c:2185 libcore/marlin-file-operations.c:3313
+#: libcore/marlin-file-operations.c:3365
 msgid "Error while moving."
 msgstr "Virhe siirtäessä."
 
-#: libcore/marlin-file-operations.c:2211
+#: libcore/marlin-file-operations.c:2189
 msgid "Error while moving files to trash."
 msgstr "Virhe siirrettäessä tiedostoja roskakoriin."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2268
+#: libcore/marlin-file-operations.c:2246
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1506,7 +1506,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2313
+#: libcore/marlin-file-operations.c:2291
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1516,7 +1516,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2400
+#: libcore/marlin-file-operations.c:2378
 #, fuzzy, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1526,32 +1526,32 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2405
+#: libcore/marlin-file-operations.c:2383
 #, fuzzy, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "Virhe haettaessa tietoja kohteesta ”%B”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2511 libcore/marlin-file-operations.c:2557
-#: libcore/marlin-file-operations.c:2595 libcore/marlin-file-operations.c:2635
+#: libcore/marlin-file-operations.c:2489 libcore/marlin-file-operations.c:2535
+#: libcore/marlin-file-operations.c:2573 libcore/marlin-file-operations.c:2613
 #, fuzzy, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "Virhe kohteeseen ”%B” kopioinnissa."
 
-#: libcore/marlin-file-operations.c:2516
+#: libcore/marlin-file-operations.c:2494
 msgid "You do not have permissions to access the destination folder."
 msgstr "Sinulla ei ole oikeuksia avata kohdekansiota."
 
-#: libcore/marlin-file-operations.c:2518
+#: libcore/marlin-file-operations.c:2496
 msgid "There was an error getting information about the destination."
 msgstr "Virhe haettaessa tietoja kohteesta."
 
-#: libcore/marlin-file-operations.c:2558
+#: libcore/marlin-file-operations.c:2536
 msgid "The destination is not a folder."
 msgstr "Kohde ei ole kansio."
 
-#: libcore/marlin-file-operations.c:2597
+#: libcore/marlin-file-operations.c:2575
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1561,30 +1561,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2603
+#: libcore/marlin-file-operations.c:2581
 #, fuzzy, c-format
 msgid "There is %s available, but %s is required."
 msgstr "Saatavilla on %S, mutta %S vaaditaan."
 
-#: libcore/marlin-file-operations.c:2637
+#: libcore/marlin-file-operations.c:2615
 msgid "The destination is read-only."
 msgstr "Kohdetta voi vain lukea."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2709
+#: libcore/marlin-file-operations.c:2687
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "Siirretään ”%B” kohteeseen ”%B”"
 
-#: libcore/marlin-file-operations.c:2710
+#: libcore/marlin-file-operations.c:2688
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "Kopioidaan ”%B” kohteeseen ”%B”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2714
+#: libcore/marlin-file-operations.c:2692
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "Kahdennetaan \"%B\""
@@ -1593,14 +1593,14 @@ msgstr "Kahdennetaan \"%B\""
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2722
+#: libcore/marlin-file-operations.c:2700
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "Siirretään %'d tiedosto (lähteestä ”%B”) kohteeseen ”%B”"
 msgstr[1] "Siirretään %'d tiedostoa (lähteestä ”%B”) kohteeseen ”%B”"
 
-#: libcore/marlin-file-operations.c:2725
+#: libcore/marlin-file-operations.c:2703
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1609,7 +1609,7 @@ msgstr[1] "Kopioidaan %'d tiedostoa (lähteestä ”%B”) kohteeseen ”%B”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2734
+#: libcore/marlin-file-operations.c:2712
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1620,21 +1620,21 @@ msgstr[1] "Kahdennetaan %'d tiedostoa (lähteestä ”%B”)"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2746
+#: libcore/marlin-file-operations.c:2724
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "Siirretään %'d tiedosto kohteeseen ”%B”"
 msgstr[1] "Siirretään %'d tiedostoa kohteeseen ”%B”"
 
-#: libcore/marlin-file-operations.c:2749
+#: libcore/marlin-file-operations.c:2727
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "Kopioidaan %'d tiedosto kohteeseen ”%B”"
 msgstr[1] "Kopioidaan %'d tiedostoa kohteeseen ”%B”"
 
-#: libcore/marlin-file-operations.c:2755
+#: libcore/marlin-file-operations.c:2733
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1642,7 +1642,7 @@ msgstr[0] "Kahdennetaan %'d tiedosto"
 msgstr[1] "Kahdennetaan %'d tiedostoa"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2785
+#: libcore/marlin-file-operations.c:2763
 #, fuzzy, c-format
 msgid "%s of %s"
 msgstr "%S / %S"
@@ -1653,7 +1653,7 @@ msgstr "%S / %S"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2804
+#: libcore/marlin-file-operations.c:2782
 #, fuzzy, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1662,7 +1662,7 @@ msgstr[1] "%S / %S — %T jäljellä (%S/s)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3204
+#: libcore/marlin-file-operations.c:3182
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1673,14 +1673,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3209
+#: libcore/marlin-file-operations.c:3187
 #, fuzzy, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "Virhe luotaessa kansiota ”%B”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3345
+#: libcore/marlin-file-operations.c:3323
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1691,7 +1691,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3397
+#: libcore/marlin-file-operations.c:3375
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1703,91 +1703,91 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3450 libcore/marlin-file-operations.c:4183
-#: libcore/marlin-file-operations.c:4777
+#: libcore/marlin-file-operations.c:3428 libcore/marlin-file-operations.c:4161
+#: libcore/marlin-file-operations.c:4755
 #, fuzzy, c-format
 msgid "Error while moving \"%s\"."
 msgstr "Virhe siirettäessä ”%B”."
 
-#: libcore/marlin-file-operations.c:3452
+#: libcore/marlin-file-operations.c:3430
 msgid "Could not remove the source folder."
 msgstr "Lähdekansiota ei voitu poistaa."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3541 libcore/marlin-file-operations.c:3592
-#: libcore/marlin-file-operations.c:4187
+#: libcore/marlin-file-operations.c:3519 libcore/marlin-file-operations.c:3570
+#: libcore/marlin-file-operations.c:4165
 #, fuzzy, c-format
 msgid "Error while copying \"%s\"."
 msgstr "Virhe kopioitaessa ”%B”."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3546
+#: libcore/marlin-file-operations.c:3524
 #, fuzzy, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "Tiedostoja ei voitu poistaa jo olemassa olevasta kansiosta %F."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3597
+#: libcore/marlin-file-operations.c:3575
 #, fuzzy, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "Ei voitu poistaa jo olemassa olevaa tiedostoa %F."
 
-#: libcore/marlin-file-operations.c:3916 libcore/marlin-file-operations.c:4614
+#: libcore/marlin-file-operations.c:3894 libcore/marlin-file-operations.c:4592
 msgid "You cannot move a folder into itself."
 msgstr "Et voi siirtää kansiota itseensä."
 
-#: libcore/marlin-file-operations.c:3917 libcore/marlin-file-operations.c:4615
+#: libcore/marlin-file-operations.c:3895 libcore/marlin-file-operations.c:4593
 msgid "You cannot copy a folder into itself."
 msgstr "Et voi kopioida kansiota itseensä."
 
-#: libcore/marlin-file-operations.c:3918 libcore/marlin-file-operations.c:4616
+#: libcore/marlin-file-operations.c:3896 libcore/marlin-file-operations.c:4594
 msgid "The destination folder is inside the source folder."
 msgstr "Kohdekansio on lähdekansion sisällä."
 
-#: libcore/marlin-file-operations.c:3949
+#: libcore/marlin-file-operations.c:3927
 msgid "You cannot move a file over itself."
 msgstr "Et voi siirtää tiedostoa itseensä."
 
-#: libcore/marlin-file-operations.c:3950
+#: libcore/marlin-file-operations.c:3928
 msgid "You cannot copy a file over itself."
 msgstr "Et voi kopioida tiedostoa itseensä."
 
-#: libcore/marlin-file-operations.c:3951
+#: libcore/marlin-file-operations.c:3929
 msgid "The source file would be overwritten by the destination."
 msgstr "Kohde kirjoittaisi lähdetiedoston päälle."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4193
+#: libcore/marlin-file-operations.c:4171
 #, fuzzy, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "Aiempaa samannimistä tiedostoa kohteessa %F ei voitu poistaa."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4263
+#: libcore/marlin-file-operations.c:4241
 #, fuzzy, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "Kohteen \"%B\" kopiointi tänne ei ole mahdollista."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4268
+#: libcore/marlin-file-operations.c:4246
 #, fuzzy, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Virhe kopioitaessa tiedostoa sijaintiin %B."
 
-#: libcore/marlin-file-operations.c:4493
+#: libcore/marlin-file-operations.c:4471
 msgid "Copying Files"
 msgstr "Kopioidaan tiedostoja"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4522
+#: libcore/marlin-file-operations.c:4500
 #, fuzzy, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "Valmistellaan siirtoa kohteeseen \"%B\""
 
-#: libcore/marlin-file-operations.c:4527
+#: libcore/marlin-file-operations.c:4505
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1795,23 +1795,23 @@ msgstr[0] "Valmistellaan %'d tiedoston siirtoa"
 msgstr[1] "Valmistellaan %'d tiedoston siirtoa"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4781
+#: libcore/marlin-file-operations.c:4759
 #, fuzzy, c-format
 msgid "There was an error moving the file into %s."
 msgstr "Tapahtui virhe siirrettäessä tiedostoa kohteeseen %F."
 
-#: libcore/marlin-file-operations.c:5040
+#: libcore/marlin-file-operations.c:5018
 msgid "Moving Files"
 msgstr "Siirretään tiedostoja"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:5072
+#: libcore/marlin-file-operations.c:5050
 #, fuzzy, c-format
 msgid "Creating links in \"%s\""
 msgstr "Luodaan linkkejä kohteeseen ”%B”"
 
-#: libcore/marlin-file-operations.c:5077
+#: libcore/marlin-file-operations.c:5055
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1819,441 +1819,441 @@ msgstr[0] "Luodaan linkki %'d tiedostoon"
 msgstr[1] "Luodaan linkki %'d tiedostoon"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5220
+#: libcore/marlin-file-operations.c:5198
 #, fuzzy, c-format
 msgid "Error while creating link to %s."
 msgstr "Virhe luotaessa linkkiä kohteeseen %B."
 
-#: libcore/marlin-file-operations.c:5223
+#: libcore/marlin-file-operations.c:5201
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolisia linkkejä voi käyttää vain paikallisten tiedostojen kanssa"
 
-#: libcore/marlin-file-operations.c:5226
+#: libcore/marlin-file-operations.c:5204
 msgid "The target doesn't support symbolic links."
 msgstr "Kohde ei tue symbolisia linkkejä."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5231
+#: libcore/marlin-file-operations.c:5209
 #, fuzzy, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "Virhe luotaessa symbolista linkkiä kohteeseen %F."
 
-#: libcore/marlin-file-operations.c:5545
+#: libcore/marlin-file-operations.c:5523
 msgid "Setting permissions"
 msgstr "Asetetaan oikeuksia"
 
-#: libcore/marlin-file-operations.c:5645
+#: libcore/marlin-file-operations.c:5623
 msgid "Cannot copy into trash."
 msgstr "Roskakoriin ei voi kopioida."
 
-#: libcore/marlin-file-operations.c:5646
+#: libcore/marlin-file-operations.c:5624
 msgid "It is not permitted to copy files into the trash"
 msgstr "Tiedostojen kopiointi roskakoriin ei ole sallittua"
 
-#: libcore/marlin-file-operations.c:5785
+#: libcore/marlin-file-operations.c:5764
 msgid "untitled folder"
 msgstr "nimetön kansio"
 
-#: libcore/marlin-file-operations.c:5793
+#: libcore/marlin-file-operations.c:5772
 msgid "new file"
 msgstr "uusi tiedosto"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5966
+#: libcore/marlin-file-operations.c:5945
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "Virhe luotaessa kansiota %B."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5969
+#: libcore/marlin-file-operations.c:5948
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "Virhe luotaessa tiedostoa %B."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5975
+#: libcore/marlin-file-operations.c:5954
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Virhe luotaessa kansiota kohteeseen %F."
 
-#: libcore/marlin-file-operations.c:6282
+#: libcore/marlin-file-operations.c:6261
 msgid "Emptying Trash"
 msgstr "Tyhjennetään roskakoria"
 
-#: libcore/marlin-undostack-manager.c:576
+#: libcore/marlin-undostack-manager.c:593
 msgid "Original location could not be determined"
 msgstr "Alkuperäistä sijaintia ei voitu määrittää"
 
-#: libcore/marlin-undostack-manager.c:577
+#: libcore/marlin-undostack-manager.c:594
 msgid "Open trash folder and restore manually"
 msgstr "Avaa roskakori ja palauta manuaalisesti"
 
-#: libcore/marlin-undostack-manager.c:1114
+#: libcore/marlin-undostack-manager.c:1142
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Poista %d kopioitua kohdetta"
 
-#: libcore/marlin-undostack-manager.c:1117
-#: libcore/marlin-undostack-manager.c:1127
-#: libcore/marlin-undostack-manager.c:1158
+#: libcore/marlin-undostack-manager.c:1145
+#: libcore/marlin-undostack-manager.c:1155
+#: libcore/marlin-undostack-manager.c:1186
 #, c-format
 msgid "Delete '%s'"
 msgstr "Poista \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1124
+#: libcore/marlin-undostack-manager.c:1152
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Poista %d kohdennettua kohdetta"
 
-#: libcore/marlin-undostack-manager.c:1135
+#: libcore/marlin-undostack-manager.c:1163
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "Siirrä %d kohdetta takaisin sijaintiin '%s'"
 
-#: libcore/marlin-undostack-manager.c:1139
+#: libcore/marlin-undostack-manager.c:1167
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Siirrä \"%s\" takaisin sijaintiin \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1148
-#: libcore/marlin-undostack-manager.c:1315
+#: libcore/marlin-undostack-manager.c:1176
+#: libcore/marlin-undostack-manager.c:1343
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Nimeä \"%s\" muotoon \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1167
-#: libcore/marlin-undostack-manager.c:1362
+#: libcore/marlin-undostack-manager.c:1195
+#: libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Palauta %d kohdetta roskakorista"
 
-#: libcore/marlin-undostack-manager.c:1175
+#: libcore/marlin-undostack-manager.c:1203
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Palauta \"%s\" sijaintiin \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1186
+#: libcore/marlin-undostack-manager.c:1214
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Siirrä %d kohdetta takaisin roskakoriin"
 
-#: libcore/marlin-undostack-manager.c:1189
+#: libcore/marlin-undostack-manager.c:1217
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Siirrä \"%s\" takaisin roskakoriin"
 
-#: libcore/marlin-undostack-manager.c:1198
+#: libcore/marlin-undostack-manager.c:1226
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Poista linkit %d kohteeseen"
 
-#: libcore/marlin-undostack-manager.c:1201
+#: libcore/marlin-undostack-manager.c:1229
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Poista linkki kohteeseen \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1211
+#: libcore/marlin-undostack-manager.c:1239
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Palauta kansioon \"%s\" sisältyvien kohteiden alkuperäiset oikeudet"
 
-#: libcore/marlin-undostack-manager.c:1219
+#: libcore/marlin-undostack-manager.c:1247
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Palauta kohteen \"%s\" alkuperäiset käyttöoikeudet"
 
-#: libcore/marlin-undostack-manager.c:1228
+#: libcore/marlin-undostack-manager.c:1256
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "Palauta kohteen \"%s\" ryhmäksi \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1238
+#: libcore/marlin-undostack-manager.c:1266
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Palauta kohteen \"%s\" omistajaksi \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1277
+#: libcore/marlin-undostack-manager.c:1305
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Kopioi %d kohdetta sijaintiin '%s'"
 
-#: libcore/marlin-undostack-manager.c:1281
+#: libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Kopioi \"%s\" sijaintiin \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1289
+#: libcore/marlin-undostack-manager.c:1317
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "Kopio %d kohteesta sijainnissa '%s'"
 
-#: libcore/marlin-undostack-manager.c:1294
+#: libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "Monista \"%s\" kohteessa \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1302
+#: libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Siirrä %d kohdetta sijaintiin '%s'"
 
-#: libcore/marlin-undostack-manager.c:1306
+#: libcore/marlin-undostack-manager.c:1334
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Siirrä \"%s\" sijaintiin \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1324
+#: libcore/marlin-undostack-manager.c:1352
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Luo uusi tiedosto ”%s” asiakirjamallista "
 
-#: libcore/marlin-undostack-manager.c:1331
+#: libcore/marlin-undostack-manager.c:1359
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Luo tyhjä tiedosto \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1338
+#: libcore/marlin-undostack-manager.c:1366
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Luo uusi kansio \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1346
+#: libcore/marlin-undostack-manager.c:1374
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Siirrä %d kohdetta roskakoriin"
 
-#: libcore/marlin-undostack-manager.c:1352
+#: libcore/marlin-undostack-manager.c:1380
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Siirrä \"%s\" roskakoriin"
 
-#: libcore/marlin-undostack-manager.c:1365
+#: libcore/marlin-undostack-manager.c:1393
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Palauta \"%s\" roskakorista"
 
-#: libcore/marlin-undostack-manager.c:1374
+#: libcore/marlin-undostack-manager.c:1402
 #, c-format
 msgid "Create links to %d items"
 msgstr "Luo linkit %d kohteeseen"
 
-#: libcore/marlin-undostack-manager.c:1377
+#: libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Luo linkki kohteeseen \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1386
+#: libcore/marlin-undostack-manager.c:1414
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "Aseta \"%s\" sisältyvien kohteiden oikeudet"
 
-#: libcore/marlin-undostack-manager.c:1394
+#: libcore/marlin-undostack-manager.c:1422
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Aseta kohteen \"%s\" oikeudet"
 
-#: libcore/marlin-undostack-manager.c:1403
+#: libcore/marlin-undostack-manager.c:1431
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Aseta kohteen \"%s\" ryhmäksi \"%s\""
 
-#: libcore/marlin-undostack-manager.c:1413
+#: libcore/marlin-undostack-manager.c:1441
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Aseta kohteen '%s' omistajaksi '%s'"
 
-#: libcore/marlin-undostack-manager.c:1445
+#: libcore/marlin-undostack-manager.c:1473
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Kumoa %d kohteen kopiointi"
 msgstr[1] "_Kumoa %d kohteen kopiointi"
 
-#: libcore/marlin-undostack-manager.c:1450
+#: libcore/marlin-undostack-manager.c:1478
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_Kumoa %d kohteen monistaminen"
 msgstr[1] "_Kumoa %d kohteen monistaminen"
 
-#: libcore/marlin-undostack-manager.c:1455
+#: libcore/marlin-undostack-manager.c:1483
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_Kumoa %d kohteen siirto"
 msgstr[1] "_Kumoa %d kohteen siirto"
 
-#: libcore/marlin-undostack-manager.c:1460
+#: libcore/marlin-undostack-manager.c:1488
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_Kumoa %d kohteen uudelleennimeäminen"
 msgstr[1] "_Kumoa %d kohteen uudelleennimeäminen"
 
-#: libcore/marlin-undostack-manager.c:1464
+#: libcore/marlin-undostack-manager.c:1492
 msgid "_Undo creation of an empty file"
 msgstr "_Kumoa tyhjän tiedoston luonti"
 
-#: libcore/marlin-undostack-manager.c:1467
+#: libcore/marlin-undostack-manager.c:1495
 msgid "_Undo creation of a file from template"
 msgstr "_Kumoa tiedoston luonti mallista"
 
-#: libcore/marlin-undostack-manager.c:1471
+#: libcore/marlin-undostack-manager.c:1499
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_Kumoa %d kansion luonti"
 msgstr[1] "_Kumoa %d kansion luonti"
 
-#: libcore/marlin-undostack-manager.c:1476
+#: libcore/marlin-undostack-manager.c:1504
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_Kumoa %d kohteen siirto roskakoriin"
 msgstr[1] "_Kumoa %d kohteen siirto roskakoriin"
 
-#: libcore/marlin-undostack-manager.c:1481
+#: libcore/marlin-undostack-manager.c:1509
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_Kumoa %d kohteen palautus roskakorista"
 msgstr[1] "_Kumoa %d kohteen palautus roskakorista"
 
-#: libcore/marlin-undostack-manager.c:1486
+#: libcore/marlin-undostack-manager.c:1514
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_Kumoa linkin luonti %d kohteeseen"
 msgstr[1] "_Kumoa linkin luonti %d kohteeseen"
 
-#: libcore/marlin-undostack-manager.c:1491
+#: libcore/marlin-undostack-manager.c:1519
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Kumoa %d kohteen poisto"
 msgstr[1] "_Kumoa %d kohteen poisto"
 
-#: libcore/marlin-undostack-manager.c:1496
+#: libcore/marlin-undostack-manager.c:1524
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "Kumoa %d kohteen rekursiivinen oikeuksien muutos"
 msgstr[1] "Kumoa %d kohteen rekursiiviset oikeuksien muutokset"
 
-#: libcore/marlin-undostack-manager.c:1502
+#: libcore/marlin-undostack-manager.c:1530
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "Kumoa %d kohteen oikeuden muutokset"
 msgstr[1] "Kumoa %d kohteen oikeuden muutokset"
 
-#: libcore/marlin-undostack-manager.c:1507
+#: libcore/marlin-undostack-manager.c:1535
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "Kumoa %d kohteen ryhmän muutos"
 msgstr[1] "Kumoa %d kohteen ryhmän muutokset"
 
-#: libcore/marlin-undostack-manager.c:1512
+#: libcore/marlin-undostack-manager.c:1540
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "Kumoa %d kohteen omistajan muutos"
 msgstr[1] "Kumoa %d kohteen omistajan muutos"
 
-#: libcore/marlin-undostack-manager.c:1540
+#: libcore/marlin-undostack-manager.c:1568
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen kopiointi"
 msgstr[1] "_Tee uudelleen %d kohteen kopiointi"
 
-#: libcore/marlin-undostack-manager.c:1545
+#: libcore/marlin-undostack-manager.c:1573
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen monistaminen"
 msgstr[1] "_Tee uudelleen %d kohteen monistaminen"
 
-#: libcore/marlin-undostack-manager.c:1550
+#: libcore/marlin-undostack-manager.c:1578
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen siirto"
 msgstr[1] "_Tee uudelleen %d kohteen siirto"
 
-#: libcore/marlin-undostack-manager.c:1555
+#: libcore/marlin-undostack-manager.c:1583
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen uudelleennimeäminen"
 msgstr[1] "_Tee uudelleen %d kohteen uudelleennimeäminen"
 
-#: libcore/marlin-undostack-manager.c:1559
+#: libcore/marlin-undostack-manager.c:1587
 msgid "_Redo creation of an empty file"
 msgstr "_Tee uudelleen tyhjän tiedoston luonti"
 
-#: libcore/marlin-undostack-manager.c:1562
+#: libcore/marlin-undostack-manager.c:1590
 msgid "_Redo creation of a file from template"
 msgstr "_Tee uudelleen tiedoston luominen mallipohjasta"
 
-#: libcore/marlin-undostack-manager.c:1566
+#: libcore/marlin-undostack-manager.c:1594
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "_Tee uudelleen %d kansion luonti"
 msgstr[1] "_Tee uudelleen %d kansion luonti"
 
-#: libcore/marlin-undostack-manager.c:1571
+#: libcore/marlin-undostack-manager.c:1599
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen siirtäminen roskakoriin"
 msgstr[1] "_Tee uudelleen %d kohteen siirtäminen roskakoriin"
 
-#: libcore/marlin-undostack-manager.c:1576
+#: libcore/marlin-undostack-manager.c:1604
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen palauttaminen roskakorista"
 msgstr[1] "_Tee uudelleen %d kohteen palauttaminen roskakorista"
 
-#: libcore/marlin-undostack-manager.c:1581
+#: libcore/marlin-undostack-manager.c:1609
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "_Tee uudelleen linkki %d kohteeseen"
 msgstr[1] "_Tee uudelleen linkki %d kohteeseen"
 
-#: libcore/marlin-undostack-manager.c:1586
+#: libcore/marlin-undostack-manager.c:1614
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "_Tee uudelleen %d kohteen poisto"
 msgstr[1] "_Tee uudelleen %d kohteen poisto"
 
-#: libcore/marlin-undostack-manager.c:1591
+#: libcore/marlin-undostack-manager.c:1619
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "Tee uudelleen %d kohteen rekursiivinen oikeuksien muutos"
 msgstr[1] "Tee uudelleen %d kohteen rekursiivinen oikeuksien muutos"
 
-#: libcore/marlin-undostack-manager.c:1597
+#: libcore/marlin-undostack-manager.c:1625
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "Tee uudelleen %d kohteen oikeuksien muutos"
 msgstr[1] "Tee uudelleen %d kohteen oikeuksien muutos"
 
-#: libcore/marlin-undostack-manager.c:1602
+#: libcore/marlin-undostack-manager.c:1630
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "Tee uudelleen %d kohteen ryhmän muutos"
 msgstr[1] "Tee uudelleen %d kohteen ryhmän muutos"
 
-#: libcore/marlin-undostack-manager.c:1607
+#: libcore/marlin-undostack-manager.c:1635
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
