@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 19:20+0000\n"
+"POT-Creation-Date: 2019-11-05 00:02+0000\n"
 "PO-Revision-Date: 2019-11-01 18:23+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
@@ -463,9 +463,11 @@ msgstr "עדכוני תרגומים"
 msgid "elementary LLC."
 msgstr "elementary בע״מ"
 
+#: data/io.elementary.files.policy.in.in:10
 #, fuzzy
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "חלון חדש בתור מנהל"
+msgid "Run Pantheon Files as Administrator"
+msgstr "חלון חדש בתור מנהל"
 
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "נדרש אימות כדי להפעיל את היישום קבצים כמנהל המערכת"
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "נדרש אימות כדי להפעיל את היישום קבצים כמנהל המערכת"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 19:20+0000\n"
+"POT-Creation-Date: 2019-11-05 00:02+0000\n"
 "PO-Revision-Date: 2018-02-05 00:11+0000\n"
 "Last-Translator: Rokar <mail@rokar.de>\n"
 "Language-Team: Kurdish <https://weblate.elementary.io/projects/files/extra/"
@@ -472,12 +472,14 @@ msgstr "rojanekirina wergerrandin"
 msgid "elementary LLC."
 msgstr ""
 
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "Panthenon Files'ê Weke Rêvebir karbîne"
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "Panthenon Files'ê Weke Rêvebir karbîne"
 
+#: data/io.elementary.files.policy.in.in:11
 #, fuzzy
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "Panthenon Files'ê Weke Rêvebir karbîne"
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Panthenon Files'ê Weke Rêvebir karbîne"
 
 #~ msgid "About Files"
 #~ msgstr "Derbarê Pelan de"

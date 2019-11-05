@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 19:20+0000\n"
+"POT-Creation-Date: 2019-11-05 00:02+0000\n"
 "PO-Revision-Date: 2018-01-24 00:03+0000\n"
 "Last-Translator: Deo Valiandro. M <vaeloox@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
@@ -481,12 +481,13 @@ msgstr "Pembaruan terjemahan"
 msgid "elementary LLC."
 msgstr ""
 
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "Jalankan Berkas Pantheon sebagai Administrator"
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "Jalankan Berkas Pantheon sebagai Administrator"
 
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr ""
-#~ "Otentikasi diperlukan untuk menjalankan Berkas sebagai Administrator"
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Otentikasi diperlukan untuk menjalankan Berkas sebagai Administrator"
 
 #~ msgid "About Files"
 #~ msgstr "Tentang Berkas"

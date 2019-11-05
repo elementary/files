@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 19:20+0000\n"
+"POT-Creation-Date: 2019-11-05 00:02+0000\n"
 "PO-Revision-Date: 2017-04-05 20:24+0000\n"
 "Last-Translator: Borislav Asenov Krumov <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -480,12 +480,14 @@ msgstr "Промени по превода."
 msgid "elementary LLC."
 msgstr ""
 
+#: data/io.elementary.files.policy.in.in:10
 #, fuzzy
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "Нужно е потвърждение за да изпълните Файловете като Администратор"
+msgid "Run Pantheon Files as Administrator"
+msgstr "Нужно е потвърждение за да изпълните Файловете като Администратор"
 
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "Нужно е потвърждение за да изпълните Файловете като Администратор"
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Нужно е потвърждение за да изпълните Файловете като Администратор"
 
 #~ msgid "About Files"
 #~ msgstr "Относно файловете"

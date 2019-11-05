@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 19:20+0000\n"
+"POT-Creation-Date: 2019-11-05 00:02+0000\n"
 "PO-Revision-Date: 2019-09-02 20:22+0000\n"
 "Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
@@ -475,11 +475,13 @@ msgstr "Çeviri güncellemeleri"
 msgid "elementary LLC."
 msgstr "elementary LLC."
 
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "Pantheon Dosyalar'ı yönetici olarak çalıştır"
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "Pantheon Dosyalar'ı yönetici olarak çalıştır"
 
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "Dosyaları Yönetici olarak çalıştırmak için kimlik doğrulama gerekir"
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Dosyaları Yönetici olarak çalıştırmak için kimlik doğrulama gerekir"
 
 #~ msgid "About Files"
 #~ msgstr "Dosyalar Hakkında"

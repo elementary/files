@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 19:20+0000\n"
+"POT-Creation-Date: 2019-11-05 00:02+0000\n"
 "PO-Revision-Date: 2018-06-10 00:11+0000\n"
 "Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
 "Language-Team: Sinhala <https://weblate.elementary.io/projects/files/extra/"
@@ -469,9 +469,15 @@ msgstr "නව පරිවර්තනය"
 msgid "elementary LLC."
 msgstr ""
 
+#: data/io.elementary.files.policy.in.in:10
 #, fuzzy
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "පරිපාලක ලෙස නව කවුළුව"
+msgid "Run Pantheon Files as Administrator"
+msgstr "පරිපාලක ලෙස නව කවුළුව"
+
+#: data/io.elementary.files.policy.in.in:11
+#, fuzzy
+msgid "Authentication is required to run Files as Administrator"
+msgstr "පරිපාලක ලෙස නව කවුළුව"
 
 #~ msgid "About Files"
 #~ msgstr "ගොනු සම්බන්දව"

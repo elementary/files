@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 19:20+0000\n"
+"POT-Creation-Date: 2019-11-05 00:02+0000\n"
 "PO-Revision-Date: 2019-08-20 04:22+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -490,11 +490,13 @@ msgstr "Atualizações de tradução"
 msgid "elementary LLC."
 msgstr "elementary LLC."
 
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "Executar Pantheon Files como administrador"
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "Executar Pantheon Files como administrador"
 
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "É necessária autenticação para executar Arquivos como Administrador"
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "É necessária autenticação para executar Arquivos como Administrador"
 
 #~ msgid "About Files"
 #~ msgstr "Sobre Arquivos"
