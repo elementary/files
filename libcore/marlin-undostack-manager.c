@@ -169,8 +169,7 @@ static void free_undo_action (gpointer data, gpointer user_data);
 
 static void undostack_dispose_all (GQueue *queue);
 
-static void undo_redo_done_transfer_callback (GHashTable *debuting_uris,
-                                              gpointer data);
+static void undo_redo_done_transfer_callback (gpointer data);
 
 static void undo_redo_done_rename_callback (GObject      *object,
                                             GAsyncResult *result,
@@ -561,7 +560,7 @@ marlin_undo_manager_undo (MarlinUndoManager   *self,
                 marlin_file_changes_consume_changes (TRUE);
 
                 /* Here we must do what's necessary for the callback */
-                undo_redo_done_transfer_callback (NULL, action);
+                undo_redo_done_transfer_callback (action);
             }
             break;
         case MARLIN_UNDO_RESTOREFROMTRASH:
@@ -598,7 +597,7 @@ marlin_undo_manager_undo (MarlinUndoManager   *self,
             g_hash_table_destroy (files_to_restore);
 
             /* Here we must do what's necessary for the callback */
-            undo_redo_done_transfer_callback (NULL, action);
+            undo_redo_done_transfer_callback (action);
             break;
         case MARLIN_UNDO_MOVE:
             uris = construct_gfile_list (action->destinations, action->dest_dir);
@@ -1649,7 +1648,7 @@ get_redo_label (MarlinUndoActionData * action)
 
 /** ---------------------------------------------------------------- */
 static void
-undo_redo_done_transfer_callback (GHashTable * debuting_uris, gpointer data)
+undo_redo_done_transfer_callback (gpointer data)
 {
     MarlinUndoActionData *action;
 
@@ -1673,14 +1672,14 @@ undo_redo_done_transfer_callback (GHashTable * debuting_uris, gpointer data)
 static void
 undo_redo_done_delete_callback (gboolean user_cancel, gpointer callback_data)
 {
-    undo_redo_done_transfer_callback (NULL, callback_data);
+    undo_redo_done_transfer_callback (callback_data);
 }
 
 /** ---------------------------------------------------------------- */
 static void
 undo_redo_done_create_callback (GFile * new_file, gpointer callback_data)
 {
-    undo_redo_done_transfer_callback (NULL, callback_data);
+    undo_redo_done_transfer_callback (callback_data);
 }
 
 /** ---------------------------------------------------------------- */
@@ -1696,7 +1695,7 @@ undo_redo_done_rename_callback (GObject      *object,
     }
 
     g_object_unref (res_file);
-    undo_redo_done_transfer_callback (NULL, user_data);
+    undo_redo_done_transfer_callback (user_data);
 }
 
 /** ---------------------------------------------------------------- */
