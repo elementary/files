@@ -1876,12 +1876,12 @@ delete_job (GIOSchedulerJob *io_job,
     return FALSE;
 }
 
-static void
-trash_or_delete_internal (GList                  *files,
-                          GtkWindow              *parent_window,
-                          gboolean                try_trash,
-                          MarlinDeleteCallback  done_callback,
-                          gpointer                done_callback_data)
+void
+marlin_file_operations_delete (GList                    *files,
+                               GtkWindow                *parent_window,
+                               gboolean                 try_trash,
+                               MarlinDeleteCallback     done_callback,
+                               gpointer                 done_callback_data)
 {
     g_return_if_fail (files != NULL);
 
@@ -1913,28 +1913,6 @@ trash_or_delete_internal (GList                  *files,
                              NULL,
                              0,
                              NULL);
-}
-
-void
-marlin_file_operations_trash_or_delete (GList                   *files,
-                                        GtkWindow               *parent_window,
-                                        MarlinDeleteCallback    done_callback,
-                                        gpointer                done_callback_data)
-{
-    trash_or_delete_internal (files, parent_window,
-                              TRUE,
-                              done_callback,  done_callback_data);
-}
-
-void
-marlin_file_operations_delete (GList                    *files,
-                               GtkWindow                *parent_window,
-                               MarlinDeleteCallback     done_callback,
-                               gpointer                 done_callback_data)
-{
-    trash_or_delete_internal (files, parent_window,
-                              FALSE,
-                              done_callback,  done_callback_data);
 }
 
 
@@ -5682,10 +5660,11 @@ marlin_file_operations_copy_move_link   (GList                  *files,
         if (g_file_has_uri_scheme (target_dir, "trash")) {
             /* done_callback is (or should be) a DeleteCallBack or null in this case */
 
-            marlin_file_operations_trash_or_delete (files,
-                                                    parent_window,
-                                                    (MarlinDeleteCallback)done_callback,
-                                                    done_callback_data);
+            marlin_file_operations_delete (files,
+                                           parent_window,
+                                           TRUE,
+                                           (MarlinDeleteCallback)done_callback,
+                                           done_callback_data);
         } else {
             /* done_callback is (or should be) a CopyCallBack or null in this case */
             marlin_file_operations_move (files,

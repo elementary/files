@@ -94,7 +94,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                         }
 
                         if (to_delete != null) {
-                            Marlin.FileOperations.@delete (to_delete, window);
+                            Marlin.FileOperations.@delete (to_delete, window, false);
                         }
                     }
                 });

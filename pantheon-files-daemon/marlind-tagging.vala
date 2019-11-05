@@ -40,7 +40,7 @@ public class MarlinTags : Object {
 
     public MarlinTags () {
         try {
-            openMarlinDB ();
+            open_marlin_db ();
         } catch (GLib.Error e) {
             critical ("Unable to open color tag database - %s", e.message);
         }
@@ -60,7 +60,7 @@ public class MarlinTags : Object {
         return 0;
     }
 
-    public bool openMarlinDB () throws GLib.DBusError, GLib.IOError {
+    public bool open_marlin_db () throws GLib.DBusError, GLib.IOError {
         File home_dir = File.new_for_path (Environment.get_home_dir ());
         File data_dir = home_dir.get_child (".config").get_child ("marlin");
 
@@ -75,12 +75,12 @@ public class MarlinTags : Object {
         string marlin_db_path = data_dir.get_child ("marlin.db").get_path ();
         //The database must exists, add here the full path
         message ("Database path: %s \n", marlin_db_path);
-        openDB (marlin_db_path);
+        open_db (marlin_db_path);
 
         return true;
     }
 
-    private bool openDB (string dbpath) {
+    private bool open_db (string dbpath) {
         int rc = Sqlite.Database.open_v2 (dbpath, out db, Sqlite.OPEN_READWRITE | Sqlite.OPEN_CREATE, null);
 
         if (rc != Sqlite.OK) {
@@ -180,14 +180,14 @@ public class MarlinTags : Object {
         return vb.end ();
     }
 
-    public async bool deleteEntry (string uri) throws GLib.DBusError, GLib.IOError {
-        Idle.add (deleteEntry.callback);
+    public async bool delete_entry (string uri) throws GLib.DBusError, GLib.IOError {
+        Idle.add (delete_entry.callback);
         yield;
         string c = "delete from tags where uri='" + uri + "'";
         int rc = db.exec (c, null, null);
 
         if (rc != Sqlite.OK) {
-            warning ("[deleteEntry: SQL error]  %d, %s\n", rc, db.errmsg ());
+            warning ("[delete_entry: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
@@ -196,25 +196,25 @@ public class MarlinTags : Object {
 
 /************* Used for maintenance only *************/
 
-    public bool showTable (string table) throws GLib.DBusError, GLib.IOError {
-        stdout.printf ("showTable\n");
+    public bool show_table (string table) throws GLib.DBusError, GLib.IOError {
+        stdout.printf ("show_table\n");
         string consult = "select * from " + table;
         int rc = db.exec (consult, show_table_callback, null);
 
         if (rc != Sqlite.OK) {
-            warning ("[showTable: SQL error]: %d, %s\n", rc, db.errmsg ());
+            warning ("[show_table: SQL error]: %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
         return true;
     }
 
-    public bool clearDB () throws GLib.DBusError, GLib.IOError {
+    public bool clear_db () throws GLib.DBusError, GLib.IOError {
         string c = "delete from tags";
         int rc = db.exec (c, null, null);
 
         if (rc != Sqlite.OK) {
-            warning ("[clearDB: SQL error]  %d, %s\n", rc, db.errmsg ());
+            warning ("[clear_db: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
