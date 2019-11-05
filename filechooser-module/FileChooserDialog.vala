@@ -104,7 +104,7 @@ public class CustomFileChooserDialog : Object {
         });
 
         chooser_dialog.current_folder_changed.connect (() => {
-            var previous_path = current_path  ?? Environment.get_home_dir ();
+            var previous_path = current_path ?? Environment.get_home_dir ();
             current_path = chooser_dialog.get_current_folder_uri () ?? Environment.get_home_dir ();
 
             if (previous_path == null || previous_path == current_path) {

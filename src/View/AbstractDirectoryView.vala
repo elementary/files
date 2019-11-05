@@ -158,7 +158,6 @@ namespace FM {
 
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
-        private bool drag_has_begun = false;
         protected bool dnd_disabled = false;
         private void* drag_data;
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
@@ -645,7 +644,6 @@ namespace FM {
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
-
             if (dir.is_loading ()) {
                 disconnect_directory_loading_handlers (dir);
             }
@@ -714,10 +712,6 @@ namespace FM {
             }
 
             cancel_timeout (ref thumbnail_source_id);
-        }
-
-        protected bool is_drag_pending () {
-            return drag_has_begun;
         }
 
         protected bool selection_only_contains_folders (GLib.List<GOF.File> list) {
@@ -900,15 +894,10 @@ namespace FM {
                 locations.reverse ();
 
                 slot.directory.block_monitor ();
-                if (delete_immediately) {
-                    Marlin.FileOperations.@delete (locations,
-                                                   window as Gtk.Window,
-                                                   after_trash_or_delete);
-                } else {
-                    Marlin.FileOperations.trash_or_delete (locations,
-                                                           window as Gtk.Window,
-                                                           after_trash_or_delete);
-                }
+                Marlin.FileOperations.@delete (locations,
+                                               window as Gtk.Window,
+                                               !delete_immediately,
+                                               after_trash_or_delete);
             }
 
             /* If in recent "folder" we need to refresh the view. */
@@ -1481,7 +1470,6 @@ namespace FM {
     /** Handle Drag source signals*/
 
         private void on_drag_begin (Gdk.DragContext context) {
-            drag_has_begun = true;
             should_activate = false;
         }
 
@@ -1527,7 +1515,6 @@ namespace FM {
 
             current_suggested_action = Gdk.DragAction.DEFAULT;
             current_actions = Gdk.DragAction.DEFAULT;
-            drag_has_begun = false;
             drop_occurred = false;
         }
 
@@ -2596,17 +2583,21 @@ namespace FM {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
-                Gtk.Widget widget = (this as Gtk.Bin).get_child ();
-                Gdk.Device pointer = context.get_device ();
-                Gdk.Window window = widget.get_window ();
-                int x, y, w, h;
+                Gtk.Widget? widget = (this as Gtk.Bin).get_child ();
+                if (widget != null) {
+                    Gdk.Device pointer = context.get_device ();
+                    Gdk.Window window = widget.get_window ();
+                    int x, y, w, h;
 
-                window.get_device_position (pointer, out x, out y, null);
-                window.get_geometry (null, null, out w, out h);
+                    window.get_device_position (pointer, out x, out y, null);
+                    window.get_geometry (null, null, out w, out h);
 
-                scroll_if_near_edge (y, h, 20, get_vadjustment ());
-                scroll_if_near_edge (x, w, 20, get_hadjustment ());
-                return GLib.Source.CONTINUE;
+                    scroll_if_near_edge (y, h, 20, get_vadjustment ());
+                    scroll_if_near_edge (x, w, 20, get_hadjustment ());
+                    return GLib.Source.CONTINUE;
+                } else {
+                    return GLib.Source.REMOVE;
+                }
             });
         }
 
@@ -3295,6 +3286,11 @@ namespace FM {
              * dragging on blank areas
              */
             block_drag_and_drop ();
+
+            /* Native Gtk behaviour for all clicks on empty space */
+            if (click_zone == ClickZone.BLANK_NO_PATH) {
+                return false;
+            }
 
             /* Handle un-modified clicks or control-clicks here else pass on.
              */

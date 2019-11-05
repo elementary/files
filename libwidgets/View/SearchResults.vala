@@ -915,12 +915,12 @@ namespace Marlin.View.Chrome {
             return false;
         }
 
-        string ATTRIBUTES = FileAttribute.STANDARD_NAME + "," +
-                            FileAttribute.STANDARD_DISPLAY_NAME + "," +
-                            FileAttribute.STANDARD_CONTENT_TYPE + "," +
-                            FileAttribute.STANDARD_IS_HIDDEN + "," +
-                            FileAttribute.STANDARD_TYPE + "," +
-                            FileAttribute.STANDARD_ICON;
+        const string ATTRIBUTES = FileAttribute.STANDARD_NAME + "," +
+                                  FileAttribute.STANDARD_DISPLAY_NAME + "," +
+                                  FileAttribute.STANDARD_CONTENT_TYPE + "," +
+                                  FileAttribute.STANDARD_IS_HIDDEN + "," +
+                                  FileAttribute.STANDARD_TYPE + "," +
+                                  FileAttribute.STANDARD_ICON;
 
         void visit (string term, bool include_hidden, Cancellable cancel, File root_folder) {
             var folder = directory_queue.poll ();
@@ -1151,4 +1151,3 @@ namespace Marlin.View.Chrome {
         }
     }
 }
-
