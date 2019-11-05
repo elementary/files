@@ -19,7 +19,7 @@ namespace PF.FileUtils {
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
-    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
+    const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
     public GLib.List<GLib.File> files_from_uris (string uris) {
@@ -183,7 +183,7 @@ namespace PF.FileUtils {
     }
 
     public string? escape_uri (string uri, bool allow_utf8 = true, bool allow_single_quote = true) {
-        string rc = reserved_chars.replace ("#", "").replace ("*","");
+        string rc = RESERVED_CHARS.replace ("#", "").replace ("*", "");
         if (!allow_single_quote) {
             rc = rc.replace ("'", "");
         }
@@ -333,7 +333,7 @@ namespace PF.FileUtils {
         if (!uri.contains (Marlin.MTP_URI)) {
             return false;
         }
-        string[] explode_protocol = uri.split ("://",2);
+        string[] explode_protocol = uri.split ("://", 2);
         if (explode_protocol.length != 2 ||
             !explode_protocol[1].has_prefix ("[") ||
             !explode_protocol[1].contains ("]")) {
@@ -362,8 +362,8 @@ namespace PF.FileUtils {
     }
 
     /* Lists of compression only and archive only extensions from Wikipedia */
-    private const string compression_extensions = "bz2 F gz tz lz lzma lzo rz sfark sz xz z Z ";
-    private const string archive_extensions = "a cpio shar LBR iso lbr mar sbx tar";
+    private const string COMPRESSION_EXTENSIONS = "bz2 F gz tz lz lzma lzo rz sfark sz xz z Z ";
+    private const string ARCHIVE_EXTENSIONS = "a cpio shar LBR iso lbr mar sbx tar";
     private string strip_extension (string filename) {
         string[] parts = filename.reverse ().split (".", 3);
         var n_parts = parts.length;
@@ -374,8 +374,8 @@ namespace PF.FileUtils {
             case 2:
                 return parts[1].reverse ();
             case 3:
-                if (compression_extensions.reverse ().contains (parts[0]) &&
-                    archive_extensions.reverse ().contains (parts[1])) {
+                if (COMPRESSION_EXTENSIONS.reverse ().contains (parts[0]) &&
+                    ARCHIVE_EXTENSIONS.reverse ().contains (parts[1])) {
 
                         return parts[2].reverse ();
                 }
