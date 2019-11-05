@@ -104,7 +104,7 @@ namespace Marlin {
         }
 
         private void add_special_directories () {
-            const GLib.UserDirectory[] directories = {
+            const GLib.UserDirectory[] DIRECTORIES = {
                 GLib.UserDirectory.DOCUMENTS,
                 GLib.UserDirectory.DOWNLOAD,
                 GLib.UserDirectory.MUSIC,
@@ -114,7 +114,7 @@ namespace Marlin {
                 GLib.UserDirectory.VIDEOS
             };
 
-            foreach (GLib.UserDirectory directory in directories) {
+            foreach (GLib.UserDirectory directory in DIRECTORIES) {
                 unowned string? dir_s = GLib.Environment.get_user_special_dir (directory);
                 if (dir_s != null) {
                     var gof_file = GOF.File.get (GLib.File.new_for_path (dir_s));
@@ -218,7 +218,7 @@ namespace Marlin {
         }
 
         private void append_internal (Marlin.Bookmark bookmark) {
-            insert_item_internal (bookmark,-1);
+            insert_item_internal (bookmark, -1);
         }
 
         private void insert_item_internal (Marlin.Bookmark bm, uint index) {
@@ -412,7 +412,7 @@ namespace Marlin {
                     save_bookmarks_file_async ();
                     break;
                 default:
-                    warning (@"Invalid booklist operation");
+                    warning ("Invalid booklist operation");
                     op_processed_call_back ();
                     break;
             }

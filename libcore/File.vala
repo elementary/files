@@ -1166,7 +1166,7 @@ public class GOF.File : GLib.Object {
          * so always sorts first. */
 
         /* TODO Sort folders according to number of files inside like Dolphin? */
-        if (is_folder ()&& !other.is_folder ()) {
+        if (is_folder () && !other.is_folder ()) {
             return -1;
         }
 
