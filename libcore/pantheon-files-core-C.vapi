@@ -56,8 +56,7 @@ namespace Marlin {
         static void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file,Marlin.CreateCallback? create_callback = null);
         static void mount_volume (GLib.Volume volume, Gtk.Window? parent_window = null);
         static async void mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) throws GLib.Error;
-        static void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null);
-        static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null);
+        static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, bool try_trash, DeleteCallback? callback = null);
         static bool has_trash_files (GLib.Mount mount);
         static GLib.List<GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
         static void empty_trash (Gtk.Widget? widget);
@@ -87,17 +86,14 @@ namespace Marlin
     }
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
-    public delegate void UndoFinishCallback ();
-
-    [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public class UndoManager : GLib.Object
     {
         public static unowned UndoManager instance ();
 
         public signal void request_menu_update (UndoMenuData data);
 
-        public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
-        public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
+        public async bool undo (Gtk.Widget widget, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        public async void redo (Gtk.Widget widget, GLib.Cancellable? cancellable = null) throws GLib.Error;
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
 }

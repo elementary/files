@@ -374,7 +374,7 @@ public class GOF.File : GLib.Object {
         GLib.return_val_if_fail (size >= 1, null);
 
         var nicon = get_icon (size, scale, flags);
-        return nicon.get_pixbuf_nodefault ();
+        return nicon != null ? nicon.get_pixbuf_nodefault () : null;
     }
 
     public void get_folder_icon_from_uri_or_path () {
@@ -580,10 +580,13 @@ public class GOF.File : GLib.Object {
     }
 
     public void update_type () {
-        unowned string? ftype = get_ftype ();
         update_formated_type ();
 
-        icon = GLib.ContentType.get_icon (ftype);
+        unowned string? ftype = get_ftype ();
+        if (ftype != null) {
+            icon = GLib.ContentType.get_icon (ftype);
+        }
+
         if (pix_size > 1 && pix_scale > 0) {
             update_icon (pix_size, pix_scale);
             icon_changed ();
@@ -1163,7 +1166,7 @@ public class GOF.File : GLib.Object {
          * so always sorts first. */
 
         /* TODO Sort folders according to number of files inside like Dolphin? */
-        if (is_folder ()&& !other.is_folder ()) {
+        if (is_folder () && !other.is_folder ()) {
             return -1;
         }
 
