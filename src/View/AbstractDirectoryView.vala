@@ -643,7 +643,6 @@ namespace FM {
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
-
             if (dir.is_loading ()) {
                 disconnect_directory_loading_handlers (dir);
             }

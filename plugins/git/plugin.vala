@@ -136,6 +136,6 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 
 public Marlin.Plugins.Base module_init () {
     Ggit.init ();
-    var plug =  new Marlin.Plugins.Git ();
+    var plug = new Marlin.Plugins.Git ();
     return plug;
 }
