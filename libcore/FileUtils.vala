@@ -327,6 +327,11 @@ namespace PF.FileUtils {
         if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
             protocol = "";
         }
+
+        /* Consistently remove any remove trailing separator so that paths can be reliably compared */
+        if (new_path.has_suffix (Path.DIR_SEPARATOR_S) && path != Path.DIR_SEPARATOR_S) {
+            new_path = new_path.slice (0, new_path.length - 1);
+        }
     }
 
     private bool valid_mtp_uri (string uri) {

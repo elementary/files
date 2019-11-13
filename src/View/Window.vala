@@ -464,12 +464,20 @@ namespace Marlin.View {
         }
 
         private int location_is_duplicate (GLib.File location) {
-            int existing_position = -1;
+            string protocol = "";
+            string path = "";
+            /* Ensures consistent format of protocol and path */
+            PF.FileUtils.split_protocol_from_path (location.get_uri (), out protocol, out path);
+            int existing_position = -1
+
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 existing_position++;
                 var content = (ViewContainer)(tab.page);
                 var tab_location = content.location;
-                if (location.equal (tab_location)) {
+                string tab_protocol = "";
+                string tab_path = "";
+                PF.FileUtils.split_protocol_from_path (tab_location.get_uri (), out tab_protocol, out tab_path);
+                if (tab_path == path && tab_protocol == protocol) {
                     return existing_position;
                 }
             }
