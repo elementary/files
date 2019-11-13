@@ -409,8 +409,10 @@ namespace Marlin.View {
                 }
             } else {
                 /* Open tabs at each requested location */
+                /* As files may be derived from commandline, we sanitize them */
                 foreach (var file in files) {
-                    add_tab (file, mode, ignore_duplicate);
+                    string sanitized_path = PF.FileUtils.sanitize_path (file.get_uri ());
+                    add_tab (File.new_for_uri (sanitized_path), mode, ignore_duplicate);
                 }
             }
         }
@@ -429,10 +431,17 @@ namespace Marlin.View {
                              bool ignore_duplicate = false) {
 
             if (ignore_duplicate) {
-                var existing_tab_position = location_is_duplicate (location);
+                bool is_child = false;
+                var existing_tab_position = location_is_duplicate (location, out is_child);
                 if (existing_tab_position >= 0) {
                     tabs.current = tabs.get_tab_by_index (existing_tab_position);
                     change_tab (existing_tab_position);
+
+                    if (is_child) {
+                        /* Select the child  */
+                        ((ViewContainer)(tabs.current.page)).focus_location_if_in_current_directory (location);
+                    }
+
                     return;
                 }
             }
@@ -463,21 +472,23 @@ namespace Marlin.View {
             content.add_view (mode, location);
         }
 
-        private int location_is_duplicate (GLib.File location) {
-            string protocol = "";
-            string path = "";
+        private int location_is_duplicate (GLib.File location, out bool is_child) {
+            is_child = false;
+            string parent_path = "";
+            string uri = location.get_uri ();
             /* Ensures consistent format of protocol and path */
-            PF.FileUtils.split_protocol_from_path (location.get_uri (), out protocol, out path);
-            int existing_position = -1
+            parent_path = PF.FileUtils.get_parent_path_from_path (location.get_path ());
+            int existing_position = -1;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 existing_position++;
-                var content = (ViewContainer)(tab.page);
-                var tab_location = content.location;
-                string tab_protocol = "";
-                string tab_path = "";
-                PF.FileUtils.split_protocol_from_path (tab_location.get_uri (), out tab_protocol, out tab_path);
-                if (tab_path == path && tab_protocol == protocol) {
+                var tab_location = ((ViewContainer)(tab.page)).location;
+                string tab_uri = tab_location.get_uri ();
+
+                if (PF.FileUtils.same_location (uri, tab_uri)) {
+                    return existing_position;
+                } else if (PF.FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
+                    is_child = true;
                     return existing_position;
                 }
             }

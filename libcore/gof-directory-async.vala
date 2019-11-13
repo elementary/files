@@ -211,7 +211,7 @@ public class Async : Object {
 
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
-                debug ("Trying to load a non-folder - finding parent");
+                critical ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = GOF.File.get (parent);
@@ -1076,24 +1076,31 @@ public class Async : Object {
         }
 
         var gfile = GLib.File.new_for_uri (escaped_uri);
-
+        var afile = gfile.dup ();
         /* Avoid adding a new Async that will be a duplicate of an existing one, when called
          * with non-folder location. */
         if (gfile.is_native () && gfile.has_parent (null)) {
             var ftype = gfile.query_file_type (0, null);
             if (ftype != FileType.DIRECTORY) {
-                gfile = gfile.get_parent ();
+                afile = gfile.get_parent ();
             }
         }
 
         /* Note: cache_lookup creates directory_cache if necessary */
-        Async? dir = cache_lookup (gfile);
+        Async? dir = cache_lookup (afile);
         /* Both local and non-local files can be cached */
         if (dir == null) {
-            dir = new Async (gfile);
+            dir = new Async (afile);
             dir_cache_lock.@lock ();
             directory_cache.insert (dir.creation_key, dir);
             dir_cache_lock.unlock ();
+        }
+
+
+        /* If the original file was not a folder, ensure that it will be
+         * selected in the loaded view*/
+        if (!afile.equal (gfile)) {
+            dir.selected_file = file;
         }
 
         return dir;

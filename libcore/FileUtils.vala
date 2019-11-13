@@ -210,6 +210,7 @@ namespace PF.FileUtils {
         }
 
         split_protocol_from_path (unescaped_p, out scheme, out path);
+
         path = path.strip ().replace ("//", "/");
         // special case for empty path, adjust as root path
         if (path.length == 0) {
@@ -220,6 +221,7 @@ namespace PF.FileUtils {
         if (cp != null) {
             split_protocol_from_path (cp, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
+
             if (scheme == "" && path.length > 0) {
                 string [] paths = path.split ("/", 2);
                 switch (paths[0]) {
@@ -324,8 +326,9 @@ namespace PF.FileUtils {
             protocol = Marlin.ROOT_FS_URI;
         }
 
+        /* Ensure a protocol is returned so file.get_path () always works on sanitized paths*/
         if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
-            protocol = "";
+            protocol = Marlin.ROOT_FS_URI;
         }
 
         /* Consistently remove any remove trailing separator so that paths can be reliably compared */
@@ -768,6 +771,20 @@ namespace PF.FileUtils {
         string cache_dir = Environment.get_user_cache_dir ();
         GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "normal", base_name));
         GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "large", base_name));
+    }
+
+    public bool same_location (string uri_a, string uri_b) {
+        string protocol_a, protocol_b;
+        string path_a, path_b;
+
+        split_protocol_from_path (uri_a, out protocol_a, out path_a);
+        split_protocol_from_path (uri_b, out protocol_b, out path_b);
+
+        if (protocol_a == protocol_b && path_a == path_b) {
+            return true;
+        }
+
+        return false;
     }
 }
 
