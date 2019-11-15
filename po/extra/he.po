@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-11-01 18:23+0000\n"
+"PO-Revision-Date: 2019-11-16 09:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -215,7 +215,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:154
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
+msgstr "ניתן להשתמש ב־`Tab` כדי להעביר את המיקוד מהתצוגה לסרגל הצד ולהפך"
 
 #: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Delete color tag database entries for trashed files"
