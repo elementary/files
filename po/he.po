@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-01 18:30+0200\n"
-"PO-Revision-Date: 2019-10-27 19:23+0000\n"
+"PO-Revision-Date: 2019-11-20 23:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -1479,44 +1479,45 @@ msgstr "חלה שגיאה במהלך ההעברה לסל האשפה."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2268
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr "אין גישה לקבצים בתיקייה „%B“ מאחר שאין לך ההרשאות המתאימות לצפות בהם."
+msgstr ""
+"לא ניתן לטפל בקבצים בתיקייה „%s” מאחר שאין לך ההרשאות המתאימות לצפות בהם."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2313
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "אין גישה לקבצים בתיקייה „%B“ מאחר שאין לך ההרשאות המתאימות לקרוא ממנה."
+msgstr "לא ניתן לטפל בתיקייה „%s” מאחר שאין לך ההרשאות המתאימות לקרוא ממנה."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2400
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "אין גישה לקובץ „%B“ מאחר שאין לך ההרשאות המתאימות לצפות בו."
+msgstr "לא ניתן לטפל בקובץ „%s” מאחר שאין לך ההרשאות המתאימות לקרוא אותו."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2405
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error getting information about \"%s\"."
-msgstr "חלה שגיאה בקבלת מידע על הקובץ „%B“."
+msgstr "חלה שגיאה בקבלת מידע על „%s”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2511 libcore/marlin-file-operations.c:2557
 #: libcore/marlin-file-operations.c:2595 libcore/marlin-file-operations.c:2635
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying to \"%s\"."
-msgstr "התרחשה שגיאה במהלך ההעתקה אל „%B“."
+msgstr "חלה שגיאה בהעתקה אל „%s”."
 
 #: libcore/marlin-file-operations.c:2516
 msgid "You do not have permissions to access the destination folder."
