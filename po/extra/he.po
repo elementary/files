@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-05 00:02+0000\n"
-"PO-Revision-Date: 2019-11-01 18:23+0000\n"
+"POT-Creation-Date: 2019-11-20 16:03-0800\n"
+"PO-Revision-Date: 2019-11-20 23:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -303,43 +303,43 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
+msgstr "ניתן להשתמש ב־`Tab` כדי להעביר את המיקוד מהתצוגה לסרגל הצד ולהפך"
 
 #: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Delete color tag database entries for trashed files"
-msgstr ""
+msgstr "מחיקת מסד נתוני תגיות צבע לקבצים שהושלכו לאשפה"
 
 #: data/io.elementary.files.appdata.xml.in.in:191
 msgid "Throttle tab closing"
-msgstr ""
+msgstr "האטת סגירת לשוניות"
 
 #: data/io.elementary.files.appdata.xml.in.in:192
 msgid "`Ctrl` key fixes"
-msgstr ""
+msgstr "תיקוני כפתור `Ctrl`"
 
 #: data/io.elementary.files.appdata.xml.in.in:193
 msgid "Drag and drop fixes"
-msgstr ""
+msgstr "תיקוני גרירה והשלכה"
 
 #: data/io.elementary.files.appdata.xml.in.in:194
 msgid "Show icons in `Open with` menus"
-msgstr ""
+msgstr "הצגת סמלים בתפריטי `פתיחה באמצעות`"
 
 #: data/io.elementary.files.appdata.xml.in.in:195
 msgid "Tooltip fixes"
-msgstr ""
+msgstr "תיקוני חלוניות עצה"
 
 #: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Memory leak fixes"
-msgstr ""
+msgstr "תיקוני דליפת זיכרון"
 
 #: data/io.elementary.files.appdata.xml.in.in:197
 msgid "Crash fixes"
-msgstr ""
+msgstr "תיקוני קריסות"
 
 #: data/io.elementary.files.appdata.xml.in.in:198
 msgid "Trash: respect sound setting"
-msgstr ""
+msgstr "אשפה: ציות להגדרות שמע"
 
 #: data/io.elementary.files.appdata.xml.in.in:199
 msgid "Localization fixes"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-05 00:02+0000\n"
-"PO-Revision-Date: 2019-09-14 12:22+0000\n"
+"POT-Creation-Date: 2019-11-20 16:03-0800\n"
+"PO-Revision-Date: 2019-11-09 13:24+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
 ">\n"
@@ -103,9 +103,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:160
 #: data/io.elementary.files.appdata.xml.in.in:168
 #: data/io.elementary.files.appdata.xml.in.in:200
-#, fuzzy
 msgid "Updated translations"
-msgstr "新しい翻訳"
+msgstr "翻訳の更新"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
 msgid "Show more search results"
@@ -211,7 +210,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:129
 #, fuzzy
 msgid "File sorting fixes"
-msgstr "マイナーなバグ修正"
+msgstr "ファイルの並べ替えの問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:137
 msgid "Meson: fix soversion names"
@@ -244,7 +243,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:144
 #, fuzzy
 msgid "Fix crash when opening multiple video files"
-msgstr "ゴミ箱からアイテムを復元する際のクラッシュを修正"
+msgstr "複数の動画ファイルを開く際のクラッシュを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:145
 msgid "Fix some timing issues around adding and removing files"
@@ -277,12 +276,12 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:159
 #, fuzzy
 msgid "Build fixes"
-msgstr "セキュリティの修正"
+msgstr "ビルドの問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:167
 #, fuzzy
 msgid "Plugin build fixes"
-msgstr "マイナーなバグ修正"
+msgstr "プラグインのビルドの問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:175
 msgid "Fix Ctrl+Tab behavior"
@@ -347,12 +346,12 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:196
 #, fuzzy
 msgid "Memory leak fixes"
-msgstr "マイナーなバグ修正"
+msgstr "メモリーリークを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:197
 #, fuzzy
 msgid "Crash fixes"
-msgstr "さまざまなクラッシュの修正"
+msgstr "クラッシュを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:198
 msgid "Trash: respect sound setting"
