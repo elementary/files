@@ -21,6 +21,7 @@ Build-Depends: debhelper (>= 10.5.1),
                libunity-dev (>= 4.0.0),
                libzeitgeist-2.0-dev,
                meson,
+               policykit-1,
                valac (>= 0.28)
 Homepage: https://github.com/elementary/files
 Standards-Version: 4.1.1
