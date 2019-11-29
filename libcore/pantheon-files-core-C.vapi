@@ -53,7 +53,7 @@ namespace FM
 namespace Marlin {
     [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_", cheader_filename = "marlin-file-operations.h")]
     namespace FileOperations {
-        static void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file,Marlin.CreateCallback? create_callback = null);
+        static async GLib.File? new_folder (Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error;
         static void mount_volume (GLib.Volume volume, Gtk.Window? parent_window = null);
         static async void mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) throws GLib.Error;
         static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, bool try_trash, DeleteCallback? callback = null);
@@ -62,12 +62,10 @@ namespace Marlin {
         static void empty_trash (Gtk.Widget? widget);
         static void empty_trash_for_mount (Gtk.Widget? widget, GLib.Mount mount);
         static void copy_move_link (GLib.List<GLib.File> files, GLib.Array<Gdk.Point>? relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, CopyCallback? done_callback = null);
-        static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, Marlin.CreateCallback? create_callback = null);
-        static void new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, Marlin.CreateCallback? create_callback = null);
+        static async GLib.File? new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        static async GLib.File? new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, GLib.Cancellable? cancellable = null) throws GLib.Error;
     }
 
-    [CCode (cheader_filename = "marlin-file-operations.h")]
-    public delegate void CreateCallback (GLib.File? new_file);
     [CCode (cheader_filename = "marlin-file-operations.h")]
     public delegate void DeleteCallback (bool user_cancel);
     [CCode (cname="GCallback")]

@@ -939,19 +939,36 @@ namespace FM {
 
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_file (this as Gtk.Widget,
-                                            null,
-                                            parent_uri,
-                                            null,
-                                            null,
-                                            0,
-                                            create_file_done);
+            Marlin.FileOperations.new_file.begin (
+                this as Gtk.Widget,
+                null,
+                parent_uri,
+                null,
+                null,
+                0,
+                null,
+                (obj, res) => {
+                    try {
+                        var file = Marlin.FileOperations.new_file.end (res);
+                        create_file_done (file);
+                    } catch (Error e) {
+                        critical (e.message);
+                    }
+                }
+            );
         }
 
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_folder (null, null, slot.location, create_file_done);
+            Marlin.FileOperations.new_folder.begin (null, null, slot.location, null, (obj, res) => {
+                try {
+                    var file = Marlin.FileOperations.new_folder.end (res);
+                    create_file_done (file);
+                } catch (Error e) {
+                    critical (e.message);
+                }
+            });
         }
 
         private void after_new_file_added (GOF.File? file) {
@@ -2411,12 +2428,21 @@ namespace FM {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
             var new_name = (_("Untitled %s")).printf (template.get_basename ());
-            Marlin.FileOperations.new_file_from_template (this,
-                                                          null,
-                                                          slot.location,
-                                                          new_name,
-                                                          template,
-                                                          create_file_done);
+            Marlin.FileOperations.new_file_from_template.begin (
+                this,
+                null,
+                slot.location,
+                new_name,
+                template,
+                null,
+                (obj, res) => {
+                    try {
+                        var file = Marlin.FileOperations.new_file_from_template.end (res);
+                        create_file_done (file);
+                    } catch (Error e) {
+                        critical (e.message);
+                    }
+                });
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
