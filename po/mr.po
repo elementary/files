@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-20 16:03-0800\n"
-"PO-Revision-Date: 2019-11-29 18:24+0000\n"
+"PO-Revision-Date: 2019-12-02 14:24+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -1672,11 +1672,12 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3375
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr "\"%B\" फोल्डर हटविला जाऊ शकत नाही कारण तुम्हाला ते वाचण्याची परवानगी नाही."
+msgstr ""
+"\"%s\" फोल्डर कॉपी करणे शक्य नाही कारण आपल्यास ते वाचण्याची परवानगी नाही."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1684,9 +1685,9 @@ msgstr "\"%B\" फोल्डर हटविला जाऊ शकत ना�
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3428 libcore/marlin-file-operations.c:4161
 #: libcore/marlin-file-operations.c:4755
-#, fuzzy, c-format
+#, c-format
 msgid "Error while moving \"%s\"."
-msgstr "हलवताना त्रुटी."
+msgstr "\"%s\" हलवताना त्रुटी."
 
 #: libcore/marlin-file-operations.c:3430
 msgid "Could not remove the source folder."
@@ -1696,21 +1697,21 @@ msgstr "फोल्डर %B काढू शकत नाही."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3519 libcore/marlin-file-operations.c:3570
 #: libcore/marlin-file-operations.c:4165
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying \"%s\"."
-msgstr "\"%B\" वर कॉपी करताना त्रुटी आली."
+msgstr "\"%s\" कॉपी करताना त्रुटी."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3524
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "आधीच अस्तित्वात असलेल्या फोल्डर %F मधील फायली काढू शकत नाही."
+msgstr "आधीच अस्तित्वात असलेल्या फोल्डर %s  मधील फायली काढू शकत नाही."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3575
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %s."
-msgstr "आधीच अस्तित्वात असलेली फाइल %F काढू शकली गेली नाही."
+msgstr "आधीच अस्तित्वात असलेली फाइल %s काढू शकली गेली नाही."
 
 #: libcore/marlin-file-operations.c:3894 libcore/marlin-file-operations.c:4592
 msgid "You cannot move a folder into itself."
@@ -1738,22 +1739,22 @@ msgstr "स्त्रोत फाइल गंतव्यस्थाना�
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4171
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "%F मध्ये समान नावाची आधीपासून अस्तित्वात असलेली फाइल काढू शकली नाही."
+msgstr "%s मध्ये समान नावाची आधीपासून अस्तित्वात असलेली फाइल काढू शकली नाही."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:4241
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "येथे \"%B\" कॉपी करू शकत नाही."
+msgstr "येथे \"%s\" कॉपी करू शकत नाही."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4246
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying the file into %s."
-msgstr "\"%B\" फोल्डर वाचताना त्रुटी आली."
+msgstr "%s मध्ये फाइल कॉपी करताना त्रुटी आली."
 
 #: libcore/marlin-file-operations.c:4471
 msgid "Copying Files"
@@ -1762,9 +1763,9 @@ msgstr "फाइल्स कचऱ्यात टाकत आहे"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:4500
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "%'d फाइल(%S) हलविण्यास तयार करीत आहे"
+msgstr "\"%s\" हलविण्यास तयार करीत आहे"
 
 #: libcore/marlin-file-operations.c:4505
 #, c-format
@@ -1775,9 +1776,9 @@ msgstr[1] "%'d फाइल्स हलविण्यास तयार क�
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4759
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving the file into %s."
-msgstr "फाइल %F मध्ये हलविताना त्रुटी आली."
+msgstr "फाइल %s मध्ये हलविताना त्रुटी आली."
 
 #: libcore/marlin-file-operations.c:5018
 msgid "Moving Files"
@@ -1786,9 +1787,9 @@ msgstr "फाइल्स कचऱ्यात टाकत आहे"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:5050
-#, fuzzy, c-format
+#, c-format
 msgid "Creating links in \"%s\""
-msgstr "\"%B\" मधील दुवे तयार करणे"
+msgstr "\"%s\" मधील दुवे करीत आहे"
 
 #: libcore/marlin-file-operations.c:5055
 #, c-format
@@ -1799,9 +1800,9 @@ msgstr[1] "%'d फायलींचा दुवा बनवित आहे"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5198
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating link to %s."
-msgstr "\"%B\" वर कॉपी करताना त्रुटी आली."
+msgstr "%s वर दुवा तयार करताना त्रुटी."
 
 #: libcore/marlin-file-operations.c:5201
 msgid "Symbolic links only supported for local files"
@@ -1813,9 +1814,9 @@ msgstr "लक्ष्य सिंबलिक दुवे समर्थि
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5209
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the symlink in %s."
-msgstr "%F मध्ये सिमलिंक तयार करताना त्रुटी आली."
+msgstr "%s मध्ये सिमलिंक तयार करताना त्रुटी आली."
 
 #: libcore/marlin-file-operations.c:5523
 msgid "Setting permissions"
@@ -1840,21 +1841,21 @@ msgstr "नवीन फाइल"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5945
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating directory %s."
-msgstr "\"%B\" वर कॉपी करताना त्रुटी आली."
+msgstr "%s निर्देशिका तयार करताना त्रुटी."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5948
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating file %s."
-msgstr "\"%B\" वर कॉपी करताना त्रुटी आली."
+msgstr "%s फाइल तयार करताना त्रुटी."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5954
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "%F मध्ये डिरेक्टरी तयार करताना त्रुटी आली."
+msgstr "%s मध्ये डिरेक्टरी तयार करताना त्रुटी आली."
 
 #: libcore/marlin-file-operations.c:6261
 msgid "Emptying Trash"
