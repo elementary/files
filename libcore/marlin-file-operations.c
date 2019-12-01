@@ -43,8 +43,7 @@
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
-typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
-                                          gpointer    callback_data);
+typedef void (* MarlinCopyCallback)      (gpointer    callback_data);
 typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 
@@ -4360,7 +4359,7 @@ copy_job_done (gpointer user_data)
 
     job = user_data;
     if (job->done_callback) {
-        job->done_callback (job->debuting_files, job->done_callback_data);
+        job->done_callback (job->done_callback_data);
     }
 
     g_list_free_full (job->files, g_object_unref);
@@ -4895,7 +4894,7 @@ move_job_done (gpointer user_data)
 
     job = user_data;
     if (job->done_callback) {
-        job->done_callback (job->debuting_files, job->done_callback_data);
+        job->done_callback (job->done_callback_data);
     }
 
     g_list_free_full (job->files, g_object_unref);
@@ -5245,7 +5244,7 @@ link_job_done (gpointer user_data)
 
     job = user_data;
     if (job->done_callback) {
-        job->done_callback (job->debuting_files, job->done_callback_data);
+        job->done_callback (job->done_callback_data);
     }
 
     g_list_free_full (job->files, g_object_unref);
