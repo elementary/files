@@ -62,11 +62,22 @@
       <description>
         <p>New features:</p>
         <ul>
-          <li></li>
+          <li>Initial git plugin support</li>
+          <li>Check hicolor theme if no elementary icon before falling back to default</li>
+          <li>Follow global history setting when restoring and saving tabs</li>
         </ul>
         <p>Other updates:</p>
         <ul>
-          <li></li>
+          <li>Asynchronous undo/redo</li>
+          <li>Ensure tabs showing same folder share an Async object</li>
+          <li>Fix drag with secondary button on empty space</li>
+          <li>Improve appearance of diskspace indicator</li>
+          <li>Improve pathbar animation</li>
+          <li>Fully delint</li>
+          <li>Lose some unused code</li>
+          <li>Cleanup and simplify FileOperations code</li>
+          <li>Update documentation</li>
+          <li>Update translations</li>
         </ul>
       </description>
     </release>
