@@ -359,11 +359,41 @@ marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
     return manager->undo_redo_flag;
 }
 
-/*void
-  marlin_undo_manager_request_menu_update (MarlinUndoManager *manager)
-  {
-  do_menu_update (manager);
-  }*/
+void
+undo_redo_new_folder_finish (GObject *source_object,
+                             GAsyncResult *res,
+                             gpointer user_data)
+{
+    GError *error = NULL;
+    GFile *file = NULL;
+
+    file = marlin_file_operations_new_folder_finish (res, &error);
+    if (error != NULL) {
+        g_critical ("Error creating folder: %s", error->message);
+    }
+
+    undo_redo_done_create_callback (file, user_data);
+    g_clear_object (&file);
+    g_clear_error (&error);
+}
+
+void
+undo_redo_new_file_finish (GObject *source_object,
+                           GAsyncResult *res,
+                           gpointer user_data)
+{
+    GError *error = NULL;
+    GFile *file = NULL;
+
+    file = marlin_file_operations_new_file_finish (res, &error);
+    if (error != NULL) {
+        g_critical ("Error creating file: %s", error->message);
+    }
+
+    undo_redo_done_create_callback (file, user_data);
+    g_clear_object (&file);
+    g_clear_error (&error);
+}
 
 /** ****************************************************************
  * Redoes the last file operation
@@ -447,14 +477,15 @@ marlin_undo_manager_redo (MarlinUndoManager   *self,
             marlin_file_operations_new_file (NULL, NULL, puri,
                                              new_name,
                                              action->template,
-                                             0, undo_redo_done_create_callback, action);
+                                             0, cancellable,
+                                             undo_redo_new_file_finish, action);
             g_free (puri);
             g_free (new_name);
             break;
         case MARLIN_UNDO_CREATEFOLDER:
             fparent = get_file_parent_from_uri (action->target_uri);
-            marlin_file_operations_new_folder (NULL, NULL, fparent,
-                                               undo_redo_done_create_callback, action);
+            marlin_file_operations_new_folder (NULL, NULL, fparent, cancellable,
+                                               undo_redo_new_folder_finish, action);
             g_object_unref (fparent);
             break;
         case MARLIN_UNDO_MOVETOTRASH:
