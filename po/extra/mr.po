@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-20 16:03-0800\n"
-"PO-Revision-Date: 2019-09-20 19:22+0000\n"
+"PO-Revision-Date: 2019-12-02 14:24+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -295,11 +295,11 @@ msgstr "गोपनीयता सेटिंग बदलल्यास अ
 
 #: data/io.elementary.files.appdata.xml.in.in:187
 msgid "`Connect Server` fixes"
-msgstr ""
+msgstr "`सर्व्हर कनेक्ट` निराकरण"
 
 #: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Do not activate multiple files with single click"
-msgstr ""
+msgstr "एका क्लिकवर एकाधिक फायली सक्रिय करू नका"
 
 #: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
