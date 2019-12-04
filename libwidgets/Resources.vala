@@ -56,6 +56,7 @@ namespace Marlin {
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 
     public const string PROTOCOL_NAME_AFP = N_("AFP");
+    public const string PROTOCOL_NAME_AFC = N_("AFC");
     public const string PROTOCOL_NAME_DAV = N_("DAV");
     public const string PROTOCOL_NAME_DAVS = N_("DAVS");
     public const string PROTOCOL_NAME_FTP = N_("FTP");
@@ -94,6 +95,8 @@ namespace Marlin {
                 return _(Marlin.PROTOCOL_NAME_SFTP);
             case "afp":
                 return _(Marlin.PROTOCOL_NAME_AFP);
+            case "afc":
+                return _(Marlin.PROTOCOL_NAME_AFC);
             case "dav":
                 return _(Marlin.PROTOCOL_NAME_DAV);
             case "davs":

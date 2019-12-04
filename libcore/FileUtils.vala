@@ -548,6 +548,7 @@ namespace PF.FileUtils {
             case Marlin.SFTP_URI:
             case Marlin.FTP_URI:
             case Marlin.MTP_URI:
+            case Marlin.AFC_URI:
                 return false;
             default:
                 return true;
@@ -582,6 +583,8 @@ namespace PF.FileUtils {
             case "ftp":
                 return false;
             case "afp" :
+                return false;
+            case "afc" :
                 return false;
             case "dav" :
                 return false;
@@ -772,6 +775,7 @@ namespace Marlin {
     public const string NETWORK_URI = "network://";
     public const string RECENT_URI = "recent://";
     public const string AFP_URI = "afp://";
+    public const string AFC_URI = "afc://";
     public const string DAV_URI = "dav://";
     public const string DAVS_URI = "davs://";
     public const string SFTP_URI = "sftp://";

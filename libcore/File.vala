@@ -796,6 +796,7 @@ public class GOF.File : GLib.Object {
         return location.has_uri_scheme ("ftp") ||
                location.has_uri_scheme ("sftp") ||
                location.has_uri_scheme ("afp") ||
+               location.has_uri_scheme ("afc") ||
                location.has_uri_scheme ("dav") ||
                location.has_uri_scheme ("davs");
     }
