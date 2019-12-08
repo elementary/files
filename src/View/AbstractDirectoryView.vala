@@ -893,10 +893,21 @@ namespace FM {
                 locations.reverse ();
 
                 slot.directory.block_monitor ();
-                Marlin.FileOperations.@delete (locations,
-                                               window as Gtk.Window,
-                                               !delete_immediately,
-                                               after_trash_or_delete);
+                Marlin.FileOperations.@delete.begin (
+                    locations,
+                    window as Gtk.Window,
+                    !delete_immediately,
+                    null,
+                    (obj, res) => {
+                        try {
+                            Marlin.FileOperations.@delete.end (res);
+                        } catch (Error e) {
+                            debug (e.message);
+                        }
+
+                        after_trash_or_delete ();
+                    }
+                );
             }
 
             /* If in recent "folder" we need to refresh the view. */
@@ -1004,8 +1015,7 @@ namespace FM {
             unblock_directory_monitor ();
         }
 
-        [CCode (instance_pos = -1)]
-        public void after_trash_or_delete (bool user_cancel) {
+        public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
                 set_cursor (deleted_path, false, false, false);
@@ -1245,18 +1255,11 @@ namespace FM {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
-        public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
-            /* Pasted and dragged files are automatically selected now */
-
-            /* This function can be used if any other process is needed on the pasted files */
-        }
-
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
             var file = get_files_for_action ().nth_data (0);
 
             if (file != null && clipboard.can_paste && !(clipboard.files_linked && in_trash)) {
                 GLib.File target;
-                GLib.Callback? call_back;
 
                 if (file.is_folder () && !clipboard.has_file (file)) {
                     target = file.get_target_location ();
@@ -1264,15 +1267,13 @@ namespace FM {
                     target = slot.location;
                 }
 
-                if (target.has_uri_scheme ("trash")) {
-                    /* Pasting files into trash is equivalent to trash or delete action */
-                    call_back = (GLib.Callback)after_trash_or_delete;
-                } else {
-                    /* callback takes care of selecting pasted files */
-                    call_back = (GLib.Callback)after_pasting_files;
-                }
-
-                clipboard.paste_files (target, this as Gtk.Widget, call_back);
+                clipboard.paste_files.begin (target, this as Gtk.Widget, (obj, res) => {
+                    clipboard.paste_files.end (res);
+                    if (target.has_uri_scheme ("trash")) {
+                        /* Pasting files into trash is equivalent to trash or delete action */
+                        after_trash_or_delete ();
+                    }
+                });
             }
         }
 
