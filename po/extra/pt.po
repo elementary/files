@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-05 00:02+0000\n"
-"PO-Revision-Date: 2019-08-23 00:22+0000\n"
+"POT-Creation-Date: 2019-11-20 16:03-0800\n"
+"PO-Revision-Date: 2019-12-06 17:24+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -52,7 +52,7 @@ msgstr "Nova Janela como Administrador"
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr "Navegue e gerencie ficheiros e arquivos"
+msgstr "Navegar e gerir ficheiros e pastas"
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
@@ -61,7 +61,7 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Facilmente copie, mova, e renomeie os seus arquivos, ou utilize pastas para "
+"Facilmente copie, mova, e renomeie os seus ficheiros, ou utilize pastas para "
 "se organizar. Quer goste de ficheiros em listas, grelhas ou colunas, podes "
 "sempre encontrar os seus ficheiros rapidamente. Aceda a todos os seus "
 "ficheiros, tanto localmente, como num disco externo ou remotamente através "
@@ -300,7 +300,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:184
 msgid "Style error dialogs"
-msgstr "Diálogos de erro de estilo"
+msgstr "Caixa de diálogos de erro de estilo"
 
 #: data/io.elementary.files.appdata.xml.in.in:185
 msgid "Right click fixes"
@@ -428,7 +428,7 @@ msgstr "Trocar idioma de entrada cancela ações"
 #: data/io.elementary.files.appdata.xml.in.in:253
 #: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Various crash fixes"
-msgstr "Várias correções de crashes"
+msgstr "Várias correções de erros"
 
 #: data/io.elementary.files.appdata.xml.in.in:238
 msgid ""
@@ -492,11 +492,11 @@ msgstr "elementary LLC."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
-msgstr "Executar Ficheiros como Administrador"
+msgstr "Executar o Ficheiros como Administrador"
 
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
-msgstr "Autenticação é necessária para executar Ficheiros como Administrador"
+msgstr "Autenticação é necessária para executar o Ficheiros como Administrador"
 
 #~ msgid "About Files"
 #~ msgstr "Sobre Ficheiros"

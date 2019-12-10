@@ -1079,7 +1079,7 @@ public class Async : Object {
         var afile = gfile.dup ();
         /* Avoid adding a new Async that will be a duplicate of an existing one, when called
          * with non-folder location. */
-        if (gfile.is_native () && gfile.has_parent (null)) {
+        if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
             var ftype = gfile.query_file_type (0, null);
             if (ftype != FileType.DIRECTORY) {
                 afile = gfile.get_parent ();
