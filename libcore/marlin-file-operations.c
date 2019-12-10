@@ -75,8 +75,7 @@ typedef struct {
     GdkPoint *icon_positions;
     int n_icon_positions;
     GHashTable *debuting_files;
-    MarlinCopyCallback  done_callback;
-    gpointer done_callback_data;
+    GTask *task;
 } CopyMoveJob;
 
 typedef struct {
@@ -84,8 +83,7 @@ typedef struct {
     GList *files;
     gboolean try_trash;
     gboolean user_cancel;
-    MarlinDeleteCallback done_callback;
-    gpointer done_callback_data;
+    GTask *task;
 } DeleteJob;
 
 typedef struct {
@@ -99,8 +97,7 @@ typedef struct {
     GdkPoint position;
     gboolean has_position;
     GFile *created_file;
-    MarlinCreateCallback done_callback;
-    gpointer done_callback_data;
+    GTask *task;
 } CreateJob;
 
 typedef struct {
@@ -1770,14 +1767,11 @@ skip:
 static gboolean
 delete_job_done (gpointer user_data)
 {
-    DeleteJob *job;
-    job = user_data;
+    DeleteJob *job = user_data;
 
     g_list_free_full (job->files, g_object_unref);
-
-    if (job->done_callback) {
-        job->done_callback (job->user_cancel, job->done_callback_data);
-    }
+    g_task_return_boolean (job->task, TRUE);
+    g_clear_object (&job->task);
 
     finalize_common ((CommonJob *)job);
 
@@ -1876,11 +1870,12 @@ delete_job (GIOSchedulerJob *io_job,
 }
 
 void
-marlin_file_operations_delete (GList                    *files,
-                               GtkWindow                *parent_window,
-                               gboolean                 try_trash,
-                               MarlinDeleteCallback     done_callback,
-                               gpointer                 done_callback_data)
+marlin_file_operations_delete (GList               *files,
+                               GtkWindow           *parent_window,
+                               gboolean             try_trash,
+                               GCancellable        *cancellable,
+                               GAsyncReadyCallback  callback,
+                               gpointer             user_data)
 {
     g_return_if_fail (files != NULL);
 
@@ -1892,8 +1887,7 @@ marlin_file_operations_delete (GList                    *files,
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->try_trash = try_trash;
     job->user_cancel = FALSE;
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
 
     if (try_trash) {
         inhibit_power_manager ((CommonJob *)job, _("Trashing Files"));
@@ -1914,6 +1908,14 @@ marlin_file_operations_delete (GList                    *files,
                              NULL);
 }
 
+gboolean
+marlin_file_operations_delete_finish (GAsyncResult  *result,
+                                      GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
+}
 
 typedef struct {
     gboolean eject;
@@ -4358,19 +4360,14 @@ copy_job_done (gpointer user_data)
     CopyMoveJob *job;
 
     job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->done_callback_data);
-    }
+    g_task_return_boolean (job->task, TRUE);
+    g_clear_object (&job->task);
 
     g_list_free_full (job->files, g_object_unref);
-    if (job->destination) {
-        g_object_unref (job->destination);
-    }
-    /*if (job->desktop_location) {
-        g_object_unref (job->desktop_location);
-    }*/
-    g_hash_table_unref (job->debuting_files);
-    g_free (job->icon_positions);
+    job->files = NULL;
+    g_clear_object (&job->destination);
+    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
+    g_clear_pointer (&job->icon_positions, g_free);
 
     finalize_common ((CommonJob *)job);
 
@@ -4443,19 +4440,18 @@ aborted:
 }
 
 static void
-marlin_file_operations_copy (GList *files,
-                             GArray *relative_item_points,
-                             GFile *target_dir,
-                             GtkWindow *parent_window,
-                             MarlinCopyCallback  done_callback,
-                             gpointer done_callback_data)
+marlin_file_operations_copy (GList               *files,
+                             GArray              *relative_item_points,
+                             GFile               *target_dir,
+                             GtkWindow           *parent_window,
+                             GCancellable        *cancellable,
+                             GAsyncReadyCallback  callback,
+                             gpointer             user_data)
 {
 
     CopyMoveJob *job;
     job = op_job_new (CopyMoveJob, parent_window);
-    //job->desktop_location = marlin_get_desktop_location ();
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     if (relative_item_points != NULL &&
@@ -4484,6 +4480,15 @@ marlin_file_operations_copy (GList *files,
                              NULL, /* destroy notify */
                              0,
                              job->common.cancellable);
+}
+
+static gboolean
+marlin_file_operations_copy_finish (GAsyncResult  *result,
+                                    GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static void
@@ -4893,14 +4898,14 @@ move_job_done (gpointer user_data)
     CopyMoveJob *job;
 
     job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->done_callback_data);
-    }
+    g_task_return_boolean (job->task, TRUE);
+    g_clear_object (&job->task);
 
     g_list_free_full (job->files, g_object_unref);
-    g_object_unref (job->destination);
-    g_hash_table_unref (job->debuting_files);
-    g_free (job->icon_positions);
+    job->files = NULL;
+    g_clear_object (&job->destination);
+    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
+    g_clear_pointer (&job->icon_positions, g_free);
 
     finalize_common ((CommonJob *)job);
 
@@ -4990,19 +4995,19 @@ aborted:
 }
 
 static void
-marlin_file_operations_move (GList *files,
-                             GArray *relative_item_points,
-                             GFile *target_dir,
-                             GtkWindow *parent_window,
-                             MarlinCopyCallback  done_callback,
-                             gpointer done_callback_data)
+marlin_file_operations_move (GList               *files,
+                             GArray              *relative_item_points,
+                             GFile               *target_dir,
+                             GtkWindow           *parent_window,
+                             GCancellable        *cancellable,
+                             GAsyncReadyCallback  callback,
+                             gpointer             user_data)
 {
 
     CopyMoveJob *job;
     job = op_job_new (CopyMoveJob, parent_window);
     job->is_move = TRUE;
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     if (relative_item_points != NULL &&
@@ -5034,6 +5039,15 @@ marlin_file_operations_move (GList *files,
                              NULL, /* destroy notify */
                              0,
                              job->common.cancellable);
+}
+
+static gboolean
+marlin_file_operations_move_finish (GAsyncResult  *result,
+                                    GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static void
@@ -5243,14 +5257,14 @@ link_job_done (gpointer user_data)
     CopyMoveJob *job;
 
     job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->done_callback_data);
-    }
+    g_task_return_boolean (job->task, TRUE);
+    g_clear_object (&job->task);
 
     g_list_free_full (job->files, g_object_unref);
-    g_object_unref (job->destination);
-    g_hash_table_unref (job->debuting_files);
-    g_free (job->icon_positions);
+    job->files = NULL;
+    g_clear_object (&job->destination);
+    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
+    g_clear_pointer (&job->icon_positions, g_free);
 
     finalize_common ((CommonJob *)job);
 
@@ -5324,18 +5338,18 @@ aborted:
 }
 
 static void
-marlin_file_operations_link (GList *files,
-                             GArray *relative_item_points,
-                             GFile *target_dir,
-                             GtkWindow *parent_window,
-                             MarlinCopyCallback  done_callback,
-                             gpointer done_callback_data)
+marlin_file_operations_link (GList               *files,
+                             GArray              *relative_item_points,
+                             GFile               *target_dir,
+                             GtkWindow           *parent_window,
+                             GCancellable        *cancellable,
+                             GAsyncReadyCallback  callback,
+                             gpointer             user_data)
 {
     CopyMoveJob *job;
 
     job = op_job_new (CopyMoveJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     if (relative_item_points != NULL &&
@@ -5364,19 +5378,27 @@ marlin_file_operations_link (GList *files,
                              job->common.cancellable);
 }
 
+static gboolean
+marlin_file_operations_link_finish (GAsyncResult  *result,
+                                    GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
+}
 
 static void
-marlin_file_operations_duplicate (GList *files,
-                                  GArray *relative_item_points,
-                                  GtkWindow *parent_window,
-                                  MarlinCopyCallback  done_callback,
-                                  gpointer done_callback_data)
+marlin_file_operations_duplicate (GList               *files,
+                                  GArray              *relative_item_points,
+                                  GtkWindow           *parent_window,
+                                  GCancellable        *cancellable,
+                                  GAsyncReadyCallback  callback,
+                                  gpointer             user_data)
 {
     CopyMoveJob *job;
 
     job = op_job_new (CopyMoveJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = NULL;
     if (relative_item_points != NULL &&
@@ -5403,6 +5425,15 @@ marlin_file_operations_duplicate (GList *files,
                              NULL, /* destroy notify */
                              0,
                              job->common.cancellable);
+}
+
+static gboolean
+marlin_file_operations_duplicate_finish (GAsyncResult  *result,
+                                         GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 #if 0  /* TODO: Implement recursive permissions in PropertiesWindow.vala - may use this code */
@@ -5569,18 +5600,113 @@ marlin_file_set_permissions_recursive (const char *directory,
 }
 #endif
 
-/** The done_callback function has a variable signature. When the file is being moved to
- * trash, it must be a MarlinDeleteCallback, otherwise it must be a MarlinCopyCallback.
- */
+
 void
-marlin_file_operations_copy_move_link   (GList                  *files,
-                                         GArray                 *relative_item_points,
-                                         GFile                  *target_dir,
-                                         GdkDragAction          copy_action,
-                                         GtkWidget              *parent_view,
-                                         GCallback              done_callback,
-                                         gpointer               done_callback_data)
+copy_move_link_delete_finish (GObject *source_object,
+                              GAsyncResult *res,
+                              gpointer user_data)
 {
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_delete_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_duplicate_finish (GObject *source_object,
+                                 GAsyncResult *res,
+                                 gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_duplicate_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_copy_finish (GObject *source_object,
+                            GAsyncResult *res,
+                            gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_copy_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_move_finish (GObject *source_object,
+                            GAsyncResult *res,
+                            gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_move_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_link_finish (GObject *source_object,
+                            GAsyncResult *res,
+                            gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_link_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+void
+marlin_file_operations_copy_move_link (GList               *files,
+                                       GArray              *relative_item_points,
+                                       GFile               *target_dir,
+                                       GdkDragAction        copy_action,
+                                       GtkWidget           *parent_view,
+                                       GCancellable        *cancellable,
+                                       GAsyncReadyCallback  callback,
+                                       gpointer             user_data)
+{
+    GTask *task;
     GList *p;
     GFile *src_dir;
     GtkWindow *parent_window;
@@ -5589,10 +5715,6 @@ marlin_file_operations_copy_move_link   (GList                  *files,
 
     target_is_mapping = FALSE;
     have_nonmapping_source = FALSE;
-
-    if (done_callback_data == NULL) {
-        done_callback_data = (void*)parent_view;
-    }
 
     if (g_file_has_uri_scheme (target_dir, "burn")) {
         target_is_mapping = TRUE;
@@ -5617,6 +5739,7 @@ marlin_file_operations_copy_move_link   (GList                  *files,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
+    task = g_task_new (NULL, cancellable, callback, user_data);
     if (copy_action == GDK_ACTION_COPY) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
             char *primary = g_strdup (_("Cannot copy into trash."));
@@ -5625,10 +5748,12 @@ marlin_file_operations_copy_move_link   (GList                  *files,
                                           secondary,
                                           parent_window);
 
-            if (done_callback != NULL) {
-                ((MarlinDeleteCallback)done_callback) (TRUE, done_callback_data);
-            }
-
+            g_task_return_new_error (task,
+                                     G_IO_ERROR,
+                                     G_IO_ERROR_FAILED,
+                                     _("It is not permitted to copy files into the trash"),
+                                     NULL);
+            g_clear_object (&task);
             return;
         }
 
@@ -5641,15 +5766,17 @@ marlin_file_operations_copy_move_link   (GList                  *files,
              marlin_file_operations_duplicate (files,
                                                relative_item_points,
                                                parent_window,
-                                               (MarlinCopyCallback)done_callback,
-                                               done_callback_data);
+                                               cancellable,
+                                               copy_move_link_duplicate_finish,
+                                               g_steal_pointer (&task));
         } else {
             marlin_file_operations_copy (files,
                                          relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         (MarlinCopyCallback)done_callback,
-                                         done_callback_data);
+                                         cancellable,
+                                         copy_move_link_copy_finish,
+                                         g_steal_pointer (&task));
         }
         if (src_dir) {
             g_object_unref (src_dir);
@@ -5662,46 +5789,50 @@ marlin_file_operations_copy_move_link   (GList                  *files,
             marlin_file_operations_delete (files,
                                            parent_window,
                                            TRUE,
-                                           (MarlinDeleteCallback)done_callback,
-                                           done_callback_data);
+                                           cancellable,
+                                           copy_move_link_delete_finish,
+                                           g_steal_pointer (&task));
         } else {
             /* done_callback is (or should be) a CopyCallBack or null in this case */
             marlin_file_operations_move (files,
                                          relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         (MarlinCopyCallback)done_callback,
-                                         done_callback_data);
+                                         cancellable,
+                                         copy_move_link_move_finish,
+                                         g_steal_pointer (&task));
         }
     } else {
         marlin_file_operations_link (files,
                                      relative_item_points,
                                      target_dir,
                                      parent_window,
-                                    (MarlinCopyCallback)done_callback,
-                                     done_callback_data);
+                                     cancellable,
+                                     copy_move_link_link_finish,
+                                     g_steal_pointer (&task));
     }
+}
+
+
+gboolean
+marlin_file_operations_copy_move_link_finish (GAsyncResult  *result,
+                                              GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static gboolean
 create_job_done (gpointer user_data)
 {
-    CreateJob *job;
-
-    job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->created_file, job->done_callback_data);
-    }
-
-    g_object_unref (job->dest_dir);
-    if (job->src) {
-        g_object_unref (job->src);
-    }
-    g_free (job->src_data);
-    g_free (job->filename);
-    if (job->created_file) {
-        g_object_unref (job->created_file);
-    }
+    CreateJob *job = user_data;
+    g_task_return_pointer (job->task, g_steal_pointer (&job->created_file), g_object_unref);
+    g_clear_object (&job->dest_dir);
+    g_clear_object (&job->src);
+    g_clear_pointer (&job->src_data, g_free);
+    g_clear_pointer (&job->filename, g_free);
+    g_clear_object (&job->task);
 
     finalize_common ((CommonJob *)job);
 
@@ -5989,11 +6120,12 @@ aborted:
 }
 
 void
-marlin_file_operations_new_folder (GtkWidget *parent_view,
-                                   GdkPoint *target_point,
-                                   GFile *parent_dir,
-                                   MarlinCreateCallback done_callback,
-                                   gpointer done_callback_data)
+marlin_file_operations_new_folder (GtkWidget           *parent_view,
+                                   GdkPoint            *target_point,
+                                   GFile               *parent_dir,
+                                   GCancellable        *cancellable,
+                                   GAsyncReadyCallback  callback,
+                                   gpointer             user_data)
 {
     CreateJob *job;
     GtkWindow *parent_window;
@@ -6004,10 +6136,9 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
     }
 
     job = op_job_new (CreateJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
     job->dest_dir = g_object_ref (parent_dir);
     job->make_dir = TRUE;
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
     if (target_point != NULL) {
         job->position = *target_point;
         job->has_position = TRUE;
@@ -6026,14 +6157,24 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
+GFile *
+marlin_file_operations_new_folder_finish (GAsyncResult  *result,
+                                          GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_pointer (G_TASK (result), error);
+}
+
 void
-marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
-                                               GdkPoint *target_point,
-                                               GFile *parent_dir,
-                                               const char *target_filename,
-                                               GFile *template,
-                                               MarlinCreateCallback done_callback,
-                                               gpointer done_callback_data)
+marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
+                                               GdkPoint            *target_point,
+                                               GFile               *parent_dir,
+                                               const char          *target_filename,
+                                               GFile               *template,
+                                               GCancellable        *cancellable,
+                                               GAsyncReadyCallback  callback,
+                                               gpointer             user_data)
 {
     CreateJob *job;
     GtkWindow *parent_window;
@@ -6044,10 +6185,9 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
     }
 
     job = op_job_new (CreateJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
     g_object_ref (parent_dir); /* job->dest_dir unref'd in create_job done */
     job->dest_dir = parent_dir;
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
     if (target_point != NULL) {
         job->position = *target_point;
         job->has_position = TRUE;
@@ -6072,15 +6212,25 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
+GFile *
+marlin_file_operations_new_file_from_template_finish (GAsyncResult  *result,
+                                                      GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_pointer (G_TASK (result), error);
+}
+
 void
-marlin_file_operations_new_file (GtkWidget *parent_view,
-                                 GdkPoint *target_point,
-                                 const char *parent_dir,
-                                 const char *target_filename,
-                                 const char *initial_contents,
-                                 int length,
-                                 MarlinCreateCallback done_callback,
-                                 gpointer done_callback_data)
+marlin_file_operations_new_file (GtkWidget           *parent_view,
+                                 GdkPoint            *target_point,
+                                 const char          *parent_dir,
+                                 const char          *target_filename,
+                                 const char          *initial_contents,
+                                 int                  length,
+                                 GCancellable        *cancellable,
+                                 GAsyncReadyCallback  callback,
+                                 gpointer             user_data)
 {
     CreateJob *job;
     GtkWindow *parent_window = NULL;
@@ -6089,9 +6239,8 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
     }
 
     job = op_job_new (CreateJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
     job->dest_dir = g_file_new_for_uri (parent_dir);
+    job->task = g_task_new (NULL, cancellable, callback, user_data);
     /*if (target_point != NULL) {
         job->position = *target_point;
         job->has_position = TRUE;
@@ -6113,6 +6262,14 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
+GFile *
+marlin_file_operations_new_file_finish (GAsyncResult  *result,
+                                        GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_pointer (G_TASK (result), error);
+}
 
 static void
 delete_trash_file (CommonJob *job,

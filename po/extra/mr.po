@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-20 16:03-0800\n"
-"PO-Revision-Date: 2019-09-20 19:22+0000\n"
+"PO-Revision-Date: 2019-12-04 21:25+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -295,71 +295,71 @@ msgstr "गोपनीयता सेटिंग बदलल्यास अ
 
 #: data/io.elementary.files.appdata.xml.in.in:187
 msgid "`Connect Server` fixes"
-msgstr ""
+msgstr "`सर्व्हर कनेक्ट` निराकरण"
 
 #: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Do not activate multiple files with single click"
-msgstr ""
+msgstr "एका क्लिकवर एकाधिक फायली सक्रिय करू नका"
 
 #: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
+msgstr "दृश्य आणि साइडबार कीबोर्ड फोकस टॉगल करण्यासाठी `टॅब` वापरा"
 
 #: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Delete color tag database entries for trashed files"
-msgstr ""
+msgstr "कचर्‍यात टाकलेल्या फायलींसाठी रंग टॅग डेटाबेस प्रविष्ट्या हटवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:191
 msgid "Throttle tab closing"
-msgstr ""
+msgstr "थ्रोटल टॅब बंद"
 
 #: data/io.elementary.files.appdata.xml.in.in:192
 msgid "`Ctrl` key fixes"
-msgstr ""
+msgstr "`Ctrl` की निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:193
 msgid "Drag and drop fixes"
-msgstr ""
+msgstr "ड्रॅग आणि ड्रॉप फिक्स"
 
 #: data/io.elementary.files.appdata.xml.in.in:194
 msgid "Show icons in `Open with` menus"
-msgstr ""
+msgstr "मेनूमध्ये `उघडा` मध्ये आयकॉन दाखवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:195
 msgid "Tooltip fixes"
-msgstr ""
+msgstr "टूलटिप निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Memory leak fixes"
-msgstr ""
+msgstr "मेमरी लीक निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:197
 msgid "Crash fixes"
-msgstr ""
+msgstr "क्रॅश निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:198
 msgid "Trash: respect sound setting"
-msgstr ""
+msgstr "कचरा: आवाज सेटिंगचा आदर करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:199
 msgid "Localization fixes"
-msgstr ""
+msgstr "स्थानिकीकरण निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr ""
+msgstr "100 पेक्षा जास्त प्रमुख आणि किरकोळ दोष निराकरणे आणि सुधारणा"
 
 #: data/io.elementary.files.appdata.xml.in.in:214
 msgid "Honor 12/24hr system setting"
-msgstr ""
+msgstr "12/24 तास सिस्टम सेटिंग सन्मानित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:215
 msgid "Distinguish between tabs with the same name"
-msgstr ""
+msgstr "समान नावाच्या टॅबमध्ये फरक ठरवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:216
 msgid "Support launching from other applications with a target file selected"
-msgstr ""
+msgstr "निवडलेल्या लक्ष्य फाईलला अन्य अनुप्रयोगांकडून उघडण्याचे समर्थन करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:217
 #: data/io.elementary.files.appdata.xml.in.in:230
@@ -367,7 +367,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:254
 #: data/io.elementary.files.appdata.xml.in.in:265
 msgid "New translations"
-msgstr ""
+msgstr "नवीन भाषांतरे"
 
 #: data/io.elementary.files.appdata.xml.in.in:218
 #: data/io.elementary.files.appdata.xml.in.in:231
@@ -378,97 +378,99 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:280
 #: data/io.elementary.files.appdata.xml.in.in:304
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "किरकोळ दोष निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:225
 msgid "Improved networking support"
-msgstr ""
+msgstr "सुधारित नेटवर्किंग समर्थन"
 
 #: data/io.elementary.files.appdata.xml.in.in:226
 msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+msgstr "डावीकडे किंवा उजवीकडे स्नॅप करताना विंडो भूमिती दुरुस्त करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:227
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
+"\"रिव्हिल पॉइंटर\" सेटिंग सक्रिय असताना Ctrl दाबणे यापुढे नामकरण रद्द करत "
+"नाही"
 
 #: data/io.elementary.files.appdata.xml.in.in:228
 msgid "Switching input language cancels actions"
-msgstr ""
+msgstr "इनपुट भाषा स्विच करणे क्रियांना रद्द करते"
 
 #: data/io.elementary.files.appdata.xml.in.in:229
 #: data/io.elementary.files.appdata.xml.in.in:243
 #: data/io.elementary.files.appdata.xml.in.in:253
 #: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Various crash fixes"
-msgstr ""
+msgstr "विविध क्रॅश फिक्स"
 
 #: data/io.elementary.files.appdata.xml.in.in:238
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
+"फायरफॉक्स सारखे वेब ब्राउझर आता सर्वात वापरली जाणारी डाउनलोड निर्देशिका लक्षा"
+"त ठेवतात"
 
 #: data/io.elementary.files.appdata.xml.in.in:239
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "प्राधान्यीकृत झूम स्तर लक्षात ठेवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Improved input method support"
-msgstr ""
+msgstr "सुधारित इनपुट पद्धत समर्थन"
 
 #: data/io.elementary.files.appdata.xml.in.in:241
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "910x640 किमान विंडो आकार"
 
 #: data/io.elementary.files.appdata.xml.in.in:242
 msgid "Security fixes"
-msgstr ""
+msgstr "सुरक्षा निर्धारण"
 
 #: data/io.elementary.files.appdata.xml.in.in:252
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "विंडो दरम्यान ड्रॅग आणि ड्रॉप टॅब सक्षम करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:262
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "Ctrl + F मध्ये शोध कार्यक्षमता विलीन करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:263
 msgid "Improved translation support"
-msgstr ""
+msgstr "सुधारित भाषांतर समर्थन"
 
 #: data/io.elementary.files.appdata.xml.in.in:287
 msgid "Fix appdata release dates"
-msgstr ""
+msgstr "अ‍ॅप डाटा रीलीझ तारखा निश्चित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:294
 msgid "Improve file opening over Samba shares"
-msgstr ""
+msgstr "साम्बा शेअर्सवर फाईल ओपनिंग सुधारित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:295
 msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
+msgstr "कचर्‍यामधून आयटम पुनर्संचयित करताना क्रॅशचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:296
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
+msgstr "संदर्भ मेनूमध्ये कट / कॉपी / पेस्ट संवेदनशीलता सुधारित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:297
 msgid "Translation updates"
-msgstr ""
+msgstr "भाषांतर अद्यतने"
 
 #: data/io.elementary.files.appdata.xml.in.in:309
 msgid "elementary LLC."
 msgstr "एलिमेंटरी LLC."
 
 #: data/io.elementary.files.policy.in.in:10
-#, fuzzy
 msgid "Run Pantheon Files as Administrator"
-msgstr "प्रशासक म्हणून नवीन विंडो"
+msgstr "प्रशासक म्हणून पँथियन फायली चालवा"
 
 #: data/io.elementary.files.policy.in.in:11
-#, fuzzy
 msgid "Authentication is required to run Files as Administrator"
-msgstr "प्रशासक म्हणून नवीन विंडो"
+msgstr "प्रशासक म्हणून फायली चालविण्यासाठी प्रमाणीकरण आवश्यक आहे"

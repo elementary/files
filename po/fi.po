@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-20 16:03-0800\n"
-"PO-Revision-Date: 2019-11-04 19:20+0000\n"
+"PO-Revision-Date: 2019-12-04 21:25+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
-">\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1314,10 +1314,10 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1341 libcore/marlin-file-operations.c:2251
 #: libcore/marlin-file-operations.c:3328
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
-msgstr "Virhe haettaessa tietoja tiedostoista kansiossa \"%s\" ."
+msgstr "Virhe haettaessa tietoja tiedostoista kansiossa \"%s\"."
 
 #: libcore/marlin-file-operations.c:1351 libcore/marlin-file-operations.c:3338
 msgid "_Skip files"
@@ -1338,7 +1338,7 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1380 libcore/marlin-file-operations.c:2296
 #: libcore/marlin-file-operations.c:3380
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "Virhe luettaessa kansiota \"%s\"."
 
@@ -1731,7 +1731,7 @@ msgstr "Tiedostoja ei voitu poistaa olemassa olevasta kansiosta %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3575
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "Ei voitu poistaa jo olemassa olevaa tiedostoa %s."
 
@@ -1863,13 +1863,13 @@ msgstr "uusi tiedosto"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5945
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating directory %s."
 msgstr "Virhe luotaessa kansiota %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5948
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating file %s."
 msgstr "Virhe luotaessa tiedostoa %s."
 
