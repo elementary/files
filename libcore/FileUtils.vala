@@ -90,12 +90,12 @@ namespace PF.FileUtils {
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
-                Marlin.FileOperations.copy_move_link (dir_files,
-                                                      null,
-                                                      original_dir,
-                                                      Gdk.DragAction.MOVE,
-                                                      widget,
-                                                      null);
+                Marlin.FileOperations.copy_move_link.begin (dir_files,
+                                                            null,
+                                                            original_dir,
+                                                            Gdk.DragAction.MOVE,
+                                                            widget,
+                                                            null);
         });
     }
 

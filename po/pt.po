@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-05 00:02+0000\n"
-"PO-Revision-Date: 2019-10-14 14:23+0000\n"
+"POT-Creation-Date: 2019-11-20 16:03-0800\n"
+"PO-Revision-Date: 2019-12-06 17:25+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -75,7 +75,7 @@ msgstr "Todas as operações de ficheiros terminaram"
 
 #: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
-msgstr "Mostrar diálogo de cópia"
+msgstr "Mostrar caixa de diálogo cópia"
 
 #: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
@@ -95,7 +95,7 @@ msgstr "Fechar"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:135
 msgid "Device Usage"
-msgstr "Utilização do Dispositivo"
+msgstr "Utilização do dispositivo"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
@@ -118,7 +118,7 @@ msgstr "Usado:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
-msgstr "Definir como pré-definido"
+msgstr "Definir como predefinição"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:81
 #: src/View/directory_view_popup.ui:95
@@ -133,9 +133,8 @@ msgstr "Permissões"
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%u ficheiro não foi lido devido às suas permissões ou outro erro."
-msgstr[1] ""
-"%u ficheiros não foram lidos devido às suas permissões ou outro erro."
+msgstr[0] "%i ficheiro não foi lido devido às suas permissões ou outro erro."
+msgstr[1] "%i ficheiros não foram lidos devido às suas permissões ou outro erro."
 
 #: src/Dialogs/PropertiesWindow.vala:250
 msgid "Actual Size Could Be Larger"
@@ -177,7 +176,7 @@ msgstr "Modificado:"
 
 #: src/Dialogs/PropertiesWindow.vala:565
 msgid "Deleted:"
-msgstr "Apagado:"
+msgstr "Eliminado:"
 
 #: src/Dialogs/PropertiesWindow.vala:575
 msgid "Media type:"
@@ -198,12 +197,12 @@ msgstr "Destino:"
 
 #: src/Dialogs/PropertiesWindow.vala:608
 msgid "Original Location:"
-msgstr "Localização Original:"
+msgstr "Localização original:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
 #: src/View/AbstractDirectoryView.vala:2133
 msgid "Other Application…"
-msgstr "Outra Aplicação…"
+msgstr "Outra aplicação…"
 
 #: src/Dialogs/PropertiesWindow.vala:651
 msgid "Open with:"
@@ -264,7 +263,7 @@ msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr "Propriedade do Disco"
+msgstr "Propriedades do disco"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:645
 #: libwidgets/Resources.vala:68
@@ -317,7 +316,7 @@ msgstr "Modificado"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
 msgid "This Folder Does Not Exist"
-msgstr "Esta Pasta Não Existe"
+msgstr "Esta pasta não existe"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
@@ -430,7 +429,7 @@ msgstr "É necessário uma rede para aceder a esta diretoria"
 
 #: src/View/ViewContainer.vala:406
 msgid "This Folder Does Not Belong to You"
-msgstr "Esta Pasta Não Lhe Pertence"
+msgstr "Esta pasta não lhe pertence"
 
 #: src/View/ViewContainer.vala:407
 msgid "You don't have permission to view this folder."
@@ -438,15 +437,15 @@ msgstr "Não tem permissões para ver esta pasta."
 
 #: src/View/ViewContainer.vala:409
 msgid "Unable to Mount Folder"
-msgstr "Incapaz de Montar a Pasta"
+msgstr "Incapaz de montar a pasta"
 
 #: src/View/ViewContainer.vala:410
 msgid "Could not connect to the server for this folder."
-msgstr "Não é possível conetar ao servidor para esta diretoria."
+msgstr "Não é possível ligar ao servidor para esta diretoria."
 
 #: src/View/ViewContainer.vala:413
 msgid "Unable to Display Folder Contents"
-msgstr "Impossível Mostrar os Conteúdos da Pasta"
+msgstr "Impossível mostrar os conteúdos da pasta"
 
 #: src/View/ViewContainer.vala:414
 msgid "The operation timed out."
@@ -545,7 +544,7 @@ msgstr "Esvaziar _lixo"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
-msgstr "Pasta Vazia"
+msgstr "Esta pasta está vazia"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
@@ -557,7 +556,7 @@ msgstr "Não Há Ficheiros Recentes"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
-msgstr "Acesso Negado"
+msgstr "Acesso negado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
@@ -618,7 +617,7 @@ msgstr "Apagar permanentemente"
 
 #: src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr "Abrir Pasta Mãe"
+msgstr "Abrir pasta principal"
 
 #: src/View/directory_view_popup.ui:23
 msgid "Remove from History"
@@ -682,11 +681,11 @@ msgstr "Copiar como Hiperligação"
 
 #: src/View/directory_view_popup.ui:134
 msgid "Paste into Folder"
-msgstr "Colar nesta Pasta"
+msgstr "Colar nesta pasta"
 
 #: src/View/directory_view_popup.ui:138
 msgid "Paste Link into Folder"
-msgstr "Colar Hiperligação nesta Pasta"
+msgstr "Colar ligação nesta pasta"
 
 #: src/View/directory_view_popup.ui:145
 msgid "Sort by"
@@ -706,7 +705,7 @@ msgstr "Ordem Inversa"
 
 #: src/View/directory_view_popup.ui:174
 msgid "Folders Before Files"
-msgstr "Colocar Pastas Antes dos Ficheiros"
+msgstr "Colocar pastas antes dos ficheiros"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:133
 #: src/View/Widgets/LocationBar.vala:198
@@ -1909,7 +1908,7 @@ msgstr "Eliminar os %d itens copiados"
 #: libcore/marlin-undostack-manager.c:1186
 #, c-format
 msgid "Delete '%s'"
-msgstr "Eliminar %s"
+msgstr "Eliminar '%s'"
 
 #: libcore/marlin-undostack-manager.c:1152
 #, c-format
@@ -1961,7 +1960,7 @@ msgstr "Eliminar as ligações a %d itens"
 #: libcore/marlin-undostack-manager.c:1229
 #, c-format
 msgid "Delete link to '%s'"
-msgstr "Eliminar a ligação a %s"
+msgstr "Eliminar a ligação a '%s'"
 
 #: libcore/marlin-undostack-manager.c:1239
 #, c-format
@@ -2212,8 +2211,8 @@ msgstr "_Refazer a criação de um ficheiro a partir de modelo"
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Refazer a criação de %d pasta"
-msgstr[1] "_Refazer a criação de %d pastas"
+msgstr[0] "_Anular a criação de %d pasta"
+msgstr[1] "_Anular a criação de %d pastas"
 
 #: libcore/marlin-undostack-manager.c:1599
 #, c-format
@@ -2295,11 +2294,11 @@ msgstr "Mais Resultados …"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
-msgstr "Nesta Pasta"
+msgstr "Nesta pasta"
 
 #: libwidgets/View/SearchResults.vala:230
 msgid "Below This Folder"
-msgstr "Abaixo Desta Pasta"
+msgstr "Abaixo desta pasta"
 
 #: libwidgets/View/SearchResults.vala:235
 msgid "Bookmarks"
