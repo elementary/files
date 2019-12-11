@@ -431,7 +431,7 @@ namespace Marlin.View {
                              bool ignore_duplicate = false) {
 
             if (ignore_duplicate) {
-                bool is_child = false;
+                bool is_child;
                 var existing_tab_position = location_is_duplicate (location, out is_child);
                 if (existing_tab_position >= 0) {
                     tabs.current = tabs.get_tab_by_index (existing_tab_position);
@@ -478,10 +478,9 @@ namespace Marlin.View {
             string uri = location.get_uri ();
             /* Ensures consistent format of protocol and path */
             parent_path = PF.FileUtils.get_parent_path_from_path (location.get_path ());
-            int existing_position = -1;
+            int existing_position = 0;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
-                existing_position++;
                 var tab_location = ((ViewContainer)(tab.page)).location;
                 string tab_uri = tab_location.get_uri ();
 
@@ -491,6 +490,8 @@ namespace Marlin.View {
                     is_child = true;
                     return existing_position;
                 }
+
+                existing_position++;
             }
 
             return -1;
