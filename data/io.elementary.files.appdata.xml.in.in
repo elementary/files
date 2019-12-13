@@ -58,7 +58,7 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="Next" date="Future" urgency="medium">
+    <release version="4.3.0" date="2019-12-13" urgency="medium">
       <description>
         <p>New features:</p>
         <ul>
@@ -67,7 +67,7 @@
         </ul>
         <p>Other updates:</p>
         <ul>
-          <li>Ensure tabs showing same folder share an Async object</li>
+          <li>Ensure tabs showing same folder remain synchronized</li>
           <li>Fix drag with secondary button on empty space</li>
           <li>Show custom media type icons for installed apps</li>
           <li>Fix appearance of inactive diskspace indicator</li>
