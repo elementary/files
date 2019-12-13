@@ -69,7 +69,7 @@
         <ul>
           <li>Ensure tabs showing same folder share an Async object</li>
           <li>Fix drag with secondary button on empty space</li>
-          <li>Fix missing hicolor icons </li>
+          <li>Show custom media type icons for installed apps</li>
           <li>Fix appearance of inactive diskspace indicator</li>
           <li>Improve pathbar animation</li>
           <li>Update documentation</li>
