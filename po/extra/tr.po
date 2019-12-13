@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-09-02 20:22+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"PO-Revision-Date: 2019-12-14 22:07+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -100,19 +100,16 @@ msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:74
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "Geliştirilmiş çeviri desteği"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:75
-#, fuzzy
 msgid "Update documentation"
-msgstr "Güncellenmiş Çeviriler"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:76
-#, fuzzy
 msgid "Update translations"
-msgstr "Güncellenmiş Çeviriler"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Initial cloudproviders plugin support"
@@ -168,9 +165,8 @@ msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:100
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "Geliştirilmiş ağ desteği"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Various tagging feature refinements"
