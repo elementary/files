@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-08-26 04:22+0000\n"
+"PO-Revision-Date: 2019-12-14 22:07+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
 
 #: src/Application.vala:124
@@ -268,8 +268,12 @@ msgstr[5] "%u ملفات"
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u لا عناصر محددة"
+msgstr[1] "%u عنصر محدد"
+msgstr[2] "%u عنصرين محددين"
+msgstr[3] "%u عنصر محدد"
+msgstr[4] "%u عناصر محددة"
+msgstr[5] "%u عنصر محدد"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1246
@@ -532,7 +536,6 @@ msgid "Browse the contents of the network"
 msgstr "تصفّح محتويات الشبكة"
 
 #: src/View/Sidebar.vala:810
-#, fuzzy
 msgid "Connect Server"
 msgstr "اتصل بالخادم"
 
@@ -625,14 +628,12 @@ msgid "_Eject"
 msgstr "أ_خرِج"
 
 #: src/View/directory_view_popup.ui:5
-#, fuzzy
 msgid "Restore from Trash"
-msgstr "استعد '%s' من المُهملات"
+msgstr "استعد من المُهملات"
 
 #: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
-#, fuzzy
 msgid "Delete permanently"
-msgstr " محددة"
+msgstr "حذف بشكل دائم"
 
 #: src/View/directory_view_popup.ui:16
 #, fuzzy
@@ -644,29 +645,24 @@ msgid "Remove from History"
 msgstr ""
 
 #: src/View/directory_view_popup.ui:37
-#, fuzzy
 msgid "Move to Trash"
-msgstr "انقل '%s' إلى المُهملات"
+msgstr "انقل إلى المُهملات"
 
 #: src/View/directory_view_popup.ui:51
-#, fuzzy
 msgid "New"
-msgstr "الشبكة"
+msgstr "جديد"
 
 #: src/View/directory_view_popup.ui:53
-#, fuzzy
 msgid "Folder"
-msgstr "ال_مجلّد:"
+msgstr "مجلد"
 
 #: src/View/directory_view_popup.ui:58
-#, fuzzy
 msgid "Empty File"
-msgstr "نسخ الملفات"
+msgstr "ملف فارغ"
 
 #: src/View/directory_view_popup.ui:67
-#, fuzzy
 msgid "Show Hidden Files"
-msgstr "نقل الملفات"
+msgstr "أظهر الملفات المخفية"
 
 #: src/View/directory_view_popup.ui:71
 #, fuzzy
@@ -679,9 +675,8 @@ msgid "Hide Local Thumbnails"
 msgstr "أظهر _تفاصيل أكثر"
 
 #: src/View/directory_view_popup.ui:82
-#, fuzzy
 msgid "New Tab"
-msgstr "فتح في علامة تبويب جديدة"
+msgstr "علامة تبويب جديدة"
 
 #: src/View/directory_view_popup.ui:102
 msgid "Bookmark"
@@ -887,32 +882,28 @@ msgid "Server name or IP address"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:135
-#, fuzzy
 msgid "Server:"
-msgstr "ال_خادم:"
+msgstr "الخادم:"
 
 #: libcore/ConnectServerDialog.vala:142
-#, fuzzy
 msgid "Port:"
-msgstr "ال_منفذ:"
+msgstr "المنفذ:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:168
-#, fuzzy
 msgid "Share:"
-msgstr "المشا_ركة:"
+msgstr "المشاركة:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
-msgstr "ال_مجلّد:"
+msgstr "المجلد:"
 
 #: libcore/ConnectServerDialog.vala:173
 msgid "User Details"
@@ -924,28 +915,24 @@ msgid "Name of Windows domain"
 msgstr "نافذة جديدة كمسؤول"
 
 #: libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Domain name:"
-msgstr "اسم ال_نطاق:"
+msgstr "اسم النطاق:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:179
-#, fuzzy
 msgid "User name:"
-msgstr "ا_سم المستخدم:"
+msgstr "اسم المستخدم:"
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
 msgid "Password:"
-msgstr "كلمة ال_سر:"
+msgstr "كلمة السر:"
 
 #: libcore/ConnectServerDialog.vala:186
-#, fuzzy
 msgid "Remember this password"
-msgstr "_تذكّر كلمة السر هذه"
+msgstr "تذكر كلمة السر هذه"
 
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
 #: libcore/FileConflictDialog.vala:189
@@ -953,18 +940,16 @@ msgid "Cancel"
 msgstr "ألغِ"
 
 #: libcore/ConnectServerDialog.vala:193
-#, fuzzy
 msgid "Connect"
-msgstr "_اتصل"
+msgstr "اتصل"
 
 #: libcore/ConnectServerDialog.vala:200
 msgid "Continue"
 msgstr "تابع"
 
 #: libcore/ConnectServerDialog.vala:245
-#, fuzzy
 msgid "Connecting…"
-msgstr "يتّصل..."
+msgstr "يتصل…"
 
 #: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
@@ -1121,15 +1106,15 @@ msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:523
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "اليوم في %-I:%M %p"
+msgstr "اليوم في %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:529
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "أمس في %-I:%M %p"
+msgstr "أمس في %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:535
@@ -1274,9 +1259,9 @@ msgstr " (%I'd"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1115
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "أمتأكد أنك تريد حذف \"%B\" نهائيا من المهملات؟"
+msgstr "أمتأكد أنك تريد حذف \"%s\" نهائيا من المهملات؟"
 
 #: libcore/marlin-file-operations.c:1119
 #, c-format
@@ -1319,9 +1304,9 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1191
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "أمتأكد من أنك تريد حذف \"%B\" نهائيا؟"
+msgstr "أمتأكد من أنك تريد حذف \"%s\" نهائيا؟"
 
 #: libcore/marlin-file-operations.c:1194
 #, c-format
@@ -1372,22 +1357,22 @@ msgstr "خطأ أثناء الحذف."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1332
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"لا يمكن حذف الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك التصاريح الكافية "
+"لا يمكن حذف الملفات الموجودة بالمجلد \"%s\" لأنك لا تملك التصاريح الكافية "
 "لقراءتها."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1337 libcore/marlin-file-operations.c:2252
 #: libcore/marlin-file-operations.c:3329
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
-msgstr "حدث خطأ في الحصول على معلومات حول الملفات في المجلد \"%B\"."
+msgstr "حدث خطأ في الحصول على معلومات حول الملفات في المجلد \"%s\"."
 
 #: libcore/marlin-file-operations.c:1347 libcore/marlin-file-operations.c:3339
 msgid "_Skip files"
@@ -1396,11 +1381,11 @@ msgstr "ت_خطى الملفات"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1371
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr "لا يمكن حذف المجلد \"%B\" لأنك لا تملك التصاريح الكافية لقراءته."
+msgstr "لا يمكن حذف المجلد \"%s\" لأنك لا تملك التصاريح الكافية لقراءته."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
