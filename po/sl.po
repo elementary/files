@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2018-08-19 00:02+0000\n"
-"Last-Translator: Jernej Virag <jernej@virag.si>\n"
-"Language-Team: Slovenian <https://weblate.elementary.io/projects/files/files/"
-"sl/>\n"
+"PO-Revision-Date: 2019-12-19 07:36+0000\n"
+"Last-Translator: Marko <marko.dolar@gmail.com>\n"
+"Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
+">\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Weblate 3.0.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: src/Application.vala:124
@@ -349,12 +349,8 @@ msgid "Create the folder \"%s\""
 msgstr "Ustvari mapo \"%s\""
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"Ni bilo mogoče ustvariti mape\n"
-"\n"
-"%s"
+msgstr "Ni bilo mogoče ustvariti mape"
 
 #: src/View/AbstractDirectoryView.vala:822
 #: src/View/AbstractDirectoryView.vala:1129
@@ -537,14 +533,12 @@ msgid "Browse the contents of the network"
 msgstr "Prebrskaj vsebino omrežja"
 
 #: src/View/Sidebar.vala:810
-#, fuzzy
 msgid "Connect Server"
-msgstr "Poveži se s strežnikom"
+msgstr "Poveži strežnik"
 
 #: src/View/Sidebar.vala:811
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Poveži se na omrežni datotečni strežnik"
+msgstr "Poveži se na omrežni strežnik"
 
 #: src/View/Sidebar.vala:950
 #, c-format
@@ -879,17 +873,15 @@ msgstr "Strežnik"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Ime strežnika ali IP naslov"
 
 #: libcore/ConnectServerDialog.vala:135
-#, fuzzy
 msgid "Server:"
-msgstr "_Strežnik:"
+msgstr "Strežnik:"
 
 #: libcore/ConnectServerDialog.vala:142
-#, fuzzy
 msgid "Port:"
-msgstr "_Vrata:"
+msgstr "Vrata:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
@@ -905,9 +897,8 @@ msgid "Path of shared folder on server"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
-msgstr "_Mapa:"
+msgstr "Mapa:"
 
 #: libcore/ConnectServerDialog.vala:173
 msgid "User Details"
@@ -919,28 +910,24 @@ msgid "Name of Windows domain"
 msgstr "Novo okno kot _Administrator"
 
 #: libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Domain name:"
-msgstr "Ime _domene:"
+msgstr "Ime domene:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
-msgstr ""
+msgstr "Ime uporabnika na strežniku"
 
 #: libcore/ConnectServerDialog.vala:179
-#, fuzzy
 msgid "User name:"
-msgstr "_Uporabniško ime:"
+msgstr "Uporabniško ime:"
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
 msgid "Password:"
-msgstr "_Geslo:"
+msgstr "Geslo:"
 
 #: libcore/ConnectServerDialog.vala:186
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Zapomni si geslo"
+msgstr "Zapomni si to geslo"
 
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
 #: libcore/FileConflictDialog.vala:189
@@ -957,9 +944,8 @@ msgid "Continue"
 msgstr "Nadaljuj"
 
 #: libcore/ConnectServerDialog.vala:245
-#, fuzzy
 msgid "Connecting…"
-msgstr "Povezovanje ..."
+msgstr "Povezovanje …"
 
 #: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
@@ -1116,21 +1102,21 @@ msgstr "Ni bilo mogoče spremeniti imena v '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:523
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "Danes ob %-H:%M"
+msgstr "Danes ob %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:529
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Včeraj ob %-H:%M"
+msgstr "Včeraj ob %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:535
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A ob %-H:%M"
+msgstr "%%A ob %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1310,9 +1296,9 @@ msgstr "Vsi predmeti v smeteh na tem pogonu bodo trajno izbrisani."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1191
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Ali ste prepričani, da želite trajno izbrisati \"%B\"?"
+msgstr "Ali ste prepričani, da želite trajno izbrisati \"%s\"?"
 
 #: libcore/marlin-file-operations.c:1194
 #, c-format
@@ -1394,21 +1380,21 @@ msgstr "Mape \"%B\" ni mogoče izbrisati, ker nimate dovoljenja za branje."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1376 libcore/marlin-file-operations.c:2297
 #: libcore/marlin-file-operations.c:3381
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "Prišlo je do napake med branjem mape \"%B\"."
+msgstr "Prišlo je do napake med branjem mape \"%s\"."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:1415
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "Ni mogoče odstraniti mape %B."
+msgstr "Ni mogoče odstraniti mape %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:1497
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error deleting %s."
-msgstr "Prišlo je do napake med brisanjem %B."
+msgstr "Prišlo je do napake med brisanjem %s."
 
 #: libcore/marlin-file-operations.c:1582
 msgid "Moving files to trash"
@@ -1930,21 +1916,21 @@ msgstr "nova datoteka"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:6075
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating directory %s."
-msgstr "Napaka med ustvarjanjem mape %B."
+msgstr "Napaka med ustvarjanjem mape %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:6078
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating file %s."
-msgstr "Napaka med ustvarjanjem datoteke %B."
+msgstr "Napaka med ustvarjanjem datoteke %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:6084
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Prišlo je do napake med ustvarjanjem mape v %F."
+msgstr "Prišlo je do napake med ustvarjanjem mape v %s."
 
 #: libcore/marlin-file-operations.c:6417
 msgid "Emptying Trash"
@@ -2403,7 +2389,7 @@ msgstr "Vnesite pot"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "Več rezultatov…"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
