@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-12-14 22:07+0000\n"
+"PO-Revision-Date: 2019-12-19 07:36+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
 "\n"
@@ -146,11 +146,11 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:187
 #: data/io.elementary.files.appdata.xml.in.in:219
 msgid "Updated translations"
-msgstr "Güncellenmiş Çeviriler"
+msgstr "Çeviriler güncellendi"
 
 #: data/io.elementary.files.appdata.xml.in.in:96
 msgid "Show more search results"
-msgstr ""
+msgstr "Daha fazla arama sonucu göster"
 
 #: data/io.elementary.files.appdata.xml.in.in:97
 msgid "Ensure valid tab name generation"
