@@ -1,41 +1,37 @@
-# Dutch translation for pantheon-files
-# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pantheon-files\n"
+"Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2018-08-02 00:01+0000\n"
-"Last-Translator: Lieven Hanssen <lhanssen@freedommail.co>\n"
-"Language-Team: Dutch <https://weblate.elementary.io/projects/files/extra/nl/"
-">\n"
-"Language: nl\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sr@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
-"X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr "Bestanden"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr "Bestanden doorbladeren"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr "map;beheerder;verken;schijf;bestandssysteem;"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr "Bestandsbeheer"
+msgstr ""
 
 #. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
@@ -44,15 +40,15 @@ msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr "Nieuw venster"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
-msgstr "Nieuw venster als beheerder"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr "Bekijk en beheer bestanden en mappen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
@@ -510,14 +506,9 @@ msgid "elementary LLC."
 msgstr ""
 
 #: data/io.elementary.files.policy.in.in:10
-#, fuzzy
 msgid "Run Pantheon Files as Administrator"
-msgstr "Nieuw venster als beheerder"
+msgstr ""
 
 #: data/io.elementary.files.policy.in.in:11
-#, fuzzy
 msgid "Authentication is required to run Files as Administrator"
-msgstr "Nieuw venster als beheerder"
-
-#~ msgid "About Files"
-#~ msgstr "Over Bestanden"
+msgstr ""
