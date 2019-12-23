@@ -829,7 +829,7 @@ namespace FM {
             } else {
                 PF.Dialogs.show_error_dialog (
                     ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-                    _("The file '%s' cannot be opened because it is in the Trash").printf (file.basename),
+                    _("The file “%s” cannot be opened because it is in the Trash").printf (file.basename),
                     _("To use this file, first drag it out of the Trash"),
                     window
                 );
