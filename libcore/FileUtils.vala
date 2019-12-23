@@ -786,6 +786,16 @@ namespace PF.FileUtils {
 
         return false;
     }
+
+    public uint64 get_file_modification_time (GLib.File file) {
+        try {
+            var info = file.query_info (GLib.FileAttribute.TIME_MODIFIED, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+            return info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
+        } catch (Error e) {
+            critical (e.message);
+            return -1;
+        }
+    }
 }
 
 namespace Marlin {

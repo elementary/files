@@ -36,19 +36,18 @@ pantheon_files_core_vala_files = files(
     'StockDialogs.vala',
     'TrashMonitor.vala',
     'UserUtils.vala',
+    'UndoManager.vala',
     'IconInfo.vala',
     'Thumbnailer.vala',
 )
 
 pantheon_files_core_c_files = files(
     'marlin-file-operations.c',
-    'marlin-undostack-manager.c',
     'fm-list-model.c',
 )
 
 pantheon_files_core_h_files = files(
     'marlin-file-operations.h',
-    'marlin-undostack-manager.h',
     'fm-list-model.h',
 )
 
