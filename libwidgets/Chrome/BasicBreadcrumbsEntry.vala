@@ -398,10 +398,10 @@ namespace Marlin.View.Chrome {
                 weak Gtk.StyleContext style_context = get_style_context ();
                 var state = style_context.get_state ();
                 var padding = style_context.get_padding (state);
-                w += (l -1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
+                w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
 
                 /* Allow extra space for last breadcrumb */
-                w+= 3 * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
+                w += 3 * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
             }
 
             /* Allow enough space after the breadcrumbs for secondary icon and entry */
@@ -438,23 +438,23 @@ namespace Marlin.View.Chrome {
                 }
             }
 
-            var remaining_shortfall = -(shortfall + free_width);
-            if (remaining_shortfall > 0) {
+            var remaining_shortfall = (shortfall + free_width);
+            if (remaining_shortfall < 0) {
                 var el = elements.last ().data;
                 el.can_shrink = true;
                 /* The last breadcrumb does not shrink as much as the others */
-                el.display_width = double.max (4 * MINIMUM_BREADCRUMB_WIDTH, el.natural_width - remaining_shortfall);
+                el.display_width = double.max (4 * MINIMUM_BREADCRUMB_WIDTH, el.natural_width + remaining_shortfall);
             }
         }
 
         protected BreadcrumbElement? get_element_from_coordinates (int x, int y) {
             double width = get_allocated_width () - ICON_WIDTH;
             double height = get_allocated_height ();
-            var is_RTL = Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ();
-            double x_render = is_RTL ? width : 0;
+            var is_rtl = Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ();
+            double x_render = is_rtl ? width : 0;
             foreach (BreadcrumbElement element in elements) {
                 if (element.display) {
-                    if (is_RTL) {
+                    if (is_rtl) {
                         x_render -= (element.real_width + height / 2); /* add width of arrow to element width */
                         if (x >= x_render - 5) {
                             return element;
@@ -642,7 +642,7 @@ namespace Marlin.View.Chrome {
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
             var state = style_context.get_state ();
-            var is_RTL = Gtk.StateFlags.DIR_RTL in state;
+            var is_rtl = Gtk.StateFlags.DIR_RTL in state;
             var padding = style_context.get_padding (state);
             base.draw (cr);
             double height = get_allocated_height ();
@@ -671,7 +671,7 @@ namespace Marlin.View.Chrome {
                 double width_marged = width - 2 * margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH - ICON_WIDTH;
                 double height_marged = height - 2 * margin;
                 double x_render;
-                if (is_RTL) {
+                if (is_rtl) {
                     x_render = width - margin;
                 } else {
                     x_render = margin;
@@ -694,7 +694,7 @@ namespace Marlin.View.Chrome {
                 foreach (BreadcrumbElement element in displayed_breadcrumbs) {
                     x_render = element.draw (cr, x_render, margin, height_marged, this);
                     /* save element x axis position */
-                    if (is_RTL) {
+                    if (is_rtl) {
                         element.x = x_render + element.real_width;
                     } else {
                         element.x = x_render - element.real_width;
@@ -706,7 +706,7 @@ namespace Marlin.View.Chrome {
                         if (element.display) {
                             x_render = element.draw (cr, x_render, margin, height_marged, this);
                             /* save element x axis position */
-                            if (is_RTL) {
+                            if (is_rtl) {
                                 element.x = x_render + element.real_width;
                             } else {
                                 element.x = x_render - element.real_width;
@@ -732,7 +732,7 @@ namespace Marlin.View.Chrome {
                     cr.set_source_rgba (0, 0, 0, 0.5);
                 }
 
-                if (is_RTL) {
+                if (is_rtl) {
                     layout = create_pango_layout (text + placeholder);
                 } else {
                     layout = create_pango_layout (text);
@@ -741,7 +741,7 @@ namespace Marlin.View.Chrome {
                 text_width = Pango.units_to_double (layout_width);
                 text_height = Pango.units_to_double (layout_height);
                 /** TODO - Get offset due to margins from style context **/
-                if (is_RTL) {
+                if (is_rtl) {
                    cr.move_to (width - (text_width + icon_width + 6), text_height / 4);
                 } else {
                    cr.move_to (text_width + icon_width + 6, text_height / 4);

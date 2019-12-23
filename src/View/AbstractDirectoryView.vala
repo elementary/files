@@ -640,7 +640,6 @@ namespace FM {
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
-
             if (dir.is_loading ()) {
                 disconnect_directory_loading_handlers (dir);
             }
@@ -891,10 +890,21 @@ namespace FM {
                 locations.reverse ();
 
                 slot.directory.block_monitor ();
-                Marlin.FileOperations.@delete (locations,
-                                               window as Gtk.Window,
-                                               !delete_immediately,
-                                               after_trash_or_delete);
+                Marlin.FileOperations.@delete.begin (
+                    locations,
+                    window as Gtk.Window,
+                    !delete_immediately,
+                    null,
+                    (obj, res) => {
+                        try {
+                            Marlin.FileOperations.@delete.end (res);
+                        } catch (Error e) {
+                            debug (e.message);
+                        }
+
+                        after_trash_or_delete ();
+                    }
+                );
             }
 
             /* If in recent "folder" we need to refresh the view. */
@@ -937,19 +947,36 @@ namespace FM {
 
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_file (this as Gtk.Widget,
-                                            null,
-                                            parent_uri,
-                                            null,
-                                            null,
-                                            0,
-                                            create_file_done);
+            Marlin.FileOperations.new_file.begin (
+                this as Gtk.Widget,
+                null,
+                parent_uri,
+                null,
+                null,
+                0,
+                null,
+                (obj, res) => {
+                    try {
+                        var file = Marlin.FileOperations.new_file.end (res);
+                        create_file_done (file);
+                    } catch (Error e) {
+                        critical (e.message);
+                    }
+                }
+            );
         }
 
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_folder (null, null, slot.location, create_file_done);
+            Marlin.FileOperations.new_folder.begin (null, null, slot.location, null, (obj, res) => {
+                try {
+                    var file = Marlin.FileOperations.new_folder.end (res);
+                    create_file_done (file);
+                } catch (Error e) {
+                    critical (e.message);
+                }
+            });
         }
 
         private void after_new_file_added (GOF.File? file) {
@@ -985,8 +1012,7 @@ namespace FM {
             unblock_directory_monitor ();
         }
 
-        [CCode (instance_pos = -1)]
-        public void after_trash_or_delete (bool user_cancel) {
+        public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
                 set_cursor (deleted_path, false, false, false);
@@ -1226,18 +1252,11 @@ namespace FM {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
-        public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
-            /* Pasted and dragged files are automatically selected now */
-
-            /* This function can be used if any other process is needed on the pasted files */
-        }
-
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
             var file = get_files_for_action ().nth_data (0);
 
             if (file != null && clipboard.can_paste && !(clipboard.files_linked && in_trash)) {
                 GLib.File target;
-                GLib.Callback? call_back;
 
                 if (file.is_folder () && !clipboard.has_file (file)) {
                     target = file.get_target_location ();
@@ -1245,15 +1264,13 @@ namespace FM {
                     target = slot.location;
                 }
 
-                if (target.has_uri_scheme ("trash")) {
-                    /* Pasting files into trash is equivalent to trash or delete action */
-                    call_back = (GLib.Callback)after_trash_or_delete;
-                } else {
-                    /* callback takes care of selecting pasted files */
-                    call_back = (GLib.Callback)after_pasting_files;
-                }
-
-                clipboard.paste_files (target, this as Gtk.Widget, call_back);
+                clipboard.paste_files.begin (target, this as Gtk.Widget, (obj, res) => {
+                    clipboard.paste_files.end (res);
+                    if (target.has_uri_scheme ("trash")) {
+                        /* Pasting files into trash is equivalent to trash or delete action */
+                        after_trash_or_delete ();
+                    }
+                });
             }
         }
 
@@ -2402,12 +2419,21 @@ namespace FM {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
             var new_name = (_("Untitled %s")).printf (template.get_basename ());
-            Marlin.FileOperations.new_file_from_template (this,
-                                                          null,
-                                                          slot.location,
-                                                          new_name,
-                                                          template,
-                                                          create_file_done);
+            Marlin.FileOperations.new_file_from_template.begin (
+                this,
+                null,
+                slot.location,
+                new_name,
+                template,
+                null,
+                (obj, res) => {
+                    try {
+                        var file = Marlin.FileOperations.new_file_from_template.end (res);
+                        create_file_done (file);
+                    } catch (Error e) {
+                        critical (e.message);
+                    }
+                });
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
@@ -3260,6 +3286,11 @@ namespace FM {
              * dragging on blank areas
              */
             block_drag_and_drop ();
+
+            /* Native Gtk behaviour for all clicks on empty space */
+            if (click_zone == ClickZone.BLANK_NO_PATH) {
+                return false;
+            }
 
             /* Handle un-modified clicks or control-clicks here else pass on.
              */

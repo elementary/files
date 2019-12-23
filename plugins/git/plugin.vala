@@ -16,20 +16,100 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
+    public class Marlin.GitRepoInfo : Object {
+        public Ggit.Repository repo { get; construct; }
+        public HashTable<string, Ggit.StatusFlags> status_map { get; construct; }
+        static Ggit.StatusOptions status_options;
+
+        static construct {
+            status_options = new Ggit.StatusOptions (Ggit.StatusOption.DEFAULT,
+                                                     Ggit.StatusShow.INDEX_AND_WORKDIR,
+                                                     {});
+        }
+
+        construct {
+            status_map = new HashTable<string, Ggit.StatusFlags> (str_hash, str_equal);
+            get_status_list ();
+        }
+
+        public GitRepoInfo (Ggit.Repository _repo) {
+            Object (repo: _repo);
+
+        }
+
+        public bool get_status_list () {
+            status_map.remove_all ();
+
+            try {
+                repo.file_status_foreach (status_options,
+                                          (path, status_flags) => {
+
+                    status_map.insert (path, status_flags);
+                    return 0;
+                });
+            } catch (Error e) {
+                warning ("Error getting status %s", e.message);
+                return false;
+            }
+
+            return true;
+        }
+
+        public Ggit.StatusFlags? lookup_status (string path) {
+            var result = Ggit.StatusFlags.CURRENT;
+            status_map.@foreach ((k, v) => {
+                if (k.has_prefix (path)) {
+                    result = v;
+                }
+            });
+
+            return result;
+        }
+    }
+
+    public struct Marlin.GitRepoChildInfo {
+         string repo_uri;
+         string rel_path;
+    }
+
+
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
-    public GLib.HashTable<GLib.File, Ggit.Repository> repo_map;
+    private HashTable<string, Marlin.GitRepoInfo?> repo_map;
+    private HashTable<string, Marlin.GitRepoChildInfo?> child_map;
 
     public Git () {
-        repo_map = new GLib.HashTable<GLib.File, Ggit.Repository> (GLib.File.hash, GLib.File.equal);
+        repo_map = new GLib.HashTable<string, Marlin.GitRepoInfo?> (str_hash, str_equal);
+        child_map = new HashTable<string, Marlin.GitRepoChildInfo?> (str_hash, str_equal);
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+        var dir_uri = directory.uri;
+        var repo_uri = "";
+
         try {
             var key = directory.location;
             var gitdir = Ggit.Repository.discover (key);
-            var git_repo = Ggit.Repository.open (gitdir);
-            if (git_repo != null && !(repo_map.contains (key))) {
-                repo_map.insert (key, (owned)git_repo);
+            if (gitdir != null) {
+                repo_uri = gitdir.get_uri ();
+                Marlin.GitRepoInfo? repo_info = repo_map.lookup (repo_uri);
+                if (repo_info == null) {
+                    var git_repo = Ggit.Repository.open (gitdir);
+                    repo_info = new Marlin.GitRepoInfo (git_repo);
+                    repo_map.insert (repo_uri, repo_info);
+                } else {
+                }
+
+                if (!child_map.contains (dir_uri)) {
+                    var rel_path = repo_info.repo.location.get_parent ().get_relative_path (directory.location);
+                    if (rel_path != null) {
+                        rel_path = rel_path + Path.DIR_SEPARATOR_S;
+                    } else {
+                        rel_path = "";
+                    }
+                    Marlin.GitRepoChildInfo child_info = { repo_uri, rel_path };
+                    child_map.insert (dir_uri, child_info);
+                } else {
+                }
             }
         } catch (Error e) {
             /* An error is normal if the directory is not a git repo */
@@ -37,105 +117,50 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         }
     }
 
-    public override void update_file_info (GOF.File file) {
+    public override void update_file_info (GOF.File gof) {
         /* Ignore e.g. .git and .githib folders, but include e.g. .travis.yml file */
-        if (file.is_hidden && file.is_directory) {
+        if (gof.is_hidden && gof.is_directory) {
             return;
         }
 
-        Ggit.Repository git_repo = repo_map.lookup (file.directory);
-
-        if (git_repo != null) {
-            /* Ignore other files specified by .gitignore */
-            try {
-                if (git_repo.path_is_ignored (file.location.get_path ())) {
-                    return;
-                }
-            } catch (GLib.Error e) {
-                return; /* If this fails then unlikely to be able to get git_status */
-            }
-
-            var git_status = update_git_status (file.location, git_repo, file.is_directory);
-            switch (git_status) {
-                case Ggit.StatusFlags.CURRENT:
-                    break;
-
-                case Ggit.StatusFlags.INDEX_MODIFIED:
-                case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
-                    file.add_emblem ("user-away");
-                    break;
-
-                case Ggit.StatusFlags.WORKING_TREE_NEW:
-                    file.add_emblem ("user-available");
-                    break;
-
-                default:
-                    break;
-            }
+        var child_info = child_map.lookup (gof.directory.get_uri ());
+        if (child_info == null) {
+            return;
         }
-    }
 
-    private Ggit.StatusFlags update_git_status (GLib.File location, Ggit.Repository git_repo, bool is_directory) {
-        /* Fallback to ignored status */
-        Ggit.StatusFlags status = Ggit.StatusFlags.IGNORED;
+        Marlin.GitRepoInfo? repo_info = repo_map.lookup (child_info.repo_uri);
 
-        if (!is_directory) {
-            try {
-                status = git_repo.file_status (location);
-            } catch (Error e) {
-                critical ("Error getting git status for %s: %s", location.get_path (), e.message);
-            }
-        } else {
-            bool modified = false;
-            bool ignored = true;
-            bool new_file = false;
-            GLib.FileInfo? child_info = null;
-            try {
-                var e = location.enumerate_children (GLib.FileAttribute.STANDARD_TYPE + "," + GLib.FileAttribute.STANDARD_NAME, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-                child_info = e.next_file ();
-                while (child_info != null) {
-
-                    var child = location.get_child (child_info.get_name ());
-                    var child_status = update_git_status (child, git_repo, (child_info.get_file_type () == GLib.FileType.DIRECTORY));
-
-                    switch (child_status) {
-                        case Ggit.StatusFlags.INDEX_MODIFIED:
-                        case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
-                            return Ggit.StatusFlags.WORKING_TREE_MODIFIED;
-
-                        case Ggit.StatusFlags.WORKING_TREE_NEW:
-                            new_file = true;
+        if (repo_info != null) {
+            var rel_path = child_info.rel_path + gof.basename;
+            if (rel_path != null) {
+                var git_status = repo_info.lookup_status (rel_path);
+                if (git_status != null) {
+                    switch (git_status) {
+                        case Ggit.StatusFlags.CURRENT:
                             break;
 
-                        case Ggit.StatusFlags.IGNORED:
+                        case Ggit.StatusFlags.INDEX_MODIFIED:
+                        case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
+                            gof.add_emblem ("user-away");
+                            break;
+
+                        case Ggit.StatusFlags.WORKING_TREE_NEW:
+                            gof.add_emblem ("user-available");
                             break;
 
                         default:
-                            ignored = false;
                             break;
                     }
-
-                    child_info = e.next_file ();
                 }
-            } catch (Error e) {
-                warning ("Error enumerating %s", e.message);
-            }
-
-            if (modified) {
-                status = Ggit.StatusFlags.WORKING_TREE_MODIFIED;
-            } else if (new_file) {
-                status = Ggit.StatusFlags.WORKING_TREE_NEW;
-            } else if (ignored) {
-                status = Ggit.StatusFlags.IGNORED;
+            } else {
+                critical ("Relative path is null");
             }
         }
-
-        return status;
     }
 }
 
 public Marlin.Plugins.Base module_init () {
     Ggit.init ();
-    var plug =  new Marlin.Plugins.Git ();
+    var plug = new Marlin.Plugins.Git ();
     return plug;
 }

@@ -30,7 +30,10 @@ public class PopupMenuBuilder : Object {
         return popupmenu;
     }
 
-    public Gtk.Menu build_from_model (MenuModel model, string? action_group_namespace = null, ActionGroup? action_group = null) {
+    public Gtk.Menu build_from_model (MenuModel model,
+                                      string? action_group_namespace = null,
+                                      ActionGroup? action_group = null) {
+
         var menu = new Gtk.Menu.from_model (model);
         menu.insert_action_group (action_group_namespace, action_group);
 

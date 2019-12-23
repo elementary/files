@@ -18,7 +18,7 @@
 ***/
 
 public class Marlin.SidebarPluginItem : Object {
-    public const PlaceType place_type = PlaceType.PLUGIN_ITEM;
+    public const PlaceType PLACE_TYPE = PlaceType.PLUGIN_ITEM;
     public string name { get; set; }
     public string? uri { get; set; }
     public Drive? drive { get; set; }

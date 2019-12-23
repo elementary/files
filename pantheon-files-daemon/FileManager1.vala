@@ -58,13 +58,13 @@ public class FileManager1 : Object {
         }
     }
 
-    static string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
+    static string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                     GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS)
                                    .replace ("#", "")
                                    .replace ("*", "");
 
     private static string prepare_uri_for_appinfo_create (string uri, bool allow_utf8 = true) {
-        string? escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), RESERVED_CHARS, allow_utf8);
+        string? escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), reserved_chars, allow_utf8);
         return (escaped_uri ?? "").replace ("%", "%%");
     }
 }

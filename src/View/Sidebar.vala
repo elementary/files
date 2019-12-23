@@ -481,7 +481,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     private void set_plugin_item (SidebarPluginItem item, Gtk.TreeIter iter) {
         store.@set (
             iter,
-            Column.ROW_TYPE, SidebarPluginItem.place_type,
+            Column.ROW_TYPE, SidebarPluginItem.PLACE_TYPE,
             Column.URI, item.uri,
             Column.DRIVE, item.drive,
             Column.VOLUME, item.volume,

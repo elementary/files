@@ -145,7 +145,7 @@ public class Async : Object {
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
 
         if (is_recent) {
-           GOF.Preferences.get_default().notify["remember-history"].connect (() => {
+           GOF.Preferences.get_default ().notify["remember-history"].connect (() => {
                 need_reload (true);
             });
         }
@@ -910,11 +910,11 @@ public class Async : Object {
         gof.remove_from_caches ();
     }
 
-    private struct fchanges {
+    private struct FChanges {
         GLib.File file;
         FileMonitorEvent event;
     }
-    private List <fchanges?> list_fchanges = null;
+    private List <FChanges?> list_fchanges = null;
     private uint list_fchanges_count = 0;
     /* number of monitored changes to store after that simply reload the dir */
     private const uint FCHANGES_MAX = 20;
@@ -923,7 +923,7 @@ public class Async : Object {
         /* If view is frozen, store events for processing later */
         if (freeze_update) {
             if (list_fchanges_count < FCHANGES_MAX) {
-                var fc = fchanges ();
+                var fc = FChanges ();
                 fc.file = _file;
                 fc.event = event;
                 list_fchanges.prepend (fc);
@@ -1076,6 +1076,16 @@ public class Async : Object {
         }
 
         var gfile = GLib.File.new_for_uri (escaped_uri);
+
+        /* Avoid adding a new Async that will be a duplicate of an existing one, when called
+         * with non-folder location. */
+        if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
+            var ftype = gfile.query_file_type (0, null);
+            if (ftype != FileType.DIRECTORY) {
+                gfile = gfile.get_parent ();
+            }
+        }
+
         /* Note: cache_lookup creates directory_cache if necessary */
         Async? dir = cache_lookup (gfile);
         /* Both local and non-local files can be cached */
@@ -1238,4 +1248,3 @@ public class Async : Object {
     }
 }
 }
-

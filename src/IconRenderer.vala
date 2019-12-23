@@ -188,7 +188,10 @@ namespace Marlin {
             }
 
             cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
-            style_context.render_background (cr, draw_rect.x * icon_scale, draw_rect.y * icon_scale, draw_rect.width * icon_scale, draw_rect.height * icon_scale);
+            style_context.render_background (cr,
+                                             draw_rect.x * icon_scale, draw_rect.y * icon_scale,
+                                             draw_rect.width * icon_scale, draw_rect.height * icon_scale);
+
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
             style_context.restore ();

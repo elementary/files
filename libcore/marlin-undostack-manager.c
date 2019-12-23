@@ -169,8 +169,7 @@ static void free_undo_action (gpointer data, gpointer user_data);
 
 static void undostack_dispose_all (GQueue *queue);
 
-static void undo_redo_done_transfer_callback (GHashTable *debuting_uris,
-                                              gpointer data);
+static void undo_redo_done_transfer_callback (gpointer data);
 
 static void undo_redo_done_rename_callback (GObject      *object,
                                             GAsyncResult *result,
@@ -360,21 +359,83 @@ marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
     return manager->undo_redo_flag;
 }
 
-/*void
-  marlin_undo_manager_request_menu_update (MarlinUndoManager *manager)
-  {
-  do_menu_update (manager);
-  }*/
+static void
+undo_redo_new_folder_finish (GObject *source_object,
+                             GAsyncResult *res,
+                             gpointer user_data)
+{
+    GError *error = NULL;
+    GFile *file = NULL;
+
+    file = marlin_file_operations_new_folder_finish (res, &error);
+    if (error != NULL) {
+        g_critical ("Error creating folder: %s", error->message);
+    }
+
+    undo_redo_done_create_callback (file, user_data);
+    g_clear_object (&file);
+    g_clear_error (&error);
+}
+
+static void
+undo_redo_new_file_finish (GObject *source_object,
+                           GAsyncResult *res,
+                           gpointer user_data)
+{
+    GError *error = NULL;
+    GFile *file = NULL;
+
+    file = marlin_file_operations_new_file_finish (res, &error);
+    if (error != NULL) {
+        g_critical ("Error creating file: %s", error->message);
+    }
+
+    undo_redo_done_create_callback (file, user_data);
+    g_clear_object (&file);
+    g_clear_error (&error);
+}
+
+static void
+undo_redo_delete_finish (GObject *source_object,
+                         GAsyncResult *res,
+                         gpointer user_data)
+{
+    GError *error = NULL;
+
+    if (!marlin_file_operations_delete_finish (res, &error)) {
+        g_critical ("Error creating folder: %s", error->message);
+    }
+
+    undo_redo_done_transfer_callback (user_data);
+    g_clear_error (&error);
+}
+
+static void
+undo_redo_copy_move_link_finish (GObject *source_object,
+                                 GAsyncResult *res,
+                                 gpointer user_data)
+{
+    GError *error = NULL;
+
+    if (!marlin_file_operations_copy_move_link_finish (res, &error)) {
+        g_critical ("Error copying/moving/linking: %s", error->message);
+    }
+
+    undo_redo_done_transfer_callback (user_data);
+    g_clear_error (&error);
+}
 
 /** ****************************************************************
  * Redoes the last file operation
 ** ****************************************************************/
 void
-marlin_undo_manager_redo (MarlinUndoManager *self,
-                          GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb,
-                          gpointer callback_data)
+marlin_undo_manager_redo (MarlinUndoManager   *self,
+                          GtkWidget           *parent_view,
+                          GCancellable        *cancellable,
+                          GAsyncReadyCallback  callback,
+                          gpointer             user_data)
 {
+    GTask *task;
     GList *uris;
     GFile *file;
     char *new_name;
@@ -382,6 +443,7 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
     GFile *fparent;
 
     g_return_if_fail (MARLIN_IS_UNDO_MANAGER (self));
+    task = g_task_new (self, cancellable, callback, user_data);
 
     g_mutex_lock (&self->mutex);
 
@@ -403,16 +465,16 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
         case MARLIN_UNDO_COPY:
             uris = construct_gfile_list (action->sources, action->src_dir);
             marlin_file_operations_copy_move_link (uris, NULL, action->dest_dir,
-                                                   GDK_ACTION_COPY, NULL,
-                                                   G_CALLBACK (undo_redo_done_transfer_callback), action);
+                                                   GDK_ACTION_COPY, NULL, cancellable,
+                                                   undo_redo_copy_move_link_finish, action);
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
         case MARLIN_UNDO_DUPLICATE:
             uris = construct_gfile_list (action->sources, action->src_dir);
             marlin_file_operations_copy_move_link (uris, NULL, NULL,
-                                                   GDK_ACTION_COPY, NULL,
-                                                   G_CALLBACK (undo_redo_done_transfer_callback), action);
+                                                   GDK_ACTION_COPY, NULL, cancellable,
+                                                   undo_redo_copy_move_link_finish, action);
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
@@ -421,8 +483,8 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
         case MARLIN_UNDO_MOVE:
             uris = construct_gfile_list (action->sources, action->src_dir);
             marlin_file_operations_copy_move_link (uris, NULL, action->dest_dir,
-                                                   GDK_ACTION_MOVE, NULL,
-                                                   G_CALLBACK (undo_redo_done_transfer_callback), action);
+                                                   GDK_ACTION_MOVE, NULL, cancellable,
+                                                   undo_redo_copy_move_link_finish, action);
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
@@ -445,14 +507,15 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
             marlin_file_operations_new_file (NULL, NULL, puri,
                                              new_name,
                                              action->template,
-                                             0, undo_redo_done_create_callback, action);
+                                             0, cancellable,
+                                             undo_redo_new_file_finish, action);
             g_free (puri);
             g_free (new_name);
             break;
         case MARLIN_UNDO_CREATEFOLDER:
             fparent = get_file_parent_from_uri (action->target_uri);
-            marlin_file_operations_new_folder (NULL, NULL, fparent,
-                                               undo_redo_done_create_callback, action);
+            marlin_file_operations_new_folder (NULL, NULL, fparent, cancellable,
+                                               undo_redo_new_folder_finish, action);
             g_object_unref (fparent);
             break;
         case MARLIN_UNDO_MOVETOTRASH:
@@ -461,7 +524,7 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
                 uris = uri_list_to_gfile_list (uri_to_trash);
                 self->undo_redo_flag = TRUE;
                 marlin_file_operations_delete
-                    (uris, NULL, TRUE, undo_redo_done_delete_callback, action);
+                    (uris, NULL, TRUE, cancellable, undo_redo_delete_finish, action);
                 g_list_free (uri_to_trash);
                 g_list_free_full (uris, g_object_unref);
             }
@@ -469,8 +532,8 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
         case MARLIN_UNDO_CREATELINK:
             uris = construct_gfile_list (action->sources, action->src_dir);
             marlin_file_operations_copy_move_link (uris, NULL, action->dest_dir,
-                                                   GDK_ACTION_LINK, NULL,
-                                                   G_CALLBACK (undo_redo_done_transfer_callback), action);
+                                                   GDK_ACTION_LINK, NULL, cancellable,
+                                                   undo_redo_copy_move_link_finish, action);
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
@@ -481,25 +544,39 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
         }
     }
 
-    if (cb != NULL)
-        (*cb) ((gpointer) parent_view);
+    g_task_return_boolean (task, TRUE);
+    g_object_unref (task);
+}
+
+gboolean
+marlin_undo_manager_redo_finish (MarlinUndoManager  *manager,
+                                 GAsyncResult       *result,
+                                 GError            **error)
+{
+    g_return_val_if_fail (MARLIN_IS_UNDO_MANAGER (manager), FALSE);
+    g_return_val_if_fail (g_task_is_valid (result, manager), FALSE);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 /** ****************************************************************
  * Undoes the last file operation
 ** ****************************************************************/
 void
-marlin_undo_manager_undo (MarlinUndoManager *self,
-                          GtkWidget *parent_view,
-                          MarlinUndoFinishCallback cb,
-                          gpointer done_callback_data)
+marlin_undo_manager_undo (MarlinUndoManager   *self,
+                          GtkWidget           *parent_view,
+                          GCancellable        *cancellable,
+                          GAsyncReadyCallback  callback,
+                          gpointer             user_data)
 {
+    GTask *task;
     GList *uris = NULL;
     GHashTable *files_to_restore;
     GFile *file;
     gchar *new_name;
 
     g_return_if_fail (MARLIN_IS_UNDO_MANAGER (self));
+    task = g_task_new (self, cancellable, callback, user_data);
 
     g_mutex_lock (&self->mutex);
 
@@ -528,8 +605,8 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
                 uris = g_list_reverse (uris); // Deleting must be done in reverse
             }
             if (self->confirm_delete) {
-                marlin_file_operations_delete (uris, NULL, FALSE,
-                                               undo_redo_done_delete_callback, action);
+                marlin_file_operations_delete (uris, NULL, FALSE, cancellable,
+                                               undo_redo_delete_finish, action);
                 g_list_free_full (uris, g_object_unref);
             } else {
                 /* We skip the confirmation message
@@ -544,13 +621,13 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
                 marlin_file_changes_consume_changes (TRUE);
 
                 /* Here we must do what's necessary for the callback */
-                undo_redo_done_transfer_callback (NULL, action);
+                undo_redo_done_transfer_callback (action);
             }
             break;
         case MARLIN_UNDO_RESTOREFROMTRASH:
             uris = construct_gfile_list (action->destinations, action->dest_dir);
-            marlin_file_operations_delete (uris, NULL, TRUE,
-                                           undo_redo_done_delete_callback, action);
+            marlin_file_operations_delete (uris, NULL, TRUE, cancellable,
+                                           undo_redo_delete_finish, action);
             g_list_free_full (uris, g_object_unref);
             break;
         case MARLIN_UNDO_MOVETOTRASH:
@@ -581,13 +658,13 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
             g_hash_table_destroy (files_to_restore);
 
             /* Here we must do what's necessary for the callback */
-            undo_redo_done_transfer_callback (NULL, action);
+            undo_redo_done_transfer_callback (action);
             break;
         case MARLIN_UNDO_MOVE:
             uris = construct_gfile_list (action->destinations, action->dest_dir);
             marlin_file_operations_copy_move_link (uris, NULL, action->src_dir,
-                                                   GDK_ACTION_MOVE, NULL,
-                                                   G_CALLBACK (undo_redo_done_transfer_callback), action);
+                                                   GDK_ACTION_MOVE, NULL, cancellable,
+                                                   undo_redo_copy_move_link_finish, action);
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
@@ -610,8 +687,19 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
         }
     }
 
-    if (cb != NULL)
-        (*cb) ((gpointer) parent_view);
+    g_task_return_boolean (task, TRUE);
+    g_object_unref (task);
+}
+
+gboolean
+marlin_undo_manager_undo_finish (MarlinUndoManager  *manager,
+                                 GAsyncResult       *result,
+                                 GError            **error)
+{
+    g_return_val_if_fail (MARLIN_IS_UNDO_MANAGER (manager), FALSE);
+    g_return_val_if_fail (g_task_is_valid (result, manager), FALSE);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 /** ****************************************************************
@@ -1621,7 +1709,7 @@ get_redo_label (MarlinUndoActionData * action)
 
 /** ---------------------------------------------------------------- */
 static void
-undo_redo_done_transfer_callback (GHashTable * debuting_uris, gpointer data)
+undo_redo_done_transfer_callback (gpointer data)
 {
     MarlinUndoActionData *action;
 
@@ -1645,14 +1733,14 @@ undo_redo_done_transfer_callback (GHashTable * debuting_uris, gpointer data)
 static void
 undo_redo_done_delete_callback (gboolean user_cancel, gpointer callback_data)
 {
-    undo_redo_done_transfer_callback (NULL, callback_data);
+    undo_redo_done_transfer_callback (callback_data);
 }
 
 /** ---------------------------------------------------------------- */
 static void
 undo_redo_done_create_callback (GFile * new_file, gpointer callback_data)
 {
-    undo_redo_done_transfer_callback (NULL, callback_data);
+    undo_redo_done_transfer_callback (callback_data);
 }
 
 /** ---------------------------------------------------------------- */
@@ -1668,7 +1756,7 @@ undo_redo_done_rename_callback (GObject      *object,
     }
 
     g_object_unref (res_file);
-    undo_redo_done_transfer_callback (NULL, user_data);
+    undo_redo_done_transfer_callback (user_data);
 }
 
 /** ---------------------------------------------------------------- */
