@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-12-26 19:17+0000\n"
+"PO-Revision-Date: 2019-12-27 13:24+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -402,7 +402,8 @@ msgstr "Dateien können von diesem Ort nicht entfernt werden"
 #: src/View/AbstractDirectoryView.vala:2988
 msgid "You do not have permission to change this location"
 msgstr ""
-"Sie haben nicht die Zugriffsrechte, um an diesem Ort Änderungen vorzunehmen"
+"Sie haben nicht die notwendigen Zugriffsrechte, um an diesem Ort Änderungen "
+"vorzunehmen"
 
 #: src/View/AbstractDirectoryView.vala:2947
 msgid "Cannot copy files that are in the trash"
@@ -439,7 +440,8 @@ msgstr "Dieser Ordner gehört nicht Ihnen"
 
 #: src/View/ViewContainer.vala:407
 msgid "You don't have permission to view this folder."
-msgstr "Zur Anzeige dieses Ordners fehlen Ihnen die Zugriffsrechte."
+msgstr ""
+"Sie haben nicht die notwendigen Zugriffsrechte um diesen Ordner zu sehen."
 
 #: src/View/ViewContainer.vala:409
 msgid "Unable to Mount Folder"
@@ -1318,8 +1320,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Dateien im Ordner \"%s\" können nicht gelöscht werden, weil Sie keine "
-"Berechtigungen haben, diese zu sehen."
+"Dateien im Ordner \"%s\" können nicht gelöscht werden, da Sie nicht die "
+"notwendigen Zugriffsrechte haben, um diese zu sehen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1344,8 +1346,8 @@ msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Der Ordner \"%s\" kann nicht gelöscht werden, da Sie keine Zugriffsrechte "
-"zum Lesen haben."
+"Der Ordner \"%s\" kann nicht gelöscht werden, da Sie nicht die notwendigen "
+"Zugriffsrechte haben,  um diesen zu Lesen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1396,16 +1398,16 @@ msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"Sie sind nicht berechtigt, in Ordnern, für welche Sie keine Schreibrechte "
-"besitzen, Dateien zu löschen oder sie in den Papierkorb zu verschieben."
+"Es ist nicht erlaubt, Dateien in Ordnern, für die Sie keine Schreibrechte "
+"haben, zu entfernen oder zu löschen."
 
 #: libcore/marlin-file-operations.c:1689
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"Sie sind nicht berechtigt, Dateien zu löschen oder in den Papierkorb zu "
-"verschieben, für welche Sie keine Schreibrechte besitzen."
+"Es ist nicht erlaubt, Ordner, für die Sie keine Schreibrechte haben, zu "
+"entfernen oder zu löschen."
 
 #: libcore/marlin-file-operations.c:1691
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -1518,8 +1520,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Dateien im Ordner \"%s\" können nicht bearbeitet werden, da Sie keine "
-"Zugriffsrechte haben, diese zu sehen."
+"Dateien im Ordner \"%s\" können nicht bearbeitet werden, da Sie nicht die "
+"notwendigen Zugriffsrechte haben, um diese zu sehen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1529,8 +1531,8 @@ msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Der Ordner \"%s\" kann nicht bearbeitet werden, da Sie keine Zugriffsrechte "
-"haben, um diesen zu lesen."
+"Der Ordner \"%s\" kann nicht bearbeitet werden, da Sie nicht die notwendigen "
+"Zugriffsrechte haben, um diesen zu lesen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1540,8 +1542,8 @@ msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Die Datei \"%s\" kann nicht bearbeitet werden, da Sie keine Zugriffsrechte "
-"haben, um diese zu lesen."
+"Die Datei \"%s\" kann nicht bearbeitet werden, da Sie nicht die notwendigen "
+"Zugriffsrechte haben, um diese zu lesen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1561,7 +1563,7 @@ msgstr "Fehler beim Kopieren nach \"%s\"."
 #: libcore/marlin-file-operations.c:2495
 msgid "You do not have permissions to access the destination folder."
 msgstr ""
-"Sie besitzen nicht die nötigen Zugriffsrechte, um auf den Zielordner "
+"Sie besitzen nicht die notwendigen Zugriffsrechte, um auf den Zielordner "
 "zuzugreifen."
 
 #: libcore/marlin-file-operations.c:2497
@@ -1690,8 +1692,8 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Der Ordner \"%s\" kann nicht kopiert werden, da Sie keine Zugriffsrechte "
-"haben, um diesen im Zielverzeichnis zu erstellen."
+"Der Ordner \"%s\" kann nicht kopiert werden, da Sie nicht die notwendigen "
+"Zugriffsrechte haben, um diesen im Zielverzeichnis zu erstellen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1708,8 +1710,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Dateien im Ordner \"%s\" können nicht kopiert werden, da Sie keine "
-"Zugriffsrechte haben, um sie zu sehen."
+"Dateien im Ordner \"%s\" können nicht kopiert werden, da Sie nicht die "
+"notwendigen Zugriffsrechte haben, um diese zu sehen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1719,8 +1721,8 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Der Ordner \"%s\" kann nicht kopiert werden, da Sie keine Zugriffsrechte "
-"haben, um diesen zu lesen."
+"Der Ordner \"%s\" kann nicht kopiert werden, da Sie nicht die notwendigen "
+"Zugriffsrechte haben, um diesen zu lesen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1872,7 +1874,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:5553
 msgid "Setting permissions"
-msgstr "Zugriffsrechte werden eingestellt"
+msgstr "Zugriffsrechte werden festgelegt"
 
 #: libcore/marlin-file-operations.c:5745
 msgid "Cannot copy into trash."
@@ -1987,12 +1989,12 @@ msgstr "Lösche Verknüpfung nach »%s«"
 #: libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Ursprüngliche Zugriffsrechte aller Objekte in »%s« wiederherstellen"
+msgstr "Ursprüngliche Zugriffsrechte aller Objekte in \"%s\" wiederherstellen"
 
 #: libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "Ursprüngliche Zugriffsrechte von »%s« wiederherstellen"
+msgstr "Ursprüngliche Zugriffsrechte von \"%s\" wiederherstellen"
 
 #: libcore/marlin-undostack-manager.c:1316
 #, c-format
@@ -2077,12 +2079,12 @@ msgstr "Erstelle Verknüpfung nach »%s«"
 #: libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Zugriffsrechte für die Objekte in »%s« festlegen"
+msgstr "Zugriffsrechte für die Objekte in \"%s\" festlegen"
 
 #: libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "Zugriffsrechte für »%s« festlegen"
+msgstr "Zugriffsrechte für \"%s\" festlegen"
 
 #: libcore/marlin-undostack-manager.c:1491
 #, c-format
@@ -2169,17 +2171,15 @@ msgstr[1] "_Rückgängig machen von %d Objekten"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-"Rekursive Veränderung der Zugriffsrechte für %d Objekt rückgängig machen"
-msgstr[1] ""
-"Rekursive Veränderung der Zugriffsrechte für %d Objekte rückgängig machen"
+msgstr[0] "Rekursive Änderung der Zugriffsrechte für %d Objekt rückgängig machen"
+msgstr[1] "Rekursive Änderung der Zugriffsrechte für %d Objekte rückgängig machen"
 
 #: libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Veränderung der Zugriffsrechte von %d Objekt rückgängig machen"
-msgstr[1] "Veränderung der Zugriffsrechte von %d Objekten rückgängig machen"
+msgstr[0] "Änderung der Zugriffsrechte von %d Objekt rückgängig machen"
+msgstr[1] "Änderung der Zugriffsrechte von %d Objekten rückgängig machen"
 
 #: libcore/marlin-undostack-manager.c:1595
 #, c-format
@@ -2270,16 +2270,15 @@ msgstr[1] "Löschen von %d Objekten wiederholen"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Rekursive Veränderung der Zugriffsrechte für %d Objekt wiede_rholen"
-msgstr[1] ""
-"Rekursive Veränderung der Zugriffsrechte für %d Objekte wiede_rholen"
+msgstr[0] "Rekursive Änderung der Zugriffsrechte für %d Objekt wiederholen"
+msgstr[1] "Rekursive Änderung der Zugriffsrechte für %d Objekte wiederholen"
 
 #: libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Veränderung der Zugriffsrechte von %d Objekt wiede_rholen"
-msgstr[1] "Veränderung der Zugriffsrechte von %d Objekten wiede_rholen"
+msgstr[0] "Änderung der Zugriffsrechte von %d Objekt wiederholen"
+msgstr[1] "Änderung der Zugriffsrechte von %d Objekten wiederholen"
 
 #: libcore/marlin-undostack-manager.c:1690
 #, c-format
