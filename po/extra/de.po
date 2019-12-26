@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-01-02 18:39+0000\n"
+"PO-Revision-Date: 2019-12-26 19:17+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
-"Language-Team: German <https://weblate.elementary.io/projects/files/extra/de/"
-">\n"
+"Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -48,7 +47,7 @@ msgstr "Neues Fenster"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
-msgstr "Neues Fenster als Systemverwalter öffnen"
+msgstr "Neues Fenster als Administrator ausführen"
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
@@ -102,19 +101,16 @@ msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:74
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "Verbesserte Unterstützung von Lokalisierungen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:75
-#, fuzzy
 msgid "Update documentation"
-msgstr "Neue Übersetzungen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:76
-#, fuzzy
 msgid "Update translations"
-msgstr "Neue Übersetzungen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Initial cloudproviders plugin support"
@@ -150,9 +146,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:179
 #: data/io.elementary.files.appdata.xml.in.in:187
 #: data/io.elementary.files.appdata.xml.in.in:219
-#, fuzzy
 msgid "Updated translations"
-msgstr "Neue Übersetzungen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:96
 msgid "Show more search results"
@@ -171,9 +166,8 @@ msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:100
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "Bessere Netzwerkunterstützung"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Various tagging feature refinements"
@@ -256,9 +250,8 @@ msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:148
-#, fuzzy
 msgid "File sorting fixes"
-msgstr "Kleinere Fehlerbehebungen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Meson: fix soversion names"
@@ -289,11 +282,8 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:163
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
 msgstr ""
-"Anwendungsabsturz beim Wiederherstellen von Dateien aus dem Papierkorb "
-"behoben"
 
 #: data/io.elementary.files.appdata.xml.in.in:164
 msgid "Fix some timing issues around adding and removing files"
@@ -324,14 +314,12 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:178
-#, fuzzy
 msgid "Build fixes"
-msgstr "Sicherheitsrelevante Fehlerkorrekturen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:186
-#, fuzzy
 msgid "Plugin build fixes"
-msgstr "Kleinere Fehlerbehebungen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:194
 msgid "Fix Ctrl+Tab behavior"
@@ -394,14 +382,12 @@ msgid "Tooltip fixes"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:215
-#, fuzzy
 msgid "Memory leak fixes"
-msgstr "Kleinere Fehlerbehebungen"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:216
-#, fuzzy
 msgid "Crash fixes"
-msgstr "Verschiedene Absturzprobleme wurden behoben"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Trash: respect sound setting"
