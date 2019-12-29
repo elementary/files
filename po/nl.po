@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-12-29 07:11+0000\n"
+"PO-Revision-Date: 2019-12-29 10:46+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -876,7 +876,7 @@ msgstr "Share:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Pad naar de gedeelde map op de server"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -1097,7 +1097,7 @@ msgstr "Gisteren om %s"
 #: libcore/FileUtils.vala:535
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%%A om %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1691,30 +1691,29 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3188
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Er is een fout opgetreden bij het aanmaken van de map ‘%B’."
+msgstr "Er is een fout opgetreden bij het aanmaken van de map “%s%”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3324
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Kan bestanden in de map ‘%B’ niet kopiëren omdat u geen rechten heeft om ze "
+"Kan bestanden in de map “%s” niet kopiëren omdat u geen rechten heeft om ze "
 "te zien."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3376
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
-"Kan de map \"%B\" niet kopiëren omdat u er geen leesrechten voor heeft."
+msgstr "Kan de map \"%s\" niet kopiëren omdat u er geen leesrechten voor heeft."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1722,9 +1721,9 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3429 libcore/marlin-file-operations.c:4162
 #: libcore/marlin-file-operations.c:4759
-#, fuzzy, c-format
+#, c-format
 msgid "Error while moving \"%s\"."
-msgstr "Fout bij het verplaatsen van '%B'."
+msgstr "Fout bij het verplaatsen van “%s”."
 
 #: libcore/marlin-file-operations.c:3431
 msgid "Could not remove the source folder."
@@ -1734,21 +1733,21 @@ msgstr "Kon de bronmap niet verwijderen."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3520 libcore/marlin-file-operations.c:3571
 #: libcore/marlin-file-operations.c:4166
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying \"%s\"."
-msgstr "Fout bij het kopiëren van ‘%B’."
+msgstr "Fout bij het kopiëren van “%s”."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3525
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Kon bestanden niet verwijderen uit de reeds bestaande map %F."
+msgstr "Kon bestanden niet verwijderen uit de reeds bestaande map %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3576
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %s."
-msgstr "Kon het reeds bestaande bestand %F niet verwijderen."
+msgstr "Kon het reeds bestaande bestand %s niet verwijderen."
 
 #: libcore/marlin-file-operations.c:3895 libcore/marlin-file-operations.c:4596
 msgid "You cannot move a folder into itself."
@@ -1776,23 +1775,22 @@ msgstr "Het bronbestand zou door het doelbestand overschreven worden."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4172
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Kon het bestaande bestand met dezelfde naam in %F niet verwijderen."
+msgstr "Kon het bestaande bestand met dezelfde naam niet verwijderen in %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:4242
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "Kan \"%B\" hier niet kopiëren."
+msgstr "Kan \"%s\" hier niet naartoe kopiëren."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4247
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying the file into %s."
-msgstr ""
-"Er is een fout opgetreden tijdens het kopiëren van het bestand naar %B."
+msgstr "Er is een fout opgetreden tijdens het kopiëren van het bestand naar %s."
 
 #: libcore/marlin-file-operations.c:4466
 msgid "Copying Files"
@@ -1801,9 +1799,9 @@ msgstr "Bestanden kopiëren"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:4504
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Verplaatsen naar \"%B\" voorbereiden"
+msgstr "Verplaatsen naar \"%s\" voorbereiden"
 
 #: libcore/marlin-file-operations.c:4509
 #, c-format
@@ -1814,10 +1812,10 @@ msgstr[1] "Verplaatsen van %'d bestanden voorbereiden"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4763
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving the file into %s."
 msgstr ""
-"Er is een fout opgetreden tijdens het verplaatsen van het bestand naar %F."
+"Er is een fout opgetreden tijdens het verplaatsen van het bestand naar %s."
 
 #: libcore/marlin-file-operations.c:5022
 msgid "Moving Files"
@@ -1826,9 +1824,9 @@ msgstr "Verplaatsen van bestanden"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:5063
-#, fuzzy, c-format
+#, c-format
 msgid "Creating links in \"%s\""
-msgstr "Aanmaken van verwijzingen in \"%B\""
+msgstr "Aanmaken van links in \"%s\""
 
 #: libcore/marlin-file-operations.c:5068
 #, c-format
@@ -1839,9 +1837,9 @@ msgstr[1] "Aanmaken van verwijzingen naar %'d bestanden"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5211
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating link to %s."
-msgstr "Fout bij het aanmaken van een verwijzing naar %B."
+msgstr "Fout bij het aanmaken van een link naar %s."
 
 #: libcore/marlin-file-operations.c:5214
 msgid "Symbolic links only supported for local files"
@@ -1853,11 +1851,10 @@ msgstr "Dit doel ondersteunt geen symbolische verwijzingen."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5222
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr ""
-"Er is een fout opgetreden bij het aanmaken van de symbolische verwijzing in "
-"%F."
+"Er is een fout opgetreden bij het aanmaken van de symbolische link in %s."
 
 #: libcore/marlin-file-operations.c:5553
 msgid "Setting permissions"
@@ -1881,21 +1878,21 @@ msgstr "nieuw bestand"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:6075
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating directory %s."
-msgstr "Er is een fout opgetreden bij het aanmaken van de map %B."
+msgstr "Er is een fout opgetreden bij het aanmaken van de map %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:6078
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating file %s."
-msgstr "Fout bij het maken van het bestand %B."
+msgstr "Fout bij het maken van het bestand %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:6084
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Er is een fout opgetreden bij het aanmaken van de map %F."
+msgstr "Er is een fout opgetreden bij het aanmaken van een map in %s."
 
 #: libcore/marlin-file-operations.c:6417
 msgid "Emptying Trash"
@@ -2296,13 +2293,12 @@ msgid "Go to %s"
 msgstr "Ga naar %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
-msgstr "Type"
+msgstr "Type pad"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "Meer resultaten…"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
