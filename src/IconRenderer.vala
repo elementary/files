@@ -165,10 +165,6 @@ namespace Marlin {
                     state = Gtk.StateFlags.SELECTED;
                     state |= widget.get_state_flags ();
                 }
-
-                if (prelit || focused) {
-                    pb = PF.PixbufUtils.lighten (pb);
-                }
             }
 
             if (file.is_image () ) {
