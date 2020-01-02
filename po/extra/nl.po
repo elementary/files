@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-12-31 02:40+0000\n"
+"PO-Revision-Date: 2020-01-03 17:07+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -202,48 +202,59 @@ msgstr "Het geheugengebruik van het BestandKiesScherm is verminderd"
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Avoid crash when selecting image file in some situations"
 msgstr ""
+"Een crash voorkomen bij het selecteren van een afbeeldingsbestand in sommige "
+"situaties"
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
 msgstr ""
+"Een probleem opgelost waardoor het voortgangsvenster niet kon worden "
+"gesloten tijdens het kopiëren van bestanden op het netwerk naar "
+"verwisselbare opslagruimte"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr ""
+"Probleem opgelost met klikken en verslepen na het dubbelklikken op een leeg "
+"gebied"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Avoid crash while scrolling over view switcher"
-msgstr ""
+msgstr "Een crash voorkomen tijdens het scrollen over de weergave wisselaar"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Avoid possible crash in some copy and paste situations"
-msgstr ""
+msgstr "Een mogelijke crash voorkomen in sommige knip en plak situaties"
 
 #: data/io.elementary.files.appdata.xml.in.in:118
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+"Een probleem opgelost met toetsenbord navigatie bij het kiezen van bepaalde "
+"bestanden in de iconen weergave"
 
 #: data/io.elementary.files.appdata.xml.in.in:119
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
+"Probleem met de zoektekst markering style, waardoor een probleem met het "
+"donkere thema wordt opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:127
 msgid "Minor spacing adjustments to location bar"
-msgstr ""
+msgstr "Kleine verandering in tussenruimte van de locatie balk"
 
 #: data/io.elementary.files.appdata.xml.in.in:128
 msgid "Fix F2 renaming behavior"
-msgstr ""
+msgstr "Een probleem opgelost met het hernoemen van F2"
 
 #: data/io.elementary.files.appdata.xml.in.in:136
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "Kleine wijzigingen in de tussenruimte bij de locatie broodkruimels"
 
 #: data/io.elementary.files.appdata.xml.in.in:137
 msgid "Consistently remember color tags"
-msgstr ""
+msgstr "Beter onthouden van kleurlabels"
 
 #: data/io.elementary.files.appdata.xml.in.in:138
 msgid ""
