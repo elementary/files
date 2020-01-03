@@ -26,6 +26,16 @@ namespace FM {
         protected bool linear_select_required = false;
         protected Gtk.TreePath? most_recently_selected = null;
 
+        /* Taken from Gtk.TreeView css to give a consistent indication of focus position between
+         * different views  */
+        protected const string CUSTOM_CSS = """
+            .view:selected:focus,
+            .cell:selected:focus
+            {
+                background-color: @colorAccent;
+            }
+        """;
+
         public IconView (Marlin.View.Slot _slot) {
             assert (_slot != null);
             base (_slot);
@@ -82,6 +92,16 @@ namespace FM {
 
         protected override Gtk.Widget? create_view () {
             tree = new Gtk.IconView ();
+
+            var provider = new Gtk.CssProvider ();
+            var style_context = tree.get_style_context ();
+            try {
+                provider.load_from_data (CUSTOM_CSS);
+                style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                critical (e.message);
+            }
+
             set_up_view ();
 
             return tree as Gtk.Widget;
