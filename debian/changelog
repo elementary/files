@@ -1,3 +1,64 @@
+pantheon-files (4.3.0) bionic; urgency=medium
+
+  * Release 4.3.0 (#1143)
+  * Do not create duplicate Trash tab from dock (#1032)
+  * Simplify, clarify DnD; Fix XdndDirectSave0 (#1133)
+  * Update translation files
+  * Update translation template
+  * Update appdata for future release (#1113)
+  * FileOperations: make the last function async so that the public API
+    can be async (#1120)
+  * Make create operation use GTask API to use native Vala async support
+    (#1112)
+  * Check file exists before checking for parent when getting Async
+    object (#1116)
+  * MarlinUndoManager: Remove useless parameter to callback function
+    (#1100)
+  * More efficient determination of file status (#1109)
+  * Update translation template
+  * Add Lint to CI (#1052)
+  * Lint remaining files (#1097)
+  * Add Release Action
+  * Update translation template
+  * Gettext: Use elementaryBot key and master branch (#1099)
+  * Add Gettext template GitHub action (#1098)
+  * UndoManager: Make undo() and redo() asynchronous (#1083)
+  * Travis: downgrade node.js to 10
+  * Use ViewMode as action target (#1094)
+  * Delint libwidgets (#1093)
+  * Check for existing parent Async object for non-folder uris
+  * Delint src (#1092)
+  * Native Gtk behaviour for all clicks on empty space (#1073)
+  * No emblem on gitignored files (#1079)
+  * Git plugin (#1016)
+  * MarlinFileOperations: Unify trash_or_delete with delete (#1075)
+  * Use lookup_icon before choose_icon so hicolor theme searched.
+    (#1006)
+  * Breadcrumb animation tweaks (#1064)
+  * Lose unused is_drag_pending function (#1074)
+  * Check for null child widget in start_drag_scroll_timer (#1071)
+  * Check non-null ftype in GOF.File.update_type () (#1069)
+  * Fix breadcrumb animation (#1061)
+  * Delint pixbufutils (#1059)
+  * Delint BreadcrumbsElement.vala (#1057)
+  * Delint PropertiesWindow.vala (#1058)
+  * Delint Sidebar (#1056)
+  * Honor global history setting when restoring and saving tabs (#823)
+  * Tone down the DiskRenderer contrast when inactive (#1055)
+  * ClipboardManager: cast the callback function (#1054)
+  * Delint AbstractDirectoryView.vala (#1053)
+  * Update translation template
+  * MarlinFileOperations: Remove the need of a custom f() printf
+    function (#1051)
+  * MarlinFileOperations: try to not use `f` function when unnecessary
+    (#1044)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * MarlinFileOperations: actually call should_confirm_trash
+  * Add libcloudproviders-dev to README.md (#1042)
+
+ -- Cody Garver <cody@elementary.io>  Tue, 07 Jan 2020 18:55:06 +0000
+
 pantheon-files (4.2.0) bionic; urgency=medium
 
   * New upstream release.
