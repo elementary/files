@@ -18,13 +18,6 @@ namespace Marlin {
         CHANGEGROUP
     }
 
-    public class UndoMenuData {
-        public unowned string undo_label;
-        public unowned string undo_description;
-        public unowned string redo_label;
-        public unowned string redo_description;
-    }
-
     public class UndoActionData {
         /* Common stuff */
         public Marlin.UndoActionType action_type;
@@ -193,322 +186,6 @@ namespace Marlin {
 
             return to_restore;
         }
-
-        public unowned string get_first_target_short_name () {
-            return destinations.first ().data;
-        }
-
-        public unowned string get_undo_description () {
-            if (undo_description != null) {
-                return undo_description;
-            }
-
-            switch (action_type) {
-                case Marlin.UndoActionType.COPY:
-                    if (count == 1) {
-                        undo_description = _("Delete '%s'").printf (get_first_target_short_name ());
-                    } else {
-                        undo_description = _("Delete %u copied items").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.DUPLICATE:
-                    if (count == 1) {
-                        undo_description = _("Delete '%s'").printf (get_first_target_short_name ());
-                    } else {
-                        undo_description = _("Delete %u duplicated items").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.MOVE:
-                    var source = src_dir.get_path ();
-                    if (count == 1) {
-                        undo_description = _("Move '%s' back to '%s'").printf (get_first_target_short_name (), source);
-                    } else {
-                        undo_description = _("Move %u items back to '%s'").printf (count, source);
-                    }
-                    break;
-                case Marlin.UndoActionType.RENAME:
-                    var from_name = GLib.Path.get_basename (new_uri);
-                    var to_name = GLib.Path.get_basename (old_uri);
-                    undo_description = _("Rename '%s' as '%s'").printf (from_name, to_name);
-                    break;
-                case Marlin.UndoActionType.CREATEEMPTYFILE:
-                case Marlin.UndoActionType.CREATEFOLDER:
-                    undo_description = _("Delete '%s'").printf (GLib.Path.get_basename (target_uri));
-                    break;
-                case Marlin.UndoActionType.MOVETOTRASH:
-                    if (trashed.size () == 1) {
-                        unowned string item = trashed.get_keys ().data;
-                        var name = GLib.Path.get_basename (item);
-                        var orig_path = PF.FileUtils.get_parent_path_from_path (item);
-                        undo_description = _("Restore '%s' to '%s'").printf (name, orig_path);
-                    } else {
-                        undo_description = _("Restore %u items from trash").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.RESTOREFROMTRASH:
-                    if (count == 1) {
-                        undo_description = _("Move '%s' back to trash").printf (get_first_target_short_name ());
-                    } else {
-                        undo_description = _("Move %u items back to trash").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.CREATELINK:
-                    if (count == 1) {
-                        undo_description = _("Delete link to '%s'").printf (get_first_target_short_name ());
-                    } else {
-                        undo_description = _("Delete links to %u items").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.RECURSIVESETPERMISSIONS:
-                    undo_description = _("Restore original permissions of items enclosed in '%s'").printf (dest_dir.get_path ());
-                    break;
-                case Marlin.UndoActionType.SETPERMISSIONS:
-                    undo_description = _("Restore original permissions of '%s'").printf (GLib.Path.get_basename (target_uri));
-                    break;
-                case Marlin.UndoActionType.CHANGEGROUP:
-                    undo_description = _("Restore group of '%s' to '%s'").printf (GLib.Path.get_basename (target_uri), original_group_name_or_id);
-                    break;
-                case Marlin.UndoActionType.CHANGEOWNER:
-                    undo_description = _("Restore owner of '%s' to '%s'").printf (GLib.Path.get_basename (target_uri), original_user_name_or_id);
-                    break;
-                default:
-                    critical ("Unhandled undo action: %s", action_type.to_string ());
-                    break;
-            }
-
-            return undo_description;
-        }
-
-        public unowned string get_redo_description () {
-            if (redo_description != null) {
-                return redo_description;
-            }
-
-            switch (action_type) {
-                case Marlin.UndoActionType.COPY:
-                    var destination = dest_dir.get_path ();
-                    if (count == 1) {
-                        redo_description = _("Copy '%s' to '%s'").printf (get_first_target_short_name (), destination);
-                    } else {
-                        redo_description = _("Copy %u items to '%s'").printf (count, destination);
-                    }
-                    break;
-                case Marlin.UndoActionType.DUPLICATE:
-                    var destination = dest_dir.get_path ();
-                    if (count == 1) {
-                        redo_description = _("Duplicate '%s' in '%s'").printf (get_first_target_short_name (), destination);
-                    } else {
-                        redo_description = _("Duplicate of %u items in '%s'").printf (count, destination);
-                    }
-                    break;
-                case Marlin.UndoActionType.MOVE:
-                    var destination = dest_dir.get_path ();
-                    if (count == 1) {
-                        redo_description = _("Move '%s' to '%s'").printf (get_first_target_short_name (), destination);
-                    } else {
-                        redo_description = _("Move %u items to '%s'").printf (count, destination);
-                    }
-                    break;
-                case Marlin.UndoActionType.RENAME:
-                    var from_name = GLib.Path.get_basename (old_uri);
-                    var to_name = GLib.Path.get_basename (new_uri);
-                    redo_description = _("Rename '%s' as '%s'").printf (from_name, to_name);
-                    break;
-                case Marlin.UndoActionType.CREATEFILEFROMTEMPLATE:
-                    redo_description = _("Create new file '%s' from template ").printf (GLib.Path.get_basename (target_uri));
-                    break;
-                case Marlin.UndoActionType.CREATEEMPTYFILE:
-                    redo_description = _("Create an empty file '%s'").printf (GLib.Path.get_basename (target_uri));
-                    break;
-                case Marlin.UndoActionType.CREATEFOLDER:
-                    redo_description = _("Create a new folder '%s'").printf (GLib.Path.get_basename (target_uri));
-                    break;
-                case Marlin.UndoActionType.MOVETOTRASH:
-                    if (trashed.size () == 1) {
-                        unowned string item = trashed.get_keys ().data;
-                        var name = GLib.Path.get_basename (item);
-                        redo_description = _("Move '%s' to trash").printf (name);
-                    } else {
-                        redo_description = _("Move %u items to trash").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.RESTOREFROMTRASH:
-                    if (count == 1) {
-                        redo_description = _("Restore '%s' from trash").printf (get_first_target_short_name ());
-                    } else {
-                        redo_description = _("Restore %u items from trash").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.CREATELINK:
-                    if (count == 1) {
-                        redo_description = _("Create link to '%s'").printf (get_first_target_short_name ());
-                    } else {
-                        redo_description = _("Create links to %u items").printf (count);
-                    }
-                    break;
-                case Marlin.UndoActionType.RECURSIVESETPERMISSIONS:
-                    redo_description = _("Set permissions of items enclosed in '%s'").printf (dest_dir.get_path ());
-                    break;
-                case Marlin.UndoActionType.SETPERMISSIONS:
-                    redo_description = _("Set permissions of '%s'").printf (GLib.Path.get_basename (target_uri));
-                    break;
-                case Marlin.UndoActionType.CHANGEGROUP:
-                    redo_description = _("Set group of '%s' to '%s'").printf (GLib.Path.get_basename (target_uri), new_group_name_or_id);
-                    break;
-                case Marlin.UndoActionType.CHANGEOWNER:
-                    redo_description = _("Set owner of '%s' to '%s'").printf (GLib.Path.get_basename (target_uri), new_user_name_or_id);
-                    break;
-                default:
-                    critical ("Unhandled redo action: %s", action_type.to_string ());
-                    break;
-            }
-
-            return redo_description;
-        }
-
-        public unowned string get_undo_label () {
-            if (undo_label != null) {
-                return undo_label;
-            }
-
-            switch (action_type) {
-                case Marlin.UndoActionType.COPY:
-                    undo_label = ngettext ("_Undo copy of %u item",
-                                           "_Undo copy of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.DUPLICATE:
-                    undo_label = ngettext ("_Undo duplicate of %u item",
-                                           "_Undo duplicate of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.MOVE:
-                    undo_label = ngettext ("_Undo move of %u item",
-                                           "_Undo move of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.RENAME:
-                    undo_label = ngettext ("_Undo rename of %u item",
-                                           "_Undo rename of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CREATEFILEFROMTEMPLATE:
-                    undo_label = _("_Undo creation of a file from template");
-                    break;
-                case Marlin.UndoActionType.CREATEEMPTYFILE:
-                    undo_label = _("_Undo creation of an empty file");
-                    break;
-                case Marlin.UndoActionType.CREATEFOLDER:
-                    undo_label = ngettext ("_Undo creation of %u folder",
-                                           "_Undo creation of %u folders", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.MOVETOTRASH:
-                    undo_label = ngettext ("_Undo move to trash of %u item",
-                                           "_Undo move to trash of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.RESTOREFROMTRASH:
-                    undo_label = ngettext ("_Undo restore from trash of %u item",
-                                           "_Undo restore from trash of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CREATELINK:
-                    undo_label = ngettext ("_Undo create link to %u item",
-                                           "_Undo create link to %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.DELETE:
-                    undo_label = ngettext ("_Undo delete of %u item",
-                                           "_Undo delete of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.RECURSIVESETPERMISSIONS:
-                    undo_label = ngettext ("Undo recursive change permissions of %u item",
-                                           "Undo recursive change permissions of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.SETPERMISSIONS:
-                    undo_label = ngettext ("Undo change permissions of %u item",
-                                           "Undo change permissions of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CHANGEGROUP:
-                    undo_label = ngettext ("Undo change group of %u item",
-                                           "Undo change group of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CHANGEOWNER:
-                    undo_label = ngettext ("Undo change owner of %u item",
-                                           "Undo change owner of %u items", count).printf (count);
-                    break;
-                default:
-                    critical ("Unhandled undo action: %s", action_type.to_string ());
-                    break;
-            }
-
-            return undo_label;
-        }
-
-        public unowned string get_redo_label () {
-            if (redo_label != null) {
-                return redo_label;
-            }
-
-            switch (action_type) {
-                case Marlin.UndoActionType.COPY:
-                    redo_label = ngettext ("_Redo copy of %u item",
-                                           "_Redo copy of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.DUPLICATE:
-                    redo_label = ngettext ("_Redo duplicate of %u item",
-                                           "_Redo duplicate of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.MOVE:
-                    redo_label = ngettext ("_Redo move of %u item",
-                                           "_Redo move of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.RENAME:
-                    redo_label = ngettext ("_Redo rename of %u item",
-                                           "_Redo rename of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CREATEFILEFROMTEMPLATE:
-                    redo_label = _("_Redo creation of a file from template");
-                    break;
-                case Marlin.UndoActionType.CREATEEMPTYFILE:
-                    redo_label = _("_Redo creation of an empty file");
-                    break;
-                case Marlin.UndoActionType.CREATEFOLDER:
-                    redo_label = ngettext ("_Redo creation of %u folder",
-                                           "_Redo creation of %u folders", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.MOVETOTRASH:
-                    redo_label = ngettext ("_Redo move to trash of %u item",
-                                           "_Redo move to trash of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.RESTOREFROMTRASH:
-                    redo_label = ngettext ("_Redo restore from trash of %u item",
-                                           "_Redo restore from trash of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CREATELINK:
-                    redo_label = ngettext ("_Redo create link to %u item",
-                                           "_Redo create link to %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.DELETE:
-                    redo_label = ngettext ("_Redo delete of %u item",
-                                           "_Redo delete of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.RECURSIVESETPERMISSIONS:
-                    redo_label = ngettext ("Redo recursive change permissions of %u item",
-                                           "Redo recursive change permissions of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.SETPERMISSIONS:
-                    redo_label = ngettext ("Redo change permissions of %u item",
-                                           "Redo change permissions of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CHANGEGROUP:
-                    redo_label = ngettext ("Redo change group of %u item",
-                                           "Redo change group of %u items", count).printf (count);
-                    break;
-                case Marlin.UndoActionType.CHANGEOWNER:
-                    redo_label = ngettext ("Redo change owner of %u item",
-                                           "Redo change owner of %u items", count).printf (count);
-                    break;
-                default:
-                    critical ("Unhandled undo action: %s", action_type.to_string ());
-                    break;
-            }
-
-            return undo_label;
-        }
     }
 
     public class UndoManager : GLib.Object {
@@ -520,7 +197,7 @@ namespace Marlin {
             return _instance;
         }
 
-        public signal void request_menu_update (UndoMenuData data);
+        public signal void request_menu_update ();
 
         public uint undo_levels { get; construct set; default = 10; }
         public bool confirm_delete { get; construct set; default = false; }
@@ -542,7 +219,7 @@ namespace Marlin {
                 }
             }
 
-            do_menu_update ();
+            request_menu_update ();
             if (action == null) {
                 return true;
             }
@@ -670,7 +347,7 @@ namespace Marlin {
                 }
             }
 
-            do_menu_update ();
+            request_menu_update ();
             if (action == null) {
                 return true;
             }
@@ -785,7 +462,7 @@ namespace Marlin {
                 stack_push_action ((owned) action);
             }
 
-            do_menu_update ();
+            request_menu_update ();
         }
 
         public void add_rename_action (GLib.File renamed_file, string original_name) {
@@ -824,7 +501,7 @@ namespace Marlin {
                 });
             }
 
-            do_menu_update ();
+            request_menu_update ();
         }
 
         private void clear_redo_actions () {
@@ -898,11 +575,11 @@ namespace Marlin {
             }
         }
 
-        private bool can_undo () {
+        public bool can_undo () {
             return (get_next_undo_action () != null);
         }
 
-        private bool can_redo () {
+        public bool can_redo () {
             return (get_next_redo_action () != null);
         }
 
@@ -934,7 +611,7 @@ namespace Marlin {
             undo_redo_flag = false;
 
             /* Update menus */
-            do_menu_update ();
+            request_menu_update ();
         }
 
         private GLib.List<unowned string> get_all_trashed_items () {
@@ -958,26 +635,6 @@ namespace Marlin {
             }
 
             return false;
-        }
-
-        private void do_menu_update () {
-            var data = new UndoMenuData ();
-
-            lock (stack) {
-                Marlin.UndoActionData? action = get_next_undo_action ();
-                if (action != null) {
-                    data.undo_label = action.get_undo_label ();
-                    data.undo_description = action.get_undo_description ();
-                }
-
-                action = get_next_redo_action ();
-                if (action != null) {
-                    data.redo_label = action.get_redo_label ();
-                    data.redo_description = action.get_redo_description ();
-                }
-            }
-
-            request_menu_update (data);
         }
     }
 }

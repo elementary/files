@@ -202,7 +202,7 @@ namespace Marlin.View {
                 return true;
             });
 
-            undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
+            undo_manager.request_menu_update.connect (update_undo_actions);
 
             key_press_event.connect ((event) => {
                 var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -621,16 +621,12 @@ namespace Marlin.View {
             action.set_enabled (false);
         }
 
-        private void update_undo_actions (UndoMenuData? data = null) {
+        private void update_undo_actions () {
             GLib.SimpleAction action;
             action = get_action ("undo");
-            action.set_enabled (data != null && data.undo_label != null);
+            action.set_enabled (undo_manager.can_undo ());
             action = get_action ("redo");
-            action.set_enabled (data != null && data.redo_label != null);
-        }
-
-        private void undo_redo_menu_update_callback (UndoManager manager, UndoMenuData data) {
-            update_undo_actions (data);
+            action.set_enabled (undo_manager.can_redo ());
         }
 
         private void action_edit_path () {
