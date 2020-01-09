@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-12-04 21:25+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
-">\n"
+"PO-Revision-Date: 2020-01-10 14:07+0000\n"
+"Last-Translator: Veli-Pekka Samuli Finnilä <vpf@tuta.io>\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:124
@@ -1445,33 +1445,33 @@ msgstr "Kohdetta %s ei voi liittää"
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:2122
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Valmistellaan %'d tiedoston kopiointia (%S)"
-msgstr[1] "Valmistellaan %'d tiedoston kopiointia (%S)"
+msgstr[0] "Valmistellaan %'d tiedoston kopiointia (%s)"
+msgstr[1] "Valmistellaan %'d tiedoston kopiointia (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:2134
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "Valmistellaan %'d tiedoston siirtoa (%S)"
-msgstr[1] "Valmistellaan %'d tiedoston siirtoa (%S)"
+msgstr[0] "Valmistellaan %'d tiedoston siirtoa (%s)"
+msgstr[1] "Valmistellaan %'d tiedoston siirtoa (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:2146
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "Valmistellaan %'d tiedoston poistamista (%S)"
-msgstr[1] "Valmistellaan %'d tiedoston poistamista (%S)"
+msgstr[0] "Valmistellaan %'d tiedoston poistamista (%s)"
+msgstr[1] "Valmistellaan %'d tiedoston poistamista (%s)"
 
 #: libcore/marlin-file-operations.c:2153
 #, c-format
@@ -1497,7 +1497,7 @@ msgstr "Virhe siirrettäessä tiedostoja roskakoriin."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2247
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1508,7 +1508,7 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2292
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1586,36 +1586,36 @@ msgstr "Kopioidaan \"%s\" kohteeseen \"%s\""
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2693
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "Kahdennetaan \"%B\""
+msgstr "Kahdennetaan \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2701
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Siirretään %'d tiedosto (lähteestä ”%B”) kohteeseen ”%B”"
-msgstr[1] "Siirretään %'d tiedostoa (lähteestä ”%B”) kohteeseen ”%B”"
+msgstr[0] "Siirretään %'d tiedosto (lähteestä ”%s”) kohteeseen ”%s”"
+msgstr[1] "Siirretään %'d tiedostoa (lähteestä ”%s”) kohteeseen ”%s”"
 
 #: libcore/marlin-file-operations.c:2704
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Kopioidaan %'d tiedosto (lähteestä ”%B”) kohteeseen ”%B”"
-msgstr[1] "Kopioidaan %'d tiedostoa (lähteestä ”%B”) kohteeseen ”%B”"
+msgstr[0] "Kopioidaan %'d tiedosto (lähteestä ”%s”) kohteeseen ”%s”"
+msgstr[1] "Kopioidaan %'d tiedostoa (lähteestä ”%s”) kohteeseen ”%s”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2713
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Kahdennetaan %'d tiedosto (lähteestä ”%B”)"
-msgstr[1] "Kahdennetaan %'d tiedostoa (lähteestä ”%B”)"
+msgstr[0] "Kahdennetaan %'d tiedosto (lähteestä ”%s”)"
+msgstr[1] "Kahdennetaan %'d tiedostoa (lähteestä ”%s”)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
