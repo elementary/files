@@ -16,6 +16,19 @@
  * Boston, MA 02110-1301, USA.
  */
 
+/* Common dialog buttons */
+public const string CANCEL = _("_Cancel");
+public const string DELETE = _("Delete");
+public const string SKIP = _("_Skip");
+public const string SKIP_ALL = _("S_kip All");
+public const string RETRY = _("_Retry");
+public const string DELETE_ALL = _("Delete _All");
+public const string REPLACE = _("_Replace");
+public const string REPLACE_ALL = _("Replace _All");
+public const string MERGE = _("_Merge");
+public const string MERGE_ALL = _("Merge _All");
+public const string COPY_FORCE = _("Copy _Anyway");
+
 namespace Marlin {
     public struct RunSimpleDialogData {
         unowned Gtk.Window parent_window;

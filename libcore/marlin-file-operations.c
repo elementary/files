@@ -138,18 +138,6 @@ typedef struct {
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
-#define CANCEL _("_Cancel")
-#define DELETE _("_Delete")
-#define SKIP _("_Skip")
-#define SKIP_ALL _("S_kip All")
-#define RETRY _("_Retry")
-#define DELETE_ALL _("Delete _All")
-#define REPLACE _("_Replace")
-#define REPLACE_ALL _("Replace _All")
-#define MERGE _("_Merge")
-#define MERGE_ALL _("Merge _All")
-#define COPY_FORCE _("Copy _Anyway")
-
 static void scan_sources (GList *files,
                           SourceInfo *source_info,
                           CommonJob *job,
@@ -3513,7 +3501,7 @@ remove_target_recursively (CommonJob *job,
         if (job->skip_all_error) {
             goto skip1;
         }
-        
+
         src_name = g_file_get_parse_name (src);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
