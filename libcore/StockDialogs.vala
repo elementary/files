@@ -104,7 +104,7 @@ namespace PF.Dialogs {
                 dialog.add_button (title, response_id);
                 if (title == DELETE || title == DELETE_ALL) {
                     var button = dialog.get_widget_for_response (response_id);
-                    button.get_style_context ().add_class ("destructive-action");
+                    button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 }
                 response_id++;
             };
