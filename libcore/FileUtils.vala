@@ -194,7 +194,7 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? p, string? cp = null) {
+    public string sanitize_path (string? p, string? cp = null, bool include_file_protocol = true) {
         string path = "";
         string scheme = "";
         string? current_path = null;
@@ -291,12 +291,14 @@ namespace PF.FileUtils {
             }
         }
 
+        if (!include_file_protocol && new_path.has_prefix (Marlin.ROOT_FS_URI)) {
+            new_path = new_path.slice (Marlin.ROOT_FS_URI.length, new_path.length);
+        }
+
         return new_path;
     }
 
-    /** Splits the path into a protocol ending in '://" (unless it is file:// which is replaced by "")
-      * and a path beginning "/".
-    **/
+    /** Splits the path into a protocol ending in '://"  and a path beginning "/". **/
     public void split_protocol_from_path (string path, out string protocol, out string new_path) {
         protocol = "";
         new_path = path.dup ();
