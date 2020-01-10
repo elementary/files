@@ -1188,7 +1188,7 @@ confirm_delete_directly (CommonJob *job,
         gchar *basename = custom_basename_from_file (files->data);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\"?"), basename);
+        prompt = g_strdup_printf (_("Permanently delete “%s”?"), basename);
         g_free (basename);
     } else {
         prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
