@@ -1200,7 +1200,7 @@ confirm_delete_directly (CommonJob *job,
 
     response = run_warning (job,
                             prompt,
-                            g_strdup (_("If you delete an item, it will be permanently lost.")),
+                            g_strdup (_("Deleted items are not sent to Trash and are not recoverable.")),
                             NULL,
                             FALSE,
                             CANCEL, DELETE,
@@ -3513,7 +3513,7 @@ remove_target_recursively (CommonJob *job,
         if (job->skip_all_error) {
             goto skip1;
         }
-        
+
         src_name = g_file_get_parse_name (src);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
