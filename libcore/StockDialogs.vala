@@ -101,7 +101,12 @@ namespace PF.Dialogs {
         } else {
             var response_id = 0;
             foreach (string title in data.button_titles) {
-                dialog.add_button (title, response_id++);
+                dialog.add_button (title, response_id);
+                if (title == DELETE || title == DELETE_ALL) {
+                    var button = dialog.get_widget_for_response (response_id);
+                    button.get_style_context ().add_class ("destructive-action");
+                }
+                response_id++;
             };
         }
 
