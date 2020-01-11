@@ -1748,7 +1748,9 @@ skip:
             marlin_file_changes_queue_file_removed (file);
 
             // Start UNDO-REDO
-            marlin_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
+            if (job->undo_redo_data != NULL) {
+                marlin_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
+            }
             // End UNDO-REDO
 
             files_trashed++;
@@ -3215,7 +3217,9 @@ retry:
     marlin_file_changes_queue_file_added (*dest);
 
     // Start UNDO-REDO
-    marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
+    if (job->undo_redo_data != NULL) {
+        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
+    }
     // End UNDO-REDO
 
     return CREATE_DEST_DIR_SUCCESS;
@@ -3512,7 +3516,7 @@ remove_target_recursively (CommonJob *job,
         if (job->skip_all_error) {
             goto skip1;
         }
-        
+
         src_name = g_file_get_parse_name (src);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -4006,7 +4010,9 @@ retry:
         }
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        if (job->undo_redo_data != NULL) {
+            marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        }
         // End UNDO-REDO
 
         g_object_unref (dest);
@@ -4645,7 +4651,9 @@ retry:
         }*/
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        if (job->undo_redo_data != NULL) {
+            marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        }
         // End UNDO-REDO
 
         return;
@@ -5146,7 +5154,9 @@ retry:
                                           &error)) {
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_origin_target_pair (common->undo_redo_data, src, dest);
+        if (common->undo_redo_data != NULL) {
+            marlin_undo_action_data_add_origin_target_pair (common->undo_redo_data, src, dest);
+        }
         // End UNDO-REDO
 
         g_free (path);
@@ -5499,7 +5509,9 @@ set_permissions_file (SetPermissionsJob *job,
         current = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_file_permissions(common->undo_redo_data, file, current);
+        if (common->undo_redo_data != NULL) {
+            marlin_undo_action_data_add_file_permissions(common->undo_redo_data, file, current);
+        }
         // End UNDO-REDO
 
         current = (current & ~mask) | value;
@@ -5921,7 +5933,7 @@ retry:
                                      common->cancellable,
                                      &error);
         // Start UNDO-REDO
-        if (res) {
+        if (res && common->undo_redo_data != NULL) {
             marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                      g_file_get_uri(dest),
                                                      NULL);
@@ -5936,7 +5948,7 @@ retry:
                                NULL, NULL,
                                &error);
             // Start UNDO-REDO
-            if (res) {
+            if (res && common->undo_redo_data != NULL) {
                 marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                          g_file_get_uri(dest),
                                                          g_file_get_uri(job->src));
@@ -5965,7 +5977,7 @@ retry:
                                                  common->cancellable,
                                                  &error);
                     // Start UNDO-REDO
-                    if (res) {
+                    if (res && common->undo_redo_data != NULL) {
                         marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                                  g_file_get_uri(dest),
                                                                  g_strdup(data));

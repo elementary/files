@@ -330,7 +330,10 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.DELETE:
+                default:
+                    warning ("Ignoring request to undo irreversible or unknown action %s",
+                             action.action_type.to_string ());
+
                     undo_redo_flag = false;
                     break; /* We shouldn't be here */
             }
@@ -432,7 +435,7 @@ namespace Marlin {
                         var uri_to_trash = action.trashed.get_keys ();
                         var uris = new GLib.List<GLib.File> ();
                         uri_to_trash.foreach ((uri) => uris.prepend (GLib.File.new_for_uri (uri)));
-                        undo_redo_flag = true;
+
                         try {
                             yield Marlin.FileOperations.@delete (uris, widget.get_toplevel () as Gtk.Window, true, cancellable);
                         } catch (Error e) {
@@ -443,7 +446,10 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.DELETE:
+                default:
+                    warning ("Ignoring request to redo irreversible or unknown action %s",
+                             action.action_type.to_string ());
+
                     undo_redo_flag = false;
                     break; /* We shouldn't be here */
             }
