@@ -218,7 +218,7 @@ format_time (int seconds)
     }
 
     if (seconds < 60) {
-        return g_strdup_printf (ngettext ("%'d second","%'d seconds", (int) seconds), (int) seconds);
+        return g_strdup_printf (ngettext ("%'d second","%'d seconds", seconds), seconds);
     }
 
     if (seconds < 60*60) {
