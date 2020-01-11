@@ -1250,13 +1250,13 @@ report_delete_progress (CommonJob *job,
         gchar *formated_time;
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
-        formated_time = format_time (seconds_count_format_time_units (remaining_time));
+        formated_time = format_time (remaining_time);
 
         /// TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
         /// The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
         time_left_s = g_strdup_printf (ngettext ("%s left",
                                                  "%s left",
-                                                 remaining_time),
+                                                 seconds_count_format_time_units (remaining_time)),
                                        formated_time);
         g_free (formated_time);
 
@@ -2771,7 +2771,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         gchar *total_size_format = g_format_size (total_size);
         gchar *transfer_rate_format = g_format_size (transfer_rate);
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
-        formated_remaining_time = format_time (seconds_count_format_time_units (remaining_time));
+        formated_remaining_time = format_time (remaining_time);
 
 
         /// TRANSLATORS: The two first %s and the last %s will expand to a size
@@ -2782,7 +2782,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         /// The order in which %s appear can be changed by using the right positional specifier.
         s = g_strdup_printf (ngettext ("%s of %s \xE2\x80\x94 %s left (%s/sec)",
                                        "%s of %s \xE2\x80\x94 %s left (%s/sec)",
-                                       remaining_time),
+                                       seconds_count_format_time_units (remaining_time)),
                              num_bytes_format, total_size_format,
                              formated_remaining_time,
                              transfer_rate_format);
