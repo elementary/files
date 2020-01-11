@@ -3170,7 +3170,7 @@ namespace FM {
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
             try {
-                return yield PF.FileUtils.set_file_display_name (old_location, new_name, cancellable);
+                return yield PF.FileUtils.set_file_display_name (old_location, new_name, false, cancellable);
             } catch (GLib.Error e) {
                 throw e;
             }

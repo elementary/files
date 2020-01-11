@@ -263,10 +263,10 @@ namespace Marlin {
                     undo_redo_done_transfer (action);
                     break;
                 case Marlin.UndoActionType.RENAME:
-                    var file = GLib.File.new_for_uri (action.new_uri);
-                    var new_name = GLib.Path.get_basename (action.old_uri);
+                    var file = PF.FileUtils.get_file_for_path (action.new_uri);
+                    var new_name = PF.FileUtils.get_file_for_path (action.old_uri).get_basename ();
                     try {
-                        yield PF.FileUtils.set_file_display_name (file, new_name, cancellable);
+                        yield PF.FileUtils.set_file_display_name (file, new_name, true, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -396,10 +396,10 @@ namespace Marlin {
                     undo_redo_done_transfer (action);
                     break;
                 case Marlin.UndoActionType.RENAME:
-                    var file = GLib.File.new_for_uri (action.new_uri);
-                    var new_name = GLib.Path.get_basename (action.old_uri);
+                    var file = PF.FileUtils.get_file_for_path (action.old_uri);
+                    var new_name = PF.FileUtils.get_file_for_path (action.new_uri).get_basename ();
                     try {
-                        yield PF.FileUtils.set_file_display_name (file, new_name, cancellable);
+                        yield PF.FileUtils.set_file_display_name (file, new_name, true, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -473,6 +473,7 @@ namespace Marlin {
         }
 
         public void add_rename_action (GLib.File renamed_file, string original_name) {
+            /* The stored uris are escaped */
             var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1);
             data.old_uri = renamed_file.get_parent ().get_child (original_name).get_uri ();
             data.new_uri = renamed_file.get_uri ();

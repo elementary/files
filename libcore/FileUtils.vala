@@ -409,9 +409,13 @@ namespace PF.FileUtils {
         }
     }
 
-    public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
+    public async GLib.File? set_file_display_name (GLib.File old_location,
+                                                   string new_name,
+                                                   bool is_undo_redo = false,
+                                                   GLib.Cancellable? cancellable = null) throws GLib.Error {
 
         /** TODO Check validity of new name **/
+
 
         GLib.File? new_location = null;
         GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
@@ -434,9 +438,11 @@ namespace PF.FileUtils {
                 warning ("Renamed file has no GOF.Directory.Async");
             }
 
-            /* Register the change with the undo manager */
-            Marlin.UndoManager.instance ().add_rename_action (new_location,
-                                                              original_name);
+            /* Register the change with the undo manager unless undoing/redoing*/
+            if (!is_undo_redo) {
+                Marlin.UndoManager.instance ().add_rename_action (new_location,
+                                                                  original_name);
+            }
         } catch (Error e) {
             warning ("Rename error");
             PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
