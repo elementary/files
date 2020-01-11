@@ -451,8 +451,9 @@ namespace Marlin {
             return true;
         }
 
-        public void add_action (owned Marlin.UndoActionData action) {
-            if (!action.is_valid) {
+        /* Action may be null, e.g. when redoing after undoing */
+        public void add_action (owned Marlin.UndoActionData? action) {
+            if (action == null || !action.is_valid) {
                 return;
             }
 
