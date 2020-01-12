@@ -149,7 +149,10 @@ namespace Marlin {
             var to_restore = new GLib.HashTable<GLib.File, string> (direct_hash, direct_equal);
             var trash = GLib.File.new_for_uri ("trash:");
             try {
-                var enumerator = trash.enumerate_children (GLib.FileAttribute.STANDARD_NAME + "," + GLib.FileAttribute.TIME_MODIFIED + "," + GLib.FileAttribute.TRASH_ORIG_PATH, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+                var enumerator = trash.enumerate_children (GLib.FileAttribute.STANDARD_NAME + "," +
+                                                           GLib.FileAttribute.TIME_MODIFIED + "," +
+                                                           GLib.FileAttribute.TRASH_ORIG_PATH,
+                                                           GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
                 GLib.FileInfo? info = null;
                 while ((info = enumerator.next_file ()) != null) {
                     unowned string? origpath = info.get_attribute_byte_string (GLib.FileAttribute.TRASH_ORIG_PATH);
