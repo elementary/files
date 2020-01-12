@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2020-01-03 17:07+0000\n"
+"PO-Revision-Date: 2020-01-06 22:53+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -261,66 +261,72 @@ msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
 msgstr ""
+"Herlaad de thumbnails bij in- en uitzoomen zodat het standaardplaatje niet "
+"onnodig wordt getoond"
 
 #: data/io.elementary.files.appdata.xml.in.in:139
 msgid "Fix running scripts with spaces in filename"
 msgstr ""
+"Een probleem opgelost met het uitvoeren van scripts met een spatie in de naam"
 
 #: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr ""
+msgstr "Een probleem met hoog CPU verbruik in versie 4.1.4 opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "File sorting fixes"
-msgstr ""
+msgstr "Probleem met het sorteren van bestanden opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Meson: fix soversion names"
-msgstr ""
+msgstr "Meson: een probleem opgelost met soversion namen"
 
 #: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Remove CMake build system"
-msgstr ""
+msgstr "Het CMake installeer systeem verwijderd"
 
 #: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Fix missing File System properties menu"
 msgstr ""
+"Een probleem opgelost met het verdwijnende bestandssysteem eigenschappen menu"
 
 #: data/io.elementary.files.appdata.xml.in.in:159
 msgid "Drop intltool dependency"
-msgstr ""
+msgstr "Niet meer afhankelijk van het intltool pakket"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Fix default file type handler logic"
-msgstr ""
+msgstr "Een probleem opgelost met de standaard afhandeling van een bestandstype"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
 msgid "Fix initial search window size too small"
-msgstr ""
+msgstr "Een probleem opgelost waarbij het zoekvenster initieel te klein was"
 
 #: data/io.elementary.files.appdata.xml.in.in:162
 msgid "Add option to disable local file thumbnails"
 msgstr ""
+"Een optie toegevoegd om thumbnails van lokale bestanden uit te schakelen"
 
 #: data/io.elementary.files.appdata.xml.in.in:163
 msgid "Fix crash when opening multiple video files"
-msgstr ""
+msgstr "Crash bij het openen van meerdere videobestanden opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:164
 msgid "Fix some timing issues around adding and removing files"
 msgstr ""
+"Timing problemen opgelost met het toevoegen en verwijderen van bestanden"
 
 #: data/io.elementary.files.appdata.xml.in.in:165
 msgid "Meson: fix missing library headers"
-msgstr ""
+msgstr "Meson: missende bibliotheek koppen toegevoegd"
 
 #: data/io.elementary.files.appdata.xml.in.in:166
 msgid "Fix color tag display"
-msgstr ""
+msgstr "Een probleem met het tonen van kleurlabel opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:167
 msgid "Show reserved space in Properties window"
-msgstr ""
+msgstr "Toon gereserveerde ruimte in het eigenschappen venster"
 
 #: data/io.elementary.files.appdata.xml.in.in:175
 msgid "Add border radius to text background"

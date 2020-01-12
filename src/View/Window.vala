@@ -390,7 +390,10 @@ namespace Marlin.View {
             open_tabs ({file}, mode);
         }
 
-        public void open_tabs (File[]? files = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        public void open_tabs (File[]? files = null,
+                               Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                               bool ignore_duplicate = false) {
+
             if (files == null || files.length == 0 || files[0] == null) {
                 /* Restore session if not root and settings allow */
                 if (Posix.getuid () == 0 ||
@@ -406,8 +409,10 @@ namespace Marlin.View {
                 }
             } else {
                 /* Open tabs at each requested location */
+                /* As files may be derived from commandline, we sanitize them */
                 foreach (var file in files) {
-                    add_tab (file, mode);
+                    string sanitized_path = PF.FileUtils.sanitize_path (file.get_uri ());
+                    add_tab (File.new_for_uri (sanitized_path), mode, ignore_duplicate);
                 }
             }
         }
@@ -422,7 +427,25 @@ namespace Marlin.View {
         }
 
         private void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
-                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                             bool ignore_duplicate = false) {
+
+            if (ignore_duplicate) {
+                bool is_child;
+                var existing_tab_position = location_is_duplicate (location, out is_child);
+                if (existing_tab_position >= 0) {
+                    tabs.current = tabs.get_tab_by_index (existing_tab_position);
+                    change_tab (existing_tab_position);
+
+                    if (is_child) {
+                        /* Select the child  */
+                        ((ViewContainer)(tabs.current.page)).focus_location_if_in_current_directory (location);
+                    }
+
+                    return;
+                }
+            }
+
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
             var tab = new Granite.Widgets.Tab ("", null, content);
@@ -447,6 +470,31 @@ namespace Marlin.View {
             });
 
             content.add_view (mode, location);
+        }
+
+        private int location_is_duplicate (GLib.File location, out bool is_child) {
+            is_child = false;
+            string parent_path = "";
+            string uri = location.get_uri ();
+            /* Ensures consistent format of protocol and path */
+            parent_path = PF.FileUtils.get_parent_path_from_path (location.get_path ());
+            int existing_position = 0;
+
+            foreach (Granite.Widgets.Tab tab in tabs.tabs) {
+                var tab_location = ((ViewContainer)(tab.page)).location;
+                string tab_uri = tab_location.get_uri ();
+
+                if (PF.FileUtils.same_location (uri, tab_uri)) {
+                    return existing_position;
+                } else if (PF.FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
+                    is_child = true;
+                    return existing_position;
+                }
+
+                existing_position++;
+            }
+
+            return -1;
         }
 
         private string check_for_tab_with_same_name (int id, string path) {
