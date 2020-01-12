@@ -437,8 +437,7 @@ namespace PF.FileUtils {
                 warning ("Renamed file has no GOF.Directory.Async");
             }
 
-            Marlin.UndoManager.instance ().add_rename_action (new_location,
-                                                                  original_name);
+            Marlin.UndoManager.instance ().add_rename_action (new_location, original_name);
         } catch (Error e) {
             warning ("Rename error");
             PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
@@ -791,7 +790,9 @@ namespace PF.FileUtils {
 
     public uint64 get_file_modification_time (GLib.File file) {
         try {
-            var info = file.query_info (GLib.FileAttribute.TIME_MODIFIED, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+            var info = file.query_info (
+                                GLib.FileAttribute.TIME_MODIFIED, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null
+                            );
             return info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
         } catch (Error e) {
             critical (e.message);

@@ -21,7 +21,7 @@ namespace Marlin {
     public class UndoActionData {
         /* Common stuff */
         public Marlin.UndoActionType action_type;
-        public bool is_valid;                      /* False if action generated during undo/redo
+        public bool is_valid;                      /* False if action generated during undo/redo */
         public bool locked;                        /* True if the action is being undone/redone */
         public bool freed;                         /* True if the action must be freed after undo/redo */
         public uint count;                         /* Size of affected uris (count of items) */
