@@ -25,7 +25,6 @@ namespace Marlin {
         public bool locked;                        /* True if the action is being undone/redone */
         public bool freed;                         /* True if the action must be freed after undo/redo */
         public uint count;                         /* Size of affected uris (count of items) */
-        public unowned Marlin.UndoManager manager; /* Pointer to the manager */
 
         /* Copy / Move stuff */
         public GLib.File src_dir;
@@ -76,6 +75,8 @@ namespace Marlin {
             if (action_type == UndoActionType.MOVETOTRASH) {
                 this.trashed = new HashTable<string, uint64?> (str_hash, str_equal);
             }
+
+            is_valid = !Marlin.UndoManager.instance ().undo_redo_flag;
         }
 
         public void set_src_dir (GLib.File src) {
@@ -89,33 +90,25 @@ namespace Marlin {
         public void add_origin_target_pair (GLib.File origin, GLib.File target) {
             sources.prepend (src_dir.get_relative_path (origin));
             destinations.prepend (dest_dir.get_relative_path (target));
-
-            is_valid = true;
         }
 
         public void set_create_data (string target_uri, string template) {
             this.template = template;
             this.target_uri = target_uri;
-
-            is_valid = true;
         }
 
         public void set_rename_information (GLib.File old_file, GLib.File new_file) {
             this.old_uri = old_file.get_uri ();
             this.new_uri = new_file.get_uri ();
-
-            is_valid = true;
         }
 
         public void add_trashed_file (GLib.File file, uint64 mtime) {
             trashed.insert (file.get_uri (), mtime);
-            is_valid = true;
         }
 
         // Pushes a recursive permission change data in an existing undo data container
         public void add_file_permissions (GLib.File file, uint32 permission) {
             original_permissions.insert (file.get_uri (), permission);
-            is_valid = true;
         }
 
         public void set_recursive_permissions (uint32 file_permissions, uint32 file_mask,
@@ -124,8 +117,6 @@ namespace Marlin {
             this.file_mask = file_mask;
             this.dir_permissions = dir_permissions;
             this.dir_mask = dir_mask;
-
-            is_valid = true;
         }
 
         public void set_file_permissions (string uri, uint32 current_permissions, uint32 new_permissions) {
@@ -133,8 +124,6 @@ namespace Marlin {
 
             this.current_permissions = current_permissions;
             this.new_permissions = new_permissions;
-
-            is_valid = true;
         }
 
 
@@ -143,8 +132,6 @@ namespace Marlin {
 
             original_user_name_or_id = current_user;
             new_user_name_or_id = new_user;
-
-            is_valid = true;
         }
 
         public void set_group_change_information (string uri, string current_group, string new_group) {
@@ -152,8 +139,6 @@ namespace Marlin {
 
             original_group_name_or_id = current_group;
             new_group_name_or_id = new_group;
-
-            is_valid = true;
         }
 
         internal GLib.HashTable<GLib.File, string>? retrieve_files_to_restore () {
@@ -204,7 +189,7 @@ namespace Marlin {
 
         private GLib.Queue<Marlin.UndoActionData> stack;
         private uint index;
-        private bool undo_redo_flag;
+        public bool undo_redo_flag { get; private set; }
 
         construct {
             stack = new GLib.Queue<Marlin.UndoActionData> ();
@@ -254,7 +239,9 @@ namespace Marlin {
                     var uris = new GLib.List<GLib.File> ();
                     action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
                     try {
-                        yield Marlin.FileOperations.copy_move_link (uris, null, action.src_dir, Gdk.DragAction.MOVE, widget, cancellable);
+                        yield Marlin.FileOperations.copy_move_link (
+                                  uris, null, action.src_dir, Gdk.DragAction.MOVE, widget, cancellable
+                              );
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -459,11 +446,9 @@ namespace Marlin {
 
         /* Action may be null, e.g. when redoing after undoing */
         public void add_action (owned Marlin.UndoActionData? action) {
-            if (undo_redo_flag || action == null || !action.is_valid) {
+            if (action == null || !action.is_valid) {
                 return;
             }
-
-            action.manager = this;
 
             lock (stack) {
                 stack_push_action ((owned) action);
@@ -480,7 +465,6 @@ namespace Marlin {
             var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1);
             data.old_uri = renamed_file.get_parent ().get_child (original_name).get_uri ();
             data.new_uri = renamed_file.get_uri ();
-            data.is_valid = true;
 
             add_action ((owned) data);
         }
