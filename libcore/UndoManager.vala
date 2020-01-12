@@ -39,7 +39,7 @@ namespace Marlin {
         public string redo_description;
 
         /* Create new file/folder stuff/set permissions */
-        public string template;
+        public string? template;
         public string target_uri;
 
         /* Rename stuff */
@@ -92,7 +92,7 @@ namespace Marlin {
             destinations.prepend (dest_dir.get_relative_path (target));
         }
 
-        public void set_create_data (string target_uri, string template) {
+        public void set_create_data (string target_uri, string? template) {
             this.template = template;
             this.target_uri = target_uri;
         }
@@ -267,7 +267,9 @@ namespace Marlin {
                     uris.prepend (GLib.File.new_for_uri (action.target_uri));
                     if (confirm_delete) {
                         try {
-                            yield Marlin.FileOperations.@delete (uris, widget.get_toplevel () as Gtk.Window, false, cancellable);
+                            yield Marlin.FileOperations.@delete (
+                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                                  );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -396,7 +398,7 @@ namespace Marlin {
                     break;
                 case Marlin.UndoActionType.CREATEEMPTYFILE:
                     var p_uri = GLib.File.new_for_uri (action.target_uri).get_parent ().get_uri ();
-                    var new_name = GLib.Path.get_basename (action.target_uri);
+                    var new_name = GLib.Path.get_basename (Uri.unescape_string (action.target_uri));
                     try {
                         yield Marlin.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, null, p_uri, new_name, action.template, 0, cancellable);
                     } catch (Error e) {
