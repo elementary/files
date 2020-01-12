@@ -21,7 +21,7 @@ namespace Marlin {
     public class UndoActionData {
         /* Common stuff */
         public Marlin.UndoActionType action_type;
-        public bool is_valid;
+        public bool is_valid = false;
         public bool locked;                        /* True if the action is being undone/redone */
         public bool freed;                         /* True if the action must be freed after undo/redo */
         public uint count;                         /* Size of affected uris (count of items) */
@@ -266,7 +266,7 @@ namespace Marlin {
                     var file = PF.FileUtils.get_file_for_path (action.new_uri);
                     var new_name = PF.FileUtils.get_file_for_path (action.old_uri).get_basename ();
                     try {
-                        yield PF.FileUtils.set_file_display_name (file, new_name, true, cancellable);
+                        yield PF.FileUtils.set_file_display_name (file, new_name, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -399,7 +399,7 @@ namespace Marlin {
                     var file = PF.FileUtils.get_file_for_path (action.old_uri);
                     var new_name = PF.FileUtils.get_file_for_path (action.new_uri).get_basename ();
                     try {
-                        yield PF.FileUtils.set_file_display_name (file, new_name, true, cancellable);
+                        yield PF.FileUtils.set_file_display_name (file, new_name, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -459,7 +459,7 @@ namespace Marlin {
 
         /* Action may be null, e.g. when redoing after undoing */
         public void add_action (owned Marlin.UndoActionData? action) {
-            if (action == null || !action.is_valid) {
+            if (undo_redo_flag || action == null || !action.is_valid) {
                 return;
             }
 
@@ -473,6 +473,9 @@ namespace Marlin {
         }
 
         public void add_rename_action (GLib.File renamed_file, string original_name) {
+            if (undo_redo_flag) {
+                return;
+            }
             /* The stored uris are escaped */
             var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1);
             data.old_uri = renamed_file.get_parent ().get_child (original_name).get_uri ();
@@ -480,10 +483,6 @@ namespace Marlin {
             data.is_valid = true;
 
             add_action ((owned) data);
-        }
-
-        public bool is_undo_redo () {
-            return undo_redo_flag;
         }
 
         public void trash_has_emptied () {
