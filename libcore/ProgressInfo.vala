@@ -17,25 +17,22 @@
  */
 
 public class PF.Progress.Info : GLib.Object {
-    public signal void changed ();
-    public signal void progress_changed ();
-    public signal void started ();
-    public signal void finished ();
-
     private const uint SIGNAL_DELAY_MSEC = 100;
 
-    private GLib.Cancellable cancellable;
+    public double progress { get; private set; default = 0; }
+    public double current { get; private set; default = -1; }
+    public double total { get; private set; default = -1; }
+    public bool activity_mode { get; private set; default = true; }
 
-    private string title;
-    private string status;
-    private string details;
-    private double progress;
-    private double current;
-    private double total;
-    private bool activity_mode;
-    private bool is_started;
-    private bool is_finished;
-    private bool is_paused;
+    public uint inhibit_cookie { get; set; default = -1; }
+    public string details { get; private set; default = _("Preparing"); }
+    public string status { get; private set; default = _("Preparing"); }
+    public string title { get; set; default = _("Preparing"); }
+    public bool is_started { get; private set; }
+    public bool is_finished { get; private set; }
+    public bool is_paused { get; private set; }
+    public GLib.Cancellable cancellable { get; construct; }
+    public bool is_cancelled = false;
 
     private GLib.Source idle_source;
     private bool source_is_now;
@@ -45,82 +42,26 @@ public class PF.Progress.Info : GLib.Object {
     private bool changed_at_idle;
     private bool progress_at_idle;
 
-    public Info () {
+    public signal void changed ();
+    public signal void progress_changed ();
+    public signal void progress_started ();
+    public signal void progress_finished ();
 
+    ~Info () {
+        debug ("INFO DESTRUCTOR");
     }
 
     construct {
         cancellable = new GLib.Cancellable ();
-        PF.Progress.InfoManager.get_instance ().add_new_info (this);
-    }
-
-    public string get_title () {
-        if (title != null) {
-            return title;
-        } else if (details != null) {
-            return details;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public string get_status () {
-        if (status != null) {
-            return status;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public string get_details () {
-        if (details != null) {
-            return details;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public GLib.Cancellable get_cancellable () {
-        return cancellable;
     }
 
     public void cancel () {
         cancellable.cancel ();
-    }
-
-    public bool get_is_started () {
-        return is_started;
-    }
-
-    public bool get_is_finished () {
-        return is_finished;
-    }
-
-    public bool get_is_paused () {
-        return is_paused;
-    }
-
-    public double get_progress () {
-        if (activity_mode) {
-            return -1;
-        } else {
-            return progress;
-        }
-    }
-
-    public double get_current () {
-        if (activity_mode) {
-            return 0;
-        } else {
-            return current;
-        }
-    }
-
-    public double get_total () {
-        if (activity_mode) {
-            return -1;
-        } else {
-            return total;
+        is_cancelled = true;
+        /* Ensure uninhibited even if operation blocked */
+        if (inhibit_cookie >= 0) {
+            ((Gtk.Application)(Application.get_default ())).uninhibit (inhibit_cookie);
+            inhibit_cookie = -1;
         }
     }
 
@@ -133,13 +74,16 @@ public class PF.Progress.Info : GLib.Object {
         }
     }
 
-    public void finish () {
-        if (!is_finished && !cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
-            is_finished = true;
-
-            finish_at_idle = true;
-            queue_idle (true);
+    /* Called (only) by marlin-file-operations when job finalized
+     * after completion OR cancellation */
+    public void operation_finalized (bool was_cancelled) {
+        if (inhibit_cookie >= 0) {
+            ((Gtk.Application)(Application.get_default ())).uninhibit (inhibit_cookie);
+            inhibit_cookie = -1;
         }
+
+        finish_at_idle = true;
+        queue_idle (true);
     }
 
     public void pause () {
@@ -154,20 +98,12 @@ public class PF.Progress.Info : GLib.Object {
         }
     }
 
-    public void set_status (string status) {
-        take_status (status);
-    }
-
     public void take_status (owned string status) {
         if (this.status != status) {
             this.status = status;
             changed_at_idle = true;
             queue_idle (false);
         }
-    }
-
-    public void set_details (string details) {
-        take_details (details);
     }
 
     public void take_details (owned string details) {
@@ -178,7 +114,7 @@ public class PF.Progress.Info : GLib.Object {
         }
     }
 
-    public void set_progress (double current, double total) {
+    public void update_progress (double current, double total) {
         double current_percent = 1.0;
 
         if (total > 0) {
@@ -202,7 +138,8 @@ public class PF.Progress.Info : GLib.Object {
 
     public void pulse_progress () {
         activity_mode = true;
-        progress = 0.0;
+        progress = -1.0;
+        current = 0.0;
         progress_at_idle = true;
         queue_idle (false);
     }
@@ -227,12 +164,22 @@ public class PF.Progress.Info : GLib.Object {
     }
 
     private bool idle_callback () {
-        weak GLib.Source source = GLib.MainContext.current_source ();
+        if (finish_at_idle) {
+            finish_at_idle = false;
+            /* Signal Progressinfo manager and ProgressUIManager info finished with.
+             * This is the only place this signal is emitted so must always run.
+             */
+            progress_finished (); //Signal progressinfo manager and ProgressUIManager
+            return GLib.Source.REMOVE;
+        }
+
+
         /* Protect agains races where the source has
          * been destroyed on another thread while it
          * was being dispatched.
          * Similar to what gdk_threads_add_idle does.
          */
+        weak GLib.Source source = GLib.MainContext.current_source ();
         if (source.is_destroyed ()) {
             return GLib.Source.REMOVE;
         }
@@ -242,14 +189,7 @@ public class PF.Progress.Info : GLib.Object {
 
         if (start_at_idle) {
             start_at_idle = false;
-            started ();
-        }
-
-        if (finish_at_idle) {
-            finish_at_idle = false;
-            if (!cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
-                finished ();
-            }
+            progress_started ();
         }
 
         if (changed_at_idle) {

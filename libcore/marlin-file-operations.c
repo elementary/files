@@ -52,7 +52,6 @@ typedef struct {
     GTimer *time;
     GtkWindow *parent_window;
     int screen_num;
-    int inhibit_cookie;
     PFProgressInfo *progress;
     GCancellable *cancellable;
     GHashTable *skip_files;
@@ -821,10 +820,15 @@ init_common (gsize job_size,
         g_object_add_weak_pointer (parent_window, &common->parent_window);
     }
 
-    common->progress = pf_progress_info_new ();
+    common->progress = pf_progress_info_manager_get_new_progress_info (
+                           pf_progress_info_manager_get_instance ()
+                       );
+
+    //TODO:  Set title of the operation
+
+    // PF.Progress.Info.cancellable is now unowned so does not need unrefing when job finalized
     common->cancellable = pf_progress_info_get_cancellable (common->progress);
     common->time = g_timer_new ();
-    common->inhibit_cookie = -1;
     common->screen_num = 0;
 
     if (parent_window) {
@@ -836,15 +840,23 @@ init_common (gsize job_size,
 }
 
 static void
+abort_job (CommonJob *job)
+{
+    g_cancellable_cancel (job->cancellable);
+
+}
+
+static gboolean
+job_aborted (CommonJob *job)
+{
+    return g_cancellable_is_cancelled (job->cancellable);
+}
+
+static void
 finalize_common (CommonJob *common)
 {
-    pf_progress_info_finish (common->progress);
-    if (common->inhibit_cookie != -1) {
-        gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
-                                   common->inhibit_cookie);
-    }
+    pf_progress_info_operation_finalized (common->progress, job_aborted (common));
 
-    common->inhibit_cookie = -1;
     g_timer_destroy (common->time);
 
     if (common->parent_window) {
@@ -864,7 +876,6 @@ finalize_common (CommonJob *common)
     // End UNDO-REDO
 
     g_object_unref (common->progress);
-    g_object_unref (common->cancellable);
     g_free (common);
 }
 
@@ -1068,24 +1079,15 @@ run_question (CommonJob *job,
 static void
 inhibit_power_manager (CommonJob *job, const char *message)
 {
-    job->inhibit_cookie = gtk_application_inhibit (GTK_APPLICATION (g_application_get_default ()),
-                                                   GTK_WINDOW (job->parent_window),
-                                                   GTK_APPLICATION_INHIBIT_LOGOUT |
-                                                   GTK_APPLICATION_INHIBIT_SUSPEND,
-                                                   message);
-}
-
-static void
-abort_job (CommonJob *job)
-{
-    g_cancellable_cancel (job->cancellable);
-
-}
-
-static gboolean
-job_aborted (CommonJob *job)
-{
-    return g_cancellable_is_cancelled (job->cancellable);
+    pf_progress_info_set_inhibit_cookie (job->progress,
+                                         gtk_application_inhibit (
+                                             GTK_APPLICATION (g_application_get_default ()),
+                                             GTK_WINDOW (job->parent_window),
+                                             GTK_APPLICATION_INHIBIT_LOGOUT |
+                                             GTK_APPLICATION_INHIBIT_SUSPEND,
+                                             message
+                                         )
+    );
 }
 
 /* Since this happens on a thread we can't use the global prefs object */
@@ -1243,8 +1245,7 @@ report_delete_progress (CommonJob *job,
 
     elapsed = g_timer_elapsed (job->time, NULL);
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
-
-        pf_progress_info_set_details (job->progress, files_left_s);
+        pf_progress_info_take_details (job->progress, files_left_s);
     } else {
         char *details, *time_left_s;
         gchar *formated_time;
@@ -1264,12 +1265,11 @@ report_delete_progress (CommonJob *job,
         pf_progress_info_take_details (job->progress, details);
 
         g_free (time_left_s);
+        g_free (files_left_s);
     }
 
-    g_free (files_left_s);
-
     if (source_info->num_files != 0) {
-        pf_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
+        pf_progress_info_update_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
 }
 
@@ -1588,7 +1588,7 @@ report_trash_progress (CommonJob *job,
     pf_progress_info_take_details (job->progress, s);
 
     if (total_files != 0) {
-        pf_progress_info_set_progress (job->progress, files_trashed, total_files);
+        pf_progress_info_update_progress (job->progress, files_trashed, total_files);
     }
 }
 
@@ -2793,7 +2793,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         pf_progress_info_take_details (job->progress, s);
     }
 
-    pf_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
+    pf_progress_info_update_progress (job->progress, transfer_info->num_bytes, total_size);
 }
 
 static int
@@ -3513,7 +3513,7 @@ remove_target_recursively (CommonJob *job,
         if (job->skip_all_error) {
             goto skip1;
         }
-        
+
         src_name = g_file_get_parse_name (src);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -5069,7 +5069,7 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
                                                               "Making links to %'d files",
                                                               left), left));
 
-    pf_progress_info_set_progress (job->progress, left, total);
+    pf_progress_info_update_progress (job->progress, left, total);
 }
 
 static char *

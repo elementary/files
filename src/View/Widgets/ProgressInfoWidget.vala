@@ -20,32 +20,19 @@
 ***/
 
 public class Marlin.Progress.InfoWidget : Gtk.Box {
-
-    private PF.Progress.Info info;
-
     Gtk.Widget status;
     Gtk.Widget details;
     Gtk.Widget progress_bar;
+    public PF.Progress.Info info { get; construct; }
 
-    public signal void cancelled (PF.Progress.Info info);
+    public signal void cancelled ();
 
     public InfoWidget (PF.Progress.Info info) {
-        this.info = info;
+        Object (info: info);
 
-        build_and_show_widget ();
-
-        update_data ();
-        update_progress ();
-
-        this.info.changed.connect (update_data);
-        this.info.progress_changed.connect (update_progress);
-
-        this.info.finished.connect (() => {
-            destroy ();
-        });
     }
 
-    private void build_and_show_widget () {
+    construct {
         this.orientation = Gtk.Orientation.VERTICAL;
         this.homogeneous = false;
         this.spacing = 5;
@@ -68,8 +55,7 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
         var button = new Gtk.Button.from_icon_name ("process-stop-symbolic", Gtk.IconSize.BUTTON);
         button.get_style_context ().add_class ("flat");
         button.clicked.connect (() => {
-            info.cancel ();
-            cancelled (info);
+            cancelled ();
             button.sensitive = false;
         });
 
@@ -83,19 +69,26 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
         pack_start (details, true, false, 0);
 
         show_all ();
+
+        update_data ();
+        update_progress ();
+
+        info.changed.connect (update_data);
+        info.progress_changed.connect (update_progress);
+        info.progress_finished.connect (() => { destroy (); });
     }
 
-    private void update_data () {
-        string status = this.info.get_status ();
+    public void update_data () {
+        string status = info.status;
         (this.status as Gtk.Label).set_text (status);
 
-        string details = this.info.get_details ();
+        string details = info.details;
         string markup = Markup.printf_escaped ("<span size='small'>%s</span>", details);
         (this.details as Gtk.Label).set_markup (markup);
     }
 
-    private void update_progress () {
-        double progress = this.info.get_progress ();
+    public void update_progress () {
+        double progress = info.progress;
 
         if (progress < 0) {
             (this.progress_bar as Gtk.ProgressBar).pulse ();

@@ -42,7 +42,8 @@ public class Marlin.Progress.UIHandler : Object {
         this.application = app;
 
         manager.new_progress_info.connect ((info) => {
-            info.started.connect (progress_info_started_cb);
+            info.progress_started.connect (progress_info_started_cb);
+            info.progress_finished.connect (progress_info_finished_cb);
         });
     }
 
@@ -62,70 +63,57 @@ public class Marlin.Progress.UIHandler : Object {
 
     }
 
+    uint show_progress_widget_timeout_id = 0;
     private void progress_info_started_cb (PF.Progress.Info info) {
         application.hold ();
 
-        if (info == null || !(info is PF.Progress.Info) ||
-            info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
+        info.progress_started.disconnect (progress_info_started_cb);
 
-            application.release ();
-            return;
-        }
-
-        info.finished.connect (progress_info_finished_cb);
         this.active_infos++;
 
-
-        var operation_running = false;
-        Timeout.add_full (GLib.Priority.LOW, 500, () => {
-            if (info == null || !(info is PF.Progress.Info) ||
-                info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
-
+        /* We assume that two file operations will not be started within the
+         * show window timeout delay.
+         */
+        show_progress_widget_timeout_id = Timeout.add_full (GLib.Priority.LOW, 500, () => {
+            if (show_progress_widget_timeout_id == 0) { // Will be 0 if info finished
                 return GLib.Source.REMOVE;
             }
 
-            if (info.get_is_paused ()) {
-                return GLib.Source.CONTINUE;
-            } else if (operation_running && !info.get_is_finished ()) {
-                add_progress_info_to_window (info);
-                return GLib.Source.REMOVE;
-            } else {
-                operation_running = true;
-                return GLib.Source.CONTINUE;
-            }
+            add_progress_info_to_window (info);
+            show_progress_widget_timeout_id = 0;
+            return GLib.Source.REMOVE;
         });
     }
 
     private void add_progress_info_to_window (PF.Progress.Info info) {
-        if (this.active_infos == 1) {
-            /* This is the only active operation, present the window */
-            add_to_window (info);
-            (this.progress_window as Gtk.Window).present ();
-        } else if (this.progress_window.visible) {
-                add_to_window (info);
+        if (info.is_finished) {
+            return;
         }
 
-#if HAVE_UNITY
-        update_unity_launcher (info, true);
-#endif
-    }
+        /* TODO Ensure info cannot be destroyed during setting up the progress widget */
 
-    private void add_to_window (PF.Progress.Info info) {
         ensure_window ();
 
         var progress_widget = new Marlin.Progress.InfoWidget (info);
         (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
 
-        progress_widget.cancelled.connect ((info) => {
-            info.finished.disconnect (progress_info_finished_cb);
-            progress_info_finished_cb (info);
-            progress_widget.hide ();
+        progress_widget.cancelled.connect (() => {
+            info.cancel ();
+            progress_widget.destroy ();
         });
 
         progress_widget.show ();
         if (this.progress_window.visible) {
             (this.progress_window as Gtk.Window).present ();
         }
+        if (this.active_infos == 1) {
+            /* This is the only active operation, present the window */
+            (this.progress_window as Gtk.Window).present ();
+        }
+
+#if HAVE_UNITY
+        update_unity_launcher (info, true);
+#endif
     }
 
     private void ensure_window () {
@@ -154,29 +142,38 @@ public class Marlin.Progress.UIHandler : Object {
 
     private void progress_info_finished_cb (PF.Progress.Info info) {
         /* Must only be called once for each info */
+        info.progress_finished.disconnect (progress_info_finished_cb);
         application.release ();
 
-        if (active_infos > 0) {
-            this.active_infos--;
-            /* Only notify if application is not focussed. Add a delay
-             * so that the active application window has time to refocus (if the application itself is focussed)
-             * after progress window dialog is hidden. We have to wait until the dialog is hidden
-             * because it steals focus from the application main window. This also means that a notification
-             * is only sent after last operation finishes and the progress window closes.
-             * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
+        if (show_progress_widget_timeout_id > 0) {
+            Source.remove (show_progress_widget_timeout_id);
+            show_progress_widget_timeout_id = 0;
+        }
 
-            if (!info.get_cancellable ().is_cancelled ()) {
-                var title = info.get_title ();  /* Do not keep ref to info */
-                Timeout.add (100, () => {
-                    if (!application.get_active_window ().has_toplevel_focus) {
-                        show_operation_complete_notification (title, active_infos < 1);
-                    }
+        active_infos--;
 
-                    return GLib.Source.REMOVE;
-                });
-            }
-        } else {
-            warning ("Attempt to decrement zero active infos");
+        if (active_infos < 0) {
+            critical ("Active file operations count less then zero");
+            active_infos = 0;
+        }
+
+        /* Only notify if application is not focussed. Add a delay
+         * so that the active application window has time to refocus (if the application itself is focussed)
+         * after progress window dialog is hidden. We have to wait until the dialog is hidden
+         * because it steals focus from the application main window. This also means that a notification
+         * is only sent after last operation finishes and the progress window closes.
+         * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
+
+        if (!info.is_cancelled) {
+            /* Progress.Info.title is not currently being set, so use details */
+            var title = info.details;  /* Do not keep ref to info */
+            Timeout.add (100, () => {
+                if (!application.get_active_window ().has_toplevel_focus) {
+                    show_operation_complete_notification (title, active_infos < 1);
+                }
+
+                return GLib.Source.REMOVE;
+            });
         }
         /* For rapid file transfers this can get called before progress window was been created */
         if (active_infos < 1 && progress_window != null && progress_window.visible) {
@@ -306,8 +303,8 @@ public class Marlin.Progress.UIHandler : Object {
         var infos = this.manager.get_all_infos ();
 
         foreach (var _info in infos) {
-            double c = _info.get_current ();
-            double t = _info.get_total ();
+            double c = _info.current;
+            double t = _info.total;
 
             if (c < 0) {
                 c = 0;
