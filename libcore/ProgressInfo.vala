@@ -24,7 +24,7 @@ public class PF.Progress.Info : GLib.Object {
     public double total { get; private set; default = -1; }
     public bool activity_mode { get; private set; default = true; }
 
-    public uint inhibit_cookie { get; set; default = -1; }
+    public uint inhibit_cookie { get; set; default = 0; }
     public string details { get; private set; default = _("Preparing"); }
     public string status { get; private set; default = _("Preparing"); }
     public string title { get; set; default = _("Preparing"); }
@@ -59,9 +59,9 @@ public class PF.Progress.Info : GLib.Object {
         cancellable.cancel ();
         is_cancelled = true;
         /* Ensure uninhibited even if operation blocked */
-        if (inhibit_cookie >= 0) {
+        if (inhibit_cookie > 0) {
             ((Gtk.Application)(Application.get_default ())).uninhibit (inhibit_cookie);
-            inhibit_cookie = -1;
+            inhibit_cookie = 0;
         }
     }
 
@@ -77,9 +77,9 @@ public class PF.Progress.Info : GLib.Object {
     /* Called (only) by marlin-file-operations when job finalized
      * after completion OR cancellation */
     public void operation_finalized (bool was_cancelled) {
-        if (inhibit_cookie >= 0) {
+        if (inhibit_cookie > 0) {
             ((Gtk.Application)(Application.get_default ())).uninhibit (inhibit_cookie);
-            inhibit_cookie = -1;
+            inhibit_cookie = 0;
         }
 
         finish_at_idle = true;

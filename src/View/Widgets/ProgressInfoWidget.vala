@@ -79,11 +79,8 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
     }
 
     public void update_data () {
-        string status = info.status;
-        (this.status as Gtk.Label).set_text (status);
-
-        string details = info.details;
-        string markup = Markup.printf_escaped ("<span size='small'>%s</span>", details);
+        (this.status as Gtk.Label).set_text (info.status);
+        string markup = Markup.printf_escaped ("<span size='small'>%s</span>", info.details);
         (this.details as Gtk.Label).set_markup (markup);
     }
 
