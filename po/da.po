@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 20:05+0000\n"
+"POT-Creation-Date: 2020-01-15 17:59+0000\n"
 "PO-Revision-Date: 2019-07-29 17:02+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
@@ -200,7 +200,7 @@ msgid "Original Location:"
 msgstr "Original placering:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:2151
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Other Application…"
 msgstr "Anden Applikation…"
 
@@ -294,7 +294,7 @@ msgstr "Kunne ikke åbne URIs"
 msgid "Could not open files or URIs with this app"
 msgstr "Kunne ikke åbne filer eller URIs med denne app"
 
-#: src/View/Window.vala:495 src/View/Window.vala:505
+#: src/View/Window.vala:543 src/View/Window.vala:553
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
@@ -336,78 +336,78 @@ msgstr "Opret mappen \"%s\""
 msgid "Failed to create the folder"
 msgstr "Oprettelsen af mappen fejlede"
 
-#: src/View/AbstractDirectoryView.vala:822
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1126
 msgid "Cannot execute this file"
 msgstr "Kan ikke eksekvere denne fil"
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
 msgstr "Kan ikke åbne denne fil"
 
-#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "Kan ikke identificere filen som skal åbnes"
 
-#: src/View/AbstractDirectoryView.vala:1584
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Cannot drop this file"
 msgstr "Kan ikke droppe denne fil"
 
-#: src/View/AbstractDirectoryView.vala:1585
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Ugyldigt filnavn angivet"
 
-#: src/View/AbstractDirectoryView.vala:2068
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Invalid"
 msgstr "Ugyldig"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2064
 msgid "Run"
 msgstr "Kør"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2068
 #, c-format
 msgid "Open in %s"
 msgstr "Åbn i %s"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Open in"
 msgstr "Åben i"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2080
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Åbn med"
 
-#: src/View/AbstractDirectoryView.vala:2184
+#: src/View/AbstractDirectoryView.vala:2174
 msgid "Templates"
 msgstr "Skabeloner"
 
-#: src/View/AbstractDirectoryView.vala:2431
+#: src/View/AbstractDirectoryView.vala:2421
 #, c-format
 msgid "Untitled %s"
 msgstr "Unavngivet %s"
 
-#: src/View/AbstractDirectoryView.vala:2792
-#: src/View/AbstractDirectoryView.vala:2987
+#: src/View/AbstractDirectoryView.vala:2782
+#: src/View/AbstractDirectoryView.vala:2977
 msgid "Cannot remove files from here"
 msgstr "Kan ikke fjerne filer herfra"
 
-#: src/View/AbstractDirectoryView.vala:2793
-#: src/View/AbstractDirectoryView.vala:2972
-#: src/View/AbstractDirectoryView.vala:2988
+#: src/View/AbstractDirectoryView.vala:2783
+#: src/View/AbstractDirectoryView.vala:2962
+#: src/View/AbstractDirectoryView.vala:2978
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke rettigheder til at ændre denne placering"
 
-#: src/View/AbstractDirectoryView.vala:2947
+#: src/View/AbstractDirectoryView.vala:2937
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer der er i papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:2948
+#: src/View/AbstractDirectoryView.vala:2938
 msgid "Cutting the selection instead"
 msgstr "Klipper det markerede i stedet"
 
-#: src/View/AbstractDirectoryView.vala:2971
+#: src/View/AbstractDirectoryView.vala:2961
 msgid "Cannot paste files here"
 msgstr "Kan ikke indsætte filer her"
 
@@ -723,6 +723,16 @@ msgstr "Åbn i nyt vindue"
 msgid "Open in Other Application…"
 msgstr "Åbn i en Anden Applikation…"
 
+#: src/View/Widgets/HeaderBar.vala:63
+#: filechooser-module/FileChooserDialog.vala:75
+msgid "Previous"
+msgstr "Forrige"
+
+#: src/View/Widgets/HeaderBar.vala:68
+#: filechooser-module/FileChooserDialog.vala:79
+msgid "Next"
+msgstr "Næste"
+
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Genindlæs denne mappe"
@@ -810,16 +820,6 @@ msgstr "Skriv"
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "Kør"
-
-#: src/View/Widgets/TopMenu.vala:63
-#: filechooser-module/FileChooserDialog.vala:75
-msgid "Previous"
-msgstr "Forrige"
-
-#: src/View/Widgets/TopMenu.vala:68
-#: filechooser-module/FileChooserDialog.vala:79
-msgid "Next"
-msgstr "Næste"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1074,25 +1074,25 @@ msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
 msgid "The item cannot be restored from trash"
 msgstr "Elementet kan ikke genskabes fra papirkurven"
 
-#: libcore/FileUtils.vala:434
+#: libcore/FileUtils.vala:442
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Kunne ikke omdøbe til \"%s\""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:523
+#: libcore/FileUtils.vala:531
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "I dag kl. %-H:%M"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:529
+#: libcore/FileUtils.vala:537
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "I går kl. %-H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:535
+#: libcore/FileUtils.vala:543
 #, fuzzy, c-format
 msgid "%%A at %s"
 msgstr "%A kl. %-H:%M"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 20:05+0000\n"
+"POT-Creation-Date: 2020-01-15 17:59+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -206,7 +206,7 @@ msgid "Original Location:"
 msgstr "Locația originară:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:2151
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Other Application…"
 msgstr "Altă aplicație..."
 
@@ -306,7 +306,7 @@ msgstr "Nu s-a putut redenumi în '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Nu se pot deschide fișiere sau URI-uri cu aceasta aplicaţie"
 
-#: src/View/Window.vala:495 src/View/Window.vala:505
+#: src/View/Window.vala:543 src/View/Window.vala:553
 msgid "(as Administrator)"
 msgstr "(ca Administrator)"
 
@@ -351,79 +351,79 @@ msgstr ""
 "Nu s-a putut creea dosarul\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:822
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1126
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Nu se poate deschide acest fişier"
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
 msgstr "Nu se poate deschide acest fişier"
 
-#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "Nu se poate identifica tipul fișierului pentru deschidere"
 
-#: src/View/AbstractDirectoryView.vala:1584
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Cannot drop this file"
 msgstr "Nu pot arunca acest fişier"
 
-#: src/View/AbstractDirectoryView.vala:1585
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Numele de fișier furnizat nu este valid"
 
-#: src/View/AbstractDirectoryView.vala:2068
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Invalid"
 msgstr "Invalid"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2064
 msgid "Run"
 msgstr "Execută"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2068
 #, c-format
 msgid "Open in %s"
 msgstr "Deschide în %s"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Open in"
 msgstr "Deschide în"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2080
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Deschide cu"
 
-#: src/View/AbstractDirectoryView.vala:2184
+#: src/View/AbstractDirectoryView.vala:2174
 msgid "Templates"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2431
+#: src/View/AbstractDirectoryView.vala:2421
 #, c-format
 msgid "Untitled %s"
 msgstr "%s fără nume"
 
-#: src/View/AbstractDirectoryView.vala:2792
-#: src/View/AbstractDirectoryView.vala:2987
+#: src/View/AbstractDirectoryView.vala:2782
+#: src/View/AbstractDirectoryView.vala:2977
 msgid "Cannot remove files from here"
 msgstr "Nu se pot elimina fișiere de aici"
 
-#: src/View/AbstractDirectoryView.vala:2793
-#: src/View/AbstractDirectoryView.vala:2972
-#: src/View/AbstractDirectoryView.vala:2988
+#: src/View/AbstractDirectoryView.vala:2783
+#: src/View/AbstractDirectoryView.vala:2962
+#: src/View/AbstractDirectoryView.vala:2978
 msgid "You do not have permission to change this location"
 msgstr "Nu ai permisiunea de a schimba această locaţie"
 
-#: src/View/AbstractDirectoryView.vala:2947
+#: src/View/AbstractDirectoryView.vala:2937
 msgid "Cannot copy files that are in the trash"
 msgstr "Nu se pot copia fişiere din coş"
 
-#: src/View/AbstractDirectoryView.vala:2948
+#: src/View/AbstractDirectoryView.vala:2938
 msgid "Cutting the selection instead"
 msgstr "În schimb se poate tăia selecţia"
 
-#: src/View/AbstractDirectoryView.vala:2971
+#: src/View/AbstractDirectoryView.vala:2961
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 
@@ -745,6 +745,16 @@ msgstr "Deschide în fereastră nouă"
 msgid "Open in Other Application…"
 msgstr "Deschide în altă aplicație..."
 
+#: src/View/Widgets/HeaderBar.vala:63
+#: filechooser-module/FileChooserDialog.vala:75
+msgid "Previous"
+msgstr "Anterior"
+
+#: src/View/Widgets/HeaderBar.vala:68
+#: filechooser-module/FileChooserDialog.vala:79
+msgid "Next"
+msgstr "Următor"
+
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Reîncarcă acest dosar"
@@ -833,16 +843,6 @@ msgstr "Scrie"
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "Execută"
-
-#: src/View/Widgets/TopMenu.vala:63
-#: filechooser-module/FileChooserDialog.vala:75
-msgid "Previous"
-msgstr "Anterior"
-
-#: src/View/Widgets/TopMenu.vala:68
-#: filechooser-module/FileChooserDialog.vala:79
-msgid "Next"
-msgstr "Următor"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1108,25 +1108,25 @@ msgstr "Nu s-a putut determina locația originară pentru „%s” "
 msgid "The item cannot be restored from trash"
 msgstr "Elementul nu a putut fi restaurat din coșul de gunoi"
 
-#: libcore/FileUtils.vala:434
+#: libcore/FileUtils.vala:442
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Nu s-a putut redenumi în '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:523
+#: libcore/FileUtils.vala:531
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Astazi la %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:529
+#: libcore/FileUtils.vala:537
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Ieri la %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:535
+#: libcore/FileUtils.vala:543
 #, c-format
 msgid "%%A at %s"
 msgstr ""
