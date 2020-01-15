@@ -1945,6 +1945,9 @@ namespace FM {
                     menu.add (properties_menuitem);
                 }
             } else {
+                var show_hidden_menuitem = new Gtk.MenuItem.with_label (_("Show Hidden Files"));
+                show_hidden_menuitem.action_name = "background.show-hidden";
+
                 var show_remote_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Show Remote Thumbnails"));
                 show_remote_thumbnails_menuitem.action_name = "background.show-remote-thumbnails";
 
@@ -1957,9 +1960,6 @@ namespace FM {
                     }
                 } else if (in_recent) {
                     // menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-
-                    var show_hidden_menuitem = new Gtk.MenuItem.with_label (_("Show Hidden Files"));
-                    show_hidden_menuitem.action_name = "background.show-hidden";
 
                     menu.add (show_hidden_menuitem);
 
@@ -2002,6 +2002,8 @@ namespace FM {
                     if (common_actions.get_action_enabled ("bookmark") && window.can_bookmark_uri (slot.directory.file.uri)) {
                         menu.add (bookmark_menuitem);
                     }
+
+                    menu.add (show_hidden_menuitem);
 
                     if (slot.directory.is_local || !slot.directory.can_open_files) {
                         /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
