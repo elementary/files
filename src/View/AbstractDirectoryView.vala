@@ -1907,11 +1907,7 @@ namespace FM {
                         menu.add (copy_menuitem);
                         menu.add (copy_link_menuitem);
 
-                        /* Do not display the 'Paste into' menuitem nothing to paste.
-                         * We have to hard-code the menuitem index so any change to the clipboard-
-                         * selection menu definition in directory_view_popup.ui may necessitate changing
-                         * the index below.
-                         */
+                        // Do not display the 'Paste into' menuitem if nothing to paste
                         if (action_get_enabled (common_actions, "paste-into") && clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
                                 paste_menuitem.label = _("Paste Link into Folder");
