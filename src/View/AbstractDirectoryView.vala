@@ -1834,34 +1834,130 @@ namespace FM {
             cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
-            var builder = new Gtk.Builder.from_file (Path.build_path (Path.DIR_SEPARATOR_S,
-                                                                      Config.UI_DIR,
-                                                                      "directory_view_popup.ui"));
-            GLib.MenuModel? model = null;
+
+            var menu = new Gtk.Menu ();
 
             if (get_selected_files () != null) {
-                model = build_menu_selection (ref builder, in_trash, in_recent);
+                var open_menu = new Gtk.Menu ();
+
+                var open_menu_menuitem = new Gtk.MenuItem.with_label (_("Open with"));
+                open_menu_menuitem.submenu = open_menu;
+
+                var cut_menuitem = new Gtk.MenuItem.with_label (_("Cut"));
+                cut_menuitem.action_name = "selection.cut";
+
+                var copy_menuitem = new Gtk.MenuItem.with_label (_("Copy"));
+                copy_menuitem.action_name = "common.copy";
+
+                var trash_menuitem = new Gtk.MenuItem.with_label (_("Move to Trash"));
+                trash_menuitem.action_name = "selection.trash";
+
+                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete permanently"));
+                delete_menuitem.action_name = "selection.delete";
+
+                var properties_menuitem = new Gtk.MenuItem.with_label (_("Properties"));
+                properties_menuitem.action_name = "common.properties";
+
+                /* In trash, only show context menu when all selected files are in root folder */
+                if (in_trash && valid_selection_for_restore ()) {
+                    var restore_menuitem = new Gtk.MenuItem.with_label (_("Restore from Trash"));
+                    restore_menuitem.action_name = "selection.restore";
+
+                    menu.add (restore_menuitem);
+                    menu.add (delete_menuitem);
+                    menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (cut_menuitem);
+                    menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (properties_menuitem);
+                } else if (in_recent) {
+                    var open_parent_menuitem = new Gtk.MenuItem.with_label (_("Open Parent Folder"));
+                    open_parent_menuitem.action_name = "selection.view-in-location";
+
+                    var forget_menuitem = new Gtk.MenuItem.with_label (_("Remove from History"));
+                    forget_menuitem.action_name = "selection.forget";
+
+                    menu.add (open_menu_menuitem);
+                    menu.add (open_parent_menuitem);
+                    menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (forget_menuitem);
+                    menu.add (copy_menuitem);
+                    menu.add (trash_menuitem);
+                    menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (properties_menuitem);
+                } else {
+                    var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
+                    paste_menuitem.action_name = "common.paste-into";
+
+                    var bookmark_menuitem = new Gtk.MenuItem.with_label (_("Bookmark"));
+                    bookmark_menuitem.action_name = "common.bookmark";
+
+                    menu.add (open_menu_menuitem);
+                    menu.add (new Gtk.SeparatorMenuItem ());
+
+                    if (slot.directory.file.is_smb_server () && clipboard != null && clipboard.can_paste) {
+                        menu.add (paste_menuitem);
+                    } else if (valid_selection_for_edit ()) {
+                        var rename_menuitem = new Gtk.MenuItem.with_label (_("Rename…"));
+                        rename_menuitem.action_name = "selection.rename";
+
+                        var copy_link_menuitem = new Gtk.MenuItem.with_label (_("Copy as Link"));
+                        copy_link_menuitem.action_name = "common.copy-link";
+
+                        menu.add (cut_menuitem);
+                        menu.add (copy_menuitem);
+                        menu.add (copy_link_menuitem);
+
+                        /* Do not display the 'Paste into' menuitem nothing to paste.
+                         * We have to hard-code the menuitem index so any change to the clipboard-
+                         * selection menu definition in directory_view_popup.ui may necessitate changing
+                         * the index below.
+                         */
+                        if (action_get_enabled (common_actions, "paste-into") && clipboard != null && clipboard.can_paste) {
+                            var paste_into_menuitem = new Gtk.MenuItem ();
+                            paste_into_menuitem.action_name = "common.paste-into";
+
+                            menu.add (paste_into_menuitem);
+
+                            if (clipboard.files_linked) {
+                                paste_into_menuitem.label = _("Paste Link into Folder");
+                            } else {
+                                paste_into_menuitem.label = _("Paste into Folder");
+                            }
+                        }
+
+                        menu.add (new Gtk.SeparatorMenuItem ());
+
+                        if (slot.directory.has_trash_dirs && !is_admin) {
+                            menu.add (trash_menuitem);
+                        } else {
+                            menu.add (delete_menuitem);
+                        }
+
+                        menu.add (rename_menuitem);
+                    }
+
+                    menu.add (bookmark_menuitem);
+                    menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (properties_menuitem);
+                }
             } else {
-                model = build_menu_background (ref builder, in_trash, in_recent);
+            //     model = build_menu_background (ref builder, in_trash, in_recent);
             }
 
-            if (model != null && model is GLib.MenuModel) {
-                /* add any additional entries from plugins */
-                var menu = new Gtk.Menu.from_model (model);
-
-                if (!in_trash) {
-                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
-                }
-
-                menu.set_screen (null);
-                menu.attach_to_widget (this, null);
-                /* Override style Granite.STYLE_CLASS_H2_LABEL of view when it is empty */
-                if (slot.directory.is_empty ()) {
-                    menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
-                }
-
-                menu.popup_at_pointer (event);
+            if (!in_trash) {
+                plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
             }
+
+            menu.set_screen (null);
+            menu.attach_to_widget (this, null);
+
+            /* Override style Granite.STYLE_CLASS_H2_LABEL of view when it is empty */
+            if (slot.directory.is_empty ()) {
+                menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
+            }
+
+            menu.show_all ();
+            menu.popup_at_pointer (event);
         }
 
         private bool valid_selection_for_edit () {
