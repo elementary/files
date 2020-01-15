@@ -1936,7 +1936,11 @@ namespace FM {
                         menu.add (rename_menuitem);
                     }
 
-                    menu.add (bookmark_menuitem);
+                    /* Do  not offer to bookmark if location is already bookmarked */
+                    if (common_actions.get_action_enabled ("bookmark") && window.can_bookmark_uri (selected_files.data.uri)) {
+                        menu.add (bookmark_menuitem);
+                    }
+
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 }
@@ -1978,96 +1982,6 @@ namespace FM {
             }
 
             return true;
-        }
-
-        private GLib.MenuModel? build_menu_selection (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
-            GLib.Menu menu = new GLib.Menu ();
-
-            var clipboard_menu = builder.get_object ("clipboard-selection") as GLib.Menu;
-
-            if (in_trash) {
-                /* In trash, only show context menu when all selected files are in root folder */
-                if (valid_selection_for_restore ()) {
-                    menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
-                    clipboard_menu.remove (1); /* Copy */
-                    clipboard_menu.remove (1); /* Copy Link*/
-                    clipboard_menu.remove (1); /* Paste (index updated by previous line) */
-                    clipboard_menu.remove (1); /* Paste Link (index updated by previous line) */
-                    menu.append_section (null, clipboard_menu);
-
-                    menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
-                }
-            } else if (in_recent) {
-                var open_menu = build_menu_open (ref builder);
-                if (open_menu != null) {
-                    menu.append_section (null, open_menu);
-                }
-
-                menu.append_section (null, builder.get_object ("view-in-location") as GLib.Menu);
-                menu.append_section (null, builder.get_object ("forget") as GLib.Menu);
-
-                clipboard_menu.remove (0); /* Cut */
-                clipboard_menu.remove (1); /* Copy as Link */
-                clipboard_menu.remove (1); /* Paste */
-                clipboard_menu.remove (1); /* Paste Link */
-
-                menu.append_section (null, clipboard_menu);
-
-                menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
-                menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
-            } else {
-                var open_menu = build_menu_open (ref builder);
-                if (open_menu != null) {
-                    menu.append_section (null, open_menu);
-                }
-
-                if (slot.directory.file.is_smb_server ()) {
-                    if (clipboard != null && clipboard.can_paste) {
-                        menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
-                    }
-                } else if (valid_selection_for_edit ()) {
-                    /* Do not display the 'Paste into' menuitem nothing to paste.
-                     * We have to hard-code the menuitem index so any change to the clipboard-
-                     * selection menu definition in directory_view_popup.ui may necessitate changing
-                     * the index below.
-                     */
-                    if (!action_get_enabled (common_actions, "paste-into") ||
-                        clipboard == null || !clipboard.can_paste) {
-                        clipboard_menu.remove (3); /* Paste into*/
-                        clipboard_menu.remove (3); /* Past Link into*/
-                    } else {
-                        if (clipboard.files_linked) {
-                            clipboard_menu.remove (3); /* Paste into*/
-                        } else {
-                            clipboard_menu.remove (4); /* Paste Link into*/
-                        }
-                    }
-
-                    menu.append_section (null, clipboard_menu);
-
-                    if (slot.directory.has_trash_dirs && !is_admin) {
-                        menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
-                    } else {
-                        menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
-                    }
-
-                    menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
-                }
-
-                if (common_actions.get_action_enabled ("bookmark")) {
-                    /* Do  not offer to bookmark if location is already bookmarked */
-                    if (window.can_bookmark_uri (selected_files.data.uri)) {
-                        menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
-                    }
-                }
-                menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
-            }
-
-            if (menu.get_n_items () > 0) {
-                return menu as MenuModel;
-            } else {
-                return null;
-            }
         }
 
         private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
