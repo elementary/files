@@ -1913,16 +1913,13 @@ namespace FM {
                          * the index below.
                          */
                         if (action_get_enabled (common_actions, "paste-into") && clipboard != null && clipboard.can_paste) {
-                            var paste_into_menuitem = new Gtk.MenuItem ();
-                            paste_into_menuitem.action_name = "common.paste-into";
+                            if (clipboard.files_linked) {
+                                paste_menuitem.label = _("Paste Link into Folder");
+                            } else {
+                                paste_menuitem.label = _("Paste into Folder");
+                            }
 
                             menu.add (paste_into_menuitem);
-
-                            if (clipboard.files_linked) {
-                                paste_into_menuitem.label = _("Paste Link into Folder");
-                            } else {
-                                paste_into_menuitem.label = _("Paste into Folder");
-                            }
                         }
 
                         menu.add (new Gtk.SeparatorMenuItem ());
