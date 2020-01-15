@@ -1835,14 +1835,23 @@ namespace FM {
             /* select selection or background context menu */
             update_menu_actions ();
 
+            var open_menu = new Gtk.Menu ();
+
+            var open_menu_menuitem = new Gtk.MenuItem.with_label (_("Open with"));
+            open_menu_menuitem.submenu = open_menu;
+
+            var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
+            paste_menuitem.action_name = "common.paste-into";
+
+            var bookmark_menuitem = new Gtk.MenuItem.with_label (_("Bookmark"));
+            bookmark_menuitem.action_name = "common.bookmark";
+
+            var properties_menuitem = new Gtk.MenuItem.with_label (_("Properties"));
+            properties_menuitem.action_name = "common.properties";
+
             var menu = new Gtk.Menu ();
 
             if (get_selected_files () != null) {
-                var open_menu = new Gtk.Menu ();
-
-                var open_menu_menuitem = new Gtk.MenuItem.with_label (_("Open with"));
-                open_menu_menuitem.submenu = open_menu;
-
                 var cut_menuitem = new Gtk.MenuItem.with_label (_("Cut"));
                 cut_menuitem.action_name = "selection.cut";
 
@@ -1854,9 +1863,6 @@ namespace FM {
 
                 var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete permanently"));
                 delete_menuitem.action_name = "selection.delete";
-
-                var properties_menuitem = new Gtk.MenuItem.with_label (_("Properties"));
-                properties_menuitem.action_name = "common.properties";
 
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
@@ -1885,12 +1891,6 @@ namespace FM {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 } else {
-                    var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
-                    paste_menuitem.action_name = "common.paste-into";
-
-                    var bookmark_menuitem = new Gtk.MenuItem.with_label (_("Bookmark"));
-                    bookmark_menuitem.action_name = "common.bookmark";
-
                     menu.add (open_menu_menuitem);
                     menu.add (new Gtk.SeparatorMenuItem ());
 
@@ -1945,7 +1945,77 @@ namespace FM {
                     menu.add (properties_menuitem);
                 }
             } else {
-            //     model = build_menu_background (ref builder, in_trash, in_recent);
+                var show_remote_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Show Remote Thumbnails"));
+                show_remote_thumbnails_menuitem.action_name = "background.show-remote-thumbnails";
+
+                var hide_local_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Hide Local Thumbnails"));
+                hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
+
+                if (in_trash) {
+                    if (clipboard != null && clipboard.has_cutted_file (null)) {
+                        menu.add (paste_menuitem);
+                    }
+                } else if (in_recent) {
+                    // menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+
+                    var show_hidden_menuitem = new Gtk.MenuItem.with_label (_("Show Hidden Files"));
+                    show_hidden_menuitem.action_name = "background.show-hidden";
+
+                    menu.add (show_hidden_menuitem);
+
+                    if (slot.directory.is_local || !slot.directory.can_open_files) {
+                        /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+                        menu.add (hide_local_thumbnails_menuitem);
+                    } else if (!slot.directory.is_local) {
+                        /* Do not show "Hide Local Thumbnails" option when in remote folder */
+                        menu.add (show_remote_thumbnails_menuitem);
+                    }
+                } else {
+                    menu.add (open_menu_menuitem);
+
+                    if (!in_network_root) {
+                        /* If something is pastable in the clipboard, show the option even if it is not enabled */
+                        if (clipboard != null && clipboard.can_paste) {
+                            if (clipboard.files_linked) {
+                                paste_menuitem.label = _("Paste Link");
+                            }
+
+                            menu.add (paste_menuitem);
+                        }
+
+                        if (is_writable) {
+                        //     var new_menu = builder.get_object ("new") as GLib.Menu;
+
+                        //     GLib.MenuModel? template_menu = build_menu_templates ();
+                        //     if (template_menu != null) {
+                        //         var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
+                        //         new_submenu.append_section (null, template_menu);
+                        //     }
+
+                        //     menu.append_section (null, new_menu as GLib.MenuModel);
+                        }
+
+                        // menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+                    }
+
+                    /* Do  not offer to bookmark if location is already bookmarked */
+                    if (common_actions.get_action_enabled ("bookmark") && window.can_bookmark_uri (slot.directory.file.uri)) {
+                        menu.add (bookmark_menuitem);
+                    }
+
+                    if (slot.directory.is_local || !slot.directory.can_open_files) {
+                        /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+                        menu.add (hide_local_thumbnails_menuitem);
+                    } else if (!slot.directory.is_local) {
+                        /* Do not show "Hide Local Thumbnails" option when in remote folder */
+                        menu.add (show_remote_thumbnails_menuitem);
+                    }
+
+                    if (!in_network_root) {
+                        menu.add (new Gtk.SeparatorMenuItem ());
+                        menu.add (properties_menuitem);
+                    }
+                }
             }
 
             if (!in_trash) {
@@ -1982,83 +2052,6 @@ namespace FM {
             }
 
             return true;
-        }
-
-        private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
-            var menu = new GLib.Menu ();
-
-            if (in_trash) {
-                if (clipboard != null && clipboard.has_cutted_file (null) ) {
-                    menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
-                    return menu as MenuModel;
-                } else {
-                    return null;
-                }
-            }
-
-            if (in_recent) {
-                menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-                menu.append_section (null, build_show_menu (builder));
-                return menu as MenuModel;
-            }
-
-            var open_menu = build_menu_open (ref builder);
-            if (open_menu != null) {
-                menu.append_section (null, open_menu);
-            }
-
-            if (!in_network_root) {
-                /* If something is pastable in the clipboard, show the option even if it is not enabled */
-                if (clipboard != null && clipboard.can_paste) {
-                    if (clipboard.files_linked) {
-                        menu.append_section (null, builder.get_object ("paste-link") as GLib.MenuModel);
-                    } else {
-                        menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
-                    }
-                }
-
-                GLib.MenuModel? template_menu = build_menu_templates ();
-                var new_menu = builder.get_object ("new") as GLib.Menu;
-
-                if (is_writable) {
-                    if (template_menu != null) {
-                        var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
-                        new_submenu.append_section (null, template_menu);
-                    }
-
-                    menu.append_section (null, new_menu as GLib.MenuModel);
-                }
-
-                menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-            }
-
-            if (common_actions.get_action_enabled ("bookmark")) {
-                /* Do  not offer to bookmark if location is already bookmarked */
-                if (window.can_bookmark_uri (slot.directory.file.uri)) {
-                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
-                }
-            }
-
-            menu.append_section (null, build_show_menu (builder));
-
-            if (!in_network_root) {
-                menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
-            }
-
-            return menu as MenuModel;
-        }
-
-        private GLib.MenuModel build_show_menu (Gtk.Builder builder) {
-            var show_menu = builder.get_object ("show") as GLib.Menu;
-            if (slot.directory.is_local || !slot.directory.can_open_files) {
-                /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
-                show_menu.remove (1);
-            } else if (!slot.directory.is_local) {
-                /* Do not show "Hide Local Thumbnails" option when in remote folder */
-                show_menu.remove (2);
-            }
-
-            return show_menu;
         }
 
         private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {
