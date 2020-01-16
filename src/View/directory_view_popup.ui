@@ -15,42 +15,4 @@
             </item>
         </submenu>
     </menu>
-
-    <menu id='sort-by'>
-        <submenu>
-            <attribute name='label' translatable='yes'>Sort by</attribute>
-            <section>
-                <item>
-                    <attribute name='label' translatable='yes'>Name</attribute>
-                    <attribute name='action'>background.sort-by</attribute>
-                    <attribute name="target">name</attribute>
-                </item>
-                <item>
-                    <attribute name='label' translatable='yes'>Size</attribute>
-                    <attribute name='action'>background.sort-by</attribute>
-                    <attribute name="target">size</attribute>
-                </item>
-                <item>
-                    <attribute name='label' translatable='yes'>Type</attribute>
-                    <attribute name='action'>background.sort-by</attribute>
-                    <attribute name="target">type</attribute>
-                </item>
-                <item>
-                    <attribute name='label' translatable='yes'>Date</attribute>
-                    <attribute name='action'>background.sort-by</attribute>
-                    <attribute name="target">modified</attribute>
-                </item>
-            </section>
-            <section>
-                <item>
-                    <attribute name='label' translatable='yes'>Reversed Order</attribute>
-                    <attribute name='action'>background.reverse</attribute>
-                </item>
-                <item>
-                    <attribute name='label' translatable='yes'>Folders Before Files</attribute>
-                    <attribute name='action'>background.folders-first</attribute>
-                </item>
-            </section>
-        </submenu>
-    </menu>
 </interface>

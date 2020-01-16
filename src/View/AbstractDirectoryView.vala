@@ -2040,7 +2040,8 @@ namespace FM {
                         menu.add (paste_menuitem);
                     }
                 } else if (in_recent) {
-                    // menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+                    menu.add (new SortSubMenuItem ());
+                // menu.add (new Gtk.SeparatorMenuItem ());
 
                     menu.add (show_hidden_menuitem);
 
@@ -2074,7 +2075,7 @@ namespace FM {
                         //     menu.append_section (null, new_menu as GLib.MenuModel);
                         }
 
-                        // menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+                        menu.add (new SortSubMenuItem ());
                     }
 
                     /* Do  not offer to bookmark if location is already bookmarked */
@@ -2112,6 +2113,43 @@ namespace FM {
 
             menu.show_all ();
             menu.popup_at_pointer (event);
+        }
+
+        private class SortSubMenuItem : Gtk.MenuItem {
+            construct {
+                var name_radioitem = new Gtk.RadioMenuItem.with_label (null, _("Name"));
+                name_radioitem.action_name = "background.sort-by";
+                name_radioitem.action_target = "name";
+
+                var size_radioitem = new Gtk.RadioMenuItem.with_label_from_widget (name_radioitem, _("Size"));
+                size_radioitem.action_name = "background.sort-by";
+                size_radioitem.action_target = "size";
+
+                var type_radioitem = new Gtk.RadioMenuItem.with_label_from_widget (name_radioitem, _("Type"));
+                type_radioitem.action_name = "background.sort-by";
+                type_radioitem.action_target = "type";
+
+                var date_radioitem = new Gtk.RadioMenuItem.with_label_from_widget (name_radioitem, _("Date"));
+                date_radioitem.action_name = "background.sort-by";
+                date_radioitem.action_target = "date";
+
+                var reversed_checkitem = new Gtk.CheckMenuItem.with_label (_("Reversed Order"));
+                reversed_checkitem.action_name = "background.reverse";
+
+                var folders_first_checkitem = new Gtk.CheckMenuItem.with_label (_("Folders Before Files"));
+                folders_first_checkitem.action_name = "background.folders-first";
+
+                submenu = new Gtk.Menu ();
+                submenu.add (name_radioitem);
+                submenu.add (size_radioitem);
+                submenu.add (type_radioitem);
+                submenu.add (date_radioitem);
+                submenu.add (new Gtk.SeparatorMenuItem ());
+                submenu.add (reversed_checkitem);
+                submenu.add (folders_first_checkitem);
+
+                label = _("Sort by");
+            }
         }
 
         private bool valid_selection_for_edit () {
