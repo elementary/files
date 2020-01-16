@@ -2164,29 +2164,34 @@ namespace FM {
                     var template_folder = GLib.File.new_for_path (template_path);
                     load_templates_from_folder (template_folder);
 
-                    int index = 0;
-                    int count = 0;
-
                     if (templates.length () > 0) {
                         submenu.add (new Gtk.SeparatorMenuItem ());
 
+                        // We need to get directories first
+                        templates.reverse ();
+
+                        var active_submenu = submenu;
+                        int index = 0;
                         foreach (unowned GLib.File template in templates) {
                             var label = template.get_basename ();
                             var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                             if (ftype == GLib.FileType.DIRECTORY) {
                                 if (template == template_folder) {
-                                    label = _("Templates");
+                                    active_submenu = submenu;
+                                } else {
+                                    active_submenu = new Gtk.Menu ();
+
+                                    var submenu_item = new Gtk.MenuItem.with_label (label);
+                                    submenu_item.submenu = active_submenu;
+
+                                    submenu.add (submenu_item);
                                 }
-                        //         var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
-                        //         templates_menu.append_item (submenu);
-                        //         templates_submenu = new GLib.Menu ();
                             } else {
                                 var template_menuitem = new Gtk.MenuItem.with_label (label);
                                 template_menuitem.set_detailed_action_name ("background.create-from::" + index.to_string ());
 
-                                submenu.add (template_menuitem);
+                                active_submenu.add (template_menuitem);
 
-                                count ++;
                             }
 
                             index++;
