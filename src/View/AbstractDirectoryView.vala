@@ -1879,35 +1879,40 @@ namespace FM {
                 filter_this_app_from_open_with_apps ();
 
                 if (open_with_apps != null && open_with_apps.data != null) {
-            //         var apps_section = new GLib.Menu ();
-            //         unowned string last_label = "";
-            //         unowned string last_exec = "";
-            //         uint count = 0;
+                    unowned string last_label = "";
+                    unowned string last_exec = "";
+                    uint count = 0;
 
-            //         foreach (unowned AppInfo app_info in open_with_apps) {
-            //             /* Ensure no duplicate items */
-            //             unowned string label = app_info.get_display_name ();
-            //             unowned string exec = app_info.get_executable ().split (" ")[0];
-            //             if (label != last_label || exec != last_exec) {
-            //                 var detailed_name = GLib.Action.print_detailed_name ("selection.open-with-app",
-            //                                                                       new GLib.Variant.uint32 (count));
-            //                 var menu_item = new GLib.MenuItem (label, detailed_name);
+                    foreach (unowned AppInfo app_info in open_with_apps) {
+                        /* Ensure no duplicate items */
+                        unowned string label = app_info.get_display_name ();
+                        unowned string exec = app_info.get_executable ().split (" ")[0];
+                        if (label != last_label || exec != last_exec) {
+                            var label_grid = new Gtk.Grid ();
+                            label_grid.add (new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU));
+                            label_grid.add (new Gtk.Label (label));
 
-            //                 menu_item.set_icon (app_info.get_icon ());
-            //                 apps_section.append_item (menu_item);
-            //             }
+                            var menuitem = new Gtk.MenuItem ();
+                            menuitem.add (label_grid);
+                            menuitem.set_detailed_action_name (GLib.Action.print_detailed_name (
+                                "selection.open-with-app",
+                                new GLib.Variant.uint32 (count)
+                            ));
 
-            //             last_label = label;
-            //             last_exec = exec;
-            //             count++;
-            //         };
+                            open_submenu.add (menuitem);
+                        }
 
-            //         if (apps_section.get_n_items () > 0) {
-            //             open_with_submenu.append_section (null, apps_section);
-            //         }
+                        last_label = label;
+                        last_exec = exec;
+                        count++;
+                    };
                 }
 
                 if (selection != null && selection.first ().next == null) { // Only one selected
+                    if (open_submenu.get_children ().length () > 0) {
+                        open_submenu.add (new Gtk.SeparatorMenuItem ());
+                    }
+
                     var other_apps_menuitem = new Gtk.MenuItem.with_label (_("Other Application…"));
                     other_apps_menuitem.action_name = "selection.open-with-other-app";
 
@@ -1926,6 +1931,7 @@ namespace FM {
                 }
 
                 menu.add (open_submenu_item);
+                menu.add (new Gtk.SeparatorMenuItem ());
             }
 
             var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
