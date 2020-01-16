@@ -2032,7 +2032,7 @@ namespace FM {
                 var show_remote_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Show Remote Thumbnails"));
                 show_remote_thumbnails_menuitem.action_name = "background.show-remote-thumbnails";
 
-                var hide_local_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Hide Local Thumbnails"));
+                var hide_local_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Hide Thumbnails"));
                 hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
 
                 if (in_trash) {
@@ -2041,8 +2041,7 @@ namespace FM {
                     }
                 } else if (in_recent) {
                     menu.add (new SortSubMenuItem ());
-                // menu.add (new Gtk.SeparatorMenuItem ());
-
+                    menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (show_hidden_menuitem);
 
                     if (slot.directory.is_local || !slot.directory.can_open_files) {
