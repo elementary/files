@@ -1998,7 +1998,7 @@ namespace FM {
                         menu.add (copy_link_menuitem);
 
                         // Do not display the 'Paste into' menuitem if nothing to paste
-                        if (action_get_enabled (common_actions, "paste-into") && clipboard != null && clipboard.can_paste) {
+                        if (common_actions.get_action_enabled ("paste-into") && clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
                                 paste_menuitem.label = _("Paste Link into Folder");
                             } else {
@@ -2324,17 +2324,6 @@ namespace FM {
                 }
             }
             critical ("Action name not found: %s - cannot enable", name);
-        }
-
-        private bool action_get_enabled (GLib.SimpleActionGroup? action_group, string name) {
-            if (action_group != null) {
-                GLib.SimpleAction? action = (action_group.lookup_action (name) as GLib.SimpleAction);
-                if (action != null) {
-                    return action.enabled;
-                }
-            }
-            critical ("Action name not found: %s - cannot get enabled", name);
-            return false;
         }
 
         private void action_set_state (GLib.SimpleActionGroup? action_group, string name, GLib.Variant val) {
