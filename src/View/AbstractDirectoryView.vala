@@ -1998,11 +1998,9 @@ namespace FM {
 
                     menu.add (show_hidden_menuitem);
 
-                    if (slot.directory.is_local || !slot.directory.can_open_files) {
-                        /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+                    if (slot.directory.is_local) {
                         menu.add (hide_local_thumbnails_menuitem);
-                    } else if (!slot.directory.is_local) {
-                        /* Do not show "Hide Local Thumbnails" option when in remote folder */
+                    } else if (slot.directory.can_open_files) {
                         menu.add (show_remote_thumbnails_menuitem);
                     }
 
