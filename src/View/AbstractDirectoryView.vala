@@ -1996,6 +1996,7 @@ namespace FM {
                         menu.add (bookmark_menuitem);
                     }
 
+                    menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (show_hidden_menuitem);
 
                     if (slot.directory.is_local) {
