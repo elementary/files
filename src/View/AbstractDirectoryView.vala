@@ -1835,10 +1835,101 @@ namespace FM {
             /* select selection or background context menu */
             update_menu_actions ();
 
-            var open_menu = new Gtk.Menu ();
+            var menu = new Gtk.Menu ();
 
-            var open_menu_menuitem = new Gtk.MenuItem.with_label (_("Open with"));
-            open_menu_menuitem.submenu = open_menu;
+            var selection = get_files_for_action ();
+            var selected_file = selection.data;
+
+            if (can_open_file (selected_file)) {
+                if (!selected_file.is_folder () && selected_file.is_executable ()) {
+                    var run_menuitem = new Gtk.MenuItem.with_label (_("Run"));
+                    run_menuitem.action_name = "selection.open";
+
+                    menu.add (run_menuitem);
+                } else if (default_app != null && default_app.get_id () != Marlin.APP_ID + ".desktop") {
+                    var open_menuitem = new Gtk.MenuItem.with_label (
+                        _("Open in %s").printf (default_app.get_display_name ())
+                    );
+                    open_menuitem.action_name = "selection.open-with-default";
+
+                    menu.add (open_menuitem);
+                }
+            }
+
+            var open_submenu = new Gtk.Menu ();
+
+            if (common_actions.get_action_enabled ("open-in")) {
+                // if (selected_file.is_mountable () || selected_file.is_root_network_folder ()) {
+                    var new_tab_menuitem = new Gtk.MenuItem.with_label (_("New Tab"));
+                    new_tab_menuitem.action_name = "common.open-in";
+                    new_tab_menuitem.action_target = "TAB";
+
+                    var new_window_menuitem = new Gtk.MenuItem.with_label (_("New Window"));
+                    new_window_menuitem.action_name = "common.open-in";
+                    new_window_menuitem.action_target = "WINDOW";
+
+                    open_submenu.add (new_tab_menuitem);
+                    open_submenu.add (new_window_menuitem);
+                // }
+            }
+
+            // if (can_open_file (selection.data)) {
+            //     open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+
+            //     if (selection.data.is_executable () == false) {
+            //         filter_default_app_from_open_with_apps ();
+            //     }
+
+            //     filter_this_app_from_open_with_apps ();
+
+            //     if (open_with_apps != null && open_with_apps.data != null) {
+            //         var apps_section = new GLib.Menu ();
+            //         unowned string last_label = "";
+            //         unowned string last_exec = "";
+            //         uint count = 0;
+
+            //         foreach (unowned AppInfo app_info in open_with_apps) {
+            //             /* Ensure no duplicate items */
+            //             unowned string label = app_info.get_display_name ();
+            //             unowned string exec = app_info.get_executable ().split (" ")[0];
+            //             if (label != last_label || exec != last_exec) {
+            //                 var detailed_name = GLib.Action.print_detailed_name ("selection.open-with-app",
+            //                                                                       new GLib.Variant.uint32 (count));
+            //                 var menu_item = new GLib.MenuItem (label, detailed_name);
+
+            //                 menu_item.set_icon (app_info.get_icon ());
+            //                 apps_section.append_item (menu_item);
+            //             }
+
+            //             last_label = label;
+            //             last_exec = exec;
+            //             count++;
+            //         };
+
+            //         if (apps_section.get_n_items () > 0) {
+            //             open_with_submenu.append_section (null, apps_section);
+            //         }
+            //     }
+
+            //     if (selection != null && selection.first ().next == null) { // Only one selected
+            //         var other_app_menu = new GLib.Menu ();
+            //         other_app_menu.append ( _("Other Application…"), "selection.open-with-other-app");
+            //         open_with_submenu.append_section (null, other_app_menu);
+            //     }
+            // }
+
+            // if (open_submenu.get_children ().length () > 0) {
+                var open_submenu_item = new Gtk.MenuItem ();
+                open_submenu_item.submenu = open_submenu;
+
+                if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
+                    open_submenu_item.label = _("Open in");
+                } else {
+                    open_submenu_item.label = _("Open with");
+                }
+
+                menu.add (open_submenu_item);
+            // }
 
             var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
             paste_menuitem.action_name = "common.paste-into";
@@ -1848,8 +1939,6 @@ namespace FM {
 
             var properties_menuitem = new Gtk.MenuItem.with_label (_("Properties"));
             properties_menuitem.action_name = "common.properties";
-
-            var menu = new Gtk.Menu ();
 
             if (get_selected_files () != null) {
                 var cut_menuitem = new Gtk.MenuItem.with_label (_("Cut"));
@@ -1882,7 +1971,6 @@ namespace FM {
                     var forget_menuitem = new Gtk.MenuItem.with_label (_("Remove from History"));
                     forget_menuitem.action_name = "selection.forget";
 
-                    menu.add (open_menu_menuitem);
                     menu.add (open_parent_menuitem);
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (forget_menuitem);
@@ -1891,9 +1979,6 @@ namespace FM {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 } else {
-                    menu.add (open_menu_menuitem);
-                    menu.add (new Gtk.SeparatorMenuItem ());
-
                     if (slot.directory.file.is_smb_server () && clipboard != null && clipboard.can_paste) {
                         menu.add (paste_menuitem);
                     } else if (valid_selection_for_edit ()) {
@@ -1964,8 +2049,6 @@ namespace FM {
                         menu.add (show_remote_thumbnails_menuitem);
                     }
                 } else {
-                    menu.add (open_menu_menuitem);
-
                     if (!in_network_root) {
                         /* If something is pastable in the clipboard, show the option even if it is not enabled */
                         if (clipboard != null && clipboard.can_paste) {
@@ -2046,101 +2129,6 @@ namespace FM {
             }
 
             return true;
-        }
-
-        private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {
-            var menu = new GLib.Menu ();
-            GLib.MenuModel? app_submenu;
-
-            string label = _("Invalid");
-            GLib.List<GOF.File> selection = get_files_for_action ();
-            GOF.File selected_file = selection.data;
-
-            if (can_open_file (selected_file)) {
-                if (!selected_file.is_folder () && selected_file.is_executable ()) {
-                    label = _("Run");
-                    menu.append (label, "selection.open");
-                } else if (default_app != null) {
-                    if (default_app.get_id () != Marlin.APP_ID + ".desktop") {
-                        label = (_("Open in %s")).printf (default_app.get_display_name ());
-                        menu.append (label, "selection.open-with-default");
-                    }
-                }
-            }
-
-            app_submenu = build_submenu_open_with_applications (ref builder, selection);
-
-            if (app_submenu != null && app_submenu.get_n_items () > 0) {
-                if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
-                    label = _("Open in");
-                } else {
-                    label = _("Open with");
-                }
-
-                menu.append_submenu (label, app_submenu);
-            }
-
-            return menu as MenuModel;
-        }
-
-        private GLib.MenuModel? build_submenu_open_with_applications (ref Gtk.Builder builder,
-                                                                      GLib.List<GOF.File> selection) {
-            var open_with_submenu = new GLib.Menu ();
-            open_with_apps = null;
-
-            if (common_actions.get_action_enabled ("open-in")) {
-                open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
-                if (selection.data.is_mountable () || selection.data.is_root_network_folder ()) {
-                    return open_with_submenu;
-                }
-            }
-
-            if (can_open_file (selection.data)) {
-                open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
-
-                if (selection.data.is_executable () == false) {
-                    filter_default_app_from_open_with_apps ();
-                }
-
-                filter_this_app_from_open_with_apps ();
-
-                if (open_with_apps != null && open_with_apps.data != null) {
-                    var apps_section = new GLib.Menu ();
-                    unowned string last_label = "";
-                    unowned string last_exec = "";
-                    uint count = 0;
-
-                    foreach (unowned AppInfo app_info in open_with_apps) {
-                        /* Ensure no duplicate items */
-                        unowned string label = app_info.get_display_name ();
-                        unowned string exec = app_info.get_executable ().split (" ")[0];
-                        if (label != last_label || exec != last_exec) {
-                            var detailed_name = GLib.Action.print_detailed_name ("selection.open-with-app",
-                                                                                  new GLib.Variant.uint32 (count));
-                            var menu_item = new GLib.MenuItem (label, detailed_name);
-
-                            menu_item.set_icon (app_info.get_icon ());
-                            apps_section.append_item (menu_item);
-                        }
-
-                        last_label = label;
-                        last_exec = exec;
-                        count++;
-                    };
-
-                    if (apps_section.get_n_items () > 0) {
-                        open_with_submenu.append_section (null, apps_section);
-                    }
-                }
-
-                if (selection != null && selection.first ().next == null) { // Only one selected
-                    var other_app_menu = new GLib.Menu ();
-                    other_app_menu.append ( _("Other Application…"), "selection.open-with-other-app");
-                    open_with_submenu.append_section (null, other_app_menu);
-                }
-            }
-
-            return open_with_submenu as GLib.MenuModel;
         }
 
         private GLib.MenuModel? build_menu_templates () {
