@@ -16,19 +16,6 @@
         </submenu>
     </menu>
 
-    <menu id='open-in'>
-        <item>
-            <attribute name='label' translatable='yes'>New Tab</attribute>
-            <attribute name='action'>common.open-in</attribute>
-            <attribute name="target">TAB</attribute>
-        </item>
-        <item>
-            <attribute name='label' translatable='yes'>New Window</attribute>
-            <attribute name='action'>common.open-in</attribute>
-            <attribute name="target">WINDOW</attribute>
-        </item>
-    </menu>
-
     <menu id='sort-by'>
         <submenu>
             <attribute name='label' translatable='yes'>Sort by</attribute>
