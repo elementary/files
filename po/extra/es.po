@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2020-01-06 22:53+0000\n"
+"PO-Revision-Date: 2020-01-17 22:07+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
 "\n"
@@ -102,17 +102,14 @@ msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:74
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "Mejoras de traducciones"
+msgstr "Mejora de la animación de la barra de ruta"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
-#, fuzzy
 msgid "Update documentation"
-msgstr "Traducciones actualizadas"
+msgstr "Documentación actualizada"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
-#, fuzzy
 msgid "Update translations"
 msgstr "Traducciones actualizadas"
 
@@ -170,9 +167,8 @@ msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:100
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "Soporte mejorado de red"
+msgstr "Compatibilidad con MTP mejorada"
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Various tagging feature refinements"
