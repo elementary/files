@@ -1843,21 +1843,19 @@ namespace FM {
             var open_submenu = new Gtk.Menu ();
 
             if (common_actions.get_action_enabled ("open-in")) {
-                // if (selected_file.is_mountable () || selected_file.is_root_network_folder ()) {
-                    var new_tab_menuitem = new Gtk.MenuItem.with_label (_("New Tab"));
-                    new_tab_menuitem.action_name = "common.open-in";
-                    new_tab_menuitem.action_target = "TAB";
+                var new_tab_menuitem = new Gtk.MenuItem.with_label (_("New Tab"));
+                new_tab_menuitem.action_name = "common.open-in";
+                new_tab_menuitem.action_target = "TAB";
 
-                    var new_window_menuitem = new Gtk.MenuItem.with_label (_("New Window"));
-                    new_window_menuitem.action_name = "common.open-in";
-                    new_window_menuitem.action_target = "WINDOW";
+                var new_window_menuitem = new Gtk.MenuItem.with_label (_("New Window"));
+                new_window_menuitem.action_name = "common.open-in";
+                new_window_menuitem.action_target = "WINDOW";
 
-                    open_submenu.add (new_tab_menuitem);
-                    open_submenu.add (new_window_menuitem);
-                // }
+                open_submenu.add (new_tab_menuitem);
+                open_submenu.add (new_window_menuitem);
             }
 
-            if (can_open_file (selected_file)) {
+            if (!selected_file.is_mountable () && !selected_file.is_root_network_folder () && can_open_file (selected_file)) {
                 if (!selected_file.is_folder () && selected_file.is_executable ()) {
                     var run_menuitem = new Gtk.MenuItem.with_label (_("Run"));
                     run_menuitem.action_name = "selection.open";
@@ -1875,10 +1873,10 @@ namespace FM {
                 open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
 
                 if (selected_file.is_executable () == false) {
-            //         filter_default_app_from_open_with_apps ();
+                    filter_default_app_from_open_with_apps ();
                 }
 
-            //     filter_this_app_from_open_with_apps ();
+                filter_this_app_from_open_with_apps ();
 
                 if (open_with_apps != null && open_with_apps.data != null) {
             //         var apps_section = new GLib.Menu ();
@@ -1917,7 +1915,7 @@ namespace FM {
                 }
             }
 
-            // if (open_submenu.get_children ().length () > 0) {
+            if (open_submenu.get_children ().length () > 0) {
                 var open_submenu_item = new Gtk.MenuItem ();
                 open_submenu_item.submenu = open_submenu;
 
@@ -1928,7 +1926,7 @@ namespace FM {
                 }
 
                 menu.add (open_submenu_item);
-            // }
+            }
 
             var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
             paste_menuitem.action_name = "common.paste-into";
