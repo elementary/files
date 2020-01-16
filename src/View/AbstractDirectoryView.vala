@@ -2028,13 +2028,13 @@ namespace FM {
                     menu.add (properties_menuitem);
                 }
             } else {
-                var show_hidden_menuitem = new Gtk.MenuItem.with_label (_("Show Hidden Files"));
+                var show_hidden_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Hidden Files"));
                 show_hidden_menuitem.action_name = "background.show-hidden";
 
-                var show_remote_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Show Remote Thumbnails"));
+                var show_remote_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Remote Thumbnails"));
                 show_remote_thumbnails_menuitem.action_name = "background.show-remote-thumbnails";
 
-                var hide_local_thumbnails_menuitem = new Gtk.MenuItem.with_label (_("Hide Thumbnails"));
+                var hide_local_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Hide Thumbnails"));
                 hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
 
                 if (in_trash) {
