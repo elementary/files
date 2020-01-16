@@ -1915,7 +1915,7 @@ namespace FM {
                                 paste_menuitem.label = _("Paste into Folder");
                             }
 
-                            menu.add (paste_into_menuitem);
+                            menu.add (paste_menuitem);
                         }
 
                         menu.add (new Gtk.SeparatorMenuItem ());
