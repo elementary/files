@@ -1840,22 +1840,6 @@ namespace FM {
             var selection = get_files_for_action ();
             var selected_file = selection.data;
 
-            if (can_open_file (selected_file)) {
-                if (!selected_file.is_folder () && selected_file.is_executable ()) {
-                    var run_menuitem = new Gtk.MenuItem.with_label (_("Run"));
-                    run_menuitem.action_name = "selection.open";
-
-                    menu.add (run_menuitem);
-                } else if (default_app != null && default_app.get_id () != Marlin.APP_ID + ".desktop") {
-                    var open_menuitem = new Gtk.MenuItem.with_label (
-                        _("Open in %s").printf (default_app.get_display_name ())
-                    );
-                    open_menuitem.action_name = "selection.open-with-default";
-
-                    menu.add (open_menuitem);
-                }
-            }
-
             var open_submenu = new Gtk.Menu ();
 
             if (common_actions.get_action_enabled ("open-in")) {
@@ -1873,16 +1857,30 @@ namespace FM {
                 // }
             }
 
-            // if (can_open_file (selection.data)) {
-            //     open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+            if (can_open_file (selected_file)) {
+                if (!selected_file.is_folder () && selected_file.is_executable ()) {
+                    var run_menuitem = new Gtk.MenuItem.with_label (_("Run"));
+                    run_menuitem.action_name = "selection.open";
 
-            //     if (selection.data.is_executable () == false) {
+                    menu.add (run_menuitem);
+                } else if (default_app != null && default_app.get_id () != Marlin.APP_ID + ".desktop") {
+                    var open_menuitem = new Gtk.MenuItem.with_label (
+                        _("Open in %s").printf (default_app.get_display_name ())
+                    );
+                    open_menuitem.action_name = "selection.open-with-default";
+
+                    menu.add (open_menuitem);
+                }
+
+                open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+
+                if (selected_file.is_executable () == false) {
             //         filter_default_app_from_open_with_apps ();
-            //     }
+                }
 
             //     filter_this_app_from_open_with_apps ();
 
-            //     if (open_with_apps != null && open_with_apps.data != null) {
+                if (open_with_apps != null && open_with_apps.data != null) {
             //         var apps_section = new GLib.Menu ();
             //         unowned string last_label = "";
             //         unowned string last_exec = "";
@@ -1909,14 +1907,15 @@ namespace FM {
             //         if (apps_section.get_n_items () > 0) {
             //             open_with_submenu.append_section (null, apps_section);
             //         }
-            //     }
+                }
 
-            //     if (selection != null && selection.first ().next == null) { // Only one selected
-            //         var other_app_menu = new GLib.Menu ();
-            //         other_app_menu.append ( _("Other Application…"), "selection.open-with-other-app");
-            //         open_with_submenu.append_section (null, other_app_menu);
-            //     }
-            // }
+                if (selection != null && selection.first ().next == null) { // Only one selected
+                    var other_apps_menuitem = new Gtk.MenuItem.with_label (_("Other Application…"));
+                    other_apps_menuitem.action_name = "selection.open-with-other-app";
+
+                    open_submenu.add (other_apps_menuitem);
+                }
+            }
 
             // if (open_submenu.get_children ().length () > 0) {
                 var open_submenu_item = new Gtk.MenuItem ();
