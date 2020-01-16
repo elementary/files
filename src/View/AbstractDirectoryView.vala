@@ -204,7 +204,7 @@ namespace FM {
         protected GLib.List<GOF.File> selected_files = null;
         private bool selected_files_invalid = true;
 
-        private GLib.List<GLib.File> templates = null;
+        private static GLib.List<GLib.File> templates = null;
 
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
@@ -2157,54 +2157,45 @@ namespace FM {
                 submenu.add (folder_menuitem);
                 submenu.add (file_menuitem);
 
+                /* Potential optimisation - do just once when app starts or view created */
+                templates = null;
+                unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+                if (template_path != null) {
+                    var template_folder = GLib.File.new_for_path (template_path);
+                    load_templates_from_folder (template_folder);
+
+                    int index = 0;
+                    int count = 0;
+
+                    if (templates.length () > 0) {
+                        submenu.add (new Gtk.SeparatorMenuItem ());
+
+                        foreach (unowned GLib.File template in templates) {
+                            var label = template.get_basename ();
+                            var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                            if (ftype == GLib.FileType.DIRECTORY) {
+                                if (template == template_folder) {
+                                    label = _("Templates");
+                                }
+                        //         var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
+                        //         templates_menu.append_item (submenu);
+                        //         templates_submenu = new GLib.Menu ();
+                            } else {
+                                var template_menuitem = new Gtk.MenuItem.with_label (label);
+                                template_menuitem.set_detailed_action_name ("background.create-from::" + index.to_string ());
+
+                                submenu.add (template_menuitem);
+
+                                count ++;
+                            }
+
+                            index++;
+                        }
+                    }
+                }
+
                 label = _("New");
             }
-
-            // /* Potential optimisation - do just once when app starts or view created */
-            // templates = null;
-            // unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
-            // if (template_path == null) {
-            //     return null;
-            // }
-
-            // var template_folder = GLib.File.new_for_path (template_path);
-            // load_templates_from_folder (template_folder);
-
-            // if (templates.length () == 0) {
-            //     return null;
-            // }
-
-            // var templates_menu = new GLib.Menu ();
-            // var templates_submenu = new GLib.Menu ();
-            // int index = 0;
-            // int count = 0;
-
-            // templates.@foreach ((template) => {
-            //     var label = template.get_basename ();
-            //     var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-            //     if (ftype == GLib.FileType.DIRECTORY) {
-            //         if (template == template_folder) {
-            //             label = _("Templates");
-            //         }
-
-            //         var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
-            //         templates_menu.append_item (submenu);
-            //         templates_submenu = new GLib.Menu ();
-            //     } else {
-            //         templates_submenu.append (label, "background.create-from::" + index.to_string ());
-            //         count ++;
-            //     }
-
-            //     index++;
-            // });
-
-            // templates_menu.append_section (null, templates_submenu);
-
-            // if (count < 1) {
-            //     return null;
-            // } else {
-            //     return templates_menu as MenuModel;
-            // }
         }
 
         private bool valid_selection_for_edit () {
@@ -2347,7 +2338,7 @@ namespace FM {
             critical ("Action name not found: %s - cannot set state", name);
         }
 
-        private void load_templates_from_folder (GLib.File template_folder) {
+        private static void load_templates_from_folder (GLib.File template_folder) {
             GLib.List<GLib.File> file_list = null;
             GLib.List<GLib.File> folder_list = null;
 
