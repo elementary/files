@@ -1853,6 +1853,7 @@ namespace FM {
 
                 open_submenu.add (new_tab_menuitem);
                 open_submenu.add (new_window_menuitem);
+                open_submenu.add (new Gtk.SeparatorMenuItem ());
             }
 
             if (!selected_file.is_mountable () && !selected_file.is_root_network_folder () && can_open_file (selected_file)) {
@@ -1906,13 +1907,13 @@ namespace FM {
                         last_exec = exec;
                         count++;
                     };
+
+                    if (count > 0) {
+                        open_submenu.add (new Gtk.SeparatorMenuItem ());
+                    }
                 }
 
                 if (selection != null && selection.first ().next == null) { // Only one selected
-                    if (open_submenu.get_children ().length () > 0) {
-                        open_submenu.add (new Gtk.SeparatorMenuItem ());
-                    }
-
                     var other_apps_menuitem = new Gtk.MenuItem.with_label (_("Other Application…"));
                     other_apps_menuitem.action_name = "selection.open-with-other-app";
 
@@ -1931,7 +1932,6 @@ namespace FM {
                 }
 
                 menu.add (open_submenu_item);
-                menu.add (new Gtk.SeparatorMenuItem ());
             }
 
             var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
@@ -1961,6 +1961,7 @@ namespace FM {
                     var restore_menuitem = new Gtk.MenuItem.with_label (_("Restore from Trash"));
                     restore_menuitem.action_name = "selection.restore";
 
+                    menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (restore_menuitem);
                     menu.add (delete_menuitem);
                     menu.add (new Gtk.SeparatorMenuItem ());
@@ -1991,6 +1992,7 @@ namespace FM {
                         var copy_link_menuitem = new Gtk.MenuItem.with_label (_("Copy as Link"));
                         copy_link_menuitem.action_name = "common.copy-link";
 
+                        menu.add (new Gtk.SeparatorMenuItem ());
                         menu.add (cut_menuitem);
                         menu.add (copy_menuitem);
                         menu.add (copy_link_menuitem);
@@ -2040,6 +2042,7 @@ namespace FM {
                         menu.add (paste_menuitem);
                     }
                 } else if (in_recent) {
+                    menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (show_hidden_menuitem);
@@ -2053,6 +2056,8 @@ namespace FM {
                     }
                 } else {
                     if (!in_network_root) {
+                        menu.add (new Gtk.SeparatorMenuItem ());
+
                         /* If something is pastable in the clipboard, show the option even if it is not enabled */
                         if (clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
