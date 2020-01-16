@@ -2063,15 +2063,7 @@ namespace FM {
                         }
 
                         if (is_writable) {
-                        //     var new_menu = builder.get_object ("new") as GLib.Menu;
-
-                        //     GLib.MenuModel? template_menu = build_menu_templates ();
-                        //     if (template_menu != null) {
-                        //         var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
-                        //         new_submenu.append_section (null, template_menu);
-                        //     }
-
-                        //     menu.append_section (null, new_menu as GLib.MenuModel);
+                            menu.add (new NewSubMenuItem ());
                         }
 
                         menu.add (new SortSubMenuItem ());
@@ -2151,6 +2143,70 @@ namespace FM {
             }
         }
 
+        private class NewSubMenuItem : Gtk.MenuItem {
+            construct {
+                var folder_menuitem = new Gtk.MenuItem.with_label (_("Folder"));
+                folder_menuitem.action_name = "background.new";
+                folder_menuitem.action_target = "FOLDER";
+
+                var file_menuitem = new Gtk.MenuItem.with_label (_("Empty File"));
+                file_menuitem.action_name = "background.new";
+                file_menuitem.action_target = "FILE";
+
+                submenu = new Gtk.Menu ();
+                submenu.add (folder_menuitem);
+                submenu.add (file_menuitem);
+
+                label = _("New");
+            }
+
+            // /* Potential optimisation - do just once when app starts or view created */
+            // templates = null;
+            // unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            // if (template_path == null) {
+            //     return null;
+            // }
+
+            // var template_folder = GLib.File.new_for_path (template_path);
+            // load_templates_from_folder (template_folder);
+
+            // if (templates.length () == 0) {
+            //     return null;
+            // }
+
+            // var templates_menu = new GLib.Menu ();
+            // var templates_submenu = new GLib.Menu ();
+            // int index = 0;
+            // int count = 0;
+
+            // templates.@foreach ((template) => {
+            //     var label = template.get_basename ();
+            //     var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+            //     if (ftype == GLib.FileType.DIRECTORY) {
+            //         if (template == template_folder) {
+            //             label = _("Templates");
+            //         }
+
+            //         var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
+            //         templates_menu.append_item (submenu);
+            //         templates_submenu = new GLib.Menu ();
+            //     } else {
+            //         templates_submenu.append (label, "background.create-from::" + index.to_string ());
+            //         count ++;
+            //     }
+
+            //     index++;
+            // });
+
+            // templates_menu.append_section (null, templates_submenu);
+
+            // if (count < 1) {
+            //     return null;
+            // } else {
+            //     return templates_menu as MenuModel;
+            // }
+        }
+
         private bool valid_selection_for_edit () {
             foreach (unowned GOF.File file in get_selected_files ()) {
                 if (file.is_root_network_folder ()) {
@@ -2169,54 +2225,6 @@ namespace FM {
             }
 
             return true;
-        }
-
-        private GLib.MenuModel? build_menu_templates () {
-            /* Potential optimisation - do just once when app starts or view created */
-            templates = null;
-            unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
-            if (template_path == null) {
-                return null;
-            }
-
-            var template_folder = GLib.File.new_for_path (template_path);
-            load_templates_from_folder (template_folder);
-
-            if (templates.length () == 0) {
-                return null;
-            }
-
-            var templates_menu = new GLib.Menu ();
-            var templates_submenu = new GLib.Menu ();
-            int index = 0;
-            int count = 0;
-
-            templates.@foreach ((template) => {
-                var label = template.get_basename ();
-                var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-                if (ftype == GLib.FileType.DIRECTORY) {
-                    if (template == template_folder) {
-                        label = _("Templates");
-                    }
-
-                    var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
-                    templates_menu.append_item (submenu);
-                    templates_submenu = new GLib.Menu ();
-                } else {
-                    templates_submenu.append (label, "background.create-from::" + index.to_string ());
-                    count ++;
-                }
-
-                index++;
-            });
-
-            templates_menu.append_section (null, templates_submenu);
-
-            if (count < 1) {
-                return null;
-            } else {
-                return templates_menu as MenuModel;
-            }
         }
 
         private void update_menu_actions () {
