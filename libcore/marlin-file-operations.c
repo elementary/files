@@ -177,15 +177,19 @@ format_time (int seconds, int *time_unit)
     }
 
     if (seconds < 60) {
-        if (time_unit)
+        if (time_unit) {
             *time_unit = seconds;
+        }
+
         return g_strdup_printf (ngettext ("%'d second","%'d seconds", seconds), seconds);
     }
 
     if (seconds < 60*60) {
         minutes = seconds / 60;
-        if (time_unit)
+        if (time_unit) {
             *time_unit = minutes;
+        }
+
         return g_strdup_printf (ngettext ("%'d minute", "%'d minutes", minutes), minutes);
     }
 
@@ -195,8 +199,9 @@ format_time (int seconds, int *time_unit)
         char *h, *m, *res;
 
         minutes = (seconds - hours * 60 * 60) / 60;
-        if (time_unit)
+        if (time_unit) {
             *time_unit = minutes + hours;
+        }
 
         h = g_strdup_printf (ngettext ("%'d hour", "%'d hours", hours), hours);
         m = g_strdup_printf (ngettext ("%'d minute", "%'d minutes", minutes), minutes);
@@ -206,8 +211,10 @@ format_time (int seconds, int *time_unit)
         return res;
     }
 
-    if (time_unit)
+    if (time_unit) {
         *time_unit = hours;
+    }
+
     return g_strdup_printf (ngettext ("approximately %'d hour",
                                       "approximately %'d hours",
                                       hours), hours);
@@ -3482,7 +3489,7 @@ remove_target_recursively (CommonJob *job,
         if (job->skip_all_error) {
             goto skip1;
         }
-        
+
         src_name = g_file_get_parse_name (src);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
