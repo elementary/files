@@ -2114,21 +2114,25 @@ namespace FM {
 
         private class SortSubMenuItem : Gtk.MenuItem {
             construct {
-                var name_radioitem = new Gtk.RadioMenuItem.with_label (null, _("Name"));
+                var name_radioitem = new Gtk.CheckMenuItem.with_label (_("Name"));
                 name_radioitem.action_name = "background.sort-by";
                 name_radioitem.action_target = "name";
+                name_radioitem.draw_as_radio = true;
 
-                var size_radioitem = new Gtk.RadioMenuItem.with_label_from_widget (name_radioitem, _("Size"));
+                var size_radioitem = new Gtk.CheckMenuItem.with_label (_("Size"));
                 size_radioitem.action_name = "background.sort-by";
                 size_radioitem.action_target = "size";
+                size_radioitem.draw_as_radio = true;
 
-                var type_radioitem = new Gtk.RadioMenuItem.with_label_from_widget (name_radioitem, _("Type"));
+                var type_radioitem = new Gtk.CheckMenuItem.with_label (_("Type"));
                 type_radioitem.action_name = "background.sort-by";
                 type_radioitem.action_target = "type";
+                type_radioitem.draw_as_radio = true;
 
-                var date_radioitem = new Gtk.RadioMenuItem.with_label_from_widget (name_radioitem, _("Date"));
+                var date_radioitem = new Gtk.CheckMenuItem.with_label (_("Date"));
                 date_radioitem.action_name = "background.sort-by";
                 date_radioitem.action_target = "modified";
+                date_radioitem.draw_as_radio = true;
 
                 var reversed_checkitem = new Gtk.CheckMenuItem.with_label (_("Reversed Order"));
                 reversed_checkitem.action_name = "background.reverse";
