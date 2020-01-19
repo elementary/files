@@ -2128,7 +2128,7 @@ namespace FM {
 
                 var date_radioitem = new Gtk.RadioMenuItem.with_label_from_widget (name_radioitem, _("Date"));
                 date_radioitem.action_name = "background.sort-by";
-                date_radioitem.action_target = "date";
+                date_radioitem.action_target = "modified";
 
                 var reversed_checkitem = new Gtk.CheckMenuItem.with_label (_("Reversed Order"));
                 reversed_checkitem.action_name = "background.reverse";
