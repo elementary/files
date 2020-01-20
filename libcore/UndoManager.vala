@@ -10,7 +10,6 @@ namespace Marlin {
         CREATEFOLDER,
         MOVETOTRASH,
         CREATELINK,
-        DELETE,
         RESTOREFROMTRASH,
         SETPERMISSIONS,
         RECURSIVESETPERMISSIONS,
