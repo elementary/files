@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 19:55+0000\n"
-"PO-Revision-Date: 2019-12-29 10:46+0000\n"
+"PO-Revision-Date: 2020-01-20 20:20+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -417,10 +417,8 @@ msgid "Remove from History"
 msgstr "Verwijderen uit historie"
 
 #: src/View/AbstractDirectoryView.vala:1992
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Hernoemen"
+msgstr "Hernoemen…"
 
 #: src/View/AbstractDirectoryView.vala:1995
 msgid "Copy as Link"
@@ -443,10 +441,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Laat externe thumbnails zien"
 
 #: src/View/AbstractDirectoryView.vala:2040
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Verberg lokale miniatuurweergave"
+msgstr "Verberg miniatuurweergaven"
 
 #: src/View/AbstractDirectoryView.vala:2065
 msgid "Paste Link"
