@@ -320,7 +320,7 @@ namespace Marlin {
                     if (uris != null ) {
                         try {
                             yield Marlin.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
