@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-12-06 17:24+0000\n"
+"PO-Revision-Date: 2020-01-20 19:53+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -69,74 +69,74 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "New features:"
-msgstr ""
+msgstr "Novas funcionalidades:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Initial git plugin support"
-msgstr ""
+msgstr "Suporte inicial do plugin do git"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr ""
+"Siga a definição do histórico global ao restaurar e guardar os separadores"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Other updates:"
-msgstr ""
+msgstr "Outras atualizações:"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Ensure tabs showing same folder remain synchronized"
 msgstr ""
+"Assegure-se de que os separadores que mostram a mesma pasta permanecem "
+"sincronizados"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fix drag with secondary button on empty space"
-msgstr ""
+msgstr "Corrige o arrastar com botão secundário no espaço vazio"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Show custom media type icons for installed apps"
-msgstr ""
+msgstr "Mostrar ícones de media personalizados para aplicações instaladas"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix appearance of inactive diskspace indicator"
-msgstr ""
+msgstr "Corrige a aparência de indicador de espaço em disco inativo"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "Suporte de tradução melhorado"
+msgstr "Melhora a animação da barra de caminho"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
-#, fuzzy
 msgid "Update documentation"
-msgstr "Traduções atualizadas"
+msgstr "Documentação atualizada"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
-#, fuzzy
 msgid "Update translations"
-msgstr "Traduções atualizadas"
+msgstr "Atualizar traduções"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Initial cloudproviders plugin support"
-msgstr ""
+msgstr "Suporte inicial a plugins de fornecedores de nuvens"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid "Fix selecting pasted files"
-msgstr ""
+msgstr "Corrige a seleção de ficheiros colados"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Fix color label visibility while using dark theme"
-msgstr ""
+msgstr "Corrige a visibilidade da etiqueta colorida enquanto usa o tema escuro"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Fix selecting files using Shift key"
-msgstr ""
+msgstr "Corrige a seleção de ficheiros ao usar a tecla Shift"
 
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Draw checkerboard background for image items"
-msgstr ""
+msgstr "Fundo do tabuleiro de xadrez para os itens de imagem"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Improved styling for disk space bars"
-msgstr ""
+msgstr "Estilo melhorado para barras de espaço em disco"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 #: data/io.elementary.files.appdata.xml.in.in:111
@@ -153,66 +153,70 @@ msgstr "Traduções atualizadas"
 
 #: data/io.elementary.files.appdata.xml.in.in:96
 msgid "Show more search results"
-msgstr ""
+msgstr "Mostra mais resultados da pesquisa"
 
 #: data/io.elementary.files.appdata.xml.in.in:97
 msgid "Ensure valid tab name generation"
-msgstr ""
+msgstr "Garante a geração de nomes de separadores válidos"
 
 #: data/io.elementary.files.appdata.xml.in.in:98
 msgid "Properly sort folders by date and size"
-msgstr ""
+msgstr "Classifica corretamente as pastas por data e tamanho"
 
 #: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
+"Iniciar o Ficheiros do Terminal abre agora um novo separador em vez de uma "
+"nova janela"
 
 #: data/io.elementary.files.appdata.xml.in.in:100
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "Suporte a rede melhorado"
+msgstr "Melhora o suporte do MTP"
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Various tagging feature refinements"
-msgstr ""
+msgstr "Vários aperfeiçoamentos de características de etiquetagem"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Keyboard navigation improvements"
-msgstr ""
+msgstr "Melhorias na navegação com o teclado"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Symlink copy and paste fixes"
-msgstr ""
+msgstr "Correções de copiar e colar ligações simbólicas"
 
 #: data/io.elementary.files.appdata.xml.in.in:104
 msgid "Avoid crash when Templates folder is null"
-msgstr ""
+msgstr "Evita falha quando a pasta Modelos for nula"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Reduce memory footprint of FileChooserDialog"
-msgstr ""
+msgstr "Reduzir o espaço de memória do FileChooserDialog"
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Avoid crash when selecting image file in some situations"
-msgstr ""
+msgstr "Evita falha ao selecionar o ficheiro de imagem em algumas situações"
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
 msgstr ""
+"Corrige a janela de progresso irrecuperável durante a cópia de ficheiros de "
+"rede para armazenamento removível"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr ""
+"Corrige o arrastar e soltar depois de clicar duas vezes numa área em branco"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Avoid crash while scrolling over view switcher"
-msgstr ""
+msgstr "Evite falha enquanto passa o cursor sobre o comutador de visualização"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Avoid possible crash in some copy and paste situations"
-msgstr ""
+msgstr "Evita possíveis falhas em algumas situações de copiar e colar"
 
 #: data/io.elementary.files.appdata.xml.in.in:118
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
