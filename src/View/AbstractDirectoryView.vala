@@ -2187,7 +2187,11 @@ namespace FM {
 
         private class NewSubMenuItem : Gtk.MenuItem {
             construct {
-                var folder_menuitem = new Gtk.MenuItem.with_label (_("Folder"));
+                var folder_menuitem = new Gtk.MenuItem ();
+                folder_menuitem.add (new Granite.AccelLabel (
+                    _("Folder"),
+                    "<Ctrl>n"
+                ));
                 folder_menuitem.action_name = "background.new";
                 folder_menuitem.action_target = "FOLDER";
 
