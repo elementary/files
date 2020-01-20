@@ -7,28 +7,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2019-12-19 07:36+0000\n"
-"Last-Translator: Marko <marko.dolar@gmail.com>\n"
+"POT-Creation-Date: 2020-01-15 17:59+0000\n"
+"PO-Revision-Date: 2020-01-07 18:53+0000\n"
+"Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
 ">\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: src/Application.vala:124
 msgid "Show the version of the program"
-msgstr "Pokaži različico programa."
+msgstr "Pokaži različico programa"
 
 #: src/Application.vala:126
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Odpri uri(je) v novem zavihku"
+msgstr "Odpri URI(je) v novem zavihku"
 
 #: src/Application.vala:128 src/View/directory_view_popup.ui:87
 msgid "New Window"
@@ -36,7 +35,7 @@ msgstr "Novo okno"
 
 #: src/Application.vala:130
 msgid "Quit Files"
-msgstr "Zapri Datoteke."
+msgstr "Zapri Datoteke"
 
 #: src/Application.vala:132
 msgid "Enable debug logging"
@@ -153,7 +152,7 @@ msgstr "neznano"
 
 #: src/Dialogs/PropertiesWindow.vala:450
 msgid "Loading…"
-msgstr "Nalaganje ..."
+msgstr "Nalaganje…"
 
 #: src/Dialogs/PropertiesWindow.vala:484
 msgid "Could not be determined"
@@ -186,9 +185,8 @@ msgid "Deleted:"
 msgstr "Izbrisano:"
 
 #: src/Dialogs/PropertiesWindow.vala:575
-#, fuzzy
 msgid "Media type:"
-msgstr "MIME tip:"
+msgstr "Tip:"
 
 #: src/Dialogs/PropertiesWindow.vala:582
 msgid "Resolution:"
@@ -205,12 +203,12 @@ msgstr "Cilj:"
 
 #: src/Dialogs/PropertiesWindow.vala:608
 msgid "Original Location:"
-msgstr "Izvorna lokacija"
+msgstr "Izvorna lokacija:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:2151
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Other Application…"
-msgstr "Drugo aplikacijo..."
+msgstr "Drugo aplikacijo…"
 
 #: src/Dialogs/PropertiesWindow.vala:651
 msgid "Open with:"
@@ -310,7 +308,7 @@ msgstr "Ni bilo mogoče odpreti URIjev"
 msgid "Could not open files or URIs with this app"
 msgstr "S to aplikacijo ni bilo mogoče odpreti datotek/URIjev"
 
-#: src/View/Window.vala:495 src/View/Window.vala:505
+#: src/View/Window.vala:543 src/View/Window.vala:553
 msgid "(as Administrator)"
 msgstr "Kot administrator"
 
@@ -332,7 +330,7 @@ msgstr "Spremenjeno"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
 msgid "This Folder Does Not Exist"
-msgstr "Ta mapa ne obstaja."
+msgstr "Ta mapa ne obstaja"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
@@ -352,79 +350,78 @@ msgstr "Ustvari mapo \"%s\""
 msgid "Failed to create the folder"
 msgstr "Ni bilo mogoče ustvariti mape"
 
-#: src/View/AbstractDirectoryView.vala:822
-#: src/View/AbstractDirectoryView.vala:1129
-#, fuzzy
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1126
 msgid "Cannot execute this file"
-msgstr "Te datoteke ni mogoče odpreti."
+msgstr "Te datoteke ni mogoče odpreti"
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
-msgstr "Te datoteke ni mogoče odpreti."
+msgstr "Te datoteke ni mogoče odpreti"
 
-#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "Ni bilo mogoče ugotoviti vrste datoteke"
 
-#: src/View/AbstractDirectoryView.vala:1584
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Cannot drop this file"
 msgstr "Datoteke ni mogoče spustiti"
 
-#: src/View/AbstractDirectoryView.vala:1585
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Ime datoteke je napačno"
 
-#: src/View/AbstractDirectoryView.vala:2068
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Invalid"
 msgstr "Neveljavna"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2064
 msgid "Run"
 msgstr "Zaženi"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2068
 #, c-format
 msgid "Open in %s"
 msgstr "Odpri v %s"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Open in"
 msgstr "Odpri v"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2080
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Odpri z"
 
-#: src/View/AbstractDirectoryView.vala:2184
+#: src/View/AbstractDirectoryView.vala:2174
 msgid "Templates"
 msgstr "Šablone"
 
-#: src/View/AbstractDirectoryView.vala:2431
+#: src/View/AbstractDirectoryView.vala:2421
 #, c-format
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: src/View/AbstractDirectoryView.vala:2792
-#: src/View/AbstractDirectoryView.vala:2987
+#: src/View/AbstractDirectoryView.vala:2782
+#: src/View/AbstractDirectoryView.vala:2977
 msgid "Cannot remove files from here"
 msgstr "Od tu ni mogoče odstraniti datotek"
 
-#: src/View/AbstractDirectoryView.vala:2793
-#: src/View/AbstractDirectoryView.vala:2972
-#: src/View/AbstractDirectoryView.vala:2988
+#: src/View/AbstractDirectoryView.vala:2783
+#: src/View/AbstractDirectoryView.vala:2962
+#: src/View/AbstractDirectoryView.vala:2978
 msgid "You do not have permission to change this location"
 msgstr "Nimate dovoljenja za spreminjanje te lokacije"
 
-#: src/View/AbstractDirectoryView.vala:2947
+#: src/View/AbstractDirectoryView.vala:2937
 msgid "Cannot copy files that are in the trash"
 msgstr "Datotek v smeteh ni mogoče kopirati"
 
-#: src/View/AbstractDirectoryView.vala:2948
+#: src/View/AbstractDirectoryView.vala:2938
 msgid "Cutting the selection instead"
 msgstr "Režem izbrane predmete"
 
-#: src/View/AbstractDirectoryView.vala:2971
+#: src/View/AbstractDirectoryView.vala:2961
 msgid "Cannot paste files here"
 msgstr "Datotek ni mogoče prilepiti sem"
 
@@ -446,7 +443,7 @@ msgstr "Za dostop do te mape je potrebno delujoče omrežje"
 
 #: src/View/ViewContainer.vala:406
 msgid "This Folder Does Not Belong to You"
-msgstr "Ta mapa ni vaša."
+msgstr "Ta mapa ni vaša"
 
 #: src/View/ViewContainer.vala:407
 msgid "You don't have permission to view this folder."
@@ -462,7 +459,7 @@ msgstr "Ni bilo mogoče vzpostaviti povezave s strežnikom za to mapo."
 
 #: src/View/ViewContainer.vala:413
 msgid "Unable to Display Folder Contents"
-msgstr "Ni bilo mogoče pokazati vsebine mape."
+msgstr "Ni bilo mogoče pokazati vsebine mape"
 
 #: src/View/ViewContainer.vala:414
 msgid "The operation timed out."
@@ -565,11 +562,11 @@ msgstr "Ta mapa je prazna"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr "Ni smeti."
+msgstr "Ni smeti"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr "Ni prejšnjih datotek."
+msgstr "Ni prejšnjih datotek"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
@@ -577,19 +574,19 @@ msgstr "Dostop zavrnjen"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Zasebni način je vklopljen"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Seznam odprtih datotek ne bo shranjen"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Spremeni varnostne nastavitve"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Odpri nastavitve varnosti in zasebnosti"
 
 #: src/View/PopupMenuBuilder.vala:49
 msgid "Open"
@@ -661,12 +658,11 @@ msgstr "Prikaži skrite datoteke"
 
 #: src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr "Prikaži predogled"
+msgstr "Prikaži predogled za datoteke na omrežju"
 
 #: src/View/directory_view_popup.ui:75
-#, fuzzy
 msgid "Hide Local Thumbnails"
-msgstr "Prikaži predogled"
+msgstr "Skrij predogled za datoteke na disku"
 
 #: src/View/directory_view_popup.ui:82
 msgid "New Tab"
@@ -739,7 +735,17 @@ msgstr "Odpri v novem oknu"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
-msgstr "Odpri v drugi aplikaciji..."
+msgstr "Odpri v drugi aplikaciji…"
+
+#: src/View/Widgets/HeaderBar.vala:63
+#: filechooser-module/FileChooserDialog.vala:75
+msgid "Previous"
+msgstr "Naprej"
+
+#: src/View/Widgets/HeaderBar.vala:68
+#: filechooser-module/FileChooserDialog.vala:79
+msgid "Next"
+msgstr "Nazaj"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
@@ -829,16 +835,6 @@ msgstr "Pisanje"
 msgid "Execute"
 msgstr "Izvajanje"
 
-#: src/View/Widgets/TopMenu.vala:63
-#: filechooser-module/FileChooserDialog.vala:75
-msgid "Previous"
-msgstr "Naprej"
-
-#: src/View/Widgets/TopMenu.vala:68
-#: filechooser-module/FileChooserDialog.vala:79
-msgid "Next"
-msgstr "Nazaj"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Javni FTP"
@@ -885,16 +881,15 @@ msgstr "Vrata:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
-msgstr ""
+msgstr "Ime mape v skupni rabi na strežniku"
 
 #: libcore/ConnectServerDialog.vala:168
-#, fuzzy
 msgid "Share:"
-msgstr "Mapa _souporabe:"
+msgstr "Mapa v skupni rabi:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Pot mape v skupni rabi na strežniku"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -905,9 +900,8 @@ msgid "User Details"
 msgstr "Uporabnik"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Novo okno kot _Administrator"
+msgstr "Ime Windows domene"
 
 #: libcore/ConnectServerDialog.vala:176
 msgid "Domain name:"
@@ -935,9 +929,8 @@ msgid "Cancel"
 msgstr "Prekliči"
 
 #: libcore/ConnectServerDialog.vala:193
-#, fuzzy
 msgid "Connect"
-msgstr "_Poveži se"
+msgstr "_Poveži"
 
 #: libcore/ConnectServerDialog.vala:200
 msgid "Continue"
@@ -1006,11 +999,11 @@ msgstr "_Preimenuj"
 
 #: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
-msgstr ""
+msgstr "Ohrani najnovejšo"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Preskoči operacijo če je originalna datoteka novejša od trenutne"
 
 #: libcore/FileConflictDialog.vala:194
 msgid "Replace"
@@ -1093,27 +1086,27 @@ msgstr "Ni mogoče določiti privzetega mesta \"%s\" "
 
 #: libcore/FileUtils.vala:88
 msgid "The item cannot be restored from trash"
-msgstr "Predmeta ni mogoče obnoviti iz smeti."
+msgstr "Predmeta ni mogoče obnoviti iz smeti"
 
-#: libcore/FileUtils.vala:434
+#: libcore/FileUtils.vala:442
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Ni bilo mogoče spremeniti imena v '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:523
+#: libcore/FileUtils.vala:531
 #, c-format
 msgid "Today at %s"
 msgstr "Danes ob %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:529
+#: libcore/FileUtils.vala:537
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Včeraj ob %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:535
+#: libcore/FileUtils.vala:543
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ob %s"
@@ -1128,14 +1121,12 @@ msgid "Preparing"
 msgstr "Pripravljanje"
 
 #: libcore/marlin-file-operations.c:141
-#, fuzzy
 msgid "_Cancel"
 msgstr "Prekliči"
 
 #: libcore/marlin-file-operations.c:142
-#, fuzzy
 msgid "_Delete"
-msgstr "Izbrisano:"
+msgstr "Izbriši"
 
 #: libcore/marlin-file-operations.c:144
 msgid "S_kip All"
@@ -1247,9 +1238,9 @@ msgstr " (%'d"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1115
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "Ali ste prepričani, da želite iz smeti trajno izbrisati \"%B\"?"
+msgstr "Ali ste prepričani, da želite trajno izbrisati \"%s\" iz smeti?"
 
 #: libcore/marlin-file-operations.c:1119
 #, c-format
@@ -1329,13 +1320,13 @@ msgstr "Brisanje datotek"
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
 #: libcore/marlin-file-operations.c:1257
-#, fuzzy, c-format
+#, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "%T preostalih"
-msgstr[1] "%T preostala"
-msgstr[2] "%T preostali"
-msgstr[3] "%T preostale"
+msgstr[0] "še %s"
+msgstr[1] "še %s"
+msgstr[2] "še %s"
+msgstr[3] "še %s"
 
 #: libcore/marlin-file-operations.c:1326 libcore/marlin-file-operations.c:1366
 #: libcore/marlin-file-operations.c:1412 libcore/marlin-file-operations.c:1494
@@ -1346,22 +1337,22 @@ msgstr "Napaka med brisanjem."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1332
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Datotek v mapi \"%B\" ni mogoče izbrisati, ker nimate dovoljenj za ogled."
+"Datotek v mapi \"%s\" ni mogoče izbrisati ker nimate dovoljenj za ogled."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1337 libcore/marlin-file-operations.c:2252
 #: libcore/marlin-file-operations.c:3329
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
-"Prišlo je do napake med pridobivanjem podrobnosti o datotekah v mapi \"%B\"."
+"Prišlo je do napake med pridobivanjem podrobnosti o datotekah v mapi \"%s\"."
 
 #: libcore/marlin-file-operations.c:1347 libcore/marlin-file-operations.c:3339
 msgid "_Skip files"
@@ -1370,11 +1361,11 @@ msgstr "Pre_skoči datoteke"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1371
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr "Mape \"%B\" ni mogoče izbrisati, ker nimate dovoljenja za branje."
+msgstr "Mape \"%s\" ni mogoče izbrisati ker nimate dovoljenja za branje."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1479,39 +1470,39 @@ msgstr "Ni mogoče priklopiti mesta %s"
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:2122
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Priprava na kopiranje %'d datotek (%S)"
-msgstr[1] "Priprava na kopiranje %'d datoteke (%S)"
-msgstr[2] "Priprava na kopiranje %'d datotek (%S)"
-msgstr[3] "Priprava na kopiranje %'d datotek (%S)"
+msgstr[0] "Priprava na kopiranje %'d datotek (%s)"
+msgstr[1] "Priprava na kopiranje %'d datoteke (%s)"
+msgstr[2] "Priprava na kopiranje %'d datotek (%s)"
+msgstr[3] "Priprava na kopiranje %'d datotek (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:2134
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "Priprava na premikanje %'d datotek (%S)"
-msgstr[1] "Priprava na premikanje %'d datoteke (%S)"
-msgstr[2] "Priprava na premikanje %'d datotek (%S)"
-msgstr[3] "Priprava na premikanje %'d datotek (%S)"
+msgstr[0] "Priprava na premikanje %'d datotek (%s)"
+msgstr[1] "Priprava na premikanje %'d datoteke (%s)"
+msgstr[2] "Priprava na premikanje %'d datotek (%s)"
+msgstr[3] "Priprava na premikanje %'d datotek (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:2146
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "Priprava na brisanje %'d datotek (%S)"
-msgstr[1] "Priprava na brisanje %'d datoteke (%S)"
-msgstr[2] "Priprava na brisanje %'d datotek (%S)"
-msgstr[3] "Priprava na brisanje %'d datotek (%S)"
+msgstr[0] "Priprava na brisanje %'d datotek (%s)"
+msgstr[1] "Priprava na brisanje %'d datoteke (%s)"
+msgstr[2] "Priprava na brisanje %'d datotek (%s)"
+msgstr[3] "Priprava na brisanje %'d datotek (%s)"
 
 #: libcore/marlin-file-operations.c:2153
 #, c-format
@@ -1539,47 +1530,47 @@ msgstr "Napaka medi premikanjem datotek v smeti."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2247
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Z datotekami v mapi \"%B\" ni mogoče upravljati, ker nimate dovoljenja za "
+"Z datotekami v mapi \"%s\" ni mogoče upravljati ker nimate dovoljenja za "
 "ogled."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2292
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "Z mapo \"%B\" ni mogoče upravljati, ker nimate dovoljenja za branje."
+msgstr "Z mapo \"%s\" ni mogoče upravljati ker nimate dovoljenja za branje."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2379
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Z datoteko \"%B\" ni mogoče upravljati, ker nimate dovoljenja za branje."
+"Z datoteko \"%s\" ni mogoče upravljati, ker nimate dovoljenja za branje."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2384
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error getting information about \"%s\"."
-msgstr "Prišlo je do napake med pridobivanjem podrobnosti o \"%B\"."
+msgstr "Prišlo je do napake med pridobivanjem podrobnosti o \"%s\"."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2490 libcore/marlin-file-operations.c:2536
 #: libcore/marlin-file-operations.c:2574 libcore/marlin-file-operations.c:2614
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying to \"%s\"."
-msgstr "Napaka med kopiranjem v \"%B\"."
+msgstr "Napaka med kopiranjem v \"%s\"."
 
 #: libcore/marlin-file-operations.c:2495
 msgid "You do not have permissions to access the destination folder."
@@ -1602,9 +1593,9 @@ msgstr "Na cilju ni dovolj prostora. Poskusite odstraniti nekaj datotek."
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
 #: libcore/marlin-file-operations.c:2582
-#, fuzzy, c-format
+#, c-format
 msgid "There is %s available, but %s is required."
-msgstr "Na voljo je %S prostora, toda zagotoviti ga je treba %S."
+msgstr "Na voljo je %s prostora, potrebnega pa je %s."
 
 #: libcore/marlin-file-operations.c:2616
 msgid "The destination is read-only."
@@ -1613,76 +1604,76 @@ msgstr "Cilj je mogoče le brati."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2688
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Premikanje \"%B\" v \"%B\""
+msgstr "Premikanje \"%s\" v \"%s\""
 
 #: libcore/marlin-file-operations.c:2689
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Kopiranje \"%B\" v \"%B\""
+msgstr "Kopiranje \"%s\" v \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2693
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "Podvajanje \"%B\""
+msgstr "Podvajanje \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2701
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[1] "Premikanje %'d datoteke (iz \"%B\") v \"%B\""
-msgstr[2] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[3] "Premikanje %'d datotek (iz \"%B\") v \"%B\""
+msgstr[0] "Premikanje %'d datotek (iz \"%s\") v \"%s\""
+msgstr[1] "Premikanje %'d datoteke (iz \"%s\") v \"%s\""
+msgstr[2] "Premikanje %'d datotek (iz \"%s\") v \"%s\""
+msgstr[3] "Premikanje %'d datotek (iz \"%s\") v \"%s\""
 
 #: libcore/marlin-file-operations.c:2704
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[1] "Kopiranje %'d datoteke (iz \"%B\") v \"%B\""
-msgstr[2] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
-msgstr[3] "Kopiranje %'d datotek (iz \"%B\") v \"%B\""
+msgstr[0] "Kopiranje %'d datotek (iz \"%s\") v \"%s\""
+msgstr[1] "Kopiranje %'d datoteke (iz \"%s\") v \"%s\""
+msgstr[2] "Kopiranje %'d datotek (iz \"%s\") v \"%s\""
+msgstr[3] "Kopiranje %'d datotek (iz \"%s\") v \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:2713
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Podvajanje %'d datotek (v \"%B\")"
-msgstr[1] "Podvajanje %'d datoteke (v \"%B\")"
-msgstr[2] "Podvajanje %'d datotek (v \"%B\")"
-msgstr[3] "Podvajanje %'d datotek (v \"%B\")"
+msgstr[0] "Podvajanje %'d datotek (v \"%s\")"
+msgstr[1] "Podvajanje %'d datoteke (v \"%s\")"
+msgstr[2] "Podvajanje %'d datotek (v \"%s\")"
+msgstr[3] "Podvajanje %'d datotek (v \"%s\")"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:2725
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Premikanje %'d datotek v \"%B\""
-msgstr[1] "Premikanje %'d datoteke v \"%B\""
-msgstr[2] "Premikanje %'d datotek v \"%B\""
-msgstr[3] "Premikanje %'d datotek v \"%B\""
+msgstr[0] "Premikanje %'d datotek v \"%s\""
+msgstr[1] "Premikanje %'d datoteke v \"%s\""
+msgstr[2] "Premikanje %'d datotek v \"%s\""
+msgstr[3] "Premikanje %'d datotek v \"%s\""
 
 #: libcore/marlin-file-operations.c:2728
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Kopiranje %'d datotek v \"%B\""
-msgstr[1] "Kopiranje %'d datoteke v \"%B\""
-msgstr[2] "Kopiranje %'d datotek v \"%B\""
-msgstr[3] "Kopiranje %'d datotek v \"%B\""
+msgstr[0] "Kopiranje %'d datotek v \"%s\""
+msgstr[1] "Kopiranje %'d datoteke v \"%s\""
+msgstr[2] "Kopiranje %'d datotek v \"%s\""
+msgstr[3] "Kopiranje %'d datotek v \"%s\""
 
 #: libcore/marlin-file-operations.c:2734
 #, c-format
@@ -1695,9 +1686,9 @@ msgstr[3] "Podvajanje %'d datotek"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:2764
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s"
-msgstr "%S od %S"
+msgstr "%s od %s"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -1706,50 +1697,50 @@ msgstr "%S od %S"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:2783
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%S od %S — %T preostalih (%S/sek)"
-msgstr[1] "%S od %S — %T preostala (%S/sek)"
-msgstr[2] "%S od %S — %T preostali (%S/sek)"
-msgstr[3] "%S od %S — %T preostale (%S/sek)"
+msgstr[0] "%s od %s — še %s (%s/sek)"
+msgstr[1] "%s od %s — še %s (%s/sek)"
+msgstr[2] "%s od %s — še %s (%s/sek)"
+msgstr[3] "%s od %s — še %s (%s/sek)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3183
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Mape \"%B\" ni mogoče kopirati, ker nimate dovoljenj za pisanje na ciljnem "
+"Mape \"%s\" ni mogoče kopirati ker nimate dovoljenj za pisanje na ciljnem "
 "mestu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3188
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Prišlo je do napake med ustvarjanjem mape \"%B\"."
+msgstr "Prišlo je do napake med ustvarjanjem mape \"%s\"."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3324
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Datotek v mapi \"%B\" ni mogoče kopirati, ker nimate dovoljenja za ogled."
+"Datotek v mapi \"%s\" ni mogoče kopirati ker nimate dovoljenja za ogled."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3376
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr "Mape \"%B\" ni mogoče kopirati, ker nimate dovoljenj za branje."
+msgstr "Mape \"%s\" ni mogoče kopirati ker nimate dovoljenj za branje."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1757,9 +1748,9 @@ msgstr "Mape \"%B\" ni mogoče kopirati, ker nimate dovoljenj za branje."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3429 libcore/marlin-file-operations.c:4162
 #: libcore/marlin-file-operations.c:4759
-#, fuzzy, c-format
+#, c-format
 msgid "Error while moving \"%s\"."
-msgstr "Napaka med premikanjem \"%B\"."
+msgstr "Napaka med premikanjem \"%s\"."
 
 #: libcore/marlin-file-operations.c:3431
 msgid "Could not remove the source folder."
@@ -1769,21 +1760,21 @@ msgstr "Ni mogoče odstraniti izvorne mape."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3520 libcore/marlin-file-operations.c:3571
 #: libcore/marlin-file-operations.c:4166
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying \"%s\"."
-msgstr "Napaka med kopiranjem \"%B\"."
+msgstr "Napaka med kopiranjem \"%s\"."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3525
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Ni mogoče odstraniti datotek iz obstoječe mape %F."
+msgstr "Ni mogoče odstraniti datotek iz obstoječe mape %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3576
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %s."
-msgstr "Ni mogoče odstraniti že obstoječe datoteke %F."
+msgstr "Ni mogoče odstraniti že obstoječe datoteke %s."
 
 #: libcore/marlin-file-operations.c:3895 libcore/marlin-file-operations.c:4596
 msgid "You cannot move a folder into itself."
@@ -1811,22 +1802,22 @@ msgstr "Izvorna datoteka bo bila prepisana s ciljno datoteko."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4172
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Ni mogoče odstraniti že obstoječe datoteke z enakim imenom v %F."
+msgstr "Ni mogoče odstraniti že obstoječe datoteke z enakim imenom v %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:4242
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "\"%B\" ni mogoče kopirati sem."
+msgstr "\"%s\" ni mogoče kopirati sem."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4247
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying the file into %s."
-msgstr "Pri kopiranju datoteke v \"%B\" je prišlo do napake."
+msgstr "Pri kopiranju datoteke v \"%s\" je prišlo do napake."
 
 #: libcore/marlin-file-operations.c:4466
 msgid "Copying Files"
@@ -1835,9 +1826,9 @@ msgstr "Kopiranje datotek"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:4504
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Pripravljanje na premik v \"%B\""
+msgstr "Pripravljanje na premik v \"%s\""
 
 #: libcore/marlin-file-operations.c:4509
 #, c-format
@@ -1850,9 +1841,9 @@ msgstr[3] "Pripravljanje na premikanje %'d datotek"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4763
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving the file into %s."
-msgstr "Prišlo je do napake med premikanjem programa v %F."
+msgstr "Prišlo je do napake med premikanjem datoteke v %s."
 
 #: libcore/marlin-file-operations.c:5022
 msgid "Moving Files"
@@ -1861,9 +1852,9 @@ msgstr "Premikanje datotek"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:5063
-#, fuzzy, c-format
+#, c-format
 msgid "Creating links in \"%s\""
-msgstr "Ustvarjanje povezav v \"%B\""
+msgstr "Ustvarjanje povezav v \"%s\""
 
 #: libcore/marlin-file-operations.c:5068
 #, c-format
@@ -1876,9 +1867,9 @@ msgstr[3] "Ustvarjanje povezave na %'d datoteke"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5211
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating link to %s."
-msgstr "Napaka med ustvarjanjem povezave z %B."
+msgstr "Napaka med ustvarjanjem povezave z %s."
 
 #: libcore/marlin-file-operations.c:5214
 msgid "Symbolic links only supported for local files"
@@ -1890,9 +1881,9 @@ msgstr "Cilj ne podpira simbolnih povezav."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:5222
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the symlink in %s."
-msgstr "Prišlo je do napake med ustvarjanjem simbolne povezave v %F."
+msgstr "Prišlo je do napake med ustvarjanjem simbolne povezave v %s."
 
 #: libcore/marlin-file-operations.c:5553
 msgid "Setting permissions"
@@ -2383,7 +2374,6 @@ msgid "Go to %s"
 msgstr "Pojdi v %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
 msgstr "Vnesite pot"
 

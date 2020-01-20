@@ -1,4 +1,4 @@
-project('io.elementary.files', 'vala', 'c', version: '4.2.0', meson_version: '>= 0.42.0')
+project('io.elementary.files', 'vala', 'c', version: '4.3.0', meson_version: '>= 0.42.0')
 
 #
 # Meson module imports
@@ -10,7 +10,6 @@ i18n = import('i18n')
 # Define the global directories and variables
 #
 plugin_dir = join_paths(get_option('prefix'), get_option('libdir'), meson.project_name(), 'plugins')
-ui_dir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name(), 'ui')
 terminal_name = 'pantheon-terminal'
 
 add_project_arguments(
@@ -89,7 +88,6 @@ add_project_arguments(
 config_data = configuration_data()
 config_data.set('plugin_dir', plugin_dir)
 config_data.set('version', meson.project_version())
-config_data.set('ui_dir', ui_dir)
 config_data.set('testdata_dir', join_paths(meson.source_root(), 'data', 'tests'))
 config_data.set('app_name', meson.project_name())
 config_data.set('terminal_name', terminal_name)
