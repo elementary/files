@@ -270,6 +270,7 @@ namespace Marlin {
                     break;
                 case Marlin.UndoActionType.CREATEEMPTYFILE:
                 case Marlin.UndoActionType.CREATEFOLDER:
+                case Marlin.UndoActionType.CREATEFILEFROMTEMPLATE:
                     var uris = new GLib.List<GLib.File> ();
                     uris.prepend (GLib.File.new_for_uri (action.target_uri));
                     if (uris != null && confirm_delete) {
@@ -420,6 +421,7 @@ namespace Marlin {
                     undo_redo_done_transfer (action);
                     break;
                 case Marlin.UndoActionType.CREATEEMPTYFILE:
+                case Marlin.UndoActionType.CREATEFILEFROMTEMPLATE:
                     var p_uri = GLib.File.new_for_uri (action.target_uri).get_parent ().get_uri ();
                     var new_name = GLib.Path.get_basename (Uri.unescape_string (action.target_uri));
                     try {
