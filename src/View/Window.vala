@@ -53,7 +53,7 @@ namespace Marlin.View {
 
         public Gtk.Builder ui;
         private unowned UndoManager undo_manager;
-        public Chrome.TopMenu top_menu;
+        public Chrome.HeaderBar top_menu;
         public Chrome.ViewSwitcher view_switcher;
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
@@ -141,7 +141,7 @@ namespace Marlin.View {
             view_switcher = new Chrome.ViewSwitcher (lookup_action ("view-mode") as SimpleAction);
             view_switcher.selected = Preferences.settings.get_enum ("default-viewmode");
 
-            top_menu = new Chrome.TopMenu (view_switcher);
+            top_menu = new Chrome.HeaderBar (view_switcher);
             top_menu.show_close_button = true;
             top_menu.custom_title = new Gtk.Label (null);
 
