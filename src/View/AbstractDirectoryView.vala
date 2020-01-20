@@ -1924,8 +1924,8 @@ namespace FM {
                 }
             }
 
+            var open_submenu_item = new Gtk.MenuItem ();
             if (open_submenu.get_children ().length () > 0) {
-                var open_submenu_item = new Gtk.MenuItem ();
                 open_submenu_item.submenu = open_submenu;
 
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
@@ -1995,7 +1995,10 @@ namespace FM {
                         var copy_link_menuitem = new Gtk.MenuItem.with_label (_("Copy as Link"));
                         copy_link_menuitem.action_name = "common.copy-link";
 
-                        menu.add (new Gtk.SeparatorMenuItem ());
+                        if (menu.get_children ().find (open_submenu_item) != null) {
+                            menu.add (new Gtk.SeparatorMenuItem ());
+                        }
+
                         menu.add (cut_menuitem);
                         menu.add (copy_menuitem);
                         menu.add (copy_link_menuitem);
