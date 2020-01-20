@@ -1928,8 +1928,8 @@ namespace FM {
                 }
             }
 
+            var open_submenu_item = new Gtk.MenuItem ();
             if (open_submenu.get_children ().length () > 0) {
-                var open_submenu_item = new Gtk.MenuItem ();
                 open_submenu_item.submenu = open_submenu;
 
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
@@ -2027,7 +2027,10 @@ namespace FM {
                         ));
                         copy_link_menuitem.action_name = "common.copy-link";
 
-                        menu.add (new Gtk.SeparatorMenuItem ());
+                        if (menu.get_children ().find (open_submenu_item) != null) {
+                            menu.add (new Gtk.SeparatorMenuItem ());
+                        }
+
                         menu.add (cut_menuitem);
                         menu.add (copy_menuitem);
                         menu.add (copy_link_menuitem);
@@ -2081,12 +2084,7 @@ namespace FM {
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (show_hidden_menuitem);
-
-                    if (slot.directory.is_local) {
-                        menu.add (hide_local_thumbnails_menuitem);
-                    } else if (slot.directory.can_open_files) {
-                        menu.add (show_remote_thumbnails_menuitem);
-                    }
+                    menu.add (hide_local_thumbnails_menuitem);
                 } else {
                     if (!in_network_root) {
                         menu.add (new Gtk.SeparatorMenuItem ());
