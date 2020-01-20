@@ -83,6 +83,12 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+
+        if (!view.directory.is_local) {
+            debug ("Git plugin ignoring non-local folder");
+            return;
+        }
+
         var dir_uri = directory.uri;
         var repo_uri = "";
 
