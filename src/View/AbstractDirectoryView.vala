@@ -2049,12 +2049,7 @@ namespace FM {
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (show_hidden_menuitem);
-
-                    if (slot.directory.is_local) {
-                        menu.add (hide_local_thumbnails_menuitem);
-                    } else if (slot.directory.can_open_files) {
-                        menu.add (show_remote_thumbnails_menuitem);
-                    }
+                    menu.add (hide_local_thumbnails_menuitem);
                 } else {
                     if (!in_network_root) {
                         menu.add (new Gtk.SeparatorMenuItem ());
