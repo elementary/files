@@ -245,9 +245,10 @@ namespace FM {
             }
         }
 
+        public bool in_recent { get; private set; default = false; }
+
         protected bool tree_frozen { get; set; default = false; }
         private bool in_trash = false;
-        private bool in_recent = false;
         private bool in_network_root = false;
         protected bool is_writable = false;
         protected bool is_loading;
@@ -334,10 +335,6 @@ namespace FM {
 
         ~AbstractDirectoryView () {
             debug ("ADV destruct");
-        }
-
-        public bool is_in_recent () {
-            return in_recent;
         }
 
         protected virtual void set_up_name_renderer () {
