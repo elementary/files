@@ -1870,9 +1870,11 @@ namespace FM {
 
                     menu.add (run_menuitem);
                 } else if (default_app != null && default_app.get_id () != Marlin.APP_ID + ".desktop") {
-                    var open_menuitem = new Gtk.MenuItem.with_label (
-                        _("Open in %s").printf (default_app.get_display_name ())
-                    );
+                    var open_menuitem = new Gtk.MenuItem ();
+                    open_menuitem.add (new Granite.AccelLabel (
+                        _("Open in %s").printf (default_app.get_display_name ()),
+                        "Return"
+                    ));
                     open_menuitem.action_name = "selection.open-with-default";
 
                     menu.add (open_menuitem);
