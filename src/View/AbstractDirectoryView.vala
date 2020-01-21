@@ -1896,8 +1896,14 @@ namespace FM {
                         unowned string label = app_info.get_display_name ();
                         unowned string exec = app_info.get_executable ().split (" ")[0];
                         if (label != last_label || exec != last_exec) {
+                            var app_image = new Gtk.Image.from_gicon (
+                                app_info.get_icon (),
+                                Gtk.IconSize.MENU
+                            );
+                            app_image.pixel_size = 16;
+
                             var label_grid = new Gtk.Grid ();
-                            label_grid.add (new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU));
+                            label_grid.add (app_image);
                             label_grid.add (new Gtk.Label (label));
 
                             var menuitem = new Gtk.MenuItem ();
