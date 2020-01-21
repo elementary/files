@@ -32,7 +32,7 @@ namespace FM {
             .view:selected:focus,
             .cell:selected:focus
             {
-                background-color: @colorAccent;
+                background-color: shade (@base_color, 0.8);
             }
         """;
 
