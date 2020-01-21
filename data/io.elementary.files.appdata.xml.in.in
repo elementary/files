@@ -58,6 +58,16 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="4.4.0" date="2020-01-20" urgency="medium">
+      <description>
+        <ul>
+          <li>Show keyboard shortcuts in menu items</li>
+          <li>Fix an issue with breadcrumbs in the file chooser</li>
+          <li>Show a warning when ejecting a volume that's still in use</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.3.0" date="2020-01-07" urgency="medium">
       <description>
         <p>New features:</p>
