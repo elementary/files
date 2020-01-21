@@ -134,7 +134,7 @@ namespace Marlin {
 
             if (!widget.sensitive || !this.sensitive) {
                 state |= Gtk.StateFlags.INSENSITIVE;
-            } else  if (focused) {
+            } else if (focused) {
                 state |= Gtk.StateFlags.FOCUSED;
                 style_context.add_provider (background_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             }
