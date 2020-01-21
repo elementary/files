@@ -452,7 +452,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private string location (GOF.File file) {
-        if (view.is_in_recent ()) {
+        if (view.in_recent) {
             string original_location = file.get_display_target_uri ().replace ("%20", " ");
             string file_name = file.get_display_name ().replace ("%20", " ");
             string location_folder = original_location.slice (0, -file_name.length).replace ("%20", " ");
@@ -1266,7 +1266,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        if ((header_title is Gtk.Entry) && !view.is_in_recent ()) {
+        if ((header_title is Gtk.Entry) && !view.in_recent) {
             int start_offset= 0, end_offset = -1;
 
             PF.FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
