@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 19:55+0000\n"
-"PO-Revision-Date: 2019-10-05 11:23+0000\n"
+"PO-Revision-Date: 2020-01-21 16:29+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: src/Application.vala:124
@@ -419,10 +419,8 @@ msgid "Remove from History"
 msgstr "Quitar del historial"
 
 #: src/View/AbstractDirectoryView.vala:1992
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Renombrar"
+msgstr "Renombrar…"
 
 #: src/View/AbstractDirectoryView.vala:1995
 msgid "Copy as Link"
@@ -445,10 +443,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Mostrar miniaturas remotas"
 
 #: src/View/AbstractDirectoryView.vala:2040
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Ocultar miniaturas locales"
+msgstr "Ocultar miniaturas"
 
 #: src/View/AbstractDirectoryView.vala:2065
 msgid "Paste Link"
