@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-13 20:05+0000\n"
-"PO-Revision-Date: 2020-01-06 22:53+0000\n"
+"PO-Revision-Date: 2020-01-20 20:20+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -330,7 +330,7 @@ msgstr "Toon gereserveerde ruimte in het eigenschappen venster"
 
 #: data/io.elementary.files.appdata.xml.in.in:175
 msgid "Add border radius to text background"
-msgstr ""
+msgstr "Voeg ronde hoeken toe aan de tekstachtergrond"
 
 #: data/io.elementary.files.appdata.xml.in.in:176
 msgid "Fix file mimetype association regression"
@@ -338,23 +338,23 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:177
 msgid "New pathbar tooltips"
-msgstr ""
+msgstr "Nieuwe tooltips voor de adresbalk"
 
 #: data/io.elementary.files.appdata.xml.in.in:178
 msgid "Build fixes"
-msgstr ""
+msgstr "Problemen met installeren opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:186
 msgid "Plugin build fixes"
-msgstr ""
+msgstr "Problemen met het installeren van plug-ins opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:194
 msgid "Fix Ctrl+Tab behavior"
-msgstr ""
+msgstr "Verbeter Ctrl+Tab-gedrag"
 
 #: data/io.elementary.files.appdata.xml.in.in:195
 msgid "Fix building without Unity library"
-msgstr ""
+msgstr "Een probleem opgelost met het installeren zonder de Unity bibliotheek"
 
 #: data/io.elementary.files.appdata.xml.in.in:202
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
@@ -362,11 +362,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:203
 msgid "Style error dialogs"
-msgstr ""
+msgstr "Stijlfouten vensters"
 
 #: data/io.elementary.files.appdata.xml.in.in:204
 msgid "Right click fixes"
-msgstr ""
+msgstr "Problemen met rechts klikken opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:205
 msgid "Reload recent view when privacy setting changes"
@@ -374,7 +374,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:206
 msgid "`Connect Server` fixes"
-msgstr ""
+msgstr "`Verbinden met server` problemen opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Do not activate multiple files with single click"
@@ -543,14 +543,12 @@ msgid "elementary LLC."
 msgstr ""
 
 #: data/io.elementary.files.policy.in.in:10
-#, fuzzy
 msgid "Run Pantheon Files as Administrator"
 msgstr "Nieuw venster als beheerder"
 
 #: data/io.elementary.files.policy.in.in:11
-#, fuzzy
 msgid "Authentication is required to run Files as Administrator"
-msgstr "Nieuw venster als beheerder"
+msgstr "Authenticatie is vereist om een nieuw venster te openen als beheerder"
 
 #~ msgid "About Files"
 #~ msgstr "Over Bestanden"
