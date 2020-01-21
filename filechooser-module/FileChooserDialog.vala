@@ -139,7 +139,7 @@ public class CustomFileChooserDialog : Object {
 
         location_bar.path_change_request.connect ((uri) => {
             if (uri != null) {
-                chooser_dialog.set_current_folder (uri);
+                chooser_dialog.set_current_folder_uri (uri);
             }
             /* OK to set to not local only now.*/
             chooser_dialog.local_only = false;
