@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 17:40+0000\n"
+"POT-Creation-Date: 2020-01-21 19:53+0000\n"
 "PO-Revision-Date: 2020-01-07 18:53+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -29,7 +29,7 @@ msgstr "Pokaži različico programa"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Odpri URI(je) v novem zavihku"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Novo okno"
 
@@ -121,7 +121,7 @@ msgid "Set as default"
 msgstr "Nastavi kot privzeto"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1964 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Lastnosti"
 
@@ -206,7 +206,7 @@ msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1929
 msgid "Other Application…"
 msgstr "Drugo aplikacijo…"
 
@@ -316,11 +316,11 @@ msgstr "Kot administrator"
 msgid "Filename"
 msgstr "Ime datoteke"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2160
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
 msgid "Size"
 msgstr "Velikost"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2165
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
 msgid "Type"
 msgstr "Vrsta"
 
@@ -350,178 +350,178 @@ msgstr "Ustvari mapo \"%s\""
 msgid "Failed to create the folder"
 msgstr "Ni bilo mogoče ustvariti mape"
 
-#: src/View/AbstractDirectoryView.vala:822
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1126
 msgid "Cannot execute this file"
 msgstr "Te datoteke ni mogoče odpreti"
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
 msgstr "Te datoteke ni mogoče odpreti"
 
-#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "Ni bilo mogoče ugotoviti vrste datoteke"
 
-#: src/View/AbstractDirectoryView.vala:1575
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Cannot drop this file"
 msgstr "Datoteke ni mogoče spustiti"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Ime datoteke je napačno"
 
-#: src/View/AbstractDirectoryView.vala:1851
+#: src/View/AbstractDirectoryView.vala:1848
 msgid "New Tab"
 msgstr "Nov zavihek"
 
-#: src/View/AbstractDirectoryView.vala:1868
+#: src/View/AbstractDirectoryView.vala:1865
 msgid "Run"
 msgstr "Zaženi"
 
-#: src/View/AbstractDirectoryView.vala:1875
+#: src/View/AbstractDirectoryView.vala:1872
 #, c-format
 msgid "Open in %s"
 msgstr "Odpri v %s"
 
-#: src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Odpri v"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1943
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Odpri z"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Bookmark"
 msgstr "Dodaj med zaznamke"
 
-#: src/View/AbstractDirectoryView.vala:1972
+#: src/View/AbstractDirectoryView.vala:1969
 msgid "Cut"
 msgstr "Izreži"
 
-#: src/View/AbstractDirectoryView.vala:1979
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/View/AbstractDirectoryView.vala:1986
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Move to Trash"
 msgstr "Premakni v smeti"
 
-#: src/View/AbstractDirectoryView.vala:1991
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Delete permanently"
 msgstr "Trajno izbriši"
 
-#: src/View/AbstractDirectoryView.vala:1996
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Restore from Trash"
 msgstr "Obnovi s smeti"
 
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2004
 msgid "Open Parent Folder"
 msgstr "Odpri nadrejeno mapo"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Remove from History"
 msgstr "Odstrani z zgodovine"
 
-#: src/View/AbstractDirectoryView.vala:2026
+#: src/View/AbstractDirectoryView.vala:2023
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Preimenuj"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
 msgstr "Kopiraj kot povezavo"
 
-#: src/View/AbstractDirectoryView.vala:2049
+#: src/View/AbstractDirectoryView.vala:2046
 msgid "Paste Link into Folder"
 msgstr "Prilepi povezavo v mapo"
 
-#: src/View/AbstractDirectoryView.vala:2051
+#: src/View/AbstractDirectoryView.vala:2048
 msgid "Paste into Folder"
 msgstr "Prilepi v mapo"
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Show Hidden Files"
 msgstr "Prikaži skrite datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Remote Thumbnails"
 msgstr "Prikaži predogled za datoteke na omrežju"
 
-#: src/View/AbstractDirectoryView.vala:2083
+#: src/View/AbstractDirectoryView.vala:2080
 #, fuzzy
 #| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
 msgstr "Skrij predogled za datoteke na disku"
 
-#: src/View/AbstractDirectoryView.vala:2103
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
 msgstr "Prilepi povezavo"
 
-#: src/View/AbstractDirectoryView.vala:2155
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Name"
 msgstr "Imenu"
 
-#: src/View/AbstractDirectoryView.vala:2170
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Date"
 msgstr "Datumu"
 
-#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2172
 msgid "Reversed Order"
 msgstr "Obratni vrstni red"
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Folders Before Files"
 msgstr "Mape pred datotekami"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Sort by"
 msgstr "Razvrsti po"
 
-#: src/View/AbstractDirectoryView.vala:2198
+#: src/View/AbstractDirectoryView.vala:2195
 msgid "Folder"
 msgstr "Mapa"
 
-#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Empty File"
 msgstr "Prazna datoteka"
 
-#: src/View/AbstractDirectoryView.vala:2254
+#: src/View/AbstractDirectoryView.vala:2251
 msgid "New"
 msgstr "Nova"
 
-#: src/View/AbstractDirectoryView.vala:2491
+#: src/View/AbstractDirectoryView.vala:2488
 #, c-format
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: src/View/AbstractDirectoryView.vala:2852
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:2849
+#: src/View/AbstractDirectoryView.vala:3044
 msgid "Cannot remove files from here"
 msgstr "Od tu ni mogoče odstraniti datotek"
 
-#: src/View/AbstractDirectoryView.vala:2853
-#: src/View/AbstractDirectoryView.vala:3032
-#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "You do not have permission to change this location"
 msgstr "Nimate dovoljenja za spreminjanje te lokacije"
 
-#: src/View/AbstractDirectoryView.vala:3007
+#: src/View/AbstractDirectoryView.vala:3004
 msgid "Cannot copy files that are in the trash"
 msgstr "Datotek v smeteh ni mogoče kopirati"
 
-#: src/View/AbstractDirectoryView.vala:3008
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cutting the selection instead"
 msgstr "Režem izbrane predmete"
 
-#: src/View/AbstractDirectoryView.vala:3031
+#: src/View/AbstractDirectoryView.vala:3028
 msgid "Cannot paste files here"
 msgstr "Datotek ni mogoče prilepiti sem"
 
