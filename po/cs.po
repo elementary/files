@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 19:55+0000\n"
+"POT-Creation-Date: 2020-01-21 16:53+0000\n"
 "PO-Revision-Date: 2018-12-14 00:08+0000\n"
 "Last-Translator: Daniel Zvir <zvir.daniel@seznam.cz>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/"
@@ -121,7 +121,7 @@ msgid "Set as default"
 msgstr "Nastavit jako výchozí"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1946 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1952 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -202,7 +202,7 @@ msgid "Original Location:"
 msgstr "Původní umístění:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1926
 msgid "Other Application…"
 msgstr "Jiná aplikace…"
 
@@ -308,11 +308,11 @@ msgstr "(jako administrátor)"
 msgid "Filename"
 msgstr "Název souboru"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2122
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2126
 msgid "Size"
 msgstr "Velikost"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2127
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2131
 msgid "Type"
 msgstr "Typ"
 
@@ -381,143 +381,143 @@ msgstr "Spustit"
 msgid "Open in %s"
 msgstr "Otevřít v %s"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Open in"
 msgstr "Otevřít v"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1940
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Otevřít s"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1946
 msgid "Paste"
 msgstr "Vložit"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Bookmark"
 msgstr "Vytvořit záložku"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1956
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1959
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1962
 msgid "Move to Trash"
 msgstr "Přesunout do koše"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1965
 msgid "Delete permanently"
 msgstr "Odstranit navždy"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1970
 msgid "Restore from Trash"
 msgstr "Obnovit z Koše"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1981
 msgid "Open Parent Folder"
 msgstr "Otevřít nadřazenou složku"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:1984
 msgid "Remove from History"
 msgstr "Odebrat z historie"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:1998
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Přejmenovat"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2001
 msgid "Copy as Link"
 msgstr "Kopírovat jako odkaz"
 
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Paste Link into Folder"
 msgstr "Vložit odkaz do složky"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2017
 msgid "Paste into Folder"
 msgstr "Vložit do složky"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Show Hidden Files"
 msgstr "Zobrazovat skryté soubory"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2046
 msgid "Show Remote Thumbnails"
 msgstr "Zobrazit vzdálené náhledy"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2049
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Zobrazit vzdálené náhledy"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2069
 msgid "Paste Link"
 msgstr "Vložit odkaz"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2121
 msgid "Name"
 msgstr "Název souboru"
 
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2136
 msgid "Date"
 msgstr "Změněno"
 
-#: src/View/AbstractDirectoryView.vala:2137
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Reversed Order"
 msgstr "Opačné pořadí"
 
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2144
 msgid "Folders Before Files"
 msgstr "Složky před soubory"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2156
 msgid "Sort by"
 msgstr "Seřadit podle"
 
-#: src/View/AbstractDirectoryView.vala:2158
+#: src/View/AbstractDirectoryView.vala:2162
 msgid "Folder"
 msgstr "Složka"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Empty File"
 msgstr "Prázdný soubor"
 
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "New"
 msgstr "Nový"
 
-#: src/View/AbstractDirectoryView.vala:2449
+#: src/View/AbstractDirectoryView.vala:2453
 #, c-format
 msgid "Untitled %s"
 msgstr "Nepojmenovaný soubor %s"
 
-#: src/View/AbstractDirectoryView.vala:2810
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:2814
+#: src/View/AbstractDirectoryView.vala:3009
 msgid "Cannot remove files from here"
 msgstr "Nelze odstranit soubory z tohoto místa"
 
-#: src/View/AbstractDirectoryView.vala:2811
-#: src/View/AbstractDirectoryView.vala:2990
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:2815
+#: src/View/AbstractDirectoryView.vala:2994
+#: src/View/AbstractDirectoryView.vala:3010
 msgid "You do not have permission to change this location"
 msgstr "Nemáte oprávnění měnit toto umístění"
 
-#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:2969
 msgid "Cannot copy files that are in the trash"
 msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
-#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:2970
 msgid "Cutting the selection instead"
 msgstr "Místo toho vyjmout výběr"
 
-#: src/View/AbstractDirectoryView.vala:2989
+#: src/View/AbstractDirectoryView.vala:2993
 msgid "Cannot paste files here"
 msgstr "Na toto místo nelze vložit soubory"
 
@@ -1248,7 +1248,7 @@ msgstr[0] "Opravdu chcete z koše nenávratně smazat %'d vybranou položku?"
 msgstr[1] "Opravdu chcete z koše nenávratně smazat %'d vybrané položky?"
 msgstr[2] "Opravdu chcete z koše nenávratně smazat %'d vybraných položek?"
 
-#: libcore/marlin-file-operations.c:1103 libcore/marlin-file-operations.c:1177
+#: libcore/marlin-file-operations.c:1103
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
@@ -1276,8 +1276,9 @@ msgstr "Všechny položky z koše v tomto umístění budou trvale smazány."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1165
 #, fuzzy, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Opravdu chcete „%B“ nenávratně smazat?"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "Trvale smazat všechny položky z koše?"
 
 #: libcore/marlin-file-operations.c:1168
 #, c-format
@@ -1287,6 +1288,10 @@ msgid_plural ""
 msgstr[0] "Opravdu chcete nenávratně smazat %'d vybranou položku?"
 msgstr[1] "Opravdu chcete nenávratně smazat %'d vybrané položky?"
 msgstr[2] "Opravdu chcete nenávratně smazat %'d vybraných položek?"
+
+#: libcore/marlin-file-operations.c:1177
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
 
 #: libcore/marlin-file-operations.c:1211
 #, c-format
@@ -2410,6 +2415,10 @@ msgstr "Obnovit vybrané"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Smazat vybrané"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "Opravdu chcete „%B“ nenávratně smazat?"
 
 #~ msgid "Invalid"
 #~ msgstr "Neplatný"
