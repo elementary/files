@@ -26,13 +26,11 @@ namespace FM {
         protected bool linear_select_required = false;
         protected Gtk.TreePath? most_recently_selected = null;
 
-        /* Taken from Gtk.TreeView css to give a consistent indication of focus position between
-         * different views  */
         protected const string CUSTOM_CSS = """
             .view:selected:focus,
             .cell:selected:focus
             {
-                background-color: shade (@base_color, 0.8);
+                background-color: alpha (@text_color, 0.2);
             }
         """;
 

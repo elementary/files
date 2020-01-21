@@ -160,11 +160,6 @@ namespace Marlin {
 
             if (!widget.sensitive || !this.sensitive) {
                 state |= Gtk.StateFlags.INSENSITIVE;
-            } else if (follow_state) {
-                if (selected) {
-                    state = Gtk.StateFlags.SELECTED;
-                    state |= widget.get_state_flags ();
-                }
             }
 
             if (file.is_image () ) {
@@ -173,9 +168,6 @@ namespace Marlin {
             }
 
             cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
-            style_context.render_background (cr,
-                                             draw_rect.x * icon_scale, draw_rect.y * icon_scale,
-                                             draw_rect.width * icon_scale, draw_rect.height * icon_scale);
 
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
