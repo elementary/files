@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 19:55+0000\n"
+"POT-Creation-Date: 2020-01-21 17:40+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: sq\n"
@@ -27,7 +27,7 @@ msgstr "Shfaq versionin e programit."
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "Dritare të re"
 
@@ -117,7 +117,7 @@ msgid "Set as default"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1946 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1964 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Vetitë"
 
@@ -196,7 +196,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Other Application…"
 msgstr ""
 
@@ -298,11 +298,11 @@ msgstr "(si Administrator)"
 msgid "Filename"
 msgstr "Emri i skedarit"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2122
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2160
 msgid "Size"
 msgstr "Përmasa"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2127
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2165
 msgid "Type"
 msgstr "Tipi"
 
@@ -358,161 +358,161 @@ msgstr ""
 msgid "Invalid file name provided"
 msgstr "U dha një emër skedari i pavlefshëm"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "Skedë të re"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1868
 msgid "Run"
 msgstr "Ekzekuto"
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1875
 #, c-format
 msgid "Open in %s"
 msgstr "Hap në %s"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1944
 msgid "Open in"
 msgstr "Hap në"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1946
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Hap me"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1952
 msgid "Paste"
 msgstr "Ngjit"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Bookmark"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1972
 msgid "Cut"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1979
 msgid "Copy"
 msgstr "Kopjo"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Move to Trash"
 msgstr "Zhvendos në kosh"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1991
 msgid "Delete permanently"
 msgstr "Fshij përfundimisht"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Restore from Trash"
 msgstr "Rikthe nga koshi"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:2007
 #, fuzzy
 msgid "Open Parent Folder"
 msgstr "Ngjit brenda dosjes"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:2026
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Riemëro"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2033
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Ngjit"
 
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2049
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Ngjit brenda dosjes"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2051
 msgid "Paste into Folder"
 msgstr "Ngjit brenda dosjes"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Hidden Files"
 msgstr "Shfaq skedarët e fshehur"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2080
 #, fuzzy
 msgid "Show Remote Thumbnails"
 msgstr "Shfaq më shumë _detaje"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2083
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Shfaq më shumë _detaje"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2103
 #, fuzzy
 msgid "Paste Link"
 msgstr "Ngjit"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Name"
 msgstr "Emrit"
 
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Date"
 msgstr "Datës"
 
-#: src/View/AbstractDirectoryView.vala:2137
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Reversed Order"
 msgstr "Renditje e kundërt"
 
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Sort by"
 msgstr "Rendit sipas"
 
-#: src/View/AbstractDirectoryView.vala:2158
+#: src/View/AbstractDirectoryView.vala:2198
 msgid "Folder"
 msgstr "Dosje"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2204
 msgid "Empty File"
 msgstr "Skedar bosh"
 
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2254
 msgid "New"
 msgstr "I ri"
 
-#: src/View/AbstractDirectoryView.vala:2449
+#: src/View/AbstractDirectoryView.vala:2491
 #, c-format
 msgid "Untitled %s"
 msgstr "Pa titull %s"
 
-#: src/View/AbstractDirectoryView.vala:2810
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:2852
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2811
-#: src/View/AbstractDirectoryView.vala:2990
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:2853
+#: src/View/AbstractDirectoryView.vala:3032
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:3007
 msgid "Cannot copy files that are in the trash"
 msgstr "Nuk mund të kopjohen skedarët që janë në kosh"
 
-#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:3008
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2989
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -1248,7 +1248,7 @@ msgid_plural ""
 msgstr[0] "A je i sigurt që dëshiron të fshish përfundimisht \"%B\" nga koshi?"
 msgstr[1] "A je i sigurt që dëshiron të fshish përfundimisht \"%B\" nga koshi?"
 
-#: libcore/marlin-file-operations.c:1103 libcore/marlin-file-operations.c:1177
+#: libcore/marlin-file-operations.c:1103
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Nëse fshini një element, ai do të humbasë përgjithmonë."
 
@@ -1277,8 +1277,9 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1165
 #, fuzzy, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "Të fshihen përfundimisht të gjithë elementët nga Koshi?"
 
 #: libcore/marlin-file-operations.c:1168
 #, fuzzy, c-format
@@ -1287,6 +1288,10 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
 msgstr[1] "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
+
+#: libcore/marlin-file-operations.c:1177
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
 
 #: libcore/marlin-file-operations.c:1211
 #, c-format
@@ -2388,6 +2393,10 @@ msgstr " përzgjedhur"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " përzgjedhur"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
 
 #~ msgid "Invalid"
 #~ msgstr "Pavlefshëm"
