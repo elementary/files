@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 19:55+0000\n"
+"POT-Creation-Date: 2020-01-21 17:40+0000\n"
 "PO-Revision-Date: 2019-12-14 22:07+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -28,7 +28,7 @@ msgstr "اعرض إصدار البرنامج"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "إفتح الرابط أو الروابط في علامة أو علامات تبويب جديدة"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "نافذة جديدة"
 
@@ -121,7 +121,7 @@ msgid "Set as default"
 msgstr "عيّن كإفتراضي"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1946 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1964 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "خصائص"
 
@@ -204,7 +204,7 @@ msgid "Original Location:"
 msgstr "المكان اﻷصلي:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Other Application…"
 msgstr "تطبيقات أخرى …"
 
@@ -322,11 +322,11 @@ msgstr "(كمسؤول)"
 msgid "Filename"
 msgstr "اسم ملف"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2122
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2160
 msgid "Size"
 msgstr "الحجم"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2127
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2165
 msgid "Type"
 msgstr "النّوع"
 
@@ -377,158 +377,158 @@ msgstr "لا يمكن إسقاط هذا الملف"
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "علامة تبويب جديدة"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1868
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1875
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1944
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1946
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "فتح باستخدام"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1952
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Bookmark"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1972
 msgid "Cut"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1979
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Move to Trash"
 msgstr "انقل إلى المُهملات"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1991
 msgid "Delete permanently"
 msgstr "حذف بشكل دائم"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Restore from Trash"
 msgstr "استعد من المُهملات"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:2007
 #, fuzzy
 msgid "Open Parent Folder"
 msgstr "افتح مجلّدك الشخصي"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:2026
 #, fuzzy
 #| msgid "Re_name"
 msgid "Rename…"
 msgstr "إعادة تسمية"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2049
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2051
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Hidden Files"
 msgstr "أظهر الملفات المخفية"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2080
 #, fuzzy
 msgid "Show Remote Thumbnails"
 msgstr "أظهر _تفاصيل أكثر"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2083
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "أظهر _تفاصيل أكثر"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2103
 msgid "Paste Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Name"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Date"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2137
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2158
+#: src/View/AbstractDirectoryView.vala:2198
 msgid "Folder"
 msgstr "مجلد"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2204
 msgid "Empty File"
 msgstr "ملف فارغ"
 
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2254
 msgid "New"
 msgstr "جديد"
 
-#: src/View/AbstractDirectoryView.vala:2449
+#: src/View/AbstractDirectoryView.vala:2491
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2810
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:2852
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2811
-#: src/View/AbstractDirectoryView.vala:2990
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:2853
+#: src/View/AbstractDirectoryView.vala:3032
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:3007
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:3008
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2989
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -1276,7 +1276,7 @@ msgstr[3] "أمتأكد أنّك تريد حذف الـ%I'd عناصر المخ�
 msgstr[4] "أمتأكد أنّك تريد حذف الـ%I'd عنصرا المختارة نهائيًّا من المهملات؟"
 msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المختارة نهائيًّا من المهملات؟"
 
-#: libcore/marlin-file-operations.c:1103 libcore/marlin-file-operations.c:1177
+#: libcore/marlin-file-operations.c:1103
 msgid "If you delete an item, it will be permanently lost."
 msgstr "إذا حذفت عنصر، سيُفقد للأبد."
 
@@ -1302,9 +1302,9 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1165
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "أمتأكد من أنك تريد حذف \"%s\" نهائيا؟"
+#, fuzzy, c-format
+msgid "Permanently delete “%s”?"
+msgstr "أعد %d العناصر الموجودة في سلة المهملات"
 
 #: libcore/marlin-file-operations.c:1168
 #, c-format
@@ -1317,6 +1317,10 @@ msgstr[2] "أمتأكدٌ أنّك تريد حذف العنصرين المختا
 msgstr[3] "أمتأكد أنّك تريد حذف الـ%I'd عناصر المختارة نهائيا؟"
 msgstr[4] "أمتأكد أنّك تريد حذف الـ%I'd عنصرا المختارة نهائيا؟"
 msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المختارة نهائيا؟"
+
+#: libcore/marlin-file-operations.c:1177
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
 
 #: libcore/marlin-file-operations.c:1211
 #, c-format
@@ -2560,6 +2564,9 @@ msgstr " محددة"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " محددة"
+
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "أمتأكد من أنك تريد حذف \"%s\" نهائيا؟"
 
 #~ msgid "Unable to eject %V"
 #~ msgstr "تعذر إخراج %V"

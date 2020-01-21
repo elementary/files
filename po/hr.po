@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 19:55+0000\n"
+"POT-Creation-Date: 2020-01-21 17:40+0000\n"
 "PO-Revision-Date: 2017-08-16 12:17+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://weblate.elementary.io/projects/files/files/"
@@ -30,7 +30,7 @@ msgstr "Prikaži inačicu programa."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Ovori uri(e) u novoj kartici"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "Novi prozor"
 
@@ -123,7 +123,7 @@ msgid "Set as default"
 msgstr "Postavi kao zadano"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1946 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1964 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Svojstva"
 
@@ -207,7 +207,7 @@ msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Other Application…"
 msgstr "Ostale aplikacije…"
 
@@ -315,11 +315,11 @@ msgstr "(kao administrator)"
 msgid "Filename"
 msgstr "Naziv datoteke"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2122
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2160
 msgid "Size"
 msgstr "Veličina"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2127
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2165
 msgid "Type"
 msgstr "Vrsta"
 
@@ -375,159 +375,159 @@ msgstr "Nemoguće ispuštanje ove datoteke"
 msgid "Invalid file name provided"
 msgstr "Neispravan dani naziv datoteke"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "Novoj kartici"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1868
 msgid "Run"
 msgstr "Pokreni"
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1875
 #, c-format
 msgid "Open in %s"
 msgstr "Otvori s(a) %s"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1944
 msgid "Open in"
 msgstr "Otvori u"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1946
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Otvori s"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1952
 msgid "Paste"
 msgstr "Zalijepi"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Bookmark"
 msgstr "Zabilješka"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1972
 msgid "Cut"
 msgstr "Izreži"
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1979
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Move to Trash"
 msgstr "Premjesti u smeće"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1991
 msgid "Delete permanently"
 msgstr "Obriši trajno"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Restore from Trash"
 msgstr "Vrati iz smeća"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Open Parent Folder"
 msgstr "Otvori sadržajnu mapu"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Remove from History"
 msgstr "Ukloni iz povijesti"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:2026
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Preimenuj"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2033
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Zalijepi"
 
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2049
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Zalijepi u mapu"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2051
 msgid "Paste into Folder"
 msgstr "Zalijepi u mapu"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Hidden Files"
 msgstr "Prikaži skrivene datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Show Remote Thumbnails"
 msgstr "Prikaži udaljene minijature"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2083
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Prikaži udaljene minijature"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2103
 #, fuzzy
 msgid "Paste Link"
 msgstr "Zalijepi"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Name"
 msgstr "Naziv"
 
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Date"
 msgstr "Datum"
 
-#: src/View/AbstractDirectoryView.vala:2137
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Reversed Order"
 msgstr "Obrnuti redoslijed"
 
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Sort by"
 msgstr "Razvrstaj po"
 
-#: src/View/AbstractDirectoryView.vala:2158
+#: src/View/AbstractDirectoryView.vala:2198
 msgid "Folder"
 msgstr "Mapa"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2204
 msgid "Empty File"
 msgstr "Prazna datoteka"
 
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2254
 msgid "New"
 msgstr "Novo"
 
-#: src/View/AbstractDirectoryView.vala:2449
+#: src/View/AbstractDirectoryView.vala:2491
 #, c-format
 msgid "Untitled %s"
 msgstr "Neimenovano %s"
 
-#: src/View/AbstractDirectoryView.vala:2810
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:2852
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot remove files from here"
 msgstr "Nemoguće je uklanjanje datoteka odavdje"
 
-#: src/View/AbstractDirectoryView.vala:2811
-#: src/View/AbstractDirectoryView.vala:2990
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:2853
+#: src/View/AbstractDirectoryView.vala:3032
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "You do not have permission to change this location"
 msgstr "Nemate dozvolu za mijenjanje ove lokacije"
 
-#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:3007
 msgid "Cannot copy files that are in the trash"
 msgstr "Nemoguće kopiranje datoteka koje su u smeću"
 
-#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:3008
 msgid "Cutting the selection instead"
 msgstr "Umjesto toga rezanje odabira"
 
-#: src/View/AbstractDirectoryView.vala:2989
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot paste files here"
 msgstr "Nemoguće je zalijepiti datoteke ovdje"
 
@@ -1272,7 +1272,7 @@ msgstr[0] "Sigurno želite trajno obrisati %'d odabranu stavku iz smeća?"
 msgstr[1] "Sigurno želite trajno obrisati %'d odabrane stavke iz smeća?"
 msgstr[2] "Sigurno želite trajno obrisati %'d odabranih stavki iz smeća?"
 
-#: libcore/marlin-file-operations.c:1103 libcore/marlin-file-operations.c:1177
+#: libcore/marlin-file-operations.c:1103
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ako obrišete stavku, trajno će biti izgubljena."
 
@@ -1301,8 +1301,9 @@ msgstr "Sve stavke u smeću s ovog montiranog uređaja bit će trajno obrisane."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1165
 #, fuzzy, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Sigurno želite trajno obrisati \"%B\"?"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "Želite li trajno obrisati sve stavke iz smeća?"
 
 #: libcore/marlin-file-operations.c:1168
 #, c-format
@@ -1312,6 +1313,10 @@ msgid_plural ""
 msgstr[0] "Sigurno želite trajno obrisati %'d odabranu stavku?"
 msgstr[1] "Sigurno želite trajno obrisati %'d odabrane stavke?"
 msgstr[2] "Sigurno želite trajno obrisati %'d odabranih stavki?"
+
+#: libcore/marlin-file-operations.c:1177
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
 
 #: libcore/marlin-file-operations.c:1211
 #, c-format
@@ -2437,6 +2442,10 @@ msgstr "Vrati sve"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " odabrano"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "Sigurno želite trajno obrisati \"%B\"?"
 
 #~ msgid "Invalid"
 #~ msgstr "Neispravan"
