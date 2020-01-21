@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 16:53+0000\n"
+"POT-Creation-Date: 2020-01-21 17:40+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -22,7 +22,7 @@ msgstr "Afișați versiunea programului."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Deschide uri(s) în fila nouă"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "Nouă fereastră"
 
@@ -115,7 +115,7 @@ msgid "Set as default"
 msgstr "Setați ca implicit"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1952 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1964 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Proprietăți"
 
@@ -197,7 +197,7 @@ msgid "Original Location:"
 msgstr "Locația originală:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Other Application…"
 msgstr "Alte aplicații…"
 
@@ -301,11 +301,11 @@ msgstr "(ca Administrator)"
 msgid "Filename"
 msgstr "Nume de fișier"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2126
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2160
 msgid "Size"
 msgstr "Mărime"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2131
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2165
 msgid "Type"
 msgstr "Tipul"
 
@@ -361,156 +361,156 @@ msgstr "Nu puteți renunța la acest fișier"
 msgid "Invalid file name provided"
 msgstr "Numele de fișier furnizat nevalid"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "Filă nouă"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1868
 msgid "Run"
 msgstr "Aleargă"
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1875
 #, c-format
 msgid "Open in %s"
 msgstr "Deschide în %s"
 
-#: src/View/AbstractDirectoryView.vala:1938
+#: src/View/AbstractDirectoryView.vala:1944
 msgid "Open in"
 msgstr "Deschide în"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1946
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Deschide cu"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1952
 msgid "Paste"
 msgstr "Lipește"
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Bookmark"
 msgstr "Semne de carte"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1972
 msgid "Cut"
 msgstr "Taie"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1979
 msgid "Copy"
 msgstr "Copie"
 
-#: src/View/AbstractDirectoryView.vala:1962
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Move to Trash"
 msgstr "Aruncă la gunoi"
 
-#: src/View/AbstractDirectoryView.vala:1965
+#: src/View/AbstractDirectoryView.vala:1991
 msgid "Delete permanently"
 msgstr "Șterge Permanent"
 
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Restore from Trash"
 msgstr "Restaurați din Coșul de gunoi"
 
-#: src/View/AbstractDirectoryView.vala:1981
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Open Parent Folder"
 msgstr "Deschideți dosarul părinte"
 
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Remove from History"
 msgstr "Șterge din istoric"
 
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:2026
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Redenumește"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Copy as Link"
 msgstr "Copiați ca legătură"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2049
 msgid "Paste Link into Folder"
 msgstr "Inserați o legătură în carpetă"
 
-#: src/View/AbstractDirectoryView.vala:2017
+#: src/View/AbstractDirectoryView.vala:2051
 msgid "Paste into Folder"
 msgstr "Lipiți în carpetă"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Hidden Files"
 msgstr "Arată fișierele ascunse"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Show Remote Thumbnails"
 msgstr "Afișați miniaturile de la distanță"
 
-#: src/View/AbstractDirectoryView.vala:2049
+#: src/View/AbstractDirectoryView.vala:2083
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Afișați miniaturile de la distanță"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2103
 msgid "Paste Link"
 msgstr "Lipește Link"
 
-#: src/View/AbstractDirectoryView.vala:2121
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Name"
 msgstr "Nume"
 
-#: src/View/AbstractDirectoryView.vala:2136
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Date"
 msgstr "Dată"
 
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Reversed Order"
 msgstr "Ordinul inversat"
 
-#: src/View/AbstractDirectoryView.vala:2144
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Folders Before Files"
 msgstr "Carpete înainte de fișiere"
 
-#: src/View/AbstractDirectoryView.vala:2156
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Sort by"
 msgstr "Filtrează după"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2198
 msgid "Folder"
 msgstr "Carpetă"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2204
 msgid "Empty File"
 msgstr "Fișier gol"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2254
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2453
+#: src/View/AbstractDirectoryView.vala:2491
 #, c-format
 msgid "Untitled %s"
 msgstr "Fără titlu %s"
 
-#: src/View/AbstractDirectoryView.vala:2814
-#: src/View/AbstractDirectoryView.vala:3009
+#: src/View/AbstractDirectoryView.vala:2852
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot remove files from here"
 msgstr "Nu pot fi eliminate fișiere de aici"
 
-#: src/View/AbstractDirectoryView.vala:2815
-#: src/View/AbstractDirectoryView.vala:2994
-#: src/View/AbstractDirectoryView.vala:3010
+#: src/View/AbstractDirectoryView.vala:2853
+#: src/View/AbstractDirectoryView.vala:3032
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "You do not have permission to change this location"
 msgstr "Nu aveți permisiunea de a modifica această locație"
 
-#: src/View/AbstractDirectoryView.vala:2969
+#: src/View/AbstractDirectoryView.vala:3007
 msgid "Cannot copy files that are in the trash"
 msgstr "Nu se pot copia fișierele din coșul de gunoi"
 
-#: src/View/AbstractDirectoryView.vala:2970
+#: src/View/AbstractDirectoryView.vala:3008
 msgid "Cutting the selection instead"
 msgstr "Tăiați selecția în loc"
 
-#: src/View/AbstractDirectoryView.vala:2993
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 

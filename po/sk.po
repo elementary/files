@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 16:53+0000\n"
+"POT-Creation-Date: 2020-01-21 17:40+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -30,7 +30,7 @@ msgstr "Zobraziť verziu programu."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Otvoriť uri v novej karte"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "Nové okno"
 
@@ -123,7 +123,7 @@ msgid "Set as default"
 msgstr "Nastaviť ako predvolený"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1952 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1964 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -204,7 +204,7 @@ msgid "Original Location:"
 msgstr "Pôvodné umiestnenie"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Other Application…"
 msgstr "Iná aplikícia..."
 
@@ -312,11 +312,11 @@ msgstr "(Ako správca)"
 msgid "Filename"
 msgstr "Názov súboru"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2126
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2160
 msgid "Size"
 msgstr "Veľkosť"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2131
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2165
 msgid "Type"
 msgstr "Typ"
 
@@ -372,159 +372,159 @@ msgstr "Nie je možné zahodiť tento súbor"
 msgid "Invalid file name provided"
 msgstr "Bolo zadané zlé meno súboru"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "Nová karta"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1868
 msgid "Run"
 msgstr "Spustiť"
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1875
 #, c-format
 msgid "Open in %s"
 msgstr "Otvoriť v %s"
 
-#: src/View/AbstractDirectoryView.vala:1938
+#: src/View/AbstractDirectoryView.vala:1944
 msgid "Open in"
 msgstr "Otvoriť v"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1946
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Otvoriť s"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1952
 msgid "Paste"
 msgstr "Vložiť"
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Bookmark"
 msgstr "Záložka"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1972
 msgid "Cut"
 msgstr "Vystrihnúť"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1979
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: src/View/AbstractDirectoryView.vala:1962
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Move to Trash"
 msgstr "Presunúť do koša"
 
-#: src/View/AbstractDirectoryView.vala:1965
+#: src/View/AbstractDirectoryView.vala:1991
 msgid "Delete permanently"
 msgstr "Odstrániť natrvalo"
 
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Restore from Trash"
 msgstr "Obnoviť z koša"
 
-#: src/View/AbstractDirectoryView.vala:1981
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Open Parent Folder"
 msgstr "Otvoriť predchádzajúci priečinok"
 
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Remove from History"
 msgstr "Odstrániť z histórie"
 
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:2026
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Premenovať"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2033
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Vložiť"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2049
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Vložiť do priečinku"
 
-#: src/View/AbstractDirectoryView.vala:2017
+#: src/View/AbstractDirectoryView.vala:2051
 msgid "Paste into Folder"
 msgstr "Vložiť do priečinku"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Hidden Files"
 msgstr "Zobraziť skryté súbory"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Show Remote Thumbnails"
 msgstr "Zobraziť vzdialené náhľady"
 
-#: src/View/AbstractDirectoryView.vala:2049
+#: src/View/AbstractDirectoryView.vala:2083
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Zobraziť vzdialené náhľady"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2103
 #, fuzzy
 msgid "Paste Link"
 msgstr "Vložiť"
 
-#: src/View/AbstractDirectoryView.vala:2121
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Name"
 msgstr "Meno"
 
-#: src/View/AbstractDirectoryView.vala:2136
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Date"
 msgstr "Dátum"
 
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Reversed Order"
 msgstr "V obrátenom poradí"
 
-#: src/View/AbstractDirectoryView.vala:2144
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2156
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Sort by"
 msgstr "Usporiadať podľa"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2198
 msgid "Folder"
 msgstr "Priečinok"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2204
 msgid "Empty File"
 msgstr "Prázdny súbor"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2254
 msgid "New"
 msgstr "Nový"
 
-#: src/View/AbstractDirectoryView.vala:2453
+#: src/View/AbstractDirectoryView.vala:2491
 #, c-format
 msgid "Untitled %s"
 msgstr "Bez názvu %s"
 
-#: src/View/AbstractDirectoryView.vala:2814
-#: src/View/AbstractDirectoryView.vala:3009
+#: src/View/AbstractDirectoryView.vala:2852
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot remove files from here"
 msgstr "Tieto súbory nie je možné odstrániť"
 
-#: src/View/AbstractDirectoryView.vala:2815
-#: src/View/AbstractDirectoryView.vala:2994
-#: src/View/AbstractDirectoryView.vala:3010
+#: src/View/AbstractDirectoryView.vala:2853
+#: src/View/AbstractDirectoryView.vala:3032
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "You do not have permission to change this location"
 msgstr "Nemáte povolenie na zmenu umiestnenia"
 
-#: src/View/AbstractDirectoryView.vala:2969
+#: src/View/AbstractDirectoryView.vala:3007
 msgid "Cannot copy files that are in the trash"
 msgstr "Nie je možné kopírovať súbory, ktoré sú v koši"
 
-#: src/View/AbstractDirectoryView.vala:2970
+#: src/View/AbstractDirectoryView.vala:3008
 msgid "Cutting the selection instead"
 msgstr "Vystrihnutie namiesto výberu"
 
-#: src/View/AbstractDirectoryView.vala:2993
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot paste files here"
 msgstr "Nie je možné vložiť súbory"
 
