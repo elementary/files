@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 19:55+0000\n"
+"POT-Creation-Date: 2020-01-21 19:53+0000\n"
 "PO-Revision-Date: 2019-06-14 20:17+0000\n"
 "Last-Translator: Khomyak-sibiryak <owalski@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
@@ -29,7 +29,7 @@ msgstr "Показать версию программы"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Открыть одну или несколько ссылок, каждую в новой вкладке"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Новое окно"
 
@@ -121,7 +121,7 @@ msgid "Set as default"
 msgstr "Установить по умолчанию"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1946 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Свойства"
 
@@ -205,7 +205,7 @@ msgid "Original Location:"
 msgstr "Исходное расположение:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1929
 msgid "Other Application…"
 msgstr "Другое приложение…"
 
@@ -311,11 +311,11 @@ msgstr "(с правами администратора)"
 msgid "Filename"
 msgstr "Имя файла"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2122
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
 msgid "Size"
 msgstr "Размер"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2127
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
 msgid "Type"
 msgstr "Тип"
 
@@ -349,178 +349,178 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:822
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1126
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Не удалось открыть этот файл"
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
 msgstr "Не удалось открыть этот файл"
 
-#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "Не удалось определить тип файла для открытия"
 
-#: src/View/AbstractDirectoryView.vala:1575
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Cannot drop this file"
 msgstr "Не удаётся поместить этот файл"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Недопустимое имя файла"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1848
 msgid "New Tab"
 msgstr "Новой вкладке"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1865
 msgid "Run"
 msgstr "Выполнить"
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1872
 #, c-format
 msgid "Open in %s"
 msgstr "Открыть в «%s»"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Открыть в"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1943
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Открыть в"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Bookmark"
 msgstr "Добавить в закладки"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1969
 msgid "Cut"
 msgstr "Вырезать"
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Move to Trash"
 msgstr "Переместить в корзину"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Delete permanently"
 msgstr "Удалить безвозвратно"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Restore from Trash"
 msgstr "Восстановить из корзины"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:2004
 msgid "Open Parent Folder"
 msgstr "Открыть родительскую папку"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Remove from History"
 msgstr "Удалить из истории"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:2023
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Переименовать"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
 msgstr "Копировать ссылку"
 
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2046
 msgid "Paste Link into Folder"
 msgstr "Вставить ссылку в папку"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2048
 msgid "Paste into Folder"
 msgstr "Вставить в папку"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Show Hidden Files"
 msgstr "Показывать скрытые файлы"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Remote Thumbnails"
 msgstr "Показать удалённые эскизы"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2080
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Показать удалённые эскизы"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
 msgstr "Вставить ссылку"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Name"
 msgstr "Имя"
 
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Date"
 msgstr "Дата"
 
-#: src/View/AbstractDirectoryView.vala:2137
+#: src/View/AbstractDirectoryView.vala:2172
 msgid "Reversed Order"
 msgstr "В обратном порядке"
 
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Folders Before Files"
 msgstr "Папки перед файлами"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Sort by"
 msgstr "Сортировать"
 
-#: src/View/AbstractDirectoryView.vala:2158
+#: src/View/AbstractDirectoryView.vala:2195
 msgid "Folder"
 msgstr "Папку"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Empty File"
 msgstr "Пустой файл"
 
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2251
 msgid "New"
 msgstr "Создать"
 
-#: src/View/AbstractDirectoryView.vala:2449
+#: src/View/AbstractDirectoryView.vala:2488
 #, c-format
 msgid "Untitled %s"
 msgstr "Безымянный %s"
 
-#: src/View/AbstractDirectoryView.vala:2810
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:2849
+#: src/View/AbstractDirectoryView.vala:3044
 msgid "Cannot remove files from here"
 msgstr "Не удалось удалить файлы отсюда"
 
-#: src/View/AbstractDirectoryView.vala:2811
-#: src/View/AbstractDirectoryView.vala:2990
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "You do not have permission to change this location"
 msgstr "У вас нет прав на изменение этого расположения"
 
-#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:3004
 msgid "Cannot copy files that are in the trash"
 msgstr "Невозможно копировать файлы, находящиеся в корзине"
 
-#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cutting the selection instead"
 msgstr "Вырезать невыделенное"
 
-#: src/View/AbstractDirectoryView.vala:2989
+#: src/View/AbstractDirectoryView.vala:3028
 msgid "Cannot paste files here"
 msgstr "Не удалось вставить файлы сюда"
 
@@ -1258,7 +1258,7 @@ msgstr[2] ""
 "Вы действительно хотите безвозвратно удалить %'d выделенных объектов из "
 "корзины?"
 
-#: libcore/marlin-file-operations.c:1103 libcore/marlin-file-operations.c:1177
+#: libcore/marlin-file-operations.c:1103
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Если вы удалите объект, вы больше не сможете его восстановить."
 
@@ -1288,8 +1288,9 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1165
 #, fuzzy, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Вы действительно хотите безвозвратно удалить «%B»?"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "Очистить корзину?"
 
 #: libcore/marlin-file-operations.c:1168
 #, c-format
@@ -1301,6 +1302,10 @@ msgstr[1] ""
 "Вы действительно хотите безвозвратно удалить %'d выделенных объекта?"
 msgstr[2] ""
 "Вы действительно хотите безвозвратно удалить %'d выделенных объектов?"
+
+#: libcore/marlin-file-operations.c:1177
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
 
 #: libcore/marlin-file-operations.c:1211
 #, c-format
@@ -2418,6 +2423,10 @@ msgstr "Восстановить выбранное"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Удалить выбранное"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "Вы действительно хотите безвозвратно удалить «%B»?"
 
 #~ msgid "Invalid"
 #~ msgstr "Недоступно"

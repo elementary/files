@@ -245,9 +245,10 @@ namespace FM {
             }
         }
 
+        public bool in_recent { get; private set; default = false; }
+
         protected bool tree_frozen { get; set; default = false; }
         private bool in_trash = false;
-        private bool in_recent = false;
         private bool in_network_root = false;
         protected bool is_writable = false;
         protected bool is_loading;
@@ -334,10 +335,6 @@ namespace FM {
 
         ~AbstractDirectoryView () {
             debug ("ADV destruct");
-        }
-
-        public bool is_in_recent () {
-            return in_recent;
         }
 
         protected virtual void set_up_name_renderer () {
@@ -1846,7 +1843,11 @@ namespace FM {
             var open_submenu = new Gtk.Menu ();
 
             if (common_actions.get_action_enabled ("open-in")) {
-                var new_tab_menuitem = new Gtk.MenuItem.with_label (_("New Tab"));
+                var new_tab_menuitem = new Gtk.MenuItem ();
+                new_tab_menuitem.add (new Granite.AccelLabel (
+                    _("New Tab"),
+                    "<Shift>Return"
+                ));
                 new_tab_menuitem.action_name = "common.open-in";
                 new_tab_menuitem.action_target = "TAB";
 
@@ -1866,9 +1867,11 @@ namespace FM {
 
                     menu.add (run_menuitem);
                 } else if (default_app != null && default_app.get_id () != Marlin.APP_ID + ".desktop") {
-                    var open_menuitem = new Gtk.MenuItem.with_label (
-                        _("Open in %s").printf (default_app.get_display_name ())
-                    );
+                    var open_menuitem = new Gtk.MenuItem ();
+                    open_menuitem.add (new Granite.AccelLabel (
+                        _("Open in %s").printf (default_app.get_display_name ()),
+                        "Return"
+                    ));
                     open_menuitem.action_name = "selection.open-with-default";
 
                     menu.add (open_menuitem);
@@ -1892,8 +1895,14 @@ namespace FM {
                         unowned string label = app_info.get_display_name ();
                         unowned string exec = app_info.get_executable ().split (" ")[0];
                         if (label != last_label || exec != last_exec) {
+                            var app_image = new Gtk.Image.from_gicon (
+                                app_info.get_icon (),
+                                Gtk.IconSize.MENU
+                            );
+                            app_image.pixel_size = 16;
+
                             var label_grid = new Gtk.Grid ();
-                            label_grid.add (new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU));
+                            label_grid.add (app_image);
                             label_grid.add (new Gtk.Label (label));
 
                             var menuitem = new Gtk.MenuItem ();
@@ -1940,20 +1949,40 @@ namespace FM {
             var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
             paste_menuitem.action_name = "common.paste-into";
 
-            var bookmark_menuitem = new Gtk.MenuItem.with_label (_("Bookmark"));
+            var bookmark_menuitem = new Gtk.MenuItem ();
+            bookmark_menuitem.add (new Granite.AccelLabel (
+                _("Bookmark"),
+                "<Ctrl>d"
+            ));
             bookmark_menuitem.action_name = "common.bookmark";
 
-            var properties_menuitem = new Gtk.MenuItem.with_label (_("Properties"));
+            var properties_menuitem = new Gtk.MenuItem ();
+            properties_menuitem.add (new Granite.AccelLabel (
+                _("Properties"),
+                "<Alt>Return"
+            ));
             properties_menuitem.action_name = "common.properties";
 
             if (get_selected_files () != null) {
-                var cut_menuitem = new Gtk.MenuItem.with_label (_("Cut"));
+                var cut_menuitem = new Gtk.MenuItem ();
+                cut_menuitem.add (new Granite.AccelLabel (
+                    _("Cut"),
+                    "<Ctrl>x"
+                ));
                 cut_menuitem.action_name = "selection.cut";
 
-                var copy_menuitem = new Gtk.MenuItem.with_label (_("Copy"));
+                var copy_menuitem = new Gtk.MenuItem ();
+                copy_menuitem.add (new Granite.AccelLabel (
+                    _("Copy"),
+                    "<Ctrl>c"
+                ));
                 copy_menuitem.action_name = "common.copy";
 
-                var trash_menuitem = new Gtk.MenuItem.with_label (_("Move to Trash"));
+                var trash_menuitem = new Gtk.MenuItem ();
+                trash_menuitem.add (new Granite.AccelLabel (
+                    _("Move to Trash"),
+                    "Delete"
+                ));
                 trash_menuitem.action_name = "selection.trash";
 
                 var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete permanently"));
@@ -1989,10 +2018,18 @@ namespace FM {
                     if (slot.directory.file.is_smb_server () && clipboard != null && clipboard.can_paste) {
                         menu.add (paste_menuitem);
                     } else if (valid_selection_for_edit ()) {
-                        var rename_menuitem = new Gtk.MenuItem.with_label (_("Rename…"));
+                        var rename_menuitem = new Gtk.MenuItem ();
+                        rename_menuitem.add (new Granite.AccelLabel (
+                            _("Rename…"),
+                            "F2"
+                        ));
                         rename_menuitem.action_name = "selection.rename";
 
-                        var copy_link_menuitem = new Gtk.MenuItem.with_label (_("Copy as Link"));
+                        var copy_link_menuitem = new Gtk.MenuItem ();
+                        copy_link_menuitem.add (new Granite.AccelLabel (
+                            _("Copy as Link"),
+                            "<Shift><Ctrl>c"
+                        ));
                         copy_link_menuitem.action_name = "common.copy-link";
 
                         if (menu.get_children ().find (open_submenu_item) != null) {
@@ -2153,7 +2190,11 @@ namespace FM {
 
         private class NewSubMenuItem : Gtk.MenuItem {
             construct {
-                var folder_menuitem = new Gtk.MenuItem.with_label (_("Folder"));
+                var folder_menuitem = new Gtk.MenuItem ();
+                folder_menuitem.add (new Granite.AccelLabel (
+                    _("Folder"),
+                    "<Ctrl>n"
+                ));
                 folder_menuitem.action_name = "background.new";
                 folder_menuitem.action_target = "FOLDER";
 

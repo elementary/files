@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 19:55+0000\n"
+"POT-Creation-Date: 2020-01-21 19:53+0000\n"
 "PO-Revision-Date: 2019-07-29 17:02+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
@@ -27,7 +27,7 @@ msgstr "Vis versionen af programmet"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Åbn en eller flere URI'er, hver især i sin egen fane"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Nyt vindue"
 
@@ -119,7 +119,7 @@ msgid "Set as default"
 msgstr "Indstil som standard"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1946 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Egenskaber"
 
@@ -200,7 +200,7 @@ msgid "Original Location:"
 msgstr "Original placering:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1929
 msgid "Other Application…"
 msgstr "Anden Applikation…"
 
@@ -302,11 +302,11 @@ msgstr "(som Administrator)"
 msgid "Filename"
 msgstr "Filnavn"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2122
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
 msgid "Size"
 msgstr "Størrelse"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2127
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
 msgid "Type"
 msgstr "Type"
 
@@ -336,178 +336,178 @@ msgstr "Opret mappen \"%s\""
 msgid "Failed to create the folder"
 msgstr "Oprettelsen af mappen fejlede"
 
-#: src/View/AbstractDirectoryView.vala:822
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1126
 msgid "Cannot execute this file"
 msgstr "Kan ikke eksekvere denne fil"
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
 msgstr "Kan ikke åbne denne fil"
 
-#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "Kan ikke identificere filen som skal åbnes"
 
-#: src/View/AbstractDirectoryView.vala:1575
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Cannot drop this file"
 msgstr "Kan ikke droppe denne fil"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Ugyldigt filnavn angivet"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1848
 msgid "New Tab"
 msgstr "Nyt faneblad"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1865
 msgid "Run"
 msgstr "Kør"
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1872
 #, c-format
 msgid "Open in %s"
 msgstr "Åbn i %s"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Åben i"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1943
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Åbn med"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Paste"
 msgstr "Indsæt"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Bookmark"
 msgstr "Bogmærke"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1969
 msgid "Cut"
 msgstr "Klip"
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Copy"
 msgstr "Kopiér"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Move to Trash"
 msgstr "Flyt til papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Delete permanently"
 msgstr "Slet permanent"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Restore from Trash"
 msgstr "Gendan fra papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:2004
 msgid "Open Parent Folder"
 msgstr "Åbn overordnede mappe"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Remove from History"
 msgstr "Slet fra historien"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:2023
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Omdøb"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
 msgstr "Kopier som Link"
 
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2046
 msgid "Paste Link into Folder"
 msgstr "Indsæt Link i Mappen"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2048
 msgid "Paste into Folder"
 msgstr "Indsæt i mappen"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Show Hidden Files"
 msgstr "Vis skjulte filer"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Remote Thumbnails"
 msgstr "Vis Fjern Miniaturer"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2080
 #, fuzzy
 #| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
 msgstr "Skjul Lokal Miniaturer"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
 msgstr "Indsæt Link"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Name"
 msgstr "Navn"
 
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Date"
 msgstr "Dato"
 
-#: src/View/AbstractDirectoryView.vala:2137
+#: src/View/AbstractDirectoryView.vala:2172
 msgid "Reversed Order"
 msgstr "Omvendt rækkefølge"
 
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Folders Before Files"
 msgstr "Mapper før Filer"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Sort by"
 msgstr "Sorter efter"
 
-#: src/View/AbstractDirectoryView.vala:2158
+#: src/View/AbstractDirectoryView.vala:2195
 msgid "Folder"
 msgstr "Mappe"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Empty File"
 msgstr "Tom fil"
 
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2251
 msgid "New"
 msgstr "Ny"
 
-#: src/View/AbstractDirectoryView.vala:2449
+#: src/View/AbstractDirectoryView.vala:2488
 #, c-format
 msgid "Untitled %s"
 msgstr "Unavngivet %s"
 
-#: src/View/AbstractDirectoryView.vala:2810
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:2849
+#: src/View/AbstractDirectoryView.vala:3044
 msgid "Cannot remove files from here"
 msgstr "Kan ikke fjerne filer herfra"
 
-#: src/View/AbstractDirectoryView.vala:2811
-#: src/View/AbstractDirectoryView.vala:2990
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke rettigheder til at ændre denne placering"
 
-#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:3004
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer der er i papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cutting the selection instead"
 msgstr "Klipper det markerede i stedet"
 
-#: src/View/AbstractDirectoryView.vala:2989
+#: src/View/AbstractDirectoryView.vala:3028
 msgid "Cannot paste files here"
 msgstr "Kan ikke indsætte filer her"
 
@@ -1236,7 +1236,7 @@ msgstr[1] ""
 "Er du sikker på at du vil slette de %'d valgte elementer fra papirkurven "
 "permanent?"
 
-#: libcore/marlin-file-operations.c:1103 libcore/marlin-file-operations.c:1177
+#: libcore/marlin-file-operations.c:1103
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Hvis du sletter et element, vil det gå tabt permanent."
 
@@ -1265,8 +1265,9 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1165
 #, fuzzy, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Er du sikker på at du permanent vil slette \"%B\"?"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "Slet alle elementer fra papirkurven permanent?"
 
 #: libcore/marlin-file-operations.c:1168
 #, c-format
@@ -1276,6 +1277,10 @@ msgid_plural ""
 msgstr[0] "Er du sikker på, at du permanent vil slette %'d valgt element?"
 msgstr[1] ""
 "Er du sikker på, at du permanent vil slette de %'d valgte elementer?"
+
+#: libcore/marlin-file-operations.c:1177
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
 
 #: libcore/marlin-file-operations.c:1211
 #, c-format
@@ -2363,6 +2368,10 @@ msgstr "Gendan Valgte"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Slet Valgte"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "Er du sikker på at du permanent vil slette \"%B\"?"
 
 #~ msgid "Invalid"
 #~ msgstr "Ugyldig"

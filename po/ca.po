@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 19:55+0000\n"
-"PO-Revision-Date: 2019-10-05 11:23+0000\n"
+"POT-Creation-Date: 2020-01-21 19:53+0000\n"
+"PO-Revision-Date: 2020-01-21 16:29+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:124
@@ -28,7 +28,7 @@ msgstr "Mostra la versió del programa."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Obre un o més URI, cada un en una pestanya diferent"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1853
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Finestra nova"
 
@@ -120,7 +120,7 @@ msgid "Set as default"
 msgstr "Estableix com a predeterminada"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1946 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Propietats"
 
@@ -200,7 +200,7 @@ msgid "Original Location:"
 msgstr "Ubicació original:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1929
 msgid "Other Application…"
 msgstr "Una altra aplicació…"
 
@@ -302,11 +302,11 @@ msgstr "(com a Administrador)"
 msgid "Filename"
 msgstr "Nom del fitxer"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2122
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
 msgid "Size"
 msgstr "Mida"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2127
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
 msgid "Type"
 msgstr "Tipus"
 
@@ -336,178 +336,174 @@ msgstr "Crea la carpeta «%s»"
 msgid "Failed to create the folder"
 msgstr "Ha fallat crear la carpeta."
 
-#: src/View/AbstractDirectoryView.vala:822
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1126
 msgid "Cannot execute this file"
 msgstr "No es pot executar aquest fitxer."
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
 msgstr "No es pot obrir aquest fitxer"
 
-#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "No es pot identificar el tipus de fitxer per obrir"
 
-#: src/View/AbstractDirectoryView.vala:1575
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Cannot drop this file"
 msgstr "No es pot deixar anar aquest fitxer"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "S’ha proporcionat un nom de fitxer no vàlid"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1848
 msgid "New Tab"
 msgstr "Pestanya nova"
 
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/View/AbstractDirectoryView.vala:1865
 msgid "Run"
 msgstr "Executa"
 
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1872
 #, c-format
 msgid "Open in %s"
 msgstr "Obre amb %s"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Obre amb"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1943
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Obre amb"
 
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Paste"
 msgstr "Enganxa"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Bookmark"
 msgstr "Afegeix a les adreces d'interès"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1969
 msgid "Cut"
 msgstr "Retalla"
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Copy"
 msgstr "Copia"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Move to Trash"
 msgstr "Mou a la paperera"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Delete permanently"
 msgstr "Suprimeix permanentment"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Restore from Trash"
 msgstr "Restaura de la paperera"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:2004
 msgid "Open Parent Folder"
 msgstr "Obre la carpeta superior"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Remove from History"
 msgstr "Suprimeix de l'historial"
 
-#: src/View/AbstractDirectoryView.vala:1992
-#, fuzzy
-#| msgid "Rename"
+#: src/View/AbstractDirectoryView.vala:2023
 msgid "Rename…"
-msgstr "Canvia'n el nom"
+msgstr "Canvia'n el nom…"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
 msgstr "Copia com a enllaç"
 
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2046
 msgid "Paste Link into Folder"
 msgstr "Enganxa l'enllaç a la carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2048
 msgid "Paste into Folder"
 msgstr "Enganxa a la carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Show Hidden Files"
 msgstr "Mostra els fitxers ocults"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Show Remote Thumbnails"
 msgstr "Mostra les miniatures remotes"
 
-#: src/View/AbstractDirectoryView.vala:2040
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Hide Thumbnails"
-msgstr "Amaga les miniatures locals"
+msgstr "Amaga les miniatures"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
 msgstr "Enganxa l'enllaç"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Name"
 msgstr "Nom"
 
-#: src/View/AbstractDirectoryView.vala:2132
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Date"
 msgstr "Data"
 
-#: src/View/AbstractDirectoryView.vala:2137
+#: src/View/AbstractDirectoryView.vala:2172
 msgid "Reversed Order"
 msgstr "Ordre invers"
 
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2175
 msgid "Folders Before Files"
 msgstr "Les carpetes davant dels fitxers"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Sort by"
 msgstr "Ordena per"
 
-#: src/View/AbstractDirectoryView.vala:2158
+#: src/View/AbstractDirectoryView.vala:2195
 msgid "Folder"
 msgstr "Carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Empty File"
 msgstr "Fitxer buit"
 
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2251
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2449
+#: src/View/AbstractDirectoryView.vala:2488
 #, c-format
 msgid "Untitled %s"
 msgstr "%s sense nom"
 
-#: src/View/AbstractDirectoryView.vala:2810
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:2849
+#: src/View/AbstractDirectoryView.vala:3044
 msgid "Cannot remove files from here"
 msgstr "No es poden suprimir fitxers des d'aquí"
 
-#: src/View/AbstractDirectoryView.vala:2811
-#: src/View/AbstractDirectoryView.vala:2990
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "You do not have permission to change this location"
 msgstr "No teniu permís per canviar aquesta ubicació"
 
-#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:3004
 msgid "Cannot copy files that are in the trash"
 msgstr "No és possible copiar els fitxers que són a la paperera."
 
-#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cutting the selection instead"
 msgstr "En canvi, es retalla la selecció"
 
-#: src/View/AbstractDirectoryView.vala:2989
+#: src/View/AbstractDirectoryView.vala:3028
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
@@ -1236,7 +1232,7 @@ msgstr[1] ""
 "Segur que voleu suprimir permanentment els %'d elements seleccionats de la "
 "paperera?"
 
-#: libcore/marlin-file-operations.c:1103 libcore/marlin-file-operations.c:1177
+#: libcore/marlin-file-operations.c:1103
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Si suprimiu un element, es perdrà permanentment."
 
@@ -1267,9 +1263,10 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1165
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Segur que voleu suprimir «%s» permanentment?"
+#, fuzzy, c-format
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "Voleu suprimir permanentment tots els elements de la paperera?"
 
 #: libcore/marlin-file-operations.c:1168
 #, c-format
@@ -1279,6 +1276,10 @@ msgid_plural ""
 msgstr[0] "Segur que voleu suprimir permanentment l'element seleccionat?"
 msgstr[1] ""
 "Segur que voleu suprimir permanentment els %'d elements seleccionats?"
+
+#: libcore/marlin-file-operations.c:1177
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
 
 #: libcore/marlin-file-operations.c:1211
 #, c-format
@@ -2368,6 +2369,9 @@ msgstr "Restaura la selecció"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Suprimeix la selecció"
+
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "Segur que voleu suprimir «%s» permanentment?"
 
 #~ msgid "Invalid"
 #~ msgstr "No vàlid"
