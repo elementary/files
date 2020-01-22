@@ -154,6 +154,11 @@ public class CustomFileChooserDialog : Object {
             last_folder = Environment.get_home_dir ();
         }
 
+        last_folder = PF.FileUtils.sanitize_path (last_folder);
+        if (Uri.parse_scheme (last_folder) == null) {
+            last_folder = "file://" + last_folder;
+        }
+
         chooser_dialog.set_current_folder_uri (last_folder);
     }
 
