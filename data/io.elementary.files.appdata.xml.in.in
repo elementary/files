@@ -63,6 +63,7 @@
         <ul>
           <li>Show keyboard shortcuts in menu items</li>
           <li>Fix an issue with breadcrumbs in the file chooser</li>
+          <li>Do not include "file://" in pathbar text or when pasting path as text</li>
           <li>Show a warning when ejecting a volume that's still in use</li>
           <li>Updated translations</li>
         </ul>
