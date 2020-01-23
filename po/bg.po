@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-15 17:59+0000\n"
+"POT-Creation-Date: 2020-01-22 21:42+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -31,7 +31,7 @@ msgstr "Покажи версията на програмата."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Отваряне на адреса/те в нов подпрозорец"
 
-#: src/Application.vala:128 src/View/directory_view_popup.ui:87
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Нов прозорец"
 
@@ -123,8 +123,8 @@ msgstr "Използвано:"
 msgid "Set as default"
 msgstr "Задай по подразбиране"
 
-#: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:81
-#: src/View/directory_view_popup.ui:95
+#: src/Dialogs/PropertiesWindow.vala:123
+#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Настройки"
 
@@ -204,7 +204,7 @@ msgid "Original Location:"
 msgstr "Първоначално местоположение:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:1929
 msgid "Other Application…"
 msgstr "Друга програма..."
 
@@ -308,11 +308,11 @@ msgstr "като Администратор"
 msgid "Filename"
 msgstr "Файлово име"
 
-#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:153
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
 msgid "Size"
 msgstr "Размер"
 
-#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:158
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
 msgid "Type"
 msgstr "Тип"
 
@@ -368,57 +368,159 @@ msgstr "Не може да се метне този файл"
 msgid "Invalid file name provided"
 msgstr "Невярно дадено файлово име"
 
-#: src/View/AbstractDirectoryView.vala:2058
-msgid "Invalid"
-msgstr "Невярно"
+#: src/View/AbstractDirectoryView.vala:1848
+msgid "New Tab"
+msgstr "Нов подпрозорец"
 
-#: src/View/AbstractDirectoryView.vala:2064
+#: src/View/AbstractDirectoryView.vala:1865
 msgid "Run"
 msgstr "Изпълнение"
 
-#: src/View/AbstractDirectoryView.vala:2068
+#: src/View/AbstractDirectoryView.vala:1872
 #, c-format
 msgid "Open in %s"
 msgstr "Отваряне с %s"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "Отваряне в"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:1943
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Отвори с"
 
-#: src/View/AbstractDirectoryView.vala:2174
-msgid "Templates"
+#: src/View/AbstractDirectoryView.vala:1949
+msgid "Paste"
+msgstr "Поставяне"
+
+#: src/View/AbstractDirectoryView.vala:1954
+msgid "Bookmark"
+msgstr "Добавяне към отметките"
+
+#: src/View/AbstractDirectoryView.vala:1969
+msgid "Cut"
+msgstr "Отрязване"
+
+#: src/View/AbstractDirectoryView.vala:1976
+msgid "Copy"
+msgstr "Преписване"
+
+#: src/View/AbstractDirectoryView.vala:1983
+msgid "Move to Trash"
+msgstr "Преместване в Кошчето"
+
+#: src/View/AbstractDirectoryView.vala:1988
+msgid "Delete permanently"
+msgstr "Изтрий безвъзвратно"
+
+#: src/View/AbstractDirectoryView.vala:1993
+msgid "Restore from Trash"
+msgstr "Възстанови от Кошчето"
+
+#: src/View/AbstractDirectoryView.vala:2004
+msgid "Open Parent Folder"
+msgstr "Отваряне на родителската папка"
+
+#: src/View/AbstractDirectoryView.vala:2007
+msgid "Remove from History"
+msgstr "Премахване от хронологията"
+
+#: src/View/AbstractDirectoryView.vala:2023
+#, fuzzy
+#| msgid "Rename"
+msgid "Rename…"
+msgstr "Преименуване"
+
+#: src/View/AbstractDirectoryView.vala:2030
+#, fuzzy
+msgid "Copy as Link"
+msgstr "Поставяне"
+
+#: src/View/AbstractDirectoryView.vala:2046
+#, fuzzy
+msgid "Paste Link into Folder"
+msgstr "Сложи в Папката"
+
+#: src/View/AbstractDirectoryView.vala:2048
+msgid "Paste into Folder"
+msgstr "Сложи в Папката"
+
+#: src/View/AbstractDirectoryView.vala:2074
+msgid "Show Hidden Files"
+msgstr "Показване на скритите файлове"
+
+#: src/View/AbstractDirectoryView.vala:2077
+msgid "Show Remote Thumbnails"
+msgstr "Покажи споделени картини."
+
+#: src/View/AbstractDirectoryView.vala:2080
+#, fuzzy
+msgid "Hide Thumbnails"
+msgstr "Покажи споделени картини."
+
+#: src/View/AbstractDirectoryView.vala:2100
+#, fuzzy
+msgid "Paste Link"
+msgstr "Поставяне"
+
+#: src/View/AbstractDirectoryView.vala:2152
+msgid "Name"
+msgstr "Име"
+
+#: src/View/AbstractDirectoryView.vala:2167
+msgid "Date"
+msgstr "Дата"
+
+#: src/View/AbstractDirectoryView.vala:2172
+msgid "Reversed Order"
+msgstr "Обратен ред"
+
+#: src/View/AbstractDirectoryView.vala:2175
+msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2421
+#: src/View/AbstractDirectoryView.vala:2187
+msgid "Sort by"
+msgstr "Подреждане по"
+
+#: src/View/AbstractDirectoryView.vala:2195
+msgid "Folder"
+msgstr "Папка"
+
+#: src/View/AbstractDirectoryView.vala:2201
+msgid "Empty File"
+msgstr "Празен файл"
+
+#: src/View/AbstractDirectoryView.vala:2251
+msgid "New"
+msgstr "Създаване на"
+
+#: src/View/AbstractDirectoryView.vala:2488
 #, c-format
 msgid "Untitled %s"
 msgstr "Неименован %s"
 
-#: src/View/AbstractDirectoryView.vala:2782
-#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:2849
+#: src/View/AbstractDirectoryView.vala:3044
 msgid "Cannot remove files from here"
 msgstr "Не можете да изтривате файлове от тук."
 
-#: src/View/AbstractDirectoryView.vala:2783
-#: src/View/AbstractDirectoryView.vala:2962
-#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "You do not have permission to change this location"
 msgstr "Нямате позволение да променяте това местоположение."
 
-#: src/View/AbstractDirectoryView.vala:2937
+#: src/View/AbstractDirectoryView.vala:3004
 msgid "Cannot copy files that are in the trash"
 msgstr "Не можете да копирате файловете, които са в кошчето."
 
-#: src/View/AbstractDirectoryView.vala:2938
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3028
 msgid "Cannot paste files here"
 msgstr "Не можете да поставяте файлове тук."
 
@@ -551,7 +653,7 @@ msgstr ""
 msgid "Unable to start %s"
 msgstr "Не може да се стартира %s"
 
-#: src/View/Sidebar.vala:1646 libcore/marlin-file-operations.c:1168
+#: src/View/Sidebar.vala:1646 libcore/marlin-file-operations.c:1140
 msgid "Empty _Trash"
 msgstr "Изпразване на _кошчето"
 
@@ -603,7 +705,7 @@ msgstr "Отваряне в нов прозорец"
 msgid "Remove"
 msgstr "Премахни"
 
-#: src/View/PopupMenuBuilder.vala:65 src/View/directory_view_popup.ui:30
+#: src/View/PopupMenuBuilder.vala:65
 msgid "Rename"
 msgstr "Преименуване"
 
@@ -618,110 +720,6 @@ msgstr "_Демонтиране"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Изваждане"
-
-#: src/View/directory_view_popup.ui:5
-msgid "Restore from Trash"
-msgstr "Възстанови от Кошчето"
-
-#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
-msgid "Delete permanently"
-msgstr "Изтрий безвъзвратно"
-
-#: src/View/directory_view_popup.ui:16
-msgid "Open Parent Folder"
-msgstr "Отваряне на родителската папка"
-
-#: src/View/directory_view_popup.ui:23
-msgid "Remove from History"
-msgstr "Премахване от хронологията"
-
-#: src/View/directory_view_popup.ui:37
-msgid "Move to Trash"
-msgstr "Преместване в Кошчето"
-
-#: src/View/directory_view_popup.ui:51
-msgid "New"
-msgstr "Създаване на"
-
-#: src/View/directory_view_popup.ui:53
-msgid "Folder"
-msgstr "Папка"
-
-#: src/View/directory_view_popup.ui:58
-msgid "Empty File"
-msgstr "Празен файл"
-
-#: src/View/directory_view_popup.ui:67
-msgid "Show Hidden Files"
-msgstr "Показване на скритите файлове"
-
-#: src/View/directory_view_popup.ui:71
-msgid "Show Remote Thumbnails"
-msgstr "Покажи споделени картини."
-
-#: src/View/directory_view_popup.ui:75
-#, fuzzy
-msgid "Hide Local Thumbnails"
-msgstr "Покажи споделени картини."
-
-#: src/View/directory_view_popup.ui:82
-msgid "New Tab"
-msgstr "Нов подпрозорец"
-
-#: src/View/directory_view_popup.ui:102
-msgid "Bookmark"
-msgstr "Добавяне към отметките"
-
-#: src/View/directory_view_popup.ui:109
-msgid "Paste"
-msgstr "Поставяне"
-
-#: src/View/directory_view_popup.ui:115
-#, fuzzy
-msgid "Paste Link"
-msgstr "Поставяне"
-
-#: src/View/directory_view_popup.ui:122
-msgid "Cut"
-msgstr "Отрязване"
-
-#: src/View/directory_view_popup.ui:126
-msgid "Copy"
-msgstr "Преписване"
-
-#: src/View/directory_view_popup.ui:130
-#, fuzzy
-msgid "Copy as Link"
-msgstr "Поставяне"
-
-#: src/View/directory_view_popup.ui:134
-msgid "Paste into Folder"
-msgstr "Сложи в Папката"
-
-#: src/View/directory_view_popup.ui:138
-#, fuzzy
-msgid "Paste Link into Folder"
-msgstr "Сложи в Папката"
-
-#: src/View/directory_view_popup.ui:145
-msgid "Sort by"
-msgstr "Подреждане по"
-
-#: src/View/directory_view_popup.ui:148
-msgid "Name"
-msgstr "Име"
-
-#: src/View/directory_view_popup.ui:163
-msgid "Date"
-msgstr "Дата"
-
-#: src/View/directory_view_popup.ui:170
-msgid "Reversed Order"
-msgstr "Обратен ред"
-
-#: src/View/directory_view_popup.ui:174
-msgid "Folders Before Files"
-msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:133
 #: src/View/Widgets/LocationBar.vala:198
@@ -1004,7 +1002,7 @@ msgstr "Задай ново име на целта."
 msgid "Apply this action to all files"
 msgstr "Прилагане на това действие към всички файлове"
 
-#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:143
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:142
 msgid "_Skip"
 msgstr "_Пропускане"
 
@@ -1103,25 +1101,25 @@ msgstr "Първоначалното местоположение на „%s“ 
 msgid "The item cannot be restored from trash"
 msgstr "Обектът може да бъде изваден от кошчето."
 
-#: libcore/FileUtils.vala:442
+#: libcore/FileUtils.vala:443
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Не може да бъде преименувано на '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:531
+#: libcore/FileUtils.vala:532
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Днес в %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:537
+#: libcore/FileUtils.vala:538
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Вчера в %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:543
+#: libcore/FileUtils.vala:544
 #, c-format
 msgid "%%A at %s"
 msgstr ""
@@ -1135,123 +1133,131 @@ msgstr "Сървърът не успя да отговори за времеви
 msgid "Preparing"
 msgstr "Подготвяне"
 
-#: libcore/marlin-file-operations.c:141
+#: libcore/UndoManager.vala:310
+msgid "Original location could not be determined"
+msgstr "Първоначалното местоположение не може да бъде намерено"
+
+#: libcore/UndoManager.vala:311
+msgid "Open trash folder and restore manually"
+msgstr "Отвори кошчето и възстанови файловете ръчно."
+
+#: libcore/marlin-file-operations.c:140
 #, fuzzy
 msgid "_Cancel"
 msgstr "Отказ"
 
-#: libcore/marlin-file-operations.c:142
+#: libcore/marlin-file-operations.c:141
 #, fuzzy
 msgid "_Delete"
 msgstr "Изтрито:"
 
-#: libcore/marlin-file-operations.c:144
+#: libcore/marlin-file-operations.c:143
 msgid "S_kip All"
 msgstr "Пропус_кане на всички"
 
-#: libcore/marlin-file-operations.c:145
+#: libcore/marlin-file-operations.c:144
 msgid "_Retry"
 msgstr "По_вторен опит"
 
-#: libcore/marlin-file-operations.c:146
+#: libcore/marlin-file-operations.c:145
 msgid "Delete _All"
 msgstr "Изтриване на _всички"
 
-#: libcore/marlin-file-operations.c:147
+#: libcore/marlin-file-operations.c:146
 msgid "_Replace"
 msgstr "_Замяна"
 
-#: libcore/marlin-file-operations.c:148
+#: libcore/marlin-file-operations.c:147
 msgid "Replace _All"
 msgstr "Замяна на _всички"
 
-#: libcore/marlin-file-operations.c:149
+#: libcore/marlin-file-operations.c:148
 msgid "_Merge"
 msgstr "Сливане"
 
-#: libcore/marlin-file-operations.c:150
+#: libcore/marlin-file-operations.c:149
 msgid "Merge _All"
 msgstr "Сливане на всички"
 
-#: libcore/marlin-file-operations.c:151
+#: libcore/marlin-file-operations.c:150
 msgid "Copy _Anyway"
 msgstr "Копиране _въпреки всичко"
 
-#: libcore/marlin-file-operations.c:221
+#: libcore/marlin-file-operations.c:183
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d секунда"
 msgstr[1] "%'d секунди"
 
-#: libcore/marlin-file-operations.c:226 libcore/marlin-file-operations.c:237
+#: libcore/marlin-file-operations.c:192 libcore/marlin-file-operations.c:206
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d минута"
 msgstr[1] "%'d минути"
 
-#: libcore/marlin-file-operations.c:236
+#: libcore/marlin-file-operations.c:205
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d час"
 msgstr[1] "%'d часа"
 
-#: libcore/marlin-file-operations.c:244
+#: libcore/marlin-file-operations.c:217
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "приблизително %'d час"
 msgstr[1] "приблизително %'d часа"
 
-#: libcore/marlin-file-operations.c:320
+#: libcore/marlin-file-operations.c:293
 #, c-format
 msgid "Link to %s"
 msgstr "Връзка към %s"
 
-#: libcore/marlin-file-operations.c:324
+#: libcore/marlin-file-operations.c:297
 #, c-format
 msgid "Another link to %s"
 msgstr "Друга връзка към %s"
 
-#: libcore/marlin-file-operations.c:340
+#: libcore/marlin-file-operations.c:313
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d-ва връзка към %s"
 
-#: libcore/marlin-file-operations.c:344
+#: libcore/marlin-file-operations.c:317
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d-ра връзка към %s"
 
-#: libcore/marlin-file-operations.c:348
+#: libcore/marlin-file-operations.c:321
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d-та връзка към %s"
 
-#: libcore/marlin-file-operations.c:352
+#: libcore/marlin-file-operations.c:325
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d-та връзка към %s"
 
-#: libcore/marlin-file-operations.c:544
+#: libcore/marlin-file-operations.c:517
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:552
+#: libcore/marlin-file-operations.c:525
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1115
+#: libcore/marlin-file-operations.c:1087
 #, fuzzy, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "Наистина ли искате да изтриете завинаги \"%B\" от Кошчето?"
 
-#: libcore/marlin-file-operations.c:1119
+#: libcore/marlin-file-operations.c:1091
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1264,15 +1270,15 @@ msgstr[0] ""
 msgstr[1] ""
 "Искате ли наистина да изтриете завинаги %'d избраните обекти от Кошчето?"
 
-#: libcore/marlin-file-operations.c:1129 libcore/marlin-file-operations.c:1203
+#: libcore/marlin-file-operations.c:1101
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ако изтриете обекта, ще го загубите завинаги."
 
-#: libcore/marlin-file-operations.c:1152
+#: libcore/marlin-file-operations.c:1124
 msgid "Permanently delete all items from Trash?"
 msgstr "Изтриване на файловете от кошчето завинаги?"
 
-#: libcore/marlin-file-operations.c:1153
+#: libcore/marlin-file-operations.c:1125
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -1280,25 +1286,26 @@ msgstr ""
 "Всички файлове във всички кошчета, включително тези който са прикачени на "
 "външни устройства, ще бъдат изтрити перманентно."
 
-#: libcore/marlin-file-operations.c:1156
+#: libcore/marlin-file-operations.c:1128
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
 "Искате да изтриете перманентно всички файлове от Кошчето на тази файлова "
 "система?"
 
-#: libcore/marlin-file-operations.c:1157
+#: libcore/marlin-file-operations.c:1129
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 "Всички файлове в кошчето на тази файлова система ще бъдат изтрити завинаги."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1191
+#: libcore/marlin-file-operations.c:1163
 #, fuzzy, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Сигурни ли сте, че искате окончателно да изтриете „%B“?"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "Изтриване на файловете от кошчето завинаги?"
 
-#: libcore/marlin-file-operations.c:1194
+#: libcore/marlin-file-operations.c:1166
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1306,35 +1313,39 @@ msgid_plural ""
 msgstr[0] "Искате ли наистина да изтриете завинаги %'d избраният обект?"
 msgstr[1] "Искате ли наистина да изтриете завинаги %'d избраните обекти?"
 
-#: libcore/marlin-file-operations.c:1237
+#: libcore/marlin-file-operations.c:1175
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1209
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d файл остава за изтриване"
 msgstr[1] "%'d файла остават за изтриване"
 
-#: libcore/marlin-file-operations.c:1242
+#: libcore/marlin-file-operations.c:1214
 msgid "Deleting files"
 msgstr "Изтриване на файлове"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1257
+#: libcore/marlin-file-operations.c:1230
 #, fuzzy, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "%T остава"
 msgstr[1] "%T остават"
 
-#: libcore/marlin-file-operations.c:1326 libcore/marlin-file-operations.c:1366
-#: libcore/marlin-file-operations.c:1412 libcore/marlin-file-operations.c:1494
-#: libcore/marlin-file-operations.c:2188
+#: libcore/marlin-file-operations.c:1299 libcore/marlin-file-operations.c:1339
+#: libcore/marlin-file-operations.c:1385 libcore/marlin-file-operations.c:1467
+#: libcore/marlin-file-operations.c:2161
 msgid "Error while deleting."
 msgstr "Грешка при изтриване."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1332
+#: libcore/marlin-file-operations.c:1305
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1345,20 +1356,20 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1337 libcore/marlin-file-operations.c:2252
-#: libcore/marlin-file-operations.c:3329
+#: libcore/marlin-file-operations.c:1310 libcore/marlin-file-operations.c:2225
+#: libcore/marlin-file-operations.c:3303
 #, fuzzy, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr "Грешка при получаването на информация за файловете в папката „%B“."
 
-#: libcore/marlin-file-operations.c:1347 libcore/marlin-file-operations.c:3339
+#: libcore/marlin-file-operations.c:1320 libcore/marlin-file-operations.c:3313
 msgid "_Skip files"
 msgstr "Пропусни файловете"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1371
+#: libcore/marlin-file-operations.c:1344
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1368,75 +1379,75 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1376 libcore/marlin-file-operations.c:2297
-#: libcore/marlin-file-operations.c:3381
+#: libcore/marlin-file-operations.c:1349 libcore/marlin-file-operations.c:2270
+#: libcore/marlin-file-operations.c:3355
 #, fuzzy, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "Грешка при прочитането на папката „%B“."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1415
+#: libcore/marlin-file-operations.c:1388
 #, fuzzy, c-format
 msgid "Could not remove the folder %s."
 msgstr "Не може да се премахне папка %B."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1497
+#: libcore/marlin-file-operations.c:1470
 #, fuzzy, c-format
 msgid "There was an error deleting %s."
 msgstr "Грешка при изтриване на %B."
 
-#: libcore/marlin-file-operations.c:1582
+#: libcore/marlin-file-operations.c:1555
 msgid "Moving files to trash"
 msgstr "Изхвърляне в кошчето"
 
-#: libcore/marlin-file-operations.c:1584
+#: libcore/marlin-file-operations.c:1557
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d файл остава в Кошчето"
 msgstr[1] "%'d файла остават в Кошчето"
 
-#: libcore/marlin-file-operations.c:1682 libcore/marlin-file-operations.c:1685
-#: libcore/marlin-file-operations.c:1688
+#: libcore/marlin-file-operations.c:1655 libcore/marlin-file-operations.c:1658
+#: libcore/marlin-file-operations.c:1661
 msgid "Cannot move file to trash or delete it"
 msgstr "Файлът не може да бъде преместен или изтрит"
 
-#: libcore/marlin-file-operations.c:1683
+#: libcore/marlin-file-operations.c:1656
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr "Не е позволено да се трият файлове на система в режим само за четене."
 
-#: libcore/marlin-file-operations.c:1686
+#: libcore/marlin-file-operations.c:1659
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 "Не е позволено да се трият файлове в папки, за които нямате права за писане."
 
-#: libcore/marlin-file-operations.c:1689
+#: libcore/marlin-file-operations.c:1662
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr "Не е позволено да се трият папки, за които нямате права за писане."
 
-#: libcore/marlin-file-operations.c:1691
+#: libcore/marlin-file-operations.c:1664
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "Не е възможно преместването в кошчето. Да се изтрие ли напряко веднага?"
 
-#: libcore/marlin-file-operations.c:1692
+#: libcore/marlin-file-operations.c:1665
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 "Този файл не може да се премести в кошчето. Вижте по-долу за още сведения."
 
-#: libcore/marlin-file-operations.c:1696
+#: libcore/marlin-file-operations.c:1669
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
 "Този файл не може да се премести в кошчето.  Да се опита ли изтриването?"
 
-#: libcore/marlin-file-operations.c:1697
+#: libcore/marlin-file-operations.c:1670
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -1444,7 +1455,7 @@ msgstr ""
 "Този файл не може да се премести в кошчето. Също така не можете и да го "
 "изтриете."
 
-#: libcore/marlin-file-operations.c:1703
+#: libcore/marlin-file-operations.c:1676
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1452,15 +1463,15 @@ msgstr ""
 "\n"
 " Изтриването на файла го премахва завинаги"
 
-#: libcore/marlin-file-operations.c:1893
+#: libcore/marlin-file-operations.c:1866
 msgid "Trashing Files"
 msgstr "Изхвърляне на файлове"
 
-#: libcore/marlin-file-operations.c:1895
+#: libcore/marlin-file-operations.c:1868
 msgid "Deleting Files"
 msgstr "Изтриване на файлове"
 
-#: libcore/marlin-file-operations.c:2093
+#: libcore/marlin-file-operations.c:2066
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Не може да се монтира %s"
@@ -1469,7 +1480,7 @@ msgstr "Не може да се монтира %s"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2122
+#: libcore/marlin-file-operations.c:2095
 #, fuzzy, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1480,7 +1491,7 @@ msgstr[1] "Подготовка за копиране на %'d файла (%S)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2134
+#: libcore/marlin-file-operations.c:2107
 #, fuzzy, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1491,37 +1502,37 @@ msgstr[1] "Подготовка за преместване на %'d файла 
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2146
+#: libcore/marlin-file-operations.c:2119
 #, fuzzy, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "Подготовка за изтриване на %'d файл (%S)"
 msgstr[1] "Подготовка за изтриване на %'d файла (%S)"
 
-#: libcore/marlin-file-operations.c:2153
+#: libcore/marlin-file-operations.c:2126
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Подготовка за хвърляне в кошчето на %'d файл"
 msgstr[1] "Подготовка за хвърляне в кошчето на %'d файла"
 
-#: libcore/marlin-file-operations.c:2184 libcore/marlin-file-operations.c:3176
-#: libcore/marlin-file-operations.c:3316 libcore/marlin-file-operations.c:3368
+#: libcore/marlin-file-operations.c:2157 libcore/marlin-file-operations.c:3150
+#: libcore/marlin-file-operations.c:3290 libcore/marlin-file-operations.c:3342
 msgid "Error while copying."
 msgstr "Грешка при копиране."
 
-#: libcore/marlin-file-operations.c:2186 libcore/marlin-file-operations.c:3314
-#: libcore/marlin-file-operations.c:3366
+#: libcore/marlin-file-operations.c:2159 libcore/marlin-file-operations.c:3288
+#: libcore/marlin-file-operations.c:3340
 msgid "Error while moving."
 msgstr "Грешка при преместване."
 
-#: libcore/marlin-file-operations.c:2190
+#: libcore/marlin-file-operations.c:2163
 msgid "Error while moving files to trash."
 msgstr "Грешка при изхвърляне файлове е Кошчето"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2247
+#: libcore/marlin-file-operations.c:2220
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1532,7 +1543,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2292
+#: libcore/marlin-file-operations.c:2265
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1542,7 +1553,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2379
+#: libcore/marlin-file-operations.c:2352
 #, fuzzy, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1552,32 +1563,32 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2384
+#: libcore/marlin-file-operations.c:2357
 #, fuzzy, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "Грешка при получаването на информацията за „%B“."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2490 libcore/marlin-file-operations.c:2536
-#: libcore/marlin-file-operations.c:2574 libcore/marlin-file-operations.c:2614
+#: libcore/marlin-file-operations.c:2463 libcore/marlin-file-operations.c:2509
+#: libcore/marlin-file-operations.c:2547 libcore/marlin-file-operations.c:2587
 #, fuzzy, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "Грешка при копиране към \"%B\"."
 
-#: libcore/marlin-file-operations.c:2495
+#: libcore/marlin-file-operations.c:2468
 msgid "You do not have permissions to access the destination folder."
 msgstr "Нямате права за достъп до целевата папка."
 
-#: libcore/marlin-file-operations.c:2497
+#: libcore/marlin-file-operations.c:2470
 msgid "There was an error getting information about the destination."
 msgstr "Грешка при получаването на информация за целевото местоположение."
 
-#: libcore/marlin-file-operations.c:2537
+#: libcore/marlin-file-operations.c:2510
 msgid "The destination is not a folder."
 msgstr "Целта не е папка."
 
-#: libcore/marlin-file-operations.c:2576
+#: libcore/marlin-file-operations.c:2549
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1587,30 +1598,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2582
+#: libcore/marlin-file-operations.c:2555
 #, fuzzy, c-format
 msgid "There is %s available, but %s is required."
 msgstr "Налично място — %S, необходимо място — %S."
 
-#: libcore/marlin-file-operations.c:2616
+#: libcore/marlin-file-operations.c:2589
 msgid "The destination is read-only."
 msgstr "Целта е само за четене."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2688
+#: libcore/marlin-file-operations.c:2661
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "Преместване \"%B\" към \"%B\""
 
-#: libcore/marlin-file-operations.c:2689
+#: libcore/marlin-file-operations.c:2662
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "Копиране \"%B\" към \"%B\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2693
+#: libcore/marlin-file-operations.c:2666
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "Дублиране \"%B\""
@@ -1619,14 +1630,14 @@ msgstr "Дублиране \"%B\""
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2701
+#: libcore/marlin-file-operations.c:2674
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "Преместване %'d файл (от \"%B\") към\"%B\""
 msgstr[1] "Преместване %'d файла (от \"%B\") към\"%B\""
 
-#: libcore/marlin-file-operations.c:2704
+#: libcore/marlin-file-operations.c:2677
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1635,7 +1646,7 @@ msgstr[1] "Копиране на %'d файла (от „%B“) в „%B“"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2713
+#: libcore/marlin-file-operations.c:2686
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1646,21 +1657,21 @@ msgstr[1] "Дублиране на %'d файла (в \"%B\")"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2725
+#: libcore/marlin-file-operations.c:2698
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "Преместване на %'d файл в \"%B\""
 msgstr[1] "Преместване на %'d файла в \"%B\""
 
-#: libcore/marlin-file-operations.c:2728
+#: libcore/marlin-file-operations.c:2701
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "Копиране на %'d файл в \"%B\""
 msgstr[1] "Копиране на %'d файла в \"%B\""
 
-#: libcore/marlin-file-operations.c:2734
+#: libcore/marlin-file-operations.c:2707
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1668,7 +1679,7 @@ msgstr[0] "Дублиране на %'d файл"
 msgstr[1] "Дублиране на %'d файла"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2764
+#: libcore/marlin-file-operations.c:2737
 #, fuzzy, c-format
 msgid "%s of %s"
 msgstr "%S от %S"
@@ -1679,7 +1690,7 @@ msgstr "%S от %S"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2783
+#: libcore/marlin-file-operations.c:2757
 #, fuzzy, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1688,7 +1699,7 @@ msgstr[1] "%S от %S — %T остават (%S/сек)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3183
+#: libcore/marlin-file-operations.c:3157
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1699,14 +1710,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3188
+#: libcore/marlin-file-operations.c:3162
 #, fuzzy, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "Грешка при създаване на папката „%B“."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3324
+#: libcore/marlin-file-operations.c:3298
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1717,7 +1728,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3376
+#: libcore/marlin-file-operations.c:3350
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1728,91 +1739,91 @@ msgstr "Папката „%B“ не може да бъде копирана, п
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3429 libcore/marlin-file-operations.c:4162
-#: libcore/marlin-file-operations.c:4759
+#: libcore/marlin-file-operations.c:3403 libcore/marlin-file-operations.c:4136
+#: libcore/marlin-file-operations.c:4731
 #, fuzzy, c-format
 msgid "Error while moving \"%s\"."
 msgstr "Грешка при преместване \"%B\"."
 
-#: libcore/marlin-file-operations.c:3431
+#: libcore/marlin-file-operations.c:3405
 msgid "Could not remove the source folder."
 msgstr "Не може да се премахне папката източник."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3520 libcore/marlin-file-operations.c:3571
-#: libcore/marlin-file-operations.c:4166
+#: libcore/marlin-file-operations.c:3494 libcore/marlin-file-operations.c:3545
+#: libcore/marlin-file-operations.c:4140
 #, fuzzy, c-format
 msgid "Error while copying \"%s\"."
 msgstr "Грешка при копиране \"%B\"."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3525
+#: libcore/marlin-file-operations.c:3499
 #, fuzzy, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "Не може да се премахват файлове от вече съществуващата папка %F."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3576
+#: libcore/marlin-file-operations.c:3550
 #, fuzzy, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "Не може да се премахне вече съществуващия файл %F."
 
-#: libcore/marlin-file-operations.c:3895 libcore/marlin-file-operations.c:4596
+#: libcore/marlin-file-operations.c:3869 libcore/marlin-file-operations.c:4568
 msgid "You cannot move a folder into itself."
 msgstr "Не може да премествате папка върху самата нея."
 
-#: libcore/marlin-file-operations.c:3896 libcore/marlin-file-operations.c:4597
+#: libcore/marlin-file-operations.c:3870 libcore/marlin-file-operations.c:4569
 msgid "You cannot copy a folder into itself."
 msgstr "Не може да копирате папка върху самата нея."
 
-#: libcore/marlin-file-operations.c:3897 libcore/marlin-file-operations.c:4598
+#: libcore/marlin-file-operations.c:3871 libcore/marlin-file-operations.c:4570
 msgid "The destination folder is inside the source folder."
 msgstr "Целевата папка е вътре в папката източник."
 
-#: libcore/marlin-file-operations.c:3928
+#: libcore/marlin-file-operations.c:3902
 msgid "You cannot move a file over itself."
 msgstr "Не може да премествате файл върху самия него."
 
-#: libcore/marlin-file-operations.c:3929
+#: libcore/marlin-file-operations.c:3903
 msgid "You cannot copy a file over itself."
 msgstr "Не може да копирате файл върху самия него."
 
-#: libcore/marlin-file-operations.c:3930
+#: libcore/marlin-file-operations.c:3904
 msgid "The source file would be overwritten by the destination."
 msgstr "Източникът ще бъде презаписан от целта."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4172
+#: libcore/marlin-file-operations.c:4146
 #, fuzzy, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "Не може да се премахне вече съществуващ файл със същото име в %F."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4242
+#: libcore/marlin-file-operations.c:4216
 #, fuzzy, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "Не можете да копирате \"%B\" тук."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4247
+#: libcore/marlin-file-operations.c:4221
 #, fuzzy, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Възникна грешка при копирането на файл в %B."
 
-#: libcore/marlin-file-operations.c:4466
+#: libcore/marlin-file-operations.c:4440
 msgid "Copying Files"
 msgstr "Копиране на файлове"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4504
+#: libcore/marlin-file-operations.c:4476
 #, fuzzy, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "Подготовка за преместване към \"%B\""
 
-#: libcore/marlin-file-operations.c:4509
+#: libcore/marlin-file-operations.c:4481
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1820,23 +1831,23 @@ msgstr[0] "Подготовка за прместване на %'d файл"
 msgstr[1] "Подготовка за прместване на %'d файла"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4763
+#: libcore/marlin-file-operations.c:4735
 #, fuzzy, c-format
 msgid "There was an error moving the file into %s."
 msgstr "Появи се грешка про преместване на файл в %F."
 
-#: libcore/marlin-file-operations.c:5022
+#: libcore/marlin-file-operations.c:4994
 msgid "Moving Files"
 msgstr "Преместване на файлове"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:5063
+#: libcore/marlin-file-operations.c:5033
 #, fuzzy, c-format
 msgid "Creating links in \"%s\""
 msgstr "Създаване на връзки в \"%B\""
 
-#: libcore/marlin-file-operations.c:5068
+#: libcore/marlin-file-operations.c:5038
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1844,446 +1855,66 @@ msgstr[0] "Създаване на връзка към %'d файл"
 msgstr[1] "Създаване на връзки към %'d файла"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5211
+#: libcore/marlin-file-operations.c:5181
 #, fuzzy, c-format
 msgid "Error while creating link to %s."
 msgstr "Грешка при съдаване на връкза към %B."
 
-#: libcore/marlin-file-operations.c:5214
+#: libcore/marlin-file-operations.c:5184
 msgid "Symbolic links only supported for local files"
 msgstr "Символичните връзки се поддържат само за локални файлове"
 
-#: libcore/marlin-file-operations.c:5217
+#: libcore/marlin-file-operations.c:5187
 msgid "The target doesn't support symbolic links."
 msgstr "Целта не поддържа символични връзки."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5222
+#: libcore/marlin-file-operations.c:5192
 #, fuzzy, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "Появи се грешка при създаване на символична връзка в %F."
 
-#: libcore/marlin-file-operations.c:5553
+#: libcore/marlin-file-operations.c:5519
 msgid "Setting permissions"
 msgstr "Задаване на права"
 
-#: libcore/marlin-file-operations.c:5745
+#: libcore/marlin-file-operations.c:5709
 msgid "Cannot copy into trash."
 msgstr "Не можете да копирате в кошчето."
 
-#: libcore/marlin-file-operations.c:5746 libcore/marlin-file-operations.c:5754
+#: libcore/marlin-file-operations.c:5710 libcore/marlin-file-operations.c:5718
 msgid "It is not permitted to copy files into the trash"
 msgstr "Не е разрешено да копирате файлове в кошчето"
 
-#: libcore/marlin-file-operations.c:5894
+#: libcore/marlin-file-operations.c:5858
 msgid "untitled folder"
 msgstr "папка без име"
 
-#: libcore/marlin-file-operations.c:5902
+#: libcore/marlin-file-operations.c:5866
 msgid "new file"
 msgstr "нов файл"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6075
+#: libcore/marlin-file-operations.c:6038
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "Грешка при създаван на папка %B."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6078
+#: libcore/marlin-file-operations.c:6041
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "Грешка при създаван на файл %B."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6084
+#: libcore/marlin-file-operations.c:6047
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Появи се грешка при създаване на папка в %F."
 
-#: libcore/marlin-file-operations.c:6417
+#: libcore/marlin-file-operations.c:6374
 msgid "Emptying Trash"
 msgstr "Опразване на Кошчето"
-
-#: libcore/marlin-undostack-manager.c:653
-msgid "Original location could not be determined"
-msgstr "Първоначалното местоположение не може да бъде намерено"
-
-#: libcore/marlin-undostack-manager.c:654
-msgid "Open trash folder and restore manually"
-msgstr "Отвори кошчето и възстанови файловете ръчно."
-
-#: libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Изтрий %d копирани неща"
-
-#: libcore/marlin-undostack-manager.c:1205
-#: libcore/marlin-undostack-manager.c:1215
-#: libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Изтрий «%s»"
-
-#: libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Изтрий %d повтарящите се неща"
-
-#: libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Премести %d неща обратно в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Премести '%s' обратно в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1236
-#: libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Преименуване на „%s“ на „%s“"
-
-#: libcore/marlin-undostack-manager.c:1255
-#: libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Върни %d неща от кошчето"
-
-#: libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Възстановяване на „%s“ като „%s“"
-
-#: libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Премести %d неща обратно в кошчето"
-
-#: libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Преместване на %s обратно в кошчето"
-
-#: libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Изтрий връзки към %d неща"
-
-#: libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Изтрий връзката към «%s»"
-
-#: libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Възстанови първоначалните права за достъп до обектите в «%s»"
-
-#: libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Възстанови първоначалните права за достъп до «%s»"
-
-#: libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Възстанови групата на «%s» да е «%s»"
-
-#: libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Възстанови собственика на «%s» да е «%s»"
-
-#: libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Копирай %d неща в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Копирай '%s' в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Повторен на %d неща в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Повторен '%s' в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Премести %d неща в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Премести '%s' в '%s'"
-
-#: libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Създай нов файл '%s' от шаблон "
-
-#: libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Създай празен файл «%s»"
-
-#: libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Създай нова папка «%s»"
-
-#: libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Премести %d неща в кошчето"
-
-#: libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Премести «%s» в кошчето"
-
-#: libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Възстанови «%s» от кошчето"
-
-#: libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Създай връзки към %d неща"
-
-#: libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Създай връзка към «%s»"
-
-#: libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Задай правата за достъп до обектите в «%s»"
-
-#: libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Задай права за достъп на «%s»"
-
-#: libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Задай групата на «%s» да е «%s»"
-
-#: libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Задай собственика на «%s» да е «%s»"
-
-#: libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Отмени копирането на %d нещо"
-msgstr[1] "_Отмени копирането на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Отмени повторение на %d нещо"
-msgstr[1] "_Отмени повторение на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Отмени преместване на %d нещо"
-msgstr[1] "_Отмени преместване на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Отмени преименуване на %d нещо"
-msgstr[1] "_Отмени преименуване на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Отмени създаването на празен файл"
-
-#: libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Отмени създаването на файл от шаблон"
-
-#: libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Отмени създаването на %d папка"
-msgstr[1] "_Отмени създаването на %d папки"
-
-#: libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Отмени преместването в кошчето на %d нещо"
-msgstr[1] "_Отмени преместването в кошчето на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Отмени връщането от кошчето на %d нещо"
-msgstr[1] "_Отмени връщането от кошчето на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Отмени създаването на връзка към %d нещо"
-msgstr[1] "_Отмени създаването на връзка към %d неща"
-
-#: libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Отмени изтриването на %d нещо"
-msgstr[1] "_Отмени изтриването на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Отмени повторителната смяна на позволенията на %d нещо"
-msgstr[1] "Отмени повторителната смяна на позволенията на %d нещо"
-
-#: libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Отмени смяната на позволенията на %d нещо"
-msgstr[1] "Отмени смяната на позволенията на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Отмени смяната на групата на %d нещо"
-msgstr[1] "Отмени смяната на групата на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Отмени смяната на собственик на %d нещо"
-msgstr[1] "Отмени смяната на собственик на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Повтори копирането на %d нещо"
-msgstr[1] "_Повтори копирането на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Повтори повтарящите се на %d нещо"
-msgstr[1] "_Повтори повтарящите се на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Повтори преместването на %d нещо"
-msgstr[1] "_Повтори преместването на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Повтори преименуването на %d нещо"
-msgstr[1] "_Повтори преименуването на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Повтори създаването на празен файл"
-
-#: libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Повтори създаването на файл от шаблон"
-
-#: libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Повтори създаването на %d папка"
-msgstr[1] "_Повтори създаването на %d папки"
-
-#: libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Повтори преместването в кошчето на %d папка"
-msgstr[1] "_Повтори преместването в кошчето на %d папки"
-
-#: libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Повтори връщането от кошчето на %d нещо"
-msgstr[1] "_Повтори връщането от кошчето на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Повтори създаването на връзка към %d нещо"
-msgstr[1] "_Повтори създаването на връзка към %d неща"
-
-#: libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Повтори изтриването на %d нещо"
-msgstr[1] "_Повтори изтриването на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Повтори многократната смяна на позволенията на %d нещо"
-msgstr[1] "Повтори многократната смяна на позволенията на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Повтори смяна на позволенията на %d нещо"
-msgstr[1] "Повтори смяна на позволенията на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Повтори смяна на групата на %d нещо"
-msgstr[1] "Повтори смяна на групата на %d неща"
-
-#: libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Повтори смяна на собственика на %d нещо"
-msgstr[1] "Повтори смяна на собственика на %d неща"
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
@@ -2391,6 +2022,257 @@ msgstr "Възстанови всички"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " избрани"
+
+#~ msgid "Delete %d copied items"
+#~ msgstr "Изтрий %d копирани неща"
+
+#~ msgid "Delete '%s'"
+#~ msgstr "Изтрий «%s»"
+
+#~ msgid "Delete %d duplicated items"
+#~ msgstr "Изтрий %d повтарящите се неща"
+
+#~ msgid "Move %d items back to '%s'"
+#~ msgstr "Премести %d неща обратно в '%s'"
+
+#~ msgid "Move '%s' back to '%s'"
+#~ msgstr "Премести '%s' обратно в '%s'"
+
+#~ msgid "Rename '%s' as '%s'"
+#~ msgstr "Преименуване на „%s“ на „%s“"
+
+#~ msgid "Restore %d items from trash"
+#~ msgstr "Върни %d неща от кошчето"
+
+#~ msgid "Restore '%s' to '%s'"
+#~ msgstr "Възстановяване на „%s“ като „%s“"
+
+#~ msgid "Move %d items back to trash"
+#~ msgstr "Премести %d неща обратно в кошчето"
+
+#~ msgid "Move '%s' back to trash"
+#~ msgstr "Преместване на %s обратно в кошчето"
+
+#~ msgid "Delete links to %d items"
+#~ msgstr "Изтрий връзки към %d неща"
+
+#~ msgid "Delete link to '%s'"
+#~ msgstr "Изтрий връзката към «%s»"
+
+#~ msgid "Restore original permissions of items enclosed in '%s'"
+#~ msgstr "Възстанови първоначалните права за достъп до обектите в «%s»"
+
+#~ msgid "Restore original permissions of '%s'"
+#~ msgstr "Възстанови първоначалните права за достъп до «%s»"
+
+#~ msgid "Restore group of '%s' to '%s'"
+#~ msgstr "Възстанови групата на «%s» да е «%s»"
+
+#~ msgid "Restore owner of '%s' to '%s'"
+#~ msgstr "Възстанови собственика на «%s» да е «%s»"
+
+#~ msgid "Copy %d items to '%s'"
+#~ msgstr "Копирай %d неща в '%s'"
+
+#~ msgid "Copy '%s' to '%s'"
+#~ msgstr "Копирай '%s' в '%s'"
+
+#~ msgid "Duplicate of %d items in '%s'"
+#~ msgstr "Повторен на %d неща в '%s'"
+
+#~ msgid "Duplicate '%s' in '%s'"
+#~ msgstr "Повторен '%s' в '%s'"
+
+#~ msgid "Move %d items to '%s'"
+#~ msgstr "Премести %d неща в '%s'"
+
+#~ msgid "Move '%s' to '%s'"
+#~ msgstr "Премести '%s' в '%s'"
+
+#~ msgid "Create new file '%s' from template "
+#~ msgstr "Създай нов файл '%s' от шаблон "
+
+#~ msgid "Create an empty file '%s'"
+#~ msgstr "Създай празен файл «%s»"
+
+#~ msgid "Create a new folder '%s'"
+#~ msgstr "Създай нова папка «%s»"
+
+#~ msgid "Move %d items to trash"
+#~ msgstr "Премести %d неща в кошчето"
+
+#~ msgid "Move '%s' to trash"
+#~ msgstr "Премести «%s» в кошчето"
+
+#~ msgid "Restore '%s' from trash"
+#~ msgstr "Възстанови «%s» от кошчето"
+
+#~ msgid "Create links to %d items"
+#~ msgstr "Създай връзки към %d неща"
+
+#~ msgid "Create link to '%s'"
+#~ msgstr "Създай връзка към «%s»"
+
+#~ msgid "Set permissions of items enclosed in '%s'"
+#~ msgstr "Задай правата за достъп до обектите в «%s»"
+
+#~ msgid "Set permissions of '%s'"
+#~ msgstr "Задай права за достъп на «%s»"
+
+#~ msgid "Set group of '%s' to '%s'"
+#~ msgstr "Задай групата на «%s» да е «%s»"
+
+#~ msgid "Set owner of '%s' to '%s'"
+#~ msgstr "Задай собственика на «%s» да е «%s»"
+
+#~ msgid "_Undo copy of %d item"
+#~ msgid_plural "_Undo copy of %d items"
+#~ msgstr[0] "_Отмени копирането на %d нещо"
+#~ msgstr[1] "_Отмени копирането на %d неща"
+
+#~ msgid "_Undo duplicate of %d item"
+#~ msgid_plural "_Undo duplicate of %d items"
+#~ msgstr[0] "_Отмени повторение на %d нещо"
+#~ msgstr[1] "_Отмени повторение на %d неща"
+
+#~ msgid "_Undo move of %d item"
+#~ msgid_plural "_Undo move of %d items"
+#~ msgstr[0] "_Отмени преместване на %d нещо"
+#~ msgstr[1] "_Отмени преместване на %d неща"
+
+#~ msgid "_Undo rename of %d item"
+#~ msgid_plural "_Undo rename of %d items"
+#~ msgstr[0] "_Отмени преименуване на %d нещо"
+#~ msgstr[1] "_Отмени преименуване на %d неща"
+
+#~ msgid "_Undo creation of an empty file"
+#~ msgstr "_Отмени създаването на празен файл"
+
+#~ msgid "_Undo creation of a file from template"
+#~ msgstr "_Отмени създаването на файл от шаблон"
+
+#~ msgid "_Undo creation of %d folder"
+#~ msgid_plural "_Undo creation of %d folders"
+#~ msgstr[0] "_Отмени създаването на %d папка"
+#~ msgstr[1] "_Отмени създаването на %d папки"
+
+#~ msgid "_Undo move to trash of %d item"
+#~ msgid_plural "_Undo move to trash of %d items"
+#~ msgstr[0] "_Отмени преместването в кошчето на %d нещо"
+#~ msgstr[1] "_Отмени преместването в кошчето на %d неща"
+
+#~ msgid "_Undo restore from trash of %d item"
+#~ msgid_plural "_Undo restore from trash of %d items"
+#~ msgstr[0] "_Отмени връщането от кошчето на %d нещо"
+#~ msgstr[1] "_Отмени връщането от кошчето на %d неща"
+
+#~ msgid "_Undo create link to %d item"
+#~ msgid_plural "_Undo create link to %d items"
+#~ msgstr[0] "_Отмени създаването на връзка към %d нещо"
+#~ msgstr[1] "_Отмени създаването на връзка към %d неща"
+
+#~ msgid "_Undo delete of %d item"
+#~ msgid_plural "_Undo delete of %d items"
+#~ msgstr[0] "_Отмени изтриването на %d нещо"
+#~ msgstr[1] "_Отмени изтриването на %d неща"
+
+#~ msgid "Undo recursive change permissions of %d item"
+#~ msgid_plural "Undo recursive change permissions of %d items"
+#~ msgstr[0] "Отмени повторителната смяна на позволенията на %d нещо"
+#~ msgstr[1] "Отмени повторителната смяна на позволенията на %d нещо"
+
+#~ msgid "Undo change permissions of %d item"
+#~ msgid_plural "Undo change permissions of %d items"
+#~ msgstr[0] "Отмени смяната на позволенията на %d нещо"
+#~ msgstr[1] "Отмени смяната на позволенията на %d неща"
+
+#~ msgid "Undo change group of %d item"
+#~ msgid_plural "Undo change group of %d items"
+#~ msgstr[0] "Отмени смяната на групата на %d нещо"
+#~ msgstr[1] "Отмени смяната на групата на %d неща"
+
+#~ msgid "Undo change owner of %d item"
+#~ msgid_plural "Undo change owner of %d items"
+#~ msgstr[0] "Отмени смяната на собственик на %d нещо"
+#~ msgstr[1] "Отмени смяната на собственик на %d неща"
+
+#~ msgid "_Redo copy of %d item"
+#~ msgid_plural "_Redo copy of %d items"
+#~ msgstr[0] "_Повтори копирането на %d нещо"
+#~ msgstr[1] "_Повтори копирането на %d неща"
+
+#~ msgid "_Redo duplicate of %d item"
+#~ msgid_plural "_Redo duplicate of %d items"
+#~ msgstr[0] "_Повтори повтарящите се на %d нещо"
+#~ msgstr[1] "_Повтори повтарящите се на %d неща"
+
+#~ msgid "_Redo move of %d item"
+#~ msgid_plural "_Redo move of %d items"
+#~ msgstr[0] "_Повтори преместването на %d нещо"
+#~ msgstr[1] "_Повтори преместването на %d неща"
+
+#~ msgid "_Redo rename of %d item"
+#~ msgid_plural "_Redo rename of %d items"
+#~ msgstr[0] "_Повтори преименуването на %d нещо"
+#~ msgstr[1] "_Повтори преименуването на %d неща"
+
+#~ msgid "_Redo creation of an empty file"
+#~ msgstr "_Повтори създаването на празен файл"
+
+#~ msgid "_Redo creation of a file from template"
+#~ msgstr "_Повтори създаването на файл от шаблон"
+
+#~ msgid "_Redo creation of %d folder"
+#~ msgid_plural "_Redo creation of %d folders"
+#~ msgstr[0] "_Повтори създаването на %d папка"
+#~ msgstr[1] "_Повтори създаването на %d папки"
+
+#~ msgid "_Redo move to trash of %d item"
+#~ msgid_plural "_Redo move to trash of %d items"
+#~ msgstr[0] "_Повтори преместването в кошчето на %d папка"
+#~ msgstr[1] "_Повтори преместването в кошчето на %d папки"
+
+#~ msgid "_Redo restore from trash of %d item"
+#~ msgid_plural "_Redo restore from trash of %d items"
+#~ msgstr[0] "_Повтори връщането от кошчето на %d нещо"
+#~ msgstr[1] "_Повтори връщането от кошчето на %d неща"
+
+#~ msgid "_Redo create link to %d item"
+#~ msgid_plural "_Redo create link to %d items"
+#~ msgstr[0] "_Повтори създаването на връзка към %d нещо"
+#~ msgstr[1] "_Повтори създаването на връзка към %d неща"
+
+#~ msgid "_Redo delete of %d item"
+#~ msgid_plural "_Redo delete of %d items"
+#~ msgstr[0] "_Повтори изтриването на %d нещо"
+#~ msgstr[1] "_Повтори изтриването на %d неща"
+
+#~ msgid "Redo recursive change permissions of %d item"
+#~ msgid_plural "Redo recursive change permissions of %d items"
+#~ msgstr[0] "Повтори многократната смяна на позволенията на %d нещо"
+#~ msgstr[1] "Повтори многократната смяна на позволенията на %d неща"
+
+#~ msgid "Redo change permissions of %d item"
+#~ msgid_plural "Redo change permissions of %d items"
+#~ msgstr[0] "Повтори смяна на позволенията на %d нещо"
+#~ msgstr[1] "Повтори смяна на позволенията на %d неща"
+
+#~ msgid "Redo change group of %d item"
+#~ msgid_plural "Redo change group of %d items"
+#~ msgstr[0] "Повтори смяна на групата на %d нещо"
+#~ msgstr[1] "Повтори смяна на групата на %d неща"
+
+#~ msgid "Redo change owner of %d item"
+#~ msgid_plural "Redo change owner of %d items"
+#~ msgstr[0] "Повтори смяна на собственика на %d нещо"
+#~ msgstr[1] "Повтори смяна на собственика на %d неща"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "Сигурни ли сте, че искате окончателно да изтриете „%B“?"
+
+#~ msgid "Invalid"
+#~ msgstr "Невярно"
 
 #~ msgid "Unable to eject %V"
 #~ msgstr "Не може да се извади %V"

@@ -94,6 +94,10 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 
         try {
             var key = directory.location;
+            if (key.get_path () == null) { //e.g. for network://
+                return;
+            }
+
             var gitdir = Ggit.Repository.discover (key);
             if (gitdir != null) {
                 repo_uri = gitdir.get_uri ();

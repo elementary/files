@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-15 17:59+0000\n"
+"POT-Creation-Date: 2020-01-22 21:42+0000\n"
 "PO-Revision-Date: 2019-09-23 16:23+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
@@ -27,7 +27,7 @@ msgstr "프로그램의 버전을 보입니다"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "각 탭에서 URI를 엽니다"
 
-#: src/Application.vala:128 src/View/directory_view_popup.ui:87
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "새 창"
 
@@ -118,8 +118,8 @@ msgstr "사용:"
 msgid "Set as default"
 msgstr "기본값으로 설정"
 
-#: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:81
-#: src/View/directory_view_popup.ui:95
+#: src/Dialogs/PropertiesWindow.vala:123
+#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "속성"
 
@@ -197,7 +197,7 @@ msgid "Original Location:"
 msgstr "원본 위치:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:1929
 msgid "Other Application…"
 msgstr "기타 애플리케이션…"
 
@@ -295,11 +295,11 @@ msgstr "(관리자 권한으로)"
 msgid "Filename"
 msgstr "파일 이름"
 
-#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:153
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
 msgid "Size"
 msgstr "크기"
 
-#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:158
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
 msgid "Type"
 msgstr "종류"
 
@@ -350,57 +350,157 @@ msgstr "이 파일을 놓을 수 없음"
 msgid "Invalid file name provided"
 msgstr "잘못된 파일 이름이 사용됨"
 
-#: src/View/AbstractDirectoryView.vala:2058
-msgid "Invalid"
-msgstr "잘못됨"
+#: src/View/AbstractDirectoryView.vala:1848
+msgid "New Tab"
+msgstr "새 탭"
 
-#: src/View/AbstractDirectoryView.vala:2064
+#: src/View/AbstractDirectoryView.vala:1865
 msgid "Run"
 msgstr "실행"
 
-#: src/View/AbstractDirectoryView.vala:2068
+#: src/View/AbstractDirectoryView.vala:1872
 #, c-format
 msgid "Open in %s"
 msgstr "%s에서 열기"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:1941
 msgid "Open in"
 msgstr "열기"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:1943
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "다른 프로그램으로 열기"
 
-#: src/View/AbstractDirectoryView.vala:2174
-msgid "Templates"
-msgstr "템플릿"
+#: src/View/AbstractDirectoryView.vala:1949
+msgid "Paste"
+msgstr "붙여 넣기"
 
-#: src/View/AbstractDirectoryView.vala:2421
+#: src/View/AbstractDirectoryView.vala:1954
+msgid "Bookmark"
+msgstr "책갈피"
+
+#: src/View/AbstractDirectoryView.vala:1969
+msgid "Cut"
+msgstr "잘라내기"
+
+#: src/View/AbstractDirectoryView.vala:1976
+msgid "Copy"
+msgstr "복사"
+
+#: src/View/AbstractDirectoryView.vala:1983
+msgid "Move to Trash"
+msgstr "휴지통으로"
+
+#: src/View/AbstractDirectoryView.vala:1988
+msgid "Delete permanently"
+msgstr "완전히 지우기"
+
+#: src/View/AbstractDirectoryView.vala:1993
+msgid "Restore from Trash"
+msgstr "휴지통에서 복구 시키기"
+
+#: src/View/AbstractDirectoryView.vala:2004
+msgid "Open Parent Folder"
+msgstr "상위 폴더 열기"
+
+#: src/View/AbstractDirectoryView.vala:2007
+msgid "Remove from History"
+msgstr "기록에서 지우기"
+
+#: src/View/AbstractDirectoryView.vala:2023
+#, fuzzy
+#| msgid "Rename"
+msgid "Rename…"
+msgstr "이름 바꾸기"
+
+#: src/View/AbstractDirectoryView.vala:2030
+msgid "Copy as Link"
+msgstr "링크 복사하기"
+
+#: src/View/AbstractDirectoryView.vala:2046
+msgid "Paste Link into Folder"
+msgstr "링크를 폴더에 복사하기"
+
+#: src/View/AbstractDirectoryView.vala:2048
+msgid "Paste into Folder"
+msgstr "폴더로 복사하기"
+
+#: src/View/AbstractDirectoryView.vala:2074
+msgid "Show Hidden Files"
+msgstr "숨긴 파일 보이기"
+
+#: src/View/AbstractDirectoryView.vala:2077
+msgid "Show Remote Thumbnails"
+msgstr "원격 썸네일 보이기"
+
+#: src/View/AbstractDirectoryView.vala:2080
+#, fuzzy
+#| msgid "Hide Local Thumbnails"
+msgid "Hide Thumbnails"
+msgstr "로컬 썸네일 감추기"
+
+#: src/View/AbstractDirectoryView.vala:2100
+msgid "Paste Link"
+msgstr "링크 붙여 넣기"
+
+#: src/View/AbstractDirectoryView.vala:2152
+msgid "Name"
+msgstr "이름"
+
+#: src/View/AbstractDirectoryView.vala:2167
+msgid "Date"
+msgstr "날짜"
+
+#: src/View/AbstractDirectoryView.vala:2172
+msgid "Reversed Order"
+msgstr "거꾸로"
+
+#: src/View/AbstractDirectoryView.vala:2175
+msgid "Folders Before Files"
+msgstr "파일 이전 폴더"
+
+#: src/View/AbstractDirectoryView.vala:2187
+msgid "Sort by"
+msgstr "정렬 기준"
+
+#: src/View/AbstractDirectoryView.vala:2195
+msgid "Folder"
+msgstr "폴더"
+
+#: src/View/AbstractDirectoryView.vala:2201
+msgid "Empty File"
+msgstr "파일"
+
+#: src/View/AbstractDirectoryView.vala:2251
+msgid "New"
+msgstr "새로 만들기"
+
+#: src/View/AbstractDirectoryView.vala:2488
 #, c-format
 msgid "Untitled %s"
 msgstr "이름 없는 %s"
 
-#: src/View/AbstractDirectoryView.vala:2782
-#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:2849
+#: src/View/AbstractDirectoryView.vala:3044
 msgid "Cannot remove files from here"
 msgstr "이곳의 파일을 제거할 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:2783
-#: src/View/AbstractDirectoryView.vala:2962
-#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "You do not have permission to change this location"
 msgstr "이 위치를 바꿀 수 있는 권한이 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:2937
+#: src/View/AbstractDirectoryView.vala:3004
 msgid "Cannot copy files that are in the trash"
 msgstr "휴지통에 있는 파일은 복사할 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:2938
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cutting the selection instead"
 msgstr "대신 선택한 항목을 잘라냅니다"
 
-#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3028
 msgid "Cannot paste files here"
 msgstr "이곳에 파일을 붙여 넣을 수 없습니다"
 
@@ -531,7 +631,7 @@ msgstr "볼륨 %s의 마운트 중에 오류가 생겼습니다"
 msgid "Unable to start %s"
 msgstr "'%s'을(를) 시작할 수 없습니다"
 
-#: src/View/Sidebar.vala:1646 libcore/marlin-file-operations.c:1168
+#: src/View/Sidebar.vala:1646 libcore/marlin-file-operations.c:1140
 msgid "Empty _Trash"
 msgstr "휴지통 비우기(_T)"
 
@@ -583,7 +683,7 @@ msgstr "새 창에서 열기(_W)"
 msgid "Remove"
 msgstr "제거"
 
-#: src/View/PopupMenuBuilder.vala:65 src/View/directory_view_popup.ui:30
+#: src/View/PopupMenuBuilder.vala:65
 msgid "Rename"
 msgstr "이름 바꾸기"
 
@@ -598,106 +698,6 @@ msgstr "마운트 해제(_U)"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "꺼내기(_E)"
-
-#: src/View/directory_view_popup.ui:5
-msgid "Restore from Trash"
-msgstr "휴지통에서 복구 시키기"
-
-#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
-msgid "Delete permanently"
-msgstr "완전히 지우기"
-
-#: src/View/directory_view_popup.ui:16
-msgid "Open Parent Folder"
-msgstr "상위 폴더 열기"
-
-#: src/View/directory_view_popup.ui:23
-msgid "Remove from History"
-msgstr "기록에서 지우기"
-
-#: src/View/directory_view_popup.ui:37
-msgid "Move to Trash"
-msgstr "휴지통으로"
-
-#: src/View/directory_view_popup.ui:51
-msgid "New"
-msgstr "새로 만들기"
-
-#: src/View/directory_view_popup.ui:53
-msgid "Folder"
-msgstr "폴더"
-
-#: src/View/directory_view_popup.ui:58
-msgid "Empty File"
-msgstr "파일"
-
-#: src/View/directory_view_popup.ui:67
-msgid "Show Hidden Files"
-msgstr "숨긴 파일 보이기"
-
-#: src/View/directory_view_popup.ui:71
-msgid "Show Remote Thumbnails"
-msgstr "원격 썸네일 보이기"
-
-#: src/View/directory_view_popup.ui:75
-msgid "Hide Local Thumbnails"
-msgstr "로컬 썸네일 감추기"
-
-#: src/View/directory_view_popup.ui:82
-msgid "New Tab"
-msgstr "새 탭"
-
-#: src/View/directory_view_popup.ui:102
-msgid "Bookmark"
-msgstr "책갈피"
-
-#: src/View/directory_view_popup.ui:109
-msgid "Paste"
-msgstr "붙여 넣기"
-
-#: src/View/directory_view_popup.ui:115
-msgid "Paste Link"
-msgstr "링크 붙여 넣기"
-
-#: src/View/directory_view_popup.ui:122
-msgid "Cut"
-msgstr "잘라내기"
-
-#: src/View/directory_view_popup.ui:126
-msgid "Copy"
-msgstr "복사"
-
-#: src/View/directory_view_popup.ui:130
-msgid "Copy as Link"
-msgstr "링크 복사하기"
-
-#: src/View/directory_view_popup.ui:134
-msgid "Paste into Folder"
-msgstr "폴더로 복사하기"
-
-#: src/View/directory_view_popup.ui:138
-msgid "Paste Link into Folder"
-msgstr "링크를 폴더에 복사하기"
-
-#: src/View/directory_view_popup.ui:145
-msgid "Sort by"
-msgstr "정렬 기준"
-
-#: src/View/directory_view_popup.ui:148
-msgid "Name"
-msgstr "이름"
-
-#: src/View/directory_view_popup.ui:163
-msgid "Date"
-msgstr "날짜"
-
-#: src/View/directory_view_popup.ui:170
-msgid "Reversed Order"
-msgstr "거꾸로"
-
-#: src/View/directory_view_popup.ui:174
-msgid "Folders Before Files"
-msgstr "파일 이전 폴더"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:133
 #: src/View/Widgets/LocationBar.vala:198
@@ -968,7 +968,7 @@ msgstr "대상의 새 이름 선택(_S)"
 msgid "Apply this action to all files"
 msgstr "모든 파일에 이 동작 적용"
 
-#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:143
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:142
 msgid "_Skip"
 msgstr "건너 뛰기(_S)"
 
@@ -1067,25 +1067,25 @@ msgstr "\"%s\"의 원래 위치를 알 수 없습니다 "
 msgid "The item cannot be restored from trash"
 msgstr "항목을 휴지통에서 되살릴 수 없습니다"
 
-#: libcore/FileUtils.vala:442
+#: libcore/FileUtils.vala:443
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s'로 이름을 바꿀 수 없습니다"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:531
+#: libcore/FileUtils.vala:532
 #, c-format
 msgid "Today at %s"
 msgstr "오늘 %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:537
+#: libcore/FileUtils.vala:538
 #, c-format
 msgid "Yesterday at %s"
 msgstr "어제 %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:543
+#: libcore/FileUtils.vala:544
 #, fuzzy, c-format
 msgid "%%A at %s"
 msgstr "%A %-H:%M에"
@@ -1099,117 +1099,125 @@ msgstr "서버가 제한 시간 안에 응답하지 않았습니다"
 msgid "Preparing"
 msgstr "대기 중"
 
-#: libcore/marlin-file-operations.c:141
+#: libcore/UndoManager.vala:310
+msgid "Original location could not be determined"
+msgstr "원래 위치를 확인할 수 없습니다"
+
+#: libcore/UndoManager.vala:311
+msgid "Open trash folder and restore manually"
+msgstr "휴지통을 열어 수동으로 복구하기"
+
+#: libcore/marlin-file-operations.c:140
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: libcore/marlin-file-operations.c:142
+#: libcore/marlin-file-operations.c:141
 msgid "_Delete"
 msgstr "지우기(_D)"
 
-#: libcore/marlin-file-operations.c:144
+#: libcore/marlin-file-operations.c:143
 msgid "S_kip All"
 msgstr "모두 건너 뛰기(_K)"
 
-#: libcore/marlin-file-operations.c:145
+#: libcore/marlin-file-operations.c:144
 msgid "_Retry"
 msgstr "다시 시도(_R)"
 
-#: libcore/marlin-file-operations.c:146
+#: libcore/marlin-file-operations.c:145
 msgid "Delete _All"
 msgstr "모두 지우기(_A)"
 
-#: libcore/marlin-file-operations.c:147
+#: libcore/marlin-file-operations.c:146
 msgid "_Replace"
 msgstr "바꾸기(_R)"
 
-#: libcore/marlin-file-operations.c:148
+#: libcore/marlin-file-operations.c:147
 msgid "Replace _All"
 msgstr "모두 바꾸기(_A)"
 
-#: libcore/marlin-file-operations.c:149
+#: libcore/marlin-file-operations.c:148
 msgid "_Merge"
 msgstr "합치기(_M)"
 
-#: libcore/marlin-file-operations.c:150
+#: libcore/marlin-file-operations.c:149
 msgid "Merge _All"
 msgstr "모두 합치기(_A)"
 
-#: libcore/marlin-file-operations.c:151
+#: libcore/marlin-file-operations.c:150
 msgid "Copy _Anyway"
 msgstr "그래도 복사하기(_A)"
 
-#: libcore/marlin-file-operations.c:221
+#: libcore/marlin-file-operations.c:183
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 초"
 
-#: libcore/marlin-file-operations.c:226 libcore/marlin-file-operations.c:237
+#: libcore/marlin-file-operations.c:192 libcore/marlin-file-operations.c:206
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d 분"
 
-#: libcore/marlin-file-operations.c:236
+#: libcore/marlin-file-operations.c:205
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 시간"
 
-#: libcore/marlin-file-operations.c:244
+#: libcore/marlin-file-operations.c:217
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "약 %'d시간"
 
-#: libcore/marlin-file-operations.c:320
+#: libcore/marlin-file-operations.c:293
 #, c-format
 msgid "Link to %s"
 msgstr "%s에 링크"
 
-#: libcore/marlin-file-operations.c:324
+#: libcore/marlin-file-operations.c:297
 #, c-format
 msgid "Another link to %s"
 msgstr "%s에 또 다른 링크"
 
-#: libcore/marlin-file-operations.c:340
+#: libcore/marlin-file-operations.c:313
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d번 째 연결한 %s"
 
-#: libcore/marlin-file-operations.c:344
+#: libcore/marlin-file-operations.c:317
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d번 째 연결한 %s"
 
-#: libcore/marlin-file-operations.c:348
+#: libcore/marlin-file-operations.c:321
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d번 째 연결한%s"
 
-#: libcore/marlin-file-operations.c:352
+#: libcore/marlin-file-operations.c:325
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d번 째 연결한 %s"
 
-#: libcore/marlin-file-operations.c:544
+#: libcore/marlin-file-operations.c:517
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:552
+#: libcore/marlin-file-operations.c:525
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1115
+#: libcore/marlin-file-operations.c:1087
 #, fuzzy, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "휴지통에서 \"%B\" 파일을 완전히 지우시겠습니까?"
 
-#: libcore/marlin-file-operations.c:1119
+#: libcore/marlin-file-operations.c:1091
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1219,15 +1227,15 @@ msgid_plural ""
 "trash?"
 msgstr[0] "정말로 휴지통에서 선택한 항목 %'d 개를 완전히 지우시겠습니까?"
 
-#: libcore/marlin-file-operations.c:1129 libcore/marlin-file-operations.c:1203
+#: libcore/marlin-file-operations.c:1101
 msgid "If you delete an item, it will be permanently lost."
 msgstr "휴지통을 비우면 항목들이 완전히 지워지게 됩니다."
 
-#: libcore/marlin-file-operations.c:1152
+#: libcore/marlin-file-operations.c:1124
 msgid "Permanently delete all items from Trash?"
 msgstr "휴지통의 항목을 완전히 지우시겠습니까?"
 
-#: libcore/marlin-file-operations.c:1153
+#: libcore/marlin-file-operations.c:1125
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -1235,55 +1243,60 @@ msgstr ""
 "외부 장비에 연결되어 있는 것을 포함해서 휴지통에 있는 모든 항목이 완전히 지워"
 "지게 됩니다."
 
-#: libcore/marlin-file-operations.c:1156
+#: libcore/marlin-file-operations.c:1128
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "이 장비와 휴지통에 연결된 모든 항목을 완전히 다 지우시겠습니까?"
 
-#: libcore/marlin-file-operations.c:1157
+#: libcore/marlin-file-operations.c:1129
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "이 장비와 휴지통에 연결된 모든 내용은 완전히 지워지게 됩니다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1191
+#: libcore/marlin-file-operations.c:1163
 #, fuzzy, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "정말로 \"%B\" 파일을 완전히 지우시겠습니까?"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "휴지통의 항목을 완전히 지우시겠습니까?"
 
-#: libcore/marlin-file-operations.c:1194
+#: libcore/marlin-file-operations.c:1166
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "정말로 선택한 항목 %'d개를 완전히 지우시겠습니까?"
 
-#: libcore/marlin-file-operations.c:1237
+#: libcore/marlin-file-operations.c:1175
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1209
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "지울 파일 %'d 개 남음"
 
-#: libcore/marlin-file-operations.c:1242
+#: libcore/marlin-file-operations.c:1214
 msgid "Deleting files"
 msgstr "파일 삭제하는 중"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1257
+#: libcore/marlin-file-operations.c:1230
 #, fuzzy, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "%T 남음"
 
-#: libcore/marlin-file-operations.c:1326 libcore/marlin-file-operations.c:1366
-#: libcore/marlin-file-operations.c:1412 libcore/marlin-file-operations.c:1494
-#: libcore/marlin-file-operations.c:2188
+#: libcore/marlin-file-operations.c:1299 libcore/marlin-file-operations.c:1339
+#: libcore/marlin-file-operations.c:1385 libcore/marlin-file-operations.c:1467
+#: libcore/marlin-file-operations.c:2161
 msgid "Error while deleting."
 msgstr "삭제하는 중 오류 발생."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1332
+#: libcore/marlin-file-operations.c:1305
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1292,20 +1305,20 @@ msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\"을(를) 복�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1337 libcore/marlin-file-operations.c:2252
-#: libcore/marlin-file-operations.c:3329
+#: libcore/marlin-file-operations.c:1310 libcore/marlin-file-operations.c:2225
+#: libcore/marlin-file-operations.c:3303
 #, fuzzy, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr "\"%B\" 폴더의 파일에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
-#: libcore/marlin-file-operations.c:1347 libcore/marlin-file-operations.c:3339
+#: libcore/marlin-file-operations.c:1320 libcore/marlin-file-operations.c:3313
 msgid "_Skip files"
 msgstr "건너 뛰기(_S)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1371
+#: libcore/marlin-file-operations.c:1344
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1314,60 +1327,60 @@ msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 지
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1376 libcore/marlin-file-operations.c:2297
-#: libcore/marlin-file-operations.c:3381
+#: libcore/marlin-file-operations.c:1349 libcore/marlin-file-operations.c:2270
+#: libcore/marlin-file-operations.c:3355
 #, fuzzy, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "\"%B\" 폴더를 읽는 데 오류가 발생했습니다."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1415
+#: libcore/marlin-file-operations.c:1388
 #, fuzzy, c-format
 msgid "Could not remove the folder %s."
 msgstr "%B 폴더를 지울 수 없습니다."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1497
+#: libcore/marlin-file-operations.c:1470
 #, fuzzy, c-format
 msgid "There was an error deleting %s."
 msgstr "%B을(를) 삭제하는 데 오류가 발생했습니다."
 
-#: libcore/marlin-file-operations.c:1582
+#: libcore/marlin-file-operations.c:1555
 msgid "Moving files to trash"
 msgstr "파일을 휴지통으로 보내는 중"
 
-#: libcore/marlin-file-operations.c:1584
+#: libcore/marlin-file-operations.c:1557
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "휴지통으로 보낼 파일 %'d개 남음"
 
-#: libcore/marlin-file-operations.c:1682 libcore/marlin-file-operations.c:1685
-#: libcore/marlin-file-operations.c:1688
+#: libcore/marlin-file-operations.c:1655 libcore/marlin-file-operations.c:1658
+#: libcore/marlin-file-operations.c:1661
 msgid "Cannot move file to trash or delete it"
 msgstr "파일이 휴지통으로 보내지지 않거나 지워지지 않습니다"
 
-#: libcore/marlin-file-operations.c:1683
+#: libcore/marlin-file-operations.c:1656
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr "읽기 전용 파일시스템의 파일은 휴지통에 버리거나 지울 수 없습니다."
 
-#: libcore/marlin-file-operations.c:1686
+#: libcore/marlin-file-operations.c:1659
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr "쓰기 권한이 없는 폴더 안의 파일은 휴지통에 버리거나 지울 수 없습니다."
 
-#: libcore/marlin-file-operations.c:1689
+#: libcore/marlin-file-operations.c:1662
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr "쓰기 권한이 없는 폴더는 휴지통에 버리거나 지울 수 없습니다."
 
-#: libcore/marlin-file-operations.c:1691
+#: libcore/marlin-file-operations.c:1664
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "파일을 휴지통에 버릴 수 없습니다. 바로 지울까요?"
 
-#: libcore/marlin-file-operations.c:1692
+#: libcore/marlin-file-operations.c:1665
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -1375,18 +1388,18 @@ msgstr ""
 "이 파일은 휴지통에 버릴 수 없습니다. 자세한 내용은 아래 세부 사항을 확인하세"
 "요."
 
-#: libcore/marlin-file-operations.c:1696
+#: libcore/marlin-file-operations.c:1669
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "파일을 휴지통에 버릴 수 없습니다. 그냥 지울까요?"
 
-#: libcore/marlin-file-operations.c:1697
+#: libcore/marlin-file-operations.c:1670
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 "이 파일은 휴지통에 버려지지 않습니다. 어쩌면 지워지지도  않을 수 있습니다."
 
-#: libcore/marlin-file-operations.c:1703
+#: libcore/marlin-file-operations.c:1676
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1394,15 +1407,15 @@ msgstr ""
 "\n"
 " 지우기는 완전히 제거하는 것입니다"
 
-#: libcore/marlin-file-operations.c:1893
+#: libcore/marlin-file-operations.c:1866
 msgid "Trashing Files"
 msgstr "파일을 휴지통에 버리는 중"
 
-#: libcore/marlin-file-operations.c:1895
+#: libcore/marlin-file-operations.c:1868
 msgid "Deleting Files"
 msgstr "파일 삭제하는 중"
 
-#: libcore/marlin-file-operations.c:2093
+#: libcore/marlin-file-operations.c:2066
 #, c-format
 msgid "Unable to mount %s"
 msgstr "%s 장치를 마운트할 수 없습니다"
@@ -1411,7 +1424,7 @@ msgstr "%s 장치를 마운트할 수 없습니다"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2122
+#: libcore/marlin-file-operations.c:2095
 #, fuzzy, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1421,7 +1434,7 @@ msgstr[0] "파일 %'d개(%S) 복사 준비 중"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2134
+#: libcore/marlin-file-operations.c:2107
 #, fuzzy, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1431,35 +1444,35 @@ msgstr[0] "파일 %'d개(%S) 옮길 준비 중"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2146
+#: libcore/marlin-file-operations.c:2119
 #, fuzzy, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "파일 %'d개(%S) 지울 준비 중"
 
-#: libcore/marlin-file-operations.c:2153
+#: libcore/marlin-file-operations.c:2126
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "파일 %'d개 휴지통에 버릴 준비 중"
 
-#: libcore/marlin-file-operations.c:2184 libcore/marlin-file-operations.c:3176
-#: libcore/marlin-file-operations.c:3316 libcore/marlin-file-operations.c:3368
+#: libcore/marlin-file-operations.c:2157 libcore/marlin-file-operations.c:3150
+#: libcore/marlin-file-operations.c:3290 libcore/marlin-file-operations.c:3342
 msgid "Error while copying."
 msgstr "복사 중 오류."
 
-#: libcore/marlin-file-operations.c:2186 libcore/marlin-file-operations.c:3314
-#: libcore/marlin-file-operations.c:3366
+#: libcore/marlin-file-operations.c:2159 libcore/marlin-file-operations.c:3288
+#: libcore/marlin-file-operations.c:3340
 msgid "Error while moving."
 msgstr "옮기는 중 오류."
 
-#: libcore/marlin-file-operations.c:2190
+#: libcore/marlin-file-operations.c:2163
 msgid "Error while moving files to trash."
 msgstr "휴지통에 파일을 버리는 중 오류."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2247
+#: libcore/marlin-file-operations.c:2220
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1470,7 +1483,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2292
+#: libcore/marlin-file-operations.c:2265
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1479,7 +1492,7 @@ msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 처
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2379
+#: libcore/marlin-file-operations.c:2352
 #, fuzzy, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1488,32 +1501,32 @@ msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 파일을 처
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2384
+#: libcore/marlin-file-operations.c:2357
 #, fuzzy, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "\"%B\"에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2490 libcore/marlin-file-operations.c:2536
-#: libcore/marlin-file-operations.c:2574 libcore/marlin-file-operations.c:2614
+#: libcore/marlin-file-operations.c:2463 libcore/marlin-file-operations.c:2509
+#: libcore/marlin-file-operations.c:2547 libcore/marlin-file-operations.c:2587
 #, fuzzy, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "\"%B\"(으)로 복사중 오류."
 
-#: libcore/marlin-file-operations.c:2495
+#: libcore/marlin-file-operations.c:2468
 msgid "You do not have permissions to access the destination folder."
 msgstr "대상 폴더에 접근할 권한이 없습니다."
 
-#: libcore/marlin-file-operations.c:2497
+#: libcore/marlin-file-operations.c:2470
 msgid "There was an error getting information about the destination."
 msgstr "대상에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
-#: libcore/marlin-file-operations.c:2537
+#: libcore/marlin-file-operations.c:2510
 msgid "The destination is not a folder."
 msgstr "대상이 폴더가 아닙니다."
 
-#: libcore/marlin-file-operations.c:2576
+#: libcore/marlin-file-operations.c:2549
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1521,30 +1534,30 @@ msgstr "대상에 남은 공간이 없습니다. 공간을 확보하려면 파�
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2582
+#: libcore/marlin-file-operations.c:2555
 #, fuzzy, c-format
 msgid "There is %s available, but %s is required."
 msgstr "%S을(를) 이용할 수 있지만, %S이(가) 필요합니다."
 
-#: libcore/marlin-file-operations.c:2616
+#: libcore/marlin-file-operations.c:2589
 msgid "The destination is read-only."
 msgstr "대상이 읽기 전용입니다."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2688
+#: libcore/marlin-file-operations.c:2661
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "\"%B\"을(를) \"%B\"(으)로 옮기는 중"
 
-#: libcore/marlin-file-operations.c:2689
+#: libcore/marlin-file-operations.c:2662
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "\"%B\"을(를) \"%B\"에 복사하고 있습니다"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2693
+#: libcore/marlin-file-operations.c:2666
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "\"%B\"을(를) 복제하는 중"
@@ -1553,13 +1566,13 @@ msgstr "\"%B\"을(를) 복제하는 중"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2701
+#: libcore/marlin-file-operations.c:2674
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"(으)로 옮기는 중"
 
-#: libcore/marlin-file-operations.c:2704
+#: libcore/marlin-file-operations.c:2677
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1567,7 +1580,7 @@ msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"에 복사하고 있습니�
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2713
+#: libcore/marlin-file-operations.c:2686
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1577,26 +1590,26 @@ msgstr[0] "(\"%B\" 내의) %'d 개의 파일을 복제하는 중"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2725
+#: libcore/marlin-file-operations.c:2698
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "%'d 개의 파일을 \"%B\"(으)로 옮기는 중"
 
-#: libcore/marlin-file-operations.c:2728
+#: libcore/marlin-file-operations.c:2701
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "%'d 개의 파일을 \"%B\"에 복사하고 있습니다"
 
-#: libcore/marlin-file-operations.c:2734
+#: libcore/marlin-file-operations.c:2707
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "%'d 개의 파일을 복제하는 중"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2764
+#: libcore/marlin-file-operations.c:2737
 #, fuzzy, c-format
 msgid "%s of %s"
 msgstr "%S / %S"
@@ -1607,7 +1620,7 @@ msgstr "%S / %S"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2783
+#: libcore/marlin-file-operations.c:2757
 #, fuzzy, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1615,7 +1628,7 @@ msgstr[0] "%S / %S — %T 남음 (%S/초)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3183
+#: libcore/marlin-file-operations.c:3157
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1626,14 +1639,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3188
+#: libcore/marlin-file-operations.c:3162
 #, fuzzy, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "\"%B\" 폴더를 만드는 데 오류가 발생했습니다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3324
+#: libcore/marlin-file-operations.c:3298
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1644,7 +1657,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3376
+#: libcore/marlin-file-operations.c:3350
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1655,534 +1668,180 @@ msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 복
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3429 libcore/marlin-file-operations.c:4162
-#: libcore/marlin-file-operations.c:4759
+#: libcore/marlin-file-operations.c:3403 libcore/marlin-file-operations.c:4136
+#: libcore/marlin-file-operations.c:4731
 #, fuzzy, c-format
 msgid "Error while moving \"%s\"."
 msgstr "\"%B\"을(를) 옮기는 중 오류가 발생하였습니다."
 
-#: libcore/marlin-file-operations.c:3431
+#: libcore/marlin-file-operations.c:3405
 msgid "Could not remove the source folder."
 msgstr "원본 폴더를 지울 수 없습니다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3520 libcore/marlin-file-operations.c:3571
-#: libcore/marlin-file-operations.c:4166
+#: libcore/marlin-file-operations.c:3494 libcore/marlin-file-operations.c:3545
+#: libcore/marlin-file-operations.c:4140
 #, fuzzy, c-format
 msgid "Error while copying \"%s\"."
 msgstr "\"%B\"을(를) 복사하던 중 오류가 생겼습니다."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3525
+#: libcore/marlin-file-operations.c:3499
 #, fuzzy, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "기존의 폴더 %F의 파일을 지울 수 없습니다."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3576
+#: libcore/marlin-file-operations.c:3550
 #, fuzzy, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "기존에 존재하는 %F 파일을 지울 수 없습니다."
 
-#: libcore/marlin-file-operations.c:3895 libcore/marlin-file-operations.c:4596
+#: libcore/marlin-file-operations.c:3869 libcore/marlin-file-operations.c:4568
 msgid "You cannot move a folder into itself."
 msgstr "폴더를 자기 자신 안에 옮길 수 없습니다."
 
-#: libcore/marlin-file-operations.c:3896 libcore/marlin-file-operations.c:4597
+#: libcore/marlin-file-operations.c:3870 libcore/marlin-file-operations.c:4569
 msgid "You cannot copy a folder into itself."
 msgstr "폴더를 자기 자신 안에 복사할 수 없습니다."
 
-#: libcore/marlin-file-operations.c:3897 libcore/marlin-file-operations.c:4598
+#: libcore/marlin-file-operations.c:3871 libcore/marlin-file-operations.c:4570
 msgid "The destination folder is inside the source folder."
 msgstr "대상 폴더가 원본 폴더 안에 들어 있습니다."
 
-#: libcore/marlin-file-operations.c:3928
+#: libcore/marlin-file-operations.c:3902
 msgid "You cannot move a file over itself."
 msgstr "파일을 자기 자신에게 옮길 수 없습니다."
 
-#: libcore/marlin-file-operations.c:3929
+#: libcore/marlin-file-operations.c:3903
 msgid "You cannot copy a file over itself."
 msgstr "파일을 자기 자신에게 복사할 수 없습니다."
 
-#: libcore/marlin-file-operations.c:3930
+#: libcore/marlin-file-operations.c:3904
 msgid "The source file would be overwritten by the destination."
 msgstr "대상 파일이 원본 파일을 덮어 쓰게 됩니다."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4172
+#: libcore/marlin-file-operations.c:4146
 #, fuzzy, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "%F 안에 같은 이름을 가진 기존의 파일을 지울 수 없습니다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4242
+#: libcore/marlin-file-operations.c:4216
 #, fuzzy, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "이곳으로 \"%B\"를 복사할 수 없습니다."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4247
+#: libcore/marlin-file-operations.c:4221
 #, fuzzy, c-format
 msgid "There was an error copying the file into %s."
 msgstr "파일을 다음으로 복사하는중에 오류가 생겼습니다 %B."
 
-#: libcore/marlin-file-operations.c:4466
+#: libcore/marlin-file-operations.c:4440
 msgid "Copying Files"
 msgstr "파일 복사하기"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4504
+#: libcore/marlin-file-operations.c:4476
 #, fuzzy, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "\"%B\"로 옮기려는 준비 중"
 
-#: libcore/marlin-file-operations.c:4509
+#: libcore/marlin-file-operations.c:4481
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d개의 파일을 옮길 준비 중"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4763
+#: libcore/marlin-file-operations.c:4735
 #, fuzzy, c-format
 msgid "There was an error moving the file into %s."
 msgstr "파일을 %F(으)로 옮기는 데 오류가 발생했습니다."
 
-#: libcore/marlin-file-operations.c:5022
+#: libcore/marlin-file-operations.c:4994
 msgid "Moving Files"
 msgstr "파일을 옮기는 중"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:5063
+#: libcore/marlin-file-operations.c:5033
 #, fuzzy, c-format
 msgid "Creating links in \"%s\""
 msgstr "\"%B\"(으)로의 링크를 만드는 중"
 
-#: libcore/marlin-file-operations.c:5068
+#: libcore/marlin-file-operations.c:5038
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "%'d 개의 파일에 대한 링크 만드는 중"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5211
+#: libcore/marlin-file-operations.c:5181
 #, fuzzy, c-format
 msgid "Error while creating link to %s."
 msgstr "%B(으)로의 링크를 만드는 중 오류."
 
-#: libcore/marlin-file-operations.c:5214
+#: libcore/marlin-file-operations.c:5184
 msgid "Symbolic links only supported for local files"
 msgstr "심볼릭 링크는 로컬 파일만 지원합니다"
 
-#: libcore/marlin-file-operations.c:5217
+#: libcore/marlin-file-operations.c:5187
 msgid "The target doesn't support symbolic links."
 msgstr "대상이 심볼릭 링크를 지원하지 않습니다."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5222
+#: libcore/marlin-file-operations.c:5192
 #, fuzzy, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "%F에 심볼릭 링크를 만드는 데 오류가 발생했습니다."
 
-#: libcore/marlin-file-operations.c:5553
+#: libcore/marlin-file-operations.c:5519
 msgid "Setting permissions"
 msgstr "권한을 설정하는 중"
 
-#: libcore/marlin-file-operations.c:5745
+#: libcore/marlin-file-operations.c:5709
 msgid "Cannot copy into trash."
 msgstr "휴지통으로는 복사할 수 없습니다."
 
-#: libcore/marlin-file-operations.c:5746 libcore/marlin-file-operations.c:5754
+#: libcore/marlin-file-operations.c:5710 libcore/marlin-file-operations.c:5718
 msgid "It is not permitted to copy files into the trash"
 msgstr "휴지통으로 파일을 복사하는 권한은 없습니다"
 
-#: libcore/marlin-file-operations.c:5894
+#: libcore/marlin-file-operations.c:5858
 msgid "untitled folder"
 msgstr "이름 없는 폴더"
 
-#: libcore/marlin-file-operations.c:5902
+#: libcore/marlin-file-operations.c:5866
 msgid "new file"
 msgstr "새 파일"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6075
+#: libcore/marlin-file-operations.c:6038
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "%B 디렉토리를 만드는 중 오류."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6078
+#: libcore/marlin-file-operations.c:6041
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "%B 파일을 만드는 중 오류."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6084
+#: libcore/marlin-file-operations.c:6047
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "%F 내에 디렉토리를 만드는 데 오류가 발생했습니다."
 
-#: libcore/marlin-file-operations.c:6417
+#: libcore/marlin-file-operations.c:6374
 msgid "Emptying Trash"
 msgstr "휴지통을 비우는 중"
-
-#: libcore/marlin-undostack-manager.c:653
-msgid "Original location could not be determined"
-msgstr "원래 위치를 확인할 수 없습니다"
-
-#: libcore/marlin-undostack-manager.c:654
-msgid "Open trash folder and restore manually"
-msgstr "휴지통을 열어 수동으로 복구하기"
-
-#: libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "복사한 항목 %d개 제거"
-
-#: libcore/marlin-undostack-manager.c:1205
-#: libcore/marlin-undostack-manager.c:1215
-#: libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "'%s' 지우기"
-
-#: libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "%d 개의 중복된 항목 지우기"
-
-#: libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "%d 개 항목을 '%s'로 옮기기"
-
-#: libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "'%s'을(를) '%s'(으)로 다시 이동"
-
-#: libcore/marlin-undostack-manager.c:1236
-#: libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "'%s'을(를) '%s'(으)로 이름 바꾸기"
-
-#: libcore/marlin-undostack-manager.c:1255
-#: libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "%d 개의 항목을 휴지통에서 복원하기"
-
-#: libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "'%s'을(를) '%s'(으)로 복원"
-
-#: libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "%d 개의 항목을 휴지통으로 옮기기"
-
-#: libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "'%s'을(를) 휴지통으로 다시 옮기기"
-
-#: libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "%d 개 항목의 링크 삭제하기"
-
-#: libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "'%s'의 링크 삭제"
-
-#: libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "'%s'에 포함된 파일의 권한을 복구"
-
-#: libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "'%s'의 본래 권한 복구"
-
-#: libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "'%s'의 그룹을 '%s'로 되돌려 놓기"
-
-#: libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "'%s'의 소유자를 '%s'(으)로 복구"
-
-#: libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "%d 항목을 '%s'로 복사하기"
-
-#: libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "'%s'를 '%s'로 복사하기"
-
-#: libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d개의 파일을 '%s'로 복사"
-
-#: libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "'%s'을(를) '%s'에 복제"
-
-#: libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "%d 항목을 '%s'로 보내기"
-
-#: libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "'%s'을(를) '%s'(으)로 이동"
-
-#: libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "서식에서 새 파일 \"%s\" 만들기 "
-
-#: libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "파일 '%s' 만들기"
-
-#: libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "새 폴더 '%s' 만들기"
-
-#: libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "%d 항목을 휴지통에 버리기"
-
-#: libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "'%s'을(를) 휴지통에 버리기"
-
-#: libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "'%s'을(를) 휴지통에서 복원"
-
-#: libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "%d 항목의 링크 만들기"
-
-#: libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "'%s'의 링크 만들기"
-
-#: libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "'%s'에 포함된 파일의 권한을 설정"
-
-#: libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "'%s'의 권한 설정"
-
-#: libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "'%s'의 그룹을 '%s'로 설정"
-
-#: libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "'%s'의 소유주를 '%s'(으)로 설정"
-
-#: libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "%d 항목의 복사를 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "%d 항목의 복제를 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "%d 항목의 이동을 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "%d 항목의 이름 바꾸기를 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "파일 만들기 취소"
-
-#: libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "템플릿에서의 파일 작성을 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "%d 폴더 생성을 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "%d 항목 휴지통에  버리기를 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "휴지통에 버린 %d 항목의 복구를 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "%d 항목에 링크 만들기를 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "%d 항목 지우기를 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "%d 항목의 권한 변경을 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "%d 항목의 그룹 변경을 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "%d 항목의 소유자 변경을 취소하기"
-
-#: libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d 항목 복사 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d 항목 복제 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "%d 항목 이동 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d 항목 이름 바꾸기 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "파일 다시 만들기"
-
-#: libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "템플릿에서의 파일 작성 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d 폴더 생성 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d 항목 휴지통에 버리기 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d 항목 휴지통에서 다시 복구하기"
-
-#: libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d 항목에 링크 다시 만들기"
-
-#: libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d  항목 다시 지우기"
-
-#: libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d 항목의 하위 경로 포함 권한 변경 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d 항목의 권한 변경 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "%d 항목의 그룹 변경 다시하기"
-
-#: libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d 항목 소유자 변경 다시하기"
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
@@ -2285,6 +1944,234 @@ msgstr "선택 항목 복구 시키기"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "선택 항목 지우기"
+
+#~ msgid "Delete %d copied items"
+#~ msgstr "복사한 항목 %d개 제거"
+
+#~ msgid "Delete '%s'"
+#~ msgstr "'%s' 지우기"
+
+#~ msgid "Delete %d duplicated items"
+#~ msgstr "%d 개의 중복된 항목 지우기"
+
+#~ msgid "Move %d items back to '%s'"
+#~ msgstr "%d 개 항목을 '%s'로 옮기기"
+
+#~ msgid "Move '%s' back to '%s'"
+#~ msgstr "'%s'을(를) '%s'(으)로 다시 이동"
+
+#~ msgid "Rename '%s' as '%s'"
+#~ msgstr "'%s'을(를) '%s'(으)로 이름 바꾸기"
+
+#~ msgid "Restore %d items from trash"
+#~ msgstr "%d 개의 항목을 휴지통에서 복원하기"
+
+#~ msgid "Restore '%s' to '%s'"
+#~ msgstr "'%s'을(를) '%s'(으)로 복원"
+
+#~ msgid "Move %d items back to trash"
+#~ msgstr "%d 개의 항목을 휴지통으로 옮기기"
+
+#~ msgid "Move '%s' back to trash"
+#~ msgstr "'%s'을(를) 휴지통으로 다시 옮기기"
+
+#~ msgid "Delete links to %d items"
+#~ msgstr "%d 개 항목의 링크 삭제하기"
+
+#~ msgid "Delete link to '%s'"
+#~ msgstr "'%s'의 링크 삭제"
+
+#~ msgid "Restore original permissions of items enclosed in '%s'"
+#~ msgstr "'%s'에 포함된 파일의 권한을 복구"
+
+#~ msgid "Restore original permissions of '%s'"
+#~ msgstr "'%s'의 본래 권한 복구"
+
+#~ msgid "Restore group of '%s' to '%s'"
+#~ msgstr "'%s'의 그룹을 '%s'로 되돌려 놓기"
+
+#~ msgid "Restore owner of '%s' to '%s'"
+#~ msgstr "'%s'의 소유자를 '%s'(으)로 복구"
+
+#~ msgid "Copy %d items to '%s'"
+#~ msgstr "%d 항목을 '%s'로 복사하기"
+
+#~ msgid "Copy '%s' to '%s'"
+#~ msgstr "'%s'를 '%s'로 복사하기"
+
+#~ msgid "Duplicate of %d items in '%s'"
+#~ msgstr "%d개의 파일을 '%s'로 복사"
+
+#~ msgid "Duplicate '%s' in '%s'"
+#~ msgstr "'%s'을(를) '%s'에 복제"
+
+#~ msgid "Move %d items to '%s'"
+#~ msgstr "%d 항목을 '%s'로 보내기"
+
+#~ msgid "Move '%s' to '%s'"
+#~ msgstr "'%s'을(를) '%s'(으)로 이동"
+
+#~ msgid "Create new file '%s' from template "
+#~ msgstr "서식에서 새 파일 \"%s\" 만들기 "
+
+#~ msgid "Create an empty file '%s'"
+#~ msgstr "파일 '%s' 만들기"
+
+#~ msgid "Create a new folder '%s'"
+#~ msgstr "새 폴더 '%s' 만들기"
+
+#~ msgid "Move %d items to trash"
+#~ msgstr "%d 항목을 휴지통에 버리기"
+
+#~ msgid "Move '%s' to trash"
+#~ msgstr "'%s'을(를) 휴지통에 버리기"
+
+#~ msgid "Restore '%s' from trash"
+#~ msgstr "'%s'을(를) 휴지통에서 복원"
+
+#~ msgid "Create links to %d items"
+#~ msgstr "%d 항목의 링크 만들기"
+
+#~ msgid "Create link to '%s'"
+#~ msgstr "'%s'의 링크 만들기"
+
+#~ msgid "Set permissions of items enclosed in '%s'"
+#~ msgstr "'%s'에 포함된 파일의 권한을 설정"
+
+#~ msgid "Set permissions of '%s'"
+#~ msgstr "'%s'의 권한 설정"
+
+#~ msgid "Set group of '%s' to '%s'"
+#~ msgstr "'%s'의 그룹을 '%s'로 설정"
+
+#~ msgid "Set owner of '%s' to '%s'"
+#~ msgstr "'%s'의 소유주를 '%s'(으)로 설정"
+
+#~ msgid "_Undo copy of %d item"
+#~ msgid_plural "_Undo copy of %d items"
+#~ msgstr[0] "%d 항목의 복사를 취소하기"
+
+#~ msgid "_Undo duplicate of %d item"
+#~ msgid_plural "_Undo duplicate of %d items"
+#~ msgstr[0] "%d 항목의 복제를 취소하기"
+
+#~ msgid "_Undo move of %d item"
+#~ msgid_plural "_Undo move of %d items"
+#~ msgstr[0] "%d 항목의 이동을 취소하기"
+
+#~ msgid "_Undo rename of %d item"
+#~ msgid_plural "_Undo rename of %d items"
+#~ msgstr[0] "%d 항목의 이름 바꾸기를 취소하기"
+
+#~ msgid "_Undo creation of an empty file"
+#~ msgstr "파일 만들기 취소"
+
+#~ msgid "_Undo creation of a file from template"
+#~ msgstr "템플릿에서의 파일 작성을 취소하기"
+
+#~ msgid "_Undo creation of %d folder"
+#~ msgid_plural "_Undo creation of %d folders"
+#~ msgstr[0] "%d 폴더 생성을 취소하기"
+
+#~ msgid "_Undo move to trash of %d item"
+#~ msgid_plural "_Undo move to trash of %d items"
+#~ msgstr[0] "%d 항목 휴지통에  버리기를 취소하기"
+
+#~ msgid "_Undo restore from trash of %d item"
+#~ msgid_plural "_Undo restore from trash of %d items"
+#~ msgstr[0] "휴지통에 버린 %d 항목의 복구를 취소하기"
+
+#~ msgid "_Undo create link to %d item"
+#~ msgid_plural "_Undo create link to %d items"
+#~ msgstr[0] "%d 항목에 링크 만들기를 취소하기"
+
+#~ msgid "_Undo delete of %d item"
+#~ msgid_plural "_Undo delete of %d items"
+#~ msgstr[0] "%d 항목 지우기를 취소하기"
+
+#~ msgid "Undo recursive change permissions of %d item"
+#~ msgid_plural "Undo recursive change permissions of %d items"
+#~ msgstr[0] "%d 항목의 하위 경로 포함 권한 변경을 취소하기"
+
+#~ msgid "Undo change permissions of %d item"
+#~ msgid_plural "Undo change permissions of %d items"
+#~ msgstr[0] "%d 항목의 권한 변경을 취소하기"
+
+#~ msgid "Undo change group of %d item"
+#~ msgid_plural "Undo change group of %d items"
+#~ msgstr[0] "%d 항목의 그룹 변경을 취소하기"
+
+#~ msgid "Undo change owner of %d item"
+#~ msgid_plural "Undo change owner of %d items"
+#~ msgstr[0] "%d 항목의 소유자 변경을 취소하기"
+
+#~ msgid "_Redo copy of %d item"
+#~ msgid_plural "_Redo copy of %d items"
+#~ msgstr[0] "%d 항목 복사 다시하기"
+
+#~ msgid "_Redo duplicate of %d item"
+#~ msgid_plural "_Redo duplicate of %d items"
+#~ msgstr[0] "%d 항목 복제 다시하기"
+
+#~ msgid "_Redo move of %d item"
+#~ msgid_plural "_Redo move of %d items"
+#~ msgstr[0] "%d 항목 이동 다시하기"
+
+#~ msgid "_Redo rename of %d item"
+#~ msgid_plural "_Redo rename of %d items"
+#~ msgstr[0] "%d 항목 이름 바꾸기 다시하기"
+
+#~ msgid "_Redo creation of an empty file"
+#~ msgstr "파일 다시 만들기"
+
+#~ msgid "_Redo creation of a file from template"
+#~ msgstr "템플릿에서의 파일 작성 다시하기"
+
+#~ msgid "_Redo creation of %d folder"
+#~ msgid_plural "_Redo creation of %d folders"
+#~ msgstr[0] "%d 폴더 생성 다시하기"
+
+#~ msgid "_Redo move to trash of %d item"
+#~ msgid_plural "_Redo move to trash of %d items"
+#~ msgstr[0] "%d 항목 휴지통에 버리기 다시하기"
+
+#~ msgid "_Redo restore from trash of %d item"
+#~ msgid_plural "_Redo restore from trash of %d items"
+#~ msgstr[0] "%d 항목 휴지통에서 다시 복구하기"
+
+#~ msgid "_Redo create link to %d item"
+#~ msgid_plural "_Redo create link to %d items"
+#~ msgstr[0] "%d 항목에 링크 다시 만들기"
+
+#~ msgid "_Redo delete of %d item"
+#~ msgid_plural "_Redo delete of %d items"
+#~ msgstr[0] "%d  항목 다시 지우기"
+
+#~ msgid "Redo recursive change permissions of %d item"
+#~ msgid_plural "Redo recursive change permissions of %d items"
+#~ msgstr[0] "%d 항목의 하위 경로 포함 권한 변경 다시하기"
+
+#~ msgid "Redo change permissions of %d item"
+#~ msgid_plural "Redo change permissions of %d items"
+#~ msgstr[0] "%d 항목의 권한 변경 다시하기"
+
+#~ msgid "Redo change group of %d item"
+#~ msgid_plural "Redo change group of %d items"
+#~ msgstr[0] "%d 항목의 그룹 변경 다시하기"
+
+#~ msgid "Redo change owner of %d item"
+#~ msgid_plural "Redo change owner of %d items"
+#~ msgstr[0] "%d 항목 소유자 변경 다시하기"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "정말로 \"%B\" 파일을 완전히 지우시겠습니까?"
+
+#~ msgid "Invalid"
+#~ msgstr "잘못됨"
+
+#~ msgid "Templates"
+#~ msgstr "템플릿"
 
 #~ msgid "Unable to eject %V"
 #~ msgstr "%V을(를) 꺼낼 수 없음"

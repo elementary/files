@@ -40,7 +40,6 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
 typedef void (* MarlinCopyCallback)      (gpointer    callback_data);
@@ -164,52 +163,11 @@ static char * query_fs_type (GFile *file,
 static void
 marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs);
 
-/* keep in time with format_time()
- *
- * This counts and outputs the number of “time units”
- * formatted and displayed by format_time().
- * For instance, if format_time outputs “3 hours, 4 minutes”
- * it yields 7.
- */
-static int
-seconds_count_format_time_units (int seconds)
-{
-    int minutes;
-    int hours;
-
-    if (seconds < 0) {
-        /* Just to make sure... */
-        seconds = 0;
-    }
-
-    if (seconds < 60) {
-        /* seconds */
-        return seconds;
-    }
-
-    if (seconds < 60*60) {
-        /* minutes */
-        minutes = seconds / 60;
-        return minutes;
-    }
-
-    hours = seconds / (60*60);
-
-    if (seconds < 60*60*4) {
-        /* minutes + hours */
-        minutes = (seconds - hours * 60 * 60) / 60;
-        return minutes + hours;
-    }
-
-    return hours;
-}
-
 static char *
-format_time (int seconds)
+format_time (int seconds, int *time_unit)
 {
     int minutes;
     int hours;
-    char *res;
 
     if (seconds < 0) {
         /* Just to make sure... */
@@ -217,20 +175,31 @@ format_time (int seconds)
     }
 
     if (seconds < 60) {
-        return g_strdup_printf (ngettext ("%'d second","%'d seconds", (int) seconds), (int) seconds);
+        if (time_unit) {
+            *time_unit = seconds;
+        }
+
+        return g_strdup_printf (ngettext ("%'d second","%'d seconds", seconds), seconds);
     }
 
     if (seconds < 60*60) {
         minutes = seconds / 60;
+        if (time_unit) {
+            *time_unit = minutes;
+        }
+
         return g_strdup_printf (ngettext ("%'d minute", "%'d minutes", minutes), minutes);
     }
 
     hours = seconds / (60*60);
 
     if (seconds < 60*60*4) {
-        char *h, *m;
+        char *h, *m, *res;
 
         minutes = (seconds - hours * 60 * 60) / 60;
+        if (time_unit) {
+            *time_unit = minutes + hours;
+        }
 
         h = g_strdup_printf (ngettext ("%'d hour", "%'d hours", hours), hours);
         m = g_strdup_printf (ngettext ("%'d minute", "%'d minutes", minutes), minutes);
@@ -238,6 +207,10 @@ format_time (int seconds)
         g_free (h);
         g_free (m);
         return res;
+    }
+
+    if (time_unit) {
+        *time_unit = hours;
     }
 
     return g_strdup_printf (ngettext ("approximately %'d hour",
@@ -871,8 +844,7 @@ finalize_common (CommonJob *common)
     }
 
     // Start UNDO-REDO
-    marlin_undo_manager_add_action (marlin_undo_manager_instance(),
-                                    common->undo_redo_data);
+    marlin_undo_manager_add_action (marlin_undo_manager_instance(), common->undo_redo_data);
     // End UNDO-REDO
 
     g_object_unref (common->progress);
@@ -1190,7 +1162,7 @@ confirm_delete_directly (CommonJob *job,
         gchar *basename = custom_basename_from_file (files->data);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\"?"), basename);
+        prompt = g_strdup_printf (_("Permanently delete “%s”?"), basename);
         g_free (basename);
     } else {
         prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
@@ -1202,7 +1174,7 @@ confirm_delete_directly (CommonJob *job,
 
     response = run_warning (job,
                             prompt,
-                            g_strdup (_("If you delete an item, it will be permanently lost.")),
+                            g_strdup (_("Deleted items are not sent to Trash and are not recoverable.")),
                             NULL,
                             FALSE,
                             CANCEL, DELETE,
@@ -1251,13 +1223,14 @@ report_delete_progress (CommonJob *job,
         gchar *formated_time;
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
-        formated_time = format_time (seconds_count_format_time_units (remaining_time));
+        int formated_time_unit;
+        formated_time = format_time (remaining_time, &formated_time_unit);
 
         /// TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
         /// The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
         time_left_s = g_strdup_printf (ngettext ("%s left",
                                                  "%s left",
-                                                 remaining_time),
+                                                 formated_time_unit),
                                        formated_time);
         g_free (formated_time);
 
@@ -1637,7 +1610,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
             goto skip;
         }
 
-        mtime = marlin_undo_manager_get_file_modification_time (file);
+        mtime = pf_file_utils_get_file_modification_time (file);
 
         if (!g_file_trash (file, job->cancellable, &error)) {
             if (job->skip_all_error) {
@@ -1749,7 +1722,7 @@ skip:
             marlin_file_changes_queue_file_removed (file);
 
             // Start UNDO-REDO
-            marlin_undo_manager_data_add_trashed_file (job->undo_redo_data, file, mtime);
+            marlin_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
             // End UNDO-REDO
 
             files_trashed++;
@@ -1895,10 +1868,10 @@ marlin_file_operations_delete (GList               *files,
         inhibit_power_manager ((CommonJob *)job, _("Deleting Files"));
     }
 
-    if (try_trash && !marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
+    if (try_trash) {
+        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
+        marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
     }
 
     g_io_scheduler_push_job (delete_job,
@@ -2771,7 +2744,8 @@ report_copy_progress (CopyMoveJob *copy_job,
         gchar *total_size_format = g_format_size (total_size);
         gchar *transfer_rate_format = g_format_size (transfer_rate);
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
-        formated_remaining_time = format_time (seconds_count_format_time_units (remaining_time));
+        int formated_time_unit;
+        formated_remaining_time = format_time (remaining_time, &formated_time_unit);
 
 
         /// TRANSLATORS: The two first %s and the last %s will expand to a size
@@ -2782,7 +2756,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         /// The order in which %s appear can be changed by using the right positional specifier.
         s = g_strdup_printf (ngettext ("%s of %s \xE2\x80\x94 %s left (%s/sec)",
                                        "%s of %s \xE2\x80\x94 %s left (%s/sec)",
-                                       remaining_time),
+                                       formated_time_unit),
                              num_bytes_format, total_size_format,
                              formated_remaining_time,
                              transfer_rate_format);
@@ -3216,7 +3190,7 @@ retry:
     marlin_file_changes_queue_file_added (*dest);
 
     // Start UNDO-REDO
-    marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
+    marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
     // End UNDO-REDO
 
     return CREATE_DEST_DIR_SUCCESS;
@@ -4007,7 +3981,7 @@ retry:
         }
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         g_object_unref (dest);
@@ -4466,13 +4440,11 @@ marlin_file_operations_copy (GList               *files,
     inhibit_power_manager ((CommonJob *)job, _("Copying Files"));
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_COPY, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (target_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, target_dir);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (target_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (copy_job,
@@ -4646,7 +4618,7 @@ retry:
         }*/
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         return;
@@ -5021,17 +4993,15 @@ marlin_file_operations_move (GList               *files,
 
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
-            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
-        } else {
-            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
-        }
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (target_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
+        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
+    } else {
+        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
     }
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (target_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (move_job,
@@ -5147,7 +5117,7 @@ retry:
                                           &error)) {
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_origin_target_pair (common->undo_redo_data, src, dest);
+        marlin_undo_action_data_add_origin_target_pair (common->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         g_free (path);
@@ -5362,13 +5332,11 @@ marlin_file_operations_link (GList               *files,
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (target_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, target_dir);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (target_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (link_job,
@@ -5411,13 +5379,11 @@ marlin_file_operations_duplicate (GList               *files,
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (src_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, src_dir);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (src_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, src_dir);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (copy_job,
@@ -5500,7 +5466,7 @@ set_permissions_file (SetPermissionsJob *job,
         current = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_file_permissions(common->undo_redo_data, file, current);
+        marlin_undo_action_data_add_file_permissions(common->undo_redo_data, file, current);
         // End UNDO-REDO
 
         current = (current & ~mask) | value;
@@ -5584,12 +5550,10 @@ marlin_file_set_permissions_recursive (const char *directory,
     job->done_callback_data = callback_data;
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
-        g_object_ref (job->file);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, job->file);
-        marlin_undo_manager_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
+    g_object_ref (job->file);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, job->file);
+    marlin_undo_action_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (set_permissions_job,
@@ -5923,7 +5887,7 @@ retry:
                                      &error);
         // Start UNDO-REDO
         if (res) {
-            marlin_undo_manager_data_set_create_data(common->undo_redo_data,
+            marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                      g_file_get_uri(dest),
                                                      NULL);
         }
@@ -5938,7 +5902,7 @@ retry:
                                &error);
             // Start UNDO-REDO
             if (res) {
-                marlin_undo_manager_data_set_create_data(common->undo_redo_data,
+                marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                          g_file_get_uri(dest),
                                                          g_file_get_uri(job->src));
             }
@@ -5967,11 +5931,10 @@ retry:
                                                  &error);
                     // Start UNDO-REDO
                     if (res) {
-                        marlin_undo_manager_data_set_create_data(common->undo_redo_data,
+                        marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                                  g_file_get_uri(dest),
                                                                  g_strdup(data));
                     }
-                    // End UNDO-REDO
                 }
 
                 /* This will close if the write failed and we didn't close */
@@ -6145,9 +6108,7 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
     }
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (create_job,
@@ -6200,9 +6161,7 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
     }
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (create_job,
@@ -6250,9 +6209,7 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
     job->filename = g_strdup (target_filename);
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (create_job,
