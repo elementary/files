@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-22 21:42+0000\n"
-"PO-Revision-Date: 2020-01-21 16:29+0000\n"
+"PO-Revision-Date: 2020-01-25 15:08+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1273,10 +1273,9 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1163
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "¿Quiere eliminar permanentemente todos los elementos de la papelera?"
+msgstr "¿Quiere eliminar «%s» permanentemente?"
 
 #: libcore/marlin-file-operations.c:1166
 #, c-format
@@ -1292,6 +1291,7 @@ msgstr[1] ""
 #: libcore/marlin-file-operations.c:1175
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
+"Los elementos eliminados no se envían a la papelera y no son recuperables."
 
 #: libcore/marlin-file-operations.c:1209
 #, c-format
