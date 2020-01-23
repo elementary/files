@@ -58,6 +58,35 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="4.4.0" date="2020-01-20" urgency="medium">
+      <description>
+        <ul>
+          <li>Show keyboard shortcuts in menu items</li>
+          <li>Fix an issue with breadcrumbs in the file chooser</li>
+          <li>Show a warning when ejecting a volume that's still in use</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.3.0" date="2020-01-07" urgency="medium">
+      <description>
+        <p>New features:</p>
+        <ul>
+          <li>Initial git plugin support</li>
+          <li>Follow global history setting when restoring and saving tabs</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Ensure tabs showing same folder remain synchronized</li>
+          <li>Fix drag with secondary button on empty space</li>
+          <li>Show custom media type icons for installed apps</li>
+          <li>Fix appearance of inactive diskspace indicator</li>
+          <li>Improve pathbar animation</li>
+          <li>Update documentation</li>
+          <li>Update translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.2.0" date="2019-09-09" urgency="medium">
       <description>
         <ul>

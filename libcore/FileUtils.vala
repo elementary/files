@@ -90,12 +90,12 @@ namespace PF.FileUtils {
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
-                Marlin.FileOperations.copy_move_link (dir_files,
-                                                      null,
-                                                      original_dir,
-                                                      Gdk.DragAction.MOVE,
-                                                      widget,
-                                                      null);
+                Marlin.FileOperations.copy_move_link.begin (dir_files,
+                                                            null,
+                                                            original_dir,
+                                                            Gdk.DragAction.MOVE,
+                                                            widget,
+                                                            null);
         });
     }
 
@@ -210,6 +210,7 @@ namespace PF.FileUtils {
         }
 
         split_protocol_from_path (unescaped_p, out scheme, out path);
+
         path = path.strip ().replace ("//", "/");
         // special case for empty path, adjust as root path
         if (path.length == 0) {
@@ -220,6 +221,7 @@ namespace PF.FileUtils {
         if (cp != null) {
             split_protocol_from_path (cp, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
+
             if (scheme == "" && path.length > 0) {
                 string [] paths = path.split ("/", 2);
                 switch (paths[0]) {
@@ -324,8 +326,14 @@ namespace PF.FileUtils {
             protocol = Marlin.ROOT_FS_URI;
         }
 
+        /* Ensure a protocol is returned so file.get_path () always works on sanitized paths*/
         if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
-            protocol = "";
+            protocol = Marlin.ROOT_FS_URI;
+        }
+
+        /* Consistently remove any remove trailing separator so that paths can be reliably compared */
+        if (new_path.has_suffix (Path.DIR_SEPARATOR_S) && path != Path.DIR_SEPARATOR_S) {
+            new_path = new_path.slice (0, new_path.length - 1);
         }
     }
 
@@ -401,9 +409,12 @@ namespace PF.FileUtils {
         }
     }
 
-    public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
+    public async GLib.File? set_file_display_name (GLib.File old_location,
+                                                   string new_name,
+                                                   GLib.Cancellable? cancellable = null) throws GLib.Error {
 
         /** TODO Check validity of new name **/
+
 
         GLib.File? new_location = null;
         GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
@@ -426,9 +437,7 @@ namespace PF.FileUtils {
                 warning ("Renamed file has no GOF.Directory.Async");
             }
 
-            /* Register the change with the undo manager */
-            Marlin.UndoManager.instance ().add_rename_action (new_location,
-                                                              original_name);
+            Marlin.UndoManager.instance ().add_rename_action (new_location, original_name);
         } catch (Error e) {
             warning ("Rename error");
             PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
@@ -766,6 +775,32 @@ namespace PF.FileUtils {
         string cache_dir = Environment.get_user_cache_dir ();
         GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "normal", base_name));
         GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "large", base_name));
+    }
+
+    public bool same_location (string uri_a, string uri_b) {
+        string protocol_a, protocol_b;
+        string path_a, path_b;
+
+        split_protocol_from_path (uri_a, out protocol_a, out path_a);
+        split_protocol_from_path (uri_b, out protocol_b, out path_b);
+
+        if (protocol_a == protocol_b && path_a == path_b) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public uint64 get_file_modification_time (GLib.File file) {
+        try {
+            var info = file.query_info (
+                                GLib.FileAttribute.TIME_MODIFIED, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null
+                            );
+            return info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
+        } catch (Error e) {
+            critical (e.message);
+            return -1;
+        }
     }
 }
 

@@ -1108,7 +1108,7 @@ public class GOF.File : GLib.Object {
             target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         }
 
-        if (target_uri != null) {
+        if (target_uri == null) {
             target_uri = uri;
         }
 

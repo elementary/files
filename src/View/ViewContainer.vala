@@ -496,7 +496,6 @@ namespace Marlin.View {
             /* This function navigates to another folder if necessary if
              * select_in_current_only is not set to true.
              */
-
             var aslot = get_current_slot ();
             if (aslot == null) {
                 return;
@@ -507,7 +506,8 @@ namespace Marlin.View {
                 return;
             }
 
-            if (location.equal (loc)) {
+            /* Using file_a.equal (file_b) can fail to detect equivalent locations */
+            if (PF.FileUtils.same_location (uri, loc.get_uri ())) {
                 return;
             }
 
