@@ -1125,7 +1125,7 @@ confirm_empty_trash (EmptyTrashJob *job)
                             secondary_text,
                             NULL,
                             FALSE,
-                            CANCEL, _("Empty _Trash"),
+                            CANCEL, EMPTY_TRASH,
                             NULL);
 
     return (response == 1);
