@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-22 21:42+0000\n"
-"PO-Revision-Date: 2020-01-20 20:20+0000\n"
+"PO-Revision-Date: 2020-01-25 15:08+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -1272,10 +1272,9 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1163
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Alle items permanent uit de prullenbak verwijderen?"
+msgstr "“%s” permanent verwijderen?"
 
 #: libcore/marlin-file-operations.c:1166
 #, c-format
@@ -1290,6 +1289,8 @@ msgstr[1] ""
 #: libcore/marlin-file-operations.c:1175
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
+"Verwijderde items worden niet in de prullenbak geplaatst en zijn niet meer "
+"terug te halen."
 
 #: libcore/marlin-file-operations.c:1209
 #, c-format
