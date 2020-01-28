@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-22 21:42+0000\n"
-"PO-Revision-Date: 2019-12-06 17:25+0000\n"
+"PO-Revision-Date: 2020-01-28 17:32+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:124
@@ -417,10 +417,8 @@ msgid "Remove from History"
 msgstr "Remover do Histórico"
 
 #: src/View/AbstractDirectoryView.vala:2023
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Mudar nome"
+msgstr "Renomear…"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
@@ -443,10 +441,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Mostrar Miniaturas Remotas"
 
 #: src/View/AbstractDirectoryView.vala:2080
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Ocultar Miniaturas Remotas"
+msgstr "Ocultar Miniaturas"
 
 #: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
@@ -1272,10 +1268,9 @@ msgstr "Todos os itens do lixo neste disco serão apagados permanentemente."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1163
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Apagar permanentemente todos os itens do Lixo?"
+msgstr "Eliminar permanentemente \"%s\"?"
 
 #: libcore/marlin-file-operations.c:1166
 #, c-format
@@ -1292,6 +1287,7 @@ msgstr[1] ""
 #: libcore/marlin-file-operations.c:1175
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
+"Os itens eliminados não são enviados para o Lixo e não são recuperáveis."
 
 #: libcore/marlin-file-operations.c:1209
 #, c-format
