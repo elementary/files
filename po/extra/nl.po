@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:08+0000\n"
-"PO-Revision-Date: 2020-01-21 16:29+0000\n"
+"PO-Revision-Date: 2020-01-28 11:08+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -68,15 +68,17 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Show keyboard shortcuts in menu items"
-msgstr ""
+msgstr "Toon toetsenbord sneltoetsen in menu items"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr ""
+msgstr "Een probleem met broodkruimels opgelost in de bestandskiezer"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr ""
+"Toon een waarschuwing bij het ontkoppelen van een volume dat nog steeds in "
+"gebruik is"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:99
@@ -348,7 +350,7 @@ msgstr "Voeg ronde hoeken toe aan de tekstachtergrond"
 
 #: data/io.elementary.files.appdata.xml.in.in:186
 msgid "Fix file mimetype association regression"
-msgstr ""
+msgstr "Een probleem opgelost met mimetype associatie regressie"
 
 #: data/io.elementary.files.appdata.xml.in.in:187
 msgid "New pathbar tooltips"
@@ -373,6 +375,7 @@ msgstr "Een probleem opgelost met het installeren zonder de Unity bibliotheek"
 #: data/io.elementary.files.appdata.xml.in.in:212
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
+"Broodkruimels verbergen en toon een vrije ruimte en zoek icoon in de home map"
 
 #: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Style error dialogs"
@@ -384,7 +387,7 @@ msgstr "Problemen met rechts klikken opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:215
 msgid "Reload recent view when privacy setting changes"
-msgstr ""
+msgstr "Herlaad recente weergave als de privacy instellingen worden gewijzigd"
 
 #: data/io.elementary.files.appdata.xml.in.in:216
 msgid "`Connect Server` fixes"
@@ -392,15 +395,16 @@ msgstr "`Verbinden met server` problemen opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Do not activate multiple files with single click"
-msgstr ""
+msgstr "Activeer meerdere bestanden niet met een enkele klik"
 
 #: data/io.elementary.files.appdata.xml.in.in:218
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
+msgstr "Gebruik `Tab` om met het toetsenbord te focussen op Weergave en Zijbalk"
 
 #: data/io.elementary.files.appdata.xml.in.in:219
+#, fuzzy
 msgid "Delete color tag database entries for trashed files"
-msgstr ""
+msgstr "Verwijder kleurlabels"
 
 #: data/io.elementary.files.appdata.xml.in.in:220
 msgid "Throttle tab closing"
@@ -420,31 +424,31 @@ msgstr "Toon iconen in de `Open met` menu's"
 
 #: data/io.elementary.files.appdata.xml.in.in:224
 msgid "Tooltip fixes"
-msgstr ""
+msgstr "Problemen met tooltips opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:225
 msgid "Memory leak fixes"
-msgstr ""
+msgstr "Geheugenlek opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:226
 msgid "Crash fixes"
-msgstr ""
+msgstr "Crashes opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:227
 msgid "Trash: respect sound setting"
-msgstr ""
+msgstr "Prullenbak: respecteer geluidsinstelling"
 
 #: data/io.elementary.files.appdata.xml.in.in:228
 msgid "Localization fixes"
-msgstr ""
+msgstr "Localisatieproblemen opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:236
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr ""
+msgstr "Meer dan 100 grote en kleine bugs verholpen en verbeteringen"
 
 #: data/io.elementary.files.appdata.xml.in.in:243
 msgid "Honor 12/24hr system setting"
-msgstr ""
+msgstr "Respecteer de 12- of 24-uurs systeem instelling"
 
 #: data/io.elementary.files.appdata.xml.in.in:244
 msgid "Distinguish between tabs with the same name"
@@ -460,7 +464,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:283
 #: data/io.elementary.files.appdata.xml.in.in:294
 msgid "New translations"
-msgstr ""
+msgstr "Nieuwe vertalingen"
 
 #: data/io.elementary.files.appdata.xml.in.in:247
 #: data/io.elementary.files.appdata.xml.in.in:260
@@ -471,7 +475,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:309
 #: data/io.elementary.files.appdata.xml.in.in:333
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "Kleine bugfixes"
 
 #: data/io.elementary.files.appdata.xml.in.in:254
 msgid "Improved networking support"
