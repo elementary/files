@@ -89,9 +89,28 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         header_title.margin_top = 6;
         header_title.valign = Gtk.Align.CENTER;
         layout.attach (header_title, 1, 0, 1, 1);
+        header_title.is_focus = true;
     }
 
-    protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
+    protected void overlay_emblems_from_file (GOF.File file) {
+        var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
+        var file_icon =  new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
+
+        var icon_button = new Gtk.ToggleButton ();
+        icon_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        icon_button.set_image (file_icon);
+        icon_button.toggled.connect (() => {
+        if (icon_button.active) {
+            var icon_popover = new IconPopover (icon_button, file);
+            icon_popover.show_all ();
+            icon_popover.hide.connect (() => { icon_button.active = false;});
+            }
+        });
+
+        overlay_emblems (icon_button, file.emblems_list);
+    }
+
+    protected void overlay_emblems (Gtk.Widget file_icon, List<string>? emblems_list) {
         if (emblems_list != null) {
             int pos = 0;
             var emblem_grid = new Gtk.Grid ();
