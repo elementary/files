@@ -25,11 +25,13 @@ namespace Marlin.View {
 
       private GOF.File file;
       private Gtk.Entry icon_entry;
+      private Gtk.ToggleButton icon_button;
 
-      public IconPopover (Gtk.Widget relative_to, GOF.File goffile) {
+      public IconPopover (Gtk.ToggleButton relative_to, GOF.File goffile) {
           Object (modal: true,
                   position: Gtk.PositionType.BOTTOM,
                   relative_to: relative_to);
+          icon_button = relative_to;
           file = goffile;
           load ();
       }
@@ -56,13 +58,15 @@ namespace Marlin.View {
 
       private void load () {
         if (file.custom_icon_name != null) {
-            icon_entry.text = file.custom_icon_name;
+            icon_entry.set_text (file.custom_icon_name);
         }
       }
 
       private void change_icon () {
         file.custom_icon_name = icon_entry.text;
         file.update_icon (48, get_scale_factor ());
+        var file_icon = new Gtk.Image.from_icon_name (file.custom_icon_name, Gtk.IconSize.DIALOG);
+        icon_button.set_image (file_icon);
         popdown ();
       }
   }
