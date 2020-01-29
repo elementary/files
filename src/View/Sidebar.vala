@@ -2348,7 +2348,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             empty_trash_on_mount (mount);
         } else {
             /* Trash icon was clicked - empty all trash directories, including any mounted. */
-            Marlin.FileOperations.empty_trash (window);
+            var job = new Marlin.FileOperations.EmptyTrashJob (window);
+            job.empty_trash.begin ();
         }
     }
 
