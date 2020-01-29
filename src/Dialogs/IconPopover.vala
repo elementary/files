@@ -1,6 +1,5 @@
 /*
-* Copyright (c) 2011 Marlin Developers (http://launchpad.net/marlin)
-* Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+* Copyright 2020 elementary, Inc. (https://elementary.io)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -67,12 +66,15 @@ namespace Marlin.View {
       }
 
       private void load () {
-          icon_entry.set_text (file.custom_icon_name);
+          if (file.custom_icon_name != null) {
+              icon_entry.set_text (file.custom_icon_name);
+          }
       }
 
       private void change_icon (string new_custom_icon) {
           file.custom_icon_name = new_custom_icon;
           file.update_icon (48, get_scale_factor ());
+          file.icon_changed ();
           var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
           icon_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
           popdown ();
