@@ -25,49 +25,78 @@ namespace Marlin.View {
 
       private GOF.File file;
       private Gtk.Entry icon_entry;
-      private Gtk.ToggleButton icon_button;
+      private Gtk.Image icon_image;
 
       public IconPopover (Gtk.ToggleButton relative_to, GOF.File goffile) {
           Object (modal: true,
                   position: Gtk.PositionType.BOTTOM,
                   relative_to: relative_to);
-          icon_button = relative_to;
+          icon_image = (Gtk.Image) relative_to.get_image();
           file = goffile;
           load ();
       }
 
       construct {
           icon_entry = new Gtk.Entry ();
-          icon_entry.placeholder_text = "Custom icon name";
+          icon_entry.placeholder_text = _("Custom icon name");
 
-          var set_button = new Gtk.Button.with_label (_("Set Icon"));
-          set_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-          set_button.grab_focus ();
+          icon_entry.activate.connect (() => {
+              change_icon (icon_entry.get_text ());
+          });
+
+          icon_entry.focus_out_event.connect (() => {
+              change_icon (icon_entry.get_text ());
+              return false;
+          });
+
+          var browse_button = new Gtk.Button.with_label (_("Browse"));
+          browse_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+          browse_button.grab_focus ();
 
           var button_grid = new Gtk.Grid ();
           button_grid.margin = 6;
           button_grid.column_spacing = 5;
           button_grid.column_homogeneous = false;
           button_grid.add (icon_entry);
-          button_grid.add (set_button);
+          button_grid.add (new Gtk.Label (_("or")));
+          button_grid.add (browse_button);
 
           add (button_grid);
 
-          set_button.clicked.connect (change_icon);
+          browse_button.clicked.connect (browse_icon);
       }
 
       private void load () {
-        if (file.custom_icon_name != null) {
-            icon_entry.set_text (file.custom_icon_name);
-        }
+          icon_entry.set_text (file.custom_icon_name);
       }
 
-      private void change_icon () {
-        file.custom_icon_name = icon_entry.text;
-        file.update_icon (48, get_scale_factor ());
-        var file_icon = new Gtk.Image.from_icon_name (file.custom_icon_name, Gtk.IconSize.DIALOG);
-        icon_button.set_image (file_icon);
-        popdown ();
+      private void change_icon (string new_custom_icon) {
+          file.custom_icon_name = new_custom_icon;
+          file.update_icon (48, get_scale_factor ());
+          var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
+          icon_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
+          popdown ();
+      }
+
+      private void browse_icon () {
+           var file_dialog = new Gtk.FileChooserNative (
+                _("Select an icon"),
+                get_parent_window () as Gtk.Window?,
+                Gtk.FileChooserAction.OPEN,
+                _("Open"),
+                _("Cancel")
+            );
+
+            if (file_dialog.run () == Gtk.ResponseType.ACCEPT) {
+                var path = file_dialog.get_file ().get_path ();
+                file_dialog.hide ();
+                file_dialog.destroy ();
+                icon_entry.set_text (path);
+                change_icon (path);
+                popdown ();
+            } else {
+                file_dialog.destroy ();
+            }
       }
   }
 }
