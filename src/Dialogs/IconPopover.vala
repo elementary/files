@@ -31,7 +31,7 @@ namespace Marlin.View {
           Object (modal: true,
                   position: Gtk.PositionType.BOTTOM,
                   relative_to: relative_to);
-          icon_image = (Gtk.Image) relative_to.get_image();
+          icon_image = (Gtk.Image) relative_to.get_image ();
           file = goffile;
           load ();
       }
