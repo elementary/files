@@ -94,7 +94,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
 
     protected void overlay_emblems_from_file (GOF.File file) {
         var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
-        var file_icon =  new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
+        var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
 
         var icon_button = new Gtk.ToggleButton ();
         icon_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
