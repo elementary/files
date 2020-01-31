@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-28 17:34+0000\n"
-"PO-Revision-Date: 2019-10-05 11:23+0000\n"
+"PO-Revision-Date: 2020-02-01 03:08+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: src/Application.vala:124
@@ -415,10 +415,8 @@ msgid "Remove from History"
 msgstr "Geçmişten Sil"
 
 #: src/View/AbstractDirectoryView.vala:2023
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Yeniden adlandır"
+msgstr "Yeniden Adlandır…"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
@@ -441,10 +439,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Uzak Küçük Resimleri Göster"
 
 #: src/View/AbstractDirectoryView.vala:2080
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Yerel Küçük Resimleri Gizle"
+msgstr "Küçük Resimleri Gizle"
 
 #: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
@@ -1110,10 +1106,8 @@ msgid "_Cancel"
 msgstr "İ_ptal"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
-msgstr "_Sil"
+msgstr "Sil"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1271,10 +1265,9 @@ msgstr "Çöpteki tüm öğeler tamamen silinecek."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1151
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Çöp kutusundaki tüm öğeler kalıcı olarak silinsin mi?"
+msgstr "\"%s\" dosyası kalıcı olarak silinsin mi?"
 
 #: libcore/marlin-file-operations.c:1154
 #, c-format
@@ -1286,7 +1279,7 @@ msgstr[1] "Seçilen %'d öğeyi kalıcı olarak silmek istediğinize emin misini
 
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "Silinmiş öğeler Çöpe gönderilmez ve kurtarılamaz."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format
