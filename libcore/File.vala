@@ -31,7 +31,7 @@ public class GOF.File : GLib.Object {
         LOADING
     }
 
-    public const string GIO_DEFAULT_ATTRIBUTES = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
+    public const string GIO_DEFAULT_ATTRIBUTES = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::custom-icon-name,metadata::marlin-sort-reversed";
 
     public signal void changed ();
     public signal void icon_changed ();
@@ -382,7 +382,14 @@ public class GOF.File : GLib.Object {
             return;
         }
 
-        if (!is_hidden && uri != null) {
+        if (info != null && info.has_attribute ("metadata::custom-icon-name")) {
+            custom_icon_name = info.get_attribute_string ("metadata::custom-icon-name");
+            if (custom_icon_name != null && custom_icon_name != "") {
+                icon = new GLib.ThemedIcon (custom_icon_name);
+            }
+        }
+
+        if (icon == null && !is_hidden && uri != null) {
             try {
                 var path = GLib.Filename.from_uri (uri);
                 icon = get_icon_user_special_dirs (path);
@@ -449,6 +456,13 @@ public class GOF.File : GLib.Object {
             }
         }
 
+        if (info.has_attribute ("metadata::custom-icon-name")) {
+            custom_icon_name = info.get_attribute_string ("metadata::custom-icon-name");
+            if (custom_icon_name != null && custom_icon_name != "") {
+                icon = new GLib.ThemedIcon (custom_icon_name);
+            }
+        }
+
         if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
             icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
@@ -478,7 +492,7 @@ public class GOF.File : GLib.Object {
         /* TODO the key-files could be loaded async.
         <lazy>The performance gain would not be that great</lazy>*/
         is_desktop = is_desktop_file ();
-        if (is_desktop) {
+        if (is_desktop && (custom_icon_name == null || custom_icon_name == "") ) {
             try {
                 var key_file = PF.FileUtils.key_file_from_file (location);
                 custom_icon_name = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_ICON);
@@ -662,6 +676,20 @@ public class GOF.File : GLib.Object {
         }
 
         return null;
+    }
+
+    public void set_custom_icon_name (string new_icon_name) {
+        message (new_icon_name);
+        var locinfo = location.query_info ("metadata::custom-icon-name", GLib.FileQueryInfoFlags.NONE);
+        if (locinfo != null) {
+            locinfo.set_attribute_string ("metadata::custom-icon-name", new_icon_name);
+            location.set_attributes_from_info (locinfo, GLib.FileQueryInfoFlags.NONE, null);
+            if (new_icon_name != "") {
+                custom_icon_name = new_icon_name;
+                icon = new GLib.ThemedIcon (custom_icon_name);
+            }
+        }
+        query_update ();
     }
 
     public bool can_set_owner () {
@@ -1192,7 +1220,7 @@ public class GOF.File : GLib.Object {
     private Marlin.IconInfo? get_special_icon (int size, int scale, GOF.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
-        if (custom_icon_name != null) {
+        if (custom_icon_name != null && custom_icon_name != "") {
             if (GLib.Path.is_absolute (custom_icon_name)) {
                 return Marlin.IconInfo.lookup_from_path (custom_icon_name, size, scale);
             } else {

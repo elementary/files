@@ -32,49 +32,30 @@ namespace Marlin.View {
                   relative_to: relative_to);
           icon_image = (Gtk.Image) relative_to.get_image ();
           file = goffile;
-          load ();
       }
 
       construct {
-          icon_entry = new Gtk.Entry ();
-          icon_entry.placeholder_text = _("Custom icon name");
-
-          icon_entry.activate.connect (() => {
-              change_icon (icon_entry.get_text ());
-          });
-
-          icon_entry.focus_out_event.connect (() => {
-              change_icon (icon_entry.get_text ());
-              return false;
-          });
-
           var browse_button = new Gtk.Button.with_label (_("Browse"));
           browse_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
           browse_button.grab_focus ();
 
+          var reset_button = new Gtk.Button.with_label (_("Reset"));
+
           var button_grid = new Gtk.Grid ();
           button_grid.margin = 6;
           button_grid.column_spacing = 5;
-          button_grid.column_homogeneous = false;
-          button_grid.add (icon_entry);
-          button_grid.add (new Gtk.Label (_("or")));
+          button_grid.column_homogeneous = true;
           button_grid.add (browse_button);
+          button_grid.add (reset_button);
 
           add (button_grid);
 
           browse_button.clicked.connect (browse_icon);
-      }
-
-      private void load () {
-          if (file.custom_icon_name != null) {
-              icon_entry.set_text (file.custom_icon_name);
-          }
+          reset_button.clicked.connect (() => { change_icon (""); });
       }
 
       private void change_icon (string new_custom_icon) {
-          file.custom_icon_name = new_custom_icon;
-          file.update_icon (48, get_scale_factor ());
-          file.icon_changed ();
+          file.set_custom_icon_name (new_custom_icon);
           var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
           icon_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
           popdown ();
@@ -93,9 +74,7 @@ namespace Marlin.View {
                 var path = file_dialog.get_file ().get_path ();
                 file_dialog.hide ();
                 file_dialog.destroy ();
-                icon_entry.set_text (path);
                 change_icon (path);
-                popdown ();
             } else {
                 file_dialog.destroy ();
             }
