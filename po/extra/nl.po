@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:08+0000\n"
-"PO-Revision-Date: 2020-01-28 11:08+0000\n"
+"PO-Revision-Date: 2020-02-03 16:08+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -402,9 +402,8 @@ msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr "Gebruik `Tab` om met het toetsenbord te focussen op Weergave en Zijbalk"
 
 #: data/io.elementary.files.appdata.xml.in.in:219
-#, fuzzy
 msgid "Delete color tag database entries for trashed files"
-msgstr "Verwijder kleurlabels"
+msgstr "Verwijder kleurlabels voor bestanden in de prullenbak uit de database"
 
 #: data/io.elementary.files.appdata.xml.in.in:220
 msgid "Throttle tab closing"
@@ -452,11 +451,13 @@ msgstr "Respecteer de 12- of 24-uurs systeem instelling"
 
 #: data/io.elementary.files.appdata.xml.in.in:244
 msgid "Distinguish between tabs with the same name"
-msgstr ""
+msgstr "Maak onderscheid tussen tabbladen met dezelfde naam"
 
 #: data/io.elementary.files.appdata.xml.in.in:245
 msgid "Support launching from other applications with a target file selected"
 msgstr ""
+"Ondersteuning voor het opstarten vanuit andere toepassingen met een bestand "
+"geselecteerd"
 
 #: data/io.elementary.files.appdata.xml.in.in:246
 #: data/io.elementary.files.appdata.xml.in.in:259
@@ -479,86 +480,89 @@ msgstr "Kleine bugfixes"
 
 #: data/io.elementary.files.appdata.xml.in.in:254
 msgid "Improved networking support"
-msgstr ""
+msgstr "Verbeterde ondersteuning voor netwerken"
 
 #: data/io.elementary.files.appdata.xml.in.in:255
 msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+msgstr "Venster geometrie gecorrigeerd bij het springen naar links of rechts"
 
 #: data/io.elementary.files.appdata.xml.in.in:256
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
+"Het indrukken van Ctrl annuleert niet langer het hernoemen als de “Toon "
+"Aanwijzer” instelling actief is"
 
 #: data/io.elementary.files.appdata.xml.in.in:257
 msgid "Switching input language cancels actions"
-msgstr ""
+msgstr "Het wisselen van input talen annuleert acties"
 
 #: data/io.elementary.files.appdata.xml.in.in:258
 #: data/io.elementary.files.appdata.xml.in.in:272
 #: data/io.elementary.files.appdata.xml.in.in:282
 #: data/io.elementary.files.appdata.xml.in.in:293
 msgid "Various crash fixes"
-msgstr ""
+msgstr "Diverse crashes gemaakt"
 
 #: data/io.elementary.files.appdata.xml.in.in:267
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
+"Webbrowsers zoals Firefox onthouden nu de meest recent gebruikte downloadmap"
 
 #: data/io.elementary.files.appdata.xml.in.in:268
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "Onthoud het gewenste zoomlevel"
 
 #: data/io.elementary.files.appdata.xml.in.in:269
 msgid "Improved input method support"
-msgstr ""
+msgstr "Verbeterde inputmethode ondersteuning"
 
 #: data/io.elementary.files.appdata.xml.in.in:270
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "910x640 minimum venstergrootte"
 
 #: data/io.elementary.files.appdata.xml.in.in:271
 msgid "Security fixes"
-msgstr ""
+msgstr "Beveilingsupdates"
 
 #: data/io.elementary.files.appdata.xml.in.in:281
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Slepen en neerzetten van tabbladen tussen vensters is ingeschakeld"
 
 #: data/io.elementary.files.appdata.xml.in.in:291
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "Zoekfunctionaliteit samengevoegd in Ctrl+F"
 
 #: data/io.elementary.files.appdata.xml.in.in:292
 msgid "Improved translation support"
-msgstr ""
+msgstr "Verbeterde ondersteuning voor vertalingen"
 
 #: data/io.elementary.files.appdata.xml.in.in:316
 msgid "Fix appdata release dates"
-msgstr ""
+msgstr "Een probleem met appdata release data opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:323
 msgid "Improve file opening over Samba shares"
-msgstr ""
+msgstr "Bestanden openen via Samba shares verbeterd"
 
 #: data/io.elementary.files.appdata.xml.in.in:324
 msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
+msgstr "Crash bij het herstellen van items uit de prullenbak verholpen"
 
 #: data/io.elementary.files.appdata.xml.in.in:325
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
+msgstr "Knippen/kopiëren/plakken sensitiviteit in context menu verbeterd"
 
 #: data/io.elementary.files.appdata.xml.in.in:326
 msgid "Translation updates"
-msgstr ""
+msgstr "Bijgewerkte vertalingen"
 
 #: data/io.elementary.files.appdata.xml.in.in:338
 msgid "elementary LLC."
-msgstr ""
+msgstr "elementary LLC."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
