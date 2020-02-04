@@ -61,7 +61,7 @@ namespace Marlin.View {
         public ViewContainer? current_tab = null;
 
         private bool tabs_restored = false;
-        private bool restoring_tabs = false;
+        private int restoring_tabs = 0;
         private bool doing_undo_redo = false;
 
         public signal void loading_uri (string location);
@@ -369,7 +369,7 @@ namespace Marlin.View {
                 return;
             }
 
-            if (restoring_tabs) {
+            if (restoring_tabs > 0) {
                 return;
             }
 
@@ -459,14 +459,19 @@ namespace Marlin.View {
             });
 
             content.loading.connect ((is_loading) => {
-                if (restoring_tabs && !is_loading && !content.can_show_folder) {
-                    warning ("Cannot restore %s, ignoring", content.uri);
-                    /* remove_tab function uses Idle loop to close tab */
-                    remove_content (content);
-                } else {
-                    tab.working = is_loading;
-                    update_top_menu ();
+                if (restoring_tabs > 0 && !is_loading) {
+                    restoring_tabs--;
+                    /* Each restored tab must signal with is_loading false once */
+                    assert (restoring_tabs >= 0);
+                    if (!content.can_show_folder) {
+                        warning ("Cannot restore %s, ignoring", content.uri);
+                        /* remove_tab function uses Idle loop to close tab */
+                        remove_content (content);
+                    }
                 }
+
+                tab.working = is_loading;
+                update_top_menu ();
             });
 
             content.active.connect (() => {
@@ -962,11 +967,10 @@ namespace Marlin.View {
             Marlin.ViewMode mode = Marlin.ViewMode.INVALID;
             string? root_uri = null;
             string? tip_uri = null;
-            int tabs_added = 0;
 
-            /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
+            /* Changes of view and rendering of location bar are avoided while restoring tabs > 0
              * as this causes all sorts of problems */
-            restoring_tabs = true;
+            restoring_tabs = 0;
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
 
@@ -979,42 +983,33 @@ namespace Marlin.View {
                 /* We do not check valid location here because it may cause the interface to hang
                  * before the window appears (e.g. if trying to connect to a server that has become unavailable)
                  * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously.
+                 * Restored tabs with invalid locations are removed in the `loading` signal handler.
                  */
 
+                restoring_tabs++;
                 add_tab_by_uri (root_uri, mode);
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                     expand_miller_view (tip_uri, root_uri);
                 }
 
-                tabs_added++;
                 mode = Marlin.ViewMode.INVALID;
                 root_uri = null;
                 tip_uri = null;
 
-                /* Prevent too rapid loading of tabs which can cause crashes
-                 * This may not be necessary with the Vala version of the views but does no harm
-                 */
-                /*TODO Remove this after sufficient testing */
-                Thread.usleep (100000);
+                /* As loading is now asynchronous we do not need a delay here any longer */
             }
 
-            /* Delay resetting `restoring_tabs` until tabs have loaded so can remove
-             * any that cannot be loaded.
-             */
-            Idle.add_full (Priority.LOW, () => {
-                restoring_tabs = false;
-                return Source.REMOVE;
-            });
+            /* We assume that the following code is reached before restoring tabs have finished loading. Tests
+             * show this to be the case. */
 
-            /* Don't attempt to set active tab position if no tabs were restored */
-            if (tabs_added < 1) {
+            /* Don't attempt to set active tab position if no tabs were restored.*/
+            if (restoring_tabs < 1) {
                 return 0;
             }
 
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
-
-            if (active_tab_position < 0 || active_tab_position >= tabs_added) {
+            if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
                 active_tab_position = 0;
             }
 
@@ -1032,7 +1027,7 @@ namespace Marlin.View {
 
             /* Render the final path in the location bar without animation */
             top_menu.update_location_bar (path, false);
-            return tabs_added;
+            return restoring_tabs;
         }
 
         private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
@@ -1068,7 +1063,7 @@ namespace Marlin.View {
         }
 
         private void update_top_menu () {
-            if (restoring_tabs || current_tab == null) {
+            if (restoring_tabs > 0 || current_tab == null) {
                 return;
             }
 
@@ -1115,7 +1110,7 @@ namespace Marlin.View {
         private void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
             /* ViewContainer deals with non-existent or unmounted directories
              * and locations that are not directories */
-            if (restoring_tabs) {
+            if (restoring_tabs > 1) {
                 return;
             }
 
