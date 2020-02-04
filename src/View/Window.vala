@@ -592,7 +592,7 @@ namespace Marlin.View {
             remove_tab (tabs.get_tab_by_widget ((Gtk.Widget)view_container));
         }
 
-        private void remove_tab (Granite.Widgets.Tab tab) {
+        private void remove_tab (Granite.Widgets.Tab? tab) {
             if (tab != null) {
                 /* Use Idle in case of rapid closing of multiple tabs during restore */
                 Idle.add_full (Priority.LOW, () => {
