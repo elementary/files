@@ -1093,8 +1093,8 @@ namespace Marlin.View {
             debug ("Mount %s removed", mount.get_name ());
             GLib.File root = mount.get_root ();
 
-            foreach (var tab in tabs.tabs) {
-                var view_container = tab.page as Marlin.View.ViewContainer;
+            foreach (unowned Granite.Widgets.Tab tab in tabs.tabs) {
+                unowned ViewContainer view_container = (ViewContainer)(tab.page);
                 GLib.File location = view_container.location;
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
