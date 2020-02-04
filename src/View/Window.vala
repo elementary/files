@@ -307,10 +307,8 @@ namespace Marlin.View {
                 vc.close ();
                 ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
 
-                Idle.add (() => {
-                    remove_tab (vc);
-                    return GLib.Source.REMOVE;
-                });
+                /* remove_tab function uses Idle loop to close tab */
+                remove_tab (tab);
             });
 
 
@@ -461,8 +459,14 @@ namespace Marlin.View {
             });
 
             content.loading.connect ((is_loading) => {
-                tab.working = is_loading;
-                update_top_menu ();
+                if (restoring_tabs && !is_loading && !content.can_show_folder) {
+                    warning ("Cannot restore %s, ignoring", content.uri);
+                    /* remove_tab function uses Idle loop to close tab */
+                    remove_content (content);
+                } else {
+                    tab.working = is_loading;
+                    update_top_menu ();
+                }
             });
 
             content.active.connect (() => {
@@ -584,26 +588,18 @@ namespace Marlin.View {
             return !sidebar.has_bookmark (uri);
         }
 
-        public void remove_tab (ViewContainer view_container) {
-            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
-            if (tab != null) {
-                actual_remove_tab (tab);
-            }
+        public void remove_content (ViewContainer view_container) {
+            remove_tab (tabs.get_tab_by_widget ((Gtk.Widget)view_container));
         }
 
-        private uint closing_timeout_id = 0;
-        private void actual_remove_tab (Granite.Widgets.Tab tab) {
-            /* close_tab_signal will be emitted first.  Tab actually closes if this returns true */
-            /* Use timeout to limit rate of closing tab */
-            if (closing_timeout_id > 0) {
-                return;
+        private void remove_tab (Granite.Widgets.Tab tab) {
+            if (tab != null) {
+                /* Use Idle in case of rapid closing of multiple tabs during restore */
+                Idle.add_full (Priority.LOW, () => {
+                    tab.close ();
+                    return GLib.Source.REMOVE;
+                });
             }
-
-            closing_timeout_id = Timeout.add (50, () => {
-                tab.close ();
-                closing_timeout_id = 0;
-                return GLib.Source.REMOVE;
-            });
         }
 
         public void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
@@ -750,7 +746,7 @@ namespace Marlin.View {
                     break;
 
                 case "CLOSE":
-                    actual_remove_tab (tabs.current);
+                    remove_tab (tabs.current);
                     break;
 
                 case "NEXT":
@@ -1003,7 +999,13 @@ namespace Marlin.View {
                 Thread.usleep (100000);
             }
 
-            restoring_tabs = false;
+            /* Delay resetting `restoring_tabs` until tabs have loaded so can remove
+             * any that cannot be loaded.
+             */
+            Idle.add_full (Priority.LOW, () => {
+                restoring_tabs = false;
+                return Source.REMOVE;
+            });
 
             /* Don't attempt to set active tab position if no tabs were restored */
             if (tabs_added < 1) {
@@ -1096,15 +1098,15 @@ namespace Marlin.View {
             debug ("Mount %s removed", mount.get_name ());
             GLib.File root = mount.get_root ();
 
-            foreach (var page in tabs.get_children ()) {
-                var view_container = page as Marlin.View.ViewContainer;
+            foreach (var tab in tabs.tabs) {
+                var view_container = tab.page as Marlin.View.ViewContainer;
                 GLib.File location = view_container.location;
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab) {
                         view_container.focus_location (File.new_for_path (PF.UserUtils.get_real_user_home ()));
                     } else {
-                        remove_tab (view_container);
+                        remove_tab (tab);
                     }
                 }
             }

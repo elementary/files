@@ -161,7 +161,7 @@ namespace Marlin.View {
             if (deleted.equal (this.location)) {
                 if (!go_up ()) {
                     close ();
-                    window.remove_tab (this);
+                    window.remove_content (this);
                 }
             }
         }
