@@ -363,13 +363,13 @@ namespace Marlin.View {
         }
 
         private void change_tab (int offset) {
-            if (restoring_tabs) {
-                return;
-            }
-
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (current_tab == null || old_tab == current_tab) {
+                return;
+            }
+
+            if (restoring_tabs) {
                 return;
             }
 
