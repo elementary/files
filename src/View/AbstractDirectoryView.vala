@@ -346,7 +346,7 @@ namespace FM {
         }
 
         private void set_up_directory_view () {
-            set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
+            set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
 
             popup_menu.connect (on_popup_menu);
@@ -3147,10 +3147,6 @@ namespace FM {
 
                     default:
                         break;
-                }
-
-                if (increment != 0.0) {
-                    slot.horizontal_scroll_event (increment);
                 }
             }
             return handle_scroll_event (event);
