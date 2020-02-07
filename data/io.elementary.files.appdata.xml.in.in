@@ -64,7 +64,7 @@
           <li>Show keyboard shortcuts in menu items</li>
           <li>Fix an issue with breadcrumbs in the file chooser</li>
           <li>Show a warning when ejecting a volume that's still in use</li>
-          <li>Fix cursor upate after horizontal scroll in Column View</li>
+          <li>Fix cursor update after horizontal scroll in Column View</li>
           <li>Use destructive action styling for some trash dialog buttons</li>
           <li>Updated translations</li>
         </ul>
