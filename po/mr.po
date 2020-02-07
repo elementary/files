@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-28 17:34+0000\n"
-"PO-Revision-Date: 2019-12-02 14:24+0000\n"
+"PO-Revision-Date: 2020-02-03 16:08+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:124
@@ -410,10 +410,8 @@ msgid "Remove from History"
 msgstr "इतिहासातून काढा"
 
 #: src/View/AbstractDirectoryView.vala:2023
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "पुनर्नामित करा"
+msgstr "पुनर्नामित करा…"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
@@ -436,10 +434,8 @@ msgid "Show Remote Thumbnails"
 msgstr "रिमोट थंबनेल्स दाखवा"
 
 #: src/View/AbstractDirectoryView.vala:2080
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "स्थानीय थंबनेल्स लपवा"
+msgstr "थंबनेल्स लपवा"
 
 #: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
@@ -1105,10 +1101,8 @@ msgid "_Cancel"
 msgstr "_(C) रद्द करा"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
-msgstr "(_D) हटवा"
+msgstr "हटवा"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1262,10 +1256,9 @@ msgstr "या माउंटवरील कचरापेटी मधील
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1151
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवायचे?"
+msgstr "\"%s\" आयटम कायमचे हटवायचे?"
 
 #: libcore/marlin-file-operations.c:1154
 #, c-format
@@ -1278,6 +1271,8 @@ msgstr[1] "आपणास खात्री आहे की आपण नि�
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
+"हटविलेल्या वस्तू कचर्‍यामध्ये पाठविल्या जात नाहीत आणि पुनर्प्राप्त करण्यायोग्"
+"य नाहीत."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format
