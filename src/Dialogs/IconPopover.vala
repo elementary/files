@@ -76,7 +76,7 @@ public class Marlin.View.IconPopover : Gtk.Popover {
       content_area.pack_start (search_box, false, true, 5);
       content_area.pack_start (scrolled, true, true, 0);
       content_area.pack_start (button_box, false, false, 5);
-      add(content_area);
+      add (content_area);
   }
 
   private void on_row_selected (Gtk.ListBoxRow? row) {
