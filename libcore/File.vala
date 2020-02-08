@@ -463,7 +463,7 @@ public class GOF.File : GLib.Object {
             }
         }
 
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
+        if (icon == null && info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
             icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
 
@@ -689,7 +689,9 @@ public class GOF.File : GLib.Object {
                 icon = new GLib.ThemedIcon (custom_icon_name);
             }
         }
+
         query_update ();
+        icon_changed ();
     }
 
     public bool can_set_owner () {
