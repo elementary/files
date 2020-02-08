@@ -125,11 +125,20 @@ public class Marlin.View.IconPopover : Gtk.Popover {
             _("Cancel")
         );
 
+        // For now, only allow scalable (themed) icons
+        var filter = new Gtk.FileFilter ();
+        filter.set_name (_("Scalable Icons"));
+        filter.add_mime_type ("image/svg+xml");
+
+        file_dialog.add_filter (filter);
+
         if (file_dialog.run () == Gtk.ResponseType.ACCEPT) {
-            var path = file_dialog.get_file ().get_path ();
+            var basename = file_dialog.get_file ().get_basename ();
             file_dialog.hide ();
             file_dialog.destroy ();
-            change_icon (path);
+            assert (basename.has_suffix (".svg"));
+
+            change_icon (basename.slice (0, -4));
         } else {
             file_dialog.destroy ();
         }

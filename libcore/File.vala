@@ -459,12 +459,20 @@ public class GOF.File : GLib.Object {
         if (info.has_attribute ("metadata::custom-icon-name")) {
             custom_icon_name = info.get_attribute_string ("metadata::custom-icon-name");
             if (custom_icon_name != null && custom_icon_name != "") {
-                icon = new GLib.ThemedIcon (custom_icon_name);
+                // Check that custom-icon-name corresponds to an available themed icon, using common scale and size
+                var icon_info = Marlin.IconInfo.lookup_from_name (custom_icon_name, 48, 1);
+                if (icon_info != null) {
+                    icon = new GLib.ThemedIcon (custom_icon_name);
+                }
             }
         }
 
-        if (icon == null && info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
-            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
+        if (icon == null) {
+            if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
+                icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
+            } else {
+                icon = null;
+            }
         }
 
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
@@ -540,14 +548,16 @@ public class GOF.File : GLib.Object {
         }
 
         /* icon */
-        if (is_directory) {
-            get_folder_icon_from_uri_or_path ();
-        } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
-            icon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
-        } else {
-            unowned string? ftype = get_ftype ();
-            if (ftype != null && icon == null) {
-                icon = GLib.ContentType.get_icon (ftype);
+        if (icon == null) {
+            if (is_directory) {
+                get_folder_icon_from_uri_or_path ();
+            } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
+                icon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
+            } else {
+                unowned string? ftype = get_ftype ();
+                if (ftype != null && icon == null) {
+                    icon = GLib.ContentType.get_icon (ftype);
+                }
             }
         }
 
@@ -680,14 +690,16 @@ public class GOF.File : GLib.Object {
 
     public void set_custom_icon_name (string new_icon_name) {
         message (new_icon_name);
+
         var locinfo = location.query_info ("metadata::custom-icon-name", GLib.FileQueryInfoFlags.NONE);
         if (locinfo != null) {
-            locinfo.set_attribute_string ("metadata::custom-icon-name", new_icon_name);
-            location.set_attributes_from_info (locinfo, GLib.FileQueryInfoFlags.NONE, null);
             if (new_icon_name != "") {
-                custom_icon_name = new_icon_name;
-                icon = new GLib.ThemedIcon (custom_icon_name);
+                var icon_info = Marlin.IconInfo.lookup_from_name (new_icon_name, 48, 1); //Use common scale factor and size for now
+                custom_icon_name = icon_info != null ? new_icon_name : "";
             }
+
+            locinfo.set_attribute_string ("metadata::custom-icon-name", custom_icon_name);
+            location.set_attributes_from_info (locinfo, GLib.FileQueryInfoFlags.NONE, null);
         }
 
         query_update ();
