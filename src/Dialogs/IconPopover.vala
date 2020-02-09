@@ -39,6 +39,9 @@ public class Marlin.View.IconPopover : Gtk.Popover {
       var cancel_button = new Gtk.Button.with_label (_("Cancel"));
       cancel_button.clicked.connect (on_cancel_pressed);
 
+      var default_button = new Gtk.Button.with_label (_("Use default icon"));
+      default_button.clicked.connect (on_default_pressed);
+
       choose_button = new Gtk.Button.with_label (_("Choose"));
       choose_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
       choose_button.clicked.connect (on_accept_pressed);
@@ -47,6 +50,7 @@ public class Marlin.View.IconPopover : Gtk.Popover {
       var button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 2);
       button_box.margin = 10;
       button_box.pack_end (choose_button);
+      button_box.pack_end (default_button);
       button_box.pack_end (cancel_button);
 
       icon_list_box = new IconListBox ();
@@ -102,18 +106,24 @@ public class Marlin.View.IconPopover : Gtk.Popover {
       popdown ();
   }
 
+  private void on_default_pressed () {
+    change_icon ("");
+    popdown ();
+  }
+
   private void on_accept_pressed () {
       string? icon_name = icon_list_box.get_selected_icon_name ();
       if (icon_name != null) {
           change_icon (icon_name);
       }
+
+      popdown ();
   }
 
   private void change_icon (string new_custom_icon) {
       file.set_custom_icon_name (new_custom_icon);
       var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
       icon_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
-      popdown ();
   }
 
   private void browse_icon () {

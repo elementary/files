@@ -693,6 +693,7 @@ public class GOF.File : GLib.Object {
 
         var locinfo = location.query_info ("metadata::custom-icon-name", GLib.FileQueryInfoFlags.NONE);
         if (locinfo != null) {
+            custom_icon_name = new_icon_name;
             if (new_icon_name != "") {
                 var icon_info = Marlin.IconInfo.lookup_from_name (new_icon_name, 48, 1); //Use common scale factor and size for now
                 custom_icon_name = icon_info != null ? new_icon_name : "";
