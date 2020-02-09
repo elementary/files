@@ -142,7 +142,7 @@ namespace Marlin {
             if (file.is_directory && file.custom_icon_name != null) {
                 var nicon = Marlin.IconInfo.lookup_from_name (file.custom_icon_name, icon_size, icon_scale);
                 if (nicon != null) {
-                    pb = PF.PixbufUtils.overlay_folder_with_image (pb, nicon.get_pixbuf_nodefault ());
+                    pb = PF.PixbufUtils.overlay_images (pb, nicon.get_pixbuf_nodefault ());
                 }
             }
 

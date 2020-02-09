@@ -101,7 +101,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
             if (file.custom_icon_name != null) {
                 var nicon = Marlin.IconInfo.lookup_from_name (file.custom_icon_name, 48, get_scale_factor ());
                 if (nicon != null) {
-                    file_pix = PF.PixbufUtils.overlay_folder_with_image (file_pix, nicon.get_pixbuf_nodefault ());
+                    file_pix = PF.PixbufUtils.overlay_images (file_pix, nicon.get_pixbuf_nodefault ());
                 }
             }
 
