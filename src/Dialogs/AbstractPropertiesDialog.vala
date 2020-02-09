@@ -73,7 +73,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         ((Gtk.Box) get_content_area ()).add (layout);
         ((Gtk.Box) get_action_area ()).margin = 6;
 
-        add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        var close_button = add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
             switch (type) {
                 case Gtk.ResponseType.CLOSE:
@@ -81,6 +81,9 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
                     break;
             }
         });
+
+        close_button.has_focus = true;
+        close_button.grab_focus ();
     }
 
     protected void create_header_title () {
@@ -89,14 +92,21 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         header_title.margin_top = 6;
         header_title.valign = Gtk.Align.CENTER;
         layout.attach (header_title, 1, 0, 1, 1);
-        header_title.is_focus = true;
     }
 
     protected void overlay_emblems_from_file (GOF.File file) {
         var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
-        var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
 
         if (file.is_directory) {
+            if (file.custom_icon_name != null) {
+                var nicon = Marlin.IconInfo.lookup_from_name (file.custom_icon_name, 48, get_scale_factor ());
+                if (nicon != null) {
+                    file_pix = PF.PixbufUtils.overlay_folder_with_image (file_pix, nicon.get_pixbuf_nodefault ());
+                }
+            }
+
+            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
+
             var icon_button = new Gtk.ToggleButton ();
             icon_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             icon_button.set_image (file_icon);
@@ -110,6 +120,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
 
             overlay_emblems (icon_button, file.emblems_list);
         } else {
+            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
             overlay_emblems (file_icon, file.emblems_list);
         }
 
@@ -134,8 +145,8 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
             }
 
             var file_img = new Gtk.Overlay ();
-            file_img.set_size_request (48, 48);
-            file_img.valign = Gtk.Align.CENTER;
+            file_img.set_size_request (64, 64); //Allow space for ToggleButton.
+            file_img.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             file_img.add_overlay (file_icon);
             file_img.add_overlay (emblem_grid);
             layout.attach (file_img, 0, 0, 1, 1);
