@@ -184,7 +184,7 @@ namespace PF.PixbufUtils {
                                       double xalign = 0.5, double yalign = 0.8) {
 
         var o_width = overlay.width * scale;
-        var o_height = overlay.height *scale;
+        var o_height = overlay.height * scale;
 
         /* For simplicity both pixbufs must have alpha channel and same color depth and scaled overlay must be smaller */
         if (o_width > background.width || o_height > background.height ||
