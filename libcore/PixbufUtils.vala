@@ -175,4 +175,35 @@ namespace PF.PixbufUtils {
 
         return dest;
     }
+
+    public Gdk.Pixbuf overlay_folder_with_image (Gdk.Pixbuf background, Gdk.Pixbuf overlay, double scale = 0.5) {
+        var b_width = background.width;
+        var b_height = background.height;
+        var b_has_alpha = background.has_alpha;
+        var o_width = overlay.width * scale;
+        var o_height = overlay.height *scale;
+        var o_has_alpha = overlay.has_alpha;
+
+        /* For simplicity both pixbufs must have alpha channel and same color depth and overlay must be smaller */
+        if (o_width > b_width || o_height > b_height ||
+            overlay.bits_per_sample != background.bits_per_sample ||
+            !(b_has_alpha && o_has_alpha)) {
+
+            return background;
+        }
+
+        var offset_y = (background.height - o_height) * 0.8;
+        var offset_x = (background.width - o_width) / 2;
+
+        var dest = new Gdk.Pixbuf (background.colorspace, true, background.bits_per_sample, b_width, b_height);
+        dest.fill (0);
+
+        background.composite (dest, 0, 0, background.width, background.height,
+                              0.0, 0.0, 1.0, 1.0, Gdk.InterpType.NEAREST, 255);
+
+        overlay.composite (dest, 0, 0, background.width, background.height,
+                           offset_x, offset_y, scale, scale, Gdk.InterpType.NEAREST, 175);
+
+        return dest;
+    }
 }

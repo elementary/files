@@ -150,8 +150,10 @@ public class Marlin.View.IconPopover : Gtk.Popover {
             assert (basename.has_suffix (".svg"));
 
             change_icon (basename.slice (0, -4));
+            popdown ();
         } else {
             file_dialog.destroy ();
         }
+
     }
 }

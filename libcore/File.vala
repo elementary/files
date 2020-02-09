@@ -382,14 +382,7 @@ public class GOF.File : GLib.Object {
             return;
         }
 
-        if (info != null && info.has_attribute ("metadata::custom-icon-name")) {
-            custom_icon_name = info.get_attribute_string ("metadata::custom-icon-name");
-            if (custom_icon_name != null && custom_icon_name != "") {
-                icon = new GLib.ThemedIcon (custom_icon_name);
-            }
-        }
-
-        if (icon == null && !is_hidden && uri != null) {
+        if (!is_hidden && uri != null) {
             try {
                 var path = GLib.Filename.from_uri (uri);
                 icon = get_icon_user_special_dirs (path);
@@ -456,13 +449,13 @@ public class GOF.File : GLib.Object {
             }
         }
 
-        if (info.has_attribute ("metadata::custom-icon-name")) {
+        if (is_directory && info.has_attribute ("metadata::custom-icon-name")) {
             custom_icon_name = info.get_attribute_string ("metadata::custom-icon-name");
             if (custom_icon_name != null && custom_icon_name != "") {
                 // Check that custom-icon-name corresponds to an available themed icon, using common scale and size
                 var icon_info = Marlin.IconInfo.lookup_from_name (custom_icon_name, 48, 1);
-                if (icon_info != null) {
-                    icon = new GLib.ThemedIcon (custom_icon_name);
+                if (icon_info == null) {
+                    custom_icon_name = null;
                 }
             }
         }
@@ -470,8 +463,6 @@ public class GOF.File : GLib.Object {
         if (icon == null) {
             if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
                 icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
-            } else {
-                icon = null;
             }
         }
 
@@ -500,7 +491,7 @@ public class GOF.File : GLib.Object {
         /* TODO the key-files could be loaded async.
         <lazy>The performance gain would not be that great</lazy>*/
         is_desktop = is_desktop_file ();
-        if (is_desktop && (custom_icon_name == null || custom_icon_name == "") ) {
+        if (is_desktop) {
             try {
                 var key_file = PF.FileUtils.key_file_from_file (location);
                 custom_icon_name = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_ICON);
@@ -1235,7 +1226,7 @@ public class GOF.File : GLib.Object {
     private Marlin.IconInfo? get_special_icon (int size, int scale, GOF.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
-        if (custom_icon_name != null && custom_icon_name != "") {
+        if (!is_directory && custom_icon_name != null && custom_icon_name != "") {
             if (GLib.Path.is_absolute (custom_icon_name)) {
                 return Marlin.IconInfo.lookup_from_path (custom_icon_name, size, scale);
             } else {
