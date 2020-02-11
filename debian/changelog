@@ -1,3 +1,57 @@
+pantheon-files (4.4.0) bionic; urgency=medium
+
+  * Release version 4.4.0 (#1234)
+  * Close Miller slot properly (#1232)
+  * Update translation files
+  * Update translation template
+  * Prepare for next release (#1228)
+  * Add build and test job; remove .travis.yml (#1231)
+  * Simplify horizontal scrolling of Column View (#1217)
+  * Update translation files
+  * Update translation template
+  * Add destructive button to file operation dialogs (#1150)
+  * Update translation files
+  * Update translation template
+  * Update POTFILES
+  * Convert UndoManager to Vala (#1132)
+  * Make sure initial filechooser location is a proper URI (#1136)
+  * Update translation files
+  * Update translation template
+  * Show dialog when unmounting/ejecting device/volume/mount in use
+    (#1137)
+  * Do not try and discover git repo if path null (#1147)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Fix location_bar path_change request handling in filechooser-module.
+    (#1181)
+  * Bump meson to >=0.46 to fix warning (#1182)
+  * AbstractDirectoryView: Remove is_in_recent () (#1175)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * AbstractDirectoryView: Add AccelLabels to menus (#1171)
+  * Update translation files
+  * Update translation template
+  * Update copy in delete directly dialog (#1151)
+  * AbstractDirectoryView: Fix large icons in Open with (#1177)
+  * AbstractDirectoryView: Don't account for remote Recent folder
+    (#1170)
+  * AbstractDirectoryView: Avoid extra sep with multiselect (#1174)
+  * Update translation files
+  * Update translation template
+  * POTFILES: Remove directory_view_popup.ui (#1173)
+  * File copy remaining time fix (#1152)
+  * Do not scan non-local folders for git repos (#1157)
+  * AbstractDirectoryView: Create context menus natively (#1160)
+  * Fix pkg.generate () syntax; clarify description (#1168)
+  * Update translation files
+  * Update translation template
+  * TopMenu → HeaderBar (#1159)
+  * Ensure target_uri not null in `get_number_of_uri_parts` (#1148)
+
+ -- Cody Garver <cody@elementary.io>  Tue, 11 Feb 2020 16:25:05 +0000
+
 pantheon-files (4.3.0) bionic; urgency=medium
 
   * Release 4.3.0 (#1143)
