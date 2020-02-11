@@ -136,18 +136,6 @@ typedef struct {
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
-#define CANCEL _("_Cancel")
-#define DELETE _("_Delete")
-#define SKIP _("_Skip")
-#define SKIP_ALL _("S_kip All")
-#define RETRY _("_Retry")
-#define DELETE_ALL _("Delete _All")
-#define REPLACE _("_Replace")
-#define REPLACE_ALL _("Replace _All")
-#define MERGE _("_Merge")
-#define MERGE_ALL _("Merge _All")
-#define COPY_FORCE _("Copy _Anyway")
-
 static void scan_sources (GList *files,
                           SourceInfo *source_info,
                           CommonJob *job,
@@ -1139,7 +1127,7 @@ confirm_empty_trash (EmptyTrashJob *job)
                             secondary_text,
                             NULL,
                             FALSE,
-                            CANCEL, _("Empty _Trash"),
+                            CANCEL, EMPTY_TRASH,
                             NULL);
 
     return (response == 1);

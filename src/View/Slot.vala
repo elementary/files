@@ -65,7 +65,6 @@ namespace Marlin.View {
             }
         }
 
-        public signal bool horizontal_scroll_event (double delta_x);
         public signal void frozen_changed (bool freeze);
         public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
 
