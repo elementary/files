@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-28 17:34+0000\n"
-"PO-Revision-Date: 2020-01-21 18:41+0000\n"
+"PO-Revision-Date: 2020-01-30 22:08+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -1110,8 +1110,6 @@ msgid "_Cancel"
 msgstr "Annuler"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
 msgstr "Supprimer"
 

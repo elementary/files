@@ -247,7 +247,6 @@ namespace Marlin.View {
         private void connect_slot_signals (Slot slot) {
             slot.frozen_changed.connect (on_slot_frozen_changed);
             slot.active.connect (on_slot_active);
-            slot.horizontal_scroll_event.connect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.connect (on_miller_slot_request);
             slot.new_container_request.connect (on_new_container_request);
             slot.size_change.connect (update_total_width);
@@ -261,7 +260,6 @@ namespace Marlin.View {
         private void disconnect_slot_signals (Slot slot) {
             slot.frozen_changed.disconnect (on_slot_frozen_changed);
             slot.active.disconnect (on_slot_active);
-            slot.horizontal_scroll_event.disconnect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.disconnect (on_miller_slot_request);
             slot.new_container_request.disconnect (on_new_container_request);
             slot.size_change.disconnect (update_total_width);
@@ -285,17 +283,6 @@ namespace Marlin.View {
 
         private void on_new_container_request (GLib.File loc, Marlin.OpenFlag flag) {
             new_container_request (loc, flag);
-        }
-
-        private bool on_slot_horizontal_scroll_event (double delta_x) {
-            /* We can assume this is a horizontal or smooth scroll without control pressed*/
-            double increment = 0.0;
-            increment = delta_x * 10.0;
-
-            if (increment != 0.0) {
-                hadj.set_value (hadj.get_value () + increment);
-            }
-            return true;
         }
 
         private void on_slot_path_changed () {
