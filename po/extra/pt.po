@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-11 16:25+0000\n"
-"PO-Revision-Date: 2020-01-28 17:32+0000\n"
+"PO-Revision-Date: 2020-02-18 19:08+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -82,14 +82,20 @@ msgstr "Mostra um aviso ao ejetar um volume que ainda está em uso"
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
+"Corrige a atualização do cursor após deslocamento horizontal na Vista de "
+"Coluna"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
+"Corrige o ícone de pasta aberta persistindo depois de fechar a Vista de "
+"Coluna"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr ""
+"Use um estilo de ação destrutiva para alguns botões de caixa de diálogo do "
+"lixo"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 #: data/io.elementary.files.appdata.xml.in.in:102
