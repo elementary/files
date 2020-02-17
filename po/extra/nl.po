@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-11 16:25+0000\n"
-"PO-Revision-Date: 2020-02-03 16:08+0000\n"
+"PO-Revision-Date: 2020-02-18 19:08+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -83,14 +83,20 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
+"Een probleem met het verversen van de cursor opgelost tijdens het "
+"horizontaal scrollen in kolomweergave"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
+"Een probleem opgelost met het blijvende map open icoon na het sluiten van de "
+"kolomweergave"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr ""
+"Gebruik destructieve actie styling voor sommige prullenbak dialoogvenster "
+"knoppen"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 #: data/io.elementary.files.appdata.xml.in.in:102
