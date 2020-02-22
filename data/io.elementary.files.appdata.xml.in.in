@@ -62,6 +62,8 @@
       <description>
         <ul>
           <li>Fix "New Folder" shortcut label in menu</li>
+          <li>Discontinue colorization and highlighting of focused and hovered icons</li>
+          <li>Grey background for selected items in Icon View</li>
           <li>Updated translations</li>
         </ul>
       </description>
