@@ -48,6 +48,7 @@ pantheon_files_exec = executable (
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/BreadcrumbsEntry.vala',
     'View/Widgets/DiskRenderer.vala',
+    'View/Widgets/HeaderBar.vala',
     'View/Widgets/Label.vala',
     'View/Widgets/LocationBar.vala',
     'View/Widgets/MultiLineEditableLabel.vala',
@@ -55,7 +56,6 @@ pantheon_files_exec = executable (
     'View/Widgets/PermissionButton.vala',
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SingleLineEditableLabel.vala',
-    'View/Widgets/TopMenu.vala',
     'View/Widgets/AppMenuPopover.vala',
 
     dependencies : [
@@ -63,9 +63,4 @@ pantheon_files_exec = executable (
         vala.find_library('marlin', dirs: meson.current_source_dir ()),
     ],
     install: true,
-)
-
-install_data (
-    join_paths(meson.current_source_dir (), 'View', 'directory_view_popup.ui'),
-    install_dir: ui_dir
 )

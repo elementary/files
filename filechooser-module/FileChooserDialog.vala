@@ -135,7 +135,7 @@ public class CustomFileChooserDialog : Object {
 
         location_bar.path_change_request.connect ((uri) => {
             if (uri != null) {
-                chooser_dialog.set_current_folder (uri);
+                chooser_dialog.set_current_folder_uri (uri);
             }
             /* OK to set to not local only now.*/
             chooser_dialog.local_only = false;
@@ -148,6 +148,11 @@ public class CustomFileChooserDialog : Object {
         var last_folder = chooser_settings.get_string ("last-folder-uri");
         if (last_folder.length < 1) {
             last_folder = Environment.get_home_dir ();
+        }
+
+        last_folder = PF.FileUtils.sanitize_path (last_folder);
+        if (Uri.parse_scheme (last_folder) == null) {
+            last_folder = "file://" + last_folder;
         }
 
         chooser_dialog.set_current_folder_uri (last_folder);

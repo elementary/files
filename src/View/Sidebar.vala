@@ -2055,7 +2055,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         disconnect_volume_monitor_signals ();
         ejecting_or_unmounting = true;
         bool success = false;
-        GLib.MountOperation mount_op = new GLib.MountOperation ();
+        var mount_op = new Gtk.MountOperation (window);
 
         if (drive != null && allow_eject && drive.can_eject ()) {
             drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
