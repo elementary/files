@@ -578,11 +578,7 @@ namespace Marlin.View {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
             }
 
-            slot_list.@foreach ((slot) => {
-                if (slot != null) {
-                    slot.close ();
-                }
-            });
+            truncate_list_after_slot (slot_list.first ().data);
         }
 
         public override bool set_all_selected (bool all) {
