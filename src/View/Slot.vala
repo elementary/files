@@ -379,6 +379,7 @@ namespace Marlin.View {
         }
 
         public override void close () {
+            debug ("SLOT close %s", uri);
             cancel_timeouts ();
 
             if (directory != null) {
