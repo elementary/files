@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-18 19:39+0000\n"
-"PO-Revision-Date: 2020-02-18 19:08+0000\n"
+"PO-Revision-Date: 2020-02-20 23:08+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix \"New Folder\" shortcut label in menu"
-msgstr ""
+msgstr "Corrige a legenda do atalho \"Nova Pasta\" no menu"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:78
