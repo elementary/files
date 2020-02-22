@@ -2194,7 +2194,7 @@ namespace FM {
                 var folder_menuitem = new Gtk.MenuItem ();
                 folder_menuitem.add (new Granite.AccelLabel (
                     _("Folder"),
-                    "<Ctrl>n"
+                    "<Ctrl><Shift>n"
                 ));
                 folder_menuitem.action_name = "background.new";
                 folder_menuitem.action_target = "FOLDER";
