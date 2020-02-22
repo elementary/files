@@ -31,7 +31,6 @@ jobs:
       env:
         DESTDIR: out
       run: |
-        meson --prefix=/usr build
         cd build
         ninja test
 
