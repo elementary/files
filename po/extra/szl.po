@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-18 19:39+0000\n"
-"PO-Revision-Date: 2020-02-23 18:58+0000\n"
+"PO-Revision-Date: 2020-02-24 19:09+0000\n"
 "Last-Translator: gkkulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/extra/szl/"
 ">\n"
@@ -26,6 +26,8 @@ msgstr ""
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
+"katalog;folder;mynedżer;menadżer;manadżer;manedżer;manager;eksploruj;eksplora"
+"tōr;dysk;systym zbiorōw;"
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
@@ -34,7 +36,7 @@ msgstr ""
 #. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -73,7 +75,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:208
 #: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Updated translations"
-msgstr ""
+msgstr "Zaktualizowane przekłady"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Show keyboard shortcuts in menu items"
@@ -101,7 +103,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid "New features:"
-msgstr ""
+msgstr "Nowe funkcyje:"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Initial git plugin support"
@@ -113,7 +115,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Other updates:"
-msgstr ""
+msgstr "Inksze aktualizacyje:"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Ensure tabs showing same folder remain synchronized"
@@ -333,7 +335,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:199
 msgid "Build fixes"
-msgstr ""
+msgstr "Poprowki buildu"
 
 #: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Plugin build fixes"
@@ -405,7 +407,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:237
 msgid "Crash fixes"
-msgstr ""
+msgstr "Poprowki przi awaryjach"
 
 #: data/io.elementary.files.appdata.xml.in.in:238
 msgid "Trash: respect sound setting"
@@ -437,7 +439,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:294
 #: data/io.elementary.files.appdata.xml.in.in:305
 msgid "New translations"
-msgstr ""
+msgstr "Nowe przekłady"
 
 #: data/io.elementary.files.appdata.xml.in.in:258
 #: data/io.elementary.files.appdata.xml.in.in:271
@@ -448,7 +450,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:320
 #: data/io.elementary.files.appdata.xml.in.in:344
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "Poprowki drobnych błyndōw"
 
 #: data/io.elementary.files.appdata.xml.in.in:265
 msgid "Improved networking support"
@@ -527,11 +529,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:337
 msgid "Translation updates"
-msgstr ""
+msgstr "Aktualizacyje przekładu"
 
 #: data/io.elementary.files.appdata.xml.in.in:349
 msgid "elementary LLC."
-msgstr ""
+msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
