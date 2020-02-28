@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-18 19:39+0000\n"
-"PO-Revision-Date: 2020-02-10 11:08+0000\n"
+"PO-Revision-Date: 2020-02-28 20:33+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix \"New Folder\" shortcut label in menu"
-msgstr ""
+msgstr "मेनूमधील \"नवीन फोल्डर\" शॉर्टकट लेबलचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:78
@@ -84,43 +84,45 @@ msgstr "मेनू आयटममध्ये कीबोर्ड शॉर
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr ""
+msgstr "फाइल निवडकर्त्यामध्ये ब्रेडक्रॅम्बशी संबंधित समस्येचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Show a warning when ejecting a volume that's still in use"
-msgstr ""
+msgstr "अद्याप वापरात असलेला व्हॉल्यूम बाहेर काढताना चेतावणी दर्शवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
+"स्तंभ दृश्यात आडव्या स्क्रोल नंतर कर्सर अद्यतन संबंधित समस्येचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
+"कॉलम व्यू बंद केल्यावर कायम असलेल्या फोल्डर-ओपन आयकॉनशी संबंधित निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
 msgid "Use destructive action styling for some trash dialog buttons"
-msgstr ""
+msgstr "काही कचर्‍याच्या संवाद बटणासाठी विनाशकारी कृती शैली वापरा"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid "New features:"
-msgstr ""
+msgstr "नवीन वैशिष्ट्ये:"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Initial git plugin support"
-msgstr ""
+msgstr "आरंभिक गिट प्लगइन समर्थन"
 
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Follow global history setting when restoring and saving tabs"
-msgstr ""
+msgstr "टॅब पुनर्संचयित आणि जतन करताना जागतिक इतिहास सेटिंगचे अनुसरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Other updates:"
-msgstr ""
+msgstr "अन्य अपडेट्स:"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Ensure tabs showing same folder remain synchronized"
-msgstr ""
+msgstr "समान फोल्डर्स दर्शवित असलेले टॅब समक्रमित राहण्याची खात्री करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Fix drag with secondary button on empty space"
