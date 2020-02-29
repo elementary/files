@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-18 19:39+0000\n"
-"PO-Revision-Date: 2019-11-27 20:24+0000\n"
+"PO-Revision-Date: 2020-02-29 20:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
@@ -62,7 +62,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix \"New Folder\" shortcut label in menu"
-msgstr ""
+msgstr "תיקון תווית קיצור הדרך „תיקייה חדשה” בתפריט"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:78
@@ -81,19 +81,19 @@ msgstr "התרגומים עודכנו"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Show keyboard shortcuts in menu items"
-msgstr ""
+msgstr "הצגת קיצורי מקלדת בפריטי תפריט"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr ""
+msgstr "תיקון תקלה עם ניווט מנוהל בבוחר הקבצים"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Show a warning when ejecting a volume that's still in use"
-msgstr ""
+msgstr "הצגת אזהרה בעת ניתוק כרך שעדיין בשימוש"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix cursor update after horizontal scroll in Column View"
-msgstr ""
+msgstr "תיקון עדכון הסמן לאחר גלילה אופקית בתצוגת העמודות"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Fix folder-open icon persisting after closing Column View"
