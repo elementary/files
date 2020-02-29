@@ -449,9 +449,6 @@ namespace Marlin.View {
                 browser.record_uri (null);
             }
 
-            /* Slot info was updated on starting to load but if target was not a directory
-             * the loaded location may be different. */
-            refresh_slot_info (slot.location);
             loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
