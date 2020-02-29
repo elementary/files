@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
+"POT-Creation-Date: 2020-02-29 20:51+0000\n"
 "PO-Revision-Date: 2020-02-03 16:08+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
-"\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
+">\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -308,7 +308,7 @@ msgstr "प्रकार"
 msgid "Modified"
 msgstr "सुधारित"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Exist"
 msgstr "हे फोल्डर अस्तित्वात नाही"
 
@@ -501,59 +501,59 @@ msgstr "त्याऐवजी निवडलेले कट करीत �
 msgid "Cannot paste files here"
 msgstr "येथे फायली पेस्ट करू शकत नाही"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "होम"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You cannot create a folder here."
 msgstr "आपण येथे फोल्डर तयार करू शकत नाही."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "The network is unavailable"
 msgstr "नेटवर्क अनुपलब्ध आहे"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:404
 msgid "A working network is needed to reach this folder"
 msgstr "या फोल्डरमध्ये पोहोचण्यासाठी एक कार्यरत नेटवर्क आवश्यक आहे"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Belong to You"
 msgstr "हे फोल्डर आपल्याशी संबंधित नाही"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:408
 msgid "You don't have permission to view this folder."
 msgstr "आपल्याला हे फोल्डर पाहण्याची परवानगी नाही."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "Unable to Mount Folder"
 msgstr "फोल्डर माउंट करण्यास अक्षम"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:411
 msgid "Could not connect to the server for this folder."
 msgstr "या फोल्डरसाठी सर्व्हरशी कनेक्ट करू शकलो नाही."
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Display Folder Contents"
 msgstr "फोल्डर सामग्री दाखविण्यास अक्षम"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:415
 msgid "The operation timed out."
 msgstr "ऑपरेशन कालबाह्य झाले आहे."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Show Folder"
 msgstr "फोल्डर दाखविण्यास अक्षम"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:418
 msgid "The server for this folder could not be located."
 msgstr "या फोल्डरसाठी सर्व्हर शोधता आला नाही."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:429
 msgid "File not Found"
 msgstr "फाइल सापडली नाही"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:430
 msgid "The file selected no longer exists."
 msgstr "निवडलेली फाइल यापुढे विद्यमान नाही."
 
@@ -1270,9 +1270,7 @@ msgstr[1] "आपणास खात्री आहे की आपण नि�
 
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
-"हटविलेल्या वस्तू कचर्‍यामध्ये पाठविल्या जात नाहीत आणि पुनर्प्राप्त करण्यायोग्"
-"य नाहीत."
+msgstr "हटविलेल्या वस्तू कचर्‍यामध्ये पाठविल्या जात नाहीत आणि पुनर्प्राप्त करण्यायोग्य नाहीत."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format

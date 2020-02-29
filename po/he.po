@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
-"PO-Revision-Date: 2019-11-27 20:24+0000\n"
+"POT-Creation-Date: 2020-02-29 20:51+0000\n"
+"PO-Revision-Date: 2020-02-29 20:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: src/Application.vala:124
@@ -312,7 +312,7 @@ msgstr "סוג"
 msgid "Modified"
 msgstr "מועד השינוי"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Exist"
 msgstr "תיקייה זו אינה קיימת"
 
@@ -414,10 +414,8 @@ msgid "Remove from History"
 msgstr "הסרה מההיסטוריה"
 
 #: src/View/AbstractDirectoryView.vala:2023
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "שינוי שם"
+msgstr "שינוי שם…"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
@@ -440,10 +438,8 @@ msgid "Show Remote Thumbnails"
 msgstr "הצגת תמונות ממוזערות לקבצים מרוחקים"
 
 #: src/View/AbstractDirectoryView.vala:2080
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "הסתרת תמונות ממוזערות לקבצים מקומיים"
+msgstr "הסתרת תמונות ממוזערות"
 
 #: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
@@ -509,59 +505,59 @@ msgstr "גזירת הבחירה במקום"
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "בית"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You cannot create a folder here."
 msgstr "אין לך אפשרות ליצור כאן תיקייה."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "The network is unavailable"
 msgstr "הרשת אינה זמינה"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:404
 msgid "A working network is needed to reach this folder"
 msgstr "נדרש חיבור זמין לרשת כדי לגשת לתיקייה זו"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Belong to You"
 msgstr "תיקייה זו אינה שייכת לך"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:408
 msgid "You don't have permission to view this folder."
 msgstr "אין לך הרשאה לראות תיקייה זו."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "Unable to Mount Folder"
 msgstr "לא ניתן לעגן את התיקייה"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:411
 msgid "Could not connect to the server for this folder."
 msgstr "לא ניתן להתחבר לשרת לתיקייה זו."
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Display Folder Contents"
 msgstr "לא ניתן להציג את תוכן התיקייה"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:415
 msgid "The operation timed out."
 msgstr "הזמן שהוקצב לפעולה ההסתיים."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Show Folder"
 msgstr "לא ניתן להציג את התיקייה"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:418
 msgid "The server for this folder could not be located."
 msgstr "לא ניתן לאתר את השרת עבור תיקייה זו."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:429
 msgid "File not Found"
 msgstr "קובץ לא נמצא"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:430
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
@@ -1109,10 +1105,8 @@ msgid "_Cancel"
 msgstr "_ביטול"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
-msgstr "מ_חיקה"
+msgstr "מחיקה"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1266,10 +1260,9 @@ msgstr "כל הפריטים בסל האשפה בכרך מעוגן זה, יימח
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1151
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "למחוק לצמיתות את כל הפריטים מסל האשפה?"
+msgstr "למחוק את „%s” לצמיתות?"
 
 #: libcore/marlin-file-operations.c:1154
 #, c-format
@@ -1281,7 +1274,7 @@ msgstr[1] "למחוק לצמיתות את %'d הפריטים הנבחרים?"
 
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "הפריטים שנמחקים לא נשלחים לסל המיחזור ולא ניתן לשחזר אותם."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format
@@ -1494,7 +1487,7 @@ msgstr "חלה שגיאה במהלך ההעברה לסל האשפה."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2208
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1504,7 +1497,7 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2253
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1513,7 +1506,7 @@ msgstr "לא ניתן לטפל בתיקייה „%s” מאחר שאין לך ה
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2340
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1522,7 +1515,7 @@ msgstr "לא ניתן לטפל בקובץ „%s” מאחר שאין לך ההר
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2345
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "חלה שגיאה בקבלת מידע על „%s”."
 
@@ -1530,7 +1523,7 @@ msgstr "חלה שגיאה בקבלת מידע על „%s”."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2451 libcore/marlin-file-operations.c:2497
 #: libcore/marlin-file-operations.c:2535 libcore/marlin-file-operations.c:2575
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "חלה שגיאה בהעתקה אל „%s”."
 

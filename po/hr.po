@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
+"POT-Creation-Date: 2020-02-29 20:51+0000\n"
 "PO-Revision-Date: 2017-08-16 12:17+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://weblate.elementary.io/projects/files/files/"
@@ -327,7 +327,7 @@ msgstr "Vrsta"
 msgid "Modified"
 msgstr "Promijenjeno"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Exist"
 msgstr "Ova mapa ne postoji"
 
@@ -531,59 +531,59 @@ msgstr "Umjesto toga rezanje odabira"
 msgid "Cannot paste files here"
 msgstr "Nemoguće je zalijepiti datoteke ovdje"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Osobna mapa"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You cannot create a folder here."
 msgstr "Ne možete stvoriti mapu ovdje."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "The network is unavailable"
 msgstr "Mreža je nedostupna"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:404
 msgid "A working network is needed to reach this folder"
 msgstr "Potrebna je ispravna mreža za pristup ovoj mapi"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Belong to You"
 msgstr "Ova mapa vam ne pripada"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:408
 msgid "You don't have permission to view this folder."
 msgstr "Nemate dozvolu za gledanje ova mape."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "Unable to Mount Folder"
 msgstr "Nemoguće montiranje mape"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:411
 msgid "Could not connect to the server for this folder."
 msgstr "Nemoguće povezivanje s poslužiteljem ove mape."
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Display Folder Contents"
 msgstr "Nemoguć prikaz sadržaja mape"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:415
 msgid "The operation timed out."
 msgstr "Vrijeme radnje isteklo."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Show Folder"
 msgstr "Nemoguće je prikazati mapu"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:418
 msgid "The server for this folder could not be located."
 msgstr "Poslužitelja ove mape nije moguće locirati."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:429
 msgid "File not Found"
 msgstr "Datoteka nije pronađena"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:430
 msgid "The file selected no longer exists."
 msgstr "Odabrana datoteka više ne postoji."
 
