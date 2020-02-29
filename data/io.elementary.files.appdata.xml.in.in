@@ -62,6 +62,7 @@
       <description>
         <ul>
           <li>Fix "New Folder" shortcut label in menu</li>
+          <li>Fix moving multiple steps with history menu</li>
           <li>Updated translations</li>
         </ul>
       </description>
