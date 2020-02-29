@@ -64,6 +64,7 @@
         <ul>
           <li>Fix "New Folder" keyboard shortcut label in menu</li>
           <li>Fix navigation with back/forward button context menu</li>
+          <li>Fix path bar sometimes showing wrong path when closing a tab</li>
           <li>Updated translations</li>
         </ul>
       </description>
