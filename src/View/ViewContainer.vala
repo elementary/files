@@ -148,6 +148,7 @@ namespace Marlin.View {
         }
 
         private void disconnect_signals () {
+            disconnect_slot_signals (view);
             disconnect_window_signals ();
         }
 
