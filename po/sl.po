@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-28 17:34+0000\n"
-"PO-Revision-Date: 2020-01-07 18:53+0000\n"
+"PO-Revision-Date: 2020-02-29 20:36+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
 ">\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
@@ -430,10 +430,8 @@ msgid "Remove from History"
 msgstr "Odstrani z zgodovine"
 
 #: src/View/AbstractDirectoryView.vala:2023
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Preimenuj"
+msgstr "Preimenuj…"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Copy as Link"
@@ -456,10 +454,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Prikaži predogled za datoteke na omrežju"
 
 #: src/View/AbstractDirectoryView.vala:2080
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Skrij predogled za datoteke na disku"
+msgstr "Skrij predogled za datoteke"
 
 #: src/View/AbstractDirectoryView.vala:2100
 msgid "Paste Link"
@@ -1125,8 +1121,6 @@ msgid "_Cancel"
 msgstr "Prekliči"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
 msgstr "Izbriši"
 
@@ -1297,10 +1291,9 @@ msgstr "Vsi predmeti v smeteh na tem pogonu bodo trajno izbrisani."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1151
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Trajno izbriši vse v smeteh?"
+msgstr "Trajno izbriši “%s”?"
 
 #: libcore/marlin-file-operations.c:1154
 #, c-format
@@ -1317,7 +1310,7 @@ msgstr[3] ""
 
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "Izbrisane datoteke ne bodo premaknjene v smeti in bodo trajno uničene."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format
