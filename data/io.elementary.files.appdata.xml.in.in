@@ -63,6 +63,7 @@
         <ul>
           <li>Fix "New Folder" shortcut label in menu</li>
           <li>Fix moving multiple steps with history menu</li>
+          <li>Fix path bar sometimes showing wrong path when closing a tab</li>
           <li>Updated translations</li>
         </ul>
       </description>
