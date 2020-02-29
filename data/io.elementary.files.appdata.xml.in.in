@@ -58,10 +58,12 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.4.1" date="2020-02-18" urgency="medium">
+    <release version="4.4.1" date="2020-02-29" urgency="medium">
       <description>
+        <p>Minor updates:</p>
         <ul>
-          <li>Fix "New Folder" shortcut label in menu</li>
+          <li>Fix "New Folder" keyboard shortcut label in menu</li>
+          <li>Fix navigation with back/forward button context menu</li>
           <li>Updated translations</li>
         </ul>
       </description>
