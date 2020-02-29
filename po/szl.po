@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
+"POT-Creation-Date: 2020-02-29 20:51+0000\n"
 "PO-Revision-Date: 2020-02-24 19:09+0000\n"
 "Last-Translator: gkkulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -278,7 +278,8 @@ msgstr "Sōm zaznaczōne rozmajte typy zbiorōw"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
-msgstr "Żodyn jedyn program niy poradzi ôtworzić wszyjskich tych zortōw zbiorōw"
+msgstr ""
+"Żodyn jedyn program niy poradzi ôtworzić wszyjskich tych zortōw zbiorōw"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
@@ -312,7 +313,7 @@ msgstr "Zorta"
 msgid "Modified"
 msgstr "Modyfikacyjo"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Exist"
 msgstr "Tyn katalog niy istniyje"
 
@@ -505,59 +506,59 @@ msgstr "Wytnij ôbiōr"
 msgid "Cannot paste files here"
 msgstr "Niy idzie wrazić sam zbiorōw"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Katalog dōmowy"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You cannot create a folder here."
 msgstr "Niy idzie stworzić sam katalogu."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "The network is unavailable"
 msgstr "Nec je niydostympny"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:404
 msgid "A working network is needed to reach this folder"
 msgstr "Coby dostać dostymp do tego katalogu, potrzebny je fungujōncy nec"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Belong to You"
 msgstr "Tyn katalog niy noleży do ciebie"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:408
 msgid "You don't have permission to view this folder."
 msgstr "Niy mosz uprawniyń do przeglōndanio tego katalogu."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "Unable to Mount Folder"
 msgstr "Niy idzie zamōntować katalogu"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:411
 msgid "Could not connect to the server for this folder."
 msgstr "Niy szło połōnczyć ze serwerym do tego katalogu."
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Display Folder Contents"
 msgstr "Niy idzie pokozać zawartości katalogu"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:415
 msgid "The operation timed out."
 msgstr "Limit czasu ôperacyje bōł przekroczōny."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Show Folder"
 msgstr "Niy idzie pokozać katalogu"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:418
 msgid "The server for this folder could not be located."
 msgstr "Serwer dlo tego katalogu niy mōg być zlokalizowany."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:429
 msgid "File not Found"
 msgstr "Niy szło znojś zbioru"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:430
 msgid "The file selected no longer exists."
 msgstr "Ôbrany zbiōr już niy istniyje."
 
@@ -1409,7 +1410,8 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:1652
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "Niy idzie przeniyś zbioru do hasioka. Sprōbować go skasować doimyntnie?"
+msgstr ""
+"Niy idzie przeniyś zbioru do hasioka. Sprōbować go skasować doimyntnie?"
 
 #: libcore/marlin-file-operations.c:1653
 msgid ""
