@@ -182,8 +182,8 @@ namespace Marlin.View {
             /* Connect and abstract signals to local ones
             /*/
 
-            top_menu.forward.connect (() => {current_tab.go_forward ();});
-            top_menu.back.connect (() => {current_tab.go_back ();});
+            top_menu.forward.connect ((steps) => { current_tab.go_forward (steps); });
+            top_menu.back.connect ((steps) => { current_tab.go_back (steps); });
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
                 current_tab.is_frozen = false;
