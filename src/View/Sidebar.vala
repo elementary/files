@@ -672,11 +672,12 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                  * work.. but it's also for human beings who like to turn off media detection
                  * in the OS to save battery juice.
                  */
+
                 var name = drive.get_name ();
                 add_place (PlaceType.BUILT_IN,
                            iter,
                            name,
-                           drive.get_icon (),
+                           get_drive_icon (drive),
                            null,
                            drive,
                            null,
@@ -698,7 +699,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                        iter,
                                        mount.get_name (),
-                                       mount.get_icon (),
+                                       get_mount_icon (mount),
                                        root.get_uri (),
                                        null,
                                        volume,
@@ -713,7 +714,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 add_place (PlaceType.MOUNTED_VOLUME,
                            iter,
                            name,
-                           volume.get_icon (),
+                           get_volume_icon (volume),
                            null,
                            null,
                            volume,
@@ -750,7 +751,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                    iter,
                                    mount.get_name (),
-                                   mount.get_icon (),
+                                   get_mount_icon (mount),
                                    root.get_uri (),
                                    null,
                                    null,
@@ -783,7 +784,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 last_iter = add_place (PlaceType.BUILT_IN,
                                        iter,
                                        mount.get_name (),
-                                       mount.get_icon (),
+                                       get_mount_icon (mount),
                                        uri,
                                        null,
                                        null,
@@ -825,6 +826,34 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
+    private Icon get_drive_icon (Drive drive) {
+        var icon = (ThemedIcon)(drive.get_icon ());
+        if (icon == null || icon.get_names ()[0].contains ("missing")) {
+            warning ("Using fallback drive icon");
+            icon = new ThemedIcon.with_default_fallbacks ("drive-harddisk-solidstate");
+        }
+
+        return icon;
+    }
+    private Icon get_volume_icon (Volume volume) {
+        var icon = (ThemedIcon)(volume.get_icon ());
+        if (icon == null || icon.get_names ()[0].contains ("missing")) {
+            warning ("Using fallback volume icon");
+            icon = new ThemedIcon.with_default_fallbacks ("drive-harddisk-solidstate");
+        }
+
+        return icon;
+    }
+    private Icon get_mount_icon (Mount mount) {
+        var icon = (ThemedIcon)(mount.get_icon ());
+        if (true || icon == null || icon.get_names ()[0].contains ("missing")) {
+            warning ("Using fallback mount icon");
+            icon = new ThemedIcon.with_default_fallbacks ("drive-harddisk-solidstate");
+        }
+
+        return icon;
+    }
+
     private static void side_bar_connect_server (Gtk.Widget widget) {
         ((Sidebar)widget).connect_server_request ();
     }
@@ -859,7 +888,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                        iter,
                                        mount.get_name (),
-                                       mount.get_icon (),
+                                       get_mount_icon (mount),
                                        root.get_uri (),
                                        drive,
                                        volume,
@@ -881,7 +910,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 add_place (PlaceType.MOUNTED_VOLUME,
                            iter,
                            name,
-                           volume.get_icon (),
+                           get_volume_icon (volume),
                            null,
                            drive,
                            volume,
