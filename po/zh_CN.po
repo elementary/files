@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:36+0000\n"
+"POT-Creation-Date: 2020-03-01 02:49+0000\n"
 "PO-Revision-Date: 2019-09-13 06:22+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -1066,25 +1066,25 @@ msgstr "无法确定“%s”的原位置 "
 msgid "The item cannot be restored from trash"
 msgstr "此项目无法从回收站中恢复"
 
-#: libcore/FileUtils.vala:443
+#: libcore/FileUtils.vala:445
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "无法重命名为 '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:532
+#: libcore/FileUtils.vala:534
 #, c-format
 msgid "Today at %s"
 msgstr "今天 %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:538
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Yesterday at %s"
 msgstr "昨天 %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:544
+#: libcore/FileUtils.vala:546
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A %s"
