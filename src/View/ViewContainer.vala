@@ -241,11 +241,19 @@ namespace Marlin.View {
             }
         }
 
-        public void add_view (Marlin.ViewMode mode, GLib.File loc) {
+        // the locations in @to_select must be children of @loc
+        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[] to_select = null) {
             assert (view == null);
             assert (loc != null);
 
             view_mode = mode;
+
+            if (to_select != null) {
+                selected_locations = null;
+                foreach (File f in to_select) {
+                    selected_locations.prepend (f);
+                }
+            }
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this, mode);
