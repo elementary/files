@@ -65,6 +65,7 @@
           <li>Fix moving multiple steps with history menu</li>
           <li>Fix path bar sometimes showing wrong path when closing a tab</li>
           <li>Ensure keyboard shortcuts work immediately after creating or renaming a file</li>
+          <li>Do not include "file://" in pathbar text or when pasting path as text</li>
           <li>Updated translations</li>
         </ul>
       </description>
@@ -74,7 +75,6 @@
         <ul>
           <li>Show keyboard shortcuts in menu items</li>
           <li>Fix an issue with breadcrumbs in the file chooser</li>
-          <li>Do not include "file://" in pathbar text or when pasting path as text</li>
           <li>Show a warning when ejecting a volume that's still in use</li>
           <li>Fix cursor update after horizontal scroll in Column View</li>
           <li>Fix folder-open icon persisting after closing Column View</li>
