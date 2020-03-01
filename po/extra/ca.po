@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-01 02:49+0000\n"
-"PO-Revision-Date: 2020-02-20 23:08+0000\n"
+"PO-Revision-Date: 2020-03-02 20:09+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,23 +73,27 @@ msgid "Fix \"New Folder\" shortcut label in menu"
 msgstr "Correcció de l'etiqueta de la drecera de carpeta nova al menú"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Fix missing File System properties menu"
 msgid "Fix moving multiple steps with history menu"
-msgstr "Correcció del menú de propietats del sistema de fitxers que falta"
+msgstr "Solució de diversos passos amb el menú d'historial"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
+"Correcció de la barra de camins que de vegades mostra el camí equivocat en "
+"tancar una pestanya"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
+"S'assegura que les dreceres de teclat funcionin immediatament després de "
+"crear o canviar el nom d'un fitxer."
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
+"No s'inclou \"fitxer: //\" al text de la barra de camins o quan s'enganxa "
+"com a text."
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:82
