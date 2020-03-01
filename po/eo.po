@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
+"POT-Creation-Date: 2020-03-01 02:36+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -28,7 +28,7 @@ msgstr "Montri la version de la programo"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Malfermi unu aŭ plurajn URI-adresojn, en propraj langetoj"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1855
 msgid "New Window"
 msgstr "Nova fenestro"
 
@@ -120,7 +120,7 @@ msgid "Set as default"
 msgstr "Difini kiel apriora"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1962 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Atributoj"
 
@@ -199,7 +199,7 @@ msgid "Original Location:"
 msgstr "Devena loko:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1929
+#: src/View/AbstractDirectoryView.vala:1930
 msgid "Other Application…"
 msgstr "Alia aplikaĵo…"
 
@@ -301,11 +301,11 @@ msgstr "(kiel administranto)"
 msgid "Filename"
 msgstr "Dosiernomo"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2158
 msgid "Size"
 msgstr "Grando"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2163
 msgid "Type"
 msgstr "Tipo"
 
@@ -313,7 +313,7 @@ msgstr "Tipo"
 msgid "Modified"
 msgstr "Modifita"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Exist"
 msgstr "La dosierujo ne ekzistas"
 
@@ -335,234 +335,234 @@ msgstr "Krei la dosieron „%s“"
 msgid "Failed to create the folder"
 msgstr "Neeblis krei la dosierujon"
 
-#: src/View/AbstractDirectoryView.vala:819
-#: src/View/AbstractDirectoryView.vala:1126
+#: src/View/AbstractDirectoryView.vala:820
+#: src/View/AbstractDirectoryView.vala:1127
 msgid "Cannot execute this file"
 msgstr "Neeblas ruli la dosieron"
 
-#: src/View/AbstractDirectoryView.vala:840
+#: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot open this file"
 msgstr "Neeblas malfermi ĉi dosieron"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:854
 msgid "Cannot identify file type to open"
 msgstr "Neeblas identigi la dosiertipon malfermota"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "Neeblas demeti la dosieron"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Invalid file name provided"
 msgstr "Nevalida provizita dosiernomo"
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1849
 msgid "New Tab"
 msgstr "Nova langeto"
 
-#: src/View/AbstractDirectoryView.vala:1865
+#: src/View/AbstractDirectoryView.vala:1866
 msgid "Run"
 msgstr "Ruli"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1873
 #, c-format
 msgid "Open in %s"
 msgstr "Malfermi per %s"
 
-#: src/View/AbstractDirectoryView.vala:1941
+#: src/View/AbstractDirectoryView.vala:1942
 msgid "Open in"
 msgstr "Malfermi per"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1944
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Malfermi per"
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Paste"
 msgstr "Alglui"
 
-#: src/View/AbstractDirectoryView.vala:1954
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Bookmark"
 msgstr "Paĝosigno"
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1970
 msgid "Cut"
 msgstr "Tondi"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1977
 msgid "Copy"
 msgstr "Kopii"
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1984
 msgid "Move to Trash"
 msgstr "Movi rubujen"
 
-#: src/View/AbstractDirectoryView.vala:1988
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Delete permanently"
 msgstr "Forigi definitive"
 
-#: src/View/AbstractDirectoryView.vala:1993
+#: src/View/AbstractDirectoryView.vala:1994
 msgid "Restore from Trash"
 msgstr "Restaŭri el rubujo"
 
-#: src/View/AbstractDirectoryView.vala:2004
+#: src/View/AbstractDirectoryView.vala:2005
 msgid "Open Parent Folder"
 msgstr "Malfermi parencan dosierujon"
 
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Remove from History"
 msgstr "Forigi el historio"
 
-#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/AbstractDirectoryView.vala:2024
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Renomi"
 
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Copy as Link"
 msgstr "Kopii kiel ligilo"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Paste Link into Folder"
 msgstr "Alglui ligilon en dosierujon"
 
-#: src/View/AbstractDirectoryView.vala:2048
+#: src/View/AbstractDirectoryView.vala:2049
 msgid "Paste into Folder"
 msgstr "Alglui en dosierujon"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Show Hidden Files"
 msgstr "Montri kaŝitajn dosierojn"
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Show Remote Thumbnails"
 msgstr "Montri forajn miniaturojn"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:2081
 #, fuzzy
 #| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
 msgstr "Kaŝi lokajn bildetojn"
 
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2101
 msgid "Paste Link"
 msgstr "Alglui ligilon"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2153
 msgid "Name"
 msgstr "Nomo"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Date"
 msgstr "Dato"
 
-#: src/View/AbstractDirectoryView.vala:2172
+#: src/View/AbstractDirectoryView.vala:2173
 msgid "Reversed Order"
 msgstr "Inversa ordigo"
 
-#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2176
 msgid "Folders Before Files"
 msgstr "Dosierujoj antaŭ dosieroj"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Sort by"
 msgstr "Ordigi laŭ"
 
-#: src/View/AbstractDirectoryView.vala:2195
+#: src/View/AbstractDirectoryView.vala:2196
 msgid "Folder"
 msgstr "Dosierujo"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Empty File"
 msgstr "Malplena dosiero"
 
-#: src/View/AbstractDirectoryView.vala:2251
+#: src/View/AbstractDirectoryView.vala:2252
 msgid "New"
 msgstr "Nova"
 
-#: src/View/AbstractDirectoryView.vala:2488
+#: src/View/AbstractDirectoryView.vala:2489
 #, c-format
 msgid "Untitled %s"
 msgstr "Sentitola %s"
 
-#: src/View/AbstractDirectoryView.vala:2849
-#: src/View/AbstractDirectoryView.vala:3044
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "Cannot remove files from here"
 msgstr "Neeblas forigi dosierojn de ĉi tie"
 
-#: src/View/AbstractDirectoryView.vala:2850
-#: src/View/AbstractDirectoryView.vala:3029
-#: src/View/AbstractDirectoryView.vala:3045
+#: src/View/AbstractDirectoryView.vala:2851
+#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3046
 msgid "You do not have permission to change this location"
 msgstr "Vi ne havas la permeson modifi la lokon"
 
-#: src/View/AbstractDirectoryView.vala:3004
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cannot copy files that are in the trash"
 msgstr "Neeblas kopii dosierojn en la rubujo"
 
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3006
 msgid "Cutting the selection instead"
 msgstr "Eltondi la elektaĵon anstataŭe"
 
-#: src/View/AbstractDirectoryView.vala:3028
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot paste files here"
 msgstr "Neeblas alglui dosierojn ĉi tien"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Hejmo"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You cannot create a folder here."
 msgstr "Neeblas krei dosierujon ĉi tie."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "The network is unavailable"
 msgstr "La reto ne disponeblas"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:404
 msgid "A working network is needed to reach this folder"
 msgstr "Funkcianta reto necesas por atingi ĉi dosierujon"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Belong to You"
 msgstr "Ĉi dosierujo ne apartenas al vi"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:408
 msgid "You don't have permission to view this folder."
 msgstr "Vi ne havas permeson vidi ĉi dosierujon."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "Unable to Mount Folder"
 msgstr "Neeblas munti la dosierujon"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:411
 msgid "Could not connect to the server for this folder."
 msgstr "Neeblis konekti al la servilo de tiu ĉi dosierujo."
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Display Folder Contents"
 msgstr "Neeblas montri la dosierujan enhavon"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:415
 msgid "The operation timed out."
 msgstr "La operacio eltempiĝis."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Show Folder"
 msgstr "Neeblas montri la dosierujon"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:418
 msgid "The server for this folder could not be located."
 msgstr "Neeblas lokigi la servilon de ĉi dosierujo."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:429
 msgid "File not Found"
 msgstr "Netrovita dosiero"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:430
 msgid "The file selected no longer exists."
 msgstr "La elektita dosiero ne plu ekzistas."
 
