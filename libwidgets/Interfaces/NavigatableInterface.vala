@@ -27,7 +27,7 @@ namespace Marlin.View.Chrome {
         public signal void primary_icon_press ();
 
         public abstract void set_breadcrumbs_path (string newpath);
-        public abstract string get_breadcrumbs_path ();
+        public abstract string get_breadcrumbs_path (bool include_file_protocol = true);
 
         public abstract void set_action_icon_tooltip (string? tip);
         public abstract void hide_action_icon ();
