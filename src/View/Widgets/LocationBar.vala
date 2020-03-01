@@ -106,7 +106,7 @@ namespace Marlin.View.Chrome {
             if (exit_navigate) {
                 escape ();
             } else {
-                bread.set_entry_text (bread.get_breadcrumbs_path ());
+                bread.set_entry_text (bread.get_breadcrumbs_path (false));
                 enter_navigate_mode ();
             }
         }
