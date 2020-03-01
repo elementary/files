@@ -62,6 +62,9 @@
       <description>
         <ul>
           <li>Fix "New Folder" shortcut label in menu</li>
+          <li>Fix moving multiple steps with history menu</li>
+          <li>Fix path bar sometimes showing wrong path when closing a tab</li>
+          <li>Ensure keyboard shortcuts work immediately after creating or renaming a file</li>
           <li>Discontinue colorization and highlighting of focused and hovered icons</li>
           <li>Grey background for selected items in Icon View</li>
           <li>Updated translations</li>
