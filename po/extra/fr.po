@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-01 02:49+0000\n"
-"PO-Revision-Date: 2020-02-20 23:08+0000\n"
+"PO-Revision-Date: 2020-03-02 20:09+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -71,23 +71,27 @@ msgid "Fix \"New Folder\" shortcut label in menu"
 msgstr "Correction du nom du raccourci « Nouveau dossier » dans le menu"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Fix missing File System properties menu"
 msgid "Fix moving multiple steps with history menu"
-msgstr "Correction du fichier des propriétés manquant"
+msgstr "Correction de l'avancement de plusieurs étapes avec le menu historique"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
+"Correction de la barre de chemin qui indiquait parfois un mauvais chemin "
+"lors de la fermeture d'un onglet"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
+"Nous nous sommes assurés que les raccourcis claviers fonctionnement aussitôt "
+"après la création ou le renommage d'un fichier"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
+"Nous avons fait en sorte de ne pas inclure « file:// » dans la barre de "
+"chemin, notamment lors de la copie d'un chemin"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:82
