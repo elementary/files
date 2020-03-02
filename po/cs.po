@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
+"POT-Creation-Date: 2020-03-01 02:49+0000\n"
 "PO-Revision-Date: 2018-12-14 00:08+0000\n"
 "Last-Translator: Daniel Zvir <zvir.daniel@seznam.cz>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/"
@@ -29,7 +29,7 @@ msgstr "Zobrazit verzi programu"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Otevři jednu (či více) adres, každou v novém panelu"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1855
 msgid "New Window"
 msgstr "Nové okno"
 
@@ -121,7 +121,7 @@ msgid "Set as default"
 msgstr "Nastavit jako výchozí"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1962 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -202,7 +202,7 @@ msgid "Original Location:"
 msgstr "Původní umístění:"
 
 #: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1929
+#: src/View/AbstractDirectoryView.vala:1930
 msgid "Other Application…"
 msgstr "Jiná aplikace…"
 
@@ -308,11 +308,11 @@ msgstr "(jako administrátor)"
 msgid "Filename"
 msgstr "Název souboru"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2158
 msgid "Size"
 msgstr "Velikost"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2163
 msgid "Type"
 msgstr "Typ"
 
@@ -320,7 +320,7 @@ msgstr "Typ"
 msgid "Modified"
 msgstr "Změněno"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Exist"
 msgstr "Tato složka neexistuje"
 
@@ -346,234 +346,234 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:819
-#: src/View/AbstractDirectoryView.vala:1126
+#: src/View/AbstractDirectoryView.vala:820
+#: src/View/AbstractDirectoryView.vala:1127
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Tento soubor nelze otevřít"
 
-#: src/View/AbstractDirectoryView.vala:840
+#: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot open this file"
 msgstr "Tento soubor nelze otevřít"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:854
 msgid "Cannot identify file type to open"
 msgstr "Nelze zjistit typ souboru pro otevření"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "Tento soubor nelze přetáhnout"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Invalid file name provided"
 msgstr "Zadán neplatný název souboru"
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1849
 msgid "New Tab"
 msgstr "Nová karta"
 
-#: src/View/AbstractDirectoryView.vala:1865
+#: src/View/AbstractDirectoryView.vala:1866
 msgid "Run"
 msgstr "Spustit"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1873
 #, c-format
 msgid "Open in %s"
 msgstr "Otevřít v %s"
 
-#: src/View/AbstractDirectoryView.vala:1941
+#: src/View/AbstractDirectoryView.vala:1942
 msgid "Open in"
 msgstr "Otevřít v"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1944
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Otevřít s"
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Paste"
 msgstr "Vložit"
 
-#: src/View/AbstractDirectoryView.vala:1954
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Bookmark"
 msgstr "Vytvořit záložku"
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1970
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1977
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1984
 msgid "Move to Trash"
 msgstr "Přesunout do koše"
 
-#: src/View/AbstractDirectoryView.vala:1988
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Delete permanently"
 msgstr "Odstranit navždy"
 
-#: src/View/AbstractDirectoryView.vala:1993
+#: src/View/AbstractDirectoryView.vala:1994
 msgid "Restore from Trash"
 msgstr "Obnovit z Koše"
 
-#: src/View/AbstractDirectoryView.vala:2004
+#: src/View/AbstractDirectoryView.vala:2005
 msgid "Open Parent Folder"
 msgstr "Otevřít nadřazenou složku"
 
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Remove from History"
 msgstr "Odebrat z historie"
 
-#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/AbstractDirectoryView.vala:2024
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Přejmenovat"
 
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Copy as Link"
 msgstr "Kopírovat jako odkaz"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Paste Link into Folder"
 msgstr "Vložit odkaz do složky"
 
-#: src/View/AbstractDirectoryView.vala:2048
+#: src/View/AbstractDirectoryView.vala:2049
 msgid "Paste into Folder"
 msgstr "Vložit do složky"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Show Hidden Files"
 msgstr "Zobrazovat skryté soubory"
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Show Remote Thumbnails"
 msgstr "Zobrazit vzdálené náhledy"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:2081
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Zobrazit vzdálené náhledy"
 
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2101
 msgid "Paste Link"
 msgstr "Vložit odkaz"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2153
 msgid "Name"
 msgstr "Název souboru"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Date"
 msgstr "Změněno"
 
-#: src/View/AbstractDirectoryView.vala:2172
+#: src/View/AbstractDirectoryView.vala:2173
 msgid "Reversed Order"
 msgstr "Opačné pořadí"
 
-#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2176
 msgid "Folders Before Files"
 msgstr "Složky před soubory"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Sort by"
 msgstr "Seřadit podle"
 
-#: src/View/AbstractDirectoryView.vala:2195
+#: src/View/AbstractDirectoryView.vala:2196
 msgid "Folder"
 msgstr "Složka"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Empty File"
 msgstr "Prázdný soubor"
 
-#: src/View/AbstractDirectoryView.vala:2251
+#: src/View/AbstractDirectoryView.vala:2252
 msgid "New"
 msgstr "Nový"
 
-#: src/View/AbstractDirectoryView.vala:2488
+#: src/View/AbstractDirectoryView.vala:2489
 #, c-format
 msgid "Untitled %s"
 msgstr "Nepojmenovaný soubor %s"
 
-#: src/View/AbstractDirectoryView.vala:2849
-#: src/View/AbstractDirectoryView.vala:3044
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "Cannot remove files from here"
 msgstr "Nelze odstranit soubory z tohoto místa"
 
-#: src/View/AbstractDirectoryView.vala:2850
-#: src/View/AbstractDirectoryView.vala:3029
-#: src/View/AbstractDirectoryView.vala:3045
+#: src/View/AbstractDirectoryView.vala:2851
+#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3046
 msgid "You do not have permission to change this location"
 msgstr "Nemáte oprávnění měnit toto umístění"
 
-#: src/View/AbstractDirectoryView.vala:3004
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cannot copy files that are in the trash"
 msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3006
 msgid "Cutting the selection instead"
 msgstr "Místo toho vyjmout výběr"
 
-#: src/View/AbstractDirectoryView.vala:3028
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot paste files here"
 msgstr "Na toto místo nelze vložit soubory"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Domů"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You cannot create a folder here."
 msgstr "Zde nelze vytvořit složku."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "The network is unavailable"
 msgstr "Síť není k dispozici"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:404
 msgid "A working network is needed to reach this folder"
 msgstr "Pro přístup k této složce je potřeba funkgující síť"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Belong to You"
 msgstr "Tato složka nepatří Vám"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:408
 msgid "You don't have permission to view this folder."
 msgstr "Nemáte dostatečná práva k prohlížení této složky."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "Unable to Mount Folder"
 msgstr "Složku nelze připojit"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:411
 msgid "Could not connect to the server for this folder."
 msgstr "Pro tuto složku se nepodařilo připojit k serveru."
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Display Folder Contents"
 msgstr "Nelze zobrazit obsah složky"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:415
 msgid "The operation timed out."
 msgstr "Vypršel časový limit operace."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Show Folder"
 msgstr "Nelze zobrazit složku"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:418
 msgid "The server for this folder could not be located."
 msgstr "Server pro tuto složku nelze nalézt."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:429
 msgid "File not Found"
 msgstr "Soubor nenalezen"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:430
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor již neexistuje."
 
@@ -1084,25 +1084,25 @@ msgstr "Nelze zjistit původní umístění „%s“ "
 msgid "The item cannot be restored from trash"
 msgstr "Soubor nelze z koše obnovit"
 
-#: libcore/FileUtils.vala:443
+#: libcore/FileUtils.vala:445
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Přejmenování na '%s' se nezdařilo"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:532
+#: libcore/FileUtils.vala:534
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Dnes v %-H:%M"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:538
+#: libcore/FileUtils.vala:540
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Včera v %-H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:544
+#: libcore/FileUtils.vala:546
 #, fuzzy, c-format
 msgid "%%A at %s"
 msgstr "%A v %-H:%M"

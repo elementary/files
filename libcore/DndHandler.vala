@@ -319,7 +319,7 @@ namespace Marlin {
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
                     if (sanitize_path) {
-                        target = PF.FileUtils.sanitize_path (target);
+                        target = PF.FileUtils.sanitize_path (target, null, false);
                     }
 
                     sb.append (target);
