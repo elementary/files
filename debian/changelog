@@ -1,3 +1,31 @@
+pantheon-files (4.4.1) bionic; urgency=medium
+
+  * Release 4.4.1 (#1248)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Remove `file://` from path shown in pathbar; update comments (#1149)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Unfreeze view properly after rename. (#1200)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Disconnect slot signals before closing view container. (#1246)
+  * Update translation files
+  * Update translation template
+  * Update next release appdata for commit 7c0ef7d (#1245)
+  * Fix issue #1227 - back/forward menu now travels multiple entries in
+    history (#1242)
+  * Update translation files
+  * Update translation template
+  * AbstractDirectoryView: Fix new folder accel (#1237)
+  * Update translation files
+  * Update translation template
+
+ -- Cody Garver <cody@elementary.io>  Tue, 03 Mar 2020 09:40:37 +0000
+
 pantheon-files (4.4.0) bionic; urgency=medium
 
   * Release version 4.4.0 (#1234)
