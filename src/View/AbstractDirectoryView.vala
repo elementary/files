@@ -3190,7 +3190,13 @@ namespace FM {
 
         protected void on_name_edited (string path_string, string new_name) {
             /* Must not re-enter */
-            if (!renaming || proposed_name == new_name) {
+            if (!renaming) {
+                return;
+            }
+
+            if  (new_name.strip () == "" || proposed_name == new_name) {
+                warning ("Blank name or name unchanged");
+                on_name_editing_canceled ();
                 return;
             }
 
