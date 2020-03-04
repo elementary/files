@@ -182,8 +182,8 @@ namespace Marlin.View {
             /* Connect and abstract signals to local ones
             /*/
 
-            top_menu.forward.connect (() => {current_tab.go_forward ();});
-            top_menu.back.connect (() => {current_tab.go_back ();});
+            top_menu.forward.connect ((steps) => { current_tab.go_forward (steps); });
+            top_menu.back.connect ((steps) => { current_tab.go_back (steps); });
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
                 current_tab.is_frozen = false;
@@ -1141,7 +1141,6 @@ namespace Marlin.View {
 
         /** Use this function to standardise how locations are generated from uris **/
         private File? get_file_from_uri (string uri) {
-            /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
             string? current_uri = null;
             if (current_tab != null && current_tab.location != null) {
                 current_uri = current_tab.location.get_uri ();
