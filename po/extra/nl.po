@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-03 09:41+0000\n"
-"PO-Revision-Date: 2020-02-24 19:08+0000\n"
+"PO-Revision-Date: 2020-03-04 18:10+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -67,38 +67,37 @@ msgstr ""
 "FTP, SFTP, AFP, Webdav of Windows share."
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#, fuzzy
-#| msgid "Other updates:"
 msgid "Minor updates:"
-msgstr "Andere updates:"
+msgstr "Kleine updates:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Fix \"New Folder\" shortcut label in menu"
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr ""
-"Een probleem met het “nieuwe map” snelkoppeling label in het menu opgelost"
+msgstr "Een probleem met het “nieuwe map” sneltoets label in het menu opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Fix drag with secondary button on empty space"
 msgid "Fix navigation with back/forward button context menu"
 msgstr ""
-"Een probleem opgelost met slepen door middel van de tweede knop naar lege "
-"ruimte"
+"Een probleem opgelost met navigeren door middel van de terug/vooruit knop "
+"context menu"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
+"Een probleem opgelost waarbij de adresbalk soms een verkeerd adres toonde "
+"bij het sluiten van een tabblad"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
+"Zorg ervoor dat sneltoetsen direct werken na het aanmaken of hernoemen van "
+"een bestand"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
+"\"file://\" wordt niet toegevoegd in de adresbalk of bij het plakken van een "
+"bestandspad als tekst"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 #: data/io.elementary.files.appdata.xml.in.in:83
