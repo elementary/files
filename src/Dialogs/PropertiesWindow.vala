@@ -322,7 +322,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* Only rename if name actually changed */
         original_name = file.info.get_name ();
 
-        if (new_name != "") {
+        if (new_name.strip () != "") { // Do not want a filename consisting of spaces only (even if legal)
             if (new_name != original_name) {
                 proposed_name = new_name;
                 view.set_file_display_name.begin (file.location, new_name, null, (obj, res) => {

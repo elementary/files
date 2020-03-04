@@ -3194,7 +3194,7 @@ namespace FM {
                 return;
             }
 
-            if  (new_name.strip () == "" || proposed_name == new_name) {
+            if (new_name.strip () == "" || proposed_name == new_name) {
                 warning ("Blank name or name unchanged");
                 on_name_editing_canceled ();
                 return;
