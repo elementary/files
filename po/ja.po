@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:49+0000\n"
+"POT-Creation-Date: 2020-03-04 18:12+0000\n"
 "PO-Revision-Date: 2020-01-30 22:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -589,46 +589,46 @@ msgstr "デバイス"
 msgid "Your local partitions and devices"
 msgstr "ローカルのディスクドライブと接続されたデバイス"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "ネットワーク"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "ネットワーク上の場所"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "ネットワーク全体"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "ネットワークの内容を閲覧します"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 msgid "Connect Server"
 msgstr "サーバーへ接続"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
 msgstr "ネットワークサーバーへ接続します"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:961
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "( %s 空き / %s )"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1454
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "ボリューム %s のマウントエラー"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1469
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s を起動できません"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "ゴミ箱を空にする(_T)"
 

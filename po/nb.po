@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:49+0000\n"
+"POT-Creation-Date: 2020-03-04 18:12+0000\n"
 "PO-Revision-Date: 2019-02-22 00:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
@@ -606,46 +606,46 @@ msgstr "Enheter"
 msgid "Your local partitions and devices"
 msgstr "Dine lokale partisjoner og enheter"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Nettverk"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "Dine nettverkssteder"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "Hele nettverket"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "Bla igjennom innholdet på nettverket"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 msgid "Connect Server"
 msgstr "Koble til tjener"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
 msgstr "Koble til en nettverkstjener"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:961
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s ledig av %s)"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1454
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Feil ved montering av diskområde %s"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1469
 #, c-format
 msgid "Unable to start %s"
 msgstr "Kan ikke starte %s"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Tøm _papirkurven"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:49+0000\n"
+"POT-Creation-Date: 2020-03-04 18:12+0000\n"
 "PO-Revision-Date: 2019-07-29 17:02+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
@@ -599,46 +599,46 @@ msgstr "Enheder"
 msgid "Your local partitions and devices"
 msgstr "Dine lokale partitioner og enheder"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Netværk"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "Dine netværkssteder"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "Hele netværk"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "Gennemse indholdet af netværket"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 msgid "Connect Server"
 msgstr "Forbind Server"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
 msgstr "Opret forbindelse til en netværksserver"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:961
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s ledig ud af %s)"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1454
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Fejl ved montering af drev %s"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1469
 #, c-format
 msgid "Unable to start %s"
 msgstr "Kan ikke starte %s"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Tøm papirkurven"
 
