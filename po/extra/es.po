@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-05 20:20+0000\n"
-"PO-Revision-Date: 2020-03-05 20:05+0000\n"
+"PO-Revision-Date: 2020-03-07 10:09+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,14 +82,18 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix occasional view freeze after renaming"
 msgstr ""
+"Se corrigió un congelamiento ocasional producido después de cambiar nombre "
+"de archivos"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
+"Se mejoró la lógica de cambio de nombre al tratar archivos con espacios al "
+"inicio o al final"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr ""
+msgstr "Se solucionó un problema al iniciar que provocaba rutas incorrectas"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:82
