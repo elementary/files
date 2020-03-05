@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-04 18:12+0000\n"
-"PO-Revision-Date: 2020-02-26 16:08+0000\n"
-"Last-Translator: Daniel R. <riesp@pm.me>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"PO-Revision-Date: 2020-03-05 20:05+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,16 +61,18 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Copie, mueve y renombre fácilmente sus archivos para mantenerse organizado. "
-"Téngalos siempre a mano eligiendo la visualización que más le guste, ya sea "
-"en forma de listas, cuadrículas o columnas. Acceda a todos sus archivos "
-"independientemente de que el acceso a estos sea en local, a través de un "
-"dispositivo externo o remotamente utilizando FTP, SFTP, AFP, Webdav o "
-"Windows Share."
+"Copie, mueva y cambie el nombre de sus archivos con facilidad y mantenga su "
+"organización con ayuda de carpetas. Téngalos siempre a mano eligiendo la "
+"visualización que más le guste, ya sea en forma de lista, cuadrícula o por "
+"columnas. Acceda a todos sus archivos, tanto locales y de soportes externos "
+"como remotos, por medio de FTP, SFTP, AFP, WebDAV o recursos compartidos de "
+"Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix device icon sometimes missing"
 msgstr ""
+"Se corrige una situación que causaba en ocasiones que faltasen los iconos de "
+"dispositivos"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:78
@@ -89,37 +91,36 @@ msgid "Updated translations"
 msgstr "Traducciones actualizadas"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
-#, fuzzy
-#| msgid "Other updates:"
 msgid "Minor updates:"
-msgstr "Otras actualizaciones:"
+msgstr "Actualizaciones menores:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
-#, fuzzy
-#| msgid "Fix \"New Folder\" shortcut label in menu"
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
 msgstr "Corrección de la etiqueta del atajo de «Carpeta nueva» en el menú"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
-#, fuzzy
-#| msgid "Fix drag with secondary button on empty space"
 msgid "Fix navigation with back/forward button context menu"
 msgstr ""
-"Ahora arrastrar sobre un espacio vacío con el botón secundario del ratón "
-"funciona como es esperable"
+"Se reparó la navegación con el menú contextual de los botones Atrás y "
+"Adelante"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
+"A veces, la barra de ruta mostraba la ruta incorrecta tras cerrar una pestaña"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
+"El programa se cerciora de que los atajos de teclado funcionen adecuadamente "
+"luego de crear un archivo o cambiarle el nombre"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
+"Se excluye «file://» del texto de la barra de ruta y al pegar la ruta como "
+"texto"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Show keyboard shortcuts in menu items"

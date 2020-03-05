@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-04 18:12+0000\n"
-"PO-Revision-Date: 2020-02-20 23:08+0000\n"
+"PO-Revision-Date: 2020-03-05 20:05+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix device icon sometimes missing"
-msgstr ""
+msgstr "Corrige o ícone do dispositivo algumas vezes desaparecido"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:78
@@ -88,35 +88,35 @@ msgid "Updated translations"
 msgstr "Traduções atualizadas"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
-#, fuzzy
-#| msgid "Other updates:"
 msgid "Minor updates:"
-msgstr "Outras atualizações:"
+msgstr "Pequenas atualizações:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
-#, fuzzy
-#| msgid "Fix \"New Folder\" shortcut label in menu"
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr "Corrige a legenda do atalho \"Nova Pasta\" no menu"
+msgstr "Corrige a legenda de atalho do teclado \"Nova Pasta\" no menu"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
-#, fuzzy
-#| msgid "Fix drag with secondary button on empty space"
 msgid "Fix navigation with back/forward button context menu"
-msgstr "Corrige o arrastar com botão secundário no espaço vazio"
+msgstr "Corrige a navegação com o menu de contexto do botão voltar/avançar"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
+"Corrige a barra do caminho que as vezes mostra o caminho errado ao fechar um "
+"separador"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
+"Certifique-se de que os atalhos do teclado funcionam imediatamente após "
+"criar ou renomear um ficheiro"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
+"Não inclua \"ficheiro://\" no texto da barra de caminho ou ao colar o "
+"caminho como texto"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Show keyboard shortcuts in menu items"
