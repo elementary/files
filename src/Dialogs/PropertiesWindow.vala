@@ -318,11 +318,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private void rename_file (GOF.File file, string new_name) {
+    private void rename_file (GOF.File file, string _new_name) {
         /* Only rename if name actually changed */
         original_name = file.info.get_name ();
 
-        if (new_name != "") {
+        var new_name = _new_name.strip (); // Disallow leading and trailing space
+
+        if (new_name != "") { // Do not want a filename consisting of spaces only (even if legal)
             if (new_name != original_name) {
                 proposed_name = new_name;
                 view.set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
@@ -332,14 +334,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                         reset_entry_text (new_location.get_basename ());
                         goffile = GOF.File.@get (new_location);
                         files.first ().data = goffile;
-                    } catch (Error e) {
-                        reset_entry_text (); //resets entry to old name
-                    }
+                    } catch (Error e) {} // Warning dialog already shown
                 });
             }
         } else {
-            reset_entry_text ();
+            warning ("Blank name not allowed");
+            new_name = original_name;
         }
+
+        reset_entry_text (new_name);
     }
 
     public void reset_entry_text (string? new_name = null) {
