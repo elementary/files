@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:49+0000\n"
+"POT-Creation-Date: 2020-03-04 18:12+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -608,48 +608,48 @@ msgstr "Συσκευές"
 msgid "Your local partitions and devices"
 msgstr "Τα τοπικά σας διαμερίσματα και συσκευές"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "Οι δικτυακές σας τοποθεσίες"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "Όλο το δίκτυο σας"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "Περιήγηση στα περιεχόμενα του δικτύου"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 #, fuzzy
 msgid "Connect Server"
 msgstr "Σύνδεση σε διακομιστή"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 #, fuzzy
 msgid "Connect to a network server"
 msgstr "Σύνδεση σε δικτυακό διακομιστή αρχείων"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:961
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s ελεύθερα από %s)"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1454
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1469
 #, c-format
 msgid "Unable to start %s"
 msgstr "Αδυναμία εκκίνησης %s"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Άδειασμα _Απορριμμάτων"
 

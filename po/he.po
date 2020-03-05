@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:49+0000\n"
+"POT-Creation-Date: 2020-03-04 18:12+0000\n"
 "PO-Revision-Date: 2020-02-29 20:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -593,46 +593,46 @@ msgstr "התקנים"
 msgid "Your local partitions and devices"
 msgstr "המחיצות וההתקנים המקומיים שלך"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "רשת"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "מיקומי הרשת שלך"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "כל הרשת"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "עיון בתוכן הרשת"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 msgid "Connect Server"
 msgstr "התחברות לשרת"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
 msgstr "התחברות לשרת ברשת"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:961
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s פנויים מתוך %s)"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1454
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "עיגון הכרך %s נכשל"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1469
 #, c-format
 msgid "Unable to start %s"
 msgstr "לא ניתן להתחיל את %s"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "פינוי _סל האשפה"
 
