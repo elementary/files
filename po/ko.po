@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:07+0000\n"
+"POT-Creation-Date: 2020-03-05 20:20+0000\n"
 "PO-Revision-Date: 2019-09-23 16:23+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
@@ -287,7 +287,7 @@ msgstr "URI를 열 수 없습니다"
 msgid "Could not open files or URIs with this app"
 msgstr "이 앱으로는 파일이나 URI를 열 수 없습니다"
 
-#: src/View/Window.vala:543 src/View/Window.vala:553
+#: src/View/Window.vala:557 src/View/Window.vala:567
 msgid "(as Administrator)"
 msgstr "(관리자 권한으로)"
 
@@ -307,7 +307,7 @@ msgstr "종류"
 msgid "Modified"
 msgstr "수정"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Exist"
 msgstr "이 폴더는 없는 폴더입니다"
 
@@ -504,59 +504,59 @@ msgstr "대신 선택한 항목을 잘라냅니다"
 msgid "Cannot paste files here"
 msgstr "이곳에 파일을 붙여 넣을 수 없습니다"
 
-#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "홈"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:408
 msgid "You cannot create a folder here."
 msgstr "이곳엔 폴더를 만들 수 없습니다."
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:411
 msgid "The network is unavailable"
 msgstr "네트워크를 사용할 수 없습니다"
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:412
 msgid "A working network is needed to reach this folder"
 msgstr "네트워크 작업은 이 폴더에 연결되어야 합니다"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:415
 msgid "This Folder Does Not Belong to You"
 msgstr "이 폴더의 소유자가 아니시네요"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:416
 msgid "You don't have permission to view this folder."
 msgstr "이 폴더를 볼 권한이 없습니다."
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Mount Folder"
 msgstr "폴더에 접근할 수 없습니다"
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:419
 msgid "Could not connect to the server for this folder."
 msgstr "이 폴더와 서버를 연결할 수 없음."
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Display Folder Contents"
 msgstr "폴더의 내용을 표시할 수 없습니다"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:423
 msgid "The operation timed out."
 msgstr "작업 시간을 초과했습니다."
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:425
 msgid "Unable to Show Folder"
 msgstr "폴더를 표시할 수 없습니다"
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:426
 msgid "The server for this folder could not be located."
 msgstr "이 폴더에 대한 서버를 찾을 수 없습니다."
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:437
 msgid "File not Found"
 msgstr "파일이 없습니다"
 
-#: src/View/ViewContainer.vala:430
+#: src/View/ViewContainer.vala:438
 msgid "The file selected no longer exists."
 msgstr "선택하신 파일이 더이상 존재하지 않습니다."
 

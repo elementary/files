@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:07+0000\n"
+"POT-Creation-Date: 2020-03-05 20:20+0000\n"
 "PO-Revision-Date: 2016-08-02 15:47+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:543 src/View/Window.vala:553
+#: src/View/Window.vala:557 src/View/Window.vala:567
 msgid "(as Administrator)"
 msgstr ""
 
@@ -304,7 +304,7 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Exist"
 msgstr ""
 
@@ -497,59 +497,59 @@ msgstr ""
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr ""
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:408
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:411
 msgid "The network is unavailable"
 msgstr ""
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:412
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:415
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:416
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:419
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:423
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:425
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:426
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:437
 msgid "File not Found"
 msgstr ""
 
-#: src/View/ViewContainer.vala:430
+#: src/View/ViewContainer.vala:438
 msgid "The file selected no longer exists."
 msgstr ""
 

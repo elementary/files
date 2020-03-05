@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:07+0000\n"
+"POT-Creation-Date: 2020-03-05 20:20+0000\n"
 "PO-Revision-Date: 2019-09-13 06:22+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -288,7 +288,7 @@ msgstr "无法打开地址"
 msgid "Could not open files or URIs with this app"
 msgstr "无法使用此应用打开文件或地址"
 
-#: src/View/Window.vala:543 src/View/Window.vala:553
+#: src/View/Window.vala:557 src/View/Window.vala:567
 msgid "(as Administrator)"
 msgstr "(以管理员身份)"
 
@@ -308,7 +308,7 @@ msgstr "类型"
 msgid "Modified"
 msgstr "已修改"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Exist"
 msgstr "此文件夹不存在"
 
@@ -505,59 +505,59 @@ msgstr "更改选中项为剪切"
 msgid "Cannot paste files here"
 msgstr "无法在此处粘贴文件"
 
-#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "主页"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:408
 msgid "You cannot create a folder here."
 msgstr "无法在此位置新建文件夹。"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:411
 msgid "The network is unavailable"
 msgstr "网络不可用"
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:412
 msgid "A working network is needed to reach this folder"
 msgstr "需要网络连接才能打开此文件夹"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:415
 msgid "This Folder Does Not Belong to You"
 msgstr "此文件夹不属于您"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:416
 msgid "You don't have permission to view this folder."
 msgstr "您没有权限查看该文件夹。"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Mount Folder"
 msgstr "无法挂载文件夹"
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:419
 msgid "Could not connect to the server for this folder."
 msgstr "无法连接到此文件夹所在服务器。"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Display Folder Contents"
 msgstr "无法显示文件夹内容"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:423
 msgid "The operation timed out."
 msgstr "操作超时。"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:425
 msgid "Unable to Show Folder"
 msgstr "无法显示文件夹"
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:426
 msgid "The server for this folder could not be located."
 msgstr "无法定位此文件夹的位置。"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:437
 msgid "File not Found"
 msgstr "文件未找到"
 
-#: src/View/ViewContainer.vala:430
+#: src/View/ViewContainer.vala:438
 msgid "The file selected no longer exists."
 msgstr "选中的文件已不存在。"
 
