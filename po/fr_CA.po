@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 18:12+0000\n"
+"POT-Creation-Date: 2020-03-05 20:07+0000\n"
 "PO-Revision-Date: 2016-08-25 14:39+0000\n"
 "Last-Translator: Nate <natejms@outlook.com>\n"
 "Language-Team: French (Canada) <fr_CA@li.org>\n"
@@ -99,7 +99,7 @@ msgstr ""
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:439 src/Dialogs/PropertiesWindow.vala:478
+#: src/Dialogs/PropertiesWindow.vala:442 src/Dialogs/PropertiesWindow.vala:481
 msgid "Unknown"
 msgstr ""
 
@@ -139,91 +139,91 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:450
+#: src/Dialogs/PropertiesWindow.vala:453
 msgid "Loading…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:484
+#: src/Dialogs/PropertiesWindow.vala:487
 msgid "Could not be determined"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:510 libcore/FileConflictDialog.vala:120
+#: src/Dialogs/PropertiesWindow.vala:513 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:517 libcore/ConnectServerDialog.vala:164
+#: src/Dialogs/PropertiesWindow.vala:520 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:523
 msgid "Contains:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:543
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Created:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:553
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Modified:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:565
+#: src/Dialogs/PropertiesWindow.vala:568
 msgid "Deleted:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:575
+#: src/Dialogs/PropertiesWindow.vala:578
 msgid "Media type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:585
 msgid "Resolution:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:590
+#: src/Dialogs/PropertiesWindow.vala:593
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:600
+#: src/Dialogs/PropertiesWindow.vala:603
 msgid "Target:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:611
 msgid "Original Location:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:631
+#: src/Dialogs/PropertiesWindow.vala:634
 #: src/View/AbstractDirectoryView.vala:1930
 msgid "Other Application…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:651
+#: src/Dialogs/PropertiesWindow.vala:654
 msgid "Open with:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
+#: src/Dialogs/PropertiesWindow.vala:919 src/Dialogs/PropertiesWindow.vala:929
 msgid "Owner:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:932
 msgid "Group:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:935
 msgid "Everyone:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:1213
+#: src/Dialogs/PropertiesWindow.vala:1216
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1217
-#: src/Dialogs/PropertiesWindow.vala:1239
+#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -231,19 +231,19 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1222
+#: src/Dialogs/PropertiesWindow.vala:1225
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1238 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1247
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -251,7 +251,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1249
 #, c-format
 msgid "%s (%s, %s)"
 msgstr ""
