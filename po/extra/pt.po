@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-05 20:20+0000\n"
-"PO-Revision-Date: 2020-03-05 20:05+0000\n"
+"PO-Revision-Date: 2020-03-11 17:09+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -78,15 +78,16 @@ msgstr "Corrige o ícone do dispositivo algumas vezes desaparecido"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix occasional view freeze after renaming"
-msgstr ""
+msgstr "Corrige o congelamento ocasional da vista após renomear"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
+"Melhora a lógica de renomeação ao lidar com espaços em branco iniciais/finais"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr ""
+msgstr "Corrige as 'breadcrumbs' às vezes incorretas no arranque"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:82
