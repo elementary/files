@@ -50,6 +50,9 @@ public class CustomFileChooserDialog : Object {
     private bool is_single_click = true;
     private bool can_activate = true;
 
+    private Gtk.Button button_back;
+    private Gtk.Button button_forward;
+
     public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
         previous_paths = new GLib.Queue<string> ();
         next_paths = new GLib.Queue<string> ();
@@ -71,11 +74,11 @@ public class CustomFileChooserDialog : Object {
 
         var header_bar = new Gtk.HeaderBar ();
 
-        var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_back.tooltip_text = _("Previous");
         button_back.sensitive = false;
 
-        var button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_forward.tooltip_text = _("Next");
         button_forward.sensitive = false;
 
@@ -144,6 +147,8 @@ public class CustomFileChooserDialog : Object {
             /* OK to set to not local only now.*/
             chooser_dialog.local_only = false;
         });
+
+        chooser_dialog.key_press_event.connect (on_dialog_key_press_event);
 
         /* Try to provide a syntactically valid path or fallback to user home directory
          * The setting will be valid except after a fresh install or if the user
@@ -277,6 +282,8 @@ public class CustomFileChooserDialog : Object {
                         tv.button_press_event.connect (on_tv_button_press_event);
                         tv.button_release_event.connect (on_tv_button_release_event);
                     }
+
+
                 }
             }
         });
@@ -387,5 +394,26 @@ public class CustomFileChooserDialog : Object {
 
     private bool on_tv_button_release_event (Gdk.EventButton event) {
         return !can_activate;
+    }
+
+    private bool on_dialog_key_press_event (Gdk.EventKey event) {
+        var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+        bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
+        bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
+
+        if (only_alt_pressed) {
+            switch (event.keyval) {
+                case Gdk.Key.Left:
+                    button_back.clicked ();
+                    return Gdk.EVENT_STOP;
+                case Gdk.Key.Right:
+                    button_forward.clicked ();
+                    return Gdk.EVENT_STOP;
+                default:
+                    break;
+            }
+        }
+
+        return Gdk.EVENT_PROPAGATE;
     }
 }
