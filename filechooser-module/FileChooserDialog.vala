@@ -409,6 +409,14 @@ public class CustomFileChooserDialog : Object {
                 case Gdk.Key.Right:
                     button_forward.clicked ();
                     return Gdk.EVENT_STOP;
+                case Gdk.Key.Up:
+                    string? current_path = chooser_dialog.get_current_folder_uri ();
+                    if (current_path != null) {
+                        chooser_dialog.set_current_folder_uri (PF.FileUtils.get_parent_path_from_path (current_path));
+                        return Gdk.EVENT_STOP;
+                    }
+
+                    break;
                 default:
                     break;
             }
