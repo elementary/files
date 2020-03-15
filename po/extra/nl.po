@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-05 20:20+0000\n"
-"PO-Revision-Date: 2020-03-04 18:10+0000\n"
+"PO-Revision-Date: 2020-03-16 08:01+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -73,19 +73,21 @@ msgstr "Kleine updates:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix device icon sometimes missing"
-msgstr ""
+msgstr "Een probleem opgelost waarbij het apparaat-icoon soms verdween"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix occasional view freeze after renaming"
-msgstr ""
+msgstr "Een probleem opgelost waarbij na hernoemen het scherm soms bevroor"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
+"Verbeterde hernoem logica bij het dealen met een spatie aan het begin of "
+"einde"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr ""
+msgstr "Een probleem opgelost met verkeerde broodkruimels bij het opstarten"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:82
