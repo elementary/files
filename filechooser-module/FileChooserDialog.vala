@@ -52,6 +52,7 @@ public class CustomFileChooserDialog : Object {
 
     private Gtk.Button button_back;
     private Gtk.Button button_forward;
+    private Gtk.TreeView? tv;
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
         previous_paths = new GLib.Queue<string> ();
@@ -272,7 +273,7 @@ public class CustomFileChooserDialog : Object {
 
                 (w2 as Gtk.Container).remove (w3);
             } else if (w3.get_name () == "list_and_preview_box") { /* file browser list and preview box */
-                var tv = find_tree_view (w3);
+                tv = find_tree_view (w3);
                 if (tv != null) {
                     /* set its click behaviour the same as io.elementary.files setting */
                     tv.set_activate_on_single_click (is_single_click);
@@ -413,6 +414,31 @@ public class CustomFileChooserDialog : Object {
                     string? current_path = chooser_dialog.get_current_folder_uri ();
                     if (current_path != null) {
                         chooser_dialog.set_current_folder_uri (PF.FileUtils.get_parent_path_from_path (current_path));
+                        return Gdk.EVENT_STOP;
+                    }
+
+                    break;
+                case Gdk.Key.Down:
+                    string? new_path = null;
+                    if (tv != null) {
+                        var selection = tv.get_selection ();
+                        if (selection.count_selected_rows () == 1) {
+                            selection.selected_foreach ((model, path, iter) => {
+                                bool is_folder;
+                                model.@get (iter, 5, out is_folder);
+                                if (is_folder) {
+                                    string name;
+                                    model.@get (iter, 0, out name);
+                                    new_path = Path.build_path (Path.DIR_SEPARATOR_S,
+                                                                chooser_dialog.get_current_folder_uri (),
+                                                                name);
+                                }
+                            });
+                        }
+                    }
+
+                    if (new_path != null) {
+                        chooser_dialog.set_current_folder_uri (new_path);
                         return Gdk.EVENT_STOP;
                     }
 
