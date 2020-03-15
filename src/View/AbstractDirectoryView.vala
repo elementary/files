@@ -3020,11 +3020,16 @@ namespace FM {
                 case Gdk.Key.v:
                 case Gdk.Key.V:
                     if (only_control_pressed) {
+                        update_selected_files_and_menu ();
                         if (!in_recent && is_writable) {
-                            /* Will drop any existing selection and paste into current directory */
-                            action_set_enabled (common_actions, "paste-into", true);
-                            unselect_all ();
-                            common_actions.activate_action ("paste-into", null);
+                            if (selected_files.first () != null && selected_files.first ().next != null) {
+                                //Ignore if multiple files selected
+                                warning ("Cannot paste into a multiple selection");
+                            } else {
+                                //None or one file selected. Paste into selected file else base directory
+                                action_set_enabled (common_actions, "paste-into", true);
+                                common_actions.activate_action ("paste-into", null);
+                            }
                         } else {
                             PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                             _("You do not have permission to change this location"),
