@@ -117,7 +117,6 @@ public class Marlin.Progress.UIHandler : Object {
         (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
 
         progress_widget.cancelled.connect ((info) => {
-            info.finished.disconnect (progress_info_finished_cb);
             progress_info_finished_cb (info);
             progress_widget.hide ();
         });
@@ -154,6 +153,7 @@ public class Marlin.Progress.UIHandler : Object {
 
     private void progress_info_finished_cb (PF.Progress.Info info) {
         /* Must only be called once for each info */
+        info.finished.disconnect (progress_info_finished_cb);
         application.release ();
 
         if (active_infos > 0) {
