@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-16 08:03+0000\n"
-"PO-Revision-Date: 2019-07-22 01:24+0000\n"
+"PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/extra/eo/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -70,30 +70,28 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:76
-#, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
-msgstr "Malgravaj sencimigoj"
+msgstr "Malgravaj ĝisdatigoj:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix device icon sometimes missing"
-msgstr ""
+msgstr "Ripari foje mankantan aparatan bildeton"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix occasional view freeze after renaming"
-msgstr ""
+msgstr "Ripari okazan vidan halton post renomigo"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
-msgstr ""
+msgstr "Plibonigi renomigan logikon, rilate komencan aŭ finan spacon ĉe nomo"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr ""
+msgstr "Ripari paĝnivelan dosierindikan breton foje fuŝa ĉe starto"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr ""
+msgstr "Ne montri la prefikson „file://“ en navigaj butonmenuoj"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 #: data/io.elementary.files.appdata.xml.in.in:83
