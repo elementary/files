@@ -217,27 +217,28 @@ namespace FM {
         private bool _is_frozen = false;
         public bool is_frozen {
             set {
-                if (value && !_is_frozen) {
-                    action_set_enabled (selection_actions, "cut", false);
-                    action_set_enabled (common_actions, "copy", false);
-                    action_set_enabled (common_actions, "paste-into", false);
+                if (is_frozen != value) {
+                    _is_frozen = value;
+                    if (value) {
+                        action_set_enabled (selection_actions, "cut", false);
+                        action_set_enabled (common_actions, "copy", false);
+                        action_set_enabled (common_actions, "paste-into", false);
 
-                    /* Fix problems when navigating away from directory with large number
-                     * of selected files (e.g. OverlayBar critical errors)
-                     */
-                    disconnect_tree_signals ();
-                    clipboard.changed.disconnect (on_clipboard_changed);
-                    view.key_press_event.disconnect (on_view_key_press_event);
-                } else if (!value && _is_frozen) {
-                    /* Ensure selected files and menu actions will be updated */
-                    connect_tree_signals ();
-                    on_view_selection_changed ();
+                        /* Fix problems when navigating away from directory with large number
+                         * of selected files (e.g. OverlayBar critical errors)
+                         */
+                        disconnect_tree_signals ();
+                        clipboard.changed.disconnect (on_clipboard_changed);
+                        view.key_press_event.disconnect (on_view_key_press_event);
+                    } else {
+                        view.key_press_event.connect (on_view_key_press_event);
+                        clipboard.changed.connect (on_clipboard_changed);
+                        connect_tree_signals ();
 
-                    clipboard.changed.connect (on_clipboard_changed);
-                    view.key_press_event.connect (on_view_key_press_event);
+                        update_menu_actions ();
+
+                    }
                 }
-
-                _is_frozen = value;
             }
 
             get {
@@ -3187,9 +3188,17 @@ namespace FM {
             grab_focus ();
         }
 
-        protected void on_name_edited (string path_string, string new_name) {
+        protected void on_name_edited (string path_string, string? _new_name) {
             /* Must not re-enter */
-            if (!renaming || proposed_name == new_name) {
+            if (!renaming || _new_name == null) {
+                on_name_editing_canceled (); // no problem rentering this function
+                return;
+            }
+
+            var new_name = _new_name.strip (); // Disallow leading and trailing space
+            if (new_name == "" || proposed_name == new_name) {
+                warning ("Blank name or name unchanged");
+                on_name_editing_canceled ();
                 return;
             }
 
@@ -3210,8 +3219,7 @@ namespace FM {
                     set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
                         try {
                             set_file_display_name.end (res);
-                        } catch (Error e) {
-                        }
+                        } catch (Error e) {} // Warning dialog already shown
 
                         on_name_editing_canceled ();
                     });

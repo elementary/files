@@ -112,8 +112,8 @@ namespace Marlin.View.Chrome {
             this.set_size_request (minimum_width, -1);
         }
 
-        public string get_breadcrumbs_path () {
-            return get_path_from_element (null);
+        public string get_breadcrumbs_path ( bool include_file_protocol = true) {
+            return get_path_from_element (null, include_file_protocol);
         }
 
         protected void set_action_icon_tooltip (string? tip) {
@@ -329,7 +329,7 @@ namespace Marlin.View.Chrome {
                 return true;
             } else {
                 context_menu_showing = false;
-                current_dir_path = get_breadcrumbs_path ();
+                current_dir_path = get_breadcrumbs_path (false);
                 set_entry_text (current_dir_path);
                 return false;
             }
@@ -471,7 +471,7 @@ namespace Marlin.View.Chrome {
         }
 
         /** Return an unescaped path from the breadcrumbs **/
-        protected string get_path_from_element (BreadcrumbElement? el) {
+        protected string get_path_from_element (BreadcrumbElement? el, bool include_file_protocol = true) {
             /* return path up to the specified element or, if the parameter is null, the whole path */
             string newpath = "";
 
@@ -484,7 +484,7 @@ namespace Marlin.View.Chrome {
                     }
             }
 
-            return PF.FileUtils.sanitize_path (newpath);
+            return PF.FileUtils.sanitize_path (newpath, null, include_file_protocol);
         }
 
         private void make_element_list_from_protocol_and_path (string protocol,

@@ -672,11 +672,12 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                  * work.. but it's also for human beings who like to turn off media detection
                  * in the OS to save battery juice.
                  */
+
                 var name = drive.get_name ();
                 add_place (PlaceType.BUILT_IN,
                            iter,
                            name,
-                           drive.get_icon (),
+                           get_icon_with_fallback (drive.get_icon ()),
                            null,
                            drive,
                            null,
@@ -698,7 +699,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                        iter,
                                        mount.get_name (),
-                                       mount.get_icon (),
+                                       get_icon_with_fallback (mount.get_icon ()),
                                        root.get_uri (),
                                        null,
                                        volume,
@@ -713,7 +714,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 add_place (PlaceType.MOUNTED_VOLUME,
                            iter,
                            name,
-                           volume.get_icon (),
+                           get_icon_with_fallback (volume.get_icon ()),
                            null,
                            null,
                            volume,
@@ -750,7 +751,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                    iter,
                                    mount.get_name (),
-                                   mount.get_icon (),
+                                   get_icon_with_fallback (mount.get_icon ()),
                                    root.get_uri (),
                                    null,
                                    null,
@@ -783,7 +784,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 last_iter = add_place (PlaceType.BUILT_IN,
                                        iter,
                                        mount.get_name (),
-                                       mount.get_icon (),
+                                       get_icon_with_fallback (mount.get_icon ()),
                                        uri,
                                        null,
                                        null,
@@ -825,6 +826,16 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
+    private Icon get_icon_with_fallback (Icon icon) {
+        var themed_icon = (ThemedIcon) icon;
+        if (themed_icon == null || themed_icon.get_names ()[0].contains ("missing")) {
+            warning ("Using fallback drive icon");
+            themed_icon = new ThemedIcon.with_default_fallbacks ("drive-harddisk-solidstate");
+        }
+
+        return themed_icon;
+    }
+
     private static void side_bar_connect_server (Gtk.Widget widget) {
         ((Sidebar)widget).connect_server_request ();
     }
@@ -859,7 +870,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                        iter,
                                        mount.get_name (),
-                                       mount.get_icon (),
+                                       get_icon_with_fallback (mount.get_icon ()),
                                        root.get_uri (),
                                        drive,
                                        volume,
@@ -881,7 +892,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 add_place (PlaceType.MOUNTED_VOLUME,
                            iter,
                            name,
-                           volume.get_icon (),
+                           get_icon_with_fallback (volume.get_icon ()),
                            null,
                            drive,
                            volume,

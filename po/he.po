@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
-"PO-Revision-Date: 2019-11-27 20:24+0000\n"
+"POT-Creation-Date: 2020-03-05 20:20+0000\n"
+"PO-Revision-Date: 2020-02-29 20:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: src/Application.vala:124
@@ -27,7 +27,7 @@ msgstr "הצגת גרסת התכנית"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1855
 msgid "New Window"
 msgstr "חלון חדש"
 
@@ -102,7 +102,7 @@ msgstr "קיבולת:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:439 src/Dialogs/PropertiesWindow.vala:478
+#: src/Dialogs/PropertiesWindow.vala:442 src/Dialogs/PropertiesWindow.vala:481
 msgid "Unknown"
 msgstr "לא ידוע"
 
@@ -119,7 +119,7 @@ msgid "Set as default"
 msgstr "הגדרה כבררת מחדל"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1962 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "מאפיינים"
 
@@ -142,91 +142,91 @@ msgstr "הגודל המעשי עשוי להיות גדול יותר"
 msgid "unknown"
 msgstr "לא ידוע"
 
-#: src/Dialogs/PropertiesWindow.vala:450
+#: src/Dialogs/PropertiesWindow.vala:453
 msgid "Loading…"
 msgstr "בטעינה…"
 
-#: src/Dialogs/PropertiesWindow.vala:484
+#: src/Dialogs/PropertiesWindow.vala:487
 msgid "Could not be determined"
 msgstr "לא ניתן לזיהוי"
 
-#: src/Dialogs/PropertiesWindow.vala:510 libcore/FileConflictDialog.vala:120
+#: src/Dialogs/PropertiesWindow.vala:513 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
 msgstr "גודל:"
 
-#: src/Dialogs/PropertiesWindow.vala:517 libcore/ConnectServerDialog.vala:164
+#: src/Dialogs/PropertiesWindow.vala:520 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
 msgstr "סוג:"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:523
 msgid "Contains:"
 msgstr "תכולה:"
 
-#: src/Dialogs/PropertiesWindow.vala:543
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Created:"
 msgstr "מועד היצירה:"
 
-#: src/Dialogs/PropertiesWindow.vala:553
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Modified:"
 msgstr "מועד השינוי:"
 
-#: src/Dialogs/PropertiesWindow.vala:565
+#: src/Dialogs/PropertiesWindow.vala:568
 msgid "Deleted:"
 msgstr "מועד המחיקה:"
 
-#: src/Dialogs/PropertiesWindow.vala:575
+#: src/Dialogs/PropertiesWindow.vala:578
 msgid "Media type:"
 msgstr "סוג מדיה:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:585
 msgid "Resolution:"
 msgstr "רזולוציה:"
 
-#: src/Dialogs/PropertiesWindow.vala:590
+#: src/Dialogs/PropertiesWindow.vala:593
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "מיקום:"
 
-#: src/Dialogs/PropertiesWindow.vala:600
+#: src/Dialogs/PropertiesWindow.vala:603
 msgid "Target:"
 msgstr "יעד:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:611
 msgid "Original Location:"
 msgstr "מיקום מקורי:"
 
-#: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1929
+#: src/Dialogs/PropertiesWindow.vala:634
+#: src/View/AbstractDirectoryView.vala:1930
 msgid "Other Application…"
 msgstr "יישום אחר…"
 
-#: src/Dialogs/PropertiesWindow.vala:651
+#: src/Dialogs/PropertiesWindow.vala:654
 msgid "Open with:"
 msgstr "פתיחה באמצעות:"
 
-#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
+#: src/Dialogs/PropertiesWindow.vala:919 src/Dialogs/PropertiesWindow.vala:929
 msgid "Owner:"
 msgstr "בעלות:"
 
-#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:932
 msgid "Group:"
 msgstr "קבוצה:"
 
-#: src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:935
 msgid "Everyone:"
 msgstr "כולם:"
 
-#: src/Dialogs/PropertiesWindow.vala:1213
+#: src/Dialogs/PropertiesWindow.vala:1216
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "תת־תיקייה %u"
 msgstr[1] "%u תת־תיקיות"
 
-#: src/Dialogs/PropertiesWindow.vala:1217
-#: src/Dialogs/PropertiesWindow.vala:1239
+#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -234,19 +234,19 @@ msgstr[0] "קובץ %u"
 msgstr[1] "%u קבצים"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1222
+#: src/Dialogs/PropertiesWindow.vala:1225
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1238 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "תיקייה אחת"
 msgstr[1] "%u תיקיות"
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1247
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -254,7 +254,7 @@ msgstr[0] "נבחר פריט %u"
 msgstr[1] "נבחרו %u פריטים"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1249
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -292,7 +292,7 @@ msgstr "לא ניתן לפתוח כתובות"
 msgid "Could not open files or URIs with this app"
 msgstr "לא ניתן לפתוח קבצים או כתובות עם יישום זה"
 
-#: src/View/Window.vala:543 src/View/Window.vala:553
+#: src/View/Window.vala:557 src/View/Window.vala:567
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
@@ -300,11 +300,11 @@ msgstr "(כמנהל)"
 msgid "Filename"
 msgstr "שם קובץ"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2158
 msgid "Size"
 msgstr "גודל"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2163
 msgid "Type"
 msgstr "סוג"
 
@@ -312,7 +312,7 @@ msgstr "סוג"
 msgid "Modified"
 msgstr "מועד השינוי"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Exist"
 msgstr "תיקייה זו אינה קיימת"
 
@@ -334,234 +334,230 @@ msgstr "יצירת התיקייה „%s“"
 msgid "Failed to create the folder"
 msgstr "יצירת התיקייה נכשלה"
 
-#: src/View/AbstractDirectoryView.vala:819
-#: src/View/AbstractDirectoryView.vala:1126
+#: src/View/AbstractDirectoryView.vala:820
+#: src/View/AbstractDirectoryView.vala:1127
 msgid "Cannot execute this file"
 msgstr "לא ניתן להפעיל קובץ זה"
 
-#: src/View/AbstractDirectoryView.vala:840
+#: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot open this file"
 msgstr "לא ניתן לפתוח קובץ זה"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:854
 msgid "Cannot identify file type to open"
 msgstr "לא ניתן לזהות את סוג הקובץ לפתיחה"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "לא ניתן להשליך קובץ זה"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Invalid file name provided"
 msgstr "שם הקובץ שסופק שגוי"
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1849
 msgid "New Tab"
 msgstr "לשונית חדשה"
 
-#: src/View/AbstractDirectoryView.vala:1865
+#: src/View/AbstractDirectoryView.vala:1866
 msgid "Run"
 msgstr "הפעלה"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1873
 #, c-format
 msgid "Open in %s"
 msgstr "פתיחה עם %s"
 
-#: src/View/AbstractDirectoryView.vala:1941
+#: src/View/AbstractDirectoryView.vala:1942
 msgid "Open in"
 msgstr "פתיחה עם"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1944
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "פתיחה באמצעות"
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Paste"
 msgstr "הדבקה"
 
-#: src/View/AbstractDirectoryView.vala:1954
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Bookmark"
 msgstr "סימנייה"
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1970
 msgid "Cut"
 msgstr "גזירה"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1977
 msgid "Copy"
 msgstr "העתקה"
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1984
 msgid "Move to Trash"
 msgstr "העברה לסל האשפה"
 
-#: src/View/AbstractDirectoryView.vala:1988
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Delete permanently"
 msgstr "מחיקה לצמיתות"
 
-#: src/View/AbstractDirectoryView.vala:1993
+#: src/View/AbstractDirectoryView.vala:1994
 msgid "Restore from Trash"
 msgstr "שחזור מסל האשפה"
 
-#: src/View/AbstractDirectoryView.vala:2004
+#: src/View/AbstractDirectoryView.vala:2005
 msgid "Open Parent Folder"
 msgstr "פתיחת התיקייה העליונה"
 
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Remove from History"
 msgstr "הסרה מההיסטוריה"
 
-#: src/View/AbstractDirectoryView.vala:2023
-#, fuzzy
-#| msgid "Rename"
+#: src/View/AbstractDirectoryView.vala:2024
 msgid "Rename…"
-msgstr "שינוי שם"
+msgstr "שינוי שם…"
 
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Copy as Link"
 msgstr "העתקה כקישור"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Paste Link into Folder"
 msgstr "הדבקת קישור לתוך תיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2048
+#: src/View/AbstractDirectoryView.vala:2049
 msgid "Paste into Folder"
 msgstr "הדבקה לתיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Show Hidden Files"
 msgstr "הצגת קבצים מוסתרים"
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Show Remote Thumbnails"
 msgstr "הצגת תמונות ממוזערות לקבצים מרוחקים"
 
-#: src/View/AbstractDirectoryView.vala:2080
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
+#: src/View/AbstractDirectoryView.vala:2081
 msgid "Hide Thumbnails"
-msgstr "הסתרת תמונות ממוזערות לקבצים מקומיים"
+msgstr "הסתרת תמונות ממוזערות"
 
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2101
 msgid "Paste Link"
 msgstr "הדבקת קישור"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2153
 msgid "Name"
 msgstr "שם"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Date"
 msgstr "תאריך"
 
-#: src/View/AbstractDirectoryView.vala:2172
+#: src/View/AbstractDirectoryView.vala:2173
 msgid "Reversed Order"
 msgstr "סדר הפוך"
 
-#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2176
 msgid "Folders Before Files"
 msgstr "תיקיות לפני קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Sort by"
 msgstr "מיון לפי"
 
-#: src/View/AbstractDirectoryView.vala:2195
+#: src/View/AbstractDirectoryView.vala:2196
 msgid "Folder"
 msgstr "תיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Empty File"
 msgstr "קובץ ריק"
 
-#: src/View/AbstractDirectoryView.vala:2251
+#: src/View/AbstractDirectoryView.vala:2252
 msgid "New"
 msgstr "חדש"
 
-#: src/View/AbstractDirectoryView.vala:2488
+#: src/View/AbstractDirectoryView.vala:2489
 #, c-format
 msgid "Untitled %s"
 msgstr "%s ללא שם"
 
-#: src/View/AbstractDirectoryView.vala:2849
-#: src/View/AbstractDirectoryView.vala:3044
+#: src/View/AbstractDirectoryView.vala:2850
+#: src/View/AbstractDirectoryView.vala:3045
 msgid "Cannot remove files from here"
 msgstr "לא ניתן להסיר מכאן קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2850
-#: src/View/AbstractDirectoryView.vala:3029
-#: src/View/AbstractDirectoryView.vala:3045
+#: src/View/AbstractDirectoryView.vala:2851
+#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3046
 msgid "You do not have permission to change this location"
 msgstr "אין לך הרשאות לשנות את המיקום הזה"
 
-#: src/View/AbstractDirectoryView.vala:3004
+#: src/View/AbstractDirectoryView.vala:3005
 msgid "Cannot copy files that are in the trash"
 msgstr "לא ניתן להעתיק קבצים שנמצאים באשפה"
 
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3006
 msgid "Cutting the selection instead"
 msgstr "גזירת הבחירה במקום"
 
-#: src/View/AbstractDirectoryView.vala:3028
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "בית"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:408
 msgid "You cannot create a folder here."
 msgstr "אין לך אפשרות ליצור כאן תיקייה."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:411
 msgid "The network is unavailable"
 msgstr "הרשת אינה זמינה"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:412
 msgid "A working network is needed to reach this folder"
 msgstr "נדרש חיבור זמין לרשת כדי לגשת לתיקייה זו"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:415
 msgid "This Folder Does Not Belong to You"
 msgstr "תיקייה זו אינה שייכת לך"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:416
 msgid "You don't have permission to view this folder."
 msgstr "אין לך הרשאה לראות תיקייה זו."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Mount Folder"
 msgstr "לא ניתן לעגן את התיקייה"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:419
 msgid "Could not connect to the server for this folder."
 msgstr "לא ניתן להתחבר לשרת לתיקייה זו."
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Display Folder Contents"
 msgstr "לא ניתן להציג את תוכן התיקייה"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:423
 msgid "The operation timed out."
 msgstr "הזמן שהוקצב לפעולה ההסתיים."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:425
 msgid "Unable to Show Folder"
 msgstr "לא ניתן להציג את התיקייה"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:426
 msgid "The server for this folder could not be located."
 msgstr "לא ניתן לאתר את השרת עבור תיקייה זו."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:437
 msgid "File not Found"
 msgstr "קובץ לא נמצא"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:438
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
@@ -597,46 +593,46 @@ msgstr "התקנים"
 msgid "Your local partitions and devices"
 msgstr "המחיצות וההתקנים המקומיים שלך"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "רשת"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "מיקומי הרשת שלך"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "כל הרשת"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "עיון בתוכן הרשת"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 msgid "Connect Server"
 msgstr "התחברות לשרת"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
 msgstr "התחברות לשרת ברשת"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:961
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s פנויים מתוך %s)"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1454
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "עיגון הכרך %s נכשל"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1469
 #, c-format
 msgid "Unable to start %s"
 msgstr "לא ניתן להתחיל את %s"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "פינוי _סל האשפה"
 
@@ -1072,25 +1068,25 @@ msgstr "לא ניתן לאתר את המיקום המקורי של „%s” "
 msgid "The item cannot be restored from trash"
 msgstr "לא ניתן לשחזר את הפריט מהאשפה"
 
-#: libcore/FileUtils.vala:443
+#: libcore/FileUtils.vala:445
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "לא ניתן לשנות את השם ל־‚%s’"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:532
+#: libcore/FileUtils.vala:534
 #, c-format
 msgid "Today at %s"
 msgstr "היום ב־%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:538
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Yesterday at %s"
 msgstr "אתמול ב־%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:544
+#: libcore/FileUtils.vala:546
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ב־%s"
@@ -1109,10 +1105,8 @@ msgid "_Cancel"
 msgstr "_ביטול"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
-msgstr "מ_חיקה"
+msgstr "מחיקה"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1266,10 +1260,9 @@ msgstr "כל הפריטים בסל האשפה בכרך מעוגן זה, יימח
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1151
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "למחוק לצמיתות את כל הפריטים מסל האשפה?"
+msgstr "למחוק את „%s” לצמיתות?"
 
 #: libcore/marlin-file-operations.c:1154
 #, c-format
@@ -1281,7 +1274,7 @@ msgstr[1] "למחוק לצמיתות את %'d הפריטים הנבחרים?"
 
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "הפריטים שנמחקים לא נשלחים לסל המיחזור ולא ניתן לשחזר אותם."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format
@@ -1494,7 +1487,7 @@ msgstr "חלה שגיאה במהלך ההעברה לסל האשפה."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2208
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1504,7 +1497,7 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2253
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1513,7 +1506,7 @@ msgstr "לא ניתן לטפל בתיקייה „%s” מאחר שאין לך ה
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2340
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1522,7 +1515,7 @@ msgstr "לא ניתן לטפל בקובץ „%s” מאחר שאין לך ההר
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2345
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "חלה שגיאה בקבלת מידע על „%s”."
 
@@ -1530,7 +1523,7 @@ msgstr "חלה שגיאה בקבלת מידע על „%s”."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2451 libcore/marlin-file-operations.c:2497
 #: libcore/marlin-file-operations.c:2535 libcore/marlin-file-operations.c:2575
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "חלה שגיאה בהעתקה אל „%s”."
 
