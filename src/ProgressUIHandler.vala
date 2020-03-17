@@ -66,7 +66,7 @@ public class Marlin.Progress.UIHandler : Object {
         application.hold ();
 
         if (info == null || !(info is PF.Progress.Info) ||
-            info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
+            info.is_finished || info.is_cancelled) {
 
             application.release ();
             return;
@@ -79,14 +79,14 @@ public class Marlin.Progress.UIHandler : Object {
         var operation_running = false;
         Timeout.add_full (GLib.Priority.LOW, 500, () => {
             if (info == null || !(info is PF.Progress.Info) ||
-                info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
+                info.is_finished || info.is_cancelled) {
 
                 return GLib.Source.REMOVE;
             }
 
-            if (info.get_is_paused ()) {
+            if (info.is_paused) {
                 return GLib.Source.CONTINUE;
-            } else if (operation_running && !info.get_is_finished ()) {
+            } else if (operation_running && !info.is_finished) {
                 add_progress_info_to_window (info);
                 return GLib.Source.REMOVE;
             } else {
@@ -165,8 +165,8 @@ public class Marlin.Progress.UIHandler : Object {
              * is only sent after last operation finishes and the progress window closes.
              * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
 
-            if (!info.get_cancellable ().is_cancelled ()) {
-                var title = info.get_title ();  /* Do not keep ref to info */
+            if (!info.is_cancelled) {
+                var title = info.title;  /* Do not keep ref to info */
                 Timeout.add (100, () => {
                     if (!application.get_active_window ().has_toplevel_focus) {
                         show_operation_complete_notification (title, active_infos < 1);
@@ -306,8 +306,8 @@ public class Marlin.Progress.UIHandler : Object {
         var infos = this.manager.get_all_infos ();
 
         foreach (var _info in infos) {
-            double c = _info.get_current ();
-            double t = _info.get_total ();
+            double c = _info.current;
+            double t = _info.total;
 
             if (c < 0) {
                 c = 0;

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:20+0000\n"
+"POT-Creation-Date: 2020-03-17 17:33+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -623,22 +623,22 @@ msgstr "Conectarse a un servidor"
 msgid "Connect to a network server"
 msgstr "Conectar con un servidor de rede"
 
-#: src/View/Sidebar.vala:961
+#: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s libre(s) de %s)"
 
-#: src/View/Sidebar.vala:1454
+#: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Erro montando o volume %s"
 
-#: src/View/Sidebar.vala:1469
+#: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
 msgstr "Non é posíbel iniciar %s"
 
-#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Baleirar o _lixo"
 

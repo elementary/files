@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:20+0000\n"
+"POT-Creation-Date: 2020-03-17 17:33+0000\n"
 "PO-Revision-Date: 2018-12-14 00:08+0000\n"
 "Last-Translator: Daniel Zvir <zvir.daniel@seznam.cz>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/"
@@ -633,22 +633,22 @@ msgstr "Připojit server"
 msgid "Connect to a network server"
 msgstr "Připojit k serveru v síti"
 
-#: src/View/Sidebar.vala:961
+#: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s volných z %s)"
 
-#: src/View/Sidebar.vala:1454
+#: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Chyba při připojování jednotky %s"
 
-#: src/View/Sidebar.vala:1469
+#: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
 msgstr "Nelze aktivovat %s"
 
-#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Vyprázdnit _koš"
 

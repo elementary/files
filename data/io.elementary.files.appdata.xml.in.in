@@ -62,6 +62,7 @@
       <description>
         <p>Minor updates:</p>
         <ul>
+          <li>Fix crash when a device icon is coming from a file</li>
           <li>Fix device icon sometimes missing</li>
           <li>Fix occasional view freeze after renaming</li>
           <li>Improve renaming logic when dealing with leading/trailing whitespace</li>
