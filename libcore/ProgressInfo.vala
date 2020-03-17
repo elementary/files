@@ -30,7 +30,7 @@ public class PF.Progress.Info : GLib.Object {
     public string status { get; private set; default = _("Preparing"); }
     public string details { get; set; default = _("Preparing"); }
     public double progress { get; private set; default = 0.0; }
-    public double current  { get; private set; default = 0.0; }
+    public double current { get; private set; default = 0.0; }
     public double total { get; private set; default = 0.0; }
     public bool activity_mode { get; private set; default = true; }
     public bool is_started { get; private set; }
