@@ -827,13 +827,23 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
     private Icon get_icon_with_fallback (Icon icon) {
-        var themed_icon = (ThemedIcon) icon;
-        if (themed_icon == null || themed_icon.get_names ()[0].contains ("missing")) {
-            warning ("Using fallback drive icon");
-            themed_icon = new ThemedIcon.with_default_fallbacks ("drive-harddisk-solidstate");
+        if (icon is GLib.ThemedIcon) {
+            unowned GLib.ThemedIcon themed_icon = (ThemedIcon) icon;
+            if (themed_icon.get_names ()[0].contains ("missing")) {
+                warning ("Using fallback drive icon");
+                return new ThemedIcon.with_default_fallbacks ("drive-harddisk-solidstate");
+            }
         }
 
-        return themed_icon;
+        if (icon is GLib.FileIcon) {
+            unowned GLib.FileIcon file_icon = (FileIcon) icon;
+            if (!file_icon.file.query_exists ()) {
+                warning ("Using fallback drive icon");
+                return new ThemedIcon.with_default_fallbacks ("drive-harddisk-solidstate");
+            }
+        }
+
+        return icon;
     }
 
     private static void side_bar_connect_server (Gtk.Widget widget) {

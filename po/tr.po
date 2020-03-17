@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:20+0000\n"
+"POT-Creation-Date: 2020-03-17 17:33+0000\n"
 "PO-Revision-Date: 2020-02-01 03:08+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -618,22 +618,22 @@ msgstr "Sunucuya Bağlan"
 msgid "Connect to a network server"
 msgstr "Ağ sunucusuna bağlan"
 
-#: src/View/Sidebar.vala:961
+#: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%2$s / %1$s Boş)"
 
-#: src/View/Sidebar.vala:1454
+#: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "%s birimi bağlanırken hata oluştu"
 
-#: src/View/Sidebar.vala:1469
+#: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s başlatılamadı"
 
-#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Çöpü _Boşalt"
 
