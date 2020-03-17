@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:20+0000\n"
+"POT-Creation-Date: 2020-03-17 17:33+0000\n"
 "PO-Revision-Date: 2020-01-30 22:08+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
@@ -620,22 +620,22 @@ msgstr "Ligar ao Servidor"
 msgid "Connect to a network server"
 msgstr "Ligar a um servidor de rede"
 
-#: src/View/Sidebar.vala:961
+#: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s Livres de %s)"
 
-#: src/View/Sidebar.vala:1454
+#: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Erro ao montar o volume %s"
 
-#: src/View/Sidebar.vala:1469
+#: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
 msgstr "Incapaz de iniciar %s"
 
-#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Esvaziar _lixo"
 
