@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 20:20+0000\n"
+"POT-Creation-Date: 2020-03-17 17:33+0000\n"
 "PO-Revision-Date: 2018-10-21 00:07+0000\n"
 "Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
@@ -622,22 +622,22 @@ msgstr "Hubungkan Server"
 msgid "Connect to a network server"
 msgstr "Hubungkan ke server jaringan"
 
-#: src/View/Sidebar.vala:961
+#: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s Bebas dari %s)"
 
-#: src/View/Sidebar.vala:1454
+#: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Kesalahan pemasangan volume %s"
 
-#: src/View/Sidebar.vala:1469
+#: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
 msgstr "Tidak dapat menjalankan %s"
 
-#: src/View/Sidebar.vala:1657 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Kosongkan _Tong Sampah"
 
