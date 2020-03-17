@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-05 20:20+0000\n"
-"PO-Revision-Date: 2019-10-05 11:23+0000\n"
+"PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:124
@@ -415,10 +415,8 @@ msgid "Remove from History"
 msgstr "Forigi el historio"
 
 #: src/View/AbstractDirectoryView.vala:2024
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Renomi"
+msgstr "Renomi…"
 
 #: src/View/AbstractDirectoryView.vala:2031
 msgid "Copy as Link"
@@ -441,10 +439,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Montri forajn miniaturojn"
 
 #: src/View/AbstractDirectoryView.vala:2081
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Kaŝi lokajn bildetojn"
+msgstr "Kaŝi miniaturojn"
 
 #: src/View/AbstractDirectoryView.vala:2101
 msgid "Paste Link"
@@ -1110,10 +1106,8 @@ msgid "_Cancel"
 msgstr "_Rezigni"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
-msgstr "_Forigi"
+msgstr "Forigi"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1271,10 +1265,9 @@ msgstr "Ĉiuj elementoj en la muntaĵa rubujo estos definitive forigitaj."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1151
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Ĉu definitive forigi „%s“?"
 
 #: libcore/marlin-file-operations.c:1154
 #, c-format
@@ -1288,7 +1281,7 @@ msgstr[1] ""
 
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "La forigitaj elementoj ne estas rubujigitaj, tial ne restaŭreblaj."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format
