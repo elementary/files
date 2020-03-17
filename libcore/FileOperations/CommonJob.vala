@@ -19,14 +19,14 @@
 public class Marlin.FileOperations.CommonJob {
     protected unowned Gtk.Window? parent_window;
     protected uint inhibit_cookie;
-    protected GLib.Cancellable? cancellable;
+    protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
     protected Marlin.UndoActionData? undo_redo_data;
     protected CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();
-        cancellable = progress.get_cancellable ();
+        cancellable = progress.cancellable;
         undo_redo_data = null;
     }
 
