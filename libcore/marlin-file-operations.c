@@ -783,6 +783,7 @@ init_common (gsize job_size,
     }
 
     common->progress = pf_progress_info_new ();
+    // ProgressInfo cancellable is now a property, therefore unowned - do not unref.
     common->cancellable = pf_progress_info_get_cancellable (common->progress);
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
@@ -824,7 +825,6 @@ finalize_common (CommonJob *common)
     // End UNDO-REDO
 
     g_object_unref (common->progress);
-    g_object_unref (common->cancellable);
     g_free (common);
 }
 
@@ -1203,7 +1203,6 @@ report_delete_progress (CommonJob *job,
 
     elapsed = g_timer_elapsed (job->time, NULL);
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
-
         pf_progress_info_set_details (job->progress, files_left_s);
     } else {
         char *details, *time_left_s;
@@ -1230,7 +1229,7 @@ report_delete_progress (CommonJob *job,
     g_free (files_left_s);
 
     if (source_info->num_files != 0) {
-        pf_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
+        pf_progress_info_update_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
 }
 
@@ -1549,7 +1548,7 @@ report_trash_progress (CommonJob *job,
     pf_progress_info_take_details (job->progress, s);
 
     if (total_files != 0) {
-        pf_progress_info_set_progress (job->progress, files_trashed, total_files);
+        pf_progress_info_update_progress (job->progress, files_trashed, total_files);
     }
 }
 
@@ -2755,7 +2754,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         pf_progress_info_take_details (job->progress, s);
     }
 
-    pf_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
+    pf_progress_info_update_progress (job->progress, transfer_info->num_bytes, total_size);
 }
 
 static int
@@ -5027,7 +5026,7 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
                                                               "Making links to %'d files",
                                                               left), left));
 
-    pf_progress_info_set_progress (job->progress, left, total);
+    pf_progress_info_update_progress (job->progress, left, total);
 }
 
 static char *
