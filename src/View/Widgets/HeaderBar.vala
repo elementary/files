@@ -130,7 +130,7 @@ namespace Marlin.View.Chrome {
                                * in the closure, resulting in a value of n which would always be n=1. So
                                * by introducting a new variable I can bypass this anoyance.
                                */
-                var item = new Gtk.MenuItem.with_label (PF.FileUtils.sanitize_path (path));
+                var item = new Gtk.MenuItem.with_label (PF.FileUtils.sanitize_path (path, null, false));
                 item.activate.connect (() => {
                     back (cn);
                 });
@@ -147,7 +147,7 @@ namespace Marlin.View.Chrome {
             var n = 1;
             foreach (string path in path_list) {
                 int cn = n++; /* For explanation look up */
-                var item = new Gtk.MenuItem.with_label (PF.FileUtils.sanitize_path (path));
+                var item = new Gtk.MenuItem.with_label (PF.FileUtils.sanitize_path (path, null, false));
                 item.activate.connect (() => {
                     forward (cn);
                 });
