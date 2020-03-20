@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 17:33+0000\n"
-"PO-Revision-Date: 2020-03-11 17:09+0000\n"
+"PO-Revision-Date: 2020-03-19 19:09+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,10 +65,8 @@ msgid "Minor updates:"
 msgstr "किरकोळ अपडेट्स:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Fix crash when opening multiple video files"
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "एकाधिक व्हिडिओ फायली उघडताना क्रॅशचे निराकरण करा"
+msgstr "फायलीवरून डिव्हाइस आयकॉन येत असताना येणाऱ्या क्रॅशचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix device icon sometimes missing"
@@ -90,7 +88,7 @@ msgstr "स्टार्टअपवेळी काही वेळा चु
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr ""
+msgstr "नेव्हिगेशन बटणांच्या मेनूमध्ये  file://  उपसर्ग दाखवू नका"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:84
@@ -130,6 +128,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
+"पथबार मजकूरामध्ये किंवा मजकूर म्हणून पथ पेस्ट करताना \"file://\" समाविष्ट करू"
+" नका"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Show keyboard shortcuts in menu items"
@@ -177,42 +177,39 @@ msgstr "समान फोल्डर्स दर्शवित असले
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Fix drag with secondary button on empty space"
-msgstr ""
+msgstr "रिक्त जागेवर दुय्यम बटणासह ड्रॅगशी संबंधित समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Show custom media type icons for installed apps"
-msgstr ""
+msgstr "स्थापित केलेल्या अ‍ॅप्ससाठी सानुकूल मीडिया प्रकारची चिन्हे दर्शवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Fix appearance of inactive diskspace indicator"
-msgstr ""
+msgstr "निष्क्रिय डिस्कस्पेस निर्देशकाचे स्वरूप निश्चित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:114
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "सुधारित भाषांतर समर्थन"
+msgstr "पथबार अ‍ॅनिमेशन सुधारित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:115
-#, fuzzy
 msgid "Update documentation"
-msgstr "अद्ययावत भाषांतर"
+msgstr "दस्तऐवज अद्यतनित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:116
-#, fuzzy
 msgid "Update translations"
-msgstr "अद्ययावत भाषांतर"
+msgstr "भाषांतर अद्यतनित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:123
 msgid "Initial cloudproviders plugin support"
-msgstr ""
+msgstr "आरंभिक क्लाउडप्रोव्हिडर्स प्लगइन समर्थन"
 
 #: data/io.elementary.files.appdata.xml.in.in:124
 msgid "Fix selecting pasted files"
-msgstr ""
+msgstr "पेस्ट केलेल्या फायली निवडण्याशी संबंधित समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:125
 msgid "Fix color label visibility while using dark theme"
-msgstr ""
+msgstr "गडद थीम वापरताना रंग लेबल दृश्यात्मकतेशी संबंधित समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:126
 msgid "Fix selecting files using Shift key"
