@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:36+0000\n"
+"POT-Creation-Date: 2020-03-17 17:33+0000\n"
 "PO-Revision-Date: 2020-02-29 20:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -102,7 +102,7 @@ msgstr "קיבולת:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:439 src/Dialogs/PropertiesWindow.vala:478
+#: src/Dialogs/PropertiesWindow.vala:442 src/Dialogs/PropertiesWindow.vala:481
 msgid "Unknown"
 msgstr "לא ידוע"
 
@@ -142,91 +142,91 @@ msgstr "הגודל המעשי עשוי להיות גדול יותר"
 msgid "unknown"
 msgstr "לא ידוע"
 
-#: src/Dialogs/PropertiesWindow.vala:450
+#: src/Dialogs/PropertiesWindow.vala:453
 msgid "Loading…"
 msgstr "בטעינה…"
 
-#: src/Dialogs/PropertiesWindow.vala:484
+#: src/Dialogs/PropertiesWindow.vala:487
 msgid "Could not be determined"
 msgstr "לא ניתן לזיהוי"
 
-#: src/Dialogs/PropertiesWindow.vala:510 libcore/FileConflictDialog.vala:120
+#: src/Dialogs/PropertiesWindow.vala:513 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
 msgstr "גודל:"
 
-#: src/Dialogs/PropertiesWindow.vala:517 libcore/ConnectServerDialog.vala:164
+#: src/Dialogs/PropertiesWindow.vala:520 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
 msgstr "סוג:"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:523
 msgid "Contains:"
 msgstr "תכולה:"
 
-#: src/Dialogs/PropertiesWindow.vala:543
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Created:"
 msgstr "מועד היצירה:"
 
-#: src/Dialogs/PropertiesWindow.vala:553
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Modified:"
 msgstr "מועד השינוי:"
 
-#: src/Dialogs/PropertiesWindow.vala:565
+#: src/Dialogs/PropertiesWindow.vala:568
 msgid "Deleted:"
 msgstr "מועד המחיקה:"
 
-#: src/Dialogs/PropertiesWindow.vala:575
+#: src/Dialogs/PropertiesWindow.vala:578
 msgid "Media type:"
 msgstr "סוג מדיה:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:585
 msgid "Resolution:"
 msgstr "רזולוציה:"
 
-#: src/Dialogs/PropertiesWindow.vala:590
+#: src/Dialogs/PropertiesWindow.vala:593
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "מיקום:"
 
-#: src/Dialogs/PropertiesWindow.vala:600
+#: src/Dialogs/PropertiesWindow.vala:603
 msgid "Target:"
 msgstr "יעד:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:611
 msgid "Original Location:"
 msgstr "מיקום מקורי:"
 
-#: src/Dialogs/PropertiesWindow.vala:631
+#: src/Dialogs/PropertiesWindow.vala:634
 #: src/View/AbstractDirectoryView.vala:1930
 msgid "Other Application…"
 msgstr "יישום אחר…"
 
-#: src/Dialogs/PropertiesWindow.vala:651
+#: src/Dialogs/PropertiesWindow.vala:654
 msgid "Open with:"
 msgstr "פתיחה באמצעות:"
 
-#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
+#: src/Dialogs/PropertiesWindow.vala:919 src/Dialogs/PropertiesWindow.vala:929
 msgid "Owner:"
 msgstr "בעלות:"
 
-#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:932
 msgid "Group:"
 msgstr "קבוצה:"
 
-#: src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:935
 msgid "Everyone:"
 msgstr "כולם:"
 
-#: src/Dialogs/PropertiesWindow.vala:1213
+#: src/Dialogs/PropertiesWindow.vala:1216
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "תת־תיקייה %u"
 msgstr[1] "%u תת־תיקיות"
 
-#: src/Dialogs/PropertiesWindow.vala:1217
-#: src/Dialogs/PropertiesWindow.vala:1239
+#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -234,19 +234,19 @@ msgstr[0] "קובץ %u"
 msgstr[1] "%u קבצים"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1222
+#: src/Dialogs/PropertiesWindow.vala:1225
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1238 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "תיקייה אחת"
 msgstr[1] "%u תיקיות"
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1247
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -254,7 +254,7 @@ msgstr[0] "נבחר פריט %u"
 msgstr[1] "נבחרו %u פריטים"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1249
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -292,7 +292,7 @@ msgstr "לא ניתן לפתוח כתובות"
 msgid "Could not open files or URIs with this app"
 msgstr "לא ניתן לפתוח קבצים או כתובות עם יישום זה"
 
-#: src/View/Window.vala:543 src/View/Window.vala:553
+#: src/View/Window.vala:557 src/View/Window.vala:567
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
@@ -312,7 +312,7 @@ msgstr "סוג"
 msgid "Modified"
 msgstr "מועד השינוי"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Exist"
 msgstr "תיקייה זו אינה קיימת"
 
@@ -505,59 +505,59 @@ msgstr "גזירת הבחירה במקום"
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
-#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "בית"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:408
 msgid "You cannot create a folder here."
 msgstr "אין לך אפשרות ליצור כאן תיקייה."
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:411
 msgid "The network is unavailable"
 msgstr "הרשת אינה זמינה"
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:412
 msgid "A working network is needed to reach this folder"
 msgstr "נדרש חיבור זמין לרשת כדי לגשת לתיקייה זו"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:415
 msgid "This Folder Does Not Belong to You"
 msgstr "תיקייה זו אינה שייכת לך"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:416
 msgid "You don't have permission to view this folder."
 msgstr "אין לך הרשאה לראות תיקייה זו."
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Mount Folder"
 msgstr "לא ניתן לעגן את התיקייה"
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:419
 msgid "Could not connect to the server for this folder."
 msgstr "לא ניתן להתחבר לשרת לתיקייה זו."
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Display Folder Contents"
 msgstr "לא ניתן להציג את תוכן התיקייה"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:423
 msgid "The operation timed out."
 msgstr "הזמן שהוקצב לפעולה ההסתיים."
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:425
 msgid "Unable to Show Folder"
 msgstr "לא ניתן להציג את התיקייה"
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:426
 msgid "The server for this folder could not be located."
 msgstr "לא ניתן לאתר את השרת עבור תיקייה זו."
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:437
 msgid "File not Found"
 msgstr "קובץ לא נמצא"
 
-#: src/View/ViewContainer.vala:430
+#: src/View/ViewContainer.vala:438
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
@@ -593,46 +593,46 @@ msgstr "התקנים"
 msgid "Your local partitions and devices"
 msgstr "המחיצות וההתקנים המקומיים שלך"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "רשת"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "מיקומי הרשת שלך"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "כל הרשת"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "עיון בתוכן הרשת"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 msgid "Connect Server"
 msgstr "התחברות לשרת"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
 msgstr "התחברות לשרת ברשת"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s פנויים מתוך %s)"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "עיגון הכרך %s נכשל"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
 msgstr "לא ניתן להתחיל את %s"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "פינוי _סל האשפה"
 
@@ -1068,25 +1068,25 @@ msgstr "לא ניתן לאתר את המיקום המקורי של „%s” "
 msgid "The item cannot be restored from trash"
 msgstr "לא ניתן לשחזר את הפריט מהאשפה"
 
-#: libcore/FileUtils.vala:443
+#: libcore/FileUtils.vala:445
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "לא ניתן לשנות את השם ל־‚%s’"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:532
+#: libcore/FileUtils.vala:534
 #, c-format
 msgid "Today at %s"
 msgstr "היום ב־%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:538
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Yesterday at %s"
 msgstr "אתמול ב־%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:544
+#: libcore/FileUtils.vala:546
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ב־%s"

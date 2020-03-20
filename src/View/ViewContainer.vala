@@ -241,11 +241,19 @@ namespace Marlin.View {
             }
         }
 
-        public void add_view (Marlin.ViewMode mode, GLib.File loc) {
+        // the locations in @to_select must be children of @loc
+        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[] to_select = null) {
             assert (view == null);
             assert (loc != null);
 
             view_mode = mode;
+
+            if (to_select != null) {
+                selected_locations = null;
+                foreach (File f in to_select) {
+                    selected_locations.prepend (f);
+                }
+            }
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this, mode);
@@ -450,9 +458,6 @@ namespace Marlin.View {
                 browser.record_uri (null);
             }
 
-            /* Slot info was updated on starting to load but if target was not a directory
-             * the loaded location may be different. */
-            refresh_slot_info (slot.location);
             loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }

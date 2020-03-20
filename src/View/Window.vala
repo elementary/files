@@ -426,9 +426,19 @@ namespace Marlin.View {
             }
         }
 
-        private void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+        private void add_tab (File _location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                              bool ignore_duplicate = false) {
+
+            File location;
+            // For simplicity we do not use cancellable. If issues arise may need to do this.
+            var ftype = _location.query_file_type (FileQueryInfoFlags.NONE, null);
+
+            if (ftype == FileType.REGULAR) {
+                location = _location.get_parent ();
+            } else {
+                location = _location.dup ();
+            }
 
             if (ignore_duplicate) {
                 bool is_child;
@@ -469,7 +479,11 @@ namespace Marlin.View {
                 update_top_menu ();
             });
 
-            content.add_view (mode, location);
+            if (!location.equal (_location)) {
+                content.add_view (mode, location, {_location});
+            } else {
+                content.add_view (mode, location);
+            }
         }
 
         private int location_is_duplicate (GLib.File location, out bool is_child) {
@@ -1141,7 +1155,6 @@ namespace Marlin.View {
 
         /** Use this function to standardise how locations are generated from uris **/
         private File? get_file_from_uri (string uri) {
-            /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
             string? current_uri = null;
             if (current_tab != null && current_tab.location != null) {
                 current_uri = current_tab.location.get_uri ();
