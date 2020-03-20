@@ -3193,9 +3193,17 @@ namespace FM {
             grab_focus ();
         }
 
-        protected void on_name_edited (string path_string, string new_name) {
+        protected void on_name_edited (string path_string, string? _new_name) {
             /* Must not re-enter */
-            if (!renaming || proposed_name == new_name) {
+            if (!renaming || _new_name == null) {
+                on_name_editing_canceled (); // no problem rentering this function
+                return;
+            }
+
+            var new_name = _new_name.strip (); // Disallow leading and trailing space
+            if (new_name == "" || proposed_name == new_name) {
+                warning ("Blank name or name unchanged");
+                on_name_editing_canceled ();
                 return;
             }
 
@@ -3216,8 +3224,7 @@ namespace FM {
                     set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
                         try {
                             set_file_display_name.end (res);
-                        } catch (Error e) {
-                        }
+                        } catch (Error e) {} // Warning dialog already shown
 
                         on_name_editing_canceled ();
                     });
