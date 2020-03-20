@@ -86,16 +86,16 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
     }
 
     private void update_data () {
-        string status = this.info.get_status ();
+        string status = this.info.status;
         (this.status as Gtk.Label).set_text (status);
 
-        string details = this.info.get_details ();
+        string details = this.info.details;
         string markup = Markup.printf_escaped ("<span size='small'>%s</span>", details);
         (this.details as Gtk.Label).set_markup (markup);
     }
 
     private void update_progress () {
-        double progress = this.info.get_progress ();
+        double progress = this.info.progress;
 
         if (progress < 0) {
             (this.progress_bar as Gtk.ProgressBar).pulse ();
