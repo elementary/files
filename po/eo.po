@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 02:49+0000\n"
-"PO-Revision-Date: 2019-10-05 11:23+0000\n"
+"POT-Creation-Date: 2020-03-17 17:33+0000\n"
+"PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:124
@@ -103,7 +103,7 @@ msgstr "Kapacito:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:439 src/Dialogs/PropertiesWindow.vala:478
+#: src/Dialogs/PropertiesWindow.vala:442 src/Dialogs/PropertiesWindow.vala:481
 msgid "Unknown"
 msgstr "Nekonata"
 
@@ -143,91 +143,91 @@ msgstr "Tio povas esti efektive pli granda"
 msgid "unknown"
 msgstr "nekonata"
 
-#: src/Dialogs/PropertiesWindow.vala:450
+#: src/Dialogs/PropertiesWindow.vala:453
 msgid "Loading…"
 msgstr "Ŝargiĝanta…"
 
-#: src/Dialogs/PropertiesWindow.vala:484
+#: src/Dialogs/PropertiesWindow.vala:487
 msgid "Could not be determined"
 msgstr "Ne eblis determini"
 
-#: src/Dialogs/PropertiesWindow.vala:510 libcore/FileConflictDialog.vala:120
+#: src/Dialogs/PropertiesWindow.vala:513 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
 msgstr "Grando:"
 
-#: src/Dialogs/PropertiesWindow.vala:517 libcore/ConnectServerDialog.vala:164
+#: src/Dialogs/PropertiesWindow.vala:520 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
 msgstr "Tipo:"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:523
 msgid "Contains:"
 msgstr "Entenas:"
 
-#: src/Dialogs/PropertiesWindow.vala:543
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Created:"
 msgstr "Kreita:"
 
-#: src/Dialogs/PropertiesWindow.vala:553
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Modified:"
 msgstr "Modifita:"
 
-#: src/Dialogs/PropertiesWindow.vala:565
+#: src/Dialogs/PropertiesWindow.vala:568
 msgid "Deleted:"
 msgstr "Forigita:"
 
-#: src/Dialogs/PropertiesWindow.vala:575
+#: src/Dialogs/PropertiesWindow.vala:578
 msgid "Media type:"
 msgstr "Aŭdvida tipo:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:585
 msgid "Resolution:"
 msgstr "Distingivo:"
 
-#: src/Dialogs/PropertiesWindow.vala:590
+#: src/Dialogs/PropertiesWindow.vala:593
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "Loko:"
 
-#: src/Dialogs/PropertiesWindow.vala:600
+#: src/Dialogs/PropertiesWindow.vala:603
 msgid "Target:"
 msgstr "Celo:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:611
 msgid "Original Location:"
 msgstr "Devena loko:"
 
-#: src/Dialogs/PropertiesWindow.vala:631
+#: src/Dialogs/PropertiesWindow.vala:634
 #: src/View/AbstractDirectoryView.vala:1930
 msgid "Other Application…"
 msgstr "Alia aplikaĵo…"
 
-#: src/Dialogs/PropertiesWindow.vala:651
+#: src/Dialogs/PropertiesWindow.vala:654
 msgid "Open with:"
 msgstr "Malfermi per:"
 
-#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
+#: src/Dialogs/PropertiesWindow.vala:919 src/Dialogs/PropertiesWindow.vala:929
 msgid "Owner:"
 msgstr "Posedanto:"
 
-#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:932
 msgid "Group:"
 msgstr "Grupo:"
 
-#: src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:935
 msgid "Everyone:"
 msgstr "Ĉiuj:"
 
-#: src/Dialogs/PropertiesWindow.vala:1213
+#: src/Dialogs/PropertiesWindow.vala:1216
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u subdosierujo"
 msgstr[1] "%u subdosierujoj"
 
-#: src/Dialogs/PropertiesWindow.vala:1217
-#: src/Dialogs/PropertiesWindow.vala:1239
+#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -235,19 +235,19 @@ msgstr[0] "%u dosiero"
 msgstr[1] "%u dosieroj"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1222
+#: src/Dialogs/PropertiesWindow.vala:1225
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1238 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u dosierujo"
 msgstr[1] "%u dosierujoj"
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1247
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -255,7 +255,7 @@ msgstr[0] "%u elektita elemento"
 msgstr[1] "%u elektitaj elementoj"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1249
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -293,7 +293,7 @@ msgstr "Ne eblis malfermi la URI-adresojn"
 msgid "Could not open files or URIs with this app"
 msgstr "Neeblis malfermi la dosierojn aŭ URI-adresojn per ĉi aplikaĵo"
 
-#: src/View/Window.vala:543 src/View/Window.vala:553
+#: src/View/Window.vala:557 src/View/Window.vala:567
 msgid "(as Administrator)"
 msgstr "(kiel administranto)"
 
@@ -313,7 +313,7 @@ msgstr "Tipo"
 msgid "Modified"
 msgstr "Modifita"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:399
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Exist"
 msgstr "La dosierujo ne ekzistas"
 
@@ -415,10 +415,8 @@ msgid "Remove from History"
 msgstr "Forigi el historio"
 
 #: src/View/AbstractDirectoryView.vala:2024
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Renomi"
+msgstr "Renomi…"
 
 #: src/View/AbstractDirectoryView.vala:2031
 msgid "Copy as Link"
@@ -441,10 +439,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Montri forajn miniaturojn"
 
 #: src/View/AbstractDirectoryView.vala:2081
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Kaŝi lokajn bildetojn"
+msgstr "Kaŝi miniaturojn"
 
 #: src/View/AbstractDirectoryView.vala:2101
 msgid "Paste Link"
@@ -510,59 +506,59 @@ msgstr "Eltondi la elektaĵon anstataŭe"
 msgid "Cannot paste files here"
 msgstr "Neeblas alglui dosierojn ĉi tien"
 
-#: src/View/ViewContainer.vala:378 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Hejmo"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:408
 msgid "You cannot create a folder here."
 msgstr "Neeblas krei dosierujon ĉi tie."
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:411
 msgid "The network is unavailable"
 msgstr "La reto ne disponeblas"
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:412
 msgid "A working network is needed to reach this folder"
 msgstr "Funkcianta reto necesas por atingi ĉi dosierujon"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:415
 msgid "This Folder Does Not Belong to You"
 msgstr "Ĉi dosierujo ne apartenas al vi"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:416
 msgid "You don't have permission to view this folder."
 msgstr "Vi ne havas permeson vidi ĉi dosierujon."
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Mount Folder"
 msgstr "Neeblas munti la dosierujon"
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:419
 msgid "Could not connect to the server for this folder."
 msgstr "Neeblis konekti al la servilo de tiu ĉi dosierujo."
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Display Folder Contents"
 msgstr "Neeblas montri la dosierujan enhavon"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:423
 msgid "The operation timed out."
 msgstr "La operacio eltempiĝis."
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:425
 msgid "Unable to Show Folder"
 msgstr "Neeblas montri la dosierujon"
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:426
 msgid "The server for this folder could not be located."
 msgstr "Neeblas lokigi la servilon de ĉi dosierujo."
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:437
 msgid "File not Found"
 msgstr "Netrovita dosiero"
 
-#: src/View/ViewContainer.vala:430
+#: src/View/ViewContainer.vala:438
 msgid "The file selected no longer exists."
 msgstr "La elektita dosiero ne plu ekzistas."
 
@@ -598,46 +594,46 @@ msgstr "Aparatoj"
 msgid "Your local partitions and devices"
 msgstr "Viaj lokaj submemorujoj kaj aparatoj"
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Reto"
 
-#: src/View/Sidebar.vala:768
+#: src/View/Sidebar.vala:769
 msgid "Your network places"
 msgstr "Viaj retaj lokoj"
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:801
 msgid "Entire Network"
 msgstr "Tuta Reto"
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
 msgstr "Foliumi la enhavon de la reto"
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:811
 msgid "Connect Server"
 msgstr "Konekti al servilo"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
 msgstr "Konekti al reta servilo"
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s liberaj el %s)"
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Eraris munto de la portilo %s"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
 msgstr "Neeblas startigi %s"
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Malplenigi _Rubujon"
 
@@ -1110,10 +1106,8 @@ msgid "_Cancel"
 msgstr "_Rezigni"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
-msgstr "_Forigi"
+msgstr "Forigi"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1271,10 +1265,9 @@ msgstr "Ĉiuj elementoj en la muntaĵa rubujo estos definitive forigitaj."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1151
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Ĉu definitive forigi „%s“?"
 
 #: libcore/marlin-file-operations.c:1154
 #, c-format
@@ -1288,7 +1281,7 @@ msgstr[1] ""
 
 #: libcore/marlin-file-operations.c:1163
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "La forigitaj elementoj ne estas rubujigitaj, tial ne restaŭreblaj."
 
 #: libcore/marlin-file-operations.c:1197
 #, c-format
