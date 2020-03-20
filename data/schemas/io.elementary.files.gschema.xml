@@ -8,7 +8,6 @@
   <enum id="clickmode">
     <value value="0" nick="single"/>
     <value value="1" nick="double"/>
-    <value value="2" nick="mixed"/>
   </enum>
   <enum id="io.elementary.files.ZoomLevel">
     <value value="0" nick="smallest"/>

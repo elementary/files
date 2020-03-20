@@ -28,12 +28,10 @@ public class PF.AppMenuPopover : Gtk.Popover {
         click_mode_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
         var single_button = new Gtk.RadioButton.with_label (null, _("Single"));
         var double_button = new Gtk.RadioButton.with_label_from_widget (single_button, _("Double"));
-        var mixed_button = new Gtk.RadioButton.with_label_from_widget (single_button, _("Mixed"));
 
         menu_grid.attach (click_mode_label, 0, 0, 3, 1);
         menu_grid.attach (single_button, 0, 1, 1, 1);
         menu_grid.attach (double_button, 1, 1, 1, 1);
-        menu_grid.attach (mixed_button, 2, 1, 1, 1);
 
         menu_grid.show_all ();
         add (menu_grid);
@@ -45,11 +43,6 @@ public class PF.AppMenuPopover : Gtk.Popover {
 
         double_button.clicked.connect (() => {
             GOF.Preferences.get_default ().click_mode = Marlin.ClickMode.DOUBLE;
-            hide ();
-        });
-
-        mixed_button.clicked.connect (() => {
-            GOF.Preferences.get_default ().click_mode = Marlin.ClickMode.MIXED;
             hide ();
         });
     }

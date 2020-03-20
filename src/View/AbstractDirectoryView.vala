@@ -3116,12 +3116,10 @@ namespace FM {
                                 if (one_or_less) {
                                     win.set_cursor (activatable_cursor);
                                 }
-                                break;
-                            case Marlin.ClickMode.MIXED:
-                                if (on_directory && one_or_less) {
-                                    win.set_cursor (activatable_cursor);
-                                }
 
+                                break;
+
+                            default:
                                 break;
                         }
 
@@ -3427,10 +3425,6 @@ namespace FM {
 
                                     case Marlin.ClickMode.DOUBLE:
                                         should_activate = double_click_event;
-                                        break;
-
-                                    case Marlin.ClickMode.MIXED:
-                                        should_activate = on_directory || double_click_event;
                                         break;
 
                                     default:
