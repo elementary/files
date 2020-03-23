@@ -128,7 +128,7 @@ namespace Marlin.View {
         }
 
         private void truncate_list_after_slot (Marlin.View.Slot slot) {
-            if (slot_list.length () <= 0) {
+            if (slot_list.length () <= 0) { //Can be assumed to limited in length
                 return;
             }
 
@@ -394,7 +394,7 @@ namespace Marlin.View {
                     GLib.File current_location = selected_file.location;
                     GLib.File? next_location = null;
 
-                    if (current_position < slot_list.length () - 1) {
+                    if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
                         next_location = slot_list.nth_data (current_position + 1).location;
                     }
 
@@ -486,7 +486,7 @@ namespace Marlin.View {
                 new_value = previous_width;
             }
 
-            int offset = slot.slot_number < slot_list.length () - 1 ? 90 : 0;
+            int offset = slot.slot_number < slot_list.length () - 1 ? 90 : 0; //Can be assumed to limited in length
             int val = page_size - (width + slot.width + offset);
 
             if (val < 0) { /*scroll left until right hand edge of active slot is in view*/

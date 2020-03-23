@@ -145,7 +145,7 @@ namespace Marlin {
         }
 
         public void insert_uris (GLib.List<string> uris, uint index) {
-            if (index > list.length ()) {
+            if (index > list.length ()) { // Can be assumed to be limited in length
                 critical ("Bookmarklist: Attempt to insert uri at out of range index");
                 return;
             }
@@ -161,7 +161,7 @@ namespace Marlin {
         }
 
         public void delete_item_at (uint index) {
-            assert (index < list.length ());
+            assert (index < list.length ()); // Can be assumed to be limited in length
             unowned GLib.List<Marlin.Bookmark> node = list.nth (index);
             list.remove_link (node);
             stop_monitoring_bookmark (node.data);
@@ -188,21 +188,21 @@ namespace Marlin {
         }
 
         public uint length () {
-            return list.length ();
+            return list.length (); // Can be assumed to be limited in length
         }
 
         public unowned Marlin.Bookmark? item_at (uint index) {
-            assert (index < list.length ());
+            assert (index < list.length ()); // Can be assumed to be limited in length
             return list.nth_data (index);
         }
 
         public void move_item (uint index, uint destination) {
-            if (index > list.length ()) {
+            if (index > list.length ()) { // Can be assumed to be limited in length
                 critical ("Bookmarklist: Attempt to move bookmark from out of range index");
                 return;
             }
 
-            if (destination > list.length ()) {
+            if (destination > list.length ()) { // Can be assumed to be limited in length
                 critical ("Bookmarklist: Attempt to move bookmark to out of range index");
                 return;
             }
@@ -305,7 +305,7 @@ namespace Marlin {
 
             list.@foreach (start_monitoring_bookmark);
 
-            if (list.length () > count) {
+            if (list.length () > count) { // Can be assumed to be limited in length
                 /* renew bookmark that was deleted when bookmarks file was changed externally */
                 save_bookmarks_file ();
             }

@@ -1938,7 +1938,7 @@ namespace FM {
             }
 
             var open_submenu_item = new Gtk.MenuItem ();
-            if (open_submenu.get_children ().length () > 0) {
+            if (open_submenu.get_children ().length () > 0) { //Can be assumed to be limited length
                 open_submenu_item.submenu = open_submenu;
 
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
@@ -2223,7 +2223,7 @@ namespace FM {
                     var template_folder = GLib.File.new_for_path (template_path);
                     load_templates_from_folder (template_folder);
 
-                    if (templates.length () > 0) {
+                    if (templates.length () > 0) { //Can be assumed to be limited length
                         submenu.add (new Gtk.SeparatorMenuItem ());
 
                         // We need to get directories first
@@ -2401,7 +2401,7 @@ namespace FM {
             var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
             try {
                 enumerator = template_folder.enumerate_children (f_attr, flags, null);
-                uint count = templates.length ();
+                uint count = templates.length (); //Assume to be limited in size
                 GLib.File location;
                 GLib.FileInfo? info = enumerator.next_file (null);
 
@@ -2420,7 +2420,7 @@ namespace FM {
                 return;
             }
 
-            if (file_list.length () > 0) {
+            if (file_list.length () > 0) { // Can assumed to be limited in length
                 file_list.sort ((a, b) => {
                     return strcmp (a.get_basename ().down (), b.get_basename ().down ());
                 });
@@ -2432,7 +2432,7 @@ namespace FM {
                 templates.append (template_folder);
             }
 
-            if (folder_list.length () > 0) {
+            if (folder_list.length () > 0) { //Can be assumed to be limited in length
                 /* recursively load templates from subdirectories */
                 folder_list.@foreach ((folder) => {
                     load_templates_from_folder (folder);
