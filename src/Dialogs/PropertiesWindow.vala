@@ -153,9 +153,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             files.prepend (file);
         }
 
-        count = files.length ();
+        var empty = (files == null || files.nth_data (0) == null); // May be large  - avoid length ()
 
-        if (count < 1 ) {
+        if (empty ) {
             critical ("Properties Window constructor called with empty file list");
             return;
         }
@@ -195,12 +195,14 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             overlay_emblems (file_icon, goffile.emblems_list);
         }
 
+        var only_one = files.nth_data (1) == null;
+
         /* Build header box */
-        if (count > 1 || (count == 1 && !goffile.is_writable ())) {
+        if (!only_one || (only_one && !goffile.is_writable ())) {
             var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
             label.halign = Gtk.Align.START;
             header_title = label;
-        } else if (count == 1 && goffile.is_writable ()) {
+        } else if (only_one && goffile.is_writable ()) {
             entry = new Gtk.Entry ();
             original_name = goffile.info.get_name ();
             reset_entry_text ();
@@ -220,7 +222,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
-        if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
+        if (!(only_one && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
             construct_perm_panel ();
             add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
             if (!goffile.can_set_permissions ()) {
