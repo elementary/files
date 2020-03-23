@@ -305,7 +305,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         if (destination.is_directory) {
             if (source.is_directory) {
                 primary_label.label = _("Merge folder \"%s\"?").printf (dest_name);
-                message_extra = _("Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied.");
+                message_extra = _("Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied."); //vala-lint=line-length
                 if (source.modified > destination.modified) {
                     message = _("An older folder with the same name already exists in \"%s\".").printf (dest_dir_name);
                 } else if (source.modified < destination.modified) {
