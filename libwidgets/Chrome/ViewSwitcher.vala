@@ -24,7 +24,6 @@
 namespace Marlin.View.Chrome {
     public class ViewSwitcher : Granite.Widgets.ModeButton {
         private const int SWITCH_DELAY_MSEC = 100;
-        private bool freeze_update = false;
         public GLib.SimpleAction view_mode_action { get; construct; }
         private uint mode_change_timeout_id = 0;
         private ViewMode last_selected;
