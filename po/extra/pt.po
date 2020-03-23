@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 17:33+0000\n"
-"PO-Revision-Date: 2020-03-11 17:09+0000\n"
+"PO-Revision-Date: 2020-03-22 20:09+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -73,10 +73,8 @@ msgid "Minor updates:"
 msgstr "Pequenas atualizações:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Fix crash when opening multiple video files"
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "Corrige falha ao abrir vários ficheiros de vídeo"
+msgstr "Corrigir falha quando um ícone de dispositivo vem de um ficheiro"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix device icon sometimes missing"
@@ -97,7 +95,7 @@ msgstr "Corrige as 'breadcrumbs' às vezes incorretas no arranque"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr ""
+msgstr "Não mostrar o prefixo ficheiro:// nos menus dos botões de navegação"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:84
