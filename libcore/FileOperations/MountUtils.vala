@@ -51,7 +51,8 @@ namespace Marlin.FileOperations {
         var list = new GLib.List<GLib.File> ();
         var root = mount.get_root ();
         if (root.is_native ()) {
-            GLib.File? trash = root.resolve_relative_path (".Trash/%d");
+            var uid = (int)Posix.getuid ();
+            GLib.File? trash = root.resolve_relative_path ((".Trash/%d").printf (uid));
             if (trash != null) {
                 var child = trash.get_child ("files");
                 if (child.query_exists ()) {
@@ -64,7 +65,7 @@ namespace Marlin.FileOperations {
                 }
             }
 
-            trash = root.resolve_relative_path (".Trash-%d");
+            trash = root.resolve_relative_path ((".Trash-%d").printf (uid));
             if (trash != null) {
                 var child = trash.get_child ("files");
                 if (child.query_exists ()) {
