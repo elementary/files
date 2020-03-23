@@ -39,6 +39,9 @@ pantheon_files_core_vala_files = files(
     'UndoManager.vala',
     'IconInfo.vala',
     'Thumbnailer.vala',
+    'FileOperations/CommonJob.vala',
+    'FileOperations/EmptyTrashJob.vala',
+    'FileOperations/MountUtils.vala',
 )
 
 pantheon_files_core_c_files = files(
