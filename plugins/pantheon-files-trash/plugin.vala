@@ -86,7 +86,8 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 
                 delete_button.clicked.connect (() => {
                     if (delete_button.label == _(DELETE_ALL)) {
-                        Marlin.FileOperations.empty_trash (delete_button);
+                        var job = new Marlin.FileOperations.EmptyTrashJob (window);
+                        job.empty_trash.begin ();
                     } else {
                         GLib.List<GLib.File> to_delete = null;
                         foreach (GOF.File gof in view.get_selected_files ()) {
