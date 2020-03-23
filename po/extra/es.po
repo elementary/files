@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 17:33+0000\n"
-"PO-Revision-Date: 2020-03-07 10:09+0000\n"
+"PO-Revision-Date: 2020-03-23 17:41+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,10 +74,10 @@ msgid "Minor updates:"
 msgstr "Actualizaciones menores:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Fix crash when opening multiple video files"
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "Corrección del bloqueo al abrir varios archivos de vídeo"
+msgstr ""
+"Corrección del cierre inesperado producido cuando un icono de dispositivo "
+"proviente de un archivo"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix device icon sometimes missing"
@@ -104,6 +104,8 @@ msgstr "Se solucionó un problema al iniciar que provocaba rutas incorrectas"
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Do not show file:// prefix in navigation buttons menus"
 msgstr ""
+"Ya no se muestra el prefijo «file://» en los menús de los botones de "
+"navegación"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:84
@@ -184,7 +186,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "New features:"
-msgstr "Nuevas características:"
+msgstr "Funcionalidades nuevas:"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Initial git plugin support"
