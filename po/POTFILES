@@ -75,6 +75,9 @@ libcore/Thumbnailer.vala
 libcore/TrashMonitor.vala
 libcore/UndoManager.vala
 libcore/UserUtils.vala
+libcore/FileOperations/CommonJob.vala
+libcore/FileOperations/EmptyTrashJob.vala
+libcore/FileOperations/MountUtils.vala
 
 libcore/marlin-file-operations.c
 libcore/fm-list-model.c
