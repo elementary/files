@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 17:33+0000\n"
-"PO-Revision-Date: 2019-11-09 13:24+0000\n"
+"PO-Revision-Date: 2020-03-24 22:09+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -71,35 +71,32 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:77
-#, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
-msgstr "軽微なバグの修正"
+msgstr "軽微なアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "複数の動画ファイルを開く際のクラッシュを修正"
+msgstr "デバイスアイコンがファイルである場合のクラッシュを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix device icon sometimes missing"
-msgstr ""
+msgstr "デバイスアイコンが表示されないことがある問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Fix occasional view freeze after renaming"
-msgstr ""
+msgstr "名前を変更するとビューがフリーズすることがある問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
-msgstr ""
+msgstr "ファイル名の先頭または末尾に空白を含む場合の、名前の変更処理を改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr ""
+msgstr "起動時にパンくずリストの表示が間違っていることがある問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr ""
+msgstr "ナビゲーションボタンのメニューに file:// という接尾辞を表示しないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:84
@@ -119,36 +116,36 @@ msgstr "翻訳の更新"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr ""
+msgstr "メニューにある \"新しいフォルダー\" 項目のキーボードショートカットの表示が間違っていた問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Fix navigation with back/forward button context menu"
-msgstr ""
+msgstr "戻る／進むボタンのコンテキストメニューでのナビゲーションに関する不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
-msgstr ""
+msgstr "タブを閉じるとパスバーに間違ったパスが表示されることがある問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
-msgstr ""
+msgstr "ファイルの作成・名前の変更直後でもキーボードショートカットが機能するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
-msgstr ""
+msgstr "パスバーのテキストやパスをテキストとして貼り付けする際に、文字列 \"file://\" を含まないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Show keyboard shortcuts in menu items"
-msgstr ""
+msgstr "メニュー項目にキーボードショートカットを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr ""
+msgstr "ファイル選択ダイアログのパンくずリストに関する問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Show a warning when ejecting a volume that's still in use"
-msgstr ""
+msgstr "使用中のボリュームを取り出そうとした際に警告を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Fix cursor update after horizontal scroll in Column View"
@@ -195,19 +192,16 @@ msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:114
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "翻訳サポートを改善"
+msgstr "パスバーのアニメーションを改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:115
-#, fuzzy
 msgid "Update documentation"
-msgstr "翻訳の更新"
+msgstr "ドキュメンテーションの更新"
 
 #: data/io.elementary.files.appdata.xml.in.in:116
-#, fuzzy
 msgid "Update translations"
-msgstr "翻訳の更新"
+msgstr "翻訳を更新"
 
 #: data/io.elementary.files.appdata.xml.in.in:123
 msgid "Initial cloudproviders plugin support"
@@ -250,9 +244,8 @@ msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:140
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "ネットワークサポートを改善"
+msgstr "MTP への対応を改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:141
 msgid "Various tagging feature refinements"
@@ -335,7 +328,6 @@ msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:188
-#, fuzzy
 msgid "File sorting fixes"
 msgstr "ファイルの並べ替えの問題を修正"
 
@@ -368,7 +360,6 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:203
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
 msgstr "複数の動画ファイルを開く際のクラッシュを修正"
 
@@ -401,12 +392,10 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:218
-#, fuzzy
 msgid "Build fixes"
 msgstr "ビルドの問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:226
-#, fuzzy
 msgid "Plugin build fixes"
 msgstr "プラグインのビルドの問題を修正"
 
@@ -471,12 +460,10 @@ msgid "Tooltip fixes"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:255
-#, fuzzy
 msgid "Memory leak fixes"
 msgstr "メモリーリークを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:256
-#, fuzzy
 msgid "Crash fixes"
 msgstr "クラッシュを修正"
 
