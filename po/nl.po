@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-23 11:11+0000\n"
-"PO-Revision-Date: 2020-02-01 03:08+0000\n"
+"PO-Revision-Date: 2020-03-24 22:09+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -1180,10 +1180,9 @@ msgid "Emptying Trash"
 msgstr "Bezig met prullenbak legen"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
-msgstr "Kon %s niet aankoppelen"
+msgstr "Kon '%s' niet koppelen"
 
 #: libcore/marlin-file-operations.c:156
 #, c-format
