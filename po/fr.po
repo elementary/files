@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-23 11:11+0000\n"
-"PO-Revision-Date: 2020-01-30 22:08+0000\n"
+"PO-Revision-Date: 2020-03-27 09:36+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -1181,10 +1181,9 @@ msgid "Emptying Trash"
 msgstr "Vidage de la corbeille"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
-msgstr "Impossible de monter %s"
+msgstr "Impossible de monter « %s »"
 
 #: libcore/marlin-file-operations.c:156
 #, c-format
