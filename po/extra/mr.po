@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 17:33+0000\n"
-"PO-Revision-Date: 2020-03-19 19:09+0000\n"
+"PO-Revision-Date: 2020-03-27 09:36+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
 "\n"
@@ -213,77 +213,81 @@ msgstr "गडद थीम वापरताना रंग लेबल द�
 
 #: data/io.elementary.files.appdata.xml.in.in:126
 msgid "Fix selecting files using Shift key"
-msgstr ""
+msgstr "शिफ्ट की वापरून फायली निवडण्याशी संबंधित अडचणींचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:127
 msgid "Draw checkerboard background for image items"
-msgstr ""
+msgstr "प्रतिमा आयटमसाठी चेकरबोर्ड पार्श्वभूमी काढा"
 
 #: data/io.elementary.files.appdata.xml.in.in:128
 msgid "Improved styling for disk space bars"
-msgstr ""
+msgstr "डिस्क स्पेस बारसाठी सुधारित स्टाईलिंग"
 
 #: data/io.elementary.files.appdata.xml.in.in:136
 msgid "Show more search results"
-msgstr ""
+msgstr "अधिक शोध परिणाम दाखवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:137
 msgid "Ensure valid tab name generation"
-msgstr ""
+msgstr "वैध टॅब नाव निर्मितीची खात्री करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:138
 msgid "Properly sort folders by date and size"
-msgstr ""
+msgstr "तारीख आणि आकारानुसार फोल्डर्स व्यवस्थित क्रमवारी लावा"
 
 #: data/io.elementary.files.appdata.xml.in.in:139
 msgid "Launching Files from Terminal now opens new tab instead of new window"
-msgstr ""
+msgstr "टर्मिनल वरून फाइल्स लॉन्च करताना आता नवीन विंडो ऐवजी नवीन टॅब उघडेल"
 
 #: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Improve MTP support"
-msgstr ""
+msgstr "एमटीपी समर्थन सुधारित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:141
 msgid "Various tagging feature refinements"
-msgstr ""
+msgstr "विविध टॅगिंग वैशिष्ट्य परिष्कृत"
 
 #: data/io.elementary.files.appdata.xml.in.in:142
 msgid "Keyboard navigation improvements"
-msgstr ""
+msgstr "कीबोर्ड नेव्हिगेशन सुधारणा"
 
 #: data/io.elementary.files.appdata.xml.in.in:143
 msgid "Symlink copy and paste fixes"
-msgstr ""
+msgstr "सिमलिंक कॉपी आणि पेस्ट निराकरणे"
 
 #: data/io.elementary.files.appdata.xml.in.in:144
 msgid "Avoid crash when Templates folder is null"
-msgstr ""
+msgstr "टेम्पलेट्स फोल्डर रिक्त असताना क्रॅश टाळा"
 
 #: data/io.elementary.files.appdata.xml.in.in:145
 msgid "Reduce memory footprint of FileChooserDialog"
-msgstr ""
+msgstr "फाईलच्यूसरडायलॉगचा मेमरी फूटप्रिंट कमी करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Avoid crash when selecting image file in some situations"
-msgstr ""
+msgstr "काही घटनांमध्ये प्रतिमा फाईल निवडताना क्रॅश टाळा"
 
 #: data/io.elementary.files.appdata.xml.in.in:147
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
 msgstr ""
+"काढण्यायोग्य स्टोरेजवर नेटवर्क फाइल्सची कॉपी करताना बंद ना करतयेणाऱ्या प्रगती"
+" विंडोशी संबंधित समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr ""
+"रिक्त क्षेत्रावर डबल क्लिक केल्यानंतर ड्रॅग आणि ड्रॉपशी संबंधित समस्यांचे "
+"निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:149
 msgid "Avoid crash while scrolling over view switcher"
-msgstr ""
+msgstr "व्ह्यू स्विचरवर स्क्रोल करत असताना क्रॅश टाळा"
 
 #: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Avoid possible crash in some copy and paste situations"
-msgstr ""
+msgstr "काही कॉपी आणि पेस्टच्या घटनांमध्ये संभाव्य क्रॅश टाळा"
 
 #: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
