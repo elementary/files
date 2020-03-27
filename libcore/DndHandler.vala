@@ -275,7 +275,8 @@ namespace Marlin {
                 selection_data.get_length () > 0 && //No other way to get length?
                 selection_data.get_format () == 8) {
 
-                text = DndHandler.data_to_string (selection_data.get_data ());
+                /* selection_data.get_data () does not work for some reason (returns nothing) */
+                text = DndHandler.data_to_string (selection_data.get_data_with_length ());
             }
 
             debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
