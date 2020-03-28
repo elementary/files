@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 17:33+0000\n"
-"PO-Revision-Date: 2020-02-01 03:08+0000\n"
+"PO-Revision-Date: 2020-03-29 21:09+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/extra/pt_BR/>\n"
@@ -69,36 +69,34 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:77
-#, fuzzy
-#| msgid "Other updates:"
 msgid "Minor updates:"
-msgstr "Outras atualizações:"
+msgstr "Pequenas atualizações:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Fix crash when opening multiple video files"
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "Corrige falha ao abrir vários arquivos de vídeo"
+msgstr "Corrige falha quando um ícone de dispositivo vem de um arquivo"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix device icon sometimes missing"
-msgstr ""
+msgstr "Corrige ícone do dispositivo algumas vezes ausente"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Fix occasional view freeze after renaming"
-msgstr ""
+msgstr "Corrige congelamento de vista ocasional após renomear"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
+"Melhora a lógica de renomeação ao lidar com espaços em branco iniciais / "
+"finais"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr ""
+msgstr "Corrige migalhas de pão às vezes incorretas na inicialização"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr ""
+msgstr "Não mostrar o prefixo arquivo:// nos menus dos botões de navegação"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:84
@@ -117,29 +115,31 @@ msgid "Updated translations"
 msgstr "Traduções atualizadas"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr "Exibir atalhos de teclado nos itens de menu"
+msgstr "Corrige o rótulo de atalho do teclado \"Nova pasta\" no menu"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
-#, fuzzy
-#| msgid "Fix drag with secondary button on empty space"
 msgid "Fix navigation with back/forward button context menu"
-msgstr "Corrigir arrastar com o botão secundário no espaço vazio"
+msgstr "Corrige navegação com o menu de contexto do botão voltar/avançar"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
+"Corrige a barra do caminho que as vezes mostra o caminho errado ao fechar "
+"uma aba"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
+"Certifique-se os atalhos do teclado funcionam imediatamente após criar ou "
+"renomear um arquivo"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
+"Não inclua \"arquivo://\" no texto da barra de caminho ou ao colar o caminho "
+"como texto"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Show keyboard shortcuts in menu items"
@@ -156,14 +156,19 @@ msgstr "Exibir um aviso ao ejetar um volume que ainda está em uso"
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
+"Corrige atualização do cursor após rolagem horizontal na Exibição de Coluna"
 
 #: data/io.elementary.files.appdata.xml.in.in:95
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
+"Corrige o ícone de pasta aberta persistindo após o fechamento da Exibição de "
+"Coluna"
 
 #: data/io.elementary.files.appdata.xml.in.in:96
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr ""
+"Usa estilo de ação destrutiva para alguns botões da caixa de diálogo da "
+"lixeira"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "New features:"
