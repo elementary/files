@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-23 11:11+0000\n"
-"PO-Revision-Date: 2020-02-01 03:08+0000\n"
+"PO-Revision-Date: 2020-03-29 21:09+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
@@ -1181,8 +1181,7 @@ msgid "Emptying Trash"
 msgstr "Esvaziando lixeira"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
 msgstr "Não foi possível montar %s"
 
