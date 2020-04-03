@@ -1,3 +1,41 @@
+pantheon-files (4.4.2) bionic; urgency=medium
+
+  * release 4.4.2 (#1277)
+  * libcore: Put the FileOperations cheader on every C function instead
+    of the namespace (#1274)
+  * Do not use selection_data.get_data () (#1272)
+  * Avoid list length (#1269)
+  * Fix long lines (#1268)
+  * Fix some compile warnings (#1267)
+  * Update translation files
+  * Update translation template
+  * FileOperations: ported mount and empty_trash functions to Vala
+    (#1190)
+  * Replace ProgressInfo members with properties (#1263)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Sidebar: Do not assume that every Icon is a ThemedIcon (#1262)
+  * Update translation files
+  * Update translation template
+  * Do not show file:// prefix in navigate button menus (#1257)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Do not update pathbar after loading (#1247)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Fix view frozen after renaming with blank (#1253)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Fix device icon sometimes missing (#1250)
+  * Update translation files
+  * Update translation template
+
+ -- Cody Garver <cody@elementary.io>  Fri, 03 Apr 2020 18:32:11 +0000
+
 pantheon-files (4.4.1) bionic; urgency=medium
 
   * Release 4.4.1 (#1248)
