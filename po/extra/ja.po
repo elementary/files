@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 17:33+0000\n"
-"PO-Revision-Date: 2020-03-24 22:09+0000\n"
+"PO-Revision-Date: 2020-04-05 11:10+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -149,19 +149,19 @@ msgstr "使用中のボリュームを取り出そうとした際に警告を表
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Fix cursor update after horizontal scroll in Column View"
-msgstr ""
+msgstr "カラム表示で水平スクロールを行った後、カーソルを更新するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:95
 msgid "Fix folder-open icon persisting after closing Column View"
-msgstr ""
+msgstr "カラム表示を閉じた後に folder-open アイコンが表示され続ける問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:96
 msgid "Use destructive action styling for some trash dialog buttons"
-msgstr ""
+msgstr "ファイルの削除に関するダイアログのボタンを赤色で強調表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "New features:"
-msgstr ""
+msgstr "新機能:"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Initial git plugin support"
@@ -169,15 +169,15 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Follow global history setting when restoring and saving tabs"
-msgstr ""
+msgstr "タブを復元・保存する際にシステムの履歴設定に準拠するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Other updates:"
-msgstr ""
+msgstr "そのほかのアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Ensure tabs showing same folder remain synchronized"
-msgstr ""
+msgstr "同じフォルダーを表示しているタブが正しく同期されるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Fix drag with secondary button on empty space"
