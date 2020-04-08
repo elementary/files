@@ -35,8 +35,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private Gtk.ListStore store_groups;
     private Gtk.ListStore store_apps;
 
-    private uint count;
     private GLib.List<GOF.File> files;
+    private bool only_one;
     private GOF.File goffile;
 
     public FM.AbstractDirectoryView view {get; private set;}
@@ -183,6 +183,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         goffile = (GOF.File) files.data;
+        only_one = files.nth_data (1) == null;
+
         construct_info_panel (goffile);
         cancellable = new GLib.Cancellable ();
 
@@ -194,8 +196,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
             overlay_emblems (file_icon, goffile.emblems_list);
         }
-
-        var only_one = files.nth_data (1) == null;
 
         /* Build header box */
         if (!only_one || (only_one && !goffile.is_writable ())) {
@@ -541,7 +541,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         int n = 4;
 
-        if (count == 1) {
+        if (only_one) {
+            /* Note most Linux filesystem do not store file creation time */
             var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                     FileAttribute.TIME_CREATED);
             if (time_created != "") {
@@ -554,6 +555,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
             var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                      FileAttribute.TIME_MODIFIED);
+
             if (time_modified != "") {
                 var key_label = new KeyLabel (_("Modified:"));
                 var value_label = new ValueLabel (time_modified);
@@ -563,7 +565,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        if (count == 1 && file.is_trashed ()) {
+        if (only_one && file.is_trashed ()) {
             var deletion_date = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                      FileAttribute.TRASH_DELETION_DATE);
             if (deletion_date != "") {
@@ -583,7 +585,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
         n++;
 
-        if (count == 1 && "image" in ftype) {
+        if (only_one && "image" in ftype) {
             var resolution_key = new KeyLabel (_("Resolution:"));
             resolution_value = new ValueLabel (resolution (file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
@@ -601,7 +603,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             n++;
         }
 
-        if (count == 1 && file.info.get_is_symlink ()) {
+        if (only_one && file.info.get_is_symlink ()) {
             var key_label = new KeyLabel (_("Target:"));
             var value_label = new ValueLabel (file.info.get_symlink_target ());
             info_grid.attach (key_label, 0, n, 1, 1);
@@ -676,7 +678,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return true;
         }
 
-        if (count == 1) {
+        if (only_one) {
             if (goffile.can_unmount ()) {
                 return true;
             }
@@ -1262,7 +1264,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             spinner.hide ();
         }
 
-        if (count > 1) {
+        if (!only_one) {
             type_key_label.hide ();
             type_value.hide ();
         } else {
@@ -1283,7 +1285,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
          * the "contained files" counted are only in the subfolders or not.*/
         /* Only show 'contains' label when folders selected are not empty */
-        if (count > selected_folders || contains_value.label.length < 1) {
+        if (selected_files > 0 || contains_value.label.length < 1) {
             contains_key_label.hide ();
             contains_value.hide ();
         } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/
