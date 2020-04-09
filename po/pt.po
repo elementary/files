@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 22:36+0000\n"
-"PO-Revision-Date: 2020-03-24 22:09+0000\n"
+"PO-Revision-Date: 2020-04-09 15:06+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -1070,7 +1070,7 @@ msgstr "Não foi possível determinar a localização original de \"%s\" "
 
 #: libcore/FileUtils.vala:88
 msgid "The item cannot be restored from trash"
-msgstr "O item não pode ser recuperado do lixo"
+msgstr "O item não pode ser restaurado a partir do lixo"
 
 #: libcore/FileUtils.vala:445
 #, c-format
@@ -1150,7 +1150,7 @@ msgstr "Impossível determinar localização original"
 
 #: libcore/UndoManager.vala:311
 msgid "Open trash folder and restore manually"
-msgstr "Abrir pasta de lixo e restaurar manualmente"
+msgstr "Abrir a pasta do lixo e restaurar manualmente"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:40
 msgid "Permanently delete all items from Trash?"
@@ -1988,7 +1988,7 @@ msgstr "MTP"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
-msgstr "Restaurar Todos"
+msgstr "Restaurar tudo"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
@@ -1996,7 +1996,7 @@ msgstr "Esvaziar o Lixo"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
-msgstr "Restaurar a Seleção"
+msgstr "Restaurar selecionado"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
