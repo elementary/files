@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 22:36+0000\n"
-"PO-Revision-Date: 2020-04-09 15:06+0000\n"
+"PO-Revision-Date: 2020-04-09 15:21+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -398,7 +398,7 @@ msgstr "Copiar"
 
 #: src/View/AbstractDirectoryView.vala:1987
 msgid "Move to Trash"
-msgstr "Mover para o Lixo"
+msgstr "Mover para o lixo"
 
 #: src/View/AbstractDirectoryView.vala:1992
 msgid "Delete permanently"
@@ -406,7 +406,7 @@ msgstr "Apagar permanentemente"
 
 #: src/View/AbstractDirectoryView.vala:1997
 msgid "Restore from Trash"
-msgstr "Restaurar do Lixo"
+msgstr "Restaurar do lixo"
 
 #: src/View/AbstractDirectoryView.vala:2008
 msgid "Open Parent Folder"
@@ -498,7 +498,7 @@ msgstr "Não tem permissões para mudar este local"
 
 #: src/View/AbstractDirectoryView.vala:3015
 msgid "Cannot copy files that are in the trash"
-msgstr "Não é possivel copiar ficheiros que estão no lixo"
+msgstr "Não é possível copiar os ficheiros que estão no lixo"
 
 #: src/View/AbstractDirectoryView.vala:3016
 msgid "Cutting the selection instead"
@@ -586,7 +586,7 @@ msgstr "Lixo"
 
 #: src/View/Sidebar.vala:633
 msgid "Open the Trash"
-msgstr "Abrir o Lixo"
+msgstr "Abrir o lixo"
 
 #: src/View/Sidebar.vala:638
 msgid "Devices"
@@ -645,7 +645,7 @@ msgstr "Esta pasta está vazia"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr "Lixo Vazio"
+msgstr "O lixo está vazio"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
@@ -1154,23 +1154,23 @@ msgstr "Abrir a pasta do lixo e restaurar manualmente"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:40
 msgid "Permanently delete all items from Trash?"
-msgstr "Apagar permanentemente todos os itens do Lixo?"
+msgstr "Eliminar permanentemente todos os itens do lixo?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:41
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
-"Todos os itens em diretórios de lixo, incluindo aqueles em quaisquer "
-"unidades externas ligadas, serão apagados permanentemente."
+"Todos os itens em todos os diretórios de lixo, incluindo os de quaisquer "
+"unidades externas montadas, serão eliminados permanentemente."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Apagar permanentemente todos os itens do Lixo neste disco?"
+msgstr "Eliminar permanentemente todos os itens do lixo neste disco?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr "Todos os itens do lixo neste disco serão apagados permanentemente."
+msgstr "Todos os itens do lixo neste disco serão eliminados permanentemente."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:104
 msgid "Emptying Trash"
@@ -1296,7 +1296,7 @@ msgstr[1] ""
 #: libcore/marlin-file-operations.c:1112
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
-"Os itens eliminados não são enviados para o Lixo e não são recuperáveis."
+"Os itens eliminados não são enviados para o lixo e não são recuperáveis."
 
 #: libcore/marlin-file-operations.c:1146
 #, c-format
@@ -1394,7 +1394,7 @@ msgstr[1] "resta mover %'d ficheiros"
 #: libcore/marlin-file-operations.c:1591 libcore/marlin-file-operations.c:1594
 #: libcore/marlin-file-operations.c:1597
 msgid "Cannot move file to trash or delete it"
-msgstr "Não foi possível mover o ficheiro para o lixo ou eliminá-lo"
+msgstr "Não é possível mover o ficheiro para o lixo ou eliminá-lo"
 
 #: libcore/marlin-file-operations.c:1592
 msgid "It is not permitted to trash or delete files on a read only filesystem."
@@ -1420,16 +1420,15 @@ msgstr ""
 #: libcore/marlin-file-operations.c:1600
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
-"Não foi possível mover o ficheiro para o lixo. Tentar eliminá-lo "
-"imediatamente?"
+"Não é possível mover o ficheiro para o lixo. Tentar eliminá-lo imediatamente?"
 
 #: libcore/marlin-file-operations.c:1601
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
-"Não foi possível mover este ficheiro para o lixo. Veja detalhes abaixo para "
-"mais informação."
+"Não foi possível mover este ficheiro para o lixo. Para mais informações, "
+"consulte os detalhes abaixo."
 
 #: libcore/marlin-file-operations.c:1605
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1868,7 +1867,7 @@ msgstr "A definir as permissões"
 
 #: libcore/marlin-file-operations.c:5458
 msgid "Cannot copy into trash."
-msgstr "Não é possivel copiar para o lixo."
+msgstr "Não é possível copiar para o lixo."
 
 #: libcore/marlin-file-operations.c:5459 libcore/marlin-file-operations.c:5467
 msgid "It is not permitted to copy files into the trash"
@@ -1992,7 +1991,7 @@ msgstr "Restaurar tudo"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
-msgstr "Esvaziar o Lixo"
+msgstr "Esvaziar o lixo"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
