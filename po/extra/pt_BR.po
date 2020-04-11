@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 22:36+0000\n"
-"PO-Revision-Date: 2020-03-29 21:09+0000\n"
+"PO-Revision-Date: 2020-04-12 11:10+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/extra/pt_BR/>\n"
@@ -76,6 +76,8 @@ msgstr "Pequenas atualizações:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr ""
+"Correção de um problema que impedia a exibição dos tempos de modificação do "
+"arquivo"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:80
