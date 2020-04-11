@@ -603,7 +603,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         /* Add bookmarks */
-        uint bookmark_count = bookmarks.length ();
+        uint bookmark_count = bookmarks.length (); // Can be assumed to be limited in length
         unowned Bookmark bm;
         uint index;
         for (index = 0; index < bookmark_count; index++) {
