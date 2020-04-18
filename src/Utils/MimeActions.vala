@@ -148,7 +148,7 @@ public class Marlin.MimeActions {
                 result = get_applications_for_file (file);
                 if (result == null) {
                     debug ("No application found for %s", file.get_ftype ());
-                    return null;
+                    return result;
                 }
                 previous_file = file;
                 continue;

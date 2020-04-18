@@ -31,7 +31,11 @@ public class GOF.File : GLib.Object {
         LOADING
     }
 
-    public const string GIO_DEFAULT_ATTRIBUTES = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
+    public const string GIO_DEFAULT_ATTRIBUTES =
+        "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name," +
+        "standard::display-name,standard::content-type,standard::fast-content-type,standard::size," +
+        "standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem," +
+        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
 
     public signal void changed ();
     public signal void icon_changed ();
@@ -195,7 +199,9 @@ public class GOF.File : GLib.Object {
             return true;
         }
 
-        if (file_type == GLib.FileType.MOUNTABLE && info != null && info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_MOUNT)) {
+        if (file_type == GLib.FileType.MOUNTABLE &&
+            info != null && info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_MOUNT)) {
+
             return true;
         }
 
@@ -441,11 +447,14 @@ public class GOF.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = FM.ListModel.ColumnID.from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
+                sort_column_id = FM.ListModel.ColumnID.from_string (
+                                     info.get_attribute_string ("metadata::marlin-sort-column-id")
+                                 );
             }
 
             if (info.has_attribute ("metadata::marlin-sort-reversed")) {
-                sort_order = info.get_attribute_string ("metadata::marlin-sort-reversed") == "true" ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+                sort_order = info.get_attribute_string ("metadata::marlin-sort-reversed") == "true" ?
+                                                        Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
             }
         }
 
@@ -853,7 +862,10 @@ public class GOF.File : GLib.Object {
         } else {
             try {
                 var path = location.get_path ();
-                app_info = GLib.AppInfo.create_from_commandline (Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE);
+                app_info = GLib.AppInfo.create_from_commandline (
+                               Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE
+                           );
+
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));

@@ -312,7 +312,7 @@ namespace FM {
         }
 
         protected override bool handle_multi_select (Gtk.TreePath path) {
-            if (selected_files.length () > 0) {
+            if (selected_files != null && selected_files.first () != null) { //Could be very large - avoid length ()
                 linear_select_path (path);
                 return true;
             } else {
@@ -522,7 +522,7 @@ namespace FM {
         private void get_first_and_last_selected (out Gtk.TreePath? first, out Gtk.TreePath? last) {
             first = last = null;
             var selected_paths = tree.get_selected_items ();
-            if (selected_paths.length () < 1) {
+            if (selected_paths == null || selected_paths.first () == null) { //Could be large - avoid length ()
                 return;
             }
 
