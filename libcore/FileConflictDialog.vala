@@ -92,6 +92,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
     }
 
     construct {
+        set_border_width (6);
         var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG);
         image.valign = Gtk.Align.START;
 
@@ -217,8 +218,8 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         comparison_grid.attach (source_time_label, 2, 7, 1, 1);
 
         var grid = new Gtk.Grid ();
-        grid.margin = 12;
-        grid.margin_top = 0;
+        grid.margin = 0;
+        grid.margin_bottom = 24;
         grid.column_spacing = 12;
         grid.row_spacing = 6;
         grid.attach (image, 0, 0, 1, 2);
@@ -230,10 +231,6 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         grid.show_all ();
 
         get_content_area ().add (grid);
-
-        var action_area = get_action_area ();
-        action_area.margin = 6;
-        action_area.margin_top = 14;
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");
@@ -308,7 +305,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         if (destination.is_directory) {
             if (source.is_directory) {
                 primary_label.label = _("Merge folder \"%s\"?").printf (dest_name);
-                message_extra = _("Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied.");
+                message_extra = _("Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied."); //vala-lint=line-length
                 if (source.modified > destination.modified) {
                     message = _("An older folder with the same name already exists in \"%s\".").printf (dest_dir_name);
                 } else if (source.modified < destination.modified) {
