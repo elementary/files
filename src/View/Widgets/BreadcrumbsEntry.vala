@@ -435,11 +435,7 @@ namespace Marlin.View.Chrome {
             }
 
             menu.show_all ();
-            menu.popup (null,
-                        null,
-                        right_click_menu_position_func,
-                        0,
-                        event.time);
+            menu.popup_at_pointer (event);
 
             if (files_menu_dir != null) {
                 files_menu_dir.init ();

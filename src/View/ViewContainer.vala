@@ -242,7 +242,7 @@ namespace Marlin.View {
         }
 
         // the locations in @to_select must be children of @loc
-        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[] to_select = null) {
+        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[]? to_select = null) {
             assert (view == null);
             assert (loc != null);
 
