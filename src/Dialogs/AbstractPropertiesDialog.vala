@@ -71,9 +71,8 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         layout.attach (stack, 0, 2, 2, 1);
 
         ((Gtk.Box) get_content_area ()).add (layout);
-        ((Gtk.Box) get_action_area ()).margin = 6;
 
-        add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        add_button (_("Close"), Gtk.ResponseType.CLOSE).margin = 6;
         response.connect ((source, type) => {
             switch (type) {
                 case Gtk.ResponseType.CLOSE:
