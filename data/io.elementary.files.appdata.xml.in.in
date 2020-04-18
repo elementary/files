@@ -63,6 +63,7 @@
         <p>Minor updates:</p>
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Implement keyboard navigation shortcuts in filechooser</li>
           <li>Updated translations</li>
         </ul>
       </description>
@@ -76,7 +77,6 @@
           <li>Fix occasional view freeze after renaming</li>
           <li>Improve renaming logic when dealing with leading/trailing whitespace</li>
           <li>Fix breadcrumbs sometimes incorrect at startup</li>
-          <li>Implement keyboard navigation shortcuts in filechooser</li>
           <li>Do not show file:// prefix in navigation buttons menus</li>
           <li>Updated translations</li>
         </ul>
