@@ -63,6 +63,7 @@
         <p>Minor updates:</p>
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Fix size of restored tiled window</li>
           <li>Updated translations</li>
         </ul>
       </description>
