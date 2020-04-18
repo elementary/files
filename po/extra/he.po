@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 22:36+0000\n"
-"PO-Revision-Date: 2020-03-27 09:36+0000\n"
+"PO-Revision-Date: 2020-04-15 11:10+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -68,7 +68,7 @@ msgstr "תיקונים מזעריים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix an issue that prevented file modification times from showing"
-msgstr ""
+msgstr "תיקון תקלה שמנעה מהצגת מועדי שינויי קבצים מלהופיע"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:80
