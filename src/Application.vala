@@ -281,7 +281,7 @@ public class Marlin.Application : Gtk.Application {
     private Marlin.View.Window? create_window_with_tabs (File[] locations = {},
                                                Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
                                                int x = -1, int y = -1) {
-        if (this.get_windows ().length () >= MAX_WINDOWS) {
+        if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
             return null;
         }
 
