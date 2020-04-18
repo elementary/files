@@ -63,6 +63,8 @@
         <p>Minor updates:</p>
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Show thumbnails by default on local MTP and PTP devices</li>
+          <li>Show thumbnails by default on network locations</li>
           <li>Updated translations</li>
         </ul>
       </description>
