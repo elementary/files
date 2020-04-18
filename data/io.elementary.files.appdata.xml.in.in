@@ -63,6 +63,7 @@
         <p>Minor updates:</p>
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Do not show git status for repositories on FUSE filesystems to prevent possible blocking</li>
           <li>Updated translations</li>
         </ul>
       </description>
