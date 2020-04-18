@@ -36,8 +36,6 @@ namespace Marlin.View {
         private Marlin.DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
 
-        public bool showbar = true;
-
         public OverlayBar (Gtk.Overlay overlay) {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
