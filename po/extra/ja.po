@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-08 22:36+0000\n"
-"PO-Revision-Date: 2020-04-05 11:10+0000\n"
+"PO-Revision-Date: 2020-04-20 09:14+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -267,15 +267,15 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:151
 msgid "Keyboard navigation improvements"
-msgstr ""
+msgstr "キーボード操作を改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:152
 msgid "Symlink copy and paste fixes"
-msgstr ""
+msgstr "シンボリックリンクのコピー・貼り付けを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:153
 msgid "Avoid crash when Templates folder is null"
-msgstr ""
+msgstr "テンプレートフォルダーが空の場合にクラッシュする問題を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:154
 msgid "Reduce memory footprint of FileChooserDialog"
