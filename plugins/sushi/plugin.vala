@@ -34,7 +34,11 @@ public interface NautilusPreviewer : GLib.Object {
 
 public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
 
-    private NautilusPreviewer nautilus_previewer;
+    const GLib.ActionEntry [] SUSHI_ENTRIES = {
+        {"show_file", on_sushi_action_show_file_executable}
+    };
+
+    NautilusPreviewer nautilus_previewer;
 
     public Sushi () {
         try {
@@ -45,23 +49,18 @@ public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
     }
 
     public override void context_menu (Gtk.Widget? widget, List<GOF.File> selected_files) {
-
         unowned GOF.File? selected_file = selected_files.nth_data (0);
         if (selected_file == null || widget == null) {
             return;
         }
 
         var menu = widget as Gtk.Menu;
-        var preview_menu_item = new Gtk.MenuItem.with_label (_("Preview"));
-        preview_menu_item.activate.connect (() => {
-            debug (@"sushi.show_file: $(selected_file.uri))");
-
-            try {
-                nautilus_previewer.show_file (selected_file.uri, 0, false);
-            } catch (Error e) {
-                stderr.printf ("%s\n", e.message);
-            }
-        });
+        var preview_menu_item = new Gtk.MenuItem ();
+        preview_menu_item.add (new Granite.AccelLabel (
+            _("Preview"),
+            "<Alt>space"
+        ));
+        preview_menu_item.action_name = "sushi.show_file";
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
         add_menuitem (menu, preview_menu_item);
@@ -70,6 +69,10 @@ public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
     private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
         menu.append (menu_item);
         menu_item.show ();
+    }
+
+    private void on_sushi_action_show_file_executable (GLib.SimpleAction action, GLib.Variant? param) {
+        debug (@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> on_sushi_action_show_file_executable");
     }
 }
 
