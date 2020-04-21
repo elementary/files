@@ -20,16 +20,16 @@ Authors : Marco Betschart <elementary@marco.betschart.name>
 public interface NautilusPreviewer : GLib.Object {
 
     [DBus (name = "ShowFile")]
-    public abstract void show_file(string uri, int32 windowHandle, bool closeIfAlreadyShown) throws GLib.Error;
+    public abstract void show_file (string uri, int32 windowHandle, bool closeIfAlreadyShown) throws GLib.Error; //vala-lint=naming-convention
 
     [DBus (name = "Close")]
-    public abstract void close() throws GLib.Error;
+    public abstract void close () throws GLib.Error;
 
     [DBus (name = "Visible")]
     public abstract bool visible { get; }
 
     [DBus (name = "SelectionEvent")]
-    public signal void selection_event(uint direction);
+    public signal void selection_event (uint direction);
 }
 
 public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
@@ -125,4 +125,3 @@ public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
 public Marlin.Plugins.Base module_init () {
     return new Marlin.Plugins.Sushi ();
 }
-
