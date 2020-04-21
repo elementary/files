@@ -22,6 +22,9 @@
 ***/
 public class Marlin.Application : Gtk.Application {
 
+    const ActionEntry[] APP_ENTRIES = {
+        {Marlin.PluginManager.MESSAGE_PLUGIN_ACTION, action_message_plugin, "s"}
+    };
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
     private Marlin.ClipboardManager clipboard;
@@ -38,6 +41,8 @@ public class Marlin.Application : Gtk.Application {
         /* Needed by Glib.Application */
         this.application_id = Marlin.APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
+
+        add_action_entries (APP_ENTRIES, this);
     }
 
     public override void startup () {
@@ -291,5 +296,10 @@ public class Marlin.Application : Gtk.Application {
         win.open_tabs (locations, viewmode);
 
         return win;
+    }
+
+    private void action_message_plugin (SimpleAction action, Variant? param) {
+        var win = (Marlin.View.Window)(get_active_window ());
+        plugins.message_plugin (param.get_string (), win.current_tab.slot.get_selected_files ());
     }
 }

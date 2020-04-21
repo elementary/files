@@ -21,7 +21,10 @@
 
 public static Marlin.PluginManager plugins;
 
+
 public class Marlin.PluginManager : Object {
+
+    public const string MESSAGE_PLUGIN_ACTION = "message-plugin";
 
     delegate Plugins.Base ModuleInitFunc ();
     Gee.HashMap<string,Plugins.Base> plugin_hash;
@@ -241,6 +244,12 @@ public class Marlin.PluginManager : Object {
     public void update_file_info (GOF.File file) {
         foreach (var plugin in plugin_hash.values) {
             plugin.update_file_info (file);
+        }
+    }
+
+    public void message_plugin (string data, List<GOF.File> selected) {
+        foreach (var plugin in plugin_hash.values) {
+            plugin.message_plugin (data, selected);
         }
     }
 

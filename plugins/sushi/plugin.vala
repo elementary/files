@@ -34,15 +34,42 @@ public interface NautilusPreviewer : GLib.Object {
 
 public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
 
-    const GLib.ActionEntry [] SUSHI_ENTRIES = {
-        {"show_file", on_sushi_action_show_file_executable}
-    };
-
+    const string SUSHI_ACCEL = "<Ctrl>space";
+    const string SUSHI_SHOW_FILE_TARGET = "SushiShowFile";
+    const string SUSHI_SELECT_NEXT_TARGET = "SushiShowNext";
     NautilusPreviewer nautilus_previewer;
+    unowned List<GOF.File> selected_files = null;
+    unowned List<GOF.File> selected_index;
 
     public Sushi () {
         try {
             nautilus_previewer = Bus.get_proxy_sync (BusType.SESSION, "org.gnome.NautilusPreviewer", "/org/gnome/NautilusPreviewer");
+
+            var app = (Gtk.Application)(Application.get_default ());
+            var action = "app." + Marlin.PluginManager.MESSAGE_PLUGIN_ACTION + "::" + SUSHI_SHOW_FILE_TARGET;
+            app.set_accels_for_action (action, {SUSHI_ACCEL});
+
+            nautilus_previewer.selection_event.connect ((direction) => {
+                switch (direction) {
+                    case Gtk.DirectionType.LEFT:
+                            unowned List<GOF.File> prev = selected_index.prev;
+                            if (prev != null) {
+                                selected_index = prev;
+                                show_file (selected_index);
+                            }
+                        break;
+                    case Gtk.DirectionType.RIGHT:
+                            unowned List<GOF.File> next = selected_index.next;
+                            if (next != null) {
+                                selected_index = next;
+                                show_file (selected_index);
+                            }
+                        break;
+                    default:
+                        break;
+                }
+            });
+
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
@@ -58,9 +85,15 @@ public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
         var preview_menu_item = new Gtk.MenuItem ();
         preview_menu_item.add (new Granite.AccelLabel (
             _("Preview"),
-            "<Alt>space"
+            SUSHI_ACCEL
         ));
-        preview_menu_item.action_name = "sushi.show_file";
+
+        preview_menu_item.activate.connect (() => {
+            var app = (Gtk.Application)(Application.get_default ());
+            app.activate_action ("message-plugin", new Variant ("s", SUSHI_SHOW_FILE_TARGET));
+        });
+
+        plugins.menuitem_references.add (preview_menu_item);
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
         add_menuitem (menu, preview_menu_item);
@@ -71,8 +104,21 @@ public class Marlin.Plugins.Sushi : Marlin.Plugins.Base {
         menu_item.show ();
     }
 
-    private void on_sushi_action_show_file_executable (GLib.SimpleAction action, GLib.Variant? param) {
-        debug (@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> on_sushi_action_show_file_executable");
+    public override void message_plugin (string data, List<GOF.File> selected) {
+        if (data == SUSHI_SHOW_FILE_TARGET && selected != null) {
+            selected_files = selected;
+            selected_index = selected_files.first ();
+            show_file (selected_index);
+        }
+    }
+
+    private void show_file (List<GOF.File> selected) {
+        GOF.File gof = selected.data;
+        try {
+            nautilus_previewer.show_file (gof.uri, 0, true);
+        } catch (Error e) {
+            warning ("Error previewing: %s", e.message);
+        }
     }
 }
 
