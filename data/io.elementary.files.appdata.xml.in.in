@@ -64,6 +64,7 @@
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
           <li>Show file info overlay in List View as well</li>
+          <li>Prevent window resizing when filename column width exceeds available space</li>
           <li>Updated translations</li>
         </ul>
       </description>
