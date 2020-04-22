@@ -168,7 +168,7 @@ namespace Marlin.View {
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
-            lside_pane.pack2 (tabs, true, false);
+            lside_pane.pack2 (tabs, true, true);
             add (lside_pane);
 
             /** Apply preferences */
