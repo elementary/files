@@ -60,7 +60,13 @@
   <releases>
     <release version="4.4.3" date="2020-04-08" urgency="medium">
       <description>
-        <p>Minor updates:</p>
+        <p>Improvements:</p>
+        <ul>
+          <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Show file info overlay in List View as well</li>
+          <li>Bookmark menu option for network mounts in sidebar</li>
+        </ul>
+        <p>Other updates:</p>
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
           <li>Show file info overlay in List View as well</li>
