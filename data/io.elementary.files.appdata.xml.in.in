@@ -60,10 +60,14 @@
   <releases>
     <release version="4.4.3" date="2020-04-08" urgency="medium">
       <description>
-        <p>Minor updates:</p>
+        <p>Improvements:</p>
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
           <li>Show file info overlay in List View as well</li>
+          <li>Traverse search results with Tab key</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
           <li>Updated translations</li>
         </ul>
       </description>
