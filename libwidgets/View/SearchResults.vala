@@ -436,6 +436,7 @@ namespace Marlin.View.Chrome {
                     return parent.key_press_event (event);
                 }
             }
+
             switch (event.keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -444,12 +445,15 @@ namespace Marlin.View.Chrome {
                     return true;
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
+                case Gdk.Key.Tab:
+                case Gdk.Key.ISO_Left_Tab:
                     if (list_empty ()) {
                         Gdk.beep ();
                         return true;
                     }
 
-                    var up = event.keyval == Gdk.Key.Up;
+                    var up = (event.keyval == Gdk.Key.Up) ||
+                             (event.keyval == Gdk.Key.ISO_Left_Tab);
 
                     if (view.get_selection ().count_selected_rows () < 1) {
                         if (up) {
