@@ -169,7 +169,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     }
 
     public override void context_menu (Gtk.Widget? widget, List<GOF.File> files) {
-        var menu = (Gtk.Menu)widget;
+        unowned Gtk.Menu? menu = (Gtk.Menu)widget;
         if (menu == null) {
             return;
         }
