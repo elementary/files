@@ -392,7 +392,7 @@ namespace Marlin.View.Chrome {
         }
 
         private int get_breadcrumbs_minimum_width (GLib.List<BreadcrumbElement> displayed_breadcrumbs) {
-            var l = (int)displayed_breadcrumbs.length ();
+            var l = (int)displayed_breadcrumbs.length (); //can assumed to be limited in length
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
                 weak Gtk.StyleContext style_context = get_style_context ();
@@ -420,7 +420,7 @@ namespace Marlin.View.Chrome {
             double shortfall = target_width;
             double free_width = 0;
             uint index = 0;
-            uint length = elements.length ();
+            uint length = elements.length (); //Can assumed to be limited in length
             /* Calculate the amount by which the breadcrumbs can be shrunk excluding the fixed and last */
             foreach (BreadcrumbElement el in elements) {
                 shortfall -= el.natural_width;
@@ -506,7 +506,7 @@ namespace Marlin.View.Chrome {
 
         private void set_element_icons (string protocol, Gee.ArrayList<BreadcrumbElement> newelements) {
             /*Store the current list length */
-            var breadcrumb_icons_list = breadcrumb_icons.length ();
+            var breadcrumb_icons_list = breadcrumb_icons.length (); //Can assumed to be limited in length
             breadcrumb_icons.add_mounted_volumes ();
 
             foreach (BreadcrumbIconInfo icon in breadcrumb_icons.get_list ()) {
@@ -682,7 +682,7 @@ namespace Marlin.View.Chrome {
                 double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
                 width_marged -= total_arrow_width;
                 if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                    var unfixed = displayed_breadcrumbs.length () - 2;
+                    var unfixed = displayed_breadcrumbs.length () - 2; //Can assumed to be limited in length
                     if (unfixed > 0) {
                         width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
                     }

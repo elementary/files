@@ -58,7 +58,17 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.4.2" date="2020-03-05" urgency="medium">
+    <release version="4.4.3" date="2020-04-08" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Show file info overlay in List View as well</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.4.2" date="2020-04-03" urgency="medium">
       <description>
         <p>Minor updates:</p>
         <ul>

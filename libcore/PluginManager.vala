@@ -214,12 +214,6 @@ public class Marlin.PluginManager : Object {
         menus = null;
     }
 
-    public void ui (Gtk.UIManager data) {
-        foreach (var plugin in plugin_hash.values) {
-            plugin.ui (data);
-        }
-    }
-
     public void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
         foreach (var plugin in plugin_hash.values) {
             plugin.directory_loaded (window, view, directory);

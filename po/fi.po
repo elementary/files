@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 11:11+0000\n"
+"POT-Creation-Date: 2020-04-20 09:16+0000\n"
 "PO-Revision-Date: 2020-02-22 14:08+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -88,30 +88,30 @@ msgstr "Tiedot"
 msgid "General"
 msgstr "Yleiset"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:76 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:75 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "Sulje"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:135
+#: src/Dialogs/AbstractPropertiesDialog.vala:134
 msgid "Device Usage"
 msgstr "Laitteen käyttö"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
 msgstr "Tallennustila:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:156
-#: src/Dialogs/AbstractPropertiesDialog.vala:159
-#: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:442 src/Dialogs/PropertiesWindow.vala:481
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:157
 msgid "Available:"
 msgstr "Käytettävissä:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:160
 msgid "Used:"
 msgstr "Käytetty:"
 
@@ -120,15 +120,15 @@ msgid "Set as default"
 msgstr "Aseta oletukseksi"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1962 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1965 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Ominaisuudet"
 
-#: src/Dialogs/PropertiesWindow.vala:225
+#: src/Dialogs/PropertiesWindow.vala:227
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
-#: src/Dialogs/PropertiesWindow.vala:246
+#: src/Dialogs/PropertiesWindow.vala:248
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -137,99 +137,99 @@ msgstr[0] ""
 msgstr[1] ""
 "%i tiedostoa ei voitu lukea käyttöoikeuksien tai muiden virheiden vuoksi."
 
-#: src/Dialogs/PropertiesWindow.vala:250
+#: src/Dialogs/PropertiesWindow.vala:252
 msgid "Actual Size Could Be Larger"
 msgstr "Todellinen koko voi olla suurempi"
 
-#: src/Dialogs/PropertiesWindow.vala:270 src/Dialogs/PropertiesWindow.vala:289
+#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
 msgid "unknown"
 msgstr "tuntematon"
 
-#: src/Dialogs/PropertiesWindow.vala:453
+#: src/Dialogs/PropertiesWindow.vala:455
 msgid "Loading…"
 msgstr "Ladataan…"
 
-#: src/Dialogs/PropertiesWindow.vala:487
+#: src/Dialogs/PropertiesWindow.vala:489
 msgid "Could not be determined"
 msgstr "Ei voitu määrittää"
 
-#: src/Dialogs/PropertiesWindow.vala:513 libcore/FileConflictDialog.vala:120
-#: libcore/FileConflictDialog.vala:148
+#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:121
+#: libcore/FileConflictDialog.vala:149
 msgid "Size:"
 msgstr "Koko:"
 
-#: src/Dialogs/PropertiesWindow.vala:520 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:164
+#: libcore/FileConflictDialog.vala:129 libcore/FileConflictDialog.vala:157
 msgid "Type:"
 msgstr "Tyyppi:"
 
-#: src/Dialogs/PropertiesWindow.vala:523
+#: src/Dialogs/PropertiesWindow.vala:525
 msgid "Contains:"
 msgstr "Sisältää:"
 
-#: src/Dialogs/PropertiesWindow.vala:546
+#: src/Dialogs/PropertiesWindow.vala:549
 msgid "Created:"
 msgstr "Luotu:"
 
-#: src/Dialogs/PropertiesWindow.vala:556
+#: src/Dialogs/PropertiesWindow.vala:560
 msgid "Modified:"
 msgstr "Muokattu:"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:572
 msgid "Deleted:"
 msgstr "Poistettu:"
 
-#: src/Dialogs/PropertiesWindow.vala:578
+#: src/Dialogs/PropertiesWindow.vala:582
 msgid "Media type:"
 msgstr "Mediatyyppi:"
 
-#: src/Dialogs/PropertiesWindow.vala:585
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Resolution:"
 msgstr "Resoluutio:"
 
-#: src/Dialogs/PropertiesWindow.vala:593
+#: src/Dialogs/PropertiesWindow.vala:597
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "Sijainti:"
 
-#: src/Dialogs/PropertiesWindow.vala:603
+#: src/Dialogs/PropertiesWindow.vala:607
 msgid "Target:"
 msgstr "Kohde:"
 
-#: src/Dialogs/PropertiesWindow.vala:611
+#: src/Dialogs/PropertiesWindow.vala:615
 msgid "Original Location:"
 msgstr "Alkuperäinen sijainti:"
 
-#: src/Dialogs/PropertiesWindow.vala:634
-#: src/View/AbstractDirectoryView.vala:1930
+#: src/Dialogs/PropertiesWindow.vala:638
+#: src/View/AbstractDirectoryView.vala:1933
 msgid "Other Application…"
 msgstr "Muu sovellus…"
 
-#: src/Dialogs/PropertiesWindow.vala:654
+#: src/Dialogs/PropertiesWindow.vala:658
 msgid "Open with:"
 msgstr "Avaa sovelluksella:"
 
-#: src/Dialogs/PropertiesWindow.vala:919 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
 msgid "Owner:"
 msgstr "Omistaja:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
 msgid "Group:"
 msgstr "Ryhmä:"
 
-#: src/Dialogs/PropertiesWindow.vala:935
+#: src/Dialogs/PropertiesWindow.vala:939
 msgid "Everyone:"
 msgstr "Kaikki:"
 
-#: src/Dialogs/PropertiesWindow.vala:1216
+#: src/Dialogs/PropertiesWindow.vala:1220
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u alikansio"
 msgstr[1] "%u alikansiota"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
-#: src/Dialogs/PropertiesWindow.vala:1242
+#: src/Dialogs/PropertiesWindow.vala:1224
+#: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -237,19 +237,19 @@ msgstr[0] "%u tiedosto"
 msgstr[1] "%u tiedostoa"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1225
+#: src/Dialogs/PropertiesWindow.vala:1229
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1238 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u kansio"
 msgstr[1] "%u kansiota"
 
-#: src/Dialogs/PropertiesWindow.vala:1247
+#: src/Dialogs/PropertiesWindow.vala:1251
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -257,7 +257,7 @@ msgstr[0] "%u valittu kohde"
 msgstr[1] "%u valittua kohdetta"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1249
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -303,11 +303,11 @@ msgstr "(ylläpitäjänä)"
 msgid "Filename"
 msgstr "Tiedostonimi"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2158
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
 msgid "Size"
 msgstr "Koko"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2163
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
 msgid "Type"
 msgstr "Tyyppi"
 
@@ -315,7 +315,7 @@ msgstr "Tyyppi"
 msgid "Modified"
 msgstr "Muokattu"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:406
 msgid "This Folder Does Not Exist"
 msgstr "Tätä kansiota ei ole olemassa"
 
@@ -362,205 +362,205 @@ msgstr "Virheellinen tiedostonimi"
 msgid "New Tab"
 msgstr "Uusi välilehti"
 
-#: src/View/AbstractDirectoryView.vala:1866
+#: src/View/AbstractDirectoryView.vala:1869
 msgid "Run"
 msgstr "Suorita"
 
-#: src/View/AbstractDirectoryView.vala:1873
+#: src/View/AbstractDirectoryView.vala:1876
 #, c-format
 msgid "Open in %s"
 msgstr "Avaa sovelluksella %s"
 
-#: src/View/AbstractDirectoryView.vala:1942
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Open in"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:1944
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/AbstractDirectoryView.vala:1947
+#: src/View/Widgets/BreadcrumbsEntry.vala:487
 msgid "Open with"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1953
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Bookmark"
 msgstr "Kirjanmerkki"
 
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1973
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: src/View/AbstractDirectoryView.vala:1977
+#: src/View/AbstractDirectoryView.vala:1980
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:1987
 msgid "Move to Trash"
 msgstr "Siirrä roskakoriin"
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Delete permanently"
 msgstr "Poista lopullisesti"
 
-#: src/View/AbstractDirectoryView.vala:1994
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Restore from Trash"
 msgstr "Palauta roskakorista"
 
-#: src/View/AbstractDirectoryView.vala:2005
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Open Parent Folder"
 msgstr "Avaa ylätason kansio"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2011
 msgid "Remove from History"
 msgstr "Poista historiasta"
 
-#: src/View/AbstractDirectoryView.vala:2024
+#: src/View/AbstractDirectoryView.vala:2027
 msgid "Rename…"
 msgstr "Nimeä uudelleen…"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2034
 msgid "Copy as Link"
 msgstr "Kopioi linkkinä"
 
-#: src/View/AbstractDirectoryView.vala:2047
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Paste Link into Folder"
 msgstr "Liitä linkki kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2049
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste into Folder"
 msgstr "Liitä kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Show Hidden Files"
 msgstr "Näytä piilotiedostot"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Show Remote Thumbnails"
 msgstr "Näytä etäpalvelimien osalta pikkukuvat"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Hide Thumbnails"
 msgstr "Piilota pikkukuvat"
 
-#: src/View/AbstractDirectoryView.vala:2101
+#: src/View/AbstractDirectoryView.vala:2108
 msgid "Paste Link"
 msgstr "Liitä linkki"
 
-#: src/View/AbstractDirectoryView.vala:2153
+#: src/View/AbstractDirectoryView.vala:2162
 msgid "Name"
 msgstr "Nimi"
 
-#: src/View/AbstractDirectoryView.vala:2168
+#: src/View/AbstractDirectoryView.vala:2177
 msgid "Date"
 msgstr "Päivä"
 
-#: src/View/AbstractDirectoryView.vala:2173
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Reversed Order"
 msgstr "Käänteinen järjestys"
 
-#: src/View/AbstractDirectoryView.vala:2176
+#: src/View/AbstractDirectoryView.vala:2185
 msgid "Folders Before Files"
 msgstr "Kansiot ennen tiedostoja"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2197
 msgid "Sort by"
 msgstr "Järjestä"
 
-#: src/View/AbstractDirectoryView.vala:2196
+#: src/View/AbstractDirectoryView.vala:2205
 msgid "Folder"
 msgstr "Kansio"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Empty File"
 msgstr "Tyhjä tiedosto"
 
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "New"
 msgstr "Uusi"
 
-#: src/View/AbstractDirectoryView.vala:2489
+#: src/View/AbstractDirectoryView.vala:2499
 #, c-format
 msgid "Untitled %s"
 msgstr "Nimetön %s"
 
-#: src/View/AbstractDirectoryView.vala:2850
-#: src/View/AbstractDirectoryView.vala:3045
+#: src/View/AbstractDirectoryView.vala:2860
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot remove files from here"
 msgstr "Tiedostojen poistaminen täältä ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:2851
-#: src/View/AbstractDirectoryView.vala:3030
-#: src/View/AbstractDirectoryView.vala:3046
+#: src/View/AbstractDirectoryView.vala:2861
+#: src/View/AbstractDirectoryView.vala:3040
+#: src/View/AbstractDirectoryView.vala:3056
 msgid "You do not have permission to change this location"
 msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
 
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3015
 msgid "Cannot copy files that are in the trash"
 msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
 
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3016
 msgid "Cutting the selection instead"
 msgstr "Sen sijaan leikataan valinta"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3039
 msgid "Cannot paste files here"
 msgstr "Tiedostoja ei voi liittää tänne"
 
-#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:385 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Koti"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:407
 msgid "You cannot create a folder here."
 msgstr "Et voi luoda kansiota tähän sijaintiin."
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:410
 msgid "The network is unavailable"
 msgstr "Verkko ei ole käytettävissä"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
 msgstr "Tämän kansion käyttäminen vaatii toimivan verkkoyhteyden"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:414
 msgid "This Folder Does Not Belong to You"
 msgstr "Tämä kansio ei kuulu sinulle"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:415
 msgid "You don't have permission to view this folder."
 msgstr "Sinulla ei ole oikeuksia tarkastella tätä kansiota."
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Mount Folder"
 msgstr "Kansion liittäminen epäonnistui"
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:418
 msgid "Could not connect to the server for this folder."
 msgstr "Tämän kansion palvelimeen yhdistäminen ei onnistunut."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Display Folder Contents"
 msgstr "Kansion sisällön näyttäminen epäonnistui"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:422
 msgid "The operation timed out."
 msgstr "Toiminto aikakatkaistiin."
 
-#: src/View/ViewContainer.vala:425
+#: src/View/ViewContainer.vala:424
 msgid "Unable to Show Folder"
 msgstr "Kansion näyttäminen ei onnistu"
 
-#: src/View/ViewContainer.vala:426
+#: src/View/ViewContainer.vala:425
 msgid "The server for this folder could not be located."
 msgstr "Tämän kansion palvelinta ei voitu paikantaa."
 
-#: src/View/ViewContainer.vala:437
+#: src/View/ViewContainer.vala:436
 msgid "File not Found"
 msgstr "Tiedostoa ei löytynyt"
 
-#: src/View/ViewContainer.vala:438
+#: src/View/ViewContainer.vala:437
 msgid "The file selected no longer exists."
 msgstr "Valittua tiedostoa ei ole enää olemassa."
 
@@ -708,15 +708,15 @@ msgstr "_Avaa asema"
 msgid "Search or Type Path"
 msgstr "Etsi tai kirjoita polku"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr "Avaa uudessa välilehdessä"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr "Avaa uudessa ikkunassa"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:494
 msgid "Open in Other Application…"
 msgstr "Avaa muussa sovelluksessa…"
 
@@ -738,70 +738,70 @@ msgstr "Päivitä tämä kansio"
 msgid "Searching…"
 msgstr "Etsitään…"
 
-#: src/View/Widgets/OverlayBar.vala:216
+#: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
 msgstr "%u kansiota"
 
-#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr " ja %u muu kohde (%s) valittu"
 
-#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " ja %u muuta kohdetta (%s) valittu"
 
-#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
 msgstr " valittu"
 
-#: src/View/Widgets/OverlayBar.vala:235
+#: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u kohdetta valittu (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgstr "%u alikansio, "
 
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
 msgstr "%u alikansiota, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgstr "%u tiedosto, "
 
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
 msgstr "%u tiedostoa, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
 msgstr "noin %s"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:298
+#: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
 msgstr "tuntematon koko"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgstr "%u tiedosto ei luettavissa"
 
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
 msgstr "%u tiedostoa ei luettavissa"
@@ -907,7 +907,7 @@ msgid "Remember this password"
 msgstr "Muista salasana"
 
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
-#: libcore/FileConflictDialog.vala:189
+#: libcore/FileConflictDialog.vala:190
 msgid "Cancel"
 msgstr "Peru"
 
@@ -948,56 +948,56 @@ msgstr "Linkitä tänne"
 msgid "File conflict"
 msgstr "Tiedostoristiriita"
 
-#: libcore/FileConflictDialog.vala:115
+#: libcore/FileConflictDialog.vala:116
 msgid "Original file"
 msgstr "Alkuperäinen tiedosto"
 
-#: libcore/FileConflictDialog.vala:133 libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:134 libcore/FileConflictDialog.vala:162
 msgid "Last modified:"
 msgstr "Viimeksi muokattu:"
 
-#: libcore/FileConflictDialog.vala:143
+#: libcore/FileConflictDialog.vala:144
 msgid "Replace with"
 msgstr "Korvaava"
 
-#: libcore/FileConflictDialog.vala:171
+#: libcore/FileConflictDialog.vala:172
 msgid "Reset"
 msgstr "Nollaa"
 
-#: libcore/FileConflictDialog.vala:181
+#: libcore/FileConflictDialog.vala:182
 msgid "_Select a new name for the destination"
 msgstr "_Valitse korvaavalle uusi nimi"
 
-#: libcore/FileConflictDialog.vala:184
+#: libcore/FileConflictDialog.vala:185
 msgid "Apply this action to all files"
 msgstr "Käytä samaa toimintoa kaikille tiedostoille"
 
-#: libcore/FileConflictDialog.vala:186 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:187 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Ohita"
 
-#: libcore/FileConflictDialog.vala:187
+#: libcore/FileConflictDialog.vala:188
 msgid "Re_name"
 msgstr "_Nimeä uudelleen"
 
-#: libcore/FileConflictDialog.vala:191
+#: libcore/FileConflictDialog.vala:192
 msgid "Keep Newest"
 msgstr "Säilytä uusin"
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:193
 msgid "Skip if original was modified more recently"
 msgstr "Ohita jos alkuperäistä on muokattu lähempänä nykyhetkeä"
 
-#: libcore/FileConflictDialog.vala:194
+#: libcore/FileConflictDialog.vala:195
 msgid "Replace"
 msgstr "Korvaa"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:307
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Yhdistetäänkö kansio \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:308
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1005,60 +1005,60 @@ msgstr ""
 "Yhdistäessä kysytään varmistusta, ennen kuin mitään kyseisen kansion "
 "tiedostoja korvataan kopioitavilla tiedostoilla."
 
-#: libcore/FileConflictDialog.vala:313
+#: libcore/FileConflictDialog.vala:310
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Vanhempi kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Uudempi kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Toinen kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:317
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Korvataanko kansio \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:321
+#: libcore/FileConflictDialog.vala:318
 msgid "Replacing it will remove all files in the folder."
 msgstr "Sen korvaaminen poistaa kaikki kansiossa olevat tiedostot."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:319
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: libcore/FileConflictDialog.vala:325
+#: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Korvataanko tiedosto \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:323
 msgid "Replacing it will overwrite its content."
 msgstr "Sen korvaaminen ylikirjoittaa sisällön."
 
-#: libcore/FileConflictDialog.vala:329
+#: libcore/FileConflictDialog.vala:326
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Vanhempi tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: libcore/FileConflictDialog.vala:331
+#: libcore/FileConflictDialog.vala:328
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Uudempi tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: libcore/FileConflictDialog.vala:333
+#: libcore/FileConflictDialog.vala:330
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Toinen tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:356
 msgid "Merge"
 msgstr "Yhdistä"
 
@@ -1083,13 +1083,13 @@ msgid "Today at %s"
 msgstr "Tänään %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:540
+#: libcore/FileUtils.vala:542
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Eilen %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:546
+#: libcore/FileUtils.vala:550
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A %s"
@@ -1932,15 +1932,15 @@ msgstr "Kirjanmerkit"
 msgid "Recently used"
 msgstr "Äskettäin käytetty"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:35
+#: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr "Näytä ruudukkona"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:40
+#: libwidgets/Chrome/ViewSwitcher.vala:39
 msgid "View as List"
 msgstr "Näytä luettelona"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:45
+#: libwidgets/Chrome/ViewSwitcher.vala:44
 msgid "View in Columns"
 msgstr "Näytä sarakkeina"
 

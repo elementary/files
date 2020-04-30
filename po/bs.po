@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 11:11+0000\n"
+"POT-Creation-Date: 2020-04-20 09:16+0000\n"
 "PO-Revision-Date: 2018-11-11 00:08+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/files/files/"
@@ -90,30 +90,30 @@ msgstr "Informacije"
 msgid "General"
 msgstr "Uopštena"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:76 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:75 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "Zatvori"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:135
+#: src/Dialogs/AbstractPropertiesDialog.vala:134
 msgid "Device Usage"
 msgstr "Upotreba uređaja"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
 msgstr "Kapacitet:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:156
-#: src/Dialogs/AbstractPropertiesDialog.vala:159
-#: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:442 src/Dialogs/PropertiesWindow.vala:481
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:157
 msgid "Available:"
 msgstr "Dostupno:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:160
 msgid "Used:"
 msgstr "Iskorišteno:"
 
@@ -122,15 +122,15 @@ msgid "Set as default"
 msgstr "Postavi kao podrazumijevano"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1962 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1965 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Svojstva"
 
-#: src/Dialogs/PropertiesWindow.vala:225
+#: src/Dialogs/PropertiesWindow.vala:227
 msgid "Permissions"
 msgstr "Dozvole"
 
-#: src/Dialogs/PropertiesWindow.vala:246
+#: src/Dialogs/PropertiesWindow.vala:248
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -141,92 +141,92 @@ msgstr[1] ""
 msgstr[2] ""
 "%i datoteka nije bilo moguće očitati zbog dozvola ili drugih grešaka."
 
-#: src/Dialogs/PropertiesWindow.vala:250
+#: src/Dialogs/PropertiesWindow.vala:252
 msgid "Actual Size Could Be Larger"
 msgstr "Stvarna veličina može biti veća"
 
-#: src/Dialogs/PropertiesWindow.vala:270 src/Dialogs/PropertiesWindow.vala:289
+#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
 msgid "unknown"
 msgstr "nepoznato"
 
-#: src/Dialogs/PropertiesWindow.vala:453
+#: src/Dialogs/PropertiesWindow.vala:455
 msgid "Loading…"
 msgstr "Učitavanje…"
 
-#: src/Dialogs/PropertiesWindow.vala:487
+#: src/Dialogs/PropertiesWindow.vala:489
 msgid "Could not be determined"
 msgstr "Nije bilo moguće odrediti"
 
-#: src/Dialogs/PropertiesWindow.vala:513 libcore/FileConflictDialog.vala:120
-#: libcore/FileConflictDialog.vala:148
+#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:121
+#: libcore/FileConflictDialog.vala:149
 msgid "Size:"
 msgstr "Veličina:"
 
-#: src/Dialogs/PropertiesWindow.vala:520 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:164
+#: libcore/FileConflictDialog.vala:129 libcore/FileConflictDialog.vala:157
 msgid "Type:"
 msgstr "Tip:"
 
-#: src/Dialogs/PropertiesWindow.vala:523
+#: src/Dialogs/PropertiesWindow.vala:525
 msgid "Contains:"
 msgstr "Sadrži:"
 
-#: src/Dialogs/PropertiesWindow.vala:546
+#: src/Dialogs/PropertiesWindow.vala:549
 msgid "Created:"
 msgstr "Kreirano:"
 
-#: src/Dialogs/PropertiesWindow.vala:556
+#: src/Dialogs/PropertiesWindow.vala:560
 msgid "Modified:"
 msgstr "Izmijenjeno:"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:572
 msgid "Deleted:"
 msgstr "Izbrisano:"
 
-#: src/Dialogs/PropertiesWindow.vala:578
+#: src/Dialogs/PropertiesWindow.vala:582
 #, fuzzy
 msgid "Media type:"
 msgstr "MIME tip:"
 
-#: src/Dialogs/PropertiesWindow.vala:585
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Resolution:"
 msgstr "Rezolucija:"
 
-#: src/Dialogs/PropertiesWindow.vala:593
+#: src/Dialogs/PropertiesWindow.vala:597
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "Lokacija:"
 
-#: src/Dialogs/PropertiesWindow.vala:603
+#: src/Dialogs/PropertiesWindow.vala:607
 msgid "Target:"
 msgstr "Cilj:"
 
-#: src/Dialogs/PropertiesWindow.vala:611
+#: src/Dialogs/PropertiesWindow.vala:615
 msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
-#: src/Dialogs/PropertiesWindow.vala:634
-#: src/View/AbstractDirectoryView.vala:1930
+#: src/Dialogs/PropertiesWindow.vala:638
+#: src/View/AbstractDirectoryView.vala:1933
 msgid "Other Application…"
 msgstr "Druga aplikacija…"
 
-#: src/Dialogs/PropertiesWindow.vala:654
+#: src/Dialogs/PropertiesWindow.vala:658
 msgid "Open with:"
 msgstr "Otvori sa:"
 
-#: src/Dialogs/PropertiesWindow.vala:919 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
 msgid "Owner:"
 msgstr "Vlasnik:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
 msgid "Group:"
 msgstr "Grupa:"
 
-#: src/Dialogs/PropertiesWindow.vala:935
+#: src/Dialogs/PropertiesWindow.vala:939
 msgid "Everyone:"
 msgstr "Svi:"
 
-#: src/Dialogs/PropertiesWindow.vala:1216
+#: src/Dialogs/PropertiesWindow.vala:1220
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
@@ -234,8 +234,8 @@ msgstr[0] "%u podfascikla"
 msgstr[1] "%u podfascikle"
 msgstr[2] "%u podfascikli"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
-#: src/Dialogs/PropertiesWindow.vala:1242
+#: src/Dialogs/PropertiesWindow.vala:1224
+#: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -244,12 +244,12 @@ msgstr[1] "%u datoteke"
 msgstr[2] "%u datoteka"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1225
+#: src/Dialogs/PropertiesWindow.vala:1229
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1238 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -257,7 +257,7 @@ msgstr[0] "%u fascikla"
 msgstr[1] "%u fascikle"
 msgstr[2] "%u fascikli"
 
-#: src/Dialogs/PropertiesWindow.vala:1247
+#: src/Dialogs/PropertiesWindow.vala:1251
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -266,7 +266,7 @@ msgstr[1] "%u odabrane stavke"
 msgstr[2] "%u odabranih stavki"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1249
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -312,11 +312,11 @@ msgstr "(kao administrator)"
 msgid "Filename"
 msgstr "Naziv datoteke"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2158
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
 msgid "Size"
 msgstr "Veličina"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2163
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
 msgid "Type"
 msgstr "Tip"
 
@@ -324,7 +324,7 @@ msgstr "Tip"
 msgid "Modified"
 msgstr "Promijenjeno"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:406
 msgid "This Folder Does Not Exist"
 msgstr "Ova fascikla ne postoji"
 
@@ -376,208 +376,208 @@ msgstr "Ime datoteke nije ispravno"
 msgid "New Tab"
 msgstr "Nova kartica"
 
-#: src/View/AbstractDirectoryView.vala:1866
+#: src/View/AbstractDirectoryView.vala:1869
 msgid "Run"
 msgstr "Pokreni"
 
-#: src/View/AbstractDirectoryView.vala:1873
+#: src/View/AbstractDirectoryView.vala:1876
 #, c-format
 msgid "Open in %s"
 msgstr "Otvori u %s"
 
-#: src/View/AbstractDirectoryView.vala:1942
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Open in"
 msgstr "Otvori u"
 
-#: src/View/AbstractDirectoryView.vala:1944
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/AbstractDirectoryView.vala:1947
+#: src/View/Widgets/BreadcrumbsEntry.vala:487
 msgid "Open with"
 msgstr "Otvori pomoću"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1953
 msgid "Paste"
 msgstr "Zalijepi"
 
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Bookmark"
 msgstr "Oznaka"
 
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1973
 msgid "Cut"
 msgstr "Izreži"
 
-#: src/View/AbstractDirectoryView.vala:1977
+#: src/View/AbstractDirectoryView.vala:1980
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:1987
 msgid "Move to Trash"
 msgstr "Premjesti u smeće"
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Delete permanently"
 msgstr "Trajno izbriši"
 
-#: src/View/AbstractDirectoryView.vala:1994
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Restore from Trash"
 msgstr "Obnovi iz Otpada"
 
-#: src/View/AbstractDirectoryView.vala:2005
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Open Parent Folder"
 msgstr "Otvori nadređenu fasciklu"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2011
 msgid "Remove from History"
 msgstr "Ukloni iz Historije"
 
-#: src/View/AbstractDirectoryView.vala:2024
+#: src/View/AbstractDirectoryView.vala:2027
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Preimenuj"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2034
 msgid "Copy as Link"
 msgstr "Kopiraj kao link"
 
-#: src/View/AbstractDirectoryView.vala:2047
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Paste Link into Folder"
 msgstr "Zalijepi link u fasciklu"
 
-#: src/View/AbstractDirectoryView.vala:2049
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste into Folder"
 msgstr "Zalijepi u fasciklu"
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Show Hidden Files"
 msgstr "Prikaži skrivene datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Show Remote Thumbnails"
 msgstr "Prikaži udaljene minijature"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2088
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Prikaži udaljene minijature"
 
-#: src/View/AbstractDirectoryView.vala:2101
+#: src/View/AbstractDirectoryView.vala:2108
 msgid "Paste Link"
 msgstr "Zalijepi link"
 
-#: src/View/AbstractDirectoryView.vala:2153
+#: src/View/AbstractDirectoryView.vala:2162
 msgid "Name"
 msgstr "Naziv"
 
-#: src/View/AbstractDirectoryView.vala:2168
+#: src/View/AbstractDirectoryView.vala:2177
 msgid "Date"
 msgstr "Datum"
 
-#: src/View/AbstractDirectoryView.vala:2173
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Reversed Order"
 msgstr "Obrnuti redoslijed"
 
-#: src/View/AbstractDirectoryView.vala:2176
+#: src/View/AbstractDirectoryView.vala:2185
 msgid "Folders Before Files"
 msgstr "Fascikle prije datoteka"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2197
 msgid "Sort by"
 msgstr "Sortiraj po"
 
-#: src/View/AbstractDirectoryView.vala:2196
+#: src/View/AbstractDirectoryView.vala:2205
 msgid "Folder"
 msgstr "Fascikla"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Empty File"
 msgstr "Prazna datoteka"
 
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "New"
 msgstr "Novi"
 
-#: src/View/AbstractDirectoryView.vala:2489
+#: src/View/AbstractDirectoryView.vala:2499
 #, c-format
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: src/View/AbstractDirectoryView.vala:2850
-#: src/View/AbstractDirectoryView.vala:3045
+#: src/View/AbstractDirectoryView.vala:2860
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot remove files from here"
 msgstr "Odavde se ne mogu ukloniti datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2851
-#: src/View/AbstractDirectoryView.vala:3030
-#: src/View/AbstractDirectoryView.vala:3046
+#: src/View/AbstractDirectoryView.vala:2861
+#: src/View/AbstractDirectoryView.vala:3040
+#: src/View/AbstractDirectoryView.vala:3056
 msgid "You do not have permission to change this location"
 msgstr "Nemate dozvolu za promjenu ove lokacije"
 
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3015
 msgid "Cannot copy files that are in the trash"
 msgstr "Datoteke u otpadu se ne mogu kopirati"
 
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3016
 msgid "Cutting the selection instead"
 msgstr "Odabrani objekti će umjesto toga biti izrezani"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3039
 msgid "Cannot paste files here"
 msgstr "Ovdje se ne mogu zalijepiti datoteke"
 
-#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:385 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Početna"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:407
 msgid "You cannot create a folder here."
 msgstr "Ovdje ne možete kreirati fasciklu."
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:410
 msgid "The network is unavailable"
 msgstr "Mreža nije dostupna"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
 msgstr "Za pristup ovoj fascikli je potrebna funkcionirajuća mreža"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:414
 msgid "This Folder Does Not Belong to You"
 msgstr "Ova fascikla ne pripada Vama"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:415
 msgid "You don't have permission to view this folder."
 msgstr "Nemate dozvolu za pregledavanje ove fascikle."
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Mount Folder"
 msgstr "Nemoguće montirati fasciklu"
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:418
 msgid "Could not connect to the server for this folder."
 msgstr "Nemoguće povezivanje sa serverom za ovu fasciklu."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Display Folder Contents"
 msgstr "Nemoguće prikazati sadržaje fascikle"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:422
 msgid "The operation timed out."
 msgstr "Isteklo je vrijeme za operaciju."
 
-#: src/View/ViewContainer.vala:425
+#: src/View/ViewContainer.vala:424
 msgid "Unable to Show Folder"
 msgstr "Nemoguće prikazati fasciklu"
 
-#: src/View/ViewContainer.vala:426
+#: src/View/ViewContainer.vala:425
 msgid "The server for this folder could not be located."
 msgstr "Server za ovu fasciklu nije mogao biti lociran."
 
-#: src/View/ViewContainer.vala:437
+#: src/View/ViewContainer.vala:436
 msgid "File not Found"
 msgstr "Datoteka nije pronađena"
 
-#: src/View/ViewContainer.vala:438
+#: src/View/ViewContainer.vala:437
 msgid "The file selected no longer exists."
 msgstr "Odabrana datoteka ne postoji više."
 
@@ -725,15 +725,15 @@ msgstr "I_zbaci"
 msgid "Search or Type Path"
 msgstr "Pretraži ili ukucaj putanju"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr "Otvori u novom tabu"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr "Otvori u novom prozoru"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:494
 msgid "Open in Other Application…"
 msgstr "Otvori u drugoj aplikaciji…"
 
@@ -755,70 +755,70 @@ msgstr "Ponovo učitaj ovu fasciklu"
 msgid "Searching…"
 msgstr "Traženje…"
 
-#: src/View/Widgets/OverlayBar.vala:216
+#: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
 msgstr "%u fascikli"
 
-#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr " i %u ostalih stavki (%s) označeno"
 
-#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " i %u ostalih stavki (%s) označeno"
 
-#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
 msgstr " označeno"
 
-#: src/View/Widgets/OverlayBar.vala:235
+#: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u stavki izabrano (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgstr "%u podfascikli, "
 
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
 msgstr "%u podfascikli, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgstr "%u datoteka, "
 
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
 msgstr "%u datoteke, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
 msgstr "%s približno."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:298
+#: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
 msgstr "nepoznata veličina"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgstr "%u datoteka nije čitljiva"
 
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
 msgstr "%u datoteka nije čitljivo"
@@ -924,7 +924,7 @@ msgid "Remember this password"
 msgstr "Zapamti ovu lozinku"
 
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
-#: libcore/FileConflictDialog.vala:189
+#: libcore/FileConflictDialog.vala:190
 msgid "Cancel"
 msgstr "Odustani"
 
@@ -965,56 +965,56 @@ msgstr "Dodaj link ovdje"
 msgid "File conflict"
 msgstr "Konflikt između datoteka"
 
-#: libcore/FileConflictDialog.vala:115
+#: libcore/FileConflictDialog.vala:116
 msgid "Original file"
 msgstr "Originalna datoteka"
 
-#: libcore/FileConflictDialog.vala:133 libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:134 libcore/FileConflictDialog.vala:162
 msgid "Last modified:"
 msgstr "Zadnja modifikacija:"
 
-#: libcore/FileConflictDialog.vala:143
+#: libcore/FileConflictDialog.vala:144
 msgid "Replace with"
 msgstr "Zamijeni sa"
 
-#: libcore/FileConflictDialog.vala:171
+#: libcore/FileConflictDialog.vala:172
 msgid "Reset"
 msgstr "Resetuj"
 
-#: libcore/FileConflictDialog.vala:181
+#: libcore/FileConflictDialog.vala:182
 msgid "_Select a new name for the destination"
 msgstr "_Označi novo ime za ovu destinaciju"
 
-#: libcore/FileConflictDialog.vala:184
+#: libcore/FileConflictDialog.vala:185
 msgid "Apply this action to all files"
 msgstr "Primjeni ovu radnju za sve datoteke"
 
-#: libcore/FileConflictDialog.vala:186 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:187 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Preskoči"
 
-#: libcore/FileConflictDialog.vala:187
+#: libcore/FileConflictDialog.vala:188
 msgid "Re_name"
 msgstr "Pre_imenuj"
 
-#: libcore/FileConflictDialog.vala:191
+#: libcore/FileConflictDialog.vala:192
 msgid "Keep Newest"
 msgstr "Zadržati najnovije"
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:193
 msgid "Skip if original was modified more recently"
 msgstr "Preskoči ako je original skorije izmijenjen"
 
-#: libcore/FileConflictDialog.vala:194
+#: libcore/FileConflictDialog.vala:195
 msgid "Replace"
 msgstr "Zamijeni"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:307
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Spojiti fasciklu \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:308
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1022,60 +1022,60 @@ msgstr ""
 "Spajanje će zahtijevati potvrdu prije nego pto se datotekama koje se "
 "kopiraju zamijene istoimene datoteke u fascikli."
 
-#: libcore/FileConflictDialog.vala:313
+#: libcore/FileConflictDialog.vala:310
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Starija fascikla s istim nazivom već postoji u \"%s\"."
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Novija fascikla s istim nazivom već postoji u \"%s\"."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Druga fascikla s istim nazivom već postoji u \"%s\"."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:317
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Zamijeni fasciklu \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:321
+#: libcore/FileConflictDialog.vala:318
 msgid "Replacing it will remove all files in the folder."
 msgstr "Zamjenom će biti uklonjene sve datoteke u fascikli."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:319
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Fascikla s istim nazivom već postoji u \"%s\"."
 
-#: libcore/FileConflictDialog.vala:325
+#: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Zamijeniti datoteku \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:323
 msgid "Replacing it will overwrite its content."
 msgstr "Zamjenjivanje će pisati preko već postojećeg sadržaja."
 
-#: libcore/FileConflictDialog.vala:329
+#: libcore/FileConflictDialog.vala:326
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Već postoji starija datoteka sa istim nazivom u \"%s\"."
 
-#: libcore/FileConflictDialog.vala:331
+#: libcore/FileConflictDialog.vala:328
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Već postoji novija datoteka sa istim nazivom u \"%s\"."
 
-#: libcore/FileConflictDialog.vala:333
+#: libcore/FileConflictDialog.vala:330
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Već postoji datoteka sa istim nazivom u \"%s\"."
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:356
 msgid "Merge"
 msgstr "Spoji"
 
@@ -1100,13 +1100,13 @@ msgid "Today at %s"
 msgstr "Danas u %-H:%M"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:540
+#: libcore/FileUtils.vala:542
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Jučer u %-H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:546
+#: libcore/FileUtils.vala:550
 #, fuzzy, c-format
 msgid "%%A at %s"
 msgstr "%A u %-H:%M"
@@ -1970,15 +1970,15 @@ msgstr "Bilješke"
 msgid "Recently used"
 msgstr "Nedavno korišteno"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:35
+#: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr "Pregledaj kao mrežu"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:40
+#: libwidgets/Chrome/ViewSwitcher.vala:39
 msgid "View as List"
 msgstr "Pregledaj kao listu"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:45
+#: libwidgets/Chrome/ViewSwitcher.vala:44
 msgid "View in Columns"
 msgstr "Pregledaj kao kolumne"
 
