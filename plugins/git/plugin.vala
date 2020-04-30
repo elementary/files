@@ -167,6 +167,65 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             }
         }
     }
+
+    public override void context_menu (Gtk.Widget? widget, List<GOF.File> files) {
+        var menu = (Gtk.Menu)widget;
+        if (menu == null) {
+            return;
+        }
+
+        /* Need a single folder selected for cloning into */
+        if (files.first == null || files.next != null) {
+            return;
+        }
+
+        GOF.File target = files.first ().data;
+        if (!target.is_directory) {
+            return;
+        }
+
+        /* Clipboard must contain a single git url */
+        var clipboard = Gtk.Clipboard.get_default (Gdk.Display.get_default ());
+
+        string? uri = clipboard.wait_for_text ();
+
+        if (uri == null || !uri.has_suffix (".git")) {
+            return;
+        }
+
+        Gtk.MenuItem menu_item;
+
+        menu_item = new Gtk.SeparatorMenuItem ();
+        add_menuitem (menu, menu_item);
+
+        menu_item = new CloneMenuItem (target, uri);
+        add_menuitem (menu, menu_item);
+    }
+
+    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
+        menu.append (menu_item);
+        menu_item.show ();
+        plugins.menuitem_references.add (menu_item);
+    }
+}
+
+public class Marlin.Plugins.CloneMenuItem : Gtk.MenuItem {
+    public GOF.File target { get; construct; }
+    public string origin_url { get; construct; }
+
+    public CloneMenuItem (GOF.File _target, string _origin_url) {
+        Object (target: _target, origin_url: _origin_url);
+
+        label = _("Clone into folder");
+    }
+
+    public override void activate () {
+        try {
+            Ggit.Repository.clone (origin_url, target.location, null);
+        } catch (Error err) {
+            warning (err.message);
+        }
+    }
 }
 
 public Marlin.Plugins.Base module_init () {
