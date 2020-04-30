@@ -168,7 +168,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> files) {
+    public override void context_menu (Gtk.Widget? widget, List<GOF.File> files, GOF.AbstractSlot slot) {
         unowned Gtk.Menu? menu = (Gtk.Menu)widget;
         if (menu == null) {
             return;
@@ -193,41 +193,46 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             return;
         }
 
-        Gtk.MenuItem menu_item;
+        add_menuitem (menu, new Gtk.SeparatorMenuItem ());
 
-        menu_item = new Gtk.SeparatorMenuItem ();
-        add_menuitem (menu, menu_item);
+        var clone_item = new Gtk.MenuItem.with_label (_("Clone into folder"));
+        add_menuitem (menu, clone_item);
 
-        menu_item = new CloneMenuItem (target, uri, (Gtk.Window)window);
-        add_menuitem (menu, menu_item);
+        clone_item.activate.connect (() => {
+            var info_bar = new Gtk.InfoBar ();
+            info_bar.set_message_type (Gtk.MessageType.OTHER);
+            //TODO Set correct styling
+            var message = new Gtk.Label (_("Cloning - please wait"));
+            message.hexpand = true;
+            message.xalign = 0.5f;
+            info_bar.get_content_area ().add (message);
+            info_bar.show_all ();
+            slot.add_extra_widget (info_bar);
+
+            Idle.add (() => {
+                //TODO Stop cloning blocking the interface and make cancellable (if possible)
+                clone_repository (uri, target.location);
+                info_bar.destroy ();
+                return false;
+            });
+        });
+    }
+
+    private void clone_repository (string uri, GLib.File location) {
+        try {
+            Ggit.Repository.clone (uri, location, null);
+            //TODO Switch into folder after cloning
+        } catch (Error err) {
+            PF.Dialogs.show_error_dialog (_("There was an error cloning the git repository at %s").printf (uri),
+                                          err.message,
+                                          (Gtk.Window)window);
+        }
     }
 
     private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
         menu.append (menu_item);
         menu_item.show ();
         plugins.menuitem_references.add (menu_item);
-    }
-}
-
-public class Marlin.Plugins.CloneMenuItem : Gtk.MenuItem {
-    public GOF.File target { get; construct; }
-    public string origin_url { get; construct; }
-    public unowned Gtk.Window window { get; construct; }
-
-    public CloneMenuItem (GOF.File _target, string _origin_url, Gtk.Window _window) {
-        Object (target: _target, origin_url: _origin_url, window: _window);
-
-        label = _("Clone into folder");
-    }
-
-    public override void activate () {
-        try {
-            Ggit.Repository.clone (origin_url, target.location, null);
-        } catch (Error err) {
-            PF.Dialogs.show_error_dialog (_("There was an error cloning the git repository at %s").printf (origin_url),
-                                          err.message,
-                                          window);
-        }
     }
 }
 

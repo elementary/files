@@ -270,7 +270,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> selected_files) {
+    public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> selected_files, GOF.AbstractSlot slot) {
         if (selected_files == null || widget == null || ignore_dir) {
             return;
         }

@@ -2142,7 +2142,7 @@ namespace FM {
             }
 
             if (!in_trash) {
-                plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+                plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action (), slot);
             }
 
             menu.set_screen (null);
