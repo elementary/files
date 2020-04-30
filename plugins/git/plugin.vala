@@ -198,7 +198,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         menu_item = new Gtk.SeparatorMenuItem ();
         add_menuitem (menu, menu_item);
 
-        menu_item = new CloneMenuItem (target, uri);
+        menu_item = new CloneMenuItem (target, uri, (Gtk.Window)window);
         add_menuitem (menu, menu_item);
     }
 
@@ -212,9 +212,10 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 public class Marlin.Plugins.CloneMenuItem : Gtk.MenuItem {
     public GOF.File target { get; construct; }
     public string origin_url { get; construct; }
+    public unowned Gtk.Window window { get; construct; }
 
-    public CloneMenuItem (GOF.File _target, string _origin_url) {
-        Object (target: _target, origin_url: _origin_url);
+    public CloneMenuItem (GOF.File _target, string _origin_url, Gtk.Window _window) {
+        Object (target: _target, origin_url: _origin_url, window: _window);
 
         label = _("Clone into folder");
     }
@@ -223,7 +224,9 @@ public class Marlin.Plugins.CloneMenuItem : Gtk.MenuItem {
         try {
             Ggit.Repository.clone (origin_url, target.location, null);
         } catch (Error err) {
-            warning (err.message);
+            PF.Dialogs.show_error_dialog (_("There was an error cloning the git repository at %s").printf (origin_url),
+                                          err.message,
+                                          window);
         }
     }
 }
