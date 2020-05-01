@@ -64,6 +64,7 @@
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
           <li>Show file info overlay in List View as well</li>
+          <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
           <li>Updated translations</li>
         </ul>
       </description>
