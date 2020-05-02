@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-20 09:16+0000\n"
-"PO-Revision-Date: 2020-04-12 11:10+0000\n"
+"PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/extra/pt_BR/>\n"
@@ -82,6 +82,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show file info overlay in List View as well"
 msgstr ""
+"Mostrar a sobreposição de informações do arquivo na Exibição em lista também"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:81
