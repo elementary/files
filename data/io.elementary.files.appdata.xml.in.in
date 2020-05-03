@@ -64,6 +64,7 @@
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
           <li>Show file info overlay in List View as well</li>
+          <li>Fix connecting to AFP servers so that passwords are remembered</li>
           <li>Updated translations</li>
         </ul>
       </description>
