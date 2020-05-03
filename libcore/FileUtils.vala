@@ -805,6 +805,40 @@ namespace PF.FileUtils {
             return -1;
         }
     }
+
+    public string get_afp_target_uri (string standard_target_uri, string uri) {
+        /* For afp:// addresses the standard target uri has the user name stripped - we need to replace it */
+        if (Uri.parse_scheme (uri) == "afp") {
+            string origin_host, origin_filename;
+            if (get_afp_user_server_and_filename (uri, out origin_filename, out origin_host)) {
+                string target_host, target_filename;
+                if (get_afp_user_server_and_filename (standard_target_uri, out target_filename, out target_host)) {
+                    return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, origin_host, target_filename);
+                }
+            }
+        }
+
+        return standard_target_uri;
+    }
+
+    private bool get_afp_user_server_and_filename (string uri, out string filename, out string user_server) {
+        filename = uri;
+        user_server = "";
+        string[] parts1 = uri.split ("://", 2 );
+        if (parts1.length == 2) {
+            string[] parts2 = parts1[1].split (Path.DIR_SEPARATOR_S, 2);
+            if (parts2.length >= 1) {
+                user_server = parts2[0];
+                if (parts2.length == 2) {
+                    filename = parts2[1];
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 namespace Marlin {
