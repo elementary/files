@@ -726,26 +726,34 @@ namespace Marlin.View.Chrome {
 
                 Gdk.RGBA rgba;
                 var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
-                if (colored) {
-                    cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
-                } else {
-                    cr.set_source_rgba (0, 0, 0, 0.5);
+                if (!colored) {
+                    colored = get_style_context ().lookup_color ("text_color", out rgba);
+                    if (!colored) {
+                    /* If neither "placeholder_text_color" or "text_color" defined in theme (unlikely) fallback to a
+                     *  color that is hopefully still visible in light and dark variants */
+                        rgba = {0.6, 0.6, 0.5, 1};
+                    }
                 }
+
+                cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
 
                 if (is_rtl) {
                     layout = create_pango_layout (text + placeholder);
                 } else {
                     layout = create_pango_layout (text);
                 }
+
                 layout.get_size (out layout_width, out layout_height);
                 text_width = Pango.units_to_double (layout_width);
                 text_height = Pango.units_to_double (layout_height);
                 /** TODO - Get offset due to margins from style context **/
+                var vertical_offset = get_allocated_height () / 2 - text_height / 2;
                 if (is_rtl) {
-                   cr.move_to (width - (text_width + icon_width + 6), text_height / 4);
+                   cr.move_to (width - (text_width + icon_width + 6), vertical_offset);
                 } else {
-                   cr.move_to (text_width + icon_width + 6, text_height / 4);
+                   cr.move_to (text_width + icon_width + 6, vertical_offset);
                 }
+
                 layout.set_text (placeholder, -1);
                 Pango.cairo_show_layout (cr, layout);
             }
