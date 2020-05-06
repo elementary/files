@@ -49,7 +49,7 @@ namespace Marlin {
             ypad = 0;
 
             notify["icon-size"].connect (() => {
-                border_radius = 5 + icon_size / 40;
+                border_radius = 2 + icon_size / 16;
                 double_border_radius = 2 * border_radius;
 
                 if (is_list_view) {
@@ -308,8 +308,8 @@ namespace Marlin {
             y_offset = 0;
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
-            focus_rect_height = text_height + double_border_radius;
-            focus_rect_width = text_width + 2 * double_border_radius;
+            focus_rect_height = text_height + border_radius;
+            focus_rect_width = text_width + double_border_radius;
 
             /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
             focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);

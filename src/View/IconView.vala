@@ -41,14 +41,14 @@ namespace FM {
         static construct {
             layout_map = new Gee.HashMap<Marlin.ZoomLevel, ItemLayout?> ();
             layout_map.@set (Marlin.ZoomLevel.SMALLEST, {Marlin.IconSize.SMALL, 1, 0, 0, 64, 0, 1});
-            layout_map.@set (Marlin.ZoomLevel.SMALLER, {Marlin.IconSize.SMALL, 2, 1, 1, 64, 0, 2});
-            layout_map.@set (Marlin.ZoomLevel.SMALL, {Marlin.IconSize.SMALL, 3, 2, 1, 72, 2, 3});
-            layout_map.@set (Marlin.ZoomLevel.NORMAL, {Marlin.IconSize.NORMAL, 6, 3, 3, 80, 2, 5});
-            layout_map.@set (Marlin.ZoomLevel.LARGE, {Marlin.IconSize.LARGE, 9, 3, 3, 96, 2, 6});
-            layout_map.@set (Marlin.ZoomLevel.LARGER, {Marlin.IconSize.LARGER, 12, 3, 3, 112, 3, 5});
-            layout_map.@set (Marlin.ZoomLevel.HUGE, {Marlin.IconSize.HUGE, 12, 3, 3, 128, 3, 4});
-            layout_map.@set (Marlin.ZoomLevel.HUGER, {Marlin.IconSize.HUGER, 15, 3, 3, 208, 3, 3});
-            layout_map.@set (Marlin.ZoomLevel.LARGEST, {Marlin.IconSize.LARGEST, 18, 3, 3, 272, 3, 2});
+            layout_map.@set (Marlin.ZoomLevel.SMALLER, {Marlin.IconSize.SMALL, 3, 1, 1, 64, 3, 2});
+            layout_map.@set (Marlin.ZoomLevel.SMALL, {Marlin.IconSize.SMALL, 6, 2, 1, 68, 3, 3});
+            layout_map.@set (Marlin.ZoomLevel.NORMAL, {Marlin.IconSize.NORMAL, 9, 3, 3, 80, 4, 5});
+            layout_map.@set (Marlin.ZoomLevel.LARGE, {Marlin.IconSize.LARGE, 12, 4, 3, 96, 4, 6});
+            layout_map.@set (Marlin.ZoomLevel.LARGER, {Marlin.IconSize.LARGER, 15, 5, 3, 112, 4, 5});
+            layout_map.@set (Marlin.ZoomLevel.HUGE, {Marlin.IconSize.HUGE, 15, 6, 6, 128, 3, 4});
+            layout_map.@set (Marlin.ZoomLevel.HUGER, {Marlin.IconSize.HUGER, 15, 5, 6, 208, 4, 3});
+            layout_map.@set (Marlin.ZoomLevel.LARGEST, {Marlin.IconSize.LARGEST, 15, 6, 3, 272, 4, 2});
         }
 
         public IconView (Marlin.View.Slot _slot) {
