@@ -240,38 +240,39 @@ namespace Marlin {
             /* Still show emblems when selection helpers hidden in double click mode */
             /* How many emblems can be shown depends on icon icon_size (zoom lebel) */
             if (show_emblems) {
-//                int emblem_size = (int) Marlin.IconSize.EMBLEM;
-                int pos = 0;
-
-                foreach (string emblem in file.emblems_list) {
-                    Gdk.Pixbuf? pix = null;
-                    var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
-
-                    if (nicon == null) {
-                        continue;
-                    }
-
-                    pix = nicon.get_pixbuf_nodefault ();
-
-                    if (pix == null) {
-                        continue;
-                    }
-
-                    emblem_area.y = draw_rect.y + pix_rect.height - v_overlap;
+                int n_emblems = (int)(file.emblems_list.length ());
+                if (n_emblems > 0) {
+                    int spacing = n_emblems > 1 ? int.max (emblem_size / 2, (draw_rect.height - emblem_size) / (n_emblems - 1)) : 0;
+                    int total_height = spacing * (n_emblems - 1) + emblem_size;
+                    emblem_area.y = cell_area.y + cell_area.height / 2 + total_height / 2 - emblem_size;
+                    emblem_area.y = int.max (emblem_area.y, draw_rect.y + draw_rect.height - emblem_size);
                     emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
-
-                    emblem_area.y -= emblem_size * pos;
-                    if (emblem_area.y < (cell_area.y - emblem_size)) {
-                        break; // No more room for emblems
-                    }
-
-                    emblem_area.y = int.max (cell_area.y, emblem_area.y);
 
                     emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
                     emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
 
-                    style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
-                    pos++;
+                    spacing = int.min (spacing, emblem_size + icon_size / 16);
+                    Gdk.Pixbuf? pix = null;
+                    foreach (string emblem in file.emblems_list) {
+                        var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+
+                        if (nicon == null) {
+                            continue;
+                        }
+
+                        pix = nicon.get_pixbuf_nodefault ();
+
+                        if (pix == null) {
+                            continue;
+                        }
+
+                        if (emblem_area.y < (cell_area.y - spacing)) {
+                            break; // No more room for emblems
+                        }
+
+                        style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+                        emblem_area.y -= spacing;
+                    }
                 }
             }
         }
