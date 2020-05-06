@@ -241,12 +241,18 @@ namespace Marlin {
             /* How many emblems can be shown depends on icon icon_size (zoom lebel) */
             if (show_emblems) {
                 int n_emblems = (int)(file.emblems_list.length ());
+                int spacing = 0;
                 if (n_emblems > 0) {
-                    int spacing = n_emblems > 1 ? int.max (emblem_size / 2, (draw_rect.height - emblem_size) / (n_emblems - 1)) : 0;
+                    if (n_emblems > 1) {
+                        spacing = int.max (emblem_size, (draw_rect.height - emblem_size) / (n_emblems - 1));
+                        spacing = int.min (draw_rect.height / 2, (cell_area.height - emblem_size) / (n_emblems - 1));
+                    }
+
                     int total_height = spacing * (n_emblems - 1) + emblem_size;
-                    emblem_area.y = cell_area.y + cell_area.height / 2 + total_height / 2 - emblem_size;
-                    emblem_area.y = int.max (emblem_area.y, draw_rect.y + draw_rect.height - emblem_size);
-                    emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
+                    emblem_area.y = cell_area.y + (cell_area.height + total_height) / 2;
+                    emblem_area.y = int.max (emblem_area.y, draw_rect.y + draw_rect.height);
+                    emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height);
+                    emblem_area.y -= emblem_size;
 
                     emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
                     emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
