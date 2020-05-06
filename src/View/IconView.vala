@@ -147,11 +147,14 @@ namespace FM {
                 tree.set_item_width (layout.item_width);
                 tree.set_item_padding (layout.item_padding);
                 name_renderer.max_lines = layout.max_lines;
+            } else {
+                critical ("Attempt to zoom null tree");
             }
 
-            base.change_zoom_level (); /* Sets name_renderer zoom_level */
-            name_renderer.item_width = layout.item_width;
             icon_renderer.icon_size = layout.icon_size;
+            name_renderer.item_width = layout.item_width;
+            name_renderer.icon_size = layout.icon_size;
+            base.change_zoom_level (); /* Sets name_renderer zoom_level */
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {

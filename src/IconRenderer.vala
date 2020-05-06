@@ -33,17 +33,7 @@ namespace Marlin {
         public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
-
-        public Marlin.ZoomLevel zoom_level {
-            get {
-                return _zoom_level;
-            }
-            set {
-                _zoom_level = value;
-                icon_size = Marlin.zoom_level_to_icon_size (_zoom_level);
-                show_emblems = _zoom_level > Marlin.ZoomLevel.SMALLEST;
-            }
-        }
+        public int icon_size {get; set;}
 
         public GOF.File? file {
             get {
@@ -58,9 +48,12 @@ namespace Marlin {
         }
 
         private bool show_emblems = true;
-        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
+        private int helper_size = (int)Marlin.IconSize.EMBLEM;
+        private int emblem_size = (int)Marlin.IconSize.EMBLEM;
+        Gdk.Rectangle emblem_area = Gdk.Rectangle ();
+
         private GOF.File? _file;
-        public Marlin.IconSize icon_size;
+
         private int icon_scale = 1;
         private unowned Gdk.Pixbuf? pixbuf {
             get {
@@ -74,6 +67,12 @@ namespace Marlin {
             clipboard = Marlin.ClipboardManager.get_for_display ();
             hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
+
+            notify["icon-size"].connect (() => {
+                show_emblems = icon_size > (int)(Marlin.IconSize.SMALLEST);
+                helper_size = icon_size <= (int)Marlin.IconSize.NORMAL ?
+                              (int)Marlin.IconSize.EMBLEM : (int)Marlin.IconSize.LARGE_EMBLEM;
+            });
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -211,9 +210,6 @@ namespace Marlin {
 
                 Gdk.Rectangle helper_rect = {0, 0, 1, 1};
                 if (special_icon_name != null) {
-                    var helper_size = (int) (zoom_level <= Marlin.ZoomLevel.NORMAL ?
-                                             Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM);
-
                     helper_rect.width = helper_size;
                     helper_rect.height = helper_size;
 
@@ -244,15 +240,10 @@ namespace Marlin {
             /* Still show emblems when selection helpers hidden in double click mode */
             /* How many emblems can be shown depends on icon icon_size (zoom lebel) */
             if (show_emblems) {
-                int emblem_size = (int) Marlin.IconSize.EMBLEM;
+//                int emblem_size = (int) Marlin.IconSize.EMBLEM;
                 int pos = 0;
-                var emblem_area = Gdk.Rectangle ();
 
                 foreach (string emblem in file.emblems_list) {
-                    if (pos > zoom_level) {
-                        break;
-                    }
-
                     Gdk.Pixbuf? pix = null;
                     var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
 
@@ -270,6 +261,10 @@ namespace Marlin {
                     emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
 
                     emblem_area.y -= emblem_size * pos;
+                    if (emblem_area.y < (cell_area.y - emblem_size)) {
+                        break; // No more room for emblems
+                    }
+
                     emblem_area.y = int.max (cell_area.y, emblem_area.y);
 
                     emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
@@ -282,12 +277,12 @@ namespace Marlin {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) icon_size + hover_helper_rect.width;
+            minimum_size = icon_size + hover_helper_rect.width;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) icon_size + hover_helper_rect.height / 2;
+            minimum_size = icon_size + hover_helper_rect.height / 2;
             natural_size = minimum_size;
         }
 

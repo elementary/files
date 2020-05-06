@@ -19,44 +19,9 @@
 namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
-        private int border_radius;
-        private int double_border_radius;
-        private Gtk.CssProvider text_css;
-        private Gdk.RGBA previous_background_rgba;
-        private Gdk.RGBA previous_contrasting_rgba;
-
-        private Marlin.ZoomLevel _zoom_level;
-        public Marlin.ZoomLevel zoom_level {
-            get {
-                return _zoom_level;
-            }
-
-            set {
-                var icon_size = Marlin.zoom_level_to_icon_size (value);
-                border_radius = 5 + icon_size / 40;
-                double_border_radius = 2 * border_radius;
-
-                if (is_list_view) {
-                    (this as Gtk.CellRenderer).set_fixed_size (-1, icon_size);
-                } else {
-                    wrap_width = item_width - double_border_radius;
-                }
-
-                _zoom_level = value;
-            }
-        }
-
-        public GOF.File? file {set; private get;}
-        private int _item_width = -1;
-        public int item_width {
-            set {
-                _item_width = value;
-            }
-
-            private get {
-                return _item_width;
-            }
-        }
+        public int icon_size { get; set; default = Marlin.IconSize.NORMAL; }
+        public GOF.File? file { set; private get; }
+        public int item_width { get; set; default = (int)Marlin.IconSize.LARGE; }
 
         public int max_lines { get; set; }
 
@@ -66,6 +31,11 @@ namespace Marlin {
         public int text_height;
 
         int char_height;
+        private int border_radius = 5;
+        private int double_border_radius = 10;
+        private Gtk.CssProvider text_css;
+        private Gdk.RGBA previous_background_rgba;
+        private Gdk.RGBA previous_contrasting_rgba;
 
         Pango.Layout layout;
         Gtk.Widget widget;
@@ -77,6 +47,21 @@ namespace Marlin {
             previous_background_rgba = { 0, 0, 0, 0 };
             previous_contrasting_rgba = { 0, 0, 0, 0 };
             ypad = 0;
+
+            notify["icon-size"].connect (() => {
+                border_radius = 5 + icon_size / 40;
+                double_border_radius = 2 * border_radius;
+
+                if (is_list_view) {
+                    (this as Gtk.CellRenderer).set_fixed_size (-1, icon_size);
+                }
+            });
+
+            notify["item-width"].connect (() => {
+                if (!is_list_view) {
+                    wrap_width = _item_width - double_border_radius;
+                }
+            });
         }
 
         public TextRenderer (Marlin.ViewMode viewmode) {
@@ -126,11 +111,11 @@ namespace Marlin {
                         out focus_rect_width, out focus_rect_height);
 
             /* Position text relative to the focus rectangle */
+                y_offset += (focus_rect_height - text_height) / 2;
             if (!is_list_view) {
                 x_offset += (focus_rect_width - wrap_width) / 2;
-//                y_offset += (focus_rect_height - text_height) / 2;
+
             } else {
-                y_offset = (cell_area.height - char_height) / 2;
                 x_offset += border_radius;
             }
 
@@ -323,8 +308,7 @@ namespace Marlin {
             y_offset = 0;
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
-//            focus_rect_height = text_height + double_border_radius;
-            focus_rect_height = text_height;
+            focus_rect_height = text_height + double_border_radius;
             focus_rect_width = text_width + 2 * double_border_radius;
 
             /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
@@ -377,10 +361,6 @@ namespace Marlin {
             }
 
             y_offset = (int)(yalign * (cell_area.height - height));
-
-//            if (!is_list_view) {
-//                y_offset += border_radius;
-//            }
         }
     }
 }

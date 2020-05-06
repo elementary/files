@@ -70,7 +70,6 @@ namespace FM {
         protected override void set_up_name_renderer () {
             base.set_up_name_renderer ();
             name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", Marlin.ZoomLevel.NORMAL);
             name_renderer.@set ("ellipsize-set", true);
             name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
             name_renderer.xalign = 0.0f;
@@ -98,9 +97,12 @@ namespace FM {
         }
 
         public override void change_zoom_level () {
+            icon_renderer.icon_size = (int)(Marlin.zoom_level_to_icon_size (zoom_level));
+            name_renderer.icon_size = icon_renderer.icon_size;
+
             if (tree != null) {
-                base.change_zoom_level ();
                 tree.columns_autosize ();
+                base.change_zoom_level ();
             }
         }
 
