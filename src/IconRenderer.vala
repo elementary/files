@@ -31,9 +31,9 @@ namespace Marlin {
     public class IconRenderer : Gtk.CellRenderer {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
-        public bool follow_state {get; set;}
-        public GOF.File drop_file {get; set;}
-        public int icon_size {get; set;}
+        public bool follow_state {get; set; default = true;}
+        public GOF.File? drop_file {get; set; default = null;}
+        public int icon_size {get; set; default = -1;}
 
         public GOF.File? file {
             get {

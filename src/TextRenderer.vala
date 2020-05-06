@@ -19,9 +19,9 @@
 namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
-        public int icon_size { get; set; default = Marlin.IconSize.NORMAL; }
+        public int icon_size { get; set; default = -1; }
         public GOF.File? file { set; private get; }
-        public int item_width { get; set; default = (int)Marlin.IconSize.LARGE; }
+        public int item_width { get; set; default = -1; }
 
         public int max_lines { get; set; }
 

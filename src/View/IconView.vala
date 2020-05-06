@@ -154,7 +154,7 @@ namespace FM {
             icon_renderer.icon_size = layout.icon_size;
             name_renderer.item_width = layout.item_width;
             name_renderer.icon_size = layout.icon_size;
-            base.change_zoom_level (); /* Sets name_renderer zoom_level */
+            base.change_zoom_level ();
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {
