@@ -18,6 +18,8 @@
 
 namespace FM {
     public class IconView : AbstractDirectoryView {
+
+        private static Gee.HashMap<Marlin.ZoomLevel, ItemLayout?> layout_map;
         protected new Gtk.IconView tree;
         /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
         protected bool previous_selection_was_linear = false;
@@ -25,6 +27,29 @@ namespace FM {
         protected int previous_linear_selection_direction = 0;
         protected bool linear_select_required = false;
         protected Gtk.TreePath? most_recently_selected = null;
+
+        private struct ItemLayout {
+            Marlin.IconSize icon_size;
+            int column_spacing;
+            int row_spacing;
+            int spacing;
+            int item_width;
+            int item_padding;
+            int max_lines;
+        }
+
+        static construct {
+            layout_map = new Gee.HashMap<Marlin.ZoomLevel, ItemLayout?> ();
+            layout_map.@set (Marlin.ZoomLevel.SMALLEST, {Marlin.IconSize.SMALL, 1, 0, 0, 64, 0, 1});
+            layout_map.@set (Marlin.ZoomLevel.SMALLER, {Marlin.IconSize.SMALL, 2, 1, 1, 64, 0, 2});
+            layout_map.@set (Marlin.ZoomLevel.SMALL, {Marlin.IconSize.SMALL, 3, 2, 1, 72, 2, 3});
+            layout_map.@set (Marlin.ZoomLevel.NORMAL, {Marlin.IconSize.NORMAL, 6, 3, 3, 80, 2, 5});
+            layout_map.@set (Marlin.ZoomLevel.LARGE, {Marlin.IconSize.LARGE, 9, 3, 3, 96, 2, 6});
+            layout_map.@set (Marlin.ZoomLevel.LARGER, {Marlin.IconSize.LARGER, 12, 3, 3, 112, 3, 5});
+            layout_map.@set (Marlin.ZoomLevel.HUGE, {Marlin.IconSize.HUGE, 12, 3, 3, 128, 3, 4});
+            layout_map.@set (Marlin.ZoomLevel.HUGER, {Marlin.IconSize.HUGER, 15, 3, 3, 208, 3, 3});
+            layout_map.@set (Marlin.ZoomLevel.LARGEST, {Marlin.IconSize.LARGEST, 18, 3, 3, 272, 3, 2});
+        }
 
         public IconView (Marlin.View.Slot _slot) {
             assert (_slot != null);
@@ -113,16 +138,20 @@ namespace FM {
         }
 
         public override void change_zoom_level () {
-            int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));
-            int item_width = (int)((double)icon_size * (2.5 - zoom_level * 0.2));
+            ItemLayout layout = layout_map.@get (zoom_level);
+
             if (tree != null) {
-                tree.set_column_spacing (spacing);
-                tree.set_item_width (item_width);
+                tree.set_column_spacing (layout.column_spacing);
+                tree.set_row_spacing (layout.row_spacing);
+                tree.set_spacing (layout.spacing);
+                tree.set_item_width (layout.item_width);
+                tree.set_item_padding (layout.item_padding);
+                name_renderer.max_lines = layout.max_lines;
             }
 
-            name_renderer.item_width = item_width;
-
             base.change_zoom_level (); /* Sets name_renderer zoom_level */
+            name_renderer.item_width = layout.item_width;
+            icon_renderer.icon_size = layout.icon_size;
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {

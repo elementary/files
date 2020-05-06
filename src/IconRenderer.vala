@@ -60,7 +60,7 @@ namespace Marlin {
         private bool show_emblems = true;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
-        private Marlin.IconSize icon_size;
+        public Marlin.IconSize icon_size;
         private int icon_scale = 1;
         private unowned Gdk.Pixbuf? pixbuf {
             get {

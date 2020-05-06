@@ -328,8 +328,9 @@ namespace FM {
                 view.draw.connect (on_view_draw);
             }
 
-            freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
+            freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
+
 
             connect_directory_handlers (slot.directory);
         }

@@ -19,7 +19,6 @@
 namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
-        const int MAX_LINES = 5;
         private int border_radius;
         private int double_border_radius;
         private Gtk.CssProvider text_css;
@@ -59,6 +58,8 @@ namespace Marlin {
             }
         }
 
+        public int max_lines { get; set; }
+
         private bool is_list_view;
 
         public int text_width;
@@ -75,6 +76,7 @@ namespace Marlin {
             text_css = new Gtk.CssProvider ();
             previous_background_rgba = { 0, 0, 0, 0 };
             previous_contrasting_rgba = { 0, 0, 0, 0 };
+            ypad = 0;
         }
 
         public TextRenderer (Marlin.ViewMode viewmode) {
@@ -93,7 +95,7 @@ namespace Marlin {
                                                              out int minimum_size, out int natural_size) {
             set_widget (widget);
             set_up_layout (text, width);
-            natural_size = text_height + 4 * border_radius;
+            natural_size = text_height + double_border_radius;
             minimum_size = natural_size;
         }
 
@@ -126,7 +128,7 @@ namespace Marlin {
             /* Position text relative to the focus rectangle */
             if (!is_list_view) {
                 x_offset += (focus_rect_width - wrap_width) / 2;
-                y_offset += (focus_rect_height - text_height) / 2;
+//                y_offset += (focus_rect_height - text_height) / 2;
             } else {
                 y_offset = (cell_area.height - char_height) / 2;
                 x_offset += border_radius;
@@ -182,10 +184,12 @@ namespace Marlin {
             if (is_list_view) {
                 layout.set_width ((cell_width - double_border_radius) * Pango.SCALE);
                 layout.set_height (- 1);
+                yalign = 0.5f;
             } else {
                 layout.set_width (wrap_width * Pango.SCALE);
                 layout.set_wrap (this.wrap_mode);
-                layout.set_height (- MAX_LINES);
+                layout.set_height (- max_lines);
+                yalign = 0.0f;
             }
 
             layout.set_ellipsize (Pango.EllipsizeMode.END);
@@ -319,12 +323,13 @@ namespace Marlin {
             y_offset = 0;
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
-            focus_rect_height = text_height + border_radius;
-            focus_rect_width = text_width + double_border_radius;
+//            focus_rect_height = text_height + double_border_radius;
+            focus_rect_height = text_height;
+            focus_rect_width = text_width + 2 * double_border_radius;
 
             /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
             focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
-            focus_rect_height = int.min (focus_rect_height, cell_area.height - 2);
+            focus_rect_height = int.min (focus_rect_height, cell_area.height);
 
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
@@ -373,9 +378,9 @@ namespace Marlin {
 
             y_offset = (int)(yalign * (cell_area.height - height));
 
-            if (!is_list_view) {
-                y_offset += border_radius;
-            }
+//            if (!is_list_view) {
+//                y_offset += border_radius;
+//            }
         }
     }
 }
