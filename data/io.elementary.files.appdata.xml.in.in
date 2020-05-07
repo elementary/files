@@ -60,6 +60,10 @@
   <releases>
     <release version="4.4.3" date="2020-04-08" urgency="medium">
       <description>
+        <p>New features:</p>
+        <ul>
+          <li>Provide AppMenu for changing click-mode setting</li>
+        </ul>
         <p>Minor updates:</p>
         <ul>
           <li>Fix an issue that prevented file modification times from showing</li>
