@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-20 09:16+0000\n"
-"PO-Revision-Date: 2018-12-14 00:08+0000\n"
-"Last-Translator: Daniel Zvir <zvir.daniel@seznam.cz>\n"
-"Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/"
-">\n"
+"PO-Revision-Date: 2020-05-08 10:10+0000\n"
+"Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:124
@@ -25,9 +24,8 @@ msgid "Show the version of the program"
 msgstr "Zobrazit verzi programu"
 
 #: src/Application.vala:126
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Otevři jednu (či více) adres, každou v novém panelu"
+msgstr "Otevřít jednu (nebo více) URL adres, každou v novém panelu"
 
 #: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1855
 msgid "New Window"
@@ -348,9 +346,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:820
 #: src/View/AbstractDirectoryView.vala:1127
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Tento soubor nelze otevřít"
+msgstr "Tento soubor nelze spustit"
 
 #: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot open this file"
@@ -670,7 +667,7 @@ msgstr "Přístup odepřen"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Anonymní režim je zapnutý"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
@@ -678,7 +675,7 @@ msgstr ""
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Změnit nastavení zabezpečení"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
