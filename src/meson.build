@@ -46,6 +46,7 @@ pantheon_files_exec = executable (
     'View/Miller.vala',
 
     'View/Widgets/AbstractEditableLabel.vala',
+    'View/Widgets/AppMenuPopover.vala',
     'View/Widgets/BreadcrumbsEntry.vala',
     'View/Widgets/DiskRenderer.vala',
     'View/Widgets/HeaderBar.vala',

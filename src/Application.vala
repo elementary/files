@@ -262,6 +262,7 @@ public class Marlin.Application : Gtk.Application {
         Preferences.settings.bind ("hide-local-thumbnails",
                                    prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.settings.bind ("single-click", prefs, "single-click", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
         Preferences.gnome_privacy_settings.bind ("remember-recent-files",
