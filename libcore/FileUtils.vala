@@ -57,11 +57,11 @@ namespace PF.FileUtils {
         }
     }
 
-    public string get_parent_path_from_path (string path) {
+    public string get_parent_path_from_path (string path, bool include_file_protocol = true) {
         /* We construct the parent path rather than use File.get_parent () as the latter gives odd
          * results for some gvfs files.
          */
-        string parent_path = construct_parent_path (path);
+        string parent_path = construct_parent_path (path, include_file_protocol);
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.SFTP_URI) {
 
@@ -160,7 +160,7 @@ namespace PF.FileUtils {
         }
     }
 
-    private string construct_parent_path (string path) {
+    private string construct_parent_path (string path, bool include_file_protocol) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
         }
@@ -174,7 +174,7 @@ namespace PF.FileUtils {
         }
         sb.erase (last_separator, -1);
         string parent_path = sb.str + Path.DIR_SEPARATOR_S;
-        return sanitize_path (parent_path);
+        return sanitize_path (parent_path, null, include_file_protocol);
     }
 
     public bool path_has_parent (string new_path) {
@@ -232,13 +232,19 @@ namespace PF.FileUtils {
                         break;
                     // process special parent dir
                     case "..":
-                        sb.assign (current_scheme);
-                        sb.append (Path.DIR_SEPARATOR_S);
-                        sb.append (get_parent_path_from_path (current_path));
+                        if (current_scheme != "" && current_scheme != Marlin.ROOT_FS_URI) {
+                            /* We need to append the current scheme later */
+                            scheme = current_scheme;
+                        }
+
+                        /* We do not want the file:// prefix returned */
+                        sb.assign (get_parent_path_from_path (current_path, false));
+
                         if (paths.length > 1) {
                             sb.append (Path.DIR_SEPARATOR_S);
                             sb.append (paths[1]);
                         }
+
                         break;
                     // process current dir
                     case ".":
@@ -281,6 +287,8 @@ namespace PF.FileUtils {
             path = path.replace ("//", "/");
         } while (path.contains ("//"));
 
+
+
         string new_path = (scheme + path).replace ("////", "///");
         if (new_path.length > 0) {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
@@ -290,6 +298,7 @@ namespace PF.FileUtils {
 
                 new_path = new_path.replace ("///", "//");
             }
+
             new_path = new_path.replace ("ssh:", "sftp:");
 
             if (path == "/" && !can_browse_scheme (scheme)) {
