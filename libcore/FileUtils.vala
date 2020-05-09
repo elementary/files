@@ -222,7 +222,7 @@ namespace PF.FileUtils {
             split_protocol_from_path (cp, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
 
-            if (scheme == "" && path.length > 0) {
+            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) && path.length > 0) {
                 string [] paths = path.split ("/", 2);
                 switch (paths[0]) {
                     // ignore home documents
@@ -263,7 +263,13 @@ namespace PF.FileUtils {
         }
 
         if (path.length > 0) {
-            if (scheme == "" && (path.has_prefix ("~/") || path == "~")) {
+            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) &&
+                (path.has_prefix ("~/") || path.has_prefix ("/~") || path == "~")) {
+
+                if (path.has_prefix ("/")) {
+                    sb.erase (0, 1);
+                }
+
                 sb.erase (0, 1);
                 sb.prepend (PF.UserUtils.get_real_user_home ());
             }
