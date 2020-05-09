@@ -194,14 +194,22 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? p, string? cp = null, bool include_file_protocol = true) {
+    public string sanitize_path (string? _p, string? cp = null, bool include_file_protocol = true) {
+        string p;
         string path = "";
         string scheme = "";
         string? current_path = null;
         string? current_scheme = null;
 
+        if (_p == null || _p == "") {
+            p = cp; /* Sanitize current path */
+            cp = "";
+        } else {
+            p = _p;
+        }
+
         if (p == null || p == "") {
-            return cp ?? "";
+            return "";
         }
 
         string? unescaped_p = Uri.unescape_string (p, null);
@@ -248,7 +256,7 @@ namespace PF.FileUtils {
                         break;
                     // process current dir
                     case ".":
-                        sb.assign (cp);
+                        sb.assign (current_path); //We do not want the scheme at this point
                         if (paths.length > 1) {
                             sb.append (Path.DIR_SEPARATOR_S);
                             sb.append (paths[1]);
@@ -256,7 +264,7 @@ namespace PF.FileUtils {
                         break;
                     // process directory without root
                     default:
-                        sb.assign (cp);
+                        sb.assign (current_path); //We do not want the scheme at this point
                         sb.append (Path.DIR_SEPARATOR_S);
                         sb.append (paths[0]);
                         if (paths.length > 1) {
