@@ -194,18 +194,20 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? _p, string? cp = null, bool include_file_protocol = true) {
+    public string sanitize_path (string? _p, string? _cp = null, bool include_file_protocol = true) {
         string p;
+        string cp;
         string path = "";
         string scheme = "";
         string? current_path = null;
         string? current_scheme = null;
 
         if (_p == null || _p == "") {
-            p = cp; /* Sanitize current path */
+            p = _cp; /* Sanitize current path */
             cp = "";
         } else {
             p = _p;
+            cp = _cp;
         }
 
         if (p == null || p == "") {
