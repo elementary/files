@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-20 09:16+0000\n"
-"PO-Revision-Date: 2018-06-01 00:07+0000\n"
-"Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
-"Language-Team: Czech <https://weblate.elementary.io/projects/files/extra/cs/"
-">\n"
+"PO-Revision-Date: 2020-05-11 19:11+0000\n"
+"Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -70,14 +69,12 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:73
 #: data/io.elementary.files.appdata.xml.in.in:87
-#, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
-msgstr "Menší opravy chyb"
+msgstr "Menší aktualizace:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix an issue that prevented file modification times from showing"
-msgstr ""
+msgstr "Oprava problému který bránil zobrazování okamžiků úpravy souborů"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show file info overlay in List View as well"
@@ -97,14 +94,12 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:229
 #: data/io.elementary.files.appdata.xml.in.in:237
 #: data/io.elementary.files.appdata.xml.in.in:269
-#, fuzzy
 msgid "Updated translations"
-msgstr "Nové překlady"
+msgstr "Aktualizovány překlady"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
-#, fuzzy
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "Oprava padání při obnově soborů z koše"
+msgstr "Oprava padání v případě, kdy ikona zařízení pochází ze souboru"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Fix device icon sometimes missing"
@@ -204,19 +199,16 @@ msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:124
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "Vylepšena podpora překladů"
+msgstr "Vylepšena animace lišty s popisem umístění"
 
 #: data/io.elementary.files.appdata.xml.in.in:125
-#, fuzzy
 msgid "Update documentation"
-msgstr "Nové překlady"
+msgstr "Aktualizace dokumentace"
 
 #: data/io.elementary.files.appdata.xml.in.in:126
-#, fuzzy
 msgid "Update translations"
-msgstr "Nové překlady"
+msgstr "Aktualizovány překlady"
 
 #: data/io.elementary.files.appdata.xml.in.in:133
 msgid "Initial cloudproviders plugin support"
@@ -259,9 +251,8 @@ msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:150
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "Vylepšená podpora práce v síti"
+msgstr "Vylepšená podpora protokolu MTP"
 
 #: data/io.elementary.files.appdata.xml.in.in:151
 msgid "Various tagging feature refinements"
@@ -344,9 +335,8 @@ msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:198
-#, fuzzy
 msgid "File sorting fixes"
-msgstr "Menší opravy chyb"
+msgstr "Opravy řazení souborů"
 
 #: data/io.elementary.files.appdata.xml.in.in:206
 msgid "Meson: fix soversion names"
@@ -377,9 +367,8 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:213
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
-msgstr "Oprava padání při obnově soborů z koše"
+msgstr "Oprava padání při otevírání vícero videosouborů"
 
 #: data/io.elementary.files.appdata.xml.in.in:214
 msgid "Fix some timing issues around adding and removing files"
@@ -410,14 +399,12 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:228
-#, fuzzy
 msgid "Build fixes"
-msgstr "Bezpečnostní opravy"
+msgstr "Opravy pro sestavování (build)"
 
 #: data/io.elementary.files.appdata.xml.in.in:236
-#, fuzzy
 msgid "Plugin build fixes"
-msgstr "Menší opravy chyb"
+msgstr "Opravy sestavování (build) zásuvných modulů"
 
 #: data/io.elementary.files.appdata.xml.in.in:244
 msgid "Fix Ctrl+Tab behavior"
@@ -480,14 +467,12 @@ msgid "Tooltip fixes"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:265
-#, fuzzy
 msgid "Memory leak fixes"
-msgstr "Menší opravy chyb"
+msgstr "Opravy neuvolňování operační paměti (leak)"
 
 #: data/io.elementary.files.appdata.xml.in.in:266
-#, fuzzy
 msgid "Crash fixes"
-msgstr "Několik oprav pádů"
+msgstr "Opravy pádů"
 
 #: data/io.elementary.files.appdata.xml.in.in:267
 msgid "Trash: respect sound setting"
