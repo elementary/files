@@ -1116,6 +1116,8 @@ namespace Marlin.View {
                         add_window (file, current_tab.view_mode);
                         break;
                     default:
+                        grab_focus ();
+                        current_tab.focus_location (file);
                         break;
                 }
             } else {
