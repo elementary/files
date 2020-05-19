@@ -404,7 +404,6 @@ namespace Marlin.View.Chrome {
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
-            GLib.File loc = PF.FileUtils.get_file_for_path (path);
             string parent_path = PF.FileUtils.get_parent_path_from_path (path);
             GLib.File? root = PF.FileUtils.get_file_for_path (parent_path);
 
