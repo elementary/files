@@ -262,7 +262,6 @@ namespace Marlin.View {
             }
 
             overlay_statusbar = new Marlin.View.OverlayBar (view.overlay);
-            overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
