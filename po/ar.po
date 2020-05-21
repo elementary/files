@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-20 09:16+0000\n"
-"PO-Revision-Date: 2020-03-19 19:09+0000\n"
+"PO-Revision-Date: 2020-05-16 11:10+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
@@ -41,9 +41,8 @@ msgid "Enable debug logging"
 msgstr "تمكين تسجيل التصحيح"
 
 #: src/Application.vala:135
-#, fuzzy
 msgid "[URI…]"
-msgstr "[العنوان...]"
+msgstr "[عنوان URI...]"
 
 #: src/Application.vala:138
 msgid ""
@@ -308,11 +307,11 @@ msgstr "فشل في فتح الملفات"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr ""
+msgstr "لم يتم فتح عنوان URI"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "لم يتم فتح الملفات او عنوان URI في هذا التطبيق"
 
 #: src/View/Window.vala:557 src/View/Window.vala:567
 msgid "(as Administrator)"
@@ -428,9 +427,8 @@ msgid "Restore from Trash"
 msgstr "استعد من المُهملات"
 
 #: src/View/AbstractDirectoryView.vala:2008
-#, fuzzy
 msgid "Open Parent Folder"
-msgstr "افتح مجلّدك الشخصي"
+msgstr "فتح الملف الاعلى"
 
 #: src/View/AbstractDirectoryView.vala:2011
 msgid "Remove from History"
@@ -446,33 +444,31 @@ msgstr "نسخ كرابط"
 
 #: src/View/AbstractDirectoryView.vala:2052
 msgid "Paste Link into Folder"
-msgstr ""
+msgstr "لصق الرابط في المجلد"
 
 #: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste into Folder"
-msgstr ""
+msgstr "لصق في المجلد"
 
 #: src/View/AbstractDirectoryView.vala:2082
 msgid "Show Hidden Files"
 msgstr "أظهر الملفات المخفية"
 
 #: src/View/AbstractDirectoryView.vala:2085
-#, fuzzy
 msgid "Show Remote Thumbnails"
-msgstr "أظهر _تفاصيل أكثر"
+msgstr "اظهر تفاصيل عن بعد أكثر"
 
 #: src/View/AbstractDirectoryView.vala:2088
-#, fuzzy
 msgid "Hide Thumbnails"
-msgstr "أظهر _تفاصيل أكثر"
+msgstr "اخفي التفاصيل"
 
 #: src/View/AbstractDirectoryView.vala:2108
 msgid "Paste Link"
-msgstr ""
+msgstr "لصق الرابط"
 
 #: src/View/AbstractDirectoryView.vala:2162
 msgid "Name"
-msgstr "الإسم"
+msgstr "الاسم"
 
 #: src/View/AbstractDirectoryView.vala:2177
 msgid "Date"
@@ -564,27 +560,27 @@ msgstr "تعذر الاتصال بالخادم لهذا المجلد."
 
 #: src/View/ViewContainer.vala:421
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "لم نتمكن من عرض محتويات المجلد"
 
 #: src/View/ViewContainer.vala:422
 msgid "The operation timed out."
-msgstr ""
+msgstr "زاد وقت العملية عن المدة المسموح بها."
 
 #: src/View/ViewContainer.vala:424
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "لم نتمكن من عرض المجلد"
 
 #: src/View/ViewContainer.vala:425
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "لم يتم العثور على مكان الخادم لهذا المجلد."
 
 #: src/View/ViewContainer.vala:436
 msgid "File not Found"
-msgstr ""
+msgstr "لم يتم ايجاد الملف"
 
 #: src/View/ViewContainer.vala:437
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "الملف المختار لم يعد موجودا."
 
 #: src/View/Sidebar.vala:565
 msgid "Personal"
@@ -600,7 +596,7 @@ msgstr "افتح مجلّدك الشخصي"
 
 #: src/View/Sidebar.vala:600
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "عرض قائمة الملفات المفتوحة مؤخرا"
 
 #: src/View/Sidebar.vala:626 libwidgets/Resources.vala:65
 msgid "Trash"
@@ -608,7 +604,7 @@ msgstr "المهملات"
 
 #: src/View/Sidebar.vala:633
 msgid "Open the Trash"
-msgstr ""
+msgstr "فتح المهملات"
 
 #: src/View/Sidebar.vala:638
 msgid "Devices"
@@ -628,7 +624,7 @@ msgstr "شبكتك المحلية"
 
 #: src/View/Sidebar.vala:801
 msgid "Entire Network"
-msgstr ""
+msgstr "الشبكة كاملة"
 
 #: src/View/Sidebar.vala:808
 msgid "Browse the contents of the network"
@@ -639,19 +635,18 @@ msgid "Connect Server"
 msgstr "اتصل بالخادم"
 
 #: src/View/Sidebar.vala:812
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "اتصل بالخادوم"
+msgstr "اتصل بشبكة الخادم"
 
 #: src/View/Sidebar.vala:971
 #, c-format
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "( %s خالية من %s )"
 
 #: src/View/Sidebar.vala:1464
 #, c-format
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "خطأ في تحميل القسم %s"
 
 #: src/View/Sidebar.vala:1479
 #, c-format
@@ -664,39 +659,39 @@ msgstr "أفرغ ال_مهملات"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "المجلد فارغ"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "المهملات فارغة"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "لا توجد ملفات حديثة"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
-msgstr ""
+msgstr "الوصول ممنوع"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "وضع الخصوصية مفعل"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "لا توجد ملفات اخيرة تم تذكرها"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "تغيير إعدادات الأمان"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "فتح إعدادات الخصوصية والأمان للنظام"
 
 #: src/View/PopupMenuBuilder.vala:49
 msgid "Open"
-msgstr ""
+msgstr "فتح"
 
 #: src/View/PopupMenuBuilder.vala:53
 msgid "Open in New _Tab"
@@ -712,7 +707,7 @@ msgstr "أزِل"
 
 #: src/View/PopupMenuBuilder.vala:65
 msgid "Rename"
-msgstr ""
+msgstr "إعادة تسمية"
 
 #: src/View/PopupMenuBuilder.vala:69
 msgid "_Mount"
@@ -729,7 +724,7 @@ msgstr "أ_خرِج"
 #: src/View/Widgets/BreadcrumbsEntry.vala:133
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr ""
+msgstr "البحث أو كتابة المسار"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
@@ -737,29 +732,29 @@ msgstr "فتح في علامة تبويب جديدة"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
-msgstr ""
+msgstr "فتح في نافذة جديدة"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:494
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "فتح في تطبيق آخر…"
 
 #: src/View/Widgets/HeaderBar.vala:63
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
-msgstr ""
+msgstr "السابق"
 
 #: src/View/Widgets/HeaderBar.vala:68
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
-msgstr ""
+msgstr "التالي"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
+msgstr "إعادة تحميل المجلد"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
-msgstr ""
+msgstr "جاري البحث…"
 
 #: src/View/Widgets/OverlayBar.vala:209
 #, c-format
@@ -789,45 +784,45 @@ msgstr "%u العناصر المحددة (%s)"
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u مجلد فرعي, "
 
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u مجلدات فرعية, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
-msgstr ""
+msgstr "%u ملف, "
 
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
-msgstr ""
+msgstr "%u ملفات, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s مقدر."
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "مساحة القرص غير معلومة"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u ملف غير قابل للقراءة"
 
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u ملفات غير قابلة للقراءة"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -875,7 +870,7 @@ msgstr "تفاصيل الخادوم"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "اسم الخادم أو IP address"
 
 #: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
@@ -887,7 +882,7 @@ msgstr "المنفذ:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
-msgstr ""
+msgstr "اسم المشاركة على الخادم"
 
 #: libcore/ConnectServerDialog.vala:168
 msgid "Share:"
@@ -895,7 +890,7 @@ msgstr "المشاركة:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "مسار المجلد المشارك على الخادم"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -906,9 +901,8 @@ msgid "User Details"
 msgstr "تفاصيل المستخدم"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "نافذة جديدة كمسؤول"
+msgstr "اسم نطاق ويندوز"
 
 #: libcore/ConnectServerDialog.vala:176
 msgid "Domain name:"
@@ -916,7 +910,7 @@ msgstr "اسم النطاق:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
-msgstr ""
+msgstr "اسم المستخدم على الخادم"
 
 #: libcore/ConnectServerDialog.vala:179
 msgid "User name:"
@@ -954,19 +948,19 @@ msgstr "من فضلك راجع تفاصيل المستخدم."
 #: libcore/DndHandler.vala:49
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "فشل في تنفيذ “%s”"
 
 #: libcore/DndHandler.vala:98
 msgid "Move Here"
-msgstr ""
+msgstr "حرك هنا"
 
 #: libcore/DndHandler.vala:99
 msgid "Copy Here"
-msgstr ""
+msgstr "نسخ إلى هنا"
 
 #: libcore/DndHandler.vala:100
 msgid "Link Here"
-msgstr ""
+msgstr "اضف الرابط إلى هنا"
 
 #: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
@@ -1006,11 +1000,11 @@ msgstr "إعادة تسمية"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Keep Newest"
-msgstr ""
+msgstr "ابق الاجدد"
 
 #: libcore/FileConflictDialog.vala:193
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "تخطى اذا الاصلي قد تم التعديل عليه كثيرا مؤخرا"
 
 #: libcore/FileConflictDialog.vala:195
 msgid "Replace"
@@ -1098,7 +1092,7 @@ msgstr "لا يمكن إستعادة العنصر من المهملات"
 #: libcore/FileUtils.vala:445
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "لم تتم إعادة التسمية إلى “%s”"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:534
@@ -1116,11 +1110,11 @@ msgstr "أمس في %s"
 #: libcore/FileUtils.vala:550
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "يوم %%A الساعة %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "الخادم لم يستجب في الوقت المحدد"
 
 #: libcore/ProgressInfo.vala:29 libcore/ProgressInfo.vala:30
 #: libcore/ProgressInfo.vala:31
@@ -1128,9 +1122,8 @@ msgid "Preparing"
 msgstr "يحضّر"
 
 #: libcore/StockDialogs.vala:20
-#, fuzzy
 msgid "_Cancel"
-msgstr "ألغِ"
+msgstr "الغاء"
 
 #: libcore/StockDialogs.vala:21
 msgid "Delete"
@@ -1170,11 +1163,11 @@ msgstr "انسخ _على أي حال"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "الموقع الاصلي لم يتم تحديده"
 
 #: libcore/UndoManager.vala:311
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "فتح مجلد المهملات وقم بالإستعادة يدويا"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:40
 msgid "Permanently delete all items from Trash?"
@@ -1185,24 +1178,25 @@ msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"جميع الأشياء في كل مجلدات المهملات، تشمل التي تم تركيبها على أي قرص خارجي، "
+"ستحذف نهائيا."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "حذف كل الأشياء نهائيا من المهملات على هذا القرص؟"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "جميع الأشياء في المهملات على هذا القرص, سيتم حذفها نهائيا."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:104
 msgid "Emptying Trash"
 msgstr "إفراغ المهملات"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
-msgstr "تعذّر وصْل %s"
+msgstr "تعذّر التركيب '%s'"
 
 #: libcore/marlin-file-operations.c:156
 #, c-format
@@ -1210,7 +1204,7 @@ msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "أقل من ثانية"
 msgstr[1] "ثانية واحدة"
-msgstr[2] "ثانيتين"
+msgstr[2] "ثانيتان"
 msgstr[3] "%'d ثوان"
 msgstr[4] "%'d ثانية"
 msgstr[5] "%'d ثانية"
@@ -1219,7 +1213,7 @@ msgstr[5] "%'d ثانية"
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "دقيقة"
+msgstr[0] "اقل من دقيقة"
 msgstr[1] "دقيقة واحدة"
 msgstr[2] "دقيقتان"
 msgstr[3] "%'d دقائق"
@@ -1230,7 +1224,7 @@ msgstr[5] "%'d دقائق"
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "ساعة"
+msgstr[0] "اقل من ساعة"
 msgstr[1] "ساعة واحدة"
 msgstr[2] "ساعتان"
 msgstr[3] "%'d ساعات"
@@ -1334,7 +1328,7 @@ msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المخت�
 
 #: libcore/marlin-file-operations.c:1112
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "الأشياء المحذوفة لن ترسل إلى المهملات ولن تكون قابلة للإستعادة."
 
 #: libcore/marlin-file-operations.c:1146
 #, c-format
@@ -1446,28 +1440,33 @@ msgstr "لا يمكن نقل الملف إلى سلة المهملات أو حذ
 #: libcore/marlin-file-operations.c:1592
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"غير مسموح بحذف أو الارسال إلى سلة المهملات لملفات النظام المخصصة للقراءة فقط."
 
 #: libcore/marlin-file-operations.c:1595
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"غير مسموح بحذف أو الارسال إلى سلة المهملات للملفات داخل المجلدات التي ليس "
+"لديك الإذن بالكتابة عليها."
 
 #: libcore/marlin-file-operations.c:1598
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"غير مسموح لك بالحذف أو الارسال إلى سلة المهملات للمجلدات التي ليس لديك الإذن "
+"بالكتابة عليها."
 
 #: libcore/marlin-file-operations.c:1600
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "لا يمكن تحريك الملف إلى سلة المهملات. تريد حذفها مباشرة؟"
 
 #: libcore/marlin-file-operations.c:1601
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
+msgstr "الملف لا يمكن نقلة إلى سلة المهملات. انظر للأسفل لمزيد من المعلومات."
 
 #: libcore/marlin-file-operations.c:1605
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1477,13 +1476,15 @@ msgstr "لا يمكن نقل الملف إلى سلة المهملات.  أتح�
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "هذا الملف لا يمكن نقله إلى سلة المهملات.  و ربما لن تستطيع حذفه أيضا."
 
 #: libcore/marlin-file-operations.c:1612
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" حذف الملفات سيتسبب بإزالتها نهائيا"
 
 #: libcore/marlin-file-operations.c:1802
 msgid "Trashing Files"
@@ -1951,7 +1952,7 @@ msgstr "لا يمكنك نسخ مجلد إلى نفسه."
 
 #: libcore/marlin-file-operations.c:5459 libcore/marlin-file-operations.c:5467
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "ليس مسموحا بنسخ الملفات إلى سلة المهملات"
 
 #: libcore/marlin-file-operations.c:5607
 msgid "untitled folder"
@@ -1981,12 +1982,12 @@ msgstr "حدث خطأ عند إنشاء المجلد في %F."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
-msgstr ""
+msgstr "اكتب المسار"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
 #, c-format
 msgid "Navigate to %s"
-msgstr ""
+msgstr "انتقل إلى %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
@@ -2000,23 +2001,23 @@ msgstr "النّوع"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "المزيد من النتائج …"
 
 #: libwidgets/View/SearchResults.vala:225
 msgid "In This Folder"
-msgstr ""
+msgstr "في هذا المجلد"
 
 #: libwidgets/View/SearchResults.vala:230
 msgid "Below This Folder"
-msgstr ""
+msgstr "تحت هذا المجلد"
 
 #: libwidgets/View/SearchResults.vala:235
 msgid "Bookmarks"
-msgstr ""
+msgstr "المؤشرات"
 
 #: libwidgets/View/SearchResults.vala:240
 msgid "Recently used"
-msgstr ""
+msgstr "تم استخدامه مؤخرا"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
@@ -2060,19 +2061,19 @@ msgstr "كتلة رسائل النّظام (SMB)"
 
 #: libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr ""
+msgstr "مؤخرا"
 
 #: libwidgets/Resources.vala:67
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
-msgstr ""
+msgstr "إستعادة الكل"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
-msgstr ""
+msgstr "افراغ سلة المهملات"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 #, fuzzy

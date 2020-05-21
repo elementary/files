@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-20 09:16+0000\n"
-"PO-Revision-Date: 2020-04-15 11:10+0000\n"
+"PO-Revision-Date: 2020-05-01 13:10+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -72,7 +72,7 @@ msgstr "תיקון תקלה שמנעה מהצגת מועדי שינויי קבצ
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show file info overlay in List View as well"
-msgstr ""
+msgstr "הצגת חלונית פרטי קובץ בתצוגת הרשימה בנוסף"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:81

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-20 09:16+0000\n"
-"PO-Revision-Date: 2020-04-09 15:21+0000\n"
+"PO-Revision-Date: 2020-05-12 22:10+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -402,7 +402,7 @@ msgstr "Mover para o lixo"
 
 #: src/View/AbstractDirectoryView.vala:1992
 msgid "Delete permanently"
-msgstr "Apagar permanentemente"
+msgstr "Eliminar permanentemente"
 
 #: src/View/AbstractDirectoryView.vala:1997
 msgid "Restore from Trash"
