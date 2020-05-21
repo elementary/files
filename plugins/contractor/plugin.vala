@@ -48,9 +48,9 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files, GOF.AbstractSlot slot) {
+    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files, GOF.AbstractSlot? slot = null) {
         menu = widget as Gtk.Menu;
-        return_if_fail (menu != null);
+        return_if_fail (menu != null && slot != null);
 
         File[] files = null;
         Gee.List<Granite.Services.Contract> contracts = null;

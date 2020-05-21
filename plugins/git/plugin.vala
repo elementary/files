@@ -168,9 +168,9 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> files, GOF.AbstractSlot slot) {
+    public override void context_menu (Gtk.Widget? widget, List<GOF.File> files, GOF.AbstractSlot? slot = null) {
         unowned Gtk.Menu? menu = (Gtk.Menu)widget;
-        if (menu == null) {
+        if (slot == null || menu == null) {
             return;
         }
 
