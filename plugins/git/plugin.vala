@@ -298,7 +298,11 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 
                 if (!task.had_error ()) {
                     //TODO Animation
-                    Timeout.add_seconds (2, () => {info_bar.destroy (); return Source.REMOVE;});
+                    Timeout.add_seconds (2, () => {
+                        slot.set_all_selected (false); // Do not usually want cloned folders to be selected
+                        info_bar.destroy ();
+                        return Source.REMOVE;
+                    });
                 } else {
                     info_bar.message_type = Gtk.MessageType.WARNING;
                 }
