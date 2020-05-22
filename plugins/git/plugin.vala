@@ -249,21 +249,36 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             info_bar.set_message_type (Gtk.MessageType.OTHER);
             //TODO Set correct styling
             var info_message_label = new Gtk.Label (_("Cloning - please wait"));
+            info_message_label.set_ellipsize (Pango.EllipsizeMode.END);
+            info_message_label.max_width_chars = 50;
             info_message_label.hexpand = true;
-            info_message_label.xalign = 0.5f;
+            var spinner = new Gtk.Spinner ();
+            var message_grid = new Gtk.Grid ();
+            message_grid.orientation = Gtk.Orientation.HORIZONTAL;
+            message_grid.column_spacing = 12;
+            message_grid.column_homogeneous = false;
+            message_grid.add (info_message_label);
+            message_grid.add (spinner);
+            message_grid.halign = Gtk.Align.START;
 
             var cancel_button = new Gtk.Button.with_label (_("Cancel"));
+            cancel_button.vexpand = false;
+            cancel_button.halign = Gtk.Align.END;
             cancel_button.clicked.connect (() => {
                 if (!cloner.cancellable.is_cancelled ()) {
                     cloner.cancellable.cancel ();
                 }
             });
 
-            info_bar.get_content_area ().add (info_message_label);
+            info_bar.get_content_area ().add (message_grid);
             info_bar.get_content_area ().add (cancel_button);
             info_bar.show_all ();
             slot.add_extra_widget (info_bar);
+            spinner.start ();
+
             cloner.clone.begin ((obj, res) => {
+                spinner.stop ();
+                spinner.hide ();
                 var task = (Task)res;
                 CloneData* task_data = task.get_task_data ();
                 info_message_label.label = cloner.cancellable.is_cancelled () ? _("Cancelled") : task_data.result;
@@ -284,6 +299,8 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                 if (!task.had_error ()) {
                     //TODO Animation
                     Timeout.add_seconds (2, () => {info_bar.destroy (); return Source.REMOVE;});
+                } else {
+                    info_bar.message_type = Gtk.MessageType.WARNING;
                 }
             });
         });
