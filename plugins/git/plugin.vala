@@ -72,6 +72,49 @@
          string rel_path;
     }
 
+    public struct CloneData {
+        string origin_uri;
+        GLib.File target;
+        string result;
+    }
+
+    public class GitCloner : Object {
+        public string origin_uri {get; construct;}
+        public GLib.File target {get; construct;}
+        public Cancellable cancellable {get; construct;}
+        public string status {get; private set; default = _("Ready");}
+
+        construct {
+            cancellable = new Cancellable ();
+        }
+
+        public GitCloner (string uri, GLib.File location) {
+            Object (origin_uri: uri, target: location);
+        }
+
+        public async void clone (AsyncReadyCallback cb) {
+            var clone_task = new Task (this, cancellable, cb);
+
+            CloneData clone_data = {origin_uri, target};
+
+            clone_task.set_task_data (&clone_data, null);
+            clone_task.set_return_on_cancel (true);
+            clone_task.run_in_thread (task_thread_func);
+            yield;
+        }
+
+        static void task_thread_func (Task task, Object source, CloneData* clone_data, Cancellable? cancellable = null) {
+            try {
+                clone_data.result = _("Cloning cancelled");
+                Ggit.Repository.clone (clone_data.origin_uri, clone_data.target, null);
+                clone_data.result = _("Cloning succeeded");
+                task.return_boolean (true);
+            } catch (Error err) {
+                clone_data.result = _("Cloning failed: %s").printf (err.message);
+                task.return_error (err);
+            }
+        }
+    }
 
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     private HashTable<string, Marlin.GitRepoInfo?> repo_map;
@@ -184,6 +227,8 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             return;
         }
 
+        var target_uri = Uri.unescape_string (target.uri);
+
         /* Clipboard must contain a single git url */
         var clipboard = Gtk.Clipboard.get_default (Gdk.Display.get_default ());
 
@@ -199,34 +244,49 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         add_menuitem (menu, clone_item);
 
         clone_item.activate.connect (() => {
+            var cloner = new GitCloner (uri, target.location);
             var info_bar = new Gtk.InfoBar ();
             info_bar.set_message_type (Gtk.MessageType.OTHER);
             //TODO Set correct styling
-            var message = new Gtk.Label (_("Cloning - please wait"));
-            message.hexpand = true;
-            message.xalign = 0.5f;
-            info_bar.get_content_area ().add (message);
+            var info_message_label = new Gtk.Label (_("Cloning - please wait"));
+            info_message_label.hexpand = true;
+            info_message_label.xalign = 0.5f;
+
+            var cancel_button = new Gtk.Button.with_label (_("Cancel"));
+            cancel_button.clicked.connect (() => {
+                if (!cloner.cancellable.is_cancelled ()) {
+                    cloner.cancellable.cancel ();
+                }
+            });
+
+            info_bar.get_content_area ().add (info_message_label);
+            info_bar.get_content_area ().add (cancel_button);
             info_bar.show_all ();
             slot.add_extra_widget (info_bar);
+            cloner.clone.begin ((obj, res) => {
+                var task = (Task)res;
+                CloneData* task_data = task.get_task_data ();
+                info_message_label.label = cloner.cancellable.is_cancelled () ? _("Cancelled") : task_data.result;
+                cancel_button.label = _("Close");
+                cancel_button.clicked.connect (() => {
+                    info_bar.destroy ();
+                });
 
-            Idle.add (() => {
-                //TODO Stop cloning blocking the interface and make cancellable (if possible)
-                clone_repository (uri, target.location);
-                info_bar.destroy ();
-                return false;
+                if (cloner.cancellable.is_cancelled ()) {
+                    var git_file = File.new_for_uri (string.join (Path.DIR_SEPARATOR_S, target_uri, ".git"));
+                    try {
+                        git_file.trash (null);
+                    } catch (Error e) {
+                        warning ("Error trying to trash git folder %s", e.message);
+                    }
+                }
+
+                if (!task.had_error ()) {
+                    //TODO Animation
+                    Timeout.add_seconds (2, () => {info_bar.destroy (); return Source.REMOVE;});
+                }
             });
         });
-    }
-
-    private void clone_repository (string uri, GLib.File location) {
-        try {
-            Ggit.Repository.clone (uri, location, null);
-            //TODO Switch into folder after cloning
-        } catch (Error err) {
-            PF.Dialogs.show_error_dialog (_("There was an error cloning the git repository at %s").printf (uri),
-                                          err.message,
-                                          (Gtk.Window)window);
-        }
     }
 
     private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
