@@ -101,6 +101,7 @@
             clone_task.set_return_on_cancel (true);
             clone_task.run_in_thread (task_thread_func);
             yield;
+            /* Any code placed here is never reached */
         }
 
         static void task_thread_func (Task task, Object source, CloneData* clone_data, Cancellable? cancellable = null) {
@@ -233,14 +234,18 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         var clipboard = Gtk.Clipboard.get_default (Gdk.Display.get_default ());
 
         string? uri = clipboard.wait_for_text ();
+        var parts = uri.split (Path.DIR_SEPARATOR_S);
+        var basename = parts[parts.length - 1];
 
         if (uri == null || !uri.has_suffix (".git")) {
             return;
         }
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
-
-        var clone_item = new Gtk.MenuItem.with_label (_("Clone into folder"));
+        bool folder_selected = target.uri != slot.uri;
+        var clone_item = new Gtk.MenuItem ();
+        clone_item.label = folder_selected ? (_("Clone `%s` into folder").printf (basename))
+                                           : (_("Clone `%s` here").printf (basename));
         add_menuitem (menu, clone_item);
 
         clone_item.activate.connect (() => {
@@ -248,30 +253,34 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             var info_bar = new Gtk.InfoBar ();
             info_bar.set_message_type (Gtk.MessageType.OTHER);
             //TODO Set correct styling
-            var info_message_label = new Gtk.Label (_("Cloning - please wait"));
-            info_message_label.set_ellipsize (Pango.EllipsizeMode.END);
-            info_message_label.max_width_chars = 50;
-            info_message_label.hexpand = true;
+            var info_message_label = new Gtk.Label (_("Cloning %s").printf (uri));
             var spinner = new Gtk.Spinner ();
             var message_grid = new Gtk.Grid ();
-            message_grid.orientation = Gtk.Orientation.HORIZONTAL;
             message_grid.column_spacing = 12;
             message_grid.column_homogeneous = false;
-            message_grid.add (info_message_label);
-            message_grid.add (spinner);
+            message_grid.attach (info_message_label, 0, 0, 1, 1);
+            message_grid.attach (spinner, 1, 0, 1, 1);
             message_grid.halign = Gtk.Align.START;
 
-            var cancel_button = new Gtk.Button.with_label (_("Cancel"));
-            cancel_button.vexpand = false;
-            cancel_button.halign = Gtk.Align.END;
-            cancel_button.clicked.connect (() => {
-                if (!cloner.cancellable.is_cancelled ()) {
-                    cloner.cancellable.cancel ();
+            info_bar.get_content_area ().add (message_grid);
+            var action_button = info_bar.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+
+            info_bar.response.connect ((res) => {
+                switch (res) {
+                    case Gtk.ResponseType.CANCEL:
+                        if (!cloner.cancellable.is_cancelled ()) {
+                            cloner.cancellable.cancel ();
+                        }
+                        break;
+
+                    case Gtk.ResponseType.CLOSE:
+                        info_bar.destroy ();
+                        break;
+                    default:
+                        break;
                 }
             });
 
-            info_bar.get_content_area ().add (message_grid);
-            info_bar.get_content_area ().add (cancel_button);
             info_bar.show_all ();
             slot.add_extra_widget (info_bar);
             spinner.start ();
@@ -279,13 +288,12 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             cloner.clone.begin ((obj, res) => {
                 spinner.stop ();
                 spinner.hide ();
+                action_button.hide ();
+                info_bar.show_close_button = true;
+
                 var task = (Task)res;
                 CloneData* task_data = task.get_task_data ();
                 info_message_label.label = cloner.cancellable.is_cancelled () ? _("Cancelled") : task_data.result;
-                cancel_button.label = _("Close");
-                cancel_button.clicked.connect (() => {
-                    info_bar.destroy ();
-                });
 
                 if (cloner.cancellable.is_cancelled ()) {
                     var git_file = File.new_for_uri (string.join (Path.DIR_SEPARATOR_S, target_uri, ".git"));
