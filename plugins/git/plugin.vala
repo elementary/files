@@ -75,12 +75,12 @@
     public struct CloneData {
         string origin_uri;
         GLib.File target;
-        string result;
     }
 
     public class GitCloner : Object {
         public string origin_uri {get; construct;}
         public GLib.File target {get; construct;}
+        public bool create_root {get; construct;}
         public Cancellable cancellable {get; construct;}
         public string status {get; private set; default = _("Ready");}
 
@@ -88,14 +88,32 @@
             cancellable = new Cancellable ();
         }
 
-        public GitCloner (string uri, GLib.File location) {
-            Object (origin_uri: uri, target: location);
+        public GitCloner (string uri, GLib.File location, bool create_root = false) {
+            Object (origin_uri: uri, target: location, create_root: create_root);
         }
 
         public async void clone (AsyncReadyCallback cb) {
             var clone_task = new Task (this, cancellable, cb);
-
             CloneData clone_data = {origin_uri, target};
+
+            if (create_root) {
+                var root_path = string.join (Path.DIR_SEPARATOR_S,
+                                             target.get_path (),
+                                             Path.get_basename (origin_uri).replace (".git", ""));
+
+                Posix.mode_t mode = 0775;
+                int result = Posix.mkdir (root_path, mode);
+                if (result >= 0) {
+                    /* mkdir needed a path but GGit.Repository.clone () needs a uri */
+                    clone_data.target = GLib.File.new_for_uri (PF.FileUtils.sanitize_path (root_path));
+                } else {
+                    /* For some reason setting a new clone_data.result here does not work */
+                    clone_task.return_new_error (IOError.quark (),
+                                                 IOError.FAILED,
+                                                 _("Could not create repository root directory %s").printf (root_path));
+                    return;
+                }
+            }
 
             clone_task.set_task_data (&clone_data, null);
             clone_task.set_return_on_cancel (true);
@@ -106,12 +124,9 @@
 
         static void task_thread_func (Task task, Object source, CloneData* clone_data, Cancellable? cancellable = null) {
             try {
-                clone_data.result = _("Cloning cancelled");
                 Ggit.Repository.clone (clone_data.origin_uri, clone_data.target, null);
-                clone_data.result = _("Cloning succeeded");
                 task.return_boolean (true);
             } catch (Error err) {
-                clone_data.result = _("Cloning failed: %s").printf (err.message);
                 task.return_error (err);
             }
         }
@@ -234,8 +249,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         var clipboard = Gtk.Clipboard.get_default (Gdk.Display.get_default ());
 
         string? uri = clipboard.wait_for_text ();
-        var parts = uri.split (Path.DIR_SEPARATOR_S);
-        var basename = parts[parts.length - 1];
+        var basename = Path.get_basename (uri);
 
         if (uri == null || !uri.has_suffix (".git")) {
             return;
@@ -249,7 +263,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         add_menuitem (menu, clone_item);
 
         clone_item.activate.connect (() => {
-            var cloner = new GitCloner (uri, target.location);
+            var cloner = new GitCloner (uri, target.location, !folder_selected);
             var info_bar = new Gtk.InfoBar ();
             info_bar.set_message_type (Gtk.MessageType.OTHER);
             //TODO Set correct styling
@@ -290,11 +304,9 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                 spinner.hide ();
                 action_button.hide ();
                 info_bar.show_close_button = true;
-
                 var task = (Task)res;
                 CloneData* task_data = task.get_task_data ();
-                info_message_label.label = cloner.cancellable.is_cancelled () ? _("Cancelled") : task_data.result;
-
+                info_message_label.label = cloner.cancellable.is_cancelled () ? _("Cancelled") : "";
                 if (cloner.cancellable.is_cancelled ()) {
                     var git_file = File.new_for_uri (string.join (Path.DIR_SEPARATOR_S, target_uri, ".git"));
                     try {
@@ -305,6 +317,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                 }
 
                 if (!task.had_error ()) {
+                    info_message_label.label = _("Cloning succeeded");
                     //TODO Animation
                     Timeout.add_seconds (2, () => {
                         slot.set_all_selected (false); // Do not usually want cloned folders to be selected
@@ -312,6 +325,12 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                         return Source.REMOVE;
                     });
                 } else {
+                    try {
+                        task.propagate_pointer ();
+                    } catch (Error e) {
+                        info_message_label.label = e.message;
+                    }
+
                     info_bar.message_type = Gtk.MessageType.WARNING;
                 }
             });
