@@ -305,7 +305,6 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                 action_button.hide ();
                 info_bar.show_close_button = true;
                 var task = (Task)res;
-                CloneData* task_data = task.get_task_data ();
                 info_message_label.label = cloner.cancellable.is_cancelled () ? _("Cancelled") : "";
                 if (cloner.cancellable.is_cancelled ()) {
                     var git_file = File.new_for_uri (string.join (Path.DIR_SEPARATOR_S, target_uri, ".git"));
