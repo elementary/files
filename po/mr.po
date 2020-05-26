@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 09:16+0000\n"
+"POT-Creation-Date: 2020-05-26 18:55+0000\n"
 "PO-Revision-Date: 2020-03-23 19:15+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit यूआरआयसह वापरले जाऊ शकत नाही."
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:136 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "फाइल ऑपरेशन्स"
 
@@ -369,7 +369,7 @@ msgid "Open in"
 msgstr "मध्ये उघडा"
 
 #: src/View/AbstractDirectoryView.vala:1947
-#: src/View/Widgets/BreadcrumbsEntry.vala:487
+#: src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open with"
 msgstr "उघडण्यासाठी वापरा"
 
@@ -696,20 +696,20 @@ msgstr "(_U)अनमाउंट करा"
 msgid "_Eject"
 msgstr "(_E)बाहेर काढा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "पाथ शोधा अथवा टाईप करा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "नवीन टॅबमध्ये उघडा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "नवीन विंडोमध्ये उघडा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:494
+#: src/View/Widgets/BreadcrumbsEntry.vala:496
 msgid "Open in Other Application…"
 msgstr "अन्य अप्लिकेशनमध्ये उघडा…"
 
@@ -1874,12 +1874,12 @@ msgstr "एक पाथ टाइप करा"
 msgid "Navigate to %s"
 msgstr "%s वर नेव्हिगेट करा"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:290
 #, c-format
 msgid "Go to %s"
 msgstr "%sला जा"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:368
 msgid "Type Path"
 msgstr "प्रकार"
 
@@ -1887,19 +1887,19 @@ msgstr "प्रकार"
 msgid "More Results …"
 msgstr "अधिक परिणाम …"
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "या फोल्डरमध्ये"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
 msgstr "या फोल्डर खाली"
 
-#: libwidgets/View/SearchResults.vala:235
+#: libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "बुकमार्क"
 
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:243
 msgid "Recently used"
 msgstr "अलीकडे वापरलेले"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 09:16+0000\n"
+"POT-Creation-Date: 2020-05-26 18:55+0000\n"
 "PO-Revision-Date: 2020-05-25 15:11+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan ikke bruges med URI'er."
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:136 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Filhandlinger"
 
@@ -375,7 +375,7 @@ msgid "Open in"
 msgstr "Åben i"
 
 #: src/View/AbstractDirectoryView.vala:1947
-#: src/View/Widgets/BreadcrumbsEntry.vala:487
+#: src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open with"
 msgstr "Åbn med"
 
@@ -702,20 +702,20 @@ msgstr "_Afmontér"
 msgid "_Eject"
 msgstr "_Skub ud"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Søg eller Skriv Sti"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Åbn i nyt faneblad"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Åbn i nyt vindue"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:494
+#: src/View/Widgets/BreadcrumbsEntry.vala:496
 msgid "Open in Other Application…"
 msgstr "Åbn i en Anden Applikation…"
 
@@ -1897,12 +1897,12 @@ msgstr "Indtast en sti"
 msgid "Navigate to %s"
 msgstr "Navigér til %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:290
 #, c-format
 msgid "Go to %s"
 msgstr "Gå til %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:368
 msgid "Type Path"
 msgstr "Vælg en Sti"
 
@@ -1910,19 +1910,19 @@ msgstr "Vælg en Sti"
 msgid "More Results …"
 msgstr "Flere Resultater…"
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "I denne mappe"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
 msgstr "Under denne mappe"
 
-#: libwidgets/View/SearchResults.vala:235
+#: libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "Bogmærker"
 
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:243
 msgid "Recently used"
 msgstr "Senest anvendte"
 

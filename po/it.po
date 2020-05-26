@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 09:16+0000\n"
+"POT-Creation-Date: 2020-05-26 18:55+0000\n"
 "PO-Revision-Date: 2019-07-03 01:28+0000\n"
 "Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -58,7 +58,7 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit non può essere usato con degli URI."
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:136 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Operazioni sui file"
 
@@ -382,7 +382,7 @@ msgid "Open in"
 msgstr "Apri con"
 
 #: src/View/AbstractDirectoryView.vala:1947
-#: src/View/Widgets/BreadcrumbsEntry.vala:487
+#: src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open with"
 msgstr "Apri con"
 
@@ -712,20 +712,20 @@ msgstr "_Smonta"
 msgid "_Eject"
 msgstr "_Espelli"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Ricerca o inserisci il percorso"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Apri in una nuova scheda"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Apri in una nuova finestra"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:494
+#: src/View/Widgets/BreadcrumbsEntry.vala:496
 msgid "Open in Other Application…"
 msgstr "Apri in un'altra applicazione…"
 
@@ -1916,12 +1916,12 @@ msgstr "Digita un percorso"
 msgid "Navigate to %s"
 msgstr "Passa a %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:290
 #, c-format
 msgid "Go to %s"
 msgstr "Vai a %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:368
 msgid "Type Path"
 msgstr "Digita un percorso"
 
@@ -1929,19 +1929,19 @@ msgstr "Digita un percorso"
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "In questa cartella"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
 msgstr "In questa cartella"
 
-#: libwidgets/View/SearchResults.vala:235
+#: libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "Segnalibri"
 
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:243
 msgid "Recently used"
 msgstr "Utilizzati di recente"
 

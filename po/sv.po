@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 09:16+0000\n"
+"POT-Creation-Date: 2020-05-26 18:55+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan inte användas med URI:er."
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:136 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Filåtgärder"
 
@@ -381,7 +381,7 @@ msgid "Open in"
 msgstr "Öppna med"
 
 #: src/View/AbstractDirectoryView.vala:1947
-#: src/View/Widgets/BreadcrumbsEntry.vala:487
+#: src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open with"
 msgstr "Öppna med"
 
@@ -711,20 +711,20 @@ msgstr "_Avmontera"
 msgid "_Eject"
 msgstr "Mata _ut"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Sök eller skriv sökväg"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Öppna i ny flik"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Öppna i nytt fönster"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:494
+#: src/View/Widgets/BreadcrumbsEntry.vala:496
 msgid "Open in Other Application…"
 msgstr "Öppna med annat program…"
 
@@ -1911,12 +1911,12 @@ msgstr "Skriv sökväg"
 msgid "Navigate to %s"
 msgstr "Navigera till %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:290
 #, c-format
 msgid "Go to %s"
 msgstr "Gå till %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:368
 #, fuzzy
 msgid "Type Path"
 msgstr "Skriv sökväg"
@@ -1925,19 +1925,19 @@ msgstr "Skriv sökväg"
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "I denna mapp"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
 msgstr "Under denna mapp"
 
-#: libwidgets/View/SearchResults.vala:235
+#: libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "Bokmärken"
 
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:243
 msgid "Recently used"
 msgstr "Senaste använda"
 
