@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-03-27 09:36+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,18 +68,22 @@ msgstr "किरकोळ अपडेट्स:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
+"मुख्यपृष्ठ प्लेसहोल्डर दर्शवित असलेल्या पथबारमधील अवांछनीय क्षेत्राशी संबंधि"
+"त समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr ""
+"फाइल दुरुस्तीच्या वेळा दर्शविण्यापासून प्रतिबंधित करणार्‍या समस्येचे निराकरण "
+"करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Show file info overlay in List View as well"
-msgstr ""
+msgstr "फाईल माहिती आच्छादन सूची दृश्यामध्येही दाखवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Show an error message when attempting to open trashed files"
-msgstr ""
+msgstr "कचर्‍यातील फायली उघडण्याचा प्रयत्न करताना त्रुटी संदेश दाखवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:83
