@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-05-25 15:11+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
 "Language: da\n"
@@ -345,13 +345,15 @@ msgstr "Kan ikke eksekvere denne fil"
 #: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "\"%s\" skal flyttes ud af Papirkurven før den kan åbnes"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Filer i Papirkurven kan ikke åbnes. For at åbne denne fil, skal den flyttes "
+"til et andet sted."
 
 #: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
@@ -1351,6 +1353,7 @@ msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 "Der opstod en fejl ved indhenting af informationer om filerne i mappen \"%s\""
+"."
 
 #: libcore/marlin-file-operations.c:1256 libcore/marlin-file-operations.c:3062
 msgid "_Skip files"
