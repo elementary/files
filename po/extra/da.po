@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2019-02-03 11:55+0000\n"
-"Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
-"Language-Team: Danish <https://weblate.elementary.io/projects/files/extra/da/"
-">\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
+"Language-Team: Danish <https://l10n.elementary.io/projects/files/extra/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -70,26 +69,24 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:75
 #: data/io.elementary.files.appdata.xml.in.in:89
-#, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
-msgstr "Mindre fejlrettelser"
+msgstr "Mindre fejlrettelser:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
-msgstr ""
+msgstr "Ret område i stien, som viser hjemmemappepladsen"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix an issue that prevented file modification times from showing"
-msgstr ""
+msgstr "Løs et problem, der forhindrede filændringstider i at blive vist"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Show file info overlay in List View as well"
-msgstr ""
+msgstr "Vis også filinfo-overlay i Listevisning"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Show an error message when attempting to open trashed files"
-msgstr ""
+msgstr "Vis en fejl meddelelse når der prøves at åbne slettede filer"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:83
@@ -105,18 +102,16 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:231
 #: data/io.elementary.files.appdata.xml.in.in:239
 #: data/io.elementary.files.appdata.xml.in.in:271
-#, fuzzy
 msgid "Updated translations"
-msgstr "Nye oversættelser"
+msgstr "Opdaterede oversættelser"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
-#, fuzzy
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "Ret et nedbrud ved gendannelse af elementer fra papirkurven"
+msgstr "Ret et nedbrud når et enhedsikon kommer fra en fil"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 msgid "Fix device icon sometimes missing"
-msgstr ""
+msgstr "Ret at enhedsikonet nogle gange mangler"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix occasional view freeze after renaming"
