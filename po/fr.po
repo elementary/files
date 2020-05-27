@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-03-27 09:36+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -348,13 +348,15 @@ msgstr "Ce fichier ne peut pas être exécuté"
 #: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "« %s » doit être déplacé de la corbeille pour pouvoir être ouvert"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Les fichiers dans la corbeille ne peuvent pas être ouverts. Pour pouvoir "
+"ouvrir ce fichier, il doit être déplacé en dehors."
 
 #: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
