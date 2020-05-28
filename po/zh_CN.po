@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-05-16 11:11+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -339,13 +339,13 @@ msgstr "不能执行此文件"
 #: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "在打开 “%s” 前需要将其移出回收站"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
-msgstr ""
+msgstr "无法直接打开回收站中的文件。要打开此文件，请将其移出回收站。"
 
 #: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
