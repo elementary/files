@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-05-11 19:11+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,6 +77,8 @@ msgstr "Actualizaciones menores:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
+"Se reparó la zona no editable de la barra de ruta que muestra el marcador "
+"sustitutorio de la carpeta personal"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix an issue that prevented file modification times from showing"
@@ -91,6 +93,7 @@ msgstr "Ahora se muestra la información sobre archivos en la vista de lista"
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Show an error message when attempting to open trashed files"
 msgstr ""
+"Se muestra un mensaje de error al intentar abrir archivos de la papelera"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:83
@@ -376,7 +379,7 @@ msgstr "Pequeños ajustes de espacio en la barra de ubicación"
 
 #: data/io.elementary.files.appdata.xml.in.in:180
 msgid "Fix F2 renaming behavior"
-msgstr "Corrección del comportamiento de renombrar con F2"
+msgstr "Corrección del comportamiento de cambiar nombre con F2"
 
 #: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Minor spacing adjustments to location breadcrumbs"
@@ -445,16 +448,16 @@ msgstr "Corrección del bloqueo al abrir varios archivos de vídeo"
 #: data/io.elementary.files.appdata.xml.in.in:216
 msgid "Fix some timing issues around adding and removing files"
 msgstr ""
-"Corrección de algunos problemas de sincronización en la adición y "
-"eliminación de archivos"
+"Corrección de algunos problemas de sincronización al añadir y eliminar "
+"archivos"
 
 #: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Meson: fix missing library headers"
-msgstr "Meson: correcciones de las cabeceras de biblioteca que faltan"
+msgstr "Meson: correcciones de las cabeceras de biblioteca faltantes"
 
 #: data/io.elementary.files.appdata.xml.in.in:218
 msgid "Fix color tag display"
-msgstr "Corrección de la pantalla de etiquetas en color"
+msgstr "Se muestran adecuadamente las etiquetas de color"
 
 #: data/io.elementary.files.appdata.xml.in.in:219
 msgid "Show reserved space in Properties window"
@@ -496,11 +499,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:255
 msgid "Style error dialogs"
-msgstr "Diálogos de error de estilo"
+msgstr "Se dio estilo a los diálogos de error"
 
 #: data/io.elementary.files.appdata.xml.in.in:256
 msgid "Right click fixes"
-msgstr "Correcciones del clic derecho"
+msgstr "Correcciones al pulsar con el botón secundario del ratón"
 
 #: data/io.elementary.files.appdata.xml.in.in:257
 msgid "Reload recent view when privacy setting changes"
