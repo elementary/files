@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 21:40+0000\n"
+"POT-Creation-Date: 2020-05-31 21:50+0000\n"
 "PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
@@ -510,13 +510,13 @@ msgid "Untitled %s"
 msgstr "Névtelen %s"
 
 #: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
 #: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3050
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
@@ -528,7 +528,7 @@ msgstr "A kukában levő fájlok nem másolhatóak"
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 21:40+0000\n"
+"POT-Creation-Date: 2020-05-31 21:50+0000\n"
 "PO-Revision-Date: 2020-03-27 09:36+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -496,13 +496,13 @@ msgid "Untitled %s"
 msgstr "Adsız %s"
 
 #: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "Dosyalar buradan silinemez"
 
 #: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3050
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "Bu yolu değiştirebilmek için gereken yetkiye sahip değilsiniz"
 
@@ -514,7 +514,7 @@ msgstr "Çöpün içindeki dosyalar kopyalanamaz"
 msgid "Cutting the selection instead"
 msgstr "Onun yerine seçilen kesiliyor"
 
-#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "Dosyalar buraya yapıştırılamaz"
 

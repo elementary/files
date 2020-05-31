@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 21:40+0000\n"
+"POT-Creation-Date: 2020-05-31 21:50+0000\n"
 "PO-Revision-Date: 2020-03-24 22:09+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -498,13 +498,13 @@ msgid "Untitled %s"
 msgstr "%s zonder naam"
 
 #: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "Kan de bestanden hier niet verwijderen"
 
 #: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3050
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "U heeft geen toestemming om hier wijzigingen aan te brengen"
 
@@ -516,7 +516,7 @@ msgstr "Bestanden in de prullenbak kunnen niet gekopieerd worden"
 msgid "Cutting the selection instead"
 msgstr "De geselecteerde objecten worden in plaats daarvan geknipt"
 
-#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "Kan bestanden hier niet plakken"
 

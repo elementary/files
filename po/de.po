@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 21:40+0000\n"
+"POT-Creation-Date: 2020-05-31 21:50+0000\n"
 "PO-Revision-Date: 2019-12-27 13:24+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
@@ -505,13 +505,13 @@ msgid "Untitled %s"
 msgstr "Ohne Namen %s"
 
 #: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "Dateien können von diesem Ort nicht entfernt werden"
 
 #: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3050
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr ""
 "Sie haben nicht die notwendigen Zugriffsrechte, um an diesem Ort Änderungen "
@@ -525,7 +525,7 @@ msgstr "Dateien können nicht aus dem Papierkorb kopiert werden"
 msgid "Cutting the selection instead"
 msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
 
-#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "An diesem Ort können keine Dateien eingefügt werden"
 
