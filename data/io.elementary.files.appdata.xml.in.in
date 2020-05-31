@@ -65,6 +65,7 @@
           <li>Fix uneditable area in pathbar which is showing home folder placeholder</li>
           <li>Fix an issue that prevented file modification times from showing</li>
           <li>Show file info overlay in List View as well</li>
+          <li>Fix color tags disappearing when thumbnails hidden</li>
           <li>Show an error message when attempting to open trashed files</li>
           <li>Updated translations</li>
         </ul>
