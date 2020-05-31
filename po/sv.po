@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 19:27+0000\n"
+"POT-Creation-Date: 2020-05-31 21:40+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -505,26 +505,26 @@ msgstr "Ny"
 msgid "Untitled %s"
 msgstr "Namnlös %s"
 
-#: src/View/AbstractDirectoryView.vala:2865
-#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:2870
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "Cannot remove files from here"
 msgstr "Det går inte att ta bort filer härifrån"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3045
-#: src/View/AbstractDirectoryView.vala:3061
+#: src/View/AbstractDirectoryView.vala:2871
+#: src/View/AbstractDirectoryView.vala:3050
+#: src/View/AbstractDirectoryView.vala:3066
 msgid "You do not have permission to change this location"
 msgstr "Du har inte behörighet att ändra den här platsen"
 
-#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3025
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan inte kopiera filer som ligger i papperskorgen"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
 msgstr "Klipper ut markeringen istället"
 
-#: src/View/AbstractDirectoryView.vala:3044
+#: src/View/AbstractDirectoryView.vala:3049
 msgid "Cannot paste files here"
 msgstr "Kan inte kopiera filer hit"
 
