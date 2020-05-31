@@ -228,15 +228,18 @@ namespace Marlin.View.Chrome {
          protected virtual bool on_button_release_event (Gdk.EventButton event) {
             if (icon_event (event)) {
                 return false;
-            } else {
+            } else if (placeholder == "") {
+                /* Only activate breadcrumbs when they are showing and not hidden by placeholder */
                 reset_elements_states ();
                 var el = get_element_from_coordinates ((int) event.x, (int) event.y);
                 if (el != null) {
                     activate_path (get_path_from_element (el));
-                } else {
-                    grab_focus ();
+                    return true;
                 }
             }
+
+            grab_focus ();
+
             return true;
         }
 
@@ -279,9 +282,11 @@ namespace Marlin.View.Chrome {
             if (secondary_icon_pixbuf != null) {
                 tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             }
+
+
             set_tooltip_markup ("");
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
-            if (el != null) {
+            if (el != null && placeholder == null) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {

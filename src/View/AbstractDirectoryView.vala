@@ -824,7 +824,12 @@ namespace FM {
                     }
                 }
             } else {
-                warning ("Cannot open file in trash");
+                PF.Dialogs.show_error_dialog (
+                    ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+                    _("“%s” must be moved from Trash before opening").printf (file.basename),
+                    _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
+                    window
+                );
             }
         }
 
