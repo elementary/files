@@ -3034,6 +3034,7 @@ namespace FM {
                         if (!in_recent && is_writable) {
                             if (selected_files.first () != null && selected_files.first ().next != null) {
                                 //Ignore if multiple files selected
+                                Gdk.beep ();
                                 warning ("Cannot paste into a multiple selection");
                             } else {
                                 //None or one file selected. Paste into selected file else base directory
