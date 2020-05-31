@@ -58,7 +58,21 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.4.2" date="2020-03-05" urgency="medium">
+    <release version="4.4.3" date="2020-04-08" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Paste into a selected folder when using Ctrl + V</li>
+          <li>Fix uneditable area in pathbar which is showing home folder placeholder</li>
+          <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Show file info overlay in List View as well</li>
+          <li>Fix color tags disappearing when thumbnails hidden</li>
+          <li>Show an error message when attempting to open trashed files</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.4.2" date="2020-04-03" urgency="medium">
       <description>
         <p>Minor updates:</p>
         <ul>
