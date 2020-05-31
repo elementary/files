@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-31 22:24+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-06-01 22:58+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,11 +70,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Improvements:"
-msgstr ""
+msgstr "Mejoras:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
+msgstr "Puede utilizar Ctrl + V para pegar en una carpeta que esté seleccionada"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
@@ -90,7 +90,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix size of restored tiled window"
-msgstr ""
+msgstr "Se corrigió el tamaño de la ventana en mosaico tras restaurarse"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Show file info overlay in List View as well"
@@ -98,11 +98,12 @@ msgstr "Ahora se muestra la información sobre archivos en la vista de lista"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Traverse search results with Tab key"
-msgstr ""
+msgstr "Puede recorrer los resultados de la búsqueda con la tecla Tab"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr ""
+"Las etiquetas de color ya no desaparecen cuando las miniaturas están ocultas"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Show an error message when attempting to open trashed files"
@@ -135,7 +136,7 @@ msgstr "Actualizaciones menores:"
 msgid "Fix crash when a device icon is coming from a file"
 msgstr ""
 "Corrección del cierre inesperado producido cuando un icono de dispositivo "
-"proviente de un archivo"
+"proviene de un archivo"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Fix device icon sometimes missing"
