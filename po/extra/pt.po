@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-04-21 19:10+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -76,6 +76,8 @@ msgstr "Pequenas atualizações:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
+"Corrige a área não editável na barra de caminho que mostra o espaço "
+"reservado da pasta pessoal"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix an issue that prevented file modification times from showing"
@@ -90,7 +92,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Show an error message when attempting to open trashed files"
-msgstr ""
+msgstr "Mostrar uma mensagem de erro ao tentar abrir ficheiros do lixo"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:83
