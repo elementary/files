@@ -1,3 +1,54 @@
+pantheon-files (4.4.3) bionic; urgency=medium
+
+  * Release 4.4.3 (#1338)
+  * Update translation files
+  * Update translation template
+  * Implement copy/paste of images (#1290)
+  * Update translation files
+  * Update translation template
+  * Tab through search results (#1296)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Restore tiled window correctly (#1266)
+  * Add unit test step to github main action (#1238)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Allow keyboard paste into selected folder (#1259)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Show color-tag regardless of thumbnail setting (#1309)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Show warning dialog on attempt to open file in trash (#1131)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Fix home folder placeholder click (#1329)
+  * Disconnect progress info signal before removing from managed info
+    list. (#1260)
+  * Make Unity and Zeitgeist feature options (#1313)
+  * BreadcrumbsEntry: Improve placeholder positioning and fallback color
+    (#1317)
+  * filechooser-module: Verify that the AppInfo isn't null before usage
+    (#1304)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Show overlaybar in all view modes. (#1288)
+  * Remove unused ui hook from plugin interface (#1287)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Update io.elementary.files.appdata.xml.in.in
+  * Check whether more than one selected file before creating info panel
+    (#1280)
+
+ -- Cody Garver <cody@elementary.io>  Mon, 01 Jun 2020 23:37:20 +0000
+
 pantheon-files (4.4.2) bionic; urgency=medium
 
   * release 4.4.2 (#1277)
