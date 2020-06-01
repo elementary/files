@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-31 22:24+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-06-01 22:58+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/extra/pt_BR/>\n"
@@ -69,11 +69,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Improvements:"
-msgstr ""
+msgstr "Melhorias:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
+msgstr "Cole em uma pasta selecionada ao usar Ctrl + V"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
@@ -89,7 +89,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Fix size of restored tiled window"
-msgstr ""
+msgstr "Corrigir tamanho da janela lado a lado restaurada"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Show file info overlay in List View as well"
@@ -98,11 +98,12 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Traverse search results with Tab key"
-msgstr ""
+msgstr "Cruzar os resultados da pesquisa com a tecla Tab"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr ""
+"Corrija as tags coloridas que desaparecem quando as miniaturas ficam ocultas"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Show an error message when attempting to open trashed files"
