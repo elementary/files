@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 22:36+0000\n"
-"PO-Revision-Date: 2020-03-23 17:41+0000\n"
+"POT-Creation-Date: 2020-05-31 22:14+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
 ">\n"
@@ -28,7 +28,7 @@ msgstr "Mostra la versió del programa."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Obre un o més URI, cada un en una pestanya diferent"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1855
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "Finestra nova"
 
@@ -58,7 +58,7 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit no es pot utilitzar amb els URI."
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:136 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Operacions sobre fitxers"
 
@@ -120,7 +120,7 @@ msgid "Set as default"
 msgstr "Estableix com a predeterminada"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1965 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Propietats"
 
@@ -200,7 +200,7 @@ msgid "Original Location:"
 msgstr "Ubicació original:"
 
 #: src/Dialogs/PropertiesWindow.vala:638
-#: src/View/AbstractDirectoryView.vala:1933
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr "Una altra aplicació…"
 
@@ -241,7 +241,7 @@ msgstr[1] "%u fitxers"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -294,7 +294,7 @@ msgstr "No s'han pogut obrir els URI"
 msgid "Could not open files or URIs with this app"
 msgstr "No s'han pogut obrir els fitxers o URI amb aquesta aplicació"
 
-#: src/View/Window.vala:557 src/View/Window.vala:567
+#: src/View/Window.vala:546 src/View/Window.vala:556
 msgid "(as Administrator)"
 msgstr "(com a Administrador)"
 
@@ -302,11 +302,11 @@ msgstr "(com a Administrador)"
 msgid "Filename"
 msgstr "Nom del fitxer"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "Mida"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "Tipus"
 
@@ -314,7 +314,7 @@ msgstr "Tipus"
 msgid "Modified"
 msgstr "Modificat"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:406
 msgid "This Folder Does Not Exist"
 msgstr "Aquesta carpeta no existeix"
 
@@ -337,229 +337,243 @@ msgid "Failed to create the folder"
 msgstr "Ha fallat crear la carpeta."
 
 #: src/View/AbstractDirectoryView.vala:820
-#: src/View/AbstractDirectoryView.vala:1127
+#: src/View/AbstractDirectoryView.vala:1132
 msgid "Cannot execute this file"
 msgstr "No es pot executar aquest fitxer."
 
-#: src/View/AbstractDirectoryView.vala:841
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:830
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr "El fitxer %s s'ha de treure de la paperera abans d'obrir-lo."
+
+#: src/View/AbstractDirectoryView.vala:831
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+"No es poden obrir els fitxers que hi ha a la paperera. Per obrir aquest "
+"fitxer, cal moure'l a un altre lloc."
+
+#: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
 msgstr "No es pot obrir aquest fitxer"
 
-#: src/View/AbstractDirectoryView.vala:854
+#: src/View/AbstractDirectoryView.vala:859
 msgid "Cannot identify file type to open"
 msgstr "No es pot identificar el tipus de fitxer per obrir"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1578
 msgid "Cannot drop this file"
 msgstr "No es pot deixar anar aquest fitxer"
 
-#: src/View/AbstractDirectoryView.vala:1574
+#: src/View/AbstractDirectoryView.vala:1579
 msgid "Invalid file name provided"
 msgstr "S’ha proporcionat un nom de fitxer no vàlid"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
 msgstr "Pestanya nova"
 
-#: src/View/AbstractDirectoryView.vala:1869
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "Executa"
 
-#: src/View/AbstractDirectoryView.vala:1876
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "Obre amb %s"
 
-#: src/View/AbstractDirectoryView.vala:1945
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "Obre amb"
 
-#: src/View/AbstractDirectoryView.vala:1947
-#: src/View/Widgets/BreadcrumbsEntry.vala:487
+#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open with"
 msgstr "Obre amb"
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr "Enganxa"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1963
 msgid "Bookmark"
 msgstr "Afegeix a les adreces d'interès"
 
-#: src/View/AbstractDirectoryView.vala:1973
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr "Retalla"
 
-#: src/View/AbstractDirectoryView.vala:1980
+#: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
 msgstr "Copia"
 
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
 msgstr "Mou a la paperera"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
 msgstr "Suprimeix permanentment"
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "Restaura de la paperera"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "Obre la carpeta superior"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "Suprimeix de l'historial"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Rename…"
 msgstr "Canvia'n el nom…"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr "Copia com a enllaç"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
 msgstr "Enganxa l'enllaç a la carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "Enganxa a la carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "Mostra els fitxers ocults"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
 msgstr "Mostra les miniatures remotes"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
 msgstr "Amaga les miniatures"
 
-#: src/View/AbstractDirectoryView.vala:2108
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
 msgstr "Enganxa l'enllaç"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "Nom"
 
-#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "Data"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "Ordre invers"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr "Les carpetes davant dels fitxers"
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "Ordena per"
 
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "Carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "Fitxer buit"
 
-#: src/View/AbstractDirectoryView.vala:2262
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2499
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "%s sense nom"
 
-#: src/View/AbstractDirectoryView.vala:2860
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:2870
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "No es poden suprimir fitxers des d'aquí"
 
-#: src/View/AbstractDirectoryView.vala:2861
-#: src/View/AbstractDirectoryView.vala:3040
+#: src/View/AbstractDirectoryView.vala:2871
 #: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "No teniu permís per canviar aquesta ubicació"
 
-#: src/View/AbstractDirectoryView.vala:3015
+#: src/View/AbstractDirectoryView.vala:3025
 msgid "Cannot copy files that are in the trash"
 msgstr "No és possible copiar els fitxers que són a la paperera."
 
-#: src/View/AbstractDirectoryView.vala:3016
+#: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
 msgstr "En canvi, es retalla la selecció"
 
-#: src/View/AbstractDirectoryView.vala:3039
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
-#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:385 src/View/Sidebar.vala:578
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:407
 msgid "You cannot create a folder here."
 msgstr "Aquí no podeu crear una carpeta."
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:410
 msgid "The network is unavailable"
 msgstr "La xarxa no està disponible"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
 msgstr "Cal una xarxa que funcioni per arribar a aquesta carpeta"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:414
 msgid "This Folder Does Not Belong to You"
 msgstr "Aquesta carpeta no us pertany"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:415
 msgid "You don't have permission to view this folder."
 msgstr "No teniu permís per veure aquesta carpeta."
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:417
 msgid "Unable to Mount Folder"
 msgstr "No es pot muntar la carpeta"
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:418
 msgid "Could not connect to the server for this folder."
 msgstr "No s'ha pogut connectar amb el servidor per a aquesta carpeta."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Display Folder Contents"
 msgstr "No es poden mostrar els continguts de la carpeta."
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:422
 msgid "The operation timed out."
 msgstr "S'ha esgotat el temps d'espera de l'operació."
 
-#: src/View/ViewContainer.vala:425
+#: src/View/ViewContainer.vala:424
 msgid "Unable to Show Folder"
 msgstr "No es pot mostrar la carpeta"
 
-#: src/View/ViewContainer.vala:426
+#: src/View/ViewContainer.vala:425
 msgid "The server for this folder could not be located."
 msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
 
-#: src/View/ViewContainer.vala:437
+#: src/View/ViewContainer.vala:436
 msgid "File not Found"
 msgstr "No s'ha trobat el fitxer"
 
-#: src/View/ViewContainer.vala:438
+#: src/View/ViewContainer.vala:437
 msgid "The file selected no longer exists."
 msgstr "El fitxer seleccionat ja no existeix."
 
@@ -703,20 +717,20 @@ msgstr "_Desmunta"
 msgid "_Eject"
 msgstr "_Expulsa"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Cerqueu o escriviu-ne el camí"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Obre en una pestanya nova"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Obre en una finestra nova"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:494
+#: src/View/Widgets/BreadcrumbsEntry.vala:496
 msgid "Open in Other Application…"
 msgstr "Obre en una altra aplicació…"
 
@@ -738,70 +752,70 @@ msgstr "Recarrega aquesta carpeta"
 msgid "Searching…"
 msgstr "Se cerca…"
 
-#: src/View/Widgets/OverlayBar.vala:216
+#: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
 msgstr "%u carpetes"
 
-#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr " i %u altre element (%s) seleccionats"
 
-#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " i %u altres elements (%s) seleccionats"
 
-#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
 msgstr " seleccionat"
 
-#: src/View/Widgets/OverlayBar.vala:235
+#: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u elements seleccionats (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgstr "%u subcarptea, "
 
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
 msgstr "%u subcarpetes, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgstr "%u fitxer, "
 
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
 msgstr "%u fitxers, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
 msgstr "%s aprox."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:298
+#: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
 msgstr "mida desconeguda"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgstr "%u fitxer no llegible"
 
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
 msgstr "%u fitxers no llegibles"
@@ -1905,12 +1919,12 @@ msgstr "Escriviu un camí"
 msgid "Navigate to %s"
 msgstr "Navega a %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:290
 #, c-format
 msgid "Go to %s"
 msgstr "Ves a %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:368
 msgid "Type Path"
 msgstr "Escriviu un camí"
 
@@ -1918,19 +1932,19 @@ msgstr "Escriviu un camí"
 msgid "More Results …"
 msgstr "Més resultats…"
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "En aquesta carpeta"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
 msgstr "Per sota d'aquesta carpeta"
 
-#: libwidgets/View/SearchResults.vala:235
+#: libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "Adreces d'interès"
 
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:243
 msgid "Recently used"
 msgstr "D'ús recent"
 
