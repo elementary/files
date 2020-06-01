@@ -284,6 +284,7 @@ namespace PF.FileUtils {
 
                 new_path = new_path.replace ("///", "//");
             }
+
             new_path = new_path.replace ("ssh:", "sftp:");
 
             if (path == "/" && !can_browse_scheme (scheme)) {
@@ -293,6 +294,23 @@ namespace PF.FileUtils {
 
         if (!include_file_protocol && new_path.has_prefix (Marlin.ROOT_FS_URI)) {
             new_path = new_path.slice (Marlin.ROOT_FS_URI.length, new_path.length);
+        }
+
+        if (scheme.has_prefix ("afc")) {
+            var colon_parts = new_path.split (":", 3);
+            if  (colon_parts.length > 2) {
+                /* It may be enough to only process device addresses but we deal with all afc uris in case.
+                 * We have to assume the true device name does not contain any colons */
+                var separator_parts = colon_parts[2].split (Path.DIR_SEPARATOR_S, 2);
+                var device_name_end = separator_parts[0];
+                if (uint64.try_parse (device_name_end)) {
+                    /* Device ends in e.g. `:3`. Need to strip this suffix to successfully browse */
+                    new_path = string.join (":", colon_parts[0], colon_parts[1]);
+                    if (separator_parts.length > 1) {
+                        new_path = string.join (Path.DIR_SEPARATOR_S, new_path, separator_parts[1]);
+                    }
+                }
+            }
         }
 
         return new_path;
