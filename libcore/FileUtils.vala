@@ -618,7 +618,7 @@ namespace PF.FileUtils {
             case "afp" :
                 return false;
             case "afc" :
-                return false;
+                return false; //Assumed to be the case
             case "dav" :
                 return false;
             case "davs" :
