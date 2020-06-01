@@ -194,32 +194,34 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? _p, string? _cp = null, bool include_file_protocol = true) {
-        string p;
-        string cp;
+    public string sanitize_path (string? input_uri,
+                                 string? input_current_uri = null,
+                                 bool include_file_protocol = true) {
+        string unsanitized_uri;
+        string unsanitized_current_uri;
         string path = "";
         string scheme = "";
         string? current_path = null;
         string? current_scheme = null;
 
-        if (_p == null || _p == "") {
-            p = _cp; /* Sanitize current path */
-            cp = "";
+        if (input_uri == null || input_uri == "") {
+            unsanitized_uri = input_current_uri; /* Sanitize current path */
+            unsanitized_current_uri = "";
         } else {
-            p = _p;
-            cp = _cp;
+            unsanitized_uri = input_uri;
+            unsanitized_current_uri = input_current_uri;
         }
 
-        if (p == null || p == "") {
+        if (unsanitized_uri == null || unsanitized_uri == "") {
             return "";
         }
 
-        string? unescaped_p = Uri.unescape_string (p, null);
-        if (unescaped_p == null) {
-            unescaped_p = p;
+        string? unescaped_uri = Uri.unescape_string (unsanitized_uri, null);
+        if (unescaped_uri == null) {
+            unescaped_uri = unsanitized_uri;
         }
 
-        split_protocol_from_path (unescaped_p, out scheme, out path);
+        split_protocol_from_path (unescaped_uri, out scheme, out path);
 
         path = path.strip ().replace ("//", "/");
         // special case for empty path, adjust as root path
@@ -228,8 +230,8 @@ namespace PF.FileUtils {
         }
 
         StringBuilder sb = new StringBuilder (path);
-        if (cp != null) {
-            split_protocol_from_path (cp, out current_scheme, out current_path);
+        if (unsanitized_current_uri != null) {
+            split_protocol_from_path (unsanitized_current_uri, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
 
             if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) && path.length > 0) {
