@@ -298,7 +298,7 @@ namespace PF.FileUtils {
 
         if (scheme.has_prefix ("afc")) {
             var colon_parts = new_path.split (":", 3);
-            if  (colon_parts.length > 2) {
+            if (colon_parts.length > 2) {
                 /* It may be enough to only process device addresses but we deal with all afc uris in case.
                  * We have to assume the true device name does not contain any colons */
                 var separator_parts = colon_parts[2].split (Path.DIR_SEPARATOR_S, 2);
