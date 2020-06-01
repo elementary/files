@@ -62,6 +62,7 @@
       <description>
         <p>Improvements:</p>
         <ul>
+          <li>Paste images into other apps instead of file paths where possible</li>
           <li>Paste into a selected folder when using Ctrl + V</li>
           <li>Fix uneditable area in pathbar which is showing home folder placeholder</li>
           <li>Fix an issue that prevented file modification times from showing</li>
