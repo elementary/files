@@ -68,7 +68,9 @@ namespace PF.FileUtils {
             parent_path = path;
         }
 
-        if (parent_path.has_prefix (Marlin.MTP_URI) && !valid_mtp_uri (parent_path)) {
+        if ((parent_path.has_prefix (Marlin.MTP_URI) || parent_path.has_prefix(Marlin.GPHOTO2_URI)) &&
+             !valid_mtp_or_gphoto2_uri (parent_path)) {
+
             parent_path = path;
         }
 
@@ -327,14 +329,14 @@ namespace PF.FileUtils {
             return;
         }
         if (explode_protocol.length > 1) {
-            if (explode_protocol[0] == "mtp") {
+            if (explode_protocol[0] == "mtp" || explode_protocol[0] == "gphoto2") {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
                 if (explode_path[0] != null && explode_path[0].has_prefix ("[")) {
                     protocol = (explode_protocol[0] + "://" + explode_path[0] + "]").replace ("///", "//");
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    warning ("Invalid mtp path %s", path);
+                    warning ("Invalid mtp or gphoto2 path %s", path);
                     protocol = new_path.dup ();
                     new_path = "/";
                 }
@@ -357,16 +359,18 @@ namespace PF.FileUtils {
         }
     }
 
-    private bool valid_mtp_uri (string uri) {
-        if (!uri.contains (Marlin.MTP_URI)) {
+    private bool valid_mtp_or_gphoto2_uri (string uri) {
+        if (!(uri.contains (Marlin.MTP_URI ) || uri.contains (Marlin.GPHOTO2_URI))) {
             return false;
         }
+
         string[] explode_protocol = uri.split ("://", 2);
         if (explode_protocol.length != 2 ||
             !explode_protocol[1].has_prefix ("[") ||
             !explode_protocol[1].contains ("]")) {
             return false;
         }
+
         return true;
     }
 
@@ -581,6 +585,7 @@ namespace PF.FileUtils {
             case Marlin.SFTP_URI:
             case Marlin.FTP_URI:
             case Marlin.MTP_URI:
+            case Marlin.GPHOTO2_URI:
             case Marlin.AFC_URI:
                 return false;
             default:
@@ -841,4 +846,5 @@ namespace Marlin {
     public const string FTP_URI = "ftp://";
     public const string SMB_URI = "smb://";
     public const string MTP_URI = "mtp://";
+    public const string GPHOTO2_URI = "gphoto2://";
 }
