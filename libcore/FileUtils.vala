@@ -68,7 +68,7 @@ namespace PF.FileUtils {
             parent_path = path;
         }
 
-        if ((parent_path.has_prefix (Marlin.MTP_URI) || parent_path.has_prefix(Marlin.GPHOTO2_URI)) &&
+        if ((parent_path.has_prefix (Marlin.MTP_URI) || parent_path.has_prefix (Marlin.GPHOTO2_URI)) &&
              !valid_mtp_or_gphoto2_uri (parent_path)) {
 
             parent_path = path;
