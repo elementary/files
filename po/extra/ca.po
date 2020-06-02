@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-01 23:37+0000\n"
-"PO-Revision-Date: 2020-06-01 22:58+0000\n"
+"PO-Revision-Date: 2020-06-03 00:37+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,6 +75,8 @@ msgstr "Millores:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
+"S'enganxen les imatges a altres aplicacions en lloc dels camins del fitxer "
+"quan és possible."
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Paste into a selected folder when using Ctrl + V"
@@ -96,7 +98,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fixes:"
-msgstr ""
+msgstr "Correccions:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
