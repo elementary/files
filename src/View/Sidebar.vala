@@ -35,7 +35,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     Gtk.CellRendererText name_renderer;
     Gtk.CellRenderer eject_spinner_cell_renderer;
     Gtk.CellRenderer expander_renderer;
-
     Marlin.BookmarkList bookmarks;
     VolumeMonitor volume_monitor;
     unowned Marlin.TrashMonitor monitor;
@@ -114,19 +113,16 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
     public Sidebar (Marlin.View.Window window) {
-        Object (
-            window: window
-        );
+        Object (window: window);
     }
 
     construct {
-        /* Show only local places in sidebar when running as root */
-        local_only = Posix.getuid () == 0;
-
         init (); /* creates the Gtk.TreeModel store. */
         plugins.sidebar_loaded ((Gtk.Widget)this);
         this.last_selected_uri = null;
         this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+        /* Show only local places in sidebar when running as root */
+        local_only = Posix.getuid () == 0;
 
         window.loading_uri.connect (loading_uri_callback);
         window.free_space_change.connect (reload);
