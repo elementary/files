@@ -32,7 +32,7 @@ public class Marlin.Progress.UIHandler : Object {
     private Marlin.QuicklistHandler quicklist_handler = null;
 #endif
     private Gtk.Dialog progress_window = null;
-    private Gtk.Widget window_vbox = null;
+    private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
 
     private Marlin.Application application;
@@ -100,8 +100,8 @@ public class Marlin.Progress.UIHandler : Object {
         if (this.active_infos == 1) {
             /* This is the only active operation, present the window */
             add_to_window (info);
-            (this.progress_window as Gtk.Window).present ();
-        } else if (this.progress_window.visible) {
+            progress_window.present ();
+        } else if (progress_window.visible) {
                 add_to_window (info);
         }
 
@@ -114,7 +114,7 @@ public class Marlin.Progress.UIHandler : Object {
         ensure_window ();
 
         var progress_widget = new Marlin.Progress.InfoWidget (info);
-        (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
+        window_vbox.pack_start (progress_widget, false, false, 6);
 
         progress_widget.cancelled.connect ((info) => {
             progress_info_finished_cb (info);
@@ -122,27 +122,27 @@ public class Marlin.Progress.UIHandler : Object {
         });
 
         progress_widget.show ();
-        if (this.progress_window.visible) {
-            (this.progress_window as Gtk.Window).present ();
+        if (progress_window.visible) {
+            progress_window.present ();
         }
     }
 
     private void ensure_window () {
-        if (this.progress_window == null) {
+        if (progress_window == null) {
             /* This provides an undeletable, unminimisable window in which to show the info widgets */
-            this.progress_window = new Gtk.Dialog ();
-            this.progress_window.resizable = false;
-            this.progress_window.deletable = false;
-            this.progress_window.title = _("File Operations");
-            this.progress_window.icon_name = "system-file-manager";
+            progress_window = new Gtk.Dialog ();
+            progress_window.resizable = false;
+            progress_window.deletable = false;
+            progress_window.title = _("File Operations");
+            progress_window.icon_name = "system-file-manager";
 
-            this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+            window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
 
-            this.progress_window.get_content_area ().set_border_width (10);
-            this.progress_window.get_content_area ().add (this.window_vbox);
+            progress_window.get_content_area ().set_border_width (10);
+            progress_window.get_content_area ().add (this.window_vbox);
             this.window_vbox.show ();
 
-            this.progress_window.delete_event.connect ((widget, event) => {
+            progress_window.delete_event.connect ((widget, event) => {
                 widget.hide ();
                 return true;
             });
@@ -180,7 +180,7 @@ public class Marlin.Progress.UIHandler : Object {
         }
         /* For rapid file transfers this can get called before progress window was been created */
         if (active_infos < 1 && progress_window != null && progress_window.visible) {
-            (this.progress_window as Gtk.Window).hide ();
+            progress_window.hide ();
         }
 #if HAVE_UNITY
         update_unity_launcher (info, false);
@@ -243,7 +243,7 @@ public class Marlin.Progress.UIHandler : Object {
                                         _("Show Copy Dialog"));
 
             show_menuitem.item_activated.connect (() => {
-                (this.progress_window as Gtk.Window).present ();
+                progress_window.present ();
             });
 
             marlin_lentry.progress_quicklists.append (show_menuitem);
