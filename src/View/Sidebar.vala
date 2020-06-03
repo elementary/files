@@ -20,6 +20,9 @@
 ***/
 
 public class Marlin.Sidebar : Marlin.AbstractSidebar {
+    public Marlin.View.Window window { get; construct; }
+    public bool local_only { get; construct; }
+
     private const int MAX_BOOKMARKS_DROPPED = 100;
     /* Indents */
     private const int ROOT_INDENTATION_XPAD = 4; /* Left Indent for all rows*/
@@ -33,7 +36,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     Gtk.CellRendererText name_renderer;
     Gtk.CellRenderer eject_spinner_cell_renderer;
     Gtk.CellRenderer expander_renderer;
-    Marlin.View.Window window;
+
     Marlin.BookmarkList bookmarks;
     VolumeMonitor volume_monitor;
     unowned Marlin.TrashMonitor monitor;
@@ -57,7 +60,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     bool internal_drag_started;
     bool dragged_out_of_window;
     bool renaming = false;
-    bool local_only;
     Gee.HashMap<PlaceType, Gtk.TreeRowReference> categories = new Gee.HashMap<PlaceType, Gtk.TreeRowReference> ();
 
     /* Identifiers for target types */
@@ -112,12 +114,17 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
     public Sidebar (Marlin.View.Window window, bool local_only = false) {
+        Object (
+            window: window,
+            local_only: local_only
+        );
+    }
+
+    construct {
         init (); /* creates the Gtk.TreeModel store. */
         plugins.sidebar_loaded ((Gtk.Widget)this);
         this.last_selected_uri = null;
         this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        this.window = window;
-        this.local_only = local_only;
 
         window.loading_uri.connect (loading_uri_callback);
         window.free_space_change.connect (reload);
