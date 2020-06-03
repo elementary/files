@@ -150,8 +150,7 @@ namespace Marlin.View {
 
             tabs.show ();
 
-            /* Show only local places in sidebar when running as root */
-            sidebar = new Marlin.Sidebar (this, Posix.getuid () == 0);
+            sidebar = new Marlin.Sidebar (this);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             lside_pane.position = Preferences.settings.get_int ("sidebar-width");
