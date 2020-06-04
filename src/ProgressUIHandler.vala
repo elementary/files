@@ -26,7 +26,6 @@
  *   completion of the operation unless it was cancelled by the user.
 ***/
 public class Marlin.Progress.UIHandler : Object {
-
     private PF.Progress.InfoManager manager = null;
 #if HAVE_UNITY
     private Marlin.QuicklistHandler quicklist_handler = null;
@@ -34,12 +33,11 @@ public class Marlin.Progress.UIHandler : Object {
     private Gtk.Dialog progress_window = null;
     private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
+    private Gtk.Application application;
 
-    private Marlin.Application application;
-
-    public UIHandler (Marlin.Application app) {
-        this.manager = PF.Progress.InfoManager.get_instance ();
-        this.application = app;
+    construct {
+        application = (Gtk.Application) GLib.Application.get_default ();
+        manager = PF.Progress.InfoManager.get_instance ();
 
         manager.new_progress_info.connect ((info) => {
             info.started.connect (progress_info_started_cb);
@@ -50,16 +48,11 @@ public class Marlin.Progress.UIHandler : Object {
         debug ("ProgressUIHandler destruct");
         if (active_infos > 0) {
             warning ("ProgressUIHandler destruct when infos active");
-            cancel_all ();
+            var infos = manager.get_all_infos ();
+            foreach (var info in infos) {
+                info.cancel ();
+            }
         }
-    }
-
-    public void cancel_all () {
-        var infos = this.manager.get_all_infos ();
-        foreach (var info in infos) {
-            info.cancel ();
-        }
-
     }
 
     private void progress_info_started_cb (PF.Progress.Info info) {
