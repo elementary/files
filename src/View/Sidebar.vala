@@ -2014,10 +2014,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         return false;
     }
 
-    public new void style_set (Gtk.Style previous_style) {
-        update_places ();
-    }
-
     public void reload () {
         /* The free space on devices may have changed */
         update_places ();
