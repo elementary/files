@@ -307,12 +307,12 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
     private bool focus_in_event_cb (Gdk.EventFocus event) {
         /* Restore saved adjustment value to prevent unexpected scrolling */
-        ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+        get_vadjustment ().set_value (adjustment_val);
         return false;
     }
 
     private bool update_adjustment_val () {
-        adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
+        adjustment_val = get_vadjustment ().value;
         return false;
     }
 
@@ -1317,7 +1317,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* verify that we are realized */
         if (get_realized ()) {
             /* determine pointer location and window geometry */
-            Gtk.Widget widget = (this as Gtk.Bin).get_child ();
+            Gtk.Widget widget = get_child ();
             Gdk.Device pointer = drag_context.get_device ();
             Gdk.Window window = widget.get_window ();
 
@@ -1332,7 +1332,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* change the vertical adjustment appropriately */
             if (offset != 0) {
                 /* determine the vertical adjustment */
-                adjustment = (this as Gtk.ScrolledWindow).get_vadjustment ();
+                adjustment = get_vadjustment ();
                 /* determine the new value */
                 val = (adjustment.value + 2.0 * offset);
                 val = val.clamp (adjustment.lower,
@@ -1349,7 +1349,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* change the horizontal adjustment appropriately */
             if (offset != 0) {
                 /* determine the horizontal adjustment */
-                adjustment = (this as Gtk.ScrolledWindow).get_hadjustment ();
+                adjustment = get_hadjustment ();
                 /* determine the new value */
                 val = (adjustment.value + 2 * offset);
                 val = val.clamp (adjustment.lower,
@@ -1504,7 +1504,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename
          * For some reason, scroll to cell does not always work here
          */
-        ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+        get_vadjustment ().set_value (adjustment_val);
 
         tree_view.set_cursor_on_cell (path, column, name_renderer, true);
     }
@@ -2017,10 +2017,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         return false;
-    }
-
-    public new void style_set (Gtk.Style previous_style) {
-        update_places ();
     }
 
     public void reload () {
