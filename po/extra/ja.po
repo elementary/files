@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-01 23:37+0000\n"
-"PO-Revision-Date: 2020-06-04 07:23+0000\n"
+"PO-Revision-Date: 2020-06-07 18:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -99,19 +99,19 @@ msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
-msgstr "パスバーにある、ホームフォルダーのプレースホルダー表示部でクリックしてテキストを入力できない問題を修正"
+msgstr "パスバーにある、ホームフォルダーのプレースホルダー表示部でクリックしてテキストを入力できない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix an issue that prevented file modification times from showing"
-msgstr "ファイル修正日時が表示されない問題を修正"
+msgstr "ファイル修正日時が表示されない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix size of restored tiled window"
-msgstr "タイル表示されたウィンドウのサイズが次回起動時に正しく復元されない問題を修正"
+msgstr "タイル表示されたウィンドウのサイズが次回起動時に正しく復元されない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Fix color tags disappearing when thumbnails hidden"
-msgstr "サムネイルが非表示の場合に、カラータグが消滅する問題を修正"
+msgstr "サムネイルが非表示の場合に、カラータグが消滅する不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:131
@@ -146,11 +146,11 @@ msgstr "デバイスアイコンがファイルである場合のクラッシュ
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Fix device icon sometimes missing"
-msgstr "デバイスアイコンが表示されないことがある問題を修正"
+msgstr "デバイスアイコンが表示されないことがある不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:90
 msgid "Fix occasional view freeze after renaming"
-msgstr "名前を変更するとビューがフリーズすることがある問題を修正"
+msgstr "名前を変更するとビューがフリーズすることがある不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
@@ -158,7 +158,7 @@ msgstr "ファイル名の先頭または末尾に空白を含む場合の、名
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr "起動時にパンくずリストの表示が間違っていることがある問題を修正"
+msgstr "起動時にパンくずリストの表示が間違っていることがある不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Do not show file:// prefix in navigation buttons menus"
@@ -167,9 +167,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr ""
-"メニューにある \"新しいフォルダー\" 項目のキーボードショートカットの表示が間"
-"違っていた問題を修正"
+msgstr "メニューにある \"新しいフォルダー\" 項目のキーボードショートカットの表示が間違っていた不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Fix navigation with back/forward button context menu"
@@ -178,7 +176,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:104
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
-msgstr "タブを閉じるとパスバーに間違ったパスが表示されることがある問題を修正"
+msgstr "タブを閉じるとパスバーに間違ったパスが表示されることがある不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid ""
@@ -199,7 +197,7 @@ msgstr "メニュー項目にキーボードショートカットを表示する
 
 #: data/io.elementary.files.appdata.xml.in.in:115
 msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr "ファイル選択ダイアログのパンくずリストに関する問題を修正"
+msgstr "ファイル選択ダイアログのパンくずリストに関する不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:116
 msgid "Show a warning when ejecting a volume that's still in use"
@@ -211,7 +209,7 @@ msgstr "カラム表示で水平スクロールを行った後、カーソルを
 
 #: data/io.elementary.files.appdata.xml.in.in:118
 msgid "Fix folder-open icon persisting after closing Column View"
-msgstr "カラム表示を閉じた後に folder-open アイコンが表示され続ける問題を修正"
+msgstr "カラム表示を閉じた後に folder-open アイコンが表示され続ける不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:119
 msgid "Use destructive action styling for some trash dialog buttons"
@@ -235,7 +233,7 @@ msgstr "同じフォルダーを表示しているタブが正しく同期され
 
 #: data/io.elementary.files.appdata.xml.in.in:134
 msgid "Fix drag with secondary button on empty space"
-msgstr "副ボタンで何もないエリアにドラッグした際の問題を修正"
+msgstr "副ボタンで何もないエリアにドラッグした際の不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:135
 msgid "Show custom media type icons for installed apps"
@@ -263,15 +261,15 @@ msgstr "クラウドプロバイダープラグインのサポートを追加"
 
 #: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Fix selecting pasted files"
-msgstr "貼り付けたファイルを選択する際の問題を修正"
+msgstr "貼り付けたファイルを選択する際の不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Fix color label visibility while using dark theme"
-msgstr "ダークテーマ使用時に、カラーラベルが見にくい問題を修正"
+msgstr "ダークテーマ使用時に、カラーラベルが見にくい不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:149
 msgid "Fix selecting files using Shift key"
-msgstr "Shift キーを使ってファイルを選択する際の問題を修正"
+msgstr "Shift キーを使ってファイルを選択する際の不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Draw checkerboard background for image items"
@@ -315,7 +313,7 @@ msgstr "シンボリックリンクのコピー・貼り付けを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:167
 msgid "Avoid crash when Templates folder is null"
-msgstr "テンプレートフォルダーが空の場合にクラッシュする問題を修正"
+msgstr "テンプレートフォルダーが空の場合にクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:168
 msgid "Reduce memory footprint of FileChooserDialog"
@@ -323,25 +321,25 @@ msgstr "FileChooserDialog のメモリー使用量を削減"
 
 #: data/io.elementary.files.appdata.xml.in.in:169
 msgid "Avoid crash when selecting image file in some situations"
-msgstr "特定の状況下において、画像ファイルを選択した際にアプリがクラッシュする問題を修正"
+msgstr "特定の状況下において、画像ファイルを選択した際にアプリがクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:170
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
-msgstr "ネットワークのファイルをリムーバブルストレージにコピーする際に、進捗ウィンドウを閉じられない問題を修正"
+msgstr "ネットワークのファイルをリムーバブルストレージにコピーする際に、進捗ウィンドウを閉じられない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:171
 msgid "Fix drag and drop after double clicking a blank area"
-msgstr "何もない領域をダブルクリックすると、ドラッグアンドドロップができない問題を修正"
+msgstr "何もない領域をダブルクリックすると、ドラッグアンドドロップができない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Avoid crash while scrolling over view switcher"
-msgstr "表示方法切り替えボタン上でスクロールするとクラッシュする問題を修正"
+msgstr "表示方法切り替えボタン上でスクロールするとクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:173
 msgid "Avoid possible crash in some copy and paste situations"
-msgstr "コピー・貼り付けの際に場合によってはクラッシュする問題を修正"
+msgstr "コピー・貼り付けの際に場合によってはクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:181
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
@@ -349,7 +347,7 @@ msgstr "アイコン表示で、ファイルを1つづつ選択する際のキ�
 
 #: data/io.elementary.files.appdata.xml.in.in:182
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
-msgstr "ダークテーマにおいて検索プレースホルダーのテキストが見にくい問題を、テキストスタイルのハードコードを削除することで修正"
+msgstr "ダークテーマにおいて検索プレースホルダーのテキストが見にくい不具合を、テキストスタイルのハードコードを削除することで修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Minor spacing adjustments to location bar"
@@ -371,19 +369,19 @@ msgstr "カラータグが正しく保持されるように修正"
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
-msgstr "プレースホルダーが意図せず表示される問題を修正するため、拡大レベルを変更した際にサムネイルを再読み込みするように変更"
+msgstr "プレースホルダーが意図せず表示される不具合を修正するため、拡大レベルを変更した際にサムネイルを再読み込みするように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:202
 msgid "Fix running scripts with spaces in filename"
-msgstr "ファイル名に空白が含まれるスクリプトを実行できない問題を修正"
+msgstr "ファイル名に空白が含まれるスクリプトを実行できない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:210
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr "バージョン 4.1.4 で確認された、CPU 使用率が高くなる問題を修正"
+msgstr "バージョン 4.1.4 で確認された、CPU 使用率が高くなる不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:211
 msgid "File sorting fixes"
-msgstr "ファイルの並べ替えの問題を修正"
+msgstr "ファイルの並べ替えの不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:219
 msgid "Meson: fix soversion names"
@@ -395,7 +393,7 @@ msgstr "CMake ビルドシステムを削除"
 
 #: data/io.elementary.files.appdata.xml.in.in:221
 msgid "Fix missing File System properties menu"
-msgstr "ファイルシステムに対するプロパティーメニューが表示されない問題を修正"
+msgstr "ファイルシステムに対するプロパティーメニューが表示されない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:222
 msgid "Drop intltool dependency"
@@ -407,7 +405,7 @@ msgstr "デフォルトのファイルタイプハンドラーの仕組みを修
 
 #: data/io.elementary.files.appdata.xml.in.in:224
 msgid "Fix initial search window size too small"
-msgstr "検索ウィンドウを初めて使用する際に、ウィンドウサイズが小さすぎる問題を修正"
+msgstr "検索ウィンドウを初めて使用する際に、ウィンドウサイズが小さすぎる不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:225
 msgid "Add option to disable local file thumbnails"
@@ -419,7 +417,7 @@ msgstr "複数の動画ファイルを開く際のクラッシュを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:227
 msgid "Fix some timing issues around adding and removing files"
-msgstr "ファイルの追加・削除のタイミングに関する問題を修正"
+msgstr "ファイルの追加・削除のタイミングに関する不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:228
 msgid "Meson: fix missing library headers"
@@ -439,59 +437,59 @@ msgstr "テキスト背景に角丸を追加"
 
 #: data/io.elementary.files.appdata.xml.in.in:239
 msgid "Fix file mimetype association regression"
-msgstr ""
+msgstr "ファイルのメディアタイプの関連付けに関するリグレッションを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:240
 msgid "New pathbar tooltips"
-msgstr ""
+msgstr "パスバーの新しいツールチップ"
 
 #: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Build fixes"
-msgstr "ビルドの問題を修正"
+msgstr "ビルドの不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:249
 msgid "Plugin build fixes"
-msgstr "プラグインのビルドの問題を修正"
+msgstr "プラグインのビルドの不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:257
 msgid "Fix Ctrl+Tab behavior"
-msgstr ""
+msgstr "Ctrl+Tab の挙動を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:258
 msgid "Fix building without Unity library"
-msgstr ""
+msgstr "Unity ライブラリを使用しないとビルドできない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:265
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
-msgstr ""
+msgstr "ホームフォルダーでは、パンくずリストを非表示にし、プレースホルダーと検索アイコンを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:266
 msgid "Style error dialogs"
-msgstr ""
+msgstr "エラーダイアログのスタイルを変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:267
 msgid "Right click fixes"
-msgstr ""
+msgstr "副ボタンクリック時の挙動を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:268
 msgid "Reload recent view when privacy setting changes"
-msgstr ""
+msgstr "プライバシーの設定の変更時に、最近使用した項目を再読み込みするように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:269
 msgid "`Connect Server` fixes"
-msgstr ""
+msgstr "`サーバーに接続` を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:270
 msgid "Do not activate multiple files with single click"
-msgstr ""
+msgstr "シングルクリックで複数のファイルを選択しないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:271
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
+msgstr "ビューとサイドバーのフォーカスの切り替えに `Tab` キーを使用するように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:272
 msgid "Delete color tag database entries for trashed files"
-msgstr ""
+msgstr "項目がゴミ箱に入ったら、データベースからカラータグを削除するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:273
 msgid "Throttle tab closing"
@@ -499,19 +497,19 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:274
 msgid "`Ctrl` key fixes"
-msgstr ""
+msgstr "`Ctrl` キー押下時の挙動を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:275
 msgid "Drag and drop fixes"
-msgstr ""
+msgstr "ドラッグアンドドロップ時の挙動を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:276
 msgid "Show icons in `Open with` menus"
-msgstr ""
+msgstr "`このアプリケーションで開く` メニューの項目にアイコンを表示するように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:277
 msgid "Tooltip fixes"
-msgstr ""
+msgstr "ツールチップの修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:278
 msgid "Memory leak fixes"
@@ -523,27 +521,27 @@ msgstr "クラッシュを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:280
 msgid "Trash: respect sound setting"
-msgstr ""
+msgstr "システムで “イベント警告” の設定がオフの場合は、ゴミ箱を空にする音を鳴らさないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:281
 msgid "Localization fixes"
-msgstr ""
+msgstr "地域化に関する修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:289
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr ""
+msgstr "100 件以上の大規模または軽微な不具合修正と改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:296
 msgid "Honor 12/24hr system setting"
-msgstr ""
+msgstr "システムの 12時制／24時制の設定に従うように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:297
 msgid "Distinguish between tabs with the same name"
-msgstr ""
+msgstr "同じ名前のフォルダを別のタブで表示している場合に区別できるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:298
 msgid "Support launching from other applications with a target file selected"
-msgstr ""
+msgstr "選択されたファイルを使用してのほかのアプリの起動に対応"
 
 #: data/io.elementary.files.appdata.xml.in.in:299
 #: data/io.elementary.files.appdata.xml.in.in:312
