@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-01 23:37+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-06-07 18:01+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
 "Language: cs\n"
@@ -68,15 +68,17 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Improvements:"
-msgstr ""
+msgstr "Vylepšení:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
+"Kde je to možné, jsou do ostatních aplikací vkládány obrázky namísto popisů "
+"umístění souborů"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
+msgstr "Vložení do označené složky při použití Ctrl + V"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Show file info overlay in List View as well"
@@ -85,7 +87,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Traverse search results with Tab key"
-msgstr ""
+msgstr "Pohyb po výsledcích hledání pomocí klávesy Tab"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Show an error message when attempting to open trashed files"
@@ -95,7 +97,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fixes:"
-msgstr ""
+msgstr "Opravy:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
@@ -109,11 +111,11 @@ msgstr "Oprava problému který bránil zobrazování okamžiků úpravy soubor�
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix size of restored tiled window"
-msgstr ""
+msgstr "Pevná velikost obnoveného dlaždicového okna"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Fix color tags disappearing when thumbnails hidden"
-msgstr ""
+msgstr "Opraveno mizení barevných štítků při skrytí náhledů"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:131
