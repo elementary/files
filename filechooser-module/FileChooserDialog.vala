@@ -60,8 +60,8 @@ public class CustomFileChooserDialog : Object {
         /* If not local only during creation, strange bug occurs on fresh installs */
         chooser_dialog.local_only = true;
 
-        var settings = new Settings ("io.elementary.files.preferences");
-        is_single_click = settings.get_boolean ("single-click");
+        var files_preferences = new Settings ("io.elementary.files.preferences");
+        is_single_click = files_preferences.get_boolean ("single-click");
 
         var chooser_settings = new Settings ("io.elementary.files.file-chooser");
 
