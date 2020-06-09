@@ -98,8 +98,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_entry (GOF.File gof, GenericArray<Variant> entries) {
-        return_if_fail (gof != null);
-
         var entry = new Variant.strv (
                         { gof.uri,
                           gof.get_ftype (),
@@ -148,8 +146,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_to_knowns_queue (GOF.File file, FileInfo info) {
-        return_if_fail (file != null && info != null);
-
         file.tagstype = info.get_content_type ();
         file.update_type ();
 
@@ -167,8 +163,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_to_unknowns_queue (GOF.File file) {
-        return_if_fail (file != null);
-
         if (file.get_ftype () == "application/octet-stream") {
             unknowns.push_head (file);
 
@@ -252,8 +246,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void update_file_info (GOF.File file) {
-        return_if_fail (file != null);
-
         if (file.info != null && !f_ignore_dir (file.directory) &&
             (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
 

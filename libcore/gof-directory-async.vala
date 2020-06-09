@@ -1127,6 +1127,7 @@ public class Async : Object {
 
         if (file == null) {
             critical ("Null file received in Async cache_lookup");
+            return null;
         }
 
         dir_cache_lock.@lock ();
@@ -1155,10 +1156,6 @@ public class Async : Object {
     }
 
     public static Async? cache_lookup_parent (GLib.File file) {
-        if (file == null) {
-            critical ("Null file submitted to cache lookup parent");
-            return null;
-        }
         GLib.File? parent = file.get_parent ();
         return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
