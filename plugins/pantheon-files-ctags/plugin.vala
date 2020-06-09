@@ -183,10 +183,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info (GOF.File file) {
-        if (file == null) {
-            return;
-        }
-
         try {
             if (!file.exists) {
                 yield daemon.delete_entry (file.uri);
@@ -233,7 +229,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info_for_recent (GOF.File file, string? target_uri) {
-        if (target_uri == null || file == null) { /* e.g. for recent:/// */
+        if (target_uri == null) { /* e.g. for recent:/// */
             return;
         }
 
@@ -269,8 +265,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> selected_files) {
-        if (selected_files == null || widget == null || ignore_dir) {
+    public override void context_menu (Gtk.Widget widget, GLib.List<GOF.File> selected_files) {
+        if (selected_files == null || ignore_dir) {
             return;
         }
 
