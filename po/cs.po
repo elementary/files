@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-31 22:14+0000\n"
-"PO-Revision-Date: 2020-06-01 22:58+0000\n"
+"PO-Revision-Date: 2020-06-03 00:37+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
@@ -1462,11 +1462,11 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Smazáním souboru smažete soubor nenávratně"
+" Smazáním souboru ho smažete nenávratně"
 
 #: libcore/marlin-file-operations.c:1802
 msgid "Trashing Files"
-msgstr "Soubory se přesouvají do koše"
+msgstr "Soubory jsou přesouvány do koše"
 
 #: libcore/marlin-file-operations.c:1804
 msgid "Deleting Files"
@@ -1557,7 +1557,7 @@ msgstr "Složku „%s“ nelze spravovat, protože nemáte oprávnění na její
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "Soubor „%s“ nelze spravovat, protože nemáte oprávnění hoj číst."
+msgstr "Soubor „%s“ nelze spravovat, protože nemáte oprávnění ho číst."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1676,9 +1676,9 @@ msgstr[2] "Kopíruje se %'d souborů do „%s“"
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Zdvojuje se %'d soubor"
-msgstr[1] "Zdvojují se %'d soubory"
-msgstr[2] "Zdvojuje se %'d souborů"
+msgstr[0] "Duplikuje se %'d soubor"
+msgstr[1] "Duplikují se %'d soubory"
+msgstr[2] "Duplikuje se %'d souborů"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:2486
@@ -1794,20 +1794,20 @@ msgstr "Nelze kopírovat soubor sám na sebe."
 
 #: libcore/marlin-file-operations.c:3653
 msgid "The source file would be overwritten by the destination."
-msgstr "Zdrojový soubor by byl přepsán cílovým."
+msgstr "Zdrojový soubor by byl přepsán tím cílovým."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3895
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Nelze odstranit již existující soubor se stejným názvem v %s."
+msgstr "Nelze odstranit už existující soubor se stejným názvem v %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3965
 #, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "„%s“ zde nelze zkopírovat."
+msgstr "„%s“ sem nelze zkopírovat."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3970
@@ -1817,7 +1817,7 @@ msgstr "Při kopírování souboru do %s došlo k chybě."
 
 #: libcore/marlin-file-operations.c:4189
 msgid "Copying Files"
-msgstr "Soubory se kopírují"
+msgstr "Kopírování souborů"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)

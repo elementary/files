@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-01 23:37+0000\n"
-"PO-Revision-Date: 2020-05-08 10:10+0000\n"
+"PO-Revision-Date: 2020-06-08 18:11+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -68,15 +68,17 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Improvements:"
-msgstr ""
+msgstr "Verbeteringen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
+"Plak waar mogelijk afbeeldingen in andere apps in plaats van de "
+"bestandslocatie"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
+msgstr "Plak in een geselecteerde map bij gebruik van Ctrl + V"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Show file info overlay in List View as well"
@@ -84,19 +86,21 @@ msgstr "Toon de bestandsinfo ook in lijstweergave"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Traverse search results with Tab key"
-msgstr ""
+msgstr "Navigeer door zoekresultaten met de Tab toets"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Show an error message when attempting to open trashed files"
-msgstr ""
+msgstr "Toon een foutmelding bij het openen van bestanden in de prullenbak"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fixes:"
-msgstr ""
+msgstr "Opgelost:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
+"Een probleem opgelost waarbij de thuismap werd getoond in een onaanpasbaar "
+"gedeelte van de adresbalk"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix an issue that prevented file modification times from showing"
@@ -107,10 +111,14 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix size of restored tiled window"
 msgstr ""
+"Een probleem opgelost bij het herstellen van naast elkaar gerangschikte "
+"vensters"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr ""
+"Een probleem opgelost met verdwijnende kleurlabels als miniatuurweergaven "
+"werden verborgen"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:131

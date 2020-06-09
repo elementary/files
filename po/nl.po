@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-31 22:14+0000\n"
-"PO-Revision-Date: 2020-03-24 22:09+0000\n"
+"PO-Revision-Date: 2020-06-08 18:11+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -347,12 +347,16 @@ msgstr "Kan dit bestand niet openen"
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
+"“%s” moet eerst uit de Prullenbak worden gehaald voordat dit bestand kan "
+"worden geopend"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Bestanden in de Prullenbak kunnen niet worden geopend. Om dit bestand te "
+"openen, moet het verplaatst worden naar een andere locatie."
 
 #: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
