@@ -62,7 +62,7 @@ public class Marlin.Application : Gtk.Application {
             Marlin.IconInfo.clear_caches ();
         });
 
-        progress_handler = new Marlin.Progress.UIHandler (this);
+        progress_handler = new Marlin.Progress.UIHandler ();
 
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();

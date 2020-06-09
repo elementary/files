@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-05-11 19:11+0000\n"
+"POT-Creation-Date: 2020-05-31 22:14+0000\n"
+"PO-Revision-Date: 2020-06-03 00:37+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr "Zobrazit verzi programu"
 
 #: src/Application.vala:126
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Otevřít jednu (nebo více) URL adres, každou v novém panelu"
+msgstr "Otevřít jedno (nebo více) URI, každé v novém panelu"
 
 #: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
@@ -51,11 +51,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Procházet systém souborů správcem souborů"
+"Procházet souborový systém správcem souborů"
 
 #: src/Application.vala:166
 msgid "--quit cannot be used with URIs."
-msgstr "--quit nelze použít spolu s adresami URI."
+msgstr "--quit nelze použít dohromady s URI."
 
 #: src/ProgressUIHandler.vala:136 src/ProgressUIHandler.vala:198
 msgid "File Operations"
@@ -69,15 +69,15 @@ msgstr "Dokončeno %s"
 
 #: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
-msgstr "Všechny operace se soubory skončili"
+msgstr "Všechny operace se soubory skončily"
 
 #: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
-msgstr "Zobrazit nabídku kopírování"
+msgstr "Zobrazit dialog kopírování"
 
 #: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
-msgstr "Zrušit všechny vykonávané akce"
+msgstr "Zrušit všechny probíhající akce"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -131,9 +131,12 @@ msgstr "Oprávnění"
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i soubor nemohl být přečten kvůli právům nebo jiným chybám."
-msgstr[1] "%i soubory nemohli být přečteny kvůli právům nebo jiným chybám."
-msgstr[2] "%i souborů nemohlo být přečteno kvůli právům nebo jiným chybám."
+msgstr[0] ""
+"%i soubor nemohl být přečten kvůli přístupovým právům nebo jiným chybám."
+msgstr[1] ""
+"%i soubory nemohli být přečteny kvůli přístupovým právům nebo jiným chybám."
+msgstr[2] ""
+"%i souborů nemohlo být přečteno kvůli přístupovým právům nebo jiným chybám."
 
 #: src/Dialogs/PropertiesWindow.vala:252
 msgid "Actual Size Could Be Larger"
@@ -283,7 +286,7 @@ msgstr "Vybráno několik typů souborů"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
-msgstr "Žádná samostatná aplikace nemůže otevřít všechny tyto typy souborů"
+msgstr "Žádná jediná aplikace nemůže otevřít všechny tyto typy souborů"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
@@ -295,11 +298,11 @@ msgstr "Nelze otevřít tyto URI"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr "Nelze otevřít soubory nebo URI s touto aplikací"
+msgstr "Pomocí této aplikace nelze soubory nebo URI otevřít"
 
-#: src/View/Window.vala:557 src/View/Window.vala:567
+#: src/View/Window.vala:546 src/View/Window.vala:556
 msgid "(as Administrator)"
-msgstr "(jako administrátor)"
+msgstr "(jako správce)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
@@ -337,10 +340,7 @@ msgstr "Vytvořit složku „%s“"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
-msgstr ""
-"Nepodařilo se vytvořit složku\n"
-"\n"
-"%s"
+msgstr "Nepodařilo se vytvořit složku"
 
 #: src/View/AbstractDirectoryView.vala:820
 #: src/View/AbstractDirectoryView.vala:1132
@@ -351,13 +351,15 @@ msgstr "Tento soubor nelze spustit"
 #: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "Aby „%s“ bylo možné otevřít, je třeba ho nejdříve vrátit zpět z Koše"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Soubory v Koši není možné otevírat. Pro otevření je třeba soubor přesunout "
+"někam  jinam."
 
 #: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
@@ -365,7 +367,7 @@ msgstr "Tento soubor nelze otevřít"
 
 #: src/View/AbstractDirectoryView.vala:859
 msgid "Cannot identify file type to open"
-msgstr "Nelze zjistit typ souboru pro otevření"
+msgstr "Nedaří se zjistit typ souboru, který má být otevřen"
 
 #: src/View/AbstractDirectoryView.vala:1578
 msgid "Cannot drop this file"
@@ -411,7 +413,7 @@ msgstr "Vyjmout"
 
 #: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
-msgstr "Kopírovat"
+msgstr "Zkopírovat"
 
 #: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
@@ -439,7 +441,7 @@ msgstr "Přejmenovat…"
 
 #: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
-msgstr "Kopírovat jako odkaz"
+msgstr "Zkopírovat jako odkaz"
 
 #: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
@@ -455,7 +457,7 @@ msgstr "Zobrazovat skryté soubory"
 
 #: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
-msgstr "Zobrazit vzdálené náhledy"
+msgstr "Zobrazovat náhledy souborů ze vzdálených úložišť"
 
 #: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
@@ -502,26 +504,26 @@ msgstr "Nový"
 msgid "Untitled %s"
 msgstr "Nepojmenovaný soubor %s"
 
-#: src/View/AbstractDirectoryView.vala:2865
-#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:2870
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "Nelze odstranit soubory z tohoto místa"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3045
-#: src/View/AbstractDirectoryView.vala:3061
+#: src/View/AbstractDirectoryView.vala:2871
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "Nemáte oprávnění měnit toto umístění"
 
-#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3025
 msgid "Cannot copy files that are in the trash"
 msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
-msgstr "Místo toho vyjmout výběr"
+msgstr "Namísto toho budou vybrané položky vyjmuty"
 
-#: src/View/AbstractDirectoryView.vala:3044
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "Na toto místo nelze vložit soubory"
 
@@ -539,7 +541,7 @@ msgstr "Síť není k dispozici"
 
 #: src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
-msgstr "Pro přístup k této složce je potřeba funkgující síť"
+msgstr "Pro přístup k této složce je potřeba fungující síť"
 
 #: src/View/ViewContainer.vala:414
 msgid "This Folder Does Not Belong to You"
@@ -563,7 +565,7 @@ msgstr "Nelze zobrazit obsah složky"
 
 #: src/View/ViewContainer.vala:422
 msgid "The operation timed out."
-msgstr "Vypršel časový limit operace."
+msgstr "Překročen časový limit operace."
 
 #: src/View/ViewContainer.vala:424
 msgid "Unable to Show Folder"
@@ -579,7 +581,7 @@ msgstr "Soubor nenalezen"
 
 #: src/View/ViewContainer.vala:437
 msgid "The file selected no longer exists."
-msgstr "Vybraný soubor již neexistuje."
+msgstr "Vybraný soubor už neexistuje."
 
 #: src/View/Sidebar.vala:565
 msgid "Personal"
@@ -587,7 +589,7 @@ msgstr "Osobní"
 
 #: src/View/Sidebar.vala:566
 msgid "Your common places and bookmarks"
-msgstr "Vaše často prohlížená místa a záložky"
+msgstr "Vámi často prohlížená místa a záložky"
 
 #: src/View/Sidebar.vala:585
 msgid "Open your personal folder"
@@ -631,7 +633,7 @@ msgstr "Procházet obsah sítě"
 
 #: src/View/Sidebar.vala:811
 msgid "Connect Server"
-msgstr "Připojit server"
+msgstr "Připojit k serveru"
 
 #: src/View/Sidebar.vala:812
 msgid "Connect to a network server"
@@ -650,7 +652,7 @@ msgstr "Chyba při připojování jednotky %s"
 #: src/View/Sidebar.vala:1479
 #, c-format
 msgid "Unable to start %s"
-msgstr "Nelze aktivovat %s"
+msgstr "Nelze spustit %s"
 
 #: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
@@ -723,7 +725,7 @@ msgstr "V_ysunout"
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr "Hledat nebo zadat cestu"
+msgstr "Hledat nebo zadat popis umístění"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
@@ -749,7 +751,7 @@ msgstr "Následující"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr "Obnovit složku"
+msgstr "Znovu načíst tuto složku"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -865,11 +867,11 @@ msgstr "Zabezpečený WebDAV (HTTPS)"
 
 #: libcore/ConnectServerDialog.vala:130
 msgid "Server Details"
-msgstr "Detaily o serveru"
+msgstr "Podrobnosti o serveru"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr "Jméno serveru nebo IP adresa"
+msgstr "Název serveru nebo jeho IP adresa"
 
 #: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
@@ -881,15 +883,15 @@ msgstr "Port:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
-msgstr "Jméno sdílení na serveru"
+msgstr "Název sdílení na serveru"
 
 #: libcore/ConnectServerDialog.vala:168
 msgid "Share:"
-msgstr "Sdílet:"
+msgstr "Sdílení:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr "Cesta k sdílené složce na serveru"
+msgstr "Popis umístění sdílené složky na serveru"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -897,15 +899,15 @@ msgstr "Složka:"
 
 #: libcore/ConnectServerDialog.vala:173
 msgid "User Details"
-msgstr "Detaily o uživateli"
+msgstr "Podrobnosti o uživateli"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "Name of Windows domain"
-msgstr "Jméno domény Windows"
+msgstr "Název domény Windows"
 
 #: libcore/ConnectServerDialog.vala:176
 msgid "Domain name:"
-msgstr "Jméno domény:"
+msgstr "Název domény:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
@@ -926,7 +928,7 @@ msgstr "Zapamatovat si heslo"
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
 #: libcore/FileConflictDialog.vala:190
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Storno"
 
 #: libcore/ConnectServerDialog.vala:193
 msgid "Connect"
@@ -955,7 +957,7 @@ msgstr "Přesunout sem"
 
 #: libcore/DndHandler.vala:99
 msgid "Copy Here"
-msgstr "Kopírovat sem"
+msgstr "Zkopírovat sem"
 
 #: libcore/DndHandler.vala:100
 msgid "Link Here"
@@ -975,7 +977,7 @@ msgstr "Naposledy změněno:"
 
 #: libcore/FileConflictDialog.vala:144
 msgid "Replace with"
-msgstr "Nahradit s"
+msgstr "Nahradit za"
 
 #: libcore/FileConflictDialog.vala:172
 msgid "Reset"
@@ -999,11 +1001,11 @@ msgstr "Přejme_novat"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Keep Newest"
-msgstr "Udržovat nejnovější"
+msgstr "Ponechat novější"
 
 #: libcore/FileConflictDialog.vala:193
 msgid "Skip if original was modified more recently"
-msgstr "Přeskočit pokud byl originální soubor nedávno změněn"
+msgstr "Přeskočit pokud byl původní soubor nedávno změněn"
 
 #: libcore/FileConflictDialog.vala:195
 msgid "Replace"
@@ -1025,17 +1027,17 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:310
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starší složka se stejným názvem již existuje v „%s“."
+msgstr "Starší složka se stejným názvem už existuje v „%s“."
 
 #: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Novější složka se stejným názvem již existuje v „%s“."
+msgstr "Novější složka se stejným názvem už existuje v „%s“."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Jiná složka se stejným názvem již existuje v „%s“."
+msgstr "Jiná složka se stejným názvem už existuje v „%s“."
 
 #: libcore/FileConflictDialog.vala:317
 #, c-format
@@ -1044,12 +1046,12 @@ msgstr "Nahradit složku „%s“?"
 
 #: libcore/FileConflictDialog.vala:318
 msgid "Replacing it will remove all files in the folder."
-msgstr "Nahrazením se odstraní všechny soubory ve složce."
+msgstr "Nahrazením budou všechny soubory ve složce odstraněny."
 
 #: libcore/FileConflictDialog.vala:319
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Složka se stejným názvem již existuje v „%s“."
+msgstr "Složka se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:322
 #, c-format
@@ -1063,17 +1065,17 @@ msgstr "Při nahrazení se přepíše jeho obsah."
 #: libcore/FileConflictDialog.vala:326
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starší soubor se stejným názvem již existuje v „%s“."
+msgstr "Starší soubor se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:328
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novější soubor se stejným názvem již existuje v „%s“."
+msgstr "Novější soubor se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:330
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Jiný soubor se stejným názvem již existuje v „%s“."
+msgstr "Jiný soubor se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:356
 msgid "Merge"
@@ -1082,7 +1084,7 @@ msgstr "Sloučit"
 #: libcore/FileUtils.vala:87
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "Nelze zjistit původní umístění „%s“ "
+msgstr "Nedaří se zjistit původní umístění „%s“ "
 
 #: libcore/FileUtils.vala:88
 msgid "The item cannot be restored from trash"
@@ -1091,7 +1093,7 @@ msgstr "Soubor nelze z koše obnovit"
 #: libcore/FileUtils.vala:445
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr "Přejmenování na '%s' se nezdařilo"
+msgstr "Přejmenování na „%s“ se nezdařilo"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:534
@@ -1122,7 +1124,7 @@ msgstr "Připravuje se"
 
 #: libcore/StockDialogs.vala:20
 msgid "_Cancel"
-msgstr "_Zrušit"
+msgstr "_Storno"
 
 #: libcore/StockDialogs.vala:21
 msgid "Delete"
@@ -1162,7 +1164,7 @@ msgstr "Přesto kopírov_at"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
-msgstr "Původní umístění je neznámé"
+msgstr "Původní umístění se nepodařilo zjistit"
 
 #: libcore/UndoManager.vala:311
 msgid "Open trash folder and restore manually"
@@ -1170,7 +1172,7 @@ msgstr "Otevřít koš a obnovit ručně"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:40
 msgid "Permanently delete all items from Trash?"
-msgstr "Trvale smazat všechny položky z koše?"
+msgstr "Trvale smazat všechny položky z Koše?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:41
 msgid ""
@@ -1182,15 +1184,15 @@ msgstr ""
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Trvale smazat všechny položky z koše v tomto umístění?"
+msgstr "Trvale smazat všechny položky z Koše v tomto umístění?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr "Všechny položky z koše v tomto umístění budou trvale smazány."
+msgstr "Všechny položky z Koše v tomto umístění budou trvale smazány."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:104
 msgid "Emptying Trash"
-msgstr "Vyprazdňuje se koš"
+msgstr "Vyprazdňuje se Koš"
 
 #: libcore/FileOperations/MountUtils.vala:26
 #, c-format
@@ -1394,7 +1396,7 @@ msgstr "Při mazání %s došlo k chybě."
 
 #: libcore/marlin-file-operations.c:1491
 msgid "Moving files to trash"
-msgstr "Soubory se přesouvají do koše"
+msgstr "Soubory jsou přesouvány do koše"
 
 #: libcore/marlin-file-operations.c:1493
 #, c-format
@@ -1433,7 +1435,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:1600
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "Soubor nelze přesunout do koše. Zkusit jej smazat?"
+msgstr "Soubor nelze přesunout do koše. Pokusit se ho úplně smazat?"
 
 #: libcore/marlin-file-operations.c:1601
 msgid ""
@@ -1445,7 +1447,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:1605
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr "Soubor nelze přesunout do koše. Zkusit jej smazat?"
+msgstr "Soubor nelze přesunout do koše. Zkusit ho smazat?"
 
 #: libcore/marlin-file-operations.c:1606
 msgid ""
@@ -1460,11 +1462,11 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Smazáním souboru smažete soubor nenávratně"
+" Smazáním souboru ho smažete nenávratně"
 
 #: libcore/marlin-file-operations.c:1802
 msgid "Trashing Files"
-msgstr "Soubory se přesouvají do koše"
+msgstr "Soubory jsou přesouvány do koše"
 
 #: libcore/marlin-file-operations.c:1804
 msgid "Deleting Files"
@@ -1522,7 +1524,7 @@ msgstr "Chyba při kopírování."
 #: libcore/marlin-file-operations.c:1908 libcore/marlin-file-operations.c:3037
 #: libcore/marlin-file-operations.c:3089
 msgid "Error while moving."
-msgstr "Chyba při přesunu."
+msgstr "Chyba při přesouvání."
 
 #: libcore/marlin-file-operations.c:1912
 msgid "Error while moving files to trash."
@@ -1555,7 +1557,7 @@ msgstr "Složku „%s“ nelze spravovat, protože nemáte oprávnění na její
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "Soubor „%s“ nelze spravovat, protože nemáte oprávnění jej číst."
+msgstr "Soubor „%s“ nelze spravovat, protože nemáte oprávnění ho číst."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1674,9 +1676,9 @@ msgstr[2] "Kopíruje se %'d souborů do „%s“"
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Zdvojuje se %'d soubor"
-msgstr[1] "Zdvojují se %'d soubory"
-msgstr[2] "Zdvojuje se %'d souborů"
+msgstr[0] "Duplikuje se %'d soubor"
+msgstr[1] "Duplikují se %'d soubory"
+msgstr[2] "Duplikuje se %'d souborů"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:2486
@@ -1792,20 +1794,20 @@ msgstr "Nelze kopírovat soubor sám na sebe."
 
 #: libcore/marlin-file-operations.c:3653
 msgid "The source file would be overwritten by the destination."
-msgstr "Zdrojový soubor by byl přepsán cílovým."
+msgstr "Zdrojový soubor by byl přepsán tím cílovým."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3895
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Nelze odstranit již existující soubor se stejným názvem v %s."
+msgstr "Nelze odstranit už existující soubor se stejným názvem v %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3965
 #, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "„%s“ zde nelze zkopírovat."
+msgstr "„%s“ sem nelze zkopírovat."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3970
@@ -1815,7 +1817,7 @@ msgstr "Při kopírování souboru do %s došlo k chybě."
 
 #: libcore/marlin-file-operations.c:4189
 msgid "Copying Files"
-msgstr "Soubory se kopírují"
+msgstr "Kopírování souborů"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1917,7 +1919,7 @@ msgstr "Při vytváření složky v %s došlo k chybě."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
-msgstr "Napište cestu"
+msgstr "Zadejte popis umístění"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
 #, c-format
@@ -2011,11 +2013,11 @@ msgstr "Vysypat Koš"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
-msgstr "Obnovit vybrané"
+msgstr "Obnovit označené"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
-msgstr "Smazat vybrané"
+msgstr "Smazat označené"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Smazat %d zkopírovaných položek"

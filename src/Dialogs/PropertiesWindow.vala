@@ -1279,7 +1279,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             PF.FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
                                             goffile.is_folder ());
 
-            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
+            ((Gtk.Entry) header_title).select_region (start_offset, end_offset);
         }
 
         /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether

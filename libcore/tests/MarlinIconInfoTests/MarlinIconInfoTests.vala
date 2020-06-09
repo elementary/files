@@ -28,6 +28,7 @@ void goffile_icon_update_test () {
     string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.png");
     GOF.File file = GOF.File.get_by_uri (test_file_path);
     assert (file != null);
+    stderr.printf ("\n\rquery update file %s\n\r", file.uri);
     file.query_update ();
     assert (file.pix == null);
     file.update_icon (128, 1);

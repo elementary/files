@@ -286,7 +286,7 @@ namespace Marlin.View.Chrome {
 
             set_tooltip_markup ("");
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
-            if (el != null && placeholder == null) {
+            if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {

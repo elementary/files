@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 19:27+0000\n"
-"PO-Revision-Date: 2020-03-29 21:09+0000\n"
+"POT-Creation-Date: 2020-05-31 22:14+0000\n"
+"PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
@@ -297,7 +297,7 @@ msgstr "Não foi possível abrir os URIs"
 msgid "Could not open files or URIs with this app"
 msgstr "Não foi possível abrir arquivos ou URIs com esse aplicativo"
 
-#: src/View/Window.vala:557 src/View/Window.vala:567
+#: src/View/Window.vala:546 src/View/Window.vala:556
 msgid "(as Administrator)"
 msgstr "(como administrador)"
 
@@ -348,13 +348,15 @@ msgstr "Não pode executar este arquivo"
 #: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "\"%s\" deve ser movido da Lixeira antes de abrir"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Os arquivos na lixeira não podem ser abertos. Para abrir este arquivo, ele "
+"deve ser movido para outro lugar."
 
 #: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
@@ -499,26 +501,26 @@ msgstr "Novo"
 msgid "Untitled %s"
 msgstr "Sem título %s"
 
-#: src/View/AbstractDirectoryView.vala:2865
-#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:2870
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "Não é possível remover arquivos daqui"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3045
-#: src/View/AbstractDirectoryView.vala:3061
+#: src/View/AbstractDirectoryView.vala:2871
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "Você não tem permissão para alterar este local"
 
-#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3025
 msgid "Cannot copy files that are in the trash"
 msgstr "Não é possível copiar os arquivos que estão na lixeira"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
 msgstr "Cortar a seleção ao invés"
 
-#: src/View/AbstractDirectoryView.vala:3044
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "Não é possível colar arquivos aqui"
 
