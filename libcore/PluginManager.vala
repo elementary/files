@@ -192,8 +192,6 @@ public class Marlin.PluginManager : Object {
     private void drop_plugin_menuitems (Gtk.Menu menu) {
         var plugin_menu = menu as Gtk.Menu;
 
-        assert (plugin_menu != null);
-
         foreach (var menu_item in menuitem_references) {
             menu_item.parent.remove (menu_item);
         }
