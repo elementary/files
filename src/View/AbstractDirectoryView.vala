@@ -826,7 +826,12 @@ namespace FM {
                     }
                 }
             } else {
-                warning ("Cannot open file in trash");
+                PF.Dialogs.show_error_dialog (
+                    ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+                    _("“%s” must be moved from Trash before opening").printf (file.basename),
+                    _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
+                    window
+                );
             }
         }
 
@@ -2520,7 +2525,7 @@ namespace FM {
         }
 
 
-/** Thumbnail handling */
+/** Thumbnail and color tag handling */
         private void schedule_thumbnail_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
@@ -2530,8 +2535,6 @@ namespace FM {
             assert (slot is GOF.AbstractSlot && slot.directory != null);
 
             if (thumbnail_source_id != 0 ||
-                (!slot.directory.is_local && !show_remote_thumbnails) ||
-                (slot.directory.is_local && hide_local_thumbnails) ||
                  !slot.directory.can_open_files ||
                  slot.directory.is_loading ()) {
 
@@ -2597,13 +2600,14 @@ namespace FM {
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
-                                if (plugins != null) {
-                                    plugins.update_file_info (file);
-                                }
-
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
                                 }
+                            }
+
+                            /* This also ensures color-tag info is correct regardless of whether thumbnail is shown */
+                            if (plugins != null) {
+                                plugins.update_file_info (file);
                             }
                         }
                         /* check if we've reached the end of the visible range */
@@ -2616,9 +2620,15 @@ namespace FM {
                 }
 
                 /* This is the only place that new thumbnail files are created */
-                /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
-                 * and there has not been another event (which would zero the thumbnail_source_id) */
-                if (actually_visible > 0 && thumbnail_source_id > 0) {
+                /* Do not trigger a thumbnail request unless:
+                    * there are unthumbnailed files actually visible
+                    * there has not been another event (which would zero the thumbnail_source_id)
+                    * thumbnails are not hidden by settings
+                 */
+                if ((actually_visible > 0 && thumbnail_source_id > 0) &&
+                    ((slot.directory.is_local && !hide_local_thumbnails) ||
+                     (!slot.directory.is_local && show_remote_thumbnails))) {
+
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
                     draw_when_idle ();
@@ -3031,11 +3041,17 @@ namespace FM {
                 case Gdk.Key.v:
                 case Gdk.Key.V:
                     if (only_control_pressed) {
+                        update_selected_files_and_menu ();
                         if (!in_recent && is_writable) {
-                            /* Will drop any existing selection and paste into current directory */
-                            action_set_enabled (common_actions, "paste-into", true);
-                            unselect_all ();
-                            common_actions.activate_action ("paste-into", null);
+                            if (selected_files.first () != null && selected_files.first ().next != null) {
+                                //Ignore if multiple files selected
+                                Gdk.beep ();
+                                warning ("Cannot paste into a multiple selection");
+                            } else {
+                                //None or one file selected. Paste into selected file else base directory
+                                action_set_enabled (common_actions, "paste-into", true);
+                                common_actions.activate_action ("paste-into", null);
+                            }
                         } else {
                             PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                             _("You do not have permission to change this location"),
