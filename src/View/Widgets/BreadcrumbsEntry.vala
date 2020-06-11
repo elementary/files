@@ -108,9 +108,11 @@ namespace Marlin.View.Chrome {
                 Source.remove (button_press_timeout_id);
                 button_press_timeout_id = 0;
             }
+
             if (drop_file_list != null) {
                 return true;
             }
+
             if (event.button == 1) {
                 return base.on_button_release_event (event);
             } else { /* other buttons act on press */
@@ -534,7 +536,8 @@ namespace Marlin.View.Chrome {
         }
 
         protected override bool on_button_press_event (Gdk.EventButton event) {
-            if (icon_event (event) || has_focus) {
+            /* Only handle if not on icon and breadcrumbs are visible */
+            if (icon_event (event) || has_focus || hide_breadcrumbs) {
                 return base.on_button_press_event (event);
             } else {
                 var el = mark_pressed_element (event);
@@ -554,6 +557,7 @@ namespace Marlin.View.Chrome {
                     }
                 }
             }
+
             return true;
         }
 

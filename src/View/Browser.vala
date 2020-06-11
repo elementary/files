@@ -50,8 +50,10 @@ namespace Marlin.View {
                         forward_stack.clear ();
                         back_stack.push (current_uri);
 
+#if HAVE_ZEITGEIST
                         ZeitgeistManager.report_event (current_uri, Zeitgeist.ZG.LEAVE_EVENT);
                         ZeitgeistManager.report_event (uri, Zeitgeist.ZG.ACCESS_EVENT);
+#endif
                     }
                 } else { /* If current uri is not loadable remember previous uri anyway so that back button works */
                     back_stack.push (current_uri);
