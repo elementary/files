@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-31 22:14+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-06-03 00:37+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
@@ -521,7 +521,7 @@ msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
 #: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
-msgstr "Místo toho vyjmout výběr"
+msgstr "Namísto toho budou vybrané položky vyjmuty"
 
 #: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
@@ -541,7 +541,7 @@ msgstr "Síť není k dispozici"
 
 #: src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
-msgstr "Pro přístup k této složce je potřeba funkgující síť"
+msgstr "Pro přístup k této složce je potřeba fungující síť"
 
 #: src/View/ViewContainer.vala:414
 msgid "This Folder Does Not Belong to You"
@@ -589,7 +589,7 @@ msgstr "Osobní"
 
 #: src/View/Sidebar.vala:566
 msgid "Your common places and bookmarks"
-msgstr "Vaše často prohlížená místa a záložky"
+msgstr "Vámi často prohlížená místa a záložky"
 
 #: src/View/Sidebar.vala:585
 msgid "Open your personal folder"
@@ -751,7 +751,7 @@ msgstr "Následující"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr "Obnovit složku"
+msgstr "Znovu načíst tuto složku"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -1001,11 +1001,11 @@ msgstr "Přejme_novat"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Keep Newest"
-msgstr "Udržovat nejnovější"
+msgstr "Ponechat novější"
 
 #: libcore/FileConflictDialog.vala:193
 msgid "Skip if original was modified more recently"
-msgstr "Přeskočit pokud byl originální soubor nedávno změněn"
+msgstr "Přeskočit pokud byl původní soubor nedávno změněn"
 
 #: libcore/FileConflictDialog.vala:195
 msgid "Replace"
@@ -1027,7 +1027,7 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:310
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starší složka se stejným názvem již existuje v „%s“."
+msgstr "Starší složka se stejným názvem už existuje v „%s“."
 
 #: libcore/FileConflictDialog.vala:312
 #, c-format
@@ -1046,12 +1046,12 @@ msgstr "Nahradit složku „%s“?"
 
 #: libcore/FileConflictDialog.vala:318
 msgid "Replacing it will remove all files in the folder."
-msgstr "Nahrazením se odstraní všechny soubory ve složce."
+msgstr "Nahrazením budou všechny soubory ve složce odstraněny."
 
 #: libcore/FileConflictDialog.vala:319
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Složka se stejným názvem již existuje v „%s“."
+msgstr "Složka se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:322
 #, c-format
@@ -1065,17 +1065,17 @@ msgstr "Při nahrazení se přepíše jeho obsah."
 #: libcore/FileConflictDialog.vala:326
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starší soubor se stejným názvem již existuje v „%s“."
+msgstr "Starší soubor se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:328
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novější soubor se stejným názvem již existuje v „%s“."
+msgstr "Novější soubor se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:330
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Jiný soubor se stejným názvem již existuje v „%s“."
+msgstr "Jiný soubor se stejným názvem už v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:356
 msgid "Merge"
@@ -1084,7 +1084,7 @@ msgstr "Sloučit"
 #: libcore/FileUtils.vala:87
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "Nelze zjistit původní umístění „%s“ "
+msgstr "Nedaří se zjistit původní umístění „%s“ "
 
 #: libcore/FileUtils.vala:88
 msgid "The item cannot be restored from trash"
@@ -1164,7 +1164,7 @@ msgstr "Přesto kopírov_at"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
-msgstr "Původní umístění je neznámé"
+msgstr "Původní umístění se nepodařilo zjistit"
 
 #: libcore/UndoManager.vala:311
 msgid "Open trash folder and restore manually"
@@ -1172,7 +1172,7 @@ msgstr "Otevřít koš a obnovit ručně"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:40
 msgid "Permanently delete all items from Trash?"
-msgstr "Trvale smazat všechny položky z koše?"
+msgstr "Trvale smazat všechny položky z Koše?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:41
 msgid ""
@@ -1184,15 +1184,15 @@ msgstr ""
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Trvale smazat všechny položky z koše v tomto umístění?"
+msgstr "Trvale smazat všechny položky z Koše v tomto umístění?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr "Všechny položky z koše v tomto umístění budou trvale smazány."
+msgstr "Všechny položky z Koše v tomto umístění budou trvale smazány."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:104
 msgid "Emptying Trash"
-msgstr "Vyprazdňuje se koš"
+msgstr "Vyprazdňuje se Koš"
 
 #: libcore/FileOperations/MountUtils.vala:26
 #, c-format
@@ -1396,7 +1396,7 @@ msgstr "Při mazání %s došlo k chybě."
 
 #: libcore/marlin-file-operations.c:1491
 msgid "Moving files to trash"
-msgstr "Soubory se přesouvají do koše"
+msgstr "Soubory jsou přesouvány do koše"
 
 #: libcore/marlin-file-operations.c:1493
 #, c-format
@@ -1435,7 +1435,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:1600
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "Soubor nelze přesunout do koše. Zkusit jej smazat?"
+msgstr "Soubor nelze přesunout do koše. Pokusit se ho úplně smazat?"
 
 #: libcore/marlin-file-operations.c:1601
 msgid ""
@@ -1462,11 +1462,11 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Smazáním souboru smažete soubor nenávratně"
+" Smazáním souboru ho smažete nenávratně"
 
 #: libcore/marlin-file-operations.c:1802
 msgid "Trashing Files"
-msgstr "Soubory se přesouvají do koše"
+msgstr "Soubory jsou přesouvány do koše"
 
 #: libcore/marlin-file-operations.c:1804
 msgid "Deleting Files"
@@ -1524,7 +1524,7 @@ msgstr "Chyba při kopírování."
 #: libcore/marlin-file-operations.c:1908 libcore/marlin-file-operations.c:3037
 #: libcore/marlin-file-operations.c:3089
 msgid "Error while moving."
-msgstr "Chyba při přesunu."
+msgstr "Chyba při přesouvání."
 
 #: libcore/marlin-file-operations.c:1912
 msgid "Error while moving files to trash."
@@ -1557,7 +1557,7 @@ msgstr "Složku „%s“ nelze spravovat, protože nemáte oprávnění na její
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "Soubor „%s“ nelze spravovat, protože nemáte oprávnění hoj číst."
+msgstr "Soubor „%s“ nelze spravovat, protože nemáte oprávnění ho číst."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1676,9 +1676,9 @@ msgstr[2] "Kopíruje se %'d souborů do „%s“"
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Zdvojuje se %'d soubor"
-msgstr[1] "Zdvojují se %'d soubory"
-msgstr[2] "Zdvojuje se %'d souborů"
+msgstr[0] "Duplikuje se %'d soubor"
+msgstr[1] "Duplikují se %'d soubory"
+msgstr[2] "Duplikuje se %'d souborů"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:2486
@@ -1794,20 +1794,20 @@ msgstr "Nelze kopírovat soubor sám na sebe."
 
 #: libcore/marlin-file-operations.c:3653
 msgid "The source file would be overwritten by the destination."
-msgstr "Zdrojový soubor by byl přepsán cílovým."
+msgstr "Zdrojový soubor by byl přepsán tím cílovým."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3895
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Nelze odstranit již existující soubor se stejným názvem v %s."
+msgstr "Nelze odstranit už existující soubor se stejným názvem v %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3965
 #, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "„%s“ zde nelze zkopírovat."
+msgstr "„%s“ sem nelze zkopírovat."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3970
@@ -1817,7 +1817,7 @@ msgstr "Při kopírování souboru do %s došlo k chybě."
 
 #: libcore/marlin-file-operations.c:4189
 msgid "Copying Files"
-msgstr "Soubory se kopírují"
+msgstr "Kopírování souborů"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -2013,11 +2013,11 @@ msgstr "Vysypat Koš"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
-msgstr "Obnovit vybrané"
+msgstr "Obnovit označené"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
-msgstr "Smazat vybrané"
+msgstr "Smazat označené"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Smazat %d zkopírovaných položek"
