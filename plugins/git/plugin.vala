@@ -110,6 +110,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         unowned string fs_type = info.get_attribute_string (FileAttribute.FILESYSTEM_TYPE);
         if (EXCLUDED_FS_TYPES.contains (fs_type)) {
             warning ("GIT PLUGIN: excluded filesystem type %s", fs_type);
+            return;
         }
 
         var dir_uri = directory.uri;
