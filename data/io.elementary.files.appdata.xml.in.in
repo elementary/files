@@ -60,21 +60,9 @@
   <releases>
   <release version="4.4.4" date="2020-07-01" urgency="medium">
     <description>
-      <p>New Featuress:</p>
-        <ul>
-          <li></li>
-        </ul>
       <p>Improvements:</p>
         <ul>
           <li>Bookmark menu option for network mounts in sidebar</li>
-        </ul>
-         <p>Fixes:</p>
-        <ul>
-          <li></li>
-        </ul>
-         <p>Other Updates:</p>
-        <ul>
-          <li></li>
         </ul>
       </description>
     </release>
