@@ -108,7 +108,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                 warning ("GIT PLUGIN: Error querying %s filesystem info: %s", directory.uri, error.message);
             }
 
-            info = null;
+            return;
         }
 
         if (info == null || !info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
