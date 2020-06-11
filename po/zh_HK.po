@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 21:50+0000\n"
+"POT-Creation-Date: 2020-05-31 22:14+0000\n"
 "PO-Revision-Date: 2018-01-20 00:04+0000\n"
 "Last-Translator: Wendel Hime <wendelhime@hotmail.com>\n"
 "Language-Team: zh (generated) <https://weblate.elementary.io/projects/files/"
@@ -285,7 +285,7 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:557 src/View/Window.vala:567
+#: src/View/Window.vala:546 src/View/Window.vala:556
 msgid "(as Administrator)"
 msgstr ""
 

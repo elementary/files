@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 21:50+0000\n"
+"POT-Creation-Date: 2020-05-31 22:14+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -295,7 +295,7 @@ msgstr "Không thể đổi tên thành '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Không thể mở tệp hoặc uris với ứng dụng này"
 
-#: src/View/Window.vala:557 src/View/Window.vala:567
+#: src/View/Window.vala:546 src/View/Window.vala:556
 msgid "(as Administrator)"
 msgstr ""
 
