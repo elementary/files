@@ -531,13 +531,17 @@ namespace PF.FileUtils {
         switch (now_weekday - disp_weekday) {
             case 0:
                 ///TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-                format_string = _("Today at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
+                format_string = _("Today at %s").printf (
+                                    Granite.DateTime.get_default_time_format (!clock_is_24h, false)
+                                );
 
                 break;
             case 1:
             case -6: /* Yesterday is Sunday */
                 ///TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-                format_string = _("Yesterday at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
+                format_string = _("Yesterday at %s").printf (
+                                    Granite.DateTime.get_default_time_format (!clock_is_24h, false)
+                                );
 
                 break;
 

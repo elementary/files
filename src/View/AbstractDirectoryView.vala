@@ -825,7 +825,12 @@ namespace FM {
                     }
                 }
             } else {
-                warning ("Cannot open file in trash");
+                PF.Dialogs.show_error_dialog (
+                    ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+                    _("“%s” must be moved from Trash before opening").printf (file.basename),
+                    _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
+                    window
+                );
             }
         }
 
@@ -1861,7 +1866,10 @@ namespace FM {
                 open_submenu.add (new Gtk.SeparatorMenuItem ());
             }
 
-            if (!selected_file.is_mountable () && !selected_file.is_root_network_folder () && can_open_file (selected_file)) {
+            if (!selected_file.is_mountable () &&
+                !selected_file.is_root_network_folder () &&
+                can_open_file (selected_file)) {
+
                 if (!selected_file.is_folder () && selected_file.is_executable ()) {
                     var run_menuitem = new Gtk.MenuItem.with_label (_("Run"));
                     run_menuitem.action_name = "selection.open";
@@ -1935,7 +1943,7 @@ namespace FM {
             }
 
             var open_submenu_item = new Gtk.MenuItem ();
-            if (open_submenu.get_children ().length () > 0) {
+            if (open_submenu.get_children ().length () > 0) { //Can be assumed to be limited length
                 open_submenu_item.submenu = open_submenu;
 
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
@@ -2042,7 +2050,9 @@ namespace FM {
                         menu.add (copy_link_menuitem);
 
                         // Do not display the 'Paste into' menuitem if nothing to paste
-                        if (common_actions.get_action_enabled ("paste-into") && clipboard != null && clipboard.can_paste) {
+                        if (common_actions.get_action_enabled ("paste-into") &&
+                            clipboard != null && clipboard.can_paste) {
+
                             if (clipboard.files_linked) {
                                 paste_menuitem.label = _("Paste Link into Folder");
                             } else {
@@ -2064,7 +2074,9 @@ namespace FM {
                     }
 
                     /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") && window.can_bookmark_uri (selected_files.data.uri)) {
+                    if (common_actions.get_action_enabled ("bookmark") &&
+                        window.can_bookmark_uri (selected_files.data.uri)) {
+
                         menu.add (bookmark_menuitem);
                     }
 
@@ -2112,7 +2124,9 @@ namespace FM {
                     }
 
                     /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") && window.can_bookmark_uri (slot.directory.file.uri)) {
+                    if (common_actions.get_action_enabled ("bookmark") &&
+                        window.can_bookmark_uri (slot.directory.file.uri)) {
+
                         menu.add (bookmark_menuitem);
                     }
 
@@ -2214,7 +2228,7 @@ namespace FM {
                     var template_folder = GLib.File.new_for_path (template_path);
                     load_templates_from_folder (template_folder);
 
-                    if (templates.length () > 0) {
+                    if (templates.length () > 0) { //Can be assumed to be limited length
                         submenu.add (new Gtk.SeparatorMenuItem ());
 
                         // We need to get directories first
@@ -2238,7 +2252,8 @@ namespace FM {
                                 }
                             } else {
                                 var template_menuitem = new Gtk.MenuItem.with_label (label);
-                                template_menuitem.set_detailed_action_name ("background.create-from::" + index.to_string ());
+                                template_menuitem.set_detailed_action_name ("background.create-from::" +
+                                                                            index.to_string ());
 
                                 active_submenu.add (template_menuitem);
 
@@ -2391,7 +2406,7 @@ namespace FM {
             var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
             try {
                 enumerator = template_folder.enumerate_children (f_attr, flags, null);
-                uint count = templates.length ();
+                uint count = templates.length (); //Assume to be limited in size
                 GLib.File location;
                 GLib.FileInfo? info = enumerator.next_file (null);
 
@@ -2410,7 +2425,7 @@ namespace FM {
                 return;
             }
 
-            if (file_list.length () > 0) {
+            if (file_list.length () > 0) { // Can assumed to be limited in length
                 file_list.sort ((a, b) => {
                     return strcmp (a.get_basename ().down (), b.get_basename ().down ());
                 });
@@ -2422,7 +2437,7 @@ namespace FM {
                 templates.append (template_folder);
             }
 
-            if (folder_list.length () > 0) {
+            if (folder_list.length () > 0) { //Can be assumed to be limited in length
                 /* recursively load templates from subdirectories */
                 folder_list.@foreach ((folder) => {
                     load_templates_from_folder (folder);
@@ -2509,7 +2524,7 @@ namespace FM {
         }
 
 
-/** Thumbnail handling */
+/** Thumbnail and color tag handling */
         private void schedule_thumbnail_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
@@ -2519,8 +2534,6 @@ namespace FM {
             assert (slot is GOF.AbstractSlot && slot.directory != null);
 
             if (thumbnail_source_id != 0 ||
-                (!slot.directory.is_local && !show_remote_thumbnails) ||
-                (slot.directory.is_local && hide_local_thumbnails) ||
                  !slot.directory.can_open_files ||
                  slot.directory.is_loading ()) {
 
@@ -2586,13 +2599,14 @@ namespace FM {
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
-                                if (plugins != null) {
-                                    plugins.update_file_info (file);
-                                }
-
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
                                 }
+                            }
+
+                            /* This also ensures color-tag info is correct regardless of whether thumbnail is shown */
+                            if (plugins != null) {
+                                plugins.update_file_info (file);
                             }
                         }
                         /* check if we've reached the end of the visible range */
@@ -2605,9 +2619,15 @@ namespace FM {
                 }
 
                 /* This is the only place that new thumbnail files are created */
-                /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
-                 * and there has not been another event (which would zero the thumbnail_source_id) */
-                if (actually_visible > 0 && thumbnail_source_id > 0) {
+                /* Do not trigger a thumbnail request unless:
+                    * there are unthumbnailed files actually visible
+                    * there has not been another event (which would zero the thumbnail_source_id)
+                    * thumbnails are not hidden by settings
+                 */
+                if ((actually_visible > 0 && thumbnail_source_id > 0) &&
+                    ((slot.directory.is_local && !hide_local_thumbnails) ||
+                     (!slot.directory.is_local && show_remote_thumbnails))) {
+
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
                     draw_when_idle ();
@@ -3020,11 +3040,17 @@ namespace FM {
                 case Gdk.Key.v:
                 case Gdk.Key.V:
                     if (only_control_pressed) {
+                        update_selected_files_and_menu ();
                         if (!in_recent && is_writable) {
-                            /* Will drop any existing selection and paste into current directory */
-                            action_set_enabled (common_actions, "paste-into", true);
-                            unselect_all ();
-                            common_actions.activate_action ("paste-into", null);
+                            if (selected_files.first () != null && selected_files.first ().next != null) {
+                                //Ignore if multiple files selected
+                                Gdk.beep ();
+                                warning ("Cannot paste into a multiple selection");
+                            } else {
+                                //None or one file selected. Paste into selected file else base directory
+                                action_set_enabled (common_actions, "paste-into", true);
+                                common_actions.activate_action ("paste-into", null);
+                            }
                         } else {
                             PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                             _("You do not have permission to change this location"),
