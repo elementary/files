@@ -93,8 +93,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         FileInfo info;
         try {
             info = directory.get_target_location ().query_filesystem_info (FileAttribute.FILESYSTEM_TYPE);
-        }
-        catch (GLib.Error error) {
+        } catch (GLib.Error error) {
             if (!(error is IOError.CANCELLED)) {
                 warning ("GIT PLUGIN: Error querying %s filesystem info: %s", directory.uri, error.message);
             }
