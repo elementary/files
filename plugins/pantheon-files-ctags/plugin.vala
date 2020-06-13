@@ -183,7 +183,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info (GOF.File file) {
-        return_if_fail (file != null);
+        if (file == null) {
+            return;
+        }
 
         try {
             if (!file.exists) {
@@ -231,11 +233,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info_for_recent (GOF.File file, string? target_uri) {
-        if (target_uri == null) { /* e.g. for recent:/// */
+        if (target_uri == null || file == null) { /* e.g. for recent:/// */
             return;
         }
-
-        return_if_fail (file != null);
 
         try {
             var rc = yield daemon.get_uri_infos (target_uri);
@@ -256,7 +256,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void update_file_info (GOF.File file) {
-
         return_if_fail (file != null);
 
         if (file.info != null && !f_ignore_dir (file.directory) &&
