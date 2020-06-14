@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-01 23:37+0000\n"
-"PO-Revision-Date: 2020-06-07 18:01+0000\n"
+"PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -493,7 +493,7 @@ msgstr "項目がゴミ箱に入ったら、データベースからカラータ
 
 #: data/io.elementary.files.appdata.xml.in.in:273
 msgid "Throttle tab closing"
-msgstr ""
+msgstr "Ctrl + W でタブを閉じてから一定時間経過していない場合は、タブを閉じないように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:274
 msgid "`Ctrl` key fixes"
