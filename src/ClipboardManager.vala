@@ -177,7 +177,6 @@ namespace Marlin {
             if (file_list != null) {
                 try {
                     yield FileOperations.copy_move_link (file_list,
-                                                         null,
                                                          target_file,
                                                          action,
                                                          widget);

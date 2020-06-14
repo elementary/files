@@ -953,8 +953,7 @@ namespace FM {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
             Marlin.FileOperations.new_file.begin (
-                this as Gtk.Widget,
-                null,
+                this,
                 parent_uri,
                 null,
                 null,
@@ -974,7 +973,7 @@ namespace FM {
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_folder.begin (null, null, slot.location, null, (obj, res) => {
+            Marlin.FileOperations.new_folder.begin (this, slot.location, null, (obj, res) => {
                 try {
                     var file = Marlin.FileOperations.new_folder.end (res);
                     create_file_done (file);
@@ -2503,7 +2502,6 @@ namespace FM {
             var new_name = (_("Untitled %s")).printf (template.get_basename ());
             Marlin.FileOperations.new_file_from_template.begin (
                 this,
-                null,
                 slot.location,
                 new_name,
                 template,

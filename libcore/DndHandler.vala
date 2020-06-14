@@ -33,7 +33,6 @@ namespace Marlin {
             if (drop_target.is_folder ()) {
                 Marlin.FileOperations.copy_move_link.begin (
                     drop_file_list,
-                    null,
                     drop_target.get_target_location (),
                     action,
                     widget,
