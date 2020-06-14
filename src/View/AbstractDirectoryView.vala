@@ -620,7 +620,6 @@ namespace FM {
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (GOF.Directory.Async dir) {
-            assert (dir != null);
             dir.file_added.connect (on_directory_file_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
