@@ -54,14 +54,14 @@ namespace Marlin {
     [CCode (lower_case_cprefix = "marlin_file_operations_")]
     namespace FileOperations {
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        static async GLib.File? new_folder (Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        static async GLib.File? new_folder (Gtk.Widget? parent_view, GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error;
         [CCode (cheader_filename = "marlin-file-operations.h")]
         static async bool @delete (GLib.List<GLib.File> locations, Gtk.Window window, bool try_trash, GLib.Cancellable? cancellable = null) throws GLib.Error;
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        static async bool copy_move_link (GLib.List<GLib.File> files, GLib.Array<Gdk.Point>? relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        static async bool copy_move_link (GLib.List<GLib.File> files, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, GLib.Cancellable? cancellable = null) throws GLib.Error;
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        static async GLib.File? new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        static async GLib.File? new_file (Gtk.Widget parent_view, string parent_dir, string? target_filename, string? initial_contents, int length, GLib.Cancellable? cancellable = null) throws GLib.Error;
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        static async GLib.File? new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        static async GLib.File? new_file_from_template (Gtk.Widget parent_view, GLib.File parent_dir, string? target_filename, GLib.File template, GLib.Cancellable? cancellable = null) throws GLib.Error;
     }
 }
