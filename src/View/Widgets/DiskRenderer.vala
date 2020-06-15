@@ -26,7 +26,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
 
     // offset to left align disk usage graphic with the text
     private const int OFFSET = 3;
-    private const int BAR_HEIGHT = 3;
+    private const int BAR_HEIGHT = 4;
 
     construct {
         is_disk = false;
