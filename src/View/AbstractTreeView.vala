@@ -23,7 +23,6 @@ namespace FM {
         protected Gtk.TreeViewColumn name_column;
 
         protected AbstractTreeView (Marlin.View.Slot _slot) {
-            assert (_slot != null);
             base (_slot);
         }
 
