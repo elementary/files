@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-31 22:14+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -153,7 +153,7 @@ msgstr "无法确定"
 #: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:121
 #: libcore/FileConflictDialog.vala:149
 msgid "Size:"
-msgstr "空间用量："
+msgstr "硬盘用量："
 
 #: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:129 libcore/FileConflictDialog.vala:157

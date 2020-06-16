@@ -50,7 +50,6 @@ typedef struct {
     GIOSchedulerJob *io_job;
     GTimer *time;
     GtkWindow *parent_window;
-    int screen_num;
     int inhibit_cookie;
     PFProgressInfo *progress;
     GCancellable *cancellable;
@@ -70,9 +69,6 @@ typedef struct {
     gboolean is_move;
     GList *files;
     GFile *destination;
-    //GFile *desktop_location;
-    GdkPoint *icon_positions;
-    int n_icon_positions;
     GHashTable *debuting_files;
     GTask *task;
 } CopyMoveJob;
@@ -93,8 +89,6 @@ typedef struct {
     GFile *src;
     char *src_data;
     int length;
-    GdkPoint position;
-    gboolean has_position;
     GFile *created_file;
     GTask *task;
 } CreateJob;
@@ -758,7 +752,6 @@ init_common (gsize job_size,
              GtkWindow *parent_window)
 {
     CommonJob *common;
-    GdkScreen *screen;
 
     common = g_malloc0 (job_size); /* Booleans default to false (0) */
 
@@ -772,12 +765,6 @@ init_common (gsize job_size,
     common->cancellable = pf_progress_info_get_cancellable (common->progress);
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
-    common->screen_num = 0;
-
-    if (parent_window) {
-        screen = gtk_widget_get_screen (GTK_WIDGET (parent_window));
-        common->screen_num = gdk_screen_get_number (screen);
-    }
 
     return common;
 }
@@ -2831,7 +2818,6 @@ static void copy_move_file (CopyMoveJob *job,
                             SourceInfo *source_info,
                             TransferInfo *transfer_info,
                             GHashTable *debuting_files,
-                            GdkPoint *point,
                             gboolean overwrite,
                             gboolean *skipped_file,
                             gboolean readonly_source_fs);
@@ -3021,7 +3007,7 @@ retry:
             src_file = g_file_get_child (src,
                                          g_file_info_get_name (info));
             copy_move_file (copy_job, src_file, *dest, same_fs, FALSE, &dest_fs_type,
-                            source_info, transfer_info, NULL, NULL, FALSE, &local_skipped_file,
+                            source_info, transfer_info, NULL, FALSE, &local_skipped_file,
                             readonly_source_fs);
             g_object_unref (src_file);
             g_object_unref (info);
@@ -3563,7 +3549,6 @@ copy_move_file (CopyMoveJob *copy_job,
                 SourceInfo *source_info,
                 TransferInfo *transfer_info,
                 GHashTable *debuting_files,
-                GdkPoint *position,
                 gboolean overwrite,
                 gboolean *skipped_file,
                 gboolean readonly_source_fs)
@@ -4007,7 +3992,6 @@ copy_files (CopyMoveJob *job,
     GFile *src;
     gboolean same_fs;
     int i;
-    GdkPoint *point;
     gboolean skipped_file;
     gboolean unique_names;
     GFile *dest;
@@ -4041,13 +4025,6 @@ copy_files (CopyMoveJob *job,
          l = l->next) {
         src = l->data;
 
-        if (i < job->n_icon_positions) {
-            point = &job->icon_positions[i];
-        } else {
-            point = NULL;
-        }
-
-
         same_fs = FALSE;
         if (dest_fs_id) {
             same_fs = has_fs_id (src, dest_fs_id);
@@ -4067,7 +4044,7 @@ copy_files (CopyMoveJob *job,
                             &dest_fs_type,
                             source_info, transfer_info,
                             job->debuting_files,
-                            point, FALSE, &skipped_file,
+                            FALSE, &skipped_file,
                             readonly_source_fs);
             g_object_unref (dest);
         }
@@ -4090,7 +4067,6 @@ copy_job_done (gpointer user_data)
     job->files = NULL;
     g_clear_object (&job->destination);
     g_clear_pointer (&job->debuting_files, g_hash_table_unref);
-    g_clear_pointer (&job->icon_positions, g_free);
 
     finalize_common ((CommonJob *)job);
 
@@ -4164,7 +4140,6 @@ aborted:
 
 static void
 marlin_file_operations_copy (GList               *files,
-                             GArray              *relative_item_points,
                              GFile               *target_dir,
                              GtkWindow           *parent_window,
                              GCancellable        *cancellable,
@@ -4177,13 +4152,6 @@ marlin_file_operations_copy (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Copying Files"));
@@ -4243,20 +4211,13 @@ typedef struct {
 
 static MoveFileCopyFallback *
 move_copy_file_callback_new (GFile *file,
-                             gboolean overwrite,
-                             GdkPoint *position)
+                             gboolean overwrite)
 {
     MoveFileCopyFallback *fallback;
 
     fallback = g_new (MoveFileCopyFallback, 1);
     fallback->file = file;
     fallback->overwrite = overwrite;
-    if (position) {
-        fallback->has_position = TRUE;
-        fallback->position = *position;
-    } else {
-        fallback->has_position = FALSE;
-    }
 
     return fallback;
 }
@@ -4282,7 +4243,6 @@ move_file_prepare (CopyMoveJob *move_job,
                    gboolean same_fs,
                    char **dest_fs_type,
                    GHashTable *debuting_files,
-                   GdkPoint *position,
                    GList **fallback_files,
                    int files_left)
 {
@@ -4463,9 +4423,7 @@ retry:
              (overwrite && IS_IO_ERROR (error, IS_DIRECTORY))) {
         g_error_free (error);
 
-        fallback = move_copy_file_callback_new (src,
-                                                overwrite,
-                                                position);
+        fallback = move_copy_file_callback_new (src, overwrite);
         *fallback_files = g_list_prepend (*fallback_files, fallback);
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
@@ -4521,7 +4479,6 @@ move_files_prepare (CopyMoveJob *job,
     GFile *src;
     gboolean same_fs;
     int i;
-    GdkPoint *point;
     int total, left;
 
     common = &job->common;
@@ -4536,13 +4493,6 @@ move_files_prepare (CopyMoveJob *job,
          l = l->next) {
         src = l->data;
 
-        if (i < job->n_icon_positions) {
-            point = &job->icon_positions[i];
-        } else {
-            point = NULL;
-        }
-
-
         same_fs = FALSE;
         if (dest_fs_id) {
             same_fs = has_fs_id (src, dest_fs_id);
@@ -4551,7 +4501,6 @@ move_files_prepare (CopyMoveJob *job,
         move_file_prepare (job, src, job->destination,
                            same_fs, dest_fs_type,
                            job->debuting_files,
-                           point,
                            fallbacks,
                            left);
         report_move_progress (job, total, --left);
@@ -4576,7 +4525,6 @@ move_files (CopyMoveJob *job,
     GFile *src;
     gboolean same_fs;
     int i;
-    GdkPoint *point;
     gboolean skipped_file;
     MoveFileCopyFallback *fallback;
     common = &job->common;
@@ -4590,12 +4538,6 @@ move_files (CopyMoveJob *job,
         fallback = l->data;
         src = fallback->file;
 
-        if (fallback->has_position) {
-            point = &fallback->position;
-        } else {
-            point = NULL;
-        }
-
         same_fs = FALSE;
         if (dest_fs_id) {
             same_fs = has_fs_id (src, dest_fs_id);
@@ -4608,7 +4550,7 @@ move_files (CopyMoveJob *job,
                         same_fs, FALSE, dest_fs_type,
                         source_info, transfer_info,
                         job->debuting_files,
-                        point, fallback->overwrite, &skipped_file, FALSE);
+                        fallback->overwrite, &skipped_file, FALSE);
         i++;
     }
 }
@@ -4626,7 +4568,6 @@ move_job_done (gpointer user_data)
     job->files = NULL;
     g_clear_object (&job->destination);
     g_clear_pointer (&job->debuting_files, g_hash_table_unref);
-    g_clear_pointer (&job->icon_positions, g_free);
 
     finalize_common ((CommonJob *)job);
 
@@ -4717,7 +4658,6 @@ aborted:
 
 static void
 marlin_file_operations_move (GList               *files,
-                             GArray              *relative_item_points,
                              GFile               *target_dir,
                              GtkWindow           *parent_window,
                              GCancellable        *cancellable,
@@ -4731,13 +4671,6 @@ marlin_file_operations_move (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
@@ -4820,7 +4753,6 @@ link_file (CopyMoveJob *job,
            GFile *src, GFile *dest_dir,
            char **dest_fs_type,
            GHashTable *debuting_files,
-           GdkPoint *position,
            int files_left)
 {
     GFile *src_dir, *dest, *new_dest;
@@ -4875,11 +4807,6 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
        marlin_file_changes_queue_file_added (dest);
-        /*if (position) {
-            //marlin_file_changes_queue_schedule_position_set (dest, *position, common->screen_num);
-        } else {
-            marlin_file_changes_queue_schedule_position_remove (dest);
-        }*/
 
         g_object_unref (dest);
 
@@ -4983,7 +4910,6 @@ link_job_done (gpointer user_data)
     job->files = NULL;
     g_clear_object (&job->destination);
     g_clear_pointer (&job->debuting_files, g_hash_table_unref);
-    g_clear_pointer (&job->icon_positions, g_free);
 
     finalize_common ((CommonJob *)job);
 
@@ -4999,7 +4925,6 @@ link_job (GIOSchedulerJob *io_job,
     CopyMoveJob *job;
     CommonJob *common;
     GFile *src;
-    GdkPoint *point;
     char *dest_fs_type;
     int total, left;
     int i;
@@ -5030,16 +4955,10 @@ link_job (GIOSchedulerJob *io_job,
          l = l->next) {
         src = l->data;
 
-        if (i < job->n_icon_positions) {
-            point = &job->icon_positions[i];
-        } else {
-            point = NULL;
-        }
-
 
         link_file (job, src, job->destination,
                    &dest_fs_type, job->debuting_files,
-                   point, left);
+                   left);
         report_link_progress (job, total, --left);
         i++;
 
@@ -5058,7 +4977,6 @@ aborted:
 
 static void
 marlin_file_operations_link (GList               *files,
-                             GArray              *relative_item_points,
                              GFile               *target_dir,
                              GtkWindow           *parent_window,
                              GCancellable        *cancellable,
@@ -5071,13 +4989,6 @@ marlin_file_operations_link (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
@@ -5106,7 +5017,6 @@ marlin_file_operations_link_finish (GAsyncResult  *result,
 
 static void
 marlin_file_operations_duplicate (GList               *files,
-                                  GArray              *relative_item_points,
                                   GtkWindow           *parent_window,
                                   GCancellable        *cancellable,
                                   GAsyncReadyCallback  callback,
@@ -5118,13 +5028,6 @@ marlin_file_operations_duplicate (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = NULL;
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
@@ -5411,7 +5314,6 @@ copy_move_link_link_finish (GObject *source_object,
 
 void
 marlin_file_operations_copy_move_link (GList               *files,
-                                       GArray              *relative_item_points,
                                        GFile               *target_dir,
                                        GdkDragAction        copy_action,
                                        GtkWidget           *parent_view,
@@ -5477,14 +5379,12 @@ marlin_file_operations_copy_move_link (GList               *files,
              g_file_equal (src_dir, target_dir))) {
 
              marlin_file_operations_duplicate (files,
-                                               relative_item_points,
                                                parent_window,
                                                cancellable,
                                                copy_move_link_duplicate_finish,
                                                g_steal_pointer (&task));
         } else {
             marlin_file_operations_copy (files,
-                                         relative_item_points,
                                          target_dir,
                                          parent_window,
                                          cancellable,
@@ -5508,7 +5408,6 @@ marlin_file_operations_copy_move_link (GList               *files,
         } else {
             /* done_callback is (or should be) a CopyCallBack or null in this case */
             marlin_file_operations_move (files,
-                                         relative_item_points,
                                          target_dir,
                                          parent_window,
                                          cancellable,
@@ -5517,7 +5416,6 @@ marlin_file_operations_copy_move_link (GList               *files,
         }
     } else {
         marlin_file_operations_link (files,
-                                     relative_item_points,
                                      target_dir,
                                      parent_window,
                                      cancellable,
@@ -5697,11 +5595,6 @@ retry:
     if (res) {
         job->created_file = g_object_ref (dest);
        marlin_file_changes_queue_file_added (dest);
-        /*if (job->has_position) {
-            //marlin_file_changes_queue_schedule_position_set (dest, job->position, common->screen_num);
-        } else {
-            marlin_file_changes_queue_schedule_position_remove (dest);
-        }*/
     } else {
         g_assert (error != NULL);
 
@@ -5833,7 +5726,6 @@ aborted:
 
 void
 marlin_file_operations_new_folder (GtkWidget           *parent_view,
-                                   GdkPoint            *target_point,
                                    GFile               *parent_dir,
                                    GCancellable        *cancellable,
                                    GAsyncReadyCallback  callback,
@@ -5851,10 +5743,6 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
     job->dest_dir = g_object_ref (parent_dir);
     job->make_dir = TRUE;
     job->task = g_task_new (NULL, cancellable, callback, user_data);
-    if (target_point != NULL) {
-        job->position = *target_point;
-        job->has_position = TRUE;
-    }
 
     // Start UNDO-REDO
     job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
@@ -5878,7 +5766,6 @@ marlin_file_operations_new_folder_finish (GAsyncResult  *result,
 
 void
 marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
-                                               GdkPoint            *target_point,
                                                GFile               *parent_dir,
                                                const char          *target_filename,
                                                GFile               *template,
@@ -5898,10 +5785,6 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
     g_object_ref (parent_dir); /* job->dest_dir unref'd in create_job done */
     job->dest_dir = parent_dir;
     job->task = g_task_new (NULL, cancellable, callback, user_data);
-    if (target_point != NULL) {
-        job->position = *target_point;
-        job->has_position = TRUE;
-    }
     job->filename = g_strdup (target_filename);
 
     if (template) {
@@ -5931,7 +5814,6 @@ marlin_file_operations_new_file_from_template_finish (GAsyncResult  *result,
 
 void
 marlin_file_operations_new_file (GtkWidget           *parent_view,
-                                 GdkPoint            *target_point,
                                  const char          *parent_dir,
                                  const char          *target_filename,
                                  const char          *initial_contents,
@@ -5949,10 +5831,6 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
     job = op_job_new (CreateJob, parent_window);
     job->dest_dir = g_file_new_for_uri (parent_dir);
     job->task = g_task_new (NULL, cancellable, callback, user_data);
-    /*if (target_point != NULL) {
-        job->position = *target_point;
-        job->has_position = TRUE;
-    }*/
     job->src_data = g_memdup (initial_contents, length);
     job->length = length;
     job->filename = g_strdup (target_filename);

@@ -40,7 +40,6 @@ gboolean marlin_file_operations_delete_finish (GAsyncResult  *result,
                                                GError       **error);
 
 void marlin_file_operations_copy_move_link (GList               *files,
-                                            GArray              *relative_item_points,
                                             GFile               *target_dir,
                                             GdkDragAction        copy_action,
                                             GtkWidget           *parent_view,
@@ -51,7 +50,6 @@ gboolean marlin_file_operations_copy_move_link_finish (GAsyncResult  *result,
                                                        GError       **error);
 
 void marlin_file_operations_new_file (GtkWidget           *parent_view,
-                                      GdkPoint            *target_point,
                                       const char          *parent_dir,
                                       const char          *target_filename,
                                       const char          *initial_contents,
@@ -64,7 +62,6 @@ GFile *marlin_file_operations_new_file_finish (GAsyncResult  *result,
 
 /* TODO: Merge with marlin_file_operations_new_file */
 void marlin_file_operations_new_folder (GtkWidget           *parent_view,
-                                        GdkPoint            *target_point,
                                         GFile               *parent_dir,
                                         GCancellable        *cancellable,
                                         GAsyncReadyCallback  callback,
@@ -73,7 +70,6 @@ GFile *marlin_file_operations_new_folder_finish (GAsyncResult  *result,
                                                  GError       **error);
 
 void marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
-                                                    GdkPoint            *target_point,
                                                     GFile               *parent_dir,
                                                     const char          *target_filename,
                                                     GFile               *template,

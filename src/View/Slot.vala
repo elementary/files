@@ -243,7 +243,6 @@ namespace Marlin.View {
 
         public override void user_path_change_request (GLib.File loc, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
-            assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
 
