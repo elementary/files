@@ -127,7 +127,7 @@ namespace Marlin.View {
         }
 
         private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
-                width = alloc.width;
+            width = alloc.width;
         }
 
         private void on_dir_view_item_hovered (GOF.File? file) {
