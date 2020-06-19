@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-17 16:28+0000\n"
-"PO-Revision-Date: 2020-06-13 05:11+0000\n"
+"PO-Revision-Date: 2020-06-20 10:11+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,7 +77,7 @@ msgstr "改善点:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
-msgstr ""
+msgstr "ファイル名の列の幅が利用可能な領域よりも長くなった場合に、ウィンドウがリサイズしないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:80
