@@ -727,7 +727,7 @@ namespace Marlin.View.Chrome {
                 double text_width, text_height;
                 Pango.Layout layout;
                 /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
+                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 6 : 0;
 
                 Gdk.RGBA rgba;
                 var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
