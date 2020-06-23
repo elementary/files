@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-17 16:28+0000\n"
-"PO-Revision-Date: 2020-06-03 16:23+0000\n"
+"PO-Revision-Date: 2020-06-21 16:55+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -76,6 +76,8 @@ msgstr "Melhorias:"
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
+"Evitar o redimensionamento da janela quando a largura da coluna do nome do "
+"ficheiro exceder o espaço disponível"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:80
