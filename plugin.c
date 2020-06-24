@@ -15,11 +15,13 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
-#include <pantheon-files-core/pantheon-files-core.h>
+#include "pantheon-files-core.h"
 #include "g-util.h"
 #include "plugin.h"
+
+#include <glib/gi18n.h>
 
 G_DEFINE_TYPE (PFDropbox, pf_dropbox, MARLIN_PLUGINS_TYPE_BASE);
 

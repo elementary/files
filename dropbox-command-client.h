@@ -24,7 +24,8 @@
 #ifndef DROPBOX_COMMAND_CLIENT_H
 #define DROPBOX_COMMAND_CLIENT_H
 
-#include <pantheon-files-core/pantheon-files-core.h>
+#include "config.h"
+#include "pantheon-files-core.h"
 
 G_BEGIN_DECLS
 
