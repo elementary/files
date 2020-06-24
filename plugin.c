@@ -21,8 +21,6 @@
 #include "g-util.h"
 #include "plugin.h"
 
-#include <glib/gi18n.h>
-
 G_DEFINE_TYPE (PFDropbox, pf_dropbox, MARLIN_PLUGINS_TYPE_BASE);
 
 typedef struct {
@@ -602,7 +600,7 @@ pf_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files)
         gtk_menu_shell_append ((GtkMenuShell*) menu, separator);
 
         gtk_menu_shell_append ((GtkMenuShell*) menu, root_item);
-        plugins->menus = g_list_prepend (plugins->menus, _g_object_ref0 (root_item));
+        gee_list_insert (marlin_plugin_manager_get_menuitem_references (plugins), 0, root_item);
 
         pf_dropbox_parse_menu(options, submenu, base, file);
     }
