@@ -15,9 +15,9 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
-#include <pantheon-files-core/pantheon-files-core.h>
+#include "pantheon-files-core.h"
 #include "g-util.h"
 #include "plugin.h"
 
@@ -600,7 +600,7 @@ pf_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files)
         gtk_menu_shell_append ((GtkMenuShell*) menu, separator);
 
         gtk_menu_shell_append ((GtkMenuShell*) menu, root_item);
-        plugins->menus = g_list_prepend (plugins->menus, _g_object_ref0 (root_item));
+        gee_list_insert (marlin_plugin_manager_get_menuitem_references (plugins), 0, root_item);
 
         pf_dropbox_parse_menu(options, submenu, base, file);
     }
