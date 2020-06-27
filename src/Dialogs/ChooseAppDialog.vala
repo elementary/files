@@ -32,15 +32,18 @@ class PF.ChooseAppDialog : Object {
 
     construct {
         dialog = new Gtk.AppChooserDialog (parent,
-                                           Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                           file_to_open);
-        dialog.deletable = false;
+                                             Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                             file_to_open) {
+            deletable = false
+        };
 
         var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
         app_chooser.show_recommended = true;
 
-        check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-        check_default.active = true;
+        check_default = new Gtk.CheckButton.with_label (_("Set as default")) {
+            active = true
+        };
+
         check_default.show ();
 
         var action_area = dialog.get_action_area () as Gtk.ButtonBox;
