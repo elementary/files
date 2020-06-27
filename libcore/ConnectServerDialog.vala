@@ -121,35 +121,44 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         info_label = new Gtk.Label (null);
 
-        info_bar = new Gtk.InfoBar ();
-        info_bar.message_type = Gtk.MessageType.INFO;
+        info_bar = new Gtk.InfoBar () {
+            message_type = Gtk.MessageType.INFO
+        };
+
         info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
         info_bar.get_content_area ().add (info_label);
         dismiss_info ();
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
-        server_entry = new DetailEntry (_("Server name or IP address"));
-        server_entry.hexpand = true;
+        server_entry = new DetailEntry (_("Server name or IP address")) {
+            hexpand = true
+        };
 
         var server_label = new DetailLabel (_("Server:"), server_entry);
 
-        port_spinbutton = new Gtk.SpinButton.with_range (0, ushort.MAX, 1);
-        port_spinbutton.digits = 0;
-        port_spinbutton.numeric = true;
-        port_spinbutton.update_policy = Gtk.SpinButtonUpdatePolicy.IF_VALID;
+        port_spinbutton = new Gtk.SpinButton.with_range (0, ushort.MAX, 1) {
+            digits = 0,
+            numeric = true,
+            update_policy = Gtk.SpinButtonUpdatePolicy.IF_VALID
+        };
 
-        var port_label = new DetailLabel (_("Port:"), port_spinbutton);
-        port_label.xalign = 1;
+        var port_label = new DetailLabel (_("Port:"), port_spinbutton) {
+            xalign = 1
+        };
 
-        var port_grid = new Gtk.Grid ();
-        port_grid.column_spacing = 6;
-        port_grid.margin_start = 6;
+        var port_grid = new Gtk.Grid () {
+            column_spacing = 6,
+            margin_start = 6
+        };
+
         port_grid.add (port_label);
         port_grid.add (port_spinbutton);
 
-        port_revealer = new Gtk.Revealer ();
-        port_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT;
+        port_revealer = new Gtk.Revealer () {
+            transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT
+        };
+
         port_revealer.add (port_grid);
 
         var server_port_grid = new Gtk.Grid ();
@@ -157,12 +166,13 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         server_port_grid.add (port_revealer);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
+
         type_combobox = new Gtk.ComboBox.with_model (type_store);
         var renderer = new Gtk.CellRendererText ();
         type_combobox.pack_start (renderer, true);
         type_combobox.add_attribute (renderer, "text", 1);
-        var type_label = new DetailLabel (_("Type:"), type_combobox);
 
+        var type_label = new DetailLabel (_("Type:"), type_combobox);
 
         share_entry = new DetailEntry (_("Name of share on server"));
         var share_label = new DetailLabel (_("Share:"), share_entry);
@@ -178,9 +188,11 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         user_entry = new DetailEntry (_("Name of user on server"), Environment.get_user_name ());
         var user_label = new DetailLabel (_("User name:"), user_entry);
 
-        password_entry = new DetailEntry ();
-        password_entry.input_purpose = Gtk.InputPurpose.PASSWORD;
-        password_entry.visibility = false;
+        password_entry = new DetailEntry () {
+            input_purpose = Gtk.InputPurpose.PASSWORD,
+            visibility = false
+        };
+
         var password_label = new DetailLabel (_("Password:"), password_entry);
 
         remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
@@ -190,30 +202,38 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         cancel_button.show ();
         cancel_button.clicked.connect (on_cancel_clicked);
 
-        connect_button = new Gtk.Button.with_label (_("Connect"));
+        connect_button = new Gtk.Button.with_label (_("Connect")) {
+            can_default = true,
+            no_show_all = true
+        };
+
         connect_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-        connect_button.can_default = true;
-        connect_button.no_show_all = true;
         connect_button.show ();
         connect_button.clicked.connect (on_connect_clicked);
 
-        continue_button = new Gtk.Button.with_label (_("Continue"));
+        continue_button = new Gtk.Button.with_label (_("Continue")) {
+            can_default = true,
+            no_show_all = true
+        };
+
         continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-        continue_button.can_default = true;
-        continue_button.no_show_all = true;
         continue_button.clicked.connect (on_continue_clicked);
 
-        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-        button_box.layout_style = Gtk.ButtonBoxStyle.END;
-        button_box.margin_top = 24;
-        button_box.spacing = 6;
+        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
+            layout_style = Gtk.ButtonBoxStyle.END,
+            margin_top = 24,
+            spacing = 6
+        };
+
         button_box.add (cancel_button);
         button_box.add (connect_button);
         button_box.add (continue_button);
 
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 6;
+        var grid = new Gtk.Grid () {
+            row_spacing = 6,
+            column_spacing = 6
+        };
+
         grid.attach (info_bar, 0, 0, 2, 1);
 
         grid.attach (server_header_label, 0, 1, 2, 1);
@@ -244,16 +264,20 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         var connecting_label = new Gtk.Label (_("Connecting…"));
 
-        var connecting_grid = new Gtk.Grid ();
-        connecting_grid.orientation = Gtk.Orientation.VERTICAL;
-        connecting_grid.row_spacing = 6;
-        connecting_grid.halign = Gtk.Align.CENTER;
-        connecting_grid.valign = Gtk.Align.CENTER;
+        var connecting_grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.VERTICAL,
+            row_spacing = 6,
+            halign = Gtk.Align.CENTER,
+            valign = Gtk.Align.CENTER
+        };
+
         connecting_grid.add (connecting_label);
         connecting_grid.add (connecting_spinner);
 
-        stack = new Gtk.Stack ();
-        stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
+        stack = new Gtk.Stack () {
+            transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
+        };
+
         stack.add_named (grid, "content");
         stack.add_named (connecting_grid, "connecting");
 
