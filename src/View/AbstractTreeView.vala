@@ -31,10 +31,11 @@ namespace FM {
         }
 
         protected virtual void create_and_set_up_name_column () {
-            name_column = new Gtk.TreeViewColumn ();
-            name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
-            name_column.set_expand (true);
-            name_column.set_resizable (true);
+            name_column = new Gtk.TreeViewColumn () {
+                sort_column_id = FM.ListModel.ColumnID.FILENAME,
+                expand = true,
+                resizable = true
+            };
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
             set_up_name_renderer ();
@@ -84,12 +85,13 @@ namespace FM {
         }
 
         protected override Gtk.Widget? create_view () {
-            tree = new FM.TreeView ();
-            tree.set_model (model);
-            tree.set_headers_visible (false);
-            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
-            tree.set_rubber_banding (true);
+            tree = new FM.TreeView () {
+                model = model,
+                headers_visible = false,
+                rubber_banding = true
+            };
 
+            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
             create_and_set_up_name_column ();
             set_up_view ();
 

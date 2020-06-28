@@ -493,9 +493,10 @@ namespace Marlin {
                 return;
             }
             /* The stored uris are escaped */
-            var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1);
-            data.old_uri = renamed_file.get_parent ().get_child (original_name).get_uri ();
-            data.new_uri = renamed_file.get_uri ();
+            var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1) {
+                old_uri = renamed_file.get_parent ().get_child (original_name).get_uri (),
+                new_uri = renamed_file.get_uri ()
+            };
 
             add_action ((owned) data);
         }

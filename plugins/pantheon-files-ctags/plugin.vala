@@ -359,10 +359,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_buttons.add (new ColorButton ("brown"));
             color_buttons.add (new ColorButton ("slate"));
 
-            var colorbox = new Gtk.Grid ();
-            colorbox.column_spacing = COLORBOX_SPACING;
-            colorbox.margin_start = 3;
-            colorbox.halign = Gtk.Align.START;
+            var colorbox = new Gtk.Grid () {
+                column_spacing = COLORBOX_SPACING,
+                margin_start = 3,
+                halign = Gtk.Align.START
+            };
+
             colorbox.add (color_button_remove);
 
             for (int i = 0; i < color_buttons.size; i++) {

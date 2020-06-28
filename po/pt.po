@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-17 16:28+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-06-28 02:28+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -721,7 +721,7 @@ msgstr "_Ejetar"
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr "Pesquisar ou digitar caminho"
+msgstr "Pesquisar ou escrever caminho"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
