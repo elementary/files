@@ -56,31 +56,39 @@ namespace Marlin.FileChanges {
     }
 
     public static void queue_file_added (GLib.File location) {
-        var new_item = new Change ();
-        new_item.kind = Kind.ADDED;
-        new_item.from = location;
+        var new_item = new Change () {
+            kind = Kind.ADDED,
+            from = location
+        };
+
         queue_add_common ((owned) new_item);
     }
 
     public static void queue_file_changed (GLib.File location) {
-        var new_item = new Change ();
-        new_item.kind = Kind.CHANGED;
-        new_item.from = location;
+        var new_item = new Change () {
+            kind = Kind.CHANGED,
+            from = location
+        };
+
         queue_add_common ((owned) new_item);
     }
 
     public static void queue_file_removed (GLib.File location) {
-        var new_item = new Change ();
-        new_item.kind = Kind.REMOVED;
-        new_item.from = location;
+        var new_item = new Change () {
+            kind = Kind.REMOVED,
+            from = location
+        };
+
         queue_add_common ((owned) new_item);
     }
 
     public static void queue_file_moved (GLib.File from, GLib.File to) {
-        var new_item = new Change ();
-        new_item.kind = Kind.MOVED;
-        new_item.from = from;
-        new_item.to = to;
+        var new_item = new Change () {
+            kind = Kind.MOVED,
+            from = from,
+            to = to
+        };
+
         queue_add_common ((owned) new_item);
     }
 

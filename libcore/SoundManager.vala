@@ -30,6 +30,7 @@ namespace PF {
             if (instance == null) {
                 instance = new SoundManager ();
             }
+
             return instance;
         }
 

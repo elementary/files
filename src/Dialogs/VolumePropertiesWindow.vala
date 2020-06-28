@@ -71,8 +71,10 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
             overlay_emblems (file_icon, emblems_list);
         }
 
-        header_title = new Gtk.Label (mount_name);
-        header_title.halign = Gtk.Align.START;
+        header_title = new Gtk.Label (mount_name) {
+            halign = Gtk.Align.START
+        };
+
         create_header_title ();
 
         var location_label = new KeyLabel (_("Location:"));
