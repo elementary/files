@@ -69,7 +69,7 @@
           <li>Fix pathbar handling of "~" and ".." in path</li>
         </ul>
       </description>
-    </release>     
+    </release>
     <release version="4.4.3" date="2020-06-01" urgency="medium">
       <description>
         <p>Improvements:</p>
