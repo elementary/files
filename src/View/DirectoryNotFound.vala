@@ -47,6 +47,7 @@ namespace Marlin.View {
                             new ThemedIcon ("dialog-error"),
                             Gtk.ButtonsType.CLOSE
                         );
+
                         dialog.run ();
                         dialog.destroy ();
                     }

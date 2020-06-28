@@ -93,89 +93,118 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
 
     construct {
         set_border_width (6);
-        var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG);
-        image.valign = Gtk.Align.START;
 
-        primary_label = new Gtk.Label (null);
+        var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG) {
+            valign = Gtk.Align.START
+        };
+
+        primary_label = new Gtk.Label (null) {
+            selectable = true,
+            max_width_chars = 50,
+            wrap = true,
+            xalign = 0
+        };
+
         primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
-        primary_label.selectable = true;
-        primary_label.max_width_chars = 50;
-        primary_label.wrap = true;
-        primary_label.xalign = 0;
 
-        secondary_label = new Gtk.Label (null);
-        secondary_label.use_markup = true;
-        secondary_label.selectable = true;
-        secondary_label.max_width_chars = 50;
-        secondary_label.wrap = true;
-        secondary_label.xalign = 0;
+        secondary_label = new Gtk.Label (null) {
+            use_markup = true,
+            selectable = true,
+            max_width_chars = 50,
+            wrap = true,
+            xalign = 0
+        };
 
-        destination_image = new Gtk.Image ();
-        destination_image.pixel_size = 64;
+        destination_image = new Gtk.Image () {
+            pixel_size = 64
+        };
 
-        var destination_label = new Gtk.Label ("<b>%s</b>".printf (_("Original file")));
-        destination_label.margin_top = destination_label.margin_bottom = 6;
-        destination_label.use_markup = true;
-        destination_label.xalign = 0;
+        var destination_label = new Gtk.Label ("<b>%s</b>".printf (_("Original file"))) {
+            margin_top = 0,
+            margin_bottom = 6,
+            use_markup = true,
+            xalign = 0
+        };
 
-        var destination_size_title_label = new Gtk.Label (_("Size:"));
-        destination_size_title_label.valign = Gtk.Align.END;
-        destination_size_title_label.xalign = 1;
+        var destination_size_title_label = new Gtk.Label (_("Size:")) {
+            valign = Gtk.Align.END,
+            xalign = 1
+        };
 
-        destination_size_label = new Gtk.Label (null);
-        destination_size_label.valign = Gtk.Align.END;
-        destination_size_label.xalign = 0;
+        destination_size_label = new Gtk.Label (null) {
+            valign = Gtk.Align.END,
+            xalign = 0
+        };
 
-        var destination_type_title_label = new Gtk.Label (_("Type:"));
-        destination_type_title_label.xalign = 1;
-        destination_type_label = new Gtk.Label (null);
-        destination_type_label.xalign = 0;
+        var destination_type_title_label = new Gtk.Label (_("Type:")) {
+            xalign = 1
+        };
 
-        var destination_time_title_label = new Gtk.Label (_("Last modified:"));
-        destination_time_title_label.valign = Gtk.Align.START;
-        destination_time_title_label.xalign = 1;
-        destination_time_label = new Gtk.Label (null);
-        destination_time_label.valign = Gtk.Align.START;
-        destination_time_label.xalign = 0;
+        destination_type_label = new Gtk.Label (null) {
+            xalign = 0
+        };
 
-        source_image = new Gtk.Image ();
-        source_image.pixel_size = 64;
+        var destination_time_title_label = new Gtk.Label (_("Last modified:")) {
+            valign = Gtk.Align.START,
+            xalign = 1
+        };
 
-        var source_label = new Gtk.Label ("<b>%s</b>".printf (_("Replace with")));
-        source_label.margin_bottom = 6;
-        source_label.use_markup = true;
-        source_label.xalign = 0;
+        destination_time_label = new Gtk.Label (null) {
+            valign = Gtk.Align.START,
+            xalign = 0
+        };
 
-        var source_size_title_label = new Gtk.Label (_("Size:"));
-        source_size_title_label.valign = Gtk.Align.END;
-        source_size_title_label.xalign = 1;
+        source_image = new Gtk.Image () {
+            pixel_size = 64
+        };
 
-        source_size_label = new Gtk.Label (null);
-        source_size_label.valign = Gtk.Align.END;
-        source_size_label.xalign = 0;
+        var source_label = new Gtk.Label ("<b>%s</b>".printf (_("Replace with"))) {
+            margin_bottom = 6,
+            use_markup = true,
+            xalign = 0
+        };
 
-        var source_type_title_label = new Gtk.Label (_("Type:"));
-        source_type_title_label.xalign = 1;
-        source_type_label = new Gtk.Label (null);
-        source_type_label.xalign = 0;
+        var source_size_title_label = new Gtk.Label (_("Size:")) {
+            valign = Gtk.Align.END,
+            xalign = 1
+        };
 
-        var source_time_title_label = new Gtk.Label (_("Last modified:"));
-        source_time_title_label.valign = Gtk.Align.START;
-        source_time_title_label.xalign = 1;
-        source_time_label = new Gtk.Label (null);
-        source_time_label.valign = Gtk.Align.START;
-        source_time_label.xalign = 0;
+        source_size_label = new Gtk.Label (null) {
+            valign = Gtk.Align.END,
+            xalign = 0
+        };
 
-        rename_entry = new Gtk.Entry ();
-        rename_entry.hexpand = true;
+        var source_type_title_label = new Gtk.Label (_("Type:")) {
+            xalign = 1
+        };
+
+        source_type_label = new Gtk.Label (null) {
+            xalign = 0
+        };
+
+        var source_time_title_label = new Gtk.Label (_("Last modified:")) {
+            valign = Gtk.Align.START,
+            xalign = 1
+        };
+
+        source_time_label = new Gtk.Label (null) {
+            valign = Gtk.Align.START,
+            xalign = 0
+        };
+
+        rename_entry = new Gtk.Entry () {
+            hexpand = true
+        };
 
         var reset_button = new Gtk.Button.with_label (_("Reset"));
 
-        var expander_grid = new Gtk.Grid ();
-        expander_grid.margin_top = 6;
-        expander_grid.margin_bottom = 6;
-        expander_grid.column_spacing = 6;
-        expander_grid.orientation = Gtk.Orientation.HORIZONTAL;
+        var expander_grid = new Gtk.Grid () {
+            margin_top = 6,
+            margin_bottom = 6,
+            column_spacing = 6,
+            orientation = Gtk.Orientation.HORIZONTAL
+        };
+
         expander_grid.add (rename_entry);
         expander_grid.add (reset_button);
 
@@ -195,10 +224,12 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
-        var comparison_grid = new Gtk.Grid ();
-        comparison_grid.column_spacing = 6;
-        comparison_grid.row_spacing = 0;
-        comparison_grid.margin_top = 18;
+        var comparison_grid = new Gtk.Grid () {
+            column_spacing = 6,
+            row_spacing = 0,
+            margin_top = 18
+        };
+
         comparison_grid.attach (destination_label, 0, 0, 3, 1);
         comparison_grid.attach (destination_image, 0, 1, 1, 3);
         comparison_grid.attach (destination_size_title_label, 1, 1, 1, 1);
@@ -217,11 +248,13 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         comparison_grid.attach (source_time_title_label, 1, 7, 1, 1);
         comparison_grid.attach (source_time_label, 2, 7, 1, 1);
 
-        var grid = new Gtk.Grid ();
-        grid.margin = 0;
-        grid.margin_bottom = 24;
-        grid.column_spacing = 12;
-        grid.row_spacing = 6;
+        var grid = new Gtk.Grid () {
+            margin = 0,
+            margin_bottom = 24,
+            column_spacing = 12,
+            row_spacing = 6
+        };
+
         grid.attach (image, 0, 0, 1, 2);
         grid.attach (primary_label, 1, 0, 1, 1);
         grid.attach (secondary_label, 1, 1, 1, 1);

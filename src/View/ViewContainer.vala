@@ -523,6 +523,7 @@ namespace Marlin.View {
                         aslot.set_all_selected (false);
                         selected_locations = null;
                     }
+
                     var list = new List<File> ();
                     list.prepend (loc);
                     aslot.select_glib_files (list, loc);
