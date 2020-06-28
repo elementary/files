@@ -73,7 +73,7 @@
     <release version="4.4.3" date="2020-06-01" urgency="medium">
       <description>
         <p>Improvements:</p>
-        <ul>     
+        <ul>
           <li>Paste images into other apps instead of file paths where possible</li>
           <li>Paste into a selected folder when using Ctrl + V</li>
           <li>Show file info overlay in List View as well</li>
