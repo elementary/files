@@ -1469,14 +1469,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 Mount mount = volume.get_mount ();
                 if (mount != null) {
                     var location = mount.get_root ();
-                    if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                        var app = (Marlin.Application)(GLib.Application.get_default ());
-                        app.create_window (location);
-                    } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                        window.open_single_tab (location, Marlin.ViewMode.CURRENT);
-                    } else {
-                        window.uri_path_change_request (location.get_uri ());
-                    }
+                    /* Always use this function to properly handle unusual characters in the filename */
+                    window.uri_path_change_request (location.get_uri (), flags);
                 }
             } catch (GLib.Error error) {
                 var primary = _("Error mounting volume %s").printf (volume.get_name ());
