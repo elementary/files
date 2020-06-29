@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 16:28+0000\n"
+"POT-Creation-Date: 2020-06-29 15:04+0000\n"
 "PO-Revision-Date: 2019-01-09 00:05+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
@@ -69,7 +69,6 @@ msgstr ""
 "WebDAV eller Windows-deling."
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Improvements:"
 msgstr ""
 
@@ -79,584 +78,588 @@ msgid ""
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:67
-#: data/io.elementary.files.appdata.xml.in.in:80
+#: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Fixes:"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:74
-msgid "Paste images into other apps instead of file paths where possible"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:75
-msgid "Paste into a selected folder when using Ctrl + V"
+#: data/io.elementary.files.appdata.xml.in.in:69
+msgid "Fix handling of filenames containing the # character"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:76
-msgid "Show file info overlay in List View as well"
+msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:77
-msgid "Traverse search results with Tab key"
+msgid "Paste into a selected folder when using Ctrl + V"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:78
+msgid "Show file info overlay in List View as well"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:79
+msgid "Traverse search results with Tab key"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Show an error message when attempting to open trashed files"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:82
+#: data/io.elementary.files.appdata.xml.in.in:84
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:83
+#: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:84
+#: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Fix size of restored tiled window"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:142
 msgid "Other updates:"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:103
-#: data/io.elementary.files.appdata.xml.in.in:116
-#: data/io.elementary.files.appdata.xml.in.in:129
-#: data/io.elementary.files.appdata.xml.in.in:161
-#: data/io.elementary.files.appdata.xml.in.in:183
-#: data/io.elementary.files.appdata.xml.in.in:192
-#: data/io.elementary.files.appdata.xml.in.in:201
-#: data/io.elementary.files.appdata.xml.in.in:212
-#: data/io.elementary.files.appdata.xml.in.in:221
-#: data/io.elementary.files.appdata.xml.in.in:240
-#: data/io.elementary.files.appdata.xml.in.in:251
-#: data/io.elementary.files.appdata.xml.in.in:259
-#: data/io.elementary.files.appdata.xml.in.in:291
+#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:118
+#: data/io.elementary.files.appdata.xml.in.in:131
+#: data/io.elementary.files.appdata.xml.in.in:163
+#: data/io.elementary.files.appdata.xml.in.in:185
+#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:203
+#: data/io.elementary.files.appdata.xml.in.in:214
+#: data/io.elementary.files.appdata.xml.in.in:223
+#: data/io.elementary.files.appdata.xml.in.in:242
+#: data/io.elementary.files.appdata.xml.in.in:253
+#: data/io.elementary.files.appdata.xml.in.in:261
+#: data/io.elementary.files.appdata.xml.in.in:293
 #, fuzzy
 msgid "Updated translations"
 msgstr "Nye oversettelser"
 
-#: data/io.elementary.files.appdata.xml.in.in:95
-#: data/io.elementary.files.appdata.xml.in.in:109
+#: data/io.elementary.files.appdata.xml.in.in:97
+#: data/io.elementary.files.appdata.xml.in.in:111
 #, fuzzy
 #| msgid "Minor bug fixes"
 msgid "Minor updates:"
 msgstr "Retting av småfeil"
 
-#: data/io.elementary.files.appdata.xml.in.in:97
+#: data/io.elementary.files.appdata.xml.in.in:99
 #, fuzzy
 msgid "Fix crash when a device icon is coming from a file"
 msgstr "Fiks av kræsj ved gjenopprettelse av elementer fra papirkurv"
 
-#: data/io.elementary.files.appdata.xml.in.in:98
+#: data/io.elementary.files.appdata.xml.in.in:100
 msgid "Fix device icon sometimes missing"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:99
+#: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Fix occasional view freeze after renaming"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:100
+#: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Fix breadcrumbs sometimes incorrect at startup"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:102
+#: data/io.elementary.files.appdata.xml.in.in:104
 msgid "Do not show file:// prefix in navigation buttons menus"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:111
+#: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:112
+#: data/io.elementary.files.appdata.xml.in.in:114
 msgid "Fix navigation with back/forward button context menu"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:113
+#: data/io.elementary.files.appdata.xml.in.in:115
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:116
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:115
+#: data/io.elementary.files.appdata.xml.in.in:117
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:123
+#: data/io.elementary.files.appdata.xml.in.in:125
 msgid "Show keyboard shortcuts in menu items"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:124
+#: data/io.elementary.files.appdata.xml.in.in:126
 msgid "Fix an issue with breadcrumbs in the file chooser"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:127
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:126
+#: data/io.elementary.files.appdata.xml.in.in:128
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:127
+#: data/io.elementary.files.appdata.xml.in.in:129
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:128
+#: data/io.elementary.files.appdata.xml.in.in:130
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:135
+#: data/io.elementary.files.appdata.xml.in.in:137
 msgid "New features:"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:137
+#: data/io.elementary.files.appdata.xml.in.in:139
 msgid "Initial git plugin support"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:138
+#: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:142
+#: data/io.elementary.files.appdata.xml.in.in:144
 msgid "Ensure tabs showing same folder remain synchronized"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:143
+#: data/io.elementary.files.appdata.xml.in.in:145
 msgid "Fix drag with secondary button on empty space"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:144
+#: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Show custom media type icons for installed apps"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:145
+#: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:146
+#: data/io.elementary.files.appdata.xml.in.in:148
 #, fuzzy
 msgid "Improve pathbar animation"
 msgstr "Forbedret oversettingsstøtte"
 
-#: data/io.elementary.files.appdata.xml.in.in:147
+#: data/io.elementary.files.appdata.xml.in.in:149
 #, fuzzy
 msgid "Update documentation"
 msgstr "Nye oversettelser"
 
-#: data/io.elementary.files.appdata.xml.in.in:148
+#: data/io.elementary.files.appdata.xml.in.in:150
 #, fuzzy
 msgid "Update translations"
 msgstr "Nye oversettelser"
 
-#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Initial cloudproviders plugin support"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:156
+#: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Fix selecting pasted files"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:157
+#: data/io.elementary.files.appdata.xml.in.in:159
 msgid "Fix color label visibility while using dark theme"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:158
+#: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Fix selecting files using Shift key"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:159
+#: data/io.elementary.files.appdata.xml.in.in:161
 msgid "Draw checkerboard background for image items"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:160
+#: data/io.elementary.files.appdata.xml.in.in:162
 msgid "Improved styling for disk space bars"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:168
+#: data/io.elementary.files.appdata.xml.in.in:170
 msgid "Show more search results"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:169
+#: data/io.elementary.files.appdata.xml.in.in:171
 msgid "Ensure valid tab name generation"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:170
+#: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Properly sort folders by date and size"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:171
+#: data/io.elementary.files.appdata.xml.in.in:173
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:172
+#: data/io.elementary.files.appdata.xml.in.in:174
 #, fuzzy
 msgid "Improve MTP support"
 msgstr "Forbedret nettverksstøtte"
 
-#: data/io.elementary.files.appdata.xml.in.in:173
+#: data/io.elementary.files.appdata.xml.in.in:175
 msgid "Various tagging feature refinements"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:174
+#: data/io.elementary.files.appdata.xml.in.in:176
 msgid "Keyboard navigation improvements"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:175
+#: data/io.elementary.files.appdata.xml.in.in:177
 msgid "Symlink copy and paste fixes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:176
+#: data/io.elementary.files.appdata.xml.in.in:178
 msgid "Avoid crash when Templates folder is null"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:177
+#: data/io.elementary.files.appdata.xml.in.in:179
 msgid "Reduce memory footprint of FileChooserDialog"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:178
+#: data/io.elementary.files.appdata.xml.in.in:180
 msgid "Avoid crash when selecting image file in some situations"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:179
+#: data/io.elementary.files.appdata.xml.in.in:181
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:180
+#: data/io.elementary.files.appdata.xml.in.in:182
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:181
+#: data/io.elementary.files.appdata.xml.in.in:183
 msgid "Avoid crash while scrolling over view switcher"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:184
 msgid "Avoid possible crash in some copy and paste situations"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:190
+#: data/io.elementary.files.appdata.xml.in.in:192
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:191
+#: data/io.elementary.files.appdata.xml.in.in:193
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:199
+#: data/io.elementary.files.appdata.xml.in.in:201
 msgid "Minor spacing adjustments to location bar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:200
+#: data/io.elementary.files.appdata.xml.in.in:202
 msgid "Fix F2 renaming behavior"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:210
 msgid "Minor spacing adjustments to location breadcrumbs"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:211
 msgid "Consistently remember color tags"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:212
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:211
+#: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Fix running scripts with spaces in filename"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:221
 msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:222
 #, fuzzy
 msgid "File sorting fixes"
 msgstr "Retting av småfeil"
 
-#: data/io.elementary.files.appdata.xml.in.in:228
+#: data/io.elementary.files.appdata.xml.in.in:230
 msgid "Meson: fix soversion names"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:229
+#: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Remove CMake build system"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:230
+#: data/io.elementary.files.appdata.xml.in.in:232
 msgid "Fix missing File System properties menu"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:233
 msgid "Drop intltool dependency"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:232
+#: data/io.elementary.files.appdata.xml.in.in:234
 msgid "Fix default file type handler logic"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:233
+#: data/io.elementary.files.appdata.xml.in.in:235
 msgid "Fix initial search window size too small"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:234
+#: data/io.elementary.files.appdata.xml.in.in:236
 msgid "Add option to disable local file thumbnails"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:235
+#: data/io.elementary.files.appdata.xml.in.in:237
 #, fuzzy
 msgid "Fix crash when opening multiple video files"
 msgstr "Fiks av kræsj ved gjenopprettelse av elementer fra papirkurv"
 
-#: data/io.elementary.files.appdata.xml.in.in:236
+#: data/io.elementary.files.appdata.xml.in.in:238
 msgid "Fix some timing issues around adding and removing files"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:237
+#: data/io.elementary.files.appdata.xml.in.in:239
 msgid "Meson: fix missing library headers"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Fix color tag display"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:239
+#: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Show reserved space in Properties window"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:247
+#: data/io.elementary.files.appdata.xml.in.in:249
 msgid "Add border radius to text background"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:248
+#: data/io.elementary.files.appdata.xml.in.in:250
 msgid "Fix file mimetype association regression"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:249
+#: data/io.elementary.files.appdata.xml.in.in:251
 msgid "New pathbar tooltips"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:250
+#: data/io.elementary.files.appdata.xml.in.in:252
 #, fuzzy
 msgid "Build fixes"
 msgstr "Sikkerhetsfikser"
 
-#: data/io.elementary.files.appdata.xml.in.in:258
+#: data/io.elementary.files.appdata.xml.in.in:260
 #, fuzzy
 msgid "Plugin build fixes"
 msgstr "Retting av småfeil"
 
-#: data/io.elementary.files.appdata.xml.in.in:266
+#: data/io.elementary.files.appdata.xml.in.in:268
 msgid "Fix Ctrl+Tab behavior"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:267
+#: data/io.elementary.files.appdata.xml.in.in:269
 msgid "Fix building without Unity library"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:274
+#: data/io.elementary.files.appdata.xml.in.in:276
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:275
+#: data/io.elementary.files.appdata.xml.in.in:277
 msgid "Style error dialogs"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:276
+#: data/io.elementary.files.appdata.xml.in.in:278
 msgid "Right click fixes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:279
 msgid "Reload recent view when privacy setting changes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:278
+#: data/io.elementary.files.appdata.xml.in.in:280
 msgid "`Connect Server` fixes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:279
+#: data/io.elementary.files.appdata.xml.in.in:281
 msgid "Do not activate multiple files with single click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:280
+#: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:281
+#: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Delete color tag database entries for trashed files"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:282
+#: data/io.elementary.files.appdata.xml.in.in:284
 msgid "Throttle tab closing"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:283
+#: data/io.elementary.files.appdata.xml.in.in:285
 msgid "`Ctrl` key fixes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:284
+#: data/io.elementary.files.appdata.xml.in.in:286
 msgid "Drag and drop fixes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:285
+#: data/io.elementary.files.appdata.xml.in.in:287
 msgid "Show icons in `Open with` menus"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:286
+#: data/io.elementary.files.appdata.xml.in.in:288
 msgid "Tooltip fixes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:287
+#: data/io.elementary.files.appdata.xml.in.in:289
 #, fuzzy
 msgid "Memory leak fixes"
 msgstr "Retting av småfeil"
 
-#: data/io.elementary.files.appdata.xml.in.in:288
+#: data/io.elementary.files.appdata.xml.in.in:290
 #, fuzzy
 msgid "Crash fixes"
 msgstr "Kræsjrettinger"
 
-#: data/io.elementary.files.appdata.xml.in.in:289
+#: data/io.elementary.files.appdata.xml.in.in:291
 msgid "Trash: respect sound setting"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:290
+#: data/io.elementary.files.appdata.xml.in.in:292
 msgid "Localization fixes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:298
+#: data/io.elementary.files.appdata.xml.in.in:300
 msgid "Over 100 major and minor bug fixes and improvements"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:305
+#: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Honor 12/24hr system setting"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:306
+#: data/io.elementary.files.appdata.xml.in.in:308
 msgid "Distinguish between tabs with the same name"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:307
+#: data/io.elementary.files.appdata.xml.in.in:309
 msgid "Support launching from other applications with a target file selected"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:308
-#: data/io.elementary.files.appdata.xml.in.in:321
-#: data/io.elementary.files.appdata.xml.in.in:335
-#: data/io.elementary.files.appdata.xml.in.in:345
-#: data/io.elementary.files.appdata.xml.in.in:356
+#: data/io.elementary.files.appdata.xml.in.in:310
+#: data/io.elementary.files.appdata.xml.in.in:323
+#: data/io.elementary.files.appdata.xml.in.in:337
+#: data/io.elementary.files.appdata.xml.in.in:347
+#: data/io.elementary.files.appdata.xml.in.in:358
 msgid "New translations"
 msgstr "Nye oversettelser"
 
-#: data/io.elementary.files.appdata.xml.in.in:309
-#: data/io.elementary.files.appdata.xml.in.in:322
-#: data/io.elementary.files.appdata.xml.in.in:336
-#: data/io.elementary.files.appdata.xml.in.in:346
-#: data/io.elementary.files.appdata.xml.in.in:357
-#: data/io.elementary.files.appdata.xml.in.in:364
-#: data/io.elementary.files.appdata.xml.in.in:371
-#: data/io.elementary.files.appdata.xml.in.in:395
+#: data/io.elementary.files.appdata.xml.in.in:311
+#: data/io.elementary.files.appdata.xml.in.in:324
+#: data/io.elementary.files.appdata.xml.in.in:338
+#: data/io.elementary.files.appdata.xml.in.in:348
+#: data/io.elementary.files.appdata.xml.in.in:359
+#: data/io.elementary.files.appdata.xml.in.in:366
+#: data/io.elementary.files.appdata.xml.in.in:373
+#: data/io.elementary.files.appdata.xml.in.in:397
 msgid "Minor bug fixes"
 msgstr "Retting av småfeil"
 
-#: data/io.elementary.files.appdata.xml.in.in:316
+#: data/io.elementary.files.appdata.xml.in.in:318
 msgid "Improved networking support"
 msgstr "Forbedret nettverksstøtte"
 
-#: data/io.elementary.files.appdata.xml.in.in:317
+#: data/io.elementary.files.appdata.xml.in.in:319
 msgid "Correct window geometry when snapping to left or right"
 msgstr "Korrekt vindusgeometri ved festing til høyre eller venstre"
 
-#: data/io.elementary.files.appdata.xml.in.in:318
+#: data/io.elementary.files.appdata.xml.in.in:320
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
 "Å trykke Ctrl avbryter ikke lenger navngivning mens \"Vis peker\" er aktivt"
 
-#: data/io.elementary.files.appdata.xml.in.in:319
+#: data/io.elementary.files.appdata.xml.in.in:321
 msgid "Switching input language cancels actions"
 msgstr "Bytting av inndataspråk avbryter handlinger"
 
-#: data/io.elementary.files.appdata.xml.in.in:320
-#: data/io.elementary.files.appdata.xml.in.in:334
-#: data/io.elementary.files.appdata.xml.in.in:344
-#: data/io.elementary.files.appdata.xml.in.in:355
+#: data/io.elementary.files.appdata.xml.in.in:322
+#: data/io.elementary.files.appdata.xml.in.in:336
+#: data/io.elementary.files.appdata.xml.in.in:346
+#: data/io.elementary.files.appdata.xml.in.in:357
 msgid "Various crash fixes"
 msgstr "Kræsjrettinger"
 
-#: data/io.elementary.files.appdata.xml.in.in:329
+#: data/io.elementary.files.appdata.xml.in.in:331
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr "Nettlesere som Firefox husker nå ditt sist brukte nedlastingssted"
 
-#: data/io.elementary.files.appdata.xml.in.in:330
+#: data/io.elementary.files.appdata.xml.in.in:332
 msgid "Remember preferred zoom level"
 msgstr "Husk foretrukket forstørrelsesnivå"
 
-#: data/io.elementary.files.appdata.xml.in.in:331
+#: data/io.elementary.files.appdata.xml.in.in:333
 msgid "Improved input method support"
 msgstr "Forbedre støtte for inndatametoder"
 
-#: data/io.elementary.files.appdata.xml.in.in:332
+#: data/io.elementary.files.appdata.xml.in.in:334
 msgid "910x640 minimum window size"
 msgstr "910x640 minimums vindusstørrelse"
 
-#: data/io.elementary.files.appdata.xml.in.in:333
+#: data/io.elementary.files.appdata.xml.in.in:335
 msgid "Security fixes"
 msgstr "Sikkerhetsfikser"
 
-#: data/io.elementary.files.appdata.xml.in.in:343
+#: data/io.elementary.files.appdata.xml.in.in:345
 msgid "Enable drag and drop tabs between windows"
 msgstr "Dra og slipp faner mellom vinduer"
 
-#: data/io.elementary.files.appdata.xml.in.in:353
+#: data/io.elementary.files.appdata.xml.in.in:355
 msgid "Merge search functionality into Ctrl+F"
 msgstr "Flett søkefunksjonalitet inn i Ctrl+F"
 
-#: data/io.elementary.files.appdata.xml.in.in:354
+#: data/io.elementary.files.appdata.xml.in.in:356
 msgid "Improved translation support"
 msgstr "Forbedret oversettingsstøtte"
 
-#: data/io.elementary.files.appdata.xml.in.in:378
+#: data/io.elementary.files.appdata.xml.in.in:380
 msgid "Fix appdata release dates"
 msgstr "Fiks utgivelsesdatoer for programdata"
 
-#: data/io.elementary.files.appdata.xml.in.in:385
+#: data/io.elementary.files.appdata.xml.in.in:387
 msgid "Improve file opening over Samba shares"
 msgstr "Forbedret filåpning over Samba-deling"
 
-#: data/io.elementary.files.appdata.xml.in.in:386
+#: data/io.elementary.files.appdata.xml.in.in:388
 msgid "Fix a crash when restoring items from the Trash"
 msgstr "Fiks av kræsj ved gjenopprettelse av elementer fra papirkurv"
 
-#: data/io.elementary.files.appdata.xml.in.in:387
+#: data/io.elementary.files.appdata.xml.in.in:389
 msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr "Forbedre klipp ut/kopier/lim inn -sensitivitet i bindeleddsmeny"
 
-#: data/io.elementary.files.appdata.xml.in.in:388
+#: data/io.elementary.files.appdata.xml.in.in:390
 msgid "Translation updates"
 msgstr "Oversettelsesoppdateringer"
 
-#: data/io.elementary.files.appdata.xml.in.in:400
+#: data/io.elementary.files.appdata.xml.in.in:402
 msgid "elementary LLC."
 msgstr "elementary LLC. (selskap med begrenset ansvar)"
 
