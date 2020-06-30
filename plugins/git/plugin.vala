@@ -228,7 +228,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     }
 
     public override void context_menu (Gtk.Widget widget, List<GOF.File> files, GOF.AbstractSlot? slot = null) {
-
+        unowned Gtk.Menu menu = (Gtk.Menu)widget;
         /* Need a single folder selected for cloning into */
         if (files.first == null || files.next != null) {
             return;
@@ -245,11 +245,26 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         var clipboard = Gtk.Clipboard.get_default (Gdk.Display.get_default ());
 
         string? uri = clipboard.wait_for_text ();
-        var basename = Path.get_basename (uri);
 
-        if (uri == null || !uri.has_suffix (".git")) {
+        if (uri == null) {
             return;
         }
+
+        var protocol = Uri.parse_scheme (uri);
+        if (protocol == null || protocol == "file") {
+            try {
+                Ggit.Repository.open (File.new_for_path (uri));
+            } catch (Error e) {
+                warning ("Not a git repository - %s", uri);
+                return;
+            }
+        } else if (!("http | https | ssh | git").contains (protocol)) {
+                warning ("Invalid protocol %", protocol);
+            return;
+        }
+
+        var basename = Path.get_basename (uri);
+
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
         bool folder_selected = target.uri != slot.uri;
