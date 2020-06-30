@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-29 15:04+0000\n"
-"PO-Revision-Date: 2020-06-20 10:11+0000\n"
+"PO-Revision-Date: 2020-06-30 19:46+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,7 +87,7 @@ msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Fix handling of filenames containing the # character"
-msgstr ""
+msgstr "ファイル名に # 記号が含まれている場合の処理を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Paste images into other apps instead of file paths where possible"
