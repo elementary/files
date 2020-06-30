@@ -123,11 +123,12 @@ public class Marlin.Progress.UIHandler : Object {
     private void ensure_window () {
         if (progress_window == null) {
             /* This provides an undeletable, unminimisable window in which to show the info widgets */
-            progress_window = new Gtk.Dialog ();
-            progress_window.resizable = false;
-            progress_window.deletable = false;
-            progress_window.title = _("File Operations");
-            progress_window.icon_name = "system-file-manager";
+            progress_window = new Gtk.Dialog () {
+                resizable = false,
+                deletable = false,
+                title = _("File Operations"),
+                icon_name = "system-file-manager"
+            };
 
             window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
 

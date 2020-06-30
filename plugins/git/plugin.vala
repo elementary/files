@@ -227,11 +227,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> files, GOF.AbstractSlot? slot = null) {
-        unowned Gtk.Menu? menu = (Gtk.Menu)widget;
-        if (slot == null || menu == null) {
-            return;
-        }
+    public override void context_menu (Gtk.Widget widget, List<GOF.File> files, GOF.AbstractSlot? slot = null) {
 
         /* Need a single folder selected for cloning into */
         if (files.first == null || files.next != null) {

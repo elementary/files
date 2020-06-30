@@ -58,9 +58,20 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="4.4.4" date="2020-06-02" urgency="medium">
+    <description>
+      <p>Improvements:</p>
+        <ul>
+          <li>Prevent window resizing when filename column width exceeds available space</li>
+        </ul>
+      <p>Fixes:</p>
+        <ul>
+          <li>Fix handling of filenames containing the # character</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.4.3" date="2020-06-01" urgency="medium">
       <description>
-        <p>Improvements:</p>
         <ul>
           <li>Paste images into other apps instead of file paths where possible</li>
           <li>Paste into a selected folder when using Ctrl + V</li>

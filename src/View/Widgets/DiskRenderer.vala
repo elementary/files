@@ -26,7 +26,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
 
     // offset to left align disk usage graphic with the text
     private const int OFFSET = 3;
-    private const int BAR_HEIGHT = 3;
+    private const int BAR_HEIGHT = 4;
 
     construct {
         is_disk = false;
@@ -69,8 +69,17 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         context.add_class (Gtk.STYLE_CLASS_FRAME);
         context.render_background (cr, x, y, total_width, BAR_HEIGHT);
         context.render_frame (cr, x, y, total_width, BAR_HEIGHT);
+
         /* Filled part of bar */
-        context.add_class ("fill-block");
+        double filled_percent = ((double) disk_size - (double) free_space) / (double) disk_size;
+        if (filled_percent >= 0.9) {
+            context.add_class ("fill-block-critical");
+        } else if (filled_percent >= 0.75) {
+            context.add_class ("fill-block-warn");
+        } else {
+            context.add_class ("fill-block");
+        }
+
         context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
         context.render_frame (cr, x, y, fill_width, BAR_HEIGHT);
 

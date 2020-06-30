@@ -27,7 +27,6 @@ namespace FM {
         protected Gtk.TreePath? most_recently_selected = null;
 
         public IconView (Marlin.View.Slot _slot) {
-            assert (_slot != null);
             base (_slot);
         }
 
