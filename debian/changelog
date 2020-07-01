@@ -1,3 +1,47 @@
+pantheon-files (4.4.4) bionic; urgency=medium
+
+  * Release 4.4.4 (#1383)
+  * Update translation files
+  * Update translation template
+  * Update io.elementary.files.appdata.xml.in.in
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Fix hash in name (#1332)
+  * Initialize properties inline with `new` statement (#1382)
+  * BasicBreadcrumbsEntry: Adjust placeholder margin (#1379)
+  * BasicBreadcrumbsEntry: Replace deprecated Granite.set_theming
+    (#1376)
+  * AbstractDirectoryView: Fix compiler warning about nullable cast
+    (#1377)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * View should resize when Paned resized (not Sidebar or Window)
+    (#1293)
+  * Add colored disk usage bars to display warning and error condition
+    wh… (#1367)
+  * file-operations: Remove the unused GdkPoint parameter in structures
+    and functions (#1370)
+  * Lose unnecessary null checks (#1362)
+  * Do not use return_if_fail () in async funcs (#1342)
+  * Do not rely on placeholder being empty when breadcrumbs show.
+    (#1356)
+  * HeaderBar: misc cleanup (#1353)
+  * ProgressUiHandler: Simpler construction (#1352)
+  * Sidebar: GObject-style construction (#1351)
+  * Sidebar: Remove unnecessary casts (#1350)
+  * Sidebar: Remove unused style_set (#1349)
+  * IconView: Fix compiler warnings about casts (#1346)
+  * ProgressUIHandler: resolve warnings with casts (#1345)
+  * ProgressInfoWidget: rewrite (#1343)
+  * AbstractPropertiesDialog: unsafely cast header_title as entry
+    (#1344)
+  * Update translation files
+  * Update translation template
+
+ -- Cody Garver <cody@elementary.io>  Wed, 01 Jul 2020 16:44:09 +0000
+
 pantheon-files (4.4.3) bionic; urgency=medium
 
   * Release 4.4.3 (#1338)
