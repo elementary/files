@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 19:48+0000\n"
-"PO-Revision-Date: 2020-06-30 19:46+0000\n"
+"PO-Revision-Date: 2020-07-01 16:42+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,6 +76,8 @@ msgstr "Millores:"
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
+"Addició de barres d’ús de disc d’alerta i error quan el disc estigui massa "
+"ple"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
@@ -96,6 +98,8 @@ msgstr "Correcció de la gestió dels noms de fitxers amb el caràcter #"
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
+"Correcció de les regressions pel que fa als menús contextuals de la barra de "
+"camins i fer clic"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 #: data/io.elementary.files.appdata.xml.in.in:95
