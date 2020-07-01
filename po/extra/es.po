@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 19:48+0000\n"
-"PO-Revision-Date: 2020-06-03 00:37+0000\n"
+"PO-Revision-Date: 2020-07-01 16:42+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,11 +76,15 @@ msgstr "Mejoras:"
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
+"Se añadieron colores de alerta y error a las barras de uso de disco cuando "
+"estos están a punto de llenarse"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
+"Se evita el redimensionamiento de la ventana cuando la anchura de la columna "
+"de nombre de archivo excede el espacio disponible"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 #: data/io.elementary.files.appdata.xml.in.in:88
@@ -89,11 +93,13 @@ msgstr "Correcciones:"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Fix handling of filenames containing the # character"
-msgstr ""
+msgstr "Se reparó el manejo de nombres de archivo que contienen el carácter «#»"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
+"Se corrigieron regresiones en los menús contextuales de la barra de ruta y "
+"la pulsación sobre esta"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 #: data/io.elementary.files.appdata.xml.in.in:95
@@ -659,7 +665,7 @@ msgstr "Reparar errores menores"
 
 #: data/io.elementary.files.appdata.xml.in.in:324
 msgid "Improved networking support"
-msgstr "Soporte mejorado de red"
+msgstr "Compatibilidad con redes mejorada"
 
 #: data/io.elementary.files.appdata.xml.in.in:325
 msgid "Correct window geometry when snapping to left or right"
@@ -671,8 +677,8 @@ msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
-"Presionar Ctrl ya no cancela el renombramiento mientras la opción \"Revelar "
-"Puntero\" esté activa"
+"Oprimir Ctrl ya no cancela el cambio de nombre cuando la opción «Revelar "
+"puntero» está activa"
 
 #: data/io.elementary.files.appdata.xml.in.in:327
 msgid "Switching input language cancels actions"
@@ -695,11 +701,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:338
 msgid "Remember preferred zoom level"
-msgstr "Recordar el nivel de zoom preferido"
+msgstr "Se recuerda el nivel de escala preferido"
 
 #: data/io.elementary.files.appdata.xml.in.in:339
 msgid "Improved input method support"
-msgstr "Soporte mejorado para método de entrada"
+msgstr "Mejor compatibilidad con métodos de entrada"
 
 #: data/io.elementary.files.appdata.xml.in.in:340
 msgid "910x640 minimum window size"
@@ -707,7 +713,7 @@ msgstr "Tamaño mínimo de ventana de 910x640"
 
 #: data/io.elementary.files.appdata.xml.in.in:341
 msgid "Security fixes"
-msgstr "Actualizaciones de seguridad"
+msgstr "Correcciones de seguridad"
 
 #: data/io.elementary.files.appdata.xml.in.in:351
 msgid "Enable drag and drop tabs between windows"
