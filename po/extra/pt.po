@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 19:48+0000\n"
-"PO-Revision-Date: 2020-06-30 19:46+0000\n"
+"PO-Revision-Date: 2020-07-01 16:42+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -75,6 +75,8 @@ msgstr "Melhorias:"
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
+"Adicione barras de uso de disco coloridas de aviso e erro quando o disco "
+"ficar muito cheio"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
@@ -95,6 +97,8 @@ msgstr "Corrige a manipulação de nomes de ficheiros contendo o caracter #"
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
+"Corrige regressões relacionadas aos menus de contexto da barra de caminho e "
+"clicar"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 #: data/io.elementary.files.appdata.xml.in.in:95
