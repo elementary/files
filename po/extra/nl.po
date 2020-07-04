@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 19:48+0000\n"
-"PO-Revision-Date: 2020-06-21 16:55+0000\n"
+"PO-Revision-Date: 2020-07-05 16:12+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -74,6 +74,8 @@ msgstr "Verbeteringen:"
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
+"Een waarschuwing en gekleurde schijfruimte balken toegevoegd voor als de "
+"schijf te vol wordt"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
@@ -90,10 +92,14 @@ msgstr "Opgelost:"
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Fix handling of filenames containing the # character"
 msgstr ""
+"Een probleem opgelost bij het verwerken van bestanden met een # in de "
+"bestandsnaam"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
+"Een probleem met het klikken op en context menu’s binnen de adresbalk "
+"opgelost"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 #: data/io.elementary.files.appdata.xml.in.in:95
