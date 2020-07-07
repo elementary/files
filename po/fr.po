@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:04+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
@@ -400,7 +400,7 @@ msgstr "Ouvrir avec"
 msgid "Paste"
 msgstr "Coller"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "Ajouter aux favoris"
 
@@ -651,7 +651,7 @@ msgstr "Erreur lors du montage du volume %s"
 msgid "Unable to start %s"
 msgstr "Impossible de démarrer %s"
 
-#: src/View/Sidebar.vala:1679 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Vider la corbeille"
 

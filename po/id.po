@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:04+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
 "PO-Revision-Date: 2018-10-21 00:07+0000\n"
 "Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
@@ -395,7 +395,7 @@ msgstr "Buka dengan"
 msgid "Paste"
 msgstr "Tempel"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "Penanda Taut"
 
@@ -649,7 +649,7 @@ msgstr "Kesalahan pemasangan volume %s"
 msgid "Unable to start %s"
 msgstr "Tidak dapat menjalankan %s"
 
-#: src/View/Sidebar.vala:1679 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Kosongkan _Tong Sampah"
 

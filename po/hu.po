@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:04+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
 "PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
@@ -405,7 +405,7 @@ msgstr "Megnyitás ezzel"
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "Könyvjelző"
 
@@ -661,7 +661,7 @@ msgstr "Hiba a(z) %s kötet csatolása közben"
 msgid "Unable to start %s"
 msgstr "A(z) %s nem indítható"
 
-#: src/View/Sidebar.vala:1679 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 

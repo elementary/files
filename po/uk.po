@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:04+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
 "PO-Revision-Date: 2017-06-11 14:52+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -412,7 +412,7 @@ msgstr "Відкрити за допомогою"
 msgid "Paste"
 msgstr "Вставити"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "Закладка"
 
@@ -671,7 +671,7 @@ msgstr ""
 msgid "Unable to start %s"
 msgstr "Не вдається запустити %s"
 
-#: src/View/Sidebar.vala:1679 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Спорожнити _смітник"
 
