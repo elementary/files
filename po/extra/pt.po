@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2020-07-01 16:42+0000\n"
+"PO-Revision-Date: 2020-07-09 10:12+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -74,7 +74,7 @@ msgstr "Melhorias:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
+msgstr "Opção de menu de favoritos para montagens de rede na barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid ""
