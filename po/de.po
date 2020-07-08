@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2019-12-27 13:24+0000\n"
+"PO-Revision-Date: 2020-07-09 10:12+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -349,13 +349,15 @@ msgstr "Datei kann nicht ausgeführt werden"
 #: src/View/AbstractDirectoryView.vala:828
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "\"%s\" muss vor dem Öffnen aus dem Papierkorb entfernt werden"
 
 #: src/View/AbstractDirectoryView.vala:829
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Dateien im Papierkorb können nicht geöffnet werden. Um diese Datei zu "
+"öffnen, muss sie an einen anderen Ort verschoben werden."
 
 #: src/View/AbstractDirectoryView.vala:844
 msgid "Cannot open this file"
@@ -432,10 +434,8 @@ msgid "Remove from History"
 msgstr "Aus dem Verlauf entfernen"
 
 #: src/View/AbstractDirectoryView.vala:2029
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Umbenennen"
+msgstr "Umbenennen…"
 
 #: src/View/AbstractDirectoryView.vala:2036
 msgid "Copy as Link"
@@ -458,10 +458,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Vorschaubilder von entfernten Dateien anzeigen"
 
 #: src/View/AbstractDirectoryView.vala:2090
-#, fuzzy
-#| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
-msgstr "Lokale Vorschaubilder nicht anzeigen"
+msgstr "Vorschaubilder ausblenden"
 
 #: src/View/AbstractDirectoryView.vala:2110
 msgid "Paste Link"
@@ -1132,8 +1130,6 @@ msgid "_Cancel"
 msgstr "Abbrechen"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
 msgstr "Löschen"
 
@@ -1203,10 +1199,9 @@ msgid "Emptying Trash"
 msgstr "Papierkorb wird geleert"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
-msgstr "%s kann nicht eingehängt werden"
+msgstr "' %s' kann nicht eingehängt werden"
 
 #: libcore/marlin-file-operations.c:150
 #, c-format
@@ -1306,10 +1301,9 @@ msgstr "Sobald Sie ein Objekt entfernen, geht es dauerhaft verloren."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1087
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Alle Objekte im Papierkorb dauerhaft löschen?"
+msgstr "“%s” dauerhaft löschen?"
 
 #: libcore/marlin-file-operations.c:1090
 #, c-format
@@ -1322,6 +1316,8 @@ msgstr[1] "Sollen die %'d gewählten Objekte dauerhaft gelöscht werden?"
 #: libcore/marlin-file-operations.c:1099
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
+"Gelöschte Elemente werden nicht in den Papierkorb verschoben und sind nicht "
+"wiederherstellbar."
 
 #: libcore/marlin-file-operations.c:1133
 #, c-format
