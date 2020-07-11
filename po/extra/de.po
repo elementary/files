@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2020-07-09 10:12+0000\n"
+"PO-Revision-Date: 2020-07-12 23:12+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
@@ -568,7 +568,7 @@ msgstr "Löschen von Farb-Tag-Datenbankeinträgen für gelöschte Dateien"
 
 #: data/io.elementary.files.appdata.xml.in.in:298
 msgid "Throttle tab closing"
-msgstr ""
+msgstr "Schließen des Tabs unterdrücken"
 
 #: data/io.elementary.files.appdata.xml.in.in:299
 msgid "`Ctrl` key fixes"
