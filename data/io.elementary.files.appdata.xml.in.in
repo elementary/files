@@ -63,6 +63,7 @@
         <p>Improvements:</p>
         <ul>
           <li>Bookmark menu option for network mounts in sidebar</li>
+          <li>Show folder item count in List View</li>
         </ul>
       </description>
     </release>
