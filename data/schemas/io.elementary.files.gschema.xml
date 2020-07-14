@@ -158,7 +158,7 @@
       <description>Zoom level used by the List View.</description>
     </key>
     <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
-      <default>'smaller'</default>
+      <default>'smallest'</default>
       <summary>Minimum icon zoom level</summary>
       <description>The minimum zoom level used by the List View.</description>
     </key>
