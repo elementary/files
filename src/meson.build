@@ -1,5 +1,6 @@
 pantheon_files_deps = [
     common_deps,
+    handy_dep,
     pantheon_files_widgets_dep,
     unity_dep,
     plank_dep,
