@@ -287,8 +287,8 @@ namespace Marlin {
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) icon_size + hover_helper_rect.height / 2;
-            natural_size = minimum_size;
+            natural_size = (int) icon_size + hover_helper_rect.height / 2;
+            minimum_size = (int) icon_size;
         }
 
         /* We still have to implement this even though it is deprecated, else compiler complains.

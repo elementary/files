@@ -411,10 +411,6 @@ namespace FM {
             }
         }
 
-        private void set_up_zoom_level () {
-            zoom_level = get_set_up_zoom_level ();
-        }
-
         public void zoom_normal () {
             zoom_level = get_normal_zoom_level ();
         }
@@ -3832,7 +3828,7 @@ namespace FM {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
+        protected abstract void set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files);

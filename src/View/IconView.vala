@@ -86,9 +86,10 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
-        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level");
-            Preferences.marlin_icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+        protected override void set_up_zoom_level () {
+            Preferences.marlin_icon_view_settings.bind ("zoom-level",
+                                                         this, "zoom-level",
+                                                         GLib.SettingsBindFlags.DEFAULT);
 
             minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("maximum-zoom-level");
@@ -100,8 +101,6 @@ namespace FM {
             if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
             }
-
-            return (Marlin.ZoomLevel)zoom;
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {

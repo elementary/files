@@ -90,7 +90,8 @@ namespace Marlin {
         HUGE,
         HUGER,
         LARGEST,
-        N_LEVELS
+        N_LEVELS,
+        INVALID
     }
 
     public enum IconSize {

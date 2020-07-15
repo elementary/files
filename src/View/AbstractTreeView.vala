@@ -64,6 +64,7 @@ namespace FM {
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
                 tree.columns_autosize ();
+                tree.zoom_level = zoom_level;
             });
         }
 
@@ -102,6 +103,7 @@ namespace FM {
             if (tree != null) {
                 base.change_zoom_level ();
                 tree.columns_autosize ();
+                tree.set_property ("zoom-level", zoom_level);
             }
         }
 
@@ -349,6 +351,49 @@ namespace FM {
     }
 
     protected class TreeView : Gtk.TreeView {
+        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.INVALID;
+        public Marlin.ZoomLevel zoom_level {
+            set {
+                if (_zoom_level == value || !get_realized ()) {
+                    return;
+                } else {
+                    _zoom_level = value;
+                }
+
+                /* Make rows closer together at small icon sizes.  There is no property for this so we have to use
+                 * css.
+                 */
+                int vsep = 5;
+                switch (value) {
+                    case Marlin.ZoomLevel.SMALLEST:
+                        vsep = 0;
+                        break;
+                    case Marlin.ZoomLevel.SMALLER:
+                        vsep = 3;
+                        break;
+                    default:
+                        break;
+                }
+
+                try {
+                    view_css.load_from_data ("treeview { -GtkTreeView-vertical-separator: %i px; }".printf (vsep));
+                    get_style_context ().add_provider (view_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                } catch (Error e) {
+                    warning ("Could not style FM.TreeView");
+                }
+            }
+
+            get {
+                return _zoom_level;
+            }
+        }
+
+        private Gtk.CssProvider view_css;
+
+        construct {
+            view_css = new Gtk.CssProvider ();
+        }
+
         /* Override base class in order to disable the Gtk.TreeView local search functionality */
         public override bool key_press_event (Gdk.EventKey event) {
             /* We still need the base class to handle cursor keys first */
