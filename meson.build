@@ -48,7 +48,7 @@ gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
 granite_dep = dependency('granite', version: '>=5.3.0')
-handy_dep = dependency('libhandy-1', version: '>=0.80.0')
+handy_dep = dependency('libhandy-1', version: '>=0.83.0')
 
 common_deps = [
     glib_dep,

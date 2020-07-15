@@ -84,6 +84,10 @@ namespace Marlin.View {
             }
         }
 
+        static construct {
+            Hdy.init ();
+        }
+
         construct {
             add_action_entries (WIN_ENTRIES, this);
 
