@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:04+0000\n"
-"PO-Revision-Date: 2020-04-06 15:10+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"PO-Revision-Date: 2020-07-15 23:12+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@posteo.net>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
@@ -344,13 +344,15 @@ msgstr "Cannot execute this file"
 #: src/View/AbstractDirectoryView.vala:828
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "“%s” must be moved from Rubbish Bin before opening"
 
 #: src/View/AbstractDirectoryView.vala:829
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Files inside Rubbish Bin cannot be opened. To open this file, it must be "
+"moved elsewhere."
 
 #: src/View/AbstractDirectoryView.vala:844
 msgid "Cannot open this file"
@@ -394,7 +396,7 @@ msgstr "Open with"
 msgid "Paste"
 msgstr "Paste"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "Bookmark"
 
@@ -645,7 +647,7 @@ msgstr "Error mounting volume %s"
 msgid "Unable to start %s"
 msgstr "Unable to start %s"
 
-#: src/View/Sidebar.vala:1679 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Empty _Rubbish Bin"
 
