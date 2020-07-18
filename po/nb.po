@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 16:28+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
 "PO-Revision-Date: 2019-02-22 00:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
@@ -30,7 +30,7 @@ msgstr "Vis programversjon"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Åpne én eller flere URI-er, i egne faner"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1858
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "Nytt vindu"
 
@@ -60,25 +60,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan ikke brukes med URI'er."
 
-#: src/ProgressUIHandler.vala:129 src/ProgressUIHandler.vala:191
+#: src/ProgressUIHandler.vala:129 src/ProgressUIHandler.vala:192
 msgid "File Operations"
 msgstr "Filoperasjoner"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:185
+#: src/ProgressUIHandler.vala:186
 #, c-format
 msgid "Completed %s"
 msgstr "Fullførte %s"
 
-#: src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:189
 msgid "All file operations have ended"
 msgstr "Alle filoperasjoner sluttført"
 
-#: src/ProgressUIHandler.vala:236
+#: src/ProgressUIHandler.vala:237
 msgid "Show Copy Dialog"
 msgstr "Vis kopieringsdialog"
 
-#: src/ProgressUIHandler.vala:248
+#: src/ProgressUIHandler.vala:249
 msgid "Cancel All In-progress Actions"
 msgstr "Avbryt alle pågående handlinger"
 
@@ -86,43 +86,43 @@ msgstr "Avbryt alle pågående handlinger"
 msgid "Info"
 msgstr "Info"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr "Generelt"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:75 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "Lukk"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:134
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
 msgstr "Enhetsbruk"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:154
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
 msgstr "Kapasitet:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
 #: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:157
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
 msgstr "Tilgjengelig:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:160
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
 msgstr "Brukt:"
 
-#: src/Dialogs/ChooseAppDialog.vala:42
+#: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "Bruk som standard"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1968 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1967 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Egenskaper"
 
@@ -155,13 +155,13 @@ msgstr "Laster…"
 msgid "Could not be determined"
 msgstr "Kunne ikke bestemmes"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:121
-#: libcore/FileConflictDialog.vala:149
+#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Størrelse:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:129 libcore/FileConflictDialog.vala:157
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Type:"
 
@@ -191,7 +191,7 @@ msgid "Resolution:"
 msgstr "Oppløsning:"
 
 #: src/Dialogs/PropertiesWindow.vala:597
-#: src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Plassering:"
 
@@ -204,7 +204,7 @@ msgid "Original Location:"
 msgstr "Opprinnelig plassering:"
 
 #: src/Dialogs/PropertiesWindow.vala:638
-#: src/View/AbstractDirectoryView.vala:1936
+#: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "Annet program…"
 
@@ -269,12 +269,12 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Egenskaper for harddisk"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:650
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Filsystem"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:88
+#: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
 msgstr "Format:"
 
@@ -298,7 +298,7 @@ msgstr "Kunne ikke åpne URI-ene"
 msgid "Could not open files or URIs with this app"
 msgstr "Klarte ikke å åpne filer eller URI-er med denne appen"
 
-#: src/View/Window.vala:545 src/View/Window.vala:555
+#: src/View/Window.vala:532 src/View/Window.vala:542
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
@@ -306,11 +306,11 @@ msgstr "(som Administrator)"
 msgid "Filename"
 msgstr "Filnavn"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2170
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2169
 msgid "Size"
 msgstr "Størrelse"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2175
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2174
 msgid "Type"
 msgstr "Type"
 
@@ -344,193 +344,193 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:819
-#: src/View/AbstractDirectoryView.vala:1130
+#: src/View/AbstractDirectoryView.vala:818
+#: src/View/AbstractDirectoryView.vala:1129
 msgid "Cannot execute this file"
 msgstr "Kan ikke kjøre denne filen"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:829
+#: src/View/AbstractDirectoryView.vala:828
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:830
+#: src/View/AbstractDirectoryView.vala:829
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:845
+#: src/View/AbstractDirectoryView.vala:844
 msgid "Cannot open this file"
 msgstr "Kan ikke åpne denne filen"
 
-#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:857
 msgid "Cannot identify file type to open"
 msgstr "Kan ikke identifisere filtype å åpne"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1575
 msgid "Cannot drop this file"
 msgstr "Kunne ikke slippe denne fila"
 
-#: src/View/AbstractDirectoryView.vala:1577
+#: src/View/AbstractDirectoryView.vala:1576
 msgid "Invalid file name provided"
 msgstr "Ugyldig filnavn angitt"
 
-#: src/View/AbstractDirectoryView.vala:1852
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "Ny fane"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
 msgstr "Kjør"
 
-#: src/View/AbstractDirectoryView.vala:1879
+#: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
 msgstr "Åpne i %s"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
 msgstr "Åpne i"
 
-#: src/View/AbstractDirectoryView.vala:1950
-#: src/View/Widgets/BreadcrumbsEntry.vala:489
+#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Åpne med"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Paste"
 msgstr "Lim inn"
 
-#: src/View/AbstractDirectoryView.vala:1961
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "Bokmerke"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/View/AbstractDirectoryView.vala:1990
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr "Flytt til papirkurv"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:1994
 msgid "Delete permanently"
 msgstr "Slett permanent"
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:1999
 msgid "Restore from Trash"
 msgstr "Gjenopprett fra papirkurv"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Open Parent Folder"
 msgstr "Åpne overordnet mappe"
 
-#: src/View/AbstractDirectoryView.vala:2014
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Remove from History"
 msgstr "Slett fra historikk"
 
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2029
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Gi nytt navn"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2036
 msgid "Copy as Link"
 msgstr "Kopier som lenke"
 
-#: src/View/AbstractDirectoryView.vala:2055
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste Link into Folder"
 msgstr "Lim inn lenke i mappe"
 
-#: src/View/AbstractDirectoryView.vala:2057
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Paste into Folder"
 msgstr "Lim inn i mappe"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Show Hidden Files"
 msgstr "Vis skjulte filer"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Remote Thumbnails"
 msgstr "Vis miniatyrbilder fra andre steder"
 
-#: src/View/AbstractDirectoryView.vala:2091
+#: src/View/AbstractDirectoryView.vala:2090
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Vis miniatyrbilder fra andre steder"
 
-#: src/View/AbstractDirectoryView.vala:2111
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Paste Link"
 msgstr "Lim inn lenke"
 
-#: src/View/AbstractDirectoryView.vala:2165
+#: src/View/AbstractDirectoryView.vala:2164
 msgid "Name"
 msgstr "Navn"
 
-#: src/View/AbstractDirectoryView.vala:2180
+#: src/View/AbstractDirectoryView.vala:2179
 msgid "Date"
 msgstr "Dato"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2184
 msgid "Reversed Order"
 msgstr "Omvendt rekkefølge"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Folders Before Files"
 msgstr "Mapper før filer"
 
-#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2199
 msgid "Sort by"
 msgstr "Sorter etter"
 
-#: src/View/AbstractDirectoryView.vala:2208
+#: src/View/AbstractDirectoryView.vala:2207
 msgid "Folder"
 msgstr "Mappe"
 
-#: src/View/AbstractDirectoryView.vala:2214
+#: src/View/AbstractDirectoryView.vala:2213
 msgid "Empty File"
 msgstr "Tom fil"
 
-#: src/View/AbstractDirectoryView.vala:2265
+#: src/View/AbstractDirectoryView.vala:2264
 msgid "New"
 msgstr "Ny"
 
-#: src/View/AbstractDirectoryView.vala:2502
+#: src/View/AbstractDirectoryView.vala:2501
 #, c-format
 msgid "Untitled %s"
 msgstr "Uten navn %s"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2862
+#: src/View/AbstractDirectoryView.vala:3063
 msgid "Cannot remove files from here"
 msgstr "Filer kan ikke fjernes herfra"
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke tilgang til å endre denne plasseringen"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3017
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer som er i papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cutting the selection instead"
 msgstr "Klipper ut utvalget i stedet"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot paste files here"
 msgstr "Filer kan ikke limes inn her"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:583
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
 msgid "Home"
 msgstr "Hjem"
 
@@ -586,78 +586,78 @@ msgstr "Finner ikke fil"
 msgid "The file selected no longer exists."
 msgstr "Den valgte filen finnes ikke lenger."
 
-#: src/View/Sidebar.vala:570
+#: src/View/Sidebar.vala:583
 msgid "Personal"
 msgstr "Personlig"
 
-#: src/View/Sidebar.vala:571
+#: src/View/Sidebar.vala:584
 msgid "Your common places and bookmarks"
 msgstr "Dine vanlige steder og bokmerker"
 
-#: src/View/Sidebar.vala:590
+#: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
 msgstr "Åpne din personlige mappe"
 
-#: src/View/Sidebar.vala:605
+#: src/View/Sidebar.vala:618
 msgid "View the list of recently used files"
 msgstr "Se listen over nylig brukte filer"
 
-#: src/View/Sidebar.vala:631 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Papirkurv"
 
-#: src/View/Sidebar.vala:638
+#: src/View/Sidebar.vala:651
 msgid "Open the Trash"
 msgstr "Åpne papirkurven"
 
-#: src/View/Sidebar.vala:643
+#: src/View/Sidebar.vala:656
 msgid "Devices"
 msgstr "Enheter"
 
-#: src/View/Sidebar.vala:644
+#: src/View/Sidebar.vala:657
 msgid "Your local partitions and devices"
 msgstr "Dine lokale partisjoner og enheter"
 
-#: src/View/Sidebar.vala:773 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Nettverk"
 
-#: src/View/Sidebar.vala:774
+#: src/View/Sidebar.vala:787
 msgid "Your network places"
 msgstr "Dine nettverkssteder"
 
-#: src/View/Sidebar.vala:806
+#: src/View/Sidebar.vala:819
 msgid "Entire Network"
 msgstr "Hele nettverket"
 
-#: src/View/Sidebar.vala:813
+#: src/View/Sidebar.vala:826
 msgid "Browse the contents of the network"
 msgstr "Bla igjennom innholdet på nettverket"
 
-#: src/View/Sidebar.vala:816
+#: src/View/Sidebar.vala:829
 msgid "Connect Server"
 msgstr "Koble til tjener"
 
-#: src/View/Sidebar.vala:817
+#: src/View/Sidebar.vala:830
 msgid "Connect to a network server"
 msgstr "Koble til en nettverkstjener"
 
-#: src/View/Sidebar.vala:976
+#: src/View/Sidebar.vala:989
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s ledig av %s)"
 
-#: src/View/Sidebar.vala:1469
+#: src/View/Sidebar.vala:1476
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Feil ved montering av diskområde %s"
 
-#: src/View/Sidebar.vala:1484
+#: src/View/Sidebar.vala:1491
 #, c-format
 msgid "Unable to start %s"
 msgstr "Kan ikke starte %s"
 
-#: src/View/Sidebar.vala:1672 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Tøm _papirkurven"
 
@@ -731,24 +731,24 @@ msgstr "_Løs ut"
 msgid "Search or Type Path"
 msgstr "Søk eller skriv inn sti"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr "Åpne i ny fane"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr "Åpne i et nytt vindu"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:496
+#: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
 msgstr "Åpne i et annet program…"
 
-#: src/View/Widgets/HeaderBar.vala:65
+#: src/View/Widgets/HeaderBar.vala:66
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
 msgstr "Forrige"
 
-#: src/View/Widgets/HeaderBar.vala:71
+#: src/View/Widgets/HeaderBar.vala:73
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
 msgstr "Neste"
@@ -869,84 +869,84 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Sikker WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server Details"
 msgstr "Tjenerdetaljer"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr "Tjenernavn eller IP-adresse"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Tjener:"
 
-#: libcore/ConnectServerDialog.vala:142
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server"
 msgstr "Navn på delt ressurs på tjeneren"
 
-#: libcore/ConnectServerDialog.vala:168
+#: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Delt ressurs:"
 
-#: libcore/ConnectServerDialog.vala:170
+#: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
 msgstr "Sti til delt mappe på tjeneren"
 
-#: libcore/ConnectServerDialog.vala:171
+#: libcore/ConnectServerDialog.vala:181
 msgid "Folder:"
 msgstr "Mappe:"
 
-#: libcore/ConnectServerDialog.vala:173
+#: libcore/ConnectServerDialog.vala:183
 msgid "User Details"
 msgstr "Brukerdetaljer"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:185
 msgid "Name of Windows domain"
 msgstr "Navn på Windows-domene"
 
-#: libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:186
 msgid "Domain name:"
 msgstr "Domenenavn:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
 msgstr "Brukerens navn på tjeneren"
 
-#: libcore/ConnectServerDialog.vala:179
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr "Brukernavn:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:196
 msgid "Password:"
 msgstr "Passord:"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:198
 msgid "Remember this password"
 msgstr "Husk dette passordet"
 
-#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:102
-#: libcore/FileConflictDialog.vala:190
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/FileConflictDialog.vala:219
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: libcore/ConnectServerDialog.vala:193
+#: libcore/ConnectServerDialog.vala:205
 msgid "Connect"
 msgstr "Koble til"
 
-#: libcore/ConnectServerDialog.vala:200
+#: libcore/ConnectServerDialog.vala:214
 msgid "Continue"
 msgstr "Forsett"
 
-#: libcore/ConnectServerDialog.vala:245
+#: libcore/ConnectServerDialog.vala:265
 msgid "Connecting…"
 msgstr "Kobler til…"
 
-#: libcore/ConnectServerDialog.vala:364
+#: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
 msgstr "Kontroller brukerdata."
 
@@ -971,115 +971,115 @@ msgstr "Lenk hit"
 msgid "File conflict"
 msgstr "Filkonflikt"
 
-#: libcore/FileConflictDialog.vala:116
+#: libcore/FileConflictDialog.vala:122
 msgid "Original file"
 msgstr "Originalfil"
 
-#: libcore/FileConflictDialog.vala:134 libcore/FileConflictDialog.vala:162
+#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
 msgid "Last modified:"
 msgstr "Sist endret:"
 
-#: libcore/FileConflictDialog.vala:144
+#: libcore/FileConflictDialog.vala:161
 msgid "Replace with"
 msgstr "Erstatt med"
 
-#: libcore/FileConflictDialog.vala:172
+#: libcore/FileConflictDialog.vala:199
 msgid "Reset"
 msgstr "Nullstill"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
 msgstr "_Velg et nytt navn for målet"
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
 msgstr "Bruk denne handlingen på alle filer"
 
-#: libcore/FileConflictDialog.vala:187 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Hopp over"
 
-#: libcore/FileConflictDialog.vala:188
+#: libcore/FileConflictDialog.vala:217
 msgid "Re_name"
 msgstr "Gi _nytt navn"
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:221
 msgid "Keep Newest"
 msgstr "Behold den nyeste"
 
-#: libcore/FileConflictDialog.vala:193
+#: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
 msgstr "Hopp over om orginalen er nyere"
 
-#: libcore/FileConflictDialog.vala:195
+#: libcore/FileConflictDialog.vala:224
 msgid "Replace"
 msgstr "Erstatt"
 
-#: libcore/FileConflictDialog.vala:307
+#: libcore/FileConflictDialog.vala:340
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Slå sammen mappe «%s»?"
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:341
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr "Slå sammen vil be om bekreftelse før konflikterende filer overskrives."
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:343
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "En eldre mappe med samme navn eksisterer allerede i \"%s\"."
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:345
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "En nyere mappe med samme navn eksisterer allerede i \"%s\"."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:347
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "En annen mappe med samme navn eksisterer allerede i \"%s\"."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:350
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Erstatt mappe \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:351
 msgid "Replacing it will remove all files in the folder."
 msgstr "Hvis du erstatter den, vil alle filer i mappen slettes."
 
-#: libcore/FileConflictDialog.vala:319
+#: libcore/FileConflictDialog.vala:352
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "En mappe med samme navn eksisterer allerede i \"%s\"."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:355
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Erstatt fil \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:323
+#: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
 msgstr "Erstatte den vil skrive over innholdet."
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:359
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "En eldre fil med samme navn eksisterer allerede i \"%s\"."
 
-#: libcore/FileConflictDialog.vala:328
+#: libcore/FileConflictDialog.vala:361
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "En nyere fil med samme navn eksisterer allerede i \"%s\"."
 
-#: libcore/FileConflictDialog.vala:330
+#: libcore/FileConflictDialog.vala:363
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "En annen fil med samme navn eksisterer allerede i \"%s\"."
 
-#: libcore/FileConflictDialog.vala:356
+#: libcore/FileConflictDialog.vala:389
 msgid "Merge"
 msgstr "Slå sammen"
 
@@ -1917,17 +1917,17 @@ msgstr "Det oppstod en feil under oppretting av katalog i %F."
 msgid "Type a path"
 msgstr "Skriv inn en sti"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr "Naviger til %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:290
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
 msgstr "Gå til %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:368
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 #, fuzzy
 msgid "Type Path"
 msgstr "Skriv inn en sti"
@@ -1936,19 +1936,19 @@ msgstr "Skriv inn en sti"
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:227
+#: libwidgets/View/SearchResults.vala:238
 msgid "In This Folder"
 msgstr "I denne mappen"
 
-#: libwidgets/View/SearchResults.vala:232
+#: libwidgets/View/SearchResults.vala:243
 msgid "Below This Folder"
 msgstr "Under denne mappen"
 
-#: libwidgets/View/SearchResults.vala:237
+#: libwidgets/View/SearchResults.vala:248
 msgid "Bookmarks"
 msgstr "Bokmerker"
 
-#: libwidgets/View/SearchResults.vala:243
+#: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Nylig brukt"
 
@@ -1956,11 +1956,11 @@ msgstr "Nylig brukt"
 msgid "View as Grid"
 msgstr "Vis som rutenett"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:39
+#: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr "Vis som liste"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:44
+#: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr "Vis i kolonner"
 

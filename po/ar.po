@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 16:28+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
 "PO-Revision-Date: 2020-05-16 11:10+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -28,7 +28,7 @@ msgstr "اعرض إصدار البرنامج"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "إفتح الرابط أو الروابط في علامة أو علامات تبويب جديدة"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1858
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "نافذة جديدة"
 
@@ -58,25 +58,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--سيتم الانهاء والخروج لا يمكن استخدام ‪ مع المسارات."
 
-#: src/ProgressUIHandler.vala:129 src/ProgressUIHandler.vala:191
+#: src/ProgressUIHandler.vala:129 src/ProgressUIHandler.vala:192
 msgid "File Operations"
 msgstr "عمليات الملف"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:185
+#: src/ProgressUIHandler.vala:186
 #, c-format
 msgid "Completed %s"
 msgstr "إنتهى %s"
 
-#: src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:189
 msgid "All file operations have ended"
 msgstr "كل المهام على الملفات إنتهت"
 
-#: src/ProgressUIHandler.vala:236
+#: src/ProgressUIHandler.vala:237
 msgid "Show Copy Dialog"
 msgstr "اظهر نافذة النسخ"
 
-#: src/ProgressUIHandler.vala:248
+#: src/ProgressUIHandler.vala:249
 msgid "Cancel All In-progress Actions"
 msgstr "ألغ كل الإجراءات قيد التنفيذ"
 
@@ -84,43 +84,43 @@ msgstr "ألغ كل الإجراءات قيد التنفيذ"
 msgid "Info"
 msgstr "معلومات"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr "عامّ"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:75 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "أغلق"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:134
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
 msgstr "إستخدام الجهاز"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:154
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
 msgstr "السعة:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
 #: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
 msgid "Unknown"
 msgstr "مجهول"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:157
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
 msgstr "متاح:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:160
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
 msgstr "مُستعمَل:"
 
-#: src/Dialogs/ChooseAppDialog.vala:42
+#: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "عيّن كإفتراضي"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1968 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1967 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "خصائص"
 
@@ -155,13 +155,13 @@ msgstr "تحميل …"
 msgid "Could not be determined"
 msgstr "لم يكن من الممكن تحديده"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:121
-#: libcore/FileConflictDialog.vala:149
+#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "الحجم:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:129 libcore/FileConflictDialog.vala:157
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "النوع:"
 
@@ -190,7 +190,7 @@ msgid "Resolution:"
 msgstr "الدقة:"
 
 #: src/Dialogs/PropertiesWindow.vala:597
-#: src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "المكان:"
 
@@ -203,7 +203,7 @@ msgid "Original Location:"
 msgstr "المكان اﻷصلي:"
 
 #: src/Dialogs/PropertiesWindow.vala:638
-#: src/View/AbstractDirectoryView.vala:1936
+#: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "تطبيقات أخرى …"
 
@@ -284,12 +284,12 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "خصائص القرص"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:650
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "نظام ملفات"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:88
+#: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
 msgstr "اعادة التهيئة:"
 
@@ -313,7 +313,7 @@ msgstr "لم يتم فتح عنوان URI"
 msgid "Could not open files or URIs with this app"
 msgstr "لم يتم فتح الملفات او عنوان URI في هذا التطبيق"
 
-#: src/View/Window.vala:545 src/View/Window.vala:555
+#: src/View/Window.vala:532 src/View/Window.vala:542
 msgid "(as Administrator)"
 msgstr "(كمسؤول)"
 
@@ -321,11 +321,11 @@ msgstr "(كمسؤول)"
 msgid "Filename"
 msgstr "اسم ملف"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2170
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2169
 msgid "Size"
 msgstr "الحجم"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2175
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2174
 msgid "Type"
 msgstr "النّوع"
 
@@ -355,190 +355,190 @@ msgstr "أنشئ المجلد  \"%s\""
 msgid "Failed to create the folder"
 msgstr "فشل في إنشاء المجلد"
 
-#: src/View/AbstractDirectoryView.vala:819
-#: src/View/AbstractDirectoryView.vala:1130
+#: src/View/AbstractDirectoryView.vala:818
+#: src/View/AbstractDirectoryView.vala:1129
 msgid "Cannot execute this file"
 msgstr "لا يمكن تنفيذ هذا الملف"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:829
+#: src/View/AbstractDirectoryView.vala:828
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:830
+#: src/View/AbstractDirectoryView.vala:829
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:845
+#: src/View/AbstractDirectoryView.vala:844
 msgid "Cannot open this file"
 msgstr "لا يمكن فتح هذا الملف"
 
-#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:857
 msgid "Cannot identify file type to open"
 msgstr "لا يمكن تحديد نوع الملف لفتحه"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1575
 msgid "Cannot drop this file"
 msgstr "لا يمكن إسقاط هذا الملف"
 
-#: src/View/AbstractDirectoryView.vala:1577
+#: src/View/AbstractDirectoryView.vala:1576
 msgid "Invalid file name provided"
 msgstr "اسم الملف غير صالح"
 
-#: src/View/AbstractDirectoryView.vala:1852
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "علامة تبويب جديدة"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
 msgstr "شغل"
 
-#: src/View/AbstractDirectoryView.vala:1879
+#: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
 msgstr "إفتح في %s"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
 msgstr "إفتح في"
 
-#: src/View/AbstractDirectoryView.vala:1950
-#: src/View/Widgets/BreadcrumbsEntry.vala:489
+#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "فتح باستخدام"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Paste"
 msgstr "لصق"
 
-#: src/View/AbstractDirectoryView.vala:1961
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "علامة مرجعية"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
 msgstr "قص"
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr "نسخ"
 
-#: src/View/AbstractDirectoryView.vala:1990
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr "انقل إلى المُهملات"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:1994
 msgid "Delete permanently"
 msgstr "حذف بشكل دائم"
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:1999
 msgid "Restore from Trash"
 msgstr "استعد من المُهملات"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Open Parent Folder"
 msgstr "فتح الملف الاعلى"
 
-#: src/View/AbstractDirectoryView.vala:2014
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Remove from History"
 msgstr "امسح من السجل"
 
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2029
 msgid "Rename…"
 msgstr "إعادة تسمية…"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2036
 msgid "Copy as Link"
 msgstr "نسخ كرابط"
 
-#: src/View/AbstractDirectoryView.vala:2055
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste Link into Folder"
 msgstr "لصق الرابط في المجلد"
 
-#: src/View/AbstractDirectoryView.vala:2057
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Paste into Folder"
 msgstr "لصق في المجلد"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Show Hidden Files"
 msgstr "أظهر الملفات المخفية"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Remote Thumbnails"
 msgstr "اظهر تفاصيل عن بعد أكثر"
 
-#: src/View/AbstractDirectoryView.vala:2091
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Hide Thumbnails"
 msgstr "اخفي التفاصيل"
 
-#: src/View/AbstractDirectoryView.vala:2111
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Paste Link"
 msgstr "لصق الرابط"
 
-#: src/View/AbstractDirectoryView.vala:2165
+#: src/View/AbstractDirectoryView.vala:2164
 msgid "Name"
 msgstr "الاسم"
 
-#: src/View/AbstractDirectoryView.vala:2180
+#: src/View/AbstractDirectoryView.vala:2179
 msgid "Date"
 msgstr "التاريخ"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2184
 msgid "Reversed Order"
 msgstr "ترتيب عكسي"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Folders Before Files"
 msgstr "المجلدات قبل الملفات"
 
-#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2199
 msgid "Sort by"
 msgstr "ترتيب حسب"
 
-#: src/View/AbstractDirectoryView.vala:2208
+#: src/View/AbstractDirectoryView.vala:2207
 msgid "Folder"
 msgstr "مجلد"
 
-#: src/View/AbstractDirectoryView.vala:2214
+#: src/View/AbstractDirectoryView.vala:2213
 msgid "Empty File"
 msgstr "ملف فارغ"
 
-#: src/View/AbstractDirectoryView.vala:2265
+#: src/View/AbstractDirectoryView.vala:2264
 msgid "New"
 msgstr "جديد"
 
-#: src/View/AbstractDirectoryView.vala:2502
+#: src/View/AbstractDirectoryView.vala:2501
 #, c-format
 msgid "Untitled %s"
 msgstr "بدون عنوان %s"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2862
+#: src/View/AbstractDirectoryView.vala:3063
 msgid "Cannot remove files from here"
 msgstr "لا يمكن إزالة الملفات من هنا"
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "You do not have permission to change this location"
 msgstr "ليس لديك إذن لتغيير هذا الموقع"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3017
 msgid "Cannot copy files that are in the trash"
 msgstr "لا يمكن نسخ الملفات الموجودة في سلة المهملات"
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cutting the selection instead"
 msgstr "قص المحدد بدلاً من ذلك"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot paste files here"
 msgstr "لا يمكن لصق الملفات هنا"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:583
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
 msgid "Home"
 msgstr "المنزل"
 
@@ -594,78 +594,78 @@ msgstr "لم يتم ايجاد الملف"
 msgid "The file selected no longer exists."
 msgstr "الملف المختار لم يعد موجودا."
 
-#: src/View/Sidebar.vala:570
+#: src/View/Sidebar.vala:583
 msgid "Personal"
 msgstr "شخصي"
 
-#: src/View/Sidebar.vala:571
+#: src/View/Sidebar.vala:584
 msgid "Your common places and bookmarks"
 msgstr "مجلداتك وعلاماتك الشائعة"
 
-#: src/View/Sidebar.vala:590
+#: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
 msgstr "افتح مجلّدك الشخصي"
 
-#: src/View/Sidebar.vala:605
+#: src/View/Sidebar.vala:618
 msgid "View the list of recently used files"
 msgstr "عرض قائمة الملفات المفتوحة مؤخرا"
 
-#: src/View/Sidebar.vala:631 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "المهملات"
 
-#: src/View/Sidebar.vala:638
+#: src/View/Sidebar.vala:651
 msgid "Open the Trash"
 msgstr "فتح المهملات"
 
-#: src/View/Sidebar.vala:643
+#: src/View/Sidebar.vala:656
 msgid "Devices"
 msgstr "الأجهزة"
 
-#: src/View/Sidebar.vala:644
+#: src/View/Sidebar.vala:657
 msgid "Your local partitions and devices"
 msgstr "اقراصك و أجهزتك المحلية"
 
-#: src/View/Sidebar.vala:773 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "الشبكة"
 
-#: src/View/Sidebar.vala:774
+#: src/View/Sidebar.vala:787
 msgid "Your network places"
 msgstr "شبكتك المحلية"
 
-#: src/View/Sidebar.vala:806
+#: src/View/Sidebar.vala:819
 msgid "Entire Network"
 msgstr "الشبكة كاملة"
 
-#: src/View/Sidebar.vala:813
+#: src/View/Sidebar.vala:826
 msgid "Browse the contents of the network"
 msgstr "تصفّح محتويات الشبكة"
 
-#: src/View/Sidebar.vala:816
+#: src/View/Sidebar.vala:829
 msgid "Connect Server"
 msgstr "اتصل بالخادم"
 
-#: src/View/Sidebar.vala:817
+#: src/View/Sidebar.vala:830
 msgid "Connect to a network server"
 msgstr "اتصل بشبكة الخادم"
 
-#: src/View/Sidebar.vala:976
+#: src/View/Sidebar.vala:989
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "( %s خالية من %s )"
 
-#: src/View/Sidebar.vala:1469
+#: src/View/Sidebar.vala:1476
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "خطأ في تحميل القسم %s"
 
-#: src/View/Sidebar.vala:1484
+#: src/View/Sidebar.vala:1491
 #, c-format
 msgid "Unable to start %s"
 msgstr "تعذّر بدء %s"
 
-#: src/View/Sidebar.vala:1672 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "أفرغ ال_مهملات"
 
@@ -738,24 +738,24 @@ msgstr "أ_خرِج"
 msgid "Search or Type Path"
 msgstr "البحث أو كتابة المسار"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr "فتح في علامة تبويب جديدة"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr "فتح في نافذة جديدة"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:496
+#: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
 msgstr "فتح في تطبيق آخر…"
 
-#: src/View/Widgets/HeaderBar.vala:65
+#: src/View/Widgets/HeaderBar.vala:66
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
 msgstr "السابق"
 
-#: src/View/Widgets/HeaderBar.vala:71
+#: src/View/Widgets/HeaderBar.vala:73
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
 msgstr "التالي"
@@ -876,84 +876,84 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "وبداف آمن ((Secure WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server Details"
 msgstr "تفاصيل الخادوم"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr "اسم الخادم أو IP address"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "الخادم:"
 
-#: libcore/ConnectServerDialog.vala:142
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "المنفذ:"
 
-#: libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server"
 msgstr "اسم المشاركة على الخادم"
 
-#: libcore/ConnectServerDialog.vala:168
+#: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "المشاركة:"
 
-#: libcore/ConnectServerDialog.vala:170
+#: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
 msgstr "مسار المجلد المشارك على الخادم"
 
-#: libcore/ConnectServerDialog.vala:171
+#: libcore/ConnectServerDialog.vala:181
 msgid "Folder:"
 msgstr "المجلد:"
 
-#: libcore/ConnectServerDialog.vala:173
+#: libcore/ConnectServerDialog.vala:183
 msgid "User Details"
 msgstr "تفاصيل المستخدم"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:185
 msgid "Name of Windows domain"
 msgstr "اسم نطاق ويندوز"
 
-#: libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:186
 msgid "Domain name:"
 msgstr "اسم النطاق:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
 msgstr "اسم المستخدم على الخادم"
 
-#: libcore/ConnectServerDialog.vala:179
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr "اسم المستخدم:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:196
 msgid "Password:"
 msgstr "كلمة السر:"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:198
 msgid "Remember this password"
 msgstr "تذكر كلمة السر هذه"
 
-#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:102
-#: libcore/FileConflictDialog.vala:190
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/FileConflictDialog.vala:219
 msgid "Cancel"
 msgstr "ألغِ"
 
-#: libcore/ConnectServerDialog.vala:193
+#: libcore/ConnectServerDialog.vala:205
 msgid "Connect"
 msgstr "اتصل"
 
-#: libcore/ConnectServerDialog.vala:200
+#: libcore/ConnectServerDialog.vala:214
 msgid "Continue"
 msgstr "تابع"
 
-#: libcore/ConnectServerDialog.vala:245
+#: libcore/ConnectServerDialog.vala:265
 msgid "Connecting…"
 msgstr "يتصل…"
 
-#: libcore/ConnectServerDialog.vala:364
+#: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
 msgstr "من فضلك راجع تفاصيل المستخدم."
 
@@ -978,56 +978,56 @@ msgstr "اضف الرابط إلى هنا"
 msgid "File conflict"
 msgstr "تعارض الملف"
 
-#: libcore/FileConflictDialog.vala:116
+#: libcore/FileConflictDialog.vala:122
 msgid "Original file"
 msgstr "الملف الأصلي"
 
-#: libcore/FileConflictDialog.vala:134 libcore/FileConflictDialog.vala:162
+#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
 msgid "Last modified:"
 msgstr "آخر تعديل:"
 
-#: libcore/FileConflictDialog.vala:144
+#: libcore/FileConflictDialog.vala:161
 msgid "Replace with"
 msgstr "إستبدال بـ"
 
-#: libcore/FileConflictDialog.vala:172
+#: libcore/FileConflictDialog.vala:199
 msgid "Reset"
 msgstr "أعد ضبط"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
 msgstr "_حدد اسما جديدا للوِجهة"
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
 msgstr "طبق هذا الإجراء على كل الملفات"
 
-#: libcore/FileConflictDialog.vala:187 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_تخطَّ"
 
-#: libcore/FileConflictDialog.vala:188
+#: libcore/FileConflictDialog.vala:217
 msgid "Re_name"
 msgstr "إعادة تسمية"
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:221
 msgid "Keep Newest"
 msgstr "ابق الاجدد"
 
-#: libcore/FileConflictDialog.vala:193
+#: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
 msgstr "تخطى اذا الاصلي قد تم التعديل عليه كثيرا مؤخرا"
 
-#: libcore/FileConflictDialog.vala:195
+#: libcore/FileConflictDialog.vala:224
 msgid "Replace"
 msgstr "إستبدل"
 
-#: libcore/FileConflictDialog.vala:307
+#: libcore/FileConflictDialog.vala:340
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "أأدمج المجلد \"%s\"؟"
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:341
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1035,60 +1035,60 @@ msgstr ""
 "الدمج سيطلب التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
 "نسخها."
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:343
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد أقدم بنفس الاسم موجود في \"%s\"."
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:345
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد أحدث بنفس الاسم موجود في \"%s\"."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:347
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد آخر بنفس الاسم موجود في \"%s\"."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:350
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "أأستبدل المجلد \"%s\"؟"
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:351
 msgid "Replacing it will remove all files in the folder."
 msgstr "استبداله سيحذف كل الملفات داخل المجلد."
 
-#: libcore/FileConflictDialog.vala:319
+#: libcore/FileConflictDialog.vala:352
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "هناك مجلّد بنفس الاسم موجود في \"%s\"."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:355
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "أأستبدل الملف \"%s\"؟"
 
-#: libcore/FileConflictDialog.vala:323
+#: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
 msgstr "استبداله سيستبدل محتواه."
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:359
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "هناك ملف أقدم بنفس الاسم موجود في \"%s\"."
 
-#: libcore/FileConflictDialog.vala:328
+#: libcore/FileConflictDialog.vala:361
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "هناك ملف أحدث بنفس الاسم موجود في \"%s\"."
 
-#: libcore/FileConflictDialog.vala:330
+#: libcore/FileConflictDialog.vala:363
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "هناك ملف آخر بنفس الاسم موجود في \"%s\"."
 
-#: libcore/FileConflictDialog.vala:356
+#: libcore/FileConflictDialog.vala:389
 msgid "Merge"
 msgstr "إدمج"
 
@@ -1996,17 +1996,17 @@ msgstr "حدث خطأ عند إنشاء المجلد في %F."
 msgid "Type a path"
 msgstr "اكتب المسار"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr "انتقل إلى %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:290
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
 msgstr "إذهب إلى %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:368
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 #, fuzzy
 msgid "Type Path"
 msgstr "النّوع"
@@ -2015,19 +2015,19 @@ msgstr "النّوع"
 msgid "More Results …"
 msgstr "المزيد من النتائج …"
 
-#: libwidgets/View/SearchResults.vala:227
+#: libwidgets/View/SearchResults.vala:238
 msgid "In This Folder"
 msgstr "في هذا المجلد"
 
-#: libwidgets/View/SearchResults.vala:232
+#: libwidgets/View/SearchResults.vala:243
 msgid "Below This Folder"
 msgstr "تحت هذا المجلد"
 
-#: libwidgets/View/SearchResults.vala:237
+#: libwidgets/View/SearchResults.vala:248
 msgid "Bookmarks"
 msgstr "المؤشرات"
 
-#: libwidgets/View/SearchResults.vala:243
+#: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "تم استخدامه مؤخرا"
 
@@ -2035,11 +2035,11 @@ msgstr "تم استخدامه مؤخرا"
 msgid "View as Grid"
 msgstr "عرض كشبكة"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:39
+#: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr "اعرض كقائمة"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:44
+#: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr "العرض في الأعمدة"
 
