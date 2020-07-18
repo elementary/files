@@ -295,6 +295,7 @@ namespace Marlin.View.Chrome {
                 show_placeholder ();
                 show_search_icon ();
             } else {
+                hide_placeholder ();
                 hide_search_icon ();
             }
         }

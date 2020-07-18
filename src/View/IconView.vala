@@ -27,7 +27,6 @@ namespace FM {
         protected Gtk.TreePath? most_recently_selected = null;
 
         public IconView (Marlin.View.Slot _slot) {
-            assert (_slot != null);
             base (_slot);
         }
 
@@ -46,13 +45,13 @@ namespace FM {
 
             set_up_icon_renderer ();
 
-            (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
-            (tree as Gtk.CellLayout).pack_end (name_renderer, false);
+            tree.pack_start (icon_renderer, false);
+            tree.pack_end (name_renderer, false);
 
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
-            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
+            tree.add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
+            tree.add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -216,7 +215,7 @@ namespace FM {
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
-            Gtk.CellRenderer? r;
+            Gtk.CellRenderer? cell_renderer;
             uint zone;
             int x, y;
             path = null;
@@ -224,16 +223,16 @@ namespace FM {
             x = (int)event.x;
             y = (int)event.y;
 
-            tree.get_item_at_pos (x, y, out p, out r);
+            tree.get_item_at_pos (x, y, out p, out cell_renderer);
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
-            if (r != null) {
+            if (cell_renderer != null) {
                 Gdk.Rectangle rect, area;
-                tree.get_cell_rect (p, r, out rect);
-                area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+                tree.get_cell_rect (p, cell_renderer, out rect);
+                area = cell_renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
-                if (r is Marlin.TextRenderer) {
+                if (cell_renderer is Marlin.TextRenderer) {
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
@@ -244,12 +243,12 @@ namespace FM {
                     model.@get (iter,
                             FM.ListModel.ColumnID.FILENAME, out text);
 
-                    (r as Marlin.TextRenderer).set_up_layout (text, area.width);
+                    ((Marlin.TextRenderer) cell_renderer).set_up_layout (text, area.width);
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
                         y >= rect.y &&
-                        y <= rect.y + (r as Marlin.TextRenderer).text_height) {
+                        y <= rect.y + ((Marlin.TextRenderer) cell_renderer).text_height) {
 
                         zone = ClickZone.NAME;
                     } else if (rubberband) {

@@ -146,8 +146,10 @@ namespace Marlin.View.Chrome {
 #if HAVE_ZEITGEIST
             var template = new Zeitgeist.Event ();
 
-            var template_subject = new Zeitgeist.Subject ();
-            template_subject.manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT;
+            var template_subject = new Zeitgeist.Subject () {
+                manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT
+            };
+
             template.add_subject (template_subject);
 
             templates = new GenericArray<Zeitgeist.Event> ();
@@ -155,16 +157,20 @@ namespace Marlin.View.Chrome {
 
             zg_index = new Zeitgeist.Index ();
 #endif
-            var frame = new Gtk.Frame (null);
-            frame.shadow_type = Gtk.ShadowType.ETCHED_IN;
+            var frame = new Gtk.Frame (null) {
+                shadow_type = Gtk.ShadowType.ETCHED_IN
+            };
 
-            scroll = new Gtk.ScrolledWindow (null, null);
-            scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
+            scroll = new Gtk.ScrolledWindow (null, null) {
+                hscrollbar_policy = Gtk.PolicyType.NEVER
+            };
 
-            view = new Gtk.TreeView ();
-            view.headers_visible = false;
-            view.level_indentation = 12;
-            view.show_expanders = false;
+            view = new Gtk.TreeView () {
+                headers_visible = false,
+                level_indentation = 12,
+                show_expanders = false
+            };
+
             view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
 
             /* Do not select category headers */
@@ -174,21 +180,26 @@ namespace Marlin.View.Chrome {
 
             get_style_context ().add_class ("completion-popup");
 
-            var column = new Gtk.TreeViewColumn ();
-            column.sizing = Gtk.TreeViewColumnSizing.FIXED;
+            var column = new Gtk.TreeViewColumn () {
+                sizing = Gtk.TreeViewColumnSizing.FIXED
+            };
 
             var cell = new Gtk.CellRendererPixbuf ();
             column.pack_start (cell, false);
             column.set_attributes (cell, "gicon", 1, "visible", 4);
 
-            var cell_name = new Gtk.CellRendererText ();
-            cell_name.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            var cell_name = new Gtk.CellRendererText () {
+                ellipsize = Pango.EllipsizeMode.MIDDLE
+            };
+
             column.pack_start (cell_name, true);
             column.set_attributes (cell_name, "markup", 0);
 
-            var cell_path = new Gtk.CellRendererText ();
-            cell_path.xpad = 6;
-            cell_path.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            var cell_path = new Gtk.CellRendererText () {
+                xpad = 6,
+                ellipsize = Pango.EllipsizeMode.MIDDLE
+            };
+
             column.pack_start (cell_path, false);
             column.set_attributes (cell_path, "markup", 2);
 
@@ -443,6 +454,7 @@ namespace Marlin.View.Chrome {
                     return parent.key_press_event (event);
                 }
             }
+
             switch (event.keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -451,12 +463,15 @@ namespace Marlin.View.Chrome {
                     return true;
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
+                case Gdk.Key.Tab:
+                case Gdk.Key.ISO_Left_Tab:
                     if (list_empty ()) {
                         Gdk.beep ();
                         return true;
                     }
 
-                    var up = event.keyval == Gdk.Key.Up;
+                    var up = (event.keyval == Gdk.Key.Up) ||
+                             (event.keyval == Gdk.Key.ISO_Left_Tab);
 
                     if (view.get_selection ().count_selected_rows () < 1) {
                         if (up) {

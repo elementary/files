@@ -27,6 +27,13 @@ jobs:
         cd build
         ninja install
 
+    - name: Test
+      env:
+        DESTDIR: out
+      run: |
+        cd build
+        ninja test
+
   lint:
 
     runs-on: ubuntu-latest

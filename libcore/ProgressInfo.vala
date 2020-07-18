@@ -51,6 +51,8 @@ public class PF.Progress.Info : GLib.Object {
 
     construct {
         cancellable = new GLib.Cancellable ();
+        // Ensure info finishes if canceled by marlin-file-operations.
+        cancellable.connect (finish);
         PF.Progress.InfoManager.get_instance ().add_new_info (this);
     }
 

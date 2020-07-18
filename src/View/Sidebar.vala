@@ -20,6 +20,8 @@
 ***/
 
 public class Marlin.Sidebar : Marlin.AbstractSidebar {
+    public Marlin.View.Window window { get; construct; }
+
     private const int MAX_BOOKMARKS_DROPPED = 100;
     /* Indents */
     private const int ROOT_INDENTATION_XPAD = 4; /* Left Indent for all rows*/
@@ -33,7 +35,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     Gtk.CellRendererText name_renderer;
     Gtk.CellRenderer eject_spinner_cell_renderer;
     Gtk.CellRenderer expander_renderer;
-    Marlin.View.Window window;
     Marlin.BookmarkList bookmarks;
     VolumeMonitor volume_monitor;
     unowned Marlin.TrashMonitor monitor;
@@ -57,7 +58,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     bool internal_drag_started;
     bool dragged_out_of_window;
     bool renaming = false;
-    bool local_only;
+    private bool local_only;
     Gee.HashMap<PlaceType, Gtk.TreeRowReference> categories = new Gee.HashMap<PlaceType, Gtk.TreeRowReference> ();
 
     /* Identifiers for target types */
@@ -111,13 +112,17 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
-    public Sidebar (Marlin.View.Window window, bool local_only = false) {
+    public Sidebar (Marlin.View.Window window) {
+        Object (window: window);
+    }
+
+    construct {
         init (); /* creates the Gtk.TreeModel store. */
         plugins.sidebar_loaded ((Gtk.Widget)this);
         this.last_selected_uri = null;
         this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        this.window = window;
-        this.local_only = local_only;
+        /* Show only local places in sidebar when running as root */
+        local_only = Posix.getuid () == 0;
 
         window.loading_uri.connect (loading_uri_callback);
         window.free_space_change.connect (reload);
@@ -144,44 +149,53 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
     private void construct_tree_view () {
-        tree_view = new Gtk.TreeView ();
-        tree_view.set_size_request (Preferences.settings.get_int ("minimum-sidebar-width"), -1);
-        tree_view.set_headers_visible (false);
-        tree_view.show_expanders = false;
+        tree_view = new Gtk.TreeView () {
+            width_request = Preferences.settings.get_int ("minimum-sidebar-width"),
+            headers_visible = false,
+            show_expanders = false
+        };
 
-        var col = new Gtk.TreeViewColumn ();
-        col.max_width = -1;
-        col.expand = true;
-        col.spacing = 3;
+        var col = new Gtk.TreeViewColumn () {
+            max_width = -1,
+            expand = true,
+            spacing = 3
+        };
 
-        var crt = new Gtk.CellRendererText (); /* Extra indent for start margin */
-        crt.xpad = ROOT_INDENTATION_XPAD;
-        crt.ypad = BOOKMARK_YPAD;
+        var crt = new Gtk.CellRendererText () { /* Extra indent for start margin */
+            xpad = ROOT_INDENTATION_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_start (crt, false);
 
-        crt = new Gtk.CellRendererText (); /* Extra indent for sub-category rows (bookmarks)*/
-        crt.xpad = ICON_XPAD;
-        crt.ypad = BOOKMARK_YPAD;
+        crt = new Gtk.CellRendererText () { /* Extra indent for sub-category rows (bookmarks)*/
+            xpad = ICON_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_start (crt, false);
         col.set_attributes (crt, "visible", Column.NOT_CATEGORY);
 
-        var crpb = new Gtk.CellRendererPixbuf (); /* Icon for bookmark or device */
-        crpb.stock_size = Gtk.IconSize.MENU;
-        crpb.ypad = BOOKMARK_YPAD;
+        var crpb = new Gtk.CellRendererPixbuf () { /* Icon for bookmark or device */
+            stock_size = Gtk.IconSize.MENU,
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_start (crpb, false);
         col.set_attributes (crpb,
                             "gicon", Column.ICON,
                             "visible", Column.NOT_CATEGORY);
 
-        var crd = new Marlin.CellRendererDisk (); /* Renders category & bookmark text and diskspace graphic */
-        name_renderer = crd as Gtk.CellRendererText;
-        name_renderer.ellipsize = Pango.EllipsizeMode.END;
-        name_renderer.ellipsize_set = true;
+        name_renderer = new Marlin.CellRendererDisk () { /* Renders category & bookmark text and diskspace graphic */
+            ellipsize = Pango.EllipsizeMode.END,
+            ellipsize_set = true
+        };
+
         name_renderer.edited.connect (edited);
         name_renderer.editing_canceled.connect (editing_canceled);
 
-        col.pack_start (crd, true);
-        col.set_attributes (crd,
+        col.pack_start (name_renderer, true);
+        col.set_attributes (name_renderer,
                             "text", Column.NAME,
                             "free_space", Column.FREE_SPACE,
                             "disk_size", Column.DISK_SIZE,
@@ -190,33 +204,37 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* renderer function sets font weight and ypadding depending on whether bookmark or category */
         col.set_cell_data_func (name_renderer, category_renderer_func);
 
-        var crsp = new Gtk.CellRendererSpinner (); /* Spinner shown while ejecting */
-        crsp.ypad = BOOKMARK_YPAD;
+        var crsp = new Gtk.CellRendererSpinner () { /* Spinner shown while ejecting */
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_end (crsp, false);
         col.set_attributes (crsp,
                             "visible", Column.SHOW_SPINNER,
                             "active", Column.SHOW_SPINNER,
                             "pulse", Column.SPINNER_PULSE);
 
-        crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
+        crpb = new Gtk.CellRendererPixbuf () { /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
+            stock_size = Gtk.IconSize.MENU,
+            xpad = ICON_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
+
         this.eject_spinner_cell_renderer = crpb;
-        crpb.stock_size = Gtk.IconSize.MENU;
-        crpb.xpad = ICON_XPAD;
-        crpb.ypad = BOOKMARK_YPAD;
 
         col.pack_start (crpb, false);
         col.set_attributes (crpb,
                             "gicon", Column.ACTION_ICON);
 
-        var cre = new Granite.Widgets.CellRendererExpander (); /* Expander button for categories */
-        expander_renderer = cre;
-        cre.is_category_expander = true;
-        cre.is_expander = true;
-        cre.xpad = ICON_XPAD;
-        cre.ypad = BOOKMARK_YPAD;
+        expander_renderer = new Granite.Widgets.CellRendererExpander () { /* Expander button for categories */
+            is_category_expander = true,
+            is_expander = true,
+            xpad = ICON_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
 
-        col.pack_end (cre, false);
-        col.set_attributes (cre, "visible", Column.IS_CATEGORY);
+        col.pack_end (expander_renderer, false);
+        col.set_attributes (expander_renderer, "visible", Column.IS_CATEGORY);
 
         tree_view.append_column (col);
         tree_view.tooltip_column = Column.TOOLTIP;
@@ -302,12 +320,12 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
     private bool focus_in_event_cb (Gdk.EventFocus event) {
         /* Restore saved adjustment value to prevent unexpected scrolling */
-        ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+        get_vadjustment ().set_value (adjustment_val);
         return false;
     }
 
     private bool update_adjustment_val () {
-        adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
+        adjustment_val = get_vadjustment ().value;
         return false;
     }
 
@@ -1312,7 +1330,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* verify that we are realized */
         if (get_realized ()) {
             /* determine pointer location and window geometry */
-            Gtk.Widget widget = (this as Gtk.Bin).get_child ();
+            Gtk.Widget widget = get_child ();
             Gdk.Device pointer = drag_context.get_device ();
             Gdk.Window window = widget.get_window ();
 
@@ -1327,7 +1345,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* change the vertical adjustment appropriately */
             if (offset != 0) {
                 /* determine the vertical adjustment */
-                adjustment = (this as Gtk.ScrolledWindow).get_vadjustment ();
+                adjustment = get_vadjustment ();
                 /* determine the new value */
                 val = (adjustment.value + 2.0 * offset);
                 val = val.clamp (adjustment.lower,
@@ -1344,7 +1362,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* change the horizontal adjustment appropriately */
             if (offset != 0) {
                 /* determine the horizontal adjustment */
-                adjustment = (this as Gtk.ScrolledWindow).get_hadjustment ();
+                adjustment = get_hadjustment ();
                 /* determine the new value */
                 val = (adjustment.value + 2 * offset);
                 val = val.clamp (adjustment.lower,
@@ -1451,14 +1469,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 Mount mount = volume.get_mount ();
                 if (mount != null) {
                     var location = mount.get_root ();
-                    if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                        var app = (Marlin.Application)(GLib.Application.get_default ());
-                        app.create_window (location);
-                    } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                        window.open_single_tab (location, Marlin.ViewMode.CURRENT);
-                    } else {
-                        window.uri_path_change_request (location.get_uri ());
-                    }
+                    /* Always use this function to properly handle unusual characters in the filename */
+                    window.uri_path_change_request (location.get_uri (), flags);
                 }
             } catch (GLib.Error error) {
                 var primary = _("Error mounting volume %s").printf (volume.get_name ());
@@ -1499,7 +1511,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename
          * For some reason, scroll to cell does not always work here
          */
-        ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+        get_vadjustment ().set_value (adjustment_val);
 
         tree_view.set_cursor_on_cell (path, column, name_renderer, true);
     }
@@ -1617,6 +1629,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                                 Marlin.FileOperations.has_trash_files (mount));
 
         bool show_properties = show_mount || show_unmount || show_eject || uri == Marlin.ROOT_FS_URI;
+        bool show_bookmark_network_mount = show_unmount &&
+                                           ("smb ssh ftp sftp afp dav davs".contains (Uri.parse_scheme (uri)));
 
         if (is_plugin) {
             MenuModel model;
@@ -1641,9 +1655,9 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             }
         } else {
             var menu = new PopupMenuBuilder ().add_open (open_shortcut_cb)
-                                              .add_separator ()
-                                              .add_open_tab (open_shortcut_in_new_tab_cb)
-                                              .add_open_window (open_shortcut_in_new_window_cb);
+                                                .add_separator ()
+                                                .add_open_tab (open_shortcut_in_new_tab_cb)
+                                                .add_open_window (open_shortcut_in_new_window_cb);
 
             if (is_bookmark) {
                 menu.add_separator ().add_remove (remove_shortcut_cb)
@@ -1674,6 +1688,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
             if (show_properties) {
                 menu.add_property (show_drive_info_cb);
+            }
+
+            if (show_bookmark_network_mount) {
+                menu.add_bookmark (bookmark_network_mount_cb);
             }
 
             menu.build ().popup_at_pointer (event);
@@ -1777,21 +1795,21 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
     private void expander_init_pref_state (Gtk.TreeView tree_view) {
-        var path = new Gtk.TreePath.from_indices (0,-1);
+        var path = new Gtk.TreePath.from_indices (0, -1);
         if (Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
         }
 
-        path = new Gtk.TreePath.from_indices (1,-1);
+        path = new Gtk.TreePath.from_indices (1, -1);
         if (Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
         }
 
-        path = new Gtk.TreePath.from_indices (2,-1);
+        path = new Gtk.TreePath.from_indices (2, -1);
         if (Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
             tree_view.expand_row (path, false);
         } else {
@@ -2012,10 +2030,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         return false;
-    }
-
-    public new void style_set (Gtk.Style previous_style) {
-        update_places ();
     }
 
     public void reload () {
@@ -2361,6 +2375,26 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             var job = new Marlin.FileOperations.EmptyTrashJob (window);
             job.empty_trash.begin ();
         }
+    }
+
+    private void bookmark_network_mount_cb (Gtk.MenuItem item) {
+        Gtk.TreeIter iter;
+        if (!get_selected_iter (out iter)) {
+            return;
+        }
+
+        Mount mount;
+        string uri;
+        store.@get (iter,
+                    Column.URI, out uri,
+                    Column.MOUNT, out mount);
+
+        string? name = null;
+        if (mount != null) {
+            name = mount.get_name ();
+        }
+
+        add_uri (uri, name);
     }
 
 /* VOLUME MONITOR CALLBACK FUNCTIONS */

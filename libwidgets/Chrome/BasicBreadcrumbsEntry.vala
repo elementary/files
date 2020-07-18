@@ -69,8 +69,15 @@ namespace Marlin.View.Chrome {
             truncate_multiline = true;
             weak Gtk.StyleContext style_context = get_style_context ();
             style_context.add_class ("pathbar");
-            Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
-                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            var css_provider = new Gtk.CssProvider ();
+            try {
+                css_provider.load_from_data (".noradius-button { border-radius: 0; }");
+                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                critical ("Unable to style pathbar button: %s", e.message);
+            }
+
             breadcrumb_icons = new BreadcrumbIconList (style_context);
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
@@ -228,15 +235,18 @@ namespace Marlin.View.Chrome {
          protected virtual bool on_button_release_event (Gdk.EventButton event) {
             if (icon_event (event)) {
                 return false;
-            } else {
+            } else if (placeholder == "") {
+                /* Only activate breadcrumbs when they are showing and not hidden by placeholder */
                 reset_elements_states ();
                 var el = get_element_from_coordinates ((int) event.x, (int) event.y);
                 if (el != null) {
                     activate_path (get_path_from_element (el));
-                } else {
-                    grab_focus ();
+                    return true;
                 }
             }
+
+            grab_focus ();
+
             return true;
         }
 
@@ -279,9 +289,11 @@ namespace Marlin.View.Chrome {
             if (secondary_icon_pixbuf != null) {
                 tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             }
+
+
             set_tooltip_markup ("");
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
-            if (el != null) {
+            if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
@@ -722,7 +734,7 @@ namespace Marlin.View.Chrome {
                 double text_width, text_height;
                 Pango.Layout layout;
                 /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
+                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
 
                 Gdk.RGBA rgba;
                 var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);

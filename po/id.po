@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 09:16+0000\n"
+"POT-Creation-Date: 2020-07-07 19:37+0000\n"
 "PO-Revision-Date: 2018-10-21 00:07+0000\n"
 "Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
@@ -28,7 +28,7 @@ msgstr "Tampilkan versi program"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Buka URI di tab baru"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1855
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "Jendela Baru"
 
@@ -58,25 +58,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit tidak dapat digunakan dengan URI."
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:129 src/ProgressUIHandler.vala:192
 msgid "File Operations"
 msgstr "Operasi Berkas"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:192
+#: src/ProgressUIHandler.vala:186
 #, c-format
 msgid "Completed %s"
 msgstr "Selesai: %s"
 
-#: src/ProgressUIHandler.vala:195
+#: src/ProgressUIHandler.vala:189
 msgid "All file operations have ended"
 msgstr "Semua operasi berkas telah berakhir"
 
-#: src/ProgressUIHandler.vala:243
+#: src/ProgressUIHandler.vala:237
 msgid "Show Copy Dialog"
 msgstr "Tampilkan Dialog Penyalinan"
 
-#: src/ProgressUIHandler.vala:255
+#: src/ProgressUIHandler.vala:249
 msgid "Cancel All In-progress Actions"
 msgstr "Batalkan Semua Aksi Berjalan"
 
@@ -84,43 +84,43 @@ msgstr "Batalkan Semua Aksi Berjalan"
 msgid "Info"
 msgstr "Info"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr "Umum"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:75 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "Tutup"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:134
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
 msgstr "Penggunaan Perangkat"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:154
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
 msgstr "Kapasitas:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
 #: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
 msgid "Unknown"
 msgstr "Tidak Diketahui"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:157
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
 msgstr "Tersedia:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:160
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
 msgstr "Dipakai:"
 
-#: src/Dialogs/ChooseAppDialog.vala:42
+#: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "Sebagai aplikasi utama"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1965 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1967 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Properti"
 
@@ -150,13 +150,13 @@ msgstr "Memuat…"
 msgid "Could not be determined"
 msgstr "Tidak bisa ditentukan"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:121
-#: libcore/FileConflictDialog.vala:149
+#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Ukuran:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:129 libcore/FileConflictDialog.vala:157
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Jenis:"
 
@@ -186,7 +186,7 @@ msgid "Resolution:"
 msgstr "Resolusi:"
 
 #: src/Dialogs/PropertiesWindow.vala:597
-#: src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Lokasi:"
 
@@ -199,7 +199,7 @@ msgid "Original Location:"
 msgstr "Lokasi Asli:"
 
 #: src/Dialogs/PropertiesWindow.vala:638
-#: src/View/AbstractDirectoryView.vala:1933
+#: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "Aplikasi Lain…"
 
@@ -260,36 +260,36 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Properti Diska"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:645
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Sistem Berkas"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:88
+#: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
 msgstr "Format:"
 
-#: src/Utils/MimeActions.vala:285
+#: src/Utils/MimeActions.vala:283
 msgid "Multiple file types selected"
 msgstr "Beberapa jenis berkas yang dipilih"
 
-#: src/Utils/MimeActions.vala:286
+#: src/Utils/MimeActions.vala:284
 msgid "No single app can open all these types of file"
 msgstr "Tidak ada aplikasi tunggal yang bisa membuka semua jenis berkas ini"
 
-#: src/Utils/MimeActions.vala:313
+#: src/Utils/MimeActions.vala:311
 msgid "Failed to open files"
 msgstr "Gagal membuka berkas"
 
-#: src/Utils/MimeActions.vala:323
+#: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
 msgstr "Tidak dapat membuka URI"
 
-#: src/Utils/MimeActions.vala:326
+#: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
 msgstr "Tidak dapat membuka berkas atau URI dengan aplikasi ini"
 
-#: src/View/Window.vala:557 src/View/Window.vala:567
+#: src/View/Window.vala:532 src/View/Window.vala:542
 msgid "(as Administrator)"
 msgstr "(sebagai Administrator)"
 
@@ -297,11 +297,11 @@ msgstr "(sebagai Administrator)"
 msgid "Filename"
 msgstr "Nama berkas"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2169
 msgid "Size"
 msgstr "Ukuran"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2174
 msgid "Type"
 msgstr "Tipe"
 
@@ -309,7 +309,7 @@ msgstr "Tipe"
 msgid "Modified"
 msgstr "Diubah pada"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:406
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
 msgstr "Folder ini tidak ada"
 
@@ -335,309 +335,321 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:820
-#: src/View/AbstractDirectoryView.vala:1127
+#: src/View/AbstractDirectoryView.vala:818
+#: src/View/AbstractDirectoryView.vala:1129
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Tidak bisa membuka berkas ini"
 
-#: src/View/AbstractDirectoryView.vala:841
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:828
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:829
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:844
 msgid "Cannot open this file"
 msgstr "Tidak bisa membuka berkas ini"
 
-#: src/View/AbstractDirectoryView.vala:854
+#: src/View/AbstractDirectoryView.vala:857
 msgid "Cannot identify file type to open"
 msgstr "Tidak dapat mengidentifikasi jenis berkas yang akan dibuka"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1575
 msgid "Cannot drop this file"
 msgstr "Tidak bisa drop berkas ini"
 
-#: src/View/AbstractDirectoryView.vala:1574
+#: src/View/AbstractDirectoryView.vala:1576
 msgid "Invalid file name provided"
 msgstr "Nama berkas tidak valid disediakan"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr "Tab Baru"
 
-#: src/View/AbstractDirectoryView.vala:1869
+#: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
 msgstr "Jalankan"
 
-#: src/View/AbstractDirectoryView.vala:1876
+#: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
 msgstr "Buka di %s"
 
-#: src/View/AbstractDirectoryView.vala:1945
+#: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
 msgstr "Buka di"
 
-#: src/View/AbstractDirectoryView.vala:1947
-#: src/View/Widgets/BreadcrumbsEntry.vala:487
+#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Buka dengan"
 
-#: src/View/AbstractDirectoryView.vala:1953
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Paste"
 msgstr "Tempel"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr "Penanda Taut"
 
-#: src/View/AbstractDirectoryView.vala:1973
+#: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
 msgstr "Potong"
 
-#: src/View/AbstractDirectoryView.vala:1980
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr "Salin"
 
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr "Pindahkan ke Tong Sampah"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:1994
 msgid "Delete permanently"
 msgstr "Hapus permanen"
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:1999
 msgid "Restore from Trash"
 msgstr "Pulihkan Dari Tong Sampah"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Open Parent Folder"
 msgstr "Buka Folder Induk"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Remove from History"
 msgstr "Hapus dari Riwayat"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2029
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Ganti nama"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2036
 msgid "Copy as Link"
 msgstr "Salin sebagai Tautan"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste Link into Folder"
 msgstr "Tempel Tautan ke dalam Folder"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Paste into Folder"
 msgstr "Tempel ke Dalam Folder"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Show Hidden Files"
 msgstr "Tampilkan Berkas Tersembunyi"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Remote Thumbnails"
 msgstr "Tampilkan Gambar Mini Jauh"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2090
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Tampilkan Gambar Mini Jauh"
 
-#: src/View/AbstractDirectoryView.vala:2108
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Paste Link"
 msgstr "Tempel Tautan"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2164
 msgid "Name"
 msgstr "Nama"
 
-#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2179
 msgid "Date"
 msgstr "Tanggal"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2184
 msgid "Reversed Order"
 msgstr "Urutan Terbalik"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Folders Before Files"
 msgstr "Folder-folder Sebelum Berkas-berkas"
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2199
 msgid "Sort by"
 msgstr "Urut berdasarkan"
 
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2207
 msgid "Folder"
 msgstr "Folder"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2213
 msgid "Empty File"
 msgstr "Berkas kosong"
 
-#: src/View/AbstractDirectoryView.vala:2262
+#: src/View/AbstractDirectoryView.vala:2264
 msgid "New"
 msgstr "Baru"
 
-#: src/View/AbstractDirectoryView.vala:2499
+#: src/View/AbstractDirectoryView.vala:2501
 #, c-format
 msgid "Untitled %s"
 msgstr "Tanpa Judul %s"
 
-#: src/View/AbstractDirectoryView.vala:2860
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:2862
+#: src/View/AbstractDirectoryView.vala:3063
 msgid "Cannot remove files from here"
 msgstr "Tidak dapat menghapus berkas dari sini"
 
-#: src/View/AbstractDirectoryView.vala:2861
-#: src/View/AbstractDirectoryView.vala:3040
-#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "You do not have permission to change this location"
 msgstr "Anda tidak memiliki izin untuk mengubah lokasi ini"
 
-#: src/View/AbstractDirectoryView.vala:3015
+#: src/View/AbstractDirectoryView.vala:3017
 msgid "Cannot copy files that are in the trash"
 msgstr "Tidak bisa menyalin berkas yang ada di tong sampah"
 
-#: src/View/AbstractDirectoryView.vala:3016
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cutting the selection instead"
 msgstr "Pemotongan pilihan sebagai gantinya"
 
-#: src/View/AbstractDirectoryView.vala:3039
+#: src/View/AbstractDirectoryView.vala:3047
 msgid "Cannot paste files here"
 msgstr "Tidak bisa menempelkan berkas disini"
 
-#: src/View/ViewContainer.vala:385 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
 msgid "Home"
 msgstr "Beranda"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
 msgstr "Anda tidak dapat membuat folder di sini."
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:408
 msgid "The network is unavailable"
 msgstr "Jaringan tidak tersedia"
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
 msgstr "Jaringan kerja diperlukan untuk menjangkau folder ini"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
 msgstr "Folder ini tidak sesuai dengan Anda"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:413
 msgid "You don't have permission to view this folder."
 msgstr "Anda tak punya izin untuk melihat folder ini."
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:415
 msgid "Unable to Mount Folder"
 msgstr "Tidak dapat ke Mengaitkan Folder"
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:416
 msgid "Could not connect to the server for this folder."
 msgstr "Tidak dapat terhubung ke server untuk folder ini."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
 msgstr "Tidak dapat menampilkan isi Folder"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:420
 msgid "The operation timed out."
 msgstr "Operasi habis."
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
 msgstr "Tidak dapat menampilkan folder"
 
-#: src/View/ViewContainer.vala:425
+#: src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
 msgstr "Server untuk folder ini tidak dapat ditemukan."
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:434
 msgid "File not Found"
 msgstr "Berkas tidak ditemukan"
 
-#: src/View/ViewContainer.vala:437
+#: src/View/ViewContainer.vala:435
 msgid "The file selected no longer exists."
 msgstr "Berkas yang dipilih sudah tidak ada lagi."
 
-#: src/View/Sidebar.vala:565
+#: src/View/Sidebar.vala:583
 msgid "Personal"
 msgstr "Pribadi"
 
-#: src/View/Sidebar.vala:566
+#: src/View/Sidebar.vala:584
 msgid "Your common places and bookmarks"
 msgstr "Tempat umum dan penanda Anda"
 
-#: src/View/Sidebar.vala:585
+#: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
 msgstr "Buka folder pribadi anda"
 
-#: src/View/Sidebar.vala:600
+#: src/View/Sidebar.vala:618
 msgid "View the list of recently used files"
 msgstr "Lihat daftar berkas yang baru saja digunakan"
 
-#: src/View/Sidebar.vala:626 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Tong Sampah"
 
-#: src/View/Sidebar.vala:633
+#: src/View/Sidebar.vala:651
 msgid "Open the Trash"
 msgstr "Buka Tong Sampah"
 
-#: src/View/Sidebar.vala:638
+#: src/View/Sidebar.vala:656
 msgid "Devices"
 msgstr "Perangkat"
 
-#: src/View/Sidebar.vala:639
+#: src/View/Sidebar.vala:657
 msgid "Your local partitions and devices"
 msgstr "Partisi dan perangkat lokal anda"
 
-#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Jaringan"
 
-#: src/View/Sidebar.vala:769
+#: src/View/Sidebar.vala:787
 msgid "Your network places"
 msgstr "Jaringan Anda"
 
-#: src/View/Sidebar.vala:801
+#: src/View/Sidebar.vala:819
 msgid "Entire Network"
 msgstr "Seluruh Jaringan"
 
-#: src/View/Sidebar.vala:808
+#: src/View/Sidebar.vala:826
 msgid "Browse the contents of the network"
 msgstr "Jelajahi isi dari jaringan"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:829
 msgid "Connect Server"
 msgstr "Hubungkan Server"
 
-#: src/View/Sidebar.vala:812
+#: src/View/Sidebar.vala:830
 msgid "Connect to a network server"
 msgstr "Hubungkan ke server jaringan"
 
-#: src/View/Sidebar.vala:971
+#: src/View/Sidebar.vala:989
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s Bebas dari %s)"
 
-#: src/View/Sidebar.vala:1464
+#: src/View/Sidebar.vala:1476
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Kesalahan pemasangan volume %s"
 
-#: src/View/Sidebar.vala:1479
+#: src/View/Sidebar.vala:1491
 #, c-format
 msgid "Unable to start %s"
 msgstr "Tidak dapat menjalankan %s"
 
-#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Kosongkan _Tong Sampah"
 
@@ -705,7 +717,7 @@ msgstr "Lepas Kaitan (_U)"
 msgid "_Eject"
 msgstr "Keluarkan (_E)"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Cari atau Ketik Jalur"
@@ -718,16 +730,16 @@ msgstr "Buka di Tab Baru"
 msgid "Open in New Window"
 msgstr "Buka di Jendela Baru"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:494
+#: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
 msgstr "Buka Dengan Aplikasi Lain…"
 
-#: src/View/Widgets/HeaderBar.vala:63
+#: src/View/Widgets/HeaderBar.vala:66
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
 msgstr "Sebelumnya"
 
-#: src/View/Widgets/HeaderBar.vala:68
+#: src/View/Widgets/HeaderBar.vala:73
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
 msgstr "Selanjutnya"
@@ -848,101 +860,101 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV Aman (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server Details"
 msgstr "Rincian Server"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr "Nama server atau alamat IP"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Server:"
 
-#: libcore/ConnectServerDialog.vala:142
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server"
 msgstr "Nama pembagian pada server"
 
-#: libcore/ConnectServerDialog.vala:168
+#: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Berbagi:"
 
-#: libcore/ConnectServerDialog.vala:170
+#: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
 msgstr "Jalur folder yang dibagikan di server"
 
-#: libcore/ConnectServerDialog.vala:171
+#: libcore/ConnectServerDialog.vala:181
 msgid "Folder:"
 msgstr "Folder:"
 
-#: libcore/ConnectServerDialog.vala:173
+#: libcore/ConnectServerDialog.vala:183
 msgid "User Details"
 msgstr "Rincian Pengguna"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:185
 msgid "Name of Windows domain"
 msgstr "Nama domain Windows"
 
-#: libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:186
 msgid "Domain name:"
 msgstr "Nama domain:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
 msgstr "Nama pengguna di server"
 
-#: libcore/ConnectServerDialog.vala:179
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr "Nama pengguna:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:196
 msgid "Password:"
 msgstr "Kata sandi:"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:198
 msgid "Remember this password"
 msgstr "Ingat kata sandi ini"
 
-#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
-#: libcore/FileConflictDialog.vala:190
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/FileConflictDialog.vala:219
 msgid "Cancel"
 msgstr "Batal"
 
-#: libcore/ConnectServerDialog.vala:193
+#: libcore/ConnectServerDialog.vala:205
 msgid "Connect"
 msgstr "Hubungkan"
 
-#: libcore/ConnectServerDialog.vala:200
+#: libcore/ConnectServerDialog.vala:214
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: libcore/ConnectServerDialog.vala:245
+#: libcore/ConnectServerDialog.vala:265
 msgid "Connecting…"
 msgstr "Menghubungkan…"
 
-#: libcore/ConnectServerDialog.vala:364
+#: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
 msgstr "Silakan periksa rincian pengguna Anda."
 
-#: libcore/DndHandler.vala:49
+#: libcore/DndHandler.vala:48
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "Gagal menjalankan \"%s\""
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:97
 msgid "Move Here"
 msgstr "Pindah Kesini"
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:98
 msgid "Copy Here"
 msgstr "Salin Disini"
 
-#: libcore/DndHandler.vala:100
+#: libcore/DndHandler.vala:99
 msgid "Link Here"
 msgstr "Taut Disini"
 
@@ -950,56 +962,56 @@ msgstr "Taut Disini"
 msgid "File conflict"
 msgstr "Berkas bertentangan"
 
-#: libcore/FileConflictDialog.vala:116
+#: libcore/FileConflictDialog.vala:122
 msgid "Original file"
 msgstr "Berkas asli"
 
-#: libcore/FileConflictDialog.vala:134 libcore/FileConflictDialog.vala:162
+#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
 msgid "Last modified:"
 msgstr "Terakhir diubah:"
 
-#: libcore/FileConflictDialog.vala:144
+#: libcore/FileConflictDialog.vala:161
 msgid "Replace with"
 msgstr "Ganti dengan"
 
-#: libcore/FileConflictDialog.vala:172
+#: libcore/FileConflictDialog.vala:199
 msgid "Reset"
 msgstr "Atur Ulang"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
 msgstr "Pilih nama baru untuk tujuan (_S)"
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
 msgstr "Terapkan tindakan ini pada semua berkas"
 
-#: libcore/FileConflictDialog.vala:187 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "Lewati (_S)"
 
-#: libcore/FileConflictDialog.vala:188
+#: libcore/FileConflictDialog.vala:217
 msgid "Re_name"
 msgstr "Ubah _nama"
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:221
 msgid "Keep Newest"
 msgstr "Tetap Terbaru"
 
-#: libcore/FileConflictDialog.vala:193
+#: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
 msgstr "Lewati jika berkas asli dimodifikasi lebi baru"
 
-#: libcore/FileConflictDialog.vala:195
+#: libcore/FileConflictDialog.vala:224
 msgid "Replace"
 msgstr "Timpa"
 
-#: libcore/FileConflictDialog.vala:307
+#: libcore/FileConflictDialog.vala:340
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Gabung folder \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:341
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1007,64 +1019,64 @@ msgstr ""
 "Penggabungan akan meminta kepastian sebelum menimpa berkas yang bertentangan "
 "dengan berkas yang sedang disalin."
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:343
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr ""
 "Sebuah folder yang lebih lama dengan nama yang sama telah ada di \"%s\"."
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:345
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr ""
 "Sebuah folder yang lebih baru dengan nama yang sama telah ada di \"%s\"."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:347
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Folder lain dengan nama yang sama telah ada di \"%s\"."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:350
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Timpa folder \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:351
 msgid "Replacing it will remove all files in the folder."
 msgstr "Menimpanya akan menghilangkan semua berkas di dalam folder."
 
-#: libcore/FileConflictDialog.vala:319
+#: libcore/FileConflictDialog.vala:352
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Sebuah folder dengan nama sama telah ada di \"%s\"."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:355
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Timpa berkas \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:323
+#: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
 msgstr "Menimpanya akan menimpa isinya juga."
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:359
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr ""
 "Sebuah berkas yang lebih lama dengan nama yang sama telah ada di \"%s\"."
 
-#: libcore/FileConflictDialog.vala:328
+#: libcore/FileConflictDialog.vala:361
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr ""
 "Sebuah berkas yang lebih baru dengan nama yang sama telah ada di \"%s\"."
 
-#: libcore/FileConflictDialog.vala:330
+#: libcore/FileConflictDialog.vala:363
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Berkas lain dengan nama yang sama telah ada di \"%s\"."
 
-#: libcore/FileConflictDialog.vala:356
+#: libcore/FileConflictDialog.vala:389
 msgid "Merge"
 msgstr "Gabung"
 
@@ -1077,25 +1089,25 @@ msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
 msgid "The item cannot be restored from trash"
 msgstr "Objek tidak bisa dikembalikan dari tong sampah"
 
-#: libcore/FileUtils.vala:445
+#: libcore/FileUtils.vala:444
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Tidak dapat mengganti nama menjadi '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:534
+#: libcore/FileUtils.vala:533
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Hari ini pada %-H:%M"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:542
+#: libcore/FileUtils.vala:541
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Kemarin pada %-H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:550
+#: libcore/FileUtils.vala:549
 #, fuzzy, c-format
 msgid "%%A at %s"
 msgstr "%A pada %-H:%M"
@@ -1190,78 +1202,78 @@ msgstr "Mengosongkan Tong Sampah"
 msgid "Unable to mount '%s'"
 msgstr "Tidak dapat mengaitkan %s"
 
-#: libcore/marlin-file-operations.c:156
+#: libcore/marlin-file-operations.c:150
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d detik"
 
-#: libcore/marlin-file-operations.c:165 libcore/marlin-file-operations.c:179
+#: libcore/marlin-file-operations.c:159 libcore/marlin-file-operations.c:173
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d menit"
 
-#: libcore/marlin-file-operations.c:178
+#: libcore/marlin-file-operations.c:172
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d jam"
 
-#: libcore/marlin-file-operations.c:190
+#: libcore/marlin-file-operations.c:184
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "sekitar %'d jam"
 
-#: libcore/marlin-file-operations.c:266
+#: libcore/marlin-file-operations.c:260
 #, c-format
 msgid "Link to %s"
 msgstr "Tautan ke %s"
 
-#: libcore/marlin-file-operations.c:270
+#: libcore/marlin-file-operations.c:264
 #, c-format
 msgid "Another link to %s"
 msgstr "Tautan lain ke %s"
 
-#: libcore/marlin-file-operations.c:286
+#: libcore/marlin-file-operations.c:280
 #, c-format
 msgid "%'dst link to %s"
 msgstr "Tautan ke-%'d menuju %s"
 
-#: libcore/marlin-file-operations.c:290
+#: libcore/marlin-file-operations.c:284
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "Tautan ke-%'d menuju %s"
 
-#: libcore/marlin-file-operations.c:294
+#: libcore/marlin-file-operations.c:288
 #, c-format
 msgid "%'drd link to %s"
 msgstr "Tautan ke-%'d menuju %s"
 
-#: libcore/marlin-file-operations.c:298
+#: libcore/marlin-file-operations.c:292
 #, c-format
 msgid "%'dth link to %s"
 msgstr "Tautan ke-%'d menuju %s"
 
-#: libcore/marlin-file-operations.c:490
+#: libcore/marlin-file-operations.c:484
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:498
+#: libcore/marlin-file-operations.c:492
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1060
+#: libcore/marlin-file-operations.c:1047
 #, fuzzy, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr ""
 "Apakah Anda yakin ingin menghapus \"%B\" secara permanen dari tong sampah?"
 
-#: libcore/marlin-file-operations.c:1064
+#: libcore/marlin-file-operations.c:1051
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1273,56 +1285,56 @@ msgstr[0] ""
 "Apakah Anda yakin akan menghapus %'d barang yang terpilih secara permanen "
 "dari tong sampah?"
 
-#: libcore/marlin-file-operations.c:1074
+#: libcore/marlin-file-operations.c:1061
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jika Anda menghapus sebuah barang, maka akan hilang selamanya."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1100
+#: libcore/marlin-file-operations.c:1087
 #, fuzzy, c-format
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently delete “%s”?"
 msgstr "Hapus semua barang secara permanen dari Tong Sampah?"
 
-#: libcore/marlin-file-operations.c:1103
+#: libcore/marlin-file-operations.c:1090
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "Anda yakin akan membuang %'d objek terpilih selamanya?"
 
-#: libcore/marlin-file-operations.c:1112
+#: libcore/marlin-file-operations.c:1099
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1146
+#: libcore/marlin-file-operations.c:1133
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "tersisa %'d berkas lagi yang akan dihapus"
 
-#: libcore/marlin-file-operations.c:1151
+#: libcore/marlin-file-operations.c:1138
 msgid "Deleting files"
 msgstr "Menghapus berkas-berkas"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1166
+#: libcore/marlin-file-operations.c:1153
 #, fuzzy, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "tersisa %T"
 
-#: libcore/marlin-file-operations.c:1235 libcore/marlin-file-operations.c:1275
-#: libcore/marlin-file-operations.c:1321 libcore/marlin-file-operations.c:1403
-#: libcore/marlin-file-operations.c:1910
+#: libcore/marlin-file-operations.c:1222 libcore/marlin-file-operations.c:1262
+#: libcore/marlin-file-operations.c:1308 libcore/marlin-file-operations.c:1390
+#: libcore/marlin-file-operations.c:1897
 msgid "Error while deleting."
 msgstr "Terjadi kesalahan saat menghapus."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1241
+#: libcore/marlin-file-operations.c:1228
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1333,20 +1345,20 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1246 libcore/marlin-file-operations.c:1974
-#: libcore/marlin-file-operations.c:3052
+#: libcore/marlin-file-operations.c:1233 libcore/marlin-file-operations.c:1961
+#: libcore/marlin-file-operations.c:3038
 #, fuzzy, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr "Terjadi error sewaktu mendapatkan informasi berkas pada folder \"%B\"."
 
-#: libcore/marlin-file-operations.c:1256 libcore/marlin-file-operations.c:3062
+#: libcore/marlin-file-operations.c:1243 libcore/marlin-file-operations.c:3048
 msgid "_Skip files"
 msgstr "Lewati_berkas"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1280
+#: libcore/marlin-file-operations.c:1267
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1356,46 +1368,46 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1285 libcore/marlin-file-operations.c:2019
-#: libcore/marlin-file-operations.c:3104
+#: libcore/marlin-file-operations.c:1272 libcore/marlin-file-operations.c:2006
+#: libcore/marlin-file-operations.c:3090
 #, fuzzy, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "Terjadi error sewaktu membaca folder \"%B\"."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1324
+#: libcore/marlin-file-operations.c:1311
 #, fuzzy, c-format
 msgid "Could not remove the folder %s."
 msgstr "Tidak dapat membuang folder %B."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1406
+#: libcore/marlin-file-operations.c:1393
 #, fuzzy, c-format
 msgid "There was an error deleting %s."
 msgstr "Terjadi error sewaktu membuang %B."
 
-#: libcore/marlin-file-operations.c:1491
+#: libcore/marlin-file-operations.c:1478
 msgid "Moving files to trash"
 msgstr "Membuang berkas ke tong sampah"
 
-#: libcore/marlin-file-operations.c:1493
+#: libcore/marlin-file-operations.c:1480
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d berkas lagi untuk dibuang ke tong sampah"
 
-#: libcore/marlin-file-operations.c:1591 libcore/marlin-file-operations.c:1594
-#: libcore/marlin-file-operations.c:1597
+#: libcore/marlin-file-operations.c:1578 libcore/marlin-file-operations.c:1581
+#: libcore/marlin-file-operations.c:1584
 msgid "Cannot move file to trash or delete it"
 msgstr "Tidak dapat memindahkan berkas ke tong sampah atau menghapusnya"
 
-#: libcore/marlin-file-operations.c:1592
+#: libcore/marlin-file-operations.c:1579
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Tidak diizinkan untuk membuang atau menghapus berkas pada sistem berkas "
 "hanya baca."
 
-#: libcore/marlin-file-operations.c:1595
+#: libcore/marlin-file-operations.c:1582
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1403,7 +1415,7 @@ msgstr ""
 "Tidak diizinkan untuk membuang atau menghapus berkas di dalam folder yang "
 "mana Anda tidak memiliki hak tulis."
 
-#: libcore/marlin-file-operations.c:1598
+#: libcore/marlin-file-operations.c:1585
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1411,11 +1423,11 @@ msgstr ""
 "Tidak diizinkan untuk membuang atau menghapus folder yang mana Anda tidak "
 "memiliki hak tulis."
 
-#: libcore/marlin-file-operations.c:1600
+#: libcore/marlin-file-operations.c:1587
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "Tidak bisa memindahkan berkas ke tong sampah. Coba segera hapus?"
 
-#: libcore/marlin-file-operations.c:1601
+#: libcore/marlin-file-operations.c:1588
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -1423,11 +1435,11 @@ msgstr ""
 "Berkas ini tidak bisa dipindahkan ke tong sampah. Lihat rincian di bawah "
 "untuk informasi lebih lanjut."
 
-#: libcore/marlin-file-operations.c:1605
+#: libcore/marlin-file-operations.c:1592
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Tidak bisa memindahkan berkas ke tong sampah. Coba untuk menghapusnya?"
 
-#: libcore/marlin-file-operations.c:1606
+#: libcore/marlin-file-operations.c:1593
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -1435,7 +1447,7 @@ msgstr ""
 "Berkas ini tidak bisa dipindahkan ke tong sampah. Anda mungkin juga tidak "
 "bisa menghapusnya."
 
-#: libcore/marlin-file-operations.c:1612
+#: libcore/marlin-file-operations.c:1599
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1443,11 +1455,11 @@ msgstr ""
 "\n"
 "Menghapus berkas akan menghapusnya secara permanen"
 
-#: libcore/marlin-file-operations.c:1802
+#: libcore/marlin-file-operations.c:1789
 msgid "Trashing Files"
 msgstr "Membuang Berkas"
 
-#: libcore/marlin-file-operations.c:1804
+#: libcore/marlin-file-operations.c:1791
 msgid "Deleting Files"
 msgstr "Membuang Berkas"
 
@@ -1455,7 +1467,7 @@ msgstr "Membuang Berkas"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1844
+#: libcore/marlin-file-operations.c:1831
 #, fuzzy, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1465,7 +1477,7 @@ msgstr[0] "Bersiap menyalin %'d berkas (%S)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1856
+#: libcore/marlin-file-operations.c:1843
 #, fuzzy, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1475,35 +1487,35 @@ msgstr[0] "Bersiap memindahkan %'d berkas (%S)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1868
+#: libcore/marlin-file-operations.c:1855
 #, fuzzy, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "Bersiap membuang %'d berkas (%S)"
 
-#: libcore/marlin-file-operations.c:1875
+#: libcore/marlin-file-operations.c:1862
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Bersiap memindahkan %'d berkas ke tong sampah"
 
-#: libcore/marlin-file-operations.c:1906 libcore/marlin-file-operations.c:2899
-#: libcore/marlin-file-operations.c:3039 libcore/marlin-file-operations.c:3091
+#: libcore/marlin-file-operations.c:1893 libcore/marlin-file-operations.c:2885
+#: libcore/marlin-file-operations.c:3025 libcore/marlin-file-operations.c:3077
 msgid "Error while copying."
 msgstr "Error saat menyalin."
 
-#: libcore/marlin-file-operations.c:1908 libcore/marlin-file-operations.c:3037
-#: libcore/marlin-file-operations.c:3089
+#: libcore/marlin-file-operations.c:1895 libcore/marlin-file-operations.c:3023
+#: libcore/marlin-file-operations.c:3075
 msgid "Error while moving."
 msgstr "Error saat memindahkan."
 
-#: libcore/marlin-file-operations.c:1912
+#: libcore/marlin-file-operations.c:1899
 msgid "Error while moving files to trash."
 msgstr "Terjadi error saat membuang berkas ke tong sampah."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1969
+#: libcore/marlin-file-operations.c:1956
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1514,7 +1526,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2014
+#: libcore/marlin-file-operations.c:2001
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1525,7 +1537,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2101
+#: libcore/marlin-file-operations.c:2088
 #, fuzzy, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1536,32 +1548,32 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2106
+#: libcore/marlin-file-operations.c:2093
 #, fuzzy, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "Galat sewaktu mendapatkan informasi tentang \"%B\"."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2212 libcore/marlin-file-operations.c:2258
-#: libcore/marlin-file-operations.c:2296 libcore/marlin-file-operations.c:2336
+#: libcore/marlin-file-operations.c:2199 libcore/marlin-file-operations.c:2245
+#: libcore/marlin-file-operations.c:2283 libcore/marlin-file-operations.c:2323
 #, fuzzy, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "Error saat menyalin ke \"%B\"."
 
-#: libcore/marlin-file-operations.c:2217
+#: libcore/marlin-file-operations.c:2204
 msgid "You do not have permissions to access the destination folder."
 msgstr "Anda tidak berhak untuk mengakses folder tujuan."
 
-#: libcore/marlin-file-operations.c:2219
+#: libcore/marlin-file-operations.c:2206
 msgid "There was an error getting information about the destination."
 msgstr "Terjadi error sewaktu mendapatkan informasi tentang tujuan."
 
-#: libcore/marlin-file-operations.c:2259
+#: libcore/marlin-file-operations.c:2246
 msgid "The destination is not a folder."
 msgstr "Yang dituju bukan sebuah folder."
 
-#: libcore/marlin-file-operations.c:2298
+#: libcore/marlin-file-operations.c:2285
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1570,30 +1582,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2304
+#: libcore/marlin-file-operations.c:2291
 #, fuzzy, c-format
 msgid "There is %s available, but %s is required."
 msgstr "Tersedia %S, tetapi diperlukan %S."
 
-#: libcore/marlin-file-operations.c:2338
+#: libcore/marlin-file-operations.c:2325
 msgid "The destination is read-only."
 msgstr "Yang dituju hanya dapat dibaca."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2410
+#: libcore/marlin-file-operations.c:2397
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "Memindahkan \"%B\" ke \"%B\""
 
-#: libcore/marlin-file-operations.c:2411
+#: libcore/marlin-file-operations.c:2398
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "Menyalin \"%B\" ke \"%B\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2415
+#: libcore/marlin-file-operations.c:2402
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "Menggandakan \"%B\""
@@ -1602,13 +1614,13 @@ msgstr "Menggandakan \"%B\""
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2423
+#: libcore/marlin-file-operations.c:2410
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "Memindahkan %'d berkas (di \"%B\") ke \"%B\""
 
-#: libcore/marlin-file-operations.c:2426
+#: libcore/marlin-file-operations.c:2413
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1616,7 +1628,7 @@ msgstr[0] "Menyalin %'d berkas (di \"%B\") ke \"%B\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2435
+#: libcore/marlin-file-operations.c:2422
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1626,26 +1638,26 @@ msgstr[0] "Menggandakan %'d berkas (di \"%B\")"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2447
+#: libcore/marlin-file-operations.c:2434
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "Memindahkan %'d berkas ke \"%B\""
 
-#: libcore/marlin-file-operations.c:2450
+#: libcore/marlin-file-operations.c:2437
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "Menyalin %'d berkas ke \"%B\""
 
-#: libcore/marlin-file-operations.c:2456
+#: libcore/marlin-file-operations.c:2443
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Menggandakan %'d berkas"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2486
+#: libcore/marlin-file-operations.c:2473
 #, fuzzy, c-format
 msgid "%s of %s"
 msgstr "%S dari %S"
@@ -1656,7 +1668,7 @@ msgstr "%S dari %S"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2506
+#: libcore/marlin-file-operations.c:2493
 #, fuzzy, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1664,7 +1676,7 @@ msgstr[0] "%S dari %S — tersisa %T (%S/det)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2906
+#: libcore/marlin-file-operations.c:2892
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1675,14 +1687,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2911
+#: libcore/marlin-file-operations.c:2897
 #, fuzzy, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "Terjadi error sewaktu membuat folder \"%B\"."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3047
+#: libcore/marlin-file-operations.c:3033
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1693,7 +1705,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3099
+#: libcore/marlin-file-operations.c:3085
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1705,62 +1717,62 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3152 libcore/marlin-file-operations.c:3885
-#: libcore/marlin-file-operations.c:4480
+#: libcore/marlin-file-operations.c:3138 libcore/marlin-file-operations.c:3870
+#: libcore/marlin-file-operations.c:4438
 #, fuzzy, c-format
 msgid "Error while moving \"%s\"."
 msgstr "Error saat memindahkan \"%B\"."
 
-#: libcore/marlin-file-operations.c:3154
+#: libcore/marlin-file-operations.c:3140
 msgid "Could not remove the source folder."
 msgstr "Folder sumber tidak dapat dibuang."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3243 libcore/marlin-file-operations.c:3294
-#: libcore/marlin-file-operations.c:3889
+#: libcore/marlin-file-operations.c:3229 libcore/marlin-file-operations.c:3280
+#: libcore/marlin-file-operations.c:3874
 #, fuzzy, c-format
 msgid "Error while copying \"%s\"."
 msgstr "Error saat menyalin \"%B\"."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3248
+#: libcore/marlin-file-operations.c:3234
 #, fuzzy, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "Tidak dapat membuang berkas dari folder %F yang sudah ada."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3299
+#: libcore/marlin-file-operations.c:3285
 #, fuzzy, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "Tidak dapat membuang berkas %F yang sudah ada."
 
-#: libcore/marlin-file-operations.c:3618 libcore/marlin-file-operations.c:4317
+#: libcore/marlin-file-operations.c:3603 libcore/marlin-file-operations.c:4277
 msgid "You cannot move a folder into itself."
 msgstr "Anda tidak dapat memindahkan folder ke dalam folder itu sendiri."
 
-#: libcore/marlin-file-operations.c:3619 libcore/marlin-file-operations.c:4318
+#: libcore/marlin-file-operations.c:3604 libcore/marlin-file-operations.c:4278
 msgid "You cannot copy a folder into itself."
 msgstr "Anda tidak dapat menyalin folder ke dalam folder itu sendiri."
 
-#: libcore/marlin-file-operations.c:3620 libcore/marlin-file-operations.c:4319
+#: libcore/marlin-file-operations.c:3605 libcore/marlin-file-operations.c:4279
 msgid "The destination folder is inside the source folder."
 msgstr "Folder tujuan berada di dalam folder asal."
 
-#: libcore/marlin-file-operations.c:3651
+#: libcore/marlin-file-operations.c:3636
 msgid "You cannot move a file over itself."
 msgstr "Anda tidak dapat memindahkan berkas pada berkas itu sendiri."
 
-#: libcore/marlin-file-operations.c:3652
+#: libcore/marlin-file-operations.c:3637
 msgid "You cannot copy a file over itself."
 msgstr "Anda tidak dapat menyalin berkas pada berkas itu sendiri."
 
-#: libcore/marlin-file-operations.c:3653
+#: libcore/marlin-file-operations.c:3638
 msgid "The source file would be overwritten by the destination."
 msgstr "Berkas sumber akan ditimpa oleh tujuan."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3895
+#: libcore/marlin-file-operations.c:3880
 #, fuzzy, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr ""
@@ -1768,111 +1780,111 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3965
+#: libcore/marlin-file-operations.c:3950
 #, fuzzy, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "Tidak dapat menyalin \"%B\" di sini."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3970
+#: libcore/marlin-file-operations.c:3955
 #, fuzzy, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Terjadi kesalahan saat menyalin berkas ke %B."
 
-#: libcore/marlin-file-operations.c:4189
+#: libcore/marlin-file-operations.c:4157
 msgid "Copying Files"
 msgstr "Menyalin Berkas"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4225
+#: libcore/marlin-file-operations.c:4193
 #, fuzzy, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "Bersiap memindahkan ke \"%B\""
 
-#: libcore/marlin-file-operations.c:4230
+#: libcore/marlin-file-operations.c:4198
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Bersiap memindahkan %'d berkas"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4484
+#: libcore/marlin-file-operations.c:4442
 #, fuzzy, c-format
 msgid "There was an error moving the file into %s."
 msgstr "Terjadi error sewaktu memindahkan berkas ke %F."
 
-#: libcore/marlin-file-operations.c:4743
+#: libcore/marlin-file-operations.c:4676
 msgid "Moving Files"
 msgstr "Memindahkan Berkas"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4782
+#: libcore/marlin-file-operations.c:4715
 #, fuzzy, c-format
 msgid "Creating links in \"%s\""
 msgstr "Membuat tautan di \"%B\""
 
-#: libcore/marlin-file-operations.c:4787
+#: libcore/marlin-file-operations.c:4720
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Membuat tautan menuju %'d berkas"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4930
+#: libcore/marlin-file-operations.c:4857
 #, fuzzy, c-format
 msgid "Error while creating link to %s."
 msgstr "Error saat membuat tautan menuju %B."
 
-#: libcore/marlin-file-operations.c:4933
+#: libcore/marlin-file-operations.c:4860
 msgid "Symbolic links only supported for local files"
 msgstr "Tautan simbolik hanya didukung untuk berkas lokal"
 
-#: libcore/marlin-file-operations.c:4936
+#: libcore/marlin-file-operations.c:4863
 msgid "The target doesn't support symbolic links."
 msgstr "Target tidak mendukung tautan simbolik."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4941
+#: libcore/marlin-file-operations.c:4868
 #, fuzzy, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "Terjadi error sewaktu membuat tautan simbolik pada %F."
 
-#: libcore/marlin-file-operations.c:5268
+#: libcore/marlin-file-operations.c:5171
 msgid "Setting permissions"
 msgstr "Mengatur hak akses"
 
-#: libcore/marlin-file-operations.c:5458
+#: libcore/marlin-file-operations.c:5360
 msgid "Cannot copy into trash."
 msgstr "Tidak dapat menyalin ke tong sampah."
 
-#: libcore/marlin-file-operations.c:5459 libcore/marlin-file-operations.c:5467
+#: libcore/marlin-file-operations.c:5361 libcore/marlin-file-operations.c:5369
 msgid "It is not permitted to copy files into the trash"
 msgstr "Tidak diizinkan untuk menyalin berkas ke tong sampah"
 
-#: libcore/marlin-file-operations.c:5607
+#: libcore/marlin-file-operations.c:5505
 msgid "untitled folder"
 msgstr "folder tanpa judul"
 
-#: libcore/marlin-file-operations.c:5615
+#: libcore/marlin-file-operations.c:5513
 msgid "new file"
 msgstr "berkas baru"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5787
+#: libcore/marlin-file-operations.c:5680
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "Error saat membuat direktori %B."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5790
+#: libcore/marlin-file-operations.c:5683
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "Error saat membuat berkas %B."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5796
+#: libcore/marlin-file-operations.c:5689
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Terjadi error sewaktu membuat direktori di %F."
@@ -1881,17 +1893,17 @@ msgstr "Terjadi error sewaktu membuat direktori di %F."
 msgid "Type a path"
 msgstr "Ketik path"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigasikan ke %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
 msgstr "Tuju %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 #, fuzzy
 msgid "Type Path"
 msgstr "Ketik path"
@@ -1900,19 +1912,19 @@ msgstr "Ketik path"
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:238
 msgid "In This Folder"
 msgstr "Dalam Folder ini"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:243
 msgid "Below This Folder"
 msgstr "Di bawah Folder Ini"
 
-#: libwidgets/View/SearchResults.vala:235
+#: libwidgets/View/SearchResults.vala:248
 msgid "Bookmarks"
 msgstr "Penanda Taut"
 
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Baru digunakan"
 
@@ -1920,11 +1932,11 @@ msgstr "Baru digunakan"
 msgid "View as Grid"
 msgstr "Tampilan Kisi"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:39
+#: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr "Tampilan Daftar"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:44
+#: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr "Tampilan Kolom"
 
