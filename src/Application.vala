@@ -271,16 +271,15 @@ public class Marlin.Application : Gtk.Application {
     }
 
     public Marlin.View.Window? create_window (File? location = null,
-                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
-                                              int x = -1, int y = -1) {
+                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
 
-        return create_window_with_tabs ({location}, viewmode, x, y);
+        return create_window_with_tabs ({location}, viewmode);
     }
 
     /* All window creation should be done via this function */
     private Marlin.View.Window? create_window_with_tabs (File[] locations = {},
-                                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
-                                               int x = -1, int y = -1) {
+                                                         Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
             return null;
         }

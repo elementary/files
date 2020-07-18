@@ -36,7 +36,11 @@ namespace Marlin.FileOperations {
         mount_volume_full.begin (volume, parent_window);
     }
 
-    public static bool has_trash_files (GLib.Mount mount) {
+    public static bool has_trash_files (GLib.Mount? mount) {
+        if (mount == null) {
+            return false;
+        }
+
         var dirs = get_trash_dirs_for_mount (mount);
         foreach (unowned GLib.File dir in dirs) {
             if (dir_has_files (dir)) {
