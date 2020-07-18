@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2020-06-19 09:02+0000\n"
+"PO-Revision-Date: 2020-07-15 23:12+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
 "Language: cs\n"
@@ -73,12 +73,13 @@ msgstr "Vylepšení:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
+msgstr "Volba záložky pro síťová připojení (mount) v postranním panelu"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
+"Přidány vodorovné barevné varovné a chybové ukazatele když se disk zaplňuje"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid ""
@@ -94,11 +95,12 @@ msgstr "Opravy:"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 msgid "Fix handling of filenames containing the # character"
-msgstr ""
+msgstr "Opraveno zacházení s názvy souborů obsahujících znak # (mřížka)"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
+"Opraven návrat chyby týkající se nabídek v pruhu s popisem umístění a klikání"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:103

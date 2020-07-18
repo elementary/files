@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2020-03-19 19:09+0000\n"
+"PO-Revision-Date: 2020-07-15 23:12+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@posteo.net>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
@@ -69,34 +69,36 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Improvements:"
-msgstr ""
+msgstr "Improvements:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
+msgstr "Bookmark menu option for network mounts in sidebar"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
+"Add warning and error coloured disk usage bars when disk becomes too full"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
+"Prevent window resizing when filename column width exceeds available space"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 #: data/io.elementary.files.appdata.xml.in.in:96
 msgid "Fixes:"
-msgstr ""
+msgstr "Fixes:"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 msgid "Fix handling of filenames containing the # character"
-msgstr ""
+msgstr "Fix handling of filenames containing the # character"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix regressions regarding pathbar context menus and clicking"
-msgstr ""
+msgstr "Fix regressions regarding pathbar context menus and clicking"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:103
@@ -124,39 +126,39 @@ msgstr "Updated translations"
 
 #: data/io.elementary.files.appdata.xml.in.in:90
 msgid "Paste images into other apps instead of file paths where possible"
-msgstr ""
+msgstr "Paste images into other apps instead of file paths where possible"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
+msgstr "Paste into a selected folder when using Ctrl + V"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Show file info overlay in List View as well"
-msgstr ""
+msgstr "Show file info overlay in List View as well"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Traverse search results with Tab key"
-msgstr ""
+msgstr "Traverse search results with Tab key"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Show an error message when attempting to open trashed files"
-msgstr ""
+msgstr "Show an error message when attempting to open trashed files"
 
 #: data/io.elementary.files.appdata.xml.in.in:98
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
-msgstr ""
+msgstr "Fix uneditable area in pathbar which is showing home folder placeholder"
 
 #: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Fix an issue that prevented file modification times from showing"
-msgstr ""
+msgstr "Fix an issue that prevented file modification times from showing"
 
 #: data/io.elementary.files.appdata.xml.in.in:100
 msgid "Fix size of restored tiled window"
-msgstr ""
+msgstr "Fix size of restored tiled window"
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Fix color tags disappearing when thumbnails hidden"
-msgstr ""
+msgstr "Fix colour tags disappearing when thumbnails hidden"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 #: data/io.elementary.files.appdata.xml.in.in:125
