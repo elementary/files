@@ -41,8 +41,9 @@ namespace FM {
             tree.set_reorderable (false);
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
-            set_up_name_renderer ();
+            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.ICON);
 
+            set_up_name_renderer ();
             set_up_icon_renderer ();
 
             tree.pack_start (icon_renderer, false);

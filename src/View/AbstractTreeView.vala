@@ -38,8 +38,9 @@ namespace FM {
             };
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
-            set_up_name_renderer ();
+            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.LIST);
 
+            set_up_name_renderer ();
             set_up_icon_renderer ();
 
             name_column.pack_start (icon_renderer, false);

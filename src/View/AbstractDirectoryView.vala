@@ -289,7 +289,6 @@ namespace FM {
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
-            icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
