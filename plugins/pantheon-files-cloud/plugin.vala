@@ -106,16 +106,18 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     static Marlin.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
                                                        CloudProviders.Account account) {
 
-        var item = new Marlin.SidebarPluginItem ();
-        item.name = account.name;
-        item.tooltip = account.path;
-        item.uri = account.path;
-        item.icon = account.icon;
-        item.show_spinner = account.get_status () == CloudProviders.AccountStatus.SYNCING;
-        item.action_group = account.action_group;
-        item.action_group_namespace = "cloudprovider";
-        item.menu_model = account.menu_model;
-        item.action_icon = get_icon (account.get_status ());
+        var item = new Marlin.SidebarPluginItem () {
+            name = account.name,
+            tooltip = account.path,
+            uri = account.path,
+            icon = account.icon,
+            show_spinner = account.get_status () == CloudProviders.AccountStatus.SYNCING,
+            action_group = account.action_group,
+            action_group_namespace = "cloudprovider",
+            menu_model = account.menu_model,
+            action_icon = get_icon (account.get_status ())
+        };
+
         return item;
     }
 

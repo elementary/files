@@ -35,7 +35,6 @@ namespace FM {
         """;
 
         public IconView (Marlin.View.Slot _slot) {
-            assert (_slot != null);
             base (_slot);
         }
 

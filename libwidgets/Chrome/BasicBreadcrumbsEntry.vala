@@ -69,8 +69,15 @@ namespace Marlin.View.Chrome {
             truncate_multiline = true;
             weak Gtk.StyleContext style_context = get_style_context ();
             style_context.add_class ("pathbar");
-            Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
-                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            var css_provider = new Gtk.CssProvider ();
+            try {
+                css_provider.load_from_data (".noradius-button { border-radius: 0; }");
+                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                critical ("Unable to style pathbar button: %s", e.message);
+            }
+
             breadcrumb_icons = new BreadcrumbIconList (style_context);
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
@@ -727,7 +734,7 @@ namespace Marlin.View.Chrome {
                 double text_width, text_height;
                 Pango.Layout layout;
                 /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
+                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
 
                 Gdk.RGBA rgba;
                 var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);

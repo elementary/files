@@ -245,7 +245,7 @@ namespace Marlin {
                     if (uris != null) { /*Cancelled operation may result in empty list */
                         try {
                             yield Marlin.FileOperations.copy_move_link (
-                                      uris, null, action.src_dir, Gdk.DragAction.MOVE, widget, cancellable
+                                      uris, action.src_dir, Gdk.DragAction.MOVE, widget, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -364,7 +364,7 @@ namespace Marlin {
                     if (uris != null) {
                         try {
                             yield Marlin.FileOperations.copy_move_link (
-                                      uris, null, action.dest_dir, Gdk.DragAction.COPY, widget, cancellable
+                                      uris, action.dest_dir, Gdk.DragAction.COPY, widget, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -380,7 +380,7 @@ namespace Marlin {
                     if (uris != null) {
                         try {
                             yield Marlin.FileOperations.copy_move_link (
-                                      uris, null, action.dest_dir, Gdk.DragAction.LINK, widget, cancellable
+                                      uris, action.dest_dir, Gdk.DragAction.LINK, widget, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -397,7 +397,7 @@ namespace Marlin {
                     if (uris != null) {
                         try {
                             yield Marlin.FileOperations.copy_move_link (
-                                      uris, null, action.dest_dir, Gdk.DragAction.MOVE, widget, cancellable
+                                      uris, action.dest_dir, Gdk.DragAction.MOVE, widget, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -424,7 +424,7 @@ namespace Marlin {
                     var p_uri = GLib.File.new_for_uri (action.target_uri).get_parent ().get_uri ();
                     var new_name = GLib.Path.get_basename (Uri.unescape_string (action.target_uri));
                     try {
-                        yield Marlin.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, null, p_uri,
+                        yield Marlin.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, p_uri,
                                                               new_name, action.template, 0, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
@@ -437,7 +437,7 @@ namespace Marlin {
                     var fparent = GLib.File.new_for_uri (action.target_uri).get_parent ();
                     try {
                         yield Marlin.FileOperations.new_folder (
-                                  widget.get_toplevel () as Gtk.Window, null, fparent, cancellable
+                                  widget.get_toplevel () as Gtk.Window, fparent, cancellable
                               );
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
@@ -493,9 +493,10 @@ namespace Marlin {
                 return;
             }
             /* The stored uris are escaped */
-            var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1);
-            data.old_uri = renamed_file.get_parent ().get_child (original_name).get_uri ();
-            data.new_uri = renamed_file.get_uri ();
+            var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1) {
+                old_uri = renamed_file.get_parent ().get_child (original_name).get_uri (),
+                new_uri = renamed_file.get_uri ()
+            };
 
             add_action ((owned) data);
         }
