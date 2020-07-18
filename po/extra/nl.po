@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2020-07-05 16:12+0000\n"
+"PO-Revision-Date: 2020-07-15 23:12+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -73,7 +73,7 @@ msgstr "Verbeteringen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
+msgstr "Een snelkoppeling menu optie voor netwerkschijven in de zijbalk"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid ""
