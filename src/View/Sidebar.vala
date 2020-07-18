@@ -1469,14 +1469,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 Mount mount = volume.get_mount ();
                 if (mount != null) {
                     var location = mount.get_root ();
-                    if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                        var app = (Marlin.Application)(GLib.Application.get_default ());
-                        app.create_window (location);
-                    } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                        window.open_single_tab (location, Marlin.ViewMode.CURRENT);
-                    } else {
-                        window.uri_path_change_request (location.get_uri ());
-                    }
+                    /* Always use this function to properly handle unusual characters in the filename */
+                    window.uri_path_change_request (location.get_uri (), flags);
                 }
             } catch (GLib.Error error) {
                 var primary = _("Error mounting volume %s").printf (volume.get_name ());
@@ -1635,6 +1629,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                                 Marlin.FileOperations.has_trash_files (mount));
 
         bool show_properties = show_mount || show_unmount || show_eject || uri == Marlin.ROOT_FS_URI;
+        bool show_bookmark_network_mount = show_unmount &&
+                                           ("smb ssh ftp sftp afp dav davs".contains (Uri.parse_scheme (uri)));
 
         if (is_plugin) {
             MenuModel model;
@@ -1692,6 +1688,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
             if (show_properties) {
                 menu.add_property (show_drive_info_cb);
+            }
+
+            if (show_bookmark_network_mount) {
+                menu.add_bookmark (bookmark_network_mount_cb);
             }
 
             menu.build ().popup_at_pointer (event);
@@ -2375,6 +2375,26 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             var job = new Marlin.FileOperations.EmptyTrashJob (window);
             job.empty_trash.begin ();
         }
+    }
+
+    private void bookmark_network_mount_cb (Gtk.MenuItem item) {
+        Gtk.TreeIter iter;
+        if (!get_selected_iter (out iter)) {
+            return;
+        }
+
+        Mount mount;
+        string uri;
+        store.@get (iter,
+                    Column.URI, out uri,
+                    Column.MOUNT, out mount);
+
+        string? name = null;
+        if (mount != null) {
+            name = mount.get_name ();
+        }
+
+        add_uri (uri, name);
     }
 
 /* VOLUME MONITOR CALLBACK FUNCTIONS */

@@ -332,17 +332,17 @@ namespace Marlin.View {
 
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    window.open_single_tab (loc, view_mode);
+                case Marlin.OpenFlag.NEW_WINDOW:
+                    /* Must pass through this function in order to properly handle unusual characters properly */
+                    window.uri_path_change_request (loc.get_uri (), flag);
                     break;
 
-                case Marlin.OpenFlag.NEW_WINDOW:
-                    window.add_window (loc, view_mode);
+                case Marlin.OpenFlag.NEW_ROOT:
+                    view.user_path_change_request (loc, true);
                     break;
 
                 default:
-                        view.user_path_change_request (loc,
-                                                       flag == Marlin.OpenFlag.NEW_ROOT);
-
+                    view.user_path_change_request (loc, false);
                     break;
             }
         }

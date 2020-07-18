@@ -406,7 +406,6 @@ namespace Marlin.View.Chrome {
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
-            GLib.File loc = PF.FileUtils.get_file_for_path (path);
             string parent_path = PF.FileUtils.get_parent_path_from_path (path);
             GLib.File? root = PF.FileUtils.get_file_for_path (parent_path);
 
@@ -424,7 +423,7 @@ namespace Marlin.View.Chrome {
             menu.cancel.connect (() => {reset_elements_states ();});
             menu.deactivate.connect (() => {reset_elements_states ();});
 
-            build_base_menu (menu, loc);
+            build_base_menu (menu, path);
             GOF.Directory.Async? files_menu_dir = null;
             if (root != null) {
                 files_menu_dir = GOF.Directory.Async.from_gfile (root);
@@ -444,9 +443,8 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        private void build_base_menu (Gtk.Menu menu, GLib.File loc) {
+        private void build_base_menu (Gtk.Menu menu, string path) {
             /* First the "Open in new tab" menuitem is added to the menu. */
-            var path = loc.get_uri ();
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
@@ -463,7 +461,8 @@ namespace Marlin.View.Chrome {
             menu.append (new Gtk.SeparatorMenuItem ());
 
             var submenu_open_with = new Gtk.Menu ();
-            var root = GOF.File.get (loc);
+            var loc = File.new_for_uri (PF.FileUtils.escape_uri (path));
+            var root = GOF.File.get_by_uri (path);
             var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
             bool at_least_one = false;
             foreach (AppInfo app_info in app_info_list) {

@@ -794,7 +794,6 @@ namespace FM {
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
                     case Marlin.OpenFlag.NEW_WINDOW:
-
                         path_change_request (location, flag, true);
                         break;
 
