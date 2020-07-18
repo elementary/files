@@ -56,12 +56,17 @@ namespace Marlin.View {
 
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
-            scrolled_window = new Gtk.ScrolledWindow (null, null);
-            scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
+            scrolled_window = new Gtk.ScrolledWindow (null, null) {
+                hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
+                vscrollbar_policy = Gtk.PolicyType.NEVER
+            };
+
             hadj = scrolled_window.get_hadjustment ();
 
-            var viewport = new Gtk.Viewport (null, null);
-            viewport.set_shadow_type (Gtk.ShadowType.NONE);
+            var viewport = new Gtk.Viewport (null, null) {
+                shadow_type = Gtk.ShadowType.NONE
+            };
+
             viewport.add (this.colpane);
 
             scrolled_window.add (viewport);
@@ -87,7 +92,7 @@ namespace Marlin.View {
         public void add_location (GLib.File loc, Marlin.View.Slot? host = null,
                                   bool scroll = true, bool animate = true) {
 
-            Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
+            var new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             /* Notify view container of path change - will set tab to working and change pathbar */
             path_changed ();
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
@@ -102,8 +107,10 @@ namespace Marlin.View {
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
-            var hpane1 = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-            hpane1.hexpand = true;
+            var hpane1 = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+                hexpand = true
+            };
+
             slot.hpane = hpane1;
 
             var box1 = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);

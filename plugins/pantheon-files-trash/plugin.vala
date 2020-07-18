@@ -60,12 +60,15 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 actionbar = new Gtk.ActionBar ();
                 actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
 
-                restore_button = new Gtk.Button.with_label (_(RESTORE_ALL));
-                restore_button.valign = Gtk.Align.CENTER;
+                restore_button = new Gtk.Button.with_label (_(RESTORE_ALL)) {
+                    valign = Gtk.Align.CENTER
+                };
 
-                delete_button = new Gtk.Button.with_label (_(DELETE_ALL));
-                delete_button.margin = 6;
-                delete_button.margin_start = 0;
+                delete_button = new Gtk.Button.with_label (_(DELETE_ALL)) {
+                    margin = 6,
+                    margin_start = 0
+                };
+
                 delete_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
