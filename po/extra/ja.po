@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 17:11+0000\n"
+"POT-Creation-Date: 2020-07-21 17:13+0000\n"
 "PO-Revision-Date: 2020-07-09 10:12+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
@@ -70,7 +70,7 @@ msgstr ""
 "イルにアクセスできます。"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#: data/io.elementary.files.appdata.xml.in.in:71
+#: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Improvements:"
 msgstr "改善点:"
 
@@ -80,40 +80,46 @@ msgstr ""
 "ネットワーク上のマウントされた場所に対しても、サイドバーのコンテキストメ"
 "ニューからブックマークできるように変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:73
+#: data/io.elementary.files.appdata.xml.in.in:66
+msgid ""
+"Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
+"network locations by default"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:74
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
 "ディスク容量が限界に近くなった場合に、ディスク使用量バーを黄色や赤色で表示す"
 "るように変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:75
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
 "ファイル名の列の幅が利用可能な領域よりも長くなった場合に、ウィンドウがリサイ"
 "ズしないように修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:96
+#: data/io.elementary.files.appdata.xml.in.in:77
+#: data/io.elementary.files.appdata.xml.in.in:97
 msgid "Fixes:"
 msgstr "修正点:"
 
-#: data/io.elementary.files.appdata.xml.in.in:78
+#: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix handling of filenames containing the # character"
 msgstr "ファイル名に # 記号が含まれている場合の処理を修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:79
+#: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr "パスバーのコンテキストメニューとクリックに関するリグレッションを修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:81
+#: data/io.elementary.files.appdata.xml.in.in:82
 #: data/io.elementary.files.appdata.xml.in.in:104
 #: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Other updates:"
 msgstr "そのほかのアップデート:"
 
-#: data/io.elementary.files.appdata.xml.in.in:83
+#: data/io.elementary.files.appdata.xml.in.in:84
 #: data/io.elementary.files.appdata.xml.in.in:106
 #: data/io.elementary.files.appdata.xml.in.in:120
 #: data/io.elementary.files.appdata.xml.in.in:133
@@ -131,43 +137,37 @@ msgstr "そのほかのアップデート:"
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
 "ほかのアプリに貼り付ける際に、可能であればファイルパスではなく画像自体を貼り"
 "付けるように変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Paste into a selected folder when using Ctrl + V"
 msgstr "Ctrl + V を使用して、選択したフォルダーの中に貼り付けできるように変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Show file info overlay in List View as well"
 msgstr "リスト表示の場合でも、ファイル情報オーバーレイが表示されるように変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:93
+#: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Traverse search results with Tab key"
 msgstr "検索結果内を Tab キーで移動できるように変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:95
 msgid "Show an error message when attempting to open trashed files"
 msgstr "ゴミ箱のファイルを開こうとした際にエラーメッセージを表示するように変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:98
+#: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
 "パスバーにある、ホームフォルダーのプレースホルダー表示部でクリックしてテキス"
 "トを入力できない不具合を修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:99
+#: data/io.elementary.files.appdata.xml.in.in:100
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr "ファイル修正日時が表示されない不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:100
-msgid ""
-"Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
-"network locations by default"
-msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Fix size of restored tiled window"

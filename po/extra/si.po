@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 17:11+0000\n"
+"POT-Creation-Date: 2020-07-21 17:13+0000\n"
 "PO-Revision-Date: 2018-06-10 00:11+0000\n"
 "Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
 "Language-Team: Sinhala <https://weblate.elementary.io/projects/files/extra/"
@@ -63,7 +63,7 @@ msgid ""
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#: data/io.elementary.files.appdata.xml.in.in:71
+#: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Improvements:"
 msgstr ""
 
@@ -71,36 +71,42 @@ msgstr ""
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:73
+#: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
-"Add warning and error colored disk usage bars when disk becomes too full"
+"Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
+"network locations by default"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid ""
+"Add warning and error colored disk usage bars when disk becomes too full"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:75
+msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:96
+#: data/io.elementary.files.appdata.xml.in.in:77
+#: data/io.elementary.files.appdata.xml.in.in:97
 msgid "Fixes:"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:78
+#: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix handling of filenames containing the # character"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:79
+#: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:81
+#: data/io.elementary.files.appdata.xml.in.in:82
 #: data/io.elementary.files.appdata.xml.in.in:104
 #: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Other updates:"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:83
+#: data/io.elementary.files.appdata.xml.in.in:84
 #: data/io.elementary.files.appdata.xml.in.in:106
 #: data/io.elementary.files.appdata.xml.in.in:120
 #: data/io.elementary.files.appdata.xml.in.in:133
@@ -119,38 +125,32 @@ msgstr ""
 msgid "Updated translations"
 msgstr "නව පරිවර්තනය"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Paste into a selected folder when using Ctrl + V"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Show file info overlay in List View as well"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:93
+#: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Traverse search results with Tab key"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:95
 msgid "Show an error message when attempting to open trashed files"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:98
+#: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:99
-msgid "Fix an issue that prevented file modification times from showing"
-msgstr ""
-
 #: data/io.elementary.files.appdata.xml.in.in:100
-msgid ""
-"Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
-"network locations by default"
+msgid "Fix an issue that prevented file modification times from showing"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:101
