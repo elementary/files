@@ -97,6 +97,7 @@
         <ul>
           <li>Fix uneditable area in pathbar which is showing home folder placeholder</li>
           <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
           <li>Fix size of restored tiled window</li>
           <li>Fix color tags disappearing when thumbnails hidden</li>
         </ul>

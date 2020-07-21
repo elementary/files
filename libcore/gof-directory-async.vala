@@ -131,7 +131,7 @@ public class Async : Object {
         //Try lifting requirement for info on remote connections
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
-        is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
+        is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
         /* Previously, mtp protocol had problems launching files but this currently works
          * using newer devices such as Android phones so this restriction is lifted. The flag is
          * retained in case it needs reinstating or using for another protocol.
