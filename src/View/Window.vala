@@ -130,7 +130,7 @@ namespace Marlin.View {
 
         private void build_window () {
             view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
-                selected = marlin_app.marlin_app_settings.settings.get_enum ("default-viewmode")
+                selected = marlin_app.marlin_app_settings.get_enum ("default-viewmode")
             };
 
             top_menu = new Chrome.HeaderBar (view_switcher) {
@@ -158,7 +158,7 @@ namespace Marlin.View {
             sidebar = new Marlin.Sidebar (this);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-                position = marlin_app.marlin_app_settings.settings.get_int ("sidebar-width")
+                position = marlin_app.marlin_app_settings.get_int ("sidebar-width")
             };
 
             lside_pane.show ();

@@ -1796,7 +1796,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
     private void expander_init_pref_state (Gtk.TreeView tree_view) {
         var path = new Gtk.TreePath.from_indices (0, -1);
-        if (window.marlin_app.marlin_app_settings.settings.get_boolean ("sidebar-cat-personal-expander")) {
+        if (window.marlin_app.marlin_app_settings.get_boolean ("sidebar-cat-personal-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
