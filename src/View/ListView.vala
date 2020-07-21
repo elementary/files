@@ -56,12 +56,14 @@ namespace FM {
                 } else {
                     var renderer = new Gtk.CellRendererText ();
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
-                                                                      renderer,
-                                                                      "text", k);
-                    col.set_sort_column_id (k);
-                    col.set_resizable (false);
-                    col.set_expand (false);
-                    col.min_width = 24;
+                                                                        renderer,
+                                                                        "text", k) {
+                        sort_column_id = k,
+                        resizable = false,
+                        expand = false,
+                        min_width = 24
+                    };
+
                     if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED) {
                         renderer.@set ("xalign", 1.0f);
                     } else {

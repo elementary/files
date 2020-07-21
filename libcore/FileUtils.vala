@@ -68,7 +68,9 @@ namespace PF.FileUtils {
             parent_path = path;
         }
 
-        if (parent_path.has_prefix (Marlin.MTP_URI) && !valid_mtp_uri (parent_path)) {
+        if ((parent_path.has_prefix (Marlin.MTP_URI) || parent_path.has_prefix (Marlin.PTP_URI)) &&
+            !valid_mtp_uri (parent_path)) {
+
             parent_path = path;
         }
 
@@ -91,7 +93,6 @@ namespace PF.FileUtils {
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
                 Marlin.FileOperations.copy_move_link.begin (dir_files,
-                                                            null,
                                                             original_dir,
                                                             Gdk.DragAction.MOVE,
                                                             widget,
@@ -194,11 +195,16 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? p, string? cp = null, bool include_file_protocol = true) {
+    public string sanitize_path (string? p, string? _cp = null, bool include_file_protocol = true) {
         string path = "";
         string scheme = "";
+        string cp = "";
         string? current_path = null;
         string? current_scheme = null;
+
+        if (_cp != null) {
+            cp = Uri.unescape_string (_cp, null);
+        }
 
         if (p == null || p == "") {
             return cp ?? "";
@@ -309,14 +315,14 @@ namespace PF.FileUtils {
             return;
         }
         if (explode_protocol.length > 1) {
-            if (explode_protocol[0] == "mtp") {
+            if (explode_protocol[0] == "mtp" || explode_protocol[0] == "gphoto2" ) {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
                 if (explode_path[0] != null && explode_path[0].has_prefix ("[")) {
                     protocol = (explode_protocol[0] + "://" + explode_path[0] + "]").replace ("///", "//");
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    warning ("Invalid mtp path %s", path);
+                    critical ("Invalid mtp or ptp path %s", path);
                     protocol = new_path.dup ();
                     new_path = "/";
                 }
@@ -340,7 +346,7 @@ namespace PF.FileUtils {
     }
 
     private bool valid_mtp_uri (string uri) {
-        if (!uri.contains (Marlin.MTP_URI)) {
+        if (!uri.contains (Marlin.MTP_URI) && !uri.contains (Marlin.PTP_URI)) {
             return false;
         }
         string[] explode_protocol = uri.split ("://", 2);
@@ -563,6 +569,7 @@ namespace PF.FileUtils {
             case Marlin.SFTP_URI:
             case Marlin.FTP_URI:
             case Marlin.MTP_URI:
+            case Marlin.PTP_URI:
                 return false;
             default:
                 return true;
@@ -784,8 +791,8 @@ namespace PF.FileUtils {
         string protocol_a, protocol_b;
         string path_a, path_b;
 
-        split_protocol_from_path (uri_a, out protocol_a, out path_a);
-        split_protocol_from_path (uri_b, out protocol_b, out path_b);
+        split_protocol_from_path (Uri.unescape_string (uri_a), out protocol_a, out path_a);
+        split_protocol_from_path (Uri.unescape_string (uri_b), out protocol_b, out path_b);
 
         if (protocol_a == protocol_b && path_a == path_b) {
             return true;
@@ -819,4 +826,5 @@ namespace Marlin {
     public const string FTP_URI = "ftp://";
     public const string SMB_URI = "smb://";
     public const string MTP_URI = "mtp://";
+    public const string PTP_URI = "gphoto2://";
 }
