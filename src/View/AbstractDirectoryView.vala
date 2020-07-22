@@ -273,6 +273,7 @@ namespace FM {
         protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
+        protected unowned Marlin.Application app;
 
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
@@ -285,7 +286,7 @@ namespace FM {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            var app = (Marlin.Application)(GLib.Application.get_default ());
+            app = (Marlin.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 

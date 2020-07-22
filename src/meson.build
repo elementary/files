@@ -59,7 +59,6 @@ pantheon_files_exec = executable (
 
     dependencies : [
         pantheon_files_deps,
-        vala.find_library('marlin', dirs: meson.current_source_dir ()),
     ],
     install: true,
 )
