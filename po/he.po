@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2020-03-27 09:36+0000\n"
+"POT-Creation-Date: 2020-07-21 17:11+0000\n"
+"PO-Revision-Date: 2020-07-24 12:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -343,13 +343,15 @@ msgstr "לא ניתן להפעיל קובץ זה"
 #: src/View/AbstractDirectoryView.vala:828
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "יש להעביר את „%s” אל מחוץ לסל האשפה בטרם הפתיחה"
 
 #: src/View/AbstractDirectoryView.vala:829
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"לא ניתן לפתוח קבצים מתוך פח האשפה. כדי לפתוח את הקובץ הזה, יש להעביר אותו "
+"למקום אחר."
 
 #: src/View/AbstractDirectoryView.vala:844
 msgid "Cannot open this file"
@@ -494,26 +496,26 @@ msgstr "חדש"
 msgid "Untitled %s"
 msgstr "%s ללא שם"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "לא ניתן להסיר מכאן קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "אין לך הרשאות לשנות את המיקום הזה"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "לא ניתן להעתיק קבצים שנמצאים באשפה"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "גזירת הבחירה במקום"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
@@ -1071,34 +1073,34 @@ msgstr "קובץ אחר בעל שם זהה קיים תחת „%s”."
 msgid "Merge"
 msgstr "מיזוג"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "לא ניתן לאתר את המיקום המקורי של „%s” "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "לא ניתן לשחזר את הפריט מהאשפה"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:451
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "לא ניתן לשנות את השם ל־‚%s’"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Today at %s"
 msgstr "היום ב־%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:548
 #, c-format
 msgid "Yesterday at %s"
 msgstr "אתמול ב־%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:556
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ב־%s"

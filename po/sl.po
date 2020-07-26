@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-21 17:11+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -510,26 +510,26 @@ msgstr "Nova"
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "Od tu ni mogoče odstraniti datotek"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "Nimate dovoljenja za spreminjanje te lokacije"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "Datotek v smeteh ni mogoče kopirati"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "Režem izbrane predmete"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "Datotek ni mogoče prilepiti sem"
 
@@ -1087,34 +1087,34 @@ msgstr "Druga datoteka z enakim imenom že obstaja v \"%s\"."
 msgid "Merge"
 msgstr "Združi"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Ni mogoče določiti privzetega mesta \"%s\" "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Predmeta ni mogoče obnoviti iz smeti"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:451
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Ni bilo mogoče spremeniti imena v '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Today at %s"
 msgstr "Danes ob %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:548
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Včeraj ob %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:556
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ob %s"

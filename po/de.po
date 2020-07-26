@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-21 17:11+0000\n"
 "PO-Revision-Date: 2020-07-09 10:12+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
@@ -502,28 +502,28 @@ msgstr "Neu"
 msgid "Untitled %s"
 msgstr "Ohne Namen %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "Dateien können von diesem Ort nicht entfernt werden"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr ""
 "Sie haben nicht die notwendigen Zugriffsrechte, um an diesem Ort Änderungen "
 "vorzunehmen"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "Dateien können nicht aus dem Papierkorb kopiert werden"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "An diesem Ort können keine Dateien eingefügt werden"
 
@@ -1084,34 +1084,34 @@ msgstr "Eine Datei gleichen Namens existiert bereits in »%s«."
 msgid "Merge"
 msgstr "Zusammenführen"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:451
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Zu »%s« umzubenennen ist fehlgeschlagen"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Today at %s"
 msgstr "Heute um %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:548
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Gestern um %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:556
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A um %s"

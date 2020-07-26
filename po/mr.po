@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-21 17:11+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -492,26 +492,26 @@ msgstr "नवीन"
 msgid "Untitled %s"
 msgstr "शीर्षकविरहित %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "येथून फायली काढू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "आपल्याला ही जागा बदलण्याची परवानगी नाही"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "कचर्यात असलेल्या फायली कॉपी करू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "त्याऐवजी निवडलेले कट करीत आहोत"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "येथे फायली पेस्ट करू शकत नाही"
 
@@ -1069,34 +1069,34 @@ msgstr "\"%s\" मध्ये समान नावाची दुसरी �
 msgid "Merge"
 msgstr "विलीन करा"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "\"%s\" ची मूळ स्थान निर्धारित करू शकलो नाही "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "आयटम कचर्यामधून पुनर्संचयित केला जाऊ शकत नाही"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:451
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s' या नावाने पुनर्नामित करणे शक्य नाही"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Today at %s"
 msgstr "आज %s वाजता"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:548
 #, c-format
 msgid "Yesterday at %s"
 msgstr "काल %s वाजता"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:556
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A %s वाजता"

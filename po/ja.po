@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-21 17:11+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -492,26 +492,26 @@ msgstr "新規作成"
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
@@ -1069,34 +1069,34 @@ msgstr "\"%s\" 内に同じ名前のファイルがすでに存在していま�
 msgid "Merge"
 msgstr "マージ"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "\"%s\" があった元の場所を特定できませんでした "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "ゴミ箱から項目を復元できません"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:451
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s' へ名前を変更できません"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:540
 #, c-format
 msgid "Today at %s"
 msgstr "今日の%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:548
 #, c-format
 msgid "Yesterday at %s"
 msgstr "昨日の%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:556
 #, c-format
 msgid "%%A at %s"
 msgstr "%%Aの%s"

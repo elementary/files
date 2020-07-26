@@ -39,7 +39,7 @@ namespace Marlin.View {
             {"info", action_info, "s"},
             {"view-mode", action_view_mode, "u", "0" },
             {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
