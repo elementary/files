@@ -63,6 +63,7 @@
         <p>Improvements:</p>
         <ul>
           <li>Bookmark menu option for network mounts in sidebar</li>
+          <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
         </ul>
         <p>Fixes:</p>
         <ul>
