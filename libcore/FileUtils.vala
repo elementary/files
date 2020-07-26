@@ -203,7 +203,6 @@ namespace PF.FileUtils {
         string unsanitized_current_uri;
         string path = "";
         string scheme = "";
-        string cp = "";
         string? current_path = null;
         string? current_scheme = null;
 
