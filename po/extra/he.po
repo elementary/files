@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-21 17:13+0000\n"
-"PO-Revision-Date: 2020-05-01 13:10+0000\n"
+"PO-Revision-Date: 2020-07-24 12:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -63,7 +63,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Improvements:"
-msgstr ""
+msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"

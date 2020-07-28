@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-21 17:13+0000\n"
-"PO-Revision-Date: 2020-07-01 16:42+0000\n"
+"PO-Revision-Date: 2020-07-25 17:12+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,12 +76,15 @@ msgstr "Mejoras:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr ""
+"Opción en el menú de marcadores para los montajes de red en la barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
+"Ahora se muestran miniaturas en dispositivos MTP y PTP montados localmente y "
+"en ubicaciones de red de manera predeterminada"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid ""
@@ -636,7 +639,7 @@ msgstr "Papelera: respetar la configuración del sonido"
 
 #: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Localization fixes"
-msgstr "Correcciones de ubicación"
+msgstr "Correcciones de regionalización"
 
 #: data/io.elementary.files.appdata.xml.in.in:315
 msgid "Over 100 major and minor bug fixes and improvements"
@@ -653,8 +656,8 @@ msgstr "Distinguir entre pestañas con el mismo nombre"
 #: data/io.elementary.files.appdata.xml.in.in:324
 msgid "Support launching from other applications with a target file selected"
 msgstr ""
-"Soporte para el lanzamiento desde otras aplicaciones con un archivo de "
-"destino seleccionado"
+"Se permite el lanzamiento desde otras aplicaciones con un archivo de destino "
+"seleccionado"
 
 #: data/io.elementary.files.appdata.xml.in.in:325
 #: data/io.elementary.files.appdata.xml.in.in:338
@@ -662,7 +665,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:362
 #: data/io.elementary.files.appdata.xml.in.in:373
 msgid "New translations"
-msgstr "Nuevas traducciones"
+msgstr "Traducciones nuevas"
 
 #: data/io.elementary.files.appdata.xml.in.in:326
 #: data/io.elementary.files.appdata.xml.in.in:339
