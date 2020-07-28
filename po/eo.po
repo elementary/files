@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -603,8 +603,8 @@ msgid "Devices"
 msgstr "Aparatoj"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Viaj lokaj submemorujoj kaj aparatoj"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -1990,6 +1990,9 @@ msgstr "Restaŭri elektaĵojn"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Forigi elektitojn"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Viaj lokaj submemorujoj kaj aparatoj"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Forigi %d kopiitajn elementojn"
