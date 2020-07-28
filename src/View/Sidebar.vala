@@ -654,7 +654,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* ADD STORAGE CATEGORY*/
         iter = add_category (PlaceType.STORAGE_CATEGORY,
                              _("Devices"),
-                             _("Your local partitions and devices"));
+                             _("Internal and connected storage devices"));
 
 
         /* Add Filesystem BUILTIN */
