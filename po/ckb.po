@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2018-01-06 00:17+0000\n"
 "Last-Translator: javad sajjadi(qezwan) <qezwan@gmail.com>\n"
 "Language-Team: Sorani <https://weblate.elementary.io/projects/files/files/"
@@ -595,7 +595,7 @@ msgid "Devices"
 msgstr ""
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
+msgid "Internal and connected storage devices"
 msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62

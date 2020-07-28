@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -608,8 +608,8 @@ msgid "Devices"
 msgstr "Dispositivos"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Dispositivos e particións locais"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2016,6 +2016,9 @@ msgstr "Restaurar o seleccionado"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Eliminar o seleccionado"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Dispositivos e particións locais"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Eliminar %d elementos copiados"

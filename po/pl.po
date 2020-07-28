@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2019-02-09 11:12+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
@@ -622,8 +622,8 @@ msgid "Devices"
 msgstr "Nośniki"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Udostępnia lokalne wolumeny i nośniki"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2047,6 +2047,9 @@ msgstr "Przywróć zaznaczone"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Usuń zaznaczone"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Udostępnia lokalne wolumeny i nośniki"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Usuń %d skopiowanych elementów"

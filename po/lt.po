@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -614,8 +614,8 @@ msgid "Devices"
 msgstr "Įrenginiai"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Jūsų vietiniai skaidiniai ir įrenginiai"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2057,6 +2057,9 @@ msgstr "Atkurti pažymėtus"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Ištrinti pažymėtus"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Jūsų vietiniai skaidiniai ir įrenginiai"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Ištrinti %d nukopijuotus elementus"

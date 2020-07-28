@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -612,8 +612,8 @@ msgid "Devices"
 msgstr "Thiết bị"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Thiết bị và phân vùng nội bộ của bạn"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -1986,6 +1986,9 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "Xóa _Tất cả"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Thiết bị và phân vùng nội bộ của bạn"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Xóa %d mục đã chép"

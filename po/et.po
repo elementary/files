@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -621,8 +621,8 @@ msgid "Devices"
 msgstr "Seadmed"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Kohalikud partitsioonid ja seadmed"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2037,6 +2037,9 @@ msgstr "Taasta kõik"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " on valitud"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Kohalikud partitsioonid ja seadmed"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "%d kopeeritud failide kustutamine"
