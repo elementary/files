@@ -301,8 +301,6 @@ namespace PF.FileUtils {
             path = path.replace ("//", "/");
         } while (path.contains ("//"));
 
-
-
         string new_path = (scheme + path).replace ("////", "///");
         if (new_path.length > 0) {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
