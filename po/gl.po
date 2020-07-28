@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-28 18:36+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -103,7 +103,7 @@ msgstr "Capacidade:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "Descoñecido"
 
@@ -124,110 +124,110 @@ msgstr "Estabelecer como predeterminado"
 msgid "Properties"
 msgstr "Propiedades"
 
-#: src/Dialogs/PropertiesWindow.vala:227
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "Permisos"
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%i arquivo non se puido ler debido a permisos ou outros erros."
 msgstr[1] "%i arquivos non se puideron ler debido a permisos ou outros erros."
 
-#: src/Dialogs/PropertiesWindow.vala:252
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "O tamaño real podería ser maior"
 
-#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "descoñecido"
 
-#: src/Dialogs/PropertiesWindow.vala:455
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "Cargando…"
 
-#: src/Dialogs/PropertiesWindow.vala:489
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "Non se puido determinar"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
 #: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Tamaño:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Tipo:"
 
-#: src/Dialogs/PropertiesWindow.vala:525
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "Contén:"
 
-#: src/Dialogs/PropertiesWindow.vala:549
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "Creación:"
 
-#: src/Dialogs/PropertiesWindow.vala:560
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "Modificación:"
 
-#: src/Dialogs/PropertiesWindow.vala:572
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "Eliminación:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
 msgstr "Tipo de medio:"
 
-#: src/Dialogs/PropertiesWindow.vala:589
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "Resolución:"
 
-#: src/Dialogs/PropertiesWindow.vala:597
+#: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Localización:"
 
-#: src/Dialogs/PropertiesWindow.vala:607
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "Obxectivo:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "Localización orixinal:"
 
-#: src/Dialogs/PropertiesWindow.vala:638
+#: src/Dialogs/PropertiesWindow.vala:645
 #: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "Outra aplicación…"
 
-#: src/Dialogs/PropertiesWindow.vala:658
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "Abrir con:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "Propietario:"
 
-#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "Grupo:"
 
-#: src/Dialogs/PropertiesWindow.vala:939
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "Todos:"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u subdirectorio"
 msgstr[1] "%u subdirectorios"
 
-#: src/Dialogs/PropertiesWindow.vala:1224
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -235,19 +235,19 @@ msgstr[0] "%u arquivo"
 msgstr[1] "%u arquivos"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1229
+#: src/Dialogs/PropertiesWindow.vala:1236
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u directorio"
 msgstr[1] "%u directorios"
 
-#: src/Dialogs/PropertiesWindow.vala:1251
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -255,7 +255,7 @@ msgstr[0] "%u obxecto seleccionado"
 msgstr[1] "%u obxectos seleccionados"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1253
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -500,26 +500,26 @@ msgstr "Novo"
 msgid "Untitled %s"
 msgstr "Sen título %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "Non se poden eliminar arquivos desde aquí"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "Non tes permiso para cambiar esta localización"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "Non se poden copiar os arquivos que están na papeleira"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "Cortouse a selección no seu lugar"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "Non se poden pegar os arquivos aquí"
 
@@ -1077,34 +1077,34 @@ msgstr "Xa existe un ficheiro co mesmo nome en «%s»."
 msgid "Merge"
 msgstr "Combinar"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Non é posíbel determinar a localización orixinal de «%s» "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Non foi posíbel recuperar o elemento do lixo"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Non se puido cambiar o nome a «%s»"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:561
 #, c-format
 msgid "Today at %s"
 msgstr "Hoxe ás %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:569
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Onte ás %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:577
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ás %s"

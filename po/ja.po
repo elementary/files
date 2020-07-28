@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-28 18:36+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -103,7 +103,7 @@ msgstr "容量:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "不明"
 
@@ -124,133 +124,133 @@ msgstr "デフォルトに設定"
 msgid "Properties"
 msgstr "プロパティ"
 
-#: src/Dialogs/PropertiesWindow.vala:227
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "権限"
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%i 個のファイルが権限またはそのほかのエラーにより読み込めません。"
 
-#: src/Dialogs/PropertiesWindow.vala:252
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "実際のサイズはより大きい可能性があります"
 
-#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "不明"
 
-#: src/Dialogs/PropertiesWindow.vala:455
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "読み込んでいます…"
 
-#: src/Dialogs/PropertiesWindow.vala:489
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "測定できませんでした"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
 #: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "サイズ:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "種類:"
 
-#: src/Dialogs/PropertiesWindow.vala:525
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "内容:"
 
-#: src/Dialogs/PropertiesWindow.vala:549
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "作成日時:"
 
-#: src/Dialogs/PropertiesWindow.vala:560
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "更新日時:"
 
-#: src/Dialogs/PropertiesWindow.vala:572
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "削除日時:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
 msgstr "メディアタイプ:"
 
-#: src/Dialogs/PropertiesWindow.vala:589
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "解像度:"
 
-#: src/Dialogs/PropertiesWindow.vala:597
+#: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "場所:"
 
-#: src/Dialogs/PropertiesWindow.vala:607
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "ターゲット:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "元の場所:"
 
-#: src/Dialogs/PropertiesWindow.vala:638
+#: src/Dialogs/PropertiesWindow.vala:645
 #: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "ほかのアプリケーション…"
 
-#: src/Dialogs/PropertiesWindow.vala:658
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "このアプリケーションで開く:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "所有者:"
 
-#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "グループ:"
 
-#: src/Dialogs/PropertiesWindow.vala:939
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "全員:"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u 個のサブフォルダー"
 
-#: src/Dialogs/PropertiesWindow.vala:1224
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u 個のファイル"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1229
+#: src/Dialogs/PropertiesWindow.vala:1236
 #, c-format
 msgid "%s, %s"
 msgstr "%s、%s"
 
-#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u 個のフォルダー"
 
-#: src/Dialogs/PropertiesWindow.vala:1251
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u 個の選択項目"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1253
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s、%s)"
@@ -492,26 +492,26 @@ msgstr "新規作成"
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
@@ -1069,34 +1069,34 @@ msgstr "\"%s\" 内に同じ名前のファイルがすでに存在していま�
 msgid "Merge"
 msgstr "マージ"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "\"%s\" があった元の場所を特定できませんでした "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "ゴミ箱から項目を復元できません"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s' へ名前を変更できません"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:561
 #, c-format
 msgid "Today at %s"
 msgstr "今日の%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:569
 #, c-format
 msgid "Yesterday at %s"
 msgstr "昨日の%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:577
 #, c-format
 msgid "%%A at %s"
 msgstr "%%Aの%s"
