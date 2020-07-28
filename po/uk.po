@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2017-06-11 14:52+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -627,8 +627,8 @@ msgid "Devices"
 msgstr "Пристрої"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Ваші локальні розділи та пристрої"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2063,6 +2063,9 @@ msgstr "Відновити все"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " обрано"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Ваші локальні розділи та пристрої"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Видалити %d скопійованих елементів"

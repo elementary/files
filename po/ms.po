@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
@@ -624,8 +624,8 @@ msgid "Devices"
 msgstr "Peranti"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Sekaran dan peranti setempat anda"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2046,6 +2046,9 @@ msgstr " dipilih"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " dipilih"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Sekaran dan peranti setempat anda"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Padam %d item disalin"
