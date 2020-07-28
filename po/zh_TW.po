@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2018-10-30 09:14+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
@@ -608,8 +608,8 @@ msgid "Devices"
 msgstr "裝置"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "您的本地端分割區和裝置"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -1958,6 +1958,9 @@ msgstr "還原選取項目"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "刪除選取項目"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "您的本地端分割區和裝置"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "移除 %d 個複製的項目"

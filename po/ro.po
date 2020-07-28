@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -626,8 +626,8 @@ msgid "Devices"
 msgstr "Dispozitive"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Partițiile și dispozitivele tale locale"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2074,6 +2074,9 @@ msgstr "Restaurează toate"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " selectat"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Partițiile și dispozitivele tale locale"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Sterge %d elementele copiate"

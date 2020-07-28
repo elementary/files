@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2016-10-09 14:37+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
@@ -615,8 +615,8 @@ msgid "Devices"
 msgstr "Periferics"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Vòstras particions e periferics locals"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2024,6 +2024,9 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "Suprimir _tot"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Vòstras particions e periferics locals"
 
 #, fuzzy
 #~ msgid "Delete '%s'"

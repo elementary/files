@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2015-12-21 13:46+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Georgian <ka@li.org>\n"
@@ -611,8 +611,8 @@ msgid "Devices"
 msgstr "მოწყობილობები"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "თქვენი ადგილობრივი დანაყოფები და მოწყობილობები"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -1978,6 +1978,9 @@ msgstr "ყველას აღდგენა"
 #, fuzzy
 msgid "Delete Selected"
 msgstr "სამუდამოდ წაშლა"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "თქვენი ადგილობრივი დანაყოფები და მოწყობილობები"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "%d კოპირებული ელემენტის წაშლა"

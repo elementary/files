@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -625,8 +625,8 @@ msgid "Devices"
 msgstr "Zariadenia"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Vaše miestne partície a zariadenia"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2061,6 +2061,9 @@ msgstr "Obnoviť všetko"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " vybrané"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Vaše miestne partície a zariadenia"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Odstrániť %d skopírovaných položiek"

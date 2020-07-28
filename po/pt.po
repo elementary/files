@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2020-06-28 02:28+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
@@ -607,8 +607,8 @@ msgid "Devices"
 msgstr "Dispositivos"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "As suas partições locais e dispositivos"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -2014,6 +2014,9 @@ msgstr "Restaurar selecionado"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Eliminar a Seleção"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "As suas partições locais e dispositivos"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Eliminar os %d itens copiados"

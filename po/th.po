@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-28 23:03+0000\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -612,7 +612,7 @@ msgid "Devices"
 msgstr "อุปกรณ์"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
+msgid "Internal and connected storage devices"
 msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
