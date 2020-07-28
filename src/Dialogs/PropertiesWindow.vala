@@ -203,9 +203,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             label.halign = Gtk.Align.START;
             header_title = label;
         } else if (!goffile.is_writable ()) {
-            var label = new Gtk.Label (goffile.info.get_name ());
-            label.halign = Gtk.Align.START;
-            label.selectable = true;
+            var label = new Gtk.Label (goffile.info.get_name ()) {
+                halign = Gtk.Align.START,
+                selectable = true
+            };
             header_title = label;
         } else {
             entry = new Gtk.Entry ();
