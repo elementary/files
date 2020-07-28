@@ -976,42 +976,37 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
-    private string get_tooltip_for_device (GLib.File location, uint64 fs_capacity,
-                                           uint64 fs_free, string type) {
-        var sb = new StringBuilder ("");
-        sb.append (PF.FileUtils.sanitize_path (location.get_parse_name ()));
-        if (type != null && type != "") {
-            sb.append (" - ");
-            sb.append (type);
-        }
-        if (fs_capacity > 0) {
-            sb.append (" ");
-            sb.append (_("(%s Free of %s)").printf (format_size (fs_free), format_size (fs_capacity)));
-        }
-
-        return sb.str.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
-    }
-
     private async void add_device_tooltip (Gtk.TreeIter iter, GLib.File root, Cancellable update_cancellable) {
-
         uint64 fs_capacity, fs_free;
         string fs_type;
         var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-        if (yield get_filesystem_space_and_type (root, update_cancellable,
-                                                 out fs_capacity, out fs_free, out fs_type)) {
+        if (rowref != null && rowref.valid ()) {
+            if (yield get_filesystem_space_and_type (root, update_cancellable, out fs_capacity, out fs_free, out fs_type)) {
+                var tooltip = PF.FileUtils.sanitize_path (root.get_parse_name (), null, false);
 
-            var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
-            if (rowref != null && rowref.valid ()) {
+                if (fs_type != null && fs_type != "") {
+                    tooltip = "%s — %s".printf (tooltip, fs_type);
+                }
+
+                tooltip = tooltip.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
+
+                if (fs_capacity > 0) {
+                    var size_string = _("%s Free of %s").printf (format_size (fs_free), format_size (fs_capacity));
+                    tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (tooltip, size_string);
+                }
+
                 Gtk.TreeIter? itr = null;
                 store.get_iter (out itr, rowref.get_path ());
-                store.@set (itr,
-                            Column.FREE_SPACE, fs_free,
-                            Column.DISK_SIZE, fs_capacity,
-                            Column.TOOLTIP, tooltip);
-            } else {
-                warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
+                store.@set (
+                    itr,
+                    Column.FREE_SPACE, fs_free,
+                    Column.DISK_SIZE, fs_capacity,
+                    Column.TOOLTIP, tooltip
+                );
             }
+        } else {
+            warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
         }
     }
 
