@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-28 18:36+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -106,7 +106,7 @@ msgstr "Kapacita:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "Neznáme"
 
@@ -127,11 +127,11 @@ msgstr "Nastaviť ako predvolený"
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: src/Dialogs/PropertiesWindow.vala:227
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "Oprávnenia"
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:255
 #, fuzzy, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -139,92 +139,92 @@ msgstr[0] "Súbor nie je možné čítať z dôvodu oprávnenia, alebo inej chyb
 msgstr[1] "Súbor nie je možné čítať z dôvodu oprávnenia, alebo inej chyby."
 msgstr[2] "Súbory nie je možné čítať z dôvodu oprávnenia, alebo inej chyby."
 
-#: src/Dialogs/PropertiesWindow.vala:252
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "Skutočná veľkosť môže byť väčšia"
 
-#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "neznáme"
 
-#: src/Dialogs/PropertiesWindow.vala:455
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "Načítava sa…"
 
-#: src/Dialogs/PropertiesWindow.vala:489
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "Nemôže byť stanovené"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
 #: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Veľkosť:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Typ:"
 
-#: src/Dialogs/PropertiesWindow.vala:525
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "Obsahuje:"
 
-#: src/Dialogs/PropertiesWindow.vala:549
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "Vytvorené:"
 
-#: src/Dialogs/PropertiesWindow.vala:560
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "Zmenený:"
 
-#: src/Dialogs/PropertiesWindow.vala:572
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "Vymazané:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:589
 #, fuzzy
 msgid "Media type:"
 msgstr "Typ súboru"
 
-#: src/Dialogs/PropertiesWindow.vala:589
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "Rozlíšenie:"
 
-#: src/Dialogs/PropertiesWindow.vala:597
+#: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Umiestnenie:"
 
-#: src/Dialogs/PropertiesWindow.vala:607
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "Cieľ:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "Pôvodné umiestnenie"
 
-#: src/Dialogs/PropertiesWindow.vala:638
+#: src/Dialogs/PropertiesWindow.vala:645
 #: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "Iná aplikícia..."
 
-#: src/Dialogs/PropertiesWindow.vala:658
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "Otvoriť s:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "Vlastník:"
 
-#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "Skupina:"
 
-#: src/Dialogs/PropertiesWindow.vala:939
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "Každý:"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, fuzzy, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
@@ -232,8 +232,8 @@ msgstr[0] "podpriečinkov"
 msgstr[1] "podpriečinok"
 msgstr[2] "podpriečinky"
 
-#: src/Dialogs/PropertiesWindow.vala:1224
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -242,12 +242,12 @@ msgstr[1] "%u súbor"
 msgstr[2] "%u súbory"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1229
+#: src/Dialogs/PropertiesWindow.vala:1236
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -255,7 +255,7 @@ msgstr[0] "%u priečinkov"
 msgstr[1] "%u priečinok"
 msgstr[2] "%u priečinky"
 
-#: src/Dialogs/PropertiesWindow.vala:1251
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, fuzzy, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -264,7 +264,7 @@ msgstr[1] "označená položka"
 msgstr[2] "označené položky"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1253
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -517,26 +517,26 @@ msgstr "Nový"
 msgid "Untitled %s"
 msgstr "Bez názvu %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "Tieto súbory nie je možné odstrániť"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "Nemáte povolenie na zmenu umiestnenia"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "Nie je možné kopírovať súbory, ktoré sú v koši"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "Vystrihnutie namiesto výberu"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "Nie je možné vložiť súbory"
 
@@ -1108,34 +1108,34 @@ msgstr "Ďalší súbor s rovnakým názvom v „%s“ už existuje."
 msgid "Merge"
 msgstr "Zlúčiť"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Nepodarilo sa určiť pôvodné umiestnenie pre „%s“ "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Položku nie je možné obnoviť z Koša."
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Nie je možné premenovať na '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:561
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Dnes o %-H:%N"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:569
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Včera o %-H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:577
 #, fuzzy, c-format
 msgid "%%A at %s"
 msgstr "%A o %-H:%M"
