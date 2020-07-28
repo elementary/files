@@ -78,7 +78,7 @@ namespace Marlin.View {
             ctab = _ctab;
             mode = _mode;
             is_active = false;
-            preferred_column_width = window.marlin_app.marlin_column_view_settings.get_int ("preferred-column-width");
+            preferred_column_width = Marlin.column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 
             set_up_directory (_location); /* Connect dir signals before making view */

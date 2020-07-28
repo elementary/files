@@ -20,6 +20,14 @@
              Darin Adler <darin@bentspoon.com>,
              Julián Unrrein <junrrein@gmail.com>
 ***/
+
+namespace Marlin {
+    public Settings app_settings;
+    public Settings icon_view_settings;
+    public Settings list_view_settings;
+    public Settings column_view_settings;
+}
+
 public class Marlin.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
@@ -30,26 +38,28 @@ public class Marlin.Application : Gtk.Application {
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private const uint MAX_WINDOWS = 25;
 
-    public int window_count { get; private set; }
-    public Settings marlin_app_settings { get; construct; }
-    public Settings marlin_icon_view_settings { get; construct; }
-    public Settings marlin_list_view_settings { get; construct; }
-    public Settings marlin_column_view_settings { get; construct; }
     public Settings gnome_interface_settings { get; construct; }
     public Settings gnome_privacy_settings { get; construct; }
     public Settings gtk_file_chooser_settings { get; construct; }
 
+
+    public int window_count { get; private set; }
+
     bool quitting = false;
 
-    construct {
+    static construct {
         /* GSettings parameters */
-        marlin_app_settings = new Settings ("io.elementary.files.preferences");
-        marlin_icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
-        marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
+        app_settings = new Settings ("io.elementary.files.preferences");
+        icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        list_view_settings = new Settings ("io.elementary.files.list-view");
+        column_view_settings = new Settings ("io.elementary.files.column-view");
+    }
+
+    construct {
         gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
         gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
         gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
+
         /* Needed by Glib.Application */
         this.application_id = Marlin.APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
@@ -262,12 +272,12 @@ public class Marlin.Application : Gtk.Application {
     private void init_schemas () {
         /* Bind settings with GOFPreferences */
         var prefs = GOF.Preferences.get_default ();
-        marlin_app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
-        marlin_app_settings.bind ("show-remote-thumbnails",
+        Marlin.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        marlin_app_settings.bind ("hide-local-thumbnails",
+        Marlin.app_settings.bind ("hide-local-thumbnails",
                                    prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        marlin_app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
         gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
         gnome_privacy_settings.bind ("remember-recent-files",

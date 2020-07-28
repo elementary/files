@@ -273,7 +273,6 @@ namespace FM {
         protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
-        protected unowned Marlin.Application app;
 
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
@@ -286,7 +285,7 @@ namespace FM {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            app = (Marlin.Application)(GLib.Application.get_default ());
+            var app = (Marlin.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
@@ -300,11 +299,11 @@ namespace FM {
                 draw_when_idle ();
             });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
-            slot.window.marlin_app.marlin_app_settings.bind ("single-click",
+            Marlin.app_settings.bind ("single-click",
                                                              this, "single_click_mode", SettingsBindFlags.GET);
-            slot.window.marlin_app.marlin_app_settings.bind ("show-remote-thumbnails",
+            Marlin.app_settings.bind ("show-remote-thumbnails",
                                                              this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            slot.window.marlin_app.marlin_app_settings.bind ("hide-local-thumbnails",
+            Marlin.app_settings.bind ("hide-local-thumbnails",
                                                              this, "hide_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
@@ -396,13 +395,13 @@ namespace FM {
             insert_action_group ("common", common_actions);
 
             action_set_state (background_actions, "show-hidden",
-                              slot.window.marlin_app.marlin_app_settings.get_boolean ("show-hiddenfiles"));
+                              Marlin.app_settings.get_boolean ("show-hiddenfiles"));
 
             action_set_state (background_actions, "show-remote-thumbnails",
-                              slot.window.marlin_app.marlin_app_settings.get_boolean ("show-remote-thumbnails"));
+                              Marlin.app_settings.get_boolean ("show-remote-thumbnails"));
 
             action_set_state (background_actions, "hide-local-thumbnails",
-                              slot.window.marlin_app.marlin_app_settings.get_boolean ("hide-local-thumbnails"));
+                              Marlin.app_settings.get_boolean ("hide-local-thumbnails"));
         }
 
         public void zoom_in () {
