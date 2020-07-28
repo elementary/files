@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-28 20:01+0000\n"
-"PO-Revision-Date: 2020-07-24 12:12+0000\n"
+"PO-Revision-Date: 2020-07-28 23:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,10 +81,8 @@ msgstr ""
 "ニューからブックマークできるように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr "リスト表示の場合でも、ファイル情報オーバーレイが表示されるように変更"
+msgstr "リスト表示の場合に、フォルダー内の項目数を表示するように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
@@ -97,7 +95,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited."
-msgstr ""
+msgstr "プロパティーウィンドウ: ファイル名が編集できない場合でも、コピーはできるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 #: data/io.elementary.files.appdata.xml.in.in:85
@@ -107,15 +105,15 @@ msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr ""
+msgstr "Enter キーとほかのキーを同時に押した場合にクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "パスに \"~\" や \"..\" が含まれる場合のパスバーの処理を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Filechooser pathbar no longer crashes when invoked from a flatpak"
-msgstr ""
+msgstr "ファイル選択ダイアログを Flatpak アプリから呼び出し、パスバーにポインターを移動すると、クラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid ""
@@ -175,7 +173,7 @@ msgstr "Ctrl + V を使用して、選択したフォルダーの中に貼り付
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Show file info overlay in List View as well"
-msgstr "リスト表示の場合でも、ファイル情報オーバーレイが表示されるように変更"
+msgstr "リスト表示の場合でも、ファイル情報オーバーレイを表示するように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Traverse search results with Tab key"
