@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-21 17:13+0000\n"
-"PO-Revision-Date: 2020-07-15 23:12+0000\n"
+"PO-Revision-Date: 2020-07-28 14:12+0000\n"
 "Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,6 +81,8 @@ msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
+"Artık yerel olarak bağlanmış MTP ve PTP cihazlarının yanı sıra ağ "
+"konumlarındaki küçük resimleri varsayılan olarak gösterir"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid ""
@@ -339,61 +341,66 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Improve MTP support"
-msgstr ""
+msgstr "MTP desteği geliştirildi"
 
 #: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Various tagging feature refinements"
-msgstr ""
+msgstr "Çeşitli etiketleme özelliği iyileştirmeleri"
 
 #: data/io.elementary.files.appdata.xml.in.in:191
 msgid "Keyboard navigation improvements"
-msgstr ""
+msgstr "Klavye ile gezinme geliştirmeleri"
 
 #: data/io.elementary.files.appdata.xml.in.in:192
 msgid "Symlink copy and paste fixes"
-msgstr ""
+msgstr "Symlink kopyalama ve yapıştırma düzeltmeleri"
 
 #: data/io.elementary.files.appdata.xml.in.in:193
 msgid "Avoid crash when Templates folder is null"
-msgstr ""
+msgstr "Şablonlar klasörü boşken çökmekten kaçın"
 
 #: data/io.elementary.files.appdata.xml.in.in:194
 msgid "Reduce memory footprint of FileChooserDialog"
-msgstr ""
+msgstr "FileChooserDialog'un bellek miktarı azaltıldı"
 
 #: data/io.elementary.files.appdata.xml.in.in:195
 msgid "Avoid crash when selecting image file in some situations"
-msgstr ""
+msgstr "Bazı durumlarda görüntü dosyasını seçerken çökmekten kaçınıldı"
 
 #: data/io.elementary.files.appdata.xml.in.in:196
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
 msgstr ""
+"Ağ dosyalarını çıkarılabilir depolama birimine kopyalarken kapatılamaz "
+"ilerleme penceresi sorunu düzeltildi"
 
 #: data/io.elementary.files.appdata.xml.in.in:197
 msgid "Fix drag and drop after double clicking a blank area"
-msgstr ""
+msgstr "Boş bir alanı çift tıklattıktan sonra sürükleyip bırakmayı düzeltin"
 
 #: data/io.elementary.files.appdata.xml.in.in:198
 msgid "Avoid crash while scrolling over view switcher"
-msgstr ""
+msgstr "Görünüm değiştiriciyi kaydırırken çökmekten kaçının"
 
 #: data/io.elementary.files.appdata.xml.in.in:199
 msgid "Avoid possible crash in some copy and paste situations"
-msgstr ""
+msgstr "Bazı kopyalama ve yapıştırma durumlarında olası çökmelerden kaçının"
 
 #: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+"Simge görünümünde belirli dosyaları seçmek için klavye gezinme düzeltmesi"
 
 #: data/io.elementary.files.appdata.xml.in.in:208
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
+"Arama yer tutucu metin stilini sabit kodlamamak karanlık tema sorununu "
+"düzeltiyor"
 
 #: data/io.elementary.files.appdata.xml.in.in:216
 msgid "Minor spacing adjustments to location bar"
-msgstr ""
+msgstr "Konum çubuğunda küçük boşluk ayarlamaları"
 
 #: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Fix F2 renaming behavior"
