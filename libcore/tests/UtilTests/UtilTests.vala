@@ -22,17 +22,78 @@
 void add_file_utils_tests () {
     /* Sanitize path */
     Test.add_func ("/FileUtils/sanitize_null_abs_path", () => {
-        assert (PF.FileUtils.sanitize_path (null, null) == "");
+        assert (PF.FileUtils.sanitize_path (null, null, false) == "");
     });
 
     Test.add_func ("/FileUtils/sanitize_zero_length_abs_path", () => {
-        assert (PF.FileUtils.sanitize_path ("", null) == "");
+        assert (PF.FileUtils.sanitize_path ("", null, false) == "");
 
     });
 
     Test.add_func ("/FileUtils/sanitize_null_rel_path", () => {
-        string cp = "file://home";
-        assert (PF.FileUtils.sanitize_path (null, cp) == cp);
+        string cp = "file:///home";
+        assert (PF.FileUtils.sanitize_path (null, cp, true) == cp);
+    });
+
+    Test.add_func ("/FileUtils/sanitize_null_rel_path_strip", () => {
+        string cp = "file:///home";
+        assert (PF.FileUtils.sanitize_path (null, cp, false) == "/home");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_tilde", () => {
+        string cp = "file:///usr/share";
+        /* In this case we will strip off the file:// prefix */
+        assert (PF.FileUtils.sanitize_path ("~/", cp, false) == PF.UserUtils.get_real_user_home ());
+    });
+
+    Test.add_func ("/FileUtils/sanitize_double_dot", () => {
+        string cp = "file:///usr/share";
+        assert (PF.FileUtils.sanitize_path ("../", cp) == "file:///usr");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_double_dot_remote", () => {
+        string cp = "afp://user@server/root/folder/subfolder";
+        assert (PF.FileUtils.sanitize_path ("../", cp) == "afp://user@server/root/folder");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_single_dot", () => {
+        string cp = "file:///usr/share";
+        assert (PF.FileUtils.sanitize_path ("./", cp) == "file:///usr/share");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_ignore_embedded_single_dot", () => {
+        string cp = "";
+        assert (PF.FileUtils.sanitize_path ("/home/./user", cp) == "file:///home/./user");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_ignore_embedded_double_dot_strip", () => {
+        string cp = "";
+        assert (PF.FileUtils.sanitize_path ("file:///home/../usr", cp, false) == "/home/../usr");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_ignore_remote_embedded_tilde_strip", () => {
+        string cp = "";
+        assert (PF.FileUtils.sanitize_path ("smb://home/~/usr", cp, false) == "smb://home/~/usr");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_network_double_dot", () => {
+        string cp = "network://";
+        assert (PF.FileUtils.sanitize_path ("../", cp) == "network://");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_remove_excess_slash1", () => {
+        string cp = "network:///";
+        assert (PF.FileUtils.sanitize_path ("", cp) == "network://");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_remove_excess_slash2", () => {
+        string p = "home//Documents";
+        assert (PF.FileUtils.sanitize_path (p, null, false) == "home/Documents");
+    });
+
+    Test.add_func ("/FileUtils/sanitize_remove_excess_slash3", () => {
+        string p = "file:////home/Documents";
+        assert (PF.FileUtils.sanitize_path (p, null) == "file:///home/Documents");
     });
 
     /* Get file for path */

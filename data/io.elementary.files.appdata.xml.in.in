@@ -67,6 +67,7 @@
         </ul>
         <p>Fixes:</p>
         <ul>
+          <li>Fix pathbar handling of "~" and ".." in path</li>
           <li>Filechooser pathbar no longer crashes when invoked from a flatpak</li>
         </ul>
       </description>
