@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 17:11+0000\n"
+"POT-Creation-Date: 2020-07-28 17:52+0000\n"
 "PO-Revision-Date: 2020-07-24 12:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -1082,25 +1082,25 @@ msgstr "לא ניתן לאתר את המיקום המקורי של „%s” "
 msgid "The item cannot be restored from trash"
 msgstr "לא ניתן לשחזר את הפריט מהאשפה"
 
-#: libcore/FileUtils.vala:451
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "לא ניתן לשנות את השם ל־‚%s’"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:540
+#: libcore/FileUtils.vala:561
 #, c-format
 msgid "Today at %s"
 msgstr "היום ב־%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:548
+#: libcore/FileUtils.vala:569
 #, c-format
 msgid "Yesterday at %s"
 msgstr "אתמול ב־%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:556
+#: libcore/FileUtils.vala:577
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ב־%s"

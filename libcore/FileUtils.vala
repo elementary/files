@@ -57,11 +57,11 @@ namespace PF.FileUtils {
         }
     }
 
-    public string get_parent_path_from_path (string path) {
+    public string get_parent_path_from_path (string path, bool include_file_protocol = true) {
         /* We construct the parent path rather than use File.get_parent () as the latter gives odd
          * results for some gvfs files.
          */
-        string parent_path = construct_parent_path (path);
+        string parent_path = construct_parent_path (path, include_file_protocol);
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.SFTP_URI) {
 
@@ -161,7 +161,7 @@ namespace PF.FileUtils {
         }
     }
 
-    private string construct_parent_path (string path) {
+    private string construct_parent_path (string path, bool include_file_protocol) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
         }
@@ -175,7 +175,7 @@ namespace PF.FileUtils {
         }
         sb.erase (last_separator, -1);
         string parent_path = sb.str + Path.DIR_SEPARATOR_S;
-        return sanitize_path (parent_path);
+        return sanitize_path (parent_path, null, include_file_protocol);
     }
 
     public bool path_has_parent (string new_path) {
@@ -195,27 +195,35 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? p, string? _cp = null, bool include_file_protocol = true) {
+
+    public string sanitize_path (string? input_uri,
+                                 string? input_current_uri = null,
+                                 bool include_file_protocol = true) {
+        string unsanitized_uri;
+        string unsanitized_current_uri;
         string path = "";
         string scheme = "";
-        string cp = "";
         string? current_path = null;
         string? current_scheme = null;
 
-        if (_cp != null) {
-            cp = Uri.unescape_string (_cp, null);
+        if (input_uri == null || input_uri == "") {
+            unsanitized_uri = input_current_uri; /* Sanitize current path */
+            unsanitized_current_uri = "";
+        } else {
+            unsanitized_uri = input_uri;
+            unsanitized_current_uri = input_current_uri;
         }
 
-        if (p == null || p == "") {
-            return cp ?? "";
+        if (unsanitized_uri == null || unsanitized_uri == "") {
+            return "";
         }
 
-        string? unescaped_p = Uri.unescape_string (p, null);
-        if (unescaped_p == null) {
-            unescaped_p = p;
+        string? unescaped_uri = Uri.unescape_string (unsanitized_uri, null);
+        if (unescaped_uri == null) {
+            unescaped_uri = unsanitized_uri;
         }
 
-        split_protocol_from_path (unescaped_p, out scheme, out path);
+        split_protocol_from_path (unescaped_uri, out scheme, out path);
 
         path = path.strip ().replace ("//", "/");
         // special case for empty path, adjust as root path
@@ -224,11 +232,11 @@ namespace PF.FileUtils {
         }
 
         StringBuilder sb = new StringBuilder (path);
-        if (cp != null) {
-            split_protocol_from_path (cp, out current_scheme, out current_path);
+        if (unsanitized_current_uri != null) {
+            split_protocol_from_path (unsanitized_current_uri, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
 
-            if (scheme == "" && path.length > 0) {
+            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) && path.length > 0) {
                 string [] paths = path.split ("/", 2);
                 switch (paths[0]) {
                     // ignore home documents
@@ -238,17 +246,23 @@ namespace PF.FileUtils {
                         break;
                     // process special parent dir
                     case "..":
-                        sb.assign (current_scheme);
-                        sb.append (Path.DIR_SEPARATOR_S);
-                        sb.append (get_parent_path_from_path (current_path));
+                        if (current_scheme != "" && current_scheme != Marlin.ROOT_FS_URI) {
+                            /* We need to append the current scheme later */
+                            scheme = current_scheme;
+                        }
+
+                        /* We do not want the file:// prefix returned */
+                        sb.assign (get_parent_path_from_path (current_path, false));
+
                         if (paths.length > 1) {
                             sb.append (Path.DIR_SEPARATOR_S);
                             sb.append (paths[1]);
                         }
+
                         break;
                     // process current dir
                     case ".":
-                        sb.assign (cp);
+                        sb.assign (current_path); //We do not want the scheme at this point
                         if (paths.length > 1) {
                             sb.append (Path.DIR_SEPARATOR_S);
                             sb.append (paths[1]);
@@ -256,7 +270,7 @@ namespace PF.FileUtils {
                         break;
                     // process directory without root
                     default:
-                        sb.assign (cp);
+                        sb.assign (current_path); //We do not want the scheme at this point
                         sb.append (Path.DIR_SEPARATOR_S);
                         sb.append (paths[0]);
                         if (paths.length > 1) {
@@ -269,7 +283,13 @@ namespace PF.FileUtils {
         }
 
         if (path.length > 0) {
-            if (scheme == "" && (path.has_prefix ("~/") || path == "~")) {
+            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) &&
+                (path.has_prefix ("~/") || path.has_prefix ("/~") || path == "~")) {
+
+                if (path.has_prefix ("/")) {
+                    sb.erase (0, 1);
+                }
+
                 sb.erase (0, 1);
                 sb.prepend (PF.UserUtils.get_real_user_home ());
             }
@@ -290,6 +310,7 @@ namespace PF.FileUtils {
 
                 new_path = new_path.replace ("///", "//");
             }
+
             new_path = new_path.replace ("ssh:", "sftp:");
 
             if (path == "/" && !can_browse_scheme (scheme)) {
