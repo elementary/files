@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 00:43+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-07-29 18:40+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -607,7 +607,7 @@ msgstr "Dispositius"
 
 #: src/View/Sidebar.vala:657
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Dispositius d’emmagatzematge interns i connectats"
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -615,7 +615,7 @@ msgstr "Xarxa"
 
 #: src/View/Sidebar.vala:787
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Dispositius i llocs disponibles a través d'una xarxa"
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
