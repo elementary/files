@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:48+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
@@ -646,22 +646,27 @@ msgstr "Kapcsolódás a kiszolgálóhoz"
 msgid "Connect to a network server"
 msgstr "Kapcsolódás egy hálózati fájl szerverhez"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s szabad ennyiből: %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S, összesen: %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Hiba a(z) %s kötet csatolása közben"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "A(z) %s nem indítható"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 
@@ -2016,6 +2021,9 @@ msgstr "Összes visszaállítása"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " kiválasztva"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s szabad ennyiből: %s)"
 
 #~ msgid "Bookmark"
 #~ msgstr "Könyvjelző"
