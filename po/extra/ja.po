@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:57+0000\n"
-"PO-Revision-Date: 2020-07-28 23:01+0000\n"
+"PO-Revision-Date: 2020-07-30 09:12+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,15 +76,11 @@ msgstr "改善点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
-msgstr ""
+msgstr "\"パーソナル\" と \"ブックマーク\" を、\"お気に入り\" に名称変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Bookmark menu option for network mounts in sidebar"
 msgid "Favorite menu option for network mounts in sidebar"
-msgstr ""
-"ネットワーク上のマウントされた場所に対しても、サイドバーのコンテキストメ"
-"ニューからブックマークできるように変更"
+msgstr "ネットワーク上のマウントされた場所に対しても、サイドバーのコンテキストメニューからお気に入りに登録できるように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Show folder item count in List View"
@@ -99,21 +95,13 @@ msgstr ""
 "もデフォルトでサムネイルを表示するように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
-#, fuzzy
-#| msgid ""
-#| "Properties window: Allow the filename to be copied when it cannot be "
-#| "edited."
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
-msgstr ""
-"プロパティーウィンドウ: ファイル名が編集できない場合でも、コピーはできるよう"
-"に修正"
+msgstr "プロパティーウィンドウ: ファイル名が編集できない場合でも、コピーはできるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "ディスク容量バーのスタイルを改善"
+msgstr "サイドバーのデバイスに対するツールチップの書式を改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:87
@@ -130,12 +118,8 @@ msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr "パスに \"~\" や \"..\" が含まれる場合のパスバーの処理を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
-#, fuzzy
-#| msgid "Filechooser pathbar no longer crashes when invoked from a flatpak"
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
-msgstr ""
-"ファイル選択ダイアログを Flatpak アプリから呼び出し、パスバーにポインターを移"
-"動すると、クラッシュする不具合を修正"
+msgstr "ファイル選択ダイアログを Flatpak アプリから呼び出し、パスバーにポインターを移動すると、クラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
