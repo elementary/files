@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:48+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -650,22 +650,27 @@ msgstr "Ühendu serveriga"
 msgid "Connect to a network server"
 msgstr "Võrgus oleva failiserveriga ühendamine…"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s vaba %s-st)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S %S-st"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s käivitamine ebaõnnestus"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Tühjenda prügikast"
 
@@ -2033,6 +2038,9 @@ msgstr "Taasta kõik"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " on valitud"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s vaba %s-st)"
 
 #~ msgid "Bookmark"
 #~ msgstr "Lisa järjehoidjatesse"

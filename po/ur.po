@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:48+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -643,22 +643,27 @@ msgstr "سرور سِے رابطہ قائم کریں"
 msgid "Connect to a network server"
 msgstr "کسی نیٹ ورک فائل سرور سے جڑیں"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s خالی جگہ %s میں سے)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "‏%S کا %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "‏%s کو شروع کرنے سے قاصر"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_ردی خالی کریں"
 
@@ -2017,6 +2022,9 @@ msgstr "تمام واپس لائیں"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " منتخب کردہ"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s خالی جگہ %s میں سے)"
 
 #~ msgid "Bookmark"
 #~ msgstr "بک مارک کریں"
