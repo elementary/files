@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2017-06-11 14:52+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -413,8 +413,8 @@ msgid "Paste"
 msgstr "Вставити"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Закладка"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -598,13 +598,13 @@ msgstr "Файл не знайдено"
 msgid "The file selected no longer exists."
 msgstr "Виділений файл більше не існує."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Особисте"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ваші загальні місця та закладки"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -627,16 +627,16 @@ msgid "Devices"
 msgstr "Пристрої"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Ваші локальні розділи та пристрої"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Мережа"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Ваші мережеві місця"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -1989,10 +1989,6 @@ msgstr "В цій теці"
 msgid "Below This Folder"
 msgstr "В цій теці"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Закладки"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2063,6 +2059,24 @@ msgstr "Відновити все"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " обрано"
+
+#~ msgid "Bookmark"
+#~ msgstr "Закладка"
+
+#~ msgid "Personal"
+#~ msgstr "Особисте"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ваші загальні місця та закладки"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Закладки"
+
+#~ msgid "Your network places"
+#~ msgstr "Ваші мережеві місця"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Ваші локальні розділи та пристрої"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Видалити %d скопійованих елементів"

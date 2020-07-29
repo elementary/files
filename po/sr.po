@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2016-09-16 09:17+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -401,7 +401,7 @@ msgid "Paste"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
+msgid "Add to Favorites"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
@@ -591,13 +591,13 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Лично"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ваша уобичајена места и забелешке"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -620,16 +620,16 @@ msgid "Devices"
 msgstr "Уређаји"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Ваше локалне партиције и уређаји"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Мрежа"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Ваша мрежна места"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -1971,10 +1971,6 @@ msgstr ""
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr ""
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
@@ -2044,6 +2040,18 @@ msgstr " одабрано"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " одабрано"
+
+#~ msgid "Personal"
+#~ msgstr "Лично"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ваша уобичајена места и забелешке"
+
+#~ msgid "Your network places"
+#~ msgstr "Ваша мрежна места"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Ваше локалне партиције и уређаји"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Обришите %d копиране ставке"

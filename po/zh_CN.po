@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -390,8 +390,8 @@ msgid "Paste"
 msgstr "粘贴"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "添加书签"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -569,13 +569,13 @@ msgstr "文件未找到"
 msgid "The file selected no longer exists."
 msgstr "选中的文件已不存在。"
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "个人"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "您的常用位置和书签"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -598,16 +598,16 @@ msgid "Devices"
 msgstr "设备"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "您的本地分区和设备"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "网络"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "您的网络位置"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -1868,10 +1868,6 @@ msgstr "在此文件夹中"
 msgid "Below This Folder"
 msgstr "在此文件夹下"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "书签"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "最近"
@@ -1939,6 +1935,24 @@ msgstr "恢复选中"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "删除选中"
+
+#~ msgid "Bookmark"
+#~ msgstr "添加书签"
+
+#~ msgid "Personal"
+#~ msgstr "个人"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "您的常用位置和书签"
+
+#~ msgid "Bookmarks"
+#~ msgstr "书签"
+
+#~ msgid "Your network places"
+#~ msgstr "您的网络位置"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "您的本地分区和设备"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "删除 %d 个已复制项目"

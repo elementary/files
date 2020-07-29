@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2019-07-03 01:28+0000\n"
 "Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -403,8 +403,8 @@ msgid "Paste"
 msgstr "Incolla"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Segnalibro"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -585,13 +585,13 @@ msgstr "File non trovato"
 msgid "The file selected no longer exists."
 msgstr "Il file selezionato non esiste più."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Personali"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Segnalibri e risorse"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -614,16 +614,16 @@ msgid "Devices"
 msgstr "Dispositivi"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Partizioni locali e dispositivi"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Rete"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Risorse di rete"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -1949,10 +1949,6 @@ msgstr "In questa cartella"
 msgid "Below This Folder"
 msgstr "In questa cartella"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Segnalibri"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Utilizzati di recente"
@@ -2020,6 +2016,24 @@ msgstr "Ripristina la selezione"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Elimina la selezione"
+
+#~ msgid "Bookmark"
+#~ msgstr "Segnalibro"
+
+#~ msgid "Personal"
+#~ msgstr "Personali"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Segnalibri e risorse"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Segnalibri"
+
+#~ msgid "Your network places"
+#~ msgstr "Risorse di rete"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Partizioni locali e dispositivi"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Elimina %d elementi copiati"

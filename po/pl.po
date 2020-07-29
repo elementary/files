@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2019-02-09 11:12+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
@@ -411,8 +411,8 @@ msgid "Paste"
 msgstr "Wklej"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Zakładka"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -593,13 +593,13 @@ msgstr "Plik nie istnieje"
 msgid "The file selected no longer exists."
 msgstr "Wybrany plik nie istnieje."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Osobiste"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Udostępnia często używane położenia i zakładki"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -622,16 +622,16 @@ msgid "Devices"
 msgstr "Nośniki"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Udostępnia lokalne wolumeny i nośniki"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Sieć"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Udostępnia położenia sieciowe"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -1976,10 +1976,6 @@ msgstr "W tym katalogu"
 msgid "Below This Folder"
 msgstr "Poniżej tego katalogu"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Zakładki"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Ostatnio używane"
@@ -2047,6 +2043,24 @@ msgstr "Przywróć zaznaczone"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Usuń zaznaczone"
+
+#~ msgid "Bookmark"
+#~ msgstr "Zakładka"
+
+#~ msgid "Personal"
+#~ msgstr "Osobiste"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Udostępnia często używane położenia i zakładki"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Zakładki"
+
+#~ msgid "Your network places"
+#~ msgstr "Udostępnia położenia sieciowe"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Udostępnia lokalne wolumeny i nośniki"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Usuń %d skopiowanych elementów"

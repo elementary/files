@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 18:36+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -412,8 +412,8 @@ msgid "Paste"
 msgstr "Lipeşte"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Favorit"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -597,13 +597,13 @@ msgstr "Fișierul nu a fost găsit"
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Personal"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Locurile tale comune si semnee de carte"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -626,16 +626,16 @@ msgid "Devices"
 msgstr "Dispozitive"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Partițiile și dispozitivele tale locale"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Reţea"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Locurile tale în rețea"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2000,10 +2000,6 @@ msgstr "În acest dosar"
 msgid "Below This Folder"
 msgstr "În acest dosar"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Favorite"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2074,6 +2070,24 @@ msgstr "Restaurează toate"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " selectat"
+
+#~ msgid "Bookmark"
+#~ msgstr "Favorit"
+
+#~ msgid "Personal"
+#~ msgstr "Personal"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Locurile tale comune si semnee de carte"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Favorite"
+
+#~ msgid "Your network places"
+#~ msgstr "Locurile tale în rețea"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Partițiile și dispozitivele tale locale"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Sterge %d elementele copiate"
