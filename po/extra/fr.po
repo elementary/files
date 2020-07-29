@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-28 20:01+0000\n"
-"PO-Revision-Date: 2020-07-24 12:12+0000\n"
+"PO-Revision-Date: 2020-07-29 18:40+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -77,11 +77,8 @@ msgstr ""
 "Option de menu favoris pour les montages de réseau dans la barre latérale"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr ""
-"Affichage des informations sur les fichiers dans la vue en liste également"
+msgstr "Affichage du nombre de dossiers dans la vue en liste"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
@@ -95,6 +92,8 @@ msgstr ""
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited."
 msgstr ""
+"Fenêtre des propriétés : Autorisation de la copie du nom de fichier lorsque "
+"celui-ci ne peut pas être modifié."
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 #: data/io.elementary.files.appdata.xml.in.in:85
@@ -105,14 +104,18 @@ msgstr "Corrections :"
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr ""
+"Correction d'un plantage lors de l'appui sur la touche Entrée et une autre "
+"touche à la fois"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "Correction de la gestion de « ~ » et « .. » dans le chemin"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Filechooser pathbar no longer crashes when invoked from a flatpak"
 msgstr ""
+"La barre de chemin du sélecteur de fichiers ne plante plus lorsqu'elle est "
+"appelée depuis une application flatpak"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid ""
