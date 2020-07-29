@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2017-08-16 12:17+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://weblate.elementary.io/projects/files/files/"
@@ -413,7 +413,7 @@ msgstr "Otvori s"
 msgid "Paste"
 msgstr "Zalijepi"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -739,10 +739,6 @@ msgstr "_Odmontiraj"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Izbaci"
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Zabilješka"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -2057,6 +2053,9 @@ msgstr "Vrati sve"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " odabrano"
+
+#~ msgid "Bookmark"
+#~ msgstr "Zabilješka"
 
 #~ msgid "Personal"
 #~ msgstr "Osobno"

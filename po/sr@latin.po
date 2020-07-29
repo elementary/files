@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
@@ -399,7 +399,7 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -718,10 +718,6 @@ msgstr ""
 
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
-msgstr ""
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
 msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135

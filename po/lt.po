@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -401,7 +401,7 @@ msgstr "Atverti naudojant"
 msgid "Paste"
 msgstr "Įdėti"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -723,10 +723,6 @@ msgstr "_Atjungti"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Išstumti"
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Žymelė"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -2057,6 +2053,9 @@ msgstr "Atkurti pažymėtus"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Ištrinti pažymėtus"
+
+#~ msgid "Bookmark"
+#~ msgstr "Žymelė"
 
 #~ msgid "Personal"
 #~ msgstr "Asmeniniai"
