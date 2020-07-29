@@ -581,7 +581,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
         iter = add_category (PlaceType.BOOKMARKS_CATEGORY,
                              _("Favorites"),
-                             _("Common places, saved folders and files"));
+                             _("Common places plus saved folders and files"));
 
         /* Add Home BUILTIN */
         try {
