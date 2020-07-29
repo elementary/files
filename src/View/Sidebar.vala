@@ -784,7 +784,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* ADD NETWORK CATEGORY */
             iter = add_category (PlaceType.NETWORK_CATEGORY,
                                  _("Network"),
-                                 _("Remote storage available on the network"));
+                                 _("Devices and places available via a network"));
 
             network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
 
