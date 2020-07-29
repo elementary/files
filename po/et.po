@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -629,8 +629,8 @@ msgid "Network"
 msgstr "Võrk"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Sinu võrgu asukohad"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2037,6 +2037,9 @@ msgstr "Taasta kõik"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " on valitud"
+
+#~ msgid "Your network places"
+#~ msgstr "Sinu võrgu asukohad"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Kohalikud partitsioonid ja seadmed"

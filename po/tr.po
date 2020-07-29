@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2020-06-23 21:11+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -613,8 +613,8 @@ msgid "Network"
 msgstr "Ağ"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Ağ bağlantılarınız"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -1996,6 +1996,9 @@ msgstr "Seçilenleri Geri Yükle"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Seçilenleri Sil"
+
+#~ msgid "Your network places"
+#~ msgstr "Ağ bağlantılarınız"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Yerel bölüm ve aygıtlarınız"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2017-06-11 14:52+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -635,8 +635,8 @@ msgid "Network"
 msgstr "Мережа"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Ваші мережеві місця"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2063,6 +2063,9 @@ msgstr "Відновити все"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " обрано"
+
+#~ msgid "Your network places"
+#~ msgstr "Ваші мережеві місця"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Ваші локальні розділи та пристрої"
