@@ -580,8 +580,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         store.clear ();
 
         iter = add_category (PlaceType.BOOKMARKS_CATEGORY,
-                             _("Personal"),
-                             _("Your common places and bookmarks"));
+                             _("Favorites"),
+                             _("Common places plus saved folders and files"));
 
         /* Add Home BUILTIN */
         try {
