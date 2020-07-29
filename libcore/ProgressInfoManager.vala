@@ -41,11 +41,13 @@ public class PF.Progress.InfoManager : GLib.Object {
         }
 
         progress_infos.add (info);
-        info.finished.connect (() => {
-            progress_infos.remove (info);
-        });
-
+        info.finished.connect_after (on_info_finished);
         new_progress_info (info);
+    }
+
+    private void on_info_finished (Info info) {
+        info.finished.disconnect (on_info_finished);
+        progress_infos.remove (info);
     }
 
     public Gee.LinkedList<PF.Progress.Info> get_all_infos () {

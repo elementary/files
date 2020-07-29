@@ -35,7 +35,8 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 [DBus (name = "io.elementary.files.db")]
 public class MarlinTags : Object {
-
+    private const string CMD = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) " +
+                               "VALUES ('%s', '%s', %s, %s, '%s');\n";
     protected static Sqlite.Database db;
 
     public MarlinTags () {
@@ -121,7 +122,6 @@ public class MarlinTags : Object {
 
     public async bool record_uris (Variant[] locations) throws GLib.DBusError, GLib.IOError {
         var sql = "";
-        var cmd = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) VALUES ('%s', '%s', %s, %s, '%s');\n";
 
         foreach (var location_variant in locations) {
             VariantIter iter = location_variant.iterator ();
@@ -132,7 +132,7 @@ public class MarlinTags : Object {
             var content_type = iter.next_value ().get_string ();
             var modified_time = iter.next_value ().get_string ();
             var color = iter.next_value ().get_string ();
-            sql += cmd.printf (uri, content_type, color, modified_time, directory);
+            sql += CMD.printf (uri, content_type, color, modified_time, directory);
         }
 
         int rc = db.exec (sql, null, null);

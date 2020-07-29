@@ -60,12 +60,15 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 actionbar = new Gtk.ActionBar ();
                 actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
 
-                restore_button = new Gtk.Button.with_label (_(RESTORE_ALL));
-                restore_button.valign = Gtk.Align.CENTER;
+                restore_button = new Gtk.Button.with_label (_(RESTORE_ALL)) {
+                    valign = Gtk.Align.CENTER
+                };
 
-                delete_button = new Gtk.Button.with_label (_(DELETE_ALL));
-                delete_button.margin = 6;
-                delete_button.margin_start = 0;
+                delete_button = new Gtk.Button.with_label (_(DELETE_ALL)) {
+                    margin = 6,
+                    margin_start = 0
+                };
+
                 delete_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
@@ -86,7 +89,8 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 
                 delete_button.clicked.connect (() => {
                     if (delete_button.label == _(DELETE_ALL)) {
-                        Marlin.FileOperations.empty_trash (delete_button);
+                        var job = new Marlin.FileOperations.EmptyTrashJob (window);
+                        job.empty_trash.begin ();
                     } else {
                         GLib.List<GLib.File> to_delete = null;
                         foreach (GOF.File gof in view.get_selected_files ()) {

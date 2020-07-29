@@ -309,7 +309,7 @@ public class CustomFileChooserDialog : Object {
     private void setup_filter_box () {
         var filters = chooser_dialog.list_filters ();
 
-        if (filters.length () > 0) {
+        if (filters.length () > 0) { // Can be assumed to be limited in length
             string? current_filter_name = null;
             var current_filter = chooser_dialog.get_filter ();
             if (current_filter != null) {

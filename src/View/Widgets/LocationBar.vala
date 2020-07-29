@@ -106,7 +106,7 @@ namespace Marlin.View.Chrome {
             if (exit_navigate) {
                 escape ();
             } else {
-                bread.set_entry_text (bread.get_breadcrumbs_path ());
+                bread.set_entry_text (bread.get_breadcrumbs_path (false));
                 enter_navigate_mode ();
             }
         }
@@ -213,7 +213,7 @@ namespace Marlin.View.Chrome {
             bread.action_icon_name = null;
         }
 
-        public bool enter_search_mode () {
+        public bool enter_search_mode (string term = "") {
             if (!sensitive) {
                 return false;
             }
@@ -221,7 +221,7 @@ namespace Marlin.View.Chrome {
             if (!search_mode) {
                 /* Initialise search mode but do not search until first character has been received */
                 if (set_focussed ()) {
-                    bread.set_entry_text ("");
+                    bread.set_entry_text (term);
                 } else {
                     return false;
                 }
@@ -295,6 +295,7 @@ namespace Marlin.View.Chrome {
                 show_placeholder ();
                 show_search_icon ();
             } else {
+                hide_placeholder ();
                 hide_search_icon ();
             }
         }

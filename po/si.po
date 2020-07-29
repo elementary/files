@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-28 17:34+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2018-06-10 00:11+0000\n"
 "Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
 "Language-Team: Sinhala <https://weblate.elementary.io/projects/files/files/"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "නව කවුළුව"
 
@@ -50,25 +50,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:129 src/ProgressUIHandler.vala:192
 msgid "File Operations"
 msgstr ""
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:192
+#: src/ProgressUIHandler.vala:186
 #, c-format
 msgid "Completed %s"
 msgstr ""
 
-#: src/ProgressUIHandler.vala:195
+#: src/ProgressUIHandler.vala:189
 msgid "All file operations have ended"
 msgstr ""
 
-#: src/ProgressUIHandler.vala:243
+#: src/ProgressUIHandler.vala:237
 msgid "Show Copy Dialog"
 msgstr ""
 
-#: src/ProgressUIHandler.vala:255
+#: src/ProgressUIHandler.vala:249
 msgid "Cancel All In-progress Actions"
 msgstr ""
 
@@ -76,150 +76,150 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:76 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:135
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:156
-#: src/Dialogs/AbstractPropertiesDialog.vala:159
-#: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:439 src/Dialogs/PropertiesWindow.vala:478
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:42
+#: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1967 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:225
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:246
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:250
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:270 src/Dialogs/PropertiesWindow.vala:289
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:450
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:484
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:510 libcore/FileConflictDialog.vala:120
-#: libcore/FileConflictDialog.vala:148
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
+#: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:517 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:543
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:553
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:565
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:575
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:590
-#: src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/PropertiesWindow.vala:604
+#: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:600
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:631
-#: src/View/AbstractDirectoryView.vala:1929
+#: src/Dialogs/PropertiesWindow.vala:645
+#: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:651
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:1213
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1217
-#: src/Dialogs/PropertiesWindow.vala:1239
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -227,19 +227,19 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1222
+#: src/Dialogs/PropertiesWindow.vala:1236
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -247,7 +247,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr ""
@@ -256,36 +256,36 @@ msgstr ""
 msgid "Disk Properties"
 msgstr ""
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:645
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr ""
 
-#: src/Dialogs/VolumePropertiesWindow.vala:88
+#: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:285
+#: src/Utils/MimeActions.vala:283
 msgid "Multiple file types selected"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:286
+#: src/Utils/MimeActions.vala:284
 msgid "No single app can open all these types of file"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:313
+#: src/Utils/MimeActions.vala:311
 msgid "Failed to open files"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:323
+#: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:326
+#: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:543 src/View/Window.vala:553
+#: src/View/Window.vala:532 src/View/Window.vala:542
 msgid "(as Administrator)"
 msgstr ""
 
@@ -293,11 +293,11 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2157
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2169
 msgid "Size"
 msgstr ""
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2162
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2174
 msgid "Type"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
 msgstr ""
 
@@ -327,305 +327,317 @@ msgstr ""
 msgid "Failed to create the folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:819
-#: src/View/AbstractDirectoryView.vala:1126
+#: src/View/AbstractDirectoryView.vala:818
+#: src/View/AbstractDirectoryView.vala:1129
 msgid "Cannot execute this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:840
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:828
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:829
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:844
 msgid "Cannot open this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:857
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1575
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1576
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1865
+#: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1941
+#: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1949
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1954
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Bookmark"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1988
+#: src/View/AbstractDirectoryView.vala:1994
 msgid "Delete permanently"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1993
+#: src/View/AbstractDirectoryView.vala:1999
 msgid "Restore from Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2004
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Open Parent Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/AbstractDirectoryView.vala:2029
 msgid "Rename…"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2036
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2048
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Show Hidden Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Remote Thumbnails"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Hide Thumbnails"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Paste Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2164
 msgid "Name"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2179
 msgid "Date"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2172
+#: src/View/AbstractDirectoryView.vala:2184
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2199
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2195
+#: src/View/AbstractDirectoryView.vala:2207
 msgid "Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2213
 msgid "Empty File"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2251
+#: src/View/AbstractDirectoryView.vala:2264
 msgid "New"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2488
+#: src/View/AbstractDirectoryView.vala:2501
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2849
-#: src/View/AbstractDirectoryView.vala:3044
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2850
-#: src/View/AbstractDirectoryView.vala:3029
-#: src/View/AbstractDirectoryView.vala:3045
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3004
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3028
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
 msgid "Home"
 msgstr ""
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:408
 msgid "The network is unavailable"
 msgstr ""
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:413
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:415
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:416
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:420
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:434
 msgid "File not Found"
 msgstr ""
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:435
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:565
+#: src/View/Sidebar.vala:583
 msgid "Personal"
 msgstr ""
 
-#: src/View/Sidebar.vala:566
+#: src/View/Sidebar.vala:584
 msgid "Your common places and bookmarks"
 msgstr ""
 
-#: src/View/Sidebar.vala:585
+#: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
 msgstr ""
 
-#: src/View/Sidebar.vala:600
+#: src/View/Sidebar.vala:618
 msgid "View the list of recently used files"
 msgstr ""
 
-#: src/View/Sidebar.vala:626 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr ""
 
-#: src/View/Sidebar.vala:633
+#: src/View/Sidebar.vala:651
 msgid "Open the Trash"
 msgstr ""
 
-#: src/View/Sidebar.vala:638
+#: src/View/Sidebar.vala:656
 msgid "Devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:639
-msgid "Your local partitions and devices"
+#: src/View/Sidebar.vala:657
+msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:767 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr ""
 
-#: src/View/Sidebar.vala:768
-msgid "Your network places"
+#: src/View/Sidebar.vala:787
+msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:800
+#: src/View/Sidebar.vala:819
 msgid "Entire Network"
 msgstr ""
 
-#: src/View/Sidebar.vala:807
+#: src/View/Sidebar.vala:826
 msgid "Browse the contents of the network"
 msgstr ""
 
-#: src/View/Sidebar.vala:810
+#: src/View/Sidebar.vala:829
 msgid "Connect Server"
 msgstr ""
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:830
 msgid "Connect to a network server"
 msgstr ""
 
-#: src/View/Sidebar.vala:950
+#: src/View/Sidebar.vala:989
 #, c-format
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: src/View/Sidebar.vala:1443
+#: src/View/Sidebar.vala:1476
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1491
 #, c-format
 msgid "Unable to start %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1646 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr ""
 
@@ -693,16 +705,16 @@ msgstr ""
 msgid "_Eject"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr ""
 
@@ -710,12 +722,12 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:63
+#: src/View/Widgets/HeaderBar.vala:66
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:68
+#: src/View/Widgets/HeaderBar.vala:73
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
 msgstr ""
@@ -728,70 +740,70 @@ msgstr ""
 msgid "Searching…"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:216
+#: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:235
+#: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
 msgstr ""
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
 msgstr ""
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
 msgstr ""
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
 msgstr ""
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:298
+#: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
 msgstr ""
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
 msgstr ""
@@ -836,101 +848,101 @@ msgstr ""
 msgid "Secure WebDAV (HTTPS)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server Details"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:142
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:168
+#: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:170
+#: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:171
+#: libcore/ConnectServerDialog.vala:181
 msgid "Folder:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:173
+#: libcore/ConnectServerDialog.vala:183
 msgid "User Details"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:185
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:186
 msgid "Domain name:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:179
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:196
 msgid "Password:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:198
 msgid "Remember this password"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
-#: libcore/FileConflictDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/FileConflictDialog.vala:219
 msgid "Cancel"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:193
+#: libcore/ConnectServerDialog.vala:205
 msgid "Connect"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:200
+#: libcore/ConnectServerDialog.vala:214
 msgid "Continue"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:245
+#: libcore/ConnectServerDialog.vala:265
 msgid "Connecting…"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:364
+#: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
 msgstr ""
 
-#: libcore/DndHandler.vala:49
+#: libcore/DndHandler.vala:48
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr ""
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:97
 msgid "Move Here"
 msgstr ""
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:98
 msgid "Copy Here"
 msgstr ""
 
-#: libcore/DndHandler.vala:100
+#: libcore/DndHandler.vala:99
 msgid "Link Here"
 msgstr ""
 
@@ -938,146 +950,146 @@ msgstr ""
 msgid "File conflict"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:115
+#: libcore/FileConflictDialog.vala:122
 msgid "Original file"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:133 libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
 msgid "Last modified:"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:143
+#: libcore/FileConflictDialog.vala:161
 msgid "Replace with"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:171
+#: libcore/FileConflictDialog.vala:199
 msgid "Reset"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:181
+#: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:184
+#: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:186 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:187
+#: libcore/FileConflictDialog.vala:217
 msgid "Re_name"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:191
+#: libcore/FileConflictDialog.vala:221
 msgid "Keep Newest"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:194
+#: libcore/FileConflictDialog.vala:224
 msgid "Replace"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:340
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:341
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:313
+#: libcore/FileConflictDialog.vala:343
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:345
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:347
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:350
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:321
+#: libcore/FileConflictDialog.vala:351
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:352
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:325
+#: libcore/FileConflictDialog.vala:355
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:329
+#: libcore/FileConflictDialog.vala:359
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:331
+#: libcore/FileConflictDialog.vala:361
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:333
+#: libcore/FileConflictDialog.vala:363
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:389
 msgid "Merge"
 msgstr ""
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr ""
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr ""
 
-#: libcore/FileUtils.vala:443
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:532
+#: libcore/FileUtils.vala:561
 #, c-format
 msgid "Today at %s"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:538
+#: libcore/FileUtils.vala:569
 #, c-format
 msgid "Yesterday at %s"
 msgstr ""
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:544
+#: libcore/FileUtils.vala:577
 #, c-format
 msgid "%%A at %s"
 msgstr ""
@@ -1086,8 +1098,8 @@ msgstr ""
 msgid "Server did not respond within time limit"
 msgstr ""
 
-#: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
-#: libcore/ProgressInfo.vala:79
+#: libcore/ProgressInfo.vala:29 libcore/ProgressInfo.vala:30
+#: libcore/ProgressInfo.vala:31
 msgid "Preparing"
 msgstr ""
 
@@ -1139,81 +1151,108 @@ msgstr ""
 msgid "Open trash folder and restore manually"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:171
+#: libcore/FileOperations/EmptyTrashJob.vala:40
+msgid "Permanently delete all items from Trash?"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:41
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:44
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:45
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:104
+msgid "Emptying Trash"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:26
+#, c-format
+msgid "Unable to mount '%s'"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:150
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:180 libcore/marlin-file-operations.c:194
+#: libcore/marlin-file-operations.c:159 libcore/marlin-file-operations.c:173
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:193
+#: libcore/marlin-file-operations.c:172
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:205
+#: libcore/marlin-file-operations.c:184
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:281
+#: libcore/marlin-file-operations.c:260
 #, c-format
 msgid "Link to %s"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:285
+#: libcore/marlin-file-operations.c:264
 #, c-format
 msgid "Another link to %s"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:301
+#: libcore/marlin-file-operations.c:280
 #, c-format
 msgid "%'dst link to %s"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:305
+#: libcore/marlin-file-operations.c:284
 #, c-format
 msgid "%'dnd link to %s"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:309
+#: libcore/marlin-file-operations.c:288
 #, c-format
 msgid "%'drd link to %s"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:313
+#: libcore/marlin-file-operations.c:292
 #, c-format
 msgid "%'dth link to %s"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:505
+#: libcore/marlin-file-operations.c:484
 msgid " ("
 msgstr ""
 
-#: libcore/marlin-file-operations.c:513
+#: libcore/marlin-file-operations.c:492
 #, c-format
 msgid " (%'d"
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1075
+#: libcore/marlin-file-operations.c:1047
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1079
+#: libcore/marlin-file-operations.c:1051
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1224,36 +1263,18 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:1089
+#: libcore/marlin-file-operations.c:1061
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
-
-#: libcore/marlin-file-operations.c:1112
-msgid "Permanently delete all items from Trash?"
-msgstr ""
-
-#: libcore/marlin-file-operations.c:1113
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-
-#: libcore/marlin-file-operations.c:1116
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-
-#: libcore/marlin-file-operations.c:1117
-msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1151
+#: libcore/marlin-file-operations.c:1087
 #, c-format
 msgid "Permanently delete “%s”?"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1154
+#: libcore/marlin-file-operations.c:1090
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1261,39 +1282,39 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:1163
+#: libcore/marlin-file-operations.c:1099
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1197
+#: libcore/marlin-file-operations.c:1133
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:1202
+#: libcore/marlin-file-operations.c:1138
 msgid "Deleting files"
 msgstr ""
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1218
+#: libcore/marlin-file-operations.c:1153
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:1287 libcore/marlin-file-operations.c:1327
-#: libcore/marlin-file-operations.c:1373 libcore/marlin-file-operations.c:1455
-#: libcore/marlin-file-operations.c:2149
+#: libcore/marlin-file-operations.c:1222 libcore/marlin-file-operations.c:1262
+#: libcore/marlin-file-operations.c:1308 libcore/marlin-file-operations.c:1390
+#: libcore/marlin-file-operations.c:1897
 msgid "Error while deleting."
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1293
+#: libcore/marlin-file-operations.c:1228
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1302,20 +1323,20 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1298 libcore/marlin-file-operations.c:2213
-#: libcore/marlin-file-operations.c:3291
+#: libcore/marlin-file-operations.c:1233 libcore/marlin-file-operations.c:1961
+#: libcore/marlin-file-operations.c:3038
 #, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1308 libcore/marlin-file-operations.c:3301
+#: libcore/marlin-file-operations.c:1243 libcore/marlin-file-operations.c:3048
 msgid "_Skip files"
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1332
+#: libcore/marlin-file-operations.c:1267
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1324,100 +1345,95 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1337 libcore/marlin-file-operations.c:2258
-#: libcore/marlin-file-operations.c:3343
+#: libcore/marlin-file-operations.c:1272 libcore/marlin-file-operations.c:2006
+#: libcore/marlin-file-operations.c:3090
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1376
+#: libcore/marlin-file-operations.c:1311
 #, c-format
 msgid "Could not remove the folder %s."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1458
+#: libcore/marlin-file-operations.c:1393
 #, c-format
 msgid "There was an error deleting %s."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1543
+#: libcore/marlin-file-operations.c:1478
 msgid "Moving files to trash"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1545
+#: libcore/marlin-file-operations.c:1480
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:1643 libcore/marlin-file-operations.c:1646
-#: libcore/marlin-file-operations.c:1649
+#: libcore/marlin-file-operations.c:1578 libcore/marlin-file-operations.c:1581
+#: libcore/marlin-file-operations.c:1584
 msgid "Cannot move file to trash or delete it"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1644
+#: libcore/marlin-file-operations.c:1579
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1647
+#: libcore/marlin-file-operations.c:1582
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1650
+#: libcore/marlin-file-operations.c:1585
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1652
+#: libcore/marlin-file-operations.c:1587
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1653
+#: libcore/marlin-file-operations.c:1588
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1657
+#: libcore/marlin-file-operations.c:1592
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1658
+#: libcore/marlin-file-operations.c:1593
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1664
+#: libcore/marlin-file-operations.c:1599
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1854
+#: libcore/marlin-file-operations.c:1789
 msgid "Trashing Files"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1856
+#: libcore/marlin-file-operations.c:1791
 msgid "Deleting Files"
-msgstr ""
-
-#: libcore/marlin-file-operations.c:2054
-#, c-format
-msgid "Unable to mount %s"
 msgstr ""
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2083
+#: libcore/marlin-file-operations.c:1831
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1428,7 +1444,7 @@ msgstr[1] ""
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2095
+#: libcore/marlin-file-operations.c:1843
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1439,37 +1455,37 @@ msgstr[1] ""
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2107
+#: libcore/marlin-file-operations.c:1855
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:2114
+#: libcore/marlin-file-operations.c:1862
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:2145 libcore/marlin-file-operations.c:3138
-#: libcore/marlin-file-operations.c:3278 libcore/marlin-file-operations.c:3330
+#: libcore/marlin-file-operations.c:1893 libcore/marlin-file-operations.c:2885
+#: libcore/marlin-file-operations.c:3025 libcore/marlin-file-operations.c:3077
 msgid "Error while copying."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2147 libcore/marlin-file-operations.c:3276
-#: libcore/marlin-file-operations.c:3328
+#: libcore/marlin-file-operations.c:1895 libcore/marlin-file-operations.c:3023
+#: libcore/marlin-file-operations.c:3075
 msgid "Error while moving."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2151
+#: libcore/marlin-file-operations.c:1899
 msgid "Error while moving files to trash."
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2208
+#: libcore/marlin-file-operations.c:1956
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1478,7 +1494,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2253
+#: libcore/marlin-file-operations.c:2001
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1487,7 +1503,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2340
+#: libcore/marlin-file-operations.c:2088
 #, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1496,32 +1512,32 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2345
+#: libcore/marlin-file-operations.c:2093
 #, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2451 libcore/marlin-file-operations.c:2497
-#: libcore/marlin-file-operations.c:2535 libcore/marlin-file-operations.c:2575
+#: libcore/marlin-file-operations.c:2199 libcore/marlin-file-operations.c:2245
+#: libcore/marlin-file-operations.c:2283 libcore/marlin-file-operations.c:2323
 #, c-format
 msgid "Error while copying to \"%s\"."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2456
+#: libcore/marlin-file-operations.c:2204
 msgid "You do not have permissions to access the destination folder."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2458
+#: libcore/marlin-file-operations.c:2206
 msgid "There was an error getting information about the destination."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2498
+#: libcore/marlin-file-operations.c:2246
 msgid "The destination is not a folder."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2537
+#: libcore/marlin-file-operations.c:2285
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1529,30 +1545,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2543
+#: libcore/marlin-file-operations.c:2291
 #, c-format
 msgid "There is %s available, but %s is required."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2577
+#: libcore/marlin-file-operations.c:2325
 msgid "The destination is read-only."
 msgstr ""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2649
+#: libcore/marlin-file-operations.c:2397
 #, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2650
+#: libcore/marlin-file-operations.c:2398
 #, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr ""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2654
+#: libcore/marlin-file-operations.c:2402
 #, c-format
 msgid "Duplicating \"%s\""
 msgstr ""
@@ -1561,14 +1577,14 @@ msgstr ""
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2662
+#: libcore/marlin-file-operations.c:2410
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:2665
+#: libcore/marlin-file-operations.c:2413
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1577,7 +1593,7 @@ msgstr[1] ""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2674
+#: libcore/marlin-file-operations.c:2422
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1588,21 +1604,21 @@ msgstr[1] ""
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2686
+#: libcore/marlin-file-operations.c:2434
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:2689
+#: libcore/marlin-file-operations.c:2437
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:2695
+#: libcore/marlin-file-operations.c:2443
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1610,7 +1626,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2725
+#: libcore/marlin-file-operations.c:2473
 #, c-format
 msgid "%s of %s"
 msgstr ""
@@ -1621,7 +1637,7 @@ msgstr ""
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2745
+#: libcore/marlin-file-operations.c:2493
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1630,7 +1646,7 @@ msgstr[1] ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3145
+#: libcore/marlin-file-operations.c:2892
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1639,14 +1655,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3150
+#: libcore/marlin-file-operations.c:2897
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3286
+#: libcore/marlin-file-operations.c:3033
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1655,7 +1671,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3338
+#: libcore/marlin-file-operations.c:3085
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1666,91 +1682,91 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3391 libcore/marlin-file-operations.c:4124
-#: libcore/marlin-file-operations.c:4719
+#: libcore/marlin-file-operations.c:3138 libcore/marlin-file-operations.c:3870
+#: libcore/marlin-file-operations.c:4438
 #, c-format
 msgid "Error while moving \"%s\"."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3393
+#: libcore/marlin-file-operations.c:3140
 msgid "Could not remove the source folder."
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3482 libcore/marlin-file-operations.c:3533
-#: libcore/marlin-file-operations.c:4128
+#: libcore/marlin-file-operations.c:3229 libcore/marlin-file-operations.c:3280
+#: libcore/marlin-file-operations.c:3874
 #, c-format
 msgid "Error while copying \"%s\"."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3487
+#: libcore/marlin-file-operations.c:3234
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3538
+#: libcore/marlin-file-operations.c:3285
 #, c-format
 msgid "Could not remove the already existing file %s."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3857 libcore/marlin-file-operations.c:4556
+#: libcore/marlin-file-operations.c:3603 libcore/marlin-file-operations.c:4277
 msgid "You cannot move a folder into itself."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3858 libcore/marlin-file-operations.c:4557
+#: libcore/marlin-file-operations.c:3604 libcore/marlin-file-operations.c:4278
 msgid "You cannot copy a folder into itself."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3859 libcore/marlin-file-operations.c:4558
+#: libcore/marlin-file-operations.c:3605 libcore/marlin-file-operations.c:4279
 msgid "The destination folder is inside the source folder."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3890
+#: libcore/marlin-file-operations.c:3636
 msgid "You cannot move a file over itself."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3891
+#: libcore/marlin-file-operations.c:3637
 msgid "You cannot copy a file over itself."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3892
+#: libcore/marlin-file-operations.c:3638
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4134
+#: libcore/marlin-file-operations.c:3880
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4204
+#: libcore/marlin-file-operations.c:3950
 #, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4209
+#: libcore/marlin-file-operations.c:3955
 #, c-format
 msgid "There was an error copying the file into %s."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:4428
+#: libcore/marlin-file-operations.c:4157
 msgid "Copying Files"
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4464
+#: libcore/marlin-file-operations.c:4193
 #, c-format
 msgid "Preparing to move to \"%s\""
 msgstr ""
 
-#: libcore/marlin-file-operations.c:4469
+#: libcore/marlin-file-operations.c:4198
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1758,23 +1774,23 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4723
+#: libcore/marlin-file-operations.c:4442
 #, c-format
 msgid "There was an error moving the file into %s."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:4982
+#: libcore/marlin-file-operations.c:4676
 msgid "Moving Files"
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:5021
+#: libcore/marlin-file-operations.c:4715
 #, c-format
 msgid "Creating links in \"%s\""
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5026
+#: libcore/marlin-file-operations.c:4720
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1782,82 +1798,78 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5169
+#: libcore/marlin-file-operations.c:4857
 #, c-format
 msgid "Error while creating link to %s."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5172
+#: libcore/marlin-file-operations.c:4860
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5175
+#: libcore/marlin-file-operations.c:4863
 msgid "The target doesn't support symbolic links."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5180
+#: libcore/marlin-file-operations.c:4868
 #, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5507
+#: libcore/marlin-file-operations.c:5171
 msgid "Setting permissions"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5697
+#: libcore/marlin-file-operations.c:5360
 msgid "Cannot copy into trash."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5698 libcore/marlin-file-operations.c:5706
+#: libcore/marlin-file-operations.c:5361 libcore/marlin-file-operations.c:5369
 msgid "It is not permitted to copy files into the trash"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5846
+#: libcore/marlin-file-operations.c:5505
 msgid "untitled folder"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5854
+#: libcore/marlin-file-operations.c:5513
 msgid "new file"
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6026
+#: libcore/marlin-file-operations.c:5680
 #, c-format
 msgid "Error while creating directory %s."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6029
+#: libcore/marlin-file-operations.c:5683
 #, c-format
 msgid "Error while creating file %s."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6035
+#: libcore/marlin-file-operations.c:5689
 #, c-format
 msgid "There was an error creating the directory in %s."
-msgstr ""
-
-#: libcore/marlin-file-operations.c:6362
-msgid "Emptying Trash"
 msgstr ""
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 msgid "Type Path"
 msgstr ""
 
@@ -1865,31 +1877,31 @@ msgstr ""
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:238
 msgid "In This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:243
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:235
+#: libwidgets/View/SearchResults.vala:248
 msgid "Bookmarks"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:35
+#: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:40
+#: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:45
+#: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr ""
 

@@ -24,22 +24,22 @@ public class PF.Progress.Info : GLib.Object {
 
     private const uint SIGNAL_DELAY_MSEC = 100;
 
-    private GLib.Cancellable cancellable;
+    public GLib.Cancellable cancellable { get; construct; }
 
-    private string title;
-    private string status;
-    private string details;
-    private double progress;
-    private double current;
-    private double total;
-    private bool activity_mode;
-    private bool is_started;
-    private bool is_finished;
-    private bool is_paused;
+    public string title { get; set; default = _("Preparing"); }
+    public string status { get; private set; default = _("Preparing"); }
+    public string details { get; set; default = _("Preparing"); }
+    public double progress { get; private set; default = 0.0; }
+    public double current { get; private set; default = 0.0; }
+    public double total { get; private set; default = 0.0; }
+    public bool activity_mode { get; private set; default = true; }
+    public bool is_started { get; private set; }
+    public bool is_finished { get; private set; }
+    public bool is_paused { get; private set; }
+    public bool is_cancelled { get { return cancellable.is_cancelled (); }}
 
     private GLib.Source idle_source;
     private bool source_is_now;
-
     private bool start_at_idle;
     private bool finish_at_idle;
     private bool changed_at_idle;
@@ -51,77 +51,13 @@ public class PF.Progress.Info : GLib.Object {
 
     construct {
         cancellable = new GLib.Cancellable ();
+        // Ensure info finishes if canceled by marlin-file-operations.
+        cancellable.connect (finish);
         PF.Progress.InfoManager.get_instance ().add_new_info (this);
-    }
-
-    public string get_title () {
-        if (title != null) {
-            return title;
-        } else if (details != null) {
-            return details;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public string get_status () {
-        if (status != null) {
-            return status;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public string get_details () {
-        if (details != null) {
-            return details;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public GLib.Cancellable get_cancellable () {
-        return cancellable;
     }
 
     public void cancel () {
         cancellable.cancel ();
-    }
-
-    public bool get_is_started () {
-        return is_started;
-    }
-
-    public bool get_is_finished () {
-        return is_finished;
-    }
-
-    public bool get_is_paused () {
-        return is_paused;
-    }
-
-    public double get_progress () {
-        if (activity_mode) {
-            return -1;
-        } else {
-            return progress;
-        }
-    }
-
-    public double get_current () {
-        if (activity_mode) {
-            return 0;
-        } else {
-            return current;
-        }
-    }
-
-    public double get_total () {
-        if (activity_mode) {
-            return -1;
-        } else {
-            return total;
-        }
     }
 
     public void start () {
@@ -134,7 +70,7 @@ public class PF.Progress.Info : GLib.Object {
     }
 
     public void finish () {
-        if (!is_finished && !cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
+        if (!is_finished && !is_cancelled) { /* In case of race between cancel and finish */
             is_finished = true;
 
             finish_at_idle = true;
@@ -154,31 +90,23 @@ public class PF.Progress.Info : GLib.Object {
         }
     }
 
-    public void set_status (string status) {
-        take_status (status);
-    }
-
-    public void take_status (owned string status) {
-        if (this.status != status) {
-            this.status = status;
+    public void take_status (owned string _status) {
+        if (status != _status) {
+            status = _status;
             changed_at_idle = true;
             queue_idle (false);
         }
     }
 
-    public void set_details (string details) {
-        take_details (details);
-    }
-
-    public void take_details (owned string details) {
-        if (this.details != details) {
-            this.details = details;
+    public void take_details (owned string _details) {
+        if (details != _details) {
+            details = _details;
             changed_at_idle = true;
             queue_idle (false);
         }
     }
 
-    public void set_progress (double current, double total) {
+    public void update_progress (double current, double total) {
         double current_percent = 1.0;
 
         if (total > 0) {
@@ -202,7 +130,7 @@ public class PF.Progress.Info : GLib.Object {
 
     public void pulse_progress () {
         activity_mode = true;
-        progress = 0.0;
+        progress = -1.0;
         progress_at_idle = true;
         queue_idle (false);
     }
@@ -247,7 +175,7 @@ public class PF.Progress.Info : GLib.Object {
 
         if (finish_at_idle) {
             finish_at_idle = false;
-            if (!cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
+            if (!is_cancelled) { /* In case of race between cancel and finish */
                 finished ();
             }
         }

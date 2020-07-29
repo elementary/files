@@ -35,8 +35,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private Gtk.ListStore store_groups;
     private Gtk.ListStore store_apps;
 
-    private uint count;
     private GLib.List<GOF.File> files;
+    private bool only_one;
     private GOF.File goffile;
 
     public FM.AbstractDirectoryView view {get; private set;}
@@ -153,9 +153,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             files.prepend (file);
         }
 
-        count = files.length ();
+        var empty = (files == null || files.nth_data (0) == null); // May be large  - avoid length ()
 
-        if (count < 1 ) {
+        if (empty ) {
             critical ("Properties Window constructor called with empty file list");
             return;
         }
@@ -183,6 +183,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         goffile = (GOF.File) files.data;
+        only_one = files.nth_data (1) == null;
+
         construct_info_panel (goffile);
         cancellable = new GLib.Cancellable ();
 
@@ -196,11 +198,17 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         /* Build header box */
-        if (count > 1 || (count == 1 && !goffile.is_writable ())) {
+        if (!only_one ) {
             var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
             label.halign = Gtk.Align.START;
             header_title = label;
-        } else if (count == 1 && goffile.is_writable ()) {
+        } else if (!goffile.is_writable ()) {
+            var label = new Gtk.Label (goffile.info.get_name ()) {
+                halign = Gtk.Align.START,
+                selectable = true
+            };
+            header_title = label;
+        } else {
             entry = new Gtk.Entry ();
             original_name = goffile.info.get_name ();
             reset_entry_text ();
@@ -213,6 +221,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 rename_file (goffile, entry.get_text ());
                 return false;
             });
+
             header_title = entry;
         }
 
@@ -220,7 +229,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
-        if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
+        if (!(only_one && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
             construct_perm_panel ();
             add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
             if (!goffile.can_set_permissions ()) {
@@ -318,11 +327,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private void rename_file (GOF.File file, string new_name) {
+    private void rename_file (GOF.File file, string _new_name) {
         /* Only rename if name actually changed */
         original_name = file.info.get_name ();
 
-        if (new_name != "") {
+        var new_name = _new_name.strip (); // Disallow leading and trailing space
+
+        if (new_name != "") { // Do not want a filename consisting of spaces only (even if legal)
             if (new_name != original_name) {
                 proposed_name = new_name;
                 view.set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
@@ -332,14 +343,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                         reset_entry_text (new_location.get_basename ());
                         goffile = GOF.File.@get (new_location);
                         files.first ().data = goffile;
-                    } catch (Error e) {
-                        reset_entry_text (); //resets entry to old name
-                    }
+                    } catch (Error e) {} // Warning dialog already shown
                 });
             }
         } else {
-            reset_entry_text ();
+            warning ("Blank name not allowed");
+            new_name = original_name;
         }
+
+        reset_entry_text (new_name);
     }
 
     public void reset_entry_text (string? new_name = null) {
@@ -536,7 +548,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         int n = 4;
 
-        if (count == 1) {
+        if (only_one) {
+            /* Note most Linux filesystem do not store file creation time */
             var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                     FileAttribute.TIME_CREATED);
             if (time_created != "") {
@@ -549,6 +562,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
             var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                      FileAttribute.TIME_MODIFIED);
+
             if (time_modified != "") {
                 var key_label = new KeyLabel (_("Modified:"));
                 var value_label = new ValueLabel (time_modified);
@@ -558,7 +572,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        if (count == 1 && file.is_trashed ()) {
+        if (only_one && file.is_trashed ()) {
             var deletion_date = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                      FileAttribute.TRASH_DELETION_DATE);
             if (deletion_date != "") {
@@ -578,7 +592,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
         n++;
 
-        if (count == 1 && "image" in ftype) {
+        if (only_one && "image" in ftype) {
             var resolution_key = new KeyLabel (_("Resolution:"));
             resolution_value = new ValueLabel (resolution (file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
@@ -596,7 +610,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             n++;
         }
 
-        if (count == 1 && file.info.get_is_symlink ()) {
+        if (only_one && file.info.get_is_symlink ()) {
             var key_label = new KeyLabel (_("Target:"));
             var value_label = new ValueLabel (file.info.get_symlink_target ());
             info_grid.attach (key_label, 0, n, 1, 1);
@@ -671,7 +685,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return true;
         }
 
-        if (count == 1) {
+        if (only_one) {
             if (goffile.can_unmount ()) {
                 return true;
             }
@@ -1257,7 +1271,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             spinner.hide ();
         }
 
-        if (count > 1) {
+        if (!only_one) {
             type_key_label.hide ();
             type_value.hide ();
         } else {
@@ -1272,13 +1286,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             PF.FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
                                             goffile.is_folder ());
 
-            (header_title as Gtk.Entry).select_region (start_offset, end_offset);
+            ((Gtk.Entry) header_title).select_region (start_offset, end_offset);
         }
 
         /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
          * the "contained files" counted are only in the subfolders or not.*/
         /* Only show 'contains' label when folders selected are not empty */
-        if (count > selected_folders || contains_value.label.length < 1) {
+        if (selected_files > 0 || contains_value.label.length < 1) {
             contains_key_label.hide ();
             contains_value.hide ();
         } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/

@@ -26,20 +26,18 @@
  *   completion of the operation unless it was cancelled by the user.
 ***/
 public class Marlin.Progress.UIHandler : Object {
-
     private PF.Progress.InfoManager manager = null;
 #if HAVE_UNITY
     private Marlin.QuicklistHandler quicklist_handler = null;
 #endif
     private Gtk.Dialog progress_window = null;
-    private Gtk.Widget window_vbox = null;
+    private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
+    private Gtk.Application application;
 
-    private Marlin.Application application;
-
-    public UIHandler (Marlin.Application app) {
-        this.manager = PF.Progress.InfoManager.get_instance ();
-        this.application = app;
+    construct {
+        application = (Gtk.Application) GLib.Application.get_default ();
+        manager = PF.Progress.InfoManager.get_instance ();
 
         manager.new_progress_info.connect ((info) => {
             info.started.connect (progress_info_started_cb);
@@ -50,23 +48,18 @@ public class Marlin.Progress.UIHandler : Object {
         debug ("ProgressUIHandler destruct");
         if (active_infos > 0) {
             warning ("ProgressUIHandler destruct when infos active");
-            cancel_all ();
+            var infos = manager.get_all_infos ();
+            foreach (var info in infos) {
+                info.cancel ();
+            }
         }
-    }
-
-    public void cancel_all () {
-        var infos = this.manager.get_all_infos ();
-        foreach (var info in infos) {
-            info.cancel ();
-        }
-
     }
 
     private void progress_info_started_cb (PF.Progress.Info info) {
         application.hold ();
 
         if (info == null || !(info is PF.Progress.Info) ||
-            info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
+            info.is_finished || info.is_cancelled) {
 
             application.release ();
             return;
@@ -79,14 +72,14 @@ public class Marlin.Progress.UIHandler : Object {
         var operation_running = false;
         Timeout.add_full (GLib.Priority.LOW, 500, () => {
             if (info == null || !(info is PF.Progress.Info) ||
-                info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
+                info.is_finished || info.is_cancelled) {
 
                 return GLib.Source.REMOVE;
             }
 
-            if (info.get_is_paused ()) {
+            if (info.is_paused) {
                 return GLib.Source.CONTINUE;
-            } else if (operation_running && !info.get_is_finished ()) {
+            } else if (operation_running && !info.is_finished) {
                 add_progress_info_to_window (info);
                 return GLib.Source.REMOVE;
             } else {
@@ -100,8 +93,8 @@ public class Marlin.Progress.UIHandler : Object {
         if (this.active_infos == 1) {
             /* This is the only active operation, present the window */
             add_to_window (info);
-            (this.progress_window as Gtk.Window).present ();
-        } else if (this.progress_window.visible) {
+            progress_window.present ();
+        } else if (progress_window.visible) {
                 add_to_window (info);
         }
 
@@ -114,36 +107,36 @@ public class Marlin.Progress.UIHandler : Object {
         ensure_window ();
 
         var progress_widget = new Marlin.Progress.InfoWidget (info);
-        (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
+        window_vbox.pack_start (progress_widget, false, false, 6);
 
         progress_widget.cancelled.connect ((info) => {
-            info.finished.disconnect (progress_info_finished_cb);
             progress_info_finished_cb (info);
             progress_widget.hide ();
         });
 
         progress_widget.show ();
-        if (this.progress_window.visible) {
-            (this.progress_window as Gtk.Window).present ();
+        if (progress_window.visible) {
+            progress_window.present ();
         }
     }
 
     private void ensure_window () {
-        if (this.progress_window == null) {
+        if (progress_window == null) {
             /* This provides an undeletable, unminimisable window in which to show the info widgets */
-            this.progress_window = new Gtk.Dialog ();
-            this.progress_window.resizable = false;
-            this.progress_window.deletable = false;
-            this.progress_window.title = _("File Operations");
-            this.progress_window.icon_name = "system-file-manager";
+            progress_window = new Gtk.Dialog () {
+                resizable = false,
+                deletable = false,
+                title = _("File Operations"),
+                icon_name = "system-file-manager"
+            };
 
-            this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+            window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
 
-            this.progress_window.get_content_area ().set_border_width (10);
-            this.progress_window.get_content_area ().add (this.window_vbox);
+            progress_window.get_content_area ().set_border_width (10);
+            progress_window.get_content_area ().add (this.window_vbox);
             this.window_vbox.show ();
 
-            this.progress_window.delete_event.connect ((widget, event) => {
+            progress_window.delete_event.connect ((widget, event) => {
                 widget.hide ();
                 return true;
             });
@@ -154,6 +147,7 @@ public class Marlin.Progress.UIHandler : Object {
 
     private void progress_info_finished_cb (PF.Progress.Info info) {
         /* Must only be called once for each info */
+        info.finished.disconnect (progress_info_finished_cb);
         application.release ();
 
         if (active_infos > 0) {
@@ -165,8 +159,8 @@ public class Marlin.Progress.UIHandler : Object {
              * is only sent after last operation finishes and the progress window closes.
              * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
 
-            if (!info.get_cancellable ().is_cancelled ()) {
-                var title = info.get_title ();  /* Do not keep ref to info */
+            if (!info.is_cancelled) {
+                var title = info.title;  /* Do not keep ref to info */
                 Timeout.add (100, () => {
                     if (!application.get_active_window ().has_toplevel_focus) {
                         show_operation_complete_notification (title, active_infos < 1);
@@ -180,7 +174,7 @@ public class Marlin.Progress.UIHandler : Object {
         }
         /* For rapid file transfers this can get called before progress window was been created */
         if (active_infos < 1 && progress_window != null && progress_window.visible) {
-            (this.progress_window as Gtk.Window).hide ();
+            progress_window.hide ();
         }
 #if HAVE_UNITY
         update_unity_launcher (info, false);
@@ -243,7 +237,7 @@ public class Marlin.Progress.UIHandler : Object {
                                         _("Show Copy Dialog"));
 
             show_menuitem.item_activated.connect (() => {
-                (this.progress_window as Gtk.Window).present ();
+                progress_window.present ();
             });
 
             marlin_lentry.progress_quicklists.append (show_menuitem);
@@ -306,8 +300,8 @@ public class Marlin.Progress.UIHandler : Object {
         var infos = this.manager.get_all_infos ();
 
         foreach (var _info in infos) {
-            double c = _info.get_current ();
-            double t = _info.get_total ();
+            double c = _info.current;
+            double t = _info.total;
 
             if (c < 0) {
                 c = 0;

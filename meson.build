@@ -1,4 +1,9 @@
-project('io.elementary.files', 'vala', 'c', version: '4.4.0', meson_version: '>= 0.46.0')
+project(
+    'io.elementary.files',
+    'vala', 'c',
+    version: '4.4.4',
+    meson_version: '>= 0.47.0'
+)
 
 #
 # Meson module imports
@@ -57,7 +62,6 @@ common_deps = [
 pango_dep = dependency('pango', version: '>=1.1.2')
 sqlite3_dep = dependency('sqlite3')
 libcanberra_dep = dependency('libcanberra', version: '>=0.30')
-zeitgeist_dep = dependency('zeitgeist-2.0')
 
 notify_dep = dependency('libnotify', version: '>=0.7.2')
 
@@ -67,14 +71,21 @@ math_dep = cc.find_library('m')
 
 unity_dep = []
 plank_dep = []
-if get_option('with-unity')
-    unity_dep = dependency('unity', version: '>=4.0.0')
-    add_project_arguments('--define=HAVE_UNITY', language: 'vala')
 
-    plank_dep = dependency('plank')
-    if plank_dep.version().version_compare('>=0.10.9')
-        add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
-    endif
+
+unity_dep = dependency('unity', version: '>=4.0.0', required: get_option('with-unity'))
+if (unity_dep.found())
+    add_project_arguments('--define=HAVE_UNITY', language: 'vala')
+endif
+
+plank_dep = dependency('plank', version: '>=0.10.9', required: get_option('with-unity'))
+if (plank_dep.found() )
+	add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
+endif
+
+zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
+if (zeitgeist_dep.found())
+	add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
 endif
 
 add_project_arguments(

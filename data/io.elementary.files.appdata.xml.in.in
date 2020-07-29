@@ -58,10 +58,86 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.4.1" date="2020-02-18" urgency="medium">
+    <release version="4.5.0" date="2020-07-07" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Bookmark menu option for network mounts in sidebar</li>
+          <li>Show folder item count in List View</li>
+          <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
+          <li>Properties window: Allow the filename to be copied when it cannot be edited.</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix crash when pressing Enter and another key at the same time</li>
+          <li>Fix pathbar handling of "~" and ".." in path</li>
+          <li>Filechooser pathbar no longer crashes when invoked from a flatpak</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.4.4" date="2020-06-30" urgency="medium">
+    <description>
+      <p>Improvements:</p>
+        <ul>
+          <li>Add warning and error colored disk usage bars when disk becomes too full</li>
+          <li>Prevent window resizing when filename column width exceeds available space</li>
+        </ul>
+      <p>Fixes:</p>
+        <ul>
+          <li>Fix handling of filenames containing the # character</li>
+          <li>Fix regressions regarding pathbar context menus and clicking</li>
+        </ul>
+      <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.4.3" date="2020-06-01" urgency="medium">
       <description>
         <ul>
-          <li>Fix "New Folder" shortcut label in menu</li>
+          <li>Paste images into other apps instead of file paths where possible</li>
+          <li>Paste into a selected folder when using Ctrl + V</li>
+          <li>Show file info overlay in List View as well</li>
+          <li>Traverse search results with Tab key</li>
+          <li>Show an error message when attempting to open trashed files</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix uneditable area in pathbar which is showing home folder placeholder</li>
+          <li>Fix an issue that prevented file modification times from showing</li>
+          <li>Fix size of restored tiled window</li>
+          <li>Fix color tags disappearing when thumbnails hidden</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.4.2" date="2020-04-03" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Fix crash when a device icon is coming from a file</li>
+          <li>Fix device icon sometimes missing</li>
+          <li>Fix occasional view freeze after renaming</li>
+          <li>Improve renaming logic when dealing with leading/trailing whitespace</li>
+          <li>Fix breadcrumbs sometimes incorrect at startup</li>
+          <li>Do not show file:// prefix in navigation buttons menus</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.4.1" date="2020-02-29" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Fix "New Folder" keyboard shortcut label in menu</li>
+          <li>Fix navigation with back/forward button context menu</li>
+          <li>Fix path bar sometimes showing wrong path when closing a tab</li>
+          <li>Ensure keyboard shortcuts work immediately after creating or renaming a file</li>
+          <li>Do not include "file://" in pathbar text or when pasting path as text</li>
           <li>Updated translations</li>
         </ul>
       </description>
