@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2020-04-12 11:10+0000\n"
 "Last-Translator: Stas <SedovSG@yandex.ru>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
@@ -620,8 +620,8 @@ msgid "Network"
 msgstr "Обзор сети"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Ваше сетевое окружение"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2026,6 +2026,9 @@ msgstr "Восстановить выбранное"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Удалить выбранное"
+
+#~ msgid "Your network places"
+#~ msgstr "Ваше сетевое окружение"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Ваши локальные разделы и устройства"

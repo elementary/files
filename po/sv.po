@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -621,8 +621,8 @@ msgid "Network"
 msgstr "Nätverk"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Dina nätverksplatser"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2016,6 +2016,9 @@ msgstr "Återställ valda"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Radera valda"
+
+#~ msgid "Your network places"
+#~ msgstr "Dina nätverksplatser"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Dina lokala partitioner och enheter"
