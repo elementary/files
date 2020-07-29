@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -406,9 +406,9 @@ msgstr "Отвори с"
 msgid "Paste"
 msgstr "Поставяне"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Добавяне към отметките"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -592,13 +592,13 @@ msgstr "Файлът не е намерен"
 msgid "The file selected no longer exists."
 msgstr "Избраният файл вече не съществува."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Лични"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Вашите места и отметки"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -732,6 +732,10 @@ msgstr "_Демонтиране"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Изваждане"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Добавяне към отметките"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1961,10 +1965,6 @@ msgstr "В тази папка"
 msgid "Below This Folder"
 msgstr "В тази папка"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Отметки"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2035,6 +2035,15 @@ msgstr "Възстанови всички"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " избрани"
+
+#~ msgid "Personal"
+#~ msgstr "Лични"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Вашите места и отметки"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Отметки"
 
 #~ msgid "Your network places"
 #~ msgstr "Вашите места в мрежата"

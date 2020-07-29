@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -410,9 +410,9 @@ msgstr "Otvoriť s"
 msgid "Paste"
 msgstr "Vložiť"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Záložka"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -596,13 +596,13 @@ msgstr "Súbor nebol nájdený"
 msgid "The file selected no longer exists."
 msgstr "Vybraný súbor už neexistuje."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Osobné"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vaše bežné miesta a záložky"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -736,6 +736,10 @@ msgstr "_Odpojiť"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Vysunúť"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Záložka"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1988,10 +1992,6 @@ msgstr "V tomto priečinku"
 msgid "Below This Folder"
 msgstr "Pod týmto priečnikom"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Záložky"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Nedávno použité"
@@ -2061,6 +2061,15 @@ msgstr "Obnoviť všetko"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " vybrané"
+
+#~ msgid "Personal"
+#~ msgstr "Osobné"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vaše bežné miesta a záložky"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Záložky"
 
 #~ msgid "Your network places"
 #~ msgstr "Vaše miesta v sieti"

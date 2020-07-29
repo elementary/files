@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2018-10-21 00:07+0000\n"
 "Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
@@ -395,9 +395,9 @@ msgstr "Buka dengan"
 msgid "Paste"
 msgstr "Tempel"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Penanda Taut"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -578,13 +578,13 @@ msgstr "Berkas tidak ditemukan"
 msgid "The file selected no longer exists."
 msgstr "Berkas yang dipilih sudah tidak ada lagi."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Pribadi"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Tempat umum dan penanda Anda"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -716,6 +716,10 @@ msgstr "Lepas Kaitan (_U)"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "Keluarkan (_E)"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Penanda Taut"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1920,10 +1924,6 @@ msgstr "Dalam Folder ini"
 msgid "Below This Folder"
 msgstr "Di bawah Folder Ini"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Penanda Taut"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Baru digunakan"
@@ -1991,6 +1991,15 @@ msgstr "Pulihkan yang Terpilih"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Hapus yang Terpilih"
+
+#~ msgid "Personal"
+#~ msgstr "Pribadi"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Tempat umum dan penanda Anda"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Penanda Taut"
 
 #~ msgid "Your network places"
 #~ msgstr "Jaringan Anda"

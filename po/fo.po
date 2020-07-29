@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2015-12-21 13:44+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
@@ -394,8 +394,8 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
@@ -581,13 +581,13 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Egið"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Tíni vanligu støð og bókamerki"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -721,6 +721,10 @@ msgstr ""
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Skumpa út"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1922,10 +1926,6 @@ msgstr ""
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr ""
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
@@ -1994,6 +1994,12 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "Strika _Allar"
+
+#~ msgid "Personal"
+#~ msgstr "Egið"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Tíni vanligu støð og bókamerki"
 
 #~ msgid "Your network places"
 #~ msgstr "Tíni netstøð"

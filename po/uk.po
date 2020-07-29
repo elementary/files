@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2017-06-11 14:52+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -412,9 +412,9 @@ msgstr "Відкрити за допомогою"
 msgid "Paste"
 msgstr "Вставити"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Закладка"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -598,13 +598,13 @@ msgstr "Файл не знайдено"
 msgid "The file selected no longer exists."
 msgstr "Виділений файл більше не існує."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Особисте"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ваші загальні місця та закладки"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -738,6 +738,10 @@ msgstr "_Від'єднати"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Витягнути"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Закладка"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1989,10 +1993,6 @@ msgstr "В цій теці"
 msgid "Below This Folder"
 msgstr "В цій теці"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Закладки"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2063,6 +2063,15 @@ msgstr "Відновити все"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " обрано"
+
+#~ msgid "Personal"
+#~ msgstr "Особисте"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ваші загальні місця та закладки"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Закладки"
 
 #~ msgid "Your network places"
 #~ msgstr "Ваші мережеві місця"

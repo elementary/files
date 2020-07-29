@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2018-11-11 00:08+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/files/files/"
@@ -410,9 +410,9 @@ msgstr "Otvori pomoću"
 msgid "Paste"
 msgstr "Zalijepi"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Oznaka"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -593,13 +593,13 @@ msgstr "Datoteka nije pronađena"
 msgid "The file selected no longer exists."
 msgstr "Odabrana datoteka ne postoji više."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Lično"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vaša česta mjesta i oznake"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -731,6 +731,10 @@ msgstr "_Demontiraj"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "I_zbaci"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Oznaka"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1974,10 +1978,6 @@ msgstr "U ovoj fascikli"
 msgid "Below This Folder"
 msgstr "Ispod ove fascikle"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Bilješke"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Nedavno korišteno"
@@ -2045,6 +2045,15 @@ msgstr "Obnovi označeno"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Izbriši označeno"
+
+#~ msgid "Personal"
+#~ msgstr "Lično"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vaša česta mjesta i oznake"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Bilješke"
 
 #~ msgid "Your network places"
 #~ msgstr "Vaše mrežne lokacije"

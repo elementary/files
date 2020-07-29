@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2018-01-06 00:17+0000\n"
 "Last-Translator: javad sajjadi(qezwan) <qezwan@gmail.com>\n"
 "Language-Team: Sorani <https://weblate.elementary.io/projects/files/files/"
@@ -386,8 +386,8 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
@@ -566,12 +566,12 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
 msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
+msgid "Common places plus saved folders and files"
 msgstr ""
 
 #: src/View/Sidebar.vala:603
@@ -703,6 +703,10 @@ msgstr ""
 
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
+msgstr ""
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
 msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
@@ -1885,10 +1889,6 @@ msgstr ""
 
 #: libwidgets/View/SearchResults.vala:243
 msgid "Below This Folder"
-msgstr ""
-
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
 msgstr ""
 
 #: libwidgets/View/SearchResults.vala:254

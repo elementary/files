@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-06-23 21:11+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -396,9 +396,9 @@ msgstr "Birlikte aç"
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Yer imi"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -576,13 +576,13 @@ msgstr "Dosya Bulunamadı"
 msgid "The file selected no longer exists."
 msgstr "Seçilen dosya artık yok."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Kişisel"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ortak yerleriniz ve yer imleriniz"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -714,6 +714,10 @@ msgstr "Bağı Ka_ldır"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Çıkart"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Yer imi"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1925,10 +1929,6 @@ msgstr "Bu Klasörde"
 msgid "Below This Folder"
 msgstr "Bu Klasörün Altında"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Yer İmleri"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Son kullanılanlar"
@@ -1996,6 +1996,15 @@ msgstr "Seçilenleri Geri Yükle"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Seçilenleri Sil"
+
+#~ msgid "Personal"
+#~ msgstr "Kişisel"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ortak yerleriniz ve yer imleriniz"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Yer İmleri"
 
 #~ msgid "Your network places"
 #~ msgstr "Ağ bağlantılarınız"

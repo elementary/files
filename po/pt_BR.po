@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -400,9 +400,9 @@ msgstr "Abrir com"
 msgid "Paste"
 msgstr "Colar"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Favorito"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -580,13 +580,13 @@ msgstr "Arquivo não encontrado"
 msgid "The file selected no longer exists."
 msgstr "O arquivo selecionado não existe mais."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Pessoal"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Seu lugares comuns e marcadores"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -719,6 +719,10 @@ msgstr "_Desmontar"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Ejetar"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Favorito"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1946,10 +1950,6 @@ msgstr "Nesta pasta"
 msgid "Below This Folder"
 msgstr "Abaixo desta pasta"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Favoritos"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Usado recentemente"
@@ -2017,6 +2017,15 @@ msgstr "Restaurar Selecionado"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Excluir Selecionado"
+
+#~ msgid "Personal"
+#~ msgstr "Pessoal"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Seu lugares comuns e marcadores"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Favoritos"
 
 #~ msgid "Your network places"
 #~ msgstr "Seus locais de rede"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -401,9 +401,9 @@ msgstr "Atverti naudojant"
 msgid "Paste"
 msgstr "Įdėti"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Žymelė"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -585,13 +585,13 @@ msgstr "Failas nerastas"
 msgid "The file selected no longer exists."
 msgstr "Pasirinkto failo daugiau nebėra."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Asmeniniai"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Jūsų dažniausiai lankomos vietos ir žymelės"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -723,6 +723,10 @@ msgstr "_Atjungti"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Išstumti"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Žymelė"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1986,10 +1990,6 @@ msgstr "Šiame aplanke"
 msgid "Below This Folder"
 msgstr "Žemiau šio aplanko"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Žymelės"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Paskiausiai naudoti"
@@ -2057,6 +2057,15 @@ msgstr "Atkurti pažymėtus"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Ištrinti pažymėtus"
+
+#~ msgid "Personal"
+#~ msgstr "Asmeniniai"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Jūsų dažniausiai lankomos vietos ir žymelės"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Žymelės"
 
 #~ msgid "Your network places"
 #~ msgstr "Jūsų tinklo vietos"

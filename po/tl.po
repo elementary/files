@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2017-08-22 19:27+0000\n"
 "Last-Translator: anjelo del carmen <anjelo2009@live.com>\n"
 "Language-Team: Tagalog <https://weblate.elementary.io/projects/files/files/"
@@ -395,10 +395,9 @@ msgstr "Buksan gamit ang"
 msgid "Paste"
 msgstr "Idikit"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-msgid "Bookmark"
-msgstr "Mga Pananda"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -592,12 +591,12 @@ msgstr "Hindi makita ang File"
 msgid "The file selected no longer exists."
 msgstr "Hindi na umiiral ang naka-select na file"
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Pangsarili"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
+msgid "Common places plus saved folders and files"
 msgstr ""
 
 #: src/View/Sidebar.vala:603
@@ -732,6 +731,11 @@ msgstr ""
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr ""
+
+#: src/View/PopupMenuBuilder.vala:85
+#, fuzzy
+msgid "Bookmark"
+msgstr "Mga Pananda"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1959,10 +1963,6 @@ msgstr "Sa Polder na Ito"
 msgid "Below This Folder"
 msgstr "Sa Polder na Ito"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Mga Pananda"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2033,6 +2033,12 @@ msgstr " sa nakaselect"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " sa nakaselect"
+
+#~ msgid "Personal"
+#~ msgstr "Pangsarili"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Mga Pananda"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Burahin ang %d na nakopyang mga aytem"

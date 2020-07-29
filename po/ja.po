@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -391,9 +391,9 @@ msgstr "このアプリケーションで開く"
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "ブックマーク"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -571,13 +571,13 @@ msgstr "ファイルが見つかりませんでした"
 msgid "The file selected no longer exists."
 msgstr "選択されたファイルは存在しません。"
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "パーソナル"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "一般的な場所とブックマーク"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -709,6 +709,10 @@ msgstr "アンマウント(_U)"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "取り出し(_E)"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "ブックマーク"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1892,10 +1896,6 @@ msgstr "このフォルダー内"
 msgid "Below This Folder"
 msgstr "このフォルダー以下"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "ブックマーク"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "最近使用した項目"
@@ -1963,6 +1963,15 @@ msgstr "選択項目を元に戻す"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "選択項目を削除"
+
+#~ msgid "Personal"
+#~ msgstr "パーソナル"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "一般的な場所とブックマーク"
+
+#~ msgid "Bookmarks"
+#~ msgstr "ブックマーク"
 
 #~ msgid "Your network places"
 #~ msgstr "ネットワーク上の場所"

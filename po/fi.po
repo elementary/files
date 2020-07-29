@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-02-22 14:08+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -396,9 +396,9 @@ msgstr "Avaa sovelluksella"
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Kirjanmerkki"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -576,13 +576,13 @@ msgstr "Tiedostoa ei löytynyt"
 msgid "The file selected no longer exists."
 msgstr "Valittua tiedostoa ei ole enää olemassa."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Henkilökohtaiset"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Yleiset sijainnit ja kirjanmerkit"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -714,6 +714,10 @@ msgstr "_Irrota"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Avaa asema"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Kirjanmerkki"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1936,10 +1940,6 @@ msgstr "Tässä kansiossa"
 msgid "Below This Folder"
 msgstr "Tämän kansion alapuolella"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Kirjanmerkit"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Äskettäin käytetty"
@@ -2007,6 +2007,15 @@ msgstr "Palauta valitut"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Poista valitut"
+
+#~ msgid "Personal"
+#~ msgstr "Henkilökohtaiset"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Yleiset sijainnit ja kirjanmerkit"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Kirjanmerkit"
 
 #~ msgid "Your network places"
 #~ msgstr "Verkkosijainnit"

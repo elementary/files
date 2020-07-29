@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -399,9 +399,9 @@ msgstr "Deschide cu"
 msgid "Paste"
 msgstr "Lipește"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Semne de carte"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -582,13 +582,13 @@ msgstr "Fișierul nu a fost găsit"
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "personal"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Locuri comune și marcajele"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -722,6 +722,10 @@ msgstr "_Dezmontează"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Afară"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Semne de carte"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1963,10 +1967,6 @@ msgstr "În acest dosar"
 msgid "Below This Folder"
 msgstr "Sub acest dosar"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Marcaje"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Folosit recent"
@@ -2036,6 +2036,15 @@ msgstr "Restaurați tot"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " selectat"
+
+#~ msgid "Personal"
+#~ msgstr "personal"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Locuri comune și marcajele"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Marcaje"
 
 #~ msgid "Your network places"
 #~ msgstr "Locurile dv. în rețea"
