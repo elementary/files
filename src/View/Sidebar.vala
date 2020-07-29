@@ -931,11 +931,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
-    private async bool get_filesystem_space_and_type (GLib.File root, Cancellable update_cancellable,
-                                                      out uint64 fs_capacity, out uint64 fs_free, out string type) {
+    private async bool get_filesystem_space (GLib.File root, Cancellable update_cancellable,
+                                                      out uint64 fs_capacity, out uint64 fs_free) {
         fs_capacity = 0;
         fs_free = 0;
-        type = "";
 
         string scheme = Uri.parse_scheme (root.get_uri ());
         if ("sftp davs".contains (scheme)) {
@@ -969,9 +968,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             if (info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
                 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
             }
-            if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-                type = info.get_attribute_as_string (FileAttribute.FILESYSTEM_TYPE);
-            }
+
             return true;
         }
     }
@@ -980,9 +977,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
         if (rowref != null && rowref.valid ()) {
             uint64 fs_capacity, fs_free;
-            string fs_type;
-
-            if (yield get_filesystem_space_and_type (root, update_cancellable, out fs_capacity, out fs_free, out fs_type)) {
+            if (yield get_filesystem_space (root, update_cancellable, out fs_capacity, out fs_free)) {
                 if (fs_capacity > 0) {
                     var used_string = _("%s free").printf (format_size (fs_free));
                     var size_string = _("%s used of %s").printf (format_size (fs_capacity - fs_free), format_size (fs_capacity));
