@@ -977,33 +977,26 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
     private async void add_device_tooltip (Gtk.TreeIter iter, GLib.File root, Cancellable update_cancellable) {
-        uint64 fs_capacity, fs_free;
-        string fs_type;
         var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
-
         if (rowref != null && rowref.valid ()) {
+            uint64 fs_capacity, fs_free;
+            string fs_type;
+
             if (yield get_filesystem_space_and_type (root, update_cancellable, out fs_capacity, out fs_free, out fs_type)) {
-                var tooltip = PF.FileUtils.sanitize_path (root.get_parse_name (), null, false);
-
-                if (fs_type != null && fs_type != "") {
-                    tooltip = "%s — %s".printf (tooltip, fs_type);
-                }
-
-                tooltip = tooltip.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
-
                 if (fs_capacity > 0) {
-                    var size_string = _("%s Free of %s").printf (format_size (fs_free), format_size (fs_capacity));
-                    tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (tooltip, size_string);
-                }
+                    var used_string = _("%s free").printf (format_size (fs_free));
+                    var size_string = _("%s used of %s").printf (format_size (fs_capacity - fs_free), format_size (fs_capacity));
+                    var tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (used_string, size_string);
 
-                Gtk.TreeIter? itr = null;
-                store.get_iter (out itr, rowref.get_path ());
-                store.@set (
-                    itr,
-                    Column.FREE_SPACE, fs_free,
-                    Column.DISK_SIZE, fs_capacity,
-                    Column.TOOLTIP, tooltip
-                );
+                    Gtk.TreeIter? itr = null;
+                    store.get_iter (out itr, rowref.get_path ());
+                    store.@set (
+                        itr,
+                        Column.FREE_SPACE, fs_free,
+                        Column.DISK_SIZE, fs_capacity,
+                        Column.TOOLTIP, tooltip
+                    );
+                }
             }
         } else {
             warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
