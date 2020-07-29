@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-07-09 10:12+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
@@ -401,9 +401,9 @@ msgstr "Öffnen mit"
 msgid "Paste"
 msgstr "Einfügen"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Lesezeichen"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -586,13 +586,13 @@ msgstr "Datei nicht gefuden"
 msgid "The file selected no longer exists."
 msgstr "Die ausgewählte Datei existiert nicht mehr."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Persönlich"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ihre normalen Orte und Lesezeichen"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -724,6 +724,10 @@ msgstr "_Aushängen"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "Aus_werfen"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Lesezeichen"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1968,10 +1972,6 @@ msgstr "In diesem Ordner"
 msgid "Below This Folder"
 msgstr "Unterhalb dieses Ordners"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Lesezeichen"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Zuletzt verwendet"
@@ -2039,6 +2039,15 @@ msgstr "Markierte wiederherstellen"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Markierte löschen"
+
+#~ msgid "Personal"
+#~ msgstr "Persönlich"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ihre normalen Orte und Lesezeichen"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Lesezeichen"
 
 #~ msgid "Your network places"
 #~ msgstr "Ihre Orte im Netzwerk"

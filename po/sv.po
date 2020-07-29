@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -401,9 +401,9 @@ msgstr "Öppna med"
 msgid "Paste"
 msgstr "Klistra in"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Bokmärk"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -584,13 +584,13 @@ msgstr "Filen hittades inte"
 msgid "The file selected no longer exists."
 msgstr "Den valda filen finns inte längre."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Personligt"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Dina vanliga platser och bokmärken"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -722,6 +722,10 @@ msgstr "_Avmontera"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "Mata _ut"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Bokmärk"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1945,10 +1949,6 @@ msgstr "I denna mapp"
 msgid "Below This Folder"
 msgstr "Under denna mapp"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Bokmärken"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Senaste använda"
@@ -2016,6 +2016,15 @@ msgstr "Återställ valda"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Radera valda"
+
+#~ msgid "Personal"
+#~ msgstr "Personligt"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Dina vanliga platser och bokmärken"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Bokmärken"
 
 #~ msgid "Your network places"
 #~ msgstr "Dina nätverksplatser"

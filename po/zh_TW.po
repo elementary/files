@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2018-10-30 09:14+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
@@ -396,9 +396,9 @@ msgstr "以此開啟"
 msgid "Paste"
 msgstr "貼上"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "書籤"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -579,13 +579,13 @@ msgstr "找不到檔案"
 msgid "The file selected no longer exists."
 msgstr "選取的檔案不再存在。"
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "個人"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "您的常用位置與書籤"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -717,6 +717,10 @@ msgstr "卸載(_U)"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "退出(_E)"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "書籤"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1887,10 +1891,6 @@ msgstr "於此資料夾中"
 msgid "Below This Folder"
 msgstr "在此資料夾下"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "書籤"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "最近使用"
@@ -1958,6 +1958,15 @@ msgstr "還原選取項目"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "刪除選取項目"
+
+#~ msgid "Personal"
+#~ msgstr "個人"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "您的常用位置與書籤"
+
+#~ msgid "Bookmarks"
+#~ msgstr "書籤"
 
 #~ msgid "Your network places"
 #~ msgstr "您的網路位置"

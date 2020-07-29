@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-06-08 18:11+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -400,9 +400,9 @@ msgstr "Openen met"
 msgid "Paste"
 msgstr "Plakken"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Bladwijzer"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -580,13 +580,13 @@ msgstr "Bestand niet gevonden"
 msgid "The file selected no longer exists."
 msgstr "Het gekozen bestand bestaat niet meer."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Persoonlijk"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Uw gebruikelijke plaatsen en bladwijzers"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -718,6 +718,10 @@ msgstr "_Ontkoppelen"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "Uitw_erpen"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Bladwijzer"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1956,10 +1960,6 @@ msgstr "In deze map"
 msgid "Below This Folder"
 msgstr "Onder deze map"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Bladwijzers"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Recent gebruikt"
@@ -2027,6 +2027,15 @@ msgstr "Selectie herstellen"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Selectie verwijderen"
+
+#~ msgid "Personal"
+#~ msgstr "Persoonlijk"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Uw gebruikelijke plaatsen en bladwijzers"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Bladwijzers"
 
 #~ msgid "Your network places"
 #~ msgstr "Uw netwerkplaatsen"

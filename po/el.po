@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -400,9 +400,9 @@ msgstr "Άνοιγμα με"
 msgid "Paste"
 msgstr "Επικόλληση"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Προσθήκη στους σελιδοδείκτες"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -588,13 +588,13 @@ msgstr "Το αρχείο δεν βρέθηκε"
 msgid "The file selected no longer exists."
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Προσωπικά"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Οι συνήθεις τοποθεσίες και οι σελιδοδείκτες σας"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -728,6 +728,10 @@ msgstr "_Αποπροσάρτηση"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Εξαγωγή"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Προσθήκη στους σελιδοδείκτες"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1985,10 +1989,6 @@ msgstr "Σε αυτό το φάκελο"
 msgid "Below This Folder"
 msgstr "Σε αυτό το φάκελο"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Σελιδοδείκτες"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2059,6 +2059,15 @@ msgstr "Επαναφορά όλων"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " επιλέχτηκε"
+
+#~ msgid "Personal"
+#~ msgstr "Προσωπικά"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Οι συνήθεις τοποθεσίες και οι σελιδοδείκτες σας"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Σελιδοδείκτες"
 
 #~ msgid "Your network places"
 #~ msgstr "Οι δικτυακές σας τοποθεσίες"

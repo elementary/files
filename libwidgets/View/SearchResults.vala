@@ -245,7 +245,7 @@ namespace Marlin.View.Chrome {
 
             list.append (out bookmark_results, null);
             list.@set (bookmark_results,
-                        0, get_category_header (_("Bookmarks")),
+                        0, get_category_header (_("Favorites")),
                         5, Category.CURRENT_HEADER.to_string ());
 
 #if HAVE_ZEITGEIST

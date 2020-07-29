@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -403,9 +403,9 @@ msgstr "بىلەن ئىچىش"
 msgid "Paste"
 msgstr "چاپلاش"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "خەتكۈچ"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -589,13 +589,13 @@ msgstr "ھۆججەت تىپىلمىدى"
 msgid "The file selected no longer exists."
 msgstr "تاللانغان ھۆججەت مەۋجۇت ئەمەس."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "شەخسىي"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "ئادەتتە كۆپ ئىشلەتكەن ئورنىڭىز ۋە خەتكۈچلىرىڭىز"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -729,6 +729,10 @@ msgstr "چۈشۈرۈش(_U)"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "دىسكىنى چىقىرىش(_E)"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "خەتكۈچ"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1935,10 +1939,6 @@ msgstr "بۇ مۇندەرىجىدە"
 msgid "Below This Folder"
 msgstr "بۇ مۇندەرىجىدە"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "خەتكۈچلەر"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2009,6 +2009,15 @@ msgstr "ھەممىنى ئەسلىگە كەلتۈرۈش"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " تاللاندى"
+
+#~ msgid "Personal"
+#~ msgstr "شەخسىي"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "ئادەتتە كۆپ ئىشلەتكەن ئورنىڭىز ۋە خەتكۈچلىرىڭىز"
+
+#~ msgid "Bookmarks"
+#~ msgstr "خەتكۈچلەر"
 
 #~ msgid "Your network places"
 #~ msgstr "سىزنىڭ تور ئورنىڭىز"

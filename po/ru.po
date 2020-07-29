@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-04-12 11:10+0000\n"
 "Last-Translator: Stas <SedovSG@yandex.ru>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
@@ -403,9 +403,9 @@ msgstr "Открыть с помощью"
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Добавить в закладки"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -583,13 +583,13 @@ msgstr "Файл не найден"
 msgid "The file selected no longer exists."
 msgstr "Выбранный файл больше не существует."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Личное"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ваши общие места и закладки"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -722,6 +722,10 @@ msgstr "_Отключить"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Извлечь"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "Добавить в закладки"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1955,10 +1959,6 @@ msgstr "В этой папке"
 msgid "Below This Folder"
 msgstr "Ниже этой папки"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Закладки"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Недавние"
@@ -2026,6 +2026,15 @@ msgstr "Восстановить выбранное"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Удалить выбранное"
+
+#~ msgid "Personal"
+#~ msgstr "Личное"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ваши общие места и закладки"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Закладки"
 
 #~ msgid "Your network places"
 #~ msgstr "Ваше сетевое окружение"

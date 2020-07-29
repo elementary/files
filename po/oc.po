@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2016-10-09 14:37+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
@@ -395,8 +395,8 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
@@ -586,12 +586,12 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Informacions personalas"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
+msgid "Common places plus saved folders and files"
 msgstr ""
 
 #: src/View/Sidebar.vala:603
@@ -726,6 +726,10 @@ msgstr "_Desmontar"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Ejectar"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1952,10 +1956,6 @@ msgstr ""
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr ""
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
@@ -2024,6 +2024,9 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "Suprimir _tot"
+
+#~ msgid "Personal"
+#~ msgstr "Informacions personalas"
 
 #~ msgid "Your network places"
 #~ msgstr "Vòstres emplaçaments ret"

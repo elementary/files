@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2020-05-16 11:10+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -414,9 +414,9 @@ msgstr "فتح باستخدام"
 msgid "Paste"
 msgstr "لصق"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "علامة مرجعية"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -594,13 +594,13 @@ msgstr "لم يتم ايجاد الملف"
 msgid "The file selected no longer exists."
 msgstr "الملف المختار لم يعد موجودا."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "شخصي"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "مجلداتك وعلاماتك الشائعة"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -732,6 +732,10 @@ msgstr "ا_فصل"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "أ_خرِج"
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
+msgstr "علامة مرجعية"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -2023,10 +2027,6 @@ msgstr "في هذا المجلد"
 msgid "Below This Folder"
 msgstr "تحت هذا المجلد"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "المؤشرات"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "تم استخدامه مؤخرا"
@@ -2096,6 +2096,15 @@ msgstr " محددة"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " محددة"
+
+#~ msgid "Personal"
+#~ msgstr "شخصي"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "مجلداتك وعلاماتك الشائعة"
+
+#~ msgid "Bookmarks"
+#~ msgstr "المؤشرات"
 
 #~ msgid "Your network places"
 #~ msgstr "شبكتك المحلية"

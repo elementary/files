@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:44+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
@@ -399,8 +399,8 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
+#: src/View/AbstractDirectoryView.vala:1960
+msgid "Add to Favorites"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
@@ -579,13 +579,13 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Lični"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vaše markirane i često posećene lokacije"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -718,6 +718,10 @@ msgstr ""
 
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
+msgstr ""
+
+#: src/View/PopupMenuBuilder.vala:85
+msgid "Bookmark"
 msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
@@ -1929,10 +1933,6 @@ msgstr ""
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr ""
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
@@ -2002,6 +2002,12 @@ msgstr " izabrano"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " izabrano"
+
+#~ msgid "Personal"
+#~ msgstr "Lični"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vaše markirane i često posećene lokacije"
 
 #~ msgid "Your network places"
 #~ msgstr "Vaše lokacije na mreži"
