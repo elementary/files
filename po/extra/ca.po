@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-28 20:01+0000\n"
-"PO-Revision-Date: 2020-07-24 12:12+0000\n"
+"PO-Revision-Date: 2020-07-29 18:40+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,11 +80,8 @@ msgstr ""
 "lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr ""
-"Es mostra també la informació de fitxer superposada a la vista de llista."
+msgstr "Es mostra el recompte d’elements de carpeta a la vista de llista."
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
@@ -98,6 +95,8 @@ msgstr ""
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited."
 msgstr ""
+"Finestra de propietats: permetr que el nom de fitxer es pugui copiar quan no "
+"es pot editar."
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 #: data/io.elementary.files.appdata.xml.in.in:85
@@ -108,14 +107,17 @@ msgstr "Correccions:"
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr ""
+"Correcció de la fallada en prémer Retorn i una altra tecla al mateix temps"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "Correcció de la gestió de la barra de camí de \"~\" i \"..\" al camí"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Filechooser pathbar no longer crashes when invoked from a flatpak"
 msgstr ""
+"La barra de camí del Filechooser ja no es bloqueja quan s'invoca des d'un "
+"flatpak."
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid ""
