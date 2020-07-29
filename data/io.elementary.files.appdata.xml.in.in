@@ -66,13 +66,14 @@
           <li>Favorite menu option for network mounts in sidebar</li>
           <li>Show folder item count in List View</li>
           <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
-          <li>Properties window: Allow the filename to be copied when it cannot be edited.</li>
+          <li>Properties window: Allow the filename to be copied when it cannot be edited</li>
+          <li>Improved tooltip formatting for devices in the sidebar</li>
         </ul>
         <p>Fixes:</p>
         <ul>
           <li>Fix crash when pressing Enter and another key at the same time</li>
           <li>Fix pathbar handling of "~" and ".." in path</li>
-          <li>Filechooser pathbar no longer crashes when invoked from a flatpak</li>
+          <li>Filechooser pathbar no longer crashes when invoked from a Flatpak</li>
         </ul>
       </description>
     </release>
