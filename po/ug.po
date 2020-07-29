@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -403,7 +403,7 @@ msgstr "بىلەن ئىچىش"
 msgid "Paste"
 msgstr "چاپلاش"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -729,10 +729,6 @@ msgstr "چۈشۈرۈش(_U)"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "دىسكىنى چىقىرىش(_E)"
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "خەتكۈچ"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -2009,6 +2005,9 @@ msgstr "ھەممىنى ئەسلىگە كەلتۈرۈش"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " تاللاندى"
+
+#~ msgid "Bookmark"
+#~ msgstr "خەتكۈچ"
 
 #~ msgid "Personal"
 #~ msgstr "شەخسىي"

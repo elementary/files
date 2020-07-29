@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -389,7 +389,7 @@ msgstr "打开方式"
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -707,10 +707,6 @@ msgstr "卸载"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "弹出"
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "添加书签"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -1939,6 +1935,9 @@ msgstr "恢复选中"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "删除选中"
+
+#~ msgid "Bookmark"
+#~ msgstr "添加书签"
 
 #~ msgid "Personal"
 #~ msgstr "个人"

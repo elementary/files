@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -406,7 +406,7 @@ msgstr "Отвори с"
 msgid "Paste"
 msgstr "Поставяне"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -732,10 +732,6 @@ msgstr "_Демонтиране"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Изваждане"
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Добавяне към отметките"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -2035,6 +2031,9 @@ msgstr "Възстанови всички"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " избрани"
+
+#~ msgid "Bookmark"
+#~ msgstr "Добавяне към отметките"
 
 #~ msgid "Personal"
 #~ msgstr "Лични"

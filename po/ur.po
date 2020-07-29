@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -399,7 +399,7 @@ msgstr "کھولیں بذریعہ"
 msgid "Paste"
 msgstr "پیسٹ"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -725,10 +725,6 @@ msgstr "_ان ماؤنٹ کریں"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_خارج کریں"
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "بک مارک کریں"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -2021,6 +2017,9 @@ msgstr "تمام واپس لائیں"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " منتخب کردہ"
+
+#~ msgid "Bookmark"
+#~ msgstr "بک مارک کریں"
 
 #~ msgid "Personal"
 #~ msgstr "ذاتی"

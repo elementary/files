@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:44+0000\n"
+"POT-Creation-Date: 2020-07-29 18:48+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -411,7 +411,7 @@ msgstr "Deschide cu"
 msgid "Paste"
 msgstr "Lipeşte"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
 msgstr ""
 
@@ -737,10 +737,6 @@ msgstr "Demontează"
 #: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "Scoate"
-
-#: src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Favorit"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -2074,6 +2070,9 @@ msgstr "Restaurează toate"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " selectat"
+
+#~ msgid "Bookmark"
+#~ msgstr "Favorit"
 
 #~ msgid "Personal"
 #~ msgstr "Personal"
