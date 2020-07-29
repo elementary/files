@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2015-12-21 13:45+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Nepali <ne@li.org>\n"
@@ -611,7 +611,7 @@ msgid "Network"
 msgstr ""
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
+msgid "Devices and places available via a network"
 msgstr ""
 
 #: src/View/Sidebar.vala:819

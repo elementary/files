@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2018-11-11 00:08+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/files/files/"
@@ -630,8 +630,8 @@ msgid "Network"
 msgstr "Mreža"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Vaše mrežne lokacije"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2045,6 +2045,9 @@ msgstr "Obnovi označeno"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Izbriši označeno"
+
+#~ msgid "Your network places"
+#~ msgstr "Vaše mrežne lokacije"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Lokalne particije i uređaji"

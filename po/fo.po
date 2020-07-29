@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2015-12-21 13:44+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
@@ -618,8 +618,8 @@ msgid "Network"
 msgstr "Netverk"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Tíni netstøð"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -1994,6 +1994,9 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "Strika _Allar"
+
+#~ msgid "Your network places"
+#~ msgstr "Tíni netstøð"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Tínar lokalu deildir og tóleindir"

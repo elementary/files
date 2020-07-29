@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -629,8 +629,8 @@ msgid "Network"
 msgstr "ኔትዎርክ"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "የእርስዎ የኔትዎርክ ቦታዎች"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2006,6 +2006,9 @@ msgstr " የተመረጠው"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " የተመረጠው"
+
+#~ msgid "Your network places"
+#~ msgstr "የእርስዎ የኔትዎርክ ቦታዎች"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "ማጥፊያ %d ኮፒ የተደረጉ እቃዎችን"

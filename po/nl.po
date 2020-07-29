@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2020-06-08 18:11+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -617,8 +617,8 @@ msgid "Network"
 msgstr "Netwerk"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Uw netwerkplaatsen"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2027,6 +2027,9 @@ msgstr "Selectie herstellen"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Selectie verwijderen"
+
+#~ msgid "Your network places"
+#~ msgstr "Uw netwerkplaatsen"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Uw lokale partities en apparaten"

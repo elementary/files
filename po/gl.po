@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -616,8 +616,8 @@ msgid "Network"
 msgstr "Rede"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Lugares na red"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2016,6 +2016,9 @@ msgstr "Restaurar o seleccionado"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Eliminar o seleccionado"
+
+#~ msgid "Your network places"
+#~ msgstr "Lugares na red"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Dispositivos e particións locais"

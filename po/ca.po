@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
@@ -614,8 +614,8 @@ msgid "Network"
 msgstr "Xarxa"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Llocs a la xarxa"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2011,6 +2011,9 @@ msgstr "Restaura la selecció"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Suprimeix la selecció"
+
+#~ msgid "Your network places"
+#~ msgstr "Llocs a la xarxa"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Dispositius y particions locals"

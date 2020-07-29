@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 23:03+0000\n"
+"POT-Creation-Date: 2020-07-29 00:43+0000\n"
 "PO-Revision-Date: 2020-07-16 16:16+0000\n"
 "Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/files/"
@@ -615,8 +615,8 @@ msgid "Network"
 msgstr "Nettverk"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Dine nettverksstadar"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -2002,6 +2002,9 @@ msgstr "Gjenopprett valde"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Slett valde"
+
+#~ msgid "Your network places"
+#~ msgstr "Dine nettverksstadar"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Dine lokale partisjonar og einingar"
