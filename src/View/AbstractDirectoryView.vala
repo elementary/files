@@ -76,7 +76,7 @@ namespace FM {
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
             {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
@@ -254,7 +254,7 @@ namespace FM {
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
-        protected bool show_remote_thumbnails {get; set; default = false;}
+        protected bool show_remote_thumbnails {get; set; default = true;}
         protected bool hide_local_thumbnails {get; set; default = false;}
         protected bool is_admin {
             get {
@@ -1300,7 +1300,7 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if ((slot.directory.is_local && !hide_local_thumbnails) ||
+                if ((!slot.directory.is_network && !hide_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
                     thumbnailer.queue_file (file, null, large_thumbnails);
@@ -1957,7 +1957,7 @@ namespace FM {
 
             var bookmark_menuitem = new Gtk.MenuItem ();
             bookmark_menuitem.add (new Granite.AccelLabel (
-                _("Bookmark"),
+                _("Add to Favorites"),
                 "<Ctrl>d"
             ));
             bookmark_menuitem.action_name = "common.bookmark";
@@ -2130,7 +2130,7 @@ namespace FM {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (show_hidden_menuitem);
 
-                    if (slot.directory.is_local) {
+                    if (!slot.directory.is_network) {
                         menu.add (hide_local_thumbnails_menuitem);
                     } else if (slot.directory.can_open_files) {
                         menu.add (show_remote_thumbnails_menuitem);
@@ -2529,9 +2529,12 @@ namespace FM {
 
             assert (slot is GOF.AbstractSlot && slot.directory != null);
 
+            /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (thumbnail_source_id != 0 ||
-                 !slot.directory.can_open_files ||
-                 slot.directory.is_loading ()) {
+                (slot.directory.is_network && !show_remote_thumbnails) ||
+                (!slot.directory.is_network && hide_local_thumbnails) ||
+                !slot.directory.can_open_files ||
+                slot.directory.is_loading ()) {
 
                     return;
             }
@@ -2547,6 +2550,7 @@ namespace FM {
                 if (thumbnail_source_id > 0) {
                     return GLib.Source.CONTINUE;
                 }
+
                 thaw_child_notify ();
                 freeze_source_id = 0;
                 return GLib.Source.REMOVE;
@@ -2620,10 +2624,7 @@ namespace FM {
                     * there has not been another event (which would zero the thumbnail_source_id)
                     * thumbnails are not hidden by settings
                  */
-                if ((actually_visible > 0 && thumbnail_source_id > 0) &&
-                    ((slot.directory.is_local && !hide_local_thumbnails) ||
-                     (!slot.directory.is_local && show_remote_thumbnails))) {
-
+                if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
                     draw_when_idle ();

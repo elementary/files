@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2017-06-11 14:52+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -105,7 +105,7 @@ msgstr "Ємність:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "Невідомо"
 
@@ -126,11 +126,11 @@ msgstr "Зробити типовим"
 msgid "Properties"
 msgstr "Параметри"
 
-#: src/Dialogs/PropertiesWindow.vala:227
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "Права доступу"
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -141,92 +141,92 @@ msgstr[1] ""
 msgstr[2] ""
 "%i файли не можуть бути прочитані через прав доступу або інші помилки."
 
-#: src/Dialogs/PropertiesWindow.vala:252
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "Фактичний розмір може бути більше"
 
-#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "невідомо"
 
-#: src/Dialogs/PropertiesWindow.vala:455
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "Завантаження…"
 
-#: src/Dialogs/PropertiesWindow.vala:489
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "Не можливо визначти"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
 #: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Розмір:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Тип:"
 
-#: src/Dialogs/PropertiesWindow.vala:525
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "Містить:"
 
-#: src/Dialogs/PropertiesWindow.vala:549
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "Створено:"
 
-#: src/Dialogs/PropertiesWindow.vala:560
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "Змінено:"
 
-#: src/Dialogs/PropertiesWindow.vala:572
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "Видалено"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:589
 #, fuzzy
 msgid "Media type:"
 msgstr "Тип MIME:"
 
-#: src/Dialogs/PropertiesWindow.vala:589
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "Роздільна здатність:"
 
-#: src/Dialogs/PropertiesWindow.vala:597
+#: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Розташування:"
 
-#: src/Dialogs/PropertiesWindow.vala:607
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "Призначення:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "Початкове місцезнаходження"
 
-#: src/Dialogs/PropertiesWindow.vala:638
+#: src/Dialogs/PropertiesWindow.vala:645
 #: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "Інший додаток..."
 
-#: src/Dialogs/PropertiesWindow.vala:658
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "Відкрити за допомогою:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "Власник:"
 
-#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "Група:"
 
-#: src/Dialogs/PropertiesWindow.vala:939
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "Всі:"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
@@ -234,8 +234,8 @@ msgstr[0] "%u вкладена тека"
 msgstr[1] "%u вкладені теки"
 msgstr[2] "%u вкладені теки"
 
-#: src/Dialogs/PropertiesWindow.vala:1224
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -244,12 +244,12 @@ msgstr[1] "%u файли"
 msgstr[2] "%u файлів"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1229
+#: src/Dialogs/PropertiesWindow.vala:1236
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -257,7 +257,7 @@ msgstr[0] "%u тека"
 msgstr[1] "%u теки"
 msgstr[2] "%u тек"
 
-#: src/Dialogs/PropertiesWindow.vala:1251
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -266,7 +266,7 @@ msgstr[1] "%u selected items"
 msgstr[2] "%u selected items"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1253
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -413,8 +413,8 @@ msgid "Paste"
 msgstr "Вставити"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Закладка"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -519,26 +519,26 @@ msgstr "Створити"
 msgid "Untitled %s"
 msgstr "Неназваний %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "Не можливо видалити файли звідси"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "У вас немає дозволу на зміну цього місцезнаходження"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "Неможливо скопіювати файли, що знаходяться у смітнику"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "Натомість вирізаю виділення"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "Не можливо вставити файли тут"
 
@@ -598,13 +598,13 @@ msgstr "Файл не знайдено"
 msgid "The file selected no longer exists."
 msgstr "Виділений файл більше не існує."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Особисте"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ваші загальні місця та закладки"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -627,16 +627,16 @@ msgid "Devices"
 msgstr "Пристрої"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Ваші локальні розділи та пристрої"
+msgid "Internal and connected storage devices"
+msgstr ""
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Мережа"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Ваші мережеві місця"
+msgid "Devices and places available via a network"
+msgstr ""
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -656,22 +656,27 @@ msgstr "З'єднатися з сервером"
 msgid "Connect to a network server"
 msgstr "Під’єднатися до мережевого серверу файлів"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s вільно з %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S з %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Не вдається запустити %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Спорожнити _смітник"
 
@@ -1110,34 +1115,34 @@ msgstr "Інший файл з такою ж назвою вже існує в �
 msgid "Merge"
 msgstr "Об’єднати"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Не вдається визначити початкове розташування \"%s\" "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Елемент неможливо відновити зі смітника"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Неможливо перейменувати на '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:561
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Сьогодні о %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:569
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Вчора о %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:577
 #, c-format
 msgid "%%A at %s"
 msgstr ""
@@ -1989,10 +1994,6 @@ msgstr "В цій теці"
 msgid "Below This Folder"
 msgstr "В цій теці"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Закладки"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2063,6 +2064,27 @@ msgstr "Відновити все"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " обрано"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s вільно з %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Закладка"
+
+#~ msgid "Personal"
+#~ msgstr "Особисте"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ваші загальні місця та закладки"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Закладки"
+
+#~ msgid "Your network places"
+#~ msgstr "Ваші мережеві місця"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Ваші локальні розділи та пристрої"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Видалити %d скопійованих елементів"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"PO-Revision-Date: 2020-07-29 18:40+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -103,7 +103,7 @@ msgstr "Capacité :"
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "Inconnu"
 
@@ -124,11 +124,11 @@ msgstr "Définir comme valeur par défaut"
 msgid "Properties"
 msgstr "Propriétés"
 
-#: src/Dialogs/PropertiesWindow.vala:227
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "Permissions"
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -139,99 +139,99 @@ msgstr[1] ""
 "%i fichiers ne peuvent être lus faute de permission suffisante ou d'autres "
 "erreurs."
 
-#: src/Dialogs/PropertiesWindow.vala:252
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "La taille réelle peut être plus grande"
 
-#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "inconnu"
 
-#: src/Dialogs/PropertiesWindow.vala:455
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "Chargement…"
 
-#: src/Dialogs/PropertiesWindow.vala:489
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "Ne peut être déterminé"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
 #: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Taille :"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Type :"
 
-#: src/Dialogs/PropertiesWindow.vala:525
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "Contient :"
 
-#: src/Dialogs/PropertiesWindow.vala:549
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "Créé :"
 
-#: src/Dialogs/PropertiesWindow.vala:560
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "Modifié :"
 
-#: src/Dialogs/PropertiesWindow.vala:572
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "Supprimé :"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
 msgstr "Type de média :"
 
-#: src/Dialogs/PropertiesWindow.vala:589
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "Résolution :"
 
-#: src/Dialogs/PropertiesWindow.vala:597
+#: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Emplacement :"
 
-#: src/Dialogs/PropertiesWindow.vala:607
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "Destination :"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "Emplacement d'origine :"
 
-#: src/Dialogs/PropertiesWindow.vala:638
+#: src/Dialogs/PropertiesWindow.vala:645
 #: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "Autre application…"
 
-#: src/Dialogs/PropertiesWindow.vala:658
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "Ouvrir avec :"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "Propriétaire :"
 
-#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "Groupe :"
 
-#: src/Dialogs/PropertiesWindow.vala:939
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "Tout le monde :"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u sous-dossier"
 msgstr[1] "%u sous-dossiers"
 
-#: src/Dialogs/PropertiesWindow.vala:1224
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -239,19 +239,19 @@ msgstr[0] "%u fichier"
 msgstr[1] "%u fichiers"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1229
+#: src/Dialogs/PropertiesWindow.vala:1236
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u dossier"
 msgstr[1] "%u dossiers"
 
-#: src/Dialogs/PropertiesWindow.vala:1251
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -259,7 +259,7 @@ msgstr[0] "%u objet sélectionné"
 msgstr[1] "%u objets sélectionnés"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1253
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -401,8 +401,8 @@ msgid "Paste"
 msgstr "Coller"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Ajouter aux favoris"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -501,26 +501,26 @@ msgstr "Nouveau"
 msgid "Untitled %s"
 msgstr "Sans titre %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "Impossible de supprimer les fichiers d'ici"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "Vous n'avez pas l'autorisation de modifier ce répertoire"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "Impossible de copier des fichiers qui sont dans la corbeille"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "Couper la sélection à la place"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "Impossible de coller des fichiers ici"
 
@@ -580,13 +580,13 @@ msgstr "Fichier introuvable"
 msgid "The file selected no longer exists."
 msgstr "Le fichier sélectionné n'existe plus."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Personnel"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vos emplacements et vos signets"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -609,16 +609,16 @@ msgid "Devices"
 msgstr "Périphériques"
 
 #: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Vos partitions et périphériques locaux"
+msgid "Internal and connected storage devices"
+msgstr "Périphériques de stockage internes et connectés"
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Réseau"
 
 #: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Vos emplacements réseau"
+msgid "Devices and places available via a network"
+msgstr "Périphériques et emplacements disponibles en réseau"
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -636,22 +636,28 @@ msgstr "Se connecter au serveur"
 msgid "Connect to a network server"
 msgstr "Se connecter à un serveur réseau"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s libre sur %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s sur %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Erreur lors du montage du volume %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Impossible de démarrer %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Vider la corbeille"
 
@@ -1078,34 +1084,34 @@ msgstr "Un autre fichier portant le même nom existe déjà dans « %s »."
 msgid "Merge"
 msgstr "Fusionner"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Impossible de déterminer l'emplacement d'origine de « %s » "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Impossible de restaurer l'élément depuis la corbeille"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Impossible de renommer en « %s »"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:561
 #, c-format
 msgid "Today at %s"
 msgstr "Aujourd'hui à %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:569
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Hier à %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:577
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A à %s"
@@ -1954,10 +1960,6 @@ msgstr "Dans ce dossier"
 msgid "Below This Folder"
 msgstr "À l'intérieur de ce dossier"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Favoris"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Récents"
@@ -2025,6 +2027,27 @@ msgstr "Restaurer la sélection"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Supprimer la sélection"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s libre sur %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Ajouter aux favoris"
+
+#~ msgid "Personal"
+#~ msgstr "Personnel"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vos emplacements et vos signets"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Favoris"
+
+#~ msgid "Your network places"
+#~ msgstr "Vos emplacements réseau"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Vos partitions et périphériques locaux"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Supprimer %d fichiers copiés"

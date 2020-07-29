@@ -31,7 +31,7 @@ namespace Marlin.View {
             {"undo", action_undo},
             {"redo", action_redo},
             {"bookmark", action_bookmark},
-            {"find", action_find},
+            {"find", action_find, "s"},
             {"edit-path", action_edit_path},
             {"tab", action_tab, "s"},
             {"go-to", action_go_to, "s"},
@@ -39,7 +39,7 @@ namespace Marlin.View {
             {"info", action_info, "s"},
             {"view-mode", action_view_mode, "u", "0" },
             {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
@@ -240,9 +240,9 @@ namespace Marlin.View {
                 /* Use find function instead of view interactive search */
                 if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
                     /* Use printable characters to initiate search */
-                    if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
-                        activate_action ("find", null);
-                        key_press_event (event);
+                    var uc = ((unichar)(Gdk.keyval_to_unicode (event.keyval)));
+                    if (uc.isprint ()) {
+                        activate_action ("find", uc.to_string ());
                         return true;
                     }
                 }
@@ -639,7 +639,11 @@ namespace Marlin.View {
                 return;
             }
 
-            top_menu.enter_search_mode ();
+            if (param == null) {
+                top_menu.enter_search_mode ();
+            } else {
+                top_menu.enter_search_mode (param.get_string ());
+            }
         }
 
         private bool adding_window = false;
@@ -1151,7 +1155,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            application.set_accels_for_action ("win.find", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.find::", {"<Ctrl>F"});
             application.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});

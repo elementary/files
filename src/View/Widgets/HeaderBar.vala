@@ -116,8 +116,8 @@ public class Marlin.View.Chrome.HeaderBar : Hdy.HeaderBar {
         location_bar.escape.connect (() => {escape ();});
     }
 
-    public bool enter_search_mode () {
-        return location_bar.enter_search_mode ();
+    public bool enter_search_mode (string term = "") {
+        return location_bar.enter_search_mode (term);
     }
 
     public bool enter_navigate_mode () {
