@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:57+0000\n"
-"PO-Revision-Date: 2020-07-28 14:12+0000\n"
+"PO-Revision-Date: 2020-07-31 14:12+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -74,20 +74,15 @@ msgstr "Melhorias:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
-msgstr ""
+msgstr "\"Pessoais\" e \"Marcadores\" são agora \"Favoritos\""
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Bookmark menu option for network mounts in sidebar"
 msgid "Favorite menu option for network mounts in sidebar"
 msgstr "Opção de menu de favoritos para montagens de rede na barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr ""
-"Mostra a sobreposição de informações do ficheiro na Vista por lista também"
+msgstr "Mostra a contagem de itens da pasta em Vista de lista"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
@@ -101,12 +96,14 @@ msgstr ""
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
+"Janela de propriedades: Permite que o nome do ficheiro seja copiado quando "
+"não puder ser editado"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Estilo melhorado para barras de espaço em disco"
+msgstr ""
+"Formatação aprimorada da dica de ferramenta para dispositivos na barra "
+"lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:87
@@ -116,15 +113,17 @@ msgstr "Correções:"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr ""
+msgstr "Corrija a falha ao pressionar Enter e outra tecla ao mesmo tempo"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "Corrige o manuseamento da barra de caminho de \"~\" e \"..\" no caminho"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
+"A barra de caminho do selecionador de ficheiro já não bloqueia quando "
+"invocado a partir de um Flatpak"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
