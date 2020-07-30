@@ -18,7 +18,7 @@
 ***/
 
 public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
-    Marlin.AbstractSidebar? sidebar;
+    Marlin.SidebarInterface? sidebar;
     CloudProviders.Collector collector;
     Gee.ArrayList<CloudProviders.Provider> providers_connected;
 
@@ -34,7 +34,7 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
      * @param a instance of Marlin.AbstractSidebar
      */
     public override void sidebar_loaded (Gtk.Widget widget) {
-        sidebar = widget as Marlin.AbstractSidebar;
+        sidebar = (Marlin.SidebarInterface)widget;
         on_providers_changes ();
     }
 
@@ -104,7 +104,7 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
      * Generate a SidebarPluginItem from provider and account informations
      */
     static Marlin.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
-                                                       CloudProviders.Account account) {
+                                                        CloudProviders.Account account) {
 
         var item = new Marlin.SidebarPluginItem () {
             name = account.name,

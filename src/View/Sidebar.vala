@@ -19,7 +19,7 @@
               Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-public class Marlin.Sidebar : Marlin.AbstractSidebar {
+public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
     public Marlin.View.Window window { get; construct; }
 
     private const int MAX_BOOKMARKS_DROPPED = 100;
@@ -30,7 +30,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     private const int CATEGORY_YPAD = 3; /* Affects height of category headers */
 
     private static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
-
     Gtk.TreeView tree_view;
     Gtk.CellRendererText name_renderer;
     Gtk.CellRenderer eject_spinner_cell_renderer;
@@ -44,6 +43,9 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     int eject_button_size = 20;
     uint n_builtins_before; /* Number of builtin (immovable) bookmarks before the personal bookmarks */
     string last_selected_uri;
+
+    Gtk.TreeStore store;
+    Gtk.Box content_box;
     string slot_location;
 
     /* DnD */
@@ -60,6 +62,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     bool renaming = false;
     private bool local_only;
     Gee.HashMap<PlaceType, Gtk.TreeRowReference> categories = new Gee.HashMap<PlaceType, Gtk.TreeRowReference> ();
+    Gee.HashMap<int, Gtk.TreeRowReference> id_rowref_map = new Gee.HashMap<int, Gtk.TreeRowReference> ();
 
     /* Identifiers for target types */
     public enum TargetType {
@@ -112,12 +115,52 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
+    private int32 id_count;
+
     public Sidebar (Marlin.View.Window window) {
         Object (window: window);
     }
 
     construct {
-        init (); /* creates the Gtk.TreeModel store. */
+        /* ceates the Gtk.TreeModel store. */
+        store = new Gtk.TreeStore (((int)Column.COUNT),
+                                    typeof (string),            /* name */
+                                    typeof (string),            /* uri */
+                                    typeof (Drive),
+                                    typeof (Volume),
+                                    typeof (Mount),
+                                    typeof (int),               /* row type*/
+                                    typeof (Icon),              /* Primary icon */
+                                    typeof (uint),              /* index*/
+                                    typeof (bool),              /* can eject */
+                                    typeof (bool),              /* cannot eject */
+                                    typeof (bool),              /* is bookmark */
+                                    typeof (bool),              /* is category */
+                                    typeof (bool),              /* is not category */
+                                    typeof (string),            /* tool tip */
+                                    typeof (Icon),              /* Action icon (e.g. eject button) */
+                                    typeof (bool),              /* Show spinner (not eject button) */
+                                    typeof (bool),              /* Show eject button (not spinner) */
+                                    typeof (uint),              /* Spinner pulse */
+                                    typeof (uint64),            /* Free space */
+                                    typeof (uint64),            /* For disks, total size */
+                                    typeof (Marlin.SidebarCallbackFunc),
+                                    typeof (GLib.MenuModel),    /* MenuModel for external menus */
+                                    typeof (string),            /* Action group namespace */
+                                    typeof (GLib.ActionGroup)   /* Action group with MenuModel's actions */
+                                    );
+
+        content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        this.add (content_box);
+        content_box.show_all ();
+
+        /* intialise the item_id to a large random number */
+        var rand = new Rand.with_seed (int.parse (get_real_time ().to_string ()));
+        var min_size = int.MAX / 4;
+        while (id_count < min_size) {
+            id_count = (int32)(rand.next_int ());
+        }
+
         plugins.sidebar_loaded ((Gtk.Widget)this);
         this.last_selected_uri = null;
         this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
@@ -389,17 +432,17 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         return iter;
     }
 
-    protected override Gtk.TreeIter add_place (PlaceType place_type,
-                                               Gtk.TreeIter? parent,
-                                               string name,
-                                               Icon? icon,
-                                               string? uri,
-                                               Drive? drive,
-                                               Volume? volume,
-                                               Mount? mount,
-                                               uint index,
-                                               string? tooltip = null,
-                                               Icon? action_icon = null) {
+    protected Gtk.TreeIter add_place (PlaceType place_type,
+                                        Gtk.TreeIter? parent,
+                                        string name,
+                                        Icon? icon,
+                                        string? uri,
+                                        Drive? drive,
+                                        Volume? volume,
+                                        Mount? mount,
+                                        uint index,
+                                        string? tooltip = null,
+                                        Icon? action_icon = null) {
 
         bool show_eject, show_unmount, can_stop;
         check_unmount_and_eject (mount, volume, drive,
@@ -460,12 +503,32 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         return iter;
     }
 
-    public override Gtk.TreeRowReference? add_plugin_item (SidebarPluginItem item, PlaceType category) {
+    public void add_extra_item (Gtk.TreeRowReference category, string text, string tooltip, Icon? icon,
+                                Marlin.SidebarCallbackFunc? cb, Icon? action_icon = null) {
+        Gtk.TreeIter iter;
+        store.get_iter (out iter, category.get_path ());
+        iter = add_place (PlaceType.PLUGIN_ITEM,
+                         iter,
+                         text,
+                         icon,
+                         null,
+                         null,
+                         null,
+                         null,
+                         0,
+                         tooltip,
+                         action_icon);
+        if (cb != null) {
+            store.@set (iter, Column.PLUGIN_CALLBACK, cb);
+        }
+    }
+
+    public int32 add_plugin_item (Marlin.SidebarPluginItem item, PlaceType category) {
         Gtk.TreeIter parent;
         Gtk.TreeIter iter;
 
         if (!categories.has_key (category)) {
-            return null;
+            return -1;
         }
 
         store.get_iter (out parent, categories[category].get_path ());
@@ -473,17 +536,20 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
         var path = store.get_path (iter);
         if (path == null) {
-            return null;
+            return -1;
         }
 
         var row_reference = new Gtk.TreeRowReference (store, path);
+        var item_id = id_count++;
         set_plugin_item (item, iter);
         update_spinner (iter);
 
-        return row_reference;
+        id_rowref_map.@set (item_id, row_reference);
+        return item_id;
     }
 
-    public override bool update_plugin_item (SidebarPluginItem item, Gtk.TreeRowReference rowref) {
+    public bool update_plugin_item (Marlin.SidebarPluginItem item, int32 item_id) {
+        var rowref = id_rowref_map.@get (item_id);
         if (!rowref.valid ()) {
             return false;
         }
@@ -494,6 +560,11 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         update_spinner (iter);
 
         return true;
+    }
+
+    public void remove_plugin_item (int32 item_id) {
+        id_rowref_map.@remove (item_id);
+        update_places ();
     }
 
     private void set_plugin_item (SidebarPluginItem item, Gtk.TreeIter iter) {
@@ -786,7 +857,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                                  _("Network"),
                                  _("Devices and places available via a network"));
 
-            network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
+            var network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
 
             /* Add network mounts */
             network_mounts.reverse ();
@@ -826,10 +897,11 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                        Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network")));
 
             /* Add ConnectServer BUILTIN */
-            add_extra_network_item (_("Connect Server"),
-                                    Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server")),
-                                    new ThemedIcon.with_default_fallbacks ("network-server"),
-                                    side_bar_connect_server);
+            add_extra_item (network_category_reference,
+                            _("Connect Server"),
+                            Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server")),
+                            new ThemedIcon.with_default_fallbacks ("network-server"),
+                            side_bar_connect_server);
 
             plugins.update_sidebar ((Gtk.Widget)this);
         }
@@ -1430,7 +1502,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         string? uri = null;
-        Marlin.PluginCallbackFunc? f = null;
+        Marlin.SidebarCallbackFunc? f = null;
         store.@get (iter, Column.URI, out uri, Column.PLUGIN_CALLBACK, out f);
 
         if (uri != null) {
