@@ -67,7 +67,7 @@
       </description>
     </key>
     <key name="click-mode" enum="clickmode">
-      <default>'single'</default>
+      <default>'mixed'</default>
       <summary>Select or activate on primary click</summary>
       <description>
         Single click mode always activates on single click.
