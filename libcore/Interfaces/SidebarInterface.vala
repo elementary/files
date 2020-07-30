@@ -38,6 +38,7 @@ public interface Marlin.SidebarInterface : Gtk.Widget {
         public signal void sync_needed ();
         public signal void path_change_request (string uri, Marlin.OpenFlag flag);
         public signal void connect_server_request ();
+
         /**
          * Adds plugin item to Sidebar
          *
@@ -48,7 +49,11 @@ public interface Marlin.SidebarInterface : Gtk.Widget {
          * @return An ID for the item to use to update with update_plugin_item or null if add failed
          */
         public abstract int32 add_plugin_item (Marlin.SidebarPluginItem item, Marlin.PlaceType category);
+
         public abstract bool update_plugin_item (Marlin.SidebarPluginItem item, int32 item_id);
         public abstract void remove_plugin_item (int32 item_id);
+        public abstract void add_favorite_uri (string uri, string? label = null);
 
+        public abstract bool has_favorite_uri (string uri);
+        public abstract void reload ();
 }

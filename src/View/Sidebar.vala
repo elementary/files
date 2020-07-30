@@ -608,7 +608,7 @@ public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
         );
     }
 
-    public bool has_bookmark (string uri) {
+    public bool has_favorite_uri (string uri) {
         bool found = false;
 
         store.@foreach ((model, path, iter) => {
@@ -1383,7 +1383,7 @@ public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
         }
     }
 
-    public void add_uri (string uri, string? label = null) {
+    public void add_favorite_uri (string uri, string? label = null) {
         bookmarks.insert_uri_at_end (uri, label);
     }
 
@@ -2461,7 +2461,7 @@ public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
             name = mount.get_name ();
         }
 
-        add_uri (uri, name);
+        add_favorite_uri (uri, name);
     }
 
 /* VOLUME MONITOR CALLBACK FUNCTIONS */

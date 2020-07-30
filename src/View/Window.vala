@@ -58,7 +58,7 @@ namespace Marlin.View {
         public Chrome.ViewSwitcher view_switcher;
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
-        public Marlin.Sidebar sidebar;
+        public Marlin.SidebarInterface sidebar;
         public ViewContainer? current_tab = null;
 
         private bool tabs_restored = false;
@@ -569,11 +569,11 @@ namespace Marlin.View {
         }
 
         public void bookmark_uri (string uri, string? name = null) {
-            sidebar.add_uri (uri, name);
+            sidebar.add_favorite_uri (uri, name);
         }
 
         public bool can_bookmark_uri (string uri) {
-            return !sidebar.has_bookmark (uri);
+            return !sidebar.has_favorite_uri (uri);
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -626,7 +626,7 @@ namespace Marlin.View {
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
             /* Note: Duplicate bookmarks will not be created by BookmarkList */
-            sidebar.add_uri (current_tab.location.get_uri ());
+            sidebar.add_favorite_uri (current_tab.location.get_uri ());
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
