@@ -897,6 +897,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 var root = mount.get_root ();
                 var device_label = root.get_basename ();
                 if (device_label != mount.get_name ()) {
+                    ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
                     device_label = _("%s on %s").printf (device_label, mount.get_name ());
                 }
 
