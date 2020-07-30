@@ -38,7 +38,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     Marlin.BookmarkList bookmarks;
     VolumeMonitor volume_monitor;
     unowned Marlin.TrashMonitor monitor;
-    Gtk.IconTheme theme;
     GLib.Icon eject_icon;
 
     int eject_button_size = 20;
@@ -141,7 +140,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         this.volume_monitor = GLib.VolumeMonitor.@get ();
         connect_volume_monitor_signals ();
 
-        set_up_theme ();
         this.show_all ();
 
         update_places ();
@@ -357,18 +355,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         volume_monitor.drive_changed.disconnect (drive_changed_callback);
     }
 
-    private void set_up_theme () {
-        theme = Gtk.IconTheme.get_default ();
-        theme.changed.connect (icon_theme_changed_callback);
-        get_eject_icon ();
-    }
-
-    private void get_eject_icon () {
-        if (eject_icon == null) {
-            eject_icon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
-        }
-    }
-
     protected Gtk.TreeIter? add_category (PlaceType place_type, string name, string tooltip) {
         Gtk.TreeIter iter = add_place (place_type,
                                        null,
@@ -417,7 +403,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         if (show_eject_button) {
-            action_icon = this.eject_icon;
+            if (eject_icon == null) {
+                eject_icon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
+            }
+            action_icon = eject_icon;
         }
 
         GLib.Error error = null;
@@ -2451,11 +2440,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
 /* MISCELLANEOUS CALLBACK FUNCTIONS */
-
-    private void icon_theme_changed_callback (Gtk.IconTheme icon_theme) {
-        get_eject_icon ();
-        update_places ();
-    }
 
     private void loading_uri_callback (string location) {
         set_matching_selection (location);
