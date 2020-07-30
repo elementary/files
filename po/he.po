@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-07-24 12:12+0000\n"
+"PO-Revision-Date: 2020-07-31 14:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -397,7 +397,7 @@ msgstr "הדבקה"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
-msgstr ""
+msgstr "הוספה למועדפים"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -577,11 +577,11 @@ msgstr "הקובץ שנבחר לא קיים עוד."
 
 #: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
 msgid "Favorites"
-msgstr ""
+msgstr "מועדפים"
 
 #: src/View/Sidebar.vala:584
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "מקומות משותפים בצירוף תיקיות וקבצים שמורים"
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -605,7 +605,7 @@ msgstr "התקנים"
 
 #: src/View/Sidebar.vala:657
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "התקני אחסון פנימיים ומקושרים"
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -613,7 +613,7 @@ msgstr "רשת"
 
 #: src/View/Sidebar.vala:787
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "התקנים ומיקומים שזמינים דרך הרשת"
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -634,13 +634,12 @@ msgstr "התחברות לשרת ברשת"
 #: src/View/Sidebar.vala:982
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s פנויים"
 
 #: src/View/Sidebar.vala:983
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%s מתוך %s"
+msgstr "%s בשימוש מתוך %s"
 
 #: src/View/Sidebar.vala:1459
 #, c-format
