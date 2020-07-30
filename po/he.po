@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2020-07-24 12:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -396,8 +396,8 @@ msgid "Paste"
 msgstr "הדבקה"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "סימנייה"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -575,13 +575,13 @@ msgstr "קובץ לא נמצא"
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "הגדרות אישיות"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "המקומות הנפוצים שלך וסימניות"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -631,22 +631,28 @@ msgstr "התחברות לשרת"
 msgid "Connect to a network server"
 msgstr "התחברות לשרת ברשת"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s פנויים מתוך %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s מתוך %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "עיגון הכרך %s נכשל"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "לא ניתן להתחיל את %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "פינוי _סל האשפה"
 
@@ -1906,10 +1912,6 @@ msgstr "בתיקייה זו"
 msgid "Below This Folder"
 msgstr "מתחת לתיקייה זו"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "סימניות"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "בשימוש לאחרונה"
@@ -1977,6 +1979,21 @@ msgstr "שחזור אלו שנבחרו"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "מחיקת אלו שנבחרו"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s פנויים מתוך %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "סימנייה"
+
+#~ msgid "Personal"
+#~ msgstr "הגדרות אישיות"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "המקומות הנפוצים שלך וסימניות"
+
+#~ msgid "Bookmarks"
+#~ msgstr "סימניות"
 
 #~ msgid "Your network places"
 #~ msgstr "מיקומי הרשת שלך"

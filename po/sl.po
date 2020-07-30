@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -410,8 +410,8 @@ msgid "Paste"
 msgstr "Prilepi"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Dodaj med zaznamke"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -589,13 +589,13 @@ msgstr "Datoteka ni najdena"
 msgid "The file selected no longer exists."
 msgstr "Izbrana datoteka več ne obstaja."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Osebno"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vaša pogosta mesta in zaznamki"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -645,22 +645,28 @@ msgstr "Poveži strežnik"
 msgid "Connect to a network server"
 msgstr "Poveži se na omrežni strežnik"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s prosto od %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s od %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Napaka pri priklapljanju %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Ni mogoče zagnati %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Izprazni _smeti"
 
@@ -1977,10 +1983,6 @@ msgstr "V tej mapi"
 msgid "Below This Folder"
 msgstr "Pod to mapo"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Zaznamki"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Nedavne datoteke"
@@ -2048,6 +2050,21 @@ msgstr "Obnovi izbrano"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Izbriši izbrano"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s prosto od %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Dodaj med zaznamke"
+
+#~ msgid "Personal"
+#~ msgstr "Osebno"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vaša pogosta mesta in zaznamki"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Zaznamki"
 
 #~ msgid "Your network places"
 #~ msgstr "Vaša omrežna mesta"

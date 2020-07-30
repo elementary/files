@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"PO-Revision-Date: 2020-07-29 18:40+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -401,8 +401,8 @@ msgid "Paste"
 msgstr "Coller"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Ajouter aux favoris"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -580,13 +580,13 @@ msgstr "Fichier introuvable"
 msgid "The file selected no longer exists."
 msgstr "Le fichier sélectionné n'existe plus."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Personnel"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vos emplacements et vos signets"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -610,7 +610,7 @@ msgstr "Périphériques"
 
 #: src/View/Sidebar.vala:657
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Périphériques de stockage internes et connectés"
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -618,7 +618,7 @@ msgstr "Réseau"
 
 #: src/View/Sidebar.vala:787
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Périphériques et emplacements disponibles en réseau"
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -636,22 +636,28 @@ msgstr "Se connecter au serveur"
 msgid "Connect to a network server"
 msgstr "Se connecter à un serveur réseau"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s libre sur %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s sur %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Erreur lors du montage du volume %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Impossible de démarrer %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Vider la corbeille"
 
@@ -1954,10 +1960,6 @@ msgstr "Dans ce dossier"
 msgid "Below This Folder"
 msgstr "À l'intérieur de ce dossier"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Favoris"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Récents"
@@ -2025,6 +2027,21 @@ msgstr "Restaurer la sélection"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Supprimer la sélection"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s libre sur %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Ajouter aux favoris"
+
+#~ msgid "Personal"
+#~ msgstr "Personnel"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vos emplacements et vos signets"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Favoris"
 
 #~ msgid "Your network places"
 #~ msgstr "Vos emplacements réseau"

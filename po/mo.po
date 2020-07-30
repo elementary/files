@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -400,8 +400,8 @@ msgid "Paste"
 msgstr "Lipește"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Semne de carte"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -582,13 +582,13 @@ msgstr "Fișierul nu a fost găsit"
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "personal"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Locuri comune și marcajele"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -640,22 +640,27 @@ msgstr "Conectare la server"
 msgid "Connect to a network server"
 msgstr "Conectați-vă la un server de fișiere de rețea"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s Gratuit %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S 1 din %S 2"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Eroare la montarea volumului %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Imposibil de pornit %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Goliți _Trash"
 
@@ -1963,10 +1968,6 @@ msgstr "În acest dosar"
 msgid "Below This Folder"
 msgstr "Sub acest dosar"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Marcaje"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Folosit recent"
@@ -2036,6 +2037,21 @@ msgstr "Restaurați tot"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " selectat"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s Gratuit %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Semne de carte"
+
+#~ msgid "Personal"
+#~ msgstr "personal"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Locuri comune și marcajele"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Marcaje"
 
 #~ msgid "Your network places"
 #~ msgstr "Locurile dv. în rețea"

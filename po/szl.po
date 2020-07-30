@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -397,8 +397,8 @@ msgid "Paste"
 msgstr "Wraź"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Zokłodka"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -576,13 +576,13 @@ msgstr "Niy szło znojś zbioru"
 msgid "The file selected no longer exists."
 msgstr "Ôbrany zbiōr już niy istniyje."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Ôsobiste"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Udostympnio czynsto używane place i zokłodki"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -632,22 +632,28 @@ msgstr "Połōncz ze serwerym"
 msgid "Connect to a network server"
 msgstr "Połōncz ze serwerym necowym"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s wolnego z %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s ze %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Błōnd mōntowanio woluminu %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Niy idzie sztartnōńć %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Opróżnij _hasiok"
 
@@ -1952,10 +1958,6 @@ msgstr "W tym katalogu"
 msgid "Below This Folder"
 msgstr "Pod tym katalogym"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Zokłodki"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Ôstatnio używane"
@@ -2023,6 +2025,21 @@ msgstr "Prziwrōć zaznaczōne"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Skasuj zaznaczōne"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s wolnego z %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Zokłodka"
+
+#~ msgid "Personal"
+#~ msgstr "Ôsobiste"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Udostympnio czynsto używane place i zokłodki"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Zokłodki"
 
 #~ msgid "Your network places"
 #~ msgstr "Twoje place necowe"

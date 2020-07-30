@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2020-06-28 02:28+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
@@ -399,8 +399,8 @@ msgid "Paste"
 msgstr "Colar"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Adicionar aos Marcadores"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -578,13 +578,13 @@ msgstr "Ficheiro não encontrado"
 msgid "The file selected no longer exists."
 msgstr "O ficheiro selecionado já não existe."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Pessoal"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Os seus marcadores e locais recorrentes"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -634,22 +634,28 @@ msgstr "Ligar ao Servidor"
 msgid "Connect to a network server"
 msgstr "Ligar a um servidor de rede"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s Livres de %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s de %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Erro ao montar o volume %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Incapaz de iniciar %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Esvaziar _lixo"
 
@@ -1943,10 +1949,6 @@ msgstr "Nesta pasta"
 msgid "Below This Folder"
 msgstr "Abaixo desta pasta"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Marcadores"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Usados recentemente"
@@ -2014,6 +2016,21 @@ msgstr "Restaurar selecionado"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Eliminar a Seleção"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s Livres de %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Adicionar aos Marcadores"
+
+#~ msgid "Personal"
+#~ msgstr "Pessoal"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Os seus marcadores e locais recorrentes"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Marcadores"
 
 #~ msgid "Your network places"
 #~ msgstr "Os seus locais na rede"

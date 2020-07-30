@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2018-11-11 00:08+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/files/files/"
@@ -411,8 +411,8 @@ msgid "Paste"
 msgstr "Zalijepi"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Oznaka"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -593,13 +593,13 @@ msgstr "Datoteka nije pronađena"
 msgid "The file selected no longer exists."
 msgstr "Odabrana datoteka ne postoji više."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Lično"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vaša česta mjesta i oznake"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -649,22 +649,27 @@ msgstr "Poveži sa serverom"
 msgid "Connect to a network server"
 msgstr "Spoji se na mrežni server"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s slobodno od %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S od %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Greška prilikom montiranja nosioca podataka %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Nije moguće pokrenuti %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Isprazni _otpad"
 
@@ -1974,10 +1979,6 @@ msgstr "U ovoj fascikli"
 msgid "Below This Folder"
 msgstr "Ispod ove fascikle"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Bilješke"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Nedavno korišteno"
@@ -2045,6 +2046,21 @@ msgstr "Obnovi označeno"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Izbriši označeno"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s slobodno od %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Oznaka"
+
+#~ msgid "Personal"
+#~ msgstr "Lično"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vaša česta mjesta i oznake"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Bilješke"
 
 #~ msgid "Your network places"
 #~ msgstr "Vaše mrežne lokacije"

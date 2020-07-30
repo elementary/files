@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2016-10-09 14:37+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
@@ -396,7 +396,7 @@ msgid "Paste"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
+msgid "Add to Favorites"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
@@ -586,12 +586,12 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Informacions personalas"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
+msgid "Common places plus saved folders and files"
 msgstr ""
 
 #: src/View/Sidebar.vala:603
@@ -644,22 +644,27 @@ msgstr "Se connectar al servidor"
 msgid "Connect to a network server"
 msgstr "Se connectar al servidor"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
+msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S sus %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Impossible d'aviar %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Voidar l'_escobilhièr"
 
@@ -1952,10 +1957,6 @@ msgstr ""
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr ""
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
@@ -2024,6 +2025,9 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "Suprimir _tot"
+
+#~ msgid "Personal"
+#~ msgstr "Informacions personalas"
 
 #~ msgid "Your network places"
 #~ msgstr "Vòstres emplaçaments ret"

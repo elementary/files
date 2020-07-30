@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2020-04-12 11:10+0000\n"
 "Last-Translator: Stas <SedovSG@yandex.ru>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
@@ -404,8 +404,8 @@ msgid "Paste"
 msgstr "Вставить"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Добавить в закладки"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -583,13 +583,13 @@ msgstr "Файл не найден"
 msgid "The file selected no longer exists."
 msgstr "Выбранный файл больше не существует."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Личное"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Ваши общие места и закладки"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -639,22 +639,28 @@ msgstr "Подключить сервер"
 msgid "Connect to a network server"
 msgstr "Подключиться к серверу"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s свободно из %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s из %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Ошибка при монтировании тома %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Не удалось запустить %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "О_чистить корзину"
 
@@ -1955,10 +1961,6 @@ msgstr "В этой папке"
 msgid "Below This Folder"
 msgstr "Ниже этой папки"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Закладки"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Недавние"
@@ -2026,6 +2028,21 @@ msgstr "Восстановить выбранное"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Удалить выбранное"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s свободно из %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Добавить в закладки"
+
+#~ msgid "Personal"
+#~ msgstr "Личное"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ваши общие места и закладки"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Закладки"
 
 #~ msgid "Your network places"
 #~ msgstr "Ваше сетевое окружение"

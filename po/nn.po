@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2020-07-16 16:16+0000\n"
 "Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/files/"
@@ -399,8 +399,8 @@ msgid "Paste"
 msgstr "Lim inn"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Bokmerke"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -578,13 +578,13 @@ msgstr "Finn ikkje fil"
 msgid "The file selected no longer exists."
 msgstr "Den valde fila finst ikkje lenger."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Personleg"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Dine vanlege stadar og bokmerker"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -634,22 +634,27 @@ msgstr "Kople til tenar"
 msgid "Connect to a network server"
 msgstr "Kople til ein nettverkstenar"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s ledig av %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S av %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Feil ved montering av diskområde %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Kan ikkje starte %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Tøm _papirkorga"
 
@@ -1931,10 +1936,6 @@ msgstr "I denne mappa"
 msgid "Below This Folder"
 msgstr "Under denne mappa"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Bokmerke"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Nyleg brukt"
@@ -2002,6 +2003,21 @@ msgstr "Gjenopprett valde"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Slett valde"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s ledig av %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Bokmerke"
+
+#~ msgid "Personal"
+#~ msgstr "Personleg"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Dine vanlege stadar og bokmerker"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Bokmerke"
 
 #~ msgid "Your network places"
 #~ msgstr "Dine nettverksstadar"
