@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -399,8 +399,8 @@ msgid "Paste"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Đánh dấu chỉ mục"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -583,13 +583,13 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Cá nhân"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Vị trí và đánh dấu của bạn"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -641,22 +641,27 @@ msgstr "Kết nối đến máy chủ"
 msgid "Connect to a network server"
 msgstr "Kết nối với máy chủ tập tin mạng"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
+msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, c-format
+msgid "%s used of %s"
+msgstr ""
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Không thể chạy %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Làm sạch thùng rác"
 
@@ -1914,10 +1919,6 @@ msgstr ""
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr ""
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
@@ -1986,6 +1987,15 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "Xóa _Tất cả"
+
+#~ msgid "Bookmark"
+#~ msgstr "Đánh dấu chỉ mục"
+
+#~ msgid "Personal"
+#~ msgstr "Cá nhân"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Vị trí và đánh dấu của bạn"
 
 #~ msgid "Your local partitions and devices"
 #~ msgstr "Thiết bị và phân vùng nội bộ của bạn"

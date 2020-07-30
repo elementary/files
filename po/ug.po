@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -404,8 +404,8 @@ msgid "Paste"
 msgstr "چاپلاش"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "خەتكۈچ"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -589,13 +589,13 @@ msgstr "ھۆججەت تىپىلمىدى"
 msgid "The file selected no longer exists."
 msgstr "تاللانغان ھۆججەت مەۋجۇت ئەمەس."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "شەخسىي"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "ئادەتتە كۆپ ئىشلەتكەن ئورنىڭىز ۋە خەتكۈچلىرىڭىز"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -647,22 +647,27 @@ msgstr "مۇلازىمېتىرغا ئۇلاش"
 msgid "Connect to a network server"
 msgstr "توردىكى ھۆججەت مۇلازىمىتېرىغا ئۇلاش"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s نى ئىشلەتكىلى بولىدۇ،جەمئىي %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S / %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s نى قوزغاتقىلى بولمىدى"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "ئەخلەت چېلىكىنى تازىلاش(_T)"
 
@@ -1935,10 +1940,6 @@ msgstr "بۇ مۇندەرىجىدە"
 msgid "Below This Folder"
 msgstr "بۇ مۇندەرىجىدە"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "خەتكۈچلەر"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2009,6 +2010,21 @@ msgstr "ھەممىنى ئەسلىگە كەلتۈرۈش"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " تاللاندى"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s نى ئىشلەتكىلى بولىدۇ،جەمئىي %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "خەتكۈچ"
+
+#~ msgid "Personal"
+#~ msgstr "شەخسىي"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "ئادەتتە كۆپ ئىشلەتكەن ئورنىڭىز ۋە خەتكۈچلىرىڭىز"
+
+#~ msgid "Bookmarks"
+#~ msgstr "خەتكۈچلەر"
 
 #~ msgid "Your network places"
 #~ msgstr "سىزنىڭ تور ئورنىڭىز"

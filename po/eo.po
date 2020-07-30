@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -395,8 +395,8 @@ msgid "Paste"
 msgstr "Alglui"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Paĝosigno"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -574,13 +574,13 @@ msgstr "Netrovita dosiero"
 msgid "The file selected no longer exists."
 msgstr "La elektita dosiero ne plu ekzistas."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Persona"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Viaj komunaj lokoj kaj paĝosignoj"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -630,22 +630,28 @@ msgstr "Konekti al servilo"
 msgid "Connect to a network server"
 msgstr "Konekti al reta servilo"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s liberaj el %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s used of %s"
+msgstr "%s el %s"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Eraris munto de la portilo %s"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Neeblas startigi %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Malplenigi _Rubujon"
 
@@ -1919,10 +1925,6 @@ msgstr "En ĉi dosierujo"
 msgid "Below This Folder"
 msgstr "Sub ĉi dosierujo"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Paĝosignoj"
-
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Freŝdate uzitaj"
@@ -1990,6 +1992,21 @@ msgstr "Restaŭri elektaĵojn"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Forigi elektitojn"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s liberaj el %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Paĝosigno"
+
+#~ msgid "Personal"
+#~ msgstr "Persona"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Viaj komunaj lokoj kaj paĝosignoj"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Paĝosignoj"
 
 #~ msgid "Your network places"
 #~ msgstr "Viaj retaj lokoj"

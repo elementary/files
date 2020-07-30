@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 00:43+0000\n"
+"POT-Creation-Date: 2020-07-29 18:55+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -401,8 +401,8 @@ msgid "Paste"
 msgstr "Επικόλληση"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Προσθήκη στους σελιδοδείκτες"
+msgid "Add to Favorites"
+msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -588,13 +588,13 @@ msgstr "Το αρχείο δεν βρέθηκε"
 msgid "The file selected no longer exists."
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Προσωπικά"
+#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
+msgid "Favorites"
+msgstr ""
 
 #: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Οι συνήθεις τοποθεσίες και οι σελιδοδείκτες σας"
+msgid "Common places plus saved folders and files"
+msgstr ""
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -646,22 +646,27 @@ msgstr "Σύνδεση σε διακομιστή"
 msgid "Connect to a network server"
 msgstr "Σύνδεση σε δικτυακό διακομιστή αρχείων"
 
-#: src/View/Sidebar.vala:989
+#: src/View/Sidebar.vala:982
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s ελεύθερα από %s)"
+msgid "%s free"
+msgstr ""
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:983
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S από %S"
+
+#: src/View/Sidebar.vala:1459
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1474
 #, c-format
 msgid "Unable to start %s"
 msgstr "Αδυναμία εκκίνησης %s"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Άδειασμα _Απορριμμάτων"
 
@@ -1985,10 +1990,6 @@ msgstr "Σε αυτό το φάκελο"
 msgid "Below This Folder"
 msgstr "Σε αυτό το φάκελο"
 
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Σελιδοδείκτες"
-
 #: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
@@ -2059,6 +2060,21 @@ msgstr "Επαναφορά όλων"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " επιλέχτηκε"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s ελεύθερα από %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Προσθήκη στους σελιδοδείκτες"
+
+#~ msgid "Personal"
+#~ msgstr "Προσωπικά"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Οι συνήθεις τοποθεσίες και οι σελιδοδείκτες σας"
+
+#~ msgid "Bookmarks"
+#~ msgstr "Σελιδοδείκτες"
 
 #~ msgid "Your network places"
 #~ msgstr "Οι δικτυακές σας τοποθεσίες"
