@@ -30,38 +30,14 @@ namespace Marlin {
         NETWORK_CATEGORY,
         PLUGIN_ITEM
     }
-
-    public enum Column {
-        NAME,
-        URI,
-        DRIVE,
-        VOLUME,
-        MOUNT,
-        ROW_TYPE,
-        ICON,
-        INDEX,
-        CAN_EJECT,
-        NO_EJECT,
-        BOOKMARK,
-        IS_CATEGORY,
-        NOT_CATEGORY,
-        TOOLTIP,
-        ACTION_ICON,
-        SHOW_SPINNER,
-        SHOW_EJECT,
-        SPINNER_PULSE,
-        FREE_SPACE,
-        DISK_SIZE,
-        PLUGIN_CALLBACK,
-        MENU_MODEL,
-        ACTION_GROUP_NAMESPACE,
-        ACTION_GROUP,
-        COUNT
-    }
 }
 
 public interface Marlin.SidebarInterface : Gtk.Widget {
         public signal void request_update ();
+        public signal bool request_focus ();
+        public signal void sync_needed ();
+        public signal void path_change_request (string uri, Marlin.OpenFlag flag);
+        public signal void connect_server_request ();
         /**
          * Adds plugin item to Sidebar
          *
