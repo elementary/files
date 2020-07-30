@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:57+0000\n"
-"PO-Revision-Date: 2020-07-24 12:12+0000\n"
+"PO-Revision-Date: 2020-07-31 14:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -67,7 +67,7 @@ msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
-msgstr ""
+msgstr "„אישי” ו„סימניות” הם מעתה „מועדפים”"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Favorite menu option for network mounts in sidebar"
