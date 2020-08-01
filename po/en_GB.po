@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-07-15 23:12+0000\n"
+"PO-Revision-Date: 2020-08-03 16:36+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@posteo.net>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
@@ -398,7 +398,7 @@ msgstr "Paste"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
-msgstr ""
+msgstr "Add to Favourites"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -578,11 +578,11 @@ msgstr "The file selected no longer exists."
 
 #: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
 msgid "Favorites"
-msgstr ""
+msgstr "Favourites"
 
 #: src/View/Sidebar.vala:584
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Common places plus saved folders and files"
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -606,7 +606,7 @@ msgstr "Devices"
 
 #: src/View/Sidebar.vala:657
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Internal and connected storage devices"
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -614,7 +614,7 @@ msgstr "Network"
 
 #: src/View/Sidebar.vala:787
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Devices and places available via a network"
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -635,13 +635,12 @@ msgstr "Connect to a network server"
 #: src/View/Sidebar.vala:982
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s free"
 
 #: src/View/Sidebar.vala:983
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%s of %s"
+msgstr "%s used of %s"
 
 #: src/View/Sidebar.vala:1459
 #, c-format
