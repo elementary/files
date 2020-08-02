@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:57+0000\n"
-"PO-Revision-Date: 2020-07-15 23:12+0000\n"
-"Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
+"PO-Revision-Date: 2020-08-03 16:36+0000\n"
+"Last-Translator: Lieven Hanssen <lhanssen@freedommail.co>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "Verbeteringen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
-msgstr ""
+msgstr "\"Persoonlijk\" en \"Bladwijzers\" zijn nu \"Favorieten\""
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #, fuzzy
@@ -88,21 +88,24 @@ msgid "Show folder item count in List View"
 msgstr "Toon de bestandsinfo ook in lijstweergave"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
+#, fuzzy
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
+"Laat nu bij voorbaat miniaturen zien op lokaal gekoppelde MTP- en PTP-"
+"apparaten als netwerklocaties"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
+"Eigenschappenvenster: Sta toe dat de bestandsnaam gekopieerd kan worden "
+"wanneer deze niet kan worden bewerkt"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Verbeterde styling van schijfruimte balken"
+msgstr "Verbeterde tooltipopmaak voor apparaten in zijbalk"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:87
@@ -113,14 +116,20 @@ msgstr "Opgelost:"
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr ""
+"Probleem verholpen bij het tegelijkertijd indrukken van Enter en een andere "
+"toets"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
+#, fuzzy
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "Probleem opgelost bij het verwerken van \"~\" en \"..\" in adresbalk"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
+#, fuzzy
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
+"Bestandskiezer van de adresbalk loopt niet meer vast wanneer deze vanuit een "
+"Flatpak wordt geopend"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
