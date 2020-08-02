@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-06-23 21:11+0000\n"
-"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"PO-Revision-Date: 2020-08-03 16:36+0000\n"
+"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -398,7 +398,7 @@ msgstr "Yapıştır"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
-msgstr ""
+msgstr "Sık Kullanılanlara Ekle"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -578,11 +578,11 @@ msgstr "Seçilen dosya artık yok."
 
 #: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
 msgid "Favorites"
-msgstr ""
+msgstr "Sık Kullanılanlar"
 
 #: src/View/Sidebar.vala:584
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Ortak yerler ve kaydedilmiş klasörler ve dosyalar"
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -606,7 +606,7 @@ msgstr "Aygıtlar"
 
 #: src/View/Sidebar.vala:657
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Dahili ve bağlı depolama aygıtları"
 
 #: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
 msgid "Network"
@@ -614,7 +614,7 @@ msgstr "Ağ"
 
 #: src/View/Sidebar.vala:787
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Bir ağ üzerinden kullanılabilen cihazlar ve yerler"
 
 #: src/View/Sidebar.vala:819
 msgid "Entire Network"
@@ -635,13 +635,12 @@ msgstr "Ağ sunucusuna bağlan"
 #: src/View/Sidebar.vala:982
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s boş"
 
 #: src/View/Sidebar.vala:983
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%2$s / %1$s"
+msgstr "%s kullanıldı, Toplam %s"
 
 #: src/View/Sidebar.vala:1459
 #, c-format
