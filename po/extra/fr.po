@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:57+0000\n"
-"PO-Revision-Date: 2020-07-29 18:40+0000\n"
+"PO-Revision-Date: 2020-08-03 16:36+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -73,11 +73,9 @@ msgstr "Améliorations :"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
-msgstr ""
+msgstr "« Personnel » et « Marque-pages » sont désormais « Favoris »"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Bookmark menu option for network mounts in sidebar"
 msgid "Favorite menu option for network mounts in sidebar"
 msgstr ""
 "Option de menu favoris pour les montages de réseau dans la barre latérale"
@@ -95,21 +93,17 @@ msgstr ""
 "et PTP montés en local de la même façon que sur les emplacements réseaux"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
-#, fuzzy
-#| msgid ""
-#| "Properties window: Allow the filename to be copied when it cannot be "
-#| "edited."
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
 "Fenêtre des propriétés : Autorisation de la copie du nom de fichier lorsque "
-"celui-ci ne peut pas être modifié."
+"celui-ci ne peut pas être modifié"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Style amélioré pour les barres d'indicateur d'espace disque"
+msgstr ""
+"Amélioration du format de l'infobulle pour les périphériques dans la barre "
+"latérale"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:87
@@ -128,12 +122,10 @@ msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr "Correction de la gestion de « ~ » et « .. » dans le chemin"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
-#, fuzzy
-#| msgid "Filechooser pathbar no longer crashes when invoked from a flatpak"
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
 "La barre de chemin du sélecteur de fichiers ne plante plus lorsqu'elle est "
-"appelée depuis une application flatpak"
+"appelée depuis une application Flatpak"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
