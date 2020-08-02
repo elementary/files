@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-07-29 18:40+0000\n"
+"PO-Revision-Date: 2020-08-03 16:36+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -402,7 +402,7 @@ msgstr "Coller"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
 msgid "Add to Favorites"
-msgstr ""
+msgstr "Ajouter aux favoris"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -582,11 +582,11 @@ msgstr "Le fichier sélectionné n'existe plus."
 
 #: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
 msgid "Favorites"
-msgstr ""
+msgstr "Favoris"
 
 #: src/View/Sidebar.vala:584
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Emplacements généraux plus dossiers et fichiers enregistrés"
 
 #: src/View/Sidebar.vala:603
 msgid "Open your personal folder"
@@ -639,13 +639,12 @@ msgstr "Se connecter à un serveur réseau"
 #: src/View/Sidebar.vala:982
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s libre"
 
 #: src/View/Sidebar.vala:983
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%s sur %s"
+msgstr "%s utilisé sur %s"
 
 #: src/View/Sidebar.vala:1459
 #, c-format
