@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-03 16:38+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"PO-Revision-Date: 2020-08-04 17:35+0000\n"
+"Last-Translator: Rafael Bautista Martínez <iuninefrendor@gmail.com>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -587,7 +587,7 @@ msgstr "Marcadores"
 
 #: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Lugares comunes para carpetas y archivos guardados"
 
 #: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
@@ -611,7 +611,7 @@ msgstr "Dispositivos"
 
 #: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Dispositivos de almacenamiento internos y conectados"
 
 #: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
@@ -619,7 +619,7 @@ msgstr "Red"
 
 #: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Dispositivos y lugares disponibles a través de una red"
 
 #: src/View/Sidebar.vala:810
 msgid "Entire Network"
@@ -640,7 +640,7 @@ msgstr "Conectar con servidor de red"
 #: src/View/Sidebar.vala:973
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s libre"
 
 #: src/View/Sidebar.vala:974
 #, fuzzy, c-format
