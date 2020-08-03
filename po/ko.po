@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"POT-Creation-Date: 2020-08-03 16:38+0000\n"
 "PO-Revision-Date: 2019-09-23 16:23+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
@@ -258,7 +258,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "디스크 정보"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "파일 시스템"
@@ -389,8 +389,10 @@ msgid "Paste"
 msgstr "붙여 넣기"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "책갈피"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -516,7 +518,7 @@ msgstr "대신 선택한 항목을 잘라냅니다"
 msgid "Cannot paste files here"
 msgstr "이곳에 파일을 붙여 넣을 수 없습니다"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "홈"
 
@@ -572,83 +574,83 @@ msgstr "파일이 없습니다"
 msgid "The file selected no longer exists."
 msgstr "선택하신 파일이 더이상 존재하지 않습니다."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "책갈피"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "개인 폴더를 엽니다"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "최근 사용 기록 보기"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "휴지통"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "휴지통 열기"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "장치"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "네트워크"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "전체 네트워크"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "네트워크를 탐색합니다"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "서버 연결"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "네트워크 서버에 연결하기"
 
-#: src/View/Sidebar.vala:982
+#: src/View/Sidebar.vala:973
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:974
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S / %S"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1450
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "볼륨 %s의 마운트 중에 오류가 생겼습니다"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1465
 #, c-format
 msgid "Unable to start %s"
 msgstr "'%s'을(를) 시작할 수 없습니다"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1655 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "휴지통 비우기(_T)"
 
@@ -1972,9 +1974,6 @@ msgstr "선택 항목 지우기"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "사용자의 개인 폴더 및 즐겨찾기"
-
-#~ msgid "Bookmarks"
-#~ msgstr "책갈피"
 
 #~ msgid "Your network places"
 #~ msgstr "네트워크 위치"

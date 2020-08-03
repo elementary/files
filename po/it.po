@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"POT-Creation-Date: 2020-08-03 16:38+0000\n"
 "PO-Revision-Date: 2019-07-03 01:28+0000\n"
 "Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -268,7 +268,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Proprietà del disco"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "File di sistema"
@@ -403,8 +403,10 @@ msgid "Paste"
 msgstr "Incolla"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "Segnalibri"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -529,7 +531,7 @@ msgstr "Tagliare la selezione al suo posto"
 msgid "Cannot paste files here"
 msgstr "Non è possibile incollare i file qui"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Inizio"
 
@@ -585,83 +587,83 @@ msgstr "File non trovato"
 msgid "The file selected no longer exists."
 msgstr "Il file selezionato non esiste più."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Segnalibri"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Apri la tua cartella personale"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Visualizza l'elenco dei file utilizzati di recente"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Cestino"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Apri il cestino"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Dispositivi"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Rete"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Intera rete"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Esplora il contenuto della rete"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Collega al server"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Collega a un server in rete"
 
-#: src/View/Sidebar.vala:982
+#: src/View/Sidebar.vala:973
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:974
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S su %S"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1450
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Errore nel montare il volume %s"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1465
 #, c-format
 msgid "Unable to start %s"
 msgstr "Impossibile avviare %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1655 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Svuota il _cestino"
 
@@ -2033,9 +2035,6 @@ msgstr "Elimina la selezione"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "Segnalibri e risorse"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Segnalibri"
 
 #~ msgid "Your network places"
 #~ msgstr "Risorse di rete"

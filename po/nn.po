@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"POT-Creation-Date: 2020-08-03 16:38+0000\n"
 "PO-Revision-Date: 2020-07-16 16:16+0000\n"
 "Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/files/"
@@ -266,7 +266,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Eigenskapar for disk"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Filsystem"
@@ -399,8 +399,10 @@ msgid "Paste"
 msgstr "Lim inn"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "Bokmerke"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -522,7 +524,7 @@ msgstr "Klipper ut utvalet i staden"
 msgid "Cannot paste files here"
 msgstr "Filer kan ikkje limast inn her"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Heim"
 
@@ -578,83 +580,83 @@ msgstr "Finn ikkje fil"
 msgid "The file selected no longer exists."
 msgstr "Den valde fila finst ikkje lenger."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Bokmerke"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Opne di personlege mappe"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Sjå lista over nyleg brukte filer"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Papirkorg"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Opne papirkorga"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Einingar"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Nettverk"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Heile nettverket"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Blad gjennom innhaldet på nettverket"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Kople til tenar"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Kople til ein nettverkstenar"
 
-#: src/View/Sidebar.vala:982
+#: src/View/Sidebar.vala:973
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:974
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S av %S"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1450
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Feil ved montering av diskområde %s"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1465
 #, c-format
 msgid "Unable to start %s"
 msgstr "Kan ikkje starte %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1655 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Tøm _papirkorga"
 
@@ -2015,9 +2017,6 @@ msgstr "Slett valde"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "Dine vanlege stadar og bokmerker"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Bokmerke"
 
 #~ msgid "Your network places"
 #~ msgstr "Dine nettverksstadar"

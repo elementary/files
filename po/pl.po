@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"POT-Creation-Date: 2020-08-03 16:38+0000\n"
 "PO-Revision-Date: 2019-02-09 11:12+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
@@ -274,7 +274,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Właściwości dysku"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "System plików"
@@ -411,8 +411,10 @@ msgid "Paste"
 msgstr "Wklej"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "Zakładki"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -537,7 +539,7 @@ msgstr "Wytnij wybór"
 msgid "Cannot paste files here"
 msgstr "Nie można wkleić tutaj plików"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Katalog użytkownika"
 
@@ -593,83 +595,83 @@ msgstr "Plik nie istnieje"
 msgid "The file selected no longer exists."
 msgstr "Wybrany plik nie istnieje."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Zakładki"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Przechodzi do katalogu użytkownika"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Zobacz listę ostatnio używanych plików"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Kosz"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Otwórz kosz"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Nośniki"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Sieć"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Cała sieć"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Przegląda zawartość sieci"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Połącz z serwerem"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Połącz z serwerem sieciowym"
 
-#: src/View/Sidebar.vala:982
+#: src/View/Sidebar.vala:973
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:974
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S z %S"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1450
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Błąd montowania wolumenu %s"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1465
 #, c-format
 msgid "Unable to start %s"
 msgstr "Nie można uruchomić %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1655 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Opróżnij _kosz"
 
@@ -2060,9 +2062,6 @@ msgstr "Usuń zaznaczone"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "Udostępnia często używane położenia i zakładki"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Zakładki"
 
 #~ msgid "Your network places"
 #~ msgstr "Udostępnia położenia sieciowe"
