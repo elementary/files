@@ -1957,7 +1957,7 @@ namespace FM {
 
             var bookmark_menuitem = new Gtk.MenuItem ();
             bookmark_menuitem.add (new Granite.AccelLabel (
-                _("Add to Favorites"),
+                _("Add to Bookmarks"),
                 "<Ctrl>d"
             ));
             bookmark_menuitem.action_name = "common.bookmark";
