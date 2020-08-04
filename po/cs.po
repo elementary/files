@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-04 17:37+0000\n"
-"PO-Revision-Date: 2020-06-03 00:37+0000\n"
+"PO-Revision-Date: 2020-08-05 19:13+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
@@ -404,10 +404,8 @@ msgid "Paste"
 msgstr "Vložit"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Záložky"
+msgstr "Přidat do záložek"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -591,7 +589,7 @@ msgstr "Záložky"
 
 #: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Běžná umístění plus uložené složky a soubory"
 
 #: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
@@ -615,7 +613,7 @@ msgstr "Zařízení"
 
 #: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Interní a připojená úložná zařízení"
 
 #: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
@@ -623,7 +621,7 @@ msgstr "Síť"
 
 #: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Zařízení a místa dostupná prostřednictvím sítě"
 
 #: src/View/Sidebar.vala:810
 msgid "Entire Network"
@@ -643,21 +641,19 @@ msgstr "Připojit k serveru v síti"
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s on %s"
-msgstr "%s z %s"
+msgstr "%s na %s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s volných"
 
 #: src/View/Sidebar.vala:980
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%s z %s"
+msgstr "%s využito z %s"
 
 #: src/View/Sidebar.vala:1456
 #, c-format
