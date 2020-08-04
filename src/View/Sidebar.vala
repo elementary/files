@@ -886,9 +886,15 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             if (mount != null) {
                 /* show mounted volume in sidebar */
                 var root = mount.get_root ();
+                var device_label = root.get_basename ();
+                if (device_label != mount.get_name ()) {
+                    ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+                    device_label = _("%s on %s").printf (device_label, mount.get_name ());
+                }
+
                 last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                        iter,
-                                       mount.get_name (),
+                                       device_label,
                                        get_icon_with_fallback (mount.get_icon ()),
                                        root.get_uri (),
                                        drive,
