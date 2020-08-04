@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-03 16:38+0000\n"
-"PO-Revision-Date: 2020-08-03 16:36+0000\n"
+"PO-Revision-Date: 2020-08-04 17:35+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -401,10 +401,8 @@ msgid "Paste"
 msgstr "Coller"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Favoris"
+msgstr "Ajouter aux favoris"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
