@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:57+0000\n"
-"PO-Revision-Date: 2020-07-25 17:12+0000\n"
+"PO-Revision-Date: 2020-08-05 19:13+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
 "Language: cs\n"
@@ -73,20 +73,15 @@ msgstr "Vylepšení:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
-msgstr ""
+msgstr "„Osobní“ a „Záložky“ jsou nyní „Oblíbené“"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Bookmark menu option for network mounts in sidebar"
 msgid "Favorite menu option for network mounts in sidebar"
-msgstr "Volba záložky pro síťová připojení (mount) v postranním panelu"
+msgstr "Volba oblíbené pro síťová připojení (mount) v postranním panelu"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr ""
-"Překryvné okno s informacemi o souboru zobrazováno také v zobrazení v seznamu"
+msgstr "V zobrazení v seznamu zobrazovat počet položek"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
@@ -100,12 +95,13 @@ msgstr ""
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
+"Okno s vlastnostmi: Umožnit zkopírování názvu souboru, když ho není možné "
+"upravit"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Vylepšen styl pro ukazatele prostoru na disku"
+msgstr ""
+"Vylepšeno formátování nástrojového tipu pro zařízení v postranním panelu"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:87
@@ -115,15 +111,19 @@ msgstr "Opravy:"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr ""
+msgstr "Opraven pád při stisku Enter a další klávesy naráz"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr ""
+"Opraveno zacházení pruhu pro popis umístění se znaky „~“ (tilda) a „..“ (dvě "
+"tečky – o úroveň výš) v popisu umístění"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
+"Pruh s popisem umístění dialogu volby souboru už nepadá, když je vyvolán z "
+"aplikace, nainstalované z Flatpak balíčku"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
