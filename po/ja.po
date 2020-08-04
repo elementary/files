@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-04 17:37+0000\n"
-"PO-Revision-Date: 2020-08-04 17:35+0000\n"
+"PO-Revision-Date: 2020-08-05 19:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -629,10 +629,9 @@ msgstr "ネットワークサーバーへ接続します"
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s on %s"
-msgstr "%s / %s"
+msgstr "%2$s 上の %1$s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
