@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-03 16:38+0000\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -642,27 +642,33 @@ msgstr "Conectare la server"
 msgid "Connect to a network server"
 msgstr "Conectați-vă la un server de fișiere de rețea"
 
-#: src/View/Sidebar.vala:973
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, fuzzy, c-format
+msgid "%s on %s"
+msgstr "%S 1 din %S 2"
+
+#: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:974
+#: src/View/Sidebar.vala:980
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S 1 din %S 2"
 
-#: src/View/Sidebar.vala:1450
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Eroare la montarea volumului %s"
 
-#: src/View/Sidebar.vala:1465
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Imposibil de pornit %s"
 
-#: src/View/Sidebar.vala:1655 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Goliți _Trash"
 

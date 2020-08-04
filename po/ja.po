@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-03 16:38+0000\n"
-"PO-Revision-Date: 2020-07-30 09:12+0000\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
+"PO-Revision-Date: 2020-08-04 17:35+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
 ">\n"
@@ -392,10 +392,8 @@ msgid "Paste"
 msgstr "貼り付け"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "ブックマーク"
+msgstr "ブックマークに追加"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -629,27 +627,34 @@ msgstr "サーバーへ接続"
 msgid "Connect to a network server"
 msgstr "ネットワークサーバーへ接続します"
 
-#: src/View/Sidebar.vala:973
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s on %s"
+msgstr "%s / %s"
+
+#: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
 msgstr "%s が利用可能"
 
-#: src/View/Sidebar.vala:974
+#: src/View/Sidebar.vala:980
 #, c-format
 msgid "%s used of %s"
 msgstr "%2$s のうち %1$s が使用済み"
 
-#: src/View/Sidebar.vala:1450
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "ボリューム %s のマウントエラー"
 
-#: src/View/Sidebar.vala:1465
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s を起動できません"
 
-#: src/View/Sidebar.vala:1655 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "ゴミ箱を空にする(_T)"
 
