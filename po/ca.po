@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-04 17:37+0000\n"
-"PO-Revision-Date: 2020-07-30 09:12+0000\n"
+"PO-Revision-Date: 2020-08-09 22:13+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -398,10 +398,8 @@ msgid "Paste"
 msgstr "Enganxa"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Adreces d'interès"
+msgstr "Afegeix a les adreces d'interès"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -637,10 +635,9 @@ msgstr "Connecta't a un servidor de la xarxa"
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s on %s"
-msgstr "%s de %s"
+msgstr "%s a %s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
