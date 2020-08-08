@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-29 18:57+0000\n"
-"PO-Revision-Date: 2020-07-31 14:12+0000\n"
+"PO-Revision-Date: 2020-08-09 22:13+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -71,13 +71,11 @@ msgstr "„אישי” ו„סימניות” הם מעתה „מועדפים”
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Favorite menu option for network mounts in sidebar"
-msgstr ""
+msgstr "אפשרות תפריט מועדפים לטובת סרגל צד לעיגון מיקומי רשת"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr "הצגת חלונית פרטי קובץ בתצוגת הרשימה בנוסף"
+msgstr "הצגת מספור פריטים בתיקייה בתצוגת רשימה"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
@@ -88,27 +86,25 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
-msgstr ""
+msgstr "חלון מאפיינים: לאפשר את העתקת שם הקובץ כשלא ניתן לערוך אותו"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "עיצוב משופר לסרגלי נפח בכונן"
+msgstr "עיצוב משופר לחלוניות עצה להתקנים בסרגל הצד"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:87
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Fixes:"
-msgstr ""
+msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr ""
+msgstr "תיקון קריסה בעת לחיצה על Enter ומקש נוסף באותו הזמן"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "תיקון בטיפול בנתיבים „~” ו־„.” בסרגל הנתיבים"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
@@ -190,7 +186,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Fix color tags disappearing when thumbnails hidden"
-msgstr ""
+msgstr "תיקון היעלמות של תגיות צבע כאשר התמונות הממוזערות מוסתרות"
 
 #: data/io.elementary.files.appdata.xml.in.in:122
 #: data/io.elementary.files.appdata.xml.in.in:136
