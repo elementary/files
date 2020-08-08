@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-04 17:37+0000\n"
-"PO-Revision-Date: 2020-07-31 14:12+0000\n"
+"PO-Revision-Date: 2020-08-09 22:13+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -396,10 +396,8 @@ msgid "Paste"
 msgstr "הדבקה"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "סימניות"
+msgstr "הוספה לסימניות"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -635,10 +633,9 @@ msgstr "התחברות לשרת ברשת"
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s on %s"
-msgstr "%s מתוך %s"
+msgstr "%s על גבי %s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
