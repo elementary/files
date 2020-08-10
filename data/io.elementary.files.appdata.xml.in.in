@@ -74,9 +74,6 @@
           <li>Fix crash when pressing Enter and another key at the same time</li>
           <li>Fix pathbar handling of "~" and ".." in path</li>
           <li>Filechooser pathbar no longer crashes when invoked from a Flatpak</li>
-        </ul>
-        <p>Fixes:</p>
-        <ul>
           <li>Do not show git status for repositories on FUSE filesystems to prevent possible blocking</li>
         </ul>
       </description>
