@@ -58,12 +58,12 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.5.0" date="2020-07-07" urgency="medium">
+    <release version="4.5.0" date="2020-08-10" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
-          <li>"Personal" and "Bookmarks" are now "Favorites"</li>
-          <li>Favorite menu option for network mounts in sidebar</li>
+          <li>"Personal" is now "Bookmarks"</li>
+          <li>Bookmark menu option for network mounts in sidebar</li>
           <li>Show folder item count in List View</li>
           <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
           <li>Properties window: Allow the filename to be copied when it cannot be edited</li>
