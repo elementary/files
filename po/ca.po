@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-07-30 09:12+0000\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
+"PO-Revision-Date: 2020-08-09 22:13+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
 "\n"
@@ -265,7 +265,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Propietats del disc"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Sistema de fitxers"
@@ -398,8 +398,8 @@ msgid "Paste"
 msgstr "Enganxa"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr "Afegeix als preferits"
+msgid "Add to Bookmarks"
+msgstr "Afegeix a les adreces d'interès"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -521,7 +521,7 @@ msgstr "En canvi, es retalla la selecció"
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
@@ -577,83 +577,89 @@ msgstr "No s'ha trobat el fitxer"
 msgid "The file selected no longer exists."
 msgstr "El fitxer seleccionat ja no existeix."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr "Preferits"
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Adreces d'interès"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr "Llocs comuns més carpetes i fitxers desats"
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Obriu la vostra carpeta personal"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Mostra la llista dels fitxers usats recentment"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Paperera"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Obre la paperera"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Dispositius"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr "Dispositius d’emmagatzematge interns i connectats"
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Xarxa"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr "Dispositius i llocs disponibles a través d'una xarxa"
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Tota la xarxa"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Navega pel contingut de la xarxa"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Connecta't al servidor"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Connecta't a un servidor de la xarxa"
 
-#: src/View/Sidebar.vala:982
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, c-format
+msgid "%s on %s"
+msgstr "%s a %s"
+
+#: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
 msgstr "%s lliure"
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:980
 #, c-format
 msgid "%s used of %s"
 msgstr "%s usat de %s"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Error muntant el volum %s"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "No s'ha pogut iniciar %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Buida la _paperera"
 
@@ -2013,6 +2019,12 @@ msgstr "Restaura la selecció"
 msgid "Delete Selected"
 msgstr "Suprimeix la selecció"
 
+#~ msgid "Add to Favorites"
+#~ msgstr "Afegeix als preferits"
+
+#~ msgid "Favorites"
+#~ msgstr "Preferits"
+
 #~ msgid "(%s Free of %s)"
 #~ msgstr "(%s lliure de %s)"
 
@@ -2024,9 +2036,6 @@ msgstr "Suprimeix la selecció"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "Els vostres llocs comuns i adreces d'interès"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Adreces d'interès"
 
 #~ msgid "Your network places"
 #~ msgstr "Llocs a la xarxa"

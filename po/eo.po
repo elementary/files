@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -264,7 +264,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Diskaj atributoj"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Dosiersistemo"
@@ -395,8 +395,10 @@ msgid "Paste"
 msgstr "Alglui"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "Paĝosignoj"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -518,7 +520,7 @@ msgstr "Eltondi la elektaĵon anstataŭe"
 msgid "Cannot paste files here"
 msgstr "Neeblas alglui dosierojn ĉi tien"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Hejmo"
 
@@ -574,84 +576,91 @@ msgstr "Netrovita dosiero"
 msgid "The file selected no longer exists."
 msgstr "La elektita dosiero ne plu ekzistas."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Paĝosignoj"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Malfermi vian personan dosierujon"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Vidi liston de freŝe uzitaj dosieroj"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Rubujo"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Malfermi la rubujon"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Aparatoj"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Reto"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Tuta Reto"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Foliumi la enhavon de la reto"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Konekti al servilo"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Konekti al reta servilo"
 
-#: src/View/Sidebar.vala:982
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s on %s"
+msgstr "%s el %s"
+
+#: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:980
 #, fuzzy, c-format
 #| msgid "%s of %s"
 msgid "%s used of %s"
 msgstr "%s el %s"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Eraris munto de la portilo %s"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Neeblas startigi %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Malplenigi _Rubujon"
 
@@ -2004,9 +2013,6 @@ msgstr "Forigi elektitojn"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "Viaj komunaj lokoj kaj paĝosignoj"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Paĝosignoj"
 
 #~ msgid "Your network places"
 #~ msgstr "Viaj retaj lokoj"

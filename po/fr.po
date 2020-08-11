@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-07-29 18:40+0000\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
+"PO-Revision-Date: 2020-08-07 12:13+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -268,7 +268,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Propriétés de disque"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Système de fichier"
@@ -401,8 +401,8 @@ msgid "Paste"
 msgstr "Coller"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+msgid "Add to Bookmarks"
+msgstr "Ajouter aux favoris"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -524,7 +524,7 @@ msgstr "Couper la sélection à la place"
 msgid "Cannot paste files here"
 msgstr "Impossible de coller des fichiers ici"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Dossier personnel"
 
@@ -580,84 +580,89 @@ msgstr "Fichier introuvable"
 msgid "The file selected no longer exists."
 msgstr "Le fichier sélectionné n'existe plus."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Favoris"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Emplacements généraux plus dossiers et fichiers enregistrés"
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Ouvrir votre dossier personnel"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Voir la liste des fichiers récemment utilisés"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Corbeille"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Ouvrir la corbeille"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Périphériques"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr "Périphériques de stockage internes et connectés"
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Réseau"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr "Périphériques et emplacements disponibles en réseau"
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Tout le réseau"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Parcourir le réseau"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Se connecter au serveur"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Se connecter à un serveur réseau"
 
-#: src/View/Sidebar.vala:982
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
 #, c-format
-msgid "%s free"
-msgstr ""
-
-#: src/View/Sidebar.vala:983
-#, fuzzy, c-format
-#| msgid "%s of %s"
-msgid "%s used of %s"
+msgid "%s on %s"
 msgstr "%s sur %s"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:979
+#, c-format
+msgid "%s free"
+msgstr "%s libre"
+
+#: src/View/Sidebar.vala:980
+#, c-format
+msgid "%s used of %s"
+msgstr "%s utilisé sur %s"
+
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Erreur lors du montage du volume %s"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Impossible de démarrer %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Vider la corbeille"
 
@@ -2028,6 +2033,12 @@ msgstr "Restaurer la sélection"
 msgid "Delete Selected"
 msgstr "Supprimer la sélection"
 
+#~ msgid "Add to Favorites"
+#~ msgstr "Ajouter aux favoris"
+
+#~ msgid "Favorites"
+#~ msgstr "Favoris"
+
 #~ msgid "(%s Free of %s)"
 #~ msgstr "(%s libre sur %s)"
 
@@ -2039,9 +2050,6 @@ msgstr "Supprimer la sélection"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "Vos emplacements et vos signets"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Favoris"
 
 #~ msgid "Your network places"
 #~ msgstr "Vos emplacements réseau"

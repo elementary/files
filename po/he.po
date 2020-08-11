@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-07-24 12:12+0000\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
+"PO-Revision-Date: 2020-08-09 22:13+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -263,7 +263,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "מאפייני הכונן"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "מערכת קבצים"
@@ -396,8 +396,8 @@ msgid "Paste"
 msgstr "הדבקה"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+msgid "Add to Bookmarks"
+msgstr "הוספה לסימניות"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -519,7 +519,7 @@ msgstr "גזירת הבחירה במקום"
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "בית"
 
@@ -575,84 +575,89 @@ msgstr "קובץ לא נמצא"
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "סימניות"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "מקומות משותפים בצירוף תיקיות וקבצים שמורים"
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "פתיחת התיקייה האישית"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "הצגת רשימת הקבצים בהם נעשה שימוש לאחרונה"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "סל האשפה"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "פתיחת סל האשפה"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "התקנים"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "התקני אחסון פנימיים ומקושרים"
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "רשת"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "התקנים ומיקומים שזמינים דרך הרשת"
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "כל הרשת"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "עיון בתוכן הרשת"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "התחברות לשרת"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "התחברות לשרת ברשת"
 
-#: src/View/Sidebar.vala:982
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, c-format
+msgid "%s on %s"
+msgstr "%s על גבי %s"
+
+#: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s פנויים"
 
-#: src/View/Sidebar.vala:983
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#: src/View/Sidebar.vala:980
+#, c-format
 msgid "%s used of %s"
-msgstr "%s מתוך %s"
+msgstr "%s בשימוש מתוך %s"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "עיגון הכרך %s נכשל"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "לא ניתן להתחיל את %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "פינוי _סל האשפה"
 
@@ -1980,6 +1985,12 @@ msgstr "שחזור אלו שנבחרו"
 msgid "Delete Selected"
 msgstr "מחיקת אלו שנבחרו"
 
+#~ msgid "Add to Favorites"
+#~ msgstr "הוספה למועדפים"
+
+#~ msgid "Favorites"
+#~ msgstr "מועדפים"
+
 #~ msgid "(%s Free of %s)"
 #~ msgstr "(%s פנויים מתוך %s)"
 
@@ -1991,9 +2002,6 @@ msgstr "מחיקת אלו שנבחרו"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "המקומות הנפוצים שלך וסימניות"
-
-#~ msgid "Bookmarks"
-#~ msgstr "סימניות"
 
 #~ msgid "Your network places"
 #~ msgstr "מיקומי הרשת שלך"

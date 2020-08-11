@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
-"PO-Revision-Date: 2020-06-23 21:11+0000\n"
-"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
+"PO-Revision-Date: 2020-08-03 16:36+0000\n"
+"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
 ">\n"
 "Language: tr\n"
@@ -264,7 +264,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Disk Özellikleri"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Dosya Sistemi"
@@ -397,8 +397,10 @@ msgid "Paste"
 msgstr "Yapıştır"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "Yer İmleri"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -520,7 +522,7 @@ msgstr "Onun yerine seçilen kesiliyor"
 msgid "Cannot paste files here"
 msgstr "Dosyalar buraya yapıştırılamaz"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Ana dizin"
 
@@ -576,84 +578,90 @@ msgstr "Dosya Bulunamadı"
 msgid "The file selected no longer exists."
 msgstr "Seçilen dosya artık yok."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Yer İmleri"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Ortak yerler ve kaydedilmiş klasörler ve dosyalar"
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Kişisel klasörünüzü açın"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Son kullanılan dosyaların listesini görüntüle"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Çöp"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Çöp Kutusunu Aç"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Aygıtlar"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Dahili ve bağlı depolama aygıtları"
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Ağ"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Bir ağ üzerinden kullanılabilen cihazlar ve yerler"
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Tüm Ağ"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Ağ içeriğine gözat"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Sunucuya Bağlan"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Ağ sunucusuna bağlan"
 
-#: src/View/Sidebar.vala:982
-#, c-format
-msgid "%s free"
-msgstr ""
-
-#: src/View/Sidebar.vala:983
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
 #, fuzzy, c-format
 #| msgid "%s of %s"
-msgid "%s used of %s"
+msgid "%s on %s"
 msgstr "%2$s / %1$s"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:979
+#, c-format
+msgid "%s free"
+msgstr "%s boş"
+
+#: src/View/Sidebar.vala:980
+#, c-format
+msgid "%s used of %s"
+msgstr "%s kullanıldı, Toplam %s"
+
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "%s birimi bağlanırken hata oluştu"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s başlatılamadı"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Çöpü _Boşalt"
 
@@ -1999,6 +2007,12 @@ msgstr "Seçilenleri Geri Yükle"
 msgid "Delete Selected"
 msgstr "Seçilenleri Sil"
 
+#~ msgid "Add to Favorites"
+#~ msgstr "Sık Kullanılanlara Ekle"
+
+#~ msgid "Favorites"
+#~ msgstr "Sık Kullanılanlar"
+
 #~ msgid "(%s Free of %s)"
 #~ msgstr "(%2$s / %1$s Boş)"
 
@@ -2010,9 +2024,6 @@ msgstr "Seçilenleri Sil"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "Ortak yerleriniz ve yer imleriniz"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Yer İmleri"
 
 #~ msgid "Your network places"
 #~ msgstr "Ağ bağlantılarınız"

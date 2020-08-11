@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"POT-Creation-Date: 2020-08-04 17:37+0000\n"
 "PO-Revision-Date: 2020-05-16 11:10+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -284,7 +284,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "خصائص القرص"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "نظام ملفات"
@@ -415,8 +415,10 @@ msgid "Paste"
 msgstr "لصق"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "المؤشرات"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -538,7 +540,7 @@ msgstr "قص المحدد بدلاً من ذلك"
 msgid "Cannot paste files here"
 msgstr "لا يمكن لصق الملفات هنا"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "المنزل"
 
@@ -594,84 +596,91 @@ msgstr "لم يتم ايجاد الملف"
 msgid "The file selected no longer exists."
 msgstr "الملف المختار لم يعد موجودا."
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "المؤشرات"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "افتح مجلّدك الشخصي"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "عرض قائمة الملفات المفتوحة مؤخرا"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "المهملات"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "فتح المهملات"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "الأجهزة"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "الشبكة"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "الشبكة كاملة"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "تصفّح محتويات الشبكة"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "اتصل بالخادم"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "اتصل بشبكة الخادم"
 
-#: src/View/Sidebar.vala:982
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, fuzzy, c-format
+#| msgid "%s of %s"
+msgid "%s on %s"
+msgstr "%s من %s"
+
+#: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:980
 #, fuzzy, c-format
 #| msgid "%s of %s"
 msgid "%s used of %s"
 msgstr "%s من %s"
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "خطأ في تحميل القسم %s"
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "تعذّر بدء %s"
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "أفرغ ال_مهملات"
 
@@ -2110,9 +2119,6 @@ msgstr " محددة"
 
 #~ msgid "Your common places and bookmarks"
 #~ msgstr "مجلداتك وعلاماتك الشائعة"
-
-#~ msgid "Bookmarks"
-#~ msgstr "المؤشرات"
 
 #~ msgid "Your network places"
 #~ msgstr "شبكتك المحلية"
