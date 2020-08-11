@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-04 17:37+0000\n"
-"PO-Revision-Date: 2020-08-03 16:36+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"PO-Revision-Date: 2020-08-11 16:26+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -397,10 +397,8 @@ msgid "Paste"
 msgstr "Yapıştır"
 
 #: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Yer İmleri"
+msgstr "Yer İmlerine Ekle"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
@@ -584,7 +582,7 @@ msgstr "Yer İmleri"
 
 #: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr "Ortak yerler ve kaydedilmiş klasörler ve dosyalar"
+msgstr "Ortak yerler, kaydedilmiş klasörler ve dosyalar"
 
 #: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
@@ -636,10 +634,9 @@ msgstr "Ağ sunucusuna bağlan"
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s on %s"
-msgstr "%2$s / %1$s"
+msgstr "%s üzerinde %s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
@@ -649,7 +646,7 @@ msgstr "%s boş"
 #: src/View/Sidebar.vala:980
 #, c-format
 msgid "%s used of %s"
-msgstr "%s kullanıldı, Toplam %s"
+msgstr "%2$s alanın %1$s kadarı kullanılıyor"
 
 #: src/View/Sidebar.vala:1456
 #, c-format
