@@ -1,3 +1,73 @@
+pantheon-files (4.5.0) bionic; urgency=medium
+
+  * Release 4.5.0 (#1420)
+  * Fix building with GCC 10 (#1360)
+  * Update translation files
+  * Update translation template
+  * Exclude fuse filesystems from git plugin scanning to prevent
+    apparent hanging (#1284)
+  * Update translation files
+  * Update translation template
+  * Sidebar: Show basename for bind mounts as well as mount name to
+    avoid duplicate device entries (#1403)
+  * Update translation files
+  * Update translation template
+  * Favorites → Bookmarks (#1416)
+  * Sidebar: Don't listen for theme changes (#1413)
+  * Update translation files
+  * Update translation template
+  * Update io.elementary.files.appdata.xml.in.in
+  * Update translation files
+  * Update translation template
+  * Sidebar: format device tooltips (#1411)
+  * Update translation files
+  * Update translation template
+  * PopupMenuBuilder: Bookmark → Add to Favorites
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Update io.elementary.files.appdata.xml.in.in
+  * Rename 'Personal' to 'Favorites' in Sidebar (#1407)
+  * Update translation files
+  * Update translation template
+  * Sidebar: Update network tooltip (#1409)
+  * Update translation files
+  * Update translation template
+  * Sidebar: Update devices tooltip (#1408)
+  * Update translation files
+  * Update translation template
+  * Fix crash when certain keys pressed 'simultaneously' (#1378)
+  * Update translation files
+  * Update translation template
+  * Show folder item count in List View (#1388)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Make Properties header-title selectable when not writable (#1398)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Fix regression in sanitation of paths containing "~", "." and ".."
+    (#1324)
+  * Update translation files
+  * Update translation template
+  * Stop FileChooser crashing when used as FileChooserNative (e.g. with
+    flatpak) (#1391)
+  * Update translation files
+  * Update translation template
+  * Update io.elementary.files.appdata.xml.in.in
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Show network and local thumbnails by default. (#1265)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * Sidebar: Add Bookmark option to context menu of network mounts
+    (#1298)
+
+ -- Cody Garver <cody@elementary.io>  Tue, 11 Aug 2020 17:29:03 +0000
+
 pantheon-files (4.4.4) bionic; urgency=medium
 
   * Release 4.4.4 (#1383)
