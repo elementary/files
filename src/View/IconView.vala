@@ -87,11 +87,11 @@ namespace FM {
         }
 
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level");
-            Preferences.marlin_icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+            var zoom = Marlin.icon_view_settings.get_enum ("zoom-level");
+            Marlin.icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
 
-            minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("maximum-zoom-level");
+            minimum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("maximum-zoom-level");
 
             if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
@@ -105,8 +105,8 @@ namespace FM {
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("default-zoom-level");
-            Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
+            var zoom = Marlin.icon_view_settings.get_enum ("default-zoom-level");
+            Marlin.icon_view_settings.set_enum ("zoom-level", zoom);
 
             return (Marlin.ZoomLevel)zoom;
         }
