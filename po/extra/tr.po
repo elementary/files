@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-10 19:01+0000\n"
-"PO-Revision-Date: 2020-07-28 14:12+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"PO-Revision-Date: 2020-08-11 16:26+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,10 +83,8 @@ msgid "Favorite menu option for network mounts in sidebar"
 msgstr "Kenar çubuğundaki ağ bağlantıları için yer imi menü seçeneği"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr "Liste Görünümünde dosya bilgisini de göster"
+msgstr "Liste Görünümünde dosyadaki öğe sayısınıda göster"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
@@ -102,10 +100,9 @@ msgid ""
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Disk alanı çubukları için geliştirilmiş stil"
+msgstr ""
+"Kenar çubuğundaki cihazlar için geliştirilmiş araç ipucu biçimlendirmesi"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:88
@@ -536,7 +533,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:278
 msgid "Build fixes"
-msgstr ""
+msgstr "Derleme düzeltmeleri"
 
 #: data/io.elementary.files.appdata.xml.in.in:286
 msgid "Plugin build fixes"
