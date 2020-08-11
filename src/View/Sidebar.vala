@@ -38,7 +38,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     Marlin.BookmarkList bookmarks;
     VolumeMonitor volume_monitor;
     unowned Marlin.TrashMonitor monitor;
-    Gtk.IconTheme theme;
     GLib.Icon eject_icon;
 
     int eject_button_size = 20;
@@ -141,7 +140,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         this.volume_monitor = GLib.VolumeMonitor.@get ();
         connect_volume_monitor_signals ();
 
-        set_up_theme ();
         this.show_all ();
 
         update_places ();
@@ -150,7 +148,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
     private void construct_tree_view () {
         tree_view = new Gtk.TreeView () {
-            width_request = Preferences.settings.get_int ("minimum-sidebar-width"),
+            width_request = Marlin.app_settings.get_int ("minimum-sidebar-width"),
             headers_visible = false,
             show_expanders = false
         };
@@ -357,18 +355,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         volume_monitor.drive_changed.disconnect (drive_changed_callback);
     }
 
-    private void set_up_theme () {
-        theme = Gtk.IconTheme.get_default ();
-        theme.changed.connect (icon_theme_changed_callback);
-        get_eject_icon ();
-    }
-
-    private void get_eject_icon () {
-        if (eject_icon == null) {
-            eject_icon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
-        }
-    }
-
     protected Gtk.TreeIter? add_category (PlaceType place_type, string name, string tooltip) {
         Gtk.TreeIter iter = add_place (place_type,
                                        null,
@@ -417,7 +403,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         if (show_eject_button) {
-            action_icon = this.eject_icon;
+            if (eject_icon == null) {
+                eject_icon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
+            }
+            action_icon = eject_icon;
         }
 
         GLib.Error error = null;
@@ -579,9 +568,11 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
         store.clear ();
 
-        iter = add_category (PlaceType.BOOKMARKS_CATEGORY,
-                             _("Favorites"),
-                             _("Common places plus saved folders and files"));
+        iter = add_category (
+            PlaceType.BOOKMARKS_CATEGORY,
+             _("Bookmarks"),
+             _("Common places plus saved folders and files")
+         );
 
         /* Add Home BUILTIN */
         try {
@@ -895,9 +886,15 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             if (mount != null) {
                 /* show mounted volume in sidebar */
                 var root = mount.get_root ();
+                var device_label = root.get_basename ();
+                if (device_label != mount.get_name ()) {
+                    ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+                    device_label = _("%s on %s").printf (device_label, mount.get_name ());
+                }
+
                 last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                        iter,
-                                       mount.get_name (),
+                                       device_label,
                                        get_icon_with_fallback (mount.get_icon ()),
                                        root.get_uri (),
                                        drive,
@@ -1760,18 +1757,18 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
          */
         switch (type) {
             case PlaceType.NETWORK_CATEGORY:
-                if (flag != Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
-                    Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                if (flag != Marlin.app_settings.get_boolean ("sidebar-cat-network-expander")) {
+                    Marlin.app_settings.set_boolean ("sidebar-cat-network-expander", flag);
                 }
                 break;
             case PlaceType.STORAGE_CATEGORY:
-                if (flag != Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
-                    Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                if (flag != Marlin.app_settings.get_boolean ("sidebar-cat-devices-expander")) {
+                    Marlin.app_settings.set_boolean ("sidebar-cat-devices-expander", flag);
                 }
                 break;
             case PlaceType.BOOKMARKS_CATEGORY:
-                if (flag != Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
-                    Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                if (flag != Marlin.app_settings.get_boolean ("sidebar-cat-personal-expander")) {
+                    Marlin.app_settings.set_boolean ("sidebar-cat-personal-expander", flag);
                 }
                 break;
         }
@@ -1779,21 +1776,21 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
     private void expander_init_pref_state (Gtk.TreeView tree_view) {
         var path = new Gtk.TreePath.from_indices (0, -1);
-        if (Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
+        if (Marlin.app_settings.get_boolean ("sidebar-cat-personal-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
         }
 
         path = new Gtk.TreePath.from_indices (1, -1);
-        if (Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
+        if (Marlin.app_settings.get_boolean ("sidebar-cat-devices-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
         }
 
         path = new Gtk.TreePath.from_indices (2, -1);
-        if (Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
+        if (Marlin.app_settings.get_boolean ("sidebar-cat-network-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
@@ -2445,11 +2442,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
 /* MISCELLANEOUS CALLBACK FUNCTIONS */
-
-    private void icon_theme_changed_callback (Gtk.IconTheme icon_theme) {
-        get_eject_icon ();
-        update_places ();
-    }
 
     private void loading_uri_callback (string location) {
         set_matching_selection (location);

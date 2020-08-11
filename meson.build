@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '4.4.4',
+    version: '4.5.0',
     meson_version: '>= 0.47.0'
 )
 
@@ -27,7 +27,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.34.0'
+vala_version_required = '0.48.2'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
