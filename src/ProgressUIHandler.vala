@@ -22,7 +22,7 @@
 
 /*** One instance of this class is owned by the application and handles UI for file transfers initiated by
  *   of the app windows.  Feedback is provided by a dialog window which appears if a transfer takes longer than
- *   approximately 1 second. The unity launcher is also updated if present and a notification is sent of the
+ *   approximately 1 second. The launcher is also updated if present and a notification is sent of the
  *   completion of the operation unless it was cancelled by the user.
 ***/
 public class Marlin.Progress.UIHandler : Object {
@@ -95,9 +95,7 @@ public class Marlin.Progress.UIHandler : Object {
                 add_to_window (info);
         }
 
-#if HAVE_UNITY
-        update_unity_launcher (info, true);
-#endif
+        update_launcher (info, true);
     }
 
     private void add_to_window (PF.Progress.Info info) {
@@ -174,7 +172,7 @@ public class Marlin.Progress.UIHandler : Object {
             progress_window.hide ();
         }
 
-        update_unity_launcher (info, false);
+        update_launcher (info, false);
     }
 
     private void show_operation_complete_notification (string title, bool all_finished) {
@@ -191,25 +189,25 @@ public class Marlin.Progress.UIHandler : Object {
         application.send_notification ("Pantheon Files Operation", complete_notification);
     }
 
-    private void update_unity_launcher (PF.Progress.Info info, bool added) {
-        update_unity_launcher_entry (info);
+    private void update_launcher (PF.Progress.Info info, bool added) {
+        update_launcher_entry (info);
 
         if (added) {
-            info.progress_changed.connect (unity_progress_changed);
+            info.progress_changed.connect (launcher_progress_changed);
         }
     }
 
-    private void update_unity_launcher_entry (PF.Progress.Info info) {
+    private void update_launcher_entry (PF.Progress.Info info) {
         if (this.active_infos > 0) {
             Granite.Services.Application.set_progress_visible (true);
-            unity_progress_changed ();
+            launcher_progress_changed ();
         } else {
             Granite.Services.Application.set_progress_visible (false);
 
         }
     }
 
-    private void unity_progress_changed () {
+    private void launcher_progress_changed () {
         double progress = 0;
         double current = 0;
         double total = 0;
