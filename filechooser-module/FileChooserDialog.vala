@@ -257,7 +257,7 @@ public class CustomFileChooserDialog : Object {
                                 ((Gtk.Container)w6).get_children ().foreach ((w7) => {
                                     if (w7 is Gtk.Button) {
                                         /* Register the button so we can use it's signal */
-                                        gtk_folder_button =(Gtk.Button)w7;
+                                        gtk_folder_button = (Gtk.Button)w7;
                                     }
                                 });
                             }
