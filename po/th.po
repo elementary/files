@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-29 18:55+0000\n"
+"POT-Creation-Date: 2020-08-11 17:43+0000\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -19,38 +19,38 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
-#: src/Application.vala:124
+#: src/Application.vala:149
 msgid "Show the version of the program"
 msgstr ""
 
-#: src/Application.vala:126
+#: src/Application.vala:151
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
+#: src/Application.vala:153 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr ""
 
-#: src/Application.vala:130
+#: src/Application.vala:155
 msgid "Quit Files"
 msgstr ""
 
-#: src/Application.vala:132
+#: src/Application.vala:157
 msgid "Enable debug logging"
 msgstr ""
 
-#: src/Application.vala:135
+#: src/Application.vala:160
 msgid "[URI…]"
 msgstr ""
 
-#: src/Application.vala:138
+#: src/Application.vala:163
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: src/Application.vala:166
+#: src/Application.vala:191
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -116,7 +116,7 @@ msgid "Set as default"
 msgstr "ตั้งเป็นค่าเริ่มต้น"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1967 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "คุณสมบัติ"
 
@@ -195,7 +195,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1935
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr ""
 
@@ -231,7 +231,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1236
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:862
 #, c-format
 msgid "%s, %s"
 msgstr ""
@@ -260,7 +261,7 @@ msgstr ""
 msgid "Disk Properties"
 msgstr ""
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "ระบบแฟ้ม"
@@ -289,7 +290,7 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:532 src/View/Window.vala:542
+#: src/View/Window.vala:535 src/View/Window.vala:545
 msgid "(as Administrator)"
 msgstr "ในฐานะผู้ดูแลระบบ"
 
@@ -297,11 +298,11 @@ msgstr "ในฐานะผู้ดูแลระบบ"
 msgid "Filename"
 msgstr ""
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2169
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr ""
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2174
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr ""
 
@@ -334,200 +335,202 @@ msgstr ""
 "ไม่สามารถสร้างโฟลเดอร์ได้\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:818
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:821
+#: src/View/AbstractDirectoryView.vala:1132
 msgid "Cannot execute this file"
 msgstr ""
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:828
+#: src/View/AbstractDirectoryView.vala:831
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:829
+#: src/View/AbstractDirectoryView.vala:832
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:844
+#: src/View/AbstractDirectoryView.vala:847
 msgid "Cannot open this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:857
+#: src/View/AbstractDirectoryView.vala:860
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1575
+#: src/View/AbstractDirectoryView.vala:1578
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1579
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1851
+#: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1871
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1878
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1947
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1952
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "เปิดด้วย"
 
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Add to Favorites"
-msgstr ""
+#: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
+#, fuzzy
+#| msgid "Bookmark"
+msgid "Add to Bookmarks"
+msgstr "บุ๊กมาร์ก"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr "ตัด"
 
-#: src/View/AbstractDirectoryView.vala:1982
+#: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1992
 #, fuzzy
 msgid "Move to Trash"
 msgstr "กำลังย้ายแฟ้มไปถังขยะ"
 
-#: src/View/AbstractDirectoryView.vala:1994
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
 msgstr "ลบแบบถาวร"
 
-#: src/View/AbstractDirectoryView.vala:1999
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2013
 #, fuzzy
 msgid "Open Parent Folder"
 msgstr "วางไปยังโฟลเดอร์"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2029
+#: src/View/AbstractDirectoryView.vala:2032
 #, fuzzy
 #| msgid "Re_name"
 msgid "Rename…"
 msgstr "เปลี่ยนชื่อ (_N)"
 
-#: src/View/AbstractDirectoryView.vala:2036
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2057
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "วางไปยังโฟลเดอร์"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "วางไปยังโฟลเดอร์"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2090
 #, fuzzy
 msgid "Show Remote Thumbnails"
 msgstr "แสดง_รายละเอียดเพิ่มเติม"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2093
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "แสดง_รายละเอียดเพิ่มเติม"
 
-#: src/View/AbstractDirectoryView.vala:2110
+#: src/View/AbstractDirectoryView.vala:2113
 #, fuzzy
 msgid "Paste Link"
 msgstr "วางไปยังโฟลเดอร์"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "ชื่อ"
 
-#: src/View/AbstractDirectoryView.vala:2179
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "วันที่"
 
-#: src/View/AbstractDirectoryView.vala:2184
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "เรียงแบบย้อนกลับ"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2199
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "เรียงลำดับโดย"
 
-#: src/View/AbstractDirectoryView.vala:2207
+#: src/View/AbstractDirectoryView.vala:2210
 #, fuzzy
 msgid "Folder"
 msgstr "_โฟลเดอร์:"
 
-#: src/View/AbstractDirectoryView.vala:2213
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2264
+#: src/View/AbstractDirectoryView.vala:2267
 #, fuzzy
 msgid "New"
 msgstr "เครือข่าย"
 
-#: src/View/AbstractDirectoryView.vala:2501
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2866
+#: src/View/AbstractDirectoryView.vala:3067
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2864
-#: src/View/AbstractDirectoryView.vala:3049
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3021
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cutting the selection instead"
 msgstr "กำลังตัดรายการที่เลือกแทน"
 
-#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3051
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Home"
 
@@ -583,85 +586,93 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:583 libwidgets/View/SearchResults.vala:248
-msgid "Favorites"
-msgstr ""
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+#, fuzzy
+#| msgid "Bookmark"
+msgid "Bookmarks"
+msgstr "บุ๊กมาร์ก"
 
-#: src/View/Sidebar.vala:584
+#: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "เปิดโฟลเดอร์ส่วนตัวของคุณ"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr ""
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "ถังขยะ"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr ""
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "อุปกรณ์"
 
-#: src/View/Sidebar.vala:657
+#: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "เครือข่าย"
 
-#: src/View/Sidebar.vala:787
+#: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr ""
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr ""
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 #, fuzzy
 msgid "Connect Server"
 msgstr "เชื่อมต่อไปยังเซิร์ฟเวอร์"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 #, fuzzy
 msgid "Connect to a network server"
 msgstr "เชื่อมต่อไปยังเซิร์ฟเวอร์"
 
-#: src/View/Sidebar.vala:982
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, c-format
+msgid "%s on %s"
+msgstr ""
+
+#: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar.vala:983
+#: src/View/Sidebar.vala:980
 #, c-format
 msgid "%s used of %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1459
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1474
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1664 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "เ_ทขยะ"
 
@@ -1129,6 +1140,60 @@ msgstr ""
 msgid "%%A at %s"
 msgstr ""
 
+#: libcore/FileUtils.vala:849
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d วินาที"
+
+#: libcore/FileUtils.vala:855 libcore/FileUtils.vala:864
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d นาที"
+
+#: libcore/FileUtils.vala:863
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d ชั่วโมง"
+
+#: libcore/FileUtils.vala:869
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "ประมาณ %'d ชั่วโมง"
+
+#: libcore/FileUtils.vala:916
+#, c-format
+msgid "Link to %s"
+msgstr "เชื่อมโยงไปยัง %s"
+
+#: libcore/FileUtils.vala:920
+#, c-format
+msgid "Another link to %s"
+msgstr "จุดเชื่อมโยงอีกอันไปยัง %s"
+
+#: libcore/FileUtils.vala:939
+#, c-format
+msgid "%'dst link to %s"
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
+
+#: libcore/FileUtils.vala:943
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
+
+#: libcore/FileUtils.vala:947
+#, c-format
+msgid "%'drd link to %s"
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
+
+#: libcore/FileUtils.vala:951
+#, c-format
+msgid "%'dth link to %s"
+msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
+
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
 msgstr ""
@@ -1217,77 +1282,23 @@ msgstr "เ_ทขยะ"
 msgid "Unable to mount '%s'"
 msgstr "ไม่สามารถเมานต์ %s"
 
-#: libcore/marlin-file-operations.c:150
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d วินาที"
-
-#: libcore/marlin-file-operations.c:159 libcore/marlin-file-operations.c:173
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d นาที"
-
-#: libcore/marlin-file-operations.c:172
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d ชั่วโมง"
-
-#: libcore/marlin-file-operations.c:184
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "ประมาณ %'d ชั่วโมง"
-
-#: libcore/marlin-file-operations.c:260
-#, c-format
-msgid "Link to %s"
-msgstr "เชื่อมโยงไปยัง %s"
-
-#: libcore/marlin-file-operations.c:264
-#, c-format
-msgid "Another link to %s"
-msgstr "จุดเชื่อมโยงอีกอันไปยัง %s"
-
-#: libcore/marlin-file-operations.c:280
-#, c-format
-msgid "%'dst link to %s"
-msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
-
-#: libcore/marlin-file-operations.c:284
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
-
-#: libcore/marlin-file-operations.c:288
-#, c-format
-msgid "%'drd link to %s"
-msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
-
-#: libcore/marlin-file-operations.c:292
-#, c-format
-msgid "%'dth link to %s"
-msgstr "จุดเชื่อมโยงที่ %'d ไปยัง %s"
-
-#: libcore/marlin-file-operations.c:484
+#: libcore/marlin-file-operations.c:332
 msgid " ("
 msgstr " (สำเนาที่"
 
-#: libcore/marlin-file-operations.c:492
+#: libcore/marlin-file-operations.c:340
 #, c-format
 msgid " (%'d"
 msgstr " (สำเนาที่ %'d"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1047
+#: libcore/marlin-file-operations.c:843
 #, fuzzy, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "แน่ใจหรือไม่ว่าจะเท \"%B\" ทิ้งจากถังขยะอย่างถาวร?"
 
-#: libcore/marlin-file-operations.c:1051
+#: libcore/marlin-file-operations.c:847
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1297,56 +1308,56 @@ msgid_plural ""
 "trash?"
 msgstr[0] "แน่ใจหรือไม่ว่าจะเท %'d รายการที่เลือกทิ้งจากถังขยะอย่างถาวร?"
 
-#: libcore/marlin-file-operations.c:1061
+#: libcore/marlin-file-operations.c:857
 msgid "If you delete an item, it will be permanently lost."
 msgstr "ถ้าคุณลบ รายการดังกล่าวก็จะสูญหายอย่างถาวร"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1087
+#: libcore/marlin-file-operations.c:883
 #, fuzzy, c-format
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently delete “%s”?"
 msgstr "ต้องการลบรายการทั้งหมดออกจากถังขยะอย่างถาวรหรือไม่?"
 
-#: libcore/marlin-file-operations.c:1090
+#: libcore/marlin-file-operations.c:886
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "แน่ใจหรือไม่ว่าจะลบรายการที่เลือกทั้ง %'d รายการทิ้งอย่างถาวร?"
 
-#: libcore/marlin-file-operations.c:1099
+#: libcore/marlin-file-operations.c:895
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1133
+#: libcore/marlin-file-operations.c:929
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "เหลืออีก %'d แฟ้มที่จะลบ"
 
-#: libcore/marlin-file-operations.c:1138
+#: libcore/marlin-file-operations.c:934
 msgid "Deleting files"
 msgstr "กำลังลบแฟ้ม"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1153
+#: libcore/marlin-file-operations.c:949
 #, fuzzy, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "เหลืออีก %T"
 
-#: libcore/marlin-file-operations.c:1222 libcore/marlin-file-operations.c:1262
-#: libcore/marlin-file-operations.c:1308 libcore/marlin-file-operations.c:1390
-#: libcore/marlin-file-operations.c:1897
+#: libcore/marlin-file-operations.c:1018 libcore/marlin-file-operations.c:1058
+#: libcore/marlin-file-operations.c:1104 libcore/marlin-file-operations.c:1186
+#: libcore/marlin-file-operations.c:1693
 msgid "Error while deleting."
 msgstr "เกิดข้อผิดพลาดขณะลบ"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1228
+#: libcore/marlin-file-operations.c:1024
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1355,20 +1366,20 @@ msgstr "ลบแฟ้มในโฟลเดอร์ \"%B\" ไม่ได�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1233 libcore/marlin-file-operations.c:1961
-#: libcore/marlin-file-operations.c:3038
+#: libcore/marlin-file-operations.c:1029 libcore/marlin-file-operations.c:1757
+#: libcore/marlin-file-operations.c:2745
 #, fuzzy, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr "เกิดข้อผิดพลาดขณะอ่านข้อมูลเกี่ยวกับแฟ้มในโฟลเดอร์ \"%B\""
 
-#: libcore/marlin-file-operations.c:1243 libcore/marlin-file-operations.c:3048
+#: libcore/marlin-file-operations.c:1039 libcore/marlin-file-operations.c:2755
 msgid "_Skip files"
 msgstr "_ข้ามแฟ้ม"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1267
+#: libcore/marlin-file-operations.c:1063
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1377,88 +1388,88 @@ msgstr "ลบโฟลเดอร์ \"%B\" ไม่ได้ เพราะ
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1272 libcore/marlin-file-operations.c:2006
-#: libcore/marlin-file-operations.c:3090
+#: libcore/marlin-file-operations.c:1068 libcore/marlin-file-operations.c:1802
+#: libcore/marlin-file-operations.c:2797
 #, fuzzy, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "เกิดข้อผิดพลาดขณะอ่านโฟลเดอร์ \"%B\""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1311
+#: libcore/marlin-file-operations.c:1107
 #, fuzzy, c-format
 msgid "Could not remove the folder %s."
 msgstr "ไม่สามารถลบโฟลเดอร์ %B"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1393
+#: libcore/marlin-file-operations.c:1189
 #, fuzzy, c-format
 msgid "There was an error deleting %s."
 msgstr "เกิดข้อผิดพลาดขณะลบ %B"
 
-#: libcore/marlin-file-operations.c:1478
+#: libcore/marlin-file-operations.c:1274
 msgid "Moving files to trash"
 msgstr "กำลังย้ายแฟ้มไปถังขยะ"
 
-#: libcore/marlin-file-operations.c:1480
+#: libcore/marlin-file-operations.c:1276
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "เหลืออีก %'d แฟ้มที่จะย้ายลงถังขยะ"
 
-#: libcore/marlin-file-operations.c:1578 libcore/marlin-file-operations.c:1581
-#: libcore/marlin-file-operations.c:1584
+#: libcore/marlin-file-operations.c:1374 libcore/marlin-file-operations.c:1377
+#: libcore/marlin-file-operations.c:1380
 msgid "Cannot move file to trash or delete it"
 msgstr "ไม่สามารถย้ายแฟ้มไปยังถังขยะหรือลบได้"
 
-#: libcore/marlin-file-operations.c:1579
+#: libcore/marlin-file-operations.c:1375
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1582
+#: libcore/marlin-file-operations.c:1378
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1585
+#: libcore/marlin-file-operations.c:1381
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1587
+#: libcore/marlin-file-operations.c:1383
 #, fuzzy
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "ไม่สามารถย้ายแฟ้มไปที่ถังขยะ ลบมัน ?"
 
-#: libcore/marlin-file-operations.c:1588
+#: libcore/marlin-file-operations.c:1384
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1592
+#: libcore/marlin-file-operations.c:1388
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "ไม่สามารถย้ายแฟ้มไปที่ถังขยะ ลบมัน ?"
 
-#: libcore/marlin-file-operations.c:1593
+#: libcore/marlin-file-operations.c:1389
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1599
+#: libcore/marlin-file-operations.c:1395
 #, fuzzy
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr "ลบแบบถาวร"
 
-#: libcore/marlin-file-operations.c:1789
+#: libcore/marlin-file-operations.c:1585
 msgid "Trashing Files"
 msgstr "กำลังย้ายแฟ้มลงถังขยะ"
 
-#: libcore/marlin-file-operations.c:1791
+#: libcore/marlin-file-operations.c:1587
 msgid "Deleting Files"
 msgstr "กำลังลบแฟ้ม"
 
@@ -1466,7 +1477,7 @@ msgstr "กำลังลบแฟ้ม"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1831
+#: libcore/marlin-file-operations.c:1627
 #, fuzzy, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1476,7 +1487,7 @@ msgstr[0] "กำลังเตรียมคัดลอกแฟ้ม %'d �
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1843
+#: libcore/marlin-file-operations.c:1639
 #, fuzzy, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1486,35 +1497,35 @@ msgstr[0] "กำลังเตรียมย้ายแฟ้ม %'d แฟ�
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1855
+#: libcore/marlin-file-operations.c:1651
 #, fuzzy, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "กำลังเตรียมลบแฟ้ม %'d แฟ้ม (%S)"
 
-#: libcore/marlin-file-operations.c:1862
+#: libcore/marlin-file-operations.c:1658
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "กำลังเตรียมย้ายแฟ้มลงถังขยะ %'d แฟ้ม"
 
-#: libcore/marlin-file-operations.c:1893 libcore/marlin-file-operations.c:2885
-#: libcore/marlin-file-operations.c:3025 libcore/marlin-file-operations.c:3077
+#: libcore/marlin-file-operations.c:1689 libcore/marlin-file-operations.c:2592
+#: libcore/marlin-file-operations.c:2732 libcore/marlin-file-operations.c:2784
 msgid "Error while copying."
 msgstr "เกิดข้อผิดพลาดระหว่างคัดลอก"
 
-#: libcore/marlin-file-operations.c:1895 libcore/marlin-file-operations.c:3023
-#: libcore/marlin-file-operations.c:3075
+#: libcore/marlin-file-operations.c:1691 libcore/marlin-file-operations.c:2730
+#: libcore/marlin-file-operations.c:2782
 msgid "Error while moving."
 msgstr "เกิดข้อผิดพลาดขณะย้าย"
 
-#: libcore/marlin-file-operations.c:1899
+#: libcore/marlin-file-operations.c:1695
 msgid "Error while moving files to trash."
 msgstr "เกิดข้อผิดพลาดขณะย้ายแฟ้มลงถังขยะ"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1956
+#: libcore/marlin-file-operations.c:1752
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1523,7 +1534,7 @@ msgstr "จัดการแฟ้มในโฟลเดอร์ \"%B\" ไ�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2001
+#: libcore/marlin-file-operations.c:1797
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1532,7 +1543,7 @@ msgstr "จัดการโฟลเดอร์ \"%B\" ไม่ได้ เ
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2088
+#: libcore/marlin-file-operations.c:1884
 #, fuzzy, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1541,33 +1552,33 @@ msgstr "จัดการแฟ้ม \"%B\" ไม่ได้ เพราะ
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2093
+#: libcore/marlin-file-operations.c:1889
 #, fuzzy, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "เกิดข้อผิดพลาดขณะอ่านข้อมูลเกี่ยวกับ \"%B\""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2199 libcore/marlin-file-operations.c:2245
-#: libcore/marlin-file-operations.c:2283 libcore/marlin-file-operations.c:2323
+#: libcore/marlin-file-operations.c:1995 libcore/marlin-file-operations.c:2041
+#: libcore/marlin-file-operations.c:2079 libcore/marlin-file-operations.c:2119
 #, fuzzy, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "เกิดข้อผิดพลาดระหว่างคัดลอกไปที่ \"%B\""
 
-#: libcore/marlin-file-operations.c:2204
+#: libcore/marlin-file-operations.c:2000
 msgid "You do not have permissions to access the destination folder."
 msgstr "คุณไม่มีสิทธิ์ที่จะเข้าใช้โฟลเดอร์ปลายทาง"
 
-#: libcore/marlin-file-operations.c:2206
+#: libcore/marlin-file-operations.c:2002
 #, fuzzy
 msgid "There was an error getting information about the destination."
 msgstr "เกิดข้อผิดพลาดขณะอ่านข้อมูลเกี่ยวกับแฟ้มในโฟลเดอร์ \"%B\""
 
-#: libcore/marlin-file-operations.c:2246
+#: libcore/marlin-file-operations.c:2042
 msgid "The destination is not a folder."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2285
+#: libcore/marlin-file-operations.c:2081
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1575,30 +1586,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2291
+#: libcore/marlin-file-operations.c:2087
 #, c-format
 msgid "There is %s available, but %s is required."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:2325
+#: libcore/marlin-file-operations.c:2121
 msgid "The destination is read-only."
 msgstr ""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2397
+#: libcore/marlin-file-operations.c:2193
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "กำลังย้ายแฟ้มไปถังขยะ"
 
-#: libcore/marlin-file-operations.c:2398
+#: libcore/marlin-file-operations.c:2194
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "คัดลอก %d รายการไปที่ '%s'"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2402
+#: libcore/marlin-file-operations.c:2198
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "กำลังลบแฟ้ม"
@@ -1607,13 +1618,13 @@ msgstr "กำลังลบแฟ้ม"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2410
+#: libcore/marlin-file-operations.c:2206
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "กำลังย้ายแฟ้มไปถังขยะ"
 
-#: libcore/marlin-file-operations.c:2413
+#: libcore/marlin-file-operations.c:2209
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1621,7 +1632,7 @@ msgstr[0] "คัดลอก %d รายการไปที่ '%s'"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2422
+#: libcore/marlin-file-operations.c:2218
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1631,26 +1642,26 @@ msgstr[0] "กำลังลบแฟ้ม"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:2230
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "กำลังย้ายแฟ้มไปถังขยะ"
 
-#: libcore/marlin-file-operations.c:2437
+#: libcore/marlin-file-operations.c:2233
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "คัดลอก %d รายการไปที่ '%s'"
 
-#: libcore/marlin-file-operations.c:2443
+#: libcore/marlin-file-operations.c:2239
 #, fuzzy, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "กำลังลบแฟ้ม"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:2269
 #, c-format
 msgid "%s of %s"
 msgstr ""
@@ -1661,7 +1672,7 @@ msgstr ""
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2493
+#: libcore/marlin-file-operations.c:2289
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1669,7 +1680,7 @@ msgstr[0] ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2892
+#: libcore/marlin-file-operations.c:2599
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1678,14 +1689,14 @@ msgstr "ลบโฟลเดอร์ \"%B\" ไม่ได้ เพราะ
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2897
+#: libcore/marlin-file-operations.c:2604
 #, fuzzy, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "เกิดข้อผิดพลาดขณะอ่านโฟลเดอร์ \"%B\""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3033
+#: libcore/marlin-file-operations.c:2740
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1694,7 +1705,7 @@ msgstr "ลบแฟ้มในโฟลเดอร์ \"%B\" ไม่ได�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3085
+#: libcore/marlin-file-operations.c:2792
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1705,178 +1716,178 @@ msgstr "ลบโฟลเดอร์ \"%B\" ไม่ได้ เพราะ
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3138 libcore/marlin-file-operations.c:3870
-#: libcore/marlin-file-operations.c:4438
+#: libcore/marlin-file-operations.c:2845 libcore/marlin-file-operations.c:3577
+#: libcore/marlin-file-operations.c:4145
 #, fuzzy, c-format
 msgid "Error while moving \"%s\"."
 msgstr "เกิดข้อผิดพลาดขณะย้าย"
 
-#: libcore/marlin-file-operations.c:3140
+#: libcore/marlin-file-operations.c:2847
 #, fuzzy
 msgid "Could not remove the source folder."
 msgstr "ไม่สามารถลบโฟลเดอร์ %B"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3229 libcore/marlin-file-operations.c:3280
-#: libcore/marlin-file-operations.c:3874
+#: libcore/marlin-file-operations.c:2936 libcore/marlin-file-operations.c:2987
+#: libcore/marlin-file-operations.c:3581
 #, fuzzy, c-format
 msgid "Error while copying \"%s\"."
 msgstr "เกิดข้อผิดพลาดระหว่างคัดลอกไปที่ \"%B\""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3234
+#: libcore/marlin-file-operations.c:2941
 #, fuzzy, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "ไม่สามารถลบโฟลเดอร์ %B"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3285
+#: libcore/marlin-file-operations.c:2992
 #, fuzzy, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "ไม่สามารถลบโฟลเดอร์ %B"
 
-#: libcore/marlin-file-operations.c:3603 libcore/marlin-file-operations.c:4277
+#: libcore/marlin-file-operations.c:3310 libcore/marlin-file-operations.c:3984
 #, fuzzy
 msgid "You cannot move a folder into itself."
 msgstr "ไม่สามารถลบโฟลเดอร์ %B"
 
-#: libcore/marlin-file-operations.c:3604 libcore/marlin-file-operations.c:4278
+#: libcore/marlin-file-operations.c:3311 libcore/marlin-file-operations.c:3985
 msgid "You cannot copy a folder into itself."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3605 libcore/marlin-file-operations.c:4279
+#: libcore/marlin-file-operations.c:3312 libcore/marlin-file-operations.c:3986
 msgid "The destination folder is inside the source folder."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3636
+#: libcore/marlin-file-operations.c:3343
 #, fuzzy
 msgid "You cannot move a file over itself."
 msgstr "ไม่สามารถย้ายแฟ้มไปยังถังขยะหรือลบได้"
 
-#: libcore/marlin-file-operations.c:3637
+#: libcore/marlin-file-operations.c:3344
 msgid "You cannot copy a file over itself."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:3638
+#: libcore/marlin-file-operations.c:3345
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3880
+#: libcore/marlin-file-operations.c:3587
 #, fuzzy, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "ไม่สามารถลบโฟลเดอร์ %B"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3950
+#: libcore/marlin-file-operations.c:3657
 #, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3955
+#: libcore/marlin-file-operations.c:3662
 #, fuzzy, c-format
 msgid "There was an error copying the file into %s."
 msgstr "เกิดข้อผิดพลาดขณะอ่านโฟลเดอร์ \"%B\""
 
-#: libcore/marlin-file-operations.c:4157
+#: libcore/marlin-file-operations.c:3864
 #, fuzzy
 msgid "Copying Files"
 msgstr "กำลังย้ายแฟ้มลงถังขยะ"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4193
+#: libcore/marlin-file-operations.c:3900
 #, fuzzy, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "กำลังเตรียมย้ายแฟ้ม %'d แฟ้ม (%S)"
 
-#: libcore/marlin-file-operations.c:4198
+#: libcore/marlin-file-operations.c:3905
 #, fuzzy, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "กำลังเตรียมย้ายแฟ้ม %'d แฟ้ม (%S)"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4442
+#: libcore/marlin-file-operations.c:4149
 #, fuzzy, c-format
 msgid "There was an error moving the file into %s."
 msgstr "เกิดข้อผิดพลาดขณะอ่านโฟลเดอร์ \"%B\""
 
-#: libcore/marlin-file-operations.c:4676
+#: libcore/marlin-file-operations.c:4383
 #, fuzzy
 msgid "Moving Files"
 msgstr "กำลังย้ายแฟ้มลงถังขยะ"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4715
+#: libcore/marlin-file-operations.c:4422
 #, fuzzy, c-format
 msgid "Creating links in \"%s\""
 msgstr "จุดเชื่อมโยงอีกอันไปยัง %s"
 
-#: libcore/marlin-file-operations.c:4720
+#: libcore/marlin-file-operations.c:4427
 #, fuzzy, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "กำลังเตรียมย้ายแฟ้มลงถังขยะ %'d แฟ้ม"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4857
+#: libcore/marlin-file-operations.c:4564
 #, fuzzy, c-format
 msgid "Error while creating link to %s."
 msgstr "เกิดข้อผิดพลาดระหว่างคัดลอกไปที่ \"%B\""
 
-#: libcore/marlin-file-operations.c:4860
+#: libcore/marlin-file-operations.c:4567
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:4863
+#: libcore/marlin-file-operations.c:4570
 msgid "The target doesn't support symbolic links."
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4868
+#: libcore/marlin-file-operations.c:4575
 #, fuzzy, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "เกิดข้อผิดพลาดขณะอ่านโฟลเดอร์ \"%B\""
 
-#: libcore/marlin-file-operations.c:5171
+#: libcore/marlin-file-operations.c:4878
 msgid "Setting permissions"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5360
+#: libcore/marlin-file-operations.c:5067
 msgid "Cannot copy into trash."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5361 libcore/marlin-file-operations.c:5369
+#: libcore/marlin-file-operations.c:5068 libcore/marlin-file-operations.c:5076
 msgid "It is not permitted to copy files into the trash"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5505
+#: libcore/marlin-file-operations.c:5212
 msgid "untitled folder"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5513
+#: libcore/marlin-file-operations.c:5220
 msgid "new file"
 msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5680
+#: libcore/marlin-file-operations.c:5387
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "เกิดข้อผิดพลาดระหว่างคัดลอกไปที่ \"%B\""
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5683
+#: libcore/marlin-file-operations.c:5390
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "เกิดข้อผิดพลาดระหว่างคัดลอกไปที่ \"%B\""
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5689
+#: libcore/marlin-file-operations.c:5396
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "เกิดข้อผิดพลาดขณะอ่านโฟลเดอร์ \"%B\""
@@ -1980,9 +1991,6 @@ msgstr ""
 #, fuzzy
 msgid "Delete Selected"
 msgstr "ลบทั้_งหมด"
-
-#~ msgid "Bookmark"
-#~ msgstr "บุ๊กมาร์ก"
 
 #~ msgid "Personal"
 #~ msgstr "ส่วนตัว"

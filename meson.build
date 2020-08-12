@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '4.4.4',
+    version: '4.5.0',
     meson_version: '>= 0.47.0'
 )
 
@@ -19,6 +19,7 @@ terminal_name = 'pantheon-terminal'
 
 add_project_arguments(
     ['-DGETTEXT_PACKAGE="' + meson.project_name() + '"',
+    '-DHANDY_USE_UNSTABLE_API',
     '-w'],
     language:'c'
 )
@@ -26,7 +27,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.34.0'
+vala_version_required = '0.48.2'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -47,6 +48,7 @@ gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
 granite_dep = dependency('granite', version: '>=5.3.0')
+handy_dep = dependency('libhandy-1', version: '>=0.83.0')
 
 common_deps = [
     glib_dep,
