@@ -129,7 +129,7 @@ public class Marlin.PluginManager : Object {
 
         debug ("Loading plugin for %s", file_path);
 
-        Module module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
+        Module module = Module.open (file_path, ModuleFlags.LOCAL);
         if (module == null) {
             warning ("Failed to load module from path '%s': %s",
                      file_path,
