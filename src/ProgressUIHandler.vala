@@ -27,9 +27,6 @@
 ***/
 public class Marlin.Progress.UIHandler : Object {
     private PF.Progress.InfoManager manager = null;
-#if HAVE_UNITY
-    private Marlin.QuicklistHandler quicklist_handler = null;
-#endif
     private Gtk.Dialog progress_window = null;
     private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
@@ -176,9 +173,8 @@ public class Marlin.Progress.UIHandler : Object {
         if (active_infos < 1 && progress_window != null && progress_window.visible) {
             progress_window.hide ();
         }
-#if HAVE_UNITY
+
         update_unity_launcher (info, false);
-#endif
     }
 
     private void show_operation_complete_notification (string title, bool all_finished) {
@@ -195,101 +191,21 @@ public class Marlin.Progress.UIHandler : Object {
         application.send_notification ("Pantheon Files Operation", complete_notification);
     }
 
-#if HAVE_UNITY
-    private void update_unity_launcher (PF.Progress.Info info,
-                                        bool added) {
-
-        if (this.quicklist_handler == null) {
-            this.quicklist_handler = QuicklistHandler.get_singleton ();
-
-            if (this.quicklist_handler == null) {
-                return;
-            }
-
-            build_unity_quicklist ();
-        }
-
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
-            update_unity_launcher_entry (info, marlin_lentry);
-        }
+    private void update_unity_launcher (PF.Progress.Info info, bool added) {
+        update_unity_launcher_entry (info);
 
         if (added) {
             info.progress_changed.connect (unity_progress_changed);
         }
     }
 
-    private void build_unity_quicklist () {
-        /* Create menu items for the quicklist */
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
-            /* Separator between bookmarks and progress items */
-            var separator = new Dbusmenu.Menuitem ();
-
-            separator.property_set (Dbusmenu.MENUITEM_PROP_TYPE,
-                                    Dbusmenu.CLIENT_TYPES_SEPARATOR);
-            separator.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                    "Progress items separator");
-            marlin_lentry.progress_quicklists.append (separator);
-
-            /* "Show progress window" menu item */
-            var show_menuitem = new Dbusmenu.Menuitem ();
-
-            show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                        _("Show Copy Dialog"));
-
-            show_menuitem.item_activated.connect (() => {
-                progress_window.present ();
-            });
-
-            marlin_lentry.progress_quicklists.append (show_menuitem);
-
-            /* "Cancel in-progress operations" menu item */
-            var cancel_menuitem = new Dbusmenu.Menuitem ();
-
-            cancel_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                          _("Cancel All In-progress Actions"));
-
-            cancel_menuitem.item_activated.connect (() => {
-                var infos = this.manager.get_all_infos ();
-
-                foreach (var info in infos) {
-                    info.cancel ();
-                }
-            });
-
-            marlin_lentry.progress_quicklists.append (cancel_menuitem);
-        }
-    }
-
-    private void update_unity_launcher_entry (PF.Progress.Info info,
-                                              Marlin.LauncherEntry marlin_lentry) {
-        Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-
+    private void update_unity_launcher_entry (PF.Progress.Info info) {
         if (this.active_infos > 0) {
-            unity_lentry.progress_visible = true;
+            Granite.Services.Application.set_progress_visible (true);
             unity_progress_changed ();
-            show_unity_quicklist (marlin_lentry, true);
         } else {
-            unity_lentry.progress_visible = false;
-            unity_lentry.progress = 0.0;
-            show_unity_quicklist (marlin_lentry, false);
-        }
-    }
+            Granite.Services.Application.set_progress_visible (false);
 
-    private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
-                                       bool show) {
-
-        Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-        Dbusmenu.Menuitem quicklist = unity_lentry.quicklist;
-
-        foreach (Dbusmenu.Menuitem menuitem in marlin_lentry.progress_quicklists) {
-            var parent = menuitem.get_parent ();
-            if (show) {
-                if (parent == null) {
-                    quicklist.child_add_position (menuitem, -1);
-                }
-            } else if (parent != null && parent == quicklist) {
-                quicklist.child_delete (menuitem);
-            }
         }
     }
 
@@ -323,11 +239,6 @@ public class Marlin.Progress.UIHandler : Object {
             progress = 1.0;
         }
 
-        foreach (Marlin.LauncherEntry marlin_lentry in this.quicklist_handler.launcher_entries) {
-            Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-            unity_lentry.progress = progress;
-        }
+        Granite.Services.Application.set_progress (progress);
     }
-#endif
-
 }

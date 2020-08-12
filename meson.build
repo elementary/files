@@ -69,20 +69,6 @@ posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
 
-unity_dep = []
-plank_dep = []
-
-
-unity_dep = dependency('unity', version: '>=4.0.0', required: get_option('with-unity'))
-if (unity_dep.found())
-    add_project_arguments('--define=HAVE_UNITY', language: 'vala')
-endif
-
-plank_dep = dependency('plank', version: '>=0.10.9', required: get_option('with-unity'))
-if (plank_dep.found() )
-	add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
-endif
-
 zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
 if (zeitgeist_dep.found())
 	add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')

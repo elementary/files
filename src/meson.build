@@ -1,8 +1,6 @@
 pantheon_files_deps = [
     common_deps,
     pantheon_files_widgets_dep,
-    unity_dep,
-    plank_dep,
     zeitgeist_dep,
     project_config_dep,
 ]
@@ -15,7 +13,6 @@ pantheon_files_exec = executable (
     'Application.vala',
     'marlin-deep-count.vala',
     'ProgressUIHandler.vala',
-    'QuicklistHandler.vala',
     'TextRenderer.vala',
     'ClipboardManager.vala',
     'IconRenderer.vala',
