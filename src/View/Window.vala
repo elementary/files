@@ -264,7 +264,7 @@ namespace Marlin.View {
             });
 
             tabs.close_tab_requested.connect ((tab) => {
-                var view_container = (tab.page as ViewContainer);
+                var view_container = (ViewContainer)(tab.page);
                 tab.restore_data = view_container.location.get_uri ();
 
                 /* If closing tab is current, set current_tab to null to ensure
@@ -297,7 +297,7 @@ namespace Marlin.View {
 
             tabs.tab_moved.connect ((tab) => {
                 /* Called when tab dragged out of notebook */
-                var vc = tab.page as ViewContainer;
+                var vc = (ViewContainer)(tab.page) ;
                 /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
                 vc.close ();
 
@@ -311,7 +311,7 @@ namespace Marlin.View {
 
 
             tabs.tab_added.connect ((tab) => {
-                var vc = tab.page as ViewContainer;
+                var vc = (ViewContainer)(tab.page) ;
                 vc.window = this;
             });
 
@@ -353,7 +353,7 @@ namespace Marlin.View {
             }
 
             ViewContainer? old_tab = current_tab;
-            current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
+            current_tab = (ViewContainer)((tabs.get_tab_by_index (offset)).page) ;
             if (current_tab == null || old_tab == current_tab) {
                 return;
             }
@@ -577,7 +577,7 @@ namespace Marlin.View {
         }
 
         public void remove_tab (ViewContainer view_container) {
-            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            var tab = tabs.get_tab_by_widget (view_container);
             if (tab != null) {
                 actual_remove_tab (tab);
             }
@@ -658,7 +658,7 @@ namespace Marlin.View {
         }
 
         private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
-            (application as Marlin.Application).quit ();
+            ((Marlin.Application)(application)).quit ();
         }
 
         private void action_reload () {
@@ -857,7 +857,7 @@ namespace Marlin.View {
         }
 
         private GLib.SimpleAction? get_action (string action_name) {
-            return lookup_action (action_name) as GLib.SimpleAction?;
+            return (GLib.SimpleAction?)(lookup_action (action_name));
         }
 
         private Marlin.ViewMode real_mode (Marlin.ViewMode mode) {
@@ -889,7 +889,7 @@ namespace Marlin.View {
 
             foreach (var tab in tabs.tabs) {
                 current_tab = null;
-                (tab.page as Marlin.View.ViewContainer).close ();
+                ((Marlin.View.ViewContainer)(tab.page)).close ();
             }
 
             this.destroy ();
@@ -928,7 +928,7 @@ namespace Marlin.View {
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
             foreach (var tab in tabs.tabs) {
                 assert (tab != null);
-                var view_container = tab.page as ViewContainer;
+                var view_container = (ViewContainer)(tab.page) ;
 
                 /* Do not save if "File does not exist" or "Does not belong to you" */
                 if (!view_container.can_show_folder) {
@@ -1031,8 +1031,8 @@ namespace Marlin.View {
         private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
             /* It might be more elegant for Miller.vala to handle this */
             var tab = tabs.current;
-            var view = tab.page as ViewContainer;
-            var mwcols = view.view as Miller;
+            var view = (ViewContainer)(tab.page) ;
+            var mwcols = (Miller)(view.view) ;
             var unescaped_tip_uri = PF.FileUtils.sanitize_path (tip_uri);
 
             if (unescaped_tip_uri == null) {
@@ -1092,7 +1092,7 @@ namespace Marlin.View {
             GLib.File root = mount.get_root ();
 
             foreach (var page in tabs.get_children ()) {
-                var view_container = page as Marlin.View.ViewContainer;
+                var view_container = (Marlin.View.ViewContainer)page ;
                 GLib.File location = view_container.location;
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
