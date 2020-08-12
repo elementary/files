@@ -23,7 +23,7 @@
 
 namespace Marlin.View {
 
-    public class Window : Gtk.ApplicationWindow {
+    public class Window : Hdy.ApplicationWindow {
         const GLib.ActionEntry [] WIN_ENTRIES = {
             {"new-window", action_new_window},
             {"quit", action_quit},
@@ -86,6 +86,10 @@ namespace Marlin.View {
             }
         }
 
+        static construct {
+            Hdy.init ();
+        }
+
         construct {
             add_action_entries (WIN_ENTRIES, this);
 
@@ -138,8 +142,6 @@ namespace Marlin.View {
                 custom_title = new Gtk.Label (null)
             };
 
-            set_titlebar (top_menu);
-
             tabs = new Granite.Widgets.DynamicNotebook () {
                 show_tabs = true,
                 allow_restoring = true,
@@ -158,13 +160,18 @@ namespace Marlin.View {
             sidebar = new Marlin.Sidebar (this);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+                expand = true,
                 position = Marlin.app_settings.get_int ("sidebar-width")
             };
-
-            lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (tabs, true, true);
-            add (lside_pane);
+
+            var grid = new Gtk.Grid ();
+            grid.attach (top_menu, 0, 0);
+            grid.attach (lside_pane, 0, 1);
+            grid.show_all ();
+
+            add (grid);
 
             /** Apply preferences */
             var prefs = Marlin.app_settings;
