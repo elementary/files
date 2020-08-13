@@ -846,7 +846,6 @@ namespace PF.FileUtils {
             case "vfat":
             case "msdos":
             case "msdosfs":
-            case "ext3/ext4":
                 const string CHARS_TO_REPLACE = "/:;*?\\<> ";
                 char replacement = '_';
                 string original = filename;
