@@ -833,6 +833,34 @@ namespace PF.FileUtils {
             return -1;
         }
     }
+
+    public bool make_file_name_valid_for_dest_fs (ref string filename, string? dest_fs_type) {
+        bool result = false;
+
+        if (dest_fs_type == null) {
+            return false;
+        }
+
+        switch (dest_fs_type) {
+            case "fat":
+            case "vfat":
+            case "msdos":
+            case "msdosfs":
+            case "ext3/ext4":
+                const string CHARS_TO_REPLACE = "/:;*?\\<> ";
+                char replacement = '_';
+                string original = filename;
+                filename = filename.delimit (CHARS_TO_REPLACE, replacement);
+                result = original != filename;
+                break;
+
+            default:
+                break;
+
+        }
+
+        return result;
+    }
 }
 
 namespace Marlin {

@@ -105,6 +105,14 @@ void add_file_utils_tests () {
     Test.add_func ("/FileUtils/file_for_zero_length_path", () => {
         assert (PF.FileUtils.get_file_for_path ("") == null);
     });
+
+    Test.add_func ("/FileUtils/make_filename_valid_1", () => {
+        string filename = "Valid_name";
+        string dest_fs = "ext3/ext4";
+        bool changed = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
+        assert (changed == false);
+        assert (filename == "Valid_name");
+    });
 }
 
 int main (string[] args) {
