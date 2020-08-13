@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:43+0000\n"
-"PO-Revision-Date: 2020-08-04 17:35+0000\n"
-"Last-Translator: Rafael Bautista Martínez <iuninefrendor@gmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"PO-Revision-Date: 2020-08-13 15:20+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -401,10 +401,8 @@ msgid "Paste"
 msgstr "Pegar"
 
 #: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Marcadores"
+msgstr "Añadir a marcadores"
 
 #: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
@@ -416,7 +414,7 @@ msgstr "Copiar"
 
 #: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
-msgstr "Mover a la papelera"
+msgstr "Enviar a la papelera"
 
 #: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
@@ -588,7 +586,7 @@ msgstr "Marcadores"
 
 #: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr "Lugares comunes para carpetas y archivos guardados"
+msgstr "Lugares comunes más carpetas y archivos guardados"
 
 #: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
@@ -604,7 +602,7 @@ msgstr "Papelera"
 
 #: src/View/Sidebar.vala:642
 msgid "Open the Trash"
-msgstr "Abrir la papelera"
+msgstr "Abrir papelera"
 
 #: src/View/Sidebar.vala:647
 msgid "Devices"
@@ -632,7 +630,7 @@ msgstr "Examinar los contenidos de la red"
 
 #: src/View/Sidebar.vala:820
 msgid "Connect Server"
-msgstr "Conectarse a un servidor"
+msgstr "Conectar con un servidor"
 
 #: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
@@ -640,10 +638,9 @@ msgstr "Conectar con servidor de red"
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s on %s"
-msgstr "%s de %s"
+msgstr "%s en %s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
@@ -651,15 +648,14 @@ msgid "%s free"
 msgstr "%s libre"
 
 #: src/View/Sidebar.vala:980
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%s de %s"
+msgstr "Se utilizan %s de %s"
 
 #: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
-msgstr "Error montando el volumen %s"
+msgstr "Error al montar el volumen %s"
 
 #: src/View/Sidebar.vala:1471
 #, c-format
@@ -668,7 +664,7 @@ msgstr "No se puede iniciar %s"
 
 #: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
-msgstr "_Vaciar la papelera"
+msgstr "_Vaciar papelera"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -741,11 +737,11 @@ msgstr "Busque o escriba la ruta"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
-msgstr "Abrir en una nueva pestaña"
+msgstr "Abrir en pestaña nueva"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
-msgstr "Abrir en una ventana nueva"
+msgstr "Abrir en ventana nueva"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
@@ -777,16 +773,16 @@ msgstr "%u carpetas"
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr " y %u otro elemento (%s) seleccionados"
+msgstr " y %u elemento más (%s) seleccionado"
 
 #: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr " y %u otros elementos (%s) seleccionados"
+msgstr " y %u elementos más (%s) seleccionados"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
-msgstr " seleccionadas(os)"
+msgstr " seleccionados"
 
 #: src/View/Widgets/OverlayBar.vala:228
 #, c-format
@@ -830,12 +826,12 @@ msgstr "tamaño desconocido"
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
-msgstr "%u archivo no legible"
+msgstr "%u archivo ilegible"
 
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
-msgstr "%u archivos no legibles"
+msgstr "%u archivos ilegibles"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -863,7 +859,7 @@ msgstr "SSH"
 
 #: libcore/ConnectServerDialog.vala:65
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Protocolo de presentación de Apple)"
+msgstr "AFP (protocolo de depósito de archivos de Apple)"
 
 #: libcore/ConnectServerDialog.vala:71
 msgid "Windows share"
@@ -977,7 +973,7 @@ msgstr "Enlazar aquí"
 
 #: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
-msgstr "Conflicto de archivo"
+msgstr "Conflicto entre archivos"
 
 #: libcore/FileConflictDialog.vala:122
 msgid "Original file"
@@ -1017,7 +1013,7 @@ msgstr "Mantener más reciente"
 
 #: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
-msgstr "Saltar si el original se modificó más recientemente"
+msgstr "Omitir si el original se modificó más recientemente"
 
 #: libcore/FileConflictDialog.vala:224
 msgid "Replace"
