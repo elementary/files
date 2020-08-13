@@ -109,8 +109,8 @@ void add_file_utils_tests () {
     Test.add_func ("/FileUtils/format_time_negative", () => {
         int time_unit;
         string formated_time = PF.FileUtils.format_time (-1, out time_unit);
-        assert (time_unit < 2);
-        assert (formated_time.contains ("0 second"));
+        assert (time_unit == 0);
+        assert (formated_time.contains ("0 seconds"));
     });
 
     Test.add_func ("/FileUtils/format_time_seconds", () => {
