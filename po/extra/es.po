@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-08-04 17:35+0000\n"
-"Last-Translator: Rafael Bautista Martínez <iuninefrendor@gmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"PO-Revision-Date: 2020-08-13 15:20+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,11 +74,9 @@ msgid "Improvements:"
 msgstr "Mejoras:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Favorite menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr ""
-"Opción en el menú de favoritos para los montajes de red en la barra lateral"
+"Opción en el menú de marcadores para los montajes de red en la barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show folder item count in List View"
@@ -100,10 +98,10 @@ msgstr ""
 "puede editar"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Se hicieron mejoras de estilo para las barras de espacio en disco"
+msgstr ""
+"Se mejoró el formato de las descripciones emergentes de los dispositivos en "
+"la barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:92
@@ -113,18 +111,17 @@ msgstr "Correcciones:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr "Se corrigió el bloqueo al presionar Enter y otra tecla al mismo tiempo"
+msgstr "Se arregló un cierre inesperado al oprimir Intro y otra tecla a la vez"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr ""
-"Se corrigió el acceso de la barra de direcciones de \"~\" y \"..\" en las "
-"rutas"
+"Se corrigió el acceso de la barra de direcciones de «~» y «..» en las rutas"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
-"La barra de direcciones del Selector de Archivos ya no se bloquea cuando se "
+"La barra de direcciones del selector de archivos ya no se bloquea cuando se "
 "invoca desde Flatpak"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
@@ -132,6 +129,8 @@ msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
+"No se muestra el estado de Git en repositorios en sistemas de archivos FUSE "
+"para evitar posibles bloqueos"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -141,10 +140,8 @@ msgid "Other updates:"
 msgstr "Otras actualizaciones:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
-#, fuzzy
-#| msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "\"Personal\" y \"Marcadores\" ahora son \"Favoritos\""
+msgstr "«Personal» es ahora «Marcadores»"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99
@@ -346,7 +343,8 @@ msgstr "Compatibilidad inicial del complemento de git"
 #: data/io.elementary.files.appdata.xml.in.in:170
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr ""
-"Seguir la configuración global del historial al restaurar y guardar pestañas"
+"Se sigue la configuración global del historial al restaurar y guardar "
+"pestañas"
 
 #: data/io.elementary.files.appdata.xml.in.in:174
 msgid "Ensure tabs showing same folder remain synchronized"
@@ -494,8 +492,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:223
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
-"No codificar el estilo de texto del marcador de posición de búsqueda, "
-"correcciones del problema del tema oscuro"
+"Ya no se especifica en el código el estilo de texto indicador; esto evita "
+"problemas en el estilo oscuro"
 
 #: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Minor spacing adjustments to location bar"
@@ -511,24 +509,27 @@ msgstr "Pequeños ajustes en el espacio de la ruta de navegación"
 
 #: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Consistently remember color tags"
-msgstr "Recordar constantemente las etiquetas de color"
+msgstr "Se recuerdan de manera uniforme las etiquetas de color"
 
 #: data/io.elementary.files.appdata.xml.in.in:242
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
 msgstr ""
-"Volver a cargar las miniaturas al cambiar el nivel de zoom para evitar "
-"mostrar innecesariamente el marcador de posición"
+"Se recargan las miniaturas al cambiar la escala para evitar mostrar iconos "
+"temporales innecesariamente"
 
 #: data/io.elementary.files.appdata.xml.in.in:243
 msgid "Fix running scripts with spaces in filename"
 msgstr ""
-"Corrección de los scripts en ejecución con espacios en el nombre del archivo"
+"Se arregló la ejecución de secuencias de órdenes con espacios en el nombre "
+"de archivo"
 
 #: data/io.elementary.files.appdata.xml.in.in:251
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr "Corrección de la alta regresión de la CPU en la versión 4.1.4"
+msgstr ""
+"Se arregló una regresión que provocaba índices altos de uso de CPU en la "
+"versión 4.1.4"
 
 #: data/io.elementary.files.appdata.xml.in.in:252
 msgid "File sorting fixes"
@@ -540,7 +541,7 @@ msgstr "Meson: corrección de los nombres de las versiones"
 
 #: data/io.elementary.files.appdata.xml.in.in:261
 msgid "Remove CMake build system"
-msgstr "Eliminar el sistema de compilación CMake"
+msgstr "Se eliminó el sistema de compilación CMake"
 
 #: data/io.elementary.files.appdata.xml.in.in:262
 msgid "Fix missing File System properties menu"
@@ -548,12 +549,12 @@ msgstr "Corrección del menú de propiedades del sistema de archivos que falta"
 
 #: data/io.elementary.files.appdata.xml.in.in:263
 msgid "Drop intltool dependency"
-msgstr "Disminuir la dependencia de intltool"
+msgstr "Se eliminó la dependencia intltool"
 
 #: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Fix default file type handler logic"
 msgstr ""
-"Corrección de la lógica predeterminada del manejador de tipo de archivo"
+"Se arregló la lógica del manipulador de tipos de archivo predeterminados"
 
 #: data/io.elementary.files.appdata.xml.in.in:265
 msgid "Fix initial search window size too small"
@@ -563,11 +564,11 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:266
 msgid "Add option to disable local file thumbnails"
 msgstr ""
-"Agregar opción para deshabilitar las miniaturas de los archivos locales"
+"Se añadió una opción para desactivar las miniaturas de los archivos locales"
 
 #: data/io.elementary.files.appdata.xml.in.in:267
 msgid "Fix crash when opening multiple video files"
-msgstr "Corrección del bloqueo al abrir varios archivos de vídeo"
+msgstr "Se arregló un cierre inesperado al abrir varios archivos de vídeo"
 
 #: data/io.elementary.files.appdata.xml.in.in:268
 msgid "Fix some timing issues around adding and removing files"
