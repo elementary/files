@@ -866,6 +866,23 @@ namespace PF.FileUtils {
         return result;
     }
 
+    public string shorten_utf8_string (string base_string, int reduce_by_num_bytes) {
+        var target_length = base_string.length - reduce_by_num_bytes;
+        if (target_length <= 0) {
+            return "";
+        }
+
+        var sb = new StringBuilder.sized (target_length);
+        sb.insert_len (0, base_string, target_length);
+
+        var valid_string = sb.str.make_valid ();
+        if (valid_string.length <= target_length) {
+            return valid_string;
+        } else {
+            return shorten_utf8_string (base_string, reduce_by_num_bytes + 1);
+        }
+    }
+
     public string get_link_name (string target_name, int count, int max_length = -1) {
         string result = target_name;
         if (count <= 2) {
@@ -924,7 +941,7 @@ namespace PF.FileUtils {
         }
 
         if (max_length >= 0 && result.length > max_length) {
-            result = result.slice (0, max_length - 1);
+            result = shorten_utf8_string (result, result.length - max_length);
         }
 
         return result;
