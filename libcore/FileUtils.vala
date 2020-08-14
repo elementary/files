@@ -865,6 +865,70 @@ namespace PF.FileUtils {
 
         return result;
     }
+
+    public string get_link_name (string target_name, int count, int max_length = -1) {
+        string result = target_name;
+        if (count <= 2) {
+            /* Handle special cases for low numbers.
+             * Perhaps for some locales we will need to add more.
+             */
+            switch (count) {
+                case 1:
+                    result = _("Link to %s").printf (target_name);
+                    break;
+                case 2:
+                    result = _("Another link to %s").printf (target_name);
+                    break;
+                default:
+                    break;
+            }
+        } else if (count < 20) {
+            /* Handle special cases for the first few numbers of the teens */
+            switch (count) {
+                case 11:
+                    result = _("11th link to %s").printf (target_name);
+                    break;
+                case 12:
+                    result = _("12th link to %s").printf (target_name);
+                    break;
+
+                case 13:
+                    result = _("13th link to %s").printf (target_name);
+                    break;
+
+                default:
+                    ///TRANSLATORS: %'d represents a number between 14 and 19
+                    result = _("%'dth link to %s").printf (count, target_name);
+                    break;
+            }
+        } else {
+            /* Handle special cases for the first few numbers of each decade above 20 (do we need this?) */
+            switch (count % 10) {
+                case 1:
+                    ///TRANSLATORS: %'d represents 21 or 31 or 41 etc
+                    result = _("%'dst link to %s").printf (count, target_name);
+                    break;
+                case 2:
+                    ///TRANSLATORS: %'d represents 22 or 32 or 42 etc
+                    result = _("%'dnd link to %s").printf (count, target_name);
+                    break;
+                case 3:
+                    ///TRANSLATORS: %'d represents 23 or 33 or 43 etc
+                    result = _("%'drd link to %s").printf (count, target_name);
+                    break;
+                default:
+                    ///TRANSLATORS: %'d represents a number between 24 - 29 or 34 - 49 or 44 - 49 etc
+                    result = _("%'dth link to %s").printf (count, target_name);
+                    break;
+            }
+        }
+
+        if (max_length >= 0 && result.length > max_length) {
+            result = result.slice (0, max_length - 1);
+        }
+
+        return result;
+    }
 }
 
 namespace Marlin {

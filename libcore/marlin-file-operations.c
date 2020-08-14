@@ -2625,7 +2625,7 @@ get_target_file_for_link (GFile *src,
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
 
         if (editname != NULL) {
-            new_name = get_link_name (editname, count, max_length);
+            new_name = pf_file_utils_get_link_name (editname, count, max_length);
             make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -2639,7 +2639,7 @@ get_target_file_for_link (GFile *src,
         make_file_name_valid_for_dest_fs (basename, dest_fs_type);
 
         if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = get_link_name (basename, count, max_length);
+            new_name = pf_file_utils_get_link_name (basename, count, max_length);
             make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
