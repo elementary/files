@@ -113,6 +113,41 @@ void add_file_utils_tests () {
         assert (changed == false);
         assert (filename == "Valid_name");
     });
+
+    Test.add_func ("/FileUtils/format_time_negative", () => {
+        int time_unit;
+        string formated_time = PF.FileUtils.format_time (-1, out time_unit);
+        assert (time_unit == 0);
+        assert (formated_time.contains ("0 seconds"));
+    });
+
+    Test.add_func ("/FileUtils/format_time_seconds", () => {
+        int time_unit;
+        string formated_time = PF.FileUtils.format_time (39, out time_unit);
+        assert (time_unit > 1);
+        assert (formated_time.contains ("39 seconds"));
+    });
+
+    Test.add_func ("/FileUtils/format_time_minute", () => {
+        int time_unit;
+        string formated_time = PF.FileUtils.format_time (60, out time_unit);
+        assert (time_unit == 1);
+        assert (formated_time.contains ("1 minute"));
+    });
+
+    Test.add_func ("/FileUtils/format_time_hours_minutes", () => {
+        int time_unit;
+        string formated_time = PF.FileUtils.format_time (3720, out time_unit);
+        assert (time_unit == 3);
+        assert (formated_time.contains ("1 hour, 2 minutes"));
+    });
+
+    Test.add_func ("/FileUtils/format_time_approx", () => {
+        int time_unit;
+        string formated_time = PF.FileUtils.format_time (16000, out time_unit);
+        assert (time_unit == 4);
+        assert (formated_time.contains ("approximately 4 hours"));
+    });
 }
 
 int main (string[] args) {

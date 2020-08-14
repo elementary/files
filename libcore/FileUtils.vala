@@ -855,7 +855,38 @@ namespace PF.FileUtils {
 
             default:
                 break;
+        }
 
+        return result;
+    }
+
+    public string format_time (int seconds, out int time_unit) {
+        int minutes, hours;
+        string result;
+
+        if (seconds < 0) {
+            seconds = 0;
+        }
+
+        if (seconds < 60) { //less than one minute
+            time_unit = seconds;
+            result = ngettext ("%'d second", "%'d seconds", seconds).printf (seconds);
+        } else if (seconds < 3600) { // less than one hour
+            minutes = seconds / 60;
+            time_unit = minutes;
+            result = ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes);
+        } else {
+            hours = seconds / 3600;
+            if (hours < 4) {
+                minutes = (seconds - hours * 3600) / 60;
+                time_unit = minutes + hours;
+                ///TRANSLATORS The %s will be translated into "x hours, y minutes"
+                result = _("%s, %s").printf (ngettext ("%'d hour", "%'d hours", hours).printf (hours),
+                                             ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes));
+            } else {
+                time_unit = hours;
+                result = ngettext ("approximately %'d hour", "approximately %'d hours", hours).printf (hours);
+            }
         }
 
         return result;
