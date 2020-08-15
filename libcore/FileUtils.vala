@@ -940,7 +940,7 @@ namespace PF.FileUtils {
                     break;
 
                 default:
-                    ///TRANSLATORS: %'d represents a number between 14 and 19
+                    ///TRANSLATORS: %'d represents a number in range 4 - 19
                     result = _("%'dth link to %s").printf (count, target_name);
                     break;
             }
