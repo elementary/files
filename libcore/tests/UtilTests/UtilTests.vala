@@ -166,6 +166,34 @@ void add_file_utils_tests () {
         assert (time_unit == 4);
         assert (formated_time.contains ("approximately 4 hours"));
     });
+
+    Test.add_func ("/FileUtils/shorten_utf8_1", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("a", 2);
+        assert (result == "");
+    });
+
+    /* Shorten English strings (1 byte per character) */
+    Test.add_func ("/FileUtils/shorten_utf8_2", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("abc", 2);
+        assert (result == "a");
+    });
+
+    /* Shorten Japanese strings (3 bytes per character) */
+    Test.add_func ("/FileUtils/shorten_utf8_3", () => {
+        string base_string = "試し";
+        string result = PF.FileUtils.shorten_utf8_string (base_string, 1);
+        assert (result == "試");
+    });
+
+    Test.add_func ("/FileUtils/shorten_utf8_4", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("試し", 3);
+        assert (result == "試");
+    });
+
+    Test.add_func ("/FileUtils/shorten_utf8_5", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("試し", 4);
+        assert (result == "");
+    });
 }
 
 int main (string[] args) {
