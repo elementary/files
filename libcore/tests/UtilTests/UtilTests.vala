@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017-2018 elementary LLC <https://elementary.io>
+* Copyright (c) 2017-2020 elementary LLC <https://elementary.io>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -106,6 +106,32 @@ void add_file_utils_tests () {
         assert (PF.FileUtils.get_file_for_path ("") == null);
     });
 
+    Test.add_func ("/FileUtils/make_filename_valid_null", () => {
+        string filename = "Valid:;*?\\<> name";
+        string? dest_fs = null;
+        bool changed = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
+        assert (changed == false);
+        assert (filename == "Valid:;*?\\<> name");
+    });
+
+    /* Make filename valid for destination fs */
+    Test.add_func ("/FileUtils/make_filename_valid_ext", () => {
+        string filename = "Valid:;*?\\<> name";
+        string dest_fs = "ext3/ext4";
+        bool changed = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
+        assert (changed == false);
+        assert (filename == "Valid:;*?\\<> name");
+    });
+
+    Test.add_func ("/FileUtils/make_filename_valid_msdos", () => {
+        string filename = "Invalid:;*?\\<> name"; // 8 invalid characters
+        string dest_fs = "msdos";
+        bool changed = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
+        assert (changed == true);
+        assert (filename == "Invalid________name");
+    });
+
+    /* Format time for progress output */
     Test.add_func ("/FileUtils/format_time_negative", () => {
         int time_unit;
         string formated_time = PF.FileUtils.format_time (-1, out time_unit);
