@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 17:43+0000\n"
+"POT-Creation-Date: 2020-08-14 19:08+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -240,7 +240,7 @@ msgstr[2] "%u failų"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:862
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:858
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -301,7 +301,7 @@ msgstr "Nepavyko atverti URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Naudojant šią programą, nepavyko atverti failų ar URI"
 
-#: src/View/Window.vala:535 src/View/Window.vala:545
+#: src/View/Window.vala:542 src/View/Window.vala:552
 msgid "(as Administrator)"
 msgstr "(kaip administratorius)"
 
@@ -1131,7 +1131,7 @@ msgstr "Vakar ties %s"
 msgid "%%A at %s"
 msgstr "%%A ties %s"
 
-#: libcore/FileUtils.vala:849
+#: libcore/FileUtils.vala:847
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1140,7 +1140,7 @@ msgstr[1] "%'d sekundės"
 msgstr[2] "%'d sekundžių"
 msgstr[3] "%'d sekundė"
 
-#: libcore/FileUtils.vala:855 libcore/FileUtils.vala:864
+#: libcore/FileUtils.vala:851 libcore/FileUtils.vala:859
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1149,7 +1149,7 @@ msgstr[1] "%'d minutės"
 msgstr[2] "%'d minučių"
 msgstr[3] "%'d minutė"
 
-#: libcore/FileUtils.vala:863
+#: libcore/FileUtils.vala:858
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1158,7 +1158,7 @@ msgstr[1] "%'d valandos"
 msgstr[2] "%'d valandų"
 msgstr[3] "%'d valanda"
 
-#: libcore/FileUtils.vala:869
+#: libcore/FileUtils.vala:862
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1166,36 +1166,6 @@ msgstr[0] "maždaug %'d valanda"
 msgstr[1] "maždaug %'d valandos"
 msgstr[2] "maždaug %'d valandų"
 msgstr[3] "maždaug %'d valanda"
-
-#: libcore/FileUtils.vala:916
-#, c-format
-msgid "Link to %s"
-msgstr "Nuoroda į %s"
-
-#: libcore/FileUtils.vala:920
-#, c-format
-msgid "Another link to %s"
-msgstr "Kita nuoroda į %s"
-
-#: libcore/FileUtils.vala:939
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'d nuoroda į %s"
-
-#: libcore/FileUtils.vala:943
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'d-ra nuoroda į %s"
-
-#: libcore/FileUtils.vala:947
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'d-ia nuoroda į %s"
-
-#: libcore/FileUtils.vala:951
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'d-a nuoroda į %s"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1289,23 +1259,53 @@ msgstr "Išvaloma šiukšlinė"
 msgid "Unable to mount '%s'"
 msgstr "Nepavyko prijungti %s"
 
-#: libcore/marlin-file-operations.c:332
+#: libcore/marlin-file-operations.c:204
+#, c-format
+msgid "Link to %s"
+msgstr "Nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:208
+#, c-format
+msgid "Another link to %s"
+msgstr "Kita nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:224
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:228
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d-ra nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:232
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d-ia nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:236
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d-a nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:428
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:340
+#: libcore/marlin-file-operations.c:436
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:843
+#: libcore/marlin-file-operations.c:991
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "Ar tikrai norite negrįžtamai ištrinti iš šiukšlinės „%s“?"
 
-#: libcore/marlin-file-operations.c:847
+#: libcore/marlin-file-operations.c:995
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1322,19 +1322,19 @@ msgstr[2] ""
 msgstr[3] ""
 "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
 
-#: libcore/marlin-file-operations.c:857
+#: libcore/marlin-file-operations.c:1005
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jeigu ištrinsite failą, jis bus prarastas visiems laikams."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:883
+#: libcore/marlin-file-operations.c:1031
 #, fuzzy, c-format
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently delete “%s”?"
 msgstr "Ištrinti negrįžtamai viską iš Šiukšlinės?"
 
-#: libcore/marlin-file-operations.c:886
+#: libcore/marlin-file-operations.c:1034
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1344,11 +1344,11 @@ msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus?"
 msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų?"
 msgstr[3] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
 
-#: libcore/marlin-file-operations.c:895
+#: libcore/marlin-file-operations.c:1043
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:929
+#: libcore/marlin-file-operations.c:1077
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -1356,13 +1356,13 @@ msgstr[0] "Liko ištrinti %'d failą"
 msgstr[1] "Liko ištrinti %'d failus"
 msgstr[2] "Liko ištrinti %'d failų"
 
-#: libcore/marlin-file-operations.c:934
+#: libcore/marlin-file-operations.c:1082
 msgid "Deleting files"
 msgstr "Ištrinami failai"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:949
+#: libcore/marlin-file-operations.c:1097
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
@@ -1371,15 +1371,15 @@ msgstr[1] "Liko %s"
 msgstr[2] "Liko %s"
 msgstr[3] "Liko %s"
 
-#: libcore/marlin-file-operations.c:1018 libcore/marlin-file-operations.c:1058
-#: libcore/marlin-file-operations.c:1104 libcore/marlin-file-operations.c:1186
-#: libcore/marlin-file-operations.c:1693
+#: libcore/marlin-file-operations.c:1166 libcore/marlin-file-operations.c:1206
+#: libcore/marlin-file-operations.c:1252 libcore/marlin-file-operations.c:1334
+#: libcore/marlin-file-operations.c:1841
 msgid "Error while deleting."
 msgstr "Klaida ištrinant."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1024
+#: libcore/marlin-file-operations.c:1172
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1390,20 +1390,20 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1029 libcore/marlin-file-operations.c:1757
-#: libcore/marlin-file-operations.c:2745
+#: libcore/marlin-file-operations.c:1177 libcore/marlin-file-operations.c:1905
+#: libcore/marlin-file-operations.c:2982
 #, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr "Klaida gaunant informaciją apie aplanke „%s“ esančius failus."
 
-#: libcore/marlin-file-operations.c:1039 libcore/marlin-file-operations.c:2755
+#: libcore/marlin-file-operations.c:1187 libcore/marlin-file-operations.c:2992
 msgid "_Skip files"
 msgstr "_Praleisti failus"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1063
+#: libcore/marlin-file-operations.c:1211
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1412,29 +1412,29 @@ msgstr "Aplanko „%s“ negalima ištrinti, nes neturite teisių jo skaityti."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1068 libcore/marlin-file-operations.c:1802
-#: libcore/marlin-file-operations.c:2797
+#: libcore/marlin-file-operations.c:1216 libcore/marlin-file-operations.c:1950
+#: libcore/marlin-file-operations.c:3034
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "Klaida skaitant aplanką „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1107
+#: libcore/marlin-file-operations.c:1255
 #, c-format
 msgid "Could not remove the folder %s."
 msgstr "Nepavyko pašalinti aplanko %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1189
+#: libcore/marlin-file-operations.c:1337
 #, c-format
 msgid "There was an error deleting %s."
 msgstr "Klaida ištrinant aplanką %s."
 
-#: libcore/marlin-file-operations.c:1274
+#: libcore/marlin-file-operations.c:1422
 msgid "Moving files to trash"
 msgstr "Failai perkeliami į šiukšlinę"
 
-#: libcore/marlin-file-operations.c:1276
+#: libcore/marlin-file-operations.c:1424
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -1442,18 +1442,18 @@ msgstr[0] "Į šiukšlinę liko perkelti %'d failą"
 msgstr[1] "Į šiukšlinę liko perkelti %'d failus"
 msgstr[2] "Į šiukšlinę liko perkelti %'d failų"
 
-#: libcore/marlin-file-operations.c:1374 libcore/marlin-file-operations.c:1377
-#: libcore/marlin-file-operations.c:1380
+#: libcore/marlin-file-operations.c:1522 libcore/marlin-file-operations.c:1525
+#: libcore/marlin-file-operations.c:1528
 msgid "Cannot move file to trash or delete it"
 msgstr "Negalima perkelti failo į šiukšlinę ar jį ištrinti"
 
-#: libcore/marlin-file-operations.c:1375
+#: libcore/marlin-file-operations.c:1523
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Nėra leidžiama perkelti į šiukšlinę ar ištrinti failų, kurie yra tik "
 "skaitymui skirtoje failų sistemoje."
 
-#: libcore/marlin-file-operations.c:1378
+#: libcore/marlin-file-operations.c:1526
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1461,7 +1461,7 @@ msgstr ""
 "Nėra  leidžiama perkelti į šiukšlinę ar ištrinti failus aplankuose, kuriems "
 "neturite rašymo teisių."
 
-#: libcore/marlin-file-operations.c:1381
+#: libcore/marlin-file-operations.c:1529
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1469,12 +1469,12 @@ msgstr ""
 "Nėra  leidžiama perkelti į šiukšlinę ar ištrinti aplankus, kuriems neturite "
 "rašymo teisių."
 
-#: libcore/marlin-file-operations.c:1383
+#: libcore/marlin-file-operations.c:1531
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "Nepavyksta perkelti failo į šiukšlinę. Pabandyti nedelsiant jį ištrinti?"
 
-#: libcore/marlin-file-operations.c:1384
+#: libcore/marlin-file-operations.c:1532
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -1482,11 +1482,11 @@ msgstr ""
 "Šio failo nepavyko perkelti į šiukšlinę. Išsamesnei informacijai, žiūrėkite "
 "žemiau."
 
-#: libcore/marlin-file-operations.c:1388
+#: libcore/marlin-file-operations.c:1536
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Nepavyksta perkelti failo į šiukšlinę. Pabandyti jį ištrinti?"
 
-#: libcore/marlin-file-operations.c:1389
+#: libcore/marlin-file-operations.c:1537
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -1494,7 +1494,7 @@ msgstr ""
 "Šio failo nepavyko perkelti į šiukšlinę. Gali būti, kad taip pat negalėsite "
 "jo ištrinti."
 
-#: libcore/marlin-file-operations.c:1395
+#: libcore/marlin-file-operations.c:1543
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1502,11 +1502,11 @@ msgstr ""
 "\n"
 " Failo ištrynimas pašalina jį visiems laikams"
 
-#: libcore/marlin-file-operations.c:1585
+#: libcore/marlin-file-operations.c:1733
 msgid "Trashing Files"
 msgstr "Failai perkeliami į šiukšlinę"
 
-#: libcore/marlin-file-operations.c:1587
+#: libcore/marlin-file-operations.c:1735
 msgid "Deleting Files"
 msgstr "Ištrinami failai"
 
@@ -1514,7 +1514,7 @@ msgstr "Ištrinami failai"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1627
+#: libcore/marlin-file-operations.c:1775
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1527,7 +1527,7 @@ msgstr[3] "Ruošiamasi kopijuoti %'d failą (%s)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1639
+#: libcore/marlin-file-operations.c:1787
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1540,7 +1540,7 @@ msgstr[3] "Ruošiamasi perkelti %'d failą (%s)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1651
+#: libcore/marlin-file-operations.c:1799
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
@@ -1549,7 +1549,7 @@ msgstr[1] "Ruošiamasi ištrinti %'d failus (%s)"
 msgstr[2] "Ruošiamasi ištrinti %'d failų (%s)"
 msgstr[3] "Ruošiamasi ištrinti %'d failą (%s)"
 
-#: libcore/marlin-file-operations.c:1658
+#: libcore/marlin-file-operations.c:1806
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -1557,23 +1557,23 @@ msgstr[0] "Ruošiamasi perkelti į šiukšlinę %'d failą"
 msgstr[1] "Ruošiamasi perkelti į šiukšlinę %'d failus"
 msgstr[2] "Ruošiamasi perkelti į šiukšlinę %'d failų"
 
-#: libcore/marlin-file-operations.c:1689 libcore/marlin-file-operations.c:2592
-#: libcore/marlin-file-operations.c:2732 libcore/marlin-file-operations.c:2784
+#: libcore/marlin-file-operations.c:1837 libcore/marlin-file-operations.c:2829
+#: libcore/marlin-file-operations.c:2969 libcore/marlin-file-operations.c:3021
 msgid "Error while copying."
 msgstr "Klaida kopijuojant."
 
-#: libcore/marlin-file-operations.c:1691 libcore/marlin-file-operations.c:2730
-#: libcore/marlin-file-operations.c:2782
+#: libcore/marlin-file-operations.c:1839 libcore/marlin-file-operations.c:2967
+#: libcore/marlin-file-operations.c:3019
 msgid "Error while moving."
 msgstr "Klaida perkeliant."
 
-#: libcore/marlin-file-operations.c:1695
+#: libcore/marlin-file-operations.c:1843
 msgid "Error while moving files to trash."
 msgstr "Klaida perkeliant failus į šiukšlinę."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1752
+#: libcore/marlin-file-operations.c:1900
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1584,7 +1584,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1797
+#: libcore/marlin-file-operations.c:1945
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1594,7 +1594,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1884
+#: libcore/marlin-file-operations.c:2032
 #, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1604,32 +1604,32 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1889
+#: libcore/marlin-file-operations.c:2037
 #, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "Gaunant informaciją apie „%s“, įvyko klaida."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1995 libcore/marlin-file-operations.c:2041
-#: libcore/marlin-file-operations.c:2079 libcore/marlin-file-operations.c:2119
+#: libcore/marlin-file-operations.c:2143 libcore/marlin-file-operations.c:2189
+#: libcore/marlin-file-operations.c:2227 libcore/marlin-file-operations.c:2267
 #, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "Klaida kopijuojant į „%s“."
 
-#: libcore/marlin-file-operations.c:2000
+#: libcore/marlin-file-operations.c:2148
 msgid "You do not have permissions to access the destination folder."
 msgstr "Neturite leidimų prieiti prie paskirties aplanko."
 
-#: libcore/marlin-file-operations.c:2002
+#: libcore/marlin-file-operations.c:2150
 msgid "There was an error getting information about the destination."
 msgstr "Klaida gaunant paskirties vietos informaciją."
 
-#: libcore/marlin-file-operations.c:2042
+#: libcore/marlin-file-operations.c:2190
 msgid "The destination is not a folder."
 msgstr "Ši paskirties vieta nėra aplankas."
 
-#: libcore/marlin-file-operations.c:2081
+#: libcore/marlin-file-operations.c:2229
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1639,30 +1639,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2087
+#: libcore/marlin-file-operations.c:2235
 #, c-format
 msgid "There is %s available, but %s is required."
 msgstr "Yra prieinama %s, tačiau reikia %s."
 
-#: libcore/marlin-file-operations.c:2121
+#: libcore/marlin-file-operations.c:2269
 msgid "The destination is read-only."
 msgstr "Paskirties vieta skirta tik skaitymui."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2193
+#: libcore/marlin-file-operations.c:2341
 #, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "Perkeliama \"%s\" į \"%s\""
 
-#: libcore/marlin-file-operations.c:2194
+#: libcore/marlin-file-operations.c:2342
 #, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "Kopijuojama \"%s\" į \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2198
+#: libcore/marlin-file-operations.c:2346
 #, c-format
 msgid "Duplicating \"%s\""
 msgstr "Kuriama „%s“ kopija"
@@ -1671,7 +1671,7 @@ msgstr "Kuriama „%s“ kopija"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2206
+#: libcore/marlin-file-operations.c:2354
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
@@ -1680,7 +1680,7 @@ msgstr[1] "Perkeliami %'d failai (\"%s\") į \"%s\""
 msgstr[2] "Perkeliama %'d failų (\"%s\") į \"%s\""
 msgstr[3] "Perkeliamas %'d failas (\"%s\") į \"%s\""
 
-#: libcore/marlin-file-operations.c:2209
+#: libcore/marlin-file-operations.c:2357
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1691,7 +1691,7 @@ msgstr[3] "Kopijuojamas %'d failas (\"%s\") į \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2218
+#: libcore/marlin-file-operations.c:2366
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1704,7 +1704,7 @@ msgstr[3] "Dubliuojamas %'d failas (\"%s\")"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2230
+#: libcore/marlin-file-operations.c:2378
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
@@ -1713,7 +1713,7 @@ msgstr[1] "Perkeliami %'d failai į \"%s\""
 msgstr[2] "Perkeliama %'d failų į \"%s\""
 msgstr[3] "Perkeliamas %'d failas į \"%s\""
 
-#: libcore/marlin-file-operations.c:2233
+#: libcore/marlin-file-operations.c:2381
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
@@ -1722,7 +1722,7 @@ msgstr[1] "Kopijuojami %'d failai į \"%s\""
 msgstr[2] "Kopijuojama %'d failų į \"%s\""
 msgstr[3] "Kopijuojamas %'d failas į \"%s\""
 
-#: libcore/marlin-file-operations.c:2239
+#: libcore/marlin-file-operations.c:2387
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1731,7 +1731,7 @@ msgstr[1] "Dubliuojami %'d failai"
 msgstr[2] "Dubliuojama %'d failų"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2269
+#: libcore/marlin-file-operations.c:2417
 #, c-format
 msgid "%s of %s"
 msgstr "%s iš %s"
@@ -1742,7 +1742,7 @@ msgstr "%s iš %s"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2289
+#: libcore/marlin-file-operations.c:2437
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1753,7 +1753,7 @@ msgstr[3] "%s iš %s — liko %s (%s/sek.)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2599
+#: libcore/marlin-file-operations.c:2836
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1764,14 +1764,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2604
+#: libcore/marlin-file-operations.c:2841
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "Klaida kuriant aplanką „%s“."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2740
+#: libcore/marlin-file-operations.c:2977
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1782,7 +1782,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2792
+#: libcore/marlin-file-operations.c:3029
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1795,62 +1795,62 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2845 libcore/marlin-file-operations.c:3577
-#: libcore/marlin-file-operations.c:4145
+#: libcore/marlin-file-operations.c:3082 libcore/marlin-file-operations.c:3814
+#: libcore/marlin-file-operations.c:4382
 #, c-format
 msgid "Error while moving \"%s\"."
 msgstr "Klaida perkeliant „%s“."
 
-#: libcore/marlin-file-operations.c:2847
+#: libcore/marlin-file-operations.c:3084
 msgid "Could not remove the source folder."
 msgstr "Nepavyko pašalinti šaltinio aplanko."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2936 libcore/marlin-file-operations.c:2987
-#: libcore/marlin-file-operations.c:3581
+#: libcore/marlin-file-operations.c:3173 libcore/marlin-file-operations.c:3224
+#: libcore/marlin-file-operations.c:3818
 #, c-format
 msgid "Error while copying \"%s\"."
 msgstr "Klaida kopijuojant „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:2941
+#: libcore/marlin-file-operations.c:3178
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "Nepavyko pašalinti failų iš jau esančio aplanko %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:2992
+#: libcore/marlin-file-operations.c:3229
 #, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "Nepavyko pašalinti jau esančio failo %s."
 
-#: libcore/marlin-file-operations.c:3310 libcore/marlin-file-operations.c:3984
+#: libcore/marlin-file-operations.c:3547 libcore/marlin-file-operations.c:4221
 msgid "You cannot move a folder into itself."
 msgstr "Negalima perkelti aplanko į jį patį."
 
-#: libcore/marlin-file-operations.c:3311 libcore/marlin-file-operations.c:3985
+#: libcore/marlin-file-operations.c:3548 libcore/marlin-file-operations.c:4222
 msgid "You cannot copy a folder into itself."
 msgstr "Negalima nukopijuoti aplanko į jį patį."
 
-#: libcore/marlin-file-operations.c:3312 libcore/marlin-file-operations.c:3986
+#: libcore/marlin-file-operations.c:3549 libcore/marlin-file-operations.c:4223
 msgid "The destination folder is inside the source folder."
 msgstr "Paskirties aplankas yra šaltinio aplanko viduje."
 
-#: libcore/marlin-file-operations.c:3343
+#: libcore/marlin-file-operations.c:3580
 msgid "You cannot move a file over itself."
 msgstr "Negalima perkelti failo ant jo paties."
 
-#: libcore/marlin-file-operations.c:3344
+#: libcore/marlin-file-operations.c:3581
 msgid "You cannot copy a file over itself."
 msgstr "Negalima kopijuoti failo į jį patį."
 
-#: libcore/marlin-file-operations.c:3345
+#: libcore/marlin-file-operations.c:3582
 msgid "The source file would be overwritten by the destination."
 msgstr "Šaltinio failas bus perrašytas paskirties failu."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3587
+#: libcore/marlin-file-operations.c:3824
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr ""
@@ -1859,29 +1859,29 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3657
+#: libcore/marlin-file-operations.c:3894
 #, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "Čia negalima nukopijuoti \"%s\"."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3662
+#: libcore/marlin-file-operations.c:3899
 #, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Kopijuojant failą į %s, įvyko klaida."
 
-#: libcore/marlin-file-operations.c:3864
+#: libcore/marlin-file-operations.c:4101
 msgid "Copying Files"
 msgstr "Kopijuojami failai"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3900
+#: libcore/marlin-file-operations.c:4137
 #, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "Ruošiamasi perkelti į „%s“"
 
-#: libcore/marlin-file-operations.c:3905
+#: libcore/marlin-file-operations.c:4142
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1890,23 +1890,23 @@ msgstr[1] "Ruošiamasi perkelti %'d failus"
 msgstr[2] "Ruošiamasi perkelti %'d failų"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4149
+#: libcore/marlin-file-operations.c:4386
 #, c-format
 msgid "There was an error moving the file into %s."
 msgstr "Perkeliant failą į %s, įvyko klaida."
 
-#: libcore/marlin-file-operations.c:4383
+#: libcore/marlin-file-operations.c:4620
 msgid "Moving Files"
 msgstr "Perkeliami failai"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4422
+#: libcore/marlin-file-operations.c:4659
 #, c-format
 msgid "Creating links in \"%s\""
 msgstr "Kuriamos nuorodos „%s“ aplanke"
 
-#: libcore/marlin-file-operations.c:4427
+#: libcore/marlin-file-operations.c:4664
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1915,59 +1915,59 @@ msgstr[1] "Kuriamos nuorodos į %'d failus"
 msgstr[2] "Kuriamos nuorodos į %'d failų"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4564
+#: libcore/marlin-file-operations.c:4801
 #, c-format
 msgid "Error while creating link to %s."
 msgstr "Kuriant nuorodą į %s, įvyko klaida."
 
-#: libcore/marlin-file-operations.c:4567
+#: libcore/marlin-file-operations.c:4804
 msgid "Symbolic links only supported for local files"
 msgstr "Simbolinės nuorodos yra palaikomos tik vietiniams failams"
 
-#: libcore/marlin-file-operations.c:4570
+#: libcore/marlin-file-operations.c:4807
 msgid "The target doesn't support symbolic links."
 msgstr "Paskirties vietą nepalaiko simbolinių nuorodų."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4575
+#: libcore/marlin-file-operations.c:4812
 #, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "Klaida, kuriant simbolinę nuorodą %s aplanke."
 
-#: libcore/marlin-file-operations.c:4878
+#: libcore/marlin-file-operations.c:5115
 msgid "Setting permissions"
 msgstr "Nustatomi leidimai"
 
-#: libcore/marlin-file-operations.c:5067
+#: libcore/marlin-file-operations.c:5304
 msgid "Cannot copy into trash."
 msgstr "Negalima kopijuoti į šiukšlinę."
 
-#: libcore/marlin-file-operations.c:5068 libcore/marlin-file-operations.c:5076
+#: libcore/marlin-file-operations.c:5305 libcore/marlin-file-operations.c:5313
 msgid "It is not permitted to copy files into the trash"
 msgstr "Nėra leidžiama kopijuoti failus į šiukšlinę"
 
-#: libcore/marlin-file-operations.c:5212
+#: libcore/marlin-file-operations.c:5449
 msgid "untitled folder"
 msgstr "bevardis aplankas"
 
-#: libcore/marlin-file-operations.c:5220
+#: libcore/marlin-file-operations.c:5457
 msgid "new file"
 msgstr "naujas failas"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5387
+#: libcore/marlin-file-operations.c:5624
 #, c-format
 msgid "Error while creating directory %s."
 msgstr "Klaida kuriant katalogą %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5390
+#: libcore/marlin-file-operations.c:5627
 #, c-format
 msgid "Error while creating file %s."
 msgstr "Klaida kuriant failą %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5396
+#: libcore/marlin-file-operations.c:5633
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Kuriant katalogą ties %s, įvyko klaida."
