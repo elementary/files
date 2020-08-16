@@ -4500,30 +4500,6 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     pf_progress_info_update_progress (job->progress, left, total);
 }
 
-static char *
-get_abs_path_for_symlink (GFile *file)
-{
-    GFile *root, *parent;
-    char *relative, *abs;
-
-    if (g_file_is_native (file)) {
-        return g_file_get_path (file);
-    }
-
-    root = g_object_ref (file);
-    while ((parent = g_file_get_parent (root)) != NULL) {
-        g_object_unref (root);
-        root = parent;
-    }
-
-    relative = g_file_get_relative_path (root, file);
-    g_object_unref (root);
-    abs = g_strconcat ("/", relative, NULL);
-    g_free (relative);
-    return abs;
-}
-
-
 static void
 link_file (CopyMoveJob *job,
            GFile *src, GFile *dest_dir,
@@ -4559,14 +4535,11 @@ retry:
     error = NULL;
     not_local = FALSE;
 
-    path = get_abs_path_for_symlink (src);
-    char *scheme;
-    scheme = g_file_get_uri_scheme (src);
+    path = pf_file_utils_get_path_for_symlink (src);
 
-    if (path == NULL || !g_str_has_prefix (scheme, "file"))
+    if (path == NULL) {
         not_local = TRUE;
-
-    g_free (scheme);
+    }
 
     if (!not_local && g_file_make_symbolic_link (dest,
                                           path,
