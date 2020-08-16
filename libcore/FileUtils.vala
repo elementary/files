@@ -892,6 +892,46 @@ namespace PF.FileUtils {
         return result;
     }
 
+    /* First few copies have format not containing the count in digits */
+    ///TRANSLATORS: format of first file copy; first %s: base, second %s: extension
+    public const string FIRST_COPY = N_("%s (copy)%s");
+
+    ///TRANSLATORS: Any characteristic string contained only in format of first copy (and similar)
+    const string FIRST_COPY_TAG = N_("(copy)");
+
+    ///TRANSLATORS: format of second file copy; first %s: base, second %s: extension
+    public const string SECOND_COPY = N_("%s (another copy)%s");
+
+    ///TRANSLATORS: Any characteristic string contained only in format of second copy (and similar)
+    const string SECOND_COPY_TAG = N_("(another copy)");
+
+    const string[] NON_NUMERIC_TAGS = {FIRST_COPY_TAG, SECOND_COPY_TAG};
+
+    /* Remaining copies have format that must contain the count in digits */
+    ///TRANSLATORS: format of eleventh file copy; first %s: base, second %s: extension
+    const string ELEVENTH_COPY = N_("%s (%'dth copy)%s");
+
+    ///TRANSLATORS: format of twelfth file copy; first %s: base, second %s: extension
+    const string TWELFTH_COPY = N_("%s (%'dth copy)%s");
+
+    ///TRANSLATORS: format of thirteenth file copy; first %s: base, second %s: extension
+    const string THIRTEENTH_COPY = N_("%s (%'dth copy)%s");
+
+    ///TRANSLATORS: format of 10n+1 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
+    const string DECADE_PLUS_ONE_COPY = N_("%s (%'dst copy)%s");
+
+    ///TRANSLATORS: format of 10n+2 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
+    const string DECADE_PLUS_TWO_COPY = N_("%s (%'dnd copy)%s");
+
+    ///TRANSLATORS: format of 10n+3 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
+    const string DECADE_PLUS_THREE_COPY = N_("%s (%'drd copy)%s");
+
+    ///TRANSLATORS: fallback file copy format; first %s: base, %'d: count, second %s: extension
+    public const string OTHER_COPY = N_("%s (%'dth copy)%s");
+
+    ///TRANSLATORS: A string that must occur in every copy format and be immediately after the base name and must occur only once in the copy format. This will usually be a space and opening parenthesis or similar.
+    const string OPENING_TAG = N_(" (");
+
     public string get_duplicate_name (string name, int count_increment, int max_length)
     requires (count_increment > 0) {
 
@@ -931,8 +971,8 @@ namespace PF.FileUtils {
             name_base = name.slice (0, index_of_opening);
         }
         /* Only the first few copies, in sequence from first, may have nonnumeric formats */
-        for (int i = 0; i < nonnumeric_tags.length; i++) {
-            if (name_without_suffix.contains (_(nonnumeric_tags[i]))) {
+        for (int i = 0; i < NON_NUMERIC_TAGS.length; i++) {
+            if (name_without_suffix.contains (_(NON_NUMERIC_TAGS[i]))) {
                 count = i + 1;
                 break;
             }
@@ -1092,49 +1132,6 @@ namespace PF.FileUtils {
 
         return result;
     }
-
-/* First few copies have format not containing the count in digits */
-///TRANSLATORS: format of first file copy; first %s: base, second %s: extension
-public const string FIRST_COPY = N_("%s (copy)%s");
-
-///TRANSLATORS: Any characteristic string contained only in format of first copy (and similar)
-const string FIRST_COPY_TAG = N_("(copy)");
-
-///TRANSLATORS: format of second file copy; first %s: base, second %s: extension
-public const string SECOND_COPY = N_("%s (another copy)%s");
-
-///TRANSLATORS: Any characteristic string contained only in format of second copy (and similar)
-const string SECOND_COPY_TAG = N_("(another copy)");
-
-const string[] nonnumeric_tags = {FIRST_COPY_TAG, SECOND_COPY_TAG};
-
-
-
-/* Remaining copies have format that must contain the count in digits */
-///TRANSLATORS: format of eleventh file copy; first %s: base, second %s: extension
-const string ELEVENTH_COPY = N_("%s (%'dth copy)%s");
-
-///TRANSLATORS: format of twelfth file copy; first %s: base, second %s: extension
-const string TWELFTH_COPY = N_("%s (%'dth copy)%s");
-
-///TRANSLATORS: format of thirteenth file copy; first %s: base, second %s: extension
-const string THIRTEENTH_COPY = N_("%s (%'dth copy)%s");
-
-///TRANSLATORS: format of 10n+1 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
-const string DECADE_PLUS_ONE_COPY = N_("%s (%'dst copy)%s");
-
-///TRANSLATORS: format of 10n+2 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
-const string DECADE_PLUS_TWO_COPY = N_("%s (%'dnd copy)%s");
-
-///TRANSLATORS: format of 10n+3 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
-const string DECADE_PLUS_THREE_COPY = N_("%s (%'drd copy)%s");
-
-///TRANSLATORS: fallback file copy format; first %s: base, %'d: count, second %s: extension
-public const string OTHER_COPY = N_("%s (%'dth copy)%s");
-
-///TRANSLATORS: A string that must occur in every copy format and be immediately after the base name and must occur only once in the copy format. This will usually be a space and opening parenthesis or similar.
-const string OPENING_TAG = N_(" (");
-
 }
 
 namespace Marlin {
