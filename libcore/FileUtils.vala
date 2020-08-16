@@ -438,6 +438,11 @@ namespace PF.FileUtils {
         }
     }
 
+    public string custom_basename_from_file (GLib.File location) {
+        var gof = GOF.File.@get (location); // In most case a GOF.File can be retrieved from cache
+        return gof.get_display_name (); // Falls back to location.get_basename ()
+    }
+
     public async GLib.File? set_file_display_name (GLib.File old_location,
                                                    string new_name,
                                                    GLib.Cancellable? cancellable = null) throws GLib.Error {
