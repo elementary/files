@@ -194,6 +194,25 @@ void add_file_utils_tests () {
         string result = PF.FileUtils.shorten_utf8_string ("試し", 4);
         assert (result == "");
     });
+
+    Test.add_func ("/FileUtils/get_link_name_0", () => {
+        string target = "path_to_link";
+        string result = PF.FileUtils.get_link_name (target, 0);
+        assert (result == target);
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_1", () => {
+        string target = "path_to_link";
+        string result = PF.FileUtils.get_link_name (target, 1);
+        assert (result.contains ("Link"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_11", () => {
+        string target = "path_to_link";
+        string result = PF.FileUtils.get_link_name (target, 11);
+        assert (result != target);
+        assert (result.contains ("11"));
+    });
 }
 
 int main (string[] args) {
