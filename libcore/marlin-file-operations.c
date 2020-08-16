@@ -573,27 +573,6 @@ get_duplicate_name (const char *name, int count_increment, int max_length)
     return result;
 }
 
-static gboolean
-has_invalid_xml_char (char *str)
-{
-    gunichar c;
-
-    while (*str != 0) {
-        c = g_utf8_get_char (str);
-        /* characters XML permits */
-        if (!(c == 0x9 ||
-              c == 0xA ||
-              c == 0xD ||
-              (c >= 0x20 && c <= 0xD7FF) ||
-              (c >= 0xE000 && c <= 0xFFFD) ||
-              (c >= 0x10000 && c <= 0x10FFFF))) {
-            return TRUE;
-        }
-        str = g_utf8_next_char (str);
-    }
-    return FALSE;
-}
-
 static char *
 eel_str_middle_truncate (const char *string,
                          guint truncate_length)
@@ -646,7 +625,7 @@ custom_basename_from_file (GFile *file) {
 
     if (!G_IS_FILE (file)) {
         g_critical ("Invalid file");
-        return strdup ("");
+        return strdup ("Invalid file");
     }
 
     info = g_file_query_info (file,
@@ -663,29 +642,9 @@ custom_basename_from_file (GFile *file) {
 
     if (name == NULL) {
         basename = g_file_get_basename (file);
-        if (g_utf8_validate (basename, -1, NULL)) {
-            name = basename;
-        } else {
-            name = g_uri_escape_string (basename, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
-            g_free (basename);
-        }
     }
 
-    /* Some chars can't be put in the markup we use for the dialogs... */
-    if (has_invalid_xml_char (name)) {
-        tmp = name;
-        name = g_uri_escape_string (name, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
-        g_free (tmp);
-    }
-
-    /* Finally, if the string is too long, truncate it. */
-    if (name != NULL) {
-        tmp = name;
-        name = eel_str_middle_truncate (tmp, MAXIMUM_DISPLAYED_FILE_NAME_LENGTH);
-        g_free (tmp);
-    }
-
-
+    /* Name will be used for dialogs (warning, error) and progress - it is up to user to make any checks required */
     return name;
 }
 
