@@ -573,51 +573,6 @@ get_duplicate_name (const char *name, int count_increment, int max_length)
     return result;
 }
 
-static char *
-eel_str_middle_truncate (const char *string,
-                         guint truncate_length)
-{
-    char *truncated;
-    guint length;
-    guint num_left_chars;
-    guint num_right_chars;
-
-    const char delimter[] = "…";
-    const guint delimter_length = strlen (delimter);
-    const guint min_truncate_length = delimter_length + 2;
-
-    if (string == NULL) {
-        return NULL;
-    }
-
-    /* It doesnt make sense to truncate strings to less than
-     * the size of the delimiter plus 2 characters (one on each
-     * side)
-     */
-    if (truncate_length < min_truncate_length) {
-        return g_strdup (string);
-    }
-
-    length = g_utf8_strlen (string, -1);
-
-    /* Make sure the string is not already small enough. */
-    if (length <= truncate_length) {
-        return g_strdup (string);
-    }
-
-    /* Find the 'middle' where the truncation will occur. */
-    num_left_chars = (truncate_length - delimter_length) / 2;
-    num_right_chars = truncate_length - num_left_chars - delimter_length;
-
-    truncated = g_new (char, strlen (string) + 1);
-
-    g_utf8_strncpy (truncated, string, num_left_chars);
-    strcat (truncated, delimter);
-    strcat (truncated, g_utf8_offset_to_pointer  (string, length - num_right_chars));
-
-    return truncated;
-}
-
 #define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
 
 static gpointer
