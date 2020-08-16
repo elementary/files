@@ -900,7 +900,12 @@ namespace PF.FileUtils {
 
         parse_previous_duplicate_name (name, out name_base, out suffix, out count);
 
-        return make_duplicate_name (name_base, suffix, count + count_increment, max_length);
+        var result = make_duplicate_name (name_base, suffix, count + count_increment, max_length);
+        if (max_length >= 0 && result.length > max_length) {
+            result = shorten_utf8_string (result, result.length - max_length);
+        }
+
+        return result;
     }
 
     private void parse_previous_duplicate_name (string name, out string name_base, out string suffix, out int count)
@@ -908,24 +913,23 @@ namespace PF.FileUtils {
 
         suffix = "";
         count = 0;
-        name_base = name;
 
         string name_without_suffix = name;
 
         var index_of_suffix = name.last_index_of (".");
         if (index_of_suffix < name.length - 1) {
-            suffix = name.slice (index_of_suffix, name.length - 1);
-            name_without_suffix = name.slice (0, index_of_suffix - 1);
+            suffix = name.slice (index_of_suffix, name.length);
+            name_without_suffix = name.slice (0, index_of_suffix);
         }
 
         int index_of_opening = name_without_suffix.last_index_of (_(OPENING_TAG));
-        if (index_of_opening < 0) {
 
+        if (index_of_opening < 0) {
+            name_base = name_without_suffix.slice (0, index_of_suffix);
             return;
         } else {
-            name_base = name_without_suffix.slice (0, index_of_opening);
+            name_base = name.slice (0, index_of_opening);
         }
-
         /* Only the first few copies, in sequence from first, may have nonnumeric formats */
         for (int i = 0; i < nonnumeric_tags.length; i++) {
             if (name_without_suffix.contains (_(nonnumeric_tags[i]))) {
@@ -950,7 +954,7 @@ namespace PF.FileUtils {
 
             int multiplier = 1;
             while (index < limit && chr.isdigit ()) {
-                count = chr.digit_value () * multiplier;
+                count += chr.digit_value () * multiplier;
                 //Number is reversed so each subsequent digit represents another factor of ten
                 multiplier *= 10;
                 reverse_base.get_next_char (ref index, out chr);
@@ -1091,18 +1095,19 @@ namespace PF.FileUtils {
 
 /* First few copies have format not containing the count in digits */
 ///TRANSLATORS: format of first file copy; first %s: base, second %s: extension
-const string FIRST_COPY = N_("%s (copy)%s");
+public const string FIRST_COPY = N_("%s (copy)%s");
 
 ///TRANSLATORS: Any characteristic string contained only in format of first copy (and similar)
 const string FIRST_COPY_TAG = N_("(copy)");
 
 ///TRANSLATORS: format of second file copy; first %s: base, second %s: extension
-const string SECOND_COPY = N_("%s (another copy)%s");
-
-const string[] nonnumeric_tags = {FIRST_COPY_TAG, SECOND_COPY_TAG};
+public const string SECOND_COPY = N_("%s (another copy)%s");
 
 ///TRANSLATORS: Any characteristic string contained only in format of second copy (and similar)
 const string SECOND_COPY_TAG = N_("(another copy)");
+
+const string[] nonnumeric_tags = {FIRST_COPY_TAG, SECOND_COPY_TAG};
+
 
 
 /* Remaining copies have format that must contain the count in digits */
@@ -1125,7 +1130,7 @@ const string DECADE_PLUS_TWO_COPY = N_("%s (%'dnd copy)%s");
 const string DECADE_PLUS_THREE_COPY = N_("%s (%'drd copy)%s");
 
 ///TRANSLATORS: fallback file copy format; first %s: base, %'d: count, second %s: extension
-const string OTHER_COPY = N_("%s (%'dth copy)%s");
+public const string OTHER_COPY = N_("%s (%'dth copy)%s");
 
 ///TRANSLATORS: A string that must occur in every copy format and be immediately after the base name and must occur only once in the copy format. This will usually be a space and opening parenthesis or similar.
 const string OPENING_TAG = N_(" (");

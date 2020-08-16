@@ -195,6 +195,8 @@ void add_file_utils_tests () {
         assert (result == "");
     });
 
+    /* Get link names */
+
     Test.add_func ("/FileUtils/get_link_name_0", () => {
         string target = "path_to_link";
         string result = PF.FileUtils.get_link_name (target, 0);
@@ -212,6 +214,19 @@ void add_file_utils_tests () {
         string result = PF.FileUtils.get_link_name (target, 11);
         assert (result != target);
         assert (result.contains ("11"));
+    });
+
+    /* Get duplicate names */
+
+    Test.add_func ("/FileUtils/get_duplicate_name_0", () => {
+        string name = "Filename.extension";
+
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1);
+        assert (result == PF.FileUtils.FIRST_COPY.printf ("Filename", ".extension"));
+        result = PF.FileUtils.get_duplicate_name (result, 1, -1);
+        assert (result == PF.FileUtils.SECOND_COPY.printf ("Filename", ".extension"));
+        result = PF.FileUtils.get_duplicate_name (result, 2, -1);
+        assert (result == PF.FileUtils.OTHER_COPY.printf ("Filename", 4, ".extension"));
     });
 }
 
