@@ -910,10 +910,13 @@ namespace PF.FileUtils {
     }
 
     public string get_link_name (string target_name, int count, int max_length = -1)
-    requires (count >= 1) {
+    requires (count >= 0) {
 
         string result = "";
         switch (count) {
+            case 0:
+                result = target_name; //First link in directory has same name as source
+                break;
             case 1:
                 result = _("Link to %s").printf (target_name);
                 break;
