@@ -1031,46 +1031,40 @@ namespace PF.FileUtils {
         }
     }
 
-    public string get_link_name (string target_name, int count, int max_length = -1) {
-        string result = target_name;
-        if (count <= 2) {
-            /* Handle special cases for low numbers.
-             * Perhaps for some locales we will need to add more.
-             */
-            switch (count) {
-                case 1:
-                    result = _("Link to %s").printf (target_name);
-                    break;
-                case 2:
-                    result = _("Another link to %s").printf (target_name);
-                    break;
-                default:
-                    break;
-            }
-        } else if (count < 20) {
-            /* Handle special cases for the first few numbers of the teens */
-            switch (count) {
-                case 11:
-                    result = _("11th link to %s").printf (target_name);
-                    break;
-                case 12:
-                    result = _("12th link to %s").printf (target_name);
-                    break;
+    public string get_link_name (string target_name, int count, int max_length = -1)
+    requires (count >= 0) {
 
-                case 13:
-                    result = _("13th link to %s").printf (target_name);
-                    break;
+        string result = "";
+        switch (count) {
+            case 0:
+                result = target_name; //First link in directory has same name as source
+                break;
+            case 1:
+                result = _("Link to %s").printf (target_name);
+                break;
+            case 2:
+                result = _("Another link to %s").printf (target_name);
+                break;
 
-                default:
-                    ///TRANSLATORS: %'d represents a number in range 4 - 19
-                    result = _("%'dth link to %s").printf (count, target_name);
-                    break;
-            }
-        } else {
-            /* Handle special cases for the first few numbers of each decade above 20 (do we need this?) */
+            case 11:
+                result = _("11th link to %s").printf (target_name);
+                break;
+            case 12:
+                result = _("12th link to %s").printf (target_name);
+                break;
+
+            case 13:
+                result = _("13th link to %s").printf (target_name);
+                break;
+
+            default:
+                break;
+        }
+
+        if (result == "") {
             switch (count % 10) {
                 case 1:
-                    ///TRANSLATORS: %'d represents 21 or 31 or 41 etc
+                    ///TRANSLATORS: %'d represents 21 or 31 or 41  etc
                     result = _("%'dst link to %s").printf (count, target_name);
                     break;
                 case 2:
@@ -1082,7 +1076,7 @@ namespace PF.FileUtils {
                     result = _("%'drd link to %s").printf (count, target_name);
                     break;
                 default:
-                    ///TRANSLATORS: %'d represents a number between 24 - 29 or 34 - 49 or 44 - 49 etc
+                    ///TRANSLATORS: %'d represents a number in range 4 - 9, 14 - 19, 24 - 29 etc
                     result = _("%'dth link to %s").printf (count, target_name);
                     break;
             }
