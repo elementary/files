@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2019 elementary LLC <https://elementary.io>
+    Copyright (c) 2019 -20 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
