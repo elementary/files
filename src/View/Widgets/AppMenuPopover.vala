@@ -1,6 +1,6 @@
 
 /***
-    Copyright (c) 2019 elementary LLC <https://elementary.io>
+    Copyright (c) 2020 elementary LLC <https://elementary.io>
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
     by the Free Software Foundation.
@@ -34,7 +34,7 @@ public class PF.AppMenuPopover : Gtk.Popover {
 
         add (menu_grid);
 
-        Preferences.settings.bind (
+        Marlin.app_settings.bind (
             "single-click",
             click_mode_switch,
             "active",
