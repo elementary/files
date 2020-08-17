@@ -52,7 +52,7 @@ namespace Marlin {
                 double_border_radius = 2 * border_radius;
 
                 if (is_list_view) {
-                    (this as Gtk.CellRenderer).set_fixed_size (-1, icon_size);
+                    set_fixed_size (-1, icon_size);
                 }
             });
 
