@@ -57,11 +57,11 @@ namespace FM {
         }
 
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Preferences.marlin_column_view_settings.get_enum ("zoom-level");
-            Preferences.marlin_column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+            var zoom = Marlin.column_view_settings.get_enum ("zoom-level");
+            Marlin.column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
 
-            minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("maximum-zoom-level");
+            minimum_zoom = (Marlin.ZoomLevel)Marlin.column_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (Marlin.ZoomLevel)Marlin.column_view_settings.get_enum ("maximum-zoom-level");
 
             if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
@@ -74,8 +74,8 @@ namespace FM {
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Preferences.marlin_column_view_settings.get_enum ("default-zoom-level");
-            Preferences.marlin_column_view_settings.set_enum ("zoom-level", zoom);
+            var zoom = Marlin.column_view_settings.get_enum ("default-zoom-level");
+            Marlin.column_view_settings.set_enum ("zoom-level", zoom);
 
             return (Marlin.ZoomLevel)zoom;
         }
@@ -113,7 +113,7 @@ namespace FM {
 
         protected override bool on_view_button_release_event (Gdk.EventButton event) {
             /* Invoke default handler unless waiting for a double-click in single-click mode */
-            if (Preferences.settings.get_boolean ("single-click") && awaiting_double_click) {
+            if (Marlin.app_settings.get_boolean ("single-click") && awaiting_double_click) {
                 should_activate = true; /* will activate when times out */
                 return true;
             } else {

@@ -301,9 +301,10 @@ namespace FM {
             });
 
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
-            Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
-            Preferences.settings.bind ("click-mode", this, "click-mode", SettingsBindFlags.GET);
+
+            Marlin.app_settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
+            Marlin.app_settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
+            Marlin.app_settings.bind ("click-mode", this, "click-mode", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -393,13 +394,13 @@ namespace FM {
             insert_action_group ("common", common_actions);
 
             action_set_state (background_actions, "show-hidden",
-                              Preferences.settings.get_boolean ("show-hiddenfiles"));
+                              Marlin.app_settings.get_boolean ("show-hiddenfiles"));
 
             action_set_state (background_actions, "show-remote-thumbnails",
-                              Preferences.settings.get_boolean ("show-remote-thumbnails"));
+                              Marlin.app_settings.get_boolean ("show-remote-thumbnails"));
 
             action_set_state (background_actions, "hide-local-thumbnails",
-                              Preferences.settings.get_boolean ("hide-local-thumbnails"));
+                              Marlin.app_settings.get_boolean ("hide-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -1958,7 +1959,7 @@ namespace FM {
 
             var bookmark_menuitem = new Gtk.MenuItem ();
             bookmark_menuitem.add (new Granite.AccelLabel (
-                _("Add to Favorites"),
+                _("Add to Bookmarks"),
                 "<Ctrl>d"
             ));
             bookmark_menuitem.action_name = "common.bookmark";

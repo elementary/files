@@ -245,7 +245,7 @@ namespace Marlin.View.Chrome {
 
             list.append (out bookmark_results, null);
             list.@set (bookmark_results,
-                        0, get_category_header (_("Favorites")),
+                        0, get_category_header (_("Bookmarks")),
                         5, Category.CURRENT_HEADER.to_string ());
 
 #if HAVE_ZEITGEIST
@@ -1151,13 +1151,10 @@ namespace Marlin.View.Chrome {
             var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
 
             if (colored) {
-                Gdk.Color gdk_color = { 0,
-                                       (uint16) (rgba.red * 65536),
-                                       (uint16) (rgba.green * 65536),
-                                       (uint16) (rgba.blue * 65536)
-                                      };
-
-                color = "color='%s'".printf (gdk_color.to_string ());
+                color = "color='#%2x%2x%2x%2x'".printf ((uint)(rgba.red * 255),
+                                                        (uint)(rgba.green * 255),
+                                                        (uint)(rgba.blue * 255),
+                                                        (uint)(rgba.alpha * 255));
             }
 
             return color;
