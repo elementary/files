@@ -11,9 +11,9 @@ namespace Config {
     public const string TERMINAL_NAME;
 }
 
-[CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
 namespace FM
 {
+    [CCode (cheader_filename = "fm-list-model.h")]
     public class ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
     {
         [CCode (cprefix = "FM_LIST_MODEL_", cheader_filename = "fm-list-model.h")]

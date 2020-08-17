@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Marlin.View.Chrome.HeaderBar : Gtk.HeaderBar {
+public class Marlin.View.Chrome.HeaderBar : Hdy.HeaderBar {
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
@@ -116,8 +116,8 @@ public class Marlin.View.Chrome.HeaderBar : Gtk.HeaderBar {
         location_bar.escape.connect (() => {escape ();});
     }
 
-    public bool enter_search_mode () {
-        return location_bar.enter_search_mode ();
+    public bool enter_search_mode (string term = "") {
+        return location_bar.enter_search_mode (term);
     }
 
     public bool enter_navigate_mode () {

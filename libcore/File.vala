@@ -1074,11 +1074,29 @@ public class GOF.File : GLib.Object {
 
     private void update_size () {
         if (is_folder () || is_root_network_folder ()) {
-            format_size = "—";
+            format_size = item_count ();
         } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
             format_size = GLib.format_size (size);
         } else {
             format_size = _("Inaccessible");
+        }
+    }
+
+    private string item_count () {
+        try {
+            var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
+            var count = 0;
+            while (f_enum.next_file () != null) {
+                count++;
+            }
+
+            if (count == 0) {
+                return _("Empty");
+            } else {
+                return ngettext (_("%i item"), _("%i items"), count).printf (count);
+            }
+        } catch (Error e) {
+            return _("Inaccessible");
         }
     }
 
