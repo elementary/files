@@ -133,6 +133,7 @@
     }
 
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
+    private const string EXCLUDED_FS_TYPES = "fuse"; // Filesystems such sshfs and ntfs return this type
     private HashTable<string, Marlin.GitRepoInfo?> repo_map;
     private HashTable<string, Marlin.GitRepoChildInfo?> child_map;
 
@@ -145,6 +146,38 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 
         if (!view.directory.is_local) {
             debug ("Git plugin ignoring non-local folder");
+            return;
+        }
+
+        FileInfo info;
+        try {
+            info = directory.get_target_location ().query_filesystem_info (FileAttribute.FILESYSTEM_TYPE);
+            if (!info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
+                debug ("GIT PLUGIN: no filesystem type info - ignoring");
+                return;
+            }
+
+            unowned string fs_type = info.get_attribute_string (FileAttribute.FILESYSTEM_TYPE);
+            if (EXCLUDED_FS_TYPES.contains (fs_type)) {
+                warning ("GIT PLUGIN: excluded filesystem type %s", fs_type);
+                return;
+            }
+        } catch (GLib.Error error) {
+            if (!(error is IOError.CANCELLED)) {
+                warning ("GIT PLUGIN: Error querying %s filesystem info: %s", directory.uri, error.message);
+            }
+
+            return;
+        }
+
+        if (info == null || !info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
+            debug ("GIT PLUGIN: no filesystem type info - ignoring");
+            return;
+        }
+
+        unowned string fs_type = info.get_attribute_string (FileAttribute.FILESYSTEM_TYPE);
+        if (EXCLUDED_FS_TYPES.contains (fs_type)) {
+            warning ("GIT PLUGIN: excluded filesystem type %s", fs_type);
             return;
         }
 

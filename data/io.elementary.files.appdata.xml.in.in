@@ -58,12 +58,11 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.5.0" date="2020-07-07" urgency="medium">
+    <release version="4.5.0" date="2020-08-11" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
-          <li>"Personal" and "Bookmarks" are now "Favorites"</li>
-          <li>Favorite menu option for network mounts in sidebar</li>
+          <li>Bookmark menu option for network mounts in sidebar</li>
           <li>Show folder item count in List View</li>
           <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
           <li>Properties window: Allow the filename to be copied when it cannot be edited</li>
@@ -74,25 +73,31 @@
           <li>Fix crash when pressing Enter and another key at the same time</li>
           <li>Fix pathbar handling of "~" and ".." in path</li>
           <li>Filechooser pathbar no longer crashes when invoked from a Flatpak</li>
+          <li>Do not show git status for repositories on FUSE filesystems to prevent possible blocking</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>"Personal" is now "Bookmarks"</li>
+          <li>Updated translations</li>
         </ul>
       </description>
     </release>
     <release version="4.4.4" date="2020-06-30" urgency="medium">
     <description>
       <p>Improvements:</p>
-        <ul>
-          <li>Add warning and error colored disk usage bars when disk becomes too full</li>
-          <li>Prevent window resizing when filename column width exceeds available space</li>
-        </ul>
+      <ul>
+        <li>Add warning and error colored disk usage bars when disk becomes too full</li>
+        <li>Prevent window resizing when filename column width exceeds available space</li>
+      </ul>
       <p>Fixes:</p>
-        <ul>
-          <li>Fix handling of filenames containing the # character</li>
-          <li>Fix regressions regarding pathbar context menus and clicking</li>
-        </ul>
+      <ul>
+        <li>Fix handling of filenames containing the # character</li>
+        <li>Fix regressions regarding pathbar context menus and clicking</li>
+      </ul>
       <p>Other updates:</p>
-        <ul>
-          <li>Updated translations</li>
-        </ul>
+      <ul>
+        <li>Updated translations</li>
+      </ul>
       </description>
     </release>
     <release version="4.4.3" date="2020-06-01" urgency="medium">

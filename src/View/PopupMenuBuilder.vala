@@ -82,7 +82,7 @@ public class PopupMenuBuilder : Object {
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback bookmark_cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Favorites")), bookmark_cb);
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), bookmark_cb);
     }
 
     public PopupMenuBuilder add_separator () {
