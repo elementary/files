@@ -279,7 +279,6 @@ public class Marlin.Application : Gtk.Application {
                                    prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
 
         Marlin.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("click-mode", prefs, "click-mode", GLib.SettingsBindFlags.DEFAULT);
 
         gnome_interface_settings.bind ("clock-format",
                                        GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);

@@ -193,7 +193,6 @@ namespace FM {
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
-        public Marlin.ClickMode click_mode { get; set; }
 
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
@@ -304,7 +303,6 @@ namespace FM {
 
             Marlin.app_settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
             Marlin.app_settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
-            Marlin.app_settings.bind ("click-mode", this, "click-mode", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -3131,18 +3129,8 @@ namespace FM {
                 switch (click_zone) {
                     case ClickZone.ICON:
                     case ClickZone.NAME:
-                        switch (click_mode) {
-                            case Marlin.ClickMode.SINGLE:
-                                if (one_or_less) {
-                                    win.set_cursor (activatable_cursor);
-                                }
-                                break;
-                            case Marlin.ClickMode.MIXED:
-                                if (on_directory && one_or_less) {
-                                    win.set_cursor (activatable_cursor);
-                                }
-
-                                break;
+                        if (on_directory && one_or_less) {
+                            win.set_cursor (activatable_cursor);
                         }
 
                         break;
@@ -3440,22 +3428,8 @@ namespace FM {
                             should_activate = false;
 
                             if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
-                                switch (click_mode) {
-                                    case Marlin.ClickMode.SINGLE:
-                                        should_activate = true;
-                                        break;
-
-                                    case Marlin.ClickMode.DOUBLE:
-                                        should_activate = double_click_event;
-                                        break;
-
-                                    case Marlin.ClickMode.MIXED:
-                                        should_activate = on_directory || double_click_event;
-                                        break;
-
-                                    default:
-                                        break;
-                                }
+                                should_activate = on_directory || double_click_event;
+                                break;
                             }
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either

@@ -5,11 +5,6 @@
     <value value="1" nick="list"/>
     <value value="2" nick="miller_columns"/>
   </enum>
-  <enum id="clickmode">
-    <value value="0" nick="single"/>
-    <value value="1" nick="double"/>
-    <value value="2" nick="mixed"/>
-  </enum>
   <enum id="io.elementary.files.ZoomLevel">
     <value value="0" nick="smallest"/>
     <value value="1" nick="smaller"/>
@@ -64,15 +59,6 @@
       <summary>Default viewmode when browsing</summary>
       <description>
         The default viewmode to be used when opening a new tab or window
-      </description>
-    </key>
-    <key name="click-mode" enum="clickmode">
-      <default>'mixed'</default>
-      <summary>Select or activate on primary click</summary>
-      <description>
-        Single click mode always activates on single click.
-        Double click mode always selects on single click and activates on double click.
-        Mixed mode activates (opens) folders but selects files on single click.
       </description>
     </key>
     <key type="b" name="sidebar-cat-personal-expander">
