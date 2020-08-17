@@ -401,10 +401,13 @@ namespace Marlin.View {
             }
         }
 
-        private void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        private void add_tab_by_uri (string uri,
+                                     Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                                     bool is_restoring = false) {
+
             var file = get_file_from_uri (uri);
             if (file != null) {
-                add_tab (file, mode);
+                add_tab (file, mode, false, is_restoring);
             } else {
                 add_tab ();
             }
@@ -412,7 +415,8 @@ namespace Marlin.View {
 
         private void add_tab (File _location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
-                             bool ignore_duplicate = false) {
+                             bool ignore_duplicate = false,
+                             bool is_restoring = false) {
 
             File location;
             // For simplicity we do not use cancellable. If issues arise may need to do this.
@@ -442,6 +446,8 @@ namespace Marlin.View {
 
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
+            content.is_restoring = is_restoring;
+
             var tab = new Granite.Widgets.Tab ("", null, content) {
                 ellipsize_mode = Pango.EllipsizeMode.MIDDLE
             };
@@ -987,7 +993,7 @@ namespace Marlin.View {
                  * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously.
                  */
 
-                add_tab_by_uri (root_uri, mode);
+                add_tab_by_uri (root_uri, mode, true);
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                     expand_miller_view (tip_uri, root_uri);

@@ -111,6 +111,8 @@ namespace Marlin.View {
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
+        public bool is_restoring { get; set; default = false; }
+
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
         public signal void active ();
@@ -394,7 +396,7 @@ namespace Marlin.View {
         public void on_slot_directory_loaded (GOF.Directory.Async dir) {
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
-            if (!can_show_folder) {
+            if (!can_show_folder && !is_restoring) { // Do not show dialog when restoring fails - just remove tab.
                 if (dir.is_recent && !GOF.Preferences.get_default ().remember_history) {
                     content = new Marlin.View.PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
@@ -453,10 +455,20 @@ namespace Marlin.View {
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);
+                if (is_restoring) {
+                    Idle.add (() => {
+                        close ();
+                        window.remove_tab (this);
+                        return Source.REMOVE;
+                    });
+
+                    return;
+                }
             }
 
-            loading (false); /* Will cause topmenu to update */
+            is_restoring = false;
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
+            loading (false); /* Will cause topmenu to update */
         }
 
         private void store_selection () {
