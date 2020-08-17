@@ -38,7 +38,7 @@ namespace Marlin {
                 double_border_radius = 2 * border_radius;
 
                 if (is_list_view) {
-                    (this as Gtk.CellRenderer).set_fixed_size (-1, icon_size);
+                    set_fixed_size (-1, icon_size);
                 } else {
                     wrap_width = item_width - double_border_radius;
                 }
@@ -265,7 +265,7 @@ namespace Marlin {
             entry.show_all ();
 
             base.start_editing (event, widget, path, background_area, cell_area, flags);
-            return entry as Gtk.CellEditable;
+            return entry;
         }
 
         public void end_editing (bool cancel) {

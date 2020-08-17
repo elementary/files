@@ -198,11 +198,17 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         /* Build header box */
-        if (!only_one || (only_one && !goffile.is_writable ())) {
+        if (!only_one ) {
             var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
             label.halign = Gtk.Align.START;
             header_title = label;
-        } else if (only_one && goffile.is_writable ()) {
+        } else if (!goffile.is_writable ()) {
+            var label = new Gtk.Label (goffile.info.get_name ()) {
+                halign = Gtk.Align.START,
+                selectable = true
+            };
+            header_title = label;
+        } else {
             entry = new Gtk.Entry ();
             original_name = goffile.info.get_name ();
             reset_entry_text ();
@@ -215,6 +221,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 rename_file (goffile, entry.get_text ());
                 return false;
             });
+
             header_title = entry;
         }
 
