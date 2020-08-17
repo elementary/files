@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 19:37+0000\n"
+"POT-Creation-Date: 2020-08-14 19:08+0000\n"
 "PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
@@ -21,33 +21,33 @@ msgstr ""
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: src/Application.vala:124
+#: src/Application.vala:149
 msgid "Show the version of the program"
 msgstr "A program verziószámának megjelenítése."
 
-#: src/Application.vala:126
+#: src/Application.vala:151
 #, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "URI cím(ek) megjelenítése új lapon"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1857
+#: src/Application.vala:153 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "Új ablak"
 
-#: src/Application.vala:130
+#: src/Application.vala:155
 msgid "Quit Files"
 msgstr "Kilépés a fájlkezelőből."
 
-#: src/Application.vala:132
+#: src/Application.vala:157
 msgid "Enable debug logging"
 msgstr "Hibakereső naplózás engedélyezése"
 
-#: src/Application.vala:135
+#: src/Application.vala:160
 #, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
-#: src/Application.vala:138
+#: src/Application.vala:163
 msgid ""
 "\n"
 "\n"
@@ -57,7 +57,7 @@ msgstr ""
 "\n"
 "A fájlrendszer böngészése a fájlkezelővel"
 
-#: src/Application.vala:166
+#: src/Application.vala:191
 msgid "--quit cannot be used with URIs."
 msgstr "a --quit nem használható URI-címekkel."
 
@@ -106,7 +106,7 @@ msgstr "Kapacitás:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:444 src/Dialogs/PropertiesWindow.vala:483
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -123,115 +123,115 @@ msgid "Set as default"
 msgstr "Beállítás alapértelmezettként"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1967 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Tulajdonságok"
 
-#: src/Dialogs/PropertiesWindow.vala:227
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "Jogosultságok"
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%i fájl nem lesz olvasható a jogosultságok vagy egyéb hibák miatt."
 msgstr[1] "%i fájl nem lesz olvasható a jogosultságok vagy egyéb hibák miatt."
 
-#: src/Dialogs/PropertiesWindow.vala:252
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "Az aktuális méret nagyobb lehet"
 
-#: src/Dialogs/PropertiesWindow.vala:272 src/Dialogs/PropertiesWindow.vala:291
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "ismeretlen"
 
-#: src/Dialogs/PropertiesWindow.vala:455
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "Betöltés…"
 
-#: src/Dialogs/PropertiesWindow.vala:489
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "Nem lehet meghatározni"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/FileConflictDialog.vala:129
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
 #: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Méret:"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Típus:"
 
-#: src/Dialogs/PropertiesWindow.vala:525
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "Tartalmazza:"
 
-#: src/Dialogs/PropertiesWindow.vala:549
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "Létrehozva:"
 
-#: src/Dialogs/PropertiesWindow.vala:560
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "Módosítva:"
 
-#: src/Dialogs/PropertiesWindow.vala:572
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "Törölve:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:589
 #, fuzzy
 msgid "Media type:"
 msgstr "Pantonimtípus:"
 
-#: src/Dialogs/PropertiesWindow.vala:589
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "Felbontás:"
 
-#: src/Dialogs/PropertiesWindow.vala:597
+#: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Elérési út:"
 
-#: src/Dialogs/PropertiesWindow.vala:607
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "Cél:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "Eredeti hely:"
 
-#: src/Dialogs/PropertiesWindow.vala:638
-#: src/View/AbstractDirectoryView.vala:1935
+#: src/Dialogs/PropertiesWindow.vala:645
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr "Egyéb alkalmazás…"
 
-#: src/Dialogs/PropertiesWindow.vala:658
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "Megnyitás ezzel:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:933
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "Tulajdonos:"
 
-#: src/Dialogs/PropertiesWindow.vala:927 src/Dialogs/PropertiesWindow.vala:936
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "Csoport:"
 
-#: src/Dialogs/PropertiesWindow.vala:939
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "Mindenki:"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u almappa"
 msgstr[1] "%u almappa"
 
-#: src/Dialogs/PropertiesWindow.vala:1224
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -239,19 +239,20 @@ msgstr[0] "%u fájl"
 msgstr[1] "%u fájl"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1229
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:858
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1242 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u mappa"
 msgstr[1] "%u mappa"
 
-#: src/Dialogs/PropertiesWindow.vala:1251
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -259,7 +260,7 @@ msgstr[0] "%u kijelölt elem"
 msgstr[1] "%u kijelölt elem"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1253
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -268,7 +269,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Lemez tulajdonságok"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:663
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Fájlrendszer"
@@ -299,7 +300,7 @@ msgstr "Nem lehet átnevezni erre: '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Nem lehet megnyitni a fájlokat és URI-kat ezzel az alkalmazással"
 
-#: src/View/Window.vala:532 src/View/Window.vala:542
+#: src/View/Window.vala:542 src/View/Window.vala:552
 msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 
@@ -307,11 +308,11 @@ msgstr "(Rendszergazdaként)"
 msgid "Filename"
 msgstr "Fájlnév"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2169
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "Méret"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2174
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "Típus"
 
@@ -345,194 +346,196 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:818
-#: src/View/AbstractDirectoryView.vala:1129
+#: src/View/AbstractDirectoryView.vala:821
+#: src/View/AbstractDirectoryView.vala:1132
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Ez a fájl nem nyitható meg"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:828
+#: src/View/AbstractDirectoryView.vala:831
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:829
+#: src/View/AbstractDirectoryView.vala:832
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:844
+#: src/View/AbstractDirectoryView.vala:847
 msgid "Cannot open this file"
 msgstr "Ez a fájl nem nyitható meg"
 
-#: src/View/AbstractDirectoryView.vala:857
+#: src/View/AbstractDirectoryView.vala:860
 msgid "Cannot identify file type to open"
 msgstr "Nem azonosítható be a fájltípus a megnyitáshoz"
 
-#: src/View/AbstractDirectoryView.vala:1575
+#: src/View/AbstractDirectoryView.vala:1578
 msgid "Cannot drop this file"
 msgstr "A fájlt nem lehet elejteni"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1579
 msgid "Invalid file name provided"
 msgstr "Érvénytelen fájlnév megadva"
 
-#: src/View/AbstractDirectoryView.vala:1851
+#: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
 msgstr "Új lap"
 
-#: src/View/AbstractDirectoryView.vala:1871
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "Futtatás"
 
-#: src/View/AbstractDirectoryView.vala:1878
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "Megnyitás ebben: %s"
 
-#: src/View/AbstractDirectoryView.vala:1947
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "Megnyitás ebben"
 
-#: src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1952
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Megnyitás ezzel"
 
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/View/AbstractDirectoryView.vala:1960 src/View/PopupMenuBuilder.vala:85
-msgid "Bookmark"
-msgstr "Könyvjelző"
+#: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "Könyvjelzők"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr "Kivágás"
 
-#: src/View/AbstractDirectoryView.vala:1982
+#: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
 msgstr "Áthelyezés a kukába"
 
-#: src/View/AbstractDirectoryView.vala:1994
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
 msgstr "Végleges törlés"
 
-#: src/View/AbstractDirectoryView.vala:1999
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "Visszaállítás a kukából"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "Szülő mappa megnyitása"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "Eltávolítás az előzmények közül"
 
-#: src/View/AbstractDirectoryView.vala:2029
+#: src/View/AbstractDirectoryView.vala:2032
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Átnevezés"
 
-#: src/View/AbstractDirectoryView.vala:2036
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr "Másolás linkként"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
 msgstr "Hivatkozás beillesztése mappába"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "Beillesztés mappába"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "Rejtett fájlok megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
 msgstr "Távoli miniatűrök megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2093
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Távoli miniatűrök megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2110
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
 msgstr "Hivatkozás beillesztése"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "Név"
 
-#: src/View/AbstractDirectoryView.vala:2179
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "Dátum"
 
-#: src/View/AbstractDirectoryView.vala:2184
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "Fordított sorrend"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr "Mappák a fájlok előtt"
 
-#: src/View/AbstractDirectoryView.vala:2199
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "Rendezés"
 
-#: src/View/AbstractDirectoryView.vala:2207
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "Mappa"
 
-#: src/View/AbstractDirectoryView.vala:2213
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "Üres fájl"
 
-#: src/View/AbstractDirectoryView.vala:2264
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "Új"
 
-#: src/View/AbstractDirectoryView.vala:2501
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "Névtelen %s"
 
-#: src/View/AbstractDirectoryView.vala:2862
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:2866
+#: src/View/AbstractDirectoryView.vala:3067
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3048
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
-#: src/View/AbstractDirectoryView.vala:3017
+#: src/View/AbstractDirectoryView.vala:3021
 msgid "Cannot copy files that are in the trash"
 msgstr "A kukában levő fájlok nem másolhatóak"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: src/View/AbstractDirectoryView.vala:3047
+#: src/View/AbstractDirectoryView.vala:3051
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:596
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Saját mappa"
 
@@ -588,80 +591,91 @@ msgstr "Fájl nem található"
 msgid "The file selected no longer exists."
 msgstr "A kiválasztott fájl már nem létezik."
 
-#: src/View/Sidebar.vala:583
-msgid "Personal"
-msgstr "Személyes"
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Könyvjelzők"
 
-#: src/View/Sidebar.vala:584
-msgid "Your common places and bookmarks"
-msgstr "Saját mappái és könyvjelzői"
+#: src/View/Sidebar.vala:574
+msgid "Common places plus saved folders and files"
+msgstr ""
 
-#: src/View/Sidebar.vala:603
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Személyes mappa megnyitása"
 
-#: src/View/Sidebar.vala:618
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "A nemrég használt fájlok megtekintése"
 
-#: src/View/Sidebar.vala:644 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Kuka"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Kuka megnyitása"
 
-#: src/View/Sidebar.vala:656
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Eszközök"
 
-#: src/View/Sidebar.vala:657
-msgid "Your local partitions and devices"
-msgstr "Helyi partíciók és eszközök"
+#: src/View/Sidebar.vala:648
+msgid "Internal and connected storage devices"
+msgstr ""
 
-#: src/View/Sidebar.vala:786 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Hálózat"
 
-#: src/View/Sidebar.vala:787
-msgid "Your network places"
-msgstr "Hálózati helyek"
+#: src/View/Sidebar.vala:778
+msgid "Devices and places available via a network"
+msgstr ""
 
-#: src/View/Sidebar.vala:819
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Egész hálózaton"
 
-#: src/View/Sidebar.vala:826
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "A hálózat tartalmának tallózása"
 
-#: src/View/Sidebar.vala:829
+#: src/View/Sidebar.vala:820
 #, fuzzy
 msgid "Connect Server"
 msgstr "Kapcsolódás a kiszolgálóhoz"
 
-#: src/View/Sidebar.vala:830
+#: src/View/Sidebar.vala:821
 #, fuzzy
 msgid "Connect to a network server"
 msgstr "Kapcsolódás egy hálózati fájl szerverhez"
 
-#: src/View/Sidebar.vala:989
-#, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s szabad ennyiből: %s)"
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, fuzzy, c-format
+msgid "%s on %s"
+msgstr "%S, összesen: %S"
 
-#: src/View/Sidebar.vala:1476
+#: src/View/Sidebar.vala:979
+#, c-format
+msgid "%s free"
+msgstr ""
+
+#: src/View/Sidebar.vala:980
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S, összesen: %S"
+
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Hiba a(z) %s kötet csatolása közben"
 
-#: src/View/Sidebar.vala:1491
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "A(z) %s nem indítható"
 
-#: src/View/Sidebar.vala:1681 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 
@@ -1099,37 +1113,65 @@ msgstr "Már létezik egy másik, ugyanilyen nevű fájl itt: „%s”."
 msgid "Merge"
 msgstr "Egyesítés"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Nem határozható meg a(z) \"%s\" eredeti helye "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Az elem nem állítható helyre a Kukából"
 
-#: libcore/FileUtils.vala:444
+#: libcore/FileUtils.vala:472
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Nem lehet átnevezni erre: '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:533
+#: libcore/FileUtils.vala:561
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Ma ekkor %-H:%M"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:541
+#: libcore/FileUtils.vala:569
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Tegnap ekkor %-H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:549
+#: libcore/FileUtils.vala:577
 #, fuzzy, c-format
 msgid "%%A at %s"
 msgstr "%A ekkor %-H:%M"
+
+#: libcore/FileUtils.vala:847
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d másodperc"
+msgstr[1] "%'d másodperc"
+
+#: libcore/FileUtils.vala:851 libcore/FileUtils.vala:859
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d perc"
+msgstr[1] "%'d perc"
+
+#: libcore/FileUtils.vala:858
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d óra"
+msgstr[1] "%'d óra"
+
+#: libcore/FileUtils.vala:862
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "megközelítőleg %'d óra"
+msgstr[1] "megközelítőleg %'d óra"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1220,81 +1262,53 @@ msgstr "Kuka ürítése"
 msgid "Unable to mount '%s'"
 msgstr "A(z) %s nem csatolható"
 
-#: libcore/marlin-file-operations.c:150
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d másodperc"
-msgstr[1] "%'d másodperc"
-
-#: libcore/marlin-file-operations.c:159 libcore/marlin-file-operations.c:173
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d perc"
-msgstr[1] "%'d perc"
-
-#: libcore/marlin-file-operations.c:172
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d óra"
-msgstr[1] "%'d óra"
-
-#: libcore/marlin-file-operations.c:184
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "megközelítőleg %'d óra"
-msgstr[1] "megközelítőleg %'d óra"
-
-#: libcore/marlin-file-operations.c:260
+#: libcore/marlin-file-operations.c:204
 #, c-format
 msgid "Link to %s"
 msgstr "Hivatkozás erre: %s"
 
-#: libcore/marlin-file-operations.c:264
+#: libcore/marlin-file-operations.c:208
 #, c-format
 msgid "Another link to %s"
 msgstr "Még egy hivatkozás erre: %s"
 
-#: libcore/marlin-file-operations.c:280
+#: libcore/marlin-file-operations.c:224
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. hivatkozás erre: %s"
 
-#: libcore/marlin-file-operations.c:284
+#: libcore/marlin-file-operations.c:228
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. hivatkozás erre: %s"
 
-#: libcore/marlin-file-operations.c:288
+#: libcore/marlin-file-operations.c:232
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. hivatkozás erre: %s"
 
-#: libcore/marlin-file-operations.c:292
+#: libcore/marlin-file-operations.c:236
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. hivatkozás erre: %s"
 
-#: libcore/marlin-file-operations.c:484
+#: libcore/marlin-file-operations.c:428
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:492
+#: libcore/marlin-file-operations.c:436
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1047
+#: libcore/marlin-file-operations.c:991
 #, fuzzy, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "Biztosan véglegesen törölni akarja a következőt a Kukából: „%B”?"
 
-#: libcore/marlin-file-operations.c:1051
+#: libcore/marlin-file-operations.c:995
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1305,19 +1319,19 @@ msgid_plural ""
 msgstr[0] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet a Kukából?"
 msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet a Kukából?"
 
-#: libcore/marlin-file-operations.c:1061
+#: libcore/marlin-file-operations.c:1005
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ha töröl egy elemet, akkor az véglegesen elvész."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1087
+#: libcore/marlin-file-operations.c:1031
 #, fuzzy, c-format
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently delete “%s”?"
 msgstr "Végleg törli az összes elemet a kukából?"
 
-#: libcore/marlin-file-operations.c:1090
+#: libcore/marlin-file-operations.c:1034
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1325,39 +1339,39 @@ msgid_plural ""
 msgstr[0] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
 msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
 
-#: libcore/marlin-file-operations.c:1099
+#: libcore/marlin-file-operations.c:1043
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1133
+#: libcore/marlin-file-operations.c:1077
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d fájl törlése van hátra"
 msgstr[1] "%'d fájl törlése van hátra"
 
-#: libcore/marlin-file-operations.c:1138
+#: libcore/marlin-file-operations.c:1082
 msgid "Deleting files"
 msgstr "Fájlok törlése"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1153
+#: libcore/marlin-file-operations.c:1097
 #, fuzzy, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "%T van hátra"
 msgstr[1] "%T van hátra"
 
-#: libcore/marlin-file-operations.c:1222 libcore/marlin-file-operations.c:1262
-#: libcore/marlin-file-operations.c:1308 libcore/marlin-file-operations.c:1390
-#: libcore/marlin-file-operations.c:1897
+#: libcore/marlin-file-operations.c:1166 libcore/marlin-file-operations.c:1206
+#: libcore/marlin-file-operations.c:1252 libcore/marlin-file-operations.c:1334
+#: libcore/marlin-file-operations.c:1841
 msgid "Error while deleting."
 msgstr "Hiba törléskor."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1228
+#: libcore/marlin-file-operations.c:1172
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1367,21 +1381,21 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1233 libcore/marlin-file-operations.c:1961
-#: libcore/marlin-file-operations.c:3038
+#: libcore/marlin-file-operations.c:1177 libcore/marlin-file-operations.c:1905
+#: libcore/marlin-file-operations.c:2982
 #, fuzzy, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 "Hiba történt a(z) „%B” mappa fájljaival kapcsolatos információk lekérésekor."
 
-#: libcore/marlin-file-operations.c:1243 libcore/marlin-file-operations.c:3048
+#: libcore/marlin-file-operations.c:1187 libcore/marlin-file-operations.c:2992
 msgid "_Skip files"
 msgstr "Fájlok _kihagyása"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1267
+#: libcore/marlin-file-operations.c:1211
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1390,47 +1404,47 @@ msgstr "A(z) „%B” mappa nem törölhető, mert nincs rá olvasási joga."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1272 libcore/marlin-file-operations.c:2006
-#: libcore/marlin-file-operations.c:3090
+#: libcore/marlin-file-operations.c:1216 libcore/marlin-file-operations.c:1950
+#: libcore/marlin-file-operations.c:3034
 #, fuzzy, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "Hiba történt a(z) „%B” mappa olvasása közben."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1311
+#: libcore/marlin-file-operations.c:1255
 #, fuzzy, c-format
 msgid "Could not remove the folder %s."
 msgstr "A(z) %B mappa nem távolítható el."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1393
+#: libcore/marlin-file-operations.c:1337
 #, fuzzy, c-format
 msgid "There was an error deleting %s."
 msgstr "Hiba történt a(z) %B törlése közben."
 
-#: libcore/marlin-file-operations.c:1478
+#: libcore/marlin-file-operations.c:1422
 msgid "Moving files to trash"
 msgstr "Fájlok áthelyezése a Kukába"
 
-#: libcore/marlin-file-operations.c:1480
+#: libcore/marlin-file-operations.c:1424
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d fájl maradt Kukába való áthelyezésből"
 msgstr[1] "%'d fájl maradt Kukába való áthelyezésből"
 
-#: libcore/marlin-file-operations.c:1578 libcore/marlin-file-operations.c:1581
-#: libcore/marlin-file-operations.c:1584
+#: libcore/marlin-file-operations.c:1522 libcore/marlin-file-operations.c:1525
+#: libcore/marlin-file-operations.c:1528
 msgid "Cannot move file to trash or delete it"
 msgstr "A fájlt nem lehet törölni vagy áthelyezni a kukába"
 
-#: libcore/marlin-file-operations.c:1579
+#: libcore/marlin-file-operations.c:1523
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Nem lehet a fájlokat törölni vagy áthelyezni a kukába egy csak olvasható "
 "kötetről."
 
-#: libcore/marlin-file-operations.c:1582
+#: libcore/marlin-file-operations.c:1526
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1438,7 +1452,7 @@ msgstr ""
 "Nem lehet fájlokat törölni vagy áthelyezni a kukába egy olyan könyvtárból "
 "amire nincs írási jogosultsága."
 
-#: libcore/marlin-file-operations.c:1585
+#: libcore/marlin-file-operations.c:1529
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1446,28 +1460,28 @@ msgstr ""
 "Nem lehet törölni vagy áthelyezni a kukába olyan könyvtárakat amikre nincs "
 "írási jogosultsága."
 
-#: libcore/marlin-file-operations.c:1587
+#: libcore/marlin-file-operations.c:1531
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "A fájlt nem lehet áthelyezni a kukába. Megpróbálja végleg törölni?"
 
-#: libcore/marlin-file-operations.c:1588
+#: libcore/marlin-file-operations.c:1532
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 "Ezt a fájlt nem lehet a kukába helyezni. A részleteket lejjebb láthatod."
 
-#: libcore/marlin-file-operations.c:1592
+#: libcore/marlin-file-operations.c:1536
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "A fájl nem helyezhető a kukába. Megpróbálja törölni?"
 
-#: libcore/marlin-file-operations.c:1593
+#: libcore/marlin-file-operations.c:1537
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr "Ez a fájl nem helyezhető a kukába. Valószínűleg törölni sem tudja."
 
-#: libcore/marlin-file-operations.c:1599
+#: libcore/marlin-file-operations.c:1543
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1475,11 +1489,11 @@ msgstr ""
 "\n"
 " A fájl törlésével az véglegesen el lesz távolítva"
 
-#: libcore/marlin-file-operations.c:1789
+#: libcore/marlin-file-operations.c:1733
 msgid "Trashing Files"
 msgstr "Fájlok Kukába helyezése"
 
-#: libcore/marlin-file-operations.c:1791
+#: libcore/marlin-file-operations.c:1735
 msgid "Deleting Files"
 msgstr "Fájlok törlése"
 
@@ -1487,7 +1501,7 @@ msgstr "Fájlok törlése"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1831
+#: libcore/marlin-file-operations.c:1775
 #, fuzzy, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1498,7 +1512,7 @@ msgstr[1] "Felkészülés %'d fájl másolására (%S)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1843
+#: libcore/marlin-file-operations.c:1787
 #, fuzzy, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1509,37 +1523,37 @@ msgstr[1] "Felkészülés %'d fájl áthelyezésére (%S)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1855
+#: libcore/marlin-file-operations.c:1799
 #, fuzzy, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "Felkészülés %'d fájl törlésére (%S)"
 msgstr[1] "Felkészülés %'d fájl törlésére (%S)"
 
-#: libcore/marlin-file-operations.c:1862
+#: libcore/marlin-file-operations.c:1806
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Felkészülés %'d fájl áthelyezésére a Kukába"
 msgstr[1] "Felkészülés %'d fájl áthelyezésére a Kukába"
 
-#: libcore/marlin-file-operations.c:1893 libcore/marlin-file-operations.c:2885
-#: libcore/marlin-file-operations.c:3025 libcore/marlin-file-operations.c:3077
+#: libcore/marlin-file-operations.c:1837 libcore/marlin-file-operations.c:2829
+#: libcore/marlin-file-operations.c:2969 libcore/marlin-file-operations.c:3021
 msgid "Error while copying."
 msgstr "Hiba másoláskor."
 
-#: libcore/marlin-file-operations.c:1895 libcore/marlin-file-operations.c:3023
-#: libcore/marlin-file-operations.c:3075
+#: libcore/marlin-file-operations.c:1839 libcore/marlin-file-operations.c:2967
+#: libcore/marlin-file-operations.c:3019
 msgid "Error while moving."
 msgstr "Hiba áthelyezéskor."
 
-#: libcore/marlin-file-operations.c:1899
+#: libcore/marlin-file-operations.c:1843
 msgid "Error while moving files to trash."
 msgstr "Hiba a fájlok Kukába helyezésekor."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1956
+#: libcore/marlin-file-operations.c:1900
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1550,7 +1564,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2001
+#: libcore/marlin-file-operations.c:1945
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1559,7 +1573,7 @@ msgstr "A(z) \"%B\" mappa nem kezelhető, mert nincs rá olvasási joga."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2088
+#: libcore/marlin-file-operations.c:2032
 #, fuzzy, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1568,32 +1582,32 @@ msgstr "A(z) \"%B\" fájl nem kezelhető, mert nincs rá olvasási joga."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2093
+#: libcore/marlin-file-operations.c:2037
 #, fuzzy, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "Hiba történt az információkéréskor a következőről: \"%B\"."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2199 libcore/marlin-file-operations.c:2245
-#: libcore/marlin-file-operations.c:2283 libcore/marlin-file-operations.c:2323
+#: libcore/marlin-file-operations.c:2143 libcore/marlin-file-operations.c:2189
+#: libcore/marlin-file-operations.c:2227 libcore/marlin-file-operations.c:2267
 #, fuzzy, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "Hiba a(z) \"%B\" helyre másoláskor."
 
-#: libcore/marlin-file-operations.c:2204
+#: libcore/marlin-file-operations.c:2148
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nincs jogosultsága elérni a célmappát."
 
-#: libcore/marlin-file-operations.c:2206
+#: libcore/marlin-file-operations.c:2150
 msgid "There was an error getting information about the destination."
 msgstr "Hiba történt információk kérésekor a célról."
 
-#: libcore/marlin-file-operations.c:2246
+#: libcore/marlin-file-operations.c:2190
 msgid "The destination is not a folder."
 msgstr "A cél nem egy mappa."
 
-#: libcore/marlin-file-operations.c:2285
+#: libcore/marlin-file-operations.c:2229
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1603,30 +1617,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2291
+#: libcore/marlin-file-operations.c:2235
 #, fuzzy, c-format
 msgid "There is %s available, but %s is required."
 msgstr "%S érhető el, de %S szükséges."
 
-#: libcore/marlin-file-operations.c:2325
+#: libcore/marlin-file-operations.c:2269
 msgid "The destination is read-only."
 msgstr "A cél írásvédett."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2397
+#: libcore/marlin-file-operations.c:2341
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "„%B” áthelyezése ide: „%B”"
 
-#: libcore/marlin-file-operations.c:2398
+#: libcore/marlin-file-operations.c:2342
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "„%B” másolása ide: „%B”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2402
+#: libcore/marlin-file-operations.c:2346
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "„%B” kettőzése"
@@ -1635,14 +1649,14 @@ msgstr "„%B” kettőzése"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2410
+#: libcore/marlin-file-operations.c:2354
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "%'d fájl áthelyezése (ebben: „%B”) a következőbe: „%B”"
 msgstr[1] "%'d fájl áthelyezése (ebben: „%B”) a következőbe: „%B”"
 
-#: libcore/marlin-file-operations.c:2413
+#: libcore/marlin-file-operations.c:2357
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1651,7 +1665,7 @@ msgstr[1] "%'d fájl másolása (ebben: „%B”) a következőbe: „%B”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2422
+#: libcore/marlin-file-operations.c:2366
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1662,21 +1676,21 @@ msgstr[1] "%'d fájl kettőzése (ebben: „%B”))"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:2378
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "%'d fájl áthelyezése ide „%B”"
 msgstr[1] "%'d fájl áthelyezése ide „%B”"
 
-#: libcore/marlin-file-operations.c:2437
+#: libcore/marlin-file-operations.c:2381
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "%'d fájl másolása ide „%B”"
 msgstr[1] "%'d fájl másolása ide „%B”"
 
-#: libcore/marlin-file-operations.c:2443
+#: libcore/marlin-file-operations.c:2387
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1684,7 +1698,7 @@ msgstr[0] "%'d fájl megkettőzése"
 msgstr[1] "%'d fájl megkettőzése"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:2417
 #, fuzzy, c-format
 msgid "%s of %s"
 msgstr "%S, összesen: %S"
@@ -1695,7 +1709,7 @@ msgstr "%S, összesen: %S"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2493
+#: libcore/marlin-file-operations.c:2437
 #, fuzzy, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1704,7 +1718,7 @@ msgstr[1] "%S, összesen: %S — %T van hátra (%S/mp)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2892
+#: libcore/marlin-file-operations.c:2836
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1714,14 +1728,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2897
+#: libcore/marlin-file-operations.c:2841
 #, fuzzy, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "Hiba történt a(z) \"%B\" mappa létrehozásakor."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3033
+#: libcore/marlin-file-operations.c:2977
 #, fuzzy, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1732,7 +1746,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3085
+#: libcore/marlin-file-operations.c:3029
 #, fuzzy, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1743,91 +1757,91 @@ msgstr "A(z) \"%B\" mappa nem másolható, mert nincs rá olvasási joga."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3138 libcore/marlin-file-operations.c:3870
-#: libcore/marlin-file-operations.c:4438
+#: libcore/marlin-file-operations.c:3082 libcore/marlin-file-operations.c:3814
+#: libcore/marlin-file-operations.c:4382
 #, fuzzy, c-format
 msgid "Error while moving \"%s\"."
 msgstr "Hiba a(z) \"%B\" áthelyezésekor."
 
-#: libcore/marlin-file-operations.c:3140
+#: libcore/marlin-file-operations.c:3084
 msgid "Could not remove the source folder."
 msgstr "A forrásmappa nem távolítható el."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3229 libcore/marlin-file-operations.c:3280
-#: libcore/marlin-file-operations.c:3874
+#: libcore/marlin-file-operations.c:3173 libcore/marlin-file-operations.c:3224
+#: libcore/marlin-file-operations.c:3818
 #, fuzzy, c-format
 msgid "Error while copying \"%s\"."
 msgstr "Hiba a(z) \"%B\" másolásakor."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3234
+#: libcore/marlin-file-operations.c:3178
 #, fuzzy, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "Nem távolíthatók el fájlok a már létező %F mappából."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3285
+#: libcore/marlin-file-operations.c:3229
 #, fuzzy, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "A már létező %F fájl nem távolítható el."
 
-#: libcore/marlin-file-operations.c:3603 libcore/marlin-file-operations.c:4277
+#: libcore/marlin-file-operations.c:3547 libcore/marlin-file-operations.c:4221
 msgid "You cannot move a folder into itself."
 msgstr "Nem lehet egy mappát önmagába áthelyezni."
 
-#: libcore/marlin-file-operations.c:3604 libcore/marlin-file-operations.c:4278
+#: libcore/marlin-file-operations.c:3548 libcore/marlin-file-operations.c:4222
 msgid "You cannot copy a folder into itself."
 msgstr "Nem lehet egy mappát önmagára másolni."
 
-#: libcore/marlin-file-operations.c:3605 libcore/marlin-file-operations.c:4279
+#: libcore/marlin-file-operations.c:3549 libcore/marlin-file-operations.c:4223
 msgid "The destination folder is inside the source folder."
 msgstr "A célmappa a forrásmappán belül van."
 
-#: libcore/marlin-file-operations.c:3636
+#: libcore/marlin-file-operations.c:3580
 msgid "You cannot move a file over itself."
 msgstr "A fájl nem mozgatható önmagára."
 
-#: libcore/marlin-file-operations.c:3637
+#: libcore/marlin-file-operations.c:3581
 msgid "You cannot copy a file over itself."
 msgstr "Nem másolhatja a fájlt saját magára."
 
-#: libcore/marlin-file-operations.c:3638
+#: libcore/marlin-file-operations.c:3582
 msgid "The source file would be overwritten by the destination."
 msgstr "A forrásfájlt felülírná a célfájl."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3880
+#: libcore/marlin-file-operations.c:3824
 #, fuzzy, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "A(z) „%F” mappában található azonos nevű fájl nem törölhető."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3950
+#: libcore/marlin-file-operations.c:3894
 #, fuzzy, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "\"%B\" nem másolható ide."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3955
+#: libcore/marlin-file-operations.c:3899
 #, fuzzy, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Hiba a fájl %B-be másolásakor."
 
-#: libcore/marlin-file-operations.c:4157
+#: libcore/marlin-file-operations.c:4101
 msgid "Copying Files"
 msgstr "Fájlok másolása"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4193
+#: libcore/marlin-file-operations.c:4137
 #, fuzzy, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "Felkészülés \"%B\" mappába való mozgatáshoz"
 
-#: libcore/marlin-file-operations.c:4198
+#: libcore/marlin-file-operations.c:4142
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1835,23 +1849,23 @@ msgstr[0] "Felkészülés %'d fájl áthelyezésére"
 msgstr[1] "Felkészülés %'d fájl áthelyezésére"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4442
+#: libcore/marlin-file-operations.c:4386
 #, fuzzy, c-format
 msgid "There was an error moving the file into %s."
 msgstr "Hiba történt a fájl %F mappába helyezésekor."
 
-#: libcore/marlin-file-operations.c:4676
+#: libcore/marlin-file-operations.c:4620
 msgid "Moving Files"
 msgstr "Fájlok áthelyezése"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4715
+#: libcore/marlin-file-operations.c:4659
 #, fuzzy, c-format
 msgid "Creating links in \"%s\""
 msgstr "Linkek létrehozása itt: „%B”"
 
-#: libcore/marlin-file-operations.c:4720
+#: libcore/marlin-file-operations.c:4664
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1859,59 +1873,59 @@ msgstr[0] "Link létrehozása %'d fájlra"
 msgstr[1] "Linkek létrehozása %'d fájlokra"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4857
+#: libcore/marlin-file-operations.c:4801
 #, fuzzy, c-format
 msgid "Error while creating link to %s."
 msgstr "Hiba a link létrehozásakor a következőre: \"%B\"."
 
-#: libcore/marlin-file-operations.c:4860
+#: libcore/marlin-file-operations.c:4804
 msgid "Symbolic links only supported for local files"
 msgstr "A szimbolikus linkek csak helyi fájlokhoz támogatottak"
 
-#: libcore/marlin-file-operations.c:4863
+#: libcore/marlin-file-operations.c:4807
 msgid "The target doesn't support symbolic links."
 msgstr "A cél nem támogatja a szimbolikus linkeket."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4868
+#: libcore/marlin-file-operations.c:4812
 #, fuzzy, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "Hiba történt a szimbolikus link létrehozásakor a következőben: %F."
 
-#: libcore/marlin-file-operations.c:5171
+#: libcore/marlin-file-operations.c:5115
 msgid "Setting permissions"
 msgstr "Jogosultságok beállítása"
 
-#: libcore/marlin-file-operations.c:5360
+#: libcore/marlin-file-operations.c:5304
 msgid "Cannot copy into trash."
 msgstr "Nem lehet a kukába másolni."
 
-#: libcore/marlin-file-operations.c:5361 libcore/marlin-file-operations.c:5369
+#: libcore/marlin-file-operations.c:5305 libcore/marlin-file-operations.c:5313
 msgid "It is not permitted to copy files into the trash"
 msgstr "A fájlok Kukába másolása nem engedélyezett"
 
-#: libcore/marlin-file-operations.c:5505
+#: libcore/marlin-file-operations.c:5449
 msgid "untitled folder"
 msgstr "névtelen mappa"
 
-#: libcore/marlin-file-operations.c:5513
+#: libcore/marlin-file-operations.c:5457
 msgid "new file"
 msgstr "új fájl"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5680
+#: libcore/marlin-file-operations.c:5624
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "Hiba a következő könyvtár létrehozásakor: %B."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5683
+#: libcore/marlin-file-operations.c:5627
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "Hiba a következő fájl létrehozásakor: %B."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5689
+#: libcore/marlin-file-operations.c:5633
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Hiba a könyvtár létrehozásakor a következőben: %F."
@@ -1946,10 +1960,6 @@ msgstr "Ebben a mappában"
 #: libwidgets/View/SearchResults.vala:243
 msgid "Below This Folder"
 msgstr "Ezen mappa alatt"
-
-#: libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Könyvjelzők"
 
 #: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
@@ -2020,6 +2030,24 @@ msgstr "Összes visszaállítása"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " kiválasztva"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s szabad ennyiből: %s)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Könyvjelző"
+
+#~ msgid "Personal"
+#~ msgstr "Személyes"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Saját mappái és könyvjelzői"
+
+#~ msgid "Your network places"
+#~ msgstr "Hálózati helyek"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Helyi partíciók és eszközök"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "%d másolt elem törlése"

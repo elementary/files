@@ -22,7 +22,6 @@ namespace Marlin {
         public int icon_size { get; set; default = -1; }
         public GOF.File? file { set; private get; }
         public int item_width { get; set; default = -1; }
-
         public int max_lines { get; set; }
 
         private bool is_list_view;
@@ -225,7 +224,7 @@ namespace Marlin {
             entry.show_all ();
 
             base.start_editing (event, widget, path, background_area, cell_area, flags);
-            return entry as Gtk.CellEditable;
+            return entry;
         }
 
         public void end_editing (bool cancel) {

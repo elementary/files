@@ -55,7 +55,7 @@ namespace Marlin.View.Chrome {
             var _bread = new BreadcrumbsEntry ();
             base (_bread as Navigatable);
             bread = _bread;
-            search_results = new SearchResults (bread as Gtk.Widget);
+            search_results = new SearchResults (bread);
             connect_additional_signals ();
             show_refresh_icon ();
         }
@@ -95,7 +95,7 @@ namespace Marlin.View.Chrome {
 
         private void on_search_results_realize () {
             /*Is this necessary every popup? */
-            (get_toplevel () as Gtk.Window).get_group ().add_window (search_results);
+            ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
         }
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
@@ -213,7 +213,7 @@ namespace Marlin.View.Chrome {
             bread.action_icon_name = null;
         }
 
-        public bool enter_search_mode () {
+        public bool enter_search_mode (string term = "") {
             if (!sensitive) {
                 return false;
             }
@@ -221,7 +221,7 @@ namespace Marlin.View.Chrome {
             if (!search_mode) {
                 /* Initialise search mode but do not search until first character has been received */
                 if (set_focussed ()) {
-                    bread.set_entry_text ("");
+                    bread.set_entry_text (term);
                 } else {
                     return false;
                 }
