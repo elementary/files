@@ -58,6 +58,14 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="4.5.1" date="2020-08-11" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Do not restore locations that have become inaccessible</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.5.0" date="2020-08-11" urgency="medium">
       <description>
         <p>Improvements:</p>

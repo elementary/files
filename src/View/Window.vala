@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2010 Mathijs Henquet <mathijs.henquet@gmail.com>
-*               2017-2018 elementary LLC. <https://elementary.io>
+* Copyright (c) 2017 - 2020 elementary LLC <https://elementary.io>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
