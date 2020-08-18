@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-07-30 09:12+0000\n"
+"PO-Revision-Date: 2020-08-17 12:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,12 +75,8 @@ msgid "Improvements:"
 msgstr "改善点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Favorite menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
-"ネットワーク上のマウントされた場所に対しても、サイドバーのコンテキストメ"
-"ニューからお気に入りに登録できるように変更"
+msgstr "ネットワーク上のマウントされた場所に対しても、サイドバーのコンテキストメニューからブックマークに登録できるように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show folder item count in List View"
@@ -129,7 +125,7 @@ msgstr ""
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
-msgstr ""
+msgstr "アクセスがブロックされる可能性があるため、FUSE ファイルシステム上に保存されたレポジトリに対して、Git ステータスを表示しないように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -139,10 +135,8 @@ msgid "Other updates:"
 msgstr "そのほかのアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
-#, fuzzy
-#| msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "\"パーソナル\" と \"ブックマーク\" を、\"お気に入り\" に名称変更"
+msgstr "\"パーソナル\" を、\"ブックマーク\"  に名称変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99
