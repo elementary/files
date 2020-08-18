@@ -3455,7 +3455,6 @@ copy_move_file (CopyMoveJob *copy_job,
     gboolean would_recurse, is_merge;
     CommonJob *job;
     gboolean res;
-    int unique_name_nr;
     gboolean handled_invalid_filename;
 
     job = (CommonJob *)copy_job;
@@ -3465,19 +3464,12 @@ copy_move_file (CopyMoveJob *copy_job,
         return;
     }
 
-    unique_name_nr = 1;
-
     /* another file in the same directory might have handled the invalid
      * filename condition for us
      */
     handled_invalid_filename = *dest_fs_type != NULL;
 
-    //amtest
-    if (unique_names) {
-        dest = get_unique_target_file (src, dest_dir, same_fs, *dest_fs_type, unique_name_nr++);
-    } else {
-        dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
-    }
+    dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, !unique_names);
 
     if (dest == NULL) {
         *skipped_file = TRUE; /* Or aborted, but same-same */
@@ -3622,11 +3614,7 @@ retry:
         g_assert (*dest_fs_type == NULL);
         *dest_fs_type = query_fs_type (dest_dir, job->cancellable);
 
-        if (unique_names) {
-            new_dest = get_unique_target_file (src, dest_dir, same_fs, *dest_fs_type, unique_name_nr);
-        } else {
-            new_dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
-        }
+        new_dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, !unique_names);
 
         if (!g_file_equal (dest, new_dest)) {
             g_object_unref (dest);
@@ -3649,7 +3637,8 @@ retry:
 
         if (unique_names) {
             g_object_unref (dest);
-            dest = get_unique_target_file (src, dest_dir, same_fs, *dest_fs_type, unique_name_nr++);
+            dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, FALSE);
+
             goto retry;
         }
 

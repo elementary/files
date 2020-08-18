@@ -891,6 +891,129 @@ namespace PF.FileUtils {
 
         return result;
     }
+
+    private File get_target_file (GLib.File src, GLib.File dest_dir,
+                                 string? dest_fs_type,
+                                 bool same_fs) {
+
+        File target_file;
+        string copyname = src.get_basename ();
+        if (same_fs) {
+            target_file = dest_dir.get_child (copyname);
+        } else {
+            try {
+                FileInfo info = src.query_info (FileAttribute.STANDARD_COPY_NAME,
+                                                FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                if (info != null && info.has_attribute (FileAttribute.STANDARD_COPY_NAME)) {
+                    copyname = info.get_attribute_string (FileAttribute.STANDARD_COPY_NAME);
+                }
+            } catch (Error e) {}
+
+            make_file_name_valid_for_dest_fs (ref copyname, dest_fs_type);
+
+            try {
+                target_file = dest_dir.get_child_for_display_name (copyname);
+            } catch (Error e) {
+                target_file = dest_dir.get_child (copyname);
+            }
+        }
+
+        return target_file;
+    }
+
+    /* @base_path - path excluding any extension;
+     * @tag - characteristic string preceding the duplicate count (not including digits)
+     */
+    private int parse_duplicate_count (ref string base_path) {
+        var tag = _(DUPLICATE_START);
+        if (!base_path.contains (tag)) {
+            return 0;
+        }
+
+        int index_of_opening = base_path.last_index_of (tag);
+        string name_base = base_path.slice (index_of_opening, base_path.length);
+        base_path = base_path.slice (0, index_of_opening);
+
+        /* Duplicate count must be the last number in the name (excluding suffix)
+         * If there are no digits this is regarded as count = 1. */
+
+        //Its easier to use reverse string
+        var reverse_base = name_base.reverse ();
+        unichar chr = reverse_base.get_char ();
+        int index = 0;
+        int count = 0;
+        while (reverse_base.get_next_char (ref index, out chr) && !chr.isdigit ()) {}
+        count += chr.digit_value ();
+        int multiplier = 1;
+        while (reverse_base.get_next_char (ref index, out chr) && chr.isdigit ()) {
+            count += chr.digit_value () * multiplier;
+            //Number is reversed so each subsequent digit represents another factor of ten
+            multiplier *= 10;
+        }
+
+        if (count == 0) {
+            count = 1;
+        }
+
+        return count;
+    }
+
+    ///TRANSLATORS Just translate the word "copy" and leave the placeholders (%s) in their current positions
+    public const string COPY_FORMAT_SINGLE = N_("%s%scopy%s%s");
+
+    ///TRANSLATORS Just translate the word "copy " and leave the placeholders (%s, %i) in their current positions
+    public const string COPY_FORMAT_MULTIPLE = N_("%s%scopy %i%s%s");
+
+    ///TRANSLATORS Just translate the word "link" (meaning a symbolic link to a file) and leave the placeholders (%s) in their current positions
+    public const string LINK_FORMAT_SINGLE = N_("%s%slink%s%s");
+
+    ///TRANSLATORS Just translate the word "link " (meaning a symbolic link to a file) and leave the placeholders (%s, %i) in their current positions
+    public const string LINK_FORMAT_MULTPLE = N_("%s%slink %i%s%s");
+
+    ///TRANSLATORS Used to separate the basename of a file from the "copy"/"link" duplicate indications.
+    public const string DUPLICATE_START = N_(" (");
+
+    ///TRANSLATORS Used to separate the "copy"/"link" duplicate indication from the extension or end of a filename.
+    public const string DUPLICATE_END = N_(")");
+
+    public File make_next_link_copy_target_file (GLib.File src, GLib.File dest_dir, string? dest_fs_type,
+                                                 bool link,
+                                                 bool same_fs = true,
+                                                 bool overwrite = false) {
+
+        File target_file = get_target_file (src, dest_dir, dest_fs_type, same_fs);
+
+        if (overwrite || !target_file.query_exists ()) {
+            return target_file;
+        }
+
+        var old_path = target_file.get_path ();
+        int extension_index = old_path.last_index_of (".");
+        string base_path = old_path;
+        string extension = "";
+        if (extension_index > 0 && extension_index < old_path.length - 1) {
+            base_path = old_path.slice (0, extension_index);
+            extension = old_path.slice (extension_index, old_path.length);
+        }
+
+        string format;
+        int count = parse_duplicate_count (ref base_path) + 1;
+        if (count <= 1) { //Not duplicating a duplicate
+            format = link ? _(LINK_FORMAT_SINGLE) : _(COPY_FORMAT_SINGLE);
+            target_file = File.new_for_path (format.printf (base_path, _(DUPLICATE_START), _(DUPLICATE_END), extension));
+        } else {
+            format = link ? _(LINK_FORMAT_MULTPLE) : _(COPY_FORMAT_MULTIPLE);
+            target_file = File.new_for_path (format.printf (base_path, _(DUPLICATE_START), count, _(DUPLICATE_END), extension));
+        }
+
+        format = link ? _(LINK_FORMAT_MULTPLE) : _(COPY_FORMAT_MULTIPLE);
+        while (target_file.query_exists ()) {
+            count++;
+            target_file = File.new_for_path (format.printf (base_path, _(DUPLICATE_START), count, _(DUPLICATE_END), extension));
+        }
+
+        return target_file;
+    }
 }
 
 namespace Marlin {
