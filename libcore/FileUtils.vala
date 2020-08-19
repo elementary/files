@@ -834,30 +834,25 @@ namespace PF.FileUtils {
         }
     }
 
+    /* Returns true if a valid filename could be constructed (or already valid) */
     public bool make_file_name_valid_for_dest_fs (ref string filename, string? dest_fs_type) {
-        bool result = false;
+        if (dest_fs_type != null) {
+            switch (dest_fs_type) {
+                case "fat":
+                case "vfat":
+                case "msdos":
+                case "msdosfs":
+                    const string CHARS_TO_REPLACE = "/:;*?\\<> ";
+                    char replacement = '_';
+                    filename = filename.delimit (CHARS_TO_REPLACE, replacement);
+                    break;
 
-        if (dest_fs_type == null) {
-            return false;
+                default:
+                    break;
+            }
         }
 
-        switch (dest_fs_type) {
-            case "fat":
-            case "vfat":
-            case "msdos":
-            case "msdosfs":
-                const string CHARS_TO_REPLACE = "/:;*?\\<> ";
-                char replacement = '_';
-                string original = filename;
-                filename = filename.delimit (CHARS_TO_REPLACE, replacement);
-                result = original != filename;
-                break;
-
-            default:
-                break;
-        }
-
-        return result;
+        return filename.validate ();
     }
 
     public string format_time (int seconds, out int time_unit) {
@@ -892,12 +887,11 @@ namespace PF.FileUtils {
         return result;
     }
 
+    /* Returns a valid file for the destination named after src if possible (not guaranteed to be unique) */
     private File get_target_file (GLib.File src, GLib.File dest_dir, string? dest_fs_type, bool same_fs) {
         File target_file;
-        string copyname = src.get_basename ();
-        if (same_fs) {
-            target_file = dest_dir.get_child (copyname);
-        } else {
+        string? target_name = null;
+        if (!same_fs) {
             try {
                 FileInfo info = src.query_info (
                     FileAttribute.STANDARD_COPY_NAME,
@@ -905,21 +899,40 @@ namespace PF.FileUtils {
                     null
                 );
                 if (info != null && info.has_attribute (FileAttribute.STANDARD_COPY_NAME)) {
-                    copyname = info.get_attribute_string (FileAttribute.STANDARD_COPY_NAME);
+                    target_name = info.get_attribute_string (FileAttribute.STANDARD_COPY_NAME);
                 }
             } catch (Error e) {}
-
-            make_file_name_valid_for_dest_fs (ref copyname, dest_fs_type);
-
+        } else {
             try {
-                target_file = dest_dir.get_child_for_display_name (copyname);
-            } catch (Error e) {
-                target_file = dest_dir.get_child (copyname);
-            }
+                FileInfo info = src.query_info (
+                    FileAttribute.STANDARD_EDIT_NAME,
+                    FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                    null
+                );
+                if (info != null && info.has_attribute (FileAttribute.STANDARD_EDIT_NAME)) {
+                    target_name = info.get_attribute_string (FileAttribute.STANDARD_EDIT_NAME);
+                }
+            } catch (Error e) {}
+        }
+
+        if (target_name == null) {
+            target_name = src.get_basename ();
+        }
+
+        if (!make_file_name_valid_for_dest_fs (ref target_name, dest_fs_type)) {
+            target_name = _("Invalid name - please rename");  //hould this be translatable - must be guaranteed valid?
+        }
+
+        try {
+            target_file = dest_dir.get_child_for_display_name (target_name);
+        } catch (Error e) {
+            target_file = dest_dir.get_child (target_name);
         }
 
         return target_file;
     }
+
+
 
     /* @base_path - path excluding any extension;
      * @tag - characteristic string preceding the duplicate count (not including digits)

@@ -2553,65 +2553,6 @@ get_unique_target_file (GFile *src,
 }
 
 static GFile *
-get_target_file_for_link (GFile *src,
-                          GFile *dest_dir,
-                          const char *dest_fs_type,
-                          int count)
-{
-    const char *editname;
-    char *basename, *new_name;
-    GFileInfo *info;
-    GFile *dest;
-    int max_length;
-
-    max_length = get_max_name_length (dest_dir);
-
-    dest = NULL;
-    info = g_file_query_info (src,
-                              G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
-                              0, NULL, NULL);
-    if (info != NULL) {
-        editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
-
-        if (editname != NULL) {
-            new_name = get_link_name (editname, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
-            g_free (new_name);
-        }
-
-        g_object_unref (info);
-    }
-
-    if (dest == NULL) {
-        basename = g_file_get_basename (src);
-        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
-
-        if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = get_link_name (basename, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
-            g_free (new_name);
-        }
-
-        if (dest == NULL) {
-            if (count == 1) {
-                new_name = g_strdup_printf ("%s.lnk", basename);
-            } else {
-                new_name = g_strdup_printf ("%s.lnk%d", basename, count);
-            }
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child (dest_dir, new_name);
-            g_free (new_name);
-        }
-
-        g_free (basename);
-    }
-
-    return dest;
-}
-
-static GFile *
 get_target_file (GFile *src,
                  GFile *dest_dir,
                  const char *dest_fs_type,
@@ -2735,6 +2676,24 @@ create_dest_dir (CommonJob *job,
     gboolean handled_invalid_filename;
 
     handled_invalid_filename = *dest_fs_type != NULL;
+    dest_dir = g_file_get_parent (*dest);
+    if (dest_dir != NULL) {
+        if (*dest_fs_type == NULL) {
+            *dest_fs_type = query_fs_type (dest_dir, job->cancellable);
+        }
+
+        new_dest = pf_file_utils_make_next_link_copy_target_file (*dest, dest_dir, *dest_fs_type, FALSE, same_fs, FALSE);
+        g_object_unref (dest_dir);
+
+        if (!g_file_equal (*dest, new_dest)) {
+            g_object_unref (*dest);
+            *dest = new_dest;
+            g_error_free (error);
+            return CREATE_DEST_DIR_RETRY;
+        } else {
+            g_object_unref (new_dest);
+        }
+    }
 
 retry:
     /* First create the directory, then copy stuff to it before
@@ -2750,29 +2709,6 @@ retry:
         if (IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
             return CREATE_DEST_DIR_FAILED;
-        } else if (IS_IO_ERROR (error, INVALID_FILENAME) &&
-                   !handled_invalid_filename) {
-            handled_invalid_filename = TRUE;
-
-            g_assert (*dest_fs_type == NULL);
-
-            dest_dir = g_file_get_parent (*dest);
-
-            if (dest_dir != NULL) {
-                *dest_fs_type = query_fs_type (dest_dir, job->cancellable);
-
-                new_dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
-                g_object_unref (dest_dir);
-
-                if (!g_file_equal (*dest, new_dest)) {
-                    g_object_unref (*dest);
-                    *dest = new_dest;
-                    g_error_free (error);
-                    return CREATE_DEST_DIR_RETRY;
-                } else {
-                    g_object_unref (new_dest);
-                }
-            }
         }
 
         primary = g_strdup (_("Error while copying."));
