@@ -976,7 +976,10 @@ namespace PF.FileUtils {
     ///TRANSLATORS Used to separate the "copy"/"link" duplicate indication from the extension or end of a filename.
     public const string DUPLICATE_END = N_(")");
 
-    public File make_next_link_copy_target_file (GLib.File src, GLib.File dest_dir, string? dest_fs_type,
+    /* Returns a suitably named file that does not already exist (unless @overwrite is TRUE) */
+    public File make_next_link_copy_target_file (GLib.File src,
+                                                 GLib.File dest_dir,
+                                                 string? dest_fs_type,
                                                  bool link,
                                                  bool same_fs = true,
                                                  bool overwrite = false) {
@@ -997,8 +1000,13 @@ namespace PF.FileUtils {
         }
 
         string format;
-        int count = parse_duplicate_count (ref base_path) + 1;
-        if (count <= 1) { //Not duplicating a duplicate
+        int count;
+        if (link) {//Linking to a link does not duplicate the link
+            count = 1;
+        } else {// Copying a copy does duplicate the file.
+            count = parse_duplicate_count (ref base_path) + 1; // Count is at least 1
+        }
+        if (count == 1) { //Not duplicating a duplicate
             format = link ? _(LINK_FORMAT_SINGLE) : _(COPY_FORMAT_SINGLE);
             target_file = File.new_for_path (
                 format.printf (base_path, _(DUPLICATE_START), _(DUPLICATE_END), extension)
@@ -1010,7 +1018,7 @@ namespace PF.FileUtils {
             );
         }
 
-        format = link ? _(LINK_FORMAT_MULTPLE) : _(COPY_FORMAT_MULTIPLE);
+        format = link ? _(LINK_FORMAT_MULTPLE) : _(COPY_FORMAT_MULTIPLE); //Subsequent duplicates must be multiple
         while (target_file.query_exists ()) {
             count++;
             target_file = File.new_for_path (

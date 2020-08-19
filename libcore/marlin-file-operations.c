@@ -4648,17 +4648,12 @@ link_file (CopyMoveJob *job,
 
     common = (CommonJob *)job;
 
-    count = 0;
+    handled_invalid_filename = *dest_fs_type != NULL; //Assume not same_fs if this is TRUE
 
-    src_dir = g_file_get_parent (src);
-    if (g_file_equal (src_dir, dest_dir)) {
-        count = 1;
-    }
-    g_object_unref (src_dir);
-
-    handled_invalid_filename = *dest_fs_type != NULL;
-
-    dest = get_target_file_for_link (src, dest_dir, *dest_fs_type, count);
+    //`same_fs` not passed a parameter to `link_file ()` so use `!handled_invalid_filename` as a proxy
+    dest = pf_file_utils_make_next_link_copy_target_file (
+        src, dest_dir, *dest_fs_type, !handled_invalid_filename, TRUE, FALSE
+    );
 
 retry:
     error = NULL;
@@ -4703,7 +4698,9 @@ retry:
         g_assert (*dest_fs_type == NULL);
         *dest_fs_type = query_fs_type (dest_dir, common->cancellable);
 
-        new_dest = get_target_file_for_link (src, dest_dir, *dest_fs_type, count);
+        new_dest = pf_file_utils_make_next_link_copy_target_file (
+            src, dest_dir, *dest_fs_type, !handled_invalid_filename, TRUE, FALSE
+        );
 
         if (!g_file_equal (dest, new_dest)) {
             g_object_unref (dest);
@@ -4714,16 +4711,7 @@ retry:
         } else {
             g_object_unref (new_dest);
         }
-    }
-    /* Conflict */
-    if (error != NULL && IS_IO_ERROR (error, EXISTS)) {
-        g_object_unref (dest);
-        dest = get_target_file_for_link (src, dest_dir, *dest_fs_type, count++);
-        g_error_free (error);
-        goto retry;
-    }
-
-    else if (error != NULL && IS_IO_ERROR (error, CANCELLED)) {
+    } else if (error != NULL && IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     }
 
