@@ -971,22 +971,23 @@ namespace PF.FileUtils {
         return count;
     }
 
-    ///TRANSLATORS Just translate the word "copy" and leave the placeholders (%s) in their current positions
+    /* We assume all these translations will be valid for filenames in all filesystems */
+    ///TRANSLATORS Translate the word "copy" (noun) and leave the placeholders (%s) in their current positions
     public const string COPY_FORMAT_SINGLE = N_("%s%scopy%s%s");
 
-    ///TRANSLATORS Just translate the word "copy " and leave the placeholders (%s, %i) in their current positions
+    ///TRANSLATORS Translate the word "copy " (noun) and the space. Leave the placeholders (%s, %i) in their current positions
     public const string COPY_FORMAT_MULTIPLE = N_("%s%scopy %i%s%s");
 
-    ///TRANSLATORS Just translate the word "link" (meaning a symbolic link to a file) and leave the placeholders (%s) in their current positions
+    ///TRANSLATORS Translate the word "link" (a symbolic link to a file) and leave the placeholders (%s) in their current positions
     public const string LINK_FORMAT_SINGLE = N_("%s%slink%s%s");
 
-    ///TRANSLATORS Just translate the word "link " (meaning a symbolic link to a file) and leave the placeholders (%s, %i) in their current positions
+    ///TRANSLATORS Translate the word "link " (a symbolic link to a file) and the space. Leave the placeholders (%s, %i) in their current positions
     public const string LINK_FORMAT_MULTPLE = N_("%s%slink %i%s%s");
 
-    ///TRANSLATORS Used to separate the basename of a file from the "copy"/"link" duplicate indications.
+    ///TRANSLATORS Separator between the basename of a file from the "copy"/"link" duplicate indications.
     public const string DUPLICATE_START = N_(" (");
 
-    ///TRANSLATORS Used to separate the "copy"/"link" duplicate indication from the extension or end of a filename.
+    ///TRANSLATORS Separator between the "copy"/"link" duplicate indication from the extension or end of a filename.
     public const string DUPLICATE_END = N_(")");
 
     /* Returns a suitably named file that does not already exist (unless @overwrite is TRUE) */
