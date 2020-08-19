@@ -69,7 +69,6 @@ typedef struct {
     gboolean is_move;
     GList *files;
     GFile *destination;
-    GHashTable *debuting_files;
     GTask *task;
 } CopyMoveJob;
 
@@ -2113,7 +2112,6 @@ static void copy_move_file (CopyMoveJob *job,
                             char **dest_fs_type,
                             SourceInfo *source_info,
                             TransferInfo *transfer_info,
-                            GHashTable *debuting_files,
                             gboolean overwrite,
                             gboolean *skipped_file,
                             gboolean readonly_source_fs,
@@ -2246,7 +2244,6 @@ copy_move_directory (CopyMoveJob *copy_job,
                      char **parent_dest_fs_type,
                      SourceInfo *source_info,
                      TransferInfo *transfer_info,
-                     GHashTable *debuting_files,
                      gboolean *skipped_file,
                      gboolean readonly_source_fs,
                      int max_name_length)
@@ -2282,11 +2279,6 @@ copy_move_directory (CopyMoveJob *copy_job,
         default:
             break;
         }
-
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (*dest), GINT_TO_POINTER (TRUE));
-        }
-
     }
 
     local_skipped_file = FALSE;
@@ -2318,7 +2310,7 @@ retry:
                 FALSE, // not unique names
                 parent_dest_fs_type, // Surely the fs_type of the parent is same as the destination?
                 source_info, transfer_info,
-                NULL, //debuting files
+                //NULL, //debuting files
                 FALSE, //overwrite
                 &local_skipped_file,
                 readonly_source_fs,
@@ -2379,10 +2371,6 @@ retry:
         /* Count the copied directory as a file */
         transfer_info->num_files ++;
         report_copy_progress (copy_job, source_info, transfer_info);
-
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (*dest), GINT_TO_POINTER (create_dest));
-        }
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
@@ -2864,7 +2852,6 @@ copy_move_file (CopyMoveJob *copy_job,
                 char **dest_fs_type,
                 SourceInfo *source_info,
                 TransferInfo *transfer_info,
-                GHashTable *debuting_files,
                 gboolean overwrite,
                 gboolean *skipped_file,
                 gboolean readonly_source_fs,
@@ -3011,10 +2998,6 @@ retry:
     if (res) {
         transfer_info->num_files ++;
         report_copy_progress (copy_job, source_info, transfer_info);
-
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
 
         if (copy_job->is_move) {
             marlin_file_changes_queue_file_moved (src, dest);
@@ -3221,7 +3204,7 @@ retry:
         if (!copy_move_directory (copy_job, src, &dest, same_fs,
                                   would_recurse, dest_fs_type,
                                   source_info, transfer_info,
-                                  debuting_files, skipped_file,
+                                  skipped_file,
                                   readonly_source_fs, max_name_length)) {
             /* destination changed, since it was an invalid file name */
             g_assert (*dest_fs_type != NULL);
@@ -3350,7 +3333,6 @@ copy_files (CopyMoveJob *job,
                             same_fs, unique_names,
                             &dest_fs_type,  //dest_fs_type always null?
                             source_info, transfer_info,
-                            job->debuting_files,
                             FALSE, &skipped_file,
                             readonly_source_fs,
                             max_name_length);
@@ -3376,7 +3358,6 @@ copy_job_done (gpointer user_data)
     g_list_free_full (job->files, g_object_unref);
     job->files = NULL;
     g_clear_object (&job->destination);
-    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
 
     finalize_common ((CommonJob *)job);
 
@@ -3462,7 +3443,6 @@ marlin_file_operations_copy (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Copying Files"));
 
@@ -3552,7 +3532,6 @@ move_file_prepare (CopyMoveJob *move_job,
                    GFile *dest_dir,
                    gboolean same_fs,
                    char **dest_fs_type,
-                   GHashTable *debuting_files,
                    GList **fallback_files,
                    int files_left,
                    int max_name_length)
@@ -3631,10 +3610,6 @@ retry:
                      NULL,
                      NULL,
                      &error)) {
-
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
 
         marlin_file_changes_queue_file_moved (src, dest);
 
@@ -3796,7 +3771,6 @@ move_files_prepare (CopyMoveJob *job,
 
         move_file_prepare (job, src, job->destination,
                            same_fs, dest_fs_type,
-                           job->debuting_files,
                            fallbacks,
                            left, max_name_length);
 
@@ -3848,7 +3822,6 @@ move_files (CopyMoveJob *job,
             job, src, job->destination,
             same_fs, FALSE, dest_fs_type,
             source_info, transfer_info,
-            job->debuting_files,
             fallback->overwrite, &skipped_file, FALSE,
             max_name_length
         );
@@ -3869,7 +3842,6 @@ move_job_done (gpointer user_data)
     g_list_free_full (job->files, g_object_unref);
     job->files = NULL;
     g_clear_object (&job->destination);
-    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
 
     finalize_common ((CommonJob *)job);
 
@@ -3985,7 +3957,6 @@ marlin_file_operations_move (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
     // Start UNDO-REDO
@@ -4066,7 +4037,6 @@ static void
 link_file (CopyMoveJob *job,
            GFile *src, GFile *dest_dir,
            char **dest_fs_type,
-           GHashTable *debuting_files,
            int files_left,
            int max_name_length)
 {
@@ -4116,10 +4086,7 @@ retry:
 
         g_free (path);
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
-       marlin_file_changes_queue_file_added (dest);
+        marlin_file_changes_queue_file_added (dest);
 
         g_object_unref (dest);
 
@@ -4192,7 +4159,6 @@ link_job_done (gpointer user_data)
     g_list_free_full (job->files, g_object_unref);
     job->files = NULL;
     g_clear_object (&job->destination);
-    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
 
     finalize_common ((CommonJob *)job);
 
@@ -4243,7 +4209,6 @@ link_job (GIOSchedulerJob *io_job,
         link_file (
             job,
             src, job->destination, &dest_fs_type,
-            job->debuting_files,
             left,
             max_name_length
         );
@@ -4278,7 +4243,6 @@ marlin_file_operations_link (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
     job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
@@ -4317,7 +4281,6 @@ marlin_file_operations_duplicate (GList               *files,
     job->task = g_task_new (NULL, cancellable, callback, user_data);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = NULL;
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
     job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
