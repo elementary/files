@@ -892,18 +892,18 @@ namespace PF.FileUtils {
         return result;
     }
 
-    private File get_target_file (GLib.File src, GLib.File dest_dir,
-                                 string? dest_fs_type,
-                                 bool same_fs) {
-
+    private File get_target_file (GLib.File src, GLib.File dest_dir, string? dest_fs_type, bool same_fs) {
         File target_file;
         string copyname = src.get_basename ();
         if (same_fs) {
             target_file = dest_dir.get_child (copyname);
         } else {
             try {
-                FileInfo info = src.query_info (FileAttribute.STANDARD_COPY_NAME,
-                                                FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                FileInfo info = src.query_info (
+                    FileAttribute.STANDARD_COPY_NAME,
+                    FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                    null
+                );
                 if (info != null && info.has_attribute (FileAttribute.STANDARD_COPY_NAME)) {
                     copyname = info.get_attribute_string (FileAttribute.STANDARD_COPY_NAME);
                 }
@@ -1000,16 +1000,22 @@ namespace PF.FileUtils {
         int count = parse_duplicate_count (ref base_path) + 1;
         if (count <= 1) { //Not duplicating a duplicate
             format = link ? _(LINK_FORMAT_SINGLE) : _(COPY_FORMAT_SINGLE);
-            target_file = File.new_for_path (format.printf (base_path, _(DUPLICATE_START), _(DUPLICATE_END), extension));
+            target_file = File.new_for_path (
+                format.printf (base_path, _(DUPLICATE_START), _(DUPLICATE_END), extension)
+            );
         } else {
             format = link ? _(LINK_FORMAT_MULTPLE) : _(COPY_FORMAT_MULTIPLE);
-            target_file = File.new_for_path (format.printf (base_path, _(DUPLICATE_START), count, _(DUPLICATE_END), extension));
+            target_file = File.new_for_path (
+                format.printf (base_path, _(DUPLICATE_START), count, _(DUPLICATE_END), extension)
+            );
         }
 
         format = link ? _(LINK_FORMAT_MULTPLE) : _(COPY_FORMAT_MULTIPLE);
         while (target_file.query_exists ()) {
             count++;
-            target_file = File.new_for_path (format.printf (base_path, _(DUPLICATE_START), count, _(DUPLICATE_END), extension));
+            target_file = File.new_for_path (
+                format.printf (base_path, _(DUPLICATE_START), count, _(DUPLICATE_END), extension)
+            );
         }
 
         return target_file;
