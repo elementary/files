@@ -2489,115 +2489,6 @@ get_max_name_length (GFile *file_dir)
     return max_length;
 }
 
-static GFile *
-get_unique_target_file (GFile *src,
-                        GFile *dest_dir,
-                        gboolean same_fs,
-                        const char *dest_fs_type,
-                        int count)
-{
-    const char *editname, *end;
-    char *basename, *new_name;
-    GFileInfo *info;
-    GFile *dest = NULL;
-    int max_length;
-
-    if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
-        g_critical ("get_unique_target_file:  %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  !G_IS_FILE (dest_dir) ? "dest" : "");
-        return NULL;
-    }
-
-    max_length = get_max_name_length (dest_dir);
-
-    info = g_file_query_info (src,
-                              G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
-                              0, NULL, NULL);
-    if (info != NULL) {
-        editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
-
-        if (editname != NULL) {
-            new_name = get_duplicate_name (editname, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
-            g_free (new_name);
-        }
-
-        g_object_unref (info);
-    }
-
-    if (dest == NULL) {
-        basename = g_file_get_basename (src);
-
-        if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = get_duplicate_name (basename, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
-            g_free (new_name);
-        }
-
-        if (dest == NULL) {
-            end = strrchr (basename, '.');
-            if (end != NULL) {
-                count += atoi (end + 1);
-            }
-            new_name = g_strdup_printf ("%s.%d", basename, count);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child (dest_dir, new_name);
-            g_free (new_name);
-        }
-
-        g_free (basename);
-    }
-
-    return dest;
-}
-
-static GFile *
-get_target_file (GFile *src,
-                 GFile *dest_dir,
-                 const char *dest_fs_type,
-                 gboolean same_fs)
-{
-    char *basename;
-    GFile *dest;
-    GFileInfo *info;
-    char *copyname;
-
-    dest = NULL;
-
-    if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
-        g_critical ("get_target_file: %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  G_IS_FILE (src) ? "dest" : "");
-        return NULL;
-    }
-
-    if (!same_fs) {
-        info = g_file_query_info (src,
-                                  G_FILE_ATTRIBUTE_STANDARD_COPY_NAME,
-                                  0, NULL, NULL);
-
-        if (info) {
-            copyname = g_strdup (g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_COPY_NAME));
-
-            if (copyname) {
-                pf_file_utils_make_file_name_valid_for_dest_fs (&copyname, dest_fs_type);
-                dest = g_file_get_child_for_display_name (dest_dir, copyname, NULL);
-                g_free (copyname);
-            }
-
-            g_object_unref (info);
-        }
-    }
-
-    if (dest == NULL) {
-        basename = g_file_get_basename (src);
-        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
-        dest = g_file_get_child (dest_dir, basename);
-        g_free (basename);
-    }
-
-    return dest;
-}
-
 static gboolean
 has_fs_id (GFile *file, const char *fs_id)
 {
@@ -4079,8 +3970,7 @@ move_file_prepare (CopyMoveJob *move_job,
 
     job = (CommonJob *)move_job;
 
-    dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
-
+    dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, overwrite);
 
     /* Don't allow recursive move/copy into itself.
      * (We would get a file system error if we proceeded but it is nicer to
@@ -4151,13 +4041,13 @@ retry:
     }
 
     if (IS_IO_ERROR (error, INVALID_FILENAME) &&
-        !handled_invalid_filename) {
+        !handled_invalid_filename) { // Should not happen - target file name should be guaranteed valid
         handled_invalid_filename = TRUE;
 
         g_assert (*dest_fs_type == NULL);
         *dest_fs_type = query_fs_type (dest_dir, job->cancellable);
 
-        new_dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
+        dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, overwrite);
         if (!g_file_equal (dest, new_dest)) {
             g_object_unref (dest);
             dest = new_dest;
