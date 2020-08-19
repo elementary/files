@@ -1042,6 +1042,28 @@ namespace PF.FileUtils {
 
         return target_file;
     }
+
+    public int get_max_name_length (GLib.File file_dir) {
+        //FIXME Do not need to keep calling this for the same filesystem
+
+        if (!file_dir.has_uri_scheme ("file")) {
+            return -1;
+        }
+
+        var dir = file_dir.get_path ();
+        var max_path = Posix.pathconf (dir, Posix.PathConfName.PATH_MAX);
+        var max_name = Posix.pathconf (dir, Posix.PathConfName.NAME_MAX);
+
+        if (max_name == -1 && max_path == -1) {
+            return -1;
+        } else if (max_name == -1 && max_path != -1) {
+            return (int) (max_path - (dir.length + 1));
+        } else if (max_name != -1 && max_path == -1) {
+            return (int) max_name;
+        } else {
+            return (int) long.min (max_path - (dir.length + 1), max_name);
+        }
+    }
 }
 
 namespace Marlin {
