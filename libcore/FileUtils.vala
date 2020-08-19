@@ -932,10 +932,8 @@ namespace PF.FileUtils {
         return target_file;
     }
 
-
-
     /* @base_path - path excluding any extension;
-     * @tag - characteristic string preceding the duplicate count (not including digits)
+     * If the given path is a duplicate copy or link, returns the number part.
      */
     private int parse_duplicate_count (ref string base_path) {
         var tag = _(DUPLICATE_START);
@@ -996,7 +994,8 @@ namespace PF.FileUtils {
                                                  string? dest_fs_type,
                                                  bool link,
                                                  bool same_fs = true,
-                                                 bool overwrite = false) {
+                                                 bool overwrite = false,
+                                                 int max_name_length = -1) {
 
         File target_file = get_target_file (src, dest_dir, dest_fs_type, same_fs);
 
@@ -1020,6 +1019,7 @@ namespace PF.FileUtils {
         } else {// Copying a copy does duplicate the file.
             count = parse_duplicate_count (ref base_path) + 1; // Count is at least 1
         }
+
         if (count == 1) { //Not duplicating a duplicate
             format = link ? _(LINK_FORMAT_SINGLE) : _(COPY_FORMAT_SINGLE);
             target_file = File.new_for_path (
@@ -1040,11 +1040,23 @@ namespace PF.FileUtils {
             );
         }
 
+        /* How worthwhile is this? */
+        if (max_name_length > 0 && target_file.get_basename ().length > max_name_length) {
+            target_file = File.new_for_path (
+                shorten_utf8_string (
+                    target_file.get_path (),
+                    target_file.get_basename ().length - max_name_length
+                )
+            );
+        }
+
         return target_file;
     }
 
-    public int get_max_name_length (GLib.File file_dir) {
-        //FIXME Do not need to keep calling this for the same filesystem
+    public int get_max_name_length (GLib.File? file_dir) {
+        if (file_dir == null) {
+            return -1;
+        }
 
         if (!file_dir.has_uri_scheme ("file")) {
             return -1;
@@ -1062,6 +1074,23 @@ namespace PF.FileUtils {
             return (int) max_name;
         } else {
             return (int) long.min (max_path - (dir.length + 1), max_name);
+        }
+    }
+
+    public string shorten_utf8_string (string base_string, int reduce_by_num_bytes) {
+        var target_length = base_string.length - reduce_by_num_bytes;
+        if (target_length <= 0) {
+            return "";
+        }
+
+        var sb = new StringBuilder.sized (target_length);
+        sb.insert_len (0, base_string, target_length);
+
+        var valid_string = sb.str.make_valid ();
+        if (valid_string.length <= target_length) {
+            return valid_string;
+        } else {
+            return shorten_utf8_string (base_string, reduce_by_num_bytes + 1);
         }
     }
 }

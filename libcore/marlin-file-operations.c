@@ -2116,7 +2116,8 @@ static void copy_move_file (CopyMoveJob *job,
                             GHashTable *debuting_files,
                             gboolean overwrite,
                             gboolean *skipped_file,
-                            gboolean readonly_source_fs);
+                            gboolean readonly_source_fs,
+                            int max_name_length);
 
 typedef enum {
     CREATE_DEST_DIR_RETRY,
@@ -2136,15 +2137,23 @@ create_dest_dir (CommonJob *job,
     char *primary, *secondary, *details;
     int response;
     gboolean handled_invalid_filename;
+    int max_name_length;
 
+    max_name_length = -1;
     handled_invalid_filename = *dest_fs_type != NULL;
     dest_dir = g_file_get_parent (*dest);
     if (dest_dir != NULL) {
-        if (*dest_fs_type == NULL) {
-            *dest_fs_type = query_fs_type (dest_dir, job->cancellable);
-        }
+        max_name_length = pf_file_utils_get_max_name_length (dest_dir);
 
-        new_dest = pf_file_utils_make_next_link_copy_target_file (*dest, dest_dir, *dest_fs_type, FALSE, same_fs, FALSE);
+        new_dest = pf_file_utils_make_next_link_copy_target_file (
+            *dest,
+            dest_dir,
+            *dest_fs_type,
+            FALSE,
+            same_fs,
+            FALSE,
+            max_name_length
+        );
         g_object_unref (dest_dir);
 
         if (!g_file_equal (*dest, new_dest)) {
@@ -2239,14 +2248,15 @@ copy_move_directory (CopyMoveJob *copy_job,
                      TransferInfo *transfer_info,
                      GHashTable *debuting_files,
                      gboolean *skipped_file,
-                     gboolean readonly_source_fs)
+                     gboolean readonly_source_fs,
+                     int max_name_length)
 {
     GFileInfo *info;
     GError *error;
     GFile *src_file;
     GFileEnumerator *enumerator;
     char *primary, *secondary, *details;
-    char *dest_fs_type;
+    //char *dest_fs_type;
     int response;
     gboolean skip_error;
     gboolean local_skipped_file;
@@ -2280,7 +2290,7 @@ copy_move_directory (CopyMoveJob *copy_job,
     }
 
     local_skipped_file = FALSE;
-    dest_fs_type = NULL;
+    //dest_fs_type = NULL;  //Not needed?
 
     skip_error = should_skip_readdir_error (job, src);
 retry:
@@ -2295,11 +2305,26 @@ retry:
 
         while (!job_aborted (job) &&
                (info = g_file_enumerator_next_file (enumerator, job->cancellable, skip_error?NULL:&error)) != NULL) {
-            src_file = g_file_get_child (src,
-                                         g_file_info_get_name (info));
-            copy_move_file (copy_job, src_file, *dest, same_fs, FALSE, &dest_fs_type,
-                            source_info, transfer_info, NULL, FALSE, &local_skipped_file,
-                            readonly_source_fs);
+
+            src_file = g_file_get_child (
+                src,
+                g_file_info_get_name (info)
+            );
+
+            copy_move_file (
+                copy_job,
+                src_file, *dest,
+                same_fs,
+                FALSE, // not unique names
+                parent_dest_fs_type, // Surely the fs_type of the parent is same as the destination?
+                source_info, transfer_info,
+                NULL, //debuting files
+                FALSE, //overwrite
+                &local_skipped_file,
+                readonly_source_fs,
+                max_name_length
+            );
+
             g_object_unref (src_file);
             g_object_unref (info);
         }
@@ -2459,7 +2484,7 @@ skip:
         *skipped_file = TRUE;
     }
 
-    g_free (dest_fs_type);
+    //g_free (dest_fs_type);
     return TRUE;
 }
 
@@ -2842,7 +2867,8 @@ copy_move_file (CopyMoveJob *copy_job,
                 GHashTable *debuting_files,
                 gboolean overwrite,
                 gboolean *skipped_file,
-                gboolean readonly_source_fs)
+                gboolean readonly_source_fs,
+                int max_name_length)
 {
     GFile *dest, *new_dest;
     GError *error;
@@ -2862,13 +2888,16 @@ copy_move_file (CopyMoveJob *copy_job,
         return;
     }
 
-    ///* another file in the same directory might have handled the invalid
-     //* filename condition for us
-     //*/
-    //handled_invalid_filename = *dest_fs_type != NULL;
-
     /* We allow filename conflict here as it is handled later on */
-    dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, TRUE);
+    dest = pf_file_utils_make_next_link_copy_target_file (
+        src,
+        dest_dir,
+        *dest_fs_type,
+        FALSE,
+        same_fs,
+        TRUE,
+        max_name_length
+    );
 
     if (dest == NULL) {
         *skipped_file = TRUE; /* Or aborted, but same-same */
@@ -3014,7 +3043,15 @@ retry:
 
         if (unique_names) {
             g_object_unref (dest);
-            dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, FALSE);
+            dest = pf_file_utils_make_next_link_copy_target_file (
+                src,
+                dest_dir,
+                *dest_fs_type,
+                FALSE, //not linking
+                same_fs,
+                FALSE, //do not overwrite (create duplicate name if required)
+                max_name_length
+            );
 
             goto retry;
         }
@@ -3185,7 +3222,7 @@ retry:
                                   would_recurse, dest_fs_type,
                                   source_info, transfer_info,
                                   debuting_files, skipped_file,
-                                  readonly_source_fs)) {
+                                  readonly_source_fs, max_name_length)) {
             /* destination changed, since it was an invalid file name */
             g_assert (*dest_fs_type != NULL);
             handled_invalid_filename = TRUE;
@@ -3258,9 +3295,11 @@ copy_files (CopyMoveJob *job,
     char *dest_fs_type;
     GFileInfo *inf;
     gboolean readonly_source_fs;
+    int max_name_length;
 
     dest_fs_type = NULL;
     readonly_source_fs = FALSE;
+    max_name_length = -1;
 
     common = &job->common;
     report_copy_progress (job, source_info, transfer_info);
@@ -3273,8 +3312,19 @@ copy_files (CopyMoveJob *job,
             readonly_source_fs = g_file_info_get_attribute_boolean (inf, G_FILE_ATTRIBUTE_FILESYSTEM_READONLY);
             g_object_unref (inf);
         }
+
+        if (job->destination) {
+            max_name_length = pf_file_utils_get_max_name_length (job->destination);
+            dest_fs_type = query_fs_type (job->destination, NULL);
+        } else {
+            max_name_length = pf_file_utils_get_max_name_length (source_dir);
+            dest_fs_type = query_fs_type (source_dir, NULL);
+        }
+
         g_object_unref (source_dir);
     }
+
+
 
     unique_names = (job->destination == NULL); /* Duplicating files */
     i = 0;
@@ -3285,14 +3335,13 @@ copy_files (CopyMoveJob *job,
 
         same_fs = FALSE;
         if (dest_fs_id) {
-            same_fs = has_fs_id (src, dest_fs_id);
+            same_fs = has_fs_id (src, dest_fs_id); /* Do we need to do this for each file? */
         }
 
         if (job->destination) {
             dest = g_object_ref (job->destination);
         } else {
             dest = g_file_get_parent (src);
-
         }
 
         if (dest) {
@@ -3303,9 +3352,12 @@ copy_files (CopyMoveJob *job,
                             source_info, transfer_info,
                             job->debuting_files,
                             FALSE, &skipped_file,
-                            readonly_source_fs);
+                            readonly_source_fs,
+                            max_name_length);
+
             g_object_unref (dest);
         }
+
         i++;
     }
 
@@ -3502,7 +3554,8 @@ move_file_prepare (CopyMoveJob *move_job,
                    char **dest_fs_type,
                    GHashTable *debuting_files,
                    GList **fallback_files,
-                   int files_left)
+                   int files_left,
+                   int max_name_length)
 {
     GFile *dest, *new_dest;
     GError *error;
@@ -3520,7 +3573,15 @@ move_file_prepare (CopyMoveJob *move_job,
 
     job = (CommonJob *)move_job;
 
-    dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, overwrite);
+    dest = pf_file_utils_make_next_link_copy_target_file (
+        src,
+        dest_dir,
+        *dest_fs_type,
+        FALSE, //not linking
+        same_fs,
+        overwrite,
+        max_name_length
+    );
 
     /* Don't allow recursive move/copy into itself.
      * (We would get a file system error if we proceeded but it is nicer to
@@ -3708,7 +3769,8 @@ static void
 move_files_prepare (CopyMoveJob *job,
                     const char *dest_fs_id,
                     char **dest_fs_type,
-                    GList **fallbacks)
+                    GList **fallbacks,
+                    int max_name_length)
 {
     CommonJob *common;
     GList *l;
@@ -3718,9 +3780,7 @@ move_files_prepare (CopyMoveJob *job,
     int total, left;
 
     common = &job->common;
-
     total = left = g_list_length (job->files);
-
     report_move_progress (job, total, left);
 
     i = 0;
@@ -3738,7 +3798,8 @@ move_files_prepare (CopyMoveJob *job,
                            same_fs, dest_fs_type,
                            job->debuting_files,
                            fallbacks,
-                           left);
+                           left, max_name_length);
+
         report_move_progress (job, total, --left);
         i++;
     }
@@ -3754,7 +3815,8 @@ move_files (CopyMoveJob *job,
             const char *dest_fs_id,
             char **dest_fs_type,
             SourceInfo *source_info,
-            TransferInfo *transfer_info)
+            TransferInfo *transfer_info,
+            int max_name_length)
 {
     CommonJob *common;
     GList *l;
@@ -3782,11 +3844,15 @@ move_files (CopyMoveJob *job,
         /* Set overwrite to true, as the user has
            selected overwrite on all toplevel items */
         skipped_file = FALSE;
-        copy_move_file (job, src, job->destination,
-                        same_fs, FALSE, dest_fs_type,
-                        source_info, transfer_info,
-                        job->debuting_files,
-                        fallback->overwrite, &skipped_file, FALSE);
+        copy_move_file (
+            job, src, job->destination,
+            same_fs, FALSE, dest_fs_type,
+            source_info, transfer_info,
+            job->debuting_files,
+            fallback->overwrite, &skipped_file, FALSE,
+            max_name_length
+        );
+
         i++;
     }
 }
@@ -3824,6 +3890,7 @@ move_job (GIOSchedulerJob *io_job,
     char *dest_fs_id;
     char *dest_fs_type;
     GList *fallback_files;
+    int max_name_length;
 
     job = user_data;
     common = &job->common;
@@ -3839,12 +3906,20 @@ move_job (GIOSchedulerJob *io_job,
                         job->destination,
                         &dest_fs_id,
                         -1);
+
     if (job_aborted (common)) {
         goto aborted;
     }
 
+    max_name_length = pf_file_utils_get_max_name_length (job->destination);
     /* This moves all files that we can do without copy + delete */
-    move_files_prepare (job, dest_fs_id, &dest_fs_type, &fallbacks);
+    move_files_prepare (
+        job,
+        dest_fs_id, &dest_fs_type,
+        &fallbacks,
+        max_name_length
+    );
+
     if (job_aborted (common)) {
         goto aborted;
     }
@@ -3873,10 +3948,13 @@ move_job (GIOSchedulerJob *io_job,
     }
 
     memset (&transfer_info, 0, sizeof (transfer_info));
-    move_files (job,
-                fallbacks,
-                dest_fs_id, &dest_fs_type,
-                &source_info, &transfer_info);
+    move_files (
+        job,
+        fallbacks,
+        dest_fs_id, &dest_fs_type,
+        &source_info, &transfer_info,
+        max_name_length
+    );
 
 aborted:
     g_list_free_full (fallbacks, g_free);
@@ -3989,7 +4067,8 @@ link_file (CopyMoveJob *job,
            GFile *src, GFile *dest_dir,
            char **dest_fs_type,
            GHashTable *debuting_files,
-           int files_left)
+           int files_left,
+           int max_name_length)
 {
     GFile *src_dir, *dest, *new_dest;
     int count;
@@ -3999,15 +4078,18 @@ link_file (CopyMoveJob *job,
     CommonJob *common;
     char *primary, *secondary, *details;
     int response;
-    //gboolean handled_invalid_filename;
 
     common = (CommonJob *)job;
 
-    //handled_invalid_filename = *dest_fs_type != NULL; //Assume not same_fs if this is TRUE
-
     //`same_fs` not passed as a parameter to `link_file ()` so use FALSE for safety
     dest = pf_file_utils_make_next_link_copy_target_file (
-        src, dest_dir, *dest_fs_type, FALSE, TRUE, FALSE
+        src,
+        dest_dir,
+        *dest_fs_type,
+        FALSE, //not linking
+        TRUE, //same fs
+        FALSE, //do not overwrite (create duplicate name)
+        max_name_length
     );
 
 retry:
@@ -4130,6 +4212,7 @@ link_job (GIOSchedulerJob *io_job,
     int total, left;
     int i;
     GList *l;
+    int max_name_length;
 
     job = user_data;
     common = &job->common;
@@ -4147,7 +4230,7 @@ link_job (GIOSchedulerJob *io_job,
     }
 
     total = left = g_list_length (job->files);
-
+    max_name_length = pf_file_utils_get_max_name_length (job->destination);
     report_link_progress (job, total, left);
 
     i = 0;
@@ -4157,9 +4240,14 @@ link_job (GIOSchedulerJob *io_job,
         src = l->data;
 
 
-        link_file (job, src, job->destination,
-                   &dest_fs_type, job->debuting_files,
-                   left);
+        link_file (
+            job,
+            src, job->destination, &dest_fs_type,
+            job->debuting_files,
+            left,
+            max_name_length
+        );
+
         report_link_progress (job, total, --left);
         i++;
 
@@ -4671,7 +4759,7 @@ create_job (GIOSchedulerJob *io_job,
     char *data;
     int length;
     GFileOutputStream *out;
-    int max_length;
+    int max_name_length;
 
     job = user_data;
     common = &job->common;
@@ -4683,8 +4771,6 @@ create_job (GIOSchedulerJob *io_job,
     filename = NULL;
     dest = NULL;
 
-    max_length = pf_file_utils_get_max_name_length (job->dest_dir);
-
     verify_destination (common,
                         job->dest_dir,
                         NULL, -1);
@@ -4692,6 +4778,8 @@ create_job (GIOSchedulerJob *io_job,
     if (job_aborted (common)) {
         goto aborted;
     }
+
+    max_name_length = pf_file_utils_get_max_name_length (job->dest_dir);
 
     filename = g_strdup (job->filename);
     if (filename == NULL) {
@@ -4710,7 +4798,15 @@ create_job (GIOSchedulerJob *io_job,
     }
 
     GFile *src = job->src ? job->src : g_file_new_for_path (filename);
-    dest = pf_file_utils_make_next_link_copy_target_file (src, job->dest_dir, dest_fs_type, FALSE, TRUE, FALSE);
+    dest = pf_file_utils_make_next_link_copy_target_file (
+        src,
+        job->dest_dir,
+        dest_fs_type,
+        FALSE, //not linking
+        TRUE, //same fs
+        FALSE, //do not overwrite (create duplicate name if required)
+        max_name_length
+    );
 
     error = NULL;
     if (job->make_dir) {

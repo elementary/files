@@ -108,26 +108,30 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/make_filename_valid_null", () => {
         string filename = "Valid:;*?\\<> name";
+        string original = filename.dup ();
         string? dest_fs = null;
-        bool changed = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
-        assert (changed == false);
-        assert (filename == "Valid:;*?\\<> name");
+        bool valid = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
+        assert (valid == true);
+        assert (filename == original);
     });
 
     /* Make filename valid for destination fs */
     Test.add_func ("/FileUtils/make_filename_valid_ext", () => {
         string filename = "Valid:;*?\\<> name";
+        string original = filename.dup ();
         string dest_fs = "ext3/ext4";
-        bool changed = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
-        assert (changed == false);
-        assert (filename == "Valid:;*?\\<> name");
+        bool valid = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
+        assert (valid == true);
+        assert (filename == original);
     });
 
     Test.add_func ("/FileUtils/make_filename_valid_msdos", () => {
         string filename = "Invalid:;*?\\<> name"; // 8 invalid characters
+        string original = filename.dup ();
         string dest_fs = "msdos";
-        bool changed = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
-        assert (changed == true);
+        bool valid = PF.FileUtils.make_file_name_valid_for_dest_fs (ref filename, dest_fs);
+        assert (valid == true);
+        assert (filename != original);
         assert (filename == "Invalid________name");
     });
 
