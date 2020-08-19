@@ -168,178 +168,6 @@ shorten_utf8_string (const char *base, int reduce_by_num_bytes)
     }
 }
 
-///* Note that we have these two separate functions with separate format
- //* strings for ease of localization.
- //*/
-
-//static char *
-//get_link_name (const char *name, int count, int max_length)
-//{
-    //const char *format;
-    //char *result;
-    //int unshortened_length;
-    //gboolean use_count;
-
-    //g_assert (name != NULL);
-
-    //if (count < 0) {
-        //g_warning ("bad count in get_link_name");
-        //count = 0;
-    //}
-
-    //if (count <= 2) {
-        ///* Handle special cases for low numbers.
-         //* Perhaps for some locales we will need to add more.
-         //*/
-        //switch (count) {
-        //default:
-            //g_assert_not_reached ();
-            ///* fall through */
-        //case 0:
-            ///* duplicate original file name */
-            //format = "%s";
-            //break;
-        //case 1:
-            ///* appended to new link file */
-            //format = _("Link to %s");
-            //break;
-        //case 2:
-            ///* appended to new link file */
-            //format = _("Another link to %s");
-            //break;
-        //}
-
-        //use_count = FALSE;
-    //} else {
-        ///* Handle special cases for the first few numbers of each ten.
-         //* For locales where getting this exactly right is difficult,
-         //* these can just be made all the same as the general case below.
-         //*/
-        //switch (count % 10) {
-        //case 1:
-            ///* Localizers: Feel free to leave out the "st" suffix
-             //* if there's no way to do that nicely for a
-             //* particular language.
-             //*/
-            //format = _("%'dst link to %s");
-            //break;
-        //case 2:
-            ///* appended to new link file */
-            //format = _("%'dnd link to %s");
-            //break;
-        //case 3:
-            ///* appended to new link file */
-            //format = _("%'drd link to %s");
-            //break;
-        //default:
-            ///* appended to new link file */
-            //format = _("%'dth link to %s");
-            //break;
-        //}
-
-        //use_count = TRUE;
-    //}
-
-    //if (use_count)
-        //result = g_strdup_printf (format, count, name);
-    //else
-        //result = g_strdup_printf (format, name);
-
-    //if (max_length > 0 && (unshortened_length = strlen (result)) > max_length) {
-        //char *new_name;
-
-        //new_name = shorten_utf8_string (name, unshortened_length - max_length);
-        //if (new_name) {
-            //g_free (result);
-
-            //if (use_count)
-                //result = g_strdup_printf (format, count, new_name);
-            //else
-                //result = g_strdup_printf (format, new_name);
-
-            //g_assert (strlen (result) <= max_length);
-            //g_free (new_name);
-        //}
-    //}
-
-    //return result;
-//}
-
-///* Localizers:
- //* Feel free to leave out the st, nd, rd and th suffix or
- //* make some or all of them match.
- //*/
-
-///* localizers: tag used to detect the first copy of a file */
-//static const char untranslated_copy_duplicate_tag[] = N_(" (copy)");
-///* localizers: tag used to detect the second copy of a file */
-//static const char untranslated_another_copy_duplicate_tag[] = N_(" (another copy)");
-
-///* localizers: tag used to detect the x11th copy of a file */
-//static const char untranslated_x11th_copy_duplicate_tag[] = N_("th copy)");
-///* localizers: tag used to detect the x12th copy of a file */
-//static const char untranslated_x12th_copy_duplicate_tag[] = N_("th copy)");
-///* localizers: tag used to detect the x13th copy of a file */
-//static const char untranslated_x13th_copy_duplicate_tag[] = N_("th copy)");
-
-///* localizers: tag used to detect the x1st copy of a file */
-//static const char untranslated_st_copy_duplicate_tag[] = N_("st copy)");
-///* localizers: tag used to detect the x2nd copy of a file */
-//static const char untranslated_nd_copy_duplicate_tag[] = N_("nd copy)");
-///* localizers: tag used to detect the x3rd copy of a file */
-//static const char untranslated_rd_copy_duplicate_tag[] = N_("rd copy)");
-
-///* localizers: tag used to detect the xxth copy of a file */
-//static const char untranslated_th_copy_duplicate_tag[] = N_("th copy)");
-
-//#define COPY_DUPLICATE_TAG _(untranslated_copy_duplicate_tag)
-//#define ANOTHER_COPY_DUPLICATE_TAG _(untranslated_another_copy_duplicate_tag)
-//#define X11TH_COPY_DUPLICATE_TAG _(untranslated_x11th_copy_duplicate_tag)
-//#define X12TH_COPY_DUPLICATE_TAG _(untranslated_x12th_copy_duplicate_tag)
-//#define X13TH_COPY_DUPLICATE_TAG _(untranslated_x13th_copy_duplicate_tag)
-
-//#define ST_COPY_DUPLICATE_TAG _(untranslated_st_copy_duplicate_tag)
-//#define ND_COPY_DUPLICATE_TAG _(untranslated_nd_copy_duplicate_tag)
-//#define RD_COPY_DUPLICATE_TAG _(untranslated_rd_copy_duplicate_tag)
-//#define TH_COPY_DUPLICATE_TAG _(untranslated_th_copy_duplicate_tag)
-
-///* localizers: appended to first file copy */
-//static const char untranslated_first_copy_duplicate_format[] = N_("%s (copy)%s");
-///* localizers: appended to second file copy */
-//static const char untranslated_second_copy_duplicate_format[] = N_("%s (another copy)%s");
-
-///* localizers: appended to x11th file copy */
-//static const char untranslated_x11th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-///* localizers: appended to x12th file copy */
-//static const char untranslated_x12th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-///* localizers: appended to x13th file copy */
-//static const char untranslated_x13th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-
-///* localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
- //* plurals, you can leave the st, nd, rd suffixes out and just make all the translated
- //* strings look like "%s (copy %'d)%s".
- //*/
-
-///* localizers: appended to x1st file copy */
-//static const char untranslated_st_copy_duplicate_format[] = N_("%s (%'dst copy)%s");
-///* localizers: appended to x2nd file copy */
-//static const char untranslated_nd_copy_duplicate_format[] = N_("%s (%'dnd copy)%s");
-///* localizers: appended to x3rd file copy */
-//static const char untranslated_rd_copy_duplicate_format[] = N_("%s (%'drd copy)%s");
-///* localizers: appended to xxth file copy */
-//static const char untranslated_th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-
-//#define FIRST_COPY_DUPLICATE_FORMAT _(untranslated_first_copy_duplicate_format)
-//#define SECOND_COPY_DUPLICATE_FORMAT _(untranslated_second_copy_duplicate_format)
-//#define X11TH_COPY_DUPLICATE_FORMAT _(untranslated_x11th_copy_duplicate_format)
-//#define X12TH_COPY_DUPLICATE_FORMAT _(untranslated_x12th_copy_duplicate_format)
-//#define X13TH_COPY_DUPLICATE_FORMAT _(untranslated_x13th_copy_duplicate_format)
-
-//#define ST_COPY_DUPLICATE_FORMAT _(untranslated_st_copy_duplicate_format)
-//#define ND_COPY_DUPLICATE_FORMAT _(untranslated_nd_copy_duplicate_format)
-//#define RD_COPY_DUPLICATE_FORMAT _(untranslated_rd_copy_duplicate_format)
-//#define TH_COPY_DUPLICATE_FORMAT _(untranslated_th_copy_duplicate_format)
-
 static char *
 extract_string_until (const char *original, const char *until_substring)
 {
@@ -354,224 +182,6 @@ extract_string_until (const char *original, const char *until_substring)
 
     return result;
 }
-
-///* Dismantle a file name, separating the base name, the file suffix and removing any
- //* (xxxcopy), etc. string. Figure out the count that corresponds to the given
- //* (xxxcopy) substring.
- //*/
-//static void
-//parse_previous_duplicate_name (const char *name,
-                               //char **name_base,
-                               //const char **suffix,
-                               //int *count)
-//{
-    //const char *tag;
-
-    //g_assert (name[0] != '\0');
-
-    //*suffix = strchr (name + 1, '.');
-    //if (*suffix == NULL || (*suffix)[1] == '\0') {
-        ///* no suffix */
-        //*suffix = "";
-    //}
-
-    //tag = strstr (name, COPY_DUPLICATE_TAG);
-    //if (tag != NULL) {
-        //if (tag > *suffix) {
-            ///* handle case "foo. (copy)" */
-            //*suffix = "";
-        //}
-        //*name_base = extract_string_until (name, tag);
-        //*count = 1;
-        //return;
-    //}
-
-
-    //tag = strstr (name, ANOTHER_COPY_DUPLICATE_TAG);
-    //if (tag != NULL) {
-        //if (tag > *suffix) {
-            ///* handle case "foo. (another copy)" */
-            //*suffix = "";
-        //}
-        //*name_base = extract_string_until (name, tag);
-        //*count = 2;
-        //return;
-    //}
-
-
-    ///* Check to see if we got one of st, nd, rd, th. */
-    //tag = strstr (name, X11TH_COPY_DUPLICATE_TAG);
-
-    //if (tag == NULL) {
-        //tag = strstr (name, X12TH_COPY_DUPLICATE_TAG);
-    //}
-    //if (tag == NULL) {
-        //tag = strstr (name, X13TH_COPY_DUPLICATE_TAG);
-    //}
-
-    //if (tag == NULL) {
-        //tag = strstr (name, ST_COPY_DUPLICATE_TAG);
-    //}
-    //if (tag == NULL) {
-        //tag = strstr (name, ND_COPY_DUPLICATE_TAG);
-    //}
-    //if (tag == NULL) {
-        //tag = strstr (name, RD_COPY_DUPLICATE_TAG);
-    //}
-    //if (tag == NULL) {
-        //tag = strstr (name, TH_COPY_DUPLICATE_TAG);
-    //}
-
-    ///* If we got one of st, nd, rd, th, fish out the duplicate number. */
-    //if (tag != NULL) {
-        ///* localizers: opening parentheses to match the "th copy)" string */
-        //tag = strstr (name, _(" ("));
-        //if (tag != NULL) {
-            //if (tag > *suffix) {
-                ///* handle case "foo. (22nd copy)" */
-                //*suffix = "";
-            //}
-            //*name_base = extract_string_until (name, tag);
-            ///* localizers: opening parentheses of the "th copy)" string */
-            //if (sscanf (tag, _(" (%'d"), count) == 1) {
-                //if (*count < 1 || *count > 1000000) {
-                    ///* keep the count within a reasonable range */
-                    //*count = 0;
-                //}
-                //return;
-            //}
-            //*count = 0;
-            //return;
-        //}
-    //}
-
-
-    //*count = 0;
-    //if (**suffix != '\0') {
-        //*name_base = extract_string_until (name, *suffix);
-    //} else {
-        //*name_base = g_strdup (name);
-    //}
-//}
-
-//static char *
-//make_next_duplicate_name (const char *base, const char *suffix, int count, int max_length)
-//{
-    //const char *format;
-    //char *result;
-    //int unshortened_length;
-    //gboolean use_count;
-
-    //if (count < 1) {
-        //g_warning ("bad count %d in get_duplicate_name", count);
-        //count = 1;
-    //}
-
-    //if (count <= 2) {
-
-        ///* Handle special cases for low numbers.
-         //* Perhaps for some locales we will need to add more.
-         //*/
-        //switch (count) {
-        //default:
-            //g_assert_not_reached ();
-            ///* fall through */
-        //case 1:
-            //format = FIRST_COPY_DUPLICATE_FORMAT;
-            //break;
-        //case 2:
-            //format = SECOND_COPY_DUPLICATE_FORMAT;
-            //break;
-
-        //}
-
-        //use_count = FALSE;
-    //} else {
-
-        ///* Handle special cases for the first few numbers of each ten.
-         //* For locales where getting this exactly right is difficult,
-         //* these can just be made all the same as the general case below.
-         //*/
-
-        ///* Handle special cases for x11th - x20th.
-        //*/
-        //switch (count % 100) {
-        //case 11:
-            //format = X11TH_COPY_DUPLICATE_FORMAT;
-            //break;
-        //case 12:
-            //format = X12TH_COPY_DUPLICATE_FORMAT;
-            //break;
-        //case 13:
-            //format = X13TH_COPY_DUPLICATE_FORMAT;
-            //break;
-        //default:
-            //format = NULL;
-            //break;
-        //}
-
-        //if (format == NULL) {
-            //switch (count % 10) {
-            //case 1:
-                //format = ST_COPY_DUPLICATE_FORMAT;
-                //break;
-            //case 2:
-                //format = ND_COPY_DUPLICATE_FORMAT;
-                //break;
-            //case 3:
-                //format = RD_COPY_DUPLICATE_FORMAT;
-                //break;
-            //default:
-                ///* The general case. */
-                //format = TH_COPY_DUPLICATE_FORMAT;
-                //break;
-            //}
-        //}
-
-        //use_count = TRUE;
-
-    //}
-
-    //if (use_count)
-        //result = g_strdup_printf (format, base, count, suffix);
-    //else
-        //result = g_strdup_printf (format, base, suffix);
-
-    //if (max_length > 0 && (unshortened_length = strlen (result)) > max_length) {
-        //char *new_base;
-
-        //new_base = shorten_utf8_string (base, unshortened_length - max_length);
-        //if (new_base) {
-            //g_free (result);
-
-            //if (use_count)
-                //result = g_strdup_printf (format, new_base, count, suffix);
-            //else
-                //result = g_strdup_printf (format, new_base, suffix);
-
-            //g_assert (strlen (result) <= max_length);
-            //g_free (new_base);
-        //}
-    //}
-
-    //return result;
-//}
-
-//static char *
-//get_duplicate_name (const char *name, int count_increment, int max_length)
-//{
-    //char *result;
-    //char *name_base;
-    //const char *suffix;
-    //int count;
-
-    //parse_previous_duplicate_name (name, &name_base, &suffix, &count);
-    //result = make_next_duplicate_name (name_base, suffix, count + count_increment, max_length);
-
-    //g_free (name_base);
-
-    //return result;
-//}
 
 static gboolean
 has_invalid_xml_char (char *str)
@@ -3252,12 +2862,13 @@ copy_move_file (CopyMoveJob *copy_job,
         return;
     }
 
-    /* another file in the same directory might have handled the invalid
-     * filename condition for us
-     */
-    handled_invalid_filename = *dest_fs_type != NULL;
+    ///* another file in the same directory might have handled the invalid
+     //* filename condition for us
+     //*/
+    //handled_invalid_filename = *dest_fs_type != NULL;
 
-    dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, !unique_names);
+    /* We allow filename conflict here as it is handled later on */
+    dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, TRUE);
 
     if (dest == NULL) {
         *skipped_file = TRUE; /* Or aborted, but same-same */
@@ -3373,14 +2984,9 @@ retry:
         report_copy_progress (copy_job, source_info, transfer_info);
 
         if (debuting_files) {
-            /*if (position) {
-                //marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
-            } else {
-                //marlin_file_changes_queue_schedule_position_remove (dest);
-            }*/
-
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
+
         if (copy_job->is_move) {
             marlin_file_changes_queue_file_moved (src, dest);
         } else {
@@ -3395,27 +3001,10 @@ retry:
         return;
     }
 
-    if (!handled_invalid_filename &&
-        IS_IO_ERROR (error, INVALID_FILENAME)) {
-        handled_invalid_filename = TRUE;
-
-        g_assert (*dest_fs_type == NULL);
-        *dest_fs_type = query_fs_type (dest_dir, job->cancellable);
-
-        new_dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, !unique_names);
-
-        if (!g_file_equal (dest, new_dest)) {
-            g_object_unref (dest);
-            dest = new_dest;
-
-            g_error_free (error);
-            goto retry;
-        } else {
-            g_object_unref (new_dest);
-        }
-    }
+    /* filename should already be guaranteed valid
 
     /* Conflict */
+    /* Handle conflict based on response to conflict dialog */
     if (!overwrite &&
         IS_IO_ERROR (error, EXISTS)) {
         gboolean is_merge;
@@ -3988,12 +3577,6 @@ retry:
 
         marlin_file_changes_queue_file_moved (src, dest);
 
-        /*if (position) {
-            //marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
-        } else {
-            marlin_file_changes_queue_schedule_position_remove (dest);
-        }*/
-
         // Start UNDO-REDO
         marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
         // End UNDO-REDO
@@ -4001,22 +3584,7 @@ retry:
         return;
     }
 
-    if (IS_IO_ERROR (error, INVALID_FILENAME) &&
-        !handled_invalid_filename) { // Should not happen - target file name should be guaranteed valid
-        handled_invalid_filename = TRUE;
-
-        g_assert (*dest_fs_type == NULL);
-        *dest_fs_type = query_fs_type (dest_dir, job->cancellable);
-
-        dest = pf_file_utils_make_next_link_copy_target_file (src, dest_dir, *dest_fs_type, FALSE, same_fs, overwrite);
-        if (!g_file_equal (dest, new_dest)) {
-            g_object_unref (dest);
-            dest = new_dest;
-            goto retry;
-        } else {
-            g_object_unref (new_dest);
-        }
-    }
+    /* Filename should already be guaranteed valid */
 
     /* Conflict */
     else if (!overwrite &&
@@ -4431,15 +3999,15 @@ link_file (CopyMoveJob *job,
     CommonJob *common;
     char *primary, *secondary, *details;
     int response;
-    gboolean handled_invalid_filename;
+    //gboolean handled_invalid_filename;
 
     common = (CommonJob *)job;
 
-    handled_invalid_filename = *dest_fs_type != NULL; //Assume not same_fs if this is TRUE
+    //handled_invalid_filename = *dest_fs_type != NULL; //Assume not same_fs if this is TRUE
 
-    //`same_fs` not passed a parameter to `link_file ()` so use `!handled_invalid_filename` as a proxy
+    //`same_fs` not passed as a parameter to `link_file ()` so use FALSE for safety
     dest = pf_file_utils_make_next_link_copy_target_file (
-        src, dest_dir, *dest_fs_type, !handled_invalid_filename, TRUE, FALSE
+        src, dest_dir, *dest_fs_type, FALSE, TRUE, FALSE
     );
 
 retry:
@@ -4477,33 +4045,10 @@ retry:
     }
     g_free (path);
 
-    if (error != NULL &&
-        IS_IO_ERROR (error, INVALID_FILENAME) &&
-        !handled_invalid_filename) {
-        handled_invalid_filename = TRUE;
-
-        g_assert (*dest_fs_type == NULL);
-        *dest_fs_type = query_fs_type (dest_dir, common->cancellable);
-
-        new_dest = pf_file_utils_make_next_link_copy_target_file (
-            src, dest_dir, *dest_fs_type, !handled_invalid_filename, TRUE, FALSE
-        );
-
-        if (!g_file_equal (dest, new_dest)) {
-            g_object_unref (dest);
-            dest = new_dest;
-            g_error_free (error);
-
-            goto retry;
-        } else {
-            g_object_unref (new_dest);
-        }
-    } else if (error != NULL && IS_IO_ERROR (error, CANCELLED)) {
+    /* Filename should already be guaranteed valid */
+    if (error != NULL && IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
-    }
-
-    /* Other error */
-    else {
+    } else {/* Other error */
         gchar *src_basename;
         if (common->skip_all_error) {
             goto out;
