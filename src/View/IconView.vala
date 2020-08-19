@@ -88,9 +88,11 @@ namespace FM {
         }
 
         protected override void set_up_zoom_level () {
-            Marlin.icon_view_settings.bind ("zoom-level",
-                                            this, "zoom-level",
-                                            GLib.SettingsBindFlags.DEFAULT);
+            Marlin.icon_view_settings.bind (
+                "zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.DEFAULT
+            );
 
             minimum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("maximum-zoom-level");
