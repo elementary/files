@@ -360,39 +360,11 @@ namespace FM {
                 } else {
                     _zoom_level = value;
                 }
-
-                /* Make rows closer together at small icon sizes.  There is no property for this so we have to use
-                 * css.
-                 */
-                int vsep = 5;
-                switch (value) {
-                    case Marlin.ZoomLevel.SMALLEST:
-                        vsep = 0;
-                        break;
-                    case Marlin.ZoomLevel.SMALLER:
-                        vsep = 3;
-                        break;
-                    default:
-                        break;
-                }
-
-                try {
-                    view_css.load_from_data ("treeview { -GtkTreeView-vertical-separator: %i px; }".printf (vsep));
-                    get_style_context ().add_provider (view_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                } catch (Error e) {
-                    warning ("Could not style FM.TreeView");
-                }
             }
 
             get {
                 return _zoom_level;
             }
-        }
-
-        private Gtk.CssProvider view_css;
-
-        construct {
-            view_css = new Gtk.CssProvider ();
         }
 
         /* Override base class in order to disable the Gtk.TreeView local search functionality */
