@@ -116,12 +116,6 @@ public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
     /* Remember path at button press */
     Gtk.TreePath? click_path = null;
 
-    bool is_admin {
-        get {
-            return (uint)Posix.getuid () == 0;
-        }
-    }
-
     /* For cancelling async tooltip updates when update_places re-entered */
     Cancellable? update_cancellable = null;
 
@@ -181,7 +175,7 @@ public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
         this.last_selected_uri = null;
         this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         /* Show only local places in sidebar when running as root */
-        local_only = Posix.getuid () == 0;
+        local_only = Marlin.is_admin ();
 
         construct_tree_view ();
         configure_tree_view ();
@@ -651,7 +645,7 @@ public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
         }
 
         /* Do not show Trash if running as root (cannot be loaded) */
-        if (!is_admin) {
+        if (!Marlin.is_admin ()) {
             /* Add trash */
             add_place (PlaceType.BUILT_IN,
                        iter,
@@ -1244,7 +1238,11 @@ public class Marlin.Sidebar : Gtk.ScrolledWindow, Marlin.SidebarInterface {
                 actions &= Gdk.DragAction.MOVE;
             }
 
-            real_action = dnd_handler.drag_drop_action_ask ((Gtk.Widget)tree_view, actions);
+            real_action = dnd_handler.drag_drop_action_ask (
+                tree_view,
+                (Gtk.ApplicationWindow)Marlin.get_active_window (),
+                actions
+            );
         }
 
         if (real_action == Gdk.DragAction.DEFAULT) {

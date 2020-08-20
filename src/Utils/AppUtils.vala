@@ -26,4 +26,8 @@ namespace Marlin {
         var gtk_app = (Gtk.Application)(GLib.Application.get_default ());
         return gtk_app.get_active_window ();
     }
+
+    static bool is_admin () {
+        return Posix.getuid () == 0;
+    }
 }

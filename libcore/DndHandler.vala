@@ -56,9 +56,9 @@ namespace Marlin {
         }
 
         public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
+                                                     Gtk.ApplicationWindow win,
                                                      Gdk.DragAction possible_actions) {
 
-            var win = (Gtk.ApplicationWindow)Marlin.get_active_window ();
             this.chosen = Gdk.DragAction.DEFAULT;
             add_action (win);
             var ask_menu = build_menu (possible_actions);
@@ -241,6 +241,7 @@ namespace Marlin {
                                               GLib.List<GLib.File> drop_file_list,
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
+                                              Gtk.ApplicationWindow win,
                                               uint32 timestamp) {
 
             bool success = false;
@@ -248,7 +249,7 @@ namespace Marlin {
 
             if (drop_file_list != null) {
                 if ((possible_actions & Gdk.DragAction.ASK) != 0) {
-                    action = drag_drop_action_ask (dest_widget, possible_actions);
+                    action = drag_drop_action_ask (dest_widget, win, possible_actions);
                 }
 
                 if (action != Gdk.DragAction.DEFAULT) {

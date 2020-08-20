@@ -383,7 +383,7 @@ namespace Marlin.View {
 
             if (files == null || files.length == 0 || files[0] == null) {
                 /* Restore session if not root and settings allow */
-                if (Posix.getuid () == 0 ||
+                if (Marlin.is_admin () ||
                     !Marlin.app_settings.get_boolean ("restore-tabs") ||
                     restore_tabs () < 1) {
 
@@ -540,7 +540,7 @@ namespace Marlin.View {
         /* Just to append "as Administrator" when appropriate */
         private void set_tab_label (string label, Granite.Widgets.Tab tab, string? tooltip = null) {
             string lab = label;
-            if (Posix.getuid () == 0) {
+            if (Marlin.is_admin ()) {
                 lab += (" " + _("(as Administrator)"));
             }
 
@@ -550,7 +550,7 @@ namespace Marlin.View {
              * This compiles because tab is a widget but the tootip is overridden by that set internally */
             if (tooltip != null) {
                 var tt = tooltip;
-                if (Posix.getuid () == 0) {
+                if (Marlin.is_admin ()) {
                     tt += (" " + _("(as Administrator)"));
                 }
 

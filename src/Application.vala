@@ -75,7 +75,7 @@ public class Marlin.Application : Gtk.Application {
         message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
 
         /* Only allow running with root privileges using pkexec, not using sudo */
-        if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+        if (Marlin.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
             warning ("Running Files as root using sudo is not possible. " +
                      "Please use the command: io.elementary.files-pkexec [folder]");
             quit ();
