@@ -157,7 +157,7 @@ namespace Marlin.View {
 
             tabs.show ();
 
-            sidebar = new Marlin.Sidebar ();
+            sidebar = new Marlin.SidebarListBox ();
             loading_uri.connect (sidebar.sync_uri);
             free_space_change.connect (sidebar.reload);
 

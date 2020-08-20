@@ -41,7 +41,7 @@ pantheon_files_exec = executable (
     'View/Window.vala',
     'View/ViewContainer.vala',
     'View/Browser.vala',
-    'View/Sidebar.vala',
+    'View/SidebarListBox.vala',
     'View/Slot.vala',
     'View/PrivacyModeOn.vala',
     'View/PopupMenuBuilder.vala',
