@@ -48,8 +48,8 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     Gtk.TreeStore store;
     Gtk.Box content_box;
     Gtk.ListBox bookmark_listbox;
-    string slot_location;
-
+    Marlin.BookmarkList bookmark_list;
+    Gee.HashMap<string, Marlin.Bookmark> bookmark_map;
 
     public new bool has_focus {
         get {
@@ -90,6 +90,48 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         content_box.add (bookmark_listbox);
         this.add (content_box);
+
+        bookmark_map = new Gee.HashMap<string, Marlin.Bookmark> ();
+
+        bookmark_list = Marlin.BookmarkList.get_instance ();
+        bookmark_list.loaded.connect (on_bookmark_list_loaded);
+
+        show_all ();
+
+        on_bookmark_list_loaded ();
+    }
+
+    private void on_bookmark_list_loaded () {
+        clear_bookmarks ();
+        foreach (Marlin.Bookmark bm in bookmark_list.list) {
+            add_bookmark (bm.label, bm.uri);
+        }
+
+        insert_builtin_bookmarks ();
+    }
+
+    private void clear_bookmarks () {
+        bookmark_map.clear ();
+        foreach (Gtk.Widget child in bookmark_listbox.get_children ()) {
+            child.destroy ();
+        }
+    }
+
+    private void add_bookmark (string label, string uri) {
+        var bookmark_row = new BookmarkRow (label, uri, this) ;
+        bookmark_listbox.add (bookmark_row);
+    }
+
+    private void insert_builtin_bookmarks () {
+        var home_uri = "";
+        try {
+            home_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
+        }
+        catch (ConvertError e) {}
+
+        if (home_uri != "") {
+            add_bookmark (_("Home"), home_uri);
+        }
     }
 
     /* SidebarInterface */
@@ -119,5 +161,34 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     public bool has_favorite_uri (string uri) {
         return false;
+    }
+
+    private class BookmarkRow : Gtk.ListBoxRow {
+        public string custom_name { get; construct; }
+        public string uri { get; construct; }
+        public unowned Marlin.SidebarInterface sidebar { get; construct; }
+
+        public BookmarkRow (string name, string uri, Marlin.SidebarInterface sidebar) {
+            Object (
+                custom_name: name,
+                uri: uri,
+                sidebar: sidebar
+            );
+        }
+
+        construct {
+            var label = new Gtk.Button.with_label (custom_name) {
+                xalign = 0.0f,
+                tooltip_text = uri
+            };
+
+            label.clicked.connect (() => {
+                sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
+            });
+
+            add (label);
+
+            show_all ();
+        }
     }
 }

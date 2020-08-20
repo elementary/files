@@ -38,6 +38,7 @@ namespace Marlin {
         private static BookmarkList instance = null;
 
         public signal void contents_changed ();
+        public signal void loaded ();
         public signal void deleted ();
 
         private BookmarkList () {
@@ -175,7 +176,7 @@ namespace Marlin {
 
             for (node = list; node != null; node = next) {
                 next = node.next;
-                if (uri == node.data.get_uri ()) {
+                if (uri == node.data.uri) {
                     list.remove_link (node);
                     stop_monitoring_bookmark (node.data);
                     list_changed = true;
@@ -260,7 +261,7 @@ namespace Marlin {
                     if (contents != null) {
                         bookmark_list_from_string ((string)contents);
                         this.call_when_ready = new GOF.CallWhenReady (get_gof_file_list (), files_ready);
-                        contents_changed (); /* Call now to ensure sidebar is updated even if call_when_ready blocks */
+                        loaded (); /* Call now to ensure sidebar is updated even if call_when_ready blocks */
                     }
                 }
                 catch (GLib.Error error) {
@@ -316,7 +317,7 @@ namespace Marlin {
             StringBuilder sb = new StringBuilder ();
 
             list.@foreach ((bookmark) => {
-                sb.append (bookmark.get_uri ());
+                sb.append (bookmark.uri);
                 sb.append (" " + bookmark.label);
                 sb.append ("\n");
             });
@@ -359,7 +360,7 @@ namespace Marlin {
         }
 
         private void bookmark_in_list_to_be_deleted_callback (Marlin.Bookmark bookmark) {
-            delete_items_with_uri (bookmark.get_uri ());
+            delete_items_with_uri (bookmark.uri);
         }
 
         private void start_monitoring_bookmarks_file () {
