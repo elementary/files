@@ -130,7 +130,6 @@ static void scan_sources (GList *files,
 
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
-
 static char *
 shorten_utf8_string (const char *base, int reduce_by_num_bytes)
 {
@@ -167,6 +166,103 @@ shorten_utf8_string (const char *base, int reduce_by_num_bytes)
         ret[p - base] = '\0';
         return ret;
     }
+}
+
+/* Note that we have these two separate functions with separate format
+ * strings for ease of localization.
+ */
+
+static char *
+get_link_name (const char *name, int count, int max_length)
+{
+    const char *format;
+    char *result;
+    int unshortened_length;
+    gboolean use_count;
+
+    g_assert (name != NULL);
+
+    if (count < 0) {
+        g_warning ("bad count in get_link_name");
+        count = 0;
+    }
+
+    if (count <= 2) {
+        /* Handle special cases for low numbers.
+         * Perhaps for some locales we will need to add more.
+         */
+        switch (count) {
+        default:
+            g_assert_not_reached ();
+            /* fall through */
+        case 0:
+            /* duplicate original file name */
+            format = "%s";
+            break;
+        case 1:
+            /* appended to new link file */
+            format = _("Link to %s");
+            break;
+        case 2:
+            /* appended to new link file */
+            format = _("Another link to %s");
+            break;
+        }
+
+        use_count = FALSE;
+    } else {
+        /* Handle special cases for the first few numbers of each ten.
+         * For locales where getting this exactly right is difficult,
+         * these can just be made all the same as the general case below.
+         */
+        switch (count % 10) {
+        case 1:
+            /* Localizers: Feel free to leave out the "st" suffix
+             * if there's no way to do that nicely for a
+             * particular language.
+             */
+            format = _("%'dst link to %s");
+            break;
+        case 2:
+            /* appended to new link file */
+            format = _("%'dnd link to %s");
+            break;
+        case 3:
+            /* appended to new link file */
+            format = _("%'drd link to %s");
+            break;
+        default:
+            /* appended to new link file */
+            format = _("%'dth link to %s");
+            break;
+        }
+
+        use_count = TRUE;
+    }
+
+    if (use_count)
+        result = g_strdup_printf (format, count, name);
+    else
+        result = g_strdup_printf (format, name);
+
+    if (max_length > 0 && (unshortened_length = strlen (result)) > max_length) {
+        char *new_name;
+
+        new_name = shorten_utf8_string (name, unshortened_length - max_length);
+        if (new_name) {
+            g_free (result);
+
+            if (use_count)
+                result = g_strdup_printf (format, count, new_name);
+            else
+                result = g_strdup_printf (format, new_name);
+
+            g_assert (strlen (result) <= max_length);
+            g_free (new_name);
+        }
+    }
+
+    return result;
 }
 
 /* Localizers:
@@ -499,6 +595,51 @@ has_invalid_xml_char (char *str)
 }
 
 static char *
+eel_str_middle_truncate (const char *string,
+                         guint truncate_length)
+{
+    char *truncated;
+    guint length;
+    guint num_left_chars;
+    guint num_right_chars;
+
+    const char delimter[] = "…";
+    const guint delimter_length = strlen (delimter);
+    const guint min_truncate_length = delimter_length + 2;
+
+    if (string == NULL) {
+        return NULL;
+    }
+
+    /* It doesnt make sense to truncate strings to less than
+     * the size of the delimiter plus 2 characters (one on each
+     * side)
+     */
+    if (truncate_length < min_truncate_length) {
+        return g_strdup (string);
+    }
+
+    length = g_utf8_strlen (string, -1);
+
+    /* Make sure the string is not already small enough. */
+    if (length <= truncate_length) {
+        return g_strdup (string);
+    }
+
+    /* Find the 'middle' where the truncation will occur. */
+    num_left_chars = (truncate_length - delimter_length) / 2;
+    num_right_chars = truncate_length - num_left_chars - delimter_length;
+
+    truncated = g_new (char, strlen (string) + 1);
+
+    g_utf8_strncpy (truncated, string, num_left_chars);
+    strcat (truncated, delimter);
+    strcat (truncated, g_utf8_offset_to_pointer  (string, length - num_right_chars));
+
+    return truncated;
+}
+
+static char *
 custom_basename_from_file (GFile *file) {
     GFileInfo *info;
     char *name, *basename, *tmp;
@@ -534,6 +675,13 @@ custom_basename_from_file (GFile *file) {
     if (has_invalid_xml_char (name)) {
         tmp = name;
         name = g_uri_escape_string (name, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
+        g_free (tmp);
+    }
+
+    /* Finally, if the string is too long, truncate it. */
+    if (name != NULL) {
+        tmp = name;
+        name = eel_str_middle_truncate (tmp, MAXIMUM_DISPLAYED_FILE_NAME_LENGTH);
         g_free (tmp);
     }
 
@@ -952,7 +1100,7 @@ report_delete_progress (CommonJob *job,
                                        formated_time);
         g_free (formated_time);
 
-        details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL);
+        details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL); //FIXME Remove opaque hex
         pf_progress_info_take_details (job->progress, details);
 
         g_free (time_left_s);
@@ -2291,7 +2439,7 @@ report_copy_progress (CopyMoveJob *copy_job,
                                        formated_time_unit),
                              num_bytes_format, total_size_format,
                              formated_remaining_time,
-                             transfer_rate_format);
+                             transfer_rate_format); //FIXME Remove opaque hex
         g_free (num_bytes_format);
         g_free (total_size_format);
         g_free (formated_remaining_time);
@@ -2301,7 +2449,6 @@ report_copy_progress (CopyMoveJob *copy_job,
 
     pf_progress_info_update_progress (job->progress, transfer_info->num_bytes, total_size);
 }
-
 
 static GFile *
 get_unique_target_file (GFile *src,
@@ -2331,7 +2478,7 @@ get_unique_target_file (GFile *src,
 
         if (editname != NULL) {
             new_name = get_duplicate_name (editname, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -2344,7 +2491,7 @@ get_unique_target_file (GFile *src,
 
         if (g_utf8_validate (basename, -1, NULL)) {
             new_name = get_duplicate_name (basename, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -2355,7 +2502,7 @@ get_unique_target_file (GFile *src,
                 count += atoi (end + 1);
             }
             new_name = g_strdup_printf ("%s.%d", basename, count);
-            pf_file_utils_make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child (dest_dir, new_name);
             g_free (new_name);
         }
@@ -2388,8 +2535,8 @@ get_target_file_for_link (GFile *src,
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
 
         if (editname != NULL) {
-            new_name = pf_file_utils_get_link_name (editname, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            new_name = get_link_name (editname, count, max_length);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -2399,11 +2546,11 @@ get_target_file_for_link (GFile *src,
 
     if (dest == NULL) {
         basename = g_file_get_basename (src);
-        pf_file_utils_make_file_name_valid_for_dest_fs (basename, dest_fs_type);
+        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
 
         if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = pf_file_utils_get_link_name (basename, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            new_name = get_link_name (basename, count, max_length);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -2414,7 +2561,7 @@ get_target_file_for_link (GFile *src,
             } else {
                 new_name = g_strdup_printf ("%s.lnk%d", basename, count);
             }
-            pf_file_utils_make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child (dest_dir, new_name);
             g_free (new_name);
         }
@@ -2452,7 +2599,7 @@ get_target_file (GFile *src,
             copyname = g_strdup (g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_COPY_NAME));
 
             if (copyname) {
-                pf_file_utils_make_file_name_valid_for_dest_fs (copyname, dest_fs_type);
+                pf_file_utils_make_file_name_valid_for_dest_fs (&copyname, dest_fs_type);
                 dest = g_file_get_child_for_display_name (dest_dir, copyname, NULL);
                 g_free (copyname);
             }
@@ -2463,7 +2610,7 @@ get_target_file (GFile *src,
 
     if (dest == NULL) {
         basename = g_file_get_basename (src);
-        pf_file_utils_make_file_name_valid_for_dest_fs (basename, dest_fs_type);
+        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
         dest = g_file_get_child (dest_dir, basename);
         g_free (basename);
     }
@@ -3711,7 +3858,6 @@ copy_files (CopyMoveJob *job,
     readonly_source_fs = FALSE;
 
     common = &job->common;
-
     report_copy_progress (job, source_info, transfer_info);
 
     /* Query the source dir, not the file because if its a symlink we'll follow it */
@@ -3748,7 +3894,7 @@ copy_files (CopyMoveJob *job,
             skipped_file = FALSE;
             copy_move_file (job, src, dest,
                             same_fs, unique_names,
-                            &dest_fs_type,
+                            &dest_fs_type,  //dest_fs_type always null?
                             source_info, transfer_info,
                             job->debuting_files,
                             FALSE, &skipped_file,
@@ -5223,7 +5369,7 @@ create_job (GIOSchedulerJob *io_job,
         }
     }
 
-    pf_file_utils_make_file_name_valid_for_dest_fs (filename, dest_fs_type);
+    pf_file_utils_make_file_name_valid_for_dest_fs (&filename, dest_fs_type); //FIXME No point - dest_fs_type always null?
     if (filename_is_utf8) {
         dest = g_file_get_child_for_display_name (job->dest_dir, filename, NULL);
     }
@@ -5333,7 +5479,7 @@ retry:
                 new_filename = get_duplicate_name (filename, count, max_length);
             }
 
-            if (pf_file_utils_make_file_name_valid_for_dest_fs (new_filename, dest_fs_type)) {
+            if (pf_file_utils_make_file_name_valid_for_dest_fs (&new_filename, dest_fs_type)) {
                 g_object_unref (dest);
 
                 if (filename_is_utf8) {
@@ -5363,7 +5509,7 @@ retry:
             } else {
                 filename2 = get_duplicate_name (filename, count++, max_length);
             }
-            pf_file_utils_make_file_name_valid_for_dest_fs (filename2, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&filename2, dest_fs_type);
             if (filename_is_utf8) {
                 dest = g_file_get_child_for_display_name (job->dest_dir, filename2, NULL);
             }

@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -834,42 +834,67 @@ namespace PF.FileUtils {
         }
     }
 
-    internal string format_time (int seconds, out int time_unit) {
-        int minutes;
-        int hours;
+    public bool make_file_name_valid_for_dest_fs (ref string filename, string? dest_fs_type) {
+        bool result = false;
+
+        if (dest_fs_type == null) {
+            return false;
+        }
+
+        switch (dest_fs_type) {
+            case "fat":
+            case "vfat":
+            case "msdos":
+            case "msdosfs":
+                const string CHARS_TO_REPLACE = "/:;*?\\<> ";
+                char replacement = '_';
+                string original = filename;
+                filename = filename.delimit (CHARS_TO_REPLACE, replacement);
+                result = original != filename;
+                break;
+
+            default:
+                break;
+        }
+
+        return result;
+    }
+
+    public string format_time (int seconds, out int time_unit) {
+        int minutes, hours;
+        string result;
 
         if (seconds < 0) {
-            /* Just to make sure... */
             seconds = 0;
         }
 
-        if (seconds < 60) {
+        if (seconds < 60) { //less than one minute
             time_unit = seconds;
-
-            return ngettext ("%'d second", "%'d seconds", seconds).printf (seconds);
-        }
-
-        minutes = seconds / 60;
-        if (minutes < 60) {
+            result = ngettext ("%'d second", "%'d seconds", seconds).printf (seconds);
+        } else if (seconds < 3600) { // less than one hour
+            minutes = seconds / 60;
             time_unit = minutes;
-            return ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes);
+            result = ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes);
+        } else {
+            hours = seconds / 3600;
+            if (hours < 4) {
+                minutes = (seconds - hours * 3600) / 60;
+                time_unit = minutes + hours;
+                ///TRANSLATORS The %s will be translated into "x hours, y minutes"
+                result = _("%s, %s").printf (ngettext ("%'d hour", "%'d hours", hours).printf (hours),
+                                             ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes));
+            } else {
+                time_unit = hours;
+                result = ngettext ("approximately %'d hour", "approximately %'d hours", hours).printf (hours);
+            }
         }
 
-        hours = minutes / 60;
-        if (hours < 4) {
-            time_unit = minutes + hours;
-            ///TRANSLATORS The %s will be translated into "x hours, y minutes"
-            return _("%s, %s").printf (
-                ngettext ("%'d hour", "%'d hours", hours),
-                ngettext ("%'d minute", "%'d minutes", minutes)
-            ).printf (hours, minutes);
-        }
-
-        time_unit = hours;
-        return ngettext ("approximately %'d hour", "approximately %'d hours", hours).printf (hours);
+        return result;
     }
 
-    internal int get_max_name_length (GLib.File file_dir) {
+    public int get_max_name_length (GLib.File file_dir) {
+        //FIXME Do not need to keep calling this for the same filesystem
+
         if (!file_dir.has_uri_scheme ("file")) {
             return -1;
         }
@@ -886,124 +911,6 @@ namespace PF.FileUtils {
             return (int) max_name;
         } else {
             return (int) long.min (max_path - (dir.length + 1), max_name);
-        }
-    }
-
-    /* Note that we have these two separate functions with separate format
-     * strings for ease of localization.
-     */
-
-    internal string get_link_name (string name, int count, int max_length) {
-        unowned string format;
-        string result;
-
-        if (count < 0) {
-            warning ("bad count in get_link_name");
-            count = 0;
-        }
-
-        if (count <= 2) {
-            /* Handle special cases for low numbers.
-             * Perhaps for some locales we will need to add more.
-             */
-            switch (count) {
-                case 0:
-                    /* duplicate original file name */
-                    format = "%s";
-                    break;
-                case 1:
-                    /* appended to new link file */
-                    format = _("Link to %s");
-                    break;
-                case 2:
-                    /* appended to new link file */
-                    format = _("Another link to %s");
-                    break;
-                default:
-                    GLib.assert_not_reached ();
-                    /* fall through */
-            }
-
-            result = format.printf (name);
-        } else {
-            /* Handle special cases for the first few numbers of each ten.
-             * For locales where getting this exactly right is difficult,
-             * these can just be made all the same as the general case below.
-             */
-            switch (count % 10) {
-                case 1:
-                    /* Localizers: Feel free to leave out the "st" suffix
-                     * if there's no way to do that nicely for a
-                     * particular language.
-                     */
-                    format = _("%'dst link to %s");
-                    break;
-                case 2:
-                    /* appended to new link file */
-                    format = _("%'dnd link to %s");
-                    break;
-                case 3:
-                    /* appended to new link file */
-                    format = _("%'drd link to %s");
-                    break;
-                default:
-                    /* appended to new link file */
-                    format = _("%'dth link to %s");
-                    break;
-            }
-
-            result = format.printf (count, name);
-        }
-
-        if (max_length > 0 && result.length > max_length) {
-            string new_name = result.substring (0, name.length - (result.length - max_length));
-            if (count <= 2) {
-                result = format.printf (new_name);
-            } else {
-                result = format.printf (count, new_name);
-            }
-        }
-
-        return result;
-    }
-
-    private const string FAT_FORBIDDEN_CHARACTERS = "/:;*?\"<>";
-
-    internal bool str_replace (string str, string chars_to_replace, char replacement) {
-        bool replaced = false;
-        for (int i = 0; str[i] != '\0'; i++) {
-            if (chars_to_replace.index_of_char (str[i]) != -1) {
-                replaced = true;
-                str.data[i] = replacement;
-            }
-        }
-
-        return replaced;
-    }
-
-    internal bool make_file_name_valid_for_dest_fs (string filename, string? dest_fs_type) {
-        if (dest_fs_type == null) {
-            return false;
-        }
-
-        switch (dest_fs_type) {
-            case "fat":
-            case "vfat":
-            case "msdos":
-            case "msdosfs":
-                bool ret = str_replace (filename, FAT_FORBIDDEN_CHARACTERS, '_');
-                int old_len = filename.length;
-                for (int i = 0; i < old_len; i++) {
-                    if (filename[i] != ' ') {
-                        filename._chomp ();
-                        ret |= (old_len != filename.length);
-                        break;
-                    }
-                }
-
-                return ret;
-            default:
-                return false;
         }
     }
 }
