@@ -368,7 +368,6 @@ namespace Marlin.View.Chrome {
 
                     if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
                         success = dnd_handler.handle_file_drag_actions (this,
-                                                                        this.get_toplevel () as Gtk.ApplicationWindow,
                                                                         context,
                                                                         drop_target_file,
                                                                         drop_file_list,

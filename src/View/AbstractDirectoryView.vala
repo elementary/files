@@ -1636,7 +1636,6 @@ namespace FM {
                         }
 
                         success = dnd_handler.handle_file_drag_actions (get_child (),
-                                                                        window,
                                                                         context,
                                                                         drop_target_file,
                                                                         destination_drop_file_list,

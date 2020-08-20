@@ -29,6 +29,7 @@ pantheon_files_exec = executable (
 
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
+    'Utils/AppUtils.vala',
 
     'View/Window.vala',
     'View/ColumnView.vala',

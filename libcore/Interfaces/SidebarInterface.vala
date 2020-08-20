@@ -32,28 +32,19 @@ namespace Marlin {
     }
 }
 
-public interface Marlin.SidebarInterface : Gtk.Widget {
+public interface Marlin.SidebarInterface : Gtk.ScrolledWindow {
+        /* Plugin interface */
+        public abstract int32 add_plugin_item (Marlin.SidebarPluginItem item, Marlin.PlaceType category);
+        public abstract bool update_plugin_item (Marlin.SidebarPluginItem item, int32 item_id);
+        public abstract void remove_plugin_item (int32 item_id);
+        /* Window interface */
         public signal void request_update ();
         public signal bool request_focus ();
         public signal void sync_needed ();
         public signal void path_change_request (string uri, Marlin.OpenFlag flag);
         public signal void connect_server_request ();
-
-        /**
-         * Adds plugin item to Sidebar
-         *
-         * @param a {@link Marlin.SidebarPluginItem}
-         *
-         * @param {@link PlaceType} with the category it should be appended
-         *
-         * @return An ID for the item to use to update with update_plugin_item or null if add failed
-         */
-        public abstract int32 add_plugin_item (Marlin.SidebarPluginItem item, Marlin.PlaceType category);
-
-        public abstract bool update_plugin_item (Marlin.SidebarPluginItem item, int32 item_id);
-        public abstract void remove_plugin_item (int32 item_id);
         public abstract void add_favorite_uri (string uri, string? label = null);
-
         public abstract bool has_favorite_uri (string uri);
+        public abstract void sync_uri (string uri);
         public abstract void reload ();
 }

@@ -157,7 +157,9 @@ namespace Marlin.View {
 
             tabs.show ();
 
-            sidebar = new Marlin.Sidebar (this);
+            sidebar = new Marlin.Sidebar ();
+            loading_uri.connect (sidebar.sync_uri);
+            free_space_change.connect (sidebar.reload);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 expand = true,
