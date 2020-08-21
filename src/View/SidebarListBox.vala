@@ -120,7 +120,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         var root_uri = _(Marlin.ROOT_FS_URI);
         if (root_uri != "") {
-            add_bookmark (
+            add_device (
                 _("FileSystem"),
                 root_uri,
                 new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
@@ -135,19 +135,26 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         var network_uri = _(Marlin.NETWORK_URI);
         if (network_uri != "") {
-            add_bookmark (
-                _("Network"),
-                Marlin.TrashMonitor.URI,
-                monitor.get_icon ()
+            add_network_location (
+                _("Entire Network"),
+                Marlin.NETWORK_URI,
+                new ThemedIcon (Marlin.ICON_NETWORK)
             );
         }
 
     }
 
-
     private void add_bookmark (string label, string uri, Icon gicon) {
         var bookmark_row = new BookmarkRow (label, uri, gicon, this);
         bookmark_listbox.add (bookmark_row);
+    }
+    private void add_device (string label, string uri, Icon gicon) {
+        var device_row = new DeviceRow (label, uri, gicon, this);
+        device_listbox.add (device_row);
+    }
+    private void add_network_location (string label, string uri, Icon gicon) {
+        var network_row = new DeviceRow (label, uri, gicon, this);
+        network_listbox.add (network_row);
     }
     /* SidebarInterface */
     public int32 add_plugin_item (Marlin.SidebarPluginItem item, PlaceType category) {
@@ -231,6 +238,26 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             event_box.add (content_grid);
             add (event_box);
             show_all ();
+        }
+    }
+    private class DeviceRow : BookmarkRow {
+        public DeviceRow (string name, string uri, Icon gicon, SidebarInterface sidebar) {
+            Object (
+                custom_name: name,
+                uri: uri,
+                gicon: gicon,
+                sidebar: sidebar
+            );
+        }
+    }
+    private class NetworkRow : BookmarkRow {
+        public NetworkRow (string name, string uri, Icon gicon, SidebarInterface sidebar) {
+            Object (
+                custom_name: name,
+                uri: uri,
+                gicon: gicon,
+                sidebar: sidebar
+            );
         }
     }
 }
