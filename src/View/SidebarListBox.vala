@@ -168,6 +168,13 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
            ((BookmarkRow)child).destroy_bookmark ();
         }
 
+        if (Marlin.is_admin ()) { //Network operations fail for administrators
+            return;
+        }
+
+
+        network_listbox.add_all_network_mounts (volume_monitor);
+
         var network_uri = _(Marlin.NETWORK_URI);
         if (network_uri != "") {
             network_listbox.add_bookmark (
@@ -176,7 +183,6 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 new ThemedIcon (Marlin.ICON_NETWORK)
             );
         }
-
     }
 
     /* SidebarInterface */
@@ -317,7 +323,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             }
 
             var row = add_bookmark (device_label, mount.get_default_location ().get_uri (), mount.get_icon ());
-            ((DeviceRow)row).add_device_tooltip.begin ();
+            ((DeviceRow)row).add_tooltip.begin ();
         }
         public void add_drive (Drive drive)  {
             if (sidebar.ejecting_or_unmounting) {
@@ -419,7 +425,6 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 if (root.is_native () && root.get_uri_scheme () != "archive") {
                     add_mount (mount);
                 }
-
             }
         }
     }
@@ -429,6 +434,33 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             Object (
                 sidebar: sidebar
             );
+        }
+
+        public void add_all_network_mounts (VolumeMonitor vm) {
+            foreach (Mount mount in vm.get_mounts ()) {
+                if (mount.is_shadowed ()) {
+                    continue;
+                }
+
+                var volume = mount.get_volume ();
+                if (volume != null) {
+                    continue;
+                }
+
+                var root = mount.get_root ();
+                if (!root.is_native ()) {
+                    /* show mounted volume in sidebar */
+                    var device_label = root.get_basename ();
+                    if (device_label != mount.get_name ()) {
+                        ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+                        device_label = _("%s on %s").printf (device_label, mount.get_name ());
+                    }
+
+                    var row = add_bookmark (device_label, mount.get_default_location ().get_uri (), mount.get_icon ());
+                    ((NetworkRow)row).add_tooltip.begin ();
+                }
+
+            }
         }
     }
 
@@ -517,6 +549,10 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             BookmarkRow.bookmark_id_map.unset (id);
             base.destroy ();
         }
+
+        public virtual async void add_tooltip () {
+
+        }
     }
     private class DeviceRow : BookmarkRow {
         public DeviceRow (string name, string uri, Icon gicon, Marlin.SidebarListBox sidebar) {
@@ -528,7 +564,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             );
         }
 
-        public async void add_device_tooltip () {
+        public override async void add_tooltip () {
 
         }
     }
@@ -541,6 +577,10 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 gicon: gicon,
                 sidebar: sidebar
             );
+        }
+
+        public override async void add_tooltip () {
+
         }
     }
 }
