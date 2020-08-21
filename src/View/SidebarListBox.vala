@@ -23,6 +23,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     Gtk.ListBox network_listbox;
     Marlin.BookmarkList bookmark_list;
     unowned Marlin.TrashMonitor monitor;
+    BookmarkRow? trash_bookmark;
 
     public new bool has_focus {
         get {
@@ -35,6 +36,9 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         device_listbox = new Gtk.ListBox ();
         network_listbox = new Gtk.ListBox ();
         monitor = Marlin.TrashMonitor.get_default ();
+        monitor.notify["is-empty"].connect (() => {
+            trash_bookmark.update_icon (monitor.get_icon ());
+        });
 
         var bookmark_expander = new Gtk.Expander ("<b>" + _("Bookmarks") + "</b>") {
             expanded = true,
@@ -105,7 +109,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         var trash_uri = _(Marlin.TRASH_URI);
         if (trash_uri != "") {
-            add_bookmark (
+            trash_bookmark = add_bookmark (
                 _("Trash"),
                 trash_uri,
                 new ThemedIcon (Marlin.ICON_TRASH)
@@ -144,18 +148,22 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     }
 
-    private void add_bookmark (string label, string uri, Icon gicon) {
+    private BookmarkRow add_bookmark (string label, string uri, Icon gicon) {
         var bookmark_row = new BookmarkRow (label, uri, gicon, this);
         bookmark_listbox.add (bookmark_row);
+        return bookmark_row;
     }
-    private void add_device (string label, string uri, Icon gicon) {
+    private DeviceRow add_device (string label, string uri, Icon gicon) {
         var device_row = new DeviceRow (label, uri, gicon, this);
         device_listbox.add (device_row);
+        return device_row;
     }
-    private void add_network_location (string label, string uri, Icon gicon) {
-        var network_row = new DeviceRow (label, uri, gicon, this);
+    private NetworkRow add_network_location (string label, string uri, Icon gicon) {
+        var network_row = new NetworkRow (label, uri, gicon, this);
         network_listbox.add (network_row);
+        return network_row;
     }
+
     /* SidebarInterface */
     public int32 add_plugin_item (Marlin.SidebarPluginItem item, PlaceType category) {
         return 0;
@@ -189,6 +197,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         public string custom_name { get; construct; }
         public string uri { get; construct; }
         public Icon gicon { get; construct; }
+        private Gtk.Image icon;
         public unowned Marlin.SidebarInterface sidebar { get; construct; }
 
         public BookmarkRow (string name,
@@ -214,10 +223,6 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 orientation = Gtk.Orientation.HORIZONTAL
             };
 
-            var icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
-                margin_start = 12
-            };
-
             var label = new Gtk.Label (custom_name) {
                 xalign = 0.0f,
                 tooltip_text = uri,
@@ -233,11 +238,19 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
             });
 
+            icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
+                margin_start = 12
+            };
+
             content_grid.add (icon);
             content_grid.add (label);
             event_box.add (content_grid);
             add (event_box);
             show_all ();
+        }
+
+        public void update_icon (Icon gicon) {
+            icon.gicon = gicon;
         }
     }
     private class DeviceRow : BookmarkRow {
