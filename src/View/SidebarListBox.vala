@@ -78,10 +78,6 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         show_all ();
 
-        refresh_bookmark_listbox ();
-        refresh_device_listbox ();
-        refresh_network_listbox ();
-
         bookmark_listbox.row_selected.connect ((row) => {
             selected_uri = row != null ? ((BookmarkRow)row).uri : "";
         });
@@ -93,10 +89,14 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         network_listbox.row_selected.connect ((row) => {
             selected_uri = row != null ? ((BookmarkRow)row).uri : "";
         });
+
+        reload ();
+        plugins.sidebar_loaded (this);
     }
 
     private void refresh_bookmark_listbox () {
         foreach (Gtk.Widget child in bookmark_listbox.get_children ()) {
+            bookmark_listbox.remove (child);
             ((BookmarkRow)child).destroy_bookmark ();
         }
 
@@ -139,6 +139,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     private void refresh_device_listbox () {
         foreach (Gtk.Widget child in device_listbox.get_children ()) {
+            device_listbox.remove (child);
             ((BookmarkRow)child).destroy_bookmark ();
         }
 
@@ -154,6 +155,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     private void refresh_network_listbox () {
         foreach (Gtk.Widget child in network_listbox.get_children ()) {
+            network_listbox.remove (child);
            ((BookmarkRow)child).destroy_bookmark ();
         }
 
@@ -236,10 +238,22 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         });
     }
 
+    /* Throttle rate of destroying and re-adding listbox rows */
+    uint reload_timeout_id = 0;
     public void reload () {
-        refresh_bookmark_listbox ();
-        refresh_device_listbox ();
-        refresh_network_listbox ();
+        if (reload_timeout_id > 0) {
+            Source.remove (reload_timeout_id);
+        }
+
+        reload_timeout_id = Timeout.add (100, () => {
+            reload_timeout_id = 0;
+            refresh_bookmark_listbox ();
+            refresh_device_listbox ();
+            refresh_network_listbox ();
+            plugins.update_sidebar (this);
+
+            return false;
+        });
     }
 
     public void add_favorite_uri (string uri, string? label = null) {

@@ -79,12 +79,12 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
         request_sidebar_update ();
     }
 
-    /**
-     * Request a update on marlin's sidebar
-     */
     void request_sidebar_update () {
-        return_if_fail (sidebar != null);
-        sidebar.request_update ();
+        if (sidebar == null) {
+            return;
+        }
+
+        sidebar.reload ();
     }
 
     void add_account_to_sidebar (CloudProviders.Account account, CloudProviders.Provider provider) {
