@@ -18,14 +18,17 @@
 
 public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface {
     Gtk.Box content_box;
-    Gtk.ListBox bookmark_listbox;
-    Gtk.ListBox device_listbox;
-    Gtk.ListBox network_listbox;
+    BookmarkListBox bookmark_listbox;
+    DeviceListBox device_listbox;
+    NetworkListBox network_listbox;
     Marlin.BookmarkList bookmark_list;
     unowned Marlin.TrashMonitor monitor;
+    VolumeMonitor volume_monitor;
+
     BookmarkRow? trash_bookmark;
 
     private string selected_uri = "";
+    public bool ejecting_or_unmounting = false;
 
     public new bool has_focus {
         get {
@@ -34,19 +37,26 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     construct {
-        bookmark_listbox = new Gtk.ListBox () {
-            selection_mode = Gtk.SelectionMode.SINGLE
-        };
-        device_listbox = new Gtk.ListBox () {
-            selection_mode = Gtk.SelectionMode.SINGLE
-        };
-        network_listbox = new Gtk.ListBox () {
-            selection_mode = Gtk.SelectionMode.SINGLE
-        };
+        bookmark_listbox = new BookmarkListBox (this);
+        device_listbox = new DeviceListBox (this);
+        network_listbox = new NetworkListBox (this);
+
         monitor = Marlin.TrashMonitor.get_default ();
         monitor.notify["is-empty"].connect (() => {
             trash_bookmark.update_icon (monitor.get_icon ());
         });
+        volume_monitor = VolumeMonitor.@get ();
+        volume_monitor.volume_added.connect (device_listbox.add_volume);
+        volume_monitor.volume_removed.connect (device_listbox.remove_volume);
+        volume_monitor.volume_changed.connect (device_listbox.update_volume);
+
+        volume_monitor.mount_added.connect (device_listbox.add_mount);
+        volume_monitor.mount_removed.connect (device_listbox.remove_mount);
+        volume_monitor.mount_changed.connect (device_listbox.update_mount);
+
+        volume_monitor.drive_connected.connect (device_listbox.add_drive);
+        volume_monitor.drive_disconnected.connect (device_listbox.remove_drive);
+        volume_monitor.drive_changed.connect (device_listbox.update_drive);
 
         var bookmark_expander = new Gtk.Expander ("<b>" + _("Bookmarks") + "</b>") {
             expanded = true,
@@ -95,10 +105,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     private void refresh_bookmark_listbox () {
-        foreach (Gtk.Widget child in bookmark_listbox.get_children ()) {
-            bookmark_listbox.remove (child);
-            ((BookmarkRow)child).destroy_bookmark ();
-        }
+        bookmark_listbox.clear ();
 
         var home_uri = "";
         try {
@@ -107,7 +114,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         catch (ConvertError e) {}
 
         if (home_uri != "") {
-            add_bookmark (
+            bookmark_listbox.add_bookmark (
                 _("Home"),
                 home_uri,
                 new ThemedIcon (Marlin.ICON_HOME)
@@ -116,7 +123,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         var recent_uri = _(Marlin.PROTOCOL_NAME_RECENT);
         if (recent_uri != "") {
-            add_bookmark (
+            bookmark_listbox.add_bookmark (
                 _("Recent"),
                 recent_uri,
                 new ThemedIcon (Marlin.ICON_RECENT)
@@ -124,12 +131,12 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
 
         foreach (Marlin.Bookmark bm in bookmark_list.list) {
-            add_bookmark (bm.label, bm.uri, bm.get_icon ());
+            bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
         }
 
         var trash_uri = _(Marlin.TRASH_URI);
         if (trash_uri != "") {
-            trash_bookmark = add_bookmark (
+            trash_bookmark = bookmark_listbox.add_bookmark (
                 _("Trash"),
                 trash_uri,
                 new ThemedIcon (Marlin.ICON_TRASH)
@@ -145,7 +152,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         var root_uri = _(Marlin.ROOT_FS_URI);
         if (root_uri != "") {
-            add_device (
+            device_listbox.add_bookmark (
                 _("FileSystem"),
                 root_uri,
                 new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
@@ -161,7 +168,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         var network_uri = _(Marlin.NETWORK_URI);
         if (network_uri != "") {
-            add_network_location (
+            network_listbox.add_bookmark (
                 _("Entire Network"),
                 Marlin.NETWORK_URI,
                 new ThemedIcon (Marlin.ICON_NETWORK)
@@ -170,31 +177,15 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     }
 
-    private BookmarkRow add_bookmark (string label, string uri, Icon gicon) {
-        var bookmark_row = new BookmarkRow (label, uri, gicon, this);
-        bookmark_listbox.add (bookmark_row);
-        return bookmark_row;
-    }
-    private DeviceRow add_device (string label, string uri, Icon gicon) {
-        var device_row = new DeviceRow (label, uri, gicon, this);
-        device_listbox.add (device_row);
-        return device_row;
-    }
-    private NetworkRow add_network_location (string label, string uri, Icon gicon) {
-        var network_row = new NetworkRow (label, uri, gicon, this);
-        network_listbox.add (network_row);
-        return network_row;
-    }
-
     /* SidebarInterface */
     public int32 add_plugin_item (Marlin.SidebarPluginItem item, PlaceType category) {
         switch (category) {
             case PlaceType.BOOKMARKS_CATEGORY:
-                return add_bookmark (item.name, item.uri, item.icon).id;
+                return bookmark_listbox.add_bookmark (item.name, item.uri, item.icon).id;
             case PlaceType.STORAGE_CATEGORY:
-                return add_device (item.name, item.uri, item.icon).id;
+                return device_listbox.add_bookmark (item.name, item.uri, item.icon).id;
             case PlaceType.NETWORK_CATEGORY:
-                return add_network_location (item.name, item.uri, item.icon).id;
+                return network_listbox.add_bookmark (item.name, item.uri, item.icon).id;
             default:
                 return -1;
         }
@@ -257,11 +248,101 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     public void add_favorite_uri (string uri, string? label = null) {
-
+        var bm = bookmark_list.insert_uri_at_end (uri, label);
+        bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
     }
 
     public bool has_favorite_uri (string uri) {
         return false;
+    }
+
+
+    /* PRIVATE CLASSES */
+    private class BookmarkListBox : Gtk.ListBox {
+        public Marlin.SidebarListBox sidebar { get; construct; }
+        public BookmarkListBox (Marlin.SidebarListBox sidebar) {
+            Object (
+                sidebar: sidebar
+            );
+        }
+
+        construct {
+            selection_mode = Gtk.SelectionMode.SINGLE;
+        }
+
+        public virtual BookmarkRow add_bookmark (string label, string uri, Icon gicon) {
+            var row = new BookmarkRow (label, uri, gicon, sidebar);
+            add (row);
+            return row;
+        }
+
+        public void clear () {
+            foreach (Gtk.Widget child in get_children ()) {
+                remove (child);
+                ((BookmarkRow)child).destroy_bookmark ();
+            }
+        }
+    }
+    private class DeviceListBox : BookmarkListBox {
+        public DeviceListBox (Marlin.SidebarListBox sidebar) {
+            Object (
+                sidebar: sidebar
+            );
+        }
+
+        public void add_volume (Volume vol) {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void add_mount (Mount mount)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void add_drive (Drive drive)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void remove_volume (Volume vol)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void remove_mount (Mount mount)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void remove_drive (Drive drive)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void update_volume (Volume vol)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void update_mount (Mount mount)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+        public void update_drive (Drive drive)  {
+            if (sidebar.ejecting_or_unmounting) {
+                return;
+            }
+        }
+    }
+
+    private class NetworkListBox : BookmarkListBox {
+        public NetworkListBox (Marlin.SidebarListBox sidebar) {
+            Object (
+                sidebar: sidebar
+            );
+        }
     }
 
     private class BookmarkRow : Gtk.ListBoxRow {
@@ -288,12 +369,12 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         public Icon gicon { get; construct; }
         public int32 id {get; construct; }
         private Gtk.Image icon;
-        public unowned Marlin.SidebarInterface sidebar { get; construct; }
+        public Marlin.SidebarListBox sidebar { get; construct; }
 
         public BookmarkRow (string name,
                             string uri,
                             Icon gicon,
-                            Marlin.SidebarInterface sidebar) {
+                            Marlin.SidebarListBox sidebar) {
             Object (
                 custom_name: name,
                 uri: uri,
@@ -351,7 +432,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
     }
     private class DeviceRow : BookmarkRow {
-        public DeviceRow (string name, string uri, Icon gicon, SidebarInterface sidebar) {
+        public DeviceRow (string name, string uri, Icon gicon, Marlin.SidebarListBox sidebar) {
             Object (
                 custom_name: name,
                 uri: uri,
@@ -361,7 +442,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
     }
     private class NetworkRow : BookmarkRow {
-        public NetworkRow (string name, string uri, Icon gicon, SidebarInterface sidebar) {
+        public NetworkRow (string name, string uri, Icon gicon, Marlin.SidebarListBox sidebar) {
             Object (
                 custom_name: name,
                 uri: uri,

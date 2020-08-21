@@ -135,14 +135,18 @@ namespace Marlin {
             return instance;
         }
 
-        public void insert_uri (string uri, uint index, string? label = null) {
-            insert_item_internal (new Bookmark.from_uri (uri, label), index);
+        public Bookmark insert_uri (string uri, uint index, string? label = null) {
+            var bm = new Bookmark.from_uri (uri, label);
+            insert_item_internal (bm, index);
             save_bookmarks_file ();
+            return bm;
         }
 
-        public void insert_uri_at_end (string uri, string? label = null) {
-            append_internal (new Bookmark.from_uri (uri, label));
+        public Bookmark insert_uri_at_end (string uri, string? label = null) {
+            var bm = new Bookmark.from_uri (uri, label);
+            append_internal (bm);
             save_bookmarks_file ();
+            return bm;
         }
 
         public void insert_uris (GLib.List<string> uris, uint index) {
