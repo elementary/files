@@ -158,6 +158,8 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
             );
         }
+
+        device_listbox.add_all_local_volumes_and_mounts (volume_monitor);
     }
 
     private void refresh_network_listbox () {
@@ -290,6 +292,12 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             );
         }
 
+        public override BookmarkRow add_bookmark (string label, string uri, Icon gicon) {
+            var row = new DeviceRow (label, uri, gicon, sidebar);
+            add (row);
+            return row;
+        }
+
         public void add_volume (Volume vol) {
             if (sidebar.ejecting_or_unmounting) {
                 return;
@@ -299,6 +307,17 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             if (sidebar.ejecting_or_unmounting) {
                 return;
             }
+
+            /* show mounted volume in sidebar */
+            var root = mount.get_root ();
+            var device_label = root.get_basename ();
+            if (device_label != mount.get_name ()) {
+                ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+                device_label = _("%s on %s").printf (device_label, mount.get_name ());
+            }
+
+            var row = add_bookmark (device_label, mount.get_default_location ().get_uri (), mount.get_icon ());
+            ((DeviceRow)row).add_device_tooltip.begin ();
         }
         public void add_drive (Drive drive)  {
             if (sidebar.ejecting_or_unmounting) {
@@ -333,6 +352,74 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         public void update_drive (Drive drive)  {
             if (sidebar.ejecting_or_unmounting) {
                 return;
+            }
+        }
+
+        public void add_all_local_volumes_and_mounts (VolumeMonitor vm) {
+            add_connected_drives (vm); // Add drives and their associated volumes
+            add_volumes (null, vm.get_volumes ()); // Add volumes not associated with a drive
+            add_mounts_without_volume (vm.get_mounts ());
+        }
+
+        private void add_connected_drives (VolumeMonitor vm) {
+            foreach (GLib.Drive drive in vm.get_connected_drives ()) {
+                var volumes = drive.get_volumes ();
+                if (volumes != null) {
+                    add_volumes (drive, volumes);
+                } else if (drive.is_media_removable () && !drive.is_media_check_automatic ()) {
+                /* If the drive has no mountable volumes and we cannot detect media change.. we
+                 * display the drive in the sidebar so the user can manually poll the drive by
+                 * right clicking and selecting "Rescan..."
+                 *
+                 * This is mainly for drives like floppies where media detection doesn't
+                 * work.. but it's also for human beings who like to turn off media detection
+                 * in the OS to save battery juice.
+                 */
+                    add_bookmark (drive.get_name (), "", drive.get_icon ());
+                }
+            }
+        }
+
+        private void add_volumes (Drive? drive, List<Volume> volumes) {
+            foreach (Volume volume in volumes) {
+                if (volume.get_drive () != drive) {
+                    continue;
+                }
+
+                var mount = volume.get_mount ();
+                if (mount != null) {
+                    add_mount (mount);
+                } else {
+                    /* Do show the unmounted volumes in the sidebar;
+                    * this is so the user can mount it (in case automounting
+                    * is off).
+                    *
+                    * Also, even if automounting is enabled, this gives a visual
+                    * cue that the user should remember to yank out the media if
+                    * he just unmounted it.
+                    */
+
+                    add_bookmark (volume.get_name (), "", volume.get_icon ());
+                }
+            }
+        }
+
+        private void add_mounts_without_volume (List<Mount> mounts) {
+            foreach (Mount mount in mounts) {
+                if (mount.is_shadowed ()) {
+                    continue;
+                }
+
+                var volume = mount.get_volume ();
+                if (volume != null) {
+                    continue;
+                }
+
+                var root = mount.get_root ();
+                if (root.is_native () && root.get_uri_scheme () != "archive") {
+                    add_mount (mount);
+                }
+
             }
         }
     }
@@ -440,7 +527,12 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 sidebar: sidebar
             );
         }
+
+        public async void add_device_tooltip () {
+
+        }
     }
+
     private class NetworkRow : BookmarkRow {
         public NetworkRow (string name, string uri, Icon gicon, Marlin.SidebarListBox sidebar) {
             Object (
