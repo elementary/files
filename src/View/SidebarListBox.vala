@@ -25,6 +25,8 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     unowned Marlin.TrashMonitor monitor;
     BookmarkRow? trash_bookmark;
 
+    private string selected_uri = "";
+
     public new bool has_focus {
         get {
             return bookmark_listbox.has_focus;
@@ -32,9 +34,15 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     construct {
-        bookmark_listbox = new Gtk.ListBox ();
-        device_listbox = new Gtk.ListBox ();
-        network_listbox = new Gtk.ListBox ();
+        bookmark_listbox = new Gtk.ListBox () {
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+        device_listbox = new Gtk.ListBox () {
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+        network_listbox = new Gtk.ListBox () {
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
         monitor = Marlin.TrashMonitor.get_default ();
         monitor.notify["is-empty"].connect (() => {
             trash_bookmark.update_icon (monitor.get_icon ());
@@ -73,11 +81,23 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         refresh_bookmark_listbox ();
         refresh_device_listbox ();
         refresh_network_listbox ();
+
+        bookmark_listbox.row_selected.connect ((row) => {
+            selected_uri = row != null ? ((BookmarkRow)row).uri : "";
+        });
+
+        device_listbox.row_selected.connect ((row) => {
+            selected_uri = row != null ? ((BookmarkRow)row).uri : "";
+        });
+
+        network_listbox.row_selected.connect ((row) => {
+            selected_uri = row != null ? ((BookmarkRow)row).uri : "";
+        });
     }
 
     private void refresh_bookmark_listbox () {
         foreach (Gtk.Widget child in bookmark_listbox.get_children ()) {
-            child.destroy ();
+            ((BookmarkRow)child).destroy_bookmark ();
         }
 
         var home_uri = "";
@@ -119,7 +139,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     private void refresh_device_listbox () {
         foreach (Gtk.Widget child in device_listbox.get_children ()) {
-            child.destroy ();
+            ((BookmarkRow)child).destroy_bookmark ();
         }
 
         var root_uri = _(Marlin.ROOT_FS_URI);
@@ -134,7 +154,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     private void refresh_network_listbox () {
         foreach (Gtk.Widget child in network_listbox.get_children ()) {
-            child.destroy ();
+           ((BookmarkRow)child).destroy_bookmark ();
         }
 
         var network_uri = _(Marlin.NETWORK_URI);
@@ -166,23 +186,60 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     /* SidebarInterface */
     public int32 add_plugin_item (Marlin.SidebarPluginItem item, PlaceType category) {
-        return 0;
+        switch (category) {
+            case PlaceType.BOOKMARKS_CATEGORY:
+                return add_bookmark (item.name, item.uri, item.icon).id;
+            case PlaceType.STORAGE_CATEGORY:
+                return add_device (item.name, item.uri, item.icon).id;
+            case PlaceType.NETWORK_CATEGORY:
+                return add_network_location (item.name, item.uri, item.icon).id;
+            default:
+                return -1;
+        }
     }
 
     public bool update_plugin_item (Marlin.SidebarPluginItem item, int32 item_id) {
-        return false;
+        if (item_id < 0) {
+            return false;
+        }
+
+        var row = BookmarkRow.bookmark_id_map.@get (item_id);
+        row.name = item.name;
+        row.uri = item.uri;
+        row.update_icon (item.icon);
+        return true;
     }
 
     public void remove_plugin_item (int32 item_id) {
-
+        BookmarkRow row = BookmarkRow.bookmark_id_map.@get (item_id);
+        row.destroy_bookmark ();
     }
 
     public void sync_uri (string location) {
+        if (selected_uri == location) {
+            return;
+        }
 
+        Idle.add (() => { // Need to emit selection signals when idle as sync_uri can be called repeatedly rapidly
+            network_listbox.unselect_all ();
+            device_listbox.unselect_all ();
+            bookmark_listbox.unselect_all ();
+            foreach (BookmarkRow row in BookmarkRow.bookmark_id_map.values) {
+                if (row.uri == location) {
+                    network_listbox.select_row (row);
+                    device_listbox.select_row (row);
+                    bookmark_listbox.select_row (row);
+                    break;
+                }
+            }
+            return false;
+        });
     }
 
     public void reload () {
-
+        refresh_bookmark_listbox ();
+        refresh_device_listbox ();
+        refresh_network_listbox ();
     }
 
     public void add_favorite_uri (string uri, string? label = null) {
@@ -194,9 +251,28 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     private class BookmarkRow : Gtk.ListBoxRow {
-        public string custom_name { get; construct; }
-        public string uri { get; construct; }
+        private static int row_id;
+        public static Gee.HashMap<int, BookmarkRow> bookmark_id_map;
+
+        protected static int get_next_row_id () {
+            return ++row_id;
+        }
+
+        static construct {
+            /* intialise the row_id to a large random number (is this necessary?)*/
+            var rand = new Rand.with_seed (int.parse (get_real_time ().to_string ()));
+            var min_size = int.MAX / 4;
+            while (row_id < min_size) {
+                row_id = (int32)(rand.next_int ());
+            }
+
+            bookmark_id_map = new Gee.HashMap<int, BookmarkRow> ();
+        }
+
+        public string custom_name { get; set construct; }
+        public string uri { get; set construct; }
         public Icon gicon { get; construct; }
+        public int32 id {get; construct; }
         private Gtk.Image icon;
         public unowned Marlin.SidebarInterface sidebar { get; construct; }
 
@@ -214,6 +290,8 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         construct {
             selectable = true;
+            id = BookmarkRow.get_next_row_id ();
+            BookmarkRow.bookmark_id_map.@set (id, this);
 
             var event_box = new Gtk.EventBox () {
                 above_child = true
@@ -251,6 +329,11 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         public void update_icon (Icon gicon) {
             icon.gicon = gicon;
+        }
+
+        public void destroy_bookmark () {
+            BookmarkRow.bookmark_id_map.unset (id);
+            base.destroy ();
         }
     }
     private class DeviceRow : BookmarkRow {
