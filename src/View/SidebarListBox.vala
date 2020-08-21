@@ -17,38 +17,11 @@
 ***/
 
 public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface {
-    private enum Column {
-        NAME,
-        URI,
-        DRIVE,
-        VOLUME,
-        MOUNT,
-        ROW_TYPE,
-        ICON,
-        INDEX,
-        CAN_EJECT,
-        NO_EJECT,
-        BOOKMARK,
-        IS_CATEGORY,
-        NOT_CATEGORY,
-        TOOLTIP,
-        ACTION_ICON,
-        SHOW_SPINNER,
-        SHOW_EJECT,
-        SPINNER_PULSE,
-        FREE_SPACE,
-        DISK_SIZE,
-        PLUGIN_CALLBACK,
-        MENU_MODEL,
-        ACTION_GROUP_NAMESPACE,
-        ACTION_GROUP,
-        COUNT
-    }
-
     Gtk.TreeStore store;
     Gtk.Box content_box;
     Gtk.ListBox bookmark_listbox;
     Marlin.BookmarkList bookmark_list;
+    Gtk.Label bookmark_header;
     Gee.HashMap<string, Marlin.Bookmark> bookmark_map;
 
     public new bool has_focus {
@@ -58,35 +31,10 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     construct {
-        /* ceates the Gtk.TreeModel store. */
-        store = new Gtk.TreeStore (((int)Column.COUNT),
-                                    typeof (string),            /* name */
-                                    typeof (string),            /* uri */
-                                    typeof (Drive),
-                                    typeof (Volume),
-                                    typeof (Mount),
-                                    typeof (int),               /* row type*/
-                                    typeof (Icon),              /* Primary icon */
-                                    typeof (uint),              /* index*/
-                                    typeof (bool),              /* can eject */
-                                    typeof (bool),              /* cannot eject */
-                                    typeof (bool),              /* is bookmark */
-                                    typeof (bool),              /* is category */
-                                    typeof (bool),              /* is not category */
-                                    typeof (string),            /* tool tip */
-                                    typeof (Icon),              /* Action icon (e.g. eject button) */
-                                    typeof (bool),              /* Show spinner (not eject button) */
-                                    typeof (bool),              /* Show eject button (not spinner) */
-                                    typeof (uint),              /* Spinner pulse */
-                                    typeof (uint64),            /* Free space */
-                                    typeof (uint64),            /* For disks, total size */
-                                    typeof (Marlin.SidebarCallbackFunc),
-                                    typeof (GLib.MenuModel),    /* MenuModel for external menus */
-                                    typeof (string),            /* Action group namespace */
-                                    typeof (GLib.ActionGroup)   /* Action group with MenuModel's actions */
-                                    );
-
         bookmark_listbox = new Gtk.ListBox ();
+        bookmark_header = new Gtk.Label ("BOOKMARKS");
+        bookmark_header.show ();
+
         content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         content_box.add (bookmark_listbox);
         this.add (content_box);
@@ -95,6 +43,13 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         bookmark_list = Marlin.BookmarkList.get_instance ();
         bookmark_list.loaded.connect (on_bookmark_list_loaded);
+        bookmark_listbox.set_header_func ((row, before) => {
+            if (row.get_index () == 3) { //First row - set header
+                row.set_header (bookmark_header);
+            } else {
+                row.set_header (null);
+            }
+        });
 
         show_all ();
 
@@ -118,7 +73,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     private void add_bookmark (string label, string uri) {
-        var bookmark_row = new BookmarkRow (label, uri, this) ;
+        var bookmark_row = new BookmarkRow (label, uri, this);
         bookmark_listbox.add (bookmark_row);
     }
 
