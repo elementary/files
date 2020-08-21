@@ -54,7 +54,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     private void on_bookmark_list_loaded () {
         clear_bookmarks ();
         foreach (Marlin.Bookmark bm in bookmark_list.list) {
-            add_bookmark (bm.label, bm.uri);
+            add_bookmark (bm.label, bm.uri, bm.get_icon ());
         }
 
         insert_builtin_bookmarks ();
@@ -67,8 +67,8 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
     }
 
-    private void add_bookmark (string label, string uri) {
-        var bookmark_row = new BookmarkRow (label, uri, this);
+    private void add_bookmark (string label, string uri, Icon gicon) {
+        var bookmark_row = new BookmarkRow (label, uri, gicon, this);
         bookmark_listbox.add (bookmark_row);
     }
 
@@ -80,7 +80,11 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         catch (ConvertError e) {}
 
         if (home_uri != "") {
-            add_bookmark (_("Home"), home_uri);
+            add_bookmark (
+                _("Home"),
+                home_uri,
+                new ThemedIcon (Marlin.ICON_HOME)
+            );
         }
     }
 
@@ -116,31 +120,54 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     private class BookmarkRow : Gtk.ListBoxRow {
         public string custom_name { get; construct; }
         public string uri { get; construct; }
+        public Icon gicon { get; construct; }
         public unowned Marlin.SidebarInterface sidebar { get; construct; }
 
-        public BookmarkRow (string name, string uri, Marlin.SidebarInterface sidebar) {
+        public BookmarkRow (string name,
+                            string uri,
+                            Icon gicon,
+                            Marlin.SidebarInterface sidebar) {
             Object (
                 custom_name: name,
                 uri: uri,
+                gicon: gicon,
                 sidebar: sidebar
             );
         }
 
         construct {
-            var label = new Gtk.Button.with_label (custom_name) {
-                xalign = 0.0f,
-                tooltip_text = uri,
-                margin_start = 6
+            selectable = true;
+
+            var event_box = new Gtk.EventBox () {
+                above_child = true
             };
 
-            label.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+            var content_grid = new Gtk.Grid () {
+                orientation = Gtk.Orientation.HORIZONTAL
+            };
 
-            label.clicked.connect (() => {
+            var icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
+                margin_start = 12
+            };
+
+            var label = new Gtk.Label (custom_name) {
+                xalign = 0.0f,
+                tooltip_text = uri
+            };
+
+            button_press_event.connect_after (() => {
+                sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
+                return false;
+            });
+
+            activate.connect (() => {
                 sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
             });
 
-            add (label);
-
+            content_grid.add (icon);
+            content_grid.add (label);
+            event_box.add (content_grid);
+            add (event_box);
             show_all ();
         }
     }
