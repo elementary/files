@@ -17,11 +17,9 @@
 ***/
 
 public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface {
-    Gtk.TreeStore store;
     Gtk.Box content_box;
     Gtk.ListBox bookmark_listbox;
     Marlin.BookmarkList bookmark_list;
-    Gtk.Label bookmark_header;
     Gee.HashMap<string, Marlin.Bookmark> bookmark_map;
 
     public new bool has_focus {
@@ -32,24 +30,21 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
     construct {
         bookmark_listbox = new Gtk.ListBox ();
-        bookmark_header = new Gtk.Label ("BOOKMARKS");
-        bookmark_header.show ();
+        var bookmark_expander = new Gtk.Expander ("<b>" + _("Bookmarks") + "</b>") {
+            expanded = true,
+            use_markup = true
+        };
+
+        bookmark_expander.add (bookmark_listbox);
 
         content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content_box.add (bookmark_listbox);
+        content_box.add (bookmark_expander);
         this.add (content_box);
 
         bookmark_map = new Gee.HashMap<string, Marlin.Bookmark> ();
 
         bookmark_list = Marlin.BookmarkList.get_instance ();
         bookmark_list.loaded.connect (on_bookmark_list_loaded);
-        bookmark_listbox.set_header_func ((row, before) => {
-            if (row.get_index () == 3) { //First row - set header
-                row.set_header (bookmark_header);
-            } else {
-                row.set_header (null);
-            }
-        });
 
         show_all ();
 
@@ -134,8 +129,11 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         construct {
             var label = new Gtk.Button.with_label (custom_name) {
                 xalign = 0.0f,
-                tooltip_text = uri
+                tooltip_text = uri,
+                margin_start = 6
             };
+
+            label.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
             label.clicked.connect (() => {
                 sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
