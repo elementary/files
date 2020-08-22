@@ -47,4 +47,5 @@ public interface Marlin.SidebarInterface : Gtk.ScrolledWindow {
         public abstract bool has_favorite_uri (string uri);
         public abstract void sync_uri (string uri);
         public abstract void reload ();
+        public abstract void on_free_space_change ();
 }

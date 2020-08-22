@@ -158,8 +158,7 @@ namespace Marlin.View {
             tabs.show ();
 
             sidebar = new Marlin.SidebarListBox ();
-            loading_uri.connect (sidebar.sync_uri);
-            free_space_change.connect (sidebar.reload);
+            free_space_change.connect (sidebar.on_free_space_change);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 expand = true,
@@ -374,6 +373,7 @@ namespace Marlin.View {
 
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+            sidebar.sync_uri (current_tab.uri);
             top_menu.working = current_tab.is_frozen;
         }
 
@@ -1093,6 +1093,7 @@ namespace Marlin.View {
             if (current_tab != null) { /* Can happen during restore */
                 set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
                 top_menu.update_location_bar (uri);
+                sidebar.sync_uri (uri);
             }
         }
 

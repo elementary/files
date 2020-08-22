@@ -22,12 +22,14 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     DeviceListBox device_listbox;
     NetworkListBox network_listbox;
     Marlin.BookmarkList bookmark_list;
-    unowned Marlin.TrashMonitor monitor;
+    unowned Marlin.TrashMonitor trash_monitor;
     VolumeMonitor volume_monitor;
 
     BookmarkRow? trash_bookmark;
+    ulong trash_handler_id;
 
     private string selected_uri = "";
+    private bool loading = false;
     public bool ejecting_or_unmounting = false;
 
     public new bool has_focus {
@@ -41,10 +43,8 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
 
-        monitor = Marlin.TrashMonitor.get_default ();
-        monitor.notify["is-empty"].connect (() => {
-            trash_bookmark.update_icon (monitor.get_icon ());
-        });
+        trash_monitor = Marlin.TrashMonitor.get_default ();
+
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.volume_added.connect (device_listbox.add_volume);
         volume_monitor.volume_removed.connect (device_listbox.remove_volume);
@@ -84,29 +84,25 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         this.add (content_box);
 
         bookmark_list = Marlin.BookmarkList.get_instance ();
-        bookmark_list.loaded.connect (refresh_bookmark_listbox);
 
         show_all ();
 
-        bookmark_listbox.row_selected.connect ((row) => {
-            selected_uri = row != null ? ((BookmarkRow)row).uri : "";
-        });
-
-        device_listbox.row_selected.connect ((row) => {
-            selected_uri = row != null ? ((BookmarkRow)row).uri : "";
-        });
-
-        network_listbox.row_selected.connect ((row) => {
-            selected_uri = row != null ? ((BookmarkRow)row).uri : "";
-        });
+        plugins.sidebar_loaded (this);
 
         reload ();
-        plugins.sidebar_loaded (this);
+        bookmark_list.loaded.connect (() => {
+            refresh_bookmark_listbox ();
+        });
     }
 
     private void refresh_bookmark_listbox () {
-        bookmark_listbox.clear ();
+        if (loading || reload_timeout_id > 0) { //Do not refresh if will be reloaded anyway
+            return;
+        }
 
+        loading = true;
+        BookmarkRow.bookmark_lock.@lock ();
+        bookmark_listbox.clear ();
         var home_uri = "";
         try {
             home_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
@@ -139,12 +135,25 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             trash_bookmark = bookmark_listbox.add_bookmark (
                 _("Trash"),
                 trash_uri,
-                new ThemedIcon (Marlin.ICON_TRASH)
+                trash_monitor.get_icon ()
             );
         }
+
+        trash_handler_id = trash_monitor.notify["is-empty"].connect (() => {
+            trash_bookmark.update_icon (trash_monitor.get_icon ());
+        });
+
+        BookmarkRow.bookmark_lock.unlock ();
+        loading = false;
     }
 
     private void refresh_device_listbox () {
+        if (loading) {
+            return;
+        }
+
+        loading = true;
+        BookmarkRow.bookmark_lock.@lock ();
         foreach (Gtk.Widget child in device_listbox.get_children ()) {
             device_listbox.remove (child);
             ((BookmarkRow)child).destroy_bookmark ();
@@ -160,9 +169,17 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
 
         device_listbox.add_all_local_volumes_and_mounts (volume_monitor);
+        BookmarkRow.bookmark_lock.unlock ();
+        loading = false;
     }
 
     private void refresh_network_listbox () {
+        if (loading) {
+            return;
+        }
+
+        loading = true;
+        BookmarkRow.bookmark_lock.@lock ();
         foreach (Gtk.Widget child in network_listbox.get_children ()) {
             network_listbox.remove (child);
            ((BookmarkRow)child).destroy_bookmark ();
@@ -183,6 +200,9 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 new ThemedIcon (Marlin.ICON_NETWORK)
             );
         }
+
+        BookmarkRow.bookmark_lock.unlock ();
+        loading = false;
     }
 
     /* SidebarInterface */
@@ -216,24 +236,36 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         row.destroy_bookmark ();
     }
 
+    uint sync_timeout_id = 0;
     public void sync_uri (string location) {
-        if (selected_uri == location) {
-            return;
+        if (sync_timeout_id > 0) {
+            Source.remove (sync_timeout_id);
         }
 
-        Idle.add (() => { // Need to emit selection signals when idle as sync_uri can be called repeatedly rapidly
+        selected_uri = location;
+        sync_timeout_id = Timeout.add (100, () => {
+            if (BookmarkRow.bookmark_id_map == null || loading) { // Wait until bookmarks are constructed
+                return Source.CONTINUE;
+            }
+            sync_timeout_id = 0;
             network_listbox.unselect_all ();
             device_listbox.unselect_all ();
             bookmark_listbox.unselect_all ();
-            foreach (BookmarkRow row in BookmarkRow.bookmark_id_map.values) {
-                if (row.uri == location) {
-                    network_listbox.select_row (row);
-                    device_listbox.select_row (row);
-                    bookmark_listbox.select_row (row);
-                    break;
+            /* Need to process unselect_all signal first */
+            Idle.add (() => {
+                BookmarkRow.bookmark_lock.@lock ();
+                foreach (BookmarkRow row in BookmarkRow.bookmark_id_map.values) {
+                    if (row.uri == location) {
+                        network_listbox.select_row (row);
+                        device_listbox.select_row (row);
+                        bookmark_listbox.select_row (row);
+                        break;
+                    }
                 }
-            }
-            return false;
+                BookmarkRow.bookmark_lock.unlock ();
+                return Source.REMOVE;
+            });
+            return Source.REMOVE;
         });
     }
 
@@ -241,16 +273,17 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     uint reload_timeout_id = 0;
     public void reload () {
         if (reload_timeout_id > 0) {
-            Source.remove (reload_timeout_id);
+            return;
         }
 
-        reload_timeout_id = Timeout.add (100, () => {
+        reload_timeout_id = Timeout.add (300, () => {
             reload_timeout_id = 0;
             refresh_bookmark_listbox ();
             refresh_device_listbox ();
             refresh_network_listbox ();
-            plugins.update_sidebar (this);
 
+            plugins.update_sidebar (this);
+            sync_uri (selected_uri);
             return false;
         });
     }
@@ -264,6 +297,8 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
         return false;
     }
 
+    public void on_free_space_change () {
+    }
 
     /* PRIVATE CLASSES */
     private class BookmarkListBox : Gtk.ListBox {
@@ -436,6 +471,12 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
             );
         }
 
+        public override BookmarkRow add_bookmark (string label, string uri, Icon gicon) {
+            var row = new NetworkRow (label, uri, gicon, sidebar);
+            add (row);
+            return row;
+        }
+
         public void add_all_network_mounts (VolumeMonitor vm) {
             foreach (Mount mount in vm.get_mounts ()) {
                 if (mount.is_shadowed ()) {
@@ -467,6 +508,7 @@ public class Marlin.SidebarListBox : Gtk.ScrolledWindow, Marlin.SidebarInterface
     private class BookmarkRow : Gtk.ListBoxRow {
         private static int row_id;
         public static Gee.HashMap<int, BookmarkRow> bookmark_id_map;
+        public static Mutex bookmark_lock;
 
         protected static int get_next_row_id () {
             return ++row_id;
