@@ -33,6 +33,13 @@ public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
         return row;
     }
 
+    //TODO Use plugin for ConnectServer action?
+    public ActionRow add_action_bookmark (string label, Icon gicon, ActionRowFunc action) {
+        var row = new ActionRow (label, gicon, action);
+        add (row);
+        return row;
+    }
+
     public void add_all_network_mounts () {
         foreach (Mount mount in VolumeMonitor.@get ().get_mounts ()) {
             if (mount.is_shadowed ()) {

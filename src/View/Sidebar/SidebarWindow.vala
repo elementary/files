@@ -77,111 +77,109 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         reload ();
         bookmark_list.loaded.connect (() => {
-            refresh_bookmark_listbox ();
+            refresh (true, false, false);
         });
     }
 
-    private void refresh_bookmark_listbox () {
+    private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
         //Do not refresh already refreshing or if will be reloaded anyway
         if (loading || reload_timeout_id > 0) {
             return;
         }
 
         loading = true;
+        if (bookmarks) {
         bookmark_listbox.clear ();
-        var home_uri = "";
-        try {
-            home_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
-        }
-        catch (ConvertError e) {}
+            var home_uri = "";
+            try {
+                home_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
+            }
+            catch (ConvertError e) {}
 
-        if (home_uri != "") {
-            bookmark_listbox.add_bookmark (
-                _("Home"),
-                home_uri,
-                new ThemedIcon (Marlin.ICON_HOME)
+            if (home_uri != "") {
+                bookmark_listbox.add_bookmark (
+                    _("Home"),
+                    home_uri,
+                    new ThemedIcon (Marlin.ICON_HOME)
+                );
+            }
+
+            var recent_uri = _(Marlin.PROTOCOL_NAME_RECENT);
+            if (recent_uri != "") {
+                bookmark_listbox.add_bookmark (
+                    _("Recent"),
+                    recent_uri,
+                    new ThemedIcon (Marlin.ICON_RECENT)
+                );
+            }
+
+            foreach (Marlin.Bookmark bm in bookmark_list.list) {
+                bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
+            }
+
+            var trash_uri = _(Marlin.TRASH_URI);
+            if (trash_uri != "") {
+                trash_bookmark = bookmark_listbox.add_bookmark (
+                    _("Trash"),
+                    trash_uri,
+                    trash_monitor.get_icon ()
+                );
+            }
+
+            trash_handler_id = trash_monitor.notify["is-empty"].connect (() => {
+                trash_bookmark.update_icon (trash_monitor.get_icon ());
+            });
+        }
+
+        if (devices) {
+            foreach (Gtk.Widget child in device_listbox.get_children ()) {
+                device_listbox.remove (child);
+                ((BookmarkRow)child).destroy_bookmark ();
+            }
+
+            var root_uri = _(Marlin.ROOT_FS_URI);
+            if (root_uri != "") {
+                device_listbox.add_bookmark (
+                    _("FileSystem"),
+                    root_uri,
+                    new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
+                );
+            }
+
+            device_listbox.add_all_local_volumes_and_mounts ();
+        }
+
+        if (network) {
+            foreach (var child in network_listbox.get_children ()) {
+                network_listbox.remove (child);
+               ((NetworkRow)child).destroy_bookmark ();
+            }
+
+            if (Marlin.is_admin ()) { //Network operations fail for administrators
+                return;
+            }
+
+
+            network_listbox.add_all_network_mounts ();
+
+            var network_uri = _(Marlin.NETWORK_URI);
+            if (network_uri != "") {
+                network_listbox.add_bookmark (
+                    _("Entire Network"),
+                    Marlin.NETWORK_URI,
+                    new ThemedIcon (Marlin.ICON_NETWORK)
+                );
+            }
+
+            /* Add ConnectServer BUILTIN */
+            var bm = network_listbox.add_action_bookmark (
+                _("Connect Server"),
+                new ThemedIcon.with_default_fallbacks ("network-server"),
+                () => {connect_server_request ();}
             );
-        }
 
-        var recent_uri = _(Marlin.PROTOCOL_NAME_RECENT);
-        if (recent_uri != "") {
-            bookmark_listbox.add_bookmark (
-                _("Recent"),
-                recent_uri,
-                new ThemedIcon (Marlin.ICON_RECENT)
-            );
-        }
-
-        foreach (Marlin.Bookmark bm in bookmark_list.list) {
-            bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
-        }
-
-        var trash_uri = _(Marlin.TRASH_URI);
-        if (trash_uri != "") {
-            trash_bookmark = bookmark_listbox.add_bookmark (
-                _("Trash"),
-                trash_uri,
-                trash_monitor.get_icon ()
-            );
-        }
-
-        trash_handler_id = trash_monitor.notify["is-empty"].connect (() => {
-            trash_bookmark.update_icon (trash_monitor.get_icon ());
-        });
-
-        loading = false;
-    }
-
-    private void refresh_device_listbox () {
-        //Do not refresh already refreshing or if will be reloaded anyway
-        if (loading || reload_timeout_id > 0) {
-            return;
-        }
-
-        loading = true;
-        foreach (Gtk.Widget child in device_listbox.get_children ()) {
-            device_listbox.remove (child);
-            ((BookmarkRow)child).destroy_bookmark ();
-        }
-
-        var root_uri = _(Marlin.ROOT_FS_URI);
-        if (root_uri != "") {
-            device_listbox.add_bookmark (
-                _("FileSystem"),
-                root_uri,
-                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
-            );
-        }
-
-        device_listbox.add_all_local_volumes_and_mounts ();
-        loading = false;
-    }
-
-    private void refresh_network_listbox () {
-        //Do not refresh already refreshing or if will be reloaded anyway
-        if (loading || reload_timeout_id > 0) {
-            return;
-        }
-
-        loading = true;
-        foreach (var child in network_listbox.get_children ()) {
-            network_listbox.remove (child);
-           ((NetworkRow)child).destroy_bookmark ();
-        }
-
-        if (Marlin.is_admin ()) { //Network operations fail for administrators
-            return;
-        }
-
-
-        network_listbox.add_all_network_mounts ();
-
-        var network_uri = _(Marlin.NETWORK_URI);
-        if (network_uri != "") {
-            network_listbox.add_bookmark (
-                _("Entire Network"),
-                Marlin.NETWORK_URI,
-                new ThemedIcon (Marlin.ICON_NETWORK)
+            bm.set_tooltip_markup (
+                Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server"))
             );
         }
 
@@ -266,9 +264,7 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         reload_timeout_id = Timeout.add (300, () => {
             reload_timeout_id = 0;
-            refresh_bookmark_listbox ();
-            refresh_device_listbox ();
-            refresh_network_listbox ();
+            refresh ();
 
             plugins.update_sidebar (this);
             sync_uri (selected_uri);
@@ -282,7 +278,7 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     public bool has_favorite_uri (string uri) {
-        return false;
+        return bookmark_listbox.has_uri (uri);
     }
 
     public void on_free_space_change () {
