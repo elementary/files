@@ -127,8 +127,11 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
             }
 
             trash_handler_id = trash_monitor.notify["is-empty"].connect (() => {
-                trash_bookmark.update_icon (trash_monitor.get_icon ());
+                if (trash_bookmark != null) {
+                    trash_bookmark.update_icon (trash_monitor.get_icon ());
+                }
             });
+
         }
 
         if (devices) {
@@ -234,6 +237,7 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
             if (loading) { // Wait until bookmarks are constructed
                 return Source.CONTINUE;
             }
+
             sync_timeout_id = 0;
             network_listbox.unselect_all ();
             device_listbox.unselect_all ();
@@ -251,6 +255,7 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
                 return Source.REMOVE;
             });
+
             return Source.REMOVE;
         });
     }

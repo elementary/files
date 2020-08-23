@@ -32,9 +32,14 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox {
         selection_mode = Gtk.SelectionMode.SINGLE;
     }
 
-    public BookmarkRow add_bookmark (string label, string uri, Icon gicon) {
+    public BookmarkRow? add_bookmark (string label, string uri, Icon gicon) {
         var row = new BookmarkRow (label, uri, gicon, sidebar);
-        add (row);
+        if (!has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
+            add (row);
+        } else {
+            return null;
+        }
+
         return row;
     }
 
@@ -56,9 +61,11 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox {
     public bool has_uri (string uri, out unowned BookmarkRow row = null) {
         row = null;
         foreach (var child in get_children ()) {
-            if (((BookmarkRow)child).uri == uri) {
-                row = (BookmarkRow)child;
-                return true;
+            if (child is BookmarkRow) {
+                if (((BookmarkRow)child).uri == uri) {
+                    row = (BookmarkRow)child;
+                    return true;
+                }
             }
         }
 

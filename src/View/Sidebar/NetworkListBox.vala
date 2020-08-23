@@ -25,11 +25,18 @@ public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
     }
 
     construct {
+        var volume_monitor = VolumeMonitor.@get ();
+        volume_monitor.mount_added.connect (mount_added);
     }
 
-    public new NetworkRow add_bookmark (string label, string uri, Icon gicon) {
+    public new NetworkRow? add_bookmark (string label, string uri, Icon gicon) {
         var row = new NetworkRow (label, uri, gicon, sidebar);
-        add (row);
+        if (!has_uri (uri)) {
+            add (row);
+        } else {
+            return null;
+        }
+
         return row;
     }
 
@@ -42,28 +49,34 @@ public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
 
     public void add_all_network_mounts () {
         foreach (Mount mount in VolumeMonitor.@get ().get_mounts ()) {
-            if (mount.is_shadowed ()) {
-                continue;
-            }
-
-            var volume = mount.get_volume ();
-            if (volume != null) {
-                continue;
-            }
-
-            var root = mount.get_root ();
-            if (!root.is_native ()) {
-                /* show mounted volume in sidebar */
-                var device_label = root.get_basename ();
-                if (device_label != mount.get_name ()) {
-                    ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-                    device_label = _("%s on %s").printf (device_label, mount.get_name ());
-                }
-
-                var row = add_bookmark (device_label, mount.get_default_location ().get_uri (), mount.get_icon ());
-                ((NetworkRow)row).add_tooltip.begin ();
-            }
+            add_network_mount (mount);
         }
+    }
+
+    private void add_network_mount (Mount mount) {
+        if (mount.is_shadowed ()) {
+            return;
+        }
+
+        var volume = mount.get_volume ();
+        if (volume != null) {
+            return;
+        }
+        var root = mount.get_root ();
+        if (!root.is_native ()) {
+            /* show mounted volume in sidebar */
+            var device_label = root.get_basename ();
+            if (device_label != mount.get_name ()) {
+                ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+                device_label = _("%s on %s").printf (device_label, mount.get_name ());
+            }
+
+            add_bookmark (device_label, mount.get_default_location ().get_uri (), mount.get_icon ());
+        }
+    }
+
+    private void mount_added (Mount mount)  {
+        add_network_mount (mount);
     }
 }
 

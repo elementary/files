@@ -117,6 +117,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
             eject ();
             return true;
         });
+
         mount_eject_stack.add_named (eject_image_event_box, "eject");
         mount_eject_stack.visible_child_name = "eject";
 

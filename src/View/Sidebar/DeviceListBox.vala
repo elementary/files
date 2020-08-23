@@ -32,12 +32,12 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         volume_monitor.drive_connected.connect (drive_added);
     }
 
-    public new DeviceRow add_bookmark (string label, string uri, Icon gicon,
+    public new DeviceRow? add_bookmark (string label, string uri, Icon gicon,
                                        string? uuid = null,
                                        Drive? drive = null,
                                        Volume? volume = null,
                                        Mount? mount = null) {
-        var row = new DeviceRow (
+        var bm = new DeviceRow (
             label,
             uri,
             gicon,
@@ -48,8 +48,26 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
             mount
         );
 
-        add (row);
-        return row;
+        if (!has_uuid (uuid, uri)) {
+            add (bm);
+            if (mount != null) {
+                bm.mounted = true;
+                bm.can_eject = mount.can_unmount ();
+            } else if (volume != null) {
+                bm.mounted = false;
+                bm.can_eject = volume.can_eject () ||
+                               volume.get_drive () != null && volume.get_drive ().can_eject ();
+            } else if (drive != null) {
+                bm.mounted = true;
+                bm.can_eject = drive.can_eject ();
+            }
+
+            bm.add_tooltip.begin ();
+        } else {
+            return null;
+        }
+
+        return bm;
     }
 
     private void add_volume (Volume volume) {
@@ -66,7 +84,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
             * he just unmounted it.
             */
 
-            var bm = add_bookmark (
+            add_bookmark (
                 volume.get_name (),
                 volume.get_name (),
                 volume.get_icon (),
@@ -75,10 +93,6 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
                 volume,
                 null
             );
-
-            bm.mounted = false;
-            bm.can_eject = volume.can_eject () ||
-                           volume.get_drive () != null && volume.get_drive ().can_eject ();
         }
     }
 
@@ -91,19 +105,16 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
             device_label = _("%s on %s").printf (device_label, mount.get_name ());
         }
 
-        var bm = add_bookmark (
+        var uuid = mount.get_uuid () ?? (mount.get_volume () != null ? mount.get_volume ().get_uuid () : null);
+        add_bookmark (
             device_label,
             mount.get_default_location ().get_uri (),
             mount.get_icon (),
-            mount.get_uuid () ?? mount.get_volume ().get_uuid (),
+            uuid,
             mount.get_drive (),
             mount.get_volume (),
             mount
         );
-
-        bm.add_tooltip.begin ();
-        bm.mounted = true;
-        bm.can_eject = mount.can_unmount ();
     }
 
    private void add_drive (Drive drive) {
@@ -119,7 +130,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
          * work.. but it's also for human beings who like to turn off media detection
          * in the OS to save battery juice.
          */
-            var bm = add_bookmark (
+            add_bookmark (
                 drive.get_name (),
                 drive.get_name (),
                 drive.get_icon (),
@@ -128,9 +139,6 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
                 null,
                 null
             );
-
-            bm.mounted = true;
-            bm.can_eject = drive.can_eject ();
         }
     }
 
@@ -141,8 +149,8 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
     }
 
     private void mount_added (Mount mount)  {
-        var vol = mount.get_volume ();
-        if (!has_uuid (vol.get_uuid ())) {
+        var uuid = mount.get_uuid () ?? (mount.get_volume () != null ? mount.get_volume ().get_uuid () : null);
+        if (!has_uuid (uuid, mount.get_name ())) {
             add_mount (mount);
         }
     }
@@ -197,8 +205,10 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         }
 
         foreach (var child in get_children ()) {
-            if (((DeviceRow)child).uuid == uuid) {
-                return true;
+            if (child is DeviceRow) {
+                if (((DeviceRow)child).uuid == uuid) {
+                    return true;
+                }
             }
         }
 
