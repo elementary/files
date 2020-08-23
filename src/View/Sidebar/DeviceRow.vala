@@ -26,6 +26,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
     private Gtk.Spinner mount_eject_spinner;
 
     private bool _mounted = false;
+    private bool valid = true;
 
     public string? uuid { get; set construct; }
     public Drive? drive { get; set construct; }
@@ -38,14 +39,12 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         }
 
         set {
-            if (value && _can_eject) {
+            _mounted = value;
+            if (_mounted) {
                 mount_eject_stack.visible_child_name = "eject";
-                mount_eject_revealer.reveal_child = true;
-            } else {
-                mount_eject_revealer.reveal_child = false;
             }
 
-            _mounted = value;
+             mount_eject_revealer.reveal_child = _mounted && _can_eject;
         }
     }
 
@@ -56,11 +55,8 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         }
 
         set {
-            if (!value) {
-                mount_eject_revealer.reveal_child = false;
-            }
-
             _can_eject = value;
+             mount_eject_revealer.reveal_child = _can_eject && _mounted;
         }
     }
 
@@ -70,13 +66,18 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         }
 
         set {
-            if (value && _can_eject) {
+            if (!valid) {
+                return;
+            }
+
+            if (_can_eject) {
                 mount_eject_revealer.reveal_child = true;
                 mount_eject_stack.visible_child_name = "spinner";
                 mount_eject_spinner.start ();
             } else {
                 mount_eject_spinner.stop ();
                 mount_eject_stack.visible_child_name = "eject";
+                mount_eject_revealer.reveal_child = _can_eject && _mounted;
             }
         }
     }
@@ -129,6 +130,11 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
 
         content_grid.add (mount_eject_revealer);
         show_all ();
+
+        var volume_monitor = VolumeMonitor.@get ();
+        volume_monitor.volume_removed.connect (volume_removed);
+        volume_monitor.mount_removed.connect (mount_removed);
+        volume_monitor.drive_disconnected.connect (drive_removed);
     }
 
     public override void activated () {
@@ -144,10 +150,11 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                     volume.mount.end (res);
                     mount = volume.get_mount ();
                     if (mount != null) {
-                        warning ("Successfully mounted %s", custom_name);
                         mounted = true;
-                        var location = mount.get_root ();
-                        sidebar.path_change_request (location.get_uri (), Marlin.OpenFlag.DEFAULT);
+                        can_eject = mount.can_unmount ();
+                        uri = mount.get_default_location ().get_uri ();
+                        add_tooltip ();
+                        sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
                     }
                 } catch (GLib.Error error) {
                     var primary = _("Error mounting volume %s").printf (volume.get_name ());
@@ -157,6 +164,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                 }
             });
         } else if (drive != null && (drive.can_start () || drive.can_start_degraded ())) {
+            working = true;
             drive.start.begin (DriveStartFlags.NONE,
                                new Gtk.MountOperation (null),
                                null,
@@ -164,11 +172,13 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                     try {
                         if (drive.start.end (res)) {
                             mounted = true;
+                            can_eject = drive.can_eject () || drive.can_stop ();
                         }
-                    }
-                    catch (Error e) {
+                    } catch (Error e) {
                             var primary = _("Unable to start %s").printf (drive.get_name ());
                             PF.Dialogs.show_error_dialog (primary, e.message, Marlin.get_active_window ());
+                    } finally {
+                        working = false;
                     }
                 }
             );
@@ -176,8 +186,8 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
     }
 
     private void eject () {
+        var mount_op = new Gtk.MountOperation (Marlin.get_active_window ());
         if (mount != null) {
-            var mount_op = new Gtk.MountOperation (Marlin.get_active_window ());
             if (mount.can_eject ()) {
                 working = true;
                 mount.eject_with_operation.begin (
@@ -213,10 +223,71 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                     }
                 );
             }
+        } else if (drive != null && drive.can_eject () || drive.can_stop ()) {
+            working = true;
+            if (drive.can_stop ()) {
+                drive.stop.begin (
+                    GLib.MountUnmountFlags.NONE,
+                    mount_op,
+                    null,
+                    (obj, res) => {
+                        try {
+                            drive.stop.end (res);
+                        } catch (Error e) {
+
+                        } finally {
+                            working = false;
+                        }
+                    }
+                );
+            } else if (drive.can_eject ()) {
+                drive.eject_with_operation.begin (
+                    GLib.MountUnmountFlags.NONE,
+                    mount_op,
+                    null,
+                    (obj, res) => {
+                        try {
+                            drive.eject_with_operation.end (res);
+                        } catch (Error e) {
+
+                        } finally {
+                            working = false;
+                        }
+                    }
+                );
+            }
+        }
+    }
+
+
+    private void drive_removed (Drive removed_drive)  {
+        if (valid && drive == removed_drive) {
+            valid = false;
+            sidebar.remove_item_id (id);
+        }
+    }
+
+    private void volume_removed (Volume removed_volume)  {
+        if (valid && volume == removed_volume) {
+            valid = false;
+            sidebar.remove_item_id (id);
+        }
+    }
+
+    private void mount_removed (Mount removed_mount)  {
+        if (valid && mount == removed_mount) {
+            if (drive == null && volume == null) {
+                valid = false;
+                sidebar.remove_item_id (id);
+            } else {
+                mounted = false;
+            }
         }
     }
 
     public override async void add_tooltip () {
-
+        set_tooltip_markup (
+            uri
+        );
     }
 }

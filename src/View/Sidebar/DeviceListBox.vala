@@ -52,14 +52,13 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
             add (bm);
             if (mount != null) {
                 bm.mounted = true;
-                bm.can_eject = mount.can_unmount ();
+                bm.can_eject = mount.can_unmount () || mount.can_eject ();
             } else if (volume != null) {
-                bm.mounted = false;
-                bm.can_eject = volume.can_eject () ||
-                               volume.get_drive () != null && volume.get_drive ().can_eject ();
+                bm.mounted = volume.get_mount () != null;
+                bm.can_eject = volume.can_eject ();
             } else if (drive != null) {
                 bm.mounted = true;
-                bm.can_eject = drive.can_eject ();
+                bm.can_eject = drive.can_eject () || drive.can_stop ();
             }
 
             bm.add_tooltip.begin ();
@@ -97,17 +96,9 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
     }
 
     private void add_mount (Mount mount)  {
-        /* show mounted volume in sidebar */
-        var root = mount.get_root ();
-        var device_label = root.get_basename ();
-        if (device_label != mount.get_name ()) {
-            ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-            device_label = _("%s on %s").printf (device_label, mount.get_name ());
-        }
-
         var uuid = mount.get_uuid () ?? (mount.get_volume () != null ? mount.get_volume ().get_uuid () : null);
         add_bookmark (
-            device_label,
+            mount.get_name (),
             mount.get_default_location ().get_uri (),
             mount.get_icon (),
             uuid,
@@ -115,21 +106,32 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
             mount.get_volume (),
             mount
         );
+        //Show extra info in tooltip
     }
 
    private void add_drive (Drive drive) {
        var volumes = drive.get_volumes ();
         if (volumes != null) {
             add_volumes (volumes);
-        } else if (drive.is_media_removable () && !drive.is_media_check_automatic ()) {
-        /* If the drive has no mountable volumes and we cannot detect media change.. we
-         * display the drive in the sidebar so the user can manually poll the drive by
-         * right clicking and selecting "Rescan..."
-         *
-         * This is mainly for drives like floppies where media detection doesn't
-         * work.. but it's also for human beings who like to turn off media detection
-         * in the OS to save battery juice.
-         */
+        }
+
+        if (drive.can_stop () || drive.can_eject () || volumes == null) {
+            add_drive_without_volumes (drive);
+        }
+    }
+
+    private void add_drive_without_volumes (Drive drive) {
+    /* If the drive has no mountable volumes and we cannot detect media change.. we
+     * display the drive in the sidebar so the user can manually poll the drive by
+     * right clicking and selecting "Rescan..."
+     *
+     * This is mainly for drives like floppies where media detection doesn't
+     * work.. but it's also for human beings who like to turn off media detection
+     * in the OS to save battery juice.
+     */
+        if (drive.can_stop () ||
+            (drive.is_media_removable () && !drive.is_media_check_automatic ())) {
+
             add_bookmark (
                 drive.get_name (),
                 drive.get_name (),
@@ -142,16 +144,26 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         }
     }
 
-    private void drive_added (Drive drive)  {}
+    private void drive_added (Drive drive_added)  {
+        if ((!drive_added.has_volumes () || drive_added.can_stop ()) &&
+             !has_drive (drive_added, null)) {
 
-    private void volume_added (Volume vol)  {
-        add_volume (vol);
+            add_drive_without_volumes (drive_added);
+        }
     }
 
-    private void mount_added (Mount mount)  {
-        var uuid = mount.get_uuid () ?? (mount.get_volume () != null ? mount.get_volume ().get_uuid () : null);
-        if (!has_uuid (uuid, mount.get_name ())) {
-            add_mount (mount);
+    private void volume_added (Volume volume_added)  {
+        if (volume_added.get_mount () == null && !has_volume (volume_added, null)) {
+            add_volume (volume_added);
+        }
+    }
+
+    private void mount_added (Mount mount_added)  {
+        if (!mount_added.is_shadowed () &&
+            mount_added.get_volume () == null &&
+            !has_mount (mount_added, null)) {
+
+            add_mount (mount_added);
         }
     }
 
@@ -207,6 +219,48 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         foreach (var child in get_children ()) {
             if (child is DeviceRow) {
                 if (((DeviceRow)child).uuid == uuid) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool has_drive (Drive drive, out DeviceRow? row = null) {
+        row = null;
+        foreach (var child in get_children ()) {
+            if (child is DeviceRow) {
+                if (((DeviceRow)child).drive == drive) {
+                    row = ((DeviceRow)child);
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool has_volume (Volume vol, out DeviceRow? row = null) {
+        row = null;
+        foreach (var child in get_children ()) {
+            if (child is DeviceRow) {
+                if (((DeviceRow)child).volume == vol) {
+                    row = ((DeviceRow)child);
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool has_mount (Mount mount, out DeviceRow? row = null) {
+        row = null;
+        foreach (var child in get_children ()) {
+            if (child is DeviceRow) {
+                if (((DeviceRow)child).mount == mount) {
+                    row = ((DeviceRow)child);
                     return true;
                 }
             }

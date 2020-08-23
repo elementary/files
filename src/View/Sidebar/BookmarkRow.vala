@@ -47,6 +47,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
         return row;
     }
 
+    private bool valid = true; //Set to false if scheduled for removal
     public string custom_name { get; set construct; }
     public string uri { get; set construct; }
     public Icon gicon { get; construct; }
@@ -119,6 +120,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
     }
 
     public void destroy_bookmark () {
+        valid = false;
         bookmark_lock.@lock ();
         BookmarkRow.bookmark_id_map.unset (id);
         bookmark_lock.unlock ();

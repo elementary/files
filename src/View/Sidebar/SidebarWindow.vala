@@ -219,11 +219,10 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         return true;
     }
 
-    public void remove_plugin_item (int32 item_id) {
-        BookmarkRow? row = BookmarkRow.get_item (item_id);
-        if (row != null) {
-            row.destroy_bookmark ();
-        }
+    public void remove_item_id (int32 item_id) {
+        bookmark_listbox.remove_bookmark_id (item_id);
+        device_listbox.remove_bookmark_id (item_id);
+        network_listbox.remove_bookmark_id (item_id);
     }
 
     uint sync_timeout_id = 0;

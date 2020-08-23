@@ -58,6 +58,18 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox {
         }
     }
 
+    public void remove_bookmark_id (int32 id) {
+        foreach (Gtk.Widget child in get_children ()) {
+            if (child is BookmarkRow) {
+                var row = (BookmarkRow)child;
+                if (row.id == id) {
+                    remove ((BookmarkRow)child);
+                    ((BookmarkRow)child).destroy_bookmark ();
+                }
+            }
+        }
+    }
+
     public bool has_uri (string uri, out unowned BookmarkRow row = null) {
         row = null;
         foreach (var child in get_children ()) {
