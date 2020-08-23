@@ -41,7 +41,6 @@ pantheon_files_exec = executable (
     'View/Window.vala',
     'View/ViewContainer.vala',
     'View/Browser.vala',
-    'View/SidebarListBox.vala',
     'View/Slot.vala',
     'View/PrivacyModeOn.vala',
     'View/PopupMenuBuilder.vala',
@@ -58,6 +57,11 @@ pantheon_files_exec = executable (
     'View/Widgets/PermissionButton.vala',
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SingleLineEditableLabel.vala',
+
+	'View/Sidebar/SidebarWindow.vala',
+	'View/Sidebar/BookmarkListBox.vala',
+	'View/Sidebar/DeviceListBox.vala',
+	'View/Sidebar/NetworkListBox.vala',
 
     dependencies : [
         pantheon_files_deps,
