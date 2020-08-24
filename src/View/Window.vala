@@ -1176,6 +1176,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
             application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             application.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
+            application.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
             application.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
             application.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
             application.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});

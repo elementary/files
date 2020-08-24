@@ -61,8 +61,6 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
                 bm.mounted = true;
                 bm.can_eject = drive.can_eject () || drive.can_stop ();
             }
-
-            bm.add_tooltip.begin ();
         } else {
             return null;
         }

@@ -50,17 +50,20 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         var bookmark_expander = new Gtk.Expander ("<b>" + _("Bookmarks") + "</b>") {
             expanded = true,
-            use_markup = true
+            use_markup = true,
+            tooltip_text = _("Common places plus saved folders and files")
         };
 
         var device_expander = new Gtk.Expander ("<b>" + _("Devices") + "</b>") {
             expanded = true,
-            use_markup = true
+            use_markup = true,
+            tooltip_text = _("Internal and connected storage devices")
         };
 
         var network_expander = new Gtk.Expander ("<b>" + _("Network") + "</b>") {
             expanded = true,
-            use_markup = true
+            use_markup = true,
+            tooltip_text = _("Devices and places available via a network")
         };
 
         bookmark_expander.add (bookmark_listbox);
@@ -92,6 +95,7 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
 
         loading = true;
+        Gtk.ListBoxRow row;
         if (bookmarks) {
         bookmark_listbox.clear ();
             var home_uri = "";
@@ -101,33 +105,46 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
             catch (ConvertError e) {}
 
             if (home_uri != "") {
-                bookmark_listbox.add_bookmark (
+                row = bookmark_listbox.add_bookmark (
                     _("Home"),
                     home_uri,
                     new ThemedIcon (Marlin.ICON_HOME)
                 );
+
+                row.set_tooltip_markup (
+                    Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the home folder"))
+                );
             }
 
             if (recent_is_supported ()) {
-                bookmark_listbox.add_bookmark (
+                row = bookmark_listbox.add_bookmark (
                     _(Marlin.PROTOCOL_NAME_RECENT),
                     Marlin.RECENT_URI,
                     new ThemedIcon (Marlin.ICON_RECENT)
                 );
+
+                row.set_tooltip_markup (
+                    Granite.markup_accel_tooltip ({"<Alt>R"}, _("View the list of recently used files"))
+                );
             }
+
 
             foreach (Marlin.Bookmark bm in bookmark_list.list) {
-                bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
+                row = bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
+                row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
             }
 
-            var trash_uri = _(Marlin.TRASH_URI);
-            if (trash_uri != "") {
+            if (!Marlin.is_admin ()) {
                 trash_bookmark = bookmark_listbox.add_bookmark (
                     _("Trash"),
-                    trash_uri,
+                    _(Marlin.TRASH_URI),
                     trash_monitor.get_icon ()
                 );
             }
+
+            trash_bookmark.set_tooltip_markup (
+                Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
+            );
 
             trash_handler_id = trash_monitor.notify["is-empty"].connect (() => {
                 if (trash_bookmark != null) {
@@ -165,26 +182,26 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 return;
             }
 
-
             network_listbox.add_all_network_mounts ();
 
-            var network_uri = _(Marlin.NETWORK_URI);
-            if (network_uri != "") {
-                network_listbox.add_bookmark (
-                    _("Entire Network"),
-                    Marlin.NETWORK_URI,
-                    new ThemedIcon (Marlin.ICON_NETWORK)
-                );
-            }
+            row = network_listbox.add_bookmark (
+                _("Entire Network"),
+                Marlin.NETWORK_URI,
+                new ThemedIcon (Marlin.ICON_NETWORK)
+            );
+
+            row.set_tooltip_markup (
+                Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network"))
+            );
 
             /* Add ConnectServer BUILTIN */
-            var bm = network_listbox.add_action_bookmark (
+            var connect_server_action = network_listbox.add_action_bookmark (
                 _("Connect Server"),
                 new ThemedIcon.with_default_fallbacks ("network-server"),
                 () => {connect_server_request ();}
             );
 
-            bm.set_tooltip_markup (
+            connect_server_action.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server"))
             );
         }

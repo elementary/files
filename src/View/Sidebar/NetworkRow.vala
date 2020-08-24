@@ -24,8 +24,4 @@ public class Sidebar.NetworkRow : Sidebar.BookmarkRow {
     public NetworkRow (string name, string uri, Icon gicon, Sidebar.SidebarWindow sidebar) {
         base (name, uri, gicon, sidebar);
     }
-
-    public override async void add_tooltip () {
-
-    }
 }

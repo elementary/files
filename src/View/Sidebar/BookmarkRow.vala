@@ -71,6 +71,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
     }
 
     construct {
+        //Set a fallback tooltip to stop category tooltip appearing inappropriately
+        set_tooltip_text (PF.FileUtils.sanitize_path (uri, null, false));
+
         selectable = true;
         id = BookmarkRow.get_next_row_id ();
         bookmark_lock.@lock ();
@@ -88,7 +91,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
 
         var label = new Gtk.Label (custom_name) {
             xalign = 0.0f,
-            tooltip_text = uri,
             margin_start = 6
         };
 
@@ -122,10 +124,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
         BookmarkRow.bookmark_id_map.unset (id);
         bookmark_lock.unlock ();
         base.destroy ();
-    }
-
-    public virtual async void add_tooltip () {
-
     }
 
     protected virtual bool on_button_press_event (Gdk.EventButton event) {

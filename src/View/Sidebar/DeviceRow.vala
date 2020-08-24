@@ -153,7 +153,6 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                         mounted = true;
                         can_eject = mount.can_unmount ();
                         uri = mount.get_default_location ().get_uri ();
-                        add_tooltip ();
                         sidebar.path_change_request (uri, flag);
                     }
                 } catch (GLib.Error error) {
@@ -283,11 +282,5 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                 mounted = false;
             }
         }
-    }
-
-    public override async void add_tooltip () {
-        set_tooltip_markup (
-            uri
-        );
     }
 }
