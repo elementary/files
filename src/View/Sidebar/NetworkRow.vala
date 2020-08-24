@@ -21,7 +21,16 @@
  */
 
 public class Sidebar.NetworkRow : Sidebar.BookmarkRow {
-    public NetworkRow (string name, string uri, Icon gicon, Sidebar.SidebarWindow sidebar) {
-        base (name, uri, gicon, sidebar);
+    public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list) {
+        Object (
+            custom_name: name,
+            uri: uri,
+            gicon: gicon,
+            list: list
+        );
+    }
+
+    protected new void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+
     }
 }

@@ -22,14 +22,9 @@
 
 public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface {
     Gtk.Box content_box;
-    Sidebar.BookmarkListBox bookmark_listbox;
-    Sidebar.DeviceListBox device_listbox;
-    Sidebar.NetworkListBox network_listbox;
-    Marlin.BookmarkList bookmark_list;
-    unowned Marlin.TrashMonitor trash_monitor;
-
-    BookmarkRow? trash_bookmark;
-    ulong trash_handler_id;
+    SidebarListInterface bookmark_listbox;
+    SidebarListInterface device_listbox;
+    SidebarListInterface network_listbox;
 
     private string selected_uri = "";
     private bool loading = false;
@@ -45,8 +40,6 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
-
-        trash_monitor = Marlin.TrashMonitor.get_default ();
 
         var bookmark_expander = new Gtk.Expander ("<b>" + _("Bookmarks") + "</b>") {
             expanded = true,
@@ -76,15 +69,9 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         content_box.add (network_expander);
         this.add (content_box);
 
-        bookmark_list = Marlin.BookmarkList.get_instance ();
-
         plugins.sidebar_loaded (this);
 
         reload ();
-        bookmark_list.loaded.connect (() => {
-            refresh (true, false, false);
-        });
-
         show_all ();
     }
 
@@ -95,153 +82,42 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
 
         loading = true;
-        Gtk.ListBoxRow row;
+
         if (bookmarks) {
-        bookmark_listbox.clear ();
-            var home_uri = "";
-            try {
-                home_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
-            }
-            catch (ConvertError e) {}
-
-            if (home_uri != "") {
-                row = bookmark_listbox.add_bookmark (
-                    _("Home"),
-                    home_uri,
-                    new ThemedIcon (Marlin.ICON_HOME)
-                );
-
-                row.set_tooltip_markup (
-                    Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the home folder"))
-                );
-            }
-
-            if (recent_is_supported ()) {
-                row = bookmark_listbox.add_bookmark (
-                    _(Marlin.PROTOCOL_NAME_RECENT),
-                    Marlin.RECENT_URI,
-                    new ThemedIcon (Marlin.ICON_RECENT)
-                );
-
-                row.set_tooltip_markup (
-                    Granite.markup_accel_tooltip ({"<Alt>R"}, _("View the list of recently used files"))
-                );
-            }
-
-
-            foreach (Marlin.Bookmark bm in bookmark_list.list) {
-                row = bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
-                row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
-            }
-
-            if (!Marlin.is_admin ()) {
-                trash_bookmark = bookmark_listbox.add_bookmark (
-                    _("Trash"),
-                    _(Marlin.TRASH_URI),
-                    trash_monitor.get_icon ()
-                );
-            }
-
-            trash_bookmark.set_tooltip_markup (
-                Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
-            );
-
-            trash_handler_id = trash_monitor.notify["is-empty"].connect (() => {
-                if (trash_bookmark != null) {
-                    trash_bookmark.update_icon (trash_monitor.get_icon ());
-                }
-            });
-
+            bookmark_listbox.refresh ();
         }
 
         if (devices) {
-            foreach (Gtk.Widget child in device_listbox.get_children ()) {
-                device_listbox.remove (child);
-                ((BookmarkRow)child).destroy_bookmark ();
-            }
-
-            var root_uri = _(Marlin.ROOT_FS_URI);
-            if (root_uri != "") {
-                device_listbox.add_bookmark (
-                    _("FileSystem"),
-                    root_uri,
-                    new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
-                );
-            }
-
-            device_listbox.add_all_local_volumes_and_mounts ();
+            device_listbox.refresh ();
         }
 
         if (network) {
-            foreach (var child in network_listbox.get_children ()) {
-                network_listbox.remove (child);
-               ((NetworkRow)child).destroy_bookmark ();
-            }
-
-            if (Marlin.is_admin ()) { //Network operations fail for administrators
-                return;
-            }
-
-            network_listbox.add_all_network_mounts ();
-
-            row = network_listbox.add_bookmark (
-                _("Entire Network"),
-                Marlin.NETWORK_URI,
-                new ThemedIcon (Marlin.ICON_NETWORK)
-            );
-
-            row.set_tooltip_markup (
-                Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network"))
-            );
-
-            /* Add ConnectServer BUILTIN */
-            var connect_server_action = network_listbox.add_action_bookmark (
-                _("Connect Server"),
-                new ThemedIcon.with_default_fallbacks ("network-server"),
-                () => {connect_server_request ();}
-            );
-
-            connect_server_action.set_tooltip_markup (
-                Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server"))
-            );
+            network_listbox.refresh ();
         }
 
         loading = false;
     }
 
-    private bool recent_is_supported () {
-        string [] supported;
-
-        supported = GLib.Vfs.get_default ().get_supported_uri_schemes ();
-        for (int i = 0; supported[i] != null; i++) {
-            if (supported[i] == "recent") {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     /* SidebarInterface */
-    public int32 add_plugin_item (Marlin.SidebarPluginItem item, Marlin.PlaceType category) {
+    public uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item, Marlin.PlaceType category) {
         switch (category) {
             case Marlin.PlaceType.BOOKMARKS_CATEGORY:
-                return bookmark_listbox.add_bookmark (item.name, item.uri, item.icon).id;
+                return bookmark_listbox.add_plugin_item (plugin_item);
             case Marlin.PlaceType.STORAGE_CATEGORY:
-                return device_listbox.add_bookmark (item.name, item.uri, item.icon).id;
+                return device_listbox.add_plugin_item (plugin_item);
             case Marlin.PlaceType.NETWORK_CATEGORY:
-                return network_listbox.add_bookmark (item.name, item.uri, item.icon).id;
+                return network_listbox.add_plugin_item (plugin_item);
             default:
                 return -1;
         }
     }
 
-    public bool update_plugin_item (Marlin.SidebarPluginItem item, int32 item_id) {
+    public bool update_plugin_item (Marlin.SidebarPluginItem item, uint32 item_id) {
         if (item_id < 0) {
             return false;
         }
 
-        BookmarkRow? row = BookmarkRow.get_item (item_id);
+        SidebarItemInterface? row = SidebarItemInterface.get_item (item_id);
         if (row == null) {
             return false;
         }
@@ -252,10 +128,11 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         return true;
     }
 
-    public void remove_item_id (int32 item_id) {
-        bookmark_listbox.remove_bookmark_id (item_id);
-        device_listbox.remove_bookmark_id (item_id);
-        network_listbox.remove_bookmark_id (item_id);
+    public bool remove_item_by_id (uint32 item_id) {
+        // We do not know which listbox the row is in so try remove from each in turn
+        return bookmark_listbox.remove_item_by_id (item_id) ||
+            device_listbox.remove_item_by_id (item_id) ||
+            network_listbox.remove_item_by_id (item_id);
     }
 
     uint sync_timeout_id = 0;
@@ -271,18 +148,18 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
             }
 
             sync_timeout_id = 0;
-            network_listbox.unselect_all ();
-            device_listbox.unselect_all ();
-            bookmark_listbox.unselect_all ();
+            network_listbox.unselect_all_items ();
+            device_listbox.unselect_all_items ();
+            bookmark_listbox.unselect_all_items ();
             /* Need to process unselect_all signal first */
             Idle.add (() => {
-                BookmarkRow? row = null;
+                SidebarItemInterface? row = null;
                 if (bookmark_listbox.has_uri (location, out row)) {
-                    bookmark_listbox.select_row (row);
+                    bookmark_listbox.select_item (row);
                 } else if (device_listbox.has_uri (location, out row)) {
-                    device_listbox.select_row (row);
+                    device_listbox.select_item (row);
                 } else if (network_listbox.has_uri (location, out row)) {
-                    network_listbox.select_row (row);
+                    network_listbox.select_item (row);
                 }
 
                 return Source.REMOVE;
@@ -310,8 +187,7 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     public void add_favorite_uri (string uri, string? label = null) {
-        var bm = bookmark_list.insert_uri_at_end (uri, label);
-        bookmark_listbox.add_bookmark (bm.label, bm.uri, bm.get_icon ());
+        bookmark_listbox.add_favorite (uri, label);
     }
 
     public bool has_favorite_uri (string uri) {

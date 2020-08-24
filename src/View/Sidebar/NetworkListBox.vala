@@ -20,9 +20,12 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
-    public NetworkListBox (Sidebar.SidebarWindow sidebar) {
-        base (sidebar);
+public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+    public Marlin.SidebarInterface sidebar { get; construct; }
+    public NetworkListBox (Marlin.SidebarInterface sidebar) {
+        Object (
+            sidebar: sidebar
+        );
     }
 
     construct {
@@ -30,8 +33,8 @@ public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
         volume_monitor.mount_added.connect (mount_added);
     }
 
-    public new NetworkRow? add_bookmark (string label, string uri, Icon gicon) {
-        var row = new NetworkRow (label, uri, gicon, sidebar);
+    private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon) {
+        var row = new NetworkRow (label, uri, gicon, this);
         if (!has_uri (uri)) {
             add (row);
         } else {
@@ -42,13 +45,13 @@ public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
     }
 
     //TODO Use plugin for ConnectServer action?
-    public ActionRow add_action_bookmark (string label, Icon gicon, ActionRowFunc action) {
+    private ActionRow add_action_bookmark (string label, Icon gicon, ActionRowFunc action) {
         var row = new ActionRow (label, gicon, action);
         add (row);
         return row;
     }
 
-    public void add_all_network_mounts () {
+    private void add_all_network_mounts () {
         foreach (Mount mount in VolumeMonitor.@get ().get_mounts ()) {
             add_network_mount (mount);
         }
@@ -78,5 +81,53 @@ public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
 
     private void mount_added (Mount mount) {
         add_network_mount (mount);
+    }
+
+    public void refresh () {
+        clear ();
+
+        if (Marlin.is_admin ()) { //Network operations fail for administrators
+            return;
+        }
+
+        add_all_network_mounts ();
+
+        var row = add_sidebar_row (
+            _("Entire Network"),
+            Marlin.NETWORK_URI,
+            new ThemedIcon (Marlin.ICON_NETWORK)
+        );
+
+        row.set_tooltip_markup (
+            Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network"))
+        );
+
+        /* Add ConnectServer BUILTIN */
+        var connect_server_action = add_action_bookmark (
+            _("Connect Server"),
+            new ThemedIcon.with_default_fallbacks ("network-server"),
+            () => {sidebar.connect_server_request ();}
+        );
+
+        connect_server_action.set_tooltip_markup (
+            Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server"))
+        );
+    }
+
+    public void unselect_all_items () {
+        unselect_all ();
+    }
+
+    public void select_item (SidebarItemInterface? item) {
+        if (item != null && item is NetworkRow) {
+            select_row ((NetworkRow)item);
+        } else {
+            unselect_all_items ();
+        }
+    }
+
+    public virtual uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
+        return add_bookmark (plugin_item.name, plugin_item.uri, plugin_item.icon).id;
+        //TODO Create a new class of NetworkPluginRow subclassed from NetworkRow
     }
 }

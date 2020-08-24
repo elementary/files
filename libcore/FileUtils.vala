@@ -913,6 +913,19 @@ namespace PF.FileUtils {
             return (int) long.min (max_path - (dir.length + 1), max_name);
         }
     }
+
+    public bool protocol_is_supported (string protocol) {
+        string [] supported;
+
+        supported = GLib.Vfs.get_default ().get_supported_uri_schemes ();
+        for (int i = 0; supported[i] != null; i++) {
+            if (supported[i] == protocol) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 namespace Marlin {

@@ -20,29 +20,35 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
-    protected VolumeMonitor volume_monitor;
-    public DeviceListBox (Sidebar.SidebarWindow sidebar) {
-        base (sidebar);
+public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+    private VolumeMonitor volume_monitor;
+
+    public Marlin.SidebarInterface sidebar { get; construct; }
+
+    public DeviceListBox (Marlin.SidebarInterface sidebar) {
+        Object (
+            sidebar: sidebar
+        );
     }
 
     construct {
+        hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.volume_added.connect (volume_added);
         volume_monitor.mount_added.connect (mount_added);
         volume_monitor.drive_connected.connect (drive_added);
     }
 
-    public new DeviceRow? add_bookmark (string label, string uri, Icon gicon,
-                                       string? uuid = null,
-                                       Drive? drive = null,
-                                       Volume? volume = null,
-                                       Mount? mount = null) {
+    private DeviceRow? add_bookmark (string label, string uri, Icon gicon, SidebarListInterface list,
+                                    string? uuid = null,
+                                    Drive? drive = null,
+                                    Volume? volume = null,
+                                    Mount? mount = null) {
         var bm = new DeviceRow (
             label,
             uri,
             gicon,
-            sidebar,
+            list,
             uuid,
             drive,
             volume,
@@ -68,6 +74,26 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         return bm;
     }
 
+    public void refresh () {
+        clear ();
+
+        SidebarItemInterface? row;
+        var root_uri = _(Marlin.ROOT_FS_URI);
+        if (root_uri != "") {
+            row = add_sidebar_row (
+                _("FileSystem"),
+                root_uri,
+                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
+            );
+
+            row.set_tooltip_markup (
+                Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the root of the local filesystem"))
+            );
+        }
+
+        add_all_local_volumes_and_mounts ();
+    }
+
     private void add_volume (Volume volume) {
         var mount = volume.get_mount ();
         if (mount != null) {
@@ -86,6 +112,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
                 volume.get_name (),
                 volume.get_name (),
                 volume.get_icon (),
+                this,
                 volume.get_uuid (),
                 null,
                 volume,
@@ -100,6 +127,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
             mount.get_name (),
             mount.get_default_location ().get_uri (),
             mount.get_icon (),
+            this,
             uuid,
             mount.get_drive (),
             mount.get_volume (),
@@ -135,6 +163,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
                 drive.get_name (),
                 drive.get_name (),
                 drive.get_icon (),
+                this,
                 drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
                 drive,
                 null,
@@ -166,7 +195,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         }
     }
 
-    public void add_all_local_volumes_and_mounts () {
+    private void add_all_local_volumes_and_mounts () {
         add_connected_drives (); // Add drives and their associated volumes
         add_volumes_without_drive (); // Add volumes not associated with a drive
         add_native_mounts_without_volume ();
@@ -266,5 +295,22 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         }
 
         return false;
+    }
+
+    public override SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
+        //We do not want devices to be added by external agents
+        return null;
+    }
+
+    public void unselect_all_items () {
+        unselect_all ();
+    }
+
+    public void select_item (SidebarItemInterface? item) {
+        if (item != null && item is DeviceRow) {
+            select_row ((DeviceRow)item);
+        } else {
+            unselect_all_items ();
+        }
     }
 }

@@ -66,6 +66,8 @@ pantheon_files_exec = executable (
 	'View/Sidebar/NetworkRow.vala',
 	'View/Sidebar/ActionRow.vala',
 	'View/Sidebar/PopupMenuBuilder.vala',
+	'View/Sidebar/SidebarListInterface.vala',
+	'View/Sidebar/SidebarItemInterface.vala',
 
     dependencies : [
         pantheon_files_deps,

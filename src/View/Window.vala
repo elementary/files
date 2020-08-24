@@ -700,6 +700,10 @@ namespace Marlin.View {
                     uri_path_change_request (Marlin.TRASH_URI);
                     break;
 
+                case "ROOT":
+                    uri_path_change_request (Marlin.ROOT_FS_URI);
+                    break;
+
                 case "NETWORK":
                     uri_path_change_request (Marlin.NETWORK_URI);
                     break;
@@ -1178,6 +1182,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
             application.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
             application.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+            application.set_accels_for_action ("win.go-to::ROOT", {"<Alt>ForwardSlash"});
             application.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
             application.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});

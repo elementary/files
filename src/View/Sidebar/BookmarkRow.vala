@@ -20,52 +20,35 @@
  * Authors: Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
-    private static int row_id;
-    protected static Gee.HashMap<int, BookmarkRow> bookmark_id_map;
-    protected static Mutex bookmark_lock = Mutex ();
-
-    protected static int get_next_row_id () {
-        return ++row_id;
-    }
+public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     static construct {
-        /* intialise the row_id to a large random number (is this necessary?)*/
-        var rand = new Rand.with_seed (int.parse (get_real_time ().to_string ()));
-        var min_size = int.MAX / 4;
-        while (row_id < min_size) {
-            row_id = (int32)(rand.next_int ());
-        }
+        SidebarItemInterface.row_id = new Rand.with_seed (
+            int.parse (get_real_time ().to_string ())
+        ).next_int ();
 
-
-        bookmark_id_map = new Gee.HashMap<int, BookmarkRow> ();
-    }
-
-    public static BookmarkRow get_item (int32 id) {
-        bookmark_lock.@lock ();
-        var row = bookmark_id_map.@get (id);
-        bookmark_lock.unlock ();
-        return row;
+        SidebarItemInterface.item_map_lock = Mutex ();
+        SidebarItemInterface.item_id_map = new Gee.HashMap<uint32, SidebarItemInterface> ();
     }
 
     private bool valid = true; //Set to false if scheduled for removal
-    public string custom_name { get; set construct; }
-    public string uri { get; set construct; }
-    public Icon gicon { get; construct; }
-    public int32 id {get; construct; }
     private Gtk.Image icon;
-    public Sidebar.SidebarWindow sidebar { get; construct; }
     protected Gtk.Grid content_grid;
+    public string custom_name { get; set construct; }
+    public SidebarListInterface list { get; construct; }
+    public uint32 id { get; construct; }
+    public string uri { get; set construct; }
+    public Icon gicon { get; set construct; }
 
     public BookmarkRow (string name,
                         string uri,
                         Icon gicon,
-                        Sidebar.SidebarWindow sidebar) {
+                        SidebarListInterface list) {
         Object (
             custom_name: name,
             uri: uri,
             gicon: gicon,
-            sidebar: sidebar,
+            list: list,
             hexpand: true
         );
     }
@@ -75,10 +58,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
         set_tooltip_text (PF.FileUtils.sanitize_path (uri, null, false));
 
         selectable = true;
-        id = BookmarkRow.get_next_row_id ();
-        bookmark_lock.@lock ();
-        BookmarkRow.bookmark_id_map.@set (id, this);
-        bookmark_lock.unlock ();
+        id = SidebarItemInterface.get_next_item_id ();
+        item_map_lock.@lock ();
+        SidebarItemInterface.item_id_map.@set (id, this);
+        item_map_lock.unlock ();
 
         var event_box = new Gtk.EventBox () {
             above_child = false
@@ -110,24 +93,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
         show_all ();
     }
 
-    public virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
-        sidebar.path_change_request (uri, flag);
-    }
-
-    public void update_icon (Icon gicon) {
-        icon.gicon = gicon;
-    }
-
     public void destroy_bookmark () {
         valid = false;
-        bookmark_lock.@lock ();
-        BookmarkRow.bookmark_id_map.unset (id);
-        bookmark_lock.unlock ();
+        item_map_lock.@lock ();
+        SidebarItemInterface.item_id_map.unset (id);
+        item_map_lock.unlock ();
         base.destroy ();
     }
 
     protected virtual bool on_button_press_event (Gdk.EventButton event) {
-        sidebar.sync_uri (uri);
+        list.select_item (this);
         return false;
     }
 
@@ -150,13 +125,23 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
         }
     }
 
-    protected virtual void popup_context_menu (Gdk.EventButton event) {
-        var menu = new PopupMenuBuilder ()
+    protected void popup_context_menu (Gdk.EventButton event) {
+        var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
             .add_open_tab (() => {activated (Marlin.OpenFlag.NEW_TAB);})
             .add_open_window (() => {activated (Marlin.OpenFlag.NEW_WINDOW);});
 
-        menu.build ().popup_at_pointer (event);
+        add_extra_menu_items (menu_builder);
+        menu_builder.build ().popup_at_pointer (event);
+    }
+
+    protected void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+        menu_builder.add_separator ();
+        menu_builder.add_remove (() => {list.remove_item_by_id (id);});
+    }
+
+    protected void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+        list.open_item (this, flag);
     }
 }

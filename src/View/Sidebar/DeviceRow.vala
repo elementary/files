@@ -82,13 +82,13 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         }
     }
 
-    public DeviceRow (string name, string uri, Icon gicon, Sidebar.SidebarWindow sidebar,
+    public DeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
                       string? _uuid, Drive? drive, Volume? volume, Mount? mount) {
         Object (
             custom_name: name,
             uri: uri,
             gicon: gicon,
-            sidebar: sidebar,
+            list: list,
             uuid: _uuid,
             drive: drive,
             volume: volume,
@@ -137,9 +137,9 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         volume_monitor.drive_disconnected.connect (drive_removed);
     }
 
-    public override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+    protected new void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
         if (mounted) {
-            sidebar.path_change_request (uri, flag);
+            list.open_item (this, flag);
         } else if (volume != null && !working) {
             working = true;
             volume.mount.begin (GLib.MountMountFlags.NONE,
@@ -153,7 +153,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                         mounted = true;
                         can_eject = mount.can_unmount ();
                         uri = mount.get_default_location ().get_uri ();
-                        sidebar.path_change_request (uri, flag);
+                        list.open_item (this, flag);
                     }
                 } catch (GLib.Error error) {
                     var primary = _("Error mounting volume %s").printf (volume.get_name ());
@@ -262,14 +262,14 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
     private void drive_removed (Drive removed_drive) {
         if (valid && drive == removed_drive) {
             valid = false;
-            sidebar.remove_item_id (id);
+            list.remove_item_by_id (id);
         }
     }
 
     private void volume_removed (Volume removed_volume) {
         if (valid && volume == removed_volume) {
             valid = false;
-            sidebar.remove_item_id (id);
+            list.remove_item_by_id (id);
         }
     }
 
@@ -277,10 +277,16 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         if (valid && mount == removed_mount) {
             if (drive == null && volume == null) {
                 valid = false;
-                sidebar.remove_item_id (id);
+                list.remove_item_by_id (id);
             } else {
                 mounted = false;
             }
         }
     }
+
+    protected new void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+
+    }
+
+
 }

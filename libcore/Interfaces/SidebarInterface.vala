@@ -34,9 +34,9 @@ namespace Marlin {
 
 public interface Marlin.SidebarInterface : Gtk.ScrolledWindow {
         /* Plugin interface */
-        public abstract int32 add_plugin_item (Marlin.SidebarPluginItem item, Marlin.PlaceType category);
-        public abstract bool update_plugin_item (Marlin.SidebarPluginItem item, int32 item_id);
-        public abstract void remove_item_id (int32 item_id);
+        public abstract uint32 add_plugin_item (Marlin.SidebarPluginItem item, Marlin.PlaceType category);
+        public abstract bool update_plugin_item (Marlin.SidebarPluginItem item, uint32 item_id);
+        public abstract bool remove_item_by_id (uint32 item_id); //Returns true if successfully removed
         /* Window interface */
         public signal void request_update ();
         public signal bool request_focus ();
