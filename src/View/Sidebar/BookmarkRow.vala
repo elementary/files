@@ -132,4 +132,3 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
 
     }
 }
-

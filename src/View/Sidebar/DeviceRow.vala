@@ -260,21 +260,21 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
     }
 
 
-    private void drive_removed (Drive removed_drive)  {
+    private void drive_removed (Drive removed_drive) {
         if (valid && drive == removed_drive) {
             valid = false;
             sidebar.remove_item_id (id);
         }
     }
 
-    private void volume_removed (Volume removed_volume)  {
+    private void volume_removed (Volume removed_volume) {
         if (valid && volume == removed_volume) {
             valid = false;
             sidebar.remove_item_id (id);
         }
     }
 
-    private void mount_removed (Mount removed_mount)  {
+    private void mount_removed (Mount removed_mount) {
         if (valid && mount == removed_mount) {
             if (drive == null && volume == null) {
                 valid = false;

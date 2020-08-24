@@ -76,8 +76,7 @@ public class Sidebar.NetworkListBox : Sidebar.BookmarkListBox {
         }
     }
 
-    private void mount_added (Mount mount)  {
+    private void mount_added (Mount mount) {
         add_network_mount (mount);
     }
 }
-

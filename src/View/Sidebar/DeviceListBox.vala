@@ -96,7 +96,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         }
     }
 
-    private void add_mount (Mount mount)  {
+    private void add_mount (Mount mount) {
         var uuid = mount.get_uuid () ?? (mount.get_volume () != null ? mount.get_volume ().get_uuid () : null);
         add_bookmark (
             mount.get_name (),
@@ -145,7 +145,7 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         }
     }
 
-    private void drive_added (Drive drive_added)  {
+    private void drive_added (Drive drive_added) {
         if ((!drive_added.has_volumes () || drive_added.can_stop ()) &&
              !has_drive (drive_added, null)) {
 
@@ -153,13 +153,13 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         }
     }
 
-    private void volume_added (Volume volume_added)  {
+    private void volume_added (Volume volume_added) {
         if (volume_added.get_mount () == null && !has_volume (volume_added, null)) {
             add_volume (volume_added);
         }
     }
 
-    private void mount_added (Mount mount_added)  {
+    private void mount_added (Mount mount_added) {
         if (!mount_added.is_shadowed () &&
             mount_added.get_volume () == null &&
             !has_mount (mount_added, null)) {
@@ -270,5 +270,3 @@ public class Sidebar.DeviceListBox : Sidebar.BookmarkListBox {
         return false;
     }
 }
-
-

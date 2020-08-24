@@ -85,6 +85,3 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox {
         return false;
     }
 }
-
-
-
