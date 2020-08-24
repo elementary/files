@@ -75,14 +75,14 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
 
         bookmark_list = Marlin.BookmarkList.get_instance ();
 
-        show_all ();
-
         plugins.sidebar_loaded (this);
 
         reload ();
         bookmark_list.loaded.connect (() => {
             refresh (true, false, false);
         });
+
+        show_all ();
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
@@ -108,11 +108,10 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
                 );
             }
 
-            var recent_uri = _(Marlin.PROTOCOL_NAME_RECENT);
-            if (recent_uri != "") {
+            if (recent_is_supported ()) {
                 bookmark_listbox.add_bookmark (
-                    _("Recent"),
-                    recent_uri,
+                    _(Marlin.PROTOCOL_NAME_RECENT),
+                    Marlin.RECENT_URI,
                     new ThemedIcon (Marlin.ICON_RECENT)
                 );
             }
@@ -191,6 +190,19 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         }
 
         loading = false;
+    }
+
+    private bool recent_is_supported () {
+        string [] supported;
+
+        supported = GLib.Vfs.get_default ().get_supported_uri_schemes ();
+        for (int i = 0; supported[i] != null; i++) {
+            if (supported[i] == "recent") {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /* SidebarInterface */

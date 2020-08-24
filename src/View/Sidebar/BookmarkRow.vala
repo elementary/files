@@ -92,14 +92,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
             margin_start = 6
         };
 
-        button_press_event.connect_after (() => {
-            activated ();
-            return false;
-        });
+        button_press_event.connect (on_button_press_event);
+        button_release_event.connect_after (after_button_release_event);
 
-        activate.connect (() => {
-            activated ();
-        });
+        activate.connect (() => {activated ();});
 
         icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
             margin_start = 12
@@ -112,8 +108,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
         show_all ();
     }
 
-    public virtual void activated () {
-        sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
+    public virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+        sidebar.path_change_request (uri, flag);
     }
 
     public void update_icon (Icon gicon) {
@@ -130,5 +126,39 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow {
 
     public virtual async void add_tooltip () {
 
+    }
+
+    protected virtual bool on_button_press_event (Gdk.EventButton event) {
+        sidebar.sync_uri (uri);
+        return false;
+    }
+
+    protected virtual bool after_button_release_event (Gdk.EventButton event) {
+        if (!valid) { //Ignore if in the process of being removed
+            return true;
+        }
+
+        switch (event.button) {
+            case Gdk.BUTTON_PRIMARY:
+                activated ();
+                return true;
+
+            case Gdk.BUTTON_SECONDARY:
+                popup_context_menu (event);
+                return true;
+
+            default:
+                return false;
+        }
+    }
+
+    protected virtual void popup_context_menu (Gdk.EventButton event) {
+        var menu = new PopupMenuBuilder ()
+            .add_open (() => {activated ();})
+            .add_separator ()
+            .add_open_tab (() => {activated (Marlin.OpenFlag.NEW_TAB);})
+            .add_open_window (() => {activated (Marlin.OpenFlag.NEW_WINDOW);});
+
+        menu.build ().popup_at_pointer (event);
     }
 }

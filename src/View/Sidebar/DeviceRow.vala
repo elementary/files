@@ -137,9 +137,9 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         volume_monitor.drive_disconnected.connect (drive_removed);
     }
 
-    public override void activated () {
+    public override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
         if (mounted) {
-            sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
+            sidebar.path_change_request (uri, flag);
         } else if (volume != null && !working) {
             working = true;
             volume.mount.begin (GLib.MountMountFlags.NONE,
@@ -154,7 +154,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                         can_eject = mount.can_unmount ();
                         uri = mount.get_default_location ().get_uri ();
                         add_tooltip ();
-                        sidebar.path_change_request (uri, Marlin.OpenFlag.DEFAULT);
+                        sidebar.path_change_request (uri, flag);
                     }
                 } catch (GLib.Error error) {
                     var primary = _("Error mounting volume %s").printf (volume.get_name ());

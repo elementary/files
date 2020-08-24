@@ -43,7 +43,6 @@ pantheon_files_exec = executable (
     'View/Browser.vala',
     'View/Slot.vala',
     'View/PrivacyModeOn.vala',
-    'View/PopupMenuBuilder.vala',
     'View/Miller.vala',
 
     'View/Widgets/AbstractEditableLabel.vala',
@@ -66,6 +65,7 @@ pantheon_files_exec = executable (
 	'View/Sidebar/DeviceRow.vala',
 	'View/Sidebar/NetworkRow.vala',
 	'View/Sidebar/ActionRow.vala',
+	'View/Sidebar/PopupMenuBuilder.vala',
 
     dependencies : [
         pantheon_files_deps,
