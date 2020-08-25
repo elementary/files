@@ -153,21 +153,30 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     }
 
     protected override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
-        if (mounted) {
+        if (working) {
+            return;
+        }
+
+        var scheme = Uri.parse_scheme (uri);
+
+        if (scheme == "file" || mounted) {
             list.open_item (this, flag);
-        } else if (!working) {
-            if (volume != null) {
-                working = true;
-                volume.mount.begin (GLib.MountMountFlags.NONE,
-                                    new Gtk.MountOperation (Marlin.get_active_window ()),
-                                    null,
-                                    (obj, res) => {
+            return;
+        }
+
+        if (volume != null) {
+            working = true;
+            volume.mount.begin (
+                GLib.MountMountFlags.NONE,
+                new Gtk.MountOperation (Marlin.get_active_window ()),
+                null,
+                (obj, res) => {
                     try {
                         volume.mount.end (res);
                         mount = volume.get_mount ();
                         if (mount != null) {
                             mounted = true;
-                            can_eject = mount.can_unmount ();
+                            can_eject = mount.can_unmount () || mount.can_eject ();
                             uri = mount.get_default_location ().get_uri ();
                             list.open_item (this, flag);
                         }
@@ -178,32 +187,37 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         working = false;
                         add_device_tooltip.begin ();
                     }
-                });
-            } else if (drive != null && (drive.can_start () || drive.can_start_degraded ())) {
-                working = true;
-                drive.start.begin (DriveStartFlags.NONE,
-                                   new Gtk.MountOperation (null),
-                                   null,
-                                   (obj, res) => {
-                        try {
-                            if (drive.start.end (res)) {
-                                mounted = true;
-                                can_eject = drive.can_eject () || drive.can_stop ();
-                            }
-                        } catch (Error e) {
-                                var primary = _("Unable to start %s").printf (drive.get_name ());
-                                PF.Dialogs.show_error_dialog (primary, e.message, Marlin.get_active_window ());
-                        } finally {
-                            working = false;
-                            add_device_tooltip.begin ();
+                }
+            );
+        } else if (drive != null && (drive.can_start () || drive.can_start_degraded ())) {
+            working = true;
+            drive.start.begin (
+               DriveStartFlags.NONE,
+               new Gtk.MountOperation (null),
+               null,
+               (obj, res) => {
+                    try {
+                        if (drive.start.end (res)) {
+                            mounted = true;
+                            can_eject = drive.can_eject () || drive.can_stop ();
                         }
+                    } catch (Error e) {
+                            var primary = _("Unable to start %s").printf (drive.get_name ());
+                            PF.Dialogs.show_error_dialog (primary, e.message, Marlin.get_active_window ());
+                    } finally {
+                        working = false;
+                        add_device_tooltip.begin ();
                     }
-                );
-            }
+                }
+            );
         }
     }
 
     private void eject () {
+        if (working) {
+            return;
+        }
+
         var mount_op = new Gtk.MountOperation (Marlin.get_active_window ());
         if (mount != null) {
             if (mount.can_eject ()) {
@@ -321,6 +335,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         if ("sftp davs".contains (scheme)) {
             return false; /* Cannot get info from these protocols */
         }
+
         if ("smb afp".contains (scheme)) {
             /* Check network is functional */
             var net_mon = GLib.NetworkMonitor.get_default ();
