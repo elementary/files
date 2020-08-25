@@ -20,7 +20,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
+public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     private Gtk.Stack mount_eject_stack;
     private Gtk.Revealer mount_eject_revealer;
     private Gtk.Spinner mount_eject_spinner;
@@ -43,10 +43,6 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
 
         set {
             _mounted = value;
-            if (_mounted) {
-                mount_eject_stack.visible_child_name = "eject";
-            }
-
              mount_eject_revealer.reveal_child = _mounted && _can_eject;
         }
     }
@@ -73,15 +69,16 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
                 return;
             }
 
-            if (_can_eject) {
+            if (value) {
                 mount_eject_revealer.reveal_child = true;
                 mount_eject_stack.visible_child_name = "spinner";
                 mount_eject_spinner.start ();
             } else {
                 mount_eject_spinner.stop ();
                 mount_eject_stack.visible_child_name = "eject";
-                mount_eject_revealer.reveal_child = _can_eject && _mounted;
             }
+
+            mount_eject_revealer.reveal_child = _mounted && _can_eject;
         }
     }
 
@@ -161,10 +158,10 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         });
     }
 
-    protected new void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+    protected override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
         if (mounted) {
             list.open_item (this, flag);
-        } else if (volume != null && !working) {
+        } else if (!working) {
             working = true;
             volume.mount.begin (GLib.MountMountFlags.NONE,
                                 new Gtk.MountOperation (Marlin.get_active_window ()),

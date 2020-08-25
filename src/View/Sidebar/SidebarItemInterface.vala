@@ -52,5 +52,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
         gicon = icon;
     }
 
-    protected virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {}
+    protected virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+        list.open_item (this, flag);
+    }
 }

@@ -71,6 +71,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             orientation = Gtk.Orientation.HORIZONTAL
         };
 
+        var icon_label_grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.HORIZONTAL
+        };
+
         var label = new Gtk.Label (custom_name) {
             xalign = 0.0f,
             halign = Gtk.Align.START,
@@ -89,10 +93,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             margin_start = 12
         };
 
-        content_grid.add (icon);
-        content_grid.add (label);
-        event_box.add (content_grid);
-        add (event_box);
+        icon_label_grid.add (icon);
+        icon_label_grid.add (label);
+        event_box.add (icon_label_grid);
+        content_grid.add (event_box);
+        add (content_grid);
         show_all ();
     }
 
@@ -142,9 +147,5 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected void add_extra_menu_items (PopupMenuBuilder menu_builder) {
         menu_builder.add_separator ();
         menu_builder.add_remove (() => {list.remove_item_by_id (id);});
-    }
-
-    protected void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
-        list.open_item (this, flag);
     }
 }
