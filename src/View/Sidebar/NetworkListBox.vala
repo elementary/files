@@ -92,7 +92,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
 
         add_all_network_mounts ();
 
-        var row = add_sidebar_row (
+        var row = add_bookmark (
             _("Entire Network"),
             Marlin.NETWORK_URI,
             new ThemedIcon (Marlin.ICON_NETWORK)

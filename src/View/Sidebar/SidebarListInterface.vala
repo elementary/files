@@ -39,15 +39,17 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
     public virtual void clear () {
         foreach (Gtk.Widget child in get_children ()) {
             remove (child);
-            ((SidebarItemInterface)child).destroy_bookmark ();
+            if (child is SidebarItemInterface) {
+                ((SidebarItemInterface)child).destroy_bookmark ();
+            }
         }
     }
 
     public virtual void remove_bookmark_by_uri (string uri) {
-        Gtk.Widget? row = null;
+        SidebarItemInterface? row = null;
         if (has_uri (uri, out row)) {
-            remove ((SidebarItemInterface)row);
-            ((SidebarItemInterface)row).destroy_bookmark ();
+            remove (row);
+            row.destroy_bookmark ();
         }
     }
 
@@ -70,8 +72,8 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
             if (child is SidebarItemInterface) {
                 var row = (SidebarItemInterface)child;
                 if (row.id == id) {
-                    remove ((SidebarItemInterface)child);
-                    ((SidebarItemInterface)child).destroy_bookmark ();
+                    remove (row);
+                    row.destroy_bookmark ();
                     return true;
                 }
             }

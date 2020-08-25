@@ -80,14 +80,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         SidebarItemInterface? row;
         var root_uri = _(Marlin.ROOT_FS_URI);
         if (root_uri != "") {
-            row = add_sidebar_row (
+            row = add_bookmark (
                 _("FileSystem"),
                 root_uri,
-                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
+                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
+                this
             );
 
             row.set_tooltip_markup (
-                Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the root of the local filesystem"))
+                Granite.markup_accel_tooltip ({"<Alt>slash"}, _("View the root of the local filesystem"))
             );
         }
 
