@@ -37,27 +37,30 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     construct {
+        width_request = Marlin.app_settings.get_int ("minimum-sidebar-width");
+
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
 
         var bookmark_expander = new Gtk.Expander ("<b>" + _("Bookmarks") + "</b>") {
-            expanded = true,
             use_markup = true,
             tooltip_text = _("Common places plus saved folders and files")
         };
 
         var device_expander = new Gtk.Expander ("<b>" + _("Devices") + "</b>") {
-            expanded = true,
             use_markup = true,
             tooltip_text = _("Internal and connected storage devices")
         };
 
         var network_expander = new Gtk.Expander ("<b>" + _("Network") + "</b>") {
-            expanded = true,
             use_markup = true,
             tooltip_text = _("Devices and places available via a network")
         };
+
+        Marlin.app_settings.bind ("sidebar-cat-personal-expander", bookmark_expander, "expanded", SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind ("sidebar-cat-devices-expander", device_expander, "expanded", SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind ("sidebar-cat-network-expander", network_expander, "expanded", SettingsBindFlags.DEFAULT);
 
         bookmark_expander.add (bookmark_listbox);
         device_expander.add (device_listbox);
