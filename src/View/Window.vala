@@ -1104,27 +1104,9 @@ namespace Marlin.View {
                     if (view_container == current_tab) {
                         view_container.focus_location (File.new_for_path (PF.UserUtils.get_real_user_home ()));
                     } else {
-                        remove_tab (tab);
+                        remove_content (view_container);
                     }
                 }
-            }
-        }
-
-        private void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
-            /* ViewContainer deals with non-existent or unmounted directories
-             * and locations that are not directories */
-            if (restoring_tabs > 1) {
-                return;
-            }
-
-            if (flag == Marlin.OpenFlag.DEFAULT) {
-                grab_focus ();
-                /* Focus_location will not unnecessarily load the current directory if location is
-                 * normal file in the current directory, otherwise it will call user_path_change_request
-                 */
-                current_tab.focus_location (loc);
-            } else {
-                open_new_container (loc, flag);
             }
         }
 
