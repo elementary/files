@@ -85,4 +85,3 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
     public virtual void add_favorite (string uri, string? label = null) {}
 
 }
-
