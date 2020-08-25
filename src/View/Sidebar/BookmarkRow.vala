@@ -68,12 +68,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         };
 
         content_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL,
-            hexpand = true
+            orientation = Gtk.Orientation.HORIZONTAL
         };
 
         var label = new Gtk.Label (custom_name) {
             xalign = 0.0f,
+            halign = Gtk.Align.START,
+            hexpand = true,
             margin_start = 6
         };
 
@@ -83,6 +84,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         activate.connect (() => {activated ();});
 
         icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
+            halign = Gtk.Align.START,
+            hexpand = false,
             margin_start = 12
         };
 

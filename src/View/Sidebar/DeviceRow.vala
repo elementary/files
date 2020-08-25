@@ -27,7 +27,10 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
 
     private bool _mounted = false;
     private bool valid = true;
+    private double storage_capacity;
+    private double storage_free;
 
+    public Gtk.LevelBar storage { get; construct; }
     public string? uuid { get; set construct; }
     public Drive? drive { get; set construct; }
     public Volume? volume { get; set construct; }
@@ -129,12 +132,33 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
         mount_eject_revealer.reveal_child = false;
 
         content_grid.add (mount_eject_revealer);
+
+        var storage = new Gtk.LevelBar () {
+            mode = Gtk.LevelBarMode.CONTINUOUS,
+            orientation = Gtk.Orientation.HORIZONTAL,
+            value = 0.5,
+            hexpand = true,
+            margin_start = 9,
+            margin_end = 9
+        };
+
+        content_grid.attach (storage, 0, 1, 3, 1);
+
         show_all ();
 
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.volume_removed.connect (volume_removed);
         volume_monitor.mount_removed.connect (mount_removed);
         volume_monitor.drive_disconnected.connect (drive_removed);
+        get_filesystem_space.begin (null, (obj, res) => {
+            if (get_filesystem_space.end (res)) {
+                storage.max_value = storage_capacity;
+                storage.@value = storage_capacity - storage_free;
+                storage.show ();
+            } else {
+                storage.hide ();
+            }
+        });
     }
 
     protected new void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
@@ -288,5 +312,51 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow {
 
     }
 
+    private async bool get_filesystem_space (Cancellable? update_cancellable) {
+        storage_capacity = 0;
+        storage_free = 0;
 
+        if (mount == null) {
+            return false;
+        }
+
+        var root = mount.get_root ();
+
+        string scheme = Uri.parse_scheme (root.get_uri ());
+        if ("sftp davs".contains (scheme)) {
+            return false; /* Cannot get info from these protocols */
+        }
+        if ("smb afp".contains (scheme)) {
+            /* Check network is functional */
+            var net_mon = GLib.NetworkMonitor.get_default ();
+            if (!net_mon.get_network_available ()) {
+                return false;
+            }
+        }
+
+        GLib.FileInfo info;
+        try {
+            info = yield root.query_filesystem_info_async ("filesystem::*", 0, update_cancellable);
+        }
+        catch (GLib.Error error) {
+            if (!(error is IOError.CANCELLED)) {
+                warning ("Error querying %s filesystem info: %s", root.get_uri (), error.message);
+            }
+
+            info = null;
+        }
+
+        if (update_cancellable.is_cancelled () || info == null) {
+            return false;
+        } else {
+            if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE)) {
+                storage_capacity = (double)(info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE));
+            }
+            if (info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+                storage_free = (double)(info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE));
+            }
+
+            return true;
+        }
+    }
 }
