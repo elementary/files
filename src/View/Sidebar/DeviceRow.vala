@@ -27,10 +27,11 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
     private bool _mounted = false;
     private bool valid = true;
-    private double storage_capacity;
-    private double storage_free;
+    private double storage_capacity = 0;
+    private double storage_free = 0;
+    private string storage_text = "";
 
-    public Gtk.LevelBar storage { get; construct; }
+    public Gtk.LevelBar storage { get; set construct; }
     public string? uuid { get; set construct; }
     public Drive? drive { get; set construct; }
     public Volume? volume { get; set construct; }
@@ -130,7 +131,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
         content_grid.add (mount_eject_revealer);
 
-        var storage = new Gtk.LevelBar () {
+        storage = new Gtk.LevelBar () {
             mode = Gtk.LevelBarMode.CONTINUOUS,
             orientation = Gtk.Orientation.HORIZONTAL,
             value = 0.5,
@@ -147,61 +148,58 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         volume_monitor.volume_removed.connect (volume_removed);
         volume_monitor.mount_removed.connect (mount_removed);
         volume_monitor.drive_disconnected.connect (drive_removed);
-        get_filesystem_space.begin (null, (obj, res) => {
-            if (get_filesystem_space.end (res)) {
-                storage.max_value = storage_capacity;
-                storage.@value = storage_capacity - storage_free;
-                storage.show ();
-            } else {
-                storage.hide ();
-            }
-        });
+
+        add_device_tooltip.begin ();
     }
 
     protected override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
         if (mounted) {
             list.open_item (this, flag);
         } else if (!working) {
-            working = true;
-            volume.mount.begin (GLib.MountMountFlags.NONE,
-                                new Gtk.MountOperation (Marlin.get_active_window ()),
-                                null,
-                                (obj, res) => {
-                try {
-                    volume.mount.end (res);
-                    mount = volume.get_mount ();
-                    if (mount != null) {
-                        mounted = true;
-                        can_eject = mount.can_unmount ();
-                        uri = mount.get_default_location ().get_uri ();
-                        list.open_item (this, flag);
-                    }
-                } catch (GLib.Error error) {
-                    var primary = _("Error mounting volume %s").printf (volume.get_name ());
-                    PF.Dialogs.show_error_dialog (primary, error.message, Marlin.get_active_window ());
-                } finally {
-                    working = false;
-                }
-            });
-        } else if (drive != null && (drive.can_start () || drive.can_start_degraded ())) {
-            working = true;
-            drive.start.begin (DriveStartFlags.NONE,
-                               new Gtk.MountOperation (null),
-                               null,
-                               (obj, res) => {
+            if (volume != null) {
+                working = true;
+                volume.mount.begin (GLib.MountMountFlags.NONE,
+                                    new Gtk.MountOperation (Marlin.get_active_window ()),
+                                    null,
+                                    (obj, res) => {
                     try {
-                        if (drive.start.end (res)) {
+                        volume.mount.end (res);
+                        mount = volume.get_mount ();
+                        if (mount != null) {
                             mounted = true;
-                            can_eject = drive.can_eject () || drive.can_stop ();
+                            can_eject = mount.can_unmount ();
+                            uri = mount.get_default_location ().get_uri ();
+                            list.open_item (this, flag);
                         }
-                    } catch (Error e) {
-                            var primary = _("Unable to start %s").printf (drive.get_name ());
-                            PF.Dialogs.show_error_dialog (primary, e.message, Marlin.get_active_window ());
+                    } catch (GLib.Error error) {
+                        var primary = _("Error mounting volume %s").printf (volume.get_name ());
+                        PF.Dialogs.show_error_dialog (primary, error.message, Marlin.get_active_window ());
                     } finally {
                         working = false;
+                        add_device_tooltip.begin ();
                     }
-                }
-            );
+                });
+            } else if (drive != null && (drive.can_start () || drive.can_start_degraded ())) {
+                working = true;
+                drive.start.begin (DriveStartFlags.NONE,
+                                   new Gtk.MountOperation (null),
+                                   null,
+                                   (obj, res) => {
+                        try {
+                            if (drive.start.end (res)) {
+                                mounted = true;
+                                can_eject = drive.can_eject () || drive.can_stop ();
+                            }
+                        } catch (Error e) {
+                                var primary = _("Unable to start %s").printf (drive.get_name ());
+                                PF.Dialogs.show_error_dialog (primary, e.message, Marlin.get_active_window ());
+                        } finally {
+                            working = false;
+                            add_device_tooltip.begin ();
+                        }
+                    }
+                );
+            }
         }
     }
 
@@ -355,5 +353,31 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
             return true;
         }
+    }
+
+    private async void add_device_tooltip () {
+        if (yield get_filesystem_space (null)) {
+            storage.max_value = storage_capacity;
+            storage.@value = storage_capacity - storage_free;
+            storage.show ();
+        } else {
+            storage_text = "";
+            storage.hide ();
+        }
+
+        if (storage_capacity > 0) {
+            var used_string = _("%s free").printf (format_size ((uint64)storage_free));
+            var size_string = _("%s used of %s").printf (
+                format_size ((uint64)(storage_capacity - storage_free)),
+                format_size ((uint64)storage_capacity)
+            );
+
+            storage_text = "\n%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>"
+                .printf (used_string, size_string);
+        } else {
+            storage_text = "";
+        }
+
+        set_tooltip_markup (PF.FileUtils.sanitize_path (uri, null, false) + storage_text);
     }
 }
