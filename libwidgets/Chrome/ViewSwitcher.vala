@@ -24,25 +24,30 @@
 namespace Marlin.View.Chrome {
     public class ViewSwitcher : Granite.Widgets.ModeButton {
         private const int SWITCH_DELAY_MSEC = 100;
-        private bool freeze_update = false;
         public GLib.SimpleAction view_mode_action { get; construct; }
         private uint mode_change_timeout_id = 0;
         private ViewMode last_selected;
 
         construct {
             /* Item 0 */
-            var icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON);
-            icon.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>1"}, _("View as Grid"));
+            var icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON) {
+                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>1"}, _("View as Grid"))
+            };
+
             append (icon);
 
             /* Item 1 */
-            var list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON);
-            list.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>2"}, _("View as List"));
+            var list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON) {
+                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>2"}, _("View as List"))
+            };
+
             append (list);
 
             /* Item 2 */
-            var miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON);
-            miller.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>3"}, _("View in Columns"));
+            var miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON) {
+                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>3"}, _("View in Columns"))
+            };
+
             append (miller);
 
             mode_changed.connect (() => {

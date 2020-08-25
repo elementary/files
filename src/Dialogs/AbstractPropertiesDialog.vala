@@ -48,32 +48,36 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
 
         var info_header = new Granite.HeaderLabel (_("Info"));
 
-        info_grid = new Gtk.Grid ();
-        info_grid.column_spacing = 6;
-        info_grid.row_spacing = 6;
+        info_grid = new Gtk.Grid () {
+            column_spacing = 6,
+            row_spacing = 6
+        };
+
         info_grid.attach (info_header, 0, 0, 2, 1);
 
         stack = new Gtk.Stack ();
         stack.add_titled (info_grid, PanelType.INFO.to_string (), _("General"));
 
-        stack_switcher = new Gtk.StackSwitcher ();
-        stack_switcher.homogeneous = true;
-        stack_switcher.margin_top = 12;
-        stack_switcher.no_show_all = true;
-        stack_switcher.stack = stack;
+        stack_switcher = new Gtk.StackSwitcher () {
+            homogeneous = true,
+            margin_top = 12,
+            no_show_all = true,
+            stack = stack
+        };
 
-        layout = new Gtk.Grid ();
-        layout.margin = 12;
-        layout.margin_top = 0;
-        layout.column_spacing = 12;
-        layout.row_spacing = 6;
+        layout = new Gtk.Grid () {
+            margin = 12,
+            margin_top = 0,
+            column_spacing = 12,
+            row_spacing = 6
+        };
+
         layout.attach (stack_switcher, 0, 1, 2, 1);
         layout.attach (stack, 0, 2, 2, 1);
 
         ((Gtk.Box) get_content_area ()).add (layout);
-        ((Gtk.Box) get_action_area ()).margin = 6;
 
-        add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        add_button (_("Close"), Gtk.ResponseType.CLOSE).margin = 6;
         response.connect ((source, type) => {
             switch (type) {
                 case Gtk.ResponseType.CLOSE:
@@ -94,10 +98,11 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
         if (emblems_list != null) {
             int pos = 0;
-            var emblem_grid = new Gtk.Grid ();
-            emblem_grid.orientation = Gtk.Orientation.VERTICAL;
-            emblem_grid.halign = Gtk.Align.END;
-            emblem_grid.valign = Gtk.Align.END;
+            var emblem_grid = new Gtk.Grid () {
+                orientation = Gtk.Orientation.VERTICAL,
+                halign = Gtk.Align.END,
+                valign = Gtk.Align.END
+            };
 
             foreach (string emblem_name in emblems_list) {
                 var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
@@ -109,11 +114,15 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
                 }
             }
 
-            var file_img = new Gtk.Overlay ();
-            file_img.set_size_request (48, 48);
-            file_img.valign = Gtk.Align.CENTER;
+            var file_img = new Gtk.Overlay () {
+                valign = Gtk.Align.CENTER,
+                width_request = 48,
+                height_request = 48
+            };
+
             file_img.add_overlay (file_icon);
             file_img.add_overlay (emblem_grid);
+
             layout.attach (file_img, 0, 0, 1, 1);
         } else {
             layout.attach (file_icon, 0, 0, 1, 1);
