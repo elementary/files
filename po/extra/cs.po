@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-08-05 19:13+0000\n"
+"PO-Revision-Date: 2020-08-24 21:13+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
 "Language: cs\n"
@@ -72,10 +72,8 @@ msgid "Improvements:"
 msgstr "Vylepšení:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Favorite menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr "Volba oblíbené pro síťová připojení (mount) v postranním panelu"
+msgstr "Volba záložka pro síťová připojení (mount) v postranním panelu"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show folder item count in List View"
@@ -128,6 +126,8 @@ msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
+"Nezobrazovat stav gitu pro repozitáře, nacházející se na FUSE souborových "
+"systémech (prevence možného blokování)"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -137,10 +137,8 @@ msgid "Other updates:"
 msgstr "Ostatní aktualizace:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
-#, fuzzy
-#| msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "„Osobní“ a „Záložky“ jsou nyní „Oblíbené“"
+msgstr "„Osobní“ je nyní „Záložky“"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99

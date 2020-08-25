@@ -573,122 +573,6 @@ get_duplicate_name (const char *name, int count_increment, int max_length)
     return result;
 }
 
-static gboolean
-has_invalid_xml_char (char *str)
-{
-    gunichar c;
-
-    while (*str != 0) {
-        c = g_utf8_get_char (str);
-        /* characters XML permits */
-        if (!(c == 0x9 ||
-              c == 0xA ||
-              c == 0xD ||
-              (c >= 0x20 && c <= 0xD7FF) ||
-              (c >= 0xE000 && c <= 0xFFFD) ||
-              (c >= 0x10000 && c <= 0x10FFFF))) {
-            return TRUE;
-        }
-        str = g_utf8_next_char (str);
-    }
-    return FALSE;
-}
-
-static char *
-eel_str_middle_truncate (const char *string,
-                         guint truncate_length)
-{
-    char *truncated;
-    guint length;
-    guint num_left_chars;
-    guint num_right_chars;
-
-    const char delimter[] = "…";
-    const guint delimter_length = strlen (delimter);
-    const guint min_truncate_length = delimter_length + 2;
-
-    if (string == NULL) {
-        return NULL;
-    }
-
-    /* It doesnt make sense to truncate strings to less than
-     * the size of the delimiter plus 2 characters (one on each
-     * side)
-     */
-    if (truncate_length < min_truncate_length) {
-        return g_strdup (string);
-    }
-
-    length = g_utf8_strlen (string, -1);
-
-    /* Make sure the string is not already small enough. */
-    if (length <= truncate_length) {
-        return g_strdup (string);
-    }
-
-    /* Find the 'middle' where the truncation will occur. */
-    num_left_chars = (truncate_length - delimter_length) / 2;
-    num_right_chars = truncate_length - num_left_chars - delimter_length;
-
-    truncated = g_new (char, strlen (string) + 1);
-
-    g_utf8_strncpy (truncated, string, num_left_chars);
-    strcat (truncated, delimter);
-    strcat (truncated, g_utf8_offset_to_pointer  (string, length - num_right_chars));
-
-    return truncated;
-}
-
-static char *
-custom_basename_from_file (GFile *file) {
-    GFileInfo *info;
-    char *name, *basename, *tmp;
-
-    if (!G_IS_FILE (file)) {
-        g_critical ("Invalid file");
-        return strdup ("");
-    }
-
-    info = g_file_query_info (file,
-                              G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
-                              0,
-                              g_cancellable_get_current (),
-                              NULL);
-
-    name = NULL;
-    if (info) {
-        name = g_strdup (g_file_info_get_display_name (info));
-        g_object_unref (info);
-    }
-
-    if (name == NULL) {
-        basename = g_file_get_basename (file);
-        if (g_utf8_validate (basename, -1, NULL)) {
-            name = basename;
-        } else {
-            name = g_uri_escape_string (basename, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
-            g_free (basename);
-        }
-    }
-
-    /* Some chars can't be put in the markup we use for the dialogs... */
-    if (has_invalid_xml_char (name)) {
-        tmp = name;
-        name = g_uri_escape_string (name, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
-        g_free (tmp);
-    }
-
-    /* Finally, if the string is too long, truncate it. */
-    if (name != NULL) {
-        tmp = name;
-        name = eel_str_middle_truncate (tmp, MAXIMUM_DISPLAYED_FILE_NAME_LENGTH);
-        g_free (tmp);
-    }
-
-
-    return name;
-}
-
 #define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
 
 static gpointer
@@ -985,7 +869,7 @@ confirm_delete_from_trash (CommonJob *job,
     /* Only called if confirmation known to be required - do not second guess */
 
     if (file_count == 1) {
-        gchar *basename = custom_basename_from_file (files->data);
+        gchar *basename = pf_file_utils_custom_basename_from_file (files->data);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\" "
@@ -1025,7 +909,7 @@ confirm_delete_directly (CommonJob *job,
     g_assert (file_count > 0);
 
     if (file_count == 1) {
-        gchar *basename = custom_basename_from_file (files->data);
+        gchar *basename = pf_file_utils_custom_basename_from_file (files->data);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         prompt = g_strdup_printf (_("Permanently delete “%s”?"), basename);
@@ -1162,7 +1046,7 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
-            gchar *dir_basename = custom_basename_from_file (dir);
+            gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
             primary = g_strdup (_("Error while deleting."));
             details = NULL;
 
@@ -1202,7 +1086,7 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        gchar *dir_basename = custom_basename_from_file (dir);
+        gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
         primary = g_strdup (_("Error while deleting."));
         details = NULL;
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
@@ -1250,7 +1134,7 @@ retry:
             }
 
             primary = g_strdup (_("Error while deleting."));
-            dir_basename = custom_basename_from_file (dir);
+            dir_basename = pf_file_utils_custom_basename_from_file (dir);
             /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
             secondary = g_strdup_printf (_("Could not remove the folder %s."), dir_basename);
             g_free (dir_basename);
@@ -1332,7 +1216,7 @@ delete_file (CommonJob *job, GFile *file,
             goto skip;
         }
         primary = g_strdup (_("Error while deleting."));
-        dir_basename = custom_basename_from_file (file);
+        dir_basename = pf_file_utils_custom_basename_from_file (file);
         /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         secondary = g_strdup_printf (_("There was an error deleting %s."), dir_basename);
         g_free (dir_basename);
@@ -1890,7 +1774,7 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
-            gchar *dir_basename = custom_basename_from_file (dir);
+            gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
             primary = get_scan_primary (source_info->op);
             details = NULL;
 
@@ -1935,7 +1819,7 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        gchar *dir_basename = custom_basename_from_file (dir);
+        gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
@@ -2022,7 +1906,7 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        gchar *file_basename = custom_basename_from_file (file);
+        gchar *file_basename = pf_file_utils_custom_basename_from_file (file);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
@@ -2137,7 +2021,7 @@ retry:
             return;
         }
 
-        dest_basename = custom_basename_from_file (dest);
+        dest_basename = pf_file_utils_custom_basename_from_file (dest);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_basename);
@@ -2316,8 +2200,8 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (!G_IS_FILE (copy_job->files->data) || ! G_IS_FILE (copy_job->destination)) {
         return;
     } else {
-        srcname = custom_basename_from_file ((GFile *)copy_job->files->data);
-        destname = custom_basename_from_file (copy_job->destination);
+        srcname = pf_file_utils_custom_basename_from_file ((GFile *)copy_job->files->data);
+        destname = pf_file_utils_custom_basename_from_file (copy_job->destination);
     }
 
     transfer_info->last_report_time = now;
@@ -3798,13 +3682,13 @@ retry:
             goto out;
         }
 
-        src_basename = custom_basename_from_file (src);
+        src_basename = pf_file_utils_custom_basename_from_file (src);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = g_strdup_printf (_("Cannot copy \"%s\" here."), src_basename);
         g_free (src_basename);
 
-        dest_basename = custom_basename_from_file (dest_dir);
+        dest_basename = pf_file_utils_custom_basename_from_file (dest_dir);
         /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         secondary = g_strdup_printf (_("There was an error copying the file into %s."), dest_basename);
         g_free (dest_basename);
@@ -4040,7 +3924,7 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     gchar *s, *dest_basename;
 
     job = (CommonJob *)move_job;
-    dest_basename = custom_basename_from_file (move_job->destination);
+    dest_basename = pf_file_utils_custom_basename_from_file (move_job->destination);
     /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
     s = g_strdup_printf (_("Preparing to move to \"%s\""), dest_basename);
@@ -4577,30 +4461,6 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     pf_progress_info_update_progress (job->progress, left, total);
 }
 
-static char *
-get_abs_path_for_symlink (GFile *file)
-{
-    GFile *root, *parent;
-    char *relative, *abs;
-
-    if (g_file_is_native (file)) {
-        return g_file_get_path (file);
-    }
-
-    root = g_object_ref (file);
-    while ((parent = g_file_get_parent (root)) != NULL) {
-        g_object_unref (root);
-        root = parent;
-    }
-
-    relative = g_file_get_relative_path (root, file);
-    g_object_unref (root);
-    abs = g_strconcat ("/", relative, NULL);
-    g_free (relative);
-    return abs;
-}
-
-
 static void
 link_file (CopyMoveJob *job,
            GFile *src, GFile *dest_dir,
@@ -4636,14 +4496,11 @@ retry:
     error = NULL;
     not_local = FALSE;
 
-    path = get_abs_path_for_symlink (src);
-    char *scheme;
-    scheme = g_file_get_uri_scheme (src);
+    path = pf_file_utils_get_path_for_symlink (src);
 
-    if (path == NULL || !g_str_has_prefix (scheme, "file"))
+    if (path == NULL) {
         not_local = TRUE;
-
-    g_free (scheme);
+    }
 
     if (!not_local && g_file_make_symbolic_link (dest,
                                           path,
@@ -4705,7 +4562,7 @@ retry:
         if (common->skip_all_error) {
             goto out;
         }
-        src_basename = custom_basename_from_file (src);
+        src_basename = pf_file_utils_custom_basename_from_file (src);
         /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         primary = g_strdup_printf (_("Error while creating link to %s."), src_basename);
         g_free (src_basename);
@@ -5527,7 +5384,7 @@ retry:
 
         /* Other error */
         else {
-            gchar *dest_basename = custom_basename_from_file (dest);
+            gchar *dest_basename = pf_file_utils_custom_basename_from_file (dest);
             if (job->make_dir) {
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
                 primary = g_strdup_printf (_("Error while creating directory %s."), dest_basename);
