@@ -1005,13 +1005,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             device = context.get_device ();
             device.get_position (null, out x, out y);
 
-#if HAVE_PLANK_0_11
             Plank.PoofWindow poof_window;
             poof_window = Plank.PoofWindow.get_default ();
-#else
-            Plank.Widgets.PoofWindow? poof_window = null;
-            poof_window = Plank.Widgets.PoofWindow.get_default ();
-#endif
             poof_window.show_at (x, y);
 
             if (drag_row_ref != null) {
