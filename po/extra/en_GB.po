@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-08-03 16:36+0000\n"
+"PO-Revision-Date: 2020-08-15 09:06+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@posteo.net>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
@@ -72,10 +72,8 @@ msgid "Improvements:"
 msgstr "Improvements:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Favorite menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr "Favourite menu option for network mounts in sidebar"
+msgstr "Bookmark menu option for network mounts in sidebar"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show folder item count in List View"
@@ -122,6 +120,8 @@ msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
+"Do not show git status for repositories on FUSE filesystems to prevent "
+"possible blocking"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -131,10 +131,8 @@ msgid "Other updates:"
 msgstr "Other updates:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
-#, fuzzy
-#| msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "\"Personal\" and \"Bookmarks\" are now \"Favourites\""
+msgstr "\"Personal\" is now \"Bookmarks\""
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99

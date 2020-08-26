@@ -27,7 +27,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.34.0'
+vala_version_required = '0.48.2'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -74,12 +74,12 @@ math_dep = cc.find_library('m')
 plank_dep = []
 plank_dep = dependency('plank', version: '>=0.10.9')
 if (plank_dep.found() )
-	add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
+    add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
 endif
 
 zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
 if (zeitgeist_dep.found())
-	add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
+    add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
 endif
 
 add_project_arguments(

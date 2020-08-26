@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -159,6 +159,26 @@ namespace PF.FileUtils {
             debug ("Could not get original path for trashed file %s", file.uri);
             return null;
         }
+    }
+
+    public string? get_path_for_symlink (GLib.File file) {
+        string? result;
+        if (Uri.parse_scheme (file.get_uri ()) != "file") {
+            result = null;
+        } else if (file.is_native ()) {
+            result = file.get_path (); // usually the case
+        } else {
+            File root = file;
+            File? parent = file.get_parent ();
+            while (parent != null) {
+                root = parent;
+                parent = root.get_parent ();
+            }
+
+            result = Path.DIR_SEPARATOR_S + root.get_relative_path (file);
+        }
+
+        return result;
     }
 
     private string construct_parent_path (string path, bool include_file_protocol) {
@@ -436,6 +456,11 @@ namespace PF.FileUtils {
         } else {
             end_offset = strip_extension (filename).char_count ();
         }
+    }
+
+    public string custom_basename_from_file (GLib.File location) {
+        var gof = GOF.File.@get (location); // In most case a GOF.File can be retrieved from cache
+        return gof.get_display_name (); // Falls back to location.get_basename ()
     }
 
     public async GLib.File? set_file_display_name (GLib.File old_location,
@@ -831,6 +856,86 @@ namespace PF.FileUtils {
         } catch (Error e) {
             critical (e.message);
             return -1;
+        }
+    }
+
+    public bool make_file_name_valid_for_dest_fs (ref string filename, string? dest_fs_type) {
+        bool result = false;
+
+        if (dest_fs_type == null) {
+            return false;
+        }
+
+        switch (dest_fs_type) {
+            case "fat":
+            case "vfat":
+            case "msdos":
+            case "msdosfs":
+                const string CHARS_TO_REPLACE = "/:;*?\\<> ";
+                char replacement = '_';
+                string original = filename;
+                filename = filename.delimit (CHARS_TO_REPLACE, replacement);
+                result = original != filename;
+                break;
+
+            default:
+                break;
+        }
+
+        return result;
+    }
+
+    public string format_time (int seconds, out int time_unit) {
+        int minutes, hours;
+        string result;
+
+        if (seconds < 0) {
+            seconds = 0;
+        }
+
+        if (seconds < 60) { //less than one minute
+            time_unit = seconds;
+            result = ngettext ("%'d second", "%'d seconds", seconds).printf (seconds);
+        } else if (seconds < 3600) { // less than one hour
+            minutes = seconds / 60;
+            time_unit = minutes;
+            result = ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes);
+        } else {
+            hours = seconds / 3600;
+            if (hours < 4) {
+                minutes = (seconds - hours * 3600) / 60;
+                time_unit = minutes + hours;
+                ///TRANSLATORS The %s will be translated into "x hours, y minutes"
+                result = _("%s, %s").printf (ngettext ("%'d hour", "%'d hours", hours).printf (hours),
+                                             ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes));
+            } else {
+                time_unit = hours;
+                result = ngettext ("approximately %'d hour", "approximately %'d hours", hours).printf (hours);
+            }
+        }
+
+        return result;
+    }
+
+    public int get_max_name_length (GLib.File file_dir) {
+        //FIXME Do not need to keep calling this for the same filesystem
+
+        if (!file_dir.has_uri_scheme ("file")) {
+            return -1;
+        }
+
+        var dir = file_dir.get_path ();
+        var max_path = Posix.pathconf (dir, Posix.PathConfName.PATH_MAX);
+        var max_name = Posix.pathconf (dir, Posix.PathConfName.NAME_MAX);
+
+        if (max_name == -1 && max_path == -1) {
+            return -1;
+        } else if (max_name == -1 && max_path != -1) {
+            return (int) (max_path - (dir.length + 1));
+        } else if (max_name != -1 && max_path == -1) {
+            return (int) max_name;
+        } else {
+            return (int) long.min (max_path - (dir.length + 1), max_name);
         }
     }
 }
