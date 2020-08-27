@@ -161,6 +161,26 @@ namespace PF.FileUtils {
         }
     }
 
+    public string? get_path_for_symlink (GLib.File file) {
+        string? result;
+        if (Uri.parse_scheme (file.get_uri ()) != "file") {
+            result = null;
+        } else if (file.is_native ()) {
+            result = file.get_path (); // usually the case
+        } else {
+            File root = file;
+            File? parent = file.get_parent ();
+            while (parent != null) {
+                root = parent;
+                parent = root.get_parent ();
+            }
+
+            result = Path.DIR_SEPARATOR_S + root.get_relative_path (file);
+        }
+
+        return result;
+    }
+
     private string construct_parent_path (string path, bool include_file_protocol) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
@@ -436,6 +456,11 @@ namespace PF.FileUtils {
         } else {
             end_offset = strip_extension (filename).char_count ();
         }
+    }
+
+    public string custom_basename_from_file (GLib.File location) {
+        var gof = GOF.File.@get (location); // In most case a GOF.File can be retrieved from cache
+        return gof.get_display_name (); // Falls back to location.get_basename ()
     }
 
     public async GLib.File? set_file_display_name (GLib.File old_location,
