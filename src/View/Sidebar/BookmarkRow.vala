@@ -34,6 +34,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private bool valid = true; //Set to false if scheduled for removal
     private Gtk.Image icon;
     protected Gtk.Grid content_grid;
+    protected Gtk.Grid icon_label_grid;
     public string custom_name { get; set construct; }
     public SidebarListInterface list { get; construct; }
     public uint32 id { get; construct; }
@@ -54,6 +55,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     construct {
+        margin_bottom = 3;
         //Set a fallback tooltip to stop category tooltip appearing inappropriately
         set_tooltip_text (PF.FileUtils.sanitize_path (uri, null, false));
 
@@ -63,18 +65,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         SidebarItemInterface.item_id_map.@set (id, this);
         item_map_lock.unlock ();
 
-        var event_box = new Gtk.EventBox () {
-            above_child = false
-        };
-
-        content_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL
-        };
-
-        var icon_label_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL
-        };
-
         var label = new Gtk.Label (custom_name) {
             xalign = 0.0f,
             halign = Gtk.Align.START,
@@ -82,23 +72,35 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             margin_start = 6
         };
 
-        button_press_event.connect (on_button_press_event);
-        button_release_event.connect_after (after_button_release_event);
-
-        activate.connect (() => {activated ();});
-
         icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
             halign = Gtk.Align.START,
             hexpand = false,
             margin_start = 12
         };
 
+        icon_label_grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.HORIZONTAL
+        };
         icon_label_grid.add (icon);
         icon_label_grid.add (label);
+
+        var event_box = new Gtk.EventBox () {
+            above_child = false
+        };
         event_box.add (icon_label_grid);
-        content_grid.add (event_box);
+
+        content_grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.HORIZONTAL
+        };
+        content_grid.attach (event_box, 0, 0, 1, 1);
+
         add (content_grid);
         show_all ();
+
+        button_press_event.connect (on_button_press_event);
+        button_release_event.connect_after (after_button_release_event);
+
+        activate.connect (() => {activated ();});
     }
 
     public void destroy_bookmark () {

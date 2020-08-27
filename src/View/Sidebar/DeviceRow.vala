@@ -98,13 +98,6 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     }
 
     construct {
-        mount_eject_revealer = new Gtk.Revealer ();
-
-        mount_eject_stack = new Gtk.Stack () {
-            halign = Gtk.Align.END,
-            hexpand = true
-        };
-
         Gtk.Image eject_image = new Gtk.Image.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
             margin_end = 9
         };
@@ -112,35 +105,42 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         var eject_image_event_box = new Gtk.EventBox () {
             above_child = true
         };
-
-        eject_image_event_box.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
         eject_image_event_box.add (eject_image);
+        eject_image_event_box.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
         eject_image_event_box.button_press_event.connect ( () => {
             eject ();
             return true;
         });
 
+        mount_eject_stack = new Gtk.Stack () {
+            halign = Gtk.Align.END,
+            hexpand = false
+        };
         mount_eject_stack.add_named (eject_image_event_box, "eject");
         mount_eject_stack.visible_child_name = "eject";
 
         mount_eject_spinner = new Gtk.Spinner ();
         mount_eject_stack.add_named (mount_eject_spinner, "spinner");
 
+        mount_eject_revealer = new Gtk.Revealer () {
+            halign = Gtk.Align.START,
+            valign = Gtk.Align.END,
+            margin_start = 3
+        };
         mount_eject_revealer.add (mount_eject_stack);
         mount_eject_revealer.reveal_child = false;
 
-        content_grid.add (mount_eject_revealer);
+        content_grid.attach (mount_eject_revealer, 1, 0, 1, 1);
 
         storage = new Gtk.LevelBar () {
             mode = Gtk.LevelBarMode.CONTINUOUS,
             orientation = Gtk.Orientation.HORIZONTAL,
             value = 0.5,
             hexpand = true,
-            margin_start = 9,
-            margin_end = 9
+            margin_start = 6
         };
 
-        content_grid.attach (storage, 0, 1, 3, 1);
+        icon_label_grid.attach (storage, 1, 1, 1, 1);
 
         show_all ();
 
