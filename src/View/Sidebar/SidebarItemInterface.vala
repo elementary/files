@@ -46,6 +46,8 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract uint32 id { get; construct; }
     public abstract string uri { get; set construct; }
     public abstract Icon gicon { get; set construct; }
+    public abstract bool pinned { get; set; default = false;} //Whether can be reordered
+    public abstract bool permanent { get; set; default = false;} //Whether can be deleted
 
     public abstract void destroy_bookmark ();
     public virtual void update_icon (Icon icon) {

@@ -86,6 +86,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the home folder"))
             );
+
+            row.pinned = true;
+            row.permanent = true;
         }
 
         if (PF.FileUtils.protocol_is_supported ("recent")) {
@@ -98,6 +101,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>R"}, _("View the list of recently used files"))
             );
+
+            row.pinned = true;
+            row.permanent = true;
         }
 
 
@@ -117,6 +123,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         trash_bookmark.set_tooltip_markup (
             Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
         );
+
+        trash_bookmark.pinned = true;
+        trash_bookmark.permanent = true;
 
         trash_monitor.notify["is-empty"].connect (() => {
             if (trash_bookmark != null) {

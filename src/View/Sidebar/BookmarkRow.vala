@@ -21,6 +21,20 @@
  */
 
 public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
+    enum TargetType {
+        OTHER_TYPE,
+        BOOKMARK_ROW,
+    }
+
+    static Gtk.TargetEntry[] SOURCE_TARGETS = {
+        {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.BOOKMARK_ROW}
+    };
+
+    static Gtk.TargetEntry[] DEST_TARGETS = {
+        {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.BOOKMARK_ROW},
+    };
+
+    static Gdk.Atom source_data_type = Gdk.Atom.intern_static_string ("text/plain");
 
     static construct {
         SidebarItemInterface.row_id = new Rand.with_seed (
@@ -40,6 +54,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     public uint32 id { get; construct; }
     public string uri { get; set construct; }
     public Icon gicon { get; set construct; }
+    public bool pinned { get; set; default = false;}
+    public bool permanent { get; set; default = false;}
 
     public BookmarkRow (string name,
                         string uri,
@@ -101,6 +117,72 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         button_release_event.connect_after (after_button_release_event);
 
         activate.connect (() => {activated ();});
+
+
+        /*Set up as Drag Source*/
+        Gtk.drag_source_set (
+            this,
+            Gdk.ModifierType.BUTTON1_MASK,
+            SOURCE_TARGETS,
+            Gdk.DragAction.MOVE
+        );
+
+        drag_begin.connect ((ctx) => {
+            var drag_icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.LARGE_TOOLBAR);
+            drag_icon.show ();
+            Gtk.drag_set_icon_widget (ctx, drag_icon, 0, 0);
+            //TODO Set an image of the row itself?
+        });
+
+        /* Pass the item id as selection data by converting to string.*/
+        //TODO There may be a more elegant method of passing a pointer to `this` directly.
+        drag_data_get.connect ((ctx, sel_data, info, time) => {
+            if (pinned) {
+                return;
+            }
+
+            uint8[] data = id.to_string ().data;
+            sel_data.@set (source_data_type, 8, data);
+        });
+
+        /*Set up as Drop Target for uris*/
+        Gtk.drag_dest_set (
+            this,
+            Gtk.DestDefaults.ALL,
+            DEST_TARGETS,
+            Gdk.DragAction.MOVE
+        );
+
+        drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
+            if (pinned) {
+                return;
+            }
+
+            var text = sel_data.get_text ();
+            if (text == null) {
+                return;
+            }
+
+            var id = (uint32)(uint.parse (text));
+            var item = SidebarItemInterface.get_item (id);
+
+            if (item == null ||
+                item.id == this.id ||
+                item.list != list) { //Cannot drop on self or different list
+
+                return;
+            }
+
+            list.remove (item);
+            //We do not remove from map as we are not destroying the item and need to maintain a reference
+
+            var pos = get_index ();
+            if (y > get_allocated_height () / 2) {
+                pos++;
+            }
+
+            ((Gtk.ListBox)list).insert (item, pos);
+        });
     }
 
     public void destroy_bookmark () {
