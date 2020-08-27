@@ -177,11 +177,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             //We do not remove from map as we are not destroying the item and need to maintain a reference
 
             var pos = get_index ();
-            if (y > get_allocated_height () / 2) {
+            if (y > get_allocated_height () / 2) { //Insert at point nearest to where dropped
                 pos++;
             }
 
             ((Gtk.ListBox)list).insert (item, pos);
+        });
+
+        /* Handle motion over a potention drop target */
+        drag_motion.connect ((ctx, x, y, time) => {
+            if (pinned) {
+                Gdk.drag_status (ctx, Gdk.DragAction.DEFAULT, time);
+            }
         });
     }
 
