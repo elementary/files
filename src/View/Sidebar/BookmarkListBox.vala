@@ -59,6 +59,23 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         return row;
     }
 
+    private SidebarItemInterface? insert_sidebar_row (string label,
+                                                      string uri,
+                                                      Icon gicon,
+                                                      int index,
+                                                      bool pinned = false,
+                                                      bool permanent = false) {
+
+        var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
+        if (!has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
+            insert (row, index);
+        } else {
+            return null;
+        }
+
+        return row;
+    }
+
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is BookmarkRow) {
             select_row ((BookmarkRow)item);
@@ -134,7 +151,15 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     }
 
     public override void add_favorite (string uri, string? label = null) {
-        var bm = bookmark_list.insert_uri_at_end (uri, label);
-        add_sidebar_row (bm.label, bm.uri, bm.get_icon ());
+        var index = 0;
+        foreach (Gtk.Widget child in get_children ()) {
+            if (((SidebarItemInterface)child).pinned) {
+                index++;
+            } else {
+                break;
+            }
+        }
+        var bm = bookmark_list.insert_uri (uri, index, label);
+        insert_sidebar_row (bm.label, bm.uri, bm.get_icon (), index);
     }
 }
