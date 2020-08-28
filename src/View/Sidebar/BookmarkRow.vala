@@ -26,16 +26,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         BOOKMARK_ROW,
     }
 
-    static Gtk.TargetEntry[] SOURCE_TARGETS = {
+    static Gtk.TargetEntry[] source_targets = {
         {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.BOOKMARK_ROW}
     };
 
-    static Gtk.TargetEntry[] DEST_TARGETS = {
+    static Gtk.TargetEntry[] dest_targets = {
         {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST},
         {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.BOOKMARK_ROW},
     };
 
-    static Gtk.TargetEntry[] PINNED_TARGETS = {
+    static Gtk.TargetEntry[] pinned_targets = {
         {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
     };
 
@@ -187,7 +187,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         Gtk.drag_source_set (
             this,
             Gdk.ModifierType.BUTTON1_MASK,
-            SOURCE_TARGETS,
+            source_targets,
             Gdk.DragAction.MOVE
         );
 
@@ -241,7 +241,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         Gtk.drag_dest_set (
             this,
             Gtk.DestDefaults.ALL,
-            pinned ? PINNED_TARGETS : DEST_TARGETS,
+            pinned ? pinned_targets : dest_targets,
             Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK
         );
 
