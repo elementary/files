@@ -34,7 +34,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon) {
-        var row = new NetworkRow (label, uri, gicon, this);
+        var row = new NetworkRow (label, uri, gicon, this, true, true); //Pin all network rows for now
         if (!has_uri (uri)) {
             add (row);
         } else {

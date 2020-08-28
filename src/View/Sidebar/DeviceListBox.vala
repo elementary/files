@@ -39,7 +39,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         volume_monitor.drive_connected.connect (drive_added);
     }
 
-    private DeviceRow? add_bookmark (string label, string uri, Icon gicon, SidebarListInterface list,
+    private DeviceRow? add_bookmark (string label, string uri, Icon gicon,
                                     string? uuid = null,
                                     Drive? drive = null,
                                     Volume? volume = null,
@@ -48,7 +48,9 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             label,
             uri,
             gicon,
-            list,
+            this,
+            true, // Pin all device rows for now
+            true,
             uuid,
             drive,
             volume,
@@ -83,8 +85,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             row = add_bookmark (
                 _("FileSystem"),
                 root_uri,
-                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
-                this
+                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
             );
 
             row.set_tooltip_markup (
@@ -113,7 +114,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 volume.get_name (),
                 volume.get_name (),
                 volume.get_icon (),
-                this,
                 volume.get_uuid (),
                 null,
                 volume,
@@ -128,7 +128,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             mount.get_name (),
             mount.get_default_location ().get_uri (),
             mount.get_icon (),
-            this,
             uuid,
             mount.get_drive (),
             mount.get_volume (),
@@ -164,7 +163,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 drive.get_name (),
                 drive.get_name (),
                 drive.get_icon (),
-                this,
                 drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
                 drive,
                 null,
@@ -298,7 +296,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         return false;
     }
 
-    public override SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
+    public SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
         //We do not want devices to be added by external agents
         return null;
     }

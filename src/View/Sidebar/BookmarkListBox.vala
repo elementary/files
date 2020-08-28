@@ -43,8 +43,13 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         });
     }
 
-    public override SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
-        var row = new BookmarkRow (label, uri, gicon, this);
+    public SidebarItemInterface? add_sidebar_row (string label,
+                                                           string uri,
+                                                           Icon gicon,
+                                                           bool pinned = false,
+                                                           bool permanent = false) {
+
+        var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
         if (!has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
             add (row);
         } else {
@@ -80,30 +85,26 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             row = add_sidebar_row (
                 _("Home"),
                 home_uri,
-                new ThemedIcon (Marlin.ICON_HOME)
+                new ThemedIcon (Marlin.ICON_HOME),
+                true
             );
 
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the home folder"))
             );
-
-            row.pinned = true;
-            row.permanent = true;
         }
 
         if (PF.FileUtils.protocol_is_supported ("recent")) {
             row = add_sidebar_row (
                 _(Marlin.PROTOCOL_NAME_RECENT),
                 Marlin.RECENT_URI,
-                new ThemedIcon (Marlin.ICON_RECENT)
+                new ThemedIcon (Marlin.ICON_RECENT),
+                true
             );
 
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>R"}, _("View the list of recently used files"))
             );
-
-            row.pinned = true;
-            row.permanent = true;
         }
 
 
@@ -116,16 +117,14 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             trash_bookmark = add_sidebar_row (
                 _("Trash"),
                 _(Marlin.TRASH_URI),
-                trash_monitor.get_icon ()
+                trash_monitor.get_icon (),
+                true
             );
         }
 
         trash_bookmark.set_tooltip_markup (
             Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
         );
-
-        trash_bookmark.pinned = true;
-        trash_bookmark.permanent = true;
 
         trash_monitor.notify["is-empty"].connect (() => {
             if (trash_bookmark != null) {

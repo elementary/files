@@ -33,7 +33,6 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
 
     public abstract void refresh ();
 
-    public virtual SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {return null;}
     public virtual uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {return 0;}
 
     public virtual void clear () {

@@ -84,12 +84,15 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     }
 
     public DeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
+                      bool pinned, bool permanent,
                       string? _uuid, Drive? drive, Volume? volume, Mount? mount) {
         Object (
             custom_name: name,
             uri: uri,
             gicon: gicon,
             list: list,
+            pinned: pinned,
+            permanent: permanent,
             uuid: _uuid,
             drive: drive,
             volume: volume,

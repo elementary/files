@@ -21,12 +21,15 @@
  */
 
 public class Sidebar.NetworkRow : Sidebar.BookmarkRow {
-    public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list) {
+    public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list,
+                        bool pinned, bool permanent) {
         Object (
             custom_name: name,
             uri: uri,
             gicon: gicon,
-            list: list
+            list: list,
+            pinned: pinned,
+            permanent: permanent
         );
     }
 
