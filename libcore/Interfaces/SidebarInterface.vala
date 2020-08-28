@@ -32,7 +32,7 @@ namespace Marlin {
     }
 }
 
-public interface Marlin.SidebarInterface : Gtk.ScrolledWindow {
+public interface Marlin.SidebarInterface : Gtk.Widget {
         /* Plugin interface */
         public abstract uint32 add_plugin_item (Marlin.SidebarPluginItem item, Marlin.PlaceType category);
         public abstract bool update_plugin_item (Marlin.SidebarPluginItem item, uint32 item_id);

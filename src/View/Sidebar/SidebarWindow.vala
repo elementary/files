@@ -20,8 +20,8 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface {
-    Gtk.Grid content_grid;
+public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
+    Gtk.ScrolledWindow scrolled_window;
     Gtk.Grid bookmarklists_grid;
     Gtk.Grid actions_grid;
     SidebarListInterface bookmark_listbox;
@@ -39,8 +39,9 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
     }
 
     construct {
-        width_request = Marlin.app_settings.get_int ("minimum-sidebar-width");
+        orientation = Gtk.Orientation.VERTICAL;
 
+        width_request = Marlin.app_settings.get_int ("minimum-sidebar-width");
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
@@ -93,11 +94,13 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         };
         actions_grid .attach (connect_server_action, 0, 0, 1, 1);
 
-        content_grid = new Gtk.Grid ();
-        content_grid.attach (bookmarklists_grid, 0, 0, 1, 1);
-        content_grid.attach (actions_grid, 0, 1, 1, 1);
+        scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            margin_bottom = 3
+        };
+        scrolled_window.add (bookmarklists_grid);
 
-        this.add (content_grid);
+        add (scrolled_window);
+        add (actions_grid);
 
         plugins.sidebar_loaded (this);
 
