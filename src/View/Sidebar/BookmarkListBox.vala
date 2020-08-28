@@ -150,16 +150,39 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         });
     }
 
-    public override void add_favorite (string uri, string? label = null) {
-        var index = 0;
+    public override void add_favorite (string uri,
+                                       string? label = null,
+                                       int pos = 0) {
+        int pinned = 0; // Assume pinned items only at start and end of list
         foreach (Gtk.Widget child in get_children ()) {
             if (((SidebarItemInterface)child).pinned) {
-                index++;
+                pinned++;
             } else {
                 break;
             }
         }
-        var bm = bookmark_list.insert_uri (uri, index, label);
-        insert_sidebar_row (bm.label, bm.uri, bm.get_icon (), index);
+
+        if (pos < pinned) {
+            pos = pinned;
+        }
+
+        var bm = bookmark_list.insert_uri (uri, pos - pinned, label); //Assume non_builtin items are not pinned
+        insert_sidebar_row (bm.label, bm.uri, bm.get_icon (), pos);
+    }
+
+    public override bool remove_item_by_id (uint32 id) {
+        foreach (Gtk.Widget child in get_children ()) {
+            if (child is SidebarItemInterface) {
+                var row = (SidebarItemInterface)child;
+                if (row.id == id) {
+                    remove (row);
+                    bookmark_list.delete_items_with_uri (row.uri); //Assumes no duplicates
+                    row.destroy_bookmark ();
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

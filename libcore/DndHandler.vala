@@ -315,8 +315,11 @@ namespace Marlin {
             selection_data.set_text (sb.str, (int)(sb.len));
         }
 
-        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb, GLib.List<GOF.File> file_list,
-                                                              string prefix, bool sanitize_path = false) {
+        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb,
+                                                              GLib.List<GOF.File> file_list,
+                                                              string prefix,
+                                                              bool sanitize_path = false) {
+
             if (file_list != null && file_list.data != null && file_list.data is GOF.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 

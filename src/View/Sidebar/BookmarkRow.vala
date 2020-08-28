@@ -21,22 +21,24 @@
  */
 
 public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
-    enum TargetType {
-        TEXT_URI_LIST,
-        BOOKMARK_ROW,
-    }
-
+    /* Targets available from BookmarkRow when it is the dragged
+     * Just the row ID as text at the moment
+     */
     static Gtk.TargetEntry[] source_targets = {
-        {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.BOOKMARK_ROW}
+        {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.BOOKMARK_ROW}
     };
 
+    /* Targets accepted when dropped onto BookmarkRow
+     * Either BookmarkRow id as text or a list of uris as text is accepted at the moment
+     * Depending on where it is dropped (edge or middle) it will either be used to create a
+     * new bookmark or to initiate a file operation with the bookmark uri as target  */
     static Gtk.TargetEntry[] dest_targets = {
-        {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST},
-        {"text/plain", Gtk.TargetFlags.SAME_APP, TargetType.BOOKMARK_ROW},
+        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST},
+        {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.BOOKMARK_ROW},
     };
 
     static Gtk.TargetEntry[] pinned_targets = {
-        {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
+        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
     };
 
     static Gdk.Atom source_data_type = Gdk.Atom.intern_static_string ("text/plain");
@@ -83,7 +85,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     construct {
-        margin_bottom = 3;
+        /* If put margin on the row then drag and drop does not work when over the margin so we put
+         * the margin on the content grid */
         //Set a fallback tooltip to stop category tooltip appearing inappropriately
         set_tooltip_text (PF.FileUtils.sanitize_path (uri, null, false));
 
@@ -118,6 +121,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         event_box.add (icon_label_grid);
 
         content_grid = new Gtk.Grid () {
+            margin_top = 3,
+            margin_bottom = 3,
             orientation = Gtk.Orientation.HORIZONTAL
         };
         content_grid.attach (event_box, 0, 0, 1, 1);
@@ -246,17 +251,21 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         );
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
-            if (pinned) {
+warning ("data received x %i, y %i, info %u", x, y, info);
+            if (pinned && info == Marlin.TargetType.BOOKMARK_ROW) {
                 critical ("drag data received but pinned - should not happen");
                 return;
             }
 
-            var text = sel_data.get_text ();
-            if (text == null) {
-                return;
-            }
-
-            if (info == TargetType.BOOKMARK_ROW) {
+            var pos = get_index ();
+warning ("pos %i", pos);
+            if (info == Marlin.TargetType.BOOKMARK_ROW) {
+warning ("info is TargetType.BOOKMARK_ROW");
+                var text = sel_data.get_text ();
+                if (text == null) {
+                    return;
+                }
+warning ("text %s", text);
                 var id = (uint32)(uint.parse (text));
                 var item = SidebarItemInterface.get_item (id);
 
@@ -269,15 +278,35 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 list.remove (item);
                 //We do not remove from map as we are not destroying the item and need to maintain a reference
-
-                var pos = get_index ();
                 if (y > get_allocated_height () / 2) { //Insert at point nearest to where dropped
                     pos++;
                 }
 
                 ((Gtk.ListBox)list).insert (item, pos);
-            } else if (info == TargetType.TEXT_URI_LIST) {
-                //TODO Handle uris.
+            } else {
+warning ("not BOOKMARK ROW");
+                string text;
+                if (!Marlin.DndHandler.selection_data_is_uri_list (sel_data, info, out text)) {
+warning ("not uri list");
+                    return;
+                }
+warning ("urilist text %s", text);
+                string[] uri_list = Uri.list_extract_uris (text);
+warning ("extracted uris [0] %s", uri_list[0]);
+                var row_height = get_allocated_height ();
+                var edge_height = row_height / 4; //Height of bands that trigger new bookmark
+                bool top_edge = y < edge_height;
+                bool bottom_edge = y > row_height - edge_height;
+warning ("top edge %s,  bottom edge %s", top_edge.to_string (), bottom_edge.to_string ());
+                if ((top_edge || bottom_edge) && uri_list.length == 1) {//Only create one new bookmark at a time
+                    if (y > row_height - edge_height) {
+                        pos++;
+                    }
+
+                    list.add_favorite (uri_list[0], null, pos);
+                } else {
+                    //File Operation targetting this.uri
+                }
             }
         });
 
