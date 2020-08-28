@@ -44,13 +44,6 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         return row;
     }
 
-    //TODO Use plugin for ConnectServer action?
-    private ActionRow add_action_bookmark (string label, Icon gicon, ActionRowFunc action) {
-        var row = new ActionRow (label, gicon, action);
-        add (row);
-        return row;
-    }
-
     private void add_all_network_mounts () {
         foreach (Mount mount in VolumeMonitor.@get ().get_mounts ()) {
             add_network_mount (mount);
@@ -100,17 +93,6 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
 
         row.set_tooltip_markup (
             Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network"))
-        );
-
-        /* Add ConnectServer BUILTIN */
-        var connect_server_action = add_action_bookmark (
-            _("Connect Server"),
-            new ThemedIcon.with_default_fallbacks ("network-server"),
-            () => {sidebar.connect_server_request ();}
-        );
-
-        connect_server_action.set_tooltip_markup (
-            Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server"))
         );
     }
 

@@ -21,7 +21,9 @@
  */
 
 public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface {
-    Gtk.Box content_box;
+    Gtk.Grid content_grid;
+    Gtk.Grid bookmarklists_grid;
+    Gtk.Grid actions_grid;
     SidebarListInterface bookmark_listbox;
     SidebarListInterface device_listbox;
     SidebarListInterface network_listbox;
@@ -66,11 +68,36 @@ public class Sidebar.SidebarWindow : Gtk.ScrolledWindow, Marlin.SidebarInterface
         device_expander.add (device_listbox);
         network_expander.add (network_listbox);
 
-        content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content_box.add (bookmark_expander);
-        content_box.add (device_expander);
-        content_box.add (network_expander);
-        this.add (content_box);
+        bookmarklists_grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.VERTICAL,
+            vexpand = true,
+            valign = Gtk.Align.START
+        };
+        bookmarklists_grid.add (bookmark_expander);
+        bookmarklists_grid.add (device_expander);
+        bookmarklists_grid.add (network_expander);
+
+        var connect_server_action = new ActionRow (
+            _("Connect Server"),
+            new ThemedIcon.with_default_fallbacks ("network-server"),
+            (() => {connect_server_request ();})
+        );
+
+        connect_server_action.set_tooltip_markup (
+            Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server"))
+        );
+
+        actions_grid = new Gtk.Grid () {
+            vexpand = false,
+            valign = Gtk.Align.END
+        };
+        actions_grid .attach (connect_server_action, 0, 0, 1, 1);
+
+        content_grid = new Gtk.Grid ();
+        content_grid.attach (bookmarklists_grid, 0, 0, 1, 1);
+        content_grid.attach (actions_grid, 0, 1, 1, 1);
+
+        this.add (content_grid);
 
         plugins.sidebar_loaded (this);
 
