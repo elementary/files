@@ -321,14 +321,24 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     }
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-        if (mount != null && Marlin.FileOperations.has_trash_files (mount)) {
-            menu_builder
-                .add_separator ()
-                .add_empty_mount_trash (() => {
-                    Marlin.FileOperations.empty_trash_for_mount (this, mount);
-                })
-            ;
+        if (mount != null) {
+            if (Marlin.FileOperations.has_trash_files (mount)) {
+                menu_builder
+                    .add_separator ()
+                    .add_empty_mount_trash (() => {
+                        Marlin.FileOperations.empty_trash_for_mount (this, mount);
+                    })
+                ;
+            }
+
+            if (mount.can_unmount ()) {
+                menu_builder.add_unmount (() => {eject ();});
+            } else if (mount.can_eject ()) {
+                menu_builder.add_eject (() => {eject ();});
+            }
         }
+
+
     }
 
     private async bool get_filesystem_space (Cancellable? update_cancellable) {
