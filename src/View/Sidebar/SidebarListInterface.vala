@@ -47,6 +47,9 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
     public virtual void remove_bookmark_by_uri (string uri) {
         SidebarItemInterface? row = null;
         if (has_uri (uri, out row)) {
+            if (row.permanent) {
+                return;
+            }
             remove (row);
             row.destroy_bookmark ();
         }
@@ -70,6 +73,9 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         foreach (Gtk.Widget child in get_children ()) {
             if (child is SidebarItemInterface) {
                 var row = (SidebarItemInterface)child;
+                if (row.permanent) {
+                    continue;
+                }
                 if (row.id == id) {
                     remove (row);
                     row.destroy_bookmark ();

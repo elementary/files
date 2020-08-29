@@ -137,6 +137,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     public void destroy_bookmark () {
+        if (permanent) {
+            critical ("Attempt to destroy a permanent bookmark - should not happen");
+            return;
+        }
         valid = false;
         item_map_lock.@lock ();
         SidebarItemInterface.item_id_map.unset (id);
@@ -180,8 +184,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-        menu_builder.add_separator ();
-        menu_builder.add_remove (() => {list.remove_item_by_id (id);});
+        if (!permanent) {
+            menu_builder.add_separator ();
+            menu_builder.add_remove (() => {list.remove_item_by_id (id);});
+        }
     }
 
     private void set_up_drag () {

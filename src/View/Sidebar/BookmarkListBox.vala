@@ -174,7 +174,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         foreach (Gtk.Widget child in get_children ()) {
             if (child is SidebarItemInterface) {
                 var row = (SidebarItemInterface)child;
-                if (row.id == id) {
+                if (row.permanent) {
+                    continue;
+                } else if (row.id == id) {
                     remove (row);
                     bookmark_list.delete_items_with_uri (row.uri); //Assumes no duplicates
                     row.destroy_bookmark ();
