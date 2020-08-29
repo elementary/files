@@ -212,10 +212,27 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         );
 
         drag_begin.connect ((ctx) => {
-            var drag_icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.LARGE_TOOLBAR);
-            drag_icon.show ();
-            Gtk.drag_set_icon_widget (ctx, drag_icon, 0, 0);
-            //TODO Set an image of the row itself?
+            /* Make an image of this row on a new surface */
+            Gtk.Allocation alloc;
+            get_allocation (out alloc);
+            var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
+            var cr = new Cairo.Context (surface);
+            draw (cr);
+            /* Make drag image semi-transparent (painting on cr does not work) */
+            var surface2 = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
+            var cr2 = new Cairo.Context (surface2);
+            cr2.set_source_surface (cr.get_target (), 0, 1);
+            cr2.set_operator (Cairo.Operator.OVER);
+            cr2.paint_with_alpha (0.5);
+
+            /* Make drag image coincide with dragged row at start */
+            var device = Gtk.get_current_event_device ();
+            int x, y;
+            Gdk.ModifierType mask;
+            get_window ().get_device_position (device, out x, out y, out mask);
+            surface2.set_device_offset (-x, 0);
+            /* Set the drag icon to an image of this row */
+            Gtk.drag_set_icon_surface (ctx, surface2);
         });
 
         /* Pass the item id as selection data by converting to string.*/
@@ -266,21 +283,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         );
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
-warning ("data received x %i, y %i, info %u", x, y, info);
             if (pinned && info == Marlin.TargetType.BOOKMARK_ROW) {
                 critical ("drag data received but pinned - should not happen");
                 return;
             }
 
             var pos = get_index ();
-warning ("pos %i", pos);
             if (info == Marlin.TargetType.BOOKMARK_ROW) {
-warning ("info is TargetType.BOOKMARK_ROW");
                 var text = sel_data.get_text ();
                 if (text == null) {
                     return;
                 }
-warning ("text %s", text);
+
                 var id = (uint32)(uint.parse (text));
                 var item = SidebarItemInterface.get_item (id);
 
@@ -299,20 +313,16 @@ warning ("text %s", text);
 
                 ((Gtk.ListBox)list).insert (item, pos);
             } else {
-warning ("not BOOKMARK ROW");
                 string text;
                 if (!Marlin.DndHandler.selection_data_is_uri_list (sel_data, info, out text)) {
-warning ("not uri list");
                     return;
                 }
-warning ("urilist text %s", text);
+
                 string[] uri_list = Uri.list_extract_uris (text);
-warning ("extracted uris [0] %s", uri_list[0]);
                 var row_height = get_allocated_height ();
                 var edge_height = row_height / 4; //Height of bands that trigger new bookmark
                 bool top_edge = y < edge_height;
                 bool bottom_edge = y > row_height - edge_height;
-warning ("top edge %s,  bottom edge %s", top_edge.to_string (), bottom_edge.to_string ());
                 if ((top_edge || bottom_edge) && uri_list.length == 1) {//Only create one new bookmark at a time
                     if (y > row_height - edge_height) {
                         pos++;
