@@ -43,14 +43,16 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                                     string? uuid = null,
                                     Drive? drive = null,
                                     Volume? volume = null,
-                                    Mount? mount = null) {
+                                    Mount? mount = null,
+                                    bool pinned = true,
+                                    bool permanent = false) {
         var bm = new DeviceRow (
             label,
             uri,
             gicon,
             this,
-            true, // Pin all device rows for now
-            true,
+            pinned, // Pin all device rows for now
+            permanent, // Permanent devices (like "FileSystem" are always accessible)
             uuid,
             drive,
             volume,
@@ -85,7 +87,13 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             row = add_bookmark (
                 _("FileSystem"),
                 root_uri,
-                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM)
+                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
+                null,
+                null,
+                null,
+                null,
+                true,  //Pinned
+                true   //Permanent
             );
 
             row.set_tooltip_markup (

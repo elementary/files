@@ -150,6 +150,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.volume_removed.connect (volume_removed);
         volume_monitor.mount_removed.connect (mount_removed);
+        volume_monitor.mount_added.connect (mount_added);
         volume_monitor.drive_disconnected.connect (drive_removed);
 
         add_device_tooltip.begin ();
@@ -162,7 +163,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
         var scheme = Uri.parse_scheme (uri);
 
-        if (scheme == "file" || mounted) {
+        if (mounted || permanent) { //Permanent devices are always accessible
             list.open_item (this, flag);
             return;
         }
@@ -217,12 +218,12 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     }
 
     private void eject () {
-        if (working) {
+        if (working || !valid) {
             return;
         }
 
         var mount_op = new Gtk.MountOperation (Marlin.get_active_window ());
-        if (mount != null) {
+        if (!permanent && mounted && mount != null) {
             if (mount.can_eject ()) {
                 working = true;
                 mount.eject_with_operation.begin (
@@ -236,6 +237,9 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                             warning ("Error ejecting mount: %s", error.message);
                         } finally {
                             working = false;
+                            if (!mounted) {
+                                mount = null;
+                            }
                         }
                     }
                 );
@@ -254,6 +258,9 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                             warning ("Error while unmounting mount %s", error.message);
                         } finally {
                             working = false;
+                            if (!mounted) {
+                                mount = null;
+                            }
                         }
                     }
                 );
@@ -267,11 +274,14 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                     null,
                     (obj, res) => {
                         try {
-                            drive.stop.end (res);
+                            mounted = drive.stop.end (res);
                         } catch (Error e) {
 
                         } finally {
                             working = false;
+                            if (!mounted) {
+                                mount = null;
+                            }
                         }
                     }
                 );
@@ -282,18 +292,20 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                     null,
                     (obj, res) => {
                         try {
-                            drive.eject_with_operation.end (res);
+                            mounted = drive.eject_with_operation.end (res);
                         } catch (Error e) {
 
                         } finally {
                             working = false;
+                            if (!mounted) {
+                                mount = null;
+                            }
                         }
                     }
                 );
             }
         }
     }
-
 
     private void drive_removed (Drive removed_drive) {
         if (valid && drive == removed_drive) {
@@ -309,19 +321,37 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         }
     }
 
+    /* This handler gets spammed by the monitor! */
     private void mount_removed (Mount removed_mount) {
-        if (valid && mount == removed_mount) {
+        if (valid && !working && mounted && mount == removed_mount) {
             if (drive == null && volume == null) {
                 valid = false;
                 list.remove_item_by_id (id);
             } else {
                 mounted = false;
+                mount = null;
             }
         }
     }
 
+    /* This gets spammed by VolumeMonitor! */
+    private void mount_added (Mount added_mount) {
+        if (working || permanent || volume == null) {
+            return;
+        }
+        working = true;
+        var added_volume = added_mount.get_volume ();
+
+        if (volume.get_name () == added_volume.get_name () &&
+            (mount == null || (mount.get_name () == added_mount.get_name ()))) {
+            mount = added_mount;
+            mounted = true;
+        }
+        working = false;
+    }
+
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-        if (mount != null) {
+        if (mount != null && mounted) {
             if (Marlin.FileOperations.has_trash_files (mount)) {
                 menu_builder
                     .add_separator ()
@@ -338,7 +368,41 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
             }
         }
 
+        menu_builder
+            .add_separator ()
+            .add_drive_property (() => {show_mount_info ();});
 
+
+    }
+
+    private void show_mount_info () {
+        if (!mounted && volume != null) {
+            /* Mount the device if possible, defer showing the dialog after
+             * we're done */
+            working = true;
+            Marlin.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
+                try {
+                    mounted = Marlin.FileOperations.mount_volume_full.end (res);
+                } catch (Error e) {
+                    mounted = false;
+                    mount = null;
+                } finally {
+                    working = false;
+                }
+
+                if (mounted) {
+                    new Marlin.View.VolumePropertiesWindow (
+                        volume.get_mount (),
+                        Marlin.get_active_window ()
+                    );
+                }
+            });
+        } else if ((mount != null && mounted) || uri == Marlin.ROOT_FS_URI) {
+            new Marlin.View.VolumePropertiesWindow (
+                mount,
+                Marlin.get_active_window ()
+            );
+        }
     }
 
     private async bool get_filesystem_space (Cancellable? update_cancellable) {
