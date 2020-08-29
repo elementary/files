@@ -50,12 +50,19 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract bool pinned { get; construct; default = false;} //Whether can be reordered
     public abstract bool permanent { get; construct; default = false;} //Whether can be deleted
 
+    /* Provision of plugin items with additional menu options */
+    //TODO Make a separate interface?
+    public abstract MenuModel? menu_model {get; set; default = null;}
+    public abstract ActionGroup? action_group {get; set; default = null;}
+    public abstract string? action_group_namespace { get; set; default = null;}
+
     public abstract void destroy_bookmark ();
     public virtual void update_icon (Icon icon) {
         gicon = icon;
     }
 
     public abstract void add_extra_menu_items (PopupMenuBuilder menu_builder);
+    public virtual void update_plugin_data (Marlin.SidebarPluginItem item) {}
 
     protected virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
         list.open_item (this, flag);

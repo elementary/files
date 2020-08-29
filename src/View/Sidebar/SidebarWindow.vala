@@ -133,31 +133,41 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
     /* SidebarInterface */
     public uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item, Marlin.PlaceType category) {
+        uint32 id = -1;
         switch (category) {
             case Marlin.PlaceType.BOOKMARKS_CATEGORY:
-                return bookmark_listbox.add_plugin_item (plugin_item);
+                id = bookmark_listbox.add_plugin_item (plugin_item);
+                break;
+
             case Marlin.PlaceType.STORAGE_CATEGORY:
-                return device_listbox.add_plugin_item (plugin_item);
+                id = device_listbox.add_plugin_item (plugin_item);
+                break;
+
             case Marlin.PlaceType.NETWORK_CATEGORY:
-                return network_listbox.add_plugin_item (plugin_item);
+                id = network_listbox.add_plugin_item (plugin_item);
+                break;
+
             default:
                 return -1;
         }
+
+        return id;
     }
 
     public bool update_plugin_item (Marlin.SidebarPluginItem item, uint32 item_id) {
         if (item_id < 0) {
+warning ("cannot update - id < 0");
             return false;
         }
 
         SidebarItemInterface? row = SidebarItemInterface.get_item (item_id);
         if (row == null) {
+warning ("failed to get item from id");
             return false;
         }
 
-        row.name = item.name;
-        row.uri = item.uri;
-        row.update_icon (item.icon);
+        row.update_plugin_data (item);
+
         return true;
     }
 

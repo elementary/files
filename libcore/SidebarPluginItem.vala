@@ -18,6 +18,7 @@
 ***/
 
 public class Marlin.SidebarPluginItem : Object {
+    //TODO This can be simplified with rewritten Sidebar
     public const PlaceType PLACE_TYPE = PlaceType.PLUGIN_ITEM;
     public string name { get; set; }
     public string? uri { get; set; }

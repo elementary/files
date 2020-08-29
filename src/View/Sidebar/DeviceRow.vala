@@ -161,8 +161,6 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
             return;
         }
 
-        var scheme = Uri.parse_scheme (uri);
-
         if (mounted || permanent) { //Permanent devices are always accessible
             list.open_item (this, flag);
             return;

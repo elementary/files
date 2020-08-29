@@ -43,11 +43,11 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         });
     }
 
-    public SidebarItemInterface? add_sidebar_row (string label,
-                                                           string uri,
-                                                           Icon gicon,
-                                                           bool pinned = false,
-                                                           bool permanent = false) {
+    public SidebarItemInterface? add_bookmark (string label,
+                                               string uri,
+                                               Icon gicon,
+                                               bool pinned = false,
+                                               bool permanent = false) {
 
         var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
         if (!has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
@@ -59,7 +59,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         return row;
     }
 
-    private SidebarItemInterface? insert_sidebar_row (string label,
+    private SidebarItemInterface? insert_bookmark (string label,
                                                       string uri,
                                                       Icon gicon,
                                                       int index,
@@ -75,6 +75,18 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
         return row;
     }
+
+    public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
+        var row = add_bookmark (plugin_item.name,
+                                plugin_item.uri,
+                                plugin_item.icon,
+                                true,
+                                true);
+
+        row.update_plugin_data (plugin_item);
+        return row.id;
+    }
+
 
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is BookmarkRow) {
@@ -99,7 +111,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         catch (ConvertError e) {}
 
         if (home_uri != "") {
-            row = add_sidebar_row (
+            row = add_bookmark (
                 _("Home"),
                 home_uri,
                 new ThemedIcon (Marlin.ICON_HOME),
@@ -112,7 +124,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
 
         if (PF.FileUtils.protocol_is_supported ("recent")) {
-            row = add_sidebar_row (
+            row = add_bookmark (
                 _(Marlin.PROTOCOL_NAME_RECENT),
                 Marlin.RECENT_URI,
                 new ThemedIcon (Marlin.ICON_RECENT),
@@ -126,7 +138,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
 
         foreach (Marlin.Bookmark bm in bookmark_list.list) {
-            row = add_sidebar_row (bm.label, bm.uri, bm.get_icon ());
+            row = add_bookmark (bm.label, bm.uri, bm.get_icon ());
             row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
             row.notify["custom-name"].connect (() => {
                 bm.label = row.custom_name;
@@ -134,7 +146,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
 
         if (!Marlin.is_admin ()) {
-            trash_bookmark = add_sidebar_row (
+            trash_bookmark = add_bookmark (
                 _("Trash"),
                 _(Marlin.TRASH_URI),
                 trash_monitor.get_icon (),
@@ -170,7 +182,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
 
         var bm = bookmark_list.insert_uri (uri, pos - pinned, label); //Assume non_builtin items are not pinned
-        insert_sidebar_row (bm.label, bm.uri, bm.get_icon (), pos);
+        insert_bookmark (bm.label, bm.uri, bm.get_icon (), pos);
     }
 
     public override bool remove_item_by_id (uint32 id) {

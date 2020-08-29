@@ -32,8 +32,4 @@ public class Sidebar.NetworkRow : Sidebar.BookmarkRow {
             permanent: permanent
         );
     }
-
-    protected new void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-
-    }
 }

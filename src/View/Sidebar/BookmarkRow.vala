@@ -67,6 +67,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     public bool pinned { get; construct; default = false;}
     public bool permanent { get; construct; default = false;}
 
+    public MenuModel? menu_model {get; set; default = null;}
+    public ActionGroup? action_group {get; set; default = null;}
+    public string? action_group_namespace { get; set; default = null;}
+
     public BookmarkRow (string name,
                         string uri,
                         Icon gicon,
@@ -158,6 +162,15 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         activate.connect (() => {activated ();});
     }
 
+    protected override void update_plugin_data (Marlin.SidebarPluginItem item) {
+        name = item.name;
+        uri = item.uri;
+        update_icon (item.icon);
+        menu_model = item.menu_model;
+        action_group = item.action_group;
+        action_group_namespace = item.action_group_namespace;
+    }
+
     public void destroy_bookmark () {
         /* We destroy all bookmarks - even permanent ones when refreshing */
         valid = false;
@@ -225,7 +238,17 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
 
         add_extra_menu_items (menu_builder);
-        menu_builder.build ().popup_at_pointer (event);
+
+
+        if (menu_model != null) {
+            menu_builder
+                .build_from_model (menu_model, action_group_namespace, action_group)
+                .popup_at_pointer (event);
+        } else {
+            menu_builder
+                .build ()
+                .popup_at_pointer (event);
+        }
     }
 
     protected virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {
