@@ -407,7 +407,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         storage_capacity = 0;
         storage_free = 0;
 
-        if (mount == null) {
+        if (mount == null && !permanent) {
             return false;
         }
 
@@ -454,8 +454,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
     private async void add_device_tooltip () {
         if (yield get_filesystem_space (null)) {
-            storage.max_value = storage_capacity;
-            storage.@value = storage_capacity - storage_free;
+            storage.@value = (storage_capacity - storage_free) / storage_capacity;
             storage.show ();
         } else {
             storage_text = "";

@@ -36,5 +36,5 @@ public class Marlin.SidebarPluginItem : Object {
     public ActionGroup? action_group { get; set; }
     public string? action_group_namespace { get; set; }
     public MenuModel? menu_model { get; set; }
-    public SidebarCallbackFunc? cb { get; set; }
+    public SidebarCallbackFunc? cb { get; set; } //Not currently used?
 }

@@ -156,13 +156,11 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
     public bool update_plugin_item (Marlin.SidebarPluginItem item, uint32 item_id) {
         if (item_id < 0) {
-warning ("cannot update - id < 0");
             return false;
         }
 
         SidebarItemInterface? row = SidebarItemInterface.get_item (item_id);
         if (row == null) {
-warning ("failed to get item from id");
             return false;
         }
 
