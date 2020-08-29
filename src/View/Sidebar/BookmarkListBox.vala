@@ -128,6 +128,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         foreach (Marlin.Bookmark bm in bookmark_list.list) {
             row = add_sidebar_row (bm.label, bm.uri, bm.get_icon ());
             row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
+            row.notify["custom-name"].connect (() => {
+                bm.label = row.custom_name;
+            });
         }
 
         if (!Marlin.is_admin ()) {

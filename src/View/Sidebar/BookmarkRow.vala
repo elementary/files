@@ -56,13 +56,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private Gtk.Image icon;
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
+    protected Gtk.Stack label_stack;
+    protected Gtk.Entry editable;
+    protected Gtk.Label label;
     public string custom_name { get; set construct; }
     public SidebarListInterface list { get; construct; }
     public uint32 id { get; construct; }
     public string uri { get; set construct; }
     public Icon gicon { get; set construct; }
-    public bool pinned { get; set; default = false;}
-    public bool permanent { get; set; default = false;}
+    public bool pinned { get; construct; default = false;}
+    public bool permanent { get; construct; default = false;}
 
     public BookmarkRow (string name,
                         string uri,
@@ -103,6 +106,24 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             margin_start = 6
         };
 
+        bind_property ("custom-name", label, "label", BindingFlags.DEFAULT);
+
+        label_stack = new Gtk.Stack ();
+        label_stack.add_named (label, "label");
+        if (!pinned) {
+            editable = new Gtk.Entry ();
+            label_stack.add_named (editable, "editable");
+            editable.activate.connect (() => {
+                custom_name = editable.text;
+                label_stack.visible_child_name = "label";
+            });
+
+            editable.focus_out_event.connect (() =>{
+                label_stack.visible_child_name = "label";
+            });
+        }
+        label_stack.visible_child_name = "label";
+
         icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
             halign = Gtk.Align.START,
             hexpand = false,
@@ -113,7 +134,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             orientation = Gtk.Orientation.HORIZONTAL
         };
         icon_label_grid.add (icon);
-        icon_label_grid.add (label);
+        icon_label_grid.add (label_stack);
 
         var event_box = new Gtk.EventBox () {
             above_child = false
@@ -130,6 +151,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         add (content_grid);
         show_all ();
 
+        key_press_event.connect (on_key_press_event);
         button_press_event.connect (on_button_press_event);
         button_release_event.connect_after (after_button_release_event);
 
@@ -145,6 +167,22 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         base.destroy ();
     }
 
+    protected virtual bool on_key_press_event (Gdk.EventKey event) {
+        switch (event.keyval) {
+            case Gdk.Key.F2:
+                rename ();
+                return true;
+
+            case Gdk.Key.Escape:
+                cancel_rename ();
+                return true;
+
+            default:
+                break;
+        }
+        return false;
+    }
+
     protected virtual bool on_button_press_event (Gdk.EventButton event) {
         list.select_item (this);
         return false;
@@ -153,6 +191,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected virtual bool after_button_release_event (Gdk.EventButton event) {
         if (!valid) { //Ignore if in the process of being removed
             return true;
+        }
+
+        if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
+            return false;
         }
 
         switch (event.button) {
@@ -187,6 +229,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+        if (!pinned) {
+            menu_builder.add_rename (() => {
+                rename ();
+            });
+        }
+
         if (Uri.parse_scheme (uri) == "trash") {
             menu_builder
                 .add_separator ()
@@ -344,5 +392,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             return false;
         });
+    }
+
+    private void rename () {
+        if (!pinned) {
+            editable.text = custom_name;
+            label_stack.visible_child_name = "editable";
+            editable.grab_focus ();
+        }
+    }
+
+    protected void cancel_rename () {
+        label_stack.visible_child_name = "label";
+        grab_focus ();
     }
 }
