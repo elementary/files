@@ -85,6 +85,14 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), bookmark_cb);
     }
 
+    public PopupMenuBuilder add_empty_all_trash (MenuitemCallback bookmark_cb) {
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Empty All Trash")), bookmark_cb);
+    }
+
+    public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback bookmark_cb) {
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Empty Trash on this Mount")), bookmark_cb);
+    }
+
     public PopupMenuBuilder add_separator () {
         return add_item (new Gtk.SeparatorMenuItem ());
     }

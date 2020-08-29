@@ -137,10 +137,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     public void destroy_bookmark () {
-        if (permanent) {
-            critical ("Attempt to destroy a permanent bookmark - should not happen");
-            return;
-        }
+        /* We destroy all bookmarks - even permanent ones when refreshing */
         valid = false;
         item_map_lock.@lock ();
         SidebarItemInterface.item_id_map.unset (id);
@@ -179,14 +176,26 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             .add_open_tab (() => {activated (Marlin.OpenFlag.NEW_TAB);})
             .add_open_window (() => {activated (Marlin.OpenFlag.NEW_WINDOW);});
 
+        if (!permanent) {
+            menu_builder
+                .add_separator ()
+                .add_remove (() => {list.remove_item_by_id (id);});
+        }
+
         add_extra_menu_items (menu_builder);
         menu_builder.build ().popup_at_pointer (event);
     }
 
-    protected void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-        if (!permanent) {
-            menu_builder.add_separator ();
-            menu_builder.add_remove (() => {list.remove_item_by_id (id);});
+    protected virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+        if (Uri.parse_scheme (uri) == "trash") {
+            menu_builder
+                .add_separator ()
+                .add_empty_all_trash (() => {
+                    new Marlin.FileOperations.EmptyTrashJob (
+                        (Gtk.Window)get_ancestor (typeof (Gtk.Window)
+                    )).empty_trash.begin ();
+                })
+            ;
         }
     }
 

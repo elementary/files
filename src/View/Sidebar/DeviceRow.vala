@@ -320,8 +320,15 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         }
     }
 
-    protected new void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-
+    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+        if (mount != null && Marlin.FileOperations.has_trash_files (mount)) {
+            menu_builder
+                .add_separator ()
+                .add_empty_mount_trash (() => {
+                    Marlin.FileOperations.empty_trash_for_mount (this, mount);
+                })
+            ;
+        }
     }
 
     private async bool get_filesystem_space (Cancellable? update_cancellable) {
