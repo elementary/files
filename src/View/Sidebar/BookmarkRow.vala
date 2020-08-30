@@ -28,7 +28,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.BOOKMARK_ROW}
     };
 
-    /* Targets accepted when dropped onto BookmarkRow
+    /* Targets accepted when dropped onto movable BookmarkRow
      * Either BookmarkRow id as text or a list of uris as text is accepted at the moment
      * Depending on where it is dropped (edge or middle) it will either be used to create a
      * new bookmark or to initiate a file operation with the bookmark uri as target  */
@@ -37,12 +37,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.BOOKMARK_ROW},
     };
 
+    /* Pinned bookmarks can accept uri lists but not rows */
     static Gtk.TargetEntry[] pinned_targets = {
         {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
     };
 
     static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
 
+    /* Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
     static construct {
         SidebarItemInterface.row_id = new Rand.with_seed (
             int.parse (get_real_time ().to_string ())
@@ -240,12 +242,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             .add_open_tab (() => {activated (Marlin.OpenFlag.NEW_TAB);})
             .add_open_window (() => {activated (Marlin.OpenFlag.NEW_WINDOW);});
 
-        if (!permanent) {
-            menu_builder
-                .add_separator ()
-                .add_remove (() => {list.remove_item_by_id (id);});
-        }
-
         add_extra_menu_items (menu_builder);
 
 
@@ -260,7 +256,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+    /* Rows under "Bookmarks" can be removed or renamed */
+        if (!permanent) {
+            menu_builder
+                .add_separator ()
+                .add_remove (() => {list.remove_item_by_id (id);});
+        }
+
         if (!pinned) {
             menu_builder.add_rename (() => {
                 rename ();

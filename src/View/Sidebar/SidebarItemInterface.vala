@@ -61,7 +61,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
         gicon = icon;
     }
 
-    public abstract void add_extra_menu_items (PopupMenuBuilder menu_builder);
+    public virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {}
     public virtual void update_plugin_data (Marlin.SidebarPluginItem item) {}
 
     protected virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
