@@ -678,7 +678,6 @@ namespace PF.FileUtils {
         var actions = context.get_actions ();
         var suggested_action = context.get_suggested_action ();
         var target_location = dest.get_target_location ();
-
         suggested_action_return = Gdk.DragAction.PRIVATE;
 
         if (drop_file_list == null || drop_file_list.data == null) {

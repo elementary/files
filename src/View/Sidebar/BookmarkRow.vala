@@ -96,6 +96,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     construct {
         target_file = GOF.File.get_by_uri (uri);
+        target_file.ensure_query_info ();
 
         /* If put margin on the row then drag and drop does not work when over the margin so we put
          * the margin on the content grid */
@@ -329,10 +330,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         /* Pass the item id as selection data by converting to string.*/
         //TODO There may be a more elegant method of passing a pointer to `this` directly.
         drag_data_get.connect ((ctx, sel_data, info, time) => {
-            if (pinned) {
-                return;
-            }
-
             uint8[] data = id.to_string ().data;
             sel_data.@set (text_data_atom, 8, data);
         });
@@ -364,12 +361,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         });
     }
 
-    /* Set up as a drag destination. Can accept both other rows or text uri lists */
+    /* Set up as a drag destination. */
     private void set_up_drop () {
         Gtk.drag_dest_set (
             this,
             Gtk.DestDefaults.MOTION,
-            pinned ? pinned_targets : dest_targets,
+            pinned ? pinned_targets : dest_targets, // Cannot accept rows if pinned
             Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
         );
 
@@ -386,11 +383,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         /* Handle motion over a potention drop target */
         drag_motion.connect ((ctx, x, y, time) => {
-            if (pinned) {
-                Gdk.drag_status (ctx, Gdk.DragAction.DEFAULT, time);
-                return true;
-            }
-
             if (drop_text == null) {
                 /* Only need do this once per drag */
                 var target = Gtk.drag_dest_find_target (this, ctx, null);
@@ -440,12 +432,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     private void process_dropped_row (Gdk.DragContext ctx, int x, int y) {
-    /* Do no allow dropping a row onto a pinned row as the pinned row might move */
-        if (pinned) {
-            critical ("drag data received but pinned - should not happen");
-            return;
-        }
-
         var id = (uint32)(uint.parse (drop_text));
         var item = SidebarItemInterface.get_item (id);
 
