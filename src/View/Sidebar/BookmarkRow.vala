@@ -347,13 +347,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         );
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
-            if (pinned && info == Marlin.TargetType.BOOKMARK_ROW) {
-                critical ("drag data received but pinned - should not happen");
-                return;
-            }
-
             var pos = get_index ();
             if (info == Marlin.TargetType.BOOKMARK_ROW) {
+                /* Do no allow dropping a row onto a pinned row as the pinned row might move */
+                if (info == Marlin.TargetType.BOOKMARK_ROW) {
+                    critical ("drag data received but pinned - should not happen");
+                    return;
+                }
                 var text = sel_data.get_text ();
                 if (text == null) {
                     return;
@@ -376,25 +376,53 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 }
 
                 ((Gtk.ListBox)list).insert (item, pos);
-            } else {
+            } else if (info == Marlin.TargetType.TEXT_URI_LIST) {
                 string text;
                 if (!Marlin.DndHandler.selection_data_is_uri_list (sel_data, info, out text)) {
                     return;
                 }
 
-                string[] uri_list = Uri.list_extract_uris (text);
+                var gfile_list = PF.FileUtils.files_from_uris (text);
                 var row_height = get_allocated_height ();
-                var edge_height = row_height / 4; //Height of bands that trigger new bookmark
-                bool top_edge = y < edge_height;
-                bool bottom_edge = y > row_height - edge_height;
-                if ((top_edge || bottom_edge) && uri_list.length == 1) {//Only create one new bookmark at a time
+                var edge_height = row_height / 4; //Define thickness of edges
+                if (((y < edge_height) || (y > row_height - edge_height)) && // Dropped on edge
+                     gfile_list.next == null && //Only create one new bookmark at a time
+                     !pinned) {// pinned rows cannot be moved
+
                     if (y > row_height - edge_height) {
                         pos++;
                     }
 
-                    list.add_favorite (uri_list[0], null, pos);
+                    list.add_favorite (gfile_list.data.get_uri (), null, pos);
                 } else {
-                    //File Operation targetting this.uri
+                    var dnd_handler = new Marlin.DndHandler ();
+                    var real_action = ctx.get_selected_action ();
+
+                    if (real_action == Gdk.DragAction.ASK) {
+                        var actions = ctx.get_actions ();
+
+                        if (uri.has_prefix ("trash://")) {
+                            actions &= Gdk.DragAction.MOVE;
+                        }
+
+                        real_action = dnd_handler.drag_drop_action_ask (
+                            this,
+                            (Gtk.ApplicationWindow)(Marlin.get_active_window ()),
+                            actions
+                        );
+                    }
+
+                    if (real_action == Gdk.DragAction.DEFAULT) {
+                        return;
+                    }
+
+                    dnd_handler.dnd_perform (
+                        this,
+                        GOF.File.get_by_uri (this.uri),
+                        gfile_list,
+                        real_action
+                    );
+                    return;
                 }
             }
         });
