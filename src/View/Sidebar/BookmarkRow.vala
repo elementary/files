@@ -106,13 +106,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         var label = new Gtk.Label (custom_name) {
             xalign = 0.0f,
             halign = Gtk.Align.START,
-            hexpand = true,
-            margin_start = 6
+            hexpand = true
         };
 
         bind_property ("custom-name", label, "label", BindingFlags.DEFAULT);
 
-        label_stack = new Gtk.Stack ();
+        label_stack = new Gtk.Stack () {
+            homogeneous = false
+        };
         label_stack.add_named (label, "label");
         if (!pinned) {
             editable = new Gtk.Entry ();
@@ -128,14 +129,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
         label_stack.visible_child_name = "label";
 
-        icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU) {
-            halign = Gtk.Align.START,
-            hexpand = false,
-            margin_start = 12
-        };
+        icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU);
 
         icon_label_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL
+            column_spacing = 6
         };
         icon_label_grid.add (icon);
         icon_label_grid.add (label_stack);
@@ -145,12 +142,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         };
         event_box.add (icon_label_grid);
 
-        content_grid = new Gtk.Grid () {
-            margin_top = 3,
-            margin_bottom = 3,
-            orientation = Gtk.Orientation.HORIZONTAL
-        };
-        content_grid.attach (event_box, 0, 0, 1, 1);
+        content_grid = new Gtk.Grid ();
+        content_grid.attach (event_box, 0, 0);
 
         add (content_grid);
         show_all ();
