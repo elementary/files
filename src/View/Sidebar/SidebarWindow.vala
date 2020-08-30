@@ -23,7 +23,6 @@
 public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
     Gtk.ScrolledWindow scrolled_window;
     Gtk.Grid bookmarklists_grid;
-    Gtk.Grid actions_grid;
     SidebarListInterface bookmark_listbox;
     SidebarListInterface device_listbox;
     SidebarListInterface network_listbox;
@@ -39,44 +38,41 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
     }
 
     construct {
-        orientation = Gtk.Orientation.VERTICAL;
-
-        width_request = Marlin.app_settings.get_int ("minimum-sidebar-width");
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
 
-        var bookmark_expander = new Gtk.Expander ("<b>" + _("Bookmarks") + "</b>") {
-            use_markup = true,
+        var bookmark_expander = new SidebarExpander (_("Bookmarks")) {
             tooltip_text = _("Common places plus saved folders and files")
         };
 
-        var device_expander = new Gtk.Expander ("<b>" + _("Devices") + "</b>") {
-            use_markup = true,
+        var bookmark_revealer = new Gtk.Revealer ();
+        bookmark_revealer.add (bookmark_listbox);
+
+        var device_expander = new SidebarExpander (_("Devices")) {
             tooltip_text = _("Internal and connected storage devices")
         };
 
-        var network_expander = new Gtk.Expander ("<b>" + _("Network") + "</b>") {
-            use_markup = true,
+        var device_revealer = new Gtk.Revealer ();
+        device_revealer.add (device_listbox);
+
+        var network_expander = new SidebarExpander (_("Network")) {
             tooltip_text = _("Devices and places available via a network")
         };
 
-        Marlin.app_settings.bind ("sidebar-cat-personal-expander", bookmark_expander, "expanded", SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("sidebar-cat-devices-expander", device_expander, "expanded", SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("sidebar-cat-network-expander", network_expander, "expanded", SettingsBindFlags.DEFAULT);
-
-        bookmark_expander.add (bookmark_listbox);
-        device_expander.add (device_listbox);
-        network_expander.add (network_listbox);
+        var network_revealer = new Gtk.Revealer ();
+        network_revealer.add (network_listbox);
 
         bookmarklists_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.VERTICAL,
-            vexpand = true,
-            valign = Gtk.Align.START
+            vexpand = true
         };
         bookmarklists_grid.add (bookmark_expander);
+        bookmarklists_grid.add (bookmark_revealer);
         bookmarklists_grid.add (device_expander);
+        bookmarklists_grid.add (device_revealer);
         bookmarklists_grid.add (network_expander);
+        bookmarklists_grid.add (network_revealer);
 
         var connect_server_action = new ActionRow (
             _("Connect Server"),
@@ -84,28 +80,33 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
             (() => {connect_server_request ();})
         );
 
-        connect_server_action.set_tooltip_markup (
-            Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server"))
+        connect_server_action.margin_bottom = 12;
+        connect_server_action.tooltip_markup = Granite.markup_accel_tooltip (
+            {"<Alt>C"}, _("Connect to a network server")
         );
 
-        actions_grid = new Gtk.Grid () {
-            vexpand = false,
-            valign = Gtk.Align.END
-        };
-        actions_grid .attach (connect_server_action, 0, 0, 1, 1);
-
-        scrolled_window = new Gtk.ScrolledWindow (null, null) {
-            margin_bottom = 3
-        };
+        scrolled_window = new Gtk.ScrolledWindow (null, null);
         scrolled_window.add (bookmarklists_grid);
 
+        orientation = Gtk.Orientation.VERTICAL;
+        row_spacing = 12;
+        width_request = Marlin.app_settings.get_int ("minimum-sidebar-width");
+        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         add (scrolled_window);
-        add (actions_grid);
+        add (connect_server_action);
 
         plugins.sidebar_loaded (this);
 
         reload ();
         show_all ();
+
+        Marlin.app_settings.bind ("sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind ("sidebar-cat-devices-expander", device_expander, "active", SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind ("sidebar-cat-network-expander", network_expander, "active", SettingsBindFlags.DEFAULT);
+
+        bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
+        device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
+        network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
@@ -236,5 +237,39 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
     }
 
     public void on_free_space_change () {
+    }
+
+    private class SidebarExpander : Gtk.EventBox {
+        public bool active { get; set; }
+        public string label { get; construct; }
+
+        public SidebarExpander (string label) {
+            Object (label: label);
+        }
+
+        construct {
+            var title = new Gtk.Label (label) {
+                hexpand = true,
+                xalign = 0
+            };
+
+            var image = new Gtk.Image.from_icon_name ("pan-down-symbolic", Gtk.IconSize.MENU);
+
+            var grid = new Gtk.Grid () {
+                column_spacing = 6,
+                margin_end = 6,
+                margin_start = 6
+            };
+            grid.add (title);
+            grid.add (image);
+
+            add (grid);
+
+            get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
+            button_release_event.connect (() => {
+                active = !active;
+            });
+        }
     }
 }
