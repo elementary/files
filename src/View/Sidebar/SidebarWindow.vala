@@ -259,13 +259,17 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
             image_stack.add_named (pan_down, "expanded");
             image_stack.add_named (pan_end, "closed");
 
+            var image_revealer = new Gtk.Revealer ();
+            image_revealer.add (image_stack);
+            image_revealer.reveal_child = false;
+
             var grid = new Gtk.Grid () {
                 column_spacing = 6,
                 margin_end = 6,
                 margin_start = 6
             };
             grid.add (title);
-            grid.add (image_stack);
+            grid.add (image_revealer);
 
             add (grid);
 
@@ -274,6 +278,14 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
             button_release_event.connect (() => {
                 active = !active;
                 image_stack.visible_child_name = active ? "expanded" : "closed";
+            });
+
+            enter_notify_event.connect (() => {
+                image_revealer.reveal_child = true;
+            });
+
+            leave_notify_event.connect (() => {
+                image_revealer.reveal_child = false;
             });
         }
     }
