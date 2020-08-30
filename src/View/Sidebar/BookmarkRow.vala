@@ -41,7 +41,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
     };
 
-    static Gdk.Atom source_data_type = Gdk.Atom.intern_static_string ("text/plain");
+    static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
 
     static construct {
         SidebarItemInterface.row_id = new Rand.with_seed (
@@ -167,6 +167,19 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         action_group_namespace = item.action_group_namespace;
     }
 
+    private void rename () {
+        if (!pinned) {
+            editable.text = custom_name;
+            label_stack.visible_child_name = "editable";
+            editable.grab_focus ();
+        }
+    }
+
+    protected void cancel_rename () {
+        label_stack.visible_child_name = "label";
+        grab_focus ();
+    }
+
     public void destroy_bookmark () {
         /* We destroy all bookmarks - even permanent ones when refreshing */
         valid = false;
@@ -266,6 +279,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
+    /* DRAG DROP IMPLEMENTATION */
+
+    private List<GLib.File> drop_file_list = null;
+    private string? drop_text = null;
+    private Gdk.DragAction? current_actions = null;
+    private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private bool drop_occurred = false;
+
     private void set_up_drag () {
         if (pinned) { //Pinned items cannot be dragged
             return;
@@ -310,7 +331,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             }
 
             uint8[] data = id.to_string ().data;
-            sel_data.@set (source_data_type, 8, data);
+            sel_data.@set (text_data_atom, 8, data);
         });
 
         drag_failed.connect ((ctx, res) => {
@@ -340,12 +361,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         });
     }
 
-    private List<GLib.File> drop_file_list = null;
-    private Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
-    private Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
-    private bool drop_occurred = false;
+    /* Set up as a drag destination. Can accept both other rows or text uri lists */
     private void set_up_drop () {
-        /*Set up as Drop Target for rows/uris*/
         Gtk.drag_dest_set (
             this,
             Gtk.DestDefaults.MOTION,
@@ -354,92 +371,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         );
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
-            var pos = get_index ();
             if (info == Marlin.TargetType.BOOKMARK_ROW) {
-                if (!drop_occurred) {
-                    Gdk.drag_status (ctx, ctx.get_suggested_action (), time);
-                    return;
-                }
-                /* Do no allow dropping a row onto a pinned row as the pinned row might move */
-                if (pinned) {
-                    critical ("drag data received but pinned - should not happen");
-                    return;
-                }
-                var text = sel_data.get_text ();
-                if (text == null) {
-                    return;
-                }
-
-                var id = (uint32)(uint.parse (text));
-                var item = SidebarItemInterface.get_item (id);
-
-                if (item == null ||
-                    item.id == this.id ||
-                    item.list != list) { //Cannot drop on self or different list
-
-                    return;
-                }
-
-                list.remove (item);
-                //We do not remove from map as we are not destroying the item and need to maintain a reference
-                if (y > get_allocated_height () / 2) { //Insert at point nearest to where dropped
-                    pos++;
-                }
-
-                ((Gtk.ListBox)list).insert (item, pos);
+                drop_text = sel_data.get_text ();
             } else if (info == Marlin.TargetType.TEXT_URI_LIST) {
-                string text;
-                if (!Marlin.DndHandler.selection_data_is_uri_list (sel_data, info, out text)) {
-                    Gdk.drag_status (ctx, Gdk.DragAction.DEFAULT, time);
-                    return;
-                }
-
-                drop_file_list = PF.FileUtils.files_from_uris (text);
-                if (!drop_occurred) {
-                    Gdk.drag_status (ctx, ctx.get_suggested_action (), time);
-                    return;
-                }
-
-                var row_height = get_allocated_height ();
-                var edge_height = row_height / 4; //Define thickness of edges
-                if (((y < edge_height) || (y > row_height - edge_height)) && // Dropped on edge
-                     drop_file_list.next == null && //Only create one new bookmark at a time
-                     !pinned) {// pinned rows cannot be moved
-
-                    if (y > row_height - edge_height) {
-                        pos++;
-                    }
-
-                    list.add_favorite (drop_file_list.data.get_uri (), null, pos);
-                } else {
-                    var dnd_handler = new Marlin.DndHandler ();
-                    var real_action = ctx.get_selected_action ();
-
-                    if (real_action == Gdk.DragAction.ASK) {
-                        var actions = ctx.get_actions ();
-
-                        if (uri.has_prefix ("trash://")) {
-                            actions &= Gdk.DragAction.MOVE;
-                        }
-
-                        real_action = dnd_handler.drag_drop_action_ask (
-                            this,
-                            (Gtk.ApplicationWindow)(Marlin.get_active_window ()),
-                            actions
-                        );
-                    }
-
-                    if (real_action == Gdk.DragAction.DEFAULT) {
-                        return;
-                    }
-
-                    dnd_handler.dnd_perform (
-                        this,
-                        GOF.File.get_by_uri (this.uri),
-                        drop_file_list,
-                        real_action
-                    );
-                    return;
+                if (!Marlin.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
+                    warning ("sel data not uri list");
+                    drop_text = null;
                 }
             }
         });
@@ -451,7 +388,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 return true;
             }
 
-            if (drop_file_list == null) {
+            if (drop_text == null) {
+                /* Only need do this once per drag */
                 var target = Gtk.drag_dest_find_target (this, ctx, null);
                 if (target != Gdk.Atom.NONE) {
                     Gtk.drag_get_data (this, ctx, target, time);
@@ -460,11 +398,15 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 return true;
             }
 
-            current_actions = PF.FileUtils.file_accepts_drop (
-                target_file,
-                drop_file_list, ctx,
-                out current_suggested_action
-            );
+            if (current_actions == null && drop_text != null) {
+                /* Only need do this once per drag */
+                drop_file_list = PF.FileUtils.files_from_uris (drop_text);
+                current_actions = PF.FileUtils.file_accepts_drop (
+                    target_file,
+                    drop_file_list, ctx,
+                    out current_suggested_action
+                );
+            }
 
             Gdk.drag_status (ctx, current_suggested_action, time);
             return true;
@@ -472,21 +414,101 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         drag_drop.connect ((ctx, x, y, time) => {
             drop_occurred = true;
-            drag_end (ctx);
+            var target = Gtk.drag_dest_find_target (this, ctx, null);
+            switch (target.name ()) {
+                case "text/plain":
+                    process_dropped_row (ctx, x, y);
+                    break;
+
+                case "text/uri-list":
+                    process_dropped_uris (ctx, x, y);
+                    break;
+            }
             return true;
+        });
+
+        drag_end.connect ((ctx, time) => {
+            drop_file_list = null;
+            drop_text = null;
+            drop_occurred = false;
+            current_actions = null;
+            current_suggested_action = Gdk.DragAction.DEFAULT;
         });
     }
 
-    private void rename () {
-        if (!pinned) {
-            editable.text = custom_name;
-            label_stack.visible_child_name = "editable";
-            editable.grab_focus ();
+    private void process_dropped_row (Gdk.DragContext ctx, int x, int y) {
+    /* Do no allow dropping a row onto a pinned row as the pinned row might move */
+        if (pinned) {
+            critical ("drag data received but pinned - should not happen");
+            return;
         }
+
+        var id = (uint32)(uint.parse (drop_text));
+        var item = SidebarItemInterface.get_item (id);
+
+        if (item == null ||
+            item.id == this.id ||
+            item.list != list) { //Cannot drop on self or different list
+
+            return;
+        }
+
+        list.remove (item);
+        //We do not remove from map as we are not destroying the item and need to maintain a reference
+
+        var pos = get_index ();
+        if (y > get_allocated_height () / 2) { //Insert at point nearest to where dropped
+            pos++;
+        }
+
+        ((Gtk.ListBox)list).insert (item, pos);
     }
 
-    protected void cancel_rename () {
-        label_stack.visible_child_name = "label";
-        grab_focus ();
+    private void process_dropped_uris (Gdk.DragContext ctx, int x, int y)
+    requires (drop_file_list != null) {
+
+        var row_height = get_allocated_height ();
+        var edge_height = row_height / 4; //Define thickness of edges
+
+        if (((y < edge_height) || (y > row_height - edge_height)) && // Dropped on edge
+             drop_file_list.next == null && //Only create one new bookmark at a time
+             !pinned) {// pinned rows cannot be moved
+
+            var pos = get_index ();
+            if (y > row_height - edge_height) {
+                pos++;
+            }
+
+            list.add_favorite (drop_file_list.data.get_uri (), null, pos);
+        } else {
+            var dnd_handler = new Marlin.DndHandler ();
+            var real_action = ctx.get_selected_action ();
+
+            if (real_action == Gdk.DragAction.ASK) {
+                var actions = ctx.get_actions ();
+
+                if (uri.has_prefix ("trash://")) {
+                    actions &= Gdk.DragAction.MOVE;
+                }
+
+                real_action = dnd_handler.drag_drop_action_ask (
+                    this,
+                    (Gtk.ApplicationWindow)(Marlin.get_active_window ()),
+                    actions
+                );
+            }
+
+            if (real_action == Gdk.DragAction.DEFAULT) {
+                return;
+            }
+
+            dnd_handler.dnd_perform (
+                this,
+                target_file,
+                drop_file_list,
+                real_action
+            );
+            return;
+        }
     }
 }

@@ -687,7 +687,12 @@ namespace FM {
             widget.drag_motion.connect (on_drag_motion);
 
             /* Set up as drag source */
-            Gtk.drag_source_set (widget, Gdk.ModifierType.BUTTON1_MASK, DRAG_TARGETS, FILE_DRAG_ACTIONS);
+            Gtk.drag_source_set (
+                widget,
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK | Gdk.ModifierType.CONTROL_MASK,
+                DRAG_TARGETS,
+                FILE_DRAG_ACTIONS
+            );
             widget.drag_begin.connect (on_drag_begin);
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);

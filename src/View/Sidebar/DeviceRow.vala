@@ -411,9 +411,8 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
             return false;
         }
 
-        var root = mount.get_root ();
-
-        string scheme = Uri.parse_scheme (root.get_uri ());
+        File root;
+        string scheme = Uri.parse_scheme (uri);
         if ("sftp davs".contains (scheme)) {
             return false; /* Cannot get info from these protocols */
         }
@@ -424,6 +423,12 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
             if (!net_mon.get_network_available ()) {
                 return false;
             }
+        }
+
+        if (mount != null) {
+            root = mount.get_root ();
+        } else {
+            root = File.new_for_uri (scheme + ":///"); //Is this always "file:///" if no mount?
         }
 
         GLib.FileInfo info;

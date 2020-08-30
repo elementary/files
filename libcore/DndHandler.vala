@@ -28,7 +28,8 @@ namespace Marlin {
         public bool dnd_perform (Gtk.Widget widget,
                                  GOF.File drop_target,
                                  GLib.List<GLib.File> drop_file_list,
-                                 Gdk.DragAction action) {
+                                 Gdk.DragAction action)
+        requires (drop_target != null && drop_file_list != null) {
 
             if (drop_target.is_folder ()) {
                 Marlin.FileOperations.copy_move_link.begin (
@@ -38,6 +39,7 @@ namespace Marlin {
                     widget,
                     null
                 );
+
                 return true;
             } else if (drop_target.is_executable ()) {
                 try {
