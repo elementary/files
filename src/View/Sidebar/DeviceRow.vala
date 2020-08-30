@@ -21,6 +21,8 @@
  */
 
 public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
+    private static Gtk.CssProvider levelbar_provider;
+
     private Gtk.Stack mount_eject_stack;
     private Gtk.Revealer mount_eject_revealer;
     private Gtk.Spinner mount_eject_spinner;
@@ -100,6 +102,11 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         );
     }
 
+    static construct {
+        levelbar_provider = new Gtk.CssProvider ();
+        levelbar_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
+    }
+
     construct {
         Gtk.Image eject_image = new Gtk.Image.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
             margin_end = 9
@@ -136,12 +143,13 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         content_grid.attach (mount_eject_revealer, 1, 0, 1, 1);
 
         storage = new Gtk.LevelBar () {
-            mode = Gtk.LevelBarMode.CONTINUOUS,
-            orientation = Gtk.Orientation.HORIZONTAL,
             value = 0.5,
-            hexpand = true,
-            margin_start = 6
+            hexpand = true
         };
+        storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
+        storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
+        storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
+        storage.get_style_context ().add_provider (levelbar_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         icon_label_grid.attach (storage, 1, 1, 1, 1);
 
