@@ -253,7 +253,11 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
                 xalign = 0
             };
 
-            var image = new Gtk.Image.from_icon_name ("pan-down-symbolic", Gtk.IconSize.MENU);
+            var pan_down = new Gtk.Image.from_icon_name ("pan-down-symbolic", Gtk.IconSize.MENU);
+            var pan_end = new Gtk.Image.from_icon_name ("pan-end-symbolic", Gtk.IconSize.MENU);
+            var image_stack = new Gtk.Stack ();
+            image_stack.add_named (pan_down, "expanded");
+            image_stack.add_named (pan_end, "closed");
 
             var grid = new Gtk.Grid () {
                 column_spacing = 6,
@@ -261,7 +265,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
                 margin_start = 6
             };
             grid.add (title);
-            grid.add (image);
+            grid.add (image_stack);
 
             add (grid);
 
@@ -269,6 +273,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
             button_release_event.connect (() => {
                 active = !active;
+                image_stack.visible_child_name = active ? "expanded" : "closed";
             });
         }
     }
