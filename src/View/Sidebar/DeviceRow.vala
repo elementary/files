@@ -101,39 +101,29 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     }
 
     construct {
-        Gtk.Image eject_image = new Gtk.Image.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
-            margin_end = 9
+        var eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+            tooltip_text = _("Eject “%s”").printf (custom_name)
         };
-
-        var eject_image_event_box = new Gtk.EventBox () {
-            above_child = true
-        };
-        eject_image_event_box.add (eject_image);
-        eject_image_event_box.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
-        eject_image_event_box.button_press_event.connect ( () => {
-            eject ();
-            return true;
-        });
-
-        mount_eject_stack = new Gtk.Stack () {
-            halign = Gtk.Align.END,
-            hexpand = false
-        };
-        mount_eject_stack.add_named (eject_image_event_box, "eject");
-        mount_eject_stack.visible_child_name = "eject";
+        eject_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         mount_eject_spinner = new Gtk.Spinner ();
+
+        mount_eject_stack = new Gtk.Stack () {
+            transition_type = Gtk.StackTransitionType.CROSSFADE
+        };
+        mount_eject_stack.add_named (eject_button, "eject");
         mount_eject_stack.add_named (mount_eject_spinner, "spinner");
+        mount_eject_stack.visible_child_name = "eject";
 
         mount_eject_revealer = new Gtk.Revealer () {
-            halign = Gtk.Align.START,
-            valign = Gtk.Align.END,
-            margin_start = 3
+            transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
+            valign = Gtk.Align.CENTER
         };
         mount_eject_revealer.add (mount_eject_stack);
         mount_eject_revealer.reveal_child = false;
 
-        content_grid.attach (mount_eject_revealer, 1, 0, 1, 1);
+        content_grid.column_spacing = 6;
+        content_grid.attach (mount_eject_revealer, 1, 0);
 
         storage = new Gtk.LevelBar () {
             mode = Gtk.LevelBarMode.CONTINUOUS,
@@ -154,6 +144,10 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         volume_monitor.drive_disconnected.connect (drive_removed);
 
         add_device_tooltip.begin ();
+
+        eject_button.clicked.connect (() => {
+                eject ();
+        });
     }
 
     protected override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
