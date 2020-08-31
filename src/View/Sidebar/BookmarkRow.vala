@@ -161,7 +161,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         activate.connect (() => {activated ();});
 
         notify["gicon"].connect (() => {
-            icon.set_from_gicon (gicon);
+            icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
         });
     }
 
