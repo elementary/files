@@ -156,6 +156,11 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         add_device_tooltip.begin ();
     }
 
+    protected override void update_plugin_data (Marlin.SidebarPluginItem item) {
+        base.update_plugin_data (item);
+        working = item.show_spinner;
+    }
+
     protected override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
         if (working) {
             return;
