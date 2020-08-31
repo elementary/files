@@ -74,26 +74,24 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         bookmarklists_grid.add (network_expander);
         bookmarklists_grid.add (network_revealer);
 
-        var connect_server_action = new ActionRow (
-            _("Connect Server"),
-            new ThemedIcon.with_default_fallbacks ("network-server"),
-            (() => {connect_server_request ();})
-        );
-
-        connect_server_action.margin_bottom = 12;
-        connect_server_action.tooltip_markup = Granite.markup_accel_tooltip (
-            {"<Alt>C"}, _("Connect to a network server")
-        );
-
         scrolled_window = new Gtk.ScrolledWindow (null, null);
         scrolled_window.add (bookmarklists_grid);
 
+        var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
+            always_show_image = true,
+            image = new Gtk.Image.from_icon_name ("network-server", Gtk.IconSize.MENU),
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
+        };
+        connect_server_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
+        var action_bar = new Gtk.ActionBar ();
+        action_bar.add (connect_server_button);
+
         orientation = Gtk.Orientation.VERTICAL;
-        row_spacing = 12;
         width_request = Marlin.app_settings.get_int ("minimum-sidebar-width");
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         add (scrolled_window);
-        add (connect_server_action);
+        add (action_bar);
 
         plugins.sidebar_loaded (this);
 
@@ -107,6 +105,10 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
+
+        connect_server_button.clicked.connect (() => {
+            connect_server_request ();
+        });
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
