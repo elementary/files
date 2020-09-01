@@ -82,9 +82,9 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
             image = new Gtk.Image.from_icon_name ("network-server", Gtk.IconSize.MENU),
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
         };
-        connect_server_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         var action_bar = new Gtk.ActionBar ();
+        action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         action_bar.add (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
