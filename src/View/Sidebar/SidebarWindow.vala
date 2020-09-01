@@ -79,7 +79,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
         var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
             always_show_image = true,
-            image = new Gtk.Image.from_icon_name ("network-server", Gtk.IconSize.MENU),
+            image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
         };
 
