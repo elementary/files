@@ -159,6 +159,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         button_release_event.connect_after (after_button_release_event);
 
         activate.connect (() => {activated ();});
+
+        notify["gicon"].connect (() => {
+            icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
+        });
     }
 
     protected override void update_plugin_data (Marlin.SidebarPluginItem item) {
