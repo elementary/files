@@ -241,54 +241,41 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         device_listbox.refresh ();
     }
 
-    private class SidebarExpander : Gtk.EventBox {
-        public bool active { get; set; }
-        public string label { get; construct; }
+    private class SidebarExpander : Gtk.ToggleButton {
+        public string expander_label { get; construct; }
+        private static Gtk.CssProvider expander_provider;
 
         public SidebarExpander (string label) {
-            Object (label: label);
+            Object (expander_label: label);
+        }
+
+        static construct {
+            expander_provider = new Gtk.CssProvider ();
+            expander_provider.load_from_resource ("/io/elementary/files/SidebarExpander.css");
         }
 
         construct {
-            var title = new Gtk.Label (label) {
+            var title = new Gtk.Label (expander_label) {
                 hexpand = true,
                 xalign = 0
             };
 
-            var pan_down = new Gtk.Image.from_icon_name ("pan-down-symbolic", Gtk.IconSize.MENU);
-            var pan_end = new Gtk.Image.from_icon_name ("pan-end-symbolic", Gtk.IconSize.MENU);
-            var image_stack = new Gtk.Stack ();
-            image_stack.add_named (pan_down, "expanded");
-            image_stack.add_named (pan_end, "closed");
+            var arrow = new Gtk.Spinner ();
 
-            var image_revealer = new Gtk.Revealer ();
-            image_revealer.add (image_stack);
-            image_revealer.reveal_child = false;
+            unowned Gtk.StyleContext arrow_style_context = arrow.get_style_context ();
+            arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
+            arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            var grid = new Gtk.Grid () {
-                column_spacing = 6,
-                margin_end = 6,
-                margin_start = 6
-            };
+            var grid = new Gtk.Grid ();
             grid.add (title);
-            grid.add (image_revealer);
+            grid.add (arrow);
 
             add (grid);
 
-            get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-
-            button_release_event.connect (() => {
-                active = !active;
-                image_stack.visible_child_name = active ? "expanded" : "closed";
-            });
-
-            enter_notify_event.connect (() => {
-                image_revealer.reveal_child = true;
-            });
-
-            leave_notify_event.connect (() => {
-                image_revealer.reveal_child = false;
-            });
+            unowned Gtk.StyleContext style_context = get_style_context ();
+            style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
+            style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
+            style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
     }
 }
