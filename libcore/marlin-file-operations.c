@@ -47,7 +47,6 @@ typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 
 typedef struct {
-    GIOSchedulerJob *io_job;
     GTimer *time;
     GtkWindow *parent_window;
     int inhibit_cookie;
@@ -1546,7 +1545,6 @@ delete_job (GIOSchedulerJob *io_job,
     int job_files;
 
     common = (CommonJob *)job;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
 
@@ -3850,7 +3848,6 @@ copy_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_id = NULL;
 
@@ -4353,7 +4350,6 @@ move_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_id = NULL;
     dest_fs_type = NULL;
@@ -4667,7 +4663,6 @@ link_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_type = NULL;
 
@@ -4900,7 +4895,6 @@ set_permissions_job (GIOSchedulerJob *io_job,
     CommonJob *common;
 
     common = (CommonJob *)job;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
     pf_progress_info_set_status (common->progress, _("Setting permissions"));
@@ -5210,7 +5204,6 @@ create_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
 
