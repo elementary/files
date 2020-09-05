@@ -47,7 +47,6 @@ typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 
 typedef struct {
-    GIOSchedulerJob *io_job;
     GTimer *time;
     GtkWindow *parent_window;
     int inhibit_cookie;
@@ -684,14 +683,30 @@ can_delete_without_confirm (GFile *file)
     return FALSE;
 }
 
-static gboolean
-do_run_simple_dialog (gpointer _data)
+typedef struct {
+    GMainLoop *main_loop;
+    MarlinRunSimpleDialogData *data;
+} MarlinSimpleDialogResponseData;
+
+static void
+on_dialog_response (GtkDialog *dialog,
+                    gint response_id,
+                    gpointer user_data)
 {
-    MarlinRunSimpleDialogData *data = _data;
+    MarlinSimpleDialogResponseData *response_data = user_data;
 
-    data->result = pf_dialogs_run_simple_file_operation_dialog (data);
+    response_data->data->result = response_id;
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    g_main_loop_quit (response_data->main_loop);
+}
 
-    return FALSE;
+static gboolean
+on_dialog_idle (gpointer data)
+{
+    g_return_val_if_fail (GTK_IS_DIALOG (data), G_SOURCE_REMOVE);
+
+    gtk_widget_show_all (GTK_DIALOG (data));
+    return G_SOURCE_REMOVE;
 }
 
 /* NOTE: This frees the primary / secondary strings, in order to
@@ -712,6 +727,9 @@ run_simple_dialog_va (CommonJob *job,
     int n_titles;
     const char *button_title;
     GPtrArray *ptr_array;
+    GMainLoop *main_loop;
+    GtkDialog *dialog;
+    MarlinSimpleDialogResponseData response_data;
 
     g_timer_stop (job->time);
 
@@ -735,10 +753,15 @@ run_simple_dialog_va (CommonJob *job,
     data->button_titles_length1 = n_titles;
 
     pf_progress_info_pause (job->progress);
-    g_io_scheduler_job_send_to_mainloop (job->io_job,
-                                         do_run_simple_dialog,
-                                         data,
-                                         NULL);
+    main_loop = g_main_loop_new (NULL, FALSE);
+    dialog = pf_dialogs_get_simple_file_operation_dialog (data);
+    response_data.main_loop = main_loop;
+    response_data.data = data;
+    g_signal_connect (dialog, "response", G_CALLBACK (on_dialog_response), &response_data);
+    g_idle_add (on_dialog_idle, dialog);
+    g_main_loop_run (main_loop);
+    g_main_loop_unref (main_loop);
+
     pf_progress_info_resume (job->progress);
     res = data->result;
 
@@ -1522,7 +1545,6 @@ delete_job (GIOSchedulerJob *io_job,
     int job_files;
 
     common = (CommonJob *)job;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
 
@@ -3182,41 +3204,40 @@ typedef struct {
 } ConflictResponseData;
 
 typedef struct {
-    GFile *src;
-    GFile *dest;
-    GFile *dest_dir;
-    GtkWindow *parent;
+    GMainLoop *main_loop;
     ConflictResponseData *resp_data;
-} ConflictDialogData;
+} MarlinConflictDialogResponseData;
 
 static gboolean
-do_run_conflict_dialog (gpointer _data)
+on_conflict_dialog_idle (gpointer data)
 {
-    ConflictDialogData *data = _data;
-    GtkWidget *dialog;
-    int response;
+    g_return_val_if_fail (GTK_IS_DIALOG (data), G_SOURCE_REMOVE);
 
-    dialog = marlin_file_conflict_dialog_new (data->parent,
-                                              data->src,
-                                              data->dest,
-                                              data->dest_dir);
-    response = gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_show_all (GTK_DIALOG (data));
+    return G_SOURCE_REMOVE;
+}
 
-    if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
+static void
+on_conflict_dialog_response (GtkDialog *dialog,
+                             gint response_id,
+                             gpointer user_data)
+{
+    MarlinConflictDialogResponseData *data = user_data;
+
+    if (response_id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
         data->resp_data->new_name =
             marlin_file_conflict_dialog_get_new_name (MARLIN_FILE_CONFLICT_DIALOG (dialog));
-    } else if (response != GTK_RESPONSE_CANCEL ||
-               response != GTK_RESPONSE_NONE) {
+    } else if (response_id != GTK_RESPONSE_CANCEL ||
+               response_id != GTK_RESPONSE_NONE) {
         data->resp_data->apply_to_all =
             marlin_file_conflict_dialog_get_apply_to_all
             (MARLIN_FILE_CONFLICT_DIALOG (dialog));
     }
 
-    data->resp_data->id = response;
+    data->resp_data->id = response_id;
 
-    gtk_widget_destroy (dialog);
-
-    return FALSE;
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    g_main_loop_quit (data->main_loop);
 }
 
 static ConflictResponseData *
@@ -3225,29 +3246,31 @@ run_conflict_dialog (CommonJob *job,
                      GFile *dest,
                      GFile *dest_dir)
 {
-    ConflictDialogData *data;
     ConflictResponseData *resp_data;
+    MarlinConflictDialogResponseData response_data;
+    GMainLoop *main_loop;
+    GtkWidget *dialog;
 
     g_timer_stop (job->time);
 
-    data = g_slice_new0 (ConflictDialogData);
-    data->parent = job->parent_window;
-    data->src = src;
-    data->dest = dest;
-    data->dest_dir = dest_dir;
-
     resp_data = g_slice_new0 (ConflictResponseData);
     resp_data->new_name = NULL;
-    data->resp_data = resp_data;
 
     pf_progress_info_pause (job->progress);
-    g_io_scheduler_job_send_to_mainloop (job->io_job,
-                                         do_run_conflict_dialog,
-                                         data,
-                                         NULL);
+
+    main_loop = g_main_loop_new (NULL, FALSE);
+    dialog = marlin_file_conflict_dialog_new (job->parent_window,
+                                              src,
+                                              dest,
+                                              dest_dir);
+    response_data.main_loop = main_loop;
+    response_data.resp_data = resp_data;
+    g_signal_connect (dialog, "response", G_CALLBACK (on_conflict_dialog_response), &response_data);
+    g_idle_add (on_conflict_dialog_idle, dialog);
+    g_main_loop_run (main_loop);
+    g_main_loop_unref (main_loop);
 
     pf_progress_info_resume (job->progress);
-    g_slice_free (ConflictDialogData, data);
     g_timer_continue (job->time);
 
     return resp_data;
@@ -3825,7 +3848,6 @@ copy_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_id = NULL;
 
@@ -4328,7 +4350,6 @@ move_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_id = NULL;
     dest_fs_type = NULL;
@@ -4642,7 +4663,6 @@ link_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_type = NULL;
 
@@ -4875,7 +4895,6 @@ set_permissions_job (GIOSchedulerJob *io_job,
     CommonJob *common;
 
     common = (CommonJob *)job;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
     pf_progress_info_set_status (common->progress, _("Setting permissions"));
@@ -5185,7 +5204,6 @@ create_job (GIOSchedulerJob *io_job,
 
     job = user_data;
     common = &job->common;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
 

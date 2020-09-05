@@ -75,8 +75,8 @@ namespace PF.Dialogs {
         return dialog;
     }
 
-    public int run_simple_file_operation_dialog (Marlin.RunSimpleDialogData data) {
-        string image_name;
+    public Gtk.Dialog get_simple_file_operation_dialog (Marlin.RunSimpleDialogData data) {
+        unowned string image_name;
         switch (data.message_type) {
             case Gtk.MessageType.ERROR:
                 image_name = "dialog-error";
@@ -96,12 +96,12 @@ namespace PF.Dialogs {
                                                                           data.secondary_text,
                                                                           image_name,
                                                                           Gtk.ButtonsType.NONE);
-
+        dialog.transient_for = data.parent_window as Gtk.Window;
         if (data.button_titles.length == 0) {
             dialog.add_button (_("Close"), 0);
         } else {
             var response_id = 0;
-            foreach (string title in data.button_titles) {
+            foreach (unowned string title in data.button_titles) {
                 dialog.add_button (title, response_id);
                 if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
                     var button = dialog.get_widget_for_response (response_id);
@@ -115,7 +115,6 @@ namespace PF.Dialogs {
             dialog.show_error_details (data.details_text);
         }
 
-        display_dialog (dialog, data.parent_window);
-        return dialog.run ();
+        return dialog;
     }
 }
