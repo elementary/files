@@ -112,7 +112,14 @@ namespace PF.Dialogs {
         }
 
         if (data.details_text != null) {
-            dialog.show_error_details (data.details_text);
+            //FIXME: Granite.MessageDialog.show_error_details call Gtk.Widget.show_all ()
+            // which breaks the current implementation in marlin-file-operation.c
+            // as the dialog is being created in a thread but presented in the
+            // Gtk thread. Remove the Idle.add once everything is done in the Gtk thread.
+            Idle.add (() => {
+                dialog.show_error_details (data.details_text);
+                return Source.REMOVE;
+            });
         }
 
         return dialog;
