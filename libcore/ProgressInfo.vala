@@ -16,6 +16,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
+/* Intermediary between a FileOperation and the ProgressUIHandler allowing the UI to show the progress
+ * of the operation and also to cancel that operation. */
 public class PF.Progress.Info : GLib.Object {
     public signal void changed ();
     public signal void progress_changed ();
@@ -39,6 +41,7 @@ public class PF.Progress.Info : GLib.Object {
     public bool is_cancelled { get { return cancellable.is_cancelled (); }}
 
     private GLib.Source idle_source;
+
     private bool source_is_now;
     private bool start_at_idle;
     private bool finish_at_idle;
@@ -51,9 +54,19 @@ public class PF.Progress.Info : GLib.Object {
 
     construct {
         cancellable = new GLib.Cancellable ();
-        // Ensure info finishes if canceled by marlin-file-operations.
-        cancellable.connect (finish);
+        /* Ensure info finishes if canceled by marlin-file-operations.
+         * Using cancellable.connect () results in refcounting problem as it cannot be disconnected in its handler */
+        cancellable.cancelled.connect (finish);
         PF.Progress.InfoManager.get_instance ().add_new_info (this);
+        warning ("construct info - hold application");
+        Application.get_default ().hold ();
+    }
+
+    ~Info () {
+        warning ("destruct info - release application");
+        /* As the hold was placed on construction, we release it here to ensure matching count */
+        /* Must ensure all references are released so Info is destroyed */
+        Application.get_default ().release ();
     }
 
     public void cancel () {
@@ -70,9 +83,9 @@ public class PF.Progress.Info : GLib.Object {
     }
 
     public void finish () {
-        if (!is_finished && !is_cancelled) { /* In case of race between cancel and finish */
+        if (!is_finished) { /* Should not queue finish twice */
             is_finished = true;
-
+            cancellable.cancelled.disconnect (finish);
             finish_at_idle = true;
             queue_idle (true);
         }
@@ -162,6 +175,7 @@ public class PF.Progress.Info : GLib.Object {
          * Similar to what gdk_threads_add_idle does.
          */
         if (source.is_destroyed ()) {
+            critical ("Source destroyed on another thread");
             return GLib.Source.REMOVE;
         }
 
@@ -175,9 +189,10 @@ public class PF.Progress.Info : GLib.Object {
 
         if (finish_at_idle) {
             finish_at_idle = false;
-            if (!is_cancelled) { /* In case of race between cancel and finish */
-                finished ();
-            }
+            /* Only place the finish signal is emitted */
+            /* Must be emitted to update ProgressUIHandler */
+            finished ();
+            PF.Progress.InfoManager.get_instance ().remove_finished_info (this);
         }
 
         if (changed_at_idle) {
