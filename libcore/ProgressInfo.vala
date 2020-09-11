@@ -63,7 +63,6 @@ public class PF.Progress.Info : GLib.Object {
     }
 
     ~Info () {
-        warning ("destruct info - release application");
         /* As the hold was placed on construction, we release it here to ensure matching count */
         /* Must ensure all references are released so Info is destroyed */
         Application.get_default ().release ();
