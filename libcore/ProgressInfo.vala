@@ -174,7 +174,6 @@ public class PF.Progress.Info : GLib.Object {
          * Similar to what gdk_threads_add_idle does.
          */
         if (source.is_destroyed ()) {
-            critical ("Source destroyed on another thread");
             return GLib.Source.REMOVE;
         }
 
