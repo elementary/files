@@ -58,7 +58,6 @@ public class PF.Progress.Info : GLib.Object {
          * Using cancellable.connect () results in refcounting problem as it cannot be disconnected in its handler */
         cancellable.cancelled.connect (finish);
         PF.Progress.InfoManager.get_instance ().add_new_info (this);
-        warning ("construct info - hold application");
         Application.get_default ().hold ();
     }
 
