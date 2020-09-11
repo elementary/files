@@ -1,0 +1,44 @@
+.source-list.level-bar,
+.source-list.level-bar:selected,
+.source-list.level-bar:selected:focus {
+    background-color: alpha (@text_color, 0.2);
+    border: none;
+    border-radius: 99px;
+}
+
+.source-list.level-bar:backdrop {
+    background-color: alpha (@text_color, 0.1);
+}
+
+.source-list.fill-block,
+.source-list.fill-block:hover,
+.source-list.fill-block:selected,
+.source-list.fill-block:selected:focus {
+    background-color: alpha (@text_color, 0.6);
+}
+
+.source-list.fill-block:backdrop {
+    background-color: alpha (@text_color, 0.2);
+}
+
+.source-list.fill-block-warn,
+.source-list.fill-block-warn:hover,
+.source-list.fill-block-warn:selected,
+.source-list.fill-block-warn:selected:focus {
+    background-color: alpha (@ORANGE_500, 0.6);
+}
+
+.source-list.fill-block-warn:backdrop {
+    background-color: alpha (@ORANGE_500, 0.2);
+}
+
+.source-list.fill-block-critical,
+.source-list.fill-block-critical:hover,
+.source-list.fill-block-critical:selected,
+.source-list.fill-block-critical:selected:focus {
+    background-color: alpha (@STRAWBERRY_500, 0.6);
+}
+
+.source-list.fill-block-critical:backdrop {
+    background-color: alpha (@STRAWBERRY_500, 0.2);
+}

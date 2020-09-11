@@ -31,12 +31,13 @@ namespace Marlin {
                                  Gdk.DragAction action) {
 
             if (drop_target.is_folder ()) {
-                Marlin.FileOperations.copy_move_link (drop_file_list,
-                                                      null,
-                                                      drop_target.get_target_location (),
-                                                      action,
-                                                      widget,
-                                                      null);
+                Marlin.FileOperations.copy_move_link.begin (
+                    drop_file_list,
+                    drop_target.get_target_location (),
+                    action,
+                    widget,
+                    null
+                );
                 return true;
             } else if (drop_target.is_executable ()) {
                 try {
@@ -190,7 +191,9 @@ namespace Marlin {
                                            Gtk.SelectionData selection) {
             bool success = false;
 
-            if (selection.get_length () == 1 && selection.get_format () == 8) {
+            if (selection != null &&
+                selection.get_length () == 1 && //No other way to get length?
+                selection.get_format () == 8) {
                 uchar result = selection.get_data ()[0];
 
                 switch (result) {
@@ -200,6 +203,7 @@ namespace Marlin {
                     case 'E':
                         /* No fallback for XdndDirectSave stage (3), result "E" ("Error") yet.
                          * Note this result may be obtained even if the file was successfully saved */
+                        success = true;
                         break;
                     case 'S':
                         /* XdndDirectSave "Success" */
@@ -266,9 +270,11 @@ namespace Marlin {
             text = null;
 
             if (info == Marlin.TargetType.TEXT_URI_LIST &&
-                selection_data.get_format () == 8 &&
-                selection_data.get_length () > 0) {
+                selection_data != null &&
+                selection_data.get_length () > 0 && //No other way to get length?
+                selection_data.get_format () == 8) {
 
+                /* selection_data.get_data () does not work for some reason (returns nothing) */
                 text = DndHandler.data_to_string (selection_data.get_data_with_length ());
             }
 
@@ -316,7 +322,7 @@ namespace Marlin {
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
                     if (sanitize_path) {
-                        target = PF.FileUtils.sanitize_path (target);
+                        target = PF.FileUtils.sanitize_path (target, null, false);
                     }
 
                     sb.append (target);

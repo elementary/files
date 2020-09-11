@@ -30,7 +30,10 @@ public class PopupMenuBuilder : Object {
         return popupmenu;
     }
 
-    public Gtk.Menu build_from_model (MenuModel model, string? action_group_namespace = null, ActionGroup? action_group = null) {
+    public Gtk.Menu build_from_model (MenuModel model,
+                                      string? action_group_namespace = null,
+                                      ActionGroup? action_group = null) {
+
         var menu = new Gtk.Menu.from_model (model);
         menu.insert_action_group (action_group_namespace, action_group);
 
@@ -76,6 +79,10 @@ public class PopupMenuBuilder : Object {
 
     public PopupMenuBuilder add_property (MenuitemCallback show_drive_info_cb) {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), show_drive_info_cb);
+    }
+
+    public PopupMenuBuilder add_bookmark (MenuitemCallback bookmark_cb) {
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), bookmark_cb);
     }
 
     public PopupMenuBuilder add_separator () {

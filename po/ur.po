@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-29 10:01-0700\n"
+"POT-Creation-Date: 2020-08-26 21:49+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -19,33 +19,33 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
-#: src/Application.vala:124
+#: src/Application.vala:149
 msgid "Show the version of the program"
 msgstr "پروگرام کا ورژن دکھائیں."
 
-#: src/Application.vala:126
+#: src/Application.vala:151
 #, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "uri کو نئی ٹیب میں کھولیں"
 
-#: src/Application.vala:128 src/View/directory_view_popup.ui:87
+#: src/Application.vala:153 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "نئی ونڈو"
 
-#: src/Application.vala:130
+#: src/Application.vala:155
 msgid "Quit Files"
 msgstr "فائلیں بند کریں۔"
 
-#: src/Application.vala:132
+#: src/Application.vala:157
 msgid "Enable debug logging"
 msgstr "ڈی بگ لاگنگ فعال کریں"
 
-#: src/Application.vala:135
+#: src/Application.vala:160
 #, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
-#: src/Application.vala:138
+#: src/Application.vala:163
 msgid ""
 "\n"
 "\n"
@@ -55,181 +55,173 @@ msgstr ""
 "\n"
 "فائل منیجر سے فائل نظام دیکھیں"
 
-#: src/Application.vala:166
+#: src/Application.vala:191
 msgid "--quit cannot be used with URIs."
 msgstr "quit-- ، URI کے ساتھ استعمال نہیں ہوسکتا۔"
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:124 src/ProgressUIHandler.vala:186
 msgid "File Operations"
 msgstr "فائل آپریشنز"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:192
+#: src/ProgressUIHandler.vala:180
 #, c-format
 msgid "Completed %s"
 msgstr "مکمل شدہ %s"
 
-#: src/ProgressUIHandler.vala:195
+#: src/ProgressUIHandler.vala:183
 msgid "All file operations have ended"
 msgstr "تمام فائل آپریشن کامیابی سے مکمل ہوگئے"
-
-#: src/ProgressUIHandler.vala:243
-msgid "Show Copy Dialog"
-msgstr "کاپی ڈائیلاگ دکھائیں"
-
-#: src/ProgressUIHandler.vala:255
-msgid "Cancel All In-progress Actions"
-msgstr "تمام چلتے ہوئے عمل منسوخ کردیں"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
 msgstr "معلومات"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr "عمومی"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:76 libcore/StockDialogs.vala:87
+#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "بند کریں"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:135
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
 msgstr "ڈیوائس کا استعمال"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
 msgstr "کُل گُنجائش:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:156
-#: src/Dialogs/AbstractPropertiesDialog.vala:159
-#: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "نا معلوم"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
 msgstr "دستیاب"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
 msgstr "استعمال شدہ:"
 
-#: src/Dialogs/ChooseAppDialog.vala:42
+#: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "طے شُدہ بنائیں"
 
-#: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
-#: src/View/directory_view_popup.ui:95
+#: src/Dialogs/PropertiesWindow.vala:123
+#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "_خصوصیات"
 
-#: src/Dialogs/PropertiesWindow.vala:223
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "اجازتیں"
 
-#: src/Dialogs/PropertiesWindow.vala:244
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "اصل سائز زیادہ بھی ہو سکتا ہے"
 
-#: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "نامعلوم"
 
-#: src/Dialogs/PropertiesWindow.vala:448
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "لوڈ کر رہا ہے۔۔۔"
 
-#: src/Dialogs/PropertiesWindow.vala:482
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "تعین نہیں کیا جا سکتا"
 
-#: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
-#: libcore/FileConflictDialog.vala:148
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
+#: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "سائز:"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "نوعیت:"
 
-#: src/Dialogs/PropertiesWindow.vala:518
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "مشتمل ہے:"
 
-#: src/Dialogs/PropertiesWindow.vala:541
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "بنایا گیا از:"
 
-#: src/Dialogs/PropertiesWindow.vala:551
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "تبدیل کی گئی:"
 
-#: src/Dialogs/PropertiesWindow.vala:563
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "حذف شدہ:"
 
-#: src/Dialogs/PropertiesWindow.vala:573
+#: src/Dialogs/PropertiesWindow.vala:589
 #, fuzzy
 msgid "Media type:"
 msgstr "مائم نوع:"
 
-#: src/Dialogs/PropertiesWindow.vala:580
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "ریزیلوشن:"
 
-#: src/Dialogs/PropertiesWindow.vala:588
-#: src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/PropertiesWindow.vala:604
+#: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "مقام:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "ٹارگٹ:"
 
-#: src/Dialogs/PropertiesWindow.vala:606
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "اصل مقام:"
 
-#: src/Dialogs/PropertiesWindow.vala:629
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/Dialogs/PropertiesWindow.vala:645
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr "دیگر اطلاقیے۔۔۔"
 
-#: src/Dialogs/PropertiesWindow.vala:649
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "کھولیں بذریعہ:"
 
-#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "مالک:"
 
-#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "گروہ:"
 
-#: src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "ہر کوئی:"
 
-#: src/Dialogs/PropertiesWindow.vala:1213
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1217
-#: src/Dialogs/PropertiesWindow.vala:1239
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -237,19 +229,20 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1222
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:909
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -257,7 +250,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr ""
@@ -266,37 +259,37 @@ msgstr ""
 msgid "Disk Properties"
 msgstr "_ڈسک خصوصیات"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:658
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "فائل کا نظام"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:88
+#: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
 msgstr "ساخت:"
 
-#: src/Utils/MimeActions.vala:285
+#: src/Utils/MimeActions.vala:283
 msgid "Multiple file types selected"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:286
+#: src/Utils/MimeActions.vala:284
 msgid "No single app can open all these types of file"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:313
+#: src/Utils/MimeActions.vala:311
 msgid "Failed to open files"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:323
+#: src/Utils/MimeActions.vala:321
 #, fuzzy
 msgid "Could not open URIs"
 msgstr "'‏%'s پہ نام نہیں بدلا جا سکتا"
 
-#: src/Utils/MimeActions.vala:326
+#: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:496 src/View/Window.vala:506
+#: src/View/Window.vala:542 src/View/Window.vala:552
 msgid "(as Administrator)"
 msgstr "(بطور ایڈمنسٹریٹر)"
 
@@ -304,11 +297,11 @@ msgstr "(بطور ایڈمنسٹریٹر)"
 msgid "Filename"
 msgstr "فائل کا نام"
 
-#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:153
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "سائز"
 
-#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:158
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "نوعیت"
 
@@ -316,7 +309,7 @@ msgstr "نوعیت"
 msgid "Modified"
 msgstr "تبدیل کردہ"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
 msgstr "یہ فولڈر موجود نہیں ہے"
 
@@ -339,212 +332,339 @@ msgstr "فولڈر '%s' بنائیں"
 msgid "Failed to create the folder"
 msgstr "فولڈر '%s' بنانے میں ناکامی"
 
-#: src/View/AbstractDirectoryView.vala:827
-#: src/View/AbstractDirectoryView.vala:1112
+#: src/View/AbstractDirectoryView.vala:821
+#: src/View/AbstractDirectoryView.vala:1132
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "یہ فائل کھولی نہیں کی جاسکتی"
 
-#: src/View/AbstractDirectoryView.vala:848
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:831
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:832
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:847
 msgid "Cannot open this file"
 msgstr "یہ فائل کھولی نہیں کی جاسکتی"
 
-#: src/View/AbstractDirectoryView.vala:861
+#: src/View/AbstractDirectoryView.vala:860
 msgid "Cannot identify file type to open"
 msgstr "کھولنے کے لیے فائل کی نوعیت کی شناخت نہیں کی جاسکی"
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1578
 msgid "Cannot drop this file"
 msgstr "یہ فائل ڈراپ نہیں کی جاسکتی"
 
-#: src/View/AbstractDirectoryView.vala:1577
+#: src/View/AbstractDirectoryView.vala:1579
 msgid "Invalid file name provided"
 msgstr "فائل کا نام ناموزوں ہے"
 
-#: src/View/AbstractDirectoryView.vala:2060
-msgid "Invalid"
-msgstr "ناموزوں"
+#: src/View/AbstractDirectoryView.vala:1854
+msgid "New Tab"
+msgstr "نئی ٹیب"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "چلائیں"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "%s میں کھولیں"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "کھولیں بذریعہ"
 
-#: src/View/AbstractDirectoryView.vala:2082
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "کھولیں بذریعہ"
 
-#: src/View/AbstractDirectoryView.vala:2173
-msgid "Templates"
+#: src/View/AbstractDirectoryView.vala:1958
+msgid "Paste"
+msgstr "پیسٹ"
+
+#: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
+#, fuzzy
+#| msgid "Bookmarks"
+msgid "Add to Bookmarks"
+msgstr "بک مارک"
+
+#: src/View/AbstractDirectoryView.vala:1978
+msgid "Cut"
+msgstr "کاٹیں"
+
+#: src/View/AbstractDirectoryView.vala:1985
+msgid "Copy"
+msgstr "کاپی کریں"
+
+#: src/View/AbstractDirectoryView.vala:1992
+msgid "Move to Trash"
+msgstr "ردی میں منتقل کریں"
+
+#: src/View/AbstractDirectoryView.vala:1997
+msgid "Delete permanently"
+msgstr "ہمیشہ کے لیے حذف کریں"
+
+#: src/View/AbstractDirectoryView.vala:2002
+msgid "Restore from Trash"
+msgstr "ردی سے بحالی کریں"
+
+#: src/View/AbstractDirectoryView.vala:2013
+msgid "Open Parent Folder"
+msgstr "آبائی فولڈر کھولیں"
+
+#: src/View/AbstractDirectoryView.vala:2016
+msgid "Remove from History"
+msgstr "ہسٹری سے ہٹائیں"
+
+#: src/View/AbstractDirectoryView.vala:2032
+#, fuzzy
+#| msgid "Rename"
+msgid "Rename…"
+msgstr "نام بدلیں"
+
+#: src/View/AbstractDirectoryView.vala:2039
+#, fuzzy
+msgid "Copy as Link"
+msgstr "پیسٹ"
+
+#: src/View/AbstractDirectoryView.vala:2057
+#, fuzzy
+msgid "Paste Link into Folder"
+msgstr "فولڈر کے اندر پیسٹ کریں"
+
+#: src/View/AbstractDirectoryView.vala:2059
+msgid "Paste into Folder"
+msgstr "فولڈر کے اندر پیسٹ کریں"
+
+#: src/View/AbstractDirectoryView.vala:2087
+msgid "Show Hidden Files"
+msgstr "پوشیدہ فائلیں ظاہر کریں"
+
+#: src/View/AbstractDirectoryView.vala:2090
+msgid "Show Remote Thumbnails"
+msgstr "ریموٹ تھمب نیل دکھائیں"
+
+#: src/View/AbstractDirectoryView.vala:2093
+#, fuzzy
+msgid "Hide Thumbnails"
+msgstr "ریموٹ تھمب نیل دکھائیں"
+
+#: src/View/AbstractDirectoryView.vala:2113
+#, fuzzy
+msgid "Paste Link"
+msgstr "پیسٹ"
+
+#: src/View/AbstractDirectoryView.vala:2167
+msgid "Name"
+msgstr "نام"
+
+#: src/View/AbstractDirectoryView.vala:2182
+msgid "Date"
+msgstr "تاریخ"
+
+#: src/View/AbstractDirectoryView.vala:2187
+msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2420
+#: src/View/AbstractDirectoryView.vala:2190
+msgid "Folders Before Files"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2202
+msgid "Sort by"
+msgstr "ترتیب دیں بطور"
+
+#: src/View/AbstractDirectoryView.vala:2210
+msgid "Folder"
+msgstr "فولڈر"
+
+#: src/View/AbstractDirectoryView.vala:2216
+msgid "Empty File"
+msgstr "خالی فائل"
+
+#: src/View/AbstractDirectoryView.vala:2267
+msgid "New"
+msgstr "نیا"
+
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "بے عُنوان %s"
 
-#: src/View/AbstractDirectoryView.vala:2768
-#: src/View/AbstractDirectoryView.vala:2963
+#: src/View/AbstractDirectoryView.vala:2866
+#: src/View/AbstractDirectoryView.vala:3067
 msgid "Cannot remove files from here"
 msgstr "یہاں سے فائلیں نہیں ہٹا سکتا"
 
-#: src/View/AbstractDirectoryView.vala:2769
-#: src/View/AbstractDirectoryView.vala:2948
-#: src/View/AbstractDirectoryView.vala:2964
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "You do not have permission to change this location"
 msgstr "آپکو اس مقام کو بدلنے کی اجازت نہیں ہے"
 
-#: src/View/AbstractDirectoryView.vala:2923
+#: src/View/AbstractDirectoryView.vala:3021
 msgid "Cannot copy files that are in the trash"
 msgstr "ردی میں پڑی فائلوں کو کاپی نہیں کر سکتا"
 
-#: src/View/AbstractDirectoryView.vala:2924
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2947
+#: src/View/AbstractDirectoryView.vala:3051
 msgid "Cannot paste files here"
 msgstr "یہاں سے فائلیں پیسٹ نہیں کر سکتا"
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:591
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "گھر"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
 msgstr "آپ یہاں پر فولڈر نہیں بنا سکتے"
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:408
 msgid "The network is unavailable"
 msgstr "نیٹ ورک دستیاب نہیں"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
 msgstr "اس فولڈر تک رسائی کے لیے نیٹ ورک کنکشن کی ضرورت ہے"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
 msgstr "یہ فولڈر آپکی ملکیت نہیں ہے"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:413
 msgid "You don't have permission to view this folder."
 msgstr "آپ کو اس فولڈر کو دیکھنے کی اجازت نہیں ہے"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:415
 msgid "Unable to Mount Folder"
 msgstr "فولڈر کو ماؤنٹ کرنے سے قاصر"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:416
 msgid "Could not connect to the server for this folder."
 msgstr "اس فولڈر کے سرور سے جڑنے میں ناکام"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:420
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
 msgstr "فولڈر دکھانے میں ناکام"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
 msgstr "اس فولڈر کا سرور نہیں مل سکا."
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:434
 msgid "File not Found"
 msgstr "فائل نہیں پائی گئی"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:435
 msgid "The file selected no longer exists."
 msgstr "منتخب کردہ فائل اب موجود نہیں"
 
-#: src/View/Sidebar.vala:578
-msgid "Personal"
-msgstr "ذاتی"
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "بک مارک"
 
-#: src/View/Sidebar.vala:579
-msgid "Your common places and bookmarks"
-msgstr "آپکے عمومی رسائی کی جگہیں اور بک مارک"
+#: src/View/Sidebar.vala:574
+msgid "Common places plus saved folders and files"
+msgstr ""
 
-#: src/View/Sidebar.vala:598
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "اپنا ذاتی فولڈر کھولیں"
 
-#: src/View/Sidebar.vala:613
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "حالیہ استعمال کردہ فائلوں کی فہرست دیکھیں"
 
-#: src/View/Sidebar.vala:639 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "ردی"
 
-#: src/View/Sidebar.vala:646
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "ردی کھولیں"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "آلات"
 
-#: src/View/Sidebar.vala:652
-msgid "Your local partitions and devices"
-msgstr "آپکی مقامی پارٹیشن اور ڈیوائسز"
+#: src/View/Sidebar.vala:648
+msgid "Internal and connected storage devices"
+msgstr ""
 
-#: src/View/Sidebar.vala:780 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "نیٹ ورک"
 
-#: src/View/Sidebar.vala:781
-msgid "Your network places"
-msgstr "نیٹ ورک جگہیں"
+#: src/View/Sidebar.vala:778
+msgid "Devices and places available via a network"
+msgstr ""
 
-#: src/View/Sidebar.vala:813
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "پورا نیٹ ورک"
 
-#: src/View/Sidebar.vala:820
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "نیٹ ورک کا مواد براؤز کریں"
 
-#: src/View/Sidebar.vala:823
+#: src/View/Sidebar.vala:820
 #, fuzzy
 msgid "Connect Server"
 msgstr "سرور سِے رابطہ قائم کریں"
 
-#: src/View/Sidebar.vala:824
+#: src/View/Sidebar.vala:821
 #, fuzzy
 msgid "Connect to a network server"
 msgstr "کسی نیٹ ورک فائل سرور سے جڑیں"
 
-#: src/View/Sidebar.vala:963
-#, c-format
-msgid "(%s Free of %s)"
-msgstr "(%s خالی جگہ %s میں سے)"
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
+#, fuzzy, c-format
+msgid "%s on %s"
+msgstr "‏%S کا %S"
 
-#: src/View/Sidebar.vala:1456
+#: src/View/Sidebar.vala:979
+#, c-format
+msgid "%s free"
+msgstr ""
+
+#: src/View/Sidebar.vala:980
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "‏%S کا %S"
+
+#: src/View/Sidebar.vala:1448
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1471
+#: src/View/Sidebar.vala:1463
 #, c-format
 msgid "Unable to start %s"
 msgstr "‏%s کو شروع کرنے سے قاصر"
 
-#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1280
+#: src/View/Sidebar.vala:1653 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "_ردی خالی کریں"
 
@@ -580,158 +700,64 @@ msgstr ""
 msgid "Open the system security and privacy settings app"
 msgstr ""
 
-#: src/View/PopupMenuBuilder.vala:34
+#: src/View/PopupMenuBuilder.vala:49
 msgid "Open"
 msgstr "کهولیں"
 
-#: src/View/PopupMenuBuilder.vala:38
+#: src/View/PopupMenuBuilder.vala:53
 msgid "Open in New _Tab"
 msgstr "نئے _ٹیب میں کھولیں"
 
-#: src/View/PopupMenuBuilder.vala:42
+#: src/View/PopupMenuBuilder.vala:57
 msgid "Open in New _Window"
 msgstr "نئے _دریچے میں کھولیں"
 
-#: src/View/PopupMenuBuilder.vala:46
+#: src/View/PopupMenuBuilder.vala:61
 msgid "Remove"
 msgstr "حذف کریں"
 
-#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
+#: src/View/PopupMenuBuilder.vala:65
 msgid "Rename"
 msgstr "نام بدلیں"
 
-#: src/View/PopupMenuBuilder.vala:54
+#: src/View/PopupMenuBuilder.vala:69
 msgid "_Mount"
 msgstr "_ماؤنٹ کریں"
 
-#: src/View/PopupMenuBuilder.vala:58
+#: src/View/PopupMenuBuilder.vala:73
 msgid "_Unmount"
 msgstr "_ان ماؤنٹ کریں"
 
-#: src/View/PopupMenuBuilder.vala:62
+#: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_خارج کریں"
 
-#: src/View/directory_view_popup.ui:5
-msgid "Restore from Trash"
-msgstr "ردی سے بحالی کریں"
-
-#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
-msgid "Delete permanently"
-msgstr "ہمیشہ کے لیے حذف کریں"
-
-#: src/View/directory_view_popup.ui:16
-msgid "Open Parent Folder"
-msgstr "آبائی فولڈر کھولیں"
-
-#: src/View/directory_view_popup.ui:23
-msgid "Remove from History"
-msgstr "ہسٹری سے ہٹائیں"
-
-#: src/View/directory_view_popup.ui:37
-msgid "Move to Trash"
-msgstr "ردی میں منتقل کریں"
-
-#: src/View/directory_view_popup.ui:51
-msgid "New"
-msgstr "نیا"
-
-#: src/View/directory_view_popup.ui:53
-msgid "Folder"
-msgstr "فولڈر"
-
-#: src/View/directory_view_popup.ui:58
-msgid "Empty File"
-msgstr "خالی فائل"
-
-#: src/View/directory_view_popup.ui:67
-msgid "Show Hidden Files"
-msgstr "پوشیدہ فائلیں ظاہر کریں"
-
-#: src/View/directory_view_popup.ui:71
-msgid "Show Remote Thumbnails"
-msgstr "ریموٹ تھمب نیل دکھائیں"
-
-#: src/View/directory_view_popup.ui:75
-#, fuzzy
-msgid "Hide Local Thumbnails"
-msgstr "ریموٹ تھمب نیل دکھائیں"
-
-#: src/View/directory_view_popup.ui:82
-msgid "New Tab"
-msgstr "نئی ٹیب"
-
-#: src/View/directory_view_popup.ui:102
-msgid "Bookmark"
-msgstr "بک مارک کریں"
-
-#: src/View/directory_view_popup.ui:109
-msgid "Paste"
-msgstr "پیسٹ"
-
-#: src/View/directory_view_popup.ui:115
-#, fuzzy
-msgid "Paste Link"
-msgstr "پیسٹ"
-
-#: src/View/directory_view_popup.ui:122
-msgid "Cut"
-msgstr "کاٹیں"
-
-#: src/View/directory_view_popup.ui:126
-msgid "Copy"
-msgstr "کاپی کریں"
-
-#: src/View/directory_view_popup.ui:130
-#, fuzzy
-msgid "Copy as Link"
-msgstr "پیسٹ"
-
-#: src/View/directory_view_popup.ui:134
-msgid "Paste into Folder"
-msgstr "فولڈر کے اندر پیسٹ کریں"
-
-#: src/View/directory_view_popup.ui:138
-#, fuzzy
-msgid "Paste Link into Folder"
-msgstr "فولڈر کے اندر پیسٹ کریں"
-
-#: src/View/directory_view_popup.ui:145
-msgid "Sort by"
-msgstr "ترتیب دیں بطور"
-
-#: src/View/directory_view_popup.ui:148
-msgid "Name"
-msgstr "نام"
-
-#: src/View/directory_view_popup.ui:163
-msgid "Date"
-msgstr "تاریخ"
-
-#: src/View/directory_view_popup.ui:170
-msgid "Reversed Order"
-msgstr ""
-
-#: src/View/directory_view_popup.ui:174
-msgid "Folders Before Files"
-msgstr ""
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:449
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr "نئے ٹیب میں کھولیں"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:456
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr "نئی ونڈو میں کھولیں"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
 msgstr "کسی اور اطلاقیے سے کھولیں..."
+
+#: src/View/Widgets/HeaderBar.vala:66
+#: filechooser-module/FileChooserDialog.vala:75
+msgid "Previous"
+msgstr "سابقہ"
+
+#: src/View/Widgets/HeaderBar.vala:73
+#: filechooser-module/FileChooserDialog.vala:79
+msgid "Next"
+msgstr "اگلا"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
@@ -742,70 +768,70 @@ msgstr "فولڈر دوبارہ لوڈ کریں"
 msgid "Searching…"
 msgstr "لوڈ کر رہا ہے۔۔۔"
 
-#: src/View/Widgets/OverlayBar.vala:216
+#: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
 msgstr "%u فولڈر"
 
-#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr " اور %u دیگر عنصر (%s) منتخب کردہ"
 
-#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " اور %u دیگر عناصر (%s) منتخب کردہ"
 
-#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
 msgstr " منتخب کردہ"
 
-#: src/View/Widgets/OverlayBar.vala:235
+#: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u عناصر منتخب کردہ (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgstr "%u سب-فولڈر، "
 
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
 msgstr "%u سب-فولڈر، "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgstr "%u فائل، "
 
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
 msgstr "%u فائلیں، "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
 msgstr "%s تقریباً"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:298
+#: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
 msgstr "نامعلوم سائز"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgstr "%u فائل پڑھی جانے کے قابل نہیں"
 
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
 msgstr "%u فائلیں پڑھی جانے کے قابل نہیں"
@@ -821,16 +847,6 @@ msgstr "لکھنا"
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "چلانا"
-
-#: src/View/Widgets/TopMenu.vala:63
-#: filechooser-module/FileChooserDialog.vala:75
-msgid "Previous"
-msgstr "سابقہ"
-
-#: src/View/Widgets/TopMenu.vala:68
-#: filechooser-module/FileChooserDialog.vala:79
-msgid "Next"
-msgstr "اگلا"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -860,112 +876,112 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Secure WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server Details"
 msgstr "سرور کی تفصیلات"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 #, fuzzy
 msgid "Server:"
 msgstr "سرور:"
 
-#: libcore/ConnectServerDialog.vala:142
+#: libcore/ConnectServerDialog.vala:146
 #, fuzzy
 msgid "Port:"
 msgstr "_ پورٹ:"
 
-#: libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:168
+#: libcore/ConnectServerDialog.vala:178
 #, fuzzy
 msgid "Share:"
 msgstr "اشتر_اک کریں:"
 
-#: libcore/ConnectServerDialog.vala:170
+#: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:171
+#: libcore/ConnectServerDialog.vala:181
 #, fuzzy
 msgid "Folder:"
 msgstr "_فولڈر"
 
-#: libcore/ConnectServerDialog.vala:173
+#: libcore/ConnectServerDialog.vala:183
 msgid "User Details"
 msgstr "صارف کی تفصیل"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:185
 #, fuzzy
 msgid "Name of Windows domain"
 msgstr "نیا ونڈو بطور _ایڈمنسٹریٹر"
 
-#: libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:186
 #, fuzzy
 msgid "Domain name:"
 msgstr "ڈومین کا نام"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:179
+#: libcore/ConnectServerDialog.vala:189
 #, fuzzy
 msgid "User name:"
 msgstr "صارف کا نام"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:196
 #, fuzzy
 msgid "Password:"
 msgstr "پاس_ورڈ:"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:198
 #, fuzzy
 msgid "Remember this password"
 msgstr "اس پاس_ورڈ کو یاد رکھیں"
 
-#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:101
-#: libcore/FileConflictDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/FileConflictDialog.vala:219
 msgid "Cancel"
 msgstr "منسوخ کریں"
 
-#: libcore/ConnectServerDialog.vala:193
+#: libcore/ConnectServerDialog.vala:205
 #, fuzzy
 msgid "Connect"
 msgstr "_متصل ہوں"
 
-#: libcore/ConnectServerDialog.vala:200
+#: libcore/ConnectServerDialog.vala:214
 msgid "Continue"
 msgstr "جاری رکھیں"
 
-#: libcore/ConnectServerDialog.vala:245
+#: libcore/ConnectServerDialog.vala:265
 #, fuzzy
 msgid "Connecting…"
 msgstr "جڑ رہا ہے۔۔۔"
 
-#: libcore/ConnectServerDialog.vala:364
+#: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
 msgstr "صارف کی تفصیلات کی تصدیق کریں۔"
 
-#: libcore/DndHandler.vala:47
+#: libcore/DndHandler.vala:48
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\" چلانے میں ناکام"
 
-#: libcore/DndHandler.vala:96
+#: libcore/DndHandler.vala:97
 msgid "Move Here"
 msgstr "یہاں منتقل کریں"
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:98
 msgid "Copy Here"
 msgstr "یہاں کاپی کریں"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:99
 msgid "Link Here"
 msgstr "یہاں ربط بنائیں"
 
@@ -973,275 +989,313 @@ msgstr "یہاں ربط بنائیں"
 msgid "File conflict"
 msgstr "فائل تصادم"
 
-#: libcore/FileConflictDialog.vala:115
+#: libcore/FileConflictDialog.vala:122
 msgid "Original file"
 msgstr "اصل فائل"
 
-#: libcore/FileConflictDialog.vala:133 libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
 msgid "Last modified:"
 msgstr "آخری تبدیلی:"
 
-#: libcore/FileConflictDialog.vala:143
+#: libcore/FileConflictDialog.vala:161
 msgid "Replace with"
 msgstr "تبدیل کریں بمع"
 
-#: libcore/FileConflictDialog.vala:171
+#: libcore/FileConflictDialog.vala:199
 msgid "Reset"
 msgstr "اصل پہ واپس"
 
-#: libcore/FileConflictDialog.vala:181
+#: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
 msgstr "منزل کا نیا نام _چُنیں:"
 
-#: libcore/FileConflictDialog.vala:184
+#: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
 msgstr "یہ عمل تمام فائلوں پر لاگو کریں"
 
-#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:161
+#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_پھلانگیں"
 
-#: libcore/FileConflictDialog.vala:187
+#: libcore/FileConflictDialog.vala:217
 msgid "Re_name"
 msgstr "نام ب_دلیں"
 
-#: libcore/FileConflictDialog.vala:191
+#: libcore/FileConflictDialog.vala:221
 msgid "Keep Newest"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:194
+#: libcore/FileConflictDialog.vala:224
 msgid "Replace"
 msgstr "تبدیل کریں"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:340
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "فولڈر \"%s\" کو ملا دیں؟"
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:341
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:313
+#: libcore/FileConflictDialog.vala:343
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "اسی نام کا ایک پرانا فولڈر \"%s\" میں پہلے ہی موجود ہے."
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:345
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "اسی نام کا اس سے نیا فولڈر \"%s\" میں پہلے ہی موجود ہے."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:347
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "اسی نام کا ایک اور فولڈر \"%s\" میں پہلے ہی موجود ہے."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:350
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "فولڈر \"%s\" تبدیل کر دیا جائے؟"
 
-#: libcore/FileConflictDialog.vala:321
+#: libcore/FileConflictDialog.vala:351
 msgid "Replacing it will remove all files in the folder."
 msgstr "اسے بدلنے سے فولڈر میں موجود تمام فائلیں حذف ہوجائیں گی."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:352
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "اسی نام کا فولڈر \"%s\" میں پہلے سے ہی موجود ہے."
 
-#: libcore/FileConflictDialog.vala:325
+#: libcore/FileConflictDialog.vala:355
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "فائل \"%s\" تبدیل کردی جائے؟"
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
 msgstr "اسے بدلنے سے اس کے مواد کو overwrite  کر دیا جائے گا۔"
 
-#: libcore/FileConflictDialog.vala:329
+#: libcore/FileConflictDialog.vala:359
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "اسی نام کی ایک پرانی فائل  \"%s\" میں پہلے ہی موجود ہے."
 
-#: libcore/FileConflictDialog.vala:331
+#: libcore/FileConflictDialog.vala:361
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "اسی نام کی ایک نئی فائل \"%s\" میں پہلے ہی موجود ہے."
 
-#: libcore/FileConflictDialog.vala:333
+#: libcore/FileConflictDialog.vala:363
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "اسی نام کی ایک فائل پہلے ہی  \"%s\" میں موجود ہے."
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:389
 msgid "Merge"
 msgstr "ضم کریں"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "‏\"%s\" کے اصل مقام کا تعین نہیں ہوسکا "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "اس چیز کو ردی سے بحال نہیں کیا جا سکتا"
 
-#: libcore/FileUtils.vala:434
+#: libcore/FileUtils.vala:497
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'‏%'s پہ نام نہیں بدلا جا سکتا"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:523
+#: libcore/FileUtils.vala:586
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "آج بوقت %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:529
+#: libcore/FileUtils.vala:594
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "گزشتہ روز بوقت %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:535
+#: libcore/FileUtils.vala:602
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/gof-directory-async.vala:690
-msgid "Server did not respond within time limit"
-msgstr ""
-
-#: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
-#: libcore/ProgressInfo.vala:79
-msgid "Preparing"
-msgstr "تیار کر رہا ہے"
-
-#: libcore/marlin-file-operations.c:159
-#, fuzzy
-msgid "_Cancel"
-msgstr "منسوخ کریں"
-
-#: libcore/marlin-file-operations.c:160
-#, fuzzy
-msgid "_Delete"
-msgstr "حذف شدہ:"
-
-#: libcore/marlin-file-operations.c:162
-msgid "S_kip All"
-msgstr "سب پ_ھلانگیں"
-
-#: libcore/marlin-file-operations.c:163
-msgid "_Retry"
-msgstr "_دوبارہ کوشش کریں"
-
-#: libcore/marlin-file-operations.c:164
-msgid "Delete _All"
-msgstr "_سب حذف کریں"
-
-#: libcore/marlin-file-operations.c:165
-msgid "_Replace"
-msgstr "_بدل دیں"
-
-#: libcore/marlin-file-operations.c:166
-msgid "Replace _All"
-msgstr "تمام_بدل دیں"
-
-#: libcore/marlin-file-operations.c:167
-msgid "_Merge"
-msgstr "_ضم کریں"
-
-#: libcore/marlin-file-operations.c:168
-msgid "Merge _All"
-msgstr "تمام_ضم کردیں"
-
-#: libcore/marlin-file-operations.c:169
-msgid "Copy _Anyway"
-msgstr "_ہر صورت کاپی کریں"
-
-#: libcore/marlin-file-operations.c:250
+#: libcore/FileUtils.vala:898
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d سیکنڈ"
 msgstr[1] "%'d سیکنڈ"
 
-#: libcore/marlin-file-operations.c:255 libcore/marlin-file-operations.c:266
+#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d منٹ"
 msgstr[1] "%'d منٹ"
 
-#: libcore/marlin-file-operations.c:265
+#: libcore/FileUtils.vala:909
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d گھنٹہ"
 msgstr[1] "%'d گھنٹے"
 
-#: libcore/marlin-file-operations.c:273
+#: libcore/FileUtils.vala:913
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "تقریباً %'d گھنٹہ"
 msgstr[1] "تقریباً %'d گھنٹے"
 
-#: libcore/marlin-file-operations.c:349
+#: libcore/gof-directory-async.vala:690
+msgid "Server did not respond within time limit"
+msgstr ""
+
+#: libcore/ProgressInfo.vala:29 libcore/ProgressInfo.vala:30
+#: libcore/ProgressInfo.vala:31
+msgid "Preparing"
+msgstr "تیار کر رہا ہے"
+
+#: libcore/StockDialogs.vala:20
+#, fuzzy
+msgid "_Cancel"
+msgstr "منسوخ کریں"
+
+#: libcore/StockDialogs.vala:21
+#, fuzzy
+msgid "Delete"
+msgstr "حذف شدہ:"
+
+#: libcore/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "سب پ_ھلانگیں"
+
+#: libcore/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_دوبارہ کوشش کریں"
+
+#: libcore/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "_سب حذف کریں"
+
+#: libcore/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_بدل دیں"
+
+#: libcore/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "تمام_بدل دیں"
+
+#: libcore/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_ضم کریں"
+
+#: libcore/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "تمام_ضم کردیں"
+
+#: libcore/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "_ہر صورت کاپی کریں"
+
+#: libcore/UndoManager.vala:310
+msgid "Original location could not be determined"
+msgstr "اصل مقام کا تعین نہیں کیا جا سکتا"
+
+#: libcore/UndoManager.vala:311
+msgid "Open trash folder and restore manually"
+msgstr "ردی کی ٹوکری کھولیں اور بذاتِ خود بحال کریں"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:40
+msgid "Permanently delete all items from Trash?"
+msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:41
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:44
+#, fuzzy
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:45
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:104
+msgid "Emptying Trash"
+msgstr "ردی خالی کی جارہی ہے"
+
+#: libcore/FileOperations/MountUtils.vala:26
+#, fuzzy, c-format
+#| msgid "Unable to mount %s"
+msgid "Unable to mount '%s'"
+msgstr "‏%s کو ماؤنٹ نہیں کیا جاسکتا"
+
+#: libcore/marlin-file-operations.c:204
 #, c-format
 msgid "Link to %s"
 msgstr "ربط تا %s"
 
-#: libcore/marlin-file-operations.c:353
+#: libcore/marlin-file-operations.c:208
 #, c-format
 msgid "Another link to %s"
 msgstr "دوسرا ربط تا %s"
 
-#: libcore/marlin-file-operations.c:369
+#: libcore/marlin-file-operations.c:224
 #, c-format
 msgid "%'dst link to %s"
 msgstr "ربط ‏%'d تا %s"
 
-#: libcore/marlin-file-operations.c:373
+#: libcore/marlin-file-operations.c:228
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "ربط ‏%'d تا %s"
 
-#: libcore/marlin-file-operations.c:377
+#: libcore/marlin-file-operations.c:232
 #, c-format
 msgid "%'drd link to %s"
 msgstr "ربط ‏%'d تا %s"
 
-#: libcore/marlin-file-operations.c:381
+#: libcore/marlin-file-operations.c:236
 #, c-format
 msgid "%'dth link to %s"
 msgstr "ربط ‏%'d تا %s"
 
-#: libcore/marlin-file-operations.c:573
+#: libcore/marlin-file-operations.c:428
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:581
+#: libcore/marlin-file-operations.c:436
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1226
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+#: libcore/marlin-file-operations.c:875
+#, fuzzy, c-format
+msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "کیا آپ واقعی \"%B\" کو ردی سے ہمیشہ کے لیے حذف کرنا چاہتے ہیں؟"
 
-#: libcore/marlin-file-operations.c:1229
+#: libcore/marlin-file-operations.c:879
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1253,36 +1307,19 @@ msgstr[0] "کیا آپ واقعی %'d منتخب کردہ چیز کو مستقل
 msgstr[1] ""
 "کیا آپ واقعی %'d منتخب کردہ چیزوں کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
 
-#: libcore/marlin-file-operations.c:1239 libcore/marlin-file-operations.c:1321
+#: libcore/marlin-file-operations.c:889
 msgid "If you delete an item, it will be permanently lost."
 msgstr "اگر آپ نے اس عنصر کو حذف کیا تو یہ ہمیشہ کے لیے ضائع ہوجائے گا."
 
-#: libcore/marlin-file-operations.c:1264
-msgid "Permanently delete all items from Trash?"
-msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
-
-#: libcore/marlin-file-operations.c:1265
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-
-#: libcore/marlin-file-operations.c:1268
-#, fuzzy
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
-
-#: libcore/marlin-file-operations.c:1269
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1309
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "کیا آپ واقعی \"%B\" کو ہمیشہ کے لیے حذف کرنا چاہتے ہیں؟"
+#: libcore/marlin-file-operations.c:915
+#, fuzzy, c-format
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
+msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
 
-#: libcore/marlin-file-operations.c:1312
+#: libcore/marlin-file-operations.c:918
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1291,138 +1328,149 @@ msgstr[0] "کیا آپ واقعی %'d منتخب کردہ چیز کو مستقل
 msgstr[1] ""
 "کیا آپ واقعی %'d منتخب کردہ چیزوں کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
 
-#: libcore/marlin-file-operations.c:1355
+#: libcore/marlin-file-operations.c:927
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:961
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d فائل حذف ہونے میں باقی"
 msgstr[1] "%'d فائلیں حذف ہونے میں باقی"
 
-#: libcore/marlin-file-operations.c:1361
+#: libcore/marlin-file-operations.c:966
 msgid "Deleting files"
 msgstr "فائلیں حذف کی جارہی ہیں"
 
-#. TRANSLATORS: %T will expand to a time like "2 minutes". It must not be translated or removed.
-#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: libcore/marlin-file-operations.c:1374
-msgid "%T left"
-msgid_plural "%T left"
+#. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
+#. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#: libcore/marlin-file-operations.c:981
+#, fuzzy, c-format
+msgid "%s left"
+msgid_plural "%s left"
 msgstr[0] "%T باقی"
 msgstr[1] "%T باقی"
 
-#: libcore/marlin-file-operations.c:1441 libcore/marlin-file-operations.c:1479
-#: libcore/marlin-file-operations.c:1522 libcore/marlin-file-operations.c:1600
-#: libcore/marlin-file-operations.c:2372
+#: libcore/marlin-file-operations.c:1050 libcore/marlin-file-operations.c:1090
+#: libcore/marlin-file-operations.c:1136 libcore/marlin-file-operations.c:1218
+#: libcore/marlin-file-operations.c:1725
 msgid "Error while deleting."
 msgstr "حذف کرنے کے دوران مسئلہ."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1447
+#: libcore/marlin-file-operations.c:1056
+#, fuzzy, c-format
 msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
+"Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 "فولڈر \"%B\" میں موجود فائلوں کو حذف نہیں کیا جا سکتا کیونکہ آپکو انہیں "
 "دیکھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1452 libcore/marlin-file-operations.c:2435
-#: libcore/marlin-file-operations.c:3473
+#: libcore/marlin-file-operations.c:1061 libcore/marlin-file-operations.c:1789
+#: libcore/marlin-file-operations.c:2776
+#, fuzzy, c-format
 msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
+"There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 "فولڈر \"%B\" کے اندر موجود فائلوں کے بارے میں معلومات حاصل کرتے وقت مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:1461 libcore/marlin-file-operations.c:3482
+#: libcore/marlin-file-operations.c:1071 libcore/marlin-file-operations.c:2786
 #, fuzzy
 msgid "_Skip files"
 msgstr "_پھلانگیں"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1484
+#: libcore/marlin-file-operations.c:1095
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "فولڈر \"%B\" کو حذف نہیں کیا جاسکتا کیونکہ آُپکو اسے پڑھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1489 libcore/marlin-file-operations.c:2478
-#: libcore/marlin-file-operations.c:3522
-msgid "There was an error reading the folder \"%B\"."
+#: libcore/marlin-file-operations.c:1100 libcore/marlin-file-operations.c:1834
+#: libcore/marlin-file-operations.c:2828
+#, fuzzy, c-format
+msgid "There was an error reading the folder \"%s\"."
 msgstr "فولڈر \"%B\" کو پڑھتے وقت مسئلہ"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1524
-msgid "Could not remove the folder %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:1139
+#, fuzzy, c-format
+msgid "Could not remove the folder %s."
 msgstr "%B فولڈر کو ہٹانے سے قاصر"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1602
-msgid "There was an error deleting %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:1221
+#, fuzzy, c-format
+msgid "There was an error deleting %s."
 msgstr "‏%B کو حذف کرنے میں مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:1686
+#: libcore/marlin-file-operations.c:1306
 msgid "Moving files to trash"
 msgstr "فائلیں ردی میں منتقل کی جارہی ہیں"
 
-#: libcore/marlin-file-operations.c:1688
+#: libcore/marlin-file-operations.c:1308
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d فائل ردی زدہ کرنے میں باقی"
 msgstr[1] "%'d فائلیں ردی زدہ کرنے میں باقی"
 
-#: libcore/marlin-file-operations.c:1786 libcore/marlin-file-operations.c:1789
-#: libcore/marlin-file-operations.c:1792
+#: libcore/marlin-file-operations.c:1406 libcore/marlin-file-operations.c:1409
+#: libcore/marlin-file-operations.c:1412
 msgid "Cannot move file to trash or delete it"
 msgstr "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
 
-#: libcore/marlin-file-operations.c:1787
+#: libcore/marlin-file-operations.c:1407
 #, fuzzy
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr "ردی میں فائلیں کاپی نہیں کی جا سکتی"
 
-#: libcore/marlin-file-operations.c:1790
+#: libcore/marlin-file-operations.c:1410
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1793
+#: libcore/marlin-file-operations.c:1413
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1795
+#: libcore/marlin-file-operations.c:1415
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "فائل ردی میں منتقل نہیں کی جاسکتی، کیا آپ اسے فوری طور پر حذف کرنا چاہتے ہیں؟"
 
-#: libcore/marlin-file-operations.c:1796
+#: libcore/marlin-file-operations.c:1416
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 "یہ فائل ردی میں منتقل نہیں کی جاسکتی۔ مزید معلومات کے لیے تفصیلات دیکھیں۔"
 
-#: libcore/marlin-file-operations.c:1800
+#: libcore/marlin-file-operations.c:1420
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "فائل ردی میں منتقل نہیں کی جاسکتی۔ اسے  حذف کرنے کی کوشش کریں؟"
 
-#: libcore/marlin-file-operations.c:1801
+#: libcore/marlin-file-operations.c:1421
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 "یہ فائل ردی میں منتقل نہیں کی جاسکتی۔ شاید آپ اسے حذف بھی نہ کر سکتے ہوں۔"
 
-#: libcore/marlin-file-operations.c:1806
+#: libcore/marlin-file-operations.c:1427
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1430,170 +1478,158 @@ msgstr ""
 "\n"
 " حذف کرنے سے فائل مستقل طور پر ہٹا دی جائے گی"
 
-#: libcore/marlin-file-operations.c:1996
+#: libcore/marlin-file-operations.c:1617
 msgid "Trashing Files"
 msgstr "فائلیں ردی زدہ کی جارہی ہیں"
 
-#: libcore/marlin-file-operations.c:1998
+#: libcore/marlin-file-operations.c:1619
 msgid "Deleting Files"
 msgstr "فائلیں حذف کی جارہی ہیں"
 
-#. TRANSLATORS: %V is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
-#: libcore/marlin-file-operations.c:2068
-msgid "Unable to eject %V"
-msgstr "%V کو نکالنے سے قاصر"
-
-#: libcore/marlin-file-operations.c:2070
-msgid "Unable to unmount %V"
-msgstr "%V کو ان ماؤنٹ کرنے سے قاصر"
-
-#: libcore/marlin-file-operations.c:2284
-#, c-format
-msgid "Unable to mount %s"
-msgstr "‏%s کو ماؤنٹ نہیں کیا جاسکتا"
-
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
-#. The order in which %'d and %S appear must not change.
-#: libcore/marlin-file-operations.c:2311
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
+#. The order in which %'d and %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:1659
+#, fuzzy, c-format
+msgid "Preparing to copy %'d file (%s)"
+msgid_plural "Preparing to copy %'d files (%s)"
 msgstr[0] "%'d فائل (%S) کو کاپی کرنے کی تیاری کر رہا ہے"
 msgstr[1] "%'d فائلوں (%S) کو کاپی کرنے کی تیاری کر رہا ہے"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
-#. The order in which %'d and %S appear must not change.
-#: libcore/marlin-file-operations.c:2321
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
+#. The order in which %'d and %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:1671
+#, fuzzy, c-format
+msgid "Preparing to move %'d file (%s)"
+msgid_plural "Preparing to move %'d files (%s)"
 msgstr[0] "%'d فائل (%S) کو منتقل کرنے کی تیاری کر رہا ہے"
 msgstr[1] "%'d فائلوں (%S) کو منتقل کرنے کی تیاری کر رہا ہے"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
-#. The order in which %'d and %S appear must not change.
-#: libcore/marlin-file-operations.c:2331
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
+#. The order in which %'d and %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:1683
+#, fuzzy, c-format
+msgid "Preparing to delete %'d file (%s)"
+msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "%'d فائل (%S) کو حذف کرنے کی تیاری کر رہا ہے"
 msgstr[1] "%'d فائلوں (%S) کو حذف کرنے کی تیاری کر رہا ہے"
 
-#: libcore/marlin-file-operations.c:2337
+#: libcore/marlin-file-operations.c:1690
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "%'d فائل کو ردی زدہ کرنے کی تیاری کر رہا ہے"
 msgstr[1] "%'d فائلوں کو ردی زدہ کرنے کی تیاری کر رہا ہے"
 
-#: libcore/marlin-file-operations.c:2368 libcore/marlin-file-operations.c:3325
-#: libcore/marlin-file-operations.c:3461 libcore/marlin-file-operations.c:3510
+#: libcore/marlin-file-operations.c:1721 libcore/marlin-file-operations.c:2623
+#: libcore/marlin-file-operations.c:2763 libcore/marlin-file-operations.c:2815
 msgid "Error while copying."
 msgstr "کاپی کرتے وقت مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:2370 libcore/marlin-file-operations.c:3459
-#: libcore/marlin-file-operations.c:3508
+#: libcore/marlin-file-operations.c:1723 libcore/marlin-file-operations.c:2761
+#: libcore/marlin-file-operations.c:2813
 msgid "Error while moving."
 msgstr "منتقل کرتے وقت مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:2374
+#: libcore/marlin-file-operations.c:1727
 msgid "Error while moving files to trash."
 msgstr "ردی میں فائلیں منتقل کرتے وقت مسئلہ۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2430
-#, fuzzy
+#: libcore/marlin-file-operations.c:1784
+#, fuzzy, c-format
 msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
+"Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
 "فولڈر \"%B\" میں موجود فائلوں کو حذف نہیں کیا جا سکتا کیونکہ آپکو انہیں "
 "دیکھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2473
-#, fuzzy
+#: libcore/marlin-file-operations.c:1829
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
+"The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "فولڈر \"%B\" کو حذف نہیں کیا جاسکتا کیونکہ آُپکو اسے پڑھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2557
-#, fuzzy
+#: libcore/marlin-file-operations.c:1916
+#, fuzzy, c-format
 msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
+"The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "فولڈر \"%B\" کو حذف نہیں کیا جاسکتا کیونکہ آُپکو اسے پڑھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2562
-msgid "There was an error getting information about \"%B\"."
+#: libcore/marlin-file-operations.c:1921
+#, fuzzy, c-format
+msgid "There was an error getting information about \"%s\"."
 msgstr "فولڈر \"%B\"  کے بارے میں معلومات حاصل کرتے وقت مسئلہ۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2663 libcore/marlin-file-operations.c:2707
-#: libcore/marlin-file-operations.c:2742 libcore/marlin-file-operations.c:2776
-msgid "Error while copying to \"%B\"."
+#: libcore/marlin-file-operations.c:2027 libcore/marlin-file-operations.c:2073
+#: libcore/marlin-file-operations.c:2111 libcore/marlin-file-operations.c:2151
+#, fuzzy, c-format
+msgid "Error while copying to \"%s\"."
 msgstr "‏\"%B\" تک کاپی کرتے وقت مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:2667
+#: libcore/marlin-file-operations.c:2032
 msgid "You do not have permissions to access the destination folder."
 msgstr "آپکو منزل(destination) فولڈر تک رسائی کی اجازت نہیں۔"
 
-#: libcore/marlin-file-operations.c:2669
+#: libcore/marlin-file-operations.c:2034
 msgid "There was an error getting information about the destination."
 msgstr "منزل(destination) کے بارے میں معلومات حاصل کرتے وقت مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:2708
+#: libcore/marlin-file-operations.c:2074
 msgid "The destination is not a folder."
 msgstr "بتائی گئی جگہ منزل فولڈر نہیں ہے."
 
-#: libcore/marlin-file-operations.c:2743
+#: libcore/marlin-file-operations.c:2113
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 
-#. TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2747
-#, c-format
-msgid "There is %S available, but %S is required."
+#: libcore/marlin-file-operations.c:2119
+#, fuzzy, c-format
+msgid "There is %s available, but %s is required."
 msgstr "%S دستیاب ہے لیکن %S کی ضرورت ہے۔"
 
-#: libcore/marlin-file-operations.c:2777
+#: libcore/marlin-file-operations.c:2153
 msgid "The destination is read-only."
 msgstr "منزل صرف پڑھے جانے کے لیے ہے."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2849
+#: libcore/marlin-file-operations.c:2225
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "منتقل کیا جارہا ہے \"%B\" کو تا \"%B\""
 
-#: libcore/marlin-file-operations.c:2850
+#: libcore/marlin-file-operations.c:2226
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "کاپی کیا جارہا ہے \"%B\" کو تا \"%B\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2854
+#: libcore/marlin-file-operations.c:2230
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "‏\"%B\" کی نقل بنائی جارہی ہے"
@@ -1602,14 +1638,14 @@ msgstr "‏\"%B\" کی نقل بنائی جارہی ہے"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2862
+#: libcore/marlin-file-operations.c:2238
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "منتقل کررہا ہے %'d فائل (جو موجود ہے \"%B\" میں) کو \"%B\" میں۔"
 msgstr[1] "منتقل کررہا ہے %'d فائلوں (جو موجود ہے \"%B\" میں) کو \"%B\" میں۔"
 
-#: libcore/marlin-file-operations.c:2865
+#: libcore/marlin-file-operations.c:2241
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1618,7 +1654,7 @@ msgstr[1] "کاپی کررہا ہے %'d فائلوں (جو موجود ہے \"%B\
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2874
+#: libcore/marlin-file-operations.c:2250
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1629,656 +1665,277 @@ msgstr[1] "%'d فائلوں کی نقل بنا رہا ہے"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2887
+#: libcore/marlin-file-operations.c:2262
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "%'d فائل کو \"%B\" میں منتقل کر رہا ہے"
 msgstr[1] "%'d فائلوں کو \"%B\" میں منتقل کر رہا ہے"
 
-#: libcore/marlin-file-operations.c:2890
+#: libcore/marlin-file-operations.c:2265
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "%'d فائل کو \"%B\" میں کاپی کر رہا ہے"
 msgstr[1] "%'d فائلوں کو \"%B\" میں کاپی کر رہا ہے"
 
-#: libcore/marlin-file-operations.c:2896
+#: libcore/marlin-file-operations.c:2271
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "%'d فائل کی نقل بنا رہا ہے"
 msgstr[1] "%'d فائلوں کی نقل بنا رہا ہے"
 
-#. TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2924
-#, c-format
-msgid "%S of %S"
+#. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
+#: libcore/marlin-file-operations.c:2301
+#, fuzzy, c-format
+msgid "%s of %s"
 msgstr "‏%S کا %S"
 
-#. TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+#. TRANSLATORS: The two first %s and the last %s will expand to a size
+#. like "2 bytes" or "3 MB", the third %s to a time duration like
 #. "2 minutes". It must not be translated or removed.
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. The order in which %S and %T appear must not change.
-#: libcore/marlin-file-operations.c:2936
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
+#. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
+#. The order in which %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:2321
+#, fuzzy, c-format
+msgid "%s of %s — %s left (%s/sec)"
+msgid_plural "%s of %s — %s left (%s/sec)"
 msgstr[0] "%S کا %S — %T باقی (%S/سیکنڈ)"
 msgstr[1] "%S کا %S — %T باقی (%S/سیکنڈ)"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3331
-#, fuzzy
+#: libcore/marlin-file-operations.c:2630
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
+"The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 "فولڈر \"%B\" کاپی نہیں کیا جاسکتا کیونکہ آپ کو اسے پڑھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3336
-msgid "There was an error creating the folder \"%B\"."
+#: libcore/marlin-file-operations.c:2635
+#, fuzzy, c-format
+msgid "There was an error creating the folder \"%s\"."
 msgstr "\"%B\" فولڈر بناتے وقت مسئلہ"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3468
-#, fuzzy
+#: libcore/marlin-file-operations.c:2771
+#, fuzzy, c-format
 msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
+"Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 "فولڈر \"%B\" میں موجود فائلوں کو حذف نہیں کیا جا سکتا کیونکہ آپکو انہیں "
 "دیکھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3517
+#: libcore/marlin-file-operations.c:2823
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
+"The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "فولڈر \"%B\" کاپی نہیں کیا جاسکتا کیونکہ آپ کو اسے پڑھنے کی اجازت نہیں ہے۔"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3566 libcore/marlin-file-operations.c:4281
-msgid "Error while moving \"%B\"."
+#. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:2876 libcore/marlin-file-operations.c:3608
+#: libcore/marlin-file-operations.c:4175
+#, fuzzy, c-format
+msgid "Error while moving \"%s\"."
 msgstr "‏\"%B\" کو منتقل کرتے وقت مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:3567
+#: libcore/marlin-file-operations.c:2878
 msgid "Could not remove the source folder."
 msgstr "مصدر فولڈر حذف نہیں کیا جاسکتا."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3653 libcore/marlin-file-operations.c:3697
-#: libcore/marlin-file-operations.c:4285
-msgid "Error while copying \"%B\"."
+#: libcore/marlin-file-operations.c:2967 libcore/marlin-file-operations.c:3018
+#: libcore/marlin-file-operations.c:3612
+#, fuzzy, c-format
+msgid "Error while copying \"%s\"."
 msgstr "‏\"%B\" کو کاپی کرتے وقت مسئلہ۔"
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3655
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:2972
 #, fuzzy, c-format
-msgid "Could not remove files from the already existing folder %F."
+msgid "Could not remove files from the already existing folder %s."
 msgstr "پہلے سے موجود فائل %F کو ہٹایا نہیں جاسکتا."
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3699
-#, c-format
-msgid "Could not remove the already existing file %F."
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3023
+#, fuzzy, c-format
+msgid "Could not remove the already existing file %s."
 msgstr "پہلے سے موجود فائل %F کو ہٹایا نہیں جاسکتا."
 
-#: libcore/marlin-file-operations.c:4017 libcore/marlin-file-operations.c:4700
+#: libcore/marlin-file-operations.c:3341 libcore/marlin-file-operations.c:4014
 msgid "You cannot move a folder into itself."
 msgstr "آپ فولڈر کو اسی کے اندر منتقل نہیں کر سکتے."
 
-#: libcore/marlin-file-operations.c:4018 libcore/marlin-file-operations.c:4701
+#: libcore/marlin-file-operations.c:3342 libcore/marlin-file-operations.c:4015
 msgid "You cannot copy a folder into itself."
 msgstr "آپ فولڈر کو اسی کے اندر کاپی نہیں کر سکتے."
 
-#: libcore/marlin-file-operations.c:4019 libcore/marlin-file-operations.c:4702
+#: libcore/marlin-file-operations.c:3343 libcore/marlin-file-operations.c:4016
 #, fuzzy
 msgid "The destination folder is inside the source folder."
 msgstr "بتائی گئی جگہ منزل فولڈر نہیں ہے."
 
-#: libcore/marlin-file-operations.c:4050
+#: libcore/marlin-file-operations.c:3374
 msgid "You cannot move a file over itself."
 msgstr "آپ فائل کو اسی کے اوپر منتقل نہیں کر سکتے."
 
-#: libcore/marlin-file-operations.c:4051
+#: libcore/marlin-file-operations.c:3375
 msgid "You cannot copy a file over itself."
 msgstr "آپ فائل کو اسی کے اوپر کاپی نہیں کر سکتے."
 
-#: libcore/marlin-file-operations.c:4052
+#: libcore/marlin-file-operations.c:3376
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4288
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3618
+#, fuzzy, c-format
+msgid "Could not remove the already existing file with the same name in %s."
 msgstr "%F میں پہلے سے موجود اسی نام کی فائل کو ہٹایا نہیں جاسکتا."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4355
-msgid "Cannot copy \"%B\" here."
+#: libcore/marlin-file-operations.c:3688
+#, fuzzy, c-format
+msgid "Cannot copy \"%s\" here."
 msgstr "\"%B\" کو یہاں کاپی نہیں کیا جا سکتا۔"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4357
-msgid "There was an error copying the file into %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3693
+#, fuzzy, c-format
+msgid "There was an error copying the file into %s."
 msgstr "\"%B\" کے اندر فائل کو کاپی کرتے وقت مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:4581
+#: libcore/marlin-file-operations.c:3894
 msgid "Copying Files"
 msgstr "فائلیں کاپی کی جارہی ہیں"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4609
-msgid "Preparing to move to \"%B\""
+#: libcore/marlin-file-operations.c:3930
+#, fuzzy, c-format
+msgid "Preparing to move to \"%s\""
 msgstr "\"%B\" میں منتقل کرنے کی تیاری کر رہا ہے"
 
-#: libcore/marlin-file-operations.c:4613
+#: libcore/marlin-file-operations.c:3935
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d فائل کو منتقل کرنے کی تیاری جاری"
 msgstr[1] "%'d فائلوں کو منتقل کرنے کی تیاری جاری"
 
-#. TRANSLATORS: \"%F\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
-#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4861
-#, c-format
-msgid "Error while moving \"%F\"."
-msgstr "\"%F\" کو منتقل کرتے وقت مسئلہ۔"
-
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4863
-#, c-format
-msgid "There was an error moving the file into %F."
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4179
+#, fuzzy, c-format
+msgid "There was an error moving the file into %s."
 msgstr "%F میں فائل منتقل کرتے وقت مسئلہ آگیا۔"
 
-#: libcore/marlin-file-operations.c:5121
+#: libcore/marlin-file-operations.c:4413
 msgid "Moving Files"
 msgstr "فائلیں منتقل کی جارہی ہیں"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:5152
-msgid "Creating links in \"%B\""
+#: libcore/marlin-file-operations.c:4452
+#, fuzzy, c-format
+msgid "Creating links in \"%s\""
 msgstr "‏\"%B\" میں ربط بنائے جارہے ہیں"
 
-#: libcore/marlin-file-operations.c:5156
+#: libcore/marlin-file-operations.c:4457
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "%'d فائل تک ربط بنا رہا ہے"
 msgstr[1] "%'d فائلوں تک ربط بنا رہا ہے"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5297
-msgid "Error while creating link to %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4567
+#, fuzzy, c-format
+msgid "Error while creating link to %s."
 msgstr "‏%B تک ربط بنانے میں مسئلہ۔"
 
-#: libcore/marlin-file-operations.c:5299
+#: libcore/marlin-file-operations.c:4570
 msgid "Symbolic links only supported for local files"
 msgstr "سمبالک لنکس کی معاونت فقط مقامی فائلوں کے لیے ہے."
 
-#: libcore/marlin-file-operations.c:5302
+#: libcore/marlin-file-operations.c:4573
 msgid "The target doesn't support symbolic links."
 msgstr "ٹارگٹ سمبالنک لنکس کی معاونت نہیں رکھتا."
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5306
-#, c-format
-msgid "There was an error creating the symlink in %F."
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4578
+#, fuzzy, c-format
+msgid "There was an error creating the symlink in %s."
 msgstr "%F تک symlink بناتے ہوئے مسئلہ درپیش۔"
 
-#: libcore/marlin-file-operations.c:5624
+#: libcore/marlin-file-operations.c:4881
 msgid "Setting permissions"
 msgstr "اجازتیں مرتب کی جارہی ہیں"
 
-#: libcore/marlin-file-operations.c:5724
+#: libcore/marlin-file-operations.c:5070
 msgid "Cannot copy into trash."
 msgstr "ردی میں کاپی نہیں کی جا سکتی"
 
-#: libcore/marlin-file-operations.c:5725
+#: libcore/marlin-file-operations.c:5071 libcore/marlin-file-operations.c:5079
 msgid "It is not permitted to copy files into the trash"
 msgstr "ردی میں فائلیں کاپی نہیں کی جا سکتی"
 
-#: libcore/marlin-file-operations.c:5864
+#: libcore/marlin-file-operations.c:5215
 msgid "untitled folder"
 msgstr "بے عُنوان فولڈر"
 
-#: libcore/marlin-file-operations.c:5872
+#: libcore/marlin-file-operations.c:5223
 msgid "new file"
 msgstr "نئی فائل"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6044
-msgid "Error while creating directory %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5390
+#, fuzzy, c-format
+msgid "Error while creating directory %s."
 msgstr "ڈائریکٹری %B بنانے میں مسئلہ۔"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6047
-msgid "Error while creating file %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5393
+#, fuzzy, c-format
+msgid "Error while creating file %s."
 msgstr "فائل %B بنانے میں مسئلہ۔"
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6050
-#, c-format
-msgid "There was an error creating the directory in %F."
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5399
+#, fuzzy, c-format
+msgid "There was an error creating the directory in %s."
 msgstr "‏%F میں ڈائریکٹری بنانے میں مسئلہ درپیش۔"
-
-#: libcore/marlin-file-operations.c:6360
-msgid "Emptying Trash"
-msgstr "ردی خالی کی جارہی ہے"
-
-#: libcore/marlin-undostack-manager.c:578
-msgid "Original location could not be determined"
-msgstr "اصل مقام کا تعین نہیں کیا جا سکتا"
-
-#: libcore/marlin-undostack-manager.c:579
-msgid "Open trash folder and restore manually"
-msgstr "ردی کی ٹوکری کھولیں اور بذاتِ خود بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1116
-#, c-format
-msgid "Delete %d copied items"
-msgstr "%d کاپی کردہ عناصر کو حذف کر دیں"
-
-#: libcore/marlin-undostack-manager.c:1119
-#: libcore/marlin-undostack-manager.c:1129
-#: libcore/marlin-undostack-manager.c:1160
-#, c-format
-msgid "Delete '%s'"
-msgstr "‏'%s' کو حذف کریں"
-
-#: libcore/marlin-undostack-manager.c:1126
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "%d نقل کردہ عناصر کو حذف کر دیں"
-
-#: libcore/marlin-undostack-manager.c:1137
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "%d عناصر کو واپس '%s' میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1141
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "'%s' کو واپس '%s' میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1150
-#: libcore/marlin-undostack-manager.c:1317
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "'%s' کا نام '%s' پہ بدلیں"
-
-#: libcore/marlin-undostack-manager.c:1169
-#: libcore/marlin-undostack-manager.c:1364
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "ردی سے %d عناصر بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1177
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "'%s' کو واپس '%s' پہ بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1188
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "%d عناصر کو واپس ردی میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1191
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "‏'%s' کو واپس ردی میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1200
-#, c-format
-msgid "Delete links to %d items"
-msgstr "'%d' عناصر تک بنے ربط حذف کریں"
-
-#: libcore/marlin-undostack-manager.c:1203
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "'%s' تک بنا ربط حذف کریں"
-
-#: libcore/marlin-undostack-manager.c:1213
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "'%s' میں بند چیزوں کی اصل اجازتیں بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1221
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "‏'%s' کی اصل اجازتیں بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1230
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "'%s' کا گروہ '%s' پہ واپس بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1240
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "'%s' کا مالک '%s' پہ واپس بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1279
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "%d عناصر کو '%s' میں کاپی کریں"
-
-#: libcore/marlin-undostack-manager.c:1283
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "'%s' کو میں '%s' کاپی کریں"
-
-#: libcore/marlin-undostack-manager.c:1291
-#, fuzzy, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "نقل بنائیں '%s' کی '%s' میں"
-
-#: libcore/marlin-undostack-manager.c:1296
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "نقل بنائیں '%s' کی '%s' میں"
-
-#: libcore/marlin-undostack-manager.c:1304
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "%d عناصر کو '%s' میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1308
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "'%s' کو '%s' میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "سانچہ سے نئی فائل '%s' بنائیں "
-
-#: libcore/marlin-undostack-manager.c:1333
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "خالی فائل ‏'%s'  بنائیں"
-
-#: libcore/marlin-undostack-manager.c:1340
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "نیا فولڈر '%s' بنائیں"
-
-#: libcore/marlin-undostack-manager.c:1348
-#, c-format
-msgid "Move %d items to trash"
-msgstr "%d عناصر کو ردی میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1354
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "‏'%s' کو ردی میں منتقل کریں"
-
-#: libcore/marlin-undostack-manager.c:1367
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "ردی سے '%s' کو بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1376
-#, c-format
-msgid "Create links to %d items"
-msgstr "%d عناصر تک ربط بنائیں"
-
-#: libcore/marlin-undostack-manager.c:1379
-#, c-format
-msgid "Create link to '%s'"
-msgstr "ربط بنائیں '%s' تک"
-
-#: libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "'%s' میں بند عناصر کی اجازتیں مقرر کریں"
-
-#: libcore/marlin-undostack-manager.c:1396
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "'%s' کی اجازتیں مقرر کریں"
-
-#: libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "'%s' کا گروپ  '%s' پہ سیٹ کریں"
-
-#: libcore/marlin-undostack-manager.c:1415
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "'%s' کا مالک '%s' پہ سیٹ کریں"
-
-#: libcore/marlin-undostack-manager.c:1447
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1452
-#, fuzzy, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "%d نقل کردہ عناصر کو حذف کر دیں"
-msgstr[1] "%d نقل کردہ عناصر کو حذف کر دیں"
-
-#: libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1466
-#, fuzzy
-msgid "_Undo creation of an empty file"
-msgstr "خالی فائل ‏'%s'  بنائیں"
-
-#: libcore/marlin-undostack-manager.c:1469
-#, fuzzy
-msgid "_Undo creation of a file from template"
-msgstr "سانچہ سے نئی فائل '%s' بنائیں "
-
-#: libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1478
-#, fuzzy, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
-msgstr[1] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
-
-#: libcore/marlin-undostack-manager.c:1483
-#, fuzzy, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "ردی سے بحالی کریں"
-msgstr[1] "ردی سے بحالی کریں"
-
-#: libcore/marlin-undostack-manager.c:1488
-#, fuzzy, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "%d عناصر تک ربط بنائیں"
-msgstr[1] "%d عناصر تک ربط بنائیں"
-
-#: libcore/marlin-undostack-manager.c:1493
-#, fuzzy, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "'%d' عناصر تک بنے ربط حذف کریں"
-msgstr[1] "'%d' عناصر تک بنے ربط حذف کریں"
-
-#: libcore/marlin-undostack-manager.c:1498
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1504
-#, fuzzy, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "'%s' کی اجازتیں مقرر کریں"
-msgstr[1] "'%s' کی اجازتیں مقرر کریں"
-
-#: libcore/marlin-undostack-manager.c:1509
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1542
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1547
-#, fuzzy, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d نقل کردہ عناصر کو حذف کر دیں"
-msgstr[1] "%d نقل کردہ عناصر کو حذف کر دیں"
-
-#: libcore/marlin-undostack-manager.c:1552
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1557
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1561
-#, fuzzy
-msgid "_Redo creation of an empty file"
-msgstr "خالی فائل ‏'%s'  بنائیں"
-
-#: libcore/marlin-undostack-manager.c:1564
-#, fuzzy
-msgid "_Redo creation of a file from template"
-msgstr "سانچہ سے نئی فائل '%s' بنائیں "
-
-#: libcore/marlin-undostack-manager.c:1568
-#, fuzzy, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "بتائی گئی جگہ منزل فولڈر نہیں ہے."
-msgstr[1] "بتائی گئی جگہ منزل فولڈر نہیں ہے."
-
-#: libcore/marlin-undostack-manager.c:1573
-#, fuzzy, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
-msgstr[1] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
-
-#: libcore/marlin-undostack-manager.c:1578
-#, fuzzy, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "ردی سے بحالی کریں"
-msgstr[1] "ردی سے بحالی کریں"
-
-#: libcore/marlin-undostack-manager.c:1583
-#, fuzzy, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d عناصر تک ربط بنائیں"
-msgstr[1] "%d عناصر تک ربط بنائیں"
-
-#: libcore/marlin-undostack-manager.c:1588
-#, fuzzy, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "'%d' عناصر تک بنے ربط حذف کریں"
-msgstr[1] "'%d' عناصر تک بنے ربط حذف کریں"
-
-#: libcore/marlin-undostack-manager.c:1593
-#, fuzzy, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "‏'%s' کی اصل اجازتیں بحال کریں"
-msgstr[1] "‏'%s' کی اصل اجازتیں بحال کریں"
-
-#: libcore/marlin-undostack-manager.c:1599
-#, fuzzy, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "'%s' کی اجازتیں مقرر کریں"
-msgstr[1] "'%s' کی اجازتیں مقرر کریں"
-
-#: libcore/marlin-undostack-manager.c:1604
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: libcore/marlin-undostack-manager.c:1609
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "کوئی پاتھ لکھیں"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr "%s تک جائیں"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
 msgstr "جائیں %s پر"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 #, fuzzy
 msgid "Type Path"
 msgstr "کوئی پاتھ لکھیں"
@@ -2287,33 +1944,29 @@ msgstr "کوئی پاتھ لکھیں"
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:238
 msgid "In This Folder"
 msgstr "اس فولڈر مِں"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:243
 #, fuzzy
 msgid "Below This Folder"
 msgstr "اس فولڈر مِں"
 
-#: libwidgets/View/SearchResults.vala:235
-msgid "Bookmarks"
-msgstr "بک مارک"
-
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:254
 #, fuzzy
 msgid "Recently used"
 msgstr "حالیہ"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:35
+#: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr "بطور گرڈ دیکھیں"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:40
+#: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr "بطور فہرست دیکھیں"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:45
+#: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr "کالموں میں دیکھیں"
 
@@ -2370,6 +2023,249 @@ msgstr "تمام واپس لائیں"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " منتخب کردہ"
+
+#~ msgid "Show Copy Dialog"
+#~ msgstr "کاپی ڈائیلاگ دکھائیں"
+
+#~ msgid "Cancel All In-progress Actions"
+#~ msgstr "تمام چلتے ہوئے عمل منسوخ کردیں"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%s خالی جگہ %s میں سے)"
+
+#~ msgid "Bookmark"
+#~ msgstr "بک مارک کریں"
+
+#~ msgid "Personal"
+#~ msgstr "ذاتی"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "آپکے عمومی رسائی کی جگہیں اور بک مارک"
+
+#~ msgid "Your network places"
+#~ msgstr "نیٹ ورک جگہیں"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "آپکی مقامی پارٹیشن اور ڈیوائسز"
+
+#~ msgid "Delete %d copied items"
+#~ msgstr "%d کاپی کردہ عناصر کو حذف کر دیں"
+
+#~ msgid "Delete '%s'"
+#~ msgstr "‏'%s' کو حذف کریں"
+
+#~ msgid "Delete %d duplicated items"
+#~ msgstr "%d نقل کردہ عناصر کو حذف کر دیں"
+
+#~ msgid "Move %d items back to '%s'"
+#~ msgstr "%d عناصر کو واپس '%s' میں منتقل کریں"
+
+#~ msgid "Move '%s' back to '%s'"
+#~ msgstr "'%s' کو واپس '%s' میں منتقل کریں"
+
+#~ msgid "Rename '%s' as '%s'"
+#~ msgstr "'%s' کا نام '%s' پہ بدلیں"
+
+#~ msgid "Restore %d items from trash"
+#~ msgstr "ردی سے %d عناصر بحال کریں"
+
+#~ msgid "Restore '%s' to '%s'"
+#~ msgstr "'%s' کو واپس '%s' پہ بحال کریں"
+
+#~ msgid "Move %d items back to trash"
+#~ msgstr "%d عناصر کو واپس ردی میں منتقل کریں"
+
+#~ msgid "Move '%s' back to trash"
+#~ msgstr "‏'%s' کو واپس ردی میں منتقل کریں"
+
+#~ msgid "Delete links to %d items"
+#~ msgstr "'%d' عناصر تک بنے ربط حذف کریں"
+
+#~ msgid "Delete link to '%s'"
+#~ msgstr "'%s' تک بنا ربط حذف کریں"
+
+#~ msgid "Restore original permissions of items enclosed in '%s'"
+#~ msgstr "'%s' میں بند چیزوں کی اصل اجازتیں بحال کریں"
+
+#~ msgid "Restore original permissions of '%s'"
+#~ msgstr "‏'%s' کی اصل اجازتیں بحال کریں"
+
+#~ msgid "Restore group of '%s' to '%s'"
+#~ msgstr "'%s' کا گروہ '%s' پہ واپس بحال کریں"
+
+#~ msgid "Restore owner of '%s' to '%s'"
+#~ msgstr "'%s' کا مالک '%s' پہ واپس بحال کریں"
+
+#~ msgid "Copy %d items to '%s'"
+#~ msgstr "%d عناصر کو '%s' میں کاپی کریں"
+
+#~ msgid "Copy '%s' to '%s'"
+#~ msgstr "'%s' کو میں '%s' کاپی کریں"
+
+#, fuzzy
+#~ msgid "Duplicate of %d items in '%s'"
+#~ msgstr "نقل بنائیں '%s' کی '%s' میں"
+
+#~ msgid "Duplicate '%s' in '%s'"
+#~ msgstr "نقل بنائیں '%s' کی '%s' میں"
+
+#~ msgid "Move %d items to '%s'"
+#~ msgstr "%d عناصر کو '%s' میں منتقل کریں"
+
+#~ msgid "Move '%s' to '%s'"
+#~ msgstr "'%s' کو '%s' میں منتقل کریں"
+
+#~ msgid "Create new file '%s' from template "
+#~ msgstr "سانچہ سے نئی فائل '%s' بنائیں "
+
+#~ msgid "Create an empty file '%s'"
+#~ msgstr "خالی فائل ‏'%s'  بنائیں"
+
+#~ msgid "Create a new folder '%s'"
+#~ msgstr "نیا فولڈر '%s' بنائیں"
+
+#~ msgid "Move %d items to trash"
+#~ msgstr "%d عناصر کو ردی میں منتقل کریں"
+
+#~ msgid "Move '%s' to trash"
+#~ msgstr "‏'%s' کو ردی میں منتقل کریں"
+
+#~ msgid "Restore '%s' from trash"
+#~ msgstr "ردی سے '%s' کو بحال کریں"
+
+#~ msgid "Create links to %d items"
+#~ msgstr "%d عناصر تک ربط بنائیں"
+
+#~ msgid "Create link to '%s'"
+#~ msgstr "ربط بنائیں '%s' تک"
+
+#~ msgid "Set permissions of items enclosed in '%s'"
+#~ msgstr "'%s' میں بند عناصر کی اجازتیں مقرر کریں"
+
+#~ msgid "Set permissions of '%s'"
+#~ msgstr "'%s' کی اجازتیں مقرر کریں"
+
+#~ msgid "Set group of '%s' to '%s'"
+#~ msgstr "'%s' کا گروپ  '%s' پہ سیٹ کریں"
+
+#~ msgid "Set owner of '%s' to '%s'"
+#~ msgstr "'%s' کا مالک '%s' پہ سیٹ کریں"
+
+#, fuzzy
+#~ msgid "_Undo duplicate of %d item"
+#~ msgid_plural "_Undo duplicate of %d items"
+#~ msgstr[0] "%d نقل کردہ عناصر کو حذف کر دیں"
+#~ msgstr[1] "%d نقل کردہ عناصر کو حذف کر دیں"
+
+#, fuzzy
+#~ msgid "_Undo creation of an empty file"
+#~ msgstr "خالی فائل ‏'%s'  بنائیں"
+
+#, fuzzy
+#~ msgid "_Undo creation of a file from template"
+#~ msgstr "سانچہ سے نئی فائل '%s' بنائیں "
+
+#, fuzzy
+#~ msgid "_Undo move to trash of %d item"
+#~ msgid_plural "_Undo move to trash of %d items"
+#~ msgstr[0] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
+#~ msgstr[1] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
+
+#, fuzzy
+#~ msgid "_Undo restore from trash of %d item"
+#~ msgid_plural "_Undo restore from trash of %d items"
+#~ msgstr[0] "ردی سے بحالی کریں"
+#~ msgstr[1] "ردی سے بحالی کریں"
+
+#, fuzzy
+#~ msgid "_Undo create link to %d item"
+#~ msgid_plural "_Undo create link to %d items"
+#~ msgstr[0] "%d عناصر تک ربط بنائیں"
+#~ msgstr[1] "%d عناصر تک ربط بنائیں"
+
+#, fuzzy
+#~ msgid "_Undo delete of %d item"
+#~ msgid_plural "_Undo delete of %d items"
+#~ msgstr[0] "'%d' عناصر تک بنے ربط حذف کریں"
+#~ msgstr[1] "'%d' عناصر تک بنے ربط حذف کریں"
+
+#, fuzzy
+#~ msgid "Undo change permissions of %d item"
+#~ msgid_plural "Undo change permissions of %d items"
+#~ msgstr[0] "'%s' کی اجازتیں مقرر کریں"
+#~ msgstr[1] "'%s' کی اجازتیں مقرر کریں"
+
+#, fuzzy
+#~ msgid "_Redo duplicate of %d item"
+#~ msgid_plural "_Redo duplicate of %d items"
+#~ msgstr[0] "%d نقل کردہ عناصر کو حذف کر دیں"
+#~ msgstr[1] "%d نقل کردہ عناصر کو حذف کر دیں"
+
+#, fuzzy
+#~ msgid "_Redo creation of an empty file"
+#~ msgstr "خالی فائل ‏'%s'  بنائیں"
+
+#, fuzzy
+#~ msgid "_Redo creation of a file from template"
+#~ msgstr "سانچہ سے نئی فائل '%s' بنائیں "
+
+#, fuzzy
+#~ msgid "_Redo creation of %d folder"
+#~ msgid_plural "_Redo creation of %d folders"
+#~ msgstr[0] "بتائی گئی جگہ منزل فولڈر نہیں ہے."
+#~ msgstr[1] "بتائی گئی جگہ منزل فولڈر نہیں ہے."
+
+#, fuzzy
+#~ msgid "_Redo move to trash of %d item"
+#~ msgid_plural "_Redo move to trash of %d items"
+#~ msgstr[0] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
+#~ msgstr[1] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
+
+#, fuzzy
+#~ msgid "_Redo restore from trash of %d item"
+#~ msgid_plural "_Redo restore from trash of %d items"
+#~ msgstr[0] "ردی سے بحالی کریں"
+#~ msgstr[1] "ردی سے بحالی کریں"
+
+#, fuzzy
+#~ msgid "_Redo create link to %d item"
+#~ msgid_plural "_Redo create link to %d items"
+#~ msgstr[0] "%d عناصر تک ربط بنائیں"
+#~ msgstr[1] "%d عناصر تک ربط بنائیں"
+
+#, fuzzy
+#~ msgid "_Redo delete of %d item"
+#~ msgid_plural "_Redo delete of %d items"
+#~ msgstr[0] "'%d' عناصر تک بنے ربط حذف کریں"
+#~ msgstr[1] "'%d' عناصر تک بنے ربط حذف کریں"
+
+#, fuzzy
+#~ msgid "Redo recursive change permissions of %d item"
+#~ msgid_plural "Redo recursive change permissions of %d items"
+#~ msgstr[0] "‏'%s' کی اصل اجازتیں بحال کریں"
+#~ msgstr[1] "‏'%s' کی اصل اجازتیں بحال کریں"
+
+#, fuzzy
+#~ msgid "Redo change permissions of %d item"
+#~ msgid_plural "Redo change permissions of %d items"
+#~ msgstr[0] "'%s' کی اجازتیں مقرر کریں"
+#~ msgstr[1] "'%s' کی اجازتیں مقرر کریں"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "کیا آپ واقعی \"%B\" کو ہمیشہ کے لیے حذف کرنا چاہتے ہیں؟"
+
+#~ msgid "Invalid"
+#~ msgstr "ناموزوں"
+
+#~ msgid "Unable to eject %V"
+#~ msgstr "%V کو نکالنے سے قاصر"
+
+#~ msgid "Unable to unmount %V"
+#~ msgstr "%V کو ان ماؤنٹ کرنے سے قاصر"
+
+#~ msgid "Error while moving \"%F\"."
+#~ msgstr "\"%F\" کو منتقل کرتے وقت مسئلہ۔"
 
 #~ msgid "Show more _details"
 #~ msgstr "مزید _تفصیلات ظاہر کریں"

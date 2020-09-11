@@ -17,10 +17,12 @@
 ***/
 namespace Marlin {
     public class ZeitgeistManager : Object {
+
         const string FILES_ACTOR = "application://" + Marlin.APP_DESKTOP;
         const string ATTRS = FileAttribute.STANDARD_DISPLAY_NAME + "," + FileAttribute.STANDARD_CONTENT_TYPE;
 
         public static void report_event (string uri, string interpretation) {
+#if HAVE_ZEITGEIST
             var file = File.new_for_commandline_arg (uri);
 
             file.query_info_async.begin (ATTRS, 0, Priority.DEFAULT, null, (obj, res) => {
@@ -54,7 +56,7 @@ namespace Marlin {
                     warning (e.message);
                 }
             });
+#endif
         }
     }
 }
-

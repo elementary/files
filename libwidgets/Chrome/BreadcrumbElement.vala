@@ -79,10 +79,28 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         this.icon_info = icon_info;
     }
 
+    private Cairo.Surface? get_mask (double x1, double y1, double x2, double y2, int scale, Cairo.Path? clip_path) {
+        if (clip_path == null) {
+            return null;
+        }
+
+        int w = (int) (Math.ceil (x2) - Math.floor (x1)) * scale;
+        int h = (int) (Math.ceil (y2) - Math.floor (y1)) * scale;
+        var mask = new Cairo.ImageSurface (Cairo.Format.A8, w, h);
+
+        var cr = new Cairo.Context (mask);
+        cr.translate (-x1, -y1);
+        cr.set_source_rgb (0, 0, 0);
+        cr.append_path (clip_path);
+        cr.fill ();
+
+        return mask;
+    }
+
     public double draw (Cairo.Context cr, double x, double y, double height, Gtk.Widget widget) {
         weak Gtk.StyleContext button_context = widget.get_style_context ();
         var state = button_context.get_state ();
-        var is_RTL = Gtk.StateFlags.DIR_RTL in state;
+        var is_rtl = Gtk.StateFlags.DIR_RTL in state;
         var scale = widget.scale_factor;
         button_context.save ();
         if (pressed) {
@@ -100,24 +118,30 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         var y_half_height = y + half_height;
         var y_height = y + height;
 
-        cr.set_source_rgb (0,0,0);
+        cr.set_source_rgb (0, 0, 0);
 
         var width = this.real_width;
         var frame_width = width - padding.right;
 
         /* Erase area for drawing and outline */
+        Cairo.Path clip_path = null;
+        double clip_x1 = 0;
+        double clip_y1 = 0;
+        double clip_x2 = 0;
+        double clip_y2 = 0;
         if (offset > 0.0) {
             double x_frame_width, x_half_height, x_frame_width_half_height;
-            if (is_RTL) {
-                x_frame_width = x - frame_width;
+            if (is_rtl) {
+                x_frame_width = x - frame_width - line_width;
                 x_half_height = x + half_height;
                 x_frame_width_half_height = x_frame_width - half_height;
             } else {
-                x_frame_width = x + frame_width;
+                x_frame_width = x + frame_width + line_width;
                 x_half_height = x - half_height;
                 x_frame_width_half_height = x_frame_width + half_height;
             }
 
+            cr.new_path ();
             cr.move_to (x_half_height, y);
             cr.line_to (x, y_half_height);
             cr.line_to (x_half_height, y_height);
@@ -125,14 +149,16 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.line_to (x_frame_width_half_height, y_half_height);
             cr.line_to (x_frame_width, y);
             cr.close_path ();
+            clip_path = cr.copy_path ();
             cr.clip ();
+            cr.clip_extents (out clip_x1, out clip_y1, out clip_x2, out clip_y2);
         }
 
         if (pressed) {/* Highlight the breadcrumb */
             cr.save ();
             double base_x, left_x, right_x, arrow_right_x;
             base_x = x;
-            if (is_RTL) {
+            if (is_rtl) {
                 left_x = base_x + half_height - line_width;
                 right_x = base_x - frame_width;
                 arrow_right_x = right_x - half_height;
@@ -166,12 +192,12 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         var room_for_icon = icon_info != null ? true : false;
         double layout_width = (width - padding.left - padding.right);
 
-        if (is_RTL) {
+        if (is_rtl) {
             x -= padding.left;
-            x += Math.sin (offset*Math.PI_2) * width;
+            x += offset * Math.round (offset * (width + half_height) * scale) / scale;
         } else {
             x += padding.left;
-            x -= Math.sin (offset*Math.PI_2) * width;
+            x -= offset * Math.round (offset * (width + half_height) * scale) / scale;
         }
 
         if (layout_width < iw) {
@@ -192,13 +218,17 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
 
         /* Get icon pixbuf and fade if appropriate */
-        Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.icon : null;
+        Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.render_icon (button_context) : null;
         if (icon_to_draw != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
             icon_to_draw = PF.PixbufUtils.lucent (icon_to_draw, 50);
         }
 
+        cr.save ();
+        var mask = get_mask (clip_x1, clip_y1, clip_x2, clip_y2, scale, clip_path);
+        cr.push_group ();
+
         /* Draw the text and icon (if present and there is room) */
-        if (is_RTL) {
+        if (is_rtl) {
             if (icon_to_draw == null) {
                 if (room_for_text) {
                     button_context.render_layout (cr, x - width,
@@ -211,7 +241,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
                                                 Math.round ((x - ICON_MARGIN - icon_info.icon_width) * scale),
-                                                Math.round ((y_half_height - icon_info.icon_height/2) * scale));
+                                                Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
@@ -238,7 +268,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
                                                 Math.round ((x + ICON_MARGIN) * scale),
-                                                Math.round ((y_half_height - icon_info.icon_height/2) * scale));
+                                                Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text && x > 0) {
@@ -250,17 +280,27 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.restore ();
         }
 
+        var group = cr.pop_group ();
+        cr.set_source (group);
+        if (mask != null) {
+            cr.mask_surface (mask, clip_x1, clip_y1);
+        } else {
+            cr.paint ();
+        }
+
+        cr.restore ();
+
         /* Move to end of breadcrumb */
-        if (is_RTL) {
+        if (is_rtl) {
             x -= frame_width;
         } else {
             x += frame_width;
         }
 
         /* Draw the arrow-shaped separator */
-        if (is_RTL) {
+        if (is_rtl) {
             cr.save ();
-            cr.translate (x + height/4, y_half_height);
+            cr.translate (x + height / 4, y_half_height);
             cr.rectangle (0, -height / 2 + line_width, -height, height - 2 * line_width);
             cr.clip ();
             cr.rotate (Math.PI_4);
@@ -283,7 +323,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
 
         /* Move to end of separator */
-        if (is_RTL) {
+        if (is_rtl) {
             x -= half_height;
         } else {
             x += half_height;

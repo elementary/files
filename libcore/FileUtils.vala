@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -19,7 +19,7 @@ namespace PF.FileUtils {
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
-    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
+    const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
     public GLib.List<GLib.File> files_from_uris (string uris) {
@@ -57,18 +57,20 @@ namespace PF.FileUtils {
         }
     }
 
-    public string get_parent_path_from_path (string path) {
+    public string get_parent_path_from_path (string path, bool include_file_protocol = true) {
         /* We construct the parent path rather than use File.get_parent () as the latter gives odd
          * results for some gvfs files.
          */
-        string parent_path = construct_parent_path (path);
+        string parent_path = construct_parent_path (path, include_file_protocol);
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.SFTP_URI) {
 
             parent_path = path;
         }
 
-        if (parent_path.has_prefix (Marlin.MTP_URI) && !valid_mtp_uri (parent_path)) {
+        if ((parent_path.has_prefix (Marlin.MTP_URI) || parent_path.has_prefix (Marlin.PTP_URI)) &&
+            !valid_mtp_uri (parent_path)) {
+
             parent_path = path;
         }
 
@@ -90,12 +92,11 @@ namespace PF.FileUtils {
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
-                Marlin.FileOperations.copy_move_link (dir_files,
-                                                      null,
-                                                      original_dir,
-                                                      Gdk.DragAction.MOVE,
-                                                      widget,
-                                                      null);
+                Marlin.FileOperations.copy_move_link.begin (dir_files,
+                                                            original_dir,
+                                                            Gdk.DragAction.MOVE,
+                                                            widget,
+                                                            null);
         });
     }
 
@@ -160,7 +161,27 @@ namespace PF.FileUtils {
         }
     }
 
-    private string construct_parent_path (string path) {
+    public string? get_path_for_symlink (GLib.File file) {
+        string? result;
+        if (Uri.parse_scheme (file.get_uri ()) != "file") {
+            result = null;
+        } else if (file.is_native ()) {
+            result = file.get_path (); // usually the case
+        } else {
+            File root = file;
+            File? parent = file.get_parent ();
+            while (parent != null) {
+                root = parent;
+                parent = root.get_parent ();
+            }
+
+            result = Path.DIR_SEPARATOR_S + root.get_relative_path (file);
+        }
+
+        return result;
+    }
+
+    private string construct_parent_path (string path, bool include_file_protocol) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
         }
@@ -174,7 +195,7 @@ namespace PF.FileUtils {
         }
         sb.erase (last_separator, -1);
         string parent_path = sb.str + Path.DIR_SEPARATOR_S;
-        return sanitize_path (parent_path);
+        return sanitize_path (parent_path, null, include_file_protocol);
     }
 
     public bool path_has_parent (string new_path) {
@@ -183,7 +204,7 @@ namespace PF.FileUtils {
     }
 
     public string? escape_uri (string uri, bool allow_utf8 = true, bool allow_single_quote = true) {
-        string rc = reserved_chars.replace ("#", "").replace ("*","");
+        string rc = RESERVED_CHARS.replace ("#", "").replace ("*", "");
         if (!allow_single_quote) {
             rc = rc.replace ("'", "");
         }
@@ -194,22 +215,36 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? p, string? cp = null) {
+
+    public string sanitize_path (string? input_uri,
+                                 string? input_current_uri = null,
+                                 bool include_file_protocol = true) {
+        string unsanitized_uri;
+        string unsanitized_current_uri;
         string path = "";
         string scheme = "";
         string? current_path = null;
         string? current_scheme = null;
 
-        if (p == null || p == "") {
-            return cp ?? "";
+        if (input_uri == null || input_uri == "") {
+            unsanitized_uri = input_current_uri; /* Sanitize current path */
+            unsanitized_current_uri = "";
+        } else {
+            unsanitized_uri = input_uri;
+            unsanitized_current_uri = input_current_uri;
         }
 
-        string? unescaped_p = Uri.unescape_string (p, null);
-        if (unescaped_p == null) {
-            unescaped_p = p;
+        if (unsanitized_uri == null || unsanitized_uri == "") {
+            return "";
         }
 
-        split_protocol_from_path (unescaped_p, out scheme, out path);
+        string? unescaped_uri = Uri.unescape_string (unsanitized_uri, null);
+        if (unescaped_uri == null) {
+            unescaped_uri = unsanitized_uri;
+        }
+
+        split_protocol_from_path (unescaped_uri, out scheme, out path);
+
         path = path.strip ().replace ("//", "/");
         // special case for empty path, adjust as root path
         if (path.length == 0) {
@@ -217,10 +252,11 @@ namespace PF.FileUtils {
         }
 
         StringBuilder sb = new StringBuilder (path);
-        if (cp != null) {
-            split_protocol_from_path (cp, out current_scheme, out current_path);
+        if (unsanitized_current_uri != null) {
+            split_protocol_from_path (unsanitized_current_uri, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
-            if (scheme == "" && path.length > 0) {
+
+            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) && path.length > 0) {
                 string [] paths = path.split ("/", 2);
                 switch (paths[0]) {
                     // ignore home documents
@@ -230,17 +266,23 @@ namespace PF.FileUtils {
                         break;
                     // process special parent dir
                     case "..":
-                        sb.assign (current_scheme);
-                        sb.append (Path.DIR_SEPARATOR_S);
-                        sb.append (get_parent_path_from_path (current_path));
+                        if (current_scheme != "" && current_scheme != Marlin.ROOT_FS_URI) {
+                            /* We need to append the current scheme later */
+                            scheme = current_scheme;
+                        }
+
+                        /* We do not want the file:// prefix returned */
+                        sb.assign (get_parent_path_from_path (current_path, false));
+
                         if (paths.length > 1) {
                             sb.append (Path.DIR_SEPARATOR_S);
                             sb.append (paths[1]);
                         }
+
                         break;
                     // process current dir
                     case ".":
-                        sb.assign (cp);
+                        sb.assign (current_path); //We do not want the scheme at this point
                         if (paths.length > 1) {
                             sb.append (Path.DIR_SEPARATOR_S);
                             sb.append (paths[1]);
@@ -248,7 +290,7 @@ namespace PF.FileUtils {
                         break;
                     // process directory without root
                     default:
-                        sb.assign (cp);
+                        sb.assign (current_path); //We do not want the scheme at this point
                         sb.append (Path.DIR_SEPARATOR_S);
                         sb.append (paths[0]);
                         if (paths.length > 1) {
@@ -261,7 +303,13 @@ namespace PF.FileUtils {
         }
 
         if (path.length > 0) {
-            if (scheme == "" && (path.has_prefix ("~/") || path == "~")) {
+            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) &&
+                (path.has_prefix ("~/") || path.has_prefix ("/~") || path == "~")) {
+
+                if (path.has_prefix ("/")) {
+                    sb.erase (0, 1);
+                }
+
                 sb.erase (0, 1);
                 sb.prepend (PF.UserUtils.get_real_user_home ());
             }
@@ -282,6 +330,7 @@ namespace PF.FileUtils {
 
                 new_path = new_path.replace ("///", "//");
             }
+
             new_path = new_path.replace ("ssh:", "sftp:");
 
             if (path == "/" && !can_browse_scheme (scheme)) {
@@ -289,12 +338,14 @@ namespace PF.FileUtils {
             }
         }
 
+        if (!include_file_protocol && new_path.has_prefix (Marlin.ROOT_FS_URI)) {
+            new_path = new_path.slice (Marlin.ROOT_FS_URI.length, new_path.length);
+        }
+
         return new_path;
     }
 
-    /** Splits the path into a protocol ending in '://" (unless it is file:// which is replaced by "")
-      * and a path beginning "/".
-    **/
+    /** Splits the path into a protocol ending in '://"  and a path beginning "/". **/
     public void split_protocol_from_path (string path, out string protocol, out string new_path) {
         protocol = "";
         new_path = path.dup ();
@@ -305,14 +356,14 @@ namespace PF.FileUtils {
             return;
         }
         if (explode_protocol.length > 1) {
-            if (explode_protocol[0] == "mtp") {
+            if (explode_protocol[0] == "mtp" || explode_protocol[0] == "gphoto2" ) {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
                 if (explode_path[0] != null && explode_path[0].has_prefix ("[")) {
                     protocol = (explode_protocol[0] + "://" + explode_path[0] + "]").replace ("///", "//");
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    warning ("Invalid mtp path %s", path);
+                    critical ("Invalid mtp or ptp path %s", path);
                     protocol = new_path.dup ();
                     new_path = "/";
                 }
@@ -324,16 +375,22 @@ namespace PF.FileUtils {
             protocol = Marlin.ROOT_FS_URI;
         }
 
+        /* Ensure a protocol is returned so file.get_path () always works on sanitized paths*/
         if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
-            protocol = "";
+            protocol = Marlin.ROOT_FS_URI;
+        }
+
+        /* Consistently remove any remove trailing separator so that paths can be reliably compared */
+        if (new_path.has_suffix (Path.DIR_SEPARATOR_S) && path != Path.DIR_SEPARATOR_S) {
+            new_path = new_path.slice (0, new_path.length - 1);
         }
     }
 
     private bool valid_mtp_uri (string uri) {
-        if (!uri.contains (Marlin.MTP_URI)) {
+        if (!uri.contains (Marlin.MTP_URI) && !uri.contains (Marlin.PTP_URI)) {
             return false;
         }
-        string[] explode_protocol = uri.split ("://",2);
+        string[] explode_protocol = uri.split ("://", 2);
         if (explode_protocol.length != 2 ||
             !explode_protocol[1].has_prefix ("[") ||
             !explode_protocol[1].contains ("]")) {
@@ -362,8 +419,8 @@ namespace PF.FileUtils {
     }
 
     /* Lists of compression only and archive only extensions from Wikipedia */
-    private const string compression_extensions = "bz2 F gz tz lz lzma lzo rz sfark sz xz z Z ";
-    private const string archive_extensions = "a cpio shar LBR iso lbr mar sbx tar";
+    private const string COMPRESSION_EXTENSIONS = "bz2 F gz tz lz lzma lzo rz sfark sz xz z Z ";
+    private const string ARCHIVE_EXTENSIONS = "a cpio shar LBR iso lbr mar sbx tar";
     private string strip_extension (string filename) {
         string[] parts = filename.reverse ().split (".", 3);
         var n_parts = parts.length;
@@ -374,8 +431,8 @@ namespace PF.FileUtils {
             case 2:
                 return parts[1].reverse ();
             case 3:
-                if (compression_extensions.reverse ().contains (parts[0]) &&
-                    archive_extensions.reverse ().contains (parts[1])) {
+                if (COMPRESSION_EXTENSIONS.reverse ().contains (parts[0]) &&
+                    ARCHIVE_EXTENSIONS.reverse ().contains (parts[1])) {
 
                         return parts[2].reverse ();
                 }
@@ -401,9 +458,17 @@ namespace PF.FileUtils {
         }
     }
 
-    public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
+    public string custom_basename_from_file (GLib.File location) {
+        var gof = GOF.File.@get (location); // In most case a GOF.File can be retrieved from cache
+        return gof.get_display_name (); // Falls back to location.get_basename ()
+    }
+
+    public async GLib.File? set_file_display_name (GLib.File old_location,
+                                                   string new_name,
+                                                   GLib.Cancellable? cancellable = null) throws GLib.Error {
 
         /** TODO Check validity of new name **/
+
 
         GLib.File? new_location = null;
         GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
@@ -426,9 +491,7 @@ namespace PF.FileUtils {
                 warning ("Renamed file has no GOF.Directory.Async");
             }
 
-            /* Register the change with the undo manager */
-            Marlin.UndoManager.instance ().add_rename_action (new_location,
-                                                              original_name);
+            Marlin.UndoManager.instance ().add_rename_action (new_location, original_name);
         } catch (Error e) {
             warning ("Rename error");
             PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
@@ -520,13 +583,17 @@ namespace PF.FileUtils {
         switch (now_weekday - disp_weekday) {
             case 0:
                 ///TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-                format_string = _("Today at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
+                format_string = _("Today at %s").printf (
+                                    Granite.DateTime.get_default_time_format (!clock_is_24h, false)
+                                );
 
                 break;
             case 1:
             case -6: /* Yesterday is Sunday */
                 ///TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-                format_string = _("Yesterday at %s").printf (Granite.DateTime.get_default_time_format (!clock_is_24h, false));
+                format_string = _("Yesterday at %s").printf (
+                                    Granite.DateTime.get_default_time_format (!clock_is_24h, false)
+                                );
 
                 break;
 
@@ -548,6 +615,7 @@ namespace PF.FileUtils {
             case Marlin.SFTP_URI:
             case Marlin.FTP_URI:
             case Marlin.MTP_URI:
+            case Marlin.PTP_URI:
                 return false;
             default:
                 return true;
@@ -764,6 +832,112 @@ namespace PF.FileUtils {
         GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "normal", base_name));
         GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "large", base_name));
     }
+
+    public bool same_location (string uri_a, string uri_b) {
+        string protocol_a, protocol_b;
+        string path_a, path_b;
+
+        split_protocol_from_path (Uri.unescape_string (uri_a), out protocol_a, out path_a);
+        split_protocol_from_path (Uri.unescape_string (uri_b), out protocol_b, out path_b);
+
+        if (protocol_a == protocol_b && path_a == path_b) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public uint64 get_file_modification_time (GLib.File file) {
+        try {
+            var info = file.query_info (
+                                GLib.FileAttribute.TIME_MODIFIED, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null
+                            );
+            return info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
+        } catch (Error e) {
+            critical (e.message);
+            return -1;
+        }
+    }
+
+    public bool make_file_name_valid_for_dest_fs (ref string filename, string? dest_fs_type) {
+        bool result = false;
+
+        if (dest_fs_type == null) {
+            return false;
+        }
+
+        switch (dest_fs_type) {
+            case "fat":
+            case "vfat":
+            case "msdos":
+            case "msdosfs":
+                const string CHARS_TO_REPLACE = "/:;*?\\<> ";
+                char replacement = '_';
+                string original = filename;
+                filename = filename.delimit (CHARS_TO_REPLACE, replacement);
+                result = original != filename;
+                break;
+
+            default:
+                break;
+        }
+
+        return result;
+    }
+
+    public string format_time (int seconds, out int time_unit) {
+        int minutes, hours;
+        string result;
+
+        if (seconds < 0) {
+            seconds = 0;
+        }
+
+        if (seconds < 60) { //less than one minute
+            time_unit = seconds;
+            result = ngettext ("%'d second", "%'d seconds", seconds).printf (seconds);
+        } else if (seconds < 3600) { // less than one hour
+            minutes = seconds / 60;
+            time_unit = minutes;
+            result = ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes);
+        } else {
+            hours = seconds / 3600;
+            if (hours < 4) {
+                minutes = (seconds - hours * 3600) / 60;
+                time_unit = minutes + hours;
+                ///TRANSLATORS The %s will be translated into "x hours, y minutes"
+                result = _("%s, %s").printf (ngettext ("%'d hour", "%'d hours", hours).printf (hours),
+                                             ngettext ("%'d minute", "%'d minutes", minutes).printf (minutes));
+            } else {
+                time_unit = hours;
+                result = ngettext ("approximately %'d hour", "approximately %'d hours", hours).printf (hours);
+            }
+        }
+
+        return result;
+    }
+
+    public int get_max_name_length (GLib.File file_dir) {
+        //FIXME Do not need to keep calling this for the same filesystem
+
+        if (!file_dir.has_uri_scheme ("file")) {
+            return -1;
+        }
+
+        var dir = file_dir.get_path ();
+        var max_path = Posix.pathconf (dir, Posix.PathConfName.PATH_MAX);
+        var max_name = Posix.pathconf (dir, Posix.PathConfName.NAME_MAX);
+
+        if (max_name == -1 && max_path == -1) {
+            return -1;
+        } else if (max_name == -1 && max_path != -1) {
+            return (int) (max_path - (dir.length + 1));
+        } else if (max_name != -1 && max_path == -1) {
+            return (int) max_name;
+        } else {
+            return (int) long.min (max_path - (dir.length + 1), max_name);
+        }
+    }
 }
 
 namespace Marlin {
@@ -778,4 +952,5 @@ namespace Marlin {
     public const string FTP_URI = "ftp://";
     public const string SMB_URI = "smb://";
     public const string MTP_URI = "mtp://";
+    public const string PTP_URI = "gphoto2://";
 }

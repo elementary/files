@@ -1,0 +1,3 @@
+[Plugin]
+Name=Git
+File=libpantheon-files-git.so

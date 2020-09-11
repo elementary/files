@@ -144,14 +144,17 @@ namespace PF.PixbufUtils {
         unowned uint8[] target_pix = (uint8[])dest.pixels;
         unowned uint8[] original_pix = (uint8[])src.pixels;
         if (has_alpha) {
+            var ratio = (double)percent / 100;
             for (int i = 0; i < height; i++) {
                 int src_row = i * src_row_stride;
                 int dst_row = i * dst_row_stride;
                 for (int j = 0; j < width; j++) {
-                    target_pix[dst_row + j*4] = original_pix[src_row + j*4];
-                    target_pix[dst_row + j*4 + 1] = original_pix[src_row + j*4 + 1];
-                    target_pix[dst_row + j*4 + 2] = original_pix[src_row + j*4 + 2];
-                    target_pix[dst_row + j*4 + 3] = (uint8)(((uint)original_pix[src_row + j*4 + 3]) * percent / 100u);
+                    var dr = dst_row + j * 4;
+                    var sr = src_row + j * 4;
+                    target_pix[dr++] = original_pix[sr++];
+                    target_pix[dr++] = original_pix[sr++];
+                    target_pix[dr++] = original_pix[sr++];
+                    target_pix[dr] = (uint8)(original_pix[sr] * ratio);
                 }
             }
         } else {
@@ -160,10 +163,12 @@ namespace PF.PixbufUtils {
                 int src_row = i * src_row_stride;
                 int dst_row = i * dst_row_stride;
                 for (int j = 0; j < width; j++) {
-                    target_pix[dst_row + j*4] = original_pix[src_row + j*3];
-                    target_pix[dst_row + j*4 + 1] = original_pix[src_row + j*3 + 1];
-                    target_pix[dst_row + j*4 + 2] = original_pix[src_row + j*3 + 2];
-                    target_pix[dst_row + j*4 + 3] = (uint8)percent;
+                    var dr = dst_row + j * 4;
+                    var sr = src_row + j * 3;
+                    target_pix[dr++] = original_pix[sr++];
+                    target_pix[dr++] = original_pix[sr++];
+                    target_pix[dr++] = original_pix[sr++];
+                    target_pix[dr] = (uint8)percent;
                 }
             }
         }
@@ -171,4 +176,3 @@ namespace PF.PixbufUtils {
         return dest;
     }
 }
-

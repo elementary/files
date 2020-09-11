@@ -28,11 +28,13 @@ public class GOF.CallWhenReady : Object {
 
 
     public CallWhenReady (GLib.List<GOF.File> _files, call_when_ready_func? _f = null) {
-        files = _files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+        files = _files.copy_deep ((GLib.CopyFunc) GLib.Object.ref); // only used for limited length lists currently
         f = _f;
 
         int count = 0;
+        int total = 0;
         foreach (unowned GOF.File gof in files) {
+            total++;
             if (gof.info == null) {
                 call_when_ready_list.prepend (gof);
                 query_info_async.begin (gof, file_ready);
@@ -42,7 +44,7 @@ public class GOF.CallWhenReady : Object {
         }
 
         /* we didn't need to queue anything, all the infos were available */
-        if (count > 0 && count == files.length () && f != null) {
+        if (count > 0 && count == total && f != null) {
             f (files);
         }
 

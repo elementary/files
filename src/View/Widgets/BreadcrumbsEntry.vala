@@ -36,7 +36,7 @@ namespace Marlin.View.Chrome {
         public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
-        protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY |
+        protected const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY |
                                                             Gdk.DragAction.MOVE |
                                                             Gdk.DragAction.LINK);
 
@@ -64,7 +64,10 @@ namespace Marlin.View.Chrome {
         private void set_up_drag_drop () {
             /* Drag and drop */
             Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Marlin.TargetType.TEXT_URI_LIST};
-            Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION, {target_uri_list}, Gdk.DragAction.ASK|file_drag_actions);
+            Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION,
+                               {target_uri_list},
+                               Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
+
             drag_leave.connect (on_drag_leave);
             drag_motion.connect (on_drag_motion);
             drag_data_received.connect (on_drag_data_received);
@@ -105,9 +108,11 @@ namespace Marlin.View.Chrome {
                 Source.remove (button_press_timeout_id);
                 button_press_timeout_id = 0;
             }
+
             if (drop_file_list != null) {
                 return true;
             }
+
             if (event.button == 1) {
                 return base.on_button_release_event (event);
             } else { /* other buttons act on press */
@@ -361,7 +366,7 @@ namespace Marlin.View.Chrome {
                                                                      context,
                                                                      out current_suggested_action);
 
-                    if ((current_actions & file_drag_actions) != 0) {
+                    if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
                         success = dnd_handler.handle_file_drag_actions (this,
                                                                         this.get_toplevel () as Gtk.ApplicationWindow,
                                                                         context,
@@ -401,7 +406,6 @@ namespace Marlin.View.Chrome {
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
-            GLib.File loc = PF.FileUtils.get_file_for_path (path);
             string parent_path = PF.FileUtils.get_parent_path_from_path (path);
             GLib.File? root = PF.FileUtils.get_file_for_path (parent_path);
 
@@ -419,7 +423,7 @@ namespace Marlin.View.Chrome {
             menu.cancel.connect (() => {reset_elements_states ();});
             menu.deactivate.connect (() => {reset_elements_states ();});
 
-            build_base_menu (menu, loc);
+            build_base_menu (menu, path);
             GOF.Directory.Async? files_menu_dir = null;
             if (root != null) {
                 files_menu_dir = GOF.Directory.Async.from_gfile (root);
@@ -432,20 +436,15 @@ namespace Marlin.View.Chrome {
             }
 
             menu.show_all ();
-            menu.popup (null,
-                        null,
-                        right_click_menu_position_func,
-                        0,
-                        event.time);
+            menu.popup_at_pointer (event);
 
             if (files_menu_dir != null) {
                 files_menu_dir.init ();
             }
         }
 
-        private void build_base_menu (Gtk.Menu menu, GLib.File loc) {
+        private void build_base_menu (Gtk.Menu menu, string path) {
             /* First the "Open in new tab" menuitem is added to the menu. */
-            var path = loc.get_uri ();
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
@@ -462,15 +461,18 @@ namespace Marlin.View.Chrome {
             menu.append (new Gtk.SeparatorMenuItem ());
 
             var submenu_open_with = new Gtk.Menu ();
-            var root = GOF.File.get (loc);
+            var loc = File.new_for_uri (PF.FileUtils.escape_uri (path));
+            var root = GOF.File.get_by_uri (path);
             var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
             bool at_least_one = false;
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
-                     var item_grid = new Gtk.Grid ();
-                    var img = new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU);
-                    img.pixel_size = 16;
+                    var item_grid = new Gtk.Grid ();
+                    var img = new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU) {
+                        pixel_size = 16
+                    };
+
                     item_grid.add (img);
                     item_grid.add (new Gtk.Label (app_info.get_name ()));
                      var menu_item = new Gtk.MenuItem ();
@@ -479,6 +481,7 @@ namespace Marlin.View.Chrome {
                     menu_item.activate.connect (() => {
                         open_with_request (loc, app_info);
                     });
+
                     submenu_open_with.append (menu_item);
                 }
             }
@@ -535,7 +538,8 @@ namespace Marlin.View.Chrome {
         }
 
         protected override bool on_button_press_event (Gdk.EventButton event) {
-            if (icon_event (event) || has_focus) {
+            /* Only handle if not on icon and breadcrumbs are visible */
+            if (icon_event (event) || has_focus || hide_breadcrumbs) {
                 return base.on_button_press_event (event);
             } else {
                 var el = mark_pressed_element (event);
@@ -555,6 +559,7 @@ namespace Marlin.View.Chrome {
                     }
                 }
             }
+
             return true;
         }
 

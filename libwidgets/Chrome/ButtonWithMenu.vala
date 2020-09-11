@@ -95,7 +95,7 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        private int LONG_PRESS_TIME = Gtk.Settings.get_default ().gtk_double_click_time * 2;
+        private int long_press_time = Gtk.Settings.get_default ().gtk_double_click_time * 2;
         private uint timeout = 0;
         private uint last_click_time = 0;
 
@@ -152,7 +152,7 @@ namespace Marlin.View.Chrome {
         }
 
         private bool on_button_release_event (Gdk.EventButton ev) {
-            if (ev.time - last_click_time < LONG_PRESS_TIME) {
+            if (ev.time - last_click_time < long_press_time) {
                 slow_press ();
                 active = false;
             }
@@ -167,7 +167,7 @@ namespace Marlin.View.Chrome {
 
         private bool on_button_press_event (Gdk.EventButton ev) {
             /* If the button is kept pressed, don't make the user wait when there's no action */
-            int max_press_time = LONG_PRESS_TIME;
+            int max_press_time = long_press_time;
             if (ev.button == 1 || ev.button == 3) {
                 active = true;
             }

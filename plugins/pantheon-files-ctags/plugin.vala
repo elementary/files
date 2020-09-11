@@ -19,7 +19,7 @@
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
     public abstract async bool record_uris (Variant[] entries) throws GLib.DBusError, GLib.IOError;
-    public abstract async bool deleteEntry (string uri) throws GLib.DBusError, GLib.IOError;
+    public abstract async bool delete_entry (string uri) throws GLib.DBusError, GLib.IOError;
 
 }
 
@@ -49,12 +49,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     /* Arbitrary user dir list */
-    private const string users_dirs[2] = {
+    private const string USER_DIRS[2] = {
         "file:///home",
         "file:///media"
     };
 
-    private const string ignore_schemes [5] = {
+    private const string IGNORE_SCHEMES [5] = {
         "ftp",
         "sftp",
         "afp",
@@ -66,7 +66,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return_val_if_fail (dir != null, false);
         var uri = dir.get_uri ();
 
-        foreach (var duri in users_dirs) {
+        foreach (var duri in USER_DIRS) {
             if (Posix.strncmp (uri, duri, duri.length) == 0) {
                 return true;
             }
@@ -84,7 +84,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         var uri_scheme = Uri.parse_scheme (uri);
-        foreach (var scheme in ignore_schemes) {
+        foreach (var scheme in IGNORE_SCHEMES) {
             if (scheme == uri_scheme) {
                 return true;
             }
@@ -98,8 +98,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_entry (GOF.File gof, GenericArray<Variant> entries) {
-        return_if_fail (gof != null);
-
         var entry = new Variant.strv (
                         { gof.uri,
                           gof.get_ftype (),
@@ -148,8 +146,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_to_knowns_queue (GOF.File file, FileInfo info) {
-        return_if_fail (file != null && info != null);
-
         file.tagstype = info.get_content_type ();
         file.update_type ();
 
@@ -167,8 +163,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_to_unknowns_queue (GOF.File file) {
-        return_if_fail (file != null);
-
         if (file.get_ftype () == "application/octet-stream") {
             unknowns.push_head (file);
 
@@ -183,11 +177,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info (GOF.File file) {
-        return_if_fail (file != null);
-
         try {
             if (!file.exists) {
-                yield daemon.deleteEntry (file.uri);
+                yield daemon.delete_entry (file.uri);
                 return;
             }
 
@@ -235,8 +227,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             return;
         }
 
-        return_if_fail (file != null);
-
         try {
             var rc = yield daemon.get_uri_infos (target_uri);
 
@@ -256,9 +246,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void update_file_info (GOF.File file) {
-
-        return_if_fail (file != null);
-
         if (file.info != null && !f_ignore_dir (file.directory) &&
             (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
 
@@ -270,8 +257,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> selected_files) {
-        if (selected_files == null || widget == null || ignore_dir) {
+    public override void context_menu (Gtk.Widget widget, GLib.List<GOF.File> selected_files) {
+        if (selected_files == null || ignore_dir) {
             return;
         }
 
@@ -350,7 +337,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         construct {
             var style_context = get_style_context ();
             style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            style_context.add_class ("color-button");
+            style_context.add_class (Granite.STYLE_CLASS_COLOR_BUTTON);
             style_context.add_class (color_name);
         }
     }
@@ -372,10 +359,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_buttons.add (new ColorButton ("brown"));
             color_buttons.add (new ColorButton ("slate"));
 
-            var colorbox = new Gtk.Grid ();
-            colorbox.column_spacing = COLORBOX_SPACING;
-            colorbox.margin_start = 3;
-            colorbox.halign = Gtk.Align.START;
+            var colorbox = new Gtk.Grid () {
+                column_spacing = COLORBOX_SPACING,
+                margin_start = 3,
+                halign = Gtk.Align.START
+            };
+
             colorbox.add (color_button_remove);
 
             for (int i = 0; i < color_buttons.size; i++) {

@@ -16,6 +16,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
+/* Intermediary between a FileOperation and the ProgressUIHandler allowing the UI to show the progress
+ * of the operation and also to cancel that operation. */
 public class PF.Progress.Info : GLib.Object {
     public signal void changed ();
     public signal void progress_changed ();
@@ -24,22 +26,23 @@ public class PF.Progress.Info : GLib.Object {
 
     private const uint SIGNAL_DELAY_MSEC = 100;
 
-    private GLib.Cancellable cancellable;
+    public GLib.Cancellable cancellable { get; construct; }
 
-    private string title;
-    private string status;
-    private string details;
-    private double progress;
-    private double current;
-    private double total;
-    private bool activity_mode;
-    private bool is_started;
-    private bool is_finished;
-    private bool is_paused;
+    public string title { get; set; default = _("Preparing"); }
+    public string status { get; private set; default = _("Preparing"); }
+    public string details { get; set; default = _("Preparing"); }
+    public double progress { get; private set; default = 0.0; }
+    public double current { get; private set; default = 0.0; }
+    public double total { get; private set; default = 0.0; }
+    public bool activity_mode { get; private set; default = true; }
+    public bool is_started { get; private set; }
+    public bool is_finished { get; private set; }
+    public bool is_paused { get; private set; }
+    public bool is_cancelled { get { return cancellable.is_cancelled (); }}
 
     private GLib.Source idle_source;
-    private bool source_is_now;
 
+    private bool source_is_now;
     private bool start_at_idle;
     private bool finish_at_idle;
     private bool changed_at_idle;
@@ -51,77 +54,21 @@ public class PF.Progress.Info : GLib.Object {
 
     construct {
         cancellable = new GLib.Cancellable ();
+        /* Ensure info finishes if canceled by marlin-file-operations.
+         * Using cancellable.connect () results in refcounting problem as it cannot be disconnected in its handler */
+        cancellable.cancelled.connect (finish);
         PF.Progress.InfoManager.get_instance ().add_new_info (this);
+        Application.get_default ().hold ();
     }
 
-    public string get_title () {
-        if (title != null) {
-            return title;
-        } else if (details != null) {
-            return details;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public string get_status () {
-        if (status != null) {
-            return status;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public string get_details () {
-        if (details != null) {
-            return details;
-        } else {
-            return _("Preparing");
-        }
-    }
-
-    public GLib.Cancellable get_cancellable () {
-        return cancellable;
+    ~Info () {
+        /* As the hold was placed on construction, we release it here to ensure matching count */
+        /* Must ensure all references are released so Info is destroyed */
+        Application.get_default ().release ();
     }
 
     public void cancel () {
         cancellable.cancel ();
-    }
-
-    public bool get_is_started () {
-        return is_started;
-    }
-
-    public bool get_is_finished () {
-        return is_finished;
-    }
-
-    public bool get_is_paused () {
-        return is_paused;
-    }
-
-    public double get_progress () {
-        if (activity_mode) {
-            return -1;
-        } else {
-            return progress;
-        }
-    }
-
-    public double get_current () {
-        if (activity_mode) {
-            return 0;
-        } else {
-            return current;
-        }
-    }
-
-    public double get_total () {
-        if (activity_mode) {
-            return -1;
-        } else {
-            return total;
-        }
     }
 
     public void start () {
@@ -134,9 +81,9 @@ public class PF.Progress.Info : GLib.Object {
     }
 
     public void finish () {
-        if (!is_finished && !cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
+        if (!is_finished) { /* Should not queue finish twice */
             is_finished = true;
-
+            cancellable.cancelled.disconnect (finish);
             finish_at_idle = true;
             queue_idle (true);
         }
@@ -154,31 +101,23 @@ public class PF.Progress.Info : GLib.Object {
         }
     }
 
-    public void set_status (string status) {
-        take_status (status);
-    }
-
-    public void take_status (owned string status) {
-        if (this.status != status) {
-            this.status = status;
+    public void take_status (owned string _status) {
+        if (status != _status) {
+            status = _status;
             changed_at_idle = true;
             queue_idle (false);
         }
     }
 
-    public void set_details (string details) {
-        take_details (details);
-    }
-
-    public void take_details (owned string details) {
-        if (this.details != details) {
-            this.details = details;
+    public void take_details (owned string _details) {
+        if (details != _details) {
+            details = _details;
             changed_at_idle = true;
             queue_idle (false);
         }
     }
 
-    public void set_progress (double current, double total) {
+    public void update_progress (double current, double total) {
         double current_percent = 1.0;
 
         if (total > 0) {
@@ -202,7 +141,7 @@ public class PF.Progress.Info : GLib.Object {
 
     public void pulse_progress () {
         activity_mode = true;
-        progress = 0.0;
+        progress = -1.0;
         progress_at_idle = true;
         queue_idle (false);
     }
@@ -247,9 +186,10 @@ public class PF.Progress.Info : GLib.Object {
 
         if (finish_at_idle) {
             finish_at_idle = false;
-            if (!cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
-                finished ();
-            }
+            /* Only place the finish signal is emitted */
+            /* Must be emitted to update ProgressUIHandler */
+            finished ();
+            PF.Progress.InfoManager.get_instance ().remove_finished_info (this);
         }
 
         if (changed_at_idle) {

@@ -109,9 +109,10 @@ namespace Marlin.View.Chrome {
         Cancellable? current_operation = null;
         Cancellable? file_search_operation = null;
 
+#if HAVE_ZEITGEIST
         Zeitgeist.Index zg_index;
         GenericArray<Zeitgeist.Event> templates;
-
+#endif
         int current_count;
         int deep_count;
         int max_results = MAX_RESULTS;
@@ -142,27 +143,34 @@ namespace Marlin.View.Chrome {
         }
 
         construct {
+#if HAVE_ZEITGEIST
             var template = new Zeitgeist.Event ();
 
-            var template_subject = new Zeitgeist.Subject ();
-            template_subject.manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT;
+            var template_subject = new Zeitgeist.Subject () {
+                manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT
+            };
+
             template.add_subject (template_subject);
 
             templates = new GenericArray<Zeitgeist.Event> ();
             templates.add (template);
 
             zg_index = new Zeitgeist.Index ();
+#endif
+            var frame = new Gtk.Frame (null) {
+                shadow_type = Gtk.ShadowType.ETCHED_IN
+            };
 
-            var frame = new Gtk.Frame (null);
-            frame.shadow_type = Gtk.ShadowType.ETCHED_IN;
+            scroll = new Gtk.ScrolledWindow (null, null) {
+                hscrollbar_policy = Gtk.PolicyType.NEVER
+            };
 
-            scroll = new Gtk.ScrolledWindow (null, null);
-            scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
+            view = new Gtk.TreeView () {
+                headers_visible = false,
+                level_indentation = 12,
+                show_expanders = false
+            };
 
-            view = new Gtk.TreeView ();
-            view.headers_visible = false;
-            view.level_indentation = 12;
-            view.show_expanders = false;
             view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
 
             /* Do not select category headers */
@@ -172,21 +180,26 @@ namespace Marlin.View.Chrome {
 
             get_style_context ().add_class ("completion-popup");
 
-            var column = new Gtk.TreeViewColumn ();
-            column.sizing = Gtk.TreeViewColumnSizing.FIXED;
+            var column = new Gtk.TreeViewColumn () {
+                sizing = Gtk.TreeViewColumnSizing.FIXED
+            };
 
             var cell = new Gtk.CellRendererPixbuf ();
             column.pack_start (cell, false);
             column.set_attributes (cell, "gicon", 1, "visible", 4);
 
-            var cell_name = new Gtk.CellRendererText ();
-            cell_name.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            var cell_name = new Gtk.CellRendererText () {
+                ellipsize = Pango.EllipsizeMode.MIDDLE
+            };
+
             column.pack_start (cell_name, true);
             column.set_attributes (cell_name, "markup", 0);
 
-            var cell_path = new Gtk.CellRendererText ();
-            cell_path.xpad = 6;
-            cell_path.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            var cell_path = new Gtk.CellRendererText () {
+                xpad = 6,
+                ellipsize = Pango.EllipsizeMode.MIDDLE
+            };
+
             column.pack_start (cell_path, false);
             column.set_attributes (cell_path, "markup", 2);
 
@@ -235,10 +248,12 @@ namespace Marlin.View.Chrome {
                         0, get_category_header (_("Bookmarks")),
                         5, Category.CURRENT_HEADER.to_string ());
 
+#if HAVE_ZEITGEIST
             list.append (out zeitgeist_results, null);
             list.@set (zeitgeist_results,
                         0, get_category_header (_("Recently used")),
                         5, Category.CURRENT_HEADER.to_string ());
+#endif
 
             scroll.add (view);
             frame.add (scroll);
@@ -350,8 +365,11 @@ namespace Marlin.View.Chrome {
                 return null;
             });
 
+#if HAVE_ZEITGEIST
             get_zg_results.begin (search_term);
-
+#else
+            global_search_finished = true;
+#endif
             var bookmarks_matched = new Gee.LinkedList<Match> ();
             var begins_with = false;
             foreach (var bookmark in BookmarkList.get_instance ().list) {
@@ -436,6 +454,7 @@ namespace Marlin.View.Chrome {
                     return parent.key_press_event (event);
                 }
             }
+
             switch (event.keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -444,12 +463,15 @@ namespace Marlin.View.Chrome {
                     return true;
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
+                case Gdk.Key.Tab:
+                case Gdk.Key.ISO_Left_Tab:
                     if (list_empty ()) {
                         Gdk.beep ();
                         return true;
                     }
 
-                    var up = event.keyval == Gdk.Key.Up;
+                    var up = (event.keyval == Gdk.Key.Up) ||
+                             (event.keyval == Gdk.Key.ISO_Left_Tab);
 
                     if (view.get_selection ().count_selected_rows () < 1) {
                         if (up) {
@@ -915,12 +937,12 @@ namespace Marlin.View.Chrome {
             return false;
         }
 
-        string ATTRIBUTES = FileAttribute.STANDARD_NAME + "," +
-                            FileAttribute.STANDARD_DISPLAY_NAME + "," +
-                            FileAttribute.STANDARD_CONTENT_TYPE + "," +
-                            FileAttribute.STANDARD_IS_HIDDEN + "," +
-                            FileAttribute.STANDARD_TYPE + "," +
-                            FileAttribute.STANDARD_ICON;
+        const string ATTRIBUTES = FileAttribute.STANDARD_NAME + "," +
+                                  FileAttribute.STANDARD_DISPLAY_NAME + "," +
+                                  FileAttribute.STANDARD_CONTENT_TYPE + "," +
+                                  FileAttribute.STANDARD_IS_HIDDEN + "," +
+                                  FileAttribute.STANDARD_TYPE + "," +
+                                  FileAttribute.STANDARD_ICON;
 
         void visit (string term, bool include_hidden, Cancellable cancel, File root_folder) {
             var folder = directory_queue.poll ();
@@ -1014,6 +1036,7 @@ namespace Marlin.View.Chrome {
             }
         }
 
+#if HAVE_ZEITGEIST
         async void get_zg_results (string term) {
             global_search_finished = false;
 
@@ -1109,6 +1132,7 @@ namespace Marlin.View.Chrome {
             global_search_finished = true;
             Idle.add (send_search_finished);
         }
+#endif
 
         bool term_matches (string term, string name, out bool begins_with ) {
             /* term is assumed to be down */
@@ -1127,13 +1151,10 @@ namespace Marlin.View.Chrome {
             var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
 
             if (colored) {
-                Gdk.Color gdk_color = { 0,
-                                       (uint16) (rgba.red * 65536),
-                                       (uint16) (rgba.green * 65536),
-                                       (uint16) (rgba.blue * 65536)
-                                      };
-
-                color = "color='%s'".printf (gdk_color.to_string ());
+                color = "color='#%2x%2x%2x%2x'".printf ((uint)(rgba.red * 255),
+                                                        (uint)(rgba.green * 255),
+                                                        (uint)(rgba.blue * 255),
+                                                        (uint)(rgba.alpha * 255));
             }
 
             return color;
@@ -1151,4 +1172,3 @@ namespace Marlin.View.Chrome {
         }
     }
 }
-

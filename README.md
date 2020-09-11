@@ -1,6 +1,6 @@
 # Files
 [![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=65602118)](https://www.bountysource.com/teams/elementary/issues?tracker_ids=65602118)
-[![Packaging status](https://repology.org/badge/tiny-repos/pantheon-files.svg)](https://repology.org/metapackage/pantheon-files)
+[![Packaging status](https://repology.org/badge/tiny-repos/elementary-files.svg)](https://repology.org/metapackage/pantheon-files)
 [![Translation status](https://l10n.elementary.io/widgets/files/-/svg-badge.svg)](https://l10n.elementary.io/projects/files/?utm_source=widget)
 
 ![Files Screenshot](data/screenshot-grid.png?raw=true)
@@ -11,12 +11,14 @@ You'll need the following dependencies:
 * meson
 * valac
 * libcanberra-dev
+* libcloudproviders-dev >= 0.3.0
 * libdbus-glib-1-dev
 * libgail-3-dev
 * libgee-0.8-dev
 * libglib2.0-dev
-* libgranite-dev >= 5.2.0
+* libgranite-dev >= 5.3.0
 * libgtk-3-dev
+* libhandy-1-dev >= 0.83.0
 * libnotify-dev
 * libpango1.0-dev
 * libplank-dev

@@ -131,7 +131,7 @@ public class Async : Object {
         //Try lifting requirement for info on remote connections
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
-        is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
+        is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
         /* Previously, mtp protocol had problems launching files but this currently works
          * using newer devices such as Android phones so this restriction is lifted. The flag is
          * retained in case it needs reinstating or using for another protocol.
@@ -145,7 +145,7 @@ public class Async : Object {
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
 
         if (is_recent) {
-           GOF.Preferences.get_default().notify["remember-history"].connect (() => {
+           GOF.Preferences.get_default ().notify["remember-history"].connect (() => {
                 need_reload (true);
             });
         }
@@ -211,7 +211,7 @@ public class Async : Object {
 
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
-                debug ("Trying to load a non-folder - finding parent");
+                critical ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = GOF.File.get (parent);
@@ -809,7 +809,6 @@ public class Async : Object {
     }
 
     public GOF.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
-        assert (file != null);
         GOF.File? result = file_hash.lookup (file);
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
          * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */
@@ -910,11 +909,11 @@ public class Async : Object {
         gof.remove_from_caches ();
     }
 
-    private struct fchanges {
+    private struct FChanges {
         GLib.File file;
         FileMonitorEvent event;
     }
-    private List <fchanges?> list_fchanges = null;
+    private List <FChanges?> list_fchanges = null;
     private uint list_fchanges_count = 0;
     /* number of monitored changes to store after that simply reload the dir */
     private const uint FCHANGES_MAX = 20;
@@ -923,7 +922,7 @@ public class Async : Object {
         /* If view is frozen, store events for processing later */
         if (freeze_update) {
             if (list_fchanges_count < FCHANGES_MAX) {
-                var fc = fchanges ();
+                var fc = FChanges ();
                 fc.file = _file;
                 fc.event = event;
                 list_fchanges.prepend (fc);
@@ -1066,7 +1065,6 @@ public class Async : Object {
     }
 
     public static Async from_gfile (GLib.File file) {
-        assert (file != null);
         /* Ensure uri is correctly escaped and has scheme */
         var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
         var scheme = Uri.parse_scheme (escaped_uri);
@@ -1076,14 +1074,31 @@ public class Async : Object {
         }
 
         var gfile = GLib.File.new_for_uri (escaped_uri);
+        var afile = gfile.dup ();
+        /* Avoid adding a new Async that will be a duplicate of an existing one, when called
+         * with non-folder location. */
+        if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
+            var ftype = gfile.query_file_type (0, null);
+            if (ftype != FileType.DIRECTORY) {
+                afile = gfile.get_parent ();
+            }
+        }
+
         /* Note: cache_lookup creates directory_cache if necessary */
-        Async? dir = cache_lookup (gfile);
+        Async? dir = cache_lookup (afile);
         /* Both local and non-local files can be cached */
         if (dir == null) {
-            dir = new Async (gfile);
+            dir = new Async (afile);
             dir_cache_lock.@lock ();
             directory_cache.insert (dir.creation_key, dir);
             dir_cache_lock.unlock ();
+        }
+
+
+        /* If the original file was not a folder, ensure that it will be
+         * selected in the loaded view*/
+        if (!afile.equal (gfile)) {
+            dir.selected_file = file;
         }
 
         return dir;
@@ -1094,7 +1109,6 @@ public class Async : Object {
     }
 
     private static void remove_file_from_cache (GOF.File gof) {
-        assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
         if (dir != null) {
             dir.file_hash.remove (gof.location);
@@ -1110,6 +1124,7 @@ public class Async : Object {
 
         if (file == null) {
             critical ("Null file received in Async cache_lookup");
+            return null;
         }
 
         dir_cache_lock.@lock ();
@@ -1138,10 +1153,6 @@ public class Async : Object {
     }
 
     public static Async? cache_lookup_parent (GLib.File file) {
-        if (file == null) {
-            critical ("Null file submitted to cache lookup parent");
-            return null;
-        }
         GLib.File? parent = file.get_parent ();
         return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
@@ -1238,4 +1249,3 @@ public class Async : Object {
     }
 }
 }
-

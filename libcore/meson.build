@@ -36,21 +36,21 @@ pantheon_files_core_vala_files = files(
     'StockDialogs.vala',
     'TrashMonitor.vala',
     'UserUtils.vala',
+    'UndoManager.vala',
     'IconInfo.vala',
     'Thumbnailer.vala',
+    'FileOperations/CommonJob.vala',
+    'FileOperations/EmptyTrashJob.vala',
+    'FileOperations/MountUtils.vala',
 )
 
 pantheon_files_core_c_files = files(
-    'eel-string.c',
     'marlin-file-operations.c',
-    'marlin-undostack-manager.c',
     'fm-list-model.c',
 )
 
 pantheon_files_core_h_files = files(
-    'eel-string.h',
     'marlin-file-operations.h',
-    'marlin-undostack-manager.h',
     'fm-list-model.h',
 )
 
@@ -83,11 +83,11 @@ pantheon_files_core_dep = declare_dependency(
 )
 
 pantheon_files_core_pkgconfig = pkg.generate(
-    libraries: pantheon_files_core_library,
+    pantheon_files_core_library,
     subdirs: pantheon_files_core_name,
     filebase: pantheon_files_core_name,
     name: 'elementary Files Core Library',
-    description: 'Core library io.elementary.files and io.elementary.filechooser',
+    description: 'Core library used by io.elementary.files and by io.elementary.file-chooser',
     version: meson.project_version(),
 )
 

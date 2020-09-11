@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-29 10:01-0700\n"
+"POT-Creation-Date: 2020-08-26 21:49+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: sq\n"
@@ -19,212 +19,204 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
-#: src/Application.vala:124
+#: src/Application.vala:149
 msgid "Show the version of the program"
 msgstr "Shfaq versionin e programit."
 
-#: src/Application.vala:126
+#: src/Application.vala:151
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:128 src/View/directory_view_popup.ui:87
+#: src/Application.vala:153 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "Dritare të re"
 
-#: src/Application.vala:130
+#: src/Application.vala:155
 msgid "Quit Files"
 msgstr ""
 
-#: src/Application.vala:132
+#: src/Application.vala:157
 msgid "Enable debug logging"
 msgstr ""
 
-#: src/Application.vala:135
+#: src/Application.vala:160
 #, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
-#: src/Application.vala:138
+#: src/Application.vala:163
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: src/Application.vala:166
+#: src/Application.vala:191
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:124 src/ProgressUIHandler.vala:186
 msgid "File Operations"
 msgstr ""
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:192
+#: src/ProgressUIHandler.vala:180
 #, c-format
 msgid "Completed %s"
 msgstr ""
 
-#: src/ProgressUIHandler.vala:195
+#: src/ProgressUIHandler.vala:183
 msgid "All file operations have ended"
-msgstr ""
-
-#: src/ProgressUIHandler.vala:243
-msgid "Show Copy Dialog"
-msgstr "Shfaq dialogun e kopjimit"
-
-#: src/ProgressUIHandler.vala:255
-msgid "Cancel All In-progress Actions"
 msgstr ""
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr "Të përgjithshme"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:76 libcore/StockDialogs.vala:87
+#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "Mbyll"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:135
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
 msgstr "Përdorimi i pajisjes"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
 msgstr "Kapaciteti:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:156
-#: src/Dialogs/AbstractPropertiesDialog.vala:159
-#: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "Panjohur"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
 msgstr "Disponueshme:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
 msgstr "Përdorur:"
 
-#: src/Dialogs/ChooseAppDialog.vala:42
+#: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
-#: src/View/directory_view_popup.ui:95
+#: src/Dialogs/PropertiesWindow.vala:123
+#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Vetitë"
 
-#: src/Dialogs/PropertiesWindow.vala:223
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:244
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:248
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "panjohur"
 
-#: src/Dialogs/PropertiesWindow.vala:448
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:482
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "Nuk mund të përcaktohet"
 
-#: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
-#: libcore/FileConflictDialog.vala:148
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
+#: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Madhësia:"
 
-#: src/Dialogs/PropertiesWindow.vala:515 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Tipi:"
 
-#: src/Dialogs/PropertiesWindow.vala:518
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "Përmban:"
 
-#: src/Dialogs/PropertiesWindow.vala:541
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "Krijuar:"
 
-#: src/Dialogs/PropertiesWindow.vala:551
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "Ndryshuar:"
 
-#: src/Dialogs/PropertiesWindow.vala:563
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "Fshire:"
 
-#: src/Dialogs/PropertiesWindow.vala:573
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:580
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:588
-#: src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/PropertiesWindow.vala:604
+#: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Vendndodhja:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:606
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:629
-#: src/View/AbstractDirectoryView.vala:2140
+#: src/Dialogs/PropertiesWindow.vala:645
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:649
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "Hap me:"
 
-#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "Pronari:"
 
-#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "Grupi:"
 
-#: src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "Kushdo:"
 
-#: src/Dialogs/PropertiesWindow.vala:1213
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1217
-#: src/Dialogs/PropertiesWindow.vala:1239
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -232,19 +224,20 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1222
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:909
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -252,7 +245,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1246
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr ""
@@ -261,36 +254,36 @@ msgstr ""
 msgid "Disk Properties"
 msgstr "Vetitë e diskut"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:658
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr ""
 
-#: src/Dialogs/VolumePropertiesWindow.vala:88
+#: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
 msgstr "Formati:"
 
-#: src/Utils/MimeActions.vala:285
+#: src/Utils/MimeActions.vala:283
 msgid "Multiple file types selected"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:286
+#: src/Utils/MimeActions.vala:284
 msgid "No single app can open all these types of file"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:313
+#: src/Utils/MimeActions.vala:311
 msgid "Failed to open files"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:323
+#: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:326
+#: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:496 src/View/Window.vala:506
+#: src/View/Window.vala:542 src/View/Window.vala:552
 msgid "(as Administrator)"
 msgstr "(si Administrator)"
 
@@ -298,11 +291,11 @@ msgstr "(si Administrator)"
 msgid "Filename"
 msgstr "Emri i skedarit"
 
-#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:153
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "Përmasa"
 
-#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:158
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "Tipi"
 
@@ -310,7 +303,7 @@ msgstr "Tipi"
 msgid "Modified"
 msgstr "Ndryshuar"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:398
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
 msgstr "Kjo dosje nuk ekziston"
 
@@ -336,212 +329,339 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:827
-#: src/View/AbstractDirectoryView.vala:1112
+#: src/View/AbstractDirectoryView.vala:821
+#: src/View/AbstractDirectoryView.vala:1132
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Ky skedar nuk mund të hapet"
 
-#: src/View/AbstractDirectoryView.vala:848
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:831
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:832
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:847
 msgid "Cannot open this file"
 msgstr "Ky skedar nuk mund të hapet"
 
-#: src/View/AbstractDirectoryView.vala:861
+#: src/View/AbstractDirectoryView.vala:860
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1576
+#: src/View/AbstractDirectoryView.vala:1578
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1577
+#: src/View/AbstractDirectoryView.vala:1579
 msgid "Invalid file name provided"
 msgstr "U dha një emër skedari i pavlefshëm"
 
-#: src/View/AbstractDirectoryView.vala:2060
-msgid "Invalid"
-msgstr "Pavlefshëm"
+#: src/View/AbstractDirectoryView.vala:1854
+msgid "New Tab"
+msgstr "Skedë të re"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "Ekzekuto"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "Hap në %s"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "Hap në"
 
-#: src/View/AbstractDirectoryView.vala:2082
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Hap me"
 
-#: src/View/AbstractDirectoryView.vala:2173
-msgid "Templates"
+#: src/View/AbstractDirectoryView.vala:1958
+msgid "Paste"
+msgstr "Ngjit"
+
+#: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
+msgid "Add to Bookmarks"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2420
+#: src/View/AbstractDirectoryView.vala:1978
+msgid "Cut"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1985
+msgid "Copy"
+msgstr "Kopjo"
+
+#: src/View/AbstractDirectoryView.vala:1992
+msgid "Move to Trash"
+msgstr "Zhvendos në kosh"
+
+#: src/View/AbstractDirectoryView.vala:1997
+msgid "Delete permanently"
+msgstr "Fshij përfundimisht"
+
+#: src/View/AbstractDirectoryView.vala:2002
+msgid "Restore from Trash"
+msgstr "Rikthe nga koshi"
+
+#: src/View/AbstractDirectoryView.vala:2013
+#, fuzzy
+msgid "Open Parent Folder"
+msgstr "Ngjit brenda dosjes"
+
+#: src/View/AbstractDirectoryView.vala:2016
+msgid "Remove from History"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2032
+#, fuzzy
+#| msgid "Rename"
+msgid "Rename…"
+msgstr "Riemëro"
+
+#: src/View/AbstractDirectoryView.vala:2039
+#, fuzzy
+msgid "Copy as Link"
+msgstr "Ngjit"
+
+#: src/View/AbstractDirectoryView.vala:2057
+#, fuzzy
+msgid "Paste Link into Folder"
+msgstr "Ngjit brenda dosjes"
+
+#: src/View/AbstractDirectoryView.vala:2059
+msgid "Paste into Folder"
+msgstr "Ngjit brenda dosjes"
+
+#: src/View/AbstractDirectoryView.vala:2087
+msgid "Show Hidden Files"
+msgstr "Shfaq skedarët e fshehur"
+
+#: src/View/AbstractDirectoryView.vala:2090
+#, fuzzy
+msgid "Show Remote Thumbnails"
+msgstr "Shfaq më shumë _detaje"
+
+#: src/View/AbstractDirectoryView.vala:2093
+#, fuzzy
+msgid "Hide Thumbnails"
+msgstr "Shfaq më shumë _detaje"
+
+#: src/View/AbstractDirectoryView.vala:2113
+#, fuzzy
+msgid "Paste Link"
+msgstr "Ngjit"
+
+#: src/View/AbstractDirectoryView.vala:2167
+msgid "Name"
+msgstr "Emrit"
+
+#: src/View/AbstractDirectoryView.vala:2182
+msgid "Date"
+msgstr "Datës"
+
+#: src/View/AbstractDirectoryView.vala:2187
+msgid "Reversed Order"
+msgstr "Renditje e kundërt"
+
+#: src/View/AbstractDirectoryView.vala:2190
+msgid "Folders Before Files"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2202
+msgid "Sort by"
+msgstr "Rendit sipas"
+
+#: src/View/AbstractDirectoryView.vala:2210
+msgid "Folder"
+msgstr "Dosje"
+
+#: src/View/AbstractDirectoryView.vala:2216
+msgid "Empty File"
+msgstr "Skedar bosh"
+
+#: src/View/AbstractDirectoryView.vala:2267
+msgid "New"
+msgstr "I ri"
+
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "Pa titull %s"
 
-#: src/View/AbstractDirectoryView.vala:2768
-#: src/View/AbstractDirectoryView.vala:2963
+#: src/View/AbstractDirectoryView.vala:2866
+#: src/View/AbstractDirectoryView.vala:3067
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2769
-#: src/View/AbstractDirectoryView.vala:2948
-#: src/View/AbstractDirectoryView.vala:2964
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2923
+#: src/View/AbstractDirectoryView.vala:3021
 msgid "Cannot copy files that are in the trash"
 msgstr "Nuk mund të kopjohen skedarët që janë në kosh"
 
-#: src/View/AbstractDirectoryView.vala:2924
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2947
+#: src/View/AbstractDirectoryView.vala:3051
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:591
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr ""
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
 msgstr "Nuk mund të krijoni një dosje këtu."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:408
 msgid "The network is unavailable"
 msgstr ""
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
 msgstr "Kjo dosje nuk ju përket juve"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:413
 msgid "You don't have permission to view this folder."
 msgstr "Nuk keni lejet për të shikuar këtë dosje."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:415
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:416
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:420
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/ViewContainer.vala:428
+#: src/View/ViewContainer.vala:434
 msgid "File not Found"
 msgstr "Skedari nuk u gjet"
 
-#: src/View/ViewContainer.vala:429
+#: src/View/ViewContainer.vala:435
 msgid "The file selected no longer exists."
 msgstr "Skedari i përzgjedhur nuk ekziston më."
 
-#: src/View/Sidebar.vala:578
-msgid "Personal"
-msgstr "Personale"
-
-#: src/View/Sidebar.vala:579
-msgid "Your common places and bookmarks"
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
 msgstr ""
 
-#: src/View/Sidebar.vala:598
+#: src/View/Sidebar.vala:574
+msgid "Common places plus saved folders and files"
+msgstr ""
+
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Hape dosjen tënde personale"
 
-#: src/View/Sidebar.vala:613
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr ""
 
-#: src/View/Sidebar.vala:639 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Koshi"
 
-#: src/View/Sidebar.vala:646
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Hap koshin"
 
-#: src/View/Sidebar.vala:651
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Pajisjet"
 
-#: src/View/Sidebar.vala:652
-msgid "Your local partitions and devices"
+#: src/View/Sidebar.vala:648
+msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:780 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Rrjeti"
 
-#: src/View/Sidebar.vala:781
-msgid "Your network places"
+#: src/View/Sidebar.vala:778
+msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar.vala:813
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Tërë rrjeti"
 
-#: src/View/Sidebar.vala:820
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Shfleto përmbajtjen e rrjetit"
 
-#: src/View/Sidebar.vala:823
+#: src/View/Sidebar.vala:820
 #, fuzzy
 msgid "Connect Server"
 msgstr "Lidhu me Serverin"
 
-#: src/View/Sidebar.vala:824
+#: src/View/Sidebar.vala:821
 #, fuzzy
 msgid "Connect to a network server"
 msgstr "Lidhu me Serverin"
 
-#: src/View/Sidebar.vala:963
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
 #, c-format
-msgid "(%s Free of %s)"
+msgid "%s on %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1456
+#: src/View/Sidebar.vala:979
+#, c-format
+msgid "%s free"
+msgstr ""
+
+#: src/View/Sidebar.vala:980
+#, c-format
+msgid "%s used of %s"
+msgstr ""
+
+#: src/View/Sidebar.vala:1448
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1471
+#: src/View/Sidebar.vala:1463
 #, c-format
 msgid "Unable to start %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1280
+#: src/View/Sidebar.vala:1653 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Boshatis _koshin"
 
@@ -577,160 +697,64 @@ msgstr ""
 msgid "Open the system security and privacy settings app"
 msgstr ""
 
-#: src/View/PopupMenuBuilder.vala:34
+#: src/View/PopupMenuBuilder.vala:49
 msgid "Open"
 msgstr "Hap"
 
-#: src/View/PopupMenuBuilder.vala:38
+#: src/View/PopupMenuBuilder.vala:53
 msgid "Open in New _Tab"
 msgstr "Hap në një _skedë të re"
 
-#: src/View/PopupMenuBuilder.vala:42
+#: src/View/PopupMenuBuilder.vala:57
 msgid "Open in New _Window"
 msgstr "Hap në një _dritare të re"
 
-#: src/View/PopupMenuBuilder.vala:46
+#: src/View/PopupMenuBuilder.vala:61
 msgid "Remove"
 msgstr "Hiq"
 
-#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
+#: src/View/PopupMenuBuilder.vala:65
 msgid "Rename"
 msgstr "Riemëro"
 
-#: src/View/PopupMenuBuilder.vala:54
+#: src/View/PopupMenuBuilder.vala:69
 msgid "_Mount"
 msgstr "_Monto"
 
-#: src/View/PopupMenuBuilder.vala:58
+#: src/View/PopupMenuBuilder.vala:73
 msgid "_Unmount"
 msgstr "Çm_onto"
 
-#: src/View/PopupMenuBuilder.vala:62
+#: src/View/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Nxirr"
 
-#: src/View/directory_view_popup.ui:5
-msgid "Restore from Trash"
-msgstr "Rikthe nga koshi"
-
-#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
-msgid "Delete permanently"
-msgstr "Fshij përfundimisht"
-
-#: src/View/directory_view_popup.ui:16
-#, fuzzy
-msgid "Open Parent Folder"
-msgstr "Ngjit brenda dosjes"
-
-#: src/View/directory_view_popup.ui:23
-msgid "Remove from History"
-msgstr ""
-
-#: src/View/directory_view_popup.ui:37
-msgid "Move to Trash"
-msgstr "Zhvendos në kosh"
-
-#: src/View/directory_view_popup.ui:51
-msgid "New"
-msgstr "I ri"
-
-#: src/View/directory_view_popup.ui:53
-msgid "Folder"
-msgstr "Dosje"
-
-#: src/View/directory_view_popup.ui:58
-msgid "Empty File"
-msgstr "Skedar bosh"
-
-#: src/View/directory_view_popup.ui:67
-msgid "Show Hidden Files"
-msgstr "Shfaq skedarët e fshehur"
-
-#: src/View/directory_view_popup.ui:71
-#, fuzzy
-msgid "Show Remote Thumbnails"
-msgstr "Shfaq më shumë _detaje"
-
-#: src/View/directory_view_popup.ui:75
-#, fuzzy
-msgid "Hide Local Thumbnails"
-msgstr "Shfaq më shumë _detaje"
-
-#: src/View/directory_view_popup.ui:82
-msgid "New Tab"
-msgstr "Skedë të re"
-
-#: src/View/directory_view_popup.ui:102
-msgid "Bookmark"
-msgstr ""
-
-#: src/View/directory_view_popup.ui:109
-msgid "Paste"
-msgstr "Ngjit"
-
-#: src/View/directory_view_popup.ui:115
-#, fuzzy
-msgid "Paste Link"
-msgstr "Ngjit"
-
-#: src/View/directory_view_popup.ui:122
-msgid "Cut"
-msgstr ""
-
-#: src/View/directory_view_popup.ui:126
-msgid "Copy"
-msgstr "Kopjo"
-
-#: src/View/directory_view_popup.ui:130
-#, fuzzy
-msgid "Copy as Link"
-msgstr "Ngjit"
-
-#: src/View/directory_view_popup.ui:134
-msgid "Paste into Folder"
-msgstr "Ngjit brenda dosjes"
-
-#: src/View/directory_view_popup.ui:138
-#, fuzzy
-msgid "Paste Link into Folder"
-msgstr "Ngjit brenda dosjes"
-
-#: src/View/directory_view_popup.ui:145
-msgid "Sort by"
-msgstr "Rendit sipas"
-
-#: src/View/directory_view_popup.ui:148
-msgid "Name"
-msgstr "Emrit"
-
-#: src/View/directory_view_popup.ui:163
-msgid "Date"
-msgstr "Datës"
-
-#: src/View/directory_view_popup.ui:170
-msgid "Reversed Order"
-msgstr "Renditje e kundërt"
-
-#: src/View/directory_view_popup.ui:174
-msgid "Folders Before Files"
-msgstr ""
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:449
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr "Hap në një skedë të re"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:456
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr "Hap në një dritare të re"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:498
 msgid "Open in Other Application…"
 msgstr "Hap një program tjetër…"
+
+#: src/View/Widgets/HeaderBar.vala:66
+#: filechooser-module/FileChooserDialog.vala:75
+msgid "Previous"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:73
+#: filechooser-module/FileChooserDialog.vala:79
+msgid "Next"
+msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
@@ -740,70 +764,70 @@ msgstr "Ringarko këtë dosje"
 msgid "Searching…"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:216
+#: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
 msgstr "%u dosje"
 
-#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
 msgstr " përzgjedhur"
 
-#: src/View/Widgets/OverlayBar.vala:235
+#: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
 msgstr ""
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgstr "%u nën-dosje, "
 
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
 msgstr "%u nën-dosje, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgstr "%u skedar, "
 
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
 msgstr "%u skedarë, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
 msgstr ""
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:298
+#: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
 msgstr "përmasa të panjohura"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgstr "%u skedar i palexueshëm"
 
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
 msgstr "%u skedarë të palexueshëm"
@@ -819,16 +843,6 @@ msgstr "Shkrim"
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "Ekzekutim"
-
-#: src/View/Widgets/TopMenu.vala:63
-#: filechooser-module/FileChooserDialog.vala:75
-msgid "Previous"
-msgstr ""
-
-#: src/View/Widgets/TopMenu.vala:68
-#: filechooser-module/FileChooserDialog.vala:79
-msgid "Next"
-msgstr ""
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -858,110 +872,110 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV i sigurt (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server Details"
 msgstr "Detajet e serverit"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 #, fuzzy
 msgid "Server:"
 msgstr "_Serveri:"
 
-#: libcore/ConnectServerDialog.vala:142
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:168
+#: libcore/ConnectServerDialog.vala:178
 #, fuzzy
 msgid "Share:"
 msgstr "Sh_përndaje:"
 
-#: libcore/ConnectServerDialog.vala:170
+#: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:171
+#: libcore/ConnectServerDialog.vala:181
 #, fuzzy
 msgid "Folder:"
 msgstr "_Dosja:"
 
-#: libcore/ConnectServerDialog.vala:173
+#: libcore/ConnectServerDialog.vala:183
 msgid "User Details"
 msgstr "Detajet e Përdoruesit"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:185
 #, fuzzy
 msgid "Name of Windows domain"
 msgstr "Dritare e re si _Administrator"
 
-#: libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:186
 msgid "Domain name:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:179
+#: libcore/ConnectServerDialog.vala:189
 #, fuzzy
 msgid "User name:"
 msgstr "_Emri i përdoruesit:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:196
 #, fuzzy
 msgid "Password:"
 msgstr "Fjalë_kalimi:"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:198
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Kujto këtë fjalëkalim"
 
-#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:101
-#: libcore/FileConflictDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/FileConflictDialog.vala:219
 msgid "Cancel"
 msgstr "Anulo"
 
-#: libcore/ConnectServerDialog.vala:193
+#: libcore/ConnectServerDialog.vala:205
 #, fuzzy
 msgid "Connect"
 msgstr "L_idhu"
 
-#: libcore/ConnectServerDialog.vala:200
+#: libcore/ConnectServerDialog.vala:214
 msgid "Continue"
 msgstr "Vazhdo"
 
-#: libcore/ConnectServerDialog.vala:245
+#: libcore/ConnectServerDialog.vala:265
 #, fuzzy
 msgid "Connecting…"
 msgstr "Duke u lidhur..."
 
-#: libcore/ConnectServerDialog.vala:364
+#: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
 msgstr "Verifikoni detajet tuaja të përdoruesit."
 
-#: libcore/DndHandler.vala:47
+#: libcore/DndHandler.vala:48
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "Dështoi ekzekutimi i \"%s\""
 
-#: libcore/DndHandler.vala:96
+#: libcore/DndHandler.vala:97
 msgid "Move Here"
 msgstr "Zhvendos këtu"
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:98
 msgid "Copy Here"
 msgstr "Kopjo këtu"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:99
 msgid "Link Here"
 msgstr ""
 
@@ -969,276 +983,316 @@ msgstr ""
 msgid "File conflict"
 msgstr "Konflikt skedarësh"
 
-#: libcore/FileConflictDialog.vala:115
+#: libcore/FileConflictDialog.vala:122
 msgid "Original file"
 msgstr "Skedari origjinar"
 
-#: libcore/FileConflictDialog.vala:133 libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
 msgid "Last modified:"
 msgstr "Ndryshimi i fundit:"
 
-#: libcore/FileConflictDialog.vala:143
+#: libcore/FileConflictDialog.vala:161
 msgid "Replace with"
 msgstr "Zëvendëso me"
 
-#: libcore/FileConflictDialog.vala:171
+#: libcore/FileConflictDialog.vala:199
 msgid "Reset"
 msgstr "Rivendos"
 
-#: libcore/FileConflictDialog.vala:181
+#: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
 msgstr "_Zgjidhni një emër të ri për destinacionin"
 
-#: libcore/FileConflictDialog.vala:184
+#: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
 msgstr "Zbato këtë veprim për të gjithë skedarët"
 
-#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:161
+#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Kapërce"
 
-#: libcore/FileConflictDialog.vala:187
+#: libcore/FileConflictDialog.vala:217
 msgid "Re_name"
 msgstr "Rie_mërto"
 
-#: libcore/FileConflictDialog.vala:191
+#: libcore/FileConflictDialog.vala:221
 msgid "Keep Newest"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:194
+#: libcore/FileConflictDialog.vala:224
 msgid "Replace"
 msgstr "Zëvendëso"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:340
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Bashko dosjen \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:341
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:313
+#: libcore/FileConflictDialog.vala:343
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Një dosje e vjetër me të njëjtin emër ekziston tashmë në \"%s\"."
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:345
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Një dosje e re me të njëjtin emër ekziston tashmë në \"%s\"."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:347
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Një dosje tjetër me të njëjtin emër ekziston tashmë në \"%s\"."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:350
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Të zëvendësohet dosja \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:321
+#: libcore/FileConflictDialog.vala:351
 msgid "Replacing it will remove all files in the folder."
 msgstr "Zëvendësimi i saj do të heqë të gjithë skedarët në dosje."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:352
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Një dosje me të njëjtin emër ekziston tashmë në \"%s\"."
 
-#: libcore/FileConflictDialog.vala:325
+#: libcore/FileConflictDialog.vala:355
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Të zëvendësohet skedari \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
 msgstr "Zëvendësimi do të mbishkruajë përmbajtjen e tij."
 
-#: libcore/FileConflictDialog.vala:329
+#: libcore/FileConflictDialog.vala:359
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Një skedar më i vjetër me të njëjtin emër ekziston tashmë në \"%s\"."
 
-#: libcore/FileConflictDialog.vala:331
+#: libcore/FileConflictDialog.vala:361
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Një skedar më i ri me të njëjtin emër ekziston tashmë në \"%s\"."
 
-#: libcore/FileConflictDialog.vala:333
+#: libcore/FileConflictDialog.vala:363
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Një skedar tjetër me të njëjtin emër ekziston tashmë në \"%s\"."
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:389
 msgid "Merge"
 msgstr "Bashko"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Nuk mund të përcaktohet pozicioni origjinar i \"%s\" "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Elementi nuk mund të kthehet nga koshi"
 
-#: libcore/FileUtils.vala:434
+#: libcore/FileUtils.vala:497
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:523
+#: libcore/FileUtils.vala:586
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Sot në %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:529
+#: libcore/FileUtils.vala:594
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Dje në %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:535
+#: libcore/FileUtils.vala:602
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/gof-directory-async.vala:690
-msgid "Server did not respond within time limit"
-msgstr ""
-
-#: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
-#: libcore/ProgressInfo.vala:79
-msgid "Preparing"
-msgstr "Duke përgatitur"
-
-#: libcore/marlin-file-operations.c:159
-#, fuzzy
-msgid "_Cancel"
-msgstr "Anulo"
-
-#: libcore/marlin-file-operations.c:160
-#, fuzzy
-msgid "_Delete"
-msgstr "Fshire:"
-
-#: libcore/marlin-file-operations.c:162
-msgid "S_kip All"
-msgstr ""
-
-#: libcore/marlin-file-operations.c:163
-msgid "_Retry"
-msgstr "_Riprovo"
-
-#: libcore/marlin-file-operations.c:164
-msgid "Delete _All"
-msgstr "Elemino _gjithçka"
-
-#: libcore/marlin-file-operations.c:165
-msgid "_Replace"
-msgstr "_Zëvendëso"
-
-#: libcore/marlin-file-operations.c:166
-msgid "Replace _All"
-msgstr "Zëvendëso _gjithçka"
-
-#: libcore/marlin-file-operations.c:167
-msgid "_Merge"
-msgstr "_Bashko"
-
-#: libcore/marlin-file-operations.c:168
-#, fuzzy
-msgid "Merge _All"
-msgstr "Elemino _gjithçka"
-
-#: libcore/marlin-file-operations.c:169
-msgid "Copy _Anyway"
-msgstr "Kopjo _gjithsesi"
-
-#: libcore/marlin-file-operations.c:250
+#: libcore/FileUtils.vala:898
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekondë"
 msgstr[1] "%'d sekonda"
 
-#: libcore/marlin-file-operations.c:255 libcore/marlin-file-operations.c:266
+#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minutë"
 msgstr[1] "%'d minuta"
 
-#: libcore/marlin-file-operations.c:265
+#: libcore/FileUtils.vala:909
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d orë"
 msgstr[1] "%'d orë"
 
-#: libcore/marlin-file-operations.c:273
+#: libcore/FileUtils.vala:913
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "rreth %'d orë"
 msgstr[1] "rreth %'d orë"
 
-#: libcore/marlin-file-operations.c:349
+#: libcore/gof-directory-async.vala:690
+msgid "Server did not respond within time limit"
+msgstr ""
+
+#: libcore/ProgressInfo.vala:29 libcore/ProgressInfo.vala:30
+#: libcore/ProgressInfo.vala:31
+msgid "Preparing"
+msgstr "Duke përgatitur"
+
+#: libcore/StockDialogs.vala:20
+#, fuzzy
+msgid "_Cancel"
+msgstr "Anulo"
+
+#: libcore/StockDialogs.vala:21
+#, fuzzy
+msgid "Delete"
+msgstr "Fshire:"
+
+#: libcore/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr ""
+
+#: libcore/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Riprovo"
+
+#: libcore/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Elemino _gjithçka"
+
+#: libcore/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Zëvendëso"
+
+#: libcore/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "Zëvendëso _gjithçka"
+
+#: libcore/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Bashko"
+
+#: libcore/StockDialogs.vala:29
+#, fuzzy
+msgid "Merge _All"
+msgstr "Elemino _gjithçka"
+
+#: libcore/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Kopjo _gjithsesi"
+
+#: libcore/UndoManager.vala:310
+#, fuzzy
+msgid "Original location could not be determined"
+msgstr "Nuk mund të përcaktohet"
+
+#: libcore/UndoManager.vala:311
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:40
+msgid "Permanently delete all items from Trash?"
+msgstr "Të fshihen përfundimisht të gjithë elementët nga Koshi?"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:41
+#, fuzzy
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+"Të gjithë elementet në kosh në këtë montim, do të humben përfundimisht."
+
+#: libcore/FileOperations/EmptyTrashJob.vala:44
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr "Të fshihen të gjithë elementët nga koshi në këtë montim?"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:45
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+"Të gjithë elementet në kosh në këtë montim, do të humben përfundimisht."
+
+#: libcore/FileOperations/EmptyTrashJob.vala:104
+msgid "Emptying Trash"
+msgstr "Duke boshatisur koshin"
+
+#: libcore/FileOperations/MountUtils.vala:26
+#, fuzzy, c-format
+msgid "Unable to mount '%s'"
+msgstr "Dështoi ekzekutimi i \"%s\""
+
+#: libcore/marlin-file-operations.c:204
 #, c-format
 msgid "Link to %s"
 msgstr "Lidhje me %s"
 
-#: libcore/marlin-file-operations.c:353
+#: libcore/marlin-file-operations.c:208
 #, c-format
 msgid "Another link to %s"
 msgstr "Një lidhje tjetër me %s"
 
-#: libcore/marlin-file-operations.c:369
+#: libcore/marlin-file-operations.c:224
 #, fuzzy, c-format
 msgid "%'dst link to %s"
 msgstr "lidhje me %s"
 
-#: libcore/marlin-file-operations.c:373
+#: libcore/marlin-file-operations.c:228
 #, fuzzy, c-format
 msgid "%'dnd link to %s"
 msgstr "lidhje me %s"
 
-#: libcore/marlin-file-operations.c:377
+#: libcore/marlin-file-operations.c:232
 #, fuzzy, c-format
 msgid "%'drd link to %s"
 msgstr "lidhje me %s"
 
-#: libcore/marlin-file-operations.c:381
+#: libcore/marlin-file-operations.c:236
 #, fuzzy, c-format
 msgid "%'dth link to %s"
 msgstr "lidhje me %s"
 
-#: libcore/marlin-file-operations.c:573
+#: libcore/marlin-file-operations.c:428
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:581
+#: libcore/marlin-file-operations.c:436
 #, c-format
 msgid " (%'d"
 msgstr ""
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1226
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+#: libcore/marlin-file-operations.c:875
+#, fuzzy, c-format
+msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "A je i sigurt që dëshiron të fshish përfundimisht \"%B\" nga koshi?"
 
-#: libcore/marlin-file-operations.c:1229
+#: libcore/marlin-file-operations.c:879
 #, fuzzy, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1249,38 +1303,19 @@ msgid_plural ""
 msgstr[0] "A je i sigurt që dëshiron të fshish përfundimisht \"%B\" nga koshi?"
 msgstr[1] "A je i sigurt që dëshiron të fshish përfundimisht \"%B\" nga koshi?"
 
-#: libcore/marlin-file-operations.c:1239 libcore/marlin-file-operations.c:1321
+#: libcore/marlin-file-operations.c:889
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Nëse fshini një element, ai do të humbasë përgjithmonë."
 
-#: libcore/marlin-file-operations.c:1264
-msgid "Permanently delete all items from Trash?"
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:915
+#, fuzzy, c-format
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently delete “%s”?"
 msgstr "Të fshihen përfundimisht të gjithë elementët nga Koshi?"
 
-#: libcore/marlin-file-operations.c:1265
-#, fuzzy
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-"Të gjithë elementet në kosh në këtë montim, do të humben përfundimisht."
-
-#: libcore/marlin-file-operations.c:1268
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Të fshihen të gjithë elementët nga koshi në këtë montim?"
-
-#: libcore/marlin-file-operations.c:1269
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-"Të gjithë elementet në kosh në këtë montim, do të humben përfundimisht."
-
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1309
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
-
-#: libcore/marlin-file-operations.c:1312
+#: libcore/marlin-file-operations.c:918
 #, fuzzy, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1288,122 +1323,133 @@ msgid_plural ""
 msgstr[0] "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
 msgstr[1] "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
 
-#: libcore/marlin-file-operations.c:1355
+#: libcore/marlin-file-operations.c:927
+msgid "Deleted items are not sent to Trash and are not recoverable."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:961
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:1361
+#: libcore/marlin-file-operations.c:966
 msgid "Deleting files"
 msgstr "Duke fshirë skedarët"
 
-#. TRANSLATORS: %T will expand to a time like "2 minutes". It must not be translated or removed.
-#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: libcore/marlin-file-operations.c:1374
-msgid "%T left"
-msgid_plural "%T left"
+#. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
+#. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+#: libcore/marlin-file-operations.c:981
+#, fuzzy, c-format
+msgid "%s left"
+msgid_plural "%s left"
 msgstr[0] "%T ngelet"
 msgstr[1] "%T ngelen"
 
-#: libcore/marlin-file-operations.c:1441 libcore/marlin-file-operations.c:1479
-#: libcore/marlin-file-operations.c:1522 libcore/marlin-file-operations.c:1600
-#: libcore/marlin-file-operations.c:2372
+#: libcore/marlin-file-operations.c:1050 libcore/marlin-file-operations.c:1090
+#: libcore/marlin-file-operations.c:1136 libcore/marlin-file-operations.c:1218
+#: libcore/marlin-file-operations.c:1725
 msgid "Error while deleting."
 msgstr "Gabim gjatë fshirjes."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1447
+#: libcore/marlin-file-operations.c:1056
+#, fuzzy, c-format
 msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
+"Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 "Skedarët në dosjen \"%B\" nuk mund të fshihen sepse nuk keni lejet e "
 "mjaftueshme për t'i parë."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1452 libcore/marlin-file-operations.c:2435
-#: libcore/marlin-file-operations.c:3473
+#: libcore/marlin-file-operations.c:1061 libcore/marlin-file-operations.c:1789
+#: libcore/marlin-file-operations.c:2776
+#, fuzzy, c-format
 msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
+"There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 "Ndodhi një gabim gjatë marrjes së informacioneve përreth skedarëve në dosjen "
 "\"%B\"."
 
-#: libcore/marlin-file-operations.c:1461 libcore/marlin-file-operations.c:3482
+#: libcore/marlin-file-operations.c:1071 libcore/marlin-file-operations.c:2786
 #, fuzzy
 msgid "_Skip files"
 msgstr "_Kapërce"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1484
+#: libcore/marlin-file-operations.c:1095
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "Dosja \"%B\" nuk mund të fshihet sepse nuk keni lejet e mjaftueshme për t'i "
 "lexuar."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1489 libcore/marlin-file-operations.c:2478
-#: libcore/marlin-file-operations.c:3522
-msgid "There was an error reading the folder \"%B\"."
+#: libcore/marlin-file-operations.c:1100 libcore/marlin-file-operations.c:1834
+#: libcore/marlin-file-operations.c:2828
+#, fuzzy, c-format
+msgid "There was an error reading the folder \"%s\"."
 msgstr "Ndodhi një gabim gjatë leximit të dosjes \"%B\"."
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1524
-msgid "Could not remove the folder %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:1139
+#, fuzzy, c-format
+msgid "Could not remove the folder %s."
 msgstr "Nuk mund të hiqet dosja %B."
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1602
-msgid "There was an error deleting %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:1221
+#, fuzzy, c-format
+msgid "There was an error deleting %s."
 msgstr "Ndodhi një gabim gjatë fshirjes së %B."
 
-#: libcore/marlin-file-operations.c:1686
+#: libcore/marlin-file-operations.c:1306
 msgid "Moving files to trash"
 msgstr "Duke lëvizur skedarët në kosh"
 
-#: libcore/marlin-file-operations.c:1688
+#: libcore/marlin-file-operations.c:1308
 #, fuzzy, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Duke lëvizur skedarët në kosh"
 msgstr[1] "Duke lëvizur skedarët në kosh"
 
-#: libcore/marlin-file-operations.c:1786 libcore/marlin-file-operations.c:1789
-#: libcore/marlin-file-operations.c:1792
+#: libcore/marlin-file-operations.c:1406 libcore/marlin-file-operations.c:1409
+#: libcore/marlin-file-operations.c:1412
 msgid "Cannot move file to trash or delete it"
 msgstr "Nuk mund të zhvendoset skedari në kosh apo të fshihet"
 
-#: libcore/marlin-file-operations.c:1787
+#: libcore/marlin-file-operations.c:1407
 #, fuzzy
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr "Nuk lejohet të kopjohen skedarët në kosh"
 
-#: libcore/marlin-file-operations.c:1790
+#: libcore/marlin-file-operations.c:1410
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1793
+#: libcore/marlin-file-operations.c:1413
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:1795
+#: libcore/marlin-file-operations.c:1415
 #, fuzzy
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "Nuk mund të zhvendoset skedari në kosh apo të fshihet"
 
-#: libcore/marlin-file-operations.c:1796
+#: libcore/marlin-file-operations.c:1416
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -1411,12 +1457,12 @@ msgstr ""
 "Ky skedar nuk mund të zhvendoset në kosh. Shikoni detajet më poshtë për "
 "informacione të mëtejshme."
 
-#: libcore/marlin-file-operations.c:1800
+#: libcore/marlin-file-operations.c:1420
 #, fuzzy
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Nuk mund të zhvendoset skedari në kosh apo të fshihet"
 
-#: libcore/marlin-file-operations.c:1801
+#: libcore/marlin-file-operations.c:1421
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -1424,7 +1470,7 @@ msgstr ""
 "Skedari nuk mund të zhvendoset në kosh. Ka mundësi që as ju nuk mund ta "
 "fshini."
 
-#: libcore/marlin-file-operations.c:1806
+#: libcore/marlin-file-operations.c:1427
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1432,178 +1478,165 @@ msgstr ""
 "\n"
 " Fshirja e një skedari e heq atë përfundimisht"
 
-#: libcore/marlin-file-operations.c:1996
+#: libcore/marlin-file-operations.c:1617
 msgid "Trashing Files"
 msgstr "Duke zhvendosur skedarët në kosh"
 
-#: libcore/marlin-file-operations.c:1998
+#: libcore/marlin-file-operations.c:1619
 msgid "Deleting Files"
 msgstr "Duke fshirë skedarët"
 
-#. TRANSLATORS: %V is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
-#: libcore/marlin-file-operations.c:2068
-#, fuzzy
-msgid "Unable to eject %V"
-msgstr "Dështoi ekzekutimi i \"%s\""
-
-#: libcore/marlin-file-operations.c:2070
-msgid "Unable to unmount %V"
-msgstr ""
-
-#: libcore/marlin-file-operations.c:2284
-#, fuzzy, c-format
-msgid "Unable to mount %s"
-msgstr "Dështoi ekzekutimi i \"%s\""
-
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
-#. The order in which %'d and %S appear must not change.
-#: libcore/marlin-file-operations.c:2311
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+#. The order in which %'d and %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:1659
+#, fuzzy, c-format
+msgid "Preparing to copy %'d file (%s)"
+msgid_plural "Preparing to copy %'d files (%s)"
+msgstr[0] "Duke kopjuar skedarin %'d (në \"%B\") në \"%B\""
+msgstr[1] "Duke kopjuar skedarët %'d (në \"%B\") në \"%B\""
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
-#. The order in which %'d and %S appear must not change.
-#: libcore/marlin-file-operations.c:2321
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+#. The order in which %'d and %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:1671
+#, fuzzy, c-format
+msgid "Preparing to move %'d file (%s)"
+msgid_plural "Preparing to move %'d files (%s)"
+msgstr[0] "Duke kopjuar skedarin %'d në \"%B\""
+msgstr[1] "Duke kopjuar skedarin %'d në \"%B\""
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-#. %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
-#. The order in which %'d and %S appear must not change.
-#: libcore/marlin-file-operations.c:2331
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+#. The order in which %'d and %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:1683
+#, fuzzy, c-format
+msgid "Preparing to delete %'d file (%s)"
+msgid_plural "Preparing to delete %'d files (%s)"
+msgstr[0] "Duke kopjuar skedarin %'d (në \"%B\") në \"%B\""
+msgstr[1] "Duke kopjuar skedarët %'d (në \"%B\") në \"%B\""
 
-#: libcore/marlin-file-operations.c:2337
+#: libcore/marlin-file-operations.c:1690
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-file-operations.c:2368 libcore/marlin-file-operations.c:3325
-#: libcore/marlin-file-operations.c:3461 libcore/marlin-file-operations.c:3510
+#: libcore/marlin-file-operations.c:1721 libcore/marlin-file-operations.c:2623
+#: libcore/marlin-file-operations.c:2763 libcore/marlin-file-operations.c:2815
 msgid "Error while copying."
 msgstr "Gabim gjatë kopjimit."
 
-#: libcore/marlin-file-operations.c:2370 libcore/marlin-file-operations.c:3459
-#: libcore/marlin-file-operations.c:3508
+#: libcore/marlin-file-operations.c:1723 libcore/marlin-file-operations.c:2761
+#: libcore/marlin-file-operations.c:2813
 msgid "Error while moving."
 msgstr "Gabim gjatë lëvizjes."
 
-#: libcore/marlin-file-operations.c:2374
+#: libcore/marlin-file-operations.c:1727
 msgid "Error while moving files to trash."
 msgstr "Gabim gjatë zhvendosjes së skedarëve në kosh."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2430
-#, fuzzy
+#: libcore/marlin-file-operations.c:1784
+#, fuzzy, c-format
 msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
+"Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
 "Skedarët në dosjen \"%B\" nuk mund të fshihen sepse nuk keni lejet e "
 "mjaftueshme për t'i parë."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2473
-#, fuzzy
+#: libcore/marlin-file-operations.c:1829
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
+"The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Dosja \"%B\" nuk mund të fshihet sepse nuk keni lejet e mjaftueshme për t'i "
 "lexuar."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2557
-#, fuzzy
+#: libcore/marlin-file-operations.c:1916
+#, fuzzy, c-format
 msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
+"The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Dosja \"%B\" nuk mund të fshihet sepse nuk keni lejet e mjaftueshme për t'i "
 "lexuar."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2562
-msgid "There was an error getting information about \"%B\"."
+#: libcore/marlin-file-operations.c:1921
+#, fuzzy, c-format
+msgid "There was an error getting information about \"%s\"."
 msgstr "U ndesh një gabim gjatë marrjes së informacioneve në lidhje me \"%B\"."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2663 libcore/marlin-file-operations.c:2707
-#: libcore/marlin-file-operations.c:2742 libcore/marlin-file-operations.c:2776
-msgid "Error while copying to \"%B\"."
+#: libcore/marlin-file-operations.c:2027 libcore/marlin-file-operations.c:2073
+#: libcore/marlin-file-operations.c:2111 libcore/marlin-file-operations.c:2151
+#, fuzzy, c-format
+msgid "Error while copying to \"%s\"."
 msgstr "Gabim gjatë kopjimit në \"%B\"."
 
-#: libcore/marlin-file-operations.c:2667
+#: libcore/marlin-file-operations.c:2032
 #, fuzzy
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nuk keni lejet për të shikuar këtë dosje."
 
-#: libcore/marlin-file-operations.c:2669
+#: libcore/marlin-file-operations.c:2034
 #, fuzzy
 msgid "There was an error getting information about the destination."
 msgstr ""
 "Ndodhi një gabim gjatë marrjes së informacioneve përreth skedarëve në dosjen "
 "\"%B\"."
 
-#: libcore/marlin-file-operations.c:2708
+#: libcore/marlin-file-operations.c:2074
 #, fuzzy
 msgid "The destination is not a folder."
 msgstr "_Përsërit krijimin e %d dosjeje"
 
-#: libcore/marlin-file-operations.c:2743
+#: libcore/marlin-file-operations.c:2113
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 
-#. TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+#. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2747
-#, c-format
-msgid "There is %S available, but %S is required."
+#: libcore/marlin-file-operations.c:2119
+#, fuzzy, c-format
+msgid "There is %s available, but %s is required."
 msgstr "Ka %S të lirë, por nevojitet %S."
 
-#: libcore/marlin-file-operations.c:2777
+#: libcore/marlin-file-operations.c:2153
 msgid "The destination is read-only."
 msgstr ""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2849
+#: libcore/marlin-file-operations.c:2225
 #, fuzzy, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "Duke zhvendosur \"%B\" në \"%B\""
 
-#: libcore/marlin-file-operations.c:2850
+#: libcore/marlin-file-operations.c:2226
 #, fuzzy, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "Duke kopjuar \"%B\" në \"%B\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2854
+#: libcore/marlin-file-operations.c:2230
 #, fuzzy, c-format
 msgid "Duplicating \"%s\""
 msgstr "Duke dyfishuar \"%B\""
@@ -1612,14 +1645,14 @@ msgstr "Duke dyfishuar \"%B\""
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2862
+#: libcore/marlin-file-operations.c:2238
 #, fuzzy, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "Duke zhvendosur skedarin %'d (në \"%B\") në \"%B\""
 msgstr[1] "Duke zhvendosur skedarët %'d (në \"%B\") në \"%B\""
 
-#: libcore/marlin-file-operations.c:2865
+#: libcore/marlin-file-operations.c:2241
 #, fuzzy, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1628,7 +1661,7 @@ msgstr[1] "Duke kopjuar skedarët %'d (në \"%B\") në \"%B\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2874
+#: libcore/marlin-file-operations.c:2250
 #, fuzzy, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1639,657 +1672,281 @@ msgstr[1] "Duke kopjuar skedarët %'d (në \"%B\") në \"%B\""
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2887
+#: libcore/marlin-file-operations.c:2262
 #, fuzzy, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "Duke zhvendosur skedarin %'d në \"%B\""
 msgstr[1] "Duke zhvendosur skedarët %'d në \"%B\""
 
-#: libcore/marlin-file-operations.c:2890
+#: libcore/marlin-file-operations.c:2265
 #, fuzzy, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "Duke kopjuar skedarin %'d në \"%B\""
 msgstr[1] "Duke kopjuar skedarët %'d në \"%B\""
 
-#: libcore/marlin-file-operations.c:2896
+#: libcore/marlin-file-operations.c:2271
 #, fuzzy, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Duke dyfishuar \"%B\""
 msgstr[1] "Duke dyfishuar \"%B\""
 
-#. TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2924
+#. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
+#: libcore/marlin-file-operations.c:2301
 #, c-format
-msgid "%S of %S"
+msgid "%s of %s"
 msgstr ""
 
-#. TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+#. TRANSLATORS: The two first %s and the last %s will expand to a size
+#. like "2 bytes" or "3 MB", the third %s to a time duration like
 #. "2 minutes". It must not be translated or removed.
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. The order in which %S and %T appear must not change.
-#: libcore/marlin-file-operations.c:2936
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
+#. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
+#. The order in which %s appear can be changed by using the right positional specifier.
+#: libcore/marlin-file-operations.c:2321
+#, c-format
+msgid "%s of %s — %s left (%s/sec)"
+msgid_plural "%s of %s — %s left (%s/sec)"
 msgstr[0] ""
 msgstr[1] ""
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3331
-#, fuzzy
+#: libcore/marlin-file-operations.c:2630
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
+"The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 "Dosja \"%B\" nuk mund të kopjohet sepse nuk ke të drejtat për ta lexuar atë."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3336
-msgid "There was an error creating the folder \"%B\"."
+#: libcore/marlin-file-operations.c:2635
+#, fuzzy, c-format
+msgid "There was an error creating the folder \"%s\"."
 msgstr "Ndodhi një gabim gjatë krijimit të dosjes \"%B\"."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3468
+#: libcore/marlin-file-operations.c:2771
+#, fuzzy, c-format
 msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
+"Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 "Skedarët në dosjen \"%B\" nuk mund të kopjohen sepse nuk ke të drejtat për "
 "t'i parë ata."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3517
+#: libcore/marlin-file-operations.c:2823
+#, fuzzy, c-format
 msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
+"The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "Dosja \"%B\" nuk mund të kopjohet sepse nuk ke të drejtat për ta lexuar atë."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3566 libcore/marlin-file-operations.c:4281
-msgid "Error while moving \"%B\"."
+#. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
+#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+#: libcore/marlin-file-operations.c:2876 libcore/marlin-file-operations.c:3608
+#: libcore/marlin-file-operations.c:4175
+#, fuzzy, c-format
+msgid "Error while moving \"%s\"."
 msgstr "Gabim gjatë zhvendosjes së \"%B\"."
 
-#: libcore/marlin-file-operations.c:3567
+#: libcore/marlin-file-operations.c:2878
 msgid "Could not remove the source folder."
 msgstr "Nuk mund të hiqet dosja fillestare."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3653 libcore/marlin-file-operations.c:3697
-#: libcore/marlin-file-operations.c:4285
-msgid "Error while copying \"%B\"."
+#: libcore/marlin-file-operations.c:2967 libcore/marlin-file-operations.c:3018
+#: libcore/marlin-file-operations.c:3612
+#, fuzzy, c-format
+msgid "Error while copying \"%s\"."
 msgstr "Gabim gjatë kopjimit të \"%B\"."
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3655
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:2972
 #, fuzzy, c-format
-msgid "Could not remove files from the already existing folder %F."
+msgid "Could not remove files from the already existing folder %s."
 msgstr "Nuk mund të hiqet dosja %B."
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3699
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3023
 #, fuzzy, c-format
-msgid "Could not remove the already existing file %F."
+msgid "Could not remove the already existing file %s."
 msgstr "Nuk mund të hiqet dosja %B."
 
-#: libcore/marlin-file-operations.c:4017 libcore/marlin-file-operations.c:4700
+#: libcore/marlin-file-operations.c:3341 libcore/marlin-file-operations.c:4014
 #, fuzzy
 msgid "You cannot move a folder into itself."
 msgstr "Nuk mund të krijoni një dosje këtu."
 
-#: libcore/marlin-file-operations.c:4018 libcore/marlin-file-operations.c:4701
+#: libcore/marlin-file-operations.c:3342 libcore/marlin-file-operations.c:4015
 #, fuzzy
 msgid "You cannot copy a folder into itself."
 msgstr "Nuk mund të krijoni një dosje këtu."
 
-#: libcore/marlin-file-operations.c:4019 libcore/marlin-file-operations.c:4702
+#: libcore/marlin-file-operations.c:3343 libcore/marlin-file-operations.c:4016
 msgid "The destination folder is inside the source folder."
 msgstr ""
 
-#: libcore/marlin-file-operations.c:4050
+#: libcore/marlin-file-operations.c:3374
 #, fuzzy
 msgid "You cannot move a file over itself."
 msgstr "Nuk mund të krijoni një dosje këtu."
 
-#: libcore/marlin-file-operations.c:4051
+#: libcore/marlin-file-operations.c:3375
 #, fuzzy
 msgid "You cannot copy a file over itself."
 msgstr "Nuk mund të krijoni një dosje këtu."
 
-#: libcore/marlin-file-operations.c:4052
+#: libcore/marlin-file-operations.c:3376
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4288
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3618
+#, fuzzy, c-format
+msgid "Could not remove the already existing file with the same name in %s."
+msgstr "Nuk mund të hiqet dosja %B."
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4355
-msgid "Cannot copy \"%B\" here."
+#: libcore/marlin-file-operations.c:3688
+#, fuzzy, c-format
+msgid "Cannot copy \"%s\" here."
 msgstr "Nuk mund të kopjosh \"%B\" këtu."
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4357
-msgid "There was an error copying the file into %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:3693
+#, fuzzy, c-format
+msgid "There was an error copying the file into %s."
 msgstr "Ndodhi një gabim gjatë kopjimit të skedarit në %B."
 
-#: libcore/marlin-file-operations.c:4581
+#: libcore/marlin-file-operations.c:3894
 msgid "Copying Files"
 msgstr "Duke kopjuar skedarët"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4609
-#, fuzzy
-msgid "Preparing to move to \"%B\""
+#: libcore/marlin-file-operations.c:3930
+#, fuzzy, c-format
+msgid "Preparing to move to \"%s\""
 msgstr "Duke kopjuar skedarin %'d në \"%B\""
 
-#: libcore/marlin-file-operations.c:4613
+#: libcore/marlin-file-operations.c:3935
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#. TRANSLATORS: \"%F\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
-#. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4861
-#, c-format
-msgid "Error while moving \"%F\"."
-msgstr "Gabim gjatë zhvendosjes së \"%F\"."
-
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4863
-#, c-format
-msgid "There was an error moving the file into %F."
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4179
+#, fuzzy, c-format
+msgid "There was an error moving the file into %s."
 msgstr "Ndodhi një gabim gjatë zhvendosjes së skedarit në %F."
 
-#: libcore/marlin-file-operations.c:5121
+#: libcore/marlin-file-operations.c:4413
 msgid "Moving Files"
 msgstr "Duke zhvendosur skedarët"
 
-#. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+#. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:5152
-msgid "Creating links in \"%B\""
+#: libcore/marlin-file-operations.c:4452
+#, fuzzy, c-format
+msgid "Creating links in \"%s\""
 msgstr "Duke krijuar lidhjet në \"%B\""
 
-#: libcore/marlin-file-operations.c:5156
+#: libcore/marlin-file-operations.c:4457
 #, fuzzy, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Krijo lidhje me %d elemente"
 msgstr[1] "Krijo lidhje me %d elemente"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5297
-msgid "Error while creating link to %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4567
+#, fuzzy, c-format
+msgid "Error while creating link to %s."
 msgstr "Gabim gjatë krijimit të lidhjes në %B."
 
-#: libcore/marlin-file-operations.c:5299
+#: libcore/marlin-file-operations.c:4570
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:5302
+#: libcore/marlin-file-operations.c:4573
 msgid "The target doesn't support symbolic links."
 msgstr ""
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5306
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:4578
 #, fuzzy, c-format
-msgid "There was an error creating the symlink in %F."
+msgid "There was an error creating the symlink in %s."
 msgstr "Ndodhi një gabim gjatë krijimit të dosjes në %F."
 
-#: libcore/marlin-file-operations.c:5624
+#: libcore/marlin-file-operations.c:4881
 #, fuzzy
 msgid "Setting permissions"
 msgstr "Vendos lejet e '%s'"
 
-#: libcore/marlin-file-operations.c:5724
+#: libcore/marlin-file-operations.c:5070
 msgid "Cannot copy into trash."
 msgstr "Nuk mund të kopjohet në kosh."
 
-#: libcore/marlin-file-operations.c:5725
+#: libcore/marlin-file-operations.c:5071 libcore/marlin-file-operations.c:5079
 msgid "It is not permitted to copy files into the trash"
 msgstr "Nuk lejohet të kopjohen skedarët në kosh"
 
-#: libcore/marlin-file-operations.c:5864
+#: libcore/marlin-file-operations.c:5215
 msgid "untitled folder"
 msgstr "dosje pa emër"
 
-#: libcore/marlin-file-operations.c:5872
+#: libcore/marlin-file-operations.c:5223
 msgid "new file"
 msgstr "skedar i ri"
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6044
-msgid "Error while creating directory %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5390
+#, fuzzy, c-format
+msgid "Error while creating directory %s."
 msgstr "Gabim gjatë krijimit të dosjes %B."
 
-#. TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6047
-msgid "Error while creating file %B."
+#. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5393
+#, fuzzy, c-format
+msgid "Error while creating file %s."
 msgstr "Gabim gjatë krijimit të skedarit %B."
 
-#. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:6050
-#, c-format
-msgid "There was an error creating the directory in %F."
+#. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+#: libcore/marlin-file-operations.c:5399
+#, fuzzy, c-format
+msgid "There was an error creating the directory in %s."
 msgstr "Ndodhi një gabim gjatë krijimit të dosjes në %F."
-
-#: libcore/marlin-file-operations.c:6360
-msgid "Emptying Trash"
-msgstr "Duke boshatisur koshin"
-
-#: libcore/marlin-undostack-manager.c:578
-#, fuzzy
-msgid "Original location could not be determined"
-msgstr "Nuk mund të përcaktohet"
-
-#: libcore/marlin-undostack-manager.c:579
-msgid "Open trash folder and restore manually"
-msgstr ""
-
-#: libcore/marlin-undostack-manager.c:1116
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Fshij %d elementet e kopjuar"
-
-#: libcore/marlin-undostack-manager.c:1119
-#: libcore/marlin-undostack-manager.c:1129
-#: libcore/marlin-undostack-manager.c:1160
-#, c-format
-msgid "Delete '%s'"
-msgstr "Fshije '%s'"
-
-#: libcore/marlin-undostack-manager.c:1126
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Fshij %d elementet e dyfishuar"
-
-#: libcore/marlin-undostack-manager.c:1137
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Zhvendos %d elementet përsëri në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1141
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Zhvendos '%s' prapë në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1150
-#: libcore/marlin-undostack-manager.c:1317
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Riemërto '%s' si '%s'"
-
-#: libcore/marlin-undostack-manager.c:1169
-#: libcore/marlin-undostack-manager.c:1364
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Rikthe %d elemente nga koshi"
-
-#: libcore/marlin-undostack-manager.c:1177
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Rikthe '%s' tek '%s'"
-
-#: libcore/marlin-undostack-manager.c:1188
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Zhvendos %d elemente përsëri në kosh"
-
-#: libcore/marlin-undostack-manager.c:1191
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Zhvendos '%s' prapë në kosh"
-
-#: libcore/marlin-undostack-manager.c:1200
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Fshij lidhjet me %d elementet"
-
-#: libcore/marlin-undostack-manager.c:1203
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Fshije lidhjen me '%s'"
-
-#: libcore/marlin-undostack-manager.c:1213
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-
-#: libcore/marlin-undostack-manager.c:1221
-#, fuzzy, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Vendos lejet e '%s'"
-
-#: libcore/marlin-undostack-manager.c:1230
-#, fuzzy, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Vendos grupin e '%s' në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1240
-#, fuzzy, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Vendos pronarin e '%s' tek '%s'"
-
-#: libcore/marlin-undostack-manager.c:1279
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Kopjo %d elemente në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1283
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Kopjo '%s' në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1291
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Dyfishimi i %d elementeve në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1296
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Dyfisho '%s' në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1304
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Zhvendos %d elemente në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1308
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Zhvendos '%s' në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Krijo një skedar të ri '%s' nga shablloni "
-
-#: libcore/marlin-undostack-manager.c:1333
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Krijo një skedar bosh '%s'"
-
-#: libcore/marlin-undostack-manager.c:1340
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Krijo një dosje të re '%s'"
-
-#: libcore/marlin-undostack-manager.c:1348
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Zhvendos %d elemente në kosh"
-
-#: libcore/marlin-undostack-manager.c:1354
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Zhvendos '%s' në kosh"
-
-#: libcore/marlin-undostack-manager.c:1367
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Rikthe '%s' nga koshi"
-
-#: libcore/marlin-undostack-manager.c:1376
-#, c-format
-msgid "Create links to %d items"
-msgstr "Krijo lidhje me %d elemente"
-
-#: libcore/marlin-undostack-manager.c:1379
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Krijo lidhje me '%s'"
-
-#: libcore/marlin-undostack-manager.c:1388
-#, fuzzy, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Vendos lejet e '%s'"
-
-#: libcore/marlin-undostack-manager.c:1396
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Vendos lejet e '%s'"
-
-#: libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Vendos grupin e '%s' në '%s'"
-
-#: libcore/marlin-undostack-manager.c:1415
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Vendos pronarin e '%s' tek '%s'"
-
-#: libcore/marlin-undostack-manager.c:1447
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Anulo kopjen e %d elementi"
-msgstr[1] "_Anulo kopjen e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1452
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Anulo dyfishimin e %d elementi"
-msgstr[1] "_Anulo dyfishimin e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Anulo zhvendosjen e %d elementi"
-msgstr[1] "_Anulo zhvendosjen e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Anulo emërimin e %d elementi"
-msgstr[1] "_Anulo emërimin e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1466
-msgid "_Undo creation of an empty file"
-msgstr "_Anulo krijimit e një skedari bosh"
-
-#: libcore/marlin-undostack-manager.c:1469
-msgid "_Undo creation of a file from template"
-msgstr "_Anulo krijiin e skedarit nga shablloni"
-
-#: libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Zhbëj krijimin e dosjes %d"
-msgstr[1] "_Zhbëj krijimin e dosjeve %d"
-
-#: libcore/marlin-undostack-manager.c:1478
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Anulo zhvendosjen në kosh të %d elementi"
-msgstr[1] "_Anulo zhvendosjen në kosh të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1483
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Anulo rikthimit nga koshi të %d elementit"
-msgstr[1] "_Anulo rikthimit nga koshi të %d elementeve"
-
-#: libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Anulo krijimin e lidhjes me %d element"
-msgstr[1] "_Anulo krijimin e lidhjes me %d elementë"
-
-#: libcore/marlin-undostack-manager.c:1493
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Anulo fshirjen e %d elementi"
-msgstr[1] "_Anulo fshirjen e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1498
-#, fuzzy, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1504
-#, fuzzy, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1509
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1514
-#, fuzzy, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1542
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Përsërit kopjimin e %d elementi"
-msgstr[1] "_Përsërit kopjimin e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1547
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Përsërit dyfishimin e %d elementi"
-msgstr[1] "_Përsërit dyfishimin e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1552
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Përsërit zhvendosjen e %d elementi"
-msgstr[1] "_Përsërit zhvendosjen e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1557
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Përsërit emërimin e %d elementi"
-msgstr[1] "_Përsërit emërimin e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1561
-msgid "_Redo creation of an empty file"
-msgstr "_Përsërit krijimin e një skedari bosh"
-
-#: libcore/marlin-undostack-manager.c:1564
-msgid "_Redo creation of a file from template"
-msgstr "_Përsërit krijimin e një skedari nga shablloni"
-
-#: libcore/marlin-undostack-manager.c:1568
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Përsërit krijimin e %d dosjeje"
-msgstr[1] "_Përsërit krijimin e %d dosjeve"
-
-#: libcore/marlin-undostack-manager.c:1573
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Përsërit zhvendosjen në kosh të %d elementi"
-msgstr[1] "_Përsërit zhvendosjen në kosh të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1578
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Përsërit rikthimin nga koshi të %d elementit"
-msgstr[1] "_Përsërit rikthimin nga koshi të %d elementeve"
-
-#: libcore/marlin-undostack-manager.c:1583
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Përsërit krijimin e lidhjes me %d element"
-msgstr[1] "_Përsërit krijimin e lidhjes me %d elementë"
-
-#: libcore/marlin-undostack-manager.c:1588
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Përsërit fshirjen e %d elementi"
-msgstr[1] "_Përsërit fshirjen e %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1593
-#, fuzzy, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1599
-#, fuzzy, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1604
-#, fuzzy, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
-
-#: libcore/marlin-undostack-manager.c:1609
-#, fuzzy, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
-msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
 msgstr "Shko tek %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 #, fuzzy
 msgid "Type Path"
 msgstr "Tipi"
@@ -2298,32 +1955,28 @@ msgstr "Tipi"
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:238
 msgid "In This Folder"
 msgstr "Në këtë dosje"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:243
 #, fuzzy
 msgid "Below This Folder"
 msgstr "Në këtë dosje"
 
-#: libwidgets/View/SearchResults.vala:235
-msgid "Bookmarks"
-msgstr ""
-
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:35
+#: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr "Paraqitje me rrjetë"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:40
+#: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr "Paraqitje me listë"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:45
+#: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr "Paraqitje me kolona"
 
@@ -2380,6 +2033,278 @@ msgstr " përzgjedhur"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " përzgjedhur"
+
+#~ msgid "Show Copy Dialog"
+#~ msgstr "Shfaq dialogun e kopjimit"
+
+#~ msgid "Personal"
+#~ msgstr "Personale"
+
+#~ msgid "Delete %d copied items"
+#~ msgstr "Fshij %d elementet e kopjuar"
+
+#~ msgid "Delete '%s'"
+#~ msgstr "Fshije '%s'"
+
+#~ msgid "Delete %d duplicated items"
+#~ msgstr "Fshij %d elementet e dyfishuar"
+
+#~ msgid "Move %d items back to '%s'"
+#~ msgstr "Zhvendos %d elementet përsëri në '%s'"
+
+#~ msgid "Move '%s' back to '%s'"
+#~ msgstr "Zhvendos '%s' prapë në '%s'"
+
+#~ msgid "Rename '%s' as '%s'"
+#~ msgstr "Riemërto '%s' si '%s'"
+
+#~ msgid "Restore %d items from trash"
+#~ msgstr "Rikthe %d elemente nga koshi"
+
+#~ msgid "Restore '%s' to '%s'"
+#~ msgstr "Rikthe '%s' tek '%s'"
+
+#~ msgid "Move %d items back to trash"
+#~ msgstr "Zhvendos %d elemente përsëri në kosh"
+
+#~ msgid "Move '%s' back to trash"
+#~ msgstr "Zhvendos '%s' prapë në kosh"
+
+#~ msgid "Delete links to %d items"
+#~ msgstr "Fshij lidhjet me %d elementet"
+
+#~ msgid "Delete link to '%s'"
+#~ msgstr "Fshije lidhjen me '%s'"
+
+#, fuzzy
+#~ msgid "Restore original permissions of '%s'"
+#~ msgstr "Vendos lejet e '%s'"
+
+#, fuzzy
+#~ msgid "Restore group of '%s' to '%s'"
+#~ msgstr "Vendos grupin e '%s' në '%s'"
+
+#, fuzzy
+#~ msgid "Restore owner of '%s' to '%s'"
+#~ msgstr "Vendos pronarin e '%s' tek '%s'"
+
+#~ msgid "Copy %d items to '%s'"
+#~ msgstr "Kopjo %d elemente në '%s'"
+
+#~ msgid "Copy '%s' to '%s'"
+#~ msgstr "Kopjo '%s' në '%s'"
+
+#~ msgid "Duplicate of %d items in '%s'"
+#~ msgstr "Dyfishimi i %d elementeve në '%s'"
+
+#~ msgid "Duplicate '%s' in '%s'"
+#~ msgstr "Dyfisho '%s' në '%s'"
+
+#~ msgid "Move %d items to '%s'"
+#~ msgstr "Zhvendos %d elemente në '%s'"
+
+#~ msgid "Move '%s' to '%s'"
+#~ msgstr "Zhvendos '%s' në '%s'"
+
+#~ msgid "Create new file '%s' from template "
+#~ msgstr "Krijo një skedar të ri '%s' nga shablloni "
+
+#~ msgid "Create an empty file '%s'"
+#~ msgstr "Krijo një skedar bosh '%s'"
+
+#~ msgid "Create a new folder '%s'"
+#~ msgstr "Krijo një dosje të re '%s'"
+
+#~ msgid "Move %d items to trash"
+#~ msgstr "Zhvendos %d elemente në kosh"
+
+#~ msgid "Move '%s' to trash"
+#~ msgstr "Zhvendos '%s' në kosh"
+
+#~ msgid "Restore '%s' from trash"
+#~ msgstr "Rikthe '%s' nga koshi"
+
+#~ msgid "Create links to %d items"
+#~ msgstr "Krijo lidhje me %d elemente"
+
+#~ msgid "Create link to '%s'"
+#~ msgstr "Krijo lidhje me '%s'"
+
+#, fuzzy
+#~ msgid "Set permissions of items enclosed in '%s'"
+#~ msgstr "Vendos lejet e '%s'"
+
+#~ msgid "Set permissions of '%s'"
+#~ msgstr "Vendos lejet e '%s'"
+
+#~ msgid "Set group of '%s' to '%s'"
+#~ msgstr "Vendos grupin e '%s' në '%s'"
+
+#~ msgid "Set owner of '%s' to '%s'"
+#~ msgstr "Vendos pronarin e '%s' tek '%s'"
+
+#~ msgid "_Undo copy of %d item"
+#~ msgid_plural "_Undo copy of %d items"
+#~ msgstr[0] "_Anulo kopjen e %d elementi"
+#~ msgstr[1] "_Anulo kopjen e %d elementëve"
+
+#~ msgid "_Undo duplicate of %d item"
+#~ msgid_plural "_Undo duplicate of %d items"
+#~ msgstr[0] "_Anulo dyfishimin e %d elementi"
+#~ msgstr[1] "_Anulo dyfishimin e %d elementëve"
+
+#~ msgid "_Undo move of %d item"
+#~ msgid_plural "_Undo move of %d items"
+#~ msgstr[0] "_Anulo zhvendosjen e %d elementi"
+#~ msgstr[1] "_Anulo zhvendosjen e %d elementëve"
+
+#~ msgid "_Undo rename of %d item"
+#~ msgid_plural "_Undo rename of %d items"
+#~ msgstr[0] "_Anulo emërimin e %d elementi"
+#~ msgstr[1] "_Anulo emërimin e %d elementëve"
+
+#~ msgid "_Undo creation of an empty file"
+#~ msgstr "_Anulo krijimit e një skedari bosh"
+
+#~ msgid "_Undo creation of a file from template"
+#~ msgstr "_Anulo krijiin e skedarit nga shablloni"
+
+#~ msgid "_Undo creation of %d folder"
+#~ msgid_plural "_Undo creation of %d folders"
+#~ msgstr[0] "_Zhbëj krijimin e dosjes %d"
+#~ msgstr[1] "_Zhbëj krijimin e dosjeve %d"
+
+#~ msgid "_Undo move to trash of %d item"
+#~ msgid_plural "_Undo move to trash of %d items"
+#~ msgstr[0] "_Anulo zhvendosjen në kosh të %d elementi"
+#~ msgstr[1] "_Anulo zhvendosjen në kosh të %d elementëve"
+
+#~ msgid "_Undo restore from trash of %d item"
+#~ msgid_plural "_Undo restore from trash of %d items"
+#~ msgstr[0] "_Anulo rikthimit nga koshi të %d elementit"
+#~ msgstr[1] "_Anulo rikthimit nga koshi të %d elementeve"
+
+#~ msgid "_Undo create link to %d item"
+#~ msgid_plural "_Undo create link to %d items"
+#~ msgstr[0] "_Anulo krijimin e lidhjes me %d element"
+#~ msgstr[1] "_Anulo krijimin e lidhjes me %d elementë"
+
+#~ msgid "_Undo delete of %d item"
+#~ msgid_plural "_Undo delete of %d items"
+#~ msgstr[0] "_Anulo fshirjen e %d elementi"
+#~ msgstr[1] "_Anulo fshirjen e %d elementëve"
+
+#, fuzzy
+#~ msgid "Undo recursive change permissions of %d item"
+#~ msgid_plural "Undo recursive change permissions of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#, fuzzy
+#~ msgid "Undo change permissions of %d item"
+#~ msgid_plural "Undo change permissions of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#~ msgid "Undo change group of %d item"
+#~ msgid_plural "Undo change group of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#, fuzzy
+#~ msgid "Undo change owner of %d item"
+#~ msgid_plural "Undo change owner of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#~ msgid "_Redo copy of %d item"
+#~ msgid_plural "_Redo copy of %d items"
+#~ msgstr[0] "_Përsërit kopjimin e %d elementi"
+#~ msgstr[1] "_Përsërit kopjimin e %d elementëve"
+
+#~ msgid "_Redo duplicate of %d item"
+#~ msgid_plural "_Redo duplicate of %d items"
+#~ msgstr[0] "_Përsërit dyfishimin e %d elementi"
+#~ msgstr[1] "_Përsërit dyfishimin e %d elementëve"
+
+#~ msgid "_Redo move of %d item"
+#~ msgid_plural "_Redo move of %d items"
+#~ msgstr[0] "_Përsërit zhvendosjen e %d elementi"
+#~ msgstr[1] "_Përsërit zhvendosjen e %d elementëve"
+
+#~ msgid "_Redo rename of %d item"
+#~ msgid_plural "_Redo rename of %d items"
+#~ msgstr[0] "_Përsërit emërimin e %d elementi"
+#~ msgstr[1] "_Përsërit emërimin e %d elementëve"
+
+#~ msgid "_Redo creation of an empty file"
+#~ msgstr "_Përsërit krijimin e një skedari bosh"
+
+#~ msgid "_Redo creation of a file from template"
+#~ msgstr "_Përsërit krijimin e një skedari nga shablloni"
+
+#~ msgid "_Redo creation of %d folder"
+#~ msgid_plural "_Redo creation of %d folders"
+#~ msgstr[0] "_Përsërit krijimin e %d dosjeje"
+#~ msgstr[1] "_Përsërit krijimin e %d dosjeve"
+
+#~ msgid "_Redo move to trash of %d item"
+#~ msgid_plural "_Redo move to trash of %d items"
+#~ msgstr[0] "_Përsërit zhvendosjen në kosh të %d elementi"
+#~ msgstr[1] "_Përsërit zhvendosjen në kosh të %d elementëve"
+
+#~ msgid "_Redo restore from trash of %d item"
+#~ msgid_plural "_Redo restore from trash of %d items"
+#~ msgstr[0] "_Përsërit rikthimin nga koshi të %d elementit"
+#~ msgstr[1] "_Përsërit rikthimin nga koshi të %d elementeve"
+
+#~ msgid "_Redo create link to %d item"
+#~ msgid_plural "_Redo create link to %d items"
+#~ msgstr[0] "_Përsërit krijimin e lidhjes me %d element"
+#~ msgstr[1] "_Përsërit krijimin e lidhjes me %d elementë"
+
+#~ msgid "_Redo delete of %d item"
+#~ msgid_plural "_Redo delete of %d items"
+#~ msgstr[0] "_Përsërit fshirjen e %d elementi"
+#~ msgstr[1] "_Përsërit fshirjen e %d elementëve"
+
+#, fuzzy
+#~ msgid "Redo recursive change permissions of %d item"
+#~ msgid_plural "Redo recursive change permissions of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#, fuzzy
+#~ msgid "Redo change permissions of %d item"
+#~ msgid_plural "Redo change permissions of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#, fuzzy
+#~ msgid "Redo change group of %d item"
+#~ msgid_plural "Redo change group of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#, fuzzy
+#~ msgid "Redo change owner of %d item"
+#~ msgid_plural "Redo change owner of %d items"
+#~ msgstr[0] "Anulo ndryshimin e grupit të %d elementi"
+#~ msgstr[1] "Anulo ndryshimit e grupit të %d elementëve"
+
+#, fuzzy
+#~ msgid "Are you sure you want to permanently delete \"%s\"?"
+#~ msgstr "A dëshironi me vërtetë të fshini përfundimisht \"%B\"?"
+
+#~ msgid "Invalid"
+#~ msgstr "Pavlefshëm"
+
+#, fuzzy
+#~ msgid "Unable to eject %V"
+#~ msgstr "Dështoi ekzekutimi i \"%s\""
+
+#~ msgid "Error while moving \"%F\"."
+#~ msgstr "Gabim gjatë zhvendosjes së \"%F\"."
 
 #~ msgid "Show more _details"
 #~ msgstr "Shfaq më shumë _detaje"

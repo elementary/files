@@ -27,7 +27,6 @@ namespace FM {
         protected Gtk.TreePath? most_recently_selected = null;
 
         public IconView (Marlin.View.Slot _slot) {
-            assert (_slot != null);
             base (_slot);
         }
 
@@ -46,13 +45,13 @@ namespace FM {
 
             set_up_icon_renderer ();
 
-            (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
-            (tree as Gtk.CellLayout).pack_end (name_renderer, false);
+            tree.pack_start (icon_renderer, false);
+            tree.pack_end (name_renderer, false);
 
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
-            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
+            tree.add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
+            tree.add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -88,11 +87,11 @@ namespace FM {
         }
 
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level");
-            Preferences.marlin_icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+            var zoom = Marlin.icon_view_settings.get_enum ("zoom-level");
+            Marlin.icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
 
-            minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("maximum-zoom-level");
+            minimum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("maximum-zoom-level");
 
             if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
@@ -106,8 +105,8 @@ namespace FM {
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("default-zoom-level");
-            Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
+            var zoom = Marlin.icon_view_settings.get_enum ("default-zoom-level");
+            Marlin.icon_view_settings.set_enum ("zoom-level", zoom);
 
             return (Marlin.ZoomLevel)zoom;
         }
@@ -216,7 +215,7 @@ namespace FM {
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
-            Gtk.CellRenderer? r;
+            Gtk.CellRenderer? cell_renderer;
             uint zone;
             int x, y;
             path = null;
@@ -224,16 +223,16 @@ namespace FM {
             x = (int)event.x;
             y = (int)event.y;
 
-            tree.get_item_at_pos (x, y, out p, out r);
+            tree.get_item_at_pos (x, y, out p, out cell_renderer);
             path = p;
             zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
-            if (r != null) {
+            if (cell_renderer != null) {
                 Gdk.Rectangle rect, area;
-                tree.get_cell_rect (p, r, out rect);
-                area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
+                tree.get_cell_rect (p, cell_renderer, out rect);
+                area = cell_renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
-                if (r is Marlin.TextRenderer) {
+                if (cell_renderer is Marlin.TextRenderer) {
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
@@ -244,12 +243,12 @@ namespace FM {
                     model.@get (iter,
                             FM.ListModel.ColumnID.FILENAME, out text);
 
-                    (r as Marlin.TextRenderer).set_up_layout (text, area.width);
+                    ((Marlin.TextRenderer) cell_renderer).set_up_layout (text, area.width);
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
                         y >= rect.y &&
-                        y <= rect.y + (r as Marlin.TextRenderer).text_height) {
+                        y <= rect.y + ((Marlin.TextRenderer) cell_renderer).text_height) {
 
                         zone = ClickZone.NAME;
                     } else if (rubberband) {
@@ -312,7 +311,7 @@ namespace FM {
         }
 
         protected override bool handle_multi_select (Gtk.TreePath path) {
-            if (selected_files.length () > 0) {
+            if (selected_files != null && selected_files.first () != null) { //Could be very large - avoid length ()
                 linear_select_path (path);
                 return true;
             } else {
@@ -451,7 +450,7 @@ namespace FM {
                 before_first = previous_linear_selection_direction > 0;
                 after_last = previous_linear_selection_direction < 0;
             } else { /* fallback to most recent selection or if that is invalid, the first selected in the view */
-                end_path =  most_recently_selected != null ? most_recently_selected : first_selected;
+                end_path = most_recently_selected != null ? most_recently_selected : first_selected;
             }
 
             unselect_all (); /* This clears previous linear selection details */
@@ -522,7 +521,7 @@ namespace FM {
         private void get_first_and_last_selected (out Gtk.TreePath? first, out Gtk.TreePath? last) {
             first = last = null;
             var selected_paths = tree.get_selected_items ();
-            if (selected_paths.length () < 1) {
+            if (selected_paths == null || selected_paths.first () == null) { //Could be large - avoid length ()
                 return;
             }
 

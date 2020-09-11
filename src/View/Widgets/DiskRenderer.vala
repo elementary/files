@@ -1,6 +1,6 @@
 /***
      Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
-     Copyright (c) 2015 elementary Team
+     Copyright (c) 2015-2019 elementary, Inc (https://elementary.io)
 
      Marlin is free software; you can redistribute it and/or
      modify it under the terms of the GNU General Public License as
@@ -25,8 +25,8 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     public bool is_disk { set; get; }
 
     // offset to left align disk usage graphic with the text
-    private const int OFFSET = 2;
-    private const int BAR_HEIGHT = 5;
+    private const int OFFSET = 3;
+    private const int BAR_HEIGHT = 4;
 
     construct {
         is_disk = false;
@@ -57,16 +57,29 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         var total_width = area.width - OFFSET - 2;
         uint fill_width = total_width - (int) (((double) free_space / (double) disk_size) * (double) total_width);
 
+        var sidebar_provider = new Gtk.CssProvider ();
+        sidebar_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
+
         var context = widget.get_style_context ();
+        context.add_provider (sidebar_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         context.save ();
 
-        /* White full length and height background */
+        /* Full length and height background */
         context.add_class (Gtk.STYLE_CLASS_LEVEL_BAR);
         context.add_class (Gtk.STYLE_CLASS_FRAME);
         context.render_background (cr, x, y, total_width, BAR_HEIGHT);
         context.render_frame (cr, x, y, total_width, BAR_HEIGHT);
-        /* Blue part of bar */
-        context.add_class ("fill-block");
+
+        /* Filled part of bar */
+        double filled_percent = ((double) disk_size - (double) free_space) / (double) disk_size;
+        if (filled_percent >= 0.9) {
+            context.add_class ("fill-block-critical");
+        } else if (filled_percent >= 0.75) {
+            context.add_class ("fill-block-warn");
+        } else {
+            context.add_class ("fill-block");
+        }
+
         context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
         context.render_frame (cr, x, y, fill_width, BAR_HEIGHT);
 

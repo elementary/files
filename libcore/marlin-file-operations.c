@@ -40,21 +40,13 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "eel-string.h"
-
-#include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
-typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
-                                          gpointer    callback_data);
-typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 
 typedef struct {
-    GIOSchedulerJob *io_job;
     GTimer *time;
     GtkWindow *parent_window;
-    int screen_num;
     int inhibit_cookie;
     PFProgressInfo *progress;
     GCancellable *cancellable;
@@ -74,12 +66,7 @@ typedef struct {
     gboolean is_move;
     GList *files;
     GFile *destination;
-    //GFile *desktop_location;
-    GdkPoint *icon_positions;
-    int n_icon_positions;
     GHashTable *debuting_files;
-    MarlinCopyCallback  done_callback;
-    gpointer done_callback_data;
 } CopyMoveJob;
 
 typedef struct {
@@ -87,8 +74,6 @@ typedef struct {
     GList *files;
     gboolean try_trash;
     gboolean user_cancel;
-    MarlinDeleteCallback done_callback;
-    gpointer done_callback_data;
 } DeleteJob;
 
 typedef struct {
@@ -99,32 +84,8 @@ typedef struct {
     GFile *src;
     char *src_data;
     int length;
-    GdkPoint position;
-    gboolean has_position;
     GFile *created_file;
-    MarlinCreateCallback done_callback;
-    gpointer done_callback_data;
 } CreateJob;
-
-typedef struct {
-    CommonJob common;
-    GList *trash_dirs;
-    gboolean should_confirm;
-    MarlinOpCallback done_callback;
-    gpointer done_callback_data;
-} EmptyTrashJob;
-
-
-typedef enum {
-    JOB_COPY,
-    JOB_MOVE,
-    JOB_LINK,
-    JOB_DELETE,
-    JOB_CREATE,
-    JOB_EMPTY_TRASH,
-    JOB_MARK_TRUSTES,
-    JOB_SET_PERMISSIONS
-} JobTypes;
 
 typedef enum {
     OP_KIND_COPY,
@@ -156,125 +117,13 @@ typedef struct {
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
-#define CANCEL _("_Cancel")
-#define DELETE _("_Delete")
-#define SKIP _("_Skip")
-#define SKIP_ALL _("S_kip All")
-#define RETRY _("_Retry")
-#define DELETE_ALL _("Delete _All")
-#define REPLACE _("_Replace")
-#define REPLACE_ALL _("Replace _All")
-#define MERGE _("_Merge")
-#define MERGE_ALL _("Merge _All")
-#define COPY_FORCE _("Copy _Anyway")
-
-static gboolean
-is_all_button_text (const char *button_text)
-{
-    g_assert (button_text != NULL);
-
-    return !strcmp (button_text, SKIP_ALL) ||
-        !strcmp (button_text, REPLACE_ALL) ||
-        !strcmp (button_text, DELETE_ALL) ||
-        !strcmp (button_text, MERGE_ALL);
-}
-
 static void scan_sources (GList *files,
                           SourceInfo *source_info,
                           CommonJob *job,
                           OpKind kind);
 
-static gboolean empty_trash_job (GIOSchedulerJob *io_job,
-                                 GCancellable *cancellable,
-                                 gpointer user_data);
-
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
-
-static void
-marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs);
-
-/* keep in time with format_time()
- *
- * This counts and outputs the number of “time units”
- * formatted and displayed by format_time().
- * For instance, if format_time outputs “3 hours, 4 minutes”
- * it yields 7.
- */
-static int
-seconds_count_format_time_units (int seconds)
-{
-    int minutes;
-    int hours;
-
-    if (seconds < 0) {
-        /* Just to make sure... */
-        seconds = 0;
-    }
-
-    if (seconds < 60) {
-        /* seconds */
-        return seconds;
-    }
-
-    if (seconds < 60*60) {
-        /* minutes */
-        minutes = seconds / 60;
-        return minutes;
-    }
-
-    hours = seconds / (60*60);
-
-    if (seconds < 60*60*4) {
-        /* minutes + hours */
-        minutes = (seconds - hours * 60 * 60) / 60;
-        return minutes + hours;
-    }
-
-    return hours;
-}
-
-static char *
-format_time (int seconds)
-{
-    int minutes;
-    int hours;
-    char *res;
-
-    if (seconds < 0) {
-        /* Just to make sure... */
-        seconds = 0;
-    }
-
-    if (seconds < 60) {
-        return g_strdup_printf (ngettext ("%'d second","%'d seconds", (int) seconds), (int) seconds);
-    }
-
-    if (seconds < 60*60) {
-        minutes = seconds / 60;
-        return g_strdup_printf (ngettext ("%'d minute", "%'d minutes", minutes), minutes);
-    }
-
-    hours = seconds / (60*60);
-
-    if (seconds < 60*60*4) {
-        char *h, *m;
-
-        minutes = (seconds - hours * 60 * 60) / 60;
-
-        h = g_strdup_printf (ngettext ("%'d hour", "%'d hours", hours), hours);
-        m = g_strdup_printf (ngettext ("%'d minute", "%'d minutes", minutes), minutes);
-        res = g_strconcat (h, ", ", m, NULL);
-        g_free (h);
-        g_free (m);
-        return res;
-    }
-
-    return g_strdup_printf (ngettext ("approximately %'d hour",
-                                      "approximately %'d hours",
-                                      hours), hours);
-}
-
 static char *
 shorten_utf8_string (const char *base, int reduce_by_num_bytes)
 {
@@ -718,194 +567,13 @@ get_duplicate_name (const char *name, int count_increment, int max_length)
     return result;
 }
 
-static gboolean
-has_invalid_xml_char (char *str)
-{
-    gunichar c;
-
-    while (*str != 0) {
-        c = g_utf8_get_char (str);
-        /* characters XML permits */
-        if (!(c == 0x9 ||
-              c == 0xA ||
-              c == 0xD ||
-              (c >= 0x20 && c <= 0xD7FF) ||
-              (c >= 0xE000 && c <= 0xFFFD) ||
-              (c >= 0x10000 && c <= 0x10FFFF))) {
-            return TRUE;
-        }
-        str = g_utf8_next_char (str);
-    }
-    return FALSE;
-}
-
-static char *
-custom_full_name_to_string (char *format, va_list va)
-{
-    GFile *file;
-
-    file = va_arg (va, GFile *);
-    if (!G_IS_FILE (file)) {
-        g_critical ("Invalid file");
-        return strdup ("");
-    }
-
-    return g_file_get_parse_name (file);
-}
-
-static void
-custom_full_name_skip (va_list *va)
-{
-    (void) va_arg (*va, GFile *);
-}
-
-static char *
-custom_basename_from_file (GFile *file) {
-    GFileInfo *info;
-    char *name, *basename, *tmp;
-
-    if (!G_IS_FILE (file)) {
-        g_critical ("Invalid file");
-        return strdup ("");
-    }
-
-    info = g_file_query_info (file,
-                              G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
-                              0,
-                              g_cancellable_get_current (),
-                              NULL);
-
-    name = NULL;
-    if (info) {
-        name = g_strdup (g_file_info_get_display_name (info));
-        g_object_unref (info);
-    }
-
-    if (name == NULL) {
-        basename = g_file_get_basename (file);
-        if (g_utf8_validate (basename, -1, NULL)) {
-            name = basename;
-        } else {
-            name = g_uri_escape_string (basename, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
-            g_free (basename);
-        }
-    }
-
-    /* Some chars can't be put in the markup we use for the dialogs... */
-    if (has_invalid_xml_char (name)) {
-        tmp = name;
-        name = g_uri_escape_string (name, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
-        g_free (tmp);
-    }
-
-    /* Finally, if the string is too long, truncate it. */
-    if (name != NULL) {
-        tmp = name;
-        name = eel_str_middle_truncate (tmp, MAXIMUM_DISPLAYED_FILE_NAME_LENGTH);
-        g_free (tmp);
-    }
-
-
-    return name;
-}
-
-static char *
-custom_basename_to_string (char *format, va_list va)
-{
-    GFile *file;
-
-    file = va_arg (va, GFile *);
-
-    return custom_basename_from_file (file);
-}
-
-static void
-custom_basename_skip (va_list *va)
-{
-    (void) va_arg (*va, GFile *);
-}
-
-static char *
-custom_size_to_string (char *format, va_list va)
-{
-    goffset size;
-
-    size = va_arg (va, goffset);
-    return g_format_size (size);
-}
-
-static void
-custom_size_skip (va_list *va)
-{
-    (void) va_arg (*va, goffset);
-}
-
-static char *
-custom_time_to_string (char *format, va_list va)
-{
-    int secs;
-
-    secs = va_arg (va, int);
-    return format_time (secs);
-}
-
-static void
-custom_time_skip (va_list *va)
-{
-    (void) va_arg (*va, int);
-}
-
-static char *
-custom_mount_to_string (char *format, va_list va)
-{
-    GMount *mount;
-
-    mount = va_arg (va, GMount *);
-    if (!G_IS_MOUNT (mount)) {
-        g_critical ("Invalid mount");
-        return strdup ("");
-    }
-    return g_mount_get_name (mount);
-}
-
-static void
-custom_mount_skip (va_list *va)
-{
-    (void) va_arg (*va, GMount *);
-}
-
-
-static EelPrintfHandler handlers[] = {
-    { 'F', custom_full_name_to_string, custom_full_name_skip },
-    { 'B', custom_basename_to_string, custom_basename_skip },
-    { 'S', custom_size_to_string, custom_size_skip },
-    { 'T', custom_time_to_string, custom_time_skip },
-    { 'V', custom_mount_to_string, custom_mount_skip },
-    { 0 }
-};
-
-static char *
-f (const char *format, ...) {
-    va_list va;
-    char *res;
-
-
-    va_start (va, format);
-    res = eel_strdup_vprintf_with_custom (handlers, format, va);
-    va_end (va);
-
-    return res;
-}
-
-#define op_job_new(jobtype, __type, parent_window) ((__type *)(init_common (jobtype, sizeof(__type), parent_window)))
+#define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
 
 static gpointer
-init_common (JobTypes jobtype,
-             gsize job_size,
+init_common (gsize job_size,
              GtkWindow *parent_window)
 {
     CommonJob *common;
-    GdkScreen *screen;
 
     common = g_malloc0 (job_size); /* Booleans default to false (0) */
 
@@ -915,15 +583,10 @@ init_common (JobTypes jobtype,
     }
 
     common->progress = pf_progress_info_new ();
+    // ProgressInfo cancellable is now a property, therefore unowned - do not unref.
     common->cancellable = pf_progress_info_get_cancellable (common->progress);
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
-    common->screen_num = 0;
-
-    if (parent_window) {
-        screen = gtk_widget_get_screen (GTK_WIDGET (parent_window));
-        common->screen_num = gdk_screen_get_number (screen);
-    }
 
     return common;
 }
@@ -952,12 +615,10 @@ finalize_common (CommonJob *common)
     }
 
     // Start UNDO-REDO
-    marlin_undo_manager_add_action (marlin_undo_manager_instance(),
-                                    common->undo_redo_data);
+    marlin_undo_manager_add_action (marlin_undo_manager_instance(), common->undo_redo_data);
     // End UNDO-REDO
 
     g_object_unref (common->progress);
-    g_object_unref (common->cancellable);
     g_free (common);
 }
 
@@ -1017,30 +678,30 @@ can_delete_without_confirm (GFile *file)
     return FALSE;
 }
 
-static gboolean
-can_delete_files_without_confirm (GList *files)
+typedef struct {
+    GMainLoop *main_loop;
+    MarlinRunSimpleDialogData *data;
+} MarlinSimpleDialogResponseData;
+
+static void
+on_dialog_response (GtkDialog *dialog,
+                    gint response_id,
+                    gpointer user_data)
 {
-    g_assert (files != NULL);
+    MarlinSimpleDialogResponseData *response_data = user_data;
 
-    while (files != NULL) {
-        if (!can_delete_without_confirm (files->data)) {
-            return FALSE;
-        }
-
-        files = files->next;
-    }
-
-    return TRUE;
+    response_data->data->result = response_id;
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    g_main_loop_quit (response_data->main_loop);
 }
 
 static gboolean
-do_run_simple_dialog (gpointer _data)
+on_dialog_idle (gpointer data)
 {
-    MarlinRunSimpleDialogData *data = _data;
+    g_return_val_if_fail (GTK_IS_DIALOG (data), G_SOURCE_REMOVE);
 
-    data->result = pf_dialogs_run_simple_file_operation_dialog (data);
-
-    return FALSE;
+    gtk_widget_show_all (GTK_DIALOG (data));
+    return G_SOURCE_REMOVE;
 }
 
 /* NOTE: This frees the primary / secondary strings, in order to
@@ -1061,6 +722,9 @@ run_simple_dialog_va (CommonJob *job,
     int n_titles;
     const char *button_title;
     GPtrArray *ptr_array;
+    GMainLoop *main_loop;
+    GtkDialog *dialog;
+    MarlinSimpleDialogResponseData response_data;
 
     g_timer_stop (job->time);
 
@@ -1084,10 +748,15 @@ run_simple_dialog_va (CommonJob *job,
     data->button_titles_length1 = n_titles;
 
     pf_progress_info_pause (job->progress);
-    g_io_scheduler_job_send_to_mainloop (job->io_job,
-                                         do_run_simple_dialog,
-                                         data,
-                                         NULL);
+    main_loop = g_main_loop_new (NULL, FALSE);
+    dialog = pf_dialogs_get_simple_file_operation_dialog (data);
+    response_data.main_loop = main_loop;
+    response_data.data = data;
+    g_signal_connect (dialog, "response", G_CALLBACK (on_dialog_response), &response_data);
+    g_idle_add (on_dialog_idle, dialog);
+    g_main_loop_run (main_loop);
+    g_main_loop_unref (main_loop);
+
     pf_progress_info_resume (job->progress);
     res = data->result;
 
@@ -1218,61 +887,27 @@ confirm_delete_from_trash (CommonJob *job,
     /* Only called if confirmation known to be required - do not second guess */
 
     if (file_count == 1) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *basename = pf_file_utils_custom_basename_from_file (files->data);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = f (_("Are you sure you want to permanently delete \"%B\" "
-                      "from the trash?"), files->data);
+        prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\" "
+                                  "from the trash?"), basename);
+        g_free (basename);
     } else {
-        prompt = f (ngettext("Are you sure you want to permanently delete "
-                             "the %'d selected item from the trash?",
-                             "Are you sure you want to permanently delete "
-                             "the %'d selected items from the trash?",
-                             file_count),
-                    file_count);
+        prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
+                                           "the %'d selected item from the trash?",
+                                           "Are you sure you want to permanently delete "
+                                           "the %'d selected items from the trash?",
+                                           file_count),
+                                  file_count);
     }
 
     response = run_warning (job,
                             prompt,
-                            f (_("If you delete an item, it will be permanently lost.")),
+                            g_strdup (_("If you delete an item, it will be permanently lost.")),
                             NULL,
                             FALSE,
                             CANCEL, DELETE,
-                            NULL);
-
-    return (response == 1);
-}
-
-static gboolean
-confirm_empty_trash (EmptyTrashJob *job)
-{
-    gchar *prompt;
-    gchar* secondary_text;
-    int response;
-
-    GList *files = job->trash_dirs;
-
-    /* Only called if confirmation known to be required - do not second guess */
-
-    if (files != NULL && g_list_first (files) != NULL) {
-        if (g_file_has_uri_scheme (files->data, "trash")) {
-                /* Empty all trash */
-                prompt = f (_("Permanently delete all items from Trash?"));
-                secondary_text = f (_("All items in all trash directories, including those on any mounted external drives, will be permanently deleted."));
-        } else {
-                /* Empty trash on a particular mounted volume */
-                prompt = f (_("Permanently delete all items from Trash on this mount?"));
-                secondary_text = f (_("All items in the trash on this mount, will be permanently deleted."));
-        }
-    }
-
-    /* The strings are freed by f () */
-
-    response = run_warning (job,
-                            prompt,
-                            secondary_text,
-                            NULL,
-                            FALSE,
-                            CANCEL, _("Empty _Trash"),
                             NULL);
 
     return (response == 1);
@@ -1292,21 +927,22 @@ confirm_delete_directly (CommonJob *job,
     g_assert (file_count > 0);
 
     if (file_count == 1) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *basename = pf_file_utils_custom_basename_from_file (files->data);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = f (_("Are you sure you want to permanently delete \"%B\"?"),
-                    files->data);
+        prompt = g_strdup_printf (_("Permanently delete “%s”?"), basename);
+        g_free (basename);
     } else {
-        prompt = f (ngettext("Are you sure you want to permanently delete "
-                             "the %'d selected item?",
-                             "Are you sure you want to permanently delete "
-                             "the %'d selected items?", file_count),
-                    file_count);
+        prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
+                                           "the %'d selected item?",
+                                           "Are you sure you want to permanently delete "
+                                           "the %'d selected items?", file_count),
+                                  file_count);
     }
 
     response = run_warning (job,
                             prompt,
-                            f (_("If you delete an item, it will be permanently lost.")),
+                            g_strdup (_("Deleted items are not sent to Trash and are not recoverable.")),
                             NULL,
                             FALSE,
                             CANCEL, DELETE,
@@ -1340,31 +976,33 @@ report_delete_progress (CommonJob *job,
         files_left = 1;
     }
 
-    files_left_s = f (ngettext ("%'d file left to delete",
-                                "%'d files left to delete",
-                                files_left),
-                      files_left);
+    files_left_s = g_strdup_printf (ngettext ("%'d file left to delete",
+                                              "%'d files left to delete",
+                                              files_left),
+                                    files_left);
 
-    pf_progress_info_take_status (job->progress,
-                                      f (_("Deleting files")));
+    pf_progress_info_take_status (job->progress, g_strdup (_("Deleting files")));
 
     elapsed = g_timer_elapsed (job->time, NULL);
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
-
         pf_progress_info_set_details (job->progress, files_left_s);
     } else {
         char *details, *time_left_s;
+        gchar *formated_time;
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
+        int formated_time_unit;
+        formated_time = pf_file_utils_format_time (remaining_time, &formated_time_unit);
 
-        /// TRANSLATORS: %T will expand to a time like "2 minutes". It must not be translated or removed.
-        /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-        time_left_s = f (ngettext ("%T left",
-                                   "%T left",
-                                   seconds_count_format_time_units (remaining_time)),
-                         remaining_time);
+        /// TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
+        /// The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+        time_left_s = g_strdup_printf (ngettext ("%s left",
+                                                 "%s left",
+                                                 formated_time_unit),
+                                       formated_time);
+        g_free (formated_time);
 
-        details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL);
+        details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL); //FIXME Remove opaque hex
         pf_progress_info_take_details (job->progress, details);
 
         g_free (time_left_s);
@@ -1373,7 +1011,7 @@ report_delete_progress (CommonJob *job,
     g_free (files_left_s);
 
     if (source_info->num_files != 0) {
-        pf_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
+        pf_progress_info_update_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
 }
 
@@ -1426,21 +1064,23 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
-            primary = f (_("Error while deleting."));
+            gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
+            primary = g_strdup (_("Error while deleting."));
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("Files in the folder \"%B\" cannot be deleted because you do "
-                                 "not have permissions to see them."), dir);
+                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be deleted because you do "
+                                             "not have permissions to see them."), dir_basename);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), dir);
+                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), dir_basename);
                 details = error->message;
             }
 
+            g_free (dir_basename);
             response = run_warning (job,
                                     primary,
                                     secondary,
@@ -1464,20 +1104,22 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        primary = f (_("Error while deleting."));
+        gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
+        primary = g_strdup (_("Error while deleting."));
         details = NULL;
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be deleted because you do not have "
-                             "permissions to read it."), dir);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be deleted because you do not have "
+                             "permissions to read it."), dir_basename);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error reading the folder \"%B\"."), dir);
+            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), dir_basename);
             details = error->message;
         }
 
+        g_free (dir);
         response = run_warning (job,
                                 primary,
                                 secondary,
@@ -1504,12 +1146,17 @@ retry:
         /* Don't delete dir if there was a skipped file */
         !local_skipped_file) {
         if (!g_file_delete (dir, job->cancellable, &error)) {
+            gchar *dir_basename;
             if (job->skip_all_error) {
                 goto skip;
             }
-            primary = f (_("Error while deleting."));
-            /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-            secondary = f (_("Could not remove the folder %B."), dir);
+
+            primary = g_strdup (_("Error while deleting."));
+            dir_basename = pf_file_utils_custom_basename_from_file (dir);
+            /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+            secondary = g_strdup_printf (_("Could not remove the folder %s."), dir_basename);
+            g_free (dir_basename);
+
             details = error->message;
 
             response = run_warning (job,
@@ -1582,12 +1229,15 @@ delete_file (CommonJob *job, GFile *file,
         g_error_free (error);
 
     } else {
+        gchar *dir_basename;
         if (job->skip_all_error) {
             goto skip;
         }
-        primary = f (_("Error while deleting."));
-        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        secondary = f (_("There was an error deleting %B."), file);
+        primary = g_strdup (_("Error while deleting."));
+        dir_basename = pf_file_utils_custom_basename_from_file (file);
+        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("There was an error deleting %s."), dir_basename);
+        g_free (dir_basename);
         details = error->message;
 
         response = run_warning (job,
@@ -1671,16 +1321,16 @@ report_trash_progress (CommonJob *job,
     files_left = total_files - files_trashed;
 
     pf_progress_info_take_status (job->progress,
-                                      f (_("Moving files to trash")));
+                                  g_strdup (_("Moving files to trash")));
 
-    s = f (ngettext ("%'d file left to trash",
-                     "%'d files left to trash",
-                     files_left),
-           files_left);
+    s = g_strdup_printf (ngettext ("%'d file left to trash",
+                                   "%'d files left to trash",
+                                   files_left),
+                         files_left);
     pf_progress_info_take_details (job->progress, s);
 
     if (total_files != 0) {
-        pf_progress_info_set_progress (job->progress, files_trashed, total_files);
+        pf_progress_info_update_progress (job->progress, files_trashed, total_files);
     }
 }
 
@@ -1729,7 +1379,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
             goto skip;
         }
 
-        mtime = marlin_undo_manager_get_file_modification_time (file);
+        mtime = pf_file_utils_get_file_modification_time (file);
 
         if (!g_file_trash (file, job->cancellable, &error)) {
             if (job->skip_all_error) {
@@ -1771,27 +1421,30 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
             if (have_info) {
                 can_delete = FALSE;
                 if (have_filesystem_info && readonly_fs) {
-                    primary = f (_("Cannot move file to trash or delete it"));
-                    secondary = f (_("It is not permitted to trash or delete files on a read only filesystem."));
+                    primary = g_strdup (_("Cannot move file to trash or delete it"));
+                    secondary = g_strdup (_("It is not permitted to trash or delete files on a read only filesystem."));
                 } else if (have_parent_info && !parent_can_write) {
-                    primary = f (_("Cannot move file to trash or delete it"));
-                    secondary = f (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
+                    primary = g_strdup (_("Cannot move file to trash or delete it"));
+                    secondary = g_strdup (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
                 } else if (is_folder && !can_write ) {
-                    primary = f (_("Cannot move file to trash or delete it"));
-                    secondary = f (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
+                    primary = g_strdup (_("Cannot move file to trash or delete it"));
+                    secondary = g_strdup (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
                 } else {
-                    primary = f (_("Cannot move file to trash. Try to delete it immediately?"));
-                    secondary = f (_("This file could not be moved to trash. See details below for further information."));
+                    primary = g_strdup (_("Cannot move file to trash. Try to delete it immediately?"));
+                    secondary = g_strdup (_("This file could not be moved to trash. See details below for further information."));
                     can_delete = TRUE;
                 }
             } else {
-                primary = f (_("Cannot move file to trash.  Try to delete it?"));
-                secondary = f (_("This file could not be moved to trash. You may not be able to delete it either."));
+                primary = g_strdup (_("Cannot move file to trash.  Try to delete it?"));
+                secondary = g_strdup (_("This file could not be moved to trash. You may not be able to delete it either."));
                 can_delete = TRUE;
             }
 
-            if (can_delete)
-                secondary = g_strconcat (secondary, f (_("\n Deleting a file removes it permanently")), NULL);
+            if (can_delete) {
+                gchar *old_secondary = g_steal_pointer (&secondary);
+                secondary = g_strconcat (old_secondary, _("\n Deleting a file removes it permanently"), NULL);
+                g_free (old_secondary);
+            }
 
             details = NULL;
             details = error->message;
@@ -1838,7 +1491,7 @@ skip:
             marlin_file_changes_queue_file_removed (file);
 
             // Start UNDO-REDO
-            marlin_undo_manager_data_add_trashed_file (job->undo_redo_data, file, mtime);
+            marlin_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
             // End UNDO-REDO
 
             files_trashed++;
@@ -1853,31 +1506,23 @@ skip:
     }
 }
 
-static gboolean
-delete_job_done (gpointer user_data)
+static void
+delete_job_free (DeleteJob *job)
 {
-    DeleteJob *job;
-    job = user_data;
-
     g_list_free_full (job->files, g_object_unref);
-
-    if (job->done_callback) {
-        job->done_callback (job->user_cancel, job->done_callback_data);
-    }
 
     finalize_common ((CommonJob *)job);
 
     marlin_file_changes_consume_changes (TRUE);
-
-    return FALSE;
 }
 
-static gboolean
-delete_job (GIOSchedulerJob *io_job,
-            GCancellable *cancellable,
-            gpointer user_data)
+static void
+delete_job (GTask *task,
+            gpointer source_object,
+            gpointer task_data,
+            GCancellable *cancellable)
 {
-    DeleteJob *job = user_data;
+    DeleteJob *job = task_data;
     GList *to_trash_files;
     GList *to_delete_files;
     GList *l;
@@ -1890,7 +1535,6 @@ delete_job (GIOSchedulerJob *io_job,
     int job_files;
 
     common = (CommonJob *)job;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
 
@@ -1927,7 +1571,7 @@ delete_job (GIOSchedulerJob *io_job,
         to_delete_files = g_list_reverse (to_delete_files);
         confirmed = TRUE;
         if (must_confirm_delete_in_trash) {
-            confirmed = !should_confirm_trash || confirm_delete_from_trash (common, to_delete_files);
+            confirmed = !should_confirm_trash () || confirm_delete_from_trash (common, to_delete_files);
         } else if (must_confirm_delete) {
             confirmed = confirm_delete_directly (common, to_delete_files);
         }
@@ -1953,33 +1597,28 @@ delete_job (GIOSchedulerJob *io_job,
         job->user_cancel = TRUE;
     }
 
-    g_io_scheduler_job_send_to_mainloop_async (io_job,
-                                               delete_job_done,
-                                               job,
-                                               NULL);
-
-    return FALSE;
+    g_task_return_boolean (task, TRUE);
 }
 
-static void
-trash_or_delete_internal (GList                  *files,
-                          GtkWindow              *parent_window,
-                          gboolean                try_trash,
-                          MarlinDeleteCallback  done_callback,
-                          gpointer                done_callback_data)
+void
+marlin_file_operations_delete (GList               *files,
+                               GtkWindow           *parent_window,
+                               gboolean             try_trash,
+                               GCancellable        *cancellable,
+                               GAsyncReadyCallback  callback,
+                               gpointer             user_data)
 {
     g_return_if_fail (files != NULL);
 
+    GTask *task;
     DeleteJob *job;
 
     /* TODO: special case desktop icon link files ... */
 
-    job = op_job_new (JOB_DELETE, DeleteJob, parent_window);
+    job = op_job_new (DeleteJob, parent_window);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->try_trash = try_trash;
     job->user_cancel = FALSE;
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
 
     if (try_trash) {
         inhibit_power_manager ((CommonJob *)job, _("Trashing Files"));
@@ -1987,301 +1626,25 @@ trash_or_delete_internal (GList                  *files,
         inhibit_power_manager ((CommonJob *)job, _("Deleting Files"));
     }
 
-    if (try_trash && !marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
+    if (try_trash) {
+        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
+        marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
     }
 
-    g_io_scheduler_push_job (delete_job,
-                             job,
-                             NULL,
-                             0,
-                             NULL);
-}
-
-void
-marlin_file_operations_trash_or_delete (GList                   *files,
-                                        GtkWindow               *parent_window,
-                                        MarlinDeleteCallback    done_callback,
-                                        gpointer                done_callback_data)
-{
-    trash_or_delete_internal (files, parent_window,
-                              TRUE,
-                              done_callback,  done_callback_data);
-}
-
-void
-marlin_file_operations_delete (GList                    *files,
-                               GtkWindow                *parent_window,
-                               MarlinDeleteCallback     done_callback,
-                               gpointer                 done_callback_data)
-{
-    trash_or_delete_internal (files, parent_window,
-                              FALSE,
-                              done_callback,  done_callback_data);
-}
-
-
-typedef struct {
-    gboolean eject;
-    GMount *mount;
-    GtkWindow *parent_window;
-    MarlinUnmountCallback callback;
-    gpointer callback_data;
-} UnmountData;
-
-static void
-unmount_mount_callback (GObject *source_object,
-                        GAsyncResult *res,
-                        gpointer user_data)
-{
-    UnmountData *data = user_data;
-    GError *error;
-    char *primary;
-    gboolean unmounted;
-
-    error = NULL;
-    if (data->eject) {
-        unmounted = g_mount_eject_with_operation_finish (G_MOUNT (source_object),
-                                                         res, &error);
-    } else {
-        unmounted = g_mount_unmount_with_operation_finish (G_MOUNT (source_object),
-                                                           res, &error);
-    }
-
-    if (! unmounted) {
-        if (error->code != G_IO_ERROR_FAILED_HANDLED) {
-            if (data->eject) {
-                /// TRANSLATORS: %V is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
-                primary = f (_("Unable to eject %V"), source_object);
-            } else {
-                primary = f (_("Unable to unmount %V"), source_object);
-            }
-            pf_dialogs_show_error_dialog (primary,
-                                          error->message,
-                                          data->parent_window);
-            g_free (primary);
-        }
-    }
-
-    if (data->callback) {
-        data->callback (data->callback_data);
-    }
-
-    if (error != NULL) {
-        g_error_free (error);
-    }
-
-    if (data->parent_window) {
-        g_object_remove_weak_pointer (data->parent_window, &data->parent_window);
-    }
-
-    g_object_unref (data->mount);
-    g_free (data);
-}
-
-static void
-do_unmount (UnmountData *data)
-{
-    GMountOperation *mount_op;
-
-    mount_op = gtk_mount_operation_new (data->parent_window);
-    if (data->eject) {
-        g_mount_eject_with_operation (data->mount,
-                                      0,
-                                      mount_op,
-                                      NULL,
-                                      unmount_mount_callback,
-                                      data);
-    } else {
-        g_mount_unmount_with_operation (data->mount,
-                                        0,
-                                        mount_op,
-                                        NULL,
-                                        unmount_mount_callback,
-                                        data);
-    }
-    g_object_unref (mount_op);
-}
-
-static gboolean
-dir_has_files (GFile *dir)
-{
-    GFileEnumerator *enumerator;
-    gboolean res;
-    GFileInfo *file_info;
-
-    res = FALSE;
-
-    enumerator = g_file_enumerate_children (dir,
-                                            G_FILE_ATTRIBUTE_STANDARD_NAME,
-                                            0,
-                                            NULL, NULL);
-    if (enumerator) {
-        file_info = g_file_enumerator_next_file (enumerator, NULL, NULL);
-        if (file_info != NULL) {
-            res = TRUE;
-            g_object_unref (file_info);
-        }
-
-        g_file_enumerator_close (enumerator, NULL, NULL);
-        g_object_unref (enumerator);
-    }
-
-
-    return res;
-}
-
-static GList *
-prepend_if_exists (GList *list, GFile *file) {
-    if (file != NULL && G_IS_FILE (file)) {
-        if (g_file_query_exists (file, NULL)) {
-            return g_list_prepend (list, file);
-        }
-
-        g_object_unref (file);
-    }
-
-    return list;
-}
-
-static GList *
-get_trash_dirs_for_mount (GMount *mount)
-{
-    GFile *root;
-    GFile *trash;
-    char *relpath;
-    GList *list;
-
-    if (mount == NULL)
-        return NULL;
-
-    root = g_mount_get_root (mount);
-    if (root == NULL) {
-        return NULL;
-    }
-
-    list = NULL;
-
-    if (g_file_is_native (root)) {
-        relpath = g_strdup_printf (".Trash/%d", getuid ());
-        trash = g_file_resolve_relative_path (root, relpath);
-        g_free (relpath);
-
-        list = prepend_if_exists (list, g_file_get_child (trash, "files"));
-        list = prepend_if_exists (list, g_file_get_child (trash, "info"));
-
-        g_object_unref (trash);
-
-        relpath = g_strdup_printf (".Trash-%d", getuid ());
-        trash = g_file_get_child (root, relpath);
-
-        g_free (relpath);
-
-        list = prepend_if_exists (list, g_file_get_child (trash, "files"));
-        list = prepend_if_exists (list, g_file_get_child (trash, "info"));
-
-        g_object_unref (trash);
-    }
-
-    g_object_unref (root);
-
-    return list;
-}
-
-
-GList *
-marlin_file_operations_get_trash_dirs_for_mount (GMount *mount)
-{
-    return get_trash_dirs_for_mount (mount);
-}
-
-static gboolean has_trash_files (GMount *mount)
-{
-    GList *dirs, *l;
-    GFile *dir;
-    gboolean res;
-
-    dirs = get_trash_dirs_for_mount (mount);
-
-    res = FALSE;
-
-    for (l = dirs; l != NULL; l = l->next) {
-        dir = l->data;
-
-        if (dir_has_files (dir)) {
-            res = TRUE;
-            break;
-        }
-    }
-
-    g_list_free_full (dirs, g_object_unref);
-
-    return res;
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, delete_job_free);
+    g_task_run_in_thread (task, delete_job);
+    g_object_unref (task);
 }
 
 gboolean
-marlin_file_operations_has_trash_files (GMount *mount)
+marlin_file_operations_delete_finish (GAsyncResult  *result,
+                                      GError       **error)
 {
-    return has_trash_files (mount);
-}
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
 
-void
-marlin_file_operations_mount_volume_finish_silent (GObject *source_object,
-                                                   GAsyncResult *res,
-                                                   gpointer user_data)
-{
-    GError *error = NULL;
-    if (!marlin_file_operations_mount_volume_full_finish (res, &error)) {
-        g_error_free (error);
-    }
-}
-
-void
-marlin_file_operations_mount_volume (GVolume *volume,
-                                     GtkWindow *parent_window)
-{
-    marlin_file_operations_mount_volume_full (volume,
-                                              parent_window,
-                                              marlin_file_operations_mount_volume_finish_silent,
-                                              NULL);
-}
-
-void
-marlin_file_operations_mount_volume_full (GVolume *volume,
-                                          GtkWindow *parent_window,
-                                          GAsyncReadyCallback callback,
-                                          gpointer user_data)
-{
-    GMountOperation *mount_op;
-
-    mount_op = gtk_mount_operation_new (parent_window);
-    g_mount_operation_set_password_save (mount_op, G_PASSWORD_SAVE_FOR_SESSION);
-
-    g_volume_mount (volume, 0, mount_op, NULL, callback, user_data);
-    g_object_unref (mount_op);
-}
-
-gboolean marlin_file_operations_mount_volume_full_finish (GAsyncResult  *result,
-                                                          GError       **error)
-{
-    GVolume *volume = G_VOLUME (g_async_result_get_source_object (result));
-    if (!g_volume_mount_finish (volume, result, error)) {
-        if (error != NULL && (*error)->code != G_IO_ERROR_FAILED_HANDLED) {
-            gchar *name = g_volume_get_name (volume);
-            gchar *primary = g_strdup_printf (_("Unable to mount %s"), name);
-            g_free (name);
-            pf_dialogs_show_error_dialog (primary, (*error)->message, NULL);
-            g_free (primary);
-        }
-
-        g_object_unref (volume);
-        return FALSE;
-    }
-
-    g_object_unref (volume);
-    return TRUE;
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static void
@@ -2289,44 +1652,51 @@ report_count_progress (CommonJob *job,
                        SourceInfo *source_info)
 {
     char *s;
+    gchar *num_bytes_format;
 
     switch (source_info->op) {
     default:
     case OP_KIND_COPY:
+        num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to copy 100 files (200 MB)"
-        /// The order in which %'d and %S appear must not change.
-        s = f (ngettext("Preparing to copy %'d file (%S)",
-                        "Preparing to copy %'d files (%S)",
-                        source_info->num_files),
-               source_info->num_files, source_info->num_bytes);
+        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext("Preparing to copy %'d file (%s)",
+                                      "Preparing to copy %'d files (%s)",
+                                      source_info->num_files),
+                             source_info->num_files, num_bytes_format);
+        g_free (num_bytes_format);
         break;
     case OP_KIND_MOVE:
+        num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to move 100 files (200 MB)"
-        /// The order in which %'d and %S appear must not change.
-        s = f (ngettext("Preparing to move %'d file (%S)",
-                        "Preparing to move %'d files (%S)",
-                        source_info->num_files),
-               source_info->num_files, source_info->num_bytes);
+        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext("Preparing to move %'d file (%s)",
+                                      "Preparing to move %'d files (%s)",
+                                      source_info->num_files),
+                             source_info->num_files, num_bytes_format);
+        g_free (num_bytes_format);
         break;
     case OP_KIND_DELETE:
+        num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
-        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to delete 100 files (200 MB)"
-        /// The order in which %'d and %S appear must not change.
-        s = f (ngettext("Preparing to delete %'d file (%S)",
-                        "Preparing to delete %'d files (%S)",
-                        source_info->num_files),
-               source_info->num_files, source_info->num_bytes);
+        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext("Preparing to delete %'d file (%s)",
+                                      "Preparing to delete %'d files (%s)",
+                                      source_info->num_files),
+                             source_info->num_files, num_bytes_format);
+        g_free (num_bytes_format);
         break;
     case OP_KIND_TRASH:
-        s = f (ngettext("Preparing to trash %'d file",
-                        "Preparing to trash %'d files",
-                        source_info->num_files),
-               source_info->num_files);
+        s = g_strdup_printf (ngettext("Preparing to trash %'d file",
+                                      "Preparing to trash %'d files",
+                                      source_info->num_files),
+                             source_info->num_files);
         break;
     }
 
@@ -2354,13 +1724,13 @@ get_scan_primary (OpKind kind)
     switch (kind) {
     default:
     case OP_KIND_COPY:
-        return f (_("Error while copying."));
+        return g_strdup (_("Error while copying."));
     case OP_KIND_MOVE:
-        return f (_("Error while moving."));
+        return g_strdup (_("Error while moving."));
     case OP_KIND_DELETE:
-        return f (_("Error while deleting."));
+        return g_strdup (_("Error while deleting."));
     case OP_KIND_TRASH:
-        return f (_("Error while moving files to trash."));
+        return g_strdup (_("Error while moving files to trash."));
     }
 }
 
@@ -2410,21 +1780,23 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
+            gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
             primary = get_scan_primary (source_info->op);
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("Files in the folder \"%B\" cannot be handled because you do "
-                                 "not have permissions to see them."), dir);
+                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be handled because you do "
+                                             "not have permissions to see them."), dir_basename);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), dir);
+                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), dir_basename);
                 details = error->message;
             }
 
+            g_free (dir_basename);
             response = run_warning (job,
                                     primary,
                                     secondary,
@@ -2453,20 +1825,23 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be handled because you do not have "
-                             "permissions to read it."), dir);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be handled because you do not have "
+                                         "permissions to read it."), dir_basename);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error reading the folder \"%B\"."), dir);
+            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), dir_basename);
             details = error->message;
         }
+
+        g_free (dir_basename);
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
@@ -2537,20 +1912,23 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *file_basename = pf_file_utils_custom_basename_from_file (file);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The file \"%B\" cannot be handled because you do not have "
-                             "permissions to read it."), file);
+            secondary = g_strdup_printf (_("The file \"%s\" cannot be handled because you do not have "
+                                         "permissions to read it."), file_basename);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error getting information about \"%B\"."), file);
+            secondary = g_strdup_printf (_("There was an error getting information about \"%s\"."), file_basename);
             details = error->message;
         }
+
+        g_free (file_basename);
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
@@ -2643,19 +2021,23 @@ retry:
                               &error);
 
     if (info == NULL) {
+        gchar *dest_basename;
         if (IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
             return;
         }
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+
+        dest_basename = pf_file_utils_custom_basename_from_file (dest);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying to \"%B\"."), dest);
+        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_basename);
+        g_free (dest_basename);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            secondary = f (_("You do not have permissions to access the destination folder."));
+            secondary = g_strdup (_("You do not have permissions to access the destination folder."));
         } else {
-            secondary = f (_("There was an error getting information about the destination."));
+            secondary = g_strdup (_("There was an error getting information about the destination."));
             details = error->message;
         }
 
@@ -2691,10 +2073,12 @@ retry:
     g_object_unref (info);
 
     if (file_type != G_FILE_TYPE_DIRECTORY) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *dest_name = g_file_get_parse_name (dest);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying to \"%B\"."), dest);
-        secondary = f (_("The destination is not a folder."));
+        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
+        secondary = g_strdup (_("The destination is not a folder."));
+        g_free (dest_name);
 
         response = run_error (job,
                               primary,
@@ -2726,14 +2110,21 @@ retry:
                                                       G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
 
         if (free_size < required_size) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            gchar *free_size_format, *required_size_format;
+            gchar *dest_name = g_file_get_parse_name (dest);
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            primary = f (_("Error while copying to \"%B\"."), dest);
-            secondary = f(_("There is not enough space on the destination. Try to remove files to make space."));
+            primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
+            g_free (dest_name);
+            secondary = g_strdup (_("There is not enough space on the destination. Try to remove files to make space."));
 
-            /// TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+            free_size_format = g_format_size (free_size);
+            required_size_format = g_format_size (required_size);
+            /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
             /// So this represents something like "There is 100 MB available, but 150 MB is required".
-            details = f (_("There is %S available, but %S is required."), free_size, required_size);
+            details = g_strdup_printf (_("There is %s available, but %s is required."), free_size_format, required_size_format);
+            g_free (free_size_format);
+            g_free (required_size_format);
 
             response = run_warning (job,
                                     primary,
@@ -2760,10 +2151,12 @@ retry:
     if (!job_aborted (job) &&
         g_file_info_get_attribute_boolean (fsinfo,
                                            G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        gchar *dest_name = g_file_get_parse_name (dest);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying to \"%B\"."), dest);
-        secondary = f (_("The destination is read-only."));
+        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
+        g_free (dest_name);
+        secondary = g_strdup (_("The destination is read-only."));
 
         response = run_error (job,
                               primary,
@@ -2813,8 +2206,8 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (!G_IS_FILE (copy_job->files->data) || ! G_IS_FILE (copy_job->destination)) {
         return;
     } else {
-        srcname = custom_basename_from_file ((GFile *)copy_job->files->data);
-        destname = custom_basename_from_file (copy_job->destination);
+        srcname = pf_file_utils_custom_basename_from_file ((GFile *)copy_job->files->data);
+        destname = pf_file_utils_custom_basename_from_file (copy_job->destination);
     }
 
     transfer_info->last_report_time = now;
@@ -2864,7 +2257,6 @@ report_copy_progress (CopyMoveJob *copy_job,
                                                "Duplicating %'d files (in \"%s\")",
                                                files_left),
                                      files_left,
-                                     srcname,
                                      destname);
             }
         } else {
@@ -2909,119 +2301,43 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
         transfer_rate > 0) {
         char *s;
-        /// TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-        s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
+        gchar *num_bytes_format = g_format_size (transfer_info->num_bytes);
+        gchar *total_size_format = g_format_size (total_size);
+        /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
+        s = g_strdup_printf (_("%s of %s"), num_bytes_format, total_size_format);
+        g_free (num_bytes_format);
+        g_free (total_size_format);
         pf_progress_info_take_details (job->progress, s);
     } else {
-        char *s;
+        char *s, *formated_remaining_time;
+        gchar *num_bytes_format = g_format_size (transfer_info->num_bytes);
+        gchar *total_size_format = g_format_size (total_size);
+        gchar *transfer_rate_format = g_format_size (transfer_rate);
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
+        int formated_time_unit;
+        formated_remaining_time = pf_file_utils_format_time (remaining_time, &formated_time_unit);
 
 
-        /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+        /// TRANSLATORS: The two first %s and the last %s will expand to a size
+        /// like "2 bytes" or "3 MB", the third %s to a time duration like
         /// "2 minutes". It must not be translated or removed.
         /// So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-        /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-        /// The order in which %S and %T appear must not change.
-        s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
-                 "%S of %S \xE2\x80\x94 %T left (%S/sec)",
-                 seconds_count_format_time_units (remaining_time)),
-               transfer_info->num_bytes, total_size,
-               remaining_time,
-               (goffset)transfer_rate);
+        /// The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
+        /// The order in which %s appear can be changed by using the right positional specifier.
+        s = g_strdup_printf (ngettext ("%s of %s \xE2\x80\x94 %s left (%s/sec)",
+                                       "%s of %s \xE2\x80\x94 %s left (%s/sec)",
+                                       formated_time_unit),
+                             num_bytes_format, total_size_format,
+                             formated_remaining_time,
+                             transfer_rate_format); //FIXME Remove opaque hex
+        g_free (num_bytes_format);
+        g_free (total_size_format);
+        g_free (formated_remaining_time);
+        g_free (transfer_rate_format);
         pf_progress_info_take_details (job->progress, s);
     }
 
-    pf_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
-}
-
-static int
-get_max_name_length (GFile *file_dir)
-{
-    int max_length;
-    char *dir;
-    long max_path;
-    long max_name;
-
-    max_length = -1;
-
-    if (!g_file_has_uri_scheme (file_dir, "file"))
-        return max_length;
-
-    dir = g_file_get_path (file_dir);
-    if (!dir)
-        return max_length;
-
-    max_path = pathconf (dir, _PC_PATH_MAX);
-    max_name = pathconf (dir, _PC_NAME_MAX);
-
-    if (max_name == -1 && max_path == -1) {
-        max_length = -1;
-    } else if (max_name == -1 && max_path != -1) {
-        max_length = max_path - (strlen (dir) + 1);
-    } else if (max_name != -1 && max_path == -1) {
-        max_length = max_name;
-    } else {
-        int leftover;
-
-        leftover = max_path - (strlen (dir) + 1);
-
-        max_length = MIN (leftover, max_name);
-    }
-
-    g_free (dir);
-
-    return max_length;
-}
-
-#define FAT_FORBIDDEN_CHARACTERS "/:;*?\"<>"
-
-static gboolean
-str_replace (char *str,
-             const char *chars_to_replace,
-             char replacement)
-{
-    gboolean success;
-    int i;
-
-    success = FALSE;
-    for (i = 0; str[i] != '\0'; i++) {
-        if (strchr (chars_to_replace, str[i])) {
-            success = TRUE;
-            str[i] = replacement;
-        }
-    }
-
-    return success;
-}
-
-static gboolean
-make_file_name_valid_for_dest_fs (char *filename,
-                                  const char *dest_fs_type)
-{
-    if (dest_fs_type != NULL && filename != NULL) {
-        if (!strcmp (dest_fs_type, "fat")  ||
-            !strcmp (dest_fs_type, "vfat") ||
-            !strcmp (dest_fs_type, "msdos") ||
-            !strcmp (dest_fs_type, "msdosfs")) {
-            gboolean ret;
-            int i, old_len;
-
-            ret = str_replace (filename, FAT_FORBIDDEN_CHARACTERS, '_');
-
-            old_len = strlen (filename);
-            for (i = 0; i < old_len; i++) {
-                if (filename[i] != ' ') {
-                    g_strchomp (filename);
-                    ret |= (old_len != strlen (filename));
-                    break;
-                }
-            }
-
-            return ret;
-        }
-    }
-
-    return FALSE;
+    pf_progress_info_update_progress (job->progress, transfer_info->num_bytes, total_size);
 }
 
 static GFile *
@@ -3034,17 +2350,16 @@ get_unique_target_file (GFile *src,
     const char *editname, *end;
     char *basename, *new_name;
     GFileInfo *info;
-    GFile *dest;
+    GFile *dest = NULL;
     int max_length;
 
     if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
-        g_critical ("get_unique_target_file:  %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  !G_IS_FILE (dest) ? "dest" : "");
+        g_critical ("get_unique_target_file:  %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  !G_IS_FILE (dest_dir) ? "dest" : "");
         return NULL;
     }
 
-    max_length = get_max_name_length (dest_dir);
+    max_length = pf_file_utils_get_max_name_length (dest_dir);
 
-    dest = NULL;
     info = g_file_query_info (src,
                               G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
                               0, NULL, NULL);
@@ -3053,7 +2368,7 @@ get_unique_target_file (GFile *src,
 
         if (editname != NULL) {
             new_name = get_duplicate_name (editname, count, max_length);
-            make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -3066,7 +2381,7 @@ get_unique_target_file (GFile *src,
 
         if (g_utf8_validate (basename, -1, NULL)) {
             new_name = get_duplicate_name (basename, count, max_length);
-            make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -3077,7 +2392,7 @@ get_unique_target_file (GFile *src,
                 count += atoi (end + 1);
             }
             new_name = g_strdup_printf ("%s.%d", basename, count);
-            make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child (dest_dir, new_name);
             g_free (new_name);
         }
@@ -3100,7 +2415,7 @@ get_target_file_for_link (GFile *src,
     GFile *dest;
     int max_length;
 
-    max_length = get_max_name_length (dest_dir);
+    max_length = pf_file_utils_get_max_name_length (dest_dir);
 
     dest = NULL;
     info = g_file_query_info (src,
@@ -3111,7 +2426,7 @@ get_target_file_for_link (GFile *src,
 
         if (editname != NULL) {
             new_name = get_link_name (editname, count, max_length);
-            make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -3121,11 +2436,11 @@ get_target_file_for_link (GFile *src,
 
     if (dest == NULL) {
         basename = g_file_get_basename (src);
-        make_file_name_valid_for_dest_fs (basename, dest_fs_type);
+        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
 
         if (g_utf8_validate (basename, -1, NULL)) {
             new_name = get_link_name (basename, count, max_length);
-            make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -3136,7 +2451,7 @@ get_target_file_for_link (GFile *src,
             } else {
                 new_name = g_strdup_printf ("%s.lnk%d", basename, count);
             }
-            make_file_name_valid_for_dest_fs (new_name, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child (dest_dir, new_name);
             g_free (new_name);
         }
@@ -3174,7 +2489,7 @@ get_target_file (GFile *src,
             copyname = g_strdup (g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_COPY_NAME));
 
             if (copyname) {
-                make_file_name_valid_for_dest_fs (copyname, dest_fs_type);
+                pf_file_utils_make_file_name_valid_for_dest_fs (&copyname, dest_fs_type);
                 dest = g_file_get_child_for_display_name (dest_dir, copyname, NULL);
                 g_free (copyname);
             }
@@ -3185,7 +2500,7 @@ get_target_file (GFile *src,
 
     if (dest == NULL) {
         basename = g_file_get_basename (src);
-        make_file_name_valid_for_dest_fs (basename, dest_fs_type);
+        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
         dest = g_file_get_child (dest_dir, basename);
         g_free (basename);
     }
@@ -3247,7 +2562,6 @@ static void copy_move_file (CopyMoveJob *job,
                             SourceInfo *source_info,
                             TransferInfo *transfer_info,
                             GHashTable *debuting_files,
-                            GdkPoint *point,
                             gboolean overwrite,
                             gboolean *skipped_file,
                             gboolean readonly_source_fs);
@@ -3283,6 +2597,7 @@ retry:
 
     error = NULL;
     if (!g_file_make_directory (*dest, job->cancellable, &error)) {
+        gchar *src_name;
         if (IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
             return CREATE_DEST_DIR_FAILED;
@@ -3311,20 +2626,23 @@ retry:
             }
         }
 
-        primary = f (_("Error while copying."));
+        primary = g_strdup (_("Error while copying."));
         details = NULL;
 
+        src_name = g_file_get_parse_name (src);
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be copied because you do not have "
-                             "permissions to create it in the destination."), src);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be copied because you do not have "
+                                         "permissions to create it in the destination."), src_name);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error creating the folder \"%B\"."), src);
+            secondary = g_strdup_printf (_("There was an error creating the folder \"%s\"."), src_name);
             details = error->message;
         }
+
+        g_free (src_name);
 
         response = run_warning (job,
                                 primary,
@@ -3351,7 +2669,7 @@ retry:
     marlin_file_changes_queue_file_added (*dest);
 
     // Start UNDO-REDO
-    marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
+    marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
     // End UNDO-REDO
 
     return CREATE_DEST_DIR_SUCCESS;
@@ -3433,7 +2751,7 @@ retry:
             src_file = g_file_get_child (src,
                                          g_file_info_get_name (info));
             copy_move_file (copy_job, src_file, *dest, same_fs, FALSE, &dest_fs_type,
-                            source_info, transfer_info, NULL, NULL, FALSE, &local_skipped_file,
+                            source_info, transfer_info, NULL, FALSE, &local_skipped_file,
                             readonly_source_fs);
             g_object_unref (src_file);
             g_object_unref (info);
@@ -3444,25 +2762,28 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
+            gchar *src_name;
             if (copy_job->is_move) {
-                primary = f (_("Error while moving."));
+                primary = g_strdup (_("Error while moving."));
             } else {
-                primary = f (_("Error while copying."));
+                primary = g_strdup (_("Error while copying."));
             }
             details = NULL;
 
+            src_name = g_file_get_parse_name (src);
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("Files in the folder \"%B\" cannot be copied because you do "
-                                 "not have permissions to see them."), src);
+                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be copied because you do "
+                                             "not have permissions to see them."), src_name);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), src);
+                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), src_name);
                 details = error->message;
             }
 
+            g_free (src_name);
             response = run_warning (job,
                                     primary,
                                     secondary,
@@ -3493,25 +2814,28 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *src_name;
         if (copy_job->is_move) {
-            primary = f (_("Error while moving."));
+            primary = g_strdup (_("Error while moving."));
         } else {
-            primary = f (_("Error while copying."));
+            primary = g_strdup (_("Error while copying."));
         }
         details = NULL;
 
+        src_name = g_file_get_parse_name (src);
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("The folder \"%B\" cannot be copied because you do not have "
-                             "permissions to read it."), src);
+            secondary = g_strdup_printf (_("The folder \"%s\" cannot be copied because you do not have "
+                                         "permissions to read it."), src_name);
         } else {
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = f (_("There was an error reading the folder \"%B\"."), src);
+            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), src_name);
             details = error->message;
         }
 
+        g_free (src_name);
         response = run_warning (job,
                                 primary,
                                 secondary,
@@ -3547,13 +2871,17 @@ retry:
         /* Don't delete source if there was a skipped file */
         !local_skipped_file) {
         if (!g_file_delete (src, job->cancellable, &error)) {
+            gchar *src_name;
             if (job->skip_all_error) {
                 goto skip;
             }
-            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+
+            src_name = g_file_get_parse_name (src);
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            primary = f (_("Error while moving \"%B\"."), src);
-            secondary = f (_("Could not remove the source folder."));
+            primary = g_strdup_printf (_("Error while moving \"%s\"."), src_name);
+            g_free (src_name);
+            secondary = g_strdup (_("Could not remove the source folder."));
             details = error->message;
 
             response = run_warning (job,
@@ -3634,14 +2962,21 @@ remove_target_recursively (CommonJob *job,
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
+        gchar *file_name, *src_name;
         if (job->skip_all_error) {
             goto skip1;
         }
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+
+        src_name = g_file_get_parse_name (src);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying \"%B\"."), src);
-        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-        secondary = f (_("Could not remove files from the already existing folder %F."), file);
+        primary = g_strdup_printf (_("Error while copying \"%s\"."), src_name);
+        g_free (src_name);
+
+        file_name = g_file_get_parse_name (file);
+        /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("Could not remove files from the already existing folder %s."), file_name);
+        g_free (file_name);
         details = error->message;
 
         /* set show_all to TRUE here, as we don't know how many
@@ -3677,15 +3012,22 @@ skip1:
     error = NULL;
 
     if (!g_file_delete (file, job->cancellable, &error)) {
+        gchar *file_name, *src_name;
         if (job->skip_all_error ||
             IS_IO_ERROR (error, CANCELLED)) {
             goto skip2;
         }
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+
+        src_name = g_file_get_parse_name (src);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while copying \"%B\"."), src);
-        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-        secondary = f (_("Could not remove the already existing file %F."), file);
+        primary = g_strdup_printf (_("Error while copying \"%s\"."), src_name);
+        g_free (src_name);
+
+        file_name = g_file_get_parse_name (file);
+        /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("Could not remove the already existing file %s."), file_name);
+        g_free (file_name);
         details = error->message;
 
         /* set show_all to TRUE here, as we don't know how many
@@ -3846,41 +3188,40 @@ typedef struct {
 } ConflictResponseData;
 
 typedef struct {
-    GFile *src;
-    GFile *dest;
-    GFile *dest_dir;
-    GtkWindow *parent;
+    GMainLoop *main_loop;
     ConflictResponseData *resp_data;
-} ConflictDialogData;
+} MarlinConflictDialogResponseData;
 
 static gboolean
-do_run_conflict_dialog (gpointer _data)
+on_conflict_dialog_idle (gpointer data)
 {
-    ConflictDialogData *data = _data;
-    GtkWidget *dialog;
-    int response;
+    g_return_val_if_fail (GTK_IS_DIALOG (data), G_SOURCE_REMOVE);
 
-    dialog = marlin_file_conflict_dialog_new (data->parent,
-                                              data->src,
-                                              data->dest,
-                                              data->dest_dir);
-    response = gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_show_all (GTK_DIALOG (data));
+    return G_SOURCE_REMOVE;
+}
 
-    if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
+static void
+on_conflict_dialog_response (GtkDialog *dialog,
+                             gint response_id,
+                             gpointer user_data)
+{
+    MarlinConflictDialogResponseData *data = user_data;
+
+    if (response_id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
         data->resp_data->new_name =
             marlin_file_conflict_dialog_get_new_name (MARLIN_FILE_CONFLICT_DIALOG (dialog));
-    } else if (response != GTK_RESPONSE_CANCEL ||
-               response != GTK_RESPONSE_NONE) {
+    } else if (response_id != GTK_RESPONSE_CANCEL ||
+               response_id != GTK_RESPONSE_NONE) {
         data->resp_data->apply_to_all =
             marlin_file_conflict_dialog_get_apply_to_all
             (MARLIN_FILE_CONFLICT_DIALOG (dialog));
     }
 
-    data->resp_data->id = response;
+    data->resp_data->id = response_id;
 
-    gtk_widget_destroy (dialog);
-
-    return FALSE;
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    g_main_loop_quit (data->main_loop);
 }
 
 static ConflictResponseData *
@@ -3889,29 +3230,31 @@ run_conflict_dialog (CommonJob *job,
                      GFile *dest,
                      GFile *dest_dir)
 {
-    ConflictDialogData *data;
     ConflictResponseData *resp_data;
+    MarlinConflictDialogResponseData response_data;
+    GMainLoop *main_loop;
+    GtkWidget *dialog;
 
     g_timer_stop (job->time);
 
-    data = g_slice_new0 (ConflictDialogData);
-    data->parent = job->parent_window;
-    data->src = src;
-    data->dest = dest;
-    data->dest_dir = dest_dir;
-
     resp_data = g_slice_new0 (ConflictResponseData);
     resp_data->new_name = NULL;
-    data->resp_data = resp_data;
 
     pf_progress_info_pause (job->progress);
-    g_io_scheduler_job_send_to_mainloop (job->io_job,
-                                         do_run_conflict_dialog,
-                                         data,
-                                         NULL);
+
+    main_loop = g_main_loop_new (NULL, FALSE);
+    dialog = marlin_file_conflict_dialog_new (job->parent_window,
+                                              src,
+                                              dest,
+                                              dest_dir);
+    response_data.main_loop = main_loop;
+    response_data.resp_data = resp_data;
+    g_signal_connect (dialog, "response", G_CALLBACK (on_conflict_dialog_response), &response_data);
+    g_idle_add (on_conflict_dialog_idle, dialog);
+    g_main_loop_run (main_loop);
+    g_main_loop_unref (main_loop);
 
     pf_progress_info_resume (job->progress);
-    g_slice_free (ConflictDialogData, data);
     g_timer_continue (job->time);
 
     return resp_data;
@@ -3951,7 +3294,6 @@ copy_move_file (CopyMoveJob *copy_job,
                 SourceInfo *source_info,
                 TransferInfo *transfer_info,
                 GHashTable *debuting_files,
-                GdkPoint *position,
                 gboolean overwrite,
                 gboolean *skipped_file,
                 gboolean readonly_source_fs)
@@ -4118,7 +3460,7 @@ retry:
         }
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         g_object_unref (dest);
@@ -4260,21 +3602,28 @@ retry:
             /* Copying a dir onto file, first remove the file */
             if (!g_file_delete (dest, job->cancellable, &error) &&
                 !IS_IO_ERROR (error, NOT_FOUND)) {
+                gchar *file_name;
                 if (job->skip_all_error) {
                     g_error_free (error);
                     goto out;
                 }
+
+                file_name = g_file_get_parse_name (src);
                 if (copy_job->is_move) {
-                    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                    primary = f (_("Error while moving \"%B\"."), src);
+                    primary = g_strdup_printf (_("Error while moving \"%s\"."), file_name);
                 } else {
-                    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
                     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                    primary = f (_("Error while copying \"%B\"."), src);
+                    primary = g_strdup_printf (_("Error while copying \"%s\"."), file_name);
                 }
-                /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-                secondary = f (_("Could not remove the already existing file with the same name in %F."), dest_dir);
+                g_free (file_name);
+
+                file_name = g_file_get_parse_name (dest);
+                /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+                secondary = g_strdup_printf (_("Could not remove the already existing file with the same name in %s."), file_name);
+                g_free (file_name);
                 details = error->message;
 
                 /* setting TRUE on show_all here, as we could have
@@ -4334,16 +3683,22 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else { /* Other error */
+        gchar *src_basename, *dest_basename;
         if (job->skip_all_error) {
             g_error_free (error);
             goto out;
         }
 
-        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        src_basename = pf_file_utils_custom_basename_from_file (src);
+        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Cannot copy \"%B\" here."), src);
-        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        secondary = f (_("There was an error copying the file into %B."), dest_dir);
+        primary = g_strdup_printf (_("Cannot copy \"%s\" here."), src_basename);
+        g_free (src_basename);
+
+        dest_basename = pf_file_utils_custom_basename_from_file (dest_dir);
+        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("There was an error copying the file into %s."), dest_basename);
+        g_free (dest_basename);
         details = error->message;
 
         response = run_warning (job,
@@ -4382,7 +3737,6 @@ copy_files (CopyMoveJob *job,
     GFile *src;
     gboolean same_fs;
     int i;
-    GdkPoint *point;
     gboolean skipped_file;
     gboolean unique_names;
     GFile *dest;
@@ -4395,15 +3749,14 @@ copy_files (CopyMoveJob *job,
     readonly_source_fs = FALSE;
 
     common = &job->common;
-
     report_copy_progress (job, source_info, transfer_info);
 
     /* Query the source dir, not the file because if its a symlink we'll follow it */
     source_dir = g_file_get_parent ((GFile *) job->files->data);
     if (source_dir) {
-        inf = g_file_query_filesystem_info (source_dir, "filesystem::readonly", NULL, NULL);
+        inf = g_file_query_filesystem_info (source_dir, G_FILE_ATTRIBUTE_FILESYSTEM_READONLY, NULL, NULL);
         if (inf != NULL) {
-            readonly_source_fs = g_file_info_get_attribute_boolean (inf, "filesystem::readonly");
+            readonly_source_fs = g_file_info_get_attribute_boolean (inf, G_FILE_ATTRIBUTE_FILESYSTEM_READONLY);
             g_object_unref (inf);
         }
         g_object_unref (source_dir);
@@ -4415,13 +3768,6 @@ copy_files (CopyMoveJob *job,
          l != NULL && !job_aborted (common);
          l = l->next) {
         src = l->data;
-
-        if (i < job->n_icon_positions) {
-            point = &job->icon_positions[i];
-        } else {
-            point = NULL;
-        }
-
 
         same_fs = FALSE;
         if (dest_fs_id) {
@@ -4439,10 +3785,10 @@ copy_files (CopyMoveJob *job,
             skipped_file = FALSE;
             copy_move_file (job, src, dest,
                             same_fs, unique_names,
-                            &dest_fs_type,
+                            &dest_fs_type,  //dest_fs_type always null?
                             source_info, transfer_info,
                             job->debuting_files,
-                            point, FALSE, &skipped_file,
+                            FALSE, &skipped_file,
                             readonly_source_fs);
             g_object_unref (dest);
         }
@@ -4452,25 +3798,13 @@ copy_files (CopyMoveJob *job,
     g_free (dest_fs_type);
 }
 
-static gboolean
-copy_job_done (gpointer user_data)
+static void
+copy_job_free (CopyMoveJob *job)
 {
-    CopyMoveJob *job;
-
-    job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->debuting_files, job->done_callback_data);
-    }
-
     g_list_free_full (job->files, g_object_unref);
-    if (job->destination) {
-        g_object_unref (job->destination);
-    }
-    /*if (job->desktop_location) {
-        g_object_unref (job->desktop_location);
-    }*/
-    g_hash_table_unref (job->debuting_files);
-    g_free (job->icon_positions);
+    job->files = NULL;
+    g_clear_object (&job->destination);
+    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
 
     finalize_common ((CommonJob *)job);
 
@@ -4479,9 +3813,10 @@ copy_job_done (gpointer user_data)
 }
 
 static gboolean
-copy_job (GIOSchedulerJob *io_job,
-          GCancellable *cancellable,
-          gpointer user_data)
+copy_job (GTask *task,
+          gpointer source_object,
+          gpointer task_data,
+          GCancellable *cancellable)
 {
     CopyMoveJob *job;
     CommonJob *common;
@@ -4490,9 +3825,8 @@ copy_job (GIOSchedulerJob *io_job,
     char *dest_fs_id;
     GFile *dest;
 
-    job = user_data;
+    job = task_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_id = NULL;
 
@@ -4534,74 +3868,68 @@ aborted:
 
     g_free (dest_fs_id);
 
-    g_io_scheduler_job_send_to_mainloop_async (io_job,
-                                               copy_job_done,
-                                               job,
-                                               NULL);
-
+    g_task_return_boolean (task, TRUE);
     return FALSE;
 }
 
 static void
-marlin_file_operations_copy (GList *files,
-                             GArray *relative_item_points,
-                             GFile *target_dir,
-                             GtkWindow *parent_window,
-                             MarlinCopyCallback  done_callback,
-                             gpointer done_callback_data)
+marlin_file_operations_copy (GList               *files,
+                             GFile               *target_dir,
+                             GtkWindow           *parent_window,
+                             GCancellable        *cancellable,
+                             GAsyncReadyCallback  callback,
+                             gpointer             user_data)
 {
-
+    GTask *task;
     CopyMoveJob *job;
-    job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
-    //job->desktop_location = marlin_get_desktop_location ();
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job = op_job_new (CopyMoveJob, parent_window);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Copying Files"));
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_COPY, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (target_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, target_dir);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (target_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
-    g_io_scheduler_push_job (copy_job,
-                             job,
-                             NULL, /* destroy notify */
-                             0,
-                             job->common.cancellable);
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, copy_job_free);
+    g_task_run_in_thread (task, copy_job);
+    g_object_unref (task);
+}
+
+static gboolean
+marlin_file_operations_copy_finish (GAsyncResult  *result,
+                                    GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static void
 report_move_progress (CopyMoveJob *move_job, int total, int left)
 {
     CommonJob *job;
-    gchar *s;
+    gchar *s, *dest_basename;
 
     job = (CommonJob *)move_job;
-    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+    dest_basename = pf_file_utils_custom_basename_from_file (move_job->destination);
+    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-    s = f (_("Preparing to move to \"%B\""), move_job->destination);
+    s = g_strdup_printf (_("Preparing to move to \"%s\""), dest_basename);
+    g_free (dest_basename);
 
     pf_progress_info_take_status (job->progress, s);
     pf_progress_info_take_details (job->progress,
-                                       f (ngettext ("Preparing to move %'d file",
-                                                    "Preparing to move %'d files",
-                                                    left), left));
+                                       g_strdup_printf (ngettext ("Preparing to move %'d file",
+                                                                  "Preparing to move %'d files",
+                                                                  left), left));
 
     pf_progress_info_pulse_progress (job->progress);
 }
@@ -4615,20 +3943,13 @@ typedef struct {
 
 static MoveFileCopyFallback *
 move_copy_file_callback_new (GFile *file,
-                             gboolean overwrite,
-                             GdkPoint *position)
+                             gboolean overwrite)
 {
     MoveFileCopyFallback *fallback;
 
     fallback = g_new (MoveFileCopyFallback, 1);
     fallback->file = file;
     fallback->overwrite = overwrite;
-    if (position) {
-        fallback->has_position = TRUE;
-        fallback->position = *position;
-    } else {
-        fallback->has_position = FALSE;
-    }
 
     return fallback;
 }
@@ -4654,7 +3975,6 @@ move_file_prepare (CopyMoveJob *move_job,
                    gboolean same_fs,
                    char **dest_fs_type,
                    GHashTable *debuting_files,
-                   GdkPoint *position,
                    GList **fallback_files,
                    int files_left)
 {
@@ -4739,7 +4059,7 @@ retry:
         }*/
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         return;
@@ -4835,21 +4155,24 @@ retry:
              (overwrite && IS_IO_ERROR (error, IS_DIRECTORY))) {
         g_error_free (error);
 
-        fallback = move_copy_file_callback_new (src,
-                                                overwrite,
-                                                position);
+        fallback = move_copy_file_callback_new (src, overwrite);
         *fallback_files = g_list_prepend (*fallback_files, fallback);
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else { /* Other error */
+        gchar *src_name, *dest_name;
         if (job->skip_all_error) {
             goto out;
         }
-        /// TRANSLATORS: \"%F\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
+        src_name = g_file_get_parse_name (src);
+        /// TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = f (_("Error while moving \"%F\"."), src);
-        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-        secondary = f (_("There was an error moving the file into %F."), dest_dir);
+        primary = g_strdup_printf (_("Error while moving \"%s\"."), src_name);
+        g_free (src_name);
+        dest_name = g_file_get_parse_name (dest_dir);
+        /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+        secondary = g_strdup_printf (_("There was an error moving the file into %s."), dest_name);
+        g_free (dest_name);
         details = error->message;
 
         response = run_warning (job,
@@ -4888,7 +4211,6 @@ move_files_prepare (CopyMoveJob *job,
     GFile *src;
     gboolean same_fs;
     int i;
-    GdkPoint *point;
     int total, left;
 
     common = &job->common;
@@ -4903,13 +4225,6 @@ move_files_prepare (CopyMoveJob *job,
          l = l->next) {
         src = l->data;
 
-        if (i < job->n_icon_positions) {
-            point = &job->icon_positions[i];
-        } else {
-            point = NULL;
-        }
-
-
         same_fs = FALSE;
         if (dest_fs_id) {
             same_fs = has_fs_id (src, dest_fs_id);
@@ -4918,7 +4233,6 @@ move_files_prepare (CopyMoveJob *job,
         move_file_prepare (job, src, job->destination,
                            same_fs, dest_fs_type,
                            job->debuting_files,
-                           point,
                            fallbacks,
                            left);
         report_move_progress (job, total, --left);
@@ -4943,7 +4257,6 @@ move_files (CopyMoveJob *job,
     GFile *src;
     gboolean same_fs;
     int i;
-    GdkPoint *point;
     gboolean skipped_file;
     MoveFileCopyFallback *fallback;
     common = &job->common;
@@ -4957,12 +4270,6 @@ move_files (CopyMoveJob *job,
         fallback = l->data;
         src = fallback->file;
 
-        if (fallback->has_position) {
-            point = &fallback->position;
-        } else {
-            point = NULL;
-        }
-
         same_fs = FALSE;
         if (dest_fs_id) {
             same_fs = has_fs_id (src, dest_fs_id);
@@ -4975,36 +4282,29 @@ move_files (CopyMoveJob *job,
                         same_fs, FALSE, dest_fs_type,
                         source_info, transfer_info,
                         job->debuting_files,
-                        point, fallback->overwrite, &skipped_file, FALSE);
+                        fallback->overwrite, &skipped_file, FALSE);
         i++;
     }
 }
 
-static gboolean
-move_job_done (gpointer user_data)
+static void
+move_job_free (CopyMoveJob *job)
 {
-    CopyMoveJob *job;
-
-    job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->debuting_files, job->done_callback_data);
-    }
-
     g_list_free_full (job->files, g_object_unref);
-    g_object_unref (job->destination);
-    g_hash_table_unref (job->debuting_files);
-    g_free (job->icon_positions);
+    job->files = NULL;
+    g_clear_object (&job->destination);
+    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
 
     finalize_common ((CommonJob *)job);
 
     marlin_file_changes_consume_changes (TRUE);
-    return FALSE;
 }
 
-static gboolean
-move_job (GIOSchedulerJob *io_job,
-          GCancellable *cancellable,
-          gpointer user_data)
+static void
+move_job (GTask *task,
+          gpointer source_object,
+          gpointer task_data,
+          GCancellable *cancellable)
 {
     CopyMoveJob *job;
     CommonJob *common;
@@ -5015,9 +4315,8 @@ move_job (GIOSchedulerJob *io_job,
     char *dest_fs_type;
     GList *fallback_files;
 
-    job = user_data;
+    job = task_data;
     common = &job->common;
-    common->io_job = io_job;
 
     dest_fs_id = NULL;
     dest_fs_type = NULL;
@@ -5074,59 +4373,52 @@ aborted:
     g_free (dest_fs_id);
     g_free (dest_fs_type);
 
-    g_io_scheduler_job_send_to_mainloop (io_job,
-                                         move_job_done,
-                                         job,
-                                         NULL);
-
-    return FALSE;
+    g_task_return_boolean (task, TRUE);
 }
 
 static void
-marlin_file_operations_move (GList *files,
-                             GArray *relative_item_points,
-                             GFile *target_dir,
-                             GtkWindow *parent_window,
-                             MarlinCopyCallback  done_callback,
-                             gpointer done_callback_data)
+marlin_file_operations_move (GList               *files,
+                             GFile               *target_dir,
+                             GtkWindow           *parent_window,
+                             GCancellable        *cancellable,
+                             GAsyncReadyCallback  callback,
+                             gpointer             user_data)
 {
-
+    GTask *task;
     CopyMoveJob *job;
-    job = op_job_new (JOB_MOVE, CopyMoveJob, parent_window);
+
+    job = op_job_new (CopyMoveJob, parent_window);
     job->is_move = TRUE;
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
-            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
-        } else {
-            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
-        }
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (target_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
+        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
+    } else {
+        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
     }
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (target_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
-    g_io_scheduler_push_job (move_job,
-                             job,
-                             NULL, /* destroy notify */
-                             0,
-                             job->common.cancellable);
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, move_job_free);
+    g_task_run_in_thread (task, move_job);
+    g_object_unref (task);
+}
+
+static gboolean
+marlin_file_operations_move_finish (GAsyncResult  *result,
+                                    GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 static void
@@ -5136,49 +4428,26 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     gchar *s;
 
     job = (CommonJob *)link_job;
-    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+    gchar *dest_name = g_file_get_parse_name (link_job->destination);
+    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-    s = f (_("Creating links in \"%B\""), link_job->destination);
+    s = g_strdup_printf (_("Creating links in \"%s\""), dest_name);
+    g_free (dest_name);
 
     pf_progress_info_take_status (job->progress, s);
     pf_progress_info_take_details (job->progress,
-                                       f (ngettext ("Making link to %'d file",
-                                                    "Making links to %'d files",
-                                                    left), left));
+                                   g_strdup_printf (ngettext ("Making link to %'d file",
+                                                              "Making links to %'d files",
+                                                              left), left));
 
-    pf_progress_info_set_progress (job->progress, left, total);
+    pf_progress_info_update_progress (job->progress, left, total);
 }
-
-static char *
-get_abs_path_for_symlink (GFile *file)
-{
-    GFile *root, *parent;
-    char *relative, *abs;
-
-    if (g_file_is_native (file)) {
-        return g_file_get_path (file);
-    }
-
-    root = g_object_ref (file);
-    while ((parent = g_file_get_parent (root)) != NULL) {
-        g_object_unref (root);
-        root = parent;
-    }
-
-    relative = g_file_get_relative_path (root, file);
-    g_object_unref (root);
-    abs = g_strconcat ("/", relative, NULL);
-    g_free (relative);
-    return abs;
-}
-
 
 static void
 link_file (CopyMoveJob *job,
            GFile *src, GFile *dest_dir,
            char **dest_fs_type,
            GHashTable *debuting_files,
-           GdkPoint *position,
            int files_left)
 {
     GFile *src_dir, *dest, *new_dest;
@@ -5209,14 +4478,11 @@ retry:
     error = NULL;
     not_local = FALSE;
 
-    path = get_abs_path_for_symlink (src);
-    char *scheme;
-    scheme = g_file_get_uri_scheme (src);
+    path = pf_file_utils_get_path_for_symlink (src);
 
-    if (path == NULL || !g_str_has_prefix (scheme, "file"))
+    if (path == NULL) {
         not_local = TRUE;
-
-    g_free (scheme);
+    }
 
     if (!not_local && g_file_make_symbolic_link (dest,
                                           path,
@@ -5224,7 +4490,7 @@ retry:
                                           &error)) {
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_origin_target_pair (common->undo_redo_data, src, dest);
+        marlin_undo_action_data_add_origin_target_pair (common->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         g_free (path);
@@ -5233,11 +4499,6 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
        marlin_file_changes_queue_file_added (dest);
-        /*if (position) {
-            //marlin_file_changes_queue_schedule_position_set (dest, *position, common->screen_num);
-        } else {
-            marlin_file_changes_queue_schedule_position_remove (dest);
-        }*/
 
         g_object_unref (dest);
 
@@ -5279,20 +4540,25 @@ retry:
 
     /* Other error */
     else {
+        gchar *src_basename;
         if (common->skip_all_error) {
             goto out;
         }
-        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        primary = f (_("Error while creating link to %B."), src);
+        src_basename = pf_file_utils_custom_basename_from_file (src);
+        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+        primary = g_strdup_printf (_("Error while creating link to %s."), src_basename);
+        g_free (src_basename);
         if (not_local) {
-            secondary = f (_("Symbolic links only supported for local files"));
+            secondary = g_strdup (_("Symbolic links only supported for local files"));
             details = NULL;
         } else if (IS_IO_ERROR (error, NOT_SUPPORTED)) {
-            secondary = f (_("The target doesn't support symbolic links."));
+            secondary = g_strdup (_("The target doesn't support symbolic links."));
             details = NULL;
         } else {
-            /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-            secondary = f (_("There was an error creating the symlink in %F."), dest_dir);
+            gchar *dest_dir_name = g_file_get_parse_name (dest_dir);
+            /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+            secondary = g_strdup_printf (_("There was an error creating the symlink in %s."), dest_dir_name);
+            g_free (dest_dir_name);
             details = error->message;
         }
 
@@ -5323,49 +4589,35 @@ out:
     g_object_unref (dest);
 }
 
-static gboolean
-link_job_done (gpointer user_data)
+static void
+link_job_free (CopyMoveJob *job)
 {
-    CopyMoveJob *job;
-
-    job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->debuting_files, job->done_callback_data);
-    }
-
     g_list_free_full (job->files, g_object_unref);
-    g_object_unref (job->destination);
-    g_hash_table_unref (job->debuting_files);
-    g_free (job->icon_positions);
+    job->files = NULL;
+    g_clear_object (&job->destination);
+    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
 
     finalize_common ((CommonJob *)job);
 
     marlin_file_changes_consume_changes (TRUE);
-    return FALSE;
 }
 
-static gboolean
-link_job (GIOSchedulerJob *io_job,
-          GCancellable *cancellable,
-          gpointer user_data)
+static void
+link_job (GTask *task,
+          gpointer source_object,
+          gpointer task_data,
+          GCancellable *cancellable)
 {
     CopyMoveJob *job;
     CommonJob *common;
-    GList *copy_files;
-    GArray *copy_positions;
     GFile *src;
-    GdkPoint *point;
     char *dest_fs_type;
     int total, left;
     int i;
     GList *l;
 
-    job = user_data;
+    job = task_data;
     common = &job->common;
-    common->io_job = io_job;
-
-    copy_files = NULL;
-    copy_positions = NULL;
 
     dest_fs_type = NULL;
 
@@ -5388,16 +4640,10 @@ link_job (GIOSchedulerJob *io_job,
          l = l->next) {
         src = l->data;
 
-        if (i < job->n_icon_positions) {
-            point = &job->icon_positions[i];
-        } else {
-            point = NULL;
-        }
-
 
         link_file (job, src, job->destination,
                    &dest_fs_type, job->debuting_files,
-                   point, left);
+                   left);
         report_link_progress (job, total, --left);
         i++;
 
@@ -5406,94 +4652,84 @@ link_job (GIOSchedulerJob *io_job,
 aborted:
     g_free (dest_fs_type);
 
-    g_io_scheduler_job_send_to_mainloop (io_job,
-                                         link_job_done,
-                                         job,
-                                         NULL);
-
-    return FALSE;
+    g_task_return_boolean (task, TRUE);
 }
 
 static void
-marlin_file_operations_link (GList *files,
-                             GArray *relative_item_points,
-                             GFile *target_dir,
-                             GtkWindow *parent_window,
-                             MarlinCopyCallback  done_callback,
-                             gpointer done_callback_data)
+marlin_file_operations_link (GList               *files,
+                             GFile               *target_dir,
+                             GtkWindow           *parent_window,
+                             GCancellable        *cancellable,
+                             GAsyncReadyCallback  callback,
+                             gpointer             user_data)
 {
+    GTask *task;
     CopyMoveJob *job;
 
-    job = op_job_new (JOB_LINK, CopyMoveJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job = op_job_new (CopyMoveJob, parent_window);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (target_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, target_dir);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (target_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
-    g_io_scheduler_push_job (link_job,
-                             job,
-                             NULL, /* destroy notify */
-                             0,
-                             job->common.cancellable);
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, link_job_free);
+    g_task_run_in_thread (task, link_job);
+    g_object_unref (task);
 }
 
+static gboolean
+marlin_file_operations_link_finish (GAsyncResult  *result,
+                                    GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
+}
 
 static void
-marlin_file_operations_duplicate (GList *files,
-                                  GArray *relative_item_points,
-                                  GtkWindow *parent_window,
-                                  MarlinCopyCallback  done_callback,
-                                  gpointer done_callback_data)
+marlin_file_operations_duplicate (GList               *files,
+                                  GtkWindow           *parent_window,
+                                  GCancellable        *cancellable,
+                                  GAsyncReadyCallback  callback,
+                                  gpointer             user_data)
 {
+    GTask *task;
     CopyMoveJob *job;
 
-    job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job = op_job_new (CopyMoveJob, parent_window);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = NULL;
-    if (relative_item_points != NULL &&
-        relative_item_points->len > 0) {
-        job->icon_positions =
-            g_memdup (relative_item_points->data,
-                      sizeof (GdkPoint) * relative_item_points->len);
-        job->n_icon_positions = relative_item_points->len;
-    }
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
-        g_object_ref (src_dir);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, src_dir);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
+    GFile* src_dir = g_file_get_parent (files->data);
+    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    g_object_ref (src_dir);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, src_dir);
     // End UNDO-REDO
 
-    g_io_scheduler_push_job (copy_job,
-                             job,
-                             NULL, /* destroy notify */
-                             0,
-                             job->common.cancellable);
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, copy_job_free);
+    g_task_run_in_thread (task, copy_job);
+    g_object_unref (task);
+}
+
+static gboolean
+marlin_file_operations_duplicate_finish (GAsyncResult  *result,
+                                         GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_boolean (G_TASK (result), error);
 }
 
 #if 0  /* TODO: Implement recursive permissions in PropertiesWindow.vala - may use this code */
@@ -5560,7 +4796,7 @@ set_permissions_file (SetPermissionsJob *job,
         current = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
 
         // Start UNDO-REDO
-        marlin_undo_manager_data_add_file_permissions(common->undo_redo_data, file, current);
+        marlin_undo_action_data_add_file_permissions(common->undo_redo_data, file, current);
         // End UNDO-REDO
 
         current = (current & ~mask) | value;
@@ -5607,7 +4843,6 @@ set_permissions_job (GIOSchedulerJob *io_job,
     CommonJob *common;
 
     common = (CommonJob *)job;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
     pf_progress_info_set_status (common->progress, _("Setting permissions"));
@@ -5634,7 +4869,7 @@ marlin_file_set_permissions_recursive (const char *directory,
 {
     SetPermissionsJob *job;
 
-    job = op_job_new (JOB_SET_PERMISSIONS, SetPermissionsJob, NULL);
+    job = op_job_new (SetPermissionsJob, NULL);
     job->file = g_file_new_for_uri (directory);
     job->file_permissions = file_permissions;
     job->file_mask = file_mask;
@@ -5644,12 +4879,10 @@ marlin_file_set_permissions_recursive (const char *directory,
     job->done_callback_data = callback_data;
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
-        g_object_ref (job->file);
-        marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, job->file);
-        marlin_undo_manager_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
+    g_object_ref (job->file);
+    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, job->file);
+    marlin_undo_action_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (set_permissions_job,
@@ -5660,18 +4893,112 @@ marlin_file_set_permissions_recursive (const char *directory,
 }
 #endif
 
-/** The done_callback function has a variable signature. When the file is being moved to
- * trash, it must be a MarlinDeleteCallback, otherwise it must be a MarlinCopyCallback.
- */
+
 void
-marlin_file_operations_copy_move_link   (GList                  *files,
-                                         GArray                 *relative_item_points,
-                                         GFile                  *target_dir,
-                                         GdkDragAction          copy_action,
-                                         GtkWidget              *parent_view,
-                                         GCallback              done_callback,
-                                         gpointer               done_callback_data)
+copy_move_link_delete_finish (GObject *source_object,
+                              GAsyncResult *res,
+                              gpointer user_data)
 {
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_delete_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_duplicate_finish (GObject *source_object,
+                                 GAsyncResult *res,
+                                 gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_duplicate_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_copy_finish (GObject *source_object,
+                            GAsyncResult *res,
+                            gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_copy_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_move_finish (GObject *source_object,
+                            GAsyncResult *res,
+                            gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_move_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+static void
+copy_move_link_link_finish (GObject *source_object,
+                            GAsyncResult *res,
+                            gpointer user_data)
+{
+    GTask *task = user_data;
+    GError *error = NULL;
+    gboolean result;
+
+    result = marlin_file_operations_link_finish (res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
+    } else {
+        g_task_return_boolean (task, result);
+    }
+
+    g_clear_object (&task);
+}
+
+void
+marlin_file_operations_copy_move_link (GList               *files,
+                                       GFile               *target_dir,
+                                       GdkDragAction        copy_action,
+                                       GtkWidget           *parent_view,
+                                       GCancellable        *cancellable,
+                                       GAsyncReadyCallback  callback,
+                                       gpointer             user_data)
+{
+    GTask *task;
     GList *p;
     GFile *src_dir;
     GtkWindow *parent_window;
@@ -5680,10 +5007,6 @@ marlin_file_operations_copy_move_link   (GList                  *files,
 
     target_is_mapping = FALSE;
     have_nonmapping_source = FALSE;
-
-    if (done_callback_data == NULL) {
-        done_callback_data = (void*)parent_view;
-    }
 
     if (g_file_has_uri_scheme (target_dir, "burn")) {
         target_is_mapping = TRUE;
@@ -5708,18 +5031,21 @@ marlin_file_operations_copy_move_link   (GList                  *files,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
+    task = g_task_new (NULL, cancellable, callback, user_data);
     if (copy_action == GDK_ACTION_COPY) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
-            char *primary = f (_("Cannot copy into trash."));
-            char *secondary = f (_("It is not permitted to copy files into the trash"));
+            char *primary = g_strdup (_("Cannot copy into trash."));
+            char *secondary = g_strdup (_("It is not permitted to copy files into the trash"));
             pf_dialogs_show_error_dialog (primary,
                                           secondary,
                                           parent_window);
 
-            if (done_callback != NULL) {
-                ((MarlinDeleteCallback)done_callback) (TRUE, done_callback_data);
-            }
-
+            g_task_return_new_error (task,
+                                     G_IO_ERROR,
+                                     G_IO_ERROR_FAILED,
+                                     _("It is not permitted to copy files into the trash"),
+                                     NULL);
+            g_clear_object (&task);
             return;
         }
 
@@ -5730,17 +5056,17 @@ marlin_file_operations_copy_move_link   (GList                  *files,
              g_file_equal (src_dir, target_dir))) {
 
              marlin_file_operations_duplicate (files,
-                                               relative_item_points,
                                                parent_window,
-                                               (MarlinCopyCallback)done_callback,
-                                               done_callback_data);
+                                               cancellable,
+                                               copy_move_link_duplicate_finish,
+                                               g_steal_pointer (&task));
         } else {
             marlin_file_operations_copy (files,
-                                         relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         (MarlinCopyCallback)done_callback,
-                                         done_callback_data);
+                                         cancellable,
+                                         copy_move_link_copy_finish,
+                                         g_steal_pointer (&task));
         }
         if (src_dir) {
             g_object_unref (src_dir);
@@ -5750,59 +5076,59 @@ marlin_file_operations_copy_move_link   (GList                  *files,
         if (g_file_has_uri_scheme (target_dir, "trash")) {
             /* done_callback is (or should be) a DeleteCallBack or null in this case */
 
-            marlin_file_operations_trash_or_delete (files,
-                                                    parent_window,
-                                                    (MarlinDeleteCallback)done_callback,
-                                                    done_callback_data);
+            marlin_file_operations_delete (files,
+                                           parent_window,
+                                           TRUE,
+                                           cancellable,
+                                           copy_move_link_delete_finish,
+                                           g_steal_pointer (&task));
         } else {
             /* done_callback is (or should be) a CopyCallBack or null in this case */
             marlin_file_operations_move (files,
-                                         relative_item_points,
                                          target_dir,
                                          parent_window,
-                                         (MarlinCopyCallback)done_callback,
-                                         done_callback_data);
+                                         cancellable,
+                                         copy_move_link_move_finish,
+                                         g_steal_pointer (&task));
         }
     } else {
         marlin_file_operations_link (files,
-                                     relative_item_points,
                                      target_dir,
                                      parent_window,
-                                    (MarlinCopyCallback)done_callback,
-                                     done_callback_data);
+                                     cancellable,
+                                     copy_move_link_link_finish,
+                                     g_steal_pointer (&task));
     }
 }
 
-static gboolean
-create_job_done (gpointer user_data)
+
+gboolean
+marlin_file_operations_copy_move_link_finish (GAsyncResult  *result,
+                                              GError       **error)
 {
-    CreateJob *job;
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
 
-    job = user_data;
-    if (job->done_callback) {
-        job->done_callback (job->created_file, job->done_callback_data);
-    }
+    return g_task_propagate_boolean (G_TASK (result), error);
+}
 
-    g_object_unref (job->dest_dir);
-    if (job->src) {
-        g_object_unref (job->src);
-    }
-    g_free (job->src_data);
-    g_free (job->filename);
-    if (job->created_file) {
-        g_object_unref (job->created_file);
-    }
+static void
+create_job_free (CreateJob *job)
+{
+    g_clear_object (&job->dest_dir);
+    g_clear_object (&job->src);
+    g_clear_pointer (&job->src_data, g_free);
+    g_clear_pointer (&job->filename, g_free);
 
     finalize_common ((CommonJob *)job);
 
     marlin_file_changes_consume_changes (TRUE);
-    return FALSE;
 }
 
-static gboolean
-create_job (GIOSchedulerJob *io_job,
-            GCancellable *cancellable,
-            gpointer user_data)
+static void
+create_job (GTask *task,
+            gpointer source_object,
+            gpointer task_data,
+            GCancellable *cancellable)
 {
     CreateJob *job;
     CommonJob *common;
@@ -5821,9 +5147,8 @@ create_job (GIOSchedulerJob *io_job,
     gboolean handled_invalid_filename;
     int max_length;
 
-    job = user_data;
+    job = task_data;
     common = &job->common;
-    common->io_job = io_job;
 
     pf_progress_info_start (job->common.progress);
 
@@ -5833,7 +5158,7 @@ create_job (GIOSchedulerJob *io_job,
     filename = NULL;
     dest = NULL;
 
-    max_length = get_max_name_length (job->dest_dir);
+    max_length = pf_file_utils_get_max_name_length (job->dest_dir);
 
     verify_destination (common,
                         job->dest_dir,
@@ -5864,7 +5189,7 @@ create_job (GIOSchedulerJob *io_job,
         }
     }
 
-    make_file_name_valid_for_dest_fs (filename, dest_fs_type);
+    pf_file_utils_make_file_name_valid_for_dest_fs (&filename, dest_fs_type); //FIXME No point - dest_fs_type always null?
     if (filename_is_utf8) {
         dest = g_file_get_child_for_display_name (job->dest_dir, filename, NULL);
     }
@@ -5882,7 +5207,7 @@ retry:
                                      &error);
         // Start UNDO-REDO
         if (res) {
-            marlin_undo_manager_data_set_create_data(common->undo_redo_data,
+            marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                      g_file_get_uri(dest),
                                                      NULL);
         }
@@ -5897,7 +5222,7 @@ retry:
                                &error);
             // Start UNDO-REDO
             if (res) {
-                marlin_undo_manager_data_set_create_data(common->undo_redo_data,
+                marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                          g_file_get_uri(dest),
                                                          g_file_get_uri(job->src));
             }
@@ -5926,11 +5251,10 @@ retry:
                                                  &error);
                     // Start UNDO-REDO
                     if (res) {
-                        marlin_undo_manager_data_set_create_data(common->undo_redo_data,
+                        marlin_undo_action_data_set_create_data(common->undo_redo_data,
                                                                  g_file_get_uri(dest),
                                                                  g_strdup(data));
                     }
-                    // End UNDO-REDO
                 }
 
                 /* This will close if the write failed and we didn't close */
@@ -5944,11 +5268,6 @@ retry:
     if (res) {
         job->created_file = g_object_ref (dest);
        marlin_file_changes_queue_file_added (dest);
-        /*if (job->has_position) {
-            //marlin_file_changes_queue_schedule_position_set (dest, job->position, common->screen_num);
-        } else {
-            marlin_file_changes_queue_schedule_position_remove (dest);
-        }*/
     } else {
         g_assert (error != NULL);
 
@@ -5980,7 +5299,7 @@ retry:
                 new_filename = get_duplicate_name (filename, count, max_length);
             }
 
-            if (make_file_name_valid_for_dest_fs (new_filename, dest_fs_type)) {
+            if (pf_file_utils_make_file_name_valid_for_dest_fs (&new_filename, dest_fs_type)) {
                 g_object_unref (dest);
 
                 if (filename_is_utf8) {
@@ -6010,7 +5329,7 @@ retry:
             } else {
                 filename2 = get_duplicate_name (filename, count++, max_length);
             }
-            make_file_name_valid_for_dest_fs (filename2, dest_fs_type);
+            pf_file_utils_make_file_name_valid_for_dest_fs (&filename2, dest_fs_type);
             if (filename_is_utf8) {
                 dest = g_file_get_child_for_display_name (job->dest_dir, filename2, NULL);
             }
@@ -6028,15 +5347,20 @@ retry:
 
         /* Other error */
         else {
+            gchar *dest_basename = pf_file_utils_custom_basename_from_file (dest);
             if (job->make_dir) {
-                /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                primary = f (_("Error while creating directory %B."), dest);
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+                primary = g_strdup_printf (_("Error while creating directory %s."), dest_basename);
             } else {
-                /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                primary = f (_("Error while creating file %B."), dest);
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+                primary = g_strdup_printf (_("Error while creating file %s."), dest_basename);
             }
-            /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-            secondary = f (_("There was an error creating the directory in %F."), job->dest_dir);
+            g_free (dest_basename);
+
+            gchar *dest_dir_name = g_file_get_parse_name (job->dest_dir);
+            /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
+            secondary = g_strdup_printf (_("There was an error creating the directory in %s."), dest_dir_name);
+            g_free (dest_dir_name);
             details = error->message;
 
             response = run_warning (common,
@@ -6065,21 +5389,19 @@ aborted:
     }
     g_free (filename);
     g_free (dest_fs_type);
-    g_io_scheduler_job_send_to_mainloop_async (io_job,
-                                               create_job_done,
-                                               job,
-                                               NULL);
+    g_task_return_pointer (task, g_steal_pointer (&job->created_file), g_object_unref);
 
     return FALSE;
 }
 
 void
-marlin_file_operations_new_folder (GtkWidget *parent_view,
-                                   GdkPoint *target_point,
-                                   GFile *parent_dir,
-                                   MarlinCreateCallback done_callback,
-                                   gpointer done_callback_data)
+marlin_file_operations_new_folder (GtkWidget           *parent_view,
+                                   GFile               *parent_dir,
+                                   GCancellable        *cancellable,
+                                   GAsyncReadyCallback  callback,
+                                   gpointer             user_data)
 {
+    GTask *task;
     CreateJob *job;
     GtkWindow *parent_window;
 
@@ -6088,269 +5410,112 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job = op_job_new (CreateJob, parent_window);
     job->dest_dir = g_object_ref (parent_dir);
     job->make_dir = TRUE;
-    if (target_point != NULL) {
-        job->position = *target_point;
-        job->has_position = TRUE;
-    }
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
     // End UNDO-REDO
 
-    g_io_scheduler_push_job (create_job,
-                             job,
-                             NULL, /* destroy notify */
-                             0,
-                             job->common.cancellable);
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, create_job_free);
+    g_task_run_in_thread (task, create_job);
+    g_object_unref (task);
+}
+
+GFile *
+marlin_file_operations_new_folder_finish (GAsyncResult  *result,
+                                          GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_pointer (G_TASK (result), error);
 }
 
 void
-marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
-                                               GdkPoint *target_point,
-                                               GFile *parent_dir,
-                                               const char *target_filename,
-                                               GFile *template,
-                                               MarlinCreateCallback done_callback,
-                                               gpointer done_callback_data)
+marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
+                                               GFile               *parent_dir,
+                                               const char          *target_filename,
+                                               GFile               *template,
+                                               GCancellable        *cancellable,
+                                               GAsyncReadyCallback  callback,
+                                               gpointer             user_data)
 {
+    GTask *task;
     CreateJob *job;
-    GtkWindow *parent_window;
+    GtkWindow *parent_window = NULL;
 
-    parent_window = NULL;
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
-    g_object_ref (parent_dir); /* job->dest_dir unref'd in create_job done */
-    job->dest_dir = parent_dir;
-    if (target_point != NULL) {
-        job->position = *target_point;
-        job->has_position = TRUE;
-    }
+    job = op_job_new (CreateJob, parent_window);
+    job->dest_dir = g_object_ref (parent_dir);
     job->filename = g_strdup (target_filename);
 
     if (template) {
-        g_object_ref (template); /* job->src unref'd in create_job done */
-        job->src = template;
+        job->src = g_object_ref (template);
     }
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
     // End UNDO-REDO
 
-    g_io_scheduler_push_job (create_job,
-                             job,
-                             NULL, /* destroy notify */
-                             0,
-                             job->common.cancellable);
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, create_job_free);
+    g_task_run_in_thread (task, create_job);
+    g_object_unref (task);
+}
+
+GFile *
+marlin_file_operations_new_file_from_template_finish (GAsyncResult  *result,
+                                                      GError       **error)
+{
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
+
+    return g_task_propagate_pointer (G_TASK (result), error);
 }
 
 void
-marlin_file_operations_new_file (GtkWidget *parent_view,
-                                 GdkPoint *target_point,
-                                 const char *parent_dir,
-                                 const char *target_filename,
-                                 const char *initial_contents,
-                                 int length,
-                                 MarlinCreateCallback done_callback,
-                                 gpointer done_callback_data)
+marlin_file_operations_new_file (GtkWidget           *parent_view,
+                                 const char          *parent_dir,
+                                 const char          *target_filename,
+                                 const char          *initial_contents,
+                                 int                  length,
+                                 GCancellable        *cancellable,
+                                 GAsyncReadyCallback  callback,
+                                 gpointer             user_data)
 {
+    GTask *task;
     CreateJob *job;
     GtkWindow *parent_window = NULL;
+
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
-    job->done_callback = done_callback;
-    job->done_callback_data = done_callback_data;
+    job = op_job_new (CreateJob, parent_window);
     job->dest_dir = g_file_new_for_uri (parent_dir);
-    /*if (target_point != NULL) {
-        job->position = *target_point;
-        job->has_position = TRUE;
-    }*/
     job->src_data = g_memdup (initial_contents, length);
     job->length = length;
     job->filename = g_strdup (target_filename);
 
     // Start UNDO-REDO
-    if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
-    }
+    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
     // End UNDO-REDO
 
-    g_io_scheduler_push_job (create_job,
-                             job,
-                             NULL, /* destroy notify */
-                             0,
-                             job->common.cancellable);
+    task = g_task_new (NULL, cancellable, callback, user_data);
+    g_task_set_task_data (task, job, create_job_free);
+    g_task_run_in_thread (task, create_job);
+    g_object_unref (task);
 }
 
-
-static void
-delete_trash_file (CommonJob *job,
-                   GFile *file,
-                   gboolean del_file,
-                   gboolean del_children)
+GFile *
+marlin_file_operations_new_file_finish (GAsyncResult  *result,
+                                        GError       **error)
 {
-    GFileInfo *info;
-    GFile *child;
-    GFileEnumerator *enumerator;
+    g_return_val_if_fail (g_task_is_valid (result, NULL), NULL);
 
-    if (!G_IS_FILE (file) || job_aborted (job)) {
-        return;
-    }
-
-    if (del_children) {
-        enumerator = g_file_enumerate_children (file,
-                                                G_FILE_ATTRIBUTE_STANDARD_NAME ","
-                                                G_FILE_ATTRIBUTE_STANDARD_TYPE,
-                                                G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                                job->cancellable,
-                                                NULL);
-        if (enumerator) {
-            while (!job_aborted (job) &&
-                   (info = g_file_enumerator_next_file (enumerator, job->cancellable, NULL)) != NULL) {
-                child = g_file_get_child (file,
-                                          g_file_info_get_name (info));
-                delete_trash_file (job, child, TRUE,
-                                   g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY);
-                g_object_unref (child);
-                g_object_unref (info);
-            }
-            g_file_enumerator_close (enumerator, job->cancellable, NULL);
-            g_object_unref (enumerator);
-        }
-    }
-
-    if (!job_aborted (job) && del_file)
-        g_file_delete (file, job->cancellable, NULL);
-}
-
-static gboolean
-finalize_empty_trash_job (gpointer user_data)
-{
-    EmptyTrashJob *job;
-
-    job = user_data;
-
-    g_list_free_full (job->trash_dirs, g_object_unref);
-
-    finalize_common ((CommonJob *)job);
-    return FALSE;
-}
-
-static gboolean
-empty_trash_job_done (gpointer user_data)
-{
-    /* There is no job callback after emptying trash */
-    marlin_undo_manager_trash_has_emptied (marlin_undo_manager_instance());
-    finalize_empty_trash_job (user_data);
-
-    PFSoundManager *sm;
-    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
-    pf_sound_manager_play_empty_trash_sound (sm);
-
-    return FALSE;
-}
-
-static gboolean
-empty_trash_job (GIOSchedulerJob *io_job,
-                 GCancellable *cancellable,
-                 gpointer user_data)
-{
-    EmptyTrashJob *job = user_data;
-    CommonJob *common;
-    GList *l;
-
-    common = (CommonJob *)job;
-    common->io_job = io_job;
-
-    pf_progress_info_start (job->common.progress);
-    if (!should_confirm_trash () || confirm_empty_trash (job)) {
-        for (l = job->trash_dirs;
-             l != NULL && !job_aborted (common);
-             l = l->next) {
-
-            delete_trash_file (common, l->data, FALSE, TRUE);
-        }
-
-        g_io_scheduler_job_send_to_mainloop_async (io_job,
-                                                   empty_trash_job_done,
-                                                   job,
-                                                   NULL);
-    } else
-        finalize_empty_trash_job (job);
-
-    return FALSE;
-}
-
-void
-marlin_file_operations_empty_trash (GtkWidget *parent_view)
-{
-    EmptyTrashJob *job;
-    GtkWindow *parent_window;
-
-    parent_window = NULL;
-    if (parent_view) {
-        parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
-    }
-
-    marlin_file_operations_empty_trash_dirs (parent_window, NULL);
-}
-
-void
-marlin_file_operations_empty_trash_for_mount (GtkWidget *parent_view, GMount *mount)
-{
-    g_return_if_fail (mount != NULL);
-
-    GList *dirs = get_trash_dirs_for_mount (mount);
-
-    g_return_if_fail (dirs != NULL);
-
-    EmptyTrashJob *job;
-    GtkWindow *parent_window;
-
-    parent_window = NULL;
-    if (parent_view) {
-        parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
-    }
-
-    marlin_file_operations_empty_trash_dirs (parent_window, dirs);
-}
-
-void
-marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
-{
-    EmptyTrashJob *job;
-    job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
-
-    job->done_callback = NULL;
-    job->done_callback_data = NULL;
-    job->should_confirm = TRUE;
-
-    if (dirs != NULL)
-        job->trash_dirs = dirs;
-    else
-        job->trash_dirs = g_list_prepend (job->trash_dirs, g_file_new_for_uri ("trash:"));
-
-    inhibit_power_manager ((CommonJob *)job, _("Emptying Trash"));
-
-    g_io_scheduler_push_job (empty_trash_job,
-                             job,
-                             NULL,
-                             0,
-                             NULL);
+    return g_task_propagate_pointer (G_TASK (result), error);
 }

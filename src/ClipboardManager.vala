@@ -24,18 +24,19 @@
 
 ***/
 
-
 namespace Marlin {
     public class ClipboardManager : GLib.Object {
         private enum ClipboardTarget {
             GNOME_COPIED_FILES,
+            PNG_IMAGE,
             UTF8_STRING
         }
 
         private static GLib.Quark marlin_clipboard_manager_quark;
         private static Gdk.Atom x_special_gnome_copied_files;
-        private const Gtk.TargetEntry[] clipboard_targets = {
+        private const Gtk.TargetEntry[] CLIPBOARD_TARGETS = {
             {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
+            {"image/png", 0, ClipboardTarget.PNG_IMAGE},
             {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
         };
 
@@ -119,24 +120,30 @@ namespace Marlin {
          * Pastes the contents from the clipboard to the directory
          * referenced by @target_file.
         **/
-        public void paste_files (GLib.File target_file,
-                                 Gtk.Widget? widget = null,
-                                 GLib.Callback? new_files_callback = null) {
+        public async void paste_files (GLib.File target_file,
+                                       Gtk.Widget? widget = null) {
 
             /**
              *  @cb the clipboard.
              *  @sd selection_data returned from the clipboard.
             **/
             clipboard.request_contents (x_special_gnome_copied_files, (cb, sd) => {
-                contents_received (sd, target_file, widget, new_files_callback);
-            });
+                contents_received.begin (sd, target_file, widget, (obj, res) => {
+                    try {
+                        contents_received.end (res);
+                    } catch (Error e) {
+                        debug (e.message);
+                    }
 
+                    paste_files.callback ();
+                });
+            });
+            yield;
         }
 
-        private void contents_received (Gtk.SelectionData sd,
-                                        GLib.File target_file,
-                                        Gtk.Widget? widget = null,
-                                        GLib.Callback? new_files_callback = null) {
+        private async void contents_received (Gtk.SelectionData sd,
+                                              GLib.File target_file,
+                                              Gtk.Widget? widget = null) throws GLib.Error {
 
             /* check whether the retrieval worked */
             string? text;
@@ -168,12 +175,14 @@ namespace Marlin {
             var file_list = PF.FileUtils.files_from_uris (text);
 
             if (file_list != null) {
-                FileOperations.copy_move_link (file_list,
-                                               null,
-                                               target_file,
-                                               action,
-                                               widget,
-                                               new_files_callback);
+                try {
+                    yield FileOperations.copy_move_link (file_list,
+                                                         target_file,
+                                                         action,
+                                                         widget);
+                } catch (Error e) {
+                    throw e;
+                }
             }
 
             /* clear the clipboard if it contained "cutted data"
@@ -225,7 +234,7 @@ namespace Marlin {
             }
 
             /* acquire the Clipboard ownership */
-            clipboard.set_with_owner (clipboard_targets, get_callback, clear_callback, this);
+            clipboard.set_with_owner (CLIPBOARD_TARGETS, get_callback, clear_callback, this);
 
             /* Need to fake a "owner-change" event here if the Xserver doesn't support clipboard notification */
             if (!clipboard.get_display ().supports_selection_notification ()) {
@@ -252,11 +261,26 @@ namespace Marlin {
                                                                   prefix);
                     break;
 
+                case ClipboardTarget.PNG_IMAGE: /* Pasting into a (single) image handler */
+                    if (manager.files == null) {
+                        break;
+                    }
+
+                    var filename = manager.files.data.location.get_path ();
+                    try {
+                        var pixbuf = new Gdk.Pixbuf.from_file (filename);
+                        sd.set_pixbuf (pixbuf);
+                    } catch (Error e) {
+                        warning ("failed to get pixbuf from file %s ", filename);
+                    }
+
+                    break;
+
                 case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
                     DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
                     break;
                 default:
-                    assert_not_reached ();
+                    break;
             }
         }
 

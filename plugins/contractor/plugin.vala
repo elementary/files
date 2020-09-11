@@ -42,16 +42,14 @@ public class Marlin.Plugins.ContractMenuItem : Gtk.MenuItem {
 }
 
 public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
-    private Gtk.UIManager ui_manager;
     private Gtk.Menu menu;
     private GOF.File current_directory = null;
 
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files) {
+    public override void context_menu (Gtk.Widget widget, List<GOF.File> gof_files) {
         menu = widget as Gtk.Menu;
-        return_if_fail (menu != null);
 
         File[] files = null;
         Gee.List<Granite.Services.Contract> contracts = null;
@@ -102,11 +100,6 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         } catch (Error e) {
             warning (e.message);
         }
-    }
-
-    public override void ui (Gtk.UIManager? widget) {
-        ui_manager = widget;
-        menu = (Gtk.Menu) ui_manager.get_widget ("/selection");
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {

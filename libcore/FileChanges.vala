@@ -38,49 +38,57 @@ namespace Marlin.FileChanges {
     private static GLib.Mutex queue_mutex;
 
     private static unowned GLib.Queue<Change> get_queue () {
-        queue_mutex.@lock();
+        queue_mutex.@lock ();
         if (queue == null) {
             queue = new GLib.Queue<Change> ();
         }
 
-        queue_mutex.unlock();
+        queue_mutex.unlock ();
 
         return queue;
     }
 
     private static void queue_add_common (owned Change new_item) {
         unowned GLib.Queue<Change> queue = get_queue ();
-        queue_mutex.@lock();
+        queue_mutex.@lock ();
         queue.push_head ((owned) new_item);
-        queue_mutex.unlock();
+        queue_mutex.unlock ();
     }
 
     public static void queue_file_added (GLib.File location) {
-        var new_item = new Change ();
-        new_item.kind = Kind.ADDED;
-        new_item.from = location;
+        var new_item = new Change () {
+            kind = Kind.ADDED,
+            from = location
+        };
+
         queue_add_common ((owned) new_item);
     }
 
     public static void queue_file_changed (GLib.File location) {
-        var new_item = new Change ();
-        new_item.kind = Kind.CHANGED;
-        new_item.from = location;
+        var new_item = new Change () {
+            kind = Kind.CHANGED,
+            from = location
+        };
+
         queue_add_common ((owned) new_item);
     }
 
     public static void queue_file_removed (GLib.File location) {
-        var new_item = new Change ();
-        new_item.kind = Kind.REMOVED;
-        new_item.from = location;
+        var new_item = new Change () {
+            kind = Kind.REMOVED,
+            from = location
+        };
+
         queue_add_common ((owned) new_item);
     }
 
     public static void queue_file_moved (GLib.File from, GLib.File to) {
-        var new_item = new Change ();
-        new_item.kind = Kind.MOVED;
-        new_item.from = from;
-        new_item.to = to;
+        var new_item = new Change () {
+            kind = Kind.MOVED,
+            from = from,
+            to = to
+        };
+
         queue_add_common ((owned) new_item);
     }
 
@@ -99,9 +107,9 @@ namespace Marlin.FileChanges {
          * arrived.
          */
         for (chunk_count = 0; ; chunk_count++) {
-            queue_mutex.@lock();
+            queue_mutex.@lock ();
             Change? change = queue.pop_tail ();
-            queue_mutex.unlock();
+            queue_mutex.unlock ();
 
             /* figure out if we need to flush the pending changes that we collected sofar */
 
@@ -192,7 +200,7 @@ namespace Marlin.FileChanges {
                         moves = new GLib.List<GLib.Array<GLib.File>> ();
                     }
 
-                    var pair = new GLib.Array<GLib.File>.sized (false, false, sizeof(GLib.File), 2);
+                    var pair = new GLib.Array<GLib.File>.sized (false, false, sizeof (GLib.File), 2);
                     pair.append_val (change.from);
                     pair.append_val (change.to);
                     moves.prepend (pair);
@@ -203,6 +211,4 @@ namespace Marlin.FileChanges {
             }
         }
     }
-
-    
 }

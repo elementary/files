@@ -3,7 +3,6 @@ src/main.vala
 src/Application.vala
 src/marlin-deep-count.vala
 src/ProgressUIHandler.vala
-src/QuicklistHandler.vala
 src/TextRenderer.vala
 src/ClipboardManager.vala
 src/IconRenderer.vala
@@ -33,11 +32,10 @@ src/View/PrivacyModeOn.vala
 src/View/PopupMenuBuilder.vala
 src/View/Miller.vala
 
-src/View/directory_view_popup.ui
-
 src/View/Widgets/AbstractEditableLabel.vala
 src/View/Widgets/BreadcrumbsEntry.vala
 src/View/Widgets/DiskRenderer.vala
+src/View/Widgets/HeaderBar.vala
 src/View/Widgets/Label.vala
 src/View/Widgets/LocationBar.vala
 src/View/Widgets/MultiLineEditableLabel.vala
@@ -45,7 +43,6 @@ src/View/Widgets/OverlayBar.vala
 src/View/Widgets/PermissionButton.vala
 src/View/Widgets/ProgressInfoWidget.vala
 src/View/Widgets/SingleLineEditableLabel.vala
-src/View/Widgets/TopMenu.vala
 
 filechooser-module/FileChooserDialog.vala
 filechooser-module/Plugin.vala
@@ -75,11 +72,13 @@ libcore/SoundManager.vala
 libcore/StockDialogs.vala
 libcore/Thumbnailer.vala
 libcore/TrashMonitor.vala
+libcore/UndoManager.vala
 libcore/UserUtils.vala
+libcore/FileOperations/CommonJob.vala
+libcore/FileOperations/EmptyTrashJob.vala
+libcore/FileOperations/MountUtils.vala
 
-libcore/eel-string.c
 libcore/marlin-file-operations.c
-libcore/marlin-undostack-manager.c
 libcore/fm-list-model.c
 
 libwidgets/Interfaces/LocatableInterface.vala
