@@ -266,8 +266,8 @@ namespace Marlin.View.Chrome {
                                                         (uint)(rgba.alpha * 255));
             }
 
-            header_markup =  header_markup_start.printf (color) + "%s</span>";
-            result_location_markup =  result_location_markup_start.printf (color) + "%s</span>";
+            header_markup = header_markup_start.printf (color) + "%s</span>";
+            result_location_markup = result_location_markup_start.printf (color) + "%s</span>";
 
             /* Update the headers */
             list.@set (local_results,
