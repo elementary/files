@@ -161,6 +161,26 @@ namespace PF.FileUtils {
         }
     }
 
+    public string? get_path_for_symlink (GLib.File file) {
+        string? result;
+        if (Uri.parse_scheme (file.get_uri ()) != "file") {
+            result = null;
+        } else if (file.is_native ()) {
+            result = file.get_path (); // usually the case
+        } else {
+            File root = file;
+            File? parent = file.get_parent ();
+            while (parent != null) {
+                root = parent;
+                parent = root.get_parent ();
+            }
+
+            result = Path.DIR_SEPARATOR_S + root.get_relative_path (file);
+        }
+
+        return result;
+    }
+
     private string construct_parent_path (string path, bool include_file_protocol) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
@@ -436,6 +456,11 @@ namespace PF.FileUtils {
         } else {
             end_offset = strip_extension (filename).char_count ();
         }
+    }
+
+    public string custom_basename_from_file (GLib.File location) {
+        var gof = GOF.File.@get (location); // In most case a GOF.File can be retrieved from cache
+        return gof.get_display_name (); // Falls back to location.get_basename ()
     }
 
     public async GLib.File? set_file_display_name (GLib.File old_location,
@@ -890,6 +915,28 @@ namespace PF.FileUtils {
         }
 
         return result;
+    }
+
+    public int get_max_name_length (GLib.File file_dir) {
+        //FIXME Do not need to keep calling this for the same filesystem
+
+        if (!file_dir.has_uri_scheme ("file")) {
+            return -1;
+        }
+
+        var dir = file_dir.get_path ();
+        var max_path = Posix.pathconf (dir, Posix.PathConfName.PATH_MAX);
+        var max_name = Posix.pathconf (dir, Posix.PathConfName.NAME_MAX);
+
+        if (max_name == -1 && max_path == -1) {
+            return -1;
+        } else if (max_name == -1 && max_path != -1) {
+            return (int) (max_path - (dir.length + 1));
+        } else if (max_name != -1 && max_path == -1) {
+            return (int) max_name;
+        } else {
+            return (int) long.min (max_path - (dir.length + 1), max_name);
+        }
     }
 }
 

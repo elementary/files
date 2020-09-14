@@ -218,7 +218,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
 
         /* Get icon pixbuf and fade if appropriate */
-        Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.icon : null;
+        Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.render_icon (button_context) : null;
         if (icon_to_draw != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
             icon_to_draw = PF.PixbufUtils.lucent (icon_to_draw, 50);
         }
