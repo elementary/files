@@ -35,7 +35,6 @@ public class Marlin.Progress.UIHandler : Object {
     construct {
         application = (Gtk.Application) GLib.Application.get_default ();
         manager = PF.Progress.InfoManager.get_instance ();
-
         manager.new_progress_info.connect ((info) => {
             info.started.connect (progress_info_started_cb);
         });
@@ -53,14 +52,16 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void progress_info_started_cb (PF.Progress.Info info) {
-        application.hold ();
-
-        if (info == null || !(info is PF.Progress.Info) ||
-            info.is_finished || info.is_cancelled) {
-
-            application.release ();
+        if (info == null) {
+            critical ("Null progressinfo started");
             return;
         }
+
+        info.started.disconnect (progress_info_started_cb);
+        if (info.is_finished || info.is_cancelled) {
+            return;
+        }
+
 
         info.finished.connect (progress_info_finished_cb);
         this.active_infos++;
@@ -143,7 +144,6 @@ public class Marlin.Progress.UIHandler : Object {
     private void progress_info_finished_cb (PF.Progress.Info info) {
         /* Must only be called once for each info */
         info.finished.disconnect (progress_info_finished_cb);
-        application.release ();
 
         if (active_infos > 0) {
             this.active_infos--;
