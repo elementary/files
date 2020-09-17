@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-26 21:49+0000\n"
-"PO-Revision-Date: 2020-09-15 01:14+0000\n"
+"PO-Revision-Date: 2020-09-18 09:57+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -953,7 +953,7 @@ msgstr "З'єднання…"
 
 #: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
-msgstr "Будь ласка, перевірте особисті дані користувача."
+msgstr "Перевірте особисті дані користувача."
 
 #: libcore/DndHandler.vala:48
 #, c-format
