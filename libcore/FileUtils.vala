@@ -760,7 +760,7 @@ namespace PF.FileUtils {
             }
 
             var scheme = drop_file.get_uri_scheme ();
-            if (!scheme.has_prefix ("file")) {
+            if (scheme == null || !scheme.has_prefix ("file")) {
                 valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
             }
 
