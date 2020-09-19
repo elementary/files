@@ -448,14 +448,17 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 edge_height = row_height / 4;
             }
 
-            reveal_drop_target (y > row_height - edge_height);
-            if (y > row_height - edge_height) {
-                current_suggested_action = Gdk.DragAction.LINK;
+            var reveal = y > row_height - edge_height;
+            reveal_drop_target (reveal);
+            if (reveal) {
+                current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
             } else if (drop_text != null &&
-                       target.name () == "text/uri-list" &&
-                       current_suggested_action == Gdk.DragAction.DEFAULT) {
+                       target.name () == "text/uri-list") {
 
-                drop_file_list = PF.FileUtils.files_from_uris (drop_text);
+                if (drop_file_list == null) {
+                    drop_file_list = PF.FileUtils.files_from_uris (drop_text);
+                }
+
                 PF.FileUtils.file_accepts_drop (
                     target_file,
                     drop_file_list, ctx,
