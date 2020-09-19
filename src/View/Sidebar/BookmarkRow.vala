@@ -365,7 +365,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         });
 
         drag_end.connect ((ctx) => {
-            reset_drag_drop (Gtk.get_current_event_time ());
+            reset_drag_drop ();
         });
     }
 
@@ -424,7 +424,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 /* Signal source to cleanup after drag */
                 Gtk.drag_finish (ctx, success, false, time);
-                reset_drag_drop (time);
+                reset_drag_drop ();
             }
         });
 
@@ -475,8 +475,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return true;
         });
 
-        drag_leave.connect ((ctx, time) => {
-            reset_drag_drop (time);
+        drag_leave.connect (() => {
+            reset_drag_drop ();
         });
 
         drag_drop.connect ((ctx, x, y, time) => {
@@ -495,7 +495,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         });
     }
 
-    private void reset_drag_drop (uint32 time) {
+    private void reset_drag_drop () {
         drop_file_list = null;
         drop_text = null;
         drop_occurred = false;
