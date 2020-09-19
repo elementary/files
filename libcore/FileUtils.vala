@@ -743,7 +743,6 @@ namespace PF.FileUtils {
         bool from_trash = false;
 
         foreach (var drop_file in drop_file_list) {
-
             if (location_is_in_trash (drop_file)) {
                 from_trash = true;
 
@@ -759,7 +758,8 @@ namespace PF.FileUtils {
             }
 
             var scheme = drop_file.get_uri_scheme ();
-            if (!scheme.has_prefix ("file")) {
+
+            if (scheme == null || !scheme.has_prefix ("file")) {
                 valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
             }
 

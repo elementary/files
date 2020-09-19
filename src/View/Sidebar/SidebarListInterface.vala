@@ -87,6 +87,9 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         return false;
     }
 
-    public virtual void add_favorite (string uri, string? label = null, int index = 0) {}
+    /* Returns true if favorite successfully added */
+    public virtual bool add_favorite (string uri, string? label = null, int index = 0) {return false;}
+
+    public virtual SidebarItemInterface? get_item_at_index (int index) { return null; }
 
 }

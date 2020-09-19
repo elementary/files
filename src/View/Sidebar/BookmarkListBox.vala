@@ -49,14 +49,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                                                bool pinned = false,
                                                bool permanent = false) {
 
-        var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
-        if (!has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
-            add (row);
-        } else {
-            return null;
-        }
-
-        return row;
+        return insert_bookmark (label, uri, gicon, -1, pinned, permanent);
     }
 
     private SidebarItemInterface? insert_bookmark (string label,
@@ -68,7 +61,11 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
         var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
         if (!has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
-            insert (row, index);
+            if (index >= 0) {
+                insert (row, index);
+            } else {
+                add (row);
+            }
         } else {
             return null;
         }
@@ -165,9 +162,10 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         });
     }
 
-    public override void add_favorite (string uri,
+    public override bool add_favorite (string uri,
                                        string? label = null,
                                        int pos = 0) {
+
         int pinned = 0; // Assume pinned items only at start and end of list
         foreach (Gtk.Widget child in get_children ()) {
             if (((SidebarItemInterface)child).pinned) {
@@ -182,7 +180,12 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
 
         var bm = bookmark_list.insert_uri (uri, pos - pinned, label); //Assume non_builtin items are not pinned
-        insert_bookmark (bm.label, bm.uri, bm.get_icon (), pos);
+        if (bm != null) {
+            insert_bookmark (bm.label, bm.uri, bm.get_icon (), pos);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public override bool remove_item_by_id (uint32 id) {
@@ -201,5 +204,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
 
         return false;
+    }
+
+    public SidebarItemInterface? get_item_at_index (int index) {
+        return (SidebarItemInterface?)(get_row_at_index (index));
     }
 }
