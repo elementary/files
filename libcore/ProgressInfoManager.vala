@@ -16,6 +16,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
+/* Maintains a list of active infos and signals when a new one added */
+/* Used by the ProgressUIHandler to update the progress window and launcher */
 public class PF.Progress.InfoManager : GLib.Object {
     public signal void new_progress_info (PF.Progress.Info info);
 
@@ -41,16 +43,14 @@ public class PF.Progress.InfoManager : GLib.Object {
         }
 
         progress_infos.add (info);
-        info.finished.connect_after (on_info_finished);
         new_progress_info (info);
     }
 
-    private void on_info_finished (Info info) {
-        info.finished.disconnect (on_info_finished);
+    public void remove_finished_info (PF.Progress.Info info) {
         progress_infos.remove (info);
     }
 
-    public Gee.LinkedList<PF.Progress.Info> get_all_infos () {
+    public unowned Gee.LinkedList<PF.Progress.Info> get_all_infos () {
         return progress_infos;
     }
 }
