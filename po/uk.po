@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-26 21:49+0000\n"
-"PO-Revision-Date: 2020-09-18 09:57+0000\n"
+"PO-Revision-Date: 2020-09-20 09:14+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -75,7 +75,7 @@ msgstr "Всі файлові операції закінчилися"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr "Інформація"
+msgstr "Відомості"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
