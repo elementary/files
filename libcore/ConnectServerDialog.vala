@@ -125,7 +125,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             message_type = Gtk.MessageType.INFO
         };
 
-        info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
         info_bar.get_content_area ().add (info_label);
         dismiss_info ();
 
