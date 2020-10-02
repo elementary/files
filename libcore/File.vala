@@ -42,16 +42,16 @@ public class GOF.File : GLib.Object {
     public signal void destroy ();
 
     public bool is_gone;
-    public GLib.File location = null;
+    public GLib.File location { get; construct; }
     public GLib.File target_location = null;
     public GOF.File target_gof = null;
-    public GLib.File directory = null; /* parent directory location */
+    public GLib.File directory { get; construct; } /* parent directory location */
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public GLib.FileInfo? info = null;
-    public string basename = null;
+    public string basename { get; construct; }
     public string? custom_display_name = null;
-    public string uri = null;
+    public string uri { get; construct; }
     public uint64 size = 0;
     public string format_size = null;
     public int color = 0;
@@ -158,10 +158,12 @@ public class GOF.File : GLib.Object {
     }
 
     public File (GLib.File location, GLib.File? dir = null) {
-        this.location = location;
-        uri = location.get_uri ();
-        directory = dir;
-        basename = location.get_basename ();
+        Object (
+            location: location,
+            uri: location.get_uri (),
+            basename: location.get_basename (),
+            directory: dir
+        );
     }
 
     construct {
