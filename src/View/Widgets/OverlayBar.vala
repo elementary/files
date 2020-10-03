@@ -36,8 +36,6 @@ namespace Marlin.View {
         private Marlin.DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
 
-        public bool showbar = false;
-
         public OverlayBar (Gtk.Overlay overlay) {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
@@ -53,10 +51,6 @@ namespace Marlin.View {
         public void selection_changed (GLib.List<unowned GOF.File> files) {
             cancel ();
             visible = false;
-
-            if (!showbar) {
-                return;
-            }
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 if (files != null) {
@@ -78,8 +72,7 @@ namespace Marlin.View {
         public void update_hovered (GOF.File? file) {
             hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout */
 
-            if (!showbar ||
-                (file != null && goffile != null && file.location.equal (goffile.location))) {
+            if (file != null && goffile != null && file.location.equal (goffile.location)) {
 
                 return;
             }
@@ -180,7 +173,7 @@ namespace Marlin.View {
                 }
             }
 
-            visible = showbar && (label.length > 0);
+            visible = label != "";
         }
 
         private string update_status () {

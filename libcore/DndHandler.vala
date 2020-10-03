@@ -33,7 +33,6 @@ namespace Marlin {
             if (drop_target.is_folder ()) {
                 Marlin.FileOperations.copy_move_link.begin (
                     drop_file_list,
-                    null,
                     drop_target.get_target_location (),
                     action,
                     widget,
@@ -192,7 +191,9 @@ namespace Marlin {
                                            Gtk.SelectionData selection) {
             bool success = false;
 
-            if (selection.get_length () == 1 && selection.get_format () == 8) {
+            if (selection != null &&
+                selection.get_length () == 1 && //No other way to get length?
+                selection.get_format () == 8) {
                 uchar result = selection.get_data ()[0];
 
                 switch (result) {
@@ -269,9 +270,11 @@ namespace Marlin {
             text = null;
 
             if (info == Marlin.TargetType.TEXT_URI_LIST &&
-                selection_data.get_format () == 8 &&
-                selection_data.get_length () > 0) {
+                selection_data != null &&
+                selection_data.get_length () > 0 && //No other way to get length?
+                selection_data.get_format () == 8) {
 
+                /* selection_data.get_data () does not work for some reason (returns nothing) */
                 text = DndHandler.data_to_string (selection_data.get_data_with_length ());
             }
 

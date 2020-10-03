@@ -157,6 +157,7 @@ namespace Marlin {
                 instance = new Thumbnailer ();
                 instance.init ();
             }
+
             return instance;
         }
 

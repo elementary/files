@@ -1,8 +1,8 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '4.4.1',
-    meson_version: '>= 0.46.0'
+    version: '4.5.0',
+    meson_version: '>= 0.47.0'
 )
 
 #
@@ -19,6 +19,7 @@ terminal_name = 'pantheon-terminal'
 
 add_project_arguments(
     ['-DGETTEXT_PACKAGE="' + meson.project_name() + '"',
+    '-DHANDY_USE_UNSTABLE_API',
     '-w'],
     language:'c'
 )
@@ -26,7 +27,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.34.0'
+vala_version_required = '0.48.2'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -47,6 +48,7 @@ gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
 granite_dep = dependency('granite', version: '>=5.3.0')
+handy_dep = dependency('libhandy-1', version: '>=0.83.0')
 
 common_deps = [
     glib_dep,
@@ -62,7 +64,6 @@ common_deps = [
 pango_dep = dependency('pango', version: '>=1.1.2')
 sqlite3_dep = dependency('sqlite3')
 libcanberra_dep = dependency('libcanberra', version: '>=0.30')
-zeitgeist_dep = dependency('zeitgeist-2.0')
 
 notify_dep = dependency('libnotify', version: '>=0.7.2')
 
@@ -70,16 +71,11 @@ posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
 
-unity_dep = []
-plank_dep = []
-if get_option('with-unity')
-    unity_dep = dependency('unity', version: '>=4.0.0')
-    add_project_arguments('--define=HAVE_UNITY', language: 'vala')
+plank_dep = dependency('plank', version: '>=0.10.9')
 
-    plank_dep = dependency('plank')
-    if plank_dep.version().version_compare('>=0.10.9')
-        add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
-    endif
+zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
+if (zeitgeist_dep.found())
+    add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
 endif
 
 add_project_arguments(

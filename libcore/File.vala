@@ -31,23 +31,27 @@ public class GOF.File : GLib.Object {
         LOADING
     }
 
-    public const string GIO_DEFAULT_ATTRIBUTES = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::custom-icon-name,metadata::marlin-sort-reversed";
+    public const string GIO_DEFAULT_ATTRIBUTES =
+        "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name," +
+        "standard::display-name,standard::content-type,standard::fast-content-type,standard::size," +
+        "standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem," +
+        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed","metadata::custom-icon-name";
 
     public signal void changed ();
     public signal void icon_changed ();
     public signal void destroy ();
 
     public bool is_gone;
-    public GLib.File location = null;
+    public GLib.File location { get; construct; }
     public GLib.File target_location = null;
     public GOF.File target_gof = null;
-    public GLib.File directory = null; /* parent directory location */
+    public GLib.File directory { get; construct; } /* parent directory location */
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public GLib.FileInfo? info = null;
-    public string basename = null;
+    public string basename { get; construct; }
     public string? custom_display_name = null;
-    public string uri = null;
+    public string uri { get; construct; }
     public uint64 size = 0;
     public string format_size = null;
     public int color = 0;
@@ -154,10 +158,12 @@ public class GOF.File : GLib.Object {
     }
 
     public File (GLib.File location, GLib.File? dir = null) {
-        this.location = location;
-        uri = location.get_uri ();
-        directory = dir;
-        basename = location.get_basename ();
+        Object (
+            location: location,
+            uri: location.get_uri (),
+            basename: location.get_basename (),
+            directory: dir
+        );
     }
 
     construct {
@@ -195,7 +201,9 @@ public class GOF.File : GLib.Object {
             return true;
         }
 
-        if (file_type == GLib.FileType.MOUNTABLE && info != null && info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_MOUNT)) {
+        if (file_type == GLib.FileType.MOUNTABLE &&
+            info != null && info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_MOUNT)) {
+
             return true;
         }
 
@@ -441,11 +449,14 @@ public class GOF.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = FM.ListModel.ColumnID.from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
+                sort_column_id = FM.ListModel.ColumnID.from_string (
+                                     info.get_attribute_string ("metadata::marlin-sort-column-id")
+                                 );
             }
 
             if (info.has_attribute ("metadata::marlin-sort-reversed")) {
-                sort_order = info.get_attribute_string ("metadata::marlin-sort-reversed") == "true" ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+                sort_order = info.get_attribute_string ("metadata::marlin-sort-reversed") == "true" ?
+                                                        Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
             }
         }
 
@@ -887,7 +898,10 @@ public class GOF.File : GLib.Object {
         } else {
             try {
                 var path = location.get_path ();
-                app_info = GLib.AppInfo.create_from_commandline (Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE);
+                app_info = GLib.AppInfo.create_from_commandline (
+                               Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE
+                           );
+
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
@@ -1090,11 +1104,29 @@ public class GOF.File : GLib.Object {
 
     private void update_size () {
         if (is_folder () || is_root_network_folder ()) {
-            format_size = "—";
+            format_size = item_count ();
         } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
             format_size = GLib.format_size (size);
         } else {
             format_size = _("Inaccessible");
+        }
+    }
+
+    private string item_count () {
+        try {
+            var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
+            var count = 0;
+            while (f_enum.next_file () != null) {
+                count++;
+            }
+
+            if (count == 0) {
+                return _("Empty");
+            } else {
+                return ngettext (_("%i item"), _("%i items"), count).printf (count);
+            }
+        } catch (Error e) {
+            return _("Inaccessible");
         }
     }
 

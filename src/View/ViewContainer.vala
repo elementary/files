@@ -242,10 +242,8 @@ namespace Marlin.View {
         }
 
         // the locations in @to_select must be children of @loc
-        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[] to_select = null) {
+        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[]? to_select = null) {
             assert (view == null);
-            assert (loc != null);
-
             view_mode = mode;
 
             if (to_select != null) {
@@ -262,7 +260,6 @@ namespace Marlin.View {
             }
 
             overlay_statusbar = new Marlin.View.OverlayBar (view.overlay);
-            overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
@@ -335,17 +332,17 @@ namespace Marlin.View {
 
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    window.open_single_tab (loc, view_mode);
+                case Marlin.OpenFlag.NEW_WINDOW:
+                    /* Must pass through this function in order to properly handle unusual characters properly */
+                    window.uri_path_change_request (loc.get_uri (), flag);
                     break;
 
-                case Marlin.OpenFlag.NEW_WINDOW:
-                    window.add_window (loc, view_mode);
+                case Marlin.OpenFlag.NEW_ROOT:
+                    view.user_path_change_request (loc, true);
                     break;
 
                 default:
-                        view.user_path_change_request (loc,
-                                                       flag == Marlin.OpenFlag.NEW_ROOT);
-
+                    view.user_path_change_request (loc, false);
                     break;
             }
         }
@@ -526,6 +523,7 @@ namespace Marlin.View {
                         aslot.set_all_selected (false);
                         selected_locations = null;
                     }
+
                     var list = new List<File> ();
                     list.prepend (loc);
                     aslot.select_glib_files (list, loc);

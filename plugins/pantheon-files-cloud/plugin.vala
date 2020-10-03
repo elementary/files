@@ -90,7 +90,8 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     void add_account_to_sidebar (CloudProviders.Account account, CloudProviders.Provider provider) {
         //  Fix menu loading with wrong order by forcing dbus to cache menu_model
         account.menu_model.get_n_items ();
-        var reference = sidebar.add_plugin_item (adapt_plugin_item (provider, account), Marlin.PlaceType.NETWORK_CATEGORY);
+        var reference = sidebar.add_plugin_item (adapt_plugin_item (provider, account),
+                                                 Marlin.PlaceType.NETWORK_CATEGORY);
 
         //  Update sidebar representation of the cloudprovider account on it's properties changes
         account.notify.connect (() => {
@@ -102,17 +103,21 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     /**
      * Generate a SidebarPluginItem from provider and account informations
      */
-    static Marlin.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider, CloudProviders.Account account) {
-        var item = new Marlin.SidebarPluginItem ();
-        item.name = account.name;
-        item.tooltip = account.path;
-        item.uri = account.path;
-        item.icon = account.icon;
-        item.show_spinner = account.get_status () == CloudProviders.AccountStatus.SYNCING;
-        item.action_group = account.action_group;
-        item.action_group_namespace = "cloudprovider";
-        item.menu_model = account.menu_model;
-        item.action_icon = get_icon (account.get_status ());
+    static Marlin.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
+                                                       CloudProviders.Account account) {
+
+        var item = new Marlin.SidebarPluginItem () {
+            name = account.name,
+            tooltip = account.path,
+            uri = account.path,
+            icon = account.icon,
+            show_spinner = account.get_status () == CloudProviders.AccountStatus.SYNCING,
+            action_group = account.action_group,
+            action_group_namespace = "cloudprovider",
+            menu_model = account.menu_model,
+            action_icon = get_icon (account.get_status ())
+        };
+
         return item;
     }
 

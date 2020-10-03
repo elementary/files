@@ -69,8 +69,15 @@ namespace Marlin.View.Chrome {
             truncate_multiline = true;
             weak Gtk.StyleContext style_context = get_style_context ();
             style_context.add_class ("pathbar");
-            Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
-                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            var css_provider = new Gtk.CssProvider ();
+            try {
+                css_provider.load_from_data (".noradius-button { border-radius: 0; }");
+                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                critical ("Unable to style pathbar button: %s", e.message);
+            }
+
             breadcrumb_icons = new BreadcrumbIconList (style_context);
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
@@ -228,15 +235,18 @@ namespace Marlin.View.Chrome {
          protected virtual bool on_button_release_event (Gdk.EventButton event) {
             if (icon_event (event)) {
                 return false;
-            } else {
+            } else if (placeholder == "") {
+                /* Only activate breadcrumbs when they are showing and not hidden by placeholder */
                 reset_elements_states ();
                 var el = get_element_from_coordinates ((int) event.x, (int) event.y);
                 if (el != null) {
                     activate_path (get_path_from_element (el));
-                } else {
-                    grab_focus ();
+                    return true;
                 }
             }
+
+            grab_focus ();
+
             return true;
         }
 
@@ -279,13 +289,15 @@ namespace Marlin.View.Chrome {
             if (secondary_icon_pixbuf != null) {
                 tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             }
+
+
             set_tooltip_markup ("");
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
-            if (el != null) {
+            if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
-                set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
+                set_entry_cursor ("default");
             } else {
-                set_entry_cursor (null);
+                set_entry_cursor ("text");
                 set_default_entry_tooltip ();
             }
 
@@ -355,8 +367,8 @@ namespace Marlin.View.Chrome {
 
     /** Entry functions **/
     /****************************/
-        public void set_entry_cursor (Gdk.Cursor? cursor) {
-            entry_window.set_cursor (cursor ?? new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text"));
+        public void set_entry_cursor (string cursor_name) {
+            entry_window.set_cursor (new Gdk.Cursor.from_name (entry_window.get_display (), cursor_name));
         }
 
         protected virtual void set_default_entry_tooltip () {
@@ -392,7 +404,7 @@ namespace Marlin.View.Chrome {
         }
 
         private int get_breadcrumbs_minimum_width (GLib.List<BreadcrumbElement> displayed_breadcrumbs) {
-            var l = (int)displayed_breadcrumbs.length ();
+            var l = (int)displayed_breadcrumbs.length (); //can assumed to be limited in length
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
                 weak Gtk.StyleContext style_context = get_style_context ();
@@ -420,7 +432,7 @@ namespace Marlin.View.Chrome {
             double shortfall = target_width;
             double free_width = 0;
             uint index = 0;
-            uint length = elements.length ();
+            uint length = elements.length (); //Can assumed to be limited in length
             /* Calculate the amount by which the breadcrumbs can be shrunk excluding the fixed and last */
             foreach (BreadcrumbElement el in elements) {
                 shortfall -= el.natural_width;
@@ -506,7 +518,7 @@ namespace Marlin.View.Chrome {
 
         private void set_element_icons (string protocol, Gee.ArrayList<BreadcrumbElement> newelements) {
             /*Store the current list length */
-            var breadcrumb_icons_list = breadcrumb_icons.length ();
+            var breadcrumb_icons_list = breadcrumb_icons.length (); //Can assumed to be limited in length
             breadcrumb_icons.add_mounted_volumes ();
 
             foreach (BreadcrumbIconInfo icon in breadcrumb_icons.get_list ()) {
@@ -682,7 +694,7 @@ namespace Marlin.View.Chrome {
                 double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
                 width_marged -= total_arrow_width;
                 if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                    var unfixed = displayed_breadcrumbs.length () - 2;
+                    var unfixed = displayed_breadcrumbs.length () - 2; //Can assumed to be limited in length
                     if (unfixed > 0) {
                         width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
                     }
@@ -722,30 +734,38 @@ namespace Marlin.View.Chrome {
                 double text_width, text_height;
                 Pango.Layout layout;
                 /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
+                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
 
                 Gdk.RGBA rgba;
                 var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
-                if (colored) {
-                    cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
-                } else {
-                    cr.set_source_rgba (0, 0, 0, 0.5);
+                if (!colored) {
+                    colored = get_style_context ().lookup_color ("text_color", out rgba);
+                    if (!colored) {
+                    /* If neither "placeholder_text_color" or "text_color" defined in theme (unlikely) fallback to a
+                     *  color that is hopefully still visible in light and dark variants */
+                        rgba = {0.6, 0.6, 0.5, 1};
+                    }
                 }
+
+                cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
 
                 if (is_rtl) {
                     layout = create_pango_layout (text + placeholder);
                 } else {
                     layout = create_pango_layout (text);
                 }
+
                 layout.get_size (out layout_width, out layout_height);
                 text_width = Pango.units_to_double (layout_width);
                 text_height = Pango.units_to_double (layout_height);
                 /** TODO - Get offset due to margins from style context **/
+                var vertical_offset = get_allocated_height () / 2 - text_height / 2;
                 if (is_rtl) {
-                   cr.move_to (width - (text_width + icon_width + 6), text_height / 4);
+                   cr.move_to (width - (text_width + icon_width + 6), vertical_offset);
                 } else {
-                   cr.move_to (text_width + icon_width + 6, text_height / 4);
+                   cr.move_to (text_width + icon_width + 6, vertical_offset);
                 }
+
                 layout.set_text (placeholder, -1);
                 Pango.cairo_show_layout (cr, layout);
             }

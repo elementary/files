@@ -131,7 +131,7 @@ public class Async : Object {
         //Try lifting requirement for info on remote connections
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
-        is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
+        is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
         /* Previously, mtp protocol had problems launching files but this currently works
          * using newer devices such as Android phones so this restriction is lifted. The flag is
          * retained in case it needs reinstating or using for another protocol.
@@ -809,7 +809,6 @@ public class Async : Object {
     }
 
     public GOF.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
-        assert (file != null);
         GOF.File? result = file_hash.lookup (file);
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
          * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */
@@ -1066,7 +1065,6 @@ public class Async : Object {
     }
 
     public static Async from_gfile (GLib.File file) {
-        assert (file != null);
         /* Ensure uri is correctly escaped and has scheme */
         var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
         var scheme = Uri.parse_scheme (escaped_uri);
@@ -1111,7 +1109,6 @@ public class Async : Object {
     }
 
     private static void remove_file_from_cache (GOF.File gof) {
-        assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
         if (dir != null) {
             dir.file_hash.remove (gof.location);
@@ -1127,6 +1124,7 @@ public class Async : Object {
 
         if (file == null) {
             critical ("Null file received in Async cache_lookup");
+            return null;
         }
 
         dir_cache_lock.@lock ();
@@ -1155,10 +1153,6 @@ public class Async : Object {
     }
 
     public static Async? cache_lookup_parent (GLib.File file) {
-        if (file == null) {
-            critical ("Null file submitted to cache lookup parent");
-            return null;
-        }
         GLib.File? parent = file.get_parent ();
         return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }

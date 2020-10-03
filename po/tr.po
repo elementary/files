@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 11:11+0000\n"
-"PO-Revision-Date: 2020-02-01 03:08+0000\n"
+"POT-Creation-Date: 2020-08-26 21:49+0000\n"
+"PO-Revision-Date: 2020-08-11 16:26+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
 ">\n"
@@ -20,31 +20,31 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: src/Application.vala:124
+#: src/Application.vala:149
 msgid "Show the version of the program"
 msgstr "Uygulamanın sürümünü göster"
 
-#: src/Application.vala:126
+#: src/Application.vala:151
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Her biri kendi sekmesinde olmak üzere bir veya daha fazla URI aç"
 
-#: src/Application.vala:128 src/View/AbstractDirectoryView.vala:1855
+#: src/Application.vala:153 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-#: src/Application.vala:130
+#: src/Application.vala:155
 msgid "Quit Files"
 msgstr "Dosyalar'dan Çık"
 
-#: src/Application.vala:132
+#: src/Application.vala:157
 msgid "Enable debug logging"
 msgstr "Hata ayıklama günlüğünü etkinleştir"
 
-#: src/Application.vala:135
+#: src/Application.vala:160
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:138
+#: src/Application.vala:163
 msgid ""
 "\n"
 "\n"
@@ -54,180 +54,172 @@ msgstr ""
 "\n"
 "Dosya yöneticisi ile dosya sistemine gözat"
 
-#: src/Application.vala:166
+#: src/Application.vala:191
 msgid "--quit cannot be used with URIs."
 msgstr "--quit URI adresleriyle birlikte kullanılamaz."
 
-#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
+#: src/ProgressUIHandler.vala:124 src/ProgressUIHandler.vala:186
 msgid "File Operations"
 msgstr "Dosya İşlemleri"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:192
+#: src/ProgressUIHandler.vala:180
 #, c-format
 msgid "Completed %s"
 msgstr "%s Tamamlandı"
 
-#: src/ProgressUIHandler.vala:195
+#: src/ProgressUIHandler.vala:183
 msgid "All file operations have ended"
 msgstr "Tüm dosya işlemleri sona erdi"
-
-#: src/ProgressUIHandler.vala:243
-msgid "Show Copy Dialog"
-msgstr "Kopyalama İletişim Kutusunu Göster"
-
-#: src/ProgressUIHandler.vala:255
-msgid "Cancel All In-progress Actions"
-msgstr "Devam Eden Tüm Eylemleri İptal Et"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
 msgstr "Bilgi"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr "Genel"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:76 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
 msgid "Close"
 msgstr "Kapat"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:135
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
 msgstr "Aygıt Kullanımı"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
 msgstr "Kapasite:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:156
-#: src/Dialogs/AbstractPropertiesDialog.vala:159
-#: src/Dialogs/AbstractPropertiesDialog.vala:162
-#: src/Dialogs/PropertiesWindow.vala:442 src/Dialogs/PropertiesWindow.vala:481
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
+#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
 msgstr "Kullanılabilir:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:161
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
 msgstr "Kullanılan:"
 
-#: src/Dialogs/ChooseAppDialog.vala:42
+#: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "Varsayılan olarak ayarla"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1962 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Özellikler"
 
-#: src/Dialogs/PropertiesWindow.vala:225
+#: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
 msgstr "İzinler"
 
-#: src/Dialogs/PropertiesWindow.vala:246
+#: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%i dosya izinlere ya da diğer hatalara bağlı olarak okunamıyor."
 msgstr[1] "%i dosya izinlere ya da diğer hatalara bağlı olarak okunamıyor."
 
-#: src/Dialogs/PropertiesWindow.vala:250
+#: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
 msgstr "Asıl Boyut Daha Büyük Olabilir"
 
-#: src/Dialogs/PropertiesWindow.vala:270 src/Dialogs/PropertiesWindow.vala:289
+#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
 msgstr "bilinmiyor"
 
-#: src/Dialogs/PropertiesWindow.vala:453
+#: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
-#: src/Dialogs/PropertiesWindow.vala:487
+#: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
 msgstr "Belirlenemedi"
 
-#: src/Dialogs/PropertiesWindow.vala:513 libcore/FileConflictDialog.vala:120
-#: libcore/FileConflictDialog.vala:148
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
+#: libcore/FileConflictDialog.vala:167
 msgid "Size:"
 msgstr "Boyut:"
 
-#: src/Dialogs/PropertiesWindow.vala:520 libcore/ConnectServerDialog.vala:164
-#: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
 msgid "Type:"
 msgstr "Tür:"
 
-#: src/Dialogs/PropertiesWindow.vala:523
+#: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
 msgstr "İçindekiler:"
 
-#: src/Dialogs/PropertiesWindow.vala:546
+#: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
 msgstr "Oluşturma tarihi:"
 
-#: src/Dialogs/PropertiesWindow.vala:556
+#: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
 msgstr "Değiştirilme tarihi:"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
 msgstr "Silindi:"
 
-#: src/Dialogs/PropertiesWindow.vala:578
+#: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
 msgstr "Medya türü:"
 
-#: src/Dialogs/PropertiesWindow.vala:585
+#: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
 msgstr "Çözünürlük:"
 
-#: src/Dialogs/PropertiesWindow.vala:593
-#: src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/PropertiesWindow.vala:604
+#: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
 msgstr "Konum:"
 
-#: src/Dialogs/PropertiesWindow.vala:603
+#: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
 msgstr "Hedef:"
 
-#: src/Dialogs/PropertiesWindow.vala:611
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
 msgstr "Özgün Konum:"
 
-#: src/Dialogs/PropertiesWindow.vala:634
-#: src/View/AbstractDirectoryView.vala:1930
+#: src/Dialogs/PropertiesWindow.vala:645
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr "Diğer Uygulamalar…"
 
-#: src/Dialogs/PropertiesWindow.vala:654
+#: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
 msgstr "Birlikte aç:"
 
-#: src/Dialogs/PropertiesWindow.vala:919 src/Dialogs/PropertiesWindow.vala:929
+#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
 msgstr "Sahibi:"
 
-#: src/Dialogs/PropertiesWindow.vala:923 src/Dialogs/PropertiesWindow.vala:932
+#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
 msgstr "Grup:"
 
-#: src/Dialogs/PropertiesWindow.vala:935
+#: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
 msgstr "Herkes:"
 
-#: src/Dialogs/PropertiesWindow.vala:1216
+#: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u alt klasör"
 msgstr[1] "%u alt klasör"
 
-#: src/Dialogs/PropertiesWindow.vala:1220
-#: src/Dialogs/PropertiesWindow.vala:1242
+#: src/Dialogs/PropertiesWindow.vala:1231
+#: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -235,19 +227,20 @@ msgstr[0] "%u dosya"
 msgstr[1] "%u dosya"
 
 #. TRANSLATORS: folders, files
-#: src/Dialogs/PropertiesWindow.vala:1225
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:909
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1238 src/View/Widgets/OverlayBar.vala:225
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u klasör"
 msgstr[1] "%u klasör"
 
-#: src/Dialogs/PropertiesWindow.vala:1247
+#: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -255,7 +248,7 @@ msgstr[0] "%u seçili öğe"
 msgstr[1] "%u seçili öğe"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1249
+#: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -264,36 +257,36 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Disk Özellikleri"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:645
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Dosya Sistemi"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:88
+#: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
 msgstr "Biçim:"
 
-#: src/Utils/MimeActions.vala:285
+#: src/Utils/MimeActions.vala:283
 msgid "Multiple file types selected"
 msgstr "Birden çok dosya türü seçildi"
 
-#: src/Utils/MimeActions.vala:286
+#: src/Utils/MimeActions.vala:284
 msgid "No single app can open all these types of file"
 msgstr "Hiçbir uygulama bu tür dosyaların hepsini açamaz"
 
-#: src/Utils/MimeActions.vala:313
+#: src/Utils/MimeActions.vala:311
 msgid "Failed to open files"
 msgstr "Dosyalar açılamadı"
 
-#: src/Utils/MimeActions.vala:323
+#: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
 msgstr "URI'ler açılamadı"
 
-#: src/Utils/MimeActions.vala:326
+#: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
 msgstr "Dosyalar veya URI'ler bu uygulama ile açılamıyor"
 
-#: src/View/Window.vala:557 src/View/Window.vala:567
+#: src/View/Window.vala:542 src/View/Window.vala:552
 msgid "(as Administrator)"
 msgstr "(yönetici olarak)"
 
@@ -301,11 +294,11 @@ msgstr "(yönetici olarak)"
 msgid "Filename"
 msgstr "Dosya adı"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2158
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "Boyut"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2163
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "Tür"
 
@@ -313,7 +306,7 @@ msgstr "Tür"
 msgid "Modified"
 msgstr "Değiştirildi"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:407
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
 msgstr "Bu Klasör Yok"
 
@@ -335,305 +328,330 @@ msgstr "\"%s\" klasörünü oluştur"
 msgid "Failed to create the folder"
 msgstr "Klasör oluşturulamadı"
 
-#: src/View/AbstractDirectoryView.vala:820
-#: src/View/AbstractDirectoryView.vala:1127
+#: src/View/AbstractDirectoryView.vala:821
+#: src/View/AbstractDirectoryView.vala:1132
 msgid "Cannot execute this file"
 msgstr "Bu dosya çalıştırılamıyor"
 
-#: src/View/AbstractDirectoryView.vala:841
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:831
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr "\"%s\" açılmadan önce Çöpten çıkarılmalıdır"
+
+#: src/View/AbstractDirectoryView.vala:832
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+"Çöpteki dosyalar açılamıyor. Bu dosyayı açmak için başka bir yere taşınması "
+"gerekir."
+
+#: src/View/AbstractDirectoryView.vala:847
 msgid "Cannot open this file"
 msgstr "Bu dosya açılamıyor"
 
-#: src/View/AbstractDirectoryView.vala:854
+#: src/View/AbstractDirectoryView.vala:860
 msgid "Cannot identify file type to open"
 msgstr "Açmaya çalışılan dosya türü tanımlanamıyor"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1578
 msgid "Cannot drop this file"
 msgstr "Bu dosya bırakılamaz"
 
-#: src/View/AbstractDirectoryView.vala:1574
+#: src/View/AbstractDirectoryView.vala:1579
 msgid "Invalid file name provided"
 msgstr "Belirtilen dosya adı geçersiz"
 
-#: src/View/AbstractDirectoryView.vala:1849
+#: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
 msgstr "Yeni Sekme"
 
-#: src/View/AbstractDirectoryView.vala:1866
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "Çalıştır"
 
-#: src/View/AbstractDirectoryView.vala:1873
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "%s ile aç"
 
-#: src/View/AbstractDirectoryView.vala:1942
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "İçinde aç"
 
-#: src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1952
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open with"
 msgstr "Birlikte aç"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "Bookmark"
-msgstr "Yer imi"
+#: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
+msgid "Add to Bookmarks"
+msgstr "Yer İmlerine Ekle"
 
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr "Kes"
 
-#: src/View/AbstractDirectoryView.vala:1977
+#: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
 msgstr "Kalıcı olarak sil"
 
-#: src/View/AbstractDirectoryView.vala:1994
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "Çöpten Geri Yükle"
 
-#: src/View/AbstractDirectoryView.vala:2005
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "Bulunduğu Klasörü Aç"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "Geçmişten Sil"
 
-#: src/View/AbstractDirectoryView.vala:2024
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Rename…"
 msgstr "Yeniden Adlandır…"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr "Bağlantı Olarak Kopyala"
 
-#: src/View/AbstractDirectoryView.vala:2047
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
 msgstr "Bağlantıyı Klasöre Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:2049
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "Klasöre Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "Gizli Dosyaları Göster"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
 msgstr "Uzak Küçük Resimleri Göster"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
 msgstr "Küçük Resimleri Gizle"
 
-#: src/View/AbstractDirectoryView.vala:2101
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
 msgstr "Bağlantı Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:2153
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "İsim"
 
-#: src/View/AbstractDirectoryView.vala:2168
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "Tarih"
 
-#: src/View/AbstractDirectoryView.vala:2173
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "Tersine Sırala"
 
-#: src/View/AbstractDirectoryView.vala:2176
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr "Dosyalardan Önce Klasörler"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "Sıralama ölçütü"
 
-#: src/View/AbstractDirectoryView.vala:2196
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "Klasör"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "Boş Dosya"
 
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "Yeni"
 
-#: src/View/AbstractDirectoryView.vala:2489
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "Adsız %s"
 
-#: src/View/AbstractDirectoryView.vala:2850
-#: src/View/AbstractDirectoryView.vala:3045
+#: src/View/AbstractDirectoryView.vala:2866
+#: src/View/AbstractDirectoryView.vala:3067
 msgid "Cannot remove files from here"
 msgstr "Dosyalar buradan silinemez"
 
-#: src/View/AbstractDirectoryView.vala:2851
-#: src/View/AbstractDirectoryView.vala:3030
-#: src/View/AbstractDirectoryView.vala:3046
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "You do not have permission to change this location"
 msgstr "Bu yolu değiştirebilmek için gereken yetkiye sahip değilsiniz"
 
-#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3021
 msgid "Cannot copy files that are in the trash"
 msgstr "Çöpün içindeki dosyalar kopyalanamaz"
 
-#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cutting the selection instead"
 msgstr "Onun yerine seçilen kesiliyor"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3051
 msgid "Cannot paste files here"
 msgstr "Dosyalar buraya yapıştırılamaz"
 
-#: src/View/ViewContainer.vala:386 src/View/Sidebar.vala:578
+#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
 msgstr "Ana dizin"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
 msgstr "Burada bir klasör oluşturamazsınız."
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:408
 msgid "The network is unavailable"
 msgstr "Ağ kullanılamıyor"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
 msgstr "Bu klasöre ulaşmak için çalışan bir ağ bağlantısı gerekiyor"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
 msgstr "Bu Klasör Size Ait Değil"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:413
 msgid "You don't have permission to view this folder."
 msgstr "Bu klasörü görüntüleme iznine sahip değilsiniz."
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:415
 msgid "Unable to Mount Folder"
 msgstr "Klasör Bağlanamıyor"
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:416
 msgid "Could not connect to the server for this folder."
 msgstr "Bu klasör için sunucuya bağlanılamadı."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
 msgstr "Klasör İçeriği Gösterilemiyor"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:420
 msgid "The operation timed out."
 msgstr "İşlem zaman aşımına uğradı."
 
-#: src/View/ViewContainer.vala:425
+#: src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
 msgstr "Klasör Görüntülenemiyor"
 
-#: src/View/ViewContainer.vala:426
+#: src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
 msgstr "Bu klasör için sunucu bulunamadı."
 
-#: src/View/ViewContainer.vala:437
+#: src/View/ViewContainer.vala:434
 msgid "File not Found"
 msgstr "Dosya Bulunamadı"
 
-#: src/View/ViewContainer.vala:438
+#: src/View/ViewContainer.vala:435
 msgid "The file selected no longer exists."
 msgstr "Seçilen dosya artık yok."
 
-#: src/View/Sidebar.vala:565
-msgid "Personal"
-msgstr "Kişisel"
+#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
+msgid "Bookmarks"
+msgstr "Yer İmleri"
 
-#: src/View/Sidebar.vala:566
-msgid "Your common places and bookmarks"
-msgstr "Ortak yerleriniz ve yer imleriniz"
+#: src/View/Sidebar.vala:574
+msgid "Common places plus saved folders and files"
+msgstr "Ortak yerler, kaydedilmiş klasörler ve dosyalar"
 
-#: src/View/Sidebar.vala:585
+#: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
 msgstr "Kişisel klasörünüzü açın"
 
-#: src/View/Sidebar.vala:600
+#: src/View/Sidebar.vala:609
 msgid "View the list of recently used files"
 msgstr "Son kullanılan dosyaların listesini görüntüle"
 
-#: src/View/Sidebar.vala:626 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Çöp"
 
-#: src/View/Sidebar.vala:633
+#: src/View/Sidebar.vala:642
 msgid "Open the Trash"
 msgstr "Çöp Kutusunu Aç"
 
-#: src/View/Sidebar.vala:638
+#: src/View/Sidebar.vala:647
 msgid "Devices"
 msgstr "Aygıtlar"
 
-#: src/View/Sidebar.vala:639
-msgid "Your local partitions and devices"
-msgstr "Yerel bölüm ve aygıtlarınız"
+#: src/View/Sidebar.vala:648
+msgid "Internal and connected storage devices"
+msgstr "Dahili ve bağlı depolama aygıtları"
 
-#: src/View/Sidebar.vala:768 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Ağ"
 
-#: src/View/Sidebar.vala:769
-msgid "Your network places"
-msgstr "Ağ bağlantılarınız"
+#: src/View/Sidebar.vala:778
+msgid "Devices and places available via a network"
+msgstr "Bir ağ üzerinden kullanılabilen cihazlar ve yerler"
 
-#: src/View/Sidebar.vala:801
+#: src/View/Sidebar.vala:810
 msgid "Entire Network"
 msgstr "Tüm Ağ"
 
-#: src/View/Sidebar.vala:808
+#: src/View/Sidebar.vala:817
 msgid "Browse the contents of the network"
 msgstr "Ağ içeriğine gözat"
 
-#: src/View/Sidebar.vala:811
+#: src/View/Sidebar.vala:820
 msgid "Connect Server"
 msgstr "Sunucuya Bağlan"
 
-#: src/View/Sidebar.vala:812
+#: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
 msgstr "Ağ sunucusuna bağlan"
 
-#: src/View/Sidebar.vala:971
+#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+#: src/View/Sidebar.vala:892
 #, c-format
-msgid "(%s Free of %s)"
-msgstr "(%2$s / %1$s Boş)"
+msgid "%s on %s"
+msgstr "%s üzerinde %s"
 
-#: src/View/Sidebar.vala:1464
+#: src/View/Sidebar.vala:979
+#, c-format
+msgid "%s free"
+msgstr "%s boş"
+
+#: src/View/Sidebar.vala:980
+#, c-format
+msgid "%s used of %s"
+msgstr "%2$s alanın %1$s kadarı kullanılıyor"
+
+#: src/View/Sidebar.vala:1448
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "%s birimi bağlanırken hata oluştu"
 
-#: src/View/Sidebar.vala:1479
+#: src/View/Sidebar.vala:1463
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s başlatılamadı"
 
-#: src/View/Sidebar.vala:1667 libcore/StockDialogs.vala:31
+#: src/View/Sidebar.vala:1653 libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
 msgstr "Çöpü _Boşalt"
 
@@ -701,16 +719,16 @@ msgstr "Bağı Ka_ldır"
 msgid "_Eject"
 msgstr "_Çıkart"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:133
+#: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Dosya yolu girin veya arayın"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Tab"
 msgstr "Yeni Sekmede Aç"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:455
 msgid "Open in New Window"
 msgstr "Yeni Pencerede Aç"
 
@@ -718,12 +736,12 @@ msgstr "Yeni Pencerede Aç"
 msgid "Open in Other Application…"
 msgstr "Başka Bir Uygulamayla Aç…"
 
-#: src/View/Widgets/HeaderBar.vala:63
+#: src/View/Widgets/HeaderBar.vala:66
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
 msgstr "Önceki"
 
-#: src/View/Widgets/HeaderBar.vala:68
+#: src/View/Widgets/HeaderBar.vala:73
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
 msgstr "Sonraki"
@@ -736,70 +754,70 @@ msgstr "Klasörü yenile"
 msgid "Searching…"
 msgstr "Arıyor…"
 
-#: src/View/Widgets/OverlayBar.vala:216
+#: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
 msgstr "%u klasör"
 
-#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgstr " ve %u diğer öğe (%s) seçildi"
 
-#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
 msgstr " ve %u diğer öğe (%s) seçildi"
 
-#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
 msgstr " seçildi"
 
-#: src/View/Widgets/OverlayBar.vala:235
+#: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u öğe seçildi (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgstr "%u alt klasör, "
 
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
 msgstr "%u alt klasör, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgstr "%u dosya, "
 
-#: src/View/Widgets/OverlayBar.vala:285
+#: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
 msgstr "%u dosya, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
 msgstr "yaklaşık %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:298
+#: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
 msgstr "bilinmeyen boyut"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgstr "%u dosya okunamıyor"
 
-#: src/View/Widgets/OverlayBar.vala:302
+#: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u files not readable"
 msgstr "%u dosya okunamıyor"
@@ -844,101 +862,101 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Güvenli WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server Details"
 msgstr "Sunucu Ayrıntıları"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr "Sunucu adı veya IP adresi"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Sunucu:"
 
-#: libcore/ConnectServerDialog.vala:142
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server"
 msgstr "Sunucudaki paylaşımın adı"
 
-#: libcore/ConnectServerDialog.vala:168
+#: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Paylaş:"
 
-#: libcore/ConnectServerDialog.vala:170
+#: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
 msgstr "Sunucudaki paylaşılan klasörün yolu"
 
-#: libcore/ConnectServerDialog.vala:171
+#: libcore/ConnectServerDialog.vala:181
 msgid "Folder:"
 msgstr "Klasör:"
 
-#: libcore/ConnectServerDialog.vala:173
+#: libcore/ConnectServerDialog.vala:183
 msgid "User Details"
 msgstr "Kullanıcı Ayrıntıları"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:185
 msgid "Name of Windows domain"
 msgstr "Windows çalışma alanının adı"
 
-#: libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:186
 msgid "Domain name:"
 msgstr "Çalışma alanı adı:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
 msgstr "Sunucudaki kullanıcının adı"
 
-#: libcore/ConnectServerDialog.vala:179
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr "Kullanıcı adı:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:196
 msgid "Password:"
 msgstr "Parola:"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:198
 msgid "Remember this password"
 msgstr "Bu parolayı hatırla"
 
-#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:103
-#: libcore/FileConflictDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/FileConflictDialog.vala:219
 msgid "Cancel"
 msgstr "İptal"
 
-#: libcore/ConnectServerDialog.vala:193
+#: libcore/ConnectServerDialog.vala:205
 msgid "Connect"
 msgstr "Bağlan"
 
-#: libcore/ConnectServerDialog.vala:200
+#: libcore/ConnectServerDialog.vala:214
 msgid "Continue"
 msgstr "Devam Et"
 
-#: libcore/ConnectServerDialog.vala:245
+#: libcore/ConnectServerDialog.vala:265
 msgid "Connecting…"
 msgstr "Bağlanıyor…"
 
-#: libcore/ConnectServerDialog.vala:364
+#: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
 msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
 
-#: libcore/DndHandler.vala:49
+#: libcore/DndHandler.vala:48
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\" çalıştırılamadı"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:97
 msgid "Move Here"
 msgstr "Buraya Taşı"
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:98
 msgid "Copy Here"
 msgstr "Buraya Kopyala"
 
-#: libcore/DndHandler.vala:100
+#: libcore/DndHandler.vala:99
 msgid "Link Here"
 msgstr "Bağlantı Oluştur"
 
@@ -946,56 +964,56 @@ msgstr "Bağlantı Oluştur"
 msgid "File conflict"
 msgstr "Dosya çakışması"
 
-#: libcore/FileConflictDialog.vala:115
+#: libcore/FileConflictDialog.vala:122
 msgid "Original file"
 msgstr "Özgün dosya"
 
-#: libcore/FileConflictDialog.vala:133 libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
 msgid "Last modified:"
 msgstr "Son düzenlenme tarihi:"
 
-#: libcore/FileConflictDialog.vala:143
+#: libcore/FileConflictDialog.vala:161
 msgid "Replace with"
 msgstr "Bununla değiştir"
 
-#: libcore/FileConflictDialog.vala:171
+#: libcore/FileConflictDialog.vala:199
 msgid "Reset"
 msgstr "Sıfırla"
 
-#: libcore/FileConflictDialog.vala:181
+#: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
 msgstr "Hedef için yeni bir ad _seçin"
 
-#: libcore/FileConflictDialog.vala:184
+#: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
 msgstr "Bu eylemi tüm dosyalara uygula"
 
-#: libcore/FileConflictDialog.vala:186 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Atla"
 
-#: libcore/FileConflictDialog.vala:187
+#: libcore/FileConflictDialog.vala:217
 msgid "Re_name"
 msgstr "Ye_niden Adlandır"
 
-#: libcore/FileConflictDialog.vala:191
+#: libcore/FileConflictDialog.vala:221
 msgid "Keep Newest"
 msgstr "En Yenisini Tut"
 
-#: libcore/FileConflictDialog.vala:192
+#: libcore/FileConflictDialog.vala:222
 msgid "Skip if original was modified more recently"
 msgstr "Orijinali daha yakın bir zamanda değiştirilmişse atla"
 
-#: libcore/FileConflictDialog.vala:194
+#: libcore/FileConflictDialog.vala:224
 msgid "Replace"
 msgstr "Yerine Koy"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:340
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "\"%s\" klasörü birleştirilsin mi?"
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:341
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1003,94 +1021,122 @@ msgstr ""
 "Birleştirme işlemi, klasördeki kopyalanan dosyalarla çakışan herhangi bir "
 "dosya değiştirilmeden önce onay isteyecek."
 
-#: libcore/FileConflictDialog.vala:313
+#: libcore/FileConflictDialog.vala:343
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı ada sahip daha eski bir klasör zaten var."
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:345
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı ada sahip daha yeni bir klasör zaten var."
 
-#: libcore/FileConflictDialog.vala:317
+#: libcore/FileConflictDialog.vala:347
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı ada sahip başka bir klasör zaten var."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:350
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "\"%s\" klasörü değiştirilsin mi?"
 
-#: libcore/FileConflictDialog.vala:321
+#: libcore/FileConflictDialog.vala:351
 msgid "Replacing it will remove all files in the folder."
 msgstr "Bunu değiştirmek, klasördeki tüm dosyaları kaldıracaktır."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:352
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı ada sahip başka bir klasör zaten var."
 
-#: libcore/FileConflictDialog.vala:325
+#: libcore/FileConflictDialog.vala:355
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "\"%s\" dosyası değiştirilsin mi?"
 
-#: libcore/FileConflictDialog.vala:326
+#: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
 msgstr "Değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak."
 
-#: libcore/FileConflictDialog.vala:329
+#: libcore/FileConflictDialog.vala:359
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı ada sahip daha eski bir dosya zaten var."
 
-#: libcore/FileConflictDialog.vala:331
+#: libcore/FileConflictDialog.vala:361
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı ada sahip daha yeni bir dosya zaten var."
 
-#: libcore/FileConflictDialog.vala:333
+#: libcore/FileConflictDialog.vala:363
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı ada sahip başka bir dosya zaten var."
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:389
 msgid "Merge"
 msgstr "Birleştir"
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "\"%s\" özgün konumu belirlenemedi. "
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "Öğe çöpten geri yüklenemez"
 
-#: libcore/FileUtils.vala:445
+#: libcore/FileUtils.vala:497
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s' yeniden adlandırılamadı"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:534
+#: libcore/FileUtils.vala:586
 #, c-format
 msgid "Today at %s"
 msgstr "Bugün %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:540
+#: libcore/FileUtils.vala:594
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Dün %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:546
+#: libcore/FileUtils.vala:602
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A %s"
+
+#: libcore/FileUtils.vala:898
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d saniye"
+msgstr[1] "%'d saniye"
+
+#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d dakika"
+msgstr[1] "%'d dakika"
+
+#: libcore/FileUtils.vala:909
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d saat"
+msgstr[1] "%'d saat"
+
+#: libcore/FileUtils.vala:913
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "yaklaşık %'d saat"
+msgstr[1] "yaklaşık %'d saat"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1174,86 +1220,57 @@ msgid "Emptying Trash"
 msgstr "Çöp Boşaltılıyor"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
-msgstr "%s bağlanamıyor"
+msgstr "'%s' bağlanamıyor"
 
-#: libcore/marlin-file-operations.c:156
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d saniye"
-msgstr[1] "%'d saniye"
-
-#: libcore/marlin-file-operations.c:165 libcore/marlin-file-operations.c:179
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d dakika"
-msgstr[1] "%'d dakika"
-
-#: libcore/marlin-file-operations.c:178
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d saat"
-msgstr[1] "%'d saat"
-
-#: libcore/marlin-file-operations.c:190
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "yaklaşık %'d saat"
-msgstr[1] "yaklaşık %'d saat"
-
-#: libcore/marlin-file-operations.c:266
+#: libcore/marlin-file-operations.c:204
 #, c-format
 msgid "Link to %s"
 msgstr "%s öğesine bağla"
 
-#: libcore/marlin-file-operations.c:270
+#: libcore/marlin-file-operations.c:208
 #, c-format
 msgid "Another link to %s"
 msgstr "%s öğesine bir diğer bağlantı"
 
-#: libcore/marlin-file-operations.c:286
+#: libcore/marlin-file-operations.c:224
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: libcore/marlin-file-operations.c:290
+#: libcore/marlin-file-operations.c:228
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: libcore/marlin-file-operations.c:294
+#: libcore/marlin-file-operations.c:232
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: libcore/marlin-file-operations.c:298
+#: libcore/marlin-file-operations.c:236
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: libcore/marlin-file-operations.c:490
+#: libcore/marlin-file-operations.c:428
 msgid " ("
 msgstr " ("
 
-#: libcore/marlin-file-operations.c:498
+#: libcore/marlin-file-operations.c:436
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1060
+#: libcore/marlin-file-operations.c:875
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "\"%s\" öğesini çöpten kalıcı olarak silmek istediğinize emin misiniz?"
 
-#: libcore/marlin-file-operations.c:1064
+#: libcore/marlin-file-operations.c:879
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1268,18 +1285,18 @@ msgstr[1] ""
 "Seçili %'d öğeyi çöp kutusundan kalıcı olarak silmek istediğinizden emin "
 "misiniz?"
 
-#: libcore/marlin-file-operations.c:1074
+#: libcore/marlin-file-operations.c:889
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Eğer bir öğeyi silerseniz, o kalıcı olarak kaybolur."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1100
+#: libcore/marlin-file-operations.c:915
 #, c-format
 msgid "Permanently delete “%s”?"
 msgstr "\"%s\" dosyası kalıcı olarak silinsin mi?"
 
-#: libcore/marlin-file-operations.c:1103
+#: libcore/marlin-file-operations.c:918
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1287,39 +1304,39 @@ msgid_plural ""
 msgstr[0] "Seçilen %'d öğeyi kalıcı olarak silmek istediğinize emin misiniz?"
 msgstr[1] "Seçilen %'d öğeyi kalıcı olarak silmek istediğinize emin misiniz?"
 
-#: libcore/marlin-file-operations.c:1112
+#: libcore/marlin-file-operations.c:927
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr "Silinmiş öğeler Çöpe gönderilmez ve kurtarılamaz."
 
-#: libcore/marlin-file-operations.c:1146
+#: libcore/marlin-file-operations.c:961
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "Silinecek %'d dosya kaldı"
 msgstr[1] "Silinecek %'d dosya kaldı"
 
-#: libcore/marlin-file-operations.c:1151
+#: libcore/marlin-file-operations.c:966
 msgid "Deleting files"
 msgstr "Dosyalar siliniyor"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1166
+#: libcore/marlin-file-operations.c:981
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "%s kaldı"
 msgstr[1] "%s kaldı"
 
-#: libcore/marlin-file-operations.c:1235 libcore/marlin-file-operations.c:1275
-#: libcore/marlin-file-operations.c:1321 libcore/marlin-file-operations.c:1403
-#: libcore/marlin-file-operations.c:1910
+#: libcore/marlin-file-operations.c:1050 libcore/marlin-file-operations.c:1090
+#: libcore/marlin-file-operations.c:1136 libcore/marlin-file-operations.c:1218
+#: libcore/marlin-file-operations.c:1725
 msgid "Error while deleting."
 msgstr "Silinirken hata oluştu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1241
+#: libcore/marlin-file-operations.c:1056
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1330,20 +1347,20 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1246 libcore/marlin-file-operations.c:1974
-#: libcore/marlin-file-operations.c:3052
+#: libcore/marlin-file-operations.c:1061 libcore/marlin-file-operations.c:1789
+#: libcore/marlin-file-operations.c:2776
 #, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr "\"%s\" klasöründeki dosyalar hakkında bilgi alınırken hata oluştu."
 
-#: libcore/marlin-file-operations.c:1256 libcore/marlin-file-operations.c:3062
+#: libcore/marlin-file-operations.c:1071 libcore/marlin-file-operations.c:2786
 msgid "_Skip files"
 msgstr "Dosyaları _atla"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1280
+#: libcore/marlin-file-operations.c:1095
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1353,46 +1370,46 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1285 libcore/marlin-file-operations.c:2019
-#: libcore/marlin-file-operations.c:3104
+#: libcore/marlin-file-operations.c:1100 libcore/marlin-file-operations.c:1834
+#: libcore/marlin-file-operations.c:2828
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "\"%s\" klasörü okunurken hata oluştu."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1324
+#: libcore/marlin-file-operations.c:1139
 #, c-format
 msgid "Could not remove the folder %s."
 msgstr "%s klasörü silinemedi."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1406
+#: libcore/marlin-file-operations.c:1221
 #, c-format
 msgid "There was an error deleting %s."
 msgstr "%s silinirken bir hata oluştu."
 
-#: libcore/marlin-file-operations.c:1491
+#: libcore/marlin-file-operations.c:1306
 msgid "Moving files to trash"
 msgstr "Dosyalar çöpe taşınıyor"
 
-#: libcore/marlin-file-operations.c:1493
+#: libcore/marlin-file-operations.c:1308
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d dosya çöpe gönderilmeyi bekliyor"
 msgstr[1] "%'d dosya çöpe gönderilmeyi bekliyor"
 
-#: libcore/marlin-file-operations.c:1591 libcore/marlin-file-operations.c:1594
-#: libcore/marlin-file-operations.c:1597
+#: libcore/marlin-file-operations.c:1406 libcore/marlin-file-operations.c:1409
+#: libcore/marlin-file-operations.c:1412
 msgid "Cannot move file to trash or delete it"
 msgstr "Dosya çöpe taşınamıyor veya silinemiyor"
 
-#: libcore/marlin-file-operations.c:1592
+#: libcore/marlin-file-operations.c:1407
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Salt okunur dosya sisteminde çöpe taşımaya veya silmeye izin verilmiyor."
 
-#: libcore/marlin-file-operations.c:1595
+#: libcore/marlin-file-operations.c:1410
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1400,7 +1417,7 @@ msgstr ""
 "Yazma izninizin bulunmadığı klasörlerin içindeki dosyaları çöpe atmaya veya "
 "silmeye izin verilmiyor."
 
-#: libcore/marlin-file-operations.c:1598
+#: libcore/marlin-file-operations.c:1413
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1408,28 +1425,28 @@ msgstr ""
 "Yazma izninizin bulunmadığı klasörlerin çöpe atılmasına veya silinmesine "
 "izin verilmiyor."
 
-#: libcore/marlin-file-operations.c:1600
+#: libcore/marlin-file-operations.c:1415
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "Dosya çöpe taşınamıyor. Hemen silmeyi denemek ister misiniz?"
 
-#: libcore/marlin-file-operations.c:1601
+#: libcore/marlin-file-operations.c:1416
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 "Bu dosya çöpe taşınamadı. Daha fazla bilgi için aşağıdaki açıklamalara bakın."
 
-#: libcore/marlin-file-operations.c:1605
+#: libcore/marlin-file-operations.c:1420
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Dosya çöpe taşınamıyor.  Silmeyi denemek ister misiniz?"
 
-#: libcore/marlin-file-operations.c:1606
+#: libcore/marlin-file-operations.c:1421
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr "Bu dosya çöpe taşınamadı. Dosyayı silmeyi başaramaya bilirsiniz."
 
-#: libcore/marlin-file-operations.c:1612
+#: libcore/marlin-file-operations.c:1427
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1437,11 +1454,11 @@ msgstr ""
 "\n"
 " Bir dosyayı silmek o dosyayı kalıcı olarak kaldırır"
 
-#: libcore/marlin-file-operations.c:1802
+#: libcore/marlin-file-operations.c:1617
 msgid "Trashing Files"
 msgstr "Dosyalar Çöpe Atılıyor"
 
-#: libcore/marlin-file-operations.c:1804
+#: libcore/marlin-file-operations.c:1619
 msgid "Deleting Files"
 msgstr "Dosyalar Siliniyor"
 
@@ -1449,7 +1466,7 @@ msgstr "Dosyalar Siliniyor"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1844
+#: libcore/marlin-file-operations.c:1659
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1460,7 +1477,7 @@ msgstr[1] "%'d dosya kopyalanmak için hazırlanıyor (%s)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1856
+#: libcore/marlin-file-operations.c:1671
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1471,37 +1488,37 @@ msgstr[1] "%'d dosya taşınmak için hazırlanıyor (%s)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1868
+#: libcore/marlin-file-operations.c:1683
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "%'d dosya silinmek için hazırlanıyor (%s)"
 msgstr[1] "%'d dosya silinmek için hazırlanıyor (%s)"
 
-#: libcore/marlin-file-operations.c:1875
+#: libcore/marlin-file-operations.c:1690
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "%'d dosya çöpe atılmak için hazırlanıyor"
 msgstr[1] "%'d dosya çöpe atılmak için hazırlanıyor"
 
-#: libcore/marlin-file-operations.c:1906 libcore/marlin-file-operations.c:2899
-#: libcore/marlin-file-operations.c:3039 libcore/marlin-file-operations.c:3091
+#: libcore/marlin-file-operations.c:1721 libcore/marlin-file-operations.c:2623
+#: libcore/marlin-file-operations.c:2763 libcore/marlin-file-operations.c:2815
 msgid "Error while copying."
 msgstr "Kopyalarken hata oluştu."
 
-#: libcore/marlin-file-operations.c:1908 libcore/marlin-file-operations.c:3037
-#: libcore/marlin-file-operations.c:3089
+#: libcore/marlin-file-operations.c:1723 libcore/marlin-file-operations.c:2761
+#: libcore/marlin-file-operations.c:2813
 msgid "Error while moving."
 msgstr "Taşınırken hata oluştu."
 
-#: libcore/marlin-file-operations.c:1912
+#: libcore/marlin-file-operations.c:1727
 msgid "Error while moving files to trash."
 msgstr "Dosyalar çöpe taşınırken hata oluştu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1969
+#: libcore/marlin-file-operations.c:1784
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1512,7 +1529,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2014
+#: libcore/marlin-file-operations.c:1829
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1522,7 +1539,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2101
+#: libcore/marlin-file-operations.c:1916
 #, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1532,32 +1549,32 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2106
+#: libcore/marlin-file-operations.c:1921
 #, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "\"%s\" hakkında bilgi alırken bir hata oluştu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2212 libcore/marlin-file-operations.c:2258
-#: libcore/marlin-file-operations.c:2296 libcore/marlin-file-operations.c:2336
+#: libcore/marlin-file-operations.c:2027 libcore/marlin-file-operations.c:2073
+#: libcore/marlin-file-operations.c:2111 libcore/marlin-file-operations.c:2151
 #, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "\"%s\" hedefine kopyalanırken hata oluştu."
 
-#: libcore/marlin-file-operations.c:2217
+#: libcore/marlin-file-operations.c:2032
 msgid "You do not have permissions to access the destination folder."
 msgstr "Hedef klasöre erişim için yeterli izne sahip değilsiniz."
 
-#: libcore/marlin-file-operations.c:2219
+#: libcore/marlin-file-operations.c:2034
 msgid "There was an error getting information about the destination."
 msgstr "Hedef hakkında bilgi alırken bir hata oluştu."
 
-#: libcore/marlin-file-operations.c:2259
+#: libcore/marlin-file-operations.c:2074
 msgid "The destination is not a folder."
 msgstr "Hedef bir klasör değil."
 
-#: libcore/marlin-file-operations.c:2298
+#: libcore/marlin-file-operations.c:2113
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1566,30 +1583,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2304
+#: libcore/marlin-file-operations.c:2119
 #, c-format
 msgid "There is %s available, but %s is required."
 msgstr "%s kullanılabilir alan var, ancak %s gerekli."
 
-#: libcore/marlin-file-operations.c:2338
+#: libcore/marlin-file-operations.c:2153
 msgid "The destination is read-only."
 msgstr "Hedef salt okunur."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2410
+#: libcore/marlin-file-operations.c:2225
 #, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "\"%s\", \"%s\" hedefine taşınıyor"
 
-#: libcore/marlin-file-operations.c:2411
+#: libcore/marlin-file-operations.c:2226
 #, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "\"%s\", \"%s\" hedefine kopyalanıyor"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2415
+#: libcore/marlin-file-operations.c:2230
 #, c-format
 msgid "Duplicating \"%s\""
 msgstr "\"%s\" çoğaltılıyor"
@@ -1598,14 +1615,14 @@ msgstr "\"%s\" çoğaltılıyor"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2423
+#: libcore/marlin-file-operations.c:2238
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "%'d dosya (\"%s\" konumundan) \"%s\" hedefine taşınıyor"
 msgstr[1] "%'d dosya (\"%s\" konumundan) \"%s\" hedefine taşınıyor"
 
-#: libcore/marlin-file-operations.c:2426
+#: libcore/marlin-file-operations.c:2241
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1614,7 +1631,7 @@ msgstr[1] "%'d dosya (\"%s\" konumundan) \"%s\" hedefine kopyalanıyor"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2435
+#: libcore/marlin-file-operations.c:2250
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1625,21 +1642,21 @@ msgstr[1] "%'d dosya (\"%s\" konumunda) çoğaltılıyor"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2447
+#: libcore/marlin-file-operations.c:2262
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "%'d dosya \"%s\" hedefine taşınıyor"
 msgstr[1] "%'d dosya \"%s\" hedefine taşınıyor"
 
-#: libcore/marlin-file-operations.c:2450
+#: libcore/marlin-file-operations.c:2265
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "%'d dosya \"%s\" hedefine kopyalanıyor"
 msgstr[1] "%'d dosya \"%s\" hedefine kopyalanıyor"
 
-#: libcore/marlin-file-operations.c:2456
+#: libcore/marlin-file-operations.c:2271
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1647,7 +1664,7 @@ msgstr[0] "%'d dosya çoğaltılıyor"
 msgstr[1] "%'d dosya çoğaltılıyor"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2486
+#: libcore/marlin-file-operations.c:2301
 #, c-format
 msgid "%s of %s"
 msgstr "%2$s / %1$s"
@@ -1658,7 +1675,7 @@ msgstr "%2$s / %1$s"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2506
+#: libcore/marlin-file-operations.c:2321
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1667,7 +1684,7 @@ msgstr[1] "%2$s / %1$s — %3$s kaldı (%4$s/sn)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2906
+#: libcore/marlin-file-operations.c:2630
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1678,14 +1695,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2911
+#: libcore/marlin-file-operations.c:2635
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "\"%s\" klasörü oluşturulurken hata oluştu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3047
+#: libcore/marlin-file-operations.c:2771
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1696,7 +1713,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3099
+#: libcore/marlin-file-operations.c:2823
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1709,91 +1726,91 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3152 libcore/marlin-file-operations.c:3885
-#: libcore/marlin-file-operations.c:4480
+#: libcore/marlin-file-operations.c:2876 libcore/marlin-file-operations.c:3608
+#: libcore/marlin-file-operations.c:4175
 #, c-format
 msgid "Error while moving \"%s\"."
 msgstr "\"%s\" taşınırken hata oluştu."
 
-#: libcore/marlin-file-operations.c:3154
+#: libcore/marlin-file-operations.c:2878
 msgid "Could not remove the source folder."
 msgstr "Kaynak klasör kaldırılamadı."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3243 libcore/marlin-file-operations.c:3294
-#: libcore/marlin-file-operations.c:3889
+#: libcore/marlin-file-operations.c:2967 libcore/marlin-file-operations.c:3018
+#: libcore/marlin-file-operations.c:3612
 #, c-format
 msgid "Error while copying \"%s\"."
 msgstr "\"%s\" kopyalanırken hata oluştu."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3248
+#: libcore/marlin-file-operations.c:2972
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "Zaten mevcut olan %s klasöründen dosyalar silinemedi."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3299
+#: libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "Zaten mevcut olan %s dosyası silinemedi."
 
-#: libcore/marlin-file-operations.c:3618 libcore/marlin-file-operations.c:4317
+#: libcore/marlin-file-operations.c:3341 libcore/marlin-file-operations.c:4014
 msgid "You cannot move a folder into itself."
 msgstr "Bir klasörü kendi üzerine taşıyamazsınız."
 
-#: libcore/marlin-file-operations.c:3619 libcore/marlin-file-operations.c:4318
+#: libcore/marlin-file-operations.c:3342 libcore/marlin-file-operations.c:4015
 msgid "You cannot copy a folder into itself."
 msgstr "Bir klasörü kendi üzerine kopyalayamazsınız."
 
-#: libcore/marlin-file-operations.c:3620 libcore/marlin-file-operations.c:4319
+#: libcore/marlin-file-operations.c:3343 libcore/marlin-file-operations.c:4016
 msgid "The destination folder is inside the source folder."
 msgstr "Hedef klasör kaynak klasörün içindedir."
 
-#: libcore/marlin-file-operations.c:3651
+#: libcore/marlin-file-operations.c:3374
 msgid "You cannot move a file over itself."
 msgstr "Bir dosyayı kendi üzerine taşıyamazsınız."
 
-#: libcore/marlin-file-operations.c:3652
+#: libcore/marlin-file-operations.c:3375
 msgid "You cannot copy a file over itself."
 msgstr "Bir dosyayı kendi üzerine kopyalayamazsınız."
 
-#: libcore/marlin-file-operations.c:3653
+#: libcore/marlin-file-operations.c:3376
 msgid "The source file would be overwritten by the destination."
 msgstr "Kaynak dosya hedef tarafından kendi üzerine yazılabilir."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3895
+#: libcore/marlin-file-operations.c:3618
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "%s içerisinde zaten varolan ve aynı ada sahip olan dosya silinemedi."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3965
+#: libcore/marlin-file-operations.c:3688
 #, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "\"%s\" buraya kopyalanamıyor."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3970
+#: libcore/marlin-file-operations.c:3693
 #, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Dosyayı %s hedefine kopyalama sırasında bir hata oluştu."
 
-#: libcore/marlin-file-operations.c:4189
+#: libcore/marlin-file-operations.c:3894
 msgid "Copying Files"
 msgstr "Dosyalar Kopyalanıyor"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4225
+#: libcore/marlin-file-operations.c:3930
 #, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "\"%s\" içerisine taşımaya hazırlanıyor"
 
-#: libcore/marlin-file-operations.c:4230
+#: libcore/marlin-file-operations.c:3935
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1801,23 +1818,23 @@ msgstr[0] "%'d dosya taşınmak için hazırlanıyor"
 msgstr[1] "%'d dosya taşınmak için hazırlanıyor"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4484
+#: libcore/marlin-file-operations.c:4179
 #, c-format
 msgid "There was an error moving the file into %s."
 msgstr "Dosya %s içerisine taşınırken bir hata oluştu."
 
-#: libcore/marlin-file-operations.c:4743
+#: libcore/marlin-file-operations.c:4413
 msgid "Moving Files"
 msgstr "Dosyalar Taşınıyor"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4782
+#: libcore/marlin-file-operations.c:4452
 #, c-format
 msgid "Creating links in \"%s\""
 msgstr "\"%s\" içerisinde bağlar oluşturuluyor"
 
-#: libcore/marlin-file-operations.c:4787
+#: libcore/marlin-file-operations.c:4457
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1825,59 +1842,59 @@ msgstr[0] "%'d dosyaya bağlantı yapılıyor"
 msgstr[1] "%'d dosyaya bağlantı yapılıyor"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4930
+#: libcore/marlin-file-operations.c:4567
 #, c-format
 msgid "Error while creating link to %s."
 msgstr "%s bağı oluşturulurken hata."
 
-#: libcore/marlin-file-operations.c:4933
+#: libcore/marlin-file-operations.c:4570
 msgid "Symbolic links only supported for local files"
 msgstr "Sembolik bağlar sadece yerel dosyalar için desteklenir"
 
-#: libcore/marlin-file-operations.c:4936
+#: libcore/marlin-file-operations.c:4573
 msgid "The target doesn't support symbolic links."
 msgstr "Hedef sembolik bağları desteklemiyor."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4941
+#: libcore/marlin-file-operations.c:4578
 #, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "%s içerisinde sembolik bağ oluşturulurken hata oluştu."
 
-#: libcore/marlin-file-operations.c:5268
+#: libcore/marlin-file-operations.c:4881
 msgid "Setting permissions"
 msgstr "İzinler atanıyor"
 
-#: libcore/marlin-file-operations.c:5458
+#: libcore/marlin-file-operations.c:5070
 msgid "Cannot copy into trash."
 msgstr "Çöp kutusuna kopyalanamıyor."
 
-#: libcore/marlin-file-operations.c:5459 libcore/marlin-file-operations.c:5467
+#: libcore/marlin-file-operations.c:5071 libcore/marlin-file-operations.c:5079
 msgid "It is not permitted to copy files into the trash"
 msgstr "Dosyaları çöp kutusuna kopyalamaya izin verilmiyor"
 
-#: libcore/marlin-file-operations.c:5607
+#: libcore/marlin-file-operations.c:5215
 msgid "untitled folder"
 msgstr "adsız klasör"
 
-#: libcore/marlin-file-operations.c:5615
+#: libcore/marlin-file-operations.c:5223
 msgid "new file"
 msgstr "yeni dosya"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5787
+#: libcore/marlin-file-operations.c:5390
 #, c-format
 msgid "Error while creating directory %s."
 msgstr "%s dizini oluşturulurken hata."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5790
+#: libcore/marlin-file-operations.c:5393
 #, c-format
 msgid "Error while creating file %s."
 msgstr "%s dosyası oluşturulurken hata."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5796
+#: libcore/marlin-file-operations.c:5399
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "%s içerisinde dizin oluşturulurken bir hata oluştu."
@@ -1886,17 +1903,17 @@ msgstr "%s içerisinde dizin oluşturulurken bir hata oluştu."
 msgid "Type a path"
 msgstr "Bir yol girin"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr "%s konumuna git"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
 msgstr "Git: %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 msgid "Type Path"
 msgstr "Yol Girin"
 
@@ -1904,31 +1921,27 @@ msgstr "Yol Girin"
 msgid "More Results …"
 msgstr "Diğer Sonuçlar …"
 
-#: libwidgets/View/SearchResults.vala:225
+#: libwidgets/View/SearchResults.vala:238
 msgid "In This Folder"
 msgstr "Bu Klasörde"
 
-#: libwidgets/View/SearchResults.vala:230
+#: libwidgets/View/SearchResults.vala:243
 msgid "Below This Folder"
 msgstr "Bu Klasörün Altında"
 
-#: libwidgets/View/SearchResults.vala:235
-msgid "Bookmarks"
-msgstr "Yer İmleri"
-
-#: libwidgets/View/SearchResults.vala:240
+#: libwidgets/View/SearchResults.vala:254
 msgid "Recently used"
 msgstr "Son kullanılanlar"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:35
+#: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr "Izgara Olarak Görüntüle"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:40
+#: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr "Liste Olarak Görüntüle"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:45
+#: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr "Sütun Olarak Görüntüle"
 
@@ -1983,6 +1996,36 @@ msgstr "Seçilenleri Geri Yükle"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Seçilenleri Sil"
+
+#~ msgid "Show Copy Dialog"
+#~ msgstr "Kopyalama İletişim Kutusunu Göster"
+
+#~ msgid "Cancel All In-progress Actions"
+#~ msgstr "Devam Eden Tüm Eylemleri İptal Et"
+
+#~ msgid "Add to Favorites"
+#~ msgstr "Sık Kullanılanlara Ekle"
+
+#~ msgid "Favorites"
+#~ msgstr "Sık Kullanılanlar"
+
+#~ msgid "(%s Free of %s)"
+#~ msgstr "(%2$s / %1$s Boş)"
+
+#~ msgid "Bookmark"
+#~ msgstr "Yer imi"
+
+#~ msgid "Personal"
+#~ msgstr "Kişisel"
+
+#~ msgid "Your common places and bookmarks"
+#~ msgstr "Ortak yerleriniz ve yer imleriniz"
+
+#~ msgid "Your network places"
+#~ msgstr "Ağ bağlantılarınız"
+
+#~ msgid "Your local partitions and devices"
+#~ msgstr "Yerel bölüm ve aygıtlarınız"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Kopyalanmış %d öğeyi sil"
