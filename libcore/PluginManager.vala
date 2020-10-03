@@ -129,7 +129,7 @@ public class Marlin.PluginManager : Object {
 
         debug ("Loading plugin for %s", file_path);
 
-        Module module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
+        Module module = Module.open (file_path, ModuleFlags.LOCAL);
         if (module == null) {
             warning ("Failed to load module from path '%s': %s",
                      file_path,
@@ -181,7 +181,7 @@ public class Marlin.PluginManager : Object {
         drop_menu_references (menu);
 
         if (menu is Gtk.Menu) {
-            drop_plugin_menuitems (menu as Gtk.Menu);
+            drop_plugin_menuitems ();
         }
 
         foreach (var plugin in plugin_hash.values) {
@@ -189,11 +189,7 @@ public class Marlin.PluginManager : Object {
         }
     }
 
-    private void drop_plugin_menuitems (Gtk.Menu menu) {
-        var plugin_menu = menu as Gtk.Menu;
-
-        assert (plugin_menu != null);
-
+    private void drop_plugin_menuitems () {
         foreach (var menu_item in menuitem_references) {
             menu_item.parent.remove (menu_item);
         }

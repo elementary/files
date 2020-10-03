@@ -15,9 +15,11 @@ You'll need the following dependencies:
 * libdbus-glib-1-dev
 * libgail-3-dev
 * libgee-0.8-dev
+* libgit2-glib-1.0-dev
 * libglib2.0-dev
 * libgranite-dev >= 5.3.0
 * libgtk-3-dev
+* libhandy-1-dev >= 0.83.0
 * libnotify-dev
 * libpango1.0-dev
 * libplank-dev

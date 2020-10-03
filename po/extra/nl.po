@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 23:37+0000\n"
-"PO-Revision-Date: 2020-06-08 18:11+0000\n"
+"POT-Creation-Date: 2020-08-11 17:28+0000\n"
+"PO-Revision-Date: 2020-09-20 09:14+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -67,296 +67,385 @@ msgstr ""
 "FTP, SFTP, AFP, Webdav of Windows share."
 
 #: data/io.elementary.files.appdata.xml.in.in:63
+#: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Improvements:"
 msgstr "Verbeteringen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
+msgid "Bookmark menu option for network mounts in sidebar"
+msgstr "Een snelkoppeling menu optie voor netwerkschijven in de zijbalk"
+
+#: data/io.elementary.files.appdata.xml.in.in:66
+msgid "Show folder item count in List View"
+msgstr "Toon itemaantal in de map ook in lijstweergave"
+
+#: data/io.elementary.files.appdata.xml.in.in:67
+msgid ""
+"Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
+"network locations by default"
+msgstr ""
+"Toon standaard miniatuurweergaven zowel op lokaal gekoppelde MTP- en PTP-"
+"apparaten als netwerklocaties"
+
+#: data/io.elementary.files.appdata.xml.in.in:68
+msgid ""
+"Properties window: Allow the filename to be copied when it cannot be edited"
+msgstr ""
+"Eigenschappenvenster: Sta toe dat de bestandsnaam gekopieerd kan worden "
+"wanneer deze niet kan worden bewerkt"
+
+#: data/io.elementary.files.appdata.xml.in.in:69
+msgid "Improved tooltip formatting for devices in the sidebar"
+msgstr "Verbeterde tooltipopmaak voor apparaten in zijbalk"
+
+#: data/io.elementary.files.appdata.xml.in.in:71
+#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:112
+msgid "Fixes:"
+msgstr "Opgelost:"
+
+#: data/io.elementary.files.appdata.xml.in.in:73
+msgid "Fix crash when pressing Enter and another key at the same time"
+msgstr ""
+"Probleem verholpen bij het tegelijkertijd indrukken van Enter en een andere "
+"toets"
+
+#: data/io.elementary.files.appdata.xml.in.in:74
+msgid "Fix pathbar handling of \"~\" and \"..\" in path"
+msgstr ""
+"Probleem opgelost bij het verwerken van \"~\" en \"..\" in een bestandspad"
+
+#: data/io.elementary.files.appdata.xml.in.in:75
+msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
+msgstr ""
+"Bestandskiezer adresbalk loopt niet meer vast wanneer deze vanuit een "
+"Flatpak wordt geopend"
+
+#: data/io.elementary.files.appdata.xml.in.in:76
+msgid ""
+"Do not show git status for repositories on FUSE filesystems to prevent "
+"possible blocking"
+msgstr ""
+"Verberg de git status van repos op FUSE bestandssystemen om mogelijke "
+"blokkade te voorkomen"
+
+#: data/io.elementary.files.appdata.xml.in.in:78
+#: data/io.elementary.files.appdata.xml.in.in:97
+#: data/io.elementary.files.appdata.xml.in.in:119
+#: data/io.elementary.files.appdata.xml.in.in:172
+msgid "Other updates:"
+msgstr "Andere updates:"
+
+#: data/io.elementary.files.appdata.xml.in.in:80
+msgid "\"Personal\" is now \"Bookmarks\""
+msgstr "\"Persoonlijk\" is gewijzigd in \"Favorieten\""
+
+#: data/io.elementary.files.appdata.xml.in.in:81
+#: data/io.elementary.files.appdata.xml.in.in:99
+#: data/io.elementary.files.appdata.xml.in.in:121
+#: data/io.elementary.files.appdata.xml.in.in:135
+#: data/io.elementary.files.appdata.xml.in.in:148
+#: data/io.elementary.files.appdata.xml.in.in:161
+#: data/io.elementary.files.appdata.xml.in.in:193
+#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:224
+#: data/io.elementary.files.appdata.xml.in.in:233
+#: data/io.elementary.files.appdata.xml.in.in:244
+#: data/io.elementary.files.appdata.xml.in.in:253
+#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:283
+#: data/io.elementary.files.appdata.xml.in.in:291
+#: data/io.elementary.files.appdata.xml.in.in:323
+msgid "Updated translations"
+msgstr "Bijgewerkte vertalingen"
+
+#: data/io.elementary.files.appdata.xml.in.in:89
+msgid ""
+"Add warning and error colored disk usage bars when disk becomes too full"
+msgstr ""
+"Een waarschuwing en gekleurde schijfruimte balken toegevoegd voor als de "
+"schijf te vol wordt"
+
+#: data/io.elementary.files.appdata.xml.in.in:90
+msgid ""
+"Prevent window resizing when filename column width exceeds available space"
+msgstr ""
+"Voorkom het wijzigen van een venster als de breedte van de bestandsnaam "
+"kolom groter is dan de beschikbare ruimte"
+
+#: data/io.elementary.files.appdata.xml.in.in:94
+msgid "Fix handling of filenames containing the # character"
+msgstr ""
+"Een probleem opgelost bij het verwerken van bestanden met een # in de "
+"bestandsnaam"
+
+#: data/io.elementary.files.appdata.xml.in.in:95
+msgid "Fix regressions regarding pathbar context menus and clicking"
+msgstr ""
+"Een probleem met het klikken op en context menu’s binnen de adresbalk "
+"opgelost"
+
+#: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
 "Plak waar mogelijk afbeeldingen in andere apps in plaats van de "
 "bestandslocatie"
 
-#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Paste into a selected folder when using Ctrl + V"
 msgstr "Plak in een geselecteerde map bij gebruik van Ctrl + V"
 
-#: data/io.elementary.files.appdata.xml.in.in:67
+#: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Show file info overlay in List View as well"
 msgstr "Toon de bestandsinfo ook in lijstweergave"
 
-#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Traverse search results with Tab key"
 msgstr "Navigeer door zoekresultaten met de Tab toets"
 
-#: data/io.elementary.files.appdata.xml.in.in:69
+#: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Show an error message when attempting to open trashed files"
 msgstr "Toon een foutmelding bij het openen van bestanden in de prullenbak"
 
-#: data/io.elementary.files.appdata.xml.in.in:71
-msgid "Fixes:"
-msgstr "Opgelost:"
-
-#: data/io.elementary.files.appdata.xml.in.in:73
+#: data/io.elementary.files.appdata.xml.in.in:114
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
 "Een probleem opgelost waarbij de thuismap werd getoond in een onaanpasbaar "
 "gedeelte van de adresbalk"
 
-#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:115
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr ""
 "Een bug opgelost die verhinderde dat de datum en tijd van wijziging van een "
 "bestand werden getoond"
 
-#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:116
 msgid "Fix size of restored tiled window"
 msgstr ""
 "Een probleem opgelost bij het herstellen van naast elkaar gerangschikte "
 "vensters"
 
-#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:117
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr ""
 "Een probleem opgelost met verdwijnende kleurlabels als miniatuurweergaven "
 "werden verborgen"
 
-#: data/io.elementary.files.appdata.xml.in.in:78
-#: data/io.elementary.files.appdata.xml.in.in:131
-msgid "Other updates:"
-msgstr "Andere updates:"
-
-#: data/io.elementary.files.appdata.xml.in.in:80
-#: data/io.elementary.files.appdata.xml.in.in:94
-#: data/io.elementary.files.appdata.xml.in.in:107
-#: data/io.elementary.files.appdata.xml.in.in:120
-#: data/io.elementary.files.appdata.xml.in.in:152
-#: data/io.elementary.files.appdata.xml.in.in:174
-#: data/io.elementary.files.appdata.xml.in.in:183
-#: data/io.elementary.files.appdata.xml.in.in:192
-#: data/io.elementary.files.appdata.xml.in.in:203
-#: data/io.elementary.files.appdata.xml.in.in:212
-#: data/io.elementary.files.appdata.xml.in.in:231
-#: data/io.elementary.files.appdata.xml.in.in:242
-#: data/io.elementary.files.appdata.xml.in.in:250
-#: data/io.elementary.files.appdata.xml.in.in:282
-msgid "Updated translations"
-msgstr "Bijgewerkte vertalingen"
-
-#: data/io.elementary.files.appdata.xml.in.in:86
-#: data/io.elementary.files.appdata.xml.in.in:100
+#: data/io.elementary.files.appdata.xml.in.in:127
+#: data/io.elementary.files.appdata.xml.in.in:141
 msgid "Minor updates:"
 msgstr "Kleine updates:"
 
-#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:129
 msgid "Fix crash when a device icon is coming from a file"
 msgstr "Crash opgelost als een apparaat icoon van een bestand komt"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:130
 msgid "Fix device icon sometimes missing"
 msgstr "Een probleem opgelost waarbij het apparaat-icoon soms verdween"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:131
 msgid "Fix occasional view freeze after renaming"
 msgstr "Een probleem opgelost waarbij na hernoemen het scherm soms bevroor"
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:132
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
 "Verbeterde hernoem logica bij het dealen met een spatie aan het begin of "
 "einde"
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:133
 msgid "Fix breadcrumbs sometimes incorrect at startup"
 msgstr "Een probleem opgelost met verkeerde broodkruimels bij het opstarten"
 
-#: data/io.elementary.files.appdata.xml.in.in:93
+#: data/io.elementary.files.appdata.xml.in.in:134
 msgid "Do not show file:// prefix in navigation buttons menus"
 msgstr "Toon de file:// prefix niet in de navigatie knoppen menu’s"
 
-#: data/io.elementary.files.appdata.xml.in.in:102
+#: data/io.elementary.files.appdata.xml.in.in:143
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
 msgstr "Een probleem met het “nieuwe map” sneltoets label in het menu opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/io.elementary.files.appdata.xml.in.in:144
 msgid "Fix navigation with back/forward button context menu"
 msgstr ""
 "Een probleem opgelost met navigeren door middel van de terug/vooruit knop "
 "context menu"
 
-#: data/io.elementary.files.appdata.xml.in.in:104
+#: data/io.elementary.files.appdata.xml.in.in:145
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
 "Een probleem opgelost waarbij de adresbalk soms een verkeerd adres toonde "
 "bij het sluiten van een tabblad"
 
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:146
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
 "Zorg ervoor dat sneltoetsen direct werken na het aanmaken of hernoemen van "
 "een bestand"
 
-#: data/io.elementary.files.appdata.xml.in.in:106
+#: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
 "\"file://\" wordt niet toegevoegd in de adresbalk of bij het plakken van een "
 "bestandspad als tekst"
 
-#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Show keyboard shortcuts in menu items"
 msgstr "Toon toetsenbord sneltoetsen in menu items"
 
-#: data/io.elementary.files.appdata.xml.in.in:115
+#: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Fix an issue with breadcrumbs in the file chooser"
 msgstr "Een probleem met broodkruimels opgelost in de bestandskiezer"
 
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr ""
 "Toon een waarschuwing bij het ontkoppelen van een volume dat nog steeds in "
 "gebruik is"
 
-#: data/io.elementary.files.appdata.xml.in.in:117
+#: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
 "Een probleem met het verversen van de cursor opgelost tijdens het "
 "horizontaal scrollen in kolomweergave"
 
-#: data/io.elementary.files.appdata.xml.in.in:118
+#: data/io.elementary.files.appdata.xml.in.in:159
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
 "Een probleem opgelost met het blijvende map open icoon na het sluiten van de "
 "kolomweergave"
 
-#: data/io.elementary.files.appdata.xml.in.in:119
+#: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr ""
 "Gebruik destructieve actie styling voor sommige prullenbak dialoogvenster "
 "knoppen"
 
-#: data/io.elementary.files.appdata.xml.in.in:126
+#: data/io.elementary.files.appdata.xml.in.in:167
 msgid "New features:"
 msgstr "Nieuwe functies:"
 
-#: data/io.elementary.files.appdata.xml.in.in:128
+#: data/io.elementary.files.appdata.xml.in.in:169
 msgid "Initial git plugin support"
 msgstr "Directe ondersteuning voor een git plug-in"
 
-#: data/io.elementary.files.appdata.xml.in.in:129
+#: data/io.elementary.files.appdata.xml.in.in:170
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr ""
 "Bij het herstellen en opslaan van tabs wordt de algemene geschiedenis "
 "instelling gevolgd"
 
-#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:174
 msgid "Ensure tabs showing same folder remain synchronized"
 msgstr "Tabs die dezelfde map tonen blijven gesynchroniseerd"
 
-#: data/io.elementary.files.appdata.xml.in.in:134
+#: data/io.elementary.files.appdata.xml.in.in:175
 msgid "Fix drag with secondary button on empty space"
 msgstr ""
 "Een probleem opgelost met slepen door middel van de tweede knop naar lege "
 "ruimte"
 
-#: data/io.elementary.files.appdata.xml.in.in:135
+#: data/io.elementary.files.appdata.xml.in.in:176
 msgid "Show custom media type icons for installed apps"
 msgstr "Toon aangepaste mediatype iconen voor geïnstalleerde apps"
 
-#: data/io.elementary.files.appdata.xml.in.in:136
+#: data/io.elementary.files.appdata.xml.in.in:177
 msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 "Een probleem opgelost met het tonen van de “inactieve diskruimte” indicator"
 
-#: data/io.elementary.files.appdata.xml.in.in:137
+#: data/io.elementary.files.appdata.xml.in.in:178
 msgid "Improve pathbar animation"
 msgstr "Een verbeterde padbalk animatie"
 
-#: data/io.elementary.files.appdata.xml.in.in:138
+#: data/io.elementary.files.appdata.xml.in.in:179
 msgid "Update documentation"
 msgstr "Documentatie bijgewerkt"
 
-#: data/io.elementary.files.appdata.xml.in.in:139
+#: data/io.elementary.files.appdata.xml.in.in:180
 msgid "Update translations"
 msgstr "Bijgewerkte vertalingen"
 
-#: data/io.elementary.files.appdata.xml.in.in:146
+#: data/io.elementary.files.appdata.xml.in.in:187
 msgid "Initial cloudproviders plugin support"
 msgstr "Directe ondersteuning voor de cloudproviders plug-in"
 
-#: data/io.elementary.files.appdata.xml.in.in:147
+#: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Fix selecting pasted files"
 msgstr "Een probleem opgelost met het selecteren van geplakte bestanden"
 
-#: data/io.elementary.files.appdata.xml.in.in:148
+#: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Fix color label visibility while using dark theme"
 msgstr ""
 "Een probleem opgelost met de zichtbaarheid van kleurlabels bij gebruik van "
 "het donkere thema"
 
-#: data/io.elementary.files.appdata.xml.in.in:149
+#: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Fix selecting files using Shift key"
 msgstr ""
 "Een probleem opgelost met het selecteren van bestanden met gebruik van de "
 "Shift knop"
 
-#: data/io.elementary.files.appdata.xml.in.in:150
+#: data/io.elementary.files.appdata.xml.in.in:191
 msgid "Draw checkerboard background for image items"
 msgstr "Teken een schaakbord achtergrond voor afbeelding items"
 
-#: data/io.elementary.files.appdata.xml.in.in:151
+#: data/io.elementary.files.appdata.xml.in.in:192
 msgid "Improved styling for disk space bars"
 msgstr "Verbeterde styling van schijfruimte balken"
 
-#: data/io.elementary.files.appdata.xml.in.in:159
+#: data/io.elementary.files.appdata.xml.in.in:200
 msgid "Show more search results"
 msgstr "Toon meer zoekresultaten"
 
-#: data/io.elementary.files.appdata.xml.in.in:160
+#: data/io.elementary.files.appdata.xml.in.in:201
 msgid "Ensure valid tab name generation"
 msgstr "Verbetering bij het genereren van valide namen voor tabbladen"
 
-#: data/io.elementary.files.appdata.xml.in.in:161
+#: data/io.elementary.files.appdata.xml.in.in:202
 msgid "Properly sort folders by date and size"
 msgstr "Mappen worden juist gesorteerd op datum en grootte"
 
-#: data/io.elementary.files.appdata.xml.in.in:162
+#: data/io.elementary.files.appdata.xml.in.in:203
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 "Het openen van Bestanden vanuit Terminal gebeurt in een nieuw tabblad in "
 "plaats van een nieuw venster"
 
-#: data/io.elementary.files.appdata.xml.in.in:163
+#: data/io.elementary.files.appdata.xml.in.in:204
 msgid "Improve MTP support"
 msgstr "Verbeterde ondersteuning voor MTP"
 
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:205
 msgid "Various tagging feature refinements"
 msgstr "Diverse verbeteringen aan de tagging functionaliteit"
 
-#: data/io.elementary.files.appdata.xml.in.in:165
+#: data/io.elementary.files.appdata.xml.in.in:206
 msgid "Keyboard navigation improvements"
 msgstr "Toetsenbord navigatie verbeterd"
 
-#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Symlink copy and paste fixes"
 msgstr ""
 "Problemen opgelost met het kopiëren en plakken van symbolische koppelingen"
 
-#: data/io.elementary.files.appdata.xml.in.in:167
+#: data/io.elementary.files.appdata.xml.in.in:208
 msgid "Avoid crash when Templates folder is null"
 msgstr "Een crash als de Templates map niet bestaat wordt voorkomen"
 
-#: data/io.elementary.files.appdata.xml.in.in:168
+#: data/io.elementary.files.appdata.xml.in.in:209
 msgid "Reduce memory footprint of FileChooserDialog"
 msgstr "Het geheugengebruik van het BestandKiesScherm is verminderd"
 
-#: data/io.elementary.files.appdata.xml.in.in:169
+#: data/io.elementary.files.appdata.xml.in.in:210
 msgid "Avoid crash when selecting image file in some situations"
 msgstr ""
 "Een crash voorkomen bij het selecteren van een afbeeldingsbestand in sommige "
 "situaties"
 
-#: data/io.elementary.files.appdata.xml.in.in:170
+#: data/io.elementary.files.appdata.xml.in.in:211
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
@@ -365,49 +454,49 @@ msgstr ""
 "gesloten tijdens het kopiëren van bestanden op het netwerk naar "
 "verwisselbare opslagruimte"
 
-#: data/io.elementary.files.appdata.xml.in.in:171
+#: data/io.elementary.files.appdata.xml.in.in:212
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr ""
 "Probleem opgelost met klikken en verslepen na het dubbelklikken op een leeg "
 "gebied"
 
-#: data/io.elementary.files.appdata.xml.in.in:172
+#: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Avoid crash while scrolling over view switcher"
 msgstr "Een crash voorkomen tijdens het scrollen over de weergave wisselaar"
 
-#: data/io.elementary.files.appdata.xml.in.in:173
+#: data/io.elementary.files.appdata.xml.in.in:214
 msgid "Avoid possible crash in some copy and paste situations"
 msgstr "Een mogelijke crash voorkomen in sommige knip en plak situaties"
 
-#: data/io.elementary.files.appdata.xml.in.in:181
+#: data/io.elementary.files.appdata.xml.in.in:222
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
 "Een probleem opgelost met toetsenbord navigatie bij het kiezen van bepaalde "
 "bestanden in de iconen weergave"
 
-#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:223
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
 "Probleem met de zoektekst markering style, waardoor een probleem met het "
 "donkere thema wordt opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:190
+#: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Minor spacing adjustments to location bar"
 msgstr "Kleine verandering in tussenruimte van de locatie balk"
 
-#: data/io.elementary.files.appdata.xml.in.in:191
+#: data/io.elementary.files.appdata.xml.in.in:232
 msgid "Fix F2 renaming behavior"
 msgstr "Een probleem opgelost met het hernoemen van F2"
 
-#: data/io.elementary.files.appdata.xml.in.in:199
+#: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Minor spacing adjustments to location breadcrumbs"
 msgstr "Kleine wijzigingen in de tussenruimte bij de locatie broodkruimels"
 
-#: data/io.elementary.files.appdata.xml.in.in:200
+#: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Consistently remember color tags"
 msgstr "Beter onthouden van kleurlabels"
 
-#: data/io.elementary.files.appdata.xml.in.in:201
+#: data/io.elementary.files.appdata.xml.in.in:242
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
@@ -415,215 +504,215 @@ msgstr ""
 "Herlaad de thumbnails bij in- en uitzoomen zodat het standaardplaatje niet "
 "onnodig wordt getoond"
 
-#: data/io.elementary.files.appdata.xml.in.in:202
+#: data/io.elementary.files.appdata.xml.in.in:243
 msgid "Fix running scripts with spaces in filename"
 msgstr ""
 "Een probleem opgelost met het uitvoeren van scripts met een spatie in de naam"
 
-#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:251
 msgid "Fix high CPU regression in version 4.1.4"
 msgstr "Een probleem met hoog CPU verbruik in versie 4.1.4 opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:211
+#: data/io.elementary.files.appdata.xml.in.in:252
 msgid "File sorting fixes"
 msgstr "Probleem met het sorteren van bestanden opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:260
 msgid "Meson: fix soversion names"
 msgstr "Meson: een probleem opgelost met soversion namen"
 
-#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:261
 msgid "Remove CMake build system"
 msgstr "Het CMake installeer systeem verwijderd"
 
-#: data/io.elementary.files.appdata.xml.in.in:221
+#: data/io.elementary.files.appdata.xml.in.in:262
 msgid "Fix missing File System properties menu"
 msgstr ""
 "Een probleem opgelost met het verdwijnende bestandssysteem eigenschappen menu"
 
-#: data/io.elementary.files.appdata.xml.in.in:222
+#: data/io.elementary.files.appdata.xml.in.in:263
 msgid "Drop intltool dependency"
 msgstr "Niet meer afhankelijk van het intltool pakket"
 
-#: data/io.elementary.files.appdata.xml.in.in:223
+#: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Fix default file type handler logic"
 msgstr ""
 "Een probleem opgelost met de standaard afhandeling van een bestandstype"
 
-#: data/io.elementary.files.appdata.xml.in.in:224
+#: data/io.elementary.files.appdata.xml.in.in:265
 msgid "Fix initial search window size too small"
 msgstr "Een probleem opgelost waarbij het zoekvenster initieel te klein was"
 
-#: data/io.elementary.files.appdata.xml.in.in:225
+#: data/io.elementary.files.appdata.xml.in.in:266
 msgid "Add option to disable local file thumbnails"
 msgstr ""
 "Een optie toegevoegd om thumbnails van lokale bestanden uit te schakelen"
 
-#: data/io.elementary.files.appdata.xml.in.in:226
+#: data/io.elementary.files.appdata.xml.in.in:267
 msgid "Fix crash when opening multiple video files"
 msgstr "Crash bij het openen van meerdere videobestanden opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:227
+#: data/io.elementary.files.appdata.xml.in.in:268
 msgid "Fix some timing issues around adding and removing files"
 msgstr ""
 "Timing problemen opgelost met het toevoegen en verwijderen van bestanden"
 
-#: data/io.elementary.files.appdata.xml.in.in:228
+#: data/io.elementary.files.appdata.xml.in.in:269
 msgid "Meson: fix missing library headers"
 msgstr "Meson: missende bibliotheek koppen toegevoegd"
 
-#: data/io.elementary.files.appdata.xml.in.in:229
+#: data/io.elementary.files.appdata.xml.in.in:270
 msgid "Fix color tag display"
 msgstr "Een probleem met het tonen van kleurlabel opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:230
+#: data/io.elementary.files.appdata.xml.in.in:271
 msgid "Show reserved space in Properties window"
 msgstr "Toon gereserveerde ruimte in het eigenschappen venster"
 
-#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:279
 msgid "Add border radius to text background"
 msgstr "Voeg ronde hoeken toe aan de tekstachtergrond"
 
-#: data/io.elementary.files.appdata.xml.in.in:239
+#: data/io.elementary.files.appdata.xml.in.in:280
 msgid "Fix file mimetype association regression"
 msgstr "Een probleem opgelost met mimetype associatie regressie"
 
-#: data/io.elementary.files.appdata.xml.in.in:240
+#: data/io.elementary.files.appdata.xml.in.in:281
 msgid "New pathbar tooltips"
 msgstr "Nieuwe tooltips voor de adresbalk"
 
-#: data/io.elementary.files.appdata.xml.in.in:241
+#: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Build fixes"
 msgstr "Problemen met installeren opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:249
+#: data/io.elementary.files.appdata.xml.in.in:290
 msgid "Plugin build fixes"
 msgstr "Problemen met het installeren van plug-ins opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:257
+#: data/io.elementary.files.appdata.xml.in.in:298
 msgid "Fix Ctrl+Tab behavior"
 msgstr "Verbeter Ctrl+Tab-gedrag"
 
-#: data/io.elementary.files.appdata.xml.in.in:258
+#: data/io.elementary.files.appdata.xml.in.in:299
 msgid "Fix building without Unity library"
 msgstr "Een probleem opgelost met het installeren zonder de Unity bibliotheek"
 
-#: data/io.elementary.files.appdata.xml.in.in:265
+#: data/io.elementary.files.appdata.xml.in.in:306
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
 "Broodkruimels verbergen en toon een vrije ruimte en zoek icoon in de home map"
 
-#: data/io.elementary.files.appdata.xml.in.in:266
+#: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Style error dialogs"
 msgstr "Stijlfouten vensters"
 
-#: data/io.elementary.files.appdata.xml.in.in:267
+#: data/io.elementary.files.appdata.xml.in.in:308
 msgid "Right click fixes"
 msgstr "Problemen met rechts klikken opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:268
+#: data/io.elementary.files.appdata.xml.in.in:309
 msgid "Reload recent view when privacy setting changes"
 msgstr "Herlaad recente weergave als de privacy instellingen worden gewijzigd"
 
-#: data/io.elementary.files.appdata.xml.in.in:269
+#: data/io.elementary.files.appdata.xml.in.in:310
 msgid "`Connect Server` fixes"
 msgstr "`Verbinden met server` problemen opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:270
+#: data/io.elementary.files.appdata.xml.in.in:311
 msgid "Do not activate multiple files with single click"
 msgstr "Activeer meerdere bestanden niet met een enkele klik"
 
-#: data/io.elementary.files.appdata.xml.in.in:271
+#: data/io.elementary.files.appdata.xml.in.in:312
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr ""
 "Gebruik `Tab` om met het toetsenbord te focussen op Weergave en Zijbalk"
 
-#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:313
 msgid "Delete color tag database entries for trashed files"
 msgstr "Verwijder kleurlabels voor bestanden in de prullenbak uit de database"
 
-#: data/io.elementary.files.appdata.xml.in.in:273
+#: data/io.elementary.files.appdata.xml.in.in:314
 msgid "Throttle tab closing"
 msgstr "Beperk het sluiten van tabbladen"
 
-#: data/io.elementary.files.appdata.xml.in.in:274
+#: data/io.elementary.files.appdata.xml.in.in:315
 msgid "`Ctrl` key fixes"
 msgstr "Problemen met de `Ctrl` toets opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:275
+#: data/io.elementary.files.appdata.xml.in.in:316
 msgid "Drag and drop fixes"
 msgstr "Problemen met slepen en verplaatsen opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:276
+#: data/io.elementary.files.appdata.xml.in.in:317
 msgid "Show icons in `Open with` menus"
 msgstr "Toon iconen in de `Open met` menu's"
 
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:318
 msgid "Tooltip fixes"
 msgstr "Problemen met tooltips opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:278
+#: data/io.elementary.files.appdata.xml.in.in:319
 msgid "Memory leak fixes"
 msgstr "Geheugenlek opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:279
+#: data/io.elementary.files.appdata.xml.in.in:320
 msgid "Crash fixes"
 msgstr "Crashes opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:280
+#: data/io.elementary.files.appdata.xml.in.in:321
 msgid "Trash: respect sound setting"
 msgstr "Prullenbak: respecteer geluidsinstelling"
 
-#: data/io.elementary.files.appdata.xml.in.in:281
+#: data/io.elementary.files.appdata.xml.in.in:322
 msgid "Localization fixes"
 msgstr "Localisatieproblemen opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:289
+#: data/io.elementary.files.appdata.xml.in.in:330
 msgid "Over 100 major and minor bug fixes and improvements"
 msgstr "Meer dan 100 grote en kleine bugs verholpen en verbeteringen"
 
-#: data/io.elementary.files.appdata.xml.in.in:296
+#: data/io.elementary.files.appdata.xml.in.in:337
 msgid "Honor 12/24hr system setting"
 msgstr "Respecteer de 12- of 24-uurs systeem instelling"
 
-#: data/io.elementary.files.appdata.xml.in.in:297
+#: data/io.elementary.files.appdata.xml.in.in:338
 msgid "Distinguish between tabs with the same name"
 msgstr "Maak onderscheid tussen tabbladen met dezelfde naam"
 
-#: data/io.elementary.files.appdata.xml.in.in:298
+#: data/io.elementary.files.appdata.xml.in.in:339
 msgid "Support launching from other applications with a target file selected"
 msgstr ""
 "Ondersteuning voor het opstarten vanuit andere toepassingen met een bestand "
 "geselecteerd"
 
-#: data/io.elementary.files.appdata.xml.in.in:299
-#: data/io.elementary.files.appdata.xml.in.in:312
-#: data/io.elementary.files.appdata.xml.in.in:326
-#: data/io.elementary.files.appdata.xml.in.in:336
-#: data/io.elementary.files.appdata.xml.in.in:347
+#: data/io.elementary.files.appdata.xml.in.in:340
+#: data/io.elementary.files.appdata.xml.in.in:353
+#: data/io.elementary.files.appdata.xml.in.in:367
+#: data/io.elementary.files.appdata.xml.in.in:377
+#: data/io.elementary.files.appdata.xml.in.in:388
 msgid "New translations"
 msgstr "Nieuwe vertalingen"
 
-#: data/io.elementary.files.appdata.xml.in.in:300
-#: data/io.elementary.files.appdata.xml.in.in:313
-#: data/io.elementary.files.appdata.xml.in.in:327
-#: data/io.elementary.files.appdata.xml.in.in:337
-#: data/io.elementary.files.appdata.xml.in.in:348
-#: data/io.elementary.files.appdata.xml.in.in:355
-#: data/io.elementary.files.appdata.xml.in.in:362
-#: data/io.elementary.files.appdata.xml.in.in:386
+#: data/io.elementary.files.appdata.xml.in.in:341
+#: data/io.elementary.files.appdata.xml.in.in:354
+#: data/io.elementary.files.appdata.xml.in.in:368
+#: data/io.elementary.files.appdata.xml.in.in:378
+#: data/io.elementary.files.appdata.xml.in.in:389
+#: data/io.elementary.files.appdata.xml.in.in:396
+#: data/io.elementary.files.appdata.xml.in.in:403
+#: data/io.elementary.files.appdata.xml.in.in:427
 msgid "Minor bug fixes"
 msgstr "Kleine bugfixes"
 
-#: data/io.elementary.files.appdata.xml.in.in:307
+#: data/io.elementary.files.appdata.xml.in.in:348
 msgid "Improved networking support"
 msgstr "Verbeterde ondersteuning voor netwerken"
 
-#: data/io.elementary.files.appdata.xml.in.in:308
+#: data/io.elementary.files.appdata.xml.in.in:349
 msgid "Correct window geometry when snapping to left or right"
 msgstr "Venster geometrie gecorrigeerd bij het springen naar links of rechts"
 
-#: data/io.elementary.files.appdata.xml.in.in:309
+#: data/io.elementary.files.appdata.xml.in.in:350
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
@@ -631,73 +720,73 @@ msgstr ""
 "Het indrukken van Ctrl annuleert niet langer het hernoemen als de “Toon "
 "Aanwijzer” instelling actief is"
 
-#: data/io.elementary.files.appdata.xml.in.in:310
+#: data/io.elementary.files.appdata.xml.in.in:351
 msgid "Switching input language cancels actions"
 msgstr "Het wisselen van input talen annuleert acties"
 
-#: data/io.elementary.files.appdata.xml.in.in:311
-#: data/io.elementary.files.appdata.xml.in.in:325
-#: data/io.elementary.files.appdata.xml.in.in:335
-#: data/io.elementary.files.appdata.xml.in.in:346
+#: data/io.elementary.files.appdata.xml.in.in:352
+#: data/io.elementary.files.appdata.xml.in.in:366
+#: data/io.elementary.files.appdata.xml.in.in:376
+#: data/io.elementary.files.appdata.xml.in.in:387
 msgid "Various crash fixes"
 msgstr "Diverse crashes gemaakt"
 
-#: data/io.elementary.files.appdata.xml.in.in:320
+#: data/io.elementary.files.appdata.xml.in.in:361
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
 "Webbrowsers zoals Firefox onthouden nu de meest recent gebruikte downloadmap"
 
-#: data/io.elementary.files.appdata.xml.in.in:321
+#: data/io.elementary.files.appdata.xml.in.in:362
 msgid "Remember preferred zoom level"
 msgstr "Onthoud het gewenste zoomlevel"
 
-#: data/io.elementary.files.appdata.xml.in.in:322
+#: data/io.elementary.files.appdata.xml.in.in:363
 msgid "Improved input method support"
 msgstr "Verbeterde inputmethode ondersteuning"
 
-#: data/io.elementary.files.appdata.xml.in.in:323
+#: data/io.elementary.files.appdata.xml.in.in:364
 msgid "910x640 minimum window size"
 msgstr "910x640 minimum venstergrootte"
 
-#: data/io.elementary.files.appdata.xml.in.in:324
+#: data/io.elementary.files.appdata.xml.in.in:365
 msgid "Security fixes"
 msgstr "Beveilingsupdates"
 
-#: data/io.elementary.files.appdata.xml.in.in:334
+#: data/io.elementary.files.appdata.xml.in.in:375
 msgid "Enable drag and drop tabs between windows"
 msgstr "Slepen en neerzetten van tabbladen tussen vensters is ingeschakeld"
 
-#: data/io.elementary.files.appdata.xml.in.in:344
+#: data/io.elementary.files.appdata.xml.in.in:385
 msgid "Merge search functionality into Ctrl+F"
 msgstr "Zoekfunctionaliteit samengevoegd in Ctrl+F"
 
-#: data/io.elementary.files.appdata.xml.in.in:345
+#: data/io.elementary.files.appdata.xml.in.in:386
 msgid "Improved translation support"
 msgstr "Verbeterde ondersteuning voor vertalingen"
 
-#: data/io.elementary.files.appdata.xml.in.in:369
+#: data/io.elementary.files.appdata.xml.in.in:410
 msgid "Fix appdata release dates"
 msgstr "Een probleem met appdata release data opgelost"
 
-#: data/io.elementary.files.appdata.xml.in.in:376
+#: data/io.elementary.files.appdata.xml.in.in:417
 msgid "Improve file opening over Samba shares"
 msgstr "Bestanden openen via Samba shares verbeterd"
 
-#: data/io.elementary.files.appdata.xml.in.in:377
+#: data/io.elementary.files.appdata.xml.in.in:418
 msgid "Fix a crash when restoring items from the Trash"
 msgstr "Crash bij het herstellen van items uit de prullenbak verholpen"
 
-#: data/io.elementary.files.appdata.xml.in.in:378
+#: data/io.elementary.files.appdata.xml.in.in:419
 msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr "Knippen/kopiëren/plakken sensitiviteit in context menu verbeterd"
 
-#: data/io.elementary.files.appdata.xml.in.in:379
+#: data/io.elementary.files.appdata.xml.in.in:420
 msgid "Translation updates"
 msgstr "Bijgewerkte vertalingen"
 
-#: data/io.elementary.files.appdata.xml.in.in:391
+#: data/io.elementary.files.appdata.xml.in.in:432
 msgid "elementary LLC."
 msgstr "elementary LLC."
 

@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Marlin.View.Chrome.HeaderBar : Gtk.HeaderBar {
+public class Marlin.View.Chrome.HeaderBar : Hdy.HeaderBar {
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
@@ -62,12 +62,14 @@ public class Marlin.View.Chrome.HeaderBar : Gtk.HeaderBar {
         button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name (
             "go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR
         );
+
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name (
             "go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR
         );
+
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
@@ -114,8 +116,8 @@ public class Marlin.View.Chrome.HeaderBar : Gtk.HeaderBar {
         location_bar.escape.connect (() => {escape ();});
     }
 
-    public bool enter_search_mode () {
-        return location_bar.enter_search_mode ();
+    public bool enter_search_mode (string term = "") {
+        return location_bar.enter_search_mode (term);
     }
 
     public bool enter_navigate_mode () {
@@ -136,6 +138,7 @@ public class Marlin.View.Chrome.HeaderBar : Gtk.HeaderBar {
             item.activate.connect (() => {
                 back (cn);
             });
+
             back_menu.insert (item, -1);
         }
 
@@ -153,6 +156,7 @@ public class Marlin.View.Chrome.HeaderBar : Gtk.HeaderBar {
             item.activate.connect (() => {
                 forward (cn);
             });
+
             forward_menu.insert (item, -1);
         }
 

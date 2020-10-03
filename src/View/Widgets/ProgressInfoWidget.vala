@@ -22,7 +22,7 @@
 */
 
 public class Marlin.Progress.InfoWidget : Gtk.Grid {
-    public PF.Progress.Info info { get; construct; }
+    public unowned PF.Progress.Info info { get; construct; }
 
     private Gtk.Label details;
     private Gtk.ProgressBar progress_bar;
@@ -34,25 +34,28 @@ public class Marlin.Progress.InfoWidget : Gtk.Grid {
     }
 
     construct {
-        var status = new Gtk.Label (info.status);
-        status.max_width_chars = 50;
-        status.selectable = true;
-        status.width_chars = 50;
-        status.wrap = true;
-        status.xalign = 0;
+        var status = new Gtk.Label (info.status) {
+            max_width_chars = 50,
+            selectable = true,
+            width_chars = 50,
+            wrap = true,
+            xalign = 0
+        };
 
-        progress_bar = new Gtk.ProgressBar ();
-        progress_bar.hexpand = true;
-        progress_bar.pulse_step = 0.05;
-        progress_bar.show_text = false;
-        progress_bar.valign = Gtk.Align.CENTER;
+        progress_bar = new Gtk.ProgressBar () {
+            hexpand = true,
+            pulse_step = 0.05,
+            show_text = false,
+            valign = Gtk.Align.CENTER
+        };
 
-        details = new Gtk.Label ("details");
-        details.use_markup = true;
-        details.selectable = true;
-        details.max_width_chars = 50;
-        details.wrap = true;
-        details.xalign = 0;
+        details = new Gtk.Label ("details") {
+            use_markup = true,
+            selectable = true,
+            max_width_chars = 50,
+            wrap = true,
+            xalign = 0
+        };
 
         var button = new Gtk.Button.from_icon_name ("process-stop-symbolic", Gtk.IconSize.BUTTON);
         button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
