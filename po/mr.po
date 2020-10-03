@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-26 21:49+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-09-30 22:14+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -385,10 +385,8 @@ msgid "Paste"
 msgstr "पेस्ट"
 
 #: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "बुकमार्क"
+msgstr "बुकमार्क मध्ये जोडा"
 
 #: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
@@ -572,7 +570,7 @@ msgstr "बुकमार्क"
 
 #: src/View/Sidebar.vala:574
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "सामान्य ठिकाणे तसेच जतन केलेली फोल्डर्स आणि फायली"
 
 #: src/View/Sidebar.vala:594
 msgid "Open your personal folder"
@@ -596,7 +594,7 @@ msgstr "उपकरणे"
 
 #: src/View/Sidebar.vala:648
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "अंतर्गत आणि कनेक्ट केलेले स्टोरेज डिव्हाइस"
 
 #: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
 msgid "Network"
@@ -604,7 +602,7 @@ msgstr "नेटवर्क"
 
 #: src/View/Sidebar.vala:778
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "नेटवर्कद्वारे उपलब्ध साधने आणि ठिकाणे"
 
 #: src/View/Sidebar.vala:810
 msgid "Entire Network"
@@ -624,21 +622,19 @@ msgstr "नेटवर्क सर्वरला कनेक्ट करा
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s on %s"
-msgstr "%s पैकी %s"
+msgstr "%s वर %s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s मोकळी"
 
 #: src/View/Sidebar.vala:980
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%s पैकी %s"
+msgstr "%s पैकी %s वापरात"
 
 #: src/View/Sidebar.vala:1448
 #, c-format
