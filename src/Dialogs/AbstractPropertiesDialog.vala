@@ -152,7 +152,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
                 width_request = 64,
                 height_request = 64
             };
-            
+
             file_img.add_overlay (file_icon);
             file_img.add_overlay (emblem_grid);
 
