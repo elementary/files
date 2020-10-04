@@ -35,7 +35,7 @@ public class GOF.File : GLib.Object {
         "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name," +
         "standard::display-name,standard::content-type,standard::fast-content-type,standard::size," +
         "standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem," +
-        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed","metadata::custom-icon-name";
+        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed,metadata::custom-icon-name";
 
     public signal void changed ();
     public signal void icon_changed ();
