@@ -526,9 +526,11 @@ namespace PF.FileUtils {
 
             case FileAttribute.TRASH_DELETION_DATE:
                 var deletion_date = info.get_attribute_string (attr);
-                var tv = TimeVal ();
-                if (deletion_date != null && !tv.from_iso8601 (deletion_date)) {
-                    dt = new DateTime.from_timeval_local (tv);
+                if (deletion_date != null) {
+                    dt = new DateTime.from_iso8601 (deletion_date, new TimeZone.local ());
+                    if (dt == null) {
+                        critical ("TRASH_DELETION_DATE: %s is not a valid ISO8601 datetime", deletion_date);
+                    }
                 }
 
                 break;
@@ -760,7 +762,7 @@ namespace PF.FileUtils {
             }
 
             var scheme = drop_file.get_uri_scheme ();
-            if (!scheme.has_prefix ("file")) {
+            if (scheme == null || !scheme.has_prefix ("file")) {
                 valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
             }
 
