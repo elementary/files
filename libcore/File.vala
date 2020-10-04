@@ -87,7 +87,6 @@ public class GOF.File : GLib.Object {
     public GLib.Mount? mount = null;
     public bool is_connected = true;
     public string? utf8_collation_key = null;
-    public time_t trash_time;
 
     public static new GOF.File @get (GLib.File location) {
         var parent = location.get_parent ();
@@ -586,7 +585,6 @@ public class GOF.File : GLib.Object {
             _can_unmount = info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT);
         }
 
-        update_trash_info ();
         update_emblem ();
     }
 
@@ -884,17 +882,6 @@ public class GOF.File : GLib.Object {
         }
 
         return true;
-    }
-
-    public void update_trash_info () {
-        unowned string time_string = info.get_attribute_string ("trash::deletion-date");
-        if (time_string != null) {
-            var timeval = GLib.TimeVal ();
-            timeval.from_iso8601 (time_string);
-            trash_time = timeval.tv_sec;
-        } else {
-            trash_time = 0;
-        }
     }
 
     public int compare_for_sort (GOF.File other, int sort_type, bool directories_first, bool reversed) {
