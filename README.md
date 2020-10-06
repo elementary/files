@@ -1,5 +1,4 @@
 # Files
-[![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=65602118)](https://www.bountysource.com/teams/elementary/issues?tracker_ids=65602118)
 [![Packaging status](https://repology.org/badge/tiny-repos/elementary-files.svg)](https://repology.org/metapackage/pantheon-files)
 [![Translation status](https://l10n.elementary.io/widgets/files/-/svg-badge.svg)](https://l10n.elementary.io/projects/files/?utm_source=widget)
 
