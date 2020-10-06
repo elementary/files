@@ -977,8 +977,15 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             if (yield get_filesystem_space (root, update_cancellable, out fs_capacity, out fs_free)) {
                 if (fs_capacity > 0) {
                     var used_string = _("%s free").printf (format_size (fs_free));
-                    var size_string = _("%s used of %s").printf (format_size (fs_capacity - fs_free), format_size (fs_capacity));
-                    var tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (used_string, size_string);
+                    var size_string = _("%s used of %s").printf (
+                        format_size (fs_capacity - fs_free),
+                        format_size (fs_capacity)
+                    );
+
+                    var tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (
+                        used_string,
+                        size_string
+                    );
 
                     Gtk.TreeIter? itr = null;
                     store.get_iter (out itr, rowref.get_path ());
