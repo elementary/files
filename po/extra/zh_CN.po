@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-10-02 07:28+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/extra/zh_Hans/>\n"
@@ -68,7 +68,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Improvements:"
-msgstr ""
+msgstr "改进："
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"
@@ -410,46 +410,45 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:222
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
-msgstr ""
+msgstr "键盘导航修复程序，用于在图标视图中自动选择文件"
 
 #: data/io.elementary.files.appdata.xml.in.in:223
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
-msgstr ""
+msgstr "不硬编码搜索占位符文本样式，修复深色主题问题"
 
 #: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Minor spacing adjustments to location bar"
-msgstr ""
+msgstr "位置栏间距稍有调整"
 
 #: data/io.elementary.files.appdata.xml.in.in:232
 msgid "Fix F2 renaming behavior"
-msgstr ""
+msgstr "修复 F2 重命名行为"
 
 #: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "位置面包屑导航间距稍有调整"
 
 #: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Consistently remember color tags"
-msgstr ""
+msgstr "始终记住颜色标签"
 
 #: data/io.elementary.files.appdata.xml.in.in:242
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
-msgstr ""
+msgstr "更改缩放级别时重新加载缩略图，以避免不必要地显示占位符"
 
 #: data/io.elementary.files.appdata.xml.in.in:243
 msgid "Fix running scripts with spaces in filename"
-msgstr ""
+msgstr "使用文件名中的空格修复正在运行的脚本"
 
 #: data/io.elementary.files.appdata.xml.in.in:251
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr ""
+msgstr "修复 4.1.4 版中的高 CPU 回归"
 
 #: data/io.elementary.files.appdata.xml.in.in:252
-#, fuzzy
 msgid "File sorting fixes"
-msgstr "细节修复"
+msgstr "文件排序修复"
 
 #: data/io.elementary.files.appdata.xml.in.in:260
 msgid "Meson: fix soversion names"
@@ -480,9 +479,8 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:267
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
-msgstr "修复一个导致从回收站恢复项目时崩溃的 BUG"
+msgstr "修复了打开多个视频文件时的崩溃"
 
 #: data/io.elementary.files.appdata.xml.in.in:268
 msgid "Fix some timing issues around adding and removing files"
@@ -513,14 +511,12 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:282
-#, fuzzy
 msgid "Build fixes"
-msgstr "安全修复"
+msgstr "版本修复"
 
 #: data/io.elementary.files.appdata.xml.in.in:290
-#, fuzzy
 msgid "Plugin build fixes"
-msgstr "细节修复"
+msgstr "插件版本修复"
 
 #: data/io.elementary.files.appdata.xml.in.in:298
 msgid "Fix Ctrl+Tab behavior"
@@ -583,14 +579,12 @@ msgid "Tooltip fixes"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:319
-#, fuzzy
 msgid "Memory leak fixes"
-msgstr "细节修复"
+msgstr "内存泄漏修复"
 
 #: data/io.elementary.files.appdata.xml.in.in:320
-#, fuzzy
 msgid "Crash fixes"
-msgstr "多项崩溃修复"
+msgstr "崩溃修复"
 
 #: data/io.elementary.files.appdata.xml.in.in:321
 msgid "Trash: respect sound setting"
