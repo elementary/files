@@ -22,7 +22,6 @@ namespace Marlin.View.Chrome {
     public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
         /** Breadcrumb context menu support **/
         ulong files_menu_dir_handler_id = 0;
-        Gtk.Menu menu;
 
         /** Completion support **/
         GOF.Directory.Async? current_completion_dir = null;
@@ -397,11 +396,6 @@ namespace Marlin.View.Chrome {
             queue_draw ();
         }
 
-        public void right_click_menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
-            x = (int) menu_x_root;
-            y = (int) menu_y_root;
-            push_in = true;
-        }
     /** Context menu functions **/
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
@@ -419,108 +413,93 @@ namespace Marlin.View.Chrome {
 
             menu_y_root = event.y_root - event.y + get_allocated_height () - padding.bottom - padding.top;
 
-            menu = new Gtk.Menu ();
-            menu.cancel.connect (() => {reset_elements_states ();});
-            menu.deactivate.connect (() => {reset_elements_states ();});
-
-            build_base_menu (menu, path);
+            var menu_model = new Menu ();
+            build_base_menu (menu_model, path);
             GOF.Directory.Async? files_menu_dir = null;
             if (root != null) {
                 files_menu_dir = GOF.Directory.Async.from_gfile (root);
                 files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
-                    append_subdirectories (menu, files_menu_dir);
+                    append_subdirectories (menu_model, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
                 });
             } else {
                 warning ("Root directory null for %s", path);
             }
 
+            var menu = new Gtk.Popover.from_model (this, menu_model);
+            menu.closed.connect (() => {reset_elements_states ();});
             menu.show_all ();
-            menu.popup_at_pointer (event);
+            menu.set_pointing_to ({(int)event.x, (int)event.y, 1, 1});
+            menu.popup ();
 
             if (files_menu_dir != null) {
                 files_menu_dir.init ();
             }
         }
 
-        private void build_base_menu (Gtk.Menu menu, string path) {
+        private void build_base_menu (Menu menu, string path) {
             /* First the "Open in new tab" menuitem is added to the menu. */
-            var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
-            menu.append (menuitem_newtab);
-            menuitem_newtab.activate.connect (() => {
-                activate_path (path, Marlin.OpenFlag.NEW_TAB);
-            });
 
-            /* "Open in new window" menuitem is added to the menu. */
-            var menuitem_newwin = new Gtk.MenuItem.with_label (_("Open in New Window"));
-            menu.append (menuitem_newwin);
-            menuitem_newwin.activate.connect (() => {
-                activate_path (path, Marlin.OpenFlag.NEW_WINDOW);
-            });
+            var item = new MenuItem (_("Open in New Tab"), null);
+            item.set_action_and_target ("win.new-tab", "s", path);
+            menu.append_item (item);
 
-            menu.append (new Gtk.SeparatorMenuItem ());
+            item = new MenuItem (_("Open in New Window"), null);
+            item.set_action_and_target ("win.new-window", "s", path);
+            item.set_icon (new ThemedIcon ("missing-image"));
+            menu.append_item (item);
 
-            var submenu_open_with = new Gtk.Menu ();
-            var loc = File.new_for_uri (PF.FileUtils.escape_uri (path));
             var root = GOF.File.get_by_uri (path);
             var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
             bool at_least_one = false;
+
+            var submenu_open_with = new Menu ();
+            var submenu_open_with_apps_section = new Menu ();
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
-                    var item_grid = new Gtk.Grid ();
-                    var img = new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU) {
-                        pixel_size = 16
-                    };
 
-                    item_grid.add (img);
-                    item_grid.add (new Gtk.Label (app_info.get_name ()));
-                     var menu_item = new Gtk.MenuItem ();
-                    menu_item.add (item_grid);
-                    menu_item.set_data ("appinfo", app_info);
-                    menu_item.activate.connect (() => {
-                        open_with_request (loc, app_info);
-                    });
-
-                    submenu_open_with.append (menu_item);
+                    item = new MenuItem (app_info.get_name (), null);
+                    //FIXME this does not work! No icon is shown in popover
+                    item.set_icon (app_info.get_icon ());
+                    var data = new Variant ("(ss)", path, app_info.get_commandline ());
+                    item.set_action_and_target ("win.open-in-app", "v", data);
+                    submenu_open_with_apps_section.append_item (item);
                 }
             }
 
+            item = new MenuItem (_("Open with other Application ..."), null);
+            var submenu_open_with_other_section = new Menu ();
+            submenu_open_with_other_section.append_item (item);
+
             if (at_least_one) {
-                /* Then the "Open with" menuitem is added to the menu. */
-                var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
-                menu.append (menu_open_with);
-                menu_open_with.set_submenu (submenu_open_with);
-                submenu_open_with.append (new Gtk.SeparatorMenuItem ());
+                submenu_open_with.append_section ("", submenu_open_with_apps_section);
             }
+            submenu_open_with.append_section ("", submenu_open_with_other_section);
 
-            /* Then the "Open with other application ..." menuitem is added to the menu. */
-            var open_with_other_item = new Gtk.MenuItem.with_label (_("Open in Other Application…"));
-            open_with_other_item.activate.connect (() => {
-                open_with_request (loc, null);
-            });
-
-            submenu_open_with.append (open_with_other_item);
+            var submenu_section = new Menu ();
+            submenu_section.append_submenu (_("Open with"), submenu_open_with);
+            menu.append_section ("", submenu_section);
         }
 
-        private void append_subdirectories (Gtk.Menu menu, GOF.Directory.Async dir) {
+        private void append_subdirectories (Menu menu, GOF.Directory.Async dir) {
             /* Append list of directories at the same level */
             if (dir.can_load) {
                 unowned List<unowned GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
 
                 if (sorted_dirs != null) {
-                    menu.append (new Gtk.SeparatorMenuItem ());
+                    var section = new Menu ();
                     foreach (unowned GOF.File gof in sorted_dirs) {
-                        var menuitem = new Gtk.MenuItem.with_label (gof.get_display_name ());
-                        menuitem.set_data ("location", gof.uri);
-                        menu.append (menuitem);
-                        menuitem.activate.connect ((mi) => {
-                            activate_path (mi.get_data ("location"));
-                        });
+                        var item = new MenuItem (gof.get_display_name (), null);
+                        item.set_action_and_target ("win.change-path", "s", gof.uri);
+                        section.append_item (item);
                     }
+
+                    menu.append_section ("", section);
                 }
             }
-            menu.show_all ();
+
+
             /* Release the Async directory as soon as possible */
             dir.cancel ();
             dir = null;

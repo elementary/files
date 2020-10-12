@@ -25,7 +25,7 @@ namespace Marlin.View {
 
     public class Window : Hdy.ApplicationWindow {
         const GLib.ActionEntry [] WIN_ENTRIES = {
-            {"new-window", action_new_window},
+            {"new-home-window", action_new_home_window},
             {"quit", action_quit},
             {"refresh", action_reload},
             {"undo", action_undo},
@@ -40,7 +40,11 @@ namespace Marlin.View {
             {"view-mode", action_view_mode, "u", "0" },
             {"show-hidden", null, null, "false", change_state_show_hidden},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails},
+            {"change-path", action_change_path, "s" },
+            {"new-tab", action_new_tab, "s" },
+            {"new-window", action_new_window, "s" },
+            {"open-in-app", action_open_in_app, "v"}
         };
 
         public uint window_number { get; construct; }
@@ -650,7 +654,7 @@ namespace Marlin.View {
         }
 
         private bool adding_window = false;
-        private void action_new_window (GLib.SimpleAction action, GLib.Variant? param) {
+        private void action_new_home_window (GLib.SimpleAction action, GLib.Variant? param) {
             /* Limit rate of adding new windows using the keyboard */
             if (adding_window) {
                 return;
@@ -682,6 +686,43 @@ namespace Marlin.View {
             Marlin.ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
+        }
+
+        private void action_change_path (SimpleAction action, Variant? param) {
+            string path;
+            param.@get ("s", out path);
+            uri_path_change_request (path, Marlin.OpenFlag.DEFAULT);
+        }
+
+        private void action_new_tab (SimpleAction action, Variant? param) {
+            string path;
+            param.@get ("s", out path);
+            uri_path_change_request (path, Marlin.OpenFlag.NEW_TAB);
+        }
+
+        private void action_new_window (SimpleAction action, Variant? param) {
+            string path;
+            param.@get ("s", out path);
+            uri_path_change_request (path, Marlin.OpenFlag.NEW_WINDOW);
+        }
+
+        private void action_open_in_app (SimpleAction action, Variant? param) {
+            string path;
+            string command_line;
+            Variant variant;
+
+            param.@get ("v", out variant);
+
+            variant.@get ("(ss)", out path, out command_line);
+
+            try {
+                var app_info = AppInfo.create_from_commandline (command_line, null, AppInfoCreateFlags.SUPPORTS_URIS);
+                List<string> uris = null;
+                uris.append (path);
+                app_info.launch_uris (uris, null);
+            } catch (Error e) {
+                warning ("Could not launch - %s", e.message);
+            }
         }
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1156,7 +1197,7 @@ namespace Marlin.View {
 
         private void set_accelerators () {
             marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
-            application.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
+            application.set_accels_for_action ("win.new-home-window", {"<Ctrl>N"});
             application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
