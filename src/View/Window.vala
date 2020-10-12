@@ -862,11 +862,13 @@ namespace Marlin.View {
         }
 
         void show_app_help () {
-            try {
-                Gtk.show_uri (screen, Marlin.HELP_URL, -1);
-            } catch (Error e) {
-                critical ("Can't open the link");
-            }
+            AppInfo.launch_default_for_uri_async.begin (Marlin.HELP_URL, null, null, (obj, res) => {
+                try {
+                    AppInfo.launch_default_for_uri_async.end (res);
+                } catch (Error e) {
+                    warning ("Could not open help - %s", e.message);
+                }
+            });
         }
 
         private GLib.SimpleAction? get_action (string action_name) {
