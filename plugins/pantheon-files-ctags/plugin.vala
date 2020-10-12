@@ -354,8 +354,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_buttons.add (new ColorButton ("orange"));
             color_buttons.add (new ColorButton ("yellow"));
             color_buttons.add (new ColorButton ("green"));
+            color_buttons.add (new ColorButton ("mint"));
             color_buttons.add (new ColorButton ("blue"));
             color_buttons.add (new ColorButton ("purple"));
+            color_buttons.add (new ColorButton ("pink"));
             color_buttons.add (new ColorButton ("brown"));
             color_buttons.add (new ColorButton ("slate"));
 
