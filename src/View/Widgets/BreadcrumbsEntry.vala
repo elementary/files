@@ -468,7 +468,7 @@ namespace Marlin.View.Chrome {
                 }
             }
 
-            item = new MenuItem (_("Open with other Application ..."), null);
+            item = new MenuItem (_("Open with other Application…"), null);
             var submenu_open_with_other_section = new Menu ();
             submenu_open_with_other_section.append_item (item);
 
