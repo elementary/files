@@ -202,13 +202,13 @@ void add_file_utils_tests () {
     });
 
     Test.add_func ("/FileUtils/get_link_name_1", () => {
-        string target = "path_to_link";
+        string target = "Filename.ext";
         string result = PF.FileUtils.get_link_name (target, 1);
-        assert (result.contains ("Link"));
+        assert (result.contains ("link"));
     });
 
     Test.add_func ("/FileUtils/get_link_name_11", () => {
-        string target = "path_to_link";
+        string target = "Filename.ext";
         string result = PF.FileUtils.get_link_name (target, 11);
         assert (result != target);
         assert (result.contains ("11"));
