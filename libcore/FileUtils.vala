@@ -948,13 +948,16 @@ namespace PF.FileUtils {
         count = 0;
 
         string name_without_suffix = name;
-        var name_length = name.length;
+        var last_index = name.length - 1;
 
         /* Ignore suffix for links */
         var index_of_suffix = is_link ? -1 : name.last_index_of (".");
 
         /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
-        if (index_of_suffix >= name_length - 5 && index_of_suffix < name_length - 1) {
+        var max_extension_length = 4;
+        if (index_of_suffix >= last_index - max_extension_length &&
+            index_of_suffix < last_index) {
+
             suffix = name.slice (index_of_suffix, name.length);
             name_without_suffix = name.slice (0, index_of_suffix);
         }
