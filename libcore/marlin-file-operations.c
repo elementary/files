@@ -2027,6 +2027,7 @@ get_unique_target_file (GFile *src,
 {
     const char *editname, *end;
     char *basename, *new_name;
+    gboolean is_link = FALSE;
     GFileInfo *info;
     GFile *dest = NULL;
     int max_length;
@@ -2038,15 +2039,26 @@ get_unique_target_file (GFile *src,
 
     max_length = pf_file_utils_get_max_name_length (dest_dir);
 
-    info = g_file_query_info (src,
-                              G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
-                              0, NULL, NULL);
+    info = g_file_query_info (
+        src,
+        g_strjoin (
+            ",",
+            G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
+            G_FILE_ATTRIBUTE_STANDARD_TYPE,
+            NULL
+        ),
+        G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+        NULL,
+        NULL
+    );
+
     if (info != NULL) {
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
+        is_link = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_STANDARD_TYPE) == G_FILE_TYPE_SYMBOLIC_LINK;
 
         if (editname != NULL) {
             /*TODO Pass correct info to "is_link" parameter*/
-            new_name = pf_file_utils_get_duplicate_name (editname, count, max_length, FALSE);
+            new_name = pf_file_utils_get_duplicate_name (editname, count, max_length, is_link);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -2060,7 +2072,7 @@ get_unique_target_file (GFile *src,
 
         if (g_utf8_validate (basename, -1, NULL)) {
             /*TODO Pass correct info to "is_link" parameter*/
-            new_name = pf_file_utils_get_duplicate_name (basename, count, max_length, FALSE);
+            new_name = pf_file_utils_get_duplicate_name (basename, count, max_length, is_link);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -4976,7 +4988,7 @@ retry:
 
                 g_free (filename2);
             } else {
-                /*TODO Pass correct info to "is_link" parameter*/
+                /*We are not creating link*/
                 new_filename = pf_file_utils_get_duplicate_name (filename, count, max_length, FALSE);
             }
 
@@ -5008,7 +5020,7 @@ retry:
                     }
                 }
             } else {
-                /*TODO Pass correct info to "is_link" parameter*/
+                /*We are not creating link*/
                 filename2 = pf_file_utils_get_duplicate_name (filename, count++, max_length, FALSE);
             }
             pf_file_utils_make_file_name_valid_for_dest_fs (&filename2, dest_fs_type);
