@@ -959,7 +959,7 @@ namespace PF.FileUtils {
             name_without_suffix = name.slice (0, index_of_suffix);
         }
 
-        int index_of_opening = name_without_suffix.last_index_of (is_link ?  _(LINK_TAG) : _(COPY_TAG));
+        int index_of_opening = name_without_suffix.last_index_of (is_link ? _(LINK_TAG) : _(COPY_TAG));
         if (index_of_opening < 0) { //TAG not found
             if (index_of_suffix > 0) {
                 name_base = name_without_suffix.slice (0, index_of_suffix);
