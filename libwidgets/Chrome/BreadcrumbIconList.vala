@@ -21,7 +21,6 @@ namespace Marlin.View.Chrome {
         public string path;
         public bool protocol;
         public GLib.Icon gicon;
-        public Gdk.Pixbuf icon;
         public string[] exploded;
         public bool break_loop;
         public string? text_displayed;
@@ -53,16 +52,18 @@ namespace Marlin.View.Chrome {
             text_displayed = mount.get_name ();
         }
 
-        public void render_icon (Gtk.StyleContext context) throws GLib.Error {
-            weak Gtk.IconTheme theme = Gtk.IconTheme.get_default ();
+        public Gdk.Pixbuf? render_icon (Gtk.StyleContext context) {
+            var theme = Gtk.IconTheme.get_default ();
+            Gdk.Pixbuf? icon = null;
             Gtk.IconInfo? gtk_icon_info = null;
             var scale = context.get_scale ();
-            if (gicon != null) {
-                var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
-                gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
-            } else {
-                throw new GLib.IOError.NOT_INITIALIZED ("the gicon field is empty!");
+
+            if (gicon == null) {
+                gicon = new ThemedIcon.with_default_fallbacks ("image-missing");
             }
+
+            var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
+            gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
 
             if (gtk_icon_info != null) {
                 try {
@@ -70,11 +71,11 @@ namespace Marlin.View.Chrome {
                     icon_width = icon.get_width () / scale;
                     icon_height = icon.get_height () / scale;
                 } catch (Error e) {
-                    throw e;
+                    warning ("Filed to load icon for %s - %s", text_displayed, e.message);
                 }
-            } else {
-                throw new GLib.IOError.NOT_FOUND ("Unable to find the given icon!");
             }
+
+            return icon;
         }
 
         public void set_path (string path) {
@@ -90,14 +91,12 @@ namespace Marlin.View.Chrome {
         }
     }
 
-
     public class BreadcrumbIconList : Object {
         private Gee.ArrayList<BreadcrumbIconInfo> icon_info_list;
-        public unowned Gtk.StyleContext context { get; set construct; }
+        public unowned Gtk.StyleContext context { get; construct; }
 
         public BreadcrumbIconList (Gtk.StyleContext context) {
             Object (context: context);
-            make_icons ();
         }
 
         public int scale {
@@ -106,7 +105,6 @@ namespace Marlin.View.Chrome {
             }
             set {
                 context.set_scale (value);
-                make_icons ();
             }
         }
 
@@ -159,21 +157,6 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        private void make_icons () {
-            context.save ();
-            context.set_state (Gtk.StateFlags.NORMAL);
-
-            foreach (var icon_info in icon_info_list) {
-                try {
-                    icon_info.render_icon (context);
-                } catch (Error e) {
-                    critical (e.message);
-                }
-            }
-
-            context.restore ();
-        }
-
         public void add_mounted_volumes () {
             context.save ();
             context.set_state (Gtk.StateFlags.NORMAL);
@@ -185,12 +168,7 @@ namespace Marlin.View.Chrome {
             mount_list.foreach ((mount) => {
                 var icon_info = new BreadcrumbIconInfo.from_mount (mount);
                 if (icon_info.path != null) {
-                    try {
-                        icon_info.render_icon (context);
-                        icon_info_list.add (icon_info);
-                    } catch (Error e) {
-                        critical (e.message);
-                    }
+                    icon_info_list.add (icon_info);
                 }
             });
 

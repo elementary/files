@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-07-31 14:12+0000\n"
+"PO-Revision-Date: 2020-09-30 22:14+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -73,10 +73,8 @@ msgid "Improvements:"
 msgstr "Melhorias:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Favorite menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr "Opção de menu de favoritos para montagens de rede na barra lateral"
+msgstr "Opção de menu de marcadores para montagens em rede na barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show folder item count in List View"
@@ -129,6 +127,8 @@ msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
+"Não mostrar o estado do git dos repositórios nos sistemas de ficheiros FUSE "
+"para evitar possíveis bloqueios"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -138,10 +138,8 @@ msgid "Other updates:"
 msgstr "Outras atualizações:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
-#, fuzzy
-#| msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "\"Pessoais\" e \"Marcadores\" são agora \"Favoritos\""
+msgstr "\"Pessoais\" são agora \"Marcadores\""
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99
@@ -474,7 +472,7 @@ msgstr "Corrigir comportamento de renomeação do F2"
 
 #: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr "Ajustes de espaçamento menores para a localização de breadcrumbs"
+msgstr "Ajustes de espaçamento menores para a localização de 'breadcrumbs'"
 
 #: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Consistently remember color tags"
@@ -580,8 +578,8 @@ msgstr "Corrige a construção sem biblioteca de Unidades"
 #: data/io.elementary.files.appdata.xml.in.in:306
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
-"Ocultar breadcrumbs e mostrar espaço reservado e ícone de pesquisa na pasta "
-"inicial"
+"Ocultar 'breadcrumbs' e mostrar espaço reservado e ícone de pesquisa na "
+"pasta inicial"
 
 #: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Style error dialogs"

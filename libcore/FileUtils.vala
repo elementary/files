@@ -161,6 +161,26 @@ namespace PF.FileUtils {
         }
     }
 
+    public string? get_path_for_symlink (GLib.File file) {
+        string? result;
+        if (Uri.parse_scheme (file.get_uri ()) != "file") {
+            result = null;
+        } else if (file.is_native ()) {
+            result = file.get_path (); // usually the case
+        } else {
+            File root = file;
+            File? parent = file.get_parent ();
+            while (parent != null) {
+                root = parent;
+                parent = root.get_parent ();
+            }
+
+            result = Path.DIR_SEPARATOR_S + root.get_relative_path (file);
+        }
+
+        return result;
+    }
+
     private string construct_parent_path (string path, bool include_file_protocol) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
@@ -438,6 +458,11 @@ namespace PF.FileUtils {
         }
     }
 
+    public string custom_basename_from_file (GLib.File location) {
+        var gof = GOF.File.@get (location); // In most case a GOF.File can be retrieved from cache
+        return gof.get_display_name (); // Falls back to location.get_basename ()
+    }
+
     public async GLib.File? set_file_display_name (GLib.File old_location,
                                                    string new_name,
                                                    GLib.Cancellable? cancellable = null) throws GLib.Error {
@@ -501,9 +526,11 @@ namespace PF.FileUtils {
 
             case FileAttribute.TRASH_DELETION_DATE:
                 var deletion_date = info.get_attribute_string (attr);
-                var tv = TimeVal ();
-                if (deletion_date != null && !tv.from_iso8601 (deletion_date)) {
-                    dt = new DateTime.from_timeval_local (tv);
+                if (deletion_date != null) {
+                    dt = new DateTime.from_iso8601 (deletion_date, new TimeZone.local ());
+                    if (dt == null) {
+                        critical ("TRASH_DELETION_DATE: %s is not a valid ISO8601 datetime", deletion_date);
+                    }
                 }
 
                 break;
@@ -735,7 +762,7 @@ namespace PF.FileUtils {
             }
 
             var scheme = drop_file.get_uri_scheme ();
-            if (!scheme.has_prefix ("file")) {
+            if (scheme == null || !scheme.has_prefix ("file")) {
                 valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
             }
 
@@ -1075,6 +1102,10 @@ namespace PF.FileUtils {
         }
     }
 
+    /* FileName (link)
+     * FileName (link 2)
+     * etc
+    */
     public string get_link_name (string target_name, int count, int max_length = -1)
     requires (count >= 0) {
 
@@ -1083,47 +1114,14 @@ namespace PF.FileUtils {
             case 0:
                 result = target_name; //First link in directory has same name as source
                 break;
+
             case 1:
-                result = _("Link to %s").printf (target_name);
-                break;
-            case 2:
-                result = _("Another link to %s").printf (target_name);
-                break;
-
-            case 11:
-                result = _("11th link to %s").printf (target_name);
-                break;
-            case 12:
-                result = _("12th link to %s").printf (target_name);
-                break;
-
-            case 13:
-                result = _("13th link to %s").printf (target_name);
+                result = _("%s (link)").printf (target_name);
                 break;
 
             default:
+                result = _("%s (link %i)").printf (target_name, count);
                 break;
-        }
-
-        if (result == "") {
-            switch (count % 10) {
-                case 1:
-                    ///TRANSLATORS: %'d represents 21 or 31 or 41  etc
-                    result = _("%'dst link to %s").printf (count, target_name);
-                    break;
-                case 2:
-                    ///TRANSLATORS: %'d represents 22 or 32 or 42 etc
-                    result = _("%'dnd link to %s").printf (count, target_name);
-                    break;
-                case 3:
-                    ///TRANSLATORS: %'d represents 23 or 33 or 43 etc
-                    result = _("%'drd link to %s").printf (count, target_name);
-                    break;
-                default:
-                    ///TRANSLATORS: %'d represents a number in range 4 - 9, 14 - 19, 24 - 29 etc
-                    result = _("%'dth link to %s").printf (count, target_name);
-                    break;
-            }
         }
 
         if (max_length >= 0 && result.length > max_length) {
@@ -1131,6 +1129,28 @@ namespace PF.FileUtils {
         }
 
         return result;
+    }
+
+    public int get_max_name_length (GLib.File file_dir) {
+        //FIXME Do not need to keep calling this for the same filesystem
+
+        if (!file_dir.has_uri_scheme ("file")) {
+            return -1;
+        }
+
+        var dir = file_dir.get_path ();
+        var max_path = Posix.pathconf (dir, Posix.PathConfName.PATH_MAX);
+        var max_name = Posix.pathconf (dir, Posix.PathConfName.NAME_MAX);
+
+        if (max_name == -1 && max_path == -1) {
+            return -1;
+        } else if (max_name == -1 && max_path != -1) {
+            return (int) (max_path - (dir.length + 1));
+        } else if (max_name != -1 && max_path == -1) {
+            return (int) max_name;
+        } else {
+            return (int) long.min (max_path - (dir.length + 1), max_name);
+        }
     }
 }
 
