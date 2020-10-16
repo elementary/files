@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-08-09 22:13+0000\n"
+"PO-Revision-Date: 2020-08-24 21:13+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -66,10 +66,8 @@ msgid "Improvements:"
 msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
-#, fuzzy
-#| msgid "Favorite menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr "אפשרות תפריט מועדפים לטובת סרגל צד לעיגון מיקומי רשת"
+msgstr "אפשרות תפריט סימניות לטובת סרגל צד לעיגון מיקומי רשת"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Show folder item count in List View"
@@ -80,6 +78,7 @@ msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
+"מעתה מוצגות תמונות ממוזערות על התקני מדיה ומצלמות לצד מיקומי רשת כבררת מחדל"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
@@ -106,13 +105,15 @@ msgstr "תיקון בטיפול בנתיבים „~” ו־„.” בסרגל ה
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
-msgstr ""
+msgstr "סרגל הנתיב של בוחר הקבצים לא קורס עוד כשמופעל מתוך Flatpak"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
+"לא להציג את מצב ה־git עבור מאגרים במערכות קבצים דרך FUSE כדי למנוע חסימה "
+"אפשרית"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -122,10 +123,8 @@ msgid "Other updates:"
 msgstr "עדכונים נוספים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
-#, fuzzy
-#| msgid "\"Personal\" and \"Bookmarks\" are now \"Favorites\""
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "„אישי” ו„סימניות” הם מעתה „מועדפים”"
+msgstr "„אישי” הוא מעתה „סימניות”"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99
@@ -150,27 +149,28 @@ msgstr "התרגומים עודכנו"
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
+"נוספו פסי ניצולת כונן צבעוניים לאזהרה ולשגיאה כאשר הכונן מתמלא יתר על המידה"
 
 #: data/io.elementary.files.appdata.xml.in.in:90
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
-msgstr ""
+msgstr "שינוי גודל החלון נמנע כאשר רוחב עמודת שם הקובץ חורגת מהמקום הזמין"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Fix handling of filenames containing the # character"
-msgstr ""
+msgstr "תוקן טיפול בשמות קבצים שמכילים את התו #"
 
 #: data/io.elementary.files.appdata.xml.in.in:95
 msgid "Fix regressions regarding pathbar context menus and clicking"
-msgstr ""
+msgstr "תוקנה נסיגה שקשורה בתפריטי הקשר בסרגל נתיב ולחיצה"
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Paste images into other apps instead of file paths where possible"
-msgstr ""
+msgstr "תמונות מודבקות לתוך יישומים אחרים במקום נתיבי קבצים היכן שניתן"
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
+msgstr "ניתן להדביק לתיקייה הנבחרת עם Ctrl + V"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Show file info overlay in List View as well"
@@ -178,15 +178,15 @@ msgstr "הצגת חלונית פרטי קובץ בתצוגת הרשימה בנו
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Traverse search results with Tab key"
-msgstr ""
+msgstr "ניתן לעבור בין תוצאות חיפוש עם המקש Tab"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Show an error message when attempting to open trashed files"
-msgstr ""
+msgstr "הצגת הודעת שגיאה בעת ניסיון לפתוח קבצים מהאשפה"
 
 #: data/io.elementary.files.appdata.xml.in.in:114
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
-msgstr ""
+msgstr "תיקון שטח חסום לעריכה בסרגל הנתיב שמציג את ממלא המקום לתיקיית הבית"
 
 #: data/io.elementary.files.appdata.xml.in.in:115
 msgid "Fix an issue that prevented file modification times from showing"
@@ -194,7 +194,7 @@ msgstr "תיקון תקלה שמנעה מהצגת מועדי שינויי קבצ
 
 #: data/io.elementary.files.appdata.xml.in.in:116
 msgid "Fix size of restored tiled window"
-msgstr ""
+msgstr "תיקון גודל של חלון פרוס משוחזר"
 
 #: data/io.elementary.files.appdata.xml.in.in:117
 msgid "Fix color tags disappearing when thumbnails hidden"
