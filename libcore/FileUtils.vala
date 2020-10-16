@@ -919,170 +919,81 @@ namespace PF.FileUtils {
         return result;
     }
 
-    /* First few copies have format not containing the count in digits */
-    ///TRANSLATORS: format of first file copy; first %s: base, second %s: extension
-    public const string FIRST_COPY = N_("%s (copy)%s");
+    private const string COPY_TAG = N_("(copy");
+    private const string LINK_TAG = N_("(link");
+    private const string CLOSING_COPY_LINK_TAG = N_(")");
 
-    ///TRANSLATORS: Any characteristic string contained only in format of first copy (and similar)
-    const string FIRST_COPY_TAG = N_("(copy)");
+    public string get_duplicate_name (string name, int count_increment, int max_length, bool is_link = false)
+    requires (count_increment > 0 && name != "") {
 
-    ///TRANSLATORS: format of second file copy; first %s: base, second %s: extension
-    public const string SECOND_COPY = N_("%s (another copy)%s");
-
-    ///TRANSLATORS: Any characteristic string contained only in format of second copy (and similar)
-    const string SECOND_COPY_TAG = N_("(another copy)");
-
-    const string[] NON_NUMERIC_TAGS = {FIRST_COPY_TAG, SECOND_COPY_TAG};
-
-    /* Remaining copies have format that must contain the count in digits */
-    ///TRANSLATORS: format of eleventh file copy; first %s: base, second %s: extension
-    const string ELEVENTH_COPY = N_("%s (%'dth copy)%s");
-
-    ///TRANSLATORS: format of twelfth file copy; first %s: base, second %s: extension
-    const string TWELFTH_COPY = N_("%s (%'dth copy)%s");
-
-    ///TRANSLATORS: format of thirteenth file copy; first %s: base, second %s: extension
-    const string THIRTEENTH_COPY = N_("%s (%'dth copy)%s");
-
-    ///TRANSLATORS: format of 10n+1 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
-    const string DECADE_PLUS_ONE_COPY = N_("%s (%'dst copy)%s");
-
-    ///TRANSLATORS: format of 10n+2 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
-    const string DECADE_PLUS_TWO_COPY = N_("%s (%'dnd copy)%s");
-
-    ///TRANSLATORS: format of 10n+3 (n>=2) file copy; first %s: base, %'d: count, second %s: extension
-    const string DECADE_PLUS_THREE_COPY = N_("%s (%'drd copy)%s");
-
-    ///TRANSLATORS: fallback file copy format; first %s: base, %'d: count, second %s: extension
-    public const string OTHER_COPY = N_("%s (%'dth copy)%s");
-
-    ///TRANSLATORS: A string that must occur in every copy format and be immediately after the base name and must occur only once in the copy format. This will usually be a space and opening parenthesis or similar.
-    const string OPENING_TAG = N_(" (");
-
-    public string get_duplicate_name (string name, int count_increment, int max_length)
-    requires (count_increment > 0) {
-
-        string name_base, suffix;
+        string name_base, suffix, result;
         int count;
 
-        parse_previous_duplicate_name (name, out name_base, out suffix, out count);
+        parse_previous_duplicate_name (name, is_link, out name_base, out suffix, out count);
 
-        var result = make_duplicate_name (name_base, suffix, count + count_increment, max_length);
-        if (max_length >= 0 && result.length > max_length) {
-            result = shorten_utf8_string (result, result.length - max_length);
+        if (is_link) {
+            result = get_link_name (name_base, count + count_increment, max_length);
+        } else {
+            result = get_copy_name (name_base, suffix, count + count_increment, max_length);
         }
 
         return result;
     }
 
-    private void parse_previous_duplicate_name (string name, out string name_base, out string suffix, out int count)
-    requires (name != "") {
+    private void parse_previous_duplicate_name (
+        string name, bool is_link, out string name_base, out string suffix, out int count
+    ) {
 
         suffix = "";
         count = 0;
 
         string name_without_suffix = name;
+        var name_length = name.length;
 
-        var index_of_suffix = name.last_index_of (".");
-        if (index_of_suffix < name.length - 1) {
+        /* Ignore suffix for links */
+        var index_of_suffix = is_link ? -1 : name.last_index_of (".");
+
+        /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
+        if (index_of_suffix > name_length - 4 && index_of_suffix < name_length - 1) {
             suffix = name.slice (index_of_suffix, name.length);
             name_without_suffix = name.slice (0, index_of_suffix);
         }
 
-        int index_of_opening = name_without_suffix.last_index_of (_(OPENING_TAG));
-
-        if (index_of_opening < 0) {
-            name_base = name_without_suffix.slice (0, index_of_suffix);
+        int index_of_opening = name_without_suffix.last_index_of (is_link ?  _(LINK_TAG) : _(COPY_TAG));
+        if (index_of_opening < 0) { //TAG not found
+            if (index_of_suffix > 0) {
+                name_base = name_without_suffix.slice (0, index_of_suffix);
+                return;
+            } else {
+                name_base = name_without_suffix;
+            }
             return;
         } else {
-            name_base = name.slice (0, index_of_opening);
-        }
-        /* Only the first few copies, in sequence from first, may have nonnumeric formats */
-        for (int i = 0; i < NON_NUMERIC_TAGS.length; i++) {
-            if (name_without_suffix.contains (_(NON_NUMERIC_TAGS[i]))) {
-                count = i + 1;
-                break;
-            }
+            name_base = name.slice (0, index_of_opening)._chomp ();
         }
 
-        if (count == 0 && index_of_opening >= 0) {
-            /* Copy format must contain a number and it must be the last number in the name (excluding suffix) */
+        //Its easier to use reverse string
+        var reverse_base = name_without_suffix.reverse ();
+        //Limit search to copy format. Digits in this range must be the count
+        int limit = name_without_suffix.length - 1 - index_of_opening;
 
-            //Its easier to use reverse string
-            var reverse_base = name_without_suffix.reverse ();
-            //Limit search to copy format
-            int limit = name_without_suffix.length - 1 - index_of_opening;
-
-            unichar chr = name_without_suffix.get_char ();
-            int index = 0;
-            while (index < limit && !chr.isdigit ()) {
-                reverse_base.get_next_char (ref index, out chr);
-            }
-
-            int multiplier = 1;
-            while (index < limit && chr.isdigit ()) {
-                count += chr.digit_value () * multiplier;
-                //Number is reversed so each subsequent digit represents another factor of ten
-                multiplier *= 10;
-                reverse_base.get_next_char (ref index, out chr);
-            }
+        unichar chr = name_without_suffix.get_char ();
+        int index = 0;
+        while (index < limit && !chr.isdigit ()) {
+            reverse_base.get_next_char (ref index, out chr);
         }
 
-        if (count == 0) { //Opening tag occurred without any copy tag being found
-            name_base = name;
-        }
-    }
-
-    private string make_duplicate_name (string name_base, string suffix, int count, int max_length)
-    requires (count > 0) {
-
-        string result = "";
-        switch (count) {
-            case 1:
-                result = _(FIRST_COPY).printf (name_base, suffix);
-                break;
-
-            case 2:
-                result = _(SECOND_COPY).printf (name_base, suffix);
-                break;
-
-            case 11:
-                result = _(ELEVENTH_COPY).printf (name_base, count, suffix);
-                break;
-
-            case 12:
-                result = _(TWELFTH_COPY).printf (name_base, count, suffix);
-                break;
-
-            case 13:
-                result = _(THIRTEENTH_COPY).printf (name_base, count, suffix);
-                break;
-
-            default:
-                break;
+        int multiplier = 1;
+        while (index < limit && chr.isdigit ()) {
+            count += chr.digit_value () * multiplier;
+            //Number is reversed so each subsequent digit represents another factor of ten
+            multiplier *= 10;
+            reverse_base.get_next_char (ref index, out chr);
         }
 
-        if (result == "") {
-            switch (count % 10) {
-                case 1:
-                    result = _(DECADE_PLUS_ONE_COPY).printf (name_base, count, suffix);
-                    break;
-
-                case 2:
-                    result = _(DECADE_PLUS_TWO_COPY).printf (name_base, count, suffix);
-                    break;
-
-                case 3:
-                    result = _(DECADE_PLUS_THREE_COPY).printf (name_base, count, suffix);
-                    break;
-
-                default:
-                    result = _(OTHER_COPY).printf (name_base, count, suffix);
-                    break;
-            }
+        if (count == 0) { //We do not say (copy 1), just (copy)
+            count = 1;
         }
-
-        return result;
     }
 
     public string shorten_utf8_string (string base_string, int reduce_by_num_bytes) {
@@ -1108,19 +1019,29 @@ namespace PF.FileUtils {
     */
     public string get_link_name (string target_name, int count, int max_length = -1)
     requires (count >= 0) {
+        return get_link_or_copy_name (target_name, true, count, max_length);
+    }
 
+    public string get_copy_name (string base_name, string suffix, int count, int max_length = -1)
+    requires (count >= 0) {
+        return get_link_or_copy_name (base_name, false, count, max_length) + suffix;
+    }
+
+    private string get_link_or_copy_name (string target_name, bool is_link, int count, int max_length) {
         string result = "";
+        var tag = is_link ? _(LINK_TAG) : _(COPY_TAG);
         switch (count) {
             case 0:
-                result = target_name; //First link in directory has same name as source
+                //First link to or copy of something in a different folder has same name as source
+                result = target_name;
                 break;
 
             case 1:
-                result = _("%s (link)").printf (target_name);
+                result = "%s %s%s".printf (target_name, tag, _(CLOSING_COPY_LINK_TAG));
                 break;
 
             default:
-                result = _("%s (link %i)").printf (target_name, count);
+                result = "%s %s %i%s".printf (target_name, tag, count, _(CLOSING_COPY_LINK_TAG));
                 break;
         }
 
