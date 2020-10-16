@@ -936,6 +936,10 @@ namespace PF.FileUtils {
         }
     }
 
+    /* FileName (link)
+     * FileName (link 2)
+     * etc
+    */
     public string get_link_name (string target_name, int count, int max_length = -1)
     requires (count >= 0) {
 
@@ -944,47 +948,14 @@ namespace PF.FileUtils {
             case 0:
                 result = target_name; //First link in directory has same name as source
                 break;
+
             case 1:
-                result = _("Link to %s").printf (target_name);
-                break;
-            case 2:
-                result = _("Another link to %s").printf (target_name);
-                break;
-
-            case 11:
-                result = _("11th link to %s").printf (target_name);
-                break;
-            case 12:
-                result = _("12th link to %s").printf (target_name);
-                break;
-
-            case 13:
-                result = _("13th link to %s").printf (target_name);
+                result = _("%s (link)").printf (target_name);
                 break;
 
             default:
+                result = _("%s (link %i)").printf (target_name, count);
                 break;
-        }
-
-        if (result == "") {
-            switch (count % 10) {
-                case 1:
-                    ///TRANSLATORS: %'d represents 21 or 31 or 41  etc
-                    result = _("%'dst link to %s").printf (count, target_name);
-                    break;
-                case 2:
-                    ///TRANSLATORS: %'d represents 22 or 32 or 42 etc
-                    result = _("%'dnd link to %s").printf (count, target_name);
-                    break;
-                case 3:
-                    ///TRANSLATORS: %'d represents 23 or 33 or 43 etc
-                    result = _("%'drd link to %s").printf (count, target_name);
-                    break;
-                default:
-                    ///TRANSLATORS: %'d represents a number in range 4 - 9, 14 - 19, 24 - 29 etc
-                    result = _("%'dth link to %s").printf (count, target_name);
-                    break;
-            }
         }
 
         if (max_length >= 0 && result.length > max_length) {
