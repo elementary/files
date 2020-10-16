@@ -919,9 +919,9 @@ namespace PF.FileUtils {
         return result;
     }
 
-    private const string COPY_TAG = N_("(copy");
-    private const string LINK_TAG = N_("(link");
-    private const string CLOSING_COPY_LINK_TAG = N_(")");
+    public const string COPY_TAG = N_("(copy");
+    public const string LINK_TAG = N_("(link");
+    public const string CLOSING_COPY_LINK_TAG = N_(")");
 
     public string get_duplicate_name (string name, int count_increment, int max_length, bool is_link = false)
     requires (count_increment > 0 && name != "") {
@@ -954,7 +954,7 @@ namespace PF.FileUtils {
         var index_of_suffix = is_link ? -1 : name.last_index_of (".");
 
         /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
-        if (index_of_suffix > name_length - 4 && index_of_suffix < name_length - 1) {
+        if (index_of_suffix >= name_length - 5 && index_of_suffix < name_length - 1) {
             suffix = name.slice (index_of_suffix, name.length);
             name_without_suffix = name.slice (0, index_of_suffix);
         }
