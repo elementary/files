@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-08-17 12:13+0000\n"
+"PO-Revision-Date: 2020-10-17 11:15+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -44,7 +44,7 @@ msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr "Nova Janela"
+msgstr "Nova janela"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
@@ -472,7 +472,7 @@ msgstr "Corrigir comportamento de renomeação do F2"
 
 #: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr "Ajustes de espaçamento menores para a localização de breadcrumbs"
+msgstr "Ajustes de espaçamento menores para a localização de 'breadcrumbs'"
 
 #: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Consistently remember color tags"
@@ -578,8 +578,8 @@ msgstr "Corrige a construção sem biblioteca de Unidades"
 #: data/io.elementary.files.appdata.xml.in.in:306
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
-"Ocultar breadcrumbs e mostrar espaço reservado e ícone de pesquisa na pasta "
-"inicial"
+"Ocultar 'breadcrumbs' e mostrar espaço reservado e ícone de pesquisa na "
+"pasta inicial"
 
 #: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Style error dialogs"
