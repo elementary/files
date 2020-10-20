@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-26 21:49+0000\n"
-"PO-Revision-Date: 2020-08-05 19:13+0000\n"
+"PO-Revision-Date: 2020-10-17 11:15+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -31,7 +31,7 @@ msgstr "Abrir um ou mais URL's, cada um num novo separador"
 
 #: src/Application.vala:153 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
-msgstr "Nova Janela"
+msgstr "Nova janela"
 
 #: src/Application.vala:155
 msgid "Quit Files"
@@ -106,7 +106,7 @@ msgstr "Disponível:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
-msgstr "Usado:"
+msgstr "Utilizado:"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
@@ -441,15 +441,15 @@ msgstr "Colar nesta pasta"
 
 #: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
-msgstr "Mostrar Ficheiros Ocultos"
+msgstr "Mostrar ficheiros ocultos"
 
 #: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
-msgstr "Mostrar Miniaturas Remotas"
+msgstr "Mostrar miniaturas remotas"
 
 #: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
-msgstr "Ocultar Miniaturas"
+msgstr "Ocultar miniaturas"
 
 #: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
