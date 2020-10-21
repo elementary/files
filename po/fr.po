@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 18:59+0000\n"
-"PO-Revision-Date: 2020-08-07 12:13+0000\n"
+"PO-Revision-Date: 2020-10-23 16:15+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -1959,10 +1959,8 @@ msgid "Below This Folder"
 msgstr "À l'intérieur de ce dossier"
 
 #: libwidgets/View/SearchResults.vala:287
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
-msgstr "Récents"
+msgstr "Utilisé récemment"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
