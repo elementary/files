@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-20 18:59+0000\n"
-"PO-Revision-Date: 2020-09-30 22:14+0000\n"
+"PO-Revision-Date: 2020-10-23 16:15+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1914,8 +1914,6 @@ msgid "Below This Folder"
 msgstr "या फोल्डर खाली"
 
 #: libwidgets/View/SearchResults.vala:287
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
 
