@@ -4,6 +4,7 @@ executable(
     'io.elementary.files.xdg-desktop-portal',
     'Main.vala',
     'FileChooserDialog.vala',
+    'LegacyFileChooserDialog.vala',
 
     dependencies : [
         pantheon_files_widgets_dep,
