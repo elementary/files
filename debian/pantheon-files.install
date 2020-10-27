@@ -1,4 +1,6 @@
 usr/bin
 usr/lib/*/gtk-3.0/modules/libpantheon-filechooser-module.so
 usr/lib/*/io.elementary.files
+usr/lib/*/io.elementary.files.xdg-desktop-portal
+usr/lib/systemd/user/io.elementary.files.xdg-desktop-portal.service
 usr/share
