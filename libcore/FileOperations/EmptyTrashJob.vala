@@ -38,7 +38,7 @@ public class Marlin.FileOperations.EmptyTrashJob : CommonJob {
             if (first_dir.has_uri_scheme ("trash")) {
                 /* Empty all trash */
                 primary = _("Permanently delete all items from Trash?");
-                secondary = _("All items in all trash directories, including those on any mounted external drives, will be permanently deleted.");
+                secondary = _("All items in all trash directories, including those on any mounted external drives, will be permanently deleted.");//vala-lint=line-length
             } else {
                 /* Empty trash on a particular mounted volume */
                 primary = _("Permanently delete all items from Trash on this mount?");
@@ -72,13 +72,20 @@ public class Marlin.FileOperations.EmptyTrashJob : CommonJob {
         if (delete_children) {
             try {
                 const string ATTRIBUTES = GLib.FileAttribute.STANDARD_NAME + "," + GLib.FileAttribute.STANDARD_TYPE;
-                var enumerator = yield file.enumerate_children_async (ATTRIBUTES, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, GLib.Priority.DEFAULT, cancellable);
-                GLib.List<GLib.FileInfo> infos;
-                while ((infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable)).nth_data (0) != null) {
+                var enumerator = yield file.enumerate_children_async (
+                    ATTRIBUTES,
+                    GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                    GLib.Priority.DEFAULT, cancellable
+                );
+
+                var infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
+                while (infos.nth_data (0) != null) {
                     foreach (unowned GLib.FileInfo info in infos) {
                         var child = file.get_child (info.get_name ());
                         yield delete_trash_file (child, true, info.get_file_type () == GLib.FileType.DIRECTORY);
                     }
+
+                    infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
                 }
             } catch (GLib.Error e) {
                 debug (e.message);
