@@ -117,9 +117,6 @@ subdir('src')
 subdir('data')
 subdir('pantheon-files-daemon')
 subdir('plugins')
-if get_option('gtk-module')
-    subdir('filechooser-module')
-endif
 subdir('filechooser-portal')
 meson.add_install_script('meson/post_install.py')
 

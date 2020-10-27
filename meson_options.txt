@@ -1,3 +1,2 @@
 option('with-zeitgeist', type : 'feature', value : 'auto', description : 'Add Zeitgeist support')
 option('systemduserunitdir', type: 'string', value: '', description: 'custom directory for systemd user units, or \'no\' to disable')
-option('gtk-module', type : 'boolean', value : 'false', description : 'Use the GTK module')
