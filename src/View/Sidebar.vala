@@ -20,6 +20,8 @@
 ***/
 
 public class Marlin.Sidebar : Marlin.AbstractSidebar {
+    public Marlin.View.Window window { get; construct; }
+
     private const int MAX_BOOKMARKS_DROPPED = 100;
     /* Indents */
     private const int ROOT_INDENTATION_XPAD = 4; /* Left Indent for all rows*/
@@ -33,11 +35,9 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     Gtk.CellRendererText name_renderer;
     Gtk.CellRenderer eject_spinner_cell_renderer;
     Gtk.CellRenderer expander_renderer;
-    Marlin.View.Window window;
     Marlin.BookmarkList bookmarks;
     VolumeMonitor volume_monitor;
     unowned Marlin.TrashMonitor monitor;
-    Gtk.IconTheme theme;
     GLib.Icon eject_icon;
 
     int eject_button_size = 20;
@@ -57,7 +57,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     bool internal_drag_started;
     bool dragged_out_of_window;
     bool renaming = false;
-    bool local_only;
+    private bool local_only;
     Gee.HashMap<PlaceType, Gtk.TreeRowReference> categories = new Gee.HashMap<PlaceType, Gtk.TreeRowReference> ();
 
     /* Identifiers for target types */
@@ -111,13 +111,17 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
-    public Sidebar (Marlin.View.Window window, bool local_only = false) {
+    public Sidebar (Marlin.View.Window window) {
+        Object (window: window);
+    }
+
+    construct {
         init (); /* creates the Gtk.TreeModel store. */
         plugins.sidebar_loaded ((Gtk.Widget)this);
         this.last_selected_uri = null;
         this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        this.window = window;
-        this.local_only = local_only;
+        /* Show only local places in sidebar when running as root */
+        local_only = Posix.getuid () == 0;
 
         window.loading_uri.connect (loading_uri_callback);
         window.free_space_change.connect (reload);
@@ -136,7 +140,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         this.volume_monitor = GLib.VolumeMonitor.@get ();
         connect_volume_monitor_signals ();
 
-        set_up_theme ();
         this.show_all ();
 
         update_places ();
@@ -144,44 +147,53 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
     private void construct_tree_view () {
-        tree_view = new Gtk.TreeView ();
-        tree_view.set_size_request (Preferences.settings.get_int ("minimum-sidebar-width"), -1);
-        tree_view.set_headers_visible (false);
-        tree_view.show_expanders = false;
+        tree_view = new Gtk.TreeView () {
+            width_request = Marlin.app_settings.get_int ("minimum-sidebar-width"),
+            headers_visible = false,
+            show_expanders = false
+        };
 
-        var col = new Gtk.TreeViewColumn ();
-        col.max_width = -1;
-        col.expand = true;
-        col.spacing = 3;
+        var col = new Gtk.TreeViewColumn () {
+            max_width = -1,
+            expand = true,
+            spacing = 3
+        };
 
-        var crt = new Gtk.CellRendererText (); /* Extra indent for start margin */
-        crt.xpad = ROOT_INDENTATION_XPAD;
-        crt.ypad = BOOKMARK_YPAD;
+        var crt = new Gtk.CellRendererText () { /* Extra indent for start margin */
+            xpad = ROOT_INDENTATION_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_start (crt, false);
 
-        crt = new Gtk.CellRendererText (); /* Extra indent for sub-category rows (bookmarks)*/
-        crt.xpad = ICON_XPAD;
-        crt.ypad = BOOKMARK_YPAD;
+        crt = new Gtk.CellRendererText () { /* Extra indent for sub-category rows (bookmarks)*/
+            xpad = ICON_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_start (crt, false);
         col.set_attributes (crt, "visible", Column.NOT_CATEGORY);
 
-        var crpb = new Gtk.CellRendererPixbuf (); /* Icon for bookmark or device */
-        crpb.stock_size = Gtk.IconSize.MENU;
-        crpb.ypad = BOOKMARK_YPAD;
+        var crpb = new Gtk.CellRendererPixbuf () { /* Icon for bookmark or device */
+            stock_size = Gtk.IconSize.MENU,
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_start (crpb, false);
         col.set_attributes (crpb,
                             "gicon", Column.ICON,
                             "visible", Column.NOT_CATEGORY);
 
-        var crd = new Marlin.CellRendererDisk (); /* Renders category & bookmark text and diskspace graphic */
-        name_renderer = crd as Gtk.CellRendererText;
-        name_renderer.ellipsize = Pango.EllipsizeMode.END;
-        name_renderer.ellipsize_set = true;
+        name_renderer = new Marlin.CellRendererDisk () { /* Renders category & bookmark text and diskspace graphic */
+            ellipsize = Pango.EllipsizeMode.END,
+            ellipsize_set = true
+        };
+
         name_renderer.edited.connect (edited);
         name_renderer.editing_canceled.connect (editing_canceled);
 
-        col.pack_start (crd, true);
-        col.set_attributes (crd,
+        col.pack_start (name_renderer, true);
+        col.set_attributes (name_renderer,
                             "text", Column.NAME,
                             "free_space", Column.FREE_SPACE,
                             "disk_size", Column.DISK_SIZE,
@@ -190,33 +202,37 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* renderer function sets font weight and ypadding depending on whether bookmark or category */
         col.set_cell_data_func (name_renderer, category_renderer_func);
 
-        var crsp = new Gtk.CellRendererSpinner (); /* Spinner shown while ejecting */
-        crsp.ypad = BOOKMARK_YPAD;
+        var crsp = new Gtk.CellRendererSpinner () { /* Spinner shown while ejecting */
+            ypad = BOOKMARK_YPAD
+        };
+
         col.pack_end (crsp, false);
         col.set_attributes (crsp,
                             "visible", Column.SHOW_SPINNER,
                             "active", Column.SHOW_SPINNER,
                             "pulse", Column.SPINNER_PULSE);
 
-        crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
+        crpb = new Gtk.CellRendererPixbuf () { /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
+            stock_size = Gtk.IconSize.MENU,
+            xpad = ICON_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
+
         this.eject_spinner_cell_renderer = crpb;
-        crpb.stock_size = Gtk.IconSize.MENU;
-        crpb.xpad = ICON_XPAD;
-        crpb.ypad = BOOKMARK_YPAD;
 
         col.pack_start (crpb, false);
         col.set_attributes (crpb,
                             "gicon", Column.ACTION_ICON);
 
-        var cre = new Granite.Widgets.CellRendererExpander (); /* Expander button for categories */
-        expander_renderer = cre;
-        cre.is_category_expander = true;
-        cre.is_expander = true;
-        cre.xpad = ICON_XPAD;
-        cre.ypad = BOOKMARK_YPAD;
+        expander_renderer = new Granite.Widgets.CellRendererExpander () { /* Expander button for categories */
+            is_category_expander = true,
+            is_expander = true,
+            xpad = ICON_XPAD,
+            ypad = BOOKMARK_YPAD
+        };
 
-        col.pack_end (cre, false);
-        col.set_attributes (cre, "visible", Column.IS_CATEGORY);
+        col.pack_end (expander_renderer, false);
+        col.set_attributes (expander_renderer, "visible", Column.IS_CATEGORY);
 
         tree_view.append_column (col);
         tree_view.tooltip_column = Column.TOOLTIP;
@@ -302,12 +318,12 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
     private bool focus_in_event_cb (Gdk.EventFocus event) {
         /* Restore saved adjustment value to prevent unexpected scrolling */
-        ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+        get_vadjustment ().set_value (adjustment_val);
         return false;
     }
 
     private bool update_adjustment_val () {
-        adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
+        adjustment_val = get_vadjustment ().value;
         return false;
     }
 
@@ -337,18 +353,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         volume_monitor.drive_disconnected.disconnect (drive_disconnected_callback);
         volume_monitor.drive_changed.disconnect (drive_connected_callback);
         volume_monitor.drive_changed.disconnect (drive_changed_callback);
-    }
-
-    private void set_up_theme () {
-        theme = Gtk.IconTheme.get_default ();
-        theme.changed.connect (icon_theme_changed_callback);
-        get_eject_icon ();
-    }
-
-    private void get_eject_icon () {
-        if (eject_icon == null) {
-            eject_icon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
-        }
     }
 
     protected Gtk.TreeIter? add_category (PlaceType place_type, string name, string tooltip) {
@@ -399,7 +403,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         if (show_eject_button) {
-            action_icon = this.eject_icon;
+            if (eject_icon == null) {
+                eject_icon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
+            }
+            action_icon = eject_icon;
         }
 
         GLib.Error error = null;
@@ -561,9 +568,11 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
         store.clear ();
 
-        iter = add_category (PlaceType.BOOKMARKS_CATEGORY,
-                             _("Personal"),
-                             _("Your common places and bookmarks"));
+        iter = add_category (
+            PlaceType.BOOKMARKS_CATEGORY,
+             _("Bookmarks"),
+             _("Common places plus saved folders and files")
+         );
 
         /* Add Home BUILTIN */
         try {
@@ -636,7 +645,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* ADD STORAGE CATEGORY*/
         iter = add_category (PlaceType.STORAGE_CATEGORY,
                              _("Devices"),
-                             _("Your local partitions and devices"));
+                             _("Internal and connected storage devices"));
 
 
         /* Add Filesystem BUILTIN */
@@ -766,7 +775,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* ADD NETWORK CATEGORY */
             iter = add_category (PlaceType.NETWORK_CATEGORY,
                                  _("Network"),
-                                 _("Your network places"));
+                                 _("Devices and places available via a network"));
 
             network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
 
@@ -877,9 +886,15 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             if (mount != null) {
                 /* show mounted volume in sidebar */
                 var root = mount.get_root ();
+                var device_label = root.get_basename ();
+                if (device_label != mount.get_name ()) {
+                    ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
+                    device_label = _("%s on %s").printf (device_label, mount.get_name ());
+                }
+
                 last_iter = add_place (PlaceType.MOUNTED_VOLUME,
                                        iter,
-                                       mount.get_name (),
+                                       device_label,
                                        get_icon_with_fallback (mount.get_icon ()),
                                        root.get_uri (),
                                        drive,
@@ -913,11 +928,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
-    private async bool get_filesystem_space_and_type (GLib.File root, Cancellable update_cancellable,
-                                                      out uint64 fs_capacity, out uint64 fs_free, out string type) {
+    private async bool get_filesystem_space (GLib.File root, Cancellable update_cancellable,
+                                                      out uint64 fs_capacity, out uint64 fs_free) {
         fs_capacity = 0;
         fs_free = 0;
-        type = "";
 
         string scheme = Uri.parse_scheme (root.get_uri ());
         if ("sftp davs".contains (scheme)) {
@@ -951,49 +965,40 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             if (info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
                 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
             }
-            if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-                type = info.get_attribute_as_string (FileAttribute.FILESYSTEM_TYPE);
-            }
+
             return true;
         }
     }
 
-    private string get_tooltip_for_device (GLib.File location, uint64 fs_capacity,
-                                           uint64 fs_free, string type) {
-        var sb = new StringBuilder ("");
-        sb.append (PF.FileUtils.sanitize_path (location.get_parse_name ()));
-        if (type != null && type != "") {
-            sb.append (" - ");
-            sb.append (type);
-        }
-        if (fs_capacity > 0) {
-            sb.append (" ");
-            sb.append (_("(%s Free of %s)").printf (format_size (fs_free), format_size (fs_capacity)));
-        }
-
-        return sb.str.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
-    }
-
     private async void add_device_tooltip (Gtk.TreeIter iter, GLib.File root, Cancellable update_cancellable) {
-
-        uint64 fs_capacity, fs_free;
-        string fs_type;
         var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
+        if (rowref != null && rowref.valid ()) {
+            uint64 fs_capacity, fs_free;
+            if (yield get_filesystem_space (root, update_cancellable, out fs_capacity, out fs_free)) {
+                if (fs_capacity > 0) {
+                    var used_string = _("%s free").printf (format_size (fs_free));
+                    var size_string = _("%s used of %s").printf (
+                        format_size (fs_capacity - fs_free),
+                        format_size (fs_capacity)
+                    );
 
-        if (yield get_filesystem_space_and_type (root, update_cancellable,
-                                                 out fs_capacity, out fs_free, out fs_type)) {
+                    var tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (
+                        used_string,
+                        size_string
+                    );
 
-            var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
-            if (rowref != null && rowref.valid ()) {
-                Gtk.TreeIter? itr = null;
-                store.get_iter (out itr, rowref.get_path ());
-                store.@set (itr,
-                            Column.FREE_SPACE, fs_free,
-                            Column.DISK_SIZE, fs_capacity,
-                            Column.TOOLTIP, tooltip);
-            } else {
-                warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
+                    Gtk.TreeIter? itr = null;
+                    store.get_iter (out itr, rowref.get_path ());
+                    store.@set (
+                        itr,
+                        Column.FREE_SPACE, fs_free,
+                        Column.DISK_SIZE, fs_capacity,
+                        Column.TOOLTIP, tooltip
+                    );
+                }
             }
+        } else {
+            warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
         }
     }
 
@@ -1007,17 +1012,9 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             device = context.get_device ();
             device.get_position (null, out x, out y);
 
-#if HAVE_UNITY
-
-#if HAVE_PLANK_0_11
             Plank.PoofWindow poof_window;
             poof_window = Plank.PoofWindow.get_default ();
-#else
-            Plank.Widgets.PoofWindow? poof_window = null;
-            poof_window = Plank.Widgets.PoofWindow.get_default ();
-#endif
             poof_window.show_at (x, y);
-#endif
 
             if (drag_row_ref != null) {
                 Gtk.TreeIter iter;
@@ -1312,7 +1309,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* verify that we are realized */
         if (get_realized ()) {
             /* determine pointer location and window geometry */
-            Gtk.Widget widget = (this as Gtk.Bin).get_child ();
+            Gtk.Widget widget = get_child ();
             Gdk.Device pointer = drag_context.get_device ();
             Gdk.Window window = widget.get_window ();
 
@@ -1327,7 +1324,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* change the vertical adjustment appropriately */
             if (offset != 0) {
                 /* determine the vertical adjustment */
-                adjustment = (this as Gtk.ScrolledWindow).get_vadjustment ();
+                adjustment = get_vadjustment ();
                 /* determine the new value */
                 val = (adjustment.value + 2.0 * offset);
                 val = val.clamp (adjustment.lower,
@@ -1344,7 +1341,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             /* change the horizontal adjustment appropriately */
             if (offset != 0) {
                 /* determine the horizontal adjustment */
-                adjustment = (this as Gtk.ScrolledWindow).get_hadjustment ();
+                adjustment = get_hadjustment ();
                 /* determine the new value */
                 val = (adjustment.value + 2 * offset);
                 val = val.clamp (adjustment.lower,
@@ -1451,14 +1448,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                 Mount mount = volume.get_mount ();
                 if (mount != null) {
                     var location = mount.get_root ();
-                    if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                        var app = (Marlin.Application)(GLib.Application.get_default ());
-                        app.create_window (location);
-                    } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                        window.open_single_tab (location, Marlin.ViewMode.CURRENT);
-                    } else {
-                        window.uri_path_change_request (location.get_uri ());
-                    }
+                    /* Always use this function to properly handle unusual characters in the filename */
+                    window.uri_path_change_request (location.get_uri (), flags);
                 }
             } catch (GLib.Error error) {
                 var primary = _("Error mounting volume %s").printf (volume.get_name ());
@@ -1499,7 +1490,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename
          * For some reason, scroll to cell does not always work here
          */
-        ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+        get_vadjustment ().set_value (adjustment_val);
 
         tree_view.set_cursor_on_cell (path, column, name_renderer, true);
     }
@@ -1617,6 +1608,8 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                                 Marlin.FileOperations.has_trash_files (mount));
 
         bool show_properties = show_mount || show_unmount || show_eject || uri == Marlin.ROOT_FS_URI;
+        bool show_bookmark_network_mount = show_unmount &&
+                                           ("smb ssh ftp sftp afp dav davs".contains (Uri.parse_scheme (uri)));
 
         if (is_plugin) {
             MenuModel model;
@@ -1641,9 +1634,9 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             }
         } else {
             var menu = new PopupMenuBuilder ().add_open (open_shortcut_cb)
-                                              .add_separator ()
-                                              .add_open_tab (open_shortcut_in_new_tab_cb)
-                                              .add_open_window (open_shortcut_in_new_window_cb);
+                                                .add_separator ()
+                                                .add_open_tab (open_shortcut_in_new_tab_cb)
+                                                .add_open_window (open_shortcut_in_new_window_cb);
 
             if (is_bookmark) {
                 menu.add_separator ().add_remove (remove_shortcut_cb)
@@ -1674,6 +1667,10 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
 
             if (show_properties) {
                 menu.add_property (show_drive_info_cb);
+            }
+
+            if (show_bookmark_network_mount) {
+                menu.add_bookmark (bookmark_network_mount_cb);
             }
 
             menu.build ().popup_at_pointer (event);
@@ -1759,40 +1756,40 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
          */
         switch (type) {
             case PlaceType.NETWORK_CATEGORY:
-                if (flag != Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
-                    Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                if (flag != Marlin.app_settings.get_boolean ("sidebar-cat-network-expander")) {
+                    Marlin.app_settings.set_boolean ("sidebar-cat-network-expander", flag);
                 }
                 break;
             case PlaceType.STORAGE_CATEGORY:
-                if (flag != Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
-                    Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                if (flag != Marlin.app_settings.get_boolean ("sidebar-cat-devices-expander")) {
+                    Marlin.app_settings.set_boolean ("sidebar-cat-devices-expander", flag);
                 }
                 break;
             case PlaceType.BOOKMARKS_CATEGORY:
-                if (flag != Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
-                    Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                if (flag != Marlin.app_settings.get_boolean ("sidebar-cat-personal-expander")) {
+                    Marlin.app_settings.set_boolean ("sidebar-cat-personal-expander", flag);
                 }
                 break;
         }
     }
 
     private void expander_init_pref_state (Gtk.TreeView tree_view) {
-        var path = new Gtk.TreePath.from_indices (0,-1);
-        if (Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
+        var path = new Gtk.TreePath.from_indices (0, -1);
+        if (Marlin.app_settings.get_boolean ("sidebar-cat-personal-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
         }
 
-        path = new Gtk.TreePath.from_indices (1,-1);
-        if (Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
+        path = new Gtk.TreePath.from_indices (1, -1);
+        if (Marlin.app_settings.get_boolean ("sidebar-cat-devices-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
         }
 
-        path = new Gtk.TreePath.from_indices (2,-1);
-        if (Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
+        path = new Gtk.TreePath.from_indices (2, -1);
+        if (Marlin.app_settings.get_boolean ("sidebar-cat-network-expander")) {
             tree_view.expand_row (path, false);
         } else {
             tree_view.collapse_row (path);
@@ -2012,10 +2009,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
 
         return false;
-    }
-
-    public new void style_set (Gtk.Style previous_style) {
-        update_places ();
     }
 
     public void reload () {
@@ -2363,6 +2356,26 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         }
     }
 
+    private void bookmark_network_mount_cb (Gtk.MenuItem item) {
+        Gtk.TreeIter iter;
+        if (!get_selected_iter (out iter)) {
+            return;
+        }
+
+        Mount mount;
+        string uri;
+        store.@get (iter,
+                    Column.URI, out uri,
+                    Column.MOUNT, out mount);
+
+        string? name = null;
+        if (mount != null) {
+            name = mount.get_name ();
+        }
+
+        add_uri (uri, name);
+    }
+
 /* VOLUME MONITOR CALLBACK FUNCTIONS */
 
     private void mount_added_callback (Mount mount) {
@@ -2428,11 +2441,6 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
     }
 
 /* MISCELLANEOUS CALLBACK FUNCTIONS */
-
-    private void icon_theme_changed_callback (Gtk.IconTheme icon_theme) {
-        get_eject_icon ();
-        update_places ();
-    }
 
     private void loading_uri_callback (string location) {
         set_matching_selection (location);

@@ -20,6 +20,14 @@
              Darin Adler <darin@bentspoon.com>,
              Julián Unrrein <junrrein@gmail.com>
 ***/
+
+namespace Marlin {
+    public Settings app_settings;
+    public Settings icon_view_settings;
+    public Settings list_view_settings;
+    public Settings column_view_settings;
+}
+
 public class Marlin.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
@@ -30,11 +38,28 @@ public class Marlin.Application : Gtk.Application {
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private const uint MAX_WINDOWS = 25;
 
+    public Settings gnome_interface_settings { get; construct; }
+    public Settings gnome_privacy_settings { get; construct; }
+    public Settings gtk_file_chooser_settings { get; construct; }
+
+
     public int window_count { get; private set; }
 
     bool quitting = false;
 
+    static construct {
+        /* GSettings parameters */
+        app_settings = new Settings ("io.elementary.files.preferences");
+        icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        list_view_settings = new Settings ("io.elementary.files.list-view");
+        column_view_settings = new Settings ("io.elementary.files.column-view");
+    }
+
     construct {
+        gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
+        gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
+
         /* Needed by Glib.Application */
         this.application_id = Marlin.APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
@@ -62,7 +87,7 @@ public class Marlin.Application : Gtk.Application {
             Marlin.IconInfo.clear_caches ();
         });
 
-        progress_handler = new Marlin.Progress.UIHandler (this);
+        progress_handler = new Marlin.Progress.UIHandler ();
 
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
@@ -84,6 +109,15 @@ public class Marlin.Application : Gtk.Application {
         this.window_added.connect_after (() => {window_count++;});
         this.window_removed.connect (() => {
             window_count--;
+        });
+
+        var granite_settings = Granite.Settings.get_default ();
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
         });
     }
 
@@ -245,42 +279,32 @@ public class Marlin.Application : Gtk.Application {
     }
 
     private void init_schemas () {
-        /* GSettings parameters */
-        Preferences.settings = new Settings ("io.elementary.files.preferences");
-        Preferences.marlin_icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        Preferences.marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
-        Preferences.marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
-        Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
-        Preferences.gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
-        Preferences.gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
-
         /* Bind settings with GOFPreferences */
         var prefs = GOF.Preferences.get_default ();
-        Preferences.settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("show-remote-thumbnails",
+        Marlin.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("hide-local-thumbnails",
+        Marlin.app_settings.bind ("hide-local-thumbnails",
                                    prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.gnome_interface_settings.bind ("clock-format",
+        Marlin.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+        gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
-        Preferences.gnome_privacy_settings.bind ("remember-recent-files",
+        gnome_privacy_settings.bind ("remember-recent-files",
                                    GOF.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
-        Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
+        gtk_file_chooser_settings.bind ("sort-directories-first",
                                    prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     public Marlin.View.Window? create_window (File? location = null,
-                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
-                                              int x = -1, int y = -1) {
+                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
 
-        return create_window_with_tabs ({location}, viewmode, x, y);
+        return create_window_with_tabs ({location}, viewmode);
     }
 
     /* All window creation should be done via this function */
     private Marlin.View.Window? create_window_with_tabs (File[] locations = {},
-                                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
-                                               int x = -1, int y = -1) {
+                                                         Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
             return null;
         }

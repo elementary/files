@@ -78,7 +78,7 @@ namespace Marlin.View {
             ctab = _ctab;
             mode = _mode;
             is_active = false;
-            preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
+            preferred_column_width = Marlin.column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 
             set_up_directory (_location); /* Connect dir signals before making view */
@@ -127,7 +127,7 @@ namespace Marlin.View {
         }
 
         private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
-                width = alloc.width;
+            width = alloc.width;
         }
 
         private void on_dir_view_item_hovered (GOF.File? file) {
@@ -243,7 +243,6 @@ namespace Marlin.View {
 
         public override void user_path_change_request (GLib.File loc, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
-            assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
 

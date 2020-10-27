@@ -30,7 +30,7 @@
 
   <schema path="/io/elementary/files/preferences/" id="io.elementary.files.preferences">
     <key type="b" name="show-remote-thumbnails">
-      <default>false</default>
+      <default>true</default>
       <summary>Thumbnail remote files</summary>
       <description>Show thumbnails for files on remote filesystems</description>
     </key>

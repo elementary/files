@@ -24,11 +24,11 @@
 
 ***/
 
-
 namespace Marlin {
     public class ClipboardManager : GLib.Object {
         private enum ClipboardTarget {
             GNOME_COPIED_FILES,
+            PNG_IMAGE,
             UTF8_STRING
         }
 
@@ -36,6 +36,7 @@ namespace Marlin {
         private static Gdk.Atom x_special_gnome_copied_files;
         private const Gtk.TargetEntry[] CLIPBOARD_TARGETS = {
             {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
+            {"image/png", 0, ClipboardTarget.PNG_IMAGE},
             {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
         };
 
@@ -176,7 +177,6 @@ namespace Marlin {
             if (file_list != null) {
                 try {
                     yield FileOperations.copy_move_link (file_list,
-                                                         null,
                                                          target_file,
                                                          action,
                                                          widget);
@@ -261,11 +261,26 @@ namespace Marlin {
                                                                   prefix);
                     break;
 
+                case ClipboardTarget.PNG_IMAGE: /* Pasting into a (single) image handler */
+                    if (manager.files == null) {
+                        break;
+                    }
+
+                    var filename = manager.files.data.location.get_path ();
+                    try {
+                        var pixbuf = new Gdk.Pixbuf.from_file (filename);
+                        sd.set_pixbuf (pixbuf);
+                    } catch (Error e) {
+                        warning ("failed to get pixbuf from file %s ", filename);
+                    }
+
+                    break;
+
                 case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
                     DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
                     break;
                 default:
-                    assert_not_reached ();
+                    break;
             }
         }
 
