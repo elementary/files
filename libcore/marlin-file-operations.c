@@ -125,7 +125,6 @@ static void scan_sources (GList *files,
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
-//~ <<<<<<< HEAD
 static gboolean
 has_invalid_xml_char (char *str)
 {
@@ -240,9 +239,6 @@ custom_basename_from_file (GFile *file) {
 
 
     return name;
-//~ =======
-
-//~ >>>>>>> port-get-link-name
 }
 
 #define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
