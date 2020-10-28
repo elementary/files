@@ -921,7 +921,7 @@ namespace PF.FileUtils {
 
     ///TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
     public const string COPY_TAG = N_("copy");
-    ///TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link another file.
+    ///TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
     public const string LINK_TAG = N_("link");
     ///TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
     public const string OPENING_COPY_LINK_TAG = N_("(");
