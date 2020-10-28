@@ -196,7 +196,6 @@ void add_file_utils_tests () {
     });
 
     /* Get link names */
-
     Test.add_func ("/FileUtils/get_link_name_0", () => {
         string target = "path_to_link";
         string result = PF.FileUtils.get_link_name (target, 0);
@@ -209,6 +208,20 @@ void add_file_utils_tests () {
         //Does this need to be translated?
         assert (result.contains (PF.FileUtils.LINK_TAG));
         assert (!result.contains ("1"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_ext_1", () => {
+        string target = "Filename.ext";
+        string result = PF.FileUtils.get_link_name (target, 1);
+        assert (result.contains (".ext"));
+        assert (result.contains ("link"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_ext_11", () => {
+        string target = "Filename.ext";
+        string result = PF.FileUtils.get_link_name (target, 11);
+        assert (result != target);
+        assert (result.contains ("11"));
     });
 
     Test.add_func ("/FileUtils/get_link_name_11", () => {

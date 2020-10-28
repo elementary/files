@@ -1054,6 +1054,7 @@ namespace PF.FileUtils {
                 result = "%s %s%s %i%s".printf (
                     target_name, _(OPENING_COPY_LINK_TAG), tag, count, _(CLOSING_COPY_LINK_TAG)
                 );
+
                 break;
         }
 

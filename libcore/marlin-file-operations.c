@@ -2037,7 +2037,7 @@ get_unique_target_file (GFile *src,
 
     info = g_file_query_info (
         src,
-        G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME "," 
+        G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME ","
         G_FILE_ATTRIBUTE_STANDARD_TYPE,
         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
         NULL,
