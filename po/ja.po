@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 18:59+0000\n"
+"POT-Creation-Date: 2020-10-28 12:15+0000\n"
 "PO-Revision-Date: 2020-10-23 16:15+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -289,11 +289,11 @@ msgstr "(管理者)"
 msgid "Filename"
 msgstr "ファイル名"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
 msgid "Size"
 msgstr "サイズ"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
 msgid "Type"
 msgstr "形式"
 
@@ -392,119 +392,120 @@ msgstr "ブックマークに追加"
 msgid "Cut"
 msgstr "切り取り"
 
-#: src/View/AbstractDirectoryView.vala:1985
+#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Copy"
 msgstr "コピー"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Move to Trash"
 msgstr "ゴミ箱に移動"
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Delete permanently"
 msgstr "完全に削除"
 
-#: src/View/AbstractDirectoryView.vala:2002
+#: src/View/AbstractDirectoryView.vala:2003
 msgid "Restore from Trash"
 msgstr "ゴミ箱から復元"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2014
 msgid "Open Parent Folder"
 msgstr "親フォルダーを開く"
 
-#: src/View/AbstractDirectoryView.vala:2016
+#: src/View/AbstractDirectoryView.vala:2017
 msgid "Remove from History"
 msgstr "履歴から削除"
 
-#: src/View/AbstractDirectoryView.vala:2032
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Rename…"
 msgstr "名前を変更…"
 
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2040
 msgid "Copy as Link"
 msgstr "リンクとしてコピー"
 
-#: src/View/AbstractDirectoryView.vala:2057
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste Link into Folder"
 msgstr "フォルダーの中にリンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2059
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Paste into Folder"
 msgstr "フォルダーの中に貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Show Hidden Files"
 msgstr "隠しファイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Show Remote Thumbnails"
 msgstr "リモートのサムネイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Hide Thumbnails"
 msgstr "サムネイルを非表示"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2114
 msgid "Paste Link"
 msgstr "リンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Name"
 msgstr "ファイル名"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2183
 msgid "Date"
 msgstr "日付"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Reversed Order"
 msgstr "逆順"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Folders Before Files"
 msgstr "ファイルの前にフォルダーを表示"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Sort by"
 msgstr "並べ替え"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Folder"
 msgstr "フォルダー"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2217
 msgid "Empty File"
 msgstr "空のファイル"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "New"
 msgstr "新規作成"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3067
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3052
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3051
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
@@ -1129,6 +1130,30 @@ msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "約 %'d 時間"
 
+#. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
+#: libcore/FileUtils.vala:923
+#, fuzzy
+#| msgid " (copy)"
+msgid "copy"
+msgstr " (コピー)"
+
+#. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
+#: libcore/FileUtils.vala:925
+msgid "link"
+msgstr ""
+
+#. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
+#: libcore/FileUtils.vala:927
+#, fuzzy
+#| msgid " ("
+msgid "("
+msgstr " ("
+
+#. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
+#: libcore/FileUtils.vala:929
+msgid ")"
+msgstr ""
+
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
 msgstr "サーバーは制限時間内に応答しませんでした"
@@ -1219,53 +1244,14 @@ msgstr "ゴミ箱を空にしています"
 msgid "Unable to mount '%s'"
 msgstr "'%s' をマウントできません"
 
-#: libcore/marlin-file-operations.c:198
-#, c-format
-msgid "Link to %s"
-msgstr "%s へのリンク"
-
-#: libcore/marlin-file-operations.c:202
-#, c-format
-msgid "Another link to %s"
-msgstr "%s への別のリンク"
-
-#: libcore/marlin-file-operations.c:218
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: libcore/marlin-file-operations.c:222
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: libcore/marlin-file-operations.c:226
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: libcore/marlin-file-operations.c:230
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'d 番目の %s へのリンク"
-
-#: libcore/marlin-file-operations.c:422
-msgid " ("
-msgstr " ("
-
-#: libcore/marlin-file-operations.c:430
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:893
+#: libcore/marlin-file-operations.c:567
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "ゴミ箱から \"%s\" を完全に削除してもよろしいですか？"
 
-#: libcore/marlin-file-operations.c:897
+#: libcore/marlin-file-operations.c:571
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1275,55 +1261,55 @@ msgid_plural ""
 "trash?"
 msgstr[0] "選択中の %'d 個の項目をゴミ箱から完全に削除してもよろしいですか？"
 
-#: libcore/marlin-file-operations.c:907
+#: libcore/marlin-file-operations.c:581
 msgid "If you delete an item, it will be permanently lost."
 msgstr "項目を完全に削除すると、元に戻すことはできません。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:933
+#: libcore/marlin-file-operations.c:607
 #, c-format
 msgid "Permanently delete “%s”?"
 msgstr "“%s” を完全に削除しますか？"
 
-#: libcore/marlin-file-operations.c:936
+#: libcore/marlin-file-operations.c:610
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "選択中の %'d 個の項目を完全に削除してもよろしいですか？"
 
-#: libcore/marlin-file-operations.c:945
+#: libcore/marlin-file-operations.c:619
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr "項目はゴミ箱に移動されないため、元に戻せません。"
 
-#: libcore/marlin-file-operations.c:979
+#: libcore/marlin-file-operations.c:653
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "残り %'d 個のファイルを削除しています"
 
-#: libcore/marlin-file-operations.c:984
+#: libcore/marlin-file-operations.c:658
 msgid "Deleting files"
 msgstr "ファイルを削除しています"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:999
+#: libcore/marlin-file-operations.c:673
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "残り %s"
 
-#: libcore/marlin-file-operations.c:1068 libcore/marlin-file-operations.c:1108
-#: libcore/marlin-file-operations.c:1154 libcore/marlin-file-operations.c:1236
-#: libcore/marlin-file-operations.c:1731
+#: libcore/marlin-file-operations.c:742 libcore/marlin-file-operations.c:782
+#: libcore/marlin-file-operations.c:828 libcore/marlin-file-operations.c:910
+#: libcore/marlin-file-operations.c:1405
 msgid "Error while deleting."
 msgstr "削除中にエラーが発生しました。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1074
+#: libcore/marlin-file-operations.c:748
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1332,21 +1318,21 @@ msgstr "フォルダー \"%s\" 内のファイルを読み込む権限がない�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1079 libcore/marlin-file-operations.c:1795
-#: libcore/marlin-file-operations.c:2782
+#: libcore/marlin-file-operations.c:753 libcore/marlin-file-operations.c:1469
+#: libcore/marlin-file-operations.c:2466
 #, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 "フォルダー \"%s\" 内のファイルに関する情報の取得中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:1089 libcore/marlin-file-operations.c:2792
+#: libcore/marlin-file-operations.c:763 libcore/marlin-file-operations.c:2476
 msgid "_Skip files"
 msgstr "ファイルをスキップ(_S)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1113
+#: libcore/marlin-file-operations.c:787
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1355,46 +1341,46 @@ msgstr "フォルダー \"%s\" を読み込む権限がないため削除でき�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1118 libcore/marlin-file-operations.c:1840
-#: libcore/marlin-file-operations.c:2834
+#: libcore/marlin-file-operations.c:792 libcore/marlin-file-operations.c:1514
+#: libcore/marlin-file-operations.c:2518
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "フォルダー \"%s\" の読み込み中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1157
+#: libcore/marlin-file-operations.c:831
 #, c-format
 msgid "Could not remove the folder %s."
 msgstr "フォルダー \"%s\" を削除できませんでした。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1239
+#: libcore/marlin-file-operations.c:913
 #, c-format
 msgid "There was an error deleting %s."
 msgstr "\"%s\" の削除中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:1324
+#: libcore/marlin-file-operations.c:998
 msgid "Moving files to trash"
 msgstr "ファイルをゴミ箱に移動しています"
 
-#: libcore/marlin-file-operations.c:1326
+#: libcore/marlin-file-operations.c:1000
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "残り %'d 個のファイルをゴミ箱に移動しています"
 
-#: libcore/marlin-file-operations.c:1424 libcore/marlin-file-operations.c:1427
-#: libcore/marlin-file-operations.c:1430
+#: libcore/marlin-file-operations.c:1098 libcore/marlin-file-operations.c:1101
+#: libcore/marlin-file-operations.c:1104
 msgid "Cannot move file to trash or delete it"
 msgstr "ファイルをゴミ箱に移動または削除できませんでした"
 
-#: libcore/marlin-file-operations.c:1425
+#: libcore/marlin-file-operations.c:1099
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "読み取り専用ファイルシステムにあるファイルをゴミ箱に移動したり削除したりする"
 "ことはできません。"
 
-#: libcore/marlin-file-operations.c:1428
+#: libcore/marlin-file-operations.c:1102
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1402,7 +1388,7 @@ msgstr ""
 "書き込み権限を持っていないフォルダーにあるファイルをゴミ箱に移動したり削除し"
 "たりすることはできません。"
 
-#: libcore/marlin-file-operations.c:1431
+#: libcore/marlin-file-operations.c:1105
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1410,11 +1396,11 @@ msgstr ""
 "書き込み権限を持っていないフォルダーをゴミ箱に移動したり削除したりすることは"
 "できません。"
 
-#: libcore/marlin-file-operations.c:1433
+#: libcore/marlin-file-operations.c:1107
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "ファイルをゴミ箱に移動できません。すぐに削除してみますか？"
 
-#: libcore/marlin-file-operations.c:1434
+#: libcore/marlin-file-operations.c:1108
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -1422,18 +1408,18 @@ msgstr ""
 "このファイルをゴミ箱に移動させることができませんでした。詳細は、以下を参照し"
 "てください。"
 
-#: libcore/marlin-file-operations.c:1438
+#: libcore/marlin-file-operations.c:1112
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "ファイルをゴミ箱に移動できません。削除をしてみますか？"
 
-#: libcore/marlin-file-operations.c:1439
+#: libcore/marlin-file-operations.c:1113
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 "このファイルをゴミ箱に移動できませんでした。削除もできない可能性があります。"
 
-#: libcore/marlin-file-operations.c:1445
+#: libcore/marlin-file-operations.c:1119
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1441,11 +1427,11 @@ msgstr ""
 "\n"
 " ファイルを削除すると完全に削除します"
 
-#: libcore/marlin-file-operations.c:1624
+#: libcore/marlin-file-operations.c:1298
 msgid "Trashing Files"
 msgstr "ファイルをゴミ箱に移動しています"
 
-#: libcore/marlin-file-operations.c:1626
+#: libcore/marlin-file-operations.c:1300
 msgid "Deleting Files"
 msgstr "ファイルを削除しています"
 
@@ -1453,7 +1439,7 @@ msgstr "ファイルを削除しています"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1665
+#: libcore/marlin-file-operations.c:1339
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1463,7 +1449,7 @@ msgstr[0] "%'d 個のファイル (%s) をコピーする準備をしていま�
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1677
+#: libcore/marlin-file-operations.c:1351
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1473,35 +1459,35 @@ msgstr[0] "%'d 個のファイル (%s) を移動する準備をしています"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1689
+#: libcore/marlin-file-operations.c:1363
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "%'d 個のファイル (%s) を削除する準備をしています"
 
-#: libcore/marlin-file-operations.c:1696
+#: libcore/marlin-file-operations.c:1370
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備をしています"
 
-#: libcore/marlin-file-operations.c:1727 libcore/marlin-file-operations.c:2629
-#: libcore/marlin-file-operations.c:2769 libcore/marlin-file-operations.c:2821
+#: libcore/marlin-file-operations.c:1401 libcore/marlin-file-operations.c:2313
+#: libcore/marlin-file-operations.c:2453 libcore/marlin-file-operations.c:2505
 msgid "Error while copying."
 msgstr "コピー中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:1729 libcore/marlin-file-operations.c:2767
-#: libcore/marlin-file-operations.c:2819
+#: libcore/marlin-file-operations.c:1403 libcore/marlin-file-operations.c:2451
+#: libcore/marlin-file-operations.c:2503
 msgid "Error while moving."
 msgstr "移動中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:1733
+#: libcore/marlin-file-operations.c:1407
 msgid "Error while moving files to trash."
 msgstr "ファイルをゴミ箱に移動中にエラーが発生しました。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1790
+#: libcore/marlin-file-operations.c:1464
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1510,7 +1496,7 @@ msgstr "フォルダー \"%s\" 内のファイルを読み込む権限がない�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1835
+#: libcore/marlin-file-operations.c:1509
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1519,7 +1505,7 @@ msgstr "フォルダー \"%s\" を読み込む権限がないため操作でき�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1922
+#: libcore/marlin-file-operations.c:1596
 #, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1528,32 +1514,32 @@ msgstr "ファイル \"%s\" を読み込む権限がないため操作できま�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1927
+#: libcore/marlin-file-operations.c:1601
 #, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "\"%s\" に関する情報の取得中にエラーが発生しました。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2033 libcore/marlin-file-operations.c:2079
-#: libcore/marlin-file-operations.c:2117 libcore/marlin-file-operations.c:2157
+#: libcore/marlin-file-operations.c:1707 libcore/marlin-file-operations.c:1753
+#: libcore/marlin-file-operations.c:1791 libcore/marlin-file-operations.c:1831
 #, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "\"%s\" へのコピー中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:2038
+#: libcore/marlin-file-operations.c:1712
 msgid "You do not have permissions to access the destination folder."
 msgstr "転送先のフォルダーにアクセスする権限がありません。"
 
-#: libcore/marlin-file-operations.c:2040
+#: libcore/marlin-file-operations.c:1714
 msgid "There was an error getting information about the destination."
 msgstr "転送先の情報の取得中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:2080
+#: libcore/marlin-file-operations.c:1754
 msgid "The destination is not a folder."
 msgstr "転送先はフォルダーではありません。"
 
-#: libcore/marlin-file-operations.c:2119
+#: libcore/marlin-file-operations.c:1793
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1563,30 +1549,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2125
+#: libcore/marlin-file-operations.c:1799
 #, c-format
 msgid "There is %s available, but %s is required."
 msgstr "利用可能な容量は %s ありますが、%s が必要です。"
 
-#: libcore/marlin-file-operations.c:2159
+#: libcore/marlin-file-operations.c:1833
 msgid "The destination is read-only."
 msgstr "転送先は読み込み専用です。"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2231
+#: libcore/marlin-file-operations.c:1905
 #, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "\"%s\" を \"%s\" へ移動しています"
 
-#: libcore/marlin-file-operations.c:2232
+#: libcore/marlin-file-operations.c:1906
 #, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "\"%s\" を \"%s\" へコピーしています"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2236
+#: libcore/marlin-file-operations.c:1910
 #, c-format
 msgid "Duplicating \"%s\""
 msgstr "\"%s\" を複製しています"
@@ -1595,13 +1581,13 @@ msgstr "\"%s\" を複製しています"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2244
+#: libcore/marlin-file-operations.c:1918
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へ移動しています"
 
-#: libcore/marlin-file-operations.c:2247
+#: libcore/marlin-file-operations.c:1921
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1609,7 +1595,7 @@ msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へコピーしてい�
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2256
+#: libcore/marlin-file-operations.c:1930
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1619,26 +1605,26 @@ msgstr[0] "%'d 個のファイルを \"%s\" 内で複製しています"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2268
+#: libcore/marlin-file-operations.c:1942
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "%'d 個のファイルを \"%s\" へ移動しています"
 
-#: libcore/marlin-file-operations.c:2271
+#: libcore/marlin-file-operations.c:1945
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "%'d 個のファイルを \"%s\" へコピーしています"
 
-#: libcore/marlin-file-operations.c:2277
+#: libcore/marlin-file-operations.c:1951
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "%'d 個のファイルを複製しています"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2307
+#: libcore/marlin-file-operations.c:1981
 #, c-format
 msgid "%s of %s"
 msgstr "%s / %s"
@@ -1649,7 +1635,7 @@ msgstr "%s / %s"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2327
+#: libcore/marlin-file-operations.c:2001
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1657,7 +1643,7 @@ msgstr[0] "%s / %s — 残り %s (%s/秒)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2636
+#: libcore/marlin-file-operations.c:2320
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1666,14 +1652,14 @@ msgstr "フォルダー \"%s\" をコピー先に作成する権限がないた�
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2641
+#: libcore/marlin-file-operations.c:2325
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "フォルダー \"%s\" の作成中にエラーが発生しました。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2777
+#: libcore/marlin-file-operations.c:2461
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1683,7 +1669,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2829
+#: libcore/marlin-file-operations.c:2513
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1694,174 +1680,174 @@ msgstr "フォルダー \"%s\" を読み込む権限がないためコピーで�
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2882 libcore/marlin-file-operations.c:3615
-#: libcore/marlin-file-operations.c:4170
+#: libcore/marlin-file-operations.c:2566 libcore/marlin-file-operations.c:3299
+#: libcore/marlin-file-operations.c:3854
 #, c-format
 msgid "Error while moving \"%s\"."
 msgstr "\"%s\" の移動中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:2884
+#: libcore/marlin-file-operations.c:2568
 msgid "Could not remove the source folder."
 msgstr "転送元のフォルダーを削除できませんでした。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2973 libcore/marlin-file-operations.c:3024
-#: libcore/marlin-file-operations.c:3619
+#: libcore/marlin-file-operations.c:2657 libcore/marlin-file-operations.c:2708
+#: libcore/marlin-file-operations.c:3303
 #, c-format
 msgid "Error while copying \"%s\"."
 msgstr "\"%s\" のコピー中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:2978
+#: libcore/marlin-file-operations.c:2662
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr ""
 "すでに存在しているフォルダー \"%s\" からファイルを削除できませんでした。"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3029
+#: libcore/marlin-file-operations.c:2713
 #, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "すでに存在しているファイル \"%s\" を削除できませんでした。"
 
-#: libcore/marlin-file-operations.c:3348 libcore/marlin-file-operations.c:4009
+#: libcore/marlin-file-operations.c:3032 libcore/marlin-file-operations.c:3693
 msgid "You cannot move a folder into itself."
 msgstr "フォルダーをそれ自身の中に移動することはできません。"
 
-#: libcore/marlin-file-operations.c:3349 libcore/marlin-file-operations.c:4010
+#: libcore/marlin-file-operations.c:3033 libcore/marlin-file-operations.c:3694
 msgid "You cannot copy a folder into itself."
 msgstr "フォルダーをそれ自身の中にコピーすることはできません。"
 
-#: libcore/marlin-file-operations.c:3350 libcore/marlin-file-operations.c:4011
+#: libcore/marlin-file-operations.c:3034 libcore/marlin-file-operations.c:3695
 msgid "The destination folder is inside the source folder."
 msgstr "転送先のフォルダーが転送元のフォルダーの中にあります。"
 
-#: libcore/marlin-file-operations.c:3381
+#: libcore/marlin-file-operations.c:3065
 msgid "You cannot move a file over itself."
 msgstr "ファイルをそれ自身に移動することはできません。"
 
-#: libcore/marlin-file-operations.c:3382
+#: libcore/marlin-file-operations.c:3066
 msgid "You cannot copy a file over itself."
 msgstr "ファイルをそれ自身にコピーすることはできません。"
 
-#: libcore/marlin-file-operations.c:3383
+#: libcore/marlin-file-operations.c:3067
 msgid "The source file would be overwritten by the destination."
 msgstr "転送元のファイルは転送先によって上書きされます。"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3625
+#: libcore/marlin-file-operations.c:3309
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "%s の中に存在する同名のファイルを削除できませんでした。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3695
+#: libcore/marlin-file-operations.c:3379
 #, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "ここには \"%s\" をコピーできません。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3700
+#: libcore/marlin-file-operations.c:3384
 #, c-format
 msgid "There was an error copying the file into %s."
 msgstr "%s へのファイルのコピー中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:3890
+#: libcore/marlin-file-operations.c:3574
 msgid "Copying Files"
 msgstr "ファイルをコピーしています"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3925
+#: libcore/marlin-file-operations.c:3609
 #, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "\"%s\" へ移動する準備をしています"
 
-#: libcore/marlin-file-operations.c:3930
+#: libcore/marlin-file-operations.c:3614
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d 個のファイルを移動する準備をしています"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4174
+#: libcore/marlin-file-operations.c:3858
 #, c-format
 msgid "There was an error moving the file into %s."
 msgstr "%s 内へのファイルの移動中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:4396
+#: libcore/marlin-file-operations.c:4080
 msgid "Moving Files"
 msgstr "ファイルを移動しています"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4434
+#: libcore/marlin-file-operations.c:4118
 #, c-format
 msgid "Creating links in \"%s\""
 msgstr "\"%s\" 内でリンクを作成しています"
 
-#: libcore/marlin-file-operations.c:4439
+#: libcore/marlin-file-operations.c:4123
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "%'d 個のファイルへのリンクを作成しています"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4549
+#: libcore/marlin-file-operations.c:4233
 #, c-format
 msgid "Error while creating link to %s."
 msgstr "%s へのリンクの作成中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:4552
+#: libcore/marlin-file-operations.c:4236
 msgid "Symbolic links only supported for local files"
 msgstr "シンボリックリンクはローカルファイルでのみサポートされています"
 
-#: libcore/marlin-file-operations.c:4555
+#: libcore/marlin-file-operations.c:4239
 msgid "The target doesn't support symbolic links."
 msgstr "リンクの作成先はシンボリックリンクをサポートしていません。"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4560
+#: libcore/marlin-file-operations.c:4244
 #, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "%s 内へのシンボリックリンクの作成中にエラーが発生しました。"
 
-#: libcore/marlin-file-operations.c:4848
+#: libcore/marlin-file-operations.c:4532
 msgid "Setting permissions"
 msgstr "権限を設定しています"
 
-#: libcore/marlin-file-operations.c:5037
+#: libcore/marlin-file-operations.c:4721
 msgid "Cannot copy into trash."
 msgstr "ゴミ箱にコピーできません。"
 
-#: libcore/marlin-file-operations.c:5038 libcore/marlin-file-operations.c:5046
+#: libcore/marlin-file-operations.c:4722 libcore/marlin-file-operations.c:4730
 msgid "It is not permitted to copy files into the trash"
 msgstr "ゴミ箱にファイルをコピーすることは許可されていません"
 
-#: libcore/marlin-file-operations.c:5178
+#: libcore/marlin-file-operations.c:4862
 msgid "untitled folder"
 msgstr "名称未設定フォルダー"
 
-#: libcore/marlin-file-operations.c:5186
+#: libcore/marlin-file-operations.c:4870
 msgid "new file"
 msgstr "新しいファイル"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5353
+#: libcore/marlin-file-operations.c:5039
 #, c-format
 msgid "Error while creating directory %s."
 msgstr "フォルダー %s の作成中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5356
+#: libcore/marlin-file-operations.c:5042
 #, c-format
 msgid "Error while creating file %s."
 msgstr "ファイル %s の作成中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5362
+#: libcore/marlin-file-operations.c:5048
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "%s 内へのフォルダーの作成中にエラーが発生しました。"
@@ -1963,6 +1949,29 @@ msgstr "選択項目を元に戻す"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "選択項目を削除"
+
+#, fuzzy
+#~| msgid "%'dst link to %s"
+#~ msgid "%s (link %d)"
+#~ msgstr "%'d 番目の %s へのリンク"
+
+#~ msgid " (%'d"
+#~ msgstr " (%'d"
+
+#~ msgid "Link to %s"
+#~ msgstr "%s へのリンク"
+
+#~ msgid "Another link to %s"
+#~ msgstr "%s への別のリンク"
+
+#~ msgid "%'dnd link to %s"
+#~ msgstr "%'d 番目の %s へのリンク"
+
+#~ msgid "%'drd link to %s"
+#~ msgstr "%'d 番目の %s へのリンク"
+
+#~ msgid "%'dth link to %s"
+#~ msgstr "%'d 番目の %s へのリンク"
 
 #~ msgid "Show Copy Dialog"
 #~ msgstr "コピーダイアログを表示"
@@ -2259,9 +2268,6 @@ msgstr "選択項目を削除"
 
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "デスクトップファイルを実行できませんでした: %s"
-
-#~ msgid " (copy)"
-#~ msgstr " (コピー)"
 
 #~ msgid " (another copy)"
 #~ msgstr " (別のコピー)"

@@ -1978,6 +1978,7 @@ namespace FM {
                 cut_menuitem.action_name = "selection.cut";
 
                 var copy_menuitem = new Gtk.MenuItem ();
+                ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
                 copy_menuitem.add (new Granite.AccelLabel (
                     _("Copy"),
                     "<Ctrl>c"
