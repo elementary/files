@@ -72,12 +72,6 @@ namespace Marlin {
         INVALID
     }
 
-    public enum ClickMode {
-        SINGLE,
-        DOUBLE,
-        MIXED,
-    }
-
     public enum OpenFlag {
         DEFAULT,
         NEW_ROOT,
