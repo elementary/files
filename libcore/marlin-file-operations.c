@@ -124,140 +124,6 @@ static void scan_sources (GList *files,
 
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
-static char *
-shorten_utf8_string (const char *base, int reduce_by_num_bytes)
-{
-    int len;
-    char *ret;
-    const char *p;
-
-    len = strlen (base);
-    len -= reduce_by_num_bytes;
-
-    if (len <= 0) {
-        return NULL;
-    }
-
-    ret = g_new (char, len + 1);
-
-    p = base;
-    while (len) {
-        char *next;
-        next = g_utf8_next_char (p);
-        if (next - p > len || *next == '\0') {
-            break;
-        }
-
-        len -= next - p;
-        p = next;
-    }
-
-    if (p - base == 0) {
-        g_free (ret);
-        return NULL;
-    } else {
-        memcpy (ret, base, p - base);
-        ret[p - base] = '\0';
-        return ret;
-    }
-}
-
-/* Note that we have these two separate functions with separate format
- * strings for ease of localization.
- */
-
-static char *
-get_link_name (const char *name, int count, int max_length)
-{
-    const char *format;
-    char *result;
-    int unshortened_length;
-    gboolean use_count;
-
-    g_assert (name != NULL);
-
-    if (count < 0) {
-        g_warning ("bad count in get_link_name");
-        count = 0;
-    }
-
-    if (count <= 2) {
-        /* Handle special cases for low numbers.
-         * Perhaps for some locales we will need to add more.
-         */
-        switch (count) {
-        default:
-            g_assert_not_reached ();
-            /* fall through */
-        case 0:
-            /* duplicate original file name */
-            format = "%s";
-            break;
-        case 1:
-            /* appended to new link file */
-            format = _("Link to %s");
-            break;
-        case 2:
-            /* appended to new link file */
-            format = _("Another link to %s");
-            break;
-        }
-
-        use_count = FALSE;
-    } else {
-        /* Handle special cases for the first few numbers of each ten.
-         * For locales where getting this exactly right is difficult,
-         * these can just be made all the same as the general case below.
-         */
-        switch (count % 10) {
-        case 1:
-            /* Localizers: Feel free to leave out the "st" suffix
-             * if there's no way to do that nicely for a
-             * particular language.
-             */
-            format = _("%'dst link to %s");
-            break;
-        case 2:
-            /* appended to new link file */
-            format = _("%'dnd link to %s");
-            break;
-        case 3:
-            /* appended to new link file */
-            format = _("%'drd link to %s");
-            break;
-        default:
-            /* appended to new link file */
-            format = _("%'dth link to %s");
-            break;
-        }
-
-        use_count = TRUE;
-    }
-
-    if (use_count)
-        result = g_strdup_printf (format, count, name);
-    else
-        result = g_strdup_printf (format, name);
-
-    if (max_length > 0 && (unshortened_length = strlen (result)) > max_length) {
-        char *new_name;
-
-        new_name = shorten_utf8_string (name, unshortened_length - max_length);
-        if (new_name) {
-            g_free (result);
-
-            if (use_count)
-                result = g_strdup_printf (format, count, new_name);
-            else
-                result = g_strdup_printf (format, new_name);
-
-            g_assert (strlen (result) <= max_length);
-            g_free (new_name);
-        }
-    }
-
-    return result;
-}
 
 /* Localizers:
  * Feel free to leave out the st, nd, rd and th suffix or
@@ -534,7 +400,7 @@ make_next_duplicate_name (const char *base, const char *suffix, int count, int m
     if (max_length > 0 && (unshortened_length = strlen (result)) > max_length) {
         char *new_base;
 
-        new_base = shorten_utf8_string (base, unshortened_length - max_length);
+        new_base = pf_file_utils_shorten_utf8_string (base, unshortened_length - max_length);
         if (new_base) {
             g_free (result);
 
@@ -2425,7 +2291,7 @@ get_target_file_for_link (GFile *src,
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
 
         if (editname != NULL) {
-            new_name = get_link_name (editname, count, max_length);
+            new_name = pf_file_utils_get_link_name (editname, count, max_length);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -2439,7 +2305,7 @@ get_target_file_for_link (GFile *src,
         pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
 
         if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = get_link_name (basename, count, max_length);
+            new_name = pf_file_utils_get_link_name (basename, count, max_length);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -5287,7 +5153,7 @@ retry:
 
                 new_filename = NULL;
                 if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = shorten_utf8_string (filename2, strlen (filename2) - max_length);
+                    new_filename = pf_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
                 }
 
                 if (new_filename == NULL) {
@@ -5320,7 +5186,7 @@ retry:
             if (job->make_dir) {
                 filename2 = g_strdup_printf ("%s %d", filename, ++count);
                 if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = shorten_utf8_string (filename2, strlen (filename2) - max_length);
+                    new_filename = pf_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
                     if (new_filename != NULL) {
                         g_free (filename2);
                         filename2 = new_filename;

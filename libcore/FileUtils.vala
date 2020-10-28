@@ -919,6 +919,52 @@ namespace PF.FileUtils {
         return result;
     }
 
+    public string shorten_utf8_string (string base_string, int reduce_by_num_bytes) {
+        var target_length = base_string.length - reduce_by_num_bytes;
+        if (target_length <= 0) {
+            return "";
+        }
+
+        var sb = new StringBuilder.sized (target_length);
+        sb.insert_len (0, base_string, target_length);
+
+        var valid_string = sb.str.make_valid ();
+        if (valid_string.length <= target_length) {
+            return valid_string;
+        } else {
+            return shorten_utf8_string (base_string, reduce_by_num_bytes + 1);
+        }
+    }
+
+    /* FileName (link)
+     * FileName (link 2)
+     * etc
+    */
+    public string get_link_name (string target_name, int count, int max_length = -1)
+    requires (count >= 0) {
+
+        string result = "";
+        switch (count) {
+            case 0:
+                result = target_name; //First link in directory has same name as source
+                break;
+
+            case 1:
+                result = _("%s (link)").printf (target_name);
+                break;
+
+            default:
+                result = _("%s (link %d)").printf (target_name, count);
+                break;
+        }
+
+        if (max_length >= 0 && result.length > max_length) {
+            result = shorten_utf8_string (result, result.length - max_length);
+        }
+
+        return result;
+    }
+
     public int get_max_name_length (GLib.File file_dir) {
         //FIXME Do not need to keep calling this for the same filesystem
 
