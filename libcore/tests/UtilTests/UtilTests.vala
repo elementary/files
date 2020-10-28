@@ -195,6 +195,7 @@ void add_file_utils_tests () {
         assert (result == "");
     });
 
+    /* Get link names */
     Test.add_func ("/FileUtils/get_link_name_0", () => {
         string target = "path_to_link";
         string result = PF.FileUtils.get_link_name (target, 0);
@@ -202,16 +203,88 @@ void add_file_utils_tests () {
     });
 
     Test.add_func ("/FileUtils/get_link_name_1", () => {
+        string target = "target";
+        string result = PF.FileUtils.get_link_name (target, 1);
+        //Does this need to be translated?
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (!result.contains ("1"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_ext_1", () => {
         string target = "Filename.ext";
         string result = PF.FileUtils.get_link_name (target, 1);
+        assert (result.contains (".ext"));
         assert (result.contains ("link"));
     });
 
-    Test.add_func ("/FileUtils/get_link_name_11", () => {
+    Test.add_func ("/FileUtils/get_link_name_ext_11", () => {
         string target = "Filename.ext";
         string result = PF.FileUtils.get_link_name (target, 11);
         assert (result != target);
         assert (result.contains ("11"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_11", () => {
+        string target = "target";
+        string result = PF.FileUtils.get_link_name (target, 11);
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (result.contains ("11"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_to_link", () => {
+        string target = "target (link)";
+        string result = PF.FileUtils.get_link_name (target, 1);
+        var parts = result.split (PF.FileUtils.LINK_TAG);
+        assert (parts.length == 3);
+    });
+
+    /* Get duplicate names */
+
+    Test.add_func ("/FileUtils/get_duplicate_name_3_ext", () => {
+        string name = "Filename.ext";
+
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.contains (PF.FileUtils.COPY_TAG));
+
+        result = PF.FileUtils.get_duplicate_name (result, 1, -1, false);
+        assert (result.contains ("2"));
+
+        result = PF.FileUtils.get_duplicate_name (result, 2, -1);
+        assert (result.contains ("4"));
+        var parts = result.split (PF.FileUtils.COPY_TAG);
+        assert (parts.length == 2);
+        assert (result.has_suffix (".ext"));
+        assert (result.has_prefix ("Filename"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_4_ext", () => {
+        string name = "Filename.mpeg";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.has_suffix ("mpeg"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_not_an_extension", () => {
+        string name = "Filename.not.an.extension";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (!result.has_suffix ("extension"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_no_extension", () => {
+        string name = "Filename";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+    });
+
+    /* Duplicating "Filename (link)" should yield "Filename (link 2)" not "Filename (link) (copy)" */
+    Test.add_func ("/FileUtils/get_duplicate_link", () => {
+        string name = "Filename ".concat (
+             PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
+        );
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (!result.contains (PF.FileUtils.COPY_TAG));
+        assert (result.contains ("2"));
     });
 }
 
