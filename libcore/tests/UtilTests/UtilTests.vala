@@ -264,7 +264,9 @@ void add_file_utils_tests () {
 
     /* Duplicating "Filename (link)" should yield "Filename (link 2)" not "Filename (link) (copy)" */
     Test.add_func ("/FileUtils/get_duplicate_link", () => {
-        string name = "Filename ".concat (PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null);
+        string name = "Filename ".concat (
+             PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
+        );
         var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);
         assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
         assert (result.contains (PF.FileUtils.LINK_TAG));
