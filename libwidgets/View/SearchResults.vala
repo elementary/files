@@ -128,6 +128,8 @@ namespace Marlin.View.Chrome {
         Gtk.TreeIter? deep_results = null;
         Gtk.TreeIter? zeitgeist_results = null;
         Gtk.TreeIter? bookmark_results = null;
+        string header_markup = "%s";
+        string result_location_markup = "%s";
 
         Gtk.TreeView view;
         Gtk.TreeStore list;
@@ -234,25 +236,10 @@ namespace Marlin.View.Chrome {
             list.set_sort_column_id (5, Gtk.SortType.ASCENDING);
 
             list.append (out local_results, null);
-            list.@set (local_results,
-                        0, get_category_header (_("In This Folder")),
-                        5, Category.CURRENT_HEADER.to_string ());
-
             list.append (out deep_results, null);
-            list.@set (deep_results,
-                        0, get_category_header (_("Below This Folder")),
-                        5, Category.CURRENT_HEADER.to_string ());
-
             list.append (out bookmark_results, null);
-            list.@set (bookmark_results,
-                        0, get_category_header (_("Bookmarks")),
-                        5, Category.CURRENT_HEADER.to_string ());
-
 #if HAVE_ZEITGEIST
             list.append (out zeitgeist_results, null);
-            list.@set (zeitgeist_results,
-                        0, get_category_header (_("Recently used")),
-                        5, Category.CURRENT_HEADER.to_string ());
 #endif
 
             scroll.add (view);
@@ -262,6 +249,44 @@ namespace Marlin.View.Chrome {
             button_press_event.connect (on_button_press_event);
             view.button_press_event.connect (on_view_button_press_event);
             key_press_event.connect (on_key_press_event);
+        }
+
+        private void update_category_headers () {
+            /* Sets pango markup for headers and results to match the current placeholder color */
+            Gdk.RGBA rgba;
+            string color = "";
+            string header_markup_start = "<span weight = 'bold' %s>";
+            string result_location_markup_start = "<span %s>";
+            var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
+
+            if (colored) {
+                color = "color='#%2x%2x%2x%2x'".printf ((uint)(rgba.red * 255),
+                                                        (uint)(rgba.green * 255),
+                                                        (uint)(rgba.blue * 255),
+                                                        (uint)(rgba.alpha * 255));
+            }
+
+            header_markup = header_markup_start.printf (color) + "%s</span>";
+            result_location_markup = result_location_markup_start.printf (color) + "%s</span>";
+
+            /* Update the headers */
+            list.@set (local_results,
+                        0, header_markup.printf (_("In This Folder")),
+                        5, Category.CURRENT_HEADER.to_string ());
+
+            list.@set (deep_results,
+                        0, header_markup.printf (_("Below This Folder")),
+                        5, Category.CURRENT_HEADER.to_string ());
+
+            list.@set (bookmark_results,
+                        0, header_markup.printf (_("Bookmarks")),
+                        5, Category.CURRENT_HEADER.to_string ());
+
+#if HAVE_ZEITGEIST
+            list.@set (zeitgeist_results,
+                        0, header_markup.printf (_("Recently Used")),
+                        5, Category.CURRENT_HEADER.to_string ());
+#endif
         }
 
         /** Search interface functions **/
@@ -276,6 +301,8 @@ namespace Marlin.View.Chrome {
         }
 
         public void search (string term, File folder) {
+            update_category_headers (); // Ensure category header color matches theme.
+
             device = Gtk.get_current_event_device ();
             if (term.normalize ().casefold () != search_term) {
                 search_term = term.normalize ().casefold ();
@@ -808,8 +835,7 @@ namespace Marlin.View.Chrome {
                      }
                  }
 
-                var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
-                                                            Markup.escape_text (match.path_string));
+                var location = result_location_markup.printf (Markup.escape_text (match.path_string));
 
                 list.append (out iter, parent);
                 list.@set (iter, 0, match.name, 1, match.icon, 2, location, 3, match.file, 4, true, 5, match.sortkey);
@@ -1139,25 +1165,6 @@ namespace Marlin.View.Chrome {
             var n = name.normalize ().casefold ();
             begins_with = n.has_prefix (term);
             return n.contains (term);
-        }
-
-        string get_category_header (string title) {
-            return "<span weight='bold' %s>%s</span>".printf (get_pango_grey_color_string (), title);
-        }
-
-        string get_pango_grey_color_string () {
-            Gdk.RGBA rgba;
-            string color = "";
-            var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
-
-            if (colored) {
-                color = "color='#%2x%2x%2x%2x'".printf ((uint)(rgba.red * 255),
-                                                        (uint)(rgba.green * 255),
-                                                        (uint)(rgba.blue * 255),
-                                                        (uint)(rgba.alpha * 255));
-            }
-
-            return color;
         }
 
         public bool has_popped_up () {
