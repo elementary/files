@@ -954,7 +954,7 @@ namespace PF.FileUtils {
                 break;
 
             default:
-                result = _("%s (link %i)").printf (target_name, count);
+                result = _("%s (link %d)").printf (target_name, count);
                 break;
         }
 
