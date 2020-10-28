@@ -919,8 +919,13 @@ namespace PF.FileUtils {
         return result;
     }
 
-    public const string COPY_TAG = N_("(copy");
-    public const string LINK_TAG = N_("(link");
+    ///TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
+    public const string COPY_TAG = N_("copy");
+    ///TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link another file.
+    public const string LINK_TAG = N_("link");
+    ///TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
+    public const string OPENING_COPY_LINK_TAG = N_("(");
+    ///TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
     public const string CLOSING_COPY_LINK_TAG = N_(")");
 
     public string get_duplicate_name (string name, int count_increment, int max_length, bool is_link = false)
@@ -962,7 +967,7 @@ namespace PF.FileUtils {
             name_without_suffix = name.slice (0, index_of_suffix);
         }
 
-        int index_of_opening = name_without_suffix.last_index_of (is_link ? _(LINK_TAG) : _(COPY_TAG));
+        int index_of_opening = name_without_suffix.last_index_of (_(OPENING_COPY_LINK_TAG));
         if (index_of_opening < 0) { //TAG not found
             if (index_of_suffix > 0) {
                 name_base = name_without_suffix.slice (0, index_of_suffix);
@@ -1040,11 +1045,15 @@ namespace PF.FileUtils {
                 break;
 
             case 1:
-                result = "%s %s%s".printf (target_name, tag, _(CLOSING_COPY_LINK_TAG));
+                result = "%s %s%s%s".printf (
+                    target_name, _(OPENING_COPY_LINK_TAG), tag, _(CLOSING_COPY_LINK_TAG)
+                );
                 break;
 
             default:
-                result = "%s %s %i%s".printf (target_name, tag, count, _(CLOSING_COPY_LINK_TAG));
+                result = "%s %s%s %i%s".printf (
+                    target_name, _(OPENING_COPY_LINK_TAG), tag, count, _(CLOSING_COPY_LINK_TAG)
+                );
                 break;
         }
 
