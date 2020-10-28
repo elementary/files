@@ -2037,12 +2037,8 @@ get_unique_target_file (GFile *src,
 
     info = g_file_query_info (
         src,
-        g_strjoin (
-            ",",
-            G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
-            G_FILE_ATTRIBUTE_STANDARD_TYPE,
-            NULL
-        ),
+        G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME "," 
+        G_FILE_ATTRIBUTE_STANDARD_TYPE,
         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
         NULL,
         NULL
@@ -2050,7 +2046,7 @@ get_unique_target_file (GFile *src,
 
     if (info != NULL) {
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
-        is_link = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_STANDARD_TYPE) == G_FILE_TYPE_SYMBOLIC_LINK;
+        is_link = g_file_info_get_file_type (info) == G_FILE_TYPE_SYMBOLIC_LINK;
 
         if (editname != NULL) {
             /*TODO Pass correct info to "is_link" parameter*/
