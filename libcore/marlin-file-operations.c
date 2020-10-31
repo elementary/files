@@ -124,447 +124,121 @@ static void scan_sources (GList *files,
 
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
-static char *
-shorten_utf8_string (const char *base, int reduce_by_num_bytes)
+
+static gboolean
+has_invalid_xml_char (char *str)
 {
-    int len;
-    char *ret;
-    const char *p;
+    gunichar c;
 
-    len = strlen (base);
-    len -= reduce_by_num_bytes;
+    while (*str != 0) {
+        c = g_utf8_get_char (str);
+        /* characters XML permits */
+        if (!(c == 0x9 ||
+              c == 0xA ||
+              c == 0xD ||
+              (c >= 0x20 && c <= 0xD7FF) ||
+              (c >= 0xE000 && c <= 0xFFFD) ||
+              (c >= 0x10000 && c <= 0x10FFFF))) {
+            return TRUE;
+        }
+        str = g_utf8_next_char (str);
+    }
+    return FALSE;
+}
 
-    if (len <= 0) {
+static char *
+eel_str_middle_truncate (const char *string,
+                         guint truncate_length)
+{
+    char *truncated;
+    guint length;
+    guint num_left_chars;
+    guint num_right_chars;
+
+    const char delimter[] = "…";
+    const guint delimter_length = strlen (delimter);
+    const guint min_truncate_length = delimter_length + 2;
+
+    if (string == NULL) {
         return NULL;
     }
 
-    ret = g_new (char, len + 1);
-
-    p = base;
-    while (len) {
-        char *next;
-        next = g_utf8_next_char (p);
-        if (next - p > len || *next == '\0') {
-            break;
-        }
-
-        len -= next - p;
-        p = next;
+    /* It doesnt make sense to truncate strings to less than
+     * the size of the delimiter plus 2 characters (one on each
+     * side)
+     */
+    if (truncate_length < min_truncate_length) {
+        return g_strdup (string);
     }
 
-    if (p - base == 0) {
-        g_free (ret);
-        return NULL;
-    } else {
-        memcpy (ret, base, p - base);
-        ret[p - base] = '\0';
-        return ret;
-    }
-}
+    length = g_utf8_strlen (string, -1);
 
-/* Note that we have these two separate functions with separate format
- * strings for ease of localization.
- */
-
-static char *
-get_link_name (const char *name, int count, int max_length)
-{
-    const char *format;
-    char *result;
-    int unshortened_length;
-    gboolean use_count;
-
-    g_assert (name != NULL);
-
-    if (count < 0) {
-        g_warning ("bad count in get_link_name");
-        count = 0;
+    /* Make sure the string is not already small enough. */
+    if (length <= truncate_length) {
+        return g_strdup (string);
     }
 
-    if (count <= 2) {
-        /* Handle special cases for low numbers.
-         * Perhaps for some locales we will need to add more.
-         */
-        switch (count) {
-        default:
-            g_assert_not_reached ();
-            /* fall through */
-        case 0:
-            /* duplicate original file name */
-            format = "%s";
-            break;
-        case 1:
-            /* appended to new link file */
-            format = _("Link to %s");
-            break;
-        case 2:
-            /* appended to new link file */
-            format = _("Another link to %s");
-            break;
-        }
+    /* Find the 'middle' where the truncation will occur. */
+    num_left_chars = (truncate_length - delimter_length) / 2;
+    num_right_chars = truncate_length - num_left_chars - delimter_length;
 
-        use_count = FALSE;
-    } else {
-        /* Handle special cases for the first few numbers of each ten.
-         * For locales where getting this exactly right is difficult,
-         * these can just be made all the same as the general case below.
-         */
-        switch (count % 10) {
-        case 1:
-            /* Localizers: Feel free to leave out the "st" suffix
-             * if there's no way to do that nicely for a
-             * particular language.
-             */
-            format = _("%'dst link to %s");
-            break;
-        case 2:
-            /* appended to new link file */
-            format = _("%'dnd link to %s");
-            break;
-        case 3:
-            /* appended to new link file */
-            format = _("%'drd link to %s");
-            break;
-        default:
-            /* appended to new link file */
-            format = _("%'dth link to %s");
-            break;
-        }
+    truncated = g_new (char, strlen (string) + 1);
 
-        use_count = TRUE;
-    }
+    g_utf8_strncpy (truncated, string, num_left_chars);
+    strcat (truncated, delimter);
+    strcat (truncated, g_utf8_offset_to_pointer  (string, length - num_right_chars));
 
-    if (use_count)
-        result = g_strdup_printf (format, count, name);
-    else
-        result = g_strdup_printf (format, name);
-
-    if (max_length > 0 && (unshortened_length = strlen (result)) > max_length) {
-        char *new_name;
-
-        new_name = shorten_utf8_string (name, unshortened_length - max_length);
-        if (new_name) {
-            g_free (result);
-
-            if (use_count)
-                result = g_strdup_printf (format, count, new_name);
-            else
-                result = g_strdup_printf (format, new_name);
-
-            g_assert (strlen (result) <= max_length);
-            g_free (new_name);
-        }
-    }
-
-    return result;
-}
-
-/* Localizers:
- * Feel free to leave out the st, nd, rd and th suffix or
- * make some or all of them match.
- */
-
-/* localizers: tag used to detect the first copy of a file */
-static const char untranslated_copy_duplicate_tag[] = N_(" (copy)");
-/* localizers: tag used to detect the second copy of a file */
-static const char untranslated_another_copy_duplicate_tag[] = N_(" (another copy)");
-
-/* localizers: tag used to detect the x11th copy of a file */
-static const char untranslated_x11th_copy_duplicate_tag[] = N_("th copy)");
-/* localizers: tag used to detect the x12th copy of a file */
-static const char untranslated_x12th_copy_duplicate_tag[] = N_("th copy)");
-/* localizers: tag used to detect the x13th copy of a file */
-static const char untranslated_x13th_copy_duplicate_tag[] = N_("th copy)");
-
-/* localizers: tag used to detect the x1st copy of a file */
-static const char untranslated_st_copy_duplicate_tag[] = N_("st copy)");
-/* localizers: tag used to detect the x2nd copy of a file */
-static const char untranslated_nd_copy_duplicate_tag[] = N_("nd copy)");
-/* localizers: tag used to detect the x3rd copy of a file */
-static const char untranslated_rd_copy_duplicate_tag[] = N_("rd copy)");
-
-/* localizers: tag used to detect the xxth copy of a file */
-static const char untranslated_th_copy_duplicate_tag[] = N_("th copy)");
-
-#define COPY_DUPLICATE_TAG _(untranslated_copy_duplicate_tag)
-#define ANOTHER_COPY_DUPLICATE_TAG _(untranslated_another_copy_duplicate_tag)
-#define X11TH_COPY_DUPLICATE_TAG _(untranslated_x11th_copy_duplicate_tag)
-#define X12TH_COPY_DUPLICATE_TAG _(untranslated_x12th_copy_duplicate_tag)
-#define X13TH_COPY_DUPLICATE_TAG _(untranslated_x13th_copy_duplicate_tag)
-
-#define ST_COPY_DUPLICATE_TAG _(untranslated_st_copy_duplicate_tag)
-#define ND_COPY_DUPLICATE_TAG _(untranslated_nd_copy_duplicate_tag)
-#define RD_COPY_DUPLICATE_TAG _(untranslated_rd_copy_duplicate_tag)
-#define TH_COPY_DUPLICATE_TAG _(untranslated_th_copy_duplicate_tag)
-
-/* localizers: appended to first file copy */
-static const char untranslated_first_copy_duplicate_format[] = N_("%s (copy)%s");
-/* localizers: appended to second file copy */
-static const char untranslated_second_copy_duplicate_format[] = N_("%s (another copy)%s");
-
-/* localizers: appended to x11th file copy */
-static const char untranslated_x11th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-/* localizers: appended to x12th file copy */
-static const char untranslated_x12th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-/* localizers: appended to x13th file copy */
-static const char untranslated_x13th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-
-/* localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
- * plurals, you can leave the st, nd, rd suffixes out and just make all the translated
- * strings look like "%s (copy %'d)%s".
- */
-
-/* localizers: appended to x1st file copy */
-static const char untranslated_st_copy_duplicate_format[] = N_("%s (%'dst copy)%s");
-/* localizers: appended to x2nd file copy */
-static const char untranslated_nd_copy_duplicate_format[] = N_("%s (%'dnd copy)%s");
-/* localizers: appended to x3rd file copy */
-static const char untranslated_rd_copy_duplicate_format[] = N_("%s (%'drd copy)%s");
-/* localizers: appended to xxth file copy */
-static const char untranslated_th_copy_duplicate_format[] = N_("%s (%'dth copy)%s");
-
-#define FIRST_COPY_DUPLICATE_FORMAT _(untranslated_first_copy_duplicate_format)
-#define SECOND_COPY_DUPLICATE_FORMAT _(untranslated_second_copy_duplicate_format)
-#define X11TH_COPY_DUPLICATE_FORMAT _(untranslated_x11th_copy_duplicate_format)
-#define X12TH_COPY_DUPLICATE_FORMAT _(untranslated_x12th_copy_duplicate_format)
-#define X13TH_COPY_DUPLICATE_FORMAT _(untranslated_x13th_copy_duplicate_format)
-
-#define ST_COPY_DUPLICATE_FORMAT _(untranslated_st_copy_duplicate_format)
-#define ND_COPY_DUPLICATE_FORMAT _(untranslated_nd_copy_duplicate_format)
-#define RD_COPY_DUPLICATE_FORMAT _(untranslated_rd_copy_duplicate_format)
-#define TH_COPY_DUPLICATE_FORMAT _(untranslated_th_copy_duplicate_format)
-
-static char *
-extract_string_until (const char *original, const char *until_substring)
-{
-    char *result;
-
-    g_assert ((int) strlen (original) >= until_substring - original);
-    g_assert (until_substring - original >= 0);
-
-    result = g_malloc (until_substring - original + 1);
-    strncpy (result, original, until_substring - original);
-    result[until_substring - original] = '\0';
-
-    return result;
-}
-
-/* Dismantle a file name, separating the base name, the file suffix and removing any
- * (xxxcopy), etc. string. Figure out the count that corresponds to the given
- * (xxxcopy) substring.
- */
-static void
-parse_previous_duplicate_name (const char *name,
-                               char **name_base,
-                               const char **suffix,
-                               int *count)
-{
-    const char *tag;
-
-    g_assert (name[0] != '\0');
-
-    *suffix = strchr (name + 1, '.');
-    if (*suffix == NULL || (*suffix)[1] == '\0') {
-        /* no suffix */
-        *suffix = "";
-    }
-
-    tag = strstr (name, COPY_DUPLICATE_TAG);
-    if (tag != NULL) {
-        if (tag > *suffix) {
-            /* handle case "foo. (copy)" */
-            *suffix = "";
-        }
-        *name_base = extract_string_until (name, tag);
-        *count = 1;
-        return;
-    }
-
-
-    tag = strstr (name, ANOTHER_COPY_DUPLICATE_TAG);
-    if (tag != NULL) {
-        if (tag > *suffix) {
-            /* handle case "foo. (another copy)" */
-            *suffix = "";
-        }
-        *name_base = extract_string_until (name, tag);
-        *count = 2;
-        return;
-    }
-
-
-    /* Check to see if we got one of st, nd, rd, th. */
-    tag = strstr (name, X11TH_COPY_DUPLICATE_TAG);
-
-    if (tag == NULL) {
-        tag = strstr (name, X12TH_COPY_DUPLICATE_TAG);
-    }
-    if (tag == NULL) {
-        tag = strstr (name, X13TH_COPY_DUPLICATE_TAG);
-    }
-
-    if (tag == NULL) {
-        tag = strstr (name, ST_COPY_DUPLICATE_TAG);
-    }
-    if (tag == NULL) {
-        tag = strstr (name, ND_COPY_DUPLICATE_TAG);
-    }
-    if (tag == NULL) {
-        tag = strstr (name, RD_COPY_DUPLICATE_TAG);
-    }
-    if (tag == NULL) {
-        tag = strstr (name, TH_COPY_DUPLICATE_TAG);
-    }
-
-    /* If we got one of st, nd, rd, th, fish out the duplicate number. */
-    if (tag != NULL) {
-        /* localizers: opening parentheses to match the "th copy)" string */
-        tag = strstr (name, _(" ("));
-        if (tag != NULL) {
-            if (tag > *suffix) {
-                /* handle case "foo. (22nd copy)" */
-                *suffix = "";
-            }
-            *name_base = extract_string_until (name, tag);
-            /* localizers: opening parentheses of the "th copy)" string */
-            if (sscanf (tag, _(" (%'d"), count) == 1) {
-                if (*count < 1 || *count > 1000000) {
-                    /* keep the count within a reasonable range */
-                    *count = 0;
-                }
-                return;
-            }
-            *count = 0;
-            return;
-        }
-    }
-
-
-    *count = 0;
-    if (**suffix != '\0') {
-        *name_base = extract_string_until (name, *suffix);
-    } else {
-        *name_base = g_strdup (name);
-    }
+    return truncated;
 }
 
 static char *
-make_next_duplicate_name (const char *base, const char *suffix, int count, int max_length)
-{
-    const char *format;
-    char *result;
-    int unshortened_length;
-    gboolean use_count;
+custom_basename_from_file (GFile *file) {
+    GFileInfo *info;
+    char *name, *basename, *tmp;
 
-    if (count < 1) {
-        g_warning ("bad count %d in get_duplicate_name", count);
-        count = 1;
+    if (!G_IS_FILE (file)) {
+        g_critical ("Invalid file");
+        return strdup ("");
     }
 
-    if (count <= 2) {
+    info = g_file_query_info (file,
+                              G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
+                              0,
+                              g_cancellable_get_current (),
+                              NULL);
 
-        /* Handle special cases for low numbers.
-         * Perhaps for some locales we will need to add more.
-         */
-        switch (count) {
-        default:
-            g_assert_not_reached ();
-            /* fall through */
-        case 1:
-            format = FIRST_COPY_DUPLICATE_FORMAT;
-            break;
-        case 2:
-            format = SECOND_COPY_DUPLICATE_FORMAT;
-            break;
-
-        }
-
-        use_count = FALSE;
-    } else {
-
-        /* Handle special cases for the first few numbers of each ten.
-         * For locales where getting this exactly right is difficult,
-         * these can just be made all the same as the general case below.
-         */
-
-        /* Handle special cases for x11th - x20th.
-        */
-        switch (count % 100) {
-        case 11:
-            format = X11TH_COPY_DUPLICATE_FORMAT;
-            break;
-        case 12:
-            format = X12TH_COPY_DUPLICATE_FORMAT;
-            break;
-        case 13:
-            format = X13TH_COPY_DUPLICATE_FORMAT;
-            break;
-        default:
-            format = NULL;
-            break;
-        }
-
-        if (format == NULL) {
-            switch (count % 10) {
-            case 1:
-                format = ST_COPY_DUPLICATE_FORMAT;
-                break;
-            case 2:
-                format = ND_COPY_DUPLICATE_FORMAT;
-                break;
-            case 3:
-                format = RD_COPY_DUPLICATE_FORMAT;
-                break;
-            default:
-                /* The general case. */
-                format = TH_COPY_DUPLICATE_FORMAT;
-                break;
-            }
-        }
-
-        use_count = TRUE;
-
+    name = NULL;
+    if (info) {
+        name = g_strdup (g_file_info_get_display_name (info));
+        g_object_unref (info);
     }
 
-    if (use_count)
-        result = g_strdup_printf (format, base, count, suffix);
-    else
-        result = g_strdup_printf (format, base, suffix);
-
-    if (max_length > 0 && (unshortened_length = strlen (result)) > max_length) {
-        char *new_base;
-
-        new_base = shorten_utf8_string (base, unshortened_length - max_length);
-        if (new_base) {
-            g_free (result);
-
-            if (use_count)
-                result = g_strdup_printf (format, new_base, count, suffix);
-            else
-                result = g_strdup_printf (format, new_base, suffix);
-
-            g_assert (strlen (result) <= max_length);
-            g_free (new_base);
+    if (name == NULL) {
+        basename = g_file_get_basename (file);
+        if (g_utf8_validate (basename, -1, NULL)) {
+            name = basename;
+        } else {
+            name = g_uri_escape_string (basename, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
+            g_free (basename);
         }
     }
 
-    return result;
-}
+    /* Some chars can't be put in the markup we use for the dialogs... */
+    if (has_invalid_xml_char (name)) {
+        tmp = name;
+        name = g_uri_escape_string (name, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
+        g_free (tmp);
+    }
 
-static char *
-get_duplicate_name (const char *name, int count_increment, int max_length)
-{
-    char *result;
-    char *name_base;
-    const char *suffix;
-    int count;
+    /* Finally, if the string is too long, truncate it. */
+    if (name != NULL) {
+        tmp = name;
+        name = eel_str_middle_truncate (tmp, MAXIMUM_DISPLAYED_FILE_NAME_LENGTH);
+        g_free (tmp);
+    }
 
-    parse_previous_duplicate_name (name, &name_base, &suffix, &count);
-    result = make_next_duplicate_name (name_base, suffix, count + count_increment, max_length);
 
-    g_free (name_base);
-
-    return result;
+    return name;
 }
 
 #define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
@@ -2349,6 +2023,7 @@ get_unique_target_file (GFile *src,
 {
     const char *editname, *end;
     char *basename, *new_name;
+    gboolean is_link = FALSE;
     GFileInfo *info;
     GFile *dest = NULL;
     int max_length;
@@ -2360,14 +2035,22 @@ get_unique_target_file (GFile *src,
 
     max_length = pf_file_utils_get_max_name_length (dest_dir);
 
-    info = g_file_query_info (src,
-                              G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
-                              0, NULL, NULL);
+    info = g_file_query_info (
+        src,
+        G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME ","
+        G_FILE_ATTRIBUTE_STANDARD_TYPE,
+        G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+        NULL,
+        NULL
+    );
+
     if (info != NULL) {
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
+        is_link = g_file_info_get_file_type (info) == G_FILE_TYPE_SYMBOLIC_LINK;
 
         if (editname != NULL) {
-            new_name = get_duplicate_name (editname, count, max_length);
+            /*TODO Pass correct info to "is_link" parameter*/
+            new_name = pf_file_utils_get_duplicate_name (editname, count, max_length, is_link);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -2380,7 +2063,8 @@ get_unique_target_file (GFile *src,
         basename = g_file_get_basename (src);
 
         if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = get_duplicate_name (basename, count, max_length);
+            /*TODO Pass correct info to "is_link" parameter*/
+            new_name = pf_file_utils_get_duplicate_name (basename, count, max_length, is_link);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -2425,7 +2109,7 @@ get_target_file_for_link (GFile *src,
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
 
         if (editname != NULL) {
-            new_name = get_link_name (editname, count, max_length);
+            new_name = pf_file_utils_get_link_name (editname, count, max_length);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -2439,7 +2123,7 @@ get_target_file_for_link (GFile *src,
         pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
 
         if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = get_link_name (basename, count, max_length);
+            new_name = pf_file_utils_get_link_name (basename, count, max_length);
             pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
@@ -5297,7 +4981,7 @@ retry:
 
                 new_filename = NULL;
                 if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = shorten_utf8_string (filename2, strlen (filename2) - max_length);
+                    new_filename = pf_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
                 }
 
                 if (new_filename == NULL) {
@@ -5306,7 +4990,8 @@ retry:
 
                 g_free (filename2);
             } else {
-                new_filename = get_duplicate_name (filename, count, max_length);
+                /*We are not creating link*/
+                new_filename = pf_file_utils_get_duplicate_name (filename, count, max_length, FALSE);
             }
 
             if (pf_file_utils_make_file_name_valid_for_dest_fs (&new_filename, dest_fs_type)) {
@@ -5330,14 +5015,15 @@ retry:
             if (job->make_dir) {
                 filename2 = g_strdup_printf ("%s %d", filename, ++count);
                 if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = shorten_utf8_string (filename2, strlen (filename2) - max_length);
+                    new_filename = pf_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
                     if (new_filename != NULL) {
                         g_free (filename2);
                         filename2 = new_filename;
                     }
                 }
             } else {
-                filename2 = get_duplicate_name (filename, count++, max_length);
+                /*We are not creating link*/
+                filename2 = pf_file_utils_get_duplicate_name (filename, count++, max_length, FALSE);
             }
             pf_file_utils_make_file_name_valid_for_dest_fs (&filename2, dest_fs_type);
             if (filename_is_utf8) {
