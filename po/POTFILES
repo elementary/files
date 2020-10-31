@@ -3,7 +3,6 @@ src/main.vala
 src/Application.vala
 src/marlin-deep-count.vala
 src/ProgressUIHandler.vala
-src/QuicklistHandler.vala
 src/TextRenderer.vala
 src/ClipboardManager.vala
 src/IconRenderer.vala
