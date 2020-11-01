@@ -102,6 +102,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         var state = button_context.get_state ();
         var is_rtl = Gtk.StateFlags.DIR_RTL in state;
         var scale = widget.scale_factor;
+
         button_context.save ();
         if (pressed) {
             state |= Gtk.StateFlags.ACTIVE;
@@ -113,6 +114,10 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
         cr.restore ();
         cr.save ();
+
+        /* Supress drawing outside widget */
+        cr.rectangle (0.0, 0.0, widget.get_allocated_width (), widget.get_allocated_height ());
+        cr.clip ();
 
         var half_height = height / 2;
         var y_half_height = y + half_height;
@@ -252,9 +257,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             }
         } else {
             cr.save ();
-            /* Supress drawing outside widget */
-            cr.rectangle (0.0, 0.0, widget.get_allocated_width (), widget.get_allocated_height ());
-            cr.clip ();
+
 
             if (icon_to_draw == null) {
                 if (room_for_text) {
