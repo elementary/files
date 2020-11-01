@@ -115,7 +115,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         cr.restore ();
         cr.save ();
 
-        /* Supress drawing outside widget */
+        /* Suppress all drawing outside widget */
         cr.rectangle (0.0, 0.0, widget.get_allocated_width (), widget.get_allocated_height ());
         cr.clip ();
 
@@ -312,7 +312,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             button_context.render_frame (cr, -height / 2, -height / 2, height, height);
             button_context.restore ();
             cr.restore ();
-        } else if (x > height / 4) { /* Avoid drawing outside LH edge of entry */
+        } else {
             cr.save ();
             cr.translate (x - height / 4, y + height / 2);
             cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
