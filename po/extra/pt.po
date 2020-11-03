@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-09-30 22:14+0000\n"
+"PO-Revision-Date: 2020-10-17 11:15+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -44,7 +44,7 @@ msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr "Nova Janela"
+msgstr "Nova janela"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
