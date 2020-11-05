@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-06-01 22:58+0000\n"
+"PO-Revision-Date: 2020-11-01 18:47+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/extra/da/>\n"
 "Language: da\n"
@@ -100,7 +100,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:92
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Fixes:"
-msgstr ""
+msgstr "Rettelser:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix crash when pressing Enter and another key at the same time"
@@ -125,7 +125,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:119
 #: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Other updates:"
-msgstr ""
+msgstr "Andre opdateringer:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
 msgid "\"Personal\" is now \"Bookmarks\""
@@ -170,7 +170,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Paste images into other apps instead of file paths where possible"
-msgstr ""
+msgstr "Indsæt billeder i andre apps i stedet for filstier, hvor det er muligt"
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Paste into a selected folder when using Ctrl + V"
@@ -219,7 +219,7 @@ msgstr "Ret at enhedsikonet nogle gange mangler"
 
 #: data/io.elementary.files.appdata.xml.in.in:131
 msgid "Fix occasional view freeze after renaming"
-msgstr ""
+msgstr "Rettet lejlighedsvis visnings frysning efter omdøbning"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
@@ -231,7 +231,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:134
 msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr ""
+msgstr "Vis ikke fil: // præfiks i menuerne til navigeringsknapper"
 
 #: data/io.elementary.files.appdata.xml.in.in:143
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"

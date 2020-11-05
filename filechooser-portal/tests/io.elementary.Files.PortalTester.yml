@@ -1,0 +1,19 @@
+app-id: io.elementary.Files.PortalTester
+runtime: org.gnome.Platform
+runtime-version: '3.38'
+sdk: org.gnome.Sdk
+command: io.elementary.Files.PortalTester
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  # Wayland access
+  - --socket=wayland
+modules:
+  - name: tester
+    buildsystem: meson
+    sources:
+      - type: file
+        path: meson.build
+      - type: file
+        path: PortalTester.vala
