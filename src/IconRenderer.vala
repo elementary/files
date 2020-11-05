@@ -162,7 +162,7 @@ namespace Marlin {
                 state |= Gtk.StateFlags.INSENSITIVE;
             }
 
-            if (file.is_image () ) {
+            if (file.is_image ()) {
                 style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
                 style_context.add_class (Granite.STYLE_CLASS_CARD);
             }
@@ -211,7 +211,7 @@ namespace Marlin {
 
                 if (prelit) {
                     /* Save position of icon that is being hovered */
-                    hover_rect = draw_rect;
+                    hover_rect = cell_area;
                     hover_helper_rect = helper_rect;
                 }
             }

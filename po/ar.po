@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 12:15+0000\n"
+"POT-Creation-Date: 2020-11-05 11:52+0000\n"
 "PO-Revision-Date: 2020-05-16 11:10+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -1201,7 +1201,7 @@ msgstr " ("
 msgid ")"
 msgstr ""
 
-#: libcore/gof-directory-async.vala:690
+#: libcore/gof-directory-async.vala:688
 msgid "Server did not respond within time limit"
 msgstr "الخادم لم يستجب في الوقت المحدد"
 

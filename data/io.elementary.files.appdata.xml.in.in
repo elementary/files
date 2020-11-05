@@ -64,9 +64,10 @@
         <ul>
           <li>Discontinue colorization and highlighting of focused and hovered icons</li>
           <li>Grey background for selected items in Icon View</li>   
+          <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
         </ul>
       </description>
-    </release>          
+    </release>
     <release version="4.5.0" date="2020-08-11" urgency="medium">
       <description>
         <p>Improvements:</p>
