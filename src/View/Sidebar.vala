@@ -977,8 +977,15 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             if (yield get_filesystem_space (root, update_cancellable, out fs_capacity, out fs_free)) {
                 if (fs_capacity > 0) {
                     var used_string = _("%s free").printf (format_size (fs_free));
-                    var size_string = _("%s used of %s").printf (format_size (fs_capacity - fs_free), format_size (fs_capacity));
-                    var tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (used_string, size_string);
+                    var size_string = _("%s used of %s").printf (
+                        format_size (fs_capacity - fs_free),
+                        format_size (fs_capacity)
+                    );
+
+                    var tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (
+                        used_string,
+                        size_string
+                    );
 
                     Gtk.TreeIter? itr = null;
                     store.get_iter (out itr, rowref.get_path ());
@@ -1005,17 +1012,9 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
             device = context.get_device ();
             device.get_position (null, out x, out y);
 
-#if HAVE_UNITY
-
-#if HAVE_PLANK_0_11
             Plank.PoofWindow poof_window;
             poof_window = Plank.PoofWindow.get_default ();
-#else
-            Plank.Widgets.PoofWindow? poof_window = null;
-            poof_window = Plank.Widgets.PoofWindow.get_default ();
-#endif
             poof_window.show_at (x, y);
-#endif
 
             if (drag_row_ref != null) {
                 Gtk.TreeIter iter;
