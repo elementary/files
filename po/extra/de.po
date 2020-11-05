@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-07-12 23:12+0000\n"
-"Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
+"PO-Revision-Date: 2020-10-27 21:14+0000\n"
+"Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -77,30 +77,31 @@ msgstr "Verbesserungen:"
 #, fuzzy
 #| msgid "Bookmark menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr "Lesezeichen-Menü-Option für Netzwerk-Verbindungen in der Seitenleiste"
+msgstr "Lesezeichen-Menüoption für Netzwerkverbindungen in der Seitenleiste"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr "Dateiinfo-Overlay auch in der Listenansicht anzeigen"
+msgstr "Anzahl der Objekte im Ordner in der Listenansicht anzeigen"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
+#, fuzzy
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
+"Vorschauen werden jetzt standardmäßig  sowohl für Objekte auf lokal "
+"angemeldeten MTP- und PTP-Geräten als auch auf Netzwerkgeräten angezeigt"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
+"Eigenschaftenfenster: Der Dateiname kann auch dann kopiert werden, wenn er "
+"nicht geändert werden kann"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Verbessertes Styling für die Laufwerkspeicher-Anzeigebalken"
+msgstr "Verbesserte Anzeige der Minihilfe  für Geräte in der Seitenleiste"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:92
@@ -111,20 +112,27 @@ msgstr "Korrekturen:"
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr ""
+"Absturz in dem Fall, dass die Eingabetaste und eine weitere Taste "
+"gleichzeitig gedrückt wurden, behoben"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "Fehler in der Pfadleiste in Fällen mit »~« and »..« im Pfad behoben"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
+"Pfadleiste in der Dateiauswahl führt nicht länger zu einem Absturz, wenn von "
+"einem Flatpak aufgerufen"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
+#, fuzzy
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
+"git-Status für Repositorys auf FUSE-Dateisystemen wird nicht mehr angezeigt, "
+"um mögliches Blockieren zu verhindern"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -135,7 +143,7 @@ msgstr "Weitere Aktualisierungen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr ""
+msgstr "»Persönlich« heißt jetzt »Lesezeichen«"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99

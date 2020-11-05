@@ -22,7 +22,7 @@
 */
 
 public class Marlin.Progress.InfoWidget : Gtk.Grid {
-    public PF.Progress.Info info { get; construct; }
+    public unowned PF.Progress.Info info { get; construct; }
 
     private Gtk.Label details;
     private Gtk.ProgressBar progress_bar;

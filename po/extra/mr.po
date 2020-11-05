@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 17:28+0000\n"
-"PO-Revision-Date: 2020-05-31 21:38+0000\n"
+"PO-Revision-Date: 2020-10-06 17:12+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,58 +62,60 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:63
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Improvements:"
-msgstr ""
+msgstr "सुधारणा:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
+msgstr "साइडबारमधील नेटवर्क आरोहितांसाठी बुकमार्क मेनू पर्याय"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
-#, fuzzy
-#| msgid "Show file info overlay in List View as well"
 msgid "Show folder item count in List View"
-msgstr "फाईल माहिती आच्छादन सूची दृश्यामध्येही दाखवा"
+msgstr "सूची दृश्यात फोल्डर आयटमची संख्या दर्शवा"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
+"आता डीफॉल्टनुसार स्थानिकपणे आरोहित एमटीपी आणि पीटीपी डिव्हाइस तसेच नेटवर्क "
+"स्थानांवर लघुप्रतिमा दर्शविते"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
+"प्रॉपर्टीस विंडो: जेव्हा फाइल संपादित केली जाऊ शकत नाही तेव्हा त्या फाईलचे ना"
+"व कॉपी करण्याची परवानगी द्या"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
-#, fuzzy
-#| msgid "Improved styling for disk space bars"
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "डिस्क स्पेस बारसाठी सुधारित स्टाईलिंग"
+msgstr "साइडबारमधील उपकरणांसाठी सुधारित टूलटिप स्वरूपन"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:92
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Fixes:"
-msgstr ""
+msgstr "निराकारणे:"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr ""
+msgstr "एंटर आणि त्याच वेळी दुसरी की दाबताना क्रॅश निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
+msgstr "पथात \"\"~\" आणि \"..\" चे पथबार हाताळणीचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
-msgstr ""
+msgstr "फ्लॅटपाकवरून आवाहन केल्यावर फाईलचूझर पथबार यापुढे क्रॅश होणार नाही"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
+"संभाव्य अवरोधित करणे टाळण्यासाठी FUSE फाइलप्रणालीवरील रेपॉजिटरींसाठी गिट "
+"स्थिती दर्शवू नका"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -124,7 +126,7 @@ msgstr "अन्य अपडेट्स:"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr ""
+msgstr "\"पर्सनल\" आता \"बुकमार्क\" आहे"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:99
@@ -148,28 +150,30 @@ msgstr "अद्ययावत भाषांतर"
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
-msgstr ""
+msgstr "डिस्क खूप भरली की चेतावणी आणि त्रुटीयुक्त रंगाच्या डिस्क वापर बार जोडा"
 
 #: data/io.elementary.files.appdata.xml.in.in:90
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
+"जेव्हा फाइलनाव स्तंभ रूंदी उपलब्ध जागा ओलांडते तेव्हा विंडोचा आकार बदलण्यास "
+"प्रतिबंधित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Fix handling of filenames containing the # character"
-msgstr ""
+msgstr "# वर्ण असलेल्या फाईलनावे हाताळण्याचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:95
 msgid "Fix regressions regarding pathbar context menus and clicking"
-msgstr ""
+msgstr "पथबार संदर्भ मेनू आणि क्लिकच्या संदर्भात निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Paste images into other apps instead of file paths where possible"
-msgstr ""
+msgstr "शक्य तेथे फाइल पथऐवजी इतर अॅप्समध्ये प्रतिमा पेस्ट करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
+msgstr "Ctrl + V वापरताना निवडलेल्या फोल्डरमध्ये पेस्ट करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Show file info overlay in List View as well"
@@ -177,7 +181,7 @@ msgstr "फाईल माहिती आच्छादन सूची द�
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Traverse search results with Tab key"
-msgstr ""
+msgstr "टॅब की सह आक्रमक शोध परिणाम"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Show an error message when attempting to open trashed files"
@@ -195,11 +199,11 @@ msgstr "फाइल दुरुस्तीच्या वेळा दर्
 
 #: data/io.elementary.files.appdata.xml.in.in:116
 msgid "Fix size of restored tiled window"
-msgstr ""
+msgstr "पुनर्संचयित टाइल केलेल्या विंडोचे आकार निश्चित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:117
 msgid "Fix color tags disappearing when thumbnails hidden"
-msgstr ""
+msgstr "लघुप्रतिमा लपवताना रंग टॅग अदृश्य करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:127
 #: data/io.elementary.files.appdata.xml.in.in:141
