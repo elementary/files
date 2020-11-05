@@ -545,9 +545,11 @@ namespace PF.FileUtils {
 
             case FileAttribute.TRASH_DELETION_DATE:
                 var deletion_date = info.get_attribute_string (attr);
-                var tv = TimeVal ();
-                if (deletion_date != null && !tv.from_iso8601 (deletion_date)) {
-                    dt = new DateTime.from_timeval_local (tv);
+                if (deletion_date != null) {
+                    dt = new DateTime.from_iso8601 (deletion_date, new TimeZone.local ());
+                    if (dt == null) {
+                        critical ("TRASH_DELETION_DATE: %s is not a valid ISO8601 datetime", deletion_date);
+                    }
                 }
 
                 break;
@@ -934,6 +936,152 @@ namespace PF.FileUtils {
                 time_unit = hours;
                 result = ngettext ("approximately %'d hour", "approximately %'d hours", hours).printf (hours);
             }
+        }
+
+        return result;
+    }
+
+    ///TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
+    public const string COPY_TAG = N_("copy");
+    ///TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
+    public const string LINK_TAG = N_("link");
+    ///TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
+    public const string OPENING_COPY_LINK_TAG = N_("(");
+    ///TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
+    public const string CLOSING_COPY_LINK_TAG = N_(")");
+
+    public string get_duplicate_name (string name, int count_increment, int max_length, bool is_link = false)
+    requires (count_increment > 0 && name != "") {
+
+        string name_base, suffix, result;
+        int count;
+
+        parse_previous_duplicate_name (name, is_link, out name_base, out suffix, out count);
+
+        if (is_link) {
+            result = get_link_name (name_base, count + count_increment, max_length);
+        } else {
+            result = get_copy_name (name_base, suffix, count + count_increment, max_length);
+        }
+
+        return result;
+    }
+
+    private void parse_previous_duplicate_name (
+        string name, bool is_link, out string name_base, out string suffix, out int count
+    ) {
+
+        suffix = "";
+        count = 0;
+
+        string name_without_suffix = name;
+        var last_index = name.length - 1;
+
+        /* Ignore suffix for links */
+        var index_of_suffix = is_link ? -1 : name.last_index_of (".");
+
+        /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
+        var max_extension_length = 4;
+        if (index_of_suffix >= last_index - max_extension_length &&
+            index_of_suffix < last_index) {
+
+            suffix = name.slice (index_of_suffix, name.length);
+            name_without_suffix = name.slice (0, index_of_suffix);
+        }
+
+        int index_of_opening = name_without_suffix.last_index_of (_(OPENING_COPY_LINK_TAG));
+        if (index_of_opening < 0) { //TAG not found
+            if (index_of_suffix > 0) {
+                name_base = name_without_suffix.slice (0, index_of_suffix);
+                return;
+            } else {
+                name_base = name_without_suffix;
+            }
+            return;
+        } else {
+            name_base = name.slice (0, index_of_opening)._chomp ();
+        }
+
+        //Its easier to use reverse string
+        var reverse_base = name_without_suffix.reverse ();
+        //Limit search to copy format. Digits in this range must be the count
+        int limit = name_without_suffix.length - 1 - index_of_opening;
+
+        unichar chr = name_without_suffix.get_char ();
+        int index = 0;
+        while (index < limit && !chr.isdigit ()) {
+            reverse_base.get_next_char (ref index, out chr);
+        }
+
+        int multiplier = 1;
+        while (index < limit && chr.isdigit ()) {
+            count += chr.digit_value () * multiplier;
+            //Number is reversed so each subsequent digit represents another factor of ten
+            multiplier *= 10;
+            reverse_base.get_next_char (ref index, out chr);
+        }
+
+        if (count == 0) { //We do not say (copy 1), just (copy)
+            count = 1;
+        }
+    }
+
+    public string shorten_utf8_string (string base_string, int reduce_by_num_bytes) {
+        var target_length = base_string.length - reduce_by_num_bytes;
+        if (target_length <= 0) {
+            return "";
+        }
+
+        var sb = new StringBuilder.sized (target_length);
+        sb.insert_len (0, base_string, target_length);
+
+        var valid_string = sb.str.make_valid ();
+        if (valid_string.length <= target_length) {
+            return valid_string;
+        } else {
+            return shorten_utf8_string (base_string, reduce_by_num_bytes + 1);
+        }
+    }
+
+    /* FileName (link)
+     * FileName (link 2)
+     * etc
+    */
+    public string get_link_name (string target_name, int count, int max_length = -1)
+    requires (count >= 0) {
+        return get_link_or_copy_name (target_name, true, count, max_length);
+    }
+
+    public string get_copy_name (string base_name, string suffix, int count, int max_length = -1)
+    requires (count >= 0) {
+        return get_link_or_copy_name (base_name, false, count, max_length) + suffix;
+    }
+
+    private string get_link_or_copy_name (string target_name, bool is_link, int count, int max_length) {
+        string result = "";
+        var tag = is_link ? _(LINK_TAG) : _(COPY_TAG);
+        switch (count) {
+            case 0:
+                //First link to or copy of something in a different folder has same name as source
+                result = target_name;
+                break;
+
+            case 1:
+                result = "%s %s%s%s".printf (
+                    target_name, _(OPENING_COPY_LINK_TAG), tag, _(CLOSING_COPY_LINK_TAG)
+                );
+                break;
+
+            default:
+                result = "%s %s%s %i%s".printf (
+                    target_name, _(OPENING_COPY_LINK_TAG), tag, count, _(CLOSING_COPY_LINK_TAG)
+                );
+
+                break;
+        }
+
+        if (max_length >= 0 && result.length > max_length) {
+            result = shorten_utf8_string (result, result.length - max_length);
         }
 
         return result;

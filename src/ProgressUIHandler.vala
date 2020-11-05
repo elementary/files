@@ -31,6 +31,8 @@ public class Marlin.Progress.UIHandler : Object {
     private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
     private Gtk.Application application;
+    private bool launcher_progress_visible = false;
+    private bool can_show_launcher_progress = true;
 
     construct {
         application = (Gtk.Application) GLib.Application.get_default ();
@@ -199,11 +201,30 @@ public class Marlin.Progress.UIHandler : Object {
 
     private void update_launcher_entry (PF.Progress.Info info) {
         if (this.active_infos > 0) {
-            Granite.Services.Application.set_progress_visible (true);
-            launcher_progress_changed ();
+            /* Don't keep trying to show launcher if already visible or failed to show */
+            if (!launcher_progress_visible && can_show_launcher_progress) {
+                Granite.Services.Application.set_progress_visible.begin (true, (obj, res) => {
+                    try {
+                        /* According to Granite code this always returns `true`? Test anyway */
+                        if (Granite.Services.Application.set_progress_visible.end (res)) {
+                            launcher_progress_visible = true;
+                            launcher_progress_changed ();
+                        } else {
+                            can_show_launcher_progress = false;
+                        }
+                    } catch (Error e) {
+                        can_show_launcher_progress = false;
+                        debug ("Could not set progress visible - %s", e.message);
+                    }
+                });
+            } else if (launcher_progress_visible) {
+                launcher_progress_changed ();
+            }
         } else {
-            Granite.Services.Application.set_progress_visible (false);
-
+            launcher_progress_visible = false;
+            // Try again for next operation in case temporary problem
+            can_show_launcher_progress = true;
+            Granite.Services.Application.set_progress_visible.begin (false);
         }
     }
 
@@ -237,6 +258,6 @@ public class Marlin.Progress.UIHandler : Object {
             progress = 1.0;
         }
 
-        Granite.Services.Application.set_progress (progress);
+        Granite.Services.Application.set_progress.begin (progress);
     }
 }
