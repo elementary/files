@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 12:15+0000\n"
+"POT-Creation-Date: 2020-11-05 11:52+0000\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -1181,7 +1181,7 @@ msgstr " (สำเนาที่"
 msgid ")"
 msgstr ""
 
-#: libcore/gof-directory-async.vala:690
+#: libcore/gof-directory-async.vala:688
 msgid "Server did not respond within time limit"
 msgstr ""
 
