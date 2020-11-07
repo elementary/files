@@ -269,14 +269,18 @@ namespace Marlin.View {
             if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
                     /// TRANSLATORS: %u will be substituted by the number of sub folders
-                    str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
-                    label += str.printf (deep_counter.dirs_count);
+                    str = ngettext (_("%u sub-folder, ").printf (deep_counter.dirs_count),
+                                    _("%u sub-folders, ").printf (deep_counter.dirs_count),
+                                    deep_counter.dirs_count);
+                    label += str;
                 }
 
                 if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
                     /// TRANSLATORS: %u will be substituted by the number of readable files
-                    str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
-                    label += str.printf (deep_counter.files_count);
+                    str = ngettext (_("%u file, ").printf (deep_counter.files_count),
+                                    _("%u files, ").printf (deep_counter.files_count),
+                                    deep_counter.files_count);
+                    label += str;
                 }
 
                 if (deep_counter.file_not_read == 0) {
@@ -292,8 +296,10 @@ namespace Marlin.View {
                     }
                     label += ") ";
                     /// TRANSLATORS: %u will be substituted by the number of unreadable files
-                    str = ngettext (_("%u file not readable"), _("%u files not readable"), deep_counter.file_not_read);
-                    label += str.printf (deep_counter.file_not_read);
+                    str = ngettext (_("%u file not readable").printf (deep_counter.file_not_read),
+                                    _("%u files not readable").printf (deep_counter.file_not_read),
+                                    deep_counter.file_not_read);
+                    label += str;
                 }
             }
         }
