@@ -178,15 +178,6 @@ public class Async : Object {
         cancellable.cancel ();
         cancellable = new Cancellable ();
 
-        if (is_recent) {
-            if (!GOF.Preferences.get_default ().remember_history) {
-                state = State.NOT_LOADED;
-                can_load = false;
-                done_loading ();
-                return;
-            }
-        }
-
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
             list_cached_files (file_loaded_func);
@@ -430,6 +421,13 @@ public class Async : Object {
     private async void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
         debug ("make ready");
         can_load = ready;
+
+        if (is_recent) {
+            if (!GOF.Preferences.get_default ().remember_history) {
+                state = State.NOT_LOADED;
+                can_load = false;
+            }
+        }
 
         if (!can_load) {
             debug ("Cannot load %s.  Connected %s, Mounted %s, Exists %s", file.uri,
