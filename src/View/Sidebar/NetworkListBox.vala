@@ -30,7 +30,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
 
     construct {
         var volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.mount_added.connect (mount_added);
+        volume_monitor.mount_added.connect (bookmark_mount_if_not_native_and_not_shadowed);
     }
 
     private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon) {
@@ -53,36 +53,25 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         //TODO Create a new class of NetworkPluginRow subclassed from NetworkRow
     }
 
-    private void add_all_network_mounts () {
-        foreach (Mount mount in VolumeMonitor.@get ().get_mounts ()) {
-            add_network_mount (mount);
-        }
-    }
-
-    private void add_network_mount (Mount mount) {
-        if (mount.is_shadowed ()) {
+    private void bookmark_mount_if_not_native_and_not_shadowed (Mount mount) {
+        if (mount.is_shadowed () || mount.get_root ().is_native ()) {
             return;
-        }
+        };
 
         var volume = mount.get_volume ();
+        string? uuid = null;
         if (volume != null) {
-            return;
+            uuid = volume.get_uuid ();
+        } else {
+            uuid = mount.get_uuid ();
         }
-        var root = mount.get_root ();
-        if (!root.is_native ()) {
-            /* show mounted volume in sidebar */
-            var device_label = root.get_basename ();
-            if (device_label != mount.get_name ()) {
-                ///TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-                device_label = _("%s on %s").printf (device_label, mount.get_name ());
-            }
 
-            add_bookmark (device_label, mount.get_default_location ().get_uri (), mount.get_icon ());
-        }
-    }
-
-    private void mount_added (Mount mount) {
-        add_network_mount (mount);
+        add_bookmark (
+            mount.get_name (),
+            mount.get_default_location ().get_uri (),
+            mount.get_icon ()
+        );
+        //Show extra info in tooltip
     }
 
     public void refresh () {
@@ -92,7 +81,9 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
             return;
         }
 
-        add_all_network_mounts ();
+        foreach (Mount mount in VolumeMonitor.@get ().get_mounts ()) {
+            bookmark_mount_if_not_native_and_not_shadowed (mount);
+        }
 
         var row = add_bookmark (
             _("Entire Network"),
