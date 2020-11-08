@@ -256,7 +256,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         add_extra_menu_items (menu_builder);
 
-
         if (menu_model != null) {
             menu_builder
                 .build_from_model (menu_model, action_group_namespace, action_group)
@@ -342,9 +341,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             if (res == Gtk.DragResult.NO_TARGET) {
                 Gdk.Window app_window = list.get_window ().get_effective_toplevel ();
                 Gdk.Window drag_window = ctx.get_drag_window ();
-
-
                 Gdk.Rectangle app_rect, drag_rect, intersect_rect;
+
                 app_window.get_frame_extents (out app_rect);
                 drag_window.get_frame_extents (out drag_rect);
 

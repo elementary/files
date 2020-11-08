@@ -132,15 +132,14 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     private void bookmark_stoppable_or_removeable_drive_if_without_volumes (Drive drive) {
-    /* If the drive has no mountable volumes and we cannot detect media change.. we
-     * display the drive in the sidebar so the user can manually poll the drive by
-     * right clicking and selecting "Rescan..."
-     *
-     * This is mainly for drives like floppies where media detection doesn't
-     * work.. but it's also for human beings who like to turn off media detection
-     * in the OS to save battery juice.
-     */
-
+        /* If the drive has no mountable volumes and we cannot detect media change.. we
+         * display the drive in the sidebar so the user can manually poll the drive by
+         * right clicking and selecting "Rescan..."
+         *
+         * This is mainly for drives like floppies where media detection doesn't
+         * work.. but it's also for human beings who like to turn off media detection
+         * in the OS to save battery juice.
+         */
 
         if (drive.get_volumes () == null &&
             drive.can_stop () || (drive.is_media_removable () && !drive.is_media_check_automatic ())) {

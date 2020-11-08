@@ -154,7 +154,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         add_device_tooltip.begin ();
 
         eject_button.clicked.connect (() => {
-                eject ();
+            eject ();
         });
     }
 
@@ -281,7 +281,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = drive.stop.end (res);
                         } catch (Error e) {
-
+                            warning ("Could not stop drive %s - %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -299,7 +299,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = drive.eject_with_operation.end (res);
                         } catch (Error e) {
-
+                            warning ("Could not eject drive %s - %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
                             if (!mounted) {

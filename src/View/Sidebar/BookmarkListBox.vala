@@ -53,21 +53,21 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     }
 
     private SidebarItemInterface? insert_bookmark (string label,
-                                                      string uri,
-                                                      Icon gicon,
-                                                      int index,
-                                                      bool pinned = false,
-                                                      bool permanent = false) {
+                                                   string uri,
+                                                   Icon gicon,
+                                                   int index,
+                                                   bool pinned = false,
+                                                   bool permanent = false) {
+
+        if (has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
+            return null;
+        }
 
         var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
-        if (!has_uri (uri, null)) { //Should duplicate uris be allowed? Or duplicate labels forbidden?
-            if (index >= 0) {
-                insert (row, index);
-            } else {
-                add (row);
-            }
+        if (index >= 0) {
+            insert (row, index);
         } else {
-            return null;
+            add (row);
         }
 
         return row;
@@ -132,7 +132,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 Granite.markup_accel_tooltip ({"<Alt>R"}, _("View the list of recently used files"))
             );
         }
-
 
         foreach (Marlin.Bookmark bm in bookmark_list.list) {
             row = add_bookmark (bm.label, bm.uri, bm.get_icon ());

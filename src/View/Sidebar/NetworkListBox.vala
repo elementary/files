@@ -58,14 +58,6 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
             return;
         };
 
-        var volume = mount.get_volume ();
-        string? uuid = null;
-        if (volume != null) {
-            uuid = volume.get_uuid ();
-        } else {
-            uuid = mount.get_uuid ();
-        }
-
         add_bookmark (
             mount.get_name (),
             mount.get_default_location ().get_uri (),

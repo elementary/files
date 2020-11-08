@@ -112,7 +112,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
-        //Do not refresh already refreshing or if will be reloaded anyway
+        //Do not refresh if already refreshing or if will be reloaded anyway
         if (loading || reload_timeout_id > 0) {
             return;
         }
@@ -175,8 +175,8 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
     public bool remove_item_by_id (uint32 item_id) {
         // We do not know which listbox the row is in so try remove from each in turn
         return bookmark_listbox.remove_item_by_id (item_id) ||
-            device_listbox.remove_item_by_id (item_id) ||
-            network_listbox.remove_item_by_id (item_id);
+               device_listbox.remove_item_by_id (item_id) ||
+               network_listbox.remove_item_by_id (item_id);
     }
 
     uint sync_timeout_id = 0;
