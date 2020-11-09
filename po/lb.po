@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 12:15+0000\n"
+"POT-Creation-Date: 2020-11-05 11:52+0000\n"
 "PO-Revision-Date: 2015-12-21 13:47+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Luxembourgish <lb@li.org>\n"
@@ -1158,7 +1158,7 @@ msgstr ""
 msgid ")"
 msgstr ""
 
-#: libcore/gof-directory-async.vala:690
+#: libcore/gof-directory-async.vala:688
 msgid "Server did not respond within time limit"
 msgstr ""
 

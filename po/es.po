@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 12:15+0000\n"
-"PO-Revision-Date: 2020-08-13 15:20+0000\n"
+"POT-Creation-Date: 2020-11-05 11:52+0000\n"
+"PO-Revision-Date: 2020-11-03 10:15+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
 ">\n"
@@ -1144,29 +1144,25 @@ msgstr[1] "aproximadamente %'d horas"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:923
-#, fuzzy
-#| msgid " (copy)"
 msgid "copy"
-msgstr " (copia)"
+msgstr "copia"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:925
 msgid "link"
-msgstr ""
+msgstr "enlace"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:927
-#, fuzzy
-#| msgid " ("
 msgid "("
-msgstr " ("
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:929
 msgid ")"
-msgstr ""
+msgstr ")"
 
-#: libcore/gof-directory-async.vala:690
+#: libcore/gof-directory-async.vala:688
 msgid "Server did not respond within time limit"
 msgstr "El servidor no ha respondido dentro del tiempo límite"
 
@@ -1935,10 +1931,8 @@ msgid "Below This Folder"
 msgstr "En esta carpeta"
 
 #: libwidgets/View/SearchResults.vala:287
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
-msgstr "Usados recientemente"
+msgstr "Utilizados recientemente"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
