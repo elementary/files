@@ -147,7 +147,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         icon_label_grid = new Gtk.Grid () {
             column_spacing = 6
         };
-        icon_label_grid.add (icon);
+        icon_label_grid.attach (icon, 0, 0, 1, 2);
         icon_label_grid.add (label_stack);
 
         var event_box = new Gtk.EventBox () {

@@ -21,7 +21,7 @@
  */
 
 public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
-    private static Gtk.CssProvider levelbar_provider;
+    private static Gtk.CssProvider devicerow_provider;
 
     private Gtk.Stack mount_eject_stack;
     private Gtk.Revealer mount_eject_revealer;
@@ -103,19 +103,20 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     }
 
     static construct {
-        levelbar_provider = new Gtk.CssProvider ();
-        levelbar_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
+        devicerow_provider = new Gtk.CssProvider ();
+        devicerow_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
     }
 
     construct {
         var eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
             tooltip_text = _("Eject “%s”").printf (custom_name)
         };
-        eject_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         mount_eject_spinner = new Gtk.Spinner ();
 
         mount_eject_stack = new Gtk.Stack () {
+            margin_start = 6,
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
         mount_eject_stack.add_named (eject_button, "eject");
@@ -129,7 +130,6 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         mount_eject_revealer.add (mount_eject_stack);
         mount_eject_revealer.reveal_child = false;
 
-        content_grid.column_spacing = 6;
         content_grid.attach (mount_eject_revealer, 1, 0);
 
         storage = new Gtk.LevelBar () {
@@ -139,9 +139,9 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
         storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
         storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
-        storage.get_style_context ().add_provider (levelbar_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        storage.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        icon_label_grid.attach (storage, 1, 1, 1, 1);
+        icon_label_grid.attach (storage, 1, 1);
 
         show_all ();
 
