@@ -369,14 +369,15 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     /* Set up as a drag destination. */
     private void set_up_drop () {
-        drop_revealer = new Gtk.Revealer () {
-            transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN,
-            reveal_child = false
-        };
-
         var drop_revealer_child = new Gtk.Label ("");
+        drop_revealer_child.get_style_context ().add_class (Gtk.STYLE_CLASS_DND);
+
+        drop_revealer = new Gtk.Revealer () {
+            transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
+        };
         drop_revealer.add (drop_revealer_child);
         drop_revealer.show_all ();
+
         content_grid.attach (drop_revealer, 0, 1);
 
         Gtk.drag_dest_set (
