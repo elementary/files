@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-10 09:31+0000\n"
-"PO-Revision-Date: 2020-10-30 00:15+0000\n"
+"PO-Revision-Date: 2020-11-12 18:15+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -1954,10 +1954,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libwidgets/Resources.vala:62
-#, fuzzy
-#| msgid "AFP"
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libwidgets/Resources.vala:63
 msgid "DAV"
@@ -1989,7 +1987,7 @@ msgstr "MTP"
 
 #: libwidgets/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "GPHOTO2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
