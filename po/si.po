@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 12:15+0000\n"
+"POT-Creation-Date: 2020-11-10 09:31+0000\n"
 "PO-Revision-Date: 2018-06-10 00:11+0000\n"
 "Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
 "Language-Team: Sinhala <https://weblate.elementary.io/projects/files/files/"
@@ -220,7 +220,7 @@ msgstr[1] ""
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:911
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:933
 #, c-format
 msgid "%s, %s"
 msgstr ""
@@ -250,7 +250,7 @@ msgid "Disk Properties"
 msgstr ""
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:68
+#: libwidgets/Resources.vala:73
 msgid "File System"
 msgstr ""
 
@@ -576,7 +576,7 @@ msgstr ""
 msgid "View the list of recently used files"
 msgstr ""
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr ""
 
@@ -592,7 +592,7 @@ msgstr ""
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr ""
 
@@ -1076,51 +1076,51 @@ msgstr ""
 msgid "The item cannot be restored from trash"
 msgstr ""
 
-#: libcore/FileUtils.vala:497
+#: libcore/FileUtils.vala:516
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:588
+#: libcore/FileUtils.vala:607
 #, c-format
 msgid "Today at %s"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:596
+#: libcore/FileUtils.vala:615
 #, c-format
 msgid "Yesterday at %s"
 msgstr ""
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:604
+#: libcore/FileUtils.vala:623
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:900
+#: libcore/FileUtils.vala:922
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/FileUtils.vala:904 libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:926 libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:933
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/FileUtils.vala:915
+#: libcore/FileUtils.vala:937
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1128,26 +1128,26 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:945
 msgid "copy"
 msgstr ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:947
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:949
 msgid "("
 msgstr ""
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:929
+#: libcore/FileUtils.vala:951
 msgid ")"
 msgstr ""
 
-#: libcore/gof-directory-async.vala:690
+#: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -1891,36 +1891,44 @@ msgstr ""
 msgid "Files"
 msgstr "ගොනු"
 
-#: libwidgets/Resources.vala:58
+#: libwidgets/Resources.vala:61
 msgid "AFP"
 msgstr ""
 
-#: libwidgets/Resources.vala:59
-msgid "DAV"
-msgstr ""
-
-#: libwidgets/Resources.vala:60
-msgid "DAVS"
-msgstr ""
-
-#: libwidgets/Resources.vala:61
-msgid "FTP"
+#: libwidgets/Resources.vala:62
+msgid "AFC"
 msgstr ""
 
 #: libwidgets/Resources.vala:63
-msgid "SFTP"
+msgid "DAV"
 msgstr ""
 
 #: libwidgets/Resources.vala:64
-msgid "SMB"
+msgid "DAVS"
 msgstr ""
 
-#: libwidgets/Resources.vala:66
-msgid "Recent"
+#: libwidgets/Resources.vala:65
+msgid "FTP"
 msgstr ""
 
 #: libwidgets/Resources.vala:67
+msgid "SFTP"
+msgstr ""
+
+#: libwidgets/Resources.vala:68
+msgid "SMB"
+msgstr ""
+
+#: libwidgets/Resources.vala:70
+msgid "Recent"
+msgstr ""
+
+#: libwidgets/Resources.vala:71
 msgid "MTP"
+msgstr ""
+
+#: libwidgets/Resources.vala:72
+msgid "GPHOTO2"
 msgstr ""
 
 #: plugins/pantheon-files-trash/plugin.vala:19

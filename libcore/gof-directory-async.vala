@@ -129,7 +129,8 @@ public class Async : Object {
         is_trash = PF.FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
         //Try lifting requirement for info on remote connections
-        is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
+        //TODO Not sure whether the afc protocol (i-phone) is appropriate here. Safer to assume it is.
+        is_no_info = ("cdda mtp gphoto2 ssh sftp afp afc dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
         /* Previously, mtp protocol had problems launching files but this currently works
@@ -177,15 +178,6 @@ public class Async : Object {
 
         cancellable.cancel ();
         cancellable = new Cancellable ();
-
-        if (is_recent) {
-            if (!GOF.Preferences.get_default ().remember_history) {
-                state = State.NOT_LOADED;
-                can_load = false;
-                done_loading ();
-                return;
-            }
-        }
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
@@ -430,6 +422,13 @@ public class Async : Object {
     private async void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
         debug ("make ready");
         can_load = ready;
+
+        if (is_recent) {
+            if (!GOF.Preferences.get_default ().remember_history) {
+                state = State.NOT_LOADED;
+                can_load = false;
+            }
+        }
 
         if (!can_load) {
             debug ("Cannot load %s.  Connected %s, Mounted %s, Exists %s", file.uri,
