@@ -98,9 +98,15 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         reload ();
         show_all ();
 
-        Marlin.app_settings.bind ("sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("sidebar-cat-devices-expander", device_expander, "active", SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("sidebar-cat-network-expander", network_expander, "active", SettingsBindFlags.DEFAULT);
+        Marlin.app_settings.bind (
+            "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
+        );
+        Marlin.app_settings.bind (
+            "sidebar-cat-devices-expander", device_expander, "active", SettingsBindFlags.DEFAULT
+        );
+        Marlin.app_settings.bind (
+            "sidebar-cat-network-expander", network_expander, "active", SettingsBindFlags.DEFAULT
+        );
 
         bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);

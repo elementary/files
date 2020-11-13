@@ -348,7 +348,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 if (!drag_rect.intersect (app_rect, out intersect_rect)) {
                     list.remove_item_by_id (id);
-
                     var device = ctx.get_device ();
                     int x, y;
                     device.get_position (null, out x, out y);
@@ -516,13 +515,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return false;
         }
 
-        list.remove (item);
-        //We do not remove from map as we are not destroying the item and need to maintain a reference
-
-        var pos = get_index ();
-        pos++;
-
-        ((Gtk.ListBox)list).insert (item, pos);
+        list.move_item_after (item, get_index ()); // List takes care of saving changes
         return true;
     }
 

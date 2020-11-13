@@ -49,6 +49,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract Icon gicon { get; set construct; }
     public abstract bool pinned { get; construct; default = false;} //Whether can be reordered
     public abstract bool permanent { get; construct; default = false;} //Whether can be deleted
+    public abstract int get_index ();
 
     /* Provision of plugin items with additional menu options */
     //TODO Make a separate interface?

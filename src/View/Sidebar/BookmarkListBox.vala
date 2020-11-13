@@ -208,4 +208,27 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     public SidebarItemInterface? get_item_at_index (int index) {
         return (SidebarItemInterface?)(get_row_at_index (index));
     }
+
+    public override bool move_item_after (SidebarItemInterface item, int target_index) {
+        if (item.list != this) { // Only move within one list atm
+            return false;
+        }
+
+        var old_index = item.get_index ();
+        if (old_index == target_index) {
+            return false;
+        }
+
+        remove (item);
+
+        if (old_index > target_index) {
+            insert (item, ++target_index);
+        } else {
+            insert (item, target_index);
+        }
+
+        bookmark_list.move_item_uri (item.uri, target_index - old_index);
+
+        return true;
+    }
 }

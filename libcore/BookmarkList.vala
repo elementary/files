@@ -201,25 +201,29 @@ namespace Marlin {
             return list.nth_data (index);
         }
 
-        public void move_item (uint index, uint destination) {
-            if (index > list.length ()) { // Can be assumed to be limited in length
-                critical ("Bookmarklist: Attempt to move bookmark from out of range index");
-                return;
+        public void move_item_uri (string uri, int step) {
+            bool list_changed = false;
+            unowned GLib.List<Marlin.Bookmark> node = list;
+            unowned GLib.List<Marlin.Bookmark> next = node.next;
+
+            int index = 0;
+            for (node = list; node != null; node = next) {
+                next = node.next;
+                if (uri == node.data.uri) {
+                    var bm = node.data;
+                    list.remove (bm);
+                    list.insert (bm, index + step);
+                    list_changed = true;
+
+                    break;
+                }
+
+                index++;
             }
 
-            if (destination > list.length ()) { // Can be assumed to be limited in length
-                critical ("Bookmarklist: Attempt to move bookmark to out of range index");
-                return;
+            if (list_changed) {
+                save_bookmarks_file ();
             }
-
-            if (index == destination) {
-                return;
-            }
-
-            unowned GLib.List<Marlin.Bookmark> link = list.nth (index);
-            list.remove_link (link);
-            list.insert (link.data, (int)destination);
-            save_bookmarks_file ();
         }
 
         private void append_internal (Marlin.Bookmark bookmark) {

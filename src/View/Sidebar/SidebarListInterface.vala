@@ -92,4 +92,9 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
 
     public virtual SidebarItemInterface? get_item_at_index (int index) { return null; }
 
+    /* Second parameter is index of target after which the item should be inserted */
+    public virtual bool move_item_after (SidebarItemInterface item, int target_index) {
+        return false;
+    } // By default not-reorderable
+
 }
