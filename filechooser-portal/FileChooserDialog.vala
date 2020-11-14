@@ -39,7 +39,7 @@ public class Files.FileChooserDialog : Gtk.FileChooserDialog {
         choices = new GLib.HashTable<unowned string, string> (str_hash, str_equal);
         add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
         set_default_response (Gtk.ResponseType.OK);
-        response.connect (() => {
+        response.connect_after (() => {
             destroy ();
         });
 
