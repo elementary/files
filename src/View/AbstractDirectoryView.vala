@@ -3430,7 +3430,6 @@ namespace FM {
 
                             if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
                                 should_activate = on_directory || double_click_event;
-                                break;
                             }
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
