@@ -238,7 +238,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
 
     case FM_LIST_MODEL_COLOR:
         g_value_init (value, G_TYPE_STRING);
-        if (file != NULL)
+        if (file != NULL && file->color >= 0 && file->color < sizeof(GOF_PREFERENCES_TAGS_COLORS)/sizeof(gchar*))
             g_value_set_string(value, GOF_PREFERENCES_TAGS_COLORS[file->color]);
         break;
 
