@@ -9,24 +9,11 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-# disable unit testing
-export DEB_BUILD_OPTIONS=nocheck
-
-# Enable extra security features: PIE and *full* RELRO
-export DEB_BUILD_MAINT_OPTIONS=hardening=+all
-
 %:
 	dh $@ --buildsystem=meson
 
-# Add -fstack-protector-all to make it harder to explot Files
-# and maybe expose some latent crashes
-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS) -fno-stack-protector -fstack-protector-all
-
-override_dh_strip:
-	dh_strip --dbg-package=pantheon-files-dbg
-
-override_dh_builddeb:
-	dh_builddeb -- -Zxz
-
 override_dh_missing:
 	dh_missing --fail-missing --list-missing
+
+override_dh_strip:
+	dh_strip --dbgsym-migration='pantheon-files-dbg (<< 4.5.0+r4197+pkg98)'
