@@ -446,7 +446,6 @@ namespace Marlin.View.Chrome {
 
             item = new MenuItem (_("Open in New Window"), null);
             item.set_action_and_target ("win.new-window", "s", path);
-            item.set_icon (new ThemedIcon ("missing-image"));
             menu.append_item (item);
 
             var root = GOF.File.get_by_uri (path);
@@ -460,8 +459,6 @@ namespace Marlin.View.Chrome {
                     at_least_one = true;
 
                     item = new MenuItem (app_info.get_name (), null);
-                    //FIXME this does not work! No icon is shown in popover
-                    item.set_icon (app_info.get_icon ());
                     var data = new Variant ("(ss)", path, app_info.get_commandline ());
                     item.set_action_and_target ("win.open-in-app", "v", data);
                     submenu_open_with_apps_section.append_item (item);
@@ -498,7 +495,6 @@ namespace Marlin.View.Chrome {
                     menu.append_section ("", section);
                 }
             }
-
 
             /* Release the Async directory as soon as possible */
             dir.cancel ();
