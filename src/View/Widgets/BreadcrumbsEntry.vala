@@ -435,6 +435,7 @@ namespace Marlin.View.Chrome {
                     item = new MenuItem (app_info.get_name (), null);
                     var data = new Variant ("(ss)", path, app_info.get_commandline ());
                     item.set_action_and_target ("win.open-in-app", "v", data);
+                    item.set_icon (app_info.get_icon ());
                     submenu_open_with_apps_section.append_item (item);
                 }
             }
