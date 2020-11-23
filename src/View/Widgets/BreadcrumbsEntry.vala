@@ -400,11 +400,9 @@ namespace Marlin.View.Chrome {
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
-            string parent_path = PF.FileUtils.get_parent_path_from_path (path);
-            GLib.File? root = PF.FileUtils.get_file_for_path (parent_path);
-
             var style_context = get_style_context ();
             var padding = style_context.get_padding (style_context.get_state ());
+
             if (clicked_element.x - BREAD_SPACING < 0) {
                 menu_x_root = event.x_root - event.x + clicked_element.x;
             } else {
@@ -414,44 +412,20 @@ namespace Marlin.View.Chrome {
             menu_y_root = event.y_root - event.y + get_allocated_height () - padding.bottom - padding.top;
 
             var menu_model = new Menu ();
-            build_base_menu (menu_model, path);
-            GOF.Directory.Async? files_menu_dir = null;
-            if (root != null) {
-                files_menu_dir = GOF.Directory.Async.from_gfile (root);
-                files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
-                    append_subdirectories (menu_model, files_menu_dir);
-                    files_menu_dir.disconnect (files_menu_dir_handler_id);
-                });
-            } else {
-                warning ("Root directory null for %s", path);
-            }
 
-            var menu = new Gtk.Popover.from_model (this, menu_model);
-            menu.closed.connect (() => {reset_elements_states ();});
-            menu.show_all ();
-            menu.set_pointing_to ({(int)event.x, (int)event.y, 1, 1});
-            menu.popup ();
-
-            if (files_menu_dir != null) {
-                files_menu_dir.init ();
-            }
-        }
-
-        private void build_base_menu (Menu menu, string path) {
-            /* First the "Open in new tab" menuitem is added to the menu. */
-
+            /* "Open in " menuitems */
             var item = new MenuItem (_("Open in New Tab"), null);
             item.set_action_and_target ("win.new-tab", "s", path);
-            menu.append_item (item);
+            menu_model.append_item (item);
 
             item = new MenuItem (_("Open in New Window"), null);
             item.set_action_and_target ("win.new-window", "s", path);
-            menu.append_item (item);
+            menu_model.append_item (item);
 
-            var root = GOF.File.get_by_uri (path);
-            var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
+            var app_info_list = Marlin.MimeActions.get_applications_for_folder (GOF.File.get_by_uri (path));
             bool at_least_one = false;
 
+            /* Open with submenu */
             var submenu_open_with = new Menu ();
             var submenu_open_with_apps_section = new Menu ();
             foreach (AppInfo app_info in app_info_list) {
@@ -472,33 +446,49 @@ namespace Marlin.View.Chrome {
             if (at_least_one) {
                 submenu_open_with.append_section ("", submenu_open_with_apps_section);
             }
+
             submenu_open_with.append_section ("", submenu_open_with_other_section);
 
             var submenu_section = new Menu ();
             submenu_section.append_submenu (_("Open with"), submenu_open_with);
-            menu.append_section ("", submenu_section);
-        }
+            menu_model.append_section ("", submenu_section);
 
-        private void append_subdirectories (Menu menu, GOF.Directory.Async dir) {
-            /* Append list of directories at the same level */
-            if (dir.can_load) {
-                unowned List<unowned GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
+            /* Subdirectories at the same level */
+            string parent_path = PF.FileUtils.get_parent_path_from_path (path); // This should never return null
+            GLib.File parent_dir = PF.FileUtils.get_file_for_path (parent_path);
+            GOF.Directory.Async? files_menu_dir = null;
 
-                if (sorted_dirs != null) {
-                    var section = new Menu ();
-                    foreach (unowned GOF.File gof in sorted_dirs) {
-                        var item = new MenuItem (gof.get_display_name (), null);
-                        item.set_action_and_target ("win.change-path", "s", gof.uri);
-                        section.append_item (item);
+            files_menu_dir = GOF.Directory.Async.from_gfile (parent_dir);
+            files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
+                files_menu_dir.disconnect (files_menu_dir_handler_id);
+                if (files_menu_dir.can_load) {
+                    unowned List<unowned GOF.File>? sorted_dirs = files_menu_dir.get_sorted_dirs ();
+
+                    if (sorted_dirs != null) {
+                        var section = new Menu ();
+                        foreach (unowned GOF.File gof in sorted_dirs) {
+                            item = new MenuItem (gof.get_display_name (), null);
+                            item.set_action_and_target ("win.change-path", "s", gof.uri);
+                            section.append_item (item);
+                        }
+
+                        menu_model.append_section ("", section);
                     }
-
-                    menu.append_section ("", section);
                 }
-            }
 
-            /* Release the Async directory as soon as possible */
-            dir.cancel ();
-            dir = null;
+                /* Release the Async directory as soon as possible */
+                files_menu_dir.cancel ();
+                files_menu_dir = null;
+
+            });
+
+            var menu = new Gtk.Popover.from_model (this, menu_model);
+            menu.closed.connect (() => {reset_elements_states ();});
+            menu.show_all ();
+            menu.set_pointing_to ({(int)event.x, (int)event.y, 1, 1});
+            menu.popup ();
+
+            files_menu_dir.init ();
         }
 
         private GOF.File? get_target_location (int x, int y) {

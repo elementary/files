@@ -181,6 +181,7 @@ namespace PF.FileUtils {
         return result;
     }
 
+	/* Note: For the root directory this returns the root not the parent */
     private string construct_parent_path (string path, bool include_file_protocol) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
