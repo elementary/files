@@ -44,7 +44,8 @@ namespace Marlin.View {
             {"change-path", action_change_path, "s" },
             {"new-tab", action_new_tab, "s" },
             {"new-window", action_new_window, "s" },
-            {"open-in-app", action_open_in_app, "v"}
+            {"open-in-app", action_open_in_app, "v"},
+            {"open-in-other-app", action_open_in_other_app, "s"}
         };
 
         public uint window_number { get; construct; }
@@ -723,6 +724,12 @@ namespace Marlin.View {
             } catch (Error e) {
                 warning ("Could not launch - %s", e.message);
             }
+        }
+
+        private void action_open_in_other_app (SimpleAction action, Variant? param) {
+            string path;
+            param.@get ("s", out path);
+            Marlin.MimeActions.open_glib_file_request (File.new_for_uri (path), this, null);
         }
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {

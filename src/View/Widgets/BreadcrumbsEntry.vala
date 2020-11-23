@@ -441,6 +441,7 @@ namespace Marlin.View.Chrome {
             }
 
             item = new MenuItem (_("Open with other Application…"), null);
+            item.set_action_and_target ("win.open-in-other-app", "s", path);
             var submenu_open_with_other_section = new Menu ();
             submenu_open_with_other_section.append_item (item);
 
