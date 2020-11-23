@@ -26,8 +26,31 @@ void add_file_utils_tests () {
     });
 
     Test.add_func ("/FileUtils/sanitize_zero_length_abs_path", () => {
-        assert (PF.FileUtils.sanitize_path ("", null, false) == "");
+        assert (PF.FileUtils.sanitize_path ("", null) == "");
+    });
 
+    Test.add_func ("/FileUtils/afc_device_root_strip_colon", () => {
+        /* Remove extraneous trailing colon-number from afc device name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        assert (PF.FileUtils.sanitize_path (afc_device + ":3/") == afc_device);
+    });
+
+    Test.add_func ("/FileUtils/afc_device_root_no_colon", () => {
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        assert (PF.FileUtils.sanitize_path (afc_device) == afc_device);
+    });
+
+    Test.add_func ("/FileUtils/afc_path_strip_colon", () => {
+        /* Remove extraneous trailing colon-number from afc device name, but not from folder name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        var path = "/some/path/with/colon:3";
+        assert (PF.FileUtils.sanitize_path (afc_device + ":3" + path) == afc_device + path);
+    });
+
+    Test.add_func ("/FileUtils/afc_device_do_not_strip_colon", () => {
+        /* Do not remove colon-nonnumber from afc device name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb:b";
+        assert (PF.FileUtils.sanitize_path (afc_device) == afc_device);
     });
 
     Test.add_func ("/FileUtils/sanitize_null_rel_path", () => {
@@ -165,6 +188,126 @@ void add_file_utils_tests () {
         string formated_time = PF.FileUtils.format_time (16000, out time_unit);
         assert (time_unit == 4);
         assert (formated_time.contains ("approximately 4 hours"));
+    });
+
+    Test.add_func ("/FileUtils/shorten_utf8_1", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("a", 2);
+        assert (result == "");
+    });
+
+    /* Shorten English strings (1 byte per character) */
+    Test.add_func ("/FileUtils/shorten_utf8_2", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("abc", 2);
+        assert (result == "a");
+    });
+
+    /* Shorten Japanese strings (3 bytes per character) */
+    Test.add_func ("/FileUtils/shorten_utf8_3", () => {
+        string base_string = "試し";
+        string result = PF.FileUtils.shorten_utf8_string (base_string, 1);
+        assert (result == "試");
+    });
+
+    Test.add_func ("/FileUtils/shorten_utf8_4", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("試し", 3);
+        assert (result == "試");
+    });
+
+    Test.add_func ("/FileUtils/shorten_utf8_5", () => {
+        string result = PF.FileUtils.shorten_utf8_string ("試し", 4);
+        assert (result == "");
+    });
+
+    /* Get link names */
+    Test.add_func ("/FileUtils/get_link_name_0", () => {
+        string target = "path_to_link";
+        string result = PF.FileUtils.get_link_name (target, 0);
+        assert (result == target);
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_1", () => {
+        string target = "target";
+        string result = PF.FileUtils.get_link_name (target, 1);
+        //Does this need to be translated?
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (!result.contains ("1"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_ext_1", () => {
+        string target = "Filename.ext";
+        string result = PF.FileUtils.get_link_name (target, 1);
+        assert (result.contains (".ext"));
+        assert (result.contains ("link"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_ext_11", () => {
+        string target = "Filename.ext";
+        string result = PF.FileUtils.get_link_name (target, 11);
+        assert (result != target);
+        assert (result.contains ("11"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_name_11", () => {
+        string target = "target";
+        string result = PF.FileUtils.get_link_name (target, 11);
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (result.contains ("11"));
+    });
+
+    Test.add_func ("/FileUtils/get_link_to_link", () => {
+        string target = "target (link)";
+        string result = PF.FileUtils.get_link_name (target, 1);
+        var parts = result.split (PF.FileUtils.LINK_TAG);
+        assert (parts.length == 3);
+    });
+
+    /* Get duplicate names */
+
+    Test.add_func ("/FileUtils/get_duplicate_name_3_ext", () => {
+        string name = "Filename.ext";
+
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.contains (PF.FileUtils.COPY_TAG));
+
+        result = PF.FileUtils.get_duplicate_name (result, 1, -1, false);
+        assert (result.contains ("2"));
+
+        result = PF.FileUtils.get_duplicate_name (result, 2, -1);
+        assert (result.contains ("4"));
+        var parts = result.split (PF.FileUtils.COPY_TAG);
+        assert (parts.length == 2);
+        assert (result.has_suffix (".ext"));
+        assert (result.has_prefix ("Filename"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_4_ext", () => {
+        string name = "Filename.mpeg";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.has_suffix ("mpeg"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_not_an_extension", () => {
+        string name = "Filename.not.an.extension";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (!result.has_suffix ("extension"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_no_extension", () => {
+        string name = "Filename";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+    });
+
+    /* Duplicating "Filename (link)" should yield "Filename (link 2)" not "Filename (link) (copy)" */
+    Test.add_func ("/FileUtils/get_duplicate_link", () => {
+        string name = "Filename ".concat (
+             PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
+        );
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (!result.contains (PF.FileUtils.COPY_TAG));
+        assert (result.contains ("2"));
     });
 }
 
