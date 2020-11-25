@@ -48,26 +48,6 @@ Description: File manager for the Pantheon desktop
   - Compliance with elementary HIG, e.g. lets you restore closed tabs
   - Session persistence - take up where you left!
 
-Package: pantheon-files-dbg
-Architecture: any
-Section: debug
-Priority: extra
-Depends: pantheon-files (= ${binary:Version}), ${misc:Depends}
-Enhances: pantheon-files
-Description: File manager for the Pantheon desktop (debugging symbols)
- Pantheon Files is a modern file manager originally
- designed for the Pantheon desktop environment.
- .
- It features:
-  - Column view to effortlessly traverse complex folder hierarchies,
-    in addition to Icon and Tree views
-  - Contextual actions on files and folders provided by Contractor
-  - Transparent support for remote servers and network shares
-  - Compliance with elementary HIG, e.g. lets you restore closed tabs
-  - Session persistence - take up where you left!
- .
- This package contains the debugging symbols for pantheon-files.
-
 Package: libpantheon-files-core0
 Architecture: any
 Section: libs
