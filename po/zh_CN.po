@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-10 09:31+0000\n"
-"PO-Revision-Date: 2020-10-02 07:28+0000\n"
+"PO-Revision-Date: 2020-11-20 20:54+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -26,7 +26,7 @@ msgstr "显示程序版本"
 
 #: src/Application.vala:160
 msgid "Open one or more URIs, each in their own tab"
-msgstr "在新标签中分别打开一个或多个地址"
+msgstr "在独立标签中分别打开一个或多个 URI"
 
 #: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
@@ -42,7 +42,7 @@ msgstr "启动调试日志"
 
 #: src/Application.vala:169
 msgid "[URI…]"
-msgstr "[地址...]"
+msgstr "[URI…]"
 
 #: src/Application.vala:172
 msgid ""
@@ -56,7 +56,7 @@ msgstr ""
 
 #: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
-msgstr "--quit 不能与地址一起使用。"
+msgstr "--quit 不能与 URI 一起使用。"
 
 #: src/ProgressUIHandler.vala:127 src/ProgressUIHandler.vala:188
 msgid "File Operations"
@@ -255,7 +255,7 @@ msgstr "磁盘属性"
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
 #: libwidgets/Resources.vala:73
 msgid "File System"
-msgstr "文件系统"
+msgstr "系统"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
@@ -275,11 +275,11 @@ msgstr "文件打开失败"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr "无法打开地址"
+msgstr "无法打开 URI"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
-msgstr "无法使用此应用打开文件或地址"
+msgstr "无法使用此应用打开文件或 URI"
 
 #: src/View/Window.vala:542 src/View/Window.vala:552
 msgid "(as Administrator)"
@@ -493,7 +493,7 @@ msgstr "无法从此处删除文件"
 #: src/View/AbstractDirectoryView.vala:3053
 #: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
-msgstr "您没有更改此目录的权限"
+msgstr "您没有更改此位置的权限"
 
 #: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
@@ -509,7 +509,7 @@ msgstr "无法在此处粘贴文件"
 
 #: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
-msgstr "主页"
+msgstr "主目录"
 
 #: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
@@ -1128,27 +1128,23 @@ msgstr[0] "约 %'d 小时"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:945
-#, fuzzy
-#| msgid " (copy)"
 msgid "copy"
-msgstr " (复件)"
+msgstr "副本"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:947
 msgid "link"
-msgstr ""
+msgstr "链接"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:949
-#, fuzzy
-#| msgid " ("
 msgid "("
-msgstr " ("
+msgstr "（"
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:951
 msgid ")"
-msgstr ""
+msgstr "）"
 
 #: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
@@ -1249,7 +1245,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "您确实想从回收站中永久删除所选的 %'d 项吗？"
+msgstr[0] "您确定要永久删除所选的 %'d 个项目吗？"
 
 #: libcore/marlin-file-operations.c:581
 msgid "If you delete an item, it will be permanently lost."
@@ -1267,11 +1263,11 @@ msgstr "要永久删除 “%s” 吗?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "您确实想永久删除所选的 %'d 项吗？"
+msgstr[0] "您确定要永久删除所选的 %'d 个项目吗？"
 
 #: libcore/marlin-file-operations.c:619
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr "已删除的文件不在回收站中且无法恢复。"
+msgstr "永久删除的文件不会放入回收站且无法恢复。"
 
 #: libcore/marlin-file-operations.c:653
 #, c-format
@@ -1405,11 +1401,11 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" 使用永久删除的方式删除文件"
+" 永久删除文件"
 
 #: libcore/marlin-file-operations.c:1298
 msgid "Trashing Files"
-msgstr "正在将文件移到回收站"
+msgstr "正在放入回收站"
 
 #: libcore/marlin-file-operations.c:1300
 msgid "Deleting Files"
@@ -1423,7 +1419,7 @@ msgstr "正在删除文件"
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "准备复制 %'d 个文件 (%s)"
+msgstr[0] "正在准备复制 %'d 个文件（%s）"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1433,7 +1429,7 @@ msgstr[0] "准备复制 %'d 个文件 (%s)"
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "准备复制 %'d 个文件 (%s)"
+msgstr[0] "正在准备移动 %'d 个文件（%s）"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1443,7 +1439,7 @@ msgstr[0] "准备复制 %'d 个文件 (%s)"
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "准备删除 %'d 个文件 (%s)"
+msgstr[0] "正在准备删除 %'d 个文件（%s）"
 
 #: libcore/marlin-file-operations.c:1370
 #, c-format
@@ -1859,8 +1855,6 @@ msgid "Below This Folder"
 msgstr "在此文件夹下"
 
 #: libwidgets/View/SearchResults.vala:287
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
 msgstr "最近"
 
@@ -1885,10 +1879,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libwidgets/Resources.vala:62
-#, fuzzy
-#| msgid "AFP"
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libwidgets/Resources.vala:63
 msgid "DAV"
@@ -1920,7 +1912,7 @@ msgstr "MTP"
 
 #: libwidgets/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "GPHOTO2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
