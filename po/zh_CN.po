@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-10 09:31+0000\n"
-"PO-Revision-Date: 2020-11-16 11:15+0000\n"
+"PO-Revision-Date: 2020-11-20 20:54+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -509,7 +509,7 @@ msgstr "无法在此处粘贴文件"
 
 #: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
 msgid "Home"
-msgstr "主页"
+msgstr "主目录"
 
 #: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
@@ -1245,7 +1245,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "您确实想从回收站中永久删除所选的 %'d 项吗？"
+msgstr[0] "您确定要永久删除所选的 %'d 个项目吗？"
 
 #: libcore/marlin-file-operations.c:581
 msgid "If you delete an item, it will be permanently lost."
@@ -1263,7 +1263,7 @@ msgstr "要永久删除 “%s” 吗?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "您确实想永久删除所选的 %'d 项吗？"
+msgstr[0] "您确定要永久删除所选的 %'d 个项目吗？"
 
 #: libcore/marlin-file-operations.c:619
 msgid "Deleted items are not sent to Trash and are not recoverable."
