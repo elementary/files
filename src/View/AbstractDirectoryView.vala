@@ -298,7 +298,7 @@ namespace FM {
 
                 draw_when_idle ();
             });
-            model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+            model = new FM.ListModel ();
             Marlin.app_settings.bind ("single-click",
                                                              this, "single_click_mode", SettingsBindFlags.GET);
             Marlin.app_settings.bind ("show-remote-thumbnails",
