@@ -1324,6 +1324,12 @@ fm_list_model_set_property (GObject      *object,
     }
 }
 
+FMListModel *
+fm_list_model_new (void)
+{
+    return FM_LIST_MODEL (g_object_new (FM_TYPE_LIST_MODEL, NULL));
+}
+
 const gchar *
 fm_list_model_column_id_to_string (FMListModelColumnID id)
 {
