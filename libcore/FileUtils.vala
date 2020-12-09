@@ -1032,7 +1032,7 @@ namespace PF.FileUtils {
         int expected_index;
 
         if (n_digits > 0) {
-            expected_index = _(CLOSING_COPY_LINK_TAG).length + n_digits;
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + n_digits + 1;
         } else if (is_link) {
             expected_index = _(CLOSING_COPY_LINK_TAG).length + _(LINK_TAG).length;
         } else {

@@ -298,6 +298,12 @@ void add_file_utils_tests () {
         assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
     });
 
+    Test.add_func ("/FileUtils/get_duplicate_no_extension_short", () => {
+        string name = "F";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+    });
+
     /* Duplicating "Filename (link)" should yield "Filename (link 2)" not "Filename (link) (copy)" */
     Test.add_func ("/FileUtils/get_duplicate_link", () => {
         string name = "Filename ".concat (
