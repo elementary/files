@@ -970,15 +970,19 @@ namespace PF.FileUtils {
     private void parse_previous_duplicate_name (
         string name, bool is_link, out string name_base, out string suffix, out int count
     ) {
-
         suffix = "";
         count = 0;
 
         string name_without_suffix = name;
         var last_index = name.length - 1;
+        var index_of_suffix = name.length;
 
-        /* Ignore suffix for links */
-        var index_of_suffix = is_link ? -1 : name.last_index_of (".");
+        if (is_link) {
+            /* Ignore suffix for links */
+            index_of_suffix = -1;
+        } else if (name.contains (".")) {
+            index_of_suffix = name.last_index_of (".");
+        }
 
         /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
         var max_extension_length = 4;
