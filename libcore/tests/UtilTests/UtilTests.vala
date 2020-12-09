@@ -304,6 +304,26 @@ void add_file_utils_tests () {
         assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
     });
 
+    Test.add_func ("/FileUtils/get_duplicate_embedded_tag", () => {
+        string name = "foo(copy)bar.txt";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        var parts = result.split ("(");
+        assert (parts.length == 3);
+        assert (result.contains ("foo"));
+        assert (result.contains ("bar"));
+        assert (result.has_suffix (".txt"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_embedded_tag_no_extension", () => {
+        string name = "foo(copy)bar(copy 2)";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        var parts = result.split ("(");
+        assert (parts.length == 3);
+        assert (result.contains ("foo"));
+        assert (result.contains ("bar"));
+        assert (result.contains ("3"));
+    });
+
     /* Duplicating "Filename (link)" should yield "Filename (link 2)" not "Filename (link) (copy)" */
     Test.add_func ("/FileUtils/get_duplicate_link", () => {
         string name = "Filename ".concat (
