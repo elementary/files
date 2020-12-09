@@ -350,11 +350,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         construct {
             var color_button_remove = new ColorButton ("none");
             color_buttons = new Gee.ArrayList<ColorButton> ();
-            color_buttons.add (new ColorButton ("red"));
-            color_buttons.add (new ColorButton ("orange"));
-            color_buttons.add (new ColorButton ("yellow"));
-            color_buttons.add (new ColorButton ("green"));
             color_buttons.add (new ColorButton ("blue"));
+            color_buttons.add (new ColorButton ("mint"));
+            color_buttons.add (new ColorButton ("green"));
+            color_buttons.add (new ColorButton ("yellow"));
+            color_buttons.add (new ColorButton ("orange"));
+            color_buttons.add (new ColorButton ("red"));
+            color_buttons.add (new ColorButton ("pink"));
             color_buttons.add (new ColorButton ("purple"));
             color_buttons.add (new ColorButton ("brown"));
             color_buttons.add (new ColorButton ("slate"));

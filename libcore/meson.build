@@ -42,6 +42,7 @@ pantheon_files_core_vala_files = files(
     'FileOperations/CommonJob.vala',
     'FileOperations/EmptyTrashJob.vala',
     'FileOperations/MountUtils.vala',
+    'FileOperations/DialogUtils.vala',
 )
 
 pantheon_files_core_c_files = files(

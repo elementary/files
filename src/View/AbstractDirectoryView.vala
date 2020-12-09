@@ -298,7 +298,7 @@ namespace FM {
 
                 draw_when_idle ();
             });
-            model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+            model = new FM.ListModel ();
             Marlin.app_settings.bind ("single-click",
                                                              this, "single_click_mode", SettingsBindFlags.GET);
             Marlin.app_settings.bind ("show-remote-thumbnails",
@@ -1356,8 +1356,6 @@ namespace FM {
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
 
-            thaw_tree ();
-
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
@@ -1368,6 +1366,8 @@ namespace FM {
             } else {
                 is_writable = false;
             }
+
+            thaw_tree ();
 
             schedule_thumbnail_timeout ();
         }
@@ -1981,6 +1981,7 @@ namespace FM {
                 cut_menuitem.action_name = "selection.cut";
 
                 var copy_menuitem = new Gtk.MenuItem ();
+                ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
                 copy_menuitem.add (new Granite.AccelLabel (
                     _("Copy"),
                     "<Ctrl>c"

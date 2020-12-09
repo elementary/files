@@ -268,9 +268,6 @@ namespace FM {
                         } else if (on_icon) {
                             zone = ClickZone.ICON;
                         } else if (rubberband) {
-                            /* Fake location outside centre top of item for rubberbanding */
-                            event.x = rect.x + rect.width / 2;
-                            event.y = rect.y - 10 + (int)(get_vadjustment ().value);
                             zone = ClickZone.BLANK_NO_PATH;
                         }
                     } else {

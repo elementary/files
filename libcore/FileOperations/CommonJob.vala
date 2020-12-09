@@ -40,7 +40,11 @@ public class Marlin.FileOperations.CommonJob {
 
     protected void inhibit_power_manager (string message) {
         weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
-        inhibit_cookie = app.inhibit (parent_window, Gtk.ApplicationInhibitFlags.LOGOUT | Gtk.ApplicationInhibitFlags.SUSPEND, message);
+        inhibit_cookie = app.inhibit (
+            parent_window,
+            Gtk.ApplicationInhibitFlags.LOGOUT | Gtk.ApplicationInhibitFlags.SUSPEND,
+            message
+        );
     }
 
     private void uninhibit_power_manager () {
