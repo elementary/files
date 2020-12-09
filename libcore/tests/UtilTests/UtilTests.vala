@@ -335,6 +335,17 @@ void add_file_utils_tests () {
         assert (!result.contains (PF.FileUtils.COPY_TAG));
         assert (result.contains ("2"));
     });
+
+    Test.add_func ("/FileUtils/get_duplicate_link_embedded_tag", () => {
+        string name = "File(link)name ".concat (
+             PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
+        );
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (!result.contains (PF.FileUtils.COPY_TAG));
+        assert (result.contains ("2"));
+    });
 }
 
 int main (string[] args) {
