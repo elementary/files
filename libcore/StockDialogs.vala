@@ -30,20 +30,6 @@ public const string MERGE_ALL = _("Merge _All");
 public const string COPY_FORCE = _("Copy _Anyway");
 public const string EMPTY_TRASH = _("Empty _Trash");
 
-namespace Marlin {
-    public struct RunSimpleDialogData {
-        unowned Gtk.Window parent_window;
-        bool ignore_close_box;
-        Gtk.MessageType message_type;
-        string primary_text;
-        string secondary_text;
-        unowned string? details_text;
-        string[] button_titles;
-        bool show_all;
-        int result;
-    }
-}
-
 namespace PF.Dialogs {
     public Granite.MessageDialog show_error_dialog (string primary_text,
                                                     string secondary_text,
@@ -72,56 +58,6 @@ namespace PF.Dialogs {
         });
 
         dialog.show ();
-        return dialog;
-    }
-
-    public Gtk.Dialog get_simple_file_operation_dialog (Marlin.RunSimpleDialogData data) {
-        unowned string image_name;
-        switch (data.message_type) {
-            case Gtk.MessageType.ERROR:
-                image_name = "dialog-error";
-                break;
-            case Gtk.MessageType.WARNING:
-                image_name = "dialog-warning";
-                break;
-            case Gtk.MessageType.QUESTION:
-                image_name = "dialog-question";
-                break;
-            default:
-                image_name = "dialog-information";
-                break;
-        }
-
-        var dialog = new Granite.MessageDialog.with_image_from_icon_name (data.primary_text,
-                                                                          data.secondary_text,
-                                                                          image_name,
-                                                                          Gtk.ButtonsType.NONE);
-        dialog.transient_for = data.parent_window as Gtk.Window;
-        if (data.button_titles.length == 0) {
-            dialog.add_button (_("Close"), 0);
-        } else {
-            var response_id = 0;
-            foreach (unowned string title in data.button_titles) {
-                dialog.add_button (title, response_id);
-                if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
-                    var button = dialog.get_widget_for_response (response_id);
-                    button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-                }
-                response_id++;
-            };
-        }
-
-        if (data.details_text != null) {
-            //FIXME: Granite.MessageDialog.show_error_details call Gtk.Widget.show_all ()
-            // which breaks the current implementation in marlin-file-operation.c
-            // as the dialog is being created in a thread but presented in the
-            // Gtk thread. Remove the Idle.add once everything is done in the Gtk thread.
-            Idle.add (() => {
-                dialog.show_error_details (data.details_text);
-                return Source.REMOVE;
-            });
-        }
-
         return dialog;
     }
 }

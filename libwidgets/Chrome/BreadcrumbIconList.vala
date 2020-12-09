@@ -116,7 +116,9 @@ namespace Marlin.View.Chrome {
             add_protocol_directory ("davs", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
             add_protocol_directory ("ftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
             add_protocol_directory ("sftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("mtp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("mtp", Marlin.ICON_DEVICE_REMOVABLE_MEDIA_SYMBOLIC);
+            add_protocol_directory ("gphoto2", Marlin.ICON_DEVICE_CAMERA_SYMBOLIC);
+            add_protocol_directory ("afc", Marlin.ICON_DEVICE_PHONE_SYMBOLIC);
             add_protocol_directory ("network", Marlin.ICON_NETWORK_SYMBOLIC);
             add_protocol_directory ("smb", Marlin.ICON_NETWORK_SERVER_SYMBOLIC);
             add_protocol_directory ("trash", Marlin.ICON_TRASH_SYMBOLIC);
@@ -140,7 +142,7 @@ namespace Marlin.View.Chrome {
         }
 
         private void add_protocol_directory (string protocol, string icon) {
-            var separator = "://" + (protocol == "mtp" ? "[" : "");
+            var separator = "://" + ((protocol == "mtp" || protocol == "gphoto2") ? "[" : "");
             var info = new BreadcrumbIconInfo.protocol_directory (protocol + separator,
                                                                     icon,
                                                                     protocol_to_name (protocol));

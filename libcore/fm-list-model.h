@@ -34,16 +34,7 @@ typedef struct _GOFFile GOFFile;
 typedef struct _GOFDirectoryAsync GOFDirectoryAsync;
 
 #define FM_TYPE_LIST_MODEL fm_list_model_get_type()
-#define FM_LIST_MODEL(obj) \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), FM_TYPE_LIST_MODEL, FMListModel))
-#define FM_LIST_MODEL_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), FM_TYPE_LIST_MODEL, FMListModelClass))
-#define FM_IS_LIST_MODEL(obj) \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FM_TYPE_LIST_MODEL))
-#define FM_IS_LIST_MODEL_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), FM_TYPE_LIST_MODEL))
-#define FM_LIST_MODEL_GET_CLASS(obj) \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_LIST_MODEL, FMListModelClass))
+G_DECLARE_DERIVABLE_TYPE (FMListModel, fm_list_model, FM, LIST_MODEL, GObject)
 
 typedef enum {
     FM_LIST_MODEL_FILE_COLUMN,
@@ -56,21 +47,15 @@ typedef enum {
     FM_LIST_MODEL_NUM_COLUMNS
 } FMListModelColumnID;
 
-typedef struct FMListModelDetails FMListModelDetails;
+struct _FMListModelClass
+{
+  GObjectClass parent_class;
 
-typedef struct FMListModel {
-    GObject parent_instance;
-    FMListModelDetails *details;
-} FMListModel;
+  void (* subdirectory_unloaded) (FMListModel *model,
+                                  GOFDirectoryAsync *subdirectory);
+};
 
-typedef struct {
-    GObjectClass parent_class;
-
-    void (* subdirectory_unloaded)(FMListModel *model, GOFDirectoryAsync *subdirectory);
-} FMListModelClass;
-
-GType    fm_list_model_get_type                          (void);
-
+FMListModel *fm_list_model_new (void);
 gboolean fm_list_model_add_file                          (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
 void     fm_list_model_file_changed                      (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
 gboolean fm_list_model_is_empty                          (FMListModel *model);
