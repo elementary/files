@@ -81,7 +81,7 @@ namespace FM {
         }
 
         protected override Gtk.Widget? create_view () {
-            model.set_property ("has-child", false);
+            model.has_child = false;
             base.create_view ();
             tree.show_expanders = false;
             return tree as Gtk.Widget;
