@@ -75,6 +75,7 @@ libcore/TrashMonitor.vala
 libcore/UndoManager.vala
 libcore/UserUtils.vala
 libcore/FileOperations/CommonJob.vala
+libcore/FileOperations/DialogUtils.vala
 libcore/FileOperations/EmptyTrashJob.vala
 libcore/FileOperations/MountUtils.vala
 
