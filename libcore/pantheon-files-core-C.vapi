@@ -33,6 +33,10 @@ namespace FM
 
         [CCode (has_construct_function = false)]
         public ListModel ();
+        [NoAccessorMethod]
+        public bool has_child { get; set; }
+        [NoAccessorMethod]
+        public int size { get; set; }
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public bool unload_subdirectory(Gtk.TreeIter iter);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
