@@ -23,6 +23,7 @@
 public class Files.FileChooserDialog : Gtk.FileChooserDialog {
     private GLib.DBusConnection connection;
     private uint registration_id;
+    private LegacyFileChooserDialog legacy_dialog;
     public GLib.HashTable<unowned string, string> choices { public get; private set; }
     public bool read_only { get; set; default = false; }
 
@@ -33,6 +34,8 @@ public class Files.FileChooserDialog : Gtk.FileChooserDialog {
         } catch (Error e) {
             critical (e.message);
         }
+
+        legacy_dialog = new LegacyFileChooserDialog (this);
     }
 
     construct {
