@@ -36,6 +36,16 @@ public class Files.FileChooserDialog : Gtk.FileChooserDialog {
         }
 
         legacy_dialog = new LegacyFileChooserDialog (this);
+
+        ExternalWindow? external_parent = null;
+        if (parent_window != "") {
+            external_parent = ExternalWindow.from_handle (parent_window);
+            if (external_parent == null) {
+                warning ("Failed to associate portal window with parent window %s", parent_window);
+            } else {
+                external_parent.set_parent_of (get_window ());
+            }
+        }
     }
 
     construct {
