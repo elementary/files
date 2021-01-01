@@ -44,9 +44,6 @@ src/View/Widgets/PermissionButton.vala
 src/View/Widgets/ProgressInfoWidget.vala
 src/View/Widgets/SingleLineEditableLabel.vala
 
-filechooser-module/FileChooserDialog.vala
-filechooser-module/Plugin.vala
-
 libcore/AbstractSidebar.vala
 libcore/AbstractSlot.vala
 libcore/BookmarkList.vala
