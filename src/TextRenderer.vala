@@ -262,6 +262,12 @@ namespace Marlin {
                 connect_widget_signals ();
                 context = widget.get_pango_context ();
                 layout = new Pango.Layout (context);
+
+                /* We do not want hyphens inserted when text wraps */
+                var attr = new Pango.AttrList ();
+                attr.insert (Pango.attr_insert_hyphens_new (false));
+                layout.set_attributes (attr);
+
                 layout.set_auto_dir (false);
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());

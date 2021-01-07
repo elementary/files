@@ -22,7 +22,7 @@
 /*** The Gtk.FileChooserWidget widget names and paths can be found in "gtkfilechooserwidget.ui"
  *   in the Gtk+3 source code package.  Changes to that file could break this code.
 ***/
-public class CustomFileChooserDialog : Object {
+public class Files.LegacyFileChooserDialog : Object {
     /* Response to get parent of the bottom box */
     private const int BUTTON_RESPONSE = -6;
 
@@ -50,7 +50,11 @@ public class CustomFileChooserDialog : Object {
     private bool is_single_click = true;
     private bool can_activate = true;
 
-    public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
+    public LegacyFileChooserDialog (Gtk.FileChooserDialog dialog) {
+        // Don't apply the legacy filechooser twice
+        if ("pantheon-filechooser-module" in Gtk.Settings.get_default ().gtk_modules)
+            return;
+
         previous_paths = new GLib.Queue<string> ();
         next_paths = new GLib.Queue<string> ();
         /* The "chooser_dialog" variable is the main dialog */

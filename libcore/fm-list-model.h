@@ -55,6 +55,7 @@ struct _FMListModelClass
                                   GOFDirectoryAsync *subdirectory);
 };
 
+FMListModel *fm_list_model_new (void);
 gboolean fm_list_model_add_file                          (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
 void     fm_list_model_file_changed                      (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
 gboolean fm_list_model_is_empty                          (FMListModel *model);

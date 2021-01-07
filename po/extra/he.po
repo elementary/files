@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-05 11:52+0000\n"
-"PO-Revision-Date: 2020-08-24 21:13+0000\n"
+"PO-Revision-Date: 2020-12-14 10:01+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -68,7 +68,7 @@ msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
-msgstr ""
+msgstr "לחיצה בין התמונה הממוזערת והטקסט מעתה מפעילה/בוחרת בתצוגת סמלים"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Bookmark menu option for network mounts in sidebar"
