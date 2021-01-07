@@ -25,7 +25,7 @@ if systemd_systemduserunitdir != 'no'
   if systemd_systemduserunitdir == ''
     systemd_dep = dependency('systemd', version: '>= 206', required: false)
     assert(systemd_dep.found(), 'systemd required but not found, please provide a valid systemd user unit dir or disable it')
-    systemd_systemduserunitdir = systemd_dep.get_pkgconfig_variable('systemduserunitdir')
+    systemd_systemduserunitdir = systemd_dep.get_pkgconfig_variable('systemduserunitdir', define_variable: ['prefix', get_option('prefix')])
   endif
 
   configure_file(
