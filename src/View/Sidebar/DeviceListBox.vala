@@ -1,6 +1,6 @@
 /* DeviceListBox.vala
  *
- * Copyright 2020 elementary LLC. <https://elementary.io>
+ * Copyright 2020 elementary, Inc (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -118,15 +118,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             );
         }
 
-        foreach (GLib.Drive drive in volume_monitor.get_connected_drives ()) {
+        foreach (unowned GLib.Drive drive in volume_monitor.get_connected_drives ()) {
             bookmark_stoppable_or_removeable_drive_if_without_volumes (drive);
         } // Add drives not otherwise bookmarked
 
-        foreach (Volume volume in volume_monitor.get_volumes ()) {
+        foreach (unowned Volume volume in volume_monitor.get_volumes ()) {
             bookmark_volume_if_without_mount (volume);
         } // Add volumes not otherwise bookmarked
 
-        foreach (Mount mount in volume_monitor.get_mounts ()) {
+        foreach (unowned Mount mount in volume_monitor.get_mounts ()) {
             bookmark_mount_if_native_and_not_shadowed (mount);
         } // Bookmark all native mount points ();
     }
@@ -211,7 +211,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             return null;
         }
 
-        foreach (var child in get_children ()) {
+        foreach (unowned Gtk.Widget child in get_children ()) {
             if (child is DeviceRow) {
                 if (((DeviceRow)child).uuid == uuid) {
                     return (DeviceRow)child;

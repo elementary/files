@@ -73,7 +73,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
             return;
         }
 
-        foreach (Mount mount in VolumeMonitor.@get ().get_mounts ()) {
+        foreach (unowned Mount mount in VolumeMonitor.@get ().get_mounts ()) {
             bookmark_mount_if_not_native_and_not_shadowed (mount);
         }
 

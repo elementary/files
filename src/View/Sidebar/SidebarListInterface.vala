@@ -57,7 +57,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
 
     public virtual bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
         row = null;
-        foreach (var child in get_children ()) {
+        foreach (unowned Gtk.Widget child in get_children ()) {
             if (child is SidebarItemInterface) {
                 if (((SidebarItemInterface)child).uri == uri) {
                     row = (SidebarItemInterface)child;
@@ -72,10 +72,11 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
     public virtual bool remove_item_by_id (uint32 id) {
         foreach (Gtk.Widget child in get_children ()) {
             if (child is SidebarItemInterface) {
-                var row = (SidebarItemInterface)child;
+                unowned var row = (SidebarItemInterface)child;
                 if (row.permanent) {
                     continue;
                 }
+
                 if (row.id == id) {
                     remove (row);
                     row.destroy_bookmark ();

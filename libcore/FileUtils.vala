@@ -1108,16 +1108,7 @@ namespace PF.FileUtils {
     }
 
     public bool protocol_is_supported (string protocol) {
-        string [] supported;
-
-        supported = GLib.Vfs.get_default ().get_supported_uri_schemes ();
-        for (int i = 0; supported[i] != null; i++) {
-            if (supported[i] == protocol) {
-                return true;
-            }
-        }
-
-        return false;
+        return protocol in GLib.Vfs.get_default ().get_supported_uri_schemes ();
     }
 }
 

@@ -1,6 +1,6 @@
 /* BookmarkListBox.vala
  *
- * Copyright 2020 elementary LLC. <https://elementary.io>
+ * Copyright 2020 elementary, Inc. <https://elementary.io>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -133,7 +133,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             );
         }
 
-        foreach (Marlin.Bookmark bm in bookmark_list.list) {
+        foreach (unowned Marlin.Bookmark bm in bookmark_list.list) {
             row = add_bookmark (bm.label, bm.uri, bm.get_icon ());
             row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
             row.notify["custom-name"].connect (() => {
@@ -166,7 +166,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                                        int pos = 0) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
-        foreach (Gtk.Widget child in get_children ()) {
+        foreach (unowned Gtk.Widget child in get_children ()) {
             if (((SidebarItemInterface)child).pinned) {
                 pinned++;
             } else {
@@ -188,9 +188,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     }
 
     public override bool remove_item_by_id (uint32 id) {
-        foreach (Gtk.Widget child in get_children ()) {
+        foreach (unowned Gtk.Widget child in get_children ()) {
             if (child is SidebarItemInterface) {
-                var row = (SidebarItemInterface)child;
+                unowned var row = (SidebarItemInterface)child;
                 if (row.permanent) {
                     continue;
                 } else if (row.id == id) {

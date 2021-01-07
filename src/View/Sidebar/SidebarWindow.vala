@@ -142,7 +142,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
     /* SidebarInterface */
     public uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item, Marlin.PlaceType category) {
-        uint32 id = -1;
+        uint32 id = 0;
         switch (category) {
             case Marlin.PlaceType.BOOKMARKS_CATEGORY:
                 id = bookmark_listbox.add_plugin_item (plugin_item);
@@ -157,14 +157,14 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
                 break;
 
             default:
-                return -1;
+                break;
         }
 
         return id;
     }
 
     public bool update_plugin_item (Marlin.SidebarPluginItem item, uint32 item_id) {
-        if (item_id < 0) {
+        if (item_id == 0) {
             return false;
         }
 

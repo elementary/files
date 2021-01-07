@@ -203,14 +203,10 @@ namespace Marlin {
 
         public void move_item_uri (string uri, int step) {
             bool list_changed = false;
-            unowned GLib.List<Marlin.Bookmark> node = list;
-            unowned GLib.List<Marlin.Bookmark> next = node.next;
-
             int index = 0;
-            for (node = list; node != null; node = next) {
-                next = node.next;
-                if (uri == node.data.uri) {
-                    var bm = node.data;
+
+            foreach (unowned Bookmark bm in list) {
+                if (uri == bm.uri) {
                     list.remove (bm);
                     list.insert (bm, index + step);
                     list_changed = true;
