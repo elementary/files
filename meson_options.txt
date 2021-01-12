@@ -1,2 +1,2 @@
-option('with-unity', type : 'feature', value : 'auto', description : 'Add Unity launcher support')
 option('with-zeitgeist', type : 'feature', value : 'auto', description : 'Add Zeitgeist support')
+option('systemduserunitdir', type: 'string', value: '', description: 'custom directory for systemd user units, or \'no\' to disable')

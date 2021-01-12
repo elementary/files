@@ -68,7 +68,7 @@ namespace FM {
         }
 
         protected void set_up_icon_renderer () {
-            icon_renderer.set_property ("follow-state", true);
+            icon_renderer.follow_state = true;
         }
 
 
@@ -270,9 +270,6 @@ namespace FM {
                         } else if (on_icon) {
                             zone = ClickZone.ICON;
                         } else if (rubberband) {
-                            /* Fake location outside centre top of item for rubberbanding */
-                            event.x = rect.x + rect.width / 2;
-                            event.y = rect.y - 10 + (int)(get_vadjustment ().value);
                             zone = ClickZone.BLANK_NO_PATH;
                         }
                     } else {

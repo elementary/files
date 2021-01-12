@@ -3,7 +3,6 @@ src/main.vala
 src/Application.vala
 src/marlin-deep-count.vala
 src/ProgressUIHandler.vala
-src/QuicklistHandler.vala
 src/TextRenderer.vala
 src/ClipboardManager.vala
 src/IconRenderer.vala
@@ -45,9 +44,6 @@ src/View/Widgets/PermissionButton.vala
 src/View/Widgets/ProgressInfoWidget.vala
 src/View/Widgets/SingleLineEditableLabel.vala
 
-filechooser-module/FileChooserDialog.vala
-filechooser-module/Plugin.vala
-
 libcore/AbstractSidebar.vala
 libcore/AbstractSlot.vala
 libcore/BookmarkList.vala
@@ -76,6 +72,7 @@ libcore/TrashMonitor.vala
 libcore/UndoManager.vala
 libcore/UserUtils.vala
 libcore/FileOperations/CommonJob.vala
+libcore/FileOperations/DialogUtils.vala
 libcore/FileOperations/EmptyTrashJob.vala
 libcore/FileOperations/MountUtils.vala
 
