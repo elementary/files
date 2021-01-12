@@ -117,7 +117,6 @@ subdir('src')
 subdir('data')
 subdir('pantheon-files-daemon')
 subdir('plugins')
-subdir('filechooser-module')
 subdir('filechooser-portal')
 meson.add_install_script('meson/post_install.py')
 

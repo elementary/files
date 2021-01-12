@@ -31,13 +31,18 @@ namespace FM
             public static ColumnID from_string (string colstr);
         }
 
+        [CCode (has_construct_function = false)]
+        public ListModel ();
+        [NoAccessorMethod]
+        public bool has_child { get; set; }
+        [NoAccessorMethod]
+        public int size { get; set; }
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public bool unload_subdirectory(Gtk.TreeIter iter);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
         public bool remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
         public GOF.File? file_for_path (Gtk.TreePath path);
-        public static GLib.Type get_type ();
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
