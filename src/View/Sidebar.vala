@@ -337,7 +337,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         volume_monitor.mount_changed.connect (mount_changed_callback);
 
         volume_monitor.drive_disconnected.connect (drive_disconnected_callback);
-        volume_monitor.drive_changed.connect (drive_connected_callback);
+        volume_monitor.drive_connected.connect (drive_connected_callback);
         volume_monitor.drive_changed.connect (drive_changed_callback);
     }
     private void disconnect_volume_monitor_signals () {
@@ -351,7 +351,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
         volume_monitor.mount_changed.disconnect (mount_changed_callback);
 
         volume_monitor.drive_disconnected.disconnect (drive_disconnected_callback);
-        volume_monitor.drive_changed.disconnect (drive_connected_callback);
+        volume_monitor.drive_connected.disconnect (drive_connected_callback);
         volume_monitor.drive_changed.disconnect (drive_changed_callback);
     }
 
