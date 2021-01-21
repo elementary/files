@@ -291,7 +291,7 @@ public class Marlin.Application : Gtk.Application {
         if (!(++n_volumes < drive.get_volumes ().length ())) {
             var notification = new Notification (_("%s connected").printf (drive.get_name ()));
             notification.set_icon (drive.get_icon ());
-            notification.set_body (_("With %u %s").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
+            notification.set_body (_("With %u %s present").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
 
             this.send_notification (this.application_id, notification);
 
