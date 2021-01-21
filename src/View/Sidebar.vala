@@ -982,9 +982,9 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                         format_size (fs_capacity)
                     );
 
-                    var tooltip = "%s\n%s".printf (
+                    var tooltip = ("%s\n" + Granite.TOOLTIP_SECONDARY_TEXT_MARKUP).printf (
                         used_string,
-                        Granite.TOOLTIP_SECONDARY_TEXT_MARKUP.printf (size_string)
+                        size_string
                     );
 
                     Gtk.TreeIter? itr = null;
