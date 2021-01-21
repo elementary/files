@@ -982,7 +982,7 @@ public class Marlin.Sidebar : Marlin.AbstractSidebar {
                         format_size (fs_capacity)
                     );
 
-                    var tooltip = "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (
+                    var tooltip = ("%s\n" + Granite.TOOLTIP_SECONDARY_TEXT_MARKUP).printf (
                         used_string,
                         size_string
                     );
