@@ -63,19 +63,6 @@ public class Marlin.Application : Gtk.Application {
         /* Needed by Glib.Application */
         this.application_id = Marlin.APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
-
-        this.volume_monitor = GLib.VolumeMonitor.get ();
-
-        this.volume_monitor.drive_connected.connect ((drive) => {
-            debug ("Drive: %s".printf (drive.get_name ()));
-            debug ("Volume(s): %u".printf (drive.get_volumes ().length ()));
-            debug ("Icon string name: %s".printf (drive.get_icon ().to_string ()));
-
-            var notification = new Notification (_("%s connected").printf (drive.get_name ()));
-            notification.set_icon (drive.get_icon ());
-
-            this.send_notification (this.application_id, notification);
-        });
     }
 
     public override void startup () {
@@ -113,6 +100,7 @@ public class Marlin.Application : Gtk.Application {
 
         this.volume_monitor = VolumeMonitor.get ();
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
+        this.volume_monitor.drive_connected.connect (drive_connected_callback);
 
 #if HAVE_UNITY
         QuicklistHandler.get_singleton ();
@@ -289,6 +277,23 @@ public class Marlin.Application : Gtk.Application {
         foreach (var window in this.get_windows ()) {
             ((Marlin.View.Window)window).mount_removed (mount);
         }
+    }
+
+    private void drive_connected_callback (Drive drive) {
+        debug ("Drive: %s".printf (drive.get_name ()));
+        debug ("Volume(s): %u".printf (drive.get_volumes ().length ()));
+        debug ("Icon string name: %s".printf (drive.get_icon ().to_string ()));
+
+        var notification = new Notification (_("%s connected").printf (drive.get_name ()));
+        notification.set_icon (drive.get_icon ());
+
+        var n_volumes = drive.get_volumes ().length ();
+
+        if (n_volumes > 0) {
+            notification.set_body (_("With %u %s").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
+        }
+
+        this.send_notification (this.application_id, notification);
     }
 
     private void init_schemas () {
