@@ -99,8 +99,13 @@ public class Marlin.Application : Gtk.Application {
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
 
         this.volume_monitor = VolumeMonitor.get ();
+
+        var n_volumes = 0;
+
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
-        this.volume_monitor.drive_connected.connect (drive_connected_callback);
+        this.volume_monitor.volume_added.connect ((volume) => {
+            volume_added_callback (volume, ref n_volumes);
+        });
 
 #if HAVE_UNITY
         QuicklistHandler.get_singleton ();
@@ -279,21 +284,20 @@ public class Marlin.Application : Gtk.Application {
         }
     }
 
-    private void drive_connected_callback (Drive drive) {
-        debug ("Drive: %s".printf (drive.get_name ()));
-        debug ("Volume(s): %u".printf (drive.get_volumes ().length ()));
-        debug ("Icon string name: %s".printf (drive.get_icon ().to_string ()));
+    private void volume_added_callback (Volume volume, ref int n_volumes) {
+        var drive = volume.get_drive ();
 
-        var notification = new Notification (_("%s connected").printf (drive.get_name ()));
-        notification.set_icon (drive.get_icon ());
-
-        var n_volumes = drive.get_volumes ().length ();
-
-        if (n_volumes > 0) {
+        // Send notification only after all volumes are added
+        if (!(++n_volumes < drive.get_volumes ().length ())) {
+            var notification = new Notification (_("%s connected").printf (drive.get_name ()));
+            notification.set_icon (drive.get_icon ());
             notification.set_body (_("With %u %s").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
-        }
 
-        this.send_notification (this.application_id, notification);
+            this.send_notification (this.application_id, notification);
+
+            // Reset for next added device
+            n_volumes = 0;
+        }
     }
 
     private void init_schemas () {
