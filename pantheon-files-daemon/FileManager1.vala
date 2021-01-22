@@ -19,6 +19,18 @@
 [DBus (name = "org.freedesktop.FileManager1")]
 public class FileManager1 : Object {
 
+    private VolumeMonitor volume_monitor;
+
+    construct {
+        this.volume_monitor = VolumeMonitor.get ();
+
+        var n_volumes = 0;
+
+        this.volume_monitor.volume_added.connect ((volume) => {
+            volume_added_callback (volume, ref n_volumes);
+        });
+    }
+
     [DBus (name = "ShowFolders")]
     public void show_folders (string[] uris, string startup_id) throws DBusError, IOError {
         open_items_and_folders (uris, startup_id);
@@ -66,5 +78,21 @@ public class FileManager1 : Object {
     private static string prepare_uri_for_appinfo_create (string uri, bool allow_utf8 = true) {
         string? escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), reserved_chars, allow_utf8);
         return (escaped_uri ?? "").replace ("%", "%%");
+    }
+
+    private void volume_added_callback (Volume volume, ref int n_volumes) {
+        var drive = volume.get_drive ();
+
+        // Send notification only after all volumes are added
+        if (!(++n_volumes < drive.get_volumes ().length ())) {
+            var notification = new Notification (_("%s connected").printf (drive.get_name ()));
+            notification.set_icon (drive.get_icon ());
+            notification.set_body (_("With %u %s present").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
+
+            debug ("%s connected with %u volume(s) present".printf (drive.get_name (), n_volumes));
+
+            // Reset for next added device
+            n_volumes = 0;
+        }
     }
 }

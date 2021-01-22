@@ -99,13 +99,7 @@ public class Marlin.Application : Gtk.Application {
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
 
         this.volume_monitor = VolumeMonitor.get ();
-
-        var n_volumes = 0;
-
         this.volume_monitor.mount_removed.connect (mount_removed_callback);
-        this.volume_monitor.volume_added.connect ((volume) => {
-            volume_added_callback (volume, ref n_volumes);
-        });
 
 #if HAVE_UNITY
         QuicklistHandler.get_singleton ();
@@ -281,22 +275,6 @@ public class Marlin.Application : Gtk.Application {
         /* Notify each window */
         foreach (var window in this.get_windows ()) {
             ((Marlin.View.Window)window).mount_removed (mount);
-        }
-    }
-
-    private void volume_added_callback (Volume volume, ref int n_volumes) {
-        var drive = volume.get_drive ();
-
-        // Send notification only after all volumes are added
-        if (!(++n_volumes < drive.get_volumes ().length ())) {
-            var notification = new Notification (_("%s connected").printf (drive.get_name ()));
-            notification.set_icon (drive.get_icon ());
-            notification.set_body (_("With %u %s present").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
-
-            this.send_notification (this.application_id, notification);
-
-            // Reset for next added device
-            n_volumes = 0;
         }
     }
 
