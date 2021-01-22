@@ -60,5 +60,6 @@
                       () => {},
                       on_name_lost);
 
+        new Files.Daemon.DriveManager ().run ();
         new MainLoop ().run ();
     }
