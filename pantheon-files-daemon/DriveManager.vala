@@ -41,7 +41,7 @@ public class Files.Daemon.DriveManager : GLib.Application {
             notification.set_icon (drive.get_icon ());
             notification.set_body (_("With %u %s present").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
 
-            send_notification (null, notification);
+            GLib.Application.get_default ().send_notification ("io.elementary.files", notification);
 
             // Reset for next added device
             n_volumes = 0;
