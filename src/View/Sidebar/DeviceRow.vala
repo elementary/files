@@ -139,7 +139,11 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
         storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
         storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
-        storage.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        unowned var storage_style_context = storage.get_style_context ();
+        storage_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
+        storage_style_context.add_class ("inverted");
+        storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         icon_label_grid.attach (storage, 1, 1);
 
