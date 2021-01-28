@@ -64,7 +64,7 @@ namespace PF {
                 dialog.show_error_details (details_text);
             }
 
-            dialog.show ();
+            dialog.show_all ();
             return Source.REMOVE;
         });
 
