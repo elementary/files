@@ -19,7 +19,7 @@
 * Authored by: Corentin Noël <corentin@elementary.io>
 */
 
-public class PF.ConnectServerDialog : Gtk.Dialog {
+public class PF.ConnectServerDialog : Granite.Dialog {
     [Flags]
     private enum WidgetsFlag {
         NONE,
