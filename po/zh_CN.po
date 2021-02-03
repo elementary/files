@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-10 09:31+0000\n"
-"PO-Revision-Date: 2021-01-22 08:40+0000\n"
+"PO-Revision-Date: 2021-02-03 09:30+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -246,7 +246,7 @@ msgstr[0] "%u 个选中项"
 #: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
-msgstr "%s (%s %s)"
+msgstr "%s (%s，%s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
@@ -259,7 +259,7 @@ msgstr "系统"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
-msgstr "格式："
+msgstr "分区格式："
 
 #: src/Utils/MimeActions.vala:283
 msgid "Multiple file types selected"
@@ -299,7 +299,7 @@ msgstr "类型"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr "已修改"
+msgstr "修改时间"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
@@ -633,7 +633,7 @@ msgstr "剩余空间 %s"
 #: src/View/Sidebar.vala:980
 #, c-format
 msgid "%s used of %s"
-msgstr "已使用 %s / %s"
+msgstr "已使用 %s / 共 %s"
 
 #: src/View/Sidebar.vala:1455
 #, c-format
