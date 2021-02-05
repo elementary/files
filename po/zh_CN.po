@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-10 09:31+0000\n"
-"PO-Revision-Date: 2020-12-25 10:16+0000\n"
+"PO-Revision-Date: 2021-02-03 09:30+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: src/Application.vala:158
@@ -246,7 +246,7 @@ msgstr[0] "%u 个选中项"
 #: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
-msgstr "%s (%s %s)"
+msgstr "%s (%s，%s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
@@ -259,7 +259,7 @@ msgstr "系统"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
-msgstr "格式："
+msgstr "分区格式："
 
 #: src/Utils/MimeActions.vala:283
 msgid "Multiple file types selected"
@@ -299,7 +299,7 @@ msgstr "类型"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr "已修改"
+msgstr "修改时间"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
@@ -633,7 +633,7 @@ msgstr "剩余空间 %s"
 #: src/View/Sidebar.vala:980
 #, c-format
 msgid "%s used of %s"
-msgstr "已使用 %s / %s"
+msgstr "已使用 %s / 共 %s"
 
 #: src/View/Sidebar.vala:1455
 #, c-format
@@ -756,12 +756,12 @@ msgstr "%u 个文件夹"
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr " 和 %u 其他项目(%s)已被选中"
+msgstr " 和 %u 个其他项目 - 已选中(%s)"
 
 #: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr " 和 %u 个其他条目 - 已选中(%s)"
+msgstr " 和 %u 个其他项目 - 已选中(%s)"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -770,29 +770,29 @@ msgstr " 已选中"
 #: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "已选中 %u 个条目 (%s)"
+msgstr "已选中 %u 个项目 (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
-msgstr "%u 子文件夹， "
+msgstr "%u 个子文件夹， "
 
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folders, "
-msgstr "%u 子文件夹， "
+msgstr "%u 个子文件夹， "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
-msgstr "%u 文件， "
+msgstr "%u 个文件， "
 
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u files, "
-msgstr "%u 文件， "
+msgstr "%u 个文件， "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -862,7 +862,7 @@ msgstr "服务器详情"
 
 #: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
-msgstr "服务器名或 IP 地址"
+msgstr "服务器名称或 IP 地址"
 
 #: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
@@ -894,7 +894,7 @@ msgstr "用户详情"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Name of Windows domain"
-msgstr "Windows 域名名称"
+msgstr "Windows 域名称"
 
 #: libcore/ConnectServerDialog.vala:186
 msgid "Domain name:"
@@ -902,7 +902,7 @@ msgstr "域名："
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Name of user on server"
-msgstr "服务器共享用户名称"
+msgstr "服务器用户名"
 
 #: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
@@ -914,7 +914,7 @@ msgstr "密码："
 
 #: libcore/ConnectServerDialog.vala:198
 msgid "Remember this password"
-msgstr "记住此密码"
+msgstr "记住密码"
 
 #: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
 #: libcore/FileConflictDialog.vala:219
@@ -935,7 +935,7 @@ msgstr "正在连接…"
 
 #: libcore/ConnectServerDialog.vala:388
 msgid "Please verify your user details."
-msgstr "请验证您的用户详情。"
+msgstr "请验检查您的用户信息。"
 
 #: libcore/DndHandler.vala:48
 #, c-format
@@ -976,11 +976,11 @@ msgstr "重设"
 
 #: libcore/FileConflictDialog.vala:211
 msgid "_Select a new name for the destination"
-msgstr "为目标选择新名称"
+msgstr "选择新的目的地名称"
 
 #: libcore/FileConflictDialog.vala:214
 msgid "Apply this action to all files"
-msgstr "将此操作应用到所有文件"
+msgstr "应用到所有文件"
 
 #: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
 msgid "_Skip"
@@ -1049,7 +1049,7 @@ msgstr "替换“%s”文件？"
 
 #: libcore/FileConflictDialog.vala:356
 msgid "Replacing it will overwrite its content."
-msgstr "若替换它，其内容将被覆盖。"
+msgstr "若选择替换，其内容将被覆盖。"
 
 #: libcore/FileConflictDialog.vala:359
 #, c-format
@@ -1419,7 +1419,7 @@ msgstr "正在删除文件"
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "正在准备复制 %'d 个文件（%s）"
+msgstr[0] "准备复制 %'d 个文件（%s）"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1429,7 +1429,7 @@ msgstr[0] "正在准备复制 %'d 个文件（%s）"
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "正在准备移动 %'d 个文件（%s）"
+msgstr[0] "准备移动 %'d 个文件（%s）"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1439,13 +1439,13 @@ msgstr[0] "正在准备移动 %'d 个文件（%s）"
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "正在准备删除 %'d 个文件（%s）"
+msgstr[0] "准备删除 %'d 个文件（%s）"
 
 #: libcore/marlin-file-operations.c:1370
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "正在准备将 %'d 个文件移到回收站"
+msgstr[0] "准备将 %'d 个文件移到回收站"
 
 #: libcore/marlin-file-operations.c:1401 libcore/marlin-file-operations.c:2313
 #: libcore/marlin-file-operations.c:2453 libcore/marlin-file-operations.c:2505

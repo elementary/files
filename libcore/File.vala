@@ -1076,7 +1076,7 @@ public class GOF.File : GLib.Object {
             if (count == 0) {
                 return _("Empty");
             } else {
-                return ngettext (_("%i item"), _("%i items"), count).printf (count);
+                return ngettext ("%i item", "%i items", count).printf (count);
             }
         } catch (Error e) {
             return _("Inaccessible");
