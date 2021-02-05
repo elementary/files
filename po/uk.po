@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-28 12:15+0000\n"
-"PO-Revision-Date: 2020-10-30 00:15+0000\n"
+"POT-Creation-Date: 2020-11-10 09:31+0000\n"
+"PO-Revision-Date: 2021-01-25 21:21+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-12 06:02+0000\n"
 
 #: src/Application.vala:158
@@ -238,7 +238,7 @@ msgstr[2] "%u файлів"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:911
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:933
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -270,7 +270,7 @@ msgid "Disk Properties"
 msgstr "Властивості диску"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:68
+#: libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Файлова система"
 
@@ -516,7 +516,7 @@ msgstr "У вас немає дозволу змінювати це розташ
 
 #: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
-msgstr "Неможливо копіювати файли, що знаходяться у смітнику"
+msgstr "Неможливо копіювати файли зі смітника"
 
 #: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
@@ -598,7 +598,7 @@ msgstr "Відкрити вашу особисту теку"
 msgid "View the list of recently used files"
 msgstr "Переглянути список нещодавніх файлів"
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
+#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Смітник"
 
@@ -614,7 +614,7 @@ msgstr "Пристрої"
 msgid "Internal and connected storage devices"
 msgstr "Внутрішні та під'єднані запам'ятовувальні пристрої"
 
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
+#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "Мережа"
 
@@ -1100,30 +1100,30 @@ msgstr "Не вдається визначити початкове розташ
 msgid "The item cannot be restored from trash"
 msgstr "Елемент неможливо відновити зі смітника"
 
-#: libcore/FileUtils.vala:497
+#: libcore/FileUtils.vala:516
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Неможливо перейменувати на '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:588
+#: libcore/FileUtils.vala:607
 #, c-format
 msgid "Today at %s"
 msgstr "Сьогодні о %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:596
+#: libcore/FileUtils.vala:615
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Вчора о %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:604
+#: libcore/FileUtils.vala:623
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A о %s"
 
-#: libcore/FileUtils.vala:900
+#: libcore/FileUtils.vala:922
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1131,7 +1131,7 @@ msgstr[0] "%'d секунда"
 msgstr[1] "%'d секунди"
 msgstr[2] "%'d секунд"
 
-#: libcore/FileUtils.vala:904 libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:926 libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1139,7 +1139,7 @@ msgstr[0] "%'d хвилина"
 msgstr[1] "%'d хвилини"
 msgstr[2] "%'d хвилин"
 
-#: libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:933
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1147,7 +1147,7 @@ msgstr[0] "%'d година"
 msgstr[1] "%'d години"
 msgstr[2] "%'d годин"
 
-#: libcore/FileUtils.vala:915
+#: libcore/FileUtils.vala:937
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1156,26 +1156,26 @@ msgstr[1] "приблизно %'d години"
 msgstr[2] "приблизно %'d годин"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:945
 msgid "copy"
 msgstr "копія"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:947
 msgid "link"
 msgstr "посилання"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:949
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:929
+#: libcore/FileUtils.vala:951
 msgid ")"
 msgstr ")"
 
-#: libcore/gof-directory-async.vala:690
+#: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
 msgstr "Сервер не відповідає надто довго"
 
@@ -1411,8 +1411,8 @@ msgstr "Не вдалося перемістити файл до смітник�
 #: libcore/marlin-file-operations.c:1099
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
-"Не дозволяється видаляти або переміщувати до смітника файли, що знаходяться "
-"в файловій системі лише для читання."
+"Не дозволено видаляти або переміщувати до смітника файли з файлової системи "
+"лише для читання."
 
 #: libcore/marlin-file-operations.c:1102
 msgid ""
@@ -1785,7 +1785,7 @@ msgstr "Не можна копіювати теку в саму себе."
 
 #: libcore/marlin-file-operations.c:3034 libcore/marlin-file-operations.c:3695
 msgid "The destination folder is inside the source folder."
-msgstr "Цільова тека знаходиться всередині первинної теки."
+msgstr "Цільову теку розміщено всередині первинної теки."
 
 #: libcore/marlin-file-operations.c:3065
 msgid "You cannot move a file over itself."
@@ -1970,37 +1970,45 @@ msgstr "Подання стовпчиками"
 msgid "Files"
 msgstr "Файли"
 
-#: libwidgets/Resources.vala:58
+#: libwidgets/Resources.vala:61
 msgid "AFP"
 msgstr "AFP"
 
-#: libwidgets/Resources.vala:59
+#: libwidgets/Resources.vala:62
+msgid "AFC"
+msgstr "AFC"
+
+#: libwidgets/Resources.vala:63
 msgid "DAV"
 msgstr "DAV"
 
-#: libwidgets/Resources.vala:60
+#: libwidgets/Resources.vala:64
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libwidgets/Resources.vala:61
+#: libwidgets/Resources.vala:65
 msgid "FTP"
 msgstr "FTP"
 
-#: libwidgets/Resources.vala:63
+#: libwidgets/Resources.vala:67
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libwidgets/Resources.vala:64
+#: libwidgets/Resources.vala:68
 msgid "SMB"
 msgstr "SMB"
 
-#: libwidgets/Resources.vala:66
+#: libwidgets/Resources.vala:70
 msgid "Recent"
 msgstr "Нещодавні"
 
-#: libwidgets/Resources.vala:67
+#: libwidgets/Resources.vala:71
 msgid "MTP"
 msgstr "MTP"
+
+#: libwidgets/Resources.vala:72
+msgid "GPHOTO2"
+msgstr "GPHOTO2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
