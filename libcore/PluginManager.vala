@@ -1,6 +1,6 @@
 /***
   Copyright (C) 2011 Lucas Baudin <xapantu@gmail.com>
-  Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
+  Copyright (c) 2015-2021 elementary LLC <https://elementary.io>
 
   This program is free software; you can redistribute it and/or
   modify it under the terms of the GNU General Public License as

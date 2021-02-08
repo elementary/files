@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2019 -20 elementary LLC <https://elementary.io>
+    Copyright (c) 2019 -21 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -283,21 +283,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             return;
         }
 
-        var protocol = Uri.parse_scheme (uri);
-        if (protocol == null || protocol == "file") {
-            try {
-                Ggit.Repository.open (File.new_for_path (uri));
-            } catch (Error e) {
-                warning ("Not a git repository - %s", uri);
-                return;
-            }
-        } else if (!("http | https | ssh | git").contains (protocol)) {
-                warning ("Invalid protocol %", protocol);
-            return;
-        }
-
         var basename = Path.get_basename (uri);
-
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
         bool folder_selected = target.uri != slot.uri;
