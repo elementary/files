@@ -69,8 +69,6 @@ public class Files.LegacyFileChooserDialog : Object {
         remove_gtk_widgets ();
         setup_filter_box ();
 
-        var header_bar = new Gtk.HeaderBar ();
-
         var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_back.tooltip_text = _("Previous");
         button_back.sensitive = false;
@@ -82,6 +80,7 @@ public class Files.LegacyFileChooserDialog : Object {
         var location_bar = new Marlin.View.Chrome.BasicLocationBar ();
         location_bar.hexpand = true;
 
+        var header_bar = new Gtk.HeaderBar ();
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
         header_bar.pack_start (location_bar);
