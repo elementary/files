@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.FileConflictDialog : Gtk.Dialog {
+public class Marlin.FileConflictDialog : Granite.Dialog {
     public string new_name {
         owned get {
             return rename_entry.text;

@@ -20,7 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
+protected abstract class Marlin.View.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
     protected Gtk.Stack stack;
