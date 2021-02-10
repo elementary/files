@@ -153,6 +153,7 @@
 
 public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     private const string EXCLUDED_FS_TYPES = "fuse"; // Filesystems such sshfs and ntfs return this type
+    private const string GIT_SUFFIX = ".git";
     private HashTable<string, Marlin.GitRepoInfo?> repo_map;
     private HashTable<string, Marlin.GitRepoChildInfo?> child_map;
 
@@ -298,7 +299,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
 
         string? uri = clipboard.wait_for_text ();
 
-        if (uri == null) {
+        if (uri == null || !uri.has_suffix (GIT_SUFFIX)) { //TODO Provide comprehensive Regex for Git URLs
             return;
         }
 
