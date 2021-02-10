@@ -77,6 +77,17 @@
         GLib.File target;
     }
 
+    public class GitRemoteCallbacks : Ggit.RemoteCallbacks {
+
+        public override Ggit.Cred? credentials (string url, string? username_from_url, Ggit.Credtype allowed_types) throws Error {
+            if (Ggit.Credtype.SSH_KEY in allowed_types) {
+                debug ("Retrieve SSH key for '%s'", url);
+                return new Ggit.CredSshKeyFromAgent (username_from_url);
+            }
+            return null;
+        }
+    }
+
     public class GitCloner : Object {
         public string origin_uri {get; construct;}
         public GLib.File target {get; construct;}
@@ -123,8 +134,16 @@
         }
 
         static void task_thread_func (Task task, Object source, CloneData* clone_data, Cancellable? cancellable = null) {
+            var remote_callbacks = new GitRemoteCallbacks ();
+
+            var fetch_options = new Ggit.FetchOptions ();
+            fetch_options.set_remote_callbacks (remote_callbacks);
+
+            var clone_options = new Ggit.CloneOptions ();
+            clone_options.set_fetch_options (fetch_options);
+
             try {
-                Ggit.Repository.clone (clone_data.origin_uri, clone_data.target, null);
+                Ggit.Repository.clone (clone_data.origin_uri, clone_data.target, clone_options);
                 task.return_boolean (true);
             } catch (Error err) {
                 task.return_error (err);
