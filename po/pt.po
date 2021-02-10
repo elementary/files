@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-10 09:31+0000\n"
-"PO-Revision-Date: 2020-11-12 18:15+0000\n"
+"PO-Revision-Date: 2021-02-10 14:33+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:158
@@ -622,7 +622,7 @@ msgstr "Explorar o conteúdo da rede"
 
 #: src/View/Sidebar.vala:820
 msgid "Connect Server"
-msgstr "Ligar ao Servidor"
+msgstr "Ligar ao servidor"
 
 #: src/View/Sidebar.vala:821
 msgid "Connect to a network server"
@@ -872,7 +872,7 @@ msgstr "Detalhes do servidor"
 
 #: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
-msgstr "Nome do servidor ou Endereço IP"
+msgstr "Nome do servidor ou endereço de IP"
 
 #: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
@@ -888,7 +888,7 @@ msgstr "Nome da partilha no servidor"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
-msgstr "Partilha:"
+msgstr "Partilhar:"
 
 #: libcore/ConnectServerDialog.vala:180
 msgid "Path of shared folder on server"
