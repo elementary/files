@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-10 09:31+0000\n"
-"PO-Revision-Date: 2021-02-08 20:54+0000\n"
-"Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
+"PO-Revision-Date: 2021-02-14 13:36+0000\n"
+"Last-Translator: Anton Grouchtchak <goldtom1423@gmail.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
 "Language: uk\n"
@@ -686,7 +686,7 @@ msgstr "Доступ заборонено"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "Увімкнено режим приватності"
+msgstr "Режим приватності ввімкнено"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
