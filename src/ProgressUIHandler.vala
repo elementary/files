@@ -27,7 +27,7 @@
 ***/
 public class Marlin.Progress.UIHandler : Object {
     private PF.Progress.InfoManager manager = null;
-    private Gtk.Dialog progress_window = null;
+    private Granite.Dialog progress_window = null;
     private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
     private Gtk.Application application;
@@ -121,9 +121,8 @@ public class Marlin.Progress.UIHandler : Object {
     private void ensure_window () {
         if (progress_window == null) {
             /* This provides an undeletable, unminimisable window in which to show the info widgets */
-            progress_window = new Gtk.Dialog () {
+            progress_window = new Granite.Dialog () {
                 resizable = false,
-                deletable = false,
                 title = _("File Operations"),
                 icon_name = "system-file-manager"
             };
