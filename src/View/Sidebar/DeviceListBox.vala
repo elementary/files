@@ -131,6 +131,14 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         } // Bookmark all native mount points ();
     }
 
+    public override void refresh_info () {
+        get_children ().@foreach ((item) => {
+            if (item is DeviceRow) {
+                ((DeviceRow)item).update_free_space ();
+            }
+        });
+    }
+
     private void bookmark_stoppable_or_removeable_drive_if_without_volumes (Drive drive) {
         /* If the drive has no mountable volumes and we cannot detect media change.. we
          * display the drive in the sidebar so the user can manually poll the drive by

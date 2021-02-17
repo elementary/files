@@ -246,7 +246,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
     public void on_free_space_change () {
         /* We cannot be sure which devices will experience a freespace change so refresh all */
-        device_listbox.refresh ();
+        device_listbox.refresh_info ();
     }
 
     private class SidebarExpander : Gtk.ToggleButton {

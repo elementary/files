@@ -31,7 +31,8 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         sidebar.path_change_request (item.uri, flag);
     }
 
-    public abstract void refresh ();
+    public abstract void refresh (); //Clear and recreate all rows
+    public virtual void refresh_info () {} //Update all rows without recreating them
 
     public virtual uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {return 0;}
 
