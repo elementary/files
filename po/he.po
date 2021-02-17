@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-17 01:11+0000\n"
-"PO-Revision-Date: 2021-01-24 15:10+0000\n"
+"PO-Revision-Date: 2021-02-17 06:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -759,12 +759,11 @@ msgid "%u folders"
 msgstr "%u תיקיות"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " ופריט נוסף (%s) נבחרו"
-msgstr[1] " ופריט נוסף (%s) נבחרו"
+msgstr[1] " ו־%u פריטים נוספים (%s) נבחרו"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -777,21 +776,19 @@ msgstr "נבחרו %u פריטים (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "תת־תיקייה אחת, "
-msgstr[1] "תת־תיקייה אחת, "
+msgstr[1] "%u תת־תיקיות, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "קובץ אחד, "
-msgstr[1] "קובץ אחד, "
+msgstr[1] "%u קבצים, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -806,12 +803,11 @@ msgstr "גודל לא ידוע"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "קובץ אחד אינו קריא"
-msgstr[1] "קובץ אחד אינו קריא"
+msgstr[1] "%u קבצים אינם קריאים"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
