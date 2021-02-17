@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-17 01:11+0000\n"
-"PO-Revision-Date: 2021-02-17 06:36+0000\n"
+"PO-Revision-Date: 2021-02-17 18:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -112,7 +112,7 @@ msgstr "Brukt:"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
-msgstr "Bruk som standard"
+msgstr "Bruk som forvalg"
 
 #: src/Dialogs/PropertiesWindow.vala:123
 #: src/View/AbstractDirectoryView.vala:1968 src/View/PopupMenuBuilder.vala:81
@@ -175,9 +175,8 @@ msgid "Deleted:"
 msgstr "Slettet:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
-#, fuzzy
 msgid "Media type:"
-msgstr "MIME-type:"
+msgstr "Mediatype:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
@@ -331,12 +330,8 @@ msgid "Create the folder \"%s\""
 msgstr "Lag mappen «%s»"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"Feilet å lage mappen\n"
-"\n"
-"%s"
+msgstr "Klarte ikke å opprette mappen"
 
 #: src/View/AbstractDirectoryView.vala:820
 #: src/View/AbstractDirectoryView.vala:1131
@@ -400,10 +395,8 @@ msgid "Paste"
 msgstr "Lim inn"
 
 #: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Bokmerker"
+msgstr "Legg til som bokmerke"
 
 #: src/View/AbstractDirectoryView.vala:1976
 msgid "Cut"
@@ -435,10 +428,8 @@ msgid "Remove from History"
 msgstr "Slett fra historikk"
 
 #: src/View/AbstractDirectoryView.vala:2031
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Gi nytt navn"
+msgstr "Gi nytt navn …"
 
 #: src/View/AbstractDirectoryView.vala:2038
 msgid "Copy as Link"
@@ -461,9 +452,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Vis miniatyrbilder fra andre steder"
 
 #: src/View/AbstractDirectoryView.vala:2092
-#, fuzzy
 msgid "Hide Thumbnails"
-msgstr "Vis miniatyrbilder fra andre steder"
+msgstr "Skjul miniatyrbilder"
 
 #: src/View/AbstractDirectoryView.vala:2112
 msgid "Paste Link"
@@ -643,9 +633,9 @@ msgstr "Koble til en nettverkstjener"
 
 #. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
 #: src/View/Sidebar.vala:892
-#, fuzzy, c-format
+#, c-format
 msgid "%s on %s"
-msgstr "%S av %S"
+msgstr "%s på %s"
 
 #: src/View/Sidebar.vala:979
 #, c-format
@@ -653,9 +643,9 @@ msgid "%s free"
 msgstr "%s ledig"
 
 #: src/View/Sidebar.vala:980
-#, fuzzy, c-format
+#, c-format
 msgid "%s used of %s"
-msgstr "%S av %S"
+msgstr "%s brukt av %s"
 
 #: src/View/Sidebar.vala:1455
 #, c-format
@@ -688,7 +678,6 @@ msgid "Access Denied"
 msgstr "Ingen tilgang"
 
 #: src/View/PrivacyModeOn.vala:28
-#, fuzzy
 msgid "Privacy mode is on"
 msgstr "Personvernsmodus er på"
 
@@ -775,11 +764,10 @@ msgid "%u folders"
 msgstr "%u mapper"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " og %u andre enheter (%s) valgt"
+msgstr[0] " og %u annen enhet (%s) valgt"
 msgstr[1] " og %u andre enheter (%s) valgt"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
@@ -793,21 +781,19 @@ msgstr "%u elementer valgt (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u undermappe, "
-msgstr[1] "%u undermappe, "
+msgstr[1] "%u undermapper, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u fil, "
-msgstr[1] "%u fil, "
+msgstr[1] "%u filer, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -822,11 +808,10 @@ msgstr "ukjent størrelse"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] "%u ulesbare filer"
+msgstr[0] "%u ulesbar fil"
 msgstr[1] "%u ulesbare filer"
 
 #: src/View/Widgets/PermissionButton.vala:38
@@ -1099,21 +1084,21 @@ msgstr "Kunne ikke endre navnet til «%s»"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:607
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "I dag klokka %-H:%M"
+msgstr "I dag kl. %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:615
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "I går klokka %-H:%M"
+msgstr "I går kl. %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:623
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A den %-H:%M"
+msgstr "%A den %s"
 
 #: libcore/FileUtils.vala:922
 #, c-format
@@ -1148,7 +1133,7 @@ msgstr[1] "omtrent %'d timer"
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
-msgstr " (kopier)"
+msgstr "kopi"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:947
@@ -1157,10 +1142,8 @@ msgstr "lenke"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:949
-#, fuzzy
-#| msgid " ("
 msgid "("
-msgstr " ("
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:951
@@ -1177,14 +1160,12 @@ msgid "Preparing"
 msgstr "Forbereder"
 
 #: libcore/StockDialogs.vala:20
-#, fuzzy
 msgid "_Cancel"
-msgstr "Avbryt"
+msgstr "_Avbryt"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
 msgid "Delete"
-msgstr "Slettet:"
+msgstr "Slett"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1254,17 +1235,16 @@ msgid "Emptying Trash"
 msgstr "Tømmer papirkurv"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
-msgstr "Kan ikke montere %s"
+msgstr "Kan ikke montere «%s»"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:285
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "Er du sikker på at du vil slette «%B» fra papirkurven permanent?"
+msgstr "Er du sikker på at du vil slette «%s» fra papirkurven for godt?"
 
 #: libcore/marlin-file-operations.c:289
 #, c-format
@@ -1287,10 +1267,9 @@ msgstr "Hvis du sletter et element vil det bli slettet permanent."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:327
-#, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Slette alle elementer i papirkurven permanent?"
+msgstr "Slett «%s» for godt?"
 
 #: libcore/marlin-file-operations.c:330
 #, c-format
@@ -1319,11 +1298,11 @@ msgstr "Sletter filer"
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
 #: libcore/marlin-file-operations.c:395
-#, fuzzy, c-format
+#, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "%T gjenstår"
-msgstr[1] "%T gjenstår"
+msgstr[0] "%s gjenstår"
+msgstr[1] "%s gjenstår"
 
 #: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
 #: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
@@ -1334,23 +1313,22 @@ msgstr "Feil under sletting."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:470
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappen «%B» kan ikke slettes fordi du ikke har rettigheter til å se "
+"Filer i mappen «%s» kan ikke slettes fordi du ikke har rettigheter til å se "
 "dem."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:475 libcore/marlin-file-operations.c:1203
 #: libcore/marlin-file-operations.c:2216
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
-msgstr ""
-"Det oppstod en feil under henting av informasjon om filene i mappe «%B»."
+msgstr "Det oppstod en feil under henting av info om filene i mappen «%s»."
 
 #: libcore/marlin-file-operations.c:487 libcore/marlin-file-operations.c:2228
 msgid "_Skip files"
@@ -1359,32 +1337,32 @@ msgstr "_Hopp over filer"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:511
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Mappen «%B» kan ikke slettes fordi du ikke har rettigheter til å lese den."
+"Mappen «%s» kan ikke slettes fordi du ikke har rettigheter til å lese den."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:516 libcore/marlin-file-operations.c:1250
 #: libcore/marlin-file-operations.c:2270
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "Det oppstod en feil under lesing av mappe «%B»."
+msgstr "Det oppstod en feil under lesing av mappen «%s»."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:557
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "Kunne ikke fjerne mappen %B."
+msgstr "Kunne ikke fjerne mappen %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:641
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error deleting %s."
-msgstr "Det oppstod en feil under sletting av %B."
+msgstr "Det oppstod en feil under sletting av %s."
 
 #: libcore/marlin-file-operations.c:728
 msgid "Moving files to trash"
@@ -1469,33 +1447,33 @@ msgstr "Sletter filer"
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1073
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Forbereder kopiering av %'d fil (%S)"
-msgstr[1] "Forbereder kopiering av %'d filer (%S)"
+msgstr[0] "Forbereder kopiering av %'d fil (%s)"
+msgstr[1] "Forbereder kopiering av %'d filer (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1085
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "Forbereder flytting av %'d fil (%S)"
-msgstr[1] "Forbereder flytting av %'d filer (%S)"
+msgstr[0] "Forbereder flytting av %'d fil (%s)"
+msgstr[1] "Forbereder flytting av %'d filer (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1097
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "Forbereder sletting av %'d fil (%S)"
-msgstr[1] "Forbereder sletting av %'d filer (%S)"
+msgstr[0] "Forbereder sletting av %'d fil (%s)"
+msgstr[1] "Forbereder sletting av %'d filer (%s)"
 
 #: libcore/marlin-file-operations.c:1104
 #, c-format
@@ -1521,33 +1499,33 @@ msgstr "Feil oppstod ved kasting av filer i papirkurv."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1198
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappen «%B» kan ikke håndteres fordi du ikke har rettigheter til å "
+"Filer i mappen «%s» kan ikke håndteres fordi du ikke har rettigheter til å "
 "se dem."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1245
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Mappe «%B» kan ikke håndteres fordi du ikke har rettigheter til å lese den."
+"Mappen «%s» kan ikke håndteres fordi du ikke har rettigheter til å lese den."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1334
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Filen «%B» kan ikke håndteres fordi du ikke har rettigheter til å lese den."
+"Filen «%s» kan ikke håndteres fordi du ikke har rettigheter til å lese den."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1560,9 +1538,9 @@ msgstr "Det oppstod en feil under henting av informasjon om «%B»."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1447 libcore/marlin-file-operations.c:1495
 #: libcore/marlin-file-operations.c:1535 libcore/marlin-file-operations.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying to \"%s\"."
-msgstr "Feil under kopiering til «%B»."
+msgstr "Feil under kopiering til «%s»."
 
 #: libcore/marlin-file-operations.c:1452
 msgid "You do not have permissions to access the destination folder."
@@ -1585,9 +1563,9 @@ msgstr "Ikke nok plass på målet. Prøve å fjerne filer for å frigjøre plass
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
 #: libcore/marlin-file-operations.c:1543
-#, fuzzy, c-format
+#, c-format
 msgid "There is %s available, but %s is required."
-msgstr "%S tilgjengelig, men %S kreves."
+msgstr "%s tilgjengelig, men %s kreves."
 
 #: libcore/marlin-file-operations.c:1579
 msgid "The destination is read-only."
@@ -1596,66 +1574,66 @@ msgstr "Målet er skrivebeskyttet."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1653
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Flytter «%B» til «%B»"
+msgstr "Flytter «%s» til «%s»"
 
 #: libcore/marlin-file-operations.c:1654
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Kopierer «%B» til «%B»"
+msgstr "Kopierer «%s» til «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1658
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "Dupliserer «%B»"
+msgstr "Dupliserer «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:1666
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Flytter %'d fil (i «%B») til «%B»"
-msgstr[1] "Flytter %'d filer (i «%B») til «%B»"
+msgstr[0] "Flytter %'d fil (i «%s») til «%s»"
+msgstr[1] "Flytter %'d filer (i «%s») til «%s»"
 
 #: libcore/marlin-file-operations.c:1669
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Kopierer %'d fil (i «%B») til «%B»"
-msgstr[1] "Kopierer %'d filer (i «%B») til «%B»"
+msgstr[0] "Kopierer %'d fil (i «%s») til «%s»"
+msgstr[1] "Kopierer %'d filer (i «%s») til «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1678
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Dupliserer %'d fil (i «%B»)"
-msgstr[1] "Dupliserer %'d filer (i «%B»)"
+msgstr[0] "Dupliserer %'d fil (i «%s»)"
+msgstr[1] "Dupliserer %'d filer (i «%s»)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:1690
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Flytter %'d fil til «%B»"
-msgstr[1] "Flytter %'d filer til «%B»"
+msgstr[0] "Flytter %'d fil til «%s»"
+msgstr[1] "Flytter %'d filer til «%s»"
 
 #: libcore/marlin-file-operations.c:1693
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Kopierer %'d fil til «%B»"
-msgstr[1] "Kopierer %'d filer til «%B»"
+msgstr[0] "Kopierer %'d fil til «%s»"
+msgstr[1] "Kopierer %'d filer til «%s»"
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
@@ -1666,9 +1644,9 @@ msgstr[1] "Dupliserer %'d filer"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:1729
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s"
-msgstr "%S av %S"
+msgstr "%s av %s"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -1677,50 +1655,50 @@ msgstr "%S av %S"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1749
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%S av %S -- %T igjen (%S/sek)"
-msgstr[1] "%S av %S -- %T igjen (%S/sek)"
+msgstr[0] "%s av %s -- %s igjen (%s/sek)"
+msgstr[1] "%s av %s -- %s igjen (%s/sek)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2068
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Mappen «%B» kan ikke kopieres fordi du ikke har rettigheter til å opprette "
+"Mappen «%s» kan ikke kopieres fordi du ikke har rettigheter til å opprette "
 "den på målet."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2073
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Det oppstod en feil under oppretting av mappe «%B»."
+msgstr "Det oppstod en feil under oppretting av mappen «%s»."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2211
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappe «%B» kan ikke kopieres fordi du ikke har rettigheter til å se "
+"Filer i mappe «%s» kan ikke kopieres fordi du ikke har rettigheter til å se "
 "dem."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2265
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Mappen \"%B\" kan ikke kopieres fordi du ikke har rettigheter til å lese den."
+"Mappen «%s» kan ikke kopieres fordi du ikke har rettigheter til å lese den."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1728,9 +1706,9 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2320 libcore/marlin-file-operations.c:2977
 #: libcore/marlin-file-operations.c:3536
-#, fuzzy, c-format
+#, c-format
 msgid "Error while moving \"%s\"."
-msgstr "Feil under flytting av «%B»."
+msgstr "Feil under flytting av «%s»."
 
 #: libcore/marlin-file-operations.c:2322
 msgid "Could not remove the source folder."
@@ -1740,21 +1718,21 @@ msgstr "Kunne ikke fjerne kildemappen."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2413 libcore/marlin-file-operations.c:2466
 #: libcore/marlin-file-operations.c:2981
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying \"%s\"."
-msgstr "Feil under kopiering av «%B»."
+msgstr "Feil under kopiering av «%s»."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2418
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Kunne ikke fjerne filer fra allerede eksisterende mappe %F."
+msgstr "Kunne ikke fjerne filer fra allerede eksisterende mappe %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2471
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %s."
-msgstr "Kunne ikke fjerne allerede eksisterende fil %F."
+msgstr "Kunne ikke fjerne allerede eksisterende fil %s."
 
 #: libcore/marlin-file-operations.c:2706 libcore/marlin-file-operations.c:3372
 msgid "You cannot move a folder into itself."
@@ -1782,22 +1760,22 @@ msgstr "Kildefilen ville blitt overskrevet av målet."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2987
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Kunne ikke fjerne eksisterende fil med samme navn i %F."
+msgstr "Kunne ikke fjerne eksisterende fil med samme navn i %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3059
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "Kan ikke kopiere \"%B\" her."
+msgstr "Kan ikke kopiere «%s» hit."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3064
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying the file into %s."
-msgstr "En feil oppstod under kopiering av filen til %B."
+msgstr "En feil oppstod under kopiering av filen til %s."
 
 #: libcore/marlin-file-operations.c:3254
 msgid "Copying Files"
@@ -1806,9 +1784,9 @@ msgstr "Kopierer filer"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3289
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Forbereder flytting til \"%B\""
+msgstr "Forbereder flytting til «%s»"
 
 #: libcore/marlin-file-operations.c:3294
 #, c-format
@@ -1819,9 +1797,9 @@ msgstr[1] "Forbereder flytting av %'d filer"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3540
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving the file into %s."
-msgstr "Det oppstod en feil ved flytting av filen til %F."
+msgstr "Det oppstod en feil ved flytting av filen til %s."
 
 #: libcore/marlin-file-operations.c:3764
 msgid "Moving Files"
@@ -1830,9 +1808,9 @@ msgstr "Flytter filer"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3802
-#, fuzzy, c-format
+#, c-format
 msgid "Creating links in \"%s\""
-msgstr "Oppretter lenker i \"%B\""
+msgstr "Oppretter lenker i «%s»"
 
 #: libcore/marlin-file-operations.c:3807
 #, c-format
@@ -1843,9 +1821,9 @@ msgstr[1] "Oppretter lenker til %'d filer"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3917
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating link to %s."
-msgstr "Feil under oppretting av lenke til «%B»."
+msgstr "Feil under oppretting av lenke til «%s»."
 
 #: libcore/marlin-file-operations.c:3920
 msgid "Symbolic links only supported for local files"
@@ -1857,9 +1835,9 @@ msgstr "Målet støtter ikke symbolske lenker."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3928
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the symlink in %s."
-msgstr "Det oppstod en feil ved oppretting av symbolsk lenke i %F."
+msgstr "Det oppstod en feil ved oppretting av symbolsk lenke i %s."
 
 #: libcore/marlin-file-operations.c:4218
 msgid "Setting permissions"
@@ -1883,21 +1861,21 @@ msgstr "ny fil"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4724
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating directory %s."
-msgstr "Feil under oppretting av katalog %B."
+msgstr "Feil under oppretting av katalog %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4727
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating file %s."
-msgstr "Feil under oppretting av fil «%B»."
+msgstr "Feil under oppretting av fil «%s»."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4733
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Det oppstod en feil under oppretting av katalog i %F."
+msgstr "Det oppstod en feil under oppretting av katalog i %s."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
@@ -1931,8 +1909,6 @@ msgid "Below This Folder"
 msgstr "Under denne mappen"
 
 #: libwidgets/View/SearchResults.vala:287
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
 msgstr "Nylig brukt"
 
@@ -1957,10 +1933,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libwidgets/Resources.vala:62
-#, fuzzy
-#| msgid "AFP"
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libwidgets/Resources.vala:63
 msgid "DAV"
