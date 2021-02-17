@@ -242,6 +242,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 popup_context_menu (event);
                 return true;
 
+            case Gdk.BUTTON_MIDDLE:
+                activated (Marlin.OpenFlag.NEW_TAB);
+                return true;
+
             default:
                 return false;
         }
