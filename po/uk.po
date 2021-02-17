@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-17 01:11+0000\n"
-"PO-Revision-Date: 2021-02-14 13:36+0000\n"
-"Last-Translator: Anton Grouchtchak <goldtom1423@gmail.com>\n"
+"PO-Revision-Date: 2021-02-17 02:02+0000\n"
+"Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
 "Language: uk\n"
@@ -772,13 +772,12 @@ msgid "%u folders"
 msgstr "%u теки"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " та %u інший елемент (%s) вибрано"
-msgstr[1] " та %u інший елемент (%s) вибрано"
-msgstr[2] " та %u інший елемент (%s) вибрано"
+msgstr[1] " та %u інші елементи (%s) вибрано"
+msgstr[2] " та %u інших елементів (%s) вибрано"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -791,23 +790,21 @@ msgstr "%u елементів вибрано (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u вкладена тека, "
-msgstr[1] "%u вкладена тека, "
-msgstr[2] "%u вкладена тека, "
+msgstr[1] "%u вкладених теки, "
+msgstr[2] "%u вкладених тек, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u файл, "
-msgstr[1] "%u файл, "
-msgstr[2] "%u файл, "
+msgstr[1] "%u файли, "
+msgstr[2] "%u файлів, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -822,13 +819,12 @@ msgstr "невідомий розмір"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u файл недоступний для читання"
-msgstr[1] "%u файл недоступний для читання"
-msgstr[2] "%u файл недоступний для читання"
+msgstr[1] "%u файли недоступні для читання"
+msgstr[2] "%u файлів недоступні для читання"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
