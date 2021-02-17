@@ -77,12 +77,20 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("_Eject")), eject_cb);
     }
 
-    public PopupMenuBuilder add_property (MenuitemCallback show_drive_info_cb) {
+    public PopupMenuBuilder add_drive_property (MenuitemCallback show_drive_info_cb) {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), show_drive_info_cb);
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback bookmark_cb) {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), bookmark_cb);
+    }
+
+    public PopupMenuBuilder add_empty_all_trash (MenuitemCallback bookmark_cb) {
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Empty All Trash")), bookmark_cb);
+    }
+
+    public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback bookmark_cb) {
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Empty Trash on this Mount")), bookmark_cb);
     }
 
     public PopupMenuBuilder add_separator () {

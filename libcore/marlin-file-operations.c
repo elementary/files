@@ -4402,6 +4402,16 @@ marlin_file_operations_copy_move_link (GList               *files,
     }
 
     task = g_task_new (NULL, cancellable, callback, user_data);
+    if (g_list_length (files) == 0) {
+        g_task_return_new_error (task,
+                                 G_IO_ERROR,
+                                 G_IO_ERROR_FAILED,
+                                 _("Zero files to process"),
+                                 NULL);
+        g_clear_object (&task);
+        return;
+    }
+
     if (copy_action == GDK_ACTION_COPY) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
             char *primary = g_strdup (_("Cannot copy into trash."));

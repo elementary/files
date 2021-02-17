@@ -249,7 +249,7 @@ namespace Marlin {
                 try {
                     proxy.get_supported (out supported_schemes, out supported_types);
                 } catch (GLib.Error e) {
-                    warning ("Thumbnailer failed to get supported file list");
+                    debug ("Thumbnailer failed to get supported file list");
                     return false;
                 }
             }
@@ -264,7 +264,7 @@ namespace Marlin {
                     index++;
                 }
             } else {
-                warning ("No supported schemes or types returned by proxy");
+                debug ("No supported schemes or types returned by proxy");
             }
 
             return supported;
