@@ -109,7 +109,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
     construct {
         var eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
-            tooltip_text = _("Eject “%s”").printf (custom_name)
+            tooltip_text = _("Eject '%s'").printf (custom_name)
         };
         eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
@@ -194,7 +194,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                             list.open_item (this, flag);
                         }
                     } catch (GLib.Error error) {
-                        var primary = _("Error mounting volume %s").printf (volume.get_name ());
+                        var primary = _("Error mounting volume '%s'").printf (volume.get_name ());
                         PF.Dialogs.show_error_dialog (primary, error.message, Marlin.get_active_window ());
                     } finally {
                         working = false;
@@ -215,7 +215,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                             can_eject = drive.can_eject () || drive.can_stop ();
                         }
                     } catch (Error e) {
-                            var primary = _("Unable to start %s").printf (drive.get_name ());
+                            var primary = _("Unable to start '%s'").printf (drive.get_name ());
                             PF.Dialogs.show_error_dialog (primary, e.message, Marlin.get_active_window ());
                     } finally {
                         working = false;
@@ -243,7 +243,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = !mount.eject_with_operation.end (res);
                         } catch (GLib.Error error) {
-                            warning ("Error ejecting mount: %s", error.message);
+                            warning ("Error ejecting mount '%s' - %s", mount.get_name (), error.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -264,7 +264,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = !mount.unmount_with_operation.end (res);
                         } catch (GLib.Error error) {
-                            warning ("Error while unmounting mount %s", error.message);
+                            warning ("Error while unmounting mount '%s' - %s", mount.get_name (), error.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -285,7 +285,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = drive.stop.end (res);
                         } catch (Error e) {
-                            warning ("Could not stop drive %s - %s", drive.get_name (), e.message);
+                            warning ("Could not stop drive '%s' - %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -303,7 +303,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = drive.eject_with_operation.end (res);
                         } catch (Error e) {
-                            warning ("Could not eject drive %s - %s", drive.get_name (), e.message);
+                            warning ("Could not eject drive '%s' - %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -448,7 +448,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         }
         catch (GLib.Error error) {
             if (!(error is IOError.CANCELLED)) {
-                warning ("Error querying %s filesystem info: %s", root.get_uri (), error.message);
+                warning ("Error querying filesystem info for '%s' - %s", root.get_uri (), error.message);
             }
 
             info = null;
