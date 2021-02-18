@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 01:11+0000\n"
+"POT-Creation-Date: 2021-02-18 06:50+0000\n"
 "PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Erakutsi programaren bertsioa."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Ireki URIa(k) fitxa berri(et)an"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1858
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr ""
 
@@ -114,7 +114,8 @@ msgid "Set as default"
 msgstr "Ezarri lehenetsi bezala"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1968 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Propietateak"
 
@@ -193,7 +194,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1936
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr ""
 
@@ -230,7 +231,7 @@ msgstr[1] ""
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:933
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
 #, c-format
 msgid "%s, %s"
 msgstr ""
@@ -259,8 +260,7 @@ msgstr ""
 msgid "Disk Properties"
 msgstr ""
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Fitxategi-sistema"
 
@@ -268,11 +268,11 @@ msgstr "Fitxategi-sistema"
 msgid "Format:"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:283
+#: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
 msgstr ""
 
-#: src/Utils/MimeActions.vala:284
+#: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:542 src/View/Window.vala:552
+#: src/View/Window.vala:544 src/View/Window.vala:554
 msgid "(as Administrator)"
 msgstr "(administratzaile bezala)"
 
@@ -296,11 +296,11 @@ msgstr "(administratzaile bezala)"
 msgid "Filename"
 msgstr "Fitxategi-izena"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
 msgid "Size"
 msgstr "Tamaina"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
 msgid "Type"
 msgstr "Mota"
 
@@ -367,171 +367,172 @@ msgstr ""
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1852
+#: src/View/AbstractDirectoryView.vala:1854
 #, fuzzy
 msgid "New Tab"
 msgstr "Ireki fitxa berrian"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1879
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1950
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Ireki honekin"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:85
+#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1991
+#: src/View/AbstractDirectoryView.vala:1993
 #, fuzzy
 msgid "Move to Trash"
 msgstr "Bota '%s' zakarrontzira"
 
-#: src/View/AbstractDirectoryView.vala:1996
+#: src/View/AbstractDirectoryView.vala:1998
 #, fuzzy
 msgid "Delete permanently"
 msgstr " hautatuta"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2003
 #, fuzzy
 msgid "Restore from Trash"
 msgstr "Berrezarri '%s' zakarrontzitik"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2014
 #, fuzzy
 msgid "Open Parent Folder"
 msgstr "Ireki zure karpeta pertsonala"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2017
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2033
 #, fuzzy
 #| msgid "Re_name"
 msgid "Rename…"
 msgstr "Al_datu izena"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2040
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 #, fuzzy
 msgid "Show Hidden Files"
 msgstr "Fitxategiak lekuz aldatzen"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2091
 #, fuzzy
 msgid "Show Remote Thumbnails"
 msgstr "Erakutsi _xehetasun gehiago"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2094
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Erakutsi _xehetasun gehiago"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2114
 msgid "Paste Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Name"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2183
 msgid "Date"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2209
+#: src/View/AbstractDirectoryView.vala:2211
 #, fuzzy
 msgid "Folder"
 msgstr "_Karpeta:"
 
-#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2217
 #, fuzzy
 msgid "Empty File"
 msgstr "Fitxategiak kopiatzen"
 
-#: src/View/AbstractDirectoryView.vala:2266
+#: src/View/AbstractDirectoryView.vala:2268
 #, fuzzy
 msgid "New"
 msgstr "Sarea"
 
-#: src/View/AbstractDirectoryView.vala:2503
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2865
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3051
-#: src/View/AbstractDirectoryView.vala:3067
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3050
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
+#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "Karpeta nagusia"
 
@@ -587,93 +588,140 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:282
-msgid "Bookmarks"
+#: src/View/Sidebar/BookmarkListBox.vala:119
+#, fuzzy
+msgid "View the home folder"
 msgstr ""
+"Huts egin du karpeta sortzean\n"
+"\n"
+"%s"
 
-#: src/View/Sidebar.vala:574
-msgid "Common places plus saved folders and files"
-msgstr ""
-
-#: src/View/Sidebar.vala:594
-msgid "Open your personal folder"
-msgstr "Ireki zure karpeta pertsonala"
-
-#: src/View/Sidebar.vala:609
+#: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
 msgstr ""
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Zakarrontzia"
 
-#: src/View/Sidebar.vala:642
+#: src/View/Sidebar/BookmarkListBox.vala:154
 msgid "Open the Trash"
 msgstr ""
 
-#: src/View/Sidebar.vala:647
-msgid "Devices"
-msgstr "Gailuak"
-
-#: src/View/Sidebar.vala:648
-msgid "Internal and connected storage devices"
-msgstr ""
-
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:66
-msgid "Network"
-msgstr "Sarea"
-
-#: src/View/Sidebar.vala:778
-msgid "Devices and places available via a network"
-msgstr ""
-
-#: src/View/Sidebar.vala:810
-msgid "Entire Network"
-msgstr ""
-
-#: src/View/Sidebar.vala:817
-msgid "Browse the contents of the network"
-msgstr "Arakatu sareko edukiak"
-
-#: src/View/Sidebar.vala:820
+#: src/View/Sidebar/DeviceListBox.vala:105
 #, fuzzy
-msgid "Connect Server"
-msgstr "Konektatu zerbitzarira"
+#| msgid "File System"
+msgid "FileSystem"
+msgstr "Fitxategi-sistema"
 
-#: src/View/Sidebar.vala:821
-#, fuzzy
-msgid "Connect to a network server"
-msgstr "Konektatu zerbitzarira"
+#: src/View/Sidebar/DeviceListBox.vala:117
+msgid "View the root of the local filesystem"
+msgstr ""
 
-#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-#: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-msgid "%s on %s"
-msgstr "%S / %S"
-
-#: src/View/Sidebar.vala:979
+#: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
-msgid "%s free"
+msgid "Eject “%s”"
 msgstr ""
 
-#: src/View/Sidebar.vala:980
-#, fuzzy, c-format
-msgid "%s used of %s"
-msgstr "%S / %S"
-
-#: src/View/Sidebar.vala:1455
+#: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1470
+#: src/View/Sidebar/DeviceRow.vala:218
 #, c-format
 msgid "Unable to start %s"
 msgstr "Ezin da %s abiarazi"
 
-#: src/View/Sidebar.vala:1660 libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
+#: src/View/Sidebar/DeviceRow.vala:481
+#, c-format
+msgid "%s free"
+msgstr ""
+
+#: src/View/Sidebar/DeviceRow.vala:482
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S / %S"
+
+#: src/View/Sidebar/NetworkListBox.vala:81
+msgid "Entire Network"
+msgstr ""
+
+#: src/View/Sidebar/NetworkListBox.vala:87
+msgid "Browse the contents of the network"
+msgstr "Arakatu sareko edukiak"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:49
+msgid "Open"
+msgstr ""
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:53
+msgid "Open in New _Tab"
+msgstr "Ireki _fitxa berrian"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:57
+msgid "Open in New _Window"
+msgstr "Ireki leiho _berrian"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:61
+msgid "Remove"
+msgstr "Kendu"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:65
+msgid "Rename"
+msgstr ""
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:69
+msgid "_Mount"
+msgstr "_Muntatu"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:73
+msgid "_Unmount"
+msgstr "_Desmuntatu"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:77
+msgid "_Eject"
+msgstr "_Egotzi"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#, fuzzy
+#| msgid "Empty _Trash"
+msgid "Empty All Trash"
 msgstr "Hustu _zakarrontzia"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:93
+msgid "Empty Trash on this Mount"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: libwidgets/View/SearchResults.vala:282
+msgid "Bookmarks"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:52
+msgid "Devices"
+msgstr "Gailuak"
+
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Internal and connected storage devices"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+msgid "Network"
+msgstr "Sarea"
+
+#: src/View/Sidebar/SidebarWindow.vala:60
+msgid "Devices and places available via a network"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:80
+#, fuzzy
+msgid "Connect Server…"
+msgstr "Konektatu zerbitzarira"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -707,52 +755,20 @@ msgstr ""
 msgid "Open the system security and privacy settings app"
 msgstr ""
 
-#: src/View/PopupMenuBuilder.vala:49
-msgid "Open"
-msgstr ""
-
-#: src/View/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr "Ireki _fitxa berrian"
-
-#: src/View/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr "Ireki leiho _berrian"
-
-#: src/View/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr "Kendu"
-
-#: src/View/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr ""
-
-#: src/View/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr "_Muntatu"
-
-#: src/View/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr "_Desmuntatu"
-
-#: src/View/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr "_Egotzi"
-
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Ireki fitxa berrian"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr ""
 
@@ -938,7 +954,7 @@ msgstr "Pasa_hitza:"
 msgid "Remember this password"
 msgstr "_Gogoratu pasahitz hau"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Utzi"
@@ -961,20 +977,20 @@ msgstr "Konektatzen..."
 msgid "Please verify your user details."
 msgstr "Egiaztatu zure erabiltzailearen xehetasunak."
 
-#: libcore/DndHandler.vala:48
+#: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr ""
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:100
 msgid "Move Here"
 msgstr ""
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:101
 msgid "Copy Here"
 msgstr ""
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:102
 msgid "Link Here"
 msgstr ""
 
@@ -1128,28 +1144,28 @@ msgstr "Atzo %-I:%M %p(e)tan"
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:920
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "Segundo %'d"
 msgstr[1] "%'d segundo"
 
-#: libcore/FileUtils.vala:926 libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "Minutu %'d"
 msgstr[1] "%'d minutu"
 
-#: libcore/FileUtils.vala:933
+#: libcore/FileUtils.vala:931
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "Ordu %'d"
 msgstr[1] "%'d ordu"
 
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:935
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1157,26 +1173,26 @@ msgstr[0] "gutxi gorabehera ordu %'d"
 msgstr[1] "gutxi gorabehera %'d ordu"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:945
+#: libcore/FileUtils.vala:943
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
 msgstr " (kopia)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:947
+#: libcore/FileUtils.vala:945
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:949
+#: libcore/FileUtils.vala:947
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:951
+#: libcore/FileUtils.vala:949
 msgid ")"
 msgstr ""
 
@@ -1230,6 +1246,10 @@ msgstr "Batu _guztiak"
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
 msgstr "Kopiatu _dena den"
+
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Hustu _zakarrontzia"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
@@ -1865,37 +1885,43 @@ msgstr "Errorea gertatu da %F(e)n esteka sinbolikoa sortzean."
 msgid "Setting permissions"
 msgstr "Baimenak ezartzen"
 
-#: libcore/marlin-file-operations.c:4407
+#: libcore/marlin-file-operations.c:4409
+#, fuzzy
+#| msgid "Moving files to trash"
+msgid "Zero files to process"
+msgstr "Fitxategiak zakarrontzira botatzen"
+
+#: libcore/marlin-file-operations.c:4417
 #, fuzzy
 msgid "Cannot copy into trash."
 msgstr "Ezin izan da hemen \"%B\" kopiatzea."
 
-#: libcore/marlin-file-operations.c:4408 libcore/marlin-file-operations.c:4416
+#: libcore/marlin-file-operations.c:4418 libcore/marlin-file-operations.c:4426
 msgid "It is not permitted to copy files into the trash"
 msgstr ""
 
-#: libcore/marlin-file-operations.c:4547
+#: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
 msgstr "izenik gabeko karpeta"
 
-#: libcore/marlin-file-operations.c:4555
+#: libcore/marlin-file-operations.c:4565
 msgid "new file"
 msgstr "fitxategi berria"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4724
+#: libcore/marlin-file-operations.c:4734
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "Errorea %B direktorioa sortzean."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4727
+#: libcore/marlin-file-operations.c:4737
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "Errorea %B fitxategia sortzean."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4733
+#: libcore/marlin-file-operations.c:4743
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Errorea gertatu da %F(e)n direktorioa sortzean."
@@ -2010,6 +2036,17 @@ msgstr " hautatuta"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " hautatuta"
+
+#~ msgid "Open your personal folder"
+#~ msgstr "Ireki zure karpeta pertsonala"
+
+#, fuzzy
+#~ msgid "Connect to a network server"
+#~ msgstr "Konektatu zerbitzarira"
+
+#, fuzzy
+#~ msgid "%s on %s"
+#~ msgstr "%S / %S"
 
 #~ msgid " and %u other items (%s) selected"
 #~ msgstr " eta %u bestelako elementu (%s) hautatuta"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 01:11+0000\n"
+"POT-Creation-Date: 2021-02-18 06:50+0000\n"
 "PO-Revision-Date: 2018-10-30 09:14+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
@@ -29,7 +29,7 @@ msgstr "顯示此程式的版本。"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "以不同的新分頁開啟一個或多個 URI"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1858
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "新視窗"
 
@@ -114,7 +114,8 @@ msgid "Set as default"
 msgstr "設為預設值"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1968 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "屬性"
 
@@ -193,7 +194,7 @@ msgid "Original Location:"
 msgstr "原始位置："
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1936
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr "其他應用程式…"
 
@@ -228,7 +229,7 @@ msgstr[0] "%u 個檔案"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:933
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
 #, c-format
 msgid "%s, %s"
 msgstr "%s，%s"
@@ -255,8 +256,7 @@ msgstr "%s (%s，%s)"
 msgid "Disk Properties"
 msgstr "磁碟屬性"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "檔案系統"
 
@@ -264,11 +264,11 @@ msgstr "檔案系統"
 msgid "Format:"
 msgstr "格式："
 
-#: src/Utils/MimeActions.vala:283
+#: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
 msgstr "已選取多種檔案類型"
 
-#: src/Utils/MimeActions.vala:284
+#: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
 msgstr "無法用一個程式就開啟所有這些類型的檔案"
 
@@ -284,7 +284,7 @@ msgstr "無法開啟 URI"
 msgid "Could not open files or URIs with this app"
 msgstr "無法使用此程式開啟檔案或 URI"
 
-#: src/View/Window.vala:542 src/View/Window.vala:552
+#: src/View/Window.vala:544 src/View/Window.vala:554
 msgid "(as Administrator)"
 msgstr "（以管理員身份）"
 
@@ -292,11 +292,11 @@ msgstr "（以管理員身份）"
 msgid "Filename"
 msgstr "檔案名稱"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
 msgid "Size"
 msgstr "大小"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
 msgid "Type"
 msgstr "類型"
 
@@ -364,163 +364,164 @@ msgstr "無法放下此檔案"
 msgid "Invalid file name provided"
 msgstr "提供的檔名無效"
 
-#: src/View/AbstractDirectoryView.vala:1852
+#: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
 msgstr "新增標籤"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "執行"
 
-#: src/View/AbstractDirectoryView.vala:1879
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "以 %s 開啟"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "開啟方式"
 
-#: src/View/AbstractDirectoryView.vala:1950
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "以此開啟"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr "貼上"
 
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:85
+#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "書籤"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr "剪下"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Copy"
 msgstr "複製"
 
-#: src/View/AbstractDirectoryView.vala:1991
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Move to Trash"
 msgstr "移動到垃圾桶"
 
-#: src/View/AbstractDirectoryView.vala:1996
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Delete permanently"
 msgstr "永久刪除"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2003
 msgid "Restore from Trash"
 msgstr "從垃圾桶還原"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2014
 msgid "Open Parent Folder"
 msgstr "開啟上層資料夾"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2017
 msgid "Remove from History"
 msgstr "從歷史紀錄中移除"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2033
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "重新命名"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2040
 msgid "Copy as Link"
 msgstr "複製為連結"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste Link into Folder"
 msgstr "貼上前往資料夾的連結"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Paste into Folder"
 msgstr "貼入資料夾中"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Show Hidden Files"
 msgstr "顯示隱藏檔案"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Show Remote Thumbnails"
 msgstr "顯示遠端縮圖"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2094
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "顯示遠端縮圖"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2114
 msgid "Paste Link"
 msgstr "貼上連結"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Name"
 msgstr "名稱"
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2183
 msgid "Date"
 msgstr "日期"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Reversed Order"
 msgstr "相反順序"
 
-#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Folders Before Files"
 msgstr "資料夾放在檔案前"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Sort by"
 msgstr "排序方式"
 
-#: src/View/AbstractDirectoryView.vala:2209
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Folder"
 msgstr "資料夾"
 
-#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2217
 msgid "Empty File"
 msgstr "空白檔案"
 
-#: src/View/AbstractDirectoryView.vala:2266
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "New"
 msgstr "新增"
 
-#: src/View/AbstractDirectoryView.vala:2503
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: src/View/AbstractDirectoryView.vala:2865
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr "無法從此處移除檔案"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3051
-#: src/View/AbstractDirectoryView.vala:3067
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr "您沒有對此位置作更改的權利"
 
-#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "無法複製垃圾筒中的檔案"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "改剪下選取項目"
 
-#: src/View/AbstractDirectoryView.vala:3050
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr "無法在此處貼上檔案"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
+#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "家屋"
 
@@ -576,91 +577,143 @@ msgstr "找不到檔案"
 msgid "The file selected no longer exists."
 msgstr "選取的檔案不再存在。"
 
-#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:282
-msgid "Bookmarks"
-msgstr "書籤"
-
-#: src/View/Sidebar.vala:574
-msgid "Common places plus saved folders and files"
+#: src/View/Sidebar/BookmarkListBox.vala:119
+#, fuzzy
+msgid "View the home folder"
 msgstr ""
+"無法建立資料夾\n"
+"\n"
+"%s"
 
-#: src/View/Sidebar.vala:594
-msgid "Open your personal folder"
-msgstr "開啟您的個人資料夾"
-
-#: src/View/Sidebar.vala:609
+#: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
 msgstr "檢視最近使用檔案的清單"
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "垃圾"
 
-#: src/View/Sidebar.vala:642
+#: src/View/Sidebar/BookmarkListBox.vala:154
 msgid "Open the Trash"
 msgstr "開啟垃圾筒"
 
-#: src/View/Sidebar.vala:647
-msgid "Devices"
-msgstr "裝置"
+#: src/View/Sidebar/DeviceListBox.vala:105
+#, fuzzy
+#| msgid "File System"
+msgid "FileSystem"
+msgstr "檔案系統"
 
-#: src/View/Sidebar.vala:648
-msgid "Internal and connected storage devices"
-msgstr ""
+#: src/View/Sidebar/DeviceListBox.vala:117
+#, fuzzy
+#| msgid "View the list of recently used files"
+msgid "View the root of the local filesystem"
+msgstr "檢視最近使用檔案的清單"
 
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:66
-msgid "Network"
-msgstr "網路"
-
-#: src/View/Sidebar.vala:778
-msgid "Devices and places available via a network"
-msgstr ""
-
-#: src/View/Sidebar.vala:810
-msgid "Entire Network"
-msgstr "整個網路"
-
-#: src/View/Sidebar.vala:817
-msgid "Browse the contents of the network"
-msgstr "瀏覽網路的內容"
-
-#: src/View/Sidebar.vala:820
-msgid "Connect Server"
-msgstr "連線伺服器"
-
-#: src/View/Sidebar.vala:821
-msgid "Connect to a network server"
-msgstr "連接網路伺服器"
-
-#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-#: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-msgid "%s on %s"
-msgstr "%S / %S"
-
-#: src/View/Sidebar.vala:979
+#: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
-msgid "%s free"
+msgid "Eject “%s”"
 msgstr ""
 
-#: src/View/Sidebar.vala:980
-#, fuzzy, c-format
-msgid "%s used of %s"
-msgstr "%S / %S"
-
-#: src/View/Sidebar.vala:1455
+#: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "掛載 %s 儲存區時出錯"
 
-#: src/View/Sidebar.vala:1470
+#: src/View/Sidebar/DeviceRow.vala:218
 #, c-format
 msgid "Unable to start %s"
 msgstr "無法開啟 %s"
 
-#: src/View/Sidebar.vala:1660 libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
+#: src/View/Sidebar/DeviceRow.vala:481
+#, c-format
+msgid "%s free"
+msgstr ""
+
+#: src/View/Sidebar/DeviceRow.vala:482
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S / %S"
+
+#: src/View/Sidebar/NetworkListBox.vala:81
+msgid "Entire Network"
+msgstr "整個網路"
+
+#: src/View/Sidebar/NetworkListBox.vala:87
+msgid "Browse the contents of the network"
+msgstr "瀏覽網路的內容"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:49
+msgid "Open"
+msgstr "開啟"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:53
+msgid "Open in New _Tab"
+msgstr "在新分頁中開啟(_T)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:57
+msgid "Open in New _Window"
+msgstr "在新視窗中開啟(_W)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:61
+msgid "Remove"
+msgstr "移除"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:65
+msgid "Rename"
+msgstr "重新命名"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:69
+msgid "_Mount"
+msgstr "掛載(_M)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:73
+msgid "_Unmount"
+msgstr "卸載(_U)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:77
+msgid "_Eject"
+msgstr "退出(_E)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#, fuzzy
+#| msgid "Empty _Trash"
+msgid "Empty All Trash"
 msgstr "清理垃圾(_T)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:93
+msgid "Empty Trash on this Mount"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: libwidgets/View/SearchResults.vala:282
+msgid "Bookmarks"
+msgstr "書籤"
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:52
+msgid "Devices"
+msgstr "裝置"
+
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Internal and connected storage devices"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+msgid "Network"
+msgstr "網路"
+
+#: src/View/Sidebar/SidebarWindow.vala:60
+msgid "Devices and places available via a network"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:80
+#, fuzzy
+#| msgid "Connect to Server…"
+msgid "Connect Server…"
+msgstr "連接到伺服器…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -694,52 +747,20 @@ msgstr ""
 msgid "Open the system security and privacy settings app"
 msgstr ""
 
-#: src/View/PopupMenuBuilder.vala:49
-msgid "Open"
-msgstr "開啟"
-
-#: src/View/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr "在新分頁中開啟(_T)"
-
-#: src/View/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr "在新視窗中開啟(_W)"
-
-#: src/View/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr "移除"
-
-#: src/View/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr "重新命名"
-
-#: src/View/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr "掛載(_M)"
-
-#: src/View/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr "卸載(_U)"
-
-#: src/View/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr "退出(_E)"
-
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "搜尋或輸入路徑"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "在新分頁中開啟"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "在新視窗中開啟"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "以其他應用程式開啟…"
 
@@ -914,7 +935,7 @@ msgstr "密碼："
 msgid "Remember this password"
 msgstr "記住此密碼"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "取消"
@@ -935,20 +956,20 @@ msgstr "正在連接…"
 msgid "Please verify your user details."
 msgstr "請檢驗您的使用者詳細資料。"
 
-#: libcore/DndHandler.vala:48
+#: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "無法執行「%s」"
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:100
 msgid "Move Here"
 msgstr "移動到此處"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:101
 msgid "Copy Here"
 msgstr "複製到此處"
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:102
 msgid "Link Here"
 msgstr "連結到此處"
 
@@ -1102,51 +1123,51 @@ msgstr "昨日的 %-H:%M"
 msgid "%%A at %s"
 msgstr "%A的 %-H:%M"
 
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:920
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 秒"
 
-#: libcore/FileUtils.vala:926 libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d 分鐘"
 
-#: libcore/FileUtils.vala:933
+#: libcore/FileUtils.vala:931
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 小時"
 
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:935
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "預估還有 %'d 小時"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:945
+#: libcore/FileUtils.vala:943
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
 msgstr " (副本)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:947
+#: libcore/FileUtils.vala:945
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:949
+#: libcore/FileUtils.vala:947
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:951
+#: libcore/FileUtils.vala:949
 msgid ")"
 msgstr ""
 
@@ -1200,6 +1221,10 @@ msgstr "全部合併(_A)"
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
 msgstr "強制複製(_A)"
+
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "清理垃圾(_T)"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
@@ -1800,36 +1825,42 @@ msgstr "在 %F 中建立符號連結時發生錯誤。"
 msgid "Setting permissions"
 msgstr "設定許可權中"
 
-#: libcore/marlin-file-operations.c:4407
+#: libcore/marlin-file-operations.c:4409
+#, fuzzy
+#| msgid "Moving files to trash"
+msgid "Zero files to process"
+msgstr "將檔案丟進垃圾筒"
+
+#: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
 msgstr "無法複製到垃圾筒中。"
 
-#: libcore/marlin-file-operations.c:4408 libcore/marlin-file-operations.c:4416
+#: libcore/marlin-file-operations.c:4418 libcore/marlin-file-operations.c:4426
 msgid "It is not permitted to copy files into the trash"
 msgstr "不允許將檔案複製到垃圾筒中"
 
-#: libcore/marlin-file-operations.c:4547
+#: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
 msgstr "未命名資料夾"
 
-#: libcore/marlin-file-operations.c:4555
+#: libcore/marlin-file-operations.c:4565
 msgid "new file"
 msgstr "新檔案"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4724
+#: libcore/marlin-file-operations.c:4734
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "建立目錄 %B 時發生錯誤。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4727
+#: libcore/marlin-file-operations.c:4737
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "建立檔案 %B 時發生錯誤。"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4733
+#: libcore/marlin-file-operations.c:4743
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "在 %F 中建立目錄時發生錯誤。"
@@ -1944,6 +1975,19 @@ msgstr "還原選取項目"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "刪除選取項目"
+
+#~ msgid "Open your personal folder"
+#~ msgstr "開啟您的個人資料夾"
+
+#~ msgid "Connect Server"
+#~ msgstr "連線伺服器"
+
+#~ msgid "Connect to a network server"
+#~ msgstr "連接網路伺服器"
+
+#, fuzzy
+#~ msgid "%s on %s"
+#~ msgstr "%S / %S"
 
 #~ msgid " and %u other items (%s) selected"
 #~ msgstr " 與另外 %u 個項目 (%s) 已選取"
@@ -2338,9 +2382,6 @@ msgstr "刪除選取項目"
 
 #~ msgid "Operation cancelled"
 #~ msgstr "操作程序已取消"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "連接到伺服器…"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "這些物件可選擇還原，或從垃圾筒中刪除。"
