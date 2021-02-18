@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 06:50+0000\n"
-"PO-Revision-Date: 2021-02-17 06:36+0000\n"
+"PO-Revision-Date: 2021-02-18 10:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -572,10 +572,8 @@ msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
 #: src/View/Sidebar/BookmarkListBox.vala:119
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "יצירת התיקייה נכשלה"
+msgstr "הצגת תיקיית הבית"
 
 #: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
@@ -590,21 +588,17 @@ msgid "Open the Trash"
 msgstr "פתיחת סל האשפה"
 
 #: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
 msgid "FileSystem"
 msgstr "מערכת קבצים"
 
 #: src/View/Sidebar/DeviceListBox.vala:117
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "הצגת רשימת הקבצים בהם נעשה שימוש לאחרונה"
+msgstr "הצגת שורש מערכת הקבצים המקומית"
 
 #: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
 msgid "Eject “%s”"
-msgstr ""
+msgstr "לשלוף את „%s”"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
@@ -667,14 +661,12 @@ msgid "_Eject"
 msgstr "_שליפה"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
-msgstr "פינוי _סל האשפה"
+msgstr "לפנות את כל האשפה"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "לפנות את האשפה בעיגון הזה"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -702,8 +694,6 @@ msgid "Devices and places available via a network"
 msgstr "התקנים ומיקומים שזמינים דרך הרשת"
 
 #: src/View/Sidebar/SidebarWindow.vala:80
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
 msgstr "התחברות לשרת…"
 
@@ -1839,10 +1829,8 @@ msgid "Setting permissions"
 msgstr "ההרשאות מוגדרות"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "קבצים מועברים לסל האשפה"
+msgstr "אין קבצים לעיבוד"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
