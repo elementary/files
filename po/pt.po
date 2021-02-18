@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 06:50+0000\n"
-"PO-Revision-Date: 2021-02-17 18:54+0000\n"
+"PO-Revision-Date: 2021-02-18 10:36+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -532,7 +532,7 @@ msgstr "A rede está indisponível"
 
 #: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
-msgstr "É necessário uma rede para aceder a esta diretoria"
+msgstr "É necessário uma rede funcional para aceder a esta pasta"
 
 #: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
@@ -548,7 +548,7 @@ msgstr "Incapaz de montar a pasta"
 
 #: src/View/ViewContainer.vala:416
 msgid "Could not connect to the server for this folder."
-msgstr "Não é possível ligar ao servidor para esta diretoria."
+msgstr "Não foi possível ligar ao servidor para esta pasta."
 
 #: src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
@@ -575,10 +575,8 @@ msgid "The file selected no longer exists."
 msgstr "O ficheiro selecionado já não existe."
 
 #: src/View/Sidebar/BookmarkListBox.vala:119
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "Falha na criação da pasta"
+msgstr "Ver a pasta pessoal"
 
 #: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
@@ -607,7 +605,7 @@ msgstr "Ver a lista de ficheiros usados recentemente"
 #: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
 msgid "Eject “%s”"
-msgstr ""
+msgstr "Ejectar “%s”"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
@@ -670,14 +668,12 @@ msgid "_Eject"
 msgstr "_Ejetar"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
-msgstr "Esvaziar _lixo"
+msgstr "Esvaziar todo o lixo"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "Esvaziar o lixo neste suporte"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -705,10 +701,8 @@ msgid "Devices and places available via a network"
 msgstr "Dispositivos e locais disponíveis através de uma rede"
 
 #: src/View/Sidebar/SidebarWindow.vala:80
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "Ligar a Servidor…"
+msgstr "Ligar Servidor…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -754,7 +748,7 @@ msgstr "Abrir num novo separador"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
-msgstr "Abrir numa Nova Janela"
+msgstr "Abrir numa nova janela"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
@@ -838,7 +832,7 @@ msgstr "Leitura"
 
 #: src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr "Escrita"
+msgstr "Gravação"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
