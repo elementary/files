@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 13:28+0000\n"
-"PO-Revision-Date: 2021-02-17 02:02+0000\n"
+"PO-Revision-Date: 2021-02-18 22:56+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -585,10 +585,8 @@ msgid "The file selected no longer exists."
 msgstr "Виділеного файлу більше не існує."
 
 #: src/View/Sidebar/BookmarkListBox.vala:119
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "Не вдалося створити теку"
+msgstr "Переглянути домашню теку"
 
 #: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
@@ -603,34 +601,27 @@ msgid "Open the Trash"
 msgstr "Відкрити смітник"
 
 #: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
 msgid "FileSystem"
 msgstr "Файлова система"
 
 #: src/View/Sidebar/DeviceListBox.vala:117
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "Переглянути список нещодавніх файлів"
+msgstr "Переглянути кореневу частину локальної файлової системи"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Видалити '%s'"
+msgstr "Витягнути '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
+#, c-format
 msgid "Error mounting volume '%s'"
-msgstr "Помилка монтування тому %s"
+msgstr "Помилка монтування тому '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
+#, c-format
 msgid "Unable to start '%s'"
-msgstr "Не вдається запустити %s"
+msgstr "Не вдається запустити '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:481
 #, c-format
@@ -683,14 +674,12 @@ msgid "_Eject"
 msgstr "_Витягнути"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
-msgstr "Спорожнити _смітник"
+msgstr "Спорожнити смітник"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "Спорожнити смітник цього тому"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -718,10 +707,8 @@ msgid "Devices and places available via a network"
 msgstr "Пристрої та місця, доступні через мережу"
 
 #: src/View/Sidebar/SidebarWindow.vala:80
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "З'єднатися з сервером..."
+msgstr "З'єднатися з сервером…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -1904,10 +1891,8 @@ msgid "Setting permissions"
 msgstr "Налаштування дозволів"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Переміщення файлів до смітника"
+msgstr "Немає файлів для обробки"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
