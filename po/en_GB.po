@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 13:28+0000\n"
-"PO-Revision-Date: 2021-02-17 12:23+0000\n"
-"Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
+"PO-Revision-Date: 2021-02-18 14:53+0000\n"
+"Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
 "Language: en_GB\n"
@@ -573,10 +573,8 @@ msgid "The file selected no longer exists."
 msgstr "The file selected no longer exists."
 
 #: src/View/Sidebar/BookmarkListBox.vala:119
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "Failed to create the folder"
+msgstr "View the home folder"
 
 #: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
@@ -591,34 +589,27 @@ msgid "Open the Trash"
 msgstr "Open the Rubbish Bin"
 
 #: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
 msgid "FileSystem"
-msgstr "File System"
+msgstr "FileSystem"
 
 #: src/View/Sidebar/DeviceListBox.vala:117
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "View the list of recently used files"
+msgstr "View the root of the local filesystem"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Delete '%s'"
+msgstr "Eject '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
+#, c-format
 msgid "Error mounting volume '%s'"
-msgstr "Error mounting volume %s"
+msgstr "Error mounting volume '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
+#, c-format
 msgid "Unable to start '%s'"
-msgstr "Unable to start %s"
+msgstr "Unable to start '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:481
 #, c-format
@@ -671,14 +662,12 @@ msgid "_Eject"
 msgstr "_Eject"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
-msgstr "Empty _Rubbish Bin"
+msgstr "Empty All Rubbish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "Empty Rubbish on this Mount"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -706,10 +695,8 @@ msgid "Devices and places available via a network"
 msgstr "Devices and places available via a network"
 
 #: src/View/Sidebar/SidebarWindow.vala:80
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "Connect to Server…"
+msgstr "Connect Server…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -1872,10 +1859,8 @@ msgid "Setting permissions"
 msgstr "Setting permissions"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Moving files to the Rubbish Bin"
+msgstr "Zero files to process"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
