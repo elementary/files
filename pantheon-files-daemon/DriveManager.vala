@@ -20,6 +20,13 @@ public class Files.Daemon.DriveManager : GLib.Application {
 
     private VolumeMonitor volume_monitor;
 
+    public DriveManager () {
+        Object (
+            application_id: "io.elementary.files-daemon",
+            flags: ApplicationFlags.FLAGS_NONE
+        );
+    }
+
     protected override void activate () {
         hold ();
 
@@ -36,12 +43,14 @@ public class Files.Daemon.DriveManager : GLib.Application {
         var drive = volume.get_drive ();
 
         // Send notification only after all volumes are added
-        if (!(++n_volumes < drive.get_volumes ().length ())) {
+        n_volumes++;
+
+        if (n_volumes == drive.get_volumes ().length ()) {
             var notification = new Notification (_("%s connected").printf (drive.get_name ()));
             notification.set_icon (drive.get_icon ());
             notification.set_body (_("With %u %s present").printf (n_volumes, ngettext ("volume", "volumes", n_volumes)));
 
-            GLib.Application.get_default ().send_notification ("io.elementary.files", notification);
+            send_notification (application_id, notification);
 
             // Reset for next added device
             n_volumes = 0;
