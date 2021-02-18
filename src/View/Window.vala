@@ -866,7 +866,7 @@ namespace Marlin.View {
                 try {
                     AppInfo.launch_default_for_uri_async.end (res);
                 } catch (Error e) {
-                    warning ("Could not open help - %s", e.message);
+                    warning ("Could not open help: %s", e.message);
                 }
             });
         }

@@ -140,7 +140,7 @@ namespace PF.FileUtils {
                     info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH,
                                                      GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                 } catch (GLib.Error e) {
-                    debug ("Error querying info of trashed file %s - %s", file.uri, e.message);
+                    debug ("Error querying info of trashed file %s: %s", file.uri, e.message);
                     return null;
                 }
             }
