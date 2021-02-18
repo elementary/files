@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 01:11+0000\n"
+"POT-Creation-Date: 2021-02-18 06:50+0000\n"
 "PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
@@ -30,7 +30,7 @@ msgstr "A program verziószámának megjelenítése."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "URI cím(ek) megjelenítése új lapon"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1858
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "Új ablak"
 
@@ -116,7 +116,8 @@ msgid "Set as default"
 msgstr "Beállítás alapértelmezettként"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1968 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Tulajdonságok"
 
@@ -196,7 +197,7 @@ msgid "Original Location:"
 msgstr "Eredeti hely:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1936
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr "Egyéb alkalmazás…"
 
@@ -233,7 +234,7 @@ msgstr[1] "%u fájl"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:933
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -262,8 +263,7 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Lemez tulajdonságok"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Fájlrendszer"
 
@@ -271,11 +271,11 @@ msgstr "Fájlrendszer"
 msgid "Format:"
 msgstr "Formátum:"
 
-#: src/Utils/MimeActions.vala:283
+#: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
 msgstr "Több fájltípus van kiválasztva"
 
-#: src/Utils/MimeActions.vala:284
+#: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
 msgstr "Nincs alkalmazás, ami meg tudná nyitni ezeket a fájltípusokat"
 
@@ -293,7 +293,7 @@ msgstr "Nem lehet átnevezni erre: '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Nem lehet megnyitni a fájlokat és URI-kat ezzel az alkalmazással"
 
-#: src/View/Window.vala:542 src/View/Window.vala:552
+#: src/View/Window.vala:544 src/View/Window.vala:554
 msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 
@@ -301,11 +301,11 @@ msgstr "(Rendszergazdaként)"
 msgid "Filename"
 msgstr "Fájlnév"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
 msgid "Size"
 msgstr "Méret"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
 msgid "Type"
 msgstr "Típus"
 
@@ -373,163 +373,164 @@ msgstr "A fájlt nem lehet elejteni"
 msgid "Invalid file name provided"
 msgstr "Érvénytelen fájlnév megadva"
 
-#: src/View/AbstractDirectoryView.vala:1852
+#: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
 msgstr "Új lap"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "Futtatás"
 
-#: src/View/AbstractDirectoryView.vala:1879
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "Megnyitás ebben: %s"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "Megnyitás ebben"
 
-#: src/View/AbstractDirectoryView.vala:1950
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Megnyitás ezzel"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:85
+#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "Könyvjelzők"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr "Kivágás"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/View/AbstractDirectoryView.vala:1991
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Move to Trash"
 msgstr "Áthelyezés a kukába"
 
-#: src/View/AbstractDirectoryView.vala:1996
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Delete permanently"
 msgstr "Végleges törlés"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2003
 msgid "Restore from Trash"
 msgstr "Visszaállítás a kukából"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2014
 msgid "Open Parent Folder"
 msgstr "Szülő mappa megnyitása"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2017
 msgid "Remove from History"
 msgstr "Eltávolítás az előzmények közül"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2033
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Átnevezés"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2040
 msgid "Copy as Link"
 msgstr "Másolás linkként"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste Link into Folder"
 msgstr "Hivatkozás beillesztése mappába"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Paste into Folder"
 msgstr "Beillesztés mappába"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Show Hidden Files"
 msgstr "Rejtett fájlok megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Show Remote Thumbnails"
 msgstr "Távoli miniatűrök megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2094
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Távoli miniatűrök megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2114
 msgid "Paste Link"
 msgstr "Hivatkozás beillesztése"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Name"
 msgstr "Név"
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2183
 msgid "Date"
 msgstr "Dátum"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Reversed Order"
 msgstr "Fordított sorrend"
 
-#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Folders Before Files"
 msgstr "Mappák a fájlok előtt"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Sort by"
 msgstr "Rendezés"
 
-#: src/View/AbstractDirectoryView.vala:2209
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Folder"
 msgstr "Mappa"
 
-#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2217
 msgid "Empty File"
 msgstr "Üres fájl"
 
-#: src/View/AbstractDirectoryView.vala:2266
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "New"
 msgstr "Új"
 
-#: src/View/AbstractDirectoryView.vala:2503
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr "Névtelen %s"
 
-#: src/View/AbstractDirectoryView.vala:2865
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3051
-#: src/View/AbstractDirectoryView.vala:3067
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
-#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "A kukában levő fájlok nem másolhatóak"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: src/View/AbstractDirectoryView.vala:3050
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
+#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "Saját mappa"
 
@@ -585,93 +586,143 @@ msgstr "Fájl nem található"
 msgid "The file selected no longer exists."
 msgstr "A kiválasztott fájl már nem létezik."
 
-#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:282
-msgid "Bookmarks"
-msgstr "Könyvjelzők"
-
-#: src/View/Sidebar.vala:574
-msgid "Common places plus saved folders and files"
+#: src/View/Sidebar/BookmarkListBox.vala:119
+#, fuzzy
+msgid "View the home folder"
 msgstr ""
+"Mappa létrehozása sikertelen\n"
+"\n"
+"%s"
 
-#: src/View/Sidebar.vala:594
-msgid "Open your personal folder"
-msgstr "Személyes mappa megnyitása"
-
-#: src/View/Sidebar.vala:609
+#: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
 msgstr "A nemrég használt fájlok megtekintése"
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Kuka"
 
-#: src/View/Sidebar.vala:642
+#: src/View/Sidebar/BookmarkListBox.vala:154
 msgid "Open the Trash"
 msgstr "Kuka megnyitása"
 
-#: src/View/Sidebar.vala:647
-msgid "Devices"
-msgstr "Eszközök"
-
-#: src/View/Sidebar.vala:648
-msgid "Internal and connected storage devices"
-msgstr ""
-
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:66
-msgid "Network"
-msgstr "Hálózat"
-
-#: src/View/Sidebar.vala:778
-msgid "Devices and places available via a network"
-msgstr ""
-
-#: src/View/Sidebar.vala:810
-msgid "Entire Network"
-msgstr "Egész hálózaton"
-
-#: src/View/Sidebar.vala:817
-msgid "Browse the contents of the network"
-msgstr "A hálózat tartalmának tallózása"
-
-#: src/View/Sidebar.vala:820
+#: src/View/Sidebar/DeviceListBox.vala:105
 #, fuzzy
-msgid "Connect Server"
-msgstr "Kapcsolódás a kiszolgálóhoz"
+#| msgid "File System"
+msgid "FileSystem"
+msgstr "Fájlrendszer"
 
-#: src/View/Sidebar.vala:821
+#: src/View/Sidebar/DeviceListBox.vala:117
 #, fuzzy
-msgid "Connect to a network server"
-msgstr "Kapcsolódás egy hálózati fájl szerverhez"
+#| msgid "View the list of recently used files"
+msgid "View the root of the local filesystem"
+msgstr "A nemrég használt fájlok megtekintése"
 
-#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-#: src/View/Sidebar.vala:892
-#, fuzzy, c-format
-msgid "%s on %s"
-msgstr "%S, összesen: %S"
-
-#: src/View/Sidebar.vala:979
+#: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
-msgid "%s free"
+msgid "Eject “%s”"
 msgstr ""
 
-#: src/View/Sidebar.vala:980
-#, fuzzy, c-format
-msgid "%s used of %s"
-msgstr "%S, összesen: %S"
-
-#: src/View/Sidebar.vala:1455
+#: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Hiba a(z) %s kötet csatolása közben"
 
-#: src/View/Sidebar.vala:1470
+#: src/View/Sidebar/DeviceRow.vala:218
 #, c-format
 msgid "Unable to start %s"
 msgstr "A(z) %s nem indítható"
 
-#: src/View/Sidebar.vala:1660 libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
+#: src/View/Sidebar/DeviceRow.vala:481
+#, c-format
+msgid "%s free"
+msgstr ""
+
+#: src/View/Sidebar/DeviceRow.vala:482
+#, fuzzy, c-format
+msgid "%s used of %s"
+msgstr "%S, összesen: %S"
+
+#: src/View/Sidebar/NetworkListBox.vala:81
+msgid "Entire Network"
+msgstr "Egész hálózaton"
+
+#: src/View/Sidebar/NetworkListBox.vala:87
+msgid "Browse the contents of the network"
+msgstr "A hálózat tartalmának tallózása"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:49
+msgid "Open"
+msgstr "Megnyitás"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:53
+msgid "Open in New _Tab"
+msgstr "Megnyitás új _lapon"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:57
+msgid "Open in New _Window"
+msgstr "Megnyitás új _ablakban"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:61
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:65
+msgid "Rename"
+msgstr "Átnevezés"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:69
+msgid "_Mount"
+msgstr "_Csatolás"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:73
+msgid "_Unmount"
+msgstr "_Leválasztás"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:77
+msgid "_Eject"
+msgstr "_Kiadás"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#, fuzzy
+#| msgid "Empty _Trash"
+msgid "Empty All Trash"
 msgstr "_Kuka ürítése"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:93
+msgid "Empty Trash on this Mount"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: libwidgets/View/SearchResults.vala:282
+msgid "Bookmarks"
+msgstr "Könyvjelzők"
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:52
+msgid "Devices"
+msgstr "Eszközök"
+
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Internal and connected storage devices"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+msgid "Network"
+msgstr "Hálózat"
+
+#: src/View/Sidebar/SidebarWindow.vala:60
+msgid "Devices and places available via a network"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:80
+#, fuzzy
+#| msgid "Connect to Server…"
+msgid "Connect Server…"
+msgstr "Kapcsolódás a szerverhez…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -705,52 +756,20 @@ msgstr ""
 msgid "Open the system security and privacy settings app"
 msgstr ""
 
-#: src/View/PopupMenuBuilder.vala:49
-msgid "Open"
-msgstr "Megnyitás"
-
-#: src/View/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr "Megnyitás új _lapon"
-
-#: src/View/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr "Megnyitás új _ablakban"
-
-#: src/View/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr "Eltávolítás"
-
-#: src/View/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr "Átnevezés"
-
-#: src/View/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr "_Csatolás"
-
-#: src/View/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr "_Leválasztás"
-
-#: src/View/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr "_Kiadás"
-
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Keresés vagy útvonal megadása"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Megnyitás új lapon"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Megnyitás új ablakban"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Megnyitás másik alkalmazással…"
 
@@ -939,7 +958,7 @@ msgstr "_Jelszó:"
 msgid "Remember this password"
 msgstr "_Emlékezzen erre a jelszóra"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Mégsem"
@@ -962,20 +981,20 @@ msgstr "Kapcsolódás…"
 msgid "Please verify your user details."
 msgstr "Ellenőrizze a felhasználói adatait."
 
-#: libcore/DndHandler.vala:48
+#: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "A(z) \"%s\" futtatása sikertelen"
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:100
 msgid "Move Here"
 msgstr "Áthelyezés ide"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:101
 msgid "Copy Here"
 msgstr "Másolás ide"
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:102
 msgid "Link Here"
 msgstr "Link ide"
 
@@ -1129,28 +1148,28 @@ msgstr "Tegnap ekkor %-H:%M"
 msgid "%%A at %s"
 msgstr "%A ekkor %-H:%M"
 
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:920
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d másodperc"
 msgstr[1] "%'d másodperc"
 
-#: libcore/FileUtils.vala:926 libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d perc"
 msgstr[1] "%'d perc"
 
-#: libcore/FileUtils.vala:933
+#: libcore/FileUtils.vala:931
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d óra"
 msgstr[1] "%'d óra"
 
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:935
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1158,26 +1177,26 @@ msgstr[0] "megközelítőleg %'d óra"
 msgstr[1] "megközelítőleg %'d óra"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:945
+#: libcore/FileUtils.vala:943
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
 msgstr " (másolat)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:947
+#: libcore/FileUtils.vala:945
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:949
+#: libcore/FileUtils.vala:947
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:951
+#: libcore/FileUtils.vala:949
 msgid ")"
 msgstr ""
 
@@ -1231,6 +1250,10 @@ msgstr "Összes össze_fésülése"
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
 msgstr "Másolás mi_ndenképp"
+
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "_Kuka ürítése"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
@@ -1865,36 +1888,42 @@ msgstr "Hiba történt a szimbolikus link létrehozásakor a következőben: %F.
 msgid "Setting permissions"
 msgstr "Jogosultságok beállítása"
 
-#: libcore/marlin-file-operations.c:4407
+#: libcore/marlin-file-operations.c:4409
+#, fuzzy
+#| msgid "Moving files to trash"
+msgid "Zero files to process"
+msgstr "Fájlok áthelyezése a Kukába"
+
+#: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
 msgstr "Nem lehet a kukába másolni."
 
-#: libcore/marlin-file-operations.c:4408 libcore/marlin-file-operations.c:4416
+#: libcore/marlin-file-operations.c:4418 libcore/marlin-file-operations.c:4426
 msgid "It is not permitted to copy files into the trash"
 msgstr "A fájlok Kukába másolása nem engedélyezett"
 
-#: libcore/marlin-file-operations.c:4547
+#: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
 msgstr "névtelen mappa"
 
-#: libcore/marlin-file-operations.c:4555
+#: libcore/marlin-file-operations.c:4565
 msgid "new file"
 msgstr "új fájl"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4724
+#: libcore/marlin-file-operations.c:4734
 #, fuzzy, c-format
 msgid "Error while creating directory %s."
 msgstr "Hiba a következő könyvtár létrehozásakor: %B."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4727
+#: libcore/marlin-file-operations.c:4737
 #, fuzzy, c-format
 msgid "Error while creating file %s."
 msgstr "Hiba a következő fájl létrehozásakor: %B."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4733
+#: libcore/marlin-file-operations.c:4743
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Hiba a könyvtár létrehozásakor a következőben: %F."
@@ -2011,6 +2040,21 @@ msgstr "Összes visszaállítása"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " kiválasztva"
+
+#~ msgid "Open your personal folder"
+#~ msgstr "Személyes mappa megnyitása"
+
+#, fuzzy
+#~ msgid "Connect Server"
+#~ msgstr "Kapcsolódás a kiszolgálóhoz"
+
+#, fuzzy
+#~ msgid "Connect to a network server"
+#~ msgstr "Kapcsolódás egy hálózati fájl szerverhez"
+
+#, fuzzy
+#~ msgid "%s on %s"
+#~ msgstr "%S, összesen: %S"
 
 #~ msgid " and %u other items (%s) selected"
 #~ msgstr " és %u további (%s) elem kiválasztva"
@@ -2429,9 +2473,6 @@ msgstr " kiválasztva"
 
 #~ msgid "Operation cancelled"
 #~ msgstr "A művelet megszakítva"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "Kapcsolódás a szerverhez…"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "Ezek az elemek visszaállíthatók vagy törölhetők a kukából."

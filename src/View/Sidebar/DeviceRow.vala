@@ -33,7 +33,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
     private double storage_free = 0;
     private string storage_text = "";
 
-    public Gtk.LevelBar storage { get; set construct; }
+    public Gtk.LevelBar storage_levelbar { get; set construct; }
     public string? uuid { get; set construct; }
     public Drive? drive { get; set construct; }
     public Volume? volume { get; set construct; }
@@ -132,20 +132,20 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
         content_grid.attach (mount_eject_revealer, 1, 0);
 
-        storage = new Gtk.LevelBar () {
+        storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
             hexpand = true
         };
-        storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
-        storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
-        storage.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
 
-        unowned var storage_style_context = storage.get_style_context ();
+        unowned var storage_style_context = storage_levelbar.get_style_context ();
         storage_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
         storage_style_context.add_class ("inverted");
         storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        icon_label_grid.attach (storage, 1, 1);
+        icon_label_grid.attach (storage_levelbar, 1, 1);
 
         show_all ();
 
@@ -470,11 +470,11 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
 
     private async void add_device_tooltip () {
         if (yield get_filesystem_space (null)) {
-            storage.@value = (storage_capacity - storage_free) / storage_capacity;
-            storage.show ();
+            storage_levelbar.@value = (storage_capacity - storage_free) / storage_capacity;
+            storage_levelbar.show ();
         } else {
             storage_text = "";
-            storage.hide ();
+            storage_levelbar.hide ();
         }
 
         if (storage_capacity > 0) {
@@ -491,5 +491,9 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         }
 
         set_tooltip_markup (PF.FileUtils.sanitize_path (uri, null, false) + storage_text);
+    }
+
+    public void update_free_space () {
+        add_device_tooltip.begin ();
     }
 }

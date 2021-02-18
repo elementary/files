@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-17 01:11+0000\n"
-"PO-Revision-Date: 2021-02-17 02:02+0000\n"
+"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"PO-Revision-Date: 2021-02-18 10:36+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
 "\n"
@@ -28,7 +28,7 @@ msgstr "プログラムのバージョンを表示します"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "1 つ以上の URI を、それぞれ別のタブで開きます"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1858
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
@@ -113,7 +113,8 @@ msgid "Set as default"
 msgstr "デフォルトに設定"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1968 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "プロパティ"
 
@@ -191,7 +192,7 @@ msgid "Original Location:"
 msgstr "元の場所:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1936
+#: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
 msgstr "ほかのアプリケーション…"
 
@@ -226,7 +227,7 @@ msgstr[0] "%u 個のファイル"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:933
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
 #, c-format
 msgid "%s, %s"
 msgstr "%s、%s"
@@ -253,8 +254,7 @@ msgstr "%s (%s、%s)"
 msgid "Disk Properties"
 msgstr "ディスクのプロパティ"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "ファイルシステム"
 
@@ -262,11 +262,11 @@ msgstr "ファイルシステム"
 msgid "Format:"
 msgstr "フォーマット:"
 
-#: src/Utils/MimeActions.vala:283
+#: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
 msgstr "複数のファイルタイプが選択されています"
 
-#: src/Utils/MimeActions.vala:284
+#: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
 msgstr "これらすべてのファイルタイプを開くことができるアプリがありません"
 
@@ -282,7 +282,7 @@ msgstr "URI を開くことができませんでした"
 msgid "Could not open files or URIs with this app"
 msgstr "このアプリでファイルまたは URI を開けませんでした"
 
-#: src/View/Window.vala:542 src/View/Window.vala:552
+#: src/View/Window.vala:544 src/View/Window.vala:554
 msgid "(as Administrator)"
 msgstr "(管理者)"
 
@@ -290,11 +290,11 @@ msgstr "(管理者)"
 msgid "Filename"
 msgstr "ファイル名"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
 msgid "Size"
 msgstr "サイズ"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
 msgid "Type"
 msgstr "形式"
 
@@ -359,158 +359,159 @@ msgstr "このファイルを削除できません"
 msgid "Invalid file name provided"
 msgstr "無効なファイル名が入力されました"
 
-#: src/View/AbstractDirectoryView.vala:1852
+#: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
 msgstr "実行"
 
-#: src/View/AbstractDirectoryView.vala:1879
+#: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
 msgstr "%s で開く"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
 msgstr "指定した方法で開く"
 
-#: src/View/AbstractDirectoryView.vala:1950
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "このアプリケーションで開く"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:1961 src/View/PopupMenuBuilder.vala:85
+#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
 msgstr "ブックマークに追加"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
 msgstr "切り取り"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1984
+#: src/View/AbstractDirectoryView.vala:1986
 msgid "Copy"
 msgstr "コピー"
 
-#: src/View/AbstractDirectoryView.vala:1991
+#: src/View/AbstractDirectoryView.vala:1993
 msgid "Move to Trash"
 msgstr "ゴミ箱に移動"
 
-#: src/View/AbstractDirectoryView.vala:1996
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Delete permanently"
 msgstr "完全に削除"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2003
 msgid "Restore from Trash"
 msgstr "ゴミ箱から復元"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2014
 msgid "Open Parent Folder"
 msgstr "親フォルダーを開く"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2017
 msgid "Remove from History"
 msgstr "履歴から削除"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Rename…"
 msgstr "名前を変更…"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2040
 msgid "Copy as Link"
 msgstr "リンクとしてコピー"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste Link into Folder"
 msgstr "フォルダーの中にリンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Paste into Folder"
 msgstr "フォルダーの中に貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Show Hidden Files"
 msgstr "隠しファイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Show Remote Thumbnails"
 msgstr "リモートのサムネイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Hide Thumbnails"
 msgstr "サムネイルを非表示"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2114
 msgid "Paste Link"
 msgstr "リンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2168
 msgid "Name"
 msgstr "ファイル名"
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2183
 msgid "Date"
 msgstr "日付"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Reversed Order"
 msgstr "逆順"
 
-#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Folders Before Files"
 msgstr "ファイルの前にフォルダーを表示"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Sort by"
 msgstr "並べ替え"
 
-#: src/View/AbstractDirectoryView.vala:2209
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Folder"
 msgstr "フォルダー"
 
-#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2217
 msgid "Empty File"
 msgstr "空のファイル"
 
-#: src/View/AbstractDirectoryView.vala:2266
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "New"
 msgstr "新規作成"
 
-#: src/View/AbstractDirectoryView.vala:2503
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2865
-#: src/View/AbstractDirectoryView.vala:3066
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3051
-#: src/View/AbstractDirectoryView.vala:3067
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3050
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
+#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "ホーム"
 
@@ -566,91 +567,131 @@ msgstr "ファイルが見つかりませんでした"
 msgid "The file selected no longer exists."
 msgstr "選択されたファイルは存在しません。"
 
-#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:282
-msgid "Bookmarks"
-msgstr "ブックマーク"
+#: src/View/Sidebar/BookmarkListBox.vala:119
+msgid "View the home folder"
+msgstr "ホームフォルダーを表示します"
 
-#: src/View/Sidebar.vala:574
-msgid "Common places plus saved folders and files"
-msgstr "一般的な場所およびピン留めされたフォルダーとファイル"
-
-#: src/View/Sidebar.vala:594
-msgid "Open your personal folder"
-msgstr "ユーザーのホームフォルダーを開きます"
-
-#: src/View/Sidebar.vala:609
+#: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
 msgstr "最近使用したファイルの一覧を表示します"
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: src/View/Sidebar.vala:642
+#: src/View/Sidebar/BookmarkListBox.vala:154
 msgid "Open the Trash"
 msgstr "ゴミ箱を開きます"
 
-#: src/View/Sidebar.vala:647
-msgid "Devices"
-msgstr "デバイス"
+#: src/View/Sidebar/DeviceListBox.vala:105
+msgid "FileSystem"
+msgstr "ファイルシステム"
 
-#: src/View/Sidebar.vala:648
-msgid "Internal and connected storage devices"
-msgstr "内部ストレージと接続済みのストレージ"
+#: src/View/Sidebar/DeviceListBox.vala:117
+msgid "View the root of the local filesystem"
+msgstr "ローカルファイルシステムのルートフォルダーを表示します"
 
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:66
-msgid "Network"
-msgstr "ネットワーク"
-
-#: src/View/Sidebar.vala:778
-msgid "Devices and places available via a network"
-msgstr "ネットワーク経由で利用可能なデバイスと場所"
-
-#: src/View/Sidebar.vala:810
-msgid "Entire Network"
-msgstr "ネットワーク全体"
-
-#: src/View/Sidebar.vala:817
-msgid "Browse the contents of the network"
-msgstr "ネットワークの内容を閲覧します"
-
-#: src/View/Sidebar.vala:820
-msgid "Connect Server"
-msgstr "サーバーへ接続"
-
-#: src/View/Sidebar.vala:821
-msgid "Connect to a network server"
-msgstr "ネットワークサーバーへ接続します"
-
-#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-#: src/View/Sidebar.vala:892
+#: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
-msgid "%s on %s"
-msgstr "%2$s 上の %1$s"
+msgid "Eject “%s”"
+msgstr "“%s” を取り出し"
 
-#: src/View/Sidebar.vala:979
-#, c-format
-msgid "%s free"
-msgstr "%s が利用可能"
-
-#: src/View/Sidebar.vala:980
-#, c-format
-msgid "%s used of %s"
-msgstr "%2$s のうち %1$s が使用済み"
-
-#: src/View/Sidebar.vala:1455
+#: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "ボリューム %s のマウントエラー"
 
-#: src/View/Sidebar.vala:1470
+#: src/View/Sidebar/DeviceRow.vala:218
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s を起動できません"
 
-#: src/View/Sidebar.vala:1660 libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "ゴミ箱を空にする(_T)"
+#: src/View/Sidebar/DeviceRow.vala:481
+#, c-format
+msgid "%s free"
+msgstr "%s が利用可能"
+
+#: src/View/Sidebar/DeviceRow.vala:482
+#, c-format
+msgid "%s used of %s"
+msgstr "%2$s のうち %1$s が使用済み"
+
+#: src/View/Sidebar/NetworkListBox.vala:81
+msgid "Entire Network"
+msgstr "ネットワーク全体"
+
+#: src/View/Sidebar/NetworkListBox.vala:87
+msgid "Browse the contents of the network"
+msgstr "ネットワークの内容を閲覧します"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:49
+msgid "Open"
+msgstr "開く"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:53
+msgid "Open in New _Tab"
+msgstr "新しいタブで開く(_T)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:57
+msgid "Open in New _Window"
+msgstr "新しいウィンドウで開く(_W)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:61
+msgid "Remove"
+msgstr "削除"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:65
+msgid "Rename"
+msgstr "名前を変更"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:69
+msgid "_Mount"
+msgstr "マウント(_M)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:73
+msgid "_Unmount"
+msgstr "アンマウント(_U)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:77
+msgid "_Eject"
+msgstr "取り出し(_E)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:89
+msgid "Empty All Trash"
+msgstr "全ドライブのゴミ箱を空にする"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:93
+msgid "Empty Trash on this Mount"
+msgstr "このドライブのゴミ箱を空にする"
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: libwidgets/View/SearchResults.vala:282
+msgid "Bookmarks"
+msgstr "ブックマーク"
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr "一般的な場所およびピン留めされたフォルダーとファイル"
+
+#: src/View/Sidebar/SidebarWindow.vala:52
+msgid "Devices"
+msgstr "デバイス"
+
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Internal and connected storage devices"
+msgstr "内部ストレージと接続済みのストレージ"
+
+#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+msgid "Network"
+msgstr "ネットワーク"
+
+#: src/View/Sidebar/SidebarWindow.vala:60
+msgid "Devices and places available via a network"
+msgstr "ネットワーク経由で利用可能なデバイスと場所"
+
+#: src/View/Sidebar/SidebarWindow.vala:80
+msgid "Connect Server…"
+msgstr "サーバーを接続…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -684,52 +725,20 @@ msgstr "セキュリティー設定を変更"
 msgid "Open the system security and privacy settings app"
 msgstr "システムのセキュリティーとプライバシー設定アプリを開きます"
 
-#: src/View/PopupMenuBuilder.vala:49
-msgid "Open"
-msgstr "開く"
-
-#: src/View/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr "新しいタブで開く(_T)"
-
-#: src/View/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr "新しいウィンドウで開く(_W)"
-
-#: src/View/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr "削除"
-
-#: src/View/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr "名前を変更"
-
-#: src/View/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr "マウント(_M)"
-
-#: src/View/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr "アンマウント(_U)"
-
-#: src/View/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr "取り出し(_E)"
-
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "検索するかパスを入力してください"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "新しいウィンドウで開く"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "ほかのアプリケーションで開く…"
 
@@ -901,7 +910,7 @@ msgstr "パスワード:"
 msgid "Remember this password"
 msgstr "このパスワードを記憶"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
+#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "キャンセル"
@@ -922,20 +931,20 @@ msgstr "接続しています…"
 msgid "Please verify your user details."
 msgstr "ユーザー情報が正しいか確認してください。"
 
-#: libcore/DndHandler.vala:48
+#: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\" を実行できませんでした"
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:100
 msgid "Move Here"
 msgstr "ここへ移動"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:101
 msgid "Copy Here"
 msgstr "ここへコピー"
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:102
 msgid "Link Here"
 msgstr "ここへリンク"
 
@@ -990,7 +999,7 @@ msgstr "置き換え"
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "フォルダー \"%s\" をマージしますか？"
+msgstr "フォルダー \"%s\" を統合しますか？"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
@@ -1055,7 +1064,7 @@ msgstr "\"%s\" 内に同じ名前のファイルがすでに存在していま�
 
 #: libcore/FileConflictDialog.vala:348
 msgid "Merge"
-msgstr "マージ"
+msgstr "統合"
 
 #: libcore/FileUtils.vala:89
 #, c-format
@@ -1089,47 +1098,47 @@ msgstr "昨日の%s"
 msgid "%%A at %s"
 msgstr "%%Aの%s"
 
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:920
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 秒"
 
-#: libcore/FileUtils.vala:926 libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d 分"
 
-#: libcore/FileUtils.vala:933
+#: libcore/FileUtils.vala:931
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 時間"
 
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:935
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "約 %'d 時間"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:945
+#: libcore/FileUtils.vala:943
 msgid "copy"
 msgstr "コピー"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:947
+#: libcore/FileUtils.vala:945
 msgid "link"
 msgstr "リンク"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:949
+#: libcore/FileUtils.vala:947
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:951
+#: libcore/FileUtils.vala:949
 msgid ")"
 msgstr ")"
 
@@ -1172,15 +1181,19 @@ msgstr "すべて置き換え(_A)"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
-msgstr "マージ(_M)"
+msgstr "統合(_M)"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
-msgstr "すべてマージ(_A)"
+msgstr "すべて統合(_A)"
 
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
 msgstr "強制的にコピー(_A)"
+
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "ゴミ箱を空にする(_T)"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
@@ -1797,36 +1810,40 @@ msgstr "%s 内へのシンボリックリンクの作成中にエラーが発生
 msgid "Setting permissions"
 msgstr "権限を設定しています"
 
-#: libcore/marlin-file-operations.c:4407
+#: libcore/marlin-file-operations.c:4409
+msgid "Zero files to process"
+msgstr "処理するファイルがありません"
+
+#: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
 msgstr "ゴミ箱にコピーできません。"
 
-#: libcore/marlin-file-operations.c:4408 libcore/marlin-file-operations.c:4416
+#: libcore/marlin-file-operations.c:4418 libcore/marlin-file-operations.c:4426
 msgid "It is not permitted to copy files into the trash"
 msgstr "ゴミ箱にファイルをコピーすることは許可されていません"
 
-#: libcore/marlin-file-operations.c:4547
+#: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
 msgstr "名称未設定フォルダー"
 
-#: libcore/marlin-file-operations.c:4555
+#: libcore/marlin-file-operations.c:4565
 msgid "new file"
 msgstr "新しいファイル"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4724
+#: libcore/marlin-file-operations.c:4734
 #, c-format
 msgid "Error while creating directory %s."
 msgstr "フォルダー %s の作成中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4727
+#: libcore/marlin-file-operations.c:4737
 #, c-format
 msgid "Error while creating file %s."
 msgstr "ファイル %s の作成中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4733
+#: libcore/marlin-file-operations.c:4743
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "%s 内へのフォルダーの作成中にエラーが発生しました。"
@@ -1936,6 +1953,18 @@ msgstr "選択項目を元に戻す"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "選択項目を削除"
+
+#~ msgid "Open your personal folder"
+#~ msgstr "ユーザーのホームフォルダーを開きます"
+
+#~ msgid "Connect Server"
+#~ msgstr "サーバーへ接続"
+
+#~ msgid "Connect to a network server"
+#~ msgstr "ネットワークサーバーへ接続します"
+
+#~ msgid "%s on %s"
+#~ msgstr "%2$s 上の %1$s"
 
 #~ msgid " and %u other items (%s) selected"
 #~ msgstr " と %u 個のほかの項目を選択 (%s)"
@@ -2334,9 +2363,6 @@ msgstr "選択項目を削除"
 
 #~ msgid "Operation cancelled"
 #~ msgstr "操作はキャンセルされました"
-
-#~ msgid "Connect to Server…"
-#~ msgstr "サーバーへ接続…"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "これらの項目はゴミ箱から復元または削除することができます。"
