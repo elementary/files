@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 06:50+0000\n"
-"PO-Revision-Date: 2020-11-12 18:15+0000\n"
-"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"PO-Revision-Date: 2021-02-18 13:28+0000\n"
+"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -577,10 +577,8 @@ msgid "The file selected no longer exists."
 msgstr "Le fichier sélectionné n'existe plus."
 
 #: src/View/Sidebar/BookmarkListBox.vala:119
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "Impossible de créer le dossier"
+msgstr "Afficher le dossier personnel"
 
 #: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
@@ -595,21 +593,17 @@ msgid "Open the Trash"
 msgstr "Ouvrir la corbeille"
 
 #: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
 msgid "FileSystem"
-msgstr "Système de fichier"
+msgstr "Système de fichiers"
 
 #: src/View/Sidebar/DeviceListBox.vala:117
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "Voir la liste des fichiers récemment utilisés"
+msgstr "Voir la racine du système de fichiers local"
 
 #: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
 msgid "Eject “%s”"
-msgstr ""
+msgstr "Éjecter « %s »"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
@@ -672,14 +666,12 @@ msgid "_Eject"
 msgstr "_Éjecter"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
 msgstr "_Vider la corbeille"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "Vider la corbeille de ce point de montage"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -707,8 +699,6 @@ msgid "Devices and places available via a network"
 msgstr "Périphériques et emplacements disponibles en réseau"
 
 #: src/View/Sidebar/SidebarWindow.vala:80
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
 msgstr "Se connecter à un serveur…"
 
@@ -783,11 +773,10 @@ msgid "%u folders"
 msgstr "%u dossiers"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " et %u autres objets (%s) sélectionnés"
+msgstr[0] " et %u autre objet (%s) sélectionné"
 msgstr[1] " et %u autres objets (%s) sélectionnés"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
@@ -801,21 +790,19 @@ msgstr "%u éléments sélectionnés (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u sous-dossier, "
-msgstr[1] "%u sous-dossier, "
+msgstr[1] "%u sous-dossiers, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u fichier, "
-msgstr[1] "%u fichier, "
+msgstr[1] "%u fichiers, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -830,12 +817,11 @@ msgstr "taille inconnue"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u fichier illisible"
-msgstr[1] "%u fichier illisible"
+msgstr[1] "%u fichiers illisible"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1891,10 +1877,8 @@ msgid "Setting permissions"
 msgstr "Définition des permissions"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Mise à la corbeille des fichiers"
+msgstr "Aucun fichier à traiter"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
