@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -619,18 +619,20 @@ msgid "View the root of the local filesystem"
 msgstr "Προβολή της λίστας των πρόσφατα χρησιμοποιημένων αρχείων"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Διαγραφή του '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Αδυναμία εκκίνησης %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2154,9 +2156,6 @@ msgstr " επιλέχτηκε"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Διαγραφή %d αντεγραμμένων αντικειμένων"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Διαγραφή του '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Διαγραφή %d αντιγραφέντων αντικειμένων"

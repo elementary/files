@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -611,19 +611,20 @@ msgid "View the root of the local filesystem"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+msgid "Eject '%s'"
+msgstr "ลบทั้_งหมด"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Unable to mount %s"
+msgid "Unable to start '%s'"
+msgstr "ไม่สามารถเมานต์ %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
 #, c-format
@@ -2018,10 +2019,6 @@ msgstr "ลบทั้_งหมด"
 
 #~ msgid "Personal"
 #~ msgstr "ส่วนตัว"
-
-#, fuzzy
-#~ msgid "Delete '%s'"
-#~ msgstr "ลบทั้_งหมด"
 
 #, fuzzy
 #~ msgid "Move %d items back to '%s'"

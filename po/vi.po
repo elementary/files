@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -611,18 +611,20 @@ msgid "View the root of the local filesystem"
 msgstr "Xem danh sách các tập tin đã sử dụng gần đây"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Xoá '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Không thể chạy %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2041,9 +2043,6 @@ msgstr "Xóa _Tất cả"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Xóa %d mục đã chép"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Xoá '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Xóa %d mục trùng lặp"

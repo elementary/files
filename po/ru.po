@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2020-04-12 11:10+0000\n"
 "Last-Translator: Stas <SedovSG@yandex.ru>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
@@ -612,18 +612,21 @@ msgid "View the root of the local filesystem"
 msgstr "Посмотреть список недавно использованных файлов"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Удалить «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Ошибка при монтировании тома %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Не удалось запустить %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2127,9 +2130,6 @@ msgstr "Удалить выбранное"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Удалить %d скопированных файлов"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Удалить «%s»"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Удалить %d дубликатов"

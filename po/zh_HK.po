@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2018-01-20 00:04+0000\n"
 "Last-Translator: Wendel Hime <wendelhime@hotmail.com>\n"
 "Language-Team: zh (generated) <https://weblate.elementary.io/projects/files/"
@@ -589,17 +589,17 @@ msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:112
 #, c-format
-msgid "Eject “%s”"
+msgid "Eject '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
 #, c-format
-msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:481

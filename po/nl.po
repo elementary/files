@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2020-10-31 21:15+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -607,18 +607,21 @@ msgid "View the root of the local filesystem"
 msgstr "Bekijk de lijst van recentelijke gebruikte bestanden"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "‘%s’ _verwijderen"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Fout bij het aankoppelen van het volume %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Niet in staat %s te starten"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2116,9 +2119,6 @@ msgstr "Selectie verwijderen"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "%d gekopieerde items verwijderen"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "‘%s’ _verwijderen"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Verwijder %d dubbele items"

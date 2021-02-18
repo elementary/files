@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2015-12-21 13:47+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Icelandic <is@li.org>\n"
@@ -594,18 +594,19 @@ msgid "View the root of the local filesystem"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Eyða '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
 #, c-format
-msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2000,9 +2001,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "%'dth link to %s"
 #~ msgstr "Búa til tengil í '%s'"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Eyða '%s'"
 
 #, fuzzy
 #~ msgid "Move %d items back to '%s'"

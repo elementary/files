@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -606,18 +606,21 @@ msgid "View the root of the local filesystem"
 msgstr "Visualizza l'elenco dei file utilizzati di recente"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Elimina '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Errore nel montare il volume %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Impossibile avviare %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2102,9 +2105,6 @@ msgstr "Elimina la selezione"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Elimina %d elementi copiati"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Elimina '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Elimina %d elementi copiati"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -619,18 +619,20 @@ msgid "View the root of the local filesystem"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "حذف «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "نمی‌توان %s را آغاز کرد"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2055,9 +2057,6 @@ msgstr " انتخاب شد."
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "حذف %d مورد رونویسی شده"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "حذف «%s»"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "حذف %d مورد تکراری"

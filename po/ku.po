@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2018-02-05 00:11+0000\n"
 "Last-Translator: Rokar <mail@rokar.de>\n"
 "Language-Team: Kurdish <https://weblate.elementary.io/projects/files/files/"
@@ -604,19 +604,20 @@ msgid "View the root of the local filesystem"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+msgid "Eject '%s'"
+msgstr "Hemûyan _jê bibe"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Unable to mount %s"
+msgid "Unable to start '%s'"
+msgstr "Girêdana %s bi ser neket"
 
 #: src/View/Sidebar/DeviceRow.vala:481
 #, c-format
@@ -2029,10 +2030,6 @@ msgstr "Hemûyan _jê bibe"
 
 #~ msgid "Personal"
 #~ msgstr "Şexsî"
-
-#, fuzzy
-#~ msgid "Delete '%s'"
-#~ msgstr "Hemûyan _jê bibe"
 
 #, fuzzy
 #~ msgid "Move %d items back to trash"

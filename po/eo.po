@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -603,18 +603,21 @@ msgid "View the root of the local filesystem"
 msgstr "Vidi liston de freŝe uzitaj dosieroj"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Forigi „%s“"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Eraris munto de la portilo %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Neeblas startigi %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2084,9 +2087,6 @@ msgstr "Forigi elektitojn"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Forigi %d kopiitajn elementojn"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Forigi „%s“"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Forigi %d duoblajn elementojn"

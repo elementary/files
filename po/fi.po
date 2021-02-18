@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2021-02-09 16:03+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -605,18 +605,21 @@ msgid "View the root of the local filesystem"
 msgstr "Näytä luettelo äskettäin käytetyistä tiedostoista"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Poista \"%s\""
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Virhe liittäessä taltiota %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Asemaa %s ei voi käynnistää"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2093,9 +2096,6 @@ msgstr "Poista valitut"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Poista %d kopioitua kohdetta"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Poista \"%s\""
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Poista %d kohdennettua kohdetta"

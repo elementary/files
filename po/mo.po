@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -613,18 +613,21 @@ msgid "View the root of the local filesystem"
 msgstr "Vizualizați lista fișierelor utilizate recent"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Șterge '%s 1'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Eroare la montarea volumului %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Imposibil de pornit %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2133,9 +2136,6 @@ msgstr " selectat"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Ștergeți %d 1 elemente copiate"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Șterge '%s 1'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Șterge %d 1 articole duplicate"

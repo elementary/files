@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -619,18 +619,20 @@ msgid "View the root of the local filesystem"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "ማጥፊያ '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "ማስጀመር አልተቻለም %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2068,9 +2070,6 @@ msgstr " የተመረጠው"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "ማጥፊያ %d ኮፒ የተደረጉ እቃዎችን"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "ማጥፊያ '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "ማጥፊያ %d የተባዙ እቃዎችን"

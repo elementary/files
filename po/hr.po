@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2017-08-16 12:17+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://weblate.elementary.io/projects/files/files/"
@@ -630,18 +630,20 @@ msgid "View the root of the local filesystem"
 msgstr "Pogledaj popis nedavno korištenih datoteka"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Obriši '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Nemoguće je pokrenuti %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2158,9 +2160,6 @@ msgstr " odabrano"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Obriši %d kopiranih stavki"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Obriši '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Obriši %d dupliciranih stavki"

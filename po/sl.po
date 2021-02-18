@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -618,18 +618,21 @@ msgid "View the root of the local filesystem"
 msgstr "Seznam nazadnje uporabljenih datotek"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Izbriši '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Napaka pri priklapljanju %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Ni mogoče zagnati %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2153,9 +2156,6 @@ msgstr "Izbriši izbrano"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Izbriši %d kopiranih predmetov"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Izbriši '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Izbriši %d podvojenih predmetov"

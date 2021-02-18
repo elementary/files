@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -627,18 +627,20 @@ msgid "View the root of the local filesystem"
 msgstr "Zobraziť zoznam nedávno použitých súborov"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Odstrániť '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Nepodarilo sa spustiť %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2162,9 +2164,6 @@ msgstr " vybrané"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Odstrániť %d skopírovaných položiek"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Odstrániť '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Odstrániť %d zdvojené položky"

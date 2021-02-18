@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2021-02-17 18:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -607,18 +607,21 @@ msgid "View the root of the local filesystem"
 msgstr "Se listen over nylig brukte filer"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Slett «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Feil ved montering av diskområde %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Kan ikke starte %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2086,9 +2089,6 @@ msgstr "Slett valgte"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Slett %d kopierte elementer"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Slett «%s»"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Slett %d dupliserte elementer"

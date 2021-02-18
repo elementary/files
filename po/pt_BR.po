@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -609,18 +609,21 @@ msgid "View the root of the local filesystem"
 msgstr "Ver a lista de arquivos recém usados"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Excluir '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Erro ao montar volume %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Não foi possível iniciar %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2114,9 +2117,6 @@ msgstr "Excluir Selecionado"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Excluir %d arquivos copiados"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Excluir '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Excluir %d itens duplicados"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2018-06-22 12:48+0000\n"
 "Last-Translator: Shawn <syst3mfailur3@gmail.com>\n"
 "Language-Team: English (Canada) <https://weblate.elementary.io/projects/"
@@ -618,18 +618,21 @@ msgid "View the root of the local filesystem"
 msgstr "View the list of recently used files"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Delete '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Error mounting volume %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Unable to start %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2132,9 +2135,6 @@ msgstr " selected"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Delete %d copied items"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Delete '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Delete %d duplicated items"

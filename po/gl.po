@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Daniel R. <riesp@pm.me>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -608,18 +608,21 @@ msgid "View the root of the local filesystem"
 msgstr "Ver a lista de ficheiros usados recentemente"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Eliminar «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Erro montando o volume %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Non é posíbel iniciar %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2111,9 +2114,6 @@ msgstr "Eliminar o seleccionado"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Eliminar %d elementos copiados"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Eliminar «%s»"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Eliminar %d elementos duplicados"

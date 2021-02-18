@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
@@ -619,18 +619,21 @@ msgid "View the root of the local filesystem"
 msgstr "A nemrég használt fájlok megtekintése"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "A(z) '%s' törlése"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Hiba a(z) %s kötet csatolása közben"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "A(z) %s nem indítható"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2117,9 +2120,6 @@ msgstr " kiválasztva"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "%d másolt elem törlése"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "A(z) '%s' törlése"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "%d duplikált elem törlése"

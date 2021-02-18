@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2020-05-16 11:10+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -623,18 +623,21 @@ msgid "View the root of the local filesystem"
 msgstr "عرض قائمة الملفات المفتوحة مؤخرا"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "احذف '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "خطأ في تحميل القسم %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "تعذّر بدء %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2206,9 +2209,6 @@ msgstr " محددة"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "حذف  %d العناصر المنسوخة"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "احذف '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "حذف  %d العناصر المتكررة"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -627,18 +627,20 @@ msgid "View the root of the local filesystem"
 msgstr "Vezi lista fișierelor recent utilizate"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Sterge '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "Nu s-a putut porni %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2172,9 +2174,6 @@ msgstr " selectat"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Sterge %d elementele copiate"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Sterge '%s'"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Sterge %d elementele dublate"

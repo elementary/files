@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2020-11-12 18:15+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
@@ -604,18 +604,21 @@ msgid "View the root of the local filesystem"
 msgstr "Mostra la llista dels fitxers usats recentment"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+#| msgid "Delete '%s'"
+msgid "Eject '%s'"
+msgstr "Suprimeix «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume %s"
+#, fuzzy, c-format
+#| msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr "Error muntant el volum %s"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "No s'ha pogut iniciar %s"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -2101,9 +2104,6 @@ msgstr "Suprimeix la selecció"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Suprimeix els %d elements copiats"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Suprimeix «%s»"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Suprimeix els %d elements duplicats"

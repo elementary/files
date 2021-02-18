@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 06:50+0000\n"
+"POT-Creation-Date: 2021-02-18 13:28+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Telugu <te@li.org>\n"
@@ -601,18 +601,19 @@ msgid "View the root of the local filesystem"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject “%s”"
-msgstr ""
+#, fuzzy, c-format
+msgid "Eject '%s'"
+msgstr "అన్నీ తొలగించు (_A)"
 
 #: src/View/Sidebar/DeviceRow.vala:197
 #, c-format
-msgid "Error mounting volume %s"
+msgid "Error mounting volume '%s'"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start %s"
+#, fuzzy, c-format
+#| msgid "Unable to start %s"
+msgid "Unable to start '%s'"
 msgstr "%sను ప్రారంభించలేకపోతుంది"
 
 #: src/View/Sidebar/DeviceRow.vala:481
@@ -1992,10 +1993,6 @@ msgstr "అన్నీ తొలగించు (_A)"
 
 #~ msgid "Personal"
 #~ msgstr "వ్యక్తిగతం"
-
-#, fuzzy
-#~ msgid "Delete '%s'"
-#~ msgstr "అన్నీ తొలగించు (_A)"
 
 #, fuzzy
 #~ msgid "Unable to eject %V"
