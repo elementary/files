@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 13:28+0000\n"
-"PO-Revision-Date: 2021-02-18 10:36+0000\n"
+"PO-Revision-Date: 2021-02-18 22:56+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -591,34 +591,27 @@ msgid "Open the Trash"
 msgstr "Abrir o lixo"
 
 #: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
 msgid "FileSystem"
-msgstr "Sistema de ficheiros"
+msgstr "SistemaFicheiros"
 
 #: src/View/Sidebar/DeviceListBox.vala:117
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "Ver a lista de ficheiros usados recentemente"
+msgstr "Ver a raiz do sistema de ficheiros local"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Eject “%s”"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Ejectar “%s”"
+msgstr "Ejectar '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
+#, c-format
 msgid "Error mounting volume '%s'"
-msgstr "Erro ao montar o volume %s"
+msgstr "Erro ao montar o volume '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
+#, c-format
 msgid "Unable to start '%s'"
-msgstr "Incapaz de iniciar %s"
+msgstr "Incapaz de iniciar '%s'"
 
 #: src/View/Sidebar/DeviceRow.vala:481
 #, c-format
@@ -1873,10 +1866,8 @@ msgid "Setting permissions"
 msgstr "A definir as permissões"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "A mover ficheiros para o lixo"
+msgstr "Zero ficheiros a processar"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
