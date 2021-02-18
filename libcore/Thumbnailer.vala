@@ -130,7 +130,7 @@ namespace Marlin {
                                                      "/org/freedesktop/thumbnails/Thumbnailer1");
                 }
                 catch (GLib.Error e) {
-                    critical ("Failed to connect to system thumbnailing service (tumbler) - %s", e.message);
+                    critical ("Failed to connect to system thumbnailing service (tumbler): %s", e.message);
                     proxy = null;
                     return;
                 }
@@ -215,7 +215,7 @@ namespace Marlin {
                     request_handle_mapping.insert (this_request, handle);
                     handle_request_mapping.insert (handle, this_request);
                 } catch (GLib.Error e) {
-                    warning ("Thumbnailer proxy request %u failed - %s", this_request, e.message);
+                    warning ("Thumbnailer proxy request %u failed: %s", this_request, e.message);
                 }
             });
 

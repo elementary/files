@@ -213,7 +213,7 @@ public class Marlin.Progress.UIHandler : Object {
                         }
                     } catch (Error e) {
                         can_show_launcher_progress = false;
-                        debug ("Could not set progress visible - %s", e.message);
+                        debug ("Could not set progress visible: %s", e.message);
                     }
                 });
             } else if (launcher_progress_visible) {

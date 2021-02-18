@@ -243,7 +243,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = !mount.eject_with_operation.end (res);
                         } catch (GLib.Error error) {
-                            warning ("Error ejecting mount '%s' - %s", mount.get_name (), error.message);
+                            warning ("Error ejecting mount '%s': %s", mount.get_name (), error.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -264,7 +264,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = !mount.unmount_with_operation.end (res);
                         } catch (GLib.Error error) {
-                            warning ("Error while unmounting mount '%s' - %s", mount.get_name (), error.message);
+                            warning ("Error while unmounting mount '%s': %s", mount.get_name (), error.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -285,7 +285,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = drive.stop.end (res);
                         } catch (Error e) {
-                            warning ("Could not stop drive '%s' - %s", drive.get_name (), e.message);
+                            warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -303,7 +303,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
                         try {
                             mounted = drive.eject_with_operation.end (res);
                         } catch (Error e) {
-                            warning ("Could not eject drive '%s' - %s", drive.get_name (), e.message);
+                            warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
                             if (!mounted) {
@@ -448,7 +448,7 @@ public class Sidebar.DeviceRow : Sidebar.BookmarkRow, SidebarItemInterface {
         }
         catch (GLib.Error error) {
             if (!(error is IOError.CANCELLED)) {
-                warning ("Error querying filesystem info for '%s' - %s", root.get_uri (), error.message);
+                warning ("Error querying filesystem info for '%s': %s", root.get_uri (), error.message);
             }
 
             info = null;

@@ -3654,7 +3654,7 @@ namespace FM {
                         GLib.FileInfo inf;
                         dir.location.set_attributes_async.end (res, out inf);
                     } catch (GLib.Error e) {
-                        warning ("Could not set file attributes - %s", e.message);
+                        warning ("Could not set file attributes: %s", e.message);
                     }
                 });
             }

@@ -173,7 +173,7 @@ public class Marlin.PluginManager : Object {
 
             load_module (Path.build_filename (parent, keyfile.get_string ("Plugin", "File")), name);
         } catch (Error e) {
-            warning ("Couldn't open thie keyfile: %s, %s", path, e.message);
+            warning ("Couldn't open the keyfile '%s': %s", path, e.message);
         }
     }
 
