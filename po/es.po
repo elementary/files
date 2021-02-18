@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 13:28+0000\n"
-"PO-Revision-Date: 2020-11-03 10:15+0000\n"
+"PO-Revision-Date: 2021-02-18 22:56+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: src/Application.vala:158
@@ -576,10 +576,8 @@ msgid "The file selected no longer exists."
 msgstr "El archivo seleccionado ya no existe."
 
 #: src/View/Sidebar/BookmarkListBox.vala:119
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "No se pudo crear la carpeta"
+msgstr "Ver la carpeta personal"
 
 #: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
@@ -594,34 +592,27 @@ msgid "Open the Trash"
 msgstr "Abrir papelera"
 
 #: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
 msgid "FileSystem"
 msgstr "Sistema de archivos"
 
 #: src/View/Sidebar/DeviceListBox.vala:117
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "Ver la lista de archivos usados recientemente"
+msgstr "Ver la raíz del sistema de archivos local"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Eliminar «%s»"
+msgstr "Expulsar «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
+#, c-format
 msgid "Error mounting volume '%s'"
-msgstr "Error al montar el volumen %s"
+msgstr "Error al montar el volumen «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
+#, c-format
 msgid "Unable to start '%s'"
-msgstr "No se puede iniciar %s"
+msgstr "No se puede iniciar «%s»"
 
 #: src/View/Sidebar/DeviceRow.vala:481
 #, c-format
@@ -674,14 +665,12 @@ msgid "_Eject"
 msgstr "_Expulsar"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
-msgstr "_Vaciar papelera"
+msgstr "Vaciar papelera entera"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "Vaciar papelera en este montaje"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -709,10 +698,8 @@ msgid "Devices and places available via a network"
 msgstr "Dispositivos y lugares disponibles a través de una red"
 
 #: src/View/Sidebar/SidebarWindow.vala:80
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "Conectarse a un servidor…"
+msgstr "Conectar con servidor…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -732,19 +719,19 @@ msgstr "Acceso denegado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "El modo de privacidad está activado"
+msgstr "Se activó el modo de privacidad"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr "No se recuerdan archivos recientes"
+msgstr "No se recuerdan los archivos recientes"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr "Cambiar configuraciones de seguridad"
+msgstr "Cambiar configuración de seguridad"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr "Abrir la configuracion de seguridad y privacidad"
+msgstr "Abrir la configuración de seguridad y privacidad del sistema"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -785,12 +772,11 @@ msgid "%u folders"
 msgstr "%u carpetas"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " y %u elemento más (%s) seleccionado"
-msgstr[1] " y %u elemento más (%s) seleccionado"
+msgstr[1] " y %u elementos más (%s) seleccionados"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -803,21 +789,19 @@ msgstr "%u elementos seleccionados (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u subcarpeta, "
-msgstr[1] "%u subcarpeta, "
+msgstr[1] "%u subcarpetas, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u archivo, "
-msgstr[1] "%u archivo, "
+msgstr[1] "%u archivos, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -832,12 +816,11 @@ msgstr "tamaño desconocido"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u archivo ilegible"
-msgstr[1] "%u archivo ilegible"
+msgstr[1] "%u archivos ilegibles"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1884,10 +1867,8 @@ msgid "Setting permissions"
 msgstr "Estableciendo permisos"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Moviendo archivos a la papelera"
+msgstr "Ningún archivo por procesar"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
@@ -1978,10 +1959,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libwidgets/Resources.vala:62
-#, fuzzy
-#| msgid "AFP"
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libwidgets/Resources.vala:63
 msgid "DAV"
@@ -2013,7 +1992,7 @@ msgstr "MTP"
 
 #: libwidgets/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "gPhoto2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
