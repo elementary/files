@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 13:28+0000\n"
-"PO-Revision-Date: 2021-02-18 13:28+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
+"PO-Revision-Date: 2021-02-20 16:36+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -601,22 +601,19 @@ msgid "View the root of the local filesystem"
 msgstr "Voir la racine du système de fichiers local"
 
 #: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Eject “%s”"
+#, c-format
 msgid "Eject '%s'"
 msgstr "Éjecter « %s »"
 
 #: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
+#, c-format
 msgid "Error mounting volume '%s'"
-msgstr "Erreur lors du montage du volume %s"
+msgstr "Erreur lors du montage du volume « %s »"
 
 #: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
+#, c-format
 msgid "Unable to start '%s'"
-msgstr "Impossible de démarrer %s"
+msgstr "Impossible de démarrer « %s »"
 
 #: src/View/Sidebar/DeviceRow.vala:481
 #, c-format
