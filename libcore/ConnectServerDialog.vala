@@ -198,20 +198,32 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
         password_entry.bind_property ("visible", remember_checkbutton, "visible", GLib.BindingFlags.DEFAULT);
 
-        cancel_button = (Gtk.Button) add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+        cancel_button = new Gtk.Button.with_label (_("Cancel"));
         cancel_button.clicked.connect (on_cancel_clicked);
 
-        connect_button = (Gtk.Button) add_button (_("Connect"), 1);
-        connect_button.can_default = true;
-        connect_button.no_show_all = true;
+        connect_button = new Gtk.Button.with_label (_("Connect")) {
+             can_default = true,
+             no_show_all = true
+         };
         connect_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         connect_button.clicked.connect (on_connect_clicked);
 
-        continue_button = (Gtk.Button) add_button (_("Continue"), 2);
-        continue_button.can_default = true;
-        continue_button.no_show_all = true;
+        continue_button = new Gtk.Button.with_label (_("Continue")) {
+            can_default = true,
+            no_show_all = true
+        };
         continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.clicked.connect (on_continue_clicked);
+
+        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
+            layout_style = Gtk.ButtonBoxStyle.END,
+            margin_top = 24,
+            spacing = 6
+        };
+
+        button_box.add (cancel_button);
+        button_box.add (connect_button);
+        button_box.add (continue_button);
 
         var grid = new Gtk.Grid () {
             row_spacing = 6,
@@ -270,6 +282,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         content_area.margin_end = content_area.margin_start = 12;
         content_area.margin_bottom = 2;
         content_area.add (stack);
+        content_area.add (button_box);
 
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
