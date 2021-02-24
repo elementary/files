@@ -49,6 +49,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
         DeviceRow? bm = has_uuid (uuid, uri);
 
+        if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
         if (bm == null) {
             bm = new DeviceRow (
                 label,
