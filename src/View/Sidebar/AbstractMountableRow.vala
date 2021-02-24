@@ -1,6 +1,6 @@
 /* DeviceRow.vala
  *
- * Copyright 2020 elementary LLC. <https://elementary.io>
+ * Copyright 2021 elementary LLC. <https://elementary.io>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,9 +57,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         }
     }
 
+    private bool _working = false;
     public bool working {
         get {
-            return mount_eject_stack.visible_child_name == "spinner";
+            return _working;
         }
 
         set {
@@ -67,13 +68,15 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                 return;
             }
 
+            _working = value;
+
             if (value) {
                 mount_eject_revealer.reveal_child = true;
-                mount_eject_stack.visible_child_name = "spinner";
                 mount_eject_spinner.start ();
+                mount_eject_stack.visible_child_name = "spinner";
             } else {
-                mount_eject_spinner.stop ();
                 mount_eject_stack.visible_child_name = "eject";
+                mount_eject_spinner.stop ();
             }
 
             mount_eject_revealer.reveal_child = _mounted && _can_eject;
@@ -127,24 +130,25 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         };
         mount_eject_stack.add_named (eject_button, "eject");
         mount_eject_stack.add_named (mount_eject_spinner, "spinner");
-        mount_eject_stack.visible_child_name = "eject";
 
         mount_eject_revealer = new Gtk.Revealer () {
             transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
             valign = Gtk.Align.CENTER
         };
+
         mount_eject_revealer.add (mount_eject_stack);
         mount_eject_revealer.reveal_child = false;
 
         content_grid.attach (mount_eject_revealer, 1, 0);
 
+        working = false;
         show_all ();
 
         var volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.volume_removed.connect (volume_removed);
-        volume_monitor.mount_removed.connect (mount_removed);
-        volume_monitor.mount_added.connect (mount_added);
-        volume_monitor.drive_disconnected.connect (drive_removed);
+        volume_monitor.volume_removed.connect_after (volume_removed);
+        volume_monitor.mount_removed.connect_after (mount_removed);
+        volume_monitor.mount_added.connect_after (mount_added);
+        volume_monitor.drive_disconnected.connect_after (drive_removed);
 
         add_mountable_tooltip.begin ();
 
@@ -232,11 +236,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     null,
                     (obj, res) => {
                         try {
+                            working = false;
                             mounted = !mount.eject_with_operation.end (res);
                         } catch (GLib.Error error) {
                             warning ("Error ejecting mount '%s': %s", mount.get_name (), error.message);
                         } finally {
-                            working = false;
                             if (!mounted) {
                                 mount = null;
                             }
@@ -253,11 +257,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     null,
                     (obj, res) => {
                         try {
+                            working = false;
                             mounted = !mount.unmount_with_operation.end (res);
                         } catch (GLib.Error error) {
                             warning ("Error while unmounting mount '%s': %s", mount.get_name (), error.message);
                         } finally {
-                            working = false;
                             if (!mounted) {
                                 mount = null;
                             }
@@ -265,7 +269,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     }
                 );
             }
-        } else if (drive != null && drive.can_eject () || drive.can_stop ()) {
+        } else if (drive != null && (drive.can_eject () || drive.can_stop ())) {
             working = true;
             if (drive.can_stop ()) {
                 drive.stop.begin (
@@ -308,14 +312,22 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     private void drive_removed (Drive removed_drive) {
-        if (valid && drive == removed_drive) {
+        if (!valid) { //Already removed
+            return;
+        }
+
+        if (drive == removed_drive) {
             valid = false;
             list.remove_item_by_id (id);
         }
     }
 
     private void volume_removed (Volume removed_volume) {
-        if (valid && volume == removed_volume) {
+        if (!valid) { //Already removed
+            return;
+        }
+
+        if (volume == removed_volume) {
             valid = false;
             list.remove_item_by_id (id);
         }
@@ -323,8 +335,12 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     /* This handler gets spammed by the monitor! */
     private void mount_removed (Mount removed_mount) {
-        if (valid && !working && mounted && mount == removed_mount) {
-            if (drive == null && volume == null) {
+        if (!valid || mount == null || !mounted) { //Already removed or unmounted
+            return;
+        }
+
+        if (mount == removed_mount) {
+            if (drive == null && volume == null) { // e.g. network mounts
                 valid = false;
                 list.remove_item_by_id (id);
             } else {
@@ -339,14 +355,19 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         if (working || permanent || volume == null) {
             return;
         }
+
         working = true;
         var added_volume = added_mount.get_volume ();
 
-        if (volume.get_name () == added_volume.get_name () &&
-            (mount == null || (mount.get_name () == added_mount.get_name ()))) {
+        //Check added mount and volume agains this row's mount and volume details
+        if ((added_volume == null || volume == null || volume.get_name () == added_volume.get_name ()) &&
+            (mount == null || mount.get_name () == added_mount.get_name ())) {
+
+            //Details match
             mount = added_mount;
             mounted = true;
         }
+
 
         working = false;
     }

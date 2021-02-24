@@ -74,10 +74,6 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
             return;
         }
 
-        foreach (unowned Mount mount in VolumeMonitor.@get ().get_mounts ()) {
-            bookmark_mount_if_not_native_and_not_shadowed (mount);
-        }
-
         var row = add_bookmark (
             _("Entire Network"),
             Marlin.NETWORK_URI,
@@ -88,6 +84,10 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         row.set_tooltip_markup (
             Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network"))
         );
+
+        foreach (unowned Mount mount in VolumeMonitor.@get ().get_mounts ()) {
+            bookmark_mount_if_not_native_and_not_shadowed (mount);
+        }
     }
 
     public void unselect_all_items () {
