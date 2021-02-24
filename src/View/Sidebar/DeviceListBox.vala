@@ -50,7 +50,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         DeviceRow? bm = has_uuid (uuid, uri);
 
         if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
-        if (bm == null) {
             bm = new DeviceRow (
                 label,
                 uri,
@@ -65,17 +64,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             );
 
             add (bm);
-        }
-
-        if (mount != null) {
-            bm.mounted = true;
-            bm.can_eject = mount.can_unmount () || mount.can_eject ();
-        } else if (volume != null) {
-            bm.mounted = volume.get_mount () != null;
-            bm.can_eject = volume.can_eject ();
-        } else if (drive != null) {
-            bm.mounted = true;
-            bm.can_eject = drive.can_eject () || drive.can_stop ();
         }
 
         return bm;
@@ -103,7 +91,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         var root_uri = _(Marlin.ROOT_FS_URI);
         if (root_uri != "") {
             row = add_bookmark (
-                _("FileSystem"),
+                _("File System"),
                 root_uri,
                 new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
                 null,

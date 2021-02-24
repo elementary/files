@@ -33,19 +33,19 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         volume_monitor.mount_added.connect (bookmark_mount_if_not_native_and_not_shadowed);
     }
 
-    private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon) {
-        var row = new NetworkRow (label, uri, gicon, this, true, true); //Pin all network rows for now
+    private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, Mount? mount) {
+        NetworkRow? row = null;
+
         if (!has_uri (uri)) {
+            row = new NetworkRow (label, uri, gicon, this, mount);
             add (row);
-        } else {
-            return null;
         }
 
         return row;
     }
 
     public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
-        var row = add_bookmark (plugin_item.name, plugin_item.uri, plugin_item.icon);
+        var row = add_bookmark (plugin_item.name, plugin_item.uri, plugin_item.icon, null);
 
         row.update_plugin_data (plugin_item);
 
@@ -61,7 +61,8 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         add_bookmark (
             mount.get_name (),
             mount.get_default_location ().get_uri (),
-            mount.get_icon ()
+            mount.get_icon (),
+            mount
         );
         //Show extra info in tooltip
     }
@@ -80,7 +81,8 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         var row = add_bookmark (
             _("Entire Network"),
             Marlin.NETWORK_URI,
-            new ThemedIcon (Marlin.ICON_NETWORK)
+            new ThemedIcon (Marlin.ICON_NETWORK),
+            null
         );
 
         row.set_tooltip_markup (

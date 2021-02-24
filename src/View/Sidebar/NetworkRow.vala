@@ -20,16 +20,10 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkRow : Sidebar.BookmarkRow {
-    public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list,
-                        bool pinned, bool permanent) {
-        Object (
-            custom_name: name,
-            uri: uri,
-            gicon: gicon,
-            list: list,
-            pinned: pinned,
-            permanent: permanent
-        );
+//~ public class Sidebar.NetworkRow : Sidebar.BookmarkRow {
+public class Sidebar.NetworkRow : Sidebar.AbstractMountableRow {
+    public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list, Mount? mount) {
+        // Pinned, permanent, no uuid, drive or volume
+        base (name, uri, gicon, list, true, true, null, null, null, mount);
     }
 }
