@@ -72,15 +72,6 @@ public class Marlin.Application : Gtk.Application {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
         }
 
-        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
-
-        /* Only allow running with root privileges using pkexec, not using sudo */
-        if (Marlin.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible. " +
-                     "Please use the command: io.elementary.files-pkexec [folder]");
-            quit ();
-        };
-
         init_schemas ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
@@ -130,6 +121,15 @@ public class Marlin.Application : Gtk.Application {
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
+        /* Only allow running with root privileges using pkexec, not using sudo */
+        if (Marlin.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+            warning ("Running Files as root using sudo is not possible. " +
+                     "Please use the command: io.elementary.files-pkexec [folder]");
+            quit ();
+            return 1;
+        };
+
+        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
         this.hold ();
         int result = _command_line (cmd);
         this.release ();
@@ -142,6 +142,7 @@ public class Marlin.Application : Gtk.Application {
     private string[]? remaining = null;
 
     private int _command_line (ApplicationCommandLine cmd) {
+warning ("_commandline");
         /* Setup the argument parser */
         bool version = false;
         /* The -t option is redundant but is retained for backward compatability
@@ -258,6 +259,7 @@ public class Marlin.Application : Gtk.Application {
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
+warning ("quitting window");
             ((Marlin.View.Window)window).quit ();
         });
 
