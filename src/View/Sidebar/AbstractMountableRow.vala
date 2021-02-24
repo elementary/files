@@ -41,7 +41,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         set {
             _mounted = value;
-             mount_eject_revealer.reveal_child = _mounted && _can_eject;
+            can_eject = _mounted && (mount.can_unmount () || mount.can_eject ());
+            mount_eject_revealer.reveal_child = _mounted && _can_eject;
         }
     }
 
@@ -52,7 +53,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         }
 
         set {
-            _can_eject = value;
+            _can_eject = !permanent && value;
              mount_eject_revealer.reveal_child = _can_eject && _mounted;
         }
     }
@@ -101,11 +102,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         if (mount != null) {
             mounted = true;
-            can_eject = mount.can_unmount () || mount.can_eject ();
         } else if (volume != null) {
             mounted = volume.get_mount () != null;
-            can_eject = volume.can_eject ();
         } else if (drive != null) {
+            //TODO Make drive entries an expandable item?
             mounted = true;
             can_eject = drive.can_eject () || drive.can_stop ();
         }
@@ -145,10 +145,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         show_all ();
 
         var volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.volume_removed.connect_after (volume_removed);
-        volume_monitor.mount_removed.connect_after (mount_removed);
-        volume_monitor.mount_added.connect_after (mount_added);
-        volume_monitor.drive_disconnected.connect_after (drive_removed);
+        volume_monitor.volume_removed.connect (volume_removed);
+        volume_monitor.mount_removed.connect (mount_removed);
+        volume_monitor.mount_added.connect (mount_added);
+        volume_monitor.drive_disconnected.connect (drive_removed);
 
         add_mountable_tooltip.begin ();
 
@@ -184,7 +184,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                         mount = volume.get_mount ();
                         if (mount != null) {
                             mounted = true;
-                            can_eject = mount.can_unmount () || mount.can_eject ();
                             uri = mount.get_default_location ().get_uri ();
                             list.open_item (this, flag);
                         }
@@ -207,7 +206,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     try {
                         if (drive.start.end (res)) {
                             mounted = true;
-                            can_eject = drive.can_eject () || drive.can_stop ();
                         }
                     } catch (Error e) {
                             var primary = _("Unable to start '%s'").printf (drive.get_name ());
@@ -236,14 +234,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     null,
                     (obj, res) => {
                         try {
-                            working = false;
-                            mounted = !mount.eject_with_operation.end (res);
+                            if (mount != null) {
+                                mount.eject_with_operation.end (res);
+                            }
                         } catch (GLib.Error error) {
                             warning ("Error ejecting mount '%s': %s", mount.get_name (), error.message);
                         } finally {
-                            if (!mounted) {
-                                mount = null;
-                            }
+                            working = false;
                         }
                     }
                 );
@@ -257,14 +254,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     null,
                     (obj, res) => {
                         try {
-                            working = false;
-                            mounted = !mount.unmount_with_operation.end (res);
+                            if (mount != null) {
+                                mount.unmount_with_operation.end (res);
+                            }
                         } catch (GLib.Error error) {
                             warning ("Error while unmounting mount '%s': %s", mount.get_name (), error.message);
                         } finally {
-                            if (!mounted) {
-                                mount = null;
-                            }
+                            working = false;
                         }
                     }
                 );
@@ -278,14 +274,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     null,
                     (obj, res) => {
                         try {
-                            mounted = drive.stop.end (res);
+                            if (drive != null) {
+                                drive.stop.end (res);
+                            }
                         } catch (Error e) {
                             warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
-                            if (!mounted) {
-                                mount = null;
-                            }
                         }
                     }
                 );
@@ -296,14 +291,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                     null,
                     (obj, res) => {
                         try {
-                            mounted = drive.eject_with_operation.end (res);
+                            if (drive != null) {
+                                drive.eject_with_operation.end (res);
+                            }
                         } catch (Error e) {
                             warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
                         } finally {
                             working = false;
-                            if (!mounted) {
-                                mount = null;
-                            }
                         }
                     }
                 );
@@ -365,6 +359,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
             //Details match
             mount = added_mount;
+            // If mount is from an auto-mounted volume (e.g. USB stick) we need to set the uri correctly
+            if (uri == "") {
+                uri = mount.get_default_location ().get_uri ();
+            }
             mounted = true;
         }
 

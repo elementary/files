@@ -50,20 +50,20 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         DeviceRow? bm = has_uuid (uuid, uri);
 
         if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
-            bm = new DeviceRow (
+            var new_bm = new DeviceRow (
                 label,
                 uri,
                 gicon,
                 this,
                 pinned, // Pin all device rows for now
-                permanent, // Permanent devices (like "FileSystem" are always accessible)
+                permanent || (bm != null && bm.permanent), //Ensure bind mount matches permanence of uuid
                 uuid,
                 drive,
                 volume,
                 mount
             );
 
-            add (bm);
+            add (new_bm);
         }
 
         return bm;
@@ -166,7 +166,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             */
             add_bookmark (
                 volume.get_name (),
-                volume.get_name (),
+                "", // Do not know uri until mounted
                 volume.get_icon (),
                 volume.get_uuid (),
                 null,
@@ -191,7 +191,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
         add_bookmark (
             mount.get_name (),
-            mount.get_root ().get_uri (),
+            mount.get_default_location ().get_uri (),
             mount.get_icon (),
             uuid,
             mount.get_drive (),
