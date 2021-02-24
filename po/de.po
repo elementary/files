@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-18 13:28+0000\n"
-"PO-Revision-Date: 2021-02-24 10:25+0000\n"
-"Last-Translator: Akin Yildiz <akin.yildiz@protonmail.com>\n"
+"PO-Revision-Date: 2021-02-24 16:52+0000\n"
+"Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -343,7 +343,7 @@ msgstr "Datei kann nicht ausgeführt werden"
 #: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "\"%s\" muss vor dem Öffnen aus dem Papierkorb entfernt werden"
+msgstr "»%s« muss vor dem Öffnen aus dem Papierkorb hinausgeschoben werden"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
@@ -513,7 +513,7 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
-msgstr "Dateien können nicht aus dem Papierkorb kopiert werden"
+msgstr "Dateien im Papierkorb können nicht kopiert werden"
 
 #: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
@@ -538,7 +538,8 @@ msgstr "Netzwerk nicht verfügbar"
 #: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
 msgstr ""
-"Ein funktionierendes Netzwerk wird benötigt, um auf diesen Ordner zuzugreifen"
+"Um auf diesen Ordner zugreifen zu können, wird funktionierendes Netzwerk "
+"benötigt,"
 
 #: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
@@ -673,7 +674,7 @@ msgstr "Aus_werfen"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
 msgid "Empty All Trash"
-msgstr "Papierkorb leeren"
+msgstr "Alle Papierkörbe leeren"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
@@ -1338,8 +1339,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Dateien im Ordner \"%s\" können nicht gelöscht werden, da Sie nicht die "
-"notwendigen Zugriffsrechte haben, um diese zu sehen."
+"Dateien im Ordner »%s« können nicht gelöscht werden, da Sie nicht die "
+"notwendigen Zugriffsrechte haben, diese zu sehen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1362,8 +1363,8 @@ msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Der Ordner \"%s\" kann nicht gelöscht werden, da Sie nicht die notwendigen "
-"Zugriffsrechte haben,  um diesen zu Lesen."
+"Der Ordner »%s« kann nicht gelöscht werden, da Sie nicht die notwendigen "
+"Zugriffsrechte haben, diesen zu lesen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1371,23 +1372,23 @@ msgstr ""
 #: libcore/marlin-file-operations.c:2270
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "Beim Lesen des Ordners \"%s\" ist ein Fehler aufgetreten."
+msgstr "Beim Lesen des Ordners »%s« ist ein Fehler aufgetreten."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:557
 #, c-format
 msgid "Could not remove the folder %s."
-msgstr "Der Ordner \"%s\" konnte nicht entfernt werden."
+msgstr "Der Ordner »%s« konnte nicht entfernt werden."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:641
 #, c-format
 msgid "There was an error deleting %s."
-msgstr "Beim Entfernen von \"%s\" ist ein Fehler aufgetreten."
+msgstr "Beim Entfernen von »%s« ist ein Fehler aufgetreten."
 
 #: libcore/marlin-file-operations.c:728
 msgid "Moving files to trash"
-msgstr "Dateien werden in den Papierkorb verschoben"
+msgstr "Dateien in den Papierkorb schieben"
 
 #: libcore/marlin-file-operations.c:730
 #, c-format
@@ -1406,38 +1407,38 @@ msgstr ""
 #: libcore/marlin-file-operations.c:829
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
-"Sie sind nicht berechtigt, Dateien zu löschen oder in den Papierkorb zu "
-"verschieben, da auf diesem System nur das Lesen von Dateien erlaubt ist."
+"Es ist auf einem Nur-Lesen-Dateisystem nicht erlaubt, Dateien in den "
+"Papierkorb zu verschieben oder zu löschen."
 
 #: libcore/marlin-file-operations.c:832
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"Es ist nicht erlaubt, Dateien in Ordnern, für die Sie keine Schreibrechte "
-"haben, zu entfernen oder zu löschen."
+"Es ist in Ordnern, für die Sie keine Schreibrechte haben, nicht erlaubt, "
+"Dateien in den Papierkorb zu schieben oder zu löschen."
 
 #: libcore/marlin-file-operations.c:835
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"Es ist nicht erlaubt, Ordner, für die Sie keine Schreibrechte haben, zu "
-"entfernen oder zu löschen."
+"Es ist nicht erlaubt, Ordner, für die Sie keine Schreibrechte haben, in den "
+"Papierkorb zu schieben oder zu löschen."
 
 #: libcore/marlin-file-operations.c:837
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "Datei konnte nicht in den Papierkorb verschoben werden. Versuchen, die Datei "
-"komplett zu löschen?"
+"sofort zu löschen?"
 
 #: libcore/marlin-file-operations.c:838
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
-"Diese Datei konnte nicht in den Papierkorb verschoben werden. Prüfen Sie die "
-"Details für weitere Informationen."
+"Diese Datei konnte nicht in den Papierkorb verschoben werden. Weitere "
+"Informationen finden Sie in den unten stehenden Details."
 
 #: libcore/marlin-file-operations.c:842
 msgid "Cannot move file to trash.  Try to delete it?"
