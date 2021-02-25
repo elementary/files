@@ -73,15 +73,12 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             _working = value;
 
             if (value) {
-                mount_eject_revealer.reveal_child = true;
                 mount_eject_spinner.start ();
                 mount_eject_stack.visible_child = mount_eject_spinner;
             } else {
                 mount_eject_stack.visible_child = eject_button;
                 mount_eject_spinner.stop ();
             }
-
-            mount_eject_revealer.reveal_child = _mounted && _can_eject;
         }
     }
 
