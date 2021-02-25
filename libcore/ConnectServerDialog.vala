@@ -425,7 +425,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
     private bool valid_entries () {
         bool valid = server_entry.is_valid &&
-            (user_entry.is_valid ||!user_entry.visible) &&
+            (user_entry.is_valid || !user_entry.visible) &&
             (domain_entry.is_valid || !domain_entry.visible) &&
             (password_entry.is_valid || !password_entry.visible);
 
