@@ -130,10 +130,16 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
-        server_entry = new Granite.ValidatedEntry () {
-            hexpand = true,
-            placeholder_text = _("Server name or IP address")
-        };
+        try {
+            var server_regex = new Regex ("""^[^\s]+\.[^\s]+$""");
+            server_entry = new Granite.ValidatedEntry.from_regex (server_regex);
+        } catch (Error e) {
+            server_entry = new Granite.ValidatedEntry ();
+            critical (e.message);
+        }
+
+        server_entry.hexpand = true;
+        server_entry.placeholder_text = _("Server name or IP address");
 
         var server_label = new DetailLabel (_("Server:"), server_entry);
 
@@ -314,7 +320,6 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         type_combobox.changed.connect (() => type_changed ());
 
         server_entry.changed.connect (() => {
-            server_entry.is_valid = server_entry.text.length > 3;
             set_button_sensitivity ();
         });
 
