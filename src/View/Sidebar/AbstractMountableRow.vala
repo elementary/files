@@ -390,8 +390,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         menu_builder
             .add_separator ()
             .add_drive_property (() => {show_mount_info ();});
-
-
     }
 
     private void show_mount_info () {
