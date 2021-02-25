@@ -86,15 +86,15 @@ public class PF.ConnectServerDialog : Granite.Dialog {
     };
 
     private Gtk.InfoBar info_bar;
-    private DetailEntry server_entry;
+    private Granite.ValidatedEntry server_entry;
     private Gtk.SpinButton port_spinbutton;
     private Gtk.Revealer port_revealer;
-    private DetailEntry share_entry;
+    private Gtk.Entry share_entry;
     private Gtk.ComboBox type_combobox;
-    private DetailEntry folder_entry;
-    private DetailEntry domain_entry;
-    private DetailEntry user_entry;
-    private DetailEntry password_entry;
+    private Gtk.Entry folder_entry;
+    private Granite.ValidatedEntry domain_entry;
+    private Granite.ValidatedEntry user_entry;
+    private Granite.ValidatedEntry password_entry;
     private Gtk.CheckButton remember_checkbutton;
     private Gtk.Button connect_button;
     private Gtk.Button continue_button;
@@ -131,8 +131,9 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
-        server_entry = new DetailEntry (_("Server name or IP address")) {
-            hexpand = true
+        server_entry = new Granite.ValidatedEntry () {
+            hexpand = true,
+            tooltip_text = _("Server name or IP address")
         };
 
         var server_label = new DetailLabel (_("Server:"), server_entry);
@@ -174,21 +175,34 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var type_label = new DetailLabel (_("Type:"), type_combobox);
 
-        share_entry = new DetailEntry (_("Name of share on server"));
+        share_entry = new Gtk.Entry () {
+            tooltip_text = _("Name of share on server")
+        };
+
         var share_label = new DetailLabel (_("Share:"), share_entry);
 
-        folder_entry = new DetailEntry (_("Path of shared folder on server"), "/");
+        folder_entry = new Gtk.Entry () {
+            placeholder_text = "/",
+            tooltip_text = _("Path of shared folder on server")
+        };
+
         var folder_label = new DetailLabel (_("Folder:"), folder_entry);
 
         user_header_label = new Granite.HeaderLabel (_("User Details"));
 
-        domain_entry = new DetailEntry (_("Name of Windows domain"), "WORKGROUP");
+        domain_entry = new Granite.ValidatedEntry () {
+            placeholder_text = "WORKGROUP",
+            tooltip_text = _("Name of Windows domain")
+        };
         var domain_label = new DetailLabel (_("Domain name:"), domain_entry);
 
-        user_entry = new DetailEntry (_("Name of user on server"), Environment.get_user_name ());
+        user_entry = new Granite.ValidatedEntry () {
+            placeholder_text = Environment.get_user_name (),
+            tooltip_text = _("Name of user on server")
+        };
         var user_label = new DetailLabel (_("User name:"), user_entry);
 
-        password_entry = new DetailEntry () {
+        password_entry = new Granite.ValidatedEntry () {
             input_purpose = Gtk.InputPurpose.PASSWORD,
             visibility = false
         };
@@ -299,21 +313,22 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         type_combobox.changed.connect (() => type_changed ());
 
         server_entry.changed.connect (() => {
+            server_entry.is_valid = server_entry.text.length > 3;
             set_button_sensitivity ();
         });
 
         user_entry.changed.connect (() => {
-            user_entry.needs_attention = false;
+            user_entry.is_valid = true;
             set_button_sensitivity ();
         });
 
         domain_entry.changed.connect (() => {
-            domain_entry.needs_attention = false;
+            domain_entry.is_valid = true;
             set_button_sensitivity ();
         });
 
         password_entry.changed.connect (() => {
-            password_entry.needs_attention = false;
+            password_entry.is_valid = true;
             set_button_sensitivity ();
         });
     }
@@ -406,27 +421,14 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         info_bar.revealed = false;
     }
 
-    private bool valid_server () {
-        /* TODO Find a better way of validating server entry */
-        return server_entry.text.length > 3;
-    }
-
-    private bool valid_user () {
-        return !password_entry.needs_attention;
-    }
-
-    private bool valid_domain () {
-        return !domain_entry.needs_attention;
-    }
-
-    private bool valid_password () {
-        /* Assume if password entry visible then a password is mandatory */
-        return !password_entry.needs_attention;
-    }
-
     private bool valid_entries () {
-        bool valid = valid_server () && valid_user () && valid_domain () && valid_password ();
+        bool valid = server_entry.is_valid &&
+            (user_entry.is_valid ||!user_entry.visible) &&
+            (domain_entry.is_valid || !domain_entry.visible) &&
+            (password_entry.is_valid || !password_entry.visible);
+
         info_bar.revealed = !(valid || info_label.label.length < 1);
+
         return valid;
     }
 
@@ -532,14 +534,14 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         }
 
         if (GLib.AskPasswordFlags.NEED_PASSWORD in askpassword_flags) {
-            password_entry.needs_attention = true;
+            password_entry.is_valid = false;
         }
 
         if (GLib.AskPasswordFlags.NEED_USERNAME in askpassword_flags) {
             if (default_user != null && default_user != "") {
                 user_entry.text = default_user;
             } else {
-                user_entry.needs_attention = true;
+                user_entry.is_valid = false;
             }
         }
 
@@ -547,7 +549,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             if (default_domain != null && default_domain != "") {
                 domain_entry.text = default_domain;
             } else {
-                domain_entry.needs_attention = true;
+                domain_entry.is_valid = false;
             }
         }
 
@@ -608,52 +610,6 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             ((MainLoop)loop).quit ();
         } else {
             critical ("unexpected continue button click without associated mainloop");
-        }
-    }
-
-    private class DetailEntry : Gtk.Entry {
-        public bool needs_attention {
-            get {
-                return is_needing_attention ();
-            }
-
-            set {
-                if (value) {
-                    add_needs_attention ();
-                } else {
-                    remove_needs_attention ();
-                }
-            }
-        }
-
-        construct {
-            activates_default = true;
-            text = "";
-        }
-
-        public DetailEntry (string tooltip = "", string _default = "") {
-            Object (
-                text: _default,
-                tooltip_text: tooltip
-            );
-        }
-
-        private bool is_needing_attention () {
-            return visible && get_style_context ().has_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
-        }
-
-        private void remove_needs_attention () {
-            if (get_style_context ().has_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION)) {
-                get_style_context ().remove_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
-                set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, null);
-            }
-        }
-
-        private void add_needs_attention () {
-            if (!get_style_context ().has_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION)) {
-                get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
-                set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "dialog-warning-symbolic");
-            }
         }
     }
 
