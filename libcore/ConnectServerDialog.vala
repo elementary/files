@@ -119,12 +119,11 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         info_label = new Gtk.Label (null);
 
         info_bar = new Gtk.InfoBar () {
-            message_type = Gtk.MessageType.INFO
+            message_type = Gtk.MessageType.INFO,
+            revealed = false
         };
-
         info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
         info_bar.get_content_area ().add (info_label);
-        dismiss_info ();
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
@@ -372,47 +371,26 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         connect_button.grab_default ();
     }
 
-    private void show_continue_button () {
-        connect_button.visible = false;
-        continue_button.visible = true;
-        continue_button.sensitive = false; /* something has to change */
-        continue_button.grab_default ();
-    }
-
-    private void show_connecting (bool show_connecting) {
-        if (show_connecting) {
-            dismiss_info ();
-            stack.visible_child_name = "connecting";
-            connect_button.visible = false;
-            continue_button.visible = false;
-        } else {
-            stack.visible_child_name = "content";
-            /* Calling function must show correct button */
-        }
-    }
-
     private void verify_details () {
         var loop = new MainLoop ();
         continue_button.set_data ("loop", loop);
         type_combobox.sensitive = false;
         info_bar.message_type = Gtk.MessageType.WARNING;
         info_label.label = _("Please verify your user details.");
-        show_continue_button ();
+        connect_button.visible = false;
+
+        continue_button.visible = true;
+        continue_button.sensitive = false; /* something has to change */
+        continue_button.grab_default ();
+
         show_info ();
         loop.run ();
         continue_button.set_data ("loop", null);
         show_connect_button ();
     }
 
-    private void error (string error_message) {
-        info_bar.message_type = Gtk.MessageType.ERROR;
-        info_label.label = error_message;
-        show_info ();
-        show_connect_button ();
-    }
-
     private void show_info () {
-        show_connecting (false);
+        stack.visible_child_name = "content";
         info_bar.revealed = true;
     }
 
@@ -485,7 +463,10 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         } catch (GLib.IOError.ALREADY_MOUNTED e) {
             /* not an error - just navigate to location */
         } catch (Error e) {
-            error (e.message);
+            info_bar.message_type = Gtk.MessageType.ERROR;
+            info_label.label = e.message;
+            show_info ();
+            show_connect_button ();
             return;
         } finally {
             mount_cancellable = null;
@@ -586,7 +567,10 @@ public class PF.ConnectServerDialog : Granite.Dialog {
     }
 
     private void on_connect_clicked () {
-        show_connecting (true);
+        dismiss_info ();
+        stack.visible_child_name = "connecting";
+        connect_button.visible = false;
+        continue_button.visible = false;
         connect_to_server.begin ();
     }
 
