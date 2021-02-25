@@ -297,6 +297,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         content_area.add (stack);
         content_area.add (button_box);
 
+        default_width = 400;
+
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
         foreach (var method in methods) {
