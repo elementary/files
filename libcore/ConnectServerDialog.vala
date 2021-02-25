@@ -133,7 +133,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         server_entry = new Granite.ValidatedEntry () {
             hexpand = true,
-            tooltip_text = _("Server name or IP address")
+            placeholder_text = _("Server name or IP address")
         };
 
         var server_label = new DetailLabel (_("Server:"), server_entry);
@@ -191,14 +191,16 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         user_header_label = new Granite.HeaderLabel (_("User Details"));
 
         domain_entry = new Granite.ValidatedEntry () {
-            placeholder_text = "WORKGROUP",
-            tooltip_text = _("Name of Windows domain")
+            is_valid = true,
+            text = "WORKGROUP",
+            placeholder_text = _("Name of Windows domain")
         };
         var domain_label = new DetailLabel (_("Domain name:"), domain_entry);
 
         user_entry = new Granite.ValidatedEntry () {
-            placeholder_text = Environment.get_user_name (),
-            tooltip_text = _("Name of user on server")
+            is_valid = true,
+            text = Environment.get_user_name (),
+            placeholder_text = _("Name of user on server")
         };
         var user_label = new DetailLabel (_("User name:"), user_entry);
 
@@ -318,17 +320,17 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         });
 
         user_entry.changed.connect (() => {
-            user_entry.is_valid = true;
+            user_entry.is_valid = user_entry.text.length > 0;
             set_button_sensitivity ();
         });
 
         domain_entry.changed.connect (() => {
-            domain_entry.is_valid = true;
+            domain_entry.is_valid = domain_entry.text.length > 0;
             set_button_sensitivity ();
         });
 
         password_entry.changed.connect (() => {
-            password_entry.is_valid = true;
+            password_entry.is_valid = password_entry.text.length > 0;
             set_button_sensitivity ();
         });
     }
