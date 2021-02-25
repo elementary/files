@@ -319,9 +319,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         type_combobox.changed.connect (() => type_changed ());
 
-        server_entry.changed.connect (() => {
-            set_button_sensitivity ();
-        });
+        server_entry.changed.connect (set_button_sensitivity);
 
         user_entry.changed.connect (() => {
             user_entry.is_valid = user_entry.text.length > 0;
