@@ -181,8 +181,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         var share_label = new DetailLabel (_("Share:"), share_entry);
 
         folder_entry = new Gtk.Entry () {
-            placeholder_text = "/",
-            tooltip_text = _("Path of shared folder on server")
+            placeholder_text = _("Path of shared folder on server"),
+            text = "/"
         };
 
         var folder_label = new DetailLabel (_("Folder:"), folder_entry);
