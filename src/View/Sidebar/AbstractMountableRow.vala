@@ -26,6 +26,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected Gtk.Stack mount_eject_stack;
     protected Gtk.Revealer mount_eject_revealer;
     protected Gtk.Spinner mount_eject_spinner;
+    protected Gtk.Button eject_button;
 
     protected bool valid = true;
     public string? uuid { get; set construct; }
@@ -74,9 +75,9 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             if (value) {
                 mount_eject_revealer.reveal_child = true;
                 mount_eject_spinner.start ();
-                mount_eject_stack.visible_child_name = "spinner";
+                mount_eject_stack.visible_child = mount_eject_spinner;
             } else {
-                mount_eject_stack.visible_child_name = "eject";
+                mount_eject_stack.visible_child = eject_button;
                 mount_eject_spinner.stop ();
             }
 
@@ -117,7 +118,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     construct {
-        var eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+        eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
             tooltip_text = _("Eject '%s'").printf (custom_name)
         };
         eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -128,8 +129,9 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             margin_start = 6,
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
-        mount_eject_stack.add_named (eject_button, "eject");
-        mount_eject_stack.add_named (mount_eject_spinner, "spinner");
+
+        mount_eject_stack.add (eject_button);
+        mount_eject_stack.add (mount_eject_spinner);
 
         mount_eject_revealer = new Gtk.Revealer () {
             transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
