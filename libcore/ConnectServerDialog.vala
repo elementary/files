@@ -116,8 +116,6 @@ public class PF.ConnectServerDialog : Granite.Dialog {
     }
 
     construct {
-        resizable = false;
-
         info_label = new Gtk.Label (null);
 
         info_bar = new Gtk.InfoBar () {
@@ -130,16 +128,10 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
-        try {
-            var server_regex = new Regex ("""^[^\s]+\.[^\s]+$""");
-            server_entry = new Granite.ValidatedEntry.from_regex (server_regex);
-        } catch (Error e) {
-            server_entry = new Granite.ValidatedEntry ();
-            critical (e.message);
-        }
-
-        server_entry.hexpand = true;
-        server_entry.placeholder_text = _("Server name or IP address");
+        server_entry = new Granite.ValidatedEntry () {
+            hexpand = true,
+            placeholder_text = _("Server name or IP address")
+        };
 
         var server_label = new DetailLabel (_("Server:"), server_entry);
 
@@ -181,13 +173,13 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         var type_label = new DetailLabel (_("Type:"), type_combobox);
 
         share_entry = new Gtk.Entry () {
-            placeholder_text = _("Name of share on server")
+            placeholder_text = _("Name of share on server (Optional)")
         };
 
         var share_label = new DetailLabel (_("Share:"), share_entry);
 
         folder_entry = new Gtk.Entry () {
-            placeholder_text = _("Path of shared folder on server"),
+            placeholder_text = _("Path of shared folder on server (Optional)"),
             text = "/"
         };
 
@@ -248,7 +240,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var grid = new Gtk.Grid () {
             row_spacing = 6,
-            column_spacing = 6
+            column_spacing = 6,
+            vexpand = true
         };
 
         grid.attach (info_bar, 0, 0, 2, 1);
@@ -319,7 +312,10 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         type_combobox.changed.connect (() => type_changed ());
 
-        server_entry.changed.connect (set_button_sensitivity);
+        server_entry.changed.connect (() => {
+            server_entry.is_valid = server_entry.text.length > 3;
+            set_button_sensitivity ();
+        });
 
         user_entry.changed.connect (() => {
             user_entry.is_valid = user_entry.text.length > 0;
