@@ -116,7 +116,6 @@ public class PF.ConnectServerDialog : Granite.Dialog {
     }
 
     construct {
-        deletable = false;
         resizable = false;
 
         info_label = new Gtk.Label (null);
@@ -176,7 +175,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         var type_label = new DetailLabel (_("Type:"), type_combobox);
 
         share_entry = new Gtk.Entry () {
-            tooltip_text = _("Name of share on server")
+            placeholder_text = _("Name of share on server")
         };
 
         var share_label = new DetailLabel (_("Share:"), share_entry);
