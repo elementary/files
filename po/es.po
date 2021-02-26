@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 09:54+0000\n"
-"PO-Revision-Date: 2021-02-18 22:56+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"PO-Revision-Date: 2021-02-26 12:08+0000\n"
+"Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +52,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Examine el sistema de archivos con el gestor de archivos"
+"Examinar el sistema de archivos con el administrador de archivos"
 
 #: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
@@ -102,7 +102,7 @@ msgstr "Desconocido"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
-msgstr "Disponibles:"
+msgstr "Disponible:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
@@ -163,15 +163,15 @@ msgstr "Contiene:"
 
 #: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
-msgstr "Creación:"
+msgstr "Creado:"
 
 #: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
-msgstr "Modificación:"
+msgstr "Modificado:"
 
 #: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
-msgstr "Eliminación:"
+msgstr "Eliminado:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
@@ -369,7 +369,7 @@ msgstr "Nombre de archivo no válido"
 
 #: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
-msgstr "Pestaña nueva"
+msgstr "Nueva pestaña"
 
 #: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
@@ -719,7 +719,7 @@ msgstr "Acceso denegado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "Se activó el modo de privacidad"
+msgstr "El modo de privacidad está activado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
@@ -879,20 +879,16 @@ msgid "Port:"
 msgstr "Puerto:"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "Nombre del recurso en el servidor"
+msgstr "Nombre del recurso compartido en el servidor (opcional)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Recurso compartido:"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Ruta de la carpeta compartida en el servidor"
+msgstr "Ruta de la carpeta compartida en el servidor (opcional)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
@@ -1006,7 +1002,7 @@ msgstr "Mantener más reciente"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr "Omitir si el original se modificó más recientemente"
+msgstr "Omitir si el original se modificó recientemente"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
