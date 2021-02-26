@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -270,7 +270,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Proprietăți disc"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Sistem de fișiere"
 
@@ -614,50 +615,27 @@ msgstr "Coș de gunoi"
 msgid "Open the Trash"
 msgstr "Deschide coșul de gunoi"
 
-#: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
-msgid "FileSystem"
-msgstr "Sistem de fișiere"
-
-#: src/View/Sidebar/DeviceListBox.vala:117
+#: src/View/Sidebar/DeviceListBox.vala:106
 #, fuzzy
 #| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
 msgstr "Vezi lista fișierelor recent utilizate"
 
-#: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
-msgid "Eject '%s'"
-msgstr "Sterge '%s'"
-
-#: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume '%s'"
-msgstr ""
-
-#: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
-msgid "Unable to start '%s'"
-msgstr "Nu s-a putut porni %s"
-
-#: src/View/Sidebar/DeviceRow.vala:481
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/DeviceRow.vala:482
+#: src/View/Sidebar/DeviceRow.vala:117
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S din %S"
 
-#: src/View/Sidebar/NetworkListBox.vala:81
+#: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
 msgstr "Toată reţeaua"
 
-#: src/View/Sidebar/NetworkListBox.vala:87
+#: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
 msgstr "Navighează conținutul rețelei"
 
@@ -2097,6 +2075,21 @@ msgstr "Restaurează toate"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " selectat"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "FileSystem"
+#~ msgstr "Sistem de fișiere"
+
+#, fuzzy
+#~| msgid "Delete '%s'"
+#~ msgid "Eject '%s'"
+#~ msgstr "Sterge '%s'"
+
+#, fuzzy
+#~| msgid "Unable to start %s"
+#~ msgid "Unable to start '%s'"
+#~ msgstr "Nu s-a putut porni %s"
 
 #~ msgid "Open your personal folder"
 #~ msgstr "Deschide dosarul personal"

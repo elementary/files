@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -258,7 +258,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Włosności dysku"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Systym zbiorōw"
 
@@ -592,52 +593,28 @@ msgstr "Hasiok"
 msgid "Open the Trash"
 msgstr "Ôtwōrz hasiok"
 
-#: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
-msgid "FileSystem"
-msgstr "Systym zbiorōw"
-
-#: src/View/Sidebar/DeviceListBox.vala:117
+#: src/View/Sidebar/DeviceListBox.vala:106
 #, fuzzy
 #| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
 msgstr "Zobocz wykoz niydowno używanych zbiorōw"
 
-#: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "_Eject"
-msgid "Eject '%s'"
-msgstr "Wy_suń"
-
-#: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
-msgid "Error mounting volume '%s'"
-msgstr "Błōnd mōntowanio woluminu %s"
-
-#: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
-msgid "Unable to start '%s'"
-msgstr "Niy idzie sztartnōńć %s"
-
-#: src/View/Sidebar/DeviceRow.vala:481
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/DeviceRow.vala:482
+#: src/View/Sidebar/DeviceRow.vala:117
 #, fuzzy, c-format
 #| msgid "%s of %s"
 msgid "%s used of %s"
 msgstr "%s ze %s"
 
-#: src/View/Sidebar/NetworkListBox.vala:81
+#: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
 msgstr "Cołki nec"
 
-#: src/View/Sidebar/NetworkListBox.vala:87
+#: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
 msgstr "Przeglōndo zawartość necu"
 
@@ -2053,6 +2030,26 @@ msgstr "Prziwrōć zaznaczōne"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Skasuj zaznaczōne"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "FileSystem"
+#~ msgstr "Systym zbiorōw"
+
+#, fuzzy
+#~| msgid "_Eject"
+#~ msgid "Eject '%s'"
+#~ msgstr "Wy_suń"
+
+#, fuzzy
+#~| msgid "Error mounting volume %s"
+#~ msgid "Error mounting volume '%s'"
+#~ msgstr "Błōnd mōntowanio woluminu %s"
+
+#, fuzzy
+#~| msgid "Unable to start %s"
+#~ msgid "Unable to start '%s'"
+#~ msgstr "Niy idzie sztartnōńć %s"
 
 #~ msgid "Open your personal folder"
 #~ msgstr "Ôtwiyro katalog ôsobisty"

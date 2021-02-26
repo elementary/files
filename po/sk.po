@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -268,7 +268,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Nastavenia Disku"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Súborový systém"
 
@@ -614,50 +615,27 @@ msgstr "Kôš"
 msgid "Open the Trash"
 msgstr "Otvoriť kôš"
 
-#: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
-msgid "FileSystem"
-msgstr "Súborový systém"
-
-#: src/View/Sidebar/DeviceListBox.vala:117
+#: src/View/Sidebar/DeviceListBox.vala:106
 #, fuzzy
 #| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
 msgstr "Zobraziť zoznam nedávno použitých súborov"
 
-#: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
-msgid "Eject '%s'"
-msgstr "Odstrániť '%s'"
-
-#: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume '%s'"
-msgstr ""
-
-#: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
-msgid "Unable to start '%s'"
-msgstr "Nepodarilo sa spustiť %s"
-
-#: src/View/Sidebar/DeviceRow.vala:481
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/DeviceRow.vala:482
+#: src/View/Sidebar/DeviceRow.vala:117
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S z %S"
 
-#: src/View/Sidebar/NetworkListBox.vala:81
+#: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
 msgstr "Celá sieť"
 
-#: src/View/Sidebar/NetworkListBox.vala:87
+#: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
 msgstr "Prehliadať obsah siete"
 
@@ -2087,6 +2065,21 @@ msgstr "Obnoviť všetko"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " vybrané"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "FileSystem"
+#~ msgstr "Súborový systém"
+
+#, fuzzy
+#~| msgid "Delete '%s'"
+#~ msgid "Eject '%s'"
+#~ msgstr "Odstrániť '%s'"
+
+#, fuzzy
+#~| msgid "Unable to start %s"
+#~ msgid "Unable to start '%s'"
+#~ msgstr "Nepodarilo sa spustiť %s"
 
 #~ msgid "Open your personal folder"
 #~ msgstr "Otvoriť váš osobný priečinok"

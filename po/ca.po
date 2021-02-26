@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2021-02-18 22:56+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
@@ -260,7 +260,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Propietats del disc"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Sistema de fitxers"
 
@@ -589,44 +590,25 @@ msgstr "Paperera"
 msgid "Open the Trash"
 msgstr "Obre la paperera"
 
-#: src/View/Sidebar/DeviceListBox.vala:105
-msgid "FileSystem"
-msgstr "Sistema de fitxers"
-
-#: src/View/Sidebar/DeviceListBox.vala:117
+#: src/View/Sidebar/DeviceListBox.vala:106
 msgid "View the root of the local filesystem"
 msgstr "Mostra l'arrel del sistema de fitxers local"
 
-#: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject '%s'"
-msgstr "Expulsa %s"
-
-#: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume '%s'"
-msgstr "Error muntant el volum %s"
-
-#: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start '%s'"
-msgstr "No es pot iniciar %s"
-
-#: src/View/Sidebar/DeviceRow.vala:481
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr "%s lliure"
 
-#: src/View/Sidebar/DeviceRow.vala:482
+#: src/View/Sidebar/DeviceRow.vala:117
 #, c-format
 msgid "%s used of %s"
 msgstr "%s usat de %s"
 
-#: src/View/Sidebar/NetworkListBox.vala:81
+#: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
 msgstr "Tota la xarxa"
 
-#: src/View/Sidebar/NetworkListBox.vala:87
+#: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
 msgstr "Navega pel contingut de la xarxa"
 
@@ -2009,6 +1991,18 @@ msgstr "Restaura la selecció"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Suprimeix la selecció"
+
+#~ msgid "FileSystem"
+#~ msgstr "Sistema de fitxers"
+
+#~ msgid "Eject '%s'"
+#~ msgstr "Expulsa %s"
+
+#~ msgid "Error mounting volume '%s'"
+#~ msgstr "Error muntant el volum %s"
+
+#~ msgid "Unable to start '%s'"
+#~ msgstr "No es pot iniciar %s"
 
 #~ msgid "Open your personal folder"
 #~ msgstr "Obriu la vostra carpeta personal"

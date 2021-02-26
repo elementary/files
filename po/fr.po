@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2021-02-20 16:36+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
@@ -263,7 +263,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Propriétés de disque"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Système de fichier"
 
@@ -592,44 +593,25 @@ msgstr "Corbeille"
 msgid "Open the Trash"
 msgstr "Ouvrir la corbeille"
 
-#: src/View/Sidebar/DeviceListBox.vala:105
-msgid "FileSystem"
-msgstr "Système de fichiers"
-
-#: src/View/Sidebar/DeviceListBox.vala:117
+#: src/View/Sidebar/DeviceListBox.vala:106
 msgid "View the root of the local filesystem"
 msgstr "Voir la racine du système de fichiers local"
 
-#: src/View/Sidebar/DeviceRow.vala:112
-#, c-format
-msgid "Eject '%s'"
-msgstr "Éjecter « %s »"
-
-#: src/View/Sidebar/DeviceRow.vala:197
-#, c-format
-msgid "Error mounting volume '%s'"
-msgstr "Erreur lors du montage du volume « %s »"
-
-#: src/View/Sidebar/DeviceRow.vala:218
-#, c-format
-msgid "Unable to start '%s'"
-msgstr "Impossible de démarrer « %s »"
-
-#: src/View/Sidebar/DeviceRow.vala:481
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr "%s libre"
 
-#: src/View/Sidebar/DeviceRow.vala:482
+#: src/View/Sidebar/DeviceRow.vala:117
 #, c-format
 msgid "%s used of %s"
 msgstr "%s utilisé sur %s"
 
-#: src/View/Sidebar/NetworkListBox.vala:81
+#: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
 msgstr "Tout le réseau"
 
-#: src/View/Sidebar/NetworkListBox.vala:87
+#: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
 msgstr "Parcourir le réseau"
 
@@ -2023,6 +2005,18 @@ msgstr "Restaurer la sélection"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Supprimer la sélection"
+
+#~ msgid "FileSystem"
+#~ msgstr "Système de fichiers"
+
+#~ msgid "Eject '%s'"
+#~ msgstr "Éjecter « %s »"
+
+#~ msgid "Error mounting volume '%s'"
+#~ msgstr "Erreur lors du montage du volume « %s »"
+
+#~ msgid "Unable to start '%s'"
+#~ msgstr "Impossible de démarrer « %s »"
 
 #~ msgid "Open your personal folder"
 #~ msgstr "Ouvrir votre dossier personnel"

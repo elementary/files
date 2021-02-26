@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -262,7 +262,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Proprietà del disco"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "File di sistema"
 
@@ -593,51 +594,27 @@ msgstr "Cestino"
 msgid "Open the Trash"
 msgstr "Apri il cestino"
 
-#: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
-msgid "FileSystem"
-msgstr "File di sistema"
-
-#: src/View/Sidebar/DeviceListBox.vala:117
+#: src/View/Sidebar/DeviceListBox.vala:106
 #, fuzzy
 #| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
 msgstr "Visualizza l'elenco dei file utilizzati di recente"
 
-#: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
-msgid "Eject '%s'"
-msgstr "Elimina '%s'"
-
-#: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
-msgid "Error mounting volume '%s'"
-msgstr "Errore nel montare il volume %s"
-
-#: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
-msgid "Unable to start '%s'"
-msgstr "Impossibile avviare %s"
-
-#: src/View/Sidebar/DeviceRow.vala:481
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr "%s libero"
 
-#: src/View/Sidebar/DeviceRow.vala:482
+#: src/View/Sidebar/DeviceRow.vala:117
 #, c-format
 msgid "%s used of %s"
 msgstr "%s usato di %s"
 
-#: src/View/Sidebar/NetworkListBox.vala:81
+#: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
 msgstr "Intera rete"
 
-#: src/View/Sidebar/NetworkListBox.vala:87
+#: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
 msgstr "Esplora il contenuto della rete"
 
@@ -2035,6 +2012,26 @@ msgstr "Ripristina la selezione"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Elimina la selezione"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "FileSystem"
+#~ msgstr "File di sistema"
+
+#, fuzzy
+#~| msgid "Delete '%s'"
+#~ msgid "Eject '%s'"
+#~ msgstr "Elimina '%s'"
+
+#, fuzzy
+#~| msgid "Error mounting volume %s"
+#~ msgid "Error mounting volume '%s'"
+#~ msgstr "Errore nel montare il volume %s"
+
+#, fuzzy
+#~| msgid "Unable to start %s"
+#~ msgid "Unable to start '%s'"
+#~ msgstr "Impossibile avviare %s"
 
 #~ msgid "Open your personal folder"
 #~ msgstr "Apri la tua cartella personale"

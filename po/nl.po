@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2020-10-31 21:15+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -261,7 +261,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Schijfeigenschappen"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 libwidgets/Resources.vala:73
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Bestandssysteem"
 
@@ -594,51 +595,27 @@ msgstr "Prullenbak"
 msgid "Open the Trash"
 msgstr "Open de prullenbak"
 
-#: src/View/Sidebar/DeviceListBox.vala:105
-#, fuzzy
-#| msgid "File System"
-msgid "FileSystem"
-msgstr "Bestandssysteem"
-
-#: src/View/Sidebar/DeviceListBox.vala:117
+#: src/View/Sidebar/DeviceListBox.vala:106
 #, fuzzy
 #| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
 msgstr "Bekijk de lijst van recentelijke gebruikte bestanden"
 
-#: src/View/Sidebar/DeviceRow.vala:112
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
-msgid "Eject '%s'"
-msgstr "‘%s’ _verwijderen"
-
-#: src/View/Sidebar/DeviceRow.vala:197
-#, fuzzy, c-format
-#| msgid "Error mounting volume %s"
-msgid "Error mounting volume '%s'"
-msgstr "Fout bij het aankoppelen van het volume %s"
-
-#: src/View/Sidebar/DeviceRow.vala:218
-#, fuzzy, c-format
-#| msgid "Unable to start %s"
-msgid "Unable to start '%s'"
-msgstr "Niet in staat %s te starten"
-
-#: src/View/Sidebar/DeviceRow.vala:481
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr "%s beschikbaar"
 
-#: src/View/Sidebar/DeviceRow.vala:482
+#: src/View/Sidebar/DeviceRow.vala:117
 #, c-format
 msgid "%s used of %s"
 msgstr "%s van de %s"
 
-#: src/View/Sidebar/NetworkListBox.vala:81
+#: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
 msgstr "Volledig netwerk"
 
-#: src/View/Sidebar/NetworkListBox.vala:87
+#: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
 msgstr "Door de inhoud van het netwerk bladeren"
 
@@ -2046,6 +2023,26 @@ msgstr "Selectie herstellen"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Selectie verwijderen"
+
+#, fuzzy
+#~| msgid "File System"
+#~ msgid "FileSystem"
+#~ msgstr "Bestandssysteem"
+
+#, fuzzy
+#~| msgid "Delete '%s'"
+#~ msgid "Eject '%s'"
+#~ msgstr "‘%s’ _verwijderen"
+
+#, fuzzy
+#~| msgid "Error mounting volume %s"
+#~ msgid "Error mounting volume '%s'"
+#~ msgstr "Fout bij het aankoppelen van het volume %s"
+
+#, fuzzy
+#~| msgid "Unable to start %s"
+#~ msgid "Unable to start '%s'"
+#~ msgstr "Niet in staat %s te starten"
 
 #~ msgid "Open your personal folder"
 #~ msgstr "Open uw persoonlijke map"
