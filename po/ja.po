@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 09:54+0000\n"
-"PO-Revision-Date: 2021-02-18 14:53+0000\n"
+"PO-Revision-Date: 2021-02-26 12:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -867,20 +867,16 @@ msgid "Port:"
 msgstr "ポート番号:"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "サーバー上の共有する場所の名前"
+msgstr "サーバー上の共有する場所の名前 (任意)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "共有する場所:"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "サーバー上の共有フォルダーのパス"
+msgstr "サーバー上の共有フォルダーのパス (任意)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
