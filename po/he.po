@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 09:54+0000\n"
-"PO-Revision-Date: 2021-02-18 15:28+0000\n"
+"PO-Revision-Date: 2021-02-26 12:08+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -875,20 +875,16 @@ msgid "Port:"
 msgstr "פתחה:"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "שם השיתוף בשרת"
+msgstr "שם השיתוף בשרת (רשות)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "שיתוף:"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "נתיב התיקייה המשותפת בשרת"
+msgstr "נתיב התיקייה המשותפת בשרת (רשות)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
