@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 09:54+0000\n"
-"PO-Revision-Date: 2021-02-18 22:56+0000\n"
+"PO-Revision-Date: 2021-02-26 17:46+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -879,20 +879,16 @@ msgid "Port:"
 msgstr "Porta:"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "Nome da partilha no servidor"
+msgstr "Nome da partilha no servidor (Opcional)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Partilhar:"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Caminho da pasta partilhada no servidor"
+msgstr "Caminho da pasta partilhada no servidor (Opcional)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
