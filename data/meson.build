@@ -48,14 +48,12 @@ appdata_in = configure_file(
     install: false,
 )
 
-po_dir = join_paths(meson.source_root(), 'po')
-
 i18n.merge_file(
     'policy',
     input: policy_in,
     output: meson.project_name() + '.policy',
-    po_dir: po_dir,
-    data_dirs: po_dir,
+    po_dir: join_paths(meson.source_root(), 'po', 'extra'),
+    data_dirs: join_paths(meson.source_root(), 'po', 'extra'),
     install: true,
     install_dir: join_paths(get_option('datadir'), 'polkit-1', 'actions'),
 )
