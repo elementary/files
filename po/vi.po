@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 13:28+0000\n"
+"POT-Creation-Date: 2021-02-26 09:54+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Size:"
 msgstr "Kích thước:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Loại:"
@@ -877,26 +877,26 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV an toàn (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
 msgstr "Chi tiết máy chủ"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:135
 #, fuzzy
 msgid "Server:"
 msgstr "_Máy chủ:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:143
 #, fuzzy
 msgid "Port:"
 msgstr "_Cổng:"
 
-#: libcore/ConnectServerDialog.vala:177
-msgid "Name of share on server"
+#: libcore/ConnectServerDialog.vala:175
+msgid "Name of share on server (Optional)"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:178
@@ -904,67 +904,67 @@ msgstr ""
 msgid "Share:"
 msgstr "_Chia sẻ:"
 
-#: libcore/ConnectServerDialog.vala:180
-msgid "Path of shared folder on server"
+#: libcore/ConnectServerDialog.vala:181
+msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:185
 #, fuzzy
 msgid "Folder:"
 msgstr "_Thư mục:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
 msgstr "Chi tiết người dùng"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:194
 #, fuzzy
 msgid "Domain name:"
 msgstr "_Tên miền:"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201
 #, fuzzy
 msgid "User name:"
 msgstr "_Tên đăng nhập:"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:208
 #, fuzzy
 msgid "Password:"
 msgstr "Mật_khẩu:"
 
-#: libcore/ConnectServerDialog.vala:198
+#: libcore/ConnectServerDialog.vala:210
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Nhớ mật khẩu"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Thôi"
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:216
 #, fuzzy
 msgid "Connect"
 msgstr "_Kết nối"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
 msgstr "Tiếp tục"
 
-#: libcore/ConnectServerDialog.vala:249
+#: libcore/ConnectServerDialog.vala:274
 #, fuzzy
 msgid "Connecting…"
 msgstr "Đang kết nối..."
 
-#: libcore/ConnectServerDialog.vala:371
+#: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
 msgstr "Xin hãy kiểm tra lại chi tiết đăng nhập."
 

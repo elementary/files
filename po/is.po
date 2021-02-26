@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 13:28+0000\n"
+"POT-Creation-Date: 2021-02-26 09:54+0000\n"
 "PO-Revision-Date: 2015-12-21 13:47+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Icelandic <is@li.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Size:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr ""
@@ -858,26 +858,26 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Öruggt WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
 msgstr "Nánar um þjón"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:135
 #, fuzzy
 msgid "Server:"
 msgstr "_Þjónn:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:143
 #, fuzzy
 msgid "Port:"
 msgstr "_Gátt:"
 
-#: libcore/ConnectServerDialog.vala:177
-msgid "Name of share on server"
+#: libcore/ConnectServerDialog.vala:175
+msgid "Name of share on server (Optional)"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:178
@@ -885,67 +885,67 @@ msgstr ""
 msgid "Share:"
 msgstr "S_ameign:"
 
-#: libcore/ConnectServerDialog.vala:180
-msgid "Path of shared folder on server"
+#: libcore/ConnectServerDialog.vala:181
+msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:185
 #, fuzzy
 msgid "Folder:"
 msgstr "_Mappa:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
 msgstr "Nánar um notanda"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:194
 #, fuzzy
 msgid "Domain name:"
 msgstr "_Heiti léns:"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201
 #, fuzzy
 msgid "User name:"
 msgstr "_Notandanafn:"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:208
 #, fuzzy
 msgid "Password:"
 msgstr "Lykil_orð:"
 
-#: libcore/ConnectServerDialog.vala:198
+#: libcore/ConnectServerDialog.vala:210
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Muna þetta lykilorð"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:216
 #, fuzzy
 msgid "Connect"
 msgstr "T_engjast"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
 msgstr "Halda áfram"
 
-#: libcore/ConnectServerDialog.vala:249
+#: libcore/ConnectServerDialog.vala:274
 #, fuzzy
 msgid "Connecting…"
 msgstr "Tengist..."
 
-#: libcore/ConnectServerDialog.vala:371
+#: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
 msgstr "Vinsamlegast athugaðu notendaupplýsingarnar þínar."
 

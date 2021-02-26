@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 13:28+0000\n"
+"POT-Creation-Date: 2021-02-26 09:54+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Telugu <te@li.org>\n"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Size:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr ""
@@ -867,26 +867,26 @@ msgstr ""
 msgid "Secure WebDAV (HTTPS)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
 msgstr "సేవకము వివరాలు"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:135
 #, fuzzy
 msgid "Server:"
 msgstr "సేవకము (_S):"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:143
 #, fuzzy
 msgid "Port:"
 msgstr "పోర్టు(_P):"
 
-#: libcore/ConnectServerDialog.vala:177
-msgid "Name of share on server"
+#: libcore/ConnectServerDialog.vala:175
+msgid "Name of share on server (Optional)"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:178
@@ -894,66 +894,66 @@ msgstr ""
 msgid "Share:"
 msgstr "భాగస్వామ్యం (_a):"
 
-#: libcore/ConnectServerDialog.vala:180
-msgid "Path of shared folder on server"
+#: libcore/ConnectServerDialog.vala:181
+msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:185
 #, fuzzy
 msgid "Folder:"
 msgstr "సంచయం (_F):"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
 msgstr "వాడుకరి వివరాలు"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:194
 #, fuzzy
 msgid "Domain name:"
 msgstr "డొమైన్ పేరు (_D):"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201
 msgid "User name:"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:208
 #, fuzzy
 msgid "Password:"
 msgstr "సంకేతపదం (_w):"
 
-#: libcore/ConnectServerDialog.vala:198
+#: libcore/ConnectServerDialog.vala:210
 #, fuzzy
 msgid "Remember this password"
 msgstr "ఈ సంకేతపదాన్ని గుర్తుంచుకొను (_R)"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "రద్దుచేయండి"
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:216
 #, fuzzy
 msgid "Connect"
 msgstr "అనుసంధానించు (_C)"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
 msgstr "కొనసాగించు"
 
-#: libcore/ConnectServerDialog.vala:249
+#: libcore/ConnectServerDialog.vala:274
 #, fuzzy
 msgid "Connecting…"
 msgstr "అనుసంధానిస్తున్నది..."
 
-#: libcore/ConnectServerDialog.vala:371
+#: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
 msgstr "దయచేసి మీ వాడుకరి వివరాలను సరిచూచుకోండి."
 

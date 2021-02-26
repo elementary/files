@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 13:28+0000\n"
+"POT-Creation-Date: 2021-02-26 09:54+0000\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Size:"
 msgstr "ขนาด:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "ชนิด:"
@@ -875,26 +875,26 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV แบบปลอดภัย (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
 msgstr "รายละเอียดเซิร์ฟเวอร์"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:135
 #, fuzzy
 msgid "Server:"
 msgstr "เซิร์ฟเวอร์ (S_)"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:143
 #, fuzzy
 msgid "Port:"
 msgstr "พอร์ต (P_)"
 
-#: libcore/ConnectServerDialog.vala:177
-msgid "Name of share on server"
+#: libcore/ConnectServerDialog.vala:175
+msgid "Name of share on server (Optional)"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:178
@@ -902,67 +902,67 @@ msgstr ""
 msgid "Share:"
 msgstr "ใช้ร่วมกับ (_H) :"
 
-#: libcore/ConnectServerDialog.vala:180
-msgid "Path of shared folder on server"
+#: libcore/ConnectServerDialog.vala:181
+msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:185
 #, fuzzy
 msgid "Folder:"
 msgstr "_โฟลเดอร์:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
 msgstr "รายละเอียดของผู้ใช้"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:194
 #, fuzzy
 msgid "Domain name:"
 msgstr "ชื่อโดเมน (_D) :"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201
 #, fuzzy
 msgid "User name:"
 msgstr "ชื่อผู้ใช้ (_U) :"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:208
 #, fuzzy
 msgid "Password:"
 msgstr "รหัสผ่าน (_W) :"
 
-#: libcore/ConnectServerDialog.vala:198
+#: libcore/ConnectServerDialog.vala:210
 #, fuzzy
 msgid "Remember this password"
 msgstr "จำรหัสผ่านนี้ไว้ (_R)"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:216
 #, fuzzy
 msgid "Connect"
 msgstr "เชื่อมต่อ (C_)"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
 msgstr "ดำเนินการต่อ"
 
-#: libcore/ConnectServerDialog.vala:249
+#: libcore/ConnectServerDialog.vala:274
 #, fuzzy
 msgid "Connecting…"
 msgstr "กำลังเชื่อมต่อ..."
 
-#: libcore/ConnectServerDialog.vala:371
+#: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
 msgstr "กรุณาตรวจสอบข้อมูลผู้ใช้ของคุณ"
 
