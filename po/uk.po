@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 09:54+0000\n"
-"PO-Revision-Date: 2021-02-18 22:56+0000\n"
+"PO-Revision-Date: 2021-02-26 17:46+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -892,20 +892,16 @@ msgid "Port:"
 msgstr "Порт:"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "Назва спільного ресурсу на сервері"
+msgstr "Назва спільного ресурсу на сервері (необов'язково)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Спільний ресурс:"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Шлях до спільної теки на сервері"
+msgstr "Шлях до спільної теки на сервері (необов'язково)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
