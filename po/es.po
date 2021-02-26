@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-18 13:28+0000\n"
-"PO-Revision-Date: 2021-02-18 22:56+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"POT-Creation-Date: 2021-02-26 09:54+0000\n"
+"PO-Revision-Date: 2021-02-26 12:08+0000\n"
+"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
 "Language: es\n"
@@ -52,7 +52,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Examine el sistema de archivos con el gestor de archivos"
+"Examinar el sistema de archivos con el administrador de archivos"
 
 #: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
@@ -102,7 +102,7 @@ msgstr "Desconocido"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
-msgstr "Disponibles:"
+msgstr "Disponible:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
@@ -152,7 +152,7 @@ msgstr "No se pudo determinar"
 msgid "Size:"
 msgstr "Tamaño:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Tipo:"
@@ -163,15 +163,15 @@ msgstr "Contiene:"
 
 #: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
-msgstr "Creación:"
+msgstr "Creado:"
 
 #: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
-msgstr "Modificación:"
+msgstr "Modificado:"
 
 #: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
-msgstr "Eliminación:"
+msgstr "Eliminado:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
@@ -369,7 +369,7 @@ msgstr "Nombre de archivo no válido"
 
 #: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
-msgstr "Pestaña nueva"
+msgstr "Nueva pestaña"
 
 #: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
@@ -719,7 +719,7 @@ msgstr "Acceso denegado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "Se activó el modo de privacidad"
+msgstr "El modo de privacidad está activado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
@@ -862,84 +862,84 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV seguro (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
 msgstr "Detalles del servidor"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr "Nombre de servidor o dirección IP"
+msgstr "Nombre del servidor o dirección IP"
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
 msgstr "Servidor:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:143
 msgid "Port:"
 msgstr "Puerto:"
 
-#: libcore/ConnectServerDialog.vala:177
-msgid "Name of share on server"
-msgstr "Nombre del recurso en el servidor"
+#: libcore/ConnectServerDialog.vala:175
+msgid "Name of share on server (Optional)"
+msgstr "Nombre del recurso compartido en el servidor (opcional)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Recurso compartido:"
 
-#: libcore/ConnectServerDialog.vala:180
-msgid "Path of shared folder on server"
-msgstr "Ruta de la carpeta compartida en el servidor"
-
 #: libcore/ConnectServerDialog.vala:181
+msgid "Path of shared folder on server (Optional)"
+msgstr "Ruta de la carpeta compartida en el servidor (opcional)"
+
+#: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
 msgstr "Carpeta:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
 msgstr "Detalles del usuario"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
 msgstr "Nombre del dominio de Windows"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:194
 msgid "Domain name:"
 msgstr "Nombre del dominio:"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
 msgstr "Nombre de usuario en el servidor"
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201
 msgid "User name:"
 msgstr "Nombre de usuario:"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:208
 msgid "Password:"
 msgstr "Contraseña:"
 
-#: libcore/ConnectServerDialog.vala:198
+#: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "Recordar esta contraseña"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
 msgstr "Conectar"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
 msgstr "Continuar"
 
-#: libcore/ConnectServerDialog.vala:249
+#: libcore/ConnectServerDialog.vala:274
 msgid "Connecting…"
 msgstr "Conectando…"
 
-#: libcore/ConnectServerDialog.vala:371
+#: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
 msgstr "Compruebe sus datos de usuario."
 
@@ -1002,7 +1002,7 @@ msgstr "Mantener más reciente"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr "Omitir si el original se modificó más recientemente"
+msgstr "Omitir si el original se modificó recientemente"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
