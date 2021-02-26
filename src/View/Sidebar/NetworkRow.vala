@@ -1,6 +1,6 @@
 /* NetworkRow.vala
  *
- * Copyright 2020 elementary LLC. <https://elementary.io>
+ * Copyright 2020-21 elementary LLC. <https://elementary.io>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,16 +20,16 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkRow : Sidebar.BookmarkRow {
-    public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list,
-                        bool pinned, bool permanent) {
-        Object (
-            custom_name: name,
-            uri: uri,
-            gicon: gicon,
-            list: list,
-            pinned: pinned,
-            permanent: permanent
-        );
+public class Sidebar.NetworkRow : Sidebar.AbstractMountableRow {
+    public NetworkRow (
+        string name, string uri, Icon gicon, SidebarListInterface list, Mount? mount
+    ) {
+
+        base (
+            name, uri, gicon, list,
+            true, // Pinned,
+            mount == null || !mount.can_unmount (), // permanent if no mount or unmountable,
+            null, null, null, //No uuid, drive or volume
+            mount);
     }
 }

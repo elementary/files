@@ -49,32 +49,21 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
         DeviceRow? bm = has_uuid (uuid, uri);
 
-        if (bm == null) {
-            bm = new DeviceRow (
+        if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
+            var new_bm = new DeviceRow (
                 label,
                 uri,
                 gicon,
                 this,
                 pinned, // Pin all device rows for now
-                permanent, // Permanent devices (like "FileSystem" are always accessible)
+                permanent || (bm != null && bm.permanent), //Ensure bind mount matches permanence of uuid
                 uuid,
                 drive,
                 volume,
                 mount
             );
 
-            add (bm);
-        }
-
-        if (mount != null) {
-            bm.mounted = true;
-            bm.can_eject = mount.can_unmount () || mount.can_eject ();
-        } else if (volume != null) {
-            bm.mounted = volume.get_mount () != null;
-            bm.can_eject = volume.can_eject ();
-        } else if (drive != null) {
-            bm.mounted = true;
-            bm.can_eject = drive.can_eject () || drive.can_stop ();
+            add (new_bm);
         }
 
         return bm;
@@ -102,7 +91,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         var root_uri = _(Marlin.ROOT_FS_URI);
         if (root_uri != "") {
             row = add_bookmark (
-                _("FileSystem"),
+                _("File System"),
                 root_uri,
                 new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
                 null,
@@ -177,7 +166,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             */
             add_bookmark (
                 volume.get_name (),
-                volume.get_name (),
+                "", // Do not know uri until mounted
                 volume.get_icon (),
                 volume.get_uuid (),
                 null,
@@ -202,7 +191,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
         add_bookmark (
             mount.get_name (),
-            mount.get_root ().get_uri (),
+            mount.get_default_location ().get_uri (),
             mount.get_icon (),
             uuid,
             mount.get_drive (),

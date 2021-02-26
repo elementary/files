@@ -57,6 +57,7 @@ pantheon_files_exec = executable (
     'View/Sidebar/SidebarWindow.vala',
     'View/Sidebar/BookmarkListBox.vala',
     'View/Sidebar/DeviceListBox.vala',
+    'View/Sidebar/AbstractMountableRow.vala',
     'View/Sidebar/NetworkListBox.vala',
     'View/Sidebar/BookmarkRow.vala',
     'View/Sidebar/DeviceRow.vala',
