@@ -22,6 +22,7 @@
 
 public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private VolumeMonitor volume_monitor;
+    private Gee.HashMap<string, SidebarExpander> drive_row_map;
 
     public Marlin.SidebarInterface sidebar { get; construct; }
 
@@ -32,11 +33,12 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     construct {
+        drive_row_map = new Gee.HashMap<string, SidebarExpander> ();
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.volume_added.connect (bookmark_volume_if_without_mount);
         volume_monitor.mount_added.connect (bookmark_mount_if_native_and_not_shadowed);
-        volume_monitor.drive_connected.connect (bookmark_stoppable_or_removeable_drive_if_without_volumes);
+        volume_monitor.drive_connected.connect (bookmark_drive);
     }
 
     private DeviceRow? add_bookmark (string label, string uri, Icon gicon,
@@ -46,7 +48,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                                     Mount? mount = null,
                                     bool pinned = true,
                                     bool permanent = false) {
-
         DeviceRow? bm = has_uuid (uuid, uri);
 
         if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
@@ -64,6 +65,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             );
 
             add (new_bm);
+            show_all ();
         }
 
         return bm;
@@ -108,8 +110,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         }
 
         foreach (unowned GLib.Drive drive in volume_monitor.get_connected_drives ()) {
-            bookmark_stoppable_or_removeable_drive_if_without_volumes (drive);
-        } // Add drives not otherwise bookmarked
+            bookmark_drive (drive);
+        }
 
         foreach (unowned Volume volume in volume_monitor.get_volumes ()) {
             bookmark_volume_if_without_mount (volume);
@@ -128,7 +130,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         });
     }
 
-    private void bookmark_stoppable_or_removeable_drive_if_without_volumes (Drive drive) {
+    private void bookmark_drive (Drive drive) {
         /* If the drive has no mountable volumes and we cannot detect media change.. we
          * display the drive in the sidebar so the user can manually poll the drive by
          * right clicking and selecting "Rescan..."
@@ -137,41 +139,35 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
          * work.. but it's also for human beings who like to turn off media detection
          * in the OS to save battery juice.
          */
-
-        if (drive.get_volumes () == null &&
-            drive.can_stop () || (drive.is_media_removable () && !drive.is_media_check_automatic ())) {
-
-            add_bookmark (
-                drive.get_name (),
-                drive.get_name (),
-                drive.get_icon (),
-                drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
-                drive,
-                null,
-                null
-            );
+        var drive_row = new SidebarExpander (drive.get_name (), new Sidebar.DeviceListBox (sidebar));
+        if (!drive_row_map.has_key (drive.get_name ())) {
+            drive_row_map.@set (drive.get_name (), drive_row);
+            drive_row.set_gicon (drive.get_icon ());
+            add (drive_row);
         }
     }
 
     private void bookmark_volume_if_without_mount (Volume volume) {
-        var mount = volume.get_mount ();
-        if (mount == null) {
-            /* Do show the unmounted volumes in the sidebar;
-            * this is so the user can mount it (in case automounting
-            * is off).
-            *
-            * Also, even if automounting is enabled, this gives a visual
-            * cue that the user should remember to yank out the media if
-            * he just unmounted it.
-            */
-            add_bookmark (
-                volume.get_name (),
-                "", // Do not know uri until mounted
-                volume.get_icon (),
-                volume.get_uuid (),
-                null,
-                volume,
-                null
+        if (volume.get_drive () != null) {
+
+            var key = volume.get_drive ().get_name ();
+            DeviceListBox target;
+            if (drive_row_map.has_key (key)) {
+                var drive_row = drive_row_map.@get (key);
+                target = (DeviceListBox)(drive_row.list);
+                drive_row.active = true;  //Show newly added volume
+            } else {
+                target = this;
+            }
+
+            target.add_bookmark (
+                    volume.get_name (),
+                    "", // Do not know uri until mounted
+                    volume.get_icon (),
+                    volume.get_uuid (),
+                    null,
+                    volume,
+                    null
             );
         }
     }
@@ -184,7 +180,11 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         var volume = mount.get_volume ();
         string? uuid = null;
         if (volume != null) {
-            uuid = volume.get_uuid ();
+            if (volume.get_drive () != null) {
+                return; //Already listed under drive
+            } else {
+                uuid = volume.get_uuid ();
+            }
         } else {
             uuid = mount.get_uuid ();
         }
