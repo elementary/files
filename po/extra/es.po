@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
-"PO-Revision-Date: 2021-02-27 19:00+0000\n"
-"Last-Translator: david <dcardelleg@gmail.com>\n"
+"PO-Revision-Date: 2021-02-28 00:55+0000\n"
+"Last-Translator: Rodrigo Lara <rodrigo.larar@usach.cl>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
 "\n"
 "Language: es\n"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:163
 msgid "Show keyboard shortcuts in menu items"
-msgstr "Se muestran los atajos de teclado en los elementos del menú"
+msgstr "Mostrar atajos de teclado en elementos de menú"
 
 #: data/io.elementary.files.appdata.xml.in.in:164
 msgid "Fix an issue with breadcrumbs in the file chooser"
