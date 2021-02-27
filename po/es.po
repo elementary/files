@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2021-02-28 00:55+0000\n"
-"Last-Translator: alexis holguin <wholguinmor@uniminuto.edu.co>\n"
+"Last-Translator: Alexander Barrios <alex.barrios2910@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr "Abrir uno o más URI, cada uno en su propia pestaña"
 
 #: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
-msgstr "Nueva Ventana"
+msgstr "Nueva ventana"
 
 #: src/Application.vala:164
 msgid "Quit Files"
