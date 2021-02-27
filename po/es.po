@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2021-02-27 18:09+0000\n"
-"Last-Translator: Mario Rodrigo <capitantrueno@gmail.com>\n"
+"Last-Translator: ricktonycr <ricktonycr@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
 "Language: es\n"
@@ -701,7 +701,7 @@ msgstr "Acceso denegado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "El modo de privacidad está activado"
+msgstr "Modo privado habilitado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
