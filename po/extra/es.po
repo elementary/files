@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2021-02-27 19:00+0000\n"
-"Last-Translator: Juan Campos <juan.camposzambrana@gmail.com>\n"
+"Last-Translator: david <dcardelleg@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
 "\n"
 "Language: es\n"
@@ -44,7 +44,7 @@ msgstr "Gestor de archivos"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr "Ventana nueva"
+msgstr "Nueva ventana"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
@@ -814,7 +814,7 @@ msgstr "Reparar un fallo mientras se restauraban objetos de la papelera"
 
 #: data/io.elementary.files.appdata.xml.in.in:427
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Mejorar la sensibilidad del menú contextual  cortar/copiar/pegar"
+msgstr "Mejorar la sensibilidad del menú contextual cortar/copiar/pegar"
 
 #: data/io.elementary.files.appdata.xml.in.in:428
 msgid "Translation updates"
