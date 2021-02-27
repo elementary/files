@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
 "PO-Revision-Date: 2021-02-28 00:55+0000\n"
-"Last-Translator: Rodrigo Lara <rodrigo.larar@usach.cl>\n"
+"Last-Translator: david <dcardelleg@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
 "\n"
 "Language: es\n"
@@ -39,8 +39,9 @@ msgstr "Gestor de archivos"
 
 #. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
+#, fuzzy
 msgid "system-file-manager"
-msgstr "Gestor de archivos"
+msgstr "Gestor de archivos de sistema"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -77,8 +78,8 @@ msgstr "Mejoras:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
 msgstr ""
-"En la vista de iconos, al pulsar entre la miniatura y el texto ahora se "
-"activa o se selecciona"
+"Al hacer clic entre la miniatura y el texto ahora se activa o se selecciona "
+"en la vista de iconos"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Bookmark menu option for network mounts in sidebar"
