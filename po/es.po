@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
-"PO-Revision-Date: 2021-02-27 18:09+0000\n"
-"Last-Translator: david <dcardelleg@gmail.com>\n"
+"PO-Revision-Date: 2021-02-28 00:55+0000\n"
+"Last-Translator: alexis holguin <wholguinmor@uniminuto.edu.co>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
 "Language: es\n"
@@ -34,7 +34,7 @@ msgstr "Nueva Ventana"
 
 #: src/Application.vala:164
 msgid "Quit Files"
-msgstr "Salir de Archivos"
+msgstr "Salir de archivos"
 
 #: src/Application.vala:166
 msgid "Enable debug logging"
