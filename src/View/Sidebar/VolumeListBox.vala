@@ -47,16 +47,16 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         });
     }
 
-    private DeviceRow? add_bookmark (string label, string uri, Icon gicon,
+    private DeviceRow add_bookmark (string label, string uri, Icon gicon,
                                     string? uuid = null,
                                     Drive? drive = null,
                                     Volume? volume = null,
                                     Mount? mount = null,
                                     bool pinned = true,
                                     bool permanent = false) {
-        DeviceRow? bm = has_uuid (uuid, uri);
 
-        if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
+        DeviceRow? bm = null;
+        if (!has_uuid (uuid, out bm, uri) || bm.custom_name != label) { //Could be a bind mount with the same uuid
             var new_bm = new DeviceRow (
                 label,
                 uri,
@@ -72,8 +72,10 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
             add (new_bm);
             show_all ();
+            bm = new_bm;
         }
 
+        bm.update_free_space ();
         return bm;
     }
 
@@ -106,22 +108,24 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         );
     }
 
-    private DeviceRow? has_uuid (string? uuid, string? fallback = null) {
+    private bool has_uuid (string? uuid, out DeviceRow? row, string? fallback = null) {
+        row = null;
         var search = uuid != null ? uuid : fallback;
 
         if (search == null) {
-            return null;
+            return false;
         }
 
         foreach (unowned Gtk.Widget child in get_children ()) {
             if (child is DeviceRow) {
                 if (((DeviceRow)child).uuid == uuid) {
-                    return (DeviceRow)child;
+                    row = (DeviceRow)child;
+                    return true;
                 }
             }
         }
 
-        return null;
+        return false;
     }
 
     public SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {

@@ -39,9 +39,10 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         volume_monitor.volume_added.connect (bookmark_volume_without_drive);
         volume_monitor.mount_added.connect (bookmark_mount_if_native_and_not_shadowed);
         volume_monitor.drive_connected.connect (bookmark_drive);
+        volume_monitor.drive_disconnected.connect (drive_removed);
     }
 
-    private DeviceRow? add_bookmark (string label, string uri, Icon gicon,
+    private DeviceRow add_bookmark (string label, string uri, Icon gicon,
                                     string? uuid = null,
                                     Drive? drive = null,
                                     Volume? volume = null,
@@ -66,13 +67,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
             add (new_bm);
             show_all ();
+            new_bm.update_free_space ();
+            bm = new_bm;
         }
 
         return bm;
     }
 
     public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
-        var row = add_bookmark (plugin_item.name,
+        var bm = add_bookmark (plugin_item.name,
                                  plugin_item.uri,
                                  plugin_item.icon,
                                  null,
@@ -82,17 +85,16 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                                  true,
                                  true);
 
-        row.update_plugin_data (plugin_item);
-        return row.id;
+        bm.update_plugin_data (plugin_item);
+        return bm.id;
     }
 
     public void refresh () {
         clear ();
 
-        SidebarItemInterface? row;
         var root_uri = _(Marlin.ROOT_FS_URI);
         if (root_uri != "") {
-            row = add_bookmark (
+            var bm = add_bookmark (
                 _("File System"),
                 root_uri,
                 new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
@@ -104,7 +106,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 true   //Permanent
             );
 
-            row.set_tooltip_markup (
+            bm.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>slash"}, _("View the root of the local filesystem"))
             );
         }
@@ -142,57 +144,41 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
          * in the OS to save battery juice.
          */
 
-        if (drive.has_volumes ()) {
-            if (!drive_row_map.has_key (drive.get_name ())) {
-                var drive_row = new SidebarExpander (drive.get_name (), new Sidebar.VolumeListBox (sidebar, drive));
-                var n_volumes = drive.get_volumes ().length ();
-                string volumes_text;
-                if (n_volumes == 0) {
-                    volumes_text = _("No volumes");
-                } else {
-                    volumes_text = ngettext ("%u volume", "%u volumes", n_volumes).printf (n_volumes);
-                }
-
-                volumes_text = (
-                    "\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (volumes_text)
-                );
-
-                drive_row.tooltip = (
-                    drive.is_removable () ? _("Removable Storage Device") : _("Fixed Storage Device") + volumes_text
-                );
-
-                drive_row_map.@set (drive.get_name (), drive_row);
-                drive_row.set_gicon (drive.get_icon ());
-                add (drive_row);
-            }
-        } else if (drive.can_stop () ||
-                  (drive.is_media_removable () && !drive.is_media_check_automatic ())) {
-
-            add_bookmark (
-                drive.get_name (),
-                drive.get_name (),
-                drive.get_icon (),
-                drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
-                drive,
-                null,
-                null
+        if (!drive_row_map.has_key (drive.get_name ())) {
+            var drive_row = new SidebarExpander (drive.get_name (), new Sidebar.VolumeListBox (sidebar, drive));
+            var n_volumes = drive.get_volumes ().length ();
+            string volumes_text;
+            volumes_text = ngettext ("%u volume", "%u volumes", n_volumes).printf (n_volumes);
+            volumes_text = (
+                "\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (volumes_text)
             );
+
+            drive_row.tooltip = (
+                drive.is_removable () ? _("Removable Storage Device") : _("Fixed Storage Device") + volumes_text
+            );
+
+            drive_row_map.@set (drive.get_name (), drive_row);
+            drive_row.set_gicon (drive.get_icon ());
+            add (drive_row);
         }
     }
 
     private void bookmark_volume_without_drive (Volume volume) {
-        if (volume.get_drive () == null) {
-            var mount = volume.get_mount ();
-            add_bookmark (
-                volume.get_name (),
-                mount != null ? mount.get_default_location ().get_uri () : "",
-                volume.get_icon (),
-                volume.get_uuid (),
-                null,
-                volume,
-                null
-            );
+        Drive? drive = volume.get_drive ();
+        if (drive != null) {
+            return;
         }
+
+        var mount = volume.get_mount ();
+        add_bookmark (
+            volume.get_name (),
+            mount != null ? mount.get_default_location ().get_uri () : "",
+            volume.get_icon (),
+            volume.get_uuid (),
+            volume.get_drive (),
+            volume,
+            volume.get_mount ()
+        );
     }
 
     private void bookmark_mount_if_native_and_not_shadowed (Mount mount) {
@@ -203,11 +189,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         var volume = mount.get_volume ();
         string? uuid = null;
         if (volume != null) {
-            if (volume.get_drive () != null) {
-                return; //Already listed under drive
-            } else {
-                uuid = volume.get_uuid ();
-            }
+            return;
         } else {
             uuid = mount.get_uuid ();
         }
@@ -222,6 +204,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             mount
         );
         //Show extra info in tooltip
+    }
+
+    private void drive_removed (Drive removed_drive) {
+        var key = removed_drive.get_name ();
+        if (drive_row_map.has_key (key)) {
+            var drive_row = drive_row_map.@get (key);
+            drive_row_map.unset (key);
+            drive_row.destroy ();
+        }
     }
 
     private DeviceRow? has_uuid (string? uuid, string? fallback = null) {
