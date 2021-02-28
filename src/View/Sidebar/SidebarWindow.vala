@@ -43,15 +43,15 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         network_listbox = new NetworkListBox (this);
 
         var bookmark_expander = new SidebarExpander (_("Bookmarks"), bookmark_listbox) {
-            tooltip_text = _("Common places plus saved folders and files")
+            tooltip = _("Common places plus saved folders and files")
         };
 
         var device_expander = new SidebarExpander (_("Devices"), device_listbox) {
-            tooltip_text = _("Internal and connected storage devices")
+            tooltip = _("Internal and connected storage devices")
         };
 
         var network_expander = new SidebarExpander (_("Network"), network_listbox) {
-            tooltip_text = _("Devices and places available via a network")
+            tooltip = _("Devices and places available via a network")
         };
 
         bookmarklists_grid = new Gtk.Grid () {

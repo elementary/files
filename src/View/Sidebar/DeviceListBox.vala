@@ -36,7 +36,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         drive_row_map = new Gee.HashMap<string, SidebarExpander> ();
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.volume_added.connect (bookmark_volume_if_without_mount);
+        volume_monitor.volume_added.connect (bookmark_volume_without_drive);
         volume_monitor.mount_added.connect (bookmark_mount_if_native_and_not_shadowed);
         volume_monitor.drive_connected.connect (bookmark_drive);
     }
@@ -114,8 +114,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         }
 
         foreach (unowned Volume volume in volume_monitor.get_volumes ()) {
-            bookmark_volume_if_without_mount (volume);
-        } // Add volumes not otherwise bookmarked
+            bookmark_volume_without_drive (volume);
+        }
 
         foreach (unowned Mount mount in volume_monitor.get_mounts ()) {
             bookmark_mount_if_native_and_not_shadowed (mount);
@@ -126,6 +126,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         get_children ().@foreach ((item) => {
             if (item is DeviceRow) {
                 ((DeviceRow)item).update_free_space ();
+            } else if (item is SidebarExpander) {
+                ((SidebarExpander)item).list.refresh_info ();
             }
         });
     }
@@ -139,35 +141,56 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
          * work.. but it's also for human beings who like to turn off media detection
          * in the OS to save battery juice.
          */
-        var drive_row = new SidebarExpander (drive.get_name (), new Sidebar.DeviceListBox (sidebar));
-        if (!drive_row_map.has_key (drive.get_name ())) {
-            drive_row_map.@set (drive.get_name (), drive_row);
-            drive_row.set_gicon (drive.get_icon ());
-            add (drive_row);
+
+        if (drive.has_volumes ()) {
+            if (!drive_row_map.has_key (drive.get_name ())) {
+                var drive_row = new SidebarExpander (drive.get_name (), new Sidebar.VolumeListBox (sidebar, drive));
+                var n_volumes = drive.get_volumes ().length ();
+                string volumes_text;
+                if (n_volumes == 0) {
+                    volumes_text = _("No volumes");
+                } else {
+                    volumes_text = ngettext ("%u volume", "%u volumes", n_volumes).printf (n_volumes);
+                }
+
+                volumes_text = (
+                    "\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (volumes_text)
+                );
+
+                drive_row.tooltip = (
+                    drive.is_removable () ? _("Removable Storage Device") : _("Fixed Storage Device") + volumes_text
+                );
+
+                drive_row_map.@set (drive.get_name (), drive_row);
+                drive_row.set_gicon (drive.get_icon ());
+                add (drive_row);
+            }
+        } else if (drive.can_stop () ||
+                  (drive.is_media_removable () && !drive.is_media_check_automatic ())) {
+
+            add_bookmark (
+                drive.get_name (),
+                drive.get_name (),
+                drive.get_icon (),
+                drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
+                drive,
+                null,
+                null
+            );
         }
     }
 
-    private void bookmark_volume_if_without_mount (Volume volume) {
-        if (volume.get_drive () != null) {
-
-            var key = volume.get_drive ().get_name ();
-            DeviceListBox target;
-            if (drive_row_map.has_key (key)) {
-                var drive_row = drive_row_map.@get (key);
-                target = (DeviceListBox)(drive_row.list);
-                drive_row.active = true;  //Show newly added volume
-            } else {
-                target = this;
-            }
-
-            target.add_bookmark (
-                    volume.get_name (),
-                    "", // Do not know uri until mounted
-                    volume.get_icon (),
-                    volume.get_uuid (),
-                    null,
-                    volume,
-                    null
+    private void bookmark_volume_without_drive (Volume volume) {
+        if (volume.get_drive () == null) {
+            var mount = volume.get_mount ();
+            add_bookmark (
+                volume.get_name (),
+                mount != null ? mount.get_default_location ().get_uri () : "",
+                volume.get_icon (),
+                volume.get_uuid (),
+                null,
+                volume,
+                null
             );
         }
     }

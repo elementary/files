@@ -40,6 +40,12 @@ public class Sidebar.SidebarExpander : Gtk.Grid {
         }
     }
 
+    public string tooltip {
+        set {
+            toggle_button.set_tooltip_markup (value);
+        }
+    }
+
     public string expander_label { get; construct; }
     private static Gtk.CssProvider expander_provider;
 
