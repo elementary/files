@@ -20,7 +20,8 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.SidebarExpander : Gtk.Grid {
+public class Sidebar.SidebarExpander : Gtk.ListBoxRow {
+    private Gtk.Grid main_grid;
     public Gtk.Revealer revealer { get; construct; }
     public Gtk.ToggleButton toggle_button { get; construct; }
 
@@ -51,7 +52,8 @@ public class Sidebar.SidebarExpander : Gtk.Grid {
 
     public SidebarExpander (string label, SidebarListInterface revealer_child) {
         Object (
-            expander_label: label
+            expander_label: label,
+            selectable: false
         );
 
         revealer.margin_start = 6;
@@ -64,8 +66,10 @@ public class Sidebar.SidebarExpander : Gtk.Grid {
     }
 
     construct {
-        hexpand = true;
-        orientation = Gtk.Orientation.VERTICAL;
+        main_grid = new Gtk.Grid () {
+            hexpand = true,
+            orientation = Gtk.Orientation.VERTICAL
+        };
 
         var title = new Gtk.Label (expander_label) {
             hexpand = true,
@@ -83,27 +87,28 @@ public class Sidebar.SidebarExpander : Gtk.Grid {
         arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
         arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        var grid = new Gtk.Grid ();
-        grid.add (title);
-        grid.add (arrow);
+        var button_grid = new Gtk.Grid ();
+        button_grid.add (title);
+        button_grid.add (arrow);
 
-        toggle_button.add (grid);
+        toggle_button.add (button_grid);
 
         unowned var style_context = toggle_button.get_style_context ();
         style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
         style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
         style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        add (toggle_button);
-        add (revealer);
+        main_grid.add (toggle_button);
+        main_grid.add (revealer);
 
         toggle_button.bind_property ("active", revealer, "reveal-child", BindingFlags.DEFAULT);
 
+        add (main_grid);
         show_all ();
     }
 
     public void set_gicon (Icon gicon) {
         var icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU);
-        attach_next_to (icon, toggle_button, Gtk.PositionType.LEFT);
+        main_grid.attach_next_to (icon, toggle_button, Gtk.PositionType.LEFT);
     }
 }

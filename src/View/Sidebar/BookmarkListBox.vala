@@ -35,7 +35,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
     construct {
         hexpand = true;
-        selection_mode = Gtk.SelectionMode.SINGLE;
+        selection_mode = Gtk.SelectionMode.SINGLE; //One or none rows selected
         trash_monitor = Marlin.TrashMonitor.get_default ();
         bookmark_list = Marlin.BookmarkList.get_instance ();
         bookmark_list.loaded.connect (() => {

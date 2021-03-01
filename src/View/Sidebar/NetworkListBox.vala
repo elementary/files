@@ -29,6 +29,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     construct {
+        selection_mode = Gtk.SelectionMode.SINGLE; //One or none rows selected
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.mount_added.connect (bookmark_mount_if_not_native_and_not_shadowed);
     }

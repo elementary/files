@@ -1,6 +1,6 @@
 /* DeviceListBox.vala
  *
- * Copyright 2020 elementary, Inc (https://elementary.io)
+ * Copyright 2021 elementary, Inc (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,6 +35,7 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     construct {
+        selection_mode = Gtk.SelectionMode.SINGLE; //One or none rows selected
         volume_row_map = new Gee.HashMap<string, DeviceRow> ();
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
@@ -108,7 +109,7 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         );
     }
 
-    private bool has_uuid (string? uuid, out DeviceRow? row, string? fallback = null) {
+    public bool has_uuid (string? uuid, out DeviceRow? row, string? fallback = null) {
         row = null;
         var search = uuid != null ? uuid : fallback;
 

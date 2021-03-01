@@ -33,6 +33,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     construct {
+        selection_mode = Gtk.SelectionMode.SINGLE; //One or none rows selected
         drive_row_map = new Gee.HashMap<string, SidebarExpander> ();
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
@@ -49,9 +50,9 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                                     Mount? mount = null,
                                     bool pinned = true,
                                     bool permanent = false) {
-        DeviceRow? bm = has_uuid (uuid, uri);
 
-        if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
+        DeviceRow? bm = null;
+        if (!has_uuid (uuid, out bm, uri) || bm.custom_name != label) { //Could be a bind mount with the same uuid
             var new_bm = new DeviceRow (
                 label,
                 uri,
@@ -67,10 +68,10 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
             add (new_bm);
             show_all ();
-            new_bm.update_free_space ();
             bm = new_bm;
         }
 
+        bm.update_free_space ();
         return bm;
     }
 
@@ -215,22 +216,28 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         }
     }
 
-    private DeviceRow? has_uuid (string? uuid, string? fallback = null) {
+    private bool has_uuid (string? uuid, out DeviceRow? row, string? fallback = null) {
         var search = uuid != null ? uuid : fallback;
+        row = null;
 
         if (search == null) {
-            return null;
+            return false;
         }
 
         foreach (unowned Gtk.Widget child in get_children ()) {
             if (child is DeviceRow) {
                 if (((DeviceRow)child).uuid == uuid) {
-                    return (DeviceRow)child;
+                    row = (DeviceRow)child;
+                    return true;
+                }
+            } else if (child is SidebarExpander) { //Search within Drives
+                if (((VolumeListBox)((SidebarExpander)child).list).has_uuid (uuid, out row, fallback)) {
+                    return true;
                 }
             }
         }
 
-        return null;
+        return false;
     }
 
     public SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
@@ -239,7 +246,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        unselect_all ();
+        foreach (unowned Gtk.Widget child in get_children ()) {
+            if (child is DeviceRow) {
+                unselect_row ((DeviceRow)child);
+            }
+        }
+
+        foreach (SidebarExpander drive_row in drive_row_map.values) {
+            ((VolumeListBox)(drive_row.list)).unselect_all_items ();
+        }
     }
 
     public void select_item (SidebarItemInterface? item) {
@@ -248,5 +263,21 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         } else {
             unselect_all_items ();
         }
+    }
+
+    public virtual bool select_uri (string uri) {
+        SidebarItemInterface? row = null;
+        if (has_uri (uri, out row)) {
+            select_item (row);
+            return true;
+        }
+
+        foreach (SidebarExpander drive_row in drive_row_map.values) {
+            if (((VolumeListBox)(drive_row.list)).select_uri (uri)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
