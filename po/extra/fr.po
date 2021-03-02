@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 11:52+0000\n"
-"PO-Revision-Date: 2020-11-07 23:15+0000\n"
-"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"PO-Revision-Date: 2021-02-18 13:28+0000\n"
+"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -147,7 +147,7 @@ msgstr "Autres mises à jour :"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "« Personnel »  est désormais « Favoris »"
+msgstr "« Personnel » est désormais « Favoris »"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 #: data/io.elementary.files.appdata.xml.in.in:107
@@ -595,7 +595,7 @@ msgstr "Nouvelle infobulle de la barre de chemin"
 
 #: data/io.elementary.files.appdata.xml.in.in:290
 msgid "Build fixes"
-msgstr "Corrections  de compilation"
+msgstr "Corrections de compilation"
 
 #: data/io.elementary.files.appdata.xml.in.in:298
 msgid "Plugin build fixes"

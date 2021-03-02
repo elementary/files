@@ -256,11 +256,6 @@ namespace FM {
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = true;}
         protected bool hide_local_thumbnails {get; set; default = false;}
-        protected bool is_admin {
-            get {
-                return (uint)Posix.getuid () == 0;
-            }
-        }
 
         private bool all_selected = false;
 
@@ -690,7 +685,12 @@ namespace FM {
             widget.drag_motion.connect (on_drag_motion);
 
             /* Set up as drag source */
-            Gtk.drag_source_set (widget, Gdk.ModifierType.BUTTON1_MASK, DRAG_TARGETS, FILE_DRAG_ACTIONS);
+            Gtk.drag_source_set (
+                widget,
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK | Gdk.ModifierType.CONTROL_MASK,
+                DRAG_TARGETS,
+                FILE_DRAG_ACTIONS
+            );
             widget.drag_begin.connect (on_drag_begin);
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);
@@ -1108,7 +1108,7 @@ namespace FM {
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-            trash_or_delete_selected_files (is_admin);
+            trash_or_delete_selected_files (Marlin.is_admin ());
         }
 
         private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1633,14 +1633,16 @@ namespace FM {
                             unselect_all ();
                         }
 
-                        success = dnd_handler.handle_file_drag_actions (get_child (),
-                                                                        window,
-                                                                        context,
-                                                                        drop_target_file,
-                                                                        destination_drop_file_list,
-                                                                        current_actions,
-                                                                        current_suggested_action,
-                                                                        timestamp);
+                        success = dnd_handler.handle_file_drag_actions (
+                            get_child (),
+                            context,
+                            drop_target_file,
+                            destination_drop_file_list,
+                            current_actions,
+                            current_suggested_action,
+                            (Gtk.ApplicationWindow)Marlin.get_active_window (),
+                            timestamp
+                        );
 
                         break;
 
@@ -2062,7 +2064,7 @@ namespace FM {
 
                         menu.add (new Gtk.SeparatorMenuItem ());
 
-                        if (slot.directory.has_trash_dirs && !is_admin) {
+                        if (slot.directory.has_trash_dirs && !Marlin.is_admin ()) {
                             menu.add (trash_menuitem);
                         } else {
                             menu.add (delete_menuitem);
@@ -2866,7 +2868,7 @@ namespace FM {
                                                         _("You do not have permission to change this location"),
                                                         window as Gtk.Window);
                     } else if (!renaming) {
-                        trash_or_delete_selected_files (in_trash || is_admin || only_shift_pressed);
+                        trash_or_delete_selected_files (in_trash || Marlin.is_admin () || only_shift_pressed);
                         res = true;
                     }
 
@@ -3623,7 +3625,7 @@ namespace FM {
             Gtk.SortType sort_order = 0;
 
             /* Setting file attributes fails when root */
-            if (Posix.getuid () == 0) {
+            if (Marlin.is_admin ()) {
                 return;
             }
 
@@ -3647,7 +3649,7 @@ namespace FM {
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
-            if (!is_admin) {
+            if (!Marlin.is_admin ()) {
                 dir.location.set_attributes_async.begin (info,
                                                    GLib.FileQueryInfoFlags.NONE,
                                                    GLib.Priority.DEFAULT,
@@ -3657,7 +3659,7 @@ namespace FM {
                         GLib.FileInfo inf;
                         dir.location.set_attributes_async.end (res, out inf);
                     } catch (GLib.Error e) {
-                        warning ("Could not set file attributes - %s", e.message);
+                        warning ("Could not set file attributes: %s", e.message);
                     }
                 });
             }

@@ -18,6 +18,7 @@
 ***/
 
 public class Marlin.SidebarPluginItem : Object {
+    //TODO This can be simplified with rewritten Sidebar
     public const PlaceType PLACE_TYPE = PlaceType.PLUGIN_ITEM;
     public string name { get; set; }
     public string? uri { get; set; }
@@ -35,5 +36,5 @@ public class Marlin.SidebarPluginItem : Object {
     public ActionGroup? action_group { get; set; }
     public string? action_group_namespace { get; set; }
     public MenuModel? menu_model { get; set; }
-    public PluginCallbackFunc? cb { get; set; }
+    public SidebarCallbackFunc? cb { get; set; } //Not currently used?
 }
