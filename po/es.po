@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
-"PO-Revision-Date: 2021-02-26 12:08+0000\n"
-"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"PO-Revision-Date: 2021-02-28 00:55+0000\n"
+"Last-Translator: Alexander Barrios <alex.barrios2910@gmail.com>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,11 +30,11 @@ msgstr "Abrir uno o más URI, cada uno en su propia pestaña"
 
 #: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
-msgstr "Ventana nueva"
+msgstr "Nueva ventana"
 
 #: src/Application.vala:164
 msgid "Quit Files"
-msgstr "Salir de Archivos"
+msgstr "Salir de archivos"
 
 #: src/Application.vala:166
 msgid "Enable debug logging"
@@ -285,7 +285,7 @@ msgstr "Error al abrir los archivos"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr "No se pudieron abrir los URI"
+msgstr "No se pudieron abrir los URIs"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
@@ -397,7 +397,7 @@ msgstr "Pegar"
 #: src/View/AbstractDirectoryView.vala:1963
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
-msgstr "Añadir a marcadores"
+msgstr "Añadir a Marcadores"
 
 #: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
@@ -701,7 +701,7 @@ msgstr "Acceso denegado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "El modo de privacidad está activado"
+msgstr "Modo privado habilitado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
@@ -713,7 +713,7 @@ msgstr "Cambiar configuración de seguridad"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr "Abrir la configuración de seguridad y privacidad del sistema"
+msgstr "Abrir la aplicación de ajustes de seguridad y privacidad del sistema"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
