@@ -52,7 +52,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                                     bool permanent = false) {
 
         DeviceRow? bm = null;
-        if (!has_uuid (uuid, out bm, uri) || bm.custom_name != label) { //Could be a bind mount with the same uuid
+        if (!has_uuid (uuid, uri, out bm) || bm.custom_name != label) { //Could be a bind mount with the same uuid
             var new_bm = new DeviceRow (
                 label,
                 uri,
@@ -178,33 +178,26 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             volume.get_uuid (),
             volume.get_drive (),
             volume,
-            volume.get_mount ()
+            mount
         );
     }
 
     private void bookmark_mount_if_native_and_not_shadowed (Mount mount) {
-        if (mount.is_shadowed () || !mount.get_root ().is_native ()) {
+        if (mount.is_shadowed () ||
+            !mount.get_root ().is_native () ||
+            mount.get_volume () != null) {
             return;
         };
-
-        var volume = mount.get_volume ();
-        string? uuid = null;
-        if (volume != null) {
-            return;
-        } else {
-            uuid = mount.get_uuid ();
-        }
 
         add_bookmark (
             mount.get_name (),
             mount.get_default_location ().get_uri (),
             mount.get_icon (),
-            uuid,
+            mount.get_uuid (),
             mount.get_drive (),
             mount.get_volume (),
             mount
         );
-        //Show extra info in tooltip
     }
 
     private void drive_removed (Drive removed_drive) {
@@ -216,7 +209,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         }
     }
 
-    private bool has_uuid (string? uuid, out DeviceRow? row, string? fallback = null) {
+    private bool has_uuid (string? uuid, string? fallback, out DeviceRow? row) {
         var search = uuid != null ? uuid : fallback;
         row = null;
 
@@ -231,7 +224,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                     return true;
                 }
             } else if (child is SidebarExpander) { //Search within Drives
-                if (((VolumeListBox)((SidebarExpander)child).list).has_uuid (uuid, out row, fallback)) {
+                if (((VolumeListBox)((SidebarExpander)child).list).has_uuid (uuid, fallback, out row)) {
                     return true;
                 }
             }
@@ -265,19 +258,19 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         }
     }
 
-    public virtual bool select_uri (string uri) {
+    public override bool select_uri (string uri) {
+        unselect_all_items ();
+        bool found_uri = false;
         SidebarItemInterface? row = null;
         if (has_uri (uri, out row)) {
             select_item (row);
-            return true;
+            found_uri = true;
         }
 
         foreach (SidebarExpander drive_row in drive_row_map.values) {
-            if (((VolumeListBox)(drive_row.list)).select_uri (uri)) {
-                return true;
-            }
+            found_uri = (((VolumeListBox)(drive_row.list)).select_uri (uri)) || found_uri;
         }
 
-        return false;
+        return found_uri;
     }
 }

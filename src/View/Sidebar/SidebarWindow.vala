@@ -183,8 +183,9 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
             }
 
             sync_timeout_id = 0;
-            bookmark_listbox.select_uri (location) ||
-            device_listbox.select_uri (location) ||
+            /* select_uri () will unselect other uris in each listbox */
+            bookmark_listbox.select_uri (location);
+            device_listbox.select_uri (location);
             network_listbox.select_uri (location);
 
             return Source.REMOVE;

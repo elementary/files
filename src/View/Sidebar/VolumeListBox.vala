@@ -57,7 +57,7 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                                     bool permanent = false) {
 
         DeviceRow? bm = null;
-        if (!has_uuid (uuid, out bm, uri) || bm.custom_name != label) { //Could be a bind mount with the same uuid
+        if (!has_uuid (uuid, uri, out bm) || bm.custom_name != label) { //Could be a bind mount with the same uuid
             var new_bm = new DeviceRow (
                 label,
                 uri,
@@ -109,7 +109,7 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         );
     }
 
-    public bool has_uuid (string? uuid, out DeviceRow? row, string? fallback = null) {
+    public bool has_uuid (string? uuid, string? fallback, out DeviceRow row) {
         row = null;
         var search = uuid != null ? uuid : fallback;
 
