@@ -24,6 +24,7 @@
 public class Marlin.Progress.InfoWidget : Gtk.Grid {
     public unowned PF.Progress.Info info { get; construct; }
 
+    private Gtk.Label status;
     private Gtk.Label details;
     private Gtk.ProgressBar progress_bar;
 
@@ -34,7 +35,8 @@ public class Marlin.Progress.InfoWidget : Gtk.Grid {
     }
 
     construct {
-        var status = new Gtk.Label (info.status) {
+        status = new Gtk.Label (info.status) {
+            use_markup = true,
             max_width_chars = 50,
             selectable = true,
             width_chars = 50,
@@ -83,11 +85,12 @@ public class Marlin.Progress.InfoWidget : Gtk.Grid {
             cancelled (info);
             button.sensitive = false;
         });
-
-        info.bind_property ("status", status, "label");
     }
 
     private void update_data () {
+        status.set_markup (
+            Markup.printf_escaped ("<span font_features='tnum'>%s</span>", info.status)
+        );
         details.set_markup (
             Markup.printf_escaped ("<span size='small' font_features='tnum'>%s</span>", info.details)
         );
