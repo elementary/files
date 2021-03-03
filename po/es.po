@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
-"PO-Revision-Date: 2021-02-28 00:55+0000\n"
-"Last-Translator: Alexander Barrios <alex.barrios2910@gmail.com>\n"
+"PO-Revision-Date: 2021-03-03 22:54+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr "Abrir uno o más URI, cada uno en su propia pestaña"
 
 #: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
-msgstr "Nueva ventana"
+msgstr "Ventana nueva"
 
 #: src/Application.vala:164
 msgid "Quit Files"
