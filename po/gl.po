@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
 "PO-Revision-Date: 2021-02-28 00:55+0000\n"
 "Last-Translator: david <dcardelleg@gmail.com>\n"
-"Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/>"
-"\n"
+"Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
+">\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -661,23 +661,24 @@ msgstr "Marcadores"
 msgid "Common places plus saved folders and files"
 msgstr "Lugares comúns máis cartafoles e ficheiros gardados"
 
-#: src/View/Sidebar/SidebarWindow.vala:52
-msgid "Devices"
-msgstr "Dispositivos"
-
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
 msgstr "Dispositivos de almacenamento internos e conectados"
 
-#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "Rede"
 
-#: src/View/Sidebar/SidebarWindow.vala:60
+#: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
 msgstr "Dispositivos e lugares dispoñibles a través dunha rede"
 
-#: src/View/Sidebar/SidebarWindow.vala:80
+#: src/View/Sidebar/SidebarWindow.vala:83
 msgid "Connect Server…"
 msgstr "Conectarse co servidor…"
 
@@ -1324,8 +1325,8 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
-"Produciuse un erro ao obter información sobre os ficheiros do cartafol \"%s\""
-"."
+"Produciuse un erro ao obter información sobre os ficheiros do cartafol \"%s"
+"\"."
 
 #: libcore/marlin-file-operations.c:487 libcore/marlin-file-operations.c:2228
 msgid "_Skip files"
@@ -1992,6 +1993,9 @@ msgstr "Restaurar o seleccionado"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Eliminar o seleccionado"
+
+#~ msgid "Devices"
+#~ msgstr "Dispositivos"
 
 #, fuzzy
 #~| msgid "File System"
