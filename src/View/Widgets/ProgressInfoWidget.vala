@@ -89,10 +89,10 @@ public class Marlin.Progress.InfoWidget : Gtk.Grid {
 
     private void update_data () {
         status.set_markup (
-            Markup.printf_escaped ("<span font_features='tnum'>%s</span>", info.status)
+            Markup.printf_escaped ("<span font-features='tnum'>%s</span>", info.status)
         );
         details.set_markup (
-            Markup.printf_escaped ("<span size='small' font_features='tnum'>%s</span>", info.details)
+            Markup.printf_escaped ("<span size='small' font-features='tnum'>%s</span>", info.details)
         );
     }
 
