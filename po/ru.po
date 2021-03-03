@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-26 17:46+0000\n"
-"PO-Revision-Date: 2020-04-12 11:10+0000\n"
-"Last-Translator: Stas <SedovSG@yandex.ru>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"PO-Revision-Date: 2021-03-03 14:12+0000\n"
+"Last-Translator: Yaroslav <bomberbit@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:158
@@ -348,13 +348,15 @@ msgstr "Не удается выполнить этот файл"
 #: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "“%s” необходимо переместить из Корзины перед открытием"
 
 #: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Файлы в Корзине не могут быть открыты. Чтобы открыть файл, перенесите его в "
+"другое место."
 
 #: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
@@ -400,10 +402,8 @@ msgstr "Вставить"
 
 #: src/View/AbstractDirectoryView.vala:1963
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Закладки"
+msgstr "Добавить в закладки"
 
 #: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
@@ -583,10 +583,8 @@ msgid "The file selected no longer exists."
 msgstr "Выбранный файл больше не существует."
 
 #: src/View/Sidebar/BookmarkListBox.vala:119
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "Не удалось создать папку"
+msgstr "Посмотреть домашний каталог"
 
 #: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
@@ -601,21 +599,18 @@ msgid "Open the Trash"
 msgstr "Открыть корзину"
 
 #: src/View/Sidebar/DeviceListBox.vala:106
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "Посмотреть список недавно использованных файлов"
+msgstr "Посмотреть корневую часть локальной файловой системы"
 
 #: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s свободно"
 
 #: src/View/Sidebar/DeviceRow.vala:117
-#, fuzzy, c-format
-#| msgid "%s of %s"
+#, c-format
 msgid "%s used of %s"
-msgstr "%s из %s"
+msgstr "%s использовано из %s"
 
 #: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
@@ -658,14 +653,12 @@ msgid "_Eject"
 msgstr "_Извлечь"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
-msgstr "О_чистить корзину"
+msgstr "Очистить корзину"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "Очистить корзину этого тома"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -674,7 +667,7 @@ msgstr "Закладки"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Общедоступные места а также закрепленые папки и файлы"
 
 #: src/View/Sidebar/SidebarWindow.vala:52
 msgid "Devices"
@@ -682,7 +675,7 @@ msgstr "Устройства"
 
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Внутренние и подключенные устройства хранения"
 
 #: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
 msgid "Network"
@@ -690,13 +683,11 @@ msgstr "Обзор сети"
 
 #: src/View/Sidebar/SidebarWindow.vala:60
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Устройства и места, доступные через сеть"
 
 #: src/View/Sidebar/SidebarWindow.vala:80
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "Подключиться…"
+msgstr "Подключить сервер…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -770,13 +761,12 @@ msgid "%u folders"
 msgstr "%u папок"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " и %u другой элемент (%s) выбран"
-msgstr[1] " и %u другой элемент (%s) выбран"
-msgstr[2] " и %u другой элемент (%s) выбран"
+msgstr[1] " и %u другие элементы (%s) выбраны"
+msgstr[2] " и %u других элементов (%s) выбрано"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -789,23 +779,21 @@ msgstr "%u элементов выбрано (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u подпапка, "
-msgstr[1] "%u подпапка, "
-msgstr[2] "%u подпапка, "
+msgstr[1] "%u подпапки, "
+msgstr[2] "%u подпапок, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u файл, "
-msgstr[1] "%u файл, "
-msgstr[2] "%u файл, "
+msgstr[1] "%u файлы, "
+msgstr[2] "%u файлов, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -820,13 +808,12 @@ msgstr "неизвестный размер"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u нечитаемый файл"
-msgstr[1] "%u нечитаемый файл"
-msgstr[2] "%u нечитаемый файл"
+msgstr[1] "%u нечитаемые файлы"
+msgstr[2] "%u нечитаемых файлов"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -885,20 +872,16 @@ msgid "Port:"
 msgstr "Порт:"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "Имя ресурса на сервере"
+msgstr "Название общего ресурса на сервере (необязательно)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Ресурс:"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Путь к папке на сервере"
+msgstr "Путь к общей папки на сервере (необязательно)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
@@ -1154,27 +1137,23 @@ msgstr[2] "примерно %'d часов"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:943
-#, fuzzy
-#| msgid " (copy)"
 msgid "copy"
-msgstr " (копия)"
+msgstr "копия"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:945
 msgid "link"
-msgstr ""
+msgstr "ссылка"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:947
-#, fuzzy
-#| msgid " ("
 msgid "("
-msgstr " ("
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:949
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
@@ -1215,7 +1194,7 @@ msgstr "Заменить _всё"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
-msgstr "Сов_местить"
+msgstr "_Совместить"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
@@ -1266,7 +1245,7 @@ msgstr "Очистка корзины"
 #: libcore/FileOperations/MountUtils.vala:26
 #, c-format
 msgid "Unable to mount '%s'"
-msgstr "Не удалось подключить  «%s»"
+msgstr "Не удалось подключить «%s»"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1338,7 +1317,7 @@ msgstr "Удаление файлов"
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "Осталось %s"
+msgstr[0] "Осталась %s"
 msgstr[1] "Осталось %s"
 msgstr[2] "Осталось %s"
 
@@ -1651,9 +1630,9 @@ msgstr[2] "Копируются %'d файлов (из «%s») в «%s»"
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Дублируется %'d файл (из «%s») в «%s»"
-msgstr[1] "Дублируются %'d файла (из «%s») в «%s»"
-msgstr[2] "Дублируются %'d файлов (из «%s») в «%s»"
+msgstr[0] "Дублируется %'d файл (из «%s»)"
+msgstr[1] "Дублируются %'d файла (из «%s»)"
+msgstr[2] "Дублируются %'d файлов (из «%s»)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1699,9 +1678,9 @@ msgstr "%s из %s"
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%s из %s — осталось %t (%s/сек)"
-msgstr[1] "%s из %s — осталось %t (%s/сек)"
-msgstr[2] "%s из %s — осталось %t (%s/сек)"
+msgstr[0] "%s из %s — осталась %s (%s/сек)"
+msgstr[1] "%s из %s — осталось %s (%s/сек)"
+msgstr[2] "%s из %s — осталось %s (%s/сек)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1887,10 +1866,8 @@ msgid "Setting permissions"
 msgstr "Установка прав доступа"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Перемещение файлов в корзину"
+msgstr "Нет файлов для обработки"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
@@ -1957,10 +1934,8 @@ msgid "Below This Folder"
 msgstr "Ниже этой папки"
 
 #: libwidgets/View/SearchResults.vala:287
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
-msgstr "Недавние"
+msgstr "Недавно использованные"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
@@ -1983,10 +1958,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libwidgets/Resources.vala:62
-#, fuzzy
-#| msgid "AFP"
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libwidgets/Resources.vala:63
 msgid "DAV"
@@ -2018,7 +1991,7 @@ msgstr "MTP"
 
 #: libwidgets/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "GPHOTO2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
