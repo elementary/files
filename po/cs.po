@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
 "PO-Revision-Date: 2020-08-05 19:13+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
@@ -673,23 +673,24 @@ msgstr "Záložky"
 msgid "Common places plus saved folders and files"
 msgstr "Běžná umístění plus uložené složky a soubory"
 
-#: src/View/Sidebar/SidebarWindow.vala:52
-msgid "Devices"
-msgstr "Zařízení"
-
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
 msgstr "Interní a připojená úložná zařízení"
 
-#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "Síť"
 
-#: src/View/Sidebar/SidebarWindow.vala:60
+#: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
 msgstr "Zařízení a místa dostupná prostřednictvím sítě"
 
-#: src/View/Sidebar/SidebarWindow.vala:80
+#: src/View/Sidebar/SidebarWindow.vala:83
 #, fuzzy
 #| msgid "Connect to Server…"
 msgid "Connect Server…"
@@ -2024,6 +2025,9 @@ msgstr "Obnovit označené"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Smazat označené"
+
+#~ msgid "Devices"
+#~ msgstr "Zařízení"
 
 #, fuzzy
 #~| msgid "File System"

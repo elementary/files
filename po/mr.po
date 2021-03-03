@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
 "PO-Revision-Date: 2020-11-20 20:54+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -661,23 +661,24 @@ msgstr "बुकमार्क"
 msgid "Common places plus saved folders and files"
 msgstr "सामान्य ठिकाणे तसेच जतन केलेली फोल्डर्स आणि फायली"
 
-#: src/View/Sidebar/SidebarWindow.vala:52
-msgid "Devices"
-msgstr "उपकरणे"
-
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
 msgstr "अंतर्गत आणि कनेक्ट केलेले स्टोरेज डिव्हाइस"
 
-#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "नेटवर्क"
 
-#: src/View/Sidebar/SidebarWindow.vala:60
+#: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
 msgstr "नेटवर्कद्वारे उपलब्ध साधने आणि ठिकाणे"
 
-#: src/View/Sidebar/SidebarWindow.vala:80
+#: src/View/Sidebar/SidebarWindow.vala:83
 #, fuzzy
 #| msgid "Connect Server"
 msgid "Connect Server…"
@@ -1974,6 +1975,9 @@ msgstr "निवडलेले पुनर्संचयित करा"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "निवडलेले हटवा"
+
+#~ msgid "Devices"
+#~ msgstr "उपकरणे"
 
 #, fuzzy
 #~| msgid "File System"

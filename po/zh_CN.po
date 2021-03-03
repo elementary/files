@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
 "PO-Revision-Date: 2021-02-03 09:30+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -659,23 +659,24 @@ msgstr "书签"
 msgid "Common places plus saved folders and files"
 msgstr "常用位置与已保存的文件和文件夹"
 
-#: src/View/Sidebar/SidebarWindow.vala:52
-msgid "Devices"
-msgstr "设备"
-
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
 msgstr "内置和已连接的存储设备"
 
-#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "网络"
 
-#: src/View/Sidebar/SidebarWindow.vala:60
+#: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
 msgstr "可通过网络访问的设备和位置"
 
-#: src/View/Sidebar/SidebarWindow.vala:80
+#: src/View/Sidebar/SidebarWindow.vala:83
 #, fuzzy
 #| msgid "Connect to Server…"
 msgid "Connect Server…"
@@ -1929,6 +1930,9 @@ msgstr "恢复选中"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "删除选中"
+
+#~ msgid "Devices"
+#~ msgstr "设备"
 
 #, fuzzy
 #~| msgid "File System"
