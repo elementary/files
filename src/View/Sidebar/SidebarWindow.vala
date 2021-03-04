@@ -59,8 +59,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
         var network_expander = new SidebarExpander (_("Network")) {
             tooltip_text = _("Devices and places available via a network"),
-            no_show_all = true,
-            visible = !Marlin.is_admin ()
+            no_show_all = Marlin.is_admin ()
         };
 
         var network_revealer = new Gtk.Revealer ();
@@ -84,12 +83,12 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
             always_show_image = true,
             image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"}),
-            no_show_all = true,
-            visible = !Marlin.is_admin ()
+            no_show_all = Marlin.is_admin ()
         };
 
         var action_bar = new Gtk.ActionBar () {
-            no_show_all = true
+            //For now hide action bar when admin. This might need revisiting if other actions are added
+            no_show_all = Marlin.is_admin ()
         };
 
         action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
@@ -105,8 +104,6 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
 
         reload ();
 
-        //Hide actionbar for now when admin as only a hidden network related action is present
-        action_bar.visible = !Marlin.is_admin ();
         show_all ();
 
         Marlin.app_settings.bind (
