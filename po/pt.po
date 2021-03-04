@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-03 22:54+0000\n"
-"PO-Revision-Date: 2021-02-26 17:46+0000\n"
+"PO-Revision-Date: 2021-03-04 19:43+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -607,7 +607,7 @@ msgstr "%s utilizadas de %s"
 
 #: src/View/Sidebar/NetworkListBox.vala:78
 msgid "Entire Network"
-msgstr "Toda a Rede"
+msgstr "Toda a rede"
 
 #: src/View/Sidebar/NetworkListBox.vala:85
 msgid "Browse the contents of the network"
@@ -619,11 +619,11 @@ msgstr "Abrir"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:53
 msgid "Open in New _Tab"
-msgstr "Abrir num Novo _Separador"
+msgstr "Abrir num novo _separador"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:57
 msgid "Open in New _Window"
-msgstr "Abrir numa Nova _Janela"
+msgstr "Abrir numa nova _janela"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:61
 msgid "Remove"
@@ -665,7 +665,7 @@ msgstr "Locais comuns, além de pastas e ficheiros guardados"
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "Armazenamento"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
@@ -693,7 +693,7 @@ msgstr "O lixo está vazio"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr "Não Há Ficheiros Recentes"
+msgstr "Não existem ficheiros recentes"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
