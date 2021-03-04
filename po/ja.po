@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-03 22:54+0000\n"
-"PO-Revision-Date: 2021-02-26 12:08+0000\n"
+"PO-Revision-Date: 2021-03-04 10:18+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -658,7 +658,7 @@ msgstr "一般的な場所およびピン留めされたフォルダーとファ
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "ストレージ"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
