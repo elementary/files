@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-03 22:54+0000\n"
-"PO-Revision-Date: 2021-03-03 22:54+0000\n"
+"PO-Revision-Date: 2021-03-04 10:18+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr "Ventana nueva"
 
 #: src/Application.vala:164
 msgid "Quit Files"
-msgstr "Salir de archivos"
+msgstr "Salir de Archivos"
 
 #: src/Application.vala:166
 msgid "Enable debug logging"
@@ -52,7 +52,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Examinar el sistema de archivos con el administrador de archivos"
+"Examine el sistema de archivos con el gestor de archivos"
 
 #: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
@@ -285,7 +285,7 @@ msgstr "Error al abrir los archivos"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr "No se pudieron abrir los URIs"
+msgstr "No se pudieron abrir los URI"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
@@ -370,7 +370,7 @@ msgstr "Nombre de archivo no válido"
 
 #: src/View/AbstractDirectoryView.vala:1854
 msgid "New Tab"
-msgstr "Nueva pestaña"
+msgstr "Pestaña nueva"
 
 #: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
@@ -666,7 +666,7 @@ msgstr "Lugares comunes más carpetas y archivos guardados"
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "Almacenamiento"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
@@ -702,7 +702,7 @@ msgstr "Acceso denegado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "Modo privado habilitado"
+msgstr "Se activó el modo de privacidad"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
@@ -714,7 +714,7 @@ msgstr "Cambiar configuración de seguridad"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr "Abrir la aplicación de ajustes de seguridad y privacidad del sistema"
+msgstr "Abrir la configuración de seguridad y privacidad del sistema"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
@@ -985,7 +985,7 @@ msgstr "Mantener más reciente"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr "Omitir si el original se modificó recientemente"
+msgstr "Omitir si el original se modificó más recientemente"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
