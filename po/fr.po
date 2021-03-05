@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-03 22:54+0000\n"
-"PO-Revision-Date: 2021-02-20 16:36+0000\n"
+"PO-Revision-Date: 2021-03-05 09:45+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -667,7 +667,7 @@ msgstr "Emplacements généraux plus dossiers et fichiers enregistrés"
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "Stockage"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
@@ -863,20 +863,16 @@ msgid "Port:"
 msgstr "Port :"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "Nom du partage sur le serveur"
+msgstr "Nom du partage sur le serveur (Facultatif)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Partage :"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Chemin du dossier partagé sur le serveur"
+msgstr "Chemin du dossier partagé sur le serveur (Facultatif)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
