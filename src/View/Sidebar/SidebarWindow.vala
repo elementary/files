@@ -76,7 +76,9 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         bookmarklists_grid.add (network_expander);
         bookmarklists_grid.add (network_revealer);
 
-        scrolled_window = new Gtk.ScrolledWindow (null, null);
+        scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            hscrollbar_policy = Gtk.PolicyType.NEVER
+        };
         scrolled_window.add (bookmarklists_grid);
 
         var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
