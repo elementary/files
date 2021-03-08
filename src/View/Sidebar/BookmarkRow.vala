@@ -119,7 +119,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         var label = new Gtk.Label (custom_name) {
             xalign = 0.0f,
             halign = Gtk.Align.START,
-            hexpand = true
+            hexpand = true,
+            ellipsize = Pango.EllipsizeMode.END
         };
 
         bind_property ("custom-name", label, "label", BindingFlags.DEFAULT);
