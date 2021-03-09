@@ -140,7 +140,7 @@ namespace PF.FileUtils {
                     info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH,
                                                      GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                 } catch (GLib.Error e) {
-                    debug ("Error querying info of trashed file %s - %s", file.uri, e.message);
+                    debug ("Error querying info of trashed file %s: %s", file.uri, e.message);
                     return null;
                 }
             }
@@ -702,7 +702,6 @@ namespace PF.FileUtils {
         var actions = context.get_actions ();
         var suggested_action = context.get_suggested_action ();
         var target_location = dest.get_target_location ();
-
         suggested_action_return = Gdk.DragAction.PRIVATE;
 
         if (drop_file_list == null || drop_file_list.data == null) {
@@ -768,7 +767,6 @@ namespace PF.FileUtils {
         bool from_trash = false;
 
         foreach (var drop_file in drop_file_list) {
-
             if (location_is_in_trash (drop_file)) {
                 from_trash = true;
 
@@ -1126,6 +1124,10 @@ namespace PF.FileUtils {
         } else {
             return (int) long.min (max_path - (dir.length + 1), max_name);
         }
+    }
+
+    public bool protocol_is_supported (string protocol) {
+        return protocol in GLib.Vfs.get_default ().get_supported_uri_schemes ();
     }
 }
 

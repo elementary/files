@@ -277,30 +277,30 @@ public class Marlin.MimeActions {
             app_info = app;
         }
 
-        var win = get_toplevel_window (parent);
-
         if (app_info == null) {
-            PF.Dialogs.show_error_dialog (_("Multiple file types selected"),
-                                          _("No single app can open all these types of file"), win);
+            PF.Dialogs.show_error_dialog (
+                _("Multiple file types selected"),
+                _("No single app can open all these types of file"),
+                Marlin.get_active_window ());
         } else {
             GLib.List<GLib.File> files_to_open = null;
             foreach (var gof in gofs_to_open) {
                 files_to_open.append (gof.location);
             }
 
-            launch_with_app (files_to_open, app_info, win);
+            launch_with_app (files_to_open, app_info, Marlin.get_active_window ());
         }
     }
 
     public static AppInfo? choose_app_for_glib_file (GLib.File file_to_open, Gtk.Widget parent) {
-        var chooser = new PF.ChooseAppDialog (get_toplevel_window (parent), file_to_open);
+        var chooser = new PF.ChooseAppDialog (Marlin.get_active_window (), file_to_open);
         return chooser.get_app_info ();
     }
 
      private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
         GLib.List<GLib.File> files_to_open = null;
         files_to_open.append (file_to_open);
-        launch_with_app (files_to_open, app, get_toplevel_window (parent));
+        launch_with_app (files_to_open, app, Marlin.get_active_window ());
      }
 
     private static void launch_with_app (GLib.List<GLib.File> files_to_open, AppInfo app, Gtk.Window? win) {
@@ -323,15 +323,5 @@ public class Marlin.MimeActions {
         } else {
             PF.Dialogs.show_error_dialog (_("Could not open files or URIs with this app"), "", win);
         }
-    }
-
-    private static Gtk.Window? get_toplevel_window (Gtk.Widget widget) {
-        Gtk.Window? win = null;
-        var tl = widget.get_toplevel ();
-        if (tl.is_toplevel ()) {
-            win = (Gtk.Window)tl;
-        }
-
-        return win;
     }
 }

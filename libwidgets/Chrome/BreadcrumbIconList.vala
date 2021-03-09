@@ -71,7 +71,7 @@ namespace Marlin.View.Chrome {
                     icon_width = icon.get_width () / scale;
                     icon_height = icon.get_height () / scale;
                 } catch (Error e) {
-                    warning ("Filed to load icon for %s - %s", text_displayed, e.message);
+                    warning ("Filed to load icon for %s: %s", text_displayed, e.message);
                 }
             }
 

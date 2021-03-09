@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 11:52+0000\n"
-"PO-Revision-Date: 2020-08-13 15:20+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"PO-Revision-Date: 2021-03-03 22:54+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -77,6 +77,8 @@ msgstr "Mejoras:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
 msgstr ""
+"En la vista de iconos, al pulsar entre la miniatura y el texto ahora se "
+"activa o se selecciona"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Bookmark menu option for network mounts in sidebar"
@@ -691,7 +693,7 @@ msgstr "Corrección de errores"
 
 #: data/io.elementary.files.appdata.xml.in.in:329
 msgid "Trash: respect sound setting"
-msgstr "Papelera: respetar la configuración del sonido"
+msgstr "Papelera: se respeta la configuración de sonido"
 
 #: data/io.elementary.files.appdata.xml.in.in:330
 msgid "Localization fixes"
@@ -703,7 +705,8 @@ msgstr "Más de 100 correcciones y mejoras de errores mayores y menores"
 
 #: data/io.elementary.files.appdata.xml.in.in:345
 msgid "Honor 12/24hr system setting"
-msgstr "Configuración del sistema 12/24 horas"
+msgstr ""
+"Se respeta la configuración de formato horario (12 o 24 horas) del sistema"
 
 #: data/io.elementary.files.appdata.xml.in.in:346
 msgid "Distinguish between tabs with the same name"
@@ -760,7 +763,7 @@ msgstr "Cambiar el idioma de entrada cancela acciones"
 #: data/io.elementary.files.appdata.xml.in.in:384
 #: data/io.elementary.files.appdata.xml.in.in:395
 msgid "Various crash fixes"
-msgstr "Corrección de varios errores"
+msgstr "Arreglados varios cierres inesperados"
 
 #: data/io.elementary.files.appdata.xml.in.in:369
 msgid ""
@@ -780,7 +783,7 @@ msgstr "Mejor compatibilidad con métodos de entrada"
 
 #: data/io.elementary.files.appdata.xml.in.in:372
 msgid "910x640 minimum window size"
-msgstr "Tamaño mínimo de ventana de 910x640"
+msgstr "Tamaño mínimo de ventana de 910 × 640"
 
 #: data/io.elementary.files.appdata.xml.in.in:373
 msgid "Security fixes"
@@ -788,11 +791,11 @@ msgstr "Correcciones de seguridad"
 
 #: data/io.elementary.files.appdata.xml.in.in:383
 msgid "Enable drag and drop tabs between windows"
-msgstr "Permitir arrastrar y soltar pestañas entre ventanas"
+msgstr "Se permite arrastrar y colocar pestañas entre ventanas"
 
 #: data/io.elementary.files.appdata.xml.in.in:393
 msgid "Merge search functionality into Ctrl+F"
-msgstr "Fusionar la función de búsqueda con Ctrl+F"
+msgstr "Se combinó la función de búsqueda con Ctrl+F"
 
 #: data/io.elementary.files.appdata.xml.in.in:394
 msgid "Improved translation support"
@@ -800,7 +803,7 @@ msgstr "Mejoras de traducciones"
 
 #: data/io.elementary.files.appdata.xml.in.in:418
 msgid "Fix appdata release dates"
-msgstr "Reparar las fechas de lanzamiento de appdata"
+msgstr "Se corrigieron las fechas de publicación de AppData"
 
 #: data/io.elementary.files.appdata.xml.in.in:425
 msgid "Improve file opening over Samba shares"
@@ -812,7 +815,7 @@ msgstr "Reparar un fallo mientras se restauraban objetos de la papelera"
 
 #: data/io.elementary.files.appdata.xml.in.in:427
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Mejorar la sensibilidad del menú contextual  cortar/copiar/pegar"
+msgstr "Mejorar la sensibilidad del menú contextual cortar/copiar/pegar"
 
 #: data/io.elementary.files.appdata.xml.in.in:428
 msgid "Translation updates"

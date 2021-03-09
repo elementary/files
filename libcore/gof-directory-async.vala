@@ -399,7 +399,7 @@ public class Async : Object {
 
                     } catch (GLib.Error e) {
                         last_error_message = e.message;
-                        warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
+                        warning ("Error: could not connect to connectable %s: %s", file.uri, e.message);
                         return false;
                     }
                 } else {
@@ -688,7 +688,7 @@ public class Async : Object {
                     } else {
                         last_error_message = _("Server did not respond within time limit");
                     }
-                    warning ("Error reported by next_files_async - %s", e.message);
+                    warning ("Error reported by next_files_async: %s", e.message);
                 }
             }
             /* Load as many files as we can get info for */
