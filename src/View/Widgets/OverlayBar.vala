@@ -208,9 +208,9 @@ namespace Marlin.View {
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
                     if (files_count > 0) {
-                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, fsize),
-                                         _(" and %u other items (%s) selected").printf (files_count, fsize),
-                                         files_count);
+                        str += ngettext (" and %u other item (%s) selected",
+                                         " and %u other items (%s) selected",
+                                         files_count).printf (files_count, fsize);
                     } else {
                         str += _(" selected");
                     }
@@ -218,9 +218,9 @@ namespace Marlin.View {
                     str = _("%u folder").printf (folders_count);
                     if (files_count > 0) {
 
-                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, fsize),
-                                         _(" and %u other items (%s) selected").printf (files_count, fsize),
-                                         files_count);
+                        str += ngettext (" and %u other item (%s) selected",
+                                         " and %u other items (%s) selected",
+                                         files_count).printf (files_count, fsize);
                     } else {
                         str += _(" selected");
                     }
@@ -269,13 +269,13 @@ namespace Marlin.View {
             if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
                     /// TRANSLATORS: %u will be substituted by the number of sub folders
-                    str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
+                    str = ngettext ("%u sub-folder, ", "%u sub-folders, ", deep_counter.dirs_count);
                     label += str.printf (deep_counter.dirs_count);
                 }
 
                 if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
                     /// TRANSLATORS: %u will be substituted by the number of readable files
-                    str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
+                    str = ngettext ("%u file, ", "%u files, ", deep_counter.files_count);
                     label += str.printf (deep_counter.files_count);
                 }
 
@@ -292,7 +292,7 @@ namespace Marlin.View {
                     }
                     label += ") ";
                     /// TRANSLATORS: %u will be substituted by the number of unreadable files
-                    str = ngettext (_("%u file not readable"), _("%u files not readable"), deep_counter.file_not_read);
+                    str = ngettext ("%u file not readable", "%u files not readable", deep_counter.file_not_read);
                     label += str.printf (deep_counter.file_not_read);
                 }
             }

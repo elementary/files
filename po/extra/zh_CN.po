@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 11:52+0000\n"
-"PO-Revision-Date: 2020-10-28 12:13+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"PO-Revision-Date: 2020-11-20 20:54+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/extra/zh_Hans/>\n"
@@ -208,15 +208,12 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:135
 #: data/io.elementary.files.appdata.xml.in.in:149
-#, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
-msgstr "细节修复"
+msgstr "常规更新："
 
 #: data/io.elementary.files.appdata.xml.in.in:137
-#, fuzzy
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "修复一个导致从回收站恢复项目时崩溃的 BUG"
+msgstr "修复设备图标来源引起的崩溃问题"
 
 #: data/io.elementary.files.appdata.xml.in.in:138
 msgid "Fix device icon sometimes missing"
@@ -312,17 +309,14 @@ msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:186
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "改进翻译支持"
+msgstr "改进地址栏动画"
 
 #: data/io.elementary.files.appdata.xml.in.in:187
-#, fuzzy
 msgid "Update documentation"
-msgstr "更新翻译"
+msgstr "更新文档"
 
 #: data/io.elementary.files.appdata.xml.in.in:188
-#, fuzzy
 msgid "Update translations"
 msgstr "更新翻译"
 
@@ -367,9 +361,8 @@ msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:212
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "改善网络支持"
+msgstr "改善 MTP 支持"
 
 #: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Various tagging feature refinements"

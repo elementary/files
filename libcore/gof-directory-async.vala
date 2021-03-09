@@ -129,7 +129,8 @@ public class Async : Object {
         is_trash = PF.FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
         //Try lifting requirement for info on remote connections
-        is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
+        //TODO Not sure whether the afc protocol (i-phone) is appropriate here. Safer to assume it is.
+        is_no_info = ("cdda mtp gphoto2 ssh sftp afp afc dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
         /* Previously, mtp protocol had problems launching files but this currently works
@@ -398,7 +399,7 @@ public class Async : Object {
 
                     } catch (GLib.Error e) {
                         last_error_message = e.message;
-                        warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
+                        warning ("Error: could not connect to connectable %s: %s", file.uri, e.message);
                         return false;
                     }
                 } else {
@@ -687,7 +688,7 @@ public class Async : Object {
                     } else {
                         last_error_message = _("Server did not respond within time limit");
                     }
-                    warning ("Error reported by next_files_async - %s", e.message);
+                    warning ("Error reported by next_files_async: %s", e.message);
                 }
             }
             /* Load as many files as we can get info for */

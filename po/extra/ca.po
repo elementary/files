@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 11:52+0000\n"
-"PO-Revision-Date: 2020-08-12 12:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"PO-Revision-Date: 2021-02-12 09:59+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -77,6 +77,8 @@ msgstr "Millores:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
 msgstr ""
+"Fent clic entre la miniatura i el text, ara s'activa / selecciona la "
+"visualització d'icones."
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Bookmark menu option for network mounts in sidebar"
@@ -134,7 +136,7 @@ msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
-"No es mostra  l'estat de git per als repositoris en sistemes de fitxers FUSE "
+"No es mostra l'estat de git per als repositoris en sistemes de fitxers FUSE "
 "per evitar un possible bloqueig."
 
 #: data/io.elementary.files.appdata.xml.in.in:86
@@ -313,8 +315,8 @@ msgstr "Es mostra un avís quan s'expulsa un volum que encara s'usa."
 #: data/io.elementary.files.appdata.xml.in.in:166
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
-"Correcció de l'actualització del cursor  després del desplaçament "
-"horitzontal a la vista de columna"
+"Correcció de l'actualització del cursor després del desplaçament horitzontal "
+"a la vista de columna"
 
 #: data/io.elementary.files.appdata.xml.in.in:167
 msgid "Fix folder-open icon persisting after closing Column View"

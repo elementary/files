@@ -32,7 +32,7 @@ namespace Marlin {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
-        public GOF.File drop_file {get; set;}
+        public GOF.File? drop_file {get; set;}
 
         public Marlin.ZoomLevel zoom_level {
             get {

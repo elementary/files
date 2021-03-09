@@ -26,8 +26,31 @@ void add_file_utils_tests () {
     });
 
     Test.add_func ("/FileUtils/sanitize_zero_length_abs_path", () => {
-        assert (PF.FileUtils.sanitize_path ("", null, false) == "");
+        assert (PF.FileUtils.sanitize_path ("", null) == "");
+    });
 
+    Test.add_func ("/FileUtils/afc_device_root_strip_colon", () => {
+        /* Remove extraneous trailing colon-number from afc device name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        assert (PF.FileUtils.sanitize_path (afc_device + ":3/") == afc_device);
+    });
+
+    Test.add_func ("/FileUtils/afc_device_root_no_colon", () => {
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        assert (PF.FileUtils.sanitize_path (afc_device) == afc_device);
+    });
+
+    Test.add_func ("/FileUtils/afc_path_strip_colon", () => {
+        /* Remove extraneous trailing colon-number from afc device name, but not from folder name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        var path = "/some/path/with/colon:3";
+        assert (PF.FileUtils.sanitize_path (afc_device + ":3" + path) == afc_device + path);
+    });
+
+    Test.add_func ("/FileUtils/afc_device_do_not_strip_colon", () => {
+        /* Do not remove colon-nonnumber from afc device name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb:b";
+        assert (PF.FileUtils.sanitize_path (afc_device) == afc_device);
     });
 
     Test.add_func ("/FileUtils/sanitize_null_rel_path", () => {

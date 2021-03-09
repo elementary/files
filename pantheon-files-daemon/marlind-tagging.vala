@@ -43,7 +43,7 @@ public class MarlinTags : Object {
         try {
             open_marlin_db ();
         } catch (GLib.Error e) {
-            critical ("Unable to open color tag database - %s", e.message);
+            critical ("Unable to open color tag database: %s", e.message);
         }
     }
 

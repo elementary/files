@@ -7,43 +7,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 11:52+0000\n"
-"PO-Revision-Date: 2016-09-16 09:17+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Serbian <sr@li.org>\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"PO-Revision-Date: 2021-02-19 04:42+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <https://l10n.elementary.io/projects/files/files/sr/"
+">\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
-msgstr "Прикажи верзију програма."
+msgstr "Приказује издање програма"
 
 #: src/Application.vala:160
 msgid "Open one or more URIs, each in their own tab"
-msgstr ""
+msgstr "Отворите једну или више путања, сваку у свом језичку"
 
 #: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
 msgid "New Window"
-msgstr ""
+msgstr "Нови прозор"
 
 #: src/Application.vala:164
 msgid "Quit Files"
-msgstr "Угаси Датетеке."
+msgstr "Излази из програма"
 
 #: src/Application.vala:166
 msgid "Enable debug logging"
-msgstr "Укључи дебаг пријаву"
+msgstr "Укључи дневничење прочишћавања"
 
 #: src/Application.vala:169
-#, fuzzy
 msgid "[URI…]"
-msgstr "[УРЛ]"
+msgstr "[Адреса…]"
 
 #: src/Application.vala:172
 msgid ""
@@ -53,148 +53,151 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Разгледајте систем датотека помоћу управљача датотекама"
+"Разгледајте систем датотека помоћу управника датотека"
 
 #: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
-msgstr "--quit се не може користити са УРЛима."
+msgstr "„--quit“ се не може користити са путањама."
 
-#: src/ProgressUIHandler.vala:127 src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
 msgid "File Operations"
-msgstr "Операције са датотеком"
+msgstr "Радње над датотеком"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:182
+#: src/ProgressUIHandler.vala:181
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "Завршено је „%s“"
 
-#: src/ProgressUIHandler.vala:185
+#: src/ProgressUIHandler.vala:184
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Све радње над датотекама су завршене"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Подаци"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
 msgstr "Опште"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:80
+#: libcore/FileOperations/DialogUtils.vala:54
 msgid "Close"
-msgstr ""
+msgstr "Затвори"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
-msgstr ""
+msgstr "Коришћење уређаја"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
-msgstr ""
+msgstr "Капацитет:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
 #: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
-msgstr ""
+msgstr "Непознато"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
-msgstr ""
+msgstr "Доступно:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
-msgstr ""
+msgstr "Заузето:"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
-msgstr "Подеси као подразумеван"
+msgstr "Постави као основно"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Својства"
 
 #: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
-msgstr ""
+msgstr "Овлашћења"
 
 #: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Не могу да прочитам %i датотеку због овлашћења или других грешака."
+msgstr[1] "Не могу да прочитам %i датотеке због овлашћења или других грешака."
+msgstr[2] "Не могу да прочитам %i датотека због овлашћења или других грешака."
 
 #: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Стварна величина може бити већа"
 
 #: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
-msgstr ""
+msgstr "непознато"
 
 #: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
-msgstr ""
+msgstr "Учитавам…"
 
 #: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
-msgstr ""
+msgstr "Не може бити одређено"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
-#: libcore/FileConflictDialog.vala:167
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:99
+#: libcore/FileConflictDialog.vala:133
 msgid "Size:"
 msgstr "Величина:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
-#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
-msgstr "Тип:"
+msgstr "Врста:"
 
 #: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
-msgstr ""
+msgstr "Садржи:"
 
 #: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
-msgstr ""
+msgstr "Направљено:"
 
 #: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
-msgstr ""
+msgstr "Измењено:"
 
 #: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
-msgstr ""
+msgstr "Обрисано:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
-msgstr ""
+msgstr "Врста медија:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
-msgstr ""
+msgstr "Резолуција:"
 
 #: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
-msgstr ""
+msgstr "Место:"
 
 #: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
-msgstr ""
+msgstr "Одредиште:"
 
 #: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
-msgstr ""
+msgstr "Првобитна локација:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
 #: src/View/AbstractDirectoryView.vala:1938
 msgid "Other Application…"
-msgstr ""
+msgstr "Другим програмом…"
 
 #: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
@@ -202,98 +205,102 @@ msgstr "Отвори помоћу:"
 
 #: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
-msgstr ""
+msgstr "Власник:"
 
 #: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
-msgstr ""
+msgstr "Група:"
 
 #: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
-msgstr ""
+msgstr "Свако:"
 
 #: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u подфасцикла"
+msgstr[1] "%u подфасцикле"
+msgstr[2] "%u подфасцикли"
 
 #: src/Dialogs/PropertiesWindow.vala:1231
 #: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u датотека"
+msgstr[1] "%u датотеке"
+msgstr[2] "%u датотека"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:911
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u фасцикла"
+msgstr[1] "%u фасцикле"
+msgstr[2] "%u фасцикли"
 
 #: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u изабрана ставка"
+msgstr[1] "%u изабране ставке"
+msgstr[2] "%u изабраних ставки"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Својства диска"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:68
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Систем Датотека"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
-msgstr ""
+msgstr "Формат:"
+
+#: src/Utils/MimeActions.vala:282
+msgid "Multiple file types selected"
+msgstr "Изабрано је више врста датотека"
 
 #: src/Utils/MimeActions.vala:283
-msgid "Multiple file types selected"
-msgstr ""
-
-#: src/Utils/MimeActions.vala:284
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Ниједан програм не може да отвори ове врсте датотеке"
 
 #: src/Utils/MimeActions.vala:311
 msgid "Failed to open files"
-msgstr ""
+msgstr "Нисам успео да отворим датотеке"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr ""
+msgstr "Не могу да отворим путање"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "Не могу да отворим датотеке или путање са овим програмом"
 
-#: src/View/Window.vala:542 src/View/Window.vala:552
+#: src/View/Window.vala:544 src/View/Window.vala:554
 msgid "(as Administrator)"
-msgstr "(као Администратор)"
+msgstr "(као администратор)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
-msgstr "Назив датотеке"
+msgstr "Назив"
 
 #: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
 msgid "Size"
@@ -301,20 +308,20 @@ msgstr "Величина"
 
 #: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
 msgid "Type"
-msgstr "Тип"
+msgstr "Врста"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr "Измењено"
+msgstr "Измењена"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Ова фасцикла не постоји"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr "Фасцикла \"%s\" не може бити пронађена."
+msgstr "Не могу да нађем фасциклу „%s“."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -323,231 +330,218 @@ msgstr "Направи"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr "Направи фасциклу \"%s\""
+msgstr "Правим фасциклу „%s“"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"Неуспено прављење фасцикле\n"
-"\n"
-"%s"
+msgstr "Нисам успео да направим фасциклу"
 
-#: src/View/AbstractDirectoryView.vala:821
-#: src/View/AbstractDirectoryView.vala:1132
+#: src/View/AbstractDirectoryView.vala:820
+#: src/View/AbstractDirectoryView.vala:1131
 msgid "Cannot execute this file"
-msgstr ""
+msgstr "Не могу да извршим ову датотеку"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:831
+#: src/View/AbstractDirectoryView.vala:830
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "„%s“ мора бити премештена из смећа пре отварања"
 
-#: src/View/AbstractDirectoryView.vala:832
+#: src/View/AbstractDirectoryView.vala:831
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Датотеке у смећу се не могу отворити. Да отворите ову датотеку, мора бити "
+"премештена на друго место."
 
-#: src/View/AbstractDirectoryView.vala:847
+#: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Не могу да отворим ову датотеку"
 
-#: src/View/AbstractDirectoryView.vala:860
+#: src/View/AbstractDirectoryView.vala:859
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Не могу да одредим врсту датотеке за отварање"
+
+#: src/View/AbstractDirectoryView.vala:1577
+msgid "Cannot drop this file"
+msgstr "Не могу да упустим ову датотеку"
 
 #: src/View/AbstractDirectoryView.vala:1578
-msgid "Cannot drop this file"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1579
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Достављен је неисправан назив датотеке"
 
 #: src/View/AbstractDirectoryView.vala:1854
-#, fuzzy
 msgid "New Tab"
-msgstr "Отвори у новом језичку"
+msgstr "Нови језичак"
 
 #: src/View/AbstractDirectoryView.vala:1874
 msgid "Run"
-msgstr ""
+msgstr "Покрени"
 
 #: src/View/AbstractDirectoryView.vala:1881
 #, c-format
 msgid "Open in %s"
-msgstr ""
+msgstr "Отвори у „%s“"
 
 #: src/View/AbstractDirectoryView.vala:1950
 msgid "Open in"
-msgstr ""
+msgstr "Отвори у"
 
 #: src/View/AbstractDirectoryView.vala:1952
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
-msgstr ""
+msgstr "Отвори програмом"
 
 #: src/View/AbstractDirectoryView.vala:1958
 msgid "Paste"
-msgstr ""
+msgstr "Убаци"
 
-#: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
+#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
-msgstr ""
+msgstr "Додај у обележиваче"
 
 #: src/View/AbstractDirectoryView.vala:1978
 msgid "Cut"
-msgstr ""
+msgstr "Исеци"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
 #: src/View/AbstractDirectoryView.vala:1986
 msgid "Copy"
-msgstr ""
+msgstr "Умножи"
 
 #: src/View/AbstractDirectoryView.vala:1993
-#, fuzzy
 msgid "Move to Trash"
-msgstr "Премештам датотеке у смеће"
+msgstr "Премести у смеће"
 
 #: src/View/AbstractDirectoryView.vala:1998
-#, fuzzy
 msgid "Delete permanently"
-msgstr " одабрано"
+msgstr "Трајно обриши"
 
 #: src/View/AbstractDirectoryView.vala:2003
-#, fuzzy
 msgid "Restore from Trash"
-msgstr "Поврати %d ставке из смећа"
+msgstr "Поврати из смећа"
 
 #: src/View/AbstractDirectoryView.vala:2014
-#, fuzzy
 msgid "Open Parent Folder"
-msgstr "Отвори личну фасциклу"
+msgstr "Отвори родитељску фасциклу"
 
 #: src/View/AbstractDirectoryView.vala:2017
 msgid "Remove from History"
-msgstr ""
+msgstr "Уклони из историјата"
 
 #: src/View/AbstractDirectoryView.vala:2033
-#, fuzzy
-#| msgid "Re_name"
 msgid "Rename…"
-msgstr "Пре_именуј"
+msgstr "Преименуј…"
 
 #: src/View/AbstractDirectoryView.vala:2040
 msgid "Copy as Link"
-msgstr ""
+msgstr "Умножи као везу"
 
 #: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste Link into Folder"
-msgstr ""
+msgstr "Убаци везу у фасциклу"
 
 #: src/View/AbstractDirectoryView.vala:2060
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Убаци у фасциклу"
 
 #: src/View/AbstractDirectoryView.vala:2088
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Прикажи скривене датотеке"
 
 #: src/View/AbstractDirectoryView.vala:2091
-#, fuzzy
 msgid "Show Remote Thumbnails"
-msgstr "Прикажи више _детаља"
+msgstr "Прикажи удаљене сличице"
 
 #: src/View/AbstractDirectoryView.vala:2094
-#, fuzzy
 msgid "Hide Thumbnails"
-msgstr "Прикажи више _детаља"
+msgstr "Сакриј сличице"
 
 #: src/View/AbstractDirectoryView.vala:2114
 msgid "Paste Link"
-msgstr ""
+msgstr "Убаци везу"
 
 #: src/View/AbstractDirectoryView.vala:2168
 msgid "Name"
-msgstr ""
+msgstr "Назив"
 
 #: src/View/AbstractDirectoryView.vala:2183
 msgid "Date"
-msgstr ""
+msgstr "Датум"
 
 #: src/View/AbstractDirectoryView.vala:2188
 msgid "Reversed Order"
-msgstr ""
+msgstr "Обрнутим редоследом"
 
 #: src/View/AbstractDirectoryView.vala:2191
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Фасцикле пре датотека"
 
 #: src/View/AbstractDirectoryView.vala:2203
 msgid "Sort by"
-msgstr ""
+msgstr "Поређај"
 
 #: src/View/AbstractDirectoryView.vala:2211
-#, fuzzy
 msgid "Folder"
-msgstr "_Фасцикла:"
+msgstr "Фасцикла"
 
 #: src/View/AbstractDirectoryView.vala:2217
-#, fuzzy
 msgid "Empty File"
-msgstr "Угаси Датетеке."
+msgstr "Празна датотека"
 
 #: src/View/AbstractDirectoryView.vala:2268
-#, fuzzy
 msgid "New"
-msgstr "Мрежа"
+msgstr "Нова"
 
 #: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
-msgstr ""
+msgstr "Неименована „%s“"
 
 #: src/View/AbstractDirectoryView.vala:2867
 #: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Не можете да уклоните датотеке одатле"
 
 #: src/View/AbstractDirectoryView.vala:2868
 #: src/View/AbstractDirectoryView.vala:3053
 #: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Немате дозволе да измените ову локацију"
 
 #: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Не можете умножити датотеке које су у смећу"
 
 #: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Зато исецам избор уместо тога"
 
 #: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Не можете да убаците датотеке овде"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
+#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "Лична"
 
 #: src/View/ViewContainer.vala:405
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Не можете направити фасциклу овде."
 
 #: src/View/ViewContainer.vala:408
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Мрежа је недоступна"
 
 #: src/View/ViewContainer.vala:409
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Потребна је радна мрежа за приступ овој фасцикли"
 
 #: src/View/ViewContainer.vala:412
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Ова фасцикла не припада вама"
 
 #: src/View/ViewContainer.vala:413
 msgid "You don't have permission to view this folder."
@@ -555,222 +549,208 @@ msgstr "Ви немате дозволе да видите ову фасцикл
 
 #: src/View/ViewContainer.vala:415
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Не могу да прикачим фасциклу"
 
 #: src/View/ViewContainer.vala:416
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Не могу да се повежем са сервером за ову фасциклу."
 
 #: src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Не могу да прикажем садржај фасцикле"
 
 #: src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "Истекло је време за поступак."
 
 #: src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Не могу да прикажем фасциклу"
 
 #: src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Не могу да пронађем сервер за ову фасциклу."
 
 #: src/View/ViewContainer.vala:434
 msgid "File not Found"
-msgstr ""
+msgstr "Нисам нашао датотеку"
 
 #: src/View/ViewContainer.vala:435
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Изабрана датотека не постоји више."
 
-#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:282
-msgid "Bookmarks"
-msgstr ""
+#: src/View/Sidebar/BookmarkListBox.vala:119
+msgid "View the home folder"
+msgstr "Прегледајте личну фасциклу"
 
-#: src/View/Sidebar.vala:574
-msgid "Common places plus saved folders and files"
-msgstr ""
-
-#: src/View/Sidebar.vala:594
-msgid "Open your personal folder"
-msgstr "Отвори личну фасциклу"
-
-#: src/View/Sidebar.vala:609
+#: src/View/Sidebar/BookmarkListBox.vala:132
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Прегледајте списак недавно коришћених датотека"
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
+#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Смеће"
 
-#: src/View/Sidebar.vala:642
+#: src/View/Sidebar/BookmarkListBox.vala:154
 msgid "Open the Trash"
-msgstr ""
+msgstr "Отворите смеће"
 
-#: src/View/Sidebar.vala:647
-msgid "Devices"
-msgstr "Уређаји"
+#: src/View/Sidebar/DeviceListBox.vala:106
+msgid "View the root of the local filesystem"
+msgstr "Прегледајте корен локалног система датотека"
 
-#: src/View/Sidebar.vala:648
-msgid "Internal and connected storage devices"
-msgstr ""
-
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
-msgid "Network"
-msgstr "Мрежа"
-
-#: src/View/Sidebar.vala:778
-msgid "Devices and places available via a network"
-msgstr ""
-
-#: src/View/Sidebar.vala:810
-msgid "Entire Network"
-msgstr ""
-
-#: src/View/Sidebar.vala:817
-msgid "Browse the contents of the network"
-msgstr "Прегледај садржај на мрежи"
-
-#: src/View/Sidebar.vala:820
-#, fuzzy
-msgid "Connect Server"
-msgstr "Повежите се са сервером"
-
-#: src/View/Sidebar.vala:821
-#, fuzzy
-msgid "Connect to a network server"
-msgstr "Повежите се са сервером"
-
-#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-#: src/View/Sidebar.vala:892
-#, c-format
-msgid "%s on %s"
-msgstr ""
-
-#: src/View/Sidebar.vala:979
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s је слободно"
 
-#: src/View/Sidebar.vala:980
+#: src/View/Sidebar/DeviceRow.vala:117
 #, c-format
 msgid "%s used of %s"
-msgstr ""
+msgstr "%s је искоришћено од %s"
 
-#: src/View/Sidebar.vala:1455
-#, c-format
-msgid "Error mounting volume %s"
-msgstr ""
+#: src/View/Sidebar/NetworkListBox.vala:78
+msgid "Entire Network"
+msgstr "Читава мрежа"
 
-#: src/View/Sidebar.vala:1470
-#, c-format
-msgid "Unable to start %s"
-msgstr "Не могу да покренем %s"
+#: src/View/Sidebar/NetworkListBox.vala:85
+msgid "Browse the contents of the network"
+msgstr "Разгледајте садржаје на мрежи"
 
-#: src/View/Sidebar.vala:1660 libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Избаци _смеће"
-
-#: src/View/Slot.vala:31
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: src/View/Slot.vala:32
-msgid "Trash Is Empty"
-msgstr ""
-
-#: src/View/Slot.vala:33
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: src/View/Slot.vala:34
-msgid "Access Denied"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "Privacy mode is on"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "No recent files are remembered"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:30
-msgid "Change security settings"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:31
-msgid "Open the system security and privacy settings app"
-msgstr ""
-
-#: src/View/PopupMenuBuilder.vala:49
+#: src/View/Sidebar/PopupMenuBuilder.vala:49
 msgid "Open"
-msgstr ""
+msgstr "Отвори"
 
-#: src/View/PopupMenuBuilder.vala:53
+#: src/View/Sidebar/PopupMenuBuilder.vala:53
 msgid "Open in New _Tab"
 msgstr "Отвори у новом _језичку"
 
-#: src/View/PopupMenuBuilder.vala:57
+#: src/View/Sidebar/PopupMenuBuilder.vala:57
 msgid "Open in New _Window"
 msgstr "Отвори у новом _прозору"
 
-#: src/View/PopupMenuBuilder.vala:61
+#: src/View/Sidebar/PopupMenuBuilder.vala:61
 msgid "Remove"
 msgstr "Уклони"
 
-#: src/View/PopupMenuBuilder.vala:65
+#: src/View/Sidebar/PopupMenuBuilder.vala:65
 msgid "Rename"
-msgstr ""
+msgstr "Преименуј"
 
-#: src/View/PopupMenuBuilder.vala:69
+#: src/View/Sidebar/PopupMenuBuilder.vala:69
 msgid "_Mount"
-msgstr "_Монтирај"
+msgstr "_Прикачи"
 
-#: src/View/PopupMenuBuilder.vala:73
+#: src/View/Sidebar/PopupMenuBuilder.vala:73
 msgid "_Unmount"
-msgstr "_Демонтирај"
+msgstr "_Откачи"
 
-#: src/View/PopupMenuBuilder.vala:77
+#: src/View/Sidebar/PopupMenuBuilder.vala:77
 msgid "_Eject"
 msgstr "_Избаци"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:89
+msgid "Empty All Trash"
+msgstr "Избаци сво смеће"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:93
+msgid "Empty Trash on this Mount"
+msgstr "Избаците смеће са овог качења"
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: libwidgets/View/SearchResults.vala:282
+msgid "Bookmarks"
+msgstr "Обележивачи"
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr "Општа места плус сачуване фасцикле и датотеке"
+
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
+msgid "Internal and connected storage devices"
+msgstr "Унутрашњи и повезани смештајни уређаји"
+
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
+msgid "Network"
+msgstr "Мрежа"
+
+#: src/View/Sidebar/SidebarWindow.vala:61
+msgid "Devices and places available via a network"
+msgstr "Уређаји и места доступна путем мреже"
+
+#: src/View/Sidebar/SidebarWindow.vala:83
+msgid "Connect Server…"
+msgstr "Повежи се са сервером…"
+
+#: src/View/Slot.vala:31
+msgid "This Folder Is Empty"
+msgstr "Ова фасцикла је празна"
+
+#: src/View/Slot.vala:32
+msgid "Trash Is Empty"
+msgstr "Смеће је празно"
+
+#: src/View/Slot.vala:33
+msgid "There Are No Recent Files"
+msgstr "Нема скорашњих датотека"
+
+#: src/View/Slot.vala:34
+msgid "Access Denied"
+msgstr "Приступ је одбијен"
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "Privacy mode is on"
+msgstr "Режим приватнсоти је укључен"
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "No recent files are remembered"
+msgstr "Нису запамћене скорашње датотеке"
+
+#: src/View/PrivacyModeOn.vala:30
+msgid "Change security settings"
+msgstr "Измени поставке безбедности"
+
+#: src/View/PrivacyModeOn.vala:31
+msgid "Open the system security and privacy settings app"
+msgstr "Отвори програм поставки безбедности система и приватности"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Потражите или упишите путању"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Отвори у новом језичку"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
-msgstr ""
+msgstr "Отвори у новом прозору"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Отвори другим програмом…"
 
 #: src/View/Widgets/HeaderBar.vala:66
-#: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
-msgstr ""
+msgstr "Претходна"
 
 #: src/View/Widgets/HeaderBar.vala:73
-#: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
-msgstr ""
+msgstr "Следећа"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
+msgstr "Поново учитај ову фасциклу"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
-msgstr ""
+msgstr "Тражим…"
 
 #: src/View/Widgets/OverlayBar.vala:209
 #, c-format
@@ -780,65 +760,57 @@ msgstr "%u фасцикле"
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr " и %u друге ставке које су (%s) одабране"
-
-#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
-#, c-format
-msgid " and %u other items (%s) selected"
-msgstr " и %u друге ставке (%s) одабране"
+msgid_plural " and %u other items (%s) selected"
+msgstr[0] " и %u друга ставка (%s) изабрана"
+msgstr[1] " и %u друге ставке (%s) изабране"
+msgstr[2] " и %u других ставки (%s) изабраних"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
-msgstr " одабрано"
+msgstr " изабране"
 
 #: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u ставки одабрано (%s)"
+msgstr "%u ставке изабране (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
-msgstr ""
-
-#: src/View/Widgets/OverlayBar.vala:272
-#, c-format
-msgid "%u sub-folders, "
-msgstr ""
+msgid_plural "%u sub-folders, "
+msgstr[0] "%u подфасцикла, "
+msgstr[1] "%u подфасцикле, "
+msgstr[2] "%u подфасцикли, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
-msgstr ""
-
-#: src/View/Widgets/OverlayBar.vala:278
-#, c-format
-msgid "%u files, "
-msgstr ""
+msgid_plural "%u files, "
+msgstr[0] "%u датотека, "
+msgstr[1] "%u датотеке, "
+msgstr[2] "%u датотека, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s приближно."
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "непозната величина"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
-msgstr ""
-
-#: src/View/Widgets/OverlayBar.vala:295
-#, c-format
-msgid "%u files not readable"
-msgstr ""
+msgid_plural "%u files not readable"
+msgstr[0] "%u датотека није читљива"
+msgstr[1] "%u датотеке нису читљиве"
+msgstr[2] "%u датотека није читљиво"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -846,11 +818,11 @@ msgstr "Читај"
 
 #: src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr "Писати"
+msgstr "Пиши"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr "Извршите"
+msgstr "Изврши"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -862,11 +834,11 @@ msgstr "ФТП (са пријавом)"
 
 #: libcore/ConnectServerDialog.vala:59
 msgid "SSH"
-msgstr "ССХ"
+msgstr "БШ"
 
 #: libcore/ConnectServerDialog.vala:65
 msgid "AFP (Apple Filing Protocol)"
-msgstr "АФП (енгл: Apple Filing Protocol)"
+msgstr "АФП (Apple Filing Protocol)"
 
 #: libcore/ConnectServerDialog.vala:71
 msgid "Windows share"
@@ -880,169 +852,162 @@ msgstr "ВебДАВ (ХТТП)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Безбедни ВебДАВ (ХТТПС)"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
 msgstr "Детаљи сервера"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Назив сервера или ИП адреса"
 
-#: libcore/ConnectServerDialog.vala:138
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
-msgstr "_Сервер:"
+msgstr "Сервер:"
 
-#: libcore/ConnectServerDialog.vala:146
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:143
 msgid "Port:"
-msgstr "_Порт:"
+msgstr "Прикључник:"
 
-#: libcore/ConnectServerDialog.vala:177
-msgid "Name of share on server"
-msgstr ""
+#: libcore/ConnectServerDialog.vala:175
+#, fuzzy
+#| msgid "Name of share on server"
+msgid "Name of share on server (Optional)"
+msgstr "Назив дељеења на серверу"
 
 #: libcore/ConnectServerDialog.vala:178
-#, fuzzy
 msgid "Share:"
-msgstr "По_дели:"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Дели:"
 
 #: libcore/ConnectServerDialog.vala:181
 #, fuzzy
-msgid "Folder:"
-msgstr "_Фасцикла:"
+#| msgid "Path of shared folder on server"
+msgid "Path of shared folder on server (Optional)"
+msgstr "Путања дељене датотеке на серверу"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:185
+msgid "Folder:"
+msgstr "Фасцикла:"
+
+#: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
 msgstr "Детаљи о кориснику"
 
-#: libcore/ConnectServerDialog.vala:185
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
-msgstr "Нови прозор као_Администратор"
+msgstr "Назив домена Виндоуза"
 
-#: libcore/ConnectServerDialog.vala:186
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:194
 msgid "Domain name:"
-msgstr "_Назив домена:"
+msgstr "Назив домена:"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
-msgstr ""
+msgstr "Име корисника на серверу"
 
-#: libcore/ConnectServerDialog.vala:189
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:201
 msgid "User name:"
-msgstr "_Корисничко име:"
+msgstr "Корисничко име:"
 
-#: libcore/ConnectServerDialog.vala:196
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:208
 msgid "Password:"
-msgstr "Ло_зинка:"
+msgstr "Лозинка:"
 
-#: libcore/ConnectServerDialog.vala:198
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr "_Запамти ову лозинку"
+msgstr "Запамти ову лозинку"
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
-#: libcore/FileConflictDialog.vala:219
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
-msgstr "Откажите"
+msgstr "Откажи"
 
-#: libcore/ConnectServerDialog.vala:205
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
-msgstr "П_овежите се"
+msgstr "Повежи се"
 
-#: libcore/ConnectServerDialog.vala:214
+#: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
-msgstr "Наставите"
+msgstr "Настави"
 
-#: libcore/ConnectServerDialog.vala:265
-#, fuzzy
+#: libcore/ConnectServerDialog.vala:274
 msgid "Connecting…"
-msgstr "Повезивање..."
+msgstr "Повезујем се…"
 
-#: libcore/ConnectServerDialog.vala:388
+#: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
-msgstr "Потврдите Ваше корисничке податке."
+msgstr "Проверите ваше корисничке податке."
 
-#: libcore/DndHandler.vala:48
+#: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Нисам успео да извршим „%s“"
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:100
 msgid "Move Here"
-msgstr ""
+msgstr "Премести овде"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:101
 msgid "Copy Here"
-msgstr ""
+msgstr "Умножи овде"
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "Повежи овде"
 
-#: libcore/FileConflictDialog.vala:64
+#: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
 msgstr "Сукоб датотеке"
 
-#: libcore/FileConflictDialog.vala:122
+#: libcore/FileConflictDialog.vala:97
 msgid "Original file"
 msgstr "Изворна датотека"
 
-#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
 msgstr "Последња измена:"
 
-#: libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:131
 msgid "Replace with"
 msgstr "Замени са"
 
-#: libcore/FileConflictDialog.vala:199
+#: libcore/FileConflictDialog.vala:165
 msgid "Reset"
 msgstr "Поништи поставке"
 
-#: libcore/FileConflictDialog.vala:211
+#: libcore/FileConflictDialog.vala:177
 msgid "_Select a new name for the destination"
-msgstr "_Изаберите нови назив за одредиште"
+msgstr "_Изабери нови назив за одредиште"
 
-#: libcore/FileConflictDialog.vala:214
+#: libcore/FileConflictDialog.vala:180
 msgid "Apply this action to all files"
 msgstr "Примени ову радњу за све датотеке"
 
-#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Прескочи"
 
-#: libcore/FileConflictDialog.vala:217
+#: libcore/FileConflictDialog.vala:183
 msgid "Re_name"
 msgstr "Пре_именуј"
 
-#: libcore/FileConflictDialog.vala:221
+#: libcore/FileConflictDialog.vala:185
 msgid "Keep Newest"
-msgstr ""
+msgstr "Задржи новију"
 
-#: libcore/FileConflictDialog.vala:222
+#: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Прескочи ако је изворна скорије измењена"
 
-#: libcore/FileConflictDialog.vala:224
+#: libcore/FileConflictDialog.vala:190
 msgid "Replace"
 msgstr "Замени"
 
-#: libcore/FileConflictDialog.vala:340
+#: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Обједини фасциклу \"%s\"?"
+msgstr "Да спојим фасциклу „%s“?"
 
-#: libcore/FileConflictDialog.vala:341
+#: libcore/FileConflictDialog.vala:300
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1050,169 +1015,163 @@ msgstr ""
 "Спајање ће затражити потврду пре замене било којих датотека у фасцикли које "
 "се сукобљавају са датотекама које су умножене."
 
-#: libcore/FileConflictDialog.vala:343
+#: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Старија фасцикла са овим називом већ постоји у „%s“."
 
-#: libcore/FileConflictDialog.vala:345
+#: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Новија фасцикла са овим називом већ постоји у „%s“."
 
-#: libcore/FileConflictDialog.vala:347
+#: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Друга фасцикла са овим називом већ постоји у „%s“."
 
-#: libcore/FileConflictDialog.vala:350
+#: libcore/FileConflictDialog.vala:309
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Да заменим фасциклу „%s“?"
 
-#: libcore/FileConflictDialog.vala:351
+#: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
 msgstr "Замена ће уклонити све датотеке у фасцикли."
 
-#: libcore/FileConflictDialog.vala:352
+#: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Фасцикла са овим називом већ постоји у „%s“."
 
-#: libcore/FileConflictDialog.vala:355
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Да заменим датотеку „%s“?"
 
-#: libcore/FileConflictDialog.vala:356
+#: libcore/FileConflictDialog.vala:315
 msgid "Replacing it will overwrite its content."
-msgstr "Њена замена ће заменити постојећи садржај."
+msgstr "Њена замена ће преписати постојећи садржај."
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:318
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Старија датотека са овим називом већ постоји у „%s“."
 
-#: libcore/FileConflictDialog.vala:361
+#: libcore/FileConflictDialog.vala:320
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Новија датотека са овим називом већ постоји у „%s“."
 
-#: libcore/FileConflictDialog.vala:363
+#: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Друга датотека са овим називом већ постоји у „%s“."
 
-#: libcore/FileConflictDialog.vala:389
+#: libcore/FileConflictDialog.vala:348
 msgid "Merge"
 msgstr "Сједини"
 
 #: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "Није могуће утврдити изворну локацију за „%s“ "
+msgstr "Не могу да утврдим изворну локацију за „%s“ "
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
-msgstr "Није могуће вратити ставку из Смећа"
+msgstr "Не могу да повратим ставку из смећа"
 
-#: libcore/FileUtils.vala:497
+#: libcore/FileUtils.vala:516
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Не могу да преименујем у „%s“"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:588
-#, fuzzy, c-format
+#: libcore/FileUtils.vala:607
+#, c-format
 msgid "Today at %s"
-msgstr "Данас у %-I:%M %p"
+msgstr "Данас у %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:596
-#, fuzzy, c-format
+#: libcore/FileUtils.vala:615
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Јуче у  %-I:%M %p"
+msgstr "Јуче у %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:604
+#: libcore/FileUtils.vala:623
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%%A у %s"
 
-#: libcore/FileUtils.vala:900
+#: libcore/FileUtils.vala:920
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%'d секунда"
+msgstr[1] "%'d секунде"
+msgstr[2] "%'d секунди"
 
-#: libcore/FileUtils.vala:904 libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%'d минут"
+msgstr[1] "%'d минута"
+msgstr[2] "%'d минута"
 
-#: libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:931
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%'d сат"
+msgstr[1] "%'d сата"
+msgstr[2] "%'d сати"
 
-#: libcore/FileUtils.vala:915
+#: libcore/FileUtils.vala:935
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "приближно %'d сат"
+msgstr[1] "приближно %'d сата"
+msgstr[2] "приближно %'d сати"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:923
-#, fuzzy
-#| msgid " (copy)"
+#: libcore/FileUtils.vala:943
 msgid "copy"
-msgstr " (умножак)"
+msgstr "умножак"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:945
 msgid "link"
-msgstr ""
+msgstr "веза"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
-#, fuzzy
-#| msgid " ("
+#: libcore/FileUtils.vala:947
 msgid "("
-msgstr " ("
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:929
+#: libcore/FileUtils.vala:949
 msgid ")"
-msgstr ""
+msgstr ")"
 
-#: libcore/gof-directory-async.vala:688
+#: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Сервер није одговорио у временском року"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
 msgid "Preparing"
-msgstr ""
+msgstr "Припремам"
 
 #: libcore/StockDialogs.vala:20
-#, fuzzy
 msgid "_Cancel"
-msgstr "Откажите"
+msgstr "_Откажи"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
 msgid "Delete"
-msgstr "Обриши _све"
+msgstr "Обриши"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1246,233 +1205,250 @@ msgstr "Споји _ све"
 msgid "Copy _Anyway"
 msgstr "Ипак _умножи"
 
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Избаци _смеће"
+
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Не могу да одредим изворну локацију"
 
 #: libcore/UndoManager.vala:311
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Отворите фасциклу смећа и вратите ручно"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:40
-#, fuzzy
 msgid "Permanently delete all items from Trash?"
-msgstr "Поврати %d ставке из смећа"
+msgstr "Да трајно обришем све ставке из смећа?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:41
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Све ставке у свим директоријумима смећа, укључујући и оне на свим пркаченим "
+"спољним уређајима биће трајно обрисане."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Да трајно обришем све ставке из смећа на овом качењу?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Све ставке из смећа на овом качењу биће трајно обрисане."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:111
-#, fuzzy
 msgid "Emptying Trash"
-msgstr "Избаци _смеће"
+msgstr "Празним смеће"
 
 #: libcore/FileOperations/MountUtils.vala:26
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
-msgstr "Не могу да монтирам %s"
+msgstr "Не могу да прикачим „%s“"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:567
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:285
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+msgstr "Да ли сигурно желите да трајно обришете „%s“ из смећа?"
 
-#: libcore/marlin-file-operations.c:571
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:289
+#, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
 "trash?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
-msgstr[1] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
-msgstr[2] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+msgstr[0] ""
+"Да ли сигурно желите да трајно обришете %'d изабрану ставку из смећа?"
+msgstr[1] ""
+"Да ли сигурно желите да трајно обришете %'d изабране ставке из смећа?"
+msgstr[2] ""
+"Да ли сигурно желите да трајно обришете %'d изабраних ставки из смећа?"
 
-#: libcore/marlin-file-operations.c:581
+#: libcore/marlin-file-operations.c:301
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ако обришете ставку, она ће бити неповратно изгубљена."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:607
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:327
+#, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Поврати %d ставке из смећа"
+msgstr "Да трајно обришем „%s“?"
 
-#: libcore/marlin-file-operations.c:610
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:330
+#, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
-msgstr[1] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
-msgstr[2] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+msgstr[0] "Да ли сигурно желите да трајно обришете %'d изабрану ставку?"
+msgstr[1] "Да ли сигурно желите да трајно обришете %'d изабране ставке?"
+msgstr[2] "Да ли сигурно желите да трајно обришете %'d изабраних ставки?"
 
-#: libcore/marlin-file-operations.c:619
+#: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "Обрисане ставке нису послате у смеће и не могу се повратити."
 
-#: libcore/marlin-file-operations.c:653
+#: libcore/marlin-file-operations.c:375
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%'d датотека је преостала за брисање"
+msgstr[1] "%'d датотеке су преостале за брисање"
+msgstr[2] "%'d датотека је преостало за брисање"
 
-#: libcore/marlin-file-operations.c:658
+#: libcore/marlin-file-operations.c:380
 msgid "Deleting files"
 msgstr "Бришем датотеке"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:673
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:395
+#, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "%T преостаје"
-msgstr[1] ""
-msgstr[2] "преостаје %T"
+msgstr[0] "преостао је %s"
+msgstr[1] "преостала су %s"
+msgstr[2] "преостало је %s"
 
-#: libcore/marlin-file-operations.c:742 libcore/marlin-file-operations.c:782
-#: libcore/marlin-file-operations.c:828 libcore/marlin-file-operations.c:910
-#: libcore/marlin-file-operations.c:1405
+#: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
+#: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
+#: libcore/marlin-file-operations.c:1139
 msgid "Error while deleting."
 msgstr "Грешка при брисању."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:748
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:470
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Датотеке у фасцикли \"%B\" не могу  бити обрисане јер немате дозволе да их "
+"Датотеке у фасцикли „%s“ не могу бити обрисане јер немате дозволе да их "
 "видите."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:753 libcore/marlin-file-operations.c:1469
-#: libcore/marlin-file-operations.c:2466
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:475 libcore/marlin-file-operations.c:1203
+#: libcore/marlin-file-operations.c:2216
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
-msgstr "Постоји грешка при добијању података о датотекама у фасцикли „%B“."
+msgstr ""
+"Дошло је до грешке при добављању података о датотекама у фасцикли „%s“."
 
-#: libcore/marlin-file-operations.c:763 libcore/marlin-file-operations.c:2476
+#: libcore/marlin-file-operations.c:487 libcore/marlin-file-operations.c:2228
 msgid "_Skip files"
 msgstr "_Прескочи датотеке"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:787
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:511
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
-"Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
+msgstr "Не могу да обришем фасциклу „%s“ јер немате овлашћења за њено читање."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:792 libcore/marlin-file-operations.c:1514
-#: libcore/marlin-file-operations.c:2518
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:516 libcore/marlin-file-operations.c:1250
+#: libcore/marlin-file-operations.c:2270
+#, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "Постоји грешка приликом читања фасцикле „%B“."
+msgstr "Дошло је до грешке при читању фасцикле „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:831
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:557
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "Није могуће уклонити фасциклу %B."
+msgstr "Не могу да уклоним фасциклу „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:913
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:641
+#, c-format
 msgid "There was an error deleting %s."
-msgstr "Постоји грешка при брисању „%B“."
+msgstr "Постоји грешка приликом брисања „%s“."
 
-#: libcore/marlin-file-operations.c:998
+#: libcore/marlin-file-operations.c:728
 msgid "Moving files to trash"
 msgstr "Премештам датотеке у смеће"
 
-#: libcore/marlin-file-operations.c:1000
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:730
+#, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "Премештам датотеке у смеће"
-msgstr[1] "Премештам датотеке у смеће"
-msgstr[2] "Премештам датотеке у смеће"
+msgstr[0] "%'d датотека је преостала у смећу"
+msgstr[1] "%'d датотеке су преостале у смећу"
+msgstr[2] "%'d датотека је преостало у смећу"
 
-#: libcore/marlin-file-operations.c:1098 libcore/marlin-file-operations.c:1101
-#: libcore/marlin-file-operations.c:1104
+#: libcore/marlin-file-operations.c:828 libcore/marlin-file-operations.c:831
+#: libcore/marlin-file-operations.c:834
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Не могу да преместим датотеку у смеће или да је обришем"
 
-#: libcore/marlin-file-operations.c:1099
+#: libcore/marlin-file-operations.c:829
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Није допуштено премештање у смеће или брисање датотека на системима само за "
+"читање."
 
-#: libcore/marlin-file-operations.c:1102
+#: libcore/marlin-file-operations.c:832
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Није допуштено премештање у смеће или брисање датотека у фасциклама за које "
+"немате овлашћења писања."
 
-#: libcore/marlin-file-operations.c:1105
+#: libcore/marlin-file-operations.c:835
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Није допуштено премештање у смеће или брисање фасцикли за које немате "
+"овлашћења писања."
 
-#: libcore/marlin-file-operations.c:1107
+#: libcore/marlin-file-operations.c:837
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Не могу да преместим датотеку у смеће. Да покушам одмах да је обришем?"
 
-#: libcore/marlin-file-operations.c:1108
+#: libcore/marlin-file-operations.c:838
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Ова датотека не може бити премештена у смеће. Погледајте детаље испод за "
+"више о томе."
 
-#: libcore/marlin-file-operations.c:1112
+#: libcore/marlin-file-operations.c:842
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Не могу да преместим датотеку у смеће. Да покушам да је обришем?"
 
-#: libcore/marlin-file-operations.c:1113
+#: libcore/marlin-file-operations.c:843
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Ову датотеку не могу да преместим у смеће. Нећете моћи ни да је обришете."
 
-#: libcore/marlin-file-operations.c:1119
+#: libcore/marlin-file-operations.c:849
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Брисањем датотека се трајно уклања"
 
-#: libcore/marlin-file-operations.c:1298
+#: libcore/marlin-file-operations.c:1032
 msgid "Trashing Files"
 msgstr "Шаљем датотеке у смеће"
 
-#: libcore/marlin-file-operations.c:1300
+#: libcore/marlin-file-operations.c:1034
 msgid "Deleting Files"
 msgstr "Бришем датотеке"
 
@@ -1480,120 +1456,121 @@ msgstr "Бришем датотеке"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1339
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1073
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Припрема умножавања %'d датотеке (%S)"
-msgstr[1] "Припрема умножавања %'d датотеке (%S)"
-msgstr[2] "Припрема умножавања %'d датотека (%S)"
+msgstr[0] "Припремам %'d датотеку (%s) за умножавање"
+msgstr[1] "Припремам %'d датотеке (%s) за умножавање"
+msgstr[2] "Припремам %'d датотека (%s) за умножавање"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1351
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1085
+#, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "Припрема за премештање %'d датотеке (%S)"
-msgstr[1] "Припремам за премештање %'d датотеке (%S)"
-msgstr[2] "Припремам за премештање %'d датотека (%S)"
+msgstr[0] "Припремам за премештање %'d датотеку (%s)"
+msgstr[1] "Припремам за премештање %'d датотеке (%s)"
+msgstr[2] "Припремам за премештање %'d датотека (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1363
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1097
+#, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "Припрема за брисање %'d датотеке (%S)"
-msgstr[1] "Припрема за брисање %'d датотеке (%S)"
-msgstr[2] "Припрема за брисање %'d датотека (%S)"
+msgstr[0] "Припремам %'d датотеку (%s) за брисање"
+msgstr[1] "Припремам %'d датотеке (%s) за брисање"
+msgstr[2] "Припремам %'d датотека (%s) за брисање"
 
-#: libcore/marlin-file-operations.c:1370
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1104
+#, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Припрема за брисање %'d датотеке (%S)"
-msgstr[1] "Припрема за брисање %'d датотеке (%S)"
-msgstr[2] "Припрема за брисање %'d датотека (%S)"
+msgstr[0] "Припремам %'d датотеку за слање у смеће"
+msgstr[1] "Припремам %'d датотеке за слање у смеће"
+msgstr[2] "Припремам %'d датотека за слање у смеће"
 
-#: libcore/marlin-file-operations.c:1401 libcore/marlin-file-operations.c:2313
-#: libcore/marlin-file-operations.c:2453 libcore/marlin-file-operations.c:2505
+#: libcore/marlin-file-operations.c:1135 libcore/marlin-file-operations.c:2061
+#: libcore/marlin-file-operations.c:2203 libcore/marlin-file-operations.c:2257
 msgid "Error while copying."
 msgstr "Грешка приликом умножавања."
 
-#: libcore/marlin-file-operations.c:1403 libcore/marlin-file-operations.c:2451
-#: libcore/marlin-file-operations.c:2503
+#: libcore/marlin-file-operations.c:1137 libcore/marlin-file-operations.c:2201
+#: libcore/marlin-file-operations.c:2255
 msgid "Error while moving."
 msgstr "Грешка приликом премештања."
 
-#: libcore/marlin-file-operations.c:1407
-#, fuzzy
+#: libcore/marlin-file-operations.c:1141
 msgid "Error while moving files to trash."
-msgstr "Премештам датотеке у смеће"
+msgstr "Грешка при премештању датотека у смеће."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1464
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1198
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Није могуће руковати датотекама у фасцикли \"%B\" јер немате дозволе да их "
-"видите."
+"Не могу да радим са датотекама у фасцикли „%s“ јер немате овлашћења за "
+"њихово приказивање."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1509
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1245
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Није могуће руковати фасциклом \"%B\" јер немате дозволе за њено читање."
+"Радња над фасциклом „%s“ не може бити обављена зато што немате овлашћења за "
+"њено читање."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1596
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1334
+#, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Није могуће руковати датотеком \"%B\" јер немате дозволе за њено читање."
+"Радња над датотеком „%s“ не може бити обављена зато што немате овлашћења за "
+"њено читање."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1601
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1339
+#, c-format
 msgid "There was an error getting information about \"%s\"."
-msgstr "Грешка приликом добављања података о „%B“."
+msgstr "Грешка приликом добављања података о „%s“."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1707 libcore/marlin-file-operations.c:1753
-#: libcore/marlin-file-operations.c:1791 libcore/marlin-file-operations.c:1831
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1447 libcore/marlin-file-operations.c:1495
+#: libcore/marlin-file-operations.c:1535 libcore/marlin-file-operations.c:1577
+#, c-format
 msgid "Error while copying to \"%s\"."
-msgstr "Грешка приликом умножавања у „%B“."
+msgstr "Грешка приликом умножавања у „%s“."
 
-#: libcore/marlin-file-operations.c:1712
+#: libcore/marlin-file-operations.c:1452
 msgid "You do not have permissions to access the destination folder."
 msgstr "Немате овлашћења да приступите одредишној фасцикли."
 
-#: libcore/marlin-file-operations.c:1714
+#: libcore/marlin-file-operations.c:1454
 msgid "There was an error getting information about the destination."
 msgstr "Дошло је до грешке приликом добављања података о одредишту."
 
-#: libcore/marlin-file-operations.c:1754
+#: libcore/marlin-file-operations.c:1496
 msgid "The destination is not a folder."
 msgstr "Одредиште није фасцикла."
 
-#: libcore/marlin-file-operations.c:1793
+#: libcore/marlin-file-operations.c:1537
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1601,97 +1578,97 @@ msgstr "Нема довољно места у одредишту. Покушај
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:1799
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1543
+#, c-format
 msgid "There is %s available, but %s is required."
-msgstr "Доступно је %S, а неопходно је %S."
+msgstr "Доступно је %s, а неопходно је %s."
 
-#: libcore/marlin-file-operations.c:1833
+#: libcore/marlin-file-operations.c:1579
 msgid "The destination is read-only."
 msgstr "Одредиште је само за читање."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:1905
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1653
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Премештам „%B“ у „%B“"
+msgstr "Премештам „%s“ у „%s“"
 
-#: libcore/marlin-file-operations.c:1906
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1654
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Умножавам „%B“ у „%B“"
+msgstr "Умножавам „%s“ у „%s“"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:1910
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1658
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "Удвостручујем „%B“"
+msgstr "Удвостручавам „%s“"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:1918
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1666
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
-msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
-msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+msgstr[0] "Премештам %'d датотеку (из „%s“) у „%s“"
+msgstr[1] "Премештам %'d датотеке (из „%s“) у „%s“"
+msgstr[2] "Премештам %'d датотека (из „%s“) у „%s“"
 
-#: libcore/marlin-file-operations.c:1921
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1669
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
-msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
-msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+msgstr[0] "Умножавам %'d датотеку (из „%s“) у „%s“"
+msgstr[1] "Умножавам %'d датотеке (из „%s“) у „%s“"
+msgstr[2] "Умножавам %'d датотека (из „%s“) у „%s“"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:1930
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1678
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
-msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
-msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+msgstr[0] "Удвостручујем %'d датотеку (у „%s“)"
+msgstr[1] "Удвостручујем %'d датотеке (у „%s“)"
+msgstr[2] "Удвостручујем %'d датотека (у „%s“)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:1942
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1690
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
-msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
-msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+msgstr[0] "Премештам %'d датотеку у „%s“"
+msgstr[1] "Премештам %'d датотеке у „%s“"
+msgstr[2] "Премештам %'d датотека у „%s“"
 
-#: libcore/marlin-file-operations.c:1945
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1693
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Умножавам „%B“ у „%B“"
-msgstr[1] "Умножавам „%B“ у „%B“"
-msgstr[2] "Умножавам „%B“ у „%B“"
+msgstr[0] "Умножавам %'d датотеку у „%s“"
+msgstr[1] "Умножавам %'d датотеке у „%s“"
+msgstr[2] "Умножавам %'d датотека у „%s“"
 
-#: libcore/marlin-file-operations.c:1951
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:1699
+#, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Удвостручујем „%B“"
-msgstr[1] "Удвостручујем „%B“"
-msgstr[2] "Удвостручујем „%B“"
+msgstr[0] "Удвостручујем „%'d“ датотеку"
+msgstr[1] "Удвостручујем „%'d“ датотеке"
+msgstr[2] "Удвостручујем „%'d“ датотека"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:1981
+#: libcore/marlin-file-operations.c:1729
 #, c-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s од %s"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -1699,337 +1676,377 @@ msgstr ""
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2001
+#: libcore/marlin-file-operations.c:1749
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s од %s – преостаје %s (%s/сек)"
+msgstr[1] "%s од %s – преостају %s (%s/сек)"
+msgstr[2] "%s од %s – преостају %s (%s/сек)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2320
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2068
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
+"Фасцикла „%s“ не може бити умножена зато што немате овлашћења за њено "
+"стварање у одредишту."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2325
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2073
+#, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Постоји грешка приликом читања фасцикле „%B“."
+msgstr "Дошло је до грешке приликом стварања фасцикле у „%s“."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2461
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2211
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Датотеке у фасцикли \"%B\" не могу  бити обрисане јер немате дозволе да их "
-"видите."
+"Датотеке у фасцикли „%s“ не могу бити умножене зато што немате овлашћења за "
+"њихов приказ."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2513
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2265
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
+"Фасцикла „%s“ не може бити умножена зато што немате овлашћења за њено читање."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2566 libcore/marlin-file-operations.c:3299
-#: libcore/marlin-file-operations.c:3854
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2320 libcore/marlin-file-operations.c:2977
+#: libcore/marlin-file-operations.c:3536
+#, c-format
 msgid "Error while moving \"%s\"."
-msgstr "Грешка приликом премештања."
+msgstr "Грешка приликом премештања „%s“."
 
-#: libcore/marlin-file-operations.c:2568
-#, fuzzy
+#: libcore/marlin-file-operations.c:2322
 msgid "Could not remove the source folder."
-msgstr "Није могуће уклонити фасциклу %B."
+msgstr "Не могу да уклоним изворну фасциклу."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2657 libcore/marlin-file-operations.c:2708
-#: libcore/marlin-file-operations.c:3303
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2413 libcore/marlin-file-operations.c:2466
+#: libcore/marlin-file-operations.c:2981
+#, c-format
 msgid "Error while copying \"%s\"."
-msgstr "Грешка приликом умножавања у „%B“."
+msgstr "Грешка приликом умножавања „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:2662
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2418
+#, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Није могуће уклонити фасциклу %B."
+msgstr "Не могу да уклоним датотеке из већ постојеће фасцикле „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:2713
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2471
+#, c-format
 msgid "Could not remove the already existing file %s."
-msgstr "Није могуће уклонити фасциклу %B."
+msgstr "Не могу да уклоним већ постојећу датотеку „%s“."
 
-#: libcore/marlin-file-operations.c:3032 libcore/marlin-file-operations.c:3693
-#, fuzzy
+#: libcore/marlin-file-operations.c:2706 libcore/marlin-file-operations.c:3372
 msgid "You cannot move a folder into itself."
-msgstr "Није могуће уклонити фасциклу %B."
+msgstr "Не можете преместити фасциклу у себе саму."
 
-#: libcore/marlin-file-operations.c:3033 libcore/marlin-file-operations.c:3694
+#: libcore/marlin-file-operations.c:2707 libcore/marlin-file-operations.c:3373
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "Не можете умножити фасциклу у себе саму."
 
-#: libcore/marlin-file-operations.c:3034 libcore/marlin-file-operations.c:3695
-#, fuzzy
+#: libcore/marlin-file-operations.c:2708 libcore/marlin-file-operations.c:3374
 msgid "The destination folder is inside the source folder."
-msgstr "Одредиште није фасцикла."
+msgstr "Одредишна фасцикла је унутар изворне фасцикле."
 
-#: libcore/marlin-file-operations.c:3065
+#: libcore/marlin-file-operations.c:2741
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Не можете преместити датотеку у себе саму."
 
-#: libcore/marlin-file-operations.c:3066
+#: libcore/marlin-file-operations.c:2742
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Не можете умножити датотеку преко себе саме."
 
-#: libcore/marlin-file-operations.c:3067
+#: libcore/marlin-file-operations.c:2743
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "Изворна датотека биће преписана одредиштем."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3309
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:2987
+#, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Није могуће уклонити фасциклу %B."
+msgstr "Не могу да уклоним већ постојећу датотеку са истим називом у „%s“."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3379
+#: libcore/marlin-file-operations.c:3059
 #, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr ""
+msgstr "Не могу да умножим \"%s\" овде."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3384
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:3064
+#, c-format
 msgid "There was an error copying the file into %s."
-msgstr "Постоји грешка приликом читања фасцикле „%B“."
+msgstr "Дошло је до грешке при умножавању датотеке у „%s“."
 
-#: libcore/marlin-file-operations.c:3574
-#, fuzzy
+#: libcore/marlin-file-operations.c:3254
 msgid "Copying Files"
-msgstr "Шаљем датотеке у смеће"
+msgstr "Умножавам датотеке"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3609
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:3289
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Припрема за премештање %'d датотеке (%S)"
+msgstr "Припремам за премештање у „%s“"
 
-#: libcore/marlin-file-operations.c:3614
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:3294
+#, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "Припрема за премештање %'d датотеке (%S)"
-msgstr[1] "Припремам за премештање %'d датотеке (%S)"
-msgstr[2] "Припремам за премештање %'d датотека (%S)"
+msgstr[0] "Припремам за премештање %'d датотеку"
+msgstr[1] "Припремам за премештање %'d датотеке"
+msgstr[2] "Припремам за премештање %'d датотека"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3858
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:3540
+#, c-format
 msgid "There was an error moving the file into %s."
-msgstr "Постоји грешка приликом читања фасцикле „%B“."
+msgstr "Дошло је до грешке приликом премештања датотеке у „%s“."
 
-#: libcore/marlin-file-operations.c:4080
-#, fuzzy
+#: libcore/marlin-file-operations.c:3764
 msgid "Moving Files"
-msgstr "Шаљем датотеке у смеће"
+msgstr "Премештам датотеке"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4118
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:3802
+#, c-format
 msgid "Creating links in \"%s\""
-msgstr "Још једна веза на %s"
+msgstr "Правим везе у „%s“"
 
-#: libcore/marlin-file-operations.c:4123
+#: libcore/marlin-file-operations.c:3807
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Правим везу ка %'d датотеци"
+msgstr[1] "Правим везу ка %'d датотеке"
+msgstr[2] "Правим везу ка %'d датотека"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4233
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:3917
+#, c-format
 msgid "Error while creating link to %s."
-msgstr "Грешка приликом умножавања у „%B“."
+msgstr "Грешка приликом прављења везе ка „%s“."
 
-#: libcore/marlin-file-operations.c:4236
+#: libcore/marlin-file-operations.c:3920
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Симболичке везе су подржане само за локалне датотеке"
 
-#: libcore/marlin-file-operations.c:4239
+#: libcore/marlin-file-operations.c:3923
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "Одредиште не подржава симболичке везе."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4244
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:3928
+#, c-format
 msgid "There was an error creating the symlink in %s."
-msgstr "Постоји грешка приликом читања фасцикле „%B“."
+msgstr "Дошло је до грешке приликом стварања симболичке везе у „%s“."
 
-#: libcore/marlin-file-operations.c:4532
+#: libcore/marlin-file-operations.c:4218
 msgid "Setting permissions"
-msgstr ""
+msgstr "Постављам овлашћења"
 
-#: libcore/marlin-file-operations.c:4721
+#: libcore/marlin-file-operations.c:4409
+msgid "Zero files to process"
+msgstr "Нула датотека за обраду"
+
+#: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Не могу да умножим у смеће."
 
-#: libcore/marlin-file-operations.c:4722 libcore/marlin-file-operations.c:4730
+#: libcore/marlin-file-operations.c:4418 libcore/marlin-file-operations.c:4426
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Није дозвољено умножавање датотека у смеће"
 
-#: libcore/marlin-file-operations.c:4862
-#, fuzzy
+#: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
-msgstr "%u фасцикле"
+msgstr "неименована фасцикла"
 
-#: libcore/marlin-file-operations.c:4870
+#: libcore/marlin-file-operations.c:4565
 msgid "new file"
-msgstr ""
+msgstr "нова датотека"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5039
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:4734
+#, c-format
 msgid "Error while creating directory %s."
-msgstr "Грешка приликом умножавања у „%B“."
+msgstr "Грешка приликом стварања директоријума „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5042
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:4737
+#, c-format
 msgid "Error while creating file %s."
-msgstr "Грешка приликом умножавања у „%B“."
+msgstr "Грешка приликом стварања датотеке „%s“."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5048
-#, fuzzy, c-format
+#: libcore/marlin-file-operations.c:4743
+#, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Постоји грешка приликом читања фасцикле „%B“."
+msgstr "Дошло је до грешке прi стварању директоријума у „%s“."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
-msgstr ""
+msgstr "Упишите путању"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Идите до „%s“"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Иди на „%s“"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
-#, fuzzy
 msgid "Type Path"
-msgstr "Тип"
+msgstr "Упиши путању"
 
 #: libwidgets/View/SearchResults.vala:82
 msgid "More Results …"
-msgstr ""
+msgstr "Још резултата …"
 
 #: libwidgets/View/SearchResults.vala:274
 msgid "In This Folder"
-msgstr ""
+msgstr "У овој фасцикли"
 
 #: libwidgets/View/SearchResults.vala:278
 msgid "Below This Folder"
-msgstr ""
+msgstr "Испод ове фасцикле"
 
 #: libwidgets/View/SearchResults.vala:287
 msgid "Recently Used"
-msgstr ""
+msgstr "Скоро коришћене"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:34
 msgid "View as Grid"
-msgstr ""
+msgstr "Прикажи мрежом"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:41
 msgid "View as List"
-msgstr ""
+msgstr "Прикажи списком"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
-msgstr ""
+msgstr "Прикажи колонама"
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Датотеке"
 
-#: libwidgets/Resources.vala:58
+#: libwidgets/Resources.vala:61
 msgid "AFP"
 msgstr "АФП"
 
-#: libwidgets/Resources.vala:59
+#: libwidgets/Resources.vala:62
+msgid "AFC"
+msgstr "АФЦ"
+
+#: libwidgets/Resources.vala:63
 msgid "DAV"
 msgstr "ДАВ"
 
-#: libwidgets/Resources.vala:60
+#: libwidgets/Resources.vala:64
 msgid "DAVS"
 msgstr "ДАВС"
 
-#: libwidgets/Resources.vala:61
+#: libwidgets/Resources.vala:65
 msgid "FTP"
 msgstr "ФТП"
 
-#: libwidgets/Resources.vala:63
+#: libwidgets/Resources.vala:67
 msgid "SFTP"
 msgstr "СФТП"
 
-#: libwidgets/Resources.vala:64
+#: libwidgets/Resources.vala:68
 msgid "SMB"
 msgstr "СМБ"
 
-#: libwidgets/Resources.vala:66
+#: libwidgets/Resources.vala:70
 msgid "Recent"
-msgstr ""
+msgstr "Скорашње"
 
-#: libwidgets/Resources.vala:67
+#: libwidgets/Resources.vala:71
 msgid "MTP"
-msgstr ""
+msgstr "МТП"
+
+#: libwidgets/Resources.vala:72
+msgid "GPHOTO2"
+msgstr "ГФото2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
-msgstr ""
+msgstr "Поврати све"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Избаци смеће"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr " одабрано"
+msgstr "Поврати изабрано"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " одабрано"
+msgstr "Обриши изабрано"
+
+#~ msgid "Devices"
+#~ msgstr "Уређаји"
+
+#~ msgid "FileSystem"
+#~ msgstr "Систем Датотека"
+
+#~ msgid "Eject '%s'"
+#~ msgstr "Избаци „%s“"
+
+#~ msgid "Error mounting volume '%s'"
+#~ msgstr "Грешка качења волумена „%s“"
+
+#~ msgid "Unable to start '%s'"
+#~ msgstr "Не могу да покренем „%s“"
+
+#~ msgid "Open your personal folder"
+#~ msgstr "Отворите вашу личну фасциклу"
+
+#~ msgid "Connect to a network server"
+#~ msgstr "Повежите се на сервер мреже"
+
+#~ msgid "%s on %s"
+#~ msgstr "„%s“ на „%s“"
+
+#~ msgid " and %u other items (%s) selected"
+#~ msgstr " и %u друге ставке (%s) изабране"
+
+#~ msgid "%u sub-folders, "
+#~ msgstr "%u подфасцикле, "
+
+#~ msgid "%u files, "
+#~ msgstr "%u датотеке, "
+
+#~ msgid "%u files not readable"
+#~ msgstr "%u датотеке нису читљиве"
 
 #, fuzzy
 #~ msgid "%s (link %d)"
@@ -2073,9 +2090,6 @@ msgstr " одабрано"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Обришите %d копиране ставке"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Обришите „%s“"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Обришите %d дуплиране ставке"

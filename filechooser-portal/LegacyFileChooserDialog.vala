@@ -22,7 +22,7 @@
 /*** The Gtk.FileChooserWidget widget names and paths can be found in "gtkfilechooserwidget.ui"
  *   in the Gtk+3 source code package.  Changes to that file could break this code.
 ***/
-public class CustomFileChooserDialog : Object {
+public class Files.LegacyFileChooserDialog : Object {
     /* Response to get parent of the bottom box */
     private const int BUTTON_RESPONSE = -6;
 
@@ -50,7 +50,11 @@ public class CustomFileChooserDialog : Object {
     private bool is_single_click = true;
     private bool can_activate = true;
 
-    public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
+    public LegacyFileChooserDialog (Gtk.FileChooserDialog dialog) {
+        // Don't apply the legacy filechooser twice
+        if ("pantheon-filechooser-module" in Gtk.Settings.get_default ().gtk_modules)
+            return;
+
         previous_paths = new GLib.Queue<string> ();
         next_paths = new GLib.Queue<string> ();
         /* The "chooser_dialog" variable is the main dialog */
@@ -69,8 +73,6 @@ public class CustomFileChooserDialog : Object {
         remove_gtk_widgets ();
         setup_filter_box ();
 
-        var header_bar = new Gtk.HeaderBar ();
-
         var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_back.tooltip_text = _("Previous");
         button_back.sensitive = false;
@@ -82,6 +84,7 @@ public class CustomFileChooserDialog : Object {
         var location_bar = new Marlin.View.Chrome.BasicLocationBar ();
         location_bar.hexpand = true;
 
+        var header_bar = new Gtk.HeaderBar ();
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
         header_bar.pack_start (location_bar);
