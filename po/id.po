@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
 "PO-Revision-Date: 2020-11-16 11:15+0000\n"
 "Last-Translator: deovaliandro <mdv16h@student.unhas.ac.id>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
@@ -660,23 +660,24 @@ msgstr "Penanda Taut"
 msgid "Common places plus saved folders and files"
 msgstr "Tempat umum ditambah folder dan file yang disimpan"
 
-#: src/View/Sidebar/SidebarWindow.vala:52
-msgid "Devices"
-msgstr "Perangkat"
-
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
 msgstr "Perangkat penyimpanan internal dan terhubung"
 
-#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "Jaringan"
 
-#: src/View/Sidebar/SidebarWindow.vala:60
+#: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
 msgstr "Perangkat dan tempat yang tersedia melalui jaringan"
 
-#: src/View/Sidebar/SidebarWindow.vala:80
+#: src/View/Sidebar/SidebarWindow.vala:83
 #, fuzzy
 #| msgid "Connect to Server…"
 msgid "Connect Server…"
@@ -1974,6 +1975,9 @@ msgstr "Pulihkan yang Terpilih"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Hapus yang Terpilih"
+
+#~ msgid "Devices"
+#~ msgstr "Perangkat"
 
 #, fuzzy
 #~| msgid "File System"

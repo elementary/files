@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -676,23 +676,24 @@ msgstr "بک مارک"
 msgid "Common places plus saved folders and files"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:52
-msgid "Devices"
-msgstr "آلات"
-
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "نیٹ ورک"
 
-#: src/View/Sidebar/SidebarWindow.vala:60
+#: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:80
+#: src/View/Sidebar/SidebarWindow.vala:83
 #, fuzzy
 #| msgid "Connect to Server…"
 msgid "Connect Server…"
@@ -2016,6 +2017,9 @@ msgstr "تمام واپس لائیں"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " منتخب کردہ"
+
+#~ msgid "Devices"
+#~ msgstr "آلات"
 
 #, fuzzy
 #~| msgid "File System"

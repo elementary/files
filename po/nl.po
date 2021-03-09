@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-26 17:46+0000\n"
+"POT-Creation-Date: 2021-03-03 22:54+0000\n"
 "PO-Revision-Date: 2020-10-31 21:15+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -670,23 +670,24 @@ msgstr "Bladwijzers"
 msgid "Common places plus saved folders and files"
 msgstr "Gebruikelijke plaatsen en bewaarde mappen en bestanden"
 
-#: src/View/Sidebar/SidebarWindow.vala:52
-msgid "Devices"
-msgstr "Apparaten"
-
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
 msgstr "Interne en verbonden opslagapparaten"
 
-#: src/View/Sidebar/SidebarWindow.vala:59 libwidgets/Resources.vala:66
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
 msgstr "Netwerk"
 
-#: src/View/Sidebar/SidebarWindow.vala:60
+#: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
 msgstr "Apparaten en locaties beschikbaar via een netwerk"
 
-#: src/View/Sidebar/SidebarWindow.vala:80
+#: src/View/Sidebar/SidebarWindow.vala:83
 #, fuzzy
 #| msgid "Connect Server"
 msgid "Connect Server…"
@@ -2023,6 +2024,9 @@ msgstr "Selectie herstellen"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Selectie verwijderen"
+
+#~ msgid "Devices"
+#~ msgstr "Apparaten"
 
 #, fuzzy
 #~| msgid "File System"
