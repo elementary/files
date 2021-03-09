@@ -367,14 +367,16 @@ namespace Marlin.View.Chrome {
                                                                      out current_suggested_action);
 
                     if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
-                        success = dnd_handler.handle_file_drag_actions (this,
-                                                                        this.get_toplevel () as Gtk.ApplicationWindow,
-                                                                        context,
-                                                                        drop_target_file,
-                                                                        drop_file_list,
-                                                                        current_actions,
-                                                                        current_suggested_action,
-                                                                        timestamp);
+                        success = dnd_handler.handle_file_drag_actions (
+                            this,
+                            context,
+                            drop_target_file,
+                            drop_file_list,
+                            current_actions,
+                            current_suggested_action,
+                            (Gtk.ApplicationWindow)Marlin.get_active_window (),
+                            timestamp
+                        );
                     }
                 }
                 Gtk.drag_finish (context, success, false, timestamp);

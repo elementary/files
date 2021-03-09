@@ -28,34 +28,32 @@ namespace PF {
                 break;
         }
 
-        var dialog = new Granite.MessageDialog.with_image_from_icon_name (primary_text,
-                                                                          secondary_text,
-                                                                          image_name,
-                                                                          Gtk.ButtonsType.NONE);
-        dialog.transient_for = parent_window;
-
-        int response_id = 0;
-        for (unowned string? title = varargs.arg<string?> (); title != null ; title = varargs.arg<string?> ()) {
-            dialog.add_button (title, response_id);
-            if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
-                unowned Gtk.Widget button = dialog.get_widget_for_response (response_id);
-                button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-            }
-
-            response_id++;
-        }
-
-        if (response_id == 0) {
-            dialog.add_button (_("Close"), 0);
-        }
-
         var main_loop = new GLib.MainLoop ();
-        dialog.response.connect ((response_id) => {
-            result = response_id;
-            main_loop.quit ();
-        });
+        var buttons = new GLib.List<string> ();
+        for (unowned string? title = varargs.arg<string?> (); title != null ; title = varargs.arg<string?> ()) {
+            buttons.append (title);
+        }
 
         Idle.add (() => {
+            var dialog = new Granite.MessageDialog.with_image_from_icon_name (primary_text,
+                                                                              secondary_text,
+                                                                              image_name,
+                                                                              Gtk.ButtonsType.NONE);
+            dialog.transient_for = parent_window;
+            int response_id = 0;
+            foreach (unowned string title in buttons) {
+                unowned Gtk.Widget button = dialog.add_button (title, response_id);
+                if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
+                    button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                }
+
+                response_id++;
+            }
+
+            if (response_id == 0) {
+                dialog.add_button (_("Close"), 0);
+            }
+
             //FIXME: Granite.MessageDialog.show_error_details call Gtk.Widget.show_all ()
             // which breaks the current implementation in marlin-file-operation.c
             // as the dialog is being created in a thread but presented in the
@@ -64,12 +62,17 @@ namespace PF {
                 dialog.show_error_details (details_text);
             }
 
+            dialog.response.connect ((response_id) => {
+                result = response_id;
+                main_loop.quit ();
+                dialog.destroy ();
+            });
+
             dialog.show ();
             return Source.REMOVE;
         });
 
         main_loop.run ();
-        dialog.destroy ();
         info.resume ();
         time.continue ();
         return result;

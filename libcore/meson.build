@@ -11,7 +11,6 @@ pantheon_files_core_deps = [
 ]
 
 pantheon_files_core_vala_files = files(
-    'AbstractSidebar.vala',
     'AbstractSlot.vala',
     'Bookmark.vala',
     'BookmarkList.vala',
@@ -43,6 +42,7 @@ pantheon_files_core_vala_files = files(
     'FileOperations/EmptyTrashJob.vala',
     'FileOperations/MountUtils.vala',
     'FileOperations/DialogUtils.vala',
+    'Interfaces/SidebarInterface.vala',
 )
 
 pantheon_files_core_c_files = files(
