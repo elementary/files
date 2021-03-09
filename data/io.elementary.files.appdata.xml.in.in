@@ -64,6 +64,10 @@
         <ul>
           <li>Fix connecting to AFP servers so that passwords are remembered</li>
         </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
+        </ul>
       </description>
     </release>
     <release version="4.5.0" date="2020-08-11" urgency="medium">

@@ -140,7 +140,7 @@ namespace PF.FileUtils {
                     info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH,
                                                      GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                 } catch (GLib.Error e) {
-                    debug ("Error querying info of trashed file %s - %s", file.uri, e.message);
+                    debug ("Error querying info of trashed file %s: %s", file.uri, e.message);
                     return null;
                 }
             }
@@ -342,6 +342,23 @@ namespace PF.FileUtils {
             new_path = new_path.slice (Marlin.ROOT_FS_URI.length, new_path.length);
         }
 
+        if (scheme.has_prefix ("afc")) {
+            var colon_parts = new_path.split (":", 3);
+            if (colon_parts.length > 2) {
+                /* It may be enough to only process device addresses but we deal with all afc uris in case.
+                 * We have to assume the true device name does not contain any colons */
+                var separator_parts = colon_parts[2].split (Path.DIR_SEPARATOR_S, 2);
+                var device_name_end = separator_parts[0];
+                if (uint64.try_parse (device_name_end)) {
+                    /* Device ends in e.g. `:3`. Need to strip this suffix to successfully browse */
+                    new_path = string.join (":", colon_parts[0], colon_parts[1]);
+                    if (separator_parts.length > 1) {
+                        new_path = string.join (Path.DIR_SEPARATOR_S, new_path, separator_parts[1]);
+                    }
+                }
+            }
+        }
+
         return new_path;
     }
 
@@ -390,12 +407,14 @@ namespace PF.FileUtils {
         if (!uri.contains (Marlin.MTP_URI) && !uri.contains (Marlin.PTP_URI)) {
             return false;
         }
+
         string[] explode_protocol = uri.split ("://", 2);
         if (explode_protocol.length != 2 ||
             !explode_protocol[1].has_prefix ("[") ||
             !explode_protocol[1].contains ("]")) {
             return false;
         }
+
         return true;
     }
 
@@ -617,6 +636,7 @@ namespace PF.FileUtils {
             case Marlin.SFTP_URI:
             case Marlin.FTP_URI:
             case Marlin.MTP_URI:
+            case Marlin.AFC_URI:
             case Marlin.PTP_URI:
                 return false;
             default:
@@ -653,6 +673,8 @@ namespace PF.FileUtils {
                 return false;
             case "afp" :
                 return false;
+            case "afc" :
+                return false; //Assumed to be the case
             case "dav" :
                 return false;
             case "davs" :
@@ -680,7 +702,6 @@ namespace PF.FileUtils {
         var actions = context.get_actions ();
         var suggested_action = context.get_suggested_action ();
         var target_location = dest.get_target_location ();
-
         suggested_action_return = Gdk.DragAction.PRIVATE;
 
         if (drop_file_list == null || drop_file_list.data == null) {
@@ -746,7 +767,6 @@ namespace PF.FileUtils {
         bool from_trash = false;
 
         foreach (var drop_file in drop_file_list) {
-
             if (location_is_in_trash (drop_file)) {
                 from_trash = true;
 
@@ -1132,6 +1152,10 @@ namespace PF.FileUtils {
             return (int) long.min (max_path - (dir.length + 1), max_name);
         }
     }
+
+    public bool protocol_is_supported (string protocol) {
+        return protocol in GLib.Vfs.get_default ().get_supported_uri_schemes ();
+    }
 }
 
 namespace Marlin {
@@ -1140,6 +1164,7 @@ namespace Marlin {
     public const string NETWORK_URI = "network://";
     public const string RECENT_URI = "recent://";
     public const string AFP_URI = "afp://";
+    public const string AFC_URI = "afc://";
     public const string DAV_URI = "dav://";
     public const string DAVS_URI = "davs://";
     public const string SFTP_URI = "sftp://";

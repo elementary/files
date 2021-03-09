@@ -32,7 +32,7 @@ namespace Marlin {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
-        public GOF.File drop_file {get; set;}
+        public GOF.File? drop_file {get; set;}
 
         public Marlin.ZoomLevel zoom_level {
             get {
@@ -182,7 +182,7 @@ namespace Marlin {
                 }
             }
 
-            if (file.is_image () ) {
+            if (file.is_image ()) {
                 style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
                 style_context.add_class (Granite.STYLE_CLASS_CARD);
             }
@@ -234,7 +234,7 @@ namespace Marlin {
 
                 if (prelit) {
                     /* Save position of icon that is being hovered */
-                    hover_rect = draw_rect;
+                    hover_rect = cell_area;
                     hover_helper_rect = helper_rect;
                 }
             }

@@ -256,11 +256,6 @@ namespace FM {
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = true;}
         protected bool hide_local_thumbnails {get; set; default = false;}
-        protected bool is_admin {
-            get {
-                return (uint)Posix.getuid () == 0;
-            }
-        }
 
         private bool all_selected = false;
 
@@ -298,7 +293,7 @@ namespace FM {
 
                 draw_when_idle ();
             });
-            model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+            model = new FM.ListModel ();
             Marlin.app_settings.bind ("single-click",
                                                              this, "single_click_mode", SettingsBindFlags.GET);
             Marlin.app_settings.bind ("show-remote-thumbnails",
@@ -590,7 +585,7 @@ namespace FM {
         }
 
         public void select_gof_file (GOF.File file) {
-            var iter = Gtk.TreeIter ();
+            Gtk.TreeIter iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -600,7 +595,7 @@ namespace FM {
         }
 
         protected void select_and_scroll_to_gof_file (GOF.File file) {
-            var iter = Gtk.TreeIter ();
+            Gtk.TreeIter iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -610,8 +605,7 @@ namespace FM {
         }
 
         protected void add_gof_file_to_selection (GOF.File file) {
-            var iter = Gtk.TreeIter ();
-
+            Gtk.TreeIter iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -692,7 +686,12 @@ namespace FM {
             widget.drag_motion.connect (on_drag_motion);
 
             /* Set up as drag source */
-            Gtk.drag_source_set (widget, Gdk.ModifierType.BUTTON1_MASK, DRAG_TARGETS, FILE_DRAG_ACTIONS);
+            Gtk.drag_source_set (
+                widget,
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK | Gdk.ModifierType.CONTROL_MASK,
+                DRAG_TARGETS,
+                FILE_DRAG_ACTIONS
+            );
             widget.drag_begin.connect (on_drag_begin);
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);
@@ -1110,7 +1109,7 @@ namespace FM {
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-            trash_or_delete_selected_files (is_admin);
+            trash_or_delete_selected_files (Marlin.is_admin ());
         }
 
         private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1356,18 +1355,18 @@ namespace FM {
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
 
-            thaw_tree ();
-
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
-                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+                    model.set_sort_column_id (FM.ListModel.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
                 } else if (slot.directory.file.info != null) {
                     model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
                 }
             } else {
                 is_writable = false;
             }
+
+            thaw_tree ();
 
             schedule_thumbnail_timeout ();
         }
@@ -1382,7 +1381,7 @@ namespace FM {
                 schedule_thumbnail_timeout ();
             }
 
-            model.set_property ("size", icon_size);
+            model.size = icon_size;
             change_zoom_level ();
         }
 
@@ -1635,14 +1634,16 @@ namespace FM {
                             unselect_all ();
                         }
 
-                        success = dnd_handler.handle_file_drag_actions (get_child (),
-                                                                        window,
-                                                                        context,
-                                                                        drop_target_file,
-                                                                        destination_drop_file_list,
-                                                                        current_actions,
-                                                                        current_suggested_action,
-                                                                        timestamp);
+                        success = dnd_handler.handle_file_drag_actions (
+                            get_child (),
+                            context,
+                            drop_target_file,
+                            destination_drop_file_list,
+                            current_actions,
+                            current_suggested_action,
+                            (Gtk.ApplicationWindow)Marlin.get_active_window (),
+                            timestamp
+                        );
 
                         break;
 
@@ -1659,7 +1660,7 @@ namespace FM {
         /* Signal emitted on destination when drag leaves the widget or *before* dropping */
         private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
             /* reset the drop-file for the icon renderer */
-            icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
+            icon_renderer.drop_file = null;
             /* stop any running drag autoscroll timer */
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref drag_enter_timer_id);
@@ -1800,8 +1801,7 @@ namespace FM {
             }
 
             /* Set the icon_renderer drop-file if there is an action */
-            drop_file = can_drop ? drop_file : null;
-            icon_renderer.set_property ("drop-file", drop_file);
+            icon_renderer.drop_file = can_drop ? drop_file : null;
 
             highlight_path (can_drop ? path : null);
         }
@@ -2065,7 +2065,7 @@ namespace FM {
 
                         menu.add (new Gtk.SeparatorMenuItem ());
 
-                        if (slot.directory.has_trash_dirs && !is_admin) {
+                        if (slot.directory.has_trash_dirs && !Marlin.is_admin ()) {
                             menu.add (trash_menuitem);
                         } else {
                             menu.add (delete_menuitem);
@@ -2868,7 +2868,7 @@ namespace FM {
                                                         _("You do not have permission to change this location"),
                                                         window as Gtk.Window);
                     } else if (!renaming) {
-                        trash_or_delete_selected_files (in_trash || is_admin || only_shift_pressed);
+                        trash_or_delete_selected_files (in_trash || Marlin.is_admin () || only_shift_pressed);
                         res = true;
                     }
 
@@ -3562,8 +3562,8 @@ namespace FM {
         }
 
         public virtual void change_zoom_level () {
-            icon_renderer.set_property ("zoom-level", zoom_level);
-            name_renderer.set_property ("zoom-level", zoom_level);
+            icon_renderer.zoom_level = zoom_level;
+            name_renderer.zoom_level = zoom_level;
             view.style_updated ();
         }
 
@@ -3615,53 +3615,12 @@ namespace FM {
 
         }
 
-        protected string get_string_from_column_id (int id) {
-            switch (id) {
-                case FM.ListModel.ColumnID.FILENAME:
-                    return "name";
-
-                case FM.ListModel.ColumnID.SIZE:
-                    return "size";
-
-                case FM.ListModel.ColumnID.TYPE:
-                    return "type";
-
-                case FM.ListModel.ColumnID.MODIFIED:
-                    return "modified";
-
-                default:
-                    warning ("column id not recognised - using 'name'");
-                    return "name";
-            }
-        }
-
-        protected int get_column_id_from_string (string col_name) {
-            switch (col_name) {
-                case "name":
-                    return FM.ListModel.ColumnID.FILENAME;
-
-                case "size":
-                    return FM.ListModel.ColumnID.SIZE;
-
-                case "type":
-                    return FM.ListModel.ColumnID.TYPE;
-
-                case "modified":
-                    return FM.ListModel.ColumnID.MODIFIED;
-
-                default:
-                    warning ("column name not recognised - using FILENAME");
-
-                return FM.ListModel.ColumnID.FILENAME;
-            }
-        }
-
         protected void on_sort_column_changed () {
             int sort_column_id = 0;
             Gtk.SortType sort_order = 0;
 
             /* Setting file attributes fails when root */
-            if (Posix.getuid () == 0) {
+            if (Marlin.is_admin ()) {
                 return;
             }
 
@@ -3674,8 +3633,8 @@ namespace FM {
 
             var info = new GLib.FileInfo ();
             var dir = slot.directory;
-            string sort_col_s = get_string_from_column_id (sort_column_id);
-            string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
+            unowned string sort_col_s = ((FM.ListModel.ColumnID) sort_column_id).to_string ();
+            unowned string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
             info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
             info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
 
@@ -3685,7 +3644,7 @@ namespace FM {
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
-            if (!is_admin) {
+            if (!Marlin.is_admin ()) {
                 dir.location.set_attributes_async.begin (info,
                                                    GLib.FileQueryInfoFlags.NONE,
                                                    GLib.Priority.DEFAULT,
@@ -3695,7 +3654,7 @@ namespace FM {
                         GLib.FileInfo inf;
                         dir.location.set_attributes_async.end (res, out inf);
                     } catch (GLib.Error e) {
-                        warning ("Could not set file attributes - %s", e.message);
+                        warning ("Could not set file attributes: %s", e.message);
                     }
                 });
             }
