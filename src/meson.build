@@ -2,7 +2,6 @@ pantheon_files_deps = [
     common_deps,
     handy_dep,
     pantheon_files_widgets_dep,
-    unity_dep,
     plank_dep,
     zeitgeist_dep,
     project_config_dep,
@@ -16,7 +15,6 @@ pantheon_files_exec = executable (
     'Application.vala',
     'marlin-deep-count.vala',
     'ProgressUIHandler.vala',
-    'QuicklistHandler.vala',
     'TextRenderer.vala',
     'ClipboardManager.vala',
     'IconRenderer.vala',
@@ -29,6 +27,7 @@ pantheon_files_exec = executable (
 
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
+    'Utils/AppUtils.vala',
 
     'View/Window.vala',
     'View/ColumnView.vala',
@@ -40,15 +39,12 @@ pantheon_files_exec = executable (
     'View/Window.vala',
     'View/ViewContainer.vala',
     'View/Browser.vala',
-    'View/Sidebar.vala',
     'View/Slot.vala',
     'View/PrivacyModeOn.vala',
-    'View/PopupMenuBuilder.vala',
     'View/Miller.vala',
 
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/BreadcrumbsEntry.vala',
-    'View/Widgets/DiskRenderer.vala',
     'View/Widgets/HeaderBar.vala',
     'View/Widgets/Label.vala',
     'View/Widgets/LocationBar.vala',
@@ -57,6 +53,18 @@ pantheon_files_exec = executable (
     'View/Widgets/PermissionButton.vala',
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SingleLineEditableLabel.vala',
+
+    'View/Sidebar/SidebarWindow.vala',
+    'View/Sidebar/BookmarkListBox.vala',
+    'View/Sidebar/DeviceListBox.vala',
+    'View/Sidebar/AbstractMountableRow.vala',
+    'View/Sidebar/NetworkListBox.vala',
+    'View/Sidebar/BookmarkRow.vala',
+    'View/Sidebar/DeviceRow.vala',
+    'View/Sidebar/NetworkRow.vala',
+    'View/Sidebar/PopupMenuBuilder.vala',
+    'View/Sidebar/SidebarListInterface.vala',
+    'View/Sidebar/SidebarItemInterface.vala',
 
     dependencies : [
         pantheon_files_deps,

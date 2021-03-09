@@ -58,7 +58,7 @@ namespace Marlin.View {
         public Chrome.ViewSwitcher view_switcher;
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
-        public Marlin.Sidebar sidebar;
+        public Marlin.SidebarInterface sidebar;
         public ViewContainer? current_tab = null;
 
         private bool tabs_restored = false;
@@ -157,7 +157,8 @@ namespace Marlin.View {
 
             tabs.show ();
 
-            sidebar = new Marlin.Sidebar (this);
+            sidebar = new Sidebar.SidebarWindow ();
+            free_space_change.connect (sidebar.on_free_space_change);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 expand = true,
@@ -370,6 +371,7 @@ namespace Marlin.View {
 
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+            sidebar.sync_uri (current_tab.uri);
             top_menu.working = current_tab.is_frozen;
         }
 
@@ -379,7 +381,7 @@ namespace Marlin.View {
 
             if (files == null || files.length == 0 || files[0] == null) {
                 /* Restore session if not root and settings allow */
-                if (Posix.getuid () == 0 ||
+                if (Marlin.is_admin () ||
                     !Marlin.app_settings.get_boolean ("restore-tabs") ||
                     restore_tabs () < 1) {
 
@@ -547,7 +549,7 @@ namespace Marlin.View {
         /* Just to append "as Administrator" when appropriate */
         private void set_tab_label (string label, Granite.Widgets.Tab tab, string? tooltip = null) {
             string lab = label;
-            if (Posix.getuid () == 0) {
+            if (Marlin.is_admin ()) {
                 lab += (" " + _("(as Administrator)"));
             }
 
@@ -557,7 +559,7 @@ namespace Marlin.View {
              * This compiles because tab is a widget but the tootip is overridden by that set internally */
             if (tooltip != null) {
                 var tt = tooltip;
-                if (Posix.getuid () == 0) {
+                if (Marlin.is_admin ()) {
                     tt += (" " + _("(as Administrator)"));
                 }
 
@@ -585,11 +587,11 @@ namespace Marlin.View {
         }
 
         public void bookmark_uri (string uri, string? name = null) {
-            sidebar.add_uri (uri, name);
+            sidebar.add_favorite_uri (uri, name);
         }
 
         public bool can_bookmark_uri (string uri) {
-            return !sidebar.has_bookmark (uri);
+            return !sidebar.has_favorite_uri (uri);
         }
 
 
@@ -635,7 +637,7 @@ namespace Marlin.View {
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
             /* Note: Duplicate bookmarks will not be created by BookmarkList */
-            sidebar.add_uri (current_tab.location.get_uri ());
+            sidebar.add_favorite_uri (current_tab.location.get_uri ());
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
@@ -698,6 +700,10 @@ namespace Marlin.View {
 
                 case "TRASH":
                     uri_path_change_request (Marlin.TRASH_URI);
+                    break;
+
+                case "ROOT":
+                    uri_path_change_request (Marlin.ROOT_FS_URI);
                     break;
 
                 case "NETWORK":
@@ -858,11 +864,13 @@ namespace Marlin.View {
         }
 
         void show_app_help () {
-            try {
-                Gtk.show_uri (screen, Marlin.HELP_URL, -1);
-            } catch (Error e) {
-                critical ("Can't open the link");
-            }
+            AppInfo.launch_default_for_uri_async.begin (Marlin.HELP_URL, null, null, (obj, res) => {
+                try {
+                    AppInfo.launch_default_for_uri_async.end (res);
+                } catch (Error e) {
+                    warning ("Could not open help: %s", e.message);
+                }
+            });
         }
 
         private GLib.SimpleAction? get_action (string action_name) {
@@ -1089,6 +1097,7 @@ namespace Marlin.View {
             if (current_tab != null) { /* Can happen during restore */
                 set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
                 top_menu.update_location_bar (uri);
+                sidebar.sync_uri (uri);
             }
         }
 
@@ -1162,16 +1171,24 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
             application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
-            application.set_accels_for_action ("win.view-mode(0)", {"<Ctrl>1"});
-            application.set_accels_for_action ("win.view-mode(1)", {"<Ctrl>2"});
-            application.set_accels_for_action ("win.view-mode(2)", {"<Ctrl>3"});
+            application.set_accels_for_action (
+                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (0)), {"<Ctrl>1"}
+            );
+            application.set_accels_for_action (
+                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (1)), {"<Ctrl>2"}
+            );
+            application.set_accels_for_action (
+                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (2)), {"<Ctrl>3"}
+            );
             application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
             application.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
             application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             application.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
+            application.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
             application.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+            application.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
             application.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
             application.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});

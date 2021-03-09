@@ -202,6 +202,7 @@ namespace Marlin {
         STRING,
         TEXT_URI_LIST,
         XDND_DIRECT_SAVE0,
-        NETSCAPE_URL
+        NETSCAPE_URL,
+        BOOKMARK_ROW
     }
 }

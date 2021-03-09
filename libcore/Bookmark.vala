@@ -41,6 +41,13 @@ namespace Marlin {
         }
 
         public GOF.File gof_file { get; private set; }
+
+        public string uri {
+            get {
+                return gof_file.uri;
+            }
+        }
+
         private GLib.FileMonitor monitor;
 
         public static CompareFunc<Bookmark> compare_with = (a, b) => {
@@ -69,10 +76,6 @@ namespace Marlin {
 
         public unowned GLib.File get_location () {
             return this.gof_file.location;
-        }
-
-        public string get_uri () {
-            return this.get_location ().get_uri ();
         }
 
         public string get_parse_name () {

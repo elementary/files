@@ -511,7 +511,7 @@ namespace Marlin.View {
             }
 
             /* Using file_a.equal (file_b) can fail to detect equivalent locations */
-            if (PF.FileUtils.same_location (uri, loc.get_uri ())) {
+            if (!(view is Miller) && PF.FileUtils.same_location (uri, loc.get_uri ())) {
                 return;
             }
 

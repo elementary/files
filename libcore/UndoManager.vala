@@ -168,7 +168,7 @@ namespace Marlin {
                     }
                 }
             } catch (Error e) {
-                critical ("%s", e.message);
+                critical (e.message);
             }
 
             return to_restore;

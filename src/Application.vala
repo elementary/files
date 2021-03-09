@@ -72,15 +72,6 @@ public class Marlin.Application : Gtk.Application {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
         }
 
-        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
-
-        /* Only allow running with root privileges using pkexec, not using sudo */
-        if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible. " +
-                     "Please use the command: io.elementary.files-pkexec [folder]");
-            quit ();
-        };
-
         init_schemas ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
@@ -110,6 +101,15 @@ public class Marlin.Application : Gtk.Application {
         this.window_removed.connect (() => {
             window_count--;
         });
+
+        var granite_settings = Granite.Settings.get_default ();
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+        });
     }
 
     public unowned Marlin.ClipboardManager get_clipboard_manager () {
@@ -121,6 +121,15 @@ public class Marlin.Application : Gtk.Application {
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
+        /* Only allow running with root privileges using pkexec, not using sudo */
+        if (Marlin.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+            warning ("Running Files as root using sudo is not possible. " +
+                     "Please use the command: io.elementary.files-pkexec [folder]");
+            quit ();
+            return 1;
+        };
+
+        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
         this.hold ();
         int result = _command_line (cmd);
         this.release ();
