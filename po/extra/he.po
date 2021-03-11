@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2020-12-14 10:01+0000\n"
+"PO-Revision-Date: 2021-03-11 08:03+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
@@ -68,7 +68,7 @@ msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Do not restore locations that have become inaccessible"
-msgstr ""
+msgstr "לא לשחזר את המיקומים שהפכו לבלתי נגישים"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
