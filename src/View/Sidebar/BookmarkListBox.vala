@@ -41,6 +41,16 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         bookmark_list.loaded.connect (() => {
             refresh ();
         });
+        row_activated.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                open_item ((SidebarItemInterface) row);
+            }
+        });
+        row_selected.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                select_item ((SidebarItemInterface) row);
+            }
+        });
     }
 
     public SidebarItemInterface? add_bookmark (string label,

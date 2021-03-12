@@ -163,10 +163,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         show_all ();
 
         key_press_event.connect (on_key_press_event);
-        button_press_event.connect (on_button_press_event);
         button_release_event.connect_after (after_button_release_event);
-
-        activate.connect (() => {activated ();});
 
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
@@ -220,11 +217,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return false;
     }
 
-    protected virtual bool on_button_press_event (Gdk.EventButton event) {
-        list.select_item (this);
-        return false;
-    }
-
     protected virtual bool after_button_release_event (Gdk.EventButton event) {
         if (!valid) { //Ignore if in the process of being removed
             return true;
@@ -235,10 +227,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
 
         switch (event.button) {
-            case Gdk.BUTTON_PRIMARY:
-                activated ();
-                return true;
-
             case Gdk.BUTTON_SECONDARY:
                 popup_context_menu (event);
                 return true;
