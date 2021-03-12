@@ -105,8 +105,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         target_file = GOF.File.get_by_uri (uri);
         target_file.ensure_query_info ();
 
-        /* If put margin on the row then drag and drop does not work when over the margin so we put
-         * the margin on the content grid */
         //Set a fallback tooltip to stop category tooltip appearing inappropriately
         set_tooltip_text (PF.FileUtils.sanitize_path (uri, null, false));
 
@@ -163,9 +161,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         show_all ();
 
         key_press_event.connect (on_key_press_event);
-        button_press_event.connect (on_button_press_event);
         button_release_event.connect_after (after_button_release_event);
 
+        //Key-binding signal 
         activate.connect (() => {activated ();});
 
         notify["gicon"].connect (() => {
@@ -220,11 +218,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return false;
     }
 
-    protected virtual bool on_button_press_event (Gdk.EventButton event) {
-        list.select_item (this);
-        return false;
-    }
-
     protected virtual bool after_button_release_event (Gdk.EventButton event) {
         if (!valid) { //Ignore if in the process of being removed
             return true;
@@ -235,10 +228,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
 
         switch (event.button) {
-            case Gdk.BUTTON_PRIMARY:
-                activated ();
-                return true;
-
             case Gdk.BUTTON_SECONDARY:
                 popup_context_menu (event);
                 return true;
@@ -248,6 +237,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 return true;
 
             default:
+                //Parent listbox deals with primary clicks
                 return false;
         }
     }

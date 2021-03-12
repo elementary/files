@@ -41,6 +41,11 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         bookmark_list.loaded.connect (() => {
             refresh ();
         });
+
+        //Deal with unintercepted primary click anywhere on row
+        row_activated.connect ((row) => {
+            ((SidebarItemInterface)row).activated ();
+        });
     }
 
     public SidebarItemInterface? add_bookmark (string label,
