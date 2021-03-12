@@ -39,7 +39,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         volume_monitor.drive_connected.connect (bookmark_stoppable_or_removeable_drive_if_without_volumes);
         row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
-                open_item ((SidebarItemInterface) row);
+                ((SidebarItemInterface) row).activated ();
             }
         });
         row_selected.connect ((row) => {

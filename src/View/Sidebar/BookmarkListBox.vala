@@ -43,7 +43,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         });
         row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
-                open_item ((SidebarItemInterface) row);
+                ((SidebarItemInterface) row).activated ();
             }
         });
         row_selected.connect ((row) => {
