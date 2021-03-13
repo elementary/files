@@ -881,6 +881,7 @@ namespace PF.FileUtils {
         }
     }
 
+    /* Only call this when standard_target_uri has "afp" scheme as we do not check again. */
     public string get_afp_target_uri (string standard_target_uri, string uri) {
         /* For afp:// addresses the standard target uri has the user name stripped - we need to replace it */
         if (Uri.parse_scheme (uri) == "afp") {
@@ -891,7 +892,7 @@ namespace PF.FileUtils {
                     return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, origin_host, target_filename);
                 }
             }
-        } else if (Uri.parse_scheme (standard_target_uri) == "afp") {
+        } else {
             /* Probably clicked on an AFP server in network:// view which gives weird gvfs uri like:
              * network:///dnssd-domain-<host>._afpovertcp._tcp.  We have to get any missing username from
              * the Environment */
