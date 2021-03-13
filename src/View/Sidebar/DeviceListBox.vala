@@ -37,6 +37,16 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         volume_monitor.volume_added.connect (bookmark_volume_if_without_mount);
         volume_monitor.mount_added.connect (bookmark_mount_if_native_and_not_shadowed);
         volume_monitor.drive_connected.connect (bookmark_stoppable_or_removeable_drive_if_without_volumes);
+        row_activated.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                open_item ((SidebarItemInterface) row);
+            }
+        });
+        row_selected.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                select_item ((SidebarItemInterface) row);
+            }
+        });
     }
 
     private DeviceRow? add_bookmark (string label, string uri, Icon gicon,
