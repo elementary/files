@@ -925,6 +925,8 @@ namespace PF.FileUtils {
             }
         }
 
+        warning ("Error getting afp user and server from %s: Invalid uri format", uri);
+
         return false;
     }
 
