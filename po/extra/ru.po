@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-03 14:12+0000\n"
+"PO-Revision-Date: 2021-03-15 00:34+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -646,7 +646,7 @@ msgstr "Новые переводы"
 #: data/io.elementary.files.appdata.xml.in.in:412
 #: data/io.elementary.files.appdata.xml.in.in:436
 msgid "Minor bug fixes"
-msgstr "Исправления небольших ошибок"
+msgstr "Исправления незначительных ошибок"
 
 #: data/io.elementary.files.appdata.xml.in.in:357
 msgid "Improved networking support"
