@@ -894,15 +894,11 @@ namespace PF.FileUtils {
             }
         } else {
             /* Probably clicked on an AFP server in network:// view which gives weird gvfs uri like:
-             * network:///dnssd-domain-<host>._afpovertcp._tcp.  We have to get any missing username from
-             * the Environment */
+             * network:///dnssd-domain-<host>._afpovertcp._tcp. We omit a username so that a system dialog will
+             * be triggered requesting input of name (and password). */
             string target_host, target_filename;
             if (get_afp_user_server_and_filename (standard_target_uri, out target_filename, out target_host)) {
-                if (!target_host.contains ("@")) {
-                    /* Cannot get username from origin uri so just use Environment user name */
-                    target_host = GLib.Environment.get_user_name () + "@" + target_host.dup ();
-                    return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, target_host, target_filename);
-                }
+                return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, target_host, target_filename);
             }
         }
 
