@@ -33,7 +33,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         volume_monitor.mount_added.connect (bookmark_mount_if_not_native_and_not_shadowed);
         row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
-                open_item ((SidebarItemInterface) row);
+                ((SidebarItemInterface) row).activated ();
             }
         });
         row_selected.connect ((row) => {
