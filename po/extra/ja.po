@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-11 04:50+0000\n"
+"PO-Revision-Date: 2021-03-16 11:17+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -657,7 +657,7 @@ msgstr "地域化に関する修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:339
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr "100 件以上の大規模または軽微な不具合修正と改善"
+msgstr "100件以上の大規模または軽微な不具合修正と改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:346
 msgid "Honor 12/24hr system setting"
