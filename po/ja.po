@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-04 10:18+0000\n"
+"PO-Revision-Date: 2021-03-16 11:17+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -126,7 +126,7 @@ msgstr "権限"
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i 個のファイルが権限またはそのほかのエラーにより読み込めません。"
+msgstr[0] "%i個のファイルが権限またはそのほかのエラーにより読み込めません。"
 
 #: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
@@ -216,14 +216,14 @@ msgstr "全員:"
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] "%u 個のサブフォルダー"
+msgstr[0] "%u個のサブフォルダー"
 
 #: src/Dialogs/PropertiesWindow.vala:1231
 #: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] "%u 個のファイル"
+msgstr[0] "%u個のファイル"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
@@ -236,13 +236,13 @@ msgstr "%s、%s"
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] "%u 個のフォルダー"
+msgstr[0] "%u個のフォルダー"
 
 #: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] "%u 個の選択項目"
+msgstr[0] "%u個の選択項目"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1260
@@ -744,13 +744,13 @@ msgstr "検索しています…"
 #: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
-msgstr "%u 個のフォルダー"
+msgstr "%u個のフォルダー"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " と %u 個のほかの項目を選択 (%s)"
+msgstr[0] " と%u個のほかの項目を選択 (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -759,21 +759,21 @@ msgstr " を選択"
 #: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u 個の項目を選択 (%s)"
+msgstr "%u個の項目を選択 (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u 個のサブフォルダー、 "
+msgstr[0] "%u個のサブフォルダー、 "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] "%u 個のファイル、 "
+msgstr[0] "%u個のファイル、 "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -791,7 +791,7 @@ msgstr "不明なサイズ"
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] "%u 個のファイルが読み込めません"
+msgstr[0] "%u個のファイルが読み込めません"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
