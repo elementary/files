@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-15 00:34+0000\n"
+"PO-Revision-Date: 2021-03-17 18:13+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -216,10 +216,8 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:136
 #: data/io.elementary.files.appdata.xml.in.in:150
-#, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
-msgstr "Исправления небольших ошибок"
+msgstr "Незначительные обновления:"
 
 #: data/io.elementary.files.appdata.xml.in.in:138
 #, fuzzy
