@@ -34,7 +34,17 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     construct {
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
+        volume_monitor.mount_added.connect_after ((mount) => {
+            /* This delay is needed to ensure that any corresponding volume row has finished updating after
+             * mounting as a result of activating the row. Otherwise may get duplicate mount row e.g. for some MTP or
+             * PTP mounts where the mount name differs from the volume name and get_uuid () yields null.
+            */
+            Timeout.add (100, () => {
+                bookmark_mount_if_not_shadowed (mount);
+                return Source.REMOVE;
+            });
+        });
+
         volume_monitor.volume_added.connect (refresh);
         volume_monitor.drive_connected.connect (refresh);
 
@@ -194,16 +204,21 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         };
 
         var volume = mount.get_volume ();
-        string? uuid = null;
-        if (volume != null) {
-            uuid = volume.get_uuid ();
-        } else {
-            uuid = mount.get_uuid ();
+        var uuid = mount.get_uuid ();
+        if (uuid == null || uuid == "") {
+            if (volume != null) {
+                uuid = volume.get_uuid ();
+            }
+        }
+
+        var path = mount.get_default_location ().get_uri ();
+        if (uuid == null || uuid == "") {
+            uuid = path;
         }
 
         add_bookmark (
             mount.get_name (),
-            mount.get_default_location ().get_uri (),
+            path,
             mount.get_icon (),
             uuid,
             mount.get_drive (),
