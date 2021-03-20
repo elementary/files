@@ -902,7 +902,7 @@ msgstr "Davom etish"
 
 #: libcore/ConnectServerDialog.vala:274
 msgid "Connecting…"
-msgstr ""
+msgstr "Bog'lanmoqda…"
 
 #: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
