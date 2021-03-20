@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2010 Mathijs Henquet <mathijs.henquet@gmail.com>
-*               2017-2018 elementary LLC. <https://elementary.io>
+*               2017-2020 elementary, Inc. <https://elementary.io>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -58,11 +58,11 @@ namespace Marlin.View {
         public Chrome.ViewSwitcher view_switcher;
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
-        public Marlin.Sidebar sidebar;
+        public Marlin.SidebarInterface sidebar;
         public ViewContainer? current_tab = null;
 
         private bool tabs_restored = false;
-        private bool restoring_tabs = false;
+        private int restoring_tabs = 0;
         private bool doing_undo_redo = false;
 
         public signal void loading_uri (string location);
@@ -157,7 +157,8 @@ namespace Marlin.View {
 
             tabs.show ();
 
-            sidebar = new Marlin.Sidebar (this);
+            sidebar = new Sidebar.SidebarWindow ();
+            free_space_change.connect (sidebar.on_free_space_change);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 expand = true,
@@ -310,10 +311,8 @@ namespace Marlin.View {
 
                 marlin_app.create_window (vc.location, real_mode (vc.view_mode));
 
-                Idle.add (() => {
-                    remove_tab (vc);
-                    return GLib.Source.REMOVE;
-                });
+                /* remove_tab function uses Idle loop to close tab */
+                remove_tab (tab);
             });
 
 
@@ -355,13 +354,13 @@ namespace Marlin.View {
         }
 
         private void change_tab (int offset) {
-            if (restoring_tabs) {
-                return;
-            }
-
             ViewContainer? old_tab = current_tab;
             current_tab = (ViewContainer)((tabs.get_tab_by_index (offset)).page) ;
             if (current_tab == null || old_tab == current_tab) {
+                return;
+            }
+
+            if (restoring_tabs > 0) {
                 return;
             }
 
@@ -372,6 +371,7 @@ namespace Marlin.View {
 
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+            sidebar.sync_uri (current_tab.uri);
             top_menu.working = current_tab.is_frozen;
         }
 
@@ -381,7 +381,7 @@ namespace Marlin.View {
 
             if (files == null || files.length == 0 || files[0] == null) {
                 /* Restore session if not root and settings allow */
-                if (Posix.getuid () == 0 ||
+                if (Marlin.is_admin () ||
                     !Marlin.app_settings.get_boolean ("restore-tabs") ||
                     restore_tabs () < 1) {
 
@@ -456,6 +456,17 @@ namespace Marlin.View {
             });
 
             content.loading.connect ((is_loading) => {
+                if (restoring_tabs > 0 && !is_loading) {
+                    restoring_tabs--;
+                    /* Each restored tab must signal with is_loading false once */
+                    assert (restoring_tabs >= 0);
+                    if (!content.can_show_folder) {
+                        warning ("Cannot restore %s, ignoring", content.uri);
+                        /* remove_tab function uses Idle loop to close tab */
+                        remove_content (content);
+                    }
+                }
+
                 tab.working = is_loading;
                 update_top_menu ();
             });
@@ -538,7 +549,7 @@ namespace Marlin.View {
         /* Just to append "as Administrator" when appropriate */
         private void set_tab_label (string label, Granite.Widgets.Tab tab, string? tooltip = null) {
             string lab = label;
-            if (Posix.getuid () == 0) {
+            if (Marlin.is_admin ()) {
                 lab += (" " + _("(as Administrator)"));
             }
 
@@ -548,7 +559,7 @@ namespace Marlin.View {
              * This compiles because tab is a widget but the tootip is overridden by that set internally */
             if (tooltip != null) {
                 var tt = tooltip;
-                if (Posix.getuid () == 0) {
+                if (Marlin.is_admin ()) {
                     tt += (" " + _("(as Administrator)"));
                 }
 
@@ -576,33 +587,26 @@ namespace Marlin.View {
         }
 
         public void bookmark_uri (string uri, string? name = null) {
-            sidebar.add_uri (uri, name);
+            sidebar.add_favorite_uri (uri, name);
         }
 
         public bool can_bookmark_uri (string uri) {
-            return !sidebar.has_bookmark (uri);
+            return !sidebar.has_favorite_uri (uri);
         }
 
-        public void remove_tab (ViewContainer view_container) {
-            var tab = tabs.get_tab_by_widget (view_container);
+
+        public void remove_content (ViewContainer view_container) {
+            remove_tab (tabs.get_tab_by_widget ((Gtk.Widget)view_container));
+        }
+
+        private void remove_tab (Granite.Widgets.Tab? tab) {
             if (tab != null) {
-                actual_remove_tab (tab);
+                /* Use Idle in case of rapid closing of multiple tabs during restore */
+                Idle.add_full (Priority.LOW, () => {
+                    tab.close ();
+                    return GLib.Source.REMOVE;
+                });
             }
-        }
-
-        private uint closing_timeout_id = 0;
-        private void actual_remove_tab (Granite.Widgets.Tab tab) {
-            /* close_tab_signal will be emitted first.  Tab actually closes if this returns true */
-            /* Use timeout to limit rate of closing tab */
-            if (closing_timeout_id > 0) {
-                return;
-            }
-
-            closing_timeout_id = Timeout.add (50, () => {
-                tab.close ();
-                closing_timeout_id = 0;
-                return GLib.Source.REMOVE;
-            });
         }
 
         private void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
@@ -633,7 +637,7 @@ namespace Marlin.View {
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
             /* Note: Duplicate bookmarks will not be created by BookmarkList */
-            sidebar.add_uri (current_tab.location.get_uri ());
+            sidebar.add_favorite_uri (current_tab.location.get_uri ());
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
@@ -698,6 +702,10 @@ namespace Marlin.View {
                     uri_path_change_request (Marlin.TRASH_URI);
                     break;
 
+                case "ROOT":
+                    uri_path_change_request (Marlin.ROOT_FS_URI);
+                    break;
+
                 case "NETWORK":
                     uri_path_change_request (Marlin.NETWORK_URI);
                     break;
@@ -752,7 +760,7 @@ namespace Marlin.View {
                     break;
 
                 case "CLOSE":
-                    actual_remove_tab (tabs.current);
+                    remove_tab (tabs.current);
                     break;
 
                 case "NEXT":
@@ -860,7 +868,7 @@ namespace Marlin.View {
                 try {
                     AppInfo.launch_default_for_uri_async.end (res);
                 } catch (Error e) {
-                    warning ("Could not open help - %s", e.message);
+                    warning ("Could not open help: %s", e.message);
                 }
             });
         }
@@ -970,11 +978,10 @@ namespace Marlin.View {
             Marlin.ViewMode mode = Marlin.ViewMode.INVALID;
             string? root_uri = null;
             string? tip_uri = null;
-            int tabs_added = 0;
 
-            /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
+            /* Changes of view and rendering of location bar are avoided while restoring tabs > 0
              * as this causes all sorts of problems */
-            restoring_tabs = true;
+            restoring_tabs = 0;
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
 
@@ -987,36 +994,33 @@ namespace Marlin.View {
                 /* We do not check valid location here because it may cause the interface to hang
                  * before the window appears (e.g. if trying to connect to a server that has become unavailable)
                  * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously.
+                 * Restored tabs with invalid locations are removed in the `loading` signal handler.
                  */
 
+                restoring_tabs++;
                 add_tab_by_uri (root_uri, mode);
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                     expand_miller_view (tip_uri, root_uri);
                 }
 
-                tabs_added++;
                 mode = Marlin.ViewMode.INVALID;
                 root_uri = null;
                 tip_uri = null;
 
-                /* Prevent too rapid loading of tabs which can cause crashes
-                 * This may not be necessary with the Vala version of the views but does no harm
-                 */
-                /*TODO Remove this after sufficient testing */
-                Thread.usleep (100000);
+                /* As loading is now asynchronous we do not need a delay here any longer */
             }
 
-            restoring_tabs = false;
+            /* We assume that the following code is reached before restoring tabs have finished loading. Tests
+             * show this to be the case. */
 
-            /* Don't attempt to set active tab position if no tabs were restored */
-            if (tabs_added < 1) {
+            /* Don't attempt to set active tab position if no tabs were restored.*/
+            if (restoring_tabs < 1) {
                 return 0;
             }
 
             int active_tab_position = Marlin.app_settings.get_int ("active-tab-position");
-
-            if (active_tab_position < 0 || active_tab_position >= tabs_added) {
+            if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
                 active_tab_position = 0;
             }
 
@@ -1034,7 +1038,7 @@ namespace Marlin.View {
 
             /* Render the final path in the location bar without animation */
             top_menu.update_location_bar (path, false);
-            return tabs_added;
+            return restoring_tabs;
         }
 
         private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
@@ -1070,7 +1074,7 @@ namespace Marlin.View {
         }
 
         private void update_top_menu () {
-            if (restoring_tabs || current_tab == null) {
+            if (restoring_tabs > 0 || current_tab == null) {
                 return;
             }
 
@@ -1093,6 +1097,7 @@ namespace Marlin.View {
             if (current_tab != null) { /* Can happen during restore */
                 set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
                 top_menu.update_location_bar (uri);
+                sidebar.sync_uri (uri);
             }
         }
 
@@ -1108,7 +1113,7 @@ namespace Marlin.View {
                     if (view_container == current_tab) {
                         view_container.focus_location (File.new_for_path (PF.UserUtils.get_real_user_home ()));
                     } else {
-                        remove_tab (view_container);
+                        remove_content (view_container);
                     }
                 }
             }
@@ -1181,7 +1186,9 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
             application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             application.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
+            application.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
             application.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+            application.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
             application.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
             application.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});

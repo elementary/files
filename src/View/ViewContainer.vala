@@ -6,6 +6,7 @@
        ammonkey <am.monkeyd@gmail.com>
 
     Copyright (c) 2010 Mathijs Henquet
+                  2017–2020 elementary, Inc. <https://elementary.io>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -162,7 +163,7 @@ namespace Marlin.View {
             if (deleted.equal (this.location)) {
                 if (!go_up ()) {
                     close ();
-                    window.remove_tab (this);
+                    window.remove_content (this);
                 }
             }
         }

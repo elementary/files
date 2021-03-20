@@ -48,7 +48,7 @@
                     return 0;
                 });
             } catch (Error e) {
-                warning ("Error getting status %s", e.message);
+                warning ("Error getting status: %s", e.message);
                 return false;
             }
 
@@ -235,7 +235,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             }
         } catch (Error e) {
             /* An error is normal if the directory is not a git repo */
-            debug ("Error opening git repository at %s - %s", directory.uri, e.message);
+            debug ("Error opening git repository at %s: %s", directory.uri, e.message);
         }
     }
 
