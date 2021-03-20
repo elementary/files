@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-20 20:41+0000\n"
+"PO-Revision-Date: 2021-03-20 22:40+0000\n"
 "Last-Translator: Shukrullo <shukrullo@umail.uz>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
 "Language: uz\n"
@@ -935,92 +935,94 @@ msgstr "Birlamchi fayl"
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
-msgstr ""
+msgstr "Oxirgi martta o'zgartirilgan:"
 
 #: libcore/FileConflictDialog.vala:131
 msgid "Replace with"
-msgstr ""
+msgstr "Ushbuga almashtirish"
 
 #: libcore/FileConflictDialog.vala:165
 msgid "Reset"
-msgstr ""
+msgstr "Tiklash"
 
 #: libcore/FileConflictDialog.vala:177
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "Belgilamoqchi bo'lgan _nomni tanlang"
 
 #: libcore/FileConflictDialog.vala:180
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Ushbu amalni barcha fayllar uchun qo'llash"
 
 #: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
 msgid "_Skip"
-msgstr ""
+msgstr "_O'tkazib yuborish"
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Re_name"
-msgstr ""
+msgstr "Qay_tanomlash"
 
 #: libcore/FileConflictDialog.vala:185
 msgid "Keep Newest"
-msgstr ""
+msgstr "Yangisini qoldirish"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Agar asli yaqin orada o'zgartirilgan bo'lsa, tashlab ketilsin"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
-msgstr ""
+msgstr "ALmashtirish"
 
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "\"%s\" papkalar birlashtirilsinmi?"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Agar birlashtirilayotganda konfliktlar yuzaga kelsa sizga almashtirish "
+"taklif etiladi."
 
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da eskiroq papka mavjud."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da bu nom bilan yangiroq papka mavjud."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da bu nom bilan papka allaqachon mavjud."
 
 #: libcore/FileConflictDialog.vala:309
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "\"%s\" papka almashtirilsinmi?"
 
 #: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Almashtirayotganda papkadagi barcha fayllar o'chirib yuboriladi."
 
 #: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da ushbu nom bilan papka allaqachon mavjud."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "\"%s\" fayl almashtirilsinmi?"
 
 #: libcore/FileConflictDialog.vala:315
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Almashtirilayotganda faylning tarkibi qayta yoziladi."
 
 #: libcore/FileConflictDialog.vala:318
 #, c-format
@@ -1039,7 +1041,7 @@ msgstr ""
 
 #: libcore/FileConflictDialog.vala:348
 msgid "Merge"
-msgstr ""
+msgstr "Birlashtirish"
 
 #: libcore/FileUtils.vala:89
 #, c-format
@@ -1059,116 +1061,116 @@ msgstr ""
 #: libcore/FileUtils.vala:607
 #, c-format
 msgid "Today at %s"
-msgstr ""
+msgstr "Bugun %s da"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:615
 #, c-format
 msgid "Yesterday at %s"
-msgstr ""
+msgstr "Kecha %s da"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:623
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%s da %%A"
 
 #: libcore/FileUtils.vala:920
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
+msgstr[0] "%'d soniya"
 
 #: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
+msgstr[0] "%'d daqiqa"
 
 #: libcore/FileUtils.vala:931
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
+msgstr[0] "%'d soat"
 
 #: libcore/FileUtils.vala:935
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
+msgstr[0] "taxminan %'d soat"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:943
 msgid "copy"
-msgstr ""
+msgstr "nusxa"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:945
 msgid "link"
-msgstr ""
+msgstr "bog'lama"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:947
 msgid "("
-msgstr ""
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:949
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Kutilgan vaqt mobaynida server javob bermadi"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
 msgid "Preparing"
-msgstr ""
+msgstr "Tayyorlanmoqda"
 
 #: libcore/StockDialogs.vala:20
 msgid "_Cancel"
-msgstr ""
+msgstr "_Bekor qilish"
 
 #: libcore/StockDialogs.vala:21
 msgid "Delete"
-msgstr ""
+msgstr "O'chirish"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
-msgstr ""
+msgstr "Barchasini o'tkazib _yuborish"
 
 #: libcore/StockDialogs.vala:24
 msgid "_Retry"
-msgstr ""
+msgstr "Tak_rorlash"
 
 #: libcore/StockDialogs.vala:25
 msgid "Delete _All"
-msgstr ""
+msgstr "Barchasini o'_chirish"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
-msgstr ""
+msgstr "_Almashtirish"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
-msgstr ""
+msgstr "_Barchasini almashtirish"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
-msgstr ""
+msgstr "B_irlashtirish"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
-msgstr ""
+msgstr "Barchasini bir_lashtirish"
 
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Majburan n_usxalash"
 
 #: libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
-msgstr ""
+msgstr "_Savatchani tozalash"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
