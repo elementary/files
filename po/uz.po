@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-20 20:34+0000\n"
+"PO-Revision-Date: 2021-03-20 20:41+0000\n"
 "Last-Translator: Shukrullo <shukrullo@umail.uz>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
 "Language: uz\n"
@@ -906,32 +906,32 @@ msgstr "Bog'lanmoqda…"
 
 #: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Foydalanuvchi ma'lumotlarini tekshiring."
 
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "\"%s\" ni ishga tushirib bo'lmadi"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
-msgstr ""
+msgstr "Bu yerga ko'chirish"
 
 #: libcore/DndHandler.vala:101
 msgid "Copy Here"
-msgstr ""
+msgstr "Bu yerga nusxalash"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "Bu yerga bog'lama yaratish"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
-msgstr ""
+msgstr "Konflikt fayllar"
 
 #: libcore/FileConflictDialog.vala:97
 msgid "Original file"
-msgstr ""
+msgstr "Birlamchi fayl"
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
