@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-20 20:30+0000\n"
+"PO-Revision-Date: 2021-03-20 20:34+0000\n"
 "Last-Translator: Shukrullo <shukrullo@umail.uz>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
 "Language: uz\n"
@@ -833,72 +833,72 @@ msgstr "Server ma'lumotlari"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Server nomi yoki IP-manzili"
 
 #: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #: libcore/ConnectServerDialog.vala:143
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "Serverdagi umumiy resursning nomi (zaruriy emas)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
-msgstr ""
+msgstr "Resurs:"
 
 #: libcore/ConnectServerDialog.vala:181
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "Serverdagi umumiy papkaga yo'nalish (zaruriy emas)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
-msgstr ""
+msgstr "Papka:"
 
 #: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
-msgstr ""
+msgstr "Foydalanuvchi ma'lumotlari"
 
 #: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "Windows domeni nomi"
 
 #: libcore/ConnectServerDialog.vala:194
 msgid "Domain name:"
-msgstr ""
+msgstr "Domen:"
 
 #: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
-msgstr ""
+msgstr "Serverdagi foydalanuvchi nomi"
 
 #: libcore/ConnectServerDialog.vala:201
 msgid "User name:"
-msgstr ""
+msgstr "Foydalanuvchi nomi:"
 
 #: libcore/ConnectServerDialog.vala:208
 msgid "Password:"
-msgstr ""
+msgstr "Parol:"
 
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr ""
+msgstr "Ushbu parolni eslab qolish"
 
 #: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
-msgstr ""
+msgstr "Bekor qilish"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
-msgstr ""
+msgstr "Ulanish"
 
 #: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
-msgstr ""
+msgstr "Davom etish"
 
 #: libcore/ConnectServerDialog.vala:274
 msgid "Connecting…"
