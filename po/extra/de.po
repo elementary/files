@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-02-25 11:26+0000\n"
-"Last-Translator: Akin Yildiz <akin.yildiz@protonmail.com>\n"
+"PO-Revision-Date: 2021-03-14 17:27+0000\n"
+"Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -76,13 +76,13 @@ msgstr "Verbesserungen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Do not restore locations that have become inaccessible"
-msgstr ""
+msgstr "Orte, die nicht mehr aufrufbar sind, werden nicht wieder hergestellt"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
 msgstr ""
 "Klicken zwischen Vorschaubild und Text aktiviert/selektiert jetzt in der "
-"Raster-Ansicht"
+"Rasteransicht"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 #, fuzzy
@@ -118,7 +118,7 @@ msgstr "Verbesserte Anzeige der Minihilfe  für Geräte in der Seitenleiste"
 #: data/io.elementary.files.appdata.xml.in.in:101
 #: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Fixes:"
-msgstr "Korrekturen:"
+msgstr "Fehlerbehebungen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Fix crash when pressing Enter and another key at the same time"
