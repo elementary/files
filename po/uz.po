@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2021-03-21 15:43+0000\n"
-"Last-Translator: muhsinbek <muhsinbekofficial@gmail.com>\n"
+"PO-Revision-Date: 2021-03-21 17:09+0000\n"
+"Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
 "Language: uz\n"
 "MIME-Version: 1.0\n"
@@ -1027,7 +1027,7 @@ msgstr "Almashtirilayotganda faylning tarkibi qayta yoziladi."
 #: libcore/FileConflictDialog.vala:318
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "\"%s\" nomdagi fayl allaqachon mavjud"
+msgstr "Ushbu nomdagi fayl \"%s\" da allaqachon mavjud."
 
 #: libcore/FileConflictDialog.vala:320
 #, c-format
