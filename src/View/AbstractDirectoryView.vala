@@ -2403,21 +2403,22 @@ namespace FM {
             GLib.List<GLib.File> folder_list = null;
 
             GLib.FileEnumerator enumerator;
-            var f_attr = GLib.FileAttribute.STANDARD_NAME + GLib.FileAttribute.STANDARD_TYPE;
             var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
             try {
-                enumerator = template_folder.enumerate_children (f_attr, flags, null);
+                enumerator = template_folder.enumerate_children ("standard::*", flags, null);
                 uint count = templates.length (); //Assume to be limited in size
                 GLib.File location;
                 GLib.FileInfo? info = enumerator.next_file (null);
 
                 while (count < MAX_TEMPLATES && (info != null)) {
-                    location = template_folder.get_child (info.get_name ());
-                    if (info.get_file_type () == GLib.FileType.DIRECTORY) {
-                        folder_list.prepend (location);
-                    } else {
-                        file_list.prepend (location);
-                        count ++;
+                    if (!info.get_is_hidden () && !info.get_is_backup ()) {
+                        location = template_folder.get_child (info.get_name ());
+                        if (info.get_file_type () == GLib.FileType.DIRECTORY) {
+                            folder_list.prepend (location);
+                        } else {
+                            file_list.prepend (location);
+                            count ++;
+                        }
                     }
 
                     info = enumerator.next_file (null);
