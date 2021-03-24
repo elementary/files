@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"POT-Creation-Date: 2021-03-11 02:37+0000\n"
 "PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
@@ -294,7 +294,7 @@ msgstr "Nem lehet átnevezni erre: '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Nem lehet megnyitni a fájlokat és URI-kat ezzel az alkalmazással"
 
-#: src/View/Window.vala:544 src/View/Window.vala:554
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 
@@ -314,7 +314,7 @@ msgstr "Típus"
 msgid "Modified"
 msgstr "Módosítva"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
 msgstr "Ez a mappa nem létezik"
 
@@ -531,59 +531,59 @@ msgstr "A kijelöltek kivágása inkább"
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "Saját mappa"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
 msgstr "Ide nem hozható létre mappa."
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "The network is unavailable"
 msgstr "A hálózat elérhetetlen"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "A working network is needed to reach this folder"
 msgstr "Egy működő hálózat szükséges ennek a mappának az eléréshez"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
 msgstr "Ez a mappa nem önhöz tartozik"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
 msgstr "Nincs jogosultsága, hogy megnézze ezt a könyvtárat."
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
 msgstr "Mappa nem csatolható"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
 msgstr "Nem lehet csatlakozni a szerverhez ehhez a mappához."
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "Nem sikerült megjeleníteni a mappa tartalmát"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "A művelet időtúllépés miatt megszakadt."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "Nem lehet a mappát megjeleníteni"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "Nem található a mappához tartozó szerver."
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:435
 msgid "File not Found"
 msgstr "Fájl nem található"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
 msgstr "A kiválasztott fájl már nem létezik."
 
@@ -699,7 +699,7 @@ msgstr "Hálózat"
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:83
+#: src/View/Sidebar/SidebarWindow.vala:84
 #, fuzzy
 #| msgid "Connect to Server…"
 msgid "Connect Server…"

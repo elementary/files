@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"POT-Creation-Date: 2021-03-11 02:37+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -288,7 +288,7 @@ msgstr "Nu s-a putut redenumi '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Imposibil de deschis fișiere sau uris cu această aplicație"
 
-#: src/View/Window.vala:544 src/View/Window.vala:554
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
 msgstr "(ca Administrator)"
 
@@ -308,7 +308,7 @@ msgstr "Tipul"
 msgid "Modified"
 msgstr "Modificat"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
 msgstr "Acest dosar nu există"
 
@@ -525,59 +525,59 @@ msgstr "Tăiați selecția în loc"
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "Acasă"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
 msgstr "Nu puteți crea un dosar aici."
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "The network is unavailable"
 msgstr "Rețeaua nu este disponibilă"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "A working network is needed to reach this folder"
 msgstr "Este necesar o rețea de lucru pentru a ajunge la acest dosar"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
 msgstr "Acest dosar nu este al tău"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
 msgstr "Nu aveți permisiunea de a vizualiza acest dosar."
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
 msgstr "Imposibil de montat dosarul"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
 msgstr "Nu s-a putut conecta la server pentru acest dosar."
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "Conținutul folderelor nu poate fi afișat"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "Operația a expirat."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "Folderul nu poate fi afișat"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "Serverul pentru acest dosar nu a putut fi localizat."
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:435
 msgid "File not Found"
 msgstr "Fișierul nu a fost găsit"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
 
@@ -693,7 +693,7 @@ msgstr "Reţea"
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:83
+#: src/View/Sidebar/SidebarWindow.vala:84
 #, fuzzy
 #| msgid "Connect to Server…"
 msgid "Connect Server…"

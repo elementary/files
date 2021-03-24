@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"POT-Creation-Date: 2021-03-11 02:37+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -292,7 +292,7 @@ msgstr "Não foi possível abrir os URIs"
 msgid "Could not open files or URIs with this app"
 msgstr "Não foi possível abrir arquivos ou URIs com esse aplicativo"
 
-#: src/View/Window.vala:544 src/View/Window.vala:554
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
 msgstr "(como administrador)"
 
@@ -312,7 +312,7 @@ msgstr "Tipo"
 msgid "Modified"
 msgstr "Modificado"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
 msgstr "Esta pasta não existe"
 
@@ -523,59 +523,59 @@ msgstr "Cortar a seleção ao invés"
 msgid "Cannot paste files here"
 msgstr "Não é possível colar arquivos aqui"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "Pasta pessoal"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
 msgstr "Você não pode criar uma pasta aqui."
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "The network is unavailable"
 msgstr "A conexão está indisponível"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "A working network is needed to reach this folder"
 msgstr "É necessário ter uma conexão funcionando para acessar este diretório"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
 msgstr "Esta pasta não pertence a você"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
 msgstr "Você não tem permissão para ver esta pasta."
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
 msgstr "Não foi possível montar a pasta"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
 msgstr "Não foi possível conectar ao servidor para essa pasta."
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "Não é possível exibir o conteúdo da pasta"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "A operação expirou."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "Incapaz de mostrar pasta"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "O servidor para esta pasta não pôde ser localizado."
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:435
 msgid "File not Found"
 msgstr "Arquivo não encontrado"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
 msgstr "O arquivo selecionado não existe mais."
 
@@ -690,7 +690,7 @@ msgstr "Rede"
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:83
+#: src/View/Sidebar/SidebarWindow.vala:84
 #, fuzzy
 #| msgid "Connect to Server…"
 msgid "Connect Server…"

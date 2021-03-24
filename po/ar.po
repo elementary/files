@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"POT-Creation-Date: 2021-03-11 02:37+0000\n"
 "PO-Revision-Date: 2020-05-16 11:10+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -308,7 +308,7 @@ msgstr "لم يتم فتح عنوان URI"
 msgid "Could not open files or URIs with this app"
 msgstr "لم يتم فتح الملفات او عنوان URI في هذا التطبيق"
 
-#: src/View/Window.vala:544 src/View/Window.vala:554
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
 msgstr "(كمسؤول)"
 
@@ -328,7 +328,7 @@ msgstr "النّوع"
 msgid "Modified"
 msgstr "عُدِّل"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
 msgstr "هذا المجلد غير موجود"
 
@@ -537,59 +537,59 @@ msgstr "قص المحدد بدلاً من ذلك"
 msgid "Cannot paste files here"
 msgstr "لا يمكن لصق الملفات هنا"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "المنزل"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
 msgstr "لا يمكنك إنشاء مجلد هنا."
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "The network is unavailable"
 msgstr "الشبكة غير متاحة"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "A working network is needed to reach this folder"
 msgstr "هناك حاجة إلى شبكة عمل للوصول إلى هذا المجلد"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
 msgstr "هذا المجلد لا ينتمي إليك"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
 msgstr "أنت لا تملك الصلاحية للإطلاع على الملف."
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
 msgstr "تعذر تحميل المجلد"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
 msgstr "تعذر الاتصال بالخادم لهذا المجلد."
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "لم نتمكن من عرض محتويات المجلد"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "زاد وقت العملية عن المدة المسموح بها."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "لم نتمكن من عرض المجلد"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "لم يتم العثور على مكان الخادم لهذا المجلد."
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:435
 msgid "File not Found"
 msgstr "لم يتم ايجاد الملف"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
 msgstr "الملف المختار لم يعد موجودا."
 
@@ -704,7 +704,7 @@ msgstr "الشبكة"
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:83
+#: src/View/Sidebar/SidebarWindow.vala:84
 #, fuzzy
 #| msgid "Connect Server"
 msgid "Connect Server…"

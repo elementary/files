@@ -62,6 +62,7 @@
       <description>
         <p>Improvements:</p>
         <ul>
+          <li>Do not restore locations that have become inaccessible</li>
           <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
         </ul>
       </description>

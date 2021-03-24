@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 22:54+0000\n"
-"PO-Revision-Date: 2021-03-04 10:18+0000\n"
+"POT-Creation-Date: 2021-03-11 02:37+0000\n"
+"PO-Revision-Date: 2021-03-16 11:17+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
 "\n"
@@ -126,7 +126,7 @@ msgstr "権限"
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i 個のファイルが権限またはそのほかのエラーにより読み込めません。"
+msgstr[0] "%i個のファイルが権限またはそのほかのエラーにより読み込めません。"
 
 #: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
@@ -216,14 +216,14 @@ msgstr "全員:"
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] "%u 個のサブフォルダー"
+msgstr[0] "%u個のサブフォルダー"
 
 #: src/Dialogs/PropertiesWindow.vala:1231
 #: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] "%u 個のファイル"
+msgstr[0] "%u個のファイル"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
@@ -236,13 +236,13 @@ msgstr "%s、%s"
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] "%u 個のフォルダー"
+msgstr[0] "%u個のフォルダー"
 
 #: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] "%u 個の選択項目"
+msgstr[0] "%u個の選択項目"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1260
@@ -283,7 +283,7 @@ msgstr "URI を開くことができませんでした"
 msgid "Could not open files or URIs with this app"
 msgstr "このアプリでファイルまたは URI を開けませんでした"
 
-#: src/View/Window.vala:544 src/View/Window.vala:554
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
 msgstr "(管理者)"
 
@@ -303,7 +303,7 @@ msgstr "形式"
 msgid "Modified"
 msgstr "変更日時"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
 msgstr "このフォルダーは存在しません"
 
@@ -512,59 +512,59 @@ msgstr "代わりに選択項目を切り取る"
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:112
 msgid "Home"
 msgstr "ホーム"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
 msgstr "ここにフォルダーを作成できません。"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "The network is unavailable"
 msgstr "ネットワークが利用できません"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "A working network is needed to reach this folder"
 msgstr "このフォルダーに到達するためにはネットワークが必要です"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
 msgstr "このフォルダーはあなたのものではありません"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
 msgstr "このフォルダーを読み込む権限がありません。"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
 msgstr "フォルダーのマウントができません"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
 msgstr "このフォルダーのサーバーに接続できませんでした。"
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "フォルダーの内容を表示できません"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "処理がタイムアウトしました。"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "フォルダーを表示できません"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "このフォルダーのサーバーが見つかりませんでした。"
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:435
 msgid "File not Found"
 msgstr "ファイルが見つかりませんでした"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
 msgstr "選択されたファイルは存在しません。"
 
@@ -672,7 +672,7 @@ msgstr "ネットワーク"
 msgid "Devices and places available via a network"
 msgstr "ネットワーク経由で利用可能なデバイスと場所"
 
-#: src/View/Sidebar/SidebarWindow.vala:83
+#: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
 msgstr "サーバーを接続…"
 
@@ -744,13 +744,13 @@ msgstr "検索しています…"
 #: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
-msgstr "%u 個のフォルダー"
+msgstr "%u個のフォルダー"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " と %u 個のほかの項目を選択 (%s)"
+msgstr[0] " と%u個のほかの項目を選択 (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -759,21 +759,21 @@ msgstr " を選択"
 #: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u 個の項目を選択 (%s)"
+msgstr "%u個の項目を選択 (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u 個のサブフォルダー、 "
+msgstr[0] "%u個のサブフォルダー、 "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] "%u 個のファイル、 "
+msgstr[0] "%u個のファイル、 "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -791,7 +791,7 @@ msgstr "不明なサイズ"
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] "%u 個のファイルが読み込めません"
+msgstr[0] "%u個のファイルが読み込めません"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
