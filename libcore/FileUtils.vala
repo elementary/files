@@ -1030,15 +1030,20 @@ namespace PF.FileUtils {
     private void parse_previous_duplicate_name (
         string name, bool is_link, out string name_base, out string suffix, out int count
     ) {
-
+        name_base = "";
         suffix = "";
         count = 0;
 
         string name_without_suffix = name;
         var last_index = name.length - 1;
+        var index_of_suffix = name.length;
 
-        /* Ignore suffix for links */
-        var index_of_suffix = is_link ? -1 : name.last_index_of (".");
+        if (is_link) {
+            /* Ignore suffix for links */
+            index_of_suffix = -1;
+        } else if (name.contains (".")) {
+            index_of_suffix = name.last_index_of (".");
+        }
 
         /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
         var max_extension_length = 4;
@@ -1054,10 +1059,7 @@ namespace PF.FileUtils {
             if (index_of_suffix > 0) {
                 name_base = name_without_suffix.slice (0, index_of_suffix);
                 return;
-            } else {
-                name_base = name_without_suffix;
             }
-            return;
         } else {
             name_base = name.slice (0, index_of_opening)._chomp ();
         }
@@ -1074,7 +1076,9 @@ namespace PF.FileUtils {
         }
 
         int multiplier = 1;
+        int n_digits = 0;
         while (index < limit && chr.isdigit ()) {
+            n_digits++;
             count += chr.digit_value () * multiplier;
             //Number is reversed so each subsequent digit represents another factor of ten
             multiplier *= 10;
@@ -1083,6 +1087,21 @@ namespace PF.FileUtils {
 
         if (count == 0) { //We do not say (copy 1), just (copy)
             count = 1;
+        }
+
+        int expected_index;
+
+        if (n_digits > 0) {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + n_digits + 1;
+        } else if (is_link) {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + _(LINK_TAG).length;
+        } else {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + _(COPY_TAG).length;
+        }
+
+        if (index > expected_index) {
+            name_base = name_without_suffix;
+            count = 0;
         }
     }
 
