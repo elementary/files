@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-03-04 10:18+0000\n"
+"PO-Revision-Date: 2021-04-01 00:58+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -1067,14 +1067,13 @@ msgid "The item cannot be restored from trash"
 msgstr "לא ניתן לשחזר את הפריט מהאשפה"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "הקובץ שנבחר לא קיים עוד."
+msgstr "התיקייה המקורית %s אינה קיימת עוד"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "ליצור אותה מחדש?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1082,24 +1081,22 @@ msgstr "התעלמות"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "אף אחד מהקבצים שהיו בתיקייה הזאת לא ישוחזר"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "יצירה"
+msgstr "יצירה מחדש"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
-msgstr ""
+msgstr "תיקייה זו תיווצר מחדש וקבצים נבחרים שהיו בה במקור ישוחזרו אליה"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
+msgstr "לא ניתן לייצר את התיקייה %s מחדש. כל הקבצים שבתיקייה הזאת לא יכללו"
 
 #: libcore/FileUtils.vala:578
 #, c-format
