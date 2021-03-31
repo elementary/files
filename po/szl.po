@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 22:54+0000\n"
+"POT-Creation-Date: 2021-03-31 21:50+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -22,7 +22,7 @@ msgstr "Pokoż wersyjo programu"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Ôtwōrz jedyn abo wiyncyj adres URI, kożdo w ôsobnyj karcie"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1859
 msgid "New Window"
 msgstr "Nowe ôkno"
 
@@ -107,7 +107,7 @@ msgid "Set as default"
 msgstr "Nasztaluj za wychodno"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1969
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Włosności"
@@ -188,7 +188,7 @@ msgid "Original Location:"
 msgstr "Ôryginalne położynie:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1938
+#: src/View/AbstractDirectoryView.vala:1937
 msgid "Other Application…"
 msgstr "Inkszy program…"
 
@@ -227,7 +227,7 @@ msgstr[2] "%u zbiorōw"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:993
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -259,7 +259,7 @@ msgid "Disk Properties"
 msgstr "Włosności dysku"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
+#: src/View/Sidebar/DeviceListBox.vala:104 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Systym zbiorōw"
 
@@ -288,7 +288,7 @@ msgstr "Niy szło ôtworzić adres URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Niy szło ôtworzić tym programym zbiorōw abo adres URI"
 
-#: src/View/Window.vala:544 src/View/Window.vala:554
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
 msgstr "(za administratora)"
 
@@ -296,11 +296,11 @@ msgstr "(za administratora)"
 msgid "Filename"
 msgstr "Miano zbioru"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "Miara"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "Zorta"
 
@@ -308,7 +308,7 @@ msgstr "Zorta"
 msgid "Modified"
 msgstr "Modyfikacyjo"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
 msgstr "Tyn katalog niy istniyje"
 
@@ -330,18 +330,18 @@ msgstr "Stwōrz katalog „%s”"
 msgid "Failed to create the folder"
 msgstr "Niy szło stworzić katalogu"
 
-#: src/View/AbstractDirectoryView.vala:820
-#: src/View/AbstractDirectoryView.vala:1131
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1130
 msgid "Cannot execute this file"
 msgstr "Niy idzie wykōnać tego zbioru"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:830
+#: src/View/AbstractDirectoryView.vala:829
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "Trzeba wyciōngnōńć „%s” z hasioka, podwiela go bydzie szło ôtworzić"
 
-#: src/View/AbstractDirectoryView.vala:831
+#: src/View/AbstractDirectoryView.vala:830
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -349,149 +349,149 @@ msgstr ""
 "Zbiory we hasioku niy mogōm być ôtwiyrane. Żeby tyn zbiōr szło ôtworzić, ôn "
 "musi być przeniesiōny kajś indzij."
 
-#: src/View/AbstractDirectoryView.vala:846
+#: src/View/AbstractDirectoryView.vala:845
 msgid "Cannot open this file"
 msgstr "Niy idzie ôtworzić tego zbioru"
 
-#: src/View/AbstractDirectoryView.vala:859
+#: src/View/AbstractDirectoryView.vala:858
 msgid "Cannot identify file type to open"
 msgstr "Niy idzie zidyntyfikować zorty zbioru do ôtwarcio"
 
-#: src/View/AbstractDirectoryView.vala:1577
+#: src/View/AbstractDirectoryView.vala:1576
 msgid "Cannot drop this file"
 msgstr "Niy idzie ściepnōńć tego zbioru"
 
-#: src/View/AbstractDirectoryView.vala:1578
+#: src/View/AbstractDirectoryView.vala:1577
 msgid "Invalid file name provided"
 msgstr "Było podano niynoleżne miano zbioru"
 
-#: src/View/AbstractDirectoryView.vala:1854
+#: src/View/AbstractDirectoryView.vala:1853
 msgid "New Tab"
 msgstr "Nowo karta"
 
-#: src/View/AbstractDirectoryView.vala:1874
+#: src/View/AbstractDirectoryView.vala:1873
 msgid "Run"
 msgstr "Ôtwōrz"
 
-#: src/View/AbstractDirectoryView.vala:1881
+#: src/View/AbstractDirectoryView.vala:1880
 #, c-format
 msgid "Open in %s"
 msgstr "Ôtwōrz we %s"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Open in"
 msgstr "Ôtwōrz we"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1951
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Ôtwōrz ze"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Paste"
 msgstr "Wraź"
 
-#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/AbstractDirectoryView.vala:1962
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "Zokłodki"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:1977
 msgid "Cut"
 msgstr "Wytnij"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1986
+#: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: src/View/AbstractDirectoryView.vala:1993
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
 msgstr "Przeniyś do hasioka"
 
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
 msgstr "Skasuj doimyntnie"
 
-#: src/View/AbstractDirectoryView.vala:2003
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "Prziwrōć z hasioka"
 
-#: src/View/AbstractDirectoryView.vala:2014
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "Ôtwōrz katalog nadrzyndny"
 
-#: src/View/AbstractDirectoryView.vala:2017
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "Wyciep z historyje"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Rename…"
 msgstr "Przemianuj…"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr "Kopiuj za link"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
 msgstr "Wraź link do katalogu"
 
-#: src/View/AbstractDirectoryView.vala:2060
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "Wraź do katalogu"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "Pokoż skryte zbiory"
 
-#: src/View/AbstractDirectoryView.vala:2091
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
 msgstr "Pokoż miniaturki we zdalnym zasobie"
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
 msgstr "Skryj miniatury"
 
-#: src/View/AbstractDirectoryView.vala:2114
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
 msgstr "Wraź link"
 
-#: src/View/AbstractDirectoryView.vala:2168
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "Miana"
 
-#: src/View/AbstractDirectoryView.vala:2183
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "Daty"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "Ôdwrōcōny porzōndek"
 
-#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr "Katalogi przed zbiorami"
 
-#: src/View/AbstractDirectoryView.vala:2203
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "Zortuj podle"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "Katalog"
 
-#: src/View/AbstractDirectoryView.vala:2217
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "Prōzny zbiōr"
 
-#: src/View/AbstractDirectoryView.vala:2268
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "Nowy"
 
-#: src/View/AbstractDirectoryView.vala:2505
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "Niynazwany %s"
@@ -519,81 +519,81 @@ msgstr "Wytnij ôbiōr"
 msgid "Cannot paste files here"
 msgstr "Niy idzie wrazić sam zbiorōw"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Katalog dōmowy"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
 msgstr "Niy idzie stworzić sam katalogu."
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "The network is unavailable"
 msgstr "Nec je niydostympny"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "A working network is needed to reach this folder"
 msgstr "Coby dostać dostymp do tego katalogu, potrzebny je fungujōncy nec"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
 msgstr "Tyn katalog niy noleży do ciebie"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
 msgstr "Niy mosz uprawniyń do przeglōndanio tego katalogu."
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
 msgstr "Niy idzie zamōntować katalogu"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
 msgstr "Niy szło połōnczyć ze serwerym do tego katalogu."
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "Niy idzie pokozać zawartości katalogu"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "Limit czasu ôperacyje bōł przekroczōny."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "Niy idzie pokozać katalogu"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "Serwer dlo tego katalogu niy mōg być zlokalizowany."
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:435
 msgid "File not Found"
 msgstr "Niy szło znojś zbioru"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
 msgstr "Ôbrany zbiōr już niy istniyje."
 
-#: src/View/Sidebar/BookmarkListBox.vala:119
+#: src/View/Sidebar/BookmarkListBox.vala:129
 #, fuzzy
 #| msgid "Failed to create the folder"
 msgid "View the home folder"
 msgstr "Niy szło stworzić katalogu"
 
-#: src/View/Sidebar/BookmarkListBox.vala:132
+#: src/View/Sidebar/BookmarkListBox.vala:142
 msgid "View the list of recently used files"
 msgstr "Zobocz wykoz niydowno używanych zbiorōw"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Hasiok"
 
-#: src/View/Sidebar/BookmarkListBox.vala:154
+#: src/View/Sidebar/BookmarkListBox.vala:164
 msgid "Open the Trash"
 msgstr "Ôtwōrz hasiok"
 
-#: src/View/Sidebar/DeviceListBox.vala:106
+#: src/View/Sidebar/DeviceListBox.vala:116
 #, fuzzy
 #| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
@@ -610,11 +610,11 @@ msgstr ""
 msgid "%s used of %s"
 msgstr "%s ze %s"
 
-#: src/View/Sidebar/NetworkListBox.vala:78
+#: src/View/Sidebar/NetworkListBox.vala:88
 msgid "Entire Network"
 msgstr "Cołki nec"
 
-#: src/View/Sidebar/NetworkListBox.vala:85
+#: src/View/Sidebar/NetworkListBox.vala:95
 msgid "Browse the contents of the network"
 msgstr "Przeglōndo zawartość necu"
 
@@ -686,7 +686,7 @@ msgstr "Nec"
 msgid "Devices and places available via a network"
 msgstr ""
 
-#: src/View/Sidebar/SidebarWindow.vala:83
+#: src/View/Sidebar/SidebarWindow.vala:84
 #, fuzzy
 #| msgid "Connect Server"
 msgid "Connect Server…"
@@ -1090,30 +1090,65 @@ msgstr "Niy idzie znojś ôryginalnego położynio „%s” "
 msgid "The item cannot be restored from trash"
 msgstr "Niy idzie prziwrōcić elymyntu z hasioka"
 
-#: libcore/FileUtils.vala:516
+#: libcore/FileUtils.vala:184
+#, fuzzy, c-format
+#| msgid "The file selected no longer exists."
+msgid "The original folder %s no longer exists"
+msgstr "Ôbrany zbiōr już niy istniyje."
+
+#: libcore/FileUtils.vala:185
+msgid "Would you like to recreate it?"
+msgstr ""
+
+#: libcore/FileUtils.vala:190
+msgid "Ignore"
+msgstr ""
+
+#: libcore/FileUtils.vala:191
+msgid "No files that were in this folder will be restored"
+msgstr ""
+
+#: libcore/FileUtils.vala:192
+#, fuzzy
+#| msgid "Create"
+msgid "Recreate"
+msgstr "Utwōrz"
+
+#: libcore/FileUtils.vala:194
+msgid ""
+"The folder will be recreated and selected files that were originally there "
+"will be restored to it"
+msgstr ""
+
+#: libcore/FileUtils.vala:207
+#, c-format
+msgid "Could not recreate folder %s. Will ignore all files in this folder"
+msgstr ""
+
+#: libcore/FileUtils.vala:578
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Niy idzie przemianować na „%s”"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:607
+#: libcore/FileUtils.vala:669
 #, c-format
 msgid "Today at %s"
 msgstr "Dzisiej ô %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:615
+#: libcore/FileUtils.vala:677
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Wczorej ô %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:623
+#: libcore/FileUtils.vala:685
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ô %s"
 
-#: libcore/FileUtils.vala:920
+#: libcore/FileUtils.vala:982
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1121,7 +1156,7 @@ msgstr[0] "%d sekunda"
 msgstr[1] "%d sekundy"
 msgstr[2] "%d sekund"
 
-#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
+#: libcore/FileUtils.vala:986 libcore/FileUtils.vala:994
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1129,7 +1164,7 @@ msgstr[0] "%d minuta"
 msgstr[1] "%d minuty"
 msgstr[2] "%d minut"
 
-#: libcore/FileUtils.vala:931
+#: libcore/FileUtils.vala:993
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1137,7 +1172,7 @@ msgstr[0] "%d godzina"
 msgstr[1] "%d godziny"
 msgstr[2] "%d godzin"
 
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:997
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1146,24 +1181,24 @@ msgstr[1] "w przibliżyniu %'d godziny"
 msgstr[2] "w przibliżyniu %'d godzin"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:943
+#: libcore/FileUtils.vala:1005
 msgid "copy"
 msgstr ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:945
+#: libcore/FileUtils.vala:1007
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:947
+#: libcore/FileUtils.vala:1009
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:949
+#: libcore/FileUtils.vala:1011
 msgid ")"
 msgstr ""
 

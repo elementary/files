@@ -2,41 +2,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-03 22:54+0000\n"
-"PO-Revision-Date: 2016-08-02 15:47+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-03-31 21:50+0000\n"
+"PO-Revision-Date: 2021-03-21 17:09+0000\n"
+"Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
+"Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
+"Language: uz\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
-msgstr ""
+msgstr "Dastur talqinini ko'rsatish"
 
 #: src/Application.vala:160
 msgid "Open one or more URIs, each in their own tab"
-msgstr ""
+msgstr "Bir yoki bir nechta bog'lamalarni, har birini alohida yorliqda ochish"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1859
 msgid "New Window"
-msgstr ""
+msgstr "Yangi oyna"
 
 #: src/Application.vala:164
 msgid "Quit Files"
-msgstr ""
+msgstr "Chiqish"
 
 #: src/Application.vala:166
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Tahlil qilish uchun jurnalga yozib borishni yoqish"
 
 #: src/Application.vala:169
 msgid "[URI…]"
-msgstr ""
+msgstr "[URI...]"
 
 #: src/Application.vala:172
 msgid ""
@@ -44,988 +44,990 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Fayl tizimini fayl menejerida ko'rish"
 
 #: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "Manzillar (URI) bilan birgalikda --quit ni ishlatib bo'lmaydi."
 
 #: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
 msgid "File Operations"
-msgstr ""
+msgstr "Fayllar bilan ishlash"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
 #: src/ProgressUIHandler.vala:181
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "%s bajarildi"
 
 #: src/ProgressUIHandler.vala:184
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Fayllar bilan barcha operatsiyalar bajarildi"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Ma'lumotlar"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:59
 msgid "General"
-msgstr ""
+msgstr "Umumiy"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:80
 #: libcore/FileOperations/DialogUtils.vala:54
 msgid "Close"
-msgstr ""
+msgstr "Yopish"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
-msgstr ""
+msgstr "Qurilmadan foydalanish"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
-msgstr ""
+msgstr "Sig'imi:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
 #: src/Dialogs/AbstractPropertiesDialog.vala:171
 #: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
 msgid "Unknown"
-msgstr ""
+msgstr "Noma'lum"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
-msgstr ""
+msgstr "Mavjud:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
-msgstr ""
+msgstr "Foydalanilgan:"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
-msgstr ""
+msgstr "Asosiy sifatida o'rnatish"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1969
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
-msgstr ""
+msgstr "Xususiyatlar"
 
 #: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
-msgstr ""
+msgstr "Huquqlar"
 
 #: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i faylini huquq yoki boshqa sabab o'qib bo'lmadi."
 
 #: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Haqiqiy hajmi kattaroq bo'lishi mumkin"
 
 #: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
-msgstr ""
+msgstr "noma'lum"
 
 #: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
-msgstr ""
+msgstr "Yuklanmoqda…"
 
 #: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
-msgstr ""
+msgstr "Aniqlab bo'lmadi"
 
 #: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:99
 #: libcore/FileConflictDialog.vala:133
 msgid "Size:"
-msgstr ""
+msgstr "Hajmi:"
 
 #: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
-msgstr ""
+msgstr "Turi:"
 
 #: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
-msgstr ""
+msgstr "Tarkibi:"
 
 #: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
-msgstr ""
+msgstr "Yaratilgan:"
 
 #: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
-msgstr ""
+msgstr "O'zgartirilgan:"
 
 #: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
-msgstr ""
+msgstr "O'chirilgan:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
-msgstr ""
+msgstr "Qurilma turi:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
-msgstr ""
+msgstr "O'lcham:"
 
 #: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
 msgid "Location:"
-msgstr ""
+msgstr "Manzil:"
 
 #: src/Dialogs/PropertiesWindow.vala:614
 msgid "Target:"
-msgstr ""
+msgstr "Joylashuv:"
 
 #: src/Dialogs/PropertiesWindow.vala:622
 msgid "Original Location:"
-msgstr ""
+msgstr "Asl joylashuvi:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1938
+#: src/View/AbstractDirectoryView.vala:1937
 msgid "Other Application…"
-msgstr ""
+msgstr "Boshqa ilova…"
 
 #: src/Dialogs/PropertiesWindow.vala:665
 msgid "Open with:"
-msgstr ""
+msgstr "Ushbu dastur yordamida ochish:"
 
 #: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
 msgid "Owner:"
-msgstr ""
+msgstr "Egasi:"
 
 #: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
 msgid "Group:"
-msgstr ""
+msgstr "Guruh:"
 
 #: src/Dialogs/PropertiesWindow.vala:946
 msgid "Everyone:"
-msgstr ""
+msgstr "Barcha:"
 
 #: src/Dialogs/PropertiesWindow.vala:1227
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u ostki papkalar"
 
 #: src/Dialogs/PropertiesWindow.vala:1231
 #: src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u fayl"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:993
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u papka"
 
 #: src/Dialogs/PropertiesWindow.vala:1258
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u elementlar belgilangan"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1260
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Disk xususiyatlari"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
+#: src/View/Sidebar/DeviceListBox.vala:104 libwidgets/Resources.vala:73
 msgid "File System"
-msgstr ""
+msgstr "Fayl tizimi"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:90
 msgid "Format:"
-msgstr ""
+msgstr "Format:"
 
 #: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Bir necha turdagi fayllar belgilangan"
 
 #: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Ushbu tipdagi fayllarni hech qaysi dastur ocha olmaydi"
 
 #: src/Utils/MimeActions.vala:311
 msgid "Failed to open files"
-msgstr ""
+msgstr "Fayllarni ochib bo'lmadi"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr ""
+msgstr "URIlarni ochib bo'lmadi"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "Ushbu dastur yordamida fayllarni yoki URIni ochib bo'lmadi"
 
-#: src/View/Window.vala:544 src/View/Window.vala:554
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(administrator huquqi bilan)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
-msgstr ""
+msgstr "Fayl nomi"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
-msgstr ""
+msgstr "Hajmi"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
-msgstr ""
+msgstr "Turi"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr ""
+msgstr "O'zgartirilgan"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Ushbu papka mavjud emas"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "\"%s\" papka topilmadi."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
-msgstr ""
+msgstr "Yaratish"
 
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "\"%s\" papkani yaratish"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
-msgstr ""
+msgstr "Papka yaratib bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:820
-#: src/View/AbstractDirectoryView.vala:1131
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1130
 msgid "Cannot execute this file"
-msgstr ""
+msgstr "Ushbu faylni ishga tushirib bo'lmadi"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:830
+#: src/View/AbstractDirectoryView.vala:829
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr ""
+msgstr "\"%s\" faylni ochishdan avval Savatchadan chiqarib olish kerak"
 
-#: src/View/AbstractDirectoryView.vala:831
+#: src/View/AbstractDirectoryView.vala:830
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Savatchadagi fayllar ochilmaydi. Uni ochish uchun avval boshqa joyga "
+"ko'chirib olish kerak."
 
-#: src/View/AbstractDirectoryView.vala:846
+#: src/View/AbstractDirectoryView.vala:845
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Faylni ochib bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:859
+#: src/View/AbstractDirectoryView.vala:858
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Faylni ochish uchun turini aniqlab bo'lmadi"
+
+#: src/View/AbstractDirectoryView.vala:1576
+msgid "Cannot drop this file"
+msgstr "Ushbu faylga joylashtirib bo'lmadi"
 
 #: src/View/AbstractDirectoryView.vala:1577
-msgid "Cannot drop this file"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1578
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Fayl nomi noto'g'ri"
 
-#: src/View/AbstractDirectoryView.vala:1854
+#: src/View/AbstractDirectoryView.vala:1853
 msgid "New Tab"
-msgstr ""
+msgstr "Yangi yorliq ochish"
 
-#: src/View/AbstractDirectoryView.vala:1874
+#: src/View/AbstractDirectoryView.vala:1873
 msgid "Run"
-msgstr ""
+msgstr "Ishga tushirish"
 
-#: src/View/AbstractDirectoryView.vala:1881
+#: src/View/AbstractDirectoryView.vala:1880
 #, c-format
 msgid "Open in %s"
-msgstr ""
+msgstr "\"%s\" da ochish"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Open in"
-msgstr ""
+msgstr "Ushbu dasturda ochish"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1951
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
-msgstr ""
+msgstr "Ushbu dastur yordamida ochish"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Paste"
-msgstr ""
+msgstr "Joylashtirish"
 
-#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/AbstractDirectoryView.vala:1962
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
-msgstr ""
+msgstr "Xatcho'pga qo'shish"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:1977
 msgid "Cut"
-msgstr ""
+msgstr "Qirqib olish"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1986
+#: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
-msgstr ""
+msgstr "Nusxa olish"
 
-#: src/View/AbstractDirectoryView.vala:1993
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
-msgstr ""
+msgstr "Savatchaga o'tkazish"
 
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
-msgstr ""
+msgstr "To'liq o'chirib tashlash"
 
-#: src/View/AbstractDirectoryView.vala:2003
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Savatchadan tiklash"
 
-#: src/View/AbstractDirectoryView.vala:2014
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Bosh papkani ochish"
 
-#: src/View/AbstractDirectoryView.vala:2017
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
-msgstr ""
+msgstr "Tarixdan tozalash"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Rename…"
-msgstr ""
+msgstr "Qaytanomlash…"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
-msgstr ""
+msgstr "Bog'lamasidan nusxa olish"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
-msgstr ""
+msgstr "Papkaga bog'lama joylashtirish"
 
-#: src/View/AbstractDirectoryView.vala:2060
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Papkaga joylashtirish"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Yashirin fayllarni ko'rsatish"
 
-#: src/View/AbstractDirectoryView.vala:2091
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Masofadagi miniaturalarni ko'rsatish"
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
-msgstr ""
+msgstr "Miniaturalarni yashirish"
 
-#: src/View/AbstractDirectoryView.vala:2114
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
-msgstr ""
+msgstr "Bog'lama joylashtirish"
 
-#: src/View/AbstractDirectoryView.vala:2168
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
-msgstr ""
+msgstr "Nomi"
 
-#: src/View/AbstractDirectoryView.vala:2183
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
-msgstr ""
+msgstr "Sana"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
-msgstr ""
+msgstr "Teskari taribda"
 
-#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Papkalar fayllardan oldin"
 
-#: src/View/AbstractDirectoryView.vala:2203
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
-msgstr ""
+msgstr "Tartiblash"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
-msgstr ""
+msgstr "Papka"
 
-#: src/View/AbstractDirectoryView.vala:2217
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
-msgstr ""
+msgstr "Bo'sh fayl"
 
-#: src/View/AbstractDirectoryView.vala:2268
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
-msgstr ""
+msgstr "Yaratish"
 
-#: src/View/AbstractDirectoryView.vala:2505
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
-msgstr ""
+msgstr "Nomsiz \"%s\""
 
 #: src/View/AbstractDirectoryView.vala:2867
 #: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Bu yerdan fayllarni o'chirib bo'lmadi"
 
 #: src/View/AbstractDirectoryView.vala:2868
 #: src/View/AbstractDirectoryView.vala:3053
 #: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Ushbu joylashuvni o'zgartirish uchun sizda huquq yetarli emas"
 
 #: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Savatchada turgan fayllardan nusxa olib bo'lmaydi"
 
 #: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Belgilanmaganlarni qirqib olish"
 
 #: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Bu yerga fayllarni joylashtirib bo'lmadi"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
-msgstr ""
+msgstr "Uy papkasi"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
-msgstr ""
-
-#: src/View/ViewContainer.vala:408
-msgid "The network is unavailable"
-msgstr ""
+msgstr "Siz bu yerda papka yarata olmaysiz."
 
 #: src/View/ViewContainer.vala:409
-msgid "A working network is needed to reach this folder"
-msgstr ""
+msgid "The network is unavailable"
+msgstr "Tarmoq ishlamayapti"
 
-#: src/View/ViewContainer.vala:412
-msgid "This Folder Does Not Belong to You"
-msgstr ""
+#: src/View/ViewContainer.vala:410
+msgid "A working network is needed to reach this folder"
+msgstr "Ushbu papkani ochish uchun tarmoq ishlayotgan bo'lishi kerak"
 
 #: src/View/ViewContainer.vala:413
-msgid "You don't have permission to view this folder."
-msgstr ""
+msgid "This Folder Does Not Belong to You"
+msgstr "Ushbu papka sizga tegishli emas"
 
-#: src/View/ViewContainer.vala:415
-msgid "Unable to Mount Folder"
-msgstr ""
+#: src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "Ushbu papkani ko'rish uchun huquqingiz yo'q."
 
 #: src/View/ViewContainer.vala:416
-msgid "Could not connect to the server for this folder."
-msgstr ""
+msgid "Unable to Mount Folder"
+msgstr "Papkani ulab bo'lmadi"
 
-#: src/View/ViewContainer.vala:419
-msgid "Unable to Display Folder Contents"
-msgstr ""
+#: src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "Serverdagi ushbu papkaga bog'lanib bo'lmadi."
 
 #: src/View/ViewContainer.vala:420
-msgid "The operation timed out."
-msgstr ""
+msgid "Unable to Display Folder Contents"
+msgstr "Papka tarkibini ko'rsatib bo'lmadi"
 
-#: src/View/ViewContainer.vala:422
-msgid "Unable to Show Folder"
-msgstr ""
+#: src/View/ViewContainer.vala:421
+msgid "The operation timed out."
+msgstr "Operatsiyani bajarish vaqti tugadi."
 
 #: src/View/ViewContainer.vala:423
-msgid "The server for this folder could not be located."
-msgstr ""
+msgid "Unable to Show Folder"
+msgstr "Papkani ko'rsatib bo'lmadi"
 
-#: src/View/ViewContainer.vala:434
-msgid "File not Found"
-msgstr ""
+#: src/View/ViewContainer.vala:424
+msgid "The server for this folder could not be located."
+msgstr "Ko'rsatilgan papka serverini aniqlab bo'lmadi."
 
 #: src/View/ViewContainer.vala:435
+msgid "File not Found"
+msgstr "Fayl topilmadi"
+
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Tanlangan fayl endi mavjud emas."
 
-#: src/View/Sidebar/BookmarkListBox.vala:119
+#: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
-msgstr ""
+msgstr "Uy katalogini ko'rish"
 
-#: src/View/Sidebar/BookmarkListBox.vala:132
+#: src/View/Sidebar/BookmarkListBox.vala:142
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Yaqin orada foydalanilgan fayllar ro'yxatini ko'rish"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
 msgid "Trash"
-msgstr ""
+msgstr "Savatcha"
 
-#: src/View/Sidebar/BookmarkListBox.vala:154
+#: src/View/Sidebar/BookmarkListBox.vala:164
 msgid "Open the Trash"
-msgstr ""
+msgstr "Savatchani ochish"
 
-#: src/View/Sidebar/DeviceListBox.vala:106
+#: src/View/Sidebar/DeviceListBox.vala:116
 msgid "View the root of the local filesystem"
-msgstr ""
+msgstr "Mahalliy fayl tizimining ildiz qismini ko'rish"
 
 #: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s bo'sh"
 
 #: src/View/Sidebar/DeviceRow.vala:117
 #, c-format
 msgid "%s used of %s"
-msgstr ""
+msgstr "%s dan %s qismi ishlatilgan"
 
-#: src/View/Sidebar/NetworkListBox.vala:78
+#: src/View/Sidebar/NetworkListBox.vala:88
 msgid "Entire Network"
-msgstr ""
+msgstr "Butun tarmoq"
 
-#: src/View/Sidebar/NetworkListBox.vala:85
+#: src/View/Sidebar/NetworkListBox.vala:95
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Tarmoq tarkibini ko'rish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:49
 msgid "Open"
-msgstr ""
+msgstr "Ochish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:53
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Yangi y_orliqda ochish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:57
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Yangi _oynada ochish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:61
 msgid "Remove"
-msgstr ""
+msgstr "O'chirish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:65
 msgid "Rename"
-msgstr ""
+msgstr "Qaytanomlash"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:69
 msgid "_Mount"
-msgstr ""
+msgstr "_Ulash"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:73
 msgid "_Unmount"
-msgstr ""
+msgstr "_Uzish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:77
 msgid "_Eject"
-msgstr ""
+msgstr "_Chiqarish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
 msgid "Empty All Trash"
-msgstr ""
+msgstr "Savatchani tozalash"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "Ushbu ulangan qurilmaning savatchasini tozalash"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
 msgid "Bookmarks"
-msgstr ""
+msgstr "Xatcho'plar"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Umumiy joylar va qistirilgan papka va fayllar"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "Saqlagichlar"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Ichki va ulangan saqlash qurilmalari"
 
 #: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
-msgstr ""
+msgstr "Tarmoq"
 
 #: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Tarmoq orqali mavjud bo'lgan qurilmalar va joylar"
 
-#: src/View/Sidebar/SidebarWindow.vala:83
+#: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
-msgstr ""
+msgstr "Serverga bog'lanish…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Papka bo'sh"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Savatcha bo'sh"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Bu yerda yaqin orada foydalanilgan fayllar yo'q"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
-msgstr ""
+msgstr "Taqiqlangan hudud"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Shaxsiy rejim yoqildi"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Tavsiya qilingan yangi fayllar yo'q"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Havfsizlik sozlamalarini o'zgartirish"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Xavfsizlik va maxfiylikni sozlash dasturini ochish"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Yo'lni kiriting yoki izlang"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Yangi yorliqda ochish"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
-msgstr ""
+msgstr "Yangi oynada ochish"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Boshqa ilovada ochish…"
 
 #: src/View/Widgets/HeaderBar.vala:66
 msgid "Previous"
-msgstr ""
+msgstr "Orqaga"
 
 #: src/View/Widgets/HeaderBar.vala:73
 msgid "Next"
-msgstr ""
+msgstr "Oldinga"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
+msgstr "Ushbu papkani yangilash"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
-msgstr ""
+msgstr "Qidirilmoqda…"
 
 #: src/View/Widgets/OverlayBar.vala:209
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u papka"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] ""
+msgstr[0] " va %u boshqa elementlar (%s) belgilandi"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
-msgstr ""
+msgstr " belgilandi"
 
 #: src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u elementlar belgilandi (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] ""
+msgstr[0] "%u ostpapkalar, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] ""
+msgstr[0] "%u fayl, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "taxminan %s."
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "hajmi noaniq"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] ""
+msgstr[0] "%u o'qib bo'lmaydigan fayllar"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
-msgstr ""
+msgstr "O'qish"
 
 #: src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr ""
+msgstr "Yozish"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr ""
+msgstr "Ishga tushirish"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
-msgstr ""
+msgstr "FTP (ommaviy)"
 
 #: libcore/ConnectServerDialog.vala:52
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (authentifikatsiya bilan)"
 
 #: libcore/ConnectServerDialog.vala:59
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: libcore/ConnectServerDialog.vala:65
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple fayl almashish protokoli)"
 
 #: libcore/ConnectServerDialog.vala:71
 msgid "Windows share"
-msgstr ""
+msgstr "Windows resurslari"
 
 #: libcore/ConnectServerDialog.vala:77
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: libcore/ConnectServerDialog.vala:84
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Himoyalangan WebDAV (HTTPS)"
 
 #: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
-msgstr ""
+msgstr "Server ma'lumotlari"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Server nomi yoki IP-manzili"
 
 #: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #: libcore/ConnectServerDialog.vala:143
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "Serverdagi umumiy resursning nomi (zaruriy emas)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
-msgstr ""
+msgstr "Resurs:"
 
 #: libcore/ConnectServerDialog.vala:181
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "Serverdagi umumiy papkaga yo'nalish (zaruriy emas)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
-msgstr ""
+msgstr "Papka:"
 
 #: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
-msgstr ""
+msgstr "Foydalanuvchi ma'lumotlari"
 
 #: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "Windows domeni nomi"
 
 #: libcore/ConnectServerDialog.vala:194
 msgid "Domain name:"
-msgstr ""
+msgstr "Domen:"
 
 #: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
-msgstr ""
+msgstr "Serverdagi foydalanuvchi nomi"
 
 #: libcore/ConnectServerDialog.vala:201
 msgid "User name:"
-msgstr ""
+msgstr "Foydalanuvchi nomi:"
 
 #: libcore/ConnectServerDialog.vala:208
 msgid "Password:"
-msgstr ""
+msgstr "Parol:"
 
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr ""
+msgstr "Ushbu parolni eslab qolish"
 
 #: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
-msgstr ""
+msgstr "Bekor qilish"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
-msgstr ""
+msgstr "Ulanish"
 
 #: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
-msgstr ""
+msgstr "Davom etish"
 
 #: libcore/ConnectServerDialog.vala:274
 msgid "Connecting…"
-msgstr ""
+msgstr "Bog'lanmoqda…"
 
 #: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Foydalanuvchi ma'lumotlarini tekshiring."
 
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "\"%s\" ni ishga tushirib bo'lmadi"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
-msgstr ""
+msgstr "Bu yerga ko'chirish"
 
 #: libcore/DndHandler.vala:101
 msgid "Copy Here"
-msgstr ""
+msgstr "Bu yerga nusxalash"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "Bu yerga bog'lama yaratish"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
-msgstr ""
+msgstr "Konflikt fayllar"
 
 #: libcore/FileConflictDialog.vala:97
 msgid "Original file"
-msgstr ""
+msgstr "Birlamchi fayl"
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
-msgstr ""
+msgstr "Oxirgi martta o'zgartirilgan:"
 
 #: libcore/FileConflictDialog.vala:131
 msgid "Replace with"
-msgstr ""
+msgstr "Ushbuga almashtirish"
 
 #: libcore/FileConflictDialog.vala:165
 msgid "Reset"
-msgstr ""
+msgstr "Tiklash"
 
 #: libcore/FileConflictDialog.vala:177
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "Belgilamoqchi bo'lgan _nomni tanlang"
 
 #: libcore/FileConflictDialog.vala:180
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Ushbu amalni barcha fayllar uchun qo'llash"
 
 #: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
 msgid "_Skip"
-msgstr ""
+msgstr "_O'tkazib yuborish"
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Re_name"
-msgstr ""
+msgstr "Qay_tanomlash"
 
 #: libcore/FileConflictDialog.vala:185
 msgid "Keep Newest"
-msgstr ""
+msgstr "Yangisini qoldirish"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Agar asli yaqin orada o'zgartirilgan bo'lsa, tashlab ketilsin"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
-msgstr ""
+msgstr "ALmashtirish"
 
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "\"%s\" papkalar birlashtirilsinmi?"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Agar birlashtirilayotganda konfliktlar yuzaga kelsa sizga almashtirish "
+"taklif etiladi."
 
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da eskiroq papka mavjud."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da bu nom bilan yangiroq papka mavjud."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da bu nom bilan papka allaqachon mavjud."
 
 #: libcore/FileConflictDialog.vala:309
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "\"%s\" papka almashtirilsinmi?"
 
 #: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Almashtirayotganda papkadagi barcha fayllar o'chirib yuboriladi."
 
 #: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" da ushbu nom bilan papka allaqachon mavjud."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "\"%s\" fayl almashtirilsinmi?"
 
 #: libcore/FileConflictDialog.vala:315
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Almashtirilayotganda faylning tarkibi qayta yoziladi."
 
 #: libcore/FileConflictDialog.vala:318
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Ushbu nomdagi fayl \"%s\" da allaqachon mavjud."
 
 #: libcore/FileConflictDialog.vala:320
 #, c-format
@@ -1039,7 +1041,7 @@ msgstr ""
 
 #: libcore/FileConflictDialog.vala:348
 msgid "Merge"
-msgstr ""
+msgstr "Birlashtirish"
 
 #: libcore/FileUtils.vala:89
 #, c-format
@@ -1050,125 +1052,160 @@ msgstr ""
 msgid "The item cannot be restored from trash"
 msgstr ""
 
-#: libcore/FileUtils.vala:516
+#: libcore/FileUtils.vala:184
+#, fuzzy, c-format
+#| msgid "The file selected no longer exists."
+msgid "The original folder %s no longer exists"
+msgstr "Tanlangan fayl endi mavjud emas."
+
+#: libcore/FileUtils.vala:185
+msgid "Would you like to recreate it?"
+msgstr ""
+
+#: libcore/FileUtils.vala:190
+msgid "Ignore"
+msgstr ""
+
+#: libcore/FileUtils.vala:191
+msgid "No files that were in this folder will be restored"
+msgstr ""
+
+#: libcore/FileUtils.vala:192
+#, fuzzy
+#| msgid "Create"
+msgid "Recreate"
+msgstr "Yaratish"
+
+#: libcore/FileUtils.vala:194
+msgid ""
+"The folder will be recreated and selected files that were originally there "
+"will be restored to it"
+msgstr ""
+
+#: libcore/FileUtils.vala:207
+#, c-format
+msgid "Could not recreate folder %s. Will ignore all files in this folder"
+msgstr ""
+
+#: libcore/FileUtils.vala:578
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:607
+#: libcore/FileUtils.vala:669
 #, c-format
 msgid "Today at %s"
-msgstr ""
+msgstr "Bugun %s da"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:615
+#: libcore/FileUtils.vala:677
 #, c-format
 msgid "Yesterday at %s"
-msgstr ""
+msgstr "Kecha %s da"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:623
+#: libcore/FileUtils.vala:685
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%s da %%A"
 
-#: libcore/FileUtils.vala:920
+#: libcore/FileUtils.vala:982
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
+msgstr[0] "%'d soniya"
 
-#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
+#: libcore/FileUtils.vala:986 libcore/FileUtils.vala:994
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
+msgstr[0] "%'d daqiqa"
 
-#: libcore/FileUtils.vala:931
+#: libcore/FileUtils.vala:993
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
+msgstr[0] "%'d soat"
 
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:997
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
+msgstr[0] "taxminan %'d soat"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:943
+#: libcore/FileUtils.vala:1005
 msgid "copy"
-msgstr ""
+msgstr "nusxa"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:945
+#: libcore/FileUtils.vala:1007
 msgid "link"
-msgstr ""
+msgstr "bog'lama"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:947
+#: libcore/FileUtils.vala:1009
 msgid "("
-msgstr ""
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:949
+#: libcore/FileUtils.vala:1011
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Kutilgan vaqt mobaynida server javob bermadi"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
 msgid "Preparing"
-msgstr ""
+msgstr "Tayyorlanmoqda"
 
 #: libcore/StockDialogs.vala:20
 msgid "_Cancel"
-msgstr ""
+msgstr "_Bekor qilish"
 
 #: libcore/StockDialogs.vala:21
 msgid "Delete"
-msgstr ""
+msgstr "O'chirish"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
-msgstr ""
+msgstr "Barchasini o'tkazib _yuborish"
 
 #: libcore/StockDialogs.vala:24
 msgid "_Retry"
-msgstr ""
+msgstr "Tak_rorlash"
 
 #: libcore/StockDialogs.vala:25
 msgid "Delete _All"
-msgstr ""
+msgstr "Barchasini o'_chirish"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
-msgstr ""
+msgstr "_Almashtirish"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
-msgstr ""
+msgstr "_Barchasini almashtirish"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
-msgstr ""
+msgstr "B_irlashtirish"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
-msgstr ""
+msgstr "Barchasini bir_lashtirish"
 
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Majburan n_usxalash"
 
 #: libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
-msgstr ""
+msgstr "_Savatchani tozalash"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"

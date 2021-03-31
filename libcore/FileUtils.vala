@@ -106,6 +106,7 @@ namespace PF.FileUtils {
         var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
         unhandled_files = null;
 
+        var exists_map = new Gee.HashMap<string, int> ();
         foreach (unowned GOF.File goffile in files) {
             /* Check it is a valid file (e.g. not a dummy row from list view) */
             if (goffile == null || goffile.location == null) {
@@ -118,9 +119,22 @@ namespace PF.FileUtils {
                 /* We are in trash root */
                 var original_dir = get_trashed_file_original_folder (goffile);
                 if (original_dir != null) {
-                    GLib.List<GLib.File>? dir_files = directories.take (original_dir);
-                    dir_files.prepend (goffile.location);
-                    directories.insert (original_dir, (owned)dir_files);
+                    int exists = -1; //Unknown whether exists
+                    if (exists_map.has_key (original_dir.get_path ())) {
+                        exists = exists_map.@get (original_dir.get_path ());
+                    }
+                    if (exists == 1 || (exists < 0 && ensure_exists (original_dir))) {
+                        if (exists < 0) {
+                            exists_map.@set (original_dir.get_path (), 1); // Do not need to check this path again
+                        }
+                        GLib.List<GLib.File>? dir_files = directories.take (original_dir);
+                        dir_files.prepend (goffile.location);
+                        directories.insert (original_dir, (owned)dir_files);
+                    } else {
+                        if (exists < 0) {
+                            exists_map.@set (original_dir.get_path (), 0); // Do not need to check this path again
+                        }
+                    }
                 } else {
                     unhandled_files.prepend (goffile);
                 }
@@ -159,6 +173,54 @@ namespace PF.FileUtils {
             debug ("Could not get original path for trashed file %s", file.uri);
             return null;
         }
+    }
+
+    private bool ensure_exists (File file) {
+        if (file.query_exists ()) {
+            return true;
+        }
+
+        var dialog = new Granite.MessageDialog.with_image_from_icon_name (
+            _("The original folder %s no longer exists").printf (file.get_path ()),
+            _("Would you like to recreate it?"),
+            "dialog-question",
+            Gtk.ButtonsType.NONE
+        );
+
+        var ignore_button = dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
+        ignore_button.tooltip_text = _("No files that were in this folder will be restored");
+        var recreate_button = dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
+        recreate_button.tooltip_text =
+             _ ("The folder will be recreated and selected files that were originally there will be restored to it");
+
+        dialog.set_default_response (Gtk.ResponseType.ACCEPT);
+
+        var response = dialog.run ();
+        dialog.destroy ();
+        switch (response) {
+            case Gtk.ResponseType.ACCEPT:
+                try {
+                    file.make_directory_with_parents ();
+                    return true;
+                } catch (Error e) {
+                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                        e.message,
+                        "dialog-error",
+                        Gtk.ButtonsType.CLOSE
+                    );
+
+                    error_dialog.run ();
+                    error_dialog.destroy ();
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+        return false;
     }
 
     public string? get_path_for_symlink (GLib.File file) {

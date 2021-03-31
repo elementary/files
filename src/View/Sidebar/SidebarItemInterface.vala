@@ -65,7 +65,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {}
     public virtual void update_plugin_data (Marlin.SidebarPluginItem item) {}
 
-    protected virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+    public virtual void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
         list.open_item (this, flag);
     }
 }
