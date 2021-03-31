@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-11 02:37+0000\n"
+"POT-Creation-Date: 2021-03-31 21:50+0000\n"
 "PO-Revision-Date: 2021-03-20 18:37+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/>"
-"\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
+">\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,8 +71,7 @@ msgstr "प्रवेश करण्यायोग्य स्थाने 
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
-msgstr ""
-"लघुप्रतिमा आणि मजकूर दरम्यान क्लिक करणे आता चिन्ह दृश्यात सक्रिय होते/निवडते"
+msgstr "लघुप्रतिमा आणि मजकूर दरम्यान क्लिक करणे आता चिन्ह दृश्यात सक्रिय होते/निवडते"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Bookmark menu option for network mounts in sidebar"
@@ -247,8 +246,7 @@ msgstr "नेव्हिगेशन बटणांच्या मेनू�
 
 #: data/io.elementary.files.appdata.xml.in.in:152
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr ""
-"मेनूमधील \"नवीन फोल्डर\" कीबोर्ड शॉर्टकट लेबलशी संबंधित समस्यांचे निराकरण करा"
+msgstr "मेनूमधील \"नवीन फोल्डर\" कीबोर्ड शॉर्टकट लेबलशी संबंधित समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:153
 msgid "Fix navigation with back/forward button context menu"
