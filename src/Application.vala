@@ -286,13 +286,15 @@ public class Marlin.Application : Gtk.Application {
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
         Marlin.app_settings.bind ("hide-local-thumbnails",
                                    prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
+
         Marlin.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+
         gnome_interface_settings.bind ("clock-format",
-                                   GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+                                       GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
         gnome_privacy_settings.bind ("remember-recent-files",
-                                   GOF.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
+                                     GOF.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
         gtk_file_chooser_settings.bind ("sort-directories-first",
-                                   prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
+                                        prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     public Marlin.View.Window? create_window (File? location = null,
