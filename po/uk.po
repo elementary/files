@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-03-04 10:18+0000\n"
+"PO-Revision-Date: 2021-04-01 00:58+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -1084,14 +1084,13 @@ msgid "The item cannot be restored from trash"
 msgstr "Елемент неможливо відновити зі смітника"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Виділеного файлу більше не існує."
+msgstr "Оригінальної теки %s більше не існує"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Бажаєте знову її створити?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1099,24 +1098,25 @@ msgstr "Ігнорувати"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Файли, що знаходились у цій теці, не будуть відновлені"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Створити"
+msgstr "Створити знову"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Теку буде створено знову, а вибрані файли, які там спочатку були, будуть "
+"відновлені"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Не вдалося заново створити теку %s. Буде знехтувано всіма файлами з цієї теки"
 
 #: libcore/FileUtils.vala:578
 #, c-format
