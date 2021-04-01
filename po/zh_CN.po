@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-02-03 09:30+0000\n"
+"PO-Revision-Date: 2021-04-01 11:43+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -567,10 +567,8 @@ msgid "The file selected no longer exists."
 msgstr "选中的文件已不存在。"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "创建文件夹失败"
+msgstr "打开主目录"
 
 #: src/View/Sidebar/BookmarkListBox.vala:142
 msgid "View the list of recently used files"
@@ -585,10 +583,8 @@ msgid "Open the Trash"
 msgstr "打开回收站"
 
 #: src/View/Sidebar/DeviceListBox.vala:116
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "查看最近使用的文件列表"
+msgstr "查看系统文件根目录"
 
 #: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
@@ -641,14 +637,12 @@ msgid "_Eject"
 msgstr "弹出"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty _Trash"
 msgid "Empty All Trash"
-msgstr "清空回收站"
+msgstr "清空所有文件"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:93
 msgid "Empty Trash on this Mount"
-msgstr ""
+msgstr "清空当前分卷的回收站"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -662,7 +656,7 @@ msgstr "常用位置与已保存的文件和文件夹"
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "储存"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
@@ -677,8 +671,6 @@ msgid "Devices and places available via a network"
 msgstr "可通过网络访问的设备和位置"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
 msgstr "服务器…"
 
@@ -753,11 +745,10 @@ msgid "%u folders"
 msgstr "%u 个文件夹"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " 和 %u 个其他项目 - 已选中(%s)"
+msgstr[0] " 和 %u 个其他项目- (%s) 已选中"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -770,16 +761,14 @@ msgstr "已选中 %u 个项目 (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u 个子文件夹， "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u 个文件， "
@@ -797,8 +786,7 @@ msgstr "未知大小"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u 个文件不可读"
@@ -860,20 +848,16 @@ msgid "Port:"
 msgstr "端口："
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "服务器共享名称"
+msgstr "服务器共享名称（可选）"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "共享："
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "服务器共享文件夹路径"
+msgstr "服务器共享文件夹路径（可选）"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
@@ -1071,14 +1055,13 @@ msgid "The item cannot be restored from trash"
 msgstr "此项目无法从回收站中恢复"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "选中的文件已不存在。"
+msgstr "原始文件夹 %s 已不存在"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "您想要重新创建该文件夹吗？"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1086,24 +1069,22 @@ msgstr "忽略"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "此文件夹中未找到可恢复的文件"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "创建"
+msgstr "重新创建"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
-msgstr ""
+msgstr "将会重新创建该文件夹，并恢复其中已选中的文件"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
+msgstr "无法重建 %s，将忽略此文件夹中的所有文件"
 
 #: libcore/FileUtils.vala:578
 #, c-format
@@ -1821,10 +1802,8 @@ msgid "Setting permissions"
 msgstr "正在设置权限"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "将文件移到回收站"
+msgstr "未找到可操作的文件"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
