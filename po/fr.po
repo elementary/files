@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-03-05 09:45+0000\n"
+"PO-Revision-Date: 2021-04-01 14:26+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -1072,14 +1072,13 @@ msgid "The item cannot be restored from trash"
 msgstr "Impossible de restaurer l'élément depuis la corbeille"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Le fichier sélectionné n'existe plus."
+msgstr "Le dossier d'origine %s n'existe plus"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Voulez-vous le créer à nouveau ?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1087,24 +1086,26 @@ msgstr "Ignorer"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Aucun fichier auparavant présent dans ce dossier ne sera restauré"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Créer"
+msgstr "Créer à nouveau"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Le dossier sera créé à nouveau et les fichiers sélectionnés qui s'y "
+"trouvaient auparavant y seront restaurés"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Impossible de créer le dossier %s à nouveau. Tous les fichiers de ce dossier "
+"seront ignorés"
 
 #: libcore/FileUtils.vala:578
 #, c-format
