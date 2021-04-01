@@ -184,6 +184,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                         if (mount != null) {
                             mounted = true;
                             uri = mount.get_default_location ().get_uri ();
+                            if (volume.get_uuid () == null) {
+                                uuid = uri;
+                            }
+
                             list.open_item (this, flag);
                         }
                     } catch (GLib.Error error) {

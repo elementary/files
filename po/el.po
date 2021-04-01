@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-11 02:37+0000\n"
+"POT-Creation-Date: 2021-03-31 21:50+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Εμφάνιση της έκδοσης του προγράμματος."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1860
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1859
 msgid "New Window"
 msgstr "Νέο παράθυρο"
 
@@ -114,7 +114,7 @@ msgid "Set as default"
 msgstr "Ορισμός ως προεπιλογή"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1969
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Ιδιότητες"
@@ -194,7 +194,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1938
+#: src/View/AbstractDirectoryView.vala:1937
 msgid "Other Application…"
 msgstr "Άλλη εφαρμογή..."
 
@@ -231,7 +231,7 @@ msgstr[1] "%u αρχεία"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:931
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:993
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -261,7 +261,7 @@ msgid "Disk Properties"
 msgstr "Ιδιότητες δίσκου"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:94 libwidgets/Resources.vala:73
+#: src/View/Sidebar/DeviceListBox.vala:104 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Σύστημα αρχείων"
 
@@ -297,11 +297,11 @@ msgstr "(ως διαχειριστής)"
 msgid "Filename"
 msgstr "Όνομα αρχείου"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2173
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2178
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "Τύπος"
 
@@ -335,174 +335,174 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:820
-#: src/View/AbstractDirectoryView.vala:1131
+#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:1130
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Το άνοιγμα αυτού του αρχείου είναι αδύνατο"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:830
+#: src/View/AbstractDirectoryView.vala:829
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:831
+#: src/View/AbstractDirectoryView.vala:830
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:846
+#: src/View/AbstractDirectoryView.vala:845
 msgid "Cannot open this file"
 msgstr "Το άνοιγμα αυτού του αρχείου είναι αδύνατο"
 
-#: src/View/AbstractDirectoryView.vala:859
+#: src/View/AbstractDirectoryView.vala:858
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1577
+#: src/View/AbstractDirectoryView.vala:1576
 msgid "Cannot drop this file"
 msgstr "Η ρίψη αυτού του αρχείου είναι αδύνατη"
 
-#: src/View/AbstractDirectoryView.vala:1578
+#: src/View/AbstractDirectoryView.vala:1577
 msgid "Invalid file name provided"
 msgstr "Δόθηκε μη έγκυρο όνομα αρχείου"
 
-#: src/View/AbstractDirectoryView.vala:1854
+#: src/View/AbstractDirectoryView.vala:1853
 msgid "New Tab"
 msgstr "Νέα καρτέλα"
 
-#: src/View/AbstractDirectoryView.vala:1874
+#: src/View/AbstractDirectoryView.vala:1873
 msgid "Run"
 msgstr "Εκτέλεση"
 
-#: src/View/AbstractDirectoryView.vala:1881
+#: src/View/AbstractDirectoryView.vala:1880
 #, c-format
 msgid "Open in %s"
 msgstr "Άνοιγμα σε %s"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Open in"
 msgstr "Άνοιγμα σε"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1951
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Άνοιγμα με"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Paste"
 msgstr "Επικόλληση"
 
-#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/AbstractDirectoryView.vala:1962
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "Σελιδοδείκτες"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:1977
 msgid "Cut"
 msgstr "Αποκοπή"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1986
+#: src/View/AbstractDirectoryView.vala:1985
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: src/View/AbstractDirectoryView.vala:1993
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Move to Trash"
 msgstr "Μετακίνηση στον κάδο"
 
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Delete permanently"
 msgstr "Οριστική διαγραφή"
 
-#: src/View/AbstractDirectoryView.vala:2003
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "Επαναφορά από τον κάδο"
 
-#: src/View/AbstractDirectoryView.vala:2014
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "Άνοιγμα γονικού φακέλου"
 
-#: src/View/AbstractDirectoryView.vala:2017
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "Αφαίρεση από το ιστορικό"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Μετονομασία"
 
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2039
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Επικόλληση"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2057
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Επικόλληση στον φάκελο"
 
-#: src/View/AbstractDirectoryView.vala:2060
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "Επικόλληση στον φάκελο"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "Προβολή κρυφών αρχείων"
 
-#: src/View/AbstractDirectoryView.vala:2091
+#: src/View/AbstractDirectoryView.vala:2090
 #, fuzzy
 msgid "Show Remote Thumbnails"
 msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2093
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
 
-#: src/View/AbstractDirectoryView.vala:2114
+#: src/View/AbstractDirectoryView.vala:2113
 #, fuzzy
 msgid "Paste Link"
 msgstr "Επικόλληση"
 
-#: src/View/AbstractDirectoryView.vala:2168
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "Όνομα"
 
-#: src/View/AbstractDirectoryView.vala:2183
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "Αντίστροφη σειρά"
 
-#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2203
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "Ταξινόμηση κατά"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "Φάκελος"
 
-#: src/View/AbstractDirectoryView.vala:2217
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "Κενό αρχείο"
 
-#: src/View/AbstractDirectoryView.vala:2268
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "Νέος/-o"
 
-#: src/View/AbstractDirectoryView.vala:2505
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr ""
@@ -530,7 +530,7 @@ msgstr "Αποκοπή της επιλογής πάραυτα"
 msgid "Cannot paste files here"
 msgstr "Η επικόλληση αρχείων εδώ είναι αδύνατη"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:112
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Προσωπικός φάκελος"
 
@@ -587,7 +587,7 @@ msgstr "Το αρχείο δεν βρέθηκε"
 msgid "The file selected no longer exists."
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
 
-#: src/View/Sidebar/BookmarkListBox.vala:119
+#: src/View/Sidebar/BookmarkListBox.vala:129
 #, fuzzy
 msgid "View the home folder"
 msgstr ""
@@ -595,19 +595,19 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/Sidebar/BookmarkListBox.vala:132
+#: src/View/Sidebar/BookmarkListBox.vala:142
 msgid "View the list of recently used files"
 msgstr "Προβολή της λίστας των πρόσφατα χρησιμοποιημένων αρχείων"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Κάδος"
 
-#: src/View/Sidebar/BookmarkListBox.vala:154
+#: src/View/Sidebar/BookmarkListBox.vala:164
 msgid "Open the Trash"
 msgstr "Άνοιγμα του κάδου"
 
-#: src/View/Sidebar/DeviceListBox.vala:106
+#: src/View/Sidebar/DeviceListBox.vala:116
 #, fuzzy
 #| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
@@ -623,11 +623,11 @@ msgstr ""
 msgid "%s used of %s"
 msgstr "%S από %S"
 
-#: src/View/Sidebar/NetworkListBox.vala:78
+#: src/View/Sidebar/NetworkListBox.vala:88
 msgid "Entire Network"
 msgstr "Όλο το δίκτυο σας"
 
-#: src/View/Sidebar/NetworkListBox.vala:85
+#: src/View/Sidebar/NetworkListBox.vala:95
 msgid "Browse the contents of the network"
 msgstr "Περιήγηση στα περιεχόμενα του δικτύου"
 
@@ -1107,51 +1107,86 @@ msgstr "Αδυναμία προσδιορισμού αρχικής τοποθε�
 msgid "The item cannot be restored from trash"
 msgstr "Το αντικείμενο δεν μπορεί να επαναφερθεί από τον κάθο"
 
-#: libcore/FileUtils.vala:516
+#: libcore/FileUtils.vala:184
+#, fuzzy, c-format
+#| msgid "The file selected no longer exists."
+msgid "The original folder %s no longer exists"
+msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
+
+#: libcore/FileUtils.vala:185
+msgid "Would you like to recreate it?"
+msgstr ""
+
+#: libcore/FileUtils.vala:190
+msgid "Ignore"
+msgstr "Παράβλεψη"
+
+#: libcore/FileUtils.vala:191
+msgid "No files that were in this folder will be restored"
+msgstr ""
+
+#: libcore/FileUtils.vala:192
+#, fuzzy
+#| msgid "Create"
+msgid "Recreate"
+msgstr "Δημιουργία"
+
+#: libcore/FileUtils.vala:194
+msgid ""
+"The folder will be recreated and selected files that were originally there "
+"will be restored to it"
+msgstr ""
+
+#: libcore/FileUtils.vala:207
+#, c-format
+msgid "Could not recreate folder %s. Will ignore all files in this folder"
+msgstr ""
+
+#: libcore/FileUtils.vala:578
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:607
+#: libcore/FileUtils.vala:669
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Σήμερα στις %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:615
+#: libcore/FileUtils.vala:677
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Χθες στις %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:623
+#: libcore/FileUtils.vala:685
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:920
+#: libcore/FileUtils.vala:982
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d δευτερόλεπτο"
 msgstr[1] "%'d δευτερόλεπτα"
 
-#: libcore/FileUtils.vala:924 libcore/FileUtils.vala:932
+#: libcore/FileUtils.vala:986 libcore/FileUtils.vala:994
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d λεπτό"
 msgstr[1] "%'d λεπτά"
 
-#: libcore/FileUtils.vala:931
+#: libcore/FileUtils.vala:993
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d ώρα"
 msgstr[1] "%'d ώρες"
 
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:997
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1159,26 +1194,26 @@ msgstr[0] "περίπου %'d ώρα"
 msgstr[1] "περίπου %'d ώρες"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:943
+#: libcore/FileUtils.vala:1005
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
 msgstr " (αντίγραφο)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:945
+#: libcore/FileUtils.vala:1007
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:947
+#: libcore/FileUtils.vala:1009
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:949
+#: libcore/FileUtils.vala:1011
 msgid ")"
 msgstr ""
 
@@ -2558,9 +2593,6 @@ msgstr " επιλέχτηκε"
 
 #~ msgid "Set as Default"
 #~ msgstr "Ορισμός ως προεπιλογής"
-
-#~ msgid "Ignore"
-#~ msgstr "Παράβλεψη"
 
 #~ msgid "There is nothing on the clipboard to paste"
 #~ msgstr "Δεν υπάρχει τίποτα στο πρόχειρο για επικόλληση."

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-11 02:37+0000\n"
-"PO-Revision-Date: 2020-11-20 20:54+0000\n"
+"POT-Creation-Date: 2021-03-31 21:50+0000\n"
+"PO-Revision-Date: 2021-03-20 18:37+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
 ">\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
@@ -67,12 +67,11 @@ msgstr "सुधारणा:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Do not restore locations that have become inaccessible"
-msgstr ""
+msgstr "प्रवेश करण्यायोग्य स्थाने पुनर्संचयित करू नका"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
-msgstr ""
-"लघुप्रतिमा आणि मजकूर दरम्यान क्लिक करणे आता चिन्ह / दृश्यामध्ये निवड / निवड सक्रिय करते"
+msgstr "लघुप्रतिमा आणि मजकूर दरम्यान क्लिक करणे आता चिन्ह दृश्यात सक्रिय होते/निवडते"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Bookmark menu option for network mounts in sidebar"
@@ -243,11 +242,11 @@ msgstr "स्टार्टअपवेळी काही वेळा चु
 
 #: data/io.elementary.files.appdata.xml.in.in:143
 msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr "नेव्हिगेशन बटणांच्या मेनूमध्ये  file://  उपसर्ग दाखवू नका"
+msgstr "नेव्हिगेशन बटणांच्या मेनूमध्ये file:// उपसर्ग दाखवू नका"
 
 #: data/io.elementary.files.appdata.xml.in.in:152
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr "मेनूमधील \"नवीन फोल्डर\" कीबोर्ड शॉर्टकटचे लेबल निश्चित  करा"
+msgstr "मेनूमधील \"नवीन फोल्डर\" कीबोर्ड शॉर्टकट लेबलशी संबंधित समस्यांचे निराकरण करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:153
 msgid "Fix navigation with back/forward button context menu"
