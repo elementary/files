@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-03-04 10:18+0000\n"
+"PO-Revision-Date: 2021-04-01 11:43+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -1079,14 +1079,13 @@ msgid "The item cannot be restored from trash"
 msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Die ausgewählte Datei existiert nicht mehr."
+msgstr "Der ursprüngliche Ordner %s existiert nicht mehr"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Soll er erneut angelegt werden?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1095,23 +1094,27 @@ msgstr "Ignorieren"
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
 msgstr ""
+"Dateien, die in diesem Ordner enthalten waren, werden nicht wieder "
+"hergestellt"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Erstellen"
+msgstr "Erneut anlegen"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Der Ordner wird erneut angelegt und gewählte Dateien, die ursprünglich darin "
+"enthalten waren, werden darin wieder hergestellt"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Ordner %s konnte nicht erneut angelegt werden. Alle Dateien in diesem Ordner "
+"werden ignoriert"
 
 #: libcore/FileUtils.vala:578
 #, c-format
