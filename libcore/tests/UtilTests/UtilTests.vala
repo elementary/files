@@ -298,9 +298,46 @@ void add_file_utils_tests () {
         assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
     });
 
+    Test.add_func ("/FileUtils/get_duplicate_no_extension_short", () => {
+        string name = "F";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_embedded_tag", () => {
+        string name = "foo(copy)bar.txt";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        var parts = result.split ("(");
+        assert (parts.length == 3);
+        assert (result.contains ("foo"));
+        assert (result.contains ("bar"));
+        assert (result.has_suffix (".txt"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_embedded_tag_no_extension", () => {
+        string name = "foo(copy)bar(copy 2)";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        var parts = result.split ("(");
+        assert (parts.length == 3);
+        assert (result.contains ("foo"));
+        assert (result.contains ("bar"));
+        assert (result.contains ("3"));
+    });
+
     /* Duplicating "Filename (link)" should yield "Filename (link 2)" not "Filename (link) (copy)" */
     Test.add_func ("/FileUtils/get_duplicate_link", () => {
         string name = "Filename ".concat (
+             PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
+        );
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (!result.contains (PF.FileUtils.COPY_TAG));
+        assert (result.contains ("2"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_link_embedded_tag", () => {
+        string name = "File(link)name ".concat (
              PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
         );
         var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);

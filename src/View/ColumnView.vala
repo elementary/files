@@ -111,17 +111,6 @@ namespace FM {
             return base.on_view_key_press_event (event);
         }
 
-
-        protected override bool on_view_button_release_event (Gdk.EventButton event) {
-            /* Invoke default handler unless waiting for a double-click in single-click mode */
-            if (Marlin.app_settings.get_boolean ("single-click") && awaiting_double_click) {
-                should_activate = true; /* will activate when times out */
-                return true;
-            } else {
-                return base.on_view_button_release_event (event);
-            }
-        }
-
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
             GOF.File? file = null;
             GOF.File? selected_folder = null;
@@ -135,10 +124,7 @@ namespace FM {
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
             }
 
-            if (file == null ||
-                !file.is_folder () ||
-                !Marlin.app_settings.get_boolean ("single-click")) {
-
+            if (file == null || !file.is_folder ()) {
                 return base.handle_primary_button_click (event, path);
             }
 

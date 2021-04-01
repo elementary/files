@@ -30,7 +30,17 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
 
     construct {
         var volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.mount_added.connect (bookmark_mount_if_not_native_and_not_shadowed);
+        volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
+        row_activated.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                ((SidebarItemInterface) row).activated ();
+            }
+        });
+        row_selected.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                select_item ((SidebarItemInterface) row);
+            }
+        });
     }
 
     private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, Mount? mount) {
@@ -53,18 +63,23 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         //TODO Create a new class of NetworkPluginRow subclassed from NetworkRow
     }
 
-    private void bookmark_mount_if_not_native_and_not_shadowed (Mount mount) {
-        if (mount.is_shadowed () || mount.get_root ().is_native ()) {
+    private void bookmark_mount_if_not_shadowed (Mount mount) {
+        if (mount.is_shadowed ()) {
             return;
         };
 
-        add_bookmark (
-            mount.get_name (),
-            mount.get_default_location ().get_uri (),
-            mount.get_icon (),
-            mount
-        );
-        //Show extra info in tooltip
+        string scheme = Uri.parse_scheme (mount.get_root ().get_uri ());
+
+        /* Some non-native schemes are still local e.g. mtp, ptp, gphoto2 */
+        if ("smb ftp sftp afp dav davs".contains (scheme)) {
+                add_bookmark (
+                mount.get_name (),
+                mount.get_default_location ().get_uri (),
+                mount.get_icon (),
+                mount
+            );
+            //Show extra info in tooltip
+        }
     }
 
     public void refresh () {
@@ -86,7 +101,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         );
 
         foreach (unowned Mount mount in VolumeMonitor.@get ().get_mounts ()) {
-            bookmark_mount_if_not_native_and_not_shadowed (mount);
+            bookmark_mount_if_not_shadowed (mount);
         }
     }
 
