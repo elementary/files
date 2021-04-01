@@ -1030,7 +1030,10 @@ public class GOF.File : GLib.Object {
     }
 
     private GLib.FileInfo? query_info () {
-        GLib.return_val_if_fail (location is GLib.File, null);
+        if (!(location is GLib.File) || location.get_uri ().has_prefix (Marlin.NETWORK_URI)) {
+            return null;
+        }
+
         is_mounted = true;
         exists = true;
         is_connected = true;
