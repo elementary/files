@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-03-04 10:18+0000\n"
-"Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
+"PO-Revision-Date: 2021-04-01 11:43+0000\n"
+"Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
 "Language: en_GB\n"
@@ -1068,14 +1068,13 @@ msgid "The item cannot be restored from trash"
 msgstr "The item cannot be restored from the Rubbish Bin"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "The file selected no longer exists."
+msgstr "The original folder %s no longer exists"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Would you like to recreate it?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1083,24 +1082,24 @@ msgstr "Ignore"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "No files that were in this folder will be restored"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Create"
+msgstr "Recreate"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"The folder will be recreated and selected files that were originally there "
+"will be restored to it"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
+msgstr "Could not recreate folder %s. Will ignore all files in this folder"
 
 #: libcore/FileUtils.vala:578
 #, c-format
