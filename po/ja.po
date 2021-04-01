@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-03-27 07:48+0000\n"
+"PO-Revision-Date: 2021-04-01 14:26+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1059,14 +1059,13 @@ msgid "The item cannot be restored from trash"
 msgstr "ゴミ箱から項目を復元できません"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "選択されたファイルは存在しません。"
+msgstr "元のフォルダー %s はすでに存在しません"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "再作成しますか？"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1074,24 +1073,22 @@ msgstr "無視する"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "このフォルダー内にあったファイルは復元されません"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "作成"
+msgstr "再作成"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
-msgstr ""
+msgstr "フォルダーは再作成され、選択中のファイルは元々あったそのフォルダー内に復元されます"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
+msgstr "フォルダー %s を再作成できませんでした。このフォルダー内のすべてのファイルを無視します"
 
 #: libcore/FileUtils.vala:578
 #, c-format
