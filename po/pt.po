@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-31 21:50+0000\n"
-"PO-Revision-Date: 2021-03-04 19:43+0000\n"
+"PO-Revision-Date: 2021-04-01 00:58+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -1071,14 +1071,13 @@ msgid "The item cannot be restored from trash"
 msgstr "O item não pode ser restaurado a partir do lixo"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "O ficheiro selecionado já não existe."
+msgstr "A pasta original %s já não existe"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Gostaria de a recriar?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1086,24 +1085,25 @@ msgstr "Ignorar"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Nenhum ficheiro que estava nesta pasta será restaurado"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Criar"
+msgstr "Recriar"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"A pasta será recriada e os ficheiros selecionados que estavam originalmente "
+"lá serão restaurados"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Não foi possível recriar a pasta %s. Ignorará todos os ficheiros desta pasta"
 
 #: libcore/FileUtils.vala:578
 #, c-format
