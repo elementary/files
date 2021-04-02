@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-31 21:50+0000\n"
+"POT-Creation-Date: 2021-04-02 18:08+0000\n"
 "PO-Revision-Date: 2015-12-21 13:45+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -229,7 +229,7 @@ msgstr[1] ""
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:993
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:1038
 #, c-format
 msgid "%s, %s"
 msgstr ""
@@ -259,7 +259,7 @@ msgid "Disk Properties"
 msgstr ""
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:104 libwidgets/Resources.vala:73
+#: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Failu sistēma"
 
@@ -499,31 +499,31 @@ msgstr "Kopē failus"
 msgid "New"
 msgstr "Tīkls"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2869
+#: src/View/AbstractDirectoryView.vala:3054
+#: src/View/AbstractDirectoryView.vala:3070
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3024
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3053
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -600,7 +600,7 @@ msgstr "Miskaste"
 msgid "Open the Trash"
 msgstr ""
 
-#: src/View/Sidebar/DeviceListBox.vala:116
+#: src/View/Sidebar/DeviceListBox.vala:129
 msgid "View the root of the local filesystem"
 msgstr ""
 
@@ -614,11 +614,11 @@ msgstr ""
 msgid "%s used of %s"
 msgstr "%S no %S"
 
-#: src/View/Sidebar/NetworkListBox.vala:88
+#: src/View/Sidebar/NetworkListBox.vala:93
 msgid "Entire Network"
 msgstr ""
 
-#: src/View/Sidebar/NetworkListBox.vala:95
+#: src/View/Sidebar/NetworkListBox.vala:100
 msgid "Browse the contents of the network"
 msgstr "Pārlūkot tīkla saturu"
 
@@ -1152,7 +1152,7 @@ msgstr ""
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:982
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1160,7 +1160,7 @@ msgstr[0] "%'d sekunde"
 msgstr[1] "%'d sekundes"
 msgstr[2] "%'d sekunžu"
 
-#: libcore/FileUtils.vala:986 libcore/FileUtils.vala:994
+#: libcore/FileUtils.vala:1031 libcore/FileUtils.vala:1039
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1168,7 +1168,7 @@ msgstr[0] "%'d minūte"
 msgstr[1] "%'d minūtes"
 msgstr[2] "%'d minūšu"
 
-#: libcore/FileUtils.vala:993
+#: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1176,7 +1176,7 @@ msgstr[0] "%'d stunda"
 msgstr[1] "%'d stundas"
 msgstr[2] "%'d stundu"
 
-#: libcore/FileUtils.vala:997
+#: libcore/FileUtils.vala:1042
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1185,24 +1185,24 @@ msgstr[1] "aptuveni %'d stundas"
 msgstr[2] "aptuveni %'d stundu"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1005
+#: libcore/FileUtils.vala:1050
 msgid "copy"
 msgstr ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1007
+#: libcore/FileUtils.vala:1052
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1009
+#: libcore/FileUtils.vala:1054
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1011
+#: libcore/FileUtils.vala:1056
 msgid ")"
 msgstr ""
 

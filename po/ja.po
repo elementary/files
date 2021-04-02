@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-31 21:50+0000\n"
+"POT-Creation-Date: 2021-04-02 18:08+0000\n"
 "PO-Revision-Date: 2021-04-01 14:26+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -227,7 +227,7 @@ msgstr[0] "%u個のファイル"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:993
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:1038
 #, c-format
 msgid "%s, %s"
 msgstr "%s、%s"
@@ -255,7 +255,7 @@ msgid "Disk Properties"
 msgstr "ディスクのプロパティ"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:104 libwidgets/Resources.vala:73
+#: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "ファイルシステム"
 
@@ -484,31 +484,31 @@ msgstr "空のファイル"
 msgid "New"
 msgstr "新規作成"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2869
+#: src/View/AbstractDirectoryView.vala:3054
+#: src/View/AbstractDirectoryView.vala:3070
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3024
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3053
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
@@ -584,7 +584,7 @@ msgstr "ゴミ箱"
 msgid "Open the Trash"
 msgstr "ゴミ箱を開きます"
 
-#: src/View/Sidebar/DeviceListBox.vala:116
+#: src/View/Sidebar/DeviceListBox.vala:129
 msgid "View the root of the local filesystem"
 msgstr "ローカルファイルシステムのルートフォルダーを表示します"
 
@@ -598,11 +598,11 @@ msgstr "%s が利用可能"
 msgid "%s used of %s"
 msgstr "%2$s のうち %1$s が使用済み"
 
-#: src/View/Sidebar/NetworkListBox.vala:88
+#: src/View/Sidebar/NetworkListBox.vala:93
 msgid "Entire Network"
 msgstr "ネットワーク全体"
 
-#: src/View/Sidebar/NetworkListBox.vala:95
+#: src/View/Sidebar/NetworkListBox.vala:100
 msgid "Browse the contents of the network"
 msgstr "ネットワークの内容を閲覧します"
 
@@ -1083,12 +1083,16 @@ msgstr "再作成"
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
-msgstr "フォルダーは再作成され、選択中のファイルは元々あったそのフォルダー内に復元されます"
+msgstr ""
+"フォルダーは再作成され、選択中のファイルは元々あったそのフォルダー内に復元さ"
+"れます"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr "フォルダー %s を再作成できませんでした。このフォルダー内のすべてのファイルを無視します"
+msgstr ""
+"フォルダー %s を再作成できませんでした。このフォルダー内のすべてのファイルを"
+"無視します"
 
 #: libcore/FileUtils.vala:578
 #, c-format
@@ -1113,47 +1117,47 @@ msgstr "昨日の%s"
 msgid "%%A at %s"
 msgstr "%%Aの%s"
 
-#: libcore/FileUtils.vala:982
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d秒"
 
-#: libcore/FileUtils.vala:986 libcore/FileUtils.vala:994
+#: libcore/FileUtils.vala:1031 libcore/FileUtils.vala:1039
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d分"
 
-#: libcore/FileUtils.vala:993
+#: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d時間"
 
-#: libcore/FileUtils.vala:997
+#: libcore/FileUtils.vala:1042
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "約%'d時間"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1005
+#: libcore/FileUtils.vala:1050
 msgid "copy"
 msgstr "コピー"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1007
+#: libcore/FileUtils.vala:1052
 msgid "link"
 msgstr "リンク"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1009
+#: libcore/FileUtils.vala:1054
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1011
+#: libcore/FileUtils.vala:1056
 msgid ")"
 msgstr ")"
 

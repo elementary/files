@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-31 21:50+0000\n"
+"POT-Creation-Date: 2021-04-02 18:08+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -221,7 +221,7 @@ msgstr[0] "%u fayl"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:993
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:1038
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -249,7 +249,7 @@ msgid "Disk Properties"
 msgstr "Disk xususiyatlari"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:104 libwidgets/Resources.vala:73
+#: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Fayl tizimi"
 
@@ -478,31 +478,31 @@ msgstr "Bo'sh fayl"
 msgid "New"
 msgstr "Yaratish"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2505
 #, c-format
 msgid "Untitled %s"
 msgstr "Nomsiz \"%s\""
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "Cannot remove files from here"
 msgstr "Bu yerdan fayllarni o'chirib bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2869
+#: src/View/AbstractDirectoryView.vala:3054
+#: src/View/AbstractDirectoryView.vala:3070
 msgid "You do not have permission to change this location"
 msgstr "Ushbu joylashuvni o'zgartirish uchun sizda huquq yetarli emas"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cannot copy files that are in the trash"
 msgstr "Savatchada turgan fayllardan nusxa olib bo'lmaydi"
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3024
 msgid "Cutting the selection instead"
 msgstr "Belgilanmaganlarni qirqib olish"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3053
 msgid "Cannot paste files here"
 msgstr "Bu yerga fayllarni joylashtirib bo'lmadi"
 
@@ -578,7 +578,7 @@ msgstr "Savatcha"
 msgid "Open the Trash"
 msgstr "Savatchani ochish"
 
-#: src/View/Sidebar/DeviceListBox.vala:116
+#: src/View/Sidebar/DeviceListBox.vala:129
 msgid "View the root of the local filesystem"
 msgstr "Mahalliy fayl tizimining ildiz qismini ko'rish"
 
@@ -592,11 +592,11 @@ msgstr "%s bo'sh"
 msgid "%s used of %s"
 msgstr "%s dan %s qismi ishlatilgan"
 
-#: src/View/Sidebar/NetworkListBox.vala:88
+#: src/View/Sidebar/NetworkListBox.vala:93
 msgid "Entire Network"
 msgstr "Butun tarmoq"
 
-#: src/View/Sidebar/NetworkListBox.vala:95
+#: src/View/Sidebar/NetworkListBox.vala:100
 msgid "Browse the contents of the network"
 msgstr "Tarmoq tarkibini ko'rish"
 
@@ -1110,47 +1110,47 @@ msgstr "Kecha %s da"
 msgid "%%A at %s"
 msgstr "%s da %%A"
 
-#: libcore/FileUtils.vala:982
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d soniya"
 
-#: libcore/FileUtils.vala:986 libcore/FileUtils.vala:994
+#: libcore/FileUtils.vala:1031 libcore/FileUtils.vala:1039
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d daqiqa"
 
-#: libcore/FileUtils.vala:993
+#: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d soat"
 
-#: libcore/FileUtils.vala:997
+#: libcore/FileUtils.vala:1042
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "taxminan %'d soat"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1005
+#: libcore/FileUtils.vala:1050
 msgid "copy"
 msgstr "nusxa"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1007
+#: libcore/FileUtils.vala:1052
 msgid "link"
 msgstr "bog'lama"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1009
+#: libcore/FileUtils.vala:1054
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1011
+#: libcore/FileUtils.vala:1056
 msgid ")"
 msgstr ")"
 
