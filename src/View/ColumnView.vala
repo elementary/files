@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -56,21 +56,22 @@ namespace FM {
             return false;
         }
 
-        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Marlin.column_view_settings.get_enum ("zoom-level");
-            Marlin.column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+        protected override void set_up_zoom_level () {
+            Marlin.column_view_settings.bind (
+                "zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.DEFAULT
+            );
 
-            minimum_zoom = (Marlin.ZoomLevel)Marlin.column_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Marlin.column_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom) {
+            if (zoom_level < minimum_zoom) { /* Defaults to Marlin.ZoomLevel.SMALLEST */
                 zoom_level = minimum_zoom;
             }
+
             if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
             }
-
-            return (Marlin.ZoomLevel)zoom;
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {

@@ -284,7 +284,6 @@ namespace FM {
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
-            icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
@@ -406,10 +405,6 @@ namespace FM {
             if (zoom_level > 0) {
                 zoom_level = zoom_level - 1;
             }
-        }
-
-        private void set_up_zoom_level () {
-            zoom_level = get_set_up_zoom_level ();
         }
 
         public void zoom_normal () {
@@ -3804,7 +3799,7 @@ namespace FM {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
+        protected abstract void set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files);

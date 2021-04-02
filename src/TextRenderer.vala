@@ -90,7 +90,7 @@ namespace Marlin {
         }
 
         public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
-                                                             out int minimum_size, out int natural_size) {
+                                                               out int minimum_size, out int natural_size) {
             set_widget (widget);
             set_up_layout (text, width);
             natural_size = text_height + 4 * border_radius;

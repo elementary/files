@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -41,8 +41,9 @@ namespace FM {
             tree.set_reorderable (false);
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
-            set_up_name_renderer ();
+            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.ICON);
 
+            set_up_name_renderer ();
             set_up_icon_renderer ();
 
             tree.pack_start (icon_renderer, false);
@@ -86,9 +87,12 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
-        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Marlin.icon_view_settings.get_enum ("zoom-level");
-            Marlin.icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+        protected override void set_up_zoom_level () {
+            Marlin.icon_view_settings.bind (
+                "zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.DEFAULT
+            );
 
             minimum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("maximum-zoom-level");
@@ -100,8 +104,6 @@ namespace FM {
             if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
             }
-
-            return (Marlin.ZoomLevel)zoom;
         }
 
         public override Marlin.ZoomLevel get_normal_zoom_level () {

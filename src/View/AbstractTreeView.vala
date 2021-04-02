@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -38,8 +38,9 @@ namespace FM {
             };
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
-            set_up_name_renderer ();
+            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.LIST);
 
+            set_up_name_renderer ();
             set_up_icon_renderer ();
 
             name_column.pack_start (icon_renderer, false);
@@ -64,6 +65,7 @@ namespace FM {
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
                 tree.columns_autosize ();
+                tree.zoom_level = zoom_level;
             });
         }
 
@@ -102,6 +104,7 @@ namespace FM {
             if (tree != null) {
                 base.change_zoom_level ();
                 tree.columns_autosize ();
+                tree.set_property ("zoom-level", zoom_level);
             }
         }
 
@@ -349,6 +352,21 @@ namespace FM {
     }
 
     protected class TreeView : Gtk.TreeView {
+        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.INVALID;
+        public Marlin.ZoomLevel zoom_level {
+            set {
+                if (_zoom_level == value || !get_realized ()) {
+                    return;
+                } else {
+                    _zoom_level = value;
+                }
+            }
+
+            get {
+                return _zoom_level;
+            }
+        }
+
         /* Override base class in order to disable the Gtk.TreeView local search functionality */
         public override bool key_press_event (Gdk.EventKey event) {
             /* We still need the base class to handle cursor keys first */
