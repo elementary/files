@@ -106,6 +106,7 @@ namespace PF.FileUtils {
         var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
         unhandled_files = null;
 
+        var exists_map = new Gee.HashMap<string, int> ();
         foreach (unowned GOF.File goffile in files) {
             /* Check it is a valid file (e.g. not a dummy row from list view) */
             if (goffile == null || goffile.location == null) {
@@ -118,9 +119,22 @@ namespace PF.FileUtils {
                 /* We are in trash root */
                 var original_dir = get_trashed_file_original_folder (goffile);
                 if (original_dir != null) {
-                    GLib.List<GLib.File>? dir_files = directories.take (original_dir);
-                    dir_files.prepend (goffile.location);
-                    directories.insert (original_dir, (owned)dir_files);
+                    int exists = -1; //Unknown whether exists
+                    if (exists_map.has_key (original_dir.get_path ())) {
+                        exists = exists_map.@get (original_dir.get_path ());
+                    }
+                    if (exists == 1 || (exists < 0 && ensure_exists (original_dir))) {
+                        if (exists < 0) {
+                            exists_map.@set (original_dir.get_path (), 1); // Do not need to check this path again
+                        }
+                        GLib.List<GLib.File>? dir_files = directories.take (original_dir);
+                        dir_files.prepend (goffile.location);
+                        directories.insert (original_dir, (owned)dir_files);
+                    } else {
+                        if (exists < 0) {
+                            exists_map.@set (original_dir.get_path (), 0); // Do not need to check this path again
+                        }
+                    }
                 } else {
                     unhandled_files.prepend (goffile);
                 }
@@ -159,6 +173,54 @@ namespace PF.FileUtils {
             debug ("Could not get original path for trashed file %s", file.uri);
             return null;
         }
+    }
+
+    private bool ensure_exists (File file) {
+        if (file.query_exists ()) {
+            return true;
+        }
+
+        var dialog = new Granite.MessageDialog.with_image_from_icon_name (
+            _("The original folder %s no longer exists").printf (file.get_path ()),
+            _("Would you like to recreate it?"),
+            "dialog-question",
+            Gtk.ButtonsType.NONE
+        );
+
+        var ignore_button = dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
+        ignore_button.tooltip_text = _("No files that were in this folder will be restored");
+        var recreate_button = dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
+        recreate_button.tooltip_text =
+             _ ("The folder will be recreated and selected files that were originally there will be restored to it");
+
+        dialog.set_default_response (Gtk.ResponseType.ACCEPT);
+
+        var response = dialog.run ();
+        dialog.destroy ();
+        switch (response) {
+            case Gtk.ResponseType.ACCEPT:
+                try {
+                    file.make_directory_with_parents ();
+                    return true;
+                } catch (Error e) {
+                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                        e.message,
+                        "dialog-error",
+                        Gtk.ButtonsType.CLOSE
+                    );
+
+                    error_dialog.run ();
+                    error_dialog.destroy ();
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+        return false;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
@@ -380,9 +442,9 @@ namespace PF.FileUtils {
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    critical ("Invalid mtp or ptp path %s", path);
-                    protocol = new_path.dup ();
-                    new_path = "/";
+                    debug ("Invalid mtp or ptp path %s", path);
+                    protocol = explode_protocol[0] + "://";
+                    new_path = explode_protocol[1] ?? "";
                 }
             } else {
                 protocol = explode_protocol[0] + "://";
@@ -881,6 +943,51 @@ namespace PF.FileUtils {
         }
     }
 
+    /* Only call this when standard_target_uri has "afp" scheme as we do not check again. */
+    public string get_afp_target_uri (string standard_target_uri, string uri) {
+        /* For afp:// addresses the standard target uri has the user name stripped - we need to replace it */
+        if (Uri.parse_scheme (uri) == "afp") {
+            string origin_host, origin_filename;
+            if (get_afp_user_server_and_filename (uri, out origin_filename, out origin_host)) {
+                string target_host, target_filename;
+                if (get_afp_user_server_and_filename (standard_target_uri, out target_filename, out target_host)) {
+                    return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, origin_host, target_filename);
+                }
+            }
+        } else {
+            /* Probably clicked on an AFP server in network:// view which gives weird gvfs uri like:
+             * network:///dnssd-domain-<host>._afpovertcp._tcp. We omit a username so that a system dialog will
+             * be triggered requesting input of name (and password). */
+            string target_host, target_filename;
+            if (get_afp_user_server_and_filename (standard_target_uri, out target_filename, out target_host)) {
+                return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, target_host, target_filename);
+            }
+        }
+
+        return standard_target_uri;
+    }
+
+    private bool get_afp_user_server_and_filename (string uri, out string filename, out string user_server) {
+        filename = uri;
+        user_server = "";
+        string[] parts1 = uri.split ("://", 2 );
+        if (parts1.length == 2) {
+            string[] parts2 = parts1[1].split (Path.DIR_SEPARATOR_S, 2);
+            if (parts2.length >= 1) {
+                user_server = parts2[0];
+                if (parts2.length == 2) {
+                    filename = parts2[1];
+                }
+
+                return true;
+            }
+        }
+
+        warning ("Error getting afp user and server from %s: Invalid uri format", uri);
+
+        return false;
+    }
+
     public bool make_file_name_valid_for_dest_fs (ref string filename, string? dest_fs_type) {
         bool result = false;
 
@@ -968,15 +1075,20 @@ namespace PF.FileUtils {
     private void parse_previous_duplicate_name (
         string name, bool is_link, out string name_base, out string suffix, out int count
     ) {
-
+        name_base = "";
         suffix = "";
         count = 0;
 
         string name_without_suffix = name;
         var last_index = name.length - 1;
+        var index_of_suffix = name.length;
 
-        /* Ignore suffix for links */
-        var index_of_suffix = is_link ? -1 : name.last_index_of (".");
+        if (is_link) {
+            /* Ignore suffix for links */
+            index_of_suffix = -1;
+        } else if (name.contains (".")) {
+            index_of_suffix = name.last_index_of (".");
+        }
 
         /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
         var max_extension_length = 4;
@@ -992,10 +1104,7 @@ namespace PF.FileUtils {
             if (index_of_suffix > 0) {
                 name_base = name_without_suffix.slice (0, index_of_suffix);
                 return;
-            } else {
-                name_base = name_without_suffix;
             }
-            return;
         } else {
             name_base = name.slice (0, index_of_opening)._chomp ();
         }
@@ -1012,7 +1121,9 @@ namespace PF.FileUtils {
         }
 
         int multiplier = 1;
+        int n_digits = 0;
         while (index < limit && chr.isdigit ()) {
+            n_digits++;
             count += chr.digit_value () * multiplier;
             //Number is reversed so each subsequent digit represents another factor of ten
             multiplier *= 10;
@@ -1021,6 +1132,21 @@ namespace PF.FileUtils {
 
         if (count == 0) { //We do not say (copy 1), just (copy)
             count = 1;
+        }
+
+        int expected_index;
+
+        if (n_digits > 0) {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + n_digits + 1;
+        } else if (is_link) {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + _(LINK_TAG).length;
+        } else {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + _(COPY_TAG).length;
+        }
+
+        if (index > expected_index) {
+            name_base = name_without_suffix;
+            count = 0;
         }
     }
 

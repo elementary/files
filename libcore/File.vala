@@ -1,4 +1,4 @@
-/* Copyright (c) 2018-19 elementary LLC (https://elementary.io)
+/* Copyright (c) 2018-20 elementary LLC (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -466,8 +466,14 @@ public class GOF.File : GLib.Object {
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
-            target_location = GLib.File.new_for_uri (target_uri);
+            if (Uri.parse_scheme (target_uri) == "afp") {
+                target_location = GLib.File.new_for_uri (PF.FileUtils.get_afp_target_uri (target_uri, uri));
+            } else {
+                target_location = GLib.File.new_for_uri (target_uri);
+            }
+
             target_location_update ();
+
             try {
                 mount = target_location.find_enclosing_mount ();
                 is_mounted = (mount != null);
