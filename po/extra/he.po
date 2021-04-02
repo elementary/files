@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 18:08+0000\n"
-"PO-Revision-Date: 2021-03-11 08:03+0000\n"
+"PO-Revision-Date: 2021-04-02 22:06+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -69,7 +69,7 @@ msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix connecting to AFP servers so that passwords are remembered"
-msgstr ""
+msgstr "תוקן חיבור לשרתי AFP כדי שססמאות תישמרנה"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:76
