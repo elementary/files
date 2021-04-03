@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 18:08+0000\n"
-"PO-Revision-Date: 2021-03-12 05:56+0000\n"
+"PO-Revision-Date: 2021-04-02 22:06+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -77,6 +77,8 @@ msgstr "Correções:"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix connecting to AFP servers so that passwords are remembered"
 msgstr ""
+"Corrige a ligação com servidores AFP para que as palavras-passe sejam "
+"memorizadas"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:76
