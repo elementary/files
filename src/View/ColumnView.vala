@@ -45,14 +45,15 @@ namespace FM {
 
         private bool not_double_click (Gdk.EventButton event, Gtk.TreePath? path) {
             if (double_click_timeout_id != 0) {
-                double_click_timeout_id = 0;
                 awaiting_double_click = false;
+                double_click_timeout_id = 0;
                 is_frozen = false;
 
-                if (should_activate) { /* button already released */
+                if (source_drag_file_list == null && selection_only_contains_folders (get_selected_files ())) {
                     activate_selected_items ();
                 }
             }
+
             return false;
         }
 
