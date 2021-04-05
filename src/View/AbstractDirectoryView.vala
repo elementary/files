@@ -127,8 +127,8 @@ namespace FM {
         int drag_y = 0;
         int drag_button;
         uint drag_timer_id = 0;
-        GLib.List<GOF.File> source_drag_file_list = null;
-        Gdk.Atom current_target_type = Gdk.Atom.NONE;
+        protected GLib.List<GOF.File> source_drag_file_list = null;
+        protected Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
         /* Used only when acting as drag destination */
         uint drag_scroll_timer_id = 0;
