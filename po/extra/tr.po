@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 18:08+0000\n"
-"PO-Revision-Date: 2021-03-25 14:00+0000\n"
+"PO-Revision-Date: 2021-04-09 04:52+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -292,7 +292,7 @@ msgstr "Menü öğelerinde klavye kısayollarını göster"
 
 #: data/io.elementary.files.appdata.xml.in.in:169
 msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr "Dosya seçicide dosya yolu görüntüleme  ilgili bir sorun düzeltildi"
+msgstr "Dosya seçicide dosya yolu görüntüleme ilgili bir sorun düzeltildi"
 
 #: data/io.elementary.files.appdata.xml.in.in:170
 msgid "Show a warning when ejecting a volume that's still in use"
