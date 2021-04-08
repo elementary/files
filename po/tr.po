@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 18:08+0000\n"
-"PO-Revision-Date: 2021-04-03 23:32+0000\n"
+"PO-Revision-Date: 2021-04-09 04:52+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
 "\n"
@@ -519,7 +519,7 @@ msgstr "Dosyalar buraya yapıştırılamaz"
 
 #: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
-msgstr "Ana dizin"
+msgstr "Ana klasör"
 
 #: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
@@ -1082,7 +1082,7 @@ msgstr "Yoksay"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Bu klasörde bulunan hiçbir dosya geri yüklenmeyecek"
 
 #: libcore/FileUtils.vala:192
 msgid "Recreate"
@@ -1093,11 +1093,15 @@ msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Klasör yeniden oluşturulacak ve orijinal olarak orada bulunan seçilen "
+"dosyalar geri yüklenecektir"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"%s klasörü yeniden oluşturulamadı. Bu klasördeki tüm dosyaları göz ardı "
+"edecek"
 
 #: libcore/FileUtils.vala:578
 #, c-format
