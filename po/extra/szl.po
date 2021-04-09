@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 18:08+0000\n"
+"POT-Creation-Date: 2021-04-09 04:54+0000\n"
 "PO-Revision-Date: 2020-02-24 19:09+0000\n"
 "Last-Translator: gkkulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/extra/szl/"
@@ -711,7 +711,9 @@ msgid "Translation updates"
 msgstr "Aktualizacyje przekładu"
 
 #: data/io.elementary.files.appdata.xml.in.in:445
-msgid "elementary LLC."
+#, fuzzy
+#| msgid "elementary LLC."
+msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10

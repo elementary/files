@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 18:08+0000\n"
+"POT-Creation-Date: 2021-04-09 04:54+0000\n"
 "PO-Revision-Date: 2019-11-17 20:24+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
@@ -740,7 +740,9 @@ msgid "Translation updates"
 msgstr "Aktualizacje tłumaczenia"
 
 #: data/io.elementary.files.appdata.xml.in.in:445
-msgid "elementary LLC."
+#, fuzzy
+#| msgid "elementary LLC."
+msgid "elementary, Inc."
 msgstr "elementary LLC."
 
 #: data/io.elementary.files.policy.in.in:10
