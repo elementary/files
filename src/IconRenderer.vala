@@ -58,9 +58,10 @@ namespace Marlin {
             }
         }
 
-        int h_overlap;
-        int v_overlap;
-        int lpad;
+        private int h_overlap;
+        private int v_overlap;
+        private int lpad;
+        private bool show_emblems;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
         private Marlin.IconSize icon_size;
@@ -81,6 +82,7 @@ namespace Marlin {
 
         public IconRenderer (Marlin.ViewMode view_mode) {
             lpad = view_mode == Marlin.ViewMode.LIST ? 4 : 0;
+            show_emblems = view_mode == Marlin.ViewMode.ICON;
             xpad = 0;
         }
 
@@ -102,7 +104,12 @@ namespace Marlin {
 
             pix_rect.width = pixbuf.width / icon_scale;
             pix_rect.height = pixbuf.height / icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width);
+            if (show_emblems) {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            } else {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width);
+            }
+
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
             var draw_rect = Gdk.Rectangle ();
@@ -241,6 +248,43 @@ namespace Marlin {
                     /* Save position of icon that is being hovered */
                     hover_rect = cell_area;
                     hover_helper_rect = helper_rect;
+                }
+            }
+
+            if (show_emblems) {
+                int emblem_size = (int) Marlin.IconSize.EMBLEM;
+                int pos = 0;
+                var emblem_area = Gdk.Rectangle ();
+
+                foreach (string emblem in file.emblems_list) {
+                     if (pos - 1 > zoom_level) {
+                         break;
+                     }
+
+                     Gdk.Pixbuf? pix = null;
+                     var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+
+                     if (nicon == null) {
+                         continue;
+                     }
+
+                     pix = nicon.get_pixbuf_nodefault ();
+
+                     if (pix == null) {
+                         continue;
+                     }
+
+                     emblem_area.y = draw_rect.y + pix_rect.height - v_overlap;
+                     emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
+
+                     emblem_area.y -= emblem_size * pos;
+                     emblem_area.y = int.max (cell_area.y, emblem_area.y);
+
+                     emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
+                     emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
+
+                     style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+                     pos++;
                 }
             }
         }
