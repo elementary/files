@@ -38,6 +38,11 @@ namespace FM {
             base (_slot);
         }
 
+        protected override void set_up_icon_renderer () {
+            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.LIST);
+            icon_renderer.set_property ("follow-state", true);
+        }
+
         private void connect_additional_signals () {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);

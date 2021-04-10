@@ -29,6 +29,11 @@ namespace FM {
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }
 
+        protected override void set_up_icon_renderer () {
+            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.MILLER_COLUMNS);
+            icon_renderer.set_property ("follow-state", true);
+        }
+
         protected new void on_view_selection_changed () {
             set_active_slot ();
             base.on_view_selection_changed ();
