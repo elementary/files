@@ -21,7 +21,6 @@
 ***/
 
 namespace Marlin {
-
     public class EmblemRenderer : Gtk.CellRenderer {
         private GOF.File? _file;
         public GOF.File? file {
@@ -53,10 +52,6 @@ namespace Marlin {
             var emblem_area = Gdk.Rectangle ();
 
             foreach (string emblem in file.emblems_list) {
-                // if (pos - 1 > zoom_level) {
-                //     break;
-                // }
-
                 Gdk.Pixbuf? pix = null;
                 var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
 
@@ -71,12 +66,7 @@ namespace Marlin {
                 }
 
                 emblem_area.y = cell_area.y;
-
-                // emblem_area.y -= emblem_size * pos;
-                // emblem_area.y = int.max (cell_area.y, emblem_area.y);
-
                 emblem_area.x = cell_area.x + cell_area.width - pos * emblem_size;
-                // emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
 
                 style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                 pos++;
