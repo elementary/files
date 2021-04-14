@@ -147,7 +147,7 @@ namespace PF {
         time.stop ();
         info.pause ();
 
-        var dialog = new Marlin.FileConflictDialog (parent_window, src, dest, dest_dir);
+        var dialog = new Files.FileConflictDialog (parent_window, src, dest, dest_dir);
         var main_loop = new GLib.MainLoop ();
 
         string? _new_name = null;
@@ -155,7 +155,7 @@ namespace PF {
         dialog.response.connect ((response_id) => {
             result = response_id;
             switch (response_id) {
-                case Marlin.FileConflictDialog.ResponseType.RENAME:
+                case Files.FileConflictDialog.ResponseType.RENAME:
                     _new_name = dialog.new_name;
                     break;
                 case Gtk.ResponseType.CANCEL:

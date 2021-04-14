@@ -16,7 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
     public class MultiLineEditableLabel : AbstractEditableLabel {
 
         protected Gtk.ScrolledWindow scrolled_window;

@@ -16,7 +16,7 @@
     Authors :
 ***/
 
-namespace Marlin {
+namespace Files {
     public const string APP_ID = "io.elementary.files";
     public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = N_("Files");
@@ -86,32 +86,32 @@ namespace Marlin {
 
         switch (s) {
             case "recent":
-                return _(Marlin.PROTOCOL_NAME_RECENT);
+                return _(Files.PROTOCOL_NAME_RECENT);
             case "trash":
-                return _(Marlin.PROTOCOL_NAME_TRASH);
+                return _(Files.PROTOCOL_NAME_TRASH);
             case "network":
-                return _(Marlin.PROTOCOL_NAME_NETWORK);
+                return _(Files.PROTOCOL_NAME_NETWORK);
             case "smb":
-                return _(Marlin.PROTOCOL_NAME_SMB);
+                return _(Files.PROTOCOL_NAME_SMB);
             case "ftp":
-                return _(Marlin.PROTOCOL_NAME_FTP);
+                return _(Files.PROTOCOL_NAME_FTP);
             case "sftp":
-                return _(Marlin.PROTOCOL_NAME_SFTP);
+                return _(Files.PROTOCOL_NAME_SFTP);
             case "afp":
-                return _(Marlin.PROTOCOL_NAME_AFP);
+                return _(Files.PROTOCOL_NAME_AFP);
             case "afc":
-                return _(Marlin.PROTOCOL_NAME_AFC);
+                return _(Files.PROTOCOL_NAME_AFC);
             case "dav":
-                return _(Marlin.PROTOCOL_NAME_DAV);
+                return _(Files.PROTOCOL_NAME_DAV);
             case "davs":
-                return _(Marlin.PROTOCOL_NAME_DAVS);
+                return _(Files.PROTOCOL_NAME_DAVS);
             case "mtp":
-                return _(Marlin.PROTOCOL_NAME_MTP);
+                return _(Files.PROTOCOL_NAME_MTP);
             case "gphoto2":
-                return _(Marlin.PROTOCOL_NAME_GPHOTO2);
+                return _(Files.PROTOCOL_NAME_GPHOTO2);
             case "file":
             case "":
-                return _(Marlin.PROTOCOL_NAME_FILE);
+                return _(Files.PROTOCOL_NAME_FILE);
             default:
                 return protocol;
         }

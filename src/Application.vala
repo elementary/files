@@ -21,14 +21,14 @@
              Julián Unrrein <junrrein@gmail.com>
 ***/
 
-namespace Marlin {
+namespace Files {
     public Settings app_settings;
     public Settings icon_view_settings;
     public Settings list_view_settings;
     public Settings column_view_settings;
 }
 
-public class Marlin.Application : Gtk.Application {
+public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
@@ -75,7 +75,7 @@ public class Marlin.Application : Gtk.Application {
         init_schemas ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
-            Marlin.IconInfo.clear_caches ();
+            Files.IconInfo.clear_caches ();
         });
 
         progress_handler = new Progress.UIHandler ();
@@ -122,7 +122,7 @@ public class Marlin.Application : Gtk.Application {
 
     public override int command_line (ApplicationCommandLine cmd) {
         /* Only allow running with root privileges using pkexec, not using sudo */
-        if (Marlin.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+        if (Files.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
             warning ("Running Files as root using sudo is not possible. " +
                      "Please use the command: io.elementary.files-pkexec [folder]");
             quit ();
@@ -205,7 +205,7 @@ public class Marlin.Application : Gtk.Application {
             }
         }
 
-        File[] files = null;
+        GLib.File[] files = null;
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
@@ -213,7 +213,7 @@ public class Marlin.Application : Gtk.Application {
             GLib.File? file = null;
 
             if (path.length > 0) {
-                file = File.new_for_uri (PF.FileUtils.escape_uri (path));
+                file = GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
             }
 
             if (file != null) {
@@ -244,7 +244,7 @@ public class Marlin.Application : Gtk.Application {
 
     public override void quit_mainloop () {
         warning ("Quitting mainloop");
-        Marlin.IconInfo.clear_caches ();
+        Files.IconInfo.clear_caches ();
 
         base.quit_mainloop ();
     }
@@ -280,31 +280,31 @@ public class Marlin.Application : Gtk.Application {
 
     private void init_schemas () {
         /* Bind settings with GOFPreferences */
-        var prefs = GOF.Preferences.get_default ();
-        Marlin.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("show-remote-thumbnails",
+        var prefs = Files.Preferences.get_default ();
+        Files.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        Files.app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("hide-local-thumbnails",
+        Files.app_settings.bind ("hide-local-thumbnails",
                                    prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
 
-        Marlin.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+        Files.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
 
         gnome_interface_settings.bind ("clock-format",
-                                       GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+                                       Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
         gnome_privacy_settings.bind ("remember-recent-files",
-                                     GOF.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
+                                     Files.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
         gtk_file_chooser_settings.bind ("sort-directories-first",
                                         prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
-    public View.Window? create_window (File? location = null,
+    public View.Window? create_window (GLib.File? location = null,
                                        ViewMode viewmode = ViewMode.PREFERRED) {
 
         return create_window_with_tabs ({location}, viewmode);
     }
 
     /* All window creation should be done via this function */
-    private View.Window? create_window_with_tabs (File[] locations = {},
+    private View.Window? create_window_with_tabs (GLib.File[] locations = {},
                                                   ViewMode viewmode = ViewMode.PREFERRED) {
 
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length

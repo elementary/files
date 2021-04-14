@@ -79,7 +79,7 @@ typedef struct {
 typedef struct FileEntry FileEntry;
 
 struct FileEntry {
-    GOFFile *file;
+    FilesFile *file;
     GHashTable *reverse_map;    /* map from files to GSequenceIter's */
     GOFDirectoryAsync *subdirectory;
     FileEntry *parent;
@@ -120,7 +120,7 @@ fm_list_model_get_column_type (GtkTreeModel *tree_model, int index)
 {
     switch (index) {
     case FM_LIST_MODEL_FILE_COLUMN:
-        return GOF_TYPE_FILE;
+        return FILES_TYPE_FILE;
     case FM_LIST_MODEL_PIXBUF:
         return GDK_TYPE_PIXBUF;
     default:
@@ -215,7 +215,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     FMListModel *model = (FMListModel *)tree_model;
     FMListModelPrivate *priv = fm_list_model_get_instance_private (model);
     FileEntry *file_entry;
-    GOFFile *file;
+    FilesFile *file;
 
     g_assert (FM_IS_LIST_MODEL (model));
     g_assert (priv->stamp == iter->stamp);
@@ -226,21 +226,21 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
 
     switch (column) {
     case FM_LIST_MODEL_FILE_COLUMN:
-        g_value_init (value, GOF_TYPE_FILE);
-        if (file != NULL && GOF_IS_FILE(file))
+        g_value_init (value, FILES_TYPE_FILE);
+        if (file != NULL && FILES_IS_FILE(file))
             g_value_set_object (value, file);
         break;
 
     case FM_LIST_MODEL_COLOR:
         g_value_init (value, G_TYPE_STRING);
-        if (file != NULL && file->color >= 0 && file->color < sizeof(GOF_PREFERENCES_TAGS_COLORS)/sizeof(gchar*))
-            g_value_set_string(value, GOF_PREFERENCES_TAGS_COLORS[file->color]);
+        if (file != NULL && file->color >= 0 && file->color < sizeof(FILES_PREFERENCES_TAGS_COLORS)/sizeof(gchar*))
+            g_value_set_string(value, FILES_PREFERENCES_TAGS_COLORS[file->color]);
         break;
 
     case FM_LIST_MODEL_FILENAME:
         g_value_init (value, G_TYPE_STRING);
         if (file != NULL)
-            g_value_set_string(value, gof_file_get_display_name (file));
+            g_value_set_string(value, files_file_get_display_name (file));
         break;
 
     case FM_LIST_MODEL_SIZE:
@@ -264,7 +264,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     case FM_LIST_MODEL_PIXBUF:
         g_value_init (value, GDK_TYPE_PIXBUF);
         if (file != NULL) {
-            gof_file_update_icon (file, priv->icon_size, file->pix_scale);
+            files_file_update_icon (file, priv->icon_size, file->pix_scale);
             if (file->pix != NULL)
                 g_value_set_object(value, file->pix);
         }
@@ -542,10 +542,10 @@ fm_list_model_file_entry_compare_func (gconstpointer a,
 
     if (file_entry1->file != NULL && file_entry2->file != NULL) {
 
-        return gof_file_compare_for_sort (file_entry1->file, file_entry2->file,
-                                          priv->sort_id,
-                                          priv->sort_directories_first,  /* Get value from GOF.Preferences */
-                                          (priv->order == GTK_SORT_DESCENDING));
+        return files_file_compare_for_sort (file_entry1->file, file_entry2->file,
+                                            priv->sort_id,
+                                            priv->sort_directories_first,  /* Get value from GOF.Preferences */
+                                            (priv->order == GTK_SORT_DESCENDING));
 
     } else if (file_entry1->file == NULL) {
         /* Dummy rows representing expanded empty directories have null files */
@@ -777,7 +777,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
         gtk_tree_model_row_inserted (GTK_TREE_MODEL (model), path, &iter);
     }
 
-    if (gof_file_is_folder (file)) {
+    if (files_file_is_folder (file)) {
         file_entry->files = g_sequence_new ((GDestroyNotify)file_entry_free);
         add_dummy_row (model, file_entry);
         gtk_tree_model_row_has_child_toggled (GTK_TREE_MODEL (model),
@@ -1067,7 +1067,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
         return FALSE;
     }
 
-    file_entry->subdirectory = gof_directory_async_from_file (file_entry->file);
+    file_entry->subdirectory = files_directory_async_from_file (file_entry->file);
 
     g_hash_table_insert (priv->directory_reverse_map,
                          file_entry->subdirectory, file_entry->ptr);
@@ -1094,7 +1094,7 @@ fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter)
         return;
     }
 
-    gof_directory_async_cancel (file_entry->subdirectory);
+    files_directory_async_cancel (file_entry->subdirectory);
     g_hash_table_remove (priv->directory_reverse_map,
                          file_entry->subdirectory);
     file_entry->loaded = 0;
@@ -1220,7 +1220,7 @@ fm_list_model_class_init (FMListModelClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE, 1,
-                      GOF_DIRECTORY_TYPE_ASYNC);
+                      FILES_DIRECTORY_TYPE_ASYNC);
 }
 
 static void

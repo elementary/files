@@ -20,7 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-namespace Marlin.View {
+namespace Files.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
     private Gtk.Entry perm_code;
@@ -35,11 +35,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private Gtk.ListStore store_groups;
     private Gtk.ListStore store_apps;
 
-    private GLib.List<GOF.File> files;
+    private GLib.List<Files.File> files;
     private bool only_one;
-    private GOF.File goffile;
+    private Files.File goffile;
 
-    public FM.AbstractDirectoryView view {get; private set;}
+    public Files.AbstractDirectoryView view {get; private set;}
     public Gtk.Entry entry {get; private set;}
     private string original_name {
         get {
@@ -119,7 +119,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     /* Count of files current including top level (selected) files other than folders */
     private uint file_count;
 
-    public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
+    public PropertiesWindow (GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent) {
         base (_("Properties"), parent);
 
         if (_files == null) {
@@ -147,7 +147,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
            GLib.List.copy() would not guarantee valid references: because it
            does a shallow copy (copying the pointer values only) the objects'
            memory may be freed even while this code is using it. */
-        foreach (GOF.File file in _files) {
+        foreach (Files.File file in _files) {
             /* prepend(G) is declared "owned G", so ref() will be called once
                on the unowned foreach value. */
             files.prepend (file);
@@ -160,14 +160,14 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        if (!(files.data is GOF.File)) {
+        if (!(files.data is Files.File)) {
             critical ("Properties Window constructor called with invalid file data (1)");
             return;
         }
 
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files) {
-            if (!(gof is GOF.File)) {
+            if (!(gof is Files.File)) {
                 critical ("Properties Window constructor called with invalid file data (2)");
                 return;
             }
@@ -182,7 +182,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        goffile = (GOF.File) files.data;
+        goffile = (Files.File) files.data;
         only_one = files.nth_data (1) == null;
 
         construct_info_panel (goffile);
@@ -191,7 +191,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
+        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
         if (file_pix != null) {
             var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
             overlay_emblems (file_icon, goffile.emblems_list);
@@ -274,7 +274,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         deep_count_directories = null;
 
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             if (gof.is_root_network_folder ()) {
                 size_value.label = _("unknown");
                 continue;
@@ -327,7 +327,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private void rename_file (GOF.File file, string _new_name) {
+    private void rename_file (Files.File file, string _new_name) {
         /* Only rename if name actually changed */
         original_name = file.info.get_name ();
 
@@ -341,7 +341,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                     try {
                         new_location = view.set_file_display_name.end (res);
                         reset_entry_text (new_location.get_basename ());
-                        goffile = GOF.File.@get (new_location);
+                        goffile = Files.File.@get (new_location);
                         files.first ().data = goffile;
                     } catch (Error e) {} // Warning dialog already shown
                 });
@@ -368,7 +368,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return null;
         }
 
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             var gof_ftype = gof.get_ftype ();
             if (ftype == null && gof != null) {
                 ftype = gof_ftype;
@@ -384,8 +384,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private bool got_common_location () {
-        File? loc = null;
-        foreach (GOF.File gof in files) {
+        GLib.File? loc = null;
+        foreach (Files.File gof in files) {
             if (loc == null && gof != null) {
                 if (gof.directory == null) {
                     return false;
@@ -404,15 +404,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private GLib.File? get_parent_loc (string path) {
-        var loc = File.new_for_path (path);
+        var loc = GLib.File.new_for_path (path);
         return loc.get_parent ();
     }
 
     private string? get_common_trash_orig () {
-        File loc = null;
+        GLib.File loc = null;
         string path = null;
 
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             if (loc == null && gof != null) {
                 loc = get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH));
                 continue;
@@ -434,7 +434,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return path;
     }
 
-    private string filetype (GOF.File file) {
+    private string filetype (Files.File file) {
         ftype = get_common_ftype ();
         if (ftype != null) {
             return ftype;
@@ -451,7 +451,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return _("Unknown");
     }
 
-    private string resolution (GOF.File file) {
+    private string resolution (Files.File file) {
         /* get image size in pixels using an asynchronous method to stop the interface blocking on
          * large images. */
         if (file.width > 0) { /* resolution has already been determined */
@@ -463,7 +463,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private string location (GOF.File file) {
+    private string location (Files.File file) {
         if (view.in_recent) {
             string original_location = file.get_display_target_uri ().replace ("%20", " ");
             string file_name = file.get_display_name ().replace ("%20", " ");
@@ -478,7 +478,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private string original_location (GOF.File file) {
+    private string original_location (Files.File file) {
         /* print orig location of trashed files */
         if (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig ();
@@ -490,7 +490,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return _("Unknown");
     }
 
-    private async void get_resolution (GOF.File goffile) {
+    private async void get_resolution (Files.File goffile) {
         GLib.FileInputStream? stream = null;
         GLib.File file = goffile.location;
         string resolution = _("Could not be determined");
@@ -517,7 +517,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         resolution_value.label = resolution;
     }
 
-    private void construct_info_panel (GOF.File file) {
+    private void construct_info_panel (Files.File file) {
         /* Have to have these separate as size call is async */
         var size_key_label = new KeyLabel (_("Size:"));
 
@@ -690,7 +690,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 return true;
             }
 
-            var rootfs_loc = File.new_for_uri ("file:///");
+            var rootfs_loc = GLib.File.new_for_uri ("file:///");
             if (goffile.get_target_location ().equal (rootfs_loc)) {
                 return true;
             }
@@ -805,7 +805,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private async void file_set_attributes (GOF.File file, string attr,
+    private async void file_set_attributes (Files.File file, string attr,
                                             uint32 val, Cancellable? _cancellable = null) {
         FileInfo info = new FileInfo ();
 
@@ -830,7 +830,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 update_perm_grid_toggle_states (perm);
                 perm_code_should_update = true;
                 int n = 0;
-                foreach (GOF.File gof in files) {
+                foreach (Files.File gof in files) {
                     if (gof.can_set_permissions () && gof.permissions != perm) {
                         gof.permissions = perm;
 
@@ -884,7 +884,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             file_set_attributes.begin (gof, FileAttribute.UNIX_UID, (uint32) uid);
         }
     }
@@ -921,7 +921,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             file_set_attributes.begin (gof, FileAttribute.UNIX_GID, (uint32) gid);
         }
     }
@@ -978,7 +978,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private bool selection_can_set_owner () {
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             if (!gof.can_set_owner ()) {
                 return false;
             }
@@ -993,7 +993,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return null;
         }
 
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             if (uid == -1 && gof != null) {
                 uid = gof.uid;
                 continue;
@@ -1008,7 +1008,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private bool selection_can_set_group () {
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             if (!gof.can_set_group ()) {
                 return false;
             }
@@ -1023,7 +1023,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return null;
         }
 
-        foreach (GOF.File gof in files) {
+        foreach (Files.File gof in files) {
             if (gid == -1 && gof != null) {
                 gid = gof.gid;
                 continue;
@@ -1195,7 +1195,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    public static uint64 file_real_size (GOF.File gof) {
+    public static uint64 file_real_size (Files.File gof) {
         if (!gof.is_connected) {
             return 0;
         }

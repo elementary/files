@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-namespace Marlin.FileOperations {
+namespace Files.FileOperations {
     public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) throws GLib.Error {
         var mount_operation = new Gtk.MountOperation (parent_window);
         mount_operation.password_save = GLib.PasswordSave.FOR_SESSION;

@@ -16,9 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-using Marlin;
-
-namespace FM {
+namespace Files {
     public class IconView : AbstractDirectoryView {
         protected new Gtk.IconView tree;
         /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
@@ -42,8 +40,8 @@ namespace FM {
             tree.set_columns (-1);
             tree.set_reorderable (false);
 
-            name_renderer = new Marlin.TextRenderer (ViewMode.ICON);
-            icon_renderer = new Marlin.IconRenderer (ViewMode.ICON);
+            name_renderer = new Files.TextRenderer (ViewMode.ICON);
+            icon_renderer = new Files.IconRenderer (ViewMode.ICON);
 
             set_up_name_renderer ();
             set_up_icon_renderer ();
@@ -90,14 +88,14 @@ namespace FM {
         }
 
         protected override void set_up_zoom_level () {
-            Marlin.icon_view_settings.bind (
+            Files.icon_view_settings.bind (
                 "zoom-level",
                 this, "zoom-level",
                 GLib.SettingsBindFlags.DEFAULT
             );
 
-            minimum_zoom = (ZoomLevel)Marlin.icon_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (ZoomLevel)Marlin.icon_view_settings.get_enum ("maximum-zoom-level");
+            minimum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("maximum-zoom-level");
 
             if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
@@ -109,8 +107,8 @@ namespace FM {
         }
 
         public override ZoomLevel get_normal_zoom_level () {
-            var zoom = Marlin.icon_view_settings.get_enum ("default-zoom-level");
-            Marlin.icon_view_settings.set_enum ("zoom-level", zoom);
+            var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
+            Files.icon_view_settings.set_enum ("zoom-level", zoom);
 
             return (ZoomLevel)zoom;
         }
@@ -193,12 +191,12 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
-            GLib.List<GOF.File> list = null;
+        protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
+            GLib.List<Files.File> list = null;
             uint count = 0;
 
             tree.selected_foreach ((tree, path) => {
-                GOF.File? file = model.file_for_path (path);
+                Files.File? file = model.file_for_path (path);
                 if (file != null) {
                     list.prepend ((owned)file);
                     count++;
@@ -236,7 +234,7 @@ namespace FM {
                 tree.get_cell_rect (p, cell_renderer, out rect);
                 area = cell_renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
-                if (cell_renderer is Marlin.TextRenderer) {
+                if (cell_renderer is Files.TextRenderer) {
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
@@ -246,12 +244,12 @@ namespace FM {
                     string? text = null;
                     model.@get (iter, ListModel.ColumnID.FILENAME, out text);
 
-                    ((Marlin.TextRenderer) cell_renderer).set_up_layout (text, area.width);
+                    ((Files.TextRenderer) cell_renderer).set_up_layout (text, area.width);
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
                         y >= rect.y &&
-                        y <= rect.y + ((Marlin.TextRenderer) cell_renderer).text_height) {
+                        y <= rect.y + ((Files.TextRenderer) cell_renderer).text_height) {
 
                         zone = ClickZone.NAME;
                     } else if (rubberband) {
@@ -262,7 +260,7 @@ namespace FM {
                     }
                 } else {
                     bool on_helper = false;
-                    GOF.File? file = model.file_for_path (p);
+                    Files.File? file = model.file_for_path (p);
                     if (file != null) {
                         bool on_icon = is_on_icon (x, y, ref on_helper);
 

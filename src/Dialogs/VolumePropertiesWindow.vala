@@ -20,7 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-namespace Marlin.View {
+namespace Files.View {
 
 public class VolumePropertiesWindow : AbstractPropertiesDialog {
 
@@ -42,7 +42,7 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         } else {
             mount_root = GLib.File.new_for_uri ("file:///");
             mount_name = _("File System");
-            mount_icon = new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM);
+            mount_icon = new ThemedIcon.with_default_fallbacks (Files.ICON_FILESYSTEM);
         }
 
         GLib.FileInfo info = null;

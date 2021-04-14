@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.FileOperations.EmptyTrashJob : CommonJob {
+public class Files.FileOperations.EmptyTrashJob : CommonJob {
     GLib.List<GLib.File> trash_dirs;
 
     public EmptyTrashJob (Gtk.Window? parent_window = null, owned GLib.List<GLib.File>? trash_dirs = null) {
@@ -109,7 +109,7 @@ public class Marlin.FileOperations.EmptyTrashJob : CommonJob {
 
     public async void empty_trash () {
         inhibit_power_manager (_("Emptying Trash"));
-        if (!GOF.Preferences.get_default ().confirm_trash || confirm_empty_trash ()) {
+        if (!Files.Preferences.get_default ().confirm_trash || confirm_empty_trash ()) {
             progress.start ();
             foreach (unowned GLib.File dir in trash_dirs) {
                 if (aborted ()) {
@@ -120,7 +120,7 @@ public class Marlin.FileOperations.EmptyTrashJob : CommonJob {
             }
 
             /* There is no job callback after emptying trash */
-            Marlin.UndoManager.instance ().trash_has_emptied ();
+            Files.UndoManager.instance ().trash_has_emptied ();
             PF.SoundManager.get_instance ().play_empty_trash_sound ();
         }
     }

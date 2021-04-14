@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.FileConflictDialog : Granite.MessageDialog {
+public class Files.FileConflictDialog : Granite.MessageDialog {
     public string new_name {
         owned get {
             return rename_entry.text;
@@ -42,9 +42,9 @@ public class Marlin.FileConflictDialog : Granite.MessageDialog {
     private Gtk.Button keep_newest_button;
     private Gtk.CheckButton apply_all_checkbutton;
 
-    private GOF.File source;
-    private GOF.File destination;
-    private GOF.File dest_dir;
+    private Files.File source;
+    private Files.File destination;
+    private Files.File dest_dir;
 
     private Gtk.Image source_image;
     private Gtk.Label source_size_label;
@@ -64,27 +64,27 @@ public class Marlin.FileConflictDialog : Granite.MessageDialog {
             skip_taskbar_hint: true
         );
 
-        source = GOF.File.@get (_source);
-        destination = GOF.File.@get (_destination);
+        source = Files.File.@get (_source);
+        destination = Files.File.@get (_destination);
         destination.query_update ();
-        var thumbnailer = Marlin.Thumbnailer.get ();
+        var thumbnailer = Files.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
             destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   GOF.File.IconFlags.USE_THUMBNAILS);
+                                                                   Files.File.IconFlags.USE_THUMBNAILS);
         });
 
         thumbnailer.queue_file (destination, null, false);
         destination_size_label.label = destination.format_size;
         destination_time_label.label = destination.formated_modified;
 
-        dest_dir = GOF.File.@get (_dest_dir);
+        dest_dir = Files.File.@get (_dest_dir);
 
-        var files = new GLib.List<GOF.File> ();
+        var files = new GLib.List<Files.File> ();
         files.prepend (source);
         files.prepend (destination);
         files.prepend (dest_dir);
 
-        new GOF.CallWhenReady (files, file_list_ready_cb);
+        new Files.CallWhenReady (files, file_list_ready_cb);
     }
 
     construct {
@@ -276,7 +276,7 @@ public class Marlin.FileConflictDialog : Granite.MessageDialog {
         });
     }
 
-    private void file_list_ready_cb (GLib.List<GOF.File> files) {
+    private void file_list_ready_cb (GLib.List<Files.File> files) {
         unowned string src_ftype = source.get_ftype ();
         unowned string dest_ftype = destination.get_ftype ();
         if (src_ftype == null) {
@@ -324,7 +324,7 @@ public class Marlin.FileConflictDialog : Granite.MessageDialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
-        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.File.IconFlags.USE_THUMBNAILS);
+        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
         if (should_show_type && src_ftype != null) {
@@ -349,12 +349,12 @@ public class Marlin.FileConflictDialog : Granite.MessageDialog {
         }
 
         source.changed.connect (() => {
-            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.File.IconFlags.USE_THUMBNAILS);
+            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
         });
 
         destination.changed.connect (() => {
             destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   GOF.File.IconFlags.USE_THUMBNAILS);
+                                                                   Files.File.IconFlags.USE_THUMBNAILS);
         });
     }
 }

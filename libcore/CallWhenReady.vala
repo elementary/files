@@ -17,23 +17,23 @@
     Author: ammonkey <am.monkeyd@gmail.com>
 ***/
 
-GLib.List<GOF.CallWhenReady>? callwhenready_cache = null;
+GLib.List<Files.CallWhenReady>? callwhenready_cache = null;
 
-public class GOF.CallWhenReady : Object {
-    public delegate void call_when_ready_func (GLib.List<GOF.File>files);
+public class Files.CallWhenReady : Object {
+    public delegate void call_when_ready_func (GLib.List<Files.File>files);
 
-    public GLib.List<GOF.File> files;
+    public GLib.List<Files.File> files;
     private unowned call_when_ready_func? f;
-    private GLib.List<GOF.File>? call_when_ready_list = null;
+    private GLib.List<Files.File>? call_when_ready_list = null;
 
 
-    public CallWhenReady (GLib.List<GOF.File> _files, call_when_ready_func? _f = null) {
+    public CallWhenReady (GLib.List<Files.File> _files, call_when_ready_func? _f = null) {
         files = _files.copy_deep ((GLib.CopyFunc) GLib.Object.ref); // only used for limited length lists currently
         f = _f;
 
         int count = 0;
         int total = 0;
-        foreach (unowned GOF.File gof in files) {
+        foreach (unowned Files.File gof in files) {
             total++;
             if (gof.info == null) {
                 call_when_ready_list.prepend (gof);
@@ -51,19 +51,19 @@ public class GOF.CallWhenReady : Object {
         callwhenready_cache.prepend (this);
     }
 
-    private void file_ready (GOF.File gof) {
+    private void file_ready (Files.File gof) {
         gof.update ();
     }
 
-    /**TODO** move this to GOF.File */
+    /**TODO** move this to Files.File */
 
     private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink," +
     "standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size," +
     "standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
 
-    private delegate void func_query_info (GOF.File gof);
+    private delegate void func_query_info (Files.File gof);
 
-    private async void query_info_async (GOF.File gof, func_query_info? fqi = null) {
+    private async void query_info_async (Files.File gof, func_query_info? fqi = null) {
         try {
             gof.info = yield gof.location.query_info_async (gio_default_attributes,
                                                             FileQueryInfoFlags.NONE,

@@ -17,7 +17,7 @@
 
 ***/
 
-namespace Marlin.View {
+namespace Files.View {
     public class OverlayBar : Granite.Widgets.OverlayBar {
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
@@ -26,8 +26,8 @@ namespace Marlin.View {
         private uint folders_count = 0;
         private uint files_count = 0;
         private uint64 files_size = 0;
-        private GOF.File? goffile = null;
-        private GLib.List<unowned GOF.File>? selected_files = null;
+        private Files.File? goffile = null;
+        private GLib.List<unowned Files.File>? selected_files = null;
         private uint8 [] buffer;
         private GLib.FileInputStream? stream;
         private Gdk.PixbufLoader loader;
@@ -48,7 +48,7 @@ namespace Marlin.View {
             cancel ();
         }
 
-        public void selection_changed (GLib.List<unowned GOF.File> files) {
+        public void selection_changed (GLib.List<unowned Files.File> files) {
             cancel ();
             visible = false;
 
@@ -69,7 +69,7 @@ namespace Marlin.View {
             selected_files = null;
         }
 
-        public void update_hovered (GOF.File? file) {
+        public void update_hovered (Files.File? file) {
             hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout */
 
             if (file != null && goffile != null && file.location.equal (goffile.location)) {
@@ -94,7 +94,7 @@ namespace Marlin.View {
                     if (matched) {
                         real_update (selected_files);
                     } else {
-                        GLib.List<unowned GOF.File> list = null;
+                        GLib.List<unowned Files.File> list = null;
                         list.prepend (file);
                         real_update (list);
                     }
@@ -147,7 +147,7 @@ namespace Marlin.View {
             }
         }
 
-       private void real_update (GLib.List<unowned GOF.File>? files) {
+       private void real_update (GLib.List<unowned Files.File>? files) {
             goffile = null;
             folders_count = 0;
             files_count = 0;
@@ -195,7 +195,7 @@ namespace Marlin.View {
 
                     if (type != null && type.substring (0, 6) == "image/" &&     /* file is image and */
                         (goffile.width > 0 ||                                    /* resolution already determined  or */
-                        !((type in Marlin.SKIP_IMAGES) || goffile.width < 0))) { /* resolution can be determined. */
+                        !((type in Files.SKIP_IMAGES) || goffile.width < 0))) { /* resolution can be determined. */
 
                         load_resolution.begin (goffile);
                     }
@@ -298,13 +298,13 @@ namespace Marlin.View {
             }
         }
 
-        private void scan_list (GLib.List<unowned GOF.File>? files) {
+        private void scan_list (GLib.List<unowned Files.File>? files) {
             if (files == null) {
                 return;
             }
 
-            foreach (unowned GOF.File gof in files) {
-                if (gof != null && gof is GOF.File) {
+            foreach (unowned Files.File gof in files) {
+                if (gof != null && gof is Files.File) {
                     if (gof.is_folder ()) {
                         folders_count++;
                     } else {
@@ -318,7 +318,7 @@ namespace Marlin.View {
         }
 
         /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
-        private async void load_resolution (GOF.File goffile) {
+        private async void load_resolution (Files.File goffile) {
             if (goffile.width > 0) { /* resolution may already have been determined */
                 on_size_prepared (goffile.width, goffile.height);
                 return;
@@ -379,7 +379,7 @@ namespace Marlin.View {
                         goffile.width = -1; /* Flag that resolution is not determinable so do not try again*/
                         goffile.height = -1;
                         /* Note that Gdk.PixbufLoader seems to leak memory with some file types. Any file type that
-                         * causes this error should be added to Marlin.SKIP_IMAGES array */
+                         * causes this error should be added to Files.SKIP_IMAGES array */
                         critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
                         break;
                     }

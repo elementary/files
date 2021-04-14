@@ -21,8 +21,8 @@
  */
 
 public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
-    public Marlin.SidebarInterface sidebar { get; construct; }
-    public NetworkListBox (Marlin.SidebarInterface sidebar) {
+    public Files.SidebarInterface sidebar { get; construct; }
+    public NetworkListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
         );
@@ -54,7 +54,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         return row;
     }
 
-    public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name, plugin_item.uri, plugin_item.icon, null);
 
         row.update_plugin_data (plugin_item);
@@ -85,14 +85,14 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     public void refresh () {
         clear ();
 
-        if (Marlin.is_admin ()) { //Network operations fail for administrators
+        if (Files.is_admin ()) { //Network operations fail for administrators
             return;
         }
 
         var row = add_bookmark (
             _("Entire Network"),
-            Marlin.NETWORK_URI,
-            new ThemedIcon (Marlin.ICON_NETWORK),
+            Files.NETWORK_URI,
+            new ThemedIcon (Files.ICON_NETWORK),
             null
         );
 

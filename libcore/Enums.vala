@@ -18,7 +18,7 @@
     Fifth Floor, Boston, MA 02110-1335 USA.
  ***/
 
-namespace Marlin {
+namespace Files {
     public enum WindowState {
         NORMAL,
         TILED_START,
@@ -41,13 +41,13 @@ namespace Marlin {
             }
         }
 
-        public static Marlin.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
+        public static Files.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
             if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
-                return Marlin.WindowState.MAXIMIZED;
+                return Files.WindowState.MAXIMIZED;
             } else if (Gdk.WindowState.TILED in state) {
-                return start ? Marlin.WindowState.TILED_START : Marlin.WindowState.TILED_END;
+                return start ? Files.WindowState.TILED_START : Files.WindowState.TILED_END;
             } else {
-                return Marlin.WindowState.NORMAL;
+                return Files.WindowState.NORMAL;
             }
         }
 

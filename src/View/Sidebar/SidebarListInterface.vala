@@ -22,19 +22,19 @@
  */
 
 public interface Sidebar.SidebarListInterface : Gtk.Container {
-    public abstract Marlin.SidebarInterface sidebar { get; construct; }
+    public abstract Files.SidebarInterface sidebar { get; construct; }
 
     public abstract void select_item (SidebarItemInterface? item);
     public abstract void unselect_all_items ();
 
-    public virtual void open_item (SidebarItemInterface item, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+    public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         sidebar.path_change_request (item.uri, flag);
     }
 
     public abstract void refresh (); //Clear and recreate all rows
     public virtual void refresh_info () {} //Update all rows without recreating them
 
-    public virtual uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {return 0;}
+    public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {return 0;}
 
     public virtual void clear () {
         foreach (Gtk.Widget child in get_children ()) {
