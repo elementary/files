@@ -114,7 +114,7 @@ namespace FM {
 
         public int icon_size {
             get {
-                return Marlin.zoom_level_to_icon_size (_zoom_level);
+                return _zoom_level.to_icon_size ();
             }
         }
 
@@ -2727,7 +2727,7 @@ namespace FM {
                      z <= Marlin.ZoomLevel.LARGEST;
                      z++) {
 
-                    s = Marlin.zoom_level_to_icon_size ((Marlin.ZoomLevel)z);
+                    s = ((Marlin.ZoomLevel) z).to_icon_size ();
                     Marlin.IconInfo.remove_cache (path, s, get_scale_factor ());
                 }
             }
