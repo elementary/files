@@ -16,7 +16,7 @@
     Authors :
 ***/
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class SearchResults : Gtk.Window, Searchable {
         /* The order of these categories governs the order in which matches appear in the search view.
          * The category represents a first level sort.  Within a category the matches sort alphabetically on name */
@@ -55,11 +55,11 @@ namespace Marlin.View.Chrome {
             public string mime { get; construct; }
             public string path_string { get; construct; }
             public Icon icon { get; construct; }
-            public File? file { get; construct; }
+            public GLib.File? file { get; construct; }
             public string sortkey { get; construct; }
             public Category category { get; construct; }
 
-            public Match (FileInfo info, string path_string, File parent, SearchResults.Category category) {
+            public Match (FileInfo info, string path_string, GLib.File parent, SearchResults.Category category) {
                 var _name = info.get_display_name ();
                 Object (name: Markup.escape_text (_name),
                         mime: info.get_content_type (),
@@ -97,9 +97,9 @@ namespace Marlin.View.Chrome {
         private new Gtk.Widget parent;
         protected int n_results { get; private set; default = 0; }
 
-        File current_root;
+        GLib.File current_root;
         string search_term = "";
-        Gee.Queue<File> directory_queue;
+        Gee.Queue<GLib.File> directory_queue;
         ulong waiting_handler;
 
         uint adding_timeout;
@@ -211,7 +211,7 @@ namespace Marlin.View.Chrome {
                                       typeof (string),       /*0 file basename or category name */
                                       typeof (GLib.Icon),    /*1 file icon */
                                       typeof (string?),      /*2 file location */
-                                      typeof (File?),        /*3 file object */
+                                      typeof (GLib.File?),        /*3 file object */
                                       typeof (bool),         /*4 icon is visible */
                                       typeof (string));      /*5 Sort key */
 
@@ -227,7 +227,7 @@ namespace Marlin.View.Chrome {
             list.row_changed.connect ((path, iter) => {
                 /* If the first match is in the current directory it will be selected */
                 if (path.to_string () == "0:0") {
-                    File? file;
+                    GLib.File? file;
                     list.@get (iter, 3, out file);
                     first_match_found (file);
                 }
@@ -300,7 +300,7 @@ namespace Marlin.View.Chrome {
             clear ();
         }
 
-        public void search (string term, File folder) {
+        public void search (string term, GLib.File folder) {
             update_category_headers (); // Ensure category header color matches theme.
 
             device = Gtk.get_current_event_device ();
@@ -346,10 +346,10 @@ namespace Marlin.View.Chrome {
                 return;
             }
 
-            var include_hidden = GOF.Preferences.get_default ().show_hidden_files;
+            var include_hidden = Files.Preferences.get_default ().show_hidden_files;
             current_count = 0;
             deep_count = 0;
-            directory_queue = new Gee.LinkedList<File> ();
+            directory_queue = new Gee.LinkedList<GLib.File> ();
             waiting_results = new Gee.HashMap<Gtk.TreeIter?,Gee.List> ();
             current_root = folder;
 
@@ -773,7 +773,7 @@ namespace Marlin.View.Chrome {
 
             foreach (var match in new_results) {
                 Gtk.TreeIter? iter = null;
-                File file;
+                GLib.File file;
                 /* do not add global result if already in local results */
                 if (parent == zeitgeist_results) {
                     var already_added = false;
@@ -865,7 +865,7 @@ namespace Marlin.View.Chrome {
                 return;
             }
 
-            File? file = null;
+            GLib.File? file = null;
             string sortkey = "";
             /* It is important that the next line is not put into an if clause.
              * For reasons unknown, doing so causes a segmentation fault on some systems but not
@@ -896,12 +896,12 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        File? get_file_at_iter (Gtk.TreeIter? iter) {
+        GLib.File? get_file_at_iter (Gtk.TreeIter? iter) {
             if (iter == null) {
                 get_iter_at_cursor (out iter);
             }
 
-            File? file = null;
+            GLib.File? file = null;
             if (iter != null) {
                 list.@get (iter, 3, out file);
             }
@@ -970,7 +970,7 @@ namespace Marlin.View.Chrome {
                                   FileAttribute.STANDARD_TYPE + "," +
                                   FileAttribute.STANDARD_ICON;
 
-        void visit (string term, bool include_hidden, Cancellable cancel, File root_folder) {
+        void visit (string term, bool include_hidden, Cancellable cancel, GLib.File root_folder) {
             var folder = directory_queue.poll ();
 
             if (folder == null) {
@@ -982,7 +982,7 @@ namespace Marlin.View.Chrome {
 
             var depth = 0;
 
-            File f = folder;
+            GLib.File f = folder;
             var path_string = "";
 
             while (f != null && !f.equal (current_root)) {
@@ -1087,7 +1087,7 @@ namespace Marlin.View.Chrome {
             }
 
             var matches = new Gee.LinkedList<Match> ();
-            var home = File.new_for_path (Environment.get_home_dir ());
+            var home = GLib.File.new_for_path (Environment.get_home_dir ());
             Category cat;
             var i = 0;
 
@@ -1101,7 +1101,7 @@ namespace Marlin.View.Chrome {
                     }
 
                     try {
-                        var file = File.new_for_uri (subject.uri);
+                        var file = GLib.File.new_for_uri (subject.uri);
                         /* Zeitgeist search finds search term anywhere in path.  We are only interested
                          * when the search term is in the basename */
                         while (file != null && !file.get_basename ().contains (term)) {

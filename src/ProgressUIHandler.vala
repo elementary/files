@@ -25,7 +25,7 @@
  *   approximately 1 second. The launcher is also updated if present and a notification is sent of the
  *   completion of the operation unless it was cancelled by the user.
 ***/
-public class Marlin.Progress.UIHandler : Object {
+public class Files.Progress.UIHandler : Object {
     private PF.Progress.InfoManager manager = null;
     private Granite.Dialog progress_window = null;
     private Gtk.Box window_vbox = null;

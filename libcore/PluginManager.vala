@@ -3,7 +3,7 @@
 
     Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org> (from Rygel)
 
-    This file is part of Marlin.
+    This file is part of Files.
 
     Marlin is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
@@ -19,9 +19,9 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public static Marlin.PluginManager plugins;
+public static Files.PluginManager plugins;
 
-public class Marlin.PluginManager : Object {
+public class Files.PluginManager : Object {
 
     delegate Plugins.Base ModuleInitFunc ();
     Gee.HashMap<string,Plugins.Base> plugin_hash;
@@ -30,7 +30,7 @@ public class Marlin.PluginManager : Object {
     bool update_queued = false;
     bool is_admin = false;
 
-    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Marlin.PluginManager.menuitem_references")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Files.PluginManager.menuitem_references")]
     public GLib.List<Gtk.Widget>? menus; /* this doesn't manage GObject references properly */
 
     public Gee.List<Gtk.Widget> menuitem_references { get; private set; }
@@ -65,7 +65,7 @@ public class Marlin.PluginManager : Object {
     }
 
     private void set_directory_monitor (string path) {
-        var dir = File.new_for_path (path);
+        var dir = GLib.File.new_for_path (path);
 
         try {
             var monitor = dir.monitor_directory (FileMonitorFlags.NONE, null);
@@ -76,7 +76,7 @@ public class Marlin.PluginManager : Object {
         }
     }
 
-    private async void on_plugin_directory_change (File file, File? other_file, FileMonitorEvent event) {
+    private async void on_plugin_directory_change (GLib.File file, GLib.File? other_file, FileMonitorEvent event) {
         if (update_queued) {
             return;
         }
@@ -98,7 +98,7 @@ public class Marlin.PluginManager : Object {
         FileEnumerator enumerator;
 
         try {
-            var dir = File.new_for_path (path);
+            var dir = GLib.File.new_for_path (path);
 
             enumerator = dir.enumerate_children
                                         (attributes,
@@ -177,7 +177,7 @@ public class Marlin.PluginManager : Object {
         }
     }
 
-    public void hook_context_menu (Gtk.Widget menu, List<GOF.File> files) {
+    public void hook_context_menu (Gtk.Widget menu, List<Files.File> files) {
         drop_menu_references (menu);
 
         if (menu is Gtk.Menu) {
@@ -197,7 +197,7 @@ public class Marlin.PluginManager : Object {
         menuitem_references.clear ();
     }
 
-    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Marlin.PluginManager.drop_plugin_menuitems")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Files.PluginManager.drop_plugin_menuitems")]
     private void drop_menu_references (Gtk.Widget menu) {
         if (menus == null) {
             return;
@@ -210,7 +210,7 @@ public class Marlin.PluginManager : Object {
         menus = null;
     }
 
-    public void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+    public void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
         foreach (var plugin in plugin_hash.values) {
             plugin.directory_loaded (window, view, directory);
         }
@@ -234,7 +234,7 @@ public class Marlin.PluginManager : Object {
         }
     }
 
-    public void update_file_info (GOF.File file) {
+    public void update_file_info (Files.File file) {
         foreach (var plugin in plugin_hash.values) {
             plugin.update_file_info (file);
         }

@@ -16,9 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-using Marlin;
-
-namespace FM {
+namespace Files {
     public class ColumnView : AbstractTreeView {
         /** Miller View support */
         bool awaiting_double_click = false;
@@ -59,13 +57,13 @@ namespace FM {
         }
 
         protected override void set_up_zoom_level () {
-            Marlin.column_view_settings.bind (
+            Files.column_view_settings.bind (
                 "zoom-level",
                 this, "zoom-level",
                 GLib.SettingsBindFlags.DEFAULT
             );
 
-            maximum_zoom = (ZoomLevel)Marlin.column_view_settings.get_enum ("maximum-zoom-level");
+            maximum_zoom = (ZoomLevel)Files.column_view_settings.get_enum ("maximum-zoom-level");
 
             if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
                 zoom_level = minimum_zoom;
@@ -77,8 +75,8 @@ namespace FM {
         }
 
         public override ZoomLevel get_normal_zoom_level () {
-            var zoom = Marlin.column_view_settings.get_enum ("default-zoom-level");
-            Marlin.column_view_settings.set_enum ("zoom-level", zoom);
+            var zoom = Files.column_view_settings.get_enum ("default-zoom-level");
+            Files.column_view_settings.set_enum ("zoom-level", zoom);
 
             return (ZoomLevel)zoom;
         }
@@ -114,8 +112,8 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            GOF.File? file = null;
-            GOF.File? selected_folder = null;
+            Files.File? file = null;
+            Files.File? selected_folder = null;
             Gtk.TreeIter? iter = null;
 
             if (path != null) {

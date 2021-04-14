@@ -16,8 +16,8 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin.View {
-    public class Miller : GOF.AbstractSlot {
+namespace Files.View {
+    public class Miller : Files.AbstractSlot {
         private unowned View.ViewContainer ctab;
 
         /* Need private copy of initial location as Miller
@@ -50,8 +50,8 @@ namespace Marlin.View {
             this.ctab = ctab;
             this.root_location = loc;
 
-            (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
-                show_hidden_files_changed (((GOF.Preferences)s).show_hidden_files);
+            (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
+                show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
             });
 
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
@@ -237,7 +237,7 @@ namespace Marlin.View {
 
                         var last_slot = slot_list.last ().data;
                         var file = GLib.File.new_for_uri (last_uri);
-                        var list = new List<File> ();
+                        var list = new List<GLib.File> ();
                         list.prepend (file);
                         last_slot.select_glib_files (list, file);
                         Thread.usleep (100000);
@@ -288,7 +288,7 @@ namespace Marlin.View {
             }
         }
 
-        private void on_new_container_request (GLib.File loc, Marlin.OpenFlag flag) {
+        private void on_new_container_request (GLib.File loc, Files.OpenFlag flag) {
             new_container_request (loc, flag);
         }
 
@@ -296,11 +296,11 @@ namespace Marlin.View {
             path_changed ();
         }
 
-        private void on_slot_directory_loaded (GOF.Directory.Async dir) {
+        private void on_slot_directory_loaded (Files.Directory.Async dir) {
             directory_loaded (dir);
         }
 
-        private void on_slot_folder_deleted (Slot slot, GOF.File file, GOF.Directory.Async dir) {
+        private void on_slot_folder_deleted (Slot slot, Files.File file, Files.Directory.Async dir) {
             Slot? next_slot = slot_list.nth_data (slot.slot_number + 1);
             if (next_slot != null && next_slot.directory == dir) {
                 truncate_list_after_slot (slot);
@@ -310,7 +310,7 @@ namespace Marlin.View {
         /** Called in response to slot active signal.
          *  Should not be called directly
          **/
-        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll = true, bool animate = true) {
+        private void on_slot_active (Files.AbstractSlot aslot, bool scroll = true, bool animate = true) {
             View.Slot slot;
 
             if (!(aslot is View.Slot)) {
@@ -336,7 +336,7 @@ namespace Marlin.View {
             active ();
         }
 
-        private void on_slot_item_hovered (GOF.File? file) {
+        private void on_slot_item_hovered (Files.File? file) {
             item_hovered (file);
         }
 
@@ -392,7 +392,7 @@ namespace Marlin.View {
                         return true;
                     }
 
-                    GOF.File? selected_file = current_slot.get_selected_files ().data;
+                    Files.File? selected_file = current_slot.get_selected_files ().data;
 
                     if (selected_file == null) {
                         return true;
@@ -470,7 +470,7 @@ namespace Marlin.View {
         private bool scroll_to_slot (View.Slot slot, bool animate = true) {
             /* Cannot accurately scroll until directory finishes loading because width will change
              * according the length of the longest filename */
-            if (!scrolled_window.get_realized () || slot.directory.state != GOF.Directory.Async.State.LOADED) {
+            if (!scrolled_window.get_realized () || slot.directory.state != Files.Directory.Async.State.LOADED) {
                 return false;
             }
 
@@ -515,11 +515,11 @@ namespace Marlin.View {
             }
         }
 
-        public override unowned GOF.AbstractSlot? get_current_slot () {
+        public override unowned Files.AbstractSlot? get_current_slot () {
             return current_slot;
         }
 
-        public override unowned GLib.List<GOF.File>? get_selected_files () {
+        public override unowned GLib.List<Files.File>? get_selected_files () {
             return ((View.Slot)(current_slot)).get_selected_files ();
         }
 
@@ -534,7 +534,7 @@ namespace Marlin.View {
         public override string? get_tip_uri () {
             if (slot_list != null &&
                 slot_list.last () != null &&
-                slot_list.last ().data is GOF.AbstractSlot) {
+                slot_list.last ().data is Files.AbstractSlot) {
 
                 return slot_list.last ().data.uri;
             } else {

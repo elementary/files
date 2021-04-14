@@ -18,9 +18,9 @@
 
 ***/
 
-namespace Marlin.View {
-    public class PrivacyModeOn : Marlin.View.Welcome {
-        public GOF.Directory.Async dir_saved;
+namespace Files.View {
+    public class PrivacyModeOn : Files.View.Welcome {
+        public Files.Directory.Async dir_saved;
         public ViewContainer ctab;
         public bool remember_history {get; set;}
 

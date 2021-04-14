@@ -16,7 +16,7 @@
     Authors: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
     public class TextRenderer: Gtk.CellRendererText {
 
         const int MAX_LINES = 5;
@@ -47,7 +47,7 @@ namespace Marlin {
             }
         }
 
-        public GOF.File? file {set; private get;}
+        public Files.File? file {set; private get;}
         private int _item_width = -1;
         public int item_width {
             set {
