@@ -43,7 +43,7 @@ namespace Marlin.View.Chrome {
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
-        protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
+        protected static DndHandler dnd_handler = new DndHandler ();
         Gdk.DragAction current_suggested_action = 0; /* No action */
         Gdk.DragAction current_actions = 0; /* No action */
         GOF.File? drop_target_file = null;
@@ -349,7 +349,7 @@ namespace Marlin.View.Chrome {
             if (!drop_data_ready) {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
-                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
+                if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
                     drop_file_list = PF.FileUtils.files_from_uris (text);
                     drop_data_ready = true;
                 }
@@ -465,7 +465,7 @@ namespace Marlin.View.Chrome {
             var submenu_open_with = new Gtk.Menu ();
             var loc = File.new_for_uri (PF.FileUtils.escape_uri (path));
             var root = GOF.File.get_by_uri (path);
-            var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
+            var app_info_list = MimeActions.get_applications_for_folder (root);
             bool at_least_one = false;
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {

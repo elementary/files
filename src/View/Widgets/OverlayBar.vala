@@ -33,7 +33,7 @@ namespace Marlin.View {
         private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
         private uint hover_timeout_id = 0;
-        private Marlin.DeepCount? deep_counter = null;
+        private DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
 
         public OverlayBar (Gtk.Overlay overlay) {
@@ -239,7 +239,7 @@ namespace Marlin.View {
             deep_count_cancel ();
 
             deep_count_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, 1000, () => {
-                deep_counter = new Marlin.DeepCount (goffile.location);
+                deep_counter = new DeepCount (goffile.location);
                 deep_counter.finished.connect (update_status_after_deep_count);
 
                 cancel_cancellable ();

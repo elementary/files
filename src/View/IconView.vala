@@ -16,6 +16,8 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
+using Marlin;
+
 namespace FM {
     public class IconView : AbstractDirectoryView {
         protected new Gtk.IconView tree;
@@ -26,7 +28,7 @@ namespace FM {
         protected bool linear_select_required = false;
         protected Gtk.TreePath? most_recently_selected = null;
 
-        public IconView (Marlin.View.Slot _slot) {
+        public IconView (View.Slot _slot) {
             base (_slot);
         }
 
@@ -40,8 +42,8 @@ namespace FM {
             tree.set_columns (-1);
             tree.set_reorderable (false);
 
-            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
-            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.ICON);
+            name_renderer = new Marlin.TextRenderer (ViewMode.ICON);
+            icon_renderer = new Marlin.IconRenderer (ViewMode.ICON);
 
             set_up_name_renderer ();
             set_up_icon_renderer ();
@@ -49,10 +51,10 @@ namespace FM {
             tree.pack_start (icon_renderer, false);
             tree.pack_end (name_renderer, false);
 
-            tree.add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
-            tree.add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
-            tree.add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
-            tree.add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "text", ListModel.ColumnID.FILENAME);
+            tree.add_attribute (name_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "background", ListModel.ColumnID.COLOR);
+            tree.add_attribute (icon_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -94,8 +96,8 @@ namespace FM {
                 GLib.SettingsBindFlags.DEFAULT
             );
 
-            minimum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (Marlin.ZoomLevel)Marlin.icon_view_settings.get_enum ("maximum-zoom-level");
+            minimum_zoom = (ZoomLevel)Marlin.icon_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (ZoomLevel)Marlin.icon_view_settings.get_enum ("maximum-zoom-level");
 
             if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
@@ -106,11 +108,11 @@ namespace FM {
             }
         }
 
-        public override Marlin.ZoomLevel get_normal_zoom_level () {
+        public override ZoomLevel get_normal_zoom_level () {
             var zoom = Marlin.icon_view_settings.get_enum ("default-zoom-level");
             Marlin.icon_view_settings.set_enum ("zoom-level", zoom);
 
-            return (Marlin.ZoomLevel)zoom;
+            return (ZoomLevel)zoom;
         }
 
         public override void change_zoom_level () {
@@ -242,8 +244,7 @@ namespace FM {
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
                     string? text = null;
-                    model.@get (iter,
-                            FM.ListModel.ColumnID.FILENAME, out text);
+                    model.@get (iter, ListModel.ColumnID.FILENAME, out text);
 
                     ((Marlin.TextRenderer) cell_renderer).set_up_layout (text, area.width);
 

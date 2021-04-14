@@ -62,7 +62,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private Mutex mutex;
-    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
+    private GLib.List<DeepCount>? deep_count_directories = null;
 
     private Gee.Set<string>? mimes;
     private ValueLabel contains_value;
@@ -285,7 +285,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 mutex.unlock ();
 
                 selected_folders++;
-                var d = new Marlin.DeepCount (gof.location); /* Starts counting on creation */
+                var d = new DeepCount (gof.location); /* Starts counting on creation */
                 deep_count_directories.prepend (d);
 
                 d.finished.connect (() => {
@@ -1175,7 +1175,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                         AppsColumn.APP_INFO, out app);
 
         if (app == null) {
-            var app_chosen = Marlin.MimeActions.choose_app_for_glib_file (goffile.location, this);
+            var app_chosen = MimeActions.choose_app_for_glib_file (goffile.location, this);
             if (app_chosen != null) {
                 store_apps.prepend (out iter);
                 store_apps.set (iter,

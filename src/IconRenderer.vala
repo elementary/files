@@ -34,7 +34,7 @@ namespace Marlin {
         public bool follow_state {get; set;}
         public GOF.File? drop_file {get; set;}
 
-        public Marlin.ZoomLevel zoom_level {
+        public ZoomLevel zoom_level {
             get {
                 return _zoom_level;
             }
@@ -60,7 +60,7 @@ namespace Marlin {
 
         int h_overlap;
         int v_overlap;
-        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
+        private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         private GOF.File? _file;
         private Marlin.IconSize icon_size;
         private int icon_scale = 1;
@@ -73,13 +73,13 @@ namespace Marlin {
         private ClipboardManager clipboard;
 
         construct {
-            clipboard = Marlin.ClipboardManager.get_for_display ();
+            clipboard = ClipboardManager.get_for_display ();
             hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
         }
 
-        public IconRenderer (Marlin.ViewMode view_mode) {
-            xpad = view_mode == Marlin.ViewMode.ICON ? 0 : Marlin.IconSize.EMBLEM;
+        public IconRenderer (ViewMode view_mode) {
+            xpad = view_mode == ViewMode.ICON ? 0 : Marlin.IconSize.EMBLEM;
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -214,7 +214,7 @@ namespace Marlin {
 
                 Gdk.Rectangle helper_rect = {0, 0, 1, 1};
                 if (special_icon_name != null) {
-                    var helper_size = (int) (zoom_level <= Marlin.ZoomLevel.NORMAL ?
+                    var helper_size = (int) (zoom_level <= ZoomLevel.NORMAL ?
                                              Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM);
 
                     helper_rect.width = helper_size;

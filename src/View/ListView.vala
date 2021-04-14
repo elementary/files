@@ -16,6 +16,8 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
+using Marlin;
+
 namespace FM {
     public class ListView : AbstractTreeView {
 
@@ -34,7 +36,7 @@ namespace FM {
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
         private GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
 
-        public ListView (Marlin.View.Slot _slot) {
+        public ListView (View.Slot _slot) {
             base (_slot);
         }
 
@@ -45,10 +47,10 @@ namespace FM {
         }
 
         private void append_extra_tree_columns () {
-            int fnc = FM.ListModel.ColumnID.FILENAME;
+            int fnc = ListModel.ColumnID.FILENAME;
 
             int preferred_column_width = Marlin.column_view_settings.get_int ("preferred-column-width");
-            for (int k = fnc; k < FM.ListModel.ColumnID.NUM_COLUMNS; k++) {
+            for (int k = fnc; k < ListModel.ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
                     name_column.set_title (column_titles [0]);
@@ -64,7 +66,7 @@ namespace FM {
                         min_width = 24
                     };
 
-                    if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED) {
+                    if (k == ListModel.ColumnID.SIZE || k == ListModel.ColumnID.MODIFIED) {
                         renderer.@set ("xalign", 1.0f);
                     } else {
                         renderer.@set ("xalign", 0.0f);
@@ -205,9 +207,9 @@ namespace FM {
                 GLib.SettingsBindFlags.DEFAULT
             );
 
-            maximum_zoom = (Marlin.ZoomLevel)Marlin.list_view_settings.get_enum ("maximum-zoom-level");
+            maximum_zoom = (ZoomLevel)Marlin.list_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom) { /* Defaults to Marlin.ZoomLevel.SMALLEST */
+            if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
                 zoom_level = minimum_zoom;
             }
 
@@ -216,11 +218,11 @@ namespace FM {
             }
         }
 
-        public override Marlin.ZoomLevel get_normal_zoom_level () {
+        public override ZoomLevel get_normal_zoom_level () {
             var zoom = Marlin.list_view_settings.get_enum ("default-zoom-level");
             Marlin.list_view_settings.set_enum ("zoom-level", zoom);
 
-            return (Marlin.ZoomLevel)zoom;
+            return (ZoomLevel)zoom;
         }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {

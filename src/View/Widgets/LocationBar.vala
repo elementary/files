@@ -80,8 +80,8 @@ namespace Marlin.View.Chrome {
             path_change_request (gof.get_target_location ().get_uri ());
         }
         private void on_search_results_file_activated (GLib.File file) {
-            AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);
-            Marlin.MimeActions.open_glib_file_request (file, this, app);
+            AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
+            MimeActions.open_glib_file_request (file, this, app);
             on_search_results_exit ();
         }
 

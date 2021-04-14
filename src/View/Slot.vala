@@ -19,8 +19,8 @@
 
 namespace Marlin.View {
     public class Slot : GOF.AbstractSlot {
-        private unowned Marlin.View.ViewContainer ctab;
-        private Marlin.ViewMode mode;
+        private unowned View.ViewContainer ctab;
+        private ViewMode mode;
         private int preferred_column_width;
         private FM.AbstractDirectoryView? dir_view = null;
 
@@ -44,7 +44,7 @@ namespace Marlin.View {
             }
         }
 
-        public unowned Marlin.View.Window window {
+        public unowned View.Window window {
             get {return ctab.window;}
         }
 
@@ -74,7 +74,7 @@ namespace Marlin.View {
         public signal void miller_slot_request (GLib.File file, bool make_root);
         public signal void size_change ();
 
-        public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
+        public Slot (GLib.File _location, View.ViewContainer _ctab, ViewMode _mode) {
             ctab = _ctab;
             mode = _mode;
             is_active = false;
@@ -152,7 +152,7 @@ namespace Marlin.View {
             directory_loaded (dir);
 
             /*  Column View requires slots to determine their own width (other views' width determined by Window */
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode == ViewMode.MILLER_COLUMNS) {
 
                 if (dir.is_empty ()) { /* No files in the file cache */
                     Pango.Rectangle extents;
@@ -231,7 +231,7 @@ namespace Marlin.View {
 
         private void on_dir_view_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
+                if (mode == ViewMode.MILLER_COLUMNS) {
                     miller_slot_request (loc, make_root); /* signal to parent MillerView */
                 } else {
                     user_path_change_request (loc, make_root); /* Handle ourselves */
@@ -276,15 +276,15 @@ namespace Marlin.View {
             assert (dir_view == null);
 
             switch (mode) {
-                case Marlin.ViewMode.MILLER_COLUMNS:
+                case ViewMode.MILLER_COLUMNS:
                     dir_view = new FM.ColumnView (this);
                     break;
 
-                case Marlin.ViewMode.LIST:;
+                case ViewMode.LIST:;
                     dir_view = new FM.ListView (this);
                     break;
 
-                case Marlin.ViewMode.ICON:
+                case ViewMode.ICON:
                     dir_view = new FM.IconView (this);
                     break;
 
@@ -293,7 +293,7 @@ namespace Marlin.View {
             }
 
             /* Miller View creates its own overlay and handles packing of the directory view */
-            if (mode != Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode != ViewMode.MILLER_COLUMNS) {
                 add_overlay (dir_view);
             }
         }
