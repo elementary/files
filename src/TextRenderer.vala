@@ -33,7 +33,7 @@ namespace Marlin {
             }
 
             set {
-                var icon_size = Marlin.zoom_level_to_icon_size (value);
+                var icon_size = value.to_icon_size ();
                 border_radius = 5 + icon_size / 40;
                 double_border_radius = 2 * border_radius;
 

@@ -40,7 +40,7 @@ namespace Marlin {
             }
             set {
                 _zoom_level = value;
-                icon_size = Marlin.zoom_level_to_icon_size (_zoom_level);
+                icon_size = value.to_icon_size ();
                 h_overlap = int.min (icon_size / 8, Marlin.IconSize.EMBLEM / 2);
                 v_overlap = int.min (icon_size / 8, Marlin.IconSize.EMBLEM);
             }
