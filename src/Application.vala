@@ -31,8 +31,8 @@ namespace Marlin {
 public class Marlin.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
-    private Marlin.Progress.UIHandler progress_handler;
-    private Marlin.ClipboardManager clipboard;
+    private Progress.UIHandler progress_handler;
+    private ClipboardManager clipboard;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -61,7 +61,7 @@ public class Marlin.Application : Gtk.Application {
         gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Needed by Glib.Application */
-        this.application_id = Marlin.APP_ID; //Ensures an unique instance.
+        this.application_id = APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
     }
 
@@ -78,13 +78,13 @@ public class Marlin.Application : Gtk.Application {
             Marlin.IconInfo.clear_caches ();
         });
 
-        progress_handler = new Marlin.Progress.UIHandler ();
+        progress_handler = new Progress.UIHandler ();
 
-        this.clipboard = Marlin.ClipboardManager.get_for_display ();
+        this.clipboard = ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
         /* Global static variable "plugins" declared in PluginManager.vala */
-        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
+        plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -112,7 +112,7 @@ public class Marlin.Application : Gtk.Application {
         });
     }
 
-    public unowned Marlin.ClipboardManager get_clipboard_manager () {
+    public unowned ClipboardManager get_clipboard_manager () {
         return this.clipboard;
     }
 
@@ -227,8 +227,8 @@ public class Marlin.Application : Gtk.Application {
                 /* Open window with tabs at each requested location. */
                 create_window_with_tabs (files);
             } else {
-                var win = (Marlin.View.Window)(get_active_window ());
-                win.open_tabs (files, Marlin.ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
+                var win = (View.Window)(get_active_window ());
+                win.open_tabs (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
             }
         } else if (create_new_window || window_count == 0) {
             create_window_with_tabs ();
@@ -258,7 +258,7 @@ public class Marlin.Application : Gtk.Application {
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((Marlin.View.Window)window).quit ();
+            ((View.Window)window).quit ();
         });
 
         base.quit ();
@@ -267,14 +267,14 @@ public class Marlin.Application : Gtk.Application {
     public void folder_deleted (GLib.File file) {
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((Marlin.View.Window)window).folder_deleted (file);
+            ((View.Window)window).folder_deleted (file);
         });
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Notify each window */
         foreach (var window in this.get_windows ()) {
-            ((Marlin.View.Window)window).mount_removed (mount);
+            ((View.Window)window).mount_removed (mount);
         }
     }
 
@@ -297,21 +297,21 @@ public class Marlin.Application : Gtk.Application {
                                         prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
-    public Marlin.View.Window? create_window (File? location = null,
-                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+    public View.Window? create_window (File? location = null,
+                                       ViewMode viewmode = ViewMode.PREFERRED) {
 
         return create_window_with_tabs ({location}, viewmode);
     }
 
     /* All window creation should be done via this function */
-    private Marlin.View.Window? create_window_with_tabs (File[] locations = {},
-                                                         Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+    private View.Window? create_window_with_tabs (File[] locations = {},
+                                                  ViewMode viewmode = ViewMode.PREFERRED) {
 
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
             return null;
         }
 
-        var win = new Marlin.View.Window (this);
+        var win = new View.Window (this);
         add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
         win.open_tabs (locations, viewmode);

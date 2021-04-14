@@ -16,13 +16,15 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
+using Marlin;
+
 namespace FM {
     /* Implement common features of ColumnView and ListView */
     public abstract class AbstractTreeView : AbstractDirectoryView {
         protected FM.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
-        protected AbstractTreeView (Marlin.View.Slot _slot) {
+        protected AbstractTreeView (View.Slot _slot) {
             base (_slot);
         }
 
@@ -37,8 +39,8 @@ namespace FM {
                 resizable = true
             };
 
-            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
-            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.LIST);
+            name_renderer = new Marlin.TextRenderer (ViewMode.LIST);
+            icon_renderer = new Marlin.IconRenderer (ViewMode.LIST);
 
             set_up_name_renderer ();
             set_up_icon_renderer ();
@@ -72,7 +74,7 @@ namespace FM {
         protected override void set_up_name_renderer () {
             base.set_up_name_renderer ();
             name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", Marlin.ZoomLevel.NORMAL);
+            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
             name_renderer.@set ("ellipsize-set", true);
             name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
             name_renderer.xalign = 0.0f;
@@ -352,8 +354,8 @@ namespace FM {
     }
 
     protected class TreeView : Gtk.TreeView {
-        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.INVALID;
-        public Marlin.ZoomLevel zoom_level {
+        private ZoomLevel _zoom_level = ZoomLevel.INVALID;
+        public ZoomLevel zoom_level {
             set {
                 if (_zoom_level == value || !get_realized ()) {
                     return;

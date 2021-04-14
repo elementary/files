@@ -58,7 +58,7 @@ namespace Marlin.View {
         public Chrome.ViewSwitcher view_switcher;
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
-        public Marlin.SidebarInterface sidebar;
+        public SidebarInterface sidebar;
         public ViewContainer? current_tab = null;
 
         private bool tabs_restored = false;
@@ -76,7 +76,7 @@ namespace Marlin.View {
                 height_request: 300,
                 icon_name: "system-file-manager",
                 screen: myscreen,
-                title: _(Marlin.APP_TITLE),
+                title: _(APP_TITLE),
                 width_request: 500,
                 window_number: application.window_count
             );
@@ -95,7 +95,7 @@ namespace Marlin.View {
 
             undo_actions_set_insensitive ();
 
-            undo_manager = Marlin.UndoManager.instance ();
+            undo_manager = UndoManager.instance ();
 
             build_window ();
 
@@ -376,7 +376,7 @@ namespace Marlin.View {
         }
 
         public void open_tabs (File[]? files = null,
-                               Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                               ViewMode mode = ViewMode.PREFERRED,
                                bool ignore_duplicate = false) {
 
             if (files == null || files.length == 0 || files[0] == null) {
@@ -401,7 +401,7 @@ namespace Marlin.View {
             }
         }
 
-        private void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        private void add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
             var file = get_file_from_uri (uri);
             if (file != null) {
                 add_tab (file, mode);
@@ -411,7 +411,7 @@ namespace Marlin.View {
         }
 
         private void add_tab (File _location = File.new_for_commandline_arg (Environment.get_home_dir ()),
-                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                             ViewMode mode = ViewMode.PREFERRED,
                              bool ignore_duplicate = false) {
 
             File location;
@@ -610,7 +610,7 @@ namespace Marlin.View {
         }
 
         private void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
-                                 Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+                                 ViewMode mode = ViewMode.PREFERRED) {
 
             marlin_app.create_window (location, real_mode (mode));
         }
@@ -683,7 +683,7 @@ namespace Marlin.View {
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-            Marlin.ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
+            ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
         }
@@ -877,21 +877,21 @@ namespace Marlin.View {
             return (GLib.SimpleAction?)(lookup_action (action_name));
         }
 
-        private Marlin.ViewMode real_mode (Marlin.ViewMode mode) {
+        private ViewMode real_mode (ViewMode mode) {
             switch (mode) {
-                case Marlin.ViewMode.ICON:
-                case Marlin.ViewMode.LIST:
-                case Marlin.ViewMode.MILLER_COLUMNS:
+                case ViewMode.ICON:
+                case ViewMode.LIST:
+                case ViewMode.MILLER_COLUMNS:
                     return mode;
 
-                case Marlin.ViewMode.CURRENT:
+                case ViewMode.CURRENT:
                     return current_tab.view_mode;
 
                 default:
                     break;
             }
 
-            return (Marlin.ViewMode)(Marlin.app_settings.get_enum ("default-viewmode"));
+            return (ViewMode)(Marlin.app_settings.get_enum ("default-viewmode"));
         }
 
         public void quit () {
@@ -906,7 +906,7 @@ namespace Marlin.View {
 
             foreach (var tab in tabs.tabs) {
                 current_tab = null;
-                ((Marlin.View.ViewContainer)(tab.page)).close ();
+                ((View.ViewContainer)(tab.page)).close ();
             }
 
             this.destroy ();
@@ -975,7 +975,7 @@ namespace Marlin.View {
             GLib.Variant tab_info_array = Marlin.app_settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
 
-            Marlin.ViewMode mode = Marlin.ViewMode.INVALID;
+            ViewMode mode = ViewMode.INVALID;
             string? root_uri = null;
             string? tip_uri = null;
 
@@ -985,7 +985,7 @@ namespace Marlin.View {
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
 
-                if (mode < 0 || mode >= Marlin.ViewMode.INVALID ||
+                if (mode < 0 || mode >= ViewMode.INVALID ||
                     root_uri == null || root_uri == "" || tip_uri == null) {
 
                     continue;
@@ -1000,11 +1000,11 @@ namespace Marlin.View {
                 restoring_tabs++;
                 add_tab_by_uri (root_uri, mode);
 
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
+                if (mode == ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                     expand_miller_view (tip_uri, root_uri);
                 }
 
-                mode = Marlin.ViewMode.INVALID;
+                mode = ViewMode.INVALID;
                 root_uri = null;
                 tip_uri = null;
 
@@ -1106,7 +1106,7 @@ namespace Marlin.View {
             GLib.File root = mount.get_root ();
 
             foreach (var page in tabs.get_children ()) {
-                var view_container = (Marlin.View.ViewContainer)page ;
+                var view_container = (View.ViewContainer)page ;
                 GLib.File location = view_container.location;
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {

@@ -104,7 +104,7 @@ public class Marlin.Progress.UIHandler : Object {
     private void add_to_window (PF.Progress.Info info) {
         ensure_window ();
 
-        var progress_widget = new Marlin.Progress.InfoWidget (info);
+        var progress_widget = new Progress.InfoWidget (info);
         window_vbox.pack_start (progress_widget, false, false, 6);
 
         progress_widget.cancelled.connect ((info) => {
@@ -186,7 +186,7 @@ public class Marlin.Progress.UIHandler : Object {
 
         var complete_notification = new GLib.Notification (_("File Operations"));
         complete_notification.set_body (result);
-        complete_notification.set_icon (new GLib.ThemedIcon (Marlin.ICON_APP_LOGO));
+        complete_notification.set_icon (new GLib.ThemedIcon (ICON_APP_LOGO));
         application.send_notification ("Pantheon Files Operation", complete_notification);
     }
 

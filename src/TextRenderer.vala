@@ -26,8 +26,8 @@ namespace Marlin {
         private Gdk.RGBA previous_background_rgba;
         private Gdk.RGBA previous_contrasting_rgba;
 
-        private Marlin.ZoomLevel _zoom_level;
-        public Marlin.ZoomLevel zoom_level {
+        private ZoomLevel _zoom_level;
+        public ZoomLevel zoom_level {
             get {
                 return _zoom_level;
             }
@@ -68,7 +68,7 @@ namespace Marlin {
 
         Pango.Layout layout;
         Gtk.Widget widget;
-        Marlin.AbstractEditableLabel entry;
+        AbstractEditableLabel entry;
 
         construct {
             this.mode = Gtk.CellRendererMode.EDITABLE;
@@ -77,12 +77,12 @@ namespace Marlin {
             previous_contrasting_rgba = { 0, 0, 0, 0 };
         }
 
-        public TextRenderer (Marlin.ViewMode viewmode) {
-            if (viewmode == Marlin.ViewMode.ICON) {
-                entry = new Marlin.MultiLineEditableLabel ();
+        public TextRenderer (ViewMode viewmode) {
+            if (viewmode == ViewMode.ICON) {
+                entry = new MultiLineEditableLabel ();
                 is_list_view = false;
             } else {
-                entry = new Marlin.SingleLineEditableLabel ();
+                entry = new SingleLineEditableLabel ();
                 is_list_view = true;
             }
 

@@ -23,8 +23,6 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1335 USA.
 ***/
 
-using Marlin;
-
 namespace Marlin.View {
     public class ViewContainer : Gtk.Bin {
         private static int container_id;
@@ -40,8 +38,8 @@ namespace Marlin.View {
         public int id {get; construct;}
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
-        private Marlin.View.Window? _window = null;
-        public Marlin.View.Window window {
+        private View.Window? _window = null;
+        public View.Window window {
             get {
                 return _window;
             }
@@ -57,7 +55,7 @@ namespace Marlin.View {
         }
 
         public GOF.AbstractSlot? view = null;
-        public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
+        public ViewMode view_mode = ViewMode.INVALID;
 
         public GLib.File? location {
             get {
@@ -108,7 +106,7 @@ namespace Marlin.View {
 
         public bool is_loading {get; private set; default = false;}
 
-        private Marlin.View.OverlayBar overlay_statusbar;
+        private View.OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -122,7 +120,7 @@ namespace Marlin.View {
         }
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Marlin.View.Window win) {
+        public ViewContainer (View.Window win) {
             window = win;
             browser = new Browser ();
 
@@ -243,7 +241,7 @@ namespace Marlin.View {
         }
 
         // the locations in @to_select must be children of @loc
-        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[]? to_select = null) {
+        public void add_view (ViewMode mode, GLib.File loc, File[]? to_select = null) {
             assert (view == null);
             view_mode = mode;
 
@@ -254,13 +252,13 @@ namespace Marlin.View {
                 }
             }
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode == ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this, mode);
             } else {
                 this.view = new Slot (loc, this, mode);
             }
 
-            overlay_statusbar = new Marlin.View.OverlayBar (view.overlay);
+            overlay_statusbar = new View.OverlayBar (view.overlay);
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
@@ -274,7 +272,7 @@ namespace Marlin.View {
         /** By default changes the view mode to @mode at the same location.
             @loc - new location to show.
         **/
-        public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
+        public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
             assert (aslot != null);
             if (loc == null) {
@@ -397,32 +395,32 @@ namespace Marlin.View {
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (dir.is_recent && !GOF.Preferences.get_default ().remember_history) {
-                    content = new Marlin.View.PrivacyModeOn (this);
+                    content = new View.PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {
-                        content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
-                                                           _("You cannot create a folder here."));
+                        content = new View.Welcome (_("This Folder Does Not Exist"),
+                                                    _("You cannot create a folder here."));
                     }
                 } else if (!dir.network_available) {
-                    content = new Marlin.View.Welcome (_("The network is unavailable"),
-                                                       _("A working network is needed to reach this folder") + "\n\n" +
-                                                       dir.last_error_message);
+                    content = new View.Welcome (_("The network is unavailable"),
+                                                _("A working network is needed to reach this folder") + "\n\n" +
+                                                dir.last_error_message);
                 } else if (dir.permission_denied) {
-                    content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
-                                                       _("You don't have permission to view this folder."));
+                    content = new View.Welcome (_("This Folder Does Not Belong to You"),
+                                                _("You don't have permission to view this folder."));
                 } else if (!dir.file.is_connected) {
-                    content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
-                                                       _("Could not connect to the server for this folder.") + "\n\n" +
-                                                       dir.last_error_message);
+                    content = new View.Welcome (_("Unable to Mount Folder"),
+                                                _("Could not connect to the server for this folder.") + "\n\n" +
+                                                dir.last_error_message);
                 } else if (slot.directory.state == GOF.Directory.Async.State.TIMED_OUT) {
-                    content = new Marlin.View.Welcome (_("Unable to Display Folder Contents"),
-                                                       _("The operation timed out.") + "\n\n" + dir.last_error_message);
+                    content = new View.Welcome (_("Unable to Display Folder Contents"),
+                                                _("The operation timed out.") + "\n\n" + dir.last_error_message);
                 } else {
-                    content = new Marlin.View.Welcome (_("Unable to Show Folder"),
-                                                       _("The server for this folder could not be located.") + "\n\n" +
-                                                       dir.last_error_message);
+                    content = new View.Welcome (_("Unable to Show Folder"),
+                                                _("The server for this folder could not be located.") + "\n\n" +
+                                                dir.last_error_message);
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
@@ -432,8 +430,8 @@ namespace Marlin.View {
                 if (dir.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (dir.selected_file);
                 } else {
-                    content = new Marlin.View.Welcome (_("File not Found"),
-                                                       _("The file selected no longer exists."));
+                    content = new View.Welcome (_("File not Found"),
+                                                _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
             } else {
