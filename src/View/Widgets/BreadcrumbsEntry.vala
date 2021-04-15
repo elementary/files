@@ -25,7 +25,7 @@ namespace Files.View.Chrome {
         Gtk.Menu menu;
 
         /** Completion support **/
-        Files.Directory.Async? current_completion_dir = null;
+        Directory? current_completion_dir = null;
         string completion_text = "";
         bool autocompleted = false;
         bool multiple_completions = false;
@@ -170,7 +170,7 @@ namespace Files.View.Chrome {
             }
 
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
-                current_completion_dir = Files.Directory.Async.from_gfile (file);
+                current_completion_dir = Directory.from_gfile (file);
                 current_completion_dir.init (on_file_loaded);
             } else if (current_completion_dir != null && current_completion_dir.can_load) {
                 clear_completion ();
@@ -426,9 +426,9 @@ namespace Files.View.Chrome {
             menu.deactivate.connect (() => {reset_elements_states ();});
 
             build_base_menu (menu, path);
-            Files.Directory.Async? files_menu_dir = null;
+            Directory? files_menu_dir = null;
             if (root != null) {
-                files_menu_dir = Files.Directory.Async.from_gfile (root);
+                files_menu_dir = Directory.from_gfile (root);
                 files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
                     append_subdirectories (menu, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
@@ -505,7 +505,7 @@ namespace Files.View.Chrome {
             submenu_open_with.append (open_with_other_item);
         }
 
-        private void append_subdirectories (Gtk.Menu menu, Files.Directory.Async dir) {
+        private void append_subdirectories (Gtk.Menu menu, Directory dir) {
             /* Append list of directories at the same level */
             if (dir.can_load) {
                 unowned List<unowned Files.File>? sorted_dirs = dir.get_sorted_dirs ();

@@ -36,7 +36,7 @@ namespace Files.View {
         public bool is_active {get; protected set;}
         public int displayed_files_count {
             get {
-                if (directory != null && directory.state == Files.Directory.Async.State.LOADED) {
+                if (directory != null && directory.state == Directory.State.LOADED) {
                     return (int)(directory.displayed_files_count);
                 }
 
@@ -66,7 +66,7 @@ namespace Files.View {
         }
 
         public signal void frozen_changed (bool freeze);
-        public signal void folder_deleted (Files.File file, Files.Directory.Async parent);
+        public signal void folder_deleted (Files.File file, Directory parent);
 
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
@@ -148,7 +148,7 @@ namespace Files.View {
             directory.need_reload.disconnect (on_directory_need_reload);
         }
 
-        private void on_directory_done_loading (Files.Directory.Async dir) {
+        private void on_directory_done_loading (Directory dir) {
             directory_loaded (dir);
 
             /*  Column View requires slots to determine their own width (other views' width determined by Window */
@@ -183,7 +183,7 @@ namespace Files.View {
             is_frozen = false;
         }
 
-        private void on_directory_need_reload (Files.Directory.Async dir, bool original_request) {
+        private void on_directory_need_reload (Directory dir, bool original_request) {
             if (!is_frozen) {
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
@@ -223,7 +223,7 @@ namespace Files.View {
                 disconnect_dir_signals ();
             }
 
-            directory = Files.Directory.Async.from_gfile (loc);
+            directory = Directory.from_gfile (loc);
             assert (directory != null);
 
             connect_dir_signals ();

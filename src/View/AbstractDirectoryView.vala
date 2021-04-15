@@ -610,7 +610,7 @@ namespace Files {
 
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
-        protected void connect_directory_handlers (Files.Directory.Async dir) {
+        protected void connect_directory_handlers (Directory dir) {
             dir.file_added.connect (on_directory_file_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
@@ -618,17 +618,17 @@ namespace Files {
             connect_directory_loading_handlers (dir);
         }
 
-        protected void connect_directory_loading_handlers (Files.Directory.Async dir) {
+        protected void connect_directory_loading_handlers (Directory dir) {
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
-        protected void disconnect_directory_loading_handlers (Files.Directory.Async dir) {
+        protected void disconnect_directory_loading_handlers (Directory dir) {
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
-        protected void disconnect_directory_handlers (Files.Directory.Async dir) {
+        protected void disconnect_directory_handlers (Directory dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
             if (dir.is_loading ()) {
@@ -642,7 +642,7 @@ namespace Files {
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
-        public void change_directory (Files.Directory.Async old_dir, Files.Directory.Async new_dir) {
+        public void change_directory (Directory old_dir, Directory new_dir) {
             var style_context = get_style_context ();
             if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
                 style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -655,7 +655,7 @@ namespace Files {
             connect_directory_handlers (new_dir);
         }
 
-        public void prepare_reload (Files.Directory.Async dir) {
+        public void prepare_reload (Directory dir) {
             cancel ();
             clear ();
             connect_directory_loading_handlers (dir);
@@ -913,7 +913,7 @@ namespace Files {
             }
         }
 
-        private void add_file (Files.File file, Files.Directory.Async dir, bool select = true) {
+        private void add_file (Files.File file, Directory dir, bool select = true) {
             model.add_file (file, dir);
 
             if (select) { /* This true once view finished loading */
@@ -1273,7 +1273,7 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_added (Files.Directory.Async dir, Files.File? file) {
+        private void on_directory_file_added (Directory dir, Files.File? file) {
             if (file != null) {
                 add_file (file, dir, true); /* Always select files added to view after initial load */
                 handle_free_space_change ();
@@ -1282,12 +1282,12 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_loaded (Files.Directory.Async dir, Files.File file) {
+        private void on_directory_file_loaded (Directory dir, Files.File file) {
             add_file (file, dir, false); /* Do not select files added during initial load */
             /* no freespace change signal required */
         }
 
-        private void on_directory_file_changed (Files.Directory.Async dir, Files.File file) {
+        private void on_directory_file_changed (Directory dir, Files.File file) {
             if (file.location.equal (dir.file.location)) {
                 /* The slot directory has changed - it can only be the properties */
                 is_writable = slot.directory.file.is_writable ();
@@ -1309,12 +1309,12 @@ namespace Files {
             draw_when_idle ();
         }
 
-        private void on_directory_file_icon_changed (Files.Directory.Async dir, Files.File file) {
+        private void on_directory_file_icon_changed (Directory dir, Files.File file) {
             model.file_changed (file, dir);
             draw_when_idle ();
         }
 
-        private void on_directory_file_deleted (Files.Directory.Async dir, Files.File file) {
+        private void on_directory_file_deleted (Directory dir, Files.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
@@ -1332,9 +1332,9 @@ namespace Files {
 
             if (file.is_folder ()) {
                 /* Check whether the deleted file is the directory */
-                var file_dir = Files.Directory.Async.cache_lookup (file.location);
+                var file_dir = Directory.cache_lookup (file.location);
                 if (file_dir != null) {
-                    Files.Directory.Async.purge_dir_from_cache (file_dir);
+                    Directory.purge_dir_from_cache (file_dir);
                     slot.folder_deleted (file, file_dir);
                 }
             }
@@ -1342,7 +1342,7 @@ namespace Files {
             handle_free_space_change ();
         }
 
-        private void on_directory_done_loading (Files.Directory.Async dir) {
+        private void on_directory_done_loading (Directory dir) {
             /* Should only be called on directory creation or reload */
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
@@ -1417,7 +1417,7 @@ namespace Files {
             model.set_should_sort_directories_first (sort_directories_first);
         }
 
-        private void directory_hidden_changed (Files.Directory.Async dir, bool show) {
+        private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             dir.load_hiddens ();

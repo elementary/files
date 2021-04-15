@@ -20,10 +20,10 @@
 
 namespace Files.View {
     public class DirectoryNotFound : Files.View.Welcome {
-        public Files.Directory.Async dir_saved;
+        public Directory dir_saved;
         public ViewContainer ctab;
 
-        public DirectoryNotFound (Files.Directory.Async dir, ViewContainer tab) {
+        public DirectoryNotFound (Directory dir, ViewContainer tab) {
             base (_("This Folder Does Not Exist"),
                   _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
 
