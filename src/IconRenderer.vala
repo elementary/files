@@ -26,27 +26,27 @@
 
 ***/
 
-namespace Marlin {
+namespace Files {
 
     public class IconRenderer : Gtk.CellRenderer {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
-        public GOF.File? drop_file {get; set;}
+        public Files.File? drop_file {get; set;}
 
-        public Marlin.ZoomLevel zoom_level {
+        public ZoomLevel zoom_level {
             get {
                 return _zoom_level;
             }
             set {
                 _zoom_level = value;
-                icon_size = Marlin.zoom_level_to_icon_size (_zoom_level);
-                h_overlap = int.min (icon_size / 8, Marlin.IconSize.EMBLEM / 2);
-                v_overlap = int.min (icon_size / 8, Marlin.IconSize.EMBLEM);
+                icon_size = value.to_icon_size ();
+                h_overlap = int.min (icon_size / 8, Files.IconSize.EMBLEM / 2);
+                v_overlap = int.min (icon_size / 8, Files.IconSize.EMBLEM);
             }
         }
 
-        public GOF.File? file {
+        public Files.File? file {
             get {
                 return _file;
             }
@@ -60,9 +60,9 @@ namespace Marlin {
 
         int h_overlap;
         int v_overlap;
-        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
-        private GOF.File? _file;
-        private Marlin.IconSize icon_size;
+        private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
+        private Files.File? _file;
+        private Files.IconSize icon_size;
         private int icon_scale = 1;
         private unowned Gdk.Pixbuf? pixbuf {
             get {
@@ -73,13 +73,13 @@ namespace Marlin {
         private ClipboardManager clipboard;
 
         construct {
-            clipboard = Marlin.ClipboardManager.get_for_display ();
-            hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
-            hover_helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
+            clipboard = ClipboardManager.get_for_display ();
+            hover_rect = {0, 0, (int) Files.IconSize.NORMAL, (int) Files.IconSize.NORMAL};
+            hover_helper_rect = {0, 0, (int) Files.IconSize.EMBLEM, (int) Files.IconSize.EMBLEM};
         }
 
-        public IconRenderer (Marlin.ViewMode view_mode) {
-            xpad = view_mode == Marlin.ViewMode.ICON ? 0 : Marlin.IconSize.EMBLEM;
+        public IconRenderer (ViewMode view_mode) {
+            xpad = view_mode == ViewMode.ICON ? 0 : Files.IconSize.EMBLEM;
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -137,7 +137,7 @@ namespace Marlin {
 
             if (special_icon_name != null) {
                 special_icon_name = special_icon_name + suffix;
-                var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
+                var nicon = Files.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
                 if (nicon != null) {
                     pb = nicon.get_pixbuf_nodefault ();
                 } else {
@@ -214,13 +214,13 @@ namespace Marlin {
 
                 Gdk.Rectangle helper_rect = {0, 0, 1, 1};
                 if (special_icon_name != null) {
-                    var helper_size = (int) (zoom_level <= Marlin.ZoomLevel.NORMAL ?
-                                             Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM);
+                    var helper_size = (int) (zoom_level <= ZoomLevel.NORMAL ?
+                                             Files.IconSize.EMBLEM : Files.IconSize.LARGE_EMBLEM);
 
                     helper_rect.width = helper_size;
                     helper_rect.height = helper_size;
 
-                    var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
+                    var nicon = Files.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
                     Gdk.Pixbuf? pix = null;
 
                     if (nicon != null) {
@@ -242,7 +242,7 @@ namespace Marlin {
                 }
             }
 
-            int emblem_size = (int) Marlin.IconSize.EMBLEM;
+            int emblem_size = (int) Files.IconSize.EMBLEM;
             int pos = 0;
             var emblem_area = Gdk.Rectangle ();
 
@@ -252,7 +252,7 @@ namespace Marlin {
                 }
 
                 Gdk.Pixbuf? pix = null;
-                var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+                var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
 
                 if (nicon == null) {
                     continue;

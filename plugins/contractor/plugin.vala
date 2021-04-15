@@ -21,11 +21,11 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public class Marlin.Plugins.ContractMenuItem : Gtk.MenuItem {
+public class Files.Plugins.ContractMenuItem : Gtk.MenuItem {
     private Granite.Services.Contract contract;
-    private File[] files;
+    private GLib.File[] files;
 
-    public ContractMenuItem (Granite.Services.Contract contract, File[] files) {
+    public ContractMenuItem (Granite.Services.Contract contract, GLib.File[] files) {
         this.contract = contract;
         this.files = files;
 
@@ -41,17 +41,17 @@ public class Marlin.Plugins.ContractMenuItem : Gtk.MenuItem {
     }
 }
 
-public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
+public class Files.Plugins.Contractor : Files.Plugins.Base {
     private Gtk.Menu menu;
-    private GOF.File current_directory = null;
+    private Files.File current_directory = null;
 
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget widget, List<GOF.File> gof_files) {
+    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files) {
         menu = widget as Gtk.Menu;
 
-        File[] files = null;
+        GLib.File[] files = null;
         Gee.List<Granite.Services.Contract> contracts = null;
 
         try {
@@ -60,7 +60,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
                     return;
                 }
 
-                files = new File[0];
+                files = new GLib.File[0];
                 files += current_directory.location;
 
                 string? mimetype = current_directory.get_ftype ();
@@ -102,7 +102,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         }
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
         current_directory = directory;
     }
 
@@ -112,10 +112,10 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         plugins.menuitem_references.add (menu_item);
     }
 
-    private static string[] get_mimetypes (List<GOF.File> files) {
+    private static string[] get_mimetypes (List<Files.File> files) {
         string[] mimetypes = new string[0];
 
-        foreach (unowned GOF.File file in files) {
+        foreach (unowned Files.File file in files) {
             var ftype = file.get_ftype ();
 
             if (ftype != null) {
@@ -126,10 +126,10 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         return mimetypes;
     }
 
-    private static File[] get_file_array (List<GOF.File> files) {
-        File[] file_array = new File[0];
+    private static GLib.File[] get_file_array (List<Files.File> files) {
+        GLib.File[] file_array = new GLib.File[0];
 
-        foreach (unowned GOF.File file in files) {
+        foreach (unowned Files.File file in files) {
             if (file.location != null) {
                 if (file.location.get_uri_scheme () == "recent") {
                     file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
@@ -143,6 +143,6 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     }
 }
 
-public Marlin.Plugins.Base module_init () {
-    return new Marlin.Plugins.Contractor ();
+public Files.Plugins.Base module_init () {
+    return new Files.Plugins.Contractor ();
 }

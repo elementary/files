@@ -19,14 +19,18 @@
             Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-public class GOF.Directory.Async : Object {
-    private static HashTable<GLib.File, unowned GOF.Directory.Async> directory_cache;
+namespace Files.Directory {
+
+public class Async : Object {
+    private static HashTable<GLib.File, unowned Files.Directory.Async> directory_cache;
+    private static Mutex dir_cache_lock;
 
     static construct {
-        directory_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        directory_cache = new HashTable<GLib.File, unowned Files.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        dir_cache_lock = GLib.Mutex ();
     }
 
-    public delegate void FileLoadedFunc (GOF.File file);
+    public delegate void FileLoadedFunc (Files.File file);
 
     private uint load_timeout_id = 0;
     private uint mount_timeout_id = 0;
@@ -38,7 +42,7 @@ public class GOF.Directory.Async : Object {
     public GLib.File creation_key {get; construct;}
     public GLib.File location {get; private set;}
     public GLib.File? selected_file {get; private set;}
-    public GOF.File file {get; private set;}
+    public Files.File file {get; private set;}
     public int icon_size = 32;
 
     public enum State {
@@ -49,7 +53,7 @@ public class GOF.Directory.Async : Object {
     }
     public State state {get; private set;}
 
-    private HashTable<GLib.File,GOF.File> file_hash;
+    private HashTable<GLib.File,Files.File> file_hash;
     public uint displayed_files_count {get; private set;}
 
     public bool permission_denied = false;
@@ -57,13 +61,13 @@ public class GOF.Directory.Async : Object {
 
     private Cancellable cancellable;
     private FileMonitor? monitor = null;
-    private List<unowned GOF.File>? sorted_dirs = null;
+    private List<unowned Files.File>? sorted_dirs = null;
 
-    public signal void file_loaded (GOF.File file);
-    public signal void file_added (GOF.File? file); /* null used to signal failed operation */
-    public signal void file_changed (GOF.File file);
-    public signal void file_deleted (GOF.File file);
-    public signal void icon_changed (GOF.File file); /* Called directly by GOF.File - handled by AbstractDirectoryView
+    public signal void file_loaded (Files.File file);
+    public signal void file_added (Files.File? file); /* null used to signal failed operation */
+    public signal void file_changed (Files.File file);
+    public signal void file_deleted (Files.File file);
+    public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
                                                         Gets emitted for any kind of file operation */
 
     public signal void done_loading ();
@@ -79,7 +83,7 @@ public class GOF.Directory.Async : Object {
             if (scheme == "network" || scheme == "computer" || scheme == "smb") {
                 return "*";
             } else {
-                return GOF.File.GIO_DEFAULT_ATTRIBUTES;
+                return Files.File.GIO_DEFAULT_ATTRIBUTES;
             }
         }
     }
@@ -113,7 +117,7 @@ public class GOF.Directory.Async : Object {
         );
 
         location = _file;
-        file = GOF.File.get (location);
+        file = Files.File.get (location);
         selected_file = null;
 
         cancellable = new Cancellable ();
@@ -138,10 +142,10 @@ public class GOF.Directory.Async : Object {
          */
         can_stream_files = !("ftp sftp".contains (scheme));
 
-        file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+        file_hash = new HashTable<GLib.File, Files.File> (GLib.File.hash, GLib.File.equal);
 
         if (is_recent) {
-           GOF.Preferences.get_default ().notify["remember-history"].connect (() => {
+           Files.Preferences.get_default ().notify["remember-history"].connect (() => {
                 need_reload (true);
             });
         }
@@ -190,7 +194,7 @@ public class GOF.Directory.Async : Object {
      */
     private async void prepare_directory (FileLoadedFunc? file_loaded_func) {
         debug ("Preparing directory for loading");
-        /* Force info to be refreshed - the GOF.File may have been created already by another part of the program
+        /* Force info to be refreshed - the Files.File may have been created already by another part of the program
          * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
          */
         file.info = null;
@@ -201,7 +205,7 @@ public class GOF.Directory.Async : Object {
                 critical ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
-                    file = GOF.File.get (parent);
+                    file = Files.File.get (parent);
                     selected_file = location;
                     location = parent;
                     success = yield get_file_info ();
@@ -419,7 +423,7 @@ public class GOF.Directory.Async : Object {
         can_load = ready;
 
         if (is_recent) {
-            if (!GOF.Preferences.get_default ().remember_history) {
+            if (!Files.Preferences.get_default ().remember_history) {
                 state = State.NOT_LOADED;
                 can_load = false;
             }
@@ -456,7 +460,7 @@ public class GOF.Directory.Async : Object {
         /* The following can run on reloading */
         if (file.mount != null) {
             debug ("Directory has mount point");
-            var trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
+            var trash_dirs = Files.FileOperations.get_trash_dirs_for_mount (file.mount);
             has_trash_dirs = (trash_dirs != null);
         } else {
             has_trash_dirs = is_local;
@@ -495,7 +499,7 @@ public class GOF.Directory.Async : Object {
             var mounts = VolumeMonitor.get ().get_mounts ();
             if (mounts != null) {
                 foreach (unowned var m in mounts) {
-                    to_confirm |= (m.can_eject () && Marlin.FileOperations.has_trash_files (m));
+                    to_confirm |= (m.can_eject () && Files.FileOperations.has_trash_files (m));
                 }
             }
         }
@@ -591,7 +595,7 @@ public class GOF.Directory.Async : Object {
         state = State.LOADING;
         displayed_files_count = 0;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-        foreach (unowned GOF.File gof in file_hash.get_values ()) {
+        foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null) {
                 after_load_file (gof, show_hidden, file_loaded_func);
             }
@@ -636,7 +640,7 @@ public class GOF.Directory.Async : Object {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
 
-            GOF.File? gof;
+            Files.File? gof;
             GLib.File loc;
             while (!cancellable.is_cancelled ()) {
                 try {
@@ -660,10 +664,10 @@ public class GOF.Directory.Async : Object {
                         foreach (unowned var file_info in files) {
                             loc = location.get_child (file_info.get_name ());
                             assert (loc != null);
-                            gof = GOF.File.cache_lookup (loc);
+                            gof = Files.File.cache_lookup (loc);
 
                             if (gof == null) {
-                                gof = new GOF.File (loc, location); /*does not add to GOF file cache */
+                                gof = new Files.File (loc, location); /*does not add to GOF file cache */
                             }
 
                             gof.info = file_info;
@@ -704,7 +708,7 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    private void after_load_file (GOF.File gof, bool show_hidden, FileLoadedFunc? file_loaded_func) {
+    private void after_load_file (Files.File gof, bool show_hidden, FileLoadedFunc? file_loaded_func) {
         if (!gof.is_hidden || show_hidden) {
             displayed_files_count++;
 
@@ -763,7 +767,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public void update_files () {
-        foreach (unowned GOF.File gof in file_hash.get_values ()) {
+        foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
@@ -773,7 +777,7 @@ public class GOF.Directory.Async : Object {
     }
 
     public void update_desktop_files () {
-        foreach (unowned GOF.File gof in file_hash.get_values ()) {
+        foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
                 gof.is_desktop) {
@@ -783,30 +787,30 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    public GOF.File? file_hash_lookup_location (GLib.File? location) {
+    public Files.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
-            GOF.File? result = file_hash.lookup (location);
+            Files.File? result = file_hash.lookup (location);
             /* Although file_hash.lookup returns an unowned value, Vala will add a reference
-             * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */
+             * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
             return result;
         } else {
             return null;
         }
     }
 
-    public void file_hash_add_file (GOF.File gof) { /* called directly by GOF.File */
+    public void file_hash_add_file (Files.File gof) { /* called directly by Files.File */
         file_hash.insert (gof.location, gof);
     }
 
-    public GOF.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
-        GOF.File? result = file_hash.lookup (file);
+    public Files.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
+        Files.File? result = file_hash.lookup (file);
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
-         * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */
+         * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
         if (result == null) {
-            result = GOF.File.cache_lookup (file);
+            result = Files.File.cache_lookup (file);
 
             if (result == null) {
-                result = new GOF.File (file, location);
+                result = new Files.File (file, location);
                 file_hash.insert (file, result);
             } else if (update_hash) {
                 file_hash.insert (file, result);
@@ -817,10 +821,10 @@ public class GOF.Directory.Async : Object {
         return (!) result;
     }
 
-    /**TODO** move this to GOF.File */
-    private delegate void func_query_info (GOF.File gof);
+    /**TODO** move this to Files.File */
+    private delegate void func_query_info (Files.File gof);
 
-    private async bool query_info_async (GOF.File gof, func_query_info? f = null, Cancellable? cancellable = null) {
+    private async bool query_info_async (Files.File gof, func_query_info? f = null, Cancellable? cancellable = null) {
         gof.info = null;
         try {
             gof.info = yield gof.location.query_info_async (gio_attrs,
@@ -840,7 +844,7 @@ public class GOF.Directory.Async : Object {
         return gof.info != null;
     }
 
-    private void changed_and_refresh (GOF.File gof) {
+    private void changed_and_refresh (Files.File gof) {
         gof.update ();
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
@@ -849,7 +853,7 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    private void add_and_refresh (GOF.File gof) {
+    private void add_and_refresh (Files.File gof) {
         if (gof.info == null) {
             critical ("FILE INFO null");
         }
@@ -864,20 +868,20 @@ public class GOF.Directory.Async : Object {
             /* add to sorted_dirs */
             if (sorted_dirs.find (gof) == null) {
                 sorted_dirs.insert_sorted (gof,
-                    GOF.File.compare_by_display_name);
+                    Files.File.compare_by_display_name);
             }
         }
     }
 
-    private void notify_file_changed (GOF.File gof) {
+    private void notify_file_changed (Files.File gof) {
         query_info_async.begin (gof, changed_and_refresh);
     }
 
-    private void notify_file_added (GOF.File gof) {
+    private void notify_file_added (Files.File gof) {
         query_info_async.begin (gof, add_and_refresh);
     }
 
-    private void notify_file_removed (GOF.File gof) {
+    private void notify_file_removed (Files.File gof) {
         remove_file_from_cache (gof);
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
@@ -927,24 +931,24 @@ public class GOF.Directory.Async : Object {
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
         case FileMonitorEvent.CREATED:
-            Marlin.FileChanges.queue_file_added (_file);
+            Files.FileChanges.queue_file_added (_file);
             break;
         case FileMonitorEvent.DELETED:
-            Marlin.FileChanges.queue_file_removed (_file);
+            Files.FileChanges.queue_file_removed (_file);
             break;
         case FileMonitorEvent.CHANGES_DONE_HINT: /* test  last to avoid unnecessary action when file renamed */
         case FileMonitorEvent.ATTRIBUTE_CHANGED:
-            Marlin.FileChanges.queue_file_changed (_file);
+            Files.FileChanges.queue_file_changed (_file);
             break;
         }
 
         if (idle_consume_changes_id == 0) {
             /* Insert delay to avoid race between gof.rename () finishing and consume changes -
              * If consume changes called too soon can corrupt the view.
-             * TODO: Have GOF.Directory.Async control renaming.
+             * TODO: Have Files.Directory.Async control renaming.
              */
             idle_consume_changes_id = Timeout.add (10, () => {
-                Marlin.FileChanges.consume_changes (true);
+                Files.FileChanges.consume_changes (true);
                 idle_consume_changes_id = 0;
                 return GLib.Source.REMOVE;
             });
@@ -978,7 +982,7 @@ public class GOF.Directory.Async : Object {
         foreach (unowned var loc in files) {
             assert (loc != null);
             Async? parent_dir = cache_lookup_parent (loc);
-            GOF.File? gof = null;
+            Files.File? gof = null;
             if (parent_dir != null) {
                 gof = parent_dir.file_cache_find_or_insert (loc);
                 parent_dir.notify_file_changed (gof);
@@ -997,7 +1001,7 @@ public class GOF.Directory.Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc, true);
+                Files.File gof = dir.file_cache_find_or_insert (loc, true);
                 dir.notify_file_added (gof);
             }
         }
@@ -1015,7 +1019,7 @@ public class GOF.Directory.Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc);
+                Files.File gof = dir.file_cache_find_or_insert (loc);
                 dir.notify_file_removed (gof);
                 found = false;
 
@@ -1059,7 +1063,7 @@ public class GOF.Directory.Async : Object {
         var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
         var scheme = Uri.parse_scheme (escaped_uri);
         if (scheme == null) {
-            scheme = Marlin.ROOT_FS_URI;
+            scheme = Files.ROOT_FS_URI;
             escaped_uri = scheme + escaped_uri;
         }
 
@@ -1094,11 +1098,11 @@ public class GOF.Directory.Async : Object {
         return dir;
     }
 
-    public static Async from_file (GOF.File gof) {
+    public static Async from_file (Files.File gof) {
         return from_gfile (gof.get_target_location ());
     }
 
-    private static void remove_file_from_cache (GOF.File gof) {
+    private static void remove_file_from_cache (Files.File gof) {
         Async? dir = cache_lookup (gof.directory);
         if (dir != null) {
             dir.file_hash.remove (gof.location);
@@ -1205,7 +1209,7 @@ public class GOF.Directory.Async : Object {
         return (state == State.LOADED && file_hash.size () == 0);
     }
 
-    public unowned List<unowned GOF.File>? get_sorted_dirs () {
+    public unowned List<unowned Files.File>? get_sorted_dirs () {
         if (state != State.LOADED) { /* Can happen if pathbar tries to load unloadable directory */
             return null;
         }
@@ -1220,7 +1224,7 @@ public class GOF.Directory.Async : Object {
             }
         }
 
-        sorted_dirs.sort (GOF.File.compare_by_display_name);
+        sorted_dirs.sort (Files.File.compare_by_display_name);
         return sorted_dirs;
     }
 
@@ -1239,4 +1243,5 @@ public class GOF.Directory.Async : Object {
             return false;
         }
     }
+}
 }

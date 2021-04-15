@@ -18,7 +18,7 @@
 
 ***/
 
-public class Marlin.View.Chrome.BreadcrumbElement : Object {
+public class Files.View.Chrome.BreadcrumbElement : Object {
 
     private const int ICON_MARGIN = 3;
     private BreadcrumbIconInfo? icon_info = null;

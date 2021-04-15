@@ -16,13 +16,13 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.TrashMonitor : GLib.Object {
+public class Files.TrashMonitor : GLib.Object {
     public const string URI = "trash://";
 
-    private static Marlin.TrashMonitor marlin_trash_monitor;
-    public static unowned Marlin.TrashMonitor get_default () {
+    private static Files.TrashMonitor marlin_trash_monitor;
+    public static unowned Files.TrashMonitor get_default () {
         if (marlin_trash_monitor == null) {
-            marlin_trash_monitor = new Marlin.TrashMonitor ();
+            marlin_trash_monitor = new Files.TrashMonitor ();
         }
 
         return marlin_trash_monitor;

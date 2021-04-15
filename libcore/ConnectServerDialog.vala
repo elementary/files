@@ -457,7 +457,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         uri += folder;
         var location = File.new_for_uri (uri);
 
-        var operation = new Marlin.ConnectServer.Operation (this);
+        var operation = new Files.ConnectServer.Operation (this);
         mount_cancellable = new GLib.Cancellable ();
         try {
             server_uri = uri;

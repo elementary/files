@@ -18,7 +18,7 @@
 * Boston, MA 02110-1301 USA
 */
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable {
         public enum TargetType {
             TEXT_URI_LIST,
@@ -166,7 +166,7 @@ namespace Marlin.View.Chrome {
         }
 
         public void show_default_action_icon () {
-            action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC;
+            action_icon_name = Files.ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC;
             set_default_action_icon_tooltip ();
         }
 
@@ -639,11 +639,11 @@ namespace Marlin.View.Chrome {
         }
 
         private void animate_adding_elements (Gee.Collection<BreadcrumbElement> els) {
-            animation_timeout_id = make_animation (els, 1.0, 0.0, Marlin.LOCATION_BAR_ANIMATION_TIME_USEC);
+            animation_timeout_id = make_animation (els, 1.0, 0.0, Files.LOCATION_BAR_ANIMATION_TIME_USEC);
         }
 
         private void animate_removing_elements (Gee.Collection<BreadcrumbElement> els) {
-            animation_timeout_id = make_animation (els, 0.0, 1.0, Marlin.LOCATION_BAR_ANIMATION_TIME_USEC);
+            animation_timeout_id = make_animation (els, 0.0, 1.0, Files.LOCATION_BAR_ANIMATION_TIME_USEC);
         }
 
         public override bool draw (Cairo.Context cr) {

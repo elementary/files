@@ -16,7 +16,7 @@
     51 Franklin Street, Fifth Floor Boston, MA 02110-1335 USA.
  ***/
 
-namespace Marlin.Animation {
+namespace Files.Animation {
 
     private static uint timeout_source_id = 0;
     public static void smooth_adjustment_to (Gtk.Adjustment adj, int final) {

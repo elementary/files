@@ -16,7 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-    public class Marlin.GitRepoInfo : Object {
+    public class Files.GitRepoInfo : Object {
         public Ggit.Repository repo { get; construct; }
         public HashTable<string, Ggit.StatusFlags> status_map { get; construct; }
         static Ggit.StatusOptions status_options;
@@ -67,23 +67,23 @@
         }
     }
 
-    public struct Marlin.GitRepoChildInfo {
+    public struct Files.GitRepoChildInfo {
          string repo_uri;
          string rel_path;
     }
 
 
-public class Marlin.Plugins.Git : Marlin.Plugins.Base {
+public class Files.Plugins.Git : Files.Plugins.Base {
     private const string EXCLUDED_FS_TYPES = "fuse"; // Filesystems such sshfs and ntfs return this type
-    private HashTable<string, Marlin.GitRepoInfo?> repo_map;
-    private HashTable<string, Marlin.GitRepoChildInfo?> child_map;
+    private HashTable<string, Files.GitRepoInfo?> repo_map;
+    private HashTable<string, Files.GitRepoChildInfo?> child_map;
 
     public Git () {
-        repo_map = new GLib.HashTable<string, Marlin.GitRepoInfo?> (str_hash, str_equal);
-        child_map = new HashTable<string, Marlin.GitRepoChildInfo?> (str_hash, str_equal);
+        repo_map = new GLib.HashTable<string, Files.GitRepoInfo?> (str_hash, str_equal);
+        child_map = new HashTable<string, Files.GitRepoChildInfo?> (str_hash, str_equal);
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
 
         if (!view.directory.is_local) {
             debug ("Git plugin ignoring non-local folder");
@@ -134,10 +134,10 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             var gitdir = Ggit.Repository.discover (key);
             if (gitdir != null) {
                 repo_uri = gitdir.get_uri ();
-                Marlin.GitRepoInfo? repo_info = repo_map.lookup (repo_uri);
+                Files.GitRepoInfo? repo_info = repo_map.lookup (repo_uri);
                 if (repo_info == null) {
                     var git_repo = Ggit.Repository.open (gitdir);
-                    repo_info = new Marlin.GitRepoInfo (git_repo);
+                    repo_info = new Files.GitRepoInfo (git_repo);
                     repo_map.insert (repo_uri, repo_info);
                 } else {
                 }
@@ -149,7 +149,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
                     } else {
                         rel_path = "";
                     }
-                    Marlin.GitRepoChildInfo child_info = { repo_uri, rel_path };
+                    Files.GitRepoChildInfo child_info = { repo_uri, rel_path };
                     child_map.insert (dir_uri, child_info);
                 } else {
                 }
@@ -160,7 +160,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
         }
     }
 
-    public override void update_file_info (GOF.File gof) {
+    public override void update_file_info (Files.File gof) {
         /* Ignore e.g. .git and .githib folders, but include e.g. .travis.yml file */
         if (gof.is_hidden && gof.is_directory) {
             return;
@@ -171,7 +171,7 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
             return;
         }
 
-        Marlin.GitRepoInfo? repo_info = repo_map.lookup (child_info.repo_uri);
+        Files.GitRepoInfo? repo_info = repo_map.lookup (child_info.repo_uri);
 
         if (repo_info != null) {
             var rel_path = child_info.rel_path + gof.basename;
@@ -202,8 +202,8 @@ public class Marlin.Plugins.Git : Marlin.Plugins.Base {
     }
 }
 
-public Marlin.Plugins.Base module_init () {
+public Files.Plugins.Base module_init () {
     Ggit.init ();
-    var plug = new Marlin.Plugins.Git ();
+    var plug = new Files.Plugins.Git ();
     return plug;
 }

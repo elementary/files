@@ -21,7 +21,7 @@
 *          Julián Unrrein <junrrein@gmail.com>
 */
 
-public class Marlin.Progress.InfoWidget : Gtk.Grid {
+public class Files.Progress.InfoWidget : Gtk.Grid {
     public unowned PF.Progress.Info info { get; construct; }
 
     private Gtk.Label status;
