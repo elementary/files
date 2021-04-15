@@ -20,7 +20,7 @@
 
 namespace Files.View {
     public class PrivacyModeOn : Files.View.Welcome {
-        public Files.Directory.Async dir_saved;
+        public Directory dir_saved;
         public ViewContainer ctab;
         public bool remember_history {get; set;}
 

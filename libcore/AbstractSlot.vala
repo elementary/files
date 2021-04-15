@@ -20,8 +20,8 @@
 namespace Files {
     public abstract class AbstractSlot : GLib.Object {
 
-        Files.Directory.Async _directory;
-        public Files.Directory.Async? directory {
+        Files.Directory _directory;
+        public Files.Directory? directory {
             get {
                 AbstractSlot? current = get_current_slot ();
                 if (current != null) {
@@ -64,7 +64,7 @@ namespace Files {
         public signal void path_changed ();
         public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
         public signal void selection_changed (GLib.List<Files.File> files);
-        public signal void directory_loaded (Files.Directory.Async dir);
+        public signal void directory_loaded (Files.Directory dir);
         public signal void item_hovered (Files.File? file);
 
         public void add_extra_widget (Gtk.Widget widget) {

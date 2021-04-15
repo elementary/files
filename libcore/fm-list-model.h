@@ -30,8 +30,8 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-typedef struct _GOFFile GOFFile;
-typedef struct _GOFDirectoryAsync GOFDirectoryAsync;
+typedef struct _FilesFile FilesFile;
+typedef struct _FilesDirectory FilesDirectory;
 
 #define FM_TYPE_LIST_MODEL fm_list_model_get_type()
 G_DECLARE_DERIVABLE_TYPE (FMListModel, fm_list_model, FM, LIST_MODEL, GObject)
@@ -52,31 +52,31 @@ struct _FMListModelClass
   GObjectClass parent_class;
 
   void (* subdirectory_unloaded) (FMListModel *model,
-                                  GOFDirectoryAsync *subdirectory);
+                                  FilesDirectory *subdirectory);
 };
 
 FMListModel *fm_list_model_new (void);
-gboolean fm_list_model_add_file                          (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
-void     fm_list_model_file_changed                      (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
+gboolean fm_list_model_add_file                          (FMListModel *model, FilesFile *file, FilesDirectory *directory);
+void     fm_list_model_file_changed                      (FMListModel *model, FilesFile *file, FilesDirectory *directory);
 gboolean fm_list_model_is_empty                          (FMListModel *model);
 guint    fm_list_model_get_length                        (FMListModel *model);
 gboolean fm_list_model_remove_file                       (FMListModel       *model,
-                                                          GOFFile           *file,
-                                                          GOFDirectoryAsync *directory);
+                                                          FilesFile           *file,
+                                                          FilesDirectory *directory);
 void     fm_list_model_clear                             (FMListModel *model);
 gboolean fm_list_model_get_tree_iter_from_file           (FMListModel        *model,
-                                                          GOFFile            *file,
-                                                          GOFDirectoryAsync  *directory,
+                                                          FilesFile            *file,
+                                                          FilesDirectory  *directory,
                                                           GtkTreeIter        *iter);
-GList *  fm_list_model_get_all_iters_for_file            (FMListModel *model, GOFFile *file);
-gboolean fm_list_model_get_first_iter_for_file           (FMListModel *model, GOFFile *file, GtkTreeIter *iter);
+GList *  fm_list_model_get_all_iters_for_file            (FMListModel *model, FilesFile *file);
+gboolean fm_list_model_get_first_iter_for_file           (FMListModel *model, FilesFile *file, GtkTreeIter *iter);
 void     fm_list_model_set_should_sort_directories_first (FMListModel *model, gboolean sort_directories_first);
 
-GOFFile *       fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path);
-GOFFile *       fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter);
+FilesFile *       fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path);
+FilesFile *       fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter);
 gboolean        fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path,
-                                                  GOFDirectoryAsync **directory, GOFFile **file);
-gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory);
+                                                  FilesDirectory **directory, FilesFile **file);
+gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, FilesDirectory **directory);
 void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter);
 
 const gchar *       fm_list_model_column_id_to_string (FMListModelColumnID id);

@@ -552,7 +552,7 @@ namespace PF.FileUtils {
 
 
         GLib.File? new_location = null;
-        Files.Directory.Async? dir = Files.Directory.Async.cache_lookup_parent (old_location);
+        Files.Directory? dir = Files.Directory.cache_lookup_parent (old_location);
         string? original_name = old_location.get_basename ();
 
         try {
@@ -566,8 +566,8 @@ namespace PF.FileUtils {
                 added_files.append (new_location);
                 var removed_files = new GLib.List<GLib.File> ();
                 removed_files.append (old_location);
-                Files.Directory.Async.notify_files_removed (removed_files);
-                Files.Directory.Async.notify_files_added (added_files);
+                Files.Directory.notify_files_removed (removed_files);
+                Files.Directory.notify_files_added (added_files);
             } else {
                 warning ("Renamed file has no Files.Directory.Async");
             }

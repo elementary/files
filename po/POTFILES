@@ -58,7 +58,7 @@ libcore/FileChanges.vala
 libcore/FileConflictDialog.vala
 libcore/FileUtils.vala
 libcore/CallWhenReady.vala
-libcore/DirectoryAsync.vala
+libcore/Directory.vala
 libcore/Preferences.vala
 libcore/IconInfo.vala
 libcore/PixbufUtils.vala

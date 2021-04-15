@@ -81,7 +81,7 @@ typedef struct FileEntry FileEntry;
 struct FileEntry {
     FilesFile *file;
     GHashTable *reverse_map;    /* map from files to GSequenceIter's */
-    GOFDirectoryAsync *subdirectory;
+    FilesDirectory *subdirectory;
     FileEntry *parent;
     GSequence *files;
     GSequenceIter *ptr;
@@ -406,7 +406,7 @@ fm_list_model_iter_parent (GtkTreeModel *tree_model, GtkTreeIter *iter, GtkTreeI
 }
 
 static GSequenceIter *
-lookup_file (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory)
+lookup_file (FMListModel *model, FilesFile *file, FilesDirectory *directory)
 {
     FMListModelPrivate *priv = fm_list_model_get_instance_private (model);
     FileEntry *file_entry;
@@ -438,7 +438,7 @@ lookup_file (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory)
 
 struct GetIters {
     FMListModel *model;
-    GOFFile *file;
+    FilesFile *file;
     GList *iters;
 };
 
@@ -471,7 +471,7 @@ file_to_iter_cb (gpointer  key,
 }
 
 GList *
-fm_list_model_get_all_iters_for_file (FMListModel *model, GOFFile *file)
+fm_list_model_get_all_iters_for_file (FMListModel *model, FilesFile *file)
 {
     FMListModelPrivate *priv = fm_list_model_get_instance_private (model);
     struct GetIters data;
@@ -491,7 +491,7 @@ fm_list_model_get_all_iters_for_file (FMListModel *model, GOFFile *file)
 
 gboolean
 fm_list_model_get_first_iter_for_file (FMListModel          *model,
-                                       GOFFile              *file,
+                                       FilesFile              *file,
                                        GtkTreeIter          *iter)
 {
     GList *list;
@@ -510,8 +510,8 @@ fm_list_model_get_first_iter_for_file (FMListModel          *model,
 }
 
 gboolean
-fm_list_model_get_tree_iter_from_file (FMListModel *model, GOFFile *file,
-                                       GOFDirectoryAsync *directory,
+fm_list_model_get_tree_iter_from_file (FMListModel *model, FilesFile *file,
+                                       FilesDirectory *directory,
                                        GtkTreeIter *iter)
 {
     GSequenceIter *ptr;
@@ -705,8 +705,8 @@ add_dummy_row (FMListModel *model, FileEntry *parent_entry)
 }
 
 gboolean
-fm_list_model_add_file (FMListModel *model, GOFFile *file,
-                        GOFDirectoryAsync *directory)
+fm_list_model_add_file (FMListModel *model, FilesFile *file,
+                        FilesDirectory *directory)
 {
     FMListModelPrivate *priv = fm_list_model_get_instance_private (model);
     GtkTreeIter iter;
@@ -788,8 +788,8 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
 }
 
 void
-fm_list_model_file_changed (FMListModel *model, GOFFile *file,
-                            GOFDirectoryAsync *directory)
+fm_list_model_file_changed (FMListModel *model, FilesFile *file,
+                            FilesDirectory *directory)
 {
     FMListModelPrivate *priv = fm_list_model_get_instance_private (model);
     FileEntry *parent_file_entry;
@@ -949,8 +949,8 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
 }
 
 gboolean
-fm_list_model_remove_file (FMListModel *model, GOFFile *file,
-                           GOFDirectoryAsync *directory)
+fm_list_model_remove_file (FMListModel *model, FilesFile *file,
+                           FilesDirectory *directory)
 {
     GtkTreeIter iter;
 
@@ -996,10 +996,10 @@ fm_list_model_clear (FMListModel *model)
     fm_list_model_clear_directory (model, priv->files);
 }
 
-GOFFile *
+FilesFile *
 fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
 {
-    GOFFile *file = NULL;
+    FilesFile *file = NULL;
     GtkTreeIter iter;
 
     g_return_val_if_fail (FM_IS_LIST_MODEL (model), NULL);
@@ -1014,10 +1014,10 @@ fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
     return file;
 }
 
-GOFFile *
+FilesFile *
 fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter)
 {
-    GOFFile *file = NULL;
+    FilesFile *file = NULL;
 
     g_return_val_if_fail (FM_IS_LIST_MODEL (model), NULL);
 
@@ -1027,7 +1027,7 @@ fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter)
 }
 
 gboolean
-fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory, GOFFile **file)
+fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, FilesDirectory **directory, FilesFile **file)
 {
     GtkTreeIter iter;
     FileEntry *file_entry;
@@ -1049,7 +1049,7 @@ fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, GOFDire
 }
 
 gboolean
-fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory)
+fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, FilesDirectory **directory)
 {
     FMListModelPrivate *priv = fm_list_model_get_instance_private (model);
     GtkTreeIter iter;
@@ -1067,7 +1067,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
         return FALSE;
     }
 
-    file_entry->subdirectory = files_directory_async_from_file (file_entry->file);
+    file_entry->subdirectory = files_directory_from_file (file_entry->file);
 
     g_hash_table_insert (priv->directory_reverse_map,
                          file_entry->subdirectory, file_entry->ptr);
@@ -1094,7 +1094,7 @@ fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter)
         return;
     }
 
-    files_directory_async_cancel (file_entry->subdirectory);
+    files_directory_cancel (file_entry->subdirectory);
     g_hash_table_remove (priv->directory_reverse_map,
                          file_entry->subdirectory);
     file_entry->loaded = 0;
@@ -1220,7 +1220,7 @@ fm_list_model_class_init (FMListModelClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE, 1,
-                      FILES_DIRECTORY_TYPE_ASYNC);
+                      FILES_TYPE_DIRECTORY);
 }
 
 static void

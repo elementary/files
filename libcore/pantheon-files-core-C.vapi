@@ -37,20 +37,20 @@ namespace Files
         public bool has_child { get; set; }
         [NoAccessorMethod]
         public int size { get; set; }
-        public bool load_subdirectory(Gtk.TreePath path, out Files.Directory.Async dir);
+        public bool load_subdirectory(Gtk.TreePath path, out Files.Directory dir);
         public bool unload_subdirectory(Gtk.TreeIter iter);
-        public void add_file(Files.File file, Files.Directory.Async dir);
-        public bool remove_file (Files.File file, Files.Directory.Async dir);
-        public void file_changed (Files.File file, Files.Directory.Async dir);
+        public void add_file(Files.File file, Files.Directory dir);
+        public bool remove_file (Files.File file, Files.Directory dir);
+        public void file_changed (Files.File file, Files.Directory dir);
         public Files.File? file_for_path (Gtk.TreePath path);
         public bool get_first_iter_for_file (Files.File file, out Gtk.TreeIter iter);
-        public bool get_tree_iter_from_file (Files.File file, Files.Directory.Async directory, out Gtk.TreeIter iter);
-        public bool get_directory_file (Gtk.TreePath path, out unowned Files.Directory.Async directory, out unowned Files.File file);
+        public bool get_tree_iter_from_file (Files.File file, Files.Directory directory, out Gtk.TreeIter iter);
+        public bool get_directory_file (Gtk.TreePath path, out unowned Files.Directory directory, out unowned Files.File file);
         public uint get_length ();
         public Files.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
         public void set_should_sort_directories_first (bool directories_first);
-        public signal void subdirectory_unloaded (Files.Directory.Async directory);
+        public signal void subdirectory_unloaded (Files.Directory directory);
     }
 }
 

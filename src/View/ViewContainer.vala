@@ -390,7 +390,7 @@ namespace Files.View {
         }
 
 
-        public void on_slot_directory_loaded (Files.Directory.Async dir) {
+        public void on_slot_directory_loaded (Directory dir) {
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
@@ -414,7 +414,7 @@ namespace Files.View {
                     content = new View.Welcome (_("Unable to Mount Folder"),
                                                 _("Could not connect to the server for this folder.") + "\n\n" +
                                                 dir.last_error_message);
-                } else if (slot.directory.state == Files.Directory.Async.State.TIMED_OUT) {
+                } else if (slot.directory.state == Directory.State.TIMED_OUT) {
                     content = new View.Welcome (_("Unable to Display Folder Contents"),
                                                 _("The operation timed out.") + "\n\n" + dir.last_error_message);
                 } else {
