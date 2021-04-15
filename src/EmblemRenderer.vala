@@ -38,13 +38,12 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
 
         var style_context = widget.get_parent ().get_style_context ();
 
-        int emblem_size = (int) Files.IconSize.EMBLEM;
         int pos = 1;
         var emblem_area = Gdk.Rectangle ();
 
         foreach (string emblem in file.emblems_list) {
             Gdk.Pixbuf? pix = null;
-            var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+            var nicon = Files.IconInfo.lookup_from_name (emblem, Files.IconSize.EMBLEM, icon_scale);
 
             if (nicon == null) {
                 continue;
@@ -57,7 +56,7 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
             }
 
             emblem_area.y = cell_area.y;
-            emblem_area.x = cell_area.x + cell_area.width - pos * emblem_size;
+            emblem_area.x = cell_area.x + cell_area.width - (pos + 1) * Files.IconSize.EMBLEM;
 
             style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
             pos++;
@@ -66,7 +65,7 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
 
     public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
         if (file != null) {
-            minimum_size = (int) (file.n_emblems * Files.IconSize.EMBLEM);
+            minimum_size = (int) ((file.n_emblems + 2) * Files.IconSize.EMBLEM);
             natural_size = minimum_size;
         } else {
             minimum_size = 0;
