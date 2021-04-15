@@ -20,89 +20,87 @@
 
 ***/
 
-namespace Files {
-    public class EmblemRenderer : Gtk.CellRenderer {
-        private Files.File? _file;
-        public Files.File? file {
-            get {
-                return _file;
-            }
-            set {
-                _file = value;
-            }
+public class Files.EmblemRenderer : Gtk.CellRenderer {
+    private Files.File? _file;
+    public Files.File? file {
+        get {
+            return _file;
+        }
+        set {
+            _file = value;
+        }
+    }
+
+    private int icon_scale = 1;
+
+    public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
+                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
+
+        if (file == null) {
+            return;
         }
 
-        private int icon_scale = 1;
-
-        public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
-                                     Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
-
-            if (file == null) {
-                return;
-            }
-
-            if (widget.get_scale_factor () != icon_scale) {
-                icon_scale = widget.get_scale_factor ();
-            }
-
-            var style_context = widget.get_parent ().get_style_context ();
-
-            int emblem_size = (int) Files.IconSize.EMBLEM;
-            int pos = 1;
-            var emblem_area = Gdk.Rectangle ();
-
-            foreach (string emblem in file.emblems_list) {
-                Gdk.Pixbuf? pix = null;
-                var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
-
-                if (nicon == null) {
-                    continue;
-                }
-
-                pix = nicon.get_pixbuf_nodefault ();
-
-                if (pix == null) {
-                    continue;
-                }
-
-                emblem_area.y = cell_area.y;
-                emblem_area.x = cell_area.x + cell_area.width - pos * emblem_size;
-
-                style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
-                pos++;
-            }
+        if (widget.get_scale_factor () != icon_scale) {
+            icon_scale = widget.get_scale_factor ();
         }
 
-        public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            if (file != null) {
-                minimum_size = (int) (file.n_emblems * Files.IconSize.EMBLEM);
-                natural_size = minimum_size;
-            } else {
-                minimum_size = 0;
-                natural_size = 0;
+        var style_context = widget.get_parent ().get_style_context ();
+
+        int emblem_size = (int) Files.IconSize.EMBLEM;
+        int pos = 1;
+        var emblem_area = Gdk.Rectangle ();
+
+        foreach (string emblem in file.emblems_list) {
+            Gdk.Pixbuf? pix = null;
+            var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+
+            if (nicon == null) {
+                continue;
             }
+
+            pix = nicon.get_pixbuf_nodefault ();
+
+            if (pix == null) {
+                continue;
+            }
+
+            emblem_area.y = cell_area.y;
+            emblem_area.x = cell_area.x + cell_area.width - pos * emblem_size;
+
+            style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+            pos++;
         }
+    }
 
-        public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            natural_size = (int)Files.IconSize.EMBLEM;
-            minimum_size = natural_size;
+    public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
+        if (file != null) {
+            minimum_size = (int) (file.n_emblems * Files.IconSize.EMBLEM);
+            natural_size = minimum_size;
+        } else {
+            minimum_size = 0;
+            natural_size = 0;
         }
+    }
 
-        /* We still have to implement this even though it is deprecated, else compiler complains.
-         * It is not called (in Juno)  */
-        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                       out int x_offset, out int y_offset,
-                                       out int width, out int height) {
+    public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
+        natural_size = (int)Files.IconSize.EMBLEM;
+        minimum_size = natural_size;
+    }
 
-            /* Just return some default values for offsets */
-            x_offset = 0;
-            y_offset = 0;
-            int mw, nw, mh, nh;
-            get_preferred_width (widget, out mw, out nw);
-            get_preferred_height (widget, out mh, out nh);
+    /* We still have to implement this even though it is deprecated, else compiler complains.
+     * It is not called (in Juno)  */
+    public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+                                   out int x_offset, out int y_offset,
+                                   out int width, out int height) {
 
-            width = nw;
-            height = nh;
-        }
+        /* Just return some default values for offsets */
+        x_offset = 0;
+        y_offset = 0;
+        int mw, nw, mh, nh;
+        get_preferred_width (widget, out mw, out nw);
+        get_preferred_height (widget, out mh, out nh);
+
+        width = nw;
+        height = nh;
     }
 }
