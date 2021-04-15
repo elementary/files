@@ -21,15 +21,7 @@
 ***/
 
 public class Files.EmblemRenderer : Gtk.CellRenderer {
-    private Files.File? _file;
-    public Files.File? file {
-        get {
-            return _file;
-        }
-        set {
-            _file = value;
-        }
-    }
+    public Files.File? file { get; set; }
 
     private int icon_scale = 1;
 
