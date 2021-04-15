@@ -17,8 +17,8 @@
     Author(s):  Fernando da Silva Sousa <wild.nando@gmail.com>
 ***/
 
-public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
-    Marlin.SidebarInterface? sidebar;
+public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
+    Files.SidebarInterface? sidebar;
     CloudProviders.Collector collector;
     Gee.ArrayList<CloudProviders.Provider> providers_connected;
 
@@ -31,18 +31,18 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     /**
      * Assign loaded sidebar to plugin's sidebar reference
      *
-     * @param a instance of Marlin.AbstractSidebar
+     * @param a instance of Files.AbstractSidebar
      */
     public override void sidebar_loaded (Gtk.Widget widget) {
-        sidebar = (Marlin.SidebarInterface)widget;
+        sidebar = (Files.SidebarInterface)widget;
         on_providers_changes ();
     }
 
     /**
      * Plugin hook that triggers when sidebar receives a update request on
-     * Marlin's code
+     * Files's code
      *
-     * @param a instance of Marlin.AbstractSidebar
+     * @param a instance of Files.AbstractSidebar
      */
     public override void update_sidebar (Gtk.Widget widget) {
         foreach (var provider in collector.get_providers ()) {
@@ -91,7 +91,7 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
         //  Fix menu loading with wrong order by forcing dbus to cache menu_model
         account.menu_model.get_n_items ();
         var reference = sidebar.add_plugin_item (adapt_plugin_item (provider, account),
-                                                 Marlin.PlaceType.NETWORK_CATEGORY);
+                                                 Files.PlaceType.NETWORK_CATEGORY);
 
         //  Update sidebar representation of the cloudprovider account on it's properties changes
         account.notify.connect (() => {
@@ -103,10 +103,10 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     /**
      * Generate a SidebarPluginItem from provider and account informations
      */
-    static Marlin.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
+    static Files.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
                                                         CloudProviders.Account account) {
 
-        var item = new Marlin.SidebarPluginItem () {
+        var item = new Files.SidebarPluginItem () {
             name = account.name,
             tooltip = account.path,
             uri = account.path,
@@ -135,6 +135,6 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     }
 }
 
-public Marlin.Plugins.Base module_init () {
-    return new Marlin.Plugins.Cloud.Plugin ();
+public Files.Plugins.Base module_init () {
+    return new Files.Plugins.Cloud.Plugin ();
 }

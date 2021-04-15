@@ -20,10 +20,10 @@
 
 ***/
 
-namespace Marlin {
+namespace Files {
     public class EmblemRenderer : Gtk.CellRenderer {
-        private GOF.File? _file;
-        public GOF.File? file {
+        private Files.File? _file;
+        public Files.File? file {
             get {
                 return _file;
             }
@@ -47,13 +47,13 @@ namespace Marlin {
 
             var style_context = widget.get_parent ().get_style_context ();
 
-            int emblem_size = (int) Marlin.IconSize.EMBLEM;
+            int emblem_size = (int) Files.IconSize.EMBLEM;
             int pos = 1;
             var emblem_area = Gdk.Rectangle ();
 
             foreach (string emblem in file.emblems_list) {
                 Gdk.Pixbuf? pix = null;
-                var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+                var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
 
                 if (nicon == null) {
                     continue;
@@ -75,7 +75,7 @@ namespace Marlin {
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
             if (file != null) {
-                minimum_size = (int) (file.n_emblems * Marlin.IconSize.EMBLEM);
+                minimum_size = (int) (file.n_emblems * Files.IconSize.EMBLEM);
                 natural_size = minimum_size;
             } else {
                 minimum_size = 0;
@@ -84,7 +84,7 @@ namespace Marlin {
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            natural_size = (int)Marlin.IconSize.EMBLEM;
+            natural_size = (int)Files.IconSize.EMBLEM;
             minimum_size = natural_size;
         }
 

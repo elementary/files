@@ -16,7 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
     static Gtk.Window get_active_window () {
         unowned Gtk.Application gtk_app = (Gtk.Application)(GLib.Application.get_default ());
         return gtk_app.get_active_window ();

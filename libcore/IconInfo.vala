@@ -16,16 +16,16 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.IconInfo : GLib.Object {
+public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
     private Gdk.Pixbuf? pixbuf;
     private string icon_name;
 
-    public Marlin.IconInfo.for_pixbuf (Gdk.Pixbuf? pixbuf) {
+    public Files.IconInfo.for_pixbuf (Gdk.Pixbuf? pixbuf) {
         this.pixbuf = pixbuf;
     }
 
-    public Marlin.IconInfo.for_icon_info (Gtk.IconInfo icon_info) {
+    public Files.IconInfo.for_icon_info (Gtk.IconInfo icon_info) {
         try {
             pixbuf = icon_info.load_icon ();
         } catch (Error e) {
@@ -46,12 +46,12 @@ public class Marlin.IconInfo : GLib.Object {
         pixbuf = null;
     }
 
-    public static Marlin.IconInfo? lookup (GLib.Icon icon, int size, int scale) {
+    public static Files.IconInfo? lookup (GLib.Icon icon, int size, int scale) {
         size = int.max (1, size);
 
         if (icon is GLib.LoadableIcon) {
             if (loadable_icon_cache == null) {
-                loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Marlin.IconInfo> (LoadableIconKey.hash,
+                loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (LoadableIconKey.hash,
                                                                                             LoadableIconKey.equal);
             }
 
@@ -84,7 +84,7 @@ public class Marlin.IconInfo : GLib.Object {
             return icon_info;
         } else if (icon is GLib.ThemedIcon) {
             if (themed_icon_cache == null) {
-                themed_icon_cache = new GLib.HashTable<ThemedIconKey, Marlin.IconInfo> (ThemedIconKey.hash,
+                themed_icon_cache = new GLib.HashTable<ThemedIconKey, Files.IconInfo> (ThemedIconKey.hash,
                                                                                         ThemedIconKey.equal);
             }
 
@@ -104,7 +104,7 @@ public class Marlin.IconInfo : GLib.Object {
             }
 
             if (gtkicon_info != null) {
-                icon_info = new Marlin.IconInfo.for_icon_info (gtkicon_info);
+                icon_info = new Files.IconInfo.for_icon_info (gtkicon_info);
                 themed_icon_cache.insert ((owned) themed_key, icon_info);
             }
 
@@ -115,27 +115,27 @@ public class Marlin.IconInfo : GLib.Object {
                 var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
                                                                      Gtk.IconLookupFlags.GENERIC_FALLBACK);
                 var pixbuf = gtk_icon_info.load_icon ();
-                return new Marlin.IconInfo.for_pixbuf (pixbuf);
+                return new Files.IconInfo.for_pixbuf (pixbuf);
             } catch (Error e) {
                 critical (e.message);
-                return new Marlin.IconInfo.for_pixbuf (null);
+                return new Files.IconInfo.for_pixbuf (null);
             }
         }
     }
 
-    public static Marlin.IconInfo? get_generic_icon (int size, int scale) {
+    public static Files.IconInfo? get_generic_icon (int size, int scale) {
         var generic_icon = new GLib.ThemedIcon ("text-x-generic");
         return IconInfo.lookup (generic_icon, size, scale);
     }
 
-    public static Marlin.IconInfo? lookup_from_name (string icon_name, int size, int scale) {
+    public static Files.IconInfo? lookup_from_name (string icon_name, int size, int scale) {
         var themed_icon = new GLib.ThemedIcon (icon_name);
-        return Marlin.IconInfo.lookup (themed_icon, size, scale);
+        return Files.IconInfo.lookup (themed_icon, size, scale);
     }
 
-    public static Marlin.IconInfo? lookup_from_path (string path, int size, int scale) {
+    public static Files.IconInfo? lookup_from_path (string path, int size, int scale) {
         var file_icon = new GLib.FileIcon (GLib.File.new_for_path (path));
-        return Marlin.IconInfo.lookup (file_icon, size, scale);
+        return Files.IconInfo.lookup (file_icon, size, scale);
     }
 
     public bool is_fallback () {
@@ -188,8 +188,8 @@ public class Marlin.IconInfo : GLib.Object {
      * This is the part of the icon cache
      */
 
-    private static GLib.HashTable<LoadableIconKey, Marlin.IconInfo> loadable_icon_cache;
-    private static GLib.HashTable<ThemedIconKey, Marlin.IconInfo> themed_icon_cache;
+    private static GLib.HashTable<LoadableIconKey, Files.IconInfo> loadable_icon_cache;
+    private static GLib.HashTable<ThemedIconKey, Files.IconInfo> themed_icon_cache;
     private static uint reap_cache_timeout = 0;
     private static uint reap_time = 5000;
 

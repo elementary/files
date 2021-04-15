@@ -77,7 +77,7 @@ public class Files.LegacyFileChooserDialog : Object {
         button_forward.tooltip_text = _("Next");
         button_forward.sensitive = false;
 
-        var location_bar = new Marlin.View.Chrome.BasicLocationBar ();
+        var location_bar = new Files.View.Chrome.BasicLocationBar ();
         location_bar.hexpand = true;
 
         var header_bar = new Gtk.HeaderBar ();

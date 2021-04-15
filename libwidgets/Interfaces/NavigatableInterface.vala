@@ -15,14 +15,14 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     /* Interface implemented by BasicBreadcrumbsEntry and BreadCrumbsEntry */
     public interface Navigatable : Gtk.Widget {
         public abstract string? action_icon_name { get; set; }
         public abstract bool hide_breadcrumbs { get; set; default = false; }
 
         public signal void entry_text_changed (string txt);
-        public signal void activate_path (string path, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT);
+        public signal void activate_path (string path, Files.OpenFlag flag = Files.OpenFlag.DEFAULT);
         public signal void action_icon_press ();
         public signal void primary_icon_press ();
 

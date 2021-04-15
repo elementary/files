@@ -16,21 +16,20 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-
-namespace FM {
+namespace Files {
     public class ColumnView : AbstractTreeView {
         /** Miller View support */
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
 
-        public ColumnView (Marlin.View.Slot _slot) {
+        public ColumnView (View.Slot _slot) {
             base (_slot);
             /* We do not need to load the directory - this is done by Miller View*/
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }
 
         protected override void set_up_icon_renderer () {
-            icon_renderer = new Marlin.IconRenderer (Marlin.ViewMode.MILLER_COLUMNS);
+            icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS);
             icon_renderer.set_property ("follow-state", true);
         }
 
@@ -63,15 +62,15 @@ namespace FM {
         }
 
         protected override void set_up_zoom_level () {
-            Marlin.column_view_settings.bind (
+            Files.column_view_settings.bind (
                 "zoom-level",
                 this, "zoom-level",
                 GLib.SettingsBindFlags.DEFAULT
             );
 
-            maximum_zoom = (Marlin.ZoomLevel)Marlin.column_view_settings.get_enum ("maximum-zoom-level");
+            maximum_zoom = (ZoomLevel)Files.column_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom) { /* Defaults to Marlin.ZoomLevel.SMALLEST */
+            if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
                 zoom_level = minimum_zoom;
             }
 
@@ -80,11 +79,11 @@ namespace FM {
             }
         }
 
-        public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Marlin.column_view_settings.get_enum ("default-zoom-level");
-            Marlin.column_view_settings.set_enum ("zoom-level", zoom);
+        public override ZoomLevel get_normal_zoom_level () {
+            var zoom = Files.column_view_settings.get_enum ("default-zoom-level");
+            Files.column_view_settings.set_enum ("zoom-level", zoom);
 
-            return (Marlin.ZoomLevel)zoom;
+            return (ZoomLevel)zoom;
         }
 
         protected override Gtk.Widget? create_view () {
@@ -118,8 +117,8 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            GOF.File? file = null;
-            GOF.File? selected_folder = null;
+            Files.File? file = null;
+            Files.File? selected_folder = null;
             Gtk.TreeIter? iter = null;
 
             if (path != null) {
@@ -127,7 +126,7 @@ namespace FM {
             }
 
             if (iter != null) {
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
+                model.@get (iter, ListModel.ColumnID.FILE_COLUMN, out file, -1);
             }
 
             if (file == null || !file.is_folder ()) {

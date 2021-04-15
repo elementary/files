@@ -15,7 +15,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
+public class Files.Plugins.Trash : Files.Plugins.Base {
     private const string RESTORE_ALL = N_("Restore All");
     private const string DELETE_ALL = N_("Empty the Trash");
     private const string RESTORE_SELECTED = N_("Restore Selected");
@@ -24,17 +24,17 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private unowned TrashMonitor trash_monitor;
     private bool trash_is_empty = false;
 
-    private Gee.HashMap<GOF.AbstractSlot,Gtk.ActionBar> actionbars;
+    private Gee.HashMap<Files.AbstractSlot,Gtk.ActionBar> actionbars;
 
     private Gtk.Button delete_button;
     private Gtk.Button restore_button;
 
     public Trash () {
-        actionbars = new Gee.HashMap<GOF.AbstractSlot, Gtk.ActionBar> ();
+        actionbars = new Gee.HashMap<Files.AbstractSlot, Gtk.ActionBar> ();
         trash_monitor = TrashMonitor.get_default ();
         trash_monitor.notify["is-empty"].connect (() => {
             trash_is_empty = trash_monitor.is_empty;
-            var to_remove = new Gee.ArrayList<Gee.Map.Entry<GOF.AbstractSlot,Gtk.ActionBar>> ();
+            var to_remove = new Gee.ArrayList<Gee.Map.Entry<Files.AbstractSlot,Gtk.ActionBar>> ();
             foreach (var entry in actionbars.entries) {
                 var actionbar = entry.value;
                 if (actionbar.get_parent () != null) {
@@ -51,7 +51,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
         });
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
         Gtk.ActionBar? actionbar = actionbars.@get (view);
         /* Ignore directories other than trash and ignore reloading trash */
         if (directory.location.get_uri_scheme () == "trash") {
@@ -83,22 +83,22 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                         view.set_all_selected (true);
                     }
 
-                    unowned GLib.List<GOF.File> selection = view.get_selected_files ();
+                    unowned GLib.List<Files.File> selection = view.get_selected_files ();
                     PF.FileUtils.restore_files_from_trash (selection, window);
                 });
 
                 delete_button.clicked.connect (() => {
                     if (delete_button.label == _(DELETE_ALL)) {
-                        var job = new Marlin.FileOperations.EmptyTrashJob (window);
+                        var job = new Files.FileOperations.EmptyTrashJob (window);
                         job.empty_trash.begin ();
                     } else {
                         GLib.List<GLib.File> to_delete = null;
-                        foreach (GOF.File gof in view.get_selected_files ()) {
+                        foreach (Files.File gof in view.get_selected_files ()) {
                             to_delete.prepend (gof.location);
                         }
 
                         if (to_delete != null) {
-                            Marlin.FileOperations.@delete.begin (to_delete, window, false);
+                            Files.FileOperations.@delete.begin (to_delete, window, false);
                         }
                     }
                 });
@@ -135,6 +135,6 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 }
 
 
-public Marlin.Plugins.Base module_init () {
-    return new Marlin.Plugins.Trash ();
+public Files.Plugins.Base module_init () {
+    return new Files.Plugins.Trash ();
 }

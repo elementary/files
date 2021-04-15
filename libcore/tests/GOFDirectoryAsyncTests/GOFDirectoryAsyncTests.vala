@@ -18,7 +18,7 @@
     Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace GOF.Directory {
+namespace Files.Directory {
 void add_gof_directory_async_tests () {
     /* loading */
     Test.add_func ("/GOFDirectoryAsync/load_non_existent_local", () => {
@@ -229,6 +229,6 @@ void tear_down_file (string path) {
 int main (string[] args) {
     Test.init (ref args);
 
-    GOF.Directory.add_gof_directory_async_tests ();
+    Files.Directory.add_gof_directory_async_tests ();
     return Test.run ();
 }

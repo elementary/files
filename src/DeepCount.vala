@@ -17,12 +17,12 @@
     Author: ammonkey <am.monkeyd@gmail.com>
 ***/
 
-public class Marlin.DeepCount : Object {
+public class Files.DeepCount : Object {
 
-    private File file;
+    private GLib.File file;
     private string deep_count_attrs;
     private Cancellable cancellable;
-    private List<File>? directories = null;
+    private List<GLib.File>? directories = null;
 
     public int file_not_read = 0;
     public uint64 total_size = 0;
@@ -32,7 +32,7 @@ public class Marlin.DeepCount : Object {
 
     public signal void finished ();
 
-    public DeepCount (File _file) {
+    public DeepCount (GLib.File _file) {
         file = _file;
         deep_count_attrs = string.join (",",
                                         FileAttribute.STANDARD_NAME,
@@ -45,7 +45,7 @@ public class Marlin.DeepCount : Object {
 
     private Mutex mutex;
 
-    private async void process_directory (File directory) {
+    private async void process_directory (GLib.File directory) {
         directories.prepend (directory);
         try {
             /*bool exists = yield Utils.query_exists_async (directory);
@@ -62,7 +62,7 @@ public class Marlin.DeepCount : Object {
 
                 foreach (var f in files) {
                     unowned string name = f.get_name ();
-                    File location = directory.get_child (name);
+                    GLib.File location = directory.get_child (name);
                     if (f.get_file_type () == FileType.DIRECTORY) {
                         yield process_directory (location);
                         dirs_count++;

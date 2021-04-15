@@ -34,7 +34,7 @@ void existing_local_folder_test () {
     string uri = "file://" + path;
 
     /* Check that "get_by_uri copes correctly with missing scheme in uri" */
-    GOF.File? file = GOF.File.get_by_uri (path);
+    Files.File? file = Files.File.get_by_uri (path);
 
     assert (file != null);
     assert (file.location != null);
@@ -68,10 +68,10 @@ void gof_file_cache_test () {
     string path = Path.build_filename (parent_path, basename);
     string uri = "file://" + path;
 
-    GOF.File? file = GOF.File.get_by_commandline_arg (path);
+    Files.File? file = Files.File.get_by_commandline_arg (path);
     assert (file.ref_count == 2);
 
-    GOF.File? file2 = GOF.File.get_by_uri (uri);
+    Files.File? file2 = Files.File.get_by_uri (uri);
     assert (file == file2);
     assert (file.ref_count == 3);
     assert (file2.ref_count == 3);
@@ -84,7 +84,7 @@ void gof_file_cache_test () {
     assert (file.ref_count == 2);
     assert (file2.ref_count == 2);
 
-    GOF.File? file3 = GOF.File.get_by_uri (uri);
+    Files.File? file3 = Files.File.get_by_uri (uri);
     assert (file != file3);
     assert (file.ref_count == 2);
     assert (file3.ref_count == 2);
@@ -96,7 +96,7 @@ void gof_file_cache_test () {
 void new_non_existent_local_test () {
     string basename = get_real_time ().to_string ();
     string path = Path.build_filename ("/", "tmp", "marlin-test", basename);
-    GOF.File? file = GOF.File.get_by_commandline_arg (path);
+    Files.File? file = Files.File.get_by_commandline_arg (path);
     assert (file != null);
     assert (file.location != null);
     assert (file.exists);
@@ -114,7 +114,7 @@ void new_hidden_local_test () {
     Posix.system ("mkdir " + parent_path);
     Posix.system ("touch " + path);
 
-    GOF.File? file = GOF.File.get_by_commandline_arg (path);
+    Files.File? file = Files.File.get_by_commandline_arg (path);
     assert (file != null);
     assert (file.location != null);
     /* File is assumed to exist and be accessible when created */
@@ -146,7 +146,7 @@ void new_symlink_local_test () {
     Posix.system ("touch " + path);
     Posix.system ("ln -s " + path + " " + link_path);
 
-    GOF.File? file = GOF.File.get_by_commandline_arg (link_path);
+    Files.File? file = Files.File.get_by_commandline_arg (link_path);
     assert (file != null);
     assert (file.location != null);
     assert (file.exists);

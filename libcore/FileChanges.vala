@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-namespace Marlin.FileChanges {
+namespace Files.FileChanges {
     const int CONSUME_CHANGES_MAX_CHUNK = 20;
 
     private enum Kind {
@@ -118,16 +118,16 @@ namespace Marlin.FileChanges {
                 /* no changes left, flush everything */
             } else {
                 flush_needed = additions != null
-                    && change.kind != Marlin.FileChanges.Kind.ADDED;
+                    && change.kind != Files.FileChanges.Kind.ADDED;
 
                 flush_needed |= changes != null
-                    && change.kind != Marlin.FileChanges.Kind.CHANGED;
+                    && change.kind != Files.FileChanges.Kind.CHANGED;
 
                 flush_needed |= moves != null
-                    && change.kind != Marlin.FileChanges.Kind.MOVED;
+                    && change.kind != Files.FileChanges.Kind.MOVED;
 
                 flush_needed |= deletions != null
-                    && change.kind != Marlin.FileChanges.Kind.REMOVED;
+                    && change.kind != Files.FileChanges.Kind.REMOVED;
 
                 flush_needed |= !consume_all && chunk_count >= CONSUME_CHANGES_MAX_CHUNK;
                 /* we have reached the chunk maximum */
@@ -141,25 +141,25 @@ namespace Marlin.FileChanges {
 
                 if (deletions != null) {
                     deletions.reverse ();
-                    GOF.Directory.Async.notify_files_removed (deletions);
+                    Files.Directory.Async.notify_files_removed (deletions);
                     deletions = null;
                 }
 
                 if (moves != null) {
                     moves.reverse ();
-                    GOF.Directory.Async.notify_files_moved (moves);
+                    Files.Directory.Async.notify_files_moved (moves);
                     moves = null;
                 }
 
                 if (additions != null) {
                     additions.reverse ();
-                    GOF.Directory.Async.notify_files_added (additions);
+                    Files.Directory.Async.notify_files_added (additions);
                     additions = null;
                 }
 
                 if (changes != null) {
                     changes.reverse ();
-                    GOF.Directory.Async.notify_files_changed (changes);
+                    Files.Directory.Async.notify_files_changed (changes);
                     changes = null;
                 }
             }
@@ -171,7 +171,7 @@ namespace Marlin.FileChanges {
 
             /* add the new change to the list */
             switch (change.kind) {
-                case Marlin.FileChanges.Kind.ADDED:
+                case Files.FileChanges.Kind.ADDED:
                     if (additions == null) {
                         additions = new GLib.List<GLib.File> ();
                     }
@@ -179,7 +179,7 @@ namespace Marlin.FileChanges {
                     additions.prepend (change.from);
                     break;
 
-                case Marlin.FileChanges.Kind.CHANGED:
+                case Files.FileChanges.Kind.CHANGED:
                     if (changes == null) {
                         changes = new GLib.List<GLib.File> ();
                     }
@@ -187,7 +187,7 @@ namespace Marlin.FileChanges {
                     changes.prepend (change.from);
                     break;
 
-                case Marlin.FileChanges.Kind.REMOVED:
+                case Files.FileChanges.Kind.REMOVED:
                     if (deletions == null) {
                         deletions = new GLib.List<GLib.File> ();
                     }
@@ -195,7 +195,7 @@ namespace Marlin.FileChanges {
                     deletions.prepend (change.from);
                     break;
 
-                case Marlin.FileChanges.Kind.MOVED:
+                case Files.FileChanges.Kind.MOVED:
                     if (moves == null) {
                         moves = new GLib.List<GLib.Array<GLib.File>> ();
                     }
