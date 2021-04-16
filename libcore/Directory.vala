@@ -155,6 +155,8 @@ public class Files.Directory : Object {
         if (is_trash) {
             disconnect_volume_monitor_signals ();
         }
+
+        file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
     }
 
     /** Views call the following function with null parameter - file_loaded and done_loading
