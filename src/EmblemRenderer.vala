@@ -22,7 +22,7 @@
 
 public class Files.EmblemRenderer : Gtk.CellRenderer {
     public Files.File? file { get; set; }
-
+    private const int RIGHT_MARGIN = 12;
     private int icon_scale = 1;
 
     public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -55,8 +55,8 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
                 continue;
             }
 
-            emblem_area.y = cell_area.y;
-            emblem_area.x = cell_area.x + cell_area.width - (pos + 1) * Files.IconSize.EMBLEM;
+            emblem_area.y = cell_area.y + (cell_area.height - Files.IconSize.EMBLEM) / 2;
+            emblem_area.x = cell_area.x + cell_area.width - (pos * Files.IconSize.EMBLEM) - RIGHT_MARGIN;
 
             style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
             pos++;
@@ -65,7 +65,7 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
 
     public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
         if (file != null) {
-            minimum_size = (int) ((file.n_emblems + 2) * Files.IconSize.EMBLEM);
+            minimum_size = (int) ((file.n_emblems + 1) * Files.IconSize.EMBLEM) + RIGHT_MARGIN;
             natural_size = minimum_size;
         } else {
             minimum_size = 0;
