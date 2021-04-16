@@ -43,7 +43,7 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
 
         foreach (string emblem in file.emblems_list) {
             Gdk.Pixbuf? pix = null;
-            var nicon = Files.IconInfo.lookup_from_name (emblem, Files.IconSize.EMBLEM, icon_scale);
+            var nicon = Files.IconInfo.lookup_from_name (emblem + "-symbolic", Files.IconSize.EMBLEM, icon_scale);
 
             if (nicon == null) {
                 continue;
