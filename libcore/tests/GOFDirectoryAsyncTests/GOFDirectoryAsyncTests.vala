@@ -18,27 +18,27 @@
     Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Files.Directory {
+namespace Files.DirectoryTest {
 void add_gof_directory_async_tests () {
     /* loading */
-    Test.add_func ("/GOFDirectoryAsync/load_non_existent_local", () => {
+    Test.add_func ("/FilesDirectory/load_non_existent_local", () => {
         run_load_folder_test (load_non_existent_local_test);
     });
-    Test.add_func ("/GOFDirectoryAsync/load_empty_local", () => {
+    Test.add_func ("/FilesDirectory/load_empty_local", () => {
         run_load_folder_test (load_empty_local_test);
     });
-    Test.add_func ("/GOFDirectoryAsync/load_populated_local", () => {
+    Test.add_func ("/FilesDirectory/load_populated_local", () => {
         run_load_folder_test (load_populated_local_test);
     });
-    Test.add_func ("/GOFDirectoryAsync/load_cached_local", () => {
+    Test.add_func ("/FilesDirectory/load_cached_local", () => {
         run_load_folder_test (load_cached_local_test);
     });
-    Test.add_func ("/GOFDirectoryAsync/reload_populated_local", () => {
+    Test.add_func ("/FilesDirectory/reload_populated_local", () => {
         run_load_folder_test (reload_populated_local_test);
     });
 }
 
-delegate Async LoadFolderTest (string path, MainLoop loop);
+delegate Directory LoadFolderTest (string path, MainLoop loop);
 void run_load_folder_test (LoadFolderTest test) {
     var loop = new GLib.MainLoop ();
     string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
@@ -46,7 +46,7 @@ void run_load_folder_test (LoadFolderTest test) {
     var dir = test (test_dir_path, loop);
     dir.allow_user_interaction = false;
 
-    assert (dir.state == Async.State.NOT_LOADED);
+    assert (dir.state == Directory.State.NOT_LOADED);
 
     dir.init ();
     loop.run ();
@@ -56,25 +56,25 @@ void run_load_folder_test (LoadFolderTest test) {
 }
 
 /*** Test functions ***/
-Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
+Directory load_non_existent_local_test (string test_dir_path, MainLoop loop) {
     GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
     assert (!gfile.query_exists (null));
 
-    var dir = Async.from_gfile (gfile);
+    var dir = Directory.from_gfile (gfile);
     dir.done_loading.connect (() => {
         assert (dir.displayed_files_count == 0);
         assert (!dir.can_load);
         assert (!dir.file.is_connected);
         assert (!dir.file.is_mounted);
         assert (!dir.file.exists);
-        assert (dir.state == Async.State.NOT_LOADED);
+        assert (dir.state == Directory.State.NOT_LOADED);
         loop.quit ();
     });
 
     return dir;
 }
 
-Async load_empty_local_test (string test_dir_path, MainLoop loop) {
+Directory load_empty_local_test (string test_dir_path, MainLoop loop) {
     var dir = setup_temp_async (test_dir_path, 0);
 
     dir.done_loading.connect (() => {
@@ -83,14 +83,14 @@ Async load_empty_local_test (string test_dir_path, MainLoop loop) {
         assert (dir.file.is_connected);
         assert (!dir.file.is_mounted);
         assert (dir.file.exists);
-        assert (dir.state == Async.State.LOADED);
+        assert (dir.state == Directory.State.LOADED);
         loop.quit ();
     });
 
     return dir;
 }
 
-Async load_populated_local_test (string test_dir_path, MainLoop loop) {
+Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
     uint n_files = 5;
     uint file_loaded_signal_count = 0;
 
@@ -105,7 +105,7 @@ Async load_populated_local_test (string test_dir_path, MainLoop loop) {
     dir.done_loading.connect (() => {
         assert (dir.displayed_files_count == n_files);
         assert (dir.can_load);
-        assert (dir.state == Async.State.LOADED);
+        assert (dir.state == Directory.State.LOADED);
         assert (file_loaded_signal_count == n_files);
 
         loop.quit ();
@@ -114,7 +114,7 @@ Async load_populated_local_test (string test_dir_path, MainLoop loop) {
     return dir;
 }
 
-Async load_cached_local_test (string test_dir_path, MainLoop loop) {
+Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
     uint n_files = 5;
     bool first_load = true;
     uint file_loaded_signal_count = 0;
@@ -133,7 +133,7 @@ Async load_cached_local_test (string test_dir_path, MainLoop loop) {
         } else {
             assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
-            assert (dir.state == Async.State.LOADED);
+            assert (dir.state == Directory.State.LOADED);
             assert (file_loaded_signal_count == n_files);
             assert (dir.loaded_from_cache);
             loop.quit ();
@@ -142,7 +142,7 @@ Async load_cached_local_test (string test_dir_path, MainLoop loop) {
     return dir;
 }
 
-Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
+Directory reload_populated_local_test (string test_dir_path, MainLoop loop) {
     uint n_files = 50;
     uint n_loads = 5; /* Number of times to reload the directory */
     uint loads = 0;
@@ -165,7 +165,7 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
         } else {
             assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
-            assert (dir.state == Async.State.LOADED);
+            assert (dir.state == Directory.State.LOADED);
             assert (dir.ref_count == ref_count_before_reload);
 
             tear_down_file (tmp_pth);
@@ -182,7 +182,7 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
 }
 
 /*** Helper functions ***/
-Async setup_temp_async (string path, uint n_files, string? extension = null, string? path_to_template = null) {
+Directory setup_temp_async (string path, uint n_files, string? extension = null, string? path_to_template = null) {
     assert (extension == null || extension.length > 0 || extension.length < 5);
 
     Posix.system ("mkdir " + path);
@@ -205,7 +205,7 @@ Async setup_temp_async (string path, uint n_files, string? extension = null, str
     GLib.File gfile = GLib.File.new_for_commandline_arg (path);
     assert (gfile.query_exists (null));
 
-    Async dir = Async.from_gfile (gfile);
+    Directory dir = Directory.from_gfile (gfile);
     assert (dir != null);
     return dir;
 }
@@ -229,6 +229,6 @@ void tear_down_file (string path) {
 int main (string[] args) {
     Test.init (ref args);
 
-    Files.Directory.add_gof_directory_async_tests ();
+    Files.DirectoryTest.add_gof_directory_async_tests ();
     return Test.run ();
 }

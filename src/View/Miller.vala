@@ -296,11 +296,11 @@ namespace Files.View {
             path_changed ();
         }
 
-        private void on_slot_directory_loaded (Files.Directory.Async dir) {
+        private void on_slot_directory_loaded (Directory dir) {
             directory_loaded (dir);
         }
 
-        private void on_slot_folder_deleted (Slot slot, Files.File file, Files.Directory.Async dir) {
+        private void on_slot_folder_deleted (Slot slot, Files.File file, Directory dir) {
             Slot? next_slot = slot_list.nth_data (slot.slot_number + 1);
             if (next_slot != null && next_slot.directory == dir) {
                 truncate_list_after_slot (slot);
@@ -470,7 +470,7 @@ namespace Files.View {
         private bool scroll_to_slot (View.Slot slot, bool animate = true) {
             /* Cannot accurately scroll until directory finishes loading because width will change
              * according the length of the longest filename */
-            if (!scrolled_window.get_realized () || slot.directory.state != Files.Directory.Async.State.LOADED) {
+            if (!scrolled_window.get_realized () || slot.directory.state != Directory.State.LOADED) {
                 return false;
             }
 

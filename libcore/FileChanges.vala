@@ -141,25 +141,25 @@ namespace Files.FileChanges {
 
                 if (deletions != null) {
                     deletions.reverse ();
-                    Files.Directory.Async.notify_files_removed (deletions);
+                    Files.Directory.notify_files_removed (deletions);
                     deletions = null;
                 }
 
                 if (moves != null) {
                     moves.reverse ();
-                    Files.Directory.Async.notify_files_moved (moves);
+                    Files.Directory.notify_files_moved (moves);
                     moves = null;
                 }
 
                 if (additions != null) {
                     additions.reverse ();
-                    Files.Directory.Async.notify_files_added (additions);
+                    Files.Directory.notify_files_added (additions);
                     additions = null;
                 }
 
                 if (changes != null) {
                     changes.reverse ();
-                    Files.Directory.Async.notify_files_changed (changes);
+                    Files.Directory.notify_files_changed (changes);
                     changes = null;
                 }
             }

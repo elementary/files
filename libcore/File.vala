@@ -92,7 +92,7 @@ public class Files.File : GLib.Object {
     public static new Files.File @get (GLib.File location) {
         var parent = location.get_parent ();
         if (parent != null) {
-            var dir = Files.Directory.Async.cache_lookup (parent);
+            var dir = Files.Directory.cache_lookup (parent);
             if (dir != null) {
                 var file = dir.file_hash_lookup_location (location);
                 if (file != null) {
@@ -169,7 +169,7 @@ public class Files.File : GLib.Object {
     construct {
         icon_changed.connect (() => {
             if (directory != null) {
-                var dir = Files.Directory.Async.cache_lookup (directory);
+                var dir = Files.Directory.cache_lookup (directory);
                 if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
                     dir.icon_changed (this);
                 }

@@ -32,7 +32,7 @@ namespace Files {
         /* ListView manages the loading and unloading of subdirectories displayed */
         private uint unload_file_timeout_id = 0;
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
-        private GLib.List<Files.Directory.Async> loaded_subdirectories = null;
+        private GLib.List<Directory> loaded_subdirectories = null;
 
         public ListView (View.Slot _slot) {
             base (_slot);
@@ -90,7 +90,7 @@ namespace Files {
             schedule_unload_subdirectory_at_path (path);
         }
 
-        private void on_model_subdirectory_unloaded (Files.Directory.Async dir) {
+        private void on_model_subdirectory_unloaded (Directory dir) {
             /* ensure the model and our list of subdirectories are kept in sync */
             remove_subdirectory (dir);
         }
@@ -231,7 +231,7 @@ namespace Files {
         private void add_subdirectory_at_path (Gtk.TreePath path) {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
-            Files.Directory.Async? dir = null;
+            Directory? dir = null;
             if (model.load_subdirectory (path, out dir)) {
                 if (dir != null) {
                     connect_directory_handlers (dir);
@@ -243,7 +243,7 @@ namespace Files {
             }
         }
 
-        private void remove_subdirectory (Files.Directory.Async? dir) {
+        private void remove_subdirectory (Directory? dir) {
             if (dir != null) {
                 disconnect_directory_handlers (dir);
                 /* Release our reference on dir */

@@ -19,14 +19,12 @@
             Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Files.Directory {
-
-public class Async : Object {
-    private static HashTable<GLib.File, unowned Files.Directory.Async> directory_cache;
+public class Files.Directory : Object {
+    private static HashTable<GLib.File, unowned Files.Directory> directory_cache;
     private static Mutex dir_cache_lock;
 
     static construct {
-        directory_cache = new HashTable<GLib.File, unowned Files.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        directory_cache = new HashTable<GLib.File, unowned Files.Directory> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
     }
 
@@ -111,7 +109,7 @@ public class Async : Object {
 
     public bool loaded_from_cache {get; private set; default = false;}
 
-    private Async (GLib.File _file) {
+    private Directory (GLib.File _file) {
         Object (
             creation_key: _file
         );
@@ -151,8 +149,8 @@ public class Async : Object {
         }
     }
 
-    ~Async () {
-        debug ("Async destruct %s", file.uri);
+    ~Directory () {
+        debug ("Directory destruct %s", file.uri);
 
         if (is_trash) {
             disconnect_volume_monitor_signals ();
@@ -162,7 +160,7 @@ public class Async : Object {
     /** Views call the following function with null parameter - file_loaded and done_loading
       * signals are emitted and cause the view and view container to update.
       *
-      * LocationBar calls this function, with a callback, on its own Async instances in order
+      * LocationBar calls this function, with a callback, on its own Directory instances in order
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
      **/
@@ -441,7 +439,7 @@ public class Async : Object {
         }
 
         if (!is_ready) {
-            /* This must only be run once for each Async */
+            /* This must only be run once for each Directory */
             is_ready = true;
 
             /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
@@ -525,11 +523,11 @@ public class Async : Object {
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         if (is_last) {
-            unowned Async dir = (Async) object;
-            debug ("Async is last toggle_ref_notify %s", dir.file.uri);
+            unowned Directory dir = (Directory) object;
+            debug ("Directory is last toggle_ref_notify %s", dir.file.uri);
 
             if (!dir.removed_from_cache) {
-                Async.remove_dir_from_cache (dir);
+                Directory.remove_dir_from_cache (dir);
             }
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
@@ -945,7 +943,7 @@ public class Async : Object {
         if (idle_consume_changes_id == 0) {
             /* Insert delay to avoid race between gof.rename () finishing and consume changes -
              * If consume changes called too soon can corrupt the view.
-             * TODO: Have Files.Directory.Async control renaming.
+             * TODO: Have Files.Directory.Directory control renaming.
              */
             idle_consume_changes_id = Timeout.add (10, () => {
                 Files.FileChanges.consume_changes (true);
@@ -981,7 +979,7 @@ public class Async : Object {
     public static void notify_files_changed (List<GLib.File> files) {
         foreach (unowned var loc in files) {
             assert (loc != null);
-            Async? parent_dir = cache_lookup_parent (loc);
+            Directory? parent_dir = cache_lookup_parent (loc);
             Files.File? gof = null;
             if (parent_dir != null) {
                 gof = parent_dir.file_cache_find_or_insert (loc);
@@ -989,7 +987,7 @@ public class Async : Object {
             }
 
             /* Has a background directory been changed (e.g. properties)? If so notify the view(s)*/
-            Async? dir = cache_lookup (loc);
+            Directory? dir = cache_lookup (loc);
             if (dir != null) {
                 dir.notify_file_changed (dir.file);
             }
@@ -998,7 +996,7 @@ public class Async : Object {
 
     public static void notify_files_added (List<GLib.File> files) {
         foreach (unowned var loc in files) {
-            Async? dir = cache_lookup_parent (loc);
+            Directory? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
                 Files.File gof = dir.file_cache_find_or_insert (loc, true);
@@ -1008,7 +1006,7 @@ public class Async : Object {
     }
 
     public static void notify_files_removed (List<GLib.File> files) {
-        List<Async> dirs = null;
+        List<Directory> dirs = null;
         bool found;
 
         foreach (unowned var loc in files) {
@@ -1016,7 +1014,7 @@ public class Async : Object {
                 continue;
             }
 
-            Async? dir = cache_lookup_parent (loc);
+            Directory? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
                 Files.File gof = dir.file_cache_find_or_insert (loc);
@@ -1058,7 +1056,7 @@ public class Async : Object {
         notify_files_added (list_to);
     }
 
-    public static Async from_gfile (GLib.File file) {
+    public static Directory from_gfile (GLib.File file) {
         /* Ensure uri is correctly escaped and has scheme */
         var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
         var scheme = Uri.parse_scheme (escaped_uri);
@@ -1069,7 +1067,7 @@ public class Async : Object {
 
         var gfile = GLib.File.new_for_uri (escaped_uri);
         var afile = gfile;
-        /* Avoid adding a new Async that will be a duplicate of an existing one, when called
+        /* Avoid adding a new Directory that will be a duplicate of an existing one, when called
          * with non-folder location. */
         if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
             var ftype = gfile.query_file_type (0, null);
@@ -1079,10 +1077,10 @@ public class Async : Object {
         }
 
         /* Note: cache_lookup creates directory_cache if necessary */
-        Async? dir = cache_lookup (afile);
+        Directory? dir = cache_lookup (afile);
         /* Both local and non-local files can be cached */
         if (dir == null) {
-            dir = new Async (afile);
+            dir = new Directory (afile);
             lock (directory_cache) {
                 directory_cache.insert (dir.creation_key, dir);
             }
@@ -1098,26 +1096,26 @@ public class Async : Object {
         return dir;
     }
 
-    public static Async from_file (Files.File gof) {
+    public static Directory from_file (Files.File gof) {
         return from_gfile (gof.get_target_location ());
     }
 
     private static void remove_file_from_cache (Files.File gof) {
-        Async? dir = cache_lookup (gof.directory);
+        Directory? dir = cache_lookup (gof.directory);
         if (dir != null) {
             dir.file_hash.remove (gof.location);
         }
     }
 
-    public static Async? cache_lookup (GLib.File? file) {
-        Async? cached_dir = null;
+    public static Directory? cache_lookup (GLib.File? file) {
+        Directory? cached_dir = null;
 
-        if (directory_cache == null) { // Only happens once on startup.  Async gets added on creation
+        if (directory_cache == null) { // Only happens once on startup.  Directory gets added on creation
             return null;
         }
 
         if (file == null) {
-            critical ("Null file received in Async cache_lookup");
+            critical ("Null file received in Directory cache_lookup");
             return null;
         }
 
@@ -1126,7 +1124,7 @@ public class Async : Object {
         }
 
         if (cached_dir != null) {
-            if (cached_dir is Async && cached_dir.file != null) {
+            if (cached_dir is Directory && cached_dir.file != null) {
                 debug ("found cached dir %s", cached_dir.file.uri);
                 if (cached_dir.file.info == null && cached_dir.can_load) {
                     debug ("updating cached file info");
@@ -1146,12 +1144,12 @@ public class Async : Object {
         return cached_dir;
     }
 
-    public static Async? cache_lookup_parent (GLib.File file) {
+    public static Directory? cache_lookup_parent (GLib.File file) {
         GLib.File? parent = file.get_parent ();
         return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
 
-    public static bool remove_dir_from_cache (Async dir) {
+    public static bool remove_dir_from_cache (Directory dir) {
         if (dir.file.is_directory) {
             dir.file.is_expanded = false;
             dir.file.changed ();
@@ -1168,15 +1166,15 @@ public class Async : Object {
         return false;
     }
 
-    public static bool purge_dir_from_cache (Async dir) {
-        var removed = Async.remove_dir_from_cache (dir);
+    public static bool purge_dir_from_cache (Directory dir) {
+        var removed = Directory.remove_dir_from_cache (dir);
         /* We have to remove the dir's subfolders from cache too */
         if (removed) {
             foreach (unowned var gfile in dir.file_hash.get_keys ()) {
                 assert (gfile != null);
                 var d = cache_lookup (gfile);
                 if (d != null) {
-                    Async.remove_dir_from_cache (d);
+                    Directory.remove_dir_from_cache (d);
                 }
             }
         }
@@ -1243,5 +1241,4 @@ public class Async : Object {
             return false;
         }
     }
-}
 }
