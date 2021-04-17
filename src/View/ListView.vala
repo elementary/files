@@ -227,14 +227,12 @@ namespace FM {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
             GOF.Directory.Async? dir = null;
-            if (model.load_subdirectory (path, out dir)) {
-                if (dir != null) {
-                    connect_directory_handlers (dir);
-                    dir.init ();
-                    /* Maintain our own reference on dir, independent of the model */
-                    /* Also needed for updating show hidden status */
-                    loaded_subdirectories.prepend (dir);
-                }
+            if (model.load_subdirectory (path, out dir)) { // Returns true if dir non null
+                connect_directory_handlers (dir);
+                dir.init ();
+                /* Maintain our own reference on dir, independent of the model */
+                /* Also needed for updating show hidden status */
+                loaded_subdirectories.prepend (dir);
             }
         }
 

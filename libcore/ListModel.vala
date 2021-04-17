@@ -72,14 +72,14 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     construct {
         set_column_types ({
-            typeof(GOF.File),
-            typeof(string),
-            typeof(Gdk.Pixbuf),
-            typeof(string),
-            typeof(string),
-            typeof(string),
-            typeof(string),
-            typeof(bool)
+            typeof (GOF.File),
+            typeof (string),
+            typeof (Gdk.Pixbuf),
+            typeof (string),
+            typeof (string),
+            typeof (string),
+            typeof (string),
+            typeof (bool)
         });
 
         set_default_sort_func ((Gtk.TreeIterCompareFunc) file_entry_compare_func);
@@ -242,21 +242,17 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public bool load_subdirectory (Gtk.TreePath path, out GOF.Directory.Async? dir) {
+        dir = null;
         GOF.File? file = null;
         Gtk.TreeIter? iter;
         if (get_iter (out iter, path)) {
             get (iter, ColumnID.FILE_COLUMN, out file);
             if (file != null) {
                 dir = GOF.Directory.Async.from_file (file);
-            } else {
-                dir = null;
             }
-        } else {
-            dir = null;
         }
 
-        warning ("load_subdirectory");
-        return false;
+        return dir != null;
     }
     public bool unload_subdirectory (Gtk.TreeIter iter) {
         warning ("unload_subdirectory");
@@ -273,47 +269,62 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return false;
     }
 
+    /* Returns true if the file was not in the model and was added */
     public bool add_file (GOF.File file, GOF.Directory.Async dir) {
-        Gtk.TreeIter? iter;
+        Gtk.TreeIter? iter, parent_iter, child_iter;
+        bool change_dummy = false;
+
         if (get_first_iter_for_file (file, out iter)) {
-            return true;
+            return false;
         }
 
-        insert_with_values (out iter, null, -1, ColumnID.FILE_COLUMN, file);
+        if (get_first_iter_for_file (dir.file, out parent_iter)) {
+            if (iter_nth_child (out child_iter, parent_iter, 0)) { //Should always be at least one child
+                get (child_iter, PrivColumnID.DUMMY, out change_dummy);
+                if (change_dummy) {
+                    // Instead of inserting a new row, change the dummy one
+                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                }
+            }
+        } else {
+            parent_iter = null;
+        }
+
+        if (!change_dummy) {
+            // There was no dummy row so insert a new one
+            insert_with_values (out iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, -1);
+        }
 
         if (file.is_folder ()) {
-            // Append at least a dummy child
-            Gtk.TreeIter child_iter;
+            // Append at least a dummy child so expander will show even when folder is empty.
             append (out child_iter, iter);
         }
 
         return true;
     }
 
-    public bool remove_file (GOF.File file, GOF.Directory.Async directory) {
-        Gtk.TreeIter? iter;
-        get_first_iter_for_file (file, out iter);
+    /* Returns true if the file was found and removed */
+    public bool remove_file (GOF.File file, GOF.Directory.Async dir) {
+        // Assumed that file is actually a child of dir
+        Gtk.TreeIter? iter, parent_iter, child_iter;
+        if (!get_first_iter_for_file (file, out iter)) {
+            return false;
+        }
+
         if (iter != null) {
+            if (get_first_iter_for_file (dir.file, out parent_iter)) {
+                if (!iter_nth_child (out child_iter, parent_iter, 1)) {
+                    // This is the last child so just change it to dummy;
+                    @set (iter, ColumnID.FILE_COLUMN, null, PrivColumnID.DUMMY, true, -1);
+                    return true;
+                }
+            }
+
             remove (ref iter);
             return true;
         }
 
         return false;
-    }
-
-    public bool iter_has_child (Gtk.TreeIter iter) {
-        message("Has child?");
-        if (has_child == false) {
-            return false;
-        }
-
-        GOF.File? iter_file;
-        get (iter, ColumnID.FILE_COLUMN, out iter_file);
-        if (iter_file == null || !iter_file.is_directory) {
-            return false;
-        }
-
-        return true;
     }
 
     private int file_entry_compare_func (Gtk.TreeIter a, Gtk.TreeIter b) {
