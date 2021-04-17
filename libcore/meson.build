@@ -23,16 +23,10 @@ pantheon_files_core_vala_files = files(
     'FileChanges.vala',
     'FileUtils.vala',
     'FileConflictDialog.vala',
-# <<<<<<< HEAD
-#     'gof-callwhenready.vala',
-#     'gof-directory-async.vala',
-#     'gof-preferences.vala',
     'ListModel.vala',
-# =======
     'CallWhenReady.vala',
     'Directory.vala',
     'Preferences.vala',
-# >>>>>>> master
     'PluginManager.vala',
     'Plugin.vala',
     'ProgressInfo.vala',
