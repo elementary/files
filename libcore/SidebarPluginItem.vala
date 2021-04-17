@@ -17,7 +17,7 @@
     Author(s):  Fernando da Silva Sousa <wild.nando@gmail.com>
 ***/
 
-public class Marlin.SidebarPluginItem : Object {
+public class Files.SidebarPluginItem : Object {
     //TODO This can be simplified with rewritten Sidebar
     public const PlaceType PLACE_TYPE = PlaceType.PLUGIN_ITEM;
     public string name { get; set; }

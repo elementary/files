@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-09 04:54+0000\n"
-"PO-Revision-Date: 2021-04-01 11:43+0000\n"
+"PO-Revision-Date: 2021-04-14 12:41+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1076,9 +1076,8 @@ msgid "The original folder %s no longer exists"
 msgstr "La carpeta original %s ya no existe"
 
 #: libcore/FileUtils.vala:185
-#, fuzzy
 msgid "Would you like to recreate it?"
-msgstr "¿Te gustaría recrearlo?"
+msgstr "¿Te gustaría volver a crearlo?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1089,10 +1088,8 @@ msgid "No files that were in this folder will be restored"
 msgstr "No se restaurarán los archivos que estaban en esta carpeta"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Recrear"
+msgstr "Volver a crear"
 
 #: libcore/FileUtils.vala:194
 msgid ""

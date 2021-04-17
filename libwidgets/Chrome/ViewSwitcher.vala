@@ -21,7 +21,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class ViewSwitcher : Granite.Widgets.ModeButton {
         private const int SWITCH_DELAY_MSEC = 100;
         public GLib.SimpleAction view_mode_action { get; construct; }

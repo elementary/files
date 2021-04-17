@@ -16,12 +16,12 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.FileOperations.CommonJob {
+public class Files.FileOperations.CommonJob {
     protected unowned Gtk.Window? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
-    protected Marlin.UndoActionData? undo_redo_data;
+    protected Files.UndoActionData? undo_redo_data;
     protected CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
@@ -34,7 +34,7 @@ public class Marlin.FileOperations.CommonJob {
         progress.finish ();
         uninhibit_power_manager ();
         if (undo_redo_data != null) {
-            Marlin.UndoManager.instance ().add_action ((owned) undo_redo_data);
+            Files.UndoManager.instance ().add_action ((owned) undo_redo_data);
         }
     }
 

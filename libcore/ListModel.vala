@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
+public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     public enum ColumnID {
         FILE_COLUMN,
         COLOR,
@@ -63,7 +63,7 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         DUMMY = ColumnID.NUM_COLUMNS
     }
 
-    public signal void subdirectory_unloaded (GOF.Directory.Async directory);
+    public signal void subdirectory_unloaded (Files.Directory directory);
 
     public int icon_size { get; set; default = 32; }
     public bool has_child { get; set; default = false; }
@@ -72,7 +72,7 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     construct {
         set_column_types ({
-            typeof (GOF.File),
+            typeof (Files.File),
             typeof (string),
             typeof (Gdk.Pixbuf),
             typeof (string),
@@ -93,8 +93,8 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         );
     }
 
-    public GOF.File? file_for_path (Gtk.TreePath path) {
-        GOF.File? file = null;
+    public Files.File? file_for_path (Gtk.TreePath path) {
+        Files.File? file = null;
         Gtk.TreeIter? iter;
         if (get_iter (out iter, path)) {
             get (iter, ColumnID.FILE_COLUMN, ref file);
@@ -103,8 +103,8 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return file;
     }
 
-    public GOF.File? file_for_iter (Gtk.TreeIter iter) {
-        GOF.File? file = null;
+    public Files.File? file_for_iter (Gtk.TreeIter iter) {
+        Files.File? file = null;
         get (iter, ColumnID.FILE_COLUMN, ref file);
         return file;
     }
@@ -113,10 +113,10 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return iter_n_children (null);
     }
 
-    public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter? iter) {
+    public bool get_first_iter_for_file (Files.File file, out Gtk.TreeIter? iter) {
         Gtk.TreeIter? tmp_iter = null;
         this.foreach ((model, path, i_iter) => {
-            GOF.File? iter_file = null;
+            Files.File? iter_file = null;
             get (i_iter, ColumnID.FILE_COLUMN, ref iter_file);
             if (iter_file == file) {
                 tmp_iter = i_iter;
@@ -133,19 +133,19 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     public void get_value (Gtk.TreeIter iter, int column, out Value value) {
         Value file_value;
         base.get_value (iter, ColumnID.FILE_COLUMN, out file_value);
-        unowned GOF.File? file = (GOF.File) file_value.get_object ();
+        unowned Files.File? file = (Files.File) file_value.get_object ();
 
         switch (column) {
             case ColumnID.FILE_COLUMN:
-                value = Value (typeof (GOF.File));
+                value = Value (typeof (Files.File));
                 value.set_object (file);
                 break;
             case ColumnID.COLOR:
                 value = Value (typeof (string));
-                if (file != null && file.color < GOF.Preferences.TAGS_COLORS.length) {
-                    value.set_string (GOF.Preferences.TAGS_COLORS[file.color]);
+                if (file != null && file.color < Files.Preferences.TAGS_COLORS.length) {
+                    value.set_string (Files.Preferences.TAGS_COLORS[file.color]);
                 } else {
-                    value.set_string (GOF.Preferences.TAGS_COLORS[0]);
+                    value.set_string (Files.Preferences.TAGS_COLORS[0]);
                 }
 
                 break;
@@ -205,10 +205,10 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         }
     }
 
-    public void file_changed (GOF.File file, GOF.Directory.Async dir) {
+    public void file_changed (Files.File file, Files.Directory dir) {
         bool found = false;
         this.foreach ((model, path, iter) => {
-            GOF.File? iter_file = null;
+            Files.File? iter_file = null;
             get (iter, ColumnID.FILE_COLUMN, ref iter_file);
             if (iter_file == file) {
                 model.row_changed (path, iter);
@@ -241,14 +241,14 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         set_sort_column_id (sort_column_id, order);
     }
 
-    public bool load_subdirectory (Gtk.TreePath path, out GOF.Directory.Async? dir) {
+    public bool load_subdirectory (Gtk.TreePath path, out Files.Directory? dir) {
         dir = null;
-        GOF.File? file = null;
+        Files.File? file = null;
         Gtk.TreeIter? iter;
         if (get_iter (out iter, path)) {
             get (iter, ColumnID.FILE_COLUMN, out file);
             if (file != null) {
-                dir = GOF.Directory.Async.from_file (file);
+                dir = Files.Directory.from_file (file);
             }
         }
 
@@ -256,10 +256,10 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
     public bool unload_subdirectory (Gtk.TreeIter iter) {
         warning ("unload_subdirectory");
-        GOF.File? file = null;
+        Files.File? file = null;
         get (iter, ColumnID.FILE_COLUMN, out file);
         if (file != null) {
-            var dir = GOF.Directory.Async.from_file (file);
+            var dir = Files.Directory.from_file (file);
             dir.cancel ();
 
             subdirectory_unloaded (dir);
@@ -270,7 +270,7 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     /* Returns true if the file was not in the model and was added */
-    public bool add_file (GOF.File file, GOF.Directory.Async dir) {
+    public bool add_file (Files.File file, Files.Directory dir) {
         Gtk.TreeIter? iter, parent_iter, child_iter;
         bool change_dummy = false;
 
@@ -304,7 +304,7 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     /* Returns true if the file was found and removed */
-    public bool remove_file (GOF.File file, GOF.Directory.Async dir) {
+    public bool remove_file (Files.File file, Files.Directory dir) {
         // Assumed that file is actually a child of dir
         Gtk.TreeIter? iter, parent_iter, child_iter;
         if (!get_first_iter_for_file (file, out iter)) {
@@ -328,8 +328,8 @@ public class FM.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     private int file_entry_compare_func (Gtk.TreeIter a, Gtk.TreeIter b) {
-        GOF.File? file_a = null;
-        GOF.File? file_b = null;
+        Files.File? file_a = null;
+        Files.File? file_b = null;
         get (a, ColumnID.FILE_COLUMN, out file_a);
         get (b, ColumnID.FILE_COLUMN, out file_b);
 

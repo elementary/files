@@ -11,8 +11,8 @@ namespace Config {
     public const string TERMINAL_NAME;
 }
 
-namespace Marlin {
-    [CCode (lower_case_cprefix = "marlin_file_operations_")]
+namespace Files {
+    [CCode (lower_case_cprefix = "marlin_file_operations_", cname = "MarlinFileOperations")]
     namespace FileOperations {
         [CCode (cheader_filename = "marlin-file-operations.h")]
         static async GLib.File? new_folder (Gtk.Widget? parent_view, GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error;
