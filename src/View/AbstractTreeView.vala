@@ -22,6 +22,14 @@ namespace Files {
         protected Files.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
+        protected const string CUSTOM_CSS = """
+            .view:selected:focus,
+            .cell:selected:focus
+            {
+                background-color: alpha (@text_color, 0.2);
+            }
+        """;
+
         protected AbstractTreeView (View.Slot _slot) {
             base (_slot);
         }
@@ -96,6 +104,16 @@ namespace Files {
             tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
             create_and_set_up_name_column ();
             set_up_view ();
+
+
+            var provider = new Gtk.CssProvider ();
+            var style_context = tree.get_style_context ();
+            try {
+                provider.load_from_data (CUSTOM_CSS);
+                style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                critical (e.message);
+            }
 
             return tree as Gtk.Widget;
         }

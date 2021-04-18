@@ -70,11 +70,30 @@ namespace Files {
         Gtk.Widget widget;
         AbstractEditableLabel entry;
 
+        private Gtk.CssProvider background_css;
+        private const string CUSTOM_CSS = """
+            *
+            {
+                border-radius: 5px;
+                box-shadow:
+                    inset 0 0 0 2px alpha (@text_color, 0.05),
+                    inset 0 2px 0 0 alpha (@text_color, 0.45),
+                    inset 0 -2px 0 0 alpha (@text_color, 0.15);
+            }
+        """;
+
         construct {
             this.mode = Gtk.CellRendererMode.EDITABLE;
             text_css = new Gtk.CssProvider ();
             previous_background_rgba = { 0, 0, 0, 0 };
             previous_contrasting_rgba = { 0, 0, 0, 0 };
+
+            background_css = new Gtk.CssProvider ();
+            try {
+                background_css.load_from_data (CUSTOM_CSS);
+            } catch (Error e) {
+
+            }
         }
 
         public TextRenderer (ViewMode viewmode) {
@@ -103,25 +122,35 @@ namespace Files {
                                      Gdk.Rectangle cell_area,
                                      Gtk.CellRendererState flags) {
             set_widget (widget);
-            Gtk.StateFlags state = widget.get_state_flags ();
 
-            if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED) {
-                state |= Gtk.StateFlags.SELECTED;
-            } else if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT) {
-                state = Gtk.StateFlags.PRELIGHT;
-            } else {
-                state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
-            }
+            bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
+            bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
+            bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
+            var state = Gtk.StateFlags.NORMAL;
 
-            set_up_layout (text, cell_area.width);
 
             var style_context = widget.get_parent ().get_style_context ();
             style_context.save ();
+
+            if (!widget.sensitive || !this.sensitive) {
+                state |= Gtk.StateFlags.INSENSITIVE;
+            } else if (focused) {
+                state |= Gtk.StateFlags.FOCUSED;
+                style_context.add_provider (background_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            }
+
+
+            state |= widget.get_state_flags ();
+            set_up_layout (text, cell_area.width);
+
             style_context.set_state (state);
 
             int x_offset, y_offset, focus_rect_width, focus_rect_height;
             draw_focus (cr, cell_area, flags, style_context, state, out x_offset, out y_offset,
                         out focus_rect_width, out focus_rect_height);
+
+
+            style_context.remove_provider (background_css);
 
             /* Position text relative to the focus rectangle */
             if (!is_list_view) {
@@ -319,12 +348,14 @@ namespace Files {
                                  out int focus_rect_height) {
 
             bool selected = false;
+            bool focused = false;
             focus_rect_width = 0;
             focus_rect_height = 0;
             x_offset = 0;
             y_offset = 0;
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
+            focused = ((flags & Gtk.CellRendererState.FOCUSED) == Gtk.CellRendererState.FOCUSED);
             focus_rect_height = text_height + border_radius;
             focus_rect_width = text_width + double_border_radius;
 
@@ -334,11 +365,12 @@ namespace Files {
 
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
-            /* render the background if selected or colorized */
-            if (selected || this.background_set) {
+            var provider = new Gtk.CssProvider ();
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
-                var provider = new Gtk.CssProvider ();
+
+            /* render the background if selected or colorized */
+            if (selected || this.background_set) {
                 string data;
                 if (selected && !background_set) {
                     data = "* {border-radius: 5px;}";
@@ -349,12 +381,13 @@ namespace Files {
                 try {
                     provider.load_from_data (data);
                     style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                    style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
-                    style_context.remove_provider (provider);
                 } catch (Error e) {
                     critical (e.message);
                 }
             }
+
+            style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
+            style_context.remove_provider (provider);
 
             /* Icons are highlighted when focussed - there is no focus indicator on text */
         }

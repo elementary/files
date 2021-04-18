@@ -66,6 +66,8 @@
         </ul>
         <p>Improvements:</p>
         <ul>
+          <li>Discontinue colorization and highlighting of focused and hovered icons</li>
+          <li>Grey background for selected items in Icon View</li>   
           <li>Do not restore locations that have become inaccessible</li>
           <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
         </ul>

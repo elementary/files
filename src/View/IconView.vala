@@ -26,6 +26,14 @@ namespace Files {
         protected bool linear_select_required = false;
         protected Gtk.TreePath? most_recently_selected = null;
 
+        protected const string CUSTOM_CSS = """
+            .view:selected:focus,
+            .cell:selected:focus
+            {
+                background-color: alpha (@text_color, 0.2);
+            }
+        """;
+
         public IconView (View.Slot _slot) {
             base (_slot);
         }
@@ -82,6 +90,16 @@ namespace Files {
 
         protected override Gtk.Widget? create_view () {
             tree = new Gtk.IconView ();
+
+            var provider = new Gtk.CssProvider ();
+            var style_context = tree.get_style_context ();
+            try {
+                provider.load_from_data (CUSTOM_CSS);
+                style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                critical (e.message);
+            }
+
             set_up_view ();
 
             return tree as Gtk.Widget;

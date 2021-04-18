@@ -166,26 +166,6 @@ namespace Files {
 
             if (!widget.sensitive || !this.sensitive) {
                 state |= Gtk.StateFlags.INSENSITIVE;
-            } else if (follow_state) {
-                if (selected) {
-                    state = Gtk.StateFlags.SELECTED;
-                    state |= widget.get_state_flags ();
-                }
-
-                if (focused) {
-                    var bg = style_context.get_property ("background-color", state);
-                    if (bg.holds (typeof (Gdk.RGBA))) {
-                        var color = (Gdk.RGBA) bg;
-                        /* if background-color is black something probably is wrong */
-                        if (color.red != 0 || color.green != 0 || color.blue != 0) {
-                            pb = PF.PixbufUtils.colorize (pb, color);
-                        }
-                    }
-                }
-
-                if (prelit || focused) {
-                    pb = PF.PixbufUtils.lighten (pb);
-                }
             }
 
             if (file.is_image ()) {
@@ -194,9 +174,6 @@ namespace Files {
             }
 
             cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
-            style_context.render_background (cr,
-                                             draw_rect.x * icon_scale, draw_rect.y * icon_scale,
-                                             draw_rect.width * icon_scale, draw_rect.height * icon_scale);
 
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
