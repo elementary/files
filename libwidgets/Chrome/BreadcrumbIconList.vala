@@ -16,7 +16,7 @@
 * Boston, MA 02110-1335 USA.
 */
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class BreadcrumbIconInfo {
         public string path;
         public bool protocol;
@@ -71,7 +71,7 @@ namespace Marlin.View.Chrome {
                     icon_width = icon.get_width () / scale;
                     icon_height = icon.get_height () / scale;
                 } catch (Error e) {
-                    warning ("Filed to load icon for %s - %s", text_displayed, e.message);
+                    warning ("Filed to load icon for %s: %s", text_displayed, e.message);
                 }
             }
 
@@ -111,36 +111,38 @@ namespace Marlin.View.Chrome {
         construct {
             icon_info_list = new Gee.ArrayList<BreadcrumbIconInfo> ();
 
-            add_protocol_directory ("afp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("dav", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("davs", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("ftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("sftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("mtp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("network", Marlin.ICON_NETWORK_SYMBOLIC);
-            add_protocol_directory ("smb", Marlin.ICON_NETWORK_SERVER_SYMBOLIC);
-            add_protocol_directory ("trash", Marlin.ICON_TRASH_SYMBOLIC);
-            add_protocol_directory ("recent", Marlin.ICON_RECENT_SYMBOLIC);
+            add_protocol_directory ("afp", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("dav", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("davs", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("ftp", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("sftp", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("mtp", Files.ICON_DEVICE_REMOVABLE_MEDIA_SYMBOLIC);
+            add_protocol_directory ("gphoto2", Files.ICON_DEVICE_CAMERA_SYMBOLIC);
+            add_protocol_directory ("afc", Files.ICON_DEVICE_PHONE_SYMBOLIC);
+            add_protocol_directory ("network", Files.ICON_NETWORK_SYMBOLIC);
+            add_protocol_directory ("smb", Files.ICON_NETWORK_SERVER_SYMBOLIC);
+            add_protocol_directory ("trash", Files.ICON_TRASH_SYMBOLIC);
+            add_protocol_directory ("recent", Files.ICON_RECENT_SYMBOLIC);
 
             add_special_directory (Environment.get_user_special_dir (UserDirectory.MUSIC),
-                                   Marlin.ICON_FOLDER_MUSIC_SYMBOLIC);
+                                   Files.ICON_FOLDER_MUSIC_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.PICTURES),
-                                   Marlin.ICON_FOLDER_PICTURES_SYMBOLIC);
+                                   Files.ICON_FOLDER_PICTURES_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.VIDEOS),
-                                   Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC);
+                                   Files.ICON_FOLDER_VIDEOS_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.DOWNLOAD),
-                                   Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
+                                   Files.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.DOCUMENTS),
-                                   Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
+                                   Files.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.TEMPLATES),
-                                   Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC);
-            add_special_directory (PF.UserUtils.get_real_user_home (), Marlin.ICON_GO_HOME_SYMBOLIC, true);
-            add_special_directory ("/media", Marlin.ICON_FILESYSTEM_SYMBOLIC, true);
-            add_special_directory (Path.DIR_SEPARATOR_S, Marlin.ICON_FILESYSTEM_SYMBOLIC);
+                                   Files.ICON_FOLDER_TEMPLATES_SYMBOLIC);
+            add_special_directory (PF.UserUtils.get_real_user_home (), Files.ICON_GO_HOME_SYMBOLIC, true);
+            add_special_directory ("/media", Files.ICON_FILESYSTEM_SYMBOLIC, true);
+            add_special_directory (Path.DIR_SEPARATOR_S, Files.ICON_FILESYSTEM_SYMBOLIC);
         }
 
         private void add_protocol_directory (string protocol, string icon) {
-            var separator = "://" + (protocol == "mtp" ? "[" : "");
+            var separator = "://" + ((protocol == "mtp" || protocol == "gphoto2") ? "[" : "");
             var info = new BreadcrumbIconInfo.protocol_directory (protocol + separator,
                                                                     icon,
                                                                     protocol_to_name (protocol));

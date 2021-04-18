@@ -20,9 +20,9 @@
              Julián Unrrein <junrrein@gmail.com>
 ***/
 
-public class Marlin.MimeActions {
+public class Files.MimeActions {
 
-    public static AppInfo? get_default_application_for_file (GOF.File file) {
+    public static AppInfo? get_default_application_for_file (Files.File file) {
 
         AppInfo app = file.get_default_handler ();
 
@@ -37,9 +37,9 @@ public class Marlin.MimeActions {
         return app;
     }
 
-    public static AppInfo? get_default_application_for_files (GLib.List<GOF.File> files) {
+    public static AppInfo? get_default_application_for_files (GLib.List<Files.File> files) {
         /* Need to make a new list to avoid corrupting the selection */
-        GLib.List<GOF.File> sorted_files = null;
+        GLib.List<Files.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });
@@ -47,9 +47,9 @@ public class Marlin.MimeActions {
         sorted_files.sort (file_compare_by_mime_type);
 
         AppInfo? app = null;
-        GOF.File? previous_file = null;
+        Files.File? previous_file = null;
 
-        foreach (GOF.File file in sorted_files) {
+        foreach (Files.File file in sorted_files) {
             if (previous_file == null) {
                 app = get_default_application_for_file (file);
                 previous_file = file;
@@ -79,7 +79,7 @@ public class Marlin.MimeActions {
         return app;
     }
 
-    public static List<AppInfo> get_applications_for_file (GOF.File file) {
+    public static List<AppInfo> get_applications_for_file (Files.File file) {
         List<AppInfo> result = null;
         string? type = file.get_ftype ();
         if (type == null) {
@@ -109,7 +109,7 @@ public class Marlin.MimeActions {
         return result;
     }
 
-    public static List<AppInfo> get_applications_for_folder (GOF.File file) {
+    public static List<AppInfo> get_applications_for_folder (Files.File file) {
         List<AppInfo> result = AppInfo.get_all_for_type (ContentType.get_mime_type ("inode/directory"));
         string uri_scheme = file.location.get_uri_scheme ();
 
@@ -129,9 +129,9 @@ public class Marlin.MimeActions {
         return result;
     }
 
-    public static List<AppInfo> get_applications_for_files (GLib.List<GOF.File> files) {
+    public static List<AppInfo> get_applications_for_files (GLib.List<Files.File> files) {
         /* Need to make a new list to avoid corrupting the selection */
-        GLib.List<unowned GOF.File> sorted_files = null;
+        GLib.List<unowned Files.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });
@@ -139,9 +139,9 @@ public class Marlin.MimeActions {
         sorted_files.sort (file_compare_by_mime_type);
 
         List<AppInfo> result = null;
-        unowned GOF.File previous_file = null;
+        unowned Files.File previous_file = null;
 
-        foreach (unowned GOF.File file in sorted_files) {
+        foreach (unowned Files.File file in sorted_files) {
             if (previous_file == null) {
                 result = get_applications_for_file (file);
                 if (result == null) {
@@ -180,7 +180,7 @@ public class Marlin.MimeActions {
         return result;
     }
 
-    private static bool file_has_local_path (GOF.File file) {
+    private static bool file_has_local_path (Files.File file) {
         if (file.location.is_native ()) {
             return true;
         } else {
@@ -189,15 +189,15 @@ public class Marlin.MimeActions {
         }
     }
 
-    private static int file_compare_by_mime_type (GOF.File a, GOF.File b) {
+    private static int file_compare_by_mime_type (Files.File a, Files.File b) {
         return strcmp (a.get_ftype (), b.get_ftype ());
     }
 
-    private static string? gof_get_parent_uri (GOF.File file) {
+    private static string? gof_get_parent_uri (Files.File file) {
         return file.directory != null ? file.directory.get_uri () : null;
     }
 
-    private static int file_compare_by_parent_uri (GOF.File a, GOF.File b) {
+    private static int file_compare_by_parent_uri (Files.File a, Files.File b) {
         return strcmp (gof_get_parent_uri (a), gof_get_parent_uri (b));
     }
 
@@ -249,7 +249,7 @@ public class Marlin.MimeActions {
     }
 
     public static AppInfo? get_default_application_for_glib_file (GLib.File file) {
-        return get_default_application_for_file (GOF.File.@get (file));
+        return get_default_application_for_file (Files.File.@get (file));
     }
 
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
@@ -265,7 +265,7 @@ public class Marlin.MimeActions {
         }
     }
 
-    public static void open_multiple_gof_files_request (GLib.List<GOF.File> gofs_to_open,
+    public static void open_multiple_gof_files_request (GLib.List<Files.File> gofs_to_open,
                                                         Gtk.Widget parent,
                                                         AppInfo? app = null) {
         /* Note: This function should be only called if files_to_open are not executables or it is not
@@ -277,30 +277,30 @@ public class Marlin.MimeActions {
             app_info = app;
         }
 
-        var win = get_toplevel_window (parent);
-
         if (app_info == null) {
-            PF.Dialogs.show_error_dialog (_("Multiple file types selected"),
-                                          _("No single app can open all these types of file"), win);
+            PF.Dialogs.show_error_dialog (
+                _("Multiple file types selected"),
+                _("No single app can open all these types of file"),
+                Files.get_active_window ());
         } else {
             GLib.List<GLib.File> files_to_open = null;
             foreach (var gof in gofs_to_open) {
                 files_to_open.append (gof.location);
             }
 
-            launch_with_app (files_to_open, app_info, win);
+            launch_with_app (files_to_open, app_info, Files.get_active_window ());
         }
     }
 
     public static AppInfo? choose_app_for_glib_file (GLib.File file_to_open, Gtk.Widget parent) {
-        var chooser = new PF.ChooseAppDialog (get_toplevel_window (parent), file_to_open);
+        var chooser = new PF.ChooseAppDialog (Files.get_active_window (), file_to_open);
         return chooser.get_app_info ();
     }
 
      private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
         GLib.List<GLib.File> files_to_open = null;
         files_to_open.append (file_to_open);
-        launch_with_app (files_to_open, app, get_toplevel_window (parent));
+        launch_with_app (files_to_open, app, Files.get_active_window ());
      }
 
     private static void launch_with_app (GLib.List<GLib.File> files_to_open, AppInfo app, Gtk.Window? win) {
@@ -323,15 +323,5 @@ public class Marlin.MimeActions {
         } else {
             PF.Dialogs.show_error_dialog (_("Could not open files or URIs with this app"), "", win);
         }
-    }
-
-    private static Gtk.Window? get_toplevel_window (Gtk.Widget widget) {
-        Gtk.Window? win = null;
-        var tl = widget.get_toplevel ();
-        if (tl.is_toplevel ()) {
-            win = (Gtk.Window)tl;
-        }
-
-        return win;
     }
 }

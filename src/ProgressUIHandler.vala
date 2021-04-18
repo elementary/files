@@ -25,9 +25,9 @@
  *   approximately 1 second. The launcher is also updated if present and a notification is sent of the
  *   completion of the operation unless it was cancelled by the user.
 ***/
-public class Marlin.Progress.UIHandler : Object {
+public class Files.Progress.UIHandler : Object {
     private PF.Progress.InfoManager manager = null;
-    private Gtk.Dialog progress_window = null;
+    private Granite.Dialog progress_window = null;
     private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
     private Gtk.Application application;
@@ -104,7 +104,7 @@ public class Marlin.Progress.UIHandler : Object {
     private void add_to_window (PF.Progress.Info info) {
         ensure_window ();
 
-        var progress_widget = new Marlin.Progress.InfoWidget (info);
+        var progress_widget = new Progress.InfoWidget (info);
         window_vbox.pack_start (progress_widget, false, false, 6);
 
         progress_widget.cancelled.connect ((info) => {
@@ -121,9 +121,8 @@ public class Marlin.Progress.UIHandler : Object {
     private void ensure_window () {
         if (progress_window == null) {
             /* This provides an undeletable, unminimisable window in which to show the info widgets */
-            progress_window = new Gtk.Dialog () {
+            progress_window = new Granite.Dialog () {
                 resizable = false,
-                deletable = false,
                 title = _("File Operations"),
                 icon_name = "system-file-manager"
             };
@@ -187,7 +186,7 @@ public class Marlin.Progress.UIHandler : Object {
 
         var complete_notification = new GLib.Notification (_("File Operations"));
         complete_notification.set_body (result);
-        complete_notification.set_icon (new GLib.ThemedIcon (Marlin.ICON_APP_LOGO));
+        complete_notification.set_icon (new GLib.ThemedIcon (ICON_APP_LOGO));
         application.send_notification ("Pantheon Files Operation", complete_notification);
     }
 
@@ -214,7 +213,7 @@ public class Marlin.Progress.UIHandler : Object {
                         }
                     } catch (Error e) {
                         can_show_launcher_progress = false;
-                        debug ("Could not set progress visible - %s", e.message);
+                        debug ("Could not set progress visible: %s", e.message);
                     }
                 });
             } else if (launcher_progress_visible) {

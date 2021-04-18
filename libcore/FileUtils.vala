@@ -62,37 +62,37 @@ namespace PF.FileUtils {
          * results for some gvfs files.
          */
         string parent_path = construct_parent_path (path, include_file_protocol);
-        if (parent_path == Marlin.FTP_URI ||
-            parent_path == Marlin.SFTP_URI) {
+        if (parent_path == Files.FTP_URI ||
+            parent_path == Files.SFTP_URI) {
 
             parent_path = path;
         }
 
-        if ((parent_path.has_prefix (Marlin.MTP_URI) || parent_path.has_prefix (Marlin.PTP_URI)) &&
+        if ((parent_path.has_prefix (Files.MTP_URI) || parent_path.has_prefix (Files.PTP_URI)) &&
             !valid_mtp_uri (parent_path)) {
 
             parent_path = path;
         }
 
-        if (parent_path == Marlin.SMB_URI) {
+        if (parent_path == Files.SMB_URI) {
             parent_path = parent_path + Path.DIR_SEPARATOR_S;
         }
 
         return parent_path;
     }
 
-    public void restore_files_from_trash (GLib.List<GOF.File> files, Gtk.Widget? widget) {
-        GLib.List<GOF.File>? unhandled_files = null;
+    public void restore_files_from_trash (GLib.List<Files.File> files, Gtk.Widget? widget) {
+        GLib.List<Files.File>? unhandled_files = null;
         var original_dirs_hash = get_trashed_files_original_directories (files, out unhandled_files);
 
-        foreach (GOF.File goffile in unhandled_files) {
+        foreach (Files.File goffile in unhandled_files) {
             var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
             PF.Dialogs.show_warning_dialog (message, _("The item cannot be restored from trash"),
                                             (widget is Gtk.Window) ? widget as Gtk.Window : null );
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
-                Marlin.FileOperations.copy_move_link.begin (dir_files,
+                Files.FileOperations.copy_move_link.begin (dir_files,
                                                             original_dir,
                                                             Gdk.DragAction.MOVE,
                                                             widget,
@@ -101,12 +101,13 @@ namespace PF.FileUtils {
     }
 
     private GLib.HashTable<GLib.File, GLib.List<GLib.File>>
-    get_trashed_files_original_directories (GLib.List<GOF.File> files, out GLib.List<GOF.File> unhandled_files) {
+    get_trashed_files_original_directories (GLib.List<Files.File> files, out GLib.List<Files.File> unhandled_files) {
 
         var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
         unhandled_files = null;
 
-        foreach (unowned GOF.File goffile in files) {
+        var exists_map = new Gee.HashMap<string, int> ();
+        foreach (unowned Files.File goffile in files) {
             /* Check it is a valid file (e.g. not a dummy row from list view) */
             if (goffile == null || goffile.location == null) {
                 continue;
@@ -118,9 +119,22 @@ namespace PF.FileUtils {
                 /* We are in trash root */
                 var original_dir = get_trashed_file_original_folder (goffile);
                 if (original_dir != null) {
-                    GLib.List<GLib.File>? dir_files = directories.take (original_dir);
-                    dir_files.prepend (goffile.location);
-                    directories.insert (original_dir, (owned)dir_files);
+                    int exists = -1; //Unknown whether exists
+                    if (exists_map.has_key (original_dir.get_path ())) {
+                        exists = exists_map.@get (original_dir.get_path ());
+                    }
+                    if (exists == 1 || (exists < 0 && ensure_exists (original_dir))) {
+                        if (exists < 0) {
+                            exists_map.@set (original_dir.get_path (), 1); // Do not need to check this path again
+                        }
+                        GLib.List<GLib.File>? dir_files = directories.take (original_dir);
+                        dir_files.prepend (goffile.location);
+                        directories.insert (original_dir, (owned)dir_files);
+                    } else {
+                        if (exists < 0) {
+                            exists_map.@set (original_dir.get_path (), 0); // Do not need to check this path again
+                        }
+                    }
                 } else {
                     unhandled_files.prepend (goffile);
                 }
@@ -130,7 +144,7 @@ namespace PF.FileUtils {
         return directories;
    }
 
-    private GLib.File? get_trashed_file_original_folder (GOF.File file) {
+    private GLib.File? get_trashed_file_original_folder (Files.File file) {
         GLib.FileInfo? info = null;
         string? original_path = null;
 
@@ -140,7 +154,7 @@ namespace PF.FileUtils {
                     info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH,
                                                      GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                 } catch (GLib.Error e) {
-                    debug ("Error querying info of trashed file %s - %s", file.uri, e.message);
+                    debug ("Error querying info of trashed file %s: %s", file.uri, e.message);
                     return null;
                 }
             }
@@ -159,6 +173,54 @@ namespace PF.FileUtils {
             debug ("Could not get original path for trashed file %s", file.uri);
             return null;
         }
+    }
+
+    private bool ensure_exists (File file) {
+        if (file.query_exists ()) {
+            return true;
+        }
+
+        var dialog = new Granite.MessageDialog.with_image_from_icon_name (
+            _("The original folder %s no longer exists").printf (file.get_path ()),
+            _("Would you like to recreate it?"),
+            "dialog-question",
+            Gtk.ButtonsType.NONE
+        );
+
+        var ignore_button = dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
+        ignore_button.tooltip_text = _("No files that were in this folder will be restored");
+        var recreate_button = dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
+        recreate_button.tooltip_text =
+             _ ("The folder will be recreated and selected files that were originally there will be restored to it");
+
+        dialog.set_default_response (Gtk.ResponseType.ACCEPT);
+
+        var response = dialog.run ();
+        dialog.destroy ();
+        switch (response) {
+            case Gtk.ResponseType.ACCEPT:
+                try {
+                    file.make_directory_with_parents ();
+                    return true;
+                } catch (Error e) {
+                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                        e.message,
+                        "dialog-error",
+                        Gtk.ButtonsType.CLOSE
+                    );
+
+                    error_dialog.run ();
+                    error_dialog.destroy ();
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+        return false;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
@@ -256,7 +318,7 @@ namespace PF.FileUtils {
             split_protocol_from_path (unsanitized_current_uri, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
 
-            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) && path.length > 0) {
+            if ((scheme == "" || scheme == Files.ROOT_FS_URI) && path.length > 0) {
                 string [] paths = path.split ("/", 2);
                 switch (paths[0]) {
                     // ignore home documents
@@ -266,7 +328,7 @@ namespace PF.FileUtils {
                         break;
                     // process special parent dir
                     case "..":
-                        if (current_scheme != "" && current_scheme != Marlin.ROOT_FS_URI) {
+                        if (current_scheme != "" && current_scheme != Files.ROOT_FS_URI) {
                             /* We need to append the current scheme later */
                             scheme = current_scheme;
                         }
@@ -303,7 +365,7 @@ namespace PF.FileUtils {
         }
 
         if (path.length > 0) {
-            if ((scheme == "" || scheme == Marlin.ROOT_FS_URI) &&
+            if ((scheme == "" || scheme == Files.ROOT_FS_URI) &&
                 (path.has_prefix ("~/") || path.has_prefix ("/~") || path == "~")) {
 
                 if (path.has_prefix ("/")) {
@@ -324,9 +386,9 @@ namespace PF.FileUtils {
         string new_path = (scheme + path).replace ("////", "///");
         if (new_path.length > 0) {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
-            if (!scheme.has_prefix (Marlin.ROOT_FS_URI) &&
-                !scheme.has_prefix (Marlin.TRASH_URI) &&
-                !scheme.has_prefix (Marlin.RECENT_URI)) {
+            if (!scheme.has_prefix (Files.ROOT_FS_URI) &&
+                !scheme.has_prefix (Files.TRASH_URI) &&
+                !scheme.has_prefix (Files.RECENT_URI)) {
 
                 new_path = new_path.replace ("///", "//");
             }
@@ -338,8 +400,25 @@ namespace PF.FileUtils {
             }
         }
 
-        if (!include_file_protocol && new_path.has_prefix (Marlin.ROOT_FS_URI)) {
-            new_path = new_path.slice (Marlin.ROOT_FS_URI.length, new_path.length);
+        if (!include_file_protocol && new_path.has_prefix (Files.ROOT_FS_URI)) {
+            new_path = new_path.slice (Files.ROOT_FS_URI.length, new_path.length);
+        }
+
+        if (scheme.has_prefix ("afc")) {
+            var colon_parts = new_path.split (":", 3);
+            if (colon_parts.length > 2) {
+                /* It may be enough to only process device addresses but we deal with all afc uris in case.
+                 * We have to assume the true device name does not contain any colons */
+                var separator_parts = colon_parts[2].split (Path.DIR_SEPARATOR_S, 2);
+                var device_name_end = separator_parts[0];
+                if (uint64.try_parse (device_name_end)) {
+                    /* Device ends in e.g. `:3`. Need to strip this suffix to successfully browse */
+                    new_path = string.join (":", colon_parts[0], colon_parts[1]);
+                    if (separator_parts.length > 1) {
+                        new_path = string.join (Path.DIR_SEPARATOR_S, new_path, separator_parts[1]);
+                    }
+                }
+            }
         }
 
         return new_path;
@@ -363,21 +442,21 @@ namespace PF.FileUtils {
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    critical ("Invalid mtp or ptp path %s", path);
-                    protocol = new_path.dup ();
-                    new_path = "/";
+                    debug ("Invalid mtp or ptp path %s", path);
+                    protocol = explode_protocol[0] + "://";
+                    new_path = explode_protocol[1] ?? "";
                 }
             } else {
                 protocol = explode_protocol[0] + "://";
                 new_path = explode_protocol[1] ?? "";
             }
         } else {
-            protocol = Marlin.ROOT_FS_URI;
+            protocol = Files.ROOT_FS_URI;
         }
 
         /* Ensure a protocol is returned so file.get_path () always works on sanitized paths*/
-        if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
-            protocol = Marlin.ROOT_FS_URI;
+        if (Files.ROOT_FS_URI.has_prefix (protocol)) {
+            protocol = Files.ROOT_FS_URI;
         }
 
         /* Consistently remove any remove trailing separator so that paths can be reliably compared */
@@ -387,15 +466,17 @@ namespace PF.FileUtils {
     }
 
     private bool valid_mtp_uri (string uri) {
-        if (!uri.contains (Marlin.MTP_URI) && !uri.contains (Marlin.PTP_URI)) {
+        if (!uri.contains (Files.MTP_URI) && !uri.contains (Files.PTP_URI)) {
             return false;
         }
+
         string[] explode_protocol = uri.split ("://", 2);
         if (explode_protocol.length != 2 ||
             !explode_protocol[1].has_prefix ("[") ||
             !explode_protocol[1].contains ("]")) {
             return false;
         }
+
         return true;
     }
 
@@ -459,7 +540,7 @@ namespace PF.FileUtils {
     }
 
     public string custom_basename_from_file (GLib.File location) {
-        var gof = GOF.File.@get (location); // In most case a GOF.File can be retrieved from cache
+        var gof = Files.File.@get (location); // In most case a Files.File can be retrieved from cache
         return gof.get_display_name (); // Falls back to location.get_basename ()
     }
 
@@ -471,7 +552,7 @@ namespace PF.FileUtils {
 
 
         GLib.File? new_location = null;
-        GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
+        Files.Directory? dir = Files.Directory.cache_lookup_parent (old_location);
         string? original_name = old_location.get_basename ();
 
         try {
@@ -485,13 +566,13 @@ namespace PF.FileUtils {
                 added_files.append (new_location);
                 var removed_files = new GLib.List<GLib.File> ();
                 removed_files.append (old_location);
-                GOF.Directory.Async.notify_files_removed (removed_files);
-                GOF.Directory.Async.notify_files_added (added_files);
+                Files.Directory.notify_files_removed (removed_files);
+                Files.Directory.notify_files_added (added_files);
             } else {
-                warning ("Renamed file has no GOF.Directory.Async");
+                warning ("Renamed file has no Files.Directory.Async");
             }
 
-            Marlin.UndoManager.instance ().add_rename_action (new_location, original_name);
+            Files.UndoManager.instance ().add_rename_action (new_location, original_name);
         } catch (Error e) {
             warning ("Rename error");
             PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
@@ -547,7 +628,7 @@ namespace PF.FileUtils {
             return "";
         }
 
-        switch (GOF.Preferences.get_default ().date_format.down ()) {
+        switch (Files.Preferences.get_default ().date_format.down ()) {
             case "locale":
                 return dt.format ("%c");
             case "iso" :
@@ -578,7 +659,7 @@ namespace PF.FileUtils {
         int now_weekday = now.get_day_of_week ();
         int disp_weekday = dt.get_day_of_week ();
 
-        bool clock_is_24h = GOF.Preferences.get_default ().clock_format.has_prefix ("24");
+        bool clock_is_24h = Files.Preferences.get_default ().clock_format.has_prefix ("24");
 
         string format_string = "";
 
@@ -611,13 +692,14 @@ namespace PF.FileUtils {
 
     private bool can_browse_scheme (string scheme) {
         switch (scheme) {
-            case Marlin.AFP_URI:
-            case Marlin.DAV_URI:
-            case Marlin.DAVS_URI:
-            case Marlin.SFTP_URI:
-            case Marlin.FTP_URI:
-            case Marlin.MTP_URI:
-            case Marlin.PTP_URI:
+            case Files.AFP_URI:
+            case Files.DAV_URI:
+            case Files.DAVS_URI:
+            case Files.SFTP_URI:
+            case Files.FTP_URI:
+            case Files.MTP_URI:
+            case Files.AFC_URI:
+            case Files.PTP_URI:
                 return false;
             default:
                 return true;
@@ -653,6 +735,8 @@ namespace PF.FileUtils {
                 return false;
             case "afp" :
                 return false;
+            case "afc" :
+                return false; //Assumed to be the case
             case "dav" :
                 return false;
             case "davs" :
@@ -672,7 +756,7 @@ namespace PF.FileUtils {
                  uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
     }
 
-    public Gdk.DragAction file_accepts_drop (GOF.File dest,
+    public Gdk.DragAction file_accepts_drop (Files.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
                                              Gdk.DragContext context,
                                              out Gdk.DragAction suggested_action_return) {
@@ -680,7 +764,6 @@ namespace PF.FileUtils {
         var actions = context.get_actions ();
         var suggested_action = context.get_suggested_action ();
         var target_location = dest.get_target_location ();
-
         suggested_action_return = Gdk.DragAction.PRIVATE;
 
         if (drop_file_list == null || drop_file_list.data == null) {
@@ -746,7 +829,6 @@ namespace PF.FileUtils {
         bool from_trash = false;
 
         foreach (var drop_file in drop_file_list) {
-
             if (location_is_in_trash (drop_file)) {
                 from_trash = true;
 
@@ -861,6 +943,51 @@ namespace PF.FileUtils {
         }
     }
 
+    /* Only call this when standard_target_uri has "afp" scheme as we do not check again. */
+    public string get_afp_target_uri (string standard_target_uri, string uri) {
+        /* For afp:// addresses the standard target uri has the user name stripped - we need to replace it */
+        if (Uri.parse_scheme (uri) == "afp") {
+            string origin_host, origin_filename;
+            if (get_afp_user_server_and_filename (uri, out origin_filename, out origin_host)) {
+                string target_host, target_filename;
+                if (get_afp_user_server_and_filename (standard_target_uri, out target_filename, out target_host)) {
+                    return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, origin_host, target_filename);
+                }
+            }
+        } else {
+            /* Probably clicked on an AFP server in network:// view which gives weird gvfs uri like:
+             * network:///dnssd-domain-<host>._afpovertcp._tcp. We omit a username so that a system dialog will
+             * be triggered requesting input of name (and password). */
+            string target_host, target_filename;
+            if (get_afp_user_server_and_filename (standard_target_uri, out target_filename, out target_host)) {
+                return "afp://" + Path.build_path (Path.DIR_SEPARATOR_S, target_host, target_filename);
+            }
+        }
+
+        return standard_target_uri;
+    }
+
+    private bool get_afp_user_server_and_filename (string uri, out string filename, out string user_server) {
+        filename = uri;
+        user_server = "";
+        string[] parts1 = uri.split ("://", 2 );
+        if (parts1.length == 2) {
+            string[] parts2 = parts1[1].split (Path.DIR_SEPARATOR_S, 2);
+            if (parts2.length >= 1) {
+                user_server = parts2[0];
+                if (parts2.length == 2) {
+                    filename = parts2[1];
+                }
+
+                return true;
+            }
+        }
+
+        warning ("Error getting afp user and server from %s: Invalid uri format", uri);
+
+        return false;
+    }
+
     public bool make_file_name_valid_for_dest_fs (ref string filename, string? dest_fs_type) {
         bool result = false;
 
@@ -948,15 +1075,20 @@ namespace PF.FileUtils {
     private void parse_previous_duplicate_name (
         string name, bool is_link, out string name_base, out string suffix, out int count
     ) {
-
+        name_base = "";
         suffix = "";
         count = 0;
 
         string name_without_suffix = name;
         var last_index = name.length - 1;
+        var index_of_suffix = name.length;
 
-        /* Ignore suffix for links */
-        var index_of_suffix = is_link ? -1 : name.last_index_of (".");
+        if (is_link) {
+            /* Ignore suffix for links */
+            index_of_suffix = -1;
+        } else if (name.contains (".")) {
+            index_of_suffix = name.last_index_of (".");
+        }
 
         /* Strings longer than 4 or shorter than 1 are not regarded as extensions */
         var max_extension_length = 4;
@@ -972,10 +1104,7 @@ namespace PF.FileUtils {
             if (index_of_suffix > 0) {
                 name_base = name_without_suffix.slice (0, index_of_suffix);
                 return;
-            } else {
-                name_base = name_without_suffix;
             }
-            return;
         } else {
             name_base = name.slice (0, index_of_opening)._chomp ();
         }
@@ -992,7 +1121,9 @@ namespace PF.FileUtils {
         }
 
         int multiplier = 1;
+        int n_digits = 0;
         while (index < limit && chr.isdigit ()) {
+            n_digits++;
             count += chr.digit_value () * multiplier;
             //Number is reversed so each subsequent digit represents another factor of ten
             multiplier *= 10;
@@ -1001,6 +1132,21 @@ namespace PF.FileUtils {
 
         if (count == 0) { //We do not say (copy 1), just (copy)
             count = 1;
+        }
+
+        int expected_index;
+
+        if (n_digits > 0) {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + n_digits + 1;
+        } else if (is_link) {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + _(LINK_TAG).length;
+        } else {
+            expected_index = _(CLOSING_COPY_LINK_TAG).length + _(COPY_TAG).length;
+        }
+
+        if (index > expected_index) {
+            name_base = name_without_suffix;
+            count = 0;
         }
     }
 
@@ -1086,14 +1232,19 @@ namespace PF.FileUtils {
             return (int) long.min (max_path - (dir.length + 1), max_name);
         }
     }
+
+    public bool protocol_is_supported (string protocol) {
+        return protocol in GLib.Vfs.get_default ().get_supported_uri_schemes ();
+    }
 }
 
-namespace Marlin {
+namespace Files {
     public const string ROOT_FS_URI = "file://";
     public const string TRASH_URI = "trash://";
     public const string NETWORK_URI = "network://";
     public const string RECENT_URI = "recent://";
     public const string AFP_URI = "afp://";
+    public const string AFC_URI = "afc://";
     public const string DAV_URI = "dav://";
     public const string DAVS_URI = "davs://";
     public const string SFTP_URI = "sftp://";

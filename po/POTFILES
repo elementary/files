@@ -1,7 +1,7 @@
 src/main.vala
 
 src/Application.vala
-src/marlin-deep-count.vala
+src/DeepCount.vala
 src/ProgressUIHandler.vala
 src/TextRenderer.vala
 src/ClipboardManager.vala
@@ -26,15 +26,18 @@ src/View/AbstractDirectoryView.vala
 src/View/Window.vala
 src/View/ViewContainer.vala
 src/View/Browser.vala
-src/View/Sidebar.vala
+src/View/Sidebar/BookmarkListBox.vala
+src/View/Sidebar/DeviceListBox.vala
+src/View/Sidebar/DeviceRow.vala
+src/View/Sidebar/NetworkListBox.vala
+src/View/Sidebar/PopupMenuBuilder.vala
+src/View/Sidebar/SidebarWindow.vala
 src/View/Slot.vala
 src/View/PrivacyModeOn.vala
-src/View/PopupMenuBuilder.vala
 src/View/Miller.vala
 
 src/View/Widgets/AbstractEditableLabel.vala
 src/View/Widgets/BreadcrumbsEntry.vala
-src/View/Widgets/DiskRenderer.vala
 src/View/Widgets/HeaderBar.vala
 src/View/Widgets/Label.vala
 src/View/Widgets/LocationBar.vala
@@ -44,10 +47,6 @@ src/View/Widgets/PermissionButton.vala
 src/View/Widgets/ProgressInfoWidget.vala
 src/View/Widgets/SingleLineEditableLabel.vala
 
-filechooser-module/FileChooserDialog.vala
-filechooser-module/Plugin.vala
-
-libcore/AbstractSidebar.vala
 libcore/AbstractSlot.vala
 libcore/BookmarkList.vala
 libcore/Bookmark.vala
@@ -58,9 +57,9 @@ libcore/Enums.vala
 libcore/FileChanges.vala
 libcore/FileConflictDialog.vala
 libcore/FileUtils.vala
-libcore/gof-callwhenready.vala
-libcore/gof-directory-async.vala
-libcore/gof-preferences.vala
+libcore/CallWhenReady.vala
+libcore/Directory.vala
+libcore/Preferences.vala
 libcore/IconInfo.vala
 libcore/PixbufUtils.vala
 libcore/PluginManager.vala
@@ -75,6 +74,7 @@ libcore/TrashMonitor.vala
 libcore/UndoManager.vala
 libcore/UserUtils.vala
 libcore/FileOperations/CommonJob.vala
+libcore/FileOperations/DialogUtils.vala
 libcore/FileOperations/EmptyTrashJob.vala
 libcore/FileOperations/MountUtils.vala
 

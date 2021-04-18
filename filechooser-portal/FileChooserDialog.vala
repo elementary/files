@@ -23,6 +23,7 @@
 public class Files.FileChooserDialog : Gtk.FileChooserDialog {
     private GLib.DBusConnection connection;
     private uint registration_id;
+    private LegacyFileChooserDialog legacy_dialog;
     public GLib.HashTable<unowned string, string> choices { public get; private set; }
     public bool read_only { get; set; default = false; }
 
@@ -33,13 +34,25 @@ public class Files.FileChooserDialog : Gtk.FileChooserDialog {
         } catch (Error e) {
             critical (e.message);
         }
+
+        legacy_dialog = new LegacyFileChooserDialog (this);
+
+        ExternalWindow? external_parent = null;
+        if (parent_window != "") {
+            external_parent = ExternalWindow.from_handle (parent_window);
+            if (external_parent == null) {
+                warning ("Failed to associate portal window with parent window %s", parent_window);
+            } else {
+                external_parent.set_parent_of (get_window ());
+            }
+        }
     }
 
     construct {
         choices = new GLib.HashTable<unowned string, string> (str_hash, str_equal);
         add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
         set_default_response (Gtk.ResponseType.OK);
-        response.connect (() => {
+        response.connect_after (() => {
             destroy ();
         });
 

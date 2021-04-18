@@ -38,12 +38,12 @@ public class Files.FileChooser : GLib.Object {
         this.connection = connection;
     }
 
-    public void open_file (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
-        results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
+    public async void open_file (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
+        var _results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
         var dialog = new Files.FileChooserDialog (connection, handle, app_id, parent_window, title, options);
 
         unowned GLib.Variant? directory_variant = options["directory"];
-        bool directory = true;
+        bool directory = false;
         if (directory_variant != null && directory_variant.is_of_type (GLib.VariantType.BOOLEAN)) {
             directory = directory_variant.get_boolean ();
         }
@@ -84,35 +84,45 @@ public class Files.FileChooser : GLib.Object {
             dialog.set_extra_widget (box);
         }
 
-        dialog.show_all ();
-        var dialog_loop = new GLib.MainLoop (null, false);
-        Gtk.ResponseType dialog_response = Gtk.ResponseType.DELETE_EVENT;
+        uint _response = 2;
         dialog.response.connect ((id) => {
-            dialog_response = (Gtk.ResponseType) id;
-            dialog_loop.quit ();
+            switch ((Gtk.ResponseType) id) {
+                case Gtk.ResponseType.OK:
+                    _response = 0;
+                    _results["choices"] = dialog.choices;
+                    var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
+                    dialog.get_uris ().foreach ((uri) => {
+                        builder.add ("s", uri);
+                    });
+
+                    _results["uris"] = builder.end ();
+                    _results["writable"] = !dialog.read_only;
+                    break;
+                case Gtk.ResponseType.CANCEL:
+                    _response = 1;
+                    break;
+                case Gtk.ResponseType.DELETE_EVENT:
+                default:
+                    _response = 2;
+                    break;
+            }
+
+            open_file.callback ();
         });
 
-        dialog_loop.run ();
-        switch (dialog_response) {
-            case Gtk.ResponseType.OK:
-                response = 0;
-                results["choices"] = dialog.choices;
-                var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
-                dialog.get_uris ().foreach ((uri) => {
-                    builder.add ("s", uri);
-                });
+        var granite_settings = Granite.Settings.get_default ();
+        var gtk_settings = Gtk.Settings.get_default ();
 
-                results["uris"] = builder.end ();
-                results["writable"] = !dialog.read_only;
-                break;
-            case Gtk.ResponseType.CANCEL:
-                response = 1;
-                break;
-            case Gtk.ResponseType.DELETE_EVENT:
-            default:
-                response = 2;
-                break;
-        }
+        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+        });
+
+        dialog.show_all ();
+        yield;
+        response = _response;
+        results = _results;
     }
 
     private void handle_filters (Files.FileChooserDialog dialog, GLib.Variant? filters_variant, GLib.Variant? current_filter_variant) {
@@ -152,8 +162,8 @@ public class Files.FileChooser : GLib.Object {
         }
     }
 
-    public void save_file (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
-        results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
+    public async void save_file (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
+        var _results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
         var dialog = new Files.FileChooserDialog (connection, handle, app_id, parent_window, title, options);
         dialog.action = Gtk.FileChooserAction.SAVE;
 
@@ -200,37 +210,39 @@ public class Files.FileChooser : GLib.Object {
         }
 
         dialog.show_all ();
-        var dialog_loop = new GLib.MainLoop (null, false);
-        Gtk.ResponseType dialog_response = Gtk.ResponseType.DELETE_EVENT;
+        uint _response = 2;
         dialog.response.connect ((id) => {
-            dialog_response = (Gtk.ResponseType) id;
-            dialog_loop.quit ();
+            switch ((Gtk.ResponseType) id) {
+                case Gtk.ResponseType.OK:
+                    _response = 0;
+                    _results["choices"] = dialog.choices;
+                    var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
+                    dialog.get_uris ().foreach ((uri) => {
+                        builder.add ("s", uri);
+                    });
+
+                    _results["uris"] = builder.end ();
+                    break;
+                case Gtk.ResponseType.CANCEL:
+                    _response = 1;
+                    break;
+                case Gtk.ResponseType.DELETE_EVENT:
+                default:
+                    _response = 2;
+                    break;
+            }
+
+            save_file.callback ();
         });
 
-        dialog_loop.run ();
-        switch (dialog_response) {
-            case Gtk.ResponseType.OK:
-                response = 0;
-                results["choices"] = dialog.choices;
-                var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
-                dialog.get_uris ().foreach ((uri) => {
-                    builder.add ("s", uri);
-                });
-
-                results["uris"] = builder.end ();
-                break;
-            case Gtk.ResponseType.CANCEL:
-                response = 1;
-                break;
-            case Gtk.ResponseType.DELETE_EVENT:
-            default:
-                response = 2;
-                break;
-        }
+        dialog.show_all ();
+        yield;
+        response = _response;
+        results = _results;
     }
 
-    public void save_files (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
-        results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
+    public async void save_files (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
+        var _results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
         var dialog = new Files.FileChooserDialog (connection, handle, app_id, parent_window, title, options);
         dialog.action = Gtk.FileChooserAction.SELECT_FOLDER;
 
@@ -270,38 +282,39 @@ public class Files.FileChooser : GLib.Object {
             dialog.set_data<string[]> ("files", files);
         }
 
-        dialog.show_all ();
-        var dialog_loop = new GLib.MainLoop (null, false);
-        Gtk.ResponseType dialog_response = Gtk.ResponseType.DELETE_EVENT;
+        uint _response = 2;
         dialog.response.connect ((id) => {
-            dialog_response = (Gtk.ResponseType) id;
-            dialog_loop.quit ();
+            switch ((Gtk.ResponseType) id) {
+                case Gtk.ResponseType.OK:
+                    _response = 0;
+                    _results["choices"] = dialog.choices;
+                    var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
+                    var uri = GLib.File.new_for_uri (dialog.get_uri ());
+                    unowned string[]? files = dialog.get_data<string[]> ("files");
+                    if (files != null) {
+                        foreach (unowned string file in files) {
+                            builder.add ("s", uri.get_child (GLib.Path.get_basename (file)).get_uri ());
+                        }
+                    }
+
+                    _results["uris"] = builder.end ();
+                    break;
+                case Gtk.ResponseType.CANCEL:
+                    _response = 1;
+                    break;
+                case Gtk.ResponseType.DELETE_EVENT:
+                default:
+                    _response = 2;
+                    break;
+            }
+
+            save_files.callback ();
         });
 
-        dialog_loop.run ();
-        switch (dialog_response) {
-            case Gtk.ResponseType.OK:
-                response = 0;
-                results["choices"] = dialog.choices;
-                var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
-                var uri = GLib.File.new_for_uri (dialog.get_uri ());
-                unowned string[]? files = dialog.get_data<string[]> ("files");
-                if (files != null) {
-                    foreach (unowned string file in files) {
-                        builder.add ("s", uri.get_child (GLib.Path.get_basename (file)).get_uri ());
-                    }
-                }
-
-                results["uris"] = builder.end ();
-                break;
-            case Gtk.ResponseType.CANCEL:
-                response = 1;
-                break;
-            case Gtk.ResponseType.DELETE_EVENT:
-            default:
-                response = 2;
-                break;
-        }
+        dialog.show_all ();
+        yield;
+        response = _response;
+        results = _results;
     }
 }
 

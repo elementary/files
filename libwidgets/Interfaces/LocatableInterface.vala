@@ -15,10 +15,10 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     /* Interface implemented by BasicLocationBar and LocationBar */
     public interface Locatable : Gtk.Box {
-        public signal void path_change_request (string path, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT);
+        public signal void path_change_request (string path, Files.OpenFlag flag = Files.OpenFlag.DEFAULT);
 
         public abstract void set_display_path (string path);
         public abstract string get_display_path ();

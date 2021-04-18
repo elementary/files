@@ -26,8 +26,31 @@ void add_file_utils_tests () {
     });
 
     Test.add_func ("/FileUtils/sanitize_zero_length_abs_path", () => {
-        assert (PF.FileUtils.sanitize_path ("", null, false) == "");
+        assert (PF.FileUtils.sanitize_path ("", null) == "");
+    });
 
+    Test.add_func ("/FileUtils/afc_device_root_strip_colon", () => {
+        /* Remove extraneous trailing colon-number from afc device name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        assert (PF.FileUtils.sanitize_path (afc_device + ":3/") == afc_device);
+    });
+
+    Test.add_func ("/FileUtils/afc_device_root_no_colon", () => {
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        assert (PF.FileUtils.sanitize_path (afc_device) == afc_device);
+    });
+
+    Test.add_func ("/FileUtils/afc_path_strip_colon", () => {
+        /* Remove extraneous trailing colon-number from afc device name, but not from folder name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
+        var path = "/some/path/with/colon:3";
+        assert (PF.FileUtils.sanitize_path (afc_device + ":3" + path) == afc_device + path);
+    });
+
+    Test.add_func ("/FileUtils/afc_device_do_not_strip_colon", () => {
+        /* Do not remove colon-nonnumber from afc device name */
+        string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb:b";
+        assert (PF.FileUtils.sanitize_path (afc_device) == afc_device);
     });
 
     Test.add_func ("/FileUtils/sanitize_null_rel_path", () => {
@@ -275,9 +298,46 @@ void add_file_utils_tests () {
         assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
     });
 
+    Test.add_func ("/FileUtils/get_duplicate_no_extension_short", () => {
+        string name = "F";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_embedded_tag", () => {
+        string name = "foo(copy)bar.txt";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        var parts = result.split ("(");
+        assert (parts.length == 3);
+        assert (result.contains ("foo"));
+        assert (result.contains ("bar"));
+        assert (result.has_suffix (".txt"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_embedded_tag_no_extension", () => {
+        string name = "foo(copy)bar(copy 2)";
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, false);
+        var parts = result.split ("(");
+        assert (parts.length == 3);
+        assert (result.contains ("foo"));
+        assert (result.contains ("bar"));
+        assert (result.contains ("3"));
+    });
+
     /* Duplicating "Filename (link)" should yield "Filename (link 2)" not "Filename (link) (copy)" */
     Test.add_func ("/FileUtils/get_duplicate_link", () => {
         string name = "Filename ".concat (
+             PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
+        );
+        var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);
+        assert (result.has_suffix (PF.FileUtils.CLOSING_COPY_LINK_TAG));
+        assert (result.contains (PF.FileUtils.LINK_TAG));
+        assert (!result.contains (PF.FileUtils.COPY_TAG));
+        assert (result.contains ("2"));
+    });
+
+    Test.add_func ("/FileUtils/get_duplicate_link_embedded_tag", () => {
+        string name = "File(link)name ".concat (
              PF.FileUtils.OPENING_COPY_LINK_TAG, PF.FileUtils.LINK_TAG, PF.FileUtils.CLOSING_COPY_LINK_TAG, null
         );
         var result = PF.FileUtils.get_duplicate_name (name, 1, -1, true);

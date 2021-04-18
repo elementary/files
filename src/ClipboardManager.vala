@@ -24,7 +24,7 @@
 
 ***/
 
-namespace Marlin {
+namespace Files {
     public class ClipboardManager : GLib.Object {
         private enum ClipboardTarget {
             GNOME_COPIED_FILES,
@@ -41,7 +41,7 @@ namespace Marlin {
         };
 
         private Gtk.Clipboard clipboard;
-        private GLib.List<GOF.File> files = null;
+        private GLib.List<Files.File> files = null;
         private bool files_cutted = false;
         public bool files_linked {get; private set; default = false;}
 
@@ -87,23 +87,23 @@ namespace Marlin {
         /** If @file is null, returns whether there are ANY cut files
          * otherwise whether @file is amongst the cut files
         **/
-        public bool has_cutted_file (GOF.File? file) {
+        public bool has_cutted_file (Files.File? file) {
             return files_cutted && (file == null || has_file (file));
         }
 
-        public bool has_file (GOF.File file) {
+        public bool has_file (Files.File file) {
             return files != null && (files.find (file) != null);
         }
 
-        public void copy_files (GLib.List<GOF.File> files) {
+        public void copy_files (GLib.List<Files.File> files) {
             transfer_files (true, false, files);
         }
 
-        public void copy_link_files (GLib.List<GOF.File> files) {
+        public void copy_link_files (GLib.List<Files.File> files) {
             transfer_files (true, true, files);
         }
 
-        public void cut_files (GLib.List<GOF.File> files) {
+        public void cut_files (GLib.List<Files.File> files) {
             transfer_files (false, false, files);
         }
 
@@ -147,13 +147,13 @@ namespace Marlin {
 
             /* check whether the retrieval worked */
             string? text;
-            if (!DndHandler.selection_data_is_uri_list (sd, Marlin.TargetType.TEXT_URI_LIST, out text)) {
-                warning ("Selection data not uri_list in Marlin.ClipboardManager contents_received");
+            if (!DndHandler.selection_data_is_uri_list (sd, Files.TargetType.TEXT_URI_LIST, out text)) {
+                warning ("Selection data not uri_list in Files.ClipboardManager contents_received");
                 return;
             }
 
             if (text == null) {
-                warning ("Empty selection data in Marlin.ClipboardManager contents_received");
+                warning ("Empty selection data in Files.ClipboardManager contents_received");
                 return;
             }
 
@@ -168,7 +168,7 @@ namespace Marlin {
                 action = Gdk.DragAction.LINK;
                 text = text.substring (4);
             } else {
-                warning ("Invalid selection data in Marlin.ClipboardManager contents_received");
+                warning ("Invalid selection data in Files.ClipboardManager contents_received");
                 return;
             }
 
@@ -222,7 +222,7 @@ namespace Marlin {
          * Sets the clipboard to contain @files_for_transfer and marks them to be copied
          * or moved according to @copy when the user pastes from the clipboard.
         **/
-        private void transfer_files (bool copy, bool link, GLib.List<GOF.File> files_for_transfer) {
+        private void transfer_files (bool copy, bool link, GLib.List<Files.File> files_for_transfer) {
             release_pending_files ();
             files_cutted = !copy;
             files_linked = link;
@@ -242,7 +242,7 @@ namespace Marlin {
             }
         }
 
-        private void on_file_destroyed (GOF.File file) {
+        private void on_file_destroyed (Files.File file) {
             file.destroy.disconnect (on_file_destroyed);
             files.remove (file);
         }

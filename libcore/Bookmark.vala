@@ -18,7 +18,7 @@
               Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
     public class Bookmark {
 
         public signal void contents_changed ();
@@ -40,7 +40,14 @@ namespace Marlin {
             }
         }
 
-        public GOF.File gof_file { get; private set; }
+        public Files.File gof_file { get; private set; }
+
+        public string uri {
+            get {
+                return gof_file.uri;
+            }
+        }
+
         private GLib.FileMonitor monitor;
 
         public static CompareFunc<Bookmark> compare_with = (a, b) => {
@@ -51,14 +58,14 @@ namespace Marlin {
             return a.gof_file.location.equal (b.gof_file.location) ? 0 : 1;
         };
 
-        public Bookmark (GOF.File gof_file, string? label = null) {
+        public Bookmark (Files.File gof_file, string? label = null) {
             this.gof_file = gof_file;
             this.custom_name = label;
             connect_file ();
         }
 
         public Bookmark.from_uri (string uri, string? label = null) {
-            this.gof_file = GOF.File.get_by_uri (uri);
+            this.gof_file = Files.File.get_by_uri (uri);
             this.custom_name = label;
             connect_file ();
         }
@@ -69,10 +76,6 @@ namespace Marlin {
 
         public unowned GLib.File get_location () {
             return this.gof_file.location;
-        }
-
-        public string get_uri () {
-            return this.get_location ().get_uri ();
         }
 
         public string get_parse_name () {
