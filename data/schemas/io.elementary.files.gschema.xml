@@ -54,11 +54,6 @@
       <summary>Date Format</summary>
       <description>The format of file dates. Possible values are "locale", "iso", and "informal".</description>
     </key>
-    <key type="b" name="single-click">
-      <default>true</default>
-      <summary>single click</summary>
-      <description>Whether items are activated by single clicks instead of dubble clicks</description>
-    </key>
     <key name="default-viewmode" enum="viewmode">
       <default>'icon'</default>
       <summary>Default viewmode when browsing</summary>
@@ -157,11 +152,6 @@
       <summary>icon zoom level</summary>
       <description>Zoom level used by the List View.</description>
     </key>
-    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
-      <default>'smaller'</default>
-      <summary>Minimum icon zoom level</summary>
-      <description>The minimum zoom level used by the List View.</description>
-    </key>
     <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'large'</default>
       <summary>Maximum icon zoom level</summary>
@@ -179,11 +169,6 @@
       <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the  Miller Column View.</description>
-    </key>
-    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
-      <default>'smallest'</default>
-      <summary>Minimum icon zoom level</summary>
-      <description>The minimum zoom level used by the  Miller Column View.</description>
     </key>
     <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'normal'</default>

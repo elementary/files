@@ -21,11 +21,11 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Marlin.View.Chrome.HeaderBar : Hdy.HeaderBar {
+public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
-    public signal void path_change_request (string path, Marlin.OpenFlag flag);
+    public signal void path_change_request (string path, Files.OpenFlag flag);
     public signal void escape ();
     public signal void reload_request ();
 
@@ -59,14 +59,14 @@ public class Marlin.View.Chrome.HeaderBar : Hdy.HeaderBar {
     }
 
     construct {
-        button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name (
+        button_back = new View.Chrome.ButtonWithMenu.from_icon_name (
             "go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR
         );
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name (
+        button_forward = new View.Chrome.ButtonWithMenu.from_icon_name (
             "go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR
         );
 

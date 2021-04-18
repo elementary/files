@@ -28,7 +28,7 @@
  *
  */
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
 
     /**
      * ButtonWithMenu

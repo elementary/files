@@ -23,21 +23,21 @@ interface MarlinDaemon : Object {
 
 }
 
-public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
+public class Files.Plugins.CTags : Files.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
     private bool ignore_dir;
 
-    private Queue<GOF.File> unknowns;
-    private Queue<GOF.File> knowns;
+    private Queue<Files.File> unknowns;
+    private Queue<Files.File> knowns;
     private uint idle_consume_unknowns = 0;
     private uint t_consume_knowns = 0;
     private Cancellable cancellable;
-    private GLib.List<GOF.File> current_selected_files;
+    private GLib.List<Files.File> current_selected_files;
 
     public CTags () {
-        unknowns = new Queue<GOF.File> ();
-        knowns = new Queue<GOF.File> ();
+        unknowns = new Queue<Files.File> ();
+        knowns = new Queue<Files.File> ();
         cancellable = new Cancellable ();
 
         try {
@@ -93,11 +93,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return false;
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
         /* It is possible more than one directory will call this simultaneously so do not cancel */
     }
 
-    private void add_entry (GOF.File gof, GenericArray<Variant> entries) {
+    private void add_entry (Files.File gof, GenericArray<Variant> entries) {
         var entry = new Variant.strv (
                         { gof.uri,
                           gof.get_ftype (),
@@ -111,7 +111,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private async void consume_knowns_queue () {
         var entries = new GenericArray<Variant> ();
-        GOF.File gof;
+        Files.File gof;
         while ((gof = knowns.pop_head ()) != null) {
             add_entry (gof, entries);
         }
@@ -127,7 +127,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void consume_unknowns_queue () {
-        GOF.File gof = null;
+        Files.File gof = null;
         /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
          * Avoid querying whole directory in case very large. */
         while ((gof = unknowns.pop_head ()) != null) {
@@ -145,7 +145,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private void add_to_knowns_queue (GOF.File file, FileInfo info) {
+    private void add_to_knowns_queue (Files.File file, FileInfo info) {
         file.tagstype = info.get_content_type ();
         file.update_type ();
 
@@ -162,7 +162,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                                         });
     }
 
-    private void add_to_unknowns_queue (GOF.File file) {
+    private void add_to_unknowns_queue (Files.File file) {
         if (file.get_ftype () == "application/octet-stream") {
             unknowns.push_head (file);
 
@@ -176,7 +176,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private async void rreal_update_file_info (GOF.File file) {
+    private async void rreal_update_file_info (Files.File file) {
         try {
             if (!file.exists) {
                 yield daemon.delete_entry (file.uri);
@@ -222,7 +222,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private async void rreal_update_file_info_for_recent (GOF.File file, string? target_uri) {
+    private async void rreal_update_file_info_for_recent (Files.File file, string? target_uri) {
         if (target_uri == null) { /* e.g. for recent:/// */
             return;
         }
@@ -245,9 +245,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void update_file_info (GOF.File file) {
+    public override void update_file_info (Files.File file) {
         if (file.info != null && !f_ignore_dir (file.directory) &&
-            (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
+            (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
 
             if (file.location.has_uri_scheme ("recent")) {
                 rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
@@ -257,7 +257,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget widget, GLib.List<GOF.File> selected_files) {
+    public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
         if (selected_files == null || ignore_dir) {
             return;
         }
@@ -267,7 +267,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
 
         /* Check the colors currently set */
-        foreach (GOF.File gof in current_selected_files) {
+        foreach (Files.File gof in current_selected_files) {
             color_menu_item.check_color (gof.color);
         }
 
@@ -284,16 +284,16 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         menu_item.show ();
     }
 
-    private async void set_color (GLib.List<GOF.File> files, int n) throws IOError {
+    private async void set_color (GLib.List<Files.File> files, int n) throws IOError {
         var entries = new GenericArray<Variant> ();
-        foreach (unowned GOF.File file in files) {
-            if (!(file is GOF.File)) {
+        foreach (unowned Files.File file in files) {
+            if (!(file is Files.File)) {
                 continue;
             }
 
-            GOF.File target_file;
+            Files.File target_file;
             if (file.location.has_uri_scheme ("recent")) {
-                target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
+                target_file = Files.File.get_by_uri (file.get_display_target_uri ());
             } else {
                 target_file = file;
             }
@@ -309,7 +309,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 yield daemon.record_uris (entries.data);
                 /* If the color of the target is set while in recent view, we have to
                  * update the recent view to reflect this */
-                foreach (unowned GOF.File file in files) {
+                foreach (unowned Files.File file in files) {
                     if (file.location.has_uri_scheme ("recent")) {
                         update_file_info (file);
                         file.icon_changed (); /* Just need to trigger redraw */
@@ -419,7 +419,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
                 var width = get_allocated_width ();
                 int x = width - 27;
-                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
                     if (event.x <= x && event.x >= x - color_button_width) {
                         color_changed (i);
                         clear_checks ();
@@ -431,7 +431,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 }
             } else {
                 int x = 27;
-                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
                     if (event.x >= x && event.x <= x + color_button_width) {
                         color_changed (i);
                         clear_checks ();
@@ -448,6 +448,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 }
 
-public Marlin.Plugins.Base module_init () {
-    return new Marlin.Plugins.CTags ();
+public Files.Plugins.Base module_init () {
+    return new Files.Plugins.CTags ();
 }

@@ -23,9 +23,9 @@
 public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private VolumeMonitor volume_monitor;
 
-    public Marlin.SidebarInterface sidebar { get; construct; }
+    public Files.SidebarInterface sidebar { get; construct; }
 
-    public DeviceListBox (Marlin.SidebarInterface sidebar) {
+    public DeviceListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
         );
@@ -34,9 +34,30 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     construct {
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.volume_added.connect (bookmark_volume_if_without_mount);
-        volume_monitor.mount_added.connect (bookmark_mount_if_native_and_not_shadowed);
-        volume_monitor.drive_connected.connect (bookmark_stoppable_or_removeable_drive_if_without_volumes);
+        volume_monitor.mount_added.connect_after ((mount) => {
+            /* This delay is needed to ensure that any corresponding volume row has finished updating after
+             * mounting as a result of activating the row. Otherwise may get duplicate mount row e.g. for some MTP or
+             * PTP mounts where the mount name differs from the volume name and get_uuid () yields null.
+            */
+            Timeout.add (100, () => {
+                bookmark_mount_if_not_shadowed (mount);
+                return Source.REMOVE;
+            });
+        });
+
+        volume_monitor.volume_added.connect (refresh);
+        volume_monitor.drive_connected.connect (refresh);
+
+        row_activated.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                ((SidebarItemInterface) row).activated ();
+            }
+        });
+        row_selected.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                select_item ((SidebarItemInterface) row);
+            }
+        });
     }
 
     private DeviceRow? add_bookmark (string label, string uri, Icon gicon,
@@ -49,7 +70,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
         DeviceRow? bm = has_uuid (uuid, uri);
 
-        if (bm == null || bm.custom_name != label) { //Could be a bind mount with the same uuid
+        if (bm == null) {
             var new_bm = new DeviceRow (
                 label,
                 uri,
@@ -57,19 +78,21 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 this,
                 pinned, // Pin all device rows for now
                 permanent || (bm != null && bm.permanent), //Ensure bind mount matches permanence of uuid
-                uuid,
+                uuid != null ? uuid : uri, //uuid fallsback to uri
                 drive,
                 volume,
                 mount
             );
 
             add (new_bm);
+
+            return new_bm;
         }
 
         return bm;
     }
 
-    public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                  plugin_item.uri,
                                  plugin_item.icon,
@@ -88,12 +111,12 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         clear ();
 
         SidebarItemInterface? row;
-        var root_uri = _(Marlin.ROOT_FS_URI);
+        var root_uri = _(Files.ROOT_FS_URI);
         if (root_uri != "") {
             row = add_bookmark (
                 _("File System"),
                 root_uri,
-                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
+                new ThemedIcon.with_default_fallbacks (Files.ICON_FILESYSTEM),
                 null,
                 null,
                 null,
@@ -116,7 +139,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         } // Add volumes not otherwise bookmarked
 
         foreach (unowned Mount mount in volume_monitor.get_mounts ()) {
-            bookmark_mount_if_native_and_not_shadowed (mount);
+            bookmark_mount_if_not_shadowed (mount);
         } // Bookmark all native mount points ();
     }
 
@@ -140,7 +163,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
         if (drive.get_volumes () == null &&
             drive.can_stop () || (drive.is_media_removable () && !drive.is_media_check_automatic ())) {
-
             add_bookmark (
                 drive.get_name (),
                 drive.get_name (),
@@ -176,22 +198,27 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         }
     }
 
-    private void bookmark_mount_if_native_and_not_shadowed (Mount mount) {
-        if (mount.is_shadowed () || !mount.get_root ().is_native ()) {
+    private void bookmark_mount_if_not_shadowed (Mount mount) {
+        if (mount.is_shadowed ()) {
             return;
         };
 
         var volume = mount.get_volume ();
-        string? uuid = null;
-        if (volume != null) {
-            uuid = volume.get_uuid ();
-        } else {
-            uuid = mount.get_uuid ();
+        var uuid = mount.get_uuid ();
+        if (uuid == null || uuid == "") {
+            if (volume != null) {
+                uuid = volume.get_uuid ();
+            }
+        }
+
+        var path = mount.get_default_location ().get_uri ();
+        if (uuid == null || uuid == "") {
+            uuid = path;
         }
 
         add_bookmark (
             mount.get_name (),
-            mount.get_default_location ().get_uri (),
+            path,
             mount.get_icon (),
             uuid,
             mount.get_drive (),
@@ -202,15 +229,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     private DeviceRow? has_uuid (string? uuid, string? fallback = null) {
-        var search = uuid != null ? uuid : fallback;
+        var searched_uuid = uuid != null ? uuid : fallback;
 
-        if (search == null) {
+        if (searched_uuid == null) {
             return null;
         }
 
         foreach (unowned Gtk.Widget child in get_children ()) {
             if (child is DeviceRow) {
-                if (((DeviceRow)child).uuid == uuid) {
+                if (((DeviceRow)child).uuid == searched_uuid) {
                     return (DeviceRow)child;
                 }
             }

@@ -25,7 +25,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
      * Just the row ID as text at the moment
      */
     static Gtk.TargetEntry[] source_targets = {
-        {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.BOOKMARK_ROW}
+        {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW}
     };
 
     /* Targets accepted when dropped onto movable BookmarkRow
@@ -33,13 +33,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
      * Depending on where it is dropped (edge or middle) it will either be used to create a
      * new bookmark or to initiate a file operation with the bookmark uri as target  */
     static Gtk.TargetEntry[] dest_targets = {
-        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST},
-        {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.BOOKMARK_ROW},
+        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
+        {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW},
     };
 
     /* Pinned bookmarks can accept uri lists but not rows */
     static Gtk.TargetEntry[] pinned_targets = {
-        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
+        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST}
     };
 
     static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
@@ -56,7 +56,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     private bool valid = true; //Set to false if scheduled for removal
     private Gtk.Image icon;
-    private GOF.File target_file;
+    private Files.File target_file;
     private List<GLib.File> drop_file_list = null;
     private string? drop_text = null;
     private bool drop_occurred = false;
@@ -102,7 +102,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     construct {
-        target_file = GOF.File.get_by_uri (uri);
+        target_file = Files.File.get_by_uri (uri);
         target_file.ensure_query_info ();
 
         /* If put margin on the row then drag and drop does not work when over the margin so we put
@@ -163,17 +163,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         show_all ();
 
         key_press_event.connect (on_key_press_event);
-        button_press_event.connect (on_button_press_event);
         button_release_event.connect_after (after_button_release_event);
-
-        activate.connect (() => {activated ();});
 
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
         });
     }
 
-    protected override void update_plugin_data (Marlin.SidebarPluginItem item) {
+    protected override void update_plugin_data (Files.SidebarPluginItem item) {
         name = item.name;
         uri = item.uri;
         update_icon (item.icon);
@@ -220,11 +217,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return false;
     }
 
-    protected virtual bool on_button_press_event (Gdk.EventButton event) {
-        list.select_item (this);
-        return false;
-    }
-
     protected virtual bool after_button_release_event (Gdk.EventButton event) {
         if (!valid) { //Ignore if in the process of being removed
             return true;
@@ -235,16 +227,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
 
         switch (event.button) {
-            case Gdk.BUTTON_PRIMARY:
-                activated ();
-                return true;
-
             case Gdk.BUTTON_SECONDARY:
                 popup_context_menu (event);
                 return true;
 
             case Gdk.BUTTON_MIDDLE:
-                activated (Marlin.OpenFlag.NEW_TAB);
+                activated (Files.OpenFlag.NEW_TAB);
                 return true;
 
             default:
@@ -256,8 +244,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
-            .add_open_tab (() => {activated (Marlin.OpenFlag.NEW_TAB);})
-            .add_open_window (() => {activated (Marlin.OpenFlag.NEW_WINDOW);});
+            .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
+            .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
 
         add_extra_menu_items (menu_builder);
 
@@ -290,7 +278,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             menu_builder
                 .add_separator ()
                 .add_empty_all_trash (() => {
-                    new Marlin.FileOperations.EmptyTrashJob (
+                    new Files.FileOperations.EmptyTrashJob (
                         (Gtk.Window)get_ancestor (typeof (Gtk.Window)
                     )).empty_trash.begin ();
                 })
@@ -393,17 +381,17 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
             drop_text = null;
-            if (info == Marlin.TargetType.BOOKMARK_ROW) {
+            if (info == Files.TargetType.BOOKMARK_ROW) {
                 drop_text = sel_data.get_text ();
-            } else if (info == Marlin.TargetType.TEXT_URI_LIST) {
-                if (!Marlin.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
+            } else if (info == Files.TargetType.TEXT_URI_LIST) {
+                if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
                     warning ("sel data not uri list");
                     drop_text = null;
                 }
             }
 
             if (drop_text != null &&
-                info == Marlin.TargetType.TEXT_URI_LIST) {
+                info == Files.TargetType.TEXT_URI_LIST) {
 
                 drop_file_list = PF.FileUtils.files_from_uris (drop_text);
                 PF.FileUtils.file_accepts_drop (
@@ -416,11 +404,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             if (drop_occurred) {
                 var success = false;
                 switch (info) {
-                    case Marlin.TargetType.BOOKMARK_ROW:
+                    case Files.TargetType.BOOKMARK_ROW:
                         success = process_dropped_row (ctx, drop_text, drop_revealer.child_revealed);
                         break;
 
-                    case Marlin.TargetType.TEXT_URI_LIST:
+                    case Files.TargetType.TEXT_URI_LIST:
                         success = process_dropped_uris (ctx, drop_file_list, drop_revealer.child_revealed);
                         break;
                 }
@@ -536,7 +524,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             pos++;
             return list.add_favorite (drop_file_list.data.get_uri (), null, pos);
         } else {
-            var dnd_handler = new Marlin.DndHandler ();
+            var dnd_handler = new Files.DndHandler ();
             var real_action = ctx.get_selected_action ();
 
             if (real_action == Gdk.DragAction.ASK) {
@@ -548,7 +536,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 real_action = dnd_handler.drag_drop_action_ask (
                     this,
-                    (Gtk.ApplicationWindow)(Marlin.get_active_window ()),
+                    (Gtk.ApplicationWindow)(Files.get_active_window ()),
                     actions
                 );
             }

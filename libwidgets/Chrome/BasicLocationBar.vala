@@ -19,7 +19,7 @@
 
 ***/
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class BasicLocationBar : Gtk.Box, Locatable {
         private Navigatable bread;
         protected Gtk.Widget widget;
@@ -107,7 +107,7 @@ namespace Marlin.View.Chrome {
             bread.activate ();
         }
 
-        protected virtual void on_bread_activate_path (string path, Marlin.OpenFlag flag) {
+        protected virtual void on_bread_activate_path (string path, Files.OpenFlag flag) {
             /* Navigatable is responsible for providing a valid path or empty string
              * and for translating e.g. ~/ */
             path_change_request (path, flag);

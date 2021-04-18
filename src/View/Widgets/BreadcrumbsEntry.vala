@@ -18,14 +18,14 @@
 
 ***/
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
         /** Breadcrumb context menu support **/
         ulong files_menu_dir_handler_id = 0;
         Gtk.Menu menu;
 
         /** Completion support **/
-        GOF.Directory.Async? current_completion_dir = null;
+        Directory? current_completion_dir = null;
         string completion_text = "";
         bool autocompleted = false;
         bool multiple_completions = false;
@@ -43,10 +43,10 @@ namespace Marlin.View.Chrome {
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
-        protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
+        protected static DndHandler dnd_handler = new DndHandler ();
         Gdk.DragAction current_suggested_action = 0; /* No action */
         Gdk.DragAction current_actions = 0; /* No action */
-        GOF.File? drop_target_file = null;
+        Files.File? drop_target_file = null;
 
         /** Long button press support **/
         uint button_press_timeout_id = 0;
@@ -54,7 +54,7 @@ namespace Marlin.View.Chrome {
         double menu_x_root;
         double menu_y_root;
 
-        public signal void open_with_request (File file, AppInfo? app);
+        public signal void open_with_request (GLib.File file, AppInfo? app);
 
         public BreadcrumbsEntry () {
             base ();
@@ -63,7 +63,7 @@ namespace Marlin.View.Chrome {
 
         private void set_up_drag_drop () {
             /* Drag and drop */
-            Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Marlin.TargetType.TEXT_URI_LIST};
+            Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Files.TargetType.TEXT_URI_LIST};
             Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION,
                                {target_uri_list},
                                Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
@@ -158,7 +158,7 @@ namespace Marlin.View.Chrome {
         }
 
         private void do_completion (string path) {
-            File? file = PF.FileUtils.get_file_for_path (PF.FileUtils.sanitize_path (path, current_dir_path));
+            GLib.File? file = PF.FileUtils.get_file_for_path (PF.FileUtils.sanitize_path (path, current_dir_path));
             if (file == null || autocompleted) {
                 return;
             }
@@ -170,7 +170,7 @@ namespace Marlin.View.Chrome {
             }
 
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
-                current_completion_dir = GOF.Directory.Async.from_gfile (file);
+                current_completion_dir = Directory.from_gfile (file);
                 current_completion_dir.init (on_file_loaded);
             } else if (current_completion_dir != null && current_completion_dir.can_load) {
                 clear_completion ();
@@ -207,7 +207,7 @@ namespace Marlin.View.Chrome {
             /* If path changed, update breadcrumbs and continue editing */
             if (newpath != null) {
                 /* If completed, then GOF File must exist */
-                if ((GOF.File.@get (gfile)).is_directory) {
+                if ((Files.File.@get (gfile)).is_directory) {
                     newpath += GLib.Path.DIR_SEPARATOR_S;
                 }
 
@@ -239,7 +239,7 @@ namespace Marlin.View.Chrome {
          * @param file The file you want to load
          *
          **/
-        private void on_file_loaded (GOF.File file) {
+        private void on_file_loaded (Files.File file) {
             if (!file.is_directory) {
                 return;
             }
@@ -349,14 +349,14 @@ namespace Marlin.View.Chrome {
             if (!drop_data_ready) {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
-                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
+                if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
                     drop_file_list = PF.FileUtils.files_from_uris (text);
                     drop_data_ready = true;
                 }
             }
 
             GLib.Signal.stop_emission_by_name (this, "drag-data-received");
-            if (drop_data_ready && drop_occurred && info == Marlin.TargetType.TEXT_URI_LIST) {
+            if (drop_data_ready && drop_occurred && info == Files.TargetType.TEXT_URI_LIST) {
                 drop_occurred = false;
                 current_actions = 0;
                 current_suggested_action = 0;
@@ -374,7 +374,7 @@ namespace Marlin.View.Chrome {
                             drop_file_list,
                             current_actions,
                             current_suggested_action,
-                            (Gtk.ApplicationWindow)Marlin.get_active_window (),
+                            (Gtk.ApplicationWindow)Files.get_active_window (),
                             timestamp
                         );
                     }
@@ -426,9 +426,9 @@ namespace Marlin.View.Chrome {
             menu.deactivate.connect (() => {reset_elements_states ();});
 
             build_base_menu (menu, path);
-            GOF.Directory.Async? files_menu_dir = null;
+            Directory? files_menu_dir = null;
             if (root != null) {
-                files_menu_dir = GOF.Directory.Async.from_gfile (root);
+                files_menu_dir = Directory.from_gfile (root);
                 files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
                     append_subdirectories (menu, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
@@ -450,22 +450,22 @@ namespace Marlin.View.Chrome {
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
-                activate_path (path, Marlin.OpenFlag.NEW_TAB);
+                activate_path (path, Files.OpenFlag.NEW_TAB);
             });
 
             /* "Open in new window" menuitem is added to the menu. */
             var menuitem_newwin = new Gtk.MenuItem.with_label (_("Open in New Window"));
             menu.append (menuitem_newwin);
             menuitem_newwin.activate.connect (() => {
-                activate_path (path, Marlin.OpenFlag.NEW_WINDOW);
+                activate_path (path, Files.OpenFlag.NEW_WINDOW);
             });
 
             menu.append (new Gtk.SeparatorMenuItem ());
 
             var submenu_open_with = new Gtk.Menu ();
-            var loc = File.new_for_uri (PF.FileUtils.escape_uri (path));
-            var root = GOF.File.get_by_uri (path);
-            var app_info_list = Marlin.MimeActions.get_applications_for_folder (root);
+            var loc = GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
+            var root = Files.File.get_by_uri (path);
+            var app_info_list = MimeActions.get_applications_for_folder (root);
             bool at_least_one = false;
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
@@ -505,14 +505,14 @@ namespace Marlin.View.Chrome {
             submenu_open_with.append (open_with_other_item);
         }
 
-        private void append_subdirectories (Gtk.Menu menu, GOF.Directory.Async dir) {
+        private void append_subdirectories (Gtk.Menu menu, Directory dir) {
             /* Append list of directories at the same level */
             if (dir.can_load) {
-                unowned List<unowned GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
+                unowned List<unowned Files.File>? sorted_dirs = dir.get_sorted_dirs ();
 
                 if (sorted_dirs != null) {
                     menu.append (new Gtk.SeparatorMenuItem ());
-                    foreach (unowned GOF.File gof in sorted_dirs) {
+                    foreach (unowned Files.File gof in sorted_dirs) {
                         var menuitem = new Gtk.MenuItem.with_label (gof.get_display_name ());
                         menuitem.set_data ("location", gof.uri);
                         menu.append (menuitem);
@@ -528,11 +528,11 @@ namespace Marlin.View.Chrome {
             dir = null;
         }
 
-        private GOF.File? get_target_location (int x, int y) {
-            GOF.File? file;
+        private Files.File? get_target_location (int x, int y) {
+            Files.File? file;
             var el = get_element_from_coordinates (x, y);
             if (el != null) {
-                file = GOF.File.get (GLib.File.new_for_commandline_arg (get_path_from_element (el)));
+                file = Files.File.get (GLib.File.new_for_commandline_arg (get_path_from_element (el)));
                 file.ensure_query_info ();
                 return file;
             }
@@ -577,7 +577,7 @@ namespace Marlin.View.Chrome {
         protected void handle_primary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
             if (el != null) {
                 if (button_press_timeout_id == 0) {
-                    button_press_timeout_id = Timeout.add (Marlin.BUTTON_LONG_PRESS, () => {
+                    button_press_timeout_id = Timeout.add (Files.BUTTON_LONG_PRESS, () => {
                         load_right_click_menu (event, el);
                         button_press_timeout_id = 0;
                         return GLib.Source.REMOVE;
@@ -587,7 +587,7 @@ namespace Marlin.View.Chrome {
         }
         protected void handle_middle_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
             if (el != null) {
-                activate_path (get_path_from_element (el), Marlin.OpenFlag.NEW_TAB);
+                activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
             }
         }
         protected void handle_secondary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {

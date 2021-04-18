@@ -21,13 +21,13 @@
  */
 
 public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
-    private Marlin.BookmarkList bookmark_list;
-    private unowned Marlin.TrashMonitor trash_monitor;
+    private Files.BookmarkList bookmark_list;
+    private unowned Files.TrashMonitor trash_monitor;
     private SidebarItemInterface? trash_bookmark;
 
-    public Marlin.SidebarInterface sidebar {get; construct;}
+    public Files.SidebarInterface sidebar {get; construct;}
 
-    public BookmarkListBox (Marlin.SidebarInterface sidebar) {
+    public BookmarkListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
         );
@@ -36,10 +36,20 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     construct {
         hexpand = true;
         selection_mode = Gtk.SelectionMode.SINGLE;
-        trash_monitor = Marlin.TrashMonitor.get_default ();
-        bookmark_list = Marlin.BookmarkList.get_instance ();
+        trash_monitor = Files.TrashMonitor.get_default ();
+        bookmark_list = Files.BookmarkList.get_instance ();
         bookmark_list.loaded.connect (() => {
             refresh ();
+        });
+        row_activated.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                ((SidebarItemInterface) row).activated ();
+            }
+        });
+        row_selected.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                select_item ((SidebarItemInterface) row);
+            }
         });
     }
 
@@ -73,7 +83,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         return row;
     }
 
-    public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                 plugin_item.uri,
                                 plugin_item.icon,
@@ -111,7 +121,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             row = add_bookmark (
                 _("Home"),
                 home_uri,
-                new ThemedIcon (Marlin.ICON_HOME),
+                new ThemedIcon (Files.ICON_HOME),
                 true
             );
 
@@ -122,9 +132,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
         if (PF.FileUtils.protocol_is_supported ("recent")) {
             row = add_bookmark (
-                _(Marlin.PROTOCOL_NAME_RECENT),
-                Marlin.RECENT_URI,
-                new ThemedIcon (Marlin.ICON_RECENT),
+                _(Files.PROTOCOL_NAME_RECENT),
+                Files.RECENT_URI,
+                new ThemedIcon (Files.ICON_RECENT),
                 true
             );
 
@@ -133,7 +143,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             );
         }
 
-        foreach (unowned Marlin.Bookmark bm in bookmark_list.list) {
+        foreach (unowned Files.Bookmark bm in bookmark_list.list) {
             row = add_bookmark (bm.label, bm.uri, bm.get_icon ());
             row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
             row.notify["custom-name"].connect (() => {
@@ -141,10 +151,10 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             });
         }
 
-        if (!Marlin.is_admin ()) {
+        if (!Files.is_admin ()) {
             trash_bookmark = add_bookmark (
                 _("Trash"),
-                _(Marlin.TRASH_URI),
+                _(Files.TRASH_URI),
                 trash_monitor.get_icon (),
                 true
             );
