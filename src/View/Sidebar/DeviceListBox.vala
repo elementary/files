@@ -37,6 +37,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         drive_row_map = new Gee.HashMap<string, SidebarExpander> ();
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
+        volume_monitor.drive_connected.connect (bookmark_drive);
         volume_monitor.drive_disconnected.connect (drive_removed);
         volume_monitor.mount_added.connect_after ((mount) => {
             /* This delay is needed to ensure that any corresponding volume row has finished updating after
@@ -51,8 +52,6 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         });
 
         volume_monitor.volume_added.connect (bookmark_volume_without_drive);
-
-        volume_monitor.drive_connected.connect (refresh);
 
         row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
@@ -185,6 +184,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             drive_row_map.@set (drive.get_name (), drive_row);
             drive_row.set_gicon (drive.get_icon ());
             add (drive_row);
+            drive_row.active = true;
         }
     }
 
