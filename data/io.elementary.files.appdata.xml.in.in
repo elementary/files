@@ -68,6 +68,7 @@
         <ul>
           <li>Discontinue colorization and highlighting of focused and hovered icons</li>
           <li>Grey background for selected items in Icon View</li>   
+          <li>More compact Icon View at small icon sizes</li>
           <li>Do not restore locations that have become inaccessible</li>
           <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
         </ul>
@@ -78,6 +79,7 @@
         <p>Improvements:</p>
         <ul>
           <li>Bookmark menu option for network mounts in sidebar</li>
+          <li>More compact Icon View at small icon sizes</li>
           <li>Show folder item count in List View</li>
           <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
           <li>Properties window: Allow the filename to be copied when it cannot be edited</li>

@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -18,53 +18,20 @@
 
 namespace Files {
     public class TextRenderer: Gtk.CellRendererText {
-
-        const int MAX_LINES = 5;
-        private int border_radius;
-        private int double_border_radius;
-        private Gtk.CssProvider text_css;
-        private Gdk.RGBA previous_background_rgba;
-        private Gdk.RGBA previous_contrasting_rgba;
-
-        private ZoomLevel _zoom_level;
-        public ZoomLevel zoom_level {
-            get {
-                return _zoom_level;
-            }
-
-            set {
-                var icon_size = value.to_icon_size ();
-                border_radius = 5 + icon_size / 40;
-                double_border_radius = 2 * border_radius;
-
-                if (is_list_view) {
-                    set_fixed_size (-1, icon_size);
-                } else {
-                    wrap_width = item_width - double_border_radius;
-                }
-
-                _zoom_level = value;
-            }
-        }
-
+        public int icon_size { get; set; default = -1; }
+        public int item_width { get; set; default = -1; }
+        public int max_lines { get; set; }
         public Files.File? file {set; private get;}
-        private int _item_width = -1;
-        public int item_width {
-            set {
-                _item_width = value;
-            }
-
-            private get {
-                return _item_width;
-            }
-        }
-
-        private bool is_list_view;
-
         public int text_width;
         public int text_height;
 
-        int char_height;
+        private bool is_list_view;
+        private int char_height;
+        private int border_radius = 5;
+        private int double_border_radius = 10;
+        private Gtk.CssProvider text_css;
+        private Gdk.RGBA previous_background_rgba;
+        private Gdk.RGBA previous_contrasting_rgba;
 
         Pango.Layout layout;
         Gtk.Widget widget;
@@ -87,13 +54,29 @@ namespace Files {
             text_css = new Gtk.CssProvider ();
             previous_background_rgba = { 0, 0, 0, 0 };
             previous_contrasting_rgba = { 0, 0, 0, 0 };
-
             background_css = new Gtk.CssProvider ();
             try {
                 background_css.load_from_data (CUSTOM_CSS);
             } catch (Error e) {
 
             }
+
+            ypad = 0;
+
+            notify["icon-size"].connect (() => {
+                border_radius = 2 + icon_size / 16;
+                double_border_radius = 2 * border_radius;
+
+                if (is_list_view) {
+                    set_fixed_size (-1, icon_size);
+                }
+            });
+
+            notify["item-width"].connect (() => {
+                if (!is_list_view) {
+                    wrap_width = _item_width - double_border_radius;
+                }
+            });
         }
 
         public TextRenderer (ViewMode viewmode) {
@@ -112,7 +95,7 @@ namespace Files {
                                                                out int minimum_size, out int natural_size) {
             set_widget (widget);
             set_up_layout (text, width);
-            natural_size = text_height + 4 * border_radius;
+            natural_size = text_height + double_border_radius;
             minimum_size = natural_size;
         }
 
@@ -123,8 +106,6 @@ namespace Files {
                                      Gtk.CellRendererState flags) {
             set_widget (widget);
 
-            bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
-            bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
             bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
             var state = Gtk.StateFlags.NORMAL;
 
@@ -153,11 +134,11 @@ namespace Files {
             style_context.remove_provider (background_css);
 
             /* Position text relative to the focus rectangle */
+                y_offset += (focus_rect_height - text_height) / 2;
             if (!is_list_view) {
                 x_offset += (focus_rect_width - wrap_width) / 2;
-                y_offset += (focus_rect_height - text_height) / 2;
+
             } else {
-                y_offset = (cell_area.height - char_height) / 2;
                 x_offset += border_radius;
             }
 
@@ -211,10 +192,12 @@ namespace Files {
             if (is_list_view) {
                 layout.set_width ((cell_width - double_border_radius) * Pango.SCALE);
                 layout.set_height (- 1);
+                yalign = 0.5f;
             } else {
                 layout.set_width (wrap_width * Pango.SCALE);
                 layout.set_wrap (this.wrap_mode);
-                layout.set_height (- MAX_LINES);
+                layout.set_height (- max_lines);
+                yalign = 0.0f;
             }
 
             layout.set_ellipsize (Pango.EllipsizeMode.END);
@@ -361,7 +344,7 @@ namespace Files {
 
             /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
             focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
-            focus_rect_height = int.min (focus_rect_height, cell_area.height - 2);
+            focus_rect_height = int.min (focus_rect_height, cell_area.height);
 
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
@@ -411,10 +394,6 @@ namespace Files {
             }
 
             y_offset = (int)(yalign * (cell_area.height - height));
-
-            if (!is_list_view) {
-                y_offset += border_radius;
-            }
         }
     }
 }

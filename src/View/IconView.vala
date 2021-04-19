@@ -18,6 +18,8 @@
 
 namespace Files {
     public class IconView : AbstractDirectoryView {
+
+        private static Gee.HashMap<Files.ZoomLevel, ItemLayout?> layout_map;
         protected new Gtk.IconView tree;
         /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
         protected bool previous_selection_was_linear = false;
@@ -33,6 +35,29 @@ namespace Files {
                 background-color: alpha (@text_color, 0.2);
             }
         """;
+
+        private struct ItemLayout {
+            Files.IconSize icon_size;
+            int column_spacing;
+            int row_spacing;
+            int spacing;
+            int item_width;
+            int item_padding;
+            int max_lines;
+        }
+
+        static construct {
+            layout_map = new Gee.HashMap<Files.ZoomLevel, ItemLayout?> ();
+            layout_map.@set (Files.ZoomLevel.SMALLEST, {Files.IconSize.SMALL, 1, 0, 0, 64, 0, 1});
+            layout_map.@set (Files.ZoomLevel.SMALLER, {Files.IconSize.SMALL, 3, 1, 1, 64, 3, 2});
+            layout_map.@set (Files.ZoomLevel.SMALL, {Files.IconSize.SMALL, 6, 2, 1, 68, 3, 3});
+            layout_map.@set (Files.ZoomLevel.NORMAL, {Files.IconSize.NORMAL, 9, 3, 3, 80, 4, 5});
+            layout_map.@set (Files.ZoomLevel.LARGE, {Files.IconSize.LARGE, 12, 4, 3, 96, 4, 6});
+            layout_map.@set (Files.ZoomLevel.LARGER, {Files.IconSize.LARGER, 15, 5, 3, 112, 4, 5});
+            layout_map.@set (Files.ZoomLevel.HUGE, {Files.IconSize.HUGE, 15, 6, 6, 128, 3, 4});
+            layout_map.@set (Files.ZoomLevel.HUGER, {Files.IconSize.HUGER, 15, 5, 6, 208, 4, 3});
+            layout_map.@set (Files.ZoomLevel.LARGEST, {Files.IconSize.LARGEST, 15, 6, 3, 272, 4, 2});
+        }
 
         public IconView (View.Slot _slot) {
             base (_slot);
@@ -112,9 +137,6 @@ namespace Files {
                 GLib.SettingsBindFlags.DEFAULT
             );
 
-            minimum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("maximum-zoom-level");
-
             if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
             }
@@ -132,16 +154,23 @@ namespace Files {
         }
 
         public override void change_zoom_level () {
-            int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));
-            int item_width = (int)((double)icon_size * (2.5 - zoom_level * 0.2));
+            ItemLayout layout = layout_map.@get (zoom_level);
+
             if (tree != null) {
-                tree.set_column_spacing (spacing);
-                tree.set_item_width (item_width);
+                tree.set_column_spacing (layout.column_spacing);
+                tree.set_row_spacing (layout.row_spacing);
+                tree.set_spacing (layout.spacing);
+                tree.set_item_width (layout.item_width);
+                tree.set_item_padding (layout.item_padding);
+                name_renderer.max_lines = layout.max_lines;
+            } else {
+                critical ("Attempt to zoom null tree");
             }
 
-            name_renderer.item_width = item_width;
-
-            base.change_zoom_level (); /* Sets name_renderer zoom_level */
+            icon_renderer.icon_size = layout.icon_size;
+            name_renderer.item_width = layout.item_width;
+            name_renderer.icon_size = layout.icon_size;
+            base.change_zoom_level ();
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {

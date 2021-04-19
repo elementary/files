@@ -1,8 +1,7 @@
 /***
-    Copyright (c) 2016-2018 elementary LLC <https://elementary.io>
-
-    Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
     Copyright (c) 2011  ammonkey <am.monkeyd@gmail.com>
+    Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
+    Copyright (c) 2016-2020 elementary LLC <https://elementary.io>
 
     Transcribed from marlin-icon-renderer
     Originaly Written in gtk+: gtkcellrendererpixbuf
@@ -31,20 +30,10 @@ namespace Files {
     public class IconRenderer : Gtk.CellRenderer {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
-        public bool follow_state {get; set;}
+        public bool follow_state {get; set; default = true;}
+        public int icon_size {get; set; default = -1;}
+        public ViewMode view_mode { get; construct; }
         public Files.File? drop_file {get; set;}
-
-        public ZoomLevel zoom_level {
-            get {
-                return _zoom_level;
-            }
-            set {
-                _zoom_level = value;
-                icon_size = value.to_icon_size ();
-                h_overlap = int.min (icon_size / 8, Files.IconSize.EMBLEM / 2);
-                v_overlap = int.min (icon_size / 8, Files.IconSize.EMBLEM);
-            }
-        }
 
         public Files.File? file {
             get {
@@ -58,12 +47,15 @@ namespace Files {
             }
         }
 
-        int h_overlap;
-        int v_overlap;
-        private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
+        private bool show_emblems = true;
+        private int helper_size = (int)Files.IconSize.EMBLEM;
+        private int emblem_size = (int)Files.IconSize.EMBLEM;
+        private Gdk.Rectangle emblem_area = Gdk.Rectangle ();
+        private int h_overlap;
+        private int v_overlap;
         private Files.File? _file;
-        private Files.IconSize icon_size;
         private int icon_scale = 1;
+
         private unowned Gdk.Pixbuf? pixbuf {
             get {
                 return _file != null ? _file.pix : null;
@@ -73,9 +65,15 @@ namespace Files {
         private ClipboardManager clipboard;
 
         construct {
-            clipboard = ClipboardManager.get_for_display ();
+            clipboard = Files.ClipboardManager.get_for_display ();
             hover_rect = {0, 0, (int) Files.IconSize.NORMAL, (int) Files.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Files.IconSize.EMBLEM, (int) Files.IconSize.EMBLEM};
+
+            notify["icon-size"].connect (() => {
+                show_emblems = view_mode != ViewMode.ICON || icon_size > (int)Files.IconSize.SMALLEST;
+                helper_size = icon_size <= (int)Files.IconSize.NORMAL ?
+                              (int)Files.IconSize.EMBLEM : (int)Files.IconSize.LARGE_EMBLEM;
+            });
         }
 
         public IconRenderer (ViewMode view_mode) {
@@ -161,7 +159,6 @@ namespace Files {
 
             bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
             bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
-            bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
             var state = Gtk.StateFlags.NORMAL;
 
             if (!widget.sensitive || !this.sensitive) {
@@ -191,9 +188,6 @@ namespace Files {
 
                 Gdk.Rectangle helper_rect = {0, 0, 1, 1};
                 if (special_icon_name != null) {
-                    var helper_size = (int) (zoom_level <= ZoomLevel.NORMAL ?
-                                             Files.IconSize.EMBLEM : Files.IconSize.LARGE_EMBLEM);
-
                     helper_rect.width = helper_size;
                     helper_rect.height = helper_size;
 
@@ -219,50 +213,62 @@ namespace Files {
                 }
             }
 
-            int emblem_size = (int) Files.IconSize.EMBLEM;
-            int pos = 0;
-            var emblem_area = Gdk.Rectangle ();
+            /* check if we should render emblems as well */
+            /* Do not show emblems for very small icons in IconView */
+            /* Still show emblems when selection helpers hidden in double click mode */
+            /* How many emblems can be shown depends on icon icon_size */
+            if (show_emblems) {
+                int n_emblems = (int)(file.emblems_list.length ());
+                int spacing = 0;
+                if (n_emblems > 0) {
+                    if (n_emblems > 1) {
+                        spacing = int.max (emblem_size, (draw_rect.height - emblem_size) / (n_emblems - 1));
+                        spacing = int.min (draw_rect.height / 2, (cell_area.height - emblem_size) / (n_emblems - 1));
+                    }
 
-            foreach (string emblem in file.emblems_list) {
-                if (pos - 1 > zoom_level) {
-                    break;
+                    int total_height = spacing * (n_emblems - 1) + emblem_size;
+                    emblem_area.y = cell_area.y + (cell_area.height + total_height) / 2;
+                    emblem_area.y = int.max (emblem_area.y, draw_rect.y + draw_rect.height);
+                    emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height);
+                    emblem_area.y -= emblem_size;
+
+                    emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
+                    emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
+
+                    spacing = int.min (spacing, emblem_size + icon_size / 16);
+                    Gdk.Pixbuf? pix = null;
+                    foreach (string emblem in file.emblems_list) {
+                        var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+
+                        if (nicon == null) {
+                            continue;
+                        }
+
+                        pix = nicon.get_pixbuf_nodefault ();
+
+                        if (pix == null) {
+                            continue;
+                        }
+
+                        if (emblem_area.y < (cell_area.y - spacing)) {
+                            break; // No more room for emblems
+                        }
+
+                        style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+                        emblem_area.y -= spacing;
+                    }
                 }
-
-                Gdk.Pixbuf? pix = null;
-                var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
-
-                if (nicon == null) {
-                    continue;
-                }
-
-                pix = nicon.get_pixbuf_nodefault ();
-
-                if (pix == null) {
-                    continue;
-                }
-
-                emblem_area.y = draw_rect.y + pix_rect.height - v_overlap;
-                emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
-
-                emblem_area.y -= emblem_size * pos;
-                emblem_area.y = int.max (cell_area.y, emblem_area.y);
-
-                emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
-                emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
-
-                style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
-                pos++;
             }
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) (icon_size + 2 * xpad);
+            minimum_size = icon_size + hover_helper_rect.width;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            natural_size = (int) (icon_size);
-            minimum_size = natural_size;
+            minimum_size = icon_size + hover_helper_rect.height / 2;
+            natural_size = minimum_size;
         }
 
         /* We still have to implement this even though it is deprecated, else compiler complains.

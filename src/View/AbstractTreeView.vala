@@ -80,7 +80,6 @@ namespace Files {
         protected override void set_up_name_renderer () {
             base.set_up_name_renderer ();
             name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
             name_renderer.@set ("ellipsize-set", true);
             name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
             name_renderer.xalign = 0.0f;
@@ -119,8 +118,10 @@ namespace Files {
         }
 
         public override void change_zoom_level () {
+            icon_renderer.icon_size = (int)(zoom_level.to_icon_size ());
+            name_renderer.icon_size = icon_renderer.icon_size;
+
             if (tree != null) {
-                base.change_zoom_level ();
                 tree.columns_autosize ();
                 tree.set_property ("zoom-level", zoom_level);
             }
