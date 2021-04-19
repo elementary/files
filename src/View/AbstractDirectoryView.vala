@@ -25,7 +25,7 @@
      * ColumnView
 */
 
-namespace FM {
+namespace Files {
     public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
 
         protected enum ClickZone {
@@ -41,15 +41,15 @@ namespace FM {
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] DRAG_TARGETS = {
-            {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.STRING},
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST}
+            {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST}
         };
 
         const Gtk.TargetEntry [] DROP_TARGETS = {
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_URI_LIST},
-            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.TEXT_URI_LIST},
-            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.XDND_DIRECT_SAVE0},
-            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.NETSCAPE_URL}
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
+            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST},
+            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Files.TargetType.XDND_DIRECT_SAVE0},
+            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Files.TargetType.NETSCAPE_URL}
         };
 
         const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
@@ -93,8 +93,8 @@ namespace FM {
         GLib.SimpleActionGroup selection_actions;
         GLib.SimpleActionGroup background_actions;
 
-        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
-        public Marlin.ZoomLevel zoom_level {
+        private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
+        public ZoomLevel zoom_level {
             get {
                 return _zoom_level;
             }
@@ -114,12 +114,12 @@ namespace FM {
 
         public int icon_size {
             get {
-                return Marlin.zoom_level_to_icon_size (_zoom_level);
+                return _zoom_level.to_icon_size ();
             }
         }
 
-        protected Marlin.ZoomLevel minimum_zoom = Marlin.ZoomLevel.SMALLEST;
-        protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST;
+        protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
+        protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
         protected bool large_thumbnails = false;
 
         /* Used only when acting as drag source */
@@ -127,15 +127,15 @@ namespace FM {
         int drag_y = 0;
         int drag_button;
         uint drag_timer_id = 0;
-        GLib.List<GOF.File> source_drag_file_list = null;
-        Gdk.Atom current_target_type = Gdk.Atom.NONE;
+        protected GLib.List<Files.File> source_drag_file_list = null;
+        protected Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
         /* Used only when acting as drag destination */
         uint drag_scroll_timer_id = 0;
         uint drag_enter_timer_id = 0;
         private bool destination_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
-        GOF.File? drop_target_file = null;
+        Files.File? drop_target_file = null;
         private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
@@ -166,14 +166,14 @@ namespace FM {
         int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
         uint freeze_source_id = 0;
-        Marlin.Thumbnailer thumbnailer = null;
+        Thumbnailer thumbnailer = null;
 
         /* Free space signal support */
         uint add_remove_file_timeout_id = 0;
         bool signal_free_space_change = false;
 
         /* Rename support */
-        protected Marlin.TextRenderer? name_renderer = null;
+        protected Files.TextRenderer? name_renderer = null;
         public string original_name = "";
         public string proposed_name = "";
 
@@ -184,9 +184,9 @@ namespace FM {
         private Gtk.TreePath deleted_path;
 
         /* UI options for button press handling */
-        protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
-        public bool single_click_mode { get; set; }
+        protected bool on_directory = false;
+        protected bool one_or_less = true;
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
@@ -204,7 +204,7 @@ namespace FM {
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
-        protected GLib.List<GOF.File> selected_files = null;
+        protected GLib.List<Files.File> selected_files = null;
         private bool selected_files_invalid = true;
 
         private static GLib.List<GLib.File> templates = null;
@@ -256,41 +256,35 @@ namespace FM {
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = true;}
         protected bool hide_local_thumbnails {get; set; default = false;}
-        protected bool is_admin {
-            get {
-                return (uint)Posix.getuid () == 0;
-            }
-        }
 
         private bool all_selected = false;
 
         private Gtk.Widget view;
-        private unowned Marlin.ClipboardManager clipboard;
-        protected FM.ListModel model;
-        protected Marlin.IconRenderer icon_renderer;
-        protected unowned Marlin.View.Slot slot;
-        protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
-        protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
+        private unowned ClipboardManager clipboard;
+        protected Files.ListModel model;
+        protected Files.IconRenderer icon_renderer;
+        protected unowned View.Slot slot;
+        protected unowned View.Window window; /*For convenience - this can be derived from slot */
+        protected static DndHandler dnd_handler = new DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
 
-        public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
-        public signal void item_hovered (GOF.File? file);
-        public signal void selection_changed (GLib.List<GOF.File> gof_file);
+        public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
+        public signal void item_hovered (Files.File? file);
+        public signal void selection_changed (GLib.List<Files.File> gof_file);
 
-        protected AbstractDirectoryView (Marlin.View.Slot _slot) {
+        protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            var app = (Marlin.Application)(GLib.Application.get_default ());
+            var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
-            icon_renderer = new Marlin.IconRenderer ();
-            thumbnailer = Marlin.Thumbnailer.get ();
+            thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
@@ -298,16 +292,15 @@ namespace FM {
 
                 draw_when_idle ();
             });
-            model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
-            Marlin.app_settings.bind ("single-click",
-                                                             this, "single_click_mode", SettingsBindFlags.GET);
-            Marlin.app_settings.bind ("show-remote-thumbnails",
+
+            model = new Files.ListModel ();
+
+            Files.app_settings.bind ("show-remote-thumbnails",
                                                              this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Marlin.app_settings.bind ("hide-local-thumbnails",
+            Files.app_settings.bind ("hide-local-thumbnails",
                                                              this, "hide_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
-              * Currently, "activate on blank" is enabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
               */
 
@@ -370,13 +363,13 @@ namespace FM {
                 schedule_thumbnail_timeout ();
             });
 
-            var prefs = (GOF.Preferences.get_default ());
+            var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
-            model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
+            model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
@@ -396,13 +389,13 @@ namespace FM {
             insert_action_group ("common", common_actions);
 
             action_set_state (background_actions, "show-hidden",
-                              Marlin.app_settings.get_boolean ("show-hiddenfiles"));
+                              Files.app_settings.get_boolean ("show-hiddenfiles"));
 
             action_set_state (background_actions, "show-remote-thumbnails",
-                              Marlin.app_settings.get_boolean ("show-remote-thumbnails"));
+                              Files.app_settings.get_boolean ("show-remote-thumbnails"));
 
             action_set_state (background_actions, "hide-local-thumbnails",
-                              Marlin.app_settings.get_boolean ("hide-local-thumbnails"));
+                              Files.app_settings.get_boolean ("hide-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -413,10 +406,6 @@ namespace FM {
             if (zoom_level > 0) {
                 zoom_level = zoom_level - 1;
             }
-        }
-
-        private void set_up_zoom_level () {
-            zoom_level = get_set_up_zoom_level ();
         }
 
         public void zoom_normal () {
@@ -442,9 +431,9 @@ namespace FM {
          */
         private ulong select_source_handler = 0;
         public void select_glib_files_when_thawed (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
-            var files_to_select_list = new Gee.LinkedList<GOF.File> ();
+            var files_to_select_list = new Gee.LinkedList<Files.File> ();
             location_list.@foreach ((loc) => {
-                files_to_select_list.add (GOF.File.@get (loc));
+                files_to_select_list.add (Files.File.@get (loc));
             });
 
             GLib.File? focus_after_select = focus_location != null ? focus_location.dup () : null;
@@ -462,7 +451,7 @@ namespace FM {
             }
         }
 
-        private void select_files_and_update_if_thawed (Gee.LinkedList<GOF.File> files_to_select,
+        private void select_files_and_update_if_thawed (Gee.LinkedList<Files.File> files_to_select,
                                                         GLib.File? focus_file) {
             if (tree_frozen) {
                 return;
@@ -479,7 +468,7 @@ namespace FM {
 
             uint count = 0;
 
-            foreach (GOF.File f in files_to_select) {
+            foreach (Files.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
                 if (model.get_first_iter_for_file (f, out iter)) {
                     count++;
@@ -518,7 +507,7 @@ namespace FM {
             }
         }
 
-        public unowned GLib.List<GOF.File> get_selected_files () {
+        public unowned GLib.List<Files.File> get_selected_files () {
             update_selected_files_and_menu ();
             return selected_files;
         }
@@ -529,16 +518,16 @@ namespace FM {
         }
 
         protected void load_location (GLib.File location) {
-            path_change_request (location, Marlin.OpenFlag.DEFAULT, false);
+            path_change_request (location, Files.OpenFlag.DEFAULT, false);
         }
 
         protected void load_root_location (GLib.File location) {
-            path_change_request (location, Marlin.OpenFlag.DEFAULT, true);
+            path_change_request (location, Files.OpenFlag.DEFAULT, true);
         }
 
     /** Operations on selections */
-        protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
-                                                GLib.List<GOF.File> selection = get_selected_files ()) {
+        protected void activate_selected_items (Files.OpenFlag flag = Files.OpenFlag.DEFAULT,
+                                                GLib.List<Files.File> selection = get_selected_files ()) {
 
             if (is_frozen || selection == null) {
                 return;
@@ -558,12 +547,12 @@ namespace FM {
                 if (selection.nth_data (11) == null && // Less than 10 items
                    (default_app == null || app_is_this_app (default_app))) {
 
-                    foreach (GOF.File file in selection) {
+                    foreach (Files.File file in selection) {
                         /* Prevent too rapid activation of files - causes New Tab to crash for example */
                         if (file.is_folder ()) {
                             /* By default, multiple folders open in new tabs */
-                            if (flag == Marlin.OpenFlag.DEFAULT) {
-                                flag = Marlin.OpenFlag.NEW_TAB;
+                            if (flag == Files.OpenFlag.DEFAULT) {
+                                flag = Files.OpenFlag.NEW_TAB;
                             }
 
                             GLib.Idle.add (() => {
@@ -590,8 +579,8 @@ namespace FM {
             }
         }
 
-        public void select_gof_file (GOF.File file) {
-            var iter = Gtk.TreeIter ();
+        public void select_gof_file (Files.File file) {
+            Gtk.TreeIter iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -600,8 +589,8 @@ namespace FM {
             set_cursor (path, false, true, false);
         }
 
-        protected void select_and_scroll_to_gof_file (GOF.File file) {
-            var iter = Gtk.TreeIter ();
+        protected void select_and_scroll_to_gof_file (Files.File file) {
+            Gtk.TreeIter iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -610,9 +599,8 @@ namespace FM {
             set_cursor (path, false, true, true);
         }
 
-        protected void add_gof_file_to_selection (GOF.File file) {
-            var iter = Gtk.TreeIter ();
-
+        protected void add_gof_file_to_selection (Files.File file) {
+            Gtk.TreeIter iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -623,7 +611,7 @@ namespace FM {
 
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
-        protected void connect_directory_handlers (GOF.Directory.Async dir) {
+        protected void connect_directory_handlers (Directory dir) {
             dir.file_added.connect (on_directory_file_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
@@ -631,17 +619,17 @@ namespace FM {
             connect_directory_loading_handlers (dir);
         }
 
-        protected void connect_directory_loading_handlers (GOF.Directory.Async dir) {
+        protected void connect_directory_loading_handlers (Directory dir) {
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
-        protected void disconnect_directory_loading_handlers (GOF.Directory.Async dir) {
+        protected void disconnect_directory_loading_handlers (Directory dir) {
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
-        protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
+        protected void disconnect_directory_handlers (Directory dir) {
             /* If the directory is still loading the file_loaded signal handler
             /* will not have been disconnected */
             if (dir.is_loading ()) {
@@ -655,7 +643,7 @@ namespace FM {
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
-        public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
+        public void change_directory (Directory old_dir, Directory new_dir) {
             var style_context = get_style_context ();
             if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
                 style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -668,7 +656,7 @@ namespace FM {
             connect_directory_handlers (new_dir);
         }
 
-        public void prepare_reload (GOF.Directory.Async dir) {
+        public void prepare_reload (Directory dir) {
             cancel ();
             clear ();
             connect_directory_loading_handlers (dir);
@@ -693,7 +681,12 @@ namespace FM {
             widget.drag_motion.connect (on_drag_motion);
 
             /* Set up as drag source */
-            Gtk.drag_source_set (widget, Gdk.ModifierType.BUTTON1_MASK, DRAG_TARGETS, FILE_DRAG_ACTIONS);
+            Gtk.drag_source_set (
+                widget,
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK | Gdk.ModifierType.CONTROL_MASK,
+                DRAG_TARGETS,
+                FILE_DRAG_ACTIONS
+            );
             widget.drag_begin.connect (on_drag_begin);
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);
@@ -714,7 +707,7 @@ namespace FM {
             cancel_timeout (ref thumbnail_source_id);
         }
 
-        protected bool selection_only_contains_folders (GLib.List<GOF.File> list) {
+        protected bool selection_only_contains_folders (GLib.List<Files.File> list) {
             bool only_folders = true;
 
             list.@foreach ((file) => {
@@ -766,38 +759,38 @@ namespace FM {
             return false;
         }
 
-        protected GLib.List<GOF.File>
-        get_selected_files_for_transfer (GLib.List<GOF.File> selection = get_selected_files ()) {
+        protected GLib.List<Files.File>
+        get_selected_files_for_transfer (GLib.List<Files.File> selection = get_selected_files ()) {
             return selection.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
         }
 
 /*** Private methods */
     /** File operations */
 
-        private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
+        private void activate_file (Files.File _file, Gdk.Screen? screen, Files.OpenFlag flag, bool only_one_file) {
             if (is_frozen) {
                 return;
             }
 
-            GOF.File file = _file;
+            Files.File file = _file;
             if (in_recent) {
-                file = GOF.File.get_by_uri (file.get_display_target_uri ());
+                file = Files.File.get_by_uri (file.get_display_target_uri ());
             }
 
-            default_app = Marlin.MimeActions.get_default_application_for_file (file);
+            default_app = MimeActions.get_default_application_for_file (file);
             GLib.File location = file.get_target_location ();
 
             if (screen == null) {
                 screen = get_screen ();
             }
 
-            if (flag != Marlin.OpenFlag.APP && (file.is_folder () ||
+            if (flag != Files.OpenFlag.APP && (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
                 file.is_root_network_folder ())) {
 
                 switch (flag) {
-                    case Marlin.OpenFlag.NEW_TAB:
-                    case Marlin.OpenFlag.NEW_WINDOW:
+                    case Files.OpenFlag.NEW_TAB:
+                    case Files.OpenFlag.NEW_WINDOW:
                         path_change_request (location, flag, true);
                         break;
 
@@ -837,14 +830,14 @@ namespace FM {
         }
 
         /* Open all files through this */
-        private void open_file (GOF.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
+        private void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                Marlin.MimeActions.open_glib_file_request (file.location, this, app_info);
+                MimeActions.open_glib_file_request (file.location, this, app_info);
             }
         }
 
         /* Also used by build open menu */
-        private bool can_open_file (GOF.File file, bool show_error_dialog = false) {
+        private bool can_open_file (Files.File file, bool show_error_dialog = false) {
             string err_msg1 = _("Cannot open this file");
             string err_msg2 = "";
             var content_type = file.get_ftype ();
@@ -875,7 +868,7 @@ namespace FM {
             return success;
         }
 
-        private void trash_or_delete_files (GLib.List<GOF.File> file_list,
+        private void trash_or_delete_files (GLib.List<Files.File> file_list,
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
 
@@ -898,14 +891,14 @@ namespace FM {
                 locations.reverse ();
 
                 slot.directory.block_monitor ();
-                Marlin.FileOperations.@delete.begin (
+                FileOperations.@delete.begin (
                     locations,
                     window as Gtk.Window,
                     !delete_immediately,
                     null,
                     (obj, res) => {
                         try {
-                            Marlin.FileOperations.@delete.end (res);
+                            FileOperations.@delete.end (res);
                         } catch (Error e) {
                             debug (e.message);
                         }
@@ -921,7 +914,7 @@ namespace FM {
             }
         }
 
-        private void add_file (GOF.File file, GOF.Directory.Async dir, bool select = true) {
+        private void add_file (Files.File file, Directory dir, bool select = true) {
             model.add_file (file, dir);
 
             if (select) { /* This true once view finished loading */
@@ -955,7 +948,7 @@ namespace FM {
 
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_file.begin (
+            FileOperations.new_file.begin (
                 this,
                 parent_uri,
                 null,
@@ -964,7 +957,7 @@ namespace FM {
                 null,
                 (obj, res) => {
                     try {
-                        var file = Marlin.FileOperations.new_file.end (res);
+                        var file = FileOperations.new_file.end (res);
                         create_file_done (file);
                     } catch (Error e) {
                         critical (e.message);
@@ -976,9 +969,9 @@ namespace FM {
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_folder.begin (this, slot.location, null, (obj, res) => {
+            FileOperations.new_folder.begin (this, slot.location, null, (obj, res) => {
                 try {
-                    var file = Marlin.FileOperations.new_folder.end (res);
+                    var file = FileOperations.new_folder.end (res);
                     create_file_done (file);
                 } catch (Error e) {
                     critical (e.message);
@@ -986,14 +979,14 @@ namespace FM {
             });
         }
 
-        private void after_new_file_added (GOF.File? file) {
+        private void after_new_file_added (Files.File? file) {
             slot.directory.file_added.disconnect (after_new_file_added);
             if (file != null) {
                 rename_file (file);
             }
         }
 
-        protected void rename_file (GOF.File file_to_rename) {
+        protected void rename_file (Files.File file_to_rename) {
             if (renaming) {
                 warning ("already renaming %s", file_to_rename.basename);
                 return;
@@ -1043,7 +1036,7 @@ namespace FM {
          * when using keybindings. So we remember if the current selection
          * was already removed (but the view doesn't know about it yet).
          */
-            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<Files.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
                 trash_or_delete_files (selection, true, delete_immediately);
             }
@@ -1063,9 +1056,9 @@ namespace FM {
                 return;
             }
 
-            foreach (GOF.File file in selected_files) {
+            foreach (Files.File file in selected_files) {
                 var loc = GLib.File.new_for_uri (file.get_display_target_uri ());
-                path_change_request (loc, Marlin.OpenFlag.NEW_TAB, true);
+                path_change_request (loc, Files.OpenFlag.NEW_TAB, true);
             }
         }
 
@@ -1106,12 +1099,12 @@ namespace FM {
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
-            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<Files.File> selection = get_selected_files_for_transfer ();
             clipboard.cut_files (selection);
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-            trash_or_delete_selected_files (is_admin);
+            trash_or_delete_selected_files (Files.is_admin ());
         }
 
         private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1119,14 +1112,14 @@ namespace FM {
         }
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
-            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<Files.File> selection = get_selected_files_for_transfer ();
             PF.FileUtils.restore_files_from_trash (selection, window);
 
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
-            GLib.List<GOF.File> selection = get_files_for_action ();
-            GOF.File file = selection.data as GOF.File;
+            GLib.List<Files.File> selection = get_files_for_action ();
+            Files.File file = selection.data as Files.File;
             try {
                 file.execute (null);
             } catch (Error e) {
@@ -1135,7 +1128,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.APP, get_files_for_action ());
+            activate_selected_items (Files.OpenFlag.APP, get_files_for_action ());
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1143,8 +1136,8 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_other_app () {
-            GLib.List<GOF.File> selection = get_files_for_action ();
-            GOF.File file = selection.data as GOF.File;
+            GLib.List<Files.File> selection = get_files_for_action ();
+            Files.File file = selection.data as Files.File;
             open_file (file, null, null);
         }
 
@@ -1203,7 +1196,7 @@ namespace FM {
         }
 
         private void on_background_action_folders_first_changed (GLib.SimpleAction action, GLib.Variant? val) {
-            var prefs = GOF.Preferences.get_default ();
+            var prefs = Files.Preferences.get_default ();
             prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
@@ -1213,7 +1206,7 @@ namespace FM {
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
-                    sort_column_id = FM.ListModel.ColumnID.from_string (col_name);
+                    sort_column_id = Files.ListModel.ColumnID.from_string (col_name);
                 }
 
                 if (reverse) {
@@ -1235,11 +1228,11 @@ namespace FM {
 
             switch (param.get_string ()) {
                 case "TAB":
-                    activate_selected_items (Marlin.OpenFlag.NEW_TAB, get_files_for_action ());
+                    activate_selected_items (Files.OpenFlag.NEW_TAB, get_files_for_action ());
                     break;
 
                 case "WINDOW":
-                    activate_selected_items (Marlin.OpenFlag.NEW_WINDOW, get_files_for_action ());
+                    activate_selected_items (Files.OpenFlag.NEW_WINDOW, get_files_for_action ());
                     break;
 
                 default:
@@ -1248,7 +1241,7 @@ namespace FM {
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
-            new Marlin.View.PropertiesWindow (get_files_for_action (), this, window);
+            new View.PropertiesWindow (get_files_for_action (), this, window);
         }
 
         private void on_common_action_copy_link (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1281,7 +1274,7 @@ namespace FM {
             }
         }
 
-        private void on_directory_file_added (GOF.Directory.Async dir, GOF.File? file) {
+        private void on_directory_file_added (Directory dir, Files.File? file) {
             if (file != null) {
                 add_file (file, dir, true); /* Always select files added to view after initial load */
                 handle_free_space_change ();
@@ -1290,12 +1283,12 @@ namespace FM {
             }
         }
 
-        private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
+        private void on_directory_file_loaded (Directory dir, Files.File file) {
             add_file (file, dir, false); /* Do not select files added during initial load */
             /* no freespace change signal required */
         }
 
-        private void on_directory_file_changed (GOF.Directory.Async dir, GOF.File file) {
+        private void on_directory_file_changed (Directory dir, Files.File file) {
             if (file.location.equal (dir.file.location)) {
                 /* The slot directory has changed - it can only be the properties */
                 is_writable = slot.directory.file.is_writable ();
@@ -1317,12 +1310,12 @@ namespace FM {
             draw_when_idle ();
         }
 
-        private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
+        private void on_directory_file_icon_changed (Directory dir, Files.File file) {
             model.file_changed (file, dir);
             draw_when_idle ();
         }
 
-        private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
+        private void on_directory_file_deleted (Directory dir, Files.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
@@ -1340,9 +1333,9 @@ namespace FM {
 
             if (file.is_folder ()) {
                 /* Check whether the deleted file is the directory */
-                var file_dir = GOF.Directory.Async.cache_lookup (file.location);
+                var file_dir = Directory.cache_lookup (file.location);
                 if (file_dir != null) {
-                    GOF.Directory.Async.purge_dir_from_cache (file_dir);
+                    Directory.purge_dir_from_cache (file_dir);
                     slot.folder_deleted (file, file_dir);
                 }
             }
@@ -1350,19 +1343,17 @@ namespace FM {
             handle_free_space_change ();
         }
 
-        private void on_directory_done_loading (GOF.Directory.Async dir) {
+        private void on_directory_done_loading (Directory dir) {
             /* Should only be called on directory creation or reload */
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
 
-            thaw_tree ();
-
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
-                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+                    model.set_sort_column_id (Files.ListModel.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
                 } else if (slot.directory.file.info != null) {
                     model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
                 }
@@ -1370,11 +1361,13 @@ namespace FM {
                 is_writable = false;
             }
 
+            thaw_tree ();
+
             schedule_thumbnail_timeout ();
         }
 
     /** Handle zoom level change */
-        private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
+        private void on_zoom_level_changed (ZoomLevel zoom) {
             var size = icon_size * get_scale_factor ();
 
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
@@ -1383,13 +1376,13 @@ namespace FM {
                 schedule_thumbnail_timeout ();
             }
 
-            model.set_property ("size", icon_size);
+            model.size = icon_size;
             change_zoom_level ();
         }
 
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            bool show = ((GOF.Preferences) prefs).show_hidden_files;
+            bool show = ((Files.Preferences) prefs).show_hidden_files;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
@@ -1409,23 +1402,23 @@ namespace FM {
         }
 
         private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            show_remote_thumbnails = ((GOF.Preferences) prefs).show_remote_thumbnails;
+            show_remote_thumbnails = ((Files.Preferences) prefs).show_remote_thumbnails;
             action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
             slot.reload ();
         }
 
         private void on_hide_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            hide_local_thumbnails = ((GOF.Preferences) prefs).hide_local_thumbnails;
+            hide_local_thumbnails = ((Files.Preferences) prefs).hide_local_thumbnails;
             action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
             slot.reload ();
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            var sort_directories_first = ((GOF.Preferences) prefs).sort_directories_first;
+            var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
             model.set_should_sort_directories_first (sort_directories_first);
         }
 
-        private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
+        private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             dir.load_hiddens ();
@@ -1508,7 +1501,7 @@ namespace FM {
                 return;
             }
 
-            GOF.File file = source_drag_file_list.first ().data;
+            Files.File file = source_drag_file_list.first ().data;
 
             if (file != null && file.pix != null) {
                 Gtk.drag_set_icon_gicon (context, file.pix, 0, 0);
@@ -1516,7 +1509,7 @@ namespace FM {
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
             }
 
-            Marlin.DndHandler.set_selection_data_from_file_list (selection_data, source_drag_file_list);
+            DndHandler.set_selection_data_from_file_list (selection_data, source_drag_file_list);
         }
 
         /* Signal emitted on source after a DND move operation */
@@ -1567,7 +1560,7 @@ namespace FM {
 
             Gdk.Atom target = Gtk.drag_dest_find_target (get_child (), context, list);
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
-                GOF.File? target_file = get_drop_target_file (x, y);
+                Files.File? target_file = get_drop_target_file (x, y);
                 /* get XdndDirectSave file name from DnD source window */
                 string? filename = dnd_handler.get_source_filename (context);
                 if (target_file != null && filename != null) {
@@ -1602,9 +1595,9 @@ namespace FM {
                                             ) {
             /* Annoyingly drag-leave is emitted before "drag-drop" and this clears the destination drag data.
              * So we have to reset some it here and clear it again after processing the drop. */
-            if (info == Marlin.TargetType.TEXT_URI_LIST && destination_drop_file_list == null) {
+            if (info == Files.TargetType.TEXT_URI_LIST && destination_drop_file_list == null) {
                 string? text;
-                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
+                if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
                     destination_drop_file_list = PF.FileUtils.files_from_uris (text);
                     destination_data_ready = true;
                 }
@@ -1615,19 +1608,19 @@ namespace FM {
                 drop_occurred = false;
 
                 switch (info) {
-                    case Marlin.TargetType.XDND_DIRECT_SAVE0:
+                    case Files.TargetType.XDND_DIRECT_SAVE0:
                         success = dnd_handler.handle_xdnddirectsave (context,
                                                                      drop_target_file,
                                                                      selection_data);
                         break;
 
-                    case Marlin.TargetType.NETSCAPE_URL:
+                    case Files.TargetType.NETSCAPE_URL:
                         success = dnd_handler.handle_netscape_url (context,
                                                                    drop_target_file,
                                                                    selection_data);
                         break;
 
-                    case Marlin.TargetType.TEXT_URI_LIST:
+                    case Files.TargetType.TEXT_URI_LIST:
                         if ((current_actions & FILE_DRAG_ACTIONS) == 0) {
                             break;
                         }
@@ -1636,14 +1629,16 @@ namespace FM {
                             unselect_all ();
                         }
 
-                        success = dnd_handler.handle_file_drag_actions (get_child (),
-                                                                        window,
-                                                                        context,
-                                                                        drop_target_file,
-                                                                        destination_drop_file_list,
-                                                                        current_actions,
-                                                                        current_suggested_action,
-                                                                        timestamp);
+                        success = dnd_handler.handle_file_drag_actions (
+                            get_child (),
+                            context,
+                            drop_target_file,
+                            destination_drop_file_list,
+                            current_actions,
+                            current_suggested_action,
+                            (Gtk.ApplicationWindow)Files.get_active_window (),
+                            timestamp
+                        );
 
                         break;
 
@@ -1660,7 +1655,7 @@ namespace FM {
         /* Signal emitted on destination when drag leaves the widget or *before* dropping */
         private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
             /* reset the drop-file for the icon renderer */
-            icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
+            icon_renderer.drop_file = null;
             /* stop any running drag autoscroll timer */
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref drag_enter_timer_id);
@@ -1687,9 +1682,9 @@ namespace FM {
             cancel_timeout (ref drag_scroll_timer_id);
         }
 
-        private GOF.File? get_drop_target_file (int win_x, int win_y) {
+        private Files.File? get_drop_target_file (int win_x, int win_y) {
             Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
-            GOF.File? file = null;
+            Files.File? file = null;
 
             if (path != null) {
                 file = model.file_for_path (path);
@@ -1780,7 +1775,7 @@ namespace FM {
             }
         }
 
-        private bool is_valid_drop_folder (GOF.File file) {
+        private bool is_valid_drop_folder (Files.File file) {
             /* Cannot drop onto a file onto its parent or onto itself */
             if (file.uri != slot.uri &&
                 source_drag_file_list != null &&
@@ -1792,7 +1787,7 @@ namespace FM {
             }
         }
 
-        private void highlight_drop_file (GOF.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
+        private void highlight_drop_file (Files.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
             bool can_drop = (action > Gdk.DragAction.DEFAULT);
 
             if (drop_highlight != can_drop) {
@@ -1801,8 +1796,7 @@ namespace FM {
             }
 
             /* Set the icon_renderer drop-file if there is an action */
-            drop_file = can_drop ? drop_file : null;
-            icon_renderer.set_property ("drop-file", drop_file);
+            icon_renderer.drop_file = can_drop ? drop_file : null;
 
             highlight_path (can_drop ? path : null);
         }
@@ -1876,7 +1870,7 @@ namespace FM {
                     run_menuitem.action_name = "selection.open";
 
                     menu.add (run_menuitem);
-                } else if (default_app != null && default_app.get_id () != Marlin.APP_ID + ".desktop") {
+                } else if (default_app != null && default_app.get_id () != APP_ID + ".desktop") {
                     var open_menuitem = new Gtk.MenuItem ();
                     open_menuitem.add (new Granite.AccelLabel (
                         _("Open in %s").printf (default_app.get_display_name ()),
@@ -1887,7 +1881,7 @@ namespace FM {
                     menu.add (open_menuitem);
                 }
 
-                open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+                open_with_apps = MimeActions.get_applications_for_files (selection);
 
                 if (selected_file.is_executable () == false) {
                     filter_default_app_from_open_with_apps ();
@@ -1982,6 +1976,7 @@ namespace FM {
                 cut_menuitem.action_name = "selection.cut";
 
                 var copy_menuitem = new Gtk.MenuItem ();
+                ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
                 copy_menuitem.add (new Granite.AccelLabel (
                     _("Copy"),
                     "<Ctrl>c"
@@ -2065,7 +2060,7 @@ namespace FM {
 
                         menu.add (new Gtk.SeparatorMenuItem ());
 
-                        if (slot.directory.has_trash_dirs && !is_admin) {
+                        if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
                             menu.add (trash_menuitem);
                         } else {
                             menu.add (delete_menuitem);
@@ -2270,7 +2265,7 @@ namespace FM {
         }
 
         private bool valid_selection_for_edit () {
-            foreach (unowned GOF.File file in get_selected_files ()) {
+            foreach (unowned Files.File file in get_selected_files ()) {
                 if (file.is_root_network_folder ()) {
                     return false;
                 }
@@ -2280,7 +2275,7 @@ namespace FM {
         }
 
         private bool valid_selection_for_restore () {
-            foreach (unowned GOF.File file in get_selected_files ()) {
+            foreach (unowned Files.File file in get_selected_files ()) {
                 if (!(file.directory.get_basename () == "/")) {
                     return false;
                 }
@@ -2294,8 +2289,8 @@ namespace FM {
                 return;
             }
 
-            GLib.List<GOF.File> selection = get_files_for_action ();
-            GOF.File file;
+            GLib.List<Files.File> selection = get_files_for_action ();
+            Files.File file;
 
             bool is_selected = selection != null;
             bool more_than_one_selected = (is_selected && selection.first ().next != null);
@@ -2360,17 +2355,17 @@ namespace FM {
             Gtk.SortType sort_order;
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                GLib.Variant val = new GLib.Variant.string (((FM.ListModel.ColumnID)sort_column_id).to_string ());
+                GLib.Variant val = new GLib.Variant.string (((Files.ListModel.ColumnID)sort_column_id).to_string ());
                 action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
-                val = new GLib.Variant.boolean (GOF.Preferences.get_default ().sort_directories_first);
+                val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
                 action_set_state (background_actions, "folders-first", val);
             }
         }
 
-        private void update_default_app (GLib.List<GOF.File> selection) {
-            default_app = Marlin.MimeActions.get_default_application_for_files (selection);
+        private void update_default_app (GLib.List<Files.File> selection) {
+            default_app = MimeActions.get_default_application_for_files (selection);
             return;
         }
 
@@ -2403,21 +2398,22 @@ namespace FM {
             GLib.List<GLib.File> folder_list = null;
 
             GLib.FileEnumerator enumerator;
-            var f_attr = GLib.FileAttribute.STANDARD_NAME + GLib.FileAttribute.STANDARD_TYPE;
             var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
             try {
-                enumerator = template_folder.enumerate_children (f_attr, flags, null);
+                enumerator = template_folder.enumerate_children ("standard::*", flags, null);
                 uint count = templates.length (); //Assume to be limited in size
                 GLib.File location;
                 GLib.FileInfo? info = enumerator.next_file (null);
 
                 while (count < MAX_TEMPLATES && (info != null)) {
-                    location = template_folder.get_child (info.get_name ());
-                    if (info.get_file_type () == GLib.FileType.DIRECTORY) {
-                        folder_list.prepend (location);
-                    } else {
-                        file_list.prepend (location);
-                        count ++;
+                    if (!info.get_is_hidden () && !info.get_is_backup ()) {
+                        location = template_folder.get_child (info.get_name ());
+                        if (info.get_file_type () == GLib.FileType.DIRECTORY) {
+                            folder_list.prepend (location);
+                        } else {
+                            file_list.prepend (location);
+                            count ++;
+                        }
                     }
 
                     info = enumerator.next_file (null);
@@ -2503,7 +2499,7 @@ namespace FM {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
             var new_name = (_("Untitled %s")).printf (template.get_basename ());
-            Marlin.FileOperations.new_file_from_template.begin (
+            FileOperations.new_file_from_template.begin (
                 this,
                 slot.location,
                 new_name,
@@ -2511,7 +2507,7 @@ namespace FM {
                 null,
                 (obj, res) => {
                     try {
-                        var file = Marlin.FileOperations.new_file_from_template.end (res);
+                        var file = FileOperations.new_file_from_template.end (res);
                         create_file_done (file);
                     } catch (Error e) {
                         critical (e.message);
@@ -2519,8 +2515,8 @@ namespace FM {
                 });
         }
 
-        private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
-            Marlin.MimeActions.open_multiple_gof_files_request (files, this, app);
+        private void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files) {
+            MimeActions.open_multiple_gof_files_request (files, this, app);
         }
 
 
@@ -2531,7 +2527,7 @@ namespace FM {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
-            assert (slot is GOF.AbstractSlot && slot.directory != null);
+            assert (slot is Files.AbstractSlot && slot.directory != null);
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (thumbnail_source_id != 0 ||
@@ -2570,8 +2566,8 @@ namespace FM {
                 Gtk.TreePath sp, ep;
                 Gtk.TreeIter iter;
                 bool valid_iter;
-                GOF.File? file;
-                GLib.List<GOF.File> visible_files = null;
+                Files.File? file;
+                GLib.List<Files.File> visible_files = null;
                 uint actually_visible = 0;
 
                 if (get_visible_range (out start_path, out end_path)) {
@@ -2601,7 +2597,7 @@ namespace FM {
                         if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
+                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
@@ -2722,18 +2718,18 @@ namespace FM {
                 }
         }
 
-        private void remove_marlin_icon_info_cache (GOF.File file) {
+        private void remove_marlin_icon_info_cache (Files.File file) {
             string? path = file.get_thumbnail_path ();
 
             if (path != null) {
-                Marlin.IconSize s;
+                Files.IconSize s;
 
-                for (int z = Marlin.ZoomLevel.SMALLEST;
-                     z <= Marlin.ZoomLevel.LARGEST;
+                for (int z = ZoomLevel.SMALLEST;
+                     z <= ZoomLevel.LARGEST;
                      z++) {
 
-                    s = Marlin.zoom_level_to_icon_size ((Marlin.ZoomLevel)z);
-                    Marlin.IconInfo.remove_cache (path, s, get_scale_factor ());
+                    s = ((ZoomLevel) z).to_icon_size ();
+                    Files.IconInfo.remove_cache (path, s, get_scale_factor ());
                 }
             }
         }
@@ -2741,15 +2737,15 @@ namespace FM {
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
          */
-        private GLib.List<GOF.File> get_files_for_action () {
-            GLib.List<GOF.File> action_files = null;
+        private GLib.List<Files.File> get_files_for_action () {
+            GLib.List<Files.File> action_files = null;
             update_selected_files_and_menu ();
 
             if (selected_files == null) {
                 action_files.prepend (slot.directory.file);
             } else if (in_recent) {
                 selected_files.@foreach ((file) => {
-                    var goffile = GOF.File.get_by_uri (file.get_display_target_uri ());
+                    var goffile = Files.File.get_by_uri (file.get_display_target_uri ());
                     goffile.query_update ();
                     action_files.append (goffile);
                 });
@@ -2761,11 +2757,12 @@ namespace FM {
         }
 
         protected void on_view_items_activated () {
-            activate_selected_items (Marlin.OpenFlag.DEFAULT);
+            activate_selected_items (Files.OpenFlag.DEFAULT);
         }
 
         protected void on_view_selection_changed () {
             selected_files_invalid = true;
+            one_or_less = (selected_files == null || selected_files.next == null);
         }
 
 /** Keyboard event handling **/
@@ -2868,7 +2865,7 @@ namespace FM {
                                                         _("You do not have permission to change this location"),
                                                         window as Gtk.Window);
                     } else if (!renaming) {
-                        trash_or_delete_selected_files (in_trash || is_admin || only_shift_pressed);
+                        trash_or_delete_selected_files (in_trash || Files.is_admin () || only_shift_pressed);
                         res = true;
                     }
 
@@ -2876,7 +2873,7 @@ namespace FM {
 
                 case Gdk.Key.space:
                     if (view_has_focus () && !in_trash) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                        activate_selected_items (Files.OpenFlag.NEW_TAB);
                         res = true;
                     }
 
@@ -2887,13 +2884,13 @@ namespace FM {
                     if (in_trash) {
                         break;
                     } else if (in_recent) {
-                        activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                        activate_selected_items (Files.OpenFlag.DEFAULT);
                     } else if (only_shift_pressed) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                        activate_selected_items (Files.OpenFlag.NEW_TAB);
                     } else if (only_alt_pressed) {
                         common_actions.activate_action ("properties", null);
                     } else if (no_mods) {
-                         activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                         activate_selected_items (Files.OpenFlag.DEFAULT);
                     } else {
                         break;
                     }
@@ -2977,7 +2974,7 @@ namespace FM {
                 case Gdk.Key.Down:
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
-                    unowned GLib.List<GOF.File> selection = get_selected_files ();
+                    unowned GLib.List<Files.File> selection = get_selected_files ();
                     if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
 
@@ -3089,55 +3086,60 @@ namespace FM {
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
             Gtk.TreePath? path = null;
+            Files.File? file = null;
 
-            if (renaming) {
+            if (renaming || is_frozen) {
                 return true;
             }
 
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
 
-            if (click_zone != previous_click_zone) {
-                var win = view.get_window ();
-                switch (click_zone) {
-                    case ClickZone.ICON:
-                    case ClickZone.NAME:
-                        if (single_click_mode) {
-                            win.set_cursor (activatable_cursor);
-                        }
-                        break;
-
-                    default:
-                        win.set_cursor (selectable_cursor);
-                        break;
-                }
-
-                previous_click_zone = click_zone;
-            }
-
-            if (is_frozen) {
-                return false;
-            }
-
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
                 (path != null && hover_path != null && path.compare (hover_path) != 0)) {
 
+                on_directory = false;
                 /* cannot get file info while network disconnected */
                 if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
                     /* cannot get file info while network disconnected. */
-                    GOF.File? target_file;
-                    GOF.File? file = path != null ? model.file_for_path (path) : null;
+                    Files.File? target_file;
+                    file = path != null ? model.file_for_path (path) : null;
+
 
                     if (file != null && slot.directory.is_recent) {
-                        target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
+                        target_file = Files.File.get_by_uri (file.get_display_target_uri ());
                         target_file.ensure_query_info ();
                     } else {
                         target_file = file;
                     }
 
+                    if (target_file != null) {
+                        on_directory = target_file.is_directory;
+                    }
+
                     item_hovered (target_file);
                     hover_path = path;
                 }
+            }
+
+            if (click_zone != previous_click_zone) {
+                var win = view.get_window ();
+                win.set_cursor (selectable_cursor);
+
+                switch (click_zone) {
+                    case ClickZone.ICON:
+                    case ClickZone.NAME:
+                        if (on_directory && one_or_less) {
+                            win.set_cursor (activatable_cursor);
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+
+                previous_click_zone = click_zone;
             }
 
             return false;
@@ -3183,14 +3185,14 @@ namespace FM {
 
             renaming = true;
 
-            var editable_widget = editable as Marlin.AbstractEditableLabel?;
+            var editable_widget = editable as AbstractEditableLabel?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
                 var path = new Gtk.TreePath.from_string (path_string);
                 Gtk.TreeIter? iter = null;
                 model.get_iter (out iter, path);
-                GOF.File? file = null;
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                Files.File? file = null;
+                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
                 int start_offset= 0, end_offset = -1;
                 /* Select whole name if the file is a folder, otherwise do not select the extension */
                 if (!file.is_folder ()) {
@@ -3231,11 +3233,11 @@ namespace FM {
                 Gtk.TreeIter? iter = null;
                 model.get_iter (out iter, path);
 
-                GOF.File? file = null;
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                Files.File? file = null;
+                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
 
                 /* Only rename if name actually changed */
-                /* Because GOF.File.rename does not work correctly for remote files we handle ourselves */
+                /* Because Files.File.rename does not work correctly for remote files we handle ourselves */
 
                 if (new_name != original_name) {
                     proposed_name = new_name;
@@ -3270,7 +3272,7 @@ namespace FM {
             }
         }
 
-        private void after_renamed_file_added (GOF.File? new_file) {
+        private void after_renamed_file_added (Files.File? new_file) {
             slot.directory.file_added.disconnect (after_renamed_file_added);
             /* new_file will be null if rename failed */
             if (new_file != null) {
@@ -3423,17 +3425,17 @@ namespace FM {
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
                             update_selected_files_and_menu ();
-                            bool one_or_less = (selected_files == null || selected_files.next == null);
-                            should_activate = no_mods &&
-                                              (!on_blank || activate_on_blank) &&
-                                              (single_click_mode && one_or_less || double_click_event);
+                            should_activate = false;
 
+                            if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
+                                should_activate = on_directory || double_click_event;
+                            }
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
-                             * the item is unselected or activate_on_blank is not enabled.
+                             * the item is unselected.
                              */
 
-                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
+                            if (!no_mods || (on_blank && !path_selected)) {
                                 update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
@@ -3537,8 +3539,8 @@ namespace FM {
                 if (should_activate) {
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {
-                        var flag = event.button == Gdk.BUTTON_MIDDLE ? Marlin.OpenFlag.NEW_TAB :
-                                                                       Marlin.OpenFlag.DEFAULT;
+                        var flag = event.button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB :
+                                                                       Files.OpenFlag.DEFAULT;
 
                         activate_selected_items (flag);
                         return GLib.Source.REMOVE;
@@ -3565,7 +3567,7 @@ namespace FM {
             view.style_updated ();
         }
 
-        private void start_renaming_file (GOF.File file) {
+        private void start_renaming_file (Files.File file) {
             if (is_frozen) {
                 warning ("Trying to rename when frozen");
                 return;
@@ -3613,53 +3615,12 @@ namespace FM {
 
         }
 
-        protected string get_string_from_column_id (int id) {
-            switch (id) {
-                case FM.ListModel.ColumnID.FILENAME:
-                    return "name";
-
-                case FM.ListModel.ColumnID.SIZE:
-                    return "size";
-
-                case FM.ListModel.ColumnID.TYPE:
-                    return "type";
-
-                case FM.ListModel.ColumnID.MODIFIED:
-                    return "modified";
-
-                default:
-                    warning ("column id not recognised - using 'name'");
-                    return "name";
-            }
-        }
-
-        protected int get_column_id_from_string (string col_name) {
-            switch (col_name) {
-                case "name":
-                    return FM.ListModel.ColumnID.FILENAME;
-
-                case "size":
-                    return FM.ListModel.ColumnID.SIZE;
-
-                case "type":
-                    return FM.ListModel.ColumnID.TYPE;
-
-                case "modified":
-                    return FM.ListModel.ColumnID.MODIFIED;
-
-                default:
-                    warning ("column name not recognised - using FILENAME");
-
-                return FM.ListModel.ColumnID.FILENAME;
-            }
-        }
-
         protected void on_sort_column_changed () {
             int sort_column_id = 0;
             Gtk.SortType sort_order = 0;
 
             /* Setting file attributes fails when root */
-            if (Posix.getuid () == 0) {
+            if (Files.is_admin ()) {
                 return;
             }
 
@@ -3672,8 +3633,8 @@ namespace FM {
 
             var info = new GLib.FileInfo ();
             var dir = slot.directory;
-            string sort_col_s = get_string_from_column_id (sort_column_id);
-            string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
+            unowned string sort_col_s = ((Files.ListModel.ColumnID) sort_column_id).to_string ();
+            unowned string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
             info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
             info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
 
@@ -3683,7 +3644,7 @@ namespace FM {
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
-            if (!is_admin) {
+            if (!Files.is_admin ()) {
                 dir.location.set_attributes_async.begin (info,
                                                    GLib.FileQueryInfoFlags.NONE,
                                                    GLib.Priority.DEFAULT,
@@ -3693,7 +3654,7 @@ namespace FM {
                         GLib.FileInfo inf;
                         dir.location.set_attributes_async.end (res, out inf);
                     } catch (GLib.Error e) {
-                        warning ("Could not set file attributes - %s", e.message);
+                        warning ("Could not set file attributes: %s", e.message);
                     }
                 });
             }
@@ -3717,6 +3678,8 @@ namespace FM {
                 update_menu_actions ();
                 selection_changed (selected_files);
             }
+
+            one_or_less = (selected_files == null || selected_files.next == null);
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
@@ -3725,7 +3688,7 @@ namespace FM {
         }
 
         protected virtual bool handle_default_button_click (Gdk.EventButton event) {
-            /* pass unhandled events to the Marlin.View.Window */
+            /* pass unhandled events to the View.Window */
             return false;
         }
 
@@ -3835,10 +3798,10 @@ namespace FM {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
-        protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
+        protected abstract void set_up_zoom_level ();
+        protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files);
+        protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);

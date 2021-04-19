@@ -19,7 +19,7 @@
 * Boston, MA 02110-1301 USA
 */
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class LocationBar : BasicLocationBar {
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
@@ -48,7 +48,7 @@ namespace Marlin.View.Chrome {
         uint focus_timeout_id = 0;
 
         public signal void reload_request ();
-        public signal void focus_file_request (File? file);
+        public signal void focus_file_request (GLib.File? file);
         public signal void escape ();
 
         public LocationBar () {
@@ -74,14 +74,14 @@ namespace Marlin.View.Chrome {
         private void on_search_results_file_selected (GLib.File file) {
             /* Search result widget ensures it has closed and released grab */
             /* Returned result might be a link or a server */
-            var gof = new GOF.File (file, null);
+            var gof = new Files.File (file, null);
             gof.ensure_query_info ();
 
             path_change_request (gof.get_target_location ().get_uri ());
         }
         private void on_search_results_file_activated (GLib.File file) {
-            AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);
-            Marlin.MimeActions.open_glib_file_request (file, this, app);
+            AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
+            MimeActions.open_glib_file_request (file, this, app);
             on_search_results_exit ();
         }
 
@@ -136,8 +136,8 @@ namespace Marlin.View.Chrome {
             return true;
         }
 
-        private void on_bread_open_with_request (File file, AppInfo? app) {
-            Marlin.MimeActions.open_glib_file_request (file, this, app);
+        private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
+            Files.MimeActions.open_glib_file_request (file, this, app);
         }
 
         protected override void on_bread_action_icon_press () {
@@ -181,7 +181,7 @@ namespace Marlin.View.Chrome {
 
         protected void show_search_icon () {
             bread.get_style_context ().remove_class ("spin");
-            bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
+            bread.set_primary_icon_name (Files.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
         }
 
         protected void hide_search_icon () {
@@ -190,7 +190,7 @@ namespace Marlin.View.Chrome {
 
         protected void show_refresh_icon () {
             bread.get_style_context ().remove_class ("spin");
-            bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
+            bread.action_icon_name = Files.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
             bread.set_action_icon_tooltip (Granite.markup_accel_tooltip ({"F5", "<Ctrl>R"}, _("Reload this folder")));
         }
 
@@ -203,7 +203,7 @@ namespace Marlin.View.Chrome {
         }
 
         private void show_working_icon () {
-            bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC;
+            bread.action_icon_name = Files.ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC;
             bread.set_action_icon_tooltip (_("Searching…"));
             bread.get_style_context ().add_class ("spin");
         }

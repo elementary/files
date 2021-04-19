@@ -16,12 +16,11 @@
 * Boston, MA 02110-1335 USA.
 */
 
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     public class BreadcrumbIconInfo {
         public string path;
         public bool protocol;
         public GLib.Icon gicon;
-        public Gdk.Pixbuf icon;
         public string[] exploded;
         public bool break_loop;
         public string? text_displayed;
@@ -53,16 +52,18 @@ namespace Marlin.View.Chrome {
             text_displayed = mount.get_name ();
         }
 
-        public void render_icon (Gtk.StyleContext context) throws GLib.Error {
-            weak Gtk.IconTheme theme = Gtk.IconTheme.get_default ();
+        public Gdk.Pixbuf? render_icon (Gtk.StyleContext context) {
+            var theme = Gtk.IconTheme.get_default ();
+            Gdk.Pixbuf? icon = null;
             Gtk.IconInfo? gtk_icon_info = null;
             var scale = context.get_scale ();
-            if (gicon != null) {
-                var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
-                gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
-            } else {
-                throw new GLib.IOError.NOT_INITIALIZED ("the gicon field is empty!");
+
+            if (gicon == null) {
+                gicon = new ThemedIcon.with_default_fallbacks ("image-missing");
             }
+
+            var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
+            gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
 
             if (gtk_icon_info != null) {
                 try {
@@ -70,11 +71,11 @@ namespace Marlin.View.Chrome {
                     icon_width = icon.get_width () / scale;
                     icon_height = icon.get_height () / scale;
                 } catch (Error e) {
-                    throw e;
+                    warning ("Filed to load icon for %s: %s", text_displayed, e.message);
                 }
-            } else {
-                throw new GLib.IOError.NOT_FOUND ("Unable to find the given icon!");
             }
+
+            return icon;
         }
 
         public void set_path (string path) {
@@ -90,14 +91,12 @@ namespace Marlin.View.Chrome {
         }
     }
 
-
     public class BreadcrumbIconList : Object {
         private Gee.ArrayList<BreadcrumbIconInfo> icon_info_list;
-        public unowned Gtk.StyleContext context { get; set construct; }
+        public unowned Gtk.StyleContext context { get; construct; }
 
         public BreadcrumbIconList (Gtk.StyleContext context) {
             Object (context: context);
-            make_icons ();
         }
 
         public int scale {
@@ -106,43 +105,44 @@ namespace Marlin.View.Chrome {
             }
             set {
                 context.set_scale (value);
-                make_icons ();
             }
         }
 
         construct {
             icon_info_list = new Gee.ArrayList<BreadcrumbIconInfo> ();
 
-            add_protocol_directory ("afp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("dav", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("davs", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("ftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("sftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("mtp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
-            add_protocol_directory ("network", Marlin.ICON_NETWORK_SYMBOLIC);
-            add_protocol_directory ("smb", Marlin.ICON_NETWORK_SERVER_SYMBOLIC);
-            add_protocol_directory ("trash", Marlin.ICON_TRASH_SYMBOLIC);
-            add_protocol_directory ("recent", Marlin.ICON_RECENT_SYMBOLIC);
+            add_protocol_directory ("afp", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("dav", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("davs", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("ftp", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("sftp", Files.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("mtp", Files.ICON_DEVICE_REMOVABLE_MEDIA_SYMBOLIC);
+            add_protocol_directory ("gphoto2", Files.ICON_DEVICE_CAMERA_SYMBOLIC);
+            add_protocol_directory ("afc", Files.ICON_DEVICE_PHONE_SYMBOLIC);
+            add_protocol_directory ("network", Files.ICON_NETWORK_SYMBOLIC);
+            add_protocol_directory ("smb", Files.ICON_NETWORK_SERVER_SYMBOLIC);
+            add_protocol_directory ("trash", Files.ICON_TRASH_SYMBOLIC);
+            add_protocol_directory ("recent", Files.ICON_RECENT_SYMBOLIC);
 
             add_special_directory (Environment.get_user_special_dir (UserDirectory.MUSIC),
-                                   Marlin.ICON_FOLDER_MUSIC_SYMBOLIC);
+                                   Files.ICON_FOLDER_MUSIC_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.PICTURES),
-                                   Marlin.ICON_FOLDER_PICTURES_SYMBOLIC);
+                                   Files.ICON_FOLDER_PICTURES_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.VIDEOS),
-                                   Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC);
+                                   Files.ICON_FOLDER_VIDEOS_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.DOWNLOAD),
-                                   Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
+                                   Files.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.DOCUMENTS),
-                                   Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
+                                   Files.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.TEMPLATES),
-                                   Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC);
-            add_special_directory (PF.UserUtils.get_real_user_home (), Marlin.ICON_GO_HOME_SYMBOLIC, true);
-            add_special_directory ("/media", Marlin.ICON_FILESYSTEM_SYMBOLIC, true);
-            add_special_directory (Path.DIR_SEPARATOR_S, Marlin.ICON_FILESYSTEM_SYMBOLIC);
+                                   Files.ICON_FOLDER_TEMPLATES_SYMBOLIC);
+            add_special_directory (PF.UserUtils.get_real_user_home (), Files.ICON_GO_HOME_SYMBOLIC, true);
+            add_special_directory ("/media", Files.ICON_FILESYSTEM_SYMBOLIC, true);
+            add_special_directory (Path.DIR_SEPARATOR_S, Files.ICON_FILESYSTEM_SYMBOLIC);
         }
 
         private void add_protocol_directory (string protocol, string icon) {
-            var separator = "://" + (protocol == "mtp" ? "[" : "");
+            var separator = "://" + ((protocol == "mtp" || protocol == "gphoto2") ? "[" : "");
             var info = new BreadcrumbIconInfo.protocol_directory (protocol + separator,
                                                                     icon,
                                                                     protocol_to_name (protocol));
@@ -159,21 +159,6 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        private void make_icons () {
-            context.save ();
-            context.set_state (Gtk.StateFlags.NORMAL);
-
-            foreach (var icon_info in icon_info_list) {
-                try {
-                    icon_info.render_icon (context);
-                } catch (Error e) {
-                    critical (e.message);
-                }
-            }
-
-            context.restore ();
-        }
-
         public void add_mounted_volumes () {
             context.save ();
             context.set_state (Gtk.StateFlags.NORMAL);
@@ -185,12 +170,7 @@ namespace Marlin.View.Chrome {
             mount_list.foreach ((mount) => {
                 var icon_info = new BreadcrumbIconInfo.from_mount (mount);
                 if (icon_info.path != null) {
-                    try {
-                        icon_info.render_icon (context);
-                        icon_info_list.add (icon_info);
-                    } catch (Error e) {
-                        critical (e.message);
-                    }
+                    icon_info_list.add (icon_info);
                 }
             });
 

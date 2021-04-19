@@ -20,7 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
+protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
     protected Gtk.Stack stack;
@@ -77,7 +77,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
 
         ((Gtk.Box) get_content_area ()).add (layout);
 
-        add_button (_("Close"), Gtk.ResponseType.CLOSE).margin = 6;
+        add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
             switch (type) {
                 case Gtk.ResponseType.CLOSE:

@@ -16,7 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
     public class SingleLineEditableLabel : AbstractEditableLabel {
 
         protected Gtk.Entry textview;

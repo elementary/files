@@ -6,6 +6,7 @@
        ammonkey <am.monkeyd@gmail.com>
 
     Copyright (c) 2010 Mathijs Henquet
+                  2017–2020 elementary, Inc. <https://elementary.io>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,9 +23,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1335 USA.
 ***/
 
-using Marlin;
-
-namespace Marlin.View {
+namespace Files.View {
     public class ViewContainer : Gtk.Bin {
         private static int container_id;
 
@@ -39,8 +38,8 @@ namespace Marlin.View {
         public int id {get; construct;}
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
-        private Marlin.View.Window? _window = null;
-        public Marlin.View.Window window {
+        private View.Window? _window = null;
+        public View.Window window {
             get {
                 return _window;
             }
@@ -55,8 +54,8 @@ namespace Marlin.View {
             }
         }
 
-        public GOF.AbstractSlot? view = null;
-        public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
+        public Files.AbstractSlot? view = null;
+        public ViewMode view_mode = ViewMode.INVALID;
 
         public GLib.File? location {
             get {
@@ -69,7 +68,7 @@ namespace Marlin.View {
             }
         }
 
-        public GOF.AbstractSlot? slot {
+        public Files.AbstractSlot? slot {
             get {
                 return view != null ? view.get_current_slot () : null;
             }
@@ -107,7 +106,7 @@ namespace Marlin.View {
 
         public bool is_loading {get; private set; default = false;}
 
-        private Marlin.View.OverlayBar overlay_statusbar;
+        private View.OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -121,7 +120,7 @@ namespace Marlin.View {
         }
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Marlin.View.Window win) {
+        public ViewContainer (View.Window win) {
             window = win;
             browser = new Browser ();
 
@@ -162,7 +161,7 @@ namespace Marlin.View {
             if (deleted.equal (this.location)) {
                 if (!go_up ()) {
                     close ();
-                    window.remove_tab (this);
+                    window.remove_content (this);
                 }
             }
         }
@@ -229,7 +228,7 @@ namespace Marlin.View {
             if (path != null) {
                 selected_locations = null;
                 selected_locations.append (this.location);
-                open_location (File.new_for_commandline_arg (path));
+                open_location (GLib.File.new_for_commandline_arg (path));
             }
         }
 
@@ -237,29 +236,29 @@ namespace Marlin.View {
             string? path = browser.go_forward (n);
 
             if (path != null) {
-                open_location (File.new_for_commandline_arg (path));
+                open_location (GLib.File.new_for_commandline_arg (path));
             }
         }
 
         // the locations in @to_select must be children of @loc
-        public void add_view (Marlin.ViewMode mode, GLib.File loc, File[]? to_select = null) {
+        public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
             assert (view == null);
             view_mode = mode;
 
             if (to_select != null) {
                 selected_locations = null;
-                foreach (File f in to_select) {
+                foreach (GLib.File f in to_select) {
                     selected_locations.prepend (f);
                 }
             }
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode == ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this, mode);
             } else {
                 this.view = new Slot (loc, this, mode);
             }
 
-            overlay_statusbar = new Marlin.View.OverlayBar (view.overlay);
+            overlay_statusbar = new View.OverlayBar (view.overlay);
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
@@ -273,7 +272,7 @@ namespace Marlin.View {
         /** By default changes the view mode to @mode at the same location.
             @loc - new location to show.
         **/
-        public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
+        public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
             assert (aslot != null);
             if (loc == null) {
@@ -305,7 +304,7 @@ namespace Marlin.View {
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
-        private void connect_slot_signals (GOF.AbstractSlot aslot) {
+        private void connect_slot_signals (Files.AbstractSlot aslot) {
             aslot.active.connect (on_slot_active);
             aslot.path_changed.connect (on_slot_path_changed);
             aslot.new_container_request.connect (on_slot_new_container_request);
@@ -314,7 +313,7 @@ namespace Marlin.View {
             aslot.item_hovered.connect (on_slot_item_hovered);
         }
 
-        private void disconnect_slot_signals (GOF.AbstractSlot aslot) {
+        private void disconnect_slot_signals (Files.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
             aslot.new_container_request.disconnect (on_slot_new_container_request);
@@ -323,21 +322,21 @@ namespace Marlin.View {
             aslot.item_hovered.disconnect (on_slot_item_hovered);
         }
 
-        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
+        private void on_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
             refresh_slot_info (slot.location);
         }
 
         private void open_location (GLib.File loc,
-                                    Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
+                                    Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
 
-            switch ((Marlin.OpenFlag)flag) {
-                case Marlin.OpenFlag.NEW_TAB:
-                case Marlin.OpenFlag.NEW_WINDOW:
+            switch ((Files.OpenFlag)flag) {
+                case Files.OpenFlag.NEW_TAB:
+                case Files.OpenFlag.NEW_WINDOW:
                     /* Must pass through this function in order to properly handle unusual characters properly */
                     window.uri_path_change_request (loc.get_uri (), flag);
                     break;
 
-                case Marlin.OpenFlag.NEW_ROOT:
+                case Files.OpenFlag.NEW_ROOT:
                     view.user_path_change_request (loc, true);
                     break;
 
@@ -347,11 +346,11 @@ namespace Marlin.View {
             }
         }
 
-        private void on_slot_new_container_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
+        private void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
             open_location (loc, flag);
         }
 
-        public void on_slot_path_changed (GOF.AbstractSlot slot) {
+        public void on_slot_path_changed (Files.AbstractSlot slot) {
             directory_is_loading (slot.location);
         }
 
@@ -372,13 +371,13 @@ namespace Marlin.View {
 
        private void update_tab_name () {
             string? slot_path = Uri.unescape_string (this.uri);
-            string tab_name = Marlin.INVALID_TAB_NAME;
+            string tab_name = Files.INVALID_TAB_NAME;
 
             if (slot_path != null) {
                 string protocol, path;
                 PF.FileUtils.split_protocol_from_path (slot_path, out protocol, out path);
                 if (path == "" || path == Path.DIR_SEPARATOR_S) {
-                    tab_name = Marlin.protocol_to_name (protocol);
+                    tab_name = Files.protocol_to_name (protocol);
                 } else if (protocol == "" && path == Environment.get_home_dir ()) {
                     tab_name = _("Home");
                 } else {
@@ -391,37 +390,37 @@ namespace Marlin.View {
         }
 
 
-        public void on_slot_directory_loaded (GOF.Directory.Async dir) {
+        public void on_slot_directory_loaded (Directory dir) {
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
-                if (dir.is_recent && !GOF.Preferences.get_default ().remember_history) {
-                    content = new Marlin.View.PrivacyModeOn (this);
+                if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
+                    content = new View.PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {
-                        content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
-                                                           _("You cannot create a folder here."));
+                        content = new View.Welcome (_("This Folder Does Not Exist"),
+                                                    _("You cannot create a folder here."));
                     }
                 } else if (!dir.network_available) {
-                    content = new Marlin.View.Welcome (_("The network is unavailable"),
-                                                       _("A working network is needed to reach this folder") + "\n\n" +
-                                                       dir.last_error_message);
+                    content = new View.Welcome (_("The network is unavailable"),
+                                                _("A working network is needed to reach this folder") + "\n\n" +
+                                                dir.last_error_message);
                 } else if (dir.permission_denied) {
-                    content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
-                                                       _("You don't have permission to view this folder."));
+                    content = new View.Welcome (_("This Folder Does Not Belong to You"),
+                                                _("You don't have permission to view this folder."));
                 } else if (!dir.file.is_connected) {
-                    content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
-                                                       _("Could not connect to the server for this folder.") + "\n\n" +
-                                                       dir.last_error_message);
-                } else if (slot.directory.state == GOF.Directory.Async.State.TIMED_OUT) {
-                    content = new Marlin.View.Welcome (_("Unable to Display Folder Contents"),
-                                                       _("The operation timed out.") + "\n\n" + dir.last_error_message);
+                    content = new View.Welcome (_("Unable to Mount Folder"),
+                                                _("Could not connect to the server for this folder.") + "\n\n" +
+                                                dir.last_error_message);
+                } else if (slot.directory.state == Directory.State.TIMED_OUT) {
+                    content = new View.Welcome (_("Unable to Display Folder Contents"),
+                                                _("The operation timed out.") + "\n\n" + dir.last_error_message);
                 } else {
-                    content = new Marlin.View.Welcome (_("Unable to Show Folder"),
-                                                       _("The server for this folder could not be located.") + "\n\n" +
-                                                       dir.last_error_message);
+                    content = new View.Welcome (_("Unable to Show Folder"),
+                                                _("The server for this folder could not be located.") + "\n\n" +
+                                                dir.last_error_message);
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
@@ -431,8 +430,8 @@ namespace Marlin.View {
                 if (dir.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (dir.selected_file);
                 } else {
-                    content = new Marlin.View.Welcome (_("File not Found"),
-                                                       _("The file selected no longer exists."));
+                    content = new View.Welcome (_("File not Found"),
+                                                _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
             } else {
@@ -460,7 +459,7 @@ namespace Marlin.View {
         }
 
         private void store_selection () {
-            unowned GLib.List<GOF.File> selected_files = view.get_selected_files ();
+            unowned GLib.List<Files.File> selected_files = view.get_selected_files ();
             selected_locations = null;
 
             if (selected_files != null) {
@@ -470,7 +469,7 @@ namespace Marlin.View {
             }
         }
 
-        public unowned GOF.AbstractSlot? get_current_slot () {
+        public unowned Files.AbstractSlot? get_current_slot () {
            return view != null ? view.get_current_slot () : null;
         }
 
@@ -510,7 +509,7 @@ namespace Marlin.View {
             }
 
             /* Using file_a.equal (file_b) can fail to detect equivalent locations */
-            if (PF.FileUtils.same_location (uri, loc.get_uri ())) {
+            if (!(view is Miller) && PF.FileUtils.same_location (uri, loc.get_uri ())) {
                 return;
             }
 
@@ -524,7 +523,7 @@ namespace Marlin.View {
                         selected_locations = null;
                     }
 
-                    var list = new List<File> ();
+                    var list = new List<GLib.File> ();
                     list.prepend (loc);
                     aslot.select_glib_files (list, loc);
                     return;
@@ -588,11 +587,11 @@ namespace Marlin.View {
             }
         }
 
-        private void on_slot_item_hovered (GOF.File? file) {
+        private void on_slot_item_hovered (Files.File? file) {
             overlay_statusbar.update_hovered (file);
         }
 
-        private void on_slot_selection_changed (GLib.List<unowned GOF.File> files) {
+        private void on_slot_selection_changed (GLib.List<unowned Files.File> files) {
             overlay_statusbar.selection_changed (files);
         }
 

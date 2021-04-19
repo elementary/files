@@ -22,7 +22,7 @@
 /*** The Gtk.FileChooserWidget widget names and paths can be found in "gtkfilechooserwidget.ui"
  *   in the Gtk+3 source code package.  Changes to that file could break this code.
 ***/
-public class CustomFileChooserDialog : Object {
+public class Files.LegacyFileChooserDialog : Object {
     /* Response to get parent of the bottom box */
     private const int BUTTON_RESPONSE = -6;
 
@@ -47,10 +47,13 @@ public class CustomFileChooserDialog : Object {
     private string current_path = null;
     private bool is_previous = false;
     private bool is_button_next = false;
-    private bool is_single_click = true;
     private bool can_activate = true;
 
-    public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
+    public LegacyFileChooserDialog (Gtk.FileChooserDialog dialog) {
+        // Don't apply the legacy filechooser twice
+        if ("pantheon-filechooser-module" in Gtk.Settings.get_default ().gtk_modules)
+            return;
+
         previous_paths = new GLib.Queue<string> ();
         next_paths = new GLib.Queue<string> ();
         /* The "chooser_dialog" variable is the main dialog */
@@ -60,16 +63,11 @@ public class CustomFileChooserDialog : Object {
         /* If not local only during creation, strange bug occurs on fresh installs */
         chooser_dialog.local_only = true;
 
-        var files_preferences = new Settings ("io.elementary.files.preferences");
-        is_single_click = files_preferences.get_boolean ("single-click");
-
         var chooser_settings = new Settings ("io.elementary.files.file-chooser");
 
         assign_container_box ();
         remove_gtk_widgets ();
         setup_filter_box ();
-
-        var header_bar = new Gtk.HeaderBar ();
 
         var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_back.tooltip_text = _("Previous");
@@ -79,9 +77,10 @@ public class CustomFileChooserDialog : Object {
         button_forward.tooltip_text = _("Next");
         button_forward.sensitive = false;
 
-        var location_bar = new Marlin.View.Chrome.BasicLocationBar ();
+        var location_bar = new Files.View.Chrome.BasicLocationBar ();
         location_bar.hexpand = true;
 
+        var header_bar = new Gtk.HeaderBar ();
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
         header_bar.pack_start (location_bar);
@@ -269,14 +268,10 @@ public class CustomFileChooserDialog : Object {
             } else if (w3.get_name () == "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
                 if (tv != null) {
-                    /* set its click behaviour the same as io.elementary.files setting */
-                    tv.set_activate_on_single_click (is_single_click);
-                    if (is_single_click) {
-                        /* We need to modify native behaviour to only activate on folders */
-                        tv.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
-                        tv.button_press_event.connect (on_tv_button_press_event);
-                        tv.button_release_event.connect (on_tv_button_release_event);
-                    }
+                    /* We need to modify native behaviour to only activate on folders */
+                    tv.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
+                    tv.button_press_event.connect (on_tv_button_press_event);
+                    tv.button_release_event.connect (on_tv_button_release_event);
                 }
             }
         });

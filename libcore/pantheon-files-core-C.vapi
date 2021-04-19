@@ -11,9 +11,9 @@ namespace Config {
     public const string TERMINAL_NAME;
 }
 
-namespace FM
+namespace Files
 {
-    [CCode (cheader_filename = "fm-list-model.h")]
+    [CCode (cheader_filename = "fm-list-model.h", cname = "FMListModel", lower_case_cprefix="fm_list_model_")]
     public class ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
     {
         [CCode (cprefix = "FM_LIST_MODEL_", cheader_filename = "fm-list-model.h")]
@@ -31,27 +31,32 @@ namespace FM
             public static ColumnID from_string (string colstr);
         }
 
-        public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
+        [CCode (has_construct_function = false)]
+        public ListModel ();
+        [NoAccessorMethod]
+        public bool has_child { get; set; }
+        [NoAccessorMethod]
+        public int size { get; set; }
+        public bool load_subdirectory(Gtk.TreePath path, out Files.Directory dir);
         public bool unload_subdirectory(Gtk.TreeIter iter);
-        public void add_file(GOF.File file, GOF.Directory.Async dir);
-        public bool remove_file (GOF.File file, GOF.Directory.Async dir);
-        public void file_changed (GOF.File file, GOF.Directory.Async dir);
-        public GOF.File? file_for_path (Gtk.TreePath path);
-        public static GLib.Type get_type ();
-        public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
-        public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
-        public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
+        public void add_file(Files.File file, Files.Directory dir);
+        public bool remove_file (Files.File file, Files.Directory dir);
+        public void file_changed (Files.File file, Files.Directory dir);
+        public Files.File? file_for_path (Gtk.TreePath path);
+        public bool get_first_iter_for_file (Files.File file, out Gtk.TreeIter iter);
+        public bool get_tree_iter_from_file (Files.File file, Files.Directory directory, out Gtk.TreeIter iter);
+        public bool get_directory_file (Gtk.TreePath path, out unowned Files.Directory directory, out unowned Files.File file);
         public uint get_length ();
-        public GOF.File? file_for_iter (Gtk.TreeIter iter);
+        public Files.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
         public void set_should_sort_directories_first (bool directories_first);
-        public signal void subdirectory_unloaded (GOF.Directory.Async directory);
+        public signal void subdirectory_unloaded (Files.Directory directory);
     }
 }
 
 
-namespace Marlin {
-    [CCode (lower_case_cprefix = "marlin_file_operations_")]
+namespace Files {
+    [CCode (lower_case_cprefix = "marlin_file_operations_", cname = "MarlinFileOperations")]
     namespace FileOperations {
         [CCode (cheader_filename = "marlin-file-operations.h")]
         static async GLib.File? new_folder (Gtk.Widget? parent_view, GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error;

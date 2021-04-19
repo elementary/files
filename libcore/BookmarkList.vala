@@ -19,7 +19,7 @@
               Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
 
     public class BookmarkList : GLib.Object {
 
@@ -28,20 +28,21 @@ namespace Marlin {
             SAVE = 2
         }
 
-        public unowned GLib.List<Marlin.Bookmark> list { get; private set; }
+        public unowned GLib.List<Files.Bookmark> list { get; private set; }
 
         private GLib.FileMonitor monitor;
         private GLib.Queue<JobType> pending_ops;
         private static GLib.File bookmarks_file;
-        private GOF.CallWhenReady call_when_ready;
+        private Files.CallWhenReady call_when_ready;
 
         private static BookmarkList instance = null;
 
         public signal void contents_changed ();
+        public signal void loaded ();
         public signal void deleted ();
 
         private BookmarkList () {
-            list = new GLib.List<Marlin.Bookmark> ();
+            list = new GLib.List<Files.Bookmark> ();
             pending_ops = new GLib.Queue<JobType> ();
 
             /* Get the user config directory
@@ -88,17 +89,17 @@ namespace Marlin {
                 var old_file = GLib.File.new_for_path (old_filename);
                 if (old_file.query_exists (null)) {
                     /* If there is a legacy bookmark file we copy it to the new location */
-                    Marlin.BookmarkList.bookmarks_file = old_file;
+                    Files.BookmarkList.bookmarks_file = old_file;
                     load_bookmarks_file ();
-                    Marlin.BookmarkList.bookmarks_file = file;
+                    Files.BookmarkList.bookmarks_file = file;
                 } else {
                     /* Else populate the new file with default bookmarks */
-                    Marlin.BookmarkList.bookmarks_file = file;
+                    Files.BookmarkList.bookmarks_file = file;
                     add_special_directories ();
                 }
                 save_bookmarks_file ();
             } else {
-                Marlin.BookmarkList.bookmarks_file = file;
+                Files.BookmarkList.bookmarks_file = file;
                 load_bookmarks_file ();
             }
         }
@@ -117,7 +118,7 @@ namespace Marlin {
             foreach (GLib.UserDirectory directory in DIRECTORIES) {
                 unowned string? dir_s = GLib.Environment.get_user_special_dir (directory);
                 if (dir_s != null) {
-                    var gof_file = GOF.File.get (GLib.File.new_for_path (dir_s));
+                    var gof_file = Files.File.get (GLib.File.new_for_path (dir_s));
                     var bookmark = new Bookmark (gof_file);
                     append_internal (bookmark);
                 }
@@ -134,14 +135,18 @@ namespace Marlin {
             return instance;
         }
 
-        public void insert_uri (string uri, uint index, string? label = null) {
-            insert_item_internal (new Bookmark.from_uri (uri, label), index);
+        public Bookmark insert_uri (string uri, uint index, string? label = null) {
+            var bm = new Bookmark.from_uri (uri, label);
+            insert_item_internal (bm, index);
             save_bookmarks_file ();
+            return bm;
         }
 
-        public void insert_uri_at_end (string uri, string? label = null) {
-            append_internal (new Bookmark.from_uri (uri, label));
+        public Bookmark insert_uri_at_end (string uri, string? label = null) {
+            var bm = new Bookmark.from_uri (uri, label);
+            append_internal (bm);
             save_bookmarks_file ();
+            return bm;
         }
 
         public void insert_uris (GLib.List<string> uris, uint index) {
@@ -156,13 +161,13 @@ namespace Marlin {
             save_bookmarks_file ();
         }
 
-        public bool contains (Marlin.Bookmark bm) {
-            return (list.find_custom (bm, Marlin.Bookmark.compare_with) != null);
+        public bool contains (Files.Bookmark bm) {
+            return (list.find_custom (bm, Files.Bookmark.compare_with) != null);
         }
 
         public void delete_item_at (uint index) {
             assert (index < list.length ()); // Can be assumed to be limited in length
-            unowned GLib.List<Marlin.Bookmark> node = list.nth (index);
+            unowned GLib.List<Files.Bookmark> node = list.nth (index);
             list.remove_link (node);
             stop_monitoring_bookmark (node.data);
             save_bookmarks_file ();
@@ -170,12 +175,12 @@ namespace Marlin {
 
         public void delete_items_with_uri (string uri) {
             bool list_changed = false;
-            unowned GLib.List<Marlin.Bookmark> node = list;
-            unowned GLib.List<Marlin.Bookmark> next = node.next;
+            unowned GLib.List<Files.Bookmark> node = list;
+            unowned GLib.List<Files.Bookmark> next = node.next;
 
             for (node = list; node != null; node = next) {
                 next = node.next;
-                if (uri == node.data.get_uri ()) {
+                if (uri == node.data.uri) {
                     list.remove_link (node);
                     stop_monitoring_bookmark (node.data);
                     list_changed = true;
@@ -191,37 +196,37 @@ namespace Marlin {
             return list.length (); // Can be assumed to be limited in length
         }
 
-        public unowned Marlin.Bookmark? item_at (uint index) {
+        public unowned Files.Bookmark? item_at (uint index) {
             assert (index < list.length ()); // Can be assumed to be limited in length
             return list.nth_data (index);
         }
 
-        public void move_item (uint index, uint destination) {
-            if (index > list.length ()) { // Can be assumed to be limited in length
-                critical ("Bookmarklist: Attempt to move bookmark from out of range index");
-                return;
+        public void move_item_uri (string uri, int step) {
+            bool list_changed = false;
+            int index = 0;
+
+            foreach (unowned Bookmark bm in list) {
+                if (uri == bm.uri) {
+                    list.remove (bm);
+                    list.insert (bm, index + step);
+                    list_changed = true;
+
+                    break;
+                }
+
+                index++;
             }
 
-            if (destination > list.length ()) { // Can be assumed to be limited in length
-                critical ("Bookmarklist: Attempt to move bookmark to out of range index");
-                return;
+            if (list_changed) {
+                save_bookmarks_file ();
             }
-
-            if (index == destination) {
-                return;
-            }
-
-            unowned GLib.List<Marlin.Bookmark> link = list.nth (index);
-            list.remove_link (link);
-            list.insert (link.data, (int)destination);
-            save_bookmarks_file ();
         }
 
-        private void append_internal (Marlin.Bookmark bookmark) {
+        private void append_internal (Files.Bookmark bookmark) {
             insert_item_internal (bookmark, -1);
         }
 
-        private void insert_item_internal (Marlin.Bookmark bm, uint index) {
+        private void insert_item_internal (Files.Bookmark bm, uint index) {
             if (this.contains (bm)) {
                 return;
             }
@@ -259,8 +264,8 @@ namespace Marlin {
                     file.load_contents_async.end (res, out contents, null);
                     if (contents != null) {
                         bookmark_list_from_string ((string)contents);
-                        this.call_when_ready = new GOF.CallWhenReady (get_gof_file_list (), files_ready);
-                        contents_changed (); /* Call now to ensure sidebar is updated even if call_when_ready blocks */
+                        this.call_when_ready = new Files.CallWhenReady (get_gof_file_list (), files_ready);
+                        loaded (); /* Call now to ensure sidebar is updated even if call_when_ready blocks */
                     }
                 }
                 catch (GLib.Error error) {
@@ -270,15 +275,15 @@ namespace Marlin {
             });
         }
 
-        private GLib.List<GOF.File> get_gof_file_list () {
-            GLib.List<GOF.File> files = null;
+        private GLib.List<Files.File> get_gof_file_list () {
+            GLib.List<Files.File> files = null;
             list.@foreach ((bm) => {
                 files.prepend (bm.gof_file);
             });
             return (owned) files;
         }
 
-        private void files_ready (GLib.List<GOF.File> files) {
+        private void files_ready (GLib.List<Files.File> files) {
             /* Sidebar does not use file.info when updating display so do not signal contents changed */
             call_when_ready = null;
         }
@@ -295,9 +300,9 @@ namespace Marlin {
 
                 string [] parts = line.split (" ", 2);
                 if (parts.length == 2) {
-                    append_internal (new Marlin.Bookmark.from_uri (parts [0], parts [1]));
+                    append_internal (new Files.Bookmark.from_uri (parts [0], parts [1]));
                 } else {
-                    append_internal (new Marlin.Bookmark.from_uri (parts [0]));
+                    append_internal (new Files.Bookmark.from_uri (parts [0]));
                 }
 
                 count++;
@@ -316,7 +321,7 @@ namespace Marlin {
             StringBuilder sb = new StringBuilder ();
 
             list.@foreach ((bookmark) => {
-                sb.append (bookmark.get_uri ());
+                sb.append (bookmark.uri);
                 sb.append (" " + bookmark.label);
                 sb.append ("\n");
             });
@@ -339,7 +344,7 @@ namespace Marlin {
         }
 
         private static GLib.File get_bookmarks_file () {
-            return Marlin.BookmarkList.bookmarks_file;
+            return Files.BookmarkList.bookmarks_file;
         }
 
 
@@ -354,12 +359,12 @@ namespace Marlin {
             }
         }
 
-        private void bookmark_in_list_changed_callback (Marlin.Bookmark bookmark) {
+        private void bookmark_in_list_changed_callback (Files.Bookmark bookmark) {
             save_bookmarks_file ();
         }
 
-        private void bookmark_in_list_to_be_deleted_callback (Marlin.Bookmark bookmark) {
-            delete_items_with_uri (bookmark.get_uri ());
+        private void bookmark_in_list_to_be_deleted_callback (Files.Bookmark bookmark) {
+            delete_items_with_uri (bookmark.uri);
         }
 
         private void start_monitoring_bookmarks_file () {
@@ -384,12 +389,12 @@ namespace Marlin {
             monitor = null;
         }
 
-        private void start_monitoring_bookmark (Marlin.Bookmark bookmark) {
+        private void start_monitoring_bookmark (Files.Bookmark bookmark) {
             bookmark.contents_changed.connect (bookmark_in_list_changed_callback);
             bookmark.deleted.connect (bookmark_in_list_to_be_deleted_callback);
 
         }
-        private void stop_monitoring_bookmark (Marlin.Bookmark bookmark) {
+        private void stop_monitoring_bookmark (Files.Bookmark bookmark) {
             bookmark.contents_changed.disconnect (bookmark_in_list_changed_callback);
             bookmark.deleted.disconnect (bookmark_in_list_to_be_deleted_callback);
         }

@@ -18,7 +18,7 @@
     Fifth Floor, Boston, MA 02110-1335 USA.
  ***/
 
-namespace Marlin {
+namespace Files {
     public enum WindowState {
         NORMAL,
         TILED_START,
@@ -41,13 +41,13 @@ namespace Marlin {
             }
         }
 
-        public static Marlin.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
+        public static Files.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
             if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
-                return Marlin.WindowState.MAXIMIZED;
+                return Files.WindowState.MAXIMIZED;
             } else if (Gdk.WindowState.TILED in state) {
-                return start ? Marlin.WindowState.TILED_START : Marlin.WindowState.TILED_END;
+                return start ? Files.WindowState.TILED_START : Files.WindowState.TILED_END;
             } else {
-                return Marlin.WindowState.NORMAL;
+                return Files.WindowState.NORMAL;
             }
         }
 
@@ -90,7 +90,39 @@ namespace Marlin {
         HUGE,
         HUGER,
         LARGEST,
-        N_LEVELS
+        N_LEVELS,
+        INVALID;
+
+        public IconSize to_icon_size () {
+            switch (this) {
+                case ZoomLevel.SMALLEST:
+                    return IconSize.SMALLEST;
+
+                case ZoomLevel.SMALLER:
+                    return IconSize.SMALLER;
+
+                case ZoomLevel.SMALL:
+                    return IconSize.SMALL;
+
+                case ZoomLevel.NORMAL:
+                    return IconSize.NORMAL;
+
+                case ZoomLevel.LARGE:
+                    return IconSize.LARGE;
+
+                case ZoomLevel.LARGER:
+                    return IconSize.LARGER;
+
+                case ZoomLevel.HUGE:
+                    return IconSize.HUGE;
+
+                case ZoomLevel.HUGER:
+                    return IconSize.HUGER;
+
+                default:
+                     return IconSize.LARGEST;
+            }
+        }
     }
 
     public enum IconSize {
@@ -107,101 +139,11 @@ namespace Marlin {
         LARGEST = 256
     }
 
-    public static IconSize zoom_level_to_icon_size (ZoomLevel zoom_level) {
-        switch (zoom_level) {
-            case ZoomLevel.SMALLEST:
-                return IconSize.SMALLEST;
-
-            case ZoomLevel.SMALLER:
-                return IconSize.SMALLER;
-
-            case ZoomLevel.SMALL:
-                return IconSize.SMALL;
-
-            case ZoomLevel.NORMAL:
-                return IconSize.NORMAL;
-
-            case ZoomLevel.LARGE:
-                return IconSize.LARGE;
-
-            case ZoomLevel.LARGER:
-                return IconSize.LARGER;
-
-            case ZoomLevel.HUGE:
-                return IconSize.HUGE;
-
-            case ZoomLevel.HUGER:
-                return IconSize.HUGER;
-
-            default:
-                 return IconSize.LARGEST;
-        }
-    }
-
-    public static ZoomLevel zoom_level_get_nearest_from_value (int size) {
-        if (size <= IconSize.SMALLEST) {
-            return ZoomLevel.SMALLEST;
-        }
-
-        if (size <= IconSize.SMALLER) {
-            return ZoomLevel.SMALLER;
-        }
-
-        if (size <= IconSize.SMALL) {
-            return ZoomLevel.SMALL;
-        }
-
-        if (size <= IconSize.NORMAL) {
-            return ZoomLevel.NORMAL;
-        }
-
-        if (size <= IconSize.LARGE) {
-            return ZoomLevel.LARGE;
-        }
-
-        if (size <= IconSize.LARGER) {
-            return ZoomLevel.LARGER;
-        }
-
-        if (size <= IconSize.HUGE) {
-            return ZoomLevel.HUGE;
-        }
-
-        if (size <= IconSize.HUGER) {
-            return ZoomLevel.HUGER;
-        }
-
-        return ZoomLevel.LARGEST;
-    }
-
-    public static Gtk.IconSize zoom_level_to_stock_icon_size (ZoomLevel zoom_level) {
-        switch (zoom_level) {
-            case ZoomLevel.SMALLEST:
-                return Gtk.IconSize.MENU;
-
-            case ZoomLevel.SMALLER:
-                return Gtk.IconSize.SMALL_TOOLBAR;
-
-            case ZoomLevel.SMALL:
-                return Gtk.IconSize.LARGE_TOOLBAR;
-
-            case ZoomLevel.NORMAL:
-            case ZoomLevel.LARGE:
-            case ZoomLevel.LARGER:
-            case ZoomLevel.HUGE:
-            case ZoomLevel.HUGER:
-            case ZoomLevel.LARGEST:
-                return Gtk.IconSize.DIALOG;
-
-            default:
-                assert_not_reached ();
-        }
-    }
-
     public enum TargetType {
         STRING,
         TEXT_URI_LIST,
         XDND_DIRECT_SAVE0,
-        NETSCAPE_URL
+        NETSCAPE_URL,
+        BOOKMARK_ROW
     }
 }

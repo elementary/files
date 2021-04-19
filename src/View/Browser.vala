@@ -17,7 +17,7 @@
     Author: ammonkey <am.monkeyd@gmail.com>
 ***/
 
-namespace Marlin.View {
+namespace Files.View {
 
     public class Browser : Object {
         private Stack<string> back_stack;

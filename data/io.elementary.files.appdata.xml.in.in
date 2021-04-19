@@ -60,9 +60,15 @@
   <releases>
     <release version="4.5.1" date="2020-08-11" urgency="medium">
       <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix connecting to AFP servers so that passwords are remembered</li>
+        </ul>
         <p>Improvements:</p>
         <ul>
           <li>More compact Icon View at small icon sizes</li>
+          <li>Do not restore locations that have become inaccessible</li>
+          <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
         </ul>
       </description>
     </release>
@@ -438,11 +444,11 @@
       </description>
     </release>
   </releases>
-  <developer_name>elementary LLC.</developer_name>
-  <url type="homepage">http://elementary.io/</url>
+  <developer_name>elementary, Inc.</developer_name>
+  <url type="homepage">https://elementary.io/</url>
   <url type="bugtracker">https://github.com/elementary/files/issues</url>
   <url type="donation">https://elementary.io/get-involved#funding</url>
-  <url type="help">https://elementaryos.stackexchange.com/questions/tagged/pantheon-files</url>
+  <url type="help">https://github.com/elementary/files/discussions/categories/q-a</url>
   <url type="translate">https://l10n.elementary.io/projects/files</url>
   <update_contact>contact_AT_elementary.io</update_contact>
 </component>

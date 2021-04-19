@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-14 19:08+0000\n"
-"PO-Revision-Date: 2020-08-09 22:13+0000\n"
+"POT-Creation-Date: 2021-04-09 04:54+0000\n"
+"PO-Revision-Date: 2021-04-04 19:46+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
 ">\n"
@@ -17,34 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: src/Application.vala:149
+#: src/Application.vala:158
 msgid "Show the version of the program"
 msgstr "Mostra la versió del programa."
 
-#: src/Application.vala:151
+#: src/Application.vala:160
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Obre un o més URI, cada un en una pestanya diferent"
 
-#: src/Application.vala:153 src/View/AbstractDirectoryView.vala:1860
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: src/Application.vala:155
+#: src/Application.vala:164
 msgid "Quit Files"
 msgstr "Surt del Fitxers"
 
-#: src/Application.vala:157
+#: src/Application.vala:166
 msgid "Enable debug logging"
 msgstr "Activa el registre de depuració"
 
-#: src/Application.vala:160
+#: src/Application.vala:169
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:163
+#: src/Application.vala:172
 msgid ""
 "\n"
 "\n"
@@ -54,31 +54,23 @@ msgstr ""
 "\n"
 "Navegueu pel sistema de fitxers amb el gestor de fitxers"
 
-#: src/Application.vala:191
+#: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
 msgstr "--quit no es pot utilitzar amb els URI."
 
-#: src/ProgressUIHandler.vala:129 src/ProgressUIHandler.vala:192
+#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
 msgid "File Operations"
 msgstr "Operacions sobre fitxers"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:186
+#: src/ProgressUIHandler.vala:181
 #, c-format
 msgid "Completed %s"
 msgstr "Completat: %s"
 
-#: src/ProgressUIHandler.vala:189
+#: src/ProgressUIHandler.vala:184
 msgid "All file operations have ended"
 msgstr "Han acabat totes les operacions de fitxers"
-
-#: src/ProgressUIHandler.vala:237
-msgid "Show Copy Dialog"
-msgstr "Mostra el diàleg de còpia"
-
-#: src/ProgressUIHandler.vala:249
-msgid "Cancel All In-progress Actions"
-msgstr "Cancel·la totes les accions en progrés"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -88,7 +80,8 @@ msgstr "Informació"
 msgid "General"
 msgstr "General"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:80 libcore/StockDialogs.vala:101
+#: src/Dialogs/AbstractPropertiesDialog.vala:80
+#: libcore/FileOperations/DialogUtils.vala:54
 msgid "Close"
 msgstr "Tanca"
 
@@ -120,7 +113,8 @@ msgid "Set as default"
 msgstr "Estableix com a predeterminada"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1970 src/View/PopupMenuBuilder.vala:81
+#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Propietats"
 
@@ -152,13 +146,13 @@ msgstr "Es carrega…"
 msgid "Could not be determined"
 msgstr "No s'ha pogut determinar"
 
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:129
-#: libcore/FileConflictDialog.vala:167
+#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:99
+#: libcore/FileConflictDialog.vala:133
 msgid "Size:"
 msgstr "Mida:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
-#: libcore/FileConflictDialog.vala:139 libcore/FileConflictDialog.vala:177
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Tipus:"
 
@@ -200,7 +194,7 @@ msgid "Original Location:"
 msgstr "Ubicació original:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1938
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Other Application…"
 msgstr "Una altra aplicació…"
 
@@ -237,7 +231,7 @@ msgstr[1] "%u fitxers"
 
 #. TRANSLATORS: folders, files
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:858
+#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:1038
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -266,8 +260,8 @@ msgstr "%s (%s, %s)"
 msgid "Disk Properties"
 msgstr "Propietats del disc"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/Sidebar.vala:654
-#: libwidgets/Resources.vala:68
+#: src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
 msgid "File System"
 msgstr "Sistema de fitxers"
 
@@ -275,11 +269,11 @@ msgstr "Sistema de fitxers"
 msgid "Format:"
 msgstr "Format:"
 
-#: src/Utils/MimeActions.vala:283
+#: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
 msgstr "S'han seleccionat diversos tipus de fitxers"
 
-#: src/Utils/MimeActions.vala:284
+#: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
 msgstr "No hi ha cap aplicació que pugui obrir tots aquests tipus de fitxers"
 
@@ -295,7 +289,7 @@ msgstr "No s'han pogut obrir els URI"
 msgid "Could not open files or URIs with this app"
 msgstr "No s'han pogut obrir els fitxers o URI amb aquesta aplicació"
 
-#: src/View/Window.vala:542 src/View/Window.vala:552
+#: src/View/Window.vala:553 src/View/Window.vala:563
 msgid "(as Administrator)"
 msgstr "(com a Administrador)"
 
@@ -303,11 +297,11 @@ msgstr "(com a Administrador)"
 msgid "Filename"
 msgstr "Nom del fitxer"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
 msgid "Size"
 msgstr "Mida"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
 msgid "Type"
 msgstr "Tipus"
 
@@ -315,7 +309,7 @@ msgstr "Tipus"
 msgid "Modified"
 msgstr "Modificat"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:404
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
 msgid "This Folder Does Not Exist"
 msgstr "Aquesta carpeta no existeix"
 
@@ -337,18 +331,18 @@ msgstr "Crea la carpeta «%s»"
 msgid "Failed to create the folder"
 msgstr "Ha fallat crear la carpeta."
 
-#: src/View/AbstractDirectoryView.vala:821
-#: src/View/AbstractDirectoryView.vala:1132
+#: src/View/AbstractDirectoryView.vala:814
+#: src/View/AbstractDirectoryView.vala:1125
 msgid "Cannot execute this file"
 msgstr "No es pot executar aquest fitxer."
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:831
+#: src/View/AbstractDirectoryView.vala:824
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "El fitxer %s s'ha de treure de la paperera abans d'obrir-lo."
 
-#: src/View/AbstractDirectoryView.vala:832
+#: src/View/AbstractDirectoryView.vala:825
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -356,313 +350,337 @@ msgstr ""
 "No es poden obrir els fitxers que hi ha a la paperera. Per obrir aquest "
 "fitxer, cal moure'l a un altre lloc."
 
-#: src/View/AbstractDirectoryView.vala:847
+#: src/View/AbstractDirectoryView.vala:840
 msgid "Cannot open this file"
 msgstr "No es pot obrir aquest fitxer"
 
-#: src/View/AbstractDirectoryView.vala:860
+#: src/View/AbstractDirectoryView.vala:853
 msgid "Cannot identify file type to open"
 msgstr "No es pot identificar el tipus de fitxer per obrir"
 
-#: src/View/AbstractDirectoryView.vala:1578
+#: src/View/AbstractDirectoryView.vala:1571
 msgid "Cannot drop this file"
 msgstr "No es pot deixar anar aquest fitxer"
 
-#: src/View/AbstractDirectoryView.vala:1579
+#: src/View/AbstractDirectoryView.vala:1572
 msgid "Invalid file name provided"
 msgstr "S’ha proporcionat un nom de fitxer no vàlid"
 
-#: src/View/AbstractDirectoryView.vala:1854
+#: src/View/AbstractDirectoryView.vala:1848
 msgid "New Tab"
 msgstr "Pestanya nova"
 
-#: src/View/AbstractDirectoryView.vala:1874
+#: src/View/AbstractDirectoryView.vala:1868
 msgid "Run"
 msgstr "Executa"
 
-#: src/View/AbstractDirectoryView.vala:1881
+#: src/View/AbstractDirectoryView.vala:1875
 #, c-format
 msgid "Open in %s"
 msgstr "Obre amb %s"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1944
 msgid "Open in"
 msgstr "Obre amb"
 
-#: src/View/AbstractDirectoryView.vala:1952
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Obre amb"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1952
 msgid "Paste"
 msgstr "Enganxa"
 
-#: src/View/AbstractDirectoryView.vala:1963 src/View/PopupMenuBuilder.vala:85
+#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
 msgstr "Afegeix a les adreces d'interès"
 
-#: src/View/AbstractDirectoryView.vala:1978
+#: src/View/AbstractDirectoryView.vala:1972
 msgid "Cut"
 msgstr "Retalla"
 
-#: src/View/AbstractDirectoryView.vala:1985
+#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
+#: src/View/AbstractDirectoryView.vala:1980
 msgid "Copy"
 msgstr "Copia"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:1987
 msgid "Move to Trash"
 msgstr "Mou a la paperera"
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:1992
 msgid "Delete permanently"
 msgstr "Suprimeix permanentment"
 
-#: src/View/AbstractDirectoryView.vala:2002
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Restore from Trash"
 msgstr "Restaura de la paperera"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Open Parent Folder"
 msgstr "Obre la carpeta superior"
 
-#: src/View/AbstractDirectoryView.vala:2016
+#: src/View/AbstractDirectoryView.vala:2011
 msgid "Remove from History"
 msgstr "Suprimeix de l'historial"
 
-#: src/View/AbstractDirectoryView.vala:2032
+#: src/View/AbstractDirectoryView.vala:2027
 msgid "Rename…"
 msgstr "Canvia'n el nom…"
 
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2034
 msgid "Copy as Link"
 msgstr "Copia com a enllaç"
 
-#: src/View/AbstractDirectoryView.vala:2057
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Paste Link into Folder"
 msgstr "Enganxa l'enllaç a la carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2059
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Paste into Folder"
 msgstr "Enganxa a la carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Show Hidden Files"
 msgstr "Mostra els fitxers ocults"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Show Remote Thumbnails"
 msgstr "Mostra les miniatures remotes"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Hide Thumbnails"
 msgstr "Amaga les miniatures"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2108
 msgid "Paste Link"
 msgstr "Enganxa l'enllaç"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2162
 msgid "Name"
 msgstr "Nom"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2177
 msgid "Date"
 msgstr "Data"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Reversed Order"
 msgstr "Ordre invers"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2185
 msgid "Folders Before Files"
 msgstr "Les carpetes davant dels fitxers"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2197
 msgid "Sort by"
 msgstr "Ordena per"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2205
 msgid "Folder"
 msgstr "Carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Empty File"
 msgstr "Fitxer buit"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2500
 #, c-format
 msgid "Untitled %s"
 msgstr "%s sense nom"
 
-#: src/View/AbstractDirectoryView.vala:2866
-#: src/View/AbstractDirectoryView.vala:3067
+#: src/View/AbstractDirectoryView.vala:2863
+#: src/View/AbstractDirectoryView.vala:3064
 msgid "Cannot remove files from here"
 msgstr "No es poden suprimir fitxers des d'aquí"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3052
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2864
+#: src/View/AbstractDirectoryView.vala:3049
+#: src/View/AbstractDirectoryView.vala:3065
 msgid "You do not have permission to change this location"
 msgstr "No teniu permís per canviar aquesta ubicació"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3018
 msgid "Cannot copy files that are in the trash"
 msgstr "No és possible copiar els fitxers que són a la paperera."
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3019
 msgid "Cutting the selection instead"
 msgstr "En canvi, es retalla la selecció"
 
-#: src/View/AbstractDirectoryView.vala:3051
+#: src/View/AbstractDirectoryView.vala:3048
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
-#: src/View/ViewContainer.vala:383 src/View/Sidebar.vala:587
+#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "You cannot create a folder here."
 msgstr "Aquí no podeu crear una carpeta."
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "The network is unavailable"
 msgstr "La xarxa no està disponible"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "A working network is needed to reach this folder"
 msgstr "Cal una xarxa que funcioni per arribar a aquesta carpeta"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
 msgstr "Aquesta carpeta no us pertany"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
 msgstr "No teniu permís per veure aquesta carpeta."
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
 msgstr "No es pot muntar la carpeta"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
 msgstr "No s'ha pogut connectar amb el servidor per a aquesta carpeta."
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "No es poden mostrar els continguts de la carpeta."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "S'ha esgotat el temps d'espera de l'operació."
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "No es pot mostrar la carpeta"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:435
 msgid "File not Found"
 msgstr "No s'ha trobat el fitxer"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:436
 msgid "The file selected no longer exists."
 msgstr "El fitxer seleccionat ja no existeix."
 
-#: src/View/Sidebar.vala:573 libwidgets/View/SearchResults.vala:248
-msgid "Bookmarks"
-msgstr "Adreces d'interès"
+#: src/View/Sidebar/BookmarkListBox.vala:129
+msgid "View the home folder"
+msgstr "Mostra la carpeta de l'usuari"
 
-#: src/View/Sidebar.vala:574
-msgid "Common places plus saved folders and files"
-msgstr "Llocs comuns més carpetes i fitxers desats"
-
-#: src/View/Sidebar.vala:594
-msgid "Open your personal folder"
-msgstr "Obriu la vostra carpeta personal"
-
-#: src/View/Sidebar.vala:609
+#: src/View/Sidebar/BookmarkListBox.vala:142
 msgid "View the list of recently used files"
 msgstr "Mostra la llista dels fitxers usats recentment"
 
-#: src/View/Sidebar.vala:635 libwidgets/Resources.vala:65
+#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Paperera"
 
-#: src/View/Sidebar.vala:642
+#: src/View/Sidebar/BookmarkListBox.vala:164
 msgid "Open the Trash"
 msgstr "Obre la paperera"
 
-#: src/View/Sidebar.vala:647
-msgid "Devices"
-msgstr "Dispositius"
+#: src/View/Sidebar/DeviceListBox.vala:129
+msgid "View the root of the local filesystem"
+msgstr "Mostra l'arrel del sistema de fitxers local"
 
-#: src/View/Sidebar.vala:648
-msgid "Internal and connected storage devices"
-msgstr "Dispositius d’emmagatzematge interns i connectats"
-
-#: src/View/Sidebar.vala:777 libwidgets/Resources.vala:62
-msgid "Network"
-msgstr "Xarxa"
-
-#: src/View/Sidebar.vala:778
-msgid "Devices and places available via a network"
-msgstr "Dispositius i llocs disponibles a través d'una xarxa"
-
-#: src/View/Sidebar.vala:810
-msgid "Entire Network"
-msgstr "Tota la xarxa"
-
-#: src/View/Sidebar.vala:817
-msgid "Browse the contents of the network"
-msgstr "Navega pel contingut de la xarxa"
-
-#: src/View/Sidebar.vala:820
-msgid "Connect Server"
-msgstr "Connecta't al servidor"
-
-#: src/View/Sidebar.vala:821
-msgid "Connect to a network server"
-msgstr "Connecta't a un servidor de la xarxa"
-
-#. TRANSLATORS: The first string placeholder '%s' represents a device label, the second '%s' represents a mount name.
-#: src/View/Sidebar.vala:892
-#, c-format
-msgid "%s on %s"
-msgstr "%s a %s"
-
-#: src/View/Sidebar.vala:979
+#: src/View/Sidebar/DeviceRow.vala:116
 #, c-format
 msgid "%s free"
 msgstr "%s lliure"
 
-#: src/View/Sidebar.vala:980
+#: src/View/Sidebar/DeviceRow.vala:117
 #, c-format
 msgid "%s used of %s"
 msgstr "%s usat de %s"
 
-#: src/View/Sidebar.vala:1456
-#, c-format
-msgid "Error mounting volume %s"
-msgstr "Error muntant el volum %s"
+#: src/View/Sidebar/NetworkListBox.vala:93
+msgid "Entire Network"
+msgstr "Tota la xarxa"
 
-#: src/View/Sidebar.vala:1471
-#, c-format
-msgid "Unable to start %s"
-msgstr "No s'ha pogut iniciar %s"
+#: src/View/Sidebar/NetworkListBox.vala:100
+msgid "Browse the contents of the network"
+msgstr "Navega pel contingut de la xarxa"
 
-#: src/View/Sidebar.vala:1661 libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Buida la _paperera"
+#: src/View/Sidebar/PopupMenuBuilder.vala:49
+msgid "Open"
+msgstr "Obre"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:53
+msgid "Open in New _Tab"
+msgstr "Obre en una _pestanya nova"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:57
+msgid "Open in New _Window"
+msgstr "Obre en una _finestra nova"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:61
+msgid "Remove"
+msgstr "Suprimeix"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:65
+msgid "Rename"
+msgstr "Canvia'n el nom"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:69
+msgid "_Mount"
+msgstr "_Munta"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:73
+msgid "_Unmount"
+msgstr "_Desmunta"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:77
+msgid "_Eject"
+msgstr "_Expulsa"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:89
+msgid "Empty All Trash"
+msgstr "Buida totes les papereres"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:93
+msgid "Empty Trash on this Mount"
+msgstr "Buida la paperera d'aquest muntatge"
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: libwidgets/View/SearchResults.vala:282
+msgid "Bookmarks"
+msgstr "Adreces d'interès"
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr "Llocs comuns més carpetes i fitxers desats"
+
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr "Emmagatzematge"
+
+#: src/View/Sidebar/SidebarWindow.vala:54
+msgid "Internal and connected storage devices"
+msgstr "Dispositius d’emmagatzematge interns i connectats"
+
+#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
+msgid "Network"
+msgstr "Xarxa"
+
+#: src/View/Sidebar/SidebarWindow.vala:61
+msgid "Devices and places available via a network"
+msgstr "Dispositius i llocs disponibles a través d'una xarxa"
+
+#: src/View/Sidebar/SidebarWindow.vala:84
+msgid "Connect Server…"
+msgstr "Connecta't a un servidor…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -697,62 +715,28 @@ msgid "Open the system security and privacy settings app"
 msgstr ""
 "Obre l'aplicació per configurar la seguretat i la privadesa del sistema"
 
-#: src/View/PopupMenuBuilder.vala:49
-msgid "Open"
-msgstr "Obre"
-
-#: src/View/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr "Obre en una _pestanya nova"
-
-#: src/View/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr "Obre en una _finestra nova"
-
-#: src/View/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr "Suprimeix"
-
-#: src/View/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr "Canvia'n el nom"
-
-#: src/View/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr "_Munta"
-
-#: src/View/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr "_Desmunta"
-
-#: src/View/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr "_Expulsa"
-
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Cerqueu o escriviu-ne el camí"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Obre en una pestanya nova"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:455
+#: src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Obre en una finestra nova"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:498
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Obre en una altra aplicació…"
 
 #: src/View/Widgets/HeaderBar.vala:66
-#: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
 msgstr "Anterior"
 
 #: src/View/Widgets/HeaderBar.vala:73
-#: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
 msgstr "Següent"
 
@@ -772,12 +756,9 @@ msgstr "%u carpetes"
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr " i %u altre element (%s) seleccionats"
-
-#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
-#, c-format
-msgid " and %u other items (%s) selected"
-msgstr " i %u altres elements (%s) seleccionats"
+msgid_plural " and %u other items (%s) selected"
+msgstr[0] " i %u altre element (%s) seleccionat"
+msgstr[1] " i %u altres elements (%s) seleccionats"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -792,23 +773,17 @@ msgstr "%u elements seleccionats (%s)"
 #: src/View/Widgets/OverlayBar.vala:272
 #, c-format
 msgid "%u sub-folder, "
-msgstr "%u subcarptea, "
-
-#: src/View/Widgets/OverlayBar.vala:272
-#, c-format
-msgid "%u sub-folders, "
-msgstr "%u subcarpetes, "
+msgid_plural "%u sub-folders, "
+msgstr[0] "%u subcarpeta, "
+msgstr[1] "%u subcarpetes, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
 #, c-format
 msgid "%u file, "
-msgstr "%u fitxer, "
-
-#: src/View/Widgets/OverlayBar.vala:278
-#, c-format
-msgid "%u files, "
-msgstr "%u fitxers, "
+msgid_plural "%u files, "
+msgstr[0] "%u fitxer, "
+msgstr[1] "%u fitxers, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -825,12 +800,9 @@ msgstr "mida desconeguda"
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%u file not readable"
-msgstr "%u fitxer no llegible"
-
-#: src/View/Widgets/OverlayBar.vala:295
-#, c-format
-msgid "%u files not readable"
-msgstr "%u fitxers no llegibles"
+msgid_plural "%u files not readable"
+msgstr[0] "%u fitxer no llegible"
+msgstr[1] "%u fitxers no llegibles"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -872,158 +844,158 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV segur (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:128
 msgid "Server Details"
 msgstr "Detalls del servidor"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
 msgstr "Nom del servidor o adreça IP"
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server:"
 msgstr "Servidor:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:143
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:177
-msgid "Name of share on server"
-msgstr "Nom de la compartició al servidor"
+#: libcore/ConnectServerDialog.vala:175
+msgid "Name of share on server (Optional)"
+msgstr "Nom de la compartició al servidor (opcional)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Compartició:"
 
-#: libcore/ConnectServerDialog.vala:180
-msgid "Path of shared folder on server"
-msgstr "Camí de la carpeta compartida al servidor"
-
 #: libcore/ConnectServerDialog.vala:181
+msgid "Path of shared folder on server (Optional)"
+msgstr "Camí de la carpeta compartida al servidor (opcional)"
+
+#: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
 msgstr "Carpeta:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:187
 msgid "User Details"
 msgstr "Detalls de l'usuari"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:192
 msgid "Name of Windows domain"
 msgstr "Nom del domini de Windows"
 
-#: libcore/ConnectServerDialog.vala:186
+#: libcore/ConnectServerDialog.vala:194
 msgid "Domain name:"
 msgstr "Nom del domini:"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:199
 msgid "Name of user on server"
 msgstr "Nom de l'usuari al servidor"
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:201
 msgid "User name:"
 msgstr "Nom d'usuari:"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:208
 msgid "Password:"
 msgstr "Contrasenya:"
 
-#: libcore/ConnectServerDialog.vala:198
+#: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "Recorda aquesta contrasenya."
 
-#: libcore/ConnectServerDialog.vala:201 libcore/DndHandler.vala:102
-#: libcore/FileConflictDialog.vala:219
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Canceŀla"
 
-#: libcore/ConnectServerDialog.vala:205
+#: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
 msgstr "Connecta-hi"
 
-#: libcore/ConnectServerDialog.vala:214
+#: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
 msgstr "Continua"
 
-#: libcore/ConnectServerDialog.vala:265
+#: libcore/ConnectServerDialog.vala:274
 msgid "Connecting…"
 msgstr "Connectant…"
 
-#: libcore/ConnectServerDialog.vala:388
+#: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
 msgstr "Verifiqueu els detalls d'usuari."
 
-#: libcore/DndHandler.vala:48
+#: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "No s'ha pogut executar «%s»"
 
-#: libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:100
 msgid "Move Here"
 msgstr "Mou aquí"
 
-#: libcore/DndHandler.vala:98
+#: libcore/DndHandler.vala:101
 msgid "Copy Here"
 msgstr "Copia aquí"
 
-#: libcore/DndHandler.vala:99
+#: libcore/DndHandler.vala:102
 msgid "Link Here"
 msgstr "Enllaça aquí"
 
-#: libcore/FileConflictDialog.vala:64
+#: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
 msgstr "Conflicte de fitxers"
 
-#: libcore/FileConflictDialog.vala:122
+#: libcore/FileConflictDialog.vala:97
 msgid "Original file"
 msgstr "Fitxer original"
 
-#: libcore/FileConflictDialog.vala:147 libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
 msgstr "Darrera modificació:"
 
-#: libcore/FileConflictDialog.vala:161
+#: libcore/FileConflictDialog.vala:131
 msgid "Replace with"
 msgstr "Reemplaça amb"
 
-#: libcore/FileConflictDialog.vala:199
+#: libcore/FileConflictDialog.vala:165
 msgid "Reset"
 msgstr "Reinicia"
 
-#: libcore/FileConflictDialog.vala:211
+#: libcore/FileConflictDialog.vala:177
 msgid "_Select a new name for the destination"
 msgstr "_Seleccioneu un nom nou per a la destinació"
 
-#: libcore/FileConflictDialog.vala:214
+#: libcore/FileConflictDialog.vala:180
 msgid "Apply this action to all files"
 msgstr "Aplica aquesta acció a tots els fitxers"
 
-#: libcore/FileConflictDialog.vala:216 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Omet"
 
-#: libcore/FileConflictDialog.vala:217
+#: libcore/FileConflictDialog.vala:183
 msgid "Re_name"
 msgstr "Canvia el _nom"
 
-#: libcore/FileConflictDialog.vala:221
+#: libcore/FileConflictDialog.vala:185
 msgid "Keep Newest"
 msgstr "Mantén el més recent"
 
-#: libcore/FileConflictDialog.vala:222
+#: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
 msgstr "Omet si l'original s'ha modificat més recentment."
 
-#: libcore/FileConflictDialog.vala:224
+#: libcore/FileConflictDialog.vala:190
 msgid "Replace"
 msgstr "Substitueix"
 
-#: libcore/FileConflictDialog.vala:340
+#: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Voleu combinar la carpeta «%s»?"
 
-#: libcore/FileConflictDialog.vala:341
+#: libcore/FileConflictDialog.vala:300
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1031,60 +1003,60 @@ msgstr ""
 "En combinar-la es demanarà confirmació abans de reemplaçar-hi cap fitxer que "
 "entri en conflicte amb els que s'estiguin copiant."
 
-#: libcore/FileConflictDialog.vala:343
+#: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Ja existeix una carpeta més antiga amb el mateix nom a «%s»."
 
-#: libcore/FileConflictDialog.vala:345
+#: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Ja existeix una carpeta més nova amb el mateix nom a «%s»."
 
-#: libcore/FileConflictDialog.vala:347
+#: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Ja existeix una altra carpeta amb el mateix nom a «%s»."
 
-#: libcore/FileConflictDialog.vala:350
+#: libcore/FileConflictDialog.vala:309
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Voleu reemplaçar la carpeta «%s»?"
 
-#: libcore/FileConflictDialog.vala:351
+#: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
 msgstr "En reemplaçar-la se'n suprimiran tots els fitxers."
 
-#: libcore/FileConflictDialog.vala:352
+#: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Ja existeix una carpeta amb el mateix nom a «%s»."
 
-#: libcore/FileConflictDialog.vala:355
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Voleu reemplaçar el fitxer «%s»?"
 
-#: libcore/FileConflictDialog.vala:356
+#: libcore/FileConflictDialog.vala:315
 msgid "Replacing it will overwrite its content."
 msgstr "En reemplaçar-la se sobreescriuran els continguts."
 
-#: libcore/FileConflictDialog.vala:359
+#: libcore/FileConflictDialog.vala:318
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Ja existeix un fitxer més antic amb el mateix nom a «%s»."
 
-#: libcore/FileConflictDialog.vala:361
+#: libcore/FileConflictDialog.vala:320
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Ja existeix un fitxer més nou amb el mateix nom a «%s»."
 
-#: libcore/FileConflictDialog.vala:363
+#: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
 
-#: libcore/FileConflictDialog.vala:389
+#: libcore/FileConflictDialog.vala:348
 msgid "Merge"
 msgstr "Combina"
 
@@ -1097,63 +1069,119 @@ msgstr "No s'ha pogut determinar la ubicació original de «%s» "
 msgid "The item cannot be restored from trash"
 msgstr "No es pot restaurar l'element des de la paperera"
 
-#: libcore/FileUtils.vala:472
+#: libcore/FileUtils.vala:184
+#, c-format
+msgid "The original folder %s no longer exists"
+msgstr "La carpeta original %s ja no existeix."
+
+#: libcore/FileUtils.vala:185
+msgid "Would you like to recreate it?"
+msgstr "Voleu recrear-la?"
+
+#: libcore/FileUtils.vala:190
+msgid "Ignore"
+msgstr "Ignora"
+
+#: libcore/FileUtils.vala:191
+msgid "No files that were in this folder will be restored"
+msgstr "Els fitxers que hi havia en aquesta carpeta no es restauraran."
+
+#: libcore/FileUtils.vala:192
+msgid "Recreate"
+msgstr "Recrea-la"
+
+#: libcore/FileUtils.vala:194
+msgid ""
+"The folder will be recreated and selected files that were originally there "
+"will be restored to it"
+msgstr ""
+"Es recrearà la carpeta i s'hi restauraran els fitxers seleccionats que hi "
+"havia originalment."
+
+#: libcore/FileUtils.vala:207
+#, c-format
+msgid "Could not recreate folder %s. Will ignore all files in this folder"
+msgstr ""
+"No s'ha pogut recrear la carpeta %s. S'ignoraran tots els fitxes de la "
+"carpeta."
+
+#: libcore/FileUtils.vala:578
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "No s'ha pogut canviar el nom a \"%s\""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:561
+#: libcore/FileUtils.vala:669
 #, c-format
 msgid "Today at %s"
 msgstr "Avui a les %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:569
+#: libcore/FileUtils.vala:677
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Ahir a les %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:577
+#: libcore/FileUtils.vala:685
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A a les %s"
 
-#: libcore/FileUtils.vala:847
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d segon"
 msgstr[1] "%'d segons"
 
-#: libcore/FileUtils.vala:851 libcore/FileUtils.vala:859
+#: libcore/FileUtils.vala:1031 libcore/FileUtils.vala:1039
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minut"
 msgstr[1] "%'d minuts"
 
-#: libcore/FileUtils.vala:858
+#: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d hora"
 msgstr[1] "%'d hores"
 
-#: libcore/FileUtils.vala:862
+#: libcore/FileUtils.vala:1042
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "aproximadament %'d hora"
 msgstr[1] "aproximadament %'d hores"
 
-#: libcore/gof-directory-async.vala:690
+#. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
+#: libcore/FileUtils.vala:1050
+msgid "copy"
+msgstr "còpia"
+
+#. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
+#: libcore/FileUtils.vala:1052
+msgid "link"
+msgstr "enllaç"
+
+#. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
+#: libcore/FileUtils.vala:1054
+msgid "("
+msgstr "("
+
+#. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
+#: libcore/FileUtils.vala:1056
+msgid ")"
+msgstr ")"
+
+#: libcore/gof-directory-async.vala:689
 msgid "Server did not respond within time limit"
 msgstr "El servidor no ha respost dins del límit de temps."
 
-#: libcore/ProgressInfo.vala:29 libcore/ProgressInfo.vala:30
-#: libcore/ProgressInfo.vala:31
+#: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
+#: libcore/ProgressInfo.vala:33
 msgid "Preparing"
 msgstr "Se'n fa la preparació"
 
@@ -1197,6 +1225,10 @@ msgstr "Combina-ho _tot"
 msgid "Copy _Anyway"
 msgstr "Copia _igualment"
 
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Buida la _paperera"
+
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
 msgstr "La ubicació original no s'ha pogut determinar"
@@ -1229,7 +1261,7 @@ msgstr ""
 "Tots els elements de la paperera d'aquest punt de muntatge se suprimiran "
 "permanentment."
 
-#: libcore/FileOperations/EmptyTrashJob.vala:104
+#: libcore/FileOperations/EmptyTrashJob.vala:111
 msgid "Emptying Trash"
 msgstr "Es buida la paperera"
 
@@ -1238,53 +1270,14 @@ msgstr "Es buida la paperera"
 msgid "Unable to mount '%s'"
 msgstr "No es pot muntar %s."
 
-#: libcore/marlin-file-operations.c:204
-#, c-format
-msgid "Link to %s"
-msgstr "Enllaç a %s"
-
-#: libcore/marlin-file-operations.c:208
-#, c-format
-msgid "Another link to %s"
-msgstr "Un altre enllaç a %s"
-
-#: libcore/marlin-file-operations.c:224
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'dr enllaç a %s"
-
-#: libcore/marlin-file-operations.c:228
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'dn enllaç a %s"
-
-#: libcore/marlin-file-operations.c:232
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'der enllaç a %s"
-
-#: libcore/marlin-file-operations.c:236
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'dè enllaç a %s"
-
-#: libcore/marlin-file-operations.c:428
-msgid " ("
-msgstr " ("
-
-#: libcore/marlin-file-operations.c:436
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:991
+#: libcore/marlin-file-operations.c:285
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "Segur que voleu suprimir permanentment «%s» de la paperera?"
 
-#: libcore/marlin-file-operations.c:995
+#: libcore/marlin-file-operations.c:289
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1299,18 +1292,18 @@ msgstr[1] ""
 "Segur que voleu suprimir permanentment els %'d elements seleccionats de la "
 "paperera?"
 
-#: libcore/marlin-file-operations.c:1005
+#: libcore/marlin-file-operations.c:301
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Si suprimiu un element, es perdrà permanentment."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1031
+#: libcore/marlin-file-operations.c:327
 #, c-format
 msgid "Permanently delete “%s”?"
 msgstr "Voleu suprimir permanentment %s?"
 
-#: libcore/marlin-file-operations.c:1034
+#: libcore/marlin-file-operations.c:330
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1319,40 +1312,40 @@ msgstr[0] "Segur que voleu suprimir permanentment l'element seleccionat?"
 msgstr[1] ""
 "Segur que voleu suprimir permanentment els %'d elements seleccionats?"
 
-#: libcore/marlin-file-operations.c:1043
+#: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 "Els elements suprimits no s'envien a la paperera i no es poden recuperar."
 
-#: libcore/marlin-file-operations.c:1077
+#: libcore/marlin-file-operations.c:375
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "queda %'d fitxer per suprimir"
 msgstr[1] "queden %'d fitxers per suprimir"
 
-#: libcore/marlin-file-operations.c:1082
+#: libcore/marlin-file-operations.c:380
 msgid "Deleting files"
 msgstr "Se suprimeixen els fitxers"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
-#: libcore/marlin-file-operations.c:1097
+#: libcore/marlin-file-operations.c:395
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
 msgstr[0] "resta %s"
 msgstr[1] "resten %s"
 
-#: libcore/marlin-file-operations.c:1166 libcore/marlin-file-operations.c:1206
-#: libcore/marlin-file-operations.c:1252 libcore/marlin-file-operations.c:1334
-#: libcore/marlin-file-operations.c:1841
+#: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
+#: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
+#: libcore/marlin-file-operations.c:1139
 msgid "Error while deleting."
 msgstr "S'ha produït un error en suprimir."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1172
+#: libcore/marlin-file-operations.c:470
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
@@ -1363,8 +1356,8 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1177 libcore/marlin-file-operations.c:1905
-#: libcore/marlin-file-operations.c:2982
+#: libcore/marlin-file-operations.c:475 libcore/marlin-file-operations.c:1203
+#: libcore/marlin-file-operations.c:2216
 #, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
@@ -1372,13 +1365,13 @@ msgstr ""
 "S'ha produït un error en obtenir informació sobre els fitxers de la carpeta "
 "«%s»."
 
-#: libcore/marlin-file-operations.c:1187 libcore/marlin-file-operations.c:2992
+#: libcore/marlin-file-operations.c:487 libcore/marlin-file-operations.c:2228
 msgid "_Skip files"
 msgstr "_Omet els fitxers"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1211
+#: libcore/marlin-file-operations.c:511
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
@@ -1388,47 +1381,47 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1216 libcore/marlin-file-operations.c:1950
-#: libcore/marlin-file-operations.c:3034
+#: libcore/marlin-file-operations.c:516 libcore/marlin-file-operations.c:1250
+#: libcore/marlin-file-operations.c:2270
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
 msgstr "S'ha produït un error en llegir la carpeta «%s»."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1255
+#: libcore/marlin-file-operations.c:557
 #, c-format
 msgid "Could not remove the folder %s."
 msgstr "No s'ha pogut suprimir la carpeta %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:1337
+#: libcore/marlin-file-operations.c:641
 #, c-format
 msgid "There was an error deleting %s."
 msgstr "S'ha produït un error en suprimir %s."
 
-#: libcore/marlin-file-operations.c:1422
+#: libcore/marlin-file-operations.c:728
 msgid "Moving files to trash"
 msgstr "Es mouen els fitxers a la paperera"
 
-#: libcore/marlin-file-operations.c:1424
+#: libcore/marlin-file-operations.c:730
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Queda %'d fitxer per moure a la paperera"
 msgstr[1] "Queden %'d fitxers per moure a la paperera"
 
-#: libcore/marlin-file-operations.c:1522 libcore/marlin-file-operations.c:1525
-#: libcore/marlin-file-operations.c:1528
+#: libcore/marlin-file-operations.c:828 libcore/marlin-file-operations.c:831
+#: libcore/marlin-file-operations.c:834
 msgid "Cannot move file to trash or delete it"
 msgstr "No s'ha pogut moure el fitxer a la paperera o suprimir-ho"
 
-#: libcore/marlin-file-operations.c:1523
+#: libcore/marlin-file-operations.c:829
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "No està permès enviar a la paperera o suprimir un fitxer dels sistemes de "
 "només lectura."
 
-#: libcore/marlin-file-operations.c:1526
+#: libcore/marlin-file-operations.c:832
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -1436,7 +1429,7 @@ msgstr ""
 "No està permès enviar a la paperera o suprimir un fitxer dins de carpetes "
 "per a les quals no tingueu privilegis d’escriptura."
 
-#: libcore/marlin-file-operations.c:1529
+#: libcore/marlin-file-operations.c:835
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -1444,25 +1437,25 @@ msgstr ""
 "No està permès enviar a la paperera o suprimir carpetes per a les quals no "
 "tingueu privilegis d’escriptura."
 
-#: libcore/marlin-file-operations.c:1531
+#: libcore/marlin-file-operations.c:837
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho "
 "immediatament?"
 
-#: libcore/marlin-file-operations.c:1532
+#: libcore/marlin-file-operations.c:838
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 "No s'ha pogut moure el fitxer a la paperera. Vegeu els detalls a continuació."
 
-#: libcore/marlin-file-operations.c:1536
+#: libcore/marlin-file-operations.c:842
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
 "No s'ha pogut moure el fitxer a la paperera. Voleu intentar suprimir-ho?"
 
-#: libcore/marlin-file-operations.c:1537
+#: libcore/marlin-file-operations.c:843
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -1470,7 +1463,7 @@ msgstr ""
 "No s’ha pogut moure aquest fitxer a la paperera. Tampoc és possible suprimir-"
 "ho."
 
-#: libcore/marlin-file-operations.c:1543
+#: libcore/marlin-file-operations.c:849
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -1478,11 +1471,11 @@ msgstr ""
 "\n"
 " La supressió d’un fitxer el suprimeix permanentment"
 
-#: libcore/marlin-file-operations.c:1733
+#: libcore/marlin-file-operations.c:1032
 msgid "Trashing Files"
 msgstr "Es mouen els fitxers a la paperera"
 
-#: libcore/marlin-file-operations.c:1735
+#: libcore/marlin-file-operations.c:1034
 msgid "Deleting Files"
 msgstr "Se suprimeixen els fitxers"
 
@@ -1490,7 +1483,7 @@ msgstr "Se suprimeixen els fitxers"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1775
+#: libcore/marlin-file-operations.c:1073
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
@@ -1501,7 +1494,7 @@ msgstr[1] "Es fa la preparació per copiar %'d fitxers (%s)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1787
+#: libcore/marlin-file-operations.c:1085
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
@@ -1512,37 +1505,37 @@ msgstr[1] "Es fa la preparació per moure %'d fitxers (%s)"
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:1799
+#: libcore/marlin-file-operations.c:1097
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
 msgstr[0] "Es fa la preparació per suprimir %'d fitxer (%s)"
 msgstr[1] "Es fa la preparació per suprimir %'d fitxers (%s)"
 
-#: libcore/marlin-file-operations.c:1806
+#: libcore/marlin-file-operations.c:1104
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Es fa la preparació per moure a la paperera %'d fitxer"
 msgstr[1] "Es fa la preparació per moure a la paperera %'d fitxers"
 
-#: libcore/marlin-file-operations.c:1837 libcore/marlin-file-operations.c:2829
-#: libcore/marlin-file-operations.c:2969 libcore/marlin-file-operations.c:3021
+#: libcore/marlin-file-operations.c:1135 libcore/marlin-file-operations.c:2061
+#: libcore/marlin-file-operations.c:2203 libcore/marlin-file-operations.c:2257
 msgid "Error while copying."
 msgstr "S'ha produït un error en copiar."
 
-#: libcore/marlin-file-operations.c:1839 libcore/marlin-file-operations.c:2967
-#: libcore/marlin-file-operations.c:3019
+#: libcore/marlin-file-operations.c:1137 libcore/marlin-file-operations.c:2201
+#: libcore/marlin-file-operations.c:2255
 msgid "Error while moving."
 msgstr "S'ha produït un error en moure."
 
-#: libcore/marlin-file-operations.c:1843
+#: libcore/marlin-file-operations.c:1141
 msgid "Error while moving files to trash."
 msgstr "S'ha produït un error en moure els fitxers a la paperera."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1900
+#: libcore/marlin-file-operations.c:1198
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
@@ -1553,7 +1546,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:1945
+#: libcore/marlin-file-operations.c:1245
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
@@ -1563,7 +1556,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2032
+#: libcore/marlin-file-operations.c:1334
 #, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
@@ -1573,32 +1566,32 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2037
+#: libcore/marlin-file-operations.c:1339
 #, c-format
 msgid "There was an error getting information about \"%s\"."
 msgstr "S'ha produït un error en obtenir informació sobre «%s»."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2143 libcore/marlin-file-operations.c:2189
-#: libcore/marlin-file-operations.c:2227 libcore/marlin-file-operations.c:2267
+#: libcore/marlin-file-operations.c:1447 libcore/marlin-file-operations.c:1495
+#: libcore/marlin-file-operations.c:1535 libcore/marlin-file-operations.c:1577
 #, c-format
 msgid "Error while copying to \"%s\"."
 msgstr "S'ha produït un error en copiar a «%s»."
 
-#: libcore/marlin-file-operations.c:2148
+#: libcore/marlin-file-operations.c:1452
 msgid "You do not have permissions to access the destination folder."
 msgstr "No teniu permís per accedir a la carpeta de destinació."
 
-#: libcore/marlin-file-operations.c:2150
+#: libcore/marlin-file-operations.c:1454
 msgid "There was an error getting information about the destination."
 msgstr "S'ha produït un error en obtenir informació sobre la destinació."
 
-#: libcore/marlin-file-operations.c:2190
+#: libcore/marlin-file-operations.c:1496
 msgid "The destination is not a folder."
 msgstr "La destinació no és una carpeta."
 
-#: libcore/marlin-file-operations.c:2229
+#: libcore/marlin-file-operations.c:1537
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1608,30 +1601,30 @@ msgstr ""
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
-#: libcore/marlin-file-operations.c:2235
+#: libcore/marlin-file-operations.c:1543
 #, c-format
 msgid "There is %s available, but %s is required."
 msgstr "Hi ha %s disponible, però calen %s."
 
-#: libcore/marlin-file-operations.c:2269
+#: libcore/marlin-file-operations.c:1579
 msgid "The destination is read-only."
 msgstr "La destinació només és de lectura."
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2341
+#: libcore/marlin-file-operations.c:1653
 #, c-format
 msgid "Moving \"%s\" to \"%s\""
 msgstr "Es mou «%s» a «%s»"
 
-#: libcore/marlin-file-operations.c:2342
+#: libcore/marlin-file-operations.c:1654
 #, c-format
 msgid "Copying \"%s\" to \"%s\""
 msgstr "Es copia «%s» a «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2346
+#: libcore/marlin-file-operations.c:1658
 #, c-format
 msgid "Duplicating \"%s\""
 msgstr "Es duplica «%s»"
@@ -1640,14 +1633,14 @@ msgstr "Es duplica «%s»"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2354
+#: libcore/marlin-file-operations.c:1666
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
 msgstr[0] "Es mou %'d fitxer (de «%s») a «%s»"
 msgstr[1] "Es mouen %'d fitxers (de «%s») a «%s»"
 
-#: libcore/marlin-file-operations.c:2357
+#: libcore/marlin-file-operations.c:1669
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
@@ -1656,7 +1649,7 @@ msgstr[1] "Es copien %'d fitxers (de «%s») a «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-#: libcore/marlin-file-operations.c:2366
+#: libcore/marlin-file-operations.c:1678
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
@@ -1667,21 +1660,21 @@ msgstr[1] "Es dupliquen %'d fitxers (de «%s»)"
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
-#: libcore/marlin-file-operations.c:2378
+#: libcore/marlin-file-operations.c:1690
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
 msgstr[0] "Es mou %'d fitxer a «%s»"
 msgstr[1] "Es mouen %'d fitxers a «%s»"
 
-#: libcore/marlin-file-operations.c:2381
+#: libcore/marlin-file-operations.c:1693
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
 msgstr[0] "Es copia %'d fitxer a «%s»"
 msgstr[1] "Es copien %'d fitxers a «%s»"
 
-#: libcore/marlin-file-operations.c:2387
+#: libcore/marlin-file-operations.c:1699
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1689,7 +1682,7 @@ msgstr[0] "Es duplica %'d fitxer"
 msgstr[1] "Es dupliquen %'d fitxers"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-#: libcore/marlin-file-operations.c:2417
+#: libcore/marlin-file-operations.c:1729
 #, c-format
 msgid "%s of %s"
 msgstr "%s de %s"
@@ -1700,7 +1693,7 @@ msgstr "%s de %s"
 #. So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
-#: libcore/marlin-file-operations.c:2437
+#: libcore/marlin-file-operations.c:1749
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
@@ -1709,7 +1702,7 @@ msgstr[1] "%s de %s; resten %s (%s/s)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2836
+#: libcore/marlin-file-operations.c:2068
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1720,14 +1713,14 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2841
+#: libcore/marlin-file-operations.c:2073
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
 msgstr "S'ha produït un error en crear la carpeta «%s»."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:2977
+#: libcore/marlin-file-operations.c:2211
 #, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
@@ -1738,7 +1731,7 @@ msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3029
+#: libcore/marlin-file-operations.c:2265
 #, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
@@ -1749,91 +1742,91 @@ msgstr "No es pot copiar la carpeta «%s» perquè no teniu permís per llegir-l
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3082 libcore/marlin-file-operations.c:3814
-#: libcore/marlin-file-operations.c:4382
+#: libcore/marlin-file-operations.c:2320 libcore/marlin-file-operations.c:2977
+#: libcore/marlin-file-operations.c:3536
 #, c-format
 msgid "Error while moving \"%s\"."
 msgstr "S'ha produït un error en moure «%s»."
 
-#: libcore/marlin-file-operations.c:3084
+#: libcore/marlin-file-operations.c:2322
 msgid "Could not remove the source folder."
 msgstr "No s'ha pogut suprimir la carpeta d'origen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3173 libcore/marlin-file-operations.c:3224
-#: libcore/marlin-file-operations.c:3818
+#: libcore/marlin-file-operations.c:2413 libcore/marlin-file-operations.c:2466
+#: libcore/marlin-file-operations.c:2981
 #, c-format
 msgid "Error while copying \"%s\"."
 msgstr "S'ha produït un error en copiar «%s»."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3178
+#: libcore/marlin-file-operations.c:2418
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
 msgstr "No s'han pogut suprimir els fitxers de la carpeta existent %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3229
+#: libcore/marlin-file-operations.c:2471
 #, c-format
 msgid "Could not remove the already existing file %s."
 msgstr "No s'ha pogut suprimir el fitxer existent %s."
 
-#: libcore/marlin-file-operations.c:3547 libcore/marlin-file-operations.c:4221
+#: libcore/marlin-file-operations.c:2706 libcore/marlin-file-operations.c:3372
 msgid "You cannot move a folder into itself."
 msgstr "No podeu moure una carpeta dins d'ella mateixa."
 
-#: libcore/marlin-file-operations.c:3548 libcore/marlin-file-operations.c:4222
+#: libcore/marlin-file-operations.c:2707 libcore/marlin-file-operations.c:3373
 msgid "You cannot copy a folder into itself."
 msgstr "No podeu copiar una carpeta dins d'ella mateixa."
 
-#: libcore/marlin-file-operations.c:3549 libcore/marlin-file-operations.c:4223
+#: libcore/marlin-file-operations.c:2708 libcore/marlin-file-operations.c:3374
 msgid "The destination folder is inside the source folder."
 msgstr "La carpeta destí és dins la carpeta origen."
 
-#: libcore/marlin-file-operations.c:3580
+#: libcore/marlin-file-operations.c:2741
 msgid "You cannot move a file over itself."
 msgstr "No podeu moure un fitxer sobre ell mateix."
 
-#: libcore/marlin-file-operations.c:3581
+#: libcore/marlin-file-operations.c:2742
 msgid "You cannot copy a file over itself."
 msgstr "No podeu copiar un fitxer sobre ell mateix."
 
-#: libcore/marlin-file-operations.c:3582
+#: libcore/marlin-file-operations.c:2743
 msgid "The source file would be overwritten by the destination."
 msgstr "El fitxer d'origen seria sobreescrit pel de destinació."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3824
+#: libcore/marlin-file-operations.c:2987
 #, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr "No s'ha pogut suprimir el fitxer existent amb el mateix nom a %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:3894
+#: libcore/marlin-file-operations.c:3059
 #, c-format
 msgid "Cannot copy \"%s\" here."
 msgstr "No es pot copiar «%s» aquí."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:3899
+#: libcore/marlin-file-operations.c:3064
 #, c-format
 msgid "There was an error copying the file into %s."
 msgstr "S’ha produït un error en copiar el fitxer a %s."
 
-#: libcore/marlin-file-operations.c:4101
+#: libcore/marlin-file-operations.c:3254
 msgid "Copying Files"
 msgstr "Es copien els fitxers"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4137
+#: libcore/marlin-file-operations.c:3289
 #, c-format
 msgid "Preparing to move to \"%s\""
 msgstr "Es fa la preparació per moure-ho a «%s»"
 
-#: libcore/marlin-file-operations.c:4142
+#: libcore/marlin-file-operations.c:3294
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1841,23 +1834,23 @@ msgstr[0] "Es fa la preparació per moure %'d fitxer"
 msgstr[1] "Es fa la preparació per moure %'d fitxers"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4386
+#: libcore/marlin-file-operations.c:3540
 #, c-format
 msgid "There was an error moving the file into %s."
 msgstr "S'ha produït un error en moure el fitxer a %s."
 
-#: libcore/marlin-file-operations.c:4620
+#: libcore/marlin-file-operations.c:3764
 msgid "Moving Files"
 msgstr "Es mouen els fitxers"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-#: libcore/marlin-file-operations.c:4659
+#: libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Creating links in \"%s\""
 msgstr "Es creen els enllaços a «%s»"
 
-#: libcore/marlin-file-operations.c:4664
+#: libcore/marlin-file-operations.c:3807
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1865,59 +1858,63 @@ msgstr[0] "Es crea l'enllaç a %'d fitxer"
 msgstr[1] "Es creen els enllaços a %'d fitxers"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4801
+#: libcore/marlin-file-operations.c:3917
 #, c-format
 msgid "Error while creating link to %s."
 msgstr "S'ha produït un error en crear l'enllaç a %s."
 
-#: libcore/marlin-file-operations.c:4804
+#: libcore/marlin-file-operations.c:3920
 msgid "Symbolic links only supported for local files"
 msgstr "Els enllaços simbòlics només permeten fitxers locals"
 
-#: libcore/marlin-file-operations.c:4807
+#: libcore/marlin-file-operations.c:3923
 msgid "The target doesn't support symbolic links."
 msgstr "La destinació no permet enllaços simbòlics."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:4812
+#: libcore/marlin-file-operations.c:3928
 #, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "S'ha produït un error en crear l'enllaç simbòlic a %s."
 
-#: libcore/marlin-file-operations.c:5115
+#: libcore/marlin-file-operations.c:4218
 msgid "Setting permissions"
 msgstr "S'estableixen els permisos"
 
-#: libcore/marlin-file-operations.c:5304
+#: libcore/marlin-file-operations.c:4409
+msgid "Zero files to process"
+msgstr "Zero fitxers per processar"
+
+#: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
 msgstr "No es pot copiar a la paperera."
 
-#: libcore/marlin-file-operations.c:5305 libcore/marlin-file-operations.c:5313
+#: libcore/marlin-file-operations.c:4418 libcore/marlin-file-operations.c:4426
 msgid "It is not permitted to copy files into the trash"
 msgstr "No està permès copiar fitxers a la paperera"
 
-#: libcore/marlin-file-operations.c:5449
+#: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
 msgstr "carpeta nova"
 
-#: libcore/marlin-file-operations.c:5457
+#: libcore/marlin-file-operations.c:4565
 msgid "new file"
 msgstr "fitxer nou"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5624
+#: libcore/marlin-file-operations.c:4734
 #, c-format
 msgid "Error while creating directory %s."
 msgstr "S'ha produït un error en crear el directori %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5627
+#: libcore/marlin-file-operations.c:4737
 #, c-format
 msgid "Error while creating file %s."
 msgstr "S'ha produït un error en crear el fitxer %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-#: libcore/marlin-file-operations.c:5633
+#: libcore/marlin-file-operations.c:4743
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "S'ha produït un error en crear el directori a %s."
@@ -1944,16 +1941,16 @@ msgstr "Escriviu un camí"
 msgid "More Results …"
 msgstr "Més resultats…"
 
-#: libwidgets/View/SearchResults.vala:238
+#: libwidgets/View/SearchResults.vala:274
 msgid "In This Folder"
 msgstr "En aquesta carpeta"
 
-#: libwidgets/View/SearchResults.vala:243
+#: libwidgets/View/SearchResults.vala:278
 msgid "Below This Folder"
 msgstr "Per sota d'aquesta carpeta"
 
-#: libwidgets/View/SearchResults.vala:254
-msgid "Recently used"
+#: libwidgets/View/SearchResults.vala:287
+msgid "Recently Used"
 msgstr "D'ús recent"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:34
@@ -1972,37 +1969,45 @@ msgstr "Visualitza en columnes"
 msgid "Files"
 msgstr "Fitxers"
 
-#: libwidgets/Resources.vala:58
+#: libwidgets/Resources.vala:61
 msgid "AFP"
 msgstr "AFP"
 
-#: libwidgets/Resources.vala:59
+#: libwidgets/Resources.vala:62
+msgid "AFC"
+msgstr "AFC"
+
+#: libwidgets/Resources.vala:63
 msgid "DAV"
 msgstr "DAV"
 
-#: libwidgets/Resources.vala:60
+#: libwidgets/Resources.vala:64
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libwidgets/Resources.vala:61
+#: libwidgets/Resources.vala:65
 msgid "FTP"
 msgstr "FTP"
 
-#: libwidgets/Resources.vala:63
+#: libwidgets/Resources.vala:67
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libwidgets/Resources.vala:64
+#: libwidgets/Resources.vala:68
 msgid "SMB"
 msgstr "SMB"
 
-#: libwidgets/Resources.vala:66
+#: libwidgets/Resources.vala:70
 msgid "Recent"
 msgstr "Recents"
 
-#: libwidgets/Resources.vala:67
+#: libwidgets/Resources.vala:71
 msgid "MTP"
 msgstr "MTP"
+
+#: libwidgets/Resources.vala:72
+msgid "GPHOTO2"
+msgstr "GPHOTO2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
@@ -2019,6 +2024,74 @@ msgstr "Restaura la selecció"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Suprimeix la selecció"
+
+#~ msgid "Devices"
+#~ msgstr "Dispositius"
+
+#~ msgid "FileSystem"
+#~ msgstr "Sistema de fitxers"
+
+#~ msgid "Eject '%s'"
+#~ msgstr "Expulsa %s"
+
+#~ msgid "Error mounting volume '%s'"
+#~ msgstr "Error muntant el volum %s"
+
+#~ msgid "Unable to start '%s'"
+#~ msgstr "No es pot iniciar %s"
+
+#~ msgid "Open your personal folder"
+#~ msgstr "Obriu la vostra carpeta personal"
+
+#~ msgid "Connect Server"
+#~ msgstr "Connecta't al servidor"
+
+#~ msgid "Connect to a network server"
+#~ msgstr "Connecta't a un servidor de la xarxa"
+
+#~ msgid "%s on %s"
+#~ msgstr "%s a %s"
+
+#~ msgid " and %u other items (%s) selected"
+#~ msgstr " i %u altres elements (%s) seleccionats"
+
+#~ msgid "%u sub-folders, "
+#~ msgstr "%u subcarpetes, "
+
+#~ msgid "%u files, "
+#~ msgstr "%u fitxers, "
+
+#~ msgid "%u files not readable"
+#~ msgstr "%u fitxers no llegibles"
+
+#, fuzzy
+#~| msgid "%'dst link to %s"
+#~ msgid "%s (link %d)"
+#~ msgstr "%'dr enllaç a %s"
+
+#~ msgid " (%'d"
+#~ msgstr " (%'d"
+
+#~ msgid "Link to %s"
+#~ msgstr "Enllaç a %s"
+
+#~ msgid "Another link to %s"
+#~ msgstr "Un altre enllaç a %s"
+
+#~ msgid "%'dnd link to %s"
+#~ msgstr "%'dn enllaç a %s"
+
+#~ msgid "%'drd link to %s"
+#~ msgstr "%'der enllaç a %s"
+
+#~ msgid "%'dth link to %s"
+#~ msgstr "%'dè enllaç a %s"
+
+#~ msgid "Show Copy Dialog"
+#~ msgstr "Mostra el diàleg de còpia"
+
+#~ msgid "Cancel All In-progress Actions"
+#~ msgstr "Cancel·la totes les accions en progrés"
 
 #~ msgid "Add to Favorites"
 #~ msgstr "Afegeix als preferits"
@@ -2046,9 +2119,6 @@ msgstr "Suprimeix la selecció"
 
 #~ msgid "Delete %d copied items"
 #~ msgstr "Suprimeix els %d elements copiats"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Suprimeix «%s»"
 
 #~ msgid "Delete %d duplicated items"
 #~ msgstr "Suprimeix els %d elements duplicats"
@@ -2336,9 +2406,6 @@ msgstr "Suprimeix la selecció"
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "No es pot llançar el fitxer d'escriptori: %s"
 
-#~ msgid " (copy)"
-#~ msgstr " (còpia)"
-
 #~ msgid " (another copy)"
 #~ msgstr " (una altra còpia)"
 
@@ -2406,9 +2473,6 @@ msgstr "Suprimeix la selecció"
 #~ msgid "Operation cancelled"
 #~ msgstr "S'ha cancel·lat l'operació"
 
-#~ msgid "Connect to Server…"
-#~ msgstr "Connecta't a un servidor…"
-
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "Aquests elements es poden restaurar o esborrar de la paperera."
 
@@ -2473,9 +2537,6 @@ msgstr "Suprimeix la selecció"
 
 #~ msgid "Set as Default"
 #~ msgstr "Estableix com a predeterminada"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignora"
 
 #~ msgid "There is nothing on the clipboard to paste"
 #~ msgstr "El porta-retalls no té res per enganxar"

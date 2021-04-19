@@ -68,7 +68,7 @@
  */
 
 
-namespace Marlin {
+namespace Files {
     [DBus (name = "org.freedesktop.thumbnails.Thumbnailer1")]
     public interface ThumbnailerDaemon : GLib.DBusProxy {
         public signal void started (uint handle);
@@ -130,7 +130,7 @@ namespace Marlin {
                                                      "/org/freedesktop/thumbnails/Thumbnailer1");
                 }
                 catch (GLib.Error e) {
-                    critical ("Failed to connect to system thumbnailing service (tumbler) - %s", e.message);
+                    critical ("Failed to connect to system thumbnailing service (tumbler): %s", e.message);
                     proxy = null;
                     return;
                 }
@@ -161,8 +161,8 @@ namespace Marlin {
             return instance;
         }
 
-        public bool queue_file (GOF.File file, out int request, bool large) {
-            GLib.List<GOF.File> files = null;
+        public bool queue_file (Files.File file, out int request, bool large) {
+            GLib.List<Files.File> files = null;
             files.append (file);
             int this_request;
             bool success = queue_files (files, out this_request, large);
@@ -170,22 +170,22 @@ namespace Marlin {
             return success;
         }
 
-        public bool queue_files (GLib.List<GOF.File> files, out int request, bool large) {
+        public bool queue_files (GLib.List<Files.File> files, out int request, bool large) {
             request = -1;
             if (proxy == null) {
                 return false;
             }
 
-            GLib.List<GOF.File> supported_files = null;
+            GLib.List<Files.File> supported_files = null;
 
             uint file_count = 0;
             foreach (var file in files) {
                 if (is_supported (file)) {
                     supported_files.prepend (file);
-                    file.thumbstate = GOF.File.ThumbState.LOADING;
+                    file.thumbstate = Files.File.ThumbState.LOADING;
                     file_count++;
                 } else {
-                    file.thumbstate = GOF.File.ThumbState.NONE;
+                    file.thumbstate = Files.File.ThumbState.NONE;
                 }
             }
 
@@ -215,7 +215,7 @@ namespace Marlin {
                     request_handle_mapping.insert (this_request, handle);
                     handle_request_mapping.insert (handle, this_request);
                 } catch (GLib.Error e) {
-                    warning ("Thumbnailer proxy request %u failed - %s", this_request, e.message);
+                    warning ("Thumbnailer proxy request %u failed: %s", this_request, e.message);
                 }
             });
 
@@ -237,7 +237,7 @@ namespace Marlin {
             proxy.dequeue.begin (handle);
         }
 
-        private bool is_supported (GOF.File file) {
+        private bool is_supported (Files.File file) {
             /* TODO cache supported combinations */
             var ftype = file.get_ftype ();
             if (proxy == null || ftype == null) {
@@ -249,7 +249,7 @@ namespace Marlin {
                 try {
                     proxy.get_supported (out supported_schemes, out supported_types);
                 } catch (GLib.Error e) {
-                    warning ("Thumbnailer failed to get supported file list");
+                    debug ("Thumbnailer failed to get supported file list");
                     return false;
                 }
             }
@@ -264,7 +264,7 @@ namespace Marlin {
                     index++;
                 }
             } else {
-                warning ("No supported schemes or types returned by proxy");
+                debug ("No supported schemes or types returned by proxy");
             }
 
             return supported;
@@ -324,7 +324,7 @@ namespace Marlin {
 
         private static void handle_error_idle (Idle error_idle) {
             foreach (string uri in error_idle.uris) {
-                update_file_thumbstate (uri, GOF.File.ThumbState.NONE);
+                update_file_thumbstate (uri, Files.File.ThumbState.NONE);
             }
 
             thumbnailer_lock.@lock ();
@@ -334,7 +334,7 @@ namespace Marlin {
 
         private static void handle_ready_idle (Idle ready_idle) {
             foreach (string uri in ready_idle.uris) {
-                update_file_thumbstate (uri, GOF.File.ThumbState.READY);
+                update_file_thumbstate (uri, Files.File.ThumbState.READY);
             }
 
             thumbnailer_lock.@lock ();
@@ -352,8 +352,8 @@ namespace Marlin {
             Thumbnailer.@get ().finished (request);
         }
 
-        private static void update_file_thumbstate (string uri, GOF.File.ThumbState state) {
-            var goffile = GOF.File.get_by_uri (uri);
+        private static void update_file_thumbstate (string uri, Files.File.ThumbState state) {
+            var goffile = Files.File.get_by_uri (uri);
             if (goffile != null) {
                 goffile.thumbstate = state;
                 goffile.query_thumbnail_update ();

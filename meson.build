@@ -2,7 +2,7 @@ project(
     'io.elementary.files',
     'vala', 'c',
     version: '4.5.0',
-    meson_version: '>= 0.47.0'
+    meson_version: '>= 0.50.0'
 )
 
 #
@@ -47,7 +47,7 @@ gio_unix_dep = dependency('gio-unix-2.0', version: '>='+min_glib_version)
 gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
-granite_dep = dependency('granite', version: '>=5.3.0')
+granite_dep = dependency('granite', version: '>=6.0.0')
 handy_dep = dependency('libhandy-1', version: '>=0.83.0')
 
 common_deps = [
@@ -71,19 +71,7 @@ posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
 
-unity_dep = []
-plank_dep = []
-
-
-unity_dep = dependency('unity', version: '>=4.0.0', required: get_option('with-unity'))
-if (unity_dep.found())
-    add_project_arguments('--define=HAVE_UNITY', language: 'vala')
-endif
-
-plank_dep = dependency('plank', version: '>=0.10.9', required: get_option('with-unity'))
-if (plank_dep.found() )
-    add_project_arguments('--define=HAVE_PLANK_0_11', language: 'vala')
-endif
+plank_dep = dependency('plank', version: '>=0.10.9')
 
 zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
 if (zeitgeist_dep.found())
@@ -129,7 +117,7 @@ subdir('src')
 subdir('data')
 subdir('pantheon-files-daemon')
 subdir('plugins')
-subdir('filechooser-module')
+subdir('filechooser-portal')
 meson.add_install_script('meson/post_install.py')
 
 subdir('po')

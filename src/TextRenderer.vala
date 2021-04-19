@@ -16,20 +16,17 @@
     Authors: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
     public class TextRenderer: Gtk.CellRendererText {
-
         public int icon_size { get; set; default = -1; }
-        public GOF.File? file { set; private get; }
         public int item_width { get; set; default = -1; }
         public int max_lines { get; set; }
-
-        private bool is_list_view;
-
+        public Files.File? file {set; private get;}
         public int text_width;
         public int text_height;
 
-        int char_height;
+        private bool is_list_view;
+        private int char_height;
         private int border_radius = 5;
         private int double_border_radius = 10;
         private Gtk.CssProvider text_css;
@@ -38,7 +35,7 @@ namespace Marlin {
 
         Pango.Layout layout;
         Gtk.Widget widget;
-        Marlin.AbstractEditableLabel entry;
+        AbstractEditableLabel entry;
 
         construct {
             this.mode = Gtk.CellRendererMode.EDITABLE;
@@ -63,12 +60,12 @@ namespace Marlin {
             });
         }
 
-        public TextRenderer (Marlin.ViewMode viewmode) {
-            if (viewmode == Marlin.ViewMode.ICON) {
-                entry = new Marlin.MultiLineEditableLabel ();
+        public TextRenderer (ViewMode viewmode) {
+            if (viewmode == ViewMode.ICON) {
+                entry = new MultiLineEditableLabel ();
                 is_list_view = false;
             } else {
-                entry = new Marlin.SingleLineEditableLabel ();
+                entry = new SingleLineEditableLabel ();
                 is_list_view = true;
             }
 
@@ -76,7 +73,7 @@ namespace Marlin {
         }
 
         public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
-                                                             out int minimum_size, out int natural_size) {
+                                                               out int minimum_size, out int natural_size) {
             set_widget (widget);
             set_up_layout (text, width);
             natural_size = text_height + double_border_radius;
@@ -250,6 +247,12 @@ namespace Marlin {
                 connect_widget_signals ();
                 context = widget.get_pango_context ();
                 layout = new Pango.Layout (context);
+
+                /* We do not want hyphens inserted when text wraps */
+                var attr = new Pango.AttrList ();
+                attr.insert (Pango.attr_insert_hyphens_new (false));
+                layout.set_attributes (attr);
+
                 layout.set_auto_dir (false);
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());

@@ -15,14 +15,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-namespace GOF {
+namespace Files {
 
     public static Preferences? preferences = null;
 
     public class Preferences : Object {
         /* First element set to null in order that the text renderer background is not set */
         public const string?[] TAGS_COLORS = {
-            null, "#ff8c82", "#ffc27d", "#ffe16b", "#9bdb4d", "#64baff", "#cd9ef7", "#a3907c", "#95a3ab", null
+            null, "#64baff", "#43d6b5", "#9bdb4d", "#ffe16b", "#ffc27d", "#ff8c82", "#f4679d", "#cd9ef7", "#a3907c", "#95a3ab", null
         };
 
         public bool show_hidden_files {get; set; default = false;}

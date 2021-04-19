@@ -1,5 +1,6 @@
 /***
-    Copyright (c) 2015-2020 elementary LLC <https://elementary.io
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
+
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
     by the Free Software Foundation.
@@ -15,10 +16,10 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace FM {
+namespace Files {
     public class IconView : AbstractDirectoryView {
 
-        private static Gee.HashMap<Marlin.ZoomLevel, ItemLayout?> layout_map;
+        private static Gee.HashMap<Files.ZoomLevel, ItemLayout?> layout_map;
         protected new Gtk.IconView tree;
         /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
         protected bool previous_selection_was_linear = false;
@@ -28,7 +29,7 @@ namespace FM {
         protected Gtk.TreePath? most_recently_selected = null;
 
         private struct ItemLayout {
-            Marlin.IconSize icon_size;
+            Files.IconSize icon_size;
             int column_spacing;
             int row_spacing;
             int spacing;
@@ -38,19 +39,19 @@ namespace FM {
         }
 
         static construct {
-            layout_map = new Gee.HashMap<Marlin.ZoomLevel, ItemLayout?> ();
-            layout_map.@set (Marlin.ZoomLevel.SMALLEST, {Marlin.IconSize.SMALL, 1, 0, 0, 64, 0, 1});
-            layout_map.@set (Marlin.ZoomLevel.SMALLER, {Marlin.IconSize.SMALL, 3, 1, 1, 64, 3, 2});
-            layout_map.@set (Marlin.ZoomLevel.SMALL, {Marlin.IconSize.SMALL, 6, 2, 1, 68, 3, 3});
-            layout_map.@set (Marlin.ZoomLevel.NORMAL, {Marlin.IconSize.NORMAL, 9, 3, 3, 80, 4, 5});
-            layout_map.@set (Marlin.ZoomLevel.LARGE, {Marlin.IconSize.LARGE, 12, 4, 3, 96, 4, 6});
-            layout_map.@set (Marlin.ZoomLevel.LARGER, {Marlin.IconSize.LARGER, 15, 5, 3, 112, 4, 5});
-            layout_map.@set (Marlin.ZoomLevel.HUGE, {Marlin.IconSize.HUGE, 15, 6, 6, 128, 3, 4});
-            layout_map.@set (Marlin.ZoomLevel.HUGER, {Marlin.IconSize.HUGER, 15, 5, 6, 208, 4, 3});
-            layout_map.@set (Marlin.ZoomLevel.LARGEST, {Marlin.IconSize.LARGEST, 15, 6, 3, 272, 4, 2});
+            layout_map = new Gee.HashMap<Files.ZoomLevel, ItemLayout?> ();
+            layout_map.@set (Files.ZoomLevel.SMALLEST, {Files.IconSize.SMALL, 1, 0, 0, 64, 0, 1});
+            layout_map.@set (Files.ZoomLevel.SMALLER, {Files.IconSize.SMALL, 3, 1, 1, 64, 3, 2});
+            layout_map.@set (Files.ZoomLevel.SMALL, {Files.IconSize.SMALL, 6, 2, 1, 68, 3, 3});
+            layout_map.@set (Files.ZoomLevel.NORMAL, {Files.IconSize.NORMAL, 9, 3, 3, 80, 4, 5});
+            layout_map.@set (Files.ZoomLevel.LARGE, {Files.IconSize.LARGE, 12, 4, 3, 96, 4, 6});
+            layout_map.@set (Files.ZoomLevel.LARGER, {Files.IconSize.LARGER, 15, 5, 3, 112, 4, 5});
+            layout_map.@set (Files.ZoomLevel.HUGE, {Files.IconSize.HUGE, 15, 6, 6, 128, 3, 4});
+            layout_map.@set (Files.ZoomLevel.HUGER, {Files.IconSize.HUGER, 15, 5, 6, 208, 4, 3});
+            layout_map.@set (Files.ZoomLevel.LARGEST, {Files.IconSize.LARGEST, 15, 6, 3, 272, 4, 2});
         }
 
-        public IconView (Marlin.View.Slot _slot) {
+        public IconView (View.Slot _slot) {
             base (_slot);
         }
 
@@ -64,18 +65,19 @@ namespace FM {
             tree.set_columns (-1);
             tree.set_reorderable (false);
 
-            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
-            set_up_name_renderer ();
+            name_renderer = new Files.TextRenderer (ViewMode.ICON);
+            icon_renderer = new Files.IconRenderer (ViewMode.ICON);
 
+            set_up_name_renderer ();
             set_up_icon_renderer ();
 
             tree.pack_start (icon_renderer, false);
             tree.pack_end (name_renderer, false);
 
-            tree.add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
-            tree.add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
-            tree.add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
-            tree.add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "text", ListModel.ColumnID.FILENAME);
+            tree.add_attribute (name_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "background", ListModel.ColumnID.COLOR);
+            tree.add_attribute (icon_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -91,7 +93,7 @@ namespace FM {
         }
 
         protected void set_up_icon_renderer () {
-            icon_renderer.set_property ("follow-state", true);
+            icon_renderer.follow_state = true;
         }
 
 
@@ -110,9 +112,12 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
-        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Marlin.icon_view_settings.get_enum ("zoom-level");
-            Marlin.icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+        protected override void set_up_zoom_level () {
+            Files.icon_view_settings.bind (
+                "zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.DEFAULT
+            );
 
             if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
@@ -121,15 +126,13 @@ namespace FM {
             if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
             }
-
-            return (Marlin.ZoomLevel)zoom;
         }
 
-        public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Marlin.icon_view_settings.get_enum ("default-zoom-level");
-            Marlin.icon_view_settings.set_enum ("zoom-level", zoom);
+        public override ZoomLevel get_normal_zoom_level () {
+            var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
+            Files.icon_view_settings.set_enum ("zoom-level", zoom);
 
-            return (Marlin.ZoomLevel)zoom;
+            return (ZoomLevel)zoom;
         }
 
         public override void change_zoom_level () {
@@ -217,12 +220,12 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
-            GLib.List<GOF.File> list = null;
+        protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
+            GLib.List<Files.File> list = null;
             uint count = 0;
 
             tree.selected_foreach ((tree, path) => {
-                GOF.File? file = model.file_for_path (path);
+                Files.File? file = model.file_for_path (path);
                 if (file != null) {
                     list.prepend ((owned)file);
                     count++;
@@ -260,7 +263,7 @@ namespace FM {
                 tree.get_cell_rect (p, cell_renderer, out rect);
                 area = cell_renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
-                if (cell_renderer is Marlin.TextRenderer) {
+                if (cell_renderer is Files.TextRenderer) {
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
@@ -268,15 +271,14 @@ namespace FM {
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
                     string? text = null;
-                    model.@get (iter,
-                            FM.ListModel.ColumnID.FILENAME, out text);
+                    model.@get (iter, ListModel.ColumnID.FILENAME, out text);
 
-                    ((Marlin.TextRenderer) cell_renderer).set_up_layout (text, area.width);
+                    ((Files.TextRenderer) cell_renderer).set_up_layout (text, area.width);
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
                         y >= rect.y &&
-                        y <= rect.y + ((Marlin.TextRenderer) cell_renderer).text_height) {
+                        y <= rect.y + ((Files.TextRenderer) cell_renderer).text_height) {
 
                         zone = ClickZone.NAME;
                     } else if (rubberband) {
@@ -287,7 +289,7 @@ namespace FM {
                     }
                 } else {
                     bool on_helper = false;
-                    GOF.File? file = model.file_for_path (p);
+                    Files.File? file = model.file_for_path (p);
                     if (file != null) {
                         bool on_icon = is_on_icon (x, y, ref on_helper);
 
@@ -296,9 +298,6 @@ namespace FM {
                         } else if (on_icon) {
                             zone = ClickZone.ICON;
                         } else if (rubberband) {
-                            /* Fake location outside centre top of item for rubberbanding */
-                            event.x = rect.x + rect.width / 2;
-                            event.y = rect.y - 10 + (int)(get_vadjustment ().value);
                             zone = ClickZone.BLANK_NO_PATH;
                         }
                     } else {

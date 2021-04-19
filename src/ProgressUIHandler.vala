@@ -22,23 +22,21 @@
 
 /*** One instance of this class is owned by the application and handles UI for file transfers initiated by
  *   of the app windows.  Feedback is provided by a dialog window which appears if a transfer takes longer than
- *   approximately 1 second. The unity launcher is also updated if present and a notification is sent of the
+ *   approximately 1 second. The launcher is also updated if present and a notification is sent of the
  *   completion of the operation unless it was cancelled by the user.
 ***/
-public class Marlin.Progress.UIHandler : Object {
+public class Files.Progress.UIHandler : Object {
     private PF.Progress.InfoManager manager = null;
-#if HAVE_UNITY
-    private Marlin.QuicklistHandler quicklist_handler = null;
-#endif
-    private Gtk.Dialog progress_window = null;
+    private Granite.Dialog progress_window = null;
     private Gtk.Box window_vbox = null;
     private uint active_infos = 0;
     private Gtk.Application application;
+    private bool launcher_progress_visible = false;
+    private bool can_show_launcher_progress = true;
 
     construct {
         application = (Gtk.Application) GLib.Application.get_default ();
         manager = PF.Progress.InfoManager.get_instance ();
-
         manager.new_progress_info.connect ((info) => {
             info.started.connect (progress_info_started_cb);
         });
@@ -56,14 +54,16 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void progress_info_started_cb (PF.Progress.Info info) {
-        application.hold ();
-
-        if (info == null || !(info is PF.Progress.Info) ||
-            info.is_finished || info.is_cancelled) {
-
-            application.release ();
+        if (info == null) {
+            critical ("Null progressinfo started");
             return;
         }
+
+        info.started.disconnect (progress_info_started_cb);
+        if (info.is_finished || info.is_cancelled) {
+            return;
+        }
+
 
         info.finished.connect (progress_info_finished_cb);
         this.active_infos++;
@@ -98,15 +98,13 @@ public class Marlin.Progress.UIHandler : Object {
                 add_to_window (info);
         }
 
-#if HAVE_UNITY
-        update_unity_launcher (info, true);
-#endif
+        update_launcher (info, true);
     }
 
     private void add_to_window (PF.Progress.Info info) {
         ensure_window ();
 
-        var progress_widget = new Marlin.Progress.InfoWidget (info);
+        var progress_widget = new Progress.InfoWidget (info);
         window_vbox.pack_start (progress_widget, false, false, 6);
 
         progress_widget.cancelled.connect ((info) => {
@@ -123,9 +121,8 @@ public class Marlin.Progress.UIHandler : Object {
     private void ensure_window () {
         if (progress_window == null) {
             /* This provides an undeletable, unminimisable window in which to show the info widgets */
-            progress_window = new Gtk.Dialog () {
+            progress_window = new Granite.Dialog () {
                 resizable = false,
-                deletable = false,
                 title = _("File Operations"),
                 icon_name = "system-file-manager"
             };
@@ -148,7 +145,6 @@ public class Marlin.Progress.UIHandler : Object {
     private void progress_info_finished_cb (PF.Progress.Info info) {
         /* Must only be called once for each info */
         info.finished.disconnect (progress_info_finished_cb);
-        application.release ();
 
         if (active_infos > 0) {
             this.active_infos--;
@@ -176,9 +172,8 @@ public class Marlin.Progress.UIHandler : Object {
         if (active_infos < 1 && progress_window != null && progress_window.visible) {
             progress_window.hide ();
         }
-#if HAVE_UNITY
-        update_unity_launcher (info, false);
-#endif
+
+        update_launcher (info, false);
     }
 
     private void show_operation_complete_notification (string title, bool all_finished) {
@@ -191,109 +186,48 @@ public class Marlin.Progress.UIHandler : Object {
 
         var complete_notification = new GLib.Notification (_("File Operations"));
         complete_notification.set_body (result);
-        complete_notification.set_icon (new GLib.ThemedIcon (Marlin.ICON_APP_LOGO));
+        complete_notification.set_icon (new GLib.ThemedIcon (ICON_APP_LOGO));
         application.send_notification ("Pantheon Files Operation", complete_notification);
     }
 
-#if HAVE_UNITY
-    private void update_unity_launcher (PF.Progress.Info info,
-                                        bool added) {
-
-        if (this.quicklist_handler == null) {
-            this.quicklist_handler = QuicklistHandler.get_singleton ();
-
-            if (this.quicklist_handler == null) {
-                return;
-            }
-
-            build_unity_quicklist ();
-        }
-
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
-            update_unity_launcher_entry (info, marlin_lentry);
-        }
+    private void update_launcher (PF.Progress.Info info, bool added) {
+        update_launcher_entry (info);
 
         if (added) {
-            info.progress_changed.connect (unity_progress_changed);
+            info.progress_changed.connect (launcher_progress_changed);
         }
     }
 
-    private void build_unity_quicklist () {
-        /* Create menu items for the quicklist */
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
-            /* Separator between bookmarks and progress items */
-            var separator = new Dbusmenu.Menuitem ();
-
-            separator.property_set (Dbusmenu.MENUITEM_PROP_TYPE,
-                                    Dbusmenu.CLIENT_TYPES_SEPARATOR);
-            separator.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                    "Progress items separator");
-            marlin_lentry.progress_quicklists.append (separator);
-
-            /* "Show progress window" menu item */
-            var show_menuitem = new Dbusmenu.Menuitem ();
-
-            show_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                        _("Show Copy Dialog"));
-
-            show_menuitem.item_activated.connect (() => {
-                progress_window.present ();
-            });
-
-            marlin_lentry.progress_quicklists.append (show_menuitem);
-
-            /* "Cancel in-progress operations" menu item */
-            var cancel_menuitem = new Dbusmenu.Menuitem ();
-
-            cancel_menuitem.property_set (Dbusmenu.MENUITEM_PROP_LABEL,
-                                          _("Cancel All In-progress Actions"));
-
-            cancel_menuitem.item_activated.connect (() => {
-                var infos = this.manager.get_all_infos ();
-
-                foreach (var info in infos) {
-                    info.cancel ();
-                }
-            });
-
-            marlin_lentry.progress_quicklists.append (cancel_menuitem);
-        }
-    }
-
-    private void update_unity_launcher_entry (PF.Progress.Info info,
-                                              Marlin.LauncherEntry marlin_lentry) {
-        Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-
+    private void update_launcher_entry (PF.Progress.Info info) {
         if (this.active_infos > 0) {
-            unity_lentry.progress_visible = true;
-            unity_progress_changed ();
-            show_unity_quicklist (marlin_lentry, true);
-        } else {
-            unity_lentry.progress_visible = false;
-            unity_lentry.progress = 0.0;
-            show_unity_quicklist (marlin_lentry, false);
-        }
-    }
-
-    private void show_unity_quicklist (Marlin.LauncherEntry marlin_lentry,
-                                       bool show) {
-
-        Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-        Dbusmenu.Menuitem quicklist = unity_lentry.quicklist;
-
-        foreach (Dbusmenu.Menuitem menuitem in marlin_lentry.progress_quicklists) {
-            var parent = menuitem.get_parent ();
-            if (show) {
-                if (parent == null) {
-                    quicklist.child_add_position (menuitem, -1);
-                }
-            } else if (parent != null && parent == quicklist) {
-                quicklist.child_delete (menuitem);
+            /* Don't keep trying to show launcher if already visible or failed to show */
+            if (!launcher_progress_visible && can_show_launcher_progress) {
+                Granite.Services.Application.set_progress_visible.begin (true, (obj, res) => {
+                    try {
+                        /* According to Granite code this always returns `true`? Test anyway */
+                        if (Granite.Services.Application.set_progress_visible.end (res)) {
+                            launcher_progress_visible = true;
+                            launcher_progress_changed ();
+                        } else {
+                            can_show_launcher_progress = false;
+                        }
+                    } catch (Error e) {
+                        can_show_launcher_progress = false;
+                        debug ("Could not set progress visible: %s", e.message);
+                    }
+                });
+            } else if (launcher_progress_visible) {
+                launcher_progress_changed ();
             }
+        } else {
+            launcher_progress_visible = false;
+            // Try again for next operation in case temporary problem
+            can_show_launcher_progress = true;
+            Granite.Services.Application.set_progress_visible.begin (false);
         }
     }
 
-    private void unity_progress_changed () {
+    private void launcher_progress_changed () {
         double progress = 0;
         double current = 0;
         double total = 0;
@@ -323,11 +257,6 @@ public class Marlin.Progress.UIHandler : Object {
             progress = 1.0;
         }
 
-        foreach (Marlin.LauncherEntry marlin_lentry in this.quicklist_handler.launcher_entries) {
-            Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
-            unity_lentry.progress = progress;
-        }
+        Granite.Services.Application.set_progress.begin (progress);
     }
-#endif
-
 }

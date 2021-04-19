@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 elementary LLC (https://elementary.io)
+/* Copyright 2018-2021 elementary, Inc. (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.FileConflictDialog : Gtk.Dialog {
+public class Files.FileConflictDialog : Granite.MessageDialog {
     public string new_name {
         owned get {
             return rename_entry.text;
@@ -42,12 +42,9 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
     private Gtk.Button keep_newest_button;
     private Gtk.CheckButton apply_all_checkbutton;
 
-    private GOF.File source;
-    private GOF.File destination;
-    private GOF.File dest_dir;
-
-    private Gtk.Label primary_label;
-    private Gtk.Label secondary_label;
+    private Files.File source;
+    private Files.File destination;
+    private Files.File dest_dir;
 
     private Gtk.Image source_image;
     private Gtk.Label source_size_label;
@@ -63,68 +60,41 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         Object (
             title: _("File conflict"),
             transient_for: parent,
-            deletable: false,
             resizable: false,
             skip_taskbar_hint: true
         );
 
-        source = GOF.File.@get (_source);
-        destination = GOF.File.@get (_destination);
+        source = Files.File.@get (_source);
+        destination = Files.File.@get (_destination);
         destination.query_update ();
-        var thumbnailer = Marlin.Thumbnailer.get ();
+        var thumbnailer = Files.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
             destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   GOF.File.IconFlags.USE_THUMBNAILS);
+                                                                   Files.File.IconFlags.USE_THUMBNAILS);
         });
 
         thumbnailer.queue_file (destination, null, false);
         destination_size_label.label = destination.format_size;
         destination_time_label.label = destination.formated_modified;
 
-        dest_dir = GOF.File.@get (_dest_dir);
+        dest_dir = Files.File.@get (_dest_dir);
 
-        var files = new GLib.List<GOF.File> ();
+        var files = new GLib.List<Files.File> ();
         files.prepend (source);
         files.prepend (destination);
         files.prepend (dest_dir);
 
-        new GOF.CallWhenReady (files, file_list_ready_cb);
+        new Files.CallWhenReady (files, file_list_ready_cb);
     }
 
     construct {
-        set_border_width (6);
-
-        var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG) {
-            valign = Gtk.Align.START
-        };
-
-        primary_label = new Gtk.Label (null) {
-            selectable = true,
-            max_width_chars = 50,
-            wrap = true,
-            xalign = 0
-        };
-
-        primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
-
-        secondary_label = new Gtk.Label (null) {
-            use_markup = true,
-            selectable = true,
-            max_width_chars = 50,
-            wrap = true,
-            xalign = 0
-        };
+        image_icon = new ThemedIcon ("dialog-warning");
 
         destination_image = new Gtk.Image () {
             pixel_size = 64
         };
 
-        var destination_label = new Gtk.Label ("<b>%s</b>".printf (_("Original file"))) {
-            margin_top = 0,
-            margin_bottom = 6,
-            use_markup = true,
-            xalign = 0
-        };
+        var destination_label = new Granite.HeaderLabel (_("Original file"));
 
         var destination_size_title_label = new Gtk.Label (_("Size:")) {
             valign = Gtk.Align.END,
@@ -158,11 +128,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
             pixel_size = 64
         };
 
-        var source_label = new Gtk.Label ("<b>%s</b>".printf (_("Replace with"))) {
-            margin_bottom = 6,
-            use_markup = true,
-            xalign = 0
-        };
+        var source_label = new Granite.HeaderLabel (_("Replace with"));
 
         var source_size_title_label = new Gtk.Label (_("Size:")) {
             valign = Gtk.Align.END,
@@ -216,18 +182,17 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         add_button (_("_Skip"), ResponseType.SKIP);
         var rename_button = (Gtk.Button) add_button (_("Re_name"), ResponseType.RENAME);
 
-        add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-
         keep_newest_button = (Gtk.Button) add_button (_("Keep Newest"), ResponseType.NEWEST);
         keep_newest_button.set_tooltip_text (_("Skip if original was modified more recently"));
+
+        add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         var comparison_grid = new Gtk.Grid () {
             column_spacing = 6,
-            row_spacing = 0,
-            margin_top = 18
+            row_spacing = 0
         };
 
         comparison_grid.attach (destination_label, 0, 0, 3, 1);
@@ -249,21 +214,15 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         comparison_grid.attach (source_time_label, 2, 7, 1, 1);
 
         var grid = new Gtk.Grid () {
-            margin = 0,
-            margin_bottom = 24,
             column_spacing = 12,
             row_spacing = 6
         };
-
-        grid.attach (image, 0, 0, 1, 2);
-        grid.attach (primary_label, 1, 0, 1, 1);
-        grid.attach (secondary_label, 1, 1, 1, 1);
-        grid.attach (comparison_grid, 1, 2, 1, 1);
-        grid.attach (expander, 1, 3, 1, 1);
-        grid.attach (apply_all_checkbutton, 1, 4, 1, 1);
+        grid.attach (comparison_grid, 0, 0);
+        grid.attach (expander, 0, 1);
+        grid.attach (apply_all_checkbutton, 0, 2);
         grid.show_all ();
 
-        get_content_area ().add (grid);
+        custom_bin.add (grid);
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");
@@ -317,7 +276,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         });
     }
 
-    private void file_list_ready_cb (GLib.List<GOF.File> files) {
+    private void file_list_ready_cb (GLib.List<Files.File> files) {
         unowned string src_ftype = source.get_ftype ();
         unowned string dest_ftype = destination.get_ftype ();
         if (src_ftype == null) {
@@ -365,7 +324,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
-        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.File.IconFlags.USE_THUMBNAILS);
+        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
         if (should_show_type && src_ftype != null) {
@@ -390,12 +349,12 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         }
 
         source.changed.connect (() => {
-            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.File.IconFlags.USE_THUMBNAILS);
+            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
         });
 
         destination.changed.connect (() => {
             destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   GOF.File.IconFlags.USE_THUMBNAILS);
+                                                                   Files.File.IconFlags.USE_THUMBNAILS);
         });
     }
 }

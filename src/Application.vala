@@ -21,18 +21,18 @@
              Julián Unrrein <junrrein@gmail.com>
 ***/
 
-namespace Marlin {
+namespace Files {
     public Settings app_settings;
     public Settings icon_view_settings;
     public Settings list_view_settings;
     public Settings column_view_settings;
 }
 
-public class Marlin.Application : Gtk.Application {
+public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
-    private Marlin.Progress.UIHandler progress_handler;
-    private Marlin.ClipboardManager clipboard;
+    private Progress.UIHandler progress_handler;
+    private ClipboardManager clipboard;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -61,7 +61,7 @@ public class Marlin.Application : Gtk.Application {
         gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Needed by Glib.Application */
-        this.application_id = Marlin.APP_ID; //Ensures an unique instance.
+        this.application_id = APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
     }
 
@@ -72,28 +72,19 @@ public class Marlin.Application : Gtk.Application {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
         }
 
-        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
-
-        /* Only allow running with root privileges using pkexec, not using sudo */
-        if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible. " +
-                     "Please use the command: io.elementary.files-pkexec [folder]");
-            quit ();
-        };
-
         init_schemas ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
-            Marlin.IconInfo.clear_caches ();
+            Files.IconInfo.clear_caches ();
         });
 
-        progress_handler = new Marlin.Progress.UIHandler ();
+        progress_handler = new Progress.UIHandler ();
 
-        this.clipboard = Marlin.ClipboardManager.get_for_display ();
+        this.clipboard = ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
         /* Global static variable "plugins" declared in PluginManager.vala */
-        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
+        plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -110,9 +101,18 @@ public class Marlin.Application : Gtk.Application {
         this.window_removed.connect (() => {
             window_count--;
         });
+
+        var granite_settings = Granite.Settings.get_default ();
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+        });
     }
 
-    public unowned Marlin.ClipboardManager get_clipboard_manager () {
+    public unowned ClipboardManager get_clipboard_manager () {
         return this.clipboard;
     }
 
@@ -121,6 +121,15 @@ public class Marlin.Application : Gtk.Application {
     }
 
     public override int command_line (ApplicationCommandLine cmd) {
+        /* Only allow running with root privileges using pkexec, not using sudo */
+        if (Files.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+            warning ("Running Files as root using sudo is not possible. " +
+                     "Please use the command: io.elementary.files-pkexec [folder]");
+            quit ();
+            return 1;
+        };
+
+        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
         this.hold ();
         int result = _command_line (cmd);
         this.release ();
@@ -196,7 +205,7 @@ public class Marlin.Application : Gtk.Application {
             }
         }
 
-        File[] files = null;
+        GLib.File[] files = null;
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
@@ -204,7 +213,7 @@ public class Marlin.Application : Gtk.Application {
             GLib.File? file = null;
 
             if (path.length > 0) {
-                file = File.new_for_uri (PF.FileUtils.escape_uri (path));
+                file = GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
             }
 
             if (file != null) {
@@ -218,8 +227,8 @@ public class Marlin.Application : Gtk.Application {
                 /* Open window with tabs at each requested location. */
                 create_window_with_tabs (files);
             } else {
-                var win = (Marlin.View.Window)(get_active_window ());
-                win.open_tabs (files, Marlin.ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
+                var win = (View.Window)(get_active_window ());
+                win.open_tabs (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
             }
         } else if (create_new_window || window_count == 0) {
             create_window_with_tabs ();
@@ -235,7 +244,7 @@ public class Marlin.Application : Gtk.Application {
 
     public override void quit_mainloop () {
         warning ("Quitting mainloop");
-        Marlin.IconInfo.clear_caches ();
+        Files.IconInfo.clear_caches ();
 
         base.quit_mainloop ();
     }
@@ -249,7 +258,7 @@ public class Marlin.Application : Gtk.Application {
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((Marlin.View.Window)window).quit ();
+            ((View.Window)window).quit ();
         });
 
         base.quit ();
@@ -258,49 +267,51 @@ public class Marlin.Application : Gtk.Application {
     public void folder_deleted (GLib.File file) {
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((Marlin.View.Window)window).folder_deleted (file);
+            ((View.Window)window).folder_deleted (file);
         });
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Notify each window */
         foreach (var window in this.get_windows ()) {
-            ((Marlin.View.Window)window).mount_removed (mount);
+            ((View.Window)window).mount_removed (mount);
         }
     }
 
     private void init_schemas () {
         /* Bind settings with GOFPreferences */
-        var prefs = GOF.Preferences.get_default ();
-        Marlin.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("show-remote-thumbnails",
+        var prefs = Files.Preferences.get_default ();
+        Files.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        Files.app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("hide-local-thumbnails",
+        Files.app_settings.bind ("hide-local-thumbnails",
                                    prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Marlin.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+
+        Files.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+
         gnome_interface_settings.bind ("clock-format",
-                                   GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+                                       Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
         gnome_privacy_settings.bind ("remember-recent-files",
-                                   GOF.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
+                                     Files.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
         gtk_file_chooser_settings.bind ("sort-directories-first",
-                                   prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
+                                        prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
-    public Marlin.View.Window? create_window (File? location = null,
-                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+    public View.Window? create_window (GLib.File? location = null,
+                                       ViewMode viewmode = ViewMode.PREFERRED) {
 
         return create_window_with_tabs ({location}, viewmode);
     }
 
     /* All window creation should be done via this function */
-    private Marlin.View.Window? create_window_with_tabs (File[] locations = {},
-                                                         Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED) {
+    private View.Window? create_window_with_tabs (GLib.File[] locations = {},
+                                                  ViewMode viewmode = ViewMode.PREFERRED) {
 
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
             return null;
         }
 
-        var win = new Marlin.View.Window (this);
+        var win = new View.Window (this);
         add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
         win.open_tabs (locations, viewmode);

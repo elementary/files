@@ -1,4 +1,4 @@
-namespace Marlin {
+namespace Files {
     [CCode (cprefix = "MARLIN_UNDO_")]
     public enum UndoActionType {
         COPY,
@@ -19,7 +19,7 @@ namespace Marlin {
 
     public class UndoActionData {
         /* Common stuff */
-        public Marlin.UndoActionType action_type;
+        public Files.UndoActionType action_type;
         public bool is_valid;                      /* False if action generated during undo/redo */
         public bool locked;                        /* True if the action is being undone/redone */
         public bool freed;                         /* True if the action must be freed after undo/redo */
@@ -67,7 +67,7 @@ namespace Marlin {
         public string original_user_name_or_id;
         public string new_user_name_or_id;
 
-        public UndoActionData (Marlin.UndoActionType action_type, int items_count) {
+        public UndoActionData (Files.UndoActionType action_type, int items_count) {
             this.action_type = action_type;
             this.count = items_count;
 
@@ -75,7 +75,7 @@ namespace Marlin {
                 this.trashed = new HashTable<string, uint64?> (str_hash, str_equal);
             }
 
-            is_valid = !Marlin.UndoManager.instance ().undo_redo_flag;
+            is_valid = !Files.UndoManager.instance ().undo_redo_flag;
         }
 
         public void set_src_dir (GLib.File src) {
@@ -168,7 +168,7 @@ namespace Marlin {
                     }
                 }
             } catch (Error e) {
-                critical ("%s", e.message);
+                critical (e.message);
             }
 
             return to_restore;
@@ -189,16 +189,16 @@ namespace Marlin {
         public uint undo_levels { get; construct set; default = 10; }
         public bool confirm_delete { get; construct set; default = false; }
 
-        private GLib.Queue<Marlin.UndoActionData> stack;
+        private GLib.Queue<Files.UndoActionData> stack;
         private uint index;
         public bool undo_redo_flag { get; private set; }
 
         construct {
-            stack = new GLib.Queue<Marlin.UndoActionData> ();
+            stack = new GLib.Queue<Files.UndoActionData> ();
         }
 
         public async bool undo (Gtk.Widget widget, GLib.Cancellable? cancellable = null) throws GLib.Error {
-            Marlin.UndoActionData? action = null;
+            Files.UndoActionData? action = null;
             lock (stack) {
                 action = stack_scroll_right ();
                 if (action != null) {
@@ -213,15 +213,15 @@ namespace Marlin {
 
             undo_redo_flag = true;
             switch (action.action_type) {
-                case Marlin.UndoActionType.COPY:
-                case Marlin.UndoActionType.DUPLICATE:
-                case Marlin.UndoActionType.CREATELINK:
+                case Files.UndoActionType.COPY:
+                case Files.UndoActionType.DUPLICATE:
+                case Files.UndoActionType.CREATELINK:
                     var uris = new GLib.List<GLib.File> ();
                     action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
                     uris.reverse (); // Deleting must be done in reverse
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Marlin.FileOperations.@delete (
+                            yield Files.FileOperations.@delete (
                                       uris, widget.get_toplevel () as Gtk.Window, false, cancellable
                                   );
                         } catch (Error e) {
@@ -231,20 +231,20 @@ namespace Marlin {
                     } else {
                         foreach (unowned GLib.File file in uris) {
                             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
-                            Marlin.FileChanges.queue_file_removed (file);
+                            Files.FileChanges.queue_file_removed (file);
                         }
 
-                        Marlin.FileChanges.consume_changes (true);
+                        Files.FileChanges.consume_changes (true);
                     }
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.MOVE:
+                case Files.UndoActionType.MOVE:
                     var uris = new GLib.List<GLib.File> ();
                     action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
                     if (uris != null) { /*Cancelled operation may result in empty list */
                         try {
-                            yield Marlin.FileOperations.copy_move_link (
+                            yield Files.FileOperations.copy_move_link (
                                       uris, action.src_dir, Gdk.DragAction.MOVE, widget, cancellable
                                   );
                         } catch (Error e) {
@@ -255,7 +255,7 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.RENAME:
+                case Files.UndoActionType.RENAME:
                     var file = PF.FileUtils.get_file_for_path (action.new_uri);
                     var new_name = PF.FileUtils.get_file_for_path (action.old_uri).get_basename ();
                     try {
@@ -267,14 +267,14 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.CREATEEMPTYFILE:
-                case Marlin.UndoActionType.CREATEFOLDER:
-                case Marlin.UndoActionType.CREATEFILEFROMTEMPLATE:
+                case Files.UndoActionType.CREATEEMPTYFILE:
+                case Files.UndoActionType.CREATEFOLDER:
+                case Files.UndoActionType.CREATEFILEFROMTEMPLATE:
                     var uris = new GLib.List<GLib.File> ();
                     uris.prepend (GLib.File.new_for_uri (action.target_uri));
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Marlin.FileOperations.@delete (
+                            yield Files.FileOperations.@delete (
                                       uris, widget.get_toplevel () as Gtk.Window, false, cancellable
                                   );
                         } catch (Error e) {
@@ -284,28 +284,28 @@ namespace Marlin {
                     } else {
                         foreach (unowned GLib.File file in uris) {
                             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
-                            Marlin.FileChanges.queue_file_removed (file);
+                            Files.FileChanges.queue_file_removed (file);
                         }
 
-                        Marlin.FileChanges.consume_changes (true);
+                        Files.FileChanges.consume_changes (true);
                     }
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.MOVETOTRASH:
+                case Files.UndoActionType.MOVETOTRASH:
                     GLib.HashTable<GLib.File, string>? files_to_restore = action.retrieve_files_to_restore ();
                     if (files_to_restore.size () > 0) {
                         files_to_restore.foreach ((key, val) => {
                             var dest = GLib.File.new_for_uri (val);
                             try {
                                 key.move (dest, GLib.FileCopyFlags.NOFOLLOW_SYMLINKS, cancellable, null);
-                                Marlin.FileChanges.queue_file_moved (key, dest);
+                                Files.FileChanges.queue_file_moved (key, dest);
                             } catch (Error e) {
                                 critical (e.message);
                             }
                         });
 
-                        Marlin.FileChanges.consume_changes (true);
+                        Files.FileChanges.consume_changes (true);
                     } else {
                         PF.Dialogs.show_error_dialog (_("Original location could not be determined"),
                                                       _("Open trash folder and restore manually"),
@@ -314,12 +314,12 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.RESTOREFROMTRASH:
+                case Files.UndoActionType.RESTOREFROMTRASH:
                     var uris = new GLib.List<GLib.File> ();
                     action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
                     if (uris != null ) {
                         try {
-                            yield Marlin.FileOperations.@delete (
+                            yield Files.FileOperations.@delete (
                                       uris, widget.get_toplevel () as Gtk.Window, true, cancellable
                                   );
                         } catch (Error e) {
@@ -342,7 +342,7 @@ namespace Marlin {
         }
 
         public async bool redo (Gtk.Widget widget, GLib.Cancellable? cancellable = null) throws GLib.Error {
-            Marlin.UndoActionData? action = null;
+            Files.UndoActionData? action = null;
             lock (stack) {
                 action = stack_scroll_left ();
                 if (action != null) {
@@ -357,13 +357,13 @@ namespace Marlin {
 
             undo_redo_flag = true;
             switch (action.action_type) {
-                case Marlin.UndoActionType.COPY:
-                case Marlin.UndoActionType.DUPLICATE:
+                case Files.UndoActionType.COPY:
+                case Files.UndoActionType.DUPLICATE:
                     var uris = new GLib.List<GLib.File> ();
                     action.sources.foreach ((uri) => uris.prepend (action.src_dir.get_child (uri)));
                     if (uris != null) {
                         try {
-                            yield Marlin.FileOperations.copy_move_link (
+                            yield Files.FileOperations.copy_move_link (
                                       uris, action.dest_dir, Gdk.DragAction.COPY, widget, cancellable
                                   );
                         } catch (Error e) {
@@ -374,12 +374,12 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.CREATELINK:
+                case Files.UndoActionType.CREATELINK:
                     var uris = new GLib.List<GLib.File> ();
                     action.sources.foreach ((uri) => uris.prepend (action.src_dir.get_child (uri)));
                     if (uris != null) {
                         try {
-                            yield Marlin.FileOperations.copy_move_link (
+                            yield Files.FileOperations.copy_move_link (
                                       uris, action.dest_dir, Gdk.DragAction.LINK, widget, cancellable
                                   );
                         } catch (Error e) {
@@ -390,13 +390,13 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.MOVE:
-                case Marlin.UndoActionType.RESTOREFROMTRASH:
+                case Files.UndoActionType.MOVE:
+                case Files.UndoActionType.RESTOREFROMTRASH:
                     var uris = new GLib.List<GLib.File> ();
                     action.sources.foreach ((uri) => uris.prepend (action.src_dir.get_child (uri)));
                     if (uris != null) {
                         try {
-                            yield Marlin.FileOperations.copy_move_link (
+                            yield Files.FileOperations.copy_move_link (
                                       uris, action.dest_dir, Gdk.DragAction.MOVE, widget, cancellable
                                   );
                         } catch (Error e) {
@@ -407,7 +407,7 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.RENAME:
+                case Files.UndoActionType.RENAME:
                     var file = PF.FileUtils.get_file_for_path (action.old_uri);
                     var new_name = PF.FileUtils.get_file_for_path (action.new_uri).get_basename ();
                     try {
@@ -419,12 +419,12 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.CREATEEMPTYFILE:
-                case Marlin.UndoActionType.CREATEFILEFROMTEMPLATE:
+                case Files.UndoActionType.CREATEEMPTYFILE:
+                case Files.UndoActionType.CREATEFILEFROMTEMPLATE:
                     var p_uri = GLib.File.new_for_uri (action.target_uri).get_parent ().get_uri ();
                     var new_name = GLib.Path.get_basename (Uri.unescape_string (action.target_uri));
                     try {
-                        yield Marlin.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, p_uri,
+                        yield Files.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, p_uri,
                                                               new_name, action.template, 0, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
@@ -433,10 +433,10 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.CREATEFOLDER:
+                case Files.UndoActionType.CREATEFOLDER:
                     var fparent = GLib.File.new_for_uri (action.target_uri).get_parent ();
                     try {
-                        yield Marlin.FileOperations.new_folder (
+                        yield Files.FileOperations.new_folder (
                                   widget.get_toplevel () as Gtk.Window, fparent, cancellable
                               );
                     } catch (Error e) {
@@ -446,14 +446,14 @@ namespace Marlin {
 
                     undo_redo_done_transfer (action);
                     break;
-                case Marlin.UndoActionType.MOVETOTRASH:
+                case Files.UndoActionType.MOVETOTRASH:
                     if (action.trashed.size () > 0) {
                         var uri_to_trash = action.trashed.get_keys ();
                         var uris = new GLib.List<GLib.File> ();
                         uri_to_trash.foreach ((uri) => uris.prepend (GLib.File.new_for_uri (uri)));
 
                         try {
-                            yield Marlin.FileOperations.@delete (
+                            yield Files.FileOperations.@delete (
                                       uris, widget.get_toplevel () as Gtk.Window, true, cancellable
                                   );
                         } catch (Error e) {
@@ -476,7 +476,7 @@ namespace Marlin {
         }
 
         /* Action may be null, e.g. when redoing after undoing */
-        public void add_action (owned Marlin.UndoActionData? action) {
+        public void add_action (owned Files.UndoActionData? action) {
             if (action == null || !action.is_valid) {
                 return;
             }
@@ -493,7 +493,7 @@ namespace Marlin {
                 return;
             }
             /* The stored uris are escaped */
-            var data = new Marlin.UndoActionData (Marlin.UndoActionType.RENAME, 1) {
+            var data = new Files.UndoActionData (Files.UndoActionType.RENAME, 1) {
                 old_uri = renamed_file.get_parent ().get_child (original_name).get_uri (),
                 new_uri = renamed_file.get_uri ()
             };
@@ -518,7 +518,7 @@ namespace Marlin {
                         }
                     }
 
-                    if (action.action_type == Marlin.UndoActionType.MOVETOTRASH) {
+                    if (action.action_type == Files.UndoActionType.MOVETOTRASH) {
                         stack.remove (action);
                     }
                 });
@@ -553,7 +553,7 @@ namespace Marlin {
             }
         }
 
-        private void stack_push_action (owned Marlin.UndoActionData action) {
+        private void stack_push_action (owned Files.UndoActionData action) {
             clear_redo_actions ();
 
             stack.push_head ((owned) action);
@@ -562,7 +562,7 @@ namespace Marlin {
             }
         }
 
-        private unowned Marlin.UndoActionData? get_next_redo_action () {
+        private unowned Files.UndoActionData? get_next_redo_action () {
             if (stack.is_empty ()) {
                 return null;
             }
@@ -572,7 +572,7 @@ namespace Marlin {
                 return null;
             }
 
-            unowned Marlin.UndoActionData action = stack.peek_nth (index - 1);
+            unowned Files.UndoActionData action = stack.peek_nth (index - 1);
             if (action.locked) {
                 return null;
             } else {
@@ -580,7 +580,7 @@ namespace Marlin {
             }
         }
 
-        private unowned Marlin.UndoActionData? get_next_undo_action () {
+        private unowned Files.UndoActionData? get_next_undo_action () {
             if (stack.is_empty ()) {
                 return null;
             }
@@ -590,7 +590,7 @@ namespace Marlin {
                 return null;
             }
 
-            unowned Marlin.UndoActionData action = stack.peek_nth (index);
+            unowned Files.UndoActionData action = stack.peek_nth (index);
             if (action.locked) {
                 return null;
             } else {
@@ -606,12 +606,12 @@ namespace Marlin {
             return (get_next_redo_action () != null);
         }
 
-        private unowned Marlin.UndoActionData? stack_scroll_right () {
+        private unowned Files.UndoActionData? stack_scroll_right () {
             if (!can_undo ()) {
                 return null;
             }
 
-            unowned Marlin.UndoActionData? data = stack.peek_nth (index);
+            unowned Files.UndoActionData? data = stack.peek_nth (index);
             if (index < stack.get_length ()) {
                 index++;
             }
@@ -619,7 +619,7 @@ namespace Marlin {
             return data;
         }
 
-        private unowned Marlin.UndoActionData? stack_scroll_left () {
+        private unowned Files.UndoActionData? stack_scroll_left () {
             if (!can_redo ()) {
                 return null;
             }
@@ -628,7 +628,7 @@ namespace Marlin {
             return stack.peek_nth (index);
         }
 
-        private void undo_redo_done_transfer (Marlin.UndoActionData action) {
+        private void undo_redo_done_transfer (Files.UndoActionData action) {
             /* If the action needed to be freed but was locked, free now */
             action.locked = false;
             undo_redo_flag = false;

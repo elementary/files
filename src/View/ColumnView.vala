@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -16,14 +16,13 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-
-namespace FM {
+namespace Files {
     public class ColumnView : AbstractTreeView {
         /** Miller View support */
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
 
-        public ColumnView (Marlin.View.Slot _slot) {
+        public ColumnView (View.Slot _slot) {
             base (_slot);
             /* We do not need to load the directory - this is done by Miller View*/
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
@@ -45,43 +44,45 @@ namespace FM {
 
         private bool not_double_click (Gdk.EventButton event, Gtk.TreePath? path) {
             if (double_click_timeout_id != 0) {
-                double_click_timeout_id = 0;
                 awaiting_double_click = false;
+                double_click_timeout_id = 0;
                 is_frozen = false;
 
-                if (should_activate) { /* button already released */
+                if (source_drag_file_list == null && selection_only_contains_folders (get_selected_files ())) {
                     activate_selected_items ();
                 }
             }
+
             return false;
         }
 
-        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Marlin.column_view_settings.get_enum ("zoom-level");
-            Marlin.column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+        protected override void set_up_zoom_level () {
+            Files.column_view_settings.bind (
+                "zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.DEFAULT
+            );
 
-            minimum_zoom = (Marlin.ZoomLevel)Marlin.column_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (Marlin.ZoomLevel)Marlin.column_view_settings.get_enum ("maximum-zoom-level");
+            maximum_zoom = (ZoomLevel)Files.column_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom) {
+            if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
                 zoom_level = minimum_zoom;
             }
+
             if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
             }
-
-            return (Marlin.ZoomLevel)zoom;
         }
 
-        public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Marlin.column_view_settings.get_enum ("default-zoom-level");
-            Marlin.column_view_settings.set_enum ("zoom-level", zoom);
+        public override ZoomLevel get_normal_zoom_level () {
+            var zoom = Files.column_view_settings.get_enum ("default-zoom-level");
+            Files.column_view_settings.set_enum ("zoom-level", zoom);
 
-            return (Marlin.ZoomLevel)zoom;
+            return (ZoomLevel)zoom;
         }
 
         protected override Gtk.Widget? create_view () {
-            model.set_property ("has-child", false);
+            model.has_child = false;
             base.create_view ();
             tree.show_expanders = false;
             return tree as Gtk.Widget;
@@ -110,20 +111,9 @@ namespace FM {
             return base.on_view_key_press_event (event);
         }
 
-
-        protected override bool on_view_button_release_event (Gdk.EventButton event) {
-            /* Invoke default handler unless waiting for a double-click in single-click mode */
-            if (Marlin.app_settings.get_boolean ("single-click") && awaiting_double_click) {
-                should_activate = true; /* will activate when times out */
-                return true;
-            } else {
-                return base.on_view_button_release_event (event);
-            }
-        }
-
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            GOF.File? file = null;
-            GOF.File? selected_folder = null;
+            Files.File? file = null;
+            Files.File? selected_folder = null;
             Gtk.TreeIter? iter = null;
 
             if (path != null) {
@@ -131,13 +121,10 @@ namespace FM {
             }
 
             if (iter != null) {
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
+                model.@get (iter, ListModel.ColumnID.FILE_COLUMN, out file, -1);
             }
 
-            if (file == null ||
-                !file.is_folder () ||
-                !Marlin.app_settings.get_boolean ("single-click")) {
-
+            if (file == null || !file.is_folder ()) {
                 return base.handle_primary_button_click (event, path);
             }
 
