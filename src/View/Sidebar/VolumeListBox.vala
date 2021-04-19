@@ -46,6 +46,18 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 bookmark_volume (volume);
             }
         });
+
+        row_activated.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                ((SidebarItemInterface)row).activated ();
+            }
+        });
+
+        row_selected.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                select_item ((SidebarItemInterface) row);
+            }
+        });
     }
 
     private DeviceRow add_bookmark (string label, string uri, Icon gicon,
@@ -82,6 +94,7 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
     public void refresh () {
         clear ();
+        volume_row_map.clear ();
 
         foreach (unowned Volume volume in drive.get_volumes ()) {
             bookmark_volume (volume);
