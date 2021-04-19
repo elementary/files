@@ -50,7 +50,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             });
         });
 
-        volume_monitor.volume_added.connect (refresh);
+        volume_monitor.volume_added.connect (bookmark_volume_without_drive);
+
         volume_monitor.drive_connected.connect (refresh);
 
         row_activated.connect ((row) => {
@@ -114,7 +115,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
     public void refresh () {
         clear ();
-        SidebarItemInterface? row;
+        drive_row_map.clear ();
+
         var root_uri = _(Files.ROOT_FS_URI);
         if (root_uri != "") {
             var bm = add_bookmark (
