@@ -51,8 +51,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         });
 
         volume_monitor.volume_added.connect (bookmark_volume_without_drive);
-
-        volume_monitor.drive_connected.connect (refresh);
+        volume_monitor.drive_connected.connect (bookmark_drive);
+        volume_monitor.drive_disconnected.connect (drive_removed);
 
         row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
@@ -185,6 +185,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             drive_row_map.@set (drive.get_name (), drive_row);
             drive_row.set_gicon (drive.get_icon ());
             add (drive_row);
+            drive_row.active = true;
         }
     }
 
