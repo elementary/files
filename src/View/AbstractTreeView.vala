@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -16,13 +16,13 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace FM {
+namespace Files {
     /* Implement common features of ColumnView and ListView */
     public abstract class AbstractTreeView : AbstractDirectoryView {
-        protected FM.TreeView tree;
+        protected Files.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
-        protected AbstractTreeView (Marlin.View.Slot _slot) {
+        protected AbstractTreeView (View.Slot _slot) {
             base (_slot);
         }
 
@@ -32,25 +32,26 @@ namespace FM {
 
         protected virtual void create_and_set_up_name_column () {
             name_column = new Gtk.TreeViewColumn () {
-                sort_column_id = FM.ListModel.ColumnID.FILENAME,
+                sort_column_id = Files.ListModel.ColumnID.FILENAME,
                 expand = true,
                 resizable = true
             };
 
-            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
-            set_up_name_renderer ();
+            name_renderer = new Files.TextRenderer (ViewMode.LIST);
+            icon_renderer = new Files.IconRenderer (ViewMode.LIST);
 
+            set_up_name_renderer ();
             set_up_icon_renderer ();
 
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,
-                                        "file", FM.ListModel.ColumnID.FILE_COLUMN);
+                                        "file", Files.ListModel.ColumnID.FILE_COLUMN);
 
             name_column.pack_start (name_renderer, true);
             name_column.set_attributes (name_renderer,
-                                        "text", FM.ListModel.ColumnID.FILENAME,
-                                        "file", FM.ListModel.ColumnID.FILE_COLUMN,
-                                        "background", FM.ListModel.ColumnID.COLOR);
+                                        "text", Files.ListModel.ColumnID.FILENAME,
+                                        "file", Files.ListModel.ColumnID.FILE_COLUMN,
+                                        "background", Files.ListModel.ColumnID.COLOR);
 
             tree.append_column (name_column);
         }
@@ -64,13 +65,14 @@ namespace FM {
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
                 tree.columns_autosize ();
+                tree.zoom_level = zoom_level;
             });
         }
 
         protected override void set_up_name_renderer () {
             base.set_up_name_renderer ();
             name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", Marlin.ZoomLevel.NORMAL);
+            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
             name_renderer.@set ("ellipsize-set", true);
             name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
             name_renderer.xalign = 0.0f;
@@ -85,7 +87,7 @@ namespace FM {
         }
 
         protected override Gtk.Widget? create_view () {
-            tree = new FM.TreeView () {
+            tree = new Files.TreeView () {
                 model = model,
                 headers_visible = false,
                 rubber_banding = true
@@ -102,6 +104,7 @@ namespace FM {
             if (tree != null) {
                 base.change_zoom_level ();
                 tree.columns_autosize ();
+                tree.set_property ("zoom-level", zoom_level);
             }
         }
 
@@ -175,13 +178,13 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
+        protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
             uint count = 0;
 
-            GLib.List<GOF.File> list = null;
+            GLib.List<Files.File> list = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
-                GOF.File? file; /* can be null if click on blank row in list view */
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
+                Files.File? file; /* can be null if click on blank row in list view */
+                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null) {
                     list.prepend ((owned) file);
                     count++;
@@ -232,7 +235,7 @@ namespace FM {
             zone = (p != null && is_blank ? ClickZone.BLANK_PATH : ClickZone.INVALID);
 
             if (p != null && c != null && c == name_column) {
-                GOF.File? file = model.file_for_path (p);
+                Files.File? file = model.file_for_path (p);
 
                 if (file == null) {
                     zone = ClickZone.INVALID;
@@ -349,6 +352,21 @@ namespace FM {
     }
 
     protected class TreeView : Gtk.TreeView {
+        private ZoomLevel _zoom_level = ZoomLevel.INVALID;
+        public ZoomLevel zoom_level {
+            set {
+                if (_zoom_level == value || !get_realized ()) {
+                    return;
+                } else {
+                    _zoom_level = value;
+                }
+            }
+
+            get {
+                return _zoom_level;
+            }
+        }
+
         /* Override base class in order to disable the Gtk.TreeView local search functionality */
         public override bool key_press_event (Gdk.EventKey event) {
             /* We still need the base class to handle cursor keys first */

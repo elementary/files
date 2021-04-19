@@ -1,7 +1,7 @@
 src/main.vala
 
 src/Application.vala
-src/marlin-deep-count.vala
+src/DeepCount.vala
 src/ProgressUIHandler.vala
 src/TextRenderer.vala
 src/ClipboardManager.vala
@@ -57,9 +57,9 @@ libcore/Enums.vala
 libcore/FileChanges.vala
 libcore/FileConflictDialog.vala
 libcore/FileUtils.vala
-libcore/gof-callwhenready.vala
-libcore/gof-directory-async.vala
-libcore/gof-preferences.vala
+libcore/CallWhenReady.vala
+libcore/Directory.vala
+libcore/Preferences.vala
 libcore/IconInfo.vala
 libcore/PixbufUtils.vala
 libcore/PluginManager.vala

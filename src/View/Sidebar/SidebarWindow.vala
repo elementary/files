@@ -1,6 +1,6 @@
 /* SidebarWindow.vala
  *
- * Copyright 2020 elementary LLC. <https://elementary.io>
+ * Copyright 2020–2021 elementary, Inc. <https://elementary.io>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
+public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
     Gtk.ScrolledWindow scrolled_window;
     Gtk.Grid bookmarklists_grid;
     SidebarListInterface bookmark_listbox;
@@ -51,7 +51,8 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         };
 
         var network_expander = new SidebarExpander (_("Network"), network_listbox) {
-            tooltip = _("Devices and places available via a network")
+            tooltip = _("Devices and places available via a network"),
+            no_show_all = Files.is_admin ()
         };
 
         bookmarklists_grid = new Gtk.Grid () {
@@ -63,21 +64,28 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         bookmarklists_grid.add (device_expander);
         bookmarklists_grid.add (network_expander);
 
-        scrolled_window = new Gtk.ScrolledWindow (null, null);
+        scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            hscrollbar_policy = Gtk.PolicyType.NEVER
+        };
         scrolled_window.add (bookmarklists_grid);
 
         var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
             always_show_image = true,
             image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"}),
+            no_show_all = Files.is_admin ()
         };
 
-        var action_bar = new Gtk.ActionBar ();
+        var action_bar = new Gtk.ActionBar () {
+            //For now hide action bar when admin. This might need revisiting if other actions are added
+            no_show_all = Files.is_admin ()
+        };
+
         action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         action_bar.add (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
-        width_request = Marlin.app_settings.get_int ("minimum-sidebar-width");
+        width_request = Files.app_settings.get_int ("minimum-sidebar-width");
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         add (scrolled_window);
         add (action_bar);
@@ -85,15 +93,16 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         plugins.sidebar_loaded (this);
 
         reload ();
+
         show_all ();
 
-        Marlin.app_settings.bind (
+        Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
         );
-        Marlin.app_settings.bind (
+        Files.app_settings.bind (
             "sidebar-cat-devices-expander", device_expander, "active", SettingsBindFlags.DEFAULT
         );
-        Marlin.app_settings.bind (
+        Files.app_settings.bind (
             "sidebar-cat-network-expander", network_expander, "active", SettingsBindFlags.DEFAULT
         );
 
@@ -126,18 +135,18 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
     }
 
     /* SidebarInterface */
-    public uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item, Marlin.PlaceType category) {
+    public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item, Files.PlaceType category) {
         uint32 id = 0;
         switch (category) {
-            case Marlin.PlaceType.BOOKMARKS_CATEGORY:
+            case Files.PlaceType.BOOKMARKS_CATEGORY:
                 id = bookmark_listbox.add_plugin_item (plugin_item);
                 break;
 
-            case Marlin.PlaceType.STORAGE_CATEGORY:
+            case Files.PlaceType.STORAGE_CATEGORY:
                 id = device_listbox.add_plugin_item (plugin_item);
                 break;
 
-            case Marlin.PlaceType.NETWORK_CATEGORY:
+            case Files.PlaceType.NETWORK_CATEGORY:
                 id = network_listbox.add_plugin_item (plugin_item);
                 break;
 
@@ -148,7 +157,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Marlin.SidebarInterface {
         return id;
     }
 
-    public bool update_plugin_item (Marlin.SidebarPluginItem item, uint32 item_id) {
+    public bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) {
         if (item_id == 0) {
             return false;
         }

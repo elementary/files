@@ -21,8 +21,8 @@
  */
 
 public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
-    public Marlin.SidebarInterface sidebar { get; construct; }
-    public NetworkListBox (Marlin.SidebarInterface sidebar) {
+    public Files.SidebarInterface sidebar { get; construct; }
+    public NetworkListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
         );
@@ -31,7 +31,17 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     construct {
         selection_mode = Gtk.SelectionMode.SINGLE; //One or none rows selected
         var volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.mount_added.connect (bookmark_mount_if_not_native_and_not_shadowed);
+        volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
+        row_activated.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                ((SidebarItemInterface) row).activated ();
+            }
+        });
+        row_selected.connect ((row) => {
+            if (row is SidebarItemInterface) {
+                select_item ((SidebarItemInterface) row);
+            }
+        });
     }
 
     private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, Mount? mount) {
@@ -45,7 +55,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         return row;
     }
 
-    public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name, plugin_item.uri, plugin_item.icon, null);
 
         row.update_plugin_data (plugin_item);
@@ -54,31 +64,36 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         //TODO Create a new class of NetworkPluginRow subclassed from NetworkRow
     }
 
-    private void bookmark_mount_if_not_native_and_not_shadowed (Mount mount) {
-        if (mount.is_shadowed () || mount.get_root ().is_native ()) {
+    private void bookmark_mount_if_not_shadowed (Mount mount) {
+        if (mount.is_shadowed ()) {
             return;
         };
 
-        add_bookmark (
-            mount.get_name (),
-            mount.get_default_location ().get_uri (),
-            mount.get_icon (),
-            mount
-        );
-        //Show extra info in tooltip
+        string scheme = Uri.parse_scheme (mount.get_root ().get_uri ());
+
+        /* Some non-native schemes are still local e.g. mtp, ptp, gphoto2 */
+        if ("smb ftp sftp afp dav davs".contains (scheme)) {
+                add_bookmark (
+                mount.get_name (),
+                mount.get_default_location ().get_uri (),
+                mount.get_icon (),
+                mount
+            );
+            //Show extra info in tooltip
+        }
     }
 
     public void refresh () {
         clear ();
 
-        if (Marlin.is_admin ()) { //Network operations fail for administrators
+        if (Files.is_admin ()) { //Network operations fail for administrators
             return;
         }
 
         var row = add_bookmark (
             _("Entire Network"),
-            Marlin.NETWORK_URI,
-            new ThemedIcon (Marlin.ICON_NETWORK),
+            Files.NETWORK_URI,
+            new ThemedIcon (Files.ICON_NETWORK),
             null
         );
 
@@ -87,7 +102,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         );
 
         foreach (unowned Mount mount in VolumeMonitor.@get ().get_mounts ()) {
-            bookmark_mount_if_not_native_and_not_shadowed (mount);
+            bookmark_mount_if_not_shadowed (mount);
         }
     }
 

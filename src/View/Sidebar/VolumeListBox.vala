@@ -25,9 +25,9 @@ public class Sidebar.VolumeListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private VolumeMonitor volume_monitor;
     private Gee.HashMap<string, DeviceRow> volume_row_map;
 
-    public Marlin.SidebarInterface sidebar { get; construct; }
+    public Files.SidebarInterface sidebar { get; construct; }
 
-    public VolumeListBox (Marlin.SidebarInterface sidebar, Drive drive) {
+    public VolumeListBox (Files.SidebarInterface sidebar, Drive drive) {
         Object (
             sidebar: sidebar,
             drive: drive

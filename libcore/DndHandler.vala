@@ -19,20 +19,20 @@
     Authors: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Marlin {
+namespace Files {
     public class DndHandler : GLib.Object {
         Gdk.DragAction chosen = Gdk.DragAction.DEFAULT;
 
         public DndHandler () {}
 
         public bool dnd_perform (Gtk.Widget widget,
-                                 GOF.File drop_target,
+                                 Files.File drop_target,
                                  GLib.List<GLib.File> drop_file_list,
                                  Gdk.DragAction action)
         requires (drop_target != null && drop_file_list != null) {
 
             if (drop_target.is_folder ()) {
-                Marlin.FileOperations.copy_move_link.begin (
+                Files.FileOperations.copy_move_link.begin (
                     drop_file_list,
                     drop_target.get_target_location (),
                     action,
@@ -190,7 +190,7 @@ namespace Marlin {
         }
 
         public bool handle_xdnddirectsave (Gdk.DragContext context,
-                                           GOF.File drop_target,
+                                           Files.File drop_target,
                                            Gtk.SelectionData selection) {
             bool success = false;
 
@@ -225,7 +225,7 @@ namespace Marlin {
             return success;
         }
 
-        public bool handle_netscape_url (Gdk.DragContext context, GOF.File drop_target, Gtk.SelectionData selection) {
+        public bool handle_netscape_url (Gdk.DragContext context, Files.File drop_target, Gtk.SelectionData selection) {
             string [] parts = (selection.get_text ()).split ("\n");
 
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
@@ -239,7 +239,7 @@ namespace Marlin {
 
         public bool handle_file_drag_actions (Gtk.Widget dest_widget,
                                               Gdk.DragContext context,
-                                              GOF.File drop_target,
+                                              Files.File drop_target,
                                               GLib.List<GLib.File> drop_file_list,
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
@@ -272,7 +272,7 @@ namespace Marlin {
         public static bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
             text = null;
 
-            if (info == Marlin.TargetType.TEXT_URI_LIST &&
+            if (info == Files.TargetType.TEXT_URI_LIST &&
                 selection_data != null &&
                 selection_data.get_length () > 0 && //No other way to get length?
                 selection_data.get_format () == 8) {
@@ -296,7 +296,7 @@ namespace Marlin {
         }
 
         public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
-                                                              GLib.List<GOF.File> file_list,
+                                                              GLib.List<Files.File> file_list,
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
@@ -308,7 +308,7 @@ namespace Marlin {
         }
 
         public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
-                                                              GLib.List<GOF.File> file_list,
+                                                              GLib.List<Files.File> file_list,
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
@@ -318,11 +318,11 @@ namespace Marlin {
         }
 
         private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb,
-                                                              GLib.List<GOF.File> file_list,
+                                                              GLib.List<Files.File> file_list,
                                                               string prefix,
                                                               bool sanitize_path = false) {
 
-            if (file_list != null && file_list.data != null && file_list.data is GOF.File) {
+            if (file_list != null && file_list.data != null && file_list.data is Files.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 
                 file_list.@foreach ((file) => {

@@ -15,7 +15,7 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
-namespace Marlin.View.Chrome {
+namespace Files.View.Chrome {
     /* Interface implemented by SearchResults */
     public interface Searchable : Gtk.Widget {
         public signal void file_selected (GLib.File file);

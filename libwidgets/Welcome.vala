@@ -20,7 +20,7 @@
 
 ***/
 
-namespace Marlin.View {
+namespace Files.View {
     public class Welcome : Granite.Widgets.Welcome {
 
         public Welcome (string primary, string secondary) {
