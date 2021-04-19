@@ -29,6 +29,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     construct {
+        selection_mode = Gtk.SelectionMode.SINGLE; //One or none rows selected
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
         row_activated.connect ((row) => {
@@ -44,9 +45,9 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, Mount? mount) {
-        NetworkRow? row = null;
+        SidebarItemInterface? row = null;
 
-        if (!has_uri (uri)) {
+        if (!has_uri (uri, out row)) {
             row = new NetworkRow (label, uri, gicon, this, mount);
             add (row);
         }

@@ -44,6 +44,9 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             _mounted = value;
             can_eject = _mounted && (mount.can_unmount () || mount.can_eject ());
             mount_eject_revealer.reveal_child = _mounted && _can_eject;
+            if (_mounted) {
+                update_free_space ();
+            }
         }
     }
 
@@ -147,7 +150,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         volume_monitor.volume_removed.connect (volume_removed);
         volume_monitor.mount_removed.connect (mount_removed);
         volume_monitor.mount_added.connect (mount_added);
-        volume_monitor.drive_disconnected.connect (drive_removed);
 
         add_mountable_tooltip.begin ();
 
@@ -308,17 +310,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         }
     }
 
-    private void drive_removed (Drive removed_drive) {
-        if (!valid) { //Already removed
-            return;
-        }
-
-        if (drive == removed_drive) {
-            valid = false;
-            list.remove_item_by_id (id);
-        }
-    }
-
     private void volume_removed (Volume removed_volume) {
         if (!valid) { //Already removed
             return;
@@ -366,6 +357,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             if (uri == "") {
                 uri = mount.get_default_location ().get_uri ();
             }
+
             mounted = true;
         }
 
