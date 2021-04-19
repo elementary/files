@@ -53,6 +53,7 @@ namespace Files {
         private Gdk.Rectangle emblem_area = Gdk.Rectangle ();
         private int h_overlap;
         private int v_overlap;
+        private int lpad;
         private Files.File? _file;
         private int icon_scale = 1;
 
@@ -65,19 +66,22 @@ namespace Files {
         private ClipboardManager clipboard;
 
         construct {
+            lpad = view_mode == ViewMode.LIST ? 4 : 0;
+            show_emblems = view_mode == ViewMode.ICON;
+            xpad = 0;
             clipboard = Files.ClipboardManager.get_for_display ();
             hover_rect = {0, 0, (int) Files.IconSize.NORMAL, (int) Files.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Files.IconSize.EMBLEM, (int) Files.IconSize.EMBLEM};
 
             notify["icon-size"].connect (() => {
-                show_emblems = view_mode != ViewMode.ICON || icon_size > (int)Files.IconSize.SMALLEST;
+                show_emblems = view_mode == ViewMode.ICON && icon_size > (int)Files.IconSize.SMALLEST;
                 helper_size = icon_size <= (int)Files.IconSize.NORMAL ?
                               (int)Files.IconSize.EMBLEM : (int)Files.IconSize.LARGE_EMBLEM;
             });
         }
 
         public IconRenderer (ViewMode view_mode) {
-            xpad = view_mode == ViewMode.ICON ? 0 : Files.IconSize.EMBLEM;
+            Object (view_mode: view_mode);
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -98,7 +102,12 @@ namespace Files {
 
             pix_rect.width = pixbuf.width / icon_scale;
             pix_rect.height = pixbuf.height / icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            if (show_emblems) {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            } else {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width);
+            }
+
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
             var draw_rect = Gdk.Rectangle ();
@@ -215,7 +224,6 @@ namespace Files {
 
             /* check if we should render emblems as well */
             /* Do not show emblems for very small icons in IconView */
-            /* Still show emblems when selection helpers hidden in double click mode */
             /* How many emblems can be shown depends on icon icon_size */
             if (show_emblems) {
                 int n_emblems = (int)(file.emblems_list.length ());
@@ -262,7 +270,8 @@ namespace Files {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = icon_size + hover_helper_rect.width;
+            // Add extra width for helper icon and make it easier to click on expander
+            minimum_size = (int)icon_size + Files.IconSize.EMBLEM + lpad;
             natural_size = minimum_size;
         }
 
