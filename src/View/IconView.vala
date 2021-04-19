@@ -48,8 +48,8 @@ namespace Files {
 
         static construct {
             layout_map = new Gee.HashMap<Files.ZoomLevel, ItemLayout?> ();
-            layout_map.@set (Files.ZoomLevel.SMALLEST, {Files.IconSize.SMALL, 1, 0, 0, 64, 0, 1});
-            layout_map.@set (Files.ZoomLevel.SMALLER, {Files.IconSize.SMALL, 3, 1, 1, 64, 3, 2});
+            layout_map.@set (Files.ZoomLevel.SMALLEST, {Files.IconSize.SMALLER, 1, 0, 0, 48, 0, 1});
+            layout_map.@set (Files.ZoomLevel.SMALLER, {Files.IconSize.SMALLER, 3, 1, 1, 56, 1, 2});
             layout_map.@set (Files.ZoomLevel.SMALL, {Files.IconSize.SMALL, 6, 2, 1, 68, 3, 3});
             layout_map.@set (Files.ZoomLevel.NORMAL, {Files.IconSize.NORMAL, 9, 3, 3, 80, 4, 5});
             layout_map.@set (Files.ZoomLevel.LARGE, {Files.IconSize.LARGE, 12, 4, 3, 96, 4, 6});
@@ -136,10 +136,6 @@ namespace Files {
                 this, "zoom-level",
                 GLib.SettingsBindFlags.DEFAULT
             );
-
-            if (zoom_level < minimum_zoom) {
-                zoom_level = minimum_zoom;
-            }
 
             if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
