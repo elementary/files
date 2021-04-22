@@ -378,11 +378,13 @@ namespace Files.View {
             if (directory != null) {
                 directory.cancel ();
                 disconnect_dir_signals ();
+                directory = null;
             }
 
             if (dir_view != null) {
                 dir_view.close ();
                 disconnect_dir_view_signals ();
+                dir_view = null;
             }
         }
 
