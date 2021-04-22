@@ -58,8 +58,10 @@ namespace Files {
             }
         }
 
-        int h_overlap;
-        int v_overlap;
+        private int h_overlap;
+        private int v_overlap;
+        private int lpad;
+        private bool show_emblems;
         private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         private Files.File? _file;
         private Files.IconSize icon_size;
@@ -79,7 +81,9 @@ namespace Files {
         }
 
         public IconRenderer (ViewMode view_mode) {
-            xpad = view_mode == ViewMode.ICON ? 0 : Files.IconSize.EMBLEM;
+            lpad = view_mode == ViewMode.LIST ? 4 : 0;
+            show_emblems = view_mode == ViewMode.ICON;
+            xpad = 0;
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -100,7 +104,12 @@ namespace Files {
 
             pix_rect.width = pixbuf.width / icon_scale;
             pix_rect.height = pixbuf.height / icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            if (show_emblems) {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            } else {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width);
+            }
+
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
             var draw_rect = Gdk.Rectangle ();
@@ -242,44 +251,47 @@ namespace Files {
                 }
             }
 
-            int emblem_size = (int) Files.IconSize.EMBLEM;
-            int pos = 0;
-            var emblem_area = Gdk.Rectangle ();
+            if (show_emblems) {
+                int emblem_size = (int) Files.IconSize.EMBLEM;
+                int pos = 0;
+                var emblem_area = Gdk.Rectangle ();
 
-            foreach (string emblem in file.emblems_list) {
-                if (pos - 1 > zoom_level) {
-                    break;
+                foreach (string emblem in file.emblems_list) {
+                     if (pos - 1 > zoom_level) {
+                         break;
+                     }
+
+                    Gdk.Pixbuf? pix = null;
+                    var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+
+                     if (nicon == null) {
+                         continue;
+                     }
+
+                     pix = nicon.get_pixbuf_nodefault ();
+
+                     if (pix == null) {
+                         continue;
+                     }
+
+                     emblem_area.y = draw_rect.y + pix_rect.height - v_overlap;
+                     emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
+
+                     emblem_area.y -= emblem_size * pos;
+                     emblem_area.y = int.max (cell_area.y, emblem_area.y);
+
+                     emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
+                     emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
+
+                     style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+                     pos++;
                 }
-
-                Gdk.Pixbuf? pix = null;
-                var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
-
-                if (nicon == null) {
-                    continue;
-                }
-
-                pix = nicon.get_pixbuf_nodefault ();
-
-                if (pix == null) {
-                    continue;
-                }
-
-                emblem_area.y = draw_rect.y + pix_rect.height - v_overlap;
-                emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
-
-                emblem_area.y -= emblem_size * pos;
-                emblem_area.y = int.max (cell_area.y, emblem_area.y);
-
-                emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
-                emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
-
-                style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
-                pos++;
             }
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) (icon_size + 2 * xpad);
+            // Add extra width for helper icon and make it easier to click on expander
+            minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM + lpad;
             natural_size = minimum_size;
         }
 
