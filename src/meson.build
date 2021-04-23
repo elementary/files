@@ -18,6 +18,7 @@ pantheon_files_exec = executable (
     'TextRenderer.vala',
     'ClipboardManager.vala',
     'IconRenderer.vala',
+    'EmblemRenderer.vala',
     'ZeitgeistManager.vala',
 
     'Dialogs/AbstractPropertiesDialog.vala',
