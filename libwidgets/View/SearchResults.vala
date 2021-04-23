@@ -29,10 +29,6 @@ namespace Files.View.Chrome {
             DEEP_BEGINS,
             DEEP_CONTAINS,
             DEEP_ELLIPSIS,
-            ZEITGEIST_HEADER,
-            ZEITGEIST_BEGINS,
-            ZEITGEIST_CONTAINS,
-            ZEITGEIST_ELLIPSIS,
             BOOKMARK_HEADER,
             BOOKMARK_BEGINS,
             BOOKMARK_CONTAINS,
@@ -41,7 +37,7 @@ namespace Files.View.Chrome {
             /* This function converts a Category enum to a letter which can be prefixed to the match
              * name to form a sort key.  This ensures that the categories appear in the list in the
              * desired order - that is within each class of results (current folder, deep search,
-             * zeitgeist search and bookmark search), after the header, the matches appear with the
+             * and bookmark search), after the header, the matches appear with the
              * "begins with" ones first, then the "contains" and finally an "ellipsis" pseudo-match
              * appears if MAX_RESULTS is exceeded for that category.
              */
@@ -109,10 +105,6 @@ namespace Files.View.Chrome {
         Cancellable? current_operation = null;
         Cancellable? file_search_operation = null;
 
-#if HAVE_ZEITGEIST
-        Zeitgeist.Index zg_index;
-        GenericArray<Zeitgeist.Event> templates;
-#endif
         int current_count;
         int deep_count;
         int max_results = MAX_RESULTS;
@@ -126,7 +118,6 @@ namespace Files.View.Chrome {
 
         Gtk.TreeIter? local_results = null;
         Gtk.TreeIter? deep_results = null;
-        Gtk.TreeIter? zeitgeist_results = null;
         Gtk.TreeIter? bookmark_results = null;
         string header_markup = "%s";
         string result_location_markup = "%s";
@@ -145,20 +136,6 @@ namespace Files.View.Chrome {
         }
 
         construct {
-#if HAVE_ZEITGEIST
-            var template = new Zeitgeist.Event ();
-
-            var template_subject = new Zeitgeist.Subject () {
-                manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT
-            };
-
-            template.add_subject (template_subject);
-
-            templates = new GenericArray<Zeitgeist.Event> ();
-            templates.add (template);
-
-            zg_index = new Zeitgeist.Index ();
-#endif
             var frame = new Gtk.Frame (null) {
                 shadow_type = Gtk.ShadowType.ETCHED_IN
             };
@@ -238,9 +215,6 @@ namespace Files.View.Chrome {
             list.append (out local_results, null);
             list.append (out deep_results, null);
             list.append (out bookmark_results, null);
-#if HAVE_ZEITGEIST
-            list.append (out zeitgeist_results, null);
-#endif
 
             scroll.add (view);
             frame.add (scroll);
@@ -281,12 +255,6 @@ namespace Files.View.Chrome {
             list.@set (bookmark_results,
                         0, header_markup.printf (_("Bookmarks")),
                         5, Category.CURRENT_HEADER.to_string ());
-
-#if HAVE_ZEITGEIST
-            list.@set (zeitgeist_results,
-                        0, header_markup.printf (_("Recently Used")),
-                        5, Category.CURRENT_HEADER.to_string ());
-#endif
         }
 
         /** Search interface functions **/
@@ -392,11 +360,8 @@ namespace Files.View.Chrome {
                 return null;
             });
 
-#if HAVE_ZEITGEIST
-            get_zg_results.begin (search_term);
-#else
             global_search_finished = true;
-#endif
+
             var bookmarks_matched = new Gee.LinkedList<Match> ();
             var begins_with = false;
             foreach (var bookmark in BookmarkList.get_instance ().list) {
@@ -773,68 +738,6 @@ namespace Files.View.Chrome {
 
             foreach (var match in new_results) {
                 Gtk.TreeIter? iter = null;
-                GLib.File file;
-                /* do not add global result if already in local results */
-                if (parent == zeitgeist_results) {
-                    var already_added = false;
-
-                    for (var valid = list.iter_nth_child (out iter, local_results, 0);
-                         valid;
-                         valid = list.iter_next (ref iter)) {
-
-                        list.@get (iter, 3, out file);
-
-                        if (file != null && match.file != null && file.equal (match.file)) {
-                            already_added = true;
-                            break;
-                        }
-                    }
-
-                    if (!already_added) {
-                        for (var valid = list.iter_nth_child (out iter, deep_results, 0);
-                             valid;
-                             valid = list.iter_next (ref iter)) {
-
-                            list.@get (iter, 3, out file);
-
-                            if (file != null && match.file != null && file.equal (match.file)) {
-                                already_added = true;
-                                break;
-                           }
-                        }
-                    }
-
-                    if (already_added) {
-                        continue;
-                    }
-                } else if (parent == local_results) {
-                    /* remove current search result from global if in global results */
-                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0);
-                         valid;
-                         valid = list.iter_next (ref iter)) {
-
-                        list.@get (iter, 3, out file);
-
-                        if (file != null && match.file != null && file.equal (match.file)) {
-                            list.remove (ref iter);
-                            break;
-                        }
-                    }
-                } else if (parent == deep_results) {
-                    /* remove deep search result from from global if in global results */
-                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0);
-                         valid;
-                         valid = list.iter_next (ref iter)) {
-
-                        list.@get (iter, 3, out file);
-
-                        if (file != null && match.file != null && file.equal (match.file)) {
-                            list.remove (ref iter);
-                             break;
-                         }
-                     }
-                 }
-
                 var location = result_location_markup.printf (Markup.escape_text (match.path_string));
 
                 list.append (out iter, parent);
@@ -1061,104 +964,6 @@ namespace Files.View.Chrome {
                 }
             }
         }
-
-#if HAVE_ZEITGEIST
-        async void get_zg_results (string term) {
-            global_search_finished = false;
-
-            Zeitgeist.ResultSet results;
-            try {
-                results = yield zg_index.search ("name:" + term + "*",
-                                                 new Zeitgeist.TimeRange.anytime (),
-                                                 templates,
-                                                 0, /* offset */
-                                                 max_results * 3,
-                                                 Zeitgeist.ResultType.MOST_POPULAR_SUBJECTS,
-                                                 current_operation);
-            } catch (IOError.CANCELLED e) {
-                global_search_finished = true;
-                Idle.add (send_search_finished);
-                return;
-            } catch (Error e) {
-                warning ("Fetching results for term '%s' from zeitgeist failed: %s", term, e.message);
-                global_search_finished = true;
-                Idle.add (send_search_finished);
-                return;
-            }
-
-            var matches = new Gee.LinkedList<Match> ();
-            var home = GLib.File.new_for_path (Environment.get_home_dir ());
-            Category cat;
-            var i = 0;
-
-            while (results.has_next () && !current_operation.is_cancelled () && !global_search_finished) {
-                var result = results.next_value ();
-                foreach (var subject in result.subjects.data) {
-                    if (i == max_results) {
-                        matches.add (new Match.ellipsis (Category.ZEITGEIST_ELLIPSIS));
-                        global_search_finished = true;
-                        break;
-                    }
-
-                    try {
-                        var file = GLib.File.new_for_uri (subject.uri);
-                        /* Zeitgeist search finds search term anywhere in path.  We are only interested
-                         * when the search term is in the basename */
-                        while (file != null && !file.get_basename ().contains (term)) {
-                            file = file.get_parent ();
-                        }
-
-                        if (file != null) {
-                            var path_string = "";
-                            var parent = file;
-                            while ((parent = parent.get_parent ()) != null) {
-                                if (parent.equal (current_root)) {
-                                    break;
-                                }
-
-                                if (parent.equal (home)) {
-                                    path_string = "~/" + path_string;
-                                    break;
-                                }
-
-                                if (path_string == "") {
-                                    path_string = parent.get_basename ();
-                                } else {
-                                    path_string = Path.build_path (Path.DIR_SEPARATOR_S, parent.get_basename (),
-                                                                   path_string);
-                                }
-                            }
-
-                            /* Eliminate duplicate matches */
-                            bool found = false;
-                            foreach (Match m in matches) {
-                                if (m.path_string == path_string) {
-                                    found = true;
-                                    break;
-                                }
-                            }
-
-                            if (!found) {
-                                var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT,
-                                                                        current_operation);
-                                var name = info.get_display_name ();
-                                cat = name.has_prefix (term) ? Category.ZEITGEIST_BEGINS : Category.ZEITGEIST_CONTAINS;
-                                matches.add (new Match (info, path_string, file.get_parent (), cat));
-                                i++;
-                           }
-                        }
-                    } catch (Error e) {}
-                }
-            }
-
-            if (!current_operation.is_cancelled ()) {
-                add_results (matches, zeitgeist_results);
-            }
-
-            global_search_finished = true;
-            Idle.add (send_search_finished);
-        }
-#endif
 
         bool term_matches (string term, string name, out bool begins_with ) {
             /* term is assumed to be down */

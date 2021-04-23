@@ -24,7 +24,6 @@ You'll need the following dependencies:
 * libplank-dev
 * libsqlite3-dev
 * libunity-dev
-* libzeitgeist-2.0-dev
 
 Run `meson build` to configure the build environment. Change to the build directory and run `ninja` to build
 

@@ -73,11 +73,6 @@ math_dep = cc.find_library('m')
 
 plank_dep = dependency('plank', version: '>=0.10.9')
 
-zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
-if (zeitgeist_dep.found())
-    add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
-endif
-
 add_project_arguments(
     ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
     language: 'vala'

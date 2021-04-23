@@ -3,7 +3,6 @@ pantheon_files_deps = [
     handy_dep,
     pantheon_files_widgets_dep,
     plank_dep,
-    zeitgeist_dep,
     project_config_dep,
 ]
 
@@ -19,7 +18,6 @@ pantheon_files_exec = executable (
     'ClipboardManager.vala',
     'IconRenderer.vala',
     'EmblemRenderer.vala',
-    'ZeitgeistManager.vala',
 
     'Dialogs/AbstractPropertiesDialog.vala',
     'Dialogs/ChooseAppDialog.vala',
