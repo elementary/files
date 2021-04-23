@@ -21,6 +21,15 @@
 ***/
 
 public class Files.EmblemRenderer : Gtk.CellRenderer {
+    private static Gee.HashMap<string, Gdk.Pixbuf> emblem_pixbuf_map;
+    static construct {
+        emblem_pixbuf_map = new Gee.HashMap<string, Gdk.Pixbuf> ();
+    }
+
+    public static void clear_cache () {
+        emblem_pixbuf_map.clear ();
+    }
+
     public Files.File? file { get; set; }
     private const int RIGHT_MARGIN = 12;
     private int icon_scale = 1;
@@ -43,16 +52,17 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
 
         foreach (string emblem in file.emblems_list) {
             Gdk.Pixbuf? pix = null;
-            var nicon = Files.IconInfo.lookup_from_name (emblem + "-symbolic", Files.IconSize.EMBLEM, icon_scale);
+            var key = emblem + "-symbolic";
 
-            if (nicon == null) {
-                continue;
-            }
+            if (emblem_pixbuf_map.has_key (key)) {
+                pix = emblem_pixbuf_map.@get (key);
+            } else {
+                pix = render_icon (key, style_context);
+                if (pix == null) {
+                    continue;
+                }
 
-            pix = nicon.get_pixbuf_nodefault ();
-
-            if (pix == null) {
-                continue;
+                emblem_pixbuf_map.@set (key, pix);
             }
 
             emblem_area.y = cell_area.y + (cell_area.height - Files.IconSize.EMBLEM) / 2;
@@ -61,6 +71,28 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
             style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
             pos++;
         }
+    }
+
+    public Gdk.Pixbuf? render_icon (string icon_name, Gtk.StyleContext context) {
+        var theme = Gtk.IconTheme.get_default ();
+        Gdk.Pixbuf? pix = null;
+        Gtk.IconInfo? gtk_icon_info = null;
+        var scale = context.get_scale ();
+
+        var gicon = new ThemedIcon.with_default_fallbacks (icon_name);
+
+        var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
+        gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
+
+        if (gtk_icon_info != null) {
+            try {
+                pix = gtk_icon_info.load_symbolic_for_context (context);
+            } catch (Error e) {
+                warning ("Failed to load icon for %s: %s", icon_name, e.message);
+            }
+        }
+
+        return pix;
     }
 
     public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {

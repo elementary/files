@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 04:54+0000\n"
+"POT-Creation-Date: 2021-04-23 08:11+0000\n"
 "PO-Revision-Date: 2021-04-01 00:58+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
@@ -21,31 +21,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-12 06:02+0000\n"
 
-#: src/Application.vala:158
+#: src/Application.vala:159
 msgid "Show the version of the program"
 msgstr "Показати версію застосунку"
 
-#: src/Application.vala:160
+#: src/Application.vala:161
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Відкрити одну чи більше адресу в новій вкладці"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Нове вікно"
 
-#: src/Application.vala:164
+#: src/Application.vala:165
 msgid "Quit Files"
 msgstr "Вийти з Файлів"
 
-#: src/Application.vala:166
+#: src/Application.vala:167
 msgid "Enable debug logging"
 msgstr "Увімкнути журнал зневадження"
 
-#: src/Application.vala:169
+#: src/Application.vala:170
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:172
+#: src/Application.vala:173
 msgid ""
 "\n"
 "\n"
@@ -55,7 +55,7 @@ msgstr ""
 "\n"
 "Перегляд файлової системи менеджером файлів"
 
-#: src/Application.vala:200
+#: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
 msgstr "--quit неможливо використати з URI."
 
@@ -320,7 +320,7 @@ msgstr "Тип"
 msgid "Modified"
 msgstr "Змінено"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:403
 msgid "This Folder Does Not Exist"
 msgstr "Цієї теки не існує"
 
@@ -529,59 +529,59 @@ msgstr "Натомість вирізаю виділене"
 msgid "Cannot paste files here"
 msgstr "Неможливо вставити файли сюди"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:382 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Домівка"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:404
 msgid "You cannot create a folder here."
 msgstr "Неможливо створити теку тут."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:407
 msgid "The network is unavailable"
 msgstr "Мережа недоступна"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:408
 msgid "A working network is needed to reach this folder"
 msgstr "Для доступу до цієї теки потрібна робоча мережа"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:411
 msgid "This Folder Does Not Belong to You"
 msgstr "Ця тека вам не належить"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:412
 msgid "You don't have permission to view this folder."
 msgstr "Ви не маєте дозволу на перегляд цієї теки."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Mount Folder"
 msgstr "Неможливо змонтувати теку"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:415
 msgid "Could not connect to the server for this folder."
 msgstr "Не можливо під’єднатися до сервера для цієї теки."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Display Folder Contents"
 msgstr "Не вдається показати вміст теки"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:419
 msgid "The operation timed out."
 msgstr "Час операції вичерпано."
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Show Folder"
 msgstr "Неможливо показати теку"
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:422
 msgid "The server for this folder could not be located."
 msgstr "Не вдається знайти сервер для цієї теки."
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:433
 msgid "File not Found"
 msgstr "Файл не знайдено"
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:434
 msgid "The file selected no longer exists."
 msgstr "Виділеного файлу більше не існує."
 
@@ -1193,7 +1193,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: libcore/gof-directory-async.vala:689
+#: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
 msgstr "Сервер не відповідає надто довго"
 
@@ -1492,7 +1492,7 @@ msgstr "Переміщення файлів до смітника"
 msgid "Deleting Files"
 msgstr "Видалення файлів"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1504,7 +1504,7 @@ msgstr[0] "Триває підготовка до копіювання %'d фа�
 msgstr[1] "Триває підготовка до копіювання %'d файлів (%s)"
 msgstr[2] "Триває підготовка до копіювання %'d файлів (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1516,7 +1516,7 @@ msgstr[0] "Триває підготовка до переміщення %'d ф�
 msgstr[1] "Триває підготовка до переміщення %'d файлів (%s)"
 msgstr[2] "Триває підготовка до переміщення %'d файлів (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.

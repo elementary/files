@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 04:54+0000\n"
+"POT-Creation-Date: 2021-04-23 08:11+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -20,31 +20,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: src/Application.vala:158
+#: src/Application.vala:159
 msgid "Show the version of the program"
 msgstr "Mostra la versione del programma"
 
-#: src/Application.vala:160
+#: src/Application.vala:161
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Apri uno o più indirizzi URI, ognuno in una nuova scheda"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Nuova finestra"
 
-#: src/Application.vala:164
+#: src/Application.vala:165
 msgid "Quit Files"
 msgstr "Esci da File"
 
-#: src/Application.vala:166
+#: src/Application.vala:167
 msgid "Enable debug logging"
 msgstr "Abilita il registro di debug"
 
-#: src/Application.vala:169
+#: src/Application.vala:170
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:172
+#: src/Application.vala:173
 msgid ""
 "\n"
 "\n"
@@ -54,7 +54,7 @@ msgstr ""
 "\n"
 "Esplora il file system con il gestore di file"
 
-#: src/Application.vala:200
+#: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
 msgstr "--quit non può essere usato con degli URI."
 
@@ -311,7 +311,7 @@ msgstr "Tipo"
 msgid "Modified"
 msgstr "Ultima modifica"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:403
 msgid "This Folder Does Not Exist"
 msgstr "Questa cartella non esiste"
 
@@ -520,59 +520,59 @@ msgstr "Tagliare la selezione al suo posto"
 msgid "Cannot paste files here"
 msgstr "Non è possibile incollare i file qui"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:382 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Inizio"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:404
 msgid "You cannot create a folder here."
 msgstr "Non puoi creare una cartella qui."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:407
 msgid "The network is unavailable"
 msgstr "La rete non è disponibile"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:408
 msgid "A working network is needed to reach this folder"
 msgstr "È necessaria una rete funzionante per raggiungere questa cartella"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:411
 msgid "This Folder Does Not Belong to You"
 msgstr "Questa cartella non ti appartiene"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:412
 msgid "You don't have permission to view this folder."
 msgstr "Non disponi dei permessi per sfogliare questa cartella."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Mount Folder"
 msgstr "Impossibile montare la cartella"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:415
 msgid "Could not connect to the server for this folder."
 msgstr "Impossibile connettersi al server per questa cartella."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Display Folder Contents"
 msgstr "Impossibile visualizzare il contenuto della cartella"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:419
 msgid "The operation timed out."
 msgstr "L'operazione è scaduta."
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Show Folder"
 msgstr "Impossibile mostrare la cartella"
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:422
 msgid "The server for this folder could not be located."
 msgstr "Non è stato possibile individuare il server per questa cartella."
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:433
 msgid "File not Found"
 msgstr "File non trovato"
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:434
 msgid "The file selected no longer exists."
 msgstr "Il file selezionato non esiste più."
 
@@ -1197,7 +1197,7 @@ msgstr " ("
 msgid ")"
 msgstr ")"
 
-#: libcore/gof-directory-async.vala:689
+#: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
 msgstr "Il server non ha risposto entro il limite di tempo"
 
@@ -1494,7 +1494,7 @@ msgstr "Spostamento dei file nel cestino"
 msgid "Deleting Files"
 msgstr "Eliminazione dei file"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1505,7 +1505,7 @@ msgid_plural "Preparing to copy %'d files (%s)"
 msgstr[0] "Preparazione alla copia di %'d file (%s)"
 msgstr[1] "Preparazione alla copia di %'d file (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1516,7 +1516,7 @@ msgid_plural "Preparing to move %'d files (%s)"
 msgstr[0] "Preparazione allo spostamento di %'d file (%s)"
 msgstr[1] "Preparazione allo spostamento di %'d file (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.

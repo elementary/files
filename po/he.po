@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 04:54+0000\n"
+"POT-Creation-Date: 2021-04-23 08:11+0000\n"
 "PO-Revision-Date: 2021-04-01 00:58+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -19,31 +19,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: src/Application.vala:158
+#: src/Application.vala:159
 msgid "Show the version of the program"
 msgstr "הצגת גרסת התכנית"
 
-#: src/Application.vala:160
+#: src/Application.vala:161
 msgid "Open one or more URIs, each in their own tab"
 msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "חלון חדש"
 
-#: src/Application.vala:164
+#: src/Application.vala:165
 msgid "Quit Files"
 msgstr "יציאה מקבצים"
 
-#: src/Application.vala:166
+#: src/Application.vala:167
 msgid "Enable debug logging"
 msgstr "Enable debug logging"
 
-#: src/Application.vala:169
+#: src/Application.vala:170
 msgid "[URI…]"
 msgstr "[URI...]"
 
-#: src/Application.vala:172
+#: src/Application.vala:173
 msgid ""
 "\n"
 "\n"
@@ -53,7 +53,7 @@ msgstr ""
 "\n"
 "Browse the file system with the file manager"
 
-#: src/Application.vala:200
+#: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
 msgstr "--quit cannot be used with URIs."
 
@@ -307,7 +307,7 @@ msgstr "סוג"
 msgid "Modified"
 msgstr "מועד השינוי"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:403
 msgid "This Folder Does Not Exist"
 msgstr "תיקייה זו אינה קיימת"
 
@@ -516,59 +516,59 @@ msgstr "גזירת הבחירה במקום"
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:382 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "בית"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:404
 msgid "You cannot create a folder here."
 msgstr "אין לך אפשרות ליצור כאן תיקייה."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:407
 msgid "The network is unavailable"
 msgstr "הרשת אינה זמינה"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:408
 msgid "A working network is needed to reach this folder"
 msgstr "נדרש חיבור זמין לרשת כדי לגשת לתיקייה זו"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:411
 msgid "This Folder Does Not Belong to You"
 msgstr "תיקייה זו אינה שייכת לך"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:412
 msgid "You don't have permission to view this folder."
 msgstr "אין לך הרשאה לראות תיקייה זו."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Mount Folder"
 msgstr "לא ניתן לעגן את התיקייה"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:415
 msgid "Could not connect to the server for this folder."
 msgstr "לא ניתן להתחבר לשרת לתיקייה זו."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Display Folder Contents"
 msgstr "לא ניתן להציג את תוכן התיקייה"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:419
 msgid "The operation timed out."
 msgstr "הזמן שהוקצב לפעולה ההסתיים."
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Show Folder"
 msgstr "לא ניתן להציג את התיקייה"
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:422
 msgid "The server for this folder could not be located."
 msgstr "לא ניתן לאתר את השרת עבור תיקייה זו."
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:433
 msgid "File not Found"
 msgstr "קובץ לא נמצא"
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:434
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
@@ -1169,7 +1169,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: libcore/gof-directory-async.vala:689
+#: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
 msgstr "השרת לא הגיב בזמן המוקצב"
 
@@ -1449,7 +1449,7 @@ msgstr "קבצים מועברים לסל האשפה"
 msgid "Deleting Files"
 msgstr "קבצים נמחקים"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1460,7 +1460,7 @@ msgid_plural "Preparing to copy %'d files (%s)"
 msgstr[0] "קובץ %'d בהכנה להעתקה (%s)"
 msgstr[1] "%'d קבצים בהכנה להעתקה (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1471,7 +1471,7 @@ msgid_plural "Preparing to move %'d files (%s)"
 msgstr[0] "קובץ %'d בהכנה להעברה (%s)"
 msgstr[1] "%'d קבצים בהכנה להעברה (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.

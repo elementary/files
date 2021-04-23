@@ -82,6 +82,9 @@ namespace Files {
 
         public IconRenderer (ViewMode view_mode) {
             Object (view_mode: view_mode);
+            lpad = view_mode == ViewMode.LIST ? 4 : 0;
+            show_emblems = view_mode == ViewMode.ICON;
+            xpad = 0;
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -271,7 +274,7 @@ namespace Files {
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
             // Add extra width for helper icon and make it easier to click on expander
-            minimum_size = (int)icon_size + Files.IconSize.EMBLEM + lpad;
+            minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM + lpad;
             natural_size = minimum_size;
         }
 

@@ -1066,7 +1066,7 @@ report_count_progress (CommonJob *job,
     default:
     case OP_KIND_COPY:
         num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to copy 100 files (200 MB)"
         /// The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1078,7 +1078,7 @@ report_count_progress (CommonJob *job,
         break;
     case OP_KIND_MOVE:
         num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to move 100 files (200 MB)"
         /// The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1090,7 +1090,7 @@ report_count_progress (CommonJob *job,
         break;
     case OP_KIND_DELETE:
         num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to delete 100 files (200 MB)"
         /// The order in which %'d and %s appear can be changed by using the right positional specifier.

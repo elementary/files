@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 04:54+0000\n"
+"POT-Creation-Date: 2021-04-23 08:11+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -20,32 +20,32 @@ msgstr ""
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: src/Application.vala:158
+#: src/Application.vala:159
 msgid "Show the version of the program"
 msgstr "Visa programversionen"
 
-#: src/Application.vala:160
+#: src/Application.vala:161
 #, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Öppna uri(s) i en ny tab"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Nytt fönster"
 
-#: src/Application.vala:164
+#: src/Application.vala:165
 msgid "Quit Files"
 msgstr "Avsluta Filer"
 
-#: src/Application.vala:166
+#: src/Application.vala:167
 msgid "Enable debug logging"
 msgstr "Aktivera felsöknings-loggning"
 
-#: src/Application.vala:169
+#: src/Application.vala:170
 msgid "[URI…]"
 msgstr "[URI...]"
 
-#: src/Application.vala:172
+#: src/Application.vala:173
 msgid ""
 "\n"
 "\n"
@@ -55,7 +55,7 @@ msgstr ""
 "\n"
 "Bläddra i filsystemet med filhanteraren"
 
-#: src/Application.vala:200
+#: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan inte användas med URI:er."
 
@@ -310,7 +310,7 @@ msgstr "Filtyp"
 msgid "Modified"
 msgstr "Ändrad"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:403
 msgid "This Folder Does Not Exist"
 msgstr "Den här mappen finns inte"
 
@@ -527,59 +527,59 @@ msgstr "Klipper ut markeringen istället"
 msgid "Cannot paste files here"
 msgstr "Kan inte kopiera filer hit"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:382 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Hem"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:404
 msgid "You cannot create a folder here."
 msgstr "Du kan inte skapa en mapp här."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:407
 msgid "The network is unavailable"
 msgstr "Nätverket är inte tillgängligt"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:408
 msgid "A working network is needed to reach this folder"
 msgstr "Ett fungerande nätverk behövs för att nå den här mappen"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:411
 msgid "This Folder Does Not Belong to You"
 msgstr "Den här mappen tillhör inte dig"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:412
 msgid "You don't have permission to view this folder."
 msgstr "Du saknar rättigheter för att se innehållet i denna mapp."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Mount Folder"
 msgstr "Kunde inte montera mappen"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:415
 msgid "Could not connect to the server for this folder."
 msgstr "Kunde inte ansluta till den här mappens server."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Display Folder Contents"
 msgstr "Kan inte visa mappinnehåll"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:419
 msgid "The operation timed out."
 msgstr "Åtgärden tog för lång tid."
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Show Folder"
 msgstr "Det går inte att visa mappen"
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:422
 msgid "The server for this folder could not be located."
 msgstr "Servern för den här mappen kunde inte hittas."
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:433
 msgid "File not Found"
 msgstr "Filen hittades inte"
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:434
 msgid "The file selected no longer exists."
 msgstr "Den valda filen finns inte längre."
 
@@ -1205,7 +1205,7 @@ msgstr " ("
 msgid ")"
 msgstr ""
 
-#: libcore/gof-directory-async.vala:689
+#: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
 msgstr "Servern svarade inte inom tidsgränsen"
 
@@ -1502,7 +1502,7 @@ msgstr "Kastar filer"
 msgid "Deleting Files"
 msgstr "Raderar filer"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1513,7 +1513,7 @@ msgid_plural "Preparing to copy %'d files (%s)"
 msgstr[0] "Förbereder att kopiera %'d fil (%S)"
 msgstr[1] "Förbereder att kopiera %'d filer (%S)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1524,7 +1524,7 @@ msgid_plural "Preparing to move %'d files (%s)"
 msgstr[0] "Förbereder att flytta %'d fil (%S)"
 msgstr[1] "Förbereder att flytta %'d filer (%S)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
