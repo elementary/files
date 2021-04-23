@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-09 04:54+0000\n"
-"PO-Revision-Date: 2021-04-01 14:26+0000\n"
+"PO-Revision-Date: 2021-04-23 08:11+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1270,7 +1270,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "選択中の %'d 個の項目をゴミ箱から完全に削除してもよろしいですか？"
+msgstr[0] "選択中の%'d個の項目をゴミ箱から完全に削除してもよろしいですか？"
 
 #: libcore/marlin-file-operations.c:301
 msgid "If you delete an item, it will be permanently lost."
@@ -1288,7 +1288,7 @@ msgstr "“%s” を完全に削除しますか？"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択中の %'d 個の項目を完全に削除してもよろしいですか？"
+msgstr[0] "選択中の%'d個の項目を完全に削除してもよろしいですか？"
 
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
@@ -1298,7 +1298,7 @@ msgstr "項目はゴミ箱に移動されないため、元に戻せません。
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "残り %'d 個のファイルを削除しています"
+msgstr[0] "残り%'d個のファイルを削除しています"
 
 #: libcore/marlin-file-operations.c:380
 msgid "Deleting files"
@@ -1378,7 +1378,7 @@ msgstr "ファイルをゴミ箱に移動しています"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "残り %'d 個のファイルをゴミ箱に移動しています"
+msgstr[0] "残り%'d個のファイルをゴミ箱に移動しています"
 
 #: libcore/marlin-file-operations.c:828 libcore/marlin-file-operations.c:831
 #: libcore/marlin-file-operations.c:834
@@ -1454,7 +1454,7 @@ msgstr "ファイルを削除しています"
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "%'d 個のファイル (%s) をコピーする準備をしています"
+msgstr[0] "%'d個のファイル (%s) をコピーする準備をしています"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1464,7 +1464,7 @@ msgstr[0] "%'d 個のファイル (%s) をコピーする準備をしていま�
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "%'d 個のファイル (%s) を移動する準備をしています"
+msgstr[0] "%'d個のファイル (%s) を移動する準備をしています"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1474,13 +1474,13 @@ msgstr[0] "%'d 個のファイル (%s) を移動する準備をしています"
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "%'d 個のファイル (%s) を削除する準備をしています"
+msgstr[0] "%'d個のファイル (%s) を削除する準備をしています"
 
 #: libcore/marlin-file-operations.c:1104
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備をしています"
+msgstr[0] "%'d個のファイルをゴミ箱に移動する準備をしています"
 
 #: libcore/marlin-file-operations.c:1135 libcore/marlin-file-operations.c:2061
 #: libcore/marlin-file-operations.c:2203 libcore/marlin-file-operations.c:2257
@@ -1596,13 +1596,13 @@ msgstr "\"%s\" を複製しています"
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へ移動しています"
+msgstr[0] "%'d個のファイルを \"%s\" から \"%s\" へ移動しています"
 
 #: libcore/marlin-file-operations.c:1669
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へコピーしています"
+msgstr[0] "%'d個のファイルを \"%s\" から \"%s\" へコピーしています"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1610,7 +1610,7 @@ msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へコピーしてい�
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "%'d 個のファイルを \"%s\" 内で複製しています"
+msgstr[0] "%'d個のファイルを \"%s\" 内で複製しています"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1620,13 +1620,13 @@ msgstr[0] "%'d 個のファイルを \"%s\" 内で複製しています"
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" へ移動しています"
+msgstr[0] "%'d個のファイルを \"%s\" へ移動しています"
 
 #: libcore/marlin-file-operations.c:1693
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" へコピーしています"
+msgstr[0] "%'d個のファイルを \"%s\" へコピーしています"
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
