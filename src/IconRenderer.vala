@@ -41,8 +41,10 @@ namespace Files {
             set {
                 _zoom_level = value;
                 icon_size = value.to_icon_size ();
-                h_overlap = int.min (icon_size / 8, Files.IconSize.EMBLEM / 2);
-                v_overlap = int.min (icon_size / 8, Files.IconSize.EMBLEM);
+                helper_size = (int) (_zoom_level <= ZoomLevel.NORMAL ?
+                                     Files.IconSize.EMBLEM : Files.IconSize.LARGE_EMBLEM);
+                h_overlap = helper_size / 2;
+                v_overlap = h_overlap;
             }
         }
 
@@ -58,9 +60,9 @@ namespace Files {
             }
         }
 
-        private int h_overlap;
-        private int v_overlap;
-        private int lpad;
+        private int h_overlap; // Horizontal overlap between helper and icon
+        private int v_overlap; // Vertical overlap between helper and icon
+        private int helper_size;
         private bool show_emblems;
         private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         private Files.File? _file;
@@ -81,7 +83,6 @@ namespace Files {
         }
 
         public IconRenderer (ViewMode view_mode) {
-            lpad = view_mode == ViewMode.LIST ? 4 : 0;
             show_emblems = view_mode == ViewMode.ICON;
             xpad = 0;
         }
@@ -223,9 +224,6 @@ namespace Files {
 
                 Gdk.Rectangle helper_rect = {0, 0, 1, 1};
                 if (special_icon_name != null) {
-                    var helper_size = (int) (zoom_level <= ZoomLevel.NORMAL ?
-                                             Files.IconSize.EMBLEM : Files.IconSize.LARGE_EMBLEM);
-
                     helper_rect.width = helper_size;
                     helper_rect.height = helper_size;
 
@@ -290,13 +288,12 @@ namespace Files {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            // Add extra width for helper icon and make it easier to click on expander
-            minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM + lpad;
+            minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM - h_overlap;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            natural_size = (int) (icon_size);
+            natural_size = (int) (icon_size) + Files.IconSize.EMBLEM - v_overlap;
             minimum_size = natural_size;
         }
 
