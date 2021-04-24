@@ -47,13 +47,13 @@ namespace Files {
             }
         }
 
-        private bool show_emblems = true;
-        private int helper_size = (int)Files.IconSize.EMBLEM;
         private int emblem_size = (int)Files.IconSize.EMBLEM;
         private Gdk.Rectangle emblem_area = Gdk.Rectangle ();
-        private int h_overlap;
-        private int v_overlap;
-        private int lpad;
+        private int h_overlap; // Horizontal overlap between helper and icon
+        private int v_overlap; // Vertical overlap between helper and icon
+        private int helper_size;
+
+        private bool show_emblems;
         private Files.File? _file;
         private int icon_scale = 1;
 
@@ -66,7 +66,7 @@ namespace Files {
         private ClipboardManager clipboard;
 
         construct {
-            lpad = view_mode == ViewMode.LIST ? 4 : 0;
+            // lpad = view_mode == ViewMode.LIST ? 4 : 0;
             show_emblems = view_mode == ViewMode.ICON;
             xpad = 0;
             clipboard = Files.ClipboardManager.get_for_display ();
@@ -77,12 +77,13 @@ namespace Files {
                 show_emblems = view_mode == ViewMode.ICON && icon_size > (int)Files.IconSize.SMALLEST;
                 helper_size = icon_size <= (int)Files.IconSize.NORMAL ?
                               (int)Files.IconSize.EMBLEM : (int)Files.IconSize.LARGE_EMBLEM;
+                h_overlap = helper_size / 2;
+                v_overlap = h_overlap;
             });
         }
 
         public IconRenderer (ViewMode view_mode) {
             Object (view_mode: view_mode);
-            lpad = view_mode == ViewMode.LIST ? 4 : 0;
             show_emblems = view_mode == ViewMode.ICON;
             xpad = 0;
         }
@@ -273,14 +274,16 @@ namespace Files {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            // Add extra width for helper icon and make it easier to click on expander
-            minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM + lpad;
+            // minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM - h_overlap;
+            minimum_size = (int) (icon_size) + helper_size -h_overlap;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
             minimum_size = icon_size + hover_helper_rect.height / 2;
             natural_size = minimum_size;
+            natural_size = (int) (icon_size) + helper_size - v_overlap;
+            minimum_size = natural_size;
         }
 
         /* We still have to implement this even though it is deprecated, else compiler complains.
