@@ -274,8 +274,7 @@ namespace Files {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            // minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM - h_overlap;
-            minimum_size = (int) (icon_size) + helper_size -h_overlap;
+            minimum_size = (int) (icon_size) + helper_size - h_overlap;
             natural_size = minimum_size;
         }
 
