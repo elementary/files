@@ -86,7 +86,16 @@ public class PopupMenuBuilder : Object {
     }
 
     public PopupMenuBuilder add_empty_all_trash (MenuitemCallback bookmark_cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Empty All Trash")), bookmark_cb);
+        var volume_monitor = VolumeMonitor.@get ();
+        int mounts_with_trash = 0;
+        foreach (Mount mount in volume_monitor.get_mounts ()) {
+            if (Files.FileOperations.mount_has_trash (mount)) {
+                mounts_with_trash++;
+            }
+        }
+
+        var text = mounts_with_trash > 0 ? _("Empty All Trash") : _("Empty Trash");
+        return add_item (new Gtk.MenuItem.with_mnemonic (text), bookmark_cb);
     }
 
     public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback bookmark_cb) {
