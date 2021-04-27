@@ -29,8 +29,10 @@ namespace Files {
         }
 
         protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS);
-            icon_renderer.set_property ("follow-state", true);
+            icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS) {
+                follow_state = true,
+                lpad = 6
+            };
         }
 
         protected new void on_view_selection_changed () {

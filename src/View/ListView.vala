@@ -39,8 +39,10 @@ namespace Files {
         }
 
         protected override void set_up_icon_renderer () {
-            icon_renderer = new Files.IconRenderer (Files.ViewMode.LIST);
-            icon_renderer.set_property ("follow-state", true);
+            icon_renderer = new IconRenderer (ViewMode.LIST) {
+                follow_state = true,
+                lpad = 3
+            };
         }
 
         private void connect_additional_signals () {
