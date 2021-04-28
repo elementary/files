@@ -38,10 +38,10 @@ namespace Files {
             };
 
             name_renderer = new Files.TextRenderer (ViewMode.LIST);
-            icon_renderer = new Files.IconRenderer (ViewMode.LIST);
-
             set_up_name_renderer ();
             set_up_icon_renderer ();
+            var emblem_renderer = new Files.EmblemRenderer ();
+            emblem_renderer.yalign = 0.5f;
 
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,
@@ -53,12 +53,14 @@ namespace Files {
                                         "file", Files.ListModel.ColumnID.FILE_COLUMN,
                                         "background", Files.ListModel.ColumnID.COLOR);
 
+            name_column.pack_start (emblem_renderer, false);
+            name_column.set_attributes (emblem_renderer,
+                                        "file", Files.ListModel.ColumnID.FILE_COLUMN);
+
             tree.append_column (name_column);
         }
 
-        protected void set_up_icon_renderer () {
-            icon_renderer.set_property ("follow-state", true);
-        }
+        protected abstract void set_up_icon_renderer ();
 
         protected void set_up_view () {
             connect_tree_signals ();

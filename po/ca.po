@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 04:54+0000\n"
+"POT-Creation-Date: 2021-04-23 08:11+0000\n"
 "PO-Revision-Date: 2021-04-04 19:46+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
@@ -20,31 +20,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: src/Application.vala:158
+#: src/Application.vala:159
 msgid "Show the version of the program"
 msgstr "Mostra la versió del programa."
 
-#: src/Application.vala:160
+#: src/Application.vala:161
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Obre un o més URI, cada un en una pestanya diferent"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1854
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: src/Application.vala:164
+#: src/Application.vala:165
 msgid "Quit Files"
 msgstr "Surt del Fitxers"
 
-#: src/Application.vala:166
+#: src/Application.vala:167
 msgid "Enable debug logging"
 msgstr "Activa el registre de depuració"
 
-#: src/Application.vala:169
+#: src/Application.vala:170
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:172
+#: src/Application.vala:173
 msgid ""
 "\n"
 "\n"
@@ -54,7 +54,7 @@ msgstr ""
 "\n"
 "Navegueu pel sistema de fitxers amb el gestor de fitxers"
 
-#: src/Application.vala:200
+#: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
 msgstr "--quit no es pot utilitzar amb els URI."
 
@@ -309,7 +309,7 @@ msgstr "Tipus"
 msgid "Modified"
 msgstr "Modificat"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:403
 msgid "This Folder Does Not Exist"
 msgstr "Aquesta carpeta no existeix"
 
@@ -518,59 +518,59 @@ msgstr "En canvi, es retalla la selecció"
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:382 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:404
 msgid "You cannot create a folder here."
 msgstr "Aquí no podeu crear una carpeta."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:407
 msgid "The network is unavailable"
 msgstr "La xarxa no està disponible"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:408
 msgid "A working network is needed to reach this folder"
 msgstr "Cal una xarxa que funcioni per arribar a aquesta carpeta"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:411
 msgid "This Folder Does Not Belong to You"
 msgstr "Aquesta carpeta no us pertany"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:412
 msgid "You don't have permission to view this folder."
 msgstr "No teniu permís per veure aquesta carpeta."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:414
 msgid "Unable to Mount Folder"
 msgstr "No es pot muntar la carpeta"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:415
 msgid "Could not connect to the server for this folder."
 msgstr "No s'ha pogut connectar amb el servidor per a aquesta carpeta."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:418
 msgid "Unable to Display Folder Contents"
 msgstr "No es poden mostrar els continguts de la carpeta."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:419
 msgid "The operation timed out."
 msgstr "S'ha esgotat el temps d'espera de l'operació."
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:421
 msgid "Unable to Show Folder"
 msgstr "No es pot mostrar la carpeta"
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:422
 msgid "The server for this folder could not be located."
 msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:433
 msgid "File not Found"
 msgstr "No s'ha trobat el fitxer"
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:434
 msgid "The file selected no longer exists."
 msgstr "El fitxer seleccionat ja no existeix."
 
@@ -1176,7 +1176,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: libcore/gof-directory-async.vala:689
+#: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
 msgstr "El servidor no ha respost dins del límit de temps."
 
@@ -1479,7 +1479,7 @@ msgstr "Es mouen els fitxers a la paperera"
 msgid "Deleting Files"
 msgstr "Se suprimeixen els fitxers"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1490,7 +1490,7 @@ msgid_plural "Preparing to copy %'d files (%s)"
 msgstr[0] "Es fa la preparació per copiar %'d fitxer (%s)"
 msgstr[1] "Es fa la preparació per copiar %'d fitxers (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1501,7 +1501,7 @@ msgid_plural "Preparing to move %'d files (%s)"
 msgstr[0] "Es fa la preparació per moure %'d fitxer (%s)"
 msgstr[1] "Es fa la preparació per moure %'d fitxers (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.

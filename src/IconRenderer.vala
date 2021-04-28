@@ -53,6 +53,7 @@ namespace Files {
         private Gdk.Rectangle emblem_area = Gdk.Rectangle ();
         private int h_overlap;
         private int v_overlap;
+        private int lpad;
         private Files.File? _file;
         private int icon_scale = 1;
 
@@ -77,7 +78,9 @@ namespace Files {
         }
 
         public IconRenderer (ViewMode view_mode) {
-            xpad = view_mode == ViewMode.ICON ? 0 : Files.IconSize.EMBLEM;
+            lpad = view_mode == ViewMode.LIST ? 4 : 0;
+            show_emblems = view_mode == ViewMode.ICON;
+            xpad = 0;
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -98,7 +101,12 @@ namespace Files {
 
             pix_rect.width = pixbuf.width / icon_scale;
             pix_rect.height = pixbuf.height / icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            if (show_emblems) {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            } else {
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width);
+            }
+
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
             var draw_rect = Gdk.Rectangle ();
@@ -237,6 +245,7 @@ namespace Files {
                 }
             }
 
+          if (show_emblems) {
             /* check if we should render emblems as well */
             /* Do not show emblems for very small icons in IconView */
             /* Still show emblems when selection helpers hidden in double click mode */
@@ -286,7 +295,8 @@ namespace Files {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = icon_size + hover_helper_rect.width;
+            // Add extra width for helper icon and make it easier to click on expander
+            minimum_size = icon_size + hover_helper_rect.width + lpad;
             natural_size = minimum_size;
         }
 

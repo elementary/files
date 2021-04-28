@@ -38,6 +38,11 @@ namespace Files {
             base (_slot);
         }
 
+        protected override void set_up_icon_renderer () {
+            icon_renderer = new Files.IconRenderer (Files.ViewMode.LIST);
+            icon_renderer.set_property ("follow-state", true);
+        }
+
         private void connect_additional_signals () {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
@@ -226,15 +231,13 @@ namespace Files {
         private void add_subdirectory_at_path (Gtk.TreePath path) {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
-            Directory? dir = null;
-            if (model.load_subdirectory (path, out dir)) {
-                if (dir != null) {
-                    connect_directory_handlers (dir);
-                    dir.init ();
-                    /* Maintain our own reference on dir, independent of the model */
-                    /* Also needed for updating show hidden status */
-                    loaded_subdirectories.prepend (dir);
-                }
+            Files.Directory? dir = null;
+            if (model.load_subdirectory (path, out dir)) { // Returns true if dir non null
+                connect_directory_handlers (dir);
+                dir.init ();
+                /* Maintain our own reference on dir, independent of the model */
+                /* Also needed for updating show hidden status */
+                loaded_subdirectories.prepend (dir);
             }
         }
 
