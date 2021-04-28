@@ -245,7 +245,6 @@ namespace Files {
                 }
             }
 
-          if (show_emblems) {
             /* check if we should render emblems as well */
             /* Do not show emblems for very small icons in IconView */
             /* Still show emblems when selection helpers hidden in double click mode */
