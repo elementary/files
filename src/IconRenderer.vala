@@ -44,7 +44,7 @@ namespace Files {
                 icon_size = value.to_icon_size ();
                 helper_size = (int) (_zoom_level <= ZoomLevel.NORMAL ?
                                      Files.IconSize.EMBLEM : Files.IconSize.LARGE_EMBLEM);
-                h_overlap = helper_size / 2;
+                h_overlap = int.max (12, helper_size / 2);
                 v_overlap = h_overlap;
             }
         }

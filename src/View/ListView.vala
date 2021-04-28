@@ -41,7 +41,7 @@ namespace Files {
         protected override void set_up_icon_renderer () {
             icon_renderer = new IconRenderer (ViewMode.LIST) {
                 follow_state = true,
-                lpad = 3
+                lpad = 6
             };
         }
 
