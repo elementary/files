@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+ * Copyright 2015-2021 elementary, Inc. <https://elementary.io>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -36,7 +36,7 @@ public class Files.LegacyFileChooserDialog : Object {
     private unowned Gtk.FileChooserDialog chooser_dialog;
     private unowned Gtk.Widget rootwidget;
 
-    private unowned Gtk.Box container_box;
+    private unowned Gtk.ButtonBox action_area;
     private unowned Gtk.Button? gtk_folder_button = null;
 
     private GLib.Queue<string> previous_paths;
@@ -50,12 +50,9 @@ public class Files.LegacyFileChooserDialog : Object {
     private bool can_activate = true;
 
     public LegacyFileChooserDialog (Gtk.FileChooserDialog dialog) {
-        // Don't apply the legacy filechooser twice
-        if ("pantheon-filechooser-module" in Gtk.Settings.get_default ().gtk_modules)
-            return;
-
         previous_paths = new GLib.Queue<string> ();
         next_paths = new GLib.Queue<string> ();
+
         /* The "chooser_dialog" variable is the main dialog */
         chooser_dialog = dialog;
         chooser_dialog.can_focus = true;
@@ -65,17 +62,20 @@ public class Files.LegacyFileChooserDialog : Object {
 
         var chooser_settings = new Settings ("io.elementary.files.file-chooser");
 
-        assign_container_box ();
+        action_area = (Gtk.ButtonBox) chooser_dialog.get_action_area ();
+
         remove_gtk_widgets ();
         setup_filter_box ();
 
-        var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
-        button_back.tooltip_text = _("Previous");
-        button_back.sensitive = false;
+        var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR) {
+            sensitive = false,
+            tooltip_text = _("Previous")
+        };
 
-        var button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
-        button_forward.tooltip_text = _("Next");
-        button_forward.sensitive = false;
+        var button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR) {
+            sensitive = false,
+            tooltip_text = _("Next")
+        };
 
         var location_bar = new Files.View.Chrome.BasicLocationBar ();
         location_bar.hexpand = true;
@@ -131,6 +131,7 @@ public class Files.LegacyFileChooserDialog : Object {
             button_forward.sensitive = !next_paths.is_empty ();
             location_bar.set_display_path (current_path);
         });
+
         chooser_dialog.unrealize.connect (() => {
             var last_path = location_bar.get_display_path () ?? Environment.get_home_dir ();
             chooser_settings.set_string ("last-folder-uri", last_path);
@@ -204,14 +205,17 @@ public class Files.LegacyFileChooserDialog : Object {
                     grid.margin = 0;
                     grid.valign = Gtk.Align.CENTER;
                     ((Gtk.Container)grid).border_width = 0;
+
                     ((Gtk.Container)w1).remove (grid);
-                    container_box.pack_start (grid);
-                    ((Gtk.ButtonBox)container_box).set_child_secondary (grid, true);
+
+                    action_area.pack_start (grid);
+                    action_area.set_child_secondary (grid, true);
+
                     grid.unref ();
                 });
 
                 w1.unref ();
-                container_box.show_all ();
+                action_area.show_all ();
             } else if (w1.get_name () == GTK_PATHBAR_PATH[1]) {
                 transform_w1_container (w1);
             } else {
@@ -301,14 +305,6 @@ public class Files.LegacyFileChooserDialog : Object {
         return tv;
     }
 
-    private void assign_container_box () {
-        container_box = chooser_dialog.get_action_area ();
-        container_box.valign = Gtk.Align.CENTER;
-        container_box.get_children ().foreach ((child) => {
-            child.valign = Gtk.Align.CENTER;
-        });
-    }
-
     private void setup_filter_box () {
         var filters = chooser_dialog.list_filters ();
 
@@ -340,11 +336,13 @@ public class Files.LegacyFileChooserDialog : Object {
                 index++;
             });
 
-            var grid = new Gtk.Grid ();
-            grid.valign = Gtk.Align.CENTER;
+            var grid = new Gtk.Grid () {
+                valign = Gtk.Align.CENTER
+            };
             grid.add (combo_box);
-            container_box.pack_end (grid);
-            ((Gtk.ButtonBox) container_box).set_child_secondary (grid, true);
+
+            action_area.pack_end (grid);
+            action_area.set_child_secondary (grid, true);
         }
     }
 
