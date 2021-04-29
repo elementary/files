@@ -30,7 +30,6 @@ namespace Files {
 
         protected override void set_up_icon_renderer () {
             icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS) {
-                follow_state = true,
                 lpad = 6
             };
         }

@@ -31,7 +31,6 @@ namespace Files {
     public class IconRenderer : Gtk.CellRenderer {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
-        public bool follow_state {get; set;}
         public int lpad {get; set; default = 0;}
         public Files.File? drop_file {get; set;}
 
@@ -185,7 +184,7 @@ namespace Files {
 
             if (!widget.sensitive || !this.sensitive) {
                 state |= Gtk.StateFlags.INSENSITIVE;
-            } else if (follow_state) {
+            } else {
                 if (selected) {
                     state = Gtk.StateFlags.SELECTED;
                     state |= widget.get_state_flags ();
