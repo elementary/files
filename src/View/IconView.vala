@@ -44,7 +44,6 @@ namespace Files {
             icon_renderer = new Files.IconRenderer (ViewMode.ICON);
 
             set_up_name_renderer ();
-            set_up_icon_renderer ();
 
             tree.pack_start (icon_renderer, false);
             tree.pack_end (name_renderer, false);
@@ -66,11 +65,6 @@ namespace Files {
             name_renderer.xalign = 0.5f;
             name_renderer.yalign = 0.0f;
         }
-
-        protected void set_up_icon_renderer () {
-            icon_renderer.follow_state = true;
-        }
-
 
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
