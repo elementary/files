@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-23 08:11+0000\n"
-"PO-Revision-Date: 2021-05-04 12:03+0000\n"
+"PO-Revision-Date: 2021-05-04 13:21+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
 "\n"
@@ -771,21 +771,19 @@ msgstr "%u kohdetta valittu (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u alikansio, "
-msgstr[1] "%u alikansio, "
+msgstr[1] "%u alikansiota, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u tiedosto, "
-msgstr[1] "%u tiedosto, "
+msgstr[1] "%u tiedostoa, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -800,12 +798,11 @@ msgstr "tuntematon koko"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u tiedosto ei luettavissa"
-msgstr[1] "%u tiedosto ei luettavissa"
+msgstr[1] "%u tiedostoa ei luettavissa"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1105,6 +1102,8 @@ msgstr ""
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Ei voitu luoda uudelleen kansiota %s. Ei huomioida tiedostoja kyseisessä "
+"kansiossa"
 
 #: libcore/FileUtils.vala:578
 #, c-format
