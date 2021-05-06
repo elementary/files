@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-23 08:11+0000\n"
-"PO-Revision-Date: 2021-05-04 13:21+0000\n"
+"PO-Revision-Date: 2021-05-06 09:44+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
 "\n"
@@ -1607,14 +1607,14 @@ msgstr "Kohdetta voi vain lukea."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1653
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Siirretään \"%s\" kohteeseen \"%s\""
+msgstr "Siirretään \"%s\" sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:1654
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Kopioidaan \"%s\" kohteeseen \"%s\""
+msgstr "Kopioidaan \"%s\" sijaintiin \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1655,18 +1655,18 @@ msgstr[1] "Kahdennetaan %'d tiedostoa (lähteestä ”%s”)"
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:1690
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Siirretään %'d tiedosto kohteeseen ”%B”"
-msgstr[1] "Siirretään %'d tiedostoa kohteeseen ”%B”"
+msgstr[0] "Siirretään %'d tiedosto sijaintiin \"%s\""
+msgstr[1] "Siirretään %'d tiedostoa sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:1693
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Kopioidaan %'d tiedosto kohteeseen ”%B”"
-msgstr[1] "Kopioidaan %'d tiedostoa kohteeseen ”%B”"
+msgstr[0] "Kopioidaan %'d tiedosto sijaintiin \"%s\""
+msgstr[1] "Kopioidaan %'d tiedostoa sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
@@ -1807,7 +1807,7 @@ msgstr "Tiedostoa \"%s\" ei voi kopioida tänne."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3064
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Virhe kopioitaessa tiedostoa sijaintiin %s."
 
@@ -1818,9 +1818,9 @@ msgstr "Kopioidaan tiedostoja"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3289
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Valmistellaan siirtoa kohteeseen \"%s\""
+msgstr "Valmistellaan siirtoa sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:3294
 #, c-format
@@ -1842,7 +1842,7 @@ msgstr "Siirretään tiedostoja"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3802
-#, fuzzy, c-format
+#, c-format
 msgid "Creating links in \"%s\""
 msgstr "Luodaan linkkejä kohteeseen \"%s\""
 
@@ -1869,7 +1869,7 @@ msgstr "Kohde ei tue symbolisia linkkejä."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3928
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "Virhe luotaessa symbolista linkkiä kohteeseen %s."
 
