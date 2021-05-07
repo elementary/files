@@ -291,8 +291,9 @@ namespace Files.View {
         private void before_mode_change () {
             store_selection ();
             /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-            view.close ();
             disconnect_slot_signals (view);
+            view.close ();
+
             content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
         }
