@@ -331,7 +331,7 @@ namespace Files {
         }
 
         ~AbstractDirectoryView () {
-            debug ("ADV destruct %s", slot.uri);
+            debug ("ADV destruct");
         }
 
         protected virtual void set_up_name_renderer () {
