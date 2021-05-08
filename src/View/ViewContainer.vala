@@ -242,7 +242,7 @@ namespace Files.View {
 
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
-            assert (view == null);
+            assert (view == null && loc != null);
             view_mode = mode;
 
             if (to_select != null) {
@@ -275,15 +275,19 @@ namespace Files.View {
         public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
             assert (aslot != null);
+            GLib.File new_slot_loc;
+            // We take a copy to ensure that new_slot_loc still exists when needed.
             if (loc == null) {
-                loc = location;
+                new_slot_loc = location.dup ();
+            } else {
+                new_slot_loc = loc.dup ();
             }
 
             if (mode != view_mode) {
                 view_mode = mode;
                 loading (false);
                 before_mode_change ();
-                add_view (mode, loc);
+                add_view (mode, new_slot_loc);
                 after_mode_change ();
             }
         }
