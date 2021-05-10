@@ -182,7 +182,13 @@ namespace Files.View {
             change_path (loc, make_root);
         }
 
+        private bool _changing = false;
         private void change_path (GLib.File loc, bool make_root) {
+            if (_changing) {
+                return;
+            } else {
+                _changing = true;
+            }
             var first_slot = slot_list.first ().data;
             string root_uri = first_slot.uri;
             string target_uri = loc.get_uri ();
@@ -215,6 +221,8 @@ namespace Files.View {
                     }
                 }
             }
+
+            _changing = false;
         }
 
         private bool add_relative_path (View.Slot root, GLib.File loc) {
