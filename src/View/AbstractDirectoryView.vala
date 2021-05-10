@@ -263,7 +263,7 @@ namespace Files {
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
-        protected unowned View.Slot slot;
+        protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
         protected unowned View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new DndHandler ();
 
@@ -331,7 +331,7 @@ namespace Files {
         }
 
         ~AbstractDirectoryView () {
-            debug ("ADV destruct %s", slot.uri);
+            debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
         protected virtual void set_up_name_renderer () {
