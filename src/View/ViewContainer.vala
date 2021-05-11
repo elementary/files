@@ -242,7 +242,6 @@ namespace Files.View {
 
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
-            assert (view == null);
             view_mode = mode;
 
             if (to_select != null) {
@@ -275,34 +274,19 @@ namespace Files.View {
         public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
             assert (aslot != null);
-            if (loc == null) {
-                loc = location;
-            }
 
             if (mode != view_mode) {
                 view_mode = mode;
                 loading (false);
-                before_mode_change ();
-                add_view (mode, loc);
-                after_mode_change ();
+                store_selection ();
+                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+                disconnect_slot_signals (view);
+                add_view (mode, loc ?? location);
+                /* Slot is created inactive so we activate now since we must be the current tab
+                 * to have received a change mode instruction */
+                set_active_state (true);
+                /* Do not update top menu (or record uri) unless folder loads successfully */
             }
-        }
-
-        private void before_mode_change () {
-            store_selection ();
-            /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-            disconnect_slot_signals (view);
-            view.close ();
-
-            content = null; /* Make sure old slot and directory view are destroyed */
-            view = null; /* Pre-requisite for add view */
-        }
-
-        private void after_mode_change () {
-            /* Slot is created inactive so we activate now since we must be the current tab
-             * to have received a change mode instruction */
-            set_active_state (true);
-            /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
         private void connect_slot_signals (Files.AbstractSlot aslot) {
