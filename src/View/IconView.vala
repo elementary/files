@@ -277,6 +277,7 @@ namespace Files {
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
             /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
             if (tree == null || path == null || slot == null || slot.directory == null ||
+                slot.directory.permission_denied || slot.directory.is_empty ()) {
 
                 return;
             }
