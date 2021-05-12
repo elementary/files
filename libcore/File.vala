@@ -1153,11 +1153,12 @@ public class Files.File : GLib.Object {
         return split[3] == null || split[3] == "";
     }
 
+    // We want date to sort in reverse order by default
     private int compare_files_by_time (Files.File other) {
         if (modified < other.modified)
-            return -1;
-        else if (modified > other.modified)
             return 1;
+        else if (modified > other.modified)
+            return -1;
 
         return 0;
     }

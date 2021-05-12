@@ -143,8 +143,8 @@ namespace Files.View {
 
             slot_list.@foreach ((s) => {
                 if (s.slot_number > n) {
-                    s.close ();
                     disconnect_slot_signals (s);
+                    s.close ();
                 }
             });
 
