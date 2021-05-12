@@ -90,7 +90,7 @@ namespace Files.View {
         }
 
         ~Slot () {
-            debug ("Slot destruct");
+            debug ("Slot %i destruct", slot_number);
         }
 
         private void connect_slot_signals () {
@@ -384,13 +384,11 @@ namespace Files.View {
             if (directory != null) {
                 directory.cancel ();
                 disconnect_dir_signals ();
-                directory = null;
             }
 
             if (dir_view != null) {
                 dir_view.close ();
                 disconnect_dir_view_signals ();
-                dir_view = null;
             }
         }
 

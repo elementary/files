@@ -263,7 +263,7 @@ namespace Files {
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
-        protected unowned View.Slot slot;
+        protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
         protected unowned View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new DndHandler ();
 
@@ -331,7 +331,7 @@ namespace Files {
         }
 
         ~AbstractDirectoryView () {
-            debug ("ADV destruct");
+            debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
         protected virtual void set_up_name_renderer () {
@@ -411,10 +411,12 @@ namespace Files {
             zoom_level = get_normal_zoom_level ();
         }
 
+        private uint set_cursor_timeout_id = 0;
         public void focus_first_for_empty_selection (bool select) {
             if (selected_files == null) {
-                Idle.add_full (GLib.Priority.LOW, () => {
+                set_cursor_timeout_id = Idle.add_full (GLib.Priority.LOW, () => {
                     if (!tree_frozen) {
+                        set_cursor_timeout_id = 0;
                         set_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
                         return GLib.Source.REMOVE;
                     } else {
@@ -3704,6 +3706,7 @@ namespace Files {
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
+            cancel_timeout (ref set_cursor_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 
