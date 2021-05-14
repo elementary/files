@@ -308,22 +308,21 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     /* Returns true if the file was found and removed */
     public bool remove_file (Files.File file, Files.Directory dir) {
         // Assumed that file is actually a child of dir
-        Gtk.TreeIter? iter, parent_iter, child_iter;
-        if (!get_first_iter_for_file (file, out iter)) {
+        Gtk.TreeIter? parent_iter, child_iter, file_iter, dummy_iter;
+        if (!get_first_iter_for_file (file, out file_iter)) {
             return false;
         }
 
-        if (iter != null) {
+        if (file_iter != null) {
             if (get_first_iter_for_file (dir.file, out parent_iter)) {
                 if (!iter_nth_child (out child_iter, parent_iter, 1)) {
-                    // This is the last child so just change it to dummy;
-                    @set (iter, ColumnID.FILE_COLUMN, null, PrivColumnID.DUMMY, true, -1);
-                    return true;
+                    // This is the last child so add a dummy;
+                    insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true, -1);
                 }
-            }
 
-            remove (ref iter);
-            return true;
+                remove (ref file_iter);
+                return true;
+            }
         }
 
         return false;
