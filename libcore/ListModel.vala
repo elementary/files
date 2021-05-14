@@ -291,8 +291,8 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         }
 
         if (!change_dummy) {
-            // There was no dummy row so insert a new one
-            insert_with_values (out iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, -1);
+            // There was no dummy row to replace so create a new entry for this file
+            insert_with_values (out file_iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
         }
 
         if (file.is_folder ()) {
