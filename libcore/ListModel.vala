@@ -271,23 +271,25 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     /* Returns true if the file was not in the model and was added */
     public bool add_file (Files.File file, Files.Directory dir) {
-        Gtk.TreeIter? iter, parent_iter, child_iter;
+        Gtk.TreeIter? parent_iter, file_iter, dummy_iter;
         bool change_dummy = false;
 
-        if (get_first_iter_for_file (file, out iter)) {
-            return false;
+        if (get_first_iter_for_file (file, out file_iter)) {
+            return false; // The file is already in the model - ignore the request to add
         }
 
         if (get_first_iter_for_file (dir.file, out parent_iter)) {
-            if (iter_nth_child (out child_iter, parent_iter, 0)) { //Should always be at least one child
-                get (child_iter, PrivColumnID.DUMMY, out change_dummy);
+            if (iter_nth_child (out file_iter, parent_iter, 0)) { // Must always be at least one child
+                get (file_iter, PrivColumnID.DUMMY, out change_dummy);
                 if (change_dummy) {
                     // Instead of inserting a new row, change the dummy one
-                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                    @set (file_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
                 }
+            } else {
+                critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry
             }
         } else {
-            parent_iter = null;
+            parent_iter = null; // Adding to model root
         }
 
         if (!change_dummy) {
