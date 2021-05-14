@@ -296,8 +296,8 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         }
 
         if (file.is_folder ()) {
-            // Append at least a dummy child so expander will show even when folder is empty.
-            append (out child_iter, iter);
+            // Append a dummy child so expander will show even when folder is empty.
+            insert_with_values (out dummy_iter, file_iter, -1, PrivColumnID.DUMMY, true, -1 );
         }
 
         return true;
