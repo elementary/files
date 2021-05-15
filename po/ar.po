@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-23 08:11+0000\n"
-"PO-Revision-Date: 2020-05-16 11:10+0000\n"
+"PO-Revision-Date: 2021-04-26 13:46+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
 
 #: src/Application.vala:159
@@ -344,7 +344,7 @@ msgstr "أنشئ"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr "أنشئ المجلد  \"%s\""
+msgstr "قم بإنشاء المجلد '%s'"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
@@ -1224,10 +1224,8 @@ msgstr[5] "%'d ساعات تقريبا"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:1050
-#, fuzzy
-#| msgid " (copy)"
 msgid "copy"
-msgstr " (نسخ)"
+msgstr "نسخ"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:1052
@@ -1236,10 +1234,8 @@ msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1054
-#, fuzzy
-#| msgid " ("
 msgid "("
-msgstr " ("
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1056
@@ -1531,7 +1527,7 @@ msgstr "لا يمكن نقل الملف إلى سلة المهملات.  أتح�
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr "هذا الملف لا يمكن نقله إلى سلة المهملات.  و ربما لن تستطيع حذفه أيضا."
+msgstr "هذا الملف لا يمكن نقله إلى سلة المهملات. وربما لن تستطيع حذفه أيضا."
 
 #: libcore/marlin-file-operations.c:849
 msgid ""
@@ -2145,14 +2141,12 @@ msgid "Empty the Trash"
 msgstr "افراغ سلة المهملات"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr " محددة"
+msgstr "استعادة المختارة"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " محددة"
+msgstr "احذف المختار"
 
 #~ msgid "Devices"
 #~ msgstr "الأجهزة"
