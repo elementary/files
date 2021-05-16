@@ -1039,7 +1039,7 @@ public class Files.File : GLib.Object {
     }
 
     private GLib.FileInfo? query_info () {
-        if (!(location is GLib.File) || location.get_uri ().has_prefix (Marlin.NETWORK_URI)) {
+        if (!(location is GLib.File) || location.get_uri ().has_prefix (Files.NETWORK_URI)) {
             return null;
         }
 
