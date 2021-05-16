@@ -13,11 +13,12 @@ pantheon_files_exec = executable (
     'main.vala',
 
     'Application.vala',
-    'marlin-deep-count.vala',
+    'DeepCount.vala',
     'ProgressUIHandler.vala',
     'TextRenderer.vala',
     'ClipboardManager.vala',
     'IconRenderer.vala',
+    'EmblemRenderer.vala',
     'ZeitgeistManager.vala',
 
     'Dialogs/AbstractPropertiesDialog.vala',

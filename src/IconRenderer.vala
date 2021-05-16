@@ -26,26 +26,29 @@
 
 ***/
 
-namespace Marlin {
+namespace Files {
 
     public class IconRenderer : Gtk.CellRenderer {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
-        public bool follow_state {get; set;}
-        public GOF.File? drop_file {get; set;}
+        public int lpad {get; set; default = 0;}
+        public Files.File? drop_file {get; set;}
 
-        public Marlin.ZoomLevel zoom_level {
+        public ZoomLevel zoom_level {
             get {
                 return _zoom_level;
             }
             set {
                 _zoom_level = value;
-                icon_size = Marlin.zoom_level_to_icon_size (_zoom_level);
-                show_emblems = _zoom_level > Marlin.ZoomLevel.SMALLEST;
+                icon_size = value.to_icon_size ();
+                helper_size = (int) (_zoom_level <= ZoomLevel.NORMAL ?
+                                     Files.IconSize.EMBLEM : Files.IconSize.LARGE_EMBLEM);
+                h_overlap = int.max (12, helper_size / 2);
+                v_overlap = h_overlap;
             }
         }
 
-        public GOF.File? file {
+        public Files.File? file {
             get {
                 return _file;
             }
@@ -57,10 +60,13 @@ namespace Marlin {
             }
         }
 
-        private bool show_emblems = true;
-        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
-        private GOF.File? _file;
-        private Marlin.IconSize icon_size;
+        private int h_overlap; // Horizontal overlap between helper and icon
+        private int v_overlap; // Vertical overlap between helper and icon
+        private int helper_size;
+        private bool show_emblems;
+        private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
+        private Files.File? _file;
+        private Files.IconSize icon_size;
         private int icon_scale = 1;
         private unowned Gdk.Pixbuf? pixbuf {
             get {
@@ -71,9 +77,14 @@ namespace Marlin {
         private ClipboardManager clipboard;
 
         construct {
-            clipboard = Marlin.ClipboardManager.get_for_display ();
-            hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
-            hover_helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
+            clipboard = ClipboardManager.get_for_display ();
+            hover_rect = {0, 0, (int) Files.IconSize.NORMAL, (int) Files.IconSize.NORMAL};
+            hover_helper_rect = {0, 0, (int) Files.IconSize.EMBLEM, (int) Files.IconSize.EMBLEM};
+        }
+
+        public IconRenderer (ViewMode view_mode) {
+            show_emblems = view_mode == ViewMode.ICON;
+            xpad = 0;
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -88,13 +99,26 @@ namespace Marlin {
                 file.update_icon (icon_size, icon_scale);
             }
 
+            bool is_rtl = widget.get_direction () == Gtk.TextDirection.RTL;
             Gdk.Pixbuf? pb = pixbuf;
 
             var pix_rect = Gdk.Rectangle ();
 
             pix_rect.width = pixbuf.width / icon_scale;
             pix_rect.height = pixbuf.height / icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            if (show_emblems) {
+                // Only IconView uses IconRenderer to show emblems
+                // Center the icon in available width
+                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            } else {
+                // Align.END
+                if (is_rtl) {
+                    pix_rect.x = cell_area.x;
+                } else {
+                    pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width);
+                }
+            }
+
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
             var draw_rect = Gdk.Rectangle ();
@@ -131,7 +155,7 @@ namespace Marlin {
 
             if (special_icon_name != null) {
                 special_icon_name = special_icon_name + suffix;
-                var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
+                var nicon = Files.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
                 if (nicon != null) {
                     pb = nicon.get_pixbuf_nodefault ();
                 } else {
@@ -160,7 +184,7 @@ namespace Marlin {
 
             if (!widget.sensitive || !this.sensitive) {
                 state |= Gtk.StateFlags.INSENSITIVE;
-            } else if (follow_state) {
+            } else {
                 if (selected) {
                     state = Gtk.StateFlags.SELECTED;
                     state |= widget.get_state_flags ();
@@ -196,9 +220,6 @@ namespace Marlin {
 
             style_context.restore ();
 
-            int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
-            int v_overlap = int.min (draw_rect.height, Marlin.IconSize.EMBLEM) / 2;
-
             if ((selected || prelit) && file != drop_file) {
                 special_icon_name = null;
                 if (selected && prelit) {
@@ -211,13 +232,10 @@ namespace Marlin {
 
                 Gdk.Rectangle helper_rect = {0, 0, 1, 1};
                 if (special_icon_name != null) {
-                    var helper_size = (int) (zoom_level <= Marlin.ZoomLevel.NORMAL ?
-                                             Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM);
-
                     helper_rect.width = helper_size;
                     helper_rect.height = helper_size;
 
-                    var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
+                    var nicon = Files.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
                     Gdk.Pixbuf? pix = null;
 
                     if (nicon != null) {
@@ -225,9 +243,15 @@ namespace Marlin {
                     }
 
                     if (pix != null) {
-                        helper_rect.x = int.max (cell_area.x, draw_rect.x - helper_size + h_overlap);
-                        helper_rect.y = int.max (cell_area.y, draw_rect.y - helper_size + v_overlap);
+                        // Align at start of icon
+                        if (is_rtl) {
+                            helper_rect.x = int.min (cell_area.x + cell_area.width - helper_size,
+                                                     draw_rect.x + draw_rect.width - h_overlap);
+                        } else {
+                            helper_rect.x = int.max (cell_area.x, draw_rect.x - helper_size + h_overlap);
+                        }
 
+                        helper_rect.y = int.max (cell_area.y, draw_rect.y - helper_size + v_overlap);
                         style_context.render_icon (cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale);
                     }
                 }
@@ -239,22 +263,18 @@ namespace Marlin {
                 }
             }
 
-            /* check if we should render emblems as well */
-            /* Do not show emblems for very small icons */
-            /* Still show emblems when selection helpers hidden in double click mode */
-            /* How many emblems can be shown depends on icon icon_size (zoom lebel) */
             if (show_emblems) {
-                int emblem_size = (int) Marlin.IconSize.EMBLEM;
+                int emblem_size = (int) Files.IconSize.EMBLEM;
                 int pos = 0;
                 var emblem_area = Gdk.Rectangle ();
 
                 foreach (string emblem in file.emblems_list) {
-                    if (pos > zoom_level) {
+                    if (pos - 1 > zoom_level) {
                         break;
                     }
 
                     Gdk.Pixbuf? pix = null;
-                    var nicon = Marlin.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+                    var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
 
                     if (nicon == null) {
                         continue;
@@ -272,8 +292,14 @@ namespace Marlin {
                     emblem_area.y -= emblem_size * pos;
                     emblem_area.y = int.max (cell_area.y, emblem_area.y);
 
-                    emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
-                    emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
+                    // Align at end of icon
+                    if (is_rtl) {
+                        emblem_area.x = draw_rect.x - emblem_size + h_overlap;
+                        emblem_area.x = int.max (emblem_area.x, cell_area.x);
+                    } else {
+                        emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
+                        emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
+                    }
 
                     style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                     pos++;
@@ -282,13 +308,13 @@ namespace Marlin {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) icon_size + hover_helper_rect.width;
+            minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM - h_overlap + lpad;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int) icon_size + hover_helper_rect.height / 2;
-            natural_size = minimum_size;
+            natural_size = (int) (icon_size) + Files.IconSize.EMBLEM - v_overlap;
+            minimum_size = natural_size;
         }
 
         /* We still have to implement this even though it is deprecated, else compiler complains.

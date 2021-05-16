@@ -17,11 +17,11 @@
               Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace GOF {
+namespace Files {
     public abstract class AbstractSlot : GLib.Object {
 
-        GOF.Directory.Async _directory;
-        public GOF.Directory.Async? directory {
+        Files.Directory _directory;
+        public Files.Directory? directory {
             get {
                 AbstractSlot? current = get_current_slot ();
                 if (current != null) {
@@ -34,14 +34,15 @@ namespace GOF {
             protected set {_directory = value;}
         }
 
-        public GOF.File file {
-            get {return directory.file;}
+        // Directory may be destroyed before the slot so handle case that it is null
+        public Files.File? file {
+            get { return directory != null ? directory.file : null;}
         }
-        public GLib.File location {
-            get {return directory.location;}
+        public GLib.File? location {
+            get { return directory != null ? directory.location : null;}
         }
         public string uri {
-            get {return directory.file.uri;}
+            get { return directory != null ? directory.file.uri : ""; }
         }
 
         public virtual bool locked_focus {
@@ -56,16 +57,16 @@ namespace GOF {
         protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
         public Gtk.Overlay overlay {get; protected set;}
-        protected int slot_number;
+        public int slot_number { get; protected set; }
         protected int width;
 
         public signal void active (bool scroll = true, bool animate = true);
         public signal void inactive ();
         public signal void path_changed ();
-        public signal void new_container_request (GLib.File loc, Marlin.OpenFlag flag);
-        public signal void selection_changed (GLib.List<GOF.File> files);
-        public signal void directory_loaded (GOF.Directory.Async dir);
-        public signal void item_hovered (GOF.File? file);
+        public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
+        public signal void selection_changed (GLib.List<Files.File> files);
+        public signal void directory_loaded (Files.Directory dir);
+        public signal void item_hovered (Files.File? file);
 
         public void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
@@ -92,7 +93,7 @@ namespace GOF {
         }
 
         public abstract void initialize_directory ();
-        public abstract unowned GLib.List<GOF.File>? get_selected_files ();
+        public abstract unowned GLib.List<Files.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
         public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);

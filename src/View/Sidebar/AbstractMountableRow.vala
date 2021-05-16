@@ -156,12 +156,12 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         });
     }
 
-    protected override void update_plugin_data (Marlin.SidebarPluginItem item) {
+    protected override void update_plugin_data (Files.SidebarPluginItem item) {
         base.update_plugin_data (item);
         working = item.show_spinner;
     }
 
-    protected override void activated (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+    protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         if (working) {
             return;
         }
@@ -175,7 +175,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             working = true;
             volume.mount.begin (
                 GLib.MountMountFlags.NONE,
-                new Gtk.MountOperation (Marlin.get_active_window ()),
+                new Gtk.MountOperation (Files.get_active_window ()),
                 null,
                 (obj, res) => {
                     try {
@@ -192,7 +192,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                         }
                     } catch (GLib.Error error) {
                         var primary = _("Error mounting volume '%s'").printf (volume.get_name ());
-                        PF.Dialogs.show_error_dialog (primary, error.message, Marlin.get_active_window ());
+                        PF.Dialogs.show_error_dialog (primary, error.message, Files.get_active_window ());
                     } finally {
                         working = false;
                         add_mountable_tooltip.begin ();
@@ -212,7 +212,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                         }
                     } catch (Error e) {
                             var primary = _("Unable to start '%s'").printf (drive.get_name ());
-                            PF.Dialogs.show_error_dialog (primary, e.message, Marlin.get_active_window ());
+                            PF.Dialogs.show_error_dialog (primary, e.message, Files.get_active_window ());
                     } finally {
                         working = false;
                         add_mountable_tooltip.begin ();
@@ -227,7 +227,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             return;
         }
 
-        var mount_op = new Gtk.MountOperation (Marlin.get_active_window ());
+        var mount_op = new Gtk.MountOperation (Files.get_active_window ());
         if (!permanent && mounted && mount != null) {
             if (mount.can_eject ()) {
                 working = true;
@@ -375,11 +375,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
         if (mount != null && mounted) {
-            if (Marlin.FileOperations.has_trash_files (mount)) {
+            if (Files.FileOperations.has_trash_files (mount)) {
                 menu_builder
                     .add_separator ()
                     .add_empty_mount_trash (() => {
-                        Marlin.FileOperations.empty_trash_for_mount (this, mount);
+                        Files.FileOperations.empty_trash_for_mount (this, mount);
                     })
                 ;
             }
@@ -401,9 +401,9 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             /* Mount the device if possible, defer showing the dialog after
              * we're done */
             working = true;
-            Marlin.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
+            Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
                 try {
-                    mounted = Marlin.FileOperations.mount_volume_full.end (res);
+                    mounted = Files.FileOperations.mount_volume_full.end (res);
                 } catch (Error e) {
                     mounted = false;
                     mount = null;
@@ -412,16 +412,16 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                 }
 
                 if (mounted) {
-                    new Marlin.View.VolumePropertiesWindow (
+                    new Files.View.VolumePropertiesWindow (
                         volume.get_mount (),
-                        Marlin.get_active_window ()
+                        Files.get_active_window ()
                     );
                 }
             });
-        } else if ((mount != null && mounted) || uri == Marlin.ROOT_FS_URI) {
-            new Marlin.View.VolumePropertiesWindow (
+        } else if ((mount != null && mounted) || uri == Files.ROOT_FS_URI) {
+            new Files.View.VolumePropertiesWindow (
                 mount,
-                Marlin.get_active_window ()
+                Files.get_active_window ()
             );
         }
     }

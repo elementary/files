@@ -23,9 +23,9 @@
 public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private VolumeMonitor volume_monitor;
 
-    public Marlin.SidebarInterface sidebar { get; construct; }
+    public Files.SidebarInterface sidebar { get; construct; }
 
-    public DeviceListBox (Marlin.SidebarInterface sidebar) {
+    public DeviceListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
         );
@@ -92,7 +92,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         return bm;
     }
 
-    public override uint32 add_plugin_item (Marlin.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                  plugin_item.uri,
                                  plugin_item.icon,
@@ -111,12 +111,12 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         clear ();
 
         SidebarItemInterface? row;
-        var root_uri = _(Marlin.ROOT_FS_URI);
+        var root_uri = _(Files.ROOT_FS_URI);
         if (root_uri != "") {
             row = add_bookmark (
                 _("File System"),
                 root_uri,
-                new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
+                new ThemedIcon.with_default_fallbacks (Files.ICON_FILESYSTEM),
                 null,
                 null,
                 null,

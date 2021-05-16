@@ -23,9 +23,10 @@ pantheon_files_core_vala_files = files(
     'FileChanges.vala',
     'FileUtils.vala',
     'FileConflictDialog.vala',
-    'gof-callwhenready.vala',
-    'gof-directory-async.vala',
-    'gof-preferences.vala',
+    'ListModel.vala',
+    'CallWhenReady.vala',
+    'Directory.vala',
+    'Preferences.vala',
     'PluginManager.vala',
     'Plugin.vala',
     'ProgressInfo.vala',
@@ -46,13 +47,11 @@ pantheon_files_core_vala_files = files(
 )
 
 pantheon_files_core_c_files = files(
-    'marlin-file-operations.c',
-    'fm-list-model.c',
+    'marlin-file-operations.c'
 )
 
 pantheon_files_core_h_files = files(
-    'marlin-file-operations.h',
-    'fm-list-model.h',
+    'marlin-file-operations.h'
 )
 
 pantheon_files_core_files = [

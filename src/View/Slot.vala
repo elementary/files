@@ -17,12 +17,12 @@
 ***/
 
 
-namespace Marlin.View {
-    public class Slot : GOF.AbstractSlot {
-        private unowned Marlin.View.ViewContainer ctab;
-        private Marlin.ViewMode mode;
+namespace Files.View {
+    public class Slot : Files.AbstractSlot {
+        private unowned View.ViewContainer ctab;
+        private ViewMode mode;
         private int preferred_column_width;
-        private FM.AbstractDirectoryView? dir_view = null;
+        private Files.AbstractDirectoryView? dir_view = null;
 
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
@@ -36,7 +36,7 @@ namespace Marlin.View {
         public bool is_active {get; protected set;}
         public int displayed_files_count {
             get {
-                if (directory != null && directory.state == GOF.Directory.Async.State.LOADED) {
+                if (directory != null && directory.state == Directory.State.LOADED) {
                     return (int)(directory.displayed_files_count);
                 }
 
@@ -44,7 +44,7 @@ namespace Marlin.View {
             }
         }
 
-        public unowned Marlin.View.Window window {
+        public unowned View.Window window {
             get {return ctab.window;}
         }
 
@@ -66,7 +66,7 @@ namespace Marlin.View {
         }
 
         public signal void frozen_changed (bool freeze);
-        public signal void folder_deleted (GOF.File file, GOF.Directory.Async parent);
+        public signal void folder_deleted (Files.File file, Directory parent);
 
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
@@ -74,11 +74,11 @@ namespace Marlin.View {
         public signal void miller_slot_request (GLib.File file, bool make_root);
         public signal void size_change ();
 
-        public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
+        public Slot (GLib.File _location, View.ViewContainer _ctab, ViewMode _mode) {
             ctab = _ctab;
             mode = _mode;
             is_active = false;
-            preferred_column_width = Marlin.column_view_settings.get_int ("preferred-column-width");
+            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
 
             set_up_directory (_location); /* Connect dir signals before making view */
@@ -90,7 +90,7 @@ namespace Marlin.View {
         }
 
         ~Slot () {
-            debug ("Slot destruct");
+            debug ("Slot %i destruct", slot_number);
         }
 
         private void connect_slot_signals () {
@@ -108,7 +108,7 @@ namespace Marlin.View {
             });
 
             folder_deleted.connect ((file, dir) => {
-               ((Marlin.Application)(window.application)).folder_deleted (file.location);
+               ((Files.Application)(window.application)).folder_deleted (file.location);
             });
         }
 
@@ -130,11 +130,11 @@ namespace Marlin.View {
             width = alloc.width;
         }
 
-        private void on_dir_view_item_hovered (GOF.File? file) {
+        private void on_dir_view_item_hovered (Files.File? file) {
             item_hovered (file);
         }
 
-        private void on_dir_view_selection_changed (GLib.List<GOF.File> files) {
+        private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
             selection_changed (files);
         }
 
@@ -148,11 +148,11 @@ namespace Marlin.View {
             directory.need_reload.disconnect (on_directory_need_reload);
         }
 
-        private void on_directory_done_loading (GOF.Directory.Async dir) {
+        private void on_directory_done_loading (Directory dir) {
             directory_loaded (dir);
 
             /*  Column View requires slots to determine their own width (other views' width determined by Window */
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode == ViewMode.MILLER_COLUMNS) {
 
                 if (dir.is_empty ()) { /* No files in the file cache */
                     Pango.Rectangle extents;
@@ -183,7 +183,7 @@ namespace Marlin.View {
             is_frozen = false;
         }
 
-        private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
+        private void on_directory_need_reload (Directory dir, bool original_request) {
             if (!is_frozen) {
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
@@ -223,15 +223,15 @@ namespace Marlin.View {
                 disconnect_dir_signals ();
             }
 
-            directory = GOF.Directory.Async.from_gfile (loc);
+            directory = Directory.from_gfile (loc);
             assert (directory != null);
 
             connect_dir_signals ();
         }
 
-        private void on_dir_view_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {
+        private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
+                if (mode == ViewMode.MILLER_COLUMNS) {
                     miller_slot_request (loc, make_root); /* signal to parent MillerView */
                 } else {
                     user_path_change_request (loc, make_root); /* Handle ourselves */
@@ -276,16 +276,16 @@ namespace Marlin.View {
             assert (dir_view == null);
 
             switch (mode) {
-                case Marlin.ViewMode.MILLER_COLUMNS:
-                    dir_view = new FM.ColumnView (this);
+                case ViewMode.MILLER_COLUMNS:
+                    dir_view = new Files.ColumnView (this);
                     break;
 
-                case Marlin.ViewMode.LIST:;
-                    dir_view = new FM.ListView (this);
+                case ViewMode.LIST:;
+                    dir_view = new Files.ListView (this);
                     break;
 
-                case Marlin.ViewMode.ICON:
-                    dir_view = new FM.IconView (this);
+                case ViewMode.ICON:
+                    dir_view = new Files.IconView (this);
                     break;
 
                 default:
@@ -293,7 +293,7 @@ namespace Marlin.View {
             }
 
             /* Miller View creates its own overlay and handles packing of the directory view */
-            if (mode != Marlin.ViewMode.MILLER_COLUMNS) {
+            if (mode != ViewMode.MILLER_COLUMNS) {
                 add_overlay (dir_view);
             }
         }
@@ -311,7 +311,7 @@ namespace Marlin.View {
             }
         }
 
-        public override unowned GLib.List<GOF.File>? get_selected_files () {
+        public override unowned GLib.List<Files.File>? get_selected_files () {
             if (dir_view != null) {
                 return dir_view.get_selected_files ();
             } else {
@@ -325,7 +325,7 @@ namespace Marlin.View {
             }
         }
 
-        public void select_gof_file (GOF.File gof) {
+        public void select_gof_file (Files.File gof) {
             if (dir_view != null) {
                 dir_view.select_gof_file (gof);
             }
@@ -345,11 +345,11 @@ namespace Marlin.View {
             }
         }
 
-        public override unowned GOF.AbstractSlot? get_current_slot () {
-            return this as GOF.AbstractSlot;
+        public override unowned Files.AbstractSlot? get_current_slot () {
+            return this as Files.AbstractSlot;
         }
 
-        public unowned FM.AbstractDirectoryView? get_directory_view () {
+        public unowned Files.AbstractDirectoryView? get_directory_view () {
             return dir_view;
         }
 
@@ -399,7 +399,7 @@ namespace Marlin.View {
         }
 
         public override FileInfo? lookup_file_info (GLib.File loc) {
-            GOF.File? gof = directory.file_hash_lookup_location (loc);
+            Files.File? gof = directory.file_hash_lookup_location (loc);
             if (gof != null) {
                 return gof.info;
             } else {
@@ -423,7 +423,7 @@ namespace Marlin.View {
             string msg = EMPTY_MESSAGE;
             if (directory.is_recent) {
                 msg = EMPTY_RECENT_MESSAGE;
-            } else if (directory.is_trash && (uri == Marlin.TRASH_URI + Path.DIR_SEPARATOR_S)) {
+            } else if (directory.is_trash && (uri == Files.TRASH_URI + Path.DIR_SEPARATOR_S)) {
                 msg = EMPTY_TRASH_MESSAGE;
             } else if (directory.permission_denied) {
                 msg = DENIED_MESSAGE;

@@ -57,7 +57,7 @@ typedef struct {
     gboolean replace_all;
     gboolean keep_all_newest;
     gboolean delete_all;
-    MarlinUndoActionData *undo_redo_data;
+    FilesUndoActionData *undo_redo_data;
 } CommonJob;
 
 typedef struct {
@@ -172,7 +172,7 @@ finalize_common (CommonJob *common)
     }
 
     // Start UNDO-REDO
-    marlin_undo_manager_add_action (marlin_undo_manager_instance(), common->undo_redo_data);
+    files_undo_manager_add_action (files_undo_manager_instance(), common->undo_redo_data);
     // End UNDO-REDO
 
     g_object_unref (common->progress);
@@ -262,7 +262,7 @@ job_aborted (CommonJob *job)
 static gboolean
 should_confirm_trash (void)
 {
-    return gof_preferences_get_confirm_trash (gof_preferences_get_default ());
+    return files_preferences_get_confirm_trash (files_preferences_get_default ());
 }
 
 static gboolean
@@ -583,7 +583,7 @@ retry:
 skip:
             g_error_free (error);
         } else {
-            marlin_file_changes_queue_file_removed (dir);
+            files_file_changes_queue_file_removed (dir);
             transfer_info->num_files ++;
             report_delete_progress (job, source_info, transfer_info);
             return;
@@ -613,7 +613,7 @@ delete_file (CommonJob *job, GFile *file,
 
     error = NULL;
     if (g_file_delete (file, job->cancellable, &error)) {
-        marlin_file_changes_queue_file_removed (file);
+        files_file_changes_queue_file_removed (file);
         transfer_info->num_files ++;
         report_delete_progress (job, source_info, transfer_info);
         return;
@@ -896,10 +896,10 @@ skip:
             g_error_free (error);
             total_files--;
         } else {
-            marlin_file_changes_queue_file_removed (file);
+            files_file_changes_queue_file_removed (file);
 
             // Start UNDO-REDO
-            marlin_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
+            files_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
             // End UNDO-REDO
 
             files_trashed++;
@@ -921,7 +921,7 @@ delete_job_free (DeleteJob *job)
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    files_file_changes_consume_changes (TRUE);
 }
 
 static void
@@ -1035,9 +1035,9 @@ marlin_file_operations_delete (GList               *files,
     }
 
     if (try_trash) {
-        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
+        job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
-        marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+        files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
     }
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -1066,7 +1066,7 @@ report_count_progress (CommonJob *job,
     default:
     case OP_KIND_COPY:
         num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to copy 100 files (200 MB)"
         /// The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1078,7 +1078,7 @@ report_count_progress (CommonJob *job,
         break;
     case OP_KIND_MOVE:
         num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to move 100 files (200 MB)"
         /// The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1090,7 +1090,7 @@ report_count_progress (CommonJob *job,
         break;
     case OP_KIND_DELETE:
         num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to delete 100 files (200 MB)"
         /// The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -2100,10 +2100,10 @@ retry:
         return CREATE_DEST_DIR_FAILED;
     }
 
-    marlin_file_changes_queue_file_added (*dest);
+    files_file_changes_queue_file_added (*dest);
 
     // Start UNDO-REDO
-    marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
+    files_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
     // End UNDO-REDO
 
     return CREATE_DEST_DIR_SUCCESS;
@@ -2500,7 +2500,7 @@ skip2:
 
         return FALSE;
     }
-    marlin_file_changes_queue_file_removed (file);
+    files_file_changes_queue_file_removed (file);
 
     return TRUE;
 
@@ -2808,21 +2808,21 @@ retry:
 
         if (debuting_files) {
             /*if (position) {
-                //marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
+                //files_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
             } else {
-                //marlin_file_changes_queue_schedule_position_remove (dest);
+                //files_file_changes_queue_schedule_position_remove (dest);
             }*/
 
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
         if (copy_job->is_move) {
-            marlin_file_changes_queue_file_moved (src, dest);
+            files_file_changes_queue_file_moved (src, dest);
         } else {
-           marlin_file_changes_queue_file_added (dest);
+           files_file_changes_queue_file_added (dest);
         }
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        files_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         g_object_unref (dest);
@@ -2903,18 +2903,18 @@ retry:
             goto out;
         }
 
-        if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
+        if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
 
             g_clear_pointer (&new_name, g_free);
-        } else if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
-                   response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
+        } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
+                   response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
             if (apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
-                } else if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) {
+                } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) {
                     job->keep_all_newest = TRUE;
                 } else {
                     job->replace_all = TRUE;
@@ -2923,7 +2923,7 @@ retry:
             overwrite = TRUE;
 
             gboolean keep_dest;
-            keep_dest = response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
+            keep_dest = response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
                         pf_file_utils_compare_modification_dates (src, dest) < 1;
 
             g_clear_pointer (&new_name, g_free);
@@ -2932,7 +2932,7 @@ retry:
             } else {
                 goto retry; /* Overwrite conflicting destination file */
             }
-        } else if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
+        } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir, new_name);
             g_clear_pointer (&new_name, g_free);
@@ -3019,7 +3019,7 @@ retry:
                 g_error_free (error);
                 error = NULL;
             }
-            marlin_file_changes_queue_file_removed (dest);
+            files_file_changes_queue_file_removed (dest);
         }
 
         if (is_merge) {
@@ -3174,7 +3174,7 @@ copy_job_free (CopyMoveJob *job)
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    files_file_changes_consume_changes (TRUE);
 }
 
 static void
@@ -3254,11 +3254,11 @@ marlin_file_operations_copy (GList               *files,
     inhibit_power_manager ((CommonJob *)job, _("Copying Files"));
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
+    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
     GFile* src_dir = g_file_get_parent (files->data);
-    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
     g_object_ref (target_dir);
-    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -3415,16 +3415,16 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
 
-        marlin_file_changes_queue_file_moved (src, dest);
+        files_file_changes_queue_file_moved (src, dest);
 
         /*if (position) {
-            //marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
+            //files_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
         } else {
-            marlin_file_changes_queue_schedule_position_remove (dest);
+            files_file_changes_queue_schedule_position_remove (dest);
         }*/
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
+        files_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         return;
@@ -3478,16 +3478,16 @@ retry:
             abort_job (job);
             g_clear_pointer (&new_name, g_free);
             goto out;
-        } else if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
+        } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
             g_clear_pointer (&new_name, g_free);
-        } else if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
-                   response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
+        } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
+                   response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
 
-            if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
-                pf_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not older */
+            if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
+                pf_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not olderZ */
 
                 g_clear_pointer (&new_name, g_free);
                 goto out;/* Skip this one */
@@ -3504,7 +3504,7 @@ retry:
             overwrite = TRUE;
             g_clear_pointer (&new_name, g_free);
             goto retry;
-        } else if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
+        } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir, new_name);
             g_clear_pointer (&new_name, g_free);
@@ -3665,7 +3665,7 @@ move_job_free (CopyMoveJob *job)
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    files_file_changes_consume_changes (TRUE);
 }
 
 static void
@@ -3764,14 +3764,14 @@ marlin_file_operations_move (GList               *files,
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
     // Start UNDO-REDO
     if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
-        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
+        job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
     } else {
-        job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
+        job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
     }
     GFile* src_dir = g_file_get_parent (files->data);
-    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
     g_object_ref (target_dir);
-    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -3858,7 +3858,7 @@ retry:
                                           &error)) {
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_origin_target_pair (common->undo_redo_data, src, dest);
+        files_undo_action_data_add_origin_target_pair (common->undo_redo_data, src, dest);
         // End UNDO-REDO
 
         g_free (path);
@@ -3866,7 +3866,7 @@ retry:
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
-       marlin_file_changes_queue_file_added (dest);
+       files_file_changes_queue_file_added (dest);
 
         g_object_unref (dest);
 
@@ -3969,7 +3969,7 @@ link_job_free (CopyMoveJob *job)
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    files_file_changes_consume_changes (TRUE);
 }
 
 static void
@@ -4042,11 +4042,11 @@ marlin_file_operations_link (GList               *files,
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
+    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
     GFile* src_dir = g_file_get_parent (files->data);
-    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
     g_object_ref (target_dir);
-    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4080,11 +4080,11 @@ marlin_file_operations_duplicate (GList               *files,
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
+    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
     GFile* src_dir = g_file_get_parent (files->data);
-    marlin_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
     g_object_ref (src_dir);
-    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, src_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4166,7 +4166,7 @@ set_permissions_file (SetPermissionsJob *job,
         current = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
 
         // Start UNDO-REDO
-        marlin_undo_action_data_add_file_permissions(common->undo_redo_data, file, current);
+        files_undo_action_data_add_file_permissions(common->undo_redo_data, file, current);
         // End UNDO-REDO
 
         current = (current & ~mask) | value;
@@ -4249,10 +4249,10 @@ marlin_file_set_permissions_recursive (const char *directory,
     job->done_callback_data = callback_data;
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
+    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
     g_object_ref (job->file);
-    marlin_undo_action_data_set_dest_dir (job->common.undo_redo_data, job->file);
-    marlin_undo_action_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
+    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, job->file);
+    files_undo_action_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (set_permissions_job,
@@ -4500,7 +4500,7 @@ create_job_free (CreateJob *job)
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    files_file_changes_consume_changes (TRUE);
 }
 
 static void
@@ -4586,7 +4586,7 @@ retry:
                                      &error);
         // Start UNDO-REDO
         if (res) {
-            marlin_undo_action_data_set_create_data(common->undo_redo_data,
+            files_undo_action_data_set_create_data(common->undo_redo_data,
                                                      g_file_get_uri(dest),
                                                      NULL);
         }
@@ -4601,7 +4601,7 @@ retry:
                                &error);
             // Start UNDO-REDO
             if (res) {
-                marlin_undo_action_data_set_create_data(common->undo_redo_data,
+                files_undo_action_data_set_create_data(common->undo_redo_data,
                                                          g_file_get_uri(dest),
                                                          g_file_get_uri(job->src));
             }
@@ -4630,7 +4630,7 @@ retry:
                                                  &error);
                     // Start UNDO-REDO
                     if (res) {
-                        marlin_undo_action_data_set_create_data(common->undo_redo_data,
+                        files_undo_action_data_set_create_data(common->undo_redo_data,
                                                                  g_file_get_uri(dest),
                                                                  g_strdup(data));
                     }
@@ -4646,7 +4646,7 @@ retry:
 
     if (res) {
         job->created_file = g_object_ref (dest);
-       marlin_file_changes_queue_file_added (dest);
+       files_file_changes_queue_file_added (dest);
     } else {
         g_assert (error != NULL);
 
@@ -4796,7 +4796,7 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
     job->make_dir = TRUE;
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
+    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4840,7 +4840,7 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
     }
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
+    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4883,7 +4883,7 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
     job->filename = g_strdup (target_filename);
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = marlin_undo_action_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
+    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);

@@ -18,7 +18,7 @@
              Julián Unrrein <junrrein@gmail.com>
 ***/
 
-public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
+public class Files.ConnectServer.Operation : Gtk.MountOperation {
 
     private PF.ConnectServerDialog dialog;
 

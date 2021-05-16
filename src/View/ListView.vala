@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -16,7 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace FM {
+namespace Files {
     public class ListView : AbstractTreeView {
 
         /* We wait two seconds after row is collapsed to unload the subdirectory */
@@ -32,10 +32,16 @@ namespace FM {
         /* ListView manages the loading and unloading of subdirectories displayed */
         private uint unload_file_timeout_id = 0;
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
-        private GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
+        private GLib.List<Directory> loaded_subdirectories = null;
 
-        public ListView (Marlin.View.Slot _slot) {
+        public ListView (View.Slot _slot) {
             base (_slot);
+        }
+
+        protected override void set_up_icon_renderer () {
+            icon_renderer = new IconRenderer (ViewMode.LIST) {
+                lpad = 6
+            };
         }
 
         private void connect_additional_signals () {
@@ -45,10 +51,10 @@ namespace FM {
         }
 
         private void append_extra_tree_columns () {
-            int fnc = FM.ListModel.ColumnID.FILENAME;
+            int fnc = ListModel.ColumnID.FILENAME;
 
-            int preferred_column_width = Marlin.column_view_settings.get_int ("preferred-column-width");
-            for (int k = fnc; k < FM.ListModel.ColumnID.NUM_COLUMNS; k++) {
+            int preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            for (int k = fnc; k < ListModel.ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
                     name_column.set_title (column_titles [0]);
@@ -64,7 +70,7 @@ namespace FM {
                         min_width = 24
                     };
 
-                    if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED) {
+                    if (k == ListModel.ColumnID.SIZE || k == ListModel.ColumnID.MODIFIED) {
                         renderer.@set ("xalign", 1.0f);
                     } else {
                         renderer.@set ("xalign", 0.0f);
@@ -85,7 +91,7 @@ namespace FM {
             schedule_unload_subdirectory_at_path (path);
         }
 
-        private void on_model_subdirectory_unloaded (GOF.Directory.Async dir) {
+        private void on_model_subdirectory_unloaded (Directory dir) {
             /* ensure the model and our list of subdirectories are kept in sync */
             remove_subdirectory (dir);
         }
@@ -98,7 +104,7 @@ namespace FM {
         }
 
         private void set_path_expanded (Gtk.TreePath path, bool expanded) {
-            GOF.File? file = model.file_for_path (path);
+            Files.File? file = model.file_for_path (path);
 
             if (file != null) {
                 file.set_expanded (expanded);
@@ -198,47 +204,45 @@ namespace FM {
             return tree as Gtk.Widget;
         }
 
-        protected override Marlin.ZoomLevel get_set_up_zoom_level () {
-            var zoom = Marlin.list_view_settings.get_enum ("zoom-level");
-            Marlin.list_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+        protected override void set_up_zoom_level () {
+            Files.list_view_settings.bind (
+                "zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.DEFAULT
+            );
 
-            minimum_zoom = (Marlin.ZoomLevel)Marlin.list_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (Marlin.ZoomLevel)Marlin.list_view_settings.get_enum ("maximum-zoom-level");
+            maximum_zoom = (ZoomLevel)Files.list_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom) {
+            if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
                 zoom_level = minimum_zoom;
             }
 
             if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
             }
-
-            return (Marlin.ZoomLevel)zoom;
         }
 
-        public override Marlin.ZoomLevel get_normal_zoom_level () {
-            var zoom = Marlin.list_view_settings.get_enum ("default-zoom-level");
-            Marlin.list_view_settings.set_enum ("zoom-level", zoom);
+        public override ZoomLevel get_normal_zoom_level () {
+            var zoom = Files.list_view_settings.get_enum ("default-zoom-level");
+            Files.list_view_settings.set_enum ("zoom-level", zoom);
 
-            return (Marlin.ZoomLevel)zoom;
+            return (ZoomLevel)zoom;
         }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
-            GOF.Directory.Async? dir = null;
-            if (model.load_subdirectory (path, out dir)) {
-                if (dir != null) {
-                    connect_directory_handlers (dir);
-                    dir.init ();
-                    /* Maintain our own reference on dir, independent of the model */
-                    /* Also needed for updating show hidden status */
-                    loaded_subdirectories.prepend (dir);
-                }
+            Files.Directory? dir = null;
+            if (model.load_subdirectory (path, out dir)) { // Returns true if dir non null
+                connect_directory_handlers (dir);
+                dir.init ();
+                /* Maintain our own reference on dir, independent of the model */
+                /* Also needed for updating show hidden status */
+                loaded_subdirectories.prepend (dir);
             }
         }
 
-        private void remove_subdirectory (GOF.Directory.Async? dir) {
+        private void remove_subdirectory (Directory? dir) {
             if (dir != null) {
                 disconnect_directory_handlers (dir);
                 /* Release our reference on dir */

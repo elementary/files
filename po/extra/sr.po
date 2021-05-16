@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-31 21:50+0000\n"
+"POT-Creation-Date: 2021-04-23 08:11+0000\n"
 "PO-Revision-Date: 2021-03-12 05:56+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <https://l10n.elementary.io/projects/files/extra/sr/"
@@ -69,29 +69,40 @@ msgstr ""
 "СФТП, АФП, Вебдав или Виндоуз дељење."
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:96
+#: data/io.elementary.files.appdata.xml.in.in:84
+#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:125
+msgid "Fixes:"
+msgstr "Поправке:"
+
+#: data/io.elementary.files.appdata.xml.in.in:65
+msgid "Fix connecting to AFP servers so that passwords are remembered"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:67
+#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:100
 msgid "Improvements:"
 msgstr "Побољшања:"
 
-#: data/io.elementary.files.appdata.xml.in.in:65
+#: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Do not restore locations that have become inaccessible"
 msgstr "Не враћа места која су постала неприступна"
 
-#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
 msgstr ""
 "Кликање између минијатура и текста сада активира/бира у прегледу иконицама"
 
-#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:78
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr "Додаје у обележивач опцију изборника за мрежна качења у бочној површи"
 
-#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Show folder item count in List View"
 msgstr "Приказује број ставки фасцикли у прегледу списком"
 
-#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:80
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
@@ -99,38 +110,32 @@ msgstr ""
 "Сада по основи приказује минијатуре на локално прикачене МТП и ПТП уређајима "
 "као и на мрежним локацијама"
 
-#: data/io.elementary.files.appdata.xml.in.in:77
+#: data/io.elementary.files.appdata.xml.in.in:81
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
 "Прозор својстава: Допушта умножавање назива датотеке када се не може "
 "уређивати"
 
-#: data/io.elementary.files.appdata.xml.in.in:78
+#: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Improved tooltip formatting for devices in the sidebar"
 msgstr "Побољшано форматирање облачића за уређаје у бочној површи"
 
-#: data/io.elementary.files.appdata.xml.in.in:80
-#: data/io.elementary.files.appdata.xml.in.in:101
-#: data/io.elementary.files.appdata.xml.in.in:121
-msgid "Fixes:"
-msgstr "Поправке:"
-
-#: data/io.elementary.files.appdata.xml.in.in:82
+#: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr ""
 "Поправља урушавање приликом притиска „Унеси“ и другог тастера у исто време"
 
-#: data/io.elementary.files.appdata.xml.in.in:83
+#: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr "Поправља руковање траке путање са ~ и .. у путањи"
 
-#: data/io.elementary.files.appdata.xml.in.in:84
+#: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
 "Трака путање бирача датотека више се не урушава када се призове из Флатпака"
 
-#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:89
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
@@ -138,291 +143,291 @@ msgstr ""
 "Не приказује стање гита за ризнице на „FUSE“ системима датотека да спречи "
 "могуће блокирање"
 
-#: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:106
-#: data/io.elementary.files.appdata.xml.in.in:128
-#: data/io.elementary.files.appdata.xml.in.in:181
+#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:110
+#: data/io.elementary.files.appdata.xml.in.in:132
+#: data/io.elementary.files.appdata.xml.in.in:185
 msgid "Other updates:"
 msgstr "Остала ажурирања:"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:93
 msgid "\"Personal\" is now \"Bookmarks\""
 msgstr "„Лично“ је сада „Обележивачи“"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:108
-#: data/io.elementary.files.appdata.xml.in.in:130
-#: data/io.elementary.files.appdata.xml.in.in:144
-#: data/io.elementary.files.appdata.xml.in.in:157
-#: data/io.elementary.files.appdata.xml.in.in:170
-#: data/io.elementary.files.appdata.xml.in.in:202
-#: data/io.elementary.files.appdata.xml.in.in:224
-#: data/io.elementary.files.appdata.xml.in.in:233
-#: data/io.elementary.files.appdata.xml.in.in:242
-#: data/io.elementary.files.appdata.xml.in.in:253
-#: data/io.elementary.files.appdata.xml.in.in:262
-#: data/io.elementary.files.appdata.xml.in.in:281
-#: data/io.elementary.files.appdata.xml.in.in:292
-#: data/io.elementary.files.appdata.xml.in.in:300
-#: data/io.elementary.files.appdata.xml.in.in:332
+#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:112
+#: data/io.elementary.files.appdata.xml.in.in:134
+#: data/io.elementary.files.appdata.xml.in.in:148
+#: data/io.elementary.files.appdata.xml.in.in:161
+#: data/io.elementary.files.appdata.xml.in.in:174
+#: data/io.elementary.files.appdata.xml.in.in:206
+#: data/io.elementary.files.appdata.xml.in.in:228
+#: data/io.elementary.files.appdata.xml.in.in:237
+#: data/io.elementary.files.appdata.xml.in.in:246
+#: data/io.elementary.files.appdata.xml.in.in:257
+#: data/io.elementary.files.appdata.xml.in.in:266
+#: data/io.elementary.files.appdata.xml.in.in:285
+#: data/io.elementary.files.appdata.xml.in.in:296
+#: data/io.elementary.files.appdata.xml.in.in:304
+#: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Updated translations"
 msgstr "Освежава преводе"
 
-#: data/io.elementary.files.appdata.xml.in.in:98
+#: data/io.elementary.files.appdata.xml.in.in:102
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
 "Додаје обојене траке упозорења и грешке искоришћености диска када диск "
 "постане препун"
 
-#: data/io.elementary.files.appdata.xml.in.in:99
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
 "Спречава промену величине прозора када ширина колоне назива датотеке "
 "премашује доступан простор"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Fix handling of filenames containing the # character"
 msgstr "Поправља рад са називима датотека које садрже #"
 
-#: data/io.elementary.files.appdata.xml.in.in:104
+#: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
 "Поправља регресије које се тичу приручних изборника и кликања траке путање"
 
-#: data/io.elementary.files.appdata.xml.in.in:115
+#: data/io.elementary.files.appdata.xml.in.in:119
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr "Убацује слике у друге програме уместо у путање датотека када је могуће"
 
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:120
 msgid "Paste into a selected folder when using Ctrl + V"
 msgstr "Убацује у изабрану фасциклуприликом коришћења Ктрл+V"
 
-#: data/io.elementary.files.appdata.xml.in.in:117
+#: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Show file info overlay in List View as well"
 msgstr "Приказује информације датотеке исто тако у прегледу списком"
 
-#: data/io.elementary.files.appdata.xml.in.in:118
+#: data/io.elementary.files.appdata.xml.in.in:122
 msgid "Traverse search results with Tab key"
 msgstr "Резултати попречне претраге са тастером табулатора"
 
-#: data/io.elementary.files.appdata.xml.in.in:119
+#: data/io.elementary.files.appdata.xml.in.in:123
 msgid "Show an error message when attempting to open trashed files"
 msgstr "Приказује поруку грешке приликом покушаја отварања датотеке у смећу"
 
-#: data/io.elementary.files.appdata.xml.in.in:123
+#: data/io.elementary.files.appdata.xml.in.in:127
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
 "Поправља неуредиву област у траци путање која је приказала држача места "
 "личне фасцикле"
 
-#: data/io.elementary.files.appdata.xml.in.in:124
+#: data/io.elementary.files.appdata.xml.in.in:128
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr "Поправља проблем који је спречио приказивање времена измена датотека"
 
-#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:129
 msgid "Fix size of restored tiled window"
 msgstr "Поправља величину повраћеног поплочаног прозора"
 
-#: data/io.elementary.files.appdata.xml.in.in:126
+#: data/io.elementary.files.appdata.xml.in.in:130
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr "Поправља нестајање ознака боје када је сличица скривена"
 
-#: data/io.elementary.files.appdata.xml.in.in:136
-#: data/io.elementary.files.appdata.xml.in.in:150
+#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:154
 msgid "Minor updates:"
 msgstr "Мања освежења:"
 
-#: data/io.elementary.files.appdata.xml.in.in:138
+#: data/io.elementary.files.appdata.xml.in.in:142
 msgid "Fix crash when a device icon is coming from a file"
 msgstr "Поправља урушавање када иконица уређаја долази из датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:139
+#: data/io.elementary.files.appdata.xml.in.in:143
 msgid "Fix device icon sometimes missing"
 msgstr "Поправља иконицу уређаја која некада недостаје"
 
-#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:144
 msgid "Fix occasional view freeze after renaming"
 msgstr "Поправља повремено замрзавање прегледа након преименовања"
 
-#: data/io.elementary.files.appdata.xml.in.in:141
+#: data/io.elementary.files.appdata.xml.in.in:145
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
 "Побољшава логику преименовања приликом рада са водећим/пратећим празнинама"
 
-#: data/io.elementary.files.appdata.xml.in.in:142
+#: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Fix breadcrumbs sometimes incorrect at startup"
 msgstr "Поправља путање кретања које су понекад нетачне при покретању"
 
-#: data/io.elementary.files.appdata.xml.in.in:143
+#: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Do not show file:// prefix in navigation buttons menus"
 msgstr "Не приказује префикс „file://“ у изборнику дугмади навигације"
 
-#: data/io.elementary.files.appdata.xml.in.in:152
+#: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
 msgstr "Поправља натпис пречице тастатуре „Нова фасцикла“ у изборнику"
 
-#: data/io.elementary.files.appdata.xml.in.in:153
+#: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Fix navigation with back/forward button context menu"
 msgstr "Поправља навигацију помоћу напред/назад дугмета приручног изборника"
 
-#: data/io.elementary.files.appdata.xml.in.in:154
+#: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
 "Поправља траку путање која понекад показује погрешну путању приликом "
 "затварања језичка"
 
-#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/io.elementary.files.appdata.xml.in.in:159
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
 "Осигурава да пречице тастатуре раде одмах након стварања или преименовања "
 "датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:156
+#: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
 "Не укључује „file://“ у тексту траке путање или приликом убацивања путање "
 "као текста"
 
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:168
 msgid "Show keyboard shortcuts in menu items"
 msgstr "Приказује пречице тастатуре у ставкама изборника"
 
-#: data/io.elementary.files.appdata.xml.in.in:165
+#: data/io.elementary.files.appdata.xml.in.in:169
 msgid "Fix an issue with breadcrumbs in the file chooser"
 msgstr "Поправља проблем са путањама навигације у бирачу датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:170
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr ""
 "Приказује упозорење приликом избацивања волумена који је још у употреби"
 
-#: data/io.elementary.files.appdata.xml.in.in:167
+#: data/io.elementary.files.appdata.xml.in.in:171
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
 "Поправља освежавање курзора након водоравног премицања у прегледу колоном"
 
-#: data/io.elementary.files.appdata.xml.in.in:168
+#: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
 "Поправља остајање иконице отварања фасцикле након затварања прегледа колоне"
 
-#: data/io.elementary.files.appdata.xml.in.in:169
+#: data/io.elementary.files.appdata.xml.in.in:173
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr "Користи рушилачко стилирање радње за неке дугмиће прозорчета смећа"
 
-#: data/io.elementary.files.appdata.xml.in.in:176
+#: data/io.elementary.files.appdata.xml.in.in:180
 msgid "New features:"
 msgstr "Нове функције:"
 
-#: data/io.elementary.files.appdata.xml.in.in:178
+#: data/io.elementary.files.appdata.xml.in.in:182
 msgid "Initial git plugin support"
 msgstr "Почетна подршка прикључка гита"
 
-#: data/io.elementary.files.appdata.xml.in.in:179
+#: data/io.elementary.files.appdata.xml.in.in:183
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr "Прати опште поставке историјата приликом враћања и чувања језичака"
 
-#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:187
 msgid "Ensure tabs showing same folder remain synchronized"
 msgstr "Осигурава да језичци који приказују исту фасциклу остану усклађени"
 
-#: data/io.elementary.files.appdata.xml.in.in:184
+#: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Fix drag with secondary button on empty space"
 msgstr "Поправља превлачење другим дугметом на празном простору"
 
-#: data/io.elementary.files.appdata.xml.in.in:185
+#: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Show custom media type icons for installed apps"
 msgstr "Приказује произвољне иконице врсте медија за инсталиране програме"
 
-#: data/io.elementary.files.appdata.xml.in.in:186
+#: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Fix appearance of inactive diskspace indicator"
 msgstr "Поправља изглед неактивног указивача простора диска"
 
-#: data/io.elementary.files.appdata.xml.in.in:187
+#: data/io.elementary.files.appdata.xml.in.in:191
 msgid "Improve pathbar animation"
 msgstr "Побољшава анимацију траке путање"
 
-#: data/io.elementary.files.appdata.xml.in.in:188
+#: data/io.elementary.files.appdata.xml.in.in:192
 msgid "Update documentation"
 msgstr "Освежава документацију"
 
-#: data/io.elementary.files.appdata.xml.in.in:189
+#: data/io.elementary.files.appdata.xml.in.in:193
 msgid "Update translations"
 msgstr "Освежава преводе"
 
-#: data/io.elementary.files.appdata.xml.in.in:196
+#: data/io.elementary.files.appdata.xml.in.in:200
 msgid "Initial cloudproviders plugin support"
 msgstr "Почетна подршка прикључка достављача облака"
 
-#: data/io.elementary.files.appdata.xml.in.in:197
+#: data/io.elementary.files.appdata.xml.in.in:201
 msgid "Fix selecting pasted files"
 msgstr "Поправља бирање убачених датотека"
 
-#: data/io.elementary.files.appdata.xml.in.in:198
+#: data/io.elementary.files.appdata.xml.in.in:202
 msgid "Fix color label visibility while using dark theme"
 msgstr "Поправља видљивост натписа боје приликом коришћења тамне теме"
 
-#: data/io.elementary.files.appdata.xml.in.in:199
+#: data/io.elementary.files.appdata.xml.in.in:203
 msgid "Fix selecting files using Shift key"
 msgstr "Поправља бирање датотека коришћењем тастера промене"
 
-#: data/io.elementary.files.appdata.xml.in.in:200
+#: data/io.elementary.files.appdata.xml.in.in:204
 msgid "Draw checkerboard background for image items"
 msgstr "Исцртава позадину табле означивача за ставке слике"
 
-#: data/io.elementary.files.appdata.xml.in.in:201
+#: data/io.elementary.files.appdata.xml.in.in:205
 msgid "Improved styling for disk space bars"
 msgstr "Побољшано стилисање за траке простора диска"
 
-#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Show more search results"
 msgstr "Приказује више резултата претраге"
 
-#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:214
 msgid "Ensure valid tab name generation"
 msgstr "Осигурава исправно стварање назива језичка"
 
-#: data/io.elementary.files.appdata.xml.in.in:211
+#: data/io.elementary.files.appdata.xml.in.in:215
 msgid "Properly sort folders by date and size"
 msgstr "Исправно ређа фасцикле према датуму и величини"
 
-#: data/io.elementary.files.appdata.xml.in.in:212
+#: data/io.elementary.files.appdata.xml.in.in:216
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 "Покретање датотека из терминала сада отвара нови језичак уместо новог прозора"
 
-#: data/io.elementary.files.appdata.xml.in.in:213
+#: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Improve MTP support"
 msgstr "Побољшава МТП подршку"
 
-#: data/io.elementary.files.appdata.xml.in.in:214
+#: data/io.elementary.files.appdata.xml.in.in:218
 msgid "Various tagging feature refinements"
 msgstr "Различита дорађивања функције означавања"
 
-#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:219
 msgid "Keyboard navigation improvements"
 msgstr "Побољшања навигације тастатуром"
 
-#: data/io.elementary.files.appdata.xml.in.in:216
+#: data/io.elementary.files.appdata.xml.in.in:220
 msgid "Symlink copy and paste fixes"
 msgstr "Исправке умножавања и убацивања симболичке везе"
 
-#: data/io.elementary.files.appdata.xml.in.in:217
+#: data/io.elementary.files.appdata.xml.in.in:221
 msgid "Avoid crash when Templates folder is null"
 msgstr "Избегава урушавање када је фасцикла шаблона ништавна"
 
-#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:222
 msgid "Reduce memory footprint of FileChooserDialog"
 msgstr "Умањује отисак меморије прозорчета бирача датотека"
 
-#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:223
 msgid "Avoid crash when selecting image file in some situations"
 msgstr "Избегава урушавање приликом бирања датотеке слике у неким приликама"
 
-#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:224
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
@@ -430,48 +435,48 @@ msgstr ""
 "Поправља незатворив прозор напредовања приликом умножавања датотека мреже на "
 "уклоњиви смештај"
 
-#: data/io.elementary.files.appdata.xml.in.in:221
+#: data/io.elementary.files.appdata.xml.in.in:225
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr ""
 "Поправља превлачење и убацивање након двоструког клика на празну област"
 
-#: data/io.elementary.files.appdata.xml.in.in:222
+#: data/io.elementary.files.appdata.xml.in.in:226
 msgid "Avoid crash while scrolling over view switcher"
 msgstr "Избегава урушавање приликом премицања преко пребацивача прегледа"
 
-#: data/io.elementary.files.appdata.xml.in.in:223
+#: data/io.elementary.files.appdata.xml.in.in:227
 msgid "Avoid possible crash in some copy and paste situations"
 msgstr "Избегава могуће падове у неким ситуацијама умножавања и убацивања"
 
-#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:235
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
 "Поправка навигације тастатуром за пробирање датотека избора у прегледу "
 "иконицама"
 
-#: data/io.elementary.files.appdata.xml.in.in:232
+#: data/io.elementary.files.appdata.xml.in.in:236
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
 "Не кодира стриктно стил текста чувара места претраге, поправља проблем тамне "
 "теме"
 
-#: data/io.elementary.files.appdata.xml.in.in:240
+#: data/io.elementary.files.appdata.xml.in.in:244
 msgid "Minor spacing adjustments to location bar"
 msgstr "Мања поправљања размака на траци места"
 
-#: data/io.elementary.files.appdata.xml.in.in:241
+#: data/io.elementary.files.appdata.xml.in.in:245
 msgid "Fix F2 renaming behavior"
 msgstr "Поправља понашање тастера преименовања (Ф2)"
 
-#: data/io.elementary.files.appdata.xml.in.in:249
+#: data/io.elementary.files.appdata.xml.in.in:253
 msgid "Minor spacing adjustments to location breadcrumbs"
 msgstr "Мања поправљања размака на путањама навигације локације"
 
-#: data/io.elementary.files.appdata.xml.in.in:250
+#: data/io.elementary.files.appdata.xml.in.in:254
 msgid "Consistently remember color tags"
 msgstr "Непрекидно памти ознаке боје"
 
-#: data/io.elementary.files.appdata.xml.in.in:251
+#: data/io.elementary.files.appdata.xml.in.in:255
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
@@ -479,208 +484,208 @@ msgstr ""
 "Поново учитава минијатуре када мења ниво увеличања да избегне непотребно "
 "приказивање чувара места"
 
-#: data/io.elementary.files.appdata.xml.in.in:252
+#: data/io.elementary.files.appdata.xml.in.in:256
 msgid "Fix running scripts with spaces in filename"
 msgstr "Поправља покренуте скрипте са размацима у називу датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:260
+#: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Fix high CPU regression in version 4.1.4"
 msgstr "Поправља високу регресију процесора у издању 4.1.4"
 
-#: data/io.elementary.files.appdata.xml.in.in:261
+#: data/io.elementary.files.appdata.xml.in.in:265
 msgid "File sorting fixes"
 msgstr "Исправке ређања датотека"
 
-#: data/io.elementary.files.appdata.xml.in.in:269
+#: data/io.elementary.files.appdata.xml.in.in:273
 msgid "Meson: fix soversion names"
 msgstr "Месон: поправи називе соверзије"
 
-#: data/io.elementary.files.appdata.xml.in.in:270
+#: data/io.elementary.files.appdata.xml.in.in:274
 msgid "Remove CMake build system"
 msgstr "Уклања „CMake“ систем изградње"
 
-#: data/io.elementary.files.appdata.xml.in.in:271
+#: data/io.elementary.files.appdata.xml.in.in:275
 msgid "Fix missing File System properties menu"
 msgstr "Поправља недостајући изборник својстава система датотека"
 
-#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:276
 msgid "Drop intltool dependency"
 msgstr "Одбацује зависност инл_алата"
 
-#: data/io.elementary.files.appdata.xml.in.in:273
+#: data/io.elementary.files.appdata.xml.in.in:277
 msgid "Fix default file type handler logic"
 msgstr "Поправља подразумевану логику руковаоца врстом датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:274
+#: data/io.elementary.files.appdata.xml.in.in:278
 msgid "Fix initial search window size too small"
 msgstr "Поправља премалу почетну величиу прозора претраге"
 
-#: data/io.elementary.files.appdata.xml.in.in:275
+#: data/io.elementary.files.appdata.xml.in.in:279
 msgid "Add option to disable local file thumbnails"
 msgstr "Додаје опцију да искључи сличице локалне датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:276
+#: data/io.elementary.files.appdata.xml.in.in:280
 msgid "Fix crash when opening multiple video files"
 msgstr "Поправља пад приликом отварања више датотека видео снимака"
 
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:281
 msgid "Fix some timing issues around adding and removing files"
 msgstr "Поправља неке проблеме временисања о додавању и уклањању датотека"
 
-#: data/io.elementary.files.appdata.xml.in.in:278
+#: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Meson: fix missing library headers"
 msgstr "Месон: поправља недостајућа заглавља библиотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:279
+#: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Fix color tag display"
 msgstr "Поправља приказ ознаке боје"
 
-#: data/io.elementary.files.appdata.xml.in.in:280
+#: data/io.elementary.files.appdata.xml.in.in:284
 msgid "Show reserved space in Properties window"
 msgstr "Приказује резервисани простор у прозору својстава"
 
-#: data/io.elementary.files.appdata.xml.in.in:288
+#: data/io.elementary.files.appdata.xml.in.in:292
 msgid "Add border radius to text background"
 msgstr "Додаје полупречник ивице на позадину текста"
 
-#: data/io.elementary.files.appdata.xml.in.in:289
+#: data/io.elementary.files.appdata.xml.in.in:293
 msgid "Fix file mimetype association regression"
 msgstr "Поправља регресију придруживања миме врсте датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:290
+#: data/io.elementary.files.appdata.xml.in.in:294
 msgid "New pathbar tooltips"
 msgstr "Нови облачићи траке путање"
 
-#: data/io.elementary.files.appdata.xml.in.in:291
+#: data/io.elementary.files.appdata.xml.in.in:295
 msgid "Build fixes"
 msgstr "Исправке изградње"
 
-#: data/io.elementary.files.appdata.xml.in.in:299
+#: data/io.elementary.files.appdata.xml.in.in:303
 msgid "Plugin build fixes"
 msgstr "Исправке изградње прикључка"
 
-#: data/io.elementary.files.appdata.xml.in.in:307
+#: data/io.elementary.files.appdata.xml.in.in:311
 msgid "Fix Ctrl+Tab behavior"
 msgstr "Поправља понашање „Ктрл+Табулатор“"
 
-#: data/io.elementary.files.appdata.xml.in.in:308
+#: data/io.elementary.files.appdata.xml.in.in:312
 msgid "Fix building without Unity library"
 msgstr "Поправља зградњу без библиотеке Јунитија"
 
-#: data/io.elementary.files.appdata.xml.in.in:315
+#: data/io.elementary.files.appdata.xml.in.in:319
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
 "Скрива путање кретања и показује чувара места и иконицу претраге у личној "
 "фасцикли"
 
-#: data/io.elementary.files.appdata.xml.in.in:316
+#: data/io.elementary.files.appdata.xml.in.in:320
 msgid "Style error dialogs"
 msgstr "Прозорчићи грешке стила"
 
-#: data/io.elementary.files.appdata.xml.in.in:317
+#: data/io.elementary.files.appdata.xml.in.in:321
 msgid "Right click fixes"
 msgstr "Исправке десног клика"
 
-#: data/io.elementary.files.appdata.xml.in.in:318
+#: data/io.elementary.files.appdata.xml.in.in:322
 msgid "Reload recent view when privacy setting changes"
 msgstr "Поново учитава скорашњи преглед када се промене поставке приватности"
 
-#: data/io.elementary.files.appdata.xml.in.in:319
+#: data/io.elementary.files.appdata.xml.in.in:323
 msgid "`Connect Server` fixes"
 msgstr "Исправке „Повежи се са сервером“"
 
-#: data/io.elementary.files.appdata.xml.in.in:320
+#: data/io.elementary.files.appdata.xml.in.in:324
 msgid "Do not activate multiple files with single click"
 msgstr "Не покреће више датотека једним кликом"
 
-#: data/io.elementary.files.appdata.xml.in.in:321
+#: data/io.elementary.files.appdata.xml.in.in:325
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr "Користи табулатор за окидање фокуса прегледа и бочне површи тастатуре"
 
-#: data/io.elementary.files.appdata.xml.in.in:322
+#: data/io.elementary.files.appdata.xml.in.in:326
 msgid "Delete color tag database entries for trashed files"
 msgstr "Брише уносе базе података ознаке боје за бачене датотеке"
 
-#: data/io.elementary.files.appdata.xml.in.in:323
+#: data/io.elementary.files.appdata.xml.in.in:327
 msgid "Throttle tab closing"
 msgstr "Пригушује затварање језичка"
 
-#: data/io.elementary.files.appdata.xml.in.in:324
+#: data/io.elementary.files.appdata.xml.in.in:328
 msgid "`Ctrl` key fixes"
 msgstr "Исправке тастера „Ктрл“"
 
-#: data/io.elementary.files.appdata.xml.in.in:325
+#: data/io.elementary.files.appdata.xml.in.in:329
 msgid "Drag and drop fixes"
 msgstr "Исправке превлачења и убацивања"
 
-#: data/io.elementary.files.appdata.xml.in.in:326
+#: data/io.elementary.files.appdata.xml.in.in:330
 msgid "Show icons in `Open with` menus"
 msgstr "Приказује иконице у изборницима „Отвори програмом“"
 
-#: data/io.elementary.files.appdata.xml.in.in:327
+#: data/io.elementary.files.appdata.xml.in.in:331
 msgid "Tooltip fixes"
 msgstr "Исправке облачића"
 
-#: data/io.elementary.files.appdata.xml.in.in:328
+#: data/io.elementary.files.appdata.xml.in.in:332
 msgid "Memory leak fixes"
 msgstr "Исправке цурења меморије"
 
-#: data/io.elementary.files.appdata.xml.in.in:329
+#: data/io.elementary.files.appdata.xml.in.in:333
 msgid "Crash fixes"
 msgstr "Исправке урушавања"
 
-#: data/io.elementary.files.appdata.xml.in.in:330
+#: data/io.elementary.files.appdata.xml.in.in:334
 msgid "Trash: respect sound setting"
 msgstr "Смеће: поштуј поставке звука"
 
-#: data/io.elementary.files.appdata.xml.in.in:331
+#: data/io.elementary.files.appdata.xml.in.in:335
 msgid "Localization fixes"
 msgstr "Исправке локализације"
 
-#: data/io.elementary.files.appdata.xml.in.in:339
+#: data/io.elementary.files.appdata.xml.in.in:343
 msgid "Over 100 major and minor bug fixes and improvements"
 msgstr "Преко 100 већих и мањих исправки грешака и побољшања"
 
-#: data/io.elementary.files.appdata.xml.in.in:346
+#: data/io.elementary.files.appdata.xml.in.in:350
 msgid "Honor 12/24hr system setting"
 msgstr "Поштује 12/24-часовно системско подешавање"
 
-#: data/io.elementary.files.appdata.xml.in.in:347
+#: data/io.elementary.files.appdata.xml.in.in:351
 msgid "Distinguish between tabs with the same name"
 msgstr "Разликује између језичака са истим називом"
 
-#: data/io.elementary.files.appdata.xml.in.in:348
+#: data/io.elementary.files.appdata.xml.in.in:352
 msgid "Support launching from other applications with a target file selected"
 msgstr "Подржава покретање из других програма са изабраном циљном датотеком"
 
-#: data/io.elementary.files.appdata.xml.in.in:349
-#: data/io.elementary.files.appdata.xml.in.in:362
-#: data/io.elementary.files.appdata.xml.in.in:376
-#: data/io.elementary.files.appdata.xml.in.in:386
-#: data/io.elementary.files.appdata.xml.in.in:397
+#: data/io.elementary.files.appdata.xml.in.in:353
+#: data/io.elementary.files.appdata.xml.in.in:366
+#: data/io.elementary.files.appdata.xml.in.in:380
+#: data/io.elementary.files.appdata.xml.in.in:390
+#: data/io.elementary.files.appdata.xml.in.in:401
 msgid "New translations"
 msgstr "Нови преводи"
 
-#: data/io.elementary.files.appdata.xml.in.in:350
-#: data/io.elementary.files.appdata.xml.in.in:363
-#: data/io.elementary.files.appdata.xml.in.in:377
-#: data/io.elementary.files.appdata.xml.in.in:387
-#: data/io.elementary.files.appdata.xml.in.in:398
-#: data/io.elementary.files.appdata.xml.in.in:405
-#: data/io.elementary.files.appdata.xml.in.in:412
-#: data/io.elementary.files.appdata.xml.in.in:436
+#: data/io.elementary.files.appdata.xml.in.in:354
+#: data/io.elementary.files.appdata.xml.in.in:367
+#: data/io.elementary.files.appdata.xml.in.in:381
+#: data/io.elementary.files.appdata.xml.in.in:391
+#: data/io.elementary.files.appdata.xml.in.in:402
+#: data/io.elementary.files.appdata.xml.in.in:409
+#: data/io.elementary.files.appdata.xml.in.in:416
+#: data/io.elementary.files.appdata.xml.in.in:440
 msgid "Minor bug fixes"
 msgstr "Мање исправке грешака"
 
-#: data/io.elementary.files.appdata.xml.in.in:357
+#: data/io.elementary.files.appdata.xml.in.in:361
 msgid "Improved networking support"
 msgstr "Побољшана подршка умрежавања"
 
-#: data/io.elementary.files.appdata.xml.in.in:358
+#: data/io.elementary.files.appdata.xml.in.in:362
 msgid "Correct window geometry when snapping to left or right"
 msgstr "Поправља геометрију прозора када приања на лево или десно"
 
-#: data/io.elementary.files.appdata.xml.in.in:359
+#: data/io.elementary.files.appdata.xml.in.in:363
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
@@ -688,18 +693,18 @@ msgstr ""
 "Притисак на Ктрл више не отказује преименовање када је активна постав "
 "„Покажи показивач“"
 
-#: data/io.elementary.files.appdata.xml.in.in:360
+#: data/io.elementary.files.appdata.xml.in.in:364
 msgid "Switching input language cancels actions"
 msgstr "Пребацује радње отказивања језика уноса"
 
-#: data/io.elementary.files.appdata.xml.in.in:361
-#: data/io.elementary.files.appdata.xml.in.in:375
-#: data/io.elementary.files.appdata.xml.in.in:385
-#: data/io.elementary.files.appdata.xml.in.in:396
+#: data/io.elementary.files.appdata.xml.in.in:365
+#: data/io.elementary.files.appdata.xml.in.in:379
+#: data/io.elementary.files.appdata.xml.in.in:389
+#: data/io.elementary.files.appdata.xml.in.in:400
 msgid "Various crash fixes"
 msgstr "Разне исправке урушавања"
 
-#: data/io.elementary.files.appdata.xml.in.in:370
+#: data/io.elementary.files.appdata.xml.in.in:374
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
@@ -707,56 +712,58 @@ msgstr ""
 "Веб прегледници као Фајерфокс сада памте најскорије коришћени директоријум "
 "преузимања"
 
-#: data/io.elementary.files.appdata.xml.in.in:371
+#: data/io.elementary.files.appdata.xml.in.in:375
 msgid "Remember preferred zoom level"
 msgstr "Запамти жељени ниво увеличања"
 
-#: data/io.elementary.files.appdata.xml.in.in:372
+#: data/io.elementary.files.appdata.xml.in.in:376
 msgid "Improved input method support"
 msgstr "Побољшана подршка методе уноса"
 
-#: data/io.elementary.files.appdata.xml.in.in:373
+#: data/io.elementary.files.appdata.xml.in.in:377
 msgid "910x640 minimum window size"
 msgstr "910×640 најмања величина прозора"
 
-#: data/io.elementary.files.appdata.xml.in.in:374
+#: data/io.elementary.files.appdata.xml.in.in:378
 msgid "Security fixes"
 msgstr "Безбедносне исправке"
 
-#: data/io.elementary.files.appdata.xml.in.in:384
+#: data/io.elementary.files.appdata.xml.in.in:388
 msgid "Enable drag and drop tabs between windows"
 msgstr "Укључује језичке превлачења и убацивања између прозора"
 
-#: data/io.elementary.files.appdata.xml.in.in:394
+#: data/io.elementary.files.appdata.xml.in.in:398
 msgid "Merge search functionality into Ctrl+F"
 msgstr "Стапа функционалност претраге у Ктрл+Ф"
 
-#: data/io.elementary.files.appdata.xml.in.in:395
+#: data/io.elementary.files.appdata.xml.in.in:399
 msgid "Improved translation support"
 msgstr "Побољшава подршку превода"
 
-#: data/io.elementary.files.appdata.xml.in.in:419
+#: data/io.elementary.files.appdata.xml.in.in:423
 msgid "Fix appdata release dates"
 msgstr "Поправља датуме издања података програма"
 
-#: data/io.elementary.files.appdata.xml.in.in:426
+#: data/io.elementary.files.appdata.xml.in.in:430
 msgid "Improve file opening over Samba shares"
 msgstr "Побољшава отварање датотека преко Самба дељења"
 
-#: data/io.elementary.files.appdata.xml.in.in:427
+#: data/io.elementary.files.appdata.xml.in.in:431
 msgid "Fix a crash when restoring items from the Trash"
 msgstr "Поправља урушавање приликом враћања ставки из смећа"
 
-#: data/io.elementary.files.appdata.xml.in.in:428
+#: data/io.elementary.files.appdata.xml.in.in:432
 msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr "Побољшава осетљивост „исеци/умножи/убаци“ у приручном изборнику"
 
-#: data/io.elementary.files.appdata.xml.in.in:429
+#: data/io.elementary.files.appdata.xml.in.in:433
 msgid "Translation updates"
 msgstr "Освежени преводи"
 
-#: data/io.elementary.files.appdata.xml.in.in:441
-msgid "elementary LLC."
+#: data/io.elementary.files.appdata.xml.in.in:445
+#, fuzzy
+#| msgid "elementary LLC."
+msgid "elementary, Inc."
 msgstr "elementary LLC."
 
 #: data/io.elementary.files.policy.in.in:10

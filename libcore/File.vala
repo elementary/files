@@ -1,4 +1,4 @@
-/* Copyright (c) 2018-19 elementary LLC (https://elementary.io)
+/* Copyright (c) 2018-20 elementary LLC (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -16,8 +16,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class GOF.File : GLib.Object {
-    private static GLib.HashTable<GLib.File, GOF.File> file_cache;
+public class Files.File : GLib.Object {
+    private static GLib.HashTable<GLib.File, Files.File> file_cache;
 
     public enum IconFlags {
         NONE,
@@ -44,10 +44,11 @@ public class GOF.File : GLib.Object {
     public bool is_gone;
     public GLib.File location { get; construct; }
     public GLib.File target_location = null;
-    public GOF.File target_gof = null;
+    public Files.File target_gof = null;
     public GLib.File directory { get; construct; } /* parent directory location */
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
+    public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
     public string basename { get; construct; }
     public string? custom_display_name = null;
@@ -65,7 +66,7 @@ public class GOF.File : GLib.Object {
     public int pix_scale = -1;
     public int width = 0;
     public int height = 0;
-    public int sort_column_id = FM.ListModel.ColumnID.FILENAME;
+    public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
     public bool is_hidden = false;
@@ -74,7 +75,7 @@ public class GOF.File : GLib.Object {
     public bool is_expanded = false;
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
-    public uint thumbstate = GOF.File.ThumbState.UNKNOWN;
+    public uint thumbstate = Files.File.ThumbState.UNKNOWN;
     public string thumbnail_path = null;
     public bool is_mounted = true;
     public bool exists = true;
@@ -88,10 +89,10 @@ public class GOF.File : GLib.Object {
     public bool is_connected = true;
     public string? utf8_collation_key = null;
 
-    public static new GOF.File @get (GLib.File location) {
+    public static new Files.File @get (GLib.File location) {
         var parent = location.get_parent ();
         if (parent != null) {
-            var dir = GOF.Directory.Async.cache_lookup (parent);
+            var dir = Files.Directory.cache_lookup (parent);
             if (dir != null) {
                 var file = dir.file_hash_lookup_location (location);
                 if (file != null) {
@@ -100,9 +101,9 @@ public class GOF.File : GLib.Object {
             }
         }
 
-        var file = GOF.File.cache_lookup (location);
+        var file = Files.File.cache_lookup (location);
         if (file == null) {
-            file = new GOF.File (location, parent);
+            file = new Files.File (location, parent);
             lock (file_cache) {
                 file_cache.insert (location, file);
             }
@@ -111,7 +112,7 @@ public class GOF.File : GLib.Object {
         return file;
     }
 
-    public static GOF.File? get_by_uri (string uri) {
+    public static Files.File? get_by_uri (string uri) {
         var scheme = GLib.Uri.parse_scheme (uri);
         if (scheme == null) {
             return get_by_commandline_arg (uri);
@@ -122,18 +123,18 @@ public class GOF.File : GLib.Object {
             return null;
         }
 
-        return GOF.File.get (location);
+        return Files.File.get (location);
     }
 
-    public static GOF.File? get_by_commandline_arg (string arg) {
+    public static Files.File? get_by_commandline_arg (string arg) {
         var location = GLib.File.new_for_commandline_arg (arg);
-        return GOF.File.get (location);
+        return Files.File.get (location);
     }
 
     public static File cache_lookup (GLib.File file) {
         lock (file_cache) {
             if (file_cache == null) {
-                file_cache = new GLib.HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+                file_cache = new GLib.HashTable<GLib.File, Files.File> (GLib.File.hash, GLib.File.equal);
             }
         }
 
@@ -168,8 +169,8 @@ public class GOF.File : GLib.Object {
     construct {
         icon_changed.connect (() => {
             if (directory != null) {
-                var dir = GOF.Directory.Async.cache_lookup (directory);
-                if (dir != null && (!is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
+                var dir = Files.Directory.cache_lookup (directory);
+                if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
                     dir.icon_changed (this);
                 }
             }
@@ -377,7 +378,7 @@ public class GOF.File : GLib.Object {
         return PF.FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, GOF.File.IconFlags flags) {
+    public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, Files.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
         var nicon = get_icon (size, scale, flags);
@@ -407,28 +408,28 @@ public class GOF.File : GLib.Object {
         }
     }
 
-    public Marlin.IconInfo? get_icon (int size, int scale, GOF.File.IconFlags flags) {
+    public Files.IconInfo? get_icon (int size, int scale, Files.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
-        Marlin.IconInfo? icon = get_special_icon (size, scale, flags);
+        Files.IconInfo? icon = get_special_icon (size, scale, flags);
         if (icon != null && !icon.is_fallback ()) {
             return icon;
         }
 
         GLib.Icon? gicon = null;
-        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == GOF.File.ThumbState.LOADING) {
+        if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.LOADING) {
             gicon = new GLib.ThemedIcon ("image-loading");
         } else {
             gicon = this.icon;
         }
 
         if (gicon != null) {
-            icon = Marlin.IconInfo.lookup (gicon, size, scale);
+            icon = Files.IconInfo.lookup (gicon, size, scale);
             if (icon != null && icon.is_fallback ()) {
-                icon = Marlin.IconInfo.get_generic_icon (size, scale);
+                icon = Files.IconInfo.get_generic_icon (size, scale);
             }
         } else {
-            icon = Marlin.IconInfo.get_generic_icon (size, scale);
+            icon = Files.IconInfo.get_generic_icon (size, scale);
         }
 
         return icon;
@@ -448,7 +449,7 @@ public class GOF.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = FM.ListModel.ColumnID.from_string (
+                sort_column_id = Files.ListModel.ColumnID.from_string (
                                      info.get_attribute_string ("metadata::marlin-sort-column-id")
                                  );
             }
@@ -466,8 +467,14 @@ public class GOF.File : GLib.Object {
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
-            target_location = GLib.File.new_for_uri (target_uri);
+            if (Uri.parse_scheme (target_uri) == "afp") {
+                target_location = GLib.File.new_for_uri (PF.FileUtils.get_afp_target_uri (target_uri, uri));
+            } else {
+                target_location = GLib.File.new_for_uri (target_uri);
+            }
+
             target_location_update ();
+
             try {
                 mount = target_location.find_enclosing_mount ();
                 is_mounted = (mount != null);
@@ -551,7 +558,7 @@ public class GOF.File : GLib.Object {
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
         if (get_thumbnail_path () != null) {
-            thumbstate = GOF.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
+            thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
         }
 
         /* formated type */
@@ -884,7 +891,7 @@ public class GOF.File : GLib.Object {
         return true;
     }
 
-    public int compare_for_sort (GOF.File other, int sort_type, bool directories_first, bool reversed) {
+    public int compare_for_sort (Files.File other, int sort_type, bool directories_first, bool reversed) {
         if (other == this) {
             return 0;
         }
@@ -899,24 +906,24 @@ public class GOF.File : GLib.Object {
 
         int result = 0;
         switch (sort_type) {
-            case FM.ListModel.ColumnID.FILENAME:
+            case Files.ListModel.ColumnID.FILENAME:
                 result = compare_by_display_name (other);
                 break;
-            case FM.ListModel.ColumnID.SIZE:
+            case Files.ListModel.ColumnID.SIZE:
                 result = compare_by_size (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case FM.ListModel.ColumnID.TYPE:
+            case Files.ListModel.ColumnID.TYPE:
                 result = compare_by_type (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case FM.ListModel.ColumnID.MODIFIED:
+            case Files.ListModel.ColumnID.MODIFIED:
                 result = compare_files_by_time (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
@@ -932,7 +939,7 @@ public class GOF.File : GLib.Object {
         }
     }
 
-    public int compare_by_display_name (GOF.File other) {
+    public int compare_by_display_name (Files.File other) {
         /* We want files starting with these characters to be last */
         const char SORT_LAST_CHAR1 = '.';
         const char SORT_LAST_CHAR2 = '#';
@@ -968,6 +975,7 @@ public class GOF.File : GLib.Object {
         /* erase previous stored emblems */
         if (emblems_list != null) {
             emblems_list = null;
+            n_emblems = 0;
         }
 
         if (is_symlink () || (is_desktop && target_gof != null)) {
@@ -997,6 +1005,7 @@ public class GOF.File : GLib.Object {
         }
 
         emblems_list.append (emblem);
+        n_emblems++;
         icon_changed ();
     }
 
@@ -1005,7 +1014,7 @@ public class GOF.File : GLib.Object {
             return;
         }
 
-        target_gof = GOF.File.get (target_location);
+        target_gof = Files.File.get (target_location);
         target_gof.query_update ();
     }
 
@@ -1147,16 +1156,17 @@ public class GOF.File : GLib.Object {
         return split[3] == null || split[3] == "";
     }
 
-    private int compare_files_by_time (GOF.File other) {
+    // We want date to sort in reverse order by default
+    private int compare_files_by_time (Files.File other) {
         if (modified < other.modified)
-            return -1;
-        else if (modified > other.modified)
             return 1;
+        else if (modified > other.modified)
+            return -1;
 
         return 0;
     }
 
-    private int compare_by_type (GOF.File other) {
+    private int compare_by_type (Files.File other) {
         /* Directories go first. Then, if mime types are identical,
          * don't bother getting strings (for speed). This assumes
          * that the string is dependent entirely on the mime type,
@@ -1173,7 +1183,7 @@ public class GOF.File : GLib.Object {
         return formated_type.collate (other.formated_type);
     }
 
-    private int compare_files_by_size (GOF.File other) {
+    private int compare_files_by_size (Files.File other) {
         if (size < other.size) {
             return -1;
         } else if (size > other.size) {
@@ -1183,7 +1193,7 @@ public class GOF.File : GLib.Object {
         return 0;
     }
 
-    private int compare_by_size (GOF.File other) {
+    private int compare_by_size (Files.File other) {
         /* As folder files have a fixed standard size (4K) assign them a virtual size of -1 for now
          * so always sorts first. */
 
@@ -1206,26 +1216,26 @@ public class GOF.File : GLib.Object {
 
     private void update_icon_internal (int size, int scale) {
         GLib.return_if_fail (size >= 1);
-        pix = get_icon_pixbuf (size, scale, GOF.File.IconFlags.USE_THUMBNAILS);
+        pix = get_icon_pixbuf (size, scale, Files.File.IconFlags.USE_THUMBNAILS);
         pix_size = size;
         pix_scale = scale;
     }
 
-    private Marlin.IconInfo? get_special_icon (int size, int scale, GOF.File.IconFlags flags) {
+    private Files.IconInfo? get_special_icon (int size, int scale, Files.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
         if (custom_icon_name != null) {
             if (GLib.Path.is_absolute (custom_icon_name)) {
-                return Marlin.IconInfo.lookup_from_path (custom_icon_name, size, scale);
+                return Files.IconInfo.lookup_from_path (custom_icon_name, size, scale);
             } else {
-                return Marlin.IconInfo.lookup_from_name (custom_icon_name, size, scale);
+                return Files.IconInfo.lookup_from_name (custom_icon_name, size, scale);
             }
         }
 
-        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == GOF.File.ThumbState.READY) {
+        if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
-                return Marlin.IconInfo.lookup_from_path (thumb_path, size, scale);
+                return Files.IconInfo.lookup_from_path (thumb_path, size, scale);
             }
         }
 
