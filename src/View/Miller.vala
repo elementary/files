@@ -98,8 +98,8 @@ namespace Files.View {
             path_changed ();
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             nest_slot_in_host_slot (new_slot, host);
-            /* This will set the new slot to be current_slot. Must do this before loading */
             slot_list.append (new_slot); // Must add to list before scrolling
+            /* This will set the new slot to be current_slot. Must do this before loading */
             new_slot.active (scroll, animate);
 
             update_total_width ();
@@ -460,8 +460,8 @@ namespace Files.View {
                     Animation.cancel ();
                 }
 
-                scroll_to_slot_timeout_id = 0;
                 scroll_to_slot (slot, animate);
+                scroll_to_slot_timeout_id = 0;
                 return Source.REMOVE;
             });
         }
@@ -484,7 +484,7 @@ namespace Files.View {
 
             offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
             if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
-                hadj_value += offset + 12;
+                hadj_value += offset;
             }
 
             if (animate) {
