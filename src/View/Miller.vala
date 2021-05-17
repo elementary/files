@@ -106,31 +106,26 @@ namespace Files.View {
             new_slot.active (scroll, animate);
         }
 
-        private void nest_slot_in_host_slot (View.Slot slot, View.Slot? host) {
-            var hpane1 = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+        private void nest_slot_in_host_slot (View.Slot guest, View.Slot? host) {
+            guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            guest.colpane.set_size_request (guest.width, -1); 
+            guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 hexpand = true
             };
 
-            slot.hpane = hpane1;
+            guest.hpane.pack1 (guest.get_directory_view (), false, false);
+            guest.hpane.pack2 (guest.colpane, true, true);
+            guest.hpane.show_all ();
 
-            var box1 = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            slot.colpane = box1;
-            slot.colpane.set_size_request (slot.width, -1);
-
-            unowned Gtk.Widget column = slot.get_directory_view () as Gtk.Widget;
-            hpane1.pack1 (column, false, false);
-            hpane1.pack2 (box1, true, true);
-            hpane1.show_all ();
-
-            connect_slot_signals (slot);
+            connect_slot_signals (guest);
 
             if (host != null) {
                 truncate_list_after_slot (host);
-                host.select_gof_file (slot.file);
-                host.colpane.add (hpane1);
-                slot.initialize_directory ();
+                host.select_gof_file (guest.file);
+                host.colpane.add (guest.hpane);
+                guest.initialize_directory ();
             } else {
-                this.colpane.add (hpane1);
+                this.colpane.add (guest.hpane);
             }
         }
 
