@@ -142,7 +142,10 @@ namespace Files.View {
                 custom_title = new Gtk.Label (null)
             };
 
-            tabs = new Granite.Widgets.DynamicNotebook () {
+            tabs = new Granite.Widgets.DynamicNotebook (
+                new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
+                new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
+            ) {
                 show_tabs = true,
                 allow_restoring = true,
                 allow_duplication = true,
@@ -442,7 +445,12 @@ namespace Files.View {
 
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
-            var tab = new Granite.Widgets.Tab ("", null, content) {
+            var tab = new Granite.Widgets.Tab (
+                "",
+                null,
+                content,
+                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w")
+            ) {
                 ellipsize_mode = Pango.EllipsizeMode.MIDDLE
             };
 
