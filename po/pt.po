@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-26 08:43+0000\n"
-"PO-Revision-Date: 2021-04-01 00:58+0000\n"
+"PO-Revision-Date: 2021-05-26 13:27+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -412,8 +412,6 @@ msgid "Move to Trash"
 msgstr "Mover para o lixo"
 
 #: src/View/AbstractDirectoryView.vala:1994
-#, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Eliminar permanentemente"
 
@@ -648,16 +646,12 @@ msgid "_Eject"
 msgstr "_Ejetar"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "Eliminar permanentemente todos os itens do lixo?"
+msgstr "Eliminar permanentemente todo o lixo"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:95
-#, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Eliminar permanentemente todos os itens do lixo neste disco?"
+msgstr "Eliminar permanentemente o lixo neste suporte"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -905,11 +899,11 @@ msgstr "Nome de utilizador:"
 
 #: libcore/ConnectServerDialog.vala:208
 msgid "Password:"
-msgstr "Password:"
+msgstr "Palavra-passe:"
 
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr "Lembrar esta password"
+msgstr "Memorizar esta palavra-passe"
 
 #: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188

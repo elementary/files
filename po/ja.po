@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-26 08:43+0000\n"
-"PO-Revision-Date: 2021-05-06 13:27+0000\n"
+"PO-Revision-Date: 2021-05-26 13:27+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -405,8 +405,6 @@ msgid "Move to Trash"
 msgstr "ゴミ箱に移動"
 
 #: src/View/AbstractDirectoryView.vala:1994
-#, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "完全に削除"
 
@@ -641,18 +639,12 @@ msgid "_Eject"
 msgstr "取り出し(_E)"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "ゴミ箱からすべての項目を完全に削除しますか？"
+msgstr "すべてのゴミ箱から項目を完全に削除"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:95
-#, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr ""
-"このマウントされたドライブ上のゴミ箱にある、すべての項目を完全に削除します"
-"か？"
+msgstr "このドライブのゴミ箱から項目を完全に削除"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -1244,15 +1236,11 @@ msgstr ""
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-"このマウントされたドライブ上のゴミ箱にある、すべての項目を完全に削除します"
-"か？"
+msgstr "このドライブのゴミ箱にあるすべての項目を完全に削除しますか？"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-"このマウントされたドライブ上のゴミ箱にあるすべての項目は、完全に削除されま"
-"す。"
+msgstr "このドライブのゴミ箱にあるすべての項目は、完全に削除されます。"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:111
 msgid "Emptying Trash"
