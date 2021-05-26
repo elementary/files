@@ -142,7 +142,7 @@ namespace Files.View {
                 custom_title = new Gtk.Label (null)
             };
 
-            tabs = new Granite.Widgets.DynamicNotebook (
+            tabs = new Granite.Widgets.DynamicNotebook.with_accellabels (
                 new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
                 new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
             ) {
@@ -445,7 +445,7 @@ namespace Files.View {
 
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
-            var tab = new Granite.Widgets.Tab (
+            var tab = new Granite.Widgets.Tab.with_accellabels (
                 "",
                 null,
                 content,
