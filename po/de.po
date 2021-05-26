@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-25 17:31+0000\n"
-"PO-Revision-Date: 2021-04-01 11:43+0000\n"
+"PO-Revision-Date: 2021-05-26 01:54+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -655,16 +655,12 @@ msgid "_Eject"
 msgstr "Aus_werfen"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "Alle Objekte im Papierkorb dauerhaft löschen?"
+msgstr "Alle Objekte im Papierkorb dauerhaft löschen"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:95
-#, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Alle Objekte im Papierkorb auf diesem Datenträger dauerhaft löschen?"
+msgstr "Alle Objekte im Papierkorb auf diesem Datenträger dauerhaft löschen"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
