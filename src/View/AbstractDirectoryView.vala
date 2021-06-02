@@ -1992,8 +1992,10 @@ namespace Files {
                 ));
                 trash_menuitem.action_name = "selection.trash";
 
-                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete permanently"));
-                delete_menuitem.action_name = "selection.delete";
+                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete Permanently")) {
+                    action_name = "selection.delete"
+                };
+                delete_menuitem.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
