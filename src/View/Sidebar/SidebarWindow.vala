@@ -88,6 +88,9 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             no_show_all = Files.is_admin ()
         };
 
+        connect_server_button.get_child ().hexpand = true;
+        connect_server_button.get_child ().halign = Gtk.Align.START;
+
         var action_bar = new Gtk.ActionBar () {
             //For now hide action bar when admin. This might need revisiting if other actions are added
             no_show_all = Files.is_admin ()
