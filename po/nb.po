@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-26 08:43+0000\n"
-"PO-Revision-Date: 2021-03-19 07:32+0000\n"
+"PO-Revision-Date: 2021-06-03 11:24+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -414,10 +414,8 @@ msgid "Move to Trash"
 msgstr "Flytt til papirkurv"
 
 #: src/View/AbstractDirectoryView.vala:1994
-#, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
-msgstr "Slett permanent"
+msgstr "Slett for godt"
 
 #: src/View/AbstractDirectoryView.vala:2001
 msgid "Restore from Trash"
@@ -650,17 +648,14 @@ msgid "_Eject"
 msgstr "_Løs ut"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "Slette alle elementer i papirkurven permanent?"
+msgstr "Slett alt i papirkurven for godt"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:95
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr ""
-"Slette alle elementer i papirkurven permanent på denne monterte enheten?"
+msgstr "Slett alle elementer i papirkurven montert her for godt"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -1080,11 +1075,11 @@ msgstr "Elementet kan ikke gjenopprettes fra papirkurven"
 #, fuzzy, c-format
 #| msgid "The file selected no longer exists."
 msgid "The original folder %s no longer exists"
-msgstr "Den valgte filen finnes ikke lenger."
+msgstr "Opprinnelig mappe %s finnes ikke lenger"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Ønsker du å gjenskape den?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1092,24 +1087,24 @@ msgstr "Ignorer"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Ingen filer i denne mappen vil bli gjenopprettet"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Opprett"
+msgstr "Gjenopprett"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Mappen vil bli gjenopprettet og valgte filer som opprinnelig var der vil bli "
+"gjenoppretet til den"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
+msgstr "Kunne ikke gjenopprette mappen %s. Ignorerer alle filer i denne mappen"
 
 #: libcore/FileUtils.vala:578
 #, c-format
