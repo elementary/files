@@ -15,7 +15,7 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
-namespace PF.FileUtils {
+namespace Files.FileUtils {
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
@@ -47,11 +47,11 @@ namespace PF.FileUtils {
         return keyfile;
     }
 
-    public File? get_file_for_path (string? path) {
+    public GLib.File? get_file_for_path (string? path) {
         string? new_path = sanitize_path (path);
 
         if (new_path != null && new_path.length > 0) {
-            return File.new_for_commandline_arg (new_path);
+            return GLib.File.new_for_commandline_arg (new_path);
         } else {
             return null;
         }
@@ -103,7 +103,7 @@ namespace PF.FileUtils {
     private GLib.HashTable<GLib.File, GLib.List<GLib.File>>
     get_trashed_files_original_directories (GLib.List<Files.File> files, out GLib.List<Files.File> unhandled_files) {
 
-        var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
+        var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (GLib.File.hash, GLib.File.equal);
         unhandled_files = null;
 
         var exists_map = new Gee.HashMap<string, int> ();
@@ -175,7 +175,7 @@ namespace PF.FileUtils {
         }
     }
 
-    private bool ensure_exists (File file) {
+    private bool ensure_exists (GLib.File file) {
         if (file.query_exists ()) {
             return true;
         }
@@ -230,8 +230,8 @@ namespace PF.FileUtils {
         } else if (file.is_native ()) {
             result = file.get_path (); // usually the case
         } else {
-            File root = file;
-            File? parent = file.get_parent ();
+            GLib.File root = file;
+            GLib.File? parent = file.get_parent ();
             while (parent != null) {
                 root = parent;
                 parent = root.get_parent ();
@@ -261,7 +261,7 @@ namespace PF.FileUtils {
     }
 
     public bool path_has_parent (string new_path) {
-        var file = File.new_for_commandline_arg (new_path);
+        var file = GLib.File.new_for_commandline_arg (new_path);
         return file.get_parent () != null;
     }
 
