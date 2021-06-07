@@ -34,14 +34,15 @@ namespace Files {
             protected set {_directory = value;}
         }
 
-        public Files.File file {
-            get {return directory.file;}
+        // Directory may be destroyed before the slot so handle case that it is null
+        public Files.File? file {
+            get { return directory != null ? directory.file : null;}
         }
-        public GLib.File location {
-            get {return directory.location;}
+        public GLib.File? location {
+            get { return directory != null ? directory.location : null;}
         }
         public string uri {
-            get {return directory.file.uri;}
+            get { return directory != null ? directory.file.uri : ""; }
         }
 
         public virtual bool locked_focus {
@@ -56,7 +57,7 @@ namespace Files {
         protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
         public Gtk.Overlay overlay {get; protected set;}
-        protected int slot_number;
+        public int slot_number { get; protected set; }
         protected int width;
 
         public signal void active (bool scroll = true, bool animate = true);

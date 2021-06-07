@@ -38,13 +38,11 @@ namespace Files {
             tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
-            tree.set_reorderable (false);
 
             name_renderer = new Files.TextRenderer (ViewMode.ICON);
             icon_renderer = new Files.IconRenderer (ViewMode.ICON);
 
             set_up_name_renderer ();
-            set_up_icon_renderer ();
 
             tree.pack_start (icon_renderer, false);
             tree.pack_end (name_renderer, false);
@@ -66,11 +64,6 @@ namespace Files {
             name_renderer.xalign = 0.5f;
             name_renderer.yalign = 0.0f;
         }
-
-        protected void set_up_icon_renderer () {
-            icon_renderer.follow_state = true;
-        }
-
 
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
@@ -281,11 +274,13 @@ namespace Files {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot == null || /* slot should not be null but see lp:1595438 */
+            /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
+            if (tree == null || path == null || slot == null || slot.directory == null ||
                 slot.directory.permission_denied || slot.directory.is_empty ()) {
 
                 return;
             }
+
             tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
         }
 

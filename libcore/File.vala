@@ -48,6 +48,7 @@ public class Files.File : GLib.Object {
     public GLib.File directory { get; construct; } /* parent directory location */
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
+    public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
     public string basename { get; construct; }
     public string? custom_display_name = null;
@@ -974,6 +975,7 @@ public class Files.File : GLib.Object {
         /* erase previous stored emblems */
         if (emblems_list != null) {
             emblems_list = null;
+            n_emblems = 0;
         }
 
         if (is_symlink () || (is_desktop && target_gof != null)) {
@@ -1003,6 +1005,7 @@ public class Files.File : GLib.Object {
         }
 
         emblems_list.append (emblem);
+        n_emblems++;
         icon_changed ();
     }
 
@@ -1150,11 +1153,12 @@ public class Files.File : GLib.Object {
         return split[3] == null || split[3] == "";
     }
 
+    // We want date to sort in reverse order by default
     private int compare_files_by_time (Files.File other) {
         if (modified < other.modified)
-            return -1;
-        else if (modified > other.modified)
             return 1;
+        else if (modified > other.modified)
+            return -1;
 
         return 0;
     }

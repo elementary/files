@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 04:54+0000\n"
-"PO-Revision-Date: 2021-03-03 14:12+0000\n"
+"POT-Creation-Date: 2021-05-26 08:43+0000\n"
+"PO-Revision-Date: 2021-05-29 18:45+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
-">\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,31 +20,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: src/Application.vala:158
+#: src/Application.vala:159
 msgid "Show the version of the program"
 msgstr "Näytä ohjelman versio"
 
-#: src/Application.vala:160
+#: src/Application.vala:161
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Avaa yksi tai useampi URI, jokainen omaan välilehteensä"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
 msgid "New Window"
 msgstr "Uusi ikkuna"
 
-#: src/Application.vala:164
+#: src/Application.vala:165
 msgid "Quit Files"
 msgstr "Lopeta Tiedostot"
 
-#: src/Application.vala:166
+#: src/Application.vala:167
 msgid "Enable debug logging"
 msgstr "Käytä vianjäljityksen lokitusta"
 
-#: src/Application.vala:169
+#: src/Application.vala:170
 msgid "[URI…]"
 msgstr "[URI...]"
 
-#: src/Application.vala:172
+#: src/Application.vala:173
 msgid ""
 "\n"
 "\n"
@@ -54,7 +54,7 @@ msgstr ""
 "\n"
 "Selaa tiedostojärjestelmää tiedostonhallinnasta"
 
-#: src/Application.vala:200
+#: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
 msgstr "--quit-valitsinta ei voi käyttää URI:n kanssa."
 
@@ -113,7 +113,7 @@ msgid "Set as default"
 msgstr "Aseta oletukseksi"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1966
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Ominaisuudet"
@@ -195,7 +195,7 @@ msgid "Original Location:"
 msgstr "Alkuperäinen sijainti:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "Other Application…"
 msgstr "Muu sovellus…"
 
@@ -290,7 +290,7 @@ msgstr "URI:en avaaminen ei onnistunut"
 msgid "Could not open files or URIs with this app"
 msgstr "Tiedostojen tai URI:en avaaminen tällä sovelluksella ei onnistu"
 
-#: src/View/Window.vala:553 src/View/Window.vala:563
+#: src/View/Window.vala:554 src/View/Window.vala:564
 msgid "(as Administrator)"
 msgstr "(ylläpitäjänä)"
 
@@ -298,11 +298,11 @@ msgstr "(ylläpitäjänä)"
 msgid "Filename"
 msgstr "Tiedostonimi"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
 msgid "Size"
 msgstr "Koko"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
 msgid "Type"
 msgstr "Tyyppi"
 
@@ -310,7 +310,7 @@ msgstr "Tyyppi"
 msgid "Modified"
 msgstr "Muokattu"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Tätä kansiota ei ole olemassa"
 
@@ -332,18 +332,18 @@ msgstr "Luo kansio \"%s\""
 msgid "Failed to create the folder"
 msgstr "Kansion luominen epäonnistui"
 
-#: src/View/AbstractDirectoryView.vala:814
-#: src/View/AbstractDirectoryView.vala:1125
+#: src/View/AbstractDirectoryView.vala:816
+#: src/View/AbstractDirectoryView.vala:1127
 msgid "Cannot execute this file"
 msgstr "Tätä tiedostoa ei voida suorittaa"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:824
+#: src/View/AbstractDirectoryView.vala:826
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "“%s” tulee siirtää pois roskakorista ennen avaamista"
 
-#: src/View/AbstractDirectoryView.vala:825
+#: src/View/AbstractDirectoryView.vala:827
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -351,227 +351,227 @@ msgstr ""
 "Roskakorin sisällä olevia tiedostoja ei voi avata. Jos haluat avata tämän "
 "tiedoston, siirrä se jonnekin muualle."
 
-#: src/View/AbstractDirectoryView.vala:840
+#: src/View/AbstractDirectoryView.vala:842
 msgid "Cannot open this file"
 msgstr "Tämän tiedoston avaaminen ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:855
 msgid "Cannot identify file type to open"
 msgstr "Avattavan tiedoston tiedostotyyppiä ei tunnistettu"
 
-#: src/View/AbstractDirectoryView.vala:1571
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "Tämän tiedoston pudottaminen ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Invalid file name provided"
 msgstr "Virheellinen tiedostonimi"
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1850
 msgid "New Tab"
 msgstr "Uusi välilehti"
 
-#: src/View/AbstractDirectoryView.vala:1868
+#: src/View/AbstractDirectoryView.vala:1870
 msgid "Run"
 msgstr "Suorita"
 
-#: src/View/AbstractDirectoryView.vala:1875
+#: src/View/AbstractDirectoryView.vala:1877
 #, c-format
 msgid "Open in %s"
 msgstr "Avaa sovelluksella %s"
 
-#: src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1946
 msgid "Open in"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1948
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1959
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
 msgstr "Lisää kirjanmerkkeihin"
 
-#: src/View/AbstractDirectoryView.vala:1972
+#: src/View/AbstractDirectoryView.vala:1974
 msgid "Cut"
 msgstr "Leikkaa"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1980
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr "Siirrä roskakoriin"
 
-#: src/View/AbstractDirectoryView.vala:1992
-msgid "Delete permanently"
+#: src/View/AbstractDirectoryView.vala:1994
+msgid "Delete Permanently"
 msgstr "Poista lopullisesti"
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:2001
 msgid "Restore from Trash"
 msgstr "Palauta roskakorista"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2012
 msgid "Open Parent Folder"
 msgstr "Avaa ylätason kansio"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Remove from History"
 msgstr "Poista historiasta"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Rename…"
 msgstr "Nimeä uudelleen…"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2038
 msgid "Copy as Link"
 msgstr "Kopioi linkkinä"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Paste Link into Folder"
 msgstr "Liitä linkki kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste into Folder"
 msgstr "Liitä kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Show Hidden Files"
 msgstr "Näytä piilotiedostot"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Remote Thumbnails"
 msgstr "Näytä etäpalvelimien osalta pikkukuvat"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Hide Thumbnails"
 msgstr "Piilota pikkukuvat"
 
-#: src/View/AbstractDirectoryView.vala:2108
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Paste Link"
 msgstr "Liitä linkki"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Name"
 msgstr "Nimi"
 
-#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Date"
 msgstr "Päivä"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Reversed Order"
 msgstr "Käänteinen järjestys"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2189
 msgid "Folders Before Files"
 msgstr "Kansiot ennen tiedostoja"
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Sort by"
 msgstr "Järjestä"
 
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2209
 msgid "Folder"
 msgstr "Kansio"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2215
 msgid "Empty File"
 msgstr "Tyhjä tiedosto"
 
-#: src/View/AbstractDirectoryView.vala:2262
+#: src/View/AbstractDirectoryView.vala:2266
 msgid "New"
 msgstr "Uusi"
 
-#: src/View/AbstractDirectoryView.vala:2500
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "Nimetön %s"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr "Tiedostojen poistaminen täältä ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:2864
-#: src/View/AbstractDirectoryView.vala:3049
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
 
-#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "Sen sijaan leikataan valinta"
 
-#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr "Tiedostoja ei voi liittää tänne"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Koti"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Et voi luoda kansiota tähän sijaintiin."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "Verkko ei ole käytettävissä"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "Tämän kansion käyttäminen vaatii toimivan verkkoyhteyden"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Tämä kansio ei kuulu sinulle"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "Sinulla ei ole oikeuksia tarkastella tätä kansiota."
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "Kansion liittäminen epäonnistui"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "Tämän kansion palvelimeen yhdistäminen ei onnistunut."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "Kansion sisällön näyttäminen epäonnistui"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "Toiminto aikakatkaistiin."
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "Kansion näyttäminen ei onnistu"
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "Tämän kansion palvelinta ei voitu paikantaa."
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "Tiedostoa ei löytynyt"
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "Valittua tiedostoa ei ole enää olemassa."
 
@@ -646,12 +646,12 @@ msgid "_Eject"
 msgstr "_Avaa asema"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-msgid "Empty All Trash"
-msgstr "Tyhjennä kaikki roskakorista"
+msgid "Permanently Delete All Trash"
+msgstr "Poista roskakorin sisältö lopullisesti"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:93
-msgid "Empty Trash on this Mount"
-msgstr "Tyhjennä roskakori tämän liitoksen osalta"
+#: src/View/Sidebar/PopupMenuBuilder.vala:95
+msgid "Permanently Delete Trash on this Mount"
+msgstr "Poista roskakorin sisältö tässä liitoksessa"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -665,7 +665,7 @@ msgstr "Yleiset sijainnit, tallennetut kansiot sekä tiedostot"
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "Tallennustila"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
@@ -754,12 +754,11 @@ msgid "%u folders"
 msgstr "%u kansiota"
 
 #: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " ja %u muu kohde (%s) valittu"
-msgstr[1] " ja %u muu kohde (%s) valittu"
+msgstr[1] " ja %u muuta kohdetta (%s) valittu"
 
 #: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
 msgid " selected"
@@ -772,21 +771,19 @@ msgstr "%u kohdetta valittu (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:272
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u alikansio, "
-msgstr[1] "%u alikansio, "
+msgstr[1] "%u alikansiota, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:278
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u tiedosto, "
-msgstr[1] "%u tiedosto, "
+msgstr[1] "%u tiedostoa, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:288
@@ -801,12 +798,11 @@ msgstr "tuntematon koko"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:295
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u tiedosto ei luettavissa"
-msgstr[1] "%u tiedosto ei luettavissa"
+msgstr[1] "%u tiedostoa ei luettavissa"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1074,14 +1070,13 @@ msgid "The item cannot be restored from trash"
 msgstr "Kohdetta ei voi palauttaa roskakorista"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Valittua tiedostoa ei ole enää olemassa."
+msgstr "Alkuperäistä kansiota %s ei ole enää olemassa"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Haluatko luoda sen uudelleen?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -1089,24 +1084,26 @@ msgstr "Ohita"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Tässä kansiossa olleita tiedostoja ei palauteta"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Luo"
+msgstr "Luo uudelleen"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Kansio luodaan uudelleen ja valitut tiedostot, jotka olivat kansiossa alun "
+"perin, palautetaan kansioon"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Ei voitu luoda uudelleen kansiota %s. Ei huomioida tiedostoja kyseisessä "
+"kansiossa"
 
 #: libcore/FileUtils.vala:578
 #, c-format
@@ -1179,7 +1176,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: libcore/gof-directory-async.vala:689
+#: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
 msgstr "Palvelin ei vastannut aikarajan sisällä"
 
@@ -1476,7 +1473,7 @@ msgstr "Siirretään tiedostoja roskakoriin"
 msgid "Deleting Files"
 msgstr "Poistetaan tiedostoja"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1487,7 +1484,7 @@ msgid_plural "Preparing to copy %'d files (%s)"
 msgstr[0] "Valmistellaan %'d tiedoston kopiointia (%s)"
 msgstr[1] "Valmistellaan %'d tiedoston kopiointia (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1498,7 +1495,7 @@ msgid_plural "Preparing to move %'d files (%s)"
 msgstr[0] "Valmistellaan %'d tiedoston siirtoa (%s)"
 msgstr[1] "Valmistellaan %'d tiedoston siirtoa (%s)"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1610,14 +1607,14 @@ msgstr "Kohdetta voi vain lukea."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1653
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Siirretään \"%s\" kohteeseen \"%s\""
+msgstr "Siirretään \"%s\" sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:1654
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Kopioidaan \"%s\" kohteeseen \"%s\""
+msgstr "Kopioidaan \"%s\" sijaintiin \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1658,18 +1655,18 @@ msgstr[1] "Kahdennetaan %'d tiedostoa (lähteestä ”%s”)"
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:1690
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Siirretään %'d tiedosto kohteeseen ”%B”"
-msgstr[1] "Siirretään %'d tiedostoa kohteeseen ”%B”"
+msgstr[0] "Siirretään %'d tiedosto sijaintiin \"%s\""
+msgstr[1] "Siirretään %'d tiedostoa sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:1693
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Kopioidaan %'d tiedosto kohteeseen ”%B”"
-msgstr[1] "Kopioidaan %'d tiedostoa kohteeseen ”%B”"
+msgstr[0] "Kopioidaan %'d tiedosto sijaintiin \"%s\""
+msgstr[1] "Kopioidaan %'d tiedostoa sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
@@ -1810,7 +1807,7 @@ msgstr "Tiedostoa \"%s\" ei voi kopioida tänne."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3064
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying the file into %s."
 msgstr "Virhe kopioitaessa tiedostoa sijaintiin %s."
 
@@ -1821,9 +1818,9 @@ msgstr "Kopioidaan tiedostoja"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3289
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Valmistellaan siirtoa kohteeseen \"%s\""
+msgstr "Valmistellaan siirtoa sijaintiin \"%s\""
 
 #: libcore/marlin-file-operations.c:3294
 #, c-format
@@ -1845,7 +1842,7 @@ msgstr "Siirretään tiedostoja"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3802
-#, fuzzy, c-format
+#, c-format
 msgid "Creating links in \"%s\""
 msgstr "Luodaan linkkejä kohteeseen \"%s\""
 
@@ -1872,7 +1869,7 @@ msgstr "Kohde ei tue symbolisia linkkejä."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3928
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr "Virhe luotaessa symbolista linkkiä kohteeseen %s."
 
@@ -2023,6 +2020,12 @@ msgstr "Palauta valitut"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Poista valitut"
+
+#~ msgid "Empty All Trash"
+#~ msgstr "Tyhjennä kaikki roskakorista"
+
+#~ msgid "Empty Trash on this Mount"
+#~ msgstr "Tyhjennä roskakori tämän liitoksen osalta"
 
 #~ msgid "Devices"
 #~ msgstr "Laitteet"

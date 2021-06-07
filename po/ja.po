@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 04:54+0000\n"
-"PO-Revision-Date: 2021-04-01 14:26+0000\n"
+"POT-Creation-Date: 2021-05-26 08:43+0000\n"
+"PO-Revision-Date: 2021-05-26 13:27+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,31 +20,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: src/Application.vala:158
+#: src/Application.vala:159
 msgid "Show the version of the program"
 msgstr "プログラムのバージョンを表示します"
 
-#: src/Application.vala:160
+#: src/Application.vala:161
 msgid "Open one or more URIs, each in their own tab"
 msgstr "1 つ以上の URI を、それぞれ別のタブで開きます"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
-#: src/Application.vala:164
+#: src/Application.vala:165
 msgid "Quit Files"
 msgstr "ファイルを終了します"
 
-#: src/Application.vala:166
+#: src/Application.vala:167
 msgid "Enable debug logging"
 msgstr "デバックログを有効にします"
 
-#: src/Application.vala:169
+#: src/Application.vala:170
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:172
+#: src/Application.vala:173
 msgid ""
 "\n"
 "\n"
@@ -54,7 +54,7 @@ msgstr ""
 "\n"
 "ファイルマネージャーでファイルシステムを閲覧します"
 
-#: src/Application.vala:200
+#: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
 msgstr "--quit オプションには URI を指定できません。"
 
@@ -113,7 +113,7 @@ msgid "Set as default"
 msgstr "デフォルトに設定"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1966
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "プロパティ"
@@ -192,7 +192,7 @@ msgid "Original Location:"
 msgstr "元の場所:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "Other Application…"
 msgstr "ほかのアプリケーション…"
 
@@ -283,7 +283,7 @@ msgstr "URI を開くことができませんでした"
 msgid "Could not open files or URIs with this app"
 msgstr "このアプリでファイルまたは URI を開けませんでした"
 
-#: src/View/Window.vala:553 src/View/Window.vala:563
+#: src/View/Window.vala:554 src/View/Window.vala:564
 msgid "(as Administrator)"
 msgstr "(管理者)"
 
@@ -291,11 +291,11 @@ msgstr "(管理者)"
 msgid "Filename"
 msgstr "ファイル名"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
 msgid "Size"
 msgstr "サイズ"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
 msgid "Type"
 msgstr "形式"
 
@@ -303,7 +303,7 @@ msgstr "形式"
 msgid "Modified"
 msgstr "変更日時"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:405
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "このフォルダーは存在しません"
 
@@ -325,18 +325,18 @@ msgstr "フォルダー \"%s\" を作成します"
 msgid "Failed to create the folder"
 msgstr "フォルダーを作成できませんでした"
 
-#: src/View/AbstractDirectoryView.vala:814
-#: src/View/AbstractDirectoryView.vala:1125
+#: src/View/AbstractDirectoryView.vala:816
+#: src/View/AbstractDirectoryView.vala:1127
 msgid "Cannot execute this file"
 msgstr "このファイルを実行できません"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:824
+#: src/View/AbstractDirectoryView.vala:826
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "“%s” を開くには、ゴミ箱から移動させる必要があります"
 
-#: src/View/AbstractDirectoryView.vala:825
+#: src/View/AbstractDirectoryView.vala:827
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -344,227 +344,227 @@ msgstr ""
 "ゴミ箱にあるファイルは開けません。このファイルを開くには、別の場所に移動させ"
 "る必要があります。"
 
-#: src/View/AbstractDirectoryView.vala:840
+#: src/View/AbstractDirectoryView.vala:842
 msgid "Cannot open this file"
 msgstr "このファイルを開けません"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:855
 msgid "Cannot identify file type to open"
 msgstr "ファイルタイプを識別できません"
 
-#: src/View/AbstractDirectoryView.vala:1571
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "このファイルを削除できません"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Invalid file name provided"
-msgstr "無効なファイル名が入力されました"
+msgstr "不適切なファイル名が入力されました"
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1850
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: src/View/AbstractDirectoryView.vala:1868
+#: src/View/AbstractDirectoryView.vala:1870
 msgid "Run"
 msgstr "実行"
 
-#: src/View/AbstractDirectoryView.vala:1875
+#: src/View/AbstractDirectoryView.vala:1877
 #, c-format
 msgid "Open in %s"
 msgstr "%s で開く"
 
-#: src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1946
 msgid "Open in"
 msgstr "指定した方法で開く"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1948
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "このアプリケーションで開く"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1959
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
 msgstr "ブックマークに追加"
 
-#: src/View/AbstractDirectoryView.vala:1972
+#: src/View/AbstractDirectoryView.vala:1974
 msgid "Cut"
 msgstr "切り取り"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1980
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr "コピー"
 
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr "ゴミ箱に移動"
 
-#: src/View/AbstractDirectoryView.vala:1992
-msgid "Delete permanently"
+#: src/View/AbstractDirectoryView.vala:1994
+msgid "Delete Permanently"
 msgstr "完全に削除"
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:2001
 msgid "Restore from Trash"
 msgstr "ゴミ箱から復元"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2012
 msgid "Open Parent Folder"
 msgstr "親フォルダーを開く"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Remove from History"
 msgstr "履歴から削除"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Rename…"
 msgstr "名前を変更…"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2038
 msgid "Copy as Link"
 msgstr "リンクとしてコピー"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Paste Link into Folder"
 msgstr "フォルダーの中にリンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste into Folder"
 msgstr "フォルダーの中に貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Show Hidden Files"
 msgstr "隠しファイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Remote Thumbnails"
 msgstr "リモートのサムネイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Hide Thumbnails"
 msgstr "サムネイルを非表示"
 
-#: src/View/AbstractDirectoryView.vala:2108
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Paste Link"
 msgstr "リンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Name"
 msgstr "ファイル名"
 
-#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Date"
 msgstr "日付"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Reversed Order"
 msgstr "逆順"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2189
 msgid "Folders Before Files"
 msgstr "ファイルの前にフォルダーを表示"
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Sort by"
 msgstr "並べ替え"
 
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2209
 msgid "Folder"
 msgstr "フォルダー"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2215
 msgid "Empty File"
 msgstr "空のファイル"
 
-#: src/View/AbstractDirectoryView.vala:2262
+#: src/View/AbstractDirectoryView.vala:2266
 msgid "New"
 msgstr "新規作成"
 
-#: src/View/AbstractDirectoryView.vala:2500
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2864
-#: src/View/AbstractDirectoryView.vala:3049
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
-#: src/View/ViewContainer.vala:384 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "ホーム"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "ここにフォルダーを作成できません。"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "ネットワークが利用できません"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "このフォルダーに到達するためにはネットワークが必要です"
 
-#: src/View/ViewContainer.vala:413
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "このフォルダーはあなたのものではありません"
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "このフォルダーを読み込む権限がありません。"
 
-#: src/View/ViewContainer.vala:416
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "フォルダーのマウントができません"
 
-#: src/View/ViewContainer.vala:417
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "このフォルダーのサーバーに接続できませんでした。"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "フォルダーの内容を表示できません"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "処理がタイムアウトしました。"
 
-#: src/View/ViewContainer.vala:423
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "フォルダーを表示できません"
 
-#: src/View/ViewContainer.vala:424
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "このフォルダーのサーバーが見つかりませんでした。"
 
-#: src/View/ViewContainer.vala:435
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "ファイルが見つかりませんでした"
 
-#: src/View/ViewContainer.vala:436
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "選択されたファイルは存在しません。"
 
@@ -639,12 +639,12 @@ msgid "_Eject"
 msgstr "取り出し(_E)"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-msgid "Empty All Trash"
-msgstr "全ドライブのゴミ箱を空にする"
+msgid "Permanently Delete All Trash"
+msgstr "すべてのゴミ箱から項目を完全に削除"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:93
-msgid "Empty Trash on this Mount"
-msgstr "このドライブのゴミ箱を空にする"
+#: src/View/Sidebar/PopupMenuBuilder.vala:95
+msgid "Permanently Delete Trash on this Mount"
+msgstr "このドライブのゴミ箱から項目を完全に削除"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -1161,7 +1161,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: libcore/gof-directory-async.vala:689
+#: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
 msgstr "サーバーは制限時間内に応答しませんでした"
 
@@ -1236,15 +1236,11 @@ msgstr ""
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-"このマウントされたドライブ上のゴミ箱にある、すべての項目を完全に削除します"
-"か？"
+msgstr "このドライブのゴミ箱にあるすべての項目を完全に削除しますか？"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-"このマウントされたドライブ上のゴミ箱にあるすべての項目は、完全に削除されま"
-"す。"
+msgstr "このドライブのゴミ箱にあるすべての項目は、完全に削除されます。"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:111
 msgid "Emptying Trash"
@@ -1270,7 +1266,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "選択中の %'d 個の項目をゴミ箱から完全に削除してもよろしいですか？"
+msgstr[0] "選択中の%'d個の項目をゴミ箱から完全に削除してもよろしいですか？"
 
 #: libcore/marlin-file-operations.c:301
 msgid "If you delete an item, it will be permanently lost."
@@ -1288,7 +1284,7 @@ msgstr "“%s” を完全に削除しますか？"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択中の %'d 個の項目を完全に削除してもよろしいですか？"
+msgstr[0] "選択中の%'d個の項目を完全に削除してもよろしいですか？"
 
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
@@ -1298,7 +1294,7 @@ msgstr "項目はゴミ箱に移動されないため、元に戻せません。
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "残り %'d 個のファイルを削除しています"
+msgstr[0] "残り%'d個のファイルを削除しています"
 
 #: libcore/marlin-file-operations.c:380
 msgid "Deleting files"
@@ -1378,7 +1374,7 @@ msgstr "ファイルをゴミ箱に移動しています"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "残り %'d 個のファイルをゴミ箱に移動しています"
+msgstr[0] "残り%'d個のファイルをゴミ箱に移動しています"
 
 #: libcore/marlin-file-operations.c:828 libcore/marlin-file-operations.c:831
 #: libcore/marlin-file-operations.c:834
@@ -1446,7 +1442,7 @@ msgstr "ファイルをゴミ箱に移動しています"
 msgid "Deleting Files"
 msgstr "ファイルを削除しています"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1454,9 +1450,9 @@ msgstr "ファイルを削除しています"
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "%'d 個のファイル (%s) をコピーする準備をしています"
+msgstr[0] "%'d個のファイル (%s) をコピーする準備をしています"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1464,9 +1460,9 @@ msgstr[0] "%'d 個のファイル (%s) をコピーする準備をしていま�
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "%'d 個のファイル (%s) を移動する準備をしています"
+msgstr[0] "%'d個のファイル (%s) を移動する準備をしています"
 
-#. TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+#. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
@@ -1474,13 +1470,13 @@ msgstr[0] "%'d 個のファイル (%s) を移動する準備をしています"
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "%'d 個のファイル (%s) を削除する準備をしています"
+msgstr[0] "%'d個のファイル (%s) を削除する準備をしています"
 
 #: libcore/marlin-file-operations.c:1104
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備をしています"
+msgstr[0] "%'d個のファイルをゴミ箱に移動する準備をしています"
 
 #: libcore/marlin-file-operations.c:1135 libcore/marlin-file-operations.c:2061
 #: libcore/marlin-file-operations.c:2203 libcore/marlin-file-operations.c:2257
@@ -1596,13 +1592,13 @@ msgstr "\"%s\" を複製しています"
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へ移動しています"
+msgstr[0] "%'d個のファイルを \"%s\" から \"%s\" へ移動しています"
 
 #: libcore/marlin-file-operations.c:1669
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へコピーしています"
+msgstr[0] "%'d個のファイルを \"%s\" から \"%s\" へコピーしています"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1610,7 +1606,7 @@ msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へコピーしてい�
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "%'d 個のファイルを \"%s\" 内で複製しています"
+msgstr[0] "%'d個のファイルを \"%s\" 内で複製しています"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1620,13 +1616,13 @@ msgstr[0] "%'d 個のファイルを \"%s\" 内で複製しています"
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" へ移動しています"
+msgstr[0] "%'d個のファイルを \"%s\" へ移動しています"
 
 #: libcore/marlin-file-operations.c:1693
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "%'d 個のファイルを \"%s\" へコピーしています"
+msgstr[0] "%'d個のファイルを \"%s\" へコピーしています"
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
@@ -1972,6 +1968,12 @@ msgstr "選択項目を元に戻す"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "選択項目を削除"
+
+#~ msgid "Empty All Trash"
+#~ msgstr "全ドライブのゴミ箱を空にする"
+
+#~ msgid "Empty Trash on this Mount"
+#~ msgstr "このドライブのゴミ箱を空にする"
 
 #~ msgid "Devices"
 #~ msgstr "デバイス"

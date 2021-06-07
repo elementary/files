@@ -38,10 +38,10 @@ namespace Files {
             };
 
             name_renderer = new Files.TextRenderer (ViewMode.LIST);
-            icon_renderer = new Files.IconRenderer (ViewMode.LIST);
-
             set_up_name_renderer ();
             set_up_icon_renderer ();
+            var emblem_renderer = new Files.EmblemRenderer ();
+            emblem_renderer.yalign = 0.5f;
 
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,
@@ -53,12 +53,14 @@ namespace Files {
                                         "file", Files.ListModel.ColumnID.FILE_COLUMN,
                                         "background", Files.ListModel.ColumnID.COLOR);
 
+            name_column.pack_start (emblem_renderer, false);
+            name_column.set_attributes (emblem_renderer,
+                                        "file", Files.ListModel.ColumnID.FILE_COLUMN);
+
             tree.append_column (name_column);
         }
 
-        protected void set_up_icon_renderer () {
-            icon_renderer.set_property ("follow-state", true);
-        }
+        protected abstract void set_up_icon_renderer ();
 
         protected void set_up_view () {
             connect_tree_signals ();
@@ -276,11 +278,13 @@ namespace Files {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot == null || /* slot should not be null but see lp:1595438 */
+            /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
+            if (tree == null || path == null || slot == null || slot.directory == null ||
                 slot.directory.permission_denied || slot.directory.is_empty ()) {
 
                 return;
             }
+
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
 

@@ -90,7 +90,7 @@ namespace Files.View {
         }
 
         ~Slot () {
-            debug ("Slot destruct");
+            debug ("Slot %i destruct", slot_number);
         }
 
         private void connect_slot_signals () {

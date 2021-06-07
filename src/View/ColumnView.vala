@@ -28,6 +28,12 @@ namespace Files {
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }
 
+        protected override void set_up_icon_renderer () {
+            icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS) {
+                lpad = 6
+            };
+        }
+
         protected new void on_view_selection_changed () {
             set_active_slot ();
             base.on_view_selection_changed ();
