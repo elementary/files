@@ -1,8 +1,7 @@
 pantheon_files_widgets_name = 'pantheon-files-widgets'
 
 pantheon_files_widgets_deps = [
-    common_deps,
-    zeitgeist_dep
+    common_deps
 ]
 
 pantheon_files_widgets_files = files(

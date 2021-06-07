@@ -428,7 +428,7 @@ namespace Files.View {
                 content = view.get_content_box ();
                 var directory = dir.file;
 
-                /* Only record valid folders (will also log Zeitgeist event) */
+                /* Only record valid folders */
                 browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
 
                 /* Notify plugins */
