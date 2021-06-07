@@ -317,7 +317,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             if (get_first_iter_for_file (dir.file, out parent_iter)) {
                 if (!iter_nth_child (out child_iter, parent_iter, 1)) {
                     // This is the last child so add a dummy;
-                    insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true, -1);
+                    insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
                 }
 
                 remove (ref file_iter);
