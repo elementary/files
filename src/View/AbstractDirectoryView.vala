@@ -263,7 +263,7 @@ namespace Files {
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
-        protected unowned View.Slot slot;
+        protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
         protected unowned View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new DndHandler ();
 
@@ -331,7 +331,7 @@ namespace Files {
         }
 
         ~AbstractDirectoryView () {
-            debug ("ADV destruct %s", slot.uri);
+            debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
         protected virtual void set_up_name_renderer () {
@@ -411,10 +411,12 @@ namespace Files {
             zoom_level = get_normal_zoom_level ();
         }
 
+        private uint set_cursor_timeout_id = 0;
         public void focus_first_for_empty_selection (bool select) {
             if (selected_files == null) {
-                Idle.add_full (GLib.Priority.LOW, () => {
+                set_cursor_timeout_id = Idle.add_full (GLib.Priority.LOW, () => {
                     if (!tree_frozen) {
+                        set_cursor_timeout_id = 0;
                         set_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
                         return GLib.Source.REMOVE;
                     } else {
@@ -1186,8 +1188,7 @@ namespace Files {
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
-            string sort = val.get_string ();
-            set_sort (sort, false);
+            set_sort (val != null ? val.get_string () : null, false);
         }
 
         private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
@@ -1217,6 +1218,8 @@ namespace Files {
                 }
 
                 model.set_sort_column_id (sort_column_id, sort_order);
+            } else {
+                warning ("Set Sort: The model is unsorted - this should not happen");
             }
         }
 
@@ -1989,8 +1992,10 @@ namespace Files {
                 ));
                 trash_menuitem.action_name = "selection.trash";
 
-                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete permanently"));
-                delete_menuitem.action_name = "selection.delete";
+                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete Permanently")) {
+                    action_name = "selection.delete"
+                };
+                delete_menuitem.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
@@ -2360,6 +2365,8 @@ namespace Files {
                 action_set_state (background_actions, "reverse", val);
                 val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
                 action_set_state (background_actions, "folders-first", val);
+            } else {
+                warning ("Update menu actions sort: The model is unsorted - this should not happen");
             }
         }
 
@@ -3626,7 +3633,8 @@ namespace Files {
             }
 
             /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
-             * the directory file metadata incorrectly (bug 1511307).
+             * the directory file metadata incorrectly (bug 1511307). Also ignore when the model may temporarily
+             * become unsorted.
              */
             if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 return;
@@ -3704,6 +3712,7 @@ namespace Files {
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
+            cancel_timeout (ref set_cursor_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 

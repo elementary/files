@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-23 08:11+0000\n"
+"POT-Creation-Date: 2021-05-26 08:43+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Programmi versiooni näitamine."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "URI-de avamine uues aknas"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
 msgid "New Window"
 msgstr "Uues aknas"
 
@@ -114,7 +114,7 @@ msgid "Set as default"
 msgstr "Määra vaikimisi"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1966
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Omadused"
@@ -199,7 +199,7 @@ msgid "Original Location:"
 msgstr "Originaal asukoht:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "Other Application…"
 msgstr "Teine rakendus…"
 
@@ -295,7 +295,7 @@ msgstr "Ümbernimetamine kui '%s' ebaõnnestus"
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:553 src/View/Window.vala:563
+#: src/View/Window.vala:554 src/View/Window.vala:564
 msgid "(as Administrator)"
 msgstr "- juurkasutajana"
 
@@ -303,11 +303,11 @@ msgstr "- juurkasutajana"
 msgid "Filename"
 msgstr "Faili nimi"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
 msgid "Size"
 msgstr "Suurus"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
 msgid "Type"
 msgstr "Tüüp"
 
@@ -315,7 +315,7 @@ msgstr "Tüüp"
 msgid "Modified"
 msgstr "Muudetud"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:403
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Seda kausta pole olemas"
 
@@ -341,253 +341,255 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/AbstractDirectoryView.vala:814
-#: src/View/AbstractDirectoryView.vala:1125
+#: src/View/AbstractDirectoryView.vala:816
+#: src/View/AbstractDirectoryView.vala:1127
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Selle faili avamine pole võimalik"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:824
+#: src/View/AbstractDirectoryView.vala:826
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:825
+#: src/View/AbstractDirectoryView.vala:827
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:840
+#: src/View/AbstractDirectoryView.vala:842
 msgid "Cannot open this file"
 msgstr "Selle faili avamine pole võimalik"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:855
 msgid "Cannot identify file type to open"
 msgstr "Avatava faili formaati pole võimalik tuvastada"
 
-#: src/View/AbstractDirectoryView.vala:1571
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "Faili ümbertõstmine pole võimalik"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Invalid file name provided"
 msgstr "Vigane faili nimi"
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1850
 msgid "New Tab"
 msgstr "Uues kaardis"
 
-#: src/View/AbstractDirectoryView.vala:1868
+#: src/View/AbstractDirectoryView.vala:1870
 msgid "Run"
 msgstr "Käivita"
 
-#: src/View/AbstractDirectoryView.vala:1875
+#: src/View/AbstractDirectoryView.vala:1877
 #, c-format
 msgid "Open in %s"
 msgstr "Ava rakendusega %s"
 
-#: src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1946
 msgid "Open in"
 msgstr "Ava..."
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1948
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Ava koos"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Paste"
 msgstr "Aseta"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1959
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "Järjehoidjad:"
 
-#: src/View/AbstractDirectoryView.vala:1972
+#: src/View/AbstractDirectoryView.vala:1974
 msgid "Cut"
 msgstr "Lõika"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1980
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr "Kopeeri"
 
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr "Pane prügikasti"
 
-#: src/View/AbstractDirectoryView.vala:1992
-msgid "Delete permanently"
+#: src/View/AbstractDirectoryView.vala:1994
+#, fuzzy
+#| msgid "Delete permanently"
+msgid "Delete Permanently"
 msgstr "Lõplikult kustutamine..."
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:2001
 msgid "Restore from Trash"
 msgstr "Taasta"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2012
 msgid "Open Parent Folder"
 msgstr "Ava faili sisaldav kaust"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Remove from History"
 msgstr "Eemalda hiljutistest"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2031
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Muuda nime"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2038
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Aseta"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2056
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Aseta kausta"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste into Folder"
 msgstr "Aseta kausta"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Show Hidden Files"
 msgstr "Näita peidetud faile"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Remote Thumbnails"
 msgstr "Kaugühenduse pisipiltide näitamine"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2092
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Kaugühenduse pisipiltide näitamine"
 
-#: src/View/AbstractDirectoryView.vala:2108
+#: src/View/AbstractDirectoryView.vala:2112
 #, fuzzy
 msgid "Paste Link"
 msgstr "Aseta"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Name"
 msgstr "Nimi"
 
-#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Date"
 msgstr "Kuupäev"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Reversed Order"
 msgstr "Vastupidises järjekorras"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2189
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Sort by"
 msgstr "Sorteerimine"
 
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2209
 msgid "Folder"
 msgstr "Kaust"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2215
 msgid "Empty File"
 msgstr "Fail"
 
-#: src/View/AbstractDirectoryView.vala:2262
+#: src/View/AbstractDirectoryView.vala:2266
 msgid "New"
 msgstr "Uus"
 
-#: src/View/AbstractDirectoryView.vala:2500
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "Nimetu %s"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2864
-#: src/View/AbstractDirectoryView.vala:3049
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "Prügikastis olevate failide kopeerimine pole võimalik."
 
-#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "Valitud failide lõikamine"
 
-#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:382 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Kodu"
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Sul pole siia võimalik kausta luua."
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "Võrk pole saadaval"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "Selle kausta vaatamiseks on vajalik toimiv võrguühendus"
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Kaust ei kuulu sulle"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "Sul pole õigusi selle kausta sisu vaatamiseks."
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "Kausta haakimine ebaõnnestus"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "Võrku ühendamine ebaõnnestus, kausta vaatamine pole võimalik."
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "Selle kausta serverit pole võimalik leida."
 
-#: src/View/ViewContainer.vala:433
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "Faili ei leitud"
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "Valitud faili ei eksisteeri enam."
 
@@ -669,13 +671,16 @@ msgstr "_Väljasta"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
 #, fuzzy
-#| msgid "Empty _Trash"
-msgid "Empty All Trash"
-msgstr "_Tühjenda prügikast"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently Delete All Trash"
+msgstr "Soovid kõik prügikastis olevad failid jäädavalt kustutada?"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:93
-msgid "Empty Trash on this Mount"
+#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#, fuzzy
+#| msgid "Permanently delete all items from Trash on this mount?"
+msgid "Permanently Delete Trash on this Mount"
 msgstr ""
+"Soovid kõik sellelt kettalt prügikasti tõstetud failid jäädavalt kustutada?"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -2071,6 +2076,11 @@ msgstr "Taasta kõik"
 #, fuzzy
 msgid "Delete Selected"
 msgstr " on valitud"
+
+#, fuzzy
+#~| msgid "Empty _Trash"
+#~ msgid "Empty All Trash"
+#~ msgstr "_Tühjenda prügikast"
 
 #~ msgid "Devices"
 #~ msgstr "Seadmed"
