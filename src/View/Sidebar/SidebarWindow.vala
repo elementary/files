@@ -71,9 +71,11 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
 
         var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
             always_show_image = true,
+            hexpand = true,
             image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
+            no_show_all = Files.is_admin (),
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"}),
-            no_show_all = Files.is_admin ()
+            xalign = 0
         };
 
         var action_bar = new Gtk.ActionBar () {

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-23 08:11+0000\n"
+"POT-Creation-Date: 2021-05-26 08:43+0000\n"
 "PO-Revision-Date: 2020-07-16 16:16+0000\n"
 "Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/files/"
@@ -28,7 +28,7 @@ msgstr "Vis programversjon"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Opne éin eller fleire URIar, kvar av dei i si eiga fane"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1854
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
 msgid "New Window"
 msgstr "Nytt vindauge"
 
@@ -113,7 +113,7 @@ msgid "Set as default"
 msgstr "Set som standard"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1966
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Eigenskapar"
@@ -195,7 +195,7 @@ msgid "Original Location:"
 msgstr "Opprinneleg plassering:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "Other Application…"
 msgstr "Anna program…"
 
@@ -290,7 +290,7 @@ msgstr "Kunne ikkje opne URIane"
 msgid "Could not open files or URIs with this app"
 msgstr "Klarte ikkje å opne filer eller URIar med denne appen"
 
-#: src/View/Window.vala:553 src/View/Window.vala:563
+#: src/View/Window.vala:554 src/View/Window.vala:564
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
@@ -298,11 +298,11 @@ msgstr "(som Administrator)"
 msgid "Filename"
 msgstr "Filnamn"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2167
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
 msgid "Size"
 msgstr "Storleik"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
 msgid "Type"
 msgstr "Type"
 
@@ -310,7 +310,7 @@ msgstr "Type"
 msgid "Modified"
 msgstr "Sist endra"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:403
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Mappa eksisterer ikkje"
 
@@ -332,18 +332,18 @@ msgstr "Lag mappa «%s»"
 msgid "Failed to create the folder"
 msgstr "Klarte ikkje å lage mappa"
 
-#: src/View/AbstractDirectoryView.vala:814
-#: src/View/AbstractDirectoryView.vala:1125
+#: src/View/AbstractDirectoryView.vala:816
+#: src/View/AbstractDirectoryView.vala:1127
 msgid "Cannot execute this file"
 msgstr "Kan ikkje køyre denne fila"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:824
+#: src/View/AbstractDirectoryView.vala:826
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "“%s” må bli fjerna frå Papirkorga før den kan opnast"
 
-#: src/View/AbstractDirectoryView.vala:825
+#: src/View/AbstractDirectoryView.vala:827
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -351,229 +351,231 @@ msgstr ""
 "Filer som ligg i papirkorga kan ikkje opnast. For å opne denne fila må den "
 "flyttast til ein annan plass."
 
-#: src/View/AbstractDirectoryView.vala:840
+#: src/View/AbstractDirectoryView.vala:842
 msgid "Cannot open this file"
 msgstr "Kan ikkje opne denne fila"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:855
 msgid "Cannot identify file type to open"
 msgstr "Kan ikkje identifisere filtypa som skal opnast"
 
-#: src/View/AbstractDirectoryView.vala:1571
+#: src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "Kunne ikkje sleppe denne fila"
 
-#: src/View/AbstractDirectoryView.vala:1572
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Invalid file name provided"
 msgstr "Ugyldig filnamn er oppgjeve"
 
-#: src/View/AbstractDirectoryView.vala:1848
+#: src/View/AbstractDirectoryView.vala:1850
 msgid "New Tab"
 msgstr "Ny fane"
 
-#: src/View/AbstractDirectoryView.vala:1868
+#: src/View/AbstractDirectoryView.vala:1870
 msgid "Run"
 msgstr "Køyr"
 
-#: src/View/AbstractDirectoryView.vala:1875
+#: src/View/AbstractDirectoryView.vala:1877
 #, c-format
 msgid "Open in %s"
 msgstr "Opne i %s"
 
-#: src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1946
 msgid "Open in"
 msgstr "Opne i"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1948
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Opne med"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1954
 msgid "Paste"
 msgstr "Lim inn"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1959
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "Bokmerke"
 
-#: src/View/AbstractDirectoryView.vala:1972
+#: src/View/AbstractDirectoryView.vala:1974
 msgid "Cut"
 msgstr "Klipp ut"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1980
+#: src/View/AbstractDirectoryView.vala:1982
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Move to Trash"
 msgstr "Flytt til papirkorga"
 
-#: src/View/AbstractDirectoryView.vala:1992
-msgid "Delete permanently"
+#: src/View/AbstractDirectoryView.vala:1994
+#, fuzzy
+#| msgid "Delete permanently"
+msgid "Delete Permanently"
 msgstr "Slett permanent"
 
-#: src/View/AbstractDirectoryView.vala:1997
+#: src/View/AbstractDirectoryView.vala:2001
 msgid "Restore from Trash"
 msgstr "Gjenopprett frå papirkorg"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2012
 msgid "Open Parent Folder"
 msgstr "Opne overordna mappe"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Remove from History"
 msgstr "Slett frå historikk"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Rename…"
 msgstr "Gje nytt namn…"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2038
 msgid "Copy as Link"
 msgstr "Kopier som lenke"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2056
 msgid "Paste Link into Folder"
 msgstr "Lim inn lenke i mappe"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Paste into Folder"
 msgstr "Lim inn i mappe"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Show Hidden Files"
 msgstr "Vis skjulte filer"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Remote Thumbnails"
 msgstr "Vis miniatyrbilete frå andre stadar"
 
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Hide Thumbnails"
 msgstr "Gøym miniatyrbilete"
 
-#: src/View/AbstractDirectoryView.vala:2108
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Paste Link"
 msgstr "Lim inn lenke"
 
-#: src/View/AbstractDirectoryView.vala:2162
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Name"
 msgstr "Namn"
 
-#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Date"
 msgstr "Dato"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Reversed Order"
 msgstr "Omvendt rekkefølge"
 
-#: src/View/AbstractDirectoryView.vala:2185
+#: src/View/AbstractDirectoryView.vala:2189
 msgid "Folders Before Files"
 msgstr "Mapper før filer"
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2201
 msgid "Sort by"
 msgstr "Sorter etter"
 
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2209
 msgid "Folder"
 msgstr "Mappe"
 
-#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2215
 msgid "Empty File"
 msgstr "Tom fil"
 
-#: src/View/AbstractDirectoryView.vala:2262
+#: src/View/AbstractDirectoryView.vala:2266
 msgid "New"
 msgstr "Ny"
 
-#: src/View/AbstractDirectoryView.vala:2500
+#: src/View/AbstractDirectoryView.vala:2504
 #, c-format
 msgid "Untitled %s"
 msgstr "Utan namn %s"
 
-#: src/View/AbstractDirectoryView.vala:2863
-#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:2867
+#: src/View/AbstractDirectoryView.vala:3068
 msgid "Cannot remove files from here"
 msgstr "Filer kan ikkje fjernast herifrå"
 
-#: src/View/AbstractDirectoryView.vala:2864
-#: src/View/AbstractDirectoryView.vala:3049
-#: src/View/AbstractDirectoryView.vala:3065
+#: src/View/AbstractDirectoryView.vala:2868
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "You do not have permission to change this location"
 msgstr "Du har ikkje tilgjenge til å endre denne plasseringa"
 
-#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikkje kopiere filer som ligg i papirkorga"
 
-#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3023
 msgid "Cutting the selection instead"
 msgstr "Klipper ut utvalet i staden"
 
-#: src/View/AbstractDirectoryView.vala:3048
+#: src/View/AbstractDirectoryView.vala:3052
 msgid "Cannot paste files here"
 msgstr "Filer kan ikkje limast inn her"
 
-#: src/View/ViewContainer.vala:382 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
 msgid "Home"
 msgstr "Heim"
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Du kan ikkje opprette ei mappe her."
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "Nettverket er utilgjengeleg"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "Fungerande nettverk er naudsynt for å nå denne mappa"
 
-#: src/View/ViewContainer.vala:411
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Denne mappa tilhøyrer ikkje deg"
 
-#: src/View/ViewContainer.vala:412
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "Du har ikkje løyve til å sjå denne mappa."
 
-#: src/View/ViewContainer.vala:414
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "Kunne ikkje montere mappa"
 
-#: src/View/ViewContainer.vala:415
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "Kunne ikkje kople til tenaren for denne mappa."
 
-#: src/View/ViewContainer.vala:418
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "Kunne ikkje vise mappeinnhald"
 
-#: src/View/ViewContainer.vala:419
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "Tidsavbrot for operasjonen."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "Kunne ikkje vise mappa"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "Tenaren for denne mappa var ikkje å finne."
 
-#: src/View/ViewContainer.vala:433
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "Finn ikkje fil"
 
-#: src/View/ViewContainer.vala:434
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "Den valde fila finst ikkje lenger."
 
@@ -653,13 +655,15 @@ msgstr "_Løys ut"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
 #, fuzzy
-#| msgid "Empty _Trash"
-msgid "Empty All Trash"
-msgstr "Tøm _papirkorga"
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently Delete All Trash"
+msgstr "Slette alle element i papirkorga permanent?"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:93
-msgid "Empty Trash on this Mount"
-msgstr ""
+#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#, fuzzy
+#| msgid "Permanently delete all items from Trash on this mount?"
+msgid "Permanently Delete Trash on this Mount"
+msgstr "Slette alle element i papirkorga permanent på denne monterte eininga?"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -2040,6 +2044,11 @@ msgstr "Gjenopprett valde"
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
 msgstr "Slett valde"
+
+#, fuzzy
+#~| msgid "Empty _Trash"
+#~ msgid "Empty All Trash"
+#~ msgstr "Tøm _papirkorga"
 
 #~ msgid "Devices"
 #~ msgstr "Einingar"

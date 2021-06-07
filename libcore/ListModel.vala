@@ -82,7 +82,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             typeof (bool)
         });
 
-        set_default_sort_func ((Gtk.TreeIterCompareFunc) file_entry_compare_func);
+        // We do not want a default sort order - one of the visible columns must always be sorted
         for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
             set_sort_func (i, (Gtk.TreeIterCompareFunc) file_entry_compare_func);
         }
