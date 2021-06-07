@@ -270,7 +270,6 @@ namespace Files {
         protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
-        public signal void item_hovered (Files.File? file);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         protected AbstractDirectoryView (View.Slot _slot) {
@@ -2767,7 +2766,7 @@ namespace Files {
         }
 
         protected void on_view_selection_changed () {
-            selected_files_invalid = true;
+            selected_files_invalid = true; //The selection has really changed
             one_or_less = (selected_files == null || selected_files.next == null);
         }
 
@@ -3123,7 +3122,6 @@ namespace Files {
                         on_directory = target_file.is_directory;
                     }
 
-                    item_hovered (target_file);
                     hover_path = path;
                 }
             }
@@ -3152,7 +3150,6 @@ namespace Files {
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
-            item_hovered (null); /* Ensure overlay statusbar disappears */
             hover_path = null;
             return false;
         }
@@ -3539,7 +3536,6 @@ namespace Files {
             Gtk.Widget widget = get_child ();
             int x = (int)event.x;
             int y = (int)event.y;
-            update_selected_files_and_menu ();
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 if (should_activate) {
@@ -3553,15 +3549,16 @@ namespace Files {
                     });
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
-                    /* Only need to update selected files if changed by this handler */
-                    Idle.add (() => {
-                        update_selected_files_and_menu ();
-                        return GLib.Source.REMOVE;
-                    });
                 } else if (event.button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
                 }
             }
+
+            //Need to update in Idle here in case of a rubberband selection in TreeView.
+            Idle.add (() => {
+                update_selected_files_and_menu ();
+                return GLib.Source.REMOVE;
+            });
 
             should_activate = false;
             should_deselect = false;
@@ -3677,6 +3674,8 @@ namespace Files {
         }
 
         protected void update_selected_files_and_menu () {
+            /* This can get called multiple times when selection has only changed once so only
+             * action the first call. */
             if (selected_files_invalid) {
                 selected_files = null;
 
@@ -3692,7 +3691,6 @@ namespace Files {
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
-            item_hovered (null);
             return true;
         }
 
@@ -3717,7 +3715,6 @@ namespace Files {
         }
 
         private void cancel_hover () {
-            item_hovered (null);
             hover_path = null;
         }
 
