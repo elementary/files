@@ -38,7 +38,6 @@ namespace Files {
             tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
-            tree.set_reorderable (false);
 
             name_renderer = new Files.TextRenderer (ViewMode.ICON);
             icon_renderer = new Files.IconRenderer (ViewMode.ICON);
