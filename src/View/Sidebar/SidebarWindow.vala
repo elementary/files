@@ -42,39 +42,27 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
 
-        var bookmark_expander = new SidebarExpander (_("Bookmarks")) {
-            tooltip_text = _("Common places plus saved folders and files")
+        var bookmark_expander = new SidebarExpander (_("Bookmarks"), bookmark_listbox) {
+            tooltip = _("Common places plus saved folders and files")
         };
 
-        var bookmark_revealer = new Gtk.Revealer ();
-        bookmark_revealer.add (bookmark_listbox);
-
-        /// TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
-        var device_expander = new SidebarExpander (_("Storage")) {
-            tooltip_text = _("Internal and connected storage devices")
+        var device_expander = new SidebarExpander (_("Devices"), device_listbox) {
+            tooltip = _("Internal and connected storage devices")
         };
 
-        var device_revealer = new Gtk.Revealer ();
-        device_revealer.add (device_listbox);
-
-        var network_expander = new SidebarExpander (_("Network")) {
-            tooltip_text = _("Devices and places available via a network"),
+        var network_expander = new SidebarExpander (_("Network"), network_listbox) {
+            tooltip = _("Devices and places available via a network"),
             no_show_all = Files.is_admin ()
         };
-
-        var network_revealer = new Gtk.Revealer ();
-        network_revealer.add (network_listbox);
 
         bookmarklists_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.VERTICAL,
             vexpand = true
         };
+
         bookmarklists_grid.add (bookmark_expander);
-        bookmarklists_grid.add (bookmark_revealer);
         bookmarklists_grid.add (device_expander);
-        bookmarklists_grid.add (device_revealer);
         bookmarklists_grid.add (network_expander);
-        bookmarklists_grid.add (network_revealer);
 
         scrolled_window = new Gtk.ScrolledWindow (null, null) {
             hscrollbar_policy = Gtk.PolicyType.NEVER
@@ -119,10 +107,6 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         Files.app_settings.bind (
             "sidebar-cat-network-expander", network_expander, "active", SettingsBindFlags.DEFAULT
         );
-
-        bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
 
         connect_server_button.clicked.connect (() => {
             connect_server_request ();
@@ -210,22 +194,10 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             }
 
             sync_timeout_id = 0;
-            network_listbox.unselect_all_items ();
-            device_listbox.unselect_all_items ();
-            bookmark_listbox.unselect_all_items ();
-            /* Need to process unselect_all signal first */
-            Idle.add (() => {
-                SidebarItemInterface? row = null;
-                if (bookmark_listbox.has_uri (location, out row)) {
-                    bookmark_listbox.select_item (row);
-                } else if (device_listbox.has_uri (location, out row)) {
-                    device_listbox.select_item (row);
-                } else if (network_listbox.has_uri (location, out row)) {
-                    network_listbox.select_item (row);
-                }
-
-                return Source.REMOVE;
-            });
+            /* select_uri () will unselect other uris in each listbox */
+            bookmark_listbox.select_uri (location);
+            device_listbox.select_uri (location);
+            network_listbox.select_uri (location);
 
             return Source.REMOVE;
         });
@@ -259,43 +231,5 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
     public void on_free_space_change () {
         /* We cannot be sure which devices will experience a freespace change so refresh all */
         device_listbox.refresh_info ();
-    }
-
-    private class SidebarExpander : Gtk.ToggleButton {
-        public string expander_label { get; construct; }
-        private static Gtk.CssProvider expander_provider;
-
-        public SidebarExpander (string label) {
-            Object (expander_label: label);
-        }
-
-        static construct {
-            expander_provider = new Gtk.CssProvider ();
-            expander_provider.load_from_resource ("/io/elementary/files/SidebarExpander.css");
-        }
-
-        construct {
-            var title = new Gtk.Label (expander_label) {
-                hexpand = true,
-                xalign = 0
-            };
-
-            var arrow = new Gtk.Spinner ();
-
-            unowned Gtk.StyleContext arrow_style_context = arrow.get_style_context ();
-            arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
-            arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-            var grid = new Gtk.Grid ();
-            grid.add (title);
-            grid.add (arrow);
-
-            add (grid);
-
-            unowned Gtk.StyleContext style_context = get_style_context ();
-            style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
-            style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
-            style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        }
     }
 }

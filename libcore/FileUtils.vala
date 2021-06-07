@@ -1241,7 +1241,7 @@ namespace PF.FileUtils {
 namespace Files {
     public const string ROOT_FS_URI = "file://";
     public const string TRASH_URI = "trash://";
-    public const string NETWORK_URI = "network://";
+    public const string NETWORK_URI = "network:///";
     public const string RECENT_URI = "recent://";
     public const string AFP_URI = "afp://";
     public const string AFC_URI = "afc://";
