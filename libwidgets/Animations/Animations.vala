@@ -20,10 +20,7 @@ namespace Files.Animation {
 
     private static uint timeout_source_id = 0;
     public static void smooth_adjustment_to (Gtk.Adjustment adj, int final) {
-        if (timeout_source_id > 0) {
-            GLib.Source.remove (timeout_source_id);
-            timeout_source_id = 0;
-        }
+        cancel ();
 
         var initial = adj.value;
         var to_do = final - initial;
@@ -57,5 +54,16 @@ namespace Files.Animation {
             old_adj_value = adj.value;
             return GLib.Source.CONTINUE;
         });
+    }
+
+    public static bool get_animating () {
+        return timeout_source_id > 0;
+    }
+
+    public static void cancel () {
+        if (timeout_source_id > 0) {
+            Source.remove (timeout_source_id);
+            timeout_source_id = 0;
+        }
     }
 }
