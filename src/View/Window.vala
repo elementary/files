@@ -486,6 +486,7 @@ namespace Files.View {
             is_child = false;
             string parent_path = "";
             string uri = location.get_uri ();
+            bool is_folder = location.query_file_type (FileQueryInfoFlags.NONE) == FileType.DIRECTORY;
             /* Ensures consistent format of protocol and path */
             parent_path = PF.FileUtils.get_parent_path_from_path (location.get_path ());
             int existing_position = 0;
@@ -496,7 +497,7 @@ namespace Files.View {
 
                 if (PF.FileUtils.same_location (uri, tab_uri)) {
                     return existing_position;
-                } else if (PF.FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
+                } else if (!is_folder && PF.FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
                     is_child = true;
                     return existing_position;
                 }

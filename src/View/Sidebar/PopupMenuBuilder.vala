@@ -94,12 +94,16 @@ public class PopupMenuBuilder : Object {
             }
         }
 
-        var text = mounts_with_trash > 0 ? _("Empty All Trash") : _("Empty Trash");
-        return add_item (new Gtk.MenuItem.with_mnemonic (text), bookmark_cb);
+        var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
+        var menu_item = new Gtk.MenuItem.with_mnemonic (text);
+        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        return add_item (menu_item, bookmark_cb);
     }
 
     public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback bookmark_cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Empty Trash on this Mount")), bookmark_cb);
+        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
+        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        return add_item (menu_item, bookmark_cb);
     }
 
     public PopupMenuBuilder add_separator () {

@@ -61,6 +61,7 @@ libcore/CallWhenReady.vala
 libcore/Directory.vala
 libcore/Preferences.vala
 libcore/IconInfo.vala
+libcore/ListModel.vala
 libcore/PixbufUtils.vala
 libcore/PluginManager.vala
 libcore/Plugin.vala
@@ -79,7 +80,6 @@ libcore/FileOperations/EmptyTrashJob.vala
 libcore/FileOperations/MountUtils.vala
 
 libcore/marlin-file-operations.c
-libcore/fm-list-model.c
 
 libwidgets/Interfaces/LocatableInterface.vala
 libwidgets/Interfaces/NavigatableInterface.vala
