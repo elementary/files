@@ -1188,8 +1188,7 @@ namespace Files {
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
-            string sort = val.get_string ();
-            set_sort (sort, false);
+            set_sort (val != null ? val.get_string () : null, false);
         }
 
         private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
@@ -1219,6 +1218,8 @@ namespace Files {
                 }
 
                 model.set_sort_column_id (sort_column_id, sort_order);
+            } else {
+                warning ("Set Sort: The model is unsorted - this should not happen");
             }
         }
 
@@ -1991,8 +1992,10 @@ namespace Files {
                 ));
                 trash_menuitem.action_name = "selection.trash";
 
-                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete permanently"));
-                delete_menuitem.action_name = "selection.delete";
+                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete Permanently")) {
+                    action_name = "selection.delete"
+                };
+                delete_menuitem.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
@@ -2362,6 +2365,8 @@ namespace Files {
                 action_set_state (background_actions, "reverse", val);
                 val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
                 action_set_state (background_actions, "folders-first", val);
+            } else {
+                warning ("Update menu actions sort: The model is unsorted - this should not happen");
             }
         }
 
@@ -3628,7 +3633,8 @@ namespace Files {
             }
 
             /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
-             * the directory file metadata incorrectly (bug 1511307).
+             * the directory file metadata incorrectly (bug 1511307). Also ignore when the model may temporarily
+             * become unsorted.
              */
             if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 return;
