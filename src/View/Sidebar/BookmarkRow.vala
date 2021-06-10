@@ -108,7 +108,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         /* If put margin on the row then drag and drop does not work when over the margin so we put
          * the margin on the content grid */
         //Set a fallback tooltip to stop category tooltip appearing inappropriately
-        set_tooltip_text (PF.FileUtils.sanitize_path (uri, null, false));
+        set_tooltip_text (Files.FileUtils.sanitize_path (uri, null, false));
 
         selectable = true;
         id = SidebarItemInterface.get_next_item_id ();
@@ -393,8 +393,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             if (drop_text != null &&
                 info == Files.TargetType.TEXT_URI_LIST) {
 
-                drop_file_list = PF.FileUtils.files_from_uris (drop_text);
-                PF.FileUtils.file_accepts_drop (
+                drop_file_list = Files.FileUtils.files_from_uris (drop_text);
+                Files.FileUtils.file_accepts_drop (
                     target_file,
                     drop_file_list, ctx,
                     out current_suggested_action
@@ -447,10 +447,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                        target.name () == "text/uri-list") {
 
                 if (drop_file_list == null) {
-                    drop_file_list = PF.FileUtils.files_from_uris (drop_text);
+                    drop_file_list = Files.FileUtils.files_from_uris (drop_text);
                 }
 
-                PF.FileUtils.file_accepts_drop (
+                Files.FileUtils.file_accepts_drop (
                     target_file,
                     drop_file_list, ctx,
                     out current_suggested_action

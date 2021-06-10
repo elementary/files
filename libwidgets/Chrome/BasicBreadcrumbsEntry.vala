@@ -108,9 +108,9 @@ namespace Files.View.Chrome {
         public void set_breadcrumbs_path (string path) {
             string protocol;
             string newpath;
-            string sanitized_path = PF.FileUtils.sanitize_path (path);
+            string sanitized_path = FileUtils.sanitize_path (path);
 
-            PF.FileUtils.split_protocol_from_path (sanitized_path, out protocol, out newpath);
+            FileUtils.split_protocol_from_path (sanitized_path, out protocol, out newpath);
             var newelements = new Gee.ArrayList<BreadcrumbElement> ();
             make_element_list_from_protocol_and_path (protocol, newpath, newelements);
             GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
@@ -348,7 +348,7 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void on_activate () {
-            activate_path (PF.FileUtils.sanitize_path (text, current_dir_path));
+            activate_path (FileUtils.sanitize_path (text, current_dir_path));
             text = "";
         }
 
@@ -361,7 +361,7 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void go_up () {
-            text = PF.FileUtils.get_parent_path_from_path (text);
+            text = FileUtils.get_parent_path_from_path (text);
             set_position (-1);
         }
 
@@ -496,7 +496,7 @@ namespace Files.View.Chrome {
                     }
             }
 
-            return PF.FileUtils.sanitize_path (newpath, null, include_file_protocol);
+            return FileUtils.sanitize_path (newpath, null, include_file_protocol);
         }
 
         private void make_element_list_from_protocol_and_path (string protocol,
@@ -504,7 +504,7 @@ namespace Files.View.Chrome {
                                                                Gee.ArrayList<BreadcrumbElement> newelements) {
             /* Ensure the breadcrumb texts are escaped strings whether or not
              * the parameter newpath was supplied escaped */
-            string newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
+            string newpath = FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
             newelements.add (new BreadcrumbElement (protocol, this, get_style_context ()));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {
                 if (dir != "") {
