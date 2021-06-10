@@ -319,10 +319,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                     // This is the last child so add a dummy;
                     insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
                 }
-
-                remove (ref file_iter);
-                return true;
             }
+
+            remove (ref file_iter);
+            return true;
         }
 
         return false;
