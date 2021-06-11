@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-05-27 08:56+0000\n"
+"PO-Revision-Date: 2021-06-11 13:35+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -298,13 +298,11 @@ msgstr "Nouvel onglet"
 
 #: src/View/Window.vala:147
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Annuler la fermeture de l'onglet"
 
 #: src/View/Window.vala:452
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "Fermer"
+msgstr "Fermer l'onglet"
 
 #: src/View/Window.vala:562 src/View/Window.vala:572
 msgid "(as Administrator)"
