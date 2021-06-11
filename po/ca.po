@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-05-26 20:25+0000\n"
+"PO-Revision-Date: 2021-06-11 13:35+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -295,13 +295,11 @@ msgstr "Pestanya nova"
 
 #: src/View/Window.vala:147
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Desfés el tancament de la pestanya"
 
 #: src/View/Window.vala:452
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "Tanca"
+msgstr "Tanca la pestanya"
 
 #: src/View/Window.vala:562 src/View/Window.vala:572
 msgid "(as Administrator)"
