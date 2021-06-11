@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-05-26 13:27+0000\n"
+"PO-Revision-Date: 2021-06-11 09:32+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
@@ -294,13 +294,11 @@ msgstr "New Tab"
 
 #: src/View/Window.vala:147
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Undo Close Tab"
 
 #: src/View/Window.vala:452
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "Close"
+msgstr "Close Tab"
 
 #: src/View/Window.vala:562 src/View/Window.vala:572
 msgid "(as Administrator)"
@@ -420,8 +418,6 @@ msgid "Move to Trash"
 msgstr "Move to the Rubbish Bin"
 
 #: src/View/AbstractDirectoryView.vala:1995
-#, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Delete Permanently"
 
