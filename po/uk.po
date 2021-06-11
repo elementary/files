@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-05-26 20:25+0000\n"
+"PO-Revision-Date: 2021-06-11 18:39+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -306,13 +306,11 @@ msgstr "Нова вкладка"
 
 #: src/View/Window.vala:147
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Повернути закриту вкладку"
 
 #: src/View/Window.vala:452
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "Закрити"
+msgstr "Закрити вкладку"
 
 #: src/View/Window.vala:562 src/View/Window.vala:572
 msgid "(as Administrator)"
