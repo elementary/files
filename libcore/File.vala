@@ -897,13 +897,16 @@ public class Files.File : GLib.Object {
         }
 
         if (directories_first) {
+            /* When comparing files of different type, need to cancel out the native sorting of the TreeView
+             * so directories always come first. */
             if (is_folder () && !other.is_folder ()) {
-                return -1;
+                return reversed ? 1 : -1;
             } else if (other.is_folder () && !is_folder ()) {
-                return 1;
+                return reversed ? -1 : 1;
             }
         }
 
+        //Always sort files of same type in ASCENDING order as the TreeView will reverse them if needed
         int result = 0;
         switch (sort_type) {
             case Files.ListModel.ColumnID.FILENAME:
@@ -930,13 +933,11 @@ public class Files.File : GLib.Object {
                 }
 
                 break;
+            default:
+                assert_not_reached ();
         }
 
-        if (reversed) {
-            return -result;
-        } else {
-            return result;
-        }
+        return result;
     }
 
     public int compare_by_display_name (Files.File other) {
