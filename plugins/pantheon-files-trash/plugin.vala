@@ -79,7 +79,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
         trash_model.append (_("Permanently Delete All Trash"), "trash.delete-all");
         var item = new Files.SidebarPluginItem () {
             name = _("Trash"),
-            tooltip =  Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash")),
+            tooltip = Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash")),
             uri = _(Files.TRASH_URI),
             icon = trash_monitor.get_icon (),
             show_spinner = false,
