@@ -18,10 +18,8 @@
 public class Files.Plugins.Trash : Files.Plugins.Base {
     const GLib.ActionEntry [] TRASH_ENTRIES = {
         {"delete-all", action_delete_all},
-        {"restore-all", action_restore_all},
-        {"delete-selected", action_delete_selected},
-        {"restore-seleted", action_restore_selected}
     };
+
     private SimpleActionGroup trash_actions;
     private Files.SidebarInterface? sidebar;
     private uint32 trash_item_ref = 0;
@@ -42,6 +40,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
     public Trash () {
         trash_actions = new SimpleActionGroup ();
         trash_actions.add_action_entries (TRASH_ENTRIES, this);
+        var delete_all_action = (GLib.SimpleAction? )(trash_actions.lookup_action ("delete-all"));
 
         actionbars = new Gee.HashMap<Files.AbstractSlot, Gtk.ActionBar> ();
         trash_monitor = TrashMonitor.get_default ();
@@ -62,7 +61,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                 actionbars.unset (closed.key);
             }
 
-            set_actions_enabled ();
+            delete_all_action.set_enabled (!trash_is_empty);
 
             var item = new Files.SidebarPluginItem () {
                 icon = trash_monitor.get_icon ()
@@ -71,7 +70,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
             sidebar.update_plugin_item (item, trash_item_ref);
         });
 
-        set_actions_enabled ();
+        delete_all_action.set_enabled (!trash_monitor.is_empty);
     }
 
     public override void sidebar_loaded (Gtk.Widget widget) {
@@ -135,7 +134,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                 delete_button.clicked.connect (() => {
                     if (delete_button.label == _(DELETE_ALL)) {
                         var job = new Files.FileOperations.EmptyTrashJob (window);
-                        job.empty_trash.begin ();
+                        job.empty_trash.begin (false);
                     } else {
                         GLib.List<GLib.File> to_delete = null;
                         foreach (Files.File gof in view.get_selected_files ()) {
@@ -182,24 +181,6 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
         var parent = (Gtk.Window)(sidebar.get_ancestor (typeof (Gtk.Window)));
         var job = new Files.FileOperations.EmptyTrashJob (parent);
         job.empty_trash.begin (true); // Always confirm when enptying trash "blind" from context menu
-    }
-
-    public void action_restore_all () {
-    }
-
-    public void action_delete_selected () {
-    }
-
-    public void action_restore_selected () {
-    }
-
-    private void set_actions_enabled () {
-        action_set_enabled ("delete-all", !trash_monitor.is_empty);
-        action_set_enabled ("restore-all", !trash_monitor.is_empty);
-    }
-
-    private void action_set_enabled (string name, bool enabled) {
-        ((GLib.SimpleAction? )(trash_actions.lookup_action (name))).set_enabled (enabled);
     }
 }
 
