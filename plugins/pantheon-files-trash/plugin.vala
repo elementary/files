@@ -16,6 +16,16 @@
 ***/
 
 public class Files.Plugins.Trash : Files.Plugins.Base {
+    const GLib.ActionEntry [] TRASH_ENTRIES = {
+        {"delete-all", action_delete_all},
+        {"restore-all", action_restore_all},
+        {"delete-selected", action_delete_selected},
+        {"restore-seleted", action_restore_selected}
+    };
+    private SimpleActionGroup trash_actions;
+    private Files.SidebarInterface? sidebar;
+    private uint32 trash_item_ref = 0;
+
     private const string RESTORE_ALL = N_("Restore All");
     private const string DELETE_ALL = N_("Empty the Trash");
     private const string RESTORE_SELECTED = N_("Restore Selected");
@@ -30,6 +40,9 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
     private Gtk.Button restore_button;
 
     public Trash () {
+        trash_actions = new SimpleActionGroup ();
+        trash_actions.add_action_entries (TRASH_ENTRIES, this);
+
         actionbars = new Gee.HashMap<Files.AbstractSlot, Gtk.ActionBar> ();
         trash_monitor = TrashMonitor.get_default ();
         trash_monitor.notify["is-empty"].connect (() => {
@@ -48,7 +61,39 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                 closed.value.destroy ();
                 actionbars.unset (closed.key);
             }
+
+            set_actions_enabled ();
+
+            var item = new Files.SidebarPluginItem () {
+                icon = trash_monitor.get_icon ()
+            };
+
+            sidebar.update_plugin_item (item, trash_item_ref);
         });
+
+        set_actions_enabled ();
+    }
+
+    public override void sidebar_loaded (Gtk.Widget widget) {
+        sidebar = (Files.SidebarInterface)widget;
+        var trash_model = new Menu ();
+        trash_model.append (_("Permanently Delete All Trash"), "trash.delete-all");
+        var item = new Files.SidebarPluginItem () {
+            name = _("Trash"),
+            tooltip =  Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash")),
+            uri = _(Files.TRASH_URI),
+            icon = trash_monitor.get_icon (),
+            show_spinner = false,
+            action_group = trash_actions,
+            action_group_namespace = "trash",
+            menu_model = trash_model
+        };
+
+        trash_item_ref = sidebar.add_plugin_item (item, Files.PlaceType.BOOKMARKS_CATEGORY);
+    }
+
+    public override void update_sidebar (Gtk.Widget widget) {
+        sidebar_loaded (widget);
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
@@ -131,6 +176,30 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
         bar.set_visible (!trash_is_empty);
         bar.no_show_all = trash_is_empty;
         bar.show_all ();
+    }
+
+    public void action_delete_all () {
+        var parent = (Gtk.Window)(sidebar.get_ancestor (typeof (Gtk.Window)));
+        var job = new Files.FileOperations.EmptyTrashJob (parent);
+        job.empty_trash.begin (true); // Always confirm when enptying trash "blind" from context menu
+    }
+
+    public void action_restore_all () {
+    }
+
+    public void action_delete_selected () {
+    }
+
+    public void action_restore_selected () {
+    }
+
+    private void set_actions_enabled () {
+        action_set_enabled ("delete-all", !trash_monitor.is_empty);
+        action_set_enabled ("restore-all", !trash_monitor.is_empty);
+    }
+
+    private void action_set_enabled (string name, bool enabled) {
+        ((GLib.SimpleAction? )(trash_actions.lookup_action (name))).set_enabled (enabled);
     }
 }
 

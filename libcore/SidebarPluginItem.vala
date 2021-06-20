@@ -21,20 +21,19 @@ public class Files.SidebarPluginItem : Object {
     //TODO This can be simplified with rewritten Sidebar
     public const PlaceType PLACE_TYPE = PlaceType.PLUGIN_ITEM;
     public string name { get; set; }
-    public string? uri { get; set; }
-    public Drive? drive { get; set; }
-    public Volume? volume { get; set; }
-    public Mount? mount { get; set; }
-    public Icon? icon { get; set; }
-    public uint index { get; set; }
-    public bool can_eject { get; set; }
-    public string? tooltip { get; set; }
-    public Icon? action_icon { get; set; }
+    public string? uri { get; set; default = null;}
+    public Drive? drive { get; set; default = null;}
+    public Volume? volume { get; set; default = null;}
+    public Mount? mount { get; set; default = null;}
+    public Icon? icon { get; set; default = null;}
+    public bool can_eject { get; set; default = false;}
+    public string? tooltip { get; set; default = null;}
+    public Icon? action_icon { get; set; default = null;}
     public bool show_spinner { get; set; default = false; }
     public uint64 free_space { get; set; default = 0; }
     public uint64 disk_size { get; set; default = 0; }
-    public ActionGroup? action_group { get; set; }
-    public string? action_group_namespace { get; set; }
-    public MenuModel? menu_model { get; set; }
-    public SidebarCallbackFunc? cb { get; set; } //Not currently used?
+    public ActionGroup? action_group { get; set; default = null;}
+    public string? action_group_namespace { get; set; default = null;}
+    public MenuModel? menu_model { get; set; default = null;}
+    public SidebarCallbackFunc? cb { get; set; default = null;} //Not currently used?
 }

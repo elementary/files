@@ -35,7 +35,10 @@ public class PopupMenuBuilder : Object {
                                       ActionGroup? action_group = null) {
 
         var menu = new Gtk.Menu.from_model (model);
-        menu.insert_action_group (action_group_namespace, action_group);
+
+        if (action_group_namespace != null && action_group != null) {
+            menu.insert_action_group (action_group_namespace, action_group);
+        }
 
         for (int i = 0; i < menu_items.length; i++) {
             menu.append (menu_items[i]);
@@ -83,12 +86,6 @@ public class PopupMenuBuilder : Object {
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback bookmark_cb) {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), bookmark_cb);
-    }
-
-    public PopupMenuBuilder add_empty_all_trash (MenuitemCallback bookmark_cb) {
-        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete All Trash"));
-        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        return add_item (menu_item, bookmark_cb);
     }
 
     public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback bookmark_cb) {

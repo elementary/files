@@ -171,12 +171,31 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
-        name = item.name;
-        uri = item.uri;
-        update_icon (item.icon);
-        menu_model = item.menu_model;
-        action_group = item.action_group;
-        action_group_namespace = item.action_group_namespace;
+        // To remove anything should create a new item.
+        if (item.name != null) {
+            name = item.name;
+        }
+
+        if (item.uri != null) {
+            uri = item.uri;
+        }
+
+        if (item.icon != null) {
+            update_icon (item.icon);
+        }
+
+        if (item.tooltip != null) {
+            set_tooltip_markup (item.tooltip);
+        }
+
+        if (item.menu_model != null) {
+            menu_model = item.menu_model;
+        }
+
+        if (item.action_group != null) {
+            action_group = item.action_group;
+            action_group_namespace = item.action_group_namespace;
+        }
     }
 
     private void rename () {
@@ -272,17 +291,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             menu_builder.add_rename (() => {
                 rename ();
             });
-        }
-
-        if (Uri.parse_scheme (uri) == "trash") {
-            menu_builder
-                .add_separator ()
-                .add_empty_all_trash (() => {
-                    new Files.FileOperations.EmptyTrashJob (
-                        (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-                    )).empty_trash.begin ();
-                })
-            ;
         }
     }
 

@@ -23,7 +23,6 @@
 public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private Files.BookmarkList bookmark_list;
     private unowned Files.TrashMonitor trash_monitor;
-    private SidebarItemInterface? trash_bookmark;
 
     public Files.SidebarInterface sidebar {get; construct;}
 
@@ -150,25 +149,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 bm.label = row.custom_name;
             });
         }
-
-        if (!Files.is_admin ()) {
-            trash_bookmark = add_bookmark (
-                _("Trash"),
-                _(Files.TRASH_URI),
-                trash_monitor.get_icon (),
-                true
-            );
-        }
-
-        trash_bookmark.set_tooltip_markup (
-            Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
-        );
-
-        trash_monitor.notify["is-empty"].connect (() => {
-            if (trash_bookmark != null) {
-                trash_bookmark.update_icon (trash_monitor.get_icon ());
-            }
-        });
     }
 
     public override bool add_favorite (string uri,

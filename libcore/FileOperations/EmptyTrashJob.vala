@@ -107,9 +107,9 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
         }
     }
 
-    public async void empty_trash () {
+    public async void empty_trash (bool confirm = Files.Preferences.get_default ().confirm_trash) {
         inhibit_power_manager (_("Emptying Trash"));
-        if (!Files.Preferences.get_default ().confirm_trash || confirm_empty_trash ()) {
+        if (!confirm || confirm_empty_trash ()) {
             progress.start ();
             foreach (unowned GLib.File dir in trash_dirs) {
                 if (aborted ()) {
