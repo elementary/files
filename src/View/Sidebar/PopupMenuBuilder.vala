@@ -87,7 +87,12 @@ public class PopupMenuBuilder : Object {
 
     public PopupMenuBuilder add_empty_all_trash (MenuitemCallback bookmark_cb) {
         var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete All Trash"));
-        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        if (Files.TrashMonitor.get_default ().is_empty) {
+            menu_item.sensitive = false;
+        } else {
+            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        }
+
         return add_item (menu_item, bookmark_cb);
     }
 
