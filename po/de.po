@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-06-20 19:58+0000\n"
+"PO-Revision-Date: 2021-06-24 17:52+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -755,7 +755,7 @@ msgstr "Zurück"
 
 #: src/View/Widgets/HeaderBar.vala:73
 msgid "Next"
-msgstr "Weiter"
+msgstr "Vor"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
@@ -1961,12 +1961,12 @@ msgstr "Pfad eingeben"
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
-msgstr "Zu %s gehen"
+msgstr "Zu »%s« gehen"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
 #, c-format
 msgid "Go to %s"
-msgstr "Zu %s gehen"
+msgstr "Zu »%s« gehen"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
 msgid "Type Path"
@@ -1998,7 +1998,7 @@ msgstr "Als Liste anzeigen"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
-msgstr "Spaltenanzeige"
+msgstr "In Spalten anzeigen"
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
