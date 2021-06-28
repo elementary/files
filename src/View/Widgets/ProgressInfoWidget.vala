@@ -79,6 +79,8 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
         info.finished.connect (() => {
             destroy ();
         });
+        
+        button.set_tooltip_text (_("Cancel"));
 
         button.clicked.connect (() => {
             info.cancel ();
