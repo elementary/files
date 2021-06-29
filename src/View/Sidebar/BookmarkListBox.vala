@@ -130,7 +130,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             );
         }
 
-        if (PF.FileUtils.protocol_is_supported ("recent")) {
+        if (Files.FileUtils.protocol_is_supported ("recent")) {
             row = add_bookmark (
                 _(Files.PROTOCOL_NAME_RECENT),
                 Files.RECENT_URI,
@@ -145,7 +145,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
         foreach (unowned Files.Bookmark bm in bookmark_list.list) {
             row = add_bookmark (bm.label, bm.uri, bm.get_icon ());
-            row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
+            row.set_tooltip_text (Files.FileUtils.sanitize_path (bm.uri, null, false));
             row.notify["custom-name"].connect (() => {
                 bm.label = row.custom_name;
             });

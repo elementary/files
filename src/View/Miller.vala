@@ -222,7 +222,7 @@ namespace Files.View {
                 truncate_list_after_slot (root);
                 return true;
             }
-            string? relative_path = PF.FileUtils.escape_uri (root.location.get_relative_path (loc), false);
+            string? relative_path = FileUtils.escape_uri (root.location.get_relative_path (loc), false);
             if (relative_path != null && relative_path.length > 0) {
                 truncate_list_after_slot (root);
                 string [] dirs = relative_path.split (Path.DIR_SEPARATOR_S);

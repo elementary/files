@@ -123,7 +123,7 @@ public class Files.Directory : Object {
         can_load = false;
 
         scheme = location.get_uri_scheme ();
-        is_trash = PF.FileUtils.location_is_in_trash (location);
+        is_trash = FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
         //Try lifting requirement for info on remote connections
         //TODO Not sure whether the afc protocol (i-phone) is appropriate here. Safer to assume it is.
@@ -388,9 +388,9 @@ public class Files.Directory : Object {
                         /* Try to connect for real.  */
                         var scl = new SocketClient ();
                         scl.set_timeout (CONNECT_SOCKET_TIMEOUT_SEC);
-                        scl.set_tls (PF.FileUtils.get_is_tls_for_protocol (scheme));
+                        scl.set_tls (FileUtils.get_is_tls_for_protocol (scheme));
                         debug ("Trying to connect to connectable");
-                        var default_port = PF.FileUtils.get_default_port_for_protocol (scheme);
+                        var default_port = FileUtils.get_default_port_for_protocol (scheme);
                         var sc = yield scl.connect_to_uri_async (file.uri, default_port, cancellable);
                         success = (sc != null && sc.is_connected ());
                         debug ("Socketclient is %s",
@@ -1060,7 +1060,7 @@ public class Files.Directory : Object {
 
     public static Directory from_gfile (GLib.File file) {
         /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
+        var escaped_uri = FileUtils.escape_uri (file.get_uri ());
         var scheme = Uri.parse_scheme (escaped_uri);
         if (scheme == null) {
             scheme = Files.ROOT_FS_URI;
