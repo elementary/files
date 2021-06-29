@@ -256,10 +256,10 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.RENAME:
-                    var file = PF.FileUtils.get_file_for_path (action.new_uri);
-                    var new_name = PF.FileUtils.get_file_for_path (action.old_uri).get_basename ();
+                    var file = FileUtils.get_file_for_path (action.new_uri);
+                    var new_name = FileUtils.get_file_for_path (action.old_uri).get_basename ();
                     try {
-                        yield PF.FileUtils.set_file_display_name (file, new_name, cancellable);
+                        yield FileUtils.set_file_display_name (file, new_name, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -408,10 +408,10 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.RENAME:
-                    var file = PF.FileUtils.get_file_for_path (action.old_uri);
-                    var new_name = PF.FileUtils.get_file_for_path (action.new_uri).get_basename ();
+                    var file = FileUtils.get_file_for_path (action.old_uri);
+                    var new_name = FileUtils.get_file_for_path (action.new_uri).get_basename ();
                     try {
-                        yield PF.FileUtils.set_file_display_name (file, new_name, cancellable);
+                        yield FileUtils.set_file_display_name (file, new_name, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
