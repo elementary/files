@@ -158,7 +158,7 @@ namespace Files.View.Chrome {
         }
 
         private void do_completion (string path) {
-            GLib.File? file = PF.FileUtils.get_file_for_path (PF.FileUtils.sanitize_path (path, current_dir_path));
+            GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path));
             if (file == null || autocompleted) {
                 return;
             }
@@ -201,7 +201,7 @@ namespace Files.View.Chrome {
         }
 
         private void completed (string txt) {
-            var gfile = PF.FileUtils.get_file_for_path (txt); /* Sanitizes path */
+            var gfile = FileUtils.get_file_for_path (txt); /* Sanitizes path */
             var newpath = gfile.get_path ();
 
             /* If path changed, update breadcrumbs and continue editing */
@@ -309,9 +309,9 @@ namespace Files.View.Chrome {
             if (el != null && drop_file_list != null) {
                 el.pressed = true;
                 drop_target_file = get_target_location (x, y);
-                current_actions = PF.FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
-                                                                  context,
-                                                                  out current_suggested_action);
+                current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
+                                                               context,
+                                                               out current_suggested_action);
             }
 
             Gdk.drag_status (context, current_suggested_action, time);
@@ -350,7 +350,7 @@ namespace Files.View.Chrome {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
                 if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = PF.FileUtils.files_from_uris (text);
+                    drop_file_list = FileUtils.files_from_uris (text);
                     drop_data_ready = true;
                 }
             }
@@ -362,7 +362,7 @@ namespace Files.View.Chrome {
                 current_suggested_action = 0;
                 drop_target_file = get_target_location (x, y);
                 if (drop_target_file != null) {
-                    current_actions = PF.FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
+                    current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
                                                                      context,
                                                                      out current_suggested_action);
 
@@ -408,8 +408,8 @@ namespace Files.View.Chrome {
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
-            string parent_path = PF.FileUtils.get_parent_path_from_path (path);
-            GLib.File? root = PF.FileUtils.get_file_for_path (parent_path);
+            string parent_path = FileUtils.get_parent_path_from_path (path);
+            GLib.File? root = FileUtils.get_file_for_path (parent_path);
 
             var style_context = get_style_context ();
             var padding = style_context.get_padding (style_context.get_state ());
@@ -463,7 +463,7 @@ namespace Files.View.Chrome {
             menu.append (new Gtk.SeparatorMenuItem ());
 
             var submenu_open_with = new Gtk.Menu ();
-            var loc = GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
+            var loc = GLib.File.new_for_uri (FileUtils.escape_uri (path));
             var root = Files.File.get_by_uri (path);
             var app_info_list = MimeActions.get_applications_for_folder (root);
             bool at_least_one = false;

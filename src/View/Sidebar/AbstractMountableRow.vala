@@ -427,7 +427,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected virtual async void add_mountable_tooltip () {
-        set_tooltip_markup (PF.FileUtils.sanitize_path (uri, null, false));
+        set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false));
     }
 
     public virtual void update_free_space () {}

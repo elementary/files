@@ -232,7 +232,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
                 rename_entry.grab_focus ();
                 int start_offset;
                 int end_offset;
-                PF.FileUtils.get_rename_region (conflict_name, out start_offset, out end_offset, false);
+                FileUtils.get_rename_region (conflict_name, out start_offset, out end_offset, false);
                 rename_entry.select_region (start_offset, end_offset);
             }
         });
@@ -259,7 +259,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
             rename_entry.grab_focus ();
             int start_offset;
             int end_offset;
-            PF.FileUtils.get_rename_region (conflict_name, out start_offset, out end_offset, false);
+            FileUtils.get_rename_region (conflict_name, out start_offset, out end_offset, false);
             rename_entry.select_region (start_offset, end_offset);
         });
 
