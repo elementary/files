@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
 "PO-Revision-Date: 2021-04-09 07:33+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
