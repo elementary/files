@@ -59,7 +59,10 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
             xalign = 0
         };
 
-        var button = new Gtk.Button.from_icon_name ("process-stop-symbolic", Gtk.IconSize.BUTTON);
+        var button = new Gtk.Button.from_icon_name ("process-stop-symbolic", Gtk.IconSize.BUTTON) {
+            tooltip_text = _("Cancel")
+        };
+
         button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         column_spacing = 6;
@@ -79,8 +82,6 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
         info.finished.connect (() => {
             destroy ();
         });
-
-        button.tooltip_text = _("Cancel");
 
         button.clicked.connect (() => {
             info.cancel ();
