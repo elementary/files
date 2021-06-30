@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
 "PO-Revision-Date: 2016-09-22 10:52+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Lojban <jbo@li.org>\n"
@@ -812,6 +812,12 @@ msgstr ""
 msgid "Execute"
 msgstr ""
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr ""
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr ""
@@ -898,11 +904,6 @@ msgstr ""
 
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:216

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
 "PO-Revision-Date: 2021-06-11 13:35+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -821,6 +821,12 @@ msgstr "כתיבה"
 msgid "Execute"
 msgstr "הפעלה"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "ביטול"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "שרת FTP ציבורי"
@@ -908,11 +914,6 @@ msgstr "ססמה:"
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "שמירת ססמה זו"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "ביטול"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
