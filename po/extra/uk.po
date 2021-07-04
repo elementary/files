@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-05-03 14:23+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
+"PO-Revision-Date: 2021-07-03 15:18+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -603,7 +603,7 @@ msgstr "Виправлено клацання правою клавішею"
 
 #: data/io.elementary.files.appdata.xml.in.in:322
 msgid "Reload recent view when privacy setting changes"
-msgstr "Оновлення вигляду нещодавніх, коли змінено параметри приватності"
+msgstr "Оновлення вигляду нещодавніх, коли змінено налаштування приватності"
 
 #: data/io.elementary.files.appdata.xml.in.in:323
 msgid "`Connect Server` fixes"
@@ -653,7 +653,7 @@ msgstr "Усунено причини збоїв"
 
 #: data/io.elementary.files.appdata.xml.in.in:334
 msgid "Trash: respect sound setting"
-msgstr "Смітник: дотримання налаштування гучности"
+msgstr "Смітник: дотримання налаштування гучності"
 
 #: data/io.elementary.files.appdata.xml.in.in:335
 msgid "Localization fixes"
@@ -665,7 +665,7 @@ msgstr "Понад 100 значних та незначних виправлен
 
 #: data/io.elementary.files.appdata.xml.in.in:350
 msgid "Honor 12/24hr system setting"
-msgstr "Дотримання системного параметра 12/24 год"
+msgstr "Дотримуватись налаштування системи 12/24 год"
 
 #: data/io.elementary.files.appdata.xml.in.in:351
 msgid "Distinguish between tabs with the same name"
@@ -709,7 +709,7 @@ msgid ""
 "setting is active"
 msgstr ""
 "Натискання клавіші Ctrl більше не скасовує перейменування, коли увімкнено "
-"параметр \"Показати покажчик\""
+"налаштування «Показати покажчик»"
 
 #: data/io.elementary.files.appdata.xml.in.in:364
 msgid "Switching input language cancels actions"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
 "PO-Revision-Date: 2021-04-26 13:46+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -877,6 +877,12 @@ msgstr "كتابة"
 msgid "Execute"
 msgstr "تنفيذ"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "ألغِ"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "‏FTP عام"
@@ -968,11 +974,6 @@ msgstr "كلمة السر:"
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "تذكر كلمة السر هذه"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "ألغِ"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"

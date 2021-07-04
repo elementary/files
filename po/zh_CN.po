@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
 "PO-Revision-Date: 2021-06-20 05:26+0000\n"
 "Last-Translator: imgradeone Yan <imgradeone@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -811,6 +811,12 @@ msgstr "写入"
 msgid "Execute"
 msgstr "执行"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "取消"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "公共 FTP"
@@ -898,11 +904,6 @@ msgstr "密码："
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "记住密码"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "取消"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
