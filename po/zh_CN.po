@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-26 08:43+0000\n"
-"PO-Revision-Date: 2021-04-01 11:43+0000\n"
-"Last-Translator: colindemian <colindemian@outlook.com>\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
+"PO-Revision-Date: 2021-06-20 05:26+0000\n"
+"Last-Translator: imgradeone Yan <imgradeone@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -28,7 +28,7 @@ msgstr "显示程序版本"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "在独立标签中分别打开一个或多个 URI"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "新建窗口"
 
@@ -113,7 +113,7 @@ msgid "Set as default"
 msgstr "设为默认"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1966
+#: src/View/AbstractDirectoryView.vala:1967
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "属性"
@@ -192,7 +192,7 @@ msgid "Original Location:"
 msgstr "原始位置："
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "其他应用…"
 
@@ -283,7 +283,19 @@ msgstr "无法打开 URI"
 msgid "Could not open files or URIs with this app"
 msgstr "无法使用此应用打开文件或 URI"
 
-#: src/View/Window.vala:554 src/View/Window.vala:564
+#: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1851
+msgid "New Tab"
+msgstr "新标签"
+
+#: src/View/Window.vala:147
+msgid "Undo Close Tab"
+msgstr "还原关闭的标签"
+
+#: src/View/Window.vala:452
+msgid "Close Tab"
+msgstr "关闭标签"
+
+#: src/View/Window.vala:562 src/View/Window.vala:572
 msgid "(as Administrator)"
 msgstr "(以管理员身份)"
 
@@ -291,11 +303,11 @@ msgstr "(以管理员身份)"
 msgid "Filename"
 msgstr "文件名"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "大小"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "类型"
 
@@ -350,165 +362,159 @@ msgstr "不能打开此文件"
 msgid "Cannot identify file type to open"
 msgstr "不能识别文件类型并打开"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Cannot drop this file"
 msgstr "无法放置此文件"
 
-#: src/View/AbstractDirectoryView.vala:1574
+#: src/View/AbstractDirectoryView.vala:1575
 msgid "Invalid file name provided"
 msgstr "提供的文件名无效"
 
-#: src/View/AbstractDirectoryView.vala:1850
-msgid "New Tab"
-msgstr "新标签"
-
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
 msgstr "运行"
 
-#: src/View/AbstractDirectoryView.vala:1877
+#: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
 msgstr "在 %s 中打开"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
 msgstr "使用其他方式打开"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1949
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "打开方式"
 
-#: src/View/AbstractDirectoryView.vala:1954
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1960
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
 msgstr "加入书签"
 
-#: src/View/AbstractDirectoryView.vala:1974
+#: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
 msgstr "剪切"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1982
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Copy"
 msgstr "复制"
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1990
 msgid "Move to Trash"
 msgstr "移至回收站"
 
-#: src/View/AbstractDirectoryView.vala:1994
-#, fuzzy
-#| msgid "Delete permanently"
+#: src/View/AbstractDirectoryView.vala:1995
 msgid "Delete Permanently"
 msgstr "永久删除"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "从回收站恢复"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "打开上级文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "从历史中删除"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Rename…"
 msgstr "重命名…"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr "复制为链接"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
 msgstr "粘贴链接到文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "粘贴到文件夹中"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "显示隐藏文件"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
 msgstr "显示远程缩略图"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
 msgstr "隐藏缩略图"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
 msgstr "粘贴链接"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "名称"
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "日期"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "倒序"
 
-#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr "文件夹在前"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "排序方式"
 
-#: src/View/AbstractDirectoryView.vala:2209
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "空白文件"
 
-#: src/View/AbstractDirectoryView.vala:2266
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "新建"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2507
 #, c-format
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2870
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "无法从此处删除文件"
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2871
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "您没有更改此位置的权限"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3025
 msgid "Cannot copy files that are in the trash"
 msgstr "无法复制回收站中的文件"
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
 msgstr "更改选中项为剪切"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "无法在此处粘贴文件"
 
@@ -639,16 +645,12 @@ msgid "_Eject"
 msgstr "弹出"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "永久删除回收站中的所有项目吗？"
+msgstr "永久清空回收站"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:95
-#, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr "永久删除此分卷回收站中的所有项目吗？"
+msgstr "永久清空此分卷回收站"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:282
@@ -809,6 +811,12 @@ msgstr "写入"
 msgid "Execute"
 msgstr "执行"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "取消"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "公共 FTP"
@@ -896,11 +904,6 @@ msgstr "密码："
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "记住密码"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "取消"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"

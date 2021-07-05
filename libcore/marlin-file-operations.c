@@ -279,7 +279,7 @@ confirm_delete_from_trash (CommonJob *job,
     /* Only called if confirmation known to be required - do not second guess */
 
     if (file_count == 1) {
-        gchar *basename = pf_file_utils_custom_basename_from_file (files->data);
+        gchar *basename = files_file_utils_custom_basename_from_file (files->data);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\" "
@@ -321,7 +321,7 @@ confirm_delete_directly (CommonJob *job,
     g_assert (file_count > 0);
 
     if (file_count == 1) {
-        gchar *basename = pf_file_utils_custom_basename_from_file (files->data);
+        gchar *basename = files_file_utils_custom_basename_from_file (files->data);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         prompt = g_strdup_printf (_("Permanently delete “%s”?"), basename);
@@ -388,7 +388,7 @@ report_delete_progress (CommonJob *job,
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
         int formated_time_unit;
-        formated_time = pf_file_utils_format_time (remaining_time, &formated_time_unit);
+        formated_time = files_file_utils_format_time (remaining_time, &formated_time_unit);
 
         /// TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
         /// The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
@@ -460,7 +460,7 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
-            gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
+            gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
             primary = g_strdup (_("Error while deleting."));
             details = NULL;
 
@@ -502,7 +502,7 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
+        gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
         primary = g_strdup (_("Error while deleting."));
         details = NULL;
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
@@ -552,7 +552,7 @@ retry:
             }
 
             primary = g_strdup (_("Error while deleting."));
-            dir_basename = pf_file_utils_custom_basename_from_file (dir);
+            dir_basename = files_file_utils_custom_basename_from_file (dir);
             /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
             secondary = g_strdup_printf (_("Could not remove the folder %s."), dir_basename);
             g_free (dir_basename);
@@ -636,7 +636,7 @@ delete_file (CommonJob *job, GFile *file,
             goto skip;
         }
         primary = g_strdup (_("Error while deleting."));
-        dir_basename = pf_file_utils_custom_basename_from_file (file);
+        dir_basename = files_file_utils_custom_basename_from_file (file);
         /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         secondary = g_strdup_printf (_("There was an error deleting %s."), dir_basename);
         g_free (dir_basename);
@@ -783,7 +783,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
             goto skip;
         }
 
-        mtime = pf_file_utils_get_file_modification_time (file);
+        mtime = files_file_utils_get_file_modification_time (file);
 
         if (!g_file_trash (file, job->cancellable, &error)) {
             if (job->skip_all_error) {
@@ -1188,7 +1188,7 @@ retry:
         if (error && IS_IO_ERROR (error, CANCELLED)) {
             g_error_free (error);
         } else if (error) {
-            gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
+            gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
             primary = get_scan_primary (source_info->op);
             details = NULL;
 
@@ -1235,7 +1235,7 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        gchar *dir_basename = pf_file_utils_custom_basename_from_file (dir);
+        gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
@@ -1324,7 +1324,7 @@ retry:
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
-        gchar *file_basename = pf_file_utils_custom_basename_from_file (file);
+        gchar *file_basename = files_file_utils_custom_basename_from_file (file);
         primary = get_scan_primary (source_info->op);
         details = NULL;
 
@@ -1441,7 +1441,7 @@ retry:
             return;
         }
 
-        dest_basename = pf_file_utils_custom_basename_from_file (dest);
+        dest_basename = files_file_utils_custom_basename_from_file (dest);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_basename);
@@ -1628,8 +1628,8 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (!G_IS_FILE (copy_job->files->data) || ! G_IS_FILE (copy_job->destination)) {
         return;
     } else {
-        srcname = pf_file_utils_custom_basename_from_file ((GFile *)copy_job->files->data);
-        destname = pf_file_utils_custom_basename_from_file (copy_job->destination);
+        srcname = files_file_utils_custom_basename_from_file ((GFile *)copy_job->files->data);
+        destname = files_file_utils_custom_basename_from_file (copy_job->destination);
     }
 
     transfer_info->last_report_time = now;
@@ -1737,7 +1737,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         gchar *transfer_rate_format = g_format_size (transfer_rate);
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
         int formated_time_unit;
-        formated_remaining_time = pf_file_utils_format_time (remaining_time, &formated_time_unit);
+        formated_remaining_time = files_file_utils_format_time (remaining_time, &formated_time_unit);
 
 
         /// TRANSLATORS: The two first %s and the last %s will expand to a size
@@ -1781,7 +1781,7 @@ get_unique_target_file (GFile *src,
         return NULL;
     }
 
-    max_length = pf_file_utils_get_max_name_length (dest_dir);
+    max_length = files_file_utils_get_max_name_length (dest_dir);
 
     info = g_file_query_info (
         src,
@@ -1798,8 +1798,8 @@ get_unique_target_file (GFile *src,
 
         if (editname != NULL) {
             /*TODO Pass correct info to "is_link" parameter*/
-            new_name = pf_file_utils_get_duplicate_name (editname, count, max_length, is_link);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
+            new_name = files_file_utils_get_duplicate_name (editname, count, max_length, is_link);
+            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -1812,8 +1812,8 @@ get_unique_target_file (GFile *src,
 
         if (g_utf8_validate (basename, -1, NULL)) {
             /*TODO Pass correct info to "is_link" parameter*/
-            new_name = pf_file_utils_get_duplicate_name (basename, count, max_length, is_link);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
+            new_name = files_file_utils_get_duplicate_name (basename, count, max_length, is_link);
+            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -1824,7 +1824,7 @@ get_unique_target_file (GFile *src,
                 count += atoi (end + 1);
             }
             new_name = g_strdup_printf ("%s.%d", basename, count);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
+            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child (dest_dir, new_name);
             g_free (new_name);
         }
@@ -1847,7 +1847,7 @@ get_target_file_for_link (GFile *src,
     GFile *dest;
     int max_length;
 
-    max_length = pf_file_utils_get_max_name_length (dest_dir);
+    max_length = files_file_utils_get_max_name_length (dest_dir);
 
     dest = NULL;
     info = g_file_query_info (src,
@@ -1857,8 +1857,8 @@ get_target_file_for_link (GFile *src,
         editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
 
         if (editname != NULL) {
-            new_name = pf_file_utils_get_link_name (editname, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
+            new_name = files_file_utils_get_link_name (editname, count, max_length);
+            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -1868,11 +1868,11 @@ get_target_file_for_link (GFile *src,
 
     if (dest == NULL) {
         basename = g_file_get_basename (src);
-        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
+        files_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
 
         if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = pf_file_utils_get_link_name (basename, count, max_length);
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
+            new_name = files_file_utils_get_link_name (basename, count, max_length);
+            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
             g_free (new_name);
         }
@@ -1883,7 +1883,7 @@ get_target_file_for_link (GFile *src,
             } else {
                 new_name = g_strdup_printf ("%s.lnk%d", basename, count);
             }
-            pf_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
+            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child (dest_dir, new_name);
             g_free (new_name);
         }
@@ -1921,7 +1921,7 @@ get_target_file (GFile *src,
             copyname = g_strdup (g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_COPY_NAME));
 
             if (copyname) {
-                pf_file_utils_make_file_name_valid_for_dest_fs (&copyname, dest_fs_type);
+                files_file_utils_make_file_name_valid_for_dest_fs (&copyname, dest_fs_type);
                 dest = g_file_get_child_for_display_name (dest_dir, copyname, NULL);
                 g_free (copyname);
             }
@@ -1932,7 +1932,7 @@ get_target_file (GFile *src,
 
     if (dest == NULL) {
         basename = g_file_get_basename (src);
-        pf_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
+        files_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
         dest = g_file_get_child (dest_dir, basename);
         g_free (basename);
     }
@@ -2886,7 +2886,7 @@ retry:
         }
 
         if (job->keep_all_newest) {
-            if (pf_file_utils_compare_modification_dates (src, dest) < 1) {
+            if (files_file_utils_compare_modification_dates (src, dest) < 1) {
                 goto out;
             } else {
                 overwrite = TRUE;
@@ -2924,7 +2924,7 @@ retry:
 
             gboolean keep_dest;
             keep_dest = response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
-                        pf_file_utils_compare_modification_dates (src, dest) < 1;
+                        files_file_utils_compare_modification_dates (src, dest) < 1;
 
             g_clear_pointer (&new_name, g_free);
             if (keep_dest) { /* destination is newer than source */
@@ -3053,13 +3053,13 @@ retry:
             goto out;
         }
 
-        src_basename = pf_file_utils_custom_basename_from_file (src);
+        src_basename = files_file_utils_custom_basename_from_file (src);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = g_strdup_printf (_("Cannot copy \"%s\" here."), src_basename);
         g_free (src_basename);
 
-        dest_basename = pf_file_utils_custom_basename_from_file (dest_dir);
+        dest_basename = files_file_utils_custom_basename_from_file (dest_dir);
         /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         secondary = g_strdup_printf (_("There was an error copying the file into %s."), dest_basename);
         g_free (dest_basename);
@@ -3283,7 +3283,7 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     gchar *s, *dest_basename;
 
     job = (CommonJob *)move_job;
-    dest_basename = pf_file_utils_custom_basename_from_file (move_job->destination);
+    dest_basename = files_file_utils_custom_basename_from_file (move_job->destination);
     /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
     s = g_strdup_printf (_("Preparing to move to \"%s\""), dest_basename);
@@ -3487,7 +3487,7 @@ retry:
                    response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
 
             if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
-                pf_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not olderZ */
+                files_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not olderZ */
 
                 g_clear_pointer (&new_name, g_free);
                 goto out;/* Skip this one */
@@ -3846,7 +3846,7 @@ retry:
     error = NULL;
     not_local = FALSE;
 
-    path = pf_file_utils_get_path_for_symlink (src);
+    path = files_file_utils_get_path_for_symlink (src);
 
     if (path == NULL) {
         not_local = TRUE;
@@ -3912,7 +3912,7 @@ retry:
         if (common->skip_all_error) {
             goto out;
         }
-        src_basename = pf_file_utils_custom_basename_from_file (src);
+        src_basename = files_file_utils_custom_basename_from_file (src);
         /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         primary = g_strdup_printf (_("Error while creating link to %s."), src_basename);
         g_free (src_basename);
@@ -4537,7 +4537,7 @@ create_job (GTask *task,
     filename = NULL;
     dest = NULL;
 
-    max_length = pf_file_utils_get_max_name_length (job->dest_dir);
+    max_length = files_file_utils_get_max_name_length (job->dest_dir);
 
     verify_destination (common,
                         job->dest_dir,
@@ -4568,7 +4568,7 @@ create_job (GTask *task,
         }
     }
 
-    pf_file_utils_make_file_name_valid_for_dest_fs (&filename, dest_fs_type); //FIXME No point - dest_fs_type always null?
+    files_file_utils_make_file_name_valid_for_dest_fs (&filename, dest_fs_type); //FIXME No point - dest_fs_type always null?
     if (filename_is_utf8) {
         dest = g_file_get_child_for_display_name (job->dest_dir, filename, NULL);
     }
@@ -4666,7 +4666,7 @@ retry:
 
                 new_filename = NULL;
                 if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = pf_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
+                    new_filename = files_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
                 }
 
                 if (new_filename == NULL) {
@@ -4676,10 +4676,10 @@ retry:
                 g_free (filename2);
             } else {
                 /*We are not creating link*/
-                new_filename = pf_file_utils_get_duplicate_name (filename, count, max_length, FALSE);
+                new_filename = files_file_utils_get_duplicate_name (filename, count, max_length, FALSE);
             }
 
-            if (pf_file_utils_make_file_name_valid_for_dest_fs (&new_filename, dest_fs_type)) {
+            if (files_file_utils_make_file_name_valid_for_dest_fs (&new_filename, dest_fs_type)) {
                 g_object_unref (dest);
 
                 if (filename_is_utf8) {
@@ -4700,7 +4700,7 @@ retry:
             if (job->make_dir) {
                 filename2 = g_strdup_printf ("%s %d", filename, ++count);
                 if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = pf_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
+                    new_filename = files_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
                     if (new_filename != NULL) {
                         g_free (filename2);
                         filename2 = new_filename;
@@ -4708,9 +4708,9 @@ retry:
                 }
             } else {
                 /*We are not creating link*/
-                filename2 = pf_file_utils_get_duplicate_name (filename, count++, max_length, FALSE);
+                filename2 = files_file_utils_get_duplicate_name (filename, count++, max_length, FALSE);
             }
-            pf_file_utils_make_file_name_valid_for_dest_fs (&filename2, dest_fs_type);
+            files_file_utils_make_file_name_valid_for_dest_fs (&filename2, dest_fs_type);
             if (filename_is_utf8) {
                 dest = g_file_get_child_for_display_name (job->dest_dir, filename2, NULL);
             }
@@ -4728,7 +4728,7 @@ retry:
 
         /* Other error */
         else {
-            gchar *dest_basename = pf_file_utils_custom_basename_from_file (dest);
+            gchar *dest_basename = files_file_utils_custom_basename_from_file (dest);
             if (job->make_dir) {
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
                 primary = g_strdup_printf (_("Error while creating directory %s."), dest_basename);

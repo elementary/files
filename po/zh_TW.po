@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-26 08:43+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
 "PO-Revision-Date: 2018-10-30 09:14+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
@@ -29,7 +29,7 @@ msgstr "顯示此程式的版本。"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "以不同的新分頁開啟一個或多個 URI"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "新視窗"
 
@@ -114,7 +114,7 @@ msgid "Set as default"
 msgstr "設為預設值"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1966
+#: src/View/AbstractDirectoryView.vala:1967
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "屬性"
@@ -194,7 +194,7 @@ msgid "Original Location:"
 msgstr "原始位置："
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "其他應用程式…"
 
@@ -285,7 +285,21 @@ msgstr "無法開啟 URI"
 msgid "Could not open files or URIs with this app"
 msgstr "無法使用此程式開啟檔案或 URI"
 
-#: src/View/Window.vala:554 src/View/Window.vala:564
+#: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1851
+msgid "New Tab"
+msgstr "新增標籤"
+
+#: src/View/Window.vala:147
+msgid "Undo Close Tab"
+msgstr ""
+
+#: src/View/Window.vala:452
+#, fuzzy
+#| msgid "Close"
+msgid "Close Tab"
+msgstr "關閉"
+
+#: src/View/Window.vala:562 src/View/Window.vala:572
 msgid "(as Administrator)"
 msgstr "（以管理員身份）"
 
@@ -293,11 +307,11 @@ msgstr "（以管理員身份）"
 msgid "Filename"
 msgstr "檔案名稱"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "大小"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "類型"
 
@@ -357,170 +371,166 @@ msgstr "無法開啟這份檔案"
 msgid "Cannot identify file type to open"
 msgstr "無法辨識要開啓的檔案類型"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Cannot drop this file"
 msgstr "無法放下此檔案"
 
-#: src/View/AbstractDirectoryView.vala:1574
+#: src/View/AbstractDirectoryView.vala:1575
 msgid "Invalid file name provided"
 msgstr "提供的檔名無效"
 
-#: src/View/AbstractDirectoryView.vala:1850
-msgid "New Tab"
-msgstr "新增標籤"
-
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
 msgstr "執行"
 
-#: src/View/AbstractDirectoryView.vala:1877
+#: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
 msgstr "以 %s 開啟"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
 msgstr "開啟方式"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1949
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "以此開啟"
 
-#: src/View/AbstractDirectoryView.vala:1954
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Paste"
 msgstr "貼上"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1960
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "書籤"
 
-#: src/View/AbstractDirectoryView.vala:1974
+#: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
 msgstr "剪下"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1982
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Copy"
 msgstr "複製"
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1990
 msgid "Move to Trash"
 msgstr "移動到垃圾桶"
 
-#: src/View/AbstractDirectoryView.vala:1994
+#: src/View/AbstractDirectoryView.vala:1995
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "永久刪除"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "從垃圾桶還原"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "開啟上層資料夾"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "從歷史紀錄中移除"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2032
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "重新命名"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr "複製為連結"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
 msgstr "貼上前往資料夾的連結"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "貼入資料夾中"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "顯示隱藏檔案"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
 msgstr "顯示遠端縮圖"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2093
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "顯示遠端縮圖"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
 msgstr "貼上連結"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "名稱"
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "日期"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "相反順序"
 
-#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr "資料夾放在檔案前"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "排序方式"
 
-#: src/View/AbstractDirectoryView.vala:2209
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "資料夾"
 
-#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "空白檔案"
 
-#: src/View/AbstractDirectoryView.vala:2266
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "新增"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2507
 #, c-format
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2870
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "無法從此處移除檔案"
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2871
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "您沒有對此位置作更改的權利"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3025
 msgid "Cannot copy files that are in the trash"
 msgstr "無法複製垃圾筒中的檔案"
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
 msgstr "改剪下選取項目"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "無法在此處貼上檔案"
 
@@ -832,6 +842,12 @@ msgstr "寫入"
 msgid "Execute"
 msgstr "執行"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "取消"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "公共 FTP"
@@ -923,11 +939,6 @@ msgstr "密碼："
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "記住此密碼"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "取消"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"

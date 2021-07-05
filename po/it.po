@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-26 08:43+0000\n"
+"POT-Creation-Date: 2021-06-29 17:05+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -28,7 +28,7 @@ msgstr "Mostra la versione del programma"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Apri uno o più indirizzi URI, ognuno in una nuova scheda"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
+#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1857
 msgid "New Window"
 msgstr "Nuova finestra"
 
@@ -113,7 +113,7 @@ msgid "Set as default"
 msgstr "Imposta come predefinito"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1966
+#: src/View/AbstractDirectoryView.vala:1967
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Proprietà"
@@ -196,7 +196,7 @@ msgid "Original Location:"
 msgstr "Posizione originale:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1935
 msgid "Other Application…"
 msgstr "Altre applicazioni…"
 
@@ -291,7 +291,21 @@ msgstr "Impossibile aprire URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Impossibile aprire i file o gli URI con questa applicazione"
 
-#: src/View/Window.vala:554 src/View/Window.vala:564
+#: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1851
+msgid "New Tab"
+msgstr "Nuova scheda"
+
+#: src/View/Window.vala:147
+msgid "Undo Close Tab"
+msgstr ""
+
+#: src/View/Window.vala:452
+#, fuzzy
+#| msgid "Close"
+msgid "Close Tab"
+msgstr "Chiudi"
+
+#: src/View/Window.vala:562 src/View/Window.vala:572
 msgid "(as Administrator)"
 msgstr "(come amministratore)"
 
@@ -299,11 +313,11 @@ msgstr "(come amministratore)"
 msgid "Filename"
 msgstr "Nome file"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
 msgid "Size"
 msgstr "Dimensione"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
 msgid "Type"
 msgstr "Tipo"
 
@@ -360,165 +374,161 @@ msgstr "Impossibile aprire questo file"
 msgid "Cannot identify file type to open"
 msgstr "Impossibile identificare il tipo di file da aprire"
 
-#: src/View/AbstractDirectoryView.vala:1573
+#: src/View/AbstractDirectoryView.vala:1574
 msgid "Cannot drop this file"
 msgstr "Impossibile eliminare il file"
 
-#: src/View/AbstractDirectoryView.vala:1574
+#: src/View/AbstractDirectoryView.vala:1575
 msgid "Invalid file name provided"
 msgstr "Nome file fornito non valido"
 
-#: src/View/AbstractDirectoryView.vala:1850
-msgid "New Tab"
-msgstr "Nuova scheda"
-
-#: src/View/AbstractDirectoryView.vala:1870
+#: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
 msgstr "Esegui"
 
-#: src/View/AbstractDirectoryView.vala:1877
+#: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
 msgstr "Apri in %s"
 
-#: src/View/AbstractDirectoryView.vala:1946
+#: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
 msgstr "Apri con"
 
-#: src/View/AbstractDirectoryView.vala:1948
+#: src/View/AbstractDirectoryView.vala:1949
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Apri con"
 
-#: src/View/AbstractDirectoryView.vala:1954
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Paste"
 msgstr "Incolla"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1960
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 msgid "Add to Bookmarks"
 msgstr "Aggiungi ai segnalibri"
 
-#: src/View/AbstractDirectoryView.vala:1974
+#: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
 msgstr "Taglia"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1982
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Copy"
 msgstr "Copia"
 
-#: src/View/AbstractDirectoryView.vala:1989
+#: src/View/AbstractDirectoryView.vala:1990
 msgid "Move to Trash"
 msgstr "Sposta nel cestino"
 
-#: src/View/AbstractDirectoryView.vala:1994
+#: src/View/AbstractDirectoryView.vala:1995
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Elimina definitivamente"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:2002
 msgid "Restore from Trash"
 msgstr "Ripristina dal cestino"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
 msgstr "Apri cartella genitore"
 
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
 msgstr "Rimuovi dalla cronologia"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Rename…"
 msgstr "Rinomina…"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
 msgstr "Copia come collegamento"
 
-#: src/View/AbstractDirectoryView.vala:2056
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
 msgstr "Incolla collegamento nella cartella"
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Paste into Folder"
 msgstr "Incolla nella cartella"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Show Hidden Files"
 msgstr "Mostra file nascosti"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Show Remote Thumbnails"
 msgstr "Mostra anteprime remote"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Hide Thumbnails"
 msgstr "Nascondi le anteprime"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Paste Link"
 msgstr "Incolla collegamento"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2167
 msgid "Name"
 msgstr "Nome"
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Date"
 msgstr "Data"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2187
 msgid "Reversed Order"
 msgstr "Ordine inverso"
 
-#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2190
 msgid "Folders Before Files"
 msgstr "Cartelle prima dei file"
 
-#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Sort by"
 msgstr "Ordina per"
 
-#: src/View/AbstractDirectoryView.vala:2209
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Folder"
 msgstr "Cartella"
 
-#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2216
 msgid "Empty File"
 msgstr "File vuoto"
 
-#: src/View/AbstractDirectoryView.vala:2266
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "New"
 msgstr "Nuovo"
 
-#: src/View/AbstractDirectoryView.vala:2504
+#: src/View/AbstractDirectoryView.vala:2507
 #, c-format
 msgid "Untitled %s"
 msgstr "%s senza nome"
 
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
+#: src/View/AbstractDirectoryView.vala:2870
+#: src/View/AbstractDirectoryView.vala:3071
 msgid "Cannot remove files from here"
 msgstr "Non è possibile rimuovere i file da qui"
 
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
+#: src/View/AbstractDirectoryView.vala:2871
+#: src/View/AbstractDirectoryView.vala:3056
+#: src/View/AbstractDirectoryView.vala:3072
 msgid "You do not have permission to change this location"
 msgstr "Non disponi dei permessi necessari per modificare questa posizione"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3025
 msgid "Cannot copy files that are in the trash"
 msgstr "Non è possibile copiare i file che si trovano nel cestino"
 
-#: src/View/AbstractDirectoryView.vala:3023
+#: src/View/AbstractDirectoryView.vala:3026
 msgid "Cutting the selection instead"
 msgstr "Tagliare la selezione al suo posto"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3055
 msgid "Cannot paste files here"
 msgstr "Non è possibile incollare i file qui"
 
@@ -833,6 +843,12 @@ msgstr "Scrivi"
 msgid "Execute"
 msgstr "Esegui"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Annulla"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTP pubblico"
@@ -924,11 +940,6 @@ msgstr "Password:"
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "Ricorda questa password"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Annulla"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"

@@ -127,7 +127,7 @@ public class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
             storage_text = "";
         }
 
-        set_tooltip_markup (PF.FileUtils.sanitize_path (uri, null, false) + storage_text);
+        set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false) + storage_text);
     }
 
     public override void update_free_space () {
