@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 17:05+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -672,12 +672,17 @@ msgstr "_Desmuntatu"
 msgid "_Eject"
 msgstr "_Egotzi"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Berrezarri %d elementu zakarrontzitik"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "Berrezarri %d elementu zakarrontzitik"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Berrezarri %d elementu zakarrontzitik"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 17:05+0000\n"
-"PO-Revision-Date: 2021-07-05 12:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
+"PO-Revision-Date: 2021-07-06 17:14+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -339,7 +339,7 @@ msgstr "Цієї теки не існує"
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr "Теку \"%s\" не вдається знайти."
+msgstr "Не вдається знайти теку «%s» ."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -348,7 +348,7 @@ msgstr "Створити"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr "Створити теку \"%s\""
+msgstr "Створити теку «%s»"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
@@ -663,11 +663,17 @@ msgstr "_Від'єднати"
 msgid "_Eject"
 msgstr "_Витягнути"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr "Остаточно видалити все зі смітника"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently Delete All Trash"
+msgid "Permanently Delete Trash"
+msgstr "Остаточно видалити все зі смітника"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Остаточно видалити все зі смітника цього змонтованого носія"
 
@@ -951,7 +957,7 @@ msgstr "Перевірте особисті дані користувача."
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr "Не вдалося виконати \"%s\""
+msgstr "Не вдалося запустити «%s»"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
@@ -1016,7 +1022,7 @@ msgstr "Замінити"
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Об'єднати теку \"%s\"?"
+msgstr "Об'єднати теку «%s»?"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
@@ -1029,12 +1035,12 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Старіша тека з такою ж назвою вже існує в \"%s\"."
+msgstr "Старіша тека з такою ж назвою вже існує у «%s»."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Новіша тека з такою ж назвою вже існує в \"%s\"."
+msgstr "Новіша тека з такою ж назвою вже існує «%s»."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
@@ -1293,7 +1299,7 @@ msgstr "Очищення смітника"
 #: libcore/FileOperations/MountUtils.vala:26
 #, c-format
 msgid "Unable to mount '%s'"
-msgstr "Неможливо змонтувати '%s'"
+msgstr "Неможливо змонтувати «%s»"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1883,7 +1889,7 @@ msgstr "Переміщення файлів"
 #: libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Creating links in \"%s\""
-msgstr "Створення посилань у \"%s\""
+msgstr "Створення посилань у «%s»"
 
 #: libcore/marlin-file-operations.c:3807
 #, c-format
