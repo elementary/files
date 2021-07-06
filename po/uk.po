@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-29 17:05+0000\n"
-"PO-Revision-Date: 2021-07-05 12:06+0000\n"
+"PO-Revision-Date: 2021-07-06 17:12+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -339,7 +339,7 @@ msgstr "Цієї теки не існує"
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr "Теку \"%s\" не вдається знайти."
+msgstr "Не вдається знайти теку «%s» ."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -348,7 +348,7 @@ msgstr "Створити"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr "Створити теку \"%s\""
+msgstr "Створити теку «%s»"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
@@ -951,7 +951,7 @@ msgstr "Перевірте особисті дані користувача."
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr "Не вдалося виконати \"%s\""
+msgstr "Не вдалося виконати «%s»"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
@@ -1293,7 +1293,7 @@ msgstr "Очищення смітника"
 #: libcore/FileOperations/MountUtils.vala:26
 #, c-format
 msgid "Unable to mount '%s'"
-msgstr "Неможливо змонтувати '%s'"
+msgstr "Неможливо змонтувати «%s»"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1883,7 +1883,7 @@ msgstr "Переміщення файлів"
 #: libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Creating links in \"%s\""
-msgstr "Створення посилань у \"%s\""
+msgstr "Створення посилань у «%s»"
 
 #: libcore/marlin-file-operations.c:3807
 #, c-format
