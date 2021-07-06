@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -669,13 +669,19 @@ msgstr "_ان ماؤنٹ کریں"
 msgid "_Eject"
 msgstr "_خارج کریں"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
 msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently Delete Trash"
+msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "ردی میں موجود تمام چیزوں کو مستقل طور پر حذف کریں؟"
@@ -850,6 +856,12 @@ msgstr "لکھنا"
 msgid "Execute"
 msgstr "چلانا"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "منسوخ کریں"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "پبلک ایف۔ٹی۔پی"
@@ -946,11 +958,6 @@ msgstr "پاس_ورڈ:"
 #, fuzzy
 msgid "Remember this password"
 msgstr "اس پاس_ورڈ کو یاد رکھیں"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "منسوخ کریں"
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy

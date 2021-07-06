@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-05-10 23:41+0000\n"
-"Last-Translator: Muha Aliss <muhaaliss@gmail.com>\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
+"PO-Revision-Date: 2021-07-01 13:49+0000\n"
+"Last-Translator: Deleted User <noreply+411@weblate.org>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
 ">\n"
 "Language: tr\n"
@@ -296,7 +296,7 @@ msgstr "Dosya seçicide dosya yolu görüntüleme ilgili bir sorun düzeltildi"
 
 #: data/io.elementary.files.appdata.xml.in.in:170
 msgid "Show a warning when ejecting a volume that's still in use"
-msgstr "Hala kullanımda olan bir birimi çıkartırken uyarı göster"
+msgstr "Kullanımda olan bir birimi çıkartırken bir uyarı göster"
 
 #: data/io.elementary.files.appdata.xml.in.in:171
 msgid "Fix cursor update after horizontal scroll in Column View"

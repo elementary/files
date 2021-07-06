@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -632,11 +632,15 @@ msgstr ""
 msgid "_Eject"
 msgstr ""
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr ""
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+msgid "Permanently Delete Trash"
+msgstr ""
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -803,6 +807,12 @@ msgstr ""
 msgid "Execute"
 msgstr ""
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr ""
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr ""
@@ -889,11 +899,6 @@ msgstr ""
 
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:216

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2017-07-10 14:50+0000\n"
 "Last-Translator: Mattias Ezequiel Mignone <memignone@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
@@ -677,13 +677,19 @@ msgstr "_Unmount"
 msgid "_Eject"
 msgstr "_Eject"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
 msgstr "Permanently delete all items from the Rubbish Bin?"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently Delete Trash"
+msgstr "Permanently delete all items from the Rubbish Bin?"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
@@ -859,6 +865,12 @@ msgstr "Write"
 msgid "Execute"
 msgstr "Execute"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Cancel"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Public FTP"
@@ -955,11 +967,6 @@ msgstr "Pass_word:"
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Remember this password"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Cancel"
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy

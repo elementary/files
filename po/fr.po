@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2021-06-11 13:35+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
@@ -655,11 +655,17 @@ msgstr "_Démonter"
 msgid "_Eject"
 msgstr "_Éjecter"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr "Supprimer définitivement tous les éléments de la corbeille"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently Delete All Trash"
+msgid "Permanently Delete Trash"
+msgstr "Supprimer définitivement tous les éléments de la corbeille"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 "Supprimer définitivement tous les éléments de la corbeille sur ce support"
@@ -827,6 +833,12 @@ msgstr "Écriture"
 msgid "Execute"
 msgstr "Exécution"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Annuler"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTP public"
@@ -914,11 +926,6 @@ msgstr "Mot de passe :"
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "Se souvenir du mot de passe"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Annuler"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"

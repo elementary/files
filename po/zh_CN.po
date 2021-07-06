@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2021-06-20 05:26+0000\n"
 "Last-Translator: imgradeone Yan <imgradeone@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -644,11 +644,17 @@ msgstr "卸载"
 msgid "_Eject"
 msgstr "弹出"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr "永久清空回收站"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently Delete All Trash"
+msgid "Permanently Delete Trash"
+msgstr "永久清空回收站"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr "永久清空此分卷回收站"
 
@@ -811,6 +817,12 @@ msgstr "写入"
 msgid "Execute"
 msgstr "执行"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "取消"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "公共 FTP"
@@ -898,11 +910,6 @@ msgstr "密码："
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "记住密码"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "取消"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"

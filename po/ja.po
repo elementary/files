@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2021-06-12 14:22+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -646,11 +646,17 @@ msgstr "アンマウント(_U)"
 msgid "_Eject"
 msgstr "取り出し(_E)"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr "すべてのゴミ箱から項目を完全に削除"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently Delete All Trash"
+msgid "Permanently Delete Trash"
+msgstr "すべてのゴミ箱から項目を完全に削除"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr "このドライブのゴミ箱から項目を完全に削除"
 
@@ -813,6 +819,12 @@ msgstr "書き込み"
 msgid "Execute"
 msgstr "実行"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "キャンセル"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "パブリック FTP"
@@ -900,11 +912,6 @@ msgstr "パスワード:"
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
 msgstr "このパスワードを記憶"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "キャンセル"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"

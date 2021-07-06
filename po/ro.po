@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -683,13 +683,19 @@ msgstr "Demontează"
 msgid "_Eject"
 msgstr "Scoate"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
 msgstr "Șterge definitiv toate articolele din coșul de gunoi?"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently Delete Trash"
+msgstr "Șterge definitiv toate articolele din coșul de gunoi?"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
@@ -870,6 +876,12 @@ msgstr "Scrie"
 msgid "Execute"
 msgstr "Execută"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Anulează"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTP Public"
@@ -966,11 +978,6 @@ msgstr "Paro_lă:"
 #, fuzzy
 msgid "Remember this password"
 msgstr "Memo_rează această parolă"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Anulează"
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy

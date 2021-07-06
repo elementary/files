@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
-"PO-Revision-Date: 2021-06-11 18:39+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
+"PO-Revision-Date: 2021-07-06 19:51+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -92,7 +92,7 @@ msgstr "Використання пристроїв"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
-msgstr "Ємність:"
+msgstr "Місткість:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:165
 #: src/Dialogs/AbstractPropertiesDialog.vala:168
@@ -339,7 +339,7 @@ msgstr "Цієї теки не існує"
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr "Теку \"%s\" не вдається знайти."
+msgstr "Не вдається знайти теку «%s» ."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -348,7 +348,7 @@ msgstr "Створити"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr "Створити теку \"%s\""
+msgstr "Створити теку «%s»"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
@@ -663,11 +663,15 @@ msgstr "_Від'єднати"
 msgid "_Eject"
 msgstr "_Витягнути"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr "Остаточно видалити все зі смітника"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+msgid "Permanently Delete Trash"
+msgstr "Остаточно видалити сміття"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Остаточно видалити все зі смітника цього змонтованого носія"
 
@@ -838,6 +842,12 @@ msgstr "Запис"
 msgid "Execute"
 msgstr "Виконання"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Скасувати"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Загальнодоступний FTP"
@@ -926,11 +936,6 @@ msgstr "Пароль:"
 msgid "Remember this password"
 msgstr "Запам'ятати цей пароль"
 
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Скасувати"
-
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
 msgstr "З'єднатись"
@@ -950,7 +955,7 @@ msgstr "Перевірте особисті дані користувача."
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr "Не вдалося виконати \"%s\""
+msgstr "Не вдалося запустити «%s»"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
@@ -1015,7 +1020,7 @@ msgstr "Замінити"
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Об'єднати теку \"%s\"?"
+msgstr "Об'єднати теку «%s»?"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
@@ -1028,12 +1033,12 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Старіша тека з такою ж назвою вже існує в \"%s\"."
+msgstr "Старіша тека з такою ж назвою вже існує у «%s»."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Новіша тека з такою ж назвою вже існує в \"%s\"."
+msgstr "Новіша тека з такою ж назвою вже існує «%s»."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
@@ -1292,7 +1297,7 @@ msgstr "Очищення смітника"
 #: libcore/FileOperations/MountUtils.vala:26
 #, c-format
 msgid "Unable to mount '%s'"
-msgstr "Неможливо змонтувати '%s'"
+msgstr "Неможливо змонтувати «%s»"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1652,7 +1657,7 @@ msgstr "Копіювання \"%s\" до \"%s\""
 #: libcore/marlin-file-operations.c:1658
 #, c-format
 msgid "Duplicating \"%s\""
-msgstr "Дублювання \"%s\""
+msgstr "Дублювання «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1662,17 +1667,17 @@ msgstr "Дублювання \"%s\""
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Переміщення %'d файл (з \"%s\") до \"%s\""
-msgstr[1] "Переміщення %'d файли (з \"%s\") до \"%s\""
-msgstr[2] "Переміщення %'d файлів (з \"%s\") до \"%s\""
+msgstr[0] "Переміщення %'d файл (з «%s») до «%s»"
+msgstr[1] "Переміщення %'d файли (з «%s») до «%s»"
+msgstr[2] "Переміщення %'d файлів (з «%s») до «%s»"
 
 #: libcore/marlin-file-operations.c:1669
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Копіювання %'d файл (з \"%s\") до \"%s\""
-msgstr[1] "Копіювання %'d файли (з \"%s\") до \"%s\""
-msgstr[2] "Копіювання %'d файлів (з \"%s\") до \"%s\""
+msgstr[0] "Копіювання %'d файл (з «%s») до «%s»"
+msgstr[1] "Копіювання %'d файли (з «%s») до «%s»"
+msgstr[2] "Копіювання %'d файлів (з «%s») до «%s»"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1680,9 +1685,9 @@ msgstr[2] "Копіювання %'d файлів (з \"%s\") до \"%s\""
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Дублюється %'d файл (у \"%s\")"
-msgstr[1] "Дублюється %'d файли (у \"%s\")"
-msgstr[2] "Дублюється %'d файлів (у \"%s\")"
+msgstr[0] "Дублювання %'d файлу (у «%s»)"
+msgstr[1] "Дублювання %'d файлів (у «%s»)"
+msgstr[2] "Дублювання %'d файлів (у «%s»)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1692,17 +1697,17 @@ msgstr[2] "Дублюється %'d файлів (у \"%s\")"
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "%'d файл переміщується до \"%s\""
-msgstr[1] "%'d файли переміщується до \"%s\""
-msgstr[2] "%'d файлів переміщується до \"%s\""
+msgstr[0] "%'d файл переміщується до «%s»"
+msgstr[1] "%'d файли переміщується до «%s»"
+msgstr[2] "%'d файлів переміщується до «%s»"
 
 #: libcore/marlin-file-operations.c:1693
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "%'d файл копіюється до \"%s\""
-msgstr[1] "%'d файли копіюється до \"%s\""
-msgstr[2] "%'d файлів копіюється до \"%s\""
+msgstr[0] "%'d файл копіюється до «%s»"
+msgstr[1] "%'d файли копіюється до «%s»"
+msgstr[2] "%'d файлів копіюється до «%s»"
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
@@ -1748,7 +1753,7 @@ msgstr ""
 #: libcore/marlin-file-operations.c:2073
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Помилка створення теки \"%s\"."
+msgstr "Помилка створення теки «%s»."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1758,7 +1763,7 @@ msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Неможливо копіювати файли з теки \"%s\", оскільки у вас немає дозволу "
+"Неможливо копіювати файли з теки «%s», оскільки у вас немає дозволу "
 "переглядати їх."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -1769,7 +1774,7 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Неможливо копіювати теку \"%s\", оскільки ви не маєте дозволу на її читання."
+"Неможливо копіювати теку «%s», оскільки ви не маєте дозволу на її читання."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1779,7 +1784,7 @@ msgstr ""
 #: libcore/marlin-file-operations.c:3536
 #, c-format
 msgid "Error while moving \"%s\"."
-msgstr "Помилка перенесення \"%s\"."
+msgstr "Помилка перенесення «%s»."
 
 #: libcore/marlin-file-operations.c:2322
 msgid "Could not remove the source folder."
@@ -1791,7 +1796,7 @@ msgstr "Неможливо вилучити первинну теку."
 #: libcore/marlin-file-operations.c:2981
 #, c-format
 msgid "Error while copying \"%s\"."
-msgstr "Помилка копіюваняі \"%s\"."
+msgstr "Помилка копіюваня «%s»."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2418
@@ -1840,7 +1845,7 @@ msgstr "Не вдалося вилучити вже наявний файл з �
 #: libcore/marlin-file-operations.c:3059
 #, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "Неможливо копіювати \"%s\" сюди."
+msgstr "Неможливо копіювати «%s» сюди."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3064
@@ -1857,7 +1862,7 @@ msgstr "Копіювання файлів"
 #: libcore/marlin-file-operations.c:3289
 #, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Підготовка до переміщення у \"%s\""
+msgstr "Підготовка до переміщення у «%s»"
 
 #: libcore/marlin-file-operations.c:3294
 #, c-format
@@ -1882,7 +1887,7 @@ msgstr "Переміщення файлів"
 #: libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Creating links in \"%s\""
-msgstr "Створення посилань у \"%s\""
+msgstr "Створення посилань у «%s»"
 
 #: libcore/marlin-file-operations.c:3807
 #, c-format

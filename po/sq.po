@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: sq\n"
@@ -667,13 +667,19 @@ msgstr "Çm_onto"
 msgid "_Eject"
 msgstr "_Nxirr"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
 msgstr "Të fshihen përfundimisht të gjithë elementët nga Koshi?"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently Delete Trash"
+msgstr "Të fshihen përfundimisht të gjithë elementët nga Koshi?"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
@@ -846,6 +852,12 @@ msgstr "Shkrim"
 msgid "Execute"
 msgstr "Ekzekutim"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Anulo"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTP Publike"
@@ -940,11 +952,6 @@ msgstr "Fjalë_kalimi:"
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Kujto këtë fjalëkalim"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Anulo"
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy

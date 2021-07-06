@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2018-01-20 00:04+0000\n"
 "Last-Translator: Wendel Hime <wendelhime@hotmail.com>\n"
 "Language-Team: zh (generated) <https://weblate.elementary.io/projects/files/"
@@ -642,11 +642,15 @@ msgstr ""
 msgid "_Eject"
 msgstr ""
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr ""
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+msgid "Permanently Delete Trash"
+msgstr ""
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -814,6 +818,12 @@ msgstr ""
 msgid "Execute"
 msgstr ""
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr ""
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTP Publico"
@@ -909,11 +919,6 @@ msgstr "Senha:"
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Lembrar essa senha"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr ""
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy

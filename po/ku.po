@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2018-02-05 00:11+0000\n"
 "Last-Translator: Rokar <mail@rokar.de>\n"
 "Language-Team: Kurdish <https://weblate.elementary.io/projects/files/files/"
@@ -657,13 +657,19 @@ msgstr "_Qut bike"
 msgid "_Eject"
 msgstr "_Bavêje"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Empty _Trash"
 msgid "Permanently Delete All Trash"
 msgstr "Çopê _vala bike"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Empty _Trash"
+msgid "Permanently Delete Trash"
+msgstr "Çopê _vala bike"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -831,6 +837,12 @@ msgstr "Binivîse"
 msgid "Execute"
 msgstr "Xebitandin"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr ""
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTPya Giştî"
@@ -924,11 +936,6 @@ msgstr "Şîf_re:"
 
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:216

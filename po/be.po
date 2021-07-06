@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2016-04-13 16:24+0000\n"
 "Last-Translator: Mikel <mishkasta@gmail.com>\n"
 "Language-Team: Belarusian <be@li.org>\n"
@@ -653,11 +653,15 @@ msgstr ""
 msgid "_Eject"
 msgstr ""
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 msgid "Permanently Delete All Trash"
 msgstr ""
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+msgid "Permanently Delete Trash"
+msgstr ""
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -829,6 +833,12 @@ msgstr ""
 msgid "Execute"
 msgstr ""
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr ""
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Публічны FTP"
@@ -924,11 +934,6 @@ msgstr "Пар_оль:"
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Запомніць гэты пароль"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr ""
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -672,12 +672,17 @@ msgstr "_ማውረጃ"
 msgid "_Eject"
 msgstr "_ማውጫ"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "እንደ ነበር መመለሻ %d እቃዎችን ከቆሻሻ ማጠራቀሚያ ውስጥ"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "እንደ ነበር መመለሻ %d እቃዎችን ከቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "እንደ ነበር መመለሻ %d እቃዎችን ከቆሻሻ ማጠራቀሚያ ውስጥ"
@@ -847,6 +852,12 @@ msgstr "መጻፊያ"
 msgid "Execute"
 msgstr "መፈጸሚያ"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "መሰረዣ"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Public FTP"
@@ -943,11 +954,6 @@ msgstr "የመግቢያ_ቃል :"
 #, fuzzy
 msgid "Remember this password"
 msgstr "_ይህን የመግቢያ ቃል አስታውስ"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "መሰረዣ"
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 08:06+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
@@ -650,13 +650,19 @@ msgstr ""
 msgid "_Eject"
 msgstr "வெளியேற்று (_E)"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Empty _Trash"
 msgid "Permanently Delete All Trash"
 msgstr "குப்பை தொட்டியை காலி செய் (_T)"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Empty _Trash"
+msgid "Permanently Delete Trash"
+msgstr "குப்பை தொட்டியை காலி செய் (_T)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -824,6 +830,12 @@ msgstr "எழுது"
 msgid "Execute"
 msgstr "செயல்படுத்து"
 
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "இரத்துசெய்"
+
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "பொதுவான எஃப்டிபி"
@@ -919,11 +931,6 @@ msgstr "கடவுச்சொல் (_w):"
 #, fuzzy
 msgid "Remember this password"
 msgstr "இந்த கடவுச்சொலை நினைவில் கொள்ளவும் (_R)"
-
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "இரத்துசெய்"
 
 #: libcore/ConnectServerDialog.vala:216
 #, fuzzy
