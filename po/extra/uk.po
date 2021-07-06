@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-29 17:05+0000\n"
-"PO-Revision-Date: 2021-07-05 12:06+0000\n"
+"PO-Revision-Date: 2021-07-06 17:12+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -129,7 +129,7 @@ msgstr "Подолано збої за одночасного натисканн
 
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr "Виправлено обробку \"~\" і \"..\" в шляху"
+msgstr "Виправлено обробку «~» і «..» в шляху"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
@@ -154,7 +154,7 @@ msgstr "Інші оновлення:"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "\"Особисте\" відтепер \"Закладки\""
+msgstr "«Особисте» відтепер «Закладки»"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 #: data/io.elementary.files.appdata.xml.in.in:112
@@ -274,7 +274,7 @@ msgstr "Прибрано показ префіксу file: // у меню кно
 
 #: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr "Виправлено ярлик комбінації клавіш \"Нова тека\" в меню"
+msgstr "Виправлено ярлик комбінації клавіш «Нова тека» в меню"
 
 #: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Fix navigation with back/forward button context menu"
@@ -297,8 +297,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
-"Не включайте \"file://\" до тексту панелі шляху або під час вставлення шляху "
-"як тексту"
+"«file://» більше не включається до тексту панелі шляху або під час "
+"вставлення шляху як тексту"
 
 #: data/io.elementary.files.appdata.xml.in.in:168
 msgid "Show keyboard shortcuts in menu items"
