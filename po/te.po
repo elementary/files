@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 17:05+0000\n"
+"POT-Creation-Date: 2021-07-06 17:14+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Telugu <te@li.org>\n"
@@ -654,13 +654,19 @@ msgstr "అన్‌మౌంటుచేయి (_U)"
 msgid "_Eject"
 msgstr "నెట్టివేయి (_E)"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Empty _Trash"
 msgid "Permanently Delete All Trash"
 msgstr "చెత్తబుట్టని ఖాళీచెయ్యి  (_T)"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Empty _Trash"
+msgid "Permanently Delete Trash"
+msgstr "చెత్తబుట్టని ఖాళీచెయ్యి  (_T)"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
