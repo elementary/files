@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-29 17:05+0000\n"
-"PO-Revision-Date: 2021-07-06 17:12+0000\n"
+"PO-Revision-Date: 2021-07-06 17:14+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -951,7 +951,7 @@ msgstr "Перевірте особисті дані користувача."
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr "Не вдалося виконати «%s»"
+msgstr "Не вдалося запустити «%s»"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
@@ -1016,7 +1016,7 @@ msgstr "Замінити"
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Об'єднати теку \"%s\"?"
+msgstr "Об'єднати теку «%s»?"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
@@ -1029,12 +1029,12 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Старіша тека з такою ж назвою вже існує в \"%s\"."
+msgstr "Старіша тека з такою ж назвою вже існує у «%s»."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Новіша тека з такою ж назвою вже існує в \"%s\"."
+msgstr "Новіша тека з такою ж назвою вже існує «%s»."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
