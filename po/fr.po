@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 17:14+0000\n"
-"PO-Revision-Date: 2021-06-11 13:35+0000\n"
+"PO-Revision-Date: 2021-07-07 12:54+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -660,10 +660,8 @@ msgid "Permanently Delete All Trash"
 msgstr "Supprimer définitivement tous les éléments de la corbeille"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:97
-#, fuzzy
-#| msgid "Permanently Delete All Trash"
 msgid "Permanently Delete Trash"
-msgstr "Supprimer définitivement tous les éléments de la corbeille"
+msgstr "Supprimer définitivement les éléments de la corbeille"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
