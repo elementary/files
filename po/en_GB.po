@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 17:14+0000\n"
-"PO-Revision-Date: 2021-06-11 09:32+0000\n"
+"PO-Revision-Date: 2021-07-07 08:31+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
@@ -656,10 +656,8 @@ msgid "Permanently Delete All Trash"
 msgstr "Permanently Delete All Rubbish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:97
-#, fuzzy
-#| msgid "Permanently Delete All Trash"
 msgid "Permanently Delete Trash"
-msgstr "Permanently Delete All Rubbish"
+msgstr "Permanently Delete Rubbish"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
