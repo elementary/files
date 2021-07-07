@@ -30,8 +30,10 @@ public class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
     public DeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
                       bool pinned, bool permanent,
                       string? _uuid, Drive? drive, Volume? volume, Mount? mount) {
+
         base (name, uri, gicon, list, pinned, permanent, _uuid, drive, volume, mount);
     }
+
     construct {
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
