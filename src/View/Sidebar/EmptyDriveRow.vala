@@ -21,19 +21,30 @@
  */
 
 // Use only for a Drive that has no volumes (otherwise display volumes as VolumeRows)
-public class Sidebar.DriveRow : Sidebar.DeviceRow, SidebarItemInterface {
+// This covers:
+// unformatted drives,
+// drives without partitions,
+// drives with removeable media that have no media inserted.
+
+/* FIXME Handle insertion of media into an empty drive (which will result in a volume row being created) The drive row should be hidden */
+/* FIXME Handle ejection of media from a drive (which will result in a volume row disappearing). The drive row should reappear */
+/* NOTE The above issues would not occur if we have expandable drive rows with nested volumes. */
+
+/* It is uncertain whether this class is a good idea. Nautilus does not show any entry for unformatted drives. */
+
+public class Sidebar.EmptyDriveRow : Sidebar.DeviceRow, SidebarItemInterface {
     public Drive drive { get; construct; }
     private bool can_eject = true;
 
     public override bool is_mounted {
         get {
-            return true; // Volumeless drives are regarded as mounted
+            return false; // Volumeless drives are regarded as unmounted
         }
     }
 
-    public DriveRow (string name, string uri, Icon gicon, SidebarListInterface list,
+    public EmptyDriveRow (string name, string uri, Icon gicon, SidebarListInterface list,
                          bool pinned, bool permanent,
-                         string? _uuid, Drive? _drive) {
+                         string? _uuid, Drive _drive) {
         Object (
             custom_name: name,
             uri: uri,
@@ -45,6 +56,7 @@ public class Sidebar.DriveRow : Sidebar.DeviceRow, SidebarItemInterface {
             drive: _drive
         );
 
+        assert (drive != null && drive.get_volumes () == null);
         // DriveRow represents a working drive so start it if necessary.
         // Unnecessary for most drives currently used?
         if (drive.can_start () || drive.can_start_degraded ()) {
@@ -77,13 +89,9 @@ public class Sidebar.DriveRow : Sidebar.DeviceRow, SidebarItemInterface {
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-warning ("activate");
-        if (working) {
-            return;
-        }
-
-        list.open_item (this, flag);
-        return;
+        PF.Dialogs.show_warning_dialog (_("This drive contains no data"),
+                                        _("Insert media or format the drive"),
+                                        null);
     }
 
     protected override async bool eject () {

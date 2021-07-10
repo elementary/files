@@ -20,9 +20,11 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-// Represents a mount not associated with a volume or drive
-public class Sidebar.MountRow : Sidebar.DeviceRow, SidebarItemInterface {
-    public Mount mount { get; construct; }
+// Represents a mount not associated with a volume or drive - usually a bind mount
+// Also used for builtin row "FileSystem" which has null mount
+/*FIXME Identify and deal with any other conditions resulting in a volumeless mount */
+public class Sidebar.VolumelessMountRow : Sidebar.DeviceRow, SidebarItemInterface {
+    public Mount? mount { get; construct; }
 
     protected override bool is_mounted {
         get {
@@ -30,7 +32,7 @@ public class Sidebar.MountRow : Sidebar.DeviceRow, SidebarItemInterface {
         }
     }
 
-    public MountRow (string name, string uri, Icon gicon, SidebarListInterface list,
+    public VolumelessMountRow (string name, string uri, Icon gicon, SidebarListInterface list,
                          bool pinned, bool permanent,
                          string? _uuid, Mount? _mount) {
         Object (
@@ -44,8 +46,11 @@ public class Sidebar.MountRow : Sidebar.DeviceRow, SidebarItemInterface {
             mount: _mount
         );
 
-        tooltip_text = _("Mount without drive %s").printf (name);
+        assert (mount == null || mount.get_volume () == null);
         mount_eject_revealer.reveal_child = (mount != null && mount.can_unmount () && !permanent);
+        if (mount != null) {
+            custom_name = _("%s (%s)").printf (custom_name, _("Bind mount"));
+        }
     }
 
     construct {
@@ -61,8 +66,7 @@ public class Sidebar.MountRow : Sidebar.DeviceRow, SidebarItemInterface {
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-warning ("activate");
-        // By definition this row represents a mounted mount.
+        // By definition this row represents a mounted mount (or local filesystem)
         if (!working) {
             list.open_item (this, flag);  
             return;

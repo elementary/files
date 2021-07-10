@@ -113,7 +113,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         add_mountable_tooltip.begin ();
 
-        eject_button.clicked.connect (() => { do_eject.begin (); });
+        eject_button.clicked.connect (() => {eject.begin (); });
+
+        notify["is-mounted"].connect (() => {
+            mount_eject_revealer.reveal_child = is_mounted;
+        });
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -166,64 +170,31 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         return true;
     }
 
-    private async void do_eject () {
-        var success = yield eject ();
-        mount_eject_revealer.reveal_child = !success;
-    }
-
     protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
-        if (mount == null) {
-            return;
-        }
+        if (is_mounted) {
 
-        if (Files.FileOperations.has_trash_files (mount)) {
-            menu_builder
-                .add_separator ()
-                .add_empty_mount_trash (() => {
-                    Files.FileOperations.empty_trash_for_mount (this, mount);
-                })
-            ;
-        }
+            if (Files.FileOperations.has_trash_files (mount)) {
+                menu_builder
+                    .add_separator ()
+                    .add_empty_mount_trash (() => {
+                        Files.FileOperations.empty_trash_for_mount (this, mount);
+                    })
+                ;
+            }
 
-        if (mount.can_unmount ()) {
-            menu_builder.add_unmount (() => {do_eject.begin ();});
-        } else if (mount.can_eject ()) {
-            menu_builder.add_eject (() => {do_eject.begin ();});
+            if (mount.can_unmount ()) {
+                menu_builder.add_unmount (() => {eject.begin ();});
+            } else if (mount.can_eject ()) {
+                menu_builder.add_eject (() => {eject.begin ();});
+            }
         }
 
         menu_builder
             .add_separator ()
-            .add_drive_property (() => {show_mount_info ();});
+            .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
     }
 
     protected virtual void show_mount_info () {}
-    //     if (mount != null && volume != null) {
-    //         /* Mount the device if possible, defer showing the dialog after
-    //          * we're done */
-    //         working = true;
-    //         Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
-    //             try {
-    //                 Files.FileOperations.mount_volume_full.end (res);
-    //             } catch (Error e) {
-    //                 mount = null;
-    //             } finally {
-    //                 working = false;
-    //             }
-
-    //             if (mounted) {
-    //                 new Files.View.VolumePropertiesWindow (
-    //                     volume.get_mount (),
-    //                     Files.get_active_window ()
-    //                 );
-    //             }
-    //         });
-    //     } else if ((mount != null) || uri == Files.ROOT_FS_URI) {
-    //         new Files.View.VolumePropertiesWindow (
-    //             mount,
-    //             Files.get_active_window ()
-    //         );
-    //     }
-    // }
 
     protected virtual async void add_mountable_tooltip () {
         set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false));

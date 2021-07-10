@@ -20,6 +20,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
+/* Most of the storage rows will be volumes associated with a drive.  However some devices (e.g. MP3 players may appear as a volume without a drive */
 public class Sidebar.VolumeRow : Sidebar.DeviceRow, SidebarItemInterface {
 
     public Volume volume {get; construct;}
@@ -32,7 +33,6 @@ public class Sidebar.VolumeRow : Sidebar.DeviceRow, SidebarItemInterface {
 
     public override bool is_mounted {
         get {
-assert (volume != null);
             return volume.get_mount () != null;
         }
     }
@@ -55,10 +55,15 @@ assert (volume != null);
         tooltip_text = _("Volume %s on %s").printf (name, drive_name ?? "No Drive");
         var mount = volume.get_mount ();
         mount_eject_revealer.reveal_child = mount != null && mount.can_unmount ();
+        if (drive_name != null && drive_name != "") {
+            custom_name = _("%s (%s)").printf (custom_name, drive_name);
+        }
     }
 
     construct {
-        volume_monitor.volume_removed.connect (volume_removed);
+        volume_monitor.volume_removed.connect (on_volume_removed);
+        volume_monitor.mount_added.connect (on_mount_added);
+        volume_monitor.mount_removed.connect (on_mount_removed);
     }
 
     protected override async bool eject () {
@@ -66,7 +71,6 @@ assert (volume != null);
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-warning ("activate");
         if (working) {
             return;
         }
@@ -77,16 +81,11 @@ warning ("activate");
         }
 
         working = true;
-        volume.mount.begin (
-            GLib.MountMountFlags.NONE,
-            new Gtk.MountOperation (Files.get_active_window ()),
-            null,
-            (obj, res) => {
+        Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
                 try {
-                    volume.mount.end (res);
+                    Files.FileOperations.mount_volume_full.end (res);
                     var mount = volume.get_mount ();
                     if (mount != null) {
-                        mount_eject_revealer.reveal_child = mount.can_unmount ();
                         uri = mount.get_default_location ().get_uri ();
                         if (volume.get_uuid () == null) {
                             uuid = uri;
@@ -95,8 +94,7 @@ warning ("activate");
                         list.open_item (this, flag);
                     }
                 } catch (GLib.Error error) {
-                    var primary = _("Error mounting volume '%s'").printf (volume.get_name ());
-                    PF.Dialogs.show_error_dialog (primary, error.message, Files.get_active_window ());
+                    // The MountUtil has already shown a dialog on error
                 } finally {
                     working = false;
                     add_mountable_tooltip.begin ();
@@ -105,7 +103,7 @@ warning ("activate");
         );
     }
 
-    private void volume_removed (Volume removed_volume) {
+    private void on_volume_removed (Volume removed_volume) {
         if (!valid) { //Already removed
             return;
         }
@@ -113,6 +111,18 @@ warning ("activate");
         if (volume == removed_volume) {
             valid = false;
             list.remove_item_by_id (id);
+        }
+    }
+
+    private void on_mount_added (Mount added_mount) {
+        if (added_mount == volume.get_mount ()) {
+            notify_property ("is-mounted");
+        }
+    }
+
+    private void on_mount_removed (Mount added_mount) {
+        if (volume.get_mount () == null) {
+            notify_property ("is-mounted");
         }
     }
 
@@ -125,6 +135,35 @@ warning ("activate");
             return yield get_filesystem_space_for_root (volume.get_mount ().get_root (), update_cancellable);
         } else {
             return false;
+        }
+    }
+
+    private void open_volume_property_window () {
+        new Files.View.VolumePropertiesWindow (
+            volume.get_mount (),
+            Files.get_active_window ()
+        );
+    }
+
+    protected override void show_mount_info () {
+        if (!is_mounted) {
+            /* Mount the device if possible, defer showing the dialog after
+             * we're done */
+            working = true;
+            Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
+                try {
+                    Files.FileOperations.mount_volume_full.end (res);
+                } catch (Error e) {
+                } finally {
+                    working = false;
+                }
+
+                if (is_mounted) {
+                    open_volume_property_window ();
+                }
+            });
+        } else {
+            open_volume_property_window ();
         }
     }
 }

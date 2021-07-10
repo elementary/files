@@ -62,8 +62,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         if (!has_uuid (uuid, uri, out bm) || bm.custom_name != label) { //Could be a bind mount with the same uuid
             DeviceRow new_bm;
             if (drive != null && volume == null) {
-warning ("add bm - DRIVE %s", label);
-                new_bm = new DriveRow (
+                new_bm = new EmptyDriveRow (
                     label,
                     uri,
                     gicon,
@@ -74,8 +73,7 @@ warning ("add bm - DRIVE %s", label);
                     drive
                 );
             } else if (volume == null ) {
-warning ("add bm - MOUNT %s", label);
-                new_bm = new MountRow (
+                new_bm = new VolumelessMountRow (
                     label,
                     uri,
                     gicon,
@@ -86,7 +84,6 @@ warning ("add bm - MOUNT %s", label);
                     mount
                 );
             } else {
-warning ("add bm - VOLUME %s", label);
                 new_bm = new VolumeRow (
                     label,
                     uri,
@@ -178,7 +175,6 @@ warning ("add bm - VOLUME %s", label);
          */
 
         if (drive.get_volumes () == null) {
-warning ("DRIVE added %s", drive.get_name ());
             add_bookmark (
                 drive.get_name (),
                 "", // No uri available from drive??
@@ -192,7 +188,6 @@ warning ("DRIVE added %s", drive.get_name ());
     }
 
     private void bookmark_volume (Volume volume) {
-warning ("VOLUME added %s", volume.get_name ());
         var mount = volume.get_mount ();
         add_bookmark (
             volume.get_name (),
@@ -211,15 +206,15 @@ warning ("VOLUME added %s", volume.get_name ());
             mount.get_volume () != null) {
 
             return;
-        };
-warning ("MOUNT added %s", mount.get_name ());
+        }
+
         var uuid = mount.get_uuid ();
         var path = mount.get_default_location ().get_uri ();
         if (uuid == null || uuid == "") {
             uuid = path;
         }
 
-        var bm = add_bookmark (
+        add_bookmark (
             mount.get_name (),
             path,
             mount.get_icon (),

@@ -50,6 +50,10 @@ public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
         storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         icon_label_grid.attach (storage_levelbar, 1, 1);
+
+        notify["is-mounted"].connect (() => {
+            storage_levelbar.visible = is_mounted;
+        });
     }
 
     protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) { 
@@ -121,7 +125,7 @@ public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
             storage_text = "";
         }
 
-        // set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false) + storage_text);
+        set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false) + storage_text);
     }
 
     public override void update_free_space () {
