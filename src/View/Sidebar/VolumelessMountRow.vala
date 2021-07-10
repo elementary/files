@@ -68,7 +68,7 @@ public class Sidebar.VolumelessMountRow : Sidebar.DeviceRow, SidebarItemInterfac
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         // By definition this row represents a mounted mount (or local filesystem)
         if (!working) {
-            list.open_item (this, flag);  
+            list.open_item (this, flag);
             return;
         }
     }

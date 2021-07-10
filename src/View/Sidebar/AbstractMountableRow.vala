@@ -32,7 +32,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected bool valid = true;
     public string? uuid { get; set construct; }
 
-    public virtual bool is_mounted { 
+    public virtual bool is_mounted {
         get {
             return false;
         }
@@ -164,7 +164,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                 } finally {
                     working = false;
                 }
-            } 
+            }
         }
 
         return true;

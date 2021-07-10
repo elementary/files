@@ -31,7 +31,7 @@ public class Sidebar.NetworkRow : Sidebar.AbstractMountableRow {
             uri: uri,
             gicon: gicon,
             list: list,
-            pinned: true, 
+            pinned: true,
             permanent: _mount == null || !_mount.can_unmount (), // permanent if no mount or unmountable,
             uuid: null,
             mount: _mount);

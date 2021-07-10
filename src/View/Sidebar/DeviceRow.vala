@@ -56,7 +56,7 @@ public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
         });
     }
 
-    protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) { 
+    protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
         return false;
     }
 
