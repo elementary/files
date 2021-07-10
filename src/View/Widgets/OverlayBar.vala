@@ -189,9 +189,9 @@ namespace Files.View {
                     if (goffile.format_size == "" ) { /* No need to keep recalculating it */
                         goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
                     }
-                    str = "%s- %s (%s)".printf (goffile.info.get_name (),
-                                                goffile.formated_type,
-                                                goffile.format_size);
+                    str = "%s - %s (%s)".printf (goffile.info.get_name (),
+                                                 goffile.formated_type,
+                                                 goffile.format_size);
 
                     if (type != null && type.substring (0, 6) == "image/" &&     /* file is image and */
                         (goffile.width > 0 ||                                    /* resolution already determined  or */
