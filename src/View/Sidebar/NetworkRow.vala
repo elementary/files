@@ -21,15 +21,19 @@
  */
 
 public class Sidebar.NetworkRow : Sidebar.AbstractMountableRow {
+    public Mount? mount { get; construct; }
     public NetworkRow (
-        string name, string uri, Icon gicon, SidebarListInterface list, Mount? mount
+        string name, string uri, Icon gicon, SidebarListInterface list, Mount? _mount
     ) {
 
-        base (
-            name, uri, gicon, list,
-            true, // Pinned,
-            mount == null || !mount.can_unmount (), // permanent if no mount or unmountable,
-            null, null, null, //No uuid, drive or volume
-            mount);
+        Object (
+            name: name,
+            uri: uri,
+            gicon: gicon,
+            list: list,
+            pinned: true, 
+            permanent: _mount == null || !_mount.can_unmount (), // permanent if no mount or unmountable,
+            uuid: null,
+            mount: _mount);
     }
 }

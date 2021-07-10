@@ -20,22 +20,25 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
+public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
     private double storage_capacity = 0;
     private double storage_free = 0;
     private string storage_text = "";
 
     public Gtk.LevelBar storage_levelbar { get; set construct; }
 
-    public DeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
+    protected DeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
                       bool pinned, bool permanent,
-                      string? _uuid, Drive? drive, Volume? volume, Mount? mount) {
-        base (name, uri, gicon, list, pinned, permanent, _uuid, drive, volume, mount);
+                      string? _uuid) {
+
+        base (name, uri, gicon, list, pinned, permanent, _uuid);
     }
+
     construct {
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
-            hexpand = true
+            hexpand = true,
+            no_show_all = true
         };
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
@@ -49,15 +52,14 @@ public class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
         icon_label_grid.attach (storage_levelbar, 1, 1);
     }
 
-    private async bool get_filesystem_space (Cancellable? update_cancellable) {
+    protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) { 
+        return false;
+    }
+
+    protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
         storage_capacity = 0;
         storage_free = 0;
 
-        if (mount == null && !permanent) {
-            return false;
-        }
-
-        File root;
         string scheme = Uri.parse_scheme (uri);
         if (scheme == null || "sftp davs".contains (scheme)) {
             return false; /* Cannot get info from these protocols */
@@ -69,12 +71,6 @@ public class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
             if (!net_mon.get_network_available ()) {
                 return false;
             }
-        }
-
-        if (mount != null) {
-            root = mount.get_root ();
-        } else {
-            root = File.new_for_uri (scheme + ":///"); //Is this always "file:///" if no mount?
         }
 
         GLib.FileInfo info;
@@ -125,7 +121,7 @@ public class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
             storage_text = "";
         }
 
-        set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false) + storage_text);
+        // set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false) + storage_text);
     }
 
     public override void update_free_space () {

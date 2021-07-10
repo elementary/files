@@ -70,6 +70,17 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         return false;
     }
 
+    public virtual bool select_uri (string uri) {
+        unselect_all_items ();
+        SidebarItemInterface? row = null;
+        if (has_uri (uri, out row)) {
+            select_item (row);
+            return true;
+        }
+
+        return false;
+    }
+
     public virtual bool remove_item_by_id (uint32 id) {
         foreach (Gtk.Widget child in get_children ()) {
             if (child is SidebarItemInterface) {
