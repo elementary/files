@@ -27,7 +27,7 @@ public class Sidebar.NetworkRow : Sidebar.AbstractMountableRow {
     ) {
 
         Object (
-            name: name,
+            custom_name: name,
             uri: uri,
             gicon: gicon,
             list: list,
