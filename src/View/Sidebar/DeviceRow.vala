@@ -25,7 +25,8 @@ public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
     private double storage_free = 0;
     private string storage_text = "";
 
-    public Gtk.LevelBar storage_levelbar { get; set construct; }
+    protected VolumeMonitor volume_monitor;
+    protected Gtk.LevelBar storage_levelbar;
 
     protected DeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
                       bool pinned, bool permanent,
@@ -35,6 +36,8 @@ public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
     }
 
     construct {
+        volume_monitor = VolumeMonitor.@get ();
+
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
             hexpand = true,

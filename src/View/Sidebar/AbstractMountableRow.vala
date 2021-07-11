@@ -27,7 +27,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected Gtk.Revealer mount_eject_revealer;
     protected Gtk.Spinner mount_eject_spinner;
     protected Gtk.Button eject_button;
-    protected VolumeMonitor volume_monitor;
 
     protected bool valid = true;
     public string? uuid { get; set construct; }
@@ -108,8 +107,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         working = false;
         show_all ();
-
-        volume_monitor = VolumeMonitor.@get ();
 
         add_mountable_tooltip.begin ();
 
