@@ -20,7 +20,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
+public abstract class Sidebar.AbstractDeviceRow : Sidebar.AbstractMountableRow {
     private double storage_capacity = 0;
     private double storage_free = 0;
     private string storage_text = "";
@@ -28,7 +28,7 @@ public abstract class Sidebar.DeviceRow : Sidebar.AbstractMountableRow {
     protected VolumeMonitor volume_monitor;
     protected Gtk.LevelBar storage_levelbar;
 
-    protected DeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
+    protected AbstractDeviceRow (string name, string uri, Icon gicon, SidebarListInterface list,
                       bool pinned, bool permanent,
                       string? _uuid) {
 

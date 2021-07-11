@@ -32,7 +32,7 @@
 
 /* It is uncertain whether this class is a good idea. Nautilus does not show any entry for unformatted drives. */
 
-public class Sidebar.EmptyDriveRow : Sidebar.DeviceRow, SidebarItemInterface {
+public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInterface {
     public Drive drive { get; construct; }
     private bool can_eject = true;
 

@@ -21,7 +21,7 @@
  */
 
 /* Most of the storage rows will be volumes associated with a drive.  However some devices (e.g. MP3 players may appear as a volume without a drive */
-public class Sidebar.VolumeRow : Sidebar.DeviceRow, SidebarItemInterface {
+public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface {
 
     public Volume volume {get; construct;}
     public string? drive_name {
