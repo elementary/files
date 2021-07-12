@@ -20,19 +20,13 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-// Use only for a Drive that has no volumes (otherwise display volumes as VolumeRows)
+// Only show for a Drive that has no volumes (otherwise display volumes as VolumeRows)
 // This covers:
 // unformatted drives,
 // drives without partitions,
 // drives with removeable media that have no media inserted.
 
-/* FIXME Handle insertion of media into an empty drive (which will result in a volume row being created) The drive row should be hidden */
-/* FIXME Handle ejection of media from a drive (which will result in a volume row disappearing). The drive row should reappear */
-/* NOTE The above issues would not occur if we have expandable drive rows with nested volumes. */
-
-/* It is uncertain whether this class is a good idea. Nautilus does not show any entry for unformatted drives. */
-
-public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInterface {
+public class Sidebar.DriveRow : Sidebar.AbstractDeviceRow, SidebarItemInterface {
     public Drive drive { get; construct; }
     private bool can_eject = true;
 
@@ -42,7 +36,7 @@ public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInter
         }
     }
 
-    public EmptyDriveRow (string name, string uri, Icon gicon, SidebarListInterface list,
+    public DriveRow (string name, string uri, Icon gicon, SidebarListInterface list,
                          bool pinned, bool permanent,
                          string? _uuid, Drive _drive) {
         Object (
@@ -56,32 +50,13 @@ public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInter
             drive: _drive
         );
 
-        assert (drive != null && drive.get_volumes () == null);
-        // DriveRow represents a working drive so start it if necessary.
-        // Unnecessary for most drives currently used?
-        if (drive.can_start () || drive.can_start_degraded ()) {
-            working = true;
-            drive.start.begin (
-               DriveStartFlags.NONE,
-               new Gtk.MountOperation (null),
-               null,
-               (obj, res) => {
-                    try {
-                        drive.start.end (res);
-                    } catch (Error e) {
-                            var primary = _("Unable to start '%s'").printf (drive.get_name ());
-                            PF.Dialogs.show_error_dialog (primary, e.message, Files.get_active_window ());
-                            eject.begin ();
-                    } finally {
-                        working = false;
-                        add_mountable_tooltip.begin ();
-                    }
-                }
-            );
-        }
+        assert (drive != null);
 
-        can_eject = drive.can_eject () || drive.can_stop ();
-        mount_eject_revealer.reveal_child = can_eject && !permanent;
+        can_eject = false;
+        mount_eject_revealer.reveal_child = false;
+
+        no_show_all = true;
+        visible = !drive.has_volumes ();
     }
 
     construct {
@@ -95,19 +70,6 @@ public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInter
                                         _("Insert media or format the drive"),
                                         null);
     }
-
-    protected override async bool eject () {
-        if (working || !valid || !can_eject) {
-            return false;
-        }
-
-        working = true;
-        var success = yield Files.FileOperations.eject_stop_drive (drive);
-        mount_eject_revealer.reveal_child = !success;
-        working = false;
-        return success;
-    }
-
 
     private void drive_removed (Drive removed_drive) {
         if (!valid) { //Already removed
@@ -126,7 +88,7 @@ public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInter
         }
     }
 
-    private void volume_removed (Volume added_volume) {
+    private void volume_removed () {
         if (drive.get_volumes () == null) {
             visible = true;
         }

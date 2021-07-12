@@ -54,7 +54,8 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
         assert (volume != null && volume is Volume);
         tooltip_text = _("Volume %s on %s").printf (name, drive_name ?? "No Drive");
         var mount = volume.get_mount ();
-        mount_eject_revealer.reveal_child = mount != null && mount.can_unmount ();
+        var drive = volume.get_drive ();
+        mount_eject_revealer.reveal_child = (mount != null && mount.can_unmount ()) || (drive != null && drive.can_eject ());
         if (drive_name != null && drive_name != "") {
             custom_name = _("%s (%s)").printf (custom_name, drive_name);
         }
@@ -67,7 +68,15 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
     }
 
     protected override async bool eject () {
-        return yield eject_mount (volume.get_mount ());
+        var mount = volume.get_mount ();
+        var drive = volume.get_drive ();
+        if (mount != null) {
+            return yield eject_mount (mount);
+        } else if (drive != null) {
+             return yield stop_eject_drive ();
+        }
+
+        return false;
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -135,23 +144,29 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
         if (drive != null && drive.can_stop ()) {
             menu_builder
                 .add_separator ()
-                .add_stop_drive (() => {
-                    working = true;
-                    Files.FileOperations.eject_stop_drive.begin (drive);
-                    working = false;
-                }
-            );
+                .add_stop_drive(() => { stop_eject_drive.begin (); });
         } else if (drive != null && drive.can_eject ()) {
             menu_builder
                 .add_separator ()
-                .add_stop_drive (() => {
-                    working = true;
-                    Files.FileOperations.eject_stop_drive.begin (drive);
-                    working = false;
-                }
-            );
+                .add_eject_drive (() => { stop_eject_drive.begin (); });
         }
     }
+
+    private async bool stop_eject_drive () {
+        // Even if volume is not mounted, we need to show the spinner when ejecting the drive.
+        mount_eject_revealer.reveal_child = true;
+        working = true;
+        try {
+           yield Files.FileOperations.eject_stop_drive (volume.get_drive ());
+            return true;
+        } catch (Error e) {
+            return false;
+        } finally {
+            working = false;
+            mount_eject_revealer.reveal_child = volume.get_mount () != null;
+        }
+    }
+
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {
         if (is_mounted) {
             return yield get_filesystem_space_for_root (volume.get_mount ().get_root (), update_cancellable);

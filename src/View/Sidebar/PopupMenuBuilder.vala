@@ -86,7 +86,7 @@ public class PopupMenuBuilder : Object {
     }
 
     public PopupMenuBuilder add_eject_drive (MenuitemCallback eject_drive_cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Stop Drive")), eject_drive_cb);
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), eject_drive_cb);
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback bookmark_cb) {

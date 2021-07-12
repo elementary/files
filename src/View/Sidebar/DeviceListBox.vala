@@ -34,7 +34,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     construct {
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.drive_connected.connect (bookmark_drive_without_volume);
+        volume_monitor.drive_connected.connect (bookmark_drive);
         volume_monitor.mount_added.connect (bookmark_mount_without_volume);
         volume_monitor.volume_added.connect (bookmark_volume);
 
@@ -62,7 +62,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         if (!has_uuid (uuid, uri, out bm) || bm.custom_name != label) { //Could be a bind mount with the same uuid
             AbstractDeviceRow new_bm;
             if (drive != null && volume == null) {
-                new_bm = new EmptyDriveRow (
+                new_bm = new DriveRow (
                     label,
                     uri,
                     gicon,
@@ -147,7 +147,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         }
 
         foreach (GLib.Drive drive in volume_monitor.get_connected_drives ()) {
-            bookmark_drive_without_volume (drive);
+            bookmark_drive (drive);
         }
 
         foreach (Mount mount in volume_monitor.get_mounts ()) {
@@ -163,28 +163,17 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         });
     }
 
-    private void bookmark_drive_without_volume (Drive drive) {
-
-        /* If the drive has no mountable volumes and we cannot detect media change.. we
-         * display the drive in the sidebar so the user can manually poll the drive by
-         * right clicking and selecting "Rescan..."
-         *
-         * This is mainly for drives like floppies where media detection doesn't
-         * work.. but it's also for human beings who like to turn off media detection
-         * in the OS to save battery juice.
-         */
-
-        if (drive.get_volumes () == null) {
-            add_bookmark (
-                drive.get_name (),
-                "", // No uri available from drive??
-                drive.get_icon (),
-                drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
-                drive,
-                null,
-                null
-            );
-        }
+    private void bookmark_drive (Drive drive) {
+        // Bookmark all drives but only those that do not have a volume (unformatted or no media) are shown.
+        add_bookmark (
+            drive.get_name (),
+            "", // No uri available from drive??
+            drive.get_icon (),
+            drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
+            drive,
+            null,
+            null
+        );
     }
 
     private void bookmark_volume (Volume volume) {

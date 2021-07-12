@@ -17,7 +17,7 @@
  */
 
 namespace Files.FileOperations {
-    public static async bool eject_stop_drive (Drive drive) {
+    public static async bool eject_stop_drive (Drive drive) throws Error {
         var mount_op = new Gtk.MountOperation (null);
 
         if (drive.can_stop ()) {
@@ -30,6 +30,7 @@ namespace Files.FileOperations {
                 return true;
             } catch (Error e) {
                 warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
+                throw e;
                 return false;
             }
         } else if (drive.can_eject ()) {
@@ -42,6 +43,7 @@ namespace Files.FileOperations {
                 return true;
             } catch (Error e) {
                 warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
+                throw e;
                 return false;
             }
         }
