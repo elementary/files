@@ -194,7 +194,14 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected virtual void show_mount_info () {}
 
     protected virtual async void add_mountable_tooltip () {
-        set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false));
+        string text;
+        if (uri != "") {
+            text = Files.FileUtils.sanitize_path (uri, null, false);
+        } else {
+            text = _("%s (%s)").printf (custom_name, _("Not mounted"));
+        }
+
+        set_tooltip_markup (text);
     }
 
     public virtual void update_free_space () {}

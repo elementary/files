@@ -23,7 +23,6 @@
 public abstract class Sidebar.AbstractDeviceRow : Sidebar.AbstractMountableRow {
     private double storage_capacity = 0;
     private double storage_free = 0;
-    private string storage_text = "";
 
     protected VolumeMonitor volume_monitor;
     protected Gtk.LevelBar storage_levelbar;
@@ -106,29 +105,43 @@ public abstract class Sidebar.AbstractDeviceRow : Sidebar.AbstractMountableRow {
         }
     }
 
-    protected override async void add_mountable_tooltip () {
+    private async string get_storage_text () {
+        string storage_text = "";
+        storage_capacity = 0;
+
         if (yield get_filesystem_space (null)) {
-            storage_levelbar.@value = (storage_capacity - storage_free) / storage_capacity;
-            storage_levelbar.show ();
-        } else {
-            storage_text = "";
+            if (storage_capacity > 0) {
+                var used_string = _("%s free").printf (format_size ((uint64)storage_free));
+                var size_string = _("%s used of %s").printf (
+                    format_size ((uint64)(storage_capacity - storage_free)),
+                    format_size ((uint64)storage_capacity)
+                );
+
+                storage_text = "\n%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>"
+                    .printf (used_string, size_string);
+
+                storage_levelbar.@value = (storage_capacity - storage_free) / storage_capacity;
+                storage_levelbar.show ();
+            }
+        }
+
+        if (storage_capacity == 0) {
             storage_levelbar.hide ();
         }
 
-        if (storage_capacity > 0) {
-            var used_string = _("%s free").printf (format_size ((uint64)storage_free));
-            var size_string = _("%s used of %s").printf (
-                format_size ((uint64)(storage_capacity - storage_free)),
-                format_size ((uint64)storage_capacity)
-            );
+        return storage_text;
+    }
 
-            storage_text = "\n%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>"
-                .printf (used_string, size_string);
+    protected override async void add_mountable_tooltip () {
+        string storage_text = yield get_storage_text ();
+        string mount_text;
+        if (uri != "") {
+            mount_text = Files.FileUtils.sanitize_path (uri, null, false);
         } else {
-            storage_text = "";
+            mount_text = _("%s (%s)").printf (custom_name, _("Not mounted"));
         }
 
-        set_tooltip_markup (Files.FileUtils.sanitize_path (uri, null, false) + storage_text);
+        set_tooltip_markup (mount_text + storage_text);
     }
 
     public override void update_free_space () {

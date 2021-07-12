@@ -81,6 +81,14 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), show_drive_info_cb);
     }
 
+    public PopupMenuBuilder add_stop_drive (MenuitemCallback stop_drive_cb) {
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Stop Drive")), stop_drive_cb);
+    }
+
+    public PopupMenuBuilder add_eject_drive (MenuitemCallback eject_drive_cb) {
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Stop Drive")), eject_drive_cb);
+    }
+
     public PopupMenuBuilder add_bookmark (MenuitemCallback bookmark_cb) {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), bookmark_cb);
     }

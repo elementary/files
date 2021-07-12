@@ -86,6 +86,8 @@ public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInter
 
     construct {
         volume_monitor.drive_disconnected.connect (drive_removed);
+        volume_monitor.volume_added.connect (volume_added);
+        volume_monitor.volume_removed.connect (volume_removed);
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -99,42 +101,13 @@ public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInter
             return false;
         }
 
-        var mount_op = new Gtk.MountOperation (Files.get_active_window ());
-
-        if (drive.can_stop ()) {
-            working = true;
-            try {
-                yield drive.stop (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null
-                );
-                return true;
-            } catch (Error e) {
-                warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
-                return false;
-            } finally {
-                working = false;
-            }
-        } else if (drive.can_eject ()) {
-            working = true;
-            try {
-                yield drive.eject_with_operation (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null
-                );
-                return true;
-            } catch (Error e) {
-                warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
-                return false;
-            } finally {
-                working = false;
-            }
-        }
-
-        return true;
+        working = true;
+        var success = yield Files.FileOperations.eject_stop_drive (drive);
+        mount_eject_revealer.reveal_child = !success;
+        working = false;
+        return success;
     }
+
 
     private void drive_removed (Drive removed_drive) {
         if (!valid) { //Already removed
@@ -147,6 +120,28 @@ public class Sidebar.EmptyDriveRow : Sidebar.AbstractDeviceRow, SidebarItemInter
         }
     }
 
+    private void volume_added (Volume added_volume) {
+        if (drive.get_volumes () != null) {
+            visible = false;
+        }
+    }
+
+    private void volume_removed (Volume added_volume) {
+        if (drive.get_volumes () == null) {
+            visible = true;
+        }
+    }
+
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+    }
+
+    protected override async void add_mountable_tooltip () {
+        if (!drive.has_media ()) {
+            set_tooltip_markup (_("%s (%s)").printf (custom_name, _("No media")));
+        } else if (!drive.has_volumes ()) {
+            set_tooltip_markup (_("%s (%s)").printf (custom_name, _("Unformatted")));
+        } else {
+            set_tooltip_markup (custom_name);
+        }
     }
 }

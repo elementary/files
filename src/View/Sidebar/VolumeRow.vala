@@ -128,8 +128,30 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
         add_extra_menu_items_for_mount (volume.get_mount (), menu_builder);
+        add_extra_menu_items_for_drive (volume.get_drive (), menu_builder);
     }
 
+    protected void add_extra_menu_items_for_drive (Drive? drive, PopupMenuBuilder menu_builder) {
+        if (drive != null && drive.can_stop ()) {
+            menu_builder
+                .add_separator ()
+                .add_stop_drive (() => {
+                    working = true;
+                    Files.FileOperations.eject_stop_drive.begin (drive);
+                    working = false;
+                }
+            );
+        } else if (drive != null && drive.can_eject ()) {
+            menu_builder
+                .add_separator ()
+                .add_stop_drive (() => {
+                    working = true;
+                    Files.FileOperations.eject_stop_drive.begin (drive);
+                    working = false;
+                }
+            );
+        }
+    }
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {
         if (is_mounted) {
             return yield get_filesystem_space_for_root (volume.get_mount ().get_root (), update_cancellable);

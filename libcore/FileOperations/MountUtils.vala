@@ -17,6 +17,38 @@
  */
 
 namespace Files.FileOperations {
+    public static async bool eject_stop_drive (Drive drive) {
+        var mount_op = new Gtk.MountOperation (null);
+
+        if (drive.can_stop ()) {
+            try {
+                yield drive.stop (
+                    GLib.MountUnmountFlags.NONE,
+                    mount_op,
+                    null
+                );
+                return true;
+            } catch (Error e) {
+                warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
+                return false;
+            }
+        } else if (drive.can_eject ()) {
+            try {
+                yield drive.eject_with_operation (
+                    GLib.MountUnmountFlags.NONE,
+                    mount_op,
+                    null
+                );
+                return true;
+            } catch (Error e) {
+                warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) throws GLib.Error {
         var mount_operation = new Gtk.MountOperation (parent_window);
         mount_operation.password_save = GLib.PasswordSave.FOR_SESSION;
