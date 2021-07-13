@@ -144,7 +144,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
         if (drive != null && drive.can_stop ()) {
             menu_builder
                 .add_separator ()
-                .add_stop_drive(() => { stop_eject_drive.begin (); });
+                .add_stop_drive (() => { stop_eject_drive.begin (); });
         } else if (drive != null && drive.can_eject ()) {
             menu_builder
                 .add_separator ()
