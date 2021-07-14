@@ -234,6 +234,20 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         return false;
     }
 
+    protected async bool stop_eject_drive (Drive drive) {
+        working = true;
+        try {
+            yield Files.FileOperations.eject_stop_drive (drive);
+            return true;
+        } catch (Error e) {
+            // MountUtil has already shown error dialog.
+            return false;
+        } finally {
+            working = false;
+            update_visibilities ();
+        }
+    }
+
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
         storage_capacity = 0;
         storage_free = 0;

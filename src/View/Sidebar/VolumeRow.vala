@@ -73,7 +73,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         if (mount != null) {
             success = yield eject_mount (mount);
         } else if (drive != null) {
-             success = yield stop_eject_drive ();
+             success = yield stop_eject_drive (drive);
         }
 
         return success;
@@ -144,25 +144,11 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         if (drive != null && drive.can_stop ()) {
             menu_builder
                 .add_separator ()
-                .add_stop_drive (() => { stop_eject_drive.begin (); });
+                .add_stop_drive (() => { stop_eject_drive.begin (drive); });
         } else if (drive != null && drive.can_eject ()) {
             menu_builder
                 .add_separator ()
-                .add_eject_drive (() => { stop_eject_drive.begin (); });
-        }
-    }
-
-    private async bool stop_eject_drive () {
-        working = true;
-        try {
-            yield Files.FileOperations.eject_stop_drive (volume.get_drive ());
-            return true;
-        } catch (Error e) {
-            // MountUtil has already shown error dialog.
-            return false;
-        } finally {
-            working = false;
-            update_visibilities ();
+                .add_eject_drive (() => { stop_eject_drive.begin (drive); });
         }
     }
 

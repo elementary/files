@@ -35,6 +35,12 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         }
     }
 
+    public override bool can_unmount {
+        get {
+            return drive.can_eject () || drive.can_stop ();
+        }
+    }
+
     public DriveRow (string name, string uri, Icon gicon, SidebarListInterface list,
                          bool pinned, bool permanent,
                          string? _uuid, Drive _drive) {
@@ -57,6 +63,11 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         volume_monitor.drive_disconnected.connect (drive_removed);
         volume_monitor.volume_added.connect (volume_added);
         volume_monitor.volume_removed.connect (volume_removed);
+    }
+
+    // May want to eject (open) a closed drive with no media in order to insert media
+    protected override async bool eject () {
+        return yield stop_eject_drive (drive);
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
