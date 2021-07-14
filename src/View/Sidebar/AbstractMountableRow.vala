@@ -172,8 +172,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                             null
                     );
                     return true;
-                } catch (GLib.Error error) {
-                    warning ("Error ejecting mount '%s': %s", mount.get_name (), error.message);
+                } catch (GLib.Error e) {
+                    PF.Dialogs.show_error_dialog (_("Unable to eject '%s'").printf (mount.get_name ()),
+                                                  e.message,
+                                                  null);
                     return false;
                 } finally {
                     working = false;
@@ -187,8 +189,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                             null
                     );
                     return true;
-                } catch (GLib.Error error) {
-                    warning ("Error while unmounting mount '%s': %s", mount.get_name (), error.message);
+                } catch (GLib.Error e) {
+                    PF.Dialogs.show_error_dialog (_("Unable to unmount '%s'").printf (mount.get_name ()),
+                                                  e.message,
+                                                  null);
                     return false;
                 } finally {
                     working = false;

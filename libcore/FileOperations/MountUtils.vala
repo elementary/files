@@ -31,7 +31,6 @@ namespace Files.FileOperations {
             } catch (Error e) {
                 warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
                 throw e;
-                return false;
             }
         } else if (drive.can_eject ()) {
             try {
@@ -44,7 +43,6 @@ namespace Files.FileOperations {
             } catch (Error e) {
                 warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
                 throw e;
-                return false;
             }
         }
 
