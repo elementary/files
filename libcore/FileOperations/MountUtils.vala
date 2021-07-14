@@ -29,7 +29,9 @@ namespace Files.FileOperations {
                 );
                 return true;
             } catch (Error e) {
-                warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
+                PF.Dialogs.show_error_dialog (_("Unable to stop drive '%s'").printf (drive.get_name ()),
+                                              e.message,
+                                              null);
                 throw e;
             }
         } else if (drive.can_eject ()) {
@@ -41,7 +43,9 @@ namespace Files.FileOperations {
                 );
                 return true;
             } catch (Error e) {
-                warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
+                PF.Dialogs.show_error_dialog (_("Unable to eject drive '%s'").printf (drive.get_name ()),
+                                              e.message,
+                                              null);
                 throw e;
             }
         }

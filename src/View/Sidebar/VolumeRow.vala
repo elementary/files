@@ -160,10 +160,11 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
            yield Files.FileOperations.eject_stop_drive (volume.get_drive ());
             return true;
         } catch (Error e) {
+            // MountUtil has already shown error dialog.
             return false;
         } finally {
             working = false;
-            mount_eject_revealer.reveal_child = volume.get_mount () != null;
+            update_visibilities ();
         }
     }
 
