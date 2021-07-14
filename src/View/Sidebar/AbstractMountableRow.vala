@@ -27,11 +27,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected static Gtk.CssProvider devicerow_provider;
     protected static VolumeMonitor volume_monitor;
 
-    protected Gtk.Stack mount_eject_stack;
-    protected Gtk.Revealer mount_eject_revealer;
-    protected Gtk.Spinner mount_eject_spinner;
-    protected Gtk.Button eject_button;
-    protected Gtk.LevelBar storage_levelbar;
+    private Gtk.Stack mount_eject_stack;
+    private Gtk.Revealer mount_eject_revealer;
+    private Gtk.Spinner mount_eject_spinner;
+    private Gtk.Button eject_button;
+    private Gtk.LevelBar storage_levelbar;
 
     public Mount? mount { get; construct; }
 

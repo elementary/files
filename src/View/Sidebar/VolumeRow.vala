@@ -153,11 +153,9 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     private async bool stop_eject_drive () {
-        // Even if volume is not mounted, we need to show the spinner when ejecting the drive.
-        mount_eject_revealer.reveal_child = true;
         working = true;
         try {
-           yield Files.FileOperations.eject_stop_drive (volume.get_drive ());
+            yield Files.FileOperations.eject_stop_drive (volume.get_drive ());
             return true;
         } catch (Error e) {
             // MountUtil has already shown error dialog.
