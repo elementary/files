@@ -21,8 +21,7 @@
  */
 
 /* Most of the storage rows will be volumes associated with a drive.  However some devices (e.g. MP3 players may appear as a volume without a drive */
-public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface {
-
+public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
     public Volume volume {get; construct;}
     public string? drive_name {
         owned get {
@@ -34,6 +33,13 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
     public override bool is_mounted {
         get {
             return volume.get_mount () != null;
+        }
+    }
+
+    public override bool can_unmount { 
+        get {
+            return (is_mounted && volume.get_mount ().can_unmount ()) ||
+                   (volume.get_drive () != null && volume.get_drive ().can_eject ());
         }
     }
 
@@ -51,11 +57,6 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
             volume: _volume
         );
 
-        assert (volume != null && volume is Volume);
-        tooltip_text = _("Volume %s on %s").printf (name, drive_name ?? "No Drive");
-        var mount = volume.get_mount ();
-        var drive = volume.get_drive ();
-        mount_eject_revealer.reveal_child = (mount != null && mount.can_unmount ()) || (drive != null && drive.can_eject ());
         if (drive_name != null && drive_name != "") {
             custom_name = _("%s (%s)").printf (custom_name, drive_name);
         }
@@ -63,20 +64,19 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
 
     construct {
         volume_monitor.volume_removed.connect (on_volume_removed);
-        volume_monitor.mount_added.connect (on_mount_added);
-        volume_monitor.mount_removed.connect (on_mount_removed);
     }
 
     protected override async bool eject () {
         var mount = volume.get_mount ();
         var drive = volume.get_drive ();
+        bool success = false;
         if (mount != null) {
-            return yield eject_mount (mount);
+            success = yield eject_mount (mount);
         } else if (drive != null) {
-             return yield stop_eject_drive ();
+             success = yield stop_eject_drive ();
         }
 
-        return false;
+        return success;
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -123,15 +123,15 @@ public class Sidebar.VolumeRow : Sidebar.AbstractDeviceRow, SidebarItemInterface
         }
     }
 
-    private void on_mount_added (Mount added_mount) {
+    protected override void on_mount_added (Mount added_mount) {
         if (added_mount == volume.get_mount ()) {
-            notify_property ("is-mounted");
+            update_visibilities ();
         }
     }
 
-    private void on_mount_removed (Mount added_mount) {
+    protected override void on_mount_removed (Mount removed_mount) {
         if (volume.get_mount () == null) {
-            notify_property ("is-mounted");
+            update_visibilities ();
         }
     }
 

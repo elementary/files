@@ -23,46 +23,35 @@
 // Represents a mount not associated with a volume or drive - usually a bind mount
 // Also used for builtin row "FileSystem" which has null mount
 /*FIXME Identify and deal with any other conditions resulting in a volumeless mount */
-public class Sidebar.VolumelessMountRow : Sidebar.AbstractDeviceRow, SidebarItemInterface {
-    public Mount? mount { get; construct; }
-
-    protected override bool is_mounted {
-        get {
-            return true;
-        }
-    }
-
+public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
     public VolumelessMountRow (string name, string uri, Icon gicon, SidebarListInterface list,
-                         bool pinned, bool permanent,
-                         string? _uuid, Mount? _mount) {
+                               bool pinned, bool permanent,
+                               string? _uuid, Mount? _mount) {
         Object (
             custom_name: name,
             uri: uri,
             gicon: gicon,
             list: list,
-            pinned: true,  //pinned
+            pinned: pinned,
             permanent: permanent,
             uuid: _uuid,
             mount: _mount
         );
 
-        assert (mount == null || mount.get_volume () == null);
-        mount_eject_revealer.reveal_child = (mount != null && mount.can_unmount () && !permanent);
         if (mount != null) {
             custom_name = _("%s (%s)").printf (custom_name, _("Bind mount"));
         }
     }
 
-    construct {
-        volume_monitor.mount_removed.connect (mount_removed);
-    }
-
     protected override async bool eject () {
+        bool success = false;
         if (mount != null) {
-            return yield eject_mount (mount);
+            success = yield eject_mount (mount);
         } else {
-            return true;
+            success = true;
         }
+
+        return success;
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -73,7 +62,7 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractDeviceRow, SidebarItem
         }
     }
 
-    private void mount_removed (Mount removed_mount) {
+    protected override void on_mount_removed (Mount removed_mount) {
         if (!valid) { //Already removed
             return;
         }

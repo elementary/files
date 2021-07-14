@@ -20,20 +20,35 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkRow : Sidebar.AbstractMountableRow {
-    public Mount? mount { get; construct; }
-    public NetworkRow (
-        string name, string uri, Icon gicon, SidebarListInterface list, Mount? _mount
-    ) {
-
+public class Sidebar.NetworkRow : Sidebar.VolumelessMountRow {
+    public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list,
+                               bool pinned, bool permanent,
+                               string? _uuid, Mount? _mount) {
         Object (
             custom_name: name,
             uri: uri,
             gicon: gicon,
             list: list,
-            pinned: true,
-            permanent: _mount == null || !_mount.can_unmount (), // permanent if no mount or unmountable,
-            uuid: null,
-            mount: _mount);
+            pinned: pinned,
+            permanent: permanent,
+            uuid: _uuid,
+            mount: _mount
+        );
+
+        var scheme = Uri.parse_scheme (uri);
+        if (mount != null) {
+            custom_name = _("%s (%s)").printf (custom_name, scheme);
+        }
+    }
+
+    protected override async bool get_filesystem_space (Cancellable? update_cancellable) {
+        File root;
+        if (mount != null) {
+            root = mount.get_root ();
+        } else {
+            return false; // No realistic filespace for "network:///"
+        }
+
+        return yield get_filesystem_space_for_root (root, update_cancellable);
     }
 }

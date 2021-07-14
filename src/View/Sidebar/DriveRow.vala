@@ -26,9 +26,8 @@
 // drives without partitions,
 // drives with removeable media that have no media inserted.
 
-public class Sidebar.DriveRow : Sidebar.AbstractDeviceRow, SidebarItemInterface {
+public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
     public Drive drive { get; construct; }
-    private bool can_eject = true;
 
     public override bool is_mounted {
         get {
@@ -44,16 +43,11 @@ public class Sidebar.DriveRow : Sidebar.AbstractDeviceRow, SidebarItemInterface 
             uri: uri,
             gicon: gicon,
             list: list,
-            pinned: true,  //pinned
+            pinned: true,
             permanent: permanent,
             uuid: _uuid,
             drive: _drive
         );
-
-        assert (drive != null);
-
-        can_eject = false;
-        mount_eject_revealer.reveal_child = false;
 
         no_show_all = true;
         visible = !drive.has_volumes ();

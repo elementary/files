@@ -43,11 +43,21 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         });
     }
 
-    private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, Mount? mount) {
+    private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, bool permanent, bool pinned, string? uuid, Mount? mount) {
         SidebarItemInterface? row = null;
 
         if (!has_uri (uri, out row)) {
-            row = new NetworkRow (label, uri, gicon, this, mount);
+            row = new NetworkRow (
+                label,
+                uri,
+                gicon,
+                this,
+                pinned,
+                permanent,
+                uuid != null ? uuid : uri, //uuid fallsback to uri
+                mount
+            );
+
             add (row);
         }
 
@@ -55,7 +65,16 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        var row = add_bookmark (plugin_item.name, plugin_item.uri, plugin_item.icon, null);
+        var row = new NetworkRow (
+                plugin_item.name,
+                plugin_item.uri,
+                plugin_item.icon,
+                this,
+                false,
+                false,
+                null, //uuid fallsback to uri
+                plugin_item.mount
+            );
 
         row.update_plugin_data (plugin_item);
 
@@ -70,12 +89,15 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
 
         string scheme = Uri.parse_scheme (mount.get_root ().get_uri ());
 
-        /* Some non-native schemes are still local e.g. mtp, ptp, gphoto2 */
+        /* Some non-native schemes are still local e.g. mtp, ptp, gphoto2.  These are shown in the Device ListBox */
         if ("smb ftp sftp afp dav davs".contains (scheme)) {
                 add_bookmark (
                 mount.get_name (),
                 mount.get_default_location ().get_uri (),
                 mount.get_icon (),
+                false,
+                false,
+                mount.get_name (),
                 mount
             );
             //Show extra info in tooltip
@@ -93,6 +115,9 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
             _("Entire Network"),
             Files.NETWORK_URI,
             new ThemedIcon (Files.ICON_NETWORK),
+            true,
+            true,
+            null,
             null
         );
 
