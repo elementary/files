@@ -44,7 +44,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         }
     }
 
-    public virtual bool can_unmount { 
+    public virtual bool can_unmount {
         get {
             return is_mounted && mount.can_unmount ();
         }

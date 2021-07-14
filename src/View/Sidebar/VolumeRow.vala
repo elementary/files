@@ -36,7 +36,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         }
     }
 
-    public override bool can_unmount { 
+    public override bool can_unmount {
         get {
             return (is_mounted && volume.get_mount ().can_unmount ()) ||
                    (volume.get_drive () != null && volume.get_drive ().can_eject ());
