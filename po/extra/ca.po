@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 17:14+0000\n"
-"PO-Revision-Date: 2021-04-09 21:58+0000\n"
+"PO-Revision-Date: 2021-07-15 14:50+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -661,7 +661,7 @@ msgstr "Es mostren les icones als menús d'Obre amb..."
 
 #: data/io.elementary.files.appdata.xml.in.in:331
 msgid "Tooltip fixes"
-msgstr "Correccions de consells"
+msgstr "Correccions de descripcions emergents"
 
 #: data/io.elementary.files.appdata.xml.in.in:332
 msgid "Memory leak fixes"
