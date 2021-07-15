@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 17:14+0000\n"
-"PO-Revision-Date: 2021-04-09 10:21+0000\n"
+"PO-Revision-Date: 2021-07-15 12:52+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -763,7 +763,7 @@ msgstr "翻訳サポートを改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:423
 msgid "Fix appdata release dates"
-msgstr "Appdata のリリース日を修正"
+msgstr "AppData のリリース日を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:430
 msgid "Improve file opening over Samba shares"
@@ -771,7 +771,7 @@ msgstr "Samba 共有上でのファイルのオープンを改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:431
 msgid "Fix a crash when restoring items from the Trash"
-msgstr "ゴミ箱からアイテムを復元する際のクラッシュを修正"
+msgstr "ゴミ箱からアイテムを復元する際にクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:432
 msgid "Improve cut/copy/paste sensitivity in context menu"
