@@ -2084,7 +2084,11 @@ namespace Files {
                     menu.add (properties_menuitem);
                 }
             } else {
-                var show_hidden_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Hidden Files"));
+                var show_hidden_menuitem = new Gtk.CheckMenuItem ();
+                show_hidden_menuitem.add (new Granite.AccelLabel (
+                    _("Show Hidden Files"),
+                    "<Ctrl>h"
+                ));
                 show_hidden_menuitem.action_name = "background.show-hidden";
 
                 var show_remote_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Remote Thumbnails"));
