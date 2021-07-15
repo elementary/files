@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '4.5.0',
+    version: '6.0.0',
     meson_version: '>= 0.50.0'
 )
 
