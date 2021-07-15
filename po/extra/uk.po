@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-07-15 23:00+0000\n"
+"PO-Revision-Date: 2021-07-15 23:12+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -92,23 +92,23 @@ msgstr "Поліпшено:"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Launch files with double click instead of single click"
-msgstr ""
+msgstr "Запуск файлів подвійним клацанням замість одного клацання"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
+msgstr "Надано портал вибору файлів для застосунків Flatpak"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Brand new animated Sidebar"
-msgstr ""
+msgstr "Зовсім нова анімована бічна панель"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Dark style support"
-msgstr ""
+msgstr "Підтримка темного стилю"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "М'ятний і жуйковий кольори міток"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Do not restore locations that have become inaccessible"
@@ -122,23 +122,19 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "AFC protocol support"
-msgstr ""
+msgstr "Підтримка протоколу AFC"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "Додано менший мінімальний розмір піктограм у поданні списком"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
-#, fuzzy
-#| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
-msgstr "Показано кількість елементів теки у поданні списком"
+msgstr "Показ емблем вбудовано в режимах подання списком"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
-#, fuzzy
-#| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
-msgstr "Вдосконалено переходи за допомогою клавіатури"
+msgstr "Поліпшено швидкодію"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 #, fuzzy
