@@ -58,16 +58,32 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.5.1" date="2020-08-11" urgency="medium">
+    <release version="6.0.0" date="2021-07-15" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
           <li>Fix connecting to AFP servers so that passwords are remembered</li>
+          <li>Fix MTP mounts</li>
         </ul>
         <p>Improvements:</p>
         <ul>
+          <li>Launch files with double click instead of single click</li>
+          <li>Provide a File Chooser portal for Flatpak apps</li>
+          <li>Brand new animated Sidebar</li>
+          <li>Dark style support</li>
+          <li>Mint and Bubblegum color tags</li>
           <li>Do not restore locations that have become inaccessible</li>
           <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
+          <li>AFC protocol support</li>
+          <li>Add a smaller minimum icon size in list view</li>
+          <li>Show emblems inline in list views</li>
+          <li>Performance improvements</li>
+          <li>Stability improvements</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Rename "Devices" to "Storage"</li>
+          <li>Updated translations</li>
         </ul>
       </description>
     </release>
