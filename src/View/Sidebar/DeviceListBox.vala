@@ -48,6 +48,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 select_item ((SidebarItemInterface) row);
             }
         });
+
+        set_sort_func (device_sort_func);
+    }
+
+    private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
+        string key1 = row1 != null ? ((AbstractMountableRow)row1).sort_key : "";
+        string key2 = row2 != null ? ((AbstractMountableRow)row2).sort_key : "";
+
+        return strcmp (key1, key2);
     }
 
     private AbstractMountableRow add_bookmark (string label, string uri, Icon gicon,

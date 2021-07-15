@@ -35,9 +35,21 @@ public class Sidebar.NetworkRow : Sidebar.VolumelessMountRow {
             mount: _mount
         );
 
-        var scheme = Uri.parse_scheme (uri);
         if (mount != null) {
+            string scheme, hostname;
+            try {
+                var connectable = NetworkAddress.parse_uri (uri, 0);
+                scheme = connectable.scheme;
+                hostname = connectable.hostname;
+            } catch (Error e) {
+                scheme = Uri.parse_scheme (uri);
+                hostname = "";
+            }
+
             custom_name = _("%s (%s)").printf (custom_name, scheme);
+            sort_key = hostname + scheme + name;
+        } else {
+            sort_key = ""; // Used for "Network" entry which is always first.
         }
     }
 

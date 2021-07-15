@@ -59,6 +59,9 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
         if (drive_name != null && drive_name != "") {
             custom_name = _("%s (%s)").printf (custom_name, drive_name);
+            sort_key = MountableType.VOLUME.to_string () + drive_name + name;
+        } else {
+            sort_key = MountableType.VOLUME.to_string () + name;
         }
     }
 

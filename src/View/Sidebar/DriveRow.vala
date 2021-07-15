@@ -49,7 +49,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
             uri: uri,
             gicon: gicon,
             list: list,
-            pinned: true,
+            pinned: pinned,
             permanent: permanent,
             uuid: _uuid,
             drive: _drive
@@ -60,6 +60,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     construct {
+        sort_key = MountableType.EMPTY_DRIVE.to_string () + custom_name;
         volume_monitor.drive_disconnected.connect (drive_removed);
         volume_monitor.volume_added.connect (volume_added);
         volume_monitor.volume_removed.connect (volume_removed);

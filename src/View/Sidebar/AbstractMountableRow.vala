@@ -20,9 +20,17 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
+// Used to determine first level sort order.
+public enum MountableType {
+    VOLUMELESS_MOUNT,
+    VOLUME,
+    EMPTY_DRIVE
+}
+
 public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, SidebarItemInterface {
     private double storage_capacity = 0;
     private double storage_free = 0;
+    public string sort_key { get; set construct; default = "";} // Higher index -> further down list
 
     protected static Gtk.CssProvider devicerow_provider;
     protected static VolumeMonitor volume_monitor;

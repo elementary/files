@@ -40,6 +40,9 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
 
         if (mount != null) {
             custom_name = _("%s (%s)").printf (custom_name, _("Bind mount"));
+            sort_key = MountableType.VOLUMELESS_MOUNT.to_string () + custom_name;
+        } else {
+            sort_key = ""; // Used for "FileSystem" entry which is always first.
         }
     }
 
