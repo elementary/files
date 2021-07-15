@@ -1,3 +1,159 @@
+pantheon-files (6.0.0) bionic; urgency=medium
+
+  * Release 6.0.0 (#1755)
+  * Add space before hyphen in contents of file overlay (#1750)
+  * Avoid unexpected delay on first startup (#1645)
+  * Update translation files
+  * Update translation template
+  * Adjust "Empty Trash" item label according to number of mounts with
+    trash. (#1678)
+  * ProgressInfoWidget: Add missing tooltip to the cancel button
+  * Ensure directories always sorted first (#1735)
+  * Add accellabels to tab context menu (#1717)
+  * Fix removing file from model (#1732)
+  * FileUtils: Change namespace from PF to Files (#1726)
+  * Fix missing expander (#1710)
+  * Stretch "Connect Server..." button (#1724)
+  * Remove default sort order from model to stop unsorted state (#1688)
+  * AbstractDirectoryView: Add destructive action class to permadelete
+    menuitem (#1721)
+  * PopopMenuBuilder: Empty All Trash → Permanently Delete All Trash
+    (#1720)
+  * Open new tab for folder even if child of existing folder (#1715)
+  * Refactor change_view_mode () to avoid race with slot destruction
+    (#1700)
+  * Handle case where directory already finalized when Slot is finalized
+    (#1697)
+  * Reverse the sorting of dates so that ASCENDING (default) is most
+    recent first (#1689)
+  * FileChooserDialog: Fix mismatched button height (#1685)
+  * IconRenderer: remove unused follow_state (#1684)
+  * Reduce left gutter in column views (#1676)
+  * core: Remove unused header files (#1679)
+  * ListModel: simple port to Vala (#1670)
+  * marlin-file-operations: Fix typo (#1672)
+  * Render emblems inline in list views (#1653)
+  * Set associated file as unexpanded when Directory destructed (#1663)
+  * Rename Files.Directory.Async into Files.Directory (#1661)
+  * Directory.Async: Use vala syntax sugar for variable lock (#1654)
+  * Change the namespace of the project to Files (#1660)
+  * Reduce the use of the explicit namespace (#1659)
+  * Enums: Remove unused functions and create enum methods (#1658)
+  * Rename vala files with CamelCase (#1657)
+  * Fix folder activate in Column view (#1649)
+  * Update io.elementary.files.appdata.xml.in.in (#1648)
+  * Reduce minimum icon size to "smallest" in List View (#1392)
+  * Allow remembering of password for afp:// shares (#1315)
+  * Fix mtp mount (#1634)
+  * Deal with name without suffix properly when duplicating (#1532)
+  * Ignore hidden and backup files as templates (#1637)
+  * Trash: Handle missing original directory (#1639)
+  * Mixed mode (#1036)
+  * README.md: Update granite dependency (#1638)
+  * Do not bypass SidebarItemInterface.activated () (#1630)
+  * Sidebar: Use the `row-activated` signal in the listbox (#1628)
+  * Don't restore unmounted paths (#1448)
+  * filechooser-portal: Prefer dark (#1624)
+  * ProgressInfoWidget: Use tabular numbers in file transfer dialog
+    (#1612)
+  * Ellipsize long bookmark names, not hscroll (#1622)
+  * Fix regression in network expander visibility when normal user
+    (#1619)
+  * SidebarWindow: Rename “Devices” to “Storage” (#1616)
+  * Hide network widgets when admin (#1609)
+  * Fix eject ssh and some other eject/mount issues (#1596)
+  * ConnectServerDialog: Use Granite.ValidatedEntry (#1600)
+  * Fix target gettext domain of the policy file (#1604)
+  * ConnectServerDialog: Remove single-use methods (#1603)
+  * Move message and sudo test into `command_line ()` & return early.
+    (#1599)
+  * ConnectServerDialog: Revert action area changes (#1594)
+  * Consistent use of quotes and colon in error messages (#1589)
+  * Update POTFILES (#1588)
+  * Do not recreate device row when changing freespace (#1585)
+  * Open bookmark in new tab on middle-click (#1584)
+  * Sidebar listbox (#1453)
+  * DialogUtils: Ensure that we are not using Gtk into a different
+    thread (#1580)
+  * FileConflictDialog: Subclass Granite.MessageDialog (#1576)
+  * Replace Gtk.Dialog with Granite.Dialog (#1573)
+  * Use ngettext properly in OverlayBar (#1572)
+  * Update meson.build (#1565)
+  * Use TOOLTIP_SECONDARY_TEXT_MARKUP (#1561)
+  * build: use define_variable (#1548)
+  * POTFILES: Remove filechooser-module (#1546)
+  * filechooser-portal: Parent dialog on requester (#1544)
+  * Remove the GTK module but apply the changes in the filechooser
+    portal (#1512)
+  * ListModel: Use the native Vala syntax to deal with properties
+    (#1536)
+  * Stop hyphenation in TextRenderer (#1470)
+  * Use print_detailed_name for view-mode accelerator (#1479)
+  * fm-list-model: Add FMListModel creation method (#1529)
+  * marlin-file-operations: Move the Dialog utilities to DialogUtils
+    (#1528)
+  * filechooser-portal: Make use of native async capabilities and
+    process the dialog before destroy (#1527)
+  * fm-list-model: Use a modern GObject definition for FMListModel
+    (#1523)
+  * fm-list-model: Avoid hitting the wrong part of the memory with color
+    management (#1521)
+  * filechooser-portal: Make sure that we are getting the response
+    signal before destroy (#1519)
+  * Recognise afc protocol (#1184)
+  * AbstractDirectoryView: Set sort order before thawing tree after
+    loading (#1517)
+  * Respond to click between icon and filename in IconView (#1311)
+  * GOF.Directory.Async: Prevent recent:// loading when privacy on
+    (#1486)
+  * Pathbar visual glitch (#1514)
+  * Port get duplicate name () to Vala and move to FileUtils (#1443)
+  * Port get_link_name () and move to FileUtils (#1437)
+  * Meson: correct required version to >=0.50 (#1510)
+  * Implement xdg-desktop-portal for FileChooser (#1417)
+  * Update search view markup before each search. (#1472)
+  * Use async Granite.Services.Application.set_progress* methods
+    properly (#1492)
+  * AbstractPropertiesDialog: Remove button margin (#1507)
+  * Prefer dark (#1295)
+  * Re-order color tags (#1502)
+  * Act on last breadcrumb click if Miller View (#1499)
+  * Add Mint and Bubblegum to color tags (#1497)
+  * README: Removed BountySource (#1495)
+  * Use AppInfo.launch_default_for_uri_async () for help. (#1493)
+  * Fix or ignore long lines (#1494)
+  * Use DateTime not TimeVal (#1491)
+  * GOF.File: Make certain immutable members construct properties
+    (#1485)
+  * FileUtils.vala: Fix possible referencing null string (#1478)
+  * Add libgit2-glib-1.0-dev to README.md (#1477)
+  * Ensure destruction of progress info and release of application.
+    (#1468)
+  * StockDialog: prevent crashes when creating a StockDialog in another
+    thread. (#1467)
+  * Stop caching pathbar icons (#1466)
+  * FileOperations: finish the port to the GTask API (#1462)
+  * FileOperations: Reduce the use of GIOSchedulerJob for dialogs and
+    remove the io_job field (#1459)
+  * Release Action: Update to use odin branch (#1461)
+  * Replace LibUnity with Granite.Services.Application (#1423)
+  * Port misc string functions to Vala and move to FileUtils (#1444)
+  * Port get_max_name_length () to Vala and move to FileUtils.vala
+  * Port make_file_name_valid_for_fs to FileUtils (#1430)
+  * Port format_time function to Vala and move to FileUtils (#1429)
+  * Revert "core: Port some function to Vala (#1369)" (#1428)
+  * SearchResults: Avoid Gdk.Color
+  * PluginManager: Use ModuleFlags.LOCAL
+  * AppChooserDialog: avoid get_action_area ()
+  * Fix vala 0.48 warnings (unsafe casts) (#1427)
+  * Adjust namespace attributes in vapi while FM namespace is not
+    exclusive (#1425)
+  * ColorTags: Update for Greenfield (#1421)
+  * Use Hdy.Window (#1393)
+  * core: Port some function to Vala (#1369)
+
+ -- Cody Garver <cody@elementary.io>  Thu, 15 Jul 2021 22:46:54 +0000
+
 pantheon-files (4.5.0) bionic; urgency=medium
 
   * Release 4.5.0 (#1420)
