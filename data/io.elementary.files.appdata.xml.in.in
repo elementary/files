@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2016-2018 elementary, LLC <contact@elementary.io> -->
+<!-- Copyright 2016–2021 elementary, LLC <contact@elementary.io> -->
 <component type="desktop">
   <id>io.elementary.files</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -8,9 +8,7 @@
   <name>Files</name>
   <summary>Browse and manage files and folders</summary>
   <description>
-    <p>
-      Easily copy, move, and rename your files, or use folders to stay organized. Whether you like files in lists, grids or columns, you can always find them right away. Access all your files, whether locally, on an external device or remotely using FTP, SFTP, AFP, Webdav, or Windows share.
-    </p>
+    <p>Easily copy, move, and rename your files, or use folders to stay organized. Whether you like files in lists, grids or columns, you can always find them right away. Access all your files, whether locally, on an external device or remotely using FTP, SFTP, AFP, Webdav, or Windows share.</p>
   </description>
   <provides>
     <binary>@exec_name@</binary>
