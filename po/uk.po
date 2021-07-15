@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-07-06 19:51+0000\n"
+"PO-Revision-Date: 2021-07-16 03:44+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -396,11 +396,11 @@ msgstr "Виконати"
 #: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
-msgstr "Відкрити в %s"
+msgstr "Відкрити у %s"
 
 #: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
-msgstr "Відкрити в"
+msgstr "Відкрити у"
 
 #: src/View/AbstractDirectoryView.vala:1949
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
