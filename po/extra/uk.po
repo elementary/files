@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-07-06 17:12+0000\n"
+"PO-Revision-Date: 2021-07-15 23:00+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -82,7 +82,7 @@ msgstr "Виправлено з'єднання до серверів AFP, щоб
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix MTP mounts"
-msgstr ""
+msgstr "Виправлено монтування MTP"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:90
