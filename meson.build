@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '4.5.0',
+    version: '6.0.0',
     meson_version: '>= 0.50.0'
 )
 
@@ -47,7 +47,7 @@ gio_unix_dep = dependency('gio-unix-2.0', version: '>='+min_glib_version)
 gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
-granite_dep = dependency('granite', version: '>=6.0.0')
+granite_dep = dependency('granite', version: '>=6.1.0')
 handy_dep = dependency('libhandy-1', version: '>=0.83.0')
 
 common_deps = [
