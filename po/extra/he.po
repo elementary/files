@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-04-09 07:33+0000\n"
+"PO-Revision-Date: 2021-07-16 13:46+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -73,7 +73,7 @@ msgstr "תוקן חיבור לשרתי AFP כדי שססמאות תישמרנה"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix MTP mounts"
-msgstr ""
+msgstr "תוקנו עיגוני התקני מוזיקה"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -83,7 +83,7 @@ msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Launch files with double click instead of single click"
-msgstr ""
+msgstr "הפעלת קבצים בלחיצה כפולה במקום בלחיצה בודדת"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Provide a File Chooser portal for Flatpak apps"
@@ -130,10 +130,8 @@ msgid "Performance improvements"
 msgstr "שיפורים בניווט עם המקלדת"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Stability improvements"
-msgstr "שיפורים:"
+msgstr "שיפורי יציבות"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:105
@@ -145,7 +143,7 @@ msgstr "עדכונים נוספים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr ""
+msgstr "השם של „התקנים” הוחלף לכדי „אחסון”"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 #: data/io.elementary.files.appdata.xml.in.in:108
