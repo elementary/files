@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-04-09 21:58+0000\n"
+"PO-Revision-Date: 2021-07-16 13:46+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
@@ -79,7 +79,7 @@ msgstr "Fix connecting to AFP servers so that passwords are remembered"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix MTP mounts"
-msgstr ""
+msgstr "Fix MTP mounts"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -89,23 +89,23 @@ msgstr "Improvements:"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Launch files with double click instead of single click"
-msgstr ""
+msgstr "Launch files with double click instead of single click"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
+msgstr "Provide a File Chooser portal for Flatpak apps"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Brand new animated Sidebar"
-msgstr ""
+msgstr "Brand new animated Sidebar"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Dark style support"
-msgstr ""
+msgstr "Dark style support"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "Mint and Bubblegum colour tags"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Do not restore locations that have become inaccessible"
@@ -117,29 +117,23 @@ msgstr "Clicking between thumbnail and text now activates/selects in Icon view"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "AFC protocol support"
-msgstr ""
+msgstr "AFC protocol support"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "Add a smaller minimum icon size in list view"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
-#, fuzzy
-#| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
 msgstr "Show folder item count in List View"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
-#, fuzzy
-#| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
 msgstr "Keyboard navigation improvements"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Stability improvements"
-msgstr "Improvements:"
+msgstr "Stability improvements"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:105
@@ -151,7 +145,7 @@ msgstr "Other updates:"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr ""
+msgstr "Rename \"Devices\" to \"Storage\""
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 #: data/io.elementary.files.appdata.xml.in.in:108
