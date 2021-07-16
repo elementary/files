@@ -241,4 +241,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
         return true;
     }
+
+    public virtual bool is_drop_target () { return true; }
 }

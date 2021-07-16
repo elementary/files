@@ -99,4 +99,5 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         return false;
     } // By default not-reorderable
 
+    public virtual bool is_drop_target () { return false; } // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
 }

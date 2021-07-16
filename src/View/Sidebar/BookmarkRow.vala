@@ -96,9 +96,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             pinned: pinned,
             permanent: permanent
         );
-
-        set_up_drag ();
-        set_up_drop ();
     }
 
     construct {
@@ -168,6 +165,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
         });
+
+        set_up_drag ();
+        set_up_drop ();
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -440,8 +440,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             }
 
             var reveal = y > row_height - edge_height;
-            reveal_drop_target (reveal);
-            if (reveal) {
+
+            if (reveal_drop_target (reveal)) {
                 current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
             } else if (drop_text != null &&
                        target.name () == "text/uri-list") {
@@ -556,7 +556,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected void reveal_drop_target (bool reveal) {
-        drop_revealer.reveal_child = reveal;
+    protected bool reveal_drop_target (bool reveal) {
+        if (list.is_drop_target ()) {
+            drop_revealer.reveal_child = reveal;
+            return reveal;
+        } else {
+            return false; //Suppress dropping between rows (e.g. for Storage list)
+        }
     }
 }
