@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-07-01 13:49+0000\n"
-"Last-Translator: Deleted User <noreply+411@weblate.org>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"PO-Revision-Date: 2021-07-16 13:46+0000\n"
+"Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Dark style support"
-msgstr ""
+msgstr "Koyu renk tema desteği eklendi"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Mint and Bubblegum color tags"
