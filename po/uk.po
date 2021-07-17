@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-07-16 03:44+0000\n"
+"PO-Revision-Date: 2021-07-17 23:15+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -363,7 +363,7 @@ msgstr "Не вдається запустити цей файл"
 #: src/View/AbstractDirectoryView.vala:826
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "“%s” необхідно перемістити зі Смітника перед відкриванням"
+msgstr "«%s» необхідно перемістити зі Смітника перед відкриванням"
 
 #: src/View/AbstractDirectoryView.vala:827
 msgid ""
@@ -1328,7 +1328,7 @@ msgstr "Якщо ви видалите елемент, його буде ост�
 #: libcore/marlin-file-operations.c:327
 #, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Безповоротно видалити “%s”?"
+msgstr "Видалити «%s» безповоротно?"
 
 #: libcore/marlin-file-operations.c:330
 #, c-format
