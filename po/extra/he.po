@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-07-16 13:46+0000\n"
+"PO-Revision-Date: 2021-07-17 20:19+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -124,10 +124,8 @@ msgid "Show emblems inline in list views"
 msgstr "הצגת מספור פריטים בתיקייה בתצוגת רשימה"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
-#, fuzzy
-#| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
-msgstr "שיפורים בניווט עם המקלדת"
+msgstr "שיפורי ביצועים"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Stability improvements"
