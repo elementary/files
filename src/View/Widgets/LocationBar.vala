@@ -131,7 +131,7 @@ namespace Files.View.Chrome {
         protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
             base.after_bread_focus_in_event (event);
             focus_in_event (event);
-            search_location = PF.FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
             show_navigate_icon ();
             return true;
         }

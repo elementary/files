@@ -210,11 +210,11 @@ public class Files.Application : Gtk.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
+            string path = FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
             GLib.File? file = null;
 
             if (path.length > 0) {
-                file = GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
+                file = GLib.File.new_for_uri (FileUtils.escape_uri (path));
             }
 
             if (file != null) {

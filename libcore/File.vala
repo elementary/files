@@ -251,7 +251,7 @@ public class Files.File : GLib.Object {
     }
 
     public bool is_trashed () {
-        return PF.FileUtils.location_is_in_trash (get_target_location ());
+        return FileUtils.location_is_in_trash (get_target_location ());
     }
 
     public bool is_readable () {
@@ -375,7 +375,7 @@ public class Files.File : GLib.Object {
     }
 
     public string? get_formated_time (string attr) {
-        return PF.FileUtils.get_formatted_time_attribute_from_info (info, attr);
+        return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
     public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, Files.File.IconFlags flags) {
@@ -468,7 +468,7 @@ public class Files.File : GLib.Object {
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
             if (Uri.parse_scheme (target_uri) == "afp") {
-                target_location = GLib.File.new_for_uri (PF.FileUtils.get_afp_target_uri (target_uri, uri));
+                target_location = GLib.File.new_for_uri (FileUtils.get_afp_target_uri (target_uri, uri));
             } else {
                 target_location = GLib.File.new_for_uri (target_uri);
             }
@@ -497,7 +497,7 @@ public class Files.File : GLib.Object {
         is_desktop = is_desktop_file ();
         if (is_desktop) {
             try {
-                var key_file = PF.FileUtils.key_file_from_file (location);
+                var key_file = FileUtils.key_file_from_file (location);
                 custom_icon_name = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_ICON);
                 /* drop any suffix (e.g. '.png') from themed icons */
                 if (!GLib.Path.is_absolute (custom_icon_name)) {
@@ -509,7 +509,7 @@ public class Files.File : GLib.Object {
 
             /* Do not show name from desktop file as this can be used as an exploit (lp:1660742) */
             try {
-                var key_file = PF.FileUtils.key_file_from_file (location);
+                var key_file = FileUtils.key_file_from_file (location);
                 var type = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_TYPE);
                 if (type == GLib.KeyFileDesktop.TYPE_LINK) {
                     var url = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_URL);
@@ -856,7 +856,7 @@ public class Files.File : GLib.Object {
         GLib.AppInfo app_info = null;
         if (is_desktop_file ()) {
             try {
-                var key_file = PF.FileUtils.key_file_from_file (location, null);
+                var key_file = FileUtils.key_file_from_file (location, null);
                 app_info = new GLib.DesktopAppInfo.from_keyfile (key_file);
                 if (app_info == null) {
                     throw new GLib.FileError.INVAL (_("Failed to parse the desktop file"));
@@ -897,13 +897,16 @@ public class Files.File : GLib.Object {
         }
 
         if (directories_first) {
+            /* When comparing files of different type, need to cancel out the native sorting of the TreeView
+             * so directories always come first. */
             if (is_folder () && !other.is_folder ()) {
-                return -1;
+                return reversed ? 1 : -1;
             } else if (other.is_folder () && !is_folder ()) {
-                return 1;
+                return reversed ? -1 : 1;
             }
         }
 
+        //Always sort files of same type in ASCENDING order as the TreeView will reverse them if needed
         int result = 0;
         switch (sort_type) {
             case Files.ListModel.ColumnID.FILENAME:
@@ -930,13 +933,11 @@ public class Files.File : GLib.Object {
                 }
 
                 break;
+            default:
+                assert_not_reached ();
         }
 
-        if (reversed) {
-            return -result;
-        } else {
-            return result;
-        }
+        return result;
     }
 
     public int compare_by_display_name (Files.File other) {
@@ -1039,7 +1040,10 @@ public class Files.File : GLib.Object {
     }
 
     private GLib.FileInfo? query_info () {
-        GLib.return_val_if_fail (location is GLib.File, null);
+        if (!(location is GLib.File) || location.get_uri ().has_prefix (Files.NETWORK_URI)) {
+            return null;
+        }
+
         is_mounted = true;
         exists = true;
         is_connected = true;
