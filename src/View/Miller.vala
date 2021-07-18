@@ -90,22 +90,11 @@ namespace Files.View {
         }
 
         /** Creates a new slot in the host slot hpane */
-        public void add_location (GLib.File loc, View.Slot? host = null,
-                                  bool scroll = true, bool animate = true) {
-
-            var new_slot = new View.Slot (loc, ctab, ViewMode.MILLER_COLUMNS);
+        public void add_location (GLib.File loc, View.Slot? host = null) {
+            var guest = new View.Slot (loc, ctab, ViewMode.MILLER_COLUMNS);
             /* Notify view container of path change - will set tab to working and change pathbar */
             path_changed ();
-            new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
-            nest_slot_in_host_slot (new_slot, host);
-            slot_list.append (new_slot); // Must add to list before scrolling
-            /* This will set the new slot to be current_slot. Must do this before loading */
-            new_slot.active (scroll, animate);
-
-            update_total_width ();
-        }
-
-        private void nest_slot_in_host_slot (View.Slot guest, View.Slot? host) {
+            guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
             guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             guest.colpane.set_size_request (guest.width, -1);
             guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
@@ -126,6 +115,12 @@ namespace Files.View {
             } else {
                 this.colpane.add (guest.hpane);
             }
+
+            slot_list.append (guest); // Must add to list before scrolling
+            // Must set the new slot to be  activehere as the tab does not change (which normally sets its slot active)
+            guest.active (true, true);
+
+            update_total_width ();
         }
 
         private void truncate_list_after_slot (View.Slot slot) {
@@ -452,6 +447,9 @@ namespace Files.View {
             }
 
             scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
+                /* Wait until slot realized and loaded before scrolling
+                 * Cannot accurately scroll until directory finishes loading because width will change
+                 * according the length of the longest filename */
                 if (!scrolled_window.get_realized () || slot.directory.state != Directory.State.LOADED) {
                     return Source.CONTINUE;
                 }
@@ -460,38 +458,35 @@ namespace Files.View {
                     Animation.cancel ();
                 }
 
-                scroll_to_slot (slot, animate);
+                // Calculate position to scroll to
+                int total_width_before = 0; /* left edge of active slot */
+                slot_list.@foreach ((abs) => {
+                    if (abs.slot_number < slot.slot_number) {
+                        total_width_before += abs.width;
+                    }
+                });
+
+                int hadj_value = (int) this.hadj.get_value ();
+                int offset = total_width_before - hadj_value;
+                if (offset < 0) { /*scroll until left hand edge of active slot is in view*/
+                    hadj_value += offset;
+                }
+
+                offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
+                if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
+                    hadj_value += offset;
+                }
+
+                // Perform scroll
+                if (animate) {
+                    Animation.smooth_adjustment_to (this.hadj, hadj_value);
+                } else { /* On startup we do not want to animate */
+                    hadj.set_value (hadj_value);
+                }
+
                 scroll_to_slot_timeout_id = 0;
                 return Source.REMOVE;
             });
-        }
-
-        private void scroll_to_slot (View.Slot slot, bool animate = true) {
-            /* Cannot accurately scroll until directory finishes loading because width will change
-             * according the length of the longest filename */
-            int total_width_before = 0; /* left edge of active slot */
-            slot_list.@foreach ((abs) => {
-                if (abs.slot_number < slot.slot_number) {
-                    total_width_before += abs.width;
-                }
-            });
-
-            int hadj_value = (int) this.hadj.get_value ();
-            int offset = total_width_before - hadj_value;
-            if (offset < 0) { /*scroll until left hand edge of active slot is in view*/
-                hadj_value += offset;
-            }
-
-            offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
-            if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
-                hadj_value += offset;
-            }
-
-            if (animate) {
-                Animation.smooth_adjustment_to (this.hadj, hadj_value);
-            } else { /* On startup we do not want to animate */
-                hadj.set_value (hadj_value);
-            }
         }
 
         public override unowned Files.AbstractSlot? get_current_slot () {
