@@ -142,7 +142,10 @@ namespace Files.View {
                 custom_title = new Gtk.Label (null)
             };
 
-            tabs = new Granite.Widgets.DynamicNotebook () {
+            tabs = new Granite.Widgets.DynamicNotebook.with_accellabels (
+                new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
+                new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
+            ) {
                 show_tabs = true,
                 allow_restoring = true,
                 allow_duplication = true,
@@ -442,7 +445,12 @@ namespace Files.View {
 
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
-            var tab = new Granite.Widgets.Tab ("", null, content) {
+            var tab = new Granite.Widgets.Tab.with_accellabels (
+                "",
+                null,
+                content,
+                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w")
+            ) {
                 ellipsize_mode = Pango.EllipsizeMode.MIDDLE
             };
 
@@ -488,16 +496,16 @@ namespace Files.View {
             string uri = location.get_uri ();
             bool is_folder = location.query_file_type (FileQueryInfoFlags.NONE) == FileType.DIRECTORY;
             /* Ensures consistent format of protocol and path */
-            parent_path = PF.FileUtils.get_parent_path_from_path (location.get_path ());
+            parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
             int existing_position = 0;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var tab_location = ((ViewContainer)(tab.page)).location;
                 string tab_uri = tab_location.get_uri ();
 
-                if (PF.FileUtils.same_location (uri, tab_uri)) {
+                if (FileUtils.same_location (uri, tab_uri)) {
                     return existing_position;
-                } else if (!is_folder && PF.FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
+                } else if (!is_folder && FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
                     is_child = true;
                     return existing_position;
                 }
@@ -576,8 +584,8 @@ namespace Files.View {
 
             /* Add parent directories until path and conflict path differ */
             while (prefix == prefix_conflict) {
-                var parent_path= PF.FileUtils.get_parent_path_from_path (path_temp);
-                var parent_conflict_path = PF.FileUtils.get_parent_path_from_path (conflict_path_temp);
+                var parent_path= FileUtils.get_parent_path_from_path (path_temp);
+                var parent_conflict_path = FileUtils.get_parent_path_from_path (conflict_path_temp);
                 prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
                 prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
                 path_temp= parent_path;
@@ -1047,15 +1055,15 @@ namespace Files.View {
             var tab = tabs.current;
             var view = (ViewContainer)(tab.page) ;
             var mwcols = (Miller)(view.view) ;
-            var unescaped_tip_uri = PF.FileUtils.sanitize_path (tip_uri);
+            var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
 
             if (unescaped_tip_uri == null) {
                 warning ("Invalid tip uri for Miller View");
                 return;
             }
 
-            var tip_location = PF.FileUtils.get_file_for_path (unescaped_tip_uri);
-            var root_location = PF.FileUtils.get_file_for_path (unescaped_root_uri);
+            var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
+            var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             GLib.File gfile;
 
@@ -1148,9 +1156,9 @@ namespace Files.View {
                 current_uri = current_tab.location.get_uri ();
             }
 
-            string path = PF.FileUtils.sanitize_path (uri, current_uri);
+            string path = FileUtils.sanitize_path (uri, current_uri);
             if (path.length > 0) {
-                return GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
+                return GLib.File.new_for_uri (FileUtils.escape_uri (path));
             } else {
                 return null;
             }

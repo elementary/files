@@ -172,7 +172,7 @@ namespace Files {
                 return;
             }
 
-            var file_list = PF.FileUtils.files_from_uris (text);
+            var file_list = FileUtils.files_from_uris (text);
 
             if (file_list != null) {
                 try {

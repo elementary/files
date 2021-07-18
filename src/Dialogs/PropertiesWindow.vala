@@ -550,8 +550,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         if (only_one) {
             /* Note most Linux filesystem do not store file creation time */
-            var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                    FileAttribute.TIME_CREATED);
+            var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                                 FileAttribute.TIME_CREATED);
             if (time_created != "") {
                 var key_label = new KeyLabel (_("Created:"));
                 var value_label = new ValueLabel (time_created);
@@ -560,8 +560,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 n++;
             }
 
-            var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                     FileAttribute.TIME_MODIFIED);
+            var time_modified = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                                  FileAttribute.TIME_MODIFIED);
 
             if (time_modified != "") {
                 var key_label = new KeyLabel (_("Modified:"));
@@ -573,8 +573,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (only_one && file.is_trashed ()) {
-            var deletion_date = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                     FileAttribute.TRASH_DELETION_DATE);
+            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                                  FileAttribute.TRASH_DELETION_DATE);
             if (deletion_date != "") {
                 var key_label = new KeyLabel (_("Deleted:"));
                 var value_label = new ValueLabel (deletion_date);
@@ -1283,8 +1283,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if ((header_title is Gtk.Entry) && !view.in_recent) {
             int start_offset= 0, end_offset = -1;
 
-            PF.FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
-                                            goffile.is_folder ());
+            FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
+                                         goffile.is_folder ());
 
             ((Gtk.Entry) header_title).select_region (start_offset, end_offset);
         }

@@ -1114,7 +1114,7 @@ namespace Files {
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
-            PF.FileUtils.restore_files_from_trash (selection, window);
+            FileUtils.restore_files_from_trash (selection, window);
 
         }
 
@@ -1326,7 +1326,7 @@ namespace Files {
             remove_marlin_icon_info_cache (file);
 
             if (file.get_thumbnail_path () != null) {
-                PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+                FileUtils.remove_thumbnail_paths_for_uri (file.uri);
             }
 
             if (plugins != null) {
@@ -1600,7 +1600,7 @@ namespace Files {
             if (info == Files.TargetType.TEXT_URI_LIST && destination_drop_file_list == null) {
                 string? text;
                 if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    destination_drop_file_list = PF.FileUtils.files_from_uris (text);
+                    destination_drop_file_list = FileUtils.files_from_uris (text);
                     destination_data_ready = true;
                 }
             }
@@ -1755,9 +1755,9 @@ namespace Files {
                         current_actions = current_suggested_action;
                     } else {
 
-                        current_actions = PF.FileUtils.file_accepts_drop (drop_target_file,
-                                                                      destination_drop_file_list, context,
-                                                                      out current_suggested_action);
+                        current_actions = FileUtils.file_accepts_drop (drop_target_file,
+                                                                       destination_drop_file_list, context,
+                                                                       out current_suggested_action);
                     }
 
                     highlight_drop_file (drop_target_file, current_actions, get_path_at_pos (x, y));
@@ -2084,7 +2084,11 @@ namespace Files {
                     menu.add (properties_menuitem);
                 }
             } else {
-                var show_hidden_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Hidden Files"));
+                var show_hidden_menuitem = new Gtk.CheckMenuItem ();
+                show_hidden_menuitem.add (new Granite.AccelLabel (
+                    _("Show Hidden Files"),
+                    "<Ctrl>h"
+                ));
                 show_hidden_menuitem.action_name = "background.show-hidden";
 
                 var show_remote_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Remote Thumbnails"));
@@ -3202,7 +3206,7 @@ namespace Files {
                 int start_offset= 0, end_offset = -1;
                 /* Select whole name if the file is a folder, otherwise do not select the extension */
                 if (!file.is_folder ()) {
-                    PF.FileUtils.get_rename_region (original_name, out start_offset, out end_offset, false);
+                    FileUtils.get_rename_region (original_name, out start_offset, out end_offset, false);
                 }
                 editable_widget.select_region (start_offset, end_offset);
             } else {
@@ -3272,7 +3276,7 @@ namespace Files {
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
             try {
-                return yield PF.FileUtils.set_file_display_name (old_location, new_name, cancellable);
+                return yield FileUtils.set_file_display_name (old_location, new_name, cancellable);
             } catch (GLib.Error e) {
                 throw e;
             }

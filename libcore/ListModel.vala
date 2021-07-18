@@ -271,33 +271,35 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     /* Returns true if the file was not in the model and was added */
     public bool add_file (Files.File file, Files.Directory dir) {
-        Gtk.TreeIter? iter, parent_iter, child_iter;
+        Gtk.TreeIter? parent_iter, file_iter, dummy_iter;
         bool change_dummy = false;
 
-        if (get_first_iter_for_file (file, out iter)) {
-            return false;
+        if (get_first_iter_for_file (file, out file_iter)) {
+            return false; // The file is already in the model - ignore the request to add
         }
 
         if (get_first_iter_for_file (dir.file, out parent_iter)) {
-            if (iter_nth_child (out child_iter, parent_iter, 0)) { //Should always be at least one child
-                get (child_iter, PrivColumnID.DUMMY, out change_dummy);
+            if (iter_nth_child (out file_iter, parent_iter, 0)) { // Must always be at least one child
+                get (file_iter, PrivColumnID.DUMMY, out change_dummy);
                 if (change_dummy) {
                     // Instead of inserting a new row, change the dummy one
-                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                    @set (file_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
                 }
+            } else {
+                critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry
             }
         } else {
-            parent_iter = null;
+            parent_iter = null; // Adding to model root
         }
 
         if (!change_dummy) {
-            // There was no dummy row so insert a new one
-            insert_with_values (out iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, -1);
+            // There was no dummy row to replace so create a new entry for this file
+            insert_with_values (out file_iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false);
         }
 
         if (file.is_folder ()) {
-            // Append at least a dummy child so expander will show even when folder is empty.
-            append (out child_iter, iter);
+            // Append a dummy child so expander will show even when folder is empty.
+            insert_with_values (out dummy_iter, file_iter, -1, PrivColumnID.DUMMY, true);
         }
 
         return true;
@@ -306,21 +308,20 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     /* Returns true if the file was found and removed */
     public bool remove_file (Files.File file, Files.Directory dir) {
         // Assumed that file is actually a child of dir
-        Gtk.TreeIter? iter, parent_iter, child_iter;
-        if (!get_first_iter_for_file (file, out iter)) {
+        Gtk.TreeIter? parent_iter, child_iter, file_iter, dummy_iter;
+        if (!get_first_iter_for_file (file, out file_iter)) {
             return false;
         }
 
-        if (iter != null) {
+        if (file_iter != null) {
             if (get_first_iter_for_file (dir.file, out parent_iter)) {
                 if (!iter_nth_child (out child_iter, parent_iter, 1)) {
-                    // This is the last child so just change it to dummy;
-                    @set (iter, ColumnID.FILE_COLUMN, null, PrivColumnID.DUMMY, true, -1);
-                    return true;
+                    // This is the last child so add a dummy;
+                    insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
                 }
             }
 
-            remove (ref iter);
+            remove (ref file_iter);
             return true;
         }
 

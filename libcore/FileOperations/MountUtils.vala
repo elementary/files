@@ -51,6 +51,19 @@ namespace Files.FileOperations {
         return false;
     }
 
+    public static bool mount_has_trash (Mount mount) {
+        var root = mount.get_root ();
+        if (root.is_native ()) {
+            var uid = (int)Posix.getuid ();
+            if (root.resolve_relative_path ((".Trash/%d").printf (uid)) != null ||
+                root.resolve_relative_path ((".Trash-%d").printf (uid)) != null) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static GLib.List<GLib.File> get_trash_dirs_for_mount (GLib.Mount mount) {
         var list = new GLib.List<GLib.File> ();
         var root = mount.get_root ();
