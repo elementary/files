@@ -60,7 +60,7 @@
       <description>
         <p>Fixes:</p>
         <ul>
-          <li>Fix truncation of slot if reclicked in Column View</li>
+          <li>Fix truncation of final column in Column View under some circumstances</li>
         </ul>
         <p>Improvements:</p>
         <ul>
@@ -68,7 +68,6 @@
         </ul>
         <p>Other updates:</p>
         <ul>
-          <li>Now requires granite version >= 6.1.0</li>
           <li>Updated translations</li>
         </ul>
       </description>
