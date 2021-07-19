@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-15 22:47+0000\n"
-"PO-Revision-Date: 2021-07-15 12:52+0000\n"
+"PO-Revision-Date: 2021-07-19 09:00+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr "AFP サーバーへの接続時にパスワードを保存するよう�
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix MTP mounts"
-msgstr ""
+msgstr "MTP のマウントを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -92,23 +92,23 @@ msgstr "改善点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Launch files with double click instead of single click"
-msgstr ""
+msgstr "ファイルをシングルクリックではなくダブルクリックで開くように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
+msgstr "Flatpak アプリ向けに File Chooser ポータルを提供"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Brand new animated Sidebar"
-msgstr ""
+msgstr "アニメーション付きのサイドバーを提供"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Dark style support"
-msgstr ""
+msgstr "ダークスタイルへの対応"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "ミントとピンク色のタグを追加"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Do not restore locations that have become inaccessible"
@@ -123,29 +123,23 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "AFC protocol support"
-msgstr ""
+msgstr "AFC プロトコルへのサポート"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "リスト表示でのアイコンにより小さいサイズを追加"
 
 #: data/io.elementary.files.appdata.xml.in.in:77
-#, fuzzy
-#| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
-msgstr "リスト表示の場合に、フォルダー内の項目数を表示するように変更"
+msgstr "リスト表示でエンブレムをインライン表示するように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
-#, fuzzy
-#| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
-msgstr "キーボード操作を改善"
+msgstr "パフォーマンスの改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Stability improvements"
-msgstr "改善点:"
+msgstr "安定性の改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 #: data/io.elementary.files.appdata.xml.in.in:105
@@ -157,7 +151,7 @@ msgstr "そのほかのアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr ""
+msgstr "\"デバイス\"を\"ストレージ\"に名称変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 #: data/io.elementary.files.appdata.xml.in.in:108
