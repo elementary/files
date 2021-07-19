@@ -26,7 +26,7 @@ namespace Files.View {
 
         private Gtk.Box colpane;
 
-        uint scroll_to_slot_timeout_id = 0;
+        private uint scroll_to_slot_timeout_id = 0;
 
         private Gtk.ScrolledWindow scrolled_window;
         private Gtk.Viewport viewport;
@@ -454,8 +454,8 @@ namespace Files.View {
                     return Source.CONTINUE;
                 }
 
-                if (Animation.get_animating ()) {
-                    Animation.cancel ();
+                if (get_animating ()) {
+                    cancel_animation ();
                 }
 
                 // Calculate position to scroll to
@@ -479,7 +479,7 @@ namespace Files.View {
 
                 // Perform scroll
                 if (animate) {
-                    Animation.smooth_adjustment_to (this.hadj, hadj_value);
+                    smooth_adjustment_to (this.hadj, hadj_value);
                 } else { /* On startup we do not want to animate */
                     hadj.set_value (hadj_value);
                 }
@@ -568,6 +568,57 @@ namespace Files.View {
 
         public override FileInfo? lookup_file_info (GLib.File loc) {
             return current_slot.lookup_file_info (loc);
+        }
+
+        /* Animation functions */
+
+        private uint animation_timeout_source_id = 0;
+        private void smooth_adjustment_to (Gtk.Adjustment adj, int final) {
+            cancel_animation ();
+
+            var initial = adj.value;
+            var to_do = final - initial;
+
+            int factor;
+            (to_do > 0) ? factor = 1 : factor = -1;
+            to_do = (double) (((int) to_do).abs () + 1);
+
+            var newvalue = 0;
+            var old_adj_value = adj.value;
+
+            animation_timeout_source_id = Timeout.add (1000 / 60, () => {
+                /* If the user move it at the same time, just stop the animation */
+                if (old_adj_value != adj.value) {
+                    animation_timeout_source_id = 0;
+                    return GLib.Source.REMOVE;
+                }
+
+                if (newvalue >= to_do - 10) {
+                    /* to be sure that there is not a little problem */
+                    adj.value = final;
+                    animation_timeout_source_id = 0;
+                    return GLib.Source.REMOVE;
+                }
+
+                newvalue += 10;
+
+                adj.value = initial + factor *
+                            Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
+
+                old_adj_value = adj.value;
+                return GLib.Source.CONTINUE;
+            });
+        }
+
+        private bool get_animating () {
+            return animation_timeout_source_id > 0;
+        }
+
+        private void cancel_animation () {
+            if (animation_timeout_source_id > 0) {
+                Source.remove (animation_timeout_source_id);
+                animation_timeout_source_id = 0;
+            }
         }
     }
 }

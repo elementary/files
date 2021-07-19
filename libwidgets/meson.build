@@ -17,7 +17,6 @@ pantheon_files_widgets_files = files(
     'View/SearchResults.vala',
     'Interfaces/SearchableInterface.vala',
     'Chrome/ViewSwitcher.vala',
-    'Animations/Animations.vala',
     'Resources.vala',
     'Welcome.vala',
 )
