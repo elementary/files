@@ -60,15 +60,15 @@
       <description>
         <p>Fixes:</p>
         <ul>
-          <li></li>
+          <li>Fix truncation of slot if reclicked in Column View</li>
         </ul>
         <p>Improvements:</p>
         <ul>
-          <li></li>
+          <li>Show more keyboard accelerators in menus</li>
         </ul>
         <p>Other updates:</p>
         <ul>
-          <li></li>
+          <li>Now requires granite version >= 6.1.0</li>
           <li>Updated translations</li>
         </ul>
       </description>
