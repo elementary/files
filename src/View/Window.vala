@@ -1075,7 +1075,7 @@ namespace Files.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = get_file_from_uri (uri);
 
-                    mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
+                    mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
                 }
             } else {
                 warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
