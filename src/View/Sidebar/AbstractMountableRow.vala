@@ -169,44 +169,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             return false;
         }
 
-        var mount_op = new Gtk.MountOperation (Files.get_active_window ());
+        working = true;
+
         if (!permanent) {
-            if (mount.can_eject ()) {
-                working = true;
-                try {
-                    yield mount.eject_with_operation (
-                            GLib.MountUnmountFlags.NONE,
-                            mount_op,
-                            null
-                    );
-                    return true;
-                } catch (GLib.Error e) {
-                    PF.Dialogs.show_error_dialog (_("Unable to eject '%s'").printf (mount.get_name ()),
-                                                  e.message,
-                                                  null);
-                    return false;
-                } finally {
-                    working = false;
-                }
-            } else if (mount.can_unmount ()) {
-                working = true;
-                try {
-                    yield mount.unmount_with_operation (
-                            GLib.MountUnmountFlags.NONE,
-                            mount_op,
-                            null
-                    );
-                    return true;
-                } catch (GLib.Error e) {
-                    PF.Dialogs.show_error_dialog (_("Unable to unmount '%s'").printf (mount.get_name ()),
-                                                  e.message,
-                                                  null);
-                    return false;
-                } finally {
-                    working = false;
-                }
-            }
+            yield Files.FileOperations.eject_mount (mount, Files.get_active_window ());
         }
+
+        working = false;
 
         return true;
     }
@@ -253,7 +222,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         working = true;
         try {
-            yield Files.FileOperations.eject_stop_drive (drive);
+            yield Files.FileOperations.eject_stop_drive (drive, Files.get_active_window ());
             return true;
         } catch (Error e) {
             // MountUtil has already shown error dialog.

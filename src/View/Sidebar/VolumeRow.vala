@@ -152,14 +152,18 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     protected void add_extra_menu_items_for_drive (Drive? drive, PopupMenuBuilder menu_builder) {
+        if (drive == null) {
+            return;
+        }
+
         if (drive != null && drive.can_stop ()) {
             menu_builder
                 .add_separator ()
-                .add_stop_drive (() => { eject.begin (); });
+                .add_stop_drive (() => { stop_eject_drive.begin (volume.get_drive ()); });
         } else if (drive.can_eject ()) {
             menu_builder
                 .add_separator ()
-                .add_eject_drive (() => { eject.begin (); });
+                .add_eject_drive (() => { stop_eject_drive.begin (volume.get_drive ()); });
         }
     }
 
