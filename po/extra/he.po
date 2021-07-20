@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-17 20:19+0000\n"
+"PO-Revision-Date: 2021-07-20 03:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -70,7 +70,7 @@ msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Fix truncation of final column in Column View under some circumstances"
-msgstr ""
+msgstr "תוקן החיתוך של העמודה האחרונה בתצוגת העמודות במקרים מסוימים"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:82
@@ -80,10 +80,8 @@ msgid "Improvements:"
 msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show more keyboard accelerators in menus"
-msgstr "הצגת קיצורי מקלדת בפריטי תפריט"
+msgstr "יותר קיצורי מקלדת מופיעים בתפריטים"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -129,19 +127,19 @@ msgstr "הפעלת קבצים בלחיצה כפולה במקום בלחיצה ב
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
+msgstr "אספקת שער בחירת קבצים ליישומי Flatpak"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Brand new animated Sidebar"
-msgstr ""
+msgstr "סרגל צד מונפש חדש לגמרי"
 
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Dark style support"
-msgstr ""
+msgstr "תמיכה בסגנון כהה"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "תגיות צבע מנטה ומסטיק"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Do not restore locations that have become inaccessible"
@@ -153,17 +151,15 @@ msgstr "לחיצה בין התמונה הממוזערת והטקסט מעתה מ
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "AFC protocol support"
-msgstr ""
+msgstr "תמיכה בפרוטוקול AFC"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "הוספת גודל מזערי קטן יותר בתצוגת רשימה"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
-#, fuzzy
-#| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
-msgstr "הצגת מספור פריטים בתיקייה בתצוגת רשימה"
+msgstr "הצגת סמלים כחלק מהשורה בתצוגת רשימה"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Performance improvements"
