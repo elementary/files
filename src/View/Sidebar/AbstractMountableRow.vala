@@ -212,6 +212,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
+        if (working) {
+            return;
+        }
+
         if (mount != null) {
             if (Files.FileOperations.has_trash_files (mount)) {
                 menu_builder
@@ -243,6 +247,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected async bool stop_eject_drive (Drive drive) {
+        if (working) {
+            return false;
+        }
+
         working = true;
         try {
             yield Files.FileOperations.eject_stop_drive (drive);

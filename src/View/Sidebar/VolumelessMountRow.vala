@@ -47,6 +47,10 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
     }
 
     protected override async bool eject () {
+        if (working) {
+            return false;
+        }
+
         bool success = false;
         if (mount != null) {
             success = yield eject_mount (mount);

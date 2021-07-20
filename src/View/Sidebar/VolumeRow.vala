@@ -70,6 +70,10 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     protected override async bool eject () {
+        if (working) {
+            return false;
+        }
+
         var mount = volume.get_mount ();
         var drive = volume.get_drive ();
         bool success = false;
@@ -139,6 +143,10 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+        if (working) {
+            return;
+        }
+
         add_extra_menu_items_for_mount (volume.get_mount (), menu_builder);
         add_extra_menu_items_for_drive (volume.get_drive (), menu_builder);
     }
