@@ -47,7 +47,7 @@ namespace Files.FileOperations {
                                               e.message,
                                               null);
                 return false;
-            } 
+            }
         } else {
             return false;
         }
