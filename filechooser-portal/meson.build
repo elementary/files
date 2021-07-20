@@ -10,6 +10,7 @@ executable(
     dependencies : [
         pantheon_files_widgets_dep,
         dependency('gdk-x11-3.0'),
+        dependency('gdk-wayland-3.0'),
         project_config_dep
     ],
     install: true,
