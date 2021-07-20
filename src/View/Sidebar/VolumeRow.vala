@@ -155,11 +155,11 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         if (drive != null && drive.can_stop ()) {
             menu_builder
                 .add_separator ()
-                .add_stop_drive (() => { stop_eject_drive.begin (drive); });
-        } else if (drive != null && drive.can_eject ()) {
+                .add_stop_drive (() => { eject.begin (); });
+        } else if (drive.can_eject ()) {
             menu_builder
                 .add_separator ()
-                .add_eject_drive (() => { stop_eject_drive.begin (drive); });
+                .add_eject_drive (() => { eject.begin (); });
         }
     }
 
