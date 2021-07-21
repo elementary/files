@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-03-14 17:27+0000\n"
-"Last-Translator: Uwe S <saabisto@gmx.de>\n"
+"PO-Revision-Date: 2021-07-21 15:43+0000\n"
+"Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -79,6 +79,8 @@ msgstr "Fehlerbehebungen:"
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Fix truncation of final column in Column View under some circumstances"
 msgstr ""
+"Behebt einen Fehler der dazu führte, dass die letzte Zeile in der "
+"Listenansicht unter bestimmten Umständen abgeschnitten wurde"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:82
@@ -88,10 +90,8 @@ msgid "Improvements:"
 msgstr "Verbesserungen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show more keyboard accelerators in menus"
-msgstr "Zeigt nun Tastaturkürzel in Menübefehlen an"
+msgstr "Zeigt nun mehr Tastaturkürzel in den Menüs an"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -125,31 +125,31 @@ msgstr "Aktualisierte Übersetzungen"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix connecting to AFP servers so that passwords are remembered"
-msgstr ""
+msgstr "Passwort beim Verbinden zu AFP Servern merken"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Fix MTP mounts"
-msgstr ""
+msgstr "Behebt einen Fehler mit MTP mounts"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid "Launch files with double click instead of single click"
-msgstr ""
+msgstr "Dateien mit Doppelklick statt mit einfachem Klick öffnen"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
+msgstr "Stellt ein Dateiauswahlportal für Flatpak-Apps bereit"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Brand new animated Sidebar"
-msgstr ""
+msgstr "Brandneu animierte Seitenleiste"
 
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Dark style support"
-msgstr ""
+msgstr "Unterstützung für Dark Mode"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "Mint und Bubblegum Farbtags"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Do not restore locations that have become inaccessible"
@@ -163,37 +163,29 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "AFC protocol support"
-msgstr ""
+msgstr "Unterstützung für das AFC Protokoll"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "Kleinere minimale Icongröße in der Listenansicht hinzugefügt"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
-#, fuzzy
-#| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
-msgstr "Anzahl der Objekte im Ordner in der Listenansicht anzeigen"
+msgstr "Zeige Embleme in der Zeile der Listenansicht"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
-#, fuzzy
-#| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
-msgstr "Verbesserungen bei der Tastatur-Navigation"
+msgstr "Leistungsverbesserungen"
 
 #: data/io.elementary.files.appdata.xml.in.in:95
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Stability improvements"
-msgstr "Verbesserungen:"
+msgstr "Stabilitätsverbesserungen"
 
 #: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr ""
+msgstr "Umbenennung von \"Geräte\" zu \"Speicher\""
 
 #: data/io.elementary.files.appdata.xml.in.in:108
-#, fuzzy
-#| msgid "Bookmark menu option for network mounts in sidebar"
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr "Lesezeichen-Menüoption für Netzwerkverbindungen in der Seitenleiste"
 
@@ -202,13 +194,12 @@ msgid "Show folder item count in List View"
 msgstr "Anzahl der Objekte im Ordner in der Listenansicht anzeigen"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
-#, fuzzy
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
-"Vorschauen werden jetzt standardmäßig  sowohl für Objekte auf lokal "
-"angemeldeten MTP- und PTP-Geräten als auch auf Netzwerkgeräten angezeigt"
+"Zeigt jetzt standardmäßig Miniaturansichten auf lokal eingebundenen MTP- und "
+"PTP-Geräten sowie auf Netzwerkstandorten an"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid ""
@@ -219,7 +210,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "Verbesserte Anzeige der Minihilfe  für Geräte in der Seitenleiste"
+msgstr "Verbesserte Formatierung der Schnellinfo für Geräte in der Seitenleiste"
 
 #: data/io.elementary.files.appdata.xml.in.in:116
 msgid "Fix crash when pressing Enter and another key at the same time"
@@ -238,13 +229,12 @@ msgstr ""
 "einem Flatpak aufgerufen"
 
 #: data/io.elementary.files.appdata.xml.in.in:119
-#, fuzzy
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
 msgstr ""
-"git-Status für Repositorys auf FUSE-Dateisystemen wird nicht mehr angezeigt, "
-"um mögliches Blockieren zu verhindern"
+"git-Status für Repositorys auf FUSE-Dateisystemen nicht mehr anzeigen, um "
+"mögliches Blockieren zu verhindern"
 
 #: data/io.elementary.files.appdata.xml.in.in:123
 msgid "\"Personal\" is now \"Bookmarks\""
@@ -873,10 +863,8 @@ msgid "Translation updates"
 msgstr "Übersetzungsaktualisierungen"
 
 #: data/io.elementary.files.appdata.xml.in.in:475
-#, fuzzy
-#| msgid "elementary LLC."
 msgid "elementary, Inc."
-msgstr "elementary LLC."
+msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
