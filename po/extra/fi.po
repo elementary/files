@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-21 15:43+0000\n"
+"PO-Revision-Date: 2021-07-22 22:16+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/extra/fi/>"
 "\n"
@@ -283,10 +283,8 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:170
 #: data/io.elementary.files.appdata.xml.in.in:184
-#, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
-msgstr "Muita pieniä korjauksia"
+msgstr "Pieniä päivityksiä:"
 
 #: data/io.elementary.files.appdata.xml.in.in:172
 #, fuzzy
@@ -360,7 +358,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:210
 msgid "New features:"
-msgstr ""
+msgstr "Uudet ominaisuudet:"
 
 #: data/io.elementary.files.appdata.xml.in.in:212
 msgid "Initial git plugin support"
