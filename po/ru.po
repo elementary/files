@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-06-12 06:30+0000\n"
+"PO-Revision-Date: 2021-07-23 15:34+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -665,10 +665,8 @@ msgid "Permanently Delete All Trash"
 msgstr "Окончательно удалить всё из корзины"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:97
-#, fuzzy
-#| msgid "Permanently Delete All Trash"
 msgid "Permanently Delete Trash"
-msgstr "Окончательно удалить всё из корзины"
+msgstr "Безвозвратно удалить файлы из корзины"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
