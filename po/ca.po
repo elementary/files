@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 17:14+0000\n"
+"POT-Creation-Date: 2021-07-19 16:58+0000\n"
 "PO-Revision-Date: 2021-07-07 18:05+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
-"\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
+">\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -236,7 +236,7 @@ msgstr[1] "%u fitxers"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -309,11 +309,11 @@ msgstr "(com a Administrador)"
 msgid "Filename"
 msgstr "Nom del fitxer"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2176
 msgid "Size"
 msgstr "Mida"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2181
 msgid "Type"
 msgstr "Tipus"
 
@@ -450,79 +450,79 @@ msgstr "Enganxa l'enllaç a la carpeta"
 msgid "Paste into Folder"
 msgstr "Enganxa a la carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Hidden Files"
 msgstr "Mostra els fitxers ocults"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Show Remote Thumbnails"
 msgstr "Mostra les miniatures remotes"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Hide Thumbnails"
 msgstr "Amaga les miniatures"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Paste Link"
 msgstr "Enganxa l'enllaç"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Name"
 msgstr "Nom"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Date"
 msgstr "Data"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
 msgstr "Ordre invers"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
 msgstr "Les carpetes davant dels fitxers"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2206
 msgid "Sort by"
 msgstr "Ordena per"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2214
 msgid "Folder"
 msgstr "Carpeta"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2220
 msgid "Empty File"
 msgstr "Fitxer buit"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2271
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2507
+#: src/View/AbstractDirectoryView.vala:2511
 #, c-format
 msgid "Untitled %s"
 msgstr "%s sense nom"
 
-#: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3071
+#: src/View/AbstractDirectoryView.vala:2874
+#: src/View/AbstractDirectoryView.vala:3075
 msgid "Cannot remove files from here"
 msgstr "No es poden suprimir fitxers des d'aquí"
 
-#: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3056
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:2875
+#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:3076
 msgid "You do not have permission to change this location"
 msgstr "No teniu permís per canviar aquesta ubicació"
 
-#: src/View/AbstractDirectoryView.vala:3025
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot copy files that are in the trash"
 msgstr "No és possible copiar els fitxers que són a la paperera."
 
-#: src/View/AbstractDirectoryView.vala:3026
+#: src/View/AbstractDirectoryView.vala:3030
 msgid "Cutting the selection instead"
 msgstr "En canvi, es retalla la selecció"
 
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:3059
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
@@ -602,12 +602,12 @@ msgstr "Obre la paperera"
 msgid "View the root of the local filesystem"
 msgstr "Mostra l'arrel del sistema de fitxers local"
 
-#: src/View/Sidebar/DeviceRow.vala:116
+#: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
 msgstr "%s lliure"
 
-#: src/View/Sidebar/DeviceRow.vala:117
+#: src/View/Sidebar/DeviceRow.vala:119
 #, c-format
 msgid "%s used of %s"
 msgstr "%s usat de %s"
@@ -760,29 +760,29 @@ msgstr "Recarrega aquesta carpeta"
 msgid "Searching…"
 msgstr "Se cerca…"
 
-#: src/View/Widgets/OverlayBar.vala:209
+#: src/View/Widgets/OverlayBar.vala:210
 #, c-format
 msgid "%u folders"
 msgstr "%u carpetes"
 
-#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " i %u altre element (%s) seleccionat"
 msgstr[1] " i %u altres elements (%s) seleccionats"
 
-#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 msgid " selected"
 msgstr " seleccionat"
 
-#: src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u elements seleccionats (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:272
+#: src/View/Widgets/OverlayBar.vala:273
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -790,7 +790,7 @@ msgstr[0] "%u subcarpeta, "
 msgstr[1] "%u subcarpetes, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:278
+#: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -798,18 +798,18 @@ msgstr[0] "%u fitxer, "
 msgstr[1] "%u fitxers, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:288
+#: src/View/Widgets/OverlayBar.vala:289
 #, c-format
 msgid "%s approx."
 msgstr "%s aprox."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:291
+#: src/View/Widgets/OverlayBar.vala:292
 msgid "unknown size"
 msgstr "mida desconeguda"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:296
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"

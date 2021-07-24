@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 17:14+0000\n"
+"POT-Creation-Date: 2021-07-19 16:58+0000\n"
 "PO-Revision-Date: 2021-07-06 19:51+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -234,7 +234,7 @@ msgstr[1] "%u קבצים"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -307,11 +307,11 @@ msgstr "(כמנהל)"
 msgid "Filename"
 msgstr "שם קובץ"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2176
 msgid "Size"
 msgstr "גודל"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2181
 msgid "Type"
 msgstr "סוג"
 
@@ -448,79 +448,79 @@ msgstr "הדבקת קישור לתוך תיקייה"
 msgid "Paste into Folder"
 msgstr "הדבקה לתיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Hidden Files"
 msgstr "הצגת קבצים מוסתרים"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Show Remote Thumbnails"
 msgstr "הצגת תמונות ממוזערות לקבצים מרוחקים"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Hide Thumbnails"
 msgstr "הסתרת תמונות ממוזערות"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Paste Link"
 msgstr "הדבקת קישור"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Name"
 msgstr "שם"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Date"
 msgstr "תאריך"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
 msgstr "סדר הפוך"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
 msgstr "תיקיות לפני קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2206
 msgid "Sort by"
 msgstr "מיון לפי"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2214
 msgid "Folder"
 msgstr "תיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2220
 msgid "Empty File"
 msgstr "קובץ ריק"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2271
 msgid "New"
 msgstr "חדש"
 
-#: src/View/AbstractDirectoryView.vala:2507
+#: src/View/AbstractDirectoryView.vala:2511
 #, c-format
 msgid "Untitled %s"
 msgstr "%s ללא שם"
 
-#: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3071
+#: src/View/AbstractDirectoryView.vala:2874
+#: src/View/AbstractDirectoryView.vala:3075
 msgid "Cannot remove files from here"
 msgstr "לא ניתן להסיר מכאן קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3056
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:2875
+#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:3076
 msgid "You do not have permission to change this location"
 msgstr "אין לך הרשאות לשנות את המיקום הזה"
 
-#: src/View/AbstractDirectoryView.vala:3025
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot copy files that are in the trash"
 msgstr "לא ניתן להעתיק קבצים שנמצאים באשפה"
 
-#: src/View/AbstractDirectoryView.vala:3026
+#: src/View/AbstractDirectoryView.vala:3030
 msgid "Cutting the selection instead"
 msgstr "גזירת הבחירה במקום"
 
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:3059
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
@@ -600,12 +600,12 @@ msgstr "פתיחת סל האשפה"
 msgid "View the root of the local filesystem"
 msgstr "הצגת שורש מערכת הקבצים המקומית"
 
-#: src/View/Sidebar/DeviceRow.vala:116
+#: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
 msgstr "%s פנויים"
 
-#: src/View/Sidebar/DeviceRow.vala:117
+#: src/View/Sidebar/DeviceRow.vala:119
 #, c-format
 msgid "%s used of %s"
 msgstr "%s בשימוש מתוך %s"
@@ -757,29 +757,29 @@ msgstr "רענון תיקייה זו"
 msgid "Searching…"
 msgstr "מתבצע חיפוש…"
 
-#: src/View/Widgets/OverlayBar.vala:209
+#: src/View/Widgets/OverlayBar.vala:210
 #, c-format
 msgid "%u folders"
 msgstr "%u תיקיות"
 
-#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " ופריט נוסף (%s) נבחרו"
 msgstr[1] " ו־%u פריטים נוספים (%s) נבחרו"
 
-#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 msgid " selected"
 msgstr " נבחרו"
 
-#: src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "נבחרו %u פריטים (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:272
+#: src/View/Widgets/OverlayBar.vala:273
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -787,7 +787,7 @@ msgstr[0] "תת־תיקייה אחת, "
 msgstr[1] "%u תת־תיקיות, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:278
+#: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -795,18 +795,18 @@ msgstr[0] "קובץ אחד, "
 msgstr[1] "%u קבצים, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:288
+#: src/View/Widgets/OverlayBar.vala:289
 #, c-format
 msgid "%s approx."
 msgstr "בערך %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:291
+#: src/View/Widgets/OverlayBar.vala:292
 msgid "unknown size"
 msgstr "גודל לא ידוע"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:296
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 17:14+0000\n"
+"POT-Creation-Date: 2021-07-19 16:58+0000\n"
 "PO-Revision-Date: 2017-07-10 14:50+0000\n"
 "Last-Translator: Mattias Ezequiel Mignone <memignone@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
@@ -238,7 +238,7 @@ msgstr[1] "%u files"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -315,11 +315,11 @@ msgstr "(as Administrator)"
 msgid "Filename"
 msgstr "Filename"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2176
 msgid "Size"
 msgstr "Size"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2181
 msgid "Type"
 msgstr "Type"
 
@@ -467,81 +467,81 @@ msgstr "Paste into Folder"
 msgid "Paste into Folder"
 msgstr "Paste into Folder"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Hidden Files"
 msgstr "Show Hidden Files"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Show Remote Thumbnails"
 msgstr "Show Remote Thumbnails"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2097
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Show Remote Thumbnails"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2117
 #, fuzzy
 msgid "Paste Link"
 msgstr "Paste"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Name"
 msgstr "Name"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Date"
 msgstr "Date"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
 msgstr "Reverse Order"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2206
 msgid "Sort by"
 msgstr "Sort by"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2214
 msgid "Folder"
 msgstr "Folder"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2220
 msgid "Empty File"
 msgstr "Empty File"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2271
 msgid "New"
 msgstr "New"
 
-#: src/View/AbstractDirectoryView.vala:2507
+#: src/View/AbstractDirectoryView.vala:2511
 #, c-format
 msgid "Untitled %s"
 msgstr "Untitled %s"
 
-#: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3071
+#: src/View/AbstractDirectoryView.vala:2874
+#: src/View/AbstractDirectoryView.vala:3075
 msgid "Cannot remove files from here"
 msgstr "Cannot remove files from here"
 
-#: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3056
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:2875
+#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:3076
 msgid "You do not have permission to change this location"
 msgstr "You do not have permission to change this location"
 
-#: src/View/AbstractDirectoryView.vala:3025
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot copy files that are in the trash"
 msgstr "Cannot copy files that are in the Rubbish Bin"
 
-#: src/View/AbstractDirectoryView.vala:3026
+#: src/View/AbstractDirectoryView.vala:3030
 msgid "Cutting the selection instead"
 msgstr "Cutting the selection instead"
 
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:3059
 msgid "Cannot paste files here"
 msgstr "Cannot paste files here"
 
@@ -627,12 +627,12 @@ msgstr "Open the Rubbish Bin"
 msgid "View the root of the local filesystem"
 msgstr "View the list of recently used files"
 
-#: src/View/Sidebar/DeviceRow.vala:116
+#: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/DeviceRow.vala:117
+#: src/View/Sidebar/DeviceRow.vala:119
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S of %S"
@@ -793,12 +793,12 @@ msgstr "Reload this folder"
 msgid "Searching…"
 msgstr "Loading…"
 
-#: src/View/Widgets/OverlayBar.vala:209
+#: src/View/Widgets/OverlayBar.vala:210
 #, c-format
 msgid "%u folders"
 msgstr "%u folders"
 
-#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, fuzzy, c-format
 #| msgid " and %u other item (%s) selected"
 msgid " and %u other item (%s) selected"
@@ -806,17 +806,17 @@ msgid_plural " and %u other items (%s) selected"
 msgstr[0] " and %u other item (%s) selected"
 msgstr[1] " and %u other item (%s) selected"
 
-#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 msgid " selected"
 msgstr " selected"
 
-#: src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u items selected (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:272
+#: src/View/Widgets/OverlayBar.vala:273
 #, fuzzy, c-format
 #| msgid "%u sub-folder, "
 msgid "%u sub-folder, "
@@ -825,7 +825,7 @@ msgstr[0] "%u sub-folder, "
 msgstr[1] "%u sub-folder, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:278
+#: src/View/Widgets/OverlayBar.vala:279
 #, fuzzy, c-format
 #| msgid "%u file, "
 msgid "%u file, "
@@ -834,18 +834,18 @@ msgstr[0] "%u file, "
 msgstr[1] "%u file, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:288
+#: src/View/Widgets/OverlayBar.vala:289
 #, c-format
 msgid "%s approx."
 msgstr "%s approx."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:291
+#: src/View/Widgets/OverlayBar.vala:292
 msgid "unknown size"
 msgstr "unknown size"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:296
 #, fuzzy, c-format
 #| msgid "%u file not readable"
 msgid "%u file not readable"

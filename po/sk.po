@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 17:14+0000\n"
+"POT-Creation-Date: 2021-07-19 16:58+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -242,7 +242,7 @@ msgstr[2] "%u súbory"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -321,11 +321,11 @@ msgstr "(Ako správca)"
 msgid "Filename"
 msgstr "Názov súboru"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2176
 msgid "Size"
 msgstr "Veľkosť"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2181
 msgid "Type"
 msgstr "Typ"
 
@@ -473,81 +473,81 @@ msgstr "Vložiť do priečinku"
 msgid "Paste into Folder"
 msgstr "Vložiť do priečinku"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Hidden Files"
 msgstr "Zobraziť skryté súbory"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Show Remote Thumbnails"
 msgstr "Zobraziť vzdialené náhľady"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2097
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Zobraziť vzdialené náhľady"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2117
 #, fuzzy
 msgid "Paste Link"
 msgstr "Vložiť"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Name"
 msgstr "Meno"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Date"
 msgstr "Dátum"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
 msgstr "V obrátenom poradí"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2206
 msgid "Sort by"
 msgstr "Usporiadať podľa"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2214
 msgid "Folder"
 msgstr "Priečinok"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2220
 msgid "Empty File"
 msgstr "Prázdny súbor"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2271
 msgid "New"
 msgstr "Nový"
 
-#: src/View/AbstractDirectoryView.vala:2507
+#: src/View/AbstractDirectoryView.vala:2511
 #, c-format
 msgid "Untitled %s"
 msgstr "Bez názvu %s"
 
-#: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3071
+#: src/View/AbstractDirectoryView.vala:2874
+#: src/View/AbstractDirectoryView.vala:3075
 msgid "Cannot remove files from here"
 msgstr "Tieto súbory nie je možné odstrániť"
 
-#: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3056
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:2875
+#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:3076
 msgid "You do not have permission to change this location"
 msgstr "Nemáte povolenie na zmenu umiestnenia"
 
-#: src/View/AbstractDirectoryView.vala:3025
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot copy files that are in the trash"
 msgstr "Nie je možné kopírovať súbory, ktoré sú v koši"
 
-#: src/View/AbstractDirectoryView.vala:3026
+#: src/View/AbstractDirectoryView.vala:3030
 msgid "Cutting the selection instead"
 msgstr "Vystrihnutie namiesto výberu"
 
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:3059
 msgid "Cannot paste files here"
 msgstr "Nie je možné vložiť súbory"
 
@@ -633,12 +633,12 @@ msgstr "Otvoriť kôš"
 msgid "View the root of the local filesystem"
 msgstr "Zobraziť zoznam nedávno použitých súborov"
 
-#: src/View/Sidebar/DeviceRow.vala:116
+#: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/DeviceRow.vala:117
+#: src/View/Sidebar/DeviceRow.vala:119
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S z %S"
@@ -799,12 +799,12 @@ msgstr "Obnoviť priečinok"
 msgid "Searching…"
 msgstr "Načítava sa…"
 
-#: src/View/Widgets/OverlayBar.vala:209
+#: src/View/Widgets/OverlayBar.vala:210
 #, c-format
 msgid "%u folders"
 msgstr "%u priečinkov"
 
-#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, fuzzy, c-format
 #| msgid " and %u other item (%s) selected"
 msgid " and %u other item (%s) selected"
@@ -813,17 +813,17 @@ msgstr[0] " a %u daľšia položka (%s) vybrané"
 msgstr[1] " a %u daľšia položka (%s) vybrané"
 msgstr[2] " a %u daľšia položka (%s) vybrané"
 
-#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 msgid " selected"
 msgstr " vybrané"
 
-#: src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u položiek vybraných (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:272
+#: src/View/Widgets/OverlayBar.vala:273
 #, fuzzy, c-format
 #| msgid "%u sub-folder, "
 msgid "%u sub-folder, "
@@ -833,7 +833,7 @@ msgstr[1] "%u podpriečinok "
 msgstr[2] "%u podpriečinok "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:278
+#: src/View/Widgets/OverlayBar.vala:279
 #, fuzzy, c-format
 #| msgid "%u file, "
 msgid "%u file, "
@@ -843,18 +843,18 @@ msgstr[1] "%u súbor, "
 msgstr[2] "%u súbor, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:288
+#: src/View/Widgets/OverlayBar.vala:289
 #, c-format
 msgid "%s approx."
 msgstr "približne %s"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:291
+#: src/View/Widgets/OverlayBar.vala:292
 msgid "unknown size"
 msgstr "neznáma veľkosť"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:296
 #, fuzzy, c-format
 #| msgid "%u file not readable"
 msgid "%u file not readable"

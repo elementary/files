@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 17:14+0000\n"
-"PO-Revision-Date: 2021-07-06 19:51+0000\n"
+"POT-Creation-Date: 2021-07-19 16:58+0000\n"
+"PO-Revision-Date: 2021-07-17 23:15+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -245,7 +245,7 @@ msgstr[2] "%u файлів"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -320,11 +320,11 @@ msgstr "(як Адміністратор)"
 msgid "Filename"
 msgstr "Назва файлу"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2176
 msgid "Size"
 msgstr "Розмір"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2181
 msgid "Type"
 msgstr "Тип"
 
@@ -363,7 +363,7 @@ msgstr "Не вдається запустити цей файл"
 #: src/View/AbstractDirectoryView.vala:826
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "“%s” необхідно перемістити зі Смітника перед відкриванням"
+msgstr "«%s» необхідно перемістити зі Смітника перед відкриванням"
 
 #: src/View/AbstractDirectoryView.vala:827
 msgid ""
@@ -396,11 +396,11 @@ msgstr "Виконати"
 #: src/View/AbstractDirectoryView.vala:1878
 #, c-format
 msgid "Open in %s"
-msgstr "Відкрити в %s"
+msgstr "Відкрити у %s"
 
 #: src/View/AbstractDirectoryView.vala:1947
 msgid "Open in"
-msgstr "Відкрити в"
+msgstr "Відкрити у"
 
 #: src/View/AbstractDirectoryView.vala:1949
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
@@ -461,79 +461,79 @@ msgstr "Вставити посилання до теки"
 msgid "Paste into Folder"
 msgstr "Вставити до теки"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Hidden Files"
 msgstr "Показати приховані файли"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Show Remote Thumbnails"
 msgstr "Показати зовнішні ескізи"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Hide Thumbnails"
 msgstr "Сховати зовнішні ескізи"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Paste Link"
 msgstr "Вставити посилання"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Name"
 msgstr "Назва"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Date"
 msgstr "Дата"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
 msgstr "В зворотному порядку"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
 msgstr "Спочатку теки"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2206
 msgid "Sort by"
 msgstr "Впорядкувати за"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2214
 msgid "Folder"
 msgstr "Тека"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2220
 msgid "Empty File"
 msgstr "Порожній файл"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2271
 msgid "New"
 msgstr "Створити"
 
-#: src/View/AbstractDirectoryView.vala:2507
+#: src/View/AbstractDirectoryView.vala:2511
 #, c-format
 msgid "Untitled %s"
 msgstr "Неназваний %s"
 
-#: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3071
+#: src/View/AbstractDirectoryView.vala:2874
+#: src/View/AbstractDirectoryView.vala:3075
 msgid "Cannot remove files from here"
 msgstr "Не можливо вилучити файли звідси"
 
-#: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3056
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:2875
+#: src/View/AbstractDirectoryView.vala:3060
+#: src/View/AbstractDirectoryView.vala:3076
 msgid "You do not have permission to change this location"
 msgstr "У вас немає дозволу змінювати це розташування"
 
-#: src/View/AbstractDirectoryView.vala:3025
+#: src/View/AbstractDirectoryView.vala:3029
 msgid "Cannot copy files that are in the trash"
 msgstr "Неможливо копіювати файли зі смітника"
 
-#: src/View/AbstractDirectoryView.vala:3026
+#: src/View/AbstractDirectoryView.vala:3030
 msgid "Cutting the selection instead"
 msgstr "Натомість вирізаю виділене"
 
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:3059
 msgid "Cannot paste files here"
 msgstr "Неможливо вставити файли сюди"
 
@@ -613,12 +613,12 @@ msgstr "Відкрити смітник"
 msgid "View the root of the local filesystem"
 msgstr "Переглянути кореневу частину локальної файлової системи"
 
-#: src/View/Sidebar/DeviceRow.vala:116
+#: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
 msgstr "%s вільно"
 
-#: src/View/Sidebar/DeviceRow.vala:117
+#: src/View/Sidebar/DeviceRow.vala:119
 #, c-format
 msgid "%s used of %s"
 msgstr "Використано %s з %s"
@@ -770,12 +770,12 @@ msgstr "Оновити теку"
 msgid "Searching…"
 msgstr "Пошук…"
 
-#: src/View/Widgets/OverlayBar.vala:209
+#: src/View/Widgets/OverlayBar.vala:210
 #, c-format
 msgid "%u folders"
 msgstr "%u теки"
 
-#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
@@ -783,17 +783,17 @@ msgstr[0] " та %u інший елемент (%s) вибрано"
 msgstr[1] " та %u інші елементи (%s) вибрано"
 msgstr[2] " та %u інших елементів (%s) вибрано"
 
-#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 msgid " selected"
 msgstr " вибрано"
 
-#: src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u елементів вибрано (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:272
+#: src/View/Widgets/OverlayBar.vala:273
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -802,7 +802,7 @@ msgstr[1] "%u вкладених теки, "
 msgstr[2] "%u вкладених тек, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:278
+#: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -811,18 +811,18 @@ msgstr[1] "%u файли, "
 msgstr[2] "%u файлів, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:288
+#: src/View/Widgets/OverlayBar.vala:289
 #, c-format
 msgid "%s approx."
 msgstr "приблизно %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:291
+#: src/View/Widgets/OverlayBar.vala:292
 msgid "unknown size"
 msgstr "невідомий розмір"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:296
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -1328,7 +1328,7 @@ msgstr "Якщо ви видалите елемент, його буде ост�
 #: libcore/marlin-file-operations.c:327
 #, c-format
 msgid "Permanently delete “%s”?"
-msgstr "Безповоротно видалити “%s”?"
+msgstr "Видалити «%s» безповоротно?"
 
 #: libcore/marlin-file-operations.c:330
 #, c-format
