@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-26 10:44+0000\n"
+"PO-Revision-Date: 2021-07-26 10:53+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/>"
 "\n"
@@ -102,82 +102,82 @@ msgstr "ਅਣਜਾਣ"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:167
 msgid "Available:"
-msgstr ""
+msgstr "ਉਪਲਬਧ:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:170
 msgid "Used:"
-msgstr ""
+msgstr "ਵਰਤੇ ਗਏ:"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
-msgstr ""
+msgstr "ਡਿਫ਼ਾਲਟ ਵਜੋਂ ਸੈੱਟ ਕਰੋ"
 
 #: src/Dialogs/PropertiesWindow.vala:123
 #: src/View/AbstractDirectoryView.vala:1967
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
-msgstr ""
+msgstr "ਖ਼ਾਸੀਅਤਾਂ"
 
 #: src/Dialogs/PropertiesWindow.vala:234
 msgid "Permissions"
-msgstr ""
+msgstr "ਇਜਾਜ਼ਤਾਂ"
 
 #: src/Dialogs/PropertiesWindow.vala:255
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ਇਜਾਜ਼ਤਾਂ ਮਿਲਣ ਵਿੱਚ ਖ਼ਰਾਬੀ ਕਰਕੇ %i ਫ਼ਾਇਲ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ।"
+msgstr[1] "ਇਜਾਜ਼ਤਾਂ ਮਿਲਣ ਵਿੱਚ ਖ਼ਰਾਬੀ ਕਰਕੇ %i ਫ਼ਾਇਲਾਂ ਪੜ੍ਹੀਆਂ ਨਹੀਂ ਜਾ ਸਕੀਆਂ।"
 
 #: src/Dialogs/PropertiesWindow.vala:259
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "ਅਸਲੀ ਸਾਈਜ਼ ਇਸ ਤੋਂ ਵੱਡਾ ਹੋ ਸਕਦੈ"
 
 #: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
 msgid "unknown"
-msgstr ""
+msgstr "ਅਣਜਾਣ"
 
 #: src/Dialogs/PropertiesWindow.vala:462
 msgid "Loading…"
-msgstr ""
+msgstr "ਲੋਡ ਹੋ ਰਿਹੈ…"
 
 #: src/Dialogs/PropertiesWindow.vala:496
 msgid "Could not be determined"
-msgstr ""
+msgstr "ਕਿਸੇ ਵੀ ਸਿੱਟੇ 'ਤੇ ਨਹੀਂ ਪਹੁੰਚਿਆ ਜਾ ਸਕਿਆ"
 
 #: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:99
 #: libcore/FileConflictDialog.vala:133
 msgid "Size:"
-msgstr ""
+msgstr "ਸਾਈਜ਼:"
 
 #: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
-msgstr ""
+msgstr "ਕਿਸਮ:"
 
 #: src/Dialogs/PropertiesWindow.vala:532
 msgid "Contains:"
-msgstr ""
+msgstr "ਸਮੱਗਰੀ:"
 
 #: src/Dialogs/PropertiesWindow.vala:556
 msgid "Created:"
-msgstr ""
+msgstr "ਬਣਾਉਣ ਦਾ ਵੇਲ਼ਾ:"
 
 #: src/Dialogs/PropertiesWindow.vala:567
 msgid "Modified:"
-msgstr ""
+msgstr "ਤਬਦੀਲੀ ਕਰਨ ਦਾ ਵੇਲ਼ਾ:"
 
 #: src/Dialogs/PropertiesWindow.vala:579
 msgid "Deleted:"
-msgstr ""
+msgstr "ਮਿਟਾਈ ਗਈ:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
-msgstr ""
+msgstr "ਮੀਡੀਏ ਦੀ ਕਿਸਮ:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
-msgstr ""
+msgstr "ਰੈਜ਼ੋਲੂਸ਼ਨ"
 
 #: src/Dialogs/PropertiesWindow.vala:604
 #: src/Dialogs/VolumePropertiesWindow.vala:80
