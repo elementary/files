@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-26 14:36+0000\n"
+"PO-Revision-Date: 2021-07-26 20:38+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/>"
 "\n"
@@ -56,11 +56,11 @@ msgstr ""
 
 #: src/Application.vala:201
 msgid "--quit cannot be used with URIs."
-msgstr "--URIs ਨੂੰ ਇਸ ਤਰ੍ਹਾਂ ਬੰਦ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।"
+msgstr "--quit ਨੂੰ URIs ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਨਹੀਂ ਵਰਤਿਆ ਜਾ ਸਕਦਾ।"
 
 #: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
 msgid "File Operations"
-msgstr "ਫ਼ਾਇਲ ਅਪਰੇਸ਼ਨ"
+msgstr "ਫ਼ਾਇਲ ਕਾਰਵਾਈਆਂ"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
 #: src/ProgressUIHandler.vala:181
@@ -1654,8 +1654,8 @@ msgstr[1] "\"%'d\" ਫ਼ਾਇਲਾਂ (\"%s\" ਵਿਚਲੀਆਂ) ਨੂ�
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "\"%'d\" ਫ਼ਾਇਲ (\"%s\" ਵਿੱਚ) ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
+msgstr[1] "\"%'d\" ਫ਼ਾਇਲਾਂ (\"%s\" ਵਿੱਚ) ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1665,28 +1665,28 @@ msgstr[1] ""
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "\"%'d\" ਫ਼ਾਇਲ ਨੂੰ \"%s\" 'ਤੇ ਸਥਾਨਅੰਤਰਨ ਕਰ ਰਿਹੈ"
+msgstr[1] "\"%'d\" ਫ਼ਾਇਲਾਂ ਨੂੰ \"%s\" 'ਤੇ ਸਥਾਨਅੰਤਰਨ ਕਰ ਰਿਹੈ"
 
 #: libcore/marlin-file-operations.c:1693
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "\"%'d\" ਫ਼ਾਇਲ ਨੂੰ \"%s\" 'ਤੇ ਨਕਲ ਕਰ ਰਿਹੈ"
+msgstr[1] "\"%'d\" ਫ਼ਾਇਲਾਂ ਨੂੰ \"%s\" 'ਤੇ ਨਕਲ ਕਰ ਰਿਹੈ"
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "\"%'d\" ਫ਼ਾਇਲ ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
+msgstr[1] "\"%'d\" ਫ਼ਾਇਲਾਂ ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:1729
 #, c-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s ਵਿੱਚੋਂ %s"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -1698,8 +1698,8 @@ msgstr ""
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ਵਿੱਚੋਂ %s — %s ਬਾਕੀ ਹੈ (%s/ਸਕਿੰਟ)"
+msgstr[1] "%s ਵਿੱਚੋਂ %s — %s ਬਾਕੀ ਹਨ (%s/ਸਕਿੰਟ)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1709,13 +1709,15 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"ਫ਼ੋਲਡਰ \"%s\" ਨਕਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਮੰਜ਼ਿਲ 'ਤੇ ਇਹ ਫ਼ੋਲਡਰ "
+"ਬਣਾਉਣ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2073
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr ""
+msgstr "ਫ਼ੋਲਡਰ \"%s\" ਬਣਾਉਣ ਵਿੱਚ ਖ਼ਰਾਬੀ ਰਹੀ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1725,6 +1727,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"ਫ਼ੋਲਡਰ \"%s\" ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ "
+"ਇਹਨਾਂ ਨੂੰ ਵੇਖਣ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1734,6 +1738,8 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
+"ਫ਼ੋਲਡਰ \"%s\" ਨਕਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸਨੂੰ ਪੜ੍ਹਨ ਦੀਆਂ "
+"ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1743,11 +1749,11 @@ msgstr ""
 #: libcore/marlin-file-operations.c:3536
 #, c-format
 msgid "Error while moving \"%s\"."
-msgstr ""
+msgstr "\"%s\" ਨੂੰ ਸਥਾਨਅੰਤਰਨ ਕਰਦੇ ਵੇਲ਼ੇ ਖ਼ਰਾਬੀ ਰਹੀ।"
 
 #: libcore/marlin-file-operations.c:2322
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "ਸਰੋਤ ਫ਼ੋਲਡਰ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1755,43 +1761,43 @@ msgstr ""
 #: libcore/marlin-file-operations.c:2981
 #, c-format
 msgid "Error while copying \"%s\"."
-msgstr ""
+msgstr "\"%s\" ਨੂੰ ਨਕਲ ਕਰਦੇ ਵੇਲ਼ੇ ਖ਼ਰਾਬੀ ਰਹੀ।"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2418
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr ""
+msgstr "ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਫ਼ੋਲਡਰ %s ਵਿੱਚੋਂ ਫ਼ਾਇਲਾਂ ਹਟਾ ਨਹੀਂ ਸਕਿਆ।"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2471
 #, c-format
 msgid "Could not remove the already existing file %s."
-msgstr ""
+msgstr "ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਫ਼ਾਇਲ %s ਨੂੰ ਹਟਾ ਨਹੀਂ ਸਕਿਆ।"
 
 #: libcore/marlin-file-operations.c:2706 libcore/marlin-file-operations.c:3372
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "ਤੁਸੀਂ ਕਿਸੇ ਫ਼ੋਲਡਰ ਨੂੰ ਉਸੇ ਹੀ ਫ਼ੋਲਡਰ ਵਿੱਚ ਸਥਾਨਅੰਤਰਨ ਨਹੀਂ ਕਰ ਸਕਦੇ।"
 
 #: libcore/marlin-file-operations.c:2707 libcore/marlin-file-operations.c:3373
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "ਤੁਸੀਂ ਕਿਸੇ ਫ਼ੋਲਡਰ ਨੂੰ ਉਸੇ ਹੀ ਫ਼ੋਲਡਰ ਵਿੱਚ ਨਕਲ ਨਹੀਂ ਕਰ ਸਕਦੇ।"
 
 #: libcore/marlin-file-operations.c:2708 libcore/marlin-file-operations.c:3374
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "ਮੰਜ਼ਿਲ ਫ਼ੋਲਡਰ, ਸਰੋਤ ਫ਼ੋਲਡਰ ਦੇ ਅੰਦਰ ਹੈ।"
 
 #: libcore/marlin-file-operations.c:2741
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "ਤੁਸੀਂ ਕਿਸੇ ਫ਼ਾਇਲ ਨੂੰ ਉਸੇ ਹੀ ਫ਼ਾਇਲ 'ਤੇ ਸਥਾਨਅੰਤਰਨ ਨਹੀਂ ਕਰ ਸਕਦੇ।"
 
 #: libcore/marlin-file-operations.c:2742
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "ਤੁਸੀਂ ਕਿਸੇ ਫ਼ਾਇਲ ਨੂੰ ਉਸੇ ਹੀ ਫ਼ਾਇਲ 'ਤੇ ਨਕਲ ਨਹੀਂ ਕਰ ਸਕਦੇ।"
 
 #: libcore/marlin-file-operations.c:2743
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "ਮੰਜ਼ਿਲ ਫ਼ਾਇਲ, ਸਰੋਤ ਫ਼ਾਇਲ ਦੇ ਉੱਤੇ ਲਿਖ ਦੇਵੇਗੀ।"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2987
