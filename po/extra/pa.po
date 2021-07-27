@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-26 10:44+0000\n"
+"PO-Revision-Date: 2021-07-27 02:54+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/extra/pa/>"
 "\n"
@@ -16,19 +16,19 @@ msgstr ""
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr ""
+msgstr "ਫ਼ਾਇਲਾਂ"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr ""
+msgstr "ਸਾਰੀਆਂ ਫ਼ਾਇਲਾਂ ਫਰੋਲੋ"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "ਫ਼ੋਲਡਰ;ਮੈਨੇਜਰ;ਫਰੋਲੋ;ਡਿਸਕ; ਫ਼ਾਇਲਸਿਸਟਮ;"
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr ""
+msgstr "ਫ਼ਾਇਲ ਮੈਨੇਜਰ"
 
 #. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
@@ -41,11 +41,11 @@ msgstr "ਨਵੀਂ ਵਿੰਡੋ"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "ਨਵੀਂ ਵਿੰਡੋ ਬਤੌਰ ਐਡਮਿਨ"
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr ""
+msgstr "ਫ਼ਾਇਲਾਂ ਅਤੇ ਫ਼ੋਲਡਰਾਂ ਦੀ ਫਰੋਲਾ-ਫਰਾਲੀ ਅਤੇ ਰੱਖ-ਰਖਾਓ"
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
@@ -54,6 +54,11 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
+"ਆਪਣੀਆਂ ਫ਼ਾਇਲਾਂ ਦੀ ਅਸਾਨੀ ਨਾਲ਼ ਨਕਲ, ਸਥਾਨਅੰਤਰਨ, ਅਤੇ ਨਾਂ ਬਦਲੀ ਕਰੋ, ਜਾਂ ਵਧੀਆ ਪ੍ਰਬੰ"
+"ਧਨ ਲਈ ਫ਼ੋਲਡਰਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ। ਚਾਹੇ ਤੁਹਾਨੂੰ ਫ਼ਾਇਲਾਂ ਲਿਸਟ, ਜੰਗਲੇ, ਜਾਂ ਕਾਲਮਾਂ ਵਿੱ"
+"ਚ ਪਸੰਦ ਹੋਣ, ਤੁਸੀਂ ਉਹਨਾਂ ਨੂੰ ਫ਼ੌਰਨ ਲੱਭ ਸਕਦੇ ਹੋ। ਲੋਕਲ, ਬਾਹਰੀ ਡਿਵਾਈਸ, ਜਾਂ ਫਿਰ "
+"ਦੂਰੋਂ ਐੱਫ਼ ਟੀ ਪੀ, ਐੱਸ ਐੱਫ਼ ਟੀ ਪੀ, ਏ ਐੱਫ਼ ਪੀ, ਵੈੱਬ ਡੀ ਏ ਵੀ, ਜਾਂ ਵਿੰਡੋਜ਼ ਸਾਂਝ "
+"ਜ਼ਰੀਏ ਤੁਸੀਂ ਆਪਣੀਆਂ ਸਾਰੀਆਂ ਤੱਕ ਪਹੁੰਚ ਸਕਦੇ ਹੋ।"
 
 #: data/io.elementary.files.appdata.xml.in.in:61
 #: data/io.elementary.files.appdata.xml.in.in:77
@@ -61,22 +66,22 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:135
 #: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Fixes:"
-msgstr ""
+msgstr "ਹੱਲ:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Fix truncation of final column in Column View under some circumstances"
-msgstr ""
+msgstr "ਕਈ ਵਾਰ ਕਾਲਮ-ਦਿੱਖ ਵਿੱਚ ਆਖ਼ਰੀ ਕਾਲਮ ਦੇ ਕੱਟੇ ਜਾਣ ਦੀ ਮੁਰੰਮਤ ਕਰੋ"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:82
 #: data/io.elementary.files.appdata.xml.in.in:106
 #: data/io.elementary.files.appdata.xml.in.in:130
 msgid "Improvements:"
-msgstr ""
+msgstr "ਸੁਧਾਰ:"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid "Show more keyboard accelerators in menus"
-msgstr ""
+msgstr "ਮੈਨਿਊ ਵਿੱਚ ਕੀਬੋਰਡ ਫੁਰਤੀ ਦੇ ਹੋਰ ਸਾਧਨ ਵਿਖਾਓ"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:97
@@ -85,7 +90,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:162
 #: data/io.elementary.files.appdata.xml.in.in:215
 msgid "Other updates:"
-msgstr ""
+msgstr "ਹੋਰ ਅਪਡੇਟਾਂ:"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 #: data/io.elementary.files.appdata.xml.in.in:100
@@ -106,39 +111,40 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:334
 #: data/io.elementary.files.appdata.xml.in.in:366
 msgid "Updated translations"
-msgstr ""
+msgstr "ਅਪਡੇਟਿਡ ਤਰਜਮੇ"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix connecting to AFP servers so that passwords are remembered"
 msgstr ""
+"ਏ ਐੱਫ਼ ਪੀ ਸਰਵਰਾਂ ਨਾਲ਼ ਕੁਨੈਕਸ਼ਨ ਦੀ ਮੁਰੰਮਤ ਕਰੋ ਤਾਂ ਜੋ ਪਾਸਵਰਡ ਯਾਦ ਰੱਖੇ ਜਾ ਸਕਣ"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Fix MTP mounts"
-msgstr ""
+msgstr "ਐੱਮ ਟੀ ਪੀ ਮਾਊਂਟਾਂ ਦੀ ਮੁਰੰਮਤ ਕਰੋ"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid "Launch files with double click instead of single click"
-msgstr ""
+msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇਕਹਿਰੀ ਕਲਿੱਕ ਦੀ ਬਜਾਇ ਦੂਹਰੀ ਕਲਿੱਕ ਨਾਲ਼ ਖੋਲ੍ਹੋ"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
+msgstr "ਫ਼ਲੈਟਪੈਕ ਐਪਾਂ ਲਈ ਇੱਕ ਫ਼ਾਇਲ-ਚੋਣਕਾਰ ਦਰਵਾਜ਼ਾ ਮੁਹੱਈਆ ਕਰਵਾਓ"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Brand new animated Sidebar"
-msgstr ""
+msgstr "ਨਵੀਂ-ਨਕੋਰ ਐਨੀਮੇਟਿਡ ਸਾਈਡਬਾਰ"
 
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Dark style support"
-msgstr ""
+msgstr "ਸਿਆਹ-ਅੰਦਾਜ਼ ਸਪੋਰਟ"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "ਮਿੰਟ ਅਤੇ ਬਬਲਗਮ ਰੰਗਾਂ ਦੇ ਟੈਗ"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Do not restore locations that have become inaccessible"
-msgstr ""
+msgstr "ਉਹ ਟਿਕਾਣੇ ਰੀਸਟੋਰ ਹੀ ਨਾ ਕਰੋ ਜਿਹੜੇ ਪਹੁੰਚ ਵਿੱਚ ਨਹੀਂ ਰਹੇ"
 
 #: data/io.elementary.files.appdata.xml.in.in:90
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
