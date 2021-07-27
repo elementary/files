@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-27 02:54+0000\n"
+"PO-Revision-Date: 2021-07-28 00:16+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/extra/pa/>"
 "\n"
@@ -16,7 +16,7 @@ msgstr ""
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr "ਫ਼ਾਇਲਾਂ"
+msgstr "ਫ਼ਾਇਲਸ"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
@@ -149,53 +149,58 @@ msgstr "ਉਹ ਟਿਕਾਣੇ ਰੀਸਟੋਰ ਹੀ ਨਾ ਕਰੋ ਜ
 #: data/io.elementary.files.appdata.xml.in.in:90
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
 msgstr ""
+"ਥਮਨੇਲ ਅਤੇ ਲਿਖਤ ਦੇ ਵਿਚਾਲੇ ਕਲਿੱਕ ਕਰਨ ਨਾਲ਼ ਹੁਣ ਆਇਕਨ ਦਿੱਖ ਚੁਣੀ/ਚਾਲੂ ਹੁੰਦੀ ਹੈ"
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "AFC protocol support"
-msgstr ""
+msgstr "ਏ ਐੱਫ਼ ਸੀ ਪ੍ਰੋਟੋਕਾਲ ਸਪੋਰਟ"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "ਲਿਸਟ ਵਾਲ਼ੀ ਦਿੱਖ ਵਿੱਚ ਆਇਕਨ ਦਾ ਛੋਟੇ ਤੋਂ ਛੋਟਾ ਸਾਈਜ਼ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Show emblems inline in list views"
-msgstr ""
+msgstr "ਲਿਸਟ ਦਿੱਖਾਂ ਵਿੱਚ ਚਿੰਨ੍ਹਾਂ ਨੂੰ ਕਤਾਰ ਵਿੱਚ ਵਿਖਾਓ"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Performance improvements"
-msgstr ""
+msgstr "ਕਾਰਗੁਜ਼ਾਰੀ ਦੇ ਸੁਧਾਰ"
 
 #: data/io.elementary.files.appdata.xml.in.in:95
 msgid "Stability improvements"
-msgstr ""
+msgstr "ਟਿਕਾਊਪੁਣੇ ਦੇ ਸੁਧਾਰ"
 
 #: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr ""
+msgstr "\"ਡਿਵਾਈਸਿਸ\" ਦਾ ਨਾਂ ਬਦਲ ਕੇ \"ਸਟੋਰੇਜ\" ਕਰੋ"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
+msgstr "ਸਾਈਡਬਾਰ ਵਿੱਚ ਮਾਊਂਟਾਂ ਲਈ ਬੁੱਕਮਾਰਕ ਮੈਨਿਊ ਆਪਸ਼ਨ"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Show folder item count in List View"
-msgstr ""
+msgstr "ਲਿਸਟ ਵਾਲ਼ੀ ਦਿੱਖ ਵਿੱਚ ਫ਼ੋਲਡਰ ਵਿਚਲੇ ਨਗਾਂ ਦੀ ਗਿਣਤੀ ਵਿਖਾਓ"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
+"ਹੁਣ ਨੈੱਟਵਰਕ ਟਿਕਾਣਿਆਂ ਦੇ ਨਾਲ਼ ਨਾਲ਼ ਮਾਊਂਟ ਕੀਤੀਆਂ ਐੱਮਟੀਪੀ ਅਤੇ ਪੀਟੀਪੀ ਡਿਵਾਈਸਾਂ "
+"ਲਈ ਵੀ ਥਮਨੇਲ ਡਿਫ਼ਾਲਟ ਤੌਰ 'ਤੇ ਹੀ ਵਿਖਾਉਂਦਾ ਹੈ"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
+"ਖ਼ਾਸੀਅਤਾਂ ਵਾਲ਼ੀ ਵਿੰਡੋ: ਜਦੋਂ ਫ਼ਾਇਲ ਨੂੰ ਐਡਿਟ ਨਾ ਕੀਤਾ ਜਾ ਸਕੇ ਤਾਂ ਫ਼ਾਇਲ ਦੇ ਨਾਂ "
+"ਨੂੰ ਨਕਲ ਕਰਨ ਦਿੰਦੀ ਹੈ"
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr ""
+msgstr "ਸਾਈਡਬਾਰ ਵਿੱਚ ਟੂਲਟਿਪ ਅੰਦਾਜ਼ ਨੂੰ ਸੁਧਾਰਿਆ"
 
 #: data/io.elementary.files.appdata.xml.in.in:116
 msgid "Fix crash when pressing Enter and another key at the same time"
@@ -784,3 +789,5 @@ msgstr ""
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""
+"ਫ਼ਾਇਲਸ (ਸਾਫ਼ਟਵੇਅਰ) ਨੂੰ ਬਤੌਰ ਐਡਮਿਨ ਚਲਾਉਣ ਲਈ ਵਰਤੋਂਕਾਰ ਦੀ ਤਸਦੀਕ ਕਰਨ ਦੀ ਲੋੜ ਪੈਂਦੀ"
+" ਹੈ"
