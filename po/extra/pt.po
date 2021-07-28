@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-24 11:52+0000\n"
+"PO-Revision-Date: 2021-07-24 21:24+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -150,7 +150,7 @@ msgstr "Suporte a estilo escuro"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "Etiquetas de cor de menta e pastilha elástica"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Do not restore locations that have become inaccessible"
@@ -163,33 +163,27 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:91
 msgid "AFC protocol support"
-msgstr ""
+msgstr "Suporte ao protocolo AFC"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "Adiciona um tamanho mínimo de ícone mais pequeno na vista de lista"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
-#, fuzzy
-#| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
-msgstr "Mostra a contagem de itens da pasta em Vista de lista"
+msgstr "Mostra emblemas embutidos na vista de lista"
 
 #: data/io.elementary.files.appdata.xml.in.in:94
-#, fuzzy
-#| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
-msgstr "Melhorias na navegação com o teclado"
+msgstr "Melhorias de desempenho"
 
 #: data/io.elementary.files.appdata.xml.in.in:95
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Stability improvements"
-msgstr "Melhorias:"
+msgstr "Melhorias de estabilidade"
 
 #: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr ""
+msgstr "Renomear \"Dispositivos\" para \"Armazenamento\""
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Bookmark menu option for network mounts in sidebar"
