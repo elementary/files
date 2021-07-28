@@ -144,38 +144,32 @@ namespace PF {
                                            out string? new_name,
                                            out bool apply_to_all) {
         int result = 0;
+        string? _new_name = null;
+        bool _apply_to_all = false;
+
         time.stop ();
         info.pause ();
 
-        var dialog = new Files.FileConflictDialog (parent_window, src, dest, dest_dir);
-        var main_loop = new GLib.MainLoop ();
-
-        string? _new_name = null;
-        bool _apply_to_all = false;
-        dialog.response.connect ((response_id) => {
-            result = response_id;
-            switch (response_id) {
-                case Files.FileConflictDialog.ResponseType.RENAME:
-                    _new_name = dialog.new_name;
-                    break;
-                case Gtk.ResponseType.CANCEL:
-                case Gtk.ResponseType.NONE:
-                    break;
-                default:
-                    _apply_to_all = dialog.apply_to_all;
-                    break;
-            }
-
-            main_loop.quit ();
-        });
+        var main_loop = new GLib.MainLoop (MainContext.get_thread_default ());
 
         Idle.add (() => {
+            var dialog = new Files.FileConflictDialog (parent_window, src, dest, dest_dir);
+            dialog.response.connect ((response_id) => {
+                result = response_id;
+                _apply_to_all = dialog.apply_to_all;
+                if (response_id == Files.FileConflictDialog.ResponseType.RENAME) {
+                    _new_name = dialog.new_name;
+                }
+                main_loop.quit ();
+                dialog.destroy ();
+            });
+
             dialog.show ();
             return Source.REMOVE;
         });
 
         main_loop.run ();
-        dialog.destroy ();
+
         new_name = _new_name;
         apply_to_all = _apply_to_all;
         info.resume ();
