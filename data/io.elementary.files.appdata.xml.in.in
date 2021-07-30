@@ -60,6 +60,7 @@
       <description>
         <p>Fixes:</p>
         <ul>
+          <li>Fix freeze when comparing copied files</li>
           <li>Fix truncation of final column in Column View under some circumstances</li>
         </ul>
         <p>Improvements:</p>
