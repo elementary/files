@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-21 15:43+0000\n"
+"PO-Revision-Date: 2021-07-31 12:59+0000\n"
 "Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
@@ -77,10 +77,8 @@ msgid "Fixes:"
 msgstr "Fehlerbehebungen:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#, fuzzy
-#| msgid "Fix crash when opening multiple video files"
 msgid "Fix freeze when comparing copied files"
-msgstr "Absturz beim Öffnen mehrerer Videodateien behoben"
+msgstr "Absturz beim Vergleichen kopierter Dateien behoben"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix truncation of final column in Column View under some circumstances"
