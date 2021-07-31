@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-20 03:12+0000\n"
+"PO-Revision-Date: 2021-07-31 12:59+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -69,10 +69,8 @@ msgid "Fixes:"
 msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#, fuzzy
-#| msgid "Fix crash when opening multiple video files"
 msgid "Fix freeze when comparing copied files"
-msgstr "תיקון קריסה בעת פתיחת מספר קובצי וידאו יחדיו"
+msgstr "תיקון קיפאון בעת השוואת קבצים מועתקים"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix truncation of final column in Column View under some circumstances"
