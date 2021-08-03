@@ -1,3 +1,19 @@
+pantheon-files (6.0.1) bionic; urgency=medium
+
+  * Release 6.0.1 (#1776)
+  * Update translation files
+  * Update translation template
+  * Create and destroy conflict dialog within new main loop (#1772)
+  * Portal: support parenting window on wayland (#1768)
+  * Appdata for next release (#1763)
+  * Update POTFILES after removing Animations.vala (#1765)
+  * Move Miller animation into Miller class (#1764)
+  * Fix reclicking a folder in ColumnView (#1716)
+  * Add visible shortcut label for hidden files toggle (#1756)
+  * meson: require granite >= 6.1.0 (#1757)
+
+ -- Cody Garver <cody@elementary.io>  Tue, 03 Aug 2021 15:47:03 +0000
+
 pantheon-files (6.0.0) bionic; urgency=medium
 
   * Release 6.0.0 (#1755)
