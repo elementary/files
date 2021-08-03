@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-07 02:32+0000\n"
-"Last-Translator: Uwe S <saabisto@gmx.de>\n"
+"PO-Revision-Date: 2021-08-03 15:17+0000\n"
+"Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -681,7 +681,7 @@ msgstr "Lesezeichen"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Common places plus saved folders and files"
-msgstr "Übliche Orte sowie gespeicherte Ordner und Dateien"
+msgstr "Oft verwendete Orte sowie gespeicherte Ordner und Dateien"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
@@ -690,7 +690,7 @@ msgstr "Massenspeicher"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
-msgstr "Interne und extern angeschlossene Massenspeichergeräte"
+msgstr "Interne und angeschlossene Massenspeicher"
 
 #: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
