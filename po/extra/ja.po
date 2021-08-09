@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-31 07:17+0000\n"
+"PO-Revision-Date: 2021-08-09 13:00+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:124
 msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "\"パーソナル\" を \"ブックマーク\" に名称変更"
+msgstr "\"パーソナル\"を\"ブックマーク\"に名称変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:133
 msgid ""
@@ -342,9 +342,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:187
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr ""
-"メニューにある \"新しいフォルダー\" 項目のキーボードショートカットの表示が間"
-"違っていた不具合を修正"
+msgstr "メニューにある\"新しいフォルダー\"項目のキーボードショートカットの表示が間違っていた不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Fix navigation with back/forward button context menu"
@@ -778,9 +776,7 @@ msgstr ""
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
-msgstr ""
-"\"ポインターのハイライト\" の設定が有効な間に Ctrl キーを押すことで名前の変更"
-"が中止されることはなくなりました"
+msgstr "\"ポインターのハイライト\"の設定が有効な間に Ctrl キーを押すことで名前の変更がキャンセルされないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:395
 msgid "Switching input language cancels actions"
@@ -855,11 +851,11 @@ msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
-msgstr "\"ファイル\" を管理者として実行"
+msgstr "“ファイル”を管理者として実行"
 
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
-msgstr "\"ファイル\" を管理者として実行するには認証が必要です"
+msgstr "“ファイル”を管理者として実行するには認証が必要です"
 
 #~ msgid "About Files"
 #~ msgstr "\"ファイル\" について"
