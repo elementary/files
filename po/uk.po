@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-17 23:15+0000\n"
+"PO-Revision-Date: 2021-08-12 22:56+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -487,7 +487,7 @@ msgstr "Дата"
 
 #: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
-msgstr "В зворотному порядку"
+msgstr "У зворотному порядку"
 
 #: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
