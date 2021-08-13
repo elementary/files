@@ -133,7 +133,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             editable = new Gtk.Entry ();
             label_stack.add_named (editable, "editable");
             editable.activate.connect (() => {
-                custom_name = editable.text;
+                if (custom_name != editable.text) {
+                    custom_name = editable.text;
+                    list.rename_bookmark_by_uri (uri, custom_name);
+                }
                 label_stack.visible_child_name = "label";
             });
 

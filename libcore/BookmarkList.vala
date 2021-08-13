@@ -173,6 +173,23 @@ namespace Files {
             save_bookmarks_file ();
         }
 
+        /* This only renames the first item with a matching uri. This does not matter as Files
+         * only permits one bookmark per uri.
+         */
+        public void rename_item_with_uri (string uri, string new_name) {
+            unowned GLib.List<Files.Bookmark> node = list;
+            unowned GLib.List<Files.Bookmark> next = node.next;
+
+            for (node = list; node != null; node = next) {
+                next = node.next;
+                if (uri == node.data.uri) {
+                    node.data.label = new_name;
+                    save_bookmarks_file ();
+                    return;
+                }
+            }
+        }
+
         public void delete_items_with_uri (string uri) {
             bool list_changed = false;
             unowned GLib.List<Files.Bookmark> node = list;
