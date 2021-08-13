@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-13 16:04+0000\n"
-"Last-Translator: Denis Pavlinin <dpavlinin@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -187,15 +187,15 @@ msgstr "Улучшения стабильности"
 
 #: data/io.elementary.files.appdata.xml.in.in:100
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr "Переименовывание \"Устройства\" в \"Хранилище\""
+msgstr "«Устройства» переименовано на «Накопитель»"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
+msgstr "Опция меню закладок для сетевых хранилищ на боковой панели"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Show folder item count in List View"
-msgstr ""
+msgstr "Отображение количества элементов папки в представлении списком"
 
 #: data/io.elementary.files.appdata.xml.in.in:111
 msgid ""
