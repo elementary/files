@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-14 20:29+0000\n"
-"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -377,11 +377,14 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:202
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
-"Исправлено обновление курсора после горизонтальной прокрутки в виде колонок"
+"Исправлено обновление курсора после горизонтальной прокрутки в представлении "
+"столбцом"
 
 #: data/io.elementary.files.appdata.xml.in.in:203
 msgid "Fix folder-open icon persisting after closing Column View"
-msgstr "Исправлен значок открытой папки, остающийся после закрытия вида колонок"
+msgstr ""
+"Исправлена ошибка, когда значок открытой папки, оставался после закрытия "
+"представления столбцом"
 
 #: data/io.elementary.files.appdata.xml.in.in:204
 msgid "Use destructive action styling for some trash dialog buttons"
@@ -395,7 +398,7 @@ msgstr "Новые возможности:"
 
 #: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Initial git plugin support"
-msgstr "Встроенная поддержка плагина Git"
+msgstr "Начальная поддержка плагина git"
 
 #: data/io.elementary.files.appdata.xml.in.in:214
 msgid "Follow global history setting when restoring and saving tabs"
