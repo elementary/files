@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-14 17:24+0000\n"
-"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -343,7 +343,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
-"Исправление панели пути, иногда отображающей неправильный путь при закрытии "
+"Исправлена панель путей, иногда отображающая неверный путь при закрытии "
 "вкладки"
 
 #: data/io.elementary.files.appdata.xml.in.in:190
@@ -647,11 +647,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:354
 msgid "`Connect Server` fixes"
-msgstr "Исправления в `Подключить сервер…`"
+msgstr "Исправления в функции `Подключить сервер`"
 
 #: data/io.elementary.files.appdata.xml.in.in:355
 msgid "Do not activate multiple files with single click"
-msgstr ""
+msgstr "Больше нельзя активировать несколько файлов одним щелчком мыши"
 
 #: data/io.elementary.files.appdata.xml.in.in:356
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
@@ -663,11 +663,11 @@ msgstr "Удаление записей цветных меток для стё�
 
 #: data/io.elementary.files.appdata.xml.in.in:358
 msgid "Throttle tab closing"
-msgstr ""
+msgstr "Ускоренно закрытие вкладок"
 
 #: data/io.elementary.files.appdata.xml.in.in:359
 msgid "`Ctrl` key fixes"
-msgstr ""
+msgstr "Исправлено поведение клавиши `Ctrl`"
 
 #: data/io.elementary.files.appdata.xml.in.in:360
 msgid "Drag and drop fixes"
