@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-14 12:54+0000\n"
-"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -561,11 +561,11 @@ msgstr "Удалена система сборки CMake"
 
 #: data/io.elementary.files.appdata.xml.in.in:306
 msgid "Fix missing File System properties menu"
-msgstr "Исправлено отсутствующее меню свойств Файловой системы"
+msgstr "Исправлено отсутствующее меню свойств файловой системы"
 
 #: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Drop intltool dependency"
-msgstr ""
+msgstr "Удалена зависимость от intltool"
 
 #: data/io.elementary.files.appdata.xml.in.in:308
 msgid "Fix default file type handler logic"
