@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-08-14 09:39+0000\n"
+"PO-Revision-Date: 2021-08-14 10:36+0000\n"
 "Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -363,7 +363,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:201
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr ""
-"Отображение предупреждения при извлечении тома, который все еще используется"
+"Отображение предупреждения при извлечении тома, который всё ещё используется"
 
 #: data/io.elementary.files.appdata.xml.in.in:202
 msgid "Fix cursor update after horizontal scroll in Column View"
@@ -379,7 +379,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:211
 msgid "New features:"
-msgstr ""
+msgstr "Новые возможности:"
 
 #: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Initial git plugin support"
@@ -671,7 +671,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:362
 msgid "Tooltip fixes"
-msgstr ""
+msgstr "Исправления всплывающих подсказок"
 
 #: data/io.elementary.files.appdata.xml.in.in:363
 msgid "Memory leak fixes"
@@ -687,11 +687,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:366
 msgid "Localization fixes"
-msgstr ""
+msgstr "Исправления локализации"
 
 #: data/io.elementary.files.appdata.xml.in.in:374
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr ""
+msgstr "Более 100 крупных и мелких исправлений и улучшений"
 
 #: data/io.elementary.files.appdata.xml.in.in:381
 msgid "Honor 12/24hr system setting"
@@ -699,7 +699,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:382
 msgid "Distinguish between tabs with the same name"
-msgstr ""
+msgstr "Различать вкладки с одинаковыми именами"
 
 #: data/io.elementary.files.appdata.xml.in.in:383
 msgid "Support launching from other applications with a target file selected"
