@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-14 12:23+0000\n"
-"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -262,8 +262,7 @@ msgstr "Исправлена обработка названий файлов с
 
 #: data/io.elementary.files.appdata.xml.in.in:139
 msgid "Fix regressions regarding pathbar context menus and clicking"
-msgstr ""
-"Исправление регрессий в отношении контекстных меню панели контуров и щелчка"
+msgstr "Исправление регрессий в отношении контекстных меню и щелчков на панели"
 
 #: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Paste images into other apps instead of file paths where possible"
