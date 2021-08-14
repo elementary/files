@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-14 20:24+0000\n"
-"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -288,8 +288,8 @@ msgstr "Отображение сообщения об ошибке при по�
 #: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
-"Исправлена нередактируемая область в панели пути, в которой отображается "
-"заменитель домашней папки"
+"Исправлена нередактируемая область на панели путей, которая отображает "
+"заполнитель домашней папки"
 
 #: data/io.elementary.files.appdata.xml.in.in:159
 msgid "Fix an issue that prevented file modification times from showing"
