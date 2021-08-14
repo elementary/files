@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-08-14 18:29+0000\n"
+"PO-Revision-Date: 2021-08-14 18:37+0000\n"
 "Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -321,11 +321,11 @@ msgstr "Исправление случайного зависания пред�
 #: data/io.elementary.files.appdata.xml.in.in:176
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
-"Улучшена логика переименования при работе с начальными/конечными отступами"
+"Улучшена логика переименования при работе с начинающими/конечными отступами"
 
 #: data/io.elementary.files.appdata.xml.in.in:177
 msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr ""
+msgstr "Исправлена иногда некорректная навигационная цепочка при запуске"
 
 #: data/io.elementary.files.appdata.xml.in.in:178
 msgid "Do not show file:// prefix in navigation buttons menus"
