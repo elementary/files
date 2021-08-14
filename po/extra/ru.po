@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-14 17:24+0000\n"
-"Last-Translator: Nikita Kharchenko <m4r5hdev@gmail.com>\n"
+"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -275,7 +275,7 @@ msgstr "Вставка в выбранную папку при использо�
 
 #: data/io.elementary.files.appdata.xml.in.in:152
 msgid "Show file info overlay in List View as well"
-msgstr ""
+msgstr "Также показывать информацию о файле в виде списка"
 
 #: data/io.elementary.files.appdata.xml.in.in:153
 msgid "Traverse search results with Tab key"
