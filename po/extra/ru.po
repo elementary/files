@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-08-14 17:57+0000\n"
+"PO-Revision-Date: 2021-08-14 18:29+0000\n"
 "Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -295,7 +295,7 @@ msgstr "Исправлена проблема предотвращающая п�
 
 #: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Fix size of restored tiled window"
-msgstr ""
+msgstr "Исправлен размер востановленного плиточного окна"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
 msgid "Fix color tags disappearing when thumbnails hidden"
@@ -337,7 +337,7 @@ msgstr "Исправлена метка сочетания клавиш \"Нов
 
 #: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Fix navigation with back/forward button context menu"
-msgstr "Исправлена навигация с помощью контекстного меню кнопки «Назад/вперед»"
+msgstr "Исправлена навигация из контекстного меню кнопок «Назад/вперед»"
 
 #: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
