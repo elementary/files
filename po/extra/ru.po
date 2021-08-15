@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-15 14:31+0000\n"
-"Last-Translator: Nikita Kharchenko <m4r5hdev@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -525,8 +525,8 @@ msgstr "Избегание возможного сбоя в некоторых �
 #: data/io.elementary.files.appdata.xml.in.in:266
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
-"Исправление навигации с клавиатуры для выбора файлов выбора вишни в виде "
-"значков"
+"Исправление ошибок навигации с помощью клавиатуры во время выбора файлов в "
+"режиме просмотра в виде значков"
 
 #: data/io.elementary.files.appdata.xml.in.in:267
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
