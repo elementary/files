@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-15 14:46+0000\n"
-"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -509,6 +509,8 @@ msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
 msgstr ""
+"Исправлено окно прогресса, которое нельзя было закрыть, при копировании "
+"сетевых файлов на съемные носители"
 
 #: data/io.elementary.files.appdata.xml.in.in:256
 msgid "Fix drag and drop after double clicking a blank area"
@@ -558,11 +560,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:287
 msgid "Fix running scripts with spaces in filename"
-msgstr "Исправлены запущенные скрипты с пробелами в наименовании"
+msgstr "Исправлена работа запущенных скриптов с пробелами в названии файла"
 
 #: data/io.elementary.files.appdata.xml.in.in:295
 msgid "Fix high CPU regression in version 4.1.4"
-msgstr ""
+msgstr "Исправлено значительное ухудшение работы процессора в версии 4.1.4"
 
 #: data/io.elementary.files.appdata.xml.in.in:296
 msgid "File sorting fixes"
@@ -570,7 +572,7 @@ msgstr "Исправление сортировки файлов"
 
 #: data/io.elementary.files.appdata.xml.in.in:304
 msgid "Meson: fix soversion names"
-msgstr ""
+msgstr "Meson: исправлено название версий"
 
 #: data/io.elementary.files.appdata.xml.in.in:305
 msgid "Remove CMake build system"
