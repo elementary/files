@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-15 22:49+0000\n"
-"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
+"Last-Translator: Miracle <miracleunona@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -537,6 +537,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:267
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
+"Исправлена проблема с темной темой, которая возникала из-за вшитых в код "
+"стилей для заполнителей поиска"
 
 #: data/io.elementary.files.appdata.xml.in.in:275
 msgid "Minor spacing adjustments to location bar"
@@ -654,11 +656,11 @@ msgstr "Исправлена сборка без библиотеки Unity"
 
 #: data/io.elementary.files.appdata.xml.in.in:350
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
-msgstr ""
+msgstr "Навигационная цепочка в домашней папке заменена поиском"
 
 #: data/io.elementary.files.appdata.xml.in.in:351
 msgid "Style error dialogs"
-msgstr ""
+msgstr "Обновлен внешний вид диалоговых окон ошибок"
 
 #: data/io.elementary.files.appdata.xml.in.in:352
 msgid "Right click fixes"
@@ -729,7 +731,7 @@ msgstr "Более 100 крупных и мелких исправлений и 
 
 #: data/io.elementary.files.appdata.xml.in.in:381
 msgid "Honor 12/24hr system setting"
-msgstr ""
+msgstr "Соблюдается настроенное отображение 12/24 часовых форматов"
 
 #: data/io.elementary.files.appdata.xml.in.in:382
 msgid "Distinguish between tabs with the same name"
