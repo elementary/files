@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-08-15 16:35+0000\n"
-"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
+"PO-Revision-Date: 2021-08-15 22:49+0000\n"
+"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -680,6 +680,8 @@ msgstr "Больше нельзя активировать несколько ф
 #: data/io.elementary.files.appdata.xml.in.in:356
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr ""
+"Использование `Tab` для переключения фокуса клавиатуры между представлением "
+"и боковой панелью"
 
 #: data/io.elementary.files.appdata.xml.in.in:357
 msgid "Delete color tag database entries for trashed files"
