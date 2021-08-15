@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-08-15 16:28+0000\n"
+"PO-Revision-Date: 2021-08-15 16:35+0000\n"
 "Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -523,9 +523,10 @@ msgid "Avoid crash while scrolling over view switcher"
 msgstr "Предотвращен сбой при прокрутке над переключателеля вида"
 
 #: data/io.elementary.files.appdata.xml.in.in:258
-#, fuzzy
 msgid "Avoid possible crash in some copy and paste situations"
-msgstr "Избегать падения в некоторых случаях копирования и вставки"
+msgstr ""
+"Предотвращение возможного сбоя в некоторых ситуациях, при копировании и "
+"вставке"
 
 #: data/io.elementary.files.appdata.xml.in.in:266
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
