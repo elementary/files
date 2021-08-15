@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-15 16:28+0000\n"
-"Last-Translator: asdffdsdaf <asdffdsdaf@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -734,7 +734,7 @@ msgstr "Различать вкладки с одинаковыми именам
 
 #: data/io.elementary.files.appdata.xml.in.in:383
 msgid "Support launching from other applications with a target file selected"
-msgstr "Поддержка запуска из других приложений с выбранным файлом"
+msgstr "Поддержка запуска из других приложений с выбранным целевым файлом"
 
 #: data/io.elementary.files.appdata.xml.in.in:384
 #: data/io.elementary.files.appdata.xml.in.in:397
