@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
 "PO-Revision-Date: 2021-08-15 14:17+0000\n"
-"Last-Translator: Nikita Kharchenko <m4r5hdev@gmail.com>\n"
+"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -437,7 +437,7 @@ msgstr "Обновлены переводы"
 
 #: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Initial cloudproviders plugin support"
-msgstr "Поддержка плагинов для облачных поставщиков изначально"
+msgstr "Начальная поддержка плагина для облачных поставщиков"
 
 #: data/io.elementary.files.appdata.xml.in.in:232
 msgid "Fix selecting pasted files"
