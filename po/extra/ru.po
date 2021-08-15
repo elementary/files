@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-08-15 14:32+0000\n"
-"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
+"PO-Revision-Date: 2021-08-15 14:35+0000\n"
+"Last-Translator: asdffdsdaf <useruseruser1233211@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -542,7 +542,7 @@ msgstr "Исправление поведения при переименова�
 
 #: data/io.elementary.files.appdata.xml.in.in:284
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "Незначительные поправки в интервале расположения навигационной цепочки"
 
 #: data/io.elementary.files.appdata.xml.in.in:285
 msgid "Consistently remember color tags"
@@ -590,7 +590,7 @@ msgstr "Исправлена логика обработчика типов ст
 
 #: data/io.elementary.files.appdata.xml.in.in:309
 msgid "Fix initial search window size too small"
-msgstr ""
+msgstr "Исправлен изначально маленький размер окна поиска"
 
 #: data/io.elementary.files.appdata.xml.in.in:310
 msgid "Add option to disable local file thumbnails"
