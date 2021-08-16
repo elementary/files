@@ -2541,8 +2541,6 @@ namespace Files {
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (thumbnail_source_id != 0 ||
-                (slot.directory.is_network && !show_remote_thumbnails) ||
-                (!slot.directory.is_network && hide_local_thumbnails) ||
                 !slot.directory.can_open_files ||
                 slot.directory.is_loading ()) {
 
@@ -2605,16 +2603,20 @@ namespace Files {
                         path = model.get_path (iter);
 
                         if (file != null && !file.is_gone) {
-                            file.query_thumbnail_update (); // Ensure thumbstate up to date
-                            /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                visible_files.prepend (file);
-                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                    actually_visible++;
+                            // Only update thumbnail if it is going to be shown
+                            if ((slot.directory.is_network && show_remote_thumbnails) ||
+                                (!slot.directory.is_network && !hide_local_thumbnails)) {
+
+                                file.query_thumbnail_update (); // Ensure thumbstate up to date
+                                /* Ask thumbnailer only if ThumbState UNKNOWN */
+                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                                    visible_files.prepend (file);
+                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                        actually_visible++;
+                                    }
                                 }
                             }
-
-                            /* This also ensures color-tag info is correct regardless of whether thumbnail is shown */
+                           /* In any case, ensure color-tag info is correct */
                             if (plugins != null) {
                                 plugins.update_file_info (file);
                             }
