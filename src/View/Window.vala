@@ -646,7 +646,12 @@ namespace Files.View {
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
             /* Note: Duplicate bookmarks will not be created by BookmarkList */
-            sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            unowned var selected_files = current_tab.view.get_selected_files ();
+            if (selected_files == null) {
+                sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            } else if (selected_files.first ().next == null) {
+                sidebar.add_favorite_uri (selected_files.first ().data.uri);
+            } // Ignore if more than one item selected
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
