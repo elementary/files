@@ -359,7 +359,7 @@ namespace Files {
             scroll_event.connect (on_scroll_event);
 
             get_vadjustment ().value_changed.connect_after (() => {
-                schedule_thumbnail_timeout ();
+                schedule_thumbnail_color_tag_timeout ();
             });
 
             var prefs = (Files.Preferences.get_default ());
@@ -1365,7 +1365,7 @@ namespace Files {
 
             thaw_tree ();
 
-            schedule_thumbnail_timeout ();
+            schedule_thumbnail_color_tag_timeout ();
         }
 
     /** Handle zoom level change */
@@ -1375,7 +1375,7 @@ namespace Files {
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
-                schedule_thumbnail_timeout ();
+                schedule_thumbnail_color_tag_timeout ();
             }
 
             model.icon_size = icon_size;
@@ -2531,7 +2531,7 @@ namespace Files {
 
 
 /** Thumbnail and color tag handling */
-        private void schedule_thumbnail_timeout () {
+        private void schedule_thumbnail_color_tag_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
