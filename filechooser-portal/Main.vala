@@ -330,6 +330,7 @@ public int main (string[] args) {
     GLib.Intl.setlocale (GLib.LocaleCategory.ALL, "");
     GLib.Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
     GLib.Intl.textdomain (Config.GETTEXT_PACKAGE);
+    GLib.Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
 
     /* Avoid pointless and confusing recursion */
     GLib.Environment.unset_variable ("GTK_USE_PORTAL");

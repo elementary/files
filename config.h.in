@@ -1,9 +1,11 @@
 #ifndef H_CONFIG_H
 #define H_CONFIG_H
 
+#define GETTEXT_PACKAGE "@gettext_package@"
 #define VERSION "@version@"
 #define PLUGIN_DIR "@plugin_dir@"
 #define TESTDATA_DIR "@testdata_dir@"
+#define LOCALE_DIR "@locale_dir@"
 #define APP_NAME "@app_name@"
 #define TERMINAL_NAME "@terminal_name@"
 

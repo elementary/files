@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-28 00:16+0000\n"
+"PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
-"Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
-">\n"
+"Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/>"
+"\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -854,7 +854,7 @@ msgstr "ਵਿੰਡੋਜ਼ ਸਾਂਝ"
 
 #: libcore/ConnectServerDialog.vala:77
 msgid "WebDAV (HTTP)"
-msgstr "ਵੈੱਬ ਡੀ ਏ ਵੀ (ਐੱਚ ਟੀ ਟੀ ਪੀ)"
+msgstr "ਵੈੱਬਡੀਏਵੀ (ਐੱਚਟੀਟੀਪੀ)"
 
 #: libcore/ConnectServerDialog.vala:84
 msgid "Secure WebDAV (HTTPS)"
