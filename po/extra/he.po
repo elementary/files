@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-17 08:10+0000\n"
-"PO-Revision-Date: 2021-07-31 12:59+0000\n"
+"PO-Revision-Date: 2021-08-17 10:58+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -71,7 +71,7 @@ msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Fix renaming bookmarks in the sidebar"
-msgstr ""
+msgstr "שינוי שם של סימניות בסרגל הצד תוקן"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:82
