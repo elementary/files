@@ -364,8 +364,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     /* Set up as a drag destination. */
     private void set_up_drop () {
-        var drop_revealer_child = new Gtk.Label ("");
-        drop_revealer_child.get_style_context ().add_class (Gtk.STYLE_CLASS_DND);
+        var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+            margin_top = 12,
+            margin_bottom = 0
+        };
 
         drop_revealer = new Gtk.Revealer () {
             transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
@@ -435,18 +437,21 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             var row_height = icon_label_grid.get_allocated_height ();
             var target = Gtk.drag_dest_find_target (this, ctx, null);
+            bool reveal;
             int edge_height;
             if (target.name () == "text/plain") { // Row being dragged
                 edge_height = row_height / 2; //Define thickness of edges
             } else {
-                edge_height = row_height / 4;
+                edge_height = 1;
             }
 
-            var reveal = y > row_height - edge_height;
-            reveal_drop_target (reveal);
-            if (reveal) {
+            reveal = y > row_height - edge_height;
+
+            // Set the suggested action only when revealer state changes
+            if (reveal && !drop_revealer.reveal_child) {
                 current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
-            } else if (drop_text != null &&
+            } else if (!reveal && drop_revealer.reveal_child &&
+                       drop_text != null &&
                        target.name () == "text/uri-list") {
 
                 if (drop_file_list == null) {
@@ -459,6 +464,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     out current_suggested_action
                 );
             }
+
+            reveal_drop_target (reveal);
 
             var pos = get_index ();
             if (pos > 0) {
@@ -560,6 +567,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected void reveal_drop_target (bool reveal) {
-        drop_revealer.reveal_child = reveal;
+        if (drop_revealer.reveal_child != reveal) {
+            drop_revealer.reveal_child = reveal;
+        }
     }
 }
