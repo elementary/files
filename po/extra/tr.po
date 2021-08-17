@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-17 08:10+0000\n"
-"PO-Revision-Date: 2021-08-13 16:42+0000\n"
+"PO-Revision-Date: 2021-08-17 10:58+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Düzeltmeler:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Fix renaming bookmarks in the sidebar"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 #: data/io.elementary.files.appdata.xml.in.in:82
