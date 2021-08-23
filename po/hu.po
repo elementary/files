@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-17 08:10+0000\n"
-"PO-Revision-Date: 2018-06-15 00:00+0000\n"
-"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
-"Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
-"hu/>\n"
+"POT-Creation-Date: 2021-08-23 07:46+0000\n"
+"PO-Revision-Date: 2021-08-23 13:42+0000\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
+"Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
+">\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: src/Application.vala:159
@@ -1119,8 +1119,9 @@ msgid "Merge"
 msgstr "Egyesítés"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Nem határozható meg a(z) \"%s\" eredeti helye "
 
 #: libcore/FileUtils.vala:90
@@ -1215,10 +1216,8 @@ msgstr[1] "megközelítőleg %'d óra"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:1050
-#, fuzzy
-#| msgid " (copy)"
 msgid "copy"
-msgstr " (másolat)"
+msgstr "másolat"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:1052
@@ -1227,10 +1226,8 @@ msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1054
-#, fuzzy
-#| msgid " ("
 msgid "("
-msgstr " ("
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1056
@@ -2074,9 +2071,8 @@ msgid "Restore Selected"
 msgstr "Összes visszaállítása"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " kiválasztva"
+msgstr "Kijelöltek törlése"
 
 #, fuzzy
 #~| msgid "Empty _Trash"

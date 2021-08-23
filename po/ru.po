@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-17 08:10+0000\n"
-"PO-Revision-Date: 2021-08-13 16:42+0000\n"
-"Last-Translator: DartDeaDia <DartDeaDia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"POT-Creation-Date: 2021-08-23 07:46+0000\n"
+"PO-Revision-Date: 2021-08-23 13:42+0000\n"
+"Last-Translator: asdffdsdaf <asdffdsdaf@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1087,8 +1087,8 @@ msgstr "Объединить"
 
 #: libcore/FileUtils.vala:89
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Не удалось определить исходное расположение «%s» "
+msgid "Could not determine original location of \"%s\""
+msgstr "Не удалось определить исходное расположение «%s»"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
