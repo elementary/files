@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
-"PO-Revision-Date: 2021-08-14 00:29+0000\n"
+"PO-Revision-Date: 2021-08-23 18:42+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1072,10 +1072,9 @@ msgid "Merge"
 msgstr "Birleştir"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "\"%s\" özgün konumu belirlenemedi. "
+msgstr "\"%s\" dosyasının özgün konumu belirlenemedi"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
