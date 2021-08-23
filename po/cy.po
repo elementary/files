@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-17 08:10+0000\n"
+"POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2019-07-22 01:24+0000\n"
 "Last-Translator: Christopher Griffiths <chris@cgriff.co.uk>\n"
 "Language-Team: Welsh <https://l10n.elementary.io/projects/files/files/cy/>\n"
@@ -1118,7 +1118,7 @@ msgstr ""
 
 #: libcore/FileUtils.vala:89
 #, c-format
-msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr ""
 
 #: libcore/FileUtils.vala:90
