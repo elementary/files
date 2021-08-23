@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
-"PO-Revision-Date: 2018-06-15 00:00+0000\n"
-"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
-"Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
-"hu/>\n"
+"PO-Revision-Date: 2021-08-23 13:42+0000\n"
+"Last-Translator: saboarpad <saboarpad@outlook.com>\n"
+"Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
+">\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: src/Application.vala:159
@@ -2075,9 +2075,8 @@ msgid "Restore Selected"
 msgstr "Összes visszaállítása"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " kiválasztva"
+msgstr "Kijelöltek törlése"
 
 #, fuzzy
 #~| msgid "Empty _Trash"
