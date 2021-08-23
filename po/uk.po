@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
-"PO-Revision-Date: 2021-08-12 22:56+0000\n"
+"PO-Revision-Date: 2021-08-23 13:42+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -1088,10 +1088,9 @@ msgid "Merge"
 msgstr "Об’єднати"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Не вдається визначити початкове розташування \"%s\" "
+msgstr "Не вдалося визначити початкове розташування «%s»"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
