@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2021-08-24 00:36+0000\n"
-"Last-Translator: László Csatlós <plutoz01@gmail.com>\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -43,7 +43,6 @@ msgid "Enable debug logging"
 msgstr "Hibakereső naplózás engedélyezése"
 
 #: src/Application.vala:170
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
