@@ -1306,9 +1306,9 @@ msgstr "A(z) %s nem csatolható"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:285
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "Biztosan véglegesen törölni akarja a következőt a Kukából: „%B”?"
+msgstr "Biztosan véglegesen törölni akarja a következőt a Kukából: „%s”?"
 
 #: libcore/marlin-file-operations.c:289
 #, c-format
