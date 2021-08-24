@@ -1221,9 +1221,8 @@ msgid "Preparing"
 msgstr "Felkészülés"
 
 #: libcore/StockDialogs.vala:20
-#, fuzzy
 msgid "_Cancel"
-msgstr "Mégsem"
+msgstr "Mégse"
 
 #: libcore/StockDialogs.vala:21
 #, fuzzy
