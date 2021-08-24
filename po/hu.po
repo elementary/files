@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2021-08-24 00:39+0000\n"
-"Last-Translator: saboarpad <saboarpad@outlook.com>\n"
+"Last-Translator: Sziráki Bálint <blntsziraki@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -404,10 +404,8 @@ msgstr "Beillesztés"
 
 #: src/View/AbstractDirectoryView.vala:1960
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Könyvjelzők"
+msgstr "Hozzáadás a könyvjelzőkhöz"
 
 #: src/View/AbstractDirectoryView.vala:1975
 msgid "Cut"
