@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
-"PO-Revision-Date: 2021-08-24 00:36+0000\n"
+"PO-Revision-Date: 2021-08-24 00:38+0000\n"
 "Last-Translator: saboarpad <saboarpad@outlook.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -287,9 +287,8 @@ msgid "Could not open URIs"
 msgstr "Nem lehet átnevezni erre: '%s'"
 
 #: src/Utils/MimeActions.vala:324
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Nem lehet megnyitni a fájlokat és URI-kat ezzel az alkalmazással"
+msgstr "Nem lehet megnyitni a fájlokat vagy URI-kat ezzel az alkalmazással"
 
 #: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1851
 msgid "New Tab"
@@ -353,9 +352,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1127
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Ez a fájl nem nyitható meg"
+msgstr "Fájl nem futtatható"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
 #: src/View/AbstractDirectoryView.vala:826
