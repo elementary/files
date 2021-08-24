@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2021-08-24 00:38+0000\n"
-"Last-Translator: saboarpad <saboarpad@outlook.com>\n"
+"Last-Translator: László Csatlós <plutoz01@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -282,9 +282,8 @@ msgid "Failed to open files"
 msgstr "Nem sikerült megnyitni a fájlokat"
 
 #: src/Utils/MimeActions.vala:321
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Nem lehet átnevezni erre: '%s'"
+msgstr "Nem nyithatók meg a megadott URI-k"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
@@ -343,12 +342,8 @@ msgid "Create the folder \"%s\""
 msgstr "A(z) \"%s\" mappa létrehozása"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"Mappa létrehozása sikertelen\n"
-"\n"
-"%s"
+msgstr "Mappa létrehozása sikertelen"
 
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1127
