@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2021-08-24 01:08+0000\n"
-"Last-Translator: László Csatlós <plutoz01@gmail.com>\n"
+"Last-Translator: zoli111 <acszoltan111@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -1317,7 +1317,7 @@ msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
 
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "A törölt elemek nem kerülnek kukába és nem visszaállíthatóak."
 
 #: libcore/marlin-file-operations.c:375
 #, c-format
