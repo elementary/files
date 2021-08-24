@@ -370,7 +370,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         };
 
         drop_revealer = new Gtk.Revealer () {
-            transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
+            transition_type = Gtk.RevealerTransitionType.SLIDE_UP
         };
         drop_revealer.add (drop_revealer_child);
         drop_revealer.show_all ();
