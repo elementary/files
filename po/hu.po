@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2021-08-24 00:41+0000\n"
-"Last-Translator: László Csatlós <plutoz01@gmail.com>\n"
+"Last-Translator: Sziráki Bálint <blntsziraki@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -615,7 +615,7 @@ msgstr "A nemrég használt fájlok megtekintése"
 #: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s szabad"
 
 #: src/View/Sidebar/DeviceRow.vala:119
 #, fuzzy, c-format
@@ -687,7 +687,7 @@ msgstr "Könyvjelzők"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Gyakori helyek, valamint mentett mappák és fájlok"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
@@ -696,7 +696,7 @@ msgstr ""
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Belső és csatlakoztatott tárolóeszközök"
 
 #: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
 msgid "Network"
@@ -704,7 +704,7 @@ msgstr "Hálózat"
 
 #: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Hálózat segítségével elérhető eszközök és helyek"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
 #, fuzzy
