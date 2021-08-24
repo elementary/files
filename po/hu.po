@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2021-08-24 00:36+0000\n"
-"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
+"Last-Translator: Cleiton Floss <cleitonfloss@tutanota.de>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/Application.vala:159
 msgid "Show the version of the program"
-msgstr "A program verziószámának megjelenítése."
+msgstr "A program verziószámának megjelenítése"
 
 #: src/Application.vala:161
 #, fuzzy
@@ -36,7 +36,7 @@ msgstr "Új ablak"
 
 #: src/Application.vala:165
 msgid "Quit Files"
-msgstr "Kilépés a fájlkezelőből."
+msgstr "Kilépés a fájlkezelőből"
 
 #: src/Application.vala:167
 msgid "Enable debug logging"
