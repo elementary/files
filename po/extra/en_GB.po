@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-24 16:03+0000\n"
-"PO-Revision-Date: 2021-08-18 00:26+0000\n"
+"PO-Revision-Date: 2021-08-24 18:36+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
@@ -80,10 +80,8 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "Fix renaming bookmarks in the sidebar"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
-#, fuzzy
-#| msgid "Fix color tags disappearing when thumbnails hidden"
 msgid "FIx an issue with showing color tags when thumbnails are hidden"
-msgstr "Fix colour tags disappearing when thumbnails hidden"
+msgstr "FIx an issue with showing colour tags when thumbnails are hidden"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:83
