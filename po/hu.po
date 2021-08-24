@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
-"PO-Revision-Date: 2021-08-24 00:42+0000\n"
-"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
+"PO-Revision-Date: 2021-08-24 00:43+0000\n"
+"Last-Translator: László Csatlós <plutoz01@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -1153,15 +1153,15 @@ msgstr "Ma ekkor: %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:677
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Tegnap ekkor %-H:%M"
+msgstr "Tegnap ekkor: %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:685
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A ekkor %-H:%M"
+msgstr "%%A ekkor: %s"
 
 #: libcore/FileUtils.vala:1027
 #, c-format
