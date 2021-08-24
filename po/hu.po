@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
 "PO-Revision-Date: 2021-08-24 01:08+0000\n"
-"Last-Translator: Szabó Gyuszi <gyhun95@gmail.com>\n"
+"Last-Translator: László Csatlós <plutoz01@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -1333,11 +1333,11 @@ msgstr "Fájlok törlése"
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
 #: libcore/marlin-file-operations.c:395
-#, fuzzy, c-format
+#, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "%T van hátra"
-msgstr[1] "%T van hátra"
+msgstr[0] "%s van hátra"
+msgstr[1] "%s van hátra"
 
 #: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
 #: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
@@ -1348,22 +1348,22 @@ msgstr "Hiba törléskor."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:470
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"A(z) „%B” mappa fájljai nem törölhetők, mert nincs jogosultsága látni azokat."
+"A(z) „%s” mappa fájljai nem törölhetők, mert nincs jogosultsága látni azokat."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:475 libcore/marlin-file-operations.c:1203
 #: libcore/marlin-file-operations.c:2216
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
-"Hiba történt a(z) „%B” mappa fájljaival kapcsolatos információk lekérésekor."
+"Hiba történt a(z) „%s” mappa fájljaival kapcsolatos információk lekérésekor."
 
 #: libcore/marlin-file-operations.c:487 libcore/marlin-file-operations.c:2228
 msgid "_Skip files"
@@ -1372,31 +1372,31 @@ msgstr "Fájlok _kihagyása"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:511
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr "A(z) „%B” mappa nem törölhető, mert nincs rá olvasási joga."
+msgstr "A(z) „%s” mappa nem törölhető, mert nincs rá olvasási joga."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:516 libcore/marlin-file-operations.c:1250
 #: libcore/marlin-file-operations.c:2270
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "Hiba történt a(z) „%B” mappa olvasása közben."
+msgstr "Hiba történt a(z) „%s” mappa olvasása közben."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:557
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "A(z) %B mappa nem távolítható el."
+msgstr "A(z) %s mappa nem távolítható el."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:641
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error deleting %s."
-msgstr "Hiba történt a(z) %B törlése közben."
+msgstr "Hiba történt a(z) %s törlése közben."
 
 #: libcore/marlin-file-operations.c:728
 msgid "Moving files to trash"
@@ -1478,33 +1478,33 @@ msgstr "Fájlok törlése"
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1073
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Felkészülés %'d fájl másolására (%S)"
-msgstr[1] "Felkészülés %'d fájl másolására (%S)"
+msgstr[0] "Felkészülés %'d fájl másolására (%s)"
+msgstr[1] "Felkészülés %'d fájl másolására (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1085
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "Felkészülés %'d fájl áthelyezésére (%S)"
-msgstr[1] "Felkészülés %'d fájl áthelyezésére (%S)"
+msgstr[0] "Felkészülés %'d fájl áthelyezésére (%s)"
+msgstr[1] "Felkészülés %'d fájl áthelyezésére (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1097
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "Felkészülés %'d fájl törlésére (%S)"
-msgstr[1] "Felkészülés %'d fájl törlésére (%S)"
+msgstr[0] "Felkészülés %'d fájl törlésére (%s)"
+msgstr[1] "Felkészülés %'d fájl törlésére (%s)"
 
 #: libcore/marlin-file-operations.c:1104
 #, c-format
@@ -1559,17 +1559,17 @@ msgstr "A(z) \"%s\" fájl nem kezelhető, mert nincs rá olvasási joga."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1339
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error getting information about \"%s\"."
-msgstr "Hiba történt az információkéréskor a következőről: \"%B\"."
+msgstr "Hiba történt az információkéréskor a következőről: „%s”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1447 libcore/marlin-file-operations.c:1495
 #: libcore/marlin-file-operations.c:1535 libcore/marlin-file-operations.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying to \"%s\"."
-msgstr "Hiba a(z) \"%B\" helyre másoláskor."
+msgstr "Hiba a(z) „%s” helyre másoláskor."
 
 #: libcore/marlin-file-operations.c:1452
 msgid "You do not have permissions to access the destination folder."
@@ -1594,9 +1594,9 @@ msgstr ""
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
 #: libcore/marlin-file-operations.c:1543
-#, fuzzy, c-format
+#, c-format
 msgid "There is %s available, but %s is required."
-msgstr "%S érhető el, de %S szükséges."
+msgstr "%s érhető el, de %s szükséges."
 
 #: libcore/marlin-file-operations.c:1579
 msgid "The destination is read-only."
@@ -1605,14 +1605,14 @@ msgstr "A cél írásvédett."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1653
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "„%B” áthelyezése ide: „%B”"
+msgstr "„%s” áthelyezése ide: „%s”"
 
 #: libcore/marlin-file-operations.c:1654
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "„%B” másolása ide: „%B”"
+msgstr "„%s” másolása ide: „%s”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1705,9 +1705,9 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2073
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Hiba történt a(z) \"%B\" mappa létrehozásakor."
+msgstr "Hiba történt a(z) „%s” mappa létrehozásakor."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
