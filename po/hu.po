@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-23 07:46+0000\n"
-"PO-Revision-Date: 2021-08-24 01:08+0000\n"
-"Last-Translator: zoli111 <acszoltan111@gmail.com>\n"
+"PO-Revision-Date: 2021-08-24 06:44+0000\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -1406,8 +1406,8 @@ msgstr "Fájlok áthelyezése a Kukába"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "%'d fájl maradt Kukába való áthelyezésből"
-msgstr[1] "%'d fájl maradt Kukába való áthelyezésből"
+msgstr[0] "%'d fájl maradt a Kukába való áthelyezésből"
+msgstr[1] "%'d fájl maradt a Kukába való áthelyezésből"
 
 #: libcore/marlin-file-operations.c:828 libcore/marlin-file-operations.c:831
 #: libcore/marlin-file-operations.c:834
