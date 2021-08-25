@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-24 16:03+0000\n"
-"PO-Revision-Date: 2021-08-23 13:42+0000\n"
+"PO-Revision-Date: 2021-08-25 11:21+0000\n"
 "Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
@@ -84,11 +84,10 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "Behebt einen Fehler beim Umbenennen der Favoriten in der Seitenleiste"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
-#, fuzzy
-#| msgid "Fix color tags disappearing when thumbnails hidden"
 msgid "FIx an issue with showing color tags when thumbnails are hidden"
 msgstr ""
-"Korrigiert das Verschwinden von Farb-Tags beim Ausblenden von Vorschaubildern"
+"Korrigiert einen Fehler bei der Darstellung von Farb-Tags wenn "
+"Vorschaubilder ausgeblendet sind"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:83
