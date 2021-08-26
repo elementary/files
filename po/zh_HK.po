@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 22:13+0000\n"
+"POT-Creation-Date: 2021-08-24 16:03+0000\n"
 "PO-Revision-Date: 2018-01-20 00:04+0000\n"
 "Last-Translator: Wendel Hime <wendelhime@hotmail.com>\n"
 "Language-Team: zh (generated) <https://weblate.elementary.io/projects/files/"
@@ -493,26 +493,26 @@ msgstr ""
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -1076,7 +1076,7 @@ msgstr ""
 
 #: libcore/FileUtils.vala:89
 #, c-format
-msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr ""
 
 #: libcore/FileUtils.vala:90

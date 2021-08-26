@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-06 19:51+0000\n"
+"POT-Creation-Date: 2021-08-24 16:03+0000\n"
+"PO-Revision-Date: 2021-08-23 13:42+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -501,26 +501,26 @@ msgstr "חדש"
 msgid "Untitled %s"
 msgstr "%s ללא שם"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "לא ניתן להסיר מכאן קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "אין לך הרשאות לשנות את המיקום הזה"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "לא ניתן להעתיק קבצים שנמצאים באשפה"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "גזירת הבחירה במקום"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
@@ -1072,8 +1072,8 @@ msgstr "מיזוג"
 
 #: libcore/FileUtils.vala:89
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "לא ניתן לאתר את המיקום המקורי של „%s” "
+msgid "Could not determine original location of \"%s\""
+msgstr "לא ניתן לאתר את המיקום המקורי של „%s”"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"

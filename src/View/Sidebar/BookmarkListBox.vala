@@ -171,6 +171,10 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         });
     }
 
+    public virtual void rename_bookmark_by_uri (string uri, string new_name) {
+        bookmark_list.rename_item_with_uri (uri, new_name);
+    }
+
     public override bool add_favorite (string uri,
                                        string? label = null,
                                        int pos = 0) {

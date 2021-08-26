@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 22:13+0000\n"
+"POT-Creation-Date: 2021-08-24 16:03+0000\n"
 "PO-Revision-Date: 2021-07-07 06:53+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
@@ -504,26 +504,26 @@ msgstr "Novo"
 msgid "Untitled %s"
 msgstr "%s Sem Nome"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Não é possível remover ficheiros daqui"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Não tem permissões para mudar este local"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Não é possível copiar os ficheiros que estão no lixo"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Então cortar a seleção"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Não pode colar ficheiros aqui"
 
@@ -1075,8 +1075,9 @@ msgid "Merge"
 msgstr "Juntar"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Não foi possível determinar a localização original de \"%s\" "
 
 #: libcore/FileUtils.vala:90

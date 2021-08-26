@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 22:13+0000\n"
+"POT-Creation-Date: 2021-08-24 16:03+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -517,26 +517,26 @@ msgstr "Naujas"
 msgid "Untitled %s"
 msgstr "Be pavadinimo %s"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Failai negali būti iš čia pašalinti"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Jūs neturite leidimų keisti šios vietos"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Nepavyksta nukopijuoti failų, kurie yra šiukšlinėje"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Vietoj to, iškerpamas pasirinkimas"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
@@ -1117,8 +1117,9 @@ msgid "Merge"
 msgstr "Sulieti"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Nepavyko nustatyti pradinės \"%s\" vietos "
 
 #: libcore/FileUtils.vala:90

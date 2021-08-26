@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 22:13+0000\n"
+"POT-Creation-Date: 2021-08-24 16:03+0000\n"
 "PO-Revision-Date: 2020-05-31 21:38+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -512,26 +512,26 @@ msgstr "Novo"
 msgid "Untitled %s"
 msgstr "Sem título %s"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Não é possível remover arquivos daqui"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Você não tem permissão para alterar este local"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Não é possível copiar os arquivos que estão na lixeira"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Cortar a seleção ao invés"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Não é possível colar arquivos aqui"
 
@@ -1104,8 +1104,9 @@ msgid "Merge"
 msgstr "Mesclar"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Não foi possível determinar a localização original de \"%s\" "
 
 #: libcore/FileUtils.vala:90

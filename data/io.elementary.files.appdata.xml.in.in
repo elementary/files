@@ -56,6 +56,19 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="6.0.2" date="2021-08-23" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix renaming bookmarks in the sidebar</li>
+          <li>FIx an issue with showing color tags when thumbnails are hidden</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.0.1" date="2021-08-02" urgency="medium">
       <description>
         <p>Fixes:</p>

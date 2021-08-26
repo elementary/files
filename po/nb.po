@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-30 22:13+0000\n"
-"PO-Revision-Date: 2021-07-06 22:57+0000\n"
+"POT-Creation-Date: 2021-08-24 16:03+0000\n"
+"PO-Revision-Date: 2021-08-21 12:58+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -506,26 +506,26 @@ msgstr "Ny"
 msgid "Untitled %s"
 msgstr "Uten navn %s"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Filer kan ikke fjernes herfra"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke tilgang til å endre denne plasseringen"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer som er i papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Klipper ut utvalget i stedet"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Filer kan ikke limes inn her"
 
@@ -1078,8 +1078,9 @@ msgid "Merge"
 msgstr "Slå sammen"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Kunne ikke fastslå opprinnelig lokasjon for «%s» "
 
 #: libcore/FileUtils.vala:90
@@ -1142,7 +1143,7 @@ msgstr "I går kl. %s"
 #: libcore/FileUtils.vala:685
 #, c-format
 msgid "%%A at %s"
-msgstr "%A den %s"
+msgstr "%%A den %s"
 
 #: libcore/FileUtils.vala:1027
 #, c-format
