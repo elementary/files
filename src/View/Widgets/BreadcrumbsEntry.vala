@@ -432,13 +432,15 @@ namespace Files.View.Chrome {
                 files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
                     append_subdirectories (menu, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
+                    // Do not show popup until all children have been appended.
+                    menu.show_all ();
+                    menu.popup_at_pointer (event);
                 });
             } else {
                 warning ("Root directory null for %s", path);
+                menu.show_all ();
+                menu.popup_at_pointer (event);
             }
-
-            menu.show_all ();
-            menu.popup_at_pointer (event);
 
             if (files_menu_dir != null) {
                 files_menu_dir.init ();

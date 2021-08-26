@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 07:46+0000\n"
-"PO-Revision-Date: 2021-08-23 13:42+0000\n"
-"Last-Translator: asdffdsdaf <asdffdsdaf@gmail.com>\n"
+"POT-Creation-Date: 2021-08-24 16:03+0000\n"
+"PO-Revision-Date: 2021-08-26 12:02+0000\n"
+"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -43,7 +43,7 @@ msgstr "Включить журналирование в целях отладк
 
 #: src/Application.vala:170
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: src/Application.vala:173
 msgid ""
@@ -1949,7 +1949,7 @@ msgstr "Произошла ошибка при создании файла %s."
 #: libcore/marlin-file-operations.c:4743
 #, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Произошла ошибка при создании папки в %s."
+msgstr "Произошла ошибка при создании каталога в %s."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
