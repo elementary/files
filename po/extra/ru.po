@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-26 21:31+0000\n"
-"PO-Revision-Date: 2021-08-26 12:02+0000\n"
-"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
-">\n"
+"PO-Revision-Date: 2021-08-26 21:38+0000\n"
+"Last-Translator: asdffdsdaf <asdffdsdaf@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -444,7 +444,7 @@ msgstr "Показ значков на пользовательских расш
 
 #: data/io.elementary.files.appdata.xml.in.in:236
 msgid "Fix appearance of inactive diskspace indicator"
-msgstr "Исправлено появление индикатора неактивного дискового пространства"
+msgstr "Исправлен вид индикатора неактивного дискового пространства"
 
 #: data/io.elementary.files.appdata.xml.in.in:237
 msgid "Improve pathbar animation"
