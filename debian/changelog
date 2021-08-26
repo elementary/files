@@ -1,3 +1,19 @@
+pantheon-files (6.0.2) bionic; urgency=medium
+
+  * Release 6.0.2 (#1812)
+  * Update translation template
+  * Allow bookmarking one selected item with shortcut (#1788)
+  * Do not show breadcrumb context menu until all children appended
+    (#1766)
+  * Improve drop onto/between sidebar bookmarks (#1790)
+  * Update translation files
+  * FileUtils: Remove unnecessary trailing whitespace (#1809)
+  * Implement actually saving the renamed bookmark (#1783)
+  * Fix regression in showing color tags when hiding thumbnails (#1789)
+  * l10n: Correctly setup the locales (#1780)
+
+ -- Cody Garver <cody@elementary.io>  Thu, 26 Aug 2021 21:39:20 +0000
+
 pantheon-files (6.0.1) bionic; urgency=medium
 
   * Release 6.0.1 (#1776)
