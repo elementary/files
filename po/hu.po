@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-26 21:31+0000\n"
 "PO-Revision-Date: 2021-08-27 16:22+0000\n"
-"Last-Translator: Sziráki Bálint <blntsziraki@gmail.com>\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -346,7 +346,7 @@ msgstr "Mappa létrehozása sikertelen"
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1127
 msgid "Cannot execute this file"
-msgstr "Ez a fájl nem nyitható meg"
+msgstr "Ez a fájl nem futtatható"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
 #: src/View/AbstractDirectoryView.vala:826
