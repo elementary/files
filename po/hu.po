@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-26 21:31+0000\n"
-"PO-Revision-Date: 2021-08-27 16:19+0000\n"
-"Last-Translator: GamerSuper <tok07125@protonmail.com>\n"
+"PO-Revision-Date: 2021-08-27 16:20+0000\n"
+"Last-Translator: saboarpad <saboarpad@outlook.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
 "Language: hu\n"
@@ -175,7 +175,7 @@ msgstr "Törölve:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
-msgstr "Médiatípus:"
+msgstr "Média típusa:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
