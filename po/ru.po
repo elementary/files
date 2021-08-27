@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-26 21:31+0000\n"
-"PO-Revision-Date: 2021-08-26 12:02+0000\n"
+"PO-Revision-Date: 2021-08-27 17:39+0000\n"
 "Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -738,7 +738,7 @@ msgstr ""
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr "Ищите или введите путь"
+msgstr "Искать или ввести путь"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
