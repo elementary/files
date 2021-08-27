@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-26 21:31+0000\n"
-"PO-Revision-Date: 2021-08-24 18:36+0000\n"
+"PO-Revision-Date: 2021-08-27 22:18+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -80,7 +80,7 @@ msgstr "Виправлення:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Fix small context menus on breadcrumbs"
-msgstr ""
+msgstr "Виправте маленькі контекстні меню елементах переходів"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix bookmarking a single selected item with Ctrl + D"
