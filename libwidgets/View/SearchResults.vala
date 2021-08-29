@@ -70,12 +70,13 @@ namespace Files.View.Chrome {
             }
 
             public Match.from_bookmark (Bookmark bookmark, SearchResults.Category category) {
-                Object (name: Markup.escape_text (bookmark.label),
+                Object (name: Markup.escape_text (bookmark.basename),
                         mime: "inode/directory",
                         icon: bookmark.get_icon (),
                         path_string: "",
                         file: bookmark.get_location (),
-                        sortkey: category.to_string () + bookmark.label);
+                        sortkey: category.to_string () + bookmark.basename
+                );
             }
 
             public Match.ellipsis (SearchResults.Category category) {
@@ -400,7 +401,7 @@ namespace Files.View.Chrome {
             var bookmarks_matched = new Gee.LinkedList<Match> ();
             var begins_with = false;
             foreach (var bookmark in BookmarkList.get_instance ().list) {
-                if (term_matches (search_term, bookmark.label, out begins_with)) {
+                if (term_matches (search_term, bookmark.basename, out begins_with)) {
                     var category = begins_with ? Category.BOOKMARK_BEGINS : Category.BOOKMARK_CONTAINS;
                     bookmarks_matched.add (new Match.from_bookmark (bookmark, category));
                 }

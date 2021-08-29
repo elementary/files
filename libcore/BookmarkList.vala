@@ -135,15 +135,15 @@ namespace Files {
             return instance;
         }
 
-        public Bookmark insert_uri (string uri, uint index, string? label = null) {
-            var bm = new Bookmark.from_uri (uri, label);
+        public Bookmark insert_uri (string uri, uint index, string custom_name = "") {
+            var bm = new Bookmark.from_uri (uri, custom_name);
             insert_item_internal (bm, index);
             save_bookmarks_file ();
             return bm;
         }
 
-        public Bookmark insert_uri_at_end (string uri, string? label = null) {
-            var bm = new Bookmark.from_uri (uri, label);
+        public Bookmark insert_uri_at_end (string uri, string custom_name = "") {
+            var bm = new Bookmark.from_uri (uri, custom_name);
             append_internal (bm);
             save_bookmarks_file ();
             return bm;
@@ -155,7 +155,7 @@ namespace Files {
                 return;
             }
             uris.@foreach ((uri) => {
-                insert_item_internal (new Bookmark.from_uri (uri, null), index);
+                insert_item_internal (new Bookmark.from_uri (uri), index);
                 index++;
             });
             save_bookmarks_file ();
@@ -179,7 +179,7 @@ namespace Files {
         public void rename_item_with_uri (string uri, string new_name) {
             foreach (unowned Files.Bookmark bookmark in list) {
                 if (uri == bookmark.uri) {
-                    bookmark.label = new_name;
+                    bookmark.custom_name = new_name;
                     save_bookmarks_file ();
                     return;
                 }
@@ -335,7 +335,7 @@ namespace Files {
 
             list.@foreach ((bookmark) => {
                 sb.append (bookmark.uri);
-                sb.append (" " + bookmark.label);
+                sb.append (" " + bookmark.custom_name);
                 sb.append ("\n");
             });
 
