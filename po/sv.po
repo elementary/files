@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 16:58+0000\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -398,7 +398,7 @@ msgid "Open in"
 msgstr "Öppna med"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "Öppna med"
 
@@ -516,26 +516,26 @@ msgstr "Ny"
 msgid "Untitled %s"
 msgstr "Namnlös %s"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Det går inte att ta bort filer härifrån"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Du har inte behörighet att ändra den här platsen"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan inte kopiera filer som ligger i papperskorgen"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Klipper ut markeringen istället"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Kan inte kopiera filer hit"
 
@@ -758,15 +758,15 @@ msgstr ""
 msgid "Search or Type Path"
 msgstr "Sök eller skriv sökväg"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Öppna i ny flik"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Öppna i nytt fönster"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "Öppna med annat program…"
 
@@ -1108,8 +1108,9 @@ msgid "Merge"
 msgstr "Slå samman"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Kunde inte fastställa ursprunglig plats för \"%s\" "
 
 #: libcore/FileUtils.vala:90

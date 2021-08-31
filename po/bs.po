@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 16:58+0000\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
 "PO-Revision-Date: 2018-11-11 00:08+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/files/files/"
@@ -407,7 +407,7 @@ msgid "Open in"
 msgstr "Otvori u"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "Otvori pomoću"
 
@@ -525,26 +525,26 @@ msgstr "Novi"
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Odavde se ne mogu ukloniti datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Nemate dozvolu za promjenu ove lokacije"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Datoteke u otpadu se ne mogu kopirati"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Odabrani objekti će umjesto toga biti izrezani"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Ovdje se ne mogu zalijepiti datoteke"
 
@@ -767,15 +767,15 @@ msgstr ""
 msgid "Search or Type Path"
 msgstr "Pretraži ili ukucaj putanju"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Otvori u novom tabu"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Otvori u novom prozoru"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "Otvori u drugoj aplikaciji…"
 
@@ -1121,8 +1121,9 @@ msgid "Merge"
 msgstr "Spoji"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Nije moguće odrediti originalnu lokaciju id \"%s\" "
 
 #: libcore/FileUtils.vala:90

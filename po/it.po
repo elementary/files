@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 16:58+0000\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -396,7 +396,7 @@ msgid "Open in"
 msgstr "Apri con"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "Apri con"
 
@@ -509,26 +509,26 @@ msgstr "Nuovo"
 msgid "Untitled %s"
 msgstr "%s senza nome"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Non è possibile rimuovere i file da qui"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Non disponi dei permessi necessari per modificare questa posizione"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Non è possibile copiare i file che si trovano nel cestino"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Tagliare la selezione al suo posto"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Non è possibile incollare i file qui"
 
@@ -749,15 +749,15 @@ msgstr "Apri la voce sicurezza e privacy delle impostazioni di sistema"
 msgid "Search or Type Path"
 msgstr "Ricerca o inserisci il percorso"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Apri in una nuova scheda"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Apri in una nuova finestra"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "Apri in un'altra applicazione…"
 
@@ -1100,8 +1100,9 @@ msgid "Merge"
 msgstr "Unisci"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Non è possibile determinare la posizione originale di \"%s\" "
 
 #: libcore/FileUtils.vala:90

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-23 15:34+0000\n"
-"Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
+"PO-Revision-Date: 2021-08-27 17:39+0000\n"
+"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -43,7 +43,7 @@ msgstr "Включить журналирование в целях отладк
 
 #: src/Application.vala:170
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: src/Application.vala:173
 msgid ""
@@ -400,7 +400,7 @@ msgid "Open in"
 msgstr "Открыть в"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "Открыть с помощью"
 
@@ -511,26 +511,26 @@ msgstr "Создать"
 msgid "Untitled %s"
 msgstr "Безымянный «%s»"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Не удалось удалить файлы отсюда"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "У вас нет прав на изменение этого расположения"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Невозможно копировать файлы, находящиеся в корзине"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Вырезать невыделенное"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Не удалось вставить файлы сюда"
 
@@ -684,7 +684,7 @@ msgstr "Общедоступные места а также закреплены
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr "Хранилище"
+msgstr "Накопитель"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
@@ -738,17 +738,17 @@ msgstr ""
 #: src/View/Widgets/BreadcrumbsEntry.vala:135
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr "Ищите или введите путь"
+msgstr "Искать или ввести путь"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Открыть в новой вкладке"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Открыть в новом окне"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "Открыть в другом приложении…"
 
@@ -1087,8 +1087,8 @@ msgstr "Объединить"
 
 #: libcore/FileUtils.vala:89
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Не удалось определить исходное расположение «%s» "
+msgid "Could not determine original location of \"%s\""
+msgstr "Не удалось определить исходное расположение «%s»"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
@@ -1949,7 +1949,7 @@ msgstr "Произошла ошибка при создании файла %s."
 #: libcore/marlin-file-operations.c:4743
 #, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Произошла ошибка при создании папки в %s."
+msgstr "Произошла ошибка при создании каталога в %s."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"

@@ -45,6 +45,8 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         }
     }
 
+    public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
+
     public virtual void remove_bookmark_by_uri (string uri) {
         SidebarItemInterface? row = null;
         if (has_uri (uri, out row)) {

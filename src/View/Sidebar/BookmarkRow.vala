@@ -130,7 +130,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             editable = new Gtk.Entry ();
             label_stack.add_named (editable, "editable");
             editable.activate.connect (() => {
-                custom_name = editable.text;
+                if (custom_name != editable.text) {
+                    custom_name = editable.text;
+                    list.rename_bookmark_by_uri (uri, custom_name);
+                }
                 label_stack.visible_child_name = "label";
             });
 
@@ -361,11 +364,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     /* Set up as a drag destination. */
     private void set_up_drop () {
-        var drop_revealer_child = new Gtk.Label ("");
-        drop_revealer_child.get_style_context ().add_class (Gtk.STYLE_CLASS_DND);
+        var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+            margin_top = 12,
+            margin_bottom = 0
+        };
 
         drop_revealer = new Gtk.Revealer () {
-            transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
+            transition_type = Gtk.RevealerTransitionType.SLIDE_UP
         };
         drop_revealer.add (drop_revealer_child);
         drop_revealer.show_all ();
@@ -432,20 +437,21 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             var row_height = icon_label_grid.get_allocated_height ();
             var target = Gtk.drag_dest_find_target (this, ctx, null);
+            bool reveal;
             int edge_height;
             if (target.name () == "text/plain") { // Row being dragged
                 edge_height = row_height / 2; //Define thickness of edges
             } else {
-                edge_height = row_height / 4;
+                edge_height = 1;
             }
 
-            var reveal = y > row_height - edge_height;
+            reveal = y > row_height - edge_height;
 
             if (reveal_drop_target (reveal)) {
+                // Drop between bookmarks
                 current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
-            } else if (drop_text != null &&
-                       target.name () == "text/uri-list") {
-
+            } else if (drop_text != null && target.name () == "text/uri-list") {
+                // Drop onto bookmark
                 if (drop_file_list == null) {
                     drop_file_list = Files.FileUtils.files_from_uris (drop_text);
                 }

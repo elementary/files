@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-17 23:15+0000\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
+"PO-Revision-Date: 2021-08-23 13:42+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -403,7 +403,7 @@ msgid "Open in"
 msgstr "Відкрити у"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "Відкрити за допомогою"
 
@@ -487,7 +487,7 @@ msgstr "Дата"
 
 #: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
-msgstr "В зворотному порядку"
+msgstr "У зворотному порядку"
 
 #: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
@@ -514,26 +514,26 @@ msgstr "Створити"
 msgid "Untitled %s"
 msgstr "Неназваний %s"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Не можливо вилучити файли звідси"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "У вас немає дозволу змінювати це розташування"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Неможливо копіювати файли зі смітника"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Натомість вирізаю виділене"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Неможливо вставити файли сюди"
 
@@ -742,15 +742,15 @@ msgstr "Відкрити застосунок налаштувань безпе�
 msgid "Search or Type Path"
 msgstr "Шукати або ввести шлях"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Відкрити у новій вкладці"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Відкрити у новому вікні"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "Відкрити в іншому застосунку…"
 
@@ -1089,8 +1089,8 @@ msgstr "Об’єднати"
 
 #: libcore/FileUtils.vala:89
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Не вдається визначити початкове розташування \"%s\" "
+msgid "Could not determine original location of \"%s\""
+msgstr "Не вдалося визначити початкове розташування «%s»"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
