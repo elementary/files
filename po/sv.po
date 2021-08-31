@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 17:05+0000\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -237,7 +237,7 @@ msgstr[1] "%u filer"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -312,11 +312,11 @@ msgstr "(som administratör)"
 msgid "Filename"
 msgstr "Filnamn"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2172
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2176
 msgid "Size"
 msgstr "Storlek"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2177
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2181
 msgid "Type"
 msgstr "Filtyp"
 
@@ -398,7 +398,7 @@ msgid "Open in"
 msgstr "Öppna med"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "Öppna med"
 
@@ -462,80 +462,80 @@ msgstr "Klistra in länk i mapp"
 msgid "Paste into Folder"
 msgstr "Klistra in i mapp"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Show Hidden Files"
 msgstr "Visa dolda filer"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Show Remote Thumbnails"
 msgstr "Visa externa miniatyrbilder"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2097
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Visa externa miniatyrbilder"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Paste Link"
 msgstr "Klistra in länk"
 
-#: src/View/AbstractDirectoryView.vala:2167
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Name"
 msgstr "Namn"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Date"
 msgstr "Datum"
 
-#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2191
 msgid "Reversed Order"
 msgstr "Omvänd ordning"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2194
 msgid "Folders Before Files"
 msgstr "Mappar före filer"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2206
 msgid "Sort by"
 msgstr "Sortera efter"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2214
 msgid "Folder"
 msgstr "Mapp"
 
-#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2220
 msgid "Empty File"
 msgstr "Tom fil"
 
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2271
 msgid "New"
 msgstr "Ny"
 
-#: src/View/AbstractDirectoryView.vala:2507
+#: src/View/AbstractDirectoryView.vala:2511
 #, c-format
 msgid "Untitled %s"
 msgstr "Namnlös %s"
 
-#: src/View/AbstractDirectoryView.vala:2870
-#: src/View/AbstractDirectoryView.vala:3071
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "Det går inte att ta bort filer härifrån"
 
-#: src/View/AbstractDirectoryView.vala:2871
-#: src/View/AbstractDirectoryView.vala:3056
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "Du har inte behörighet att ändra den här platsen"
 
-#: src/View/AbstractDirectoryView.vala:3025
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan inte kopiera filer som ligger i papperskorgen"
 
-#: src/View/AbstractDirectoryView.vala:3026
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "Klipper ut markeringen istället"
 
-#: src/View/AbstractDirectoryView.vala:3055
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "Kan inte kopiera filer hit"
 
@@ -621,12 +621,12 @@ msgstr "Öppna papperskorgen"
 msgid "View the root of the local filesystem"
 msgstr "Visa listan över senast använda filer"
 
-#: src/View/Sidebar/DeviceRow.vala:116
+#: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/DeviceRow.vala:117
+#: src/View/Sidebar/DeviceRow.vala:119
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S av %S"
@@ -671,13 +671,19 @@ msgstr "_Avmontera"
 msgid "_Eject"
 msgstr "Mata _ut"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
 #, fuzzy
 #| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
 msgstr "Radera alla objekt i papperskorgen permanent?"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
+#: src/View/Sidebar/PopupMenuBuilder.vala:97
+#, fuzzy
+#| msgid "Permanently delete all items from Trash?"
+msgid "Permanently Delete Trash"
+msgstr "Radera alla objekt i papperskorgen permanent?"
+
+#: src/View/Sidebar/PopupMenuBuilder.vala:104
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
@@ -752,15 +758,15 @@ msgstr ""
 msgid "Search or Type Path"
 msgstr "Sök eller skriv sökväg"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Öppna i ny flik"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Öppna i nytt fönster"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "Öppna med annat program…"
 
@@ -780,12 +786,12 @@ msgstr "Ladda om den här mappen"
 msgid "Searching…"
 msgstr "Söker…"
 
-#: src/View/Widgets/OverlayBar.vala:209
+#: src/View/Widgets/OverlayBar.vala:210
 #, c-format
 msgid "%u folders"
 msgstr "%u mappar"
 
-#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
+#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
 #, fuzzy, c-format
 #| msgid " and %u other item (%s) selected"
 msgid " and %u other item (%s) selected"
@@ -793,17 +799,17 @@ msgid_plural " and %u other items (%s) selected"
 msgstr[0] " och %u andra objekt (%s) är valda"
 msgstr[1] " och %u andra objekt (%s) är valda"
 
-#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 msgid " selected"
 msgstr " valda"
 
-#: src/View/Widgets/OverlayBar.vala:228
+#: src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u objekt valda (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:272
+#: src/View/Widgets/OverlayBar.vala:273
 #, fuzzy, c-format
 #| msgid "%u sub-folder, "
 msgid "%u sub-folder, "
@@ -812,7 +818,7 @@ msgstr[0] "%u undermapp, "
 msgstr[1] "%u undermapp, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:278
+#: src/View/Widgets/OverlayBar.vala:279
 #, fuzzy, c-format
 #| msgid "%u file, "
 msgid "%u file, "
@@ -821,18 +827,18 @@ msgstr[0] "%u fil, "
 msgstr[1] "%u fil, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:288
+#: src/View/Widgets/OverlayBar.vala:289
 #, c-format
 msgid "%s approx."
 msgstr "ungefär %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:291
+#: src/View/Widgets/OverlayBar.vala:292
 msgid "unknown size"
 msgstr "okänd storlek"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:295
+#: src/View/Widgets/OverlayBar.vala:296
 #, fuzzy, c-format
 #| msgid "%u file not readable"
 msgid "%u file not readable"
@@ -1102,8 +1108,9 @@ msgid "Merge"
 msgstr "Slå samman"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "Kunde inte fastställa ursprunglig plats för \"%s\" "
 
 #: libcore/FileUtils.vala:90

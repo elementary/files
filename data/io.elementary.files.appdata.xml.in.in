@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2016-2018 elementary, LLC <contact@elementary.io> -->
+<!-- Copyright 2016–2021 elementary, Inc. <contact@elementary.io> -->
 <component type="desktop">
   <id>io.elementary.files</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -8,9 +8,7 @@
   <name>Files</name>
   <summary>Browse and manage files and folders</summary>
   <description>
-    <p>
-      Easily copy, move, and rename your files, or use folders to stay organized. Whether you like files in lists, grids or columns, you can always find them right away. Access all your files, whether locally, on an external device or remotely using FTP, SFTP, AFP, Webdav, or Windows share.
-    </p>
+    <p>Easily copy, move, and rename your files, or use folders to stay organized. Whether you like files in lists, grids or columns, you can always find them right away. Access all your files, whether locally, on an external device or remotely using FTP, SFTP, AFP, Webdav, or Windows share.</p>
   </description>
   <provides>
     <binary>@exec_name@</binary>
@@ -58,16 +56,64 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="4.5.1" date="2020-08-11" urgency="medium">
+    <release version="6.0.2" date="2021-08-24" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix small context menus on breadcrumbs</li>
+          <li>Fix bookmarking a single selected item with Ctrl + D</li>
+          <li>Fix renaming bookmarks in the sidebar</li>
+          <li>FIx an issue with showing color tags when thumbnails are hidden</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.0.1" date="2021-08-02" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix freeze when comparing copied files</li>
+          <li>Fix truncation of final column in Column View under some circumstances</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Show more keyboard accelerators in menus</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.0.0" date="2021-07-15" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
           <li>Fix connecting to AFP servers so that passwords are remembered</li>
+          <li>Fix MTP mounts</li>
         </ul>
         <p>Improvements:</p>
         <ul>
+          <li>Launch files with double click instead of single click</li>
+          <li>Provide a File Chooser portal for Flatpak apps</li>
+          <li>Brand new animated Sidebar</li>
+          <li>Dark style support</li>
+          <li>Mint and Bubblegum color tags</li>
           <li>Do not restore locations that have become inaccessible</li>
           <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
+          <li>AFC protocol support</li>
+          <li>Add a smaller minimum icon size in list view</li>
+          <li>Show emblems inline in list views</li>
+          <li>Performance improvements</li>
+          <li>Stability improvements</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Rename "Devices" to "Storage"</li>
+          <li>Updated translations</li>
         </ul>
       </description>
     </release>

@@ -646,7 +646,12 @@ namespace Files.View {
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
             /* Note: Duplicate bookmarks will not be created by BookmarkList */
-            sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            unowned var selected_files = current_tab.view.get_selected_files ();
+            if (selected_files == null) {
+                sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            } else if (selected_files.first ().next == null) {
+                sidebar.add_favorite_uri (selected_files.first ().data.uri);
+            } // Ignore if more than one item selected
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1075,7 +1080,7 @@ namespace Files.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = get_file_from_uri (uri);
 
-                    mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
+                    mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
                 }
             } else {
                 warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);

@@ -17,6 +17,8 @@ public static int main (string[] args) {
     /* Initiliaze gettext support */
     Intl.setlocale (LocaleCategory.ALL, "");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
+    Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
+    Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
 
     Environment.set_application_name (Config.APP_NAME);
     Environment.set_prgname (Config.APP_NAME);

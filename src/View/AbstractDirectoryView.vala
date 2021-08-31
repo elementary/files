@@ -359,7 +359,7 @@ namespace Files {
             scroll_event.connect (on_scroll_event);
 
             get_vadjustment ().value_changed.connect_after (() => {
-                schedule_thumbnail_timeout ();
+                schedule_thumbnail_color_tag_timeout ();
             });
 
             var prefs = (Files.Preferences.get_default ());
@@ -1365,7 +1365,7 @@ namespace Files {
 
             thaw_tree ();
 
-            schedule_thumbnail_timeout ();
+            schedule_thumbnail_color_tag_timeout ();
         }
 
     /** Handle zoom level change */
@@ -1375,7 +1375,7 @@ namespace Files {
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
-                schedule_thumbnail_timeout ();
+                schedule_thumbnail_color_tag_timeout ();
             }
 
             model.icon_size = icon_size;
@@ -2084,7 +2084,11 @@ namespace Files {
                     menu.add (properties_menuitem);
                 }
             } else {
-                var show_hidden_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Hidden Files"));
+                var show_hidden_menuitem = new Gtk.CheckMenuItem ();
+                show_hidden_menuitem.add (new Granite.AccelLabel (
+                    _("Show Hidden Files"),
+                    "<Ctrl>h"
+                ));
                 show_hidden_menuitem.action_name = "background.show-hidden";
 
                 var show_remote_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Remote Thumbnails"));
@@ -2527,7 +2531,7 @@ namespace Files {
 
 
 /** Thumbnail and color tag handling */
-        private void schedule_thumbnail_timeout () {
+        private void schedule_thumbnail_color_tag_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
@@ -2537,8 +2541,6 @@ namespace Files {
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (thumbnail_source_id != 0 ||
-                (slot.directory.is_network && !show_remote_thumbnails) ||
-                (!slot.directory.is_network && hide_local_thumbnails) ||
                 !slot.directory.can_open_files ||
                 slot.directory.is_loading ()) {
 
@@ -2601,16 +2603,20 @@ namespace Files {
                         path = model.get_path (iter);
 
                         if (file != null && !file.is_gone) {
-                            file.query_thumbnail_update (); // Ensure thumbstate up to date
-                            /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                visible_files.prepend (file);
-                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                    actually_visible++;
+                            // Only update thumbnail if it is going to be shown
+                            if ((slot.directory.is_network && show_remote_thumbnails) ||
+                                (!slot.directory.is_network && !hide_local_thumbnails)) {
+
+                                file.query_thumbnail_update (); // Ensure thumbstate up to date
+                                /* Ask thumbnailer only if ThumbState UNKNOWN */
+                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                                    visible_files.prepend (file);
+                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                        actually_visible++;
+                                    }
                                 }
                             }
-
-                            /* This also ensures color-tag info is correct regardless of whether thumbnail is shown */
+                           /* In any case, ensure color-tag info is correct */
                             if (plugins != null) {
                                 plugins.update_file_info (file);
                             }
