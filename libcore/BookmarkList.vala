@@ -179,7 +179,12 @@ namespace Files {
         public void rename_item_with_uri (string uri, string new_name) {
             foreach (unowned Files.Bookmark bookmark in list) {
                 if (uri == bookmark.uri) {
-                    bookmark.custom_name = new_name;
+                    if (new_name == Path.get_basename (uri)) {
+                        // Do not use basename as a custom name
+                        bookmark.custom_name = "";
+                    } else {
+                        bookmark.custom_name = new_name;
+                    }
                     save_bookmarks_file ();
                     return;
                 }
