@@ -86,7 +86,7 @@ namespace Files.FileUtils {
         var original_dirs_hash = get_trashed_files_original_directories (files, out unhandled_files);
 
         foreach (Files.File goffile in unhandled_files) {
-            var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
+            var message = _("Could not determine original location of \"%s\"").printf (goffile.get_display_name ());
             PF.Dialogs.show_warning_dialog (message, _("The item cannot be restored from trash"),
                                             (widget is Gtk.Window) ? widget as Gtk.Window : null );
         }

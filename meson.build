@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '6.0.0',
+    version: '6.0.2',
     meson_version: '>= 0.50.0'
 )
 
@@ -92,6 +92,8 @@ config_data.set('version', meson.project_version())
 config_data.set('testdata_dir', join_paths(meson.source_root(), 'data', 'tests'))
 config_data.set('app_name', meson.project_name())
 config_data.set('terminal_name', terminal_name)
+config_data.set('gettext_package', meson.project_name())
+config_data.set('locale_dir', join_paths(get_option('prefix'), get_option('localedir')))
 
 config_file = configure_file(
     input: 'config.h.in',

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 16:58+0000\n"
-"PO-Revision-Date: 2021-07-28 00:16+0000\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
+"PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
-"Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/>"
-"\n"
+"Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
+">\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -358,8 +358,8 @@ msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
-"ਰੱਦੀ ਟੋਕਰੀ ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਖੋਲ੍ਹੀਆਂ ਨਹੀਂ ਜਾ ਸਕਦੀਆਂ। ਖੋਲ੍ਹਣ ਵਾਸਤੇ ਇਸ ਫ਼ਾਇਲ ਨੂੰ"
-" ਕਿਸੇ ਹੋਰ ਥਾਂ ਲੈ ਜਾਓ।"
+"ਰੱਦੀ ਟੋਕਰੀ ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਖੋਲ੍ਹੀਆਂ ਨਹੀਂ ਜਾ ਸਕਦੀਆਂ। ਖੋਲ੍ਹਣ ਵਾਸਤੇ ਇਸ ਫ਼ਾਇਲ ਨੂੰ ਕਿਸੇ ਹੋਰ ਥਾਂ ਲੈ "
+"ਜਾਓ।"
 
 #: src/View/AbstractDirectoryView.vala:842
 msgid "Cannot open this file"
@@ -391,7 +391,7 @@ msgid "Open in"
 msgstr "ਇਸ ਵਿੱਚ ਖੋਲ੍ਹੋ"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "ਇਸ ਨਾਲ਼ ਖੋਲ੍ਹੋ"
 
@@ -502,26 +502,26 @@ msgstr "ਨਵਾਂ/ਨਵੀਂ"
 msgid "Untitled %s"
 msgstr "ਬੇਨਾਮ %s"
 
-#: src/View/AbstractDirectoryView.vala:2874
-#: src/View/AbstractDirectoryView.vala:3075
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3077
 msgid "Cannot remove files from here"
 msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੋਂ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
 
-#: src/View/AbstractDirectoryView.vala:2875
-#: src/View/AbstractDirectoryView.vala:3060
-#: src/View/AbstractDirectoryView.vala:3076
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3062
+#: src/View/AbstractDirectoryView.vala:3078
 msgid "You do not have permission to change this location"
 msgstr "ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹ ਟਿਕਾਣਾ ਬਦਲਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
-#: src/View/AbstractDirectoryView.vala:3029
+#: src/View/AbstractDirectoryView.vala:3031
 msgid "Cannot copy files that are in the trash"
 msgstr "ਰੱਦੀ ਟੋਕਰੀ ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 
-#: src/View/AbstractDirectoryView.vala:3030
+#: src/View/AbstractDirectoryView.vala:3032
 msgid "Cutting the selection instead"
 msgstr "ਇਸਦੀ ਬਜਾਇ ਚੋਣ ਨੂੰ ਕੱਟਿਆ ਜਾ ਰਿਹੈ"
 
-#: src/View/AbstractDirectoryView.vala:3059
+#: src/View/AbstractDirectoryView.vala:3061
 msgid "Cannot paste files here"
 msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੇ ਪੇਸਟ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 
@@ -730,15 +730,15 @@ msgstr "ਸਿਸਟਮ ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ
 msgid "Search or Type Path"
 msgstr "ਪਤਾ ਲੱਭੋ ਜਾਂ ਟਾਈਪ ਕਰੋ"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "ਨਵੀਂ ਟੈਬ 'ਚ ਖੋਲ੍ਹੋ"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ 'ਚ ਖੋਲ੍ਹੋ"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "ਕਿਸੇ ਹੋਰ ਐਪ 'ਚ ਖੋਲ੍ਹੋ…"
 
@@ -854,7 +854,7 @@ msgstr "ਵਿੰਡੋਜ਼ ਸਾਂਝ"
 
 #: libcore/ConnectServerDialog.vala:77
 msgid "WebDAV (HTTP)"
-msgstr "ਵੈੱਬ ਡੀ ਏ ਵੀ (ਐੱਚ ਟੀ ਟੀ ਪੀ)"
+msgstr "ਵੈੱਬਡੀਏਵੀ (ਐੱਚਟੀਟੀਪੀ)"
 
 #: libcore/ConnectServerDialog.vala:84
 msgid "Secure WebDAV (HTTPS)"
@@ -1011,8 +1011,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"ਜੇ ਫ਼ੋਲਡਰ ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਫ਼ਾਇਲਾਂ ਨਾਲ਼ ਤਕਰਾਰ ਵਿੱਚ ਹੋਈਆਂ "
-"ਤਾਂ ਰਲਾਉਣ ਵੇਲ਼ੇ ਤਸਦੀਕ ਲਈ ਪੁੱਛਿਆ ਜਾਵੇਗਾ।"
+"ਜੇ ਫ਼ੋਲਡਰ ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਫ਼ਾਇਲਾਂ ਨਾਲ਼ ਤਕਰਾਰ ਵਿੱਚ ਹੋਈਆਂ ਤਾਂ ਰਲਾਉਣ ਵੇਲ਼ੇ "
+"ਤਸਦੀਕ ਲਈ ਪੁੱਛਿਆ ਜਾਵੇਗਾ।"
 
 #: libcore/FileConflictDialog.vala:302
 #, c-format
@@ -1072,8 +1072,9 @@ msgid "Merge"
 msgstr "ਰਲ਼ਾਓ"
 
 #: libcore/FileUtils.vala:89
-#, c-format
-msgid "Could not determine original location of \"%s\" "
+#, fuzzy, c-format
+#| msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr "\"%s\" ਦਾ ਅਸਲੀ ਟਿਕਾਣਾ ਪਤਾ ਨਹੀਂ ਲੱਗ ਸਕਿਆ "
 
 #: libcore/FileUtils.vala:90
@@ -1106,15 +1107,12 @@ msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
-"ਫ਼ੋਲਡਰ ਦੁਬਾਰਾ ਬਣਾਇਆ ਜਾਵੇਗਾ ਅਤੇ ਚੁਣੀਆਂ ਫ਼ਾਇਲਾਂ, ਜਿਹੜੀਆਂ ਅਸਲ 'ਚ ਉੱਥੇ ਸਨ, ਰੀਸਟੋ"
-"ਰ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ"
+"ਫ਼ੋਲਡਰ ਦੁਬਾਰਾ ਬਣਾਇਆ ਜਾਵੇਗਾ ਅਤੇ ਚੁਣੀਆਂ ਫ਼ਾਇਲਾਂ, ਜਿਹੜੀਆਂ ਅਸਲ 'ਚ ਉੱਥੇ ਸਨ, ਰੀਸਟੋਰ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
-"%s ਫ਼ੋਲਡਰ ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਇਸਦੀਆਂ ਸਾਰੀਆਂ ਫ਼ਾਇਲਾਂ ਵੀ ਨਜ਼ਰਅੰਦਾਜ਼ ਕੀਤੀਆਂ "
-"ਜਾਣਗੀਆਂ"
+msgstr "%s ਫ਼ੋਲਡਰ ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਇਸਦੀਆਂ ਸਾਰੀਆਂ ਫ਼ਾਇਲਾਂ ਵੀ ਨਜ਼ਰਅੰਦਾਜ਼ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ"
 
 #: libcore/FileUtils.vala:578
 #, c-format
@@ -1257,8 +1255,8 @@ msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
-"ਸਾਰੀਆਂ ਡਾਇਰੈਕਟਰੀਆਂ ਦੇ ਕੂੜੇਦਾਨ ਵਿਚਲੇ ਨਗ, ਜੋੜੀਆਂ ਹੋਈਆਂ ਬਾਹਰੀ ਡਰਾਈਵਾਂ ਸਮੇਤ, ਪੱਕੇ"
-" ਤੌਰ 'ਤੇ ਮਿਟਾ ਦਿੱਤੇ ਜਾਣਗੇ।"
+"ਸਾਰੀਆਂ ਡਾਇਰੈਕਟਰੀਆਂ ਦੇ ਕੂੜੇਦਾਨ ਵਿਚਲੇ ਨਗ, ਜੋੜੀਆਂ ਹੋਈਆਂ ਬਾਹਰੀ ਡਰਾਈਵਾਂ ਸਮੇਤ, ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾ "
+"ਦਿੱਤੇ ਜਾਣਗੇ।"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
@@ -1282,8 +1280,7 @@ msgstr "'%s' ਨੂੰ ਮਾਊਂਟ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 #: libcore/marlin-file-operations.c:285
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr ""
-"ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ ਕੂੜੇਦਾਨ ਵਿੱਚੋਂ \"%s\" ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+msgstr "ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ ਕੂੜੇਦਾਨ ਵਿੱਚੋਂ \"%s\" ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #: libcore/marlin-file-operations.c:289
 #, c-format
@@ -1293,12 +1290,8 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-"ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ ਕੂੜੇਦਾਨ ਵਿੱਚੋਂ %'d ਚੁਨਿੰਦਾ ਨਗ ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣਾ "
-"ਚਾਹੁੰਦੇ ਹੋ?"
-msgstr[1] ""
-"ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ ਕੂੜੇਦਾਨ ਵਿੱਚੋਂ %'d ਚੁਨਿੰਦਾ ਨਗਾਂ ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣਾ "
-"ਚਾਹੁੰਦੇ ਹੋ?"
+msgstr[0] "ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ ਕੂੜੇਦਾਨ ਵਿੱਚੋਂ %'d ਚੁਨਿੰਦਾ ਨਗ ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+msgstr[1] "ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ ਕੂੜੇਦਾਨ ਵਿੱਚੋਂ %'d ਚੁਨਿੰਦਾ ਨਗਾਂ ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #: libcore/marlin-file-operations.c:301
 msgid "If you delete an item, it will be permanently lost."
@@ -1321,8 +1314,7 @@ msgstr[1] "ਕੀ ਤੁਸੀਂ ਵਾਕਿਆ ਹੀ %'d ਚੁਨਿੰਦ�
 
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
-"ਮਿਟਾਏ ਗਏ ਨਗ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਭੇਜੇ ਜਾਂਦੇ ਅਤੇ ਮੁੜ ਹਾਸਲ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ।"
+msgstr "ਮਿਟਾਏ ਗਏ ਨਗ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਭੇਜੇ ਜਾਂਦੇ ਅਤੇ ਮੁੜ ਹਾਸਲ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ।"
 
 #: libcore/marlin-file-operations.c:375
 #, c-format
@@ -1358,8 +1350,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"ਫ਼ੋਲਡਰ \"%s\" ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਮਿਟਾਈਆਂ ਨਹੀਂ ਜਾ ਸਕਦੀਆਂ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਉਹਨਾਂ"
-" ਲਈ ਬਕਾਇਦਾ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
+"ਫ਼ੋਲਡਰ \"%s\" ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਮਿਟਾਈਆਂ ਨਹੀਂ ਜਾ ਸਕਦੀਆਂ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਉਹਨਾਂ ਲਈ ਬਕਾਇਦਾ "
+"ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1382,8 +1374,7 @@ msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"ਫ਼ੋਲਡਰ \"%s\" ਮਿਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸ ਲਈ ਬਕਾਇਦਾ ਇਜਾਜ਼ਤਾਂ "
-"ਨਹੀਂ ਹਨ।"
+"ਫ਼ੋਲਡਰ \"%s\" ਮਿਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸ ਲਈ ਬਕਾਇਦਾ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1424,38 +1415,34 @@ msgstr "ਫ਼ਾਇਲ ਨੂੰ ਮਿਟਾ ਜਾਂ ਕੂੜੇਦਾਨ �
 #: libcore/marlin-file-operations.c:829
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
-"ਸਿਰਫ਼ ਪੜ੍ਹੇ ਜਾ ਸਕਣ ਵਾਲ਼ੇ ਫ਼ਾਇਲ ਸਿਸਟਮ 'ਤੇ ਫ਼ਾਇਲਾਂ ਮਿਟਾਉਣ ਜਾਂ ਕੂੜੇਦਾਨ 'ਚ ਸੁੱਟਣ "
-"ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੁੰਦੀ।"
+"ਸਿਰਫ਼ ਪੜ੍ਹੇ ਜਾ ਸਕਣ ਵਾਲ਼ੇ ਫ਼ਾਇਲ ਸਿਸਟਮ 'ਤੇ ਫ਼ਾਇਲਾਂ ਮਿਟਾਉਣ ਜਾਂ ਕੂੜੇਦਾਨ 'ਚ ਸੁੱਟਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ "
+"ਹੁੰਦੀ।"
 
 #: libcore/marlin-file-operations.c:832
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"ਜਿਨ੍ਹਾਂ ਫ਼ੋਲਡਰਾਂ ਵਿੱਚ ਤੁਹਾਨੂੰ ਲਿਖਣ ਦੀ ਇਜਾਜ਼ਤ ਨਾ ਹੋਵੇ ਉਹਨਾਂ ਵਿੱਚੋਂ ਫ਼ਾਇਲਾਂ "
-"ਮਿਟਾਉਣ ਜਾਂ ਕੂੜੇਦਾਨ 'ਚ ਸੁੱਟਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੁੰਦੀ।"
+"ਜਿਨ੍ਹਾਂ ਫ਼ੋਲਡਰਾਂ ਵਿੱਚ ਤੁਹਾਨੂੰ ਲਿਖਣ ਦੀ ਇਜਾਜ਼ਤ ਨਾ ਹੋਵੇ ਉਹਨਾਂ ਵਿੱਚੋਂ ਫ਼ਾਇਲਾਂ ਮਿਟਾਉਣ ਜਾਂ ਕੂੜੇਦਾਨ 'ਚ "
+"ਸੁੱਟਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੁੰਦੀ।"
 
 #: libcore/marlin-file-operations.c:835
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"ਜਿਨ੍ਹਾਂ ਫ਼ੋਲਡਰਾਂ ਲਈ ਤੁਹਾਡੇ ਕੋਲ਼ ਲਿਖਣ ਦੀ ਇਜਾਜ਼ਤ ਨਾ ਹੋਵੇ ਉਹਨਾਂ ਨੂੰ ਮਿਟਾਉਣ ਜਾਂ "
-"ਕੂੜੇਦਾਨ 'ਚ ਸੁੱਟਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੁੰਦੀ।"
+"ਜਿਨ੍ਹਾਂ ਫ਼ੋਲਡਰਾਂ ਲਈ ਤੁਹਾਡੇ ਕੋਲ਼ ਲਿਖਣ ਦੀ ਇਜਾਜ਼ਤ ਨਾ ਹੋਵੇ ਉਹਨਾਂ ਨੂੰ ਮਿਟਾਉਣ ਜਾਂ ਕੂੜੇਦਾਨ 'ਚ ਸੁੱਟਣ ਦੀ "
+"ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੁੰਦੀ।"
 
 #: libcore/marlin-file-operations.c:837
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
-"ਫ਼ਾਇਲ ਨੂੰ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਸੁੱਟ ਸਕਿਆ। ਇਸਨੂੰ ਹੁਣੇ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣ ਦੀ "
-"ਕੋਸ਼ਿਸ਼ ਕਰਨੀ ਹੈ?"
+msgstr "ਫ਼ਾਇਲ ਨੂੰ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਸੁੱਟ ਸਕਿਆ। ਇਸਨੂੰ ਹੁਣੇ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾਉਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਨੀ ਹੈ?"
 
 #: libcore/marlin-file-operations.c:838
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
-"ਇਹ ਫ਼ਾਇਲ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਸੁੱਟੀ ਜਾ ਸਕੀ। ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਹੇਠਾਂ ਦਿੱਤਾ ਵੇਰਵਾ "
-"ਵੇਖੋ।"
+msgstr "ਇਹ ਫ਼ਾਇਲ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਸੁੱਟੀ ਜਾ ਸਕੀ। ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਹੇਠਾਂ ਦਿੱਤਾ ਵੇਰਵਾ ਵੇਖੋ।"
 
 #: libcore/marlin-file-operations.c:842
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1465,8 +1452,7 @@ msgstr "ਫ਼ਾਇਲ ਨੂੰ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀ�
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
-"ਇਹ ਫ਼ਾਇਲ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਸੁੱਟੀ ਜਾ ਸਕੀ। ਸ਼ਾਇਦ ਤੁਸੀਂ ਇਸਨੂੰ ਮਿਟਾ ਵੀ ਨਾ ਸਕੋਂ।"
+msgstr "ਇਹ ਫ਼ਾਇਲ ਕੂੜੇਦਾਨ ਵਿੱਚ ਨਹੀਂ ਸੁੱਟੀ ਜਾ ਸਕੀ। ਸ਼ਾਇਦ ਤੁਸੀਂ ਇਸਨੂੰ ਮਿਟਾ ਵੀ ਨਾ ਸਕੋਂ।"
 
 #: libcore/marlin-file-operations.c:849
 msgid ""
@@ -1546,8 +1532,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"ਫ਼ੋਲਡਰ \"%s\" ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਾਲ਼ ਨਿੱਬੜਿਆ ਨਹੀਂ ਜਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹਨਾਂ "
-"ਨੂੰ ਵੇਖਣ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
+"ਫ਼ੋਲਡਰ \"%s\" ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਾਲ਼ ਨਿੱਬੜਿਆ ਨਹੀਂ ਜਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹਨਾਂ ਨੂੰ ਵੇਖਣ ਲਈ "
+"ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1556,8 +1542,7 @@ msgstr ""
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
-"ਫ਼ੋਲਡਰ \"%s\" ਨਾਲ਼ ਨਿੱਬੜਿਆ ਨਹੀਂ ਜਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
+msgstr "ਫ਼ੋਲਡਰ \"%s\" ਨਾਲ਼ ਨਿੱਬੜਿਆ ਨਹੀਂ ਜਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1567,8 +1552,7 @@ msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"ਫ਼ਾਇਲ \"%s\" ਨਾਲ਼ ਨਿੱਬੜਿਆ ਨਹੀਂ ਜਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹਨਾਂ ਨੂੰ ਵੇਖਣ ਲਈ "
-"ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
+"ਫ਼ਾਇਲ \"%s\" ਨਾਲ਼ ਨਿੱਬੜਿਆ ਨਹੀਂ ਜਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹਨਾਂ ਨੂੰ ਵੇਖਣ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1601,9 +1585,7 @@ msgstr "ਮਿੱਥੀ ਹੋਈ ਮੰਜ਼ਿਲ ਇੱਕ ਫ਼ੋਲਡ�
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
-"ਮੰਜ਼ਿਲ 'ਤੇ ਜਗ੍ਹਾ ਦੀ ਕਮੀ ਹੈ। ਉੱਥੋਂ ਕੁਝ ਫ਼ਾਇਲਾਂ ਹਟਾਉਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਤਾਂ ਜੋ "
-"ਜਗ੍ਹਾ ਬਣ ਜਾਵੇ।"
+msgstr "ਮੰਜ਼ਿਲ 'ਤੇ ਜਗ੍ਹਾ ਦੀ ਕਮੀ ਹੈ। ਉੱਥੋਂ ਕੁਝ ਫ਼ਾਇਲਾਂ ਹਟਾਉਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਤਾਂ ਜੋ ਜਗ੍ਹਾ ਬਣ ਜਾਵੇ।"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
@@ -1614,8 +1596,7 @@ msgstr "ਉੱਥੇ ਉਪਲਬਧ ਜਗ੍ਹਾ %s ਹੈ, ਪਰ ਚਾਹ
 
 #: libcore/marlin-file-operations.c:1579
 msgid "The destination is read-only."
-msgstr ""
-"ਮੰਜ਼ਿਲ ਸਿਰਫ਼ ਪੜ੍ਹੀ/ਵੇਖੀ ਜਾ ਸਕਦੀ ਹੈ (ਕਿਸੇ ਤਰ੍ਹਾਂ ਦੀ ਤਬਦੀਲੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ)।"
+msgstr "ਮੰਜ਼ਿਲ ਸਿਰਫ਼ ਪੜ੍ਹੀ/ਵੇਖੀ ਜਾ ਸਕਦੀ ਹੈ (ਕਿਸੇ ਤਰ੍ਹਾਂ ਦੀ ਤਬਦੀਲੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ)।"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1715,8 +1696,8 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"ਫ਼ੋਲਡਰ \"%s\" ਨਕਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਮੰਜ਼ਿਲ 'ਤੇ ਇਹ ਫ਼ੋਲਡਰ "
-"ਬਣਾਉਣ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
+"ਫ਼ੋਲਡਰ \"%s\" ਨਕਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਮੰਜ਼ਿਲ 'ਤੇ ਇਹ ਫ਼ੋਲਡਰ ਬਣਾਉਣ ਦੀਆਂ "
+"ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1733,8 +1714,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"ਫ਼ੋਲਡਰ \"%s\" ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ "
-"ਇਹਨਾਂ ਨੂੰ ਵੇਖਣ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
+"ਫ਼ੋਲਡਰ \"%s\" ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹਨਾਂ ਨੂੰ ਵੇਖਣ ਦੀਆਂ "
+"ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1744,8 +1725,7 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"ਫ਼ੋਲਡਰ \"%s\" ਨਕਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸਨੂੰ ਪੜ੍ਹਨ ਦੀਆਂ "
-"ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
+"ਫ਼ੋਲਡਰ \"%s\" ਨਕਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸਨੂੰ ਪੜ੍ਹਨ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨਹੀਂ ਹਨ।"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
