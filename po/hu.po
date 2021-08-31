@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-24 16:03+0000\n"
-"PO-Revision-Date: 2021-08-24 06:44+0000\n"
+"POT-Creation-Date: 2021-08-26 21:31+0000\n"
+"PO-Revision-Date: 2021-08-27 17:39+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -258,7 +258,7 @@ msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr "Lemez tulajdonságok"
+msgstr "Lemez tulajdonságai"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44
 #: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
@@ -283,7 +283,7 @@ msgstr "Nem sikerült megnyitni a fájlokat"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr "Nem nyithatók meg a megadott URI-k"
+msgstr "Nem nyithatók meg az URI-k"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
@@ -352,7 +352,7 @@ msgstr "Ez a fájl nem futtatható"
 #: src/View/AbstractDirectoryView.vala:826
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "“%s”-t ki kell venni a kukából megnyitás előtt"
+msgstr "“%s” fájlt ki kell venni a kukából megnyitás előtt"
 
 #: src/View/AbstractDirectoryView.vala:827
 msgid ""
@@ -372,11 +372,11 @@ msgstr "Nem azonosítható be a fájltípus a megnyitáshoz"
 
 #: src/View/AbstractDirectoryView.vala:1574
 msgid "Cannot drop this file"
-msgstr "A fájlt nem lehet elejteni"
+msgstr "A fájlt nem lehet ide helyezni"
 
 #: src/View/AbstractDirectoryView.vala:1575
 msgid "Invalid file name provided"
-msgstr "Érvénytelen fájlnév megadva"
+msgstr "A megadott fájlnév érvénytelen"
 
 #: src/View/AbstractDirectoryView.vala:1871
 msgid "Run"
@@ -392,7 +392,7 @@ msgid "Open in"
 msgstr "Megnyitás ebben"
 
 #: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open with"
 msgstr "Megnyitás ezzel"
 
@@ -428,7 +428,7 @@ msgstr "Visszaállítás a kukából"
 
 #: src/View/AbstractDirectoryView.vala:2013
 msgid "Open Parent Folder"
-msgstr "Szülő mappa megnyitása"
+msgstr "Szülőmappa megnyitása"
 
 #: src/View/AbstractDirectoryView.vala:2016
 msgid "Remove from History"
@@ -440,7 +440,7 @@ msgstr "Átnevezés…"
 
 #: src/View/AbstractDirectoryView.vala:2039
 msgid "Copy as Link"
-msgstr "Másolás linkként"
+msgstr "Másolás hivatkozásként"
 
 #: src/View/AbstractDirectoryView.vala:2057
 msgid "Paste Link into Folder"
@@ -548,7 +548,7 @@ msgstr "Ez a mappa nem önhöz tartozik"
 
 #: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
-msgstr "Nincs jogosultsága, hogy megnézze ezt a könyvtárat."
+msgstr "Nincs jogosultsága, hogy megnézze ezt a mappát."
 
 #: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
@@ -731,15 +731,15 @@ msgstr "Rendszerbiztonsági és adatvédelmi beállítások megnyitása"
 msgid "Search or Type Path"
 msgstr "Keresés vagy útvonal megadása"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in New Tab"
 msgstr "Megnyitás új lapon"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in New Window"
 msgstr "Megnyitás új ablakban"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:502
 msgid "Open in Other Application…"
 msgstr "Megnyitás másik alkalmazással…"
 
@@ -831,7 +831,7 @@ msgstr "Végrehajtás"
 #: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
-msgstr "Mégsem"
+msgstr "Mégse"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -952,7 +952,7 @@ msgstr "Másolás ide"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr "Link ide"
+msgstr "Hivatkozás ide"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
@@ -1023,12 +1023,12 @@ msgstr "Már létezik ilyen nevű régebbi mappa „%s” alatt."
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy újabb, ugyan ilyen nevű mappa itt: „%s”."
+msgstr "Már létezik egy újabb, ugyanilyen nevű mappa itt: „%s”."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy másik, ugyan ilyen nevű mappa itt: „%s”."
+msgstr "Már létezik egy másik, ugyanilyen nevű mappa itt: „%s”."
 
 #: libcore/FileConflictDialog.vala:309
 #, c-format
@@ -1042,7 +1042,7 @@ msgstr "Cseréjével az összes fájl a mappában el lesz távolítva."
 #: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy ugyan ilyen nevű mappa itt: „%s”."
+msgstr "Már létezik egy ugyanilyen nevű mappa itt: „%s”."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
@@ -1219,7 +1219,7 @@ msgstr "Öss_zes törlése"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
-msgstr "_Kicserél"
+msgstr "_Csere"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
@@ -1425,7 +1425,7 @@ msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"Nem lehet fájlokat törölni vagy áthelyezni a kukába egy olyan könyvtárból "
+"Nem lehet fájlokat törölni vagy áthelyezni a kukába egy olyan könyvtárból, "
 "amire nincs írási jogosultsága."
 
 #: libcore/marlin-file-operations.c:835
@@ -1433,7 +1433,7 @@ msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"Nem lehet törölni vagy áthelyezni a kukába olyan könyvtárakat amikre nincs "
+"Nem lehet törölni vagy áthelyezni a kukába olyan könyvtárakat, amikre nincs "
 "írási jogosultsága."
 
 #: libcore/marlin-file-operations.c:837
@@ -1444,8 +1444,7 @@ msgstr "A fájlt nem lehet áthelyezni a kukába. Megpróbálja végleg töröln
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
-"Ezt a fájlt nem lehet a kukába helyezni. A részleteket lejjebb láthatod."
+msgstr "Ezt a fájlt nem lehet a kukába helyezni. A részletek lejjebb láthatók."
 
 #: libcore/marlin-file-operations.c:842
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1646,7 +1645,7 @@ msgstr[1] "%'d fájl másolása (ebben: „%s”) a következőbe: „%s”"
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
 msgstr[0] "%'d fájl megkettőzése (ebben: „%s”)"
-msgstr[1] "%'d fájl megkettőzése (ebben: „%s”))"
+msgstr[1] "%'d fájl megkettőzése (ebben: „%s”)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1769,7 +1768,7 @@ msgstr "Nem lehet egy mappát önmagába áthelyezni."
 
 #: libcore/marlin-file-operations.c:2707 libcore/marlin-file-operations.c:3373
 msgid "You cannot copy a folder into itself."
-msgstr "Nem lehet egy mappát önmagára másolni."
+msgstr "Nem lehet egy mappát önmagába másolni."
 
 #: libcore/marlin-file-operations.c:2708 libcore/marlin-file-operations.c:3374
 msgid "The destination folder is inside the source folder."
@@ -1912,7 +1911,7 @@ msgstr "Hiba a könyvtár létrehozásakor a következőben: %s."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
-msgstr "Adj meg egy elérési utat"
+msgstr "Adjon meg egy elérési utat"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
 #, c-format
@@ -1954,7 +1953,7 @@ msgstr "Listanézet"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:48
 msgid "View in Columns"
-msgstr "Oszlop nézet"
+msgstr "Oszlopnézet"
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
