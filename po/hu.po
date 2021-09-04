@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-26 21:31+0000\n"
-"PO-Revision-Date: 2021-08-27 17:39+0000\n"
+"PO-Revision-Date: 2021-09-01 09:57+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -618,7 +618,7 @@ msgstr "Egész hálózaton"
 
 #: src/View/Sidebar/NetworkListBox.vala:100
 msgid "Browse the contents of the network"
-msgstr "A hálózat tartalmának tallózása"
+msgstr "A hálózat tartalmának böngészése"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:49
 msgid "Open"
