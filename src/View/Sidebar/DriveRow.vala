@@ -37,7 +37,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
 
     public override bool can_unmount {
         get {
-            return drive.can_eject () || drive.can_stop ();
+            return (drive.has_media () && drive.can_eject ()) || drive.can_stop ();
         }
     }
 
@@ -56,7 +56,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         );
 
         no_show_all = true;
-        visible = !drive.has_volumes ();
+        set_visibility ();
     }
 
     construct {
@@ -72,8 +72,8 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-        PF.Dialogs.show_warning_dialog (_("This drive contains no data"),
-                                        _("Insert media or format the drive"),
+        PF.Dialogs.show_warning_dialog (_("%s contains no accessible data.").printf (drive.get_name ()),
+                                        _("To use this drive you may need to unplug then replug it, insert media or format it."),
                                         null);
     }
 
@@ -89,14 +89,20 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     private void volume_added (Volume added_volume) {
-        if (drive.get_volumes () != null) {
-            visible = false;
-        }
+        set_visibility ();
     }
 
     private void volume_removed () {
-        if (drive.get_volumes () == null) {
-            visible = true;
+        set_visibility ();
+    }
+
+    private void set_visibility () {
+        visible = !drive.has_volumes ();
+        if (!drive.has_media () || !drive.has_volumes ()) {
+            var details = !drive.has_media () ? _("Media ejected") : _("Unformatted");
+            custom_name = drive.get_name () +
+                          "\n" + details + " " +
+                         (drive.is_removable () ? _("This device can be safely unplugged.") : "");
         }
     }
 
@@ -105,11 +111,17 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
 
     protected override async void add_mountable_tooltip () {
         if (!drive.has_media ()) {
-            set_tooltip_markup (_("%s (%s)").printf (custom_name, _("No media")));
+            set_tooltip_markup (_("%s (%s)").printf (drive.get_name (), _("No media")));
         } else if (!drive.has_volumes ()) {
-            set_tooltip_markup (_("%s (%s)").printf (custom_name, _("Unformatted")));
+            set_tooltip_markup (_("%s (%s)").printf (drive.get_name (), _("Unformatted")));
         } else {
             set_tooltip_markup (custom_name);
         }
+    }
+
+    protected override void popup_context_menu (Gdk.EventButton event) {
+        // At present, this type of row only shows when there is no media or unformatted so there are no
+        // usable actions.  In future, actions like "Format" might be added.
+        return;
     }
 }

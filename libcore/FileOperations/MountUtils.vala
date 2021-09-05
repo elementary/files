@@ -20,21 +20,7 @@ namespace Files.FileOperations {
     public static async bool eject_mount (Mount mount, Gtk.Window? parent) {
         var mount_op = new Gtk.MountOperation (parent);
 
-        if (mount.can_eject ()) {
-            try {
-                yield mount.eject_with_operation (
-                        GLib.MountUnmountFlags.NONE,
-                        mount_op,
-                        null
-                );
-                return true;
-            } catch (GLib.Error e) {
-                PF.Dialogs.show_error_dialog (_("Unable to eject '%s'").printf (mount.get_name ()),
-                                              e.message,
-                                              null);
-                return false;
-            }
-        } else if (mount.can_unmount ()) {
+        if (mount.can_unmount ()) {
             try {
                 yield mount.unmount_with_operation (
                         GLib.MountUnmountFlags.NONE,
@@ -44,6 +30,20 @@ namespace Files.FileOperations {
                 return true;
             } catch (GLib.Error e) {
                 PF.Dialogs.show_error_dialog (_("Unable to unmount '%s'").printf (mount.get_name ()),
+                                              e.message,
+                                              null);
+                return false;
+            }
+        } else if (mount.can_eject ()) {
+            try {
+                yield mount.eject_with_operation (
+                        GLib.MountUnmountFlags.NONE,
+                        mount_op,
+                        null
+                );
+                return true;
+            } catch (GLib.Error e) {
+                PF.Dialogs.show_error_dialog (_("Unable to eject '%s'").printf (mount.get_name ()),
                                               e.message,
                                               null);
                 return false;
