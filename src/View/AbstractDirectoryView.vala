@@ -362,6 +362,14 @@ namespace Files {
                 schedule_thumbnail_color_tag_timeout ();
             });
 
+            notify["renaming"].connect (() => {
+                // Suppress ability to scroll with the scrollbar while renaming
+                // No obvious way to disable it so just hide it
+                var vscroll_bar = get_vscrollbar ();
+                vscroll_bar.visible = !renaming;
+            });
+
+
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
