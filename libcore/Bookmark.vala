@@ -50,13 +50,19 @@ namespace Files {
 
         public Bookmark (Files.File gof_file, string label = "") {
             this.gof_file = gof_file;
-            this.custom_name = label;
+            if (label != gof_file.basename) {
+                this.custom_name = label;
+            }
+
             connect_file ();
         }
 
         public Bookmark.from_uri (string uri, string label = "") {
             this.gof_file = Files.File.get_by_uri (uri);
-            this.custom_name = label;
+            if (label != gof_file.basename) {
+                this.custom_name = label;
+            }
+
             connect_file ();
         }
 

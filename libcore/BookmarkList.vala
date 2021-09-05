@@ -310,6 +310,7 @@ namespace Files {
             list.@foreach (stop_monitoring_bookmark);
 
             uint count = 0;
+            bool change_made = false;
             string [] lines = contents.split ("\n");
             foreach (string line in lines) {
                 if (line[0] == '\0' || line[0] == ' ') {
@@ -317,18 +318,21 @@ namespace Files {
                 }
 
                 string [] parts = line.split (" ", 2);
-                if (parts.length == 2) {
-                    append_internal (new Files.Bookmark.from_uri (parts [0], parts [1]));
-                } else {
-                    append_internal (new Files.Bookmark.from_uri (parts [0]));
+                string uri = parts[0];
+                string custom_name = parts.length == 2 ? parts[1] : "";
+                if (custom_name == Path.get_basename (uri)) { // Custom names cannot be the same as the default name
+                    custom_name = "";
+                    change_made = true; // Write back corrected bookmark
                 }
+
+                append_internal (new Files.Bookmark.from_uri (uri, custom_name));
 
                 count++;
             }
 
             list.@foreach (start_monitoring_bookmark);
 
-            if (list.length () > count) { // Can be assumed to be limited in length
+            if (change_made || list.length () > count) { // Can be assumed to be limited in length
                 /* renew bookmark that was deleted when bookmarks file was changed externally */
                 save_bookmarks_file ();
             }
