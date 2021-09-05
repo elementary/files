@@ -304,9 +304,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected virtual async void add_mountable_tooltip () {
-        if (pinned && permanent) {
-            return; // A tooltip was added after construction
-        }
         string storage_text = yield get_storage_text ();
         string mount_text;
         if (uri != "") {
