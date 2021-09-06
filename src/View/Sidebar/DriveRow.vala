@@ -24,7 +24,8 @@
 // This covers:
 // unformatted drives,
 // drives without partitions,
-// drives with removeable media that have no media inserted.
+// drives with removeable media that have no media inserted,
+// USB sticks that have been ejected but not unplugged.
 
 public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
     public Drive drive { get; construct; }
@@ -103,20 +104,18 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
             custom_name = drive.get_name () +
                           "\n" + details + " " +
                          (drive.is_removable () ? _("This device can be safely unplugged.") : "");
+
+            add_mountable_tooltip (); // Change tooltip to match new custom name.
         }
+
+        update_visibilities (); // Show/hide eject button and sorage bar.
     }
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
     }
 
     protected override async void add_mountable_tooltip () {
-        if (!drive.has_media ()) {
-            set_tooltip_markup (_("%s (%s)").printf (drive.get_name (), _("No media")));
-        } else if (!drive.has_volumes ()) {
-            set_tooltip_markup (_("%s (%s)").printf (drive.get_name (), _("Unformatted")));
-        } else {
-            set_tooltip_markup (custom_name);
-        }
+        set_tooltip_markup (custom_name);
     }
 
     protected override void popup_context_menu (Gdk.EventButton event) {
