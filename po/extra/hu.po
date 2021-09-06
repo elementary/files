@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-26 21:31+0000\n"
-"PO-Revision-Date: 2021-09-01 09:57+0000\n"
+"PO-Revision-Date: 2021-09-03 07:53+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -121,14 +121,12 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:342
 #: data/io.elementary.files.appdata.xml.in.in:350
 #: data/io.elementary.files.appdata.xml.in.in:382
-#, fuzzy
 msgid "Updated translations"
-msgstr "Új fordítások"
+msgstr "Frissített fordítások"
 
 #: data/io.elementary.files.appdata.xml.in.in:78
-#, fuzzy
 msgid "Fix freeze when comparing copied files"
-msgstr "Javítva a Kukában visszaállítás művelet közben összeomlást okozó hiba"
+msgstr "Fájlok összehasonlításánál előjövő fagyás javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix truncation of final column in Column View under some circumstances"
@@ -310,9 +308,8 @@ msgid "Minor updates:"
 msgstr "Kisebb frissítések:"
 
 #: data/io.elementary.files.appdata.xml.in.in:188
-#, fuzzy
 msgid "Fix crash when a device icon is coming from a file"
-msgstr "Javítva a Kukában visszaállítás művelet közben összeomlást okozó hiba"
+msgstr "Fájlból jövő eszközikon esetén történő összeomlás javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Fix device icon sometimes missing"
@@ -408,19 +405,16 @@ msgid "Fix appearance of inactive diskspace indicator"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:237
-#, fuzzy
 msgid "Improve pathbar animation"
-msgstr "Javított fordítási támogatás"
+msgstr "Útvonalsáv animációjának fejlesztése"
 
 #: data/io.elementary.files.appdata.xml.in.in:238
-#, fuzzy
 msgid "Update documentation"
-msgstr "Új fordítások"
+msgstr "Dokumentáció frissítve"
 
 #: data/io.elementary.files.appdata.xml.in.in:239
-#, fuzzy
 msgid "Update translations"
-msgstr "Új fordítások"
+msgstr "Frissített fordítások"
 
 #: data/io.elementary.files.appdata.xml.in.in:246
 msgid "Initial cloudproviders plugin support"
@@ -463,9 +457,8 @@ msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:263
-#, fuzzy
 msgid "Improve MTP support"
-msgstr "Továbbfejlesztett hálózati támogatás"
+msgstr "Javított MTP-támogatás"
 
 #: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Various tagging feature refinements"
@@ -548,9 +541,8 @@ msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:311
-#, fuzzy
 msgid "File sorting fixes"
-msgstr "Kisebb hibajavítások"
+msgstr "Fájlrendezési javítások"
 
 #: data/io.elementary.files.appdata.xml.in.in:319
 msgid "Meson: fix soversion names"
@@ -581,9 +573,8 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:326
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
-msgstr "Javítva a Kukában visszaállítás művelet közben összeomlást okozó hiba"
+msgstr "Több videó megnyitásánál történő összeomlás javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:327
 msgid "Fix some timing issues around adding and removing files"
@@ -614,14 +605,12 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:341
-#, fuzzy
 msgid "Build fixes"
-msgstr "Biztonsági javítások"
+msgstr "Fordítási javítások"
 
 #: data/io.elementary.files.appdata.xml.in.in:349
-#, fuzzy
 msgid "Plugin build fixes"
-msgstr "Kisebb hibajavítások"
+msgstr "Bővítmények fordításának javítása"
 
 #: data/io.elementary.files.appdata.xml.in.in:357
 msgid "Fix Ctrl+Tab behavior"
@@ -684,14 +673,12 @@ msgid "Tooltip fixes"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:378
-#, fuzzy
 msgid "Memory leak fixes"
-msgstr "Kisebb hibajavítások"
+msgstr "Memóriaszivárgások javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:379
-#, fuzzy
 msgid "Crash fixes"
-msgstr "Különbőző összeomlásos hibák javítása"
+msgstr "Összeomlások javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:380
 msgid "Trash: respect sound setting"
