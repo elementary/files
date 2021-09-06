@@ -36,9 +36,16 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
 
                 int[] file_descriptors = {};
                 foreach (var file in files) {
-                    file_descriptors += Posix.open (file.get_uri (), Posix.O_RDONLY);
+                    file_descriptors += Posix.open (file.get_path (), Posix.O_RDONLY);
                 }
                 options["attachment_fds"] = file_descriptors;
+
+                /** Even though the org.freedesktop.portal.Email portal specs
+                * claims that "all the keys in the options are are optional",
+                * the portal does not work if no "addresses" key is passed.
+                * This is probably a bug in the Gtk backend of the portal.
+                */
+                options["addresses"] = new Variant ("as", null);
 
                 try {
                     var handle = window_export.end (res);
