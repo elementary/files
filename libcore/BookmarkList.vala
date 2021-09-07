@@ -320,7 +320,10 @@ namespace Files {
                 string [] parts = line.split (" ", 2);
                 string uri = parts[0];
                 string custom_name = parts.length == 2 ? parts[1] : "";
-                if (custom_name == Path.get_basename (uri)) { // Custom names cannot be the same as the default name
+                if (custom_name != "" &&
+                    (custom_name.strip () == "" || // Custom name cannot be all whitespace
+                    custom_name == Path.get_basename (uri))) { // Custom names cannot be the same as the default name
+
                     custom_name = "";
                     change_made = true; // Write back corrected bookmark
                 }
@@ -344,7 +347,10 @@ namespace Files {
 
             list.@foreach ((bookmark) => {
                 sb.append (bookmark.uri);
-                sb.append (" " + bookmark.custom_name);
+                if (bookmark.custom_name.strip () != "") {
+                    sb.append (" " + bookmark.custom_name);
+                }
+
                 sb.append ("\n");
             });
 
