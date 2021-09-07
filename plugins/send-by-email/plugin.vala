@@ -34,22 +34,35 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
                 var options = new HashTable<string, Variant> (str_hash, str_equal);
                 options["handle_token"] = Portal.generate_token ();
 
-                int[] file_descriptors = {};
+                var files_builder = new VariantBuilder (new VariantType ("ah"));
+                var file_descriptors = new UnixFDList ();
                 foreach (var file in files) {
-                    file_descriptors += Posix.open (file.get_path (), Posix.O_RDONLY);
+                    var fd = Posix.open (file.get_path (), Posix.O_RDONLY | Posix.O_CLOEXEC);
+                    if (fd == -1) {
+                        warning ("send-by-mail: cannot open file: '%s'", file.get_path ());
+                        continue;
+                    }
+
+                    try {
+                        files_builder.add ("h", file_descriptors.append (fd));
+                    } catch (Error e) {
+                        warning ("send-by-mail: cannot append file descriptor: %s", e.message);
+                    }
                 }
-                options["attachment_fds"] = file_descriptors;
+                options["attachment_fds"] = files_builder.end ();
 
                 /** Even though the org.freedesktop.portal.Email portal specs
                 * claims that "all the keys in the options are are optional",
                 * the portal does not work if no "addresses" key is passed.
                 * This is probably a bug in the Gtk backend of the portal.
                 */
-                options["addresses"] = new Variant ("as", null);
+                if (portal.version > 2) {
+                    options["addresses"] = new Variant ("as", null);
+                }
 
                 try {
                     var handle = window_export.end (res);
-                    portal.compose_email (handle, options);
+                    portal.compose_email (handle, options, file_descriptors);
 
                 } catch (Error e) {
                     warning (e.message);

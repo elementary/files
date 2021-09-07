@@ -28,7 +28,8 @@ namespace Portal {
     }
 
     [DBus (name = "org.freedesktop.portal.Email")]
-    interface Email : Object {
+    interface Email : DBusProxy {
+        [DBus (name = "version")]
         public abstract uint version { get; }
 
         public static Email @get () throws IOError, DBusError {
@@ -40,6 +41,22 @@ namespace Portal {
             return email;
         }
 
-        public abstract ObjectPath compose_email (string window_handle, HashTable<string, Variant> options) throws IOError, DBusError;
+        [DBus (visible = false)]
+        public ObjectPath compose_email (string window_handle, HashTable<string, Variant> options, UnixFDList? attachments) throws Error {
+            var options_builder = new VariantBuilder (VariantType.VARDICT);
+            options.foreach ((key, val) => {
+                options_builder.add ("{sv}", key, val);
+            });
+
+            var response = call_with_unix_fd_list_sync (
+                "ComposeEmail",
+                new Variant ("(sa{sv})", window_handle, options_builder),
+                DBusCallFlags.NONE,
+                -1,
+                attachments
+            );
+
+            return (ObjectPath) response.get_child_value (0).get_string ();
+        }
     }
 }
