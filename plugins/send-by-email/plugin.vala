@@ -54,7 +54,8 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
                 /** Even though the org.freedesktop.portal.Email portal specs
                 * claims that "all the keys in the options are are optional",
                 * the portal does not work if no "addresses" key is passed.
-                * This is probably a bug in the Gtk backend of the portal.
+                * This is a bug in the Gtk backend of the portal:
+                * https://github.com/flatpak/xdg-desktop-portal-gtk/issues/343
                 */
                 if (portal.version > 2) {
                     options["addresses"] = new Variant ("as", null);
