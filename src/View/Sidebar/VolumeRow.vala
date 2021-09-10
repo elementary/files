@@ -182,7 +182,8 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         );
     }
 
-    protected override void show_mount_info () {
+    // Callback for context menu on a volume which is not in the course of being mounted.
+    protected override void show_mount_info () requires (!working) {
         if (!is_mounted) {
             /* Mount the device if possible, defer showing the dialog after
              * we're done */

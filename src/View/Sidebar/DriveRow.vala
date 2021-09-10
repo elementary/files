@@ -105,7 +105,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
                           "\n" + details + " " +
                          (drive.is_removable () ? _("This device can be safely unplugged.") : "");
 
-            add_mountable_tooltip (); // Change tooltip to match new custom name.
+            add_mountable_tooltip.begin (); // Change tooltip to match new custom name.
         }
 
         update_visibilities (); // Show/hide eject button and sorage bar.

@@ -213,7 +213,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             /* select_uri () will unselect other uris in each listbox */
             bookmark_listbox.select_uri (location);
             device_listbox.select_uri (location);
-             network_listbox.select_uri (location);
+            network_listbox.select_uri (location);
 
             return Source.REMOVE;
         });

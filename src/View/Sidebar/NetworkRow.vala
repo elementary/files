@@ -42,11 +42,14 @@ public class Sidebar.NetworkRow : Sidebar.VolumelessMountRow {
                 scheme = connectable.scheme;
                 hostname = connectable.hostname;
             } catch (Error e) {
-                scheme = Uri.parse_scheme (uri);
+                scheme = Uri.parse_scheme (uri) ?? "";
                 hostname = "";
             }
 
-            custom_name = _("%s (%s)").printf (custom_name, scheme);
+            if (scheme != "") {
+                custom_name = _("%s (%s)").printf (custom_name, scheme);
+            }
+
             sort_key = hostname + scheme + name;
         } else {
             sort_key = ""; // Used for "Network" entry which is always first.

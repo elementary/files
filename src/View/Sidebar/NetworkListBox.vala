@@ -96,10 +96,10 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
             return;
         };
 
-        string scheme = Uri.parse_scheme (mount.get_root ().get_uri ());
+        var scheme = Uri.parse_scheme (mount.get_root ().get_uri ());
 
         /* Some non-native schemes are still local e.g. mtp, ptp, gphoto2.  These are shown in the Device ListBox */
-        if ("smb ftp sftp afp dav davs".contains (scheme)) {
+        if (scheme != null && "smb ftp sftp afp dav davs".contains (scheme)) {
                 add_bookmark (
                 mount.get_name (),
                 mount.get_default_location ().get_uri (),

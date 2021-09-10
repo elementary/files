@@ -55,7 +55,7 @@ namespace Files.FileOperations {
 
     public static async bool eject_stop_drive (Drive drive, Gtk.Window? parent) throws Error {
         // First unmount any mounted volumes
-        foreach (Volume vol in drive.get_volumes ()) {
+        foreach (var vol in drive.get_volumes ()) {
             var mount = vol.get_mount ();
             if (mount != null) {
                 yield eject_mount (mount, parent);

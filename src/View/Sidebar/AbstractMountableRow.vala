@@ -181,6 +181,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
+        // Do not add items for a volume that is in the middle of being mounted or unmounted
         if (working) {
             return;
         }

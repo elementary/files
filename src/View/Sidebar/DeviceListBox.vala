@@ -53,8 +53,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
-        string key1 = row1 != null ? ((AbstractMountableRow)row1).sort_key : "";
-        string key2 = row2 != null ? ((AbstractMountableRow)row2).sort_key : "";
+        var key1 = (row1 != null && (row1 is AbstractMountableRow)) ? ((AbstractMountableRow)row1).sort_key : "";
+        var key2 = (row2 != null && (row2 is AbstractMountableRow)) ? ((AbstractMountableRow)row2).sort_key : "";
 
         return strcmp (key1, key2);
     }
