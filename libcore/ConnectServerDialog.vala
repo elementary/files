@@ -204,7 +204,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         password_entry = new Granite.ValidatedEntry () {
             input_purpose = Gtk.InputPurpose.PASSWORD,
-            visibility = false
+            visibility = false,
+            is_valid = true
         };
 
         var password_label = new DetailLabel (_("Password:"), password_entry);
@@ -566,8 +567,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             }
 
             if (GLib.AskPasswordFlags.SAVING_SUPPORTED in askpassword_flags) {
-                mount_operation.password_save = remember_checkbutton.active ?
-                                                GLib.PasswordSave.PERMANENTLY : GLib.PasswordSave.NEVER;
+                var should_save = password_entry.text != "" && remember_checkbutton.active;
+                mount_operation.password_save = should_save ? GLib.PasswordSave.PERMANENTLY : GLib.PasswordSave.NEVER;
             }
 
             connect_button.clicked (); /* The continue click justs quits new mainloop so now try connect again */
