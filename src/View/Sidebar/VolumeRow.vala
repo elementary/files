@@ -38,8 +38,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
     public override bool can_unmount {
         get {
-            return (is_mounted && volume.get_mount ().can_unmount ()) ||
-                   (volume.get_drive () != null && volume.get_drive ().can_eject ());
+            return (is_mounted && volume.get_mount ().can_unmount ());
         }
     }
 
@@ -69,7 +68,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         volume_monitor.volume_removed.connect (on_volume_removed);
     }
 
-    protected override async bool eject () {
+    protected override async bool unmount () {
         if (working) {
             return false;
         }
@@ -78,9 +77,14 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         var drive = volume.get_drive ();
         bool success = false;
         if (mount != null) {
-            success = yield eject_mount (mount);
-        } else if (drive != null) {
-             success = yield stop_eject_drive (drive);
+            success = yield unmount_mount (mount);
+        }
+
+        if (drive != null && drive.can_eject ()) {
+            // What do we want to do here?
+            // Should ejectable devices be ejected with or without a dialog?
+            // It is safer to eject USB devices so they can safely be unplugged but they then cannot be remounted unless unplugged first.
+
         }
 
         return success;
@@ -156,14 +160,16 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             return;
         }
 
-        if (drive != null && drive.can_stop ()) {
+        if (drive.can_eject ()) {
             menu_builder
                 .add_separator ()
-                .add_stop_drive (() => { stop_eject_drive.begin (volume.get_drive ()); });
-        } else if (drive.can_eject ()) {
+                .add_eject_drive (() => { eject_stop_drive (volume.get_drive (), false); });
+        }
+
+        if (drive.can_stop ()) {
             menu_builder
                 .add_separator ()
-                .add_eject_drive (() => { stop_eject_drive.begin (volume.get_drive ()); });
+                .add_stop_drive (() => { eject_stop_drive (volume.get_drive (), true); });
         }
     }
 

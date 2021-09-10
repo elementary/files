@@ -46,14 +46,14 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
         }
     }
 
-    protected override async bool eject () {
+    protected override async bool unmount () {
         if (working) {
             return false;
         }
 
         bool success = false;
         if (mount != null) {
-            success = yield eject_mount (mount);
+            success = yield unmount_mount (mount);
         } else {
             success = true;
         }

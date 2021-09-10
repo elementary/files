@@ -86,6 +86,7 @@ public class PopupMenuBuilder : Object {
     }
 
     public PopupMenuBuilder add_eject_drive (MenuitemCallback eject_drive_cb) {
+        // Do we need different text for USB sticks and optical drives?
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), eject_drive_cb);
     }
 

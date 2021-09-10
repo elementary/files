@@ -36,12 +36,6 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         }
     }
 
-    public override bool can_unmount {
-        get {
-            return (drive.has_media () && drive.can_eject ()) || drive.can_stop ();
-        }
-    }
-
     public DriveRow (string name, string uri, Icon gicon, SidebarListInterface list,
                          bool pinned, bool permanent,
                          string? _uuid, Drive _drive) {
@@ -65,11 +59,6 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         volume_monitor.drive_disconnected.connect (drive_removed);
         volume_monitor.volume_added.connect (volume_added);
         volume_monitor.volume_removed.connect (volume_removed);
-    }
-
-    // May want to eject (open) a closed drive with no media in order to insert media
-    protected override async bool eject () {
-        return yield stop_eject_drive (drive);
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -112,6 +101,19 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+        if (drive == null) {
+            return;
+        }
+
+        debug ("Getting Menu Items for DriveRow %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
+            drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
+            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
+
+        if (drive.can_stop ()) {
+            menu_builder
+                .add_separator ()
+                .add_stop_drive (() => { eject_stop_drive (drive, true); });
+        }
     }
 
     protected override async void add_mountable_tooltip () {
@@ -121,6 +123,13 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     protected override void popup_context_menu (Gdk.EventButton event) {
         // At present, this type of row only shows when there is no media or unformatted so there are no
         // usable actions.  In future, actions like "Format" might be added.
+        var menu_builder = new PopupMenuBuilder ();
+        add_extra_menu_items (menu_builder);
+
+        menu_builder
+            .build ()
+            .popup_at_pointer (event);
+
         return;
     }
 }

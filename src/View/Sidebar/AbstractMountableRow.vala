@@ -35,10 +35,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected static Gtk.CssProvider devicerow_provider;
     protected static VolumeMonitor volume_monitor;
 
-    private Gtk.Stack mount_eject_stack;
-    private Gtk.Revealer mount_eject_revealer;
-    private Gtk.Spinner mount_eject_spinner;
-    private Gtk.Button eject_button;
+    private Gtk.Stack unmount_working_stack;
+    private Gtk.Revealer unmount_revealer;
+    private Gtk.Spinner working_spinner;
+    private Gtk.Button unmount_button;
     private Gtk.LevelBar storage_levelbar;
 
     public Mount? mount { get; construct; }
@@ -72,11 +72,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             _working = value;
 
             if (value) {
-                mount_eject_spinner.start ();
-                mount_eject_stack.visible_child = mount_eject_spinner;
+                working_spinner.start ();
+                unmount_working_stack.visible_child = working_spinner;
             } else {
-                mount_eject_stack.visible_child = eject_button;
-                mount_eject_spinner.stop ();
+                unmount_working_stack.visible_child = unmount_revealer;
+                working_spinner.stop ();
             }
         }
     }
@@ -102,30 +102,31 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     construct {
-        eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
-            tooltip_text = _("Eject '%s'").printf (custom_name)
+        unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+            tooltip_text = _("Unmount '%s'").printf (custom_name)
         };
-        eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        mount_eject_spinner = new Gtk.Spinner ();
+        unmount_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        mount_eject_stack = new Gtk.Stack () {
+        working_spinner = new Gtk.Spinner ();
+
+        unmount_revealer = new Gtk.Revealer () {
+            transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
+            valign = Gtk.Align.CENTER,
+            reveal_child = false
+        };
+
+        unmount_revealer.add (unmount_button);
+
+        unmount_working_stack = new Gtk.Stack () {
             margin_start = 6,
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
 
-        mount_eject_stack.add (eject_button);
-        mount_eject_stack.add (mount_eject_spinner);
+        unmount_working_stack.add (unmount_revealer);
+        unmount_working_stack.add (working_spinner);
 
-        mount_eject_revealer = new Gtk.Revealer () {
-            transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
-            valign = Gtk.Align.CENTER
-        };
-
-        mount_eject_revealer.add (mount_eject_stack);
-        mount_eject_revealer.reveal_child = false;
-
-        content_grid.attach (mount_eject_revealer, 1, 0);
+        content_grid.attach (unmount_working_stack, 1, 0);
 
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
@@ -145,7 +146,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         volume_monitor.mount_removed.connect (on_mount_removed);
         volume_monitor.mount_added.connect (on_mount_added);
-        eject_button.clicked.connect (() => {eject.begin (); });
+        unmount_button.clicked.connect (() => { unmount.begin (); });
 
         show_all ();
 
@@ -155,7 +156,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected void update_visibilities () {
-        mount_eject_revealer.reveal_child = can_unmount;
+        unmount_revealer.reveal_child = can_unmount;
         storage_levelbar.visible = is_mounted;
     }
 
@@ -164,7 +165,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working = item.show_spinner;
     }
 
-    protected async bool eject_mount (Mount mount) {
+    protected async bool unmount_mount (Mount mount) {
         if (working || !valid) {
             return false;
         }
@@ -172,7 +173,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working = true;
 
         if (!permanent) {
-            yield Files.FileOperations.eject_mount (mount, Files.get_active_window ());
+            yield Files.FileOperations.unmount_mount (mount, Files.get_active_window ());
         }
 
         working = false;
@@ -197,9 +198,9 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_unmount (() => {eject.begin ();});
+                menu_builder.add_unmount (() => {unmount.begin ();});
             } else if (mount.can_eject ()) {
-                menu_builder.add_eject (() => {eject.begin ();});
+                menu_builder.add_eject (() => {unmount.begin ();});
             }
         }
 
@@ -210,28 +211,32 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     protected virtual void on_mount_removed (Mount removed_mount) {}
     protected virtual void on_mount_added (Mount added_mount) {}
-    protected virtual async bool eject () { return true; }
+    protected virtual async bool unmount () { return true; }
     protected virtual void show_mount_info () {}
     protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
         return false;
     }
 
-    protected async bool stop_eject_drive (Drive drive) {
+    protected void eject_stop_drive (Drive drive, bool stop = false) {
         if (working) {
-            return false;
+            return;
         }
 
+        debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
+            drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
+            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
+
         working = true;
-        try {
-            yield Files.FileOperations.eject_stop_drive (drive, Files.get_active_window ());
-            return true;
-        } catch (Error e) {
-            // MountUtil has already shown error dialog.
-            return false;
-        } finally {
-            working = false;
-            update_visibilities ();
-        }
+        Files.FileOperations.eject_stop_drive.begin (drive, Files.get_active_window (), stop, (obj, res) => {
+            try {
+                Files.FileOperations.eject_stop_drive.end (res);
+            } catch (Error e) {
+                // MountUtil has already shown error dialog.
+            } finally {
+                working = false;
+                update_visibilities ();
+            }
+        });
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
