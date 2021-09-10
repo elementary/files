@@ -104,6 +104,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
     private Gtk.Stack stack;
     private GLib.Cancellable? mount_cancellable;
 
+    private bool needs_password = false; // Whether to allow blank password
+
     public string server_uri {get; private set; default = "";}
 
     public ConnectServerDialog (Gtk.Window window) {
@@ -207,8 +209,10 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var password_label = new DetailLabel (_("Password:"), password_entry);
 
-        remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
-        password_entry.bind_property ("visible", remember_checkbutton, "visible", GLib.BindingFlags.DEFAULT);
+        remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password")) {
+            no_show_all = true,
+            visible = false
+        };
 
         cancel_button = new Gtk.Button.with_label (_("Cancel"));
         cancel_button.clicked.connect (on_cancel_clicked);
@@ -329,7 +333,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         });
 
         password_entry.changed.connect (() => {
-            password_entry.is_valid = password_entry.text.length > 0;
+            password_entry.is_valid = password_entry.text.length > 0 || !needs_password;
+            remember_checkbutton.visible = password_entry.text.length > 0;
             set_button_sensitivity ();
         });
     }
@@ -489,6 +494,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             if (password != null && password != "") {
                 mount_operation.password = password;
                 set_flags ^= GLib.AskPasswordFlags.NEED_PASSWORD;
+            } else {
+                needs_password = true;
             }
         }
 
@@ -573,6 +580,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         stack.visible_child_name = "connecting";
         connect_button.visible = false;
         continue_button.visible = false;
+        needs_password = false; // Gets reset if connect operation fails due to no password
         connect_to_server.begin ();
     }
 
