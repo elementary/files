@@ -360,16 +360,15 @@ namespace Files.View {
 
         private void change_tab (int offset) {
             ViewContainer? old_tab = current_tab;
-            current_tab = (ViewContainer)((tabs.get_tab_by_index (offset)).page) ;
+            current_tab = (ViewContainer)((tabs.get_tab_by_index (offset)).page);
+
             if (current_tab == null || old_tab == current_tab) {
                 return;
             }
 
-            if (restoring_tabs > 0) {
+            if (restoring_tabs > 0) { //Return if some restored tabs still loading
                 return;
             }
-
-            save_active_tab_position ();
 
             if (old_tab != null) {
                 old_tab.set_active_state (false);
@@ -380,6 +379,7 @@ namespace Files.View {
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
             sidebar.sync_uri (current_tab.uri);
             top_menu.working = current_tab.is_frozen;
+            save_active_tab_position ();
         }
 
         public void open_tabs (GLib.File[]? files = null,
@@ -1052,8 +1052,9 @@ namespace Files.View {
             if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
                 active_tab_position = 0;
             }
-            
-            change_tab (active_tab_position);
+
+            tabs.current = tabs.get_tab_by_index (active_tab_position);
+            current_tab = (ViewContainer?)(tabs.current.page);
 
             string path = "";
             if (current_tab != null) {
@@ -1126,7 +1127,6 @@ namespace Files.View {
                 set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
                 top_menu.update_location_bar (uri);
                 sidebar.sync_uri (uri);
-                save_tabs ();
             }
         }
 
