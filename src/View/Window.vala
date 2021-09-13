@@ -342,6 +342,8 @@ namespace Files.View {
             if (tabs.n_tabs == 0) {
                 add_tab ();
             }
+
+            save_tabs ();
         }
 
         public Files.AbstractSlot? get_active_slot () {
@@ -366,6 +368,8 @@ namespace Files.View {
             if (restoring_tabs > 0) {
                 return;
             }
+
+            save_active_tab_position ();
 
             if (old_tab != null) {
                 old_tab.set_active_state (false);
@@ -477,6 +481,9 @@ namespace Files.View {
 
                 tab.working = is_loading;
                 update_top_menu ();
+                if (restoring_tabs == 0 && !is_loading) {
+                    save_tabs ();
+                }
             });
 
             content.active.connect (() => {
@@ -909,10 +916,8 @@ namespace Files.View {
         }
 
         public void quit () {
-            if (is_first_window) {
-                save_geometries ();
-                save_tabs ();
-            }
+            save_geometries ();
+            save_tabs ();
 
             top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
@@ -927,6 +932,9 @@ namespace Files.View {
         }
 
         private void save_geometries () {
+            if (!is_first_window) {
+                return; //TODO Save all windows
+            }
             var sidebar_width = lside_pane.get_position ();
             var min_width = Files.app_settings.get_int ("minimum-sidebar-width");
 
@@ -952,6 +960,10 @@ namespace Files.View {
         }
 
         private void save_tabs () {
+            if (!is_first_window) {
+                return; //TODO Save all windows
+            }
+
             if (!Files.Preferences.get_default ().remember_history) {
                 return;  /* Do not clear existing settings if history is off */
             }
@@ -965,7 +977,6 @@ namespace Files.View {
                 if (!view_container.can_show_folder) {
                     continue;
                 }
-
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
@@ -975,12 +986,16 @@ namespace Files.View {
             }
 
             Files.app_settings.set_value ("tab-info-list", vb.end ());
+            save_active_tab_position ();
+        }
+
+        private void save_active_tab_position () {
             Files.app_settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
         }
 
         public uint restore_tabs () {
             /* Do not restore tabs if history off nor more than once */
-            if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) {
+            if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) { //TODO Restore all windows
                 return 0;
             } else {
                 tabs_restored = true;
@@ -1037,8 +1052,7 @@ namespace Files.View {
             if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
                 active_tab_position = 0;
             }
-
-            tabs.current = tabs.get_tab_by_index (active_tab_position);
+            
             change_tab (active_tab_position);
 
             string path = "";
@@ -1112,6 +1126,7 @@ namespace Files.View {
                 set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
                 top_menu.update_location_bar (uri);
                 sidebar.sync_uri (uri);
+                save_tabs ();
             }
         }
 
