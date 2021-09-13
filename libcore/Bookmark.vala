@@ -40,11 +40,8 @@ namespace Files {
 
         private GLib.FileMonitor monitor;
 
+        // Do not consider custom name when comparing bookmarks.  We only want one bookmark per URI.
         public static CompareFunc<Bookmark> compare_with = (a, b) => {
-            return (a.gof_file.location.equal (b.gof_file.location)) && (a.custom_name == b.custom_name) ? 0: 1;
-        };
-
-        public static CompareFunc<Bookmark> compare_uris = (a, b) => {
             return a.gof_file.location.equal (b.gof_file.location) ? 0 : 1;
         };
 

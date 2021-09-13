@@ -463,6 +463,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             // Set the suggested action only when revealer state changes
             if (reveal && !drop_revealer.reveal_child) {
                 current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
+                if (target.name () == "text/uri-list" && drop_text != null &&
+                    list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
+
+                    current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
+                    reveal = false;
+                }
             } else if (!reveal && drop_revealer.reveal_child &&
                        drop_text != null &&
                        target.name () == "text/uri-list") {
