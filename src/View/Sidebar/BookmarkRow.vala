@@ -96,9 +96,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             pinned: pinned,
             permanent: permanent
         );
-
-        set_up_drag ();
-        set_up_drop ();
     }
 
     construct {
@@ -171,6 +168,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
         });
+
+        set_up_drag ();
+        set_up_drop ();
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -460,13 +460,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             reveal = y > row_height - edge_height;
 
-            // Set the suggested action only when revealer state changes
-            if (reveal && !drop_revealer.reveal_child) {
+            if (reveal_drop_target (reveal)) {
+                // Drop between bookmarks
                 current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
-            } else if (!reveal && drop_revealer.reveal_child &&
-                       drop_text != null &&
-                       target.name () == "text/uri-list") {
-
+            } else if (drop_text != null && target.name () == "text/uri-list") {
+                // Drop onto bookmark
                 if (drop_file_list == null) {
                     drop_file_list = Files.FileUtils.files_from_uris (drop_text);
                 }
@@ -477,8 +475,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     out current_suggested_action
                 );
             }
-
-            reveal_drop_target (reveal);
 
             var pos = get_index ();
             if (pos > 0) {
@@ -579,9 +575,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected void reveal_drop_target (bool reveal) {
-        if (drop_revealer.reveal_child != reveal) {
+    protected bool reveal_drop_target (bool reveal) {
+        if (list.is_drop_target ()) {
             drop_revealer.reveal_child = reveal;
+            return reveal;
+        } else {
+            return false; //Suppress dropping between rows (e.g. for Storage list)
         }
     }
 }
