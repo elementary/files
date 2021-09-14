@@ -61,6 +61,7 @@
         <p>Fixes:</p>
         <ul>
           <li>Open bookmarks in a new tab with Ctrl + Click</li>
+          <li>Fix dropping uris onto storage devices and network locations in sidebar</li>
         </ul>
         <p>Other updates:</p>
         <ul>
@@ -89,7 +90,6 @@
         <ul>
           <li>Fix freeze when comparing copied files</li>
           <li>Fix truncation of final column in Column View under some circumstances</li>
-          <li>Fix dropping uris onto storage devices and network locations in sidebar</li>
         </ul>
         <p>Improvements:</p>
         <ul>
