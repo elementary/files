@@ -56,6 +56,20 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="6.0.3" date="2021-09-14" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Open bookmarks in a new tab with Ctrl + Click</li>
+          <li>Fix dropping uris onto storage devices and network locations in sidebar</li>
+          <li>Fix restoring tabs after a system restart</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.0.2" date="2021-08-24" urgency="medium">
       <description>
         <p>Fixes:</p>
