@@ -62,6 +62,7 @@
         <ul>
           <li>Open bookmarks in a new tab with Ctrl + Click</li>
           <li>Fix dropping uris onto storage devices and network locations in sidebar</li>
+          <li>Fix restoring tabs after a system restart</li>
         </ul>
         <p>Other updates:</p>
         <ul>
