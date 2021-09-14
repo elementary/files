@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 20:59+0000\n"
+"POT-Creation-Date: 2021-09-14 21:07+0000\n"
 "PO-Revision-Date: 2020-11-16 11:15+0000\n"
 "Last-Translator: deovaliandro <mdv16h@student.unhas.ac.id>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
@@ -290,13 +290,13 @@ msgstr "Tab Baru"
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:452
+#: src/View/Window.vala:456
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Tutup"
 
-#: src/View/Window.vala:562 src/View/Window.vala:572
+#: src/View/Window.vala:569 src/View/Window.vala:579
 msgid "(as Administrator)"
 msgstr "(sebagai Administrator)"
 

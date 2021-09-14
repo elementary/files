@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 20:59+0000\n"
+"POT-Creation-Date: 2021-09-14 21:07+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -298,12 +298,12 @@ msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:452
+#: src/View/Window.vala:456
 #, fuzzy
 msgid "Close Tab"
 msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 
-#: src/View/Window.vala:562 src/View/Window.vala:572
+#: src/View/Window.vala:569 src/View/Window.vala:579
 msgid "(as Administrator)"
 msgstr "(እንደ አስተዳዳሪ)"
 

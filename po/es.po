@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 20:59+0000\n"
+"POT-Creation-Date: 2021-09-14 21:07+0000\n"
 "PO-Revision-Date: 2021-06-15 20:52+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
@@ -299,11 +299,11 @@ msgstr "Pestaña nueva"
 msgid "Undo Close Tab"
 msgstr "Deshacer cerrar pestaña"
 
-#: src/View/Window.vala:452
+#: src/View/Window.vala:456
 msgid "Close Tab"
 msgstr "Cerrar pestaña"
 
-#: src/View/Window.vala:562 src/View/Window.vala:572
+#: src/View/Window.vala:569 src/View/Window.vala:579
 msgid "(as Administrator)"
 msgstr "(como administrador)"
 
