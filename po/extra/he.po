@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-08-29 21:20+0000\n"
+"PO-Revision-Date: 2021-09-15 19:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -71,28 +71,26 @@ msgid "Fixes:"
 msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#, fuzzy
-#| msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr "תוקנה הוספה של פריט בודד לסימניות עם Ctrl + D"
+msgstr "אפשר לפתוח סימניות בלשונית חדשה עם Ctrl + לחיצה"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
-msgstr ""
+msgstr "תוקנה השלכת כתובות להתקני אחסון ומיקומי רשת בסרגל הצד"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix restoring tabs after a system restart"
-msgstr ""
+msgstr "תוקן שחזור לשוניות לאחר הפעלת המערכת מחדש"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
-msgstr ""
+msgstr "הבחירה לא תבוטל לאחר לחיצה על מקום פנוי מסביב לקובץ או לתיקייה"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
-msgstr ""
+msgstr "תפריט ההקשר של התיקייה יוצג בלחיצה על כפתור משני מחוץ לבחירה"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:84
