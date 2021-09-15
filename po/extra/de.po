@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-09-15 06:01+0000\n"
+"PO-Revision-Date: 2021-09-15 07:13+0000\n"
 "Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
 "Language: de\n"
@@ -98,11 +98,15 @@ msgstr "Tabs werden nach einem Neustart nun korrekt wiederhergestellt"
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
+"Nicht deselektieren wenn ein Sekundärklick auf eine Freifläche neben einer "
+"Datei oder einem Ordner ausgeführt wird"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
+"Zeige Ordner-Kontextmenü, wenn ein Sekundärklick ausserhalb einer Auswahl "
+"ausgeführt wird"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:84
