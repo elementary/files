@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-08-24 18:36+0000\n"
+"PO-Revision-Date: 2021-09-15 10:54+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
@@ -78,25 +78,27 @@ msgstr "Fixes:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr ""
+msgstr "Open bookmarks in a new tab with Ctrl + Click"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
-msgstr ""
+msgstr "Fix dropping uris onto storage devices and network locations in sidebar"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix restoring tabs after a system restart"
-msgstr ""
+msgstr "Fix restoring tabs after a system restart"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
+"Don't unselect when secondary clicking blank space around a file or folder"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
+"Show the folder context menu when secondary clicking outside of a selection"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:84
@@ -134,11 +136,11 @@ msgstr "Updated translations"
 
 #: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Fix small context menus on breadcrumbs"
-msgstr ""
+msgstr "Fix small context menus on breadcrumbs"
 
 #: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr ""
+msgstr "Fix bookmarking a single selected item with Ctrl + D"
 
 #: data/io.elementary.files.appdata.xml.in.in:81
 msgid "Fix renaming bookmarks in the sidebar"
