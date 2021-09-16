@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-08-27 17:39+0000\n"
+"PO-Revision-Date: 2021-09-16 10:33+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,28 +79,33 @@ msgid "Fixes:"
 msgstr "Correccions:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#, fuzzy
-#| msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr "Correcció dels marcadors d'un element seleccionat amb Ctrl + D"
+msgstr "Obriu els marcadors en una pestanya nova amb Ctrl + clic."
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
+"Correcció de deixar anar URI als dispositius d’emmagatzematge i a les "
+"ubicacions de xarxa de la barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix restoring tabs after a system restart"
 msgstr ""
+"Correcció de la restauració de les pestanyes després del reinici del sistema"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
+"No s'anul·la la selecció quan feu clic secundari a l'espai en blanc al "
+"voltant d'un fitxer o carpeta."
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
+"Es mostra el menú contextual de la carpeta quan feu clic secundari fora "
+"d'una selecció."
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:84
