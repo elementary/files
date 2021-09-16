@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-08-27 07:37+0000\n"
+"PO-Revision-Date: 2021-09-16 10:33+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,28 +80,26 @@ msgid "Fixes:"
 msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
-#, fuzzy
-#| msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr "選択中の1項目を Ctrl + D キーでブックマークできない不具合を修正"
+msgstr "Ctrl + クリックでブックマークを新しいタブで開けるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
-msgstr ""
+msgstr "サイドバー上のストレージデバイスやネットワークの場所に URI をドラッグアンドドロップできない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix restoring tabs after a system restart"
-msgstr ""
+msgstr "“ファイル”を閉じずにシステムを再起動した場合、タブが復元されない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
-msgstr ""
+msgstr "ファイルやフォルダー周辺の空白領域を副クリックした場合に、選択項目が解除される不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
-msgstr ""
+msgstr "選択項目以外の場所で副クリックした場合はフォルダーのコンテキストメニューを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:84
