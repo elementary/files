@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-09-18 15:37+0000\n"
+"PO-Revision-Date: 2021-09-18 20:04+0000\n"
 "Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -85,6 +85,8 @@ msgstr "Открытие закладок в новой вкладке с пом
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
+"Исправлено падение uri на устройствах хранения данных и расположения сети на "
+"боковой панели"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix restoring tabs after a system restart"
@@ -94,11 +96,15 @@ msgstr "Исправлено восстановление вкладок пос�
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
+"Выделение не снимается при вторичном нажатии на пустом пространстве вокруг "
+"файла или папки"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
+"Отображение контекстного меню папки при вторичном щелчке за пределами "
+"выделения"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:84
