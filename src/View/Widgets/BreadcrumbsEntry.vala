@@ -543,7 +543,7 @@ namespace Files.View.Chrome {
 
         protected override bool on_button_press_event (Gdk.EventButton event) {
             /* Only handle if not on icon and breadcrumbs are visible */
-            if (icon_event (event) || has_focus || hide_breadcrumbs) {
+            if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
                 return base.on_button_press_event (event);
             } else {
                 var el = mark_pressed_element (event);
