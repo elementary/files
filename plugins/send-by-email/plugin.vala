@@ -49,6 +49,7 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
                         warning ("send-by-mail: cannot append file descriptor: %s", e.message);
                     }
                 }
+
                 options["attachment_fds"] = files_builder.end ();
 
                 /** Even though the org.freedesktop.portal.Email portal specs
@@ -69,7 +70,6 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
                     warning (e.message);
                 }
             });
-
         } catch (Error e) {
             warning (e.message);
         }
@@ -81,7 +81,6 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
         if (window is Gdk.X11.Window) {
             var xid = ((Gdk.X11.Window) window).get_xid ();
             return "x11:%x".printf ((uint) xid);
-
         } else if (window is Gdk.Wayland.Window) {
             var handle = "wayland:";
             ((Gdk.Wayland.Window) window).export_handle ((w, h) => {
@@ -93,6 +92,7 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
             if (handle != "wayland:") {
                 return handle;
             }
+
             return "";
 
         } else {
