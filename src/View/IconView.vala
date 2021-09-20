@@ -250,6 +250,8 @@ namespace Files {
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;
+                    } else {
+                        zone = ClickZone.BLANK_PATH;
                     }
                 } else {
                     bool on_helper = false;
