@@ -48,8 +48,6 @@ namespace Files.View.Chrome {
         Gdk.DragAction current_actions = 0; /* No action */
         Files.File? drop_target_file = null;
 
-        /** Long button press support **/
-        uint button_press_timeout_id = 0;
         /** Right-click menu support **/
         double menu_x_root;
         double menu_y_root;
@@ -104,11 +102,6 @@ namespace Files.View.Chrome {
         }
 
         protected override bool on_button_release_event (Gdk.EventButton event) {
-            if (button_press_timeout_id > 0) {
-                Source.remove (button_press_timeout_id);
-                button_press_timeout_id = 0;
-            }
-
             if (drop_file_list != null) {
                 return true;
             }
@@ -550,8 +543,7 @@ namespace Files.View.Chrome {
                 if (el != null) {
                     switch (event.button) {
                         case 1:
-                            handle_primary_button_press (event, el);
-                            break;
+                            break; // Long press support discontinued as provided by system settings
                         case 2:
                             handle_middle_button_press (event, el);
                             break;
@@ -576,22 +568,13 @@ namespace Files.View.Chrome {
             }
             return el;
         }
-        protected void handle_primary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
-            if (el != null) {
-                if (button_press_timeout_id == 0) {
-                    button_press_timeout_id = Timeout.add (Files.BUTTON_LONG_PRESS, () => {
-                        load_right_click_menu (event, el);
-                        button_press_timeout_id = 0;
-                        return GLib.Source.REMOVE;
-                    });
-                }
-            }
-        }
+
         protected void handle_middle_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
             if (el != null) {
                 activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
             }
         }
+
         protected void handle_secondary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
             load_right_click_menu (event, el);
         }
