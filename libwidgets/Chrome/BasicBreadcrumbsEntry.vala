@@ -233,8 +233,10 @@ namespace Files.View.Chrome {
         }
 
          protected virtual bool on_button_release_event (Gdk.EventButton event) {
-            /* Only activate breadcrumbs with primary click when they are showing and not hidden by placeholder */
-            if (event.button == Gdk.BUTTON_PRIMARY && placeholder == "" && !is_icon_event (event)) {
+            /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
+             * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
+             * not have focus. */
+            if (event.button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
                 reset_elements_states ();
                 var el = get_element_from_coordinates ((int) event.x, (int) event.y);
                 if (el != null) {
