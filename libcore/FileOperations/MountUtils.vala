@@ -59,51 +59,42 @@ namespace Files.FileOperations {
         }
     }
 
-    public static async bool eject_stop_drive (Drive drive, Gtk.Window? parent, bool stop) throws Error {
+    public static async void safely_remove_drive (Drive drive, Gtk.Window? parent) {
         // First unmount any mounted volumes
         foreach (var vol in drive.get_volumes ()) {
             var mount = vol.get_mount ();
-            if (mount != null) {
-                yield unmount_mount (mount, parent);
+            if (mount != null && !yield unmount_mount (mount, parent)) {
+                return;
             }
         }
 
         var mount_op = new Gtk.MountOperation (parent);
-
-        if (!stop && drive.can_eject ()) {
-            try {
-                yield drive.eject_with_operation (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null
-                );
-                return true;
-            } catch (Error e) {
-                PF.Dialogs.show_error_dialog (_("Unable to eject drive '%s'").printf (drive.get_name ()),
-                                              e.message,
-                                              null);
-                throw e;
-            }
-        } else if (stop && drive.can_stop ()) {
-           try {
-                yield drive.stop (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null
-                );
-                return true;
-            } catch (Error e) {
-                PF.Dialogs.show_error_dialog (_("Unable to stop drive '%s'").printf (drive.get_name ()),
-                                              e.message,
-                                              null);
-                throw e;
-            }
+        try {
+            yield drive.eject_with_operation (
+                GLib.MountUnmountFlags.NONE,
+                mount_op,
+                null
+            );
+        } catch (Error e) {
+            PF.Dialogs.show_error_dialog (_("Unable to eject drive '%s'").printf (drive.get_name ()),
+                                          e.message,
+                                          null);
         }
 
-        return true;
+       try {
+            yield drive.stop (
+                GLib.MountUnmountFlags.NONE,
+                mount_op,
+                null
+            );
+        } catch (Error e) {
+            PF.Dialogs.show_error_dialog (_("Unable to stop drive '%s'").printf (drive.get_name ()),
+                                          e.message,
+                                          null);
+        }
     }
 
-    public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) throws GLib.Error {
+    public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) {
         var mount_operation = new Gtk.MountOperation (parent_window);
         mount_operation.password_save = GLib.PasswordSave.FOR_SESSION;
         try {
@@ -112,7 +103,7 @@ namespace Files.FileOperations {
             PF.Dialogs.show_error_dialog (_("Unable to mount '%s'").printf (volume.get_name ()),
                                           e.message,
                                           null);
-            throw e;
+            return false;
         }
 
         return true;

@@ -46,21 +46,6 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
         }
     }
 
-    protected override async bool unmount () {
-        if (working) {
-            return false;
-        }
-
-        bool success = false;
-        if (mount != null) {
-            success = yield unmount_mount (mount);
-        } else {
-            success = true;
-        }
-
-        return success;
-    }
-
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         // By definition this row represents a mounted mount (or local filesystem)
         if (!working) {

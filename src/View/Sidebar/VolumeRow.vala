@@ -25,7 +25,6 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     public Volume volume {get; construct;}
     public string? drive_name {
         owned get {
-            var drive = volume.get_drive ();
             return drive != null ? drive.get_name () : null;
         }
     }
@@ -53,7 +52,9 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             pinned: true,  //pinned
             permanent: permanent,
             uuid: _uuid,
-            volume: _volume
+            volume: _volume,
+            mount: _volume.get_mount (),
+            drive: _volume.get_drive ()
         );
 
         if (drive_name != null && drive_name != "") {
@@ -68,28 +69,6 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         volume_monitor.volume_removed.connect (on_volume_removed);
     }
 
-    protected override async bool unmount () {
-        if (working) {
-            return false;
-        }
-
-        var mount = volume.get_mount ();
-        var drive = volume.get_drive ();
-        bool success = false;
-        if (mount != null) {
-            success = yield unmount_mount (mount);
-        }
-
-        if (drive != null && drive.can_eject ()) {
-            // What do we want to do here?
-            // Should ejectable devices be ejected with or without a dialog?
-            // It is safer to eject USB devices so they can safely be unplugged but they then cannot be remounted unless unplugged first.
-
-        }
-
-        return success;
-    }
-
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         if (working) {
             return;
@@ -102,23 +81,19 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
         working = true;
         Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
-                try {
-                    Files.FileOperations.mount_volume_full.end (res);
-                    var mount = volume.get_mount ();
-                    if (mount != null) {
-                        uri = mount.get_default_location ().get_uri ();
-                        if (volume.get_uuid () == null) {
-                            uuid = uri;
-                        }
-
-                        list.open_item (this, flag);
+                Files.FileOperations.mount_volume_full.end (res);
+                var mount = volume.get_mount ();
+                if (mount != null) {
+                    uri = mount.get_default_location ().get_uri ();
+                    if (volume.get_uuid () == null) {
+                        uuid = uri;
                     }
-                } catch (GLib.Error error) {
-                    // The MountUtil has already shown a dialog on error
-                } finally {
-                    working = false;
-                    add_mountable_tooltip.begin ();
+
+                    list.open_item (this, flag);
                 }
+
+                working = false;
+                add_mountable_tooltip.begin ();
             }
         );
     }
@@ -136,12 +111,14 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
     protected override void on_mount_added (Mount added_mount) {
         if (added_mount == volume.get_mount ()) {
+            mount = volume.get_mount ();
             update_visibilities ();
         }
     }
 
     protected override void on_mount_removed (Mount removed_mount) {
         if (volume.get_mount () == null) {
+            mount = null;
             update_visibilities ();
         }
     }
@@ -160,16 +137,12 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             return;
         }
 
-        if (drive.can_eject ()) {
+        if (drive.is_removable ()) {
             menu_builder
                 .add_separator ()
-                .add_eject_drive (() => { eject_stop_drive (volume.get_drive (), false); });
-        }
-
-        if (drive.can_stop ()) {
-            menu_builder
-                .add_separator ()
-                .add_stop_drive (() => { eject_stop_drive (volume.get_drive (), true); });
+                .add_safely_remove (() => {
+                    safely_remove_drive.begin (volume.get_drive ());
+                });
         }
     }
 
@@ -188,19 +161,14 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         );
     }
 
-    // Callback for context menu on a volume which is not in the course of being mounted.
     protected override void show_mount_info () requires (!working) {
         if (!is_mounted) {
             /* Mount the device if possible, defer showing the dialog after
              * we're done */
             working = true;
             Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
-                try {
-                    Files.FileOperations.mount_volume_full.end (res);
-                } catch (Error e) {
-                } finally {
-                    working = false;
-                }
+                Files.FileOperations.mount_volume_full.end (res);
+                working = false;
 
                 if (is_mounted) {
                     open_volume_property_window ();

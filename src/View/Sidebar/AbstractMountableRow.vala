@@ -35,13 +35,14 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected static Gtk.CssProvider devicerow_provider;
     protected static VolumeMonitor volume_monitor;
 
-    private Gtk.Stack unmount_working_stack;
-    private Gtk.Revealer unmount_revealer;
+    private Gtk.Stack unmount_eject_working_stack;
+    private Gtk.Revealer unmount_eject_revealer;
     private Gtk.Spinner working_spinner;
-    private Gtk.Button unmount_button;
+    private Gtk.Button unmount_eject_button;
     private Gtk.LevelBar storage_levelbar;
 
-    public Mount? mount { get; construct; }
+    public Mount? mount { get; set construct; default = null; }
+    public Drive? drive { get; construct; default = null; }
 
     protected bool valid = true;
     public string? uuid { get; set construct; }
@@ -55,6 +56,12 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     public virtual bool can_unmount {
         get {
             return is_mounted && mount.can_unmount ();
+        }
+    }
+
+    public virtual bool can_eject {
+        get {
+            return is_mounted && mount.can_eject ();
         }
     }
 
@@ -73,9 +80,9 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
             if (value) {
                 working_spinner.start ();
-                unmount_working_stack.visible_child = working_spinner;
+                unmount_eject_working_stack.visible_child = working_spinner;
             } else {
-                unmount_working_stack.visible_child = unmount_revealer;
+                unmount_eject_working_stack.visible_child = unmount_eject_revealer;
                 working_spinner.stop ();
             }
         }
@@ -102,31 +109,31 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     construct {
-        unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
-            tooltip_text = _("Unmount '%s'").printf (custom_name)
+        unmount_eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+            tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
         };
 
-        unmount_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        unmount_eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         working_spinner = new Gtk.Spinner ();
 
-        unmount_revealer = new Gtk.Revealer () {
+        unmount_eject_revealer = new Gtk.Revealer () {
             transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
             valign = Gtk.Align.CENTER,
             reveal_child = false
         };
 
-        unmount_revealer.add (unmount_button);
+        unmount_eject_revealer.add (unmount_eject_button);
 
-        unmount_working_stack = new Gtk.Stack () {
+        unmount_eject_working_stack = new Gtk.Stack () {
             margin_start = 6,
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
 
-        unmount_working_stack.add (unmount_revealer);
-        unmount_working_stack.add (working_spinner);
+        unmount_eject_working_stack.add (unmount_eject_revealer);
+        unmount_eject_working_stack.add (working_spinner);
 
-        content_grid.attach (unmount_working_stack, 1, 0);
+        content_grid.attach (unmount_eject_working_stack, 1, 0);
 
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
@@ -146,7 +153,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         volume_monitor.mount_removed.connect (on_mount_removed);
         volume_monitor.mount_added.connect (on_mount_added);
-        unmount_button.clicked.connect (() => { unmount.begin (); });
+        unmount_eject_button.clicked.connect (() => {
+            if (can_eject) {
+                eject_mount.begin ();
+            } else {
+                unmount_mount.begin ();
+            }
+        });
 
         show_all ();
 
@@ -156,7 +169,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected void update_visibilities () {
-        unmount_revealer.reveal_child = can_unmount;
+        unmount_eject_revealer.reveal_child = can_unmount;
         storage_levelbar.visible = is_mounted;
     }
 
@@ -165,20 +178,43 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working = item.show_spinner;
     }
 
-    protected async bool unmount_mount (Mount mount) {
-        if (working || !valid) {
+    protected async bool unmount_mount () {
+        if (working || !valid || permanent) {
             return false;
         }
 
         working = true;
+        var success = yield Files.FileOperations.unmount_mount (mount, Files.get_active_window ());
+        working = false;
+        update_visibilities ();
+        return success;
+    }
 
-        if (!permanent) {
-            yield Files.FileOperations.unmount_mount (mount, Files.get_active_window ());
+    protected async bool eject_mount () {
+        if (working || !valid || permanent) {
+            return false;
         }
 
+        working = true;
+        var success = yield Files.FileOperations.eject_mount (mount, Files.get_active_window ());
         working = false;
+        update_visibilities ();
+        return success;
+    }
 
-        return true;
+    protected async void safely_remove_drive (Drive drive) {
+        if (working || !valid) {
+            return;
+        }
+
+        debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
+            drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
+            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
+
+        working = true;
+        yield Files.FileOperations.safely_remove_drive (drive, Files.get_active_window ());
+        working = false;
+        update_visibilities ();
     }
 
     protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
@@ -198,45 +234,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_unmount (() => {unmount.begin ();});
-            } else if (mount.can_eject ()) {
-                menu_builder.add_eject (() => {unmount.begin ();});
+                menu_builder.add_unmount (() => {unmount_mount.begin ();});
             }
         }
 
         menu_builder
             .add_separator ()
             .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
-    }
-
-    protected virtual void on_mount_removed (Mount removed_mount) {}
-    protected virtual void on_mount_added (Mount added_mount) {}
-    protected virtual async bool unmount () { return true; }
-    protected virtual void show_mount_info () {}
-    protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
-        return false;
-    }
-
-    protected void eject_stop_drive (Drive drive, bool stop = false) {
-        if (working) {
-            return;
-        }
-
-        debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
-            drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
-            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
-
-        working = true;
-        Files.FileOperations.eject_stop_drive.begin (drive, Files.get_active_window (), stop, (obj, res) => {
-            try {
-                Files.FileOperations.eject_stop_drive.end (res);
-            } catch (Error e) {
-                // MountUtil has already shown error dialog.
-            } finally {
-                working = false;
-                update_visibilities ();
-            }
-        });
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
@@ -309,6 +313,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         return storage_text;
     }
 
+    public virtual void update_free_space () {
+        add_mountable_tooltip.begin ();
+    }
+
     protected virtual async void add_mountable_tooltip () {
         string storage_text = yield get_storage_text ();
         string mount_text;
@@ -321,7 +329,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         set_tooltip_markup (mount_text + storage_text);
     }
 
-    public virtual void update_free_space () {
-        add_mountable_tooltip.begin ();
+    protected virtual void on_mount_removed (Mount removed_mount) {}
+    protected virtual void on_mount_added (Mount added_mount) {}
+    protected virtual void show_mount_info () {}
+    protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
+        return false;
     }
 }
