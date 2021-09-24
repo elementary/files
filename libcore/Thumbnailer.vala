@@ -240,11 +240,16 @@ namespace Files {
         private bool is_supported (Files.File file) {
             /* TODO cache supported combinations */
             var ftype = file.get_ftype ();
+            if (ftype.has_prefix ("audio")) {
+                // Audible thumbnails not currently supported
+                return false;
+            }
+
             if (proxy == null || ftype == null) {
                 return false;
             }
-            bool supported = false;
 
+            bool supported = false;
             if (supported_schemes == null) {
                 try {
                     proxy.get_supported (out supported_schemes, out supported_types);
@@ -253,6 +258,7 @@ namespace Files {
                     return false;
                 }
             }
+
             if (supported_schemes != null && supported_types != null) {
                 uint index = 0;
                 foreach (string scheme in supported_schemes) {
