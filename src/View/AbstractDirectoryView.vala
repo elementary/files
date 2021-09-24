@@ -3437,13 +3437,7 @@ namespace Files {
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
 
-            click_zone = get_event_position_info (event, out path, true);
-            /* certain positions fake a no path blank zone */
-            if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
-                unselect_path (path);
-                path = null;
-            }
-
+            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY); //Only rubberband with primary button
             click_path = path;
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -3455,84 +3449,70 @@ namespace Files {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-
+            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
              */
             block_drag_and_drop ();
 
-            /* Native Gtk behaviour for all clicks on empty space */
-            if (click_zone == ClickZone.BLANK_NO_PATH) {
-                return false;
-            }
-
-            /* Handle un-modified clicks or control-clicks here else pass on.
-             */
+            /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
                 return false;
             }
 
-            if (!path_selected && click_zone != ClickZone.HELPER) {
-                if (no_mods) {
-                    unselect_all ();
-                }
-                /* If modifier pressed then default handler determines selection */
-                if (no_mods && !on_blank) {
-                    select_path (path, true); /* Cursor follows */
-                }
-            }
-
             bool result = false; // default false so events get passed to Window
             should_activate = false;
+            should_deselect = false;
             should_scroll = true;
 
+            /* Handle all selection and deselection explicitly in the following switch statement */
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY: // button 1
-                    /* Control-click should deselect previously selected path on key release (unless
-                     * pointer moves)
-                     */
-                    should_deselect = only_control_pressed && path_selected;
-
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
+                        case ClickZone.INVALID:
+                            unselect_all ();
                             break;
 
                         case ClickZone.BLANK_PATH:
                         case ClickZone.ICON:
                         case ClickZone.NAME:
-                            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
-                            /* determine whether should activate on key release (unless pointer moved)*/
-                            update_selected_files_and_menu ();
-                            should_activate = false;
+                            /* Control-click should deselect previously selected path on key release (unless
+                             * pointer moves) */
+                            should_deselect = only_control_pressed && path_selected;
 
+                            /* determine whether should activate on key release (unless pointer moved)*/
+                            // update_selected_files_and_menu ();
                             if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
                                 should_activate = on_directory || double_click_event;
                             }
+
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
-                             * the item is unselected.
-                             */
-
+                             * the item is unselected. */
                             if (!no_mods || (on_blank && !path_selected)) {
-                                update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
+                                if (no_mods && !path_selected) {
+                                    unselect_all ();
+                                }
+
+                                select_path (path);
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
 
+                            update_selected_files_and_menu ();
                             break;
 
                         case ClickZone.HELPER:
-                            bool multi_select = only_control_pressed || only_shift_pressed;
-                            if (multi_select) { /* Treat like modified click on icon */
+                            if (only_control_pressed || only_shift_pressed) { /* Treat like modified click on icon */
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
                                     /* Don't deselect yet, may drag */
                                     should_deselect = true;
                                 } else {
-                                    should_deselect = false;
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
@@ -3543,12 +3523,8 @@ namespace Files {
 
                         case ClickZone.EXPANDER:
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
-                             * on xpad also expands/collapses row (accessibility)*/
+                             * on xpad also expands/collapses row (accessibility). */
                             result = expand_collapse (path);
-                            break;
-
-                        case ClickZone.INVALID:
-                            result = false; /* Allow rubberbanding */
                             break;
 
                         default:
@@ -3569,14 +3545,30 @@ namespace Files {
                     break;
 
                 case Gdk.BUTTON_SECONDARY: // button 3
-                    if (click_zone == ClickZone.NAME ||
-                        click_zone == ClickZone.BLANK_PATH ||
-                        click_zone == ClickZone.ICON ||
-                        click_zone == ClickZone.HELPER) {
+                    switch (click_zone) {
+                        case ClickZone.BLANK_NO_PATH:
+                        case ClickZone.INVALID:
+                            unselect_all ();
+                            break;
 
-                        select_path (path); /* Note: secondary click does not toggle selection */
-                    } else if (click_zone == ClickZone.INVALID) {
-                        unselect_all ();
+                        case ClickZone.BLANK_PATH:
+                            if (!path_selected && no_mods) {
+                                unselect_all (); // Show the background menu on unselected blank areas
+                            }
+
+                            break;
+
+                        case ClickZone.NAME:
+                        case ClickZone.ICON:
+                        case ClickZone.HELPER:
+                            if (!path_selected && no_mods) {
+                                unselect_all ();
+                            }
+                            select_path (path); /* Note: secondary click does not toggle selection */
+                            break;
+
+                        default:
+                            break;
                     }
 
                     /* Ensure selected files list and menu actions are updated before context menu shown */

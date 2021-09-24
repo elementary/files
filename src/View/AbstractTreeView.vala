@@ -268,15 +268,6 @@ namespace Files {
             return zone;
         }
 
-        protected override bool handle_secondary_button_click (Gdk.EventButton event) {
-            /* In Column and List Views show background menu on all white space to allow
-             * creation of new folder when view full. */
-            if (click_zone == ClickZone.BLANK_PATH) {
-                unselect_all ();
-            }
-            return base.handle_secondary_button_click (event);
-        }
-
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
             /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
             if (tree == null || path == null || slot == null || slot.directory == null ||
