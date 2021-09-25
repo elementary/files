@@ -130,7 +130,7 @@ public class Files.Application : Gtk.Application {
             return 1;
         };
 
-        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
+        /* message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues"); */
         this.hold ();
         int result = _command_line (cmd);
         this.release ();
