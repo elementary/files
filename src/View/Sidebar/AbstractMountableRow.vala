@@ -217,6 +217,16 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
     }
 
+    protected async void eject_drive (Drive drive) {
+        if (working || !valid) {
+            return;
+        }
+        working = true;
+        yield Files.FileOperations.eject_drive (drive, Files.get_active_window ());
+        working = false;
+        update_visibilities ();
+    }
+
     protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
         // Do not add items for a volume that is in the middle of being mounted or unmounted
         if (working) {

@@ -137,11 +137,18 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             return;
         }
 
-        if (drive.is_removable ()) {
+        var sort_key = drive.get_sort_key ();
+        if (sort_key != null && sort_key.contains ("hotplug")) {
             menu_builder
                 .add_separator ()
                 .add_safely_remove (() => {
                     safely_remove_drive.begin (volume.get_drive ());
+                });
+        } else if (mount == null && drive.can_eject ()) {
+            menu_builder
+                .add_separator ()
+                .add_eject_drive (() => {
+                    eject_drive.begin (volume.get_drive ());
                 });
         }
     }

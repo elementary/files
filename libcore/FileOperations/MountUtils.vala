@@ -59,7 +59,7 @@ namespace Files.FileOperations {
         }
     }
 
-    public static async void safely_remove_drive (Drive drive, Gtk.Window? parent) {
+    public static async void eject_drive (Drive drive, Gtk.Window? parent) {
         // First unmount any mounted volumes
         foreach (var vol in drive.get_volumes ()) {
             var mount = vol.get_mount ();
@@ -76,21 +76,22 @@ namespace Files.FileOperations {
                 null
             );
         } catch (Error e) {
-            PF.Dialogs.show_error_dialog (_("Unable to eject drive '%s'").printf (drive.get_name ()),
-                                          e.message,
-                                          null);
+            warning ("Unable to eject drive %s: %s", drive.get_name (), e.message);
         }
+    }
 
-       try {
+    public static async void safely_remove_drive (Drive drive, Gtk.Window? parent) {
+        yield eject_drive (drive, parent);
+
+        var mount_op = new Gtk.MountOperation (parent);
+        try {
             yield drive.stop (
                 GLib.MountUnmountFlags.NONE,
                 mount_op,
                 null
             );
         } catch (Error e) {
-            PF.Dialogs.show_error_dialog (_("Unable to stop drive '%s'").printf (drive.get_name ()),
-                                          e.message,
-                                          null);
+            warning ("Unable to stop drive %s: %s", drive.get_name (), e.message);
         }
     }
 

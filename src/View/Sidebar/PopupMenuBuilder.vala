@@ -78,6 +78,11 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
     }
 
+    public PopupMenuBuilder add_eject_drive (MenuitemCallback cb) {
+        // Do we need different text for USB sticks and optical drives?
+        return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), cb);
+    }
+
     public PopupMenuBuilder add_safely_remove (MenuitemCallback cb) {
         // Do we need different text for USB sticks and optical drives?
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Safely Remove")), cb);

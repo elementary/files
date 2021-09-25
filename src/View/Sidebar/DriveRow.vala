@@ -61,7 +61,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         PF.Dialogs.show_warning_dialog (_("%s contains no accessible data.").printf (drive.get_name ()),
-                                        _("To use this drive you may need to unplug then replug it, insert media or format it."),
+                                        _("To use this drive you may need to replug it, or insert media or format it."),
                                         null);
     }
 
@@ -89,8 +89,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
             visible = true;
             var details = _("Unformatted or no media");
             custom_name = drive.get_name () +
-                          "\n" + details + " " +
-                         (drive.is_removable () ? _("This device can be safely unplugged.") : "");
+                          "\n" + details;
 
             add_mountable_tooltip.begin (); // Change tooltip to match new custom name.
         } else {
@@ -107,7 +106,8 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     protected override void popup_context_menu (Gdk.EventButton event) {
         // At present, this type of row only shows when there is no media or unformatted so there are no
         // usable actions.  In future, actions like "Format" might be added.
-        if (drive.is_removable ()) {
+        var sort_key = drive.get_sort_key ();
+        if (sort_key != null && sort_key.contains ("hotplug")) {
              var menu_builder = new PopupMenuBuilder ()
             .add_safely_remove (() => {
                 safely_remove_drive.begin (drive);
