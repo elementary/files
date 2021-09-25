@@ -53,7 +53,11 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     construct {
-        sort_key = MountableType.EMPTY_DRIVE.to_string () + custom_name;
+        sort_key = drive.get_sort_key ();
+        if (sort_key == null) {
+            sort_key = MountableType.EMPTY_DRIVE.to_string () + custom_name;
+        }
+
         volume_monitor.drive_disconnected.connect (drive_removed);
         volume_monitor.volume_added.connect (volume_added);
         volume_monitor.volume_removed.connect (volume_removed);

@@ -57,11 +57,21 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             drive: _volume.get_drive ()
         );
 
-        if (drive_name != null && drive_name != "") {
-            custom_name = _("%s (%s)").printf (custom_name, drive_name);
-            sort_key = MountableType.VOLUME.to_string () + drive_name + name;
+        string? volume_sort_key = null;
+        if (drive != null) {
+            volume_sort_key = volume.get_drive ().get_sort_key ();
+        } else {
+            volume_sort_key = volume.get_sort_key ();
+        }
+
+        if (volume_sort_key != null) {
+            sort_key = volume_sort_key + name;
         } else {
             sort_key = MountableType.VOLUME.to_string () + name;
+        }
+
+        if (drive_name != null && drive_name != "") {
+            custom_name = _("%s (%s)").printf (custom_name, drive_name);
         }
     }
 
