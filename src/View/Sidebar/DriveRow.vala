@@ -49,6 +49,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         );
 
         no_show_all = true;
+        visible = false;
         set_visibility ();
     }
 
@@ -89,18 +90,23 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     private void set_visibility () {
-        if (!drive.has_media () || !drive.has_volumes ()) {
-            visible = true;
-            var details = _("Unformatted or no media");
-            custom_name = drive.get_name () +
-                          "\n" + details;
+        // Wait in case volumes are in the process of being detected. This can take some time.
+        Timeout.add (2000, () => {
+            if (!drive.has_media () || !drive.has_volumes ()) {
+                visible = true;
+                var details = _("Unformatted or no media");
+                custom_name = drive.get_name () +
+                              "\n" + details;
 
-            add_mountable_tooltip.begin (); // Change tooltip to match new custom name.
-        } else {
-            visible = false;
-        }
+                add_mountable_tooltip.begin (); // Change tooltip to match new custom name.
+            } else {
+                visible = false;
+            }
 
-        update_visibilities (); // Show/hide eject button and storage bar.
+            update_visibilities (); // Show/hide eject button and storage bar.
+
+            return false;
+        });
     }
 
     protected override async void add_mountable_tooltip () {
