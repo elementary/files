@@ -37,11 +37,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW},
     };
 
-    /* Pinned bookmarks can accept uri lists but not rows */
-    static Gtk.TargetEntry[] pinned_targets = {
-        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST}
-    };
-
     static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
 
     /* Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
@@ -74,8 +69,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     public uint32 id { get; construct; }
     public string uri { get; set construct; }
     public Icon gicon { get; set construct; }
-    public bool pinned { get; construct; default = false;}
-    public bool permanent { get; construct; default = false;}
+    public bool pinned { get; construct; } // Cannot be dragged
+    public bool permanent { get; construct; } // Cannot be removed
+    public bool can_insert_before { get; set; default = true; }
+    public bool can_insert_after { get; set; default = true; }
 
     public MenuModel? menu_model {get; set; default = null;}
     public ActionGroup? action_group {get; set; default = null;}
@@ -393,30 +390,30 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         Gtk.drag_dest_set (
             this,
             Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
-            pinned ? pinned_targets : dest_targets, // Cannot accept rows if pinned
+            dest_targets,
             Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
         );
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
             drop_text = null;
-            if (info == Files.TargetType.BOOKMARK_ROW) {
-                drop_text = sel_data.get_text ();
-            } else if (info == Files.TargetType.TEXT_URI_LIST) {
-                if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
-                    warning ("sel data not uri list");
-                    drop_text = null;
-                }
-            }
+            // Extract the require text from info and convert to file list if appropriate
+            switch (info) {
+                case Files.TargetType.BOOKMARK_ROW:
+                    drop_text = sel_data.get_text ();
+                    break;
 
-            if (drop_text != null &&
-                info == Files.TargetType.TEXT_URI_LIST) {
+                case Files.TargetType.TEXT_URI_LIST:
+                    if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
+                        warning ("sel data not uri list");
+                        drop_text = null;
+                    } else {
+                        drop_file_list = Files.FileUtils.files_from_uris (drop_text);
+                    }
 
-                drop_file_list = Files.FileUtils.files_from_uris (drop_text);
-                Files.FileUtils.file_accepts_drop (
-                    target_file,
-                    drop_file_list, ctx,
-                    out current_suggested_action
-                );
+                    break;
+
+                default:
+                    return;
             }
 
             if (drop_occurred) {
@@ -437,10 +434,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             }
         });
 
-        /* Handle motion over a potention drop target */
+        /* Handle motion over a potential drop target, update current suggested action */
         drag_motion.connect ((ctx, x, y, time) => {
+            var target = Gtk.drag_dest_find_target (this, ctx, null);
             if (drop_text == null) {
-                var target = Gtk.drag_dest_find_target (this, ctx, null);
                 if (target != Gdk.Atom.NONE) {
                     Gtk.drag_get_data (this, ctx, target, time);
                 }
@@ -448,40 +445,47 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 return true;
             }
 
-            var row_height = icon_label_grid.get_allocated_height ();
-            var target = Gtk.drag_dest_find_target (this, ctx, null);
-            bool reveal;
-            int edge_height;
-            if (target.name () == "text/plain") { // Row being dragged
-                edge_height = row_height / 2; //Define thickness of edges
-            } else {
-                edge_height = 1;
+            var pos = get_index ();
+            var previous_item = (BookmarkRow?)(list.get_item_at_index (pos - 1));
+            var next_item = (BookmarkRow?)(list.get_item_at_index (pos + 1));
+
+            if (previous_item != null) {
+                previous_item.reveal_drop_target (false);
             }
 
-            reveal = y > row_height - edge_height;
+            var row_height = icon_label_grid.get_allocated_height ();
+            bool reveal = false;
+
+            current_suggested_action = Gdk.DragAction.DEFAULT;
+            switch (target.name ()) {
+                case "text/plain":
+                    reveal = can_insert_after &&
+                             (next_item == null || next_item.can_insert_before) &&
+                              y > row_height / 2;
+
+                    break;
+
+                case "text/uri-list": // File(s) being dragged
+                    reveal = can_insert_after &&
+                             (next_item == null || next_item.can_insert_before) &&
+                              y > row_height - 1;
+
+                    // When dropping onto a row, determine what actions are possible
+                    if (!reveal && drop_file_list != null) {
+                        Files.FileUtils.file_accepts_drop (
+                            target_file,
+                            drop_file_list, ctx,
+                            out current_suggested_action
+                        );
+                    }
+
+                    break;
+                default:
+                    break;
+            }
 
             if (reveal_drop_target (reveal)) {
-                // Drop between bookmarks
                 current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
-            } else if (drop_text != null && target.name () == "text/uri-list") {
-                // Drop onto bookmark
-                if (drop_file_list == null) {
-                    drop_file_list = Files.FileUtils.files_from_uris (drop_text);
-                }
-
-                Files.FileUtils.file_accepts_drop (
-                    target_file,
-                    drop_file_list, ctx,
-                    out current_suggested_action
-                );
-            }
-
-            var pos = get_index ();
-            if (pos > 0) {
-                var previous_item = (BookmarkRow?)(list.get_item_at_index (pos - 1));
-                if (previous_item != null) {
-                    previous_item.reveal_drop_target (false);
-                }
             }
 
             Gdk.drag_status (ctx, current_suggested_action, time);
@@ -535,10 +539,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                                        List<GLib.File> drop_file_list,
                                        bool dropped_between) {
 
-        if (dropped_between && // Dropped on edge
-             drop_file_list.next == null && //Only create one new bookmark at a time
-             !pinned) {// pinned rows cannot be moved
-
+        if (dropped_between && drop_file_list.next == null) { //Only create one new bookmark at a time
             var pos = get_index ();
             pos++;
             return list.add_favorite (drop_file_list.data.get_uri (), null, pos);
