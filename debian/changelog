@@ -1,3 +1,18 @@
+pantheon-files (6.0.3) bionic; urgency=medium
+
+  * Release 6.0.3 (#1840)
+  * Fix middle-click handling in pathbar (#1838)
+  * Discontinue long press support (#1839)
+  * Update translation files
+  * Update translation template
+  * Fix secondary-click behaviour wrt selection/deselection (#1835)
+  * Update tab settings whenever tabs change (#1833)
+  * Allow dropping uris onto Storage and Network rows. (#1760)
+  * Fix regression: Ctrl-Click on bookmark to open in new tab. (#1831)
+  * Hide scrollbar while renaming (#1773)
+
+ -- Cody Garver <cody@elementary.io>  Mon, 27 Sep 2021 20:40:36 +0000
+
 pantheon-files (6.0.2) bionic; urgency=medium
 
   * Release 6.0.2 (#1812)
