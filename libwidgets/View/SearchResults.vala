@@ -72,8 +72,8 @@ namespace Files.View.Chrome {
 
             public Match.from_bookmark (Bookmark bookmark, SearchResults.Category category) {
                 var _name = bookmark.custom_name != "" && bookmark.custom_name != bookmark.basename ?
-                _("%s (%s)").printf (bookmark.custom_name, bookmark.basename) :
-                bookmark.basename;
+                    _("%s (%s)").printf (bookmark.custom_name, bookmark.basename) :
+                    bookmark.basename;
                 Object (
                         name: Markup.escape_text (_name),
                         mime: "inode/directory",
