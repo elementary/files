@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-07-20 03:12+0000\n"
+"PO-Revision-Date: 2021-09-29 22:21+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,25 +80,31 @@ msgstr "Correcciones:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr ""
+msgstr "Abrir marcadores en una nueva pestaña con Ctrl + Clic"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
+"Se corrigió la caída de uris en dispositivos de almacenamiento y ubicaciones "
+"de red en la barra lateral"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Fix restoring tabs after a system restart"
-msgstr ""
+msgstr "Se corrigió la restauración de pestañas después de reiniciar el sistema"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
+"No anule la selección cuando haga clic secundario en un espacio en blanco "
+"alrededor de un archivo o carpeta"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
+"Mostrar el menú contextual de la carpeta al hacer clic secundario fuera de "
+"una selección"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 #: data/io.elementary.files.appdata.xml.in.in:84
