@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-08-23 13:42+0000\n"
-"Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
+"PO-Revision-Date: 2021-09-30 15:27+0000\n"
+"Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -517,8 +517,8 @@ msgstr "Dateien können von diesem Ort nicht entfernt werden"
 #: src/View/AbstractDirectoryView.vala:3086
 msgid "You do not have permission to change this location"
 msgstr ""
-"Sie haben nicht die notwendigen Zugriffsrechte, um an diesem Ort Änderungen "
-"vorzunehmen"
+"Sie haben nicht die notwendigen Zugriffsrechte, an diesem Ort Änderungen "
+"vorzunehmen."
 
 #: src/View/AbstractDirectoryView.vala:3039
 msgid "Cannot copy files that are in the trash"
@@ -557,7 +557,7 @@ msgstr "Dieser Ordner gehört nicht Ihnen"
 #: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr ""
-"Sie haben nicht die notwendigen Zugriffsrechte um diesen Ordner zu sehen."
+"Sie haben nicht die notwendigen Zugriffsrechte, diesen Ordner zu betrachten."
 
 #: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
@@ -1567,7 +1567,7 @@ msgid ""
 "permissions to see them."
 msgstr ""
 "Dateien im Ordner »%s« können nicht bearbeitet werden, da Sie nicht die "
-"notwendigen Zugriffsrechte haben, um diese zu sehen."
+"notwendigen Zugriffsrechte haben, diese zu sehen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1978,10 +1978,9 @@ msgid "Type Path"
 msgstr "Pfad eingeben"
 
 #: libwidgets/View/SearchResults.vala:75
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s ( %s)"
 
 #: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
