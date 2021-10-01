@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-10-01 06:52+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"PO-Revision-Date: 2021-10-01 06:53+0000\n"
+"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1355,12 +1355,12 @@ msgstr "Usuwanie plików"
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
 #: libcore/marlin-file-operations.c:395
-#, fuzzy, c-format
+#, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "Pozostała %T"
-msgstr[1] "Pozostały %T"
-msgstr[2] "Pozostało %T"
+msgstr[0] "Pozostała %s"
+msgstr[1] "Pozostały %s"
+msgstr[2] "Pozostało %s"
 
 #: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
 #: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
@@ -1371,23 +1371,23 @@ msgstr "Wystąpił błąd podczas usuwania plików."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:470
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Pliki w katalogu „%B” nie mogą być usunięte ponieważ nie masz uprawnień do "
+"Pliki w katalogu „%s” nie mogą być usunięte ponieważ nie masz uprawnień do "
 "ich oglądania."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:475 libcore/marlin-file-operations.c:1203
 #: libcore/marlin-file-operations.c:2216
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
-"Wystąpił błąd podczas uzyskiwania informacji na temat plików w katalogu „%B”."
+"Wystąpił błąd podczas uzyskiwania informacji na temat plików w katalogu „%s”."
 
 #: libcore/marlin-file-operations.c:487 libcore/marlin-file-operations.c:2228
 msgid "_Skip files"
@@ -1396,12 +1396,12 @@ msgstr "_Pomiń pliki"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:511
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Nie można usunąć katalogu „%B” z powodu braku uprawnień do jego odczytu."
+"Nie można usunąć katalogu „%s” z powodu braku uprawnień do jego odczytu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1413,9 +1413,9 @@ msgstr "Wystąpił błąd podczas odczytywania katalogu „%s”."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:557
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "Nie można usunąć katalogu „%B”."
+msgstr "Nie można usunąć katalogu „%s”."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:641
