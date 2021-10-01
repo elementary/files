@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-10-01 06:54+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"PO-Revision-Date: 2021-10-01 06:55+0000\n"
+"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1574,39 +1574,39 @@ msgstr ""
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1245
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Nie można przeprowadzić operacji na katalogu „%B” ponieważ nie masz "
+"Nie można przeprowadzić operacji na katalogu „%s” ponieważ nie masz "
 "uprawnień do jego odczytu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1334
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Nie można przeprowadzić operacji na pliku „%B” ponieważ nie masz uprawnień "
+"Nie można przeprowadzić operacji na pliku „%s” ponieważ nie masz uprawnień "
 "do jego odczytu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1339
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error getting information about \"%s\"."
-msgstr "Wystąpił błąd podczas uzyskiwania informacji na temat „%B”."
+msgstr "Wystąpił błąd podczas uzyskiwania informacji na temat „%s”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1447 libcore/marlin-file-operations.c:1495
 #: libcore/marlin-file-operations.c:1535 libcore/marlin-file-operations.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying to \"%s\"."
-msgstr "Wystąpił błąd podczas kopiowania do katalogu „%B”."
+msgstr "Wystąpił błąd podczas kopiowania do katalogu „%s”."
 
 #: libcore/marlin-file-operations.c:1452
 msgid "You do not have permissions to access the destination folder."
