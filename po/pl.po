@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:45+0000\n"
-"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
+"Last-Translator: Kamil Makowski <kamil.makowski97@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -308,10 +308,8 @@ msgid "Undo Close Tab"
 msgstr "Cofnij zamknięcie karty"
 
 #: src/View/Window.vala:456
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "Zamknij"
+msgstr "Zamknij kartę"
 
 #: src/View/Window.vala:569 src/View/Window.vala:579
 msgid "(as Administrator)"
