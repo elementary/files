@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:52+0000\n"
-"Last-Translator: Kamil Makowski <kamil.makowski97@gmail.com>\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1120,7 +1120,7 @@ msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
-"Katalog zostanie odtworzony i wybrane pliki, które się tam początkowo "
+"Folder zostanie odtworzony i wybrane pliki, które się tam początkowo "
 "znajdowały, zostaną do niego przywrócone"
 
 #: libcore/FileUtils.vala:207
@@ -1143,9 +1143,9 @@ msgstr "Dzisiaj o %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:677
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Wczoraj o %-H:%M"
+msgstr "Wczoraj o %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:685
@@ -1187,15 +1187,13 @@ msgstr[2] "w przybliżeniu %'d godzin"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:1050
-#, fuzzy
-#| msgid " (copy)"
 msgid "copy"
-msgstr " (kopia)"
+msgstr "kopia"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:1052
 msgid "link"
-msgstr ""
+msgstr "skrót"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1054
