@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:49+0000\n"
-"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -671,7 +671,7 @@ msgstr "Trwale usuń pliki z Kosza"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Trwale usuń pliki z tego nośnika znajdujące się w Koszu"
+msgstr "Trwale usuń Kosz z tego nośnika"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:288
@@ -700,10 +700,8 @@ msgid "Devices and places available via a network"
 msgstr "Urządzenia i miejsca dostępne przez sieć"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "Łączenie z serwerem…"
+msgstr "Połącz z serwerem…"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -1092,10 +1090,9 @@ msgid "Merge"
 msgstr "Połącz"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Nie można określić pierwotnego położenia \"%s\" "
+msgstr "Nie można określić pierwotnego położenia „%s”"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
