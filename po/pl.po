@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:57+0000\n"
-"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1753,7 +1753,7 @@ msgstr ""
 #: libcore/marlin-file-operations.c:2073
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Wystąpił błąd podczas tworzenia katalogu „%s”."
+msgstr "Wystąpił błąd podczas tworzenia folderu „%s”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
