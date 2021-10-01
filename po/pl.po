@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:56+0000\n"
-"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1606,7 +1606,7 @@ msgstr "Wystąpił błąd podczas uzyskiwania informacji na temat „%s”."
 #: libcore/marlin-file-operations.c:1535 libcore/marlin-file-operations.c:1577
 #, c-format
 msgid "Error while copying to \"%s\"."
-msgstr "Wystąpił błąd podczas kopiowania do katalogu „%s”."
+msgstr "Wystąpił błąd podczas kopiowania do „%s”."
 
 #: libcore/marlin-file-operations.c:1452
 msgid "You do not have permissions to access the destination folder."
