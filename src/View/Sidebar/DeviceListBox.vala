@@ -84,7 +84,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 mount
             );
 
-            add (new_bm);
+            insert (new_bm, 1);
 
             return new_bm;
         }
