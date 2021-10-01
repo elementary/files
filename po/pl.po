@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:47+0000\n"
-"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -361,7 +361,7 @@ msgstr "Nie można wykonać tego pliku"
 #: src/View/AbstractDirectoryView.vala:834
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "“%s” musi być przeniesiony z Kosza przed jego otwarciem"
+msgstr "„%s” musi być przeniesiony z Kosza przed jego otwarciem"
 
 #: src/View/AbstractDirectoryView.vala:835
 msgid ""
@@ -411,10 +411,8 @@ msgstr "Wklej"
 
 #: src/View/AbstractDirectoryView.vala:1968
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
-#, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
-msgstr "Zakładki"
+msgstr "Dodaj do Zakładek"
 
 #: src/View/AbstractDirectoryView.vala:1983
 msgid "Cut"
@@ -430,8 +428,6 @@ msgid "Move to Trash"
 msgstr "Przenieś do kosza"
 
 #: src/View/AbstractDirectoryView.vala:2003
-#, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Usuń trwale"
 
@@ -448,10 +444,8 @@ msgid "Remove from History"
 msgstr "Usuń z historii"
 
 #: src/View/AbstractDirectoryView.vala:2040
-#, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
-msgstr "Zmień nazwę"
+msgstr "Zmień nazwę…"
 
 #: src/View/AbstractDirectoryView.vala:2047
 msgid "Copy as Link"
@@ -623,7 +617,7 @@ msgstr "Zobacz listę ostatnio używanych plików"
 #: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s wolne"
 
 #: src/View/Sidebar/DeviceRow.vala:119
 #, c-format
