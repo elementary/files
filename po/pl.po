@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:50+0000\n"
-"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
+"Last-Translator: Kamil Makowski <kamil.makowski97@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1112,10 +1112,8 @@ msgid "No files that were in this folder will be restored"
 msgstr "Żadne pliki, które były w tym katalogu, nie zostaną przywrócone"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "Utwórz"
+msgstr "Odtwórz"
 
 #: libcore/FileUtils.vala:194
 msgid ""
