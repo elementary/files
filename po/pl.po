@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-10-01 06:55+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"PO-Revision-Date: 2021-10-01 06:56+0000\n"
+"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1632,9 +1632,9 @@ msgstr ""
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "There is 100 MB available, but 150 MB is required".
 #: libcore/marlin-file-operations.c:1543
-#, fuzzy, c-format
+#, c-format
 msgid "There is %s available, but %s is required."
-msgstr "Dostępne %S, a wymagane jest %S."
+msgstr "Dostępne jest %s, a wymagane jest %s."
 
 #: libcore/marlin-file-operations.c:1579
 msgid "The destination is read-only."
@@ -1643,71 +1643,71 @@ msgstr "Położenie docelowe jest tylko do odczytu."
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1653
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Przenoszenie „%B” do położenia „%B”"
+msgstr "Przenoszenie „%s” do „%s”"
 
 #: libcore/marlin-file-operations.c:1654
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Kopiowanie „%B” do położenia „%B”"
+msgstr "Kopiowanie „%s” do „%s”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1658
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "Powielanie „%B”"
+msgstr "Duplikowanie „%s”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:1666
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Przenoszenie %'d pliku (w „%B”) do „%B”"
-msgstr[1] "Przenoszenie %'d plików (w „%B”) do „%B”"
-msgstr[2] "Przenoszenie %'d plików (w „%B”) do „%B”"
+msgstr[0] "Przenoszenie %'d pliku (w „%s”) do „%s”"
+msgstr[1] "Przenoszenie %'d plików (w „%s”) do „%s”"
+msgstr[2] "Przenoszenie %'d plików (w „%s”) do „%s”"
 
 #: libcore/marlin-file-operations.c:1669
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Kopiowanie %'d pliku (w „%B”) do „%B”"
-msgstr[1] "Kopiowanie %'d plików (w „%B”) do „%B”"
-msgstr[2] "Kopiowanie %'d plików (w „%B”) do „%B”"
+msgstr[0] "Kopiowanie %'d pliku (w „%s”) do „%s”"
+msgstr[1] "Kopiowanie %'d plików (w „%s”) do „%s”"
+msgstr[2] "Kopiowanie %'d plików (w „%s”) do „%s”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1678
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Powielanie %'d pliku (w „%B”)"
-msgstr[1] "Powielanie %'d plików (w „%B”)"
-msgstr[2] "Powielanie %'d plików (w „%B”)"
+msgstr[0] "Duplikowanie %'d pliku (w „%s”)"
+msgstr[1] "Duplikowanie %'d plików (w „%s”)"
+msgstr[2] "Duplikowanie %'d plików (w „%s”)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #. %'d is a placeholder for a number. It must not be translated or removed.
 #. Placeholders must appear in the same order but otherwise may change position.
 #: libcore/marlin-file-operations.c:1690
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Przenoszenie %'d pliku do położenia „%B”"
-msgstr[1] "Przenoszenie %'d plików do położenia „%B”"
-msgstr[2] "Przenoszenie %'d plików do położenia „%B”"
+msgstr[0] "Przenoszenie %'d pliku do „%s”"
+msgstr[1] "Przenoszenie %'d plików do „%s”"
+msgstr[2] "Przenoszenie %'d plików do „%s”"
 
 #: libcore/marlin-file-operations.c:1693
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Kopiowanie %'d pliku do położenia „%B”"
-msgstr[1] "Kopiowanie %'d plików do położenia „%B”"
-msgstr[2] "Kopiowanie %'d plików do położenia „%B”"
+msgstr[0] "Kopiowanie %'d pliku do „%s”"
+msgstr[1] "Kopiowanie %'d plików do „%s”"
+msgstr[2] "Kopiowanie %'d plików do „%s”"
 
 #: libcore/marlin-file-operations.c:1699
 #, c-format
@@ -1719,9 +1719,9 @@ msgstr[2] "Powielanie %'d plików"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:1729
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s"
-msgstr "%S z %S"
+msgstr "%s z %s"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -1730,22 +1730,22 @@ msgstr "%S z %S"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1749
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%S z %S — pozostała %T (%S/s)"
-msgstr[1] "%S z %S — pozostały %T (%S/s)"
-msgstr[2] "%S z %S — pozostało %T (%S/s)"
+msgstr[0] "%s z %s — pozostała %s (%s/sek)"
+msgstr[1] "%s z %s — pozostały %s (%s/sek)"
+msgstr[2] "%s z %s — pozostało %s (%s/sek)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2068
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Katalog „%B” nie może zostać skopiowany, ponieważ nie masz uprawnień do jego "
+"Katalog „%s” nie może zostać skopiowany, ponieważ nie masz uprawnień do jego "
 "utworzenia w miejscu docelowym."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
