@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-10-01 06:56+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"PO-Revision-Date: 2021-10-01 06:57+0000\n"
+"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1758,23 +1758,23 @@ msgstr "Wystąpił błąd podczas tworzenia katalogu „%s”."
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2211
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Pliki w katalogu „%B” nie mogą zostać skopiowane, ponieważ nie masz "
+"Pliki w katalogu „%s” nie mogą zostać skopiowane, ponieważ nie masz "
 "uprawnień do ich wyświetlenia."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2265
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Katalog „%B” nie może zostać skopiowany, ponieważ nie masz uprawnień do jego "
+"Katalog „%s” nie może zostać skopiowany, ponieważ nie masz uprawnień do jego "
 "odczytu."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -1783,9 +1783,9 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2320 libcore/marlin-file-operations.c:2977
 #: libcore/marlin-file-operations.c:3536
-#, fuzzy, c-format
+#, c-format
 msgid "Error while moving \"%s\"."
-msgstr "Wystąpił błąd podczas przenoszenia „%B”."
+msgstr "Wystąpił błąd podczas przenoszenia „%s”."
 
 #: libcore/marlin-file-operations.c:2322
 msgid "Could not remove the source folder."
@@ -1795,21 +1795,21 @@ msgstr "Nie można usunąć katalogu źródłowego."
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2413 libcore/marlin-file-operations.c:2466
 #: libcore/marlin-file-operations.c:2981
-#, fuzzy, c-format
+#, c-format
 msgid "Error while copying \"%s\"."
-msgstr "Wystąpił błąd podczas kopiowania „%B”."
+msgstr "Wystąpił błąd podczas kopiowania „%s”."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2418
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Nie można usunąć plików z istniejącego już katalogu „%F”."
+msgstr "Nie można usunąć plików z istniejącego już katalogu „%s”."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2471
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %s."
-msgstr "Nie można usunąć istniejącego pliku %F."
+msgstr "Nie można usunąć istniejącego pliku %s."
 
 #: libcore/marlin-file-operations.c:2706 libcore/marlin-file-operations.c:3372
 msgid "You cannot move a folder into itself."
@@ -1837,16 +1837,16 @@ msgstr "Plik źródłowy zostanie zastąpiony plikiem docelowym."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2987
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file with the same name in %s."
-msgstr "Nie można usunąć istniejącego już pliku o tej samej nazwie w %F."
+msgstr "Nie można usunąć istniejącego już pliku o tej samej nazwie w %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3059
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "Nie można skopiować \"%B\" tutaj."
+msgstr "Nie można tutaj skopiować \"%s\"."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3064
