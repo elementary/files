@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 10:05+0000\n"
-"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
+"Last-Translator: Paweł Orszulik <orszoooo@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1951,15 +1951,15 @@ msgstr "Wystąpił błąd podczas tworzenia katalogu %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4737
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating file %s."
-msgstr "Wystąpił błąd podczas tworzenia pliku %B."
+msgstr "Wystąpił błąd podczas tworzenia pliku %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4743
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Wystąpił błąd podczas tworzenia katalogu w katalogu %F."
+msgstr "Wystąpił błąd podczas tworzenia katalogu w lokacji %s."
 
 #: libwidgets/Chrome/BasicLocationBar.vala:88
 msgid "Type a path"
