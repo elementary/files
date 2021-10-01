@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 10:05+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1850,9 +1850,9 @@ msgstr "Nie można tutaj skopiować „%s”."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3064
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying the file into %s."
-msgstr "Wystąpił błąd podczas kopiowania pliku do %B."
+msgstr "Wystąpił błąd podczas kopiowania pliku do %s."
 
 #: libcore/marlin-file-operations.c:3254
 msgid "Copying Files"
@@ -1861,9 +1861,9 @@ msgstr "Kopiowanie plików"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3289
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move to \"%s\""
-msgstr "Przygotowywanie do przeniesienia do „%B”"
+msgstr "Przygotowywanie do przeniesienia do „%s”"
 
 #: libcore/marlin-file-operations.c:3294
 #, c-format
@@ -1875,9 +1875,9 @@ msgstr[2] "Przygotowywanie do przeniesienia %'d plików"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3540
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving the file into %s."
-msgstr "Wystąpił błąd podczas przenoszenia pliku do katalogu %F."
+msgstr "Wystąpił błąd podczas przenoszenia pliku do katalogu %s."
 
 #: libcore/marlin-file-operations.c:3764
 msgid "Moving Files"
@@ -1886,9 +1886,9 @@ msgstr "Przenoszenie plików"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3802
-#, fuzzy, c-format
+#, c-format
 msgid "Creating links in \"%s\""
-msgstr "Tworzenie dowiązań w „%B”"
+msgstr "Tworzenie dowiązań w „%s”"
 
 #: libcore/marlin-file-operations.c:3807
 #, c-format
@@ -1900,9 +1900,9 @@ msgstr[2] "Tworzenie dowiązań do %'d plików"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3917
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating link to %s."
-msgstr "Wystąpił błąd podczas tworzenia dowiązania do „%B”."
+msgstr "Wystąpił błąd podczas tworzenia dowiązania do „%s”."
 
 #: libcore/marlin-file-operations.c:3920
 msgid "Symbolic links only supported for local files"
@@ -1914,10 +1914,10 @@ msgstr "Położenie docelowe nie obsługuje dowiązań symbolicznych."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3928
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the symlink in %s."
 msgstr ""
-"Wystąpił błąd podczas tworzenia dowiązania symbolicznego w katalogu %F."
+"Wystąpił błąd podczas tworzenia dowiązania symbolicznego w katalogu %s."
 
 #: libcore/marlin-file-operations.c:4218
 msgid "Setting permissions"
@@ -1945,9 +1945,9 @@ msgstr "Nowy plik"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4734
-#, fuzzy, c-format
+#, c-format
 msgid "Error while creating directory %s."
-msgstr "Wystąpił błąd podczas tworzenia katalogu %B."
+msgstr "Wystąpił błąd podczas tworzenia katalogu %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4737
@@ -1986,7 +1986,7 @@ msgstr "%s (%s)"
 
 #: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
-msgstr ""
+msgstr "Więcej wyników …"
 
 #: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
