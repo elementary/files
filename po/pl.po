@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-10-01 06:45+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"PO-Revision-Date: 2021-10-01 06:47+0000\n"
+"Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -368,6 +368,8 @@ msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
+"Nie można otworzyć plików w Koszu. Aby otworzyć plik, należy przenieść je w "
+"inne miejsce."
 
 #: src/View/AbstractDirectoryView.vala:850
 msgid "Cannot open this file"
@@ -597,12 +599,8 @@ msgid "The file selected no longer exists."
 msgstr "Wybrany plik nie istnieje."
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
-#, fuzzy
 msgid "View the home folder"
-msgstr ""
-"Nie udało się utworzyć katalogu\n"
-"\n"
-"%s"
+msgstr "Zobacz katalog domowy"
 
 #: src/View/Sidebar/BookmarkListBox.vala:142
 msgid "View the list of recently used files"
@@ -628,9 +626,9 @@ msgid "%s free"
 msgstr ""
 
 #: src/View/Sidebar/DeviceRow.vala:119
-#, fuzzy, c-format
+#, c-format
 msgid "%s used of %s"
-msgstr "%S z %S"
+msgstr "Użyto %s z %s"
 
 #: src/View/Sidebar/NetworkListBox.vala:93
 msgid "Entire Network"
@@ -673,22 +671,16 @@ msgid "_Eject"
 msgstr "_Wysuń"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:97
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "Trwale usunąć wszystkie pliki z Kosza?"
+msgstr "Trwale usuń wszystkie pliki z Kosza"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:97
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete Trash"
-msgstr "Trwale usunąć wszystkie pliki z Kosza?"
+msgstr "Trwale usuń pliki z Kosza"
 
 #: src/View/Sidebar/PopupMenuBuilder.vala:104
-#, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Trwale usunąć wszystkie pliki z tego nośnika znajdujące się w Koszu?"
+msgstr "Trwale usuń pliki z tego nośnika znajdujące się w Koszu"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: libwidgets/View/SearchResults.vala:288
