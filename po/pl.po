@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-10-01 06:57+0000\n"
+"PO-Revision-Date: 2021-10-01 10:05+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -1846,7 +1846,7 @@ msgstr "Nie można usunąć istniejącego już pliku o tej samej nazwie w %s."
 #: libcore/marlin-file-operations.c:3059
 #, c-format
 msgid "Cannot copy \"%s\" here."
-msgstr "Nie można tutaj skopiować \"%s\"."
+msgstr "Nie można tutaj skopiować „%s”."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3064
@@ -1924,10 +1924,8 @@ msgid "Setting permissions"
 msgstr "Nadawanie uprawnień"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Przenoszenie plików do kosza"
+msgstr "Brak plików do przetworzenia"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
@@ -1982,10 +1980,9 @@ msgid "Type Path"
 msgstr "Wpisz ścieżkę"
 
 #: libwidgets/View/SearchResults.vala:75
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s)"
 
 #: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
@@ -2000,8 +1997,6 @@ msgid "Below This Folder"
 msgstr "Poniżej tego katalogu"
 
 #: libwidgets/View/SearchResults.vala:293
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 
@@ -2026,10 +2021,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libwidgets/Resources.vala:62
-#, fuzzy
-#| msgid "AFP"
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libwidgets/Resources.vala:63
 msgid "DAV"
@@ -2061,7 +2054,7 @@ msgstr "MTP"
 
 #: libwidgets/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "GPHOTO2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
