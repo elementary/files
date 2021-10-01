@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:49+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"Last-Translator: Kamil Makowski <kamil.makowski97@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -891,20 +891,16 @@ msgid "Port:"
 msgstr "Port:"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "Nazwa udziału na serwerze"
+msgstr "Nazwa udziału na serwerze (Opcjonalnie)"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Share:"
 msgstr "Udział:"
 
 #: libcore/ConnectServerDialog.vala:181
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Ścieżka do współdzielonego katalogu na serwerze"
+msgstr "Ścieżka do współdzielonego katalogu na serwerze (Opcjonalnie)"
 
 #: libcore/ConnectServerDialog.vala:185
 msgid "Folder:"
