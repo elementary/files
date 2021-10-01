@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-10-01 06:47+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
+"Last-Translator: Kamil Makowski <kamil.makowski97@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -609,10 +609,8 @@ msgid "Open the Trash"
 msgstr "Otwórz kosz"
 
 #: src/View/Sidebar/DeviceListBox.vala:129
-#, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
-msgstr "Zobacz listę ostatnio używanych plików"
+msgstr "Wyświetlenie katalogu głównego lokalnego systemu plików"
 
 #: src/View/Sidebar/DeviceRow.vala:118
 #, c-format
