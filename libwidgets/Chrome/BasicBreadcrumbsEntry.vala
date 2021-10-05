@@ -229,14 +229,14 @@ namespace Files.View.Chrome {
 
         protected virtual bool on_button_press_event (Gdk.EventButton event) {
             context_menu_showing = has_focus && event.button == Gdk.BUTTON_SECONDARY;
-            return !has_focus;
+            return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
         }
 
          protected virtual bool on_button_release_event (Gdk.EventButton event) {
-            if (icon_event (event)) {
-                return false;
-            } else if (placeholder == "") {
-                /* Only activate breadcrumbs when they are showing and not hidden by placeholder */
+            /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
+             * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
+             * not have focus. */
+            if (event.button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
                 reset_elements_states ();
                 var el = get_element_from_coordinates ((int) event.x, (int) event.y);
                 if (el != null) {
@@ -245,22 +245,17 @@ namespace Files.View.Chrome {
                 }
             }
 
-            grab_focus ();
+            if (!has_focus) {
+                grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
+            }
 
-            return true;
+            return false;
         }
 
-        protected bool icon_event (Gdk.EventButton event) {
+        protected bool is_icon_event (Gdk.EventButton event) {
             /* We need to distinguish whether the event comes from one of the icons.
              * There doesn't seem to be a way of doing this directly so we check the window width */
-            if (event.window.get_width () < ICON_WIDTH) {
-                return true;
-            } else if (is_focus) {
-                base.button_press_event (event);
-                return true;
-            } else {
-                return false;
-            }
+            return (event.window.get_width () <= ICON_WIDTH);
         }
 
         void on_icon_press (Gtk.EntryIconPosition pos) {
