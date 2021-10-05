@@ -123,7 +123,6 @@ namespace Files {
             if (request_handle_mapping == null) {
                 request_handle_mapping = new GLib.HashTable<uint, uint>.full (direct_hash, direct_equal, null, null);
                 handle_request_mapping = new GLib.HashTable<uint, uint>.full (direct_hash, direct_equal, null,null);
-                // handle_uris_mapping = new GLib.HashTable<uint, unowned List<string>>.full (direct_hash, direct_equal, null,null);
                 handle_uris_mapping = new GLib.HashTable<uint, UriList?>.full (direct_hash, direct_equal, null,null);
                 thumbnailer_lock = Mutex ();
             }
