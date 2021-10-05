@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 21:16+0000\n"
+"POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -386,7 +386,7 @@ msgid "Open in"
 msgstr "मध्ये उघडा"
 
 #: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "उघडण्यासाठी वापरा"
 
@@ -661,7 +661,7 @@ msgid "Permanently Delete Trash on this Mount"
 msgstr "या माउंटवरील कचरापेटीमधील सर्व आयटम कायमचे हटवा"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
+#: libwidgets/View/SearchResults.vala:288
 msgid "Bookmarks"
 msgstr "बुकमार्क"
 
@@ -722,20 +722,20 @@ msgstr "सुरक्षा सेटिंग्ज बदला"
 msgid "Open the system security and privacy settings app"
 msgstr "सिस्टम सुरक्षा आणि गोपनीयता सेटिंग्ज अॅप उघडा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "पाथ शोधा अथवा टाईप करा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "नवीन टॅबमध्ये उघडा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
 msgstr "नवीन विंडोमध्ये उघडा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:502
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
 msgstr "अन्य अप्लिकेशनमध्ये उघडा…"
 
@@ -1911,28 +1911,34 @@ msgstr "एक पाथ टाइप करा"
 msgid "Navigate to %s"
 msgstr "%s वर नेव्हिगेट करा"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "%sला जा"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
 msgid "Type Path"
 msgstr "प्रकार"
 
-#: libwidgets/View/SearchResults.vala:82
+#: libwidgets/View/SearchResults.vala:75
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s (%s)"
+msgstr "%s (%s, %s)"
+
+#: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
 msgstr "अधिक परिणाम …"
 
-#: libwidgets/View/SearchResults.vala:274
+#: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
 msgstr "या फोल्डरमध्ये"
 
-#: libwidgets/View/SearchResults.vala:278
+#: libwidgets/View/SearchResults.vala:284
 msgid "Below This Folder"
 msgstr "या फोल्डर खाली"
 
-#: libwidgets/View/SearchResults.vala:287
+#: libwidgets/View/SearchResults.vala:293
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
 

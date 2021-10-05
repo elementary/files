@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 21:16+0000\n"
+"POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak <https://weblate.elementary.io/projects/files/files/sk/"
@@ -407,7 +407,7 @@ msgid "Open in"
 msgstr "Otvoriť v"
 
 #: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Otvoriť s"
 
@@ -702,7 +702,7 @@ msgid "Permanently Delete Trash on this Mount"
 msgstr "Natrvalo odstrániť všetky položky z koša na tomto zariadeni?"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
+#: libwidgets/View/SearchResults.vala:288
 msgid "Bookmarks"
 msgstr "Záložky"
 
@@ -765,20 +765,20 @@ msgstr ""
 msgid "Open the system security and privacy settings app"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "Otvoriť v novej karte"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
 msgstr "Otvoriť v novom okne"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:502
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
 msgstr "Otvoriť v Inej Aplikácií..."
 
@@ -2020,29 +2020,35 @@ msgstr "Zadajte cestu"
 msgid "Navigate to %s"
 msgstr "Naviguj do %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "Prejsť na %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
 #, fuzzy
 msgid "Type Path"
 msgstr "Zadajte cestu"
 
-#: libwidgets/View/SearchResults.vala:82
+#: libwidgets/View/SearchResults.vala:75
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s (%s)"
+msgstr "%s (%s, %s)"
+
+#: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:274
+#: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
 msgstr "V tomto priečinku"
 
-#: libwidgets/View/SearchResults.vala:278
+#: libwidgets/View/SearchResults.vala:284
 msgid "Below This Folder"
 msgstr "Pod týmto priečnikom"
 
-#: libwidgets/View/SearchResults.vala:287
+#: libwidgets/View/SearchResults.vala:293
 #, fuzzy
 #| msgid "Recently used"
 msgid "Recently Used"

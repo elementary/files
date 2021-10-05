@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-08-23 13:42+0000\n"
-"Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
+"POT-Creation-Date: 2021-09-29 08:35+0000\n"
+"PO-Revision-Date: 2021-09-30 15:27+0000\n"
+"Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -396,7 +396,7 @@ msgid "Open in"
 msgstr "Öffnen in"
 
 #: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Öffnen mit"
 
@@ -517,8 +517,8 @@ msgstr "Dateien können von diesem Ort nicht entfernt werden"
 #: src/View/AbstractDirectoryView.vala:3086
 msgid "You do not have permission to change this location"
 msgstr ""
-"Sie haben nicht die notwendigen Zugriffsrechte, um an diesem Ort Änderungen "
-"vorzunehmen"
+"Sie haben nicht die notwendigen Zugriffsrechte, an diesem Ort Änderungen "
+"vorzunehmen."
 
 #: src/View/AbstractDirectoryView.vala:3039
 msgid "Cannot copy files that are in the trash"
@@ -557,7 +557,7 @@ msgstr "Dieser Ordner gehört nicht Ihnen"
 #: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr ""
-"Sie haben nicht die notwendigen Zugriffsrechte um diesen Ordner zu sehen."
+"Sie haben nicht die notwendigen Zugriffsrechte, diesen Ordner zu betrachten."
 
 #: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
@@ -675,7 +675,7 @@ msgid "Permanently Delete Trash on this Mount"
 msgstr "Alle Objekte im Papierkorb auf diesem Datenträger dauerhaft löschen"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
+#: libwidgets/View/SearchResults.vala:288
 msgid "Bookmarks"
 msgstr "Lesezeichen"
 
@@ -736,20 +736,20 @@ msgstr "Sicherheitseinstellungen ändern"
 msgid "Open the system security and privacy settings app"
 msgstr "Einstellungen für Sicherheit & Datenschutz öffnen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Suche oder Pfad eingeben"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "In neuem Tab öffnen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
 msgstr "In neuem Fenster öffnen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:502
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
 msgstr "In einer anderen Anwendung öffnen …"
 
@@ -1567,7 +1567,7 @@ msgid ""
 "permissions to see them."
 msgstr ""
 "Dateien im Ordner »%s« können nicht bearbeitet werden, da Sie nicht die "
-"notwendigen Zugriffsrechte haben, um diese zu sehen."
+"notwendigen Zugriffsrechte haben, diese zu sehen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1968,28 +1968,33 @@ msgstr "Pfad eingeben"
 msgid "Navigate to %s"
 msgstr "Zu »%s« gehen"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "Zu »%s« gehen"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
 msgid "Type Path"
 msgstr "Pfad eingeben"
 
-#: libwidgets/View/SearchResults.vala:82
+#: libwidgets/View/SearchResults.vala:75
+#, c-format
+msgid "%s (%s)"
+msgstr "%s ( %s)"
+
+#: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
 msgstr "Weitere Suchergebnisse …"
 
-#: libwidgets/View/SearchResults.vala:274
+#: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
 msgstr "In diesem Ordner"
 
-#: libwidgets/View/SearchResults.vala:278
+#: libwidgets/View/SearchResults.vala:284
 msgid "Below This Folder"
 msgstr "Unterhalb dieses Ordners"
 
-#: libwidgets/View/SearchResults.vala:287
+#: libwidgets/View/SearchResults.vala:293
 msgid "Recently Used"
 msgstr "Zuletzt verwendet"
 

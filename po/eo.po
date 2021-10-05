@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 21:16+0000\n"
+"POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -391,7 +391,7 @@ msgid "Open in"
 msgstr "Malfermi per"
 
 #: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Malfermi per"
 
@@ -679,7 +679,7 @@ msgid "Permanently Delete Trash on this Mount"
 msgstr "Ĉu definitive forigi ĉiujn elementojn el ĉi muntaĵa rubujo?"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
+#: libwidgets/View/SearchResults.vala:288
 msgid "Bookmarks"
 msgstr "Paĝosignoj"
 
@@ -742,20 +742,20 @@ msgstr "Ŝanĝi sekurecajn agordojn"
 msgid "Open the system security and privacy settings app"
 msgstr "Malfermi la aplikaĵon pri sistem-sekureca kaj privateca agordoj"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Serĉi aŭ tajpi dosierindikon"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "Malfermi en nova langeto"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
 msgstr "Malfermi en nova fenestro"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:502
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
 msgstr "Malfermi en alia aplikaĵo…"
 
@@ -1953,28 +1953,34 @@ msgstr "Tajpi dosierindikon"
 msgid "Navigate to %s"
 msgstr "Navigi al %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "Iri al %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
 msgid "Type Path"
 msgstr "Tajpu dosierindikon"
 
-#: libwidgets/View/SearchResults.vala:82
+#: libwidgets/View/SearchResults.vala:75
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s (%s)"
+msgstr "%s (%s, %s)"
+
+#: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
 msgstr "Ceteraj rezultatoj…"
 
-#: libwidgets/View/SearchResults.vala:274
+#: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
 msgstr "En ĉi dosierujo"
 
-#: libwidgets/View/SearchResults.vala:278
+#: libwidgets/View/SearchResults.vala:284
 msgid "Below This Folder"
 msgstr "Sub ĉi dosierujo"
 
-#: libwidgets/View/SearchResults.vala:287
+#: libwidgets/View/SearchResults.vala:293
 #, fuzzy
 #| msgid "Recently used"
 msgid "Recently Used"
