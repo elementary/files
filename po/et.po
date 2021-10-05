@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 21:16+0000\n"
+"POT-Creation-Date: 2021-09-29 08:35+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -403,7 +403,7 @@ msgid "Open in"
 msgstr "Ava..."
 
 #: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Ava koos"
 
@@ -699,7 +699,7 @@ msgstr ""
 "Soovid kõik sellelt kettalt prügikasti tõstetud failid jäädavalt kustutada?"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
+#: libwidgets/View/SearchResults.vala:288
 msgid "Bookmarks"
 msgstr "Järjehoidjad:"
 
@@ -762,20 +762,20 @@ msgstr ""
 msgid "Open the system security and privacy settings app"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "Ava uues kaardis"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
 msgstr "Ava uues aknas"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:502
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
 msgstr "Ava teise rakendusega…"
 
@@ -1991,30 +1991,36 @@ msgstr "Sisesta asukoht"
 msgid "Navigate to %s"
 msgstr "Navigeerimine sihtkohta %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "Mine %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
 #, fuzzy
 msgid "Type Path"
 msgstr "Sisesta asukoht"
 
-#: libwidgets/View/SearchResults.vala:82
+#: libwidgets/View/SearchResults.vala:75
+#, fuzzy, c-format
+#| msgid "%s (copy)%s"
+msgid "%s (%s)"
+msgstr "%s (koopia)%s"
+
+#: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:274
+#: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
 msgstr "Selles kaustas:"
 
-#: libwidgets/View/SearchResults.vala:278
+#: libwidgets/View/SearchResults.vala:284
 #, fuzzy
 msgid "Below This Folder"
 msgstr "Selles kaustas:"
 
-#: libwidgets/View/SearchResults.vala:287
+#: libwidgets/View/SearchResults.vala:293
 #, fuzzy
 msgid "Recently Used"
 msgstr "Hiljutised"
@@ -2484,9 +2490,6 @@ msgstr " on valitud"
 
 #~ msgid "rd copy)"
 #~ msgstr "koopia)"
-
-#~ msgid "%s (copy)%s"
-#~ msgstr "%s (koopia)%s"
 
 #~ msgid "%s (another copy)%s"
 #~ msgstr "%s (veel üks koopia)%s"

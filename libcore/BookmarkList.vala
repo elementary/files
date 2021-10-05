@@ -135,15 +135,15 @@ namespace Files {
             return instance;
         }
 
-        public Bookmark insert_uri (string uri, uint index, string? label = null) {
-            var bm = new Bookmark.from_uri (uri, label);
+        public Bookmark insert_uri (string uri, uint index, string custom_name = "") {
+            var bm = new Bookmark.from_uri (uri, custom_name);
             insert_item_internal (bm, index);
             save_bookmarks_file ();
             return bm;
         }
 
-        public Bookmark insert_uri_at_end (string uri, string? label = null) {
-            var bm = new Bookmark.from_uri (uri, label);
+        public Bookmark insert_uri_at_end (string uri, string custom_name = "") {
+            var bm = new Bookmark.from_uri (uri, custom_name);
             append_internal (bm);
             save_bookmarks_file ();
             return bm;
@@ -155,7 +155,7 @@ namespace Files {
                 return;
             }
             uris.@foreach ((uri) => {
-                insert_item_internal (new Bookmark.from_uri (uri, null), index);
+                insert_item_internal (new Bookmark.from_uri (uri), index);
                 index++;
             });
             save_bookmarks_file ();
@@ -179,7 +179,12 @@ namespace Files {
         public void rename_item_with_uri (string uri, string new_name) {
             foreach (unowned Files.Bookmark bookmark in list) {
                 if (uri == bookmark.uri) {
-                    bookmark.label = new_name;
+                    if (new_name == Path.get_basename (uri)) {
+                        // Do not use basename as a custom name
+                        bookmark.custom_name = "";
+                    } else {
+                        bookmark.custom_name = new_name;
+                    }
                     save_bookmarks_file ();
                     return;
                 }
@@ -305,6 +310,7 @@ namespace Files {
             list.@foreach (stop_monitoring_bookmark);
 
             uint count = 0;
+            bool change_made = false;
             string [] lines = contents.split ("\n");
             foreach (string line in lines) {
                 if (line[0] == '\0' || line[0] == ' ') {
@@ -312,18 +318,24 @@ namespace Files {
                 }
 
                 string [] parts = line.split (" ", 2);
-                if (parts.length == 2) {
-                    append_internal (new Files.Bookmark.from_uri (parts [0], parts [1]));
-                } else {
-                    append_internal (new Files.Bookmark.from_uri (parts [0]));
+                string uri = parts[0];
+                string custom_name = parts.length == 2 ? parts[1] : "";
+                if (custom_name != "" &&
+                    (custom_name.strip () == "" || // Custom name cannot be all whitespace
+                    custom_name == Path.get_basename (uri))) { // Custom names cannot be the same as the default name
+
+                    custom_name = "";
+                    change_made = true; // Write back corrected bookmark
                 }
+
+                append_internal (new Files.Bookmark.from_uri (uri, custom_name));
 
                 count++;
             }
 
             list.@foreach (start_monitoring_bookmark);
 
-            if (list.length () > count) { // Can be assumed to be limited in length
+            if (change_made || list.length () > count) { // Can be assumed to be limited in length
                 /* renew bookmark that was deleted when bookmarks file was changed externally */
                 save_bookmarks_file ();
             }
@@ -335,7 +347,10 @@ namespace Files {
 
             list.@foreach ((bookmark) => {
                 sb.append (bookmark.uri);
-                sb.append (" " + bookmark.label);
+                if (bookmark.custom_name.strip () != "") {
+                    sb.append (" " + bookmark.custom_name);
+                }
+
                 sb.append ("\n");
             });
 
