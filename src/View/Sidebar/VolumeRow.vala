@@ -59,9 +59,10 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
         string? volume_sort_key = null;
         if (drive != null) {
-            volume_sort_key = volume.get_drive ().get_sort_key ();
+            volume_sort_key = volume.get_drive ().get_sort_key () +
+                volume.get_identifier (VolumeIdentifier.UNIX_DEVICE);
         } else {
-            volume_sort_key = volume.get_sort_key ();
+            volume_sort_key = volume.get_identifier (VolumeIdentifier.UNIX_DEVICE);
         }
 
         if (volume_sort_key != null) {
