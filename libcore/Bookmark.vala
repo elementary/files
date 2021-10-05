@@ -24,23 +24,13 @@ namespace Files {
         public signal void contents_changed ();
         public signal void deleted ();
 
-        private string? custom_name = null;
-        public string label {
-            get {
-                if (custom_name != null && custom_name._strip () != "") {
-                    return custom_name;
-                } else {
-                    return gof_file.get_display_name ();
-                }
-            }
-
-            set {
-                custom_name = value;
-                contents_changed ();
-            }
-        }
+        public string custom_name { get; set; default = "";}
 
         public Files.File gof_file { get; private set; }
+
+        public string basename {
+            get { return gof_file.get_display_name (); }
+        }
 
         public string uri {
             get {
@@ -50,23 +40,26 @@ namespace Files {
 
         private GLib.FileMonitor monitor;
 
+        // Do not consider custom name when comparing bookmarks.  We only want one bookmark per URI.
         public static CompareFunc<Bookmark> compare_with = (a, b) => {
-            return (a.gof_file.location.equal (b.gof_file.location)) && (a.label == b.label) ? 0: 1;
-        };
-
-        public static CompareFunc<Bookmark> compare_uris = (a, b) => {
             return a.gof_file.location.equal (b.gof_file.location) ? 0 : 1;
         };
 
-        public Bookmark (Files.File gof_file, string? label = null) {
+        public Bookmark (Files.File gof_file, string label = "") {
             this.gof_file = gof_file;
-            this.custom_name = label;
+            if (label != gof_file.basename) {
+                this.custom_name = label;
+            }
+
             connect_file ();
         }
 
-        public Bookmark.from_uri (string uri, string? label = null) {
+        public Bookmark.from_uri (string uri, string label = "") {
             this.gof_file = Files.File.get_by_uri (uri);
-            this.custom_name = label;
+            if (label != gof_file.basename) {
+                this.custom_name = label;
+            }
+
             connect_file ();
         }
 

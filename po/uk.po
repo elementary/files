@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 21:16+0000\n"
-"PO-Revision-Date: 2021-08-23 13:42+0000\n"
+"POT-Creation-Date: 2021-09-29 08:35+0000\n"
+"PO-Revision-Date: 2021-09-30 09:22+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -403,7 +403,7 @@ msgid "Open in"
 msgstr "Відкрити у"
 
 #: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Відкрити за допомогою"
 
@@ -676,7 +676,7 @@ msgid "Permanently Delete Trash on this Mount"
 msgstr "Остаточно видалити все зі смітника цього змонтованого носія"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
+#: libwidgets/View/SearchResults.vala:288
 msgid "Bookmarks"
 msgstr "Закладки"
 
@@ -737,20 +737,20 @@ msgstr "Змінити налаштування безпеки"
 msgid "Open the system security and privacy settings app"
 msgstr "Відкрити застосунок налаштувань безпеки та приватності системи"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Шукати або ввести шлях"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "Відкрити у новій вкладці"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
 msgstr "Відкрити у новому вікні"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:502
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
 msgstr "Відкрити в іншому застосунку…"
 
@@ -1968,28 +1968,33 @@ msgstr "Введіть шлях"
 msgid "Navigate to %s"
 msgstr "Перейти до %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "Перейти до %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
 msgid "Type Path"
 msgstr "Введіть шлях"
 
-#: libwidgets/View/SearchResults.vala:82
+#: libwidgets/View/SearchResults.vala:75
+#, c-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
 msgstr "Більше результатів …"
 
-#: libwidgets/View/SearchResults.vala:274
+#: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
 msgstr "В цій теці"
 
-#: libwidgets/View/SearchResults.vala:278
+#: libwidgets/View/SearchResults.vala:284
 msgid "Below This Folder"
 msgstr "Під цією текою"
 
-#: libwidgets/View/SearchResults.vala:287
+#: libwidgets/View/SearchResults.vala:293
 msgid "Recently Used"
 msgstr "Нещодавні"
 
