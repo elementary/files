@@ -112,6 +112,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             bm.update_free_space ();
         }
 
+        assert (bm != null);
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
@@ -152,15 +153,15 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             );
         }
 
-        foreach (Volume volume in volume_monitor.get_volumes ()) {
+        foreach (var volume in volume_monitor.get_volumes ()) {
             bookmark_volume (volume);
         }
 
-        foreach (GLib.Drive drive in volume_monitor.get_connected_drives ()) {
+        foreach (var drive in volume_monitor.get_connected_drives ()) {
             bookmark_drive (drive);
         }
 
-        foreach (Mount mount in volume_monitor.get_mounts ()) {
+        foreach (var mount in volume_monitor.get_mounts ()) {
             bookmark_mount_without_volume (mount);
         }
     }
@@ -228,7 +229,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         var searched_uuid = uuid != null ? uuid : fallback;
 
         if (searched_uuid != null) {
-            foreach (unowned Gtk.Widget child in get_children ()) {
+            foreach (unowned var child in get_children ()) {
                 row = null;
                 if (child is AbstractMountableRow) {
                     row = (AbstractMountableRow)child;
@@ -249,7 +250,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        foreach (unowned Gtk.Widget child in get_children ()) {
+        foreach (unowned var child in get_children ()) {
             if (child is AbstractMountableRow) {
                 unselect_row ((AbstractMountableRow)child);
             }
