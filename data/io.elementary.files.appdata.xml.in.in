@@ -56,6 +56,18 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="6.0.4" date="2021-09-27" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Stop some audio file icons disappearing when scrolling or changing view</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.0.3" date="2021-09-27" urgency="medium">
       <description>
         <p>Fixes:</p>

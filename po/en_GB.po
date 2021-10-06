@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 08:35+0000\n"
-"PO-Revision-Date: 2021-08-23 13:42+0000\n"
+"POT-Creation-Date: 2021-10-05 20:44+0000\n"
+"PO-Revision-Date: 2021-10-05 20:44+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
@@ -1945,10 +1945,9 @@ msgid "Type Path"
 msgstr "Type Path"
 
 #: libwidgets/View/SearchResults.vala:75
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s)"
 
 #: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
