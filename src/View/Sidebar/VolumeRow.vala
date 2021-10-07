@@ -41,6 +41,13 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         }
     }
 
+    public override bool can_eject {
+        get {
+            bool should_eject = drive != null ? drive.get_volumes ().length () == 1 : true;
+            return (is_mounted && volume.get_mount ().can_eject () && should_eject);
+        }
+    }
+
     public VolumeRow (string name, string uri, Icon gicon, SidebarListInterface list,
                          bool pinned, bool permanent,
                          string? _uuid, Volume _volume) {
