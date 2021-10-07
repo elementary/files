@@ -169,6 +169,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected void update_visibilities () {
+        unmount_eject_button.tooltip_text =
+            (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name);
         unmount_eject_revealer.reveal_child = can_unmount;
         storage_levelbar.visible = is_mounted;
     }
