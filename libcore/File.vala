@@ -638,10 +638,10 @@ public class Files.File : GLib.Object {
 
     public void query_thumbnail_update () {
         /* Silently ignore invalid requests */
-        if (pix_size <= 1 || pix_scale <= 0)
+        if (pix_size <= 1 || pix_scale <= 0) {
             return;
-
-        if (get_thumbnail_path () == null) {
+        }
+        if (get_thumbnail_path () == null && thumbstate == ThumbState.READY) {
             var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
             var base_name = "%s.png".printf (md5_hash);
 
@@ -671,13 +671,14 @@ public class Files.File : GLib.Object {
     }
 
     public unowned string? get_thumbnail_path () {
+        unowned string? path = null;
         if (thumbnail_path != null) {
-            return thumbnail_path;
+            path = thumbnail_path;
         } else if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
-            return info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
+            path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
         }
 
-        return null;
+        return path;
     }
 
     public bool can_set_owner () {
