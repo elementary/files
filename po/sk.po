@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-05 20:44+0000\n"
-"PO-Revision-Date: 2021-10-09 16:53+0000\n"
-"Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
+"PO-Revision-Date: 2021-10-09 16:57+0000\n"
+"Last-Translator: majko96 <mr.babinec@gmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -936,9 +936,8 @@ msgid "Remember this password"
 msgstr "Zapamätať heslo"
 
 #: libcore/ConnectServerDialog.vala:216
-#, fuzzy
 msgid "Connect"
-msgstr "P_ripojiť"
+msgstr "Pripojiť"
 
 #: libcore/ConnectServerDialog.vala:223
 msgid "Continue"
@@ -1012,7 +1011,7 @@ msgstr ""
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Preskočiť ak bol originál zmenený nedávno"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
