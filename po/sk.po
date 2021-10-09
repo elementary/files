@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-05 20:44+0000\n"
-"PO-Revision-Date: 2021-10-09 16:57+0000\n"
+"PO-Revision-Date: 2021-10-09 17:57+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
@@ -1010,7 +1010,7 @@ msgstr "Ponechať najnovšie"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr "Preskočiť ak bol originál zmenený nedávno"
+msgstr "Preskočiť ak bol pôvodný súbor nedávno upravený"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
@@ -1027,7 +1027,7 @@ msgid ""
 "that conflict with the files being copied."
 msgstr ""
 "Zlúčenie si vyžiada potvrdenie pred nahradením akýchkoľvek súborov v "
-"priečinku, ktorý je v konflikte s kopírovanými súbormi."
+"priečinku, ktoré sú v konflikte s kopírovanými súbormi."
 
 #: libcore/FileConflictDialog.vala:302
 #, c-format
@@ -1051,7 +1051,7 @@ msgstr "Nahradiť priečinok „%s“?"
 
 #: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
-msgstr "Ak ho nahradíte, odstránia sa všetky súbory v priečinku."
+msgstr "Nahradením sa odstránia všetky súbory v priečinku."
 
 #: libcore/FileConflictDialog.vala:311
 #, c-format
@@ -1065,46 +1065,44 @@ msgstr "Nahradiť súbor „%s“?"
 
 #: libcore/FileConflictDialog.vala:315
 msgid "Replacing it will overwrite its content."
-msgstr "Ak ho nahradíte, prepíše sa jeho obsah."
+msgstr "Nahradením sa prepíše jeho obsah."
 
 #: libcore/FileConflictDialog.vala:318
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starší súbor s rovnakým názvom v „%s“ už existuje."
+msgstr "Starší súbor s rovnakým názvom už existuje v „%s“."
 
 #: libcore/FileConflictDialog.vala:320
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novší súbor s rovnakým názvom v „%s“ už existuje."
+msgstr "Novší súbor s rovnakým názvom už existuje v„%s“."
 
 #: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ďalší súbor s rovnakým názvom v „%s“ už existuje."
+msgstr "Iný súbor s rovnakým názvom už existuje v „%s“."
 
 #: libcore/FileConflictDialog.vala:348
 msgid "Merge"
 msgstr "Zlúčiť"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Nepodarilo sa určiť pôvodné umiestnenie pre „%s“ "
+msgstr "Nepodarilo sa zistiť pôvodné umiestnenie pre „%s“"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
-msgstr "Položku nie je možné obnoviť z Koša."
+msgstr "Položka sa nedá obnoviť z koša."
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Vybraný súbor už neexistuje."
+msgstr "Pôvodný priečinok %s už neexistuje."
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Chceli by ste ho znovu vytvoriť?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
