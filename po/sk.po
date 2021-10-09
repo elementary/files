@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-05 20:44+0000\n"
 "PO-Revision-Date: 2021-10-09 16:57+0000\n"
-"Last-Translator: majko96 <mr.babinec@gmail.com>\n"
+"Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -933,7 +933,7 @@ msgstr "Heslo:"
 
 #: libcore/ConnectServerDialog.vala:210
 msgid "Remember this password"
-msgstr "Zapamätať heslo"
+msgstr "Zapamätať si heslo"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Connect"
@@ -944,18 +944,17 @@ msgid "Continue"
 msgstr "Pokračovať"
 
 #: libcore/ConnectServerDialog.vala:274
-#, fuzzy
 msgid "Connecting…"
-msgstr "Pripája sa..."
+msgstr "Pripája sa…"
 
 #: libcore/ConnectServerDialog.vala:381
 msgid "Please verify your user details."
-msgstr "Prosím, overte svoje používateľské údaje."
+msgstr "Skontrolujte prosím svoje používateľské údaje."
 
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr "Nepodarilo sa spustiť \"%s\""
+msgstr "Nepodarilo sa spustiť „%s“"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
@@ -967,7 +966,7 @@ msgstr "Kopírovať sem"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr "Pridať odkaz"
+msgstr "Pridať odkaz sem"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
@@ -979,23 +978,23 @@ msgstr "Pôvodný súbor"
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
-msgstr "Naposledy zmenený:"
+msgstr "Naposledy upravené:"
 
 #: libcore/FileConflictDialog.vala:131
 msgid "Replace with"
-msgstr "Nahradiť s"
+msgstr "Nahradiť za"
 
 #: libcore/FileConflictDialog.vala:165
 msgid "Reset"
-msgstr "Zresetovať"
+msgstr "Resetovať"
 
 #: libcore/FileConflictDialog.vala:177
 msgid "_Select a new name for the destination"
-msgstr "_Vyberte nový názov cieľa"
+msgstr "_Vyberte nový názov pre cieľové umiestnenie"
 
 #: libcore/FileConflictDialog.vala:180
 msgid "Apply this action to all files"
-msgstr "Použiť túto operáciu na všetky súbory"
+msgstr "Použiť túto akciu na všetky súbory"
 
 #: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
 msgid "_Skip"
@@ -1003,11 +1002,11 @@ msgstr "_Preskočiť"
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Re_name"
-msgstr "Preme_novať"
+msgstr "_Premenovať"
 
 #: libcore/FileConflictDialog.vala:185
 msgid "Keep Newest"
-msgstr ""
+msgstr "Ponechať najnovšie"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
