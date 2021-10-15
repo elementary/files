@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-05 20:44+0000\n"
-"PO-Revision-Date: 2017-02-22 22:49+0000\n"
-"Last-Translator: Michal Pospíšil <Unknown>\n"
-"Language-Team: Slovak <>\n"
+"PO-Revision-Date: 2021-10-15 22:35+0000\n"
+"Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
+"Language-Team: Slovak <https://l10n.elementary.io/projects/files/extra/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
@@ -26,11 +27,11 @@ msgstr "Súbory"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr "Prehliadať vaše súbory"
+msgstr "Prehliadajte svoje súbory"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr "priečinok;správca;prehliadať;disk;systém súborov;"
+msgstr "priečinok;správca;prehliadať;disk;súborový systém;"
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
@@ -51,7 +52,7 @@ msgstr "Nové okno v režime správcu"
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr "Prehliadať a spravovať súbory a prečinky"
+msgstr "Prehliadajte a spravujte súbory a priečinky"
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
@@ -60,12 +61,12 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Jednoducho kopírujte, presúvajte a premenúvajte súbory alebo si pre lepší "
-"prehľad vytvorte priečinky. Bez ohľadu na to, či sa vám páči zobrazenie "
-"súborov v zozname, mriežke alebo stĺpci, vždy ich dokážete okamžite nájsť. "
-"Pristupujte ku všetkým vašim súborom, či už lokálnym alebo na externom "
-"zariadení, prípadne vzdialene pomocou FTP, SFTP, AFP, Webdav alebo "
-"zdieľaného disku Windows."
+"Jednoducho kopírujte, presúvajte a premenúvajte svoje súbory, alebo si pre "
+"udržanie poriadku vytvorte priečinky. Bez ohľadu na to, či sa vám páči "
+"zobrazenie súborov v zozname, v mriežke alebo v stĺpcoch, vždy ich nájdete "
+"na svojom mieste. Pristupujte ku všetkým vašim súborom, či už miestnym, na "
+"externom úložisku, prípadne vzdialene pomocou FTP, SFTP, AFP, Webdav alebo "
+"zdieľania Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:61
 #: data/io.elementary.files.appdata.xml.in.in:73
@@ -76,7 +77,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:179
 #: data/io.elementary.files.appdata.xml.in.in:199
 msgid "Fixes:"
-msgstr ""
+msgstr "Opravy:"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
@@ -92,7 +93,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:206
 #: data/io.elementary.files.appdata.xml.in.in:259
 msgid "Other updates:"
-msgstr ""
+msgstr "Ostatné aktualizácie:"
 
 #: data/io.elementary.files.appdata.xml.in.in:67
 #: data/io.elementary.files.appdata.xml.in.in:83
@@ -115,9 +116,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:370
 #: data/io.elementary.files.appdata.xml.in.in:378
 #: data/io.elementary.files.appdata.xml.in.in:410
-#, fuzzy
 msgid "Updated translations"
-msgstr "Nové preklady"
+msgstr "Aktualizované preklady"
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Open bookmarks in a new tab with Ctrl + Click"
