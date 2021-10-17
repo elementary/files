@@ -151,10 +151,10 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
 
         foreach (unowned Files.Bookmark bm in bookmark_list.list) {
-            row = add_bookmark (bm.label, bm.uri, bm.get_icon ());
+            row = add_bookmark (bm.custom_name, bm.uri, bm.get_icon ());
             row.set_tooltip_text (Files.FileUtils.sanitize_path (bm.uri, null, false));
             row.notify["custom-name"].connect (() => {
-                bm.label = row.custom_name;
+                bm.custom_name = row.custom_name;
             });
         }
 
@@ -184,7 +184,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     }
 
     public override bool add_favorite (string uri,
-                                       string? label = null,
+                                       string custom_name = "",
                                        int pos = 0) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
@@ -200,9 +200,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             pos = pinned;
         }
 
-        var bm = bookmark_list.insert_uri (uri, pos - pinned, label); //Assume non_builtin items are not pinned
+        var bm = bookmark_list.insert_uri (uri, pos - pinned, custom_name); //Assume non_builtin items are not pinned
         if (bm != null) {
-            insert_bookmark (bm.label, bm.uri, bm.get_icon (), pos);
+            insert_bookmark (bm.custom_name, bm.uri, bm.get_icon (), pos);
             return true;
         } else {
             return false;

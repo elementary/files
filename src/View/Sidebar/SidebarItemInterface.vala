@@ -45,7 +45,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract SidebarListInterface list { get; construct; }
     public abstract uint32 id { get; construct; }
     public abstract string uri { get; set construct; }
-    public abstract string custom_name { get; set construct; }
+    public abstract string custom_name { get; set ; }
     public abstract Icon gicon { get; set construct; }
     public abstract bool pinned { get; construct; } // Whether can be dragged
     public abstract bool permanent { get; construct; } // Whether can be deleted
