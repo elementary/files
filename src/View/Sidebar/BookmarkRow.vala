@@ -504,9 +504,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     // Do not allow dropping below trash icon
                     current_suggested_action = Gdk.DragAction.DEFAULT; 
                     reveal = false;
-                }
-                else if (previous_item != null) {
-
+                } else if (previous_item != null) {
                     previous_item.reveal_drop_target (false);
                 }
             }
