@@ -500,9 +500,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 var previous_item = (BookmarkRow?)(list.get_item_at_index (pos - 1));
                 var next_item = list.get_item_at_index (pos + 1);
                 // Drop below trash icon
-                if(!(next_item is BookmarkRow)) {
+                if ( !(next_item is BookmarkRow)) {
                     // Do not allow dropping below trash icon
-                    current_suggested_action = Gdk.DragAction.DEFAULT; 
+                    current_suggested_action = Gdk.DragAction.DEFAULT;
                     reveal = false;
                 } else if (previous_item != null) {
                     previous_item.reveal_drop_target (false);
