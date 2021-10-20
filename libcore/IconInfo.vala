@@ -178,9 +178,7 @@ public class Files.IconInfo : GLib.Object {
         if (Gdk.Screen.get_default () != null) {
             return Gtk.IconTheme.get_default ();
         } else {
-            var theme = new Gtk.IconTheme ();
-            theme.set_custom_theme ("hicolor");
-            return theme;
+            return new Gtk.IconTheme ();
         }
     }
 
