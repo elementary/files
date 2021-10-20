@@ -7,4 +7,4 @@ icon_info_test_exec = executable (
 )
 
 run_command ('gtk-update-icon-cache', '-f', '/usr/share/icons/hicolor')
-test ('MarlinIconInfoTests', icon_info_test_exec)
+test ('MarlinIconInfoTests', icon_info_test_exec, env : ['GTK_DEBUG=icontheme'])
