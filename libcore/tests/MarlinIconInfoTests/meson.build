@@ -6,4 +6,5 @@ icon_info_test_exec = executable (
     install: false,
 )
 
+run_command ('gtk-update-icon-cache', '-f', '/usr/share/icons/hicolor')
 test ('MarlinIconInfoTests', icon_info_test_exec)
