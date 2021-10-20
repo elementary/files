@@ -110,7 +110,6 @@ public class Files.IconInfo : GLib.Object {
             // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
             foreach (unowned string name in ((GLib.ThemedIcon) icon).get_names ()) {
                 debug ("looking up %s", name);
-                
                 gtkicon_info = theme.lookup_icon_for_scale (name, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
                 if (gtkicon_info != null) {
                     debug ("found %s", name);
