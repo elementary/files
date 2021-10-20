@@ -131,6 +131,7 @@ void loadable_cache_and_ref_test () {
 }
 
 int main (string[] args) {
+    Gtk.init_check (ref args);
     Test.init (ref args);
 
     add_icon_info_tests ();
