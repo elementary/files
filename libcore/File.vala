@@ -379,9 +379,16 @@ public class Files.File : GLib.Object {
     }
 
     public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, Files.File.IconFlags flags) {
+        debug ("get_icon_pixbuf begin");
         GLib.return_val_if_fail (size >= 1, null);
 
         var nicon = get_icon (size, scale, flags);
+        if (nicon != null) {
+            debug ("nicon not null, returning pixbuf");
+        } else {
+            debug ("nicon null, returning null");
+        }
+
         return nicon != null ? nicon.get_pixbuf_nodefault () : null;
     }
 
@@ -411,24 +418,36 @@ public class Files.File : GLib.Object {
     public Files.IconInfo? get_icon (int size, int scale, Files.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
+        debug ("get_icon begin");
+
         Files.IconInfo? icon = get_special_icon (size, scale, flags);
         if (icon != null && !icon.is_fallback ()) {
+            debug ("returning special icon");
             return icon;
         }
 
         GLib.Icon? gicon = null;
         if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.LOADING) {
+            debug ("gicon = image-loading");
             gicon = new GLib.ThemedIcon ("image-loading");
         } else {
+            debug ("gicon = this.icon");
             gicon = this.icon;
         }
 
         if (gicon != null) {
+            debug ("gicon not null");
             icon = Files.IconInfo.lookup (gicon, size, scale);
+            if (icon == null) {
+                debug ("icon == null");
+            }
+
             if (icon != null && icon.is_fallback ()) {
+                debug ("icon fallback");
                 icon = Files.IconInfo.get_generic_icon (size, scale);
             }
         } else {
+            debug ("gicon fallback");
             icon = Files.IconInfo.get_generic_icon (size, scale);
         }
 
@@ -610,15 +629,21 @@ public class Files.File : GLib.Object {
     }
 
     public void update_icon (int size, int scale) {
+        debug ("update_icon begin");
+
         if (size <= 1) {
+            debug ("Invalid size specified");
             return;
         }
 
         if (pix != null && pix_size == size && pix_scale == scale) {
+            debug ("pix already valid");
             return;
         }
 
         update_icon_internal (size, scale);
+
+        debug ("update_icon end");
     }
 
     public void update_desktop_file () {
@@ -1226,6 +1251,8 @@ public class Files.File : GLib.Object {
     private Files.IconInfo? get_special_icon (int size, int scale, Files.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
+        debug ("get_special_icon begin");
+
         if (custom_icon_name != null) {
             if (GLib.Path.is_absolute (custom_icon_name)) {
                 return Files.IconInfo.lookup_from_path (custom_icon_name, size, scale);
@@ -1236,10 +1263,13 @@ public class Files.File : GLib.Object {
 
         if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
+            debug ("thumbnail ready: %s", thumb_path);
             if (thumb_path != null) {
                 return Files.IconInfo.lookup_from_path (thumb_path, size, scale);
             }
         }
+
+        debug ("no special icon, returning null");
 
         return null;
     }
