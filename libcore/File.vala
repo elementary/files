@@ -442,8 +442,7 @@ public class Files.File : GLib.Object {
                 debug ("icon == null");
             }
 
-            if (icon != null && icon.is_fallback ()) {
-                debug ("icon fallback");
+            if (icon == null || icon.is_fallback ()) {
                 icon = Files.IconInfo.get_generic_icon (size, scale);
             }
         } else {
