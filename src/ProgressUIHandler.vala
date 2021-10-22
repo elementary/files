@@ -48,7 +48,7 @@ public class Files.Progress.UIHandler : Object {
             warning ("ProgressUIHandler destruct when infos active");
             var infos = manager.get_all_infos ();
             foreach (var info in infos) {
-                info.cancel ();
+                info.finish ();
             }
         }
     }
@@ -95,7 +95,7 @@ public class Files.Progress.UIHandler : Object {
             add_to_window (info);
             progress_window.present ();
         } else if (progress_window.visible) {
-                add_to_window (info);
+            add_to_window (info);
         }
 
         update_launcher (info, true);
@@ -107,10 +107,10 @@ public class Files.Progress.UIHandler : Object {
         var progress_widget = new Progress.InfoWidget (info);
         window_vbox.pack_start (progress_widget, false, false, 6);
 
-        progress_widget.cancelled.connect ((info) => {
-            progress_info_finished_cb (info);
-            progress_widget.hide ();
-        });
+        // progress_widget.cancelled.connect ((info) => {
+        //     progress_info_finished_cb (info);
+        //     progress_widget.hide ();
+        // });
 
         progress_widget.show ();
         if (progress_window.visible) {

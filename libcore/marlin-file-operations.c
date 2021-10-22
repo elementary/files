@@ -46,7 +46,6 @@ typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 typedef struct {
     GTimer *time;
     GtkWindow *parent_window;
-    int inhibit_cookie;
     PFProgressInfo *progress;
     GCancellable *cancellable;
     GHashTable *skip_files;
@@ -139,11 +138,11 @@ init_common (gsize job_size,
         g_object_add_weak_pointer (G_OBJECT (parent_window), (gpointer *) &common->parent_window);
     }
 
-    common->progress = pf_progress_info_new ();
-    // ProgressInfo cancellable is now a property, therefore unowned - do not unref.
+    common->progress = pf_progress_info_manager_get_new_info ( // returns unowned info
+        pf_progress_info_manager_get_instance (), common->parent_window
+    );
     common->cancellable = pf_progress_info_get_cancellable (common->progress);
     common->time = g_timer_new ();
-    common->inhibit_cookie = -1;
 
     return common;
 }
@@ -151,13 +150,10 @@ init_common (gsize job_size,
 static void
 finalize_common (CommonJob *common)
 {
-    pf_progress_info_finish (common->progress);
-    if (common->inhibit_cookie != -1) {
-        gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
-                                   common->inhibit_cookie);
+    if (common->progress) {
+        pf_progress_info_finish (common->progress);
     }
 
-    common->inhibit_cookie = -1;
     g_timer_destroy (common->time);
 
     if (common->parent_window) {
@@ -175,7 +171,6 @@ finalize_common (CommonJob *common)
     files_undo_manager_add_action (files_undo_manager_instance(), common->undo_redo_data);
     // End UNDO-REDO
 
-    g_object_unref (common->progress);
     g_free (common);
 }
 
@@ -238,11 +233,9 @@ can_delete_without_confirm (GFile *file)
 static void
 inhibit_power_manager (CommonJob *job, const char *message)
 {
-    job->inhibit_cookie = gtk_application_inhibit (GTK_APPLICATION (g_application_get_default ()),
-                                                   GTK_WINDOW (job->parent_window),
-                                                   GTK_APPLICATION_INHIBIT_LOGOUT |
-                                                   GTK_APPLICATION_INHIBIT_SUSPEND,
-                                                   message);
+    if (job->progress) {
+        pf_progress_info_inhibit_power_manager (job->progress, message);
+    }
 }
 
 static void
@@ -357,6 +350,10 @@ report_delete_progress (CommonJob *job,
     int remaining_time;
     guint64 now;
     char *files_left_s;
+
+    if (!job->progress) {
+        return;
+    }
 
     now = g_thread_gettime ();
     if (transfer_info->last_report_time != 0 &&
@@ -722,6 +719,10 @@ report_trash_progress (CommonJob *job,
     int files_left;
     char *s;
 
+    if (!job->progress) {
+        return;
+    }
+
     files_left = total_files - files_trashed;
 
     pf_progress_info_take_status (job->progress,
@@ -1061,6 +1062,10 @@ report_count_progress (CommonJob *job,
 {
     char *s;
     gchar *num_bytes_format;
+
+    if (!job->progress) {
+        return;
+    }
 
     switch (source_info->op) {
     default:
@@ -1613,6 +1618,10 @@ report_copy_progress (CopyMoveJob *copy_job,
     gchar *destname = NULL;
 
     job = (CommonJob *)copy_job;
+
+    if (!job->progress) {
+        return;
+    }
 
     is_move = copy_job->is_move;
 
@@ -3283,6 +3292,10 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     gchar *s, *dest_basename;
 
     job = (CommonJob *)move_job;
+    if (!job->progress) {
+        return;
+    }
+
     dest_basename = files_file_utils_custom_basename_from_file (move_job->destination);
     /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -3796,6 +3809,10 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     gchar *s;
 
     job = (CommonJob *)link_job;
+    if (!job->progress) {
+        return;
+    }
+
     gchar *dest_name = g_file_get_parse_name (link_job->destination);
     /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)

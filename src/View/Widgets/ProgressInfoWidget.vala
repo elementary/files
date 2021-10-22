@@ -28,7 +28,7 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
     private Gtk.Label details;
     private Gtk.ProgressBar progress_bar;
 
-    public signal void cancelled (PF.Progress.Info info);
+    // public signal void cancelled (PF.Progress.Info info);
 
     public InfoWidget (PF.Progress.Info info) {
         Object (info: info);
@@ -80,13 +80,16 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
         info.progress_changed.connect (update_progress);
 
         info.finished.connect (() => {
+        warning ("WIDGET info finished");
             destroy ();
         });
 
         button.clicked.connect (() => {
-            info.cancel ();
-            cancelled (info);
-            button.sensitive = false;
+            if (info != null) {
+                info.finished ();
+            } else {
+                destroy ();
+            }
         });
     }
 

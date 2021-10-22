@@ -18,45 +18,30 @@
 
 public class Files.FileOperations.CommonJob {
     protected unowned Gtk.Window? parent_window;
-    protected uint inhibit_cookie;
-    protected unowned GLib.Cancellable? cancellable;
-    protected PF.Progress.Info progress;
+    protected Cancellable? cancellable {
+        get {
+            return progress != null ? progress.cancellable : null;
+        }
+    }
+    protected unowned PF.Progress.Info? progress; // Must be able to finalize info even when job blocks
     protected Files.UndoActionData? undo_redo_data;
     protected CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
-        inhibit_cookie = 0;
-        progress = new PF.Progress.Info ();
-        cancellable = progress.cancellable;
+        progress = PF.Progress.InfoManager.get_instance ().get_new_info (parent_window);
         undo_redo_data = null;
     }
 
     ~CommonJob () {
-        progress.finish ();
-        uninhibit_power_manager ();
-        if (undo_redo_data != null) {
-            Files.UndoManager.instance ().add_action ((owned) undo_redo_data);
+        if (progress != null) { // progress was not cancelled or otherwise destroyed
+            progress.finish ();
         }
     }
 
     protected void inhibit_power_manager (string message) {
-        weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
-        inhibit_cookie = app.inhibit (
-            parent_window,
-            Gtk.ApplicationInhibitFlags.LOGOUT | Gtk.ApplicationInhibitFlags.SUSPEND,
-            message
-        );
-    }
-
-    private void uninhibit_power_manager () {
-        if (inhibit_cookie == 0) {
-            return;
-        }
-
-        ((Gtk.Application) GLib.Application.get_default ()).uninhibit (inhibit_cookie);
-        inhibit_cookie = 0;
+        progress.inhibit_power_manager (message);
     }
 
     protected bool aborted () {
-        return cancellable.is_cancelled ();
+        return cancellable != null || cancellable.is_cancelled ();
     }
 }

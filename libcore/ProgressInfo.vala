@@ -26,18 +26,19 @@ public class PF.Progress.Info : GLib.Object {
 
     private const uint SIGNAL_DELAY_MSEC = 100;
 
+    public Gtk.Window? parent_window { get; construct; }
     public GLib.Cancellable cancellable { get; construct; }
-
+    public uint inhibit_cookie { get; set; default = 0; }
     public string title { get; set; default = _("Preparing"); }
     public string status { get; private set; default = _("Preparing"); }
     public string details { get; set; default = _("Preparing"); }
     public double progress { get; private set; default = 0.0; }
     public double current { get; private set; default = 0.0; }
     public double total { get; private set; default = 0.0; }
-    public bool activity_mode { get; private set; default = true; }
-    public bool is_started { get; private set; }
-    public bool is_finished { get; private set; }
-    public bool is_paused { get; private set; }
+    public bool activity_mode { get; private set; default = false; }
+    public bool is_started { get; private set; default = false; }
+    public bool is_finished { get; private set; default = false; }
+    public bool is_paused { get; private set; default = false; }
     public bool is_cancelled { get { return cancellable.is_cancelled (); }}
 
     private GLib.Source idle_source;
@@ -48,8 +49,8 @@ public class PF.Progress.Info : GLib.Object {
     private bool changed_at_idle;
     private bool progress_at_idle;
 
-    public Info () {
-
+    public Info (Gtk.Window parent_window) {
+        Object (parent_window: parent_window);
     }
 
     construct {
@@ -57,33 +58,53 @@ public class PF.Progress.Info : GLib.Object {
         /* Ensure info finishes if canceled by marlin-file-operations.
          * Using cancellable.connect () results in refcounting problem as it cannot be disconnected in its handler */
         cancellable.cancelled.connect (finish);
-        PF.Progress.InfoManager.get_instance ().add_new_info (this);
         Application.get_default ().hold ();
     }
 
     ~Info () {
         /* As the hold was placed on construction, we release it here to ensure matching count */
         /* Must ensure all references are released so Info is destroyed */
+        warning ("INFO DESTRUCT");
         Application.get_default ().release ();
+        uninhibit_power_manager ();
     }
 
-    public void cancel () {
-        cancellable.cancel ();
-    }
+    // public void cancel () {
+    //     finish ();
+    //     // cancellable.cancel ();
+    // }
 
     public void start () {
         if (!is_started) {
             is_started = true;
+            is_finished = false;
             start_at_idle = true;
 
             queue_idle (true);
         }
     }
 
+    // The only place fileoperations should inhibit power manager
+    public void inhibit_power_manager (string message) requires (inhibit_cookie == 0) {
+        inhibit_cookie = ((Gtk.Application)(Application.get_default ())).inhibit (
+            parent_window,
+            Gtk.ApplicationInhibitFlags.LOGOUT | Gtk.ApplicationInhibitFlags.SUSPEND,
+            message
+        );
+    }
+
+    // The only place fileoperations should uninhibit power manager
+    public void uninhibit_power_manager () requires (inhibit_cookie > 0) {
+        ((Gtk.Application)(Application.get_default ())).uninhibit (inhibit_cookie);
+    }
+
     public void finish () {
+        cancellable.cancelled.disconnect (finish);
         if (!is_finished) { /* Should not queue finish twice */
             is_finished = true;
-            cancellable.cancelled.disconnect (finish);
+            is_started = false;
+            is_paused = false;
+            activity_mode = false;
             finish_at_idle = true;
             queue_idle (true);
         }
@@ -166,12 +187,23 @@ public class PF.Progress.Info : GLib.Object {
     }
 
     private bool idle_callback () {
-        weak GLib.Source source = GLib.MainContext.current_source ();
-        /* Protect agains races where the source has
+        if (finish_at_idle) {
+            finish_at_idle = false;
+            /* Signal Progressinfo manager and ProgressUIManager info finished with.
+             * This is the only place this signal is emitted so must always run. in
+             * order for the info to be destroyed and the application released
+             */
+            finished ();
+
+            return GLib.Source.REMOVE;
+        }
+
+        /* Protect against races where the source has
          * been destroyed on another thread while it
          * was being dispatched.
          * Similar to what gdk_threads_add_idle does.
          */
+        weak GLib.Source source = GLib.MainContext.current_source ();
         if (source.is_destroyed ()) {
             return GLib.Source.REMOVE;
         }
@@ -182,14 +214,6 @@ public class PF.Progress.Info : GLib.Object {
         if (start_at_idle) {
             start_at_idle = false;
             started ();
-        }
-
-        if (finish_at_idle) {
-            finish_at_idle = false;
-            /* Only place the finish signal is emitted */
-            /* Must be emitted to update ProgressUIHandler */
-            finished ();
-            PF.Progress.InfoManager.get_instance ().remove_finished_info (this);
         }
 
         if (changed_at_idle) {

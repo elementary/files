@@ -24,7 +24,7 @@ public class PF.Progress.InfoManager : GLib.Object {
     private Gee.LinkedList<PF.Progress.Info> progress_infos;
 
     private static PF.Progress.InfoManager progress_info_manager;
-    public static PF.Progress.InfoManager get_instance () {
+    public static unowned PF.Progress.InfoManager get_instance () {
         if (progress_info_manager == null) {
             progress_info_manager = new Progress.InfoManager ();
         }
@@ -36,20 +36,19 @@ public class PF.Progress.InfoManager : GLib.Object {
         progress_infos = new Gee.LinkedList<PF.Progress.Info> ();
     }
 
-    public void add_new_info (PF.Progress.Info info) {
-        if (info in progress_infos) {
-            warning ("Adding two times the same progress info object to the manager");
-            return;
-        }
-
+    public unowned PF.Progress.Info get_new_info (Gtk.Window parent_window) {
+        var info = new PF.Progress.Info (parent_window);
+        info.finished.connect (remove_info);
         progress_infos.add (info);
         new_progress_info (info);
+        return (!)info;
     }
 
-    public void remove_finished_info (PF.Progress.Info info) {
+    private void remove_info (PF.Progress.Info info) {
+    warning ("remove info");
         progress_infos.remove (info);
+        info.finished.disconnect (remove_info); // Otherwise info will not be destroyed.
     }
-
     public unowned Gee.LinkedList<PF.Progress.Info> get_all_infos () {
         return progress_infos;
     }
