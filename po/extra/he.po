@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-22 23:05+0000\n"
-"PO-Revision-Date: 2021-10-05 22:39+0000\n"
+"PO-Revision-Date: 2021-10-23 12:18+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -73,7 +73,7 @@ msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Show translated bookmark names when changing languages"
-msgstr ""
+msgstr "הצגת שמות מתורגמים של סימניות בעת החלפת שפות"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
@@ -93,7 +93,7 @@ msgstr "עדכונים נוספים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Remove message about reporting issues when running from Terminal"
-msgstr ""
+msgstr "הסרת הודעה על דיווח תקלות בעת הרצה ממסוף"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 #: data/io.elementary.files.appdata.xml.in.in:57
