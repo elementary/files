@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-05 20:44+0000\n"
+"POT-Creation-Date: 2021-10-22 23:05+0000\n"
 "PO-Revision-Date: 2017-08-16 12:17+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://weblate.elementary.io/projects/files/files/"
@@ -21,33 +21,33 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
-#: src/Application.vala:159
+#: src/Application.vala:158
 msgid "Show the version of the program"
 msgstr "Prikaži inačicu programa."
 
-#: src/Application.vala:161
+#: src/Application.vala:160
 #, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Ovori uri(e) u novoj kartici"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1865
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1865
 msgid "New Window"
 msgstr "Novi prozor"
 
-#: src/Application.vala:165
+#: src/Application.vala:164
 msgid "Quit Files"
 msgstr "Zatvori Datoteke."
 
-#: src/Application.vala:167
+#: src/Application.vala:166
 msgid "Enable debug logging"
 msgstr "Omogući zapisivanje grešaka"
 
-#: src/Application.vala:170
+#: src/Application.vala:169
 #, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
-#: src/Application.vala:173
+#: src/Application.vala:172
 msgid ""
 "\n"
 "\n"
@@ -57,7 +57,7 @@ msgstr ""
 "\n"
 "Pregledaj datotečni sustav s upraviteljem datoteka"
 
-#: src/Application.vala:201
+#: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nije moguće koristiti s URI-jima."
 
