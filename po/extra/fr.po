@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-22 23:05+0000\n"
-"PO-Revision-Date: 2021-10-21 19:07+0000\n"
+"PO-Revision-Date: 2021-10-25 13:05+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -79,7 +79,7 @@ msgstr "Corrections :"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Show translated bookmark names when changing languages"
-msgstr ""
+msgstr "AffichageAffichage des favoris traduits lors du changement de langue"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
@@ -102,6 +102,8 @@ msgstr "Autres mises à jour :"
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Remove message about reporting issues when running from Terminal"
 msgstr ""
+"Suppression du message concernant le signalement des problèmes lors de "
+"l'exécution à partir du terminal"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 #: data/io.elementary.files.appdata.xml.in.in:57
