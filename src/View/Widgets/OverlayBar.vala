@@ -38,7 +38,9 @@ namespace Files.View {
 
         public OverlayBar (Gtk.Overlay overlay) {
             base (overlay); /* This adds the overlaybar to the overlay (ViewContainer). */
+        }
 
+        construct {
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
             hide.connect (cancel);
@@ -72,8 +74,12 @@ namespace Files.View {
         public void update_hovered (Files.File? file) {
             hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout. */
 
-            if (file != null && goffile != null && file.location.equal (goffile.location)) {
+            if (file == null) {
+                real_update (null);
+                return;
+            }
 
+            if (goffile != null && file.location.equal (goffile.location)) {
                 return;
             }
 
@@ -98,8 +104,6 @@ namespace Files.View {
                         list.prepend (file);
                         real_update (list);
                     }
-                } else {
-                    real_update (null);
                 }
 
                 hover_timeout_id = 0;
