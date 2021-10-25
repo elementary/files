@@ -425,7 +425,7 @@ public class Files.File : GLib.Object {
 
         if (gicon != null) {
             icon = Files.IconInfo.lookup (gicon, size, scale);
-            if (icon != null && icon.is_fallback ()) {
+            if (icon == null || icon.is_fallback ()) {
                 icon = Files.IconInfo.get_generic_icon (size, scale);
             }
         } else {

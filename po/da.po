@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-05 20:44+0000\n"
+"POT-Creation-Date: 2021-10-22 23:05+0000\n"
 "PO-Revision-Date: 2021-06-05 20:46+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
@@ -19,31 +19,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: src/Application.vala:159
+#: src/Application.vala:158
 msgid "Show the version of the program"
 msgstr "Vis versionen af programmet"
 
-#: src/Application.vala:161
+#: src/Application.vala:160
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Åbn en eller flere URI'er, hver især i sin egen fane"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1865
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1865
 msgid "New Window"
 msgstr "Nyt vindue"
 
-#: src/Application.vala:165
+#: src/Application.vala:164
 msgid "Quit Files"
 msgstr "Luk Filer"
 
-#: src/Application.vala:167
+#: src/Application.vala:166
 msgid "Enable debug logging"
 msgstr "Aktiver logning af debuginformation"
 
-#: src/Application.vala:170
+#: src/Application.vala:169
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:173
+#: src/Application.vala:172
 msgid ""
 "\n"
 "\n"
@@ -53,7 +53,7 @@ msgstr ""
 "\n"
 "Navigér filsystemet med filhåndteringen"
 
-#: src/Application.vala:201
+#: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan ikke bruges med URI'er."
 

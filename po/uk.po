@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-05 20:44+0000\n"
+"POT-Creation-Date: 2021-10-22 23:05+0000\n"
 "PO-Revision-Date: 2021-09-30 09:22+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
@@ -21,31 +21,31 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-12 06:02+0000\n"
 
-#: src/Application.vala:159
+#: src/Application.vala:158
 msgid "Show the version of the program"
 msgstr "Показати версію застосунку"
 
-#: src/Application.vala:161
+#: src/Application.vala:160
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Відкрити одну чи більше адресу в новій вкладці"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1865
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1865
 msgid "New Window"
 msgstr "Нове вікно"
 
-#: src/Application.vala:165
+#: src/Application.vala:164
 msgid "Quit Files"
 msgstr "Вийти з Файлів"
 
-#: src/Application.vala:167
+#: src/Application.vala:166
 msgid "Enable debug logging"
 msgstr "Увімкнути журнал зневадження"
 
-#: src/Application.vala:170
+#: src/Application.vala:169
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:173
+#: src/Application.vala:172
 msgid ""
 "\n"
 "\n"
@@ -55,7 +55,7 @@ msgstr ""
 "\n"
 "Перегляд файлової системи менеджером файлів"
 
-#: src/Application.vala:201
+#: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
 msgstr "--quit неможливо використати з URI."
 
