@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-22 23:05+0000\n"
 "PO-Revision-Date: 2021-10-25 21:20+0000\n"
-"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
+"Last-Translator: Novák Gábor <novakg17@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
 "Language: hu\n"
@@ -177,7 +177,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:124
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Improvements:"
-msgstr ""
+msgstr "Fejlesztések:"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Show more keyboard accelerators in menus"
@@ -233,7 +233,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Performance improvements"
-msgstr ""
+msgstr "Teljesítményjavítások"
 
 #: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Stability improvements"
