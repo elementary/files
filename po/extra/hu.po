@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-22 23:05+0000\n"
-"PO-Revision-Date: 2021-09-03 07:53+0000\n"
+"PO-Revision-Date: 2021-10-25 21:20+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -76,7 +76,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:153
 #: data/io.elementary.files.appdata.xml.in.in:173
 msgid "Fixes:"
-msgstr ""
+msgstr "Javítások:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Show translated bookmark names when changing languages"
@@ -96,7 +96,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:180
 #: data/io.elementary.files.appdata.xml.in.in:233
 msgid "Other updates:"
-msgstr ""
+msgstr "További frissítések:"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Remove message about reporting issues when running from Terminal"
@@ -730,7 +730,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:391
 msgid "Over 100 major and minor bug fixes and improvements"
-msgstr ""
+msgstr "Több mint 100 kisebb-nagyobb hibajavítás és fejlesztés"
 
 #: data/io.elementary.files.appdata.xml.in.in:398
 msgid "Honor 12/24hr system setting"
