@@ -34,6 +34,7 @@
         <ul>
           <li>Show translated bookmark names when changing languages</li>
           <li>Stop some audio file icons disappearing when scrolling or changing view</li>
+          <li>Allow attempt to connect to remote server with blank password</li>
         </ul>
         <p>Other updates:</p>
         <ul>
