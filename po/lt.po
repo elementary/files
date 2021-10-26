@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-26 21:31+0000\n"
+"POT-Creation-Date: 2021-10-22 23:05+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -21,31 +21,31 @@ msgstr ""
 "X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: src/Application.vala:159
+#: src/Application.vala:158
 msgid "Show the version of the program"
 msgstr "Rodyti programos versiją."
 
-#: src/Application.vala:161
+#: src/Application.vala:160
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Atverti vieną ar daugiau URI, kiekvieną atskiroje kortelėje"
 
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1857
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1865
 msgid "New Window"
 msgstr "Naujas langas"
 
-#: src/Application.vala:165
+#: src/Application.vala:164
 msgid "Quit Files"
 msgstr "Išeiti iš failų."
 
-#: src/Application.vala:167
+#: src/Application.vala:166
 msgid "Enable debug logging"
 msgstr "Įjungti derinimo registravimą"
 
-#: src/Application.vala:170
+#: src/Application.vala:169
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:173
+#: src/Application.vala:172
 msgid ""
 "\n"
 "\n"
@@ -55,7 +55,7 @@ msgstr ""
 "\n"
 "Naršyti failų sistemą su failų tvarkytuve"
 
-#: src/Application.vala:201
+#: src/Application.vala:200
 msgid "--quit cannot be used with URIs."
 msgstr "--quit negali būti naudojamas su URI."
 
@@ -114,7 +114,7 @@ msgid "Set as default"
 msgstr "Nustatyti numatytąja"
 
 #: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1967
+#: src/View/AbstractDirectoryView.vala:1975
 #: src/View/Sidebar/PopupMenuBuilder.vala:81
 msgid "Properties"
 msgstr "Savybės"
@@ -195,7 +195,7 @@ msgid "Original Location:"
 msgstr "Pradinė vieta:"
 
 #: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1935
+#: src/View/AbstractDirectoryView.vala:1943
 msgid "Other Application…"
 msgstr "Kita programa…"
 
@@ -295,7 +295,7 @@ msgstr "Nepavyko atverti URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Naudojant šią programą, nepavyko atverti failų ar URI"
 
-#: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1851
+#: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1859
 msgid "New Tab"
 msgstr "Nauja kortelė"
 
@@ -303,13 +303,13 @@ msgstr "Nauja kortelė"
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:452
+#: src/View/Window.vala:456
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Užverti"
 
-#: src/View/Window.vala:562 src/View/Window.vala:572
+#: src/View/Window.vala:569 src/View/Window.vala:579
 msgid "(as Administrator)"
 msgstr "(kaip administratorius)"
 
@@ -317,11 +317,11 @@ msgstr "(kaip administratorius)"
 msgid "Filename"
 msgstr "Failo pavadinimas"
 
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2176
+#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2184
 msgid "Size"
 msgstr "Dydis"
 
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2181
+#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2189
 msgid "Type"
 msgstr "Tipas"
 
@@ -351,192 +351,192 @@ msgstr "Sukurti aplanką „%s“"
 msgid "Failed to create the folder"
 msgstr "Nepavyko sukurti aplanko"
 
-#: src/View/AbstractDirectoryView.vala:816
-#: src/View/AbstractDirectoryView.vala:1127
+#: src/View/AbstractDirectoryView.vala:824
+#: src/View/AbstractDirectoryView.vala:1135
 msgid "Cannot execute this file"
 msgstr "Nepavyksta vykdyti šio failo"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:826
+#: src/View/AbstractDirectoryView.vala:834
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:827
+#: src/View/AbstractDirectoryView.vala:835
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:842
+#: src/View/AbstractDirectoryView.vala:850
 msgid "Cannot open this file"
 msgstr "Nepavyksta atverti šio failo"
 
-#: src/View/AbstractDirectoryView.vala:855
+#: src/View/AbstractDirectoryView.vala:863
 msgid "Cannot identify file type to open"
 msgstr "Nepavyksta atpažinti norimo atverti failo tipą"
 
-#: src/View/AbstractDirectoryView.vala:1574
+#: src/View/AbstractDirectoryView.vala:1582
 msgid "Cannot drop this file"
 msgstr "Negalima numesti šio failo"
 
-#: src/View/AbstractDirectoryView.vala:1575
+#: src/View/AbstractDirectoryView.vala:1583
 msgid "Invalid file name provided"
 msgstr "Pateiktas neteisingas failo pavadinimas"
 
-#: src/View/AbstractDirectoryView.vala:1871
+#: src/View/AbstractDirectoryView.vala:1879
 msgid "Run"
 msgstr "Vykdyti"
 
-#: src/View/AbstractDirectoryView.vala:1878
+#: src/View/AbstractDirectoryView.vala:1886
 #, c-format
 msgid "Open in %s"
 msgstr "Atverti naudojant %s"
 
-#: src/View/AbstractDirectoryView.vala:1947
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "Open in"
 msgstr "Kur atverti"
 
-#: src/View/AbstractDirectoryView.vala:1949
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Atverti naudojant"
 
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1963
 msgid "Paste"
 msgstr "Įdėti"
 
-#: src/View/AbstractDirectoryView.vala:1960
+#: src/View/AbstractDirectoryView.vala:1968
 #: src/View/Sidebar/PopupMenuBuilder.vala:85
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "Žymelės"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Cut"
 msgstr "Iškirpti"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1991
 msgid "Copy"
 msgstr "Kopijuoti"
 
-#: src/View/AbstractDirectoryView.vala:1990
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Move to Trash"
 msgstr "Perkelti į šiukšliadėžę"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2003
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Ištrinti visiems laikams"
 
-#: src/View/AbstractDirectoryView.vala:2002
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Restore from Trash"
 msgstr "Atkurti iš šiukšlinės"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open Parent Folder"
 msgstr "Atverti tėvinį aplanką"
 
-#: src/View/AbstractDirectoryView.vala:2016
+#: src/View/AbstractDirectoryView.vala:2024
 msgid "Remove from History"
 msgstr "Šalinti iš žurnalo"
 
-#: src/View/AbstractDirectoryView.vala:2032
+#: src/View/AbstractDirectoryView.vala:2040
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Pervadinti"
 
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Copy as Link"
 msgstr "Kopijuoti kaip nuorodą"
 
-#: src/View/AbstractDirectoryView.vala:2057
+#: src/View/AbstractDirectoryView.vala:2065
 msgid "Paste Link into Folder"
 msgstr "Įdėti nuorodą į aplanką"
 
-#: src/View/AbstractDirectoryView.vala:2059
+#: src/View/AbstractDirectoryView.vala:2067
 msgid "Paste into Folder"
 msgstr "Įdėti į aplanką"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Show Hidden Files"
 msgstr "Rodyti paslėptus failus"
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2102
 msgid "Show Remote Thumbnails"
 msgstr "Rodyti nuotolines miniatiūras"
 
-#: src/View/AbstractDirectoryView.vala:2097
+#: src/View/AbstractDirectoryView.vala:2105
 #, fuzzy
 #| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
 msgstr "Slėpti vietines miniatiūras"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2125
 msgid "Paste Link"
 msgstr "Įdėti nuorodą"
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2179
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2194
 msgid "Date"
 msgstr "Data"
 
-#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2199
 msgid "Reversed Order"
 msgstr "Atvirkštine tvarka"
 
-#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2202
 msgid "Folders Before Files"
 msgstr "Pirma aplankai, po to failai"
 
-#: src/View/AbstractDirectoryView.vala:2206
+#: src/View/AbstractDirectoryView.vala:2214
 msgid "Sort by"
 msgstr "Rikiuoti pagal"
 
-#: src/View/AbstractDirectoryView.vala:2214
+#: src/View/AbstractDirectoryView.vala:2222
 msgid "Folder"
 msgstr "Aplankas"
 
-#: src/View/AbstractDirectoryView.vala:2220
+#: src/View/AbstractDirectoryView.vala:2228
 msgid "Empty File"
 msgstr "Tuščias failas"
 
-#: src/View/AbstractDirectoryView.vala:2271
+#: src/View/AbstractDirectoryView.vala:2279
 msgid "New"
 msgstr "Naujas"
 
-#: src/View/AbstractDirectoryView.vala:2511
+#: src/View/AbstractDirectoryView.vala:2519
 #, c-format
 msgid "Untitled %s"
 msgstr "Be pavadinimo %s"
 
-#: src/View/AbstractDirectoryView.vala:2876
-#: src/View/AbstractDirectoryView.vala:3077
+#: src/View/AbstractDirectoryView.vala:2884
+#: src/View/AbstractDirectoryView.vala:3085
 msgid "Cannot remove files from here"
 msgstr "Failai negali būti iš čia pašalinti"
 
-#: src/View/AbstractDirectoryView.vala:2877
-#: src/View/AbstractDirectoryView.vala:3062
-#: src/View/AbstractDirectoryView.vala:3078
+#: src/View/AbstractDirectoryView.vala:2885
+#: src/View/AbstractDirectoryView.vala:3070
+#: src/View/AbstractDirectoryView.vala:3086
 msgid "You do not have permission to change this location"
 msgstr "Jūs neturite leidimų keisti šios vietos"
 
-#: src/View/AbstractDirectoryView.vala:3031
+#: src/View/AbstractDirectoryView.vala:3039
 msgid "Cannot copy files that are in the trash"
 msgstr "Nepavyksta nukopijuoti failų, kurie yra šiukšlinėje"
 
-#: src/View/AbstractDirectoryView.vala:3032
+#: src/View/AbstractDirectoryView.vala:3040
 msgid "Cutting the selection instead"
 msgstr "Vietoj to, iškerpamas pasirinkimas"
 
-#: src/View/AbstractDirectoryView.vala:3061
+#: src/View/AbstractDirectoryView.vala:3069
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
@@ -691,7 +691,7 @@ msgstr ""
 "Ištrinti visus elementus iš šiukšlinės šiame prijungime visiems laikams?"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
+#: libwidgets/View/SearchResults.vala:288
 msgid "Bookmarks"
 msgstr "Žymelės"
 
@@ -754,20 +754,20 @@ msgstr "Keisti saugumo nustatymus"
 msgid "Open the system security and privacy settings app"
 msgstr "Atverti sistemos saugumo ir privatumo nustatymų programą"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
 msgstr "Atlikite paiešką arba įrašykite kelią"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "Atverti naujoje kortelėje"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:459
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
 msgstr "Atverti naujame lange"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:502
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
 msgstr "Atverti naudojant kitą programą…"
 
@@ -2029,28 +2029,34 @@ msgstr "Įrašykite kelią"
 msgid "Navigate to %s"
 msgstr "Naršyti į %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "Pereiti į %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
 msgid "Type Path"
 msgstr "Įrašykite kelią"
 
-#: libwidgets/View/SearchResults.vala:82
+#: libwidgets/View/SearchResults.vala:75
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s (%s)"
+msgstr "%s (%s, %s)"
+
+#: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
 msgstr "Daugiau rezultatų …"
 
-#: libwidgets/View/SearchResults.vala:274
+#: libwidgets/View/SearchResults.vala:280
 msgid "In This Folder"
 msgstr "Šiame aplanke"
 
-#: libwidgets/View/SearchResults.vala:278
+#: libwidgets/View/SearchResults.vala:284
 msgid "Below This Folder"
 msgstr "Žemiau šio aplanko"
 
-#: libwidgets/View/SearchResults.vala:287
+#: libwidgets/View/SearchResults.vala:293
 #, fuzzy
 #| msgid "Recently used"
 msgid "Recently Used"

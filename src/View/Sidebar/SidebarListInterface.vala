@@ -92,7 +92,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
     }
 
     /* Returns true if favorite successfully added */
-    public virtual bool add_favorite (string uri, string? label = null, int index = 0) { return false; }
+    public virtual bool add_favorite (string uri, string label = "", int index = 0) { return false; }
 
     public virtual SidebarItemInterface? get_item_at_index (int index) { return null; }
 
@@ -101,4 +101,5 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         return false;
     } // By default not-reorderable
 
+    public virtual bool is_drop_target () { return false; } // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
 }

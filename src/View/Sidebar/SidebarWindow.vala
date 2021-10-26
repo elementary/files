@@ -248,8 +248,8 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         });
     }
 
-    public void add_favorite_uri (string uri, string? label = null) {
-        bookmark_listbox.add_favorite (uri, label);
+    public void add_favorite_uri (string uri, string custom_name = "") {
+        bookmark_listbox.add_favorite (uri, custom_name);
     }
 
     public bool has_favorite_uri (string uri) {

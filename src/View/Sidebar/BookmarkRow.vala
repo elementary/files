@@ -69,7 +69,17 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected Gtk.Label label;
     protected Gtk.Revealer drop_revealer;
 
-    public string custom_name { get; set construct; }
+    public string custom_name { get; set; default = "";}
+    public string display_name {
+        get {
+            if (custom_name.strip () != "") {
+                return custom_name;
+            } else {
+                return target_file.get_display_name ();
+            }
+        }
+    }
+
     public SidebarListInterface list { get; construct; }
     public uint32 id { get; construct; }
     public string uri { get; set construct; }
@@ -81,14 +91,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     public ActionGroup? action_group {get; set; default = null;}
     public string? action_group_namespace { get; set; default = null;}
 
-    public BookmarkRow (string name,
+    public BookmarkRow (string _custom_name,
                         string uri,
                         Icon gicon,
                         SidebarListInterface list,
                         bool pinned,
                         bool permanent) {
         Object (
-            custom_name: name,
+            custom_name: _custom_name,
             uri: uri,
             gicon: gicon,
             list: list,
@@ -96,9 +106,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             pinned: pinned,
             permanent: permanent
         );
-
-        set_up_drag ();
-        set_up_drop ();
     }
 
     construct {
@@ -116,19 +123,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         SidebarItemInterface.item_id_map.@set (id, this);
         item_map_lock.unlock ();
 
-        var label = new Gtk.Label (custom_name) {
+        var label = new Gtk.Label (display_name) {
             xalign = 0.0f,
             halign = Gtk.Align.START,
             hexpand = true,
             ellipsize = Pango.EllipsizeMode.END
         };
 
-        bind_property ("custom-name", label, "label", BindingFlags.DEFAULT);
-
         label_stack = new Gtk.Stack () {
             homogeneous = false
         };
         label_stack.add_named (label, "label");
+
         if (!pinned) {
             editable = new Gtk.Entry ();
             label_stack.add_named (editable, "editable");
@@ -171,10 +177,17 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
         });
+
+        notify["custom-name"].connect (() => {
+            label.label = display_name;
+        });
+
+        set_up_drag ();
+        set_up_drop ();
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
-        name = item.name;
+        custom_name = item.name;
         uri = item.uri;
         update_icon (item.icon);
         menu_model = item.menu_model;
@@ -184,7 +197,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     private void rename () {
         if (!pinned) {
-            editable.text = custom_name;
+            editable.text = display_name;
             label_stack.visible_child_name = "editable";
             editable.grab_focus ();
         }
@@ -229,7 +242,20 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return false;
         }
 
+        var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+        var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+        var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
+        var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
+
         switch (event.button) {
+            case Gdk.BUTTON_PRIMARY:
+                if (only_control_pressed) {
+                    activated (Files.OpenFlag.NEW_TAB);
+                    return true;
+                } else {
+                    return false;
+                }
+
             case Gdk.BUTTON_SECONDARY:
                 popup_context_menu (event);
                 return true;
@@ -447,13 +473,17 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             reveal = y > row_height - edge_height;
 
-            // Set the suggested action only when revealer state changes
-            if (reveal && !drop_revealer.reveal_child) {
+            if (reveal_drop_target (reveal)) {
+                // Drop between bookmarks
                 current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
-            } else if (!reveal && drop_revealer.reveal_child &&
-                       drop_text != null &&
-                       target.name () == "text/uri-list") {
+                if (target.name () == "text/uri-list" && drop_text != null &&
+                    list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
 
+                    current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
+                    reveal = false;
+                }
+            } else if (drop_text != null && target.name () == "text/uri-list") {
+                // Drop onto bookmark
                 if (drop_file_list == null) {
                     drop_file_list = Files.FileUtils.files_from_uris (drop_text);
                 }
@@ -464,8 +494,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     out current_suggested_action
                 );
             }
-
-            reveal_drop_target (reveal);
 
             var pos = get_index ();
             if (pos > 0) {
@@ -532,7 +560,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             var pos = get_index ();
             pos++;
-            return list.add_favorite (drop_file_list.data.get_uri (), null, pos);
+            return list.add_favorite (drop_file_list.data.get_uri (), "", pos);
         } else {
             var dnd_handler = new Files.DndHandler ();
             var real_action = ctx.get_selected_action ();
@@ -566,9 +594,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected void reveal_drop_target (bool reveal) {
-        if (drop_revealer.reveal_child != reveal) {
+    protected bool reveal_drop_target (bool reveal) {
+        if (list.is_drop_target ()) {
             drop_revealer.reveal_child = reveal;
+            return reveal;
+        } else {
+            return false; //Suppress dropping between rows (e.g. for Storage list)
         }
     }
 }
