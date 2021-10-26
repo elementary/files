@@ -34,6 +34,8 @@
         <ul>
           <li>Show translated bookmark names when changing languages</li>
           <li>Stop some audio file icons disappearing when scrolling or changing view</li>
+          <li>Allow dropping bookmark directly below the Recent bookmark</li>
+          <li>Do not show unusable drop target below the Trash bookmark</li>
         </ul>
         <p>Other updates:</p>
         <ul>
