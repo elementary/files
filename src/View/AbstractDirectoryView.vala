@@ -1160,7 +1160,7 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            window.bookmark_uri (location.get_uri (), null);
+            window.bookmark_uri (location.get_uri ());
         }
 
         /** Background actions */

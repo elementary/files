@@ -99,11 +99,16 @@ namespace Files {
             uint handle;
         }
 
+        struct UriList {
+            string[] uris;
+        }
+
 
         private static Thumbnailer? instance;
         private static Mutex thumbnailer_lock;
         private static GLib.HashTable<uint, uint> request_handle_mapping;
         private static GLib.HashTable<uint, uint> handle_request_mapping;
+        private static GLib.HashTable<uint, UriList?> handle_uris_mapping;
         private static GLib.List<Idle?> idles;
 
         private ThumbnailerDaemon proxy;
@@ -118,6 +123,7 @@ namespace Files {
             if (request_handle_mapping == null) {
                 request_handle_mapping = new GLib.HashTable<uint, uint>.full (direct_hash, direct_equal, null, null);
                 handle_request_mapping = new GLib.HashTable<uint, uint>.full (direct_hash, direct_equal, null,null);
+                handle_uris_mapping = new GLib.HashTable<uint, UriList?>.full (direct_hash, direct_equal, null,null);
                 thumbnailer_lock = Mutex ();
             }
         }
@@ -214,8 +220,19 @@ namespace Files {
                     handle = proxy.queue.end (res);
                     request_handle_mapping.insert (this_request, handle);
                     handle_request_mapping.insert (handle, this_request);
+                    // Save uris requested so we can check if any ignored (neither ready nor in error) when request finiahed.
+                    // Arrays are not supported in HashTables so put into a boxed struct.
+                    var uri_list = UriList () {
+                        uris = uris
+                    };
+                    handle_uris_mapping.insert (handle, uri_list);
                 } catch (GLib.Error e) {
                     warning ("Thumbnailer proxy request %u failed: %s", this_request, e.message);
+                    foreach (var file in files) {
+                        // Do not leave in LOADING state
+                        file.thumbstate= Files.File.ThumbState.NONE;
+                        file.query_thumbnail_update ();
+                    }
                 }
             });
 
@@ -243,8 +260,8 @@ namespace Files {
             if (proxy == null || ftype == null) {
                 return false;
             }
-            bool supported = false;
 
+            bool supported = false;
             if (supported_schemes == null) {
                 try {
                     proxy.get_supported (out supported_schemes, out supported_types);
@@ -253,6 +270,7 @@ namespace Files {
                     return false;
                 }
             }
+
             if (supported_schemes != null && supported_types != null) {
                 uint index = 0;
                 foreach (string scheme in supported_schemes) {
@@ -344,6 +362,15 @@ namespace Files {
 
         private static void handle_finished_idle (Idle finished_idle) {
             var handle = finished_idle.handle;
+            unowned var uri_list = handle_uris_mapping.lookup (handle);
+            foreach (var uri in uri_list.uris) {
+                var goffile = Files.File.get_by_uri (uri);
+                if (goffile.thumbstate == Files.File.ThumbState.LOADING) {
+                    goffile.thumbstate = Files.File.ThumbState.NONE;
+                    goffile.query_thumbnail_update ();
+                }
+            }
+
             thumbnailer_lock.@lock ();
             uint request = handle_request_mapping.lookup (handle);
             request_handle_mapping.remove (request);
