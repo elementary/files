@@ -602,8 +602,8 @@ namespace Files.View {
             return prefix + name;
         }
 
-        public void bookmark_uri (string uri, string? name = null) {
-            sidebar.add_favorite_uri (uri, name);
+        public void bookmark_uri (string uri, string custom_name = "") {
+            sidebar.add_favorite_uri (uri, custom_name);
         }
 
         public bool can_bookmark_uri (string uri) {
