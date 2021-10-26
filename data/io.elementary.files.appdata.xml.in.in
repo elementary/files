@@ -34,6 +34,7 @@
         <ul>
           <li>Show translated bookmark names when changing languages</li>
           <li>Stop some audio file icons disappearing when scrolling or changing view</li>
+          <li>Fix pasting of selected pathbar text into another window using middle-click</li>
         </ul>
         <p>Other updates:</p>
         <ul>
