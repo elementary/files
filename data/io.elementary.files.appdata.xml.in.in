@@ -28,7 +28,7 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.0.4" date="2021-09-27" urgency="medium">
+    <release version="6.0.4" date="2021-10-27" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
