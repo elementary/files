@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 23:05+0000\n"
+"POT-Creation-Date: 2021-10-29 17:40+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -236,7 +236,7 @@ msgstr[1] "%u αρχεία"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:223
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -793,12 +793,12 @@ msgstr "Ανανέωση αυτού του φακέλου"
 msgid "Searching…"
 msgstr "Γίνεται φόρτωση..."
 
-#: src/View/Widgets/OverlayBar.vala:210
+#: src/View/Widgets/OverlayBar.vala:214
 #, c-format
 msgid "%u folders"
 msgstr "%u φάκελοι"
 
-#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 #, fuzzy, c-format
 #| msgid " and %u other item (%s) selected"
 msgid " and %u other item (%s) selected"
@@ -806,17 +806,17 @@ msgid_plural " and %u other items (%s) selected"
 msgstr[0] " και %u άλλο αντικείμενο (%s) επιλέχθηκαν"
 msgstr[1] " και %u άλλο αντικείμενο (%s) επιλέχθηκαν"
 
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
 msgstr " επιλέχτηκε"
 
-#: src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:233
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u επιλεγμένα αντικείμενα (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:273
+#: src/View/Widgets/OverlayBar.vala:277
 #, fuzzy, c-format
 #| msgid "%u sub-folder, "
 msgid "%u sub-folder, "
@@ -825,7 +825,7 @@ msgstr[0] "%u υποφάκελος, "
 msgstr[1] "%u υποφάκελος, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:283
 #, fuzzy, c-format
 #| msgid "%u file, "
 msgid "%u file, "
@@ -834,18 +834,18 @@ msgstr[0] "%u αρχείο, "
 msgstr[1] "%u αρχείο, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:289
+#: src/View/Widgets/OverlayBar.vala:293
 #, c-format
 msgid "%s approx."
 msgstr ""
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:292
+#: src/View/Widgets/OverlayBar.vala:296
 msgid "unknown size"
 msgstr "άγνωστο μέγεθος"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:296
+#: src/View/Widgets/OverlayBar.vala:300
 #, fuzzy, c-format
 #| msgid "%u file not readable"
 msgid "%u file not readable"

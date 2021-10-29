@@ -34,6 +34,7 @@
         <ul>
           <li>Show translated bookmark names when changing languages</li>
           <li>Stop some audio file icons disappearing when scrolling or changing view</li>
+          <li>Stop brief appearance of status overlay when changing root folder in Column View</li>
         </ul>
         <p>Other updates:</p>
         <ul>

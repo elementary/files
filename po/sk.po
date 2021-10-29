@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 23:05+0000\n"
+"POT-Creation-Date: 2021-10-29 17:40+0000\n"
 "PO-Revision-Date: 2021-10-15 22:35+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -244,7 +244,7 @@ msgstr[2] "%u súborov"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:223
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -769,12 +769,12 @@ msgstr "Znovu načítať priečinok"
 msgid "Searching…"
 msgstr "Vyhľadávanie…"
 
-#: src/View/Widgets/OverlayBar.vala:210
+#: src/View/Widgets/OverlayBar.vala:214
 #, c-format
 msgid "%u folders"
 msgstr "%u priečinkov"
 
-#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
@@ -782,17 +782,17 @@ msgstr[0] " a %u dalšia položka (%s) vybraná"
 msgstr[1] " a %u dalšie položky (%s) vybrané"
 msgstr[2] " a %u dalších položiek (%s) vybraných"
 
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
 msgstr " vybrané"
 
-#: src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:233
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u položiek vybraných (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:273
+#: src/View/Widgets/OverlayBar.vala:277
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -801,7 +801,7 @@ msgstr[1] "%u podpriečinky, "
 msgstr[2] "%u podpriečinkov, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:283
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -810,18 +810,18 @@ msgstr[1] "%u súbory, "
 msgstr[2] "%u súborov, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:289
+#: src/View/Widgets/OverlayBar.vala:293
 #, c-format
 msgid "%s approx."
 msgstr "približne %s"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:292
+#: src/View/Widgets/OverlayBar.vala:296
 msgid "unknown size"
 msgstr "neznáma veľkosť"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:296
+#: src/View/Widgets/OverlayBar.vala:300
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"

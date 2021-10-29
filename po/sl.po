@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 23:05+0000\n"
+"POT-Creation-Date: 2021-10-29 17:40+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -246,7 +246,7 @@ msgstr[3] "%u datotek"
 msgid "%s, %s"
 msgstr "%s %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:223
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -790,12 +790,12 @@ msgstr "Osveži to mapo"
 msgid "Searching…"
 msgstr "Iskanje…"
 
-#: src/View/Widgets/OverlayBar.vala:210
+#: src/View/Widgets/OverlayBar.vala:214
 #, c-format
 msgid "%u folders"
 msgstr "Izbranih %u map"
 
-#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 #, fuzzy, c-format
 #| msgid " and %u other item (%s) selected"
 msgid " and %u other item (%s) selected"
@@ -805,17 +805,17 @@ msgstr[1] " in %u drug predmet (%s)"
 msgstr[2] " in %u drug predmet (%s)"
 msgstr[3] " in %u drug predmet (%s)"
 
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
 msgstr " izbranih"
 
-#: src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:233
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "Izbranih %u predmetov (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:273
+#: src/View/Widgets/OverlayBar.vala:277
 #, fuzzy, c-format
 #| msgid "%u sub-folder, "
 msgid "%u sub-folder, "
@@ -826,7 +826,7 @@ msgstr[2] "%u podmapa, "
 msgstr[3] "%u podmapa, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:283
 #, fuzzy, c-format
 #| msgid "%u file, "
 msgid "%u file, "
@@ -837,18 +837,18 @@ msgstr[2] "%u datoteka, "
 msgstr[3] "%u datoteka, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:289
+#: src/View/Widgets/OverlayBar.vala:293
 #, c-format
 msgid "%s approx."
 msgstr "pribl. %s"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:292
+#: src/View/Widgets/OverlayBar.vala:296
 msgid "unknown size"
 msgstr "neznana velikost"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:296
+#: src/View/Widgets/OverlayBar.vala:300
 #, fuzzy, c-format
 #| msgid "%u file not readable"
 msgid "%u file not readable"
