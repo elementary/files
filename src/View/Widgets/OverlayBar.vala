@@ -75,7 +75,7 @@ namespace Files.View {
             hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout. */
 
             if (file == null) {
-                real_update (null);
+                real_update (null); //Resets various variables and hides the overlay straightaway
                 return;
             }
 
