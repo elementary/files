@@ -1,3 +1,17 @@
+pantheon-files (6.0.4) bionic; urgency=medium
+
+  * Release 6.0.4 (#1876)
+  * Update translation files
+  * Update translation template
+  * Avoid briefly visible empty overlay when changing folder in Column
+    View (#1875)
+  * Application: Remove startup message about issue reports (#1851)
+  * File: Fallback to generic icon if lookup fails (#1866)
+  * Do not try to thumbnail audio files without album art (#1843)
+  * Show translated bookmarks when user language changed (#1820)
+
+ -- Cody Garver <cody@elementary.io>  Fri, 29 Oct 2021 23:17:01 +0000
+
 pantheon-files (6.0.3) bionic; urgency=medium
 
   * Release 6.0.3 (#1840)
