@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-29 17:40+0000\n"
-"PO-Revision-Date: 2021-10-23 01:01+0000\n"
+"PO-Revision-Date: 2021-10-30 03:57+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -95,6 +95,8 @@ msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
 msgstr ""
+"Прибрано короткочасне накладання шару стану при зміні кореневої теки у "
+"поданні стовпцем"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:56
