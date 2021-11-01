@@ -1004,7 +1004,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        return goffile.info.get_attribute_string (FileAttribute.OWNER_USER);
+        return goffile.owner;
     }
 
     private bool selection_can_set_group () {
@@ -1034,7 +1034,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        return goffile.info.get_attribute_string (FileAttribute.OWNER_GROUP);
+        return goffile.group;
     }
 
     private Gtk.Widget create_owner_choice () {

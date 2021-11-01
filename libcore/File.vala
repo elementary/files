@@ -569,7 +569,6 @@ public class Files.File : GLib.Object {
         permissions = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_MODE);
         owner = info.get_attribute_string (GLib.FileAttribute.OWNER_USER);
         group = info.get_attribute_string (GLib.FileAttribute.OWNER_GROUP);
-
         if (info.has_attribute (GLib.FileAttribute.UNIX_UID)) {
             uid = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_UID);
             if (owner == null) {
@@ -683,22 +682,23 @@ public class Files.File : GLib.Object {
 
     public bool can_set_owner () {
         /* unknown file uid */
-        if (uid == -1)
+        if (uid == -1 || is_remote_uri_scheme ()) {
             return false;
-
+        }
         /* root */
         return Posix.geteuid () == 0;
     }
 
     public bool can_set_group () {
-        if (gid == -1)
+        if (gid == -1) {
             return false;
+        }
 
         var user_id = Posix.geteuid ();
-
         /* Owner is allowed to set group (with restrictions). */
-        if (user_id == uid)
+        if (user_id == uid) {
             return true;
+        }
 
         /* Root is also allowed to set group. */
         if (user_id == 0)
