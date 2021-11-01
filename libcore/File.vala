@@ -576,6 +576,8 @@ public class Files.File : GLib.Object {
             }
         } else if (owner != null) { /* e.g. ftp info yields owner but not uid */
             uid = int.parse (owner);
+        } else {
+            owner = null;
         }
 
         if (info.has_attribute (GLib.FileAttribute.UNIX_GID)) {
@@ -585,6 +587,8 @@ public class Files.File : GLib.Object {
             }
         } else if (group != null) { /* e.g. ftp info yields owner but not uid */
             gid = int.parse (group);
+        } else {
+            group = null;
         }
 
         if (info.has_attribute (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT)) {
@@ -682,7 +686,11 @@ public class Files.File : GLib.Object {
 
     public bool can_set_owner () {
         /* unknown file uid */
-        if (uid == -1 || is_remote_uri_scheme ()) {
+        if (uid == -1 ||
+            owner == null ||
+            uid == uint.parse (owner) ||
+            is_trashed ()) {
+
             return false;
         }
         /* root */
@@ -690,7 +698,11 @@ public class Files.File : GLib.Object {
     }
 
     public bool can_set_group () {
-        if (gid == -1) {
+        if (gid == -1 ||
+            group == null ||
+            gid == uint.parse (group) ||
+            is_trashed ()) {
+
             return false;
         }
 
@@ -708,7 +720,15 @@ public class Files.File : GLib.Object {
     }
 
     public bool can_set_permissions () {
-        if (uid != -1 && location.is_native ()) {
+        if (uid == -1 ||
+            owner == null ||
+            uid == uint.parse (owner) ||
+            is_trashed ()) {
+
+            return false;
+        }
+
+        if (location.is_native ()) {
             /* Check the user. */
             Posix.uid_t user_id = Posix.geteuid ();
             /* Owner is allowed to set permissions. */

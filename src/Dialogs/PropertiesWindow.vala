@@ -228,17 +228,21 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         create_header_title ();
 
         /* Permissions */
-        /* Don't show permissions for uri scheme trash and archives */
-        if (!(only_one && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
-            construct_perm_panel ();
-            add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
+        if (construct_perm_panel () != null) {
             if (!goffile.can_set_permissions ()) {
                 foreach (var widget in perm_grid.get_children ()) {
                     widget.set_sensitive (false);
                 }
             }
+        } else {
+            perm_grid = new Gtk.Grid () {
+                expand = true,
+                valign = Gtk.Align.CENTER
+            };
+            perm_grid.add (new Gtk.Label (_("Unable to determine file ownership and permissions")));
         }
 
+        add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
         show_all ();
     }
 
@@ -926,54 +930,58 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private Gtk.Grid construct_perm_panel () {
-        var owner_user_label = new KeyLabel (_("Owner:"));
-
+    private Gtk.Grid? construct_perm_panel () {
         var owner_user_choice = create_owner_choice ();
+        if (owner_user_choice == null) {
+            return null;
+        } else {
+            var owner_user_label = new KeyLabel (_("Owner:"));
+            var group_combo_label = new KeyLabel (_("Group:"));
+            group_combo_label.margin_bottom = 12;
 
-        var group_combo_label = new KeyLabel (_("Group:"));
-        group_combo_label.margin_bottom = 12;
+            var group_combo = create_group_choice ();
+            group_combo.margin_bottom = 12;
 
-        var group_combo = create_group_choice ();
-        group_combo.margin_bottom = 12;
+            var owner_label = new KeyLabel (_("Owner:"));
+            perm_button_user = create_perm_choice (Permissions.Type.USER);
 
-        var owner_label = new KeyLabel (_("Owner:"));
-        perm_button_user = create_perm_choice (Permissions.Type.USER);
+            var group_label = new KeyLabel (_("Group:"));
+            perm_button_group = create_perm_choice (Permissions.Type.GROUP);
 
-        var group_label = new KeyLabel (_("Group:"));
-        perm_button_group = create_perm_choice (Permissions.Type.GROUP);
+            var other_label = new KeyLabel (_("Everyone:"));
+            perm_button_other = create_perm_choice (Permissions.Type.OTHER);
 
-        var other_label = new KeyLabel (_("Everyone:"));
-        perm_button_other = create_perm_choice (Permissions.Type.OTHER);
+            perm_code = new Gtk.Entry ();
+            perm_code.text = "000";
+            perm_code.max_length = perm_code.max_width_chars = perm_code.width_chars = 3;
 
-        perm_code = new Gtk.Entry ();
-        perm_code.text = "000";
-        perm_code.max_length = perm_code.max_width_chars = perm_code.width_chars = 3;
+            l_perm = new Gtk.Label ("<tt>%s</tt>".printf (goffile.get_permissions_as_string ()));
+            l_perm.halign = Gtk.Align.START;
+            l_perm.use_markup = true;
 
-        l_perm = new Gtk.Label ("<tt>%s</tt>".printf (goffile.get_permissions_as_string ()));
-        l_perm.halign = Gtk.Align.START;
-        l_perm.use_markup = true;
+            perm_grid = new Gtk.Grid () {
+                column_spacing = 6,
+                row_spacing = 6,
+                halign = Gtk.Align.CENTER
+            };
+            perm_grid.attach (owner_user_label, 0, 1, 1, 1);
+            perm_grid.attach (owner_user_choice, 1, 1, 2, 1);
+            perm_grid.attach (group_combo_label, 0, 2, 1, 1);
+            perm_grid.attach (group_combo, 1, 2, 2, 1);
+            perm_grid.attach (owner_label, 0, 3, 1, 1);
+            perm_grid.attach (perm_button_user, 1, 3, 2, 1);
+            perm_grid.attach (group_label, 0, 4, 1, 1);
+            perm_grid.attach (perm_button_group, 1, 4, 2, 1);
+            perm_grid.attach (other_label, 0, 5, 1, 1);
+            perm_grid.attach (perm_button_other, 1, 5, 2, 1);
+            perm_grid.attach (l_perm, 1, 6, 1, 1);
+            perm_grid.attach (perm_code, 2, 6, 1, 1);
 
-        perm_grid = new Gtk.Grid ();
-        perm_grid.column_spacing = 6;
-        perm_grid.row_spacing = 6;
-        perm_grid.halign = Gtk.Align.CENTER;
-        perm_grid.attach (owner_user_label, 0, 1, 1, 1);
-        perm_grid.attach (owner_user_choice, 1, 1, 2, 1);
-        perm_grid.attach (group_combo_label, 0, 2, 1, 1);
-        perm_grid.attach (group_combo, 1, 2, 2, 1);
-        perm_grid.attach (owner_label, 0, 3, 1, 1);
-        perm_grid.attach (perm_button_user, 1, 3, 2, 1);
-        perm_grid.attach (group_label, 0, 4, 1, 1);
-        perm_grid.attach (perm_button_group, 1, 4, 2, 1);
-        perm_grid.attach (other_label, 0, 5, 1, 1);
-        perm_grid.attach (perm_button_other, 1, 5, 2, 1);
-        perm_grid.attach (l_perm, 1, 6, 1, 1);
-        perm_grid.attach (perm_code, 2, 6, 1, 1);
+            update_perm_grid_toggle_states (goffile.permissions);
 
-        update_perm_grid_toggle_states (goffile.permissions);
+            perm_code.changed.connect (entry_changed);
+        }
 
-        perm_code.changed.connect (entry_changed);
         return perm_grid;
     }
 
@@ -1037,10 +1045,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return goffile.group;
     }
 
-    private Gtk.Widget create_owner_choice () {
-        Gtk.Widget choice;
-        choice = null;
-
+    private Gtk.Widget? create_owner_choice () {
+        Gtk.Widget? choice = null;
         if (selection_can_set_owner ()) {
             GLib.List<string> users;
             Gtk.TreeIter iter;
@@ -1082,7 +1088,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         } else {
             string? common_owner = get_common_owner ();
             if (common_owner == null) {
-                common_owner = "--";
+                return null;
             }
 
             choice = (Gtk.Widget) new Gtk.Label (common_owner);
