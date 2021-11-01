@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-29 17:40+0000\n"
-"PO-Revision-Date: 2021-10-23 12:18+0000\n"
+"PO-Revision-Date: 2021-10-29 20:47+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -83,7 +83,7 @@ msgstr "עצירת סמלי קובצי שמע שנעלמים בזמן גרירה
 msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
-msgstr ""
+msgstr "הופסקה הצגת שכבת על של מצב בעת החלפת תיקיית על בתצוגת עמודות"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:56
