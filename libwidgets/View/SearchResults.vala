@@ -449,12 +449,14 @@ namespace Files.View.Chrome {
             Gtk.TreeIter iter;
 
             view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
-
-            if (path != null) {
+            if (path != null && path.get_depth () > 1) {
                 filter.get_iter (out iter, path);
                 filter.convert_iter_to_child_iter (out iter, iter);
                 accept (iter, e.button > 1); /* This will call cancel () */
+            } else {
+                Gdk.beep ();
             }
+
             return true;
         }
 
@@ -483,7 +485,7 @@ namespace Files.View.Chrome {
                            event.keyval == Gdk.Key.KP_Enter ||
                            event.keyval == Gdk.Key.ISO_Enter) {
 
-                    accept (null, true);
+                    accept (null, true); // Open the selected file in default app
                 } else {
                     return parent.key_press_event (event);
                 }
@@ -493,7 +495,7 @@ namespace Files.View.Chrome {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
-                    accept ();
+                    accept (null, false); // Navigate to the selected file
                     return true;
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
@@ -685,7 +687,6 @@ namespace Files.View.Chrome {
             iter = Gtk.TreeIter ();
 
             view.get_cursor (out path, null);
-
             if (path == null || !filter.get_iter (out filter_iter, path)) {
                 return false;
             }
@@ -836,46 +837,32 @@ namespace Files.View.Chrome {
             }
         }
 
-        void accept (Gtk.TreeIter? accepted = null, bool activate = false) {
-            if (list_empty ()) {
-                Gdk.beep ();
-                return;
-            }
-
-            bool valid_iter = true ;
-            if (accepted == null) {
-                valid_iter = get_iter_at_cursor (out accepted);
-            }
-
-            if (!valid_iter) {
+        void accept (Gtk.TreeIter? accepted, bool activate) {
+            if (accepted == null && !get_iter_at_cursor (out accepted)) {
                 Gdk.beep ();
                 return;
             }
 
             GLib.File? file = null;
             string sortkey = "";
-            /* It is important that the next line is not put into an if clause.
-             * For reasons unknown, doing so causes a segmentation fault on some systems but not
-             * others.  Any changes to the format and content of the accept () function should be
-             * carefully checked for stability on a range of systems which differ in architecture,
-             * speed and configuration.
-             */
-
-
+            // Check whether file match or ellipsis activated
             list.@get (accepted, 3, out file);
             list.@get (accepted, 5, out sortkey);
             if (file == null) {
-                if (sortkey.contains ("ELLIPSIS")) {
+                if (sortkey.has_suffix (ELLIPSIS_NAME)) {
                     max_results += MAX_RESULTS;
                     max_depth += 1;
                     search (search_term, current_root);
                 } else {
+                    critical ("Search match with no associated file and not an ellipsis");
                     Gdk.beep ();
                 }
+
                 return;
             }
 
             cancel ();
+
             if (activate) {
                 file_activated (file);
             } else {
