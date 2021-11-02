@@ -28,7 +28,21 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.0.4" date="2021-10-29" urgency="medium">
+    <release version="6.0.5" date="2021-09-27" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Always show Permissions page in Properties dialog</li>
+          <li>In Permissions page,show user and group numeric IDs when names not available</li>
+          <li>In Permissions page,show message when no information available</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.0.4" date="2021-09-27" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
