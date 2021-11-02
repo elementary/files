@@ -28,7 +28,7 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.0.4" date="2021-09-27" urgency="medium">
+    <release version="6.0.5" date="2021-10-29" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
@@ -38,10 +38,22 @@
         </ul>
         <p>Fixes:</p>
         <ul>
-          <li>Show translated bookmark names when changing languages</li>
-          <li>Stop some audio file icons disappearing when scrolling or changing view</li>
           <li>Fix sidebar showing both drive and volume for same device</li>
           <li>Fix sidebar showing SSH servers in both Storage and Network sections</li>
+        </ul>
+        <p>Other updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.0.4" date="2021-10-29" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Show translated bookmark names when changing languages</li>
+          <li>Stop some audio file icons disappearing when scrolling or changing view</li>
+          <li>Stop brief appearance of status overlay when changing root folder in Column View</li>
         </ul>
         <p>Other updates:</p>
         <ul>
