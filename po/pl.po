@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-29 17:40+0000\n"
-"PO-Revision-Date: 2021-10-01 10:05+0000\n"
-"Last-Translator: Paweł Orszulik <orszoooo@gmail.com>\n"
+"PO-Revision-Date: 2021-11-02 15:45+0000\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -177,7 +177,7 @@ msgstr "Usunięto:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
-msgstr "Rodzaj MIME:"
+msgstr "Rodzaj Pliku:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
@@ -350,7 +350,7 @@ msgstr "Utwórz katalog „%s”"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
-msgstr "Nie udało się stworzyć katalogu"
+msgstr "Nie udało się utworzyć katalogu"
 
 #: src/View/AbstractDirectoryView.vala:824
 #: src/View/AbstractDirectoryView.vala:1135
@@ -361,7 +361,7 @@ msgstr "Nie można wykonać tego pliku"
 #: src/View/AbstractDirectoryView.vala:834
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "„%s” musi być przeniesiony z Kosza przed jego otwarciem"
+msgstr "Przed otwarciem „%s” należy przywrócić go z Kosza"
 
 #: src/View/AbstractDirectoryView.vala:835
 msgid ""
