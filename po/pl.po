@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-29 17:40+0000\n"
-"PO-Revision-Date: 2021-11-02 08:36+0000\n"
+"PO-Revision-Date: 2021-11-02 15:45+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -361,7 +361,7 @@ msgstr "Nie można wykonać tego pliku"
 #: src/View/AbstractDirectoryView.vala:834
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "Przed otwarciem „%s” należy przenieść z Kosza"
+msgstr "Przed otwarciem „%s” należy przywrócić go z Kosza"
 
 #: src/View/AbstractDirectoryView.vala:835
 msgid ""
