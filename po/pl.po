@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-29 17:40+0000\n"
 "PO-Revision-Date: 2021-11-02 08:36+0000\n"
-"Last-Translator: Paweł Orszulik <orszoooo@gmail.com>\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -177,7 +177,7 @@ msgstr "Usunięto:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
-msgstr "Rodzaj MIME:"
+msgstr "Rodzaj Pliku:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
