@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 23:05+0000\n"
-"PO-Revision-Date: 2021-10-01 10:05+0000\n"
-"Last-Translator: Paweł Orszulik <orszoooo@gmail.com>\n"
+"POT-Creation-Date: 2021-10-29 17:40+0000\n"
+"PO-Revision-Date: 2021-11-02 15:45+0000\n"
+"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -177,7 +177,7 @@ msgstr "Usunięto:"
 
 #: src/Dialogs/PropertiesWindow.vala:589
 msgid "Media type:"
-msgstr "Rodzaj MIME:"
+msgstr "Rodzaj Pliku:"
 
 #: src/Dialogs/PropertiesWindow.vala:596
 msgid "Resolution:"
@@ -241,7 +241,7 @@ msgstr[2] "%u plików"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:219
+#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:223
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -350,7 +350,7 @@ msgstr "Utwórz katalog „%s”"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
-msgstr "Nie udało się stworzyć katalogu"
+msgstr "Nie udało się utworzyć katalogu"
 
 #: src/View/AbstractDirectoryView.vala:824
 #: src/View/AbstractDirectoryView.vala:1135
@@ -361,7 +361,7 @@ msgstr "Nie można wykonać tego pliku"
 #: src/View/AbstractDirectoryView.vala:834
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "„%s” musi być przeniesiony z Kosza przed jego otwarciem"
+msgstr "Przed otwarciem „%s” należy przywrócić go z Kosza"
 
 #: src/View/AbstractDirectoryView.vala:835
 msgid ""
@@ -768,12 +768,12 @@ msgstr "Odśwież ten katalog"
 msgid "Searching…"
 msgstr "Wyszukiwanie…"
 
-#: src/View/Widgets/OverlayBar.vala:210
+#: src/View/Widgets/OverlayBar.vala:214
 #, c-format
 msgid "%u folders"
 msgstr "%u katalogów"
 
-#: src/View/Widgets/OverlayBar.vala:212 src/View/Widgets/OverlayBar.vala:222
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
@@ -781,17 +781,17 @@ msgstr[0] " i %u inny element (%s) został wybrany"
 msgstr[1] " i %u inne elementy (%s) zostały wybrane"
 msgstr[2] " i %u innych elementów (%s) zostało wybranych"
 
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
 msgstr " zaznaczono"
 
-#: src/View/Widgets/OverlayBar.vala:229
+#: src/View/Widgets/OverlayBar.vala:233
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "Zaznaczono %u elementów (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:273
+#: src/View/Widgets/OverlayBar.vala:277
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -800,7 +800,7 @@ msgstr[1] "%u podkatalogi, "
 msgstr[2] "%u podkatalogów, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:279
+#: src/View/Widgets/OverlayBar.vala:283
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -809,18 +809,18 @@ msgstr[1] "%u pliki, "
 msgstr[2] "%u plików, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:289
+#: src/View/Widgets/OverlayBar.vala:293
 #, c-format
 msgid "%s approx."
 msgstr "około %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:292
+#: src/View/Widgets/OverlayBar.vala:296
 msgid "unknown size"
 msgstr "nieznany rozmiar"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:296
+#: src/View/Widgets/OverlayBar.vala:300
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
