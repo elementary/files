@@ -92,7 +92,6 @@ libwidgets/Chrome/ImgEventBox.vala
 libwidgets/View/SearchResults.vala
 libwidgets/Interfaces/SearchableInterface.vala
 libwidgets/Chrome/ViewSwitcher.vala
-libwidgets/Animations/Animations.vala
 libwidgets/Resources.vala
 libwidgets/Welcome.vala
 

@@ -48,8 +48,6 @@ namespace Files.View.Chrome {
         Gdk.DragAction current_actions = 0; /* No action */
         Files.File? drop_target_file = null;
 
-        /** Long button press support **/
-        uint button_press_timeout_id = 0;
         /** Right-click menu support **/
         double menu_x_root;
         double menu_y_root;
@@ -104,20 +102,11 @@ namespace Files.View.Chrome {
         }
 
         protected override bool on_button_release_event (Gdk.EventButton event) {
-            if (button_press_timeout_id > 0) {
-                Source.remove (button_press_timeout_id);
-                button_press_timeout_id = 0;
-            }
-
             if (drop_file_list != null) {
                 return true;
             }
 
-            if (event.button == 1) {
-                return base.on_button_release_event (event);
-            } else { /* other buttons act on press */
-                return true;
-            }
+            return base.on_button_release_event (event);
         }
 
 
@@ -432,13 +421,15 @@ namespace Files.View.Chrome {
                 files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
                     append_subdirectories (menu, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
+                    // Do not show popup until all children have been appended.
+                    menu.show_all ();
+                    menu.popup_at_pointer (event);
                 });
             } else {
                 warning ("Root directory null for %s", path);
+                menu.show_all ();
+                menu.popup_at_pointer (event);
             }
-
-            menu.show_all ();
-            menu.popup_at_pointer (event);
 
             if (files_menu_dir != null) {
                 files_menu_dir.init ();
@@ -540,16 +531,16 @@ namespace Files.View.Chrome {
         }
 
         protected override bool on_button_press_event (Gdk.EventButton event) {
-            /* Only handle if not on icon and breadcrumbs are visible */
-            if (icon_event (event) || has_focus || hide_breadcrumbs) {
+            /* Only handle if not on icon and breadcrumbs are visible.
+             * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/
+            if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
                 return base.on_button_press_event (event);
             } else {
                 var el = mark_pressed_element (event);
                 if (el != null) {
                     switch (event.button) {
                         case 1:
-                            handle_primary_button_press (event, el);
-                            break;
+                            break; // Long press support discontinued as provided by system settings
                         case 2:
                             handle_middle_button_press (event, el);
                             break;
@@ -574,22 +565,13 @@ namespace Files.View.Chrome {
             }
             return el;
         }
-        protected void handle_primary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
-            if (el != null) {
-                if (button_press_timeout_id == 0) {
-                    button_press_timeout_id = Timeout.add (Files.BUTTON_LONG_PRESS, () => {
-                        load_right_click_menu (event, el);
-                        button_press_timeout_id = 0;
-                        return GLib.Source.REMOVE;
-                    });
-                }
-            }
-        }
+
         protected void handle_middle_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
             if (el != null) {
                 activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
             }
         }
+
         protected void handle_secondary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
             load_right_click_menu (event, el);
         }
