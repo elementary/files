@@ -18,6 +18,7 @@
 
 namespace Files.View.Chrome {
     public class SearchResults : Gtk.Window, Searchable {
+        private const string ELLIPSIS_NAME = "ELLIPSIS";
         /* The order of these categories governs the order in which matches appear in the search view.
          * The category represents a first level sort.  Within a category the matches sort alphabetically on name */
         private enum Category {
@@ -90,7 +91,7 @@ namespace Files.View.Chrome {
                         icon: null,
                         path_string: "",
                         file: null,
-                        sortkey: category.to_string () + "ELLIPSIS");
+                        sortkey: category.to_string () + ELLIPSIS_NAME);
             }
         }
 
@@ -547,7 +548,6 @@ namespace Files.View.Chrome {
         }
 
         void select_last () {
-            File file;
             Gtk.TreeIter iter;
 
             list.iter_nth_child (out iter, null, filter.iter_n_children (null) - 1);
@@ -558,36 +558,25 @@ namespace Files.View.Chrome {
                 }
 
                 list.iter_nth_child (out iter, iter, list.iter_n_children (iter) - 1);
-                list.@get (iter, 3, out file);
-
-                /* catch the case when we land on an ellipsis */
-                if (file == null) {
-                    list.iter_previous (ref iter);
-                }
 
                 select_iter (iter);
                 break;
             } while (list.iter_previous (ref iter));
         }
 
+        // Assume that each category only contains valid file entries and maybe an ellipsis
         void select_adjacent (bool up) {
-            File? file = null;
             Gtk.TreeIter iter, parent;
             get_iter_at_cursor (out iter);
-
-            var valid = up ? list.iter_previous (ref iter) : list.iter_next (ref iter);
-
-            if (valid) {
-                list.@get (iter, 3, out file);
-                if (file != null) {
-                    select_iter (iter);
-                    return;
-                }
+            // If another child in same category adjacent then select it
+            if (up ? list.iter_previous (ref iter) : list.iter_next (ref iter)) {
+                select_iter (iter);
+                return;
             }
-
+            // Go back to last currently selected iter
             get_iter_at_cursor (out iter);
+            // Find next/previous category with matches, with wrap around
             list.iter_parent (out parent, iter);
-
             do {
                 if (up ? !list.iter_previous (ref parent) : !list.iter_next (ref parent)) {
                     if (up) {
@@ -600,17 +589,10 @@ namespace Files.View.Chrome {
                 }
             } while (!list.iter_has_child (parent));
 
+            // Get first/last child
             list.iter_nth_child (out iter, parent, up ? list.iter_n_children (parent) - 1 : 0);
-
-            /* make sure we haven't hit an ellipsis */
-            if (up) {
-                list.@get (iter, 3, out file);
-                if (file == null) {
-                    list.iter_previous (ref iter);
-                }
-            }
-
             select_iter (iter);
+            return;
         }
 
         bool list_empty () {
@@ -714,7 +696,6 @@ namespace Files.View.Chrome {
 
         void select_iter (Gtk.TreeIter iter) {
             filter.convert_child_iter_to_iter (out iter, iter);
-
             var path = filter.get_path (iter);
             view.set_cursor (path, null, false);
         }
