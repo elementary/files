@@ -1,0 +1,3 @@
+[Plugin]
+Name=Send by Email
+File=libpantheon-files-send-by-email.so
