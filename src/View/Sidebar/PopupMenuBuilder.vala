@@ -96,10 +96,9 @@ public class PopupMenuBuilder : Object {
 
         var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
         var menu_item = new Gtk.MenuItem.with_mnemonic (text);
+        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
         if (Files.TrashMonitor.get_default ().is_empty) {
             menu_item.sensitive = false;
-        } else {
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
         }
 
         return add_item (menu_item, bookmark_cb);
