@@ -24,7 +24,7 @@ Name=New Window As Administrator
 Exec=@exec_name@-pkexec
 
 [Desktop Action Home]
-Name=Open Home folder
+Name=Home
 Exec=@exec_name@ ~/
 Icon=user-home
 
