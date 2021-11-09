@@ -13,15 +13,7 @@ MimeType=inode/directory;
 Categories=System;
 X-GNOME-Gettext-Domain=@exec_name@
 X-GNOME-UsesNotifications=true
-Actions=WindowNew;Root;Home;Recent;Documents;Music;Pictures;Videos;Downloads;Trash;
-
-[Desktop Action WindowNew]
-Name=New Window
-Exec=@exec_name@ -n
-
-[Desktop Action Root]
-Name=New Window As Administrator
-Exec=@exec_name@-pkexec
+Actions=Home;Recent;Documents;Music;Pictures;Videos;Downloads;Trash;WindowNew;Root;
 
 [Desktop Action Home]
 Name=Home
@@ -62,3 +54,11 @@ Icon=folder-download
 Name=Trash
 Exec=@exec_name@ trash://
 Icon=user-trash
+
+[Desktop Action WindowNew]
+Name=New Window
+Exec=@exec_name@ -n
+
+[Desktop Action Root]
+Name=New Window As Administrator
+Exec=@exec_name@-pkexec
