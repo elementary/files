@@ -13,7 +13,7 @@ MimeType=inode/directory;
 Categories=System;
 X-GNOME-Gettext-Domain=@exec_name@
 X-GNOME-UsesNotifications=true
-Actions=WindowNew;Root;Home;Documents;Music;Pictures;Videos;Downloads;
+Actions=WindowNew;Root;Home;Recent;Documents;Music;Pictures;Videos;Downloads;Trash;
 
 [Desktop Action WindowNew]
 Name=New Window
@@ -27,6 +27,11 @@ Exec=@exec_name@-pkexec
 Name=Home
 Exec=@exec_name@ ~/
 Icon=user-home
+
+[Desktop Action Recent]
+Name=Recent
+Exec=@exec_name@ recent://
+Icon=folder-recent
 
 [Desktop Action Documents]
 Name=Documents
@@ -52,3 +57,8 @@ Icon=folder-videos
 Name=Downloads
 Exec=sh -c "@exec_name@ `xdg-user-dir DOWNLOAD`"
 Icon=folder-download
+
+[Desktop Action Trash]
+Name=Trash
+Exec=@exec_name@ trash://
+Icon=user-trash
