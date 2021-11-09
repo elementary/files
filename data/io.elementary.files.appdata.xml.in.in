@@ -28,11 +28,15 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.0.5" date="2021-10-29" urgency="medium">
+    <release version="6.1.0" date="2021-10-29" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
           <li>Fix pasting of selected pathbar text into another window using middle-click</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Use "Send Mail" portal instead of contract</li>
         </ul>
         <p>Other updates:</p>
         <ul>
