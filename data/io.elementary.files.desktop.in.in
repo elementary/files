@@ -13,7 +13,7 @@ MimeType=inode/directory;
 Categories=System;
 X-GNOME-Gettext-Domain=@exec_name@
 X-GNOME-UsesNotifications=true
-Actions=WindowNew;Root;
+Actions=WindowNew;Root;Home;Documents;Music;Pictures;Videos;Downloads;
 
 [Desktop Action WindowNew]
 Name=New Window
@@ -22,3 +22,33 @@ Exec=@exec_name@ -n
 [Desktop Action Root]
 Name=New Window As Administrator
 Exec=@exec_name@-pkexec
+
+[Desktop Action Home]
+Name=Open Home folder
+Exec=@exec_name@ ~/
+Icon=user-home
+
+[Desktop Action Documents]
+Name=Documents
+Exec=sh -c "@exec_name@ `xdg-user-dir DOCUMENTS`"
+Icon=folder-documents
+
+[Desktop Action Music]
+Name=Music
+Exec=sh -c "@exec_name@ `xdg-user-dir MUSIC`"
+Icon=folder-music
+
+[Desktop Action Pictures]
+Name=Pictures
+Exec=sh -c "@exec_name@ `xdg-user-dir PICTURES`"
+Icon=folder-pictures
+
+[Desktop Action Videos]
+Name=Videos
+Exec=sh -c "@exec_name@ `xdg-user-dir VIDEOS`"
+Icon=folder-videos
+
+[Desktop Action Downloads]
+Name=Downloads
+Exec=sh -c "@exec_name@ `xdg-user-dir DOWNLOAD`"
+Icon=folder-download
