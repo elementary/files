@@ -41,6 +41,8 @@
         <ul>
           <li>Fix sidebar showing both drive and volume for same device</li>
           <li>Fix sidebar showing SSH servers in both Storage and Network sections</li>
+          <li>Control + V keyboard shortcut pastes into background folder instead of selected folder</li>
+          <li>Add Shift + Control + V keyboard shortcut to paste into selected folder</li>
         </ul>
         <p>Other updates:</p>
         <ul>
