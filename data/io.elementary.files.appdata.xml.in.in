@@ -52,6 +52,12 @@
         <ul>
           <li>Allow attempt to connect to remote server with blank password</li>
         </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Always show Permissions page in Properties dialog</li>
+          <li>In Permissions page,show user and group numeric IDs when names not available</li>
+          <li>In Permissions page,show message when no information available</li>
+        </ul>
         <p>Other updates:</p>
         <ul>
           <li>Updated translations</li>
