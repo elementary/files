@@ -28,19 +28,21 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.0.5" date="2021-09-27" urgency="medium">
+    <release version="6.1.0" date="2021-10-29" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
+          <li>Use "Send Mail" portal instead of contract</li>
           <li>Control + V keyboard shortcut pastes into background folder instead of selected folder</li>
           <li>Add Shift + Control + V keyboard shortcut to paste into selected folder</li>
         </ul>
+        <p>Other updates:</p>
         <ul>
           <li>Updated translations</li>
         </ul>
       </description>
     </release>
-    <release version="6.0.4" date="2021-09-27" urgency="medium">
+    <release version="6.0.4" date="2021-10-29" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
