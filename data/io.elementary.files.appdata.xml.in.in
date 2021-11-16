@@ -44,6 +44,10 @@
           <li>Control + V keyboard shortcut pastes into background folder instead of selected folder</li>
           <li>Add Shift + Control + V keyboard shortcut to paste into selected folder</li>
         </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Allow attempt to connect to remote server with blank password</li>
+        </ul>
         <p>Other updates:</p>
         <ul>
           <li>Updated translations</li>
