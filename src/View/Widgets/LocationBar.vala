@@ -90,7 +90,9 @@ namespace Files.View.Chrome {
         }
 
         private void on_search_results_cursor_changed (GLib.File? file) {
-            schedule_focus_file_request (file);
+            if (file != null) {
+                schedule_focus_file_request (file);
+            }
         }
 
         private void on_search_results_realize () {
