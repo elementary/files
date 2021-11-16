@@ -28,10 +28,11 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.0.5" date="2021-10-29" urgency="medium">
+    <release version="6.1.0" date="2021-10-29" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
+          <li>Use "Send Mail" portal instead of contract</li>
           <li>Make ejecting devices safer</li>
           <li>Add option to stop drive if possible</li>
           <li>Show unformatted drives and drives without media</li>
