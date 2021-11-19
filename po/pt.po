@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-02 19:06+0000\n"
-"PO-Revision-Date: 2021-07-07 06:53+0000\n"
+"PO-Revision-Date: 2021-11-17 21:16+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -1075,10 +1075,9 @@ msgid "Merge"
 msgstr "Juntar"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Não foi possível determinar a localização original de \"%s\" "
+msgstr "Não foi possível determinar a localização original de \"%s\""
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
@@ -1954,10 +1953,9 @@ msgid "Type Path"
 msgstr "Escreva um caminho"
 
 #: libwidgets/View/SearchResults.vala:75
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s)"
 
 #: libwidgets/View/SearchResults.vala:88
 msgid "More Results …"
