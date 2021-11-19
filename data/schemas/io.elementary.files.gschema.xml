@@ -181,11 +181,17 @@
       <description>The column width preferred by the  Miller Column View.</description>
     </key>
   </schema>
+
   <schema path="/io/elementary/files/file-chooser/" id="io.elementary.files.file-chooser">
-    <key type ="s" name="last-folder-uri">
+    <key type="s" name="last-folder-uri">
       <default>''</default>
       <summary>Last folder uri</summary>
       <description>Uri of the last folder shown by the filechooser</description>
+    </key>
+    <key type="(ii)" name="window-size">
+      <default>(800, 450)</default>
+      <summary>Window size</summary>
+      <description>Most recent window size (width, height)</description>
     </key>
   </schema>
 
