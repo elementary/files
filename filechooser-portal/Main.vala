@@ -61,7 +61,7 @@ public class Files.FileChooserPortal : Object {
             dialog.select_multiple = options["multiple"].get_boolean ();
         }
 
-        if ("acccept_label" in options) {
+        if ("accept_label" in options) {
             dialog.accept_label = options["accept_label"].get_string ();
         } else {
             dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");

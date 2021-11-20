@@ -337,7 +337,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         new_folder_button.parent.remove (new_folder_button);
         header.pack_end (new_folder_button);
 
-        /* hide the revealer when not searching, for this work:
+        /* hide the revealer when not searching, for this to work:
          * 1. we need to set reveal_child during realize.
          * 2. we need to connect the signals after we set `reveal_child`
          */
@@ -379,7 +379,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             "browse_files_swin/browse_files_tree_view"
         );
 
-        /* remove extra unneded widgets */
+        /* remove extra unneeded widgets */
         view_stack.parent.remove (find_child_by_name (view_stack.parent, "preview_box"));
         chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
     }
