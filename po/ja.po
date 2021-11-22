@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-02 19:06+0000\n"
-"PO-Revision-Date: 2021-09-30 09:22+0000\n"
+"PO-Revision-Date: 2021-11-22 03:59+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1396,25 +1396,19 @@ msgstr "ファイルをゴミ箱に移動または削除できませんでした
 
 #: libcore/marlin-file-operations.c:829
 msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
-"読み取り専用ファイルシステムにあるファイルをゴミ箱に移動したり削除したりする"
-"ことはできません。"
+msgstr "読み取り専用ファイルシステムにあるファイルは、ゴミ箱に移動したり削除したりできません。"
 
 #: libcore/marlin-file-operations.c:832
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
-"書き込み権限を持っていないフォルダーにあるファイルをゴミ箱に移動したり削除し"
-"たりすることはできません。"
+msgstr "書き込み権限を持っていないフォルダーにあるファイルは、ゴミ箱に移動したり削除したりできません。"
 
 #: libcore/marlin-file-operations.c:835
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
-"書き込み権限を持っていないフォルダーをゴミ箱に移動したり削除したりすることは"
-"できません。"
+msgstr "書き込み権限を持っていないフォルダーは、ゴミ箱に移動したり削除したりできません。"
 
 #: libcore/marlin-file-operations.c:837
 msgid "Cannot move file to trash. Try to delete it immediately?"
