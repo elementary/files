@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-23 20:57+0000\n"
+"POT-Creation-Date: 2021-11-23 21:52+0000\n"
 "PO-Revision-Date: 2016-08-25 14:39+0000\n"
 "Last-Translator: Nate <natejms@outlook.com>\n"
 "Language-Team: French (Canada) <fr_CA@li.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Size:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:174
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr ""
@@ -826,7 +826,7 @@ msgid "Execute"
 msgstr ""
 
 #: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:218 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr ""
@@ -859,89 +859,89 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV sécurisé (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:130
 msgid "Server Details"
 msgstr "Détails du serveur"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:137
 #, fuzzy
 msgid "Server:"
 msgstr "_Serveur :"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:145
 #, fuzzy
 msgid "Port:"
 msgstr "_Port:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:180
 #, fuzzy
 msgid "Share:"
 msgstr "P_artage :"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:183
 msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:187
 #, fuzzy
 msgid "Folder:"
 msgstr "_Dossier:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:189
 msgid "User Details"
 msgstr "Détails de l'utilisateur"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:194
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:196
 #, fuzzy
 msgid "Domain name:"
 msgstr "_Nom de domaine:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:201
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:203
 #, fuzzy
 msgid "User name:"
 msgstr "_Nom d'utilisateur :"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:211
 #, fuzzy
 msgid "Password:"
 msgstr "_Mot de passe :"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:213
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Se souvenir de ce mot de passe"
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:221
 #, fuzzy
 msgid "Connect"
 msgstr "Se connecter"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:228
 msgid "Continue"
 msgstr "Continuer"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:279
 #, fuzzy
 msgid "Connecting…"
 msgstr "Connexion en cours…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:387
 msgid "Please verify your user details."
 msgstr "Veuillez vérifier vos informations d'utilisateur"
 
