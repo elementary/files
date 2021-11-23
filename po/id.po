@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
+"POT-Creation-Date: 2021-11-23 20:57+0000\n"
 "PO-Revision-Date: 2020-11-16 11:15+0000\n"
 "Last-Translator: deovaliandro <mdv16h@student.unhas.ac.id>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
@@ -665,14 +665,14 @@ msgstr "Hapus semua barang secara permanen dari Tong Sampah?"
 msgid "Permanently Delete Trash"
 msgstr "Hapus semua barang secara permanen dari Tong Sampah?"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Hapus semua barang secara permanen dari Tong Sampah pada kaitan ini?"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "Penanda Taut"
 
@@ -736,7 +736,7 @@ msgid "Open the system security and privacy settings app"
 msgstr "Buka aplikasi pengaturan keamanan dan privasi sistem"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Cari atau Ketik Jalur"
 
@@ -760,11 +760,11 @@ msgstr "Sebelumnya"
 msgid "Next"
 msgstr "Selanjutnya"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "Muat ulang folder ini"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "Mencari…"
 
@@ -1936,30 +1936,30 @@ msgstr "Navigasikan ke %s"
 msgid "Go to %s"
 msgstr "Tuju %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 #, fuzzy
 msgid "Type Path"
 msgstr "Ketik path"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, fuzzy, c-format
 #| msgid "%s (%s, %s)"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "Dalam Folder ini"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "Di bawah Folder Ini"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 #, fuzzy
 #| msgid "Recently used"
 msgid "Recently Used"
