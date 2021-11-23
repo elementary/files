@@ -136,10 +136,20 @@ namespace Files.View.Chrome {
             mnemonic_activate.connect (on_mnemonic_activate);
 
             events |= Gdk.EventMask.BUTTON_PRESS_MASK |
-                      Gdk.EventMask.BUTTON_RELEASE_MASK;
+                      Gdk.EventMask.BUTTON_RELEASE_MASK |
+                      Gdk.EventMask.BUTTON_MOTION_MASK;
 
             button_press_event.connect (on_button_press_event);
             button_release_event.connect (on_button_release_event);
+            motion_notify_event.connect (() => {
+                if (timeout > 0) {
+                    Source.remove (timeout);
+                    timeout = 0;
+                    active = false;
+                }
+
+                return false;
+            });
         }
 
         public override void show_all () {
