@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
+"POT-Creation-Date: 2021-11-23 20:57+0000\n"
 "PO-Revision-Date: 2021-04-26 13:46+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -692,14 +692,14 @@ msgstr "حذف جميع الملفات في سلة المهملات بشكل ن�
 msgid "Permanently Delete Trash"
 msgstr "حذف جميع الملفات في سلة المهملات بشكل نهائي؟"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
 msgstr "حذف كل الأشياء نهائيا من المهملات على هذا القرص؟"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "المؤشرات"
 
@@ -763,7 +763,7 @@ msgid "Open the system security and privacy settings app"
 msgstr "فتح إعدادات الخصوصية والأمان للنظام"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "البحث أو كتابة المسار"
 
@@ -787,11 +787,11 @@ msgstr "السابق"
 msgid "Next"
 msgstr "التالي"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "إعادة تحميل المجلد"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "جاري البحث…"
 
@@ -2073,30 +2073,30 @@ msgstr "انتقل إلى %s"
 msgid "Go to %s"
 msgstr "إذهب إلى %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 #, fuzzy
 msgid "Type Path"
 msgstr "النّوع"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, fuzzy, c-format
 #| msgid "%s (%s, %s)"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr "المزيد من النتائج …"
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "في هذا المجلد"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "تحت هذا المجلد"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 #, fuzzy
 #| msgid "Recently used"
 msgid "Recently Used"
