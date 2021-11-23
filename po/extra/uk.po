@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-23 22:02+0000\n"
-"PO-Revision-Date: 2021-11-23 21:52+0000\n"
+"PO-Revision-Date: 2021-11-23 23:25+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -93,6 +93,8 @@ msgstr ""
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
+"Дозволено порожні паролі для віддалених з'єднань, напр. для SSH через "
+"приватний ключ"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:106
@@ -108,11 +110,11 @@ msgstr "Застосовано портал «Надіслати пошту» з
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr ""
+msgstr "Дозволено перетягування закладки безпосередньо під недавню закладку"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr ""
+msgstr "Прибрано непридатну для мети перетягування закладку Кошик"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 #: data/io.elementary.files.appdata.xml.in.in:211
