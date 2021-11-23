@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-23 21:52+0000\n"
+"POT-Creation-Date: 2021-11-23 22:02+0000\n"
 "PO-Revision-Date: 2017-08-22 19:27+0000\n"
 "Last-Translator: anjelo del carmen <anjelo2009@live.com>\n"
 "Language-Team: Tagalog <https://weblate.elementary.io/projects/files/files/"
@@ -544,7 +544,7 @@ msgstr ""
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Tahanan"
 
@@ -605,15 +605,15 @@ msgstr "Hindi na umiiral ang naka-select na file"
 msgid "View the home folder"
 msgstr "Hindi maiparse ang desktop file na:  %s"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "Tignan ang listahan ng mga files na madalas gamitin"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Basura"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "Buksan ang Basura"
 

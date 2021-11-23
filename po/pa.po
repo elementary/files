@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-23 21:52+0000\n"
+"POT-Creation-Date: 2021-11-23 22:02+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -525,7 +525,7 @@ msgstr "ਇਸਦੀ ਬਜਾਇ ਚੋਣ ਨੂੰ ਕੱਟਿਆ ਜਾ ਰ
 msgid "Cannot paste files here"
 msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੇ ਪੇਸਟ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "ਮੁੱਖ/ਘਰ"
 
@@ -585,15 +585,15 @@ msgstr "ਚੁਣੀ ਹੋਈ ਫ਼ਾਇਲ ਮੌਜੂਦ ਨਹੀਂ ਰ�
 msgid "View the home folder"
 msgstr "ਮੁੱਖ ਫ਼ੋਲਡਰ ਵੇਖੋ"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "ਹਾਲ ਹੀ ਵਿੱਚ ਵਰਤੀਆਂ ਫ਼ਾਇਲਾਂ ਦੀ ਲਿਸਟ ਵੇਖੋ"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "ਰੱਦੀ ਟੋਕਰੀ"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "ਰੱਦੀ ਟੋਕਰੀ ਖੋਲ੍ਹੋ"
 

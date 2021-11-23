@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-23 21:52+0000\n"
+"POT-Creation-Date: 2021-11-23 22:02+0000\n"
 "PO-Revision-Date: 2021-10-15 22:35+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -536,7 +536,7 @@ msgstr "Namiesto toho sa vybrané položky vystrihnú"
 msgid "Cannot paste files here"
 msgstr "Do tohoto umiestnenia sa nedajú vložiť súbory"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Domov"
 
@@ -596,15 +596,15 @@ msgstr "Vybraný súbor už neexistuje."
 msgid "View the home folder"
 msgstr "Zobraziť priečinok Domov"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "Zobraziť zoznam nedávno použitých súborov"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Kôš"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "Otvoriť kôš"
 

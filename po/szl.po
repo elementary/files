@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-23 21:52+0000\n"
+"POT-Creation-Date: 2021-11-23 22:02+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -531,7 +531,7 @@ msgstr "Wytnij ôbiōr"
 msgid "Cannot paste files here"
 msgstr "Niy idzie wrazić sam zbiorōw"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Katalog dōmowy"
 
@@ -593,15 +593,15 @@ msgstr "Ôbrany zbiōr już niy istniyje."
 msgid "View the home folder"
 msgstr "Niy szło stworzić katalogu"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "Zobocz wykoz niydowno używanych zbiorōw"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Hasiok"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "Ôtwōrz hasiok"
 
