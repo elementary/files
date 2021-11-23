@@ -30,6 +30,11 @@
   <releases>
     <release version="6.1.0" date="2021-10-29" urgency="medium">
       <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix pasting of selected pathbar text into another window using middle-click</li>
+          <li>Allow blank passwords for remote connections, e.g. for SSH via a private key</li>
+        </ul>
         <p>Improvements:</p>
         <ul>
           <li>Use "Send Mail" portal instead of contract</li>
@@ -42,7 +47,12 @@
           <li>Fix sidebar showing both drive and volume for same device</li>
           <li>Fix sidebar showing SSH servers in both Storage and Network sections</li>
         </ul>
-        <p>Other updates:</p>
+        <p>Fixes:</p>
+        <ul>
+          <li>Allow dropping bookmark directly below the Recent bookmark</li>
+          <li>Do not show unusable drop target below the Trash bookmark</li>
+        </ul>
+        <p>Minor updates:</p>
         <ul>
           <li>Updated translations</li>
         </ul>
