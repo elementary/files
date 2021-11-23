@@ -39,6 +39,11 @@
         <ul>
           <li>Use "Send Mail" portal instead of contract</li>
         </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Allow dropping bookmark directly below the Recent bookmark</li>
+          <li>Do not show unusable drop target below the Trash bookmark</li>
+        </ul>
         <p>Minor updates:</p>
         <ul>
           <li>Updated translations</li>
