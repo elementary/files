@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
+"POT-Creation-Date: 2021-11-23 22:02+0000\n"
 "PO-Revision-Date: 2021-06-15 20:52+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
@@ -152,7 +152,7 @@ msgstr "No se pudo determinar"
 msgid "Size:"
 msgstr "Tamaño:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:174
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Tipo:"
@@ -528,7 +528,7 @@ msgstr "Se cortó la selección en su lugar"
 msgid "Cannot paste files here"
 msgstr "No se pueden pegar archivos aquí"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Carpeta personal"
 
@@ -588,15 +588,15 @@ msgstr "El archivo seleccionado ya no existe."
 msgid "View the home folder"
 msgstr "Ver la carpeta personal"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "Ver la lista de archivos usados recientemente"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Papelera"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "Abrir papelera"
 
@@ -664,12 +664,12 @@ msgstr "Eliminar toda la papelera de forma permanente"
 msgid "Permanently Delete Trash"
 msgstr "Eliminar toda la papelera de forma permanente"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Eliminar la papelera de forma permanente en este soporte"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "Marcadores"
 
@@ -731,7 +731,7 @@ msgid "Open the system security and privacy settings app"
 msgstr "Abrir la configuración de seguridad y privacidad del sistema"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Busque o escriba la ruta"
 
@@ -755,11 +755,11 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Siguiente"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "Cargar de nuevo esta carpeta"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "Buscando…"
 
@@ -832,7 +832,7 @@ msgid "Execute"
 msgstr "Ejecución"
 
 #: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:218 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Cancelar"
@@ -865,79 +865,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV seguro (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:130
 msgid "Server Details"
 msgstr "Detalles del servidor"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr "Nombre del servidor o dirección IP"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:137
 msgid "Server:"
 msgstr "Servidor:"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:145
 msgid "Port:"
 msgstr "Puerto:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server (Optional)"
 msgstr "Nombre del recurso compartido en el servidor (opcional)"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:180
 msgid "Share:"
 msgstr "Recurso compartido:"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:183
 msgid "Path of shared folder on server (Optional)"
 msgstr "Ruta de la carpeta compartida en el servidor (opcional)"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:187
 msgid "Folder:"
 msgstr "Carpeta:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:189
 msgid "User Details"
 msgstr "Detalles del usuario"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:194
 msgid "Name of Windows domain"
 msgstr "Nombre del dominio de Windows"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:196
 msgid "Domain name:"
 msgstr "Nombre del dominio:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:201
 msgid "Name of user on server"
 msgstr "Nombre de usuario en el servidor"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:203
 msgid "User name:"
 msgstr "Nombre de usuario:"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:211
 msgid "Password:"
 msgstr "Contraseña:"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:213
 msgid "Remember this password"
 msgstr "Recordar esta contraseña"
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:221
 msgid "Connect"
 msgstr "Conectar"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:228
 msgid "Continue"
 msgstr "Continuar"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:279
 msgid "Connecting…"
 msgstr "Conectando…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:387
 msgid "Please verify your user details."
 msgstr "Compruebe sus datos de usuario."
 
@@ -1953,29 +1953,29 @@ msgstr "Navegar a %s"
 msgid "Go to %s"
 msgstr "Ir a %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr "Tipo de ruta"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, fuzzy, c-format
 #| msgid "%s (%s, %s)"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr "Más resultados…"
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "En esta carpeta"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "En esta carpeta"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Utilizados recientemente"
 

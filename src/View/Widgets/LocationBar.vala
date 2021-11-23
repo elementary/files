@@ -287,6 +287,10 @@ namespace Files.View.Chrome {
         }
 
         private void check_home () {
+            if (!((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+                return;
+            }
+
             try {
                 bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
             } catch (Error e) {
