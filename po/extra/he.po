@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-23 22:02+0000\n"
-"PO-Revision-Date: 2021-11-03 17:36+0000\n"
+"PO-Revision-Date: 2021-11-24 07:24+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -76,12 +76,13 @@ msgstr "תיקונים:"
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
-msgstr ""
+msgstr "תוקנה הדבקת הטקסט הנבחר בסרגל הנתיב לחלון אחר בלחיצה כפולה"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
+"מעתה מותר להשתמש בססמאות ריקות לחיבורים מרוחקים, למשל עבור SSH דרך מפתח פרטי"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:106
@@ -97,11 +98,11 @@ msgstr "להשתמש בשער „שליחת דוא״ל” במקום בחוזה"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr ""
+msgstr "ניתן לגרור סימניה ישירות מתחת לסימניה האחרונה"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr ""
+msgstr "לא יוצג יעד גרירה בלתי שמיש מתחת לסימניית האשפה"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 #: data/io.elementary.files.appdata.xml.in.in:211

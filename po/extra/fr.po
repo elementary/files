@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-23 22:02+0000\n"
-"PO-Revision-Date: 2021-11-03 18:56+0000\n"
+"PO-Revision-Date: 2021-11-24 10:25+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -83,11 +83,15 @@ msgstr "Corrections :"
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
+"Correction du collage du texte de chemin sélectionné dans une autre fenêtre "
+"en utilisant le clic du milieu"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
+"Autorisation des mots de passe vides pour les connexions à distance, par ex. "
+"pour les connexions SSH avec une clé privée"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:106
@@ -104,10 +108,14 @@ msgstr "Utilisation du portail « Envoyer un e-mail » au lieu du contrat"
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr ""
+"Il est désormais possible de déposer un favoris directement sous le favoris "
+"récent"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr ""
+"Les zones de dépôt inutilisables sous le favoris Corbeille sont désormais "
+"masqués"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 #: data/io.elementary.files.appdata.xml.in.in:211
