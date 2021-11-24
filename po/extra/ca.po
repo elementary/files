@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-23 22:02+0000\n"
-"PO-Revision-Date: 2021-11-04 16:01+0000\n"
+"PO-Revision-Date: 2021-11-24 10:25+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,11 +85,15 @@ msgstr "Correccions:"
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
+"Correcció de l'enganxament del text de la barra de camí seleccionada a una "
+"altra finestra fent clic amb el botó mitjà"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
+"Permet contrasenyes en blanc per a connexions remotes, p. ex. per a SSH "
+"mitjançant una clau privada."
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:106
@@ -106,10 +110,13 @@ msgstr "Useu el portal \"Envia missatges\" en lloc del contracte"
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr ""
+"Permet deixar anar el marcador directament a sota del marcador de Recents."
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr ""
+"No es mostra l'objectiu de desplegament inutilitzable a sota de l'adreça "
+"d'interès de la Paperera."
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 #: data/io.elementary.files.appdata.xml.in.in:211
