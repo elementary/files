@@ -23,7 +23,6 @@
 public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private Files.BookmarkList bookmark_list;
     private unowned Files.TrashMonitor trash_monitor;
-    private SidebarItemInterface? trash_bookmark;
 
     public Files.SidebarInterface sidebar {get; construct;}
 
@@ -73,7 +72,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             return null;
         }
 
-        var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
+        var row = new BookmarkRow (label, uri, gicon, this, pinned, permanent);
         if (index >= 0) {
             insert (row, index);
         } else {
@@ -122,12 +121,16 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 _("Home"),
                 home_uri,
                 new ThemedIcon (Files.ICON_HOME),
+                true,
                 true
             );
 
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the home folder"))
             );
+
+            row.can_insert_before = false;
+            row.can_insert_after = false;
         }
 
         if (Files.FileUtils.protocol_is_supported ("recent")) {
@@ -135,12 +138,16 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 _(Files.PROTOCOL_NAME_RECENT),
                 Files.RECENT_URI,
                 new ThemedIcon (Files.ICON_RECENT),
+                true,
                 true
             );
 
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>R"}, _("View the list of recently used files"))
             );
+
+            row.can_insert_before = false;
+            row.can_insert_after = true;
         }
 
         foreach (unowned Files.Bookmark bm in bookmark_list.list) {
@@ -152,23 +159,24 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
 
         if (!Files.is_admin ()) {
-            trash_bookmark = add_bookmark (
+            row = add_bookmark (
                 _("Trash"),
                 _(Files.TRASH_URI),
                 trash_monitor.get_icon (),
                 true
             );
+
+            row.set_tooltip_markup (
+                Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
+            );
+
+            row.can_insert_before = true;
+            row.can_insert_after = false;
+
+            row.notify["is-empty"].connect (() => {
+                row.update_icon (trash_monitor.get_icon ());
+            });
         }
-
-        trash_bookmark.set_tooltip_markup (
-            Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
-        );
-
-        trash_monitor.notify["is-empty"].connect (() => {
-            if (trash_bookmark != null) {
-                trash_bookmark.update_icon (trash_monitor.get_icon ());
-            }
-        });
     }
 
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {
@@ -220,6 +228,10 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     }
 
     public SidebarItemInterface? get_item_at_index (int index) {
+        if (index < 0 || index > get_children ().length ()) {
+            return null;
+        }
+
         return (SidebarItemInterface?)(get_row_at_index (index));
     }
 

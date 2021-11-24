@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
+"POT-Creation-Date: 2021-11-23 22:02+0000\n"
 "PO-Revision-Date: 2021-09-30 09:22+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
@@ -158,7 +158,7 @@ msgstr "Не вдалося визначти"
 msgid "Size:"
 msgstr "Розмір:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:174
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Тип:"
@@ -537,7 +537,7 @@ msgstr "Натомість вирізаю виділене"
 msgid "Cannot paste files here"
 msgstr "Неможливо вставити файли сюди"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Домівка"
 
@@ -597,15 +597,15 @@ msgstr "Виділеного файлу більше не існує."
 msgid "View the home folder"
 msgstr "Переглянути домашню теку"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "Переглянути список нещодавніх файлів"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Смітник"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "Відкрити смітник"
 
@@ -671,12 +671,12 @@ msgstr "Остаточно видалити все зі смітника"
 msgid "Permanently Delete Trash"
 msgstr "Остаточно видалити сміття"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Остаточно видалити все зі смітника цього змонтованого носія"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "Закладки"
 
@@ -738,7 +738,7 @@ msgid "Open the system security and privacy settings app"
 msgstr "Відкрити застосунок налаштувань безпеки та приватності системи"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Шукати або ввести шлях"
 
@@ -762,11 +762,11 @@ msgstr "Попередній"
 msgid "Next"
 msgstr "Наступний"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "Оновити теку"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "Пошук…"
 
@@ -843,7 +843,7 @@ msgid "Execute"
 msgstr "Виконання"
 
 #: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:218 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Скасувати"
@@ -876,79 +876,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Захищений WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:130
 msgid "Server Details"
 msgstr "Подробиці про сервер"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:134
 msgid "Server name or IP address"
 msgstr "Назва сервера або IP-адреса"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:137
 msgid "Server:"
 msgstr "Сервер:"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:145
 msgid "Port:"
 msgstr "Порт:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:177
 msgid "Name of share on server (Optional)"
 msgstr "Назва спільного ресурсу на сервері (необов'язково)"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:180
 msgid "Share:"
 msgstr "Спільний ресурс:"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:183
 msgid "Path of shared folder on server (Optional)"
 msgstr "Шлях до спільної теки на сервері (необов'язково)"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:187
 msgid "Folder:"
 msgstr "Тека:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:189
 msgid "User Details"
 msgstr "Відомості про користувача"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:194
 msgid "Name of Windows domain"
 msgstr "Назва домену Windows"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:196
 msgid "Domain name:"
 msgstr "Назва домену:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:201
 msgid "Name of user on server"
 msgstr "Ім'я користувача на сервері"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:203
 msgid "User name:"
 msgstr "Ім'я користувача:"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:211
 msgid "Password:"
 msgstr "Пароль:"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:213
 msgid "Remember this password"
 msgstr "Запам'ятати цей пароль"
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:221
 msgid "Connect"
 msgstr "З'єднатись"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:228
 msgid "Continue"
 msgstr "Продовжити"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:279
 msgid "Connecting…"
 msgstr "З'єднання…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:387
 msgid "Please verify your user details."
 msgstr "Перевірте особисті дані користувача."
 
@@ -1973,28 +1973,28 @@ msgstr "Перейти до %s"
 msgid "Go to %s"
 msgstr "Перейти до %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr "Введіть шлях"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr "Більше результатів …"
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "В цій теці"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "Під цією текою"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Нещодавні"
 
