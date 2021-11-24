@@ -20,12 +20,15 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-// Only show for a Drive that has no volumes (otherwise display volumes as VolumeRows)
+// For a Drive that has no volumes (otherwise display volumes as VolumeRows)
 // This covers:
 // unformatted drives,
 // drives without partitions,
 // drives with removeable media that have no media inserted,
 // USB sticks that have been ejected but not unplugged.
+
+// For now these drives are not shown.
+//TODO Add functionality to format/partition such drives.
 
 public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
     public override bool is_mounted {
@@ -47,13 +50,12 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
             uuid: _uuid,
             drive: _drive
         );
-
-        no_show_all = true;
-        visible = false;
-        set_visibility ();
     }
 
     construct {
+        no_show_all = true;
+        visible = false;
+        set_visibility ();
         sort_key = drive.get_sort_key ();
         if (sort_key == null) {
             sort_key = MountableType.EMPTY_DRIVE.to_string () + custom_name;
@@ -90,6 +92,9 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     private void set_visibility () {
+        return;
+#if 0
+        // When formatting/partitioning functionality is added the drive can be shown as follows.
         // Wait in case volumes are in the process of being detected. This can take some time.
         Timeout.add (2000, () => {
             if (!drive.has_media () || !drive.has_volumes ()) {
@@ -107,6 +112,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
 
             return false;
         });
+#endif
     }
 
     protected override async void add_mountable_tooltip () {
