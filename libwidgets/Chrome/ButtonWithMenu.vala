@@ -148,7 +148,7 @@ namespace Files.View.Chrome {
                     active = false;
                 }
 
-                return false;
+                return Gdk.EVENT_PROPAGATE;
             });
         }
 
