@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-23 22:02+0000\n"
-"PO-Revision-Date: 2021-11-03 08:52+0000\n"
+"PO-Revision-Date: 2021-11-24 08:14+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -87,11 +87,15 @@ msgstr "Poprawki:"
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
+"Naprawiono wklejanie tekstu zaznaczonej ścieżki do innego okna przy użyciu "
+"środkowego przycisku myszy"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
+"Dozwolono puste hasła dla połączeń zdalnych, n.p. dla SSH przez klucz "
+"prywatny"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:106
@@ -107,11 +111,11 @@ msgstr "Użyj portal „Wyślij wiadomość” zamiast kontraktu"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr ""
+msgstr "Dozwolono upuszczać zakładki dokładnie poniżej zakładki Ostatnie"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr ""
+msgstr "Schowano nieużywane cele upuszczenia poniżej zakładki Kosz"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 #: data/io.elementary.files.appdata.xml.in.in:211

@@ -1,7 +1,7 @@
 app-id: io.elementary.Files.PortalTester
-runtime: org.gnome.Platform
-runtime-version: '3.38'
-sdk: org.gnome.Sdk
+runtime: io.elementary.Platform
+runtime-version: '6'
+sdk: io.elementary.Sdk
 command: io.elementary.Files.PortalTester
 finish-args:
   # X11 + XShm access

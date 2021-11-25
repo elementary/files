@@ -3,14 +3,15 @@ libexec_dir = join_paths(get_option('prefix'), get_option ('libexecdir'))
 executable(
     'io.elementary.files.xdg-desktop-portal',
     'ExternalWindow.vala',
+    'FileChooserChoice.vala',
     'FileChooserDialog.vala',
-    'LegacyFileChooserDialog.vala',
     'Main.vala',
 
     dependencies : [
         pantheon_files_widgets_dep,
         dependency('gdk-x11-3.0'),
         dependency('gdk-wayland-3.0'),
+        handy_dep,
         project_config_dep
     ],
     install: true,
