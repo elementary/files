@@ -1990,7 +1990,7 @@ namespace Files {
             properties_menuitem.action_name = "common.properties";
 
             Gtk.MenuItem? select_all_menuitem = null;
-            Gtk.MenuItem? unselect_all_menuitem = null;
+            Gtk.MenuItem? deselect_all_menuitem = null;
             Gtk.MenuItem? invert_selection_menuitem = null;
             if (!all_selected) {
                 select_all_menuitem = new Gtk.MenuItem () {
@@ -2001,12 +2001,12 @@ namespace Files {
                     select_all_menuitem.action_name
                 ));
             } else {
-                unselect_all_menuitem = new Gtk.MenuItem () {
+                deselect_all_menuitem = new Gtk.MenuItem () {
                     action_name = "common.select-all"
                 };
-                unselect_all_menuitem.add (new Granite.AccelLabel.from_action_name (
-                    _("Unselect All"),
-                    unselect_all_menuitem.action_name
+                deselect_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+                    _("Deselect All"),
+                    deselect_all_menuitem.action_name
                 ));
             }
 
@@ -2060,8 +2060,8 @@ namespace Files {
                         menu.add (select_all_menuitem);
                     }
 
-                    if (unselect_all_menuitem != null) {
-                        menu.add (unselect_all_menuitem);
+                    if (deselect_all_menuitem != null) {
+                        menu.add (deselect_all_menuitem);
                     }
 
                     if (invert_selection_menuitem != null) {
@@ -2085,8 +2085,8 @@ namespace Files {
                         menu.add (select_all_menuitem);
                     }
 
-                    if (unselect_all_menuitem != null) {
-                        menu.add (unselect_all_menuitem);
+                    if (deselect_all_menuitem != null) {
+                        menu.add (deselect_all_menuitem);
                     }
 
                     if (invert_selection_menuitem != null) {
@@ -2138,8 +2138,8 @@ namespace Files {
                             menu.add (select_all_menuitem);
                         }
 
-                        if (unselect_all_menuitem != null) {
-                            menu.add (unselect_all_menuitem);
+                        if (deselect_all_menuitem != null) {
+                            menu.add (deselect_all_menuitem);
                         }
 
                         if (invert_selection_menuitem != null) {
