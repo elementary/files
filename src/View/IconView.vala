@@ -244,6 +244,7 @@ namespace Files {
                         y < rect.y ||
                         y >= rect.y + ((Files.TextRenderer) cell_renderer).text_height
                     );
+                    zone = is_on_blank ? zone : ClickZone.NAME;
                     if (is_on_blank && rubberband) {
                         /* Fake location outside centre bottom of item for rubberbanding because IconView
                          * unlike TreeView will not rubberband if clicked on an item. */
