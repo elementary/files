@@ -3427,8 +3427,8 @@ namespace Files {
 
                             /* determine whether should activate on key release (unless pointer moved)*/
                             /* Only activate single files with unmodified button, when not on blank */
-                            if (no_mods && one_or_less && !on_blank) {
-                                should_activate = on_directory || double_click_event;
+                            if (no_mods && one_or_less) {
+                                should_activate = (on_directory && !on_blank) || double_click_event;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
@@ -3444,6 +3444,7 @@ namespace Files {
                                     unselect_all ();
                                 }
 
+                                select_path (path);
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
