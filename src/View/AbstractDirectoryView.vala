@@ -2000,6 +2000,16 @@ namespace Files {
                     _("Select All"),
                     select_all_menuitem.action_name
                 ));
+
+                if (get_selected_files () != null) {
+                    invert_selection_menuitem = new Gtk.MenuItem () {
+                        action_name = "selection.invert-selection"
+                    };
+                    invert_selection_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("Invert Selection"),
+                        invert_selection_menuitem.action_name
+                    ));
+                }
             } else {
                 deselect_all_menuitem = new Gtk.MenuItem () {
                     action_name = "common.select-all"
@@ -2011,14 +2021,6 @@ namespace Files {
             }
 
             if (get_selected_files () != null) { // Add selection actions
-                invert_selection_menuitem = new Gtk.MenuItem () {
-                    action_name = "selection.invert-selection"
-                };
-                invert_selection_menuitem.add (new Granite.AccelLabel.from_action_name (
-                    _("Invert Selection"),
-                    invert_selection_menuitem.action_name
-                ));
-
                 var cut_menuitem = new Gtk.MenuItem ();
                 cut_menuitem.add (new Granite.AccelLabel (
                     _("Cut"),
