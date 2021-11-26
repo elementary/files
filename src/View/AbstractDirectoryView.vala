@@ -190,6 +190,7 @@ namespace Files {
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
+        protected bool should_select = false;
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
@@ -3378,8 +3379,8 @@ namespace Files {
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
-
-            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY); //Only rubberband with primary button
+            //Only rubberband with primary button
+            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY);
             click_path = path;
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -3405,6 +3406,7 @@ namespace Files {
             bool result = false; // default false so events get passed to Window
             should_activate = false;
             should_deselect = false;
+            should_select = false;
             should_scroll = true;
 
             /* Handle all selection and deselection explicitly in the following switch statement */
@@ -3424,8 +3426,8 @@ namespace Files {
                             should_deselect = only_control_pressed && path_selected;
 
                             /* determine whether should activate on key release (unless pointer moved)*/
-                            // update_selected_files_and_menu ();
-                            if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
+                            /* Only activate single files with unmodified button, when not on blank */
+                            if (no_mods && one_or_less && !on_blank) {
                                 should_activate = on_directory || double_click_event;
                             }
 
@@ -3434,12 +3436,14 @@ namespace Files {
                              * the item is unselected. */
                             if (!no_mods || (on_blank && !path_selected)) {
                                 result = only_shift_pressed && handle_multi_select (path);
+                                // Have to select on button release because IconView, unlike TreeView,
+                                // will not both select and rubberband
+                                should_select = true;
                             } else {
                                 if (no_mods && !path_selected) {
                                     unselect_all ();
                                 }
 
-                                select_path (path);
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
@@ -3506,6 +3510,7 @@ namespace Files {
                             if (!path_selected && no_mods) {
                                 unselect_all ();
                             }
+
                             select_path (path); /* Note: secondary click does not toggle selection */
                             break;
 
@@ -3531,7 +3536,6 @@ namespace Files {
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
             unblock_drag_and_drop ();
-
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
@@ -3564,6 +3568,13 @@ namespace Files {
                         update_selected_files_and_menu ();
                         return GLib.Source.REMOVE;
                     });
+                } else if (should_select && click_path != null) {
+                    select_path (click_path);
+                    /* Only need to update selected files if changed by this handler */
+                    Idle.add (() => {
+                        update_selected_files_and_menu ();
+                        return GLib.Source.REMOVE;
+                    });
                 } else if (event.button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
                 }
@@ -3571,6 +3582,7 @@ namespace Files {
 
             should_activate = false;
             should_deselect = false;
+            should_select = false;
             click_path = null;
             return false;
         }
