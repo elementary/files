@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-23 22:02+0000\n"
-"PO-Revision-Date: 2021-11-06 06:03+0000\n"
+"PO-Revision-Date: 2021-11-27 11:08+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,12 +83,12 @@ msgstr "Düzeltmeler:"
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:106
@@ -104,11 +104,11 @@ msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 #: data/io.elementary.files.appdata.xml.in.in:211
