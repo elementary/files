@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-29 11:16+0000\n"
-"PO-Revision-Date: 2021-11-23 23:25+0000\n"
+"PO-Revision-Date: 2021-11-29 14:26+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -110,7 +110,7 @@ msgstr "Застосовано портал «Надіслати пошту» з
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Add file filters and new folder options to Filechooser portal"
-msgstr ""
+msgstr "Додано фільтри файлів і нові опції теки до порталу Filechooser"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Allow dropping bookmark directly below the Recent bookmark"
