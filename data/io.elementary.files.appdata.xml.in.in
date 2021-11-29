@@ -38,6 +38,7 @@
         <p>Improvements:</p>
         <ul>
           <li>Use "Send Mail" portal instead of contract</li>
+          <li>Add file filters and new folder options to Filechooser portal</li>
         </ul>
         <p>Fixes:</p>
         <ul>
