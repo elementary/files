@@ -1,3 +1,30 @@
+pantheon-files (6.1.0) bionic; urgency=medium
+
+  * Release 6.1.0 (#1897)
+  * Update translation files
+  * Update translation template
+  * Fix multiselect with rubberband (#1907)
+  * Added revealer to remember checkbutton in connect server dialog
+    (#1911)
+  * Update next release appdata after filechooser update (#1913)
+  * FileChooserDialog: use Gtk.CheckButton.with_label (#1912)
+  * filechooser-portal: Rewrite Dialog over Gtk.FileChooserWidget
+    (#1899)
+  * Inactivate browser button if dragged. (#1902)
+  * Use the elementary platforma and sdk for portal tester (#1900)
+  * Allow inserting bookmark after Recent (#1848)
+  * Allow blank password attempt when connecting with a user name
+    (#1832)
+  * Do not lose pathbar entry text if another window is focused (#1847)
+  * filechooser-portal: Check for flatpak-builder before providing a
+    build target (#1895)
+  * Fix empty trash context menu item when already empty (#1742)
+  * Focus more results (#1882)
+  * Add next release appdata for Send Mail portal; bump to v6.1 (#1883)
+  * Re-Adding "Send by Email" (#1822)
+
+ -- Cody Garver <cody@elementary.io>  Mon, 29 Nov 2021 20:58:02 +0000
+
 pantheon-files (6.0.4) bionic; urgency=medium
 
   * Release 6.0.4 (#1876)
