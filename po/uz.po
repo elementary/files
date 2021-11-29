@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 11:16+0000\n"
+"POT-Creation-Date: 2021-11-29 20:29+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -143,7 +143,7 @@ msgstr "Aniqlab bo'lmadi"
 msgid "Size:"
 msgstr "Hajmi:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:174
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Turi:"
@@ -822,7 +822,7 @@ msgid "Execute"
 msgstr "Ishga tushirish"
 
 #: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:218 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Bekor qilish"
@@ -855,79 +855,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Himoyalangan WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "Server ma'lumotlari"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "Server nomi yoki IP-manzili"
 
-#: libcore/ConnectServerDialog.vala:137
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Server:"
 
-#: libcore/ConnectServerDialog.vala:145
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:177
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "Serverdagi umumiy resursning nomi (zaruriy emas)"
 
-#: libcore/ConnectServerDialog.vala:180
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "Resurs:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "Serverdagi umumiy papkaga yo'nalish (zaruriy emas)"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "Papka:"
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "Foydalanuvchi ma'lumotlari"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "Windows domeni nomi"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "Domen:"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "Serverdagi foydalanuvchi nomi"
 
-#: libcore/ConnectServerDialog.vala:203
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "Foydalanuvchi nomi:"
 
-#: libcore/ConnectServerDialog.vala:211
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "Parol:"
 
-#: libcore/ConnectServerDialog.vala:213
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "Ushbu parolni eslab qolish"
 
-#: libcore/ConnectServerDialog.vala:221
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "Ulanish"
 
-#: libcore/ConnectServerDialog.vala:228
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "Davom etish"
 
-#: libcore/ConnectServerDialog.vala:279
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "Bog'lanmoqda…"
 
-#: libcore/ConnectServerDialog.vala:387
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "Foydalanuvchi ma'lumotlarini tekshiring."
 

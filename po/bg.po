@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 11:16+0000\n"
+"POT-Creation-Date: 2021-11-29 20:29+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -154,7 +154,7 @@ msgstr "Не може да бъде определено"
 msgid "Size:"
 msgstr "Размер:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:174
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Тип:"
@@ -870,7 +870,7 @@ msgid "Execute"
 msgstr "Изпълним"
 
 #: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:218 libcore/DndHandler.vala:105
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Отказ"
@@ -903,90 +903,90 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Сигурен WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "Подробности за сървъра"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:137
+#: libcore/ConnectServerDialog.vala:138
 #, fuzzy
 msgid "Server:"
 msgstr "Сървър:"
 
-#: libcore/ConnectServerDialog.vala:145
+#: libcore/ConnectServerDialog.vala:146
 #, fuzzy
 msgid "Port:"
 msgstr "Порт:"
 
-#: libcore/ConnectServerDialog.vala:177
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:180
+#: libcore/ConnectServerDialog.vala:181
 #, fuzzy
 msgid "Share:"
 msgstr "Споделено:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:188
 #, fuzzy
 msgid "Folder:"
 msgstr "Папка:"
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "Подробности за потребителя"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:195
 #, fuzzy
 msgid "Name of Windows domain"
 msgstr "Нов прозорец като администратор"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:197
 #, fuzzy
 msgid "Domain name:"
 msgstr "Име на домейн:"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:203
+#: libcore/ConnectServerDialog.vala:204
 #, fuzzy
 msgid "User name:"
 msgstr "_Потребителско име:"
 
-#: libcore/ConnectServerDialog.vala:211
+#: libcore/ConnectServerDialog.vala:212
 #, fuzzy
 msgid "Password:"
 msgstr "Парола:"
 
-#: libcore/ConnectServerDialog.vala:213
+#: libcore/ConnectServerDialog.vala:214
 #, fuzzy
 msgid "Remember this password"
 msgstr "Запомни паролата"
 
-#: libcore/ConnectServerDialog.vala:221
+#: libcore/ConnectServerDialog.vala:225
 #, fuzzy
 msgid "Connect"
 msgstr "_Свързване"
 
-#: libcore/ConnectServerDialog.vala:228
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "Продължаване"
 
-#: libcore/ConnectServerDialog.vala:279
+#: libcore/ConnectServerDialog.vala:283
 #, fuzzy
 msgid "Connecting…"
 msgstr "Свързване"
 
-#: libcore/ConnectServerDialog.vala:387
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "Моля, проверете Вашите потребителски детайли"
 
