@@ -1,5 +1,5 @@
 /*-
- * Copyright 2020 elementary LLC <https://elementary.io>
+ * Copyright 2020-2021 elementary LLC <https://elementary.io>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,84 +19,104 @@
  * Authored by: Corentin Noël <corentin@elementary.io>
  */
 
-private static bool opt_replace = false;
-private static bool show_version = false;
-
-private static GLib.MainLoop loop;
-
-private const GLib.OptionEntry[] ENTRIES = {
-    { "replace", 'r', 0, OptionArg.NONE, ref opt_replace, "Replace a running instance", null },
-    { "version", 0, 0, OptionArg.NONE, ref show_version, "Show program version.", null },
-    { null }
-};
-
 [DBus (name = "org.freedesktop.impl.portal.FileChooser")]
-public class Files.FileChooser : GLib.Object {
-    private GLib.DBusConnection connection;
+public class Files.FileChooserPortal : Object {
+    private static bool opt_replace = false;
+    private static bool show_version = false;
 
-    public FileChooser (GLib.DBusConnection connection) {
+    private DBusConnection connection;
+
+    private const OptionEntry[] ENTRIES = {
+        { "replace", 'r', 0, OptionArg.NONE, ref opt_replace, "Replace a running instance", null },
+        { "version", 0, 0, OptionArg.NONE, ref show_version, "Show program version.", null },
+        { null }
+    };
+
+    public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
     }
 
-    public async void open_file (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
-        var _results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
-        var dialog = new Files.FileChooserDialog (connection, handle, app_id, parent_window, title, options);
+    public async void open_file (
+        ObjectPath handle,
+        string app_id,
+        string parent_window,
+        string title,
+        HashTable<string, Variant> options,
+        out uint response,
+        out HashTable<string, Variant> results
+    ) throws DBusError, IOError {
+        var directory = "directory" in options && options["directory"].get_boolean ();
 
-        unowned GLib.Variant? directory_variant = options["directory"];
-        bool directory = false;
-        if (directory_variant != null && directory_variant.is_of_type (GLib.VariantType.BOOLEAN)) {
-            directory = directory_variant.get_boolean ();
+        var dialog = new FileChooserDialog (
+            directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN,
+            parent_window,
+            title
+        );
+
+        if ("modal" in options) {
+            dialog.modal = options["modal"].get_boolean ();
         }
-        dialog.action = directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN;
 
-        unowned GLib.Variant? multiple_variant = options["multiple"];
-        bool multiple = false;
-        if (multiple_variant != null && multiple_variant.is_of_type (GLib.VariantType.BOOLEAN)) {
-            multiple = multiple_variant.get_boolean ();
+        if ("multiple" in options) {
+            dialog.select_multiple = options["multiple"].get_boolean ();
         }
 
-        dialog.select_multiple = multiple;
-        unowned GLib.Variant? accept_label = options["accept_label"];
-        if (accept_label != null && accept_label.is_of_type (GLib.VariantType.STRING)) {
-            dialog.add_button (accept_label.get_string (), Gtk.ResponseType.OK);
+        if ("accept_label" in options) {
+            dialog.accept_label = options["accept_label"].get_string ();
         } else {
-            dialog.add_button (multiple ? _("Open") : _("Select"), Gtk.ResponseType.OK);
+            dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
         }
 
-        unowned GLib.Variant? modal_variant = options["modal"];
-        bool modal = true;
-        if (modal_variant != null && modal_variant.is_of_type (GLib.VariantType.BOOLEAN)) {
-            modal = modal_variant.get_boolean ();
-        }
+        if ("filters" in options) {
+            var filters = options["filters"].iterator ();
+            Variant filter_variant;
 
-        dialog.modal = modal;
-
-        handle_filters (dialog, options["filters"], options["current_filter"]);
-
-        unowned GLib.Variant? choices_variant = options["choices"];
-        if (choices_variant != null && choices_variant.is_of_type (new GLib.VariantType ("a(ssa(ss)s)"))) {
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-            for (size_t i = 0; i < choices_variant.n_children (); i++) {
-                var choice = choices_variant.get_child_value (i);
-                box.add (dialog.deserialize_choice (choice));
+            while ((filter_variant = filters.next_value ()) != null) {
+                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
+                dialog.add_filter (filter);
             }
-
-            dialog.set_extra_widget (box);
         }
 
-        uint _response = 2;
-        dialog.response.connect ((id) => {
-            switch ((Gtk.ResponseType) id) {
-                case Gtk.ResponseType.OK:
-                    _response = 0;
-                    _results["choices"] = dialog.choices;
-                    var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
-                    dialog.get_uris ().foreach ((uri) => {
-                        builder.add ("s", uri);
-                    });
+        if ("current_filter" in options) {
+            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
+        }
 
-                    _results["uris"] = builder.end ();
+        if ("choices" in options) {
+            var choices = options["choices"].iterator ();
+            Variant choice_variant;
+
+            while ((choice_variant = choices.next_value ()) != null) {
+                var choice = new FileChooserChoice.from_variant (choice_variant);
+                dialog.add_choice (choice);
+            }
+        }
+
+        try {
+            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
+        } catch (Error e) {
+            critical (e.message);
+        }
+
+        var _results = new HashTable<string, Variant> (str_hash, str_equal);
+        uint _response = 2;
+
+        dialog.destroy.connect (() => {
+            if (dialog.register_id != 0) {
+                connection.unregister_object (dialog.register_id);
+            }
+        });
+
+        dialog.response.connect ((id) => {
+            switch (id) {
+                case Gtk.ResponseType.OK:
+                    _results["uris"] = dialog.get_uris ();
+                    _results["choices"] = dialog.get_choices ();
                     _results["writable"] = !dialog.read_only;
+                    if (dialog.filter != null) {
+                        _results["current_filter"] = dialog.filter.to_gvariant ();
+                    }
+
+                    _response = 0;
                     break;
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
@@ -110,118 +130,94 @@ public class Files.FileChooser : GLib.Object {
             open_file.callback ();
         });
 
-        var granite_settings = Granite.Settings.get_default ();
-        var gtk_settings = Gtk.Settings.get_default ();
-
-        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-
-        granite_settings.notify["prefers-color-scheme"].connect (() => {
-            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-        });
-
         dialog.show_all ();
         yield;
+
         response = _response;
         results = _results;
     }
 
-    private void handle_filters (Files.FileChooserDialog dialog, GLib.Variant? filters_variant, GLib.Variant? current_filter_variant) {
-        var filters = new GLib.GenericArray<Gtk.FileFilter> ();
+    public async void save_file (
+        ObjectPath handle,
+        string app_id,
+        string parent_window,
+        string title,
+        HashTable<string, Variant> options,
+        out uint response,
+        out HashTable<string, Variant> results
+    ) throws DBusError, IOError {
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
+            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
+        };
 
-        if (filters_variant != null && filters_variant.is_of_type (new GLib.VariantType ("a(sa(us))"))) {
-            var iter = filters_variant.iterator ();
-            GLib.Variant variant;
-            while (iter.next ("@(sa(us))", out variant)) {
-                var filter = new Gtk.FileFilter.from_gvariant (variant);
+        if ("modal" in options) {
+            dialog.modal = options["modal"].get_boolean ();
+        }
+
+        if ("current_name" in options) {
+            dialog.set_current_name (options["current_name"].get_string ());
+        }
+
+        if ("current_folder" in options) {
+            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+        }
+
+        if ("current_file" in options) {
+            dialog.set_uri (FileUtils.sanitize_path (
+                options["current_file"].get_bytestring (),
+                Environment.get_home_dir ()
+            ));
+        }
+
+        if ("filters" in options) {
+            var filters = options["filters"].iterator ();
+            Variant filter_variant;
+
+            while ((filter_variant = filters.next_value ()) != null) {
+                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
                 dialog.add_filter (filter);
-                filters.add ((owned) filter);
             }
         }
 
-        if (current_filter_variant != null && current_filter_variant.is_of_type (new GLib.VariantType ("(sa(us))"))) {
-            var filter = new Gtk.FileFilter.from_gvariant (current_filter_variant);
+        if ("current_filter" in options) {
+            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
+        }
 
-            if (filters.length == 0) {
-              /* We are setting a single, unchangeable filter. */
-              dialog.set_filter (filter);
-            } else {
-                uint index;
-                if (filters.find_with_equal_func (
-                        filter,
-                        (a, b) => {
-                            return a.get_filter_name () == b.get_filter_name ();
-                        },
-                        out index
-                    )) {
-                    unowned Gtk.FileFilter f = filters.get (index);
-                    dialog.set_filter (f);
-                } else {
-                    warning ("current file filter must be present in filters list when list is nonempty");
-                }
+        if ("choices" in options) {
+            var choices = options["choices"].iterator ();
+            Variant choice_variant;
+
+            while ((choice_variant = choices.next_value ()) != null) {
+                var choice = new FileChooserChoice.from_variant (choice_variant);
+                dialog.add_choice (choice);
             }
         }
-    }
 
-    public async void save_file (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
-        var _results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
-        var dialog = new Files.FileChooserDialog (connection, handle, app_id, parent_window, title, options);
-        dialog.action = Gtk.FileChooserAction.SAVE;
-
-        unowned GLib.Variant? modal_variant = options["modal"];
-        bool modal = true;
-        if (modal_variant != null && modal_variant.is_of_type (GLib.VariantType.BOOLEAN)) {
-            modal = modal_variant.get_boolean ();
-        }
-        dialog.modal = modal;
-
-        handle_filters (dialog, options["filters"], options["current_filter"]);
-
-        unowned GLib.Variant? choices_variant = options["choices"];
-        if (choices_variant != null && choices_variant.is_of_type (new GLib.VariantType ("a(ssa(ss)s)"))) {
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-            for (size_t i = 0; i < choices_variant.n_children (); i++) {
-                var choice = choices_variant.get_child_value (i);
-                box.add (dialog.deserialize_choice (choice));
-            }
-
-            dialog.set_extra_widget (box);
+        try {
+            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
+        } catch (Error e) {
+            critical (e.message);
         }
 
-        unowned GLib.Variant? current_name_variant = options["current_name"];
-        if (current_name_variant != null && current_name_variant.is_of_type (GLib.VariantType.STRING)) {
-            dialog.set_current_name (current_name_variant.get_string ());
-        }
-
-        unowned GLib.Variant? current_folder_variant = options["current_folder"];
-        if (current_folder_variant != null && current_folder_variant.is_of_type (GLib.VariantType.BYTESTRING)) {
-            dialog.set_current_folder (current_folder_variant.get_bytestring ());
-        }
-
-        unowned GLib.Variant? current_file_variant = options["current_file"];
-        if (current_file_variant != null && current_file_variant.is_of_type (GLib.VariantType.BYTESTRING)) {
-            dialog.select_filename (current_file_variant.get_bytestring ());
-        }
-
-        unowned GLib.Variant? accept_label = options["accept_label"];
-        if (accept_label != null && accept_label.is_of_type (GLib.VariantType.STRING)) {
-            dialog.add_button (accept_label.get_string (), Gtk.ResponseType.OK);
-        } else {
-            dialog.add_button (_("Save"), Gtk.ResponseType.OK);
-        }
-
-        dialog.show_all ();
+        var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
-        dialog.response.connect ((id) => {
-            switch ((Gtk.ResponseType) id) {
-                case Gtk.ResponseType.OK:
-                    _response = 0;
-                    _results["choices"] = dialog.choices;
-                    var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
-                    dialog.get_uris ().foreach ((uri) => {
-                        builder.add ("s", uri);
-                    });
 
-                    _results["uris"] = builder.end ();
+        dialog.destroy.connect (() => {
+            if (dialog.register_id != 0) {
+                connection.unregister_object (dialog.register_id);
+            }
+        });
+
+        dialog.response.connect ((id) => {
+            switch (id) {
+                case Gtk.ResponseType.OK:
+                    _results["uris"] = dialog.get_uris ();
+                    _results["choices"] = dialog.get_choices ();
+                    if (dialog.filter != null) {
+                        _results["current_filter"] = dialog.filter.to_gvariant ();
+                    }
+
+                    _response = 0;
                     break;
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
@@ -237,67 +233,74 @@ public class Files.FileChooser : GLib.Object {
 
         dialog.show_all ();
         yield;
+
         response = _response;
         results = _results;
     }
 
-    public async void save_files (GLib.ObjectPath handle, string app_id, string parent_window, string title, GLib.HashTable<string, GLib.Variant> options, out uint response, out GLib.HashTable<string, GLib.Variant> results) throws GLib.DBusError, GLib.IOError {
-        var _results = new GLib.HashTable<string, GLib.Variant> (str_hash, str_equal);
-        var dialog = new Files.FileChooserDialog (connection, handle, app_id, parent_window, title, options);
-        dialog.action = Gtk.FileChooserAction.SELECT_FOLDER;
+    public async void save_files (
+        ObjectPath handle,
+        string app_id,
+        string parent_window,
+        string title,
+        HashTable<string, Variant> options,
+        out uint response,
+        out HashTable<string, Variant> results
+    ) throws DBusError, IOError {
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
+            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
+        };
 
-        unowned GLib.Variant? modal_variant = options["modal"];
-        bool modal = true;
-        if (modal_variant != null && modal_variant.is_of_type (GLib.VariantType.BOOLEAN)) {
-            modal = modal_variant.get_boolean ();
+        if ("modal" in options) {
+            dialog.modal = options["modal"].get_boolean ();
         }
-        dialog.modal = modal;
 
-        unowned GLib.Variant? choices_variant = options["choices"];
-        if (choices_variant != null && choices_variant.is_of_type (new GLib.VariantType ("a(ssa(ss)s)"))) {
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-            for (size_t i = 0; i < choices_variant.n_children (); i++) {
-                var choice = choices_variant.get_child_value (i);
-                box.add (dialog.deserialize_choice (choice));
+        if ("current_folder" in options) {
+            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+        }
+
+        if ("choices" in options) {
+            var choices = options["choices"].iterator ();
+            Variant choice_variant;
+
+            while ((choice_variant = choices.next_value ()) != null) {
+                var choice = new FileChooserChoice.from_variant (choice_variant);
+                dialog.add_choice (choice);
             }
-
-            dialog.set_extra_widget (box);
         }
 
-        unowned GLib.Variant? current_folder_variant = options["current_folder"];
-        if (current_folder_variant != null && current_folder_variant.is_of_type (GLib.VariantType.BYTESTRING)) {
-            dialog.set_current_folder (current_folder_variant.get_bytestring ());
+        try {
+            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
+        } catch (Error e) {
+            critical (e.message);
         }
 
-        unowned GLib.Variant? accept_label = options["accept_label"];
-        if (accept_label != null && accept_label.is_of_type (GLib.VariantType.STRING)) {
-            dialog.add_button (accept_label.get_string (), Gtk.ResponseType.OK);
-        } else {
-            dialog.add_button (_("Save"), Gtk.ResponseType.OK);
-        }
-
-        unowned GLib.Variant? files_variant = options["files"];
-        if (files_variant != null && files_variant.is_of_type (GLib.VariantType.BYTESTRING_ARRAY)) {
-            var files = files_variant.get_bytestring_array ();
-            dialog.set_data<string[]> ("files", files);
-        }
-
+        var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
+
+        dialog.destroy.connect (() => {
+            if (dialog.register_id != 0) {
+                connection.unregister_object (dialog.register_id);
+            }
+        });
+
         dialog.response.connect ((id) => {
-            switch ((Gtk.ResponseType) id) {
+            switch (id) {
                 case Gtk.ResponseType.OK:
-                    _response = 0;
-                    _results["choices"] = dialog.choices;
-                    var builder = new GLib.VariantBuilder (GLib.VariantType.STRING_ARRAY);
-                    var uri = GLib.File.new_for_uri (dialog.get_uri ());
-                    unowned string[]? files = dialog.get_data<string[]> ("files");
-                    if (files != null) {
+                    string[] uris = {};
+
+                    if ("files" in options) {
+                        var files = options["files"].get_bytestring_array ();
+                        var folder = GLib.File.new_for_uri (dialog.get_uri ());
+
                         foreach (unowned string file in files) {
-                            builder.add ("s", uri.get_child (GLib.Path.get_basename (file)).get_uri ());
+                            uris += folder.get_child (Path.get_basename (file)).get_uri ();
                         }
                     }
 
-                    _results["uris"] = builder.end ();
+                    _results["uris"] = uris;
+                    _results["choices"] = dialog.get_choices ();
+                    _response = 0;
                     break;
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
@@ -313,66 +316,65 @@ public class Files.FileChooser : GLib.Object {
 
         dialog.show_all ();
         yield;
+
         response = _response;
         results = _results;
     }
-}
 
-private void on_bus_acquired (GLib.DBusConnection connection, string name) {
-    try {
-        connection.register_object ("/org/freedesktop/portal/desktop", new Files.FileChooser (connection));
-    } catch (GLib.Error e) {
-        critical ("Unable to register the object: %s", e.message);
-    }
-}
-
-public int main (string[] args) {
-    GLib.Intl.setlocale (GLib.LocaleCategory.ALL, "");
-    GLib.Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
-    GLib.Intl.textdomain (Config.GETTEXT_PACKAGE);
-    GLib.Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
-
-    /* Avoid pointless and confusing recursion */
-    GLib.Environment.unset_variable ("GTK_USE_PORTAL");
-
-    Gtk.init (ref args);
-
-    var context = new GLib.OptionContext ("- FileChooser portal");
-    context.add_main_entries (ENTRIES, null);
-    try {
-        context.parse (ref args);
-    } catch (Error e) {
-        printerr ("%s: %s", Environment.get_application_name (), e.message);
-        printerr ("\n");
-        printerr ("Try \"%s --help\" for more information.", GLib.Environment.get_prgname ());
-        printerr ("\n");
-        return 1;
+    private static void on_bus_acquired (DBusConnection connection, string name) {
+        try {
+            connection.register_object ("/org/freedesktop/portal/desktop", new FileChooserPortal (connection));
+        } catch (Error e) {
+            critical ("Unable to register the object: %s", e.message);
+        }
     }
 
-    if (show_version) {
-      print ("0.0 \n");
-      return 0;
+    public static int main (string[] args) {
+        Intl.setlocale (LocaleCategory.ALL, "");
+        Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+        Intl.textdomain (Config.GETTEXT_PACKAGE);
+        Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
+
+        /* Avoid pointless and confusing recursion */
+        Environment.unset_variable ("GTK_USE_PORTAL");
+
+        Gtk.init (ref args);
+
+        var context = new OptionContext ("- FileChooser portal");
+        context.add_main_entries (ENTRIES, null);
+        try {
+            context.parse (ref args);
+        } catch (Error e) {
+            printerr ("%s: %s", Environment.get_application_name (), e.message);
+            printerr ("\n");
+            printerr ("Try \"%s --help\" for more information.", Environment.get_prgname ());
+            printerr ("\n");
+            return 1;
+        }
+
+        if (show_version) {
+          print ("0.0 \n");
+          return 0;
+        }
+
+        var loop = new MainLoop (null, false);
+        try {
+            var session_bus = Bus.get_sync (BusType.SESSION);
+            var owner_id = Bus.own_name (
+                BusType.SESSION,
+                "org.freedesktop.impl.portal.desktop.elementary.files",
+                BusNameOwnerFlags.ALLOW_REPLACEMENT | (opt_replace ? BusNameOwnerFlags.REPLACE : 0),
+                on_bus_acquired,
+                () => debug ("org.freedesktop.impl.portal.desktop.elementary.files acquired"),
+                () => loop.quit ()
+            );
+            loop.run ();
+            Bus.unown_name (owner_id);
+        } catch (Error e) {
+            printerr ("No session bus: %s\n", e.message);
+            return 2;
+        }
+
+        return 0;
     }
-
-    loop = new GLib.MainLoop (null, false);
-
-    try {
-        var session_bus = GLib.Bus.get_sync (GLib.BusType.SESSION);
-        var owner_id = GLib.Bus.own_name (
-            GLib.BusType.SESSION,
-            "org.freedesktop.impl.portal.desktop.elementary.files",
-            GLib.BusNameOwnerFlags.ALLOW_REPLACEMENT | (opt_replace ? GLib.BusNameOwnerFlags.REPLACE : 0),
-            on_bus_acquired,
-            () => { debug ("org.freedesktop.impl.portal.desktop.elementary.files acquired"); },
-            () => { loop.quit (); }
-        );
-        loop.run ();
-        GLib.Bus.unown_name (owner_id);
-    } catch (Error e) {
-        printerr ("No session bus: %s\n", e.message);
-        return 2;
-    }
-
-    return 0;
-
 }
