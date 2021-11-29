@@ -339,7 +339,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         password_entry.changed.connect (() => {
             password_entry.is_valid = password_entry.text.length > 0 || !needs_password;
-            remember_revealer.set_reveal_child(password_entry.text.length > 0);
+            remember_revealer.set_reveal_child (password_entry.text.length > 0);
             set_button_sensitivity ();
         });
     }
