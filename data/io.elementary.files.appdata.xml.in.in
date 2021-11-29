@@ -34,10 +34,12 @@
         <ul>
           <li>Fix pasting of selected pathbar text into another window using middle-click</li>
           <li>Allow blank passwords for remote connections, e.g. for SSH via a private key</li>
+          <li>Fix selecting multiple groups of files</li>
         </ul>
         <p>Improvements:</p>
         <ul>
           <li>Use "Send Mail" portal instead of contract</li>
+          <li>Add file filters and new folder options to Filechooser portal</li>
         </ul>
         <p>Fixes:</p>
         <ul>

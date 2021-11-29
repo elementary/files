@@ -116,19 +116,18 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         extra_box.pack_start (filter_box);
 
         if (action == Gtk.FileChooserAction.OPEN) {
-            var label = new Gtk.Label (select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only"));
-            var read_only_check = new Gtk.CheckButton ();
-
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            box.add (label);
-            box.add (read_only_check);
+            var read_only_check = new Gtk.CheckButton.with_label (
+                select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only")
+            ) {
+                margin_start = 6
+            };
 
             notify["select-multiple"].connect (() => {
-                label.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
+                read_only_check.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
             });
 
             read_only_check.bind_property ("active", this, "read-only");
-            extra_box.pack_end (box);
+            extra_box.pack_end (read_only_check);
         }
 
         var action_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
