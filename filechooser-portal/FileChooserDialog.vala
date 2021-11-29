@@ -118,7 +118,9 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         if (action == Gtk.FileChooserAction.OPEN) {
             var read_only_check = new Gtk.CheckButton.with_label (
                 select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only")
-            );
+            ) {
+                margin_start = 6
+            };
 
             notify["select-multiple"].connect (() => {
                 read_only_check.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
