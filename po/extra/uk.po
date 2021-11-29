@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-29 20:58+0000\n"
-"PO-Revision-Date: 2021-11-29 14:26+0000\n"
+"PO-Revision-Date: 2021-11-30 05:26+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -78,18 +78,16 @@ msgid "Improvements:"
 msgstr "Поліпшено:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Use \"Send Mail\" portal instead of contract"
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
-msgstr "Застосовано портал «Надіслати пошту» замість договору"
+msgstr ""
+"Застосовано портал «Надіслати пошту» замість договору, поліпшення сумісності "
+"з альтернативними застосунками електронної пошти"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#, fuzzy
-#| msgid "Add file filters and new folder options to Filechooser portal"
 msgid "Add file filters and New Folder options to file chooser portal"
-msgstr "Додано фільтри файлів і нові опції теки до порталу Filechooser"
+msgstr "Додано фільтри файлів і опції нової теки до порталу оглядача файлів"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid ""
@@ -118,10 +116,8 @@ msgstr ""
 "допомогою середнього клацання"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
-#, fuzzy
-#| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
-msgstr "Виправлено вибирання вставлених файлів"
+msgstr "Виправлено вибирання кількох груп файлів"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Allow dropping bookmark directly below the Recent bookmark"
