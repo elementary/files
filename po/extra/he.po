@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-29 20:58+0000\n"
-"PO-Revision-Date: 2021-11-24 07:24+0000\n"
+"PO-Revision-Date: 2021-11-30 05:26+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -69,16 +69,16 @@ msgid "Improvements:"
 msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Use \"Send Mail\" portal instead of contract"
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
-msgstr "להשתמש בשער „שליחת דוא״ל” במקום בחוזה"
+msgstr ""
+"להשתמש בשער „שליחת דוא״ל” במקום בחוזה, משפר את התאימות עם יישומי דוא״ל "
+"חלופיים"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Add file filters and New Folder options to file chooser portal"
-msgstr ""
+msgstr "נוספו מסנני קבצים ואפשרויות תיקיות חדשות לשער בוחר הקבצים"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid ""
@@ -104,10 +104,8 @@ msgid ""
 msgstr "תוקנה הדבקת הטקסט הנבחר בסרגל הנתיב לחלון אחר בלחיצה כפולה"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
-#, fuzzy
-#| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
-msgstr "תיקון בחירה בקבצים שהודבקו"
+msgstr "תוקנה בחירת מגוון קבוצות של קבצים"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Allow dropping bookmark directly below the Recent bookmark"
