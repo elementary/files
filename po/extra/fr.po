@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-30 06:21+0000\n"
-"PO-Revision-Date: 2021-11-29 15:57+0000\n"
+"PO-Revision-Date: 2021-11-30 08:44+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -75,20 +75,19 @@ msgid "Improvements:"
 msgstr "Améliorations :"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Use \"Send Mail\" portal instead of contract"
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
-msgstr "Utilisation du portail « Envoyer un e-mail » au lieu du contrat"
+msgstr ""
+"Utilisation du portail « Envoyer un e-mail » au lieu du contrat, "
+"amélioration de la compatibilité avec les applications de messagerie "
+"alternatives"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#, fuzzy
-#| msgid "Add file filters and new folder options to Filechooser portal"
 msgid "Add file filters and New Folder options to file chooser portal"
 msgstr ""
-"Ajout de filtres pour les fichiers et d'une nouvelle option sur les dossiers "
-"pour le portail de sélection de fichier"
+"Ajout de filtres pour les fichiers et d'une option Nouveau dossier au "
+"portail de sélection de fichier"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid ""
@@ -117,10 +116,8 @@ msgstr ""
 "en utilisant le clic du milieu"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
-#, fuzzy
-#| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
-msgstr "Correction de la sélection des fichiers collés"
+msgstr "Correction de la sélection de groupes de fichiers multiples"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Allow dropping bookmark directly below the Recent bookmark"
