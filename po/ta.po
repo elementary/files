@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 20:58+0000\n"
+"POT-Creation-Date: 2021-11-30 06:21+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
@@ -18,6 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
+
+#: filechooser-portal/FileChooserDialog.vala:107
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "இரத்துசெய்"
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open Files as Read Only"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open File as Read Only"
+msgstr ""
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -829,12 +846,6 @@ msgstr "எழுது"
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "செயல்படுத்து"
-
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "இரத்துசெய்"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 20:58+0000\n"
+"POT-Creation-Date: 2021-11-30 06:21+0000\n"
 "PO-Revision-Date: 2021-08-21 12:58+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -20,6 +20,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:107
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open Files as Read Only"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open File as Read Only"
+msgstr ""
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -833,12 +850,6 @@ msgstr "Skrive"
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "Kjøre"
-
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Avbryt"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"

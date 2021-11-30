@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 20:58+0000\n"
+"POT-Creation-Date: 2021-11-30 06:21+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -21,6 +21,23 @@ msgstr ""
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: filechooser-portal/FileChooserDialog.vala:107
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Отказ"
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open Files as Read Only"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open File as Read Only"
+msgstr ""
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -868,12 +885,6 @@ msgstr "Запис"
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "Изпълним"
-
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Отказ"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
