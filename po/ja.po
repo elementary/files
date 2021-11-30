@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-30 06:21+0000\n"
-"PO-Revision-Date: 2021-11-22 03:59+0000\n"
+"PO-Revision-Date: 2021-11-30 07:29+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,12 +30,12 @@ msgstr "キャンセル"
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "ファイルを読み取り専用で開く"
 
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "ファイルを読み取り専用で開く"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
