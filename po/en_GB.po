@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-30 06:21+0000\n"
-"PO-Revision-Date: 2021-10-05 20:44+0000\n"
-"Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
+"PO-Revision-Date: 2021-11-30 07:29+0000\n"
+"Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
 "Language: en_GB\n"
@@ -30,12 +30,12 @@ msgstr "Cancel"
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Open Files as Read Only"
 
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Open File as Read Only"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
