@@ -157,7 +157,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         grid.add (action_box);
         add (grid);
 
-        accept_button.grab_default ();
         setup_chooser ();
 
         var settings = new Settings ("io.elementary.files.file-chooser");
@@ -262,7 +261,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             tree_view.grab_focus ();
         });
 
-        chooser.file_activated.connect (() => response (Gtk.ResponseType.OK));
+        chooser.file_activated.connect (() => {
+             if (!GLib.FileUtils.test (chooser.get_filename (), FileTest.IS_DIR)) {
+                 response (Gtk.ResponseType.OK);
+             }
+        });
+
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
 
@@ -366,6 +370,11 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             // bind the accept_button sensitivity with the entry text
             entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
+            entry.activate.connect (() => {
+                if (accept_button.sensitive) {
+                    response (Gtk.ResponseType.OK);
+                }
+            });
 
             chooser.remove (find_child_by_name (chooser, "<GtkBox>"));
         }
