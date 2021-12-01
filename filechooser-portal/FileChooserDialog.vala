@@ -167,7 +167,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         type_hint = Gdk.WindowTypeHint.DIALOG;
         default_height = height;
         default_width = width;
-        deletable = false;
         can_focus = true;
         modal = true;
 
@@ -390,6 +389,15 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         /* remove extra unneeded widgets */
         view_stack.parent.remove (find_child_by_name (view_stack.parent, "preview_box"));
         chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
+    }
+
+    protected override bool key_release_event (Gdk.EventKey event) {
+        if (event.keyval == Gdk.Key.Escape) {
+            response (Gtk.ResponseType.DELETE_EVENT);
+            return Gdk.EVENT_STOP;
+        }
+
+        return Gdk.EVENT_PROPAGATE;
     }
 
     public void set_current_folder (string? uri) {
