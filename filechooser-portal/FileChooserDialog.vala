@@ -400,6 +400,17 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         return Gdk.EVENT_PROPAGATE;
     }
 
+    protected override void show () {
+        base.show ();
+
+        unowned var window = get_window ();
+        if (window == null) {
+            return;
+        }
+
+        window.focus (Gdk.CURRENT_TIME);
+    }
+
     public void set_current_folder (string? uri) {
         location_bar.path_change_request (uri ?? Environment.get_home_dir ());
     }
