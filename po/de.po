@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-30 06:21+0000\n"
-"PO-Revision-Date: 2021-09-30 15:27+0000\n"
+"PO-Revision-Date: 2021-12-01 09:27+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -29,12 +29,12 @@ msgstr "Abbrechen"
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Dateien schreibgeschützt öffnen"
 
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Datei schreibgeschützt öffnen"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
