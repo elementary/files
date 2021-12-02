@@ -173,7 +173,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             row.can_insert_before = true;
             row.can_insert_after = false;
 
-            row.notify["is-empty"].connect (() => {
+            trash_monitor.notify["is-empty"].connect (() => {
                 row.update_icon (trash_monitor.get_icon ());
             });
         }
