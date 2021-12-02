@@ -3415,18 +3415,23 @@ namespace Files {
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
                         case ClickZone.INVALID:
-                            unselect_all ();
+                            // Maintain existing selection by holding down modifier so we can multi-select
+                            // separate groups with rubberbanding.
+                            if (no_mods) {
+                                unselect_all ();
+                            }
+
                             break;
 
                         case ClickZone.BLANK_PATH:
                         case ClickZone.ICON:
                         case ClickZone.NAME:
-                            /* Control-click should deselect previously selected path on key release (unless
+                            /* Control-click on selected item should deselect it on key release (unless
                              * pointer moves) */
                             should_deselect = only_control_pressed && path_selected;
 
-                            /* determine whether should activate on key release (unless pointer moved)*/
-                            /* Only activate single files with unmodified button, when not on blank */
+                            /* Determine whether should activate on key release (unless pointer moved)*/
+                            /* Only activate single files with unmodified button when not on blank unless double-clicked */
                             if (no_mods && one_or_less) {
                                 should_activate = (on_directory && !on_blank) || double_click_event;
                             }

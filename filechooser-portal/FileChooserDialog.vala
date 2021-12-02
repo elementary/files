@@ -116,19 +116,18 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         extra_box.pack_start (filter_box);
 
         if (action == Gtk.FileChooserAction.OPEN) {
-            var label = new Gtk.Label (select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only"));
-            var read_only_check = new Gtk.CheckButton ();
-
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            box.add (label);
-            box.add (read_only_check);
+            var read_only_check = new Gtk.CheckButton.with_label (
+                select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only")
+            ) {
+                margin_start = 6
+            };
 
             notify["select-multiple"].connect (() => {
-                label.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
+                read_only_check.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
             });
 
             read_only_check.bind_property ("active", this, "read-only");
-            extra_box.pack_end (box);
+            extra_box.pack_end (read_only_check);
         }
 
         var action_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
@@ -158,7 +157,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         grid.add (action_box);
         add (grid);
 
-        accept_button.grab_default ();
         setup_chooser ();
 
         var settings = new Settings ("io.elementary.files.file-chooser");
@@ -169,7 +167,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         type_hint = Gdk.WindowTypeHint.DIALOG;
         default_height = height;
         default_width = width;
-        deletable = false;
         can_focus = true;
         modal = true;
 
@@ -263,7 +260,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             tree_view.grab_focus ();
         });
 
-        chooser.file_activated.connect (() => response (Gtk.ResponseType.OK));
+        chooser.file_activated.connect (() => {
+             if (!GLib.FileUtils.test (chooser.get_filename (), FileTest.IS_DIR)) {
+                 response (Gtk.ResponseType.OK);
+             }
+        });
+
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
 
@@ -367,6 +369,11 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             // bind the accept_button sensitivity with the entry text
             entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
+            entry.activate.connect (() => {
+                if (accept_button.sensitive) {
+                    response (Gtk.ResponseType.OK);
+                }
+            });
 
             chooser.remove (find_child_by_name (chooser, "<GtkBox>"));
         }
@@ -382,6 +389,26 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         /* remove extra unneeded widgets */
         view_stack.parent.remove (find_child_by_name (view_stack.parent, "preview_box"));
         chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
+    }
+
+    protected override bool key_release_event (Gdk.EventKey event) {
+        if (event.keyval == Gdk.Key.Escape) {
+            response (Gtk.ResponseType.DELETE_EVENT);
+            return Gdk.EVENT_STOP;
+        }
+
+        return Gdk.EVENT_PROPAGATE;
+    }
+
+    protected override void show () {
+        base.show ();
+
+        unowned var window = get_window ();
+        if (window == null) {
+            return;
+        }
+
+        window.focus (Gdk.CURRENT_TIME);
     }
 
     public void set_current_folder (string? uri) {
