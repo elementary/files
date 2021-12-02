@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-01 22:45+0000\n"
-"PO-Revision-Date: 2021-11-30 05:26+0000\n"
+"PO-Revision-Date: 2021-12-02 07:48+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -80,7 +80,7 @@ msgstr "Поліпшено:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with esc key"
-msgstr ""
+msgstr "Закриття оглядача файлів клавішею Esc"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -97,12 +97,12 @@ msgstr "Виправлення:"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 msgid "Only allow one FileChooser per parent window"
-msgstr ""
+msgstr "Дозволено лише один оглядач файлів на батьківське вікно"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
+msgstr "Перехід до теки натисканням enter в оглядачі файлів замість вибору"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:63
