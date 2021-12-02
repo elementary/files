@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-01 22:45+0000\n"
-"PO-Revision-Date: 2021-12-01 09:27+0000\n"
+"PO-Revision-Date: 2021-12-02 20:12+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -81,7 +81,7 @@ msgstr "Ulepszenia:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with esc key"
-msgstr ""
+msgstr "Zamknięcie wybierania plików klawisze Escape"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -99,11 +99,13 @@ msgstr "Poprawki:"
 #: data/io.elementary.files.appdata.xml.in.in:39
 msgid "Only allow one FileChooser per parent window"
 msgstr ""
+"Zablokowano możliwość wyświetlania więcej niż jednego okna wybierania plików"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
 msgstr ""
+"Nawigacja pomiędzy folderami za pomocą przycisku enter przy wybieraniu plików"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:63
