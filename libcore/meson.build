@@ -31,6 +31,7 @@ pantheon_files_core_vala_files = files(
     'Plugin.vala',
     'ProgressInfo.vala',
     'ProgressInfoManager.vala',
+    'Resources.vala',
     'SidebarPluginItem.vala',
     'SoundManager.vala',
     'StockDialogs.vala',
@@ -44,6 +45,16 @@ pantheon_files_core_vala_files = files(
     'FileOperations/MountUtils.vala',
     'FileOperations/DialogUtils.vala',
     'Interfaces/SidebarInterface.vala',
+    'Interfaces/LocatableInterface.vala',
+    'Interfaces/NavigatableInterface.vala',
+    'Interfaces/SearchableInterface.vala',
+    'Widgets/BasicBreadcrumbsEntry.vala',
+    'Widgets/BasicLocationBar.vala',
+    'Widgets/BreadcrumbElement.vala',
+    'Widgets/BreadcrumbIconList.vala',
+    'Widgets/ButtonWithMenu.vala',
+    'Widgets/ImgEventBox.vala',
+    'Widgets/ViewSwitcher.vala'
 )
 
 pantheon_files_core_c_files = files(

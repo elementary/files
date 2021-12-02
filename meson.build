@@ -114,7 +114,6 @@ resources = gnome.compile_resources(
 )
 
 subdir('libcore')
-subdir('libwidgets')
 subdir('src')
 subdir('data')
 subdir('pantheon-files-daemon')

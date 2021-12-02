@@ -8,7 +8,7 @@ executable(
     'Main.vala',
 
     dependencies : [
-        pantheon_files_widgets_dep,
+        pantheon_files_core_dep,
         dependency('gdk-x11-3.0'),
         dependency('gdk-wayland-3.0'),
         handy_dep,

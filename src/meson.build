@@ -1,7 +1,7 @@
 pantheon_files_deps = [
     common_deps,
     handy_dep,
-    pantheon_files_widgets_dep,
+    pantheon_files_core_dep,
     plank_dep,
     zeitgeist_dep,
     project_config_dep,
@@ -54,6 +54,8 @@ pantheon_files_exec = executable (
     'View/Widgets/PermissionButton.vala',
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SingleLineEditableLabel.vala',
+    'View/Widgets/SearchResults.vala',
+    'View/Widgets/Welcome.vala',
 
     'View/Sidebar/SidebarWindow.vala',
     'View/Sidebar/BookmarkListBox.vala',
