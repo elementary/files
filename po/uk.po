@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-01 22:45+0000\n"
-"PO-Revision-Date: 2021-11-30 18:07+0000\n"
+"PO-Revision-Date: 2021-12-03 16:01+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -31,12 +31,12 @@ msgstr "Скасувати"
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open Files as Read Only"
-msgstr "Відкрити Файли лише для читання"
+msgstr "Відкривати файли тільки для читання"
 
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open File as Read Only"
-msgstr "Відкрити Файли лише для читання"
+msgstr "Відкрити файл лише для читання"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-01 22:45+0000\n"
-"PO-Revision-Date: 2021-11-30 05:26+0000\n"
+"PO-Revision-Date: 2021-12-03 12:37+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -71,7 +71,7 @@ msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with esc key"
-msgstr ""
+msgstr "אפשר לסגור את בוחר הקבצים עם מקש esc"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -88,12 +88,12 @@ msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 msgid "Only allow one FileChooser per parent window"
-msgstr ""
+msgstr "יאופשר בוחר קבצים אחד לכל חלון הורה"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
+msgstr "ניווט לתיקייה בלחיצה על enter בבוחר הקבצים במקום על ידי בחירה"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:63
