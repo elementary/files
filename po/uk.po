@@ -31,7 +31,7 @@ msgstr "Скасувати"
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
 msgid "Open Files as Read Only"
-msgstr "Відкрити Файли лише для читання"
+msgstr "Відкривати файли тільки для читання"
 
 #: filechooser-portal/FileChooserDialog.vala:120
 #: filechooser-portal/FileChooserDialog.vala:126
