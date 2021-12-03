@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
+"POT-Creation-Date: 2021-12-01 22:45+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
@@ -18,6 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
+
+#: filechooser-portal/FileChooserDialog.vala:107
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "இரத்துசெய்"
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open Files as Read Only"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:120
+#: filechooser-portal/FileChooserDialog.vala:126
+msgid "Open File as Read Only"
+msgstr ""
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -146,7 +163,7 @@ msgstr ""
 msgid "Size:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr ""
@@ -524,7 +541,7 @@ msgstr ""
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "இல்லம்"
 
@@ -584,15 +601,15 @@ msgstr ""
 msgid "View the home folder"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "குப்பைத் தொட்டி"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr ""
 
@@ -662,12 +679,12 @@ msgstr "குப்பை தொட்டியை காலி செய் (_
 msgid "Permanently Delete Trash"
 msgstr "குப்பை தொட்டியை காலி செய் (_T)"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr ""
 
@@ -730,7 +747,7 @@ msgid "Open the system security and privacy settings app"
 msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr ""
 
@@ -754,11 +771,11 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr ""
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr ""
 
@@ -830,12 +847,6 @@ msgstr "எழுது"
 msgid "Execute"
 msgstr "செயல்படுத்து"
 
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "இரத்துசெய்"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "பொதுவான எஃப்டிபி"
@@ -864,89 +875,89 @@ msgstr "வெப்டேவ் (ஹெச்டிடிபி)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "பாதுகாப்பான வெப்டேவ் (ஹெச்டிடிபிஎஸ்)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "சேவையக விவரங்கள்"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 #, fuzzy
 msgid "Server:"
 msgstr "சேவையகம் (_S):"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:146
 #, fuzzy
 msgid "Port:"
 msgstr "முனையம் (_P):"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:181
 #, fuzzy
 msgid "Share:"
 msgstr "பகிர் (_ a):"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:188
 #, fuzzy
 msgid "Folder:"
 msgstr "அடைவு (_F):"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "பயனர் விவரங்கள்"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:197
 #, fuzzy
 msgid "Domain name:"
 msgstr "களப்பெயர் (_D):"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:204
 #, fuzzy
 msgid "User name:"
 msgstr "பயனர் பெயர் (_U):"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:212
 #, fuzzy
 msgid "Password:"
 msgstr "கடவுச்சொல் (_w):"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:214
 #, fuzzy
 msgid "Remember this password"
 msgstr "இந்த கடவுச்சொலை நினைவில் கொள்ளவும் (_R)"
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:225
 #, fuzzy
 msgid "Connect"
 msgstr "இணை (_o)"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "தொடரவும்"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:283
 #, fuzzy
 msgid "Connecting…"
 msgstr "இணைக்கிறது..."
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "உங்கள் பயனர் விவரங்களை சரி பார்க்கவும்"
 
@@ -1915,29 +1926,29 @@ msgstr ""
 msgid "Go to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 #, fuzzy
 msgid "Type Path"
 msgstr "வகை"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 msgid "Recently Used"
 msgstr ""
 

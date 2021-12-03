@@ -89,6 +89,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
     private Granite.ValidatedEntry server_entry;
     private Gtk.SpinButton port_spinbutton;
     private Gtk.Revealer port_revealer;
+    private Gtk.Revealer remember_revealer;
     private Gtk.Entry share_entry;
     private Gtk.ComboBox type_combobox;
     private Gtk.Entry folder_entry;
@@ -210,10 +211,11 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var password_label = new DetailLabel (_("Password:"), password_entry);
 
-        remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password")) {
-            no_show_all = true,
-            visible = false
+        remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
+        remember_revealer = new Gtk.Revealer () {
+            transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
         };
+        remember_revealer.add (remember_checkbutton);
 
         cancel_button = new Gtk.Button.with_label (_("Cancel"));
         cancel_button.clicked.connect (on_cancel_clicked);
@@ -271,7 +273,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         grid.attach (password_label, 0, 9);
         grid.attach (password_entry, 1, 9);
 
-        grid.attach (remember_checkbutton, 1, 10);
+        grid.attach (remember_revealer, 1, 10);
 
         var connecting_spinner = new Gtk.Spinner ();
         connecting_spinner.start ();
@@ -335,7 +337,9 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         password_entry.changed.connect (() => {
             password_entry.is_valid = password_entry.text.length > 0 || !needs_password;
-            remember_checkbutton.visible = password_entry.text.length > 0;
+
+            remember_revealer.set_reveal_child (password_entry.text.length > 0);
+
             set_button_sensitivity ();
         });
     }
