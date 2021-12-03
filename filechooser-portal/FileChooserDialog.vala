@@ -64,6 +64,9 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     private Queue<string> previous_paths;
     private Queue<string> next_paths;
+    private string? current_path = null;
+    private bool previous_button_clicked = false;
+    private bool next_button_clicked = false;
 
     public FileChooserDialog (Gtk.FileChooserAction action, string parent_window, string title) {
         Object (
@@ -192,17 +195,16 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         });
 
         previous_button.clicked.connect (() => {
-            next_paths.push_head (chooser.get_current_folder_uri ());
-            location_bar.path_change_request (previous_paths.pop_head ());
+            previous_button_clicked = true;
+            chooser.set_current_folder_uri (previous_paths.pop_head ());
         });
 
         next_button.clicked.connect (() => {
-            previous_paths.push_head (chooser.get_current_folder_uri ());
-            location_bar.path_change_request (next_paths.pop_head ());
+            next_button_clicked = true;
+            chooser.set_current_folder_uri (next_paths.pop_head ());
         });
 
         location_bar.path_change_request.connect ((path) => {
-            location_bar.set_display_path (path);
             chooser.set_current_folder_uri (path);
         });
 
@@ -244,19 +246,27 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             return false;
         });
 
-        chooser.current_folder_changed.connect (() => {
-            var previous = location_bar.get_display_path () ?? Environment.get_home_dir ();
-            var current = chooser.get_current_folder_uri ();
+        chooser.current_folder_changed.connect_after (() => {
+            var previous_path = current_path;
+            current_path = chooser.get_current_folder_uri () ?? Environment.get_home_dir ();
 
-            if (previous != current) {
-                location_bar.set_display_path (current);
-                previous_paths.push_head (previous);
-                next_paths.clear ();
+            if (previous_path != null && previous_path != current_path) {
+                if (previous_button_clicked) {
+                    next_paths.push_head (previous_path);
+                } else {
+                    previous_paths.push_head (previous_path);
+                    if (!next_button_clicked) {
+                        next_paths.clear ();
+                    }
+                }
             }
 
             previous_button.sensitive = !previous_paths.is_empty ();
             next_button.sensitive = !next_paths.is_empty ();
+            previous_button_clicked = false;
+            next_button_clicked = false;
 
+            location_bar.set_display_path (current_path);
             tree_view.grab_focus ();
         });
 
@@ -290,7 +300,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
         });
 
-        set_current_folder (settings.get_string ("last-folder-uri"));
+        chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
     }
 
     private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
@@ -412,7 +422,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     }
 
     public void set_current_folder (string? uri) {
-        location_bar.path_change_request (uri ?? Environment.get_home_dir ());
+        chooser.set_current_folder_uri (uri ?? Environment.get_home_dir ());
     }
 
     public void set_current_name (string text) {
