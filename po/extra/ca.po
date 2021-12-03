@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-01 22:45+0000\n"
-"PO-Revision-Date: 2021-11-30 05:26+0000\n"
+"PO-Revision-Date: 2021-12-03 19:38+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +79,7 @@ msgstr "Millores:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with esc key"
-msgstr ""
+msgstr "Tanqueu el selector de fitxers amb la tecla esc."
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -96,12 +96,14 @@ msgstr "Correccions:"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 msgid "Only allow one FileChooser per parent window"
-msgstr ""
+msgstr "Només es permet un selector de fitxers per finestra principal."
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
 msgstr ""
+"Es navega a la carpeta quan premeu retorn al selector de fitxers en lloc de "
+"seleccionar."
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:63
