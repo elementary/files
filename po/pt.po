@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
+"POT-Creation-Date: 2021-12-01 22:45+0000\n"
 "PO-Revision-Date: 2021-11-17 21:16+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
@@ -1963,7 +1963,7 @@ msgstr "Ir para %s"
 msgid "Type Path"
 msgstr "Escreva um caminho"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
