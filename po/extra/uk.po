@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-04 11:42+0000\n"
-"PO-Revision-Date: 2021-12-02 07:48+0000\n"
+"PO-Revision-Date: 2021-12-04 14:23+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -84,7 +84,7 @@ msgstr "Закриття оглядача файлів клавішею Esc"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
-msgstr ""
+msgstr "Додано нові емблеми для git status"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:57
