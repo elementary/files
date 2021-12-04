@@ -32,7 +32,6 @@ Package: pantheon-files
 Architecture: any
 Depends: gvfs,
          libpantheon-files-core0 (= ${binary:Version}),
-         libpantheon-files-widgets0 (= ${binary:Version}),
          tumbler,
          ${misc:Depends},
          ${shlibs:Depends}
@@ -88,42 +87,3 @@ Description: File manager for the Pantheon desktop (shared library development f
  .
  This package contains the development files for writing plugins or
  for embedding parts of Pantheon Files into other applications.
-
-Package: libpantheon-files-widgets0
-Architecture: any
-Section: libs
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: File manager for the Pantheon desktop (widgets library)
- Pantheon Files is a modern file manager originally
- designed for the Pantheon desktop environment.
- .
- It features:
-  - Column view to effortlessly traverse complex folder hierarchies,
-    in addition to Icon and Tree views
-  - Contextual actions on files and folders provided by Contractor
-  - Transparent support for remote servers and network shares
-  - Compliance with elementary HIG, e.g. lets you restore closed tabs
-  - Session persistence - take up where you left!
- .
- This package contains a shared library containing some of the custom
- widgets used by Pantheon Files.
-
-Package: libpantheon-files-widgets-dev
-Architecture: any
-Section: libdevel
-Depends: libpantheon-files-widgets0 (= ${binary:Version}), ${misc:Depends}
-Suggests: pantheon-files
-Description: File manager for the Pantheon desktop (widgets library development files)
- Pantheon Files is a modern file manager originally
- designed for the Pantheon desktop environment.
- .
- It features:
-  - Column view to effortlessly traverse complex folder hierarchies,
-    in addition to Icon and Tree views
-  - Contextual actions on files and folders provided by Contractor
-  - Transparent support for remote servers and network shares
-  - Compliance with elementary HIG, e.g. lets you restore closed tabs
-  - Session persistence - take up where you left!
- .
- This package contains development files for some of the custom
- widgets used by Pantheon Files.
