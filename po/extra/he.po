@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-04 11:42+0000\n"
-"PO-Revision-Date: 2021-12-03 12:37+0000\n"
+"PO-Revision-Date: 2021-12-05 01:53+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -75,7 +75,7 @@ msgstr "אפשר לסגור את בוחר הקבצים עם מקש esc"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
-msgstr ""
+msgstr "שימוש בסמלים החדשים למצב ה־git"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:57
