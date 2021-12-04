@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 22:45+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
 "PO-Revision-Date: 2021-12-01 09:27+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
@@ -20,20 +20,20 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:107
+#: filechooser-portal/FileChooserDialog.vala:110
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: filechooser-portal/FileChooserDialog.vala:120
-#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
 msgstr "Otwórz pliki w trybie tylko do odczytu"
 
-#: filechooser-portal/FileChooserDialog.vala:120
-#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
 msgstr "Otwórz plik w trybie tylko do odczytu"
 
