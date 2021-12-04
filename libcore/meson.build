@@ -56,7 +56,6 @@ pantheon_files_core_vala_files = files(
     'Widgets/BreadcrumbElement.vala',
     'Widgets/BreadcrumbIconList.vala',
     'Widgets/ButtonWithMenu.vala',
-    'Widgets/ImgEventBox.vala',
     'Widgets/ViewSwitcher.vala'
 )
 
