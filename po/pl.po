@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-23 22:02+0000\n"
-"PO-Revision-Date: 2021-11-02 15:45+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-12-01 09:27+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -19,6 +19,23 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:110
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open Files as Read Only"
+msgstr "Otwórz pliki w trybie tylko do odczytu"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open File as Read Only"
+msgstr "Otwórz plik w trybie tylko do odczytu"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -154,7 +171,7 @@ msgstr "Nie udało się ustalić"
 msgid "Size:"
 msgstr "Rozmiar:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:174
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Typ:"
@@ -840,12 +857,6 @@ msgstr "Zapis"
 msgid "Execute"
 msgstr "Uruchom"
 
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:218 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Anuluj"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Publiczny FTP"
@@ -874,79 +885,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Bezpieczny WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "Informacje o serwerze"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "Nazwa serwera lub adres IP"
 
-#: libcore/ConnectServerDialog.vala:137
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Serwer:"
 
-#: libcore/ConnectServerDialog.vala:145
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:177
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "Nazwa udziału na serwerze (Opcjonalnie)"
 
-#: libcore/ConnectServerDialog.vala:180
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "Udział:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "Ścieżka do współdzielonego katalogu na serwerze (Opcjonalnie)"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "Katalog:"
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "Informacje o użytkowniku"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "Nazwa domeny Windows"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "Nazwa domeny:"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "Nazwa użytkownika na serwerze"
 
-#: libcore/ConnectServerDialog.vala:203
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "Nazwa użytkownika:"
 
-#: libcore/ConnectServerDialog.vala:211
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "Hasło:"
 
-#: libcore/ConnectServerDialog.vala:213
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "Zapamiętaj hasło"
 
-#: libcore/ConnectServerDialog.vala:221
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "Połącz"
 
-#: libcore/ConnectServerDialog.vala:228
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: libcore/ConnectServerDialog.vala:279
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "Łączenie…"
 
-#: libcore/ConnectServerDialog.vala:387
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "Sprawdź swoje dane użytkownika."
 

@@ -64,6 +64,9 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     private Queue<string> previous_paths;
     private Queue<string> next_paths;
+    private string? current_path = null;
+    private bool previous_button_clicked = false;
+    private bool next_button_clicked = false;
 
     public FileChooserDialog (Gtk.FileChooserAction action, string parent_window, string title) {
         Object (
@@ -116,19 +119,18 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         extra_box.pack_start (filter_box);
 
         if (action == Gtk.FileChooserAction.OPEN) {
-            var label = new Gtk.Label (select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only"));
-            var read_only_check = new Gtk.CheckButton ();
-
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            box.add (label);
-            box.add (read_only_check);
+            var read_only_check = new Gtk.CheckButton.with_label (
+                select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only")
+            ) {
+                margin_start = 6
+            };
 
             notify["select-multiple"].connect (() => {
-                label.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
+                read_only_check.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
             });
 
             read_only_check.bind_property ("active", this, "read-only");
-            extra_box.pack_end (box);
+            extra_box.pack_end (read_only_check);
         }
 
         var action_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
@@ -158,7 +160,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         grid.add (action_box);
         add (grid);
 
-        accept_button.grab_default ();
         setup_chooser ();
 
         var settings = new Settings ("io.elementary.files.file-chooser");
@@ -169,7 +170,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         type_hint = Gdk.WindowTypeHint.DIALOG;
         default_height = height;
         default_width = width;
-        deletable = false;
         can_focus = true;
         modal = true;
 
@@ -195,17 +195,16 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         });
 
         previous_button.clicked.connect (() => {
-            next_paths.push_head (chooser.get_current_folder_uri ());
-            location_bar.path_change_request (previous_paths.pop_head ());
+            previous_button_clicked = true;
+            chooser.set_current_folder_uri (previous_paths.pop_head ());
         });
 
         next_button.clicked.connect (() => {
-            previous_paths.push_head (chooser.get_current_folder_uri ());
-            location_bar.path_change_request (next_paths.pop_head ());
+            next_button_clicked = true;
+            chooser.set_current_folder_uri (next_paths.pop_head ());
         });
 
         location_bar.path_change_request.connect ((path) => {
-            location_bar.set_display_path (path);
             chooser.set_current_folder_uri (path);
         });
 
@@ -247,23 +246,36 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             return false;
         });
 
-        chooser.current_folder_changed.connect (() => {
-            var previous = location_bar.get_display_path () ?? Environment.get_home_dir ();
-            var current = chooser.get_current_folder_uri ();
+        chooser.current_folder_changed.connect_after (() => {
+            var previous_path = current_path;
+            current_path = chooser.get_current_folder_uri () ?? Environment.get_home_dir ();
 
-            if (previous != current) {
-                location_bar.set_display_path (current);
-                previous_paths.push_head (previous);
-                next_paths.clear ();
+            if (previous_path != null && previous_path != current_path) {
+                if (previous_button_clicked) {
+                    next_paths.push_head (previous_path);
+                } else {
+                    previous_paths.push_head (previous_path);
+                    if (!next_button_clicked) {
+                        next_paths.clear ();
+                    }
+                }
             }
 
             previous_button.sensitive = !previous_paths.is_empty ();
             next_button.sensitive = !next_paths.is_empty ();
+            previous_button_clicked = false;
+            next_button_clicked = false;
 
+            location_bar.set_display_path (current_path);
             tree_view.grab_focus ();
         });
 
-        chooser.file_activated.connect (() => response (Gtk.ResponseType.OK));
+        chooser.file_activated.connect (() => {
+             if (!GLib.FileUtils.test (chooser.get_filename (), FileTest.IS_DIR)) {
+                 response (Gtk.ResponseType.OK);
+             }
+        });
+
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
 
@@ -288,7 +300,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
         });
 
-        set_current_folder (settings.get_string ("last-folder-uri"));
+        chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
     }
 
     private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
@@ -367,6 +379,11 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             // bind the accept_button sensitivity with the entry text
             entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
+            entry.activate.connect (() => {
+                if (accept_button.sensitive) {
+                    response (Gtk.ResponseType.OK);
+                }
+            });
 
             chooser.remove (find_child_by_name (chooser, "<GtkBox>"));
         }
@@ -384,8 +401,28 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
     }
 
+    protected override bool key_release_event (Gdk.EventKey event) {
+        if (event.keyval == Gdk.Key.Escape) {
+            response (Gtk.ResponseType.DELETE_EVENT);
+            return Gdk.EVENT_STOP;
+        }
+
+        return Gdk.EVENT_PROPAGATE;
+    }
+
+    protected override void show () {
+        base.show ();
+
+        unowned var window = get_window ();
+        if (window == null) {
+            return;
+        }
+
+        window.focus (Gdk.CURRENT_TIME);
+    }
+
     public void set_current_folder (string? uri) {
-        location_bar.path_change_request (uri ?? Environment.get_home_dir ());
+        chooser.set_current_folder_uri (uri ?? Environment.get_home_dir ());
     }
 
     public void set_current_name (string text) {

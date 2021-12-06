@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '6.0.4',
+    version: '6.1.0',
     meson_version: '>= 0.50.0'
 )
 
@@ -114,7 +114,6 @@ resources = gnome.compile_resources(
 )
 
 subdir('libcore')
-subdir('libwidgets')
 subdir('src')
 subdir('data')
 subdir('pantheon-files-daemon')
