@@ -66,7 +66,8 @@ namespace Files {
             {"cut", on_selection_action_cut},
             {"trash", on_selection_action_trash},
             {"delete", on_selection_action_delete},
-            {"restore", on_selection_action_restore}
+            {"restore", on_selection_action_restore},
+            {"invert-selection", invert_selection}
         };
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
@@ -87,7 +88,8 @@ namespace Files {
             {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
-            {"copy-link", on_common_action_copy_link}
+            {"copy-link", on_common_action_copy_link},
+            {"select-all", toggle_select_all}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -285,7 +287,8 @@ namespace Files {
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
-
+            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
+            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
             thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
@@ -1299,6 +1302,15 @@ namespace Files {
             }
         }
 
+        private void toggle_select_all () {
+            update_selected_files_and_menu ();
+            if (all_selected) {
+                unselect_all ();
+            } else {
+                select_all ();
+            }
+        }
+
         private void on_directory_file_added (Directory dir, Files.File? file) {
             if (file != null) {
                 add_file (file, dir, true); /* Always select files added to view after initial load */
@@ -1992,7 +2004,38 @@ namespace Files {
             ));
             properties_menuitem.action_name = "common.properties";
 
-            if (get_selected_files () != null) {
+            Gtk.MenuItem? select_all_menuitem = null;
+            Gtk.MenuItem? deselect_all_menuitem = null;
+            Gtk.MenuItem? invert_selection_menuitem = null;
+            if (!all_selected) {
+                select_all_menuitem = new Gtk.MenuItem () {
+                    action_name = "common.select-all"
+                };
+                select_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+                    _("Select All"),
+                    select_all_menuitem.action_name
+                ));
+
+                if (get_selected_files () != null) {
+                    invert_selection_menuitem = new Gtk.MenuItem () {
+                        action_name = "selection.invert-selection"
+                    };
+                    invert_selection_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("Invert Selection"),
+                        invert_selection_menuitem.action_name
+                    ));
+                }
+            } else {
+                deselect_all_menuitem = new Gtk.MenuItem () {
+                    action_name = "common.select-all"
+                };
+                deselect_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+                    _("Deselect All"),
+                    deselect_all_menuitem.action_name
+                ));
+            }
+
+            if (get_selected_files () != null) { // Add selection actions
                 var cut_menuitem = new Gtk.MenuItem ();
                 cut_menuitem.add (new Granite.AccelLabel (
                     _("Cut"),
@@ -2030,6 +2073,18 @@ namespace Files {
                     menu.add (delete_menuitem);
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (cut_menuitem);
+                    if (select_all_menuitem != null) {
+                        menu.add (select_all_menuitem);
+                    }
+
+                    if (deselect_all_menuitem != null) {
+                        menu.add (deselect_all_menuitem);
+                    }
+
+                    if (invert_selection_menuitem != null) {
+                        menu.add (invert_selection_menuitem);
+                    }
+
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 } else if (in_recent) {
@@ -2043,6 +2098,18 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (forget_menuitem);
                     menu.add (copy_menuitem);
+                    if (select_all_menuitem != null) {
+                        menu.add (select_all_menuitem);
+                    }
+
+                    if (deselect_all_menuitem != null) {
+                        menu.add (deselect_all_menuitem);
+                    }
+
+                    if (invert_selection_menuitem != null) {
+                        menu.add (invert_selection_menuitem);
+                    }
+
                     menu.add (trash_menuitem);
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
@@ -2100,8 +2167,19 @@ namespace Files {
                             menu.add (paste_into_menuitem);
                         }
 
-                        menu.add (new Gtk.SeparatorMenuItem ());
+                        if (select_all_menuitem != null) {
+                            menu.add (select_all_menuitem);
+                        }
 
+                        if (deselect_all_menuitem != null) {
+                            menu.add (deselect_all_menuitem);
+                        }
+
+                        if (invert_selection_menuitem != null) {
+                            menu.add (invert_selection_menuitem);
+                        }
+
+                        menu.add (new Gtk.SeparatorMenuItem ());
                         if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
                             menu.add (trash_menuitem);
                         } else {
@@ -2121,7 +2199,7 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 }
-            } else { // No selected files
+            } else { // No selected files. Add background folder actions
                 var show_hidden_menuitem = new Gtk.CheckMenuItem ();
                 show_hidden_menuitem.add (new Granite.AccelLabel (
                     _("Show Hidden Files"),
@@ -2142,8 +2220,15 @@ namespace Files {
                             "<Ctrl>v"
                         ));
                         menu.add (paste_menuitem);
+                        if (select_all_menuitem != null) {
+                            menu.add (select_all_menuitem);
+                        }
                     }
                 } else if (in_recent) {
+                    if (select_all_menuitem != null) {
+                        menu.add (select_all_menuitem);
+                    }
+
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
@@ -2152,7 +2237,6 @@ namespace Files {
                 } else {
                     if (!in_network_root) {
                         menu.add (new Gtk.SeparatorMenuItem ());
-
                         /* If something is pastable in the clipboard, show the option even if it is not enabled */
                         if (clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
@@ -2166,8 +2250,11 @@ namespace Files {
                                     "<Ctrl>v"
                                 ));
                             }
+                        }
 
-                            menu.add (paste_menuitem);
+                        menu.add (paste_menuitem);
+                        if (select_all_menuitem != null) {
+                            menu.add (select_all_menuitem);
                         }
 
                         if (is_writable) {
@@ -2399,6 +2486,7 @@ namespace Files {
             action_set_enabled (selection_actions, "cut", is_writable && is_selected);
             action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
             action_set_enabled (selection_actions, "delete", is_writable);
+            action_set_enabled (selection_actions, "invert-selection", is_selected);
             action_set_enabled (common_actions, "properties", can_show_properties);
             action_set_enabled (common_actions, "bookmark", can_bookmark);
             action_set_enabled (common_actions, "copy", !in_trash && can_copy);
@@ -3005,29 +3093,6 @@ namespace Files {
                 case Gdk.Key.N:
                     if (control_pressed) {
                         new_empty_folder ();
-                        res = true;
-                    }
-
-                    break;
-
-                case Gdk.Key.a:
-                    if (control_pressed) {
-                        update_selected_files_and_menu (); /* Ensure all_selected correct */
-
-                        if (all_selected) {
-                            unselect_all ();
-                        } else {
-                            select_all ();
-                        }
-
-                        res = true;
-                    }
-
-                    break;
-
-                case Gdk.Key.A:
-                    if (control_pressed) {
-                        invert_selection ();
                         res = true;
                     }
 
