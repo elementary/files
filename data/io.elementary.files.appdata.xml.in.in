@@ -48,6 +48,7 @@
         <p>Improvements:</p>
         <ul>
           <li>Close FileChooser with esc key</li>
+          <li>Use new emblems for git status</li>
         </ul>
         <p>Fixes:</p>
         <ul>
