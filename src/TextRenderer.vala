@@ -59,6 +59,7 @@ namespace Files {
             }
         }
 
+        public bool modifier_is_pressed { get; set; default = false; }
         private bool is_list_view;
 
         public int text_width;
@@ -113,7 +114,7 @@ namespace Files {
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
             }
 
-            set_up_layout (text, cell_area.width);
+            set_up_layout (text, cell_area.width, state);
 
             var style_context = widget.get_parent ().get_style_context ();
             style_context.save ();
@@ -174,7 +175,9 @@ namespace Files {
             file = null;
         }
 
-        public void set_up_layout (string? text, int cell_width) {
+        public void set_up_layout (
+            string? text, int cell_width, Gtk.StateFlags state_flags = Gtk.StateFlags.NORMAL
+        ) {
             if (text == null) {
                 text= " ";
             }
@@ -194,7 +197,14 @@ namespace Files {
                 layout.set_alignment (Pango.Alignment.CENTER);
             }
 
-            layout.set_text (text, -1);
+            if (!modifier_is_pressed &&
+                file.is_directory &&
+                (state_flags & Gtk.StateFlags.PRELIGHT) > 0) {
+
+                layout.set_markup ("<span underline='low'>" + text + "</span>", -1);
+            } else {
+                layout.set_markup (text, -1);
+            }
 
             /* calculate the real text dimension */
             int width, height;
