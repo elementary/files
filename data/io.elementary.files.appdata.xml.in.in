@@ -42,6 +42,7 @@
           <li>In Permissions page,show message when no information available</li>
         </ul>
         <p>Other updates:</p>
+        <ul>
           <li>Only allow one FileChooser per parent window</li>
           <li>Navigate to folder when pressing enter in FileChooser instead of selecting</li>
         </ul>
