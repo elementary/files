@@ -3,14 +3,15 @@ libexec_dir = join_paths(get_option('prefix'), get_option ('libexecdir'))
 executable(
     'io.elementary.files.xdg-desktop-portal',
     'ExternalWindow.vala',
+    'FileChooserChoice.vala',
     'FileChooserDialog.vala',
-    'LegacyFileChooserDialog.vala',
     'Main.vala',
 
     dependencies : [
-        pantheon_files_widgets_dep,
+        pantheon_files_core_dep,
         dependency('gdk-x11-3.0'),
         dependency('gdk-wayland-3.0'),
+        handy_dep,
         project_config_dep
     ],
     install: true,
@@ -51,16 +52,19 @@ configure_file(
     install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'dbus-1', 'services')
 )
 
-custom_target(
-    'portal-tester',
-    command: [
-        'flatpak-builder',
-        '--user',
-        '--install',
-        meson.current_build_dir() / 'tests' / 'builddir',
-        meson.current_source_dir() / 'tests' / 'io.elementary.Files.PortalTester.yml',
-        '--force-clean'
-    ],
-    capture: true,
-    output: 'io.elementary.Files.PortalTester'
-)
+flatpak_builder = find_program('flatpak-builder', required: false)
+if (flatpak_builder.found())
+    custom_target(
+        'portal-tester',
+        command: [
+            flatpak_builder,
+            '--user',
+            '--install',
+            meson.current_build_dir() / 'tests' / 'builddir',
+            meson.current_source_dir() / 'tests' / 'io.elementary.Files.PortalTester.yml',
+            '--force-clean'
+        ],
+        capture: true,
+        output: 'io.elementary.Files.PortalTester'
+    )
+endif

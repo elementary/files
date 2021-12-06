@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
-"PO-Revision-Date: 2021-09-30 09:22+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-11-30 07:29+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
 ">\n"
@@ -19,6 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:110
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open Files as Read Only"
+msgstr "ファイルを読み取り専用で開く"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open File as Read Only"
+msgstr "ファイルを読み取り専用で開く"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -149,7 +166,7 @@ msgstr "測定できませんでした"
 msgid "Size:"
 msgstr "サイズ:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "種類:"
@@ -520,7 +537,7 @@ msgstr "代わりに選択項目を切り取る"
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "ホーム"
 
@@ -580,15 +597,15 @@ msgstr "選択されたファイルは存在しません。"
 msgid "View the home folder"
 msgstr "ホームフォルダーを表示します"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "最近使用したファイルの一覧を表示します"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "ゴミ箱を開きます"
 
@@ -654,12 +671,12 @@ msgstr "すべてのゴミ箱から項目を完全に削除"
 msgid "Permanently Delete Trash"
 msgstr "ゴミ箱から項目を完全に削除"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 msgid "Permanently Delete Trash on this Mount"
 msgstr "このドライブのゴミ箱から項目を完全に削除"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "ブックマーク"
 
@@ -721,7 +738,7 @@ msgid "Open the system security and privacy settings app"
 msgstr "システムのセキュリティーとプライバシー設定アプリを開きます"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "検索するかパスを入力してください"
 
@@ -745,11 +762,11 @@ msgstr "前へ戻る"
 msgid "Next"
 msgstr "次へ進む"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "このフォルダーを再読み込みします"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "検索しています…"
 
@@ -817,12 +834,6 @@ msgstr "書き込み"
 msgid "Execute"
 msgstr "実行"
 
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "キャンセル"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "パブリック FTP"
@@ -851,79 +862,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "セキュア WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "サーバー情報"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "サーバー名または IP アドレス"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "サーバー:"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "ポート番号:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "サーバー上の共有する場所の名前 (任意)"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "共有する場所:"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "サーバー上の共有フォルダーのパス (任意)"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "フォルダー:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "ユーザー情報"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "Windows ドメイン名"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "ドメイン名:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "サーバー上のユーザー名"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "ユーザー名:"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "パスワード:"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "このパスワードを記憶"
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "接続"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "続行"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "接続しています…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "ユーザー情報が正しいか確認してください。"
 
@@ -1397,24 +1408,24 @@ msgstr "ファイルをゴミ箱に移動または削除できませんでした
 #: libcore/marlin-file-operations.c:829
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
-"読み取り専用ファイルシステムにあるファイルをゴミ箱に移動したり削除したりする"
-"ことはできません。"
+"読み取り専用ファイルシステムにあるファイルは、ゴミ箱に移動したり削除したりで"
+"きません。"
 
 #: libcore/marlin-file-operations.c:832
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"書き込み権限を持っていないフォルダーにあるファイルをゴミ箱に移動したり削除し"
-"たりすることはできません。"
+"書き込み権限を持っていないフォルダーにあるファイルは、ゴミ箱に移動したり削除"
+"したりできません。"
 
 #: libcore/marlin-file-operations.c:835
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"書き込み権限を持っていないフォルダーをゴミ箱に移動したり削除したりすることは"
-"できません。"
+"書き込み権限を持っていないフォルダーは、ゴミ箱に移動したり削除したりできませ"
+"ん。"
 
 #: libcore/marlin-file-operations.c:837
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -1890,28 +1901,28 @@ msgstr "%s へ移動"
 msgid "Go to %s"
 msgstr "%s へ移動"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr "パスを入力してください"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr "検索結果をさらに表示…"
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "このフォルダー内"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "このフォルダー以下"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "最近使用した項目"
 

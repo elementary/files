@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
-"PO-Revision-Date: 2021-11-02 15:45+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-12-01 09:27+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -19,6 +19,23 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:110
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open Files as Read Only"
+msgstr "Otwórz pliki w trybie tylko do odczytu"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open File as Read Only"
+msgstr "Otwórz plik w trybie tylko do odczytu"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -154,7 +171,7 @@ msgstr "Nie udało się ustalić"
 msgid "Size:"
 msgstr "Rozmiar:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Typ:"
@@ -535,7 +552,7 @@ msgstr "Wytnij wybór"
 msgid "Cannot paste files here"
 msgstr "Nie można wkleić tutaj plików"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Katalog użytkownika"
 
@@ -595,15 +612,15 @@ msgstr "Wybrany plik nie istnieje."
 msgid "View the home folder"
 msgstr "Zobacz katalog domowy"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "Zobacz listę ostatnio używanych plików"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Kosz"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "Otwórz kosz"
 
@@ -669,12 +686,12 @@ msgstr "Trwale usuń wszystkie pliki z Kosza"
 msgid "Permanently Delete Trash"
 msgstr "Trwale usuń pliki z Kosza"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Trwale usuń Kosz z tego nośnika"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "Zakładki"
 
@@ -736,7 +753,7 @@ msgid "Open the system security and privacy settings app"
 msgstr "Otwórz program ustawień zabezpieczeń systemu i prywatności"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Szukaj lub wpisz położenie"
 
@@ -760,11 +777,11 @@ msgstr "Poprzedni"
 msgid "Next"
 msgstr "Następny"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "Odśwież ten katalog"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "Wyszukiwanie…"
 
@@ -840,12 +857,6 @@ msgstr "Zapis"
 msgid "Execute"
 msgstr "Uruchom"
 
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Anuluj"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Publiczny FTP"
@@ -874,79 +885,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Bezpieczny WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "Informacje o serwerze"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "Nazwa serwera lub adres IP"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Serwer:"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "Nazwa udziału na serwerze (Opcjonalnie)"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "Udział:"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "Ścieżka do współdzielonego katalogu na serwerze (Opcjonalnie)"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "Katalog:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "Informacje o użytkowniku"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "Nazwa domeny Windows"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "Nazwa domeny:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "Nazwa użytkownika na serwerze"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "Nazwa użytkownika:"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "Hasło:"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "Zapamiętaj hasło"
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "Połącz"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "Łączenie…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "Sprawdź swoje dane użytkownika."
 
@@ -1975,28 +1986,28 @@ msgstr "Przejdź do %s"
 msgid "Go to %s"
 msgstr "Przechodzi do położenia „%s”"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr "Wpisz ścieżkę"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr "Więcej wyników …"
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "W tym katalogu"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "Poniżej tego katalogu"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 

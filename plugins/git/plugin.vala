@@ -184,11 +184,11 @@ public class Files.Plugins.Git : Files.Plugins.Base {
 
                         case Ggit.StatusFlags.INDEX_MODIFIED:
                         case Ggit.StatusFlags.WORKING_TREE_MODIFIED:
-                            gof.add_emblem ("user-away");
+                            gof.add_emblem ("emblem-git-modified");
                             break;
 
                         case Ggit.StatusFlags.WORKING_TREE_NEW:
-                            gof.add_emblem ("user-available");
+                            gof.add_emblem ("emblem-git-new");
                             break;
 
                         default:

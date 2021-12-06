@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
-"PO-Revision-Date: 2021-09-30 09:22+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-12-01 12:08+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
 ">\n"
@@ -19,6 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:110
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Canceŀla"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open Files as Read Only"
+msgstr "Obre fitxers només en mode de lectura"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open File as Read Only"
+msgstr "Obre el fitxer només en mode de lectura"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -151,7 +168,7 @@ msgstr "No s'ha pogut determinar"
 msgid "Size:"
 msgstr "Mida:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Tipus:"
@@ -526,7 +543,7 @@ msgstr "En canvi, es retalla la selecció"
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
@@ -586,15 +603,15 @@ msgstr "El fitxer seleccionat ja no existeix."
 msgid "View the home folder"
 msgstr "Mostra la carpeta de l'usuari"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "Mostra la llista dels fitxers usats recentment"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "Paperera"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "Obre la paperera"
 
@@ -660,12 +677,12 @@ msgstr "Suprimeix permanentment el que hi ha a la paperera"
 msgid "Permanently Delete Trash"
 msgstr "Suprimeix el que hi ha a la paperera"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Suprimeix permanentment el que hi ha a la paperera en aquest muntatge"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "Adreces d'interès"
 
@@ -728,7 +745,7 @@ msgstr ""
 "Obre l'aplicació per configurar la seguretat i la privadesa del sistema"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Cerqueu o escriviu-ne el camí"
 
@@ -752,11 +769,11 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Següent"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "Recarrega aquesta carpeta"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "Se cerca…"
 
@@ -828,12 +845,6 @@ msgstr "Escriure"
 msgid "Execute"
 msgstr "Execució"
 
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Canceŀla"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTP públic"
@@ -862,79 +873,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV segur (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "Detalls del servidor"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "Nom del servidor o adreça IP"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Servidor:"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "Nom de la compartició al servidor (opcional)"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "Compartició:"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "Camí de la carpeta compartida al servidor (opcional)"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "Carpeta:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "Detalls de l'usuari"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "Nom del domini de Windows"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "Nom del domini:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "Nom de l'usuari al servidor"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "Nom d'usuari:"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "Contrasenya:"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "Recorda aquesta contrasenya."
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "Connecta-hi"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "Continua"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "Connectant…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "Verifiqueu els detalls d'usuari."
 
@@ -1946,28 +1957,28 @@ msgstr "Navega a %s"
 msgid "Go to %s"
 msgstr "Ves a %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr "Escriviu un camí"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr "Més resultats…"
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "En aquesta carpeta"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "Per sota d'aquesta carpeta"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "D'ús recent"
 

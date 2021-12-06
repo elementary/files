@@ -28,11 +28,12 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.1.0" date="2021-10-29" urgency="medium">
+    <release version="6.1.1" date="2021-12-01" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
-          <li>Use "Send Mail" portal instead of contract</li>
+          <li>Close FileChooser with esc key</li>
+          <li>Use new emblems for git status</li>
         </ul>
         <p>Fixes:</p>
         <ul>
@@ -41,6 +42,31 @@
           <li>In Permissions page,show message when no information available</li>
         </ul>
         <p>Other updates:</p>
+          <li>Only allow one FileChooser per parent window</li>
+          <li>Navigate to folder when pressing enter in FileChooser instead of selecting</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.1.0" date="2021-11-29" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Use "Send Mail" portal instead of contract, improving compatibility with alternate email apps</li>
+          <li>Add file filters and New Folder options to file chooser portal</li>
+          <li>Allow blank passwords for remote connections, e.g. for SSH via a private key</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix pasting of selected pathbar text into another window using middle-click</li>
+          <li>Fix selecting multiple groups of files</li>
+          <li>Allow dropping bookmark directly below the Recent bookmark</li>
+          <li>Do not show unusable drop target below the Trash bookmark</li>
+        </ul>
+        <p>Minor updates:</p>
         <ul>
           <li>Updated translations</li>
         </ul>

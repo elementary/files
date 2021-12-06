@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 19:06+0000\n"
-"PO-Revision-Date: 2021-09-30 09:22+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-11-30 14:58+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -18,6 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:110
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "ביטול"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open Files as Read Only"
+msgstr "פתיחת קבצים לקריאה בלבד"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open File as Read Only"
+msgstr "פתיחת קובץ לקריאה בלבד"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -149,7 +166,7 @@ msgstr "לא ניתן לזיהוי"
 msgid "Size:"
 msgstr "גודל:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "סוג:"
@@ -524,7 +541,7 @@ msgstr "גזירת הבחירה במקום"
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "בית"
 
@@ -584,15 +601,15 @@ msgstr "הקובץ שנבחר לא קיים עוד."
 msgid "View the home folder"
 msgstr "הצגת תיקיית הבית"
 
-#: src/View/Sidebar/BookmarkListBox.vala:142
+#: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
 msgstr "הצגת רשימת הקבצים בהם נעשה שימוש לאחרונה"
 
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
+#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
 msgid "Trash"
 msgstr "סל האשפה"
 
-#: src/View/Sidebar/BookmarkListBox.vala:164
+#: src/View/Sidebar/BookmarkListBox.vala:170
 msgid "Open the Trash"
 msgstr "פתיחת סל האשפה"
 
@@ -658,12 +675,12 @@ msgstr "מחיקת סל האשפה לצמיתות"
 msgid "Permanently Delete Trash"
 msgstr "מחיקת סל האשפה לצמיתות"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:104
+#: src/View/Sidebar/PopupMenuBuilder.vala:108
 msgid "Permanently Delete Trash on this Mount"
 msgstr "למחוק אשפה לצמיתות בעיגון זה"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:288
+#: libwidgets/View/SearchResults.vala:289
 msgid "Bookmarks"
 msgstr "סימניות"
 
@@ -725,7 +742,7 @@ msgid "Open the system security and privacy settings app"
 msgstr "פתיחת יישום הגדרות האבטחה והפרטיות של המערכת"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:198
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "ניתן לחפש או להקליד נתיב"
 
@@ -749,11 +766,11 @@ msgstr "הקודם"
 msgid "Next"
 msgstr "הבא"
 
-#: src/View/Widgets/LocationBar.vala:194
+#: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
 msgstr "רענון תיקייה זו"
 
-#: src/View/Widgets/LocationBar.vala:207
+#: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
 msgstr "מתבצע חיפוש…"
 
@@ -825,12 +842,6 @@ msgstr "כתיבה"
 msgid "Execute"
 msgstr "הפעלה"
 
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "ביטול"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "שרת FTP ציבורי"
@@ -859,79 +870,79 @@ msgstr "WebDAV (HTTP)‎"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV מאובטח (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "פרטי שרת"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "שם או כתובת IP של השרת"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "שרת:"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "פתחה:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "שם השיתוף בשרת (רשות)"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "שיתוף:"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "נתיב התיקייה המשותפת בשרת (רשות)"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "תיקייה:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "פרטי המשתמש"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "שם המתחם של Windows"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "שם מתחם:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "שם המשתמש בשרת"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "שם משתמש:"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "ססמה:"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "שמירת ססמה זו"
 
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "התחברות"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "הבא"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "מתבצעת החברות…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "נא לוודא את פרטי המשתמש."
 
@@ -1908,28 +1919,28 @@ msgstr "ניווט אל %s"
 msgid "Go to %s"
 msgstr "מעבר אל %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:370
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr "נא להקליד נתיב"
 
-#: libwidgets/View/SearchResults.vala:75
+#: libwidgets/View/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: libwidgets/View/SearchResults.vala:88
+#: libwidgets/View/SearchResults.vala:89
 msgid "More Results …"
 msgstr "תוצאות נוספות…"
 
-#: libwidgets/View/SearchResults.vala:280
+#: libwidgets/View/SearchResults.vala:281
 msgid "In This Folder"
 msgstr "בתיקייה זו"
 
-#: libwidgets/View/SearchResults.vala:284
+#: libwidgets/View/SearchResults.vala:285
 msgid "Below This Folder"
 msgstr "מתחת לתיקייה זו"
 
-#: libwidgets/View/SearchResults.vala:293
+#: libwidgets/View/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
 

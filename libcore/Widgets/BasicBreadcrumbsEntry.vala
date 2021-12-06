@@ -322,7 +322,11 @@ namespace Files.View.Chrome {
                     return true;
                 }
 
-                reset ();
+                // Do not lose entry text if another window is focused
+                if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+                    reset ();
+                }
+
                 return false;
             }
         }
