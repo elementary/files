@@ -28,7 +28,7 @@ public class Files.TrashMonitor : GLib.Object {
         return marlin_trash_monitor;
     }
 
-    public bool is_empty { get; private set; default=true; }
+    public bool is_empty { get; private set; default = true; }
     private GLib.Icon icon;
     private GLib.FileMonitor file_monitor;
     private GLib.File trash_file;

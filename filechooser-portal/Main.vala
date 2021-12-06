@@ -24,6 +24,7 @@ public class Files.FileChooserPortal : Object {
     private static bool opt_replace = false;
     private static bool show_version = false;
 
+    private HashTable<string, FileChooserDialog> dialogs;
     private DBusConnection connection;
 
     private const OptionEntry[] ENTRIES = {
@@ -34,6 +35,7 @@ public class Files.FileChooserPortal : Object {
 
     public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
+        dialogs = new HashTable<string, FileChooserDialog> (str_hash, str_equal);
     }
 
     public async void open_file (
@@ -45,6 +47,12 @@ public class Files.FileChooserPortal : Object {
         out uint response,
         out HashTable<string, Variant> results
     ) throws DBusError, IOError {
+        if (parent_window in dialogs) {
+            results = new HashTable<string, Variant> (null, null);
+            response = 2;
+            return;
+        }
+
         var directory = "directory" in options && options["directory"].get_boolean ();
 
         var dialog = new FileChooserDialog (
@@ -130,9 +138,11 @@ public class Files.FileChooserPortal : Object {
             open_file.callback ();
         });
 
+        dialogs[parent_window] = dialog;
         dialog.show_all ();
         yield;
 
+        dialogs.remove (parent_window);
         response = _response;
         results = _results;
     }
@@ -146,6 +156,12 @@ public class Files.FileChooserPortal : Object {
         out uint response,
         out HashTable<string, Variant> results
     ) throws DBusError, IOError {
+        if (parent_window in dialogs) {
+            results = new HashTable<string, Variant> (null, null);
+            response = 2;
+            return;
+        }
+
         var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
@@ -231,9 +247,11 @@ public class Files.FileChooserPortal : Object {
             save_file.callback ();
         });
 
+        dialogs[parent_window] = dialog;
         dialog.show_all ();
         yield;
 
+        dialogs.remove (parent_window);
         response = _response;
         results = _results;
     }
@@ -247,6 +265,12 @@ public class Files.FileChooserPortal : Object {
         out uint response,
         out HashTable<string, Variant> results
     ) throws DBusError, IOError {
+        if (parent_window in dialogs) {
+            results = new HashTable<string, Variant> (null, null);
+            response = 2;
+            return;
+        }
+
         var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
@@ -314,9 +338,11 @@ public class Files.FileChooserPortal : Object {
             save_files.callback ();
         });
 
+        dialogs[parent_window] = dialog;
         dialog.show_all ();
         yield;
 
+        dialogs.remove (parent_window);
         response = _response;
         results = _results;
     }

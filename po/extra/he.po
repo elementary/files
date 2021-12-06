@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 11:16+0000\n"
-"PO-Revision-Date: 2021-11-24 07:24+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-12-05 01:53+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -61,261 +61,289 @@ msgstr ""
 "Webdav או שיתוף Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:33
-#: data/io.elementary.files.appdata.xml.in.in:43
-#: data/io.elementary.files.appdata.xml.in.in:56
-#: data/io.elementary.files.appdata.xml.in.in:71
+#: data/io.elementary.files.appdata.xml.in.in:51
+#: data/io.elementary.files.appdata.xml.in.in:123
+#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:188
+msgid "Improvements:"
+msgstr "שיפורים:"
+
+#: data/io.elementary.files.appdata.xml.in.in:35
+msgid "Close FileChooser with esc key"
+msgstr "אפשר לסגור את בוחר הקבצים עם מקש esc"
+
+#: data/io.elementary.files.appdata.xml.in.in:36
+msgid "Use new emblems for git status"
+msgstr "שימוש בסמלים החדשים למצב ה־git"
+
+#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:57
+#: data/io.elementary.files.appdata.xml.in.in:72
 #: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:102
-#: data/io.elementary.files.appdata.xml.in.in:119
-#: data/io.elementary.files.appdata.xml.in.in:156
-#: data/io.elementary.files.appdata.xml.in.in:177
-#: data/io.elementary.files.appdata.xml.in.in:197
+#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/io.elementary.files.appdata.xml.in.in:118
+#: data/io.elementary.files.appdata.xml.in.in:135
+#: data/io.elementary.files.appdata.xml.in.in:172
+#: data/io.elementary.files.appdata.xml.in.in:193
+#: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Fixes:"
 msgstr "תיקונים:"
 
-#: data/io.elementary.files.appdata.xml.in.in:35
-msgid ""
-"Fix pasting of selected pathbar text into another window using middle-click"
-msgstr "תוקנה הדבקת הטקסט הנבחר בסרגל הנתיב לחלון אחר בלחיצה כפולה"
+#: data/io.elementary.files.appdata.xml.in.in:40
+msgid "Only allow one FileChooser per parent window"
+msgstr "יאופשר בוחר קבצים אחד לכל חלון הורה"
 
-#: data/io.elementary.files.appdata.xml.in.in:36
+#: data/io.elementary.files.appdata.xml.in.in:41
+msgid ""
+"Navigate to folder when pressing enter in FileChooser instead of selecting"
+msgstr "ניווט לתיקייה בלחיצה על enter בבוחר הקבצים במקום על ידי בחירה"
+
+#: data/io.elementary.files.appdata.xml.in.in:43
+#: data/io.elementary.files.appdata.xml.in.in:64
+#: data/io.elementary.files.appdata.xml.in.in:228
+#: data/io.elementary.files.appdata.xml.in.in:242
+msgid "Minor updates:"
+msgstr "תיקונים מזעריים:"
+
+#: data/io.elementary.files.appdata.xml.in.in:45
+#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:81
+#: data/io.elementary.files.appdata.xml.in.in:97
+#: data/io.elementary.files.appdata.xml.in.in:112
+#: data/io.elementary.files.appdata.xml.in.in:129
+#: data/io.elementary.files.appdata.xml.in.in:158
+#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:200
+#: data/io.elementary.files.appdata.xml.in.in:222
+#: data/io.elementary.files.appdata.xml.in.in:236
+#: data/io.elementary.files.appdata.xml.in.in:249
+#: data/io.elementary.files.appdata.xml.in.in:262
+#: data/io.elementary.files.appdata.xml.in.in:294
+#: data/io.elementary.files.appdata.xml.in.in:316
+#: data/io.elementary.files.appdata.xml.in.in:325
+#: data/io.elementary.files.appdata.xml.in.in:334
+#: data/io.elementary.files.appdata.xml.in.in:345
+#: data/io.elementary.files.appdata.xml.in.in:354
+#: data/io.elementary.files.appdata.xml.in.in:373
+#: data/io.elementary.files.appdata.xml.in.in:384
+#: data/io.elementary.files.appdata.xml.in.in:392
+#: data/io.elementary.files.appdata.xml.in.in:424
+msgid "Updated translations"
+msgstr "התרגומים עודכנו"
+
+#: data/io.elementary.files.appdata.xml.in.in:53
+msgid ""
+"Use \"Send Mail\" portal instead of contract, improving compatibility with "
+"alternate email apps"
+msgstr ""
+"להשתמש בשער „שליחת דוא״ל” במקום בחוזה, משפר את התאימות עם יישומי דוא״ל "
+"חלופיים"
+
+#: data/io.elementary.files.appdata.xml.in.in:54
+msgid "Add file filters and New Folder options to file chooser portal"
+msgstr "נוספו מסנני קבצים ואפשרויות תיקיות חדשות לשער בוחר הקבצים"
+
+#: data/io.elementary.files.appdata.xml.in.in:55
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
 "מעתה מותר להשתמש בססמאות ריקות לחיבורים מרוחקים, למשל עבור SSH דרך מפתח פרטי"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:107
-#: data/io.elementary.files.appdata.xml.in.in:124
-#: data/io.elementary.files.appdata.xml.in.in:148
-#: data/io.elementary.files.appdata.xml.in.in:172
-msgid "Improvements:"
-msgstr "שיפורים:"
+#: data/io.elementary.files.appdata.xml.in.in:59
+msgid ""
+"Fix pasting of selected pathbar text into another window using middle-click"
+msgstr "תוקנה הדבקת הטקסט הנבחר בסרגל הנתיב לחלון אחר בלחיצה כפולה"
 
-#: data/io.elementary.files.appdata.xml.in.in:40
-msgid "Use \"Send Mail\" portal instead of contract"
-msgstr "להשתמש בשער „שליחת דוא״ל” במקום בחוזה"
+#: data/io.elementary.files.appdata.xml.in.in:60
+msgid "Fix selecting multiple groups of files"
+msgstr "תוקנה בחירת מגוון קבוצות של קבצים"
 
-#: data/io.elementary.files.appdata.xml.in.in:41
-msgid "Add file filters and new folder options to Filechooser portal"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:45
+#: data/io.elementary.files.appdata.xml.in.in:61
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr "ניתן לגרור סימניה ישירות מתחת לסימניה האחרונה"
 
-#: data/io.elementary.files.appdata.xml.in.in:46
+#: data/io.elementary.files.appdata.xml.in.in:62
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr "לא יוצג יעד גרירה בלתי שמיש מתחת לסימניית האשפה"
 
-#: data/io.elementary.files.appdata.xml.in.in:48
-#: data/io.elementary.files.appdata.xml.in.in:212
-#: data/io.elementary.files.appdata.xml.in.in:226
-msgid "Minor updates:"
-msgstr "תיקונים מזעריים:"
-
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:65
-#: data/io.elementary.files.appdata.xml.in.in:81
-#: data/io.elementary.files.appdata.xml.in.in:96
-#: data/io.elementary.files.appdata.xml.in.in:113
-#: data/io.elementary.files.appdata.xml.in.in:142
-#: data/io.elementary.files.appdata.xml.in.in:166
-#: data/io.elementary.files.appdata.xml.in.in:184
-#: data/io.elementary.files.appdata.xml.in.in:206
-#: data/io.elementary.files.appdata.xml.in.in:220
-#: data/io.elementary.files.appdata.xml.in.in:233
-#: data/io.elementary.files.appdata.xml.in.in:246
-#: data/io.elementary.files.appdata.xml.in.in:278
-#: data/io.elementary.files.appdata.xml.in.in:300
-#: data/io.elementary.files.appdata.xml.in.in:309
-#: data/io.elementary.files.appdata.xml.in.in:318
-#: data/io.elementary.files.appdata.xml.in.in:329
-#: data/io.elementary.files.appdata.xml.in.in:338
-#: data/io.elementary.files.appdata.xml.in.in:357
-#: data/io.elementary.files.appdata.xml.in.in:368
-#: data/io.elementary.files.appdata.xml.in.in:376
-#: data/io.elementary.files.appdata.xml.in.in:408
-msgid "Updated translations"
-msgstr "התרגומים עודכנו"
-
-#: data/io.elementary.files.appdata.xml.in.in:58
+#: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Show translated bookmark names when changing languages"
 msgstr "הצגת שמות מתורגמים של סימניות בעת החלפת שפות"
 
-#: data/io.elementary.files.appdata.xml.in.in:59
+#: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
 msgstr "עצירת סמלי קובצי שמע שנעלמים בזמן גרירה או החלפת תצוגה"
 
-#: data/io.elementary.files.appdata.xml.in.in:60
+#: data/io.elementary.files.appdata.xml.in.in:76
 msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
 msgstr "הופסקה הצגת שכבת על של מצב בעת החלפת תיקיית על בתצוגת עמודות"
 
-#: data/io.elementary.files.appdata.xml.in.in:62
-#: data/io.elementary.files.appdata.xml.in.in:79
-#: data/io.elementary.files.appdata.xml.in.in:94
-#: data/io.elementary.files.appdata.xml.in.in:111
-#: data/io.elementary.files.appdata.xml.in.in:139
-#: data/io.elementary.files.appdata.xml.in.in:163
-#: data/io.elementary.files.appdata.xml.in.in:182
-#: data/io.elementary.files.appdata.xml.in.in:204
-#: data/io.elementary.files.appdata.xml.in.in:257
+#: data/io.elementary.files.appdata.xml.in.in:78
+#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:110
+#: data/io.elementary.files.appdata.xml.in.in:127
+#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/io.elementary.files.appdata.xml.in.in:179
+#: data/io.elementary.files.appdata.xml.in.in:198
+#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:273
 msgid "Other updates:"
 msgstr "עדכונים נוספים:"
 
-#: data/io.elementary.files.appdata.xml.in.in:64
+#: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Remove message about reporting issues when running from Terminal"
 msgstr "הסרת הודעה על דיווח תקלות בעת הרצה ממסוף"
 
-#: data/io.elementary.files.appdata.xml.in.in:73
+#: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Open bookmarks in a new tab with Ctrl + Click"
 msgstr "אפשר לפתוח סימניות בלשונית חדשה עם Ctrl + לחיצה"
 
-#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr "תוקנה השלכת כתובות להתקני אחסון ומיקומי רשת בסרגל הצד"
 
-#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Fix restoring tabs after a system restart"
 msgstr "תוקן שחזור לשוניות לאחר הפעלת המערכת מחדש"
 
-#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:92
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr "הבחירה לא תבוטל לאחר לחיצה על מקום פנוי מסביב לקובץ או לתיקייה"
 
-#: data/io.elementary.files.appdata.xml.in.in:77
+#: data/io.elementary.files.appdata.xml.in.in:93
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr "תפריט ההקשר של התיקייה יוצג בלחיצה על כפתור משני מחוץ לבחירה"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Fix small context menus on breadcrumbs"
 msgstr "תוקנו תפריטי ההקשר הקטנים במחווני הנתיב"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgstr "תוקנה הוספה של פריט בודד לסימניות עם Ctrl + D"
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:107
 msgid "Fix renaming bookmarks in the sidebar"
 msgstr "שינוי שם של סימניות בסרגל הצד תוקן"
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:108
 msgid "FIx an issue with showing color tags when thumbnails are hidden"
 msgstr "תיקון תקלה בהצגת תגיות צבע כשתמונות ממוזערות מוסתרות"
 
-#: data/io.elementary.files.appdata.xml.in.in:104
+#: data/io.elementary.files.appdata.xml.in.in:120
 msgid "Fix freeze when comparing copied files"
 msgstr "תיקון קיפאון בעת השוואת קבצים מועתקים"
 
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Fix truncation of final column in Column View under some circumstances"
 msgstr "תוקן החיתוך של העמודה האחרונה בתצוגת העמודות במקרים מסוימים"
 
-#: data/io.elementary.files.appdata.xml.in.in:109
+#: data/io.elementary.files.appdata.xml.in.in:125
 msgid "Show more keyboard accelerators in menus"
 msgstr "יותר קיצורי מקלדת מופיעים בתפריטים"
 
-#: data/io.elementary.files.appdata.xml.in.in:121
+#: data/io.elementary.files.appdata.xml.in.in:137
 msgid "Fix connecting to AFP servers so that passwords are remembered"
 msgstr "תוקן חיבור לשרתי AFP כדי שססמאות תישמרנה"
 
-#: data/io.elementary.files.appdata.xml.in.in:122
+#: data/io.elementary.files.appdata.xml.in.in:138
 msgid "Fix MTP mounts"
 msgstr "תוקנו עיגוני התקני מוזיקה"
 
-#: data/io.elementary.files.appdata.xml.in.in:126
+#: data/io.elementary.files.appdata.xml.in.in:142
 msgid "Launch files with double click instead of single click"
 msgstr "הפעלת קבצים בלחיצה כפולה במקום בלחיצה בודדת"
 
-#: data/io.elementary.files.appdata.xml.in.in:127
+#: data/io.elementary.files.appdata.xml.in.in:143
 msgid "Provide a File Chooser portal for Flatpak apps"
 msgstr "אספקת שער בחירת קבצים ליישומי Flatpak"
 
-#: data/io.elementary.files.appdata.xml.in.in:128
+#: data/io.elementary.files.appdata.xml.in.in:144
 msgid "Brand new animated Sidebar"
 msgstr "סרגל צד מונפש חדש לגמרי"
 
-#: data/io.elementary.files.appdata.xml.in.in:129
+#: data/io.elementary.files.appdata.xml.in.in:145
 msgid "Dark style support"
 msgstr "תמיכה בסגנון כהה"
 
-#: data/io.elementary.files.appdata.xml.in.in:130
+#: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Mint and Bubblegum color tags"
 msgstr "תגיות צבע מנטה ומסטיק"
 
-#: data/io.elementary.files.appdata.xml.in.in:131
+#: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Do not restore locations that have become inaccessible"
 msgstr "לא לשחזר את המיקומים שהפכו לבלתי נגישים"
 
-#: data/io.elementary.files.appdata.xml.in.in:132
+#: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Clicking between thumbnail and text now activates/selects in Icon view"
 msgstr "לחיצה בין התמונה הממוזערת והטקסט מעתה מפעילה/בוחרת בתצוגת סמלים"
 
-#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:149
 msgid "AFC protocol support"
 msgstr "תמיכה בפרוטוקול AFC"
 
-#: data/io.elementary.files.appdata.xml.in.in:134
+#: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Add a smaller minimum icon size in list view"
 msgstr "הוספת גודל מזערי קטן יותר בתצוגת רשימה"
 
-#: data/io.elementary.files.appdata.xml.in.in:135
+#: data/io.elementary.files.appdata.xml.in.in:151
 msgid "Show emblems inline in list views"
 msgstr "הצגת סמלים כחלק מהשורה בתצוגת רשימה"
 
-#: data/io.elementary.files.appdata.xml.in.in:136
+#: data/io.elementary.files.appdata.xml.in.in:152
 msgid "Performance improvements"
 msgstr "שיפורי ביצועים"
 
-#: data/io.elementary.files.appdata.xml.in.in:137
+#: data/io.elementary.files.appdata.xml.in.in:153
 msgid "Stability improvements"
 msgstr "שיפורי יציבות"
 
-#: data/io.elementary.files.appdata.xml.in.in:141
+#: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Rename \"Devices\" to \"Storage\""
 msgstr "השם של „התקנים” הוחלף לכדי „אחסון”"
 
-#: data/io.elementary.files.appdata.xml.in.in:150
+#: data/io.elementary.files.appdata.xml.in.in:166
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr "אפשרות תפריט סימניות לטובת סרגל צד לעיגון מיקומי רשת"
 
-#: data/io.elementary.files.appdata.xml.in.in:151
+#: data/io.elementary.files.appdata.xml.in.in:167
 msgid "Show folder item count in List View"
 msgstr "הצגת מספור פריטים בתיקייה בתצוגת רשימה"
 
-#: data/io.elementary.files.appdata.xml.in.in:152
+#: data/io.elementary.files.appdata.xml.in.in:168
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
 "מעתה מוצגות תמונות ממוזערות על התקני מדיה ומצלמות לצד מיקומי רשת כבררת מחדל"
 
-#: data/io.elementary.files.appdata.xml.in.in:153
+#: data/io.elementary.files.appdata.xml.in.in:169
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr "חלון מאפיינים: לאפשר את העתקת שם הקובץ כשלא ניתן לערוך אותו"
 
-#: data/io.elementary.files.appdata.xml.in.in:154
+#: data/io.elementary.files.appdata.xml.in.in:170
 msgid "Improved tooltip formatting for devices in the sidebar"
 msgstr "עיצוב משופר לחלוניות עצה להתקנים בסרגל הצד"
 
-#: data/io.elementary.files.appdata.xml.in.in:158
+#: data/io.elementary.files.appdata.xml.in.in:174
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr "תיקון קריסה בעת לחיצה על Enter ומקש נוסף באותו הזמן"
 
-#: data/io.elementary.files.appdata.xml.in.in:159
+#: data/io.elementary.files.appdata.xml.in.in:175
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr "תיקון בטיפול בנתיבים „~” ו־„.” בסרגל הנתיבים"
 
-#: data/io.elementary.files.appdata.xml.in.in:160
+#: data/io.elementary.files.appdata.xml.in.in:176
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr "סרגל הנתיב של בוחר הקבצים לא קורס עוד כשמופעל מתוך Flatpak"
 
-#: data/io.elementary.files.appdata.xml.in.in:161
+#: data/io.elementary.files.appdata.xml.in.in:177
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
@@ -323,286 +351,286 @@ msgstr ""
 "לא להציג את מצב ה־git עבור מאגרים במערכות קבצים דרך FUSE כדי למנוע חסימה "
 "אפשרית"
 
-#: data/io.elementary.files.appdata.xml.in.in:165
+#: data/io.elementary.files.appdata.xml.in.in:181
 msgid "\"Personal\" is now \"Bookmarks\""
 msgstr "„אישי” הוא מעתה „סימניות”"
 
-#: data/io.elementary.files.appdata.xml.in.in:174
+#: data/io.elementary.files.appdata.xml.in.in:190
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
 "נוספו פסי ניצולת כונן צבעוניים לאזהרה ולשגיאה כאשר הכונן מתמלא יתר על המידה"
 
-#: data/io.elementary.files.appdata.xml.in.in:175
+#: data/io.elementary.files.appdata.xml.in.in:191
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr "שינוי גודל החלון נמנע כאשר רוחב עמודת שם הקובץ חורגת מהמקום הזמין"
 
-#: data/io.elementary.files.appdata.xml.in.in:179
+#: data/io.elementary.files.appdata.xml.in.in:195
 msgid "Fix handling of filenames containing the # character"
 msgstr "תוקן טיפול בשמות קבצים שמכילים את התו #"
 
-#: data/io.elementary.files.appdata.xml.in.in:180
+#: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr "תוקנה נסיגה שקשורה בתפריטי הקשר בסרגל נתיב ולחיצה"
 
-#: data/io.elementary.files.appdata.xml.in.in:191
+#: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr "תמונות מודבקות לתוך יישומים אחרים במקום נתיבי קבצים היכן שניתן"
 
-#: data/io.elementary.files.appdata.xml.in.in:192
+#: data/io.elementary.files.appdata.xml.in.in:208
 msgid "Paste into a selected folder when using Ctrl + V"
 msgstr "ניתן להדביק לתיקייה הנבחרת עם Ctrl + V"
 
-#: data/io.elementary.files.appdata.xml.in.in:193
+#: data/io.elementary.files.appdata.xml.in.in:209
 msgid "Show file info overlay in List View as well"
 msgstr "הצגת חלונית פרטי קובץ בתצוגת הרשימה בנוסף"
 
-#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:210
 msgid "Traverse search results with Tab key"
 msgstr "ניתן לעבור בין תוצאות חיפוש עם המקש Tab"
 
-#: data/io.elementary.files.appdata.xml.in.in:195
+#: data/io.elementary.files.appdata.xml.in.in:211
 msgid "Show an error message when attempting to open trashed files"
 msgstr "הצגת הודעת שגיאה בעת ניסיון לפתוח קבצים מהאשפה"
 
-#: data/io.elementary.files.appdata.xml.in.in:199
+#: data/io.elementary.files.appdata.xml.in.in:215
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr "תיקון שטח חסום לעריכה בסרגל הנתיב שמציג את ממלא המקום לתיקיית הבית"
 
-#: data/io.elementary.files.appdata.xml.in.in:200
+#: data/io.elementary.files.appdata.xml.in.in:216
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr "תיקון תקלה שמנעה מהצגת מועדי שינויי קבצים מלהופיע"
 
-#: data/io.elementary.files.appdata.xml.in.in:201
+#: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Fix size of restored tiled window"
 msgstr "תיקון גודל של חלון פרוס משוחזר"
 
-#: data/io.elementary.files.appdata.xml.in.in:202
+#: data/io.elementary.files.appdata.xml.in.in:218
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr "תיקון היעלמות של תגיות צבע כאשר התמונות הממוזערות מוסתרות"
 
-#: data/io.elementary.files.appdata.xml.in.in:214
+#: data/io.elementary.files.appdata.xml.in.in:230
 msgid "Fix crash when a device icon is coming from a file"
 msgstr "תיקון קריסה כאשר סמל של מכשיר מגיע מקובץ"
 
-#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Fix device icon sometimes missing"
 msgstr "תיקון מצב שבו סמל של מכשיר לפעמים חסר"
 
-#: data/io.elementary.files.appdata.xml.in.in:216
+#: data/io.elementary.files.appdata.xml.in.in:232
 msgid "Fix occasional view freeze after renaming"
 msgstr "תיקון הקפאות תצוגה פתאומיות לאחר שינוי שם"
 
-#: data/io.elementary.files.appdata.xml.in.in:217
+#: data/io.elementary.files.appdata.xml.in.in:233
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr "שיפור לוגיקת שינוי השם בעת טיפול ברווח טרומי/סופי"
 
-#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:234
 msgid "Fix breadcrumbs sometimes incorrect at startup"
 msgstr "תיקון ניווט מנוהל שגוי עם הפתיחה"
 
-#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:235
 msgid "Do not show file:// prefix in navigation buttons menus"
 msgstr "לא להציג קידומת file://‎ בתפריטי כפתורי ניווט"
 
-#: data/io.elementary.files.appdata.xml.in.in:228
+#: data/io.elementary.files.appdata.xml.in.in:244
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
 msgstr "תיקון תווית קיצור מקשים עבור „תיקייה חדשה” בתפריט"
 
-#: data/io.elementary.files.appdata.xml.in.in:229
+#: data/io.elementary.files.appdata.xml.in.in:245
 msgid "Fix navigation with back/forward button context menu"
 msgstr "תיקון ניווט עם כפתורי קדימה/אחורה בתפריט הקשר"
 
-#: data/io.elementary.files.appdata.xml.in.in:230
+#: data/io.elementary.files.appdata.xml.in.in:246
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr "תיקון תופעה שבה סרגל הנתיב מציג נתיב שגוי בעת סגירת לשונית"
 
-#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:247
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr "וידוא שקיצורי המקלדת עובדים מיד לאחר יצירה או שינוי שם של קובץ"
 
-#: data/io.elementary.files.appdata.xml.in.in:232
+#: data/io.elementary.files.appdata.xml.in.in:248
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr "לא לכלול „file://‎” בטקסט סרגל הנתיב או בעת הדבקת נתיב כטקסט"
 
-#: data/io.elementary.files.appdata.xml.in.in:240
+#: data/io.elementary.files.appdata.xml.in.in:256
 msgid "Show keyboard shortcuts in menu items"
 msgstr "הצגת קיצורי מקלדת בפריטי תפריט"
 
-#: data/io.elementary.files.appdata.xml.in.in:241
+#: data/io.elementary.files.appdata.xml.in.in:257
 msgid "Fix an issue with breadcrumbs in the file chooser"
 msgstr "תיקון תקלה עם ניווט מנוהל בבוחר הקבצים"
 
-#: data/io.elementary.files.appdata.xml.in.in:242
+#: data/io.elementary.files.appdata.xml.in.in:258
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr "הצגת אזהרה בעת ניתוק כרך שעדיין בשימוש"
 
-#: data/io.elementary.files.appdata.xml.in.in:243
+#: data/io.elementary.files.appdata.xml.in.in:259
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr "תיקון עדכון הסמן לאחר גלילה אופקית בתצוגת העמודות"
 
-#: data/io.elementary.files.appdata.xml.in.in:244
+#: data/io.elementary.files.appdata.xml.in.in:260
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr "תיקון קיבוע סמל תיקייה פתוחה לאחר סגירת תצוגת העמודות"
 
-#: data/io.elementary.files.appdata.xml.in.in:245
+#: data/io.elementary.files.appdata.xml.in.in:261
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr "שימוש בעיצוב פעולה הרסנית עבור כפתורים בתיבות דו־שיח של אשפה"
 
-#: data/io.elementary.files.appdata.xml.in.in:252
+#: data/io.elementary.files.appdata.xml.in.in:268
 msgid "New features:"
 msgstr "תכונות חדשות:"
 
-#: data/io.elementary.files.appdata.xml.in.in:254
+#: data/io.elementary.files.appdata.xml.in.in:270
 msgid "Initial git plugin support"
 msgstr "תמיכה ראשונית בתוסף git"
 
-#: data/io.elementary.files.appdata.xml.in.in:255
+#: data/io.elementary.files.appdata.xml.in.in:271
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr "מעקב אחר הגדרות היסטוריה גלובליות בעת שחזור ושמירה של לשוניות"
 
-#: data/io.elementary.files.appdata.xml.in.in:259
+#: data/io.elementary.files.appdata.xml.in.in:275
 msgid "Ensure tabs showing same folder remain synchronized"
 msgstr "וידוא שלשוניות שמופיעות באותה התיקייה תישארנה מסונכרנות"
 
-#: data/io.elementary.files.appdata.xml.in.in:260
+#: data/io.elementary.files.appdata.xml.in.in:276
 msgid "Fix drag with secondary button on empty space"
 msgstr "תיקון גרירה עם כפתור משני לחלל ריק"
 
-#: data/io.elementary.files.appdata.xml.in.in:261
+#: data/io.elementary.files.appdata.xml.in.in:277
 msgid "Show custom media type icons for installed apps"
 msgstr "הצגת סמלי סוגי מדיה מותאמים אישית ליישומים מותקנים"
 
-#: data/io.elementary.files.appdata.xml.in.in:262
+#: data/io.elementary.files.appdata.xml.in.in:278
 msgid "Fix appearance of inactive diskspace indicator"
 msgstr "תיקון הצגה של מחוון בלתי פעיל עבור שטח פנוי בכונן"
 
-#: data/io.elementary.files.appdata.xml.in.in:263
+#: data/io.elementary.files.appdata.xml.in.in:279
 msgid "Improve pathbar animation"
 msgstr "שיפור הנפשה בסרגל הניווט"
 
-#: data/io.elementary.files.appdata.xml.in.in:264
+#: data/io.elementary.files.appdata.xml.in.in:280
 msgid "Update documentation"
 msgstr "התיעוד עודכן"
 
-#: data/io.elementary.files.appdata.xml.in.in:265
+#: data/io.elementary.files.appdata.xml.in.in:281
 msgid "Update translations"
 msgstr "התרגומים עודכנו"
 
-#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:288
 msgid "Initial cloudproviders plugin support"
 msgstr "תמיכה ראשונית בתוספי ספקי ענן"
 
-#: data/io.elementary.files.appdata.xml.in.in:273
+#: data/io.elementary.files.appdata.xml.in.in:289
 msgid "Fix selecting pasted files"
 msgstr "תיקון בחירה בקבצים שהודבקו"
 
-#: data/io.elementary.files.appdata.xml.in.in:274
+#: data/io.elementary.files.appdata.xml.in.in:290
 msgid "Fix color label visibility while using dark theme"
 msgstr "תיקון מראה תוויות צבע בעת שימוש בערכת עיצוב כהה"
 
-#: data/io.elementary.files.appdata.xml.in.in:275
+#: data/io.elementary.files.appdata.xml.in.in:291
 msgid "Fix selecting files using Shift key"
 msgstr "תיקון בחירת קבצים עם המקש Shift"
 
-#: data/io.elementary.files.appdata.xml.in.in:276
+#: data/io.elementary.files.appdata.xml.in.in:292
 msgid "Draw checkerboard background for image items"
 msgstr "ציור רקע לוח שחמט לפריטי תמונות"
 
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:293
 msgid "Improved styling for disk space bars"
 msgstr "עיצוב משופר לסרגלי נפח בכונן"
 
-#: data/io.elementary.files.appdata.xml.in.in:285
+#: data/io.elementary.files.appdata.xml.in.in:301
 msgid "Show more search results"
 msgstr "הצגת תוצאות חיפוש נוספות"
 
-#: data/io.elementary.files.appdata.xml.in.in:286
+#: data/io.elementary.files.appdata.xml.in.in:302
 msgid "Ensure valid tab name generation"
 msgstr "וידוא יצירת שמות נכונים ללשוניות"
 
-#: data/io.elementary.files.appdata.xml.in.in:287
+#: data/io.elementary.files.appdata.xml.in.in:303
 msgid "Properly sort folders by date and size"
 msgstr "סידור תיקיות לפי תאריך וגודל בצורה נכונה"
 
-#: data/io.elementary.files.appdata.xml.in.in:288
+#: data/io.elementary.files.appdata.xml.in.in:304
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr "טעינת קבצים מהמסוף פותחת מהיום לשונית חדשה במקום חלון חדש"
 
-#: data/io.elementary.files.appdata.xml.in.in:289
+#: data/io.elementary.files.appdata.xml.in.in:305
 msgid "Improve MTP support"
 msgstr "שיפור תמיכה ב־MTP (מכשירי מולטימדיה)"
 
-#: data/io.elementary.files.appdata.xml.in.in:290
+#: data/io.elementary.files.appdata.xml.in.in:306
 msgid "Various tagging feature refinements"
 msgstr "מגוון תיקונים קלים בתכונת התיוג"
 
-#: data/io.elementary.files.appdata.xml.in.in:291
+#: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Keyboard navigation improvements"
 msgstr "שיפורים בניווט עם המקלדת"
 
-#: data/io.elementary.files.appdata.xml.in.in:292
+#: data/io.elementary.files.appdata.xml.in.in:308
 msgid "Symlink copy and paste fixes"
 msgstr "תיקוני העתקה והדבקה של קישורים סימבוליים"
 
-#: data/io.elementary.files.appdata.xml.in.in:293
+#: data/io.elementary.files.appdata.xml.in.in:309
 msgid "Avoid crash when Templates folder is null"
 msgstr "מניעת קריסה כאשר תיקיית התבניות ריקה"
 
-#: data/io.elementary.files.appdata.xml.in.in:294
+#: data/io.elementary.files.appdata.xml.in.in:310
 msgid "Reduce memory footprint of FileChooserDialog"
 msgstr "הפחתת טביעת הרגל בזיכרון עבור FileChooserDialog"
 
-#: data/io.elementary.files.appdata.xml.in.in:295
+#: data/io.elementary.files.appdata.xml.in.in:311
 msgid "Avoid crash when selecting image file in some situations"
 msgstr "הימנעות מקריסה בעת בחירת קובץ תמונה במקרים מסוימים"
 
-#: data/io.elementary.files.appdata.xml.in.in:296
+#: data/io.elementary.files.appdata.xml.in.in:312
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
 msgstr "תיקון חלון תהליך שלא נסגר בעת העתקת קבצים מהרשת להתקן אחסון נתיק"
 
-#: data/io.elementary.files.appdata.xml.in.in:297
+#: data/io.elementary.files.appdata.xml.in.in:313
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr "תיקון גרירה והשלכה לאחר לחיצה כפולה בחלל ריק"
 
-#: data/io.elementary.files.appdata.xml.in.in:298
+#: data/io.elementary.files.appdata.xml.in.in:314
 msgid "Avoid crash while scrolling over view switcher"
 msgstr "הימנעות מקריסה בעת גלילה על גבי מחליף תצוגות"
 
-#: data/io.elementary.files.appdata.xml.in.in:299
+#: data/io.elementary.files.appdata.xml.in.in:315
 msgid "Avoid possible crash in some copy and paste situations"
 msgstr "הימנעות מקריסה אפשרית בכל מיני מקרים של העתקה והדבקה"
 
-#: data/io.elementary.files.appdata.xml.in.in:307
+#: data/io.elementary.files.appdata.xml.in.in:323
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr "תיקון ניווט בעזרת מקלדת לבחירה נקודתית של קבצים בתצוגת סמלים"
 
-#: data/io.elementary.files.appdata.xml.in.in:308
+#: data/io.elementary.files.appdata.xml.in.in:324
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
 "ביטול סגנון ממלא מקום החיפוש כקוד קבוע, תיקון התקלה עם ערכת העיצוב הכהה"
 
-#: data/io.elementary.files.appdata.xml.in.in:316
+#: data/io.elementary.files.appdata.xml.in.in:332
 msgid "Minor spacing adjustments to location bar"
 msgstr "התאמות ריווח מזעריות לסרגל הכתובות"
 
-#: data/io.elementary.files.appdata.xml.in.in:317
+#: data/io.elementary.files.appdata.xml.in.in:333
 msgid "Fix F2 renaming behavior"
 msgstr "תיקון התנהגות שינוי השם עם F2"
 
-#: data/io.elementary.files.appdata.xml.in.in:325
+#: data/io.elementary.files.appdata.xml.in.in:341
 msgid "Minor spacing adjustments to location breadcrumbs"
 msgstr "התאמות ריווח מזעריות לסמני הדרך של המיקום"
 
-#: data/io.elementary.files.appdata.xml.in.in:326
+#: data/io.elementary.files.appdata.xml.in.in:342
 msgid "Consistently remember color tags"
 msgstr "תגיות הצבע נשמרות באופן עקבי"
 
-#: data/io.elementary.files.appdata.xml.in.in:327
+#: data/io.elementary.files.appdata.xml.in.in:343
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
@@ -610,278 +638,278 @@ msgstr ""
 "טעינת התמונות הממוזערות מחדש בעת שינוי רמת תקריב כדי למנוע הצגת ממלאי מקום "
 "כשאין בכך צורך"
 
-#: data/io.elementary.files.appdata.xml.in.in:328
+#: data/io.elementary.files.appdata.xml.in.in:344
 msgid "Fix running scripts with spaces in filename"
 msgstr "תיקון הרצת סקריפטים עם רווח בשם הקובץ"
 
-#: data/io.elementary.files.appdata.xml.in.in:336
+#: data/io.elementary.files.appdata.xml.in.in:352
 msgid "Fix high CPU regression in version 4.1.4"
 msgstr "תיקון רגרסיה שהעמיסה על המעבד בגרסה 4.1.4"
 
-#: data/io.elementary.files.appdata.xml.in.in:337
+#: data/io.elementary.files.appdata.xml.in.in:353
 msgid "File sorting fixes"
 msgstr "תיקונים במיון קבצים"
 
-#: data/io.elementary.files.appdata.xml.in.in:345
+#: data/io.elementary.files.appdata.xml.in.in:361
 msgid "Meson: fix soversion names"
 msgstr "Meson: תיקון שמות soversion"
 
-#: data/io.elementary.files.appdata.xml.in.in:346
+#: data/io.elementary.files.appdata.xml.in.in:362
 msgid "Remove CMake build system"
 msgstr "הסרת מערכת הבנייה CMake"
 
-#: data/io.elementary.files.appdata.xml.in.in:347
+#: data/io.elementary.files.appdata.xml.in.in:363
 msgid "Fix missing File System properties menu"
 msgstr "תיקון תפריט מאפיינים חסר למערכת הקבצים"
 
-#: data/io.elementary.files.appdata.xml.in.in:348
+#: data/io.elementary.files.appdata.xml.in.in:364
 msgid "Drop intltool dependency"
 msgstr "הסרת התלות ב־intltool"
 
-#: data/io.elementary.files.appdata.xml.in.in:349
+#: data/io.elementary.files.appdata.xml.in.in:365
 msgid "Fix default file type handler logic"
 msgstr "תיקון הלוגיקה של הטיפול בסוגי קבצים כבררת מחדל"
 
-#: data/io.elementary.files.appdata.xml.in.in:350
+#: data/io.elementary.files.appdata.xml.in.in:366
 msgid "Fix initial search window size too small"
 msgstr "תיקון מצב בו חלון החיפוש קטן מדי בזמן ההפעלה"
 
-#: data/io.elementary.files.appdata.xml.in.in:351
+#: data/io.elementary.files.appdata.xml.in.in:367
 msgid "Add option to disable local file thumbnails"
 msgstr "הוספת אפשרות להשבתת תמונות ממוזערות לקבצים מקומיים"
 
-#: data/io.elementary.files.appdata.xml.in.in:352
+#: data/io.elementary.files.appdata.xml.in.in:368
 msgid "Fix crash when opening multiple video files"
 msgstr "תיקון קריסה בעת פתיחת מספר קובצי וידאו יחדיו"
 
-#: data/io.elementary.files.appdata.xml.in.in:353
+#: data/io.elementary.files.appdata.xml.in.in:369
 msgid "Fix some timing issues around adding and removing files"
 msgstr "תיקון תקלות תזמון סביב הוספה והסרה של קבצים"
 
-#: data/io.elementary.files.appdata.xml.in.in:354
+#: data/io.elementary.files.appdata.xml.in.in:370
 msgid "Meson: fix missing library headers"
 msgstr "Meson: תיקון כותרות ספריות חסרות"
 
-#: data/io.elementary.files.appdata.xml.in.in:355
+#: data/io.elementary.files.appdata.xml.in.in:371
 msgid "Fix color tag display"
 msgstr "תיקון תצוגת תגיות צבעוניות"
 
-#: data/io.elementary.files.appdata.xml.in.in:356
+#: data/io.elementary.files.appdata.xml.in.in:372
 msgid "Show reserved space in Properties window"
 msgstr "הצגת מקום שמור בחלון המאפיינים"
 
-#: data/io.elementary.files.appdata.xml.in.in:364
+#: data/io.elementary.files.appdata.xml.in.in:380
 msgid "Add border radius to text background"
 msgstr "הוספת רדיוס מסגרת לרקע הטקסט"
 
-#: data/io.elementary.files.appdata.xml.in.in:365
+#: data/io.elementary.files.appdata.xml.in.in:381
 msgid "Fix file mimetype association regression"
 msgstr "תיקון רגרסיה בשיוך לפי סיווג mime"
 
-#: data/io.elementary.files.appdata.xml.in.in:366
+#: data/io.elementary.files.appdata.xml.in.in:382
 msgid "New pathbar tooltips"
 msgstr "חלוניות עצה חדשות לסרגל הנתיב"
 
-#: data/io.elementary.files.appdata.xml.in.in:367
+#: data/io.elementary.files.appdata.xml.in.in:383
 msgid "Build fixes"
 msgstr "תיקוני בנייה"
 
-#: data/io.elementary.files.appdata.xml.in.in:375
+#: data/io.elementary.files.appdata.xml.in.in:391
 msgid "Plugin build fixes"
 msgstr "תיקוני בניית תוספים"
 
-#: data/io.elementary.files.appdata.xml.in.in:383
+#: data/io.elementary.files.appdata.xml.in.in:399
 msgid "Fix Ctrl+Tab behavior"
 msgstr "תיקון התנהגות Ctrl+Tab"
 
-#: data/io.elementary.files.appdata.xml.in.in:384
+#: data/io.elementary.files.appdata.xml.in.in:400
 msgid "Fix building without Unity library"
 msgstr "תיקון בנייה בלי ספריית Unity"
 
-#: data/io.elementary.files.appdata.xml.in.in:391
+#: data/io.elementary.files.appdata.xml.in.in:407
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr "הסתרת צייני מיקום והצגת ממלאי מקום וסמל חיפוש בתיקיית הבית"
 
-#: data/io.elementary.files.appdata.xml.in.in:392
+#: data/io.elementary.files.appdata.xml.in.in:408
 msgid "Style error dialogs"
 msgstr "הוספת עיצוב להודעות שגיאה"
 
-#: data/io.elementary.files.appdata.xml.in.in:393
+#: data/io.elementary.files.appdata.xml.in.in:409
 msgid "Right click fixes"
 msgstr "תיקוני מקש ימני"
 
-#: data/io.elementary.files.appdata.xml.in.in:394
+#: data/io.elementary.files.appdata.xml.in.in:410
 msgid "Reload recent view when privacy setting changes"
 msgstr "טעינת התצוגה האחרונה בחדש בעת שינוי הגדרות פרטיות"
 
-#: data/io.elementary.files.appdata.xml.in.in:395
+#: data/io.elementary.files.appdata.xml.in.in:411
 msgid "`Connect Server` fixes"
 msgstr "תיקוני `התחברות לשרת`"
 
-#: data/io.elementary.files.appdata.xml.in.in:396
+#: data/io.elementary.files.appdata.xml.in.in:412
 msgid "Do not activate multiple files with single click"
 msgstr "לא להפעיל מספר קבצים בלחיצה בודדת"
 
-#: data/io.elementary.files.appdata.xml.in.in:397
+#: data/io.elementary.files.appdata.xml.in.in:413
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr "ניתן להשתמש ב־`Tab` כדי להעביר את המיקוד מהתצוגה לסרגל הצד ולהפך"
 
-#: data/io.elementary.files.appdata.xml.in.in:398
+#: data/io.elementary.files.appdata.xml.in.in:414
 msgid "Delete color tag database entries for trashed files"
 msgstr "מחיקת מסד נתוני תגיות צבע לקבצים שהושלכו לאשפה"
 
-#: data/io.elementary.files.appdata.xml.in.in:399
+#: data/io.elementary.files.appdata.xml.in.in:415
 msgid "Throttle tab closing"
 msgstr "האטת סגירת לשוניות"
 
-#: data/io.elementary.files.appdata.xml.in.in:400
+#: data/io.elementary.files.appdata.xml.in.in:416
 msgid "`Ctrl` key fixes"
 msgstr "תיקוני כפתור `Ctrl`"
 
-#: data/io.elementary.files.appdata.xml.in.in:401
+#: data/io.elementary.files.appdata.xml.in.in:417
 msgid "Drag and drop fixes"
 msgstr "תיקוני גרירה והשלכה"
 
-#: data/io.elementary.files.appdata.xml.in.in:402
+#: data/io.elementary.files.appdata.xml.in.in:418
 msgid "Show icons in `Open with` menus"
 msgstr "הצגת סמלים בתפריטי `פתיחה באמצעות`"
 
-#: data/io.elementary.files.appdata.xml.in.in:403
+#: data/io.elementary.files.appdata.xml.in.in:419
 msgid "Tooltip fixes"
 msgstr "תיקוני חלוניות עצה"
 
-#: data/io.elementary.files.appdata.xml.in.in:404
+#: data/io.elementary.files.appdata.xml.in.in:420
 msgid "Memory leak fixes"
 msgstr "תיקוני דליפת זיכרון"
 
-#: data/io.elementary.files.appdata.xml.in.in:405
+#: data/io.elementary.files.appdata.xml.in.in:421
 msgid "Crash fixes"
 msgstr "תיקוני קריסות"
 
-#: data/io.elementary.files.appdata.xml.in.in:406
+#: data/io.elementary.files.appdata.xml.in.in:422
 msgid "Trash: respect sound setting"
 msgstr "אשפה: ציות להגדרות שמע"
 
-#: data/io.elementary.files.appdata.xml.in.in:407
+#: data/io.elementary.files.appdata.xml.in.in:423
 msgid "Localization fixes"
 msgstr "תיקוני תרגומים"
 
-#: data/io.elementary.files.appdata.xml.in.in:415
+#: data/io.elementary.files.appdata.xml.in.in:431
 msgid "Over 100 major and minor bug fixes and improvements"
 msgstr "למעלה מ־100 תיקוני תקלות קטנים ומשמעותיים לרבות שיפורים"
 
-#: data/io.elementary.files.appdata.xml.in.in:422
+#: data/io.elementary.files.appdata.xml.in.in:438
 msgid "Honor 12/24hr system setting"
 msgstr "התייחסות להגדרות מערכת 12/24 שעות"
 
-#: data/io.elementary.files.appdata.xml.in.in:423
+#: data/io.elementary.files.appdata.xml.in.in:439
 msgid "Distinguish between tabs with the same name"
 msgstr "הבדלה בין לשוניות באותו השם"
 
-#: data/io.elementary.files.appdata.xml.in.in:424
+#: data/io.elementary.files.appdata.xml.in.in:440
 msgid "Support launching from other applications with a target file selected"
 msgstr "תמיכה בהפעלה מיישומים אחרים עם קובץ יעד נבחר"
 
-#: data/io.elementary.files.appdata.xml.in.in:425
-#: data/io.elementary.files.appdata.xml.in.in:438
-#: data/io.elementary.files.appdata.xml.in.in:452
-#: data/io.elementary.files.appdata.xml.in.in:462
-#: data/io.elementary.files.appdata.xml.in.in:473
+#: data/io.elementary.files.appdata.xml.in.in:441
+#: data/io.elementary.files.appdata.xml.in.in:454
+#: data/io.elementary.files.appdata.xml.in.in:468
+#: data/io.elementary.files.appdata.xml.in.in:478
+#: data/io.elementary.files.appdata.xml.in.in:489
 msgid "New translations"
 msgstr "תרגומים חדשים"
 
-#: data/io.elementary.files.appdata.xml.in.in:426
-#: data/io.elementary.files.appdata.xml.in.in:439
-#: data/io.elementary.files.appdata.xml.in.in:453
-#: data/io.elementary.files.appdata.xml.in.in:463
-#: data/io.elementary.files.appdata.xml.in.in:474
-#: data/io.elementary.files.appdata.xml.in.in:481
-#: data/io.elementary.files.appdata.xml.in.in:488
-#: data/io.elementary.files.appdata.xml.in.in:512
+#: data/io.elementary.files.appdata.xml.in.in:442
+#: data/io.elementary.files.appdata.xml.in.in:455
+#: data/io.elementary.files.appdata.xml.in.in:469
+#: data/io.elementary.files.appdata.xml.in.in:479
+#: data/io.elementary.files.appdata.xml.in.in:490
+#: data/io.elementary.files.appdata.xml.in.in:497
+#: data/io.elementary.files.appdata.xml.in.in:504
+#: data/io.elementary.files.appdata.xml.in.in:528
 msgid "Minor bug fixes"
 msgstr "תיקוני תקלות קטנים"
 
-#: data/io.elementary.files.appdata.xml.in.in:433
+#: data/io.elementary.files.appdata.xml.in.in:449
 msgid "Improved networking support"
 msgstr "תמיכה משופרת בתקשורת"
 
-#: data/io.elementary.files.appdata.xml.in.in:434
+#: data/io.elementary.files.appdata.xml.in.in:450
 msgid "Correct window geometry when snapping to left or right"
 msgstr "לתקן צורת חלון בעת הצמדה לשמאל או לימין"
 
-#: data/io.elementary.files.appdata.xml.in.in:435
+#: data/io.elementary.files.appdata.xml.in.in:451
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr "לחיצה על Ctrl אינה מבטלת שינוי שם כשההגדרה „חשיפת הסמן” פעילה"
 
-#: data/io.elementary.files.appdata.xml.in.in:436
+#: data/io.elementary.files.appdata.xml.in.in:452
 msgid "Switching input language cancels actions"
 msgstr "החלפת שפת קלט מבטלת פעולות"
 
-#: data/io.elementary.files.appdata.xml.in.in:437
-#: data/io.elementary.files.appdata.xml.in.in:451
-#: data/io.elementary.files.appdata.xml.in.in:461
-#: data/io.elementary.files.appdata.xml.in.in:472
+#: data/io.elementary.files.appdata.xml.in.in:453
+#: data/io.elementary.files.appdata.xml.in.in:467
+#: data/io.elementary.files.appdata.xml.in.in:477
+#: data/io.elementary.files.appdata.xml.in.in:488
 msgid "Various crash fixes"
 msgstr "תיקוני קריסות מגוונים"
 
-#: data/io.elementary.files.appdata.xml.in.in:446
+#: data/io.elementary.files.appdata.xml.in.in:462
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
 "דפדפנים כמו Firefox זוכרים מעתה את תיקיית ההורדות האחרונה שהייתה בשימוש"
 
-#: data/io.elementary.files.appdata.xml.in.in:447
+#: data/io.elementary.files.appdata.xml.in.in:463
 msgid "Remember preferred zoom level"
 msgstr "שמירת רמת התקריב המועדפת"
 
-#: data/io.elementary.files.appdata.xml.in.in:448
+#: data/io.elementary.files.appdata.xml.in.in:464
 msgid "Improved input method support"
 msgstr "שיפור התמיכה בשיטות קלט"
 
-#: data/io.elementary.files.appdata.xml.in.in:449
+#: data/io.elementary.files.appdata.xml.in.in:465
 msgid "910x640 minimum window size"
 msgstr "גודל החלון המזערי הוא 910‎×640"
 
-#: data/io.elementary.files.appdata.xml.in.in:450
+#: data/io.elementary.files.appdata.xml.in.in:466
 msgid "Security fixes"
 msgstr "תיקוני אבטחה"
 
-#: data/io.elementary.files.appdata.xml.in.in:460
+#: data/io.elementary.files.appdata.xml.in.in:476
 msgid "Enable drag and drop tabs between windows"
 msgstr "הפעלת גרירה והשלכה של לשוניות בין חלונות"
 
-#: data/io.elementary.files.appdata.xml.in.in:470
+#: data/io.elementary.files.appdata.xml.in.in:486
 msgid "Merge search functionality into Ctrl+F"
 msgstr "מיזוג תכונת המיזוג לתוך Ctrl+F"
 
-#: data/io.elementary.files.appdata.xml.in.in:471
+#: data/io.elementary.files.appdata.xml.in.in:487
 msgid "Improved translation support"
 msgstr "שיפור התמיכה בתרגומים"
 
-#: data/io.elementary.files.appdata.xml.in.in:495
+#: data/io.elementary.files.appdata.xml.in.in:511
 msgid "Fix appdata release dates"
 msgstr "תיקון מועדי הוצאת appdata לאור"
 
-#: data/io.elementary.files.appdata.xml.in.in:502
+#: data/io.elementary.files.appdata.xml.in.in:518
 msgid "Improve file opening over Samba shares"
 msgstr "שיפור פתיחת קבצים דרך חיבורי Samba"
 
-#: data/io.elementary.files.appdata.xml.in.in:503
+#: data/io.elementary.files.appdata.xml.in.in:519
 msgid "Fix a crash when restoring items from the Trash"
 msgstr "תיקון קריסה בעת שחזור קבצים מהאשפה"
 
-#: data/io.elementary.files.appdata.xml.in.in:504
+#: data/io.elementary.files.appdata.xml.in.in:520
 msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr "שיפור רגישות גזירה/העתקה/הדבקה בתפריט ההקשר"
 
-#: data/io.elementary.files.appdata.xml.in.in:505
+#: data/io.elementary.files.appdata.xml.in.in:521
 msgid "Translation updates"
 msgstr "עדכוני תרגומים"
 
-#: data/io.elementary.files.appdata.xml.in.in:517
+#: data/io.elementary.files.appdata.xml.in.in:533
 msgid "elementary, Inc."
 msgstr "elementary בע״מ."
 

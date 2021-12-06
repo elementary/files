@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 11:16+0000\n"
-"PO-Revision-Date: 2021-10-15 22:35+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-11-30 18:07+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
@@ -19,6 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:110
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open Files as Read Only"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
+msgid "Open File as Read Only"
+msgstr ""
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -157,7 +174,7 @@ msgstr "Nepodarilo sa určiť"
 msgid "Size:"
 msgstr "Veľkosť:"
 
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:174
+#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
 #: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
 msgid "Type:"
 msgstr "Typ:"
@@ -841,12 +858,6 @@ msgstr "Zápis"
 msgid "Execute"
 msgstr "Spúšťanie"
 
-#: src/View/Widgets/ProgressInfoWidget.vala:63
-#: libcore/ConnectServerDialog.vala:218 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Zrušiť"
-
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "Verejné FTP"
@@ -875,79 +886,79 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Zabezpečený WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:130
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "Podrobnosti o serveri"
 
-#: libcore/ConnectServerDialog.vala:134
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "Názov serveru alebo jeho IP adresa"
 
-#: libcore/ConnectServerDialog.vala:137
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Server:"
 
-#: libcore/ConnectServerDialog.vala:145
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:177
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "Názov zdieľania na serveri (nepovinné)"
 
-#: libcore/ConnectServerDialog.vala:180
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "Zdieľanie:"
 
-#: libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "Umiestnenie zdieľaného priečinka na serveri (nepovinné)"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "Priečinok:"
 
-#: libcore/ConnectServerDialog.vala:189
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "Podrobnosti o používateľovi"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "Názov domény Windows"
 
-#: libcore/ConnectServerDialog.vala:196
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "Názov domény:"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "Používateľské meno na serveri"
 
-#: libcore/ConnectServerDialog.vala:203
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "Používateľské meno:"
 
-#: libcore/ConnectServerDialog.vala:211
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "Heslo:"
 
-#: libcore/ConnectServerDialog.vala:213
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "Zapamätať si heslo"
 
-#: libcore/ConnectServerDialog.vala:221
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "Pripojiť"
 
-#: libcore/ConnectServerDialog.vala:228
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "Pokračovať"
 
-#: libcore/ConnectServerDialog.vala:279
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "Pripája sa…"
 
-#: libcore/ConnectServerDialog.vala:387
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "Skontrolujte prosím svoje používateľské údaje."
 
@@ -1093,12 +1104,12 @@ msgstr "Nepodarilo sa zistiť pôvodné umiestnenie pre „%s“"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
-msgstr "Položka sa nedá obnoviť z koša."
+msgstr "Položka sa nedá obnoviť z koša"
 
 #: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Pôvodný priečinok %s už neexistuje."
+msgstr "Pôvodný priečinok %s už neexistuje"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
@@ -1144,7 +1155,7 @@ msgstr "Dnes o %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:677
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
 msgstr "Včera o %s"
 
@@ -1344,9 +1355,9 @@ msgstr ""
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "zostáva zmazať %'d súbor"
-msgstr[1] "zostáva zmazať %'d súbory"
-msgstr[2] "zostáva zmazať %'d súborov"
+msgstr[0] "Zostáva zmazať %'d súbor"
+msgstr[1] "Zostáva zmazať %'d súbory"
+msgstr[2] "Zostáva zmazať %'d súborov"
 
 #: libcore/marlin-file-operations.c:380
 msgid "Deleting files"
@@ -1358,9 +1369,9 @@ msgstr "Odstraňujú sa súbory"
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "zostáva %s"
-msgstr[1] "zostávajú %s"
-msgstr[2] "zostáva %s"
+msgstr[0] "Zostáva %s"
+msgstr[1] "Zostávajú %s"
+msgstr[2] "Zostáva %s"
 
 #: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
 #: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
@@ -1475,7 +1486,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:842
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr "Súbor sa nedá presunúť do koša. Skúsiť ho zmazať?"
+msgstr "Súbor sa nedá presunúť do koša. Chcete ho skúsiť zmazať?"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
@@ -2062,9 +2073,8 @@ msgid "Empty the Trash"
 msgstr "Vyprázdniť kôš"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Obnoviť všetko"
+msgstr "Obnoviť vybrané"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
