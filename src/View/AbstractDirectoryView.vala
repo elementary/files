@@ -319,6 +319,7 @@ namespace Files {
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
                 view.key_press_event.connect (on_view_key_press_event);
+                view.key_release_event.connect_after (on_view_key_release_event);
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
@@ -2803,8 +2804,16 @@ namespace Files {
             return false;
         }
 
+        private int n_mods = 0;
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-            if (is_frozen || event.is_modifier == 1) {
+            if (is_frozen) {
+                return true;
+            }
+
+            if (event.is_modifier == 1) {
+                n_mods++;
+                name_renderer.modifier_is_pressed = true;
+                view.queue_draw ();
                 return true;
             }
 
@@ -3102,6 +3111,17 @@ namespace Files {
             });
 
             return res;
+        }
+
+        protected bool on_view_key_release_event (Gdk.EventKey event) {
+            if (event.is_modifier == 1) {
+                n_mods--;
+                assert (n_mods >= 0);
+                name_renderer.modifier_is_pressed = n_mods > 0;
+                view.queue_draw ();
+            }
+
+            return false;
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
