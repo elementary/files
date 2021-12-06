@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-30 06:21+0000\n"
-"PO-Revision-Date: 2021-10-15 22:35+0000\n"
+"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"PO-Revision-Date: 2021-11-30 18:07+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
@@ -20,20 +20,20 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:107
+#: filechooser-portal/FileChooserDialog.vala:110
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: filechooser-portal/FileChooserDialog.vala:120
-#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:120
-#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:123
+#: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
 msgstr ""
 
@@ -1104,12 +1104,12 @@ msgstr "Nepodarilo sa zistiť pôvodné umiestnenie pre „%s“"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
-msgstr "Položka sa nedá obnoviť z koša."
+msgstr "Položka sa nedá obnoviť z koša"
 
 #: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Pôvodný priečinok %s už neexistuje."
+msgstr "Pôvodný priečinok %s už neexistuje"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
@@ -1155,7 +1155,7 @@ msgstr "Dnes o %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:677
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
 msgstr "Včera o %s"
 
@@ -1355,9 +1355,9 @@ msgstr ""
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "zostáva zmazať %'d súbor"
-msgstr[1] "zostáva zmazať %'d súbory"
-msgstr[2] "zostáva zmazať %'d súborov"
+msgstr[0] "Zostáva zmazať %'d súbor"
+msgstr[1] "Zostáva zmazať %'d súbory"
+msgstr[2] "Zostáva zmazať %'d súborov"
 
 #: libcore/marlin-file-operations.c:380
 msgid "Deleting files"
@@ -1369,9 +1369,9 @@ msgstr "Odstraňujú sa súbory"
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "zostáva %s"
-msgstr[1] "zostávajú %s"
-msgstr[2] "zostáva %s"
+msgstr[0] "Zostáva %s"
+msgstr[1] "Zostávajú %s"
+msgstr[2] "Zostáva %s"
 
 #: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
 #: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
@@ -1486,7 +1486,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:842
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr "Súbor sa nedá presunúť do koša. Skúsiť ho zmazať?"
+msgstr "Súbor sa nedá presunúť do koša. Chcete ho skúsiť zmazať?"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
@@ -2073,9 +2073,8 @@ msgid "Empty the Trash"
 msgstr "Vyprázdniť kôš"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Obnoviť všetko"
+msgstr "Obnoviť vybrané"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
