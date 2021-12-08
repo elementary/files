@@ -3238,13 +3238,14 @@ namespace Files {
         }
 
         protected bool on_view_key_release_event (Gdk.EventKey event) {
-            if (event.is_modifier == 1) {
+            // Can get release signal without press signal under some circumstances
+            // For example dragging window with SUPER key
+            if (event.is_modifier == 1 && n_mods > 0) {
                 n_mods--;
-                assert (n_mods >= 0);
-                name_renderer.modifier_is_pressed = n_mods > 0;
-                view.queue_draw ();
             }
 
+            name_renderer.modifier_is_pressed = n_mods > 0;
+            view.queue_draw ();
             return false;
         }
 
@@ -3312,6 +3313,37 @@ namespace Files {
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
             item_hovered (null); /* Ensure overlay statusbar disappears */
             hover_path = null;
+            // Ensure underlining hyperlinks stays correct when dragging out of window
+            n_mods = 0;
+            name_renderer.modifier_is_pressed = false;
+            return false;
+        }
+
+        protected bool on_enter_notify_event (Gdk.EventCrossing event) {
+            // Ensure underlining hyperlinks correct when entering window
+            //TODO Is there a simpler way of counting number of modifier keys held down?
+            var mods = (event.state & Gtk.accelerator_get_default_mod_mask ());
+            if (((mods & Gdk.ModifierType.SHIFT_MASK) != 0)) {
+                n_mods++;
+            }
+
+            if (((mods & Gdk.ModifierType.CONTROL_MASK) != 0)) {
+                n_mods++;
+            }
+
+            if ((mods & Gdk.ModifierType.MOD1_MASK) != 0) {
+                n_mods++;
+            }
+
+            if (((mods &
+                 ~Gdk.ModifierType.SHIFT_MASK) &
+                 ~Gdk.ModifierType.CONTROL_MASK &
+                 ~Gdk.ModifierType.MOD1_MASK) != 0) {
+
+                n_mods++;
+            }
+
+            name_renderer.modifier_is_pressed = n_mods > 0;
             return false;
         }
 
