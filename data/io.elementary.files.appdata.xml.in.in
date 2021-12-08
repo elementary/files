@@ -34,6 +34,7 @@
         <ul>
           <li>Close FileChooser with esc key</li>
           <li>Use new emblems for git status</li>
+          <li>Show selection actions in secondary click menu</li>
         </ul>
         <p>Fixes:</p>
         <ul>
