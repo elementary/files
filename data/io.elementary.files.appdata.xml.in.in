@@ -34,8 +34,15 @@
         <ul>
           <li>Close FileChooser with esc key</li>
           <li>Use new emblems for git status</li>
+          <li>Show selection actions in secondary click menu</li>
         </ul>
         <p>Fixes:</p>
+        <ul>
+          <li>Always show Permissions page in Properties dialog</li>
+          <li>In Permissions page,show user and group numeric IDs when names not available</li>
+          <li>In Permissions page,show message when no information available</li>
+        </ul>
+        <p>Other updates:</p>
         <ul>
           <li>Only allow one FileChooser per parent window</li>
           <li>Navigate to folder when pressing enter in FileChooser instead of selecting</li>
