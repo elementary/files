@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-03 19:38+0000\n"
+"PO-Revision-Date: 2021-12-09 23:57+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -39,10 +39,8 @@ msgid "Open File as Read Only"
 msgstr "Відкрити файл лише для читання"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " вибрано"
+msgstr "Вибрати"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -50,7 +48,7 @@ msgstr "Відкрити"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Зберегти"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -187,39 +185,32 @@ msgid "Inaccessible"
 msgstr "Недоступно"
 
 #: libcore/File.vala:883
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Неможливо обробити desktop-файл: %s"
+msgstr "Не вдалося обробити файл стільниці: %s"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Неможливо обробити desktop-файл: %s"
+msgstr "Не вдалося обробити файл стільниці: "
 
 #: libcore/File.vala:899
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "Неможливо обробити desktop-файл: %s"
+msgstr "Не вдалося обробити файл стільниці: "
 
 #: libcore/File.vala:908
-#, fuzzy
 msgid "Unable to Launch Desktop File: "
-msgstr "Неможливо обробити desktop-файл: %s"
+msgstr "Неможливо запустити файл стільниці: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Порожній файл"
+msgstr "Порожній"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%i елемент"
+msgstr[1] "%i елементи"
+msgstr[2] "%i елементів"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1166,13 +1157,11 @@ msgstr "Властивості"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Відʼєднати медіапристрій"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Вилучити"
+msgstr "Безпечно витягнути"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1337,16 +1326,14 @@ msgid "Emptying Trash"
 msgstr "Очищення смітника"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Неможливо змонтувати «%s»"
+msgstr "Неможливо демонтувати «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Неможливо витягнути %V"
+msgstr "Неможливо відʼєднати «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1401,7 +1388,7 @@ msgstr "Видалити вибране"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Надіслати е-поштою"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1508,7 +1495,7 @@ msgstr "Зробити типовим"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Не вдалося визначити права керування файлом і дозволи"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1732,17 +1719,15 @@ msgstr "Вставити"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Вибрати всі"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Інвертований вибір"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Відновити все"
+msgstr "Скасувати вибір усіх"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -2011,10 +1996,9 @@ msgstr "Витягнути '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Неможливо змонтувати «%s»"
+msgstr "Демонтувати «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2036,7 +2020,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Не змонтовано"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2057,16 +2041,18 @@ msgstr "Переглянути кореневу частину локально�
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s містить недоступні дані."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Щоб використовувати цей носій, вам може знадобитися відʼєднати та повторно "
+"підʼєднати його або форматуйте його."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Неформатований або відсутній носій"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2103,10 +2089,8 @@ msgid "Connect Server…"
 msgstr "З'єднатися з сервером…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Від'єднати"
+msgstr "Повʼязати монтування"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
