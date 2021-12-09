@@ -38,12 +38,11 @@ libcore/FileOperations/DialogUtils.vala
 libcore/FileOperations/EmptyTrashJob.vala
 libcore/FileOperations/MountUtils.vala
 
-libcore/Widgets/BasicLocationBar.vala
 libcore/Widgets/BasicBreadcrumbsEntry.vala
+libcore/Widgets/BasicLocationBar.vala
 libcore/Widgets/BreadcrumbElement.vala
 libcore/Widgets/BreadcrumbIconList.vala
 libcore/Widgets/ButtonWithMenu.vala
-libcore/Widgets/ImgEventBox.vala
 libcore/Widgets/ViewSwitcher.vala
 
 plugins/pantheon-files-trash/plugin.vala
