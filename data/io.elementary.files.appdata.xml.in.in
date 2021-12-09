@@ -32,15 +32,15 @@
       <description>
         <p>Improvements:</p>
         <ul>
-          <li>Close FileChooser with esc key</li>
+          <li>Close FileChooser with Esc key</li>
           <li>Use new emblems for git status</li>
           <li>Show selection actions in secondary click menu</li>
         </ul>
         <p>Fixes:</p>
         <ul>
           <li>Always show Permissions page in Properties dialog</li>
-          <li>In Permissions page,show user and group numeric IDs when names not available</li>
-          <li>In Permissions page,show message when no information available</li>
+          <li>In Permissions page, show user and group numeric IDs when names not available</li>
+          <li>In Permissions page, show message when no information available</li>
         </ul>
         <p>Other updates:</p>
         <ul>
