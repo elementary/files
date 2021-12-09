@@ -1,3 +1,26 @@
+pantheon-files (6.1.1) bionic; urgency=medium
+
+  * Release 6.1.1 (#1933)
+  * Update translation files
+  * Update translation template
+  * Update POTFILES
+  * Only volume bookmarks where possible (#1752)
+  * Always show Permissions in PropertiesWindow with as much information
+    as is available (#1881)
+  * Add selection actions to context menu (#1904)
+  * Merge libwidgets and libcore. (#1928)
+  * GitPlugin: use git emblem icon names (#1934)
+  * Fix filechooser startup and browse (#1931)
+  * Sync trash icon (#1927)
+  * Update AppData
+  * filechooser-portal: grab focus on show
+  * filechooser-portal: close on Esc
+  * filechooser-portal: do not set accept_button as default
+  * filechooser-portal: open one dialog per window
+  * POTFILES: Add FileChooserDialog.vala (#1916)
+
+ -- Cody Garver <cody@elementary.io>  Thu, 09 Dec 2021 19:20:06 +0000
+
 pantheon-files (6.1.0) bionic; urgency=medium
 
   * Release 6.1.0 (#1897)
