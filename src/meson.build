@@ -56,16 +56,16 @@ pantheon_files_exec = executable (
     'View/Widgets/SearchResults.vala',
     'View/Widgets/Welcome.vala',
 
-
     'View/Sidebar/AbstractMountableRow.vala',
     'View/Sidebar/BookmarkListBox.vala',
     'View/Sidebar/BookmarkRow.vala',
     'View/Sidebar/DeviceListBox.vala',
-    'View/Sidebar/DeviceRow.vala',
+    'View/Sidebar/DriveRow.vala',
     'View/Sidebar/NetworkListBox.vala',
     'View/Sidebar/NetworkRow.vala',
     'View/Sidebar/SidebarWindow.vala',
-
+    'View/Sidebar/VolumeRow.vala',
+    'View/Sidebar/VolumelessMountRow.vala',
 
     dependencies : [
         pantheon_files_deps,
