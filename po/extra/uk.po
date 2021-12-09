@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-04 14:23+0000\n"
+"PO-Revision-Date: 2021-12-09 23:57+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -28,7 +28,7 @@ msgstr "Файли"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr "Переглядайте свої файли"
+msgstr "Переглянути свої файли"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
@@ -79,8 +79,6 @@ msgid "Improvements:"
 msgstr "Поліпшено:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Close FileChooser with esc key"
 msgid "Close FileChooser with Esc key"
 msgstr "Закриття оглядача файлів клавішею Esc"
 
@@ -90,7 +88,7 @@ msgstr "Додано нові емблеми для git status"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Show selection actions in secondary click menu"
-msgstr ""
+msgstr "Показ дій вибору в меню правої клавіші миші"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:67
@@ -106,19 +104,20 @@ msgid "Fixes:"
 msgstr "Виправлення:"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
-msgstr "Показ зарезервованого місця у вікні Властивості"
+msgstr "Сторінка дозволів завжди пропонується у діалоговому вікні властивостей"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
+"На сторінці «Дозволи», зʼявляються користувачі та групові числові ID, коли "
+"імена недоступні"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
 msgstr ""
+"На сторінці «Дозволи», зʼявляються повідомлення, коли інформація недоступна"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -196,15 +195,15 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Make ejecting devices safer"
-msgstr ""
+msgstr "Безпечніше відʼєднання знімних носіїв"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Add option to stop drive if possible"
-msgstr ""
+msgstr "Додано опцію зупинки роботи носіїв, якщо це можливо"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Show unformatted drives and drives without media"
-msgstr ""
+msgstr "Показ неформатованих носіїв та носіїв без засобів медіа"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
@@ -227,11 +226,13 @@ msgstr "Прибрано непридатну для мети перетягув
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
+msgstr "Виправлено показ носіїв і томів того ж пристрою на бічній панелі"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
 msgstr ""
+"Виправлено показ SSH-серверів у розділах «Сховище» та «Мережа» на бічній "
+"панелі"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Show translated bookmark names when changing languages"
