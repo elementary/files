@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 18:46+0000\n"
+"POT-Creation-Date: 2021-12-09 19:20+0000\n"
 "PO-Revision-Date: 2021-11-27 11:08+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
@@ -77,7 +77,7 @@ msgid "Improvements:"
 msgstr "İyileştirmeler:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-msgid "Close FileChooser with esc key"
+msgid "Close FileChooser with Esc key"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:36
@@ -109,11 +109,11 @@ msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
-"In Permissions page,show user and group numeric IDs when names not available"
+"In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:43
-msgid "In Permissions page,show message when no information available"
+msgid "In Permissions page, show message when no information available"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:45
