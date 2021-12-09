@@ -60,6 +60,9 @@
           <li>Use "Send Mail" portal instead of contract, improving compatibility with alternate email apps</li>
           <li>Add file filters and New Folder options to file chooser portal</li>
           <li>Allow blank passwords for remote connections, e.g. for SSH via a private key</li>
+          <li>Make ejecting devices safer</li>
+          <li>Add option to stop drive if possible</li>
+          <li>Show unformatted drives and drives without media</li>
         </ul>
         <p>Fixes:</p>
         <ul>
@@ -67,6 +70,8 @@
           <li>Fix selecting multiple groups of files</li>
           <li>Allow dropping bookmark directly below the Recent bookmark</li>
           <li>Do not show unusable drop target below the Trash bookmark</li>
+          <li>Fix sidebar showing both drive and volume for same device</li>
+          <li>Fix sidebar showing SSH servers in both Storage and Network sections</li>
         </ul>
         <p>Minor updates:</p>
         <ul>
