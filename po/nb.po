@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-08-21 12:58+0000\n"
+"PO-Revision-Date: 2021-12-09 23:57+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -31,18 +31,16 @@ msgstr "Avbryt"
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Åpne filer skrivebeskyttet"
 
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Åpne fil skrivebeskyttet"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " valgt"
+msgstr "Velg"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -50,7 +48,7 @@ msgstr "Åpne"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Lagre"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -191,35 +189,27 @@ msgid "Failed to parse the desktop file"
 msgstr "Kunne ikke tolke skrivebordsfilen"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Kunne ikke tolke skrivebordsfil: %s"
+msgstr "Kunne ikke tolke skrivebordsfil: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Kunne lage kommando fra fil: %s"
+msgstr "Kunne lage kommando fra fil: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Kunne ikke starte skrivebordsfil: %s"
+msgstr "Kunne ikke starte skrivebordsfil: | "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Tom fil"
+msgstr "Tom"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i element"
+msgstr[1] "%i elementer"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -358,10 +348,9 @@ msgid "The item cannot be restored from trash"
 msgstr "Elementet kan ikke gjenopprettes fra papirkurven"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Opprinnelig mappe %s finnes ikke lenger"
+msgstr "Den opprinnelige mappen %s finnes ikke lenger"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
@@ -1143,13 +1132,11 @@ msgstr "Egenskaper"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Løs ut medie"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Fjern"
+msgstr "Fjern trygt"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -2011,7 +1998,7 @@ msgstr "%s (%s, %s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Ikke montert"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2032,16 +2019,18 @@ msgstr "Vis roten av det lokale filsystemet"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s inneholder ingen tilgjengelig data."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"For å bruke denne disken må du plugge den inn igjen, sette inn media, eller "
+"formatere den."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Uformatert eller ingen media"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2081,7 +2070,7 @@ msgstr "Koble til tjener …"
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Avmonter"
+msgstr "_Bind montering"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
