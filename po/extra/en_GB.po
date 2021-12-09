@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-04 12:49+0000\n"
-"Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
+"PO-Revision-Date: 2021-12-09 23:57+0000\n"
+"Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
 "Language: en_GB\n"
@@ -76,10 +76,8 @@ msgid "Improvements:"
 msgstr "Improvements:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Close FileChooser with esc key"
 msgid "Close FileChooser with Esc key"
-msgstr "Close FileChooser with esc key"
+msgstr "Close FileChooser with Esc key"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
@@ -87,7 +85,7 @@ msgstr "Use new emblems for git status"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Show selection actions in secondary click menu"
-msgstr ""
+msgstr "Show selection actions in secondary click menu"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:67
@@ -103,19 +101,18 @@ msgid "Fixes:"
 msgstr "Fixes:"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
-msgstr "Show reserved space in Properties window"
+msgstr "Always show Permissions page in Properties dialog"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
+"In Permissions page, show user and group numeric IDs when names not available"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
-msgstr ""
+msgstr "In Permissions page, show message when no information available"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -193,15 +190,15 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Make ejecting devices safer"
-msgstr ""
+msgstr "Make ejecting devices safer"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Add option to stop drive if possible"
-msgstr ""
+msgstr "Add option to stop drive if possible"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Show unformatted drives and drives without media"
-msgstr ""
+msgstr "Show unformatted drives and drives without media"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
@@ -223,11 +220,11 @@ msgstr "Do not show unusable drop target below the Trash bookmark"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
+msgstr "Fix sidebar showing both drive and volume for same device"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr ""
+msgstr "Fix sidebar showing SSH servers in both Storage and Network sections"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Show translated bookmark names when changing languages"
