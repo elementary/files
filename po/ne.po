@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-04 11:42+0000\n"
+"POT-Creation-Date: 2021-12-09 18:46+0000\n"
 "PO-Revision-Date: 2015-12-21 13:45+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Nepali <ne@li.org>\n"
@@ -20,9 +20,9 @@ msgstr ""
 "X-Generator: Launchpad (build 18402)\n"
 
 #: filechooser-portal/FileChooserDialog.vala:110
-#: src/View/Widgets/ProgressInfoWidget.vala:63
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
+#: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr ""
 
@@ -36,813 +36,16 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: src/Application.vala:158
-msgid "Show the version of the program"
+#: filechooser-portal/Main.vala:75
+msgid "Select"
 msgstr ""
 
-#: src/Application.vala:160
-msgid "Open one or more URIs, each in their own tab"
-msgstr ""
-
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1865
-msgid "New Window"
-msgstr ""
-
-#: src/Application.vala:164
-msgid "Quit Files"
-msgstr ""
-
-#: src/Application.vala:166
-msgid "Enable debug logging"
-msgstr ""
-
-#: src/Application.vala:169
-msgid "[URI…]"
-msgstr ""
-
-#: src/Application.vala:172
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-
-#: src/Application.vala:200
-msgid "--quit cannot be used with URIs."
-msgstr ""
-
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
-msgid "File Operations"
-msgstr ""
-
-#. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:181
-#, c-format
-msgid "Completed %s"
-msgstr ""
-
-#: src/ProgressUIHandler.vala:184
-msgid "All file operations have ended"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:49
-msgid "Info"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:59
-msgid "General"
-msgstr "सामान्य"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:80
-#: libcore/FileOperations/DialogUtils.vala:54
-msgid "Close"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:144
-msgid "Device Usage"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:164
-msgid "Capacity:"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:165
-#: src/Dialogs/AbstractPropertiesDialog.vala:168
-#: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
-msgid "Unknown"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:167
-msgid "Available:"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:170
-msgid "Used:"
-msgstr ""
-
-#: src/Dialogs/ChooseAppDialog.vala:43
-msgid "Set as default"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1975
-#: src/View/Sidebar/PopupMenuBuilder.vala:81
-msgid "Properties"
-msgstr "गुणहरू"
-
-#: src/Dialogs/PropertiesWindow.vala:234
-msgid "Permissions"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:255
-#, c-format
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/Dialogs/PropertiesWindow.vala:259
-msgid "Actual Size Could Be Larger"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
-msgid "unknown"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:462
-msgid "Loading…"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:496
-msgid "Could not be determined"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:99
-#: libcore/FileConflictDialog.vala:133
-msgid "Size:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
-#: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
-msgid "Type:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:532
-msgid "Contains:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:556
-msgid "Created:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:567
-msgid "Modified:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:579
-msgid "Deleted:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:589
-msgid "Media type:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:596
-msgid "Resolution:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:604
-#: src/Dialogs/VolumePropertiesWindow.vala:80
-msgid "Location:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:614
-msgid "Target:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:622
-msgid "Original Location:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1943
-msgid "Other Application…"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:665
-msgid "Open with:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
-msgid "Owner:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
-msgid "Group:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:946
-msgid "Everyone:"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:1227
-#, c-format
-msgid "%u subfolder"
-msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/Dialogs/PropertiesWindow.vala:1231
-#: src/Dialogs/PropertiesWindow.vala:1253
-#, c-format
-msgid "%u file"
-msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
-
-#. TRANSLATORS: folders, files
-#. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:1038
-#, c-format
-msgid "%s, %s"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:223
-#, c-format
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/Dialogs/PropertiesWindow.vala:1258
-#, c-format
-msgid "%u selected item"
-msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
-
-#. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1260
-#, c-format
-msgid "%s (%s, %s)"
-msgstr ""
-
-#: src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
-msgid "File System"
-msgstr "फाइल प्रणाली"
-
-#: src/Dialogs/VolumePropertiesWindow.vala:90
-msgid "Format:"
-msgstr ""
-
-#: src/Utils/MimeActions.vala:282
-msgid "Multiple file types selected"
-msgstr ""
-
-#: src/Utils/MimeActions.vala:283
-msgid "No single app can open all these types of file"
-msgstr ""
-
-#: src/Utils/MimeActions.vala:311
-msgid "Failed to open files"
-msgstr ""
-
-#: src/Utils/MimeActions.vala:321
-msgid "Could not open URIs"
-msgstr ""
-
-#: src/Utils/MimeActions.vala:324
-msgid "Could not open files or URIs with this app"
-msgstr ""
-
-#: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1859
-msgid "New Tab"
-msgstr ""
-
-#: src/View/Window.vala:147
-msgid "Undo Close Tab"
-msgstr ""
-
-#: src/View/Window.vala:456
-msgid "Close Tab"
-msgstr ""
-
-#: src/View/Window.vala:569 src/View/Window.vala:579
-msgid "(as Administrator)"
-msgstr "(एडमिनिस्ट्रेटर भएर)"
-
-#: src/View/ListView.vala:26
-msgid "Filename"
-msgstr ""
-
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2184
-msgid "Size"
-msgstr ""
-
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2189
-msgid "Type"
-msgstr ""
-
-#: src/View/ListView.vala:29
-msgid "Modified"
-msgstr ""
-
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: src/View/DirectoryNotFound.vala:28
-#, c-format
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" नामक फोल्डर पाइएन।"
-
-#: src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "सृजना गर्नुहोस्"
-
-#: src/View/DirectoryNotFound.vala:30
-#, c-format
-msgid "Create the folder \"%s\""
-msgstr "\"%s\" नामक फोल्डर बनाउनुहोस।"
-
-#: src/View/DirectoryNotFound.vala:45
-#, fuzzy
-msgid "Failed to create the folder"
-msgstr ""
-"फोल्डर बनाउन सकिएन।\n"
-"\n"
-"%s"
-
-#: src/View/AbstractDirectoryView.vala:824
-#: src/View/AbstractDirectoryView.vala:1135
-msgid "Cannot execute this file"
-msgstr ""
-
-#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:834
-#, c-format
-msgid "“%s” must be moved from Trash before opening"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:835
-msgid ""
-"Files inside Trash cannot be opened. To open this file, it must be moved "
-"elsewhere."
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:850
-msgid "Cannot open this file"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:863
-msgid "Cannot identify file type to open"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1582
-msgid "Cannot drop this file"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1583
-msgid "Invalid file name provided"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1879
-msgid "Run"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1886
-#, c-format
-msgid "Open in %s"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "Open in"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
-msgid "Open with"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1963
-msgid "Paste"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1968
-#: src/View/Sidebar/PopupMenuBuilder.vala:85
-msgid "Add to Bookmarks"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1983
-msgid "Cut"
-msgstr ""
-
-#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1991
-msgid "Copy"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:1998
-msgid "Move to Trash"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2003
-msgid "Delete Permanently"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2010
-msgid "Restore from Trash"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2021
-msgid "Open Parent Folder"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2024
-msgid "Remove from History"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2040
-msgid "Rename…"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2047
-msgid "Copy as Link"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2065
-msgid "Paste Link into Folder"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2067
-msgid "Paste into Folder"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2097
-msgid "Show Hidden Files"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2102
-msgid "Show Remote Thumbnails"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2105
-msgid "Hide Thumbnails"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2125
-msgid "Paste Link"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2179
-msgid "Name"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2194
-msgid "Date"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2199
-msgid "Reversed Order"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2202
-msgid "Folders Before Files"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2214
-msgid "Sort by"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2222
-msgid "Folder"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2228
-msgid "Empty File"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2279
-msgid "New"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2519
-#, c-format
-msgid "Untitled %s"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2884
-#: src/View/AbstractDirectoryView.vala:3085
-msgid "Cannot remove files from here"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2885
-#: src/View/AbstractDirectoryView.vala:3070
-#: src/View/AbstractDirectoryView.vala:3086
-msgid "You do not have permission to change this location"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:3039
-msgid "Cannot copy files that are in the trash"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:3040
-msgid "Cutting the selection instead"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:3069
-msgid "Cannot paste files here"
-msgstr ""
-
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
-msgid "Home"
-msgstr "गृहपृष्ठ"
-
-#: src/View/ViewContainer.vala:389
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: src/View/ViewContainer.vala:392
-msgid "The network is unavailable"
-msgstr ""
-
-#: src/View/ViewContainer.vala:393
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: src/View/ViewContainer.vala:396
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: src/View/ViewContainer.vala:397
-msgid "You don't have permission to view this folder."
-msgstr "तपाईसँग यो फोल्डर खोल्ने इजाजत छैन।"
-
-#: src/View/ViewContainer.vala:399
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: src/View/ViewContainer.vala:400
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: src/View/ViewContainer.vala:403
-msgid "Unable to Display Folder Contents"
-msgstr ""
-
-#: src/View/ViewContainer.vala:404
-msgid "The operation timed out."
-msgstr ""
-
-#: src/View/ViewContainer.vala:406
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: src/View/ViewContainer.vala:407
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: src/View/ViewContainer.vala:418
-msgid "File not Found"
-msgstr ""
-
-#: src/View/ViewContainer.vala:419
-msgid "The file selected no longer exists."
-msgstr ""
-
-#: src/View/Sidebar/BookmarkListBox.vala:129
-#, fuzzy
-msgid "View the home folder"
-msgstr ""
-"फोल्डर बनाउन सकिएन।\n"
-"\n"
-"%s"
-
-#: src/View/Sidebar/BookmarkListBox.vala:146
-msgid "View the list of recently used files"
-msgstr ""
-
-#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
-msgid "Trash"
-msgstr ""
-
-#: src/View/Sidebar/BookmarkListBox.vala:170
-msgid "Open the Trash"
-msgstr ""
-
-#: src/View/Sidebar/DeviceListBox.vala:129
-msgid "View the root of the local filesystem"
-msgstr ""
-
-#: src/View/Sidebar/DeviceRow.vala:118
-#, c-format
-msgid "%s free"
-msgstr ""
-
-#: src/View/Sidebar/DeviceRow.vala:119
-#, c-format
-msgid "%s used of %s"
-msgstr ""
-
-#: src/View/Sidebar/NetworkListBox.vala:93
-msgid "Entire Network"
-msgstr ""
-
-#: src/View/Sidebar/NetworkListBox.vala:100
-msgid "Browse the contents of the network"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:49
+#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr ""
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:97
-msgid "Permanently Delete All Trash"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:97
-msgid "Permanently Delete Trash"
-msgstr ""
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:108
-msgid "Permanently Delete Trash on this Mount"
-msgstr ""
-
-#: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:289
-msgid "Bookmarks"
-msgstr ""
-
-#: src/View/Sidebar/SidebarWindow.vala:46
-msgid "Common places plus saved folders and files"
-msgstr ""
-
-#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
-#: src/View/Sidebar/SidebarWindow.vala:53
-msgid "Storage"
-msgstr ""
-
-#: src/View/Sidebar/SidebarWindow.vala:54
-msgid "Internal and connected storage devices"
-msgstr ""
-
-#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
-msgid "Network"
-msgstr ""
-
-#: src/View/Sidebar/SidebarWindow.vala:61
-msgid "Devices and places available via a network"
-msgstr ""
-
-#: src/View/Sidebar/SidebarWindow.vala:84
-msgid "Connect Server…"
-msgstr ""
-
-#: src/View/Slot.vala:31
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: src/View/Slot.vala:32
-msgid "Trash Is Empty"
-msgstr ""
-
-#: src/View/Slot.vala:33
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: src/View/Slot.vala:34
-msgid "Access Denied"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "Privacy mode is on"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "No recent files are remembered"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:30
-msgid "Change security settings"
-msgstr ""
-
-#: src/View/PrivacyModeOn.vala:31
-msgid "Open the system security and privacy settings app"
-msgstr ""
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:200
-msgid "Search or Type Path"
-msgstr ""
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:441
-msgid "Open in New Tab"
-msgstr ""
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
-msgid "Open in New Window"
-msgstr ""
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
-msgid "Open in Other Application…"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:66
-msgid "Previous"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:73
-msgid "Next"
-msgstr ""
-
-#: src/View/Widgets/LocationBar.vala:196
-msgid "Reload this folder"
-msgstr ""
-
-#: src/View/Widgets/LocationBar.vala:209
-msgid "Searching…"
-msgstr ""
-
-#: src/View/Widgets/OverlayBar.vala:214
-#, c-format
-msgid "%u folders"
-msgstr ""
-
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
-#, c-format
-msgid " and %u other item (%s) selected"
-msgid_plural " and %u other items (%s) selected"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
-msgid " selected"
-msgstr ""
-
-#: src/View/Widgets/OverlayBar.vala:233
-#, c-format
-msgid "%u items selected (%s)"
-msgstr ""
-
-#. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:277
-#, c-format
-msgid "%u sub-folder, "
-msgid_plural "%u sub-folders, "
-msgstr[0] ""
-msgstr[1] ""
-
-#. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:283
-#, c-format
-msgid "%u file, "
-msgid_plural "%u files, "
-msgstr[0] ""
-msgstr[1] ""
-
-#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:293
-#, c-format
-msgid "%s approx."
-msgstr ""
-
-#. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:296
-msgid "unknown size"
-msgstr ""
-
-#. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:300
-#, c-format
-msgid "%u file not readable"
-msgid_plural "%u files not readable"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr ""
-
-#: src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr ""
-
-#: src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
+#: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
+msgid "Save"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:46
@@ -887,6 +90,11 @@ msgstr ""
 
 #: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
+msgstr ""
+
+#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
+#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:533
+msgid "Type:"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:178
@@ -949,6 +157,10 @@ msgstr ""
 msgid "Please verify your user details."
 msgstr ""
 
+#: libcore/Directory.vala:684
+msgid "Server did not respond within time limit"
+msgstr ""
+
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
@@ -966,12 +178,69 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
+#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1116
+msgid "Inaccessible"
+msgstr ""
+
+#: libcore/File.vala:883
+#, fuzzy
+msgid "Failed to parse the desktop file"
+msgstr ""
+"फोल्डर बनाउन सकिएन।\n"
+"\n"
+"%s"
+
+#: libcore/File.vala:887
+#, fuzzy
+msgid "Failed to parse the desktop file: "
+msgstr ""
+"फोल्डर बनाउन सकिएन।\n"
+"\n"
+"%s"
+
+#: libcore/File.vala:899
+#, fuzzy
+msgid "Failed to create command from file: "
+msgstr ""
+"फोल्डर बनाउन सकिएन।\n"
+"\n"
+"%s"
+
+#: libcore/File.vala:908
+#, fuzzy
+msgid "Unable to Launch Desktop File: "
+msgstr ""
+"फोल्डर बनाउन सकिएन।\n"
+"\n"
+"%s"
+
+#: libcore/File.vala:1111
+msgid "Empty"
+msgstr ""
+
+#: libcore/File.vala:1113
+#, c-format
+msgid "%i item"
+msgid_plural "%i items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: libcore/File.vala:1124
+#, c-format
+msgid "link to %s"
+msgstr ""
+
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
 msgstr ""
 
 #: libcore/FileConflictDialog.vala:97
 msgid "Original file"
+msgstr ""
+
+#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: src/Dialogs/PropertiesWindow.vala:526
+msgid "Size:"
 msgstr ""
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
@@ -1162,6 +431,13 @@ msgid_plural "%'d minutes"
 msgstr[0] ""
 msgstr[1] ""
 
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#. TRANSLATORS: folders, files
+#: libcore/FileUtils.vala:1038 src/Dialogs/PropertiesWindow.vala:1242
+#, c-format
+msgid "%s, %s"
+msgstr ""
+
 #: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
@@ -1194,94 +470,6 @@ msgstr ""
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1056
 msgid ")"
-msgstr ""
-
-#: libcore/Directory.vala:684
-msgid "Server did not respond within time limit"
-msgstr ""
-
-#: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
-#: libcore/ProgressInfo.vala:33
-msgid "Preparing"
-msgstr ""
-
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr ""
-
-#: libcore/StockDialogs.vala:21
-msgid "Delete"
-msgstr ""
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr ""
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr ""
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr ""
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr ""
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr ""
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr ""
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr ""
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr ""
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr ""
-
-#: libcore/UndoManager.vala:310
-msgid "Original location could not be determined"
-msgstr ""
-
-#: libcore/UndoManager.vala:311
-msgid "Open trash folder and restore manually"
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:40
-msgid "Permanently delete all items from Trash?"
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:41
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:44
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:45
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:111
-msgid "Emptying Trash"
-msgstr ""
-
-#: libcore/FileOperations/MountUtils.vala:26
-#, c-format
-msgid "Unable to mount '%s'"
 msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -1908,99 +1096,243 @@ msgstr ""
 msgid "There was an error creating the directory in %s."
 msgstr ""
 
-#: libwidgets/Chrome/BasicLocationBar.vala:88
-msgid "Type a path"
+#: libcore/PopupMenuBuilder.vala:54
+msgid "Open in New _Tab"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
+#: libcore/PopupMenuBuilder.vala:58
+msgid "Open in New _Window"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:62
+msgid "Remove"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:66
+msgid "Rename"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:70
+msgid "_Mount"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:74
+msgid "_Unmount"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
+#: src/View/AbstractDirectoryView.vala:1987
+msgid "Properties"
+msgstr "गुणहरू"
+
+#: libcore/PopupMenuBuilder.vala:83
+msgid "Eject Media"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:88
+msgid "Safely Remove"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
+msgid "Add to Bookmarks"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:104
+msgid "Permanently Delete All Trash"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:104
+msgid "Permanently Delete Trash"
+msgstr ""
+
+#: libcore/PopupMenuBuilder.vala:117
+msgid "Permanently Delete Trash on this Mount"
+msgstr ""
+
+#: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
+#: libcore/ProgressInfo.vala:33
+msgid "Preparing"
+msgstr ""
+
+#: libcore/Resources.vala:22 src/DesktopLauncher.vala:25
+msgid "Files"
+msgstr ""
+
+#: libcore/Resources.vala:61
+msgid "AFP"
+msgstr ""
+
+#: libcore/Resources.vala:62
+msgid "AFC"
+msgstr ""
+
+#: libcore/Resources.vala:63
+msgid "DAV"
+msgstr ""
+
+#: libcore/Resources.vala:64
+msgid "DAVS"
+msgstr ""
+
+#: libcore/Resources.vala:65
+msgid "FTP"
+msgstr ""
+
+#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:60
+msgid "Network"
+msgstr ""
+
+#: libcore/Resources.vala:67
+msgid "SFTP"
+msgstr ""
+
+#: libcore/Resources.vala:68
+msgid "SMB"
+msgstr ""
+
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+msgid "Trash"
+msgstr ""
+
+#: libcore/Resources.vala:70
+msgid "Recent"
+msgstr ""
+
+#: libcore/Resources.vala:71
+msgid "MTP"
+msgstr ""
+
+#: libcore/Resources.vala:72
+msgid "GPHOTO2"
+msgstr ""
+
+#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:140
+msgid "File System"
+msgstr "फाइल प्रणाली"
+
+#: libcore/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr ""
+
+#: libcore/StockDialogs.vala:21
+msgid "Delete"
+msgstr ""
+
+#: libcore/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr ""
+
+#: libcore/StockDialogs.vala:24
+msgid "_Retry"
+msgstr ""
+
+#: libcore/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr ""
+
+#: libcore/StockDialogs.vala:26
+msgid "_Replace"
+msgstr ""
+
+#: libcore/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr ""
+
+#: libcore/StockDialogs.vala:28
+msgid "_Merge"
+msgstr ""
+
+#: libcore/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr ""
+
+#: libcore/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr ""
+
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr ""
+
+#: libcore/UndoManager.vala:310
+msgid "Original location could not be determined"
+msgstr ""
+
+#: libcore/UndoManager.vala:311
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: libcore/FileOperations/DialogUtils.vala:54
+#: src/Dialogs/AbstractPropertiesDialog.vala:80
+msgid "Close"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:40
+msgid "Permanently delete all items from Trash?"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:41
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:44
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:45
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:111
+msgid "Emptying Trash"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:31
+#, c-format
+msgid "Unable to unmount '%s'"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:52
+#, c-format
+msgid "Unable to eject '%s'"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:104
+#, c-format
+msgid "Unable to mount '%s'"
+msgstr ""
+
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:76
-#, c-format
-msgid "%s (%s)"
+#: libcore/Widgets/BasicLocationBar.vala:88
+msgid "Type a path"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:89
-msgid "More Results …"
-msgstr ""
-
-#: libwidgets/View/SearchResults.vala:281
-msgid "In This Folder"
-msgstr ""
-
-#: libwidgets/View/SearchResults.vala:285
-msgid "Below This Folder"
-msgstr ""
-
-#: libwidgets/View/SearchResults.vala:294
-msgid "Recently Used"
-msgstr ""
-
-#: libwidgets/Chrome/ViewSwitcher.vala:34
+#: libcore/Widgets/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:41
+#: libcore/Widgets/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:48
+#: libcore/Widgets/ViewSwitcher.vala:48
 msgid "View in Columns"
-msgstr ""
-
-#: libwidgets/Resources.vala:22
-msgid "Files"
-msgstr ""
-
-#: libwidgets/Resources.vala:61
-msgid "AFP"
-msgstr ""
-
-#: libwidgets/Resources.vala:62
-msgid "AFC"
-msgstr ""
-
-#: libwidgets/Resources.vala:63
-msgid "DAV"
-msgstr ""
-
-#: libwidgets/Resources.vala:64
-msgid "DAVS"
-msgstr ""
-
-#: libwidgets/Resources.vala:65
-msgid "FTP"
-msgstr ""
-
-#: libwidgets/Resources.vala:67
-msgid "SFTP"
-msgstr ""
-
-#: libwidgets/Resources.vala:68
-msgid "SMB"
-msgstr ""
-
-#: libwidgets/Resources.vala:70
-msgid "Recent"
-msgstr ""
-
-#: libwidgets/Resources.vala:71
-msgid "MTP"
-msgstr ""
-
-#: libwidgets/Resources.vala:72
-msgid "GPHOTO2"
 msgstr ""
 
 #: plugins/pantheon-files-trash/plugin.vala:19
@@ -2019,6 +1351,821 @@ msgstr ""
 msgid "Delete Selected"
 msgstr ""
 
+#: plugins/send-by-email/plugin.vala:26
+msgid "Send by Email"
+msgstr ""
+
+#: src/Application.vala:158
+msgid "Show the version of the program"
+msgstr ""
+
+#: src/Application.vala:160
+msgid "Open one or more URIs, each in their own tab"
+msgstr ""
+
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1877
+msgid "New Window"
+msgstr ""
+
+#: src/Application.vala:164
+msgid "Quit Files"
+msgstr ""
+
+#: src/Application.vala:166
+msgid "Enable debug logging"
+msgstr ""
+
+#: src/Application.vala:169
+msgid "[URI…]"
+msgstr ""
+
+#: src/Application.vala:172
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+
+#: src/Application.vala:200
+msgid "--quit cannot be used with URIs."
+msgstr ""
+
+#: src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr ""
+
+#: src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr ""
+
+#: src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr ""
+
+#: src/DesktopLauncher.vala:24
+#, fuzzy
+#| msgid "(as Administrator)"
+msgid "New Window As _Administrator"
+msgstr "(एडमिनिस्ट्रेटर भएर)"
+
+#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+msgid "File Operations"
+msgstr ""
+
+#. TRANSLATORS: %s will be replaced by the title of the file operation
+#: src/ProgressUIHandler.vala:181
+#, c-format
+msgid "Completed %s"
+msgstr ""
+
+#: src/ProgressUIHandler.vala:184
+msgid "All file operations have ended"
+msgstr ""
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr ""
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
+msgid "General"
+msgstr "सामान्य"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
+msgid "Device Usage"
+msgstr ""
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
+msgid "Capacity:"
+msgstr ""
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
+#: src/Dialogs/PropertiesWindow.vala:455 src/Dialogs/PropertiesWindow.vala:494
+msgid "Unknown"
+msgstr ""
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
+msgid "Available:"
+msgstr ""
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
+msgid "Used:"
+msgstr ""
+
+#: src/Dialogs/ChooseAppDialog.vala:43
+msgid "Set as default"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Unable to determine file ownership and permissions"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:245
+msgid "Permissions"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:259
+#, c-format
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Dialogs/PropertiesWindow.vala:263
+msgid "Actual Size Could Be Larger"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:283 src/Dialogs/PropertiesWindow.vala:302
+msgid "unknown"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:466
+msgid "Loading…"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:500
+msgid "Could not be determined"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:536
+msgid "Contains:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:560
+msgid "Created:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:571
+msgid "Modified:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:583
+msgid "Deleted:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:593
+msgid "Media type:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:600
+msgid "Resolution:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/VolumePropertiesWindow.vala:80
+msgid "Location:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:618
+msgid "Target:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:626
+msgid "Original Location:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:649
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "Other Application…"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:669
+msgid "Open with:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:938 src/Dialogs/PropertiesWindow.vala:945
+msgid "Owner:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:939 src/Dialogs/PropertiesWindow.vala:948
+msgid "Group:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:951
+msgid "Everyone:"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:1233
+#, c-format
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Dialogs/PropertiesWindow.vala:1237
+#: src/Dialogs/PropertiesWindow.vala:1259
+#, c-format
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:223
+#, c-format
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Dialogs/PropertiesWindow.vala:1264
+#, c-format
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] ""
+msgstr[1] ""
+
+#. TRANSLATORS: total (folders, files)
+#: src/Dialogs/PropertiesWindow.vala:1266
+#, c-format
+msgid "%s (%s, %s)"
+msgstr ""
+
+#: src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: src/Dialogs/VolumePropertiesWindow.vala:90
+msgid "Format:"
+msgstr ""
+
+#: src/Utils/MimeActions.vala:282
+msgid "Multiple file types selected"
+msgstr ""
+
+#: src/Utils/MimeActions.vala:283
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: src/Utils/MimeActions.vala:311
+msgid "Failed to open files"
+msgstr ""
+
+#: src/Utils/MimeActions.vala:321
+msgid "Could not open URIs"
+msgstr ""
+
+#: src/Utils/MimeActions.vala:324
+msgid "Could not open files or URIs with this app"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:827
+#: src/View/AbstractDirectoryView.vala:1138
+msgid "Cannot execute this file"
+msgstr ""
+
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:837
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:838
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:853
+msgid "Cannot open this file"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:866
+msgid "Cannot identify file type to open"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1594
+msgid "Cannot drop this file"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1595
+msgid "Invalid file name provided"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1871 src/View/Window.vala:146
+msgid "New Tab"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1891
+msgid "Run"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1898
+#, c-format
+msgid "Open in %s"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1967
+msgid "Open in"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
+msgid "Open with"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:1975
+msgid "Paste"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2000
+msgid "Select All"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2009
+msgid "Invert Selection"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2018
+msgid "Deselect All"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2026
+msgid "Cut"
+msgstr ""
+
+#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
+#: src/View/AbstractDirectoryView.vala:2034
+msgid "Copy"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2041
+msgid "Move to Trash"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2046
+msgid "Delete Permanently"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2053
+msgid "Restore from Trash"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2076
+msgid "Open Parent Folder"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2079
+msgid "Remove from History"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2107
+msgid "Rename…"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2114
+msgid "Copy as Link"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2131
+msgid "Paste Link into Folder"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2133
+msgid "Paste into Folder"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2174
+msgid "Show Hidden Files"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2179
+msgid "Show Remote Thumbnails"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2182
+msgid "Hide Thumbnails"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2208
+msgid "Paste Link"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2265
+msgid "Name"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2270 src/View/ListView.vala:27
+msgid "Size"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2275 src/View/ListView.vala:28
+msgid "Type"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2280
+msgid "Date"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2285
+msgid "Reversed Order"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2288
+msgid "Folders Before Files"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2300
+msgid "Sort by"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2308
+msgid "Folder"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2314
+msgid "Empty File"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2365
+msgid "New"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2606
+#, c-format
+msgid "Untitled %s"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2971
+#: src/View/AbstractDirectoryView.vala:3149
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2972
+#: src/View/AbstractDirectoryView.vala:3134
+#: src/View/AbstractDirectoryView.vala:3150
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:3103
+msgid "Cannot copy files that are in the trash"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:3104
+msgid "Cutting the selection instead"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:3133
+msgid "Cannot paste files here"
+msgstr ""
+
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: src/View/DirectoryNotFound.vala:28
+#, c-format
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" नामक फोल्डर पाइएन।"
+
+#: src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "सृजना गर्नुहोस्"
+
+#: src/View/DirectoryNotFound.vala:30
+#, c-format
+msgid "Create the folder \"%s\""
+msgstr "\"%s\" नामक फोल्डर बनाउनुहोस।"
+
+#: src/View/DirectoryNotFound.vala:45
+#, fuzzy
+msgid "Failed to create the folder"
+msgstr ""
+"फोल्डर बनाउन सकिएन।\n"
+"\n"
+"%s"
+
+#: src/View/ListView.vala:26
+msgid "Filename"
+msgstr ""
+
+#: src/View/ListView.vala:29
+msgid "Modified"
+msgstr ""
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "Privacy mode is on"
+msgstr ""
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "No recent files are remembered"
+msgstr ""
+
+#: src/View/PrivacyModeOn.vala:30
+msgid "Change security settings"
+msgstr ""
+
+#: src/View/PrivacyModeOn.vala:31
+msgid "Open the system security and privacy settings app"
+msgstr ""
+
+#: src/View/Slot.vala:31
+msgid "This Folder Is Empty"
+msgstr ""
+
+#: src/View/Slot.vala:32
+msgid "Trash Is Empty"
+msgstr ""
+
+#: src/View/Slot.vala:33
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: src/View/Slot.vala:34
+msgid "Access Denied"
+msgstr ""
+
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
+msgid "Home"
+msgstr "गृहपृष्ठ"
+
+#: src/View/ViewContainer.vala:389
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: src/View/ViewContainer.vala:392
+msgid "The network is unavailable"
+msgstr ""
+
+#: src/View/ViewContainer.vala:393
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: src/View/ViewContainer.vala:396
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: src/View/ViewContainer.vala:397
+msgid "You don't have permission to view this folder."
+msgstr "तपाईसँग यो फोल्डर खोल्ने इजाजत छैन।"
+
+#: src/View/ViewContainer.vala:399
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: src/View/ViewContainer.vala:400
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: src/View/ViewContainer.vala:403
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: src/View/ViewContainer.vala:404
+msgid "The operation timed out."
+msgstr ""
+
+#: src/View/ViewContainer.vala:406
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: src/View/ViewContainer.vala:407
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: src/View/ViewContainer.vala:418
+msgid "File not Found"
+msgstr ""
+
+#: src/View/ViewContainer.vala:419
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: src/View/Window.vala:147
+msgid "Undo Close Tab"
+msgstr ""
+
+#: src/View/Window.vala:456
+msgid "Close Tab"
+msgstr ""
+
+#: src/View/Window.vala:569 src/View/Window.vala:579
+msgid "(as Administrator)"
+msgstr "(एडमिनिस्ट्रेटर भएर)"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:113
+#: src/View/Sidebar/AbstractMountableRow.vala:173
+#, c-format
+msgid "Eject '%s'"
+msgstr ""
+
+#: src/View/Sidebar/AbstractMountableRow.vala:113
+#: src/View/Sidebar/AbstractMountableRow.vala:173
+#, c-format
+msgid "Unmount '%s'"
+msgstr ""
+
+#: src/View/Sidebar/AbstractMountableRow.vala:307
+#, c-format
+msgid "%s free"
+msgstr ""
+
+#: src/View/Sidebar/AbstractMountableRow.vala:308
+#, c-format
+msgid "%s used of %s"
+msgstr ""
+
+#: src/View/Sidebar/AbstractMountableRow.vala:338
+#: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
+#: src/View/Sidebar/VolumelessMountRow.vala:42
+#: src/View/Widgets/SearchResults.vala:76
+#, c-format
+msgid "%s (%s)"
+msgstr ""
+
+#: src/View/Sidebar/AbstractMountableRow.vala:338
+msgid "Not mounted"
+msgstr ""
+
+#: src/View/Sidebar/BookmarkListBox.vala:129
+#, fuzzy
+msgid "View the home folder"
+msgstr ""
+"फोल्डर बनाउन सकिएन।\n"
+"\n"
+"%s"
+
+#: src/View/Sidebar/BookmarkListBox.vala:146
+msgid "View the list of recently used files"
+msgstr ""
+
+#: src/View/Sidebar/BookmarkListBox.vala:170
+msgid "Open the Trash"
+msgstr ""
+
+#: src/View/Sidebar/DeviceListBox.vala:152
+msgid "View the root of the local filesystem"
+msgstr ""
+
+#: src/View/Sidebar/DriveRow.vala:70
+#, c-format
+msgid "%s contains no accessible data."
+msgstr ""
+
+#: src/View/Sidebar/DriveRow.vala:71
+msgid ""
+"To use this drive you may need to replug it, or insert media or format it."
+msgstr ""
+
+#: src/View/Sidebar/DriveRow.vala:102
+msgid "Unformatted or no media"
+msgstr ""
+
+#: src/View/Sidebar/NetworkListBox.vala:124
+msgid "Entire Network"
+msgstr ""
+
+#: src/View/Sidebar/NetworkListBox.vala:134
+msgid "Browse the contents of the network"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: src/View/Widgets/SearchResults.vala:289
+msgid "Bookmarks"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr ""
+
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:54
+msgid "Internal and connected storage devices"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:61
+msgid "Devices and places available via a network"
+msgstr ""
+
+#: src/View/Sidebar/SidebarWindow.vala:84
+msgid "Connect Server…"
+msgstr ""
+
+#: src/View/Sidebar/VolumelessMountRow.vala:42
+msgid "Bind mount"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
+#: src/View/Widgets/LocationBar.vala:200
+msgid "Search or Type Path"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
+msgid "Open in New Window"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
+msgid "Open in Other Application…"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:66
+msgid "Previous"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:73
+msgid "Next"
+msgstr ""
+
+#: src/View/Widgets/LocationBar.vala:196
+msgid "Reload this folder"
+msgstr ""
+
+#: src/View/Widgets/LocationBar.vala:209
+msgid "Searching…"
+msgstr ""
+
+#: src/View/Widgets/OverlayBar.vala:214
+#, c-format
+msgid "%u folders"
+msgstr ""
+
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#, c-format
+msgid " and %u other item (%s) selected"
+msgid_plural " and %u other items (%s) selected"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
+msgid " selected"
+msgstr ""
+
+#: src/View/Widgets/OverlayBar.vala:233
+#, c-format
+msgid "%u items selected (%s)"
+msgstr ""
+
+#. TRANSLATORS: %u will be substituted by the number of sub folders
+#: src/View/Widgets/OverlayBar.vala:277
+#, c-format
+msgid "%u sub-folder, "
+msgid_plural "%u sub-folders, "
+msgstr[0] ""
+msgstr[1] ""
+
+#. TRANSLATORS: %u will be substituted by the number of readable files
+#: src/View/Widgets/OverlayBar.vala:283
+#, c-format
+msgid "%u file, "
+msgid_plural "%u files, "
+msgstr[0] ""
+msgstr[1] ""
+
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: src/View/Widgets/OverlayBar.vala:293
+#, c-format
+msgid "%s approx."
+msgstr ""
+
+#. TRANSLATORS: 'size' refers to disk space
+#: src/View/Widgets/OverlayBar.vala:296
+msgid "unknown size"
+msgstr ""
+
+#. TRANSLATORS: %u will be substituted by the number of unreadable files
+#: src/View/Widgets/OverlayBar.vala:300
+#, c-format
+msgid "%u file not readable"
+msgid_plural "%u files not readable"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr ""
+
+#: src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr ""
+
+#: src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr ""
+
+#: src/View/Widgets/SearchResults.vala:89
+msgid "More Results …"
+msgstr ""
+
+#: src/View/Widgets/SearchResults.vala:281
+msgid "In This Folder"
+msgstr ""
+
+#: src/View/Widgets/SearchResults.vala:285
+msgid "Below This Folder"
+msgstr ""
+
+#: src/View/Widgets/SearchResults.vala:294
+msgid "Recently Used"
+msgstr ""
+
 #, fuzzy
 #~| msgid "File System"
 #~ msgid "FileSystem"
@@ -2031,20 +2178,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Create a new folder '%s'"
 #~ msgstr "\"%s\" नामक फोल्डर बनाउनुहोस।"
-
-#, fuzzy
-#~ msgid "Failed to parse the desktop file"
-#~ msgstr ""
-#~ "फोल्डर बनाउन सकिएन।\n"
-#~ "\n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid "Failed to create command from file: %s"
-#~ msgstr ""
-#~ "फोल्डर बनाउन सकिएन।\n"
-#~ "\n"
-#~ "%s"
 
 #~ msgid "A simple and powerful file manager"
 #~ msgstr "एउटा सरल र शक्तिशाली फाउल म्यानेजर"
