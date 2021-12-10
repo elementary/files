@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-05 07:47+0000\n"
+"PO-Revision-Date: 2021-12-10 03:00+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,10 +79,8 @@ msgid "Improvements:"
 msgstr "改善点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Close FileChooser with esc key"
 msgid "Close FileChooser with Esc key"
-msgstr "Esc キーで FileChooser を閉じれるように修正"
+msgstr "Esc キーでファイル選択ダイアログを閉じれるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
@@ -90,7 +88,7 @@ msgstr "Git ステータス表示に新しいエンブレムを使うように�
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Show selection actions in secondary click menu"
-msgstr ""
+msgstr "副クリックメニューにファイル選択アクションを表示"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:67
@@ -106,19 +104,17 @@ msgid "Fixes:"
 msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
-msgstr "プロパティーウィンドウで使用済み領域を表示するように修正"
+msgstr "プロパティーダイアログに権限のページを常に表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
-msgstr ""
+msgstr "権限のページでユーザー名とグループ名が利用できない場合は数値のユーザー ID とグループ ID を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
-msgstr ""
+msgstr "権限のページで、情報が利用できない場合はメッセージを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -135,14 +131,12 @@ msgstr "そのほかのアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 msgid "Only allow one FileChooser per parent window"
-msgstr "親ウィンドウ一つに対して複数の FileChooser を開ける不具合を修正"
+msgstr "親ウィンドウ一つに対して複数のファイル選択ダイアログを開ける不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
-"FileChooser で Enter キーを押した際に、フォルダーを選択するのではなくその中に"
-"ある項目を表示するように修正"
+msgstr "ファイル選択ダイアログで Enter キーを押した際に、フォルダーを選択するのではなくその中にある項目を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 #: data/io.elementary.files.appdata.xml.in.in:76
@@ -198,15 +192,15 @@ msgstr "リモート接続の空パスワードを許可 (プライベートキ�
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Make ejecting devices safer"
-msgstr ""
+msgstr "デバイスをより安全に取り出せるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Add option to stop drive if possible"
-msgstr ""
+msgstr "可能であればドライブを停止できるオプションを追加"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Show unformatted drives and drives without media"
-msgstr ""
+msgstr "未フォーマットのドライブとメディアがないドライブを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
@@ -229,11 +223,11 @@ msgstr "サイドバーの“ゴミ箱”の直下ではドロップマークを
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
+msgstr "同じデバイスに対してドライブとボリュームの両方がサイドバーに表示されていた不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr ""
+msgstr "SSH サーバーがサイドバーの“ストレージ”と“ネットワーク”のセクション両方に表示されていた不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Show translated bookmark names when changing languages"
@@ -334,7 +328,7 @@ msgstr "ファイルをシングルクリックではなくダブルクリック
 
 #: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr "Flatpak アプリ向けに File Chooser ポータルを提供"
+msgstr "Flatpak アプリ向けにファイル選択ポータルを提供"
 
 #: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Brand new animated Sidebar"
@@ -686,7 +680,7 @@ msgstr "テンプレートフォルダーが空の場合にクラッシュする
 
 #: data/io.elementary.files.appdata.xml.in.in:322
 msgid "Reduce memory footprint of FileChooserDialog"
-msgstr "FileChooserDialog のメモリー使用量を削減"
+msgstr "ファイル選択ダイアログのメモリー使用量を削減"
 
 #: data/io.elementary.files.appdata.xml.in.in:323
 msgid "Avoid crash when selecting image file in some situations"
