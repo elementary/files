@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-11-30 18:07+0000\n"
+"PO-Revision-Date: 2021-12-10 20:27+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -39,10 +39,8 @@ msgid "Open File as Read Only"
 msgstr "A fájl megnyitása csak olvasható módban"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " kiválasztva"
+msgstr "Kiválasztás"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -50,7 +48,7 @@ msgstr "Megnyitás"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Mentés"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -191,35 +189,27 @@ msgid "Failed to parse the desktop file"
 msgstr "Nem sikerült elemezni az asztali fájlt"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Az asztali fájl elemzése sikertelen: %s"
+msgstr "Az asztali fájl elemzése sikertelen: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Nem sikerült parancsot létrehozni ebből a fájlból: %s"
+msgstr "Nem sikerült parancsot létrehozni ebből a fájlból: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Nem sikerült elindítani ezt az asztali fájlt: %s"
+msgstr "Nem sikerült elindítani ezt az asztali fájlt: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Üres fájl"
+msgstr "Üres"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i elem"
+msgstr[1] "%i elem"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1134,13 +1124,11 @@ msgstr "Tulajdonságok"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Média kiadása"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Eltávolítás"
+msgstr "Biztonságos eltávolítás"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1302,16 +1290,14 @@ msgid "Emptying Trash"
 msgstr "Kuka ürítése"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "A(z) '%s' nem csatolható"
+msgstr "A(z) '%s' nem választható le"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "A eszköz (%V) nem adható ki"
+msgstr "A eszköz (%s) nem adható ki"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1366,7 +1352,7 @@ msgstr "Kijelöltek törlése"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Küldés e-mailben"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1408,7 +1394,7 @@ msgstr "a --quit nem használható URI-címekkel."
 
 #: src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Tallózzon a fájlok között"
+msgstr "Böngésszen a fájlok között"
 
 #: src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -1473,7 +1459,7 @@ msgstr "Beállítás alapértelmezettként"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Nem sikerült megállapítani a fájl tulajdonosát és engedélyeit"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1686,17 +1672,15 @@ msgstr "Beillesztés"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Összes kijelölése"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Kijelölés megfordítása"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Összes visszaállítása"
+msgstr "Kijelölés megszüntetése"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1959,17 +1943,15 @@ msgstr "(Rendszergazdaként)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "A(z) '%s' törlése"
+msgstr "A(z) '%s' kiadása"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "A(z) '%s' nem csatolható"
+msgstr "A(z) '%s' leválasztása"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -1991,7 +1973,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Nincs csatolva"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2012,16 +1994,18 @@ msgstr "A helyi fájlrendszer gyökerének megjelenítése"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s nem tartalmaz elérhető adatot."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"A meghajtó használatához lehetséges, hogy újra be kell dugnia, be kell "
+"szúrnia vagy pedig formáznia kell."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Formázatlan vagy nincs média"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2058,10 +2042,8 @@ msgid "Connect Server…"
 msgstr "Kapcsolódás szerverhez…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Leválasztás"
+msgstr "Bind csatolás"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
