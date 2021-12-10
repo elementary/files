@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-01 09:27+0000\n"
+"PO-Revision-Date: 2021-12-10 01:15+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -37,10 +37,8 @@ msgid "Open File as Read Only"
 msgstr "Datei schreibgeschützt öffnen"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " ausgewählt"
+msgstr "Auswählen"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -48,7 +46,7 @@ msgstr "Öffnen"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -189,35 +187,27 @@ msgid "Failed to parse the desktop file"
 msgstr "Die Desktop-Datei konnte nicht analysiert werden"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
+msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Befehl aus Datei konnte nicht erstellt werden: %s"
+msgstr "Befehl aus Datei konnte nicht erstellt werden: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Desktop-Datei kann nicht gestartet werden: %s"
+msgstr "Desktop-Datei kann nicht gestartet werden: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Leere Datei"
+msgstr "Leer"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i Objekt"
+msgstr[1] "%i Objekte"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1171,13 +1161,11 @@ msgstr "Eigenschaften"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Medium auswerfen"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Entfernen"
+msgstr "Sicher entfernen"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1340,16 +1328,14 @@ msgid "Emptying Trash"
 msgstr "Papierkorb wird geleert"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "»%s« kann nicht eingehängt werden"
+msgstr "»%s« kann nicht ausgehängt werden"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Auswerfen von %V nicht möglich"
+msgstr "Auswerfen von »%s« nicht möglich"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1404,7 +1390,7 @@ msgstr "Markierte löschen"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Per E-Mail senden"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1511,7 +1497,7 @@ msgstr "Als Vorgabe festlegen"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Dateieigentümer und -berechtigungen konnten nicht ermittelt werden"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1730,17 +1716,15 @@ msgstr "Einfügen"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Alles auswählen"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Auswahl umkehren"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Alle wiederherstellen"
+msgstr "Auswahl aufheben"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -2015,10 +1999,9 @@ msgstr "»%s« auswerfen"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "»%s« kann nicht eingehängt werden"
+msgstr "»%s« aushängen"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2040,7 +2023,7 @@ msgstr "%s ( %s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Nicht eingehängt"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2061,7 +2044,7 @@ msgstr "Wurzel des lokalen Dateisystems anzeigen"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s enthält keine Daten, auf die zugegriffen werden könnten."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
