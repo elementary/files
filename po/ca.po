@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-01 12:08+0000\n"
+"PO-Revision-Date: 2021-12-10 20:27+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,10 +38,8 @@ msgid "Open File as Read Only"
 msgstr "Obre el fitxer només en mode de lectura"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " seleccionat"
+msgstr "Selecciona"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -49,7 +47,7 @@ msgstr "Obre"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Desa"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -190,35 +188,27 @@ msgid "Failed to parse the desktop file"
 msgstr "Ha fallat analitzar el fitxer d'escriptori"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
+msgstr "No s'ha pogut analitzar el fitxer d'escriptori: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Ha fallat crear l'ordre des del fitxer: %s"
+msgstr "Ha fallat crear l'ordre des del fitxer: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "No es pot llançar el fitxer d'escriptori: %s"
+msgstr "No es pot llançar el fitxer d'escriptori: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Fitxer buit"
+msgstr "Buit"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i element"
+msgstr[1] "%i elements"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1151,13 +1141,11 @@ msgstr "Propietats"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Expulsa mitjans"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Suprimeix"
+msgstr "Expulsa'l amb seguretat"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1323,16 +1311,14 @@ msgid "Emptying Trash"
 msgstr "Es buida la paperera"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "No es pot muntar %s."
+msgstr "No es pot desmuntar %s."
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "No s'ha pogut expulsar %V"
+msgstr "No es pot expulsar %s."
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1387,7 +1373,7 @@ msgstr "Suprimeix la selecció"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Envia per correu"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1429,7 +1415,7 @@ msgstr "--quit no es pot utilitzar amb els URI."
 
 #: src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Navegueu pels vostres fitxers"
+msgstr "Navegueu pels fitxers"
 
 #: src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -1494,7 +1480,7 @@ msgstr "Estableix com a predeterminada"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "No es poden determinar els permisos del fitxer i a qui pertany."
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1708,17 +1694,15 @@ msgstr "Enganxa"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Selecciona-ho tot"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Inverteix la selecció"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Restaura-ho tot"
+msgstr "Desmarca-ho tot"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1988,10 +1972,9 @@ msgstr "Expulsa %s"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "No es pot muntar %s."
+msgstr "Desmunta %s."
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2013,7 +1996,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "No muntat"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2034,16 +2017,18 @@ msgstr "Mostra l'arrel del sistema de fitxers local"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s conté dades no accessibles."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Per usar aquesta unitat, potser haureu de tornar-la a connectar, inserir-la "
+"o formatar-la."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Sense format o sense mitjans"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2080,10 +2065,8 @@ msgid "Connect Server…"
 msgstr "Connecta't a un servidor…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Desmunta"
+msgstr "Vinculació del muntatge"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
