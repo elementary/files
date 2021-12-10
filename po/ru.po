@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
 "PO-Revision-Date: 2021-12-10 20:27+0000\n"
-"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
+"Last-Translator: Daniil <solodyankin.d@outlook.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -31,12 +31,12 @@ msgstr "Отменить"
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Открыть файлы только для чтения"
 
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Открыть файл только для чтения"
 
 #: filechooser-portal/Main.vala:75
 msgid "Select"
