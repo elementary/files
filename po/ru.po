@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-10-09 17:57+0000\n"
+"PO-Revision-Date: 2021-12-10 20:27+0000\n"
 "Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,10 +39,8 @@ msgid "Open File as Read Only"
 msgstr ""
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " выбрано"
+msgstr "Выбрать"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -50,7 +48,7 @@ msgstr "Открыть"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -209,18 +207,16 @@ msgid "Unable to Launch Desktop File: "
 msgstr "Не удалось запустить desktop-файл: %s"
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Пустой файл"
+msgstr "Пустой"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%i объект"
+msgstr[1] "%i объекта"
+msgstr[2] "%i объектов"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1165,10 +1161,8 @@ msgid "Eject Media"
 msgstr ""
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Удалить"
+msgstr "Безопасно извлечь"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1332,16 +1326,14 @@ msgid "Emptying Trash"
 msgstr "Очистка корзины"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Не удалось подключить «%s»"
+msgstr "Невозможно размонтировать «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Не удалось извлечь %V"
+msgstr "Не удалось извлечь «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1724,17 +1716,15 @@ msgstr "Вставить"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Выделить всё"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Восстановить всё"
+msgstr "Снять выделение со всех"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1998,17 +1988,15 @@ msgstr "(с правами администратора)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Удалить «%s»"
+msgstr "Извлечь «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Не удалось подключить «%s»"
+msgstr "Размонтировать «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2030,7 +2018,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Не смонтирован"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2051,7 +2039,7 @@ msgstr "Посмотреть корневую часть локальной фа
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s содержит недоступные данные."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
