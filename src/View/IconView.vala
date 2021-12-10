@@ -226,6 +226,7 @@ namespace Files {
                 area = cell_renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
                 if (cell_renderer is Files.TextRenderer) {
+                    var text_renderer = ((Files.TextRenderer) cell_renderer);
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
@@ -236,13 +237,13 @@ namespace Files {
                     string? text = null;
                     model.@get (iter, ListModel.ColumnID.FILENAME, out text);
 
-                    ((Files.TextRenderer) cell_renderer).set_up_layout (text, area.width);
+                    text_renderer.set_up_layout (text, area.width);
 
                     var is_on_blank = (
                         x < rect.x ||
                         x >= rect.x + rect.width ||
                         y < rect.y ||
-                        y >= rect.y + ((Files.TextRenderer) cell_renderer).text_height
+                        y >= rect.y + text_renderer.text_height + text_renderer.text_y_offset
                     );
                     zone = is_on_blank ? zone : ClickZone.NAME;
                     if (is_on_blank && rubberband) {
