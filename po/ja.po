@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-11-30 07:29+0000\n"
+"PO-Revision-Date: 2021-12-10 03:00+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,10 +38,8 @@ msgid "Open File as Read Only"
 msgstr "ファイルを読み取り専用で開く"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " を選択"
+msgstr "選択"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -49,7 +47,7 @@ msgstr "開く"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -190,34 +188,26 @@ msgid "Failed to parse the desktop file"
 msgstr "デスクトップファイルを解析できませんでした"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "デスクトップファイルを解析できませんでした: %s"
+msgstr "デスクトップファイルを解析できませんでした: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "ファイルからコマンドを作成できませんでした: %s"
+msgstr "ファイルからコマンドを作成できませんでした: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "デスクトップファイルを実行できませんでした: %s"
+msgstr "デスクトップファイルを実行できませんでした: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "空のファイル"
+msgstr "空"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
+msgstr[0] "%i項目"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1109,13 +1099,11 @@ msgstr "プロパティ"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "メディアを取り出す"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "削除"
+msgstr "安全に取り外す"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1277,16 +1265,14 @@ msgid "Emptying Trash"
 msgstr "ゴミ箱を空にしています"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "'%s' をマウントできません"
+msgstr "'%s' をアンマウントできません"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "%V を取り出せません"
+msgstr "'%s' を取り出せません"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1341,7 +1327,7 @@ msgstr "選択項目を削除"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "メールで送る"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1448,7 +1434,7 @@ msgstr "デフォルトに設定"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "ファイルの所有者と権限を検出できません"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1656,17 +1642,15 @@ msgstr "貼り付け"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "すべて選択"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "選択を反転"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "すべて元に戻す"
+msgstr "選択をすべて解除"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1935,10 +1919,9 @@ msgstr "'%s' を取り出し"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "'%s' をマウントできません"
+msgstr "'%s' をアンマウント"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -1960,7 +1943,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "マウントされていません"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -1981,16 +1964,16 @@ msgstr "ローカルファイルシステムのルートフォルダーを表示
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s にはアクセス可能なデータがありません。"
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
-msgstr ""
+msgstr "このドライブを使うには、再接続するか、メディアを挿入するか、フォーマットする必要があります。"
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "フォーマットされていないかメディアがありません"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2027,10 +2010,8 @@ msgid "Connect Server…"
 msgstr "サーバーを接続…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "アンマウント(_U)"
+msgstr "バインドマウント"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
