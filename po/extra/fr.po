@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-04 17:49+0000\n"
+"PO-Revision-Date: 2021-12-10 14:38+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -76,8 +76,6 @@ msgid "Improvements:"
 msgstr "Améliorations :"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Close FileChooser with esc key"
 msgid "Close FileChooser with Esc key"
 msgstr "Fermeture du sélecteur de fichier avec la touche Échap"
 
@@ -87,7 +85,7 @@ msgstr "Utilisation de nouveaux emblèmes pour le statut de git"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Show selection actions in secondary click menu"
-msgstr ""
+msgstr "Affichage des actions de sélection dans le menu contextuel"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:67
@@ -103,19 +101,23 @@ msgid "Fixes:"
 msgstr "Corrections :"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
-msgstr "Affichage de l'espace réservé dans la fenêtre des propriétés"
+msgstr ""
+"Les permissions sont désormais toujours affichées dans la fenêtre des "
+"propriétés"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
+"Dans la page des permissions, affichage des identifiants numériques de "
+"l'utilisateur et groupe lorsque leur nom n'est pas disponible"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
 msgstr ""
+"Dans la page des permissions, affichage d'une message lorsqu'aucune "
+"information n'est disponible"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -198,15 +200,15 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Make ejecting devices safer"
-msgstr ""
+msgstr "Nous avons rendu l'éjection des périphériques plus sécurisée"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Add option to stop drive if possible"
-msgstr ""
+msgstr "Ajout d'une option pour arrêter le lecteur si cela est possible"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Show unformatted drives and drives without media"
-msgstr ""
+msgstr "Affichage des lecteurs non formatés et sans média"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
@@ -234,10 +236,14 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
 msgstr ""
+"Correction de la barre latérale affichant à la fois le lecteur et le volume "
+"pour un même périphérique"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
 msgstr ""
+"Correction de la barre latérale affichant les serveurs SSH à la fois dans la "
+"section Stockage et la section Réseau"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Show translated bookmark names when changing languages"
