@@ -38,12 +38,11 @@ libcore/FileOperations/DialogUtils.vala
 libcore/FileOperations/EmptyTrashJob.vala
 libcore/FileOperations/MountUtils.vala
 
-libcore/Widgets/BasicLocationBar.vala
 libcore/Widgets/BasicBreadcrumbsEntry.vala
+libcore/Widgets/BasicLocationBar.vala
 libcore/Widgets/BreadcrumbElement.vala
 libcore/Widgets/BreadcrumbIconList.vala
 libcore/Widgets/ButtonWithMenu.vala
-libcore/Widgets/ImgEventBox.vala
 libcore/Widgets/ViewSwitcher.vala
 
 plugins/pantheon-files-trash/plugin.vala
@@ -82,10 +81,14 @@ src/View/Window.vala
 
 src/View/Sidebar/AbstractMountableRow.vala
 src/View/Sidebar/BookmarkListBox.vala
+src/View/Sidebar/BookmarkRow.vala
 src/View/Sidebar/DeviceListBox.vala
-src/View/Sidebar/DeviceRow.vala
+src/View/Sidebar/DriveRow.vala
 src/View/Sidebar/NetworkListBox.vala
+src/View/Sidebar/NetworkRow.vala
 src/View/Sidebar/SidebarWindow.vala
+src/View/Sidebar/VolumeRow.vala
+src/View/Sidebar/VolumelessMountRow.vala
 
 src/View/Widgets/AbstractEditableLabel.vala
 src/View/Widgets/BreadcrumbsEntry.vala
