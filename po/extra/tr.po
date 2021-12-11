@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-11-27 11:08+0000\n"
+"PO-Revision-Date: 2021-12-11 19:55+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,15 +78,15 @@ msgstr "İyileştirmeler:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with Esc key"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Show selection actions in secondary click menu"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:67
@@ -102,19 +102,17 @@ msgid "Fixes:"
 msgstr "Düzeltmeler:"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
 msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -131,12 +129,12 @@ msgstr "Diğer güncellemeler:"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 msgid "Only allow one FileChooser per parent window"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 #: data/io.elementary.files.appdata.xml.in.in:76
@@ -172,8 +170,6 @@ msgid "Updated translations"
 msgstr "Çeviriler güncellendi"
 
 #: data/io.elementary.files.appdata.xml.in.in:60
-#, fuzzy
-#| msgid "Use \"Send Mail\" portal instead of contract"
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
@@ -181,7 +177,7 @@ msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:61
 msgid "Add file filters and New Folder options to file chooser portal"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:62
 msgid ""
@@ -190,15 +186,15 @@ msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Make ejecting devices safer"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Add option to stop drive if possible"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Show unformatted drives and drives without media"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
@@ -206,10 +202,8 @@ msgid ""
 msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
-msgstr "Yapıştırılan dosyaları seçmek düzeltildi"
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Allow dropping bookmark directly below the Recent bookmark"
@@ -221,11 +215,11 @@ msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr ""
+msgstr " "
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Show translated bookmark names when changing languages"
