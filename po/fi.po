@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-11-30 14:58+0000\n"
+"PO-Revision-Date: 2021-12-11 19:55+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
-">\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,10 +38,8 @@ msgid "Open File as Read Only"
 msgstr "Avaa tiedosto vain lukutilassa"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " valittu"
+msgstr "Valitse"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -49,7 +47,7 @@ msgstr "Avaa"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -190,35 +188,27 @@ msgid "Failed to parse the desktop file"
 msgstr "Desktop-tiedoston jäsentäminen epäonnistui"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
+msgstr "Desktop-tiedoston jäsennys epäonnistui: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Komennon luominen tiedostosta epäonnistui: %s"
+msgstr "Komennon luominen tiedostosta epäonnistui: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Desktop-tiedoston käynnistäminen epäonnistui: %s"
+msgstr "Desktop-tiedoston käynnistäminen epäonnistui: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Tyhjä tiedosto"
+msgstr "Tyhjä"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i kohde"
+msgstr[1] "%i kohdetta"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1151,13 +1141,11 @@ msgstr "Ominaisuudet"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Irrota media"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Poista"
+msgstr "Poista turvallisesti"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1319,16 +1307,14 @@ msgid "Emptying Trash"
 msgstr "Tyhjennetään roskakoria"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Kohdetta %s ei voi liittää"
+msgstr "Kohteen %s liitosta ei voi irrottaa"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Asemaa %V ei voi avata"
+msgstr "Asemaa '%s' ei voi avata"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1383,7 +1369,7 @@ msgstr "Poista valitut"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Lähetä sähköpostitse"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1490,7 +1476,7 @@ msgstr "Aseta oletukseksi"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Tiedoston omistajuutta ja käyttöoikeuksia ei voitu päätellä"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1705,17 +1691,15 @@ msgstr "Liitä"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Valitse kaikki"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Käänteinen valinta"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Palauta kaikki"
+msgstr "Älä valitse mitään"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1978,17 +1962,15 @@ msgstr "(ylläpitäjänä)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Poista \"%s\""
+msgstr "Avaa \"%s\""
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Kohdetta %s ei voi liittää"
+msgstr "Irrota kohteen %s liitos"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2010,7 +1992,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Ei liitetty"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2031,16 +2013,18 @@ msgstr "Näytä paikallisen tiedostojärjestelmän juuri"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s ei sisällä käytettävissä olevaa dataa."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Käyttääksesi tätä asemaa, sinun tulee mahdollisesta irrottaa se, syöttää "
+"media tai alustaa se."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Alustamaton tai ei mediaa"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2077,10 +2061,8 @@ msgid "Connect Server…"
 msgstr "Yhdistä palvelimeen…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Irrota"
+msgstr "Sido liitos"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
