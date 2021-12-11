@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-11-30 14:58+0000\n"
+"PO-Revision-Date: 2021-12-11 15:43+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -37,10 +37,8 @@ msgid "Open File as Read Only"
 msgstr "פתיחת קובץ לקריאה בלבד"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " נבחרו"
+msgstr "בחירה"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -48,7 +46,7 @@ msgstr "פתיחה"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "שמירה"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -189,35 +187,27 @@ msgid "Failed to parse the desktop file"
 msgstr "פענוח קובץ שולחן העבודה נכשל"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "פענוח קובץ שולחן העבודה נכשל: %s"
+msgstr "פענוח קובץ שולחן העבודה נכשל: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "יצירת פקודה מקובץ נכשלה: %s"
+msgstr "יצירת פקודה מקובץ נכשלה: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "לא ניתן להפעיל את קובץ שולחן העבודה: %s"
+msgstr "לא ניתן להפעיל את קובץ שולחן העבודה: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "קובץ ריק"
+msgstr "ריק"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "פריט"
+msgstr[1] "%i פריטים"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1119,13 +1109,11 @@ msgstr "מאפיינים"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "שליפת אמצעי אחסון"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "הסרה"
+msgstr "הסרה בטוחה"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1287,16 +1275,14 @@ msgid "Emptying Trash"
 msgstr "סל האשפה מתרוקן"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "לא ניתן לעגן את ‚%s’"
+msgstr "לא ניתן לנתק את ‚%s’"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "לא ניתן לשלוף את %V"
+msgstr "לא ניתן לשלוף את ‚%s’"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1351,7 +1337,7 @@ msgstr "מחיקת אלו שנבחרו"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "שליחה בדוא״ל"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1393,7 +1379,7 @@ msgstr "--quit cannot be used with URIs."
 
 #: src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "עיון בקבצים שלך"
+msgstr "ניווט בין הקבצים שלך"
 
 #: src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -1458,7 +1444,7 @@ msgstr "הגדרה כבררת מחדל"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "לא ניתן לקבוע את הבעלות וההרשאות על הקובץ"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1671,17 +1657,15 @@ msgstr "הדבקה"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "לבחור הכול"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "היפוך הבחירה"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "שחזור הכול"
+msgstr "ביטול הבחירה"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1950,10 +1934,9 @@ msgstr "לשלוף את ‚%s’"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "לא ניתן לעגן את ‚%s’"
+msgstr "ניתוק ‚%s’"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -1975,7 +1958,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "מנותק"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -1996,16 +1979,18 @@ msgstr "הצגת שורש מערכת הקבצים המקומית"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "אין נתונים נגישים בתוך %s."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"כדי להשתמש בכונן הזה עליך לחבר אותו מחדש או להכניס אליו אמצעי אחסון או לפרמט "
+"אותו."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "לא מפורמט או שאין מדיה"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2042,10 +2027,8 @@ msgid "Connect Server…"
 msgstr "התחברות לשרת…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_ניתוק עיגון"
+msgstr "איגוד עיגון"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
