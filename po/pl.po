@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-11 08:25+0000\n"
+"PO-Revision-Date: 2021-12-11 15:43+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -2043,16 +2043,18 @@ msgstr "Wyświetlenie katalogu głównego lokalnego systemu plików"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s nie zawiera dostępnych danych."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Aby użyć tego napędu może być wymagane ponowne podłączenie lub włożenie "
+"mediów i sformatowanie ich."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Niesformatowany lub brak mediów"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2089,10 +2091,8 @@ msgid "Connect Server…"
 msgstr "Połącz z serwerem…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Odmontuj"
+msgstr "Ślepe zamontowanie"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
