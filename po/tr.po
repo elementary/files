@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-10-01 13:11+0000\n"
+"PO-Revision-Date: 2021-12-11 19:55+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,18 +30,16 @@ msgstr "İptal"
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Dosyaları Salt Okunur Olarak Aç"
 
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Dosyayı Salt Okunur Olarak Aç"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " seçildi"
+msgstr "Seç"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -49,7 +47,7 @@ msgstr "Aç"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -190,35 +188,27 @@ msgid "Failed to parse the desktop file"
 msgstr "Masaüsütü dosyasını ayrıştırmada hata"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
+msgstr "Masaüsütü dosyasını ayrıştırmada hata: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "%s dosyasından komut oluşturma başarısız oldu"
+msgstr "Dosyasından komut oluşturma başarısız oldu: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Masaüstü dosyası başlatılamadı: %s"
+msgstr "Masaüstü Dosyası Başlatılamıyor: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Boş Dosya"
+msgstr "Boş"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i öğe"
+msgstr[1] "%i öğe"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1142,13 +1132,11 @@ msgstr "Özellikler"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Medyayı Çıkar"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Sil"
+msgstr "Güvenle Kaldır"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
@@ -1310,16 +1298,14 @@ msgid "Emptying Trash"
 msgstr "Çöp Boşaltılıyor"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "'%s' bağlanamıyor"
+msgstr "'%s' çıkartılamıyor"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "%V çıkartılamadı"
+msgstr "'%s' çıkartılamadı"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1374,7 +1360,7 @@ msgstr "Seçilenleri Sil"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "E-Posta ile Gönder"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1481,7 +1467,7 @@ msgstr "Varsayılan olarak ayarla"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Dosya sahipliği ve izinleri belirlenemiyor"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1694,17 +1680,15 @@ msgstr "Yapıştır"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Tümünü Seç"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Diğerlerini Seç"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Tümünü Geri Yükle"
+msgstr "Tüm Seçimi Kaldır"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1973,10 +1957,9 @@ msgstr "'%s' aygıtını çıkar"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "'%s' bağlanamıyor"
+msgstr "Çıkar: '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -1998,7 +1981,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Bağlı değil"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2019,16 +2002,18 @@ msgstr "Yerel dosya sisteminin kök dizinini görüntüle"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s erişilebilir veri içermiyor."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Bu sürücüyü kullanmak için yeniden takmanız, medyayı yerleştirmeniz veya "
+"biçimlendirmeniz gerekebilir."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Biçimlendirilmemiş veya medya yok"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2065,10 +2050,8 @@ msgid "Connect Server…"
 msgstr "Sunucuya Bağlan…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Çıkar"
+msgstr "Bağlama"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
