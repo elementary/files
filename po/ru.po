@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-10 20:27+0000\n"
-"Last-Translator: Daniil <solodyankin.d@outlook.com>\n"
+"PO-Revision-Date: 2021-12-11 15:43+0000\n"
+"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -189,22 +189,16 @@ msgid "Failed to parse the desktop file"
 msgstr "Ошибка обработки desktop-файла"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Ошибка обработки файла запуска: %s"
+msgstr "Не удалось обработать файл рабочего стола: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Ошибка при создании команды из файла: %s"
+msgstr "Не удалось создать команду из файла: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Не удалось запустить desktop-файл: %s"
+msgstr "Невозможно запустить файл рабочего стола: "
 
 #: libcore/File.vala:1111
 msgid "Empty"
@@ -1388,7 +1382,7 @@ msgstr "Удалить выбранное"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Отправить по эл. почте"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1430,7 +1424,7 @@ msgstr "параметр --quit нельзя использовать с адр�
 
 #: src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Обзор ваших файлов"
+msgstr "Просматривайте свои файлы"
 
 #: src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -2085,10 +2079,8 @@ msgid "Connect Server…"
 msgstr "Подключить сервер…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Отключить"
+msgstr "Связать монтирование"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
