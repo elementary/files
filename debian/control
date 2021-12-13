@@ -1,7 +1,7 @@
 Source: pantheon-files
 Section: x11
 Priority: optional
-Maintainer: Cody Garver <cody@elementary.io>
+Maintainer: elementary, Inc. <builds@elementary.io>
 Build-Depends: debhelper (>= 10.5.1),
                gettext,
                gnome-common,
@@ -51,6 +51,8 @@ Description: File manager for the Pantheon desktop
 Package: libpantheon-files-core0
 Architecture: any
 Section: libs
+Conflicts: libpantheon-files-widgets0 (<<6.1.1)
+Replaces: libpantheon-files-widgets0 (<<6.1.1)
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Suggests: pantheon-files
 Description: File manager for the Pantheon desktop (shared library)
@@ -72,6 +74,8 @@ Description: File manager for the Pantheon desktop (shared library)
 Package: libpantheon-files-core-dev
 Architecture: any
 Section: libdevel
+Conflicts: libpantheon-files-widgets-dev (<<6.1.1)
+Replaces: libpantheon-files-widgets-dev (<<6.1.1)
 Depends: libpantheon-files-core0 (= ${binary:Version}), ${misc:Depends}
 Description: File manager for the Pantheon desktop (shared library development files)
  Pantheon Files is a modern file manager originally
