@@ -201,9 +201,11 @@ namespace Files {
                 file.is_directory &&
                 (state_flags & Gtk.StateFlags.PRELIGHT) > 0) {
 
-                layout.set_markup ("<span underline='low'>" + text + "</span>", -1);
+                layout.set_markup (
+                    "<span underline='low'>" + Markup.escape_text (text) + "</span>", -1
+                );
             } else {
-                layout.set_markup (text, -1);
+                layout.set_markup (Markup.escape_text (text), -1);
             }
 
             /* calculate the real text dimension */
