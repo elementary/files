@@ -20,6 +20,8 @@ terminal_name = 'pantheon-terminal'
 add_project_arguments(
     ['-DGETTEXT_PACKAGE="' + meson.project_name() + '"',
     '-DHANDY_USE_UNSTABLE_API',
+    '-DGDK_DISABLE_DEPRECATED',
+    '-DGTK_DISABLE_DEPRECATED',
     '-w'],
     language:'c'
 )
@@ -46,7 +48,7 @@ gio_dep = dependency('gio-2.0', version: '>='+min_glib_version)
 gio_unix_dep = dependency('gio-unix-2.0', version: '>='+min_glib_version)
 gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
-gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
+gtk_dep = dependency('gtk+-3.0', version: '>=3.24')
 granite_dep = dependency('granite', version: '>=6.1.0')
 handy_dep = dependency('libhandy-1', version: '>=0.83.0')
 
