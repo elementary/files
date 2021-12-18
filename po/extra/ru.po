@@ -118,6 +118,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
 msgstr ""
+"В разделе \"Права доступа\" теперь отображается сообщение, когда информация "
+"недоступна"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
