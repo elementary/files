@@ -81,12 +81,21 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         };
         scrolled_window.add (bookmarklists_grid);
 
-        var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
+        var connect_server_button = new Gtk.Button () {
+            hexpand = true,
             always_show_image = true,
             image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
             no_show_all = Files.is_admin (),
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
         };
+        var connect_server_label = new Gtk.Label (_("Connect Server…")) {
+            halign = Gtk.Align.START
+        };
+        var label_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+
+        label_box.add (connect_server_label);
+        connect_server_button.remove (connect_server_button.get_child ());
+        connect_server_button.add (label_box);
 
         var action_bar = new Gtk.ActionBar () {
             //For now hide action bar when admin. This might need revisiting if other actions are added
