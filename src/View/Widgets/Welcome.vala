@@ -30,7 +30,7 @@ namespace Files.View {
         }
 
         public bool on_button_press_event (Gdk.EventButton event) {
-            var event_button = EventUtils.get_event_button (event);
+            var event_button = EventUtils.get_button (event);
             /* Pass Back and Forward button events to toplevel window */
             switch (event_button) {
                 case 6:

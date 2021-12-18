@@ -211,7 +211,7 @@ namespace Files.View {
             undo_manager.request_menu_update.connect (update_undo_actions);
 
             key_press_event.connect ((event) => {
-                var mods = EventUtils.get_event_modifiers (event);
+                var mods = EventUtils.get_modifier_state (event);
                 bool no_mods = (mods == 0);
                 bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
                 bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -221,12 +221,7 @@ namespace Files.View {
                  * There are other hotkeys for operating/focusing other widgets.
                  * Using modified Arrow keys no longer works due to recent changes.  */
 
-                uint event_keyval;
-                if (!event.get_keyval (out event_keyval)) {
-                    return false;
-                }
-
-                switch (event_keyval) {
+                switch (EventUtils.get_keyval (event)) {
                     case Gdk.Key.Tab:
                         if (top_menu.locked_focus) {
                             return false;
@@ -249,11 +244,11 @@ namespace Files.View {
             });
 
             key_press_event.connect_after ((event) => {
-                var mods = EventUtils.get_event_modifiers (event);
+                var mods = EventUtils.get_modifier_state (event);
                 /* Use find function instead of view interactive search */
                 if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
                     /* Use printable characters to initiate search */
-                    var uc = ((unichar)(Gdk.keyval_to_unicode (event.keyval)));
+                    var uc = (unichar)(Gdk.keyval_to_unicode (EventUtils.get_keyval (event)));
                     if (uc.isprint ()) {
                         activate_action ("find", uc.to_string ());
                         return true;

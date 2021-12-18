@@ -74,7 +74,7 @@ namespace Files.View.Chrome {
             autocompleted = false;
             multiple_completions = false;
 
-            switch (event.keyval) {
+            switch (EventUtils.get_keyval (event)) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
@@ -517,7 +517,7 @@ namespace Files.View.Chrome {
             if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
                 return base.on_button_press_event (event);
             } else {
-                var event_button = EventUtils.get_event_button (event);
+                var event_button = EventUtils.get_button (event);
                 var el = mark_pressed_element (event);
                 if (el != null) {
                     switch (event_button) {
@@ -541,7 +541,7 @@ namespace Files.View.Chrome {
         private BreadcrumbElement? mark_pressed_element (Gdk.EventButton event) {
             reset_elements_states ();
             int x, y;
-            EventUtils.get_event_coords (event, out x, out y);
+            EventUtils.get_coords (event, out x, out y);
             BreadcrumbElement? el = get_element_from_coordinates (x, y);
             if (el != null) {
                 el.pressed = true;

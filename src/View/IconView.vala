@@ -215,7 +215,7 @@ namespace Files {
             path = null;
 
             int x, y;
-            EventUtils.get_event_coords (event, out x, out y);
+            EventUtils.get_coords (event, out x, out y);
 
             tree.get_item_at_pos (x, y, out p, out cell_renderer);
             path = p;

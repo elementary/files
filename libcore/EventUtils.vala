@@ -17,7 +17,7 @@
 ***/
 
 namespace Files.EventUtils {
-    public static Gdk.ModifierType get_event_modifiers (Gdk.Event event, Gdk.ModifierType consumed = 0) {
+    public static Gdk.ModifierType get_modifier_state (Gdk.Event event, Gdk.ModifierType consumed = 0) {
         Gdk.ModifierType mods;
         if (event.get_state (out mods)) {
             return (mods & ~consumed) & Gtk.accelerator_get_default_mod_mask ();
@@ -26,7 +26,7 @@ namespace Files.EventUtils {
         }
     }
 
-    public static void get_event_coords (Gdk.Event event, out int ix, out int iy) {
+    public static void get_coords (Gdk.Event event, out int ix, out int iy) {
         double dx, dy;
         if (event.get_coords (out dx, out dy)) {
             ix = (int)dx;
@@ -40,10 +40,19 @@ namespace Files.EventUtils {
         return;
     }
 
-    public static uint get_event_button (Gdk.Event event) {
+    public static uint get_button (Gdk.Event event) {
         uint button;
-        if (event.get_state (out button)) {
+        if (event.get_button (out button)) {
             return button;
+        } else {
+            return -1;
+        }
+    }
+
+    public static uint get_keyval (Gdk.Event event) {
+        uint keyval;
+        if (event.get_keyval (out keyval)) {
+            return keyval;
         } else {
             return -1;
         }

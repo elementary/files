@@ -215,7 +215,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected virtual bool on_key_press_event (Gdk.EventKey event) {
-        switch (event.keyval) {
+        switch (Files.EventUtils.get_keyval (event)) {
             case Gdk.Key.F2:
                 rename ();
                 return true;
@@ -239,8 +239,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return false;
         }
 
-        uint event_button = Files.EventUtils.get_event_button (event);
-        var mods = Files.EventUtils.get_event_modifiers (event);
+        uint event_button = Files.EventUtils.get_button (event);
+        var mods = Files.EventUtils.get_modifier_state (event);
         var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
         var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
         var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */

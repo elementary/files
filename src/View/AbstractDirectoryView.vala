@@ -737,7 +737,7 @@ namespace Files {
                 return true;
             }
 
-            var mods = EventUtils.get_event_modifiers (event);
+            var mods = EventUtils.get_modifier_state (event);
             if (mods > 0) {
                 Gdk.ScrollDirection event_direction;
                 double delta_x, delta_y;
@@ -1468,7 +1468,7 @@ namespace Files {
             Gdk.DragContext context;
             var widget = get_child ();
             int x, y;
-            EventUtils.get_event_coords (event, out x, out y);
+            EventUtils.get_coords (event, out x, out y);
 
             if (Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 cancel_drag_timer ();
@@ -1844,7 +1844,7 @@ namespace Files {
 
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
-            drag_button = (int)(EventUtils.get_event_button (event));
+            drag_button = (int)(EventUtils.get_button (event));
 
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                    300,
@@ -2898,9 +2898,10 @@ namespace Files {
 
             cancel_hover ();
 
-            uint keyval = event.keyval;
+            var keyval = EventUtils.get_keyval (event);
+;
             Gdk.ModifierType consumed_mods = 0;
-            Gdk.ModifierType mods = EventUtils.get_event_modifiers (event);
+            Gdk.ModifierType mods = EventUtils.get_modifier_state (event);
 
             /* Leave standard ASCII alone, else try to get Latin hotkey from keyboard state */
             /* This means that Latin hot keys for Latin Dvorak keyboards (e.g. Spanish Dvorak)
@@ -3446,13 +3447,12 @@ namespace Files {
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
 
-            int x, y;
-            EventUtils.get_event_coords (event, out x, out y);
-            var event_button = EventUtils.get_event_button (event);
+            EventUtils.get_coords (event, out drag_x, out drag_y);
+            var event_button = EventUtils.get_button (event);
             click_zone = get_event_position_info (event, out path, event_button == Gdk.BUTTON_PRIMARY); //Only rubberband with primary button
             click_path = path;
 
-            var mods = EventUtils.get_event_modifiers (event);
+            var mods = EventUtils.get_modifier_state (event);
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
@@ -3617,12 +3617,13 @@ namespace Files {
 
             Gtk.Widget widget = get_child ();
             int x, y;
-            EventUtils.get_event_coords (event, out x, out y);
+            EventUtils.get_coords (event, out x, out y);
             if (x >= 0 && y >= 0) {
                 update_selected_files_and_menu ();
                 /* Only take action if pointer has not moved */
                 if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
-                    var event_button = EventUtils.get_event_button (event);
+
+                    var event_button = EventUtils.get_button (event);
                     if (should_activate) {
                         /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                         Idle.add (() => {

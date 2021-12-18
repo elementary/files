@@ -412,7 +412,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             int y0 = (get_allocated_height () - color_button_width) / 2;
             int x0 = COLORBOX_SPACING + color_button_width;
             int x, y;
-            EventUtils.get_event_coords (event, out x, out y);
+            EventUtils.get_coords (event, out x, out y);
             if (y < y0 || y > y0 + color_button_width) {
                 return true;
             }

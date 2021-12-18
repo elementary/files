@@ -215,7 +215,7 @@ namespace Files {
             }
 
             int x, y;
-            EventUtils.get_event_coords (event, out x, out y);
+            EventUtils.get_coords (event, out x, out y);
 
             /* Determine whether there whitespace at this point.  Note: this function returns false when the
              * position is on the edge of the cell, even though this appears to be blank. We
@@ -365,7 +365,7 @@ namespace Files {
         /* Override base class in order to disable the Gtk.TreeView local search functionality */
         public override bool key_press_event (Gdk.EventKey event) {
             /* We still need the base class to handle cursor keys first */
-            switch (event.keyval) {
+            switch (EventUtils.get_keyval (event)) {
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                 case Gdk.Key.KP_Up:

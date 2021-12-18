@@ -185,10 +185,10 @@ namespace Files.View.Chrome {
                 return true;
             }
 
-            var mods = Files.EventUtils.get_event_modifiers (event);
+            var mods = Files.EventUtils.get_modifier_state (event);
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
-            switch (event.keyval) {
+            switch (Files.EventUtils.get_keyval (event)) {
                 /* Do not trap unmodified Down and Up keys - used by some input methods */
                 case Gdk.Key.KP_Down:
                 case Gdk.Key.Down:

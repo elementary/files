@@ -465,16 +465,17 @@ namespace Files.View.Chrome {
                 return true;
             }
 
-            var mods = EventUtils.get_event_modifiers (event);
+            var mods = EventUtils.get_modifier_state (event);
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
 
+            var event_keyval = EventUtils.get_keyval (event);
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed) {
-                    if (event.keyval == Gdk.Key.l) {
+                    if (event_keyval == Gdk.Key.l) {
                         cancel (); /* release any grab */
                         exit (false); /* Do not exit navigate mode */
                         return true;
@@ -482,9 +483,9 @@ namespace Files.View.Chrome {
                         return parent.key_press_event (event);
                     }
                 } else if (only_alt_pressed &&
-                           event.keyval == Gdk.Key.Return ||
-                           event.keyval == Gdk.Key.KP_Enter ||
-                           event.keyval == Gdk.Key.ISO_Enter) {
+                           event_keyval == Gdk.Key.Return ||
+                           event_keyval == Gdk.Key.KP_Enter ||
+                           event_keyval == Gdk.Key.ISO_Enter) {
 
                     accept (null, true); // Open the selected file in default app
                 } else {
@@ -492,7 +493,7 @@ namespace Files.View.Chrome {
                 }
             }
 
-            switch (event.keyval) {
+            switch (event_keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
@@ -507,8 +508,8 @@ namespace Files.View.Chrome {
                         return true;
                     }
 
-                    var up = (event.keyval == Gdk.Key.Up) ||
-                             (event.keyval == Gdk.Key.ISO_Left_Tab);
+                    var up = (event_keyval == Gdk.Key.Up) ||
+                             (event_keyval == Gdk.Key.ISO_Left_Tab);
 
                     if (view.get_selection ().count_selected_rows () < 1) {
                         if (up) {

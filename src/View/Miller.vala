@@ -356,7 +356,7 @@ namespace Files.View {
 
         private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
             /* Only handle unmodified keys */
-            var mods = EventUtils.get_event_modifiers (event);
+            var mods = EventUtils.get_modifier_state (event);
             if (mods > 0) {
                 return false;
             }
@@ -368,11 +368,7 @@ namespace Files.View {
             }
 
             View.Slot to_activate = null;
-            uint event_keyval;
-            if (!event.get_keyval (out event_keyval)) {
-                return false;
-            }
-            switch (event_keyval) {
+            switch (EventUtils.get_keyval (event)) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
                         to_activate = slot_list.nth_data (current_position - 1);

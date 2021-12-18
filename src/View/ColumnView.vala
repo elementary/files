@@ -95,15 +95,10 @@ namespace Files {
         }
 
         protected override bool on_view_key_press_event (Gdk.EventKey event) {
-            var mods = EventUtils.get_event_modifiers (event);
+            var mods = EventUtils.get_modifier_state (event);
             bool no_mods = (mods == 0);
 
-            uint event_keyval;
-            if (!event.get_keyval (out event_keyval)) {
-                return false;
-            }
-
-            switch (event_keyval) {
+            switch (EventUtils.get_keyval (event)) {
                 /* Do not emit alert sound on left and right cursor keys in Miller View */
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:

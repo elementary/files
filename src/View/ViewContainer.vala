@@ -581,8 +581,8 @@ namespace Files.View {
         }
 
         private bool on_button_press_event (Gdk.EventButton event) {
-            var mods = EventUtils.get_event_modifiers (event);
-            var event_button = EventUtils.get_event_button (event);
+            var mods = EventUtils.get_modifier_state (event);
+            var event_button = EventUtils.get_button (event);
             bool result = false;
             switch (event_button) {
                 /* Extra mouse button actions */

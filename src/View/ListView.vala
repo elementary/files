@@ -155,17 +155,12 @@ namespace Files {
         }
 
         protected override bool on_view_key_press_event (Gdk.EventKey event) {
-            var mods = EventUtils.get_event_modifiers (event);
+            var mods = EventUtils.get_modifier_state (event);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
 
             if (!control_pressed && !shift_pressed) {
-                uint event_keyval;
-                if (!event.get_keyval (out event_keyval)) {
-                    return false;
-                }
-
-                switch (event_keyval) {
+                switch (EventUtils.get_keyval (event)) {
                     case Gdk.Key.Right:
                         Gtk.TreePath? path = null;
                         tree.get_cursor (out path, null);
