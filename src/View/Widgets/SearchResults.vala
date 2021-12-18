@@ -667,14 +667,11 @@ namespace Files.View.Chrome {
             x = (x + parent_alloc.x).clamp (workarea.x, workarea.x + workarea.width - width_request);
             y += parent_alloc.y + parent_alloc.height;
 
-            int separator_height;
             Gdk.Rectangle cell_area;
-            view.style_get ("vertical-separator", out separator_height);
             view.get_cell_area (new Gtk.TreePath.from_indices (0), null, out cell_area);
             var total = int.max ((items + headers), 2);
-            var height = total * (cell_area.height + separator_height);
+            var height = total * (cell_area.height * 11 / 10); // Allow for vertical space between cells
             height = height.clamp (0, workarea.y + workarea.height - y - 12);
-
             scroll.set_min_content_height (height);
             set_size_request (int.min (parent_alloc.width, workarea.width), height);
             move (x, y);
