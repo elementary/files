@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
 "PO-Revision-Date: 2021-12-18 14:12+0000\n"
-"Last-Translator: 1280px <megarainbow29@gmail.com>\n"
+"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -141,8 +141,7 @@ msgstr "Разрешен только один диалог выбора фай�
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
-"Переход в папку по нажатию Enter в диалоге выбора вместо выделения мышью"
+msgstr "Переход в папку по нажатию Enter в диалоге выбора вместо выбора мышью"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 #: data/io.elementary.files.appdata.xml.in.in:76
