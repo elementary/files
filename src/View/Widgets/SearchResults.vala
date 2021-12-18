@@ -464,7 +464,8 @@ namespace Files.View.Chrome {
             if (event.is_modifier == 1) {
                 return true;
             }
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+
+            var mods = EventUtils.get_event_modifiers (event);
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);

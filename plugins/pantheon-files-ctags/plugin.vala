@@ -411,35 +411,36 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
             int y0 = (get_allocated_height () - color_button_width) / 2;
             int x0 = COLORBOX_SPACING + color_button_width;
-
-            if (event.y < y0 || event.y > y0 + color_button_width) {
+            int x, y;
+            EventUtils.get_event_coords (event, out x, out y);
+            if (y < y0 || y > y0 + color_button_width) {
                 return true;
             }
 
             if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
                 var width = get_allocated_width ();
-                int x = width - 27;
+                int x1 = width - 27;
                 for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (event.x <= x && event.x >= x - color_button_width) {
+                    if (x <= x1 && x >= x1 - color_button_width) {
                         color_changed (i);
                         clear_checks ();
                         check_color (i);
                         break;
                     }
 
-                    x -= x0;
+                    x1 -= x0;
                 }
             } else {
-                int x = 27;
+                int x1 = 27;
                 for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (event.x >= x && event.x <= x + color_button_width) {
+                    if (x >= x1 && x <= x1 + color_button_width) {
                         color_changed (i);
                         clear_checks ();
                         check_color (i);
                         break;
                     }
 
-                    x += x0;
+                    x1 += x0;
                 }
             }
 

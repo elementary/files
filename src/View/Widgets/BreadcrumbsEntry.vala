@@ -48,10 +48,6 @@ namespace Files.View.Chrome {
         Gdk.DragAction current_actions = 0; /* No action */
         Files.File? drop_target_file = null;
 
-        /** Right-click menu support **/
-        double menu_x_root;
-        double menu_y_root;
-
         public signal void open_with_request (GLib.File file, AppInfo? app);
 
         public BreadcrumbsEntry () {
@@ -388,27 +384,12 @@ namespace Files.View.Chrome {
             queue_draw ();
         }
 
-        public void right_click_menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
-            x = (int) menu_x_root;
-            y = (int) menu_y_root;
-            push_in = true;
-        }
     /** Context menu functions **/
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
             string parent_path = FileUtils.get_parent_path_from_path (path);
             GLib.File? root = FileUtils.get_file_for_path (parent_path);
-
-            var style_context = get_style_context ();
-            var padding = style_context.get_padding (style_context.get_state ());
-            if (clicked_element.x - BREAD_SPACING < 0) {
-                menu_x_root = event.x_root - event.x + clicked_element.x;
-            } else {
-                menu_x_root = event.x_root - event.x + clicked_element.x - BREAD_SPACING;
-            }
-
-            menu_y_root = event.y_root - event.y + get_allocated_height () - padding.bottom - padding.top;
 
             menu = new Gtk.Menu ();
             menu.cancel.connect (() => {reset_elements_states ();});
@@ -536,9 +517,10 @@ namespace Files.View.Chrome {
             if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
                 return base.on_button_press_event (event);
             } else {
+                var event_button = EventUtils.get_event_button (event);
                 var el = mark_pressed_element (event);
                 if (el != null) {
-                    switch (event.button) {
+                    switch (event_button) {
                         case 1:
                             break; // Long press support discontinued as provided by system settings
                         case 2:
@@ -558,11 +540,14 @@ namespace Files.View.Chrome {
 
         private BreadcrumbElement? mark_pressed_element (Gdk.EventButton event) {
             reset_elements_states ();
-            BreadcrumbElement? el = get_element_from_coordinates ((int) event.x, (int) event.y);
+            int x, y;
+            EventUtils.get_event_coords (event, out x, out y);
+            BreadcrumbElement? el = get_element_from_coordinates (x, y);
             if (el != null) {
                 el.pressed = true;
                 queue_draw ();
             }
+
             return el;
         }
 

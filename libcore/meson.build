@@ -20,6 +20,7 @@ pantheon_files_core_vala_files = files(
     'Directory.vala',
     'DndHandler.vala',
     'Enums.vala',
+    'EventUtils.vala',
     'File.vala',
     'FileChanges.vala',
     'FileConflictDialog.vala',

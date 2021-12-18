@@ -737,34 +737,36 @@ namespace Files {
                 return true;
             }
 
-            if ((event.state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                switch (event.direction) {
-                    case Gdk.ScrollDirection.UP:
-                        zoom_in ();
-                        return true;
-
-                    case Gdk.ScrollDirection.DOWN:
-                        zoom_out ();
-                        return true;
-
-                    case Gdk.ScrollDirection.SMOOTH:
-                        double delta_x, delta_y;
-                        event.get_scroll_deltas (out delta_x, out delta_y);
-                        /* try to emulate a normal scrolling event by summing deltas.
-                         * step size of 0.5 chosen to match sensitivity */
-                        total_delta_y += delta_y;
-
-                        if (total_delta_y >= 0.5) {
-                            total_delta_y = 0;
-                            zoom_out ();
-                        } else if (total_delta_y <= -0.5) {
-                            total_delta_y = 0;
+            var mods = EventUtils.get_event_modifiers (event);
+            if (mods > 0) {
+                Gdk.ScrollDirection event_direction;
+                double delta_x, delta_y;
+                if (event.get_scroll_direction (out event_direction)) {
+                    switch (event_direction) {
+                        case Gdk.ScrollDirection.UP:
                             zoom_in ();
-                        }
-                        return true;
+                            return true;
 
-                    default:
-                        break;
+                        case Gdk.ScrollDirection.DOWN:
+                            zoom_out ();
+                            return true;
+                        default:
+                            break;
+                    }
+                } else if (event.get_scroll_deltas (out delta_x, out delta_y)) {
+                    /* try to emulate a normal scrolling event by summing deltas.
+                     * step size of 0.5 chosen to match sensitivity */
+                    total_delta_y += delta_y;
+
+                    if (total_delta_y >= 0.5) {
+                        total_delta_y = 0;
+                        zoom_out ();
+                    } else if (total_delta_y <= -0.5) {
+                        total_delta_y = 0;
+                        zoom_in ();
+                    }
+
+                    return true;
                 }
             }
 
@@ -1465,8 +1467,8 @@ namespace Files {
             /* Only active during drag timeout */
             Gdk.DragContext context;
             var widget = get_child ();
-            int x = (int)event.x;
-            int y = (int)event.y;
+            int x, y;
+            EventUtils.get_event_coords (event, out x, out y);
 
             if (Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 cancel_drag_timer ();
@@ -1842,8 +1844,7 @@ namespace Files {
 
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
-            var button_event = (Gdk.EventButton)event;
-            drag_button = (int)(button_event.button);
+            drag_button = (int)(EventUtils.get_event_button (event));
 
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                    300,
@@ -2899,6 +2900,7 @@ namespace Files {
 
             uint keyval = event.keyval;
             Gdk.ModifierType consumed_mods = 0;
+            Gdk.ModifierType mods = EventUtils.get_event_modifiers (event);
 
             /* Leave standard ASCII alone, else try to get Latin hotkey from keyboard state */
             /* This means that Latin hot keys for Latin Dvorak keyboards (e.g. Spanish Dvorak)
@@ -2906,12 +2908,14 @@ namespace Files {
              * For non-Latin (e.g. Cyrillic) keyboards however, the Latin hotkeys are mapped
              * to the same position as on a Latin QWERTY keyboard. If the conversion fails, the unprocessed
              * event.keyval is used. */
+
+            //NOTE GDK4 has a function to get consumed modifiers directly
             if (keyval > 127) {
                 int eff_grp, level;
 
                 if (!Gdk.Keymap.get_for_display (get_display ()).translate_keyboard_state (
                         event.hardware_keycode,
-                        event.state, event.group,
+                        mods, event.group,
                         out keyval, out eff_grp,
                         out level, out consumed_mods)) {
 
@@ -2935,7 +2939,8 @@ namespace Files {
                 }
             }
 
-            var mods = (event.state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
+
+            mods = (mods & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -3440,13 +3445,14 @@ namespace Files {
 
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
-            drag_x = (int)(event.x);
-            drag_y = (int)(event.y);
 
-            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY); //Only rubberband with primary button
+            int x, y;
+            EventUtils.get_event_coords (event, out x, out y);
+            var event_button = EventUtils.get_event_button (event);
+            click_zone = get_event_position_info (event, out path, event_button == Gdk.BUTTON_PRIMARY); //Only rubberband with primary button
             click_path = path;
 
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            var mods = EventUtils.get_event_modifiers (event);
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
@@ -3455,7 +3461,7 @@ namespace Files {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+            bool double_click_event = (event.get_event_type () == Gdk.EventType.@2BUTTON_PRESS);
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
              */
@@ -3472,7 +3478,7 @@ namespace Files {
             should_scroll = true;
 
             /* Handle all selection and deselection explicitly in the following switch statement */
-            switch (event.button) {
+            switch (event_button) {
                 case Gdk.BUTTON_PRIMARY: // button 1
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
@@ -3610,29 +3616,32 @@ namespace Files {
             slot.active (should_scroll);
 
             Gtk.Widget widget = get_child ();
-            int x = (int)event.x;
-            int y = (int)event.y;
-            update_selected_files_and_menu ();
-            /* Only take action if pointer has not moved */
-            if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
-                if (should_activate) {
-                    /* Need Idle else can crash with rapid clicking (avoid nested signals) */
-                    Idle.add (() => {
-                        var flag = event.button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB :
-                                                                       Files.OpenFlag.DEFAULT;
+            int x, y;
+            EventUtils.get_event_coords (event, out x, out y);
+            if (x >= 0 && y >= 0) {
+                update_selected_files_and_menu ();
+                /* Only take action if pointer has not moved */
+                if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
+                    var event_button = EventUtils.get_event_button (event);
+                    if (should_activate) {
+                        /* Need Idle else can crash with rapid clicking (avoid nested signals) */
+                        Idle.add (() => {
+                            var flag = event_button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB :
+                                                                           Files.OpenFlag.DEFAULT;
 
-                        activate_selected_items (flag);
-                        return GLib.Source.REMOVE;
-                    });
-                } else if (should_deselect && click_path != null) {
-                    unselect_path (click_path);
-                    /* Only need to update selected files if changed by this handler */
-                    Idle.add (() => {
-                        update_selected_files_and_menu ();
-                        return GLib.Source.REMOVE;
-                    });
-                } else if (event.button == Gdk.BUTTON_SECONDARY) {
-                    show_context_menu (event);
+                            activate_selected_items (flag);
+                            return GLib.Source.REMOVE;
+                        });
+                    } else if (should_deselect && click_path != null) {
+                        unselect_path (click_path);
+                        /* Only need to update selected files if changed by this handler */
+                        Idle.add (() => {
+                            update_selected_files_and_menu ();
+                            return GLib.Source.REMOVE;
+                        });
+                    } else if (event_button == Gdk.BUTTON_SECONDARY) {
+                        show_context_menu (event);
+                    }
                 }
             }
 

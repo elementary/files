@@ -30,16 +30,19 @@ namespace Files.View {
         }
 
         public bool on_button_press_event (Gdk.EventButton event) {
+            var event_button = EventUtils.get_event_button (event);
             /* Pass Back and Forward button events to toplevel window */
-            switch (event.button) {
+            switch (event_button) {
                 case 6:
                 case 7:
                 case 8:
                 case 9:
                     return get_toplevel ().button_press_event (event);
                 default:
-                    return base.button_press_event (event);
+                    break;
             }
+
+            return base.button_press_event (event);
         }
     }
 }

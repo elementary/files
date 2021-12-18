@@ -185,7 +185,7 @@ namespace Files.View.Chrome {
                 return true;
             }
 
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            var mods = Files.EventUtils.get_event_modifiers (event);
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
             switch (event.keyval) {

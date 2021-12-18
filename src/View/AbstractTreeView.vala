@@ -207,22 +207,22 @@ namespace Files {
             Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
-            int x, y, cx, cy, depth;
+            int cx, cy, depth;
             path = null;
 
             if (event.window != tree.get_bin_window ()) {
                 return ClickZone.INVALID;
             }
 
-            x = (int)event.x;
-            y = (int)event.y;
+            int x, y;
+            EventUtils.get_event_coords (event, out x, out y);
 
             /* Determine whether there whitespace at this point.  Note: this function returns false when the
              * position is on the edge of the cell, even though this appears to be blank. We
              * deal with this below. */
-            var is_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, null, null, null, null);
+            var is_blank = tree.is_blank_at_pos (x, y, null, null, null, null);
 
-            tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
+            tree.get_path_at_pos (x, y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
 

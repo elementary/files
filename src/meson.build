@@ -26,9 +26,9 @@ pantheon_files_exec = executable (
     'Dialogs/PropertiesWindow.vala',
     'Dialogs/VolumePropertiesWindow.vala',
 
+    'Utils/AppUtils.vala',
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
-    'Utils/AppUtils.vala',
 
     'View/AbstractDirectoryView.vala',
     'View/AbstractTreeView.vala',

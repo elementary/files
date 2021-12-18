@@ -239,12 +239,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return false;
         }
 
-        var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+        uint event_button = Files.EventUtils.get_event_button (event);
+        var mods = Files.EventUtils.get_event_modifiers (event);
         var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
         var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
         var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
 
-        switch (event.button) {
+        switch (event_button) {
             case Gdk.BUTTON_PRIMARY:
                 if (only_control_pressed) {
                     activated (Files.OpenFlag.NEW_TAB);
@@ -262,8 +263,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 return true;
 
             default:
-                return false;
+                break;
         }
+
+        return false;
     }
 
     protected virtual void popup_context_menu (Gdk.EventButton event) {

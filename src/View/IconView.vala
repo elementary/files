@@ -212,11 +212,10 @@ namespace Files {
             Gtk.TreePath? p = null;
             Gtk.CellRenderer? cell_renderer;
             uint zone;
-            int x, y;
             path = null;
 
-            x = (int)event.x;
-            y = (int)event.y;
+            int x, y;
+            EventUtils.get_event_coords (event, out x, out y);
 
             tree.get_item_at_pos (x, y, out p, out cell_renderer);
             path = p;
@@ -247,6 +246,7 @@ namespace Files {
                         zone = ClickZone.NAME;
                     } else if (rubberband) {
                         /* Fake location outside centre bottom of item for rubberbanding */
+                        //FIXME This will not work in Gtk4!
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                         zone = ClickZone.BLANK_NO_PATH;

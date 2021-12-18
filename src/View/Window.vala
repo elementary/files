@@ -211,7 +211,7 @@ namespace Files.View {
             undo_manager.request_menu_update.connect (update_undo_actions);
 
             key_press_event.connect ((event) => {
-                var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+                var mods = EventUtils.get_event_modifiers (event);
                 bool no_mods = (mods == 0);
                 bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
                 bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -220,7 +220,13 @@ namespace Files.View {
                  * because cannot tab out of location bar and also unwanted items tend to get focused.
                  * There are other hotkeys for operating/focusing other widgets.
                  * Using modified Arrow keys no longer works due to recent changes.  */
-                switch (event.keyval) {
+
+                uint event_keyval;
+                if (!event.get_keyval (out event_keyval)) {
+                    return false;
+                }
+
+                switch (event_keyval) {
                     case Gdk.Key.Tab:
                         if (top_menu.locked_focus) {
                             return false;
@@ -243,8 +249,9 @@ namespace Files.View {
             });
 
             key_press_event.connect_after ((event) => {
+                var mods = EventUtils.get_event_modifiers (event);
                 /* Use find function instead of view interactive search */
-                if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
+                if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
                     /* Use printable characters to initiate search */
                     var uc = ((unichar)(Gdk.keyval_to_unicode (event.keyval)));
                     if (uc.isprint ()) {

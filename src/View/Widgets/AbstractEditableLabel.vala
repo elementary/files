@@ -36,7 +36,7 @@ namespace Files {
         }
 
         public virtual bool on_key_press_event (Gdk.EventKey event) {
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            var mods = EventUtils.get_event_modifiers (event);
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
             switch (event.keyval) {
