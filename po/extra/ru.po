@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-18 14:15+0000\n"
+"PO-Revision-Date: 2021-12-18 14:17+0000\n"
 "Last-Translator: 1280px <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -215,14 +215,14 @@ msgstr ""
 "щелчку мыши"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
-msgstr "Исправлен выбор вставленных файлов"
+msgstr "Исправлен выбор нескольких групп файлов"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr ""
+"Разрешено добавление закладок перетаскиванием прямо под закладкой \"Недавние"
+"\""
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Do not show unusable drop target below the Trash bookmark"
