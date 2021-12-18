@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
 "PO-Revision-Date: 2021-12-18 14:08+0000\n"
-"Last-Translator: 1280px <megarainbow29@gmail.com>\n"
+"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -112,7 +112,7 @@ msgstr "Отображение зарезервированного места �
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
-"В разделе \"Права доступа\" отображаются числовые ID пользователя и группы, "
+"В разделе «Права доступа» отображаются числовые ID пользователя и группы, "
 "когда имена недоступны"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
