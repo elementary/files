@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-11-05 14:32+0000\n"
-"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
-">\n"
+"PO-Revision-Date: 2021-12-18 14:08+0000\n"
+"Last-Translator: 1280px <megarainbow29@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,11 +79,11 @@ msgstr "Улучшения:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with Esc key"
-msgstr ""
+msgstr "Закрытие окна выбора файла клавишей Esc"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
-msgstr ""
+msgstr "Новые значки для статуса git"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Show selection actions in secondary click menu"
@@ -112,6 +112,8 @@ msgstr "Отображение зарезервированного места �
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
+"В разделе \"Права доступа\" отображаются числовые ID пользователя и группы, "
+"когда имена недоступны"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
