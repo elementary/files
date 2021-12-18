@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
 "PO-Revision-Date: 2021-12-18 14:21+0000\n"
-"Last-Translator: 1280px <megarainbow29@gmail.com>\n"
+"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -226,7 +226,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr ""
-"Не отображать неиспользуемую область перетаскивания закладок под корзиной"
+"Больше не отображается неиспользуемая область перетаскивания закладок под "
+"корзиной"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
