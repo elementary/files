@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-18 14:21+0000\n"
+"PO-Revision-Date: 2021-12-18 15:15+0000\n"
 "Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -238,7 +238,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
 msgstr ""
-"Исправлено отображение серверов SSH сразу в категориях накопителей и сети на "
+"Исправлено отображение SSH-серверов в категориях «Накопитель» и «Сеть» на "
 "боковой панели"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
@@ -256,6 +256,8 @@ msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
 msgstr ""
+"Убрано кратковременное наложение слоя статуса при изменении корневой папки в "
+"представлении столбцом"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Remove message about reporting issues when running from Terminal"
