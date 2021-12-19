@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-19 16:52+0000\n"
-"PO-Revision-Date: 2021-12-10 03:00+0000\n"
+"PO-Revision-Date: 2021-12-20 02:16+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -305,11 +305,8 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "サイドバーのブックマークを名称変更できない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-#, fuzzy
-#| msgid "FIx an issue with showing color tags when thumbnails are hidden"
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
-msgstr ""
-"サムネイルが非表示の場合に発生する、カラータグを表示する機能の不具合を修正"
+msgstr "サムネイルが非表示の場合に発生する、カラータグを表示する機能の不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
 msgid "Fix freeze when comparing copied files"
