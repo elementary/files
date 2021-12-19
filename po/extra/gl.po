@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 19:20+0000\n"
+"POT-Creation-Date: 2021-12-19 16:52+0000\n"
 "PO-Revision-Date: 2019-09-14 12:22+0000\n"
 "Last-Translator: Daniel <riesp@protonmail.com>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/extra/gl/"
@@ -262,7 +262,7 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-msgid "FIx an issue with showing color tags when thumbnails are hidden"
+msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:132

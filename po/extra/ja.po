@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 19:20+0000\n"
+"POT-Creation-Date: 2021-12-19 16:52+0000\n"
 "PO-Revision-Date: 2021-12-10 03:00+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,7 +110,9 @@ msgstr "プロパティーダイアログに権限のページを常に表示す
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
-msgstr "権限のページでユーザー名とグループ名が利用できない場合は数値のユーザー ID とグループ ID を表示するように修正"
+msgstr ""
+"権限のページでユーザー名とグループ名が利用できない場合は数値のユーザー ID と"
+"グループ ID を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
@@ -131,12 +133,15 @@ msgstr "そのほかのアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 msgid "Only allow one FileChooser per parent window"
-msgstr "親ウィンドウ一つに対して複数のファイル選択ダイアログを開ける不具合を修正"
+msgstr ""
+"親ウィンドウ一つに対して複数のファイル選択ダイアログを開ける不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr "ファイル選択ダイアログで Enter キーを押した際に、フォルダーを選択するのではなくその中にある項目を表示するように修正"
+msgstr ""
+"ファイル選択ダイアログで Enter キーを押した際に、フォルダーを選択するのではな"
+"くその中にある項目を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 #: data/io.elementary.files.appdata.xml.in.in:76
@@ -223,11 +228,15 @@ msgstr "サイドバーの“ゴミ箱”の直下ではドロップマークを
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
-msgstr "同じデバイスに対してドライブとボリュームの両方がサイドバーに表示されていた不具合を修正"
+msgstr ""
+"同じデバイスに対してドライブとボリュームの両方がサイドバーに表示されていた不"
+"具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr "SSH サーバーがサイドバーの“ストレージ”と“ネットワーク”のセクション両方に表示されていた不具合を修正"
+msgstr ""
+"SSH サーバーがサイドバーの“ストレージ”と“ネットワーク”のセクション両方に表示"
+"されていた不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Show translated bookmark names when changing languages"
@@ -296,7 +305,9 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "サイドバーのブックマークを名称変更できない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-msgid "FIx an issue with showing color tags when thumbnails are hidden"
+#, fuzzy
+#| msgid "FIx an issue with showing color tags when thumbnails are hidden"
+msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr ""
 "サムネイルが非表示の場合に発生する、カラータグを表示する機能の不具合を修正"
 

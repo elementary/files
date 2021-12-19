@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 19:20+0000\n"
+"POT-Creation-Date: 2021-12-19 16:52+0000\n"
 "PO-Revision-Date: 2021-12-11 15:43+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
@@ -270,7 +270,9 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "שינוי שם של סימניות בסרגל הצד תוקן"
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-msgid "FIx an issue with showing color tags when thumbnails are hidden"
+#, fuzzy
+#| msgid "FIx an issue with showing color tags when thumbnails are hidden"
+msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr "תיקון תקלה בהצגת תגיות צבע כשתמונות ממוזערות מוסתרות"
 
 #: data/io.elementary.files.appdata.xml.in.in:132

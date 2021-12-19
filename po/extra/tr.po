@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 19:20+0000\n"
+"POT-Creation-Date: 2021-12-19 16:52+0000\n"
 "PO-Revision-Date: 2021-12-14 21:18+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
-"\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
+">\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -274,8 +274,10 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-msgid "FIx an issue with showing color tags when thumbnails are hidden"
-msgstr ""
+#, fuzzy
+#| msgid "Fix color tags disappearing when thumbnails hidden"
+msgid "Fix an issue with showing color tags when thumbnails are hidden"
+msgstr "Küçük resimler gizlendiğinde renk etiketlerinin kaybolması düzeltildi"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
 msgid "Fix freeze when comparing copied files"
