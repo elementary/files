@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-19 16:52+0000\n"
-"PO-Revision-Date: 2021-12-11 15:43+0000\n"
+"PO-Revision-Date: 2021-12-20 07:03+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -306,8 +306,6 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "Naprawiono zmienianie nazw zakładek w panelu bocznym"
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-#, fuzzy
-#| msgid "FIx an issue with showing color tags when thumbnails are hidden"
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr ""
 "Naprawiono problem z pokazywaniem kolorowych tagów gdy podglądy są ukryte"
