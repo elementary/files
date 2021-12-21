@@ -198,7 +198,7 @@ namespace Files {
             }
 
             if (!modifier_is_pressed &&
-                file.is_directory &&
+                file != null && file.is_directory &&
                 (state_flags & Gtk.StateFlags.PRELIGHT) > 0) {
 
                 layout.set_markup (
