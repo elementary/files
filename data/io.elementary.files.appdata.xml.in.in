@@ -146,7 +146,7 @@
           <li>Fix small context menus on breadcrumbs</li>
           <li>Fix bookmarking a single selected item with Ctrl + D</li>
           <li>Fix renaming bookmarks in the sidebar</li>
-          <li>FIx an issue with showing color tags when thumbnails are hidden</li>
+          <li>Fix an issue with showing color tags when thumbnails are hidden</li>
         </ul>
         <p>Other updates:</p>
         <ul>

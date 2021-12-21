@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-09 23:57+0000\n"
+"POT-Creation-Date: 2021-12-19 16:52+0000\n"
+"PO-Revision-Date: 2021-12-20 02:16+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -296,7 +296,7 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "Виправлено помилку перейменування закладок на бічній панелі"
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-msgid "FIx an issue with showing color tags when thumbnails are hidden"
+msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr "Виправлено проблему показу кольорових міток, коли ескізи приховано"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
