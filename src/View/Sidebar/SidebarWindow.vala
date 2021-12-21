@@ -210,22 +210,10 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             }
 
             sync_timeout_id = 0;
-            network_listbox.unselect_all_items ();
-            device_listbox.unselect_all_items ();
-            bookmark_listbox.unselect_all_items ();
-            /* Need to process unselect_all signal first */
-            Idle.add (() => {
-                SidebarItemInterface? row = null;
-                if (bookmark_listbox.has_uri (location, out row)) {
-                    bookmark_listbox.select_item (row);
-                } else if (device_listbox.has_uri (location, out row)) {
-                    device_listbox.select_item (row);
-                } else if (network_listbox.has_uri (location, out row)) {
-                    network_listbox.select_item (row);
-                }
-
-                return Source.REMOVE;
-            });
+            /* select_uri () will unselect other uris in each listbox */
+            bookmark_listbox.select_uri (location);
+            device_listbox.select_uri (location);
+            network_listbox.select_uri (location);
 
             return Source.REMOVE;
         });

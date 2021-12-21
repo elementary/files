@@ -266,7 +266,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected void popup_context_menu (Gdk.EventButton event) {
+    protected virtual void popup_context_menu (Gdk.EventButton event) {
         var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
