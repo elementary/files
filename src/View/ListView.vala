@@ -233,8 +233,8 @@ namespace Files {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
             Files.Directory? dir = null;
-            if (model.load_subdirectory (path, out dir)) { // Returns true if dir non null
-                connect_directory_handlers (dir);
+            if (model.get_subdirectory (path, out dir)) { // Returns true if dir non null
+                connect_subdirectory_loading_handlers (dir);
                 dir.init ();
                 /* Maintain our own reference on dir, independent of the model */
                 /* Also needed for updating show hidden status */
@@ -244,7 +244,7 @@ namespace Files {
 
         private void remove_subdirectory (Directory? dir) {
             if (dir != null) {
-                disconnect_directory_handlers (dir);
+                disconnect_subdirectory_loading_handlers (dir);
                 /* Release our reference on dir */
                 loaded_subdirectories.remove (dir);
             } else {

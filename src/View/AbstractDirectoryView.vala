@@ -632,13 +632,27 @@ namespace Files {
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
-            dir.file_loaded.connect (on_directory_file_loaded);
+            dir.files_loaded.connect (on_directory_files_loaded);
+            // dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
-            dir.file_loaded.disconnect (on_directory_file_loaded);
+            // dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.files_loaded.disconnect (on_directory_files_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
+        }
+
+        protected void connect_subdirectory_loading_handlers (Directory dir) {
+            dir.files_loaded.connect (on_subdirectory_files_loaded);
+            // dir.file_loaded.connect (on_directory_file_loaded);
+            dir.done_loading.connect (on_subdirectory_done_loading);
+        }
+
+        protected void disconnect_subdirectory_loading_handlers (Directory dir) {
+            // dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.files_loaded.disconnect (on_subdirectory_files_loaded);
+            dir.done_loading.disconnect (on_subdirectory_done_loading);
         }
 
         protected void disconnect_directory_handlers (Directory dir) {
@@ -934,6 +948,15 @@ namespace Files {
             }
         }
 
+        private void add_files (Directory dir, bool is_root = true) {
+            if (is_root) {
+                clear ();
+                model.load_root_directory (dir);
+            } else {
+                model.load_subdirectory (dir);
+            }
+        }
+
         private void handle_free_space_change () {
             /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
             if (add_remove_file_timeout_id == 0) {
@@ -1218,6 +1241,8 @@ namespace Files {
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
                     sort_column_id = Files.ListModel.ColumnID.from_string (col_name);
+                } else {
+                    sort_column_id = Files.ListModel.ColumnID.FILENAME;
                 }
 
                 if (reverse) {
@@ -1305,9 +1330,13 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_loaded (Directory dir, Files.File file) {
-            add_file (file, dir, false); /* Do not select files added during initial load */
-            /* no freespace change signal required */
+        // private void on_directory_file_loaded (Directory dir, Files.File file) {
+        private void on_directory_files_loaded (Directory dir) {
+            add_files (dir);
+        }
+
+        private void on_subdirectory_files_loaded (Directory dir) {
+            add_files (dir, false);
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -1363,6 +1392,13 @@ namespace Files {
             }
 
             handle_free_space_change ();
+        }
+
+        private void on_subdirectory_done_loading (Directory dir) {
+            disconnect_subdirectory_loading_handlers (dir);
+            thaw_tree ();
+
+            schedule_thumbnail_color_tag_timeout ();
         }
 
         private void on_directory_done_loading (Directory dir) {
@@ -1442,7 +1478,8 @@ namespace Files {
 
         private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
-            dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
+            // dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
+            dir.files_loaded.connect (on_directory_files_loaded); /* disconnected by on_done_loading callback.*/
             dir.load_hiddens ();
         }
 
@@ -2464,8 +2501,6 @@ namespace Files {
                 action_set_state (background_actions, "reverse", val);
                 val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
                 action_set_state (background_actions, "folders-first", val);
-            } else {
-                warning ("Update menu actions sort: The model is unsorted - this should not happen");
             }
         }
 

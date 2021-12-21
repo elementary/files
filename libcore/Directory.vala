@@ -62,6 +62,7 @@ public class Files.Directory : Object {
     private List<unowned Files.File>? sorted_dirs = null;
 
     public signal void file_loaded (Files.File file);
+    public signal void files_loaded ();
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
@@ -593,18 +594,18 @@ public class Files.Directory : Object {
         }
 
         state = State.LOADING;
-        displayed_files_count = 0;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null) {
-                after_load_file (gof, show_hidden, file_loaded_func);
-            }
-        }
+        // displayed_files_count = 0;
+        // bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
+        // foreach (unowned Files.File gof in file_hash.get_values ()) {
+        //     if (gof != null) {
+        //         after_load_file (gof, show_hidden, file_loaded_func);
+        //     }
+        // }
 
         state = State.LOADED;
         loaded_from_cache = true;
 
-        after_loading (file_loaded_func);
+        after_loading.begin (file_loaded_func);
     }
 
     private async void list_directory_async (FileLoadedFunc? file_loaded_func) {
@@ -634,7 +635,7 @@ public class Files.Directory : Object {
         can_load = true;
         displayed_files_count = 0;
         state = State.LOADING;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
+        // bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
 
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
@@ -671,10 +672,12 @@ public class Files.Directory : Object {
                             }
 
                             gof.info = file_info;
-                            gof.update ();
+                            // gof.update ();
 
                             file_hash.insert (gof.location, gof);
-                            after_load_file (gof, show_hidden, file_loaded_func);
+                            // if (file_loaded_func != null) {
+                            //     after_load_file (gof, show_hidden, file_loaded_func);
+                            // }
                         }
                     }
                 } catch (Error e) {
@@ -704,25 +707,25 @@ public class Files.Directory : Object {
         } finally {
             cancel_timeout (ref load_timeout_id);
             loaded_from_cache = false;
-            after_loading (file_loaded_func);
-        }
-    }
-
-    private void after_load_file (Files.File gof, bool show_hidden, FileLoadedFunc? file_loaded_func) {
-        if (!gof.is_hidden || show_hidden) {
-            displayed_files_count++;
-
+            yield after_loading (file_loaded_func);
             if (file_loaded_func == null) {
-                file_loaded (gof);
-            } else {
-                file_loaded_func (gof);
+                Idle.add (() => {
+                    done_loading ();
+                    return false;
+                });
             }
         }
     }
 
-    private void after_loading (FileLoadedFunc? file_loaded_func) {
+    // private void after_load_file (Files.File gof, bool show_hidden, FileLoadedFunc file_loaded_func) {
+    //     if (!gof.is_hidden || show_hidden) {
+    //         file_loaded_func (gof);
+    //     }
+    // }
+
+    private async void after_loading (FileLoadedFunc? file_loaded_func) {
         /* If loading failed reset */
-        debug ("after loading state is %s", state.to_string ());
+        // debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING || state == State.TIMED_OUT) {
             state = State.TIMED_OUT; /* else clear directory info will fail */
             can_load = false;
@@ -732,9 +735,13 @@ public class Files.Directory : Object {
             clear_directory_info ();
         }
 
-        if (file_loaded_func == null) {
-            done_loading ();
-        }
+        Idle.add (() => {
+            update_files (file_loaded_func);
+            files_loaded ();
+            return after_loading.callback ();
+        });
+
+        yield;
 
         if (file.is_directory) { /* Fails for non-existent directories */
             file.set_expanded (true);
@@ -766,12 +773,22 @@ public class Files.Directory : Object {
         }
     }
 
-    public void update_files () {
+    public List<unowned Files.File> get_files () {
+        return file_hash.get_values ();
+    }
+
+    public void update_files (FileLoadedFunc? file_loaded_func = null) {
+        displayed_files_count = 0;
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
+                displayed_files_count++;
                 gof.update ();
+            }
+
+            if (file_loaded_func != null) {
+                file_loaded_func (gof);
             }
         }
     }

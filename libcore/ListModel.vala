@@ -82,15 +82,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             typeof (bool)
         });
 
-        // We do not want a default sort order - one of the visible columns must always be sorted
+        //We do not want a default sort order - one of the visible columns must always be sorted
         for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
             set_sort_func (i, (Gtk.TreeIterCompareFunc) file_entry_compare_func);
         }
-
-        set_sort_column_id (
-            ColumnID.FILENAME,
-            Gtk.SortType.ASCENDING
-        );
     }
 
     public Files.File? file_for_path (Gtk.TreePath path) {
@@ -241,7 +236,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         set_sort_column_id (sort_column_id, order);
     }
 
-    public bool load_subdirectory (Gtk.TreePath path, out Files.Directory? dir) {
+    public bool get_subdirectory (Gtk.TreePath path, out Files.Directory? dir) {
         dir = null;
         Files.File? file = null;
         Gtk.TreeIter? iter;
@@ -254,14 +249,57 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         return dir != null;
     }
-    public bool unload_subdirectory (Gtk.TreeIter iter) {
-        warning ("unload_subdirectory");
+
+    public void load_subdirectory (Directory dir) {
+        Gtk.TreeIter? parent_iter = null, child_iter = null;
+        bool change_dummy = true; // Default to unloaded
+        if (get_first_iter_for_file (dir.file, out parent_iter)) {
+            var files = dir.get_files ();
+            if (iter_nth_child (out child_iter, parent_iter, 0)) { // Must always be at least one child
+                get (child_iter, PrivColumnID.DUMMY, out change_dummy);
+            } else {
+                critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry
+            }
+
+            // May not be unloaded yet.
+            // If not, assumed not changed in the short time hidden and use existing children
+            if (!change_dummy) {
+                return;
+            }
+
+            foreach (var file in files) {
+                if (change_dummy) {
+                    // Instead of inserting a new row, change the dummy one
+                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                    change_dummy = false;
+                } else {
+                    insert (out child_iter, parent_iter, -1);
+                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                }
+
+                if (file.is_folder ()) {
+                    // Append a dummy child so expander will show even when folder is empty.
+                    insert_with_values (out child_iter, child_iter, -1, PrivColumnID.DUMMY, true);
+                }
+            }
+        }
+    }
+
+    public bool unload_subdirectory (Gtk.TreeIter parent_iter) {
         Files.File? file = null;
-        get (iter, ColumnID.FILE_COLUMN, out file);
+        get (parent_iter, ColumnID.FILE_COLUMN, out file);
         if (file != null) {
             var dir = Files.Directory.from_file (file);
             dir.cancel ();
+            Gtk.TreeIter? child_iter = null;
+            // Remove all child nodes so they are refreshed if subdirectory reloaded
+            // Faster than checking for duplicates
+            if (iter_children (out child_iter, parent_iter)) {
+                while (remove (ref child_iter)) {};
+            }
 
+            // Insert dummy;
+            insert_with_values (out child_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
             subdirectory_unloaded (dir);
             return true;
         }
@@ -269,9 +307,33 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return false;
     }
 
+    public void load_root_directory (Files.Directory dir) {
+        // To optimise performance we prepend to an empty unsorted model.
+        // The model sorting is set afterwards by the UX.
+        var now = get_monotonic_time ();
+        set_sort_column_id (Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID, 0);
+        clear ();
+
+        foreach (var file in dir.get_files ()) {
+            Gtk.TreeIter? iter = null, dummy_iter = null;
+            prepend (out iter, null);
+            @set (iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+            if (file.is_folder ()) {
+                // Append a dummy child so expander will show even when folder is empty.
+                insert_with_values (out dummy_iter, iter, -1, PrivColumnID.DUMMY, true);
+            }
+        }
+
+        debug ("FINSHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+    }
+
     /* Returns true if the file was not in the model and was added */
+    // Slow for large numbers of additions as the model is resorted on each addition.
+    // Should only be used for addition of small numbers of files
+    // Otherwise may be quicker to rebuild the whole model.
+    //TODO Add a method to add a (large) array of files efficiently
     public bool add_file (Files.File file, Files.Directory dir) {
-        Gtk.TreeIter? parent_iter, file_iter, dummy_iter;
+        Gtk.TreeIter? parent_iter = null, file_iter = null, dummy_iter = null;
         bool change_dummy = false;
 
         if (get_first_iter_for_file (file, out file_iter)) {
@@ -306,6 +368,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     /* Returns true if the file was found and removed */
+    // Slow for large numbers of removals as the model is resorted on each removal.
+    // Should only be used for removal of small numbers of files
+    // Otherwise may be quicker to rebuild the whole model.
+    //TODO Add a method to remove a (large) array of files efficiently
     public bool remove_file (Files.File file, Files.Directory dir) {
         // Assumed that file is actually a child of dir
         Gtk.TreeIter? parent_iter, child_iter, file_iter, dummy_iter;
