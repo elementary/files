@@ -263,7 +263,7 @@ namespace Files {
         private Gtk.Widget view;
         private unowned ClipboardManager clipboard;
 
-        public  Files.ListModel model { get; construct; }
+        public Files.ListModel model { get; construct; }
         public View.Slot slot { get; construct; } // Must be unowned else cyclic reference stops destruction
 
         protected Files.IconRenderer icon_renderer;
@@ -1489,7 +1489,7 @@ warning ("setting model show hidden %s", show.to_string ());
             // dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             dir.files_loaded.connect (on_directory_files_loaded); /* disconnected by on_done_loading callback.*/
             connect_directory_loading_handlers (dir); /* disconnected by on_done_loading callback.*/
-            dir.init ();
+            dir.init.begin ();
         }
 
     /** Handle popup menu events */
@@ -2705,7 +2705,7 @@ warning ("setting model show hidden %s", show.to_string ());
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
              * we wait longer for scrolling to stop before updating the thumbnails */
-            uint delay = uint.min (50 +model.displayed_files_count / 10, 500);
+            uint delay = uint.min (50 + model.displayed_files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
 
                 /* compute visible item range */

@@ -160,11 +160,11 @@ namespace Files.View.Chrome {
 
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
                 current_completion_dir = Directory.from_gfile (file);
-                current_completion_dir.init (on_file_loaded);
+                current_completion_dir.init.begin (on_file_loaded);
             } else if (current_completion_dir != null && current_completion_dir.can_load) {
                 clear_completion ();
                 /* Completion text set by on_file_loaded () */
-                current_completion_dir.init (on_file_loaded);
+                current_completion_dir.init.begin (on_file_loaded);
             }
         }
 

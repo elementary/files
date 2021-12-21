@@ -86,7 +86,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 _displayed_files_count = iter_n_children (null);
             }
 
-            return  _displayed_files_count; // Only root files
+            return _displayed_files_count; // Only root files
         }
     }
 

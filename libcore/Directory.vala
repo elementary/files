@@ -61,7 +61,6 @@ public class Files.Directory : Object {
     private FileMonitor? monitor = null;
     private List<unowned Files.File>? sorted_dirs = null;
 
-    public signal void file_loaded (Files.File file);
     public signal void files_loaded ();
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
@@ -109,8 +108,6 @@ public class Files.Directory : Object {
     public string last_error_message {get; private set; default = "";}
 
     public bool loaded_from_cache {get; private set; default = false;}
-
-    // private bool show_hidden_files = false;
 
     private Directory (GLib.File _file) {
         Object (

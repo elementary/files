@@ -36,9 +36,6 @@ namespace Files.View {
         public bool is_active {get; protected set;}
         public int displayed_files_count {
             get {
-                // if (directory != null && directory.state == Directory.State.LOADED) {
-                //     return (int)(directory.displayed_files_count);
-                // }
                 if (dir_view != null && directory.state == Directory.State.LOADED) {
                     return (int)(dir_view.model.displayed_files_count);
                 }
@@ -269,7 +266,7 @@ namespace Files.View {
             /* view and slot are unfrozen when done loading signal received */
             is_frozen = true;
             // directory.init.begin ();
-            directory.init ();
+            directory.init.begin ();
         }
 
         public override void reload (bool non_local_only = false) {

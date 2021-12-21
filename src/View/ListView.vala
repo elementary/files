@@ -235,7 +235,7 @@ namespace Files {
             Files.Directory? dir = null;
             if (model.get_subdirectory (path, out dir)) { // Returns true if dir non null
                 connect_subdirectory_loading_handlers (dir);
-                dir.init ();
+                dir.init.begin ();
                 /* Maintain our own reference on dir, independent of the model */
                 /* Also needed for updating show hidden status */
                 loaded_subdirectories.prepend (dir);
