@@ -35,7 +35,6 @@ namespace Files {
         }
 
         private void set_up_view () {
-            tree.set_model (model);
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
 

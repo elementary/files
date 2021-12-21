@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-04 11:42+0000\n"
-"PO-Revision-Date: 2021-10-01 13:11+0000\n"
+"POT-Creation-Date: 2021-12-09 19:20+0000\n"
+"PO-Revision-Date: 2021-12-11 19:55+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,827 +21,33 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:110
-#: src/View/Widgets/ProgressInfoWidget.vala:63
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
+#: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "İptal"
 
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Dosyaları Salt Okunur Olarak Aç"
 
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Dosyayı Salt Okunur Olarak Aç"
 
-#: src/Application.vala:158
-msgid "Show the version of the program"
-msgstr "Uygulamanın sürümünü göster"
+#: filechooser-portal/Main.vala:75
+msgid "Select"
+msgstr "Seç"
 
-#: src/Application.vala:160
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Her biri kendi sekmesinde olmak üzere bir veya daha fazla URI aç"
-
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1865
-msgid "New Window"
-msgstr "Yeni Pencere"
-
-#: src/Application.vala:164
-msgid "Quit Files"
-msgstr "Dosyalar'dan Çık"
-
-#: src/Application.vala:166
-msgid "Enable debug logging"
-msgstr "Hata ayıklama günlüğünü etkinleştir"
-
-#: src/Application.vala:169
-msgid "[URI…]"
-msgstr "[URI…]"
-
-#: src/Application.vala:172
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-"\n"
-"\n"
-"Dosya yöneticisi ile dosya sistemine gözat"
-
-#: src/Application.vala:200
-msgid "--quit cannot be used with URIs."
-msgstr "--quit URI adresleriyle birlikte kullanılamaz."
-
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
-msgid "File Operations"
-msgstr "Dosya İşlemleri"
-
-#. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:181
-#, c-format
-msgid "Completed %s"
-msgstr "%s Tamamlandı"
-
-#: src/ProgressUIHandler.vala:184
-msgid "All file operations have ended"
-msgstr "Tüm dosya işlemleri tamamlandı"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:49
-msgid "Info"
-msgstr "Bilgi"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:59
-msgid "General"
-msgstr "Genel"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:80
-#: libcore/FileOperations/DialogUtils.vala:54
-msgid "Close"
-msgstr "Kapat"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:144
-msgid "Device Usage"
-msgstr "Aygıt Kullanımı"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:164
-msgid "Capacity:"
-msgstr "Kapasite:"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:165
-#: src/Dialogs/AbstractPropertiesDialog.vala:168
-#: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
-msgid "Unknown"
-msgstr "Bilinmiyor"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:167
-msgid "Available:"
-msgstr "Kullanılabilir:"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:170
-msgid "Used:"
-msgstr "Kullanılan:"
-
-#: src/Dialogs/ChooseAppDialog.vala:43
-msgid "Set as default"
-msgstr "Varsayılan olarak ayarla"
-
-#: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1975
-#: src/View/Sidebar/PopupMenuBuilder.vala:81
-msgid "Properties"
-msgstr "Özellikler"
-
-#: src/Dialogs/PropertiesWindow.vala:234
-msgid "Permissions"
-msgstr "İzinler"
-
-#: src/Dialogs/PropertiesWindow.vala:255
-#, c-format
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i dosya izinlere ya da diğer hatalara bağlı olarak okunamıyor."
-msgstr[1] "%i dosya izinlere ya da diğer hatalara bağlı olarak okunamıyor."
-
-#: src/Dialogs/PropertiesWindow.vala:259
-msgid "Actual Size Could Be Larger"
-msgstr "Asıl Boyut Daha Büyük Olabilir"
-
-#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
-msgid "unknown"
-msgstr "bilinmiyor"
-
-#: src/Dialogs/PropertiesWindow.vala:462
-msgid "Loading…"
-msgstr "Yükleniyor…"
-
-#: src/Dialogs/PropertiesWindow.vala:496
-msgid "Could not be determined"
-msgstr "Belirlenemedi"
-
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:99
-#: libcore/FileConflictDialog.vala:133
-msgid "Size:"
-msgstr "Boyut:"
-
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:175
-#: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
-msgid "Type:"
-msgstr "Tür:"
-
-#: src/Dialogs/PropertiesWindow.vala:532
-msgid "Contains:"
-msgstr "İçindekiler:"
-
-#: src/Dialogs/PropertiesWindow.vala:556
-msgid "Created:"
-msgstr "Oluşturma tarihi:"
-
-#: src/Dialogs/PropertiesWindow.vala:567
-msgid "Modified:"
-msgstr "Değiştirilme tarihi:"
-
-#: src/Dialogs/PropertiesWindow.vala:579
-msgid "Deleted:"
-msgstr "Silindi:"
-
-#: src/Dialogs/PropertiesWindow.vala:589
-msgid "Media type:"
-msgstr "Medya türü:"
-
-#: src/Dialogs/PropertiesWindow.vala:596
-msgid "Resolution:"
-msgstr "Çözünürlük:"
-
-#: src/Dialogs/PropertiesWindow.vala:604
-#: src/Dialogs/VolumePropertiesWindow.vala:80
-msgid "Location:"
-msgstr "Konum:"
-
-#: src/Dialogs/PropertiesWindow.vala:614
-msgid "Target:"
-msgstr "Hedef:"
-
-#: src/Dialogs/PropertiesWindow.vala:622
-msgid "Original Location:"
-msgstr "Özgün Konum:"
-
-#: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1943
-msgid "Other Application…"
-msgstr "Diğer Uygulamalar…"
-
-#: src/Dialogs/PropertiesWindow.vala:665
-msgid "Open with:"
-msgstr "Birlikte aç:"
-
-#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
-msgid "Owner:"
-msgstr "Sahibi:"
-
-#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
-msgid "Group:"
-msgstr "Grup:"
-
-#: src/Dialogs/PropertiesWindow.vala:946
-msgid "Everyone:"
-msgstr "Herkes:"
-
-#: src/Dialogs/PropertiesWindow.vala:1227
-#, c-format
-msgid "%u subfolder"
-msgid_plural "%u subfolders"
-msgstr[0] "%u alt klasör"
-msgstr[1] "%u alt klasör"
-
-#: src/Dialogs/PropertiesWindow.vala:1231
-#: src/Dialogs/PropertiesWindow.vala:1253
-#, c-format
-msgid "%u file"
-msgid_plural "%u files"
-msgstr[0] "%u dosya"
-msgstr[1] "%u dosya"
-
-#. TRANSLATORS: folders, files
-#. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:1038
-#, c-format
-msgid "%s, %s"
-msgstr "%s, %s"
-
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:223
-#, c-format
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] "%u klasör"
-msgstr[1] "%u klasör"
-
-#: src/Dialogs/PropertiesWindow.vala:1258
-#, c-format
-msgid "%u selected item"
-msgid_plural "%u selected items"
-msgstr[0] "%u seçili öğe"
-msgstr[1] "%u seçili öğe"
-
-#. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1260
-#, c-format
-msgid "%s (%s, %s)"
-msgstr "%s (%s, %s)"
-
-#: src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Disk Özellikleri"
-
-#: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
-msgid "File System"
-msgstr "Dosya Sistemi"
-
-#: src/Dialogs/VolumePropertiesWindow.vala:90
-msgid "Format:"
-msgstr "Biçim:"
-
-#: src/Utils/MimeActions.vala:282
-msgid "Multiple file types selected"
-msgstr "Birden çok dosya türü seçildi"
-
-#: src/Utils/MimeActions.vala:283
-msgid "No single app can open all these types of file"
-msgstr "Hiçbir uygulama bu tür dosyaların hepsini açamaz"
-
-#: src/Utils/MimeActions.vala:311
-msgid "Failed to open files"
-msgstr "Dosyalar açılamadı"
-
-#: src/Utils/MimeActions.vala:321
-msgid "Could not open URIs"
-msgstr "URI'ler açılamadı"
-
-#: src/Utils/MimeActions.vala:324
-msgid "Could not open files or URIs with this app"
-msgstr "Dosyalar veya URI'ler bu uygulama ile açılamıyor"
-
-#: src/View/Window.vala:146 src/View/AbstractDirectoryView.vala:1859
-msgid "New Tab"
-msgstr "Yeni Sekme"
-
-#: src/View/Window.vala:147
-msgid "Undo Close Tab"
-msgstr "Kapanan Sekmeyi Geri Al"
-
-#: src/View/Window.vala:456
-msgid "Close Tab"
-msgstr "Sekmeyi Kapat"
-
-#: src/View/Window.vala:569 src/View/Window.vala:579
-msgid "(as Administrator)"
-msgstr "(yönetici olarak)"
-
-#: src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Dosya adı"
-
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2184
-msgid "Size"
-msgstr "Boyut"
-
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2189
-msgid "Type"
-msgstr "Tür"
-
-#: src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Değiştirildi"
-
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
-msgid "This Folder Does Not Exist"
-msgstr "Bu Klasör Yok"
-
-#: src/View/DirectoryNotFound.vala:28
-#, c-format
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" klasörü bulunamadı."
-
-#: src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Oluştur"
-
-#: src/View/DirectoryNotFound.vala:30
-#, c-format
-msgid "Create the folder \"%s\""
-msgstr "\"%s\" klasörünü oluştur"
-
-#: src/View/DirectoryNotFound.vala:45
-msgid "Failed to create the folder"
-msgstr "Klasör oluşturulamadı"
-
-#: src/View/AbstractDirectoryView.vala:824
-#: src/View/AbstractDirectoryView.vala:1135
-msgid "Cannot execute this file"
-msgstr "Bu dosya çalıştırılamıyor"
-
-#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:834
-#, c-format
-msgid "“%s” must be moved from Trash before opening"
-msgstr "\"%s\" açılmadan önce Çöpten çıkarılmalıdır"
-
-#: src/View/AbstractDirectoryView.vala:835
-msgid ""
-"Files inside Trash cannot be opened. To open this file, it must be moved "
-"elsewhere."
-msgstr ""
-"Çöpteki dosyalar açılamıyor. Bu dosyayı açmak için başka bir yere taşınması "
-"gerekir."
-
-#: src/View/AbstractDirectoryView.vala:850
-msgid "Cannot open this file"
-msgstr "Bu dosya açılamıyor"
-
-#: src/View/AbstractDirectoryView.vala:863
-msgid "Cannot identify file type to open"
-msgstr "Açmaya çalışılan dosya türü tanımlanamıyor"
-
-#: src/View/AbstractDirectoryView.vala:1582
-msgid "Cannot drop this file"
-msgstr "Bu dosya bırakılamaz"
-
-#: src/View/AbstractDirectoryView.vala:1583
-msgid "Invalid file name provided"
-msgstr "Belirtilen dosya adı geçersiz"
-
-#: src/View/AbstractDirectoryView.vala:1879
-msgid "Run"
-msgstr "Çalıştır"
-
-#: src/View/AbstractDirectoryView.vala:1886
-#, c-format
-msgid "Open in %s"
-msgstr "%s ile aç"
-
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "Open in"
-msgstr "İçinde aç"
-
-#: src/View/AbstractDirectoryView.vala:1957
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
-msgid "Open with"
-msgstr "Birlikte aç"
-
-#: src/View/AbstractDirectoryView.vala:1963
-msgid "Paste"
-msgstr "Yapıştır"
-
-#: src/View/AbstractDirectoryView.vala:1968
-#: src/View/Sidebar/PopupMenuBuilder.vala:85
-msgid "Add to Bookmarks"
-msgstr "Yer İmlerine Ekle"
-
-#: src/View/AbstractDirectoryView.vala:1983
-msgid "Cut"
-msgstr "Kes"
-
-#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1991
-msgid "Copy"
-msgstr "Kopyala"
-
-#: src/View/AbstractDirectoryView.vala:1998
-msgid "Move to Trash"
-msgstr "Çöpe Taşı"
-
-#: src/View/AbstractDirectoryView.vala:2003
-msgid "Delete Permanently"
-msgstr "Kalıcı Olarak Sil"
-
-#: src/View/AbstractDirectoryView.vala:2010
-msgid "Restore from Trash"
-msgstr "Çöpten Geri Yükle"
-
-#: src/View/AbstractDirectoryView.vala:2021
-msgid "Open Parent Folder"
-msgstr "Bulunduğu Klasörü Aç"
-
-#: src/View/AbstractDirectoryView.vala:2024
-msgid "Remove from History"
-msgstr "Geçmişten Sil"
-
-#: src/View/AbstractDirectoryView.vala:2040
-msgid "Rename…"
-msgstr "Yeniden Adlandır…"
-
-#: src/View/AbstractDirectoryView.vala:2047
-msgid "Copy as Link"
-msgstr "Bağlantı Olarak Kopyala"
-
-#: src/View/AbstractDirectoryView.vala:2065
-msgid "Paste Link into Folder"
-msgstr "Bağlantıyı Klasöre Yapıştır"
-
-#: src/View/AbstractDirectoryView.vala:2067
-msgid "Paste into Folder"
-msgstr "Klasöre Yapıştır"
-
-#: src/View/AbstractDirectoryView.vala:2097
-msgid "Show Hidden Files"
-msgstr "Gizli Dosyaları Göster"
-
-#: src/View/AbstractDirectoryView.vala:2102
-msgid "Show Remote Thumbnails"
-msgstr "Uzak Küçük Resimleri Göster"
-
-#: src/View/AbstractDirectoryView.vala:2105
-msgid "Hide Thumbnails"
-msgstr "Küçük Resimleri Gizle"
-
-#: src/View/AbstractDirectoryView.vala:2125
-msgid "Paste Link"
-msgstr "Bağlantı Yapıştır"
-
-#: src/View/AbstractDirectoryView.vala:2179
-msgid "Name"
-msgstr "İsim"
-
-#: src/View/AbstractDirectoryView.vala:2194
-msgid "Date"
-msgstr "Tarih"
-
-#: src/View/AbstractDirectoryView.vala:2199
-msgid "Reversed Order"
-msgstr "Tersine Sırala"
-
-#: src/View/AbstractDirectoryView.vala:2202
-msgid "Folders Before Files"
-msgstr "Dosyalardan Önce Klasörler"
-
-#: src/View/AbstractDirectoryView.vala:2214
-msgid "Sort by"
-msgstr "Sıralama ölçütü"
-
-#: src/View/AbstractDirectoryView.vala:2222
-msgid "Folder"
-msgstr "Klasör"
-
-#: src/View/AbstractDirectoryView.vala:2228
-msgid "Empty File"
-msgstr "Boş Dosya"
-
-#: src/View/AbstractDirectoryView.vala:2279
-msgid "New"
-msgstr "Yeni"
-
-#: src/View/AbstractDirectoryView.vala:2519
-#, c-format
-msgid "Untitled %s"
-msgstr "Adsız %s"
-
-#: src/View/AbstractDirectoryView.vala:2884
-#: src/View/AbstractDirectoryView.vala:3085
-msgid "Cannot remove files from here"
-msgstr "Dosyalar buradan silinemez"
-
-#: src/View/AbstractDirectoryView.vala:2885
-#: src/View/AbstractDirectoryView.vala:3070
-#: src/View/AbstractDirectoryView.vala:3086
-msgid "You do not have permission to change this location"
-msgstr "Bu yolu değiştirebilmek için gereken yetkiye sahip değilsiniz"
-
-#: src/View/AbstractDirectoryView.vala:3039
-msgid "Cannot copy files that are in the trash"
-msgstr "Çöpün içindeki dosyalar kopyalanamaz"
-
-#: src/View/AbstractDirectoryView.vala:3040
-msgid "Cutting the selection instead"
-msgstr "Onun yerine seçilen kesiliyor"
-
-#: src/View/AbstractDirectoryView.vala:3069
-msgid "Cannot paste files here"
-msgstr "Dosyalar buraya yapıştırılamaz"
-
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
-msgid "Home"
-msgstr "Ana klasör"
-
-#: src/View/ViewContainer.vala:389
-msgid "You cannot create a folder here."
-msgstr "Burada bir klasör oluşturamazsınız."
-
-#: src/View/ViewContainer.vala:392
-msgid "The network is unavailable"
-msgstr "Ağ kullanılamıyor"
-
-#: src/View/ViewContainer.vala:393
-msgid "A working network is needed to reach this folder"
-msgstr "Bu klasöre ulaşmak için çalışan bir ağ bağlantısı gerekiyor"
-
-#: src/View/ViewContainer.vala:396
-msgid "This Folder Does Not Belong to You"
-msgstr "Bu Klasör Size Ait Değil"
-
-#: src/View/ViewContainer.vala:397
-msgid "You don't have permission to view this folder."
-msgstr "Bu klasörü görüntüleme iznine sahip değilsiniz."
-
-#: src/View/ViewContainer.vala:399
-msgid "Unable to Mount Folder"
-msgstr "Klasör Bağlanamıyor"
-
-#: src/View/ViewContainer.vala:400
-msgid "Could not connect to the server for this folder."
-msgstr "Bu klasör için sunucuya bağlanılamadı."
-
-#: src/View/ViewContainer.vala:403
-msgid "Unable to Display Folder Contents"
-msgstr "Klasör İçeriği Gösterilemiyor"
-
-#: src/View/ViewContainer.vala:404
-msgid "The operation timed out."
-msgstr "İşlem zaman aşımına uğradı."
-
-#: src/View/ViewContainer.vala:406
-msgid "Unable to Show Folder"
-msgstr "Klasör Görüntülenemiyor"
-
-#: src/View/ViewContainer.vala:407
-msgid "The server for this folder could not be located."
-msgstr "Bu klasör için sunucu bulunamadı."
-
-#: src/View/ViewContainer.vala:418
-msgid "File not Found"
-msgstr "Dosya Bulunamadı"
-
-#: src/View/ViewContainer.vala:419
-msgid "The file selected no longer exists."
-msgstr "Seçilen dosya artık yok."
-
-#: src/View/Sidebar/BookmarkListBox.vala:129
-msgid "View the home folder"
-msgstr "Ana klasörü görüntüle"
-
-#: src/View/Sidebar/BookmarkListBox.vala:146
-msgid "View the list of recently used files"
-msgstr "Son kullanılan dosyaların listesini görüntüle"
-
-#: src/View/Sidebar/BookmarkListBox.vala:163 libwidgets/Resources.vala:69
-msgid "Trash"
-msgstr "Çöp"
-
-#: src/View/Sidebar/BookmarkListBox.vala:170
-msgid "Open the Trash"
-msgstr "Çöp Kutusunu Aç"
-
-#: src/View/Sidebar/DeviceListBox.vala:129
-msgid "View the root of the local filesystem"
-msgstr "Yerel dosya sisteminin kök dizinini görüntüle"
-
-#: src/View/Sidebar/DeviceRow.vala:118
-#, c-format
-msgid "%s free"
-msgstr "%s boş"
-
-#: src/View/Sidebar/DeviceRow.vala:119
-#, c-format
-msgid "%s used of %s"
-msgstr "%2$s alanın %1$s kadarı kullanılıyor"
-
-#: src/View/Sidebar/NetworkListBox.vala:93
-msgid "Entire Network"
-msgstr "Tüm Ağ"
-
-#: src/View/Sidebar/NetworkListBox.vala:100
-msgid "Browse the contents of the network"
-msgstr "Ağ içeriğine gözat"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:49
+#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Aç"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr "Yeni _Sekmede Aç"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr "Yeni _Pencerede Aç"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr "Sil"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr "Yeniden Adlandır"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr "_Bağla"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr "_Çıkar"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr "_Çıkart"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:97
-msgid "Permanently Delete All Trash"
-msgstr "Tüm Çöpleri Kalıcı Olarak Sil"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:97
-msgid "Permanently Delete Trash"
-msgstr "Çöpleri Kalıcı Olarak Sil"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:108
-msgid "Permanently Delete Trash on this Mount"
-msgstr "Bu Bağlama Yolundaki Çöpü Kalıcı Olarak Sil"
-
-#: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:289
-msgid "Bookmarks"
-msgstr "Yer İmleri"
-
-#: src/View/Sidebar/SidebarWindow.vala:46
-msgid "Common places plus saved folders and files"
-msgstr "Ortak yerler, kaydedilmiş klasörler ve dosyalar"
-
-#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
-#: src/View/Sidebar/SidebarWindow.vala:53
-msgid "Storage"
-msgstr "Depolama"
-
-#: src/View/Sidebar/SidebarWindow.vala:54
-msgid "Internal and connected storage devices"
-msgstr "Dahili ve bağlı depolama aygıtları"
-
-#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
-msgid "Network"
-msgstr "Ağ"
-
-#: src/View/Sidebar/SidebarWindow.vala:61
-msgid "Devices and places available via a network"
-msgstr "Bir ağ üzerinden kullanılabilen cihazlar ve yerler"
-
-#: src/View/Sidebar/SidebarWindow.vala:84
-msgid "Connect Server…"
-msgstr "Sunucuya Bağlan…"
-
-#: src/View/Slot.vala:31
-msgid "This Folder Is Empty"
-msgstr "Bu Klasör Boş"
-
-#: src/View/Slot.vala:32
-msgid "Trash Is Empty"
-msgstr "Çöp Kutusu Boş"
-
-#: src/View/Slot.vala:33
-msgid "There Are No Recent Files"
-msgstr "Son Kullanılan Hiçbir Dosya Yok"
-
-#: src/View/Slot.vala:34
-msgid "Access Denied"
-msgstr "Erişim Reddedildi"
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "Privacy mode is on"
-msgstr "Gizlilik modu etkin"
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "No recent files are remembered"
-msgstr "Hiçbir yeni dosya hatırlanmıyor"
-
-#: src/View/PrivacyModeOn.vala:30
-msgid "Change security settings"
-msgstr "Güvenlik ayarlarını değiştirin"
-
-#: src/View/PrivacyModeOn.vala:31
-msgid "Open the system security and privacy settings app"
-msgstr "Sistem güvenlik ve gizlilik ayarlarını açın"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:200
-msgid "Search or Type Path"
-msgstr "Dosya yolu girin veya arayın"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:441
-msgid "Open in New Tab"
-msgstr "Yeni Sekmede Aç"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
-msgid "Open in New Window"
-msgstr "Yeni Pencerede Aç"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
-msgid "Open in Other Application…"
-msgstr "Başka Bir Uygulamayla Aç…"
-
-#: src/View/Widgets/HeaderBar.vala:66
-msgid "Previous"
-msgstr "Önceki"
-
-#: src/View/Widgets/HeaderBar.vala:73
-msgid "Next"
-msgstr "Sonraki"
-
-#: src/View/Widgets/LocationBar.vala:196
-msgid "Reload this folder"
-msgstr "Klasörü yenile"
-
-#: src/View/Widgets/LocationBar.vala:209
-msgid "Searching…"
-msgstr "Arıyor…"
-
-#: src/View/Widgets/OverlayBar.vala:214
-#, c-format
-msgid "%u folders"
-msgstr "%u klasör"
-
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
-#, c-format
-msgid " and %u other item (%s) selected"
-msgid_plural " and %u other items (%s) selected"
-msgstr[0] " ve %u diğer öğe (%s) seçildi"
-msgstr[1] " ve %u diğer öğe (%s) seçildi"
-
-#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
-msgid " selected"
-msgstr " seçildi"
-
-#: src/View/Widgets/OverlayBar.vala:233
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u öğe seçildi (%s)"
-
-#. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:277
-#, c-format
-msgid "%u sub-folder, "
-msgid_plural "%u sub-folders, "
-msgstr[0] "%u alt klasör, "
-msgstr[1] "%u alt klasör, "
-
-#. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:283
-#, c-format
-msgid "%u file, "
-msgid_plural "%u files, "
-msgstr[0] "%u dosya, "
-msgstr[1] "%u dosya, "
-
-#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:293
-#, c-format
-msgid "%s approx."
-msgstr "yaklaşık %s."
-
-#. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:296
-msgid "unknown size"
-msgstr "bilinmeyen boyut"
-
-#. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:300
-#, c-format
-msgid "%u file not readable"
-msgid_plural "%u files not readable"
-msgstr[0] "%u dosya okunamıyor"
-msgstr[1] "%u dosya okunamıyor"
-
-#: src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Oku"
-
-#: src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Yaz"
-
-#: src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Çalıştır"
+#: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
+msgid "Save"
+msgstr "Kaydet"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -886,6 +92,11 @@ msgstr "Sunucu:"
 #: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
+
+#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
+#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:533
+msgid "Type:"
+msgstr "Tür:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
@@ -947,6 +158,10 @@ msgstr "Bağlanıyor…"
 msgid "Please verify your user details."
 msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
 
+#: libcore/Directory.vala:684
+msgid "Server did not respond within time limit"
+msgstr "Sunucu belirlenen sürede cevap vermedi"
+
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
@@ -964,6 +179,42 @@ msgstr "Buraya Kopyala"
 msgid "Link Here"
 msgstr "Bağlantı Oluştur"
 
+#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1116
+msgid "Inaccessible"
+msgstr "Erişilemiyor"
+
+#: libcore/File.vala:883
+msgid "Failed to parse the desktop file"
+msgstr "Masaüsütü dosyasını ayrıştırmada hata"
+
+#: libcore/File.vala:887
+msgid "Failed to parse the desktop file: "
+msgstr "Masaüsütü dosyasını ayrıştırmada hata: "
+
+#: libcore/File.vala:899
+msgid "Failed to create command from file: "
+msgstr "Dosyasından komut oluşturma başarısız oldu: "
+
+#: libcore/File.vala:908
+msgid "Unable to Launch Desktop File: "
+msgstr "Masaüstü Dosyası Başlatılamıyor: "
+
+#: libcore/File.vala:1111
+msgid "Empty"
+msgstr "Boş"
+
+#: libcore/File.vala:1113
+#, c-format
+msgid "%i item"
+msgid_plural "%i items"
+msgstr[0] "%i öğe"
+msgstr[1] "%i öğe"
+
+#: libcore/File.vala:1124
+#, c-format
+msgid "link to %s"
+msgstr "%s bağlantısı"
+
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
 msgstr "Dosya çakışması"
@@ -971,6 +222,11 @@ msgstr "Dosya çakışması"
 #: libcore/FileConflictDialog.vala:97
 msgid "Original file"
 msgstr "Özgün dosya"
+
+#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: src/Dialogs/PropertiesWindow.vala:526
+msgid "Size:"
+msgstr "Boyut:"
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
@@ -1164,6 +420,13 @@ msgid_plural "%'d minutes"
 msgstr[0] "%'d dakika"
 msgstr[1] "%'d dakika"
 
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#. TRANSLATORS: folders, files
+#: libcore/FileUtils.vala:1038 src/Dialogs/PropertiesWindow.vala:1242
+#, c-format
+msgid "%s, %s"
+msgstr "%s, %s"
+
 #: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
@@ -1197,96 +460,6 @@ msgstr "("
 #: libcore/FileUtils.vala:1056
 msgid ")"
 msgstr ")"
-
-#: libcore/Directory.vala:684
-msgid "Server did not respond within time limit"
-msgstr "Sunucu belirlenen sürede cevap vermedi"
-
-#: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
-#: libcore/ProgressInfo.vala:33
-msgid "Preparing"
-msgstr "Hazırlanıyor"
-
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "İ_ptal"
-
-#: libcore/StockDialogs.vala:21
-msgid "Delete"
-msgstr "Sil"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Tü_münü Atla"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Tekrar Dene"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "_Hepsini Sil"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Değiştir"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "_Tümünü Değiştir"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Birleştir"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "_Hepsini Birleştir"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Yine de _Kopyala"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Çöpü _Boşalt"
-
-#: libcore/UndoManager.vala:310
-msgid "Original location could not be determined"
-msgstr "Özgün konum tespit edilemedi"
-
-#: libcore/UndoManager.vala:311
-msgid "Open trash folder and restore manually"
-msgstr "Çöp kutusunu aç ve el ile geri yükle"
-
-#: libcore/FileOperations/EmptyTrashJob.vala:40
-msgid "Permanently delete all items from Trash?"
-msgstr "Çöp kutusundaki tüm öğeler kalıcı olarak silinsin mi?"
-
-#: libcore/FileOperations/EmptyTrashJob.vala:41
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-"Bağlanmış harici sürücülerdekiler de dahil olmak üzere tüm çöp "
-"dizinlerindeki öğeler kalıcı olarak silinecek."
-
-#: libcore/FileOperations/EmptyTrashJob.vala:44
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Bu bağlama yolunun çöpündeki tüm öğeler kalıcı olarak silinsin mi?"
-
-#: libcore/FileOperations/EmptyTrashJob.vala:45
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr "Bu bağlama yolunun çöpündeki tüm öğeler tamamen silinecek."
-
-#: libcore/FileOperations/EmptyTrashJob.vala:111
-msgid "Emptying Trash"
-msgstr "Çöp Boşaltılıyor"
-
-#: libcore/FileOperations/MountUtils.vala:26
-#, c-format
-msgid "Unable to mount '%s'"
-msgstr "'%s' bağlanamıyor"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1928,100 +1101,246 @@ msgstr "%s dosyası oluşturulurken hata."
 msgid "There was an error creating the directory in %s."
 msgstr "%s içerisinde dizin oluşturulurken bir hata oluştu."
 
-#: libwidgets/Chrome/BasicLocationBar.vala:88
-msgid "Type a path"
-msgstr "Bir yol girin"
+#: libcore/PopupMenuBuilder.vala:54
+msgid "Open in New _Tab"
+msgstr "Yeni _Sekmede Aç"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
+#: libcore/PopupMenuBuilder.vala:58
+msgid "Open in New _Window"
+msgstr "Yeni _Pencerede Aç"
+
+#: libcore/PopupMenuBuilder.vala:62
+msgid "Remove"
+msgstr "Sil"
+
+#: libcore/PopupMenuBuilder.vala:66
+msgid "Rename"
+msgstr "Yeniden Adlandır"
+
+#: libcore/PopupMenuBuilder.vala:70
+msgid "_Mount"
+msgstr "_Bağla"
+
+#: libcore/PopupMenuBuilder.vala:74
+msgid "_Unmount"
+msgstr "_Çıkar"
+
+#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
+#: src/View/AbstractDirectoryView.vala:1987
+msgid "Properties"
+msgstr "Özellikler"
+
+#: libcore/PopupMenuBuilder.vala:83
+msgid "Eject Media"
+msgstr "Medyayı Çıkar"
+
+#: libcore/PopupMenuBuilder.vala:88
+msgid "Safely Remove"
+msgstr "Güvenle Kaldır"
+
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
+msgid "Add to Bookmarks"
+msgstr "Yer İmlerine Ekle"
+
+#: libcore/PopupMenuBuilder.vala:104
+msgid "Permanently Delete All Trash"
+msgstr "Tüm Çöpleri Kalıcı Olarak Sil"
+
+#: libcore/PopupMenuBuilder.vala:104
+msgid "Permanently Delete Trash"
+msgstr "Çöpleri Kalıcı Olarak Sil"
+
+#: libcore/PopupMenuBuilder.vala:117
+msgid "Permanently Delete Trash on this Mount"
+msgstr "Bu Bağlama Yolundaki Çöpü Kalıcı Olarak Sil"
+
+#: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
+#: libcore/ProgressInfo.vala:33
+msgid "Preparing"
+msgstr "Hazırlanıyor"
+
+#: libcore/Resources.vala:22 src/DesktopLauncher.vala:25
+msgid "Files"
+msgstr "Dosyalar"
+
+#: libcore/Resources.vala:61
+msgid "AFP"
+msgstr "AFP"
+
+#: libcore/Resources.vala:62
+msgid "AFC"
+msgstr "AFC"
+
+#: libcore/Resources.vala:63
+msgid "DAV"
+msgstr "DAV"
+
+#: libcore/Resources.vala:64
+msgid "DAVS"
+msgstr "DAVS"
+
+#: libcore/Resources.vala:65
+msgid "FTP"
+msgstr "FTP"
+
+#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:60
+msgid "Network"
+msgstr "Ağ"
+
+#: libcore/Resources.vala:67
+msgid "SFTP"
+msgstr "SFTP"
+
+#: libcore/Resources.vala:68
+msgid "SMB"
+msgstr "SMB"
+
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+msgid "Trash"
+msgstr "Çöp"
+
+#: libcore/Resources.vala:70
+msgid "Recent"
+msgstr "Son kullanılanlar"
+
+#: libcore/Resources.vala:71
+msgid "MTP"
+msgstr "MTP"
+
+#: libcore/Resources.vala:72
+msgid "GPHOTO2"
+msgstr "GPHOTO2"
+
+#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:140
+msgid "File System"
+msgstr "Dosya Sistemi"
+
+#: libcore/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "İ_ptal"
+
+#: libcore/StockDialogs.vala:21
+msgid "Delete"
+msgstr "Sil"
+
+#: libcore/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Tü_münü Atla"
+
+#: libcore/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Tekrar Dene"
+
+#: libcore/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "_Hepsini Sil"
+
+#: libcore/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Değiştir"
+
+#: libcore/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "_Tümünü Değiştir"
+
+#: libcore/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Birleştir"
+
+#: libcore/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "_Hepsini Birleştir"
+
+#: libcore/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Yine de _Kopyala"
+
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Çöpü _Boşalt"
+
+#: libcore/UndoManager.vala:310
+msgid "Original location could not be determined"
+msgstr "Özgün konum tespit edilemedi"
+
+#: libcore/UndoManager.vala:311
+msgid "Open trash folder and restore manually"
+msgstr "Çöp kutusunu aç ve el ile geri yükle"
+
+#: libcore/FileOperations/DialogUtils.vala:54
+#: src/Dialogs/AbstractPropertiesDialog.vala:80
+msgid "Close"
+msgstr "Kapat"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:40
+msgid "Permanently delete all items from Trash?"
+msgstr "Çöp kutusundaki tüm öğeler kalıcı olarak silinsin mi?"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:41
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+"Bağlanmış harici sürücülerdekiler de dahil olmak üzere tüm çöp "
+"dizinlerindeki öğeler kalıcı olarak silinecek."
+
+#: libcore/FileOperations/EmptyTrashJob.vala:44
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr "Bu bağlama yolunun çöpündeki tüm öğeler kalıcı olarak silinsin mi?"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:45
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr "Bu bağlama yolunun çöpündeki tüm öğeler tamamen silinecek."
+
+#: libcore/FileOperations/EmptyTrashJob.vala:111
+msgid "Emptying Trash"
+msgstr "Çöp Boşaltılıyor"
+
+#: libcore/FileOperations/MountUtils.vala:31
+#, c-format
+msgid "Unable to unmount '%s'"
+msgstr "'%s' çıkartılamıyor"
+
+#: libcore/FileOperations/MountUtils.vala:52
+#, c-format
+msgid "Unable to eject '%s'"
+msgstr "'%s' çıkartılamadı"
+
+#: libcore/FileOperations/MountUtils.vala:104
+#, c-format
+msgid "Unable to mount '%s'"
+msgstr "'%s' bağlanamıyor"
+
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr "%s konumuna git"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:292
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr "Git: %s"
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:374
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr "Yol Girin"
 
-#: libwidgets/View/SearchResults.vala:76
-#, c-format
-msgid "%s (%s)"
-msgstr "%s (%s)"
+#: libcore/Widgets/BasicLocationBar.vala:88
+msgid "Type a path"
+msgstr "Bir yol girin"
 
-#: libwidgets/View/SearchResults.vala:89
-msgid "More Results …"
-msgstr "Diğer Sonuçlar …"
-
-#: libwidgets/View/SearchResults.vala:281
-msgid "In This Folder"
-msgstr "Bu Klasörde"
-
-#: libwidgets/View/SearchResults.vala:285
-msgid "Below This Folder"
-msgstr "Bu Klasörün Altında"
-
-#: libwidgets/View/SearchResults.vala:294
-msgid "Recently Used"
-msgstr "Son Kullanılan"
-
-#: libwidgets/Chrome/ViewSwitcher.vala:34
+#: libcore/Widgets/ViewSwitcher.vala:34
 msgid "View as Grid"
 msgstr "Izgara Olarak Görüntüle"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:41
+#: libcore/Widgets/ViewSwitcher.vala:41
 msgid "View as List"
 msgstr "Liste Olarak Görüntüle"
 
-#: libwidgets/Chrome/ViewSwitcher.vala:48
+#: libcore/Widgets/ViewSwitcher.vala:48
 msgid "View in Columns"
 msgstr "Sütun Olarak Görüntüle"
-
-#: libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Dosyalar"
-
-#: libwidgets/Resources.vala:61
-msgid "AFP"
-msgstr "AFP"
-
-#: libwidgets/Resources.vala:62
-msgid "AFC"
-msgstr "AFC"
-
-#: libwidgets/Resources.vala:63
-msgid "DAV"
-msgstr "DAV"
-
-#: libwidgets/Resources.vala:64
-msgid "DAVS"
-msgstr "DAVS"
-
-#: libwidgets/Resources.vala:65
-msgid "FTP"
-msgstr "FTP"
-
-#: libwidgets/Resources.vala:67
-msgid "SFTP"
-msgstr "SFTP"
-
-#: libwidgets/Resources.vala:68
-msgid "SMB"
-msgstr "SMB"
-
-#: libwidgets/Resources.vala:70
-msgid "Recent"
-msgstr "Son kullanılanlar"
-
-#: libwidgets/Resources.vala:71
-msgid "MTP"
-msgstr "MTP"
-
-#: libwidgets/Resources.vala:72
-msgid "GPHOTO2"
-msgstr "GPHOTO2"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
@@ -2039,6 +1358,821 @@ msgstr "Seçilenleri Geri Yükle"
 msgid "Delete Selected"
 msgstr "Seçilenleri Sil"
 
+#: plugins/send-by-email/plugin.vala:26
+msgid "Send by Email"
+msgstr "E-Posta ile Gönder"
+
+#: src/Application.vala:158
+msgid "Show the version of the program"
+msgstr "Uygulamanın sürümünü göster"
+
+#: src/Application.vala:160
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Her biri kendi sekmesinde olmak üzere bir veya daha fazla URI aç"
+
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1877
+msgid "New Window"
+msgstr "Yeni Pencere"
+
+#: src/Application.vala:164
+msgid "Quit Files"
+msgstr "Dosyalar'dan Çık"
+
+#: src/Application.vala:166
+msgid "Enable debug logging"
+msgstr "Hata ayıklama günlüğünü etkinleştir"
+
+#: src/Application.vala:169
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/Application.vala:172
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"Dosya yöneticisi ile dosya sistemine gözat"
+
+#: src/Application.vala:200
+msgid "--quit cannot be used with URIs."
+msgstr "--quit URI adresleriyle birlikte kullanılamaz."
+
+#: src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Dosyalarınıza gözatın"
+
+#: src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Dosya Yöneticisi"
+
+#: src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "Yeni _Pencere"
+
+#: src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "_Yönetici Olarak Yeni Pencere"
+
+#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+msgid "File Operations"
+msgstr "Dosya İşlemleri"
+
+#. TRANSLATORS: %s will be replaced by the title of the file operation
+#: src/ProgressUIHandler.vala:181
+#, c-format
+msgid "Completed %s"
+msgstr "%s Tamamlandı"
+
+#: src/ProgressUIHandler.vala:184
+msgid "All file operations have ended"
+msgstr "Tüm dosya işlemleri tamamlandı"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr "Bilgi"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
+msgid "General"
+msgstr "Genel"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
+msgid "Device Usage"
+msgstr "Aygıt Kullanımı"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
+msgid "Capacity:"
+msgstr "Kapasite:"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
+#: src/Dialogs/PropertiesWindow.vala:455 src/Dialogs/PropertiesWindow.vala:494
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
+msgid "Available:"
+msgstr "Kullanılabilir:"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
+msgid "Used:"
+msgstr "Kullanılan:"
+
+#: src/Dialogs/ChooseAppDialog.vala:43
+msgid "Set as default"
+msgstr "Varsayılan olarak ayarla"
+
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Unable to determine file ownership and permissions"
+msgstr "Dosya sahipliği ve izinleri belirlenemiyor"
+
+#: src/Dialogs/PropertiesWindow.vala:245
+msgid "Permissions"
+msgstr "İzinler"
+
+#: src/Dialogs/PropertiesWindow.vala:259
+#, c-format
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] "%i dosya izinlere ya da diğer hatalara bağlı olarak okunamıyor."
+msgstr[1] "%i dosya izinlere ya da diğer hatalara bağlı olarak okunamıyor."
+
+#: src/Dialogs/PropertiesWindow.vala:263
+msgid "Actual Size Could Be Larger"
+msgstr "Asıl Boyut Daha Büyük Olabilir"
+
+#: src/Dialogs/PropertiesWindow.vala:283 src/Dialogs/PropertiesWindow.vala:302
+msgid "unknown"
+msgstr "bilinmiyor"
+
+#: src/Dialogs/PropertiesWindow.vala:466
+msgid "Loading…"
+msgstr "Yükleniyor…"
+
+#: src/Dialogs/PropertiesWindow.vala:500
+msgid "Could not be determined"
+msgstr "Belirlenemedi"
+
+#: src/Dialogs/PropertiesWindow.vala:536
+msgid "Contains:"
+msgstr "İçindekiler:"
+
+#: src/Dialogs/PropertiesWindow.vala:560
+msgid "Created:"
+msgstr "Oluşturma tarihi:"
+
+#: src/Dialogs/PropertiesWindow.vala:571
+msgid "Modified:"
+msgstr "Değiştirilme tarihi:"
+
+#: src/Dialogs/PropertiesWindow.vala:583
+msgid "Deleted:"
+msgstr "Silindi:"
+
+#: src/Dialogs/PropertiesWindow.vala:593
+msgid "Media type:"
+msgstr "Medya türü:"
+
+#: src/Dialogs/PropertiesWindow.vala:600
+msgid "Resolution:"
+msgstr "Çözünürlük:"
+
+#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/VolumePropertiesWindow.vala:80
+msgid "Location:"
+msgstr "Konum:"
+
+#: src/Dialogs/PropertiesWindow.vala:618
+msgid "Target:"
+msgstr "Hedef:"
+
+#: src/Dialogs/PropertiesWindow.vala:626
+msgid "Original Location:"
+msgstr "Özgün Konum:"
+
+#: src/Dialogs/PropertiesWindow.vala:649
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "Other Application…"
+msgstr "Diğer Uygulamalar…"
+
+#: src/Dialogs/PropertiesWindow.vala:669
+msgid "Open with:"
+msgstr "Birlikte aç:"
+
+#: src/Dialogs/PropertiesWindow.vala:938 src/Dialogs/PropertiesWindow.vala:945
+msgid "Owner:"
+msgstr "Sahibi:"
+
+#: src/Dialogs/PropertiesWindow.vala:939 src/Dialogs/PropertiesWindow.vala:948
+msgid "Group:"
+msgstr "Grup:"
+
+#: src/Dialogs/PropertiesWindow.vala:951
+msgid "Everyone:"
+msgstr "Herkes:"
+
+#: src/Dialogs/PropertiesWindow.vala:1233
+#, c-format
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] "%u alt klasör"
+msgstr[1] "%u alt klasör"
+
+#: src/Dialogs/PropertiesWindow.vala:1237
+#: src/Dialogs/PropertiesWindow.vala:1259
+#, c-format
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] "%u dosya"
+msgstr[1] "%u dosya"
+
+#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:223
+#, c-format
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u klasör"
+msgstr[1] "%u klasör"
+
+#: src/Dialogs/PropertiesWindow.vala:1264
+#, c-format
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] "%u seçili öğe"
+msgstr[1] "%u seçili öğe"
+
+#. TRANSLATORS: total (folders, files)
+#: src/Dialogs/PropertiesWindow.vala:1266
+#, c-format
+msgid "%s (%s, %s)"
+msgstr "%s (%s, %s)"
+
+#: src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Disk Özellikleri"
+
+#: src/Dialogs/VolumePropertiesWindow.vala:90
+msgid "Format:"
+msgstr "Biçim:"
+
+#: src/Utils/MimeActions.vala:282
+msgid "Multiple file types selected"
+msgstr "Birden çok dosya türü seçildi"
+
+#: src/Utils/MimeActions.vala:283
+msgid "No single app can open all these types of file"
+msgstr "Hiçbir uygulama bu tür dosyaların hepsini açamaz"
+
+#: src/Utils/MimeActions.vala:311
+msgid "Failed to open files"
+msgstr "Dosyalar açılamadı"
+
+#: src/Utils/MimeActions.vala:321
+msgid "Could not open URIs"
+msgstr "URI'ler açılamadı"
+
+#: src/Utils/MimeActions.vala:324
+msgid "Could not open files or URIs with this app"
+msgstr "Dosyalar veya URI'ler bu uygulama ile açılamıyor"
+
+#: src/View/AbstractDirectoryView.vala:827
+#: src/View/AbstractDirectoryView.vala:1138
+msgid "Cannot execute this file"
+msgstr "Bu dosya çalıştırılamıyor"
+
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:837
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr "\"%s\" açılmadan önce Çöpten çıkarılmalıdır"
+
+#: src/View/AbstractDirectoryView.vala:838
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+"Çöpteki dosyalar açılamıyor. Bu dosyayı açmak için başka bir yere taşınması "
+"gerekir."
+
+#: src/View/AbstractDirectoryView.vala:853
+msgid "Cannot open this file"
+msgstr "Bu dosya açılamıyor"
+
+#: src/View/AbstractDirectoryView.vala:866
+msgid "Cannot identify file type to open"
+msgstr "Açmaya çalışılan dosya türü tanımlanamıyor"
+
+#: src/View/AbstractDirectoryView.vala:1594
+msgid "Cannot drop this file"
+msgstr "Bu dosya bırakılamaz"
+
+#: src/View/AbstractDirectoryView.vala:1595
+msgid "Invalid file name provided"
+msgstr "Belirtilen dosya adı geçersiz"
+
+#: src/View/AbstractDirectoryView.vala:1871 src/View/Window.vala:146
+msgid "New Tab"
+msgstr "Yeni Sekme"
+
+#: src/View/AbstractDirectoryView.vala:1891
+msgid "Run"
+msgstr "Çalıştır"
+
+#: src/View/AbstractDirectoryView.vala:1898
+#, c-format
+msgid "Open in %s"
+msgstr "%s ile aç"
+
+#: src/View/AbstractDirectoryView.vala:1967
+msgid "Open in"
+msgstr "İçinde aç"
+
+#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
+msgid "Open with"
+msgstr "Birlikte aç"
+
+#: src/View/AbstractDirectoryView.vala:1975
+msgid "Paste"
+msgstr "Yapıştır"
+
+#: src/View/AbstractDirectoryView.vala:2000
+msgid "Select All"
+msgstr "Tümünü Seç"
+
+#: src/View/AbstractDirectoryView.vala:2009
+msgid "Invert Selection"
+msgstr "Diğerlerini Seç"
+
+#: src/View/AbstractDirectoryView.vala:2018
+msgid "Deselect All"
+msgstr "Tüm Seçimi Kaldır"
+
+#: src/View/AbstractDirectoryView.vala:2026
+msgid "Cut"
+msgstr "Kes"
+
+#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
+#: src/View/AbstractDirectoryView.vala:2034
+msgid "Copy"
+msgstr "Kopyala"
+
+#: src/View/AbstractDirectoryView.vala:2041
+msgid "Move to Trash"
+msgstr "Çöpe Taşı"
+
+#: src/View/AbstractDirectoryView.vala:2046
+msgid "Delete Permanently"
+msgstr "Kalıcı Olarak Sil"
+
+#: src/View/AbstractDirectoryView.vala:2053
+msgid "Restore from Trash"
+msgstr "Çöpten Geri Yükle"
+
+#: src/View/AbstractDirectoryView.vala:2076
+msgid "Open Parent Folder"
+msgstr "Bulunduğu Klasörü Aç"
+
+#: src/View/AbstractDirectoryView.vala:2079
+msgid "Remove from History"
+msgstr "Geçmişten Sil"
+
+#: src/View/AbstractDirectoryView.vala:2107
+msgid "Rename…"
+msgstr "Yeniden Adlandır…"
+
+#: src/View/AbstractDirectoryView.vala:2114
+msgid "Copy as Link"
+msgstr "Bağlantı Olarak Kopyala"
+
+#: src/View/AbstractDirectoryView.vala:2131
+msgid "Paste Link into Folder"
+msgstr "Bağlantıyı Klasöre Yapıştır"
+
+#: src/View/AbstractDirectoryView.vala:2133
+msgid "Paste into Folder"
+msgstr "Klasöre Yapıştır"
+
+#: src/View/AbstractDirectoryView.vala:2174
+msgid "Show Hidden Files"
+msgstr "Gizli Dosyaları Göster"
+
+#: src/View/AbstractDirectoryView.vala:2179
+msgid "Show Remote Thumbnails"
+msgstr "Uzak Küçük Resimleri Göster"
+
+#: src/View/AbstractDirectoryView.vala:2182
+msgid "Hide Thumbnails"
+msgstr "Küçük Resimleri Gizle"
+
+#: src/View/AbstractDirectoryView.vala:2208
+msgid "Paste Link"
+msgstr "Bağlantı Yapıştır"
+
+#: src/View/AbstractDirectoryView.vala:2265
+msgid "Name"
+msgstr "İsim"
+
+#: src/View/AbstractDirectoryView.vala:2270 src/View/ListView.vala:27
+msgid "Size"
+msgstr "Boyut"
+
+#: src/View/AbstractDirectoryView.vala:2275 src/View/ListView.vala:28
+msgid "Type"
+msgstr "Tür"
+
+#: src/View/AbstractDirectoryView.vala:2280
+msgid "Date"
+msgstr "Tarih"
+
+#: src/View/AbstractDirectoryView.vala:2285
+msgid "Reversed Order"
+msgstr "Tersine Sırala"
+
+#: src/View/AbstractDirectoryView.vala:2288
+msgid "Folders Before Files"
+msgstr "Dosyalardan Önce Klasörler"
+
+#: src/View/AbstractDirectoryView.vala:2300
+msgid "Sort by"
+msgstr "Sıralama ölçütü"
+
+#: src/View/AbstractDirectoryView.vala:2308
+msgid "Folder"
+msgstr "Klasör"
+
+#: src/View/AbstractDirectoryView.vala:2314
+msgid "Empty File"
+msgstr "Boş Dosya"
+
+#: src/View/AbstractDirectoryView.vala:2365
+msgid "New"
+msgstr "Yeni"
+
+#: src/View/AbstractDirectoryView.vala:2606
+#, c-format
+msgid "Untitled %s"
+msgstr "Adsız %s"
+
+#: src/View/AbstractDirectoryView.vala:2971
+#: src/View/AbstractDirectoryView.vala:3149
+msgid "Cannot remove files from here"
+msgstr "Dosyalar buradan silinemez"
+
+#: src/View/AbstractDirectoryView.vala:2972
+#: src/View/AbstractDirectoryView.vala:3134
+#: src/View/AbstractDirectoryView.vala:3150
+msgid "You do not have permission to change this location"
+msgstr "Bu yolu değiştirebilmek için gereken yetkiye sahip değilsiniz"
+
+#: src/View/AbstractDirectoryView.vala:3103
+msgid "Cannot copy files that are in the trash"
+msgstr "Çöpün içindeki dosyalar kopyalanamaz"
+
+#: src/View/AbstractDirectoryView.vala:3104
+msgid "Cutting the selection instead"
+msgstr "Onun yerine seçilen kesiliyor"
+
+#: src/View/AbstractDirectoryView.vala:3133
+msgid "Cannot paste files here"
+msgstr "Dosyalar buraya yapıştırılamaz"
+
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
+msgid "This Folder Does Not Exist"
+msgstr "Bu Klasör Yok"
+
+#: src/View/DirectoryNotFound.vala:28
+#, c-format
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" klasörü bulunamadı."
+
+#: src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Oluştur"
+
+#: src/View/DirectoryNotFound.vala:30
+#, c-format
+msgid "Create the folder \"%s\""
+msgstr "\"%s\" klasörünü oluştur"
+
+#: src/View/DirectoryNotFound.vala:45
+msgid "Failed to create the folder"
+msgstr "Klasör oluşturulamadı"
+
+#: src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Dosya adı"
+
+#: src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Değiştirildi"
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "Privacy mode is on"
+msgstr "Gizlilik modu etkin"
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "No recent files are remembered"
+msgstr "Hiçbir yeni dosya hatırlanmıyor"
+
+#: src/View/PrivacyModeOn.vala:30
+msgid "Change security settings"
+msgstr "Güvenlik ayarlarını değiştirin"
+
+#: src/View/PrivacyModeOn.vala:31
+msgid "Open the system security and privacy settings app"
+msgstr "Sistem güvenlik ve gizlilik ayarlarını açın"
+
+#: src/View/Slot.vala:31
+msgid "This Folder Is Empty"
+msgstr "Bu Klasör Boş"
+
+#: src/View/Slot.vala:32
+msgid "Trash Is Empty"
+msgstr "Çöp Kutusu Boş"
+
+#: src/View/Slot.vala:33
+msgid "There Are No Recent Files"
+msgstr "Son Kullanılan Hiçbir Dosya Yok"
+
+#: src/View/Slot.vala:34
+msgid "Access Denied"
+msgstr "Erişim Reddedildi"
+
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
+msgid "Home"
+msgstr "Ana klasör"
+
+#: src/View/ViewContainer.vala:389
+msgid "You cannot create a folder here."
+msgstr "Burada bir klasör oluşturamazsınız."
+
+#: src/View/ViewContainer.vala:392
+msgid "The network is unavailable"
+msgstr "Ağ kullanılamıyor"
+
+#: src/View/ViewContainer.vala:393
+msgid "A working network is needed to reach this folder"
+msgstr "Bu klasöre ulaşmak için çalışan bir ağ bağlantısı gerekiyor"
+
+#: src/View/ViewContainer.vala:396
+msgid "This Folder Does Not Belong to You"
+msgstr "Bu Klasör Size Ait Değil"
+
+#: src/View/ViewContainer.vala:397
+msgid "You don't have permission to view this folder."
+msgstr "Bu klasörü görüntüleme iznine sahip değilsiniz."
+
+#: src/View/ViewContainer.vala:399
+msgid "Unable to Mount Folder"
+msgstr "Klasör Bağlanamıyor"
+
+#: src/View/ViewContainer.vala:400
+msgid "Could not connect to the server for this folder."
+msgstr "Bu klasör için sunucuya bağlanılamadı."
+
+#: src/View/ViewContainer.vala:403
+msgid "Unable to Display Folder Contents"
+msgstr "Klasör İçeriği Gösterilemiyor"
+
+#: src/View/ViewContainer.vala:404
+msgid "The operation timed out."
+msgstr "İşlem zaman aşımına uğradı."
+
+#: src/View/ViewContainer.vala:406
+msgid "Unable to Show Folder"
+msgstr "Klasör Görüntülenemiyor"
+
+#: src/View/ViewContainer.vala:407
+msgid "The server for this folder could not be located."
+msgstr "Bu klasör için sunucu bulunamadı."
+
+#: src/View/ViewContainer.vala:418
+msgid "File not Found"
+msgstr "Dosya Bulunamadı"
+
+#: src/View/ViewContainer.vala:419
+msgid "The file selected no longer exists."
+msgstr "Seçilen dosya artık yok."
+
+#: src/View/Window.vala:147
+msgid "Undo Close Tab"
+msgstr "Kapanan Sekmeyi Geri Al"
+
+#: src/View/Window.vala:456
+msgid "Close Tab"
+msgstr "Sekmeyi Kapat"
+
+#: src/View/Window.vala:569 src/View/Window.vala:579
+msgid "(as Administrator)"
+msgstr "(yönetici olarak)"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:113
+#: src/View/Sidebar/AbstractMountableRow.vala:173
+#, c-format
+msgid "Eject '%s'"
+msgstr "'%s' aygıtını çıkar"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:113
+#: src/View/Sidebar/AbstractMountableRow.vala:173
+#, c-format
+msgid "Unmount '%s'"
+msgstr "Çıkar: '%s'"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:307
+#, c-format
+msgid "%s free"
+msgstr "%s boş"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:308
+#, c-format
+msgid "%s used of %s"
+msgstr "%2$s alanın %1$s kadarı kullanılıyor"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:338
+#: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
+#: src/View/Sidebar/VolumelessMountRow.vala:42
+#: src/View/Widgets/SearchResults.vala:76
+#, c-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:338
+msgid "Not mounted"
+msgstr "Bağlı değil"
+
+#: src/View/Sidebar/BookmarkListBox.vala:129
+msgid "View the home folder"
+msgstr "Ana klasörü görüntüle"
+
+#: src/View/Sidebar/BookmarkListBox.vala:146
+msgid "View the list of recently used files"
+msgstr "Son kullanılan dosyaların listesini görüntüle"
+
+#: src/View/Sidebar/BookmarkListBox.vala:170
+msgid "Open the Trash"
+msgstr "Çöp Kutusunu Aç"
+
+#: src/View/Sidebar/DeviceListBox.vala:152
+msgid "View the root of the local filesystem"
+msgstr "Yerel dosya sisteminin kök dizinini görüntüle"
+
+#: src/View/Sidebar/DriveRow.vala:70
+#, c-format
+msgid "%s contains no accessible data."
+msgstr "%s erişilebilir veri içermiyor."
+
+#: src/View/Sidebar/DriveRow.vala:71
+msgid ""
+"To use this drive you may need to replug it, or insert media or format it."
+msgstr ""
+"Bu sürücüyü kullanmak için yeniden takmanız, medyayı yerleştirmeniz veya "
+"biçimlendirmeniz gerekebilir."
+
+#: src/View/Sidebar/DriveRow.vala:102
+msgid "Unformatted or no media"
+msgstr "Biçimlendirilmemiş veya medya yok"
+
+#: src/View/Sidebar/NetworkListBox.vala:124
+msgid "Entire Network"
+msgstr "Tüm Ağ"
+
+#: src/View/Sidebar/NetworkListBox.vala:134
+msgid "Browse the contents of the network"
+msgstr "Ağ içeriğine gözat"
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: src/View/Widgets/SearchResults.vala:289
+msgid "Bookmarks"
+msgstr "Yer İmleri"
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr "Ortak yerler, kaydedilmiş klasörler ve dosyalar"
+
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr "Depolama"
+
+#: src/View/Sidebar/SidebarWindow.vala:54
+msgid "Internal and connected storage devices"
+msgstr "Dahili ve bağlı depolama aygıtları"
+
+#: src/View/Sidebar/SidebarWindow.vala:61
+msgid "Devices and places available via a network"
+msgstr "Bir ağ üzerinden kullanılabilen cihazlar ve yerler"
+
+#: src/View/Sidebar/SidebarWindow.vala:84
+msgid "Connect Server…"
+msgstr "Sunucuya Bağlan…"
+
+#: src/View/Sidebar/VolumelessMountRow.vala:42
+msgid "Bind mount"
+msgstr "Bağlama"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
+#: src/View/Widgets/LocationBar.vala:200
+msgid "Search or Type Path"
+msgstr "Dosya yolu girin veya arayın"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
+msgid "Open in New Tab"
+msgstr "Yeni Sekmede Aç"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:448
+msgid "Open in New Window"
+msgstr "Yeni Pencerede Aç"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
+msgid "Open in Other Application…"
+msgstr "Başka Bir Uygulamayla Aç…"
+
+#: src/View/Widgets/HeaderBar.vala:66
+msgid "Previous"
+msgstr "Önceki"
+
+#: src/View/Widgets/HeaderBar.vala:73
+msgid "Next"
+msgstr "Sonraki"
+
+#: src/View/Widgets/LocationBar.vala:196
+msgid "Reload this folder"
+msgstr "Klasörü yenile"
+
+#: src/View/Widgets/LocationBar.vala:209
+msgid "Searching…"
+msgstr "Arıyor…"
+
+#: src/View/Widgets/OverlayBar.vala:214
+#, c-format
+msgid "%u folders"
+msgstr "%u klasör"
+
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#, c-format
+msgid " and %u other item (%s) selected"
+msgid_plural " and %u other items (%s) selected"
+msgstr[0] " ve %u diğer öğe (%s) seçildi"
+msgstr[1] " ve %u diğer öğe (%s) seçildi"
+
+#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
+msgid " selected"
+msgstr " seçildi"
+
+#: src/View/Widgets/OverlayBar.vala:233
+#, c-format
+msgid "%u items selected (%s)"
+msgstr "%u öğe seçildi (%s)"
+
+#. TRANSLATORS: %u will be substituted by the number of sub folders
+#: src/View/Widgets/OverlayBar.vala:277
+#, c-format
+msgid "%u sub-folder, "
+msgid_plural "%u sub-folders, "
+msgstr[0] "%u alt klasör, "
+msgstr[1] "%u alt klasör, "
+
+#. TRANSLATORS: %u will be substituted by the number of readable files
+#: src/View/Widgets/OverlayBar.vala:283
+#, c-format
+msgid "%u file, "
+msgid_plural "%u files, "
+msgstr[0] "%u dosya, "
+msgstr[1] "%u dosya, "
+
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: src/View/Widgets/OverlayBar.vala:293
+#, c-format
+msgid "%s approx."
+msgstr "yaklaşık %s."
+
+#. TRANSLATORS: 'size' refers to disk space
+#: src/View/Widgets/OverlayBar.vala:296
+msgid "unknown size"
+msgstr "bilinmeyen boyut"
+
+#. TRANSLATORS: %u will be substituted by the number of unreadable files
+#: src/View/Widgets/OverlayBar.vala:300
+#, c-format
+msgid "%u file not readable"
+msgid_plural "%u files not readable"
+msgstr[0] "%u dosya okunamıyor"
+msgstr[1] "%u dosya okunamıyor"
+
+#: src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Oku"
+
+#: src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Yaz"
+
+#: src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Çalıştır"
+
+#: src/View/Widgets/SearchResults.vala:89
+msgid "More Results …"
+msgstr "Diğer Sonuçlar …"
+
+#: src/View/Widgets/SearchResults.vala:281
+msgid "In This Folder"
+msgstr "Bu Klasörde"
+
+#: src/View/Widgets/SearchResults.vala:285
+msgid "Below This Folder"
+msgstr "Bu Klasörün Altında"
+
+#: src/View/Widgets/SearchResults.vala:294
+msgid "Recently Used"
+msgstr "Son Kullanılan"
+
+#~ msgid "_Eject"
+#~ msgstr "_Çıkart"
+
 #~ msgid "Empty All Trash"
 #~ msgstr "Tüm Çöpü Boşalt"
 
@@ -2050,9 +2184,6 @@ msgstr "Seçilenleri Sil"
 
 #~ msgid "FileSystem"
 #~ msgstr "Dosya Sistemi"
-
-#~ msgid "Eject '%s'"
-#~ msgstr "'%s' aygıtını çıkar"
 
 #~ msgid "Error mounting volume '%s'"
 #~ msgstr "'%s' birimi bağlanırken hata oluştu"
@@ -2387,9 +2518,6 @@ msgstr "Seçilenleri Sil"
 #~ msgid "Templates"
 #~ msgstr "Şablonlar"
 
-#~ msgid "Unable to eject %V"
-#~ msgstr "%V çıkartılamadı"
-
 #~ msgid "Unable to unmount %V"
 #~ msgstr "%V bağı kaldırılamadı"
 
@@ -2407,24 +2535,6 @@ msgstr "Seçilenleri Sil"
 
 #~ msgid "Show more _details"
 #~ msgstr "Daha fazla _ayrıntı göster"
-
-#~ msgid "Inaccessible"
-#~ msgstr "Erişilemiyor"
-
-#~ msgid "link to %s"
-#~ msgstr "%s bağlantısı"
-
-#~ msgid "Failed to parse the desktop file: %s"
-#~ msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
-
-#~ msgid "Failed to parse the desktop file"
-#~ msgstr "Masaüsütü dosyasını ayrıştırmada hata"
-
-#~ msgid "Failed to create command from file: %s"
-#~ msgstr "%s dosyasından komut oluşturma başarısız oldu"
-
-#~ msgid "Unable to Launch Desktop File: %s"
-#~ msgstr "Masaüstü dosyası başlatılamadı: %s"
 
 #~ msgid " (another copy)"
 #~ msgstr " (başka kopya)"
@@ -2458,18 +2568,6 @@ msgstr "Seçilenleri Sil"
 
 #~ msgid "%s (%'drd copy)%s"
 #~ msgstr "%s (%'d. kopya)%s"
-
-#~ msgid "Browse your files"
-#~ msgstr "Dosyalarınıza gözatın"
-
-#~ msgid "File Manager"
-#~ msgstr "Dosya Yöneticisi"
-
-#~ msgid "New _Window"
-#~ msgstr "Yeni _Pencere"
-
-#~ msgid "New Window As _Administrator"
-#~ msgstr "_Yönetici Olarak Yeni Pencere"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"

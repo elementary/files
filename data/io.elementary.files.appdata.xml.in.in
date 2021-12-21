@@ -28,7 +28,7 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.1.1" date="2021-12-01" urgency="medium">
+    <release version="6.1.1" date="2021-12-09" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
@@ -47,10 +47,17 @@
         </ul>
         <p>Improvements:</p>
         <ul>
-          <li>Close FileChooser with esc key</li>
+          <li>Close FileChooser with Esc key</li>
           <li>Use new emblems for git status</li>
+          <li>Show selection actions in secondary click menu</li>
         </ul>
         <p>Fixes:</p>
+        <ul>
+          <li>Always show Permissions page in Properties dialog</li>
+          <li>In Permissions page, show user and group numeric IDs when names not available</li>
+          <li>In Permissions page, show message when no information available</li>
+        </ul>
+        <p>Other updates:</p>
         <ul>
           <li>Only allow one FileChooser per parent window</li>
           <li>Navigate to folder when pressing enter in FileChooser instead of selecting</li>

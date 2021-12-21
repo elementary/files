@@ -263,15 +263,15 @@ namespace Files {
         protected bool hide_local_thumbnails {get; set; default = false;}
 
         private bool all_selected = false;
-
         private Gtk.Widget view;
         private unowned ClipboardManager clipboard;
-        protected Files.ListModel model;
-        protected Files.IconRenderer icon_renderer;
-        protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
-        protected unowned View.Window window; /*For convenience - this can be derived from slot */
-        protected static DndHandler dnd_handler = new DndHandler ();
 
+        public Files.ListModel model { get; construct; }
+        public View.Slot slot { get; construct; } // Must be unowned else cyclic reference stops destruction
+
+        protected Files.IconRenderer icon_renderer;
+        protected View.Window window { get { return slot.window; } } // For convenience
+        protected static DndHandler dnd_handler = new DndHandler ();
         protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
@@ -279,32 +279,9 @@ namespace Files {
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         protected AbstractDirectoryView (View.Slot _slot) {
-            slot = _slot;
-            window = _slot.window;
-            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
-            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
-            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
-
-            var app = (Files.Application)(GLib.Application.get_default ());
-            clipboard = app.get_clipboard_manager ();
-            recent = app.get_recent_manager ();
-            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
-            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
-            thumbnailer = Thumbnailer.get ();
-            thumbnailer.finished.connect ((req) => {
-                if (req == thumbnail_request) {
-                    thumbnail_request = -1;
-                }
-
-                draw_when_idle ();
-            });
-
-            model = new Files.ListModel ();
-
-            Files.app_settings.bind ("show-remote-thumbnails",
-                                                             this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Files.app_settings.bind ("hide-local-thumbnails",
-                                                             this, "hide_local_thumbnails", SettingsBindFlags.GET);
+            Object (
+                slot: _slot
+            );
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -339,6 +316,35 @@ namespace Files {
 
         ~AbstractDirectoryView () {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
+        }
+
+        construct {
+            model = new Files.ListModel ();
+            thumbnailer = Thumbnailer.get ();
+            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
+            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
+            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+
+            var app = (Files.Application)(GLib.Application.get_default ());
+            clipboard = app.get_clipboard_manager ();
+            recent = app.get_recent_manager ();
+            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
+            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+
+            thumbnailer.finished.connect ((req) => {
+                if (req == thumbnail_request) {
+                    thumbnail_request = -1;
+                }
+
+                draw_when_idle ();
+            });
+
+            Files.app_settings.bind ("show-remote-thumbnails",
+                                                             this, "show_remote_thumbnails", SettingsBindFlags.GET);
+            Files.app_settings.bind ("hide-local-thumbnails",
+                                                             this, "hide_local_thumbnails", SettingsBindFlags.GET);
+
+
         }
 
         protected virtual void set_up_name_renderer () {
@@ -636,13 +642,27 @@ namespace Files {
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
-            dir.file_loaded.connect (on_directory_file_loaded);
+            dir.files_loaded.connect (on_directory_files_loaded);
+            // dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
-            dir.file_loaded.disconnect (on_directory_file_loaded);
+            // dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.files_loaded.disconnect (on_directory_files_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
+        }
+
+        protected void connect_subdirectory_loading_handlers (Directory dir) {
+            dir.files_loaded.connect (on_subdirectory_files_loaded);
+            // dir.file_loaded.connect (on_directory_file_loaded);
+            dir.done_loading.connect (on_subdirectory_done_loading);
+        }
+
+        protected void disconnect_subdirectory_loading_handlers (Directory dir) {
+            // dir.file_loaded.disconnect (on_directory_file_loaded);
+            dir.files_loaded.disconnect (on_subdirectory_files_loaded);
+            dir.done_loading.disconnect (on_subdirectory_done_loading);
         }
 
         protected void disconnect_directory_handlers (Directory dir) {
@@ -938,6 +958,15 @@ namespace Files {
             }
         }
 
+        private void add_files (Directory dir, bool is_root = true) {
+            if (is_root) {
+                clear ();
+                model.load_root_directory (dir);
+            } else {
+                model.load_subdirectory (dir);
+            }
+        }
+
         private void handle_free_space_change () {
             /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
             if (add_remove_file_timeout_id == 0) {
@@ -1222,6 +1251,8 @@ namespace Files {
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
                     sort_column_id = Files.ListModel.ColumnID.from_string (col_name);
+                } else {
+                    sort_column_id = Files.ListModel.ColumnID.FILENAME;
                 }
 
                 if (reverse) {
@@ -1322,9 +1353,12 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_loaded (Directory dir, Files.File file) {
-            add_file (file, dir, false); /* Do not select files added during initial load */
-            /* no freespace change signal required */
+        private void on_directory_files_loaded (Directory dir) {
+            add_files (dir);
+        }
+
+        private void on_subdirectory_files_loaded (Directory dir) {
+            add_files (dir, false);
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -1380,6 +1414,13 @@ namespace Files {
             }
 
             handle_free_space_change ();
+        }
+
+        private void on_subdirectory_done_loading (Directory dir) {
+            disconnect_subdirectory_loading_handlers (dir);
+            thaw_tree ();
+
+            schedule_thumbnail_color_tag_timeout ();
         }
 
         private void on_directory_done_loading (Directory dir) {
@@ -1459,8 +1500,10 @@ namespace Files {
 
         private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
-            dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
-            dir.load_hiddens ();
+            model.show_hidden_files = show;
+            dir.files_loaded.connect (on_directory_files_loaded); /* disconnected by on_done_loading callback.*/
+            connect_directory_loading_handlers (dir); /* disconnected by on_done_loading callback.*/
+            dir.init.begin ();
         }
 
     /** Handle popup menu events */
@@ -2510,8 +2553,6 @@ namespace Files {
                 action_set_state (background_actions, "reverse", val);
                 val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
                 action_set_state (background_actions, "folders-first", val);
-            } else {
-                warning ("Update menu actions sort: The model is unsorted - this should not happen");
             }
         }
 
@@ -2707,7 +2748,7 @@ namespace Files {
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
              * we wait longer for scrolling to stop before updating the thumbnails */
-            uint delay = uint.min (50 + slot.displayed_files_count / 10, 500);
+            uint delay = uint.min (50 + model.displayed_files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
 
                 /* compute visible item range */
@@ -3880,7 +3921,7 @@ namespace Files {
                 selected_files = null;
 
                 var selected_count = get_selected_files_from_model (out selected_files);
-                all_selected = selected_count == slot.displayed_files_count;
+                all_selected = selected_count == model.displayed_files_count;
                 selected_files.reverse ();
                 selected_files_invalid = false;
                 update_menu_actions ();
