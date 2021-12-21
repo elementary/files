@@ -52,7 +52,7 @@ public class Files.Directory : Object {
     public State state {get; private set;}
 
     private HashTable<GLib.File,Files.File> file_hash;
-    public uint displayed_files_count {get; private set;}
+    public uint loaded_files_count { get { return file_hash.size (); } }
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -109,6 +109,8 @@ public class Files.Directory : Object {
     public string last_error_message {get; private set; default = "";}
 
     public bool loaded_from_cache {get; private set; default = false;}
+
+    // private bool show_hidden_files = false;
 
     private Directory (GLib.File _file) {
         Object (
@@ -167,7 +169,7 @@ public class Files.Directory : Object {
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
      **/
-    public void init (FileLoadedFunc? file_loaded_func = null) {
+    public async void init (FileLoadedFunc? file_loaded_func = null) {
         if (state == State.LOADING) {
             debug ("Directory Init re-entered - already loading");
             return; /* Do not re-enter */
@@ -437,7 +439,7 @@ public class Files.Directory : Object {
                                                                            file.exists.to_string ());
             directory_cache.remove (creation_key);
             is_ready = false;
-            after_loading (file_loaded_func);
+            yield after_loading (file_loaded_func);
             return;
         }
 
@@ -569,7 +571,6 @@ public class Files.Directory : Object {
         file_hash.remove_all ();
         monitor = null;
         sorted_dirs = null;
-        displayed_files_count = 0;
         can_load = false;
         state = State.NOT_LOADED;
         loaded_from_cache = false;
@@ -586,30 +587,22 @@ public class Files.Directory : Object {
         }
     }
 
-    private void list_cached_files (FileLoadedFunc? file_loaded_func = null) {
+    private async void list_cached_files (FileLoadedFunc? file_loaded_func = null) {
         debug ("list cached files");
         if (state != State.LOADED) {
             critical ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
         }
 
-        state = State.LOADING;
-        // displayed_files_count = 0;
-        // bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-        // foreach (unowned Files.File gof in file_hash.get_values ()) {
-        //     if (gof != null) {
-        //         after_load_file (gof, show_hidden, file_loaded_func);
-        //     }
-        // }
-
         state = State.LOADED;
         loaded_from_cache = true;
 
-        after_loading.begin (file_loaded_func);
+        yield after_loading (file_loaded_func);
     }
 
-    private async void list_directory_async (FileLoadedFunc? file_loaded_func) {
+    private async void list_directory_async (FileLoadedFunc? file_loaded_func = null) {
         debug ("list directory async");
+        var now = get_monotonic_time ();
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
             critical ("(Re)load directory called when not cleared");
@@ -633,9 +626,7 @@ public class Files.Directory : Object {
         cancellable = new Cancellable ();
         permission_denied = false;
         can_load = true;
-        displayed_files_count = 0;
         state = State.LOADING;
-        // bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
 
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
@@ -672,12 +663,7 @@ public class Files.Directory : Object {
                             }
 
                             gof.info = file_info;
-                            // gof.update ();
-
                             file_hash.insert (gof.location, gof);
-                            // if (file_loaded_func != null) {
-                            //     after_load_file (gof, show_hidden, file_loaded_func);
-                            // }
                         }
                     }
                 } catch (Error e) {
@@ -707,25 +693,14 @@ public class Files.Directory : Object {
         } finally {
             cancel_timeout (ref load_timeout_id);
             loaded_from_cache = false;
+            debug ("FINSHED LOAD FROM DISK - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
             yield after_loading (file_loaded_func);
-            if (file_loaded_func == null) {
-                Idle.add (() => {
-                    done_loading ();
-                    return false;
-                });
-            }
         }
     }
 
-    // private void after_load_file (Files.File gof, bool show_hidden, FileLoadedFunc file_loaded_func) {
-    //     if (!gof.is_hidden || show_hidden) {
-    //         file_loaded_func (gof);
-    //     }
-    // }
-
     private async void after_loading (FileLoadedFunc? file_loaded_func) {
         /* If loading failed reset */
-        // debug ("after loading state is %s", state.to_string ());
+        debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING || state == State.TIMED_OUT) {
             state = State.TIMED_OUT; /* else clear directory info will fail */
             can_load = false;
@@ -746,6 +721,12 @@ public class Files.Directory : Object {
         if (file.is_directory) { /* Fails for non-existent directories */
             file.set_expanded (true);
         }
+
+        // When loading or reloading a view the file_loaded_func must be null.
+        // Otherwise it must be supplied.
+        if (file_loaded_func == null) {
+            done_loading ();
+        }
     }
 
     public void block_monitor () {
@@ -762,35 +743,25 @@ public class Files.Directory : Object {
         }
     }
 
-    public void load_hiddens () {
-        if (!can_load) {
-            return;
-        }
-        if (state != State.LOADED) {
-            list_directory_async.begin (null);
-        } else {
-            list_cached_files ();
-        }
-    }
-
     public List<unowned Files.File> get_files () {
         return file_hash.get_values ();
     }
 
     public void update_files (FileLoadedFunc? file_loaded_func = null) {
-        displayed_files_count = 0;
+        var now = get_monotonic_time ();
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
-                displayed_files_count++;
-                gof.update ();
+                gof.update (); //TODO Replace with faster minimal update - only fully update visible files
             }
 
             if (file_loaded_func != null) {
                 file_loaded_func (gof);
             }
         }
+
+        debug ("FINSHED UPDATE FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
     public void update_desktop_files () {

@@ -48,7 +48,7 @@ void run_load_folder_test (LoadFolderTest test) {
 
     assert (dir.state == Directory.State.NOT_LOADED);
 
-    dir.init ();
+    dir.init.begin ();
     loop.run ();
 
     /* Tear down test folder*/
@@ -62,7 +62,7 @@ Directory load_non_existent_local_test (string test_dir_path, MainLoop loop) {
 
     var dir = Directory.from_gfile (gfile);
     dir.done_loading.connect (() => {
-        assert (dir.displayed_files_count == 0);
+        assert (dir.loaded_files_count == 0);
         assert (!dir.can_load);
         assert (!dir.file.is_connected);
         assert (!dir.file.is_mounted);
@@ -78,7 +78,8 @@ Directory load_empty_local_test (string test_dir_path, MainLoop loop) {
     var dir = setup_temp_async (test_dir_path, 0);
 
     dir.done_loading.connect (() => {
-        assert (dir.displayed_files_count == 0);
+        // assert (dir.displayed_files_count == 0);
+        assert (dir.loaded_files_count == 0);
         assert (dir.can_load);
         assert (dir.file.is_connected);
         assert (!dir.file.is_mounted);
@@ -103,7 +104,8 @@ Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
     });
 
     dir.done_loading.connect (() => {
-        assert (dir.displayed_files_count == n_files);
+        // assert (dir.displayed_files_count == n_files);
+        assert (dir.loaded_files_count == n_files);
         assert (dir.can_load);
         assert (dir.state == Directory.State.LOADED);
         assert (file_loaded_signal_count == n_files);
@@ -131,7 +133,8 @@ Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
             assert (!dir.loaded_from_cache);
             dir.init ();
         } else {
-            assert (dir.displayed_files_count == n_files);
+            assert (dir.loaded_files_count == n_files);
+            // assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Directory.State.LOADED);
             assert (file_loaded_signal_count == n_files);
@@ -163,7 +166,8 @@ Directory reload_populated_local_test (string test_dir_path, MainLoop loop) {
             dir.cancel ();
             dir.reload ();
         } else {
-            assert (dir.displayed_files_count == n_files);
+            // assert (dir.displayed_files_count == n_files);
+            assert (dir.loaded_files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Directory.State.LOADED);
             assert (dir.ref_count == ref_count_before_reload);

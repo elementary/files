@@ -36,8 +36,11 @@ namespace Files.View {
         public bool is_active {get; protected set;}
         public int displayed_files_count {
             get {
-                if (directory != null && directory.state == Directory.State.LOADED) {
-                    return (int)(directory.displayed_files_count);
+                // if (directory != null && directory.state == Directory.State.LOADED) {
+                //     return (int)(directory.displayed_files_count);
+                // }
+                if (dir_view != null && directory.state == Directory.State.LOADED) {
+                    return (int)(dir_view.model.displayed_files_count);
                 }
 
                 return -1;
@@ -90,7 +93,8 @@ namespace Files.View {
         }
 
         ~Slot () {
-            debug ("Slot %i destruct", slot_number);
+            // debug ("Slot %i destruct", slot_number);
+            critical ("Slot %i destruct", slot_number);
         }
 
         private void connect_slot_signals () {
@@ -149,8 +153,6 @@ namespace Files.View {
         }
 
         private void on_directory_done_loading (Directory dir) {
-            directory_loaded (dir);
-
             /*  Column View requires slots to determine their own width (other views' width determined by Window */
             if (mode == ViewMode.MILLER_COLUMNS) {
 
@@ -179,6 +181,12 @@ namespace Files.View {
                     colpane.queue_draw ();
                 }
             }
+
+//             Idle.add (() => {
+// warning ("emit slot.directory_loaded from IDle");
+                directory_loaded (dir);
+            //     return false;
+            // });
 
             is_frozen = false;
         }
@@ -260,6 +268,7 @@ namespace Files.View {
             }
             /* view and slot are unfrozen when done loading signal received */
             is_frozen = true;
+            // directory.init.begin ();
             directory.init ();
         }
 

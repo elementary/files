@@ -67,6 +67,28 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     public int icon_size { get; set; default = 32; }
     public bool has_child { get; set; default = false; }
+    private bool _show_hidden_files = false;
+    public bool show_hidden_files {
+        get {
+            return _show_hidden_files;
+        }
+
+        set {
+            _show_hidden_files = value;
+            _displayed_files_count = -1;
+        }
+    }
+
+    private int _displayed_files_count = -1;
+    public uint displayed_files_count {
+        get {
+            if (_displayed_files_count < 0) {
+                _displayed_files_count = iter_n_children (null);
+            }
+
+            return  _displayed_files_count; // Only root files
+        }
+    }
 
     private bool sort_directories_first = true;
 
@@ -268,6 +290,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             }
 
             foreach (var file in files) {
+                if (!show_hidden_files && file.is_hidden) {
+                    continue;
+                }
+
                 if (change_dummy) {
                     // Instead of inserting a new row, change the dummy one
                     @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
@@ -313,18 +339,21 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         var now = get_monotonic_time ();
         set_sort_column_id (Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID, 0);
         clear ();
+        _displayed_files_count = -1;
 
         foreach (var file in dir.get_files ()) {
-            Gtk.TreeIter? iter = null, dummy_iter = null;
-            prepend (out iter, null);
-            @set (iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
-            if (file.is_folder ()) {
-                // Append a dummy child so expander will show even when folder is empty.
-                insert_with_values (out dummy_iter, iter, -1, PrivColumnID.DUMMY, true);
+            if (show_hidden_files || !file.is_hidden) {
+                Gtk.TreeIter? iter = null, dummy_iter = null;
+                prepend (out iter, null);
+                @set (iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                if (file.is_folder ()) {
+                    // Append a dummy child so expander will show even when folder is empty.
+                    insert_with_values (out dummy_iter, iter, -1, PrivColumnID.DUMMY, true);
+                }
             }
         }
 
-        debug ("FINSHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+        debug ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
     /* Returns true if the file was not in the model and was added */
@@ -333,13 +362,14 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     // Otherwise may be quicker to rebuild the whole model.
     //TODO Add a method to add a (large) array of files efficiently
     public bool add_file (Files.File file, Files.Directory dir) {
-        Gtk.TreeIter? parent_iter = null, file_iter = null, dummy_iter = null;
-        bool change_dummy = false;
+        _displayed_files_count = -1;
 
+        Gtk.TreeIter? parent_iter = null, file_iter = null;
         if (get_first_iter_for_file (file, out file_iter)) {
             return false; // The file is already in the model - ignore the request to add
         }
 
+        bool change_dummy = false;
         if (get_first_iter_for_file (dir.file, out parent_iter)) {
             if (iter_nth_child (out file_iter, parent_iter, 0)) { // Must always be at least one child
                 get (file_iter, PrivColumnID.DUMMY, out change_dummy);
@@ -361,7 +391,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         if (file.is_folder ()) {
             // Append a dummy child so expander will show even when folder is empty.
-            insert_with_values (out dummy_iter, file_iter, -1, PrivColumnID.DUMMY, true);
+            insert_with_values (out file_iter, file_iter, -1, PrivColumnID.DUMMY, true);
         }
 
         return true;
@@ -373,6 +403,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     // Otherwise may be quicker to rebuild the whole model.
     //TODO Add a method to remove a (large) array of files efficiently
     public bool remove_file (Files.File file, Files.Directory dir) {
+        _displayed_files_count = -1;
         // Assumed that file is actually a child of dir
         Gtk.TreeIter? parent_iter, child_iter, file_iter, dummy_iter;
         if (!get_first_iter_for_file (file, out file_iter)) {

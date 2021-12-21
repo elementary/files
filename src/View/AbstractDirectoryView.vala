@@ -260,15 +260,15 @@ namespace Files {
         protected bool hide_local_thumbnails {get; set; default = false;}
 
         private bool all_selected = false;
-
         private Gtk.Widget view;
         private unowned ClipboardManager clipboard;
-        protected Files.ListModel model;
-        protected Files.IconRenderer icon_renderer;
-        protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
-        protected unowned View.Window window; /*For convenience - this can be derived from slot */
-        protected static DndHandler dnd_handler = new DndHandler ();
 
+        public  Files.ListModel model { get; construct; }
+        public View.Slot slot { get; construct; } // Must be unowned else cyclic reference stops destruction
+
+        protected Files.IconRenderer icon_renderer;
+        protected View.Window window { get { return slot.window; } } // For convenience
+        protected static DndHandler dnd_handler = new DndHandler ();
         protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
@@ -276,32 +276,9 @@ namespace Files {
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         protected AbstractDirectoryView (View.Slot _slot) {
-            slot = _slot;
-            window = _slot.window;
-            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
-            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
-            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
-
-            var app = (Files.Application)(GLib.Application.get_default ());
-            clipboard = app.get_clipboard_manager ();
-            recent = app.get_recent_manager ();
-            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
-            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
-            thumbnailer = Thumbnailer.get ();
-            thumbnailer.finished.connect ((req) => {
-                if (req == thumbnail_request) {
-                    thumbnail_request = -1;
-                }
-
-                draw_when_idle ();
-            });
-
-            model = new Files.ListModel ();
-
-            Files.app_settings.bind ("show-remote-thumbnails",
-                                                             this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Files.app_settings.bind ("hide-local-thumbnails",
-                                                             this, "hide_local_thumbnails", SettingsBindFlags.GET);
+            Object (
+                slot: _slot
+            );
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -335,6 +312,35 @@ namespace Files {
 
         ~AbstractDirectoryView () {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
+        }
+
+        construct {
+            model = new Files.ListModel ();
+            thumbnailer = Thumbnailer.get ();
+            editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
+            activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
+            selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+
+            var app = (Files.Application)(GLib.Application.get_default ());
+            clipboard = app.get_clipboard_manager ();
+            recent = app.get_recent_manager ();
+            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
+            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+
+            thumbnailer.finished.connect ((req) => {
+                if (req == thumbnail_request) {
+                    thumbnail_request = -1;
+                }
+
+                draw_when_idle ();
+            });
+
+            Files.app_settings.bind ("show-remote-thumbnails",
+                                                             this, "show_remote_thumbnails", SettingsBindFlags.GET);
+            Files.app_settings.bind ("hide-local-thumbnails",
+                                                             this, "hide_local_thumbnails", SettingsBindFlags.GET);
+
+
         }
 
         protected virtual void set_up_name_renderer () {
@@ -1478,9 +1484,12 @@ namespace Files {
 
         private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
+            model.show_hidden_files = show;
+warning ("setting model show hidden %s", show.to_string ());
             // dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             dir.files_loaded.connect (on_directory_files_loaded); /* disconnected by on_done_loading callback.*/
-            dir.load_hiddens ();
+            connect_directory_loading_handlers (dir); /* disconnected by on_done_loading callback.*/
+            dir.init ();
         }
 
     /** Handle popup menu events */
@@ -2696,7 +2705,7 @@ namespace Files {
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
              * we wait longer for scrolling to stop before updating the thumbnails */
-            uint delay = uint.min (50 + slot.displayed_files_count / 10, 500);
+            uint delay = uint.min (50 +model.displayed_files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
 
                 /* compute visible item range */
@@ -3789,7 +3798,7 @@ namespace Files {
                 selected_files = null;
 
                 var selected_count = get_selected_files_from_model (out selected_files);
-                all_selected = selected_count == slot.displayed_files_count;
+                all_selected = selected_count == model.displayed_files_count;
                 selected_files.reverse ();
                 selected_files_invalid = false;
                 update_menu_actions ();

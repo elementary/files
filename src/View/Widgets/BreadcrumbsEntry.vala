@@ -432,7 +432,7 @@ namespace Files.View.Chrome {
             }
 
             if (files_menu_dir != null) {
-                files_menu_dir.init ();
+                files_menu_dir.init.begin ();
             }
         }
 

@@ -242,6 +242,8 @@ namespace Files.View {
 
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
+            content = null;
+            view = null;
             view_mode = mode;
 
             if (to_select != null) {
@@ -261,8 +263,11 @@ namespace Files.View {
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
-            slot.initialize_directory ();
-            show_all ();
+            //Fix race between loading files and resetting current slot
+            Idle.add (() => {
+                slot.initialize_directory ();
+                return false;
+            });
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
