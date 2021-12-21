@@ -89,7 +89,7 @@ namespace Files {
 
             extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             content_box.pack_end (extra_action_widgets, false, false, 0);
-            // slot_number = -1;
+            slot_number = -1;
         }
 
         public abstract void initialize_directory ();

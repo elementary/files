@@ -90,8 +90,7 @@ namespace Files.View {
         }
 
         ~Slot () {
-            // debug ("Slot %i destruct", slot_number);
-            critical ("Slot %i destruct", slot_number);
+             debug ("Slot %i destruct", slot_number);
         }
 
         private void connect_slot_signals () {
@@ -179,11 +178,7 @@ namespace Files.View {
                 }
             }
 
-//             Idle.add (() => {
-// warning ("emit slot.directory_loaded from IDle");
-                directory_loaded (dir);
-            //     return false;
-            // });
+            directory_loaded (dir);
 
             is_frozen = false;
         }
@@ -265,7 +260,6 @@ namespace Files.View {
             }
             /* view and slot are unfrozen when done loading signal received */
             is_frozen = true;
-            // directory.init.begin ();
             directory.init.begin ();
         }
 

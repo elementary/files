@@ -639,24 +639,20 @@ namespace Files {
 
         protected void connect_directory_loading_handlers (Directory dir) {
             dir.files_loaded.connect (on_directory_files_loaded);
-            // dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
-            // dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.files_loaded.disconnect (on_directory_files_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
         protected void connect_subdirectory_loading_handlers (Directory dir) {
             dir.files_loaded.connect (on_subdirectory_files_loaded);
-            // dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_subdirectory_done_loading);
         }
 
         protected void disconnect_subdirectory_loading_handlers (Directory dir) {
-            // dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.files_loaded.disconnect (on_subdirectory_files_loaded);
             dir.done_loading.disconnect (on_subdirectory_done_loading);
         }
@@ -1336,7 +1332,6 @@ namespace Files {
             }
         }
 
-        // private void on_directory_file_loaded (Directory dir, Files.File file) {
         private void on_directory_files_loaded (Directory dir) {
             add_files (dir);
         }
@@ -1485,8 +1480,6 @@ namespace Files {
         private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
             model.show_hidden_files = show;
-warning ("setting model show hidden %s", show.to_string ());
-            // dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             dir.files_loaded.connect (on_directory_files_loaded); /* disconnected by on_done_loading callback.*/
             connect_directory_loading_handlers (dir); /* disconnected by on_done_loading callback.*/
             dir.init.begin ();
