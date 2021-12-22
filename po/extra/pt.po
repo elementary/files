@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-19 16:52+0000\n"
-"PO-Revision-Date: 2021-08-01 01:26+0000\n"
+"PO-Revision-Date: 2021-12-22 17:55+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -78,7 +78,7 @@ msgstr "Melhorias:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with Esc key"
-msgstr ""
+msgstr "Fechar a procura de ficheiros com a tecla Esc"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
