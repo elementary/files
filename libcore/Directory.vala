@@ -709,6 +709,7 @@ public class Files.Directory : Object {
         }
 
         Idle.add (() => {
+            init_files ();
             files_loaded ();
             return after_loading.callback ();
         });
@@ -750,6 +751,23 @@ public class Files.Directory : Object {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
+                gof.update_full ();
+            }
+
+            if (file_loaded_func != null) {
+                file_loaded_func (gof);
+            }
+        }
+
+        debug ("FINSHED UPDATE FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+    }
+
+    public void init_files (FileLoadedFunc? file_loaded_func = null) {
+        var now = get_monotonic_time ();
+        foreach (unowned Files.File gof in file_hash.get_values ()) {
+            if (gof != null && gof.info != null &&
+                (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
+
                 gof.init_info (); //TODO Replace with faster minimal update - only fully update visible files
             }
 
@@ -758,7 +776,7 @@ public class Files.Directory : Object {
             }
         }
 
-        warning ("FINSHED UPDATE FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+        debug ("FINSHED INIT FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
     public void update_desktop_files () {

@@ -130,7 +130,7 @@ namespace Files {
             string suffix = "";
             bool is_drop_file = (file == drop_file);
 
-            if (file.is_directory) {
+            if (file.is_directory && file.icon is GLib.ThemedIcon) {
                 var names = ((GLib.ThemedIcon) file.icon).get_names ();
                 if (names.length > 0) {
                     special_icon_name = names[0];

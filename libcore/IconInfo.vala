@@ -109,7 +109,7 @@ public class Files.IconInfo : GLib.Object {
             }
 
             return icon_info;
-        } else {
+        } else if (icon != null) {
             var theme = get_icon_theme ();
             try {
                 var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
@@ -121,6 +121,8 @@ public class Files.IconInfo : GLib.Object {
                 return new Files.IconInfo.for_pixbuf (null);
             }
         }
+
+        return new Files.IconInfo.for_pixbuf (null);
     }
 
     public static Files.IconInfo? get_generic_icon (int size, int scale) {

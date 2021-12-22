@@ -49,21 +49,7 @@ public class Files.File : GLib.Object {
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
-    private GLib.FileInfo? _info = null;
-    public GLib.FileInfo? info {
-        get {
-            return _info;
-        }
-
-        set {
-            _info = value;
-            if (_info == null) {
-                clear_info ();
-            } else {
-                init_info ();
-            }
-        }
-    }
+    public GLib.FileInfo? info;
 
     public string basename { get; construct; }
     public string? custom_display_name = null;
@@ -88,6 +74,7 @@ public class Files.File : GLib.Object {
     public bool is_directory = false;
     public bool is_desktop = false;
     public bool is_expanded = false;
+    public int n_items = -1;
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
     public uint thumbstate = Files.File.ThumbState.UNKNOWN;
@@ -172,13 +159,12 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    public File (GLib.File location, GLib.File? dir = null, GLib.FileInfo? info = null) {
+    public File (GLib.File location, GLib.File? dir = null) {
         Object (
             location: location,
             uri: location.get_uri (),
             basename: location.get_basename (),
-            directory: dir,
-            info: info
+            directory: dir
         );
     }
 
@@ -451,7 +437,7 @@ public class Files.File : GLib.Object {
         return icon;
     }
 
-    // Set basic info (fast)
+    // Set basic info required when loaded (fast)
     public void init_info () {
         is_hidden = info.get_is_hidden () || info.get_is_backup ();
         size = info.get_size ();
@@ -459,15 +445,33 @@ public class Files.File : GLib.Object {
         is_directory = (file_type == GLib.FileType.DIRECTORY);
         modified = info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
+        icon = (GLib.Icon?)(info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON));
+        /* mark the thumb flags as state none, we'll load the thumbs once the directory
+         * would be loaded on a thread */
+        if (get_thumbnail_path () != null) {
+            thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
+        }
+
+        /* formated type */
+        update_formated_type (); // Needed for sort on Type
+
+        /* sizes */
+        if (!is_directory && info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
+            format_size = GLib.format_size (size);
+        } else { // Deal with folders etc
+            update_size ();
+        }
+
+        /* modified date */
+        if (info.has_attribute (GLib.FileAttribute.TIME_MODIFIED)) {
+            formated_modified = get_formated_time (GLib.FileAttribute.TIME_MODIFIED);
+        } else {
+            formated_modified = _("Inaccessible");
+        }
     }
 
-    public void update_full () {
-        GLib.return_if_fail (info != null);
-
-        /* free previously allocated */
-        clear_info ();
-        init_info ();
-
+    // Extra info needed when actually displayed
+    public void update_extra () {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
@@ -480,10 +484,6 @@ public class Files.File : GLib.Object {
                 sort_order = info.get_attribute_string ("metadata::marlin-sort-reversed") == "true" ?
                                                         Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
             }
-        }
-
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
-            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
 
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
@@ -555,14 +555,7 @@ public class Files.File : GLib.Object {
             }
         }
 
-        /* sizes */
-        update_size ();
-        /* modified date */
-        if (info.has_attribute (GLib.FileAttribute.TIME_MODIFIED)) {
-            formated_modified = get_formated_time (GLib.FileAttribute.TIME_MODIFIED);
-        } else {
-            formated_modified = _("Inaccessible");
-        }
+
 
         /* icon */
         if (is_directory) {
@@ -576,14 +569,7 @@ public class Files.File : GLib.Object {
             }
         }
 
-        /* mark the thumb flags as state none, we'll load the thumbs once the directory
-         * would be loaded on a thread */
-        if (get_thumbnail_path () != null) {
-            thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
-        }
 
-        /* formated type */
-        update_formated_type ();
 
         /* permissions */
         has_permissions = info.has_attribute (GLib.FileAttribute.UNIX_MODE);
@@ -617,6 +603,15 @@ public class Files.File : GLib.Object {
         }
 
         update_emblem ();
+    }
+
+    public void update_full () {
+        GLib.return_if_fail (info != null);
+
+        /* free previously allocated */
+        clear_info ();
+        init_info ();
+        update_extra ();
     }
 
     public void update_type () {
@@ -1112,22 +1107,26 @@ public class Files.File : GLib.Object {
     }
 
     private void update_size () {
-        if (is_folder () || is_root_network_folder ()) {
-            format_size = item_count ();
-        } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
+        n_items = -1;
+        if (!is_directory && info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
             format_size = GLib.format_size (size);
+        } else if (is_folder () || is_root_network_folder ()) {
+            format_size = item_count ();
         } else {
             format_size = _("Inaccessible");
         }
     }
 
     private string item_count () {
+        n_items = -1;
         try {
             var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
             var count = 0;
             while (f_enum.next_file () != null) {
                 count++;
             }
+
+            n_items = count;
 
             if (count == 0) {
                 return _("Empty");
@@ -1241,17 +1240,12 @@ public class Files.File : GLib.Object {
         /* As folder files have a fixed standard size (4K) assign them a virtual size of -1 for now
          * so always sorts first. */
 
-        /* TODO Sort folders according to number of files inside like Dolphin? */
-        if (is_folder () && !other.is_folder ()) {
-            return -1;
-        }
-
-        if (other.is_folder () && !is_folder ()) {
-            return 1;
-        }
-
-        if (is_folder () && other.is_folder ()) {
-            return 0;
+        if (is_folder ()) { // Should be same type at this stage
+            if (n_items == other.n_items) {
+                return compare_by_display_name (other);
+            } else {
+                return n_items > other.n_items ? 1 : -1;
+            }
         }
 
         /* Only compare sizes for regular files */

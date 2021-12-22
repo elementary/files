@@ -2735,6 +2735,7 @@ namespace Files {
                         path = model.get_path (iter);
 
                         if (file != null && !file.is_gone) {
+                            file.update_extra ();
                             // Only update thumbnail if it is going to be shown
                             if ((slot.directory.is_network && show_remote_thumbnails) ||
                                 (!slot.directory.is_network && !hide_local_thumbnails)) {
@@ -2752,6 +2753,7 @@ namespace Files {
                             if (plugins != null) {
                                 plugins.update_file_info (file);
                             }
+
                         }
                         /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0) {
