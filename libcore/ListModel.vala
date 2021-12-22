@@ -64,6 +64,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public signal void subdirectory_unloaded (Files.Directory directory);
+    public signal void new_files_added (List <unowned Files.File> new_files);
 
     public int icon_size { get; set; default = 32; }
     public bool has_child { get; set; default = false; }
@@ -377,9 +378,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             }
         }
 
-        files_to_add = null;
-        warning ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
         set_sort_column_id (col_id, sort_type);
+        new_files_added (files_to_add);
+        warning ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+
     }
 
     /* Returns true if the file was not in the model and was added */

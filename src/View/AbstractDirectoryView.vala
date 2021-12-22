@@ -1018,10 +1018,11 @@ namespace Files {
             });
         }
 
-        private void after_new_file_added (Files.File? file) {
-            slot.directory.file_added.disconnect (after_new_file_added);
-            if (file != null) {
-                rename_file (file);
+        // This handler should only be connected after adding one new file
+        private void after_new_file_added (List <unowned Files.File> files) {
+            model.new_files_added.disconnect (after_new_file_added);
+            if (files.data != null) {
+                rename_file (files.data);
             }
         }
 
@@ -1047,7 +1048,7 @@ namespace Files {
             }
 
             /* Start to rename the file once we get signal that it has been added to model */
-            slot.directory.file_added.connect_after (after_new_file_added);
+            model.new_files_added.connect_after (after_new_file_added);
             unblock_directory_monitor ();
         }
 
@@ -3385,7 +3386,7 @@ namespace Files {
                                                        GLib.Cancellable? cancellable = null) throws GLib.Error {
 
             /* Wait for the file to be added to the model before trying to select and scroll to it */
-            slot.directory.file_added.connect_after (after_renamed_file_added);
+            model.new_files_added.connect_after (after_renamed_file_added);
             try {
                 return yield FileUtils.set_file_display_name (old_location, new_name, cancellable);
             } catch (GLib.Error e) {
@@ -3393,12 +3394,11 @@ namespace Files {
             }
         }
 
-        private void after_renamed_file_added (Files.File? new_file) {
-            slot.directory.file_added.disconnect (after_renamed_file_added);
+        /* This handler should only be connected after renaming a single file */
+        private void after_renamed_file_added (List <unowned Files.File> new_files) {
+            model.new_files_added.disconnect (after_renamed_file_added);
             /* new_file will be null if rename failed */
-            if (new_file != null) {
-                select_and_scroll_to_gof_file (new_file);
-            }
+            select_and_scroll_to_gof_file (new_files.data);
         }
 
         public virtual bool on_view_draw (Cairo.Context cr) {
