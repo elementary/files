@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-19 16:52+0000\n"
-"PO-Revision-Date: 2021-12-18 15:15+0000\n"
+"PO-Revision-Date: 2021-12-22 17:55+0000\n"
 "Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,10 +103,8 @@ msgid "Fixes:"
 msgstr "Исправления:"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
-msgstr "Отображение зарезервированного места в окне «Свойства»"
+msgstr "Страница разрешений всегда показывается в диалоге «Свойства»"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
@@ -177,12 +175,12 @@ msgid "Updated translations"
 msgstr "Обновлены переводы"
 
 #: data/io.elementary.files.appdata.xml.in.in:60
-#, fuzzy
-#| msgid "Use \"Send Mail\" portal instead of contract"
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
-msgstr "Используется портал «Отправить почту» вместо договора"
+msgstr ""
+"Используется портал «Отправить почту» вместо договора, что улучшает "
+"совместимость с альтернативными почтовыми приложениями"
 
 #: data/io.elementary.files.appdata.xml.in.in:61
 msgid "Add file filters and New Folder options to file chooser portal"
@@ -304,8 +302,6 @@ msgid "Fix renaming bookmarks in the sidebar"
 msgstr "Исправлено переименование закладок в боковой панели"
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-#, fuzzy
-#| msgid "FIx an issue with showing color tags when thumbnails are hidden"
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr ""
 "Исправлена проблема с отображением цветовых меток, когда миниатюры скрыты"
