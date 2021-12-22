@@ -62,6 +62,7 @@ public class Files.Directory : Object {
     private List<unowned Files.File>? sorted_dirs = null;
 
     public signal void files_loaded ();
+    public signal void files_added (List <Files.File> files_to_add);
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
@@ -774,17 +775,6 @@ public class Files.Directory : Object {
         debug ("FINSHED INIT FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
-    public void update_desktop_files () {
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
-                gof.is_desktop) {
-
-                gof.update_desktop_file ();
-            }
-        }
-    }
-
     public Files.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
             Files.File? result = file_hash.lookup (location);
@@ -800,7 +790,8 @@ public class Files.Directory : Object {
         file_hash.insert (gof.location, gof);
     }
 
-    public Files.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
+    public bool file_cache_find_or_insert (out Files.File gof, GLib.File file, bool update_hash = false) {
+        bool cache_changed = false;
         Files.File? result = file_hash.lookup (file);
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
          * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
@@ -809,14 +800,17 @@ public class Files.Directory : Object {
 
             if (result == null) {
                 result = new Files.File (file, location);
+                cache_changed = true;
                 file_hash.insert (file, result);
             } else if (update_hash) {
                 file_hash.insert (file, result);
+                cache_changed = true;
             }
         }
 
         result.is_gone = false;
-        return (!) result;
+        gof = result;
+        return cache_changed;
     }
 
     /**TODO** move this to Files.File */
@@ -851,24 +845,21 @@ public class Files.Directory : Object {
         }
     }
 
-    private void add_and_refresh (Files.File gof) {
-        if (gof.info == null) {
-            critical ("FILE INFO null");
+    private uint add_refresh_timeout_id = 0;
+    private unowned List<Files.File> files_to_add = null;
+    private void schedule_add_and_refresh (Files.File gof) {
+        files_to_add.prepend (gof);
+        if (add_refresh_timeout_id > 0) {
+            Source.remove (add_refresh_timeout_id);
         }
 
-        gof.init_info ();
+        add_refresh_timeout_id = Timeout.add (100, () => {
+            add_refresh_timeout_id = 0;
 
-        if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-            file_added (gof);
-        }
-
-        if (!gof.is_hidden && gof.is_folder ()) {
-            /* add to sorted_dirs */
-            if (sorted_dirs.find (gof) == null) {
-                sorted_dirs.insert_sorted (gof,
-                    Files.File.compare_by_display_name);
-            }
-        }
+            files_added (files_to_add);
+            files_to_add = null;
+            return Source.REMOVE;
+        });
     }
 
     private void notify_file_changed (Files.File gof) {
@@ -876,7 +867,7 @@ public class Files.Directory : Object {
     }
 
     private void notify_file_added (Files.File gof) {
-        query_info_async.begin (gof, add_and_refresh);
+        query_info_async.begin (gof, schedule_add_and_refresh);
     }
 
     private void notify_file_removed (Files.File gof) {
@@ -982,7 +973,7 @@ public class Files.Directory : Object {
             Directory? parent_dir = cache_lookup_parent (loc);
             Files.File? gof = null;
             if (parent_dir != null) {
-                gof = parent_dir.file_cache_find_or_insert (loc);
+                parent_dir.file_cache_find_or_insert (out gof, loc);
                 parent_dir.notify_file_changed (gof);
             }
 
@@ -997,10 +988,12 @@ public class Files.Directory : Object {
     public static void notify_files_added (List<GLib.File> files) {
         foreach (unowned var loc in files) {
             Directory? dir = cache_lookup_parent (loc);
-
             if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof);
+                Files.File gof;
+                // Ignore possible duplicate signal - one from DirectoryView and one from FileChanges
+                if (dir.file_cache_find_or_insert (out gof, loc, true)) {
+                    dir.notify_file_added (gof);
+                }
             }
         }
     }
@@ -1017,10 +1010,13 @@ public class Files.Directory : Object {
             Directory? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc);
-                dir.notify_file_removed (gof);
-                found = false;
+                Files.File gof;
+                // Ignore possible duplicate signal - one from DirectoryView and one from FileChanges
+                if (!dir.file_cache_find_or_insert (out gof, loc)) {
+                    dir.notify_file_removed (gof);
+                }
 
+                found = false;
                 foreach (var d in dirs) {
                     if (d == dir) {
                         found = true;

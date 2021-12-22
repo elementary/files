@@ -630,7 +630,7 @@ namespace Files {
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (Directory dir) {
-            dir.file_added.connect (on_directory_file_added);
+            dir.files_added.connect (on_directory_files_added); /* disconnected by on_done_loading callback.*/
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
@@ -664,7 +664,7 @@ namespace Files {
                 disconnect_directory_loading_handlers (dir);
             }
 
-            dir.file_added.disconnect (on_directory_file_added);
+            dir.files_added.disconnect (on_directory_files_added);
             dir.file_changed.disconnect (on_directory_file_changed);
             dir.file_deleted.disconnect (on_directory_file_deleted);
             dir.icon_changed.disconnect (on_directory_file_icon_changed);
@@ -942,15 +942,17 @@ namespace Files {
             }
         }
 
-        private void add_file (Files.File file, Directory dir, bool select = true) {
-            model.add_file (file, dir);
+        private void add_files (List<unowned Files.File> files_to_add, Directory dir, bool select = false) {
+            model.add_files (files_to_add, dir);
 
             if (select) { /* This true once view finished loading */
-                add_gof_file_to_selection (file);
+                foreach (var file in files_to_add) {
+                    add_gof_file_to_selection (file);
+                }
             }
         }
 
-        private void add_files (Directory dir, bool is_root = true) {
+        private void load_files (Directory dir, bool is_root = true) {
             if (is_root) {
                 clear ();
                 model.load_root_directory (dir);
@@ -1323,21 +1325,17 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_added (Directory dir, Files.File? file) {
-            if (file != null) {
-                add_file (file, dir, true); /* Always select files added to view after initial load */
-                handle_free_space_change ();
-            } else {
-                critical ("Null file added");
-            }
+        private void on_directory_files_added (Directory dir, List<unowned Files.File> files_to_add) {
+            add_files (files_to_add, dir, false);
+            handle_free_space_change ();
         }
 
         private void on_directory_files_loaded (Directory dir) {
-            add_files (dir);
+            load_files (dir);
         }
 
         private void on_subdirectory_files_loaded (Directory dir) {
-            add_files (dir, false);
+            load_files (dir, false);
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {

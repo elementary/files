@@ -235,10 +235,6 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
             return false;
         });
-
-        if (!found) {
-            add_file (file, dir);
-        }
     }
 
     public void set_should_sort_directories_first (bool sort_directories_first) {
@@ -356,12 +352,43 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         debug ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
+    /* Normally the supplied files will already be deduplicated by associated Files.Directory */
+    public void add_files (List<unowned Files.File> files_to_add, Files.Directory dir, bool deduplicate = false) {
+        var now = get_monotonic_time ();
+        int col_id = Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID;
+        Gtk.SortType sort_type = 0;
+
+        get_sort_column_id (out col_id, out sort_type);
+        set_sort_column_id (Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID, 0);
+
+        foreach (var file in files_to_add) {
+            if (show_hidden_files || !file.is_hidden) {
+                Gtk.TreeIter? iter = null, dummy_iter = null;
+                if (deduplicate && get_first_iter_for_file (file, out iter)) {
+                    continue; // The file is already in the model - ignore the request to add
+                }
+
+                prepend (out iter, null);
+                @set (iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                if (file.is_folder ()) {
+                    // Append a dummy child so expander will show even when folder is empty.
+                    insert_with_values (out dummy_iter, iter, -1, PrivColumnID.DUMMY, true);
+                }
+            }
+        }
+
+        files_to_add = null;
+        warning ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+        set_sort_column_id (col_id, sort_type);
+    }
+
     /* Returns true if the file was not in the model and was added */
     // Slow for large numbers of additions as the model is resorted on each addition.
     // Should only be used for addition of small numbers of files
     // Otherwise may be quicker to rebuild the whole model.
-    //TODO Add a method to add a (large) array of files efficiently
-    public bool add_file (Files.File file, Files.Directory dir) {
+
+    // Not currently used - files are added as a collection by `add_files ()`
+    private bool add_file_if_not_duplicate (Files.File file, Files.Directory dir) {
         _displayed_files_count = -1;
 
         Gtk.TreeIter? parent_iter = null, file_iter = null;

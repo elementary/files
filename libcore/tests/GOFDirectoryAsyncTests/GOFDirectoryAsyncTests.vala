@@ -116,7 +116,7 @@ Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
         if (first_load) {
             first_load = false;
             assert (!dir.loaded_from_cache);
-            dir.init ();
+            dir.init.begin ();
         } else {
             assert (dir.loaded_files_count == n_files);
             assert (dir.can_load);
