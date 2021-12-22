@@ -446,11 +446,7 @@ public class Files.File : GLib.Object {
         modified = info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         icon = (GLib.Icon?)(info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON));
-        /* mark the thumb flags as state none, we'll load the thumbs once the directory
-         * would be loaded on a thread */
-        if (get_thumbnail_path () != null) {
-            thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
-        }
+        thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
 
         /* formated type */
         update_formated_type (); // Needed for sort on Type
@@ -555,8 +551,6 @@ public class Files.File : GLib.Object {
             }
         }
 
-
-
         /* icon */
         if (is_directory) {
             get_folder_icon_from_uri_or_path ();
@@ -569,7 +563,7 @@ public class Files.File : GLib.Object {
             }
         }
 
-
+        icon_changed ();
 
         /* permissions */
         has_permissions = info.has_attribute (GLib.FileAttribute.UNIX_MODE);

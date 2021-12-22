@@ -180,7 +180,7 @@ public class Files.Directory : Object {
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
-            yield list_cached_files (file_loaded_func);
+            list_cached_files (file_loaded_func);
         /* else fully initialise the directory */
         } else {
             state = State.LOADING;
@@ -437,7 +437,7 @@ public class Files.Directory : Object {
                                                                            file.exists.to_string ());
             directory_cache.remove (creation_key);
             is_ready = false;
-            yield after_loading (file_loaded_func);
+            after_loading (file_loaded_func);
             return;
         }
 
@@ -585,7 +585,7 @@ public class Files.Directory : Object {
         }
     }
 
-    private async void list_cached_files (FileLoadedFunc? file_loaded_func = null) {
+    private void list_cached_files (FileLoadedFunc? file_loaded_func = null) {
         debug ("list cached files");
         if (state != State.LOADED) {
             critical ("list cached files called in %s state - not expected to happen", state.to_string ());
@@ -595,7 +595,7 @@ public class Files.Directory : Object {
         state = State.LOADED;
         loaded_from_cache = true;
 
-        yield after_loading (file_loaded_func);
+        after_loading (file_loaded_func);
     }
 
     private async void list_directory_async (FileLoadedFunc? file_loaded_func = null) {
@@ -692,11 +692,11 @@ public class Files.Directory : Object {
             cancel_timeout (ref load_timeout_id);
             loaded_from_cache = false;
             debug ("FINSHED LOAD FROM DISK - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
-            yield after_loading (file_loaded_func);
+            after_loading (file_loaded_func);
         }
     }
 
-    private async void after_loading (FileLoadedFunc? file_loaded_func) {
+    private void after_loading (FileLoadedFunc? file_loaded_func) {
         /* If loading failed reset */
         debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING || state == State.TIMED_OUT) {
@@ -708,13 +708,8 @@ public class Files.Directory : Object {
             clear_directory_info ();
         }
 
-        Idle.add (() => {
-            init_files ();
-            files_loaded ();
-            return after_loading.callback ();
-        });
-
-        yield;
+        init_files ();
+        files_loaded ();
 
         if (file.is_directory) { /* Fails for non-existent directories */
             file.set_expanded (true);
