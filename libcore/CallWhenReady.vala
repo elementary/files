@@ -52,7 +52,7 @@ public class Files.CallWhenReady : Object {
     }
 
     private void file_ready (Files.File gof) {
-        gof.update ();
+        gof.update_full ();
     }
 
     /**TODO** move this to Files.File */

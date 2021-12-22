@@ -180,11 +180,11 @@ public class Files.Directory : Object {
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
-            list_cached_files (file_loaded_func);
+            yield list_cached_files (file_loaded_func);
         /* else fully initialise the directory */
         } else {
             state = State.LOADING;
-            prepare_directory.begin (file_loaded_func);
+            yield prepare_directory (file_loaded_func);
         }
         /* done_loaded signal is emitted when ready */
     }
@@ -216,9 +216,10 @@ public class Files.Directory : Object {
             }
         }
 
-        if (success) {
-            file.update ();
-        }
+        // The file info should be fully updated by this point (if success == true)
+        // if (success) {
+        //     file.update ();
+        // }
 
         debug ("success %s; enclosing mount %s", success.to_string (),
                                                  file.mount != null ? file.mount.get_name () : "null");
@@ -285,7 +286,7 @@ public class Files.Directory : Object {
 
         if (success) {
             debug ("got file info - updating");
-            file.update ();
+            file.update_full (); // Need full info for root directory
             debug ("success %s; enclosing mount %s", success.to_string (),
                                                      file.mount != null ? file.mount.get_name () : "null");
             return true;
@@ -555,7 +556,7 @@ public class Files.Directory : Object {
         }
 
         clear_directory_info ();
-        init ();
+        init.begin ();
     }
 
     /** Called in preparation for a reload **/
@@ -659,7 +660,7 @@ public class Files.Directory : Object {
                                 gof = new Files.File (loc, location); /*does not add to GOF file cache */
                             }
 
-                            gof.info = file_info;
+                            gof.info = file_info; // Will set basic info properties
                             file_hash.insert (gof.location, gof);
                         }
                     }
@@ -708,7 +709,6 @@ public class Files.Directory : Object {
         }
 
         Idle.add (() => {
-            update_files (file_loaded_func);
             files_loaded ();
             return after_loading.callback ();
         });
@@ -750,7 +750,7 @@ public class Files.Directory : Object {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
-                gof.update (); //TODO Replace with faster minimal update - only fully update visible files
+                gof.init_info (); //TODO Replace with faster minimal update - only fully update visible files
             }
 
             if (file_loaded_func != null) {
@@ -758,7 +758,7 @@ public class Files.Directory : Object {
             }
         }
 
-        debug ("FINSHED UPDATE FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+        warning ("FINSHED UPDATE FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
     public void update_desktop_files () {
@@ -830,7 +830,7 @@ public class Files.Directory : Object {
     }
 
     private void changed_and_refresh (Files.File gof) {
-        gof.update ();
+        gof.init_info ();
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_changed (gof);
@@ -843,7 +843,7 @@ public class Files.Directory : Object {
             critical ("FILE INFO null");
         }
 
-        gof.update ();
+        gof.init_info ();
 
         if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
             file_added (gof);

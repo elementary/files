@@ -49,7 +49,22 @@ public class Files.File : GLib.Object {
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
-    public GLib.FileInfo? info = null;
+    private GLib.FileInfo? _info = null;
+    public GLib.FileInfo? info {
+        get {
+            return _info;
+        }
+
+        set {
+            _info = value;
+            if (_info == null) {
+                clear_info ();
+            } else {
+                init_info ();
+            }
+        }
+    }
+
     public string basename { get; construct; }
     public string? custom_display_name = null;
     public string uri { get; construct; }
@@ -157,12 +172,13 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    public File (GLib.File location, GLib.File? dir = null) {
+    public File (GLib.File location, GLib.File? dir = null, GLib.FileInfo? info = null) {
         Object (
             location: location,
             uri: location.get_uri (),
             basename: location.get_basename (),
-            directory: dir
+            directory: dir,
+            info: info
         );
     }
 
@@ -435,16 +451,22 @@ public class Files.File : GLib.Object {
         return icon;
     }
 
-    public void update () {
-        GLib.return_if_fail (info != null);
-
-        /* free previously allocated */
-        clear_info ();
+    // Set basic info (fast)
+    public void init_info () {
         is_hidden = info.get_is_hidden () || info.get_is_backup ();
         size = info.get_size ();
         file_type = info.get_file_type ();
         is_directory = (file_type == GLib.FileType.DIRECTORY);
         modified = info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
+        utf8_collation_key = get_display_name ().collate_key_for_filename ();
+    }
+
+    public void update_full () {
+        GLib.return_if_fail (info != null);
+
+        /* free previously allocated */
+        clear_info ();
+        init_info ();
 
         /* metadata */
         if (is_directory) {
@@ -554,7 +576,6 @@ public class Files.File : GLib.Object {
             }
         }
 
-        utf8_collation_key = get_display_name ().collate_key_for_filename ();
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
         if (get_thumbnail_path () != null) {
@@ -635,7 +656,7 @@ public class Files.File : GLib.Object {
         var _info = query_info ();
         if (_info != null) {
             info = _info;
-            update ();
+            update_full ();
         }
     }
 
@@ -1058,6 +1079,7 @@ public class Files.File : GLib.Object {
         owner = null;
         group = null;
         _can_unmount = false;
+
     }
 
     private GLib.FileInfo? query_info () {
