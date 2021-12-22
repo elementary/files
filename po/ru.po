@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 19:20+0000\n"
-"PO-Revision-Date: 2021-12-11 15:43+0000\n"
+"POT-Creation-Date: 2021-12-19 16:52+0000\n"
+"PO-Revision-Date: 2021-12-22 17:55+0000\n"
 "Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
@@ -1152,7 +1152,7 @@ msgstr "Свойства"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Извлечь носитель"
 
 #: libcore/PopupMenuBuilder.vala:88
 msgid "Safely Remove"
@@ -1489,7 +1489,7 @@ msgstr "Установить по умолчанию"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Не удалось определить права управления файлом и разрешения"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1714,7 +1714,7 @@ msgstr "Выделить всё"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Инвертировать выделение"
 
 #: src/View/AbstractDirectoryView.vala:2018
 msgid "Deselect All"
@@ -2039,10 +2039,12 @@ msgstr "%s содержит недоступные данные."
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Чтобы использовать этот носитель, может потребоваться отсоединить или "
+"повторно подсоединить его или форматировать."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Неформатированный или отсутствующий носитель"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
