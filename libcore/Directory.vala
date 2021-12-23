@@ -66,7 +66,6 @@ public class Files.Directory : Object {
     public signal void files_added (List <Files.File> files_to_add);
     public signal void files_removed (List <Files.File> files_to_remove);
     public signal void file_changed (Files.File file);
-    public signal void file_deleted (Files.File file);
     public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
                                                         Gets emitted for any kind of file operation */
 
@@ -1026,7 +1025,7 @@ public class Files.Directory : Object {
             } else {
                 dir = cache_lookup (loc);
                 if (dir != null) {
-                    dir.file_deleted (dir.file);
+                    dir.notify_file_removed (dir.file);
                 }
             }
         }

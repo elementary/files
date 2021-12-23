@@ -634,7 +634,6 @@ namespace Files {
             dir.files_added.connect (on_directory_files_added);
             dir.files_removed.connect (on_directory_files_removed);
             dir.file_changed.connect (on_directory_file_changed);
-            dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
         }
 
@@ -642,7 +641,6 @@ namespace Files {
             dir.files_added.disconnect (on_directory_files_added);
             dir.files_removed.disconnect (on_directory_files_removed);
             dir.file_changed.disconnect (on_directory_file_changed);
-            dir.file_deleted.disconnect (on_directory_file_deleted);
             dir.icon_changed.disconnect (on_directory_file_icon_changed);
             dir.done_loading.disconnect (on_directory_done_loading);
 
@@ -964,6 +962,31 @@ namespace Files {
             freeze_tree ();
             model.remove_files (files_to_remove, dir);
             thaw_tree ();
+
+            Idle.add (() => {
+                foreach (var file in files_to_remove) {
+                    remove_marlin_icon_info_cache (file);
+
+                    if (file.get_thumbnail_path () != null) {
+                        FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+                    }
+
+                    if (plugins != null) {
+                        plugins.update_file_info (file);
+                    }
+
+                    if (file.is_folder ()) {
+                        /* Check whether the deleted file is the directory */
+                        var file_dir = Directory.cache_lookup (file.location);
+                        if (file_dir != null) {
+                            Directory.purge_dir_from_cache (file_dir);
+                            slot.folder_deleted (file, file_dir);
+                        }
+                    }
+                }
+
+                return Source.REMOVE;
+            });
         }
 
         private void load_files (Directory dir, bool is_root = true) {
@@ -1347,6 +1370,8 @@ namespace Files {
 
         private void on_directory_files_removed (Directory dir, List<unowned Files.File> files_to_remove) {
             remove_files (files_to_remove, dir, false);
+
+
             handle_free_space_change ();
         }
 
