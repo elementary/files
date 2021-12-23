@@ -355,6 +355,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     /* Normally the supplied files will already be deduplicated by associated Files.Directory */
     public void add_files (List<unowned Files.File> files_to_add, Files.Directory dir, bool deduplicate = false) {
+warning ("add files to %s", dir.file.basename);
         var now = get_monotonic_time ();
         int col_id = Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID;
         Gtk.SortType sort_type = 0;
@@ -362,18 +363,38 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         get_sort_column_id (out col_id, out sort_type);
         set_sort_column_id (Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID, 0);
 
+        Gtk.TreeIter? child_iter = null, dummy_iter = null, parent_iter = null;
+        bool change_dummy = false;
+        if (get_first_iter_for_file (dir.file, out parent_iter)) {
+            if (iter_nth_child (out dummy_iter, parent_iter, 0)) { // Must always be at least one child
+                get (dummy_iter, PrivColumnID.DUMMY, out change_dummy);
+            } else {
+                critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry
+            }
+        } else {
+            parent_iter = null; // Adding to model root
+        }
+
         foreach (var file in files_to_add) {
             if (show_hidden_files || !file.is_hidden) {
-                Gtk.TreeIter? iter = null, dummy_iter = null;
-                if (deduplicate && get_first_iter_for_file (file, out iter)) {
+
+                if (deduplicate && get_first_iter_for_file (file, out child_iter)) {
+warning ("dupl");
                     continue; // The file is already in the model - ignore the request to add
                 }
 
-                prepend (out iter, null);
-                @set (iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                if (change_dummy) {
+warning ("change dum");
+                    @set (dummy_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                } else {
+warning ("prepend");
+                    prepend (out child_iter, parent_iter);
+                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                }
+
                 if (file.is_folder ()) {
                     // Append a dummy child so expander will show even when folder is empty.
-                    insert_with_values (out dummy_iter, iter, -1, PrivColumnID.DUMMY, true);
+                    insert_with_values (out dummy_iter, child_iter, -1, PrivColumnID.DUMMY, true);
                 }
             }
         }
@@ -432,10 +453,12 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     // Otherwise may be quicker to rebuild the whole model.
     //TODO Add a method to remove a (large) array of files efficiently
     public bool remove_file (Files.File file, Files.Directory dir) {
+warning ("MODEL remove file %s, from %s", file.basename, dir.file.basename);
         _displayed_files_count = -1;
         // Assumed that file is actually a child of dir
         Gtk.TreeIter? parent_iter, child_iter, file_iter, dummy_iter;
         if (!get_first_iter_for_file (file, out file_iter)) {
+warning ("could not find file");
             return false;
         }
 
@@ -443,12 +466,16 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             if (get_first_iter_for_file (dir.file, out parent_iter)) {
                 if (!iter_nth_child (out child_iter, parent_iter, 1)) {
                     // This is the last child so add a dummy;
+warning ("inserting dummy");
                     insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
                 }
             }
 
+warning ("Removing from model");
             remove (ref file_iter);
             return true;
+        } else {
+            critical ("Null iter when removing file");
         }
 
         return false;

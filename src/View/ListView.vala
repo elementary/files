@@ -243,7 +243,9 @@ namespace Files {
         }
 
         private void remove_subdirectory (Directory? dir) {
+warning ("remove subdirectory");
             if (dir != null) {
+                // For simplicity we only disconnect loading handlers now.
                 disconnect_subdirectory_loading_handlers (dir);
                 /* Release our reference on dir */
                 loaded_subdirectories.remove (dir);

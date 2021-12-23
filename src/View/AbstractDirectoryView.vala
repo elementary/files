@@ -308,6 +308,7 @@ namespace Files {
             set_up_zoom_level ();
 
             connect_directory_handlers (slot.directory);
+            connect_directory_loading_handlers (slot.directory);
         }
 
         ~AbstractDirectoryView () {
@@ -630,11 +631,24 @@ namespace Files {
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (Directory dir) {
-            dir.files_added.connect (on_directory_files_added); /* disconnected by on_done_loading callback.*/
+    warning ("connect handlers for %s", dir.file.basename);
+            dir.files_added.connect (on_directory_files_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
-            connect_directory_loading_handlers (dir);
+        }
+
+        protected void disconnect_directory_handlers (Directory dir) {
+warning ("disconnecting directory handlers for %s", dir.file.basename);
+            dir.files_added.disconnect (on_directory_files_added);
+            dir.file_changed.disconnect (on_directory_file_changed);
+            dir.file_deleted.disconnect (on_directory_file_deleted);
+            dir.icon_changed.disconnect (on_directory_file_icon_changed);
+            dir.done_loading.disconnect (on_directory_done_loading);
+
+            if (dir.is_loading ()) {
+                disconnect_directory_loading_handlers (dir);
+            }
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
@@ -650,28 +664,18 @@ namespace Files {
         protected void connect_subdirectory_loading_handlers (Directory dir) {
             dir.files_loaded.connect (on_subdirectory_files_loaded);
             dir.done_loading.connect (on_subdirectory_done_loading);
+            connect_directory_handlers (dir);
         }
 
         protected void disconnect_subdirectory_loading_handlers (Directory dir) {
+warning ("disconnect subdir handlers");
             dir.files_loaded.disconnect (on_subdirectory_files_loaded);
             dir.done_loading.disconnect (on_subdirectory_done_loading);
-        }
-
-        protected void disconnect_directory_handlers (Directory dir) {
-            /* If the directory is still loading the file_loaded signal handler
-            /* will not have been disconnected */
-            if (dir.is_loading ()) {
-                disconnect_directory_loading_handlers (dir);
-            }
-
-            dir.files_added.disconnect (on_directory_files_added);
-            dir.file_changed.disconnect (on_directory_file_changed);
-            dir.file_deleted.disconnect (on_directory_file_deleted);
-            dir.icon_changed.disconnect (on_directory_file_icon_changed);
-            dir.done_loading.disconnect (on_directory_done_loading);
+            disconnect_directory_handlers (dir);
         }
 
         public void change_directory (Directory old_dir, Directory new_dir) {
+warning ("change directory");
             var style_context = get_style_context ();
             if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
                 style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -680,8 +684,12 @@ namespace Files {
 
             cancel ();
             clear ();
+            /* If the directory is still loading the file_loaded signal handler
+            /* will not have been disconnected */
+
             disconnect_directory_handlers (old_dir);
             connect_directory_handlers (new_dir);
+            connect_directory_loading_handlers (new_dir);
         }
 
         public void prepare_reload (Directory dir) {
@@ -943,6 +951,7 @@ namespace Files {
         }
 
         private void add_files (List<unowned Files.File> files_to_add, Directory dir, bool select = false) {
+warning ("ADV add files to model - parent %s", dir.file.basename);
             model.add_files (files_to_add, dir);
 
             if (select) { /* This true once view finished loading */
@@ -1327,6 +1336,7 @@ namespace Files {
         }
 
         private void on_directory_files_added (Directory dir, List<unowned Files.File> files_to_add) {
+warning ("ADV on directory files added to %s", dir.file.basename);
             add_files (files_to_add, dir, false);
             handle_free_space_change ();
         }
@@ -1369,6 +1379,7 @@ namespace Files {
         private void on_directory_file_deleted (Directory dir, Files.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
+warning ("ADV on file deleted");
             file.exists = false;
             model.remove_file (file, dir);
 
@@ -1395,7 +1406,6 @@ namespace Files {
         }
 
         private void on_subdirectory_done_loading (Directory dir) {
-            disconnect_subdirectory_loading_handlers (dir);
             thaw_tree ();
 
             schedule_thumbnail_color_tag_timeout ();

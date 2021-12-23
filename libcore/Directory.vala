@@ -21,11 +21,9 @@
 
 public class Files.Directory : Object {
     private static HashTable<GLib.File, unowned Files.Directory> directory_cache;
-    private static Mutex dir_cache_lock;
 
     static construct {
         directory_cache = new HashTable<GLib.File, unowned Files.Directory> (GLib.File.hash, GLib.File.equal);
-        dir_cache_lock = GLib.Mutex ();
     }
 
     public delegate void FileLoadedFunc (Files.File file);
@@ -52,6 +50,8 @@ public class Files.Directory : Object {
     public State state {get; private set;}
 
     private HashTable<GLib.File,Files.File> file_hash;
+    private Mutex file_hash_lock;
+
     public uint loaded_files_count { get { return file_hash.size (); } }
 
     public bool permission_denied = false;
@@ -764,7 +764,7 @@ public class Files.Directory : Object {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
-                gof.init_info (); //TODO Replace with faster minimal update - only fully update visible files
+                gof.init_info ();
             }
 
             if (file_loaded_func != null) {
@@ -776,40 +776,41 @@ public class Files.Directory : Object {
     }
 
     public Files.File? file_hash_lookup_location (GLib.File? location) {
-        if (location != null && location is GLib.File) {
-            Files.File? result = file_hash.lookup (location);
-            /* Although file_hash.lookup returns an unowned value, Vala will add a reference
-             * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
-            return result;
-        } else {
-            return null;
+        lock (file_hash) {
+            if (location != null && location is GLib.File) {
+                Files.File? result = file_hash.lookup (location);
+                /* Although file_hash.lookup returns an unowned value, Vala will add a reference
+                 * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
+                return result;
+            } else {
+                return null;
+            }
         }
-    }
-
-    public void file_hash_add_file (Files.File gof) { /* called directly by Files.File */
-        file_hash.insert (gof.location, gof);
     }
 
     public bool file_cache_find_or_insert (out Files.File gof, GLib.File file, bool update_hash = false) {
         bool cache_changed = false;
-        Files.File? result = file_hash.lookup (file);
-        /* Although file_hash.lookup returns an unowned value, Vala will add a reference
-         * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
-        if (result == null) {
-            result = Files.File.cache_lookup (file);
-
+        lock (file_hash) {
+            Files.File? result = file_hash.lookup (file);
+            /* Although file_hash.lookup returns an unowned value, Vala will add a reference
+             * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
             if (result == null) {
-                result = new Files.File (file, location);
-                cache_changed = true;
-                file_hash.insert (file, result);
-            } else if (update_hash) {
-                file_hash.insert (file, result);
-                cache_changed = true;
+                result = Files.File.cache_lookup (file);
+
+                if (result == null) {
+                    result = new Files.File (file, location);
+                    cache_changed = true;
+                    file_hash.insert (file, result);
+                } else if (update_hash) {
+                    file_hash.insert (file, result);
+                    cache_changed = true;
+                }
             }
+
+            result.is_gone = false;
+            gof = result;
         }
 
-        result.is_gone = false;
-        gof = result;
         return cache_changed;
     }
 
@@ -828,7 +829,7 @@ public class Files.Directory : Object {
             }
         } catch (Error err) {
             last_error_message = err.message;
-            debug ("query info failed, %s %s", err.message, gof.uri);
+            warning ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND) {
                 gof.exists = false;
             }
@@ -855,7 +856,6 @@ public class Files.Directory : Object {
 
         add_refresh_timeout_id = Timeout.add (100, () => {
             add_refresh_timeout_id = 0;
-
             files_added (files_to_add);
             files_to_add = null;
             return Source.REMOVE;
@@ -863,17 +863,21 @@ public class Files.Directory : Object {
     }
 
     private void notify_file_changed (Files.File gof) {
+warning ("notify file changed");
         query_info_async.begin (gof, changed_and_refresh);
     }
 
     private void notify_file_added (Files.File gof) {
+warning ("notify added %s to %s", gof.basename, this.file.basename);
         query_info_async.begin (gof, schedule_add_and_refresh);
     }
 
     private void notify_file_removed (Files.File gof) {
-        remove_file_from_cache (gof);
+warning ("notify file removed from %s", this.file.basename);
+        remove_file_from_cache (gof, this);
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
+warning ("emitting file deleted");
             file_deleted (gof);
         }
 
@@ -888,8 +892,7 @@ public class Files.Directory : Object {
                weak pointers as a temporary solution. */
             sorted_dirs.remove (gof);
         }
-
-        gof.remove_from_caches ();
+        remove_file_from_cache (gof, this);
     }
 
     private struct FChanges {
@@ -1096,11 +1099,17 @@ public class Files.Directory : Object {
         return from_gfile (gof.get_target_location ());
     }
 
-    private static void remove_file_from_cache (Files.File gof) {
-        Directory? dir = cache_lookup (gof.directory);
+    private static void remove_file_from_cache (Files.File gof, Directory dir) {
+warning ("removing file %s from cache %s", gof.basename, dir.file.basename);
         if (dir != null) {
-            dir.file_hash.remove (gof.location);
+            lock (dir.file_hash) {
+                dir.file_hash.remove (gof.location);
+            }
+        } else {
+            critical ("Attempt to remove file from null directory");
         }
+
+        gof.remove_from_caches ();
     }
 
     public static Directory? cache_lookup (GLib.File? file) {
