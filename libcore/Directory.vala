@@ -49,10 +49,11 @@ public class Files.Directory : Object {
     }
     public State state {get; private set;}
 
-    private HashTable<GLib.File,Files.File> file_hash;
-    private Mutex file_hash_lock;
+    // TreeMap is better for large amounts of data
+    private Gee.TreeMap<string, Files.File> file_hash;
 
-    public uint loaded_files_count { get { return file_hash.size (); } }
+    // Used for testing only
+    public uint loaded_files_count { get { return file_hash.size; } }
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -141,7 +142,7 @@ public class Files.Directory : Object {
          */
         can_stream_files = !("ftp sftp".contains (scheme));
 
-        file_hash = new HashTable<GLib.File, Files.File> (GLib.File.hash, GLib.File.equal);
+        file_hash = new Gee.TreeMap<string, Files.File> ();
 
         if (is_recent) {
            Files.Preferences.get_default ().notify["remember-history"].connect (() => {
@@ -217,10 +218,7 @@ public class Files.Directory : Object {
             }
         }
 
-        // The file info should be fully updated by this point (if success == true)
-        // if (success) {
-        //     file.update ();
-        // }
+        // The root file info should be fully updated by this point (if success == true)
 
         debug ("success %s; enclosing mount %s", success.to_string (),
                                                  file.mount != null ? file.mount.get_name () : "null");
@@ -567,7 +565,7 @@ public class Files.Directory : Object {
         }
 
         cancel ();
-        file_hash.remove_all ();
+        file_hash.clear ();
         monitor = null;
         sorted_dirs = null;
         can_load = false;
@@ -603,8 +601,8 @@ public class Files.Directory : Object {
         debug ("list directory async");
         var now = get_monotonic_time ();
         /* Should only be called after creation and if reloaded */
-        if (!is_ready || file_hash.size () > 0) {
-            critical ("(Re)load directory called when not cleared");
+        if (!is_ready) {
+            critical ("(Re)load directory called when not ready");
             return;
         }
 
@@ -661,8 +659,11 @@ public class Files.Directory : Object {
                                 gof = new Files.File (loc, location); /*does not add to GOF file cache */
                             }
 
-                            gof.info = file_info; // Will set basic info properties
-                            file_hash.insert (gof.location, gof);
+                            gof.info = file_info;
+                            // Ensure no duplicate entries
+                            if (!file_hash.has_key (gof.uri)) {
+                                file_hash.@set (gof.uri, gof);
+                            }
                         }
                     }
                 } catch (Error e) {
@@ -737,13 +738,14 @@ public class Files.Directory : Object {
         }
     }
 
-    public List<unowned Files.File> get_files () {
-        return file_hash.get_values ();
+    // Used to initially populate the model
+    public Gee.Collection<Files.File> get_files () {
+        return file_hash.values;
     }
 
     public void update_files (FileLoadedFunc? file_loaded_func = null) {
         var now = get_monotonic_time ();
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
+        foreach (var gof in file_hash.values) {
             if (gof != null && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
@@ -759,52 +761,48 @@ public class Files.Directory : Object {
     }
 
     public void init_files (FileLoadedFunc? file_loaded_func = null) {
+        debug ("init files for dir %s", this.file.location.get_uri ());
         var now = get_monotonic_time ();
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
+        this.file_hash.foreach ((entry) => {
+            var gof = entry.@value;
+            if (gof != null && !gof.is_gone && gof.info != null &&
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
                 gof.init_info ();
+
+                if (file_loaded_func != null) {
+                    file_loaded_func (gof);
+                }
             }
 
-            if (file_loaded_func != null) {
-                file_loaded_func (gof);
-            }
-        }
+            return true;
+        });
 
         debug ("FINSHED INIT FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
     public Files.File? file_hash_lookup_location (GLib.File? location) {
         lock (file_hash) {
-            if (location != null && location is GLib.File) {
-                Files.File? result = file_hash.lookup (location);
-                /* Although file_hash.lookup returns an unowned value, Vala will add a reference
-                 * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
-                return result;
+            if (location != null) {
+                return file_hash.@get (location.get_uri ());
             } else {
                 return null;
             }
         }
     }
 
-    public bool file_cache_find_or_insert (out Files.File gof, GLib.File file, bool update_hash = false) {
+    private bool file_cache_find_or_insert (out Files.File gof, GLib.File location, bool update_hash = false) {
         bool cache_changed = false;
+        var uri = location.get_uri ();
         lock (file_hash) {
-            Files.File? result = file_hash.lookup (file);
-            /* Although file_hash.lookup returns an unowned value, Vala will add a reference
-             * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
+            Files.File? result = file_hash.@get (uri);
             if (result == null) {
-                result = Files.File.cache_lookup (file);
-
-                if (result == null) {
-                    result = new Files.File (file, location);
-                    cache_changed = true;
-                    file_hash.insert (file, result);
-                } else if (update_hash) {
-                    file_hash.insert (file, result);
-                    cache_changed = true;
-                }
+                result = new Files.File (location, this.location);
+                file_hash.@set (uri, result);
+                cache_changed = true;
+            } else if (update_hash) {
+                file_hash.unset (uri);
+                file_hash.@set (uri, result);
             }
 
             result.is_gone = false;
@@ -854,7 +852,7 @@ public class Files.Directory : Object {
             Source.remove (add_refresh_timeout_id);
         }
 
-        add_refresh_timeout_id = Timeout.add (100, () => {
+        add_refresh_timeout_id = Timeout.add (10, () => {
             add_refresh_timeout_id = 0;
             files_added (files_to_add);
             files_to_add = null;
@@ -863,36 +861,33 @@ public class Files.Directory : Object {
     }
 
     private void notify_file_changed (Files.File gof) {
-warning ("notify file changed");
         query_info_async.begin (gof, changed_and_refresh);
     }
 
+    // Should only be called when new file added to file cache - not when cache entry updated
     private void notify_file_added (Files.File gof) {
-warning ("notify added %s to %s", gof.basename, this.file.basename);
         query_info_async.begin (gof, schedule_add_and_refresh);
     }
 
     private void notify_file_removed (Files.File gof) {
-warning ("notify file removed from %s", this.file.basename);
-        remove_file_from_cache (gof, this);
+        // Ignore if already removed from caches
+        if (remove_file_from_cache (gof, this)) {
+            if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
+                file_deleted (gof);
+            }
 
-        if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
-warning ("emitting file deleted");
-            file_deleted (gof);
+            if (!gof.is_hidden && gof.is_folder ()) {
+                /* remove from sorted_dirs */
+
+                /* Addendum note: GLib.List.remove() does not unreference objects.
+                   See: https://bugzilla.gnome.org/show_bug.cgi?id=624249
+                        https://bugzilla.gnome.org/show_bug.cgi?id=532268
+
+                   The declaration of sorted_dirs has been changed to contain
+                   weak pointers as a temporary solution. */
+                sorted_dirs.remove (gof);
+            }
         }
-
-        if (!gof.is_hidden && gof.is_folder ()) {
-            /* remove from sorted_dirs */
-
-            /* Addendum note: GLib.List.remove() does not unreference objects.
-               See: https://bugzilla.gnome.org/show_bug.cgi?id=624249
-                    https://bugzilla.gnome.org/show_bug.cgi?id=532268
-
-               The declaration of sorted_dirs has been changed to contain
-               weak pointers as a temporary solution. */
-            sorted_dirs.remove (gof);
-        }
-        remove_file_from_cache (gof, this);
     }
 
     private struct FChanges {
@@ -1013,9 +1008,9 @@ warning ("emitting file deleted");
             Directory? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                Files.File gof;
+                Files.File? gof = dir.file_hash.@get (loc.get_uri ());
                 // Ignore possible duplicate signal - one from DirectoryView and one from FileChanges
-                if (!dir.file_cache_find_or_insert (out gof, loc)) {
+                if (gof != null) {
                     dir.notify_file_removed (gof);
                 }
 
@@ -1099,17 +1094,15 @@ warning ("emitting file deleted");
         return from_gfile (gof.get_target_location ());
     }
 
-    private static void remove_file_from_cache (Files.File gof, Directory dir) {
-warning ("removing file %s from cache %s", gof.basename, dir.file.basename);
+    private static bool remove_file_from_cache (Files.File gof, Directory dir) {
         if (dir != null) {
             lock (dir.file_hash) {
-                dir.file_hash.remove (gof.location);
+                return dir.file_hash.unset (gof.uri);
+                // May have already been removed by duplicate signal
             }
-        } else {
-            critical ("Attempt to remove file from null directory");
         }
 
-        gof.remove_from_caches ();
+        return false;
     }
 
     public static Directory? cache_lookup (GLib.File? file) {
@@ -1155,35 +1148,39 @@ warning ("removing file %s from cache %s", gof.basename, dir.file.basename);
     }
 
     public static bool remove_dir_from_cache (Directory dir) {
-        if (dir.file.is_directory) {
-            dir.file.is_expanded = false;
-            dir.file.changed ();
-        }
-
+        var removed = false;
         lock (directory_cache) {
             if (directory_cache.remove (dir.creation_key)) {
                 directory_cache.remove (dir.location);
                 dir.removed_from_cache = true;
-                return true;
+                removed = true;
             }
         }
+
+        if (removed && dir.file.is_directory) {
+            dir.file.is_expanded = false;
+            dir.file.changed ();
+        }
+
+        debug ("Removed directory from cache %s", removed.to_string ());
 
         return false;
     }
 
     public static bool purge_dir_from_cache (Directory dir) {
+
         var removed = Directory.remove_dir_from_cache (dir);
         /* We have to remove the dir's subfolders from cache too */
         if (removed) {
-            foreach (unowned var gfile in dir.file_hash.get_keys ()) {
-                assert (gfile != null);
-                var d = cache_lookup (gfile);
-                if (d != null) {
+            foreach (var gof in dir.file_hash.values) {
+                var d = cache_lookup (gof.location);
+                if (d != null && !dir.removed_from_cache) {
                     Directory.remove_dir_from_cache (d);
                 }
             }
         }
 
+        debug ("purged dir %s from cache %s", dir.file.basename, removed.to_string ());
         return removed;
     }
 
@@ -1209,7 +1206,7 @@ warning ("removing file %s from cache %s", gof.basename, dir.file.basename);
 
     public bool is_empty () {
         /* only return true when loaded to avoid temporary appearance of empty message while loading */
-        return (state == State.LOADED && file_hash.size () == 0);
+        return (state == State.LOADED && file_hash.size == 0);
     }
 
     public unowned List<unowned Files.File>? get_sorted_dirs () {
@@ -1221,7 +1218,7 @@ warning ("removing file %s from cache %s", gof.basename, dir.file.basename);
             return sorted_dirs;
         }
 
-        foreach (unowned var gof in file_hash.get_values ()) { /* returns owned values */
+        foreach (var gof in file_hash.values) { /* returns owned values */
             if (!gof.is_hidden && (gof.is_folder () || gof.is_smb_server ())) {
                 sorted_dirs.prepend (gof);
             }

@@ -353,9 +353,9 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         debug ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
     }
 
-    /* Normally the supplied files will already be deduplicated by associated Files.Directory */
+    /* Normally the supplied files should already be deduplicated by associated Files.Directory */
     public void add_files (List<unowned Files.File> files_to_add, Files.Directory dir, bool deduplicate = false) {
-warning ("add files to %s", dir.file.basename);
+        debug ("add files to %s", dir.file.basename);
         var now = get_monotonic_time ();
         int col_id = Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID;
         Gtk.SortType sort_type = 0;
@@ -377,17 +377,13 @@ warning ("add files to %s", dir.file.basename);
 
         foreach (var file in files_to_add) {
             if (show_hidden_files || !file.is_hidden) {
-
                 if (deduplicate && get_first_iter_for_file (file, out child_iter)) {
-warning ("dupl");
                     continue; // The file is already in the model - ignore the request to add
                 }
 
                 if (change_dummy) {
-warning ("change dum");
                     @set (dummy_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
                 } else {
-warning ("prepend");
                     prepend (out child_iter, parent_iter);
                     @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
                 }
@@ -453,12 +449,11 @@ warning ("prepend");
     // Otherwise may be quicker to rebuild the whole model.
     //TODO Add a method to remove a (large) array of files efficiently
     public bool remove_file (Files.File file, Files.Directory dir) {
-warning ("MODEL remove file %s, from %s", file.basename, dir.file.basename);
         _displayed_files_count = -1;
         // Assumed that file is actually a child of dir
         Gtk.TreeIter? parent_iter, child_iter, file_iter, dummy_iter;
         if (!get_first_iter_for_file (file, out file_iter)) {
-warning ("could not find file");
+            warning ("could not find file %s to remove from directory %s", file.uri, dir.file.uri);
             return false;
         }
 
@@ -466,12 +461,10 @@ warning ("could not find file");
             if (get_first_iter_for_file (dir.file, out parent_iter)) {
                 if (!iter_nth_child (out child_iter, parent_iter, 1)) {
                     // This is the last child so add a dummy;
-warning ("inserting dummy");
                     insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
                 }
             }
 
-warning ("Removing from model");
             remove (ref file_iter);
             return true;
         } else {

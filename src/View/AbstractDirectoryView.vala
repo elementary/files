@@ -631,7 +631,6 @@ namespace Files {
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (Directory dir) {
-    warning ("connect handlers for %s", dir.file.basename);
             dir.files_added.connect (on_directory_files_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
@@ -639,7 +638,6 @@ namespace Files {
         }
 
         protected void disconnect_directory_handlers (Directory dir) {
-warning ("disconnecting directory handlers for %s", dir.file.basename);
             dir.files_added.disconnect (on_directory_files_added);
             dir.file_changed.disconnect (on_directory_file_changed);
             dir.file_deleted.disconnect (on_directory_file_deleted);
@@ -668,14 +666,12 @@ warning ("disconnecting directory handlers for %s", dir.file.basename);
         }
 
         protected void disconnect_subdirectory_loading_handlers (Directory dir) {
-warning ("disconnect subdir handlers");
             dir.files_loaded.disconnect (on_subdirectory_files_loaded);
             dir.done_loading.disconnect (on_subdirectory_done_loading);
             disconnect_directory_handlers (dir);
         }
 
         public void change_directory (Directory old_dir, Directory new_dir) {
-warning ("change directory");
             var style_context = get_style_context ();
             if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
                 style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -951,7 +947,6 @@ warning ("change directory");
         }
 
         private void add_files (List<unowned Files.File> files_to_add, Directory dir, bool select = false) {
-warning ("ADV add files to model - parent %s", dir.file.basename);
             model.add_files (files_to_add, dir);
 
             if (select) { /* This true once view finished loading */
@@ -1336,7 +1331,6 @@ warning ("ADV add files to model - parent %s", dir.file.basename);
         }
 
         private void on_directory_files_added (Directory dir, List<unowned Files.File> files_to_add) {
-warning ("ADV on directory files added to %s", dir.file.basename);
             add_files (files_to_add, dir, false);
             handle_free_space_change ();
         }
@@ -1379,7 +1373,6 @@ warning ("ADV on directory files added to %s", dir.file.basename);
         private void on_directory_file_deleted (Directory dir, Files.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
-warning ("ADV on file deleted");
             file.exists = false;
             model.remove_file (file, dir);
 
