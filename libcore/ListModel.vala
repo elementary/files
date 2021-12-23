@@ -65,6 +65,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     public signal void subdirectory_unloaded (Files.Directory directory);
     public signal void new_files_added (List <unowned Files.File> new_files);
+    public signal void files_removed (List <unowned Files.File> new_files);
 
     public int icon_size { get; set; default = 32; }
     public bool has_child { get; set; default = false; }
@@ -398,6 +399,33 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         set_sort_column_id (col_id, sort_type);
         new_files_added (files_to_add);
         warning ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+
+    }
+    public void remove_files (List<unowned Files.File> files_to_remove, Files.Directory dir, bool deduplicate = false) {
+        debug ("remove files to %s", dir.file.basename);
+        var now = get_monotonic_time ();
+        int col_id = Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID;
+        Gtk.SortType sort_type = 0;
+
+        get_sort_column_id (out col_id, out sort_type);
+        set_sort_column_id (Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID, 0);
+
+        Gtk.TreeIter? child_iter = null, dummy_iter = null, parent_iter = null;
+        foreach (var file in files_to_remove) {
+            if (get_first_iter_for_file (file, out child_iter)) {
+                remove (ref child_iter);
+            }
+        }
+
+        if (get_first_iter_for_file (dir.file, out parent_iter)) {
+            if (iter_has_child (parent_iter)) {
+                insert_with_values (out dummy_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
+            }
+        }
+
+        set_sort_column_id (col_id, sort_type);
+        files_removed (files_to_remove);
+        warning ("FINISHED REMOVING FROM MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
 
     }
 

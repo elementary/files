@@ -632,6 +632,7 @@ namespace Files {
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (Directory dir) {
             dir.files_added.connect (on_directory_files_added);
+            dir.files_removed.connect (on_directory_files_removed);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
@@ -639,6 +640,7 @@ namespace Files {
 
         protected void disconnect_directory_handlers (Directory dir) {
             dir.files_added.disconnect (on_directory_files_added);
+            dir.files_removed.disconnect (on_directory_files_removed);
             dir.file_changed.disconnect (on_directory_file_changed);
             dir.file_deleted.disconnect (on_directory_file_deleted);
             dir.icon_changed.disconnect (on_directory_file_icon_changed);
@@ -947,13 +949,21 @@ namespace Files {
         }
 
         private void add_files (List<unowned Files.File> files_to_add, Directory dir, bool select = false) {
+            freeze_tree ();
             model.add_files (files_to_add, dir);
+            thaw_tree ();
 
             if (select) { /* This true once view finished loading */
                 foreach (var file in files_to_add) {
                     add_gof_file_to_selection (file);
                 }
             }
+        }
+
+        private void remove_files (List<unowned Files.File> files_to_remove, Directory dir, bool select = false) {
+            freeze_tree ();
+            model.remove_files (files_to_remove, dir);
+            thaw_tree ();
         }
 
         private void load_files (Directory dir, bool is_root = true) {
@@ -1332,6 +1342,11 @@ namespace Files {
 
         private void on_directory_files_added (Directory dir, List<unowned Files.File> files_to_add) {
             add_files (files_to_add, dir, false);
+            handle_free_space_change ();
+        }
+
+        private void on_directory_files_removed (Directory dir, List<unowned Files.File> files_to_remove) {
+            remove_files (files_to_remove, dir, false);
             handle_free_space_change ();
         }
 

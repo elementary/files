@@ -64,6 +64,7 @@ public class Files.Directory : Object {
 
     public signal void files_loaded ();
     public signal void files_added (List <Files.File> files_to_add);
+    public signal void files_removed (List <Files.File> files_to_remove);
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
@@ -71,7 +72,6 @@ public class Files.Directory : Object {
                                                         Gets emitted for any kind of file operation */
 
     public signal void done_loading ();
-    public signal void thumbs_loaded ();
     public signal void need_reload (bool original_request);
 
     private uint idle_consume_changes_id = 0;
@@ -839,6 +839,22 @@ public class Files.Directory : Object {
             add_refresh_timeout_id = 0;
             files_added (files_to_add);
             files_to_add = null;
+            return Source.REMOVE;
+        });
+    }
+
+    private uint remove_timeout_id = 0;
+    private unowned List<Files.File> files_to_remove = null;
+    private void schedule_remove (Files.File gof) {
+        files_to_remove.prepend (gof);
+        if (remove_timeout_id > 0) {
+            Source.remove (remove_timeout_id);
+        }
+
+        remove_timeout_id = Timeout.add (10, () => {
+            remove_timeout_id = 0;
+            files_removed (files_to_remove);
+            files_to_remove = null;
             return Source.REMOVE;
         });
     }
