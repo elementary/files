@@ -743,23 +743,6 @@ public class Files.Directory : Object {
         return file_hash.values;
     }
 
-    public void update_files (FileLoadedFunc? file_loaded_func = null) {
-        var now = get_monotonic_time ();
-        foreach (var gof in file_hash.values) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-
-                gof.update_full ();
-            }
-
-            if (file_loaded_func != null) {
-                file_loaded_func (gof);
-            }
-        }
-
-        debug ("FINSHED UPDATE FILES - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
-    }
-
     public void init_files (FileLoadedFunc? file_loaded_func = null) {
         debug ("init files for dir %s", this.file.location.get_uri ());
         var now = get_monotonic_time ();

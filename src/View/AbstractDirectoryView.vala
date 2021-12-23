@@ -1433,7 +1433,7 @@ namespace Files {
 
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
-                slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
+                // Files get fully updated on display
                 schedule_thumbnail_color_tag_timeout ();
             }
 

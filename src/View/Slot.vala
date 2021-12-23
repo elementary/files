@@ -392,12 +392,6 @@ namespace Files.View {
             }
         }
 
-        public void refresh_files () {
-            if (directory != null) {
-                directory.update_files ();
-            }
-        }
-
         public override FileInfo? lookup_file_info (GLib.File loc) {
             Files.File? gof = directory.file_hash_lookup_location (loc);
             if (gof != null) {
