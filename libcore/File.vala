@@ -67,8 +67,37 @@ public class Files.File : GLib.Object {
     public int pix_scale = -1;
     public int width = 0;
     public int height = 0;
-    public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
-    public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
+    public int sort_column_id {
+        set {
+            info.set_attribute_string ("metadata::marlin-sort-column-id", value.to_string ());
+        }
+
+        get {
+            if (info.has_attribute ("metadata::marlin-sort-column-id")) {
+                return Files.ListModel.ColumnID.from_string (
+                    info.get_attribute_string ("metadata::marlin-sort-column-id"));
+            }
+
+            return Files.ListModel.ColumnID.FILENAME;
+        }
+    }
+
+    public Gtk.SortType sort_order {
+        set {
+            info.set_attribute_string (
+                "metadata::marlin-sort-reversed", sort_order == Gtk.SortType.DESCENDING ? "true" : "false"
+            );
+        }
+
+        get {
+            if (info.has_attribute ("metadata::marlin-sort-reversed")) {
+                unowned string is_reversed = info.get_attribute_string ("metadata::marlin-sort-reversed");
+                return is_reversed == "true" ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+            }
+
+            return Gtk.SortType.ASCENDING;
+        }
+    }
     public GLib.FileType file_type;
     public bool is_hidden = false;
     public bool is_directory = false;
@@ -90,6 +119,8 @@ public class Files.File : GLib.Object {
     public GLib.Mount? mount = null;
     public bool is_connected = true;
     public string? utf8_collation_key = null;
+
+    private bool needs_updating = true;
 
     public static new Files.File @get (GLib.File location) {
         var parent = location.get_parent ();
@@ -441,6 +472,7 @@ public class Files.File : GLib.Object {
 
     // Set basic info required when loaded (fast)
     public void init_info () {
+        needs_updating = true;
         is_hidden = info.get_is_hidden () || info.get_is_backup ();
         size = info.get_size ();
         file_type = info.get_file_type ();
@@ -469,20 +501,13 @@ public class Files.File : GLib.Object {
     }
 
     // Extra info needed when actually displayed
+    // Do not update unless needed
     public void update_extra () {
-        /* metadata */
-        if (is_directory) {
-            if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = Files.ListModel.ColumnID.from_string (
-                                     info.get_attribute_string ("metadata::marlin-sort-column-id")
-                                 );
-            }
-
-            if (info.has_attribute ("metadata::marlin-sort-reversed")) {
-                sort_order = info.get_attribute_string ("metadata::marlin-sort-reversed") == "true" ?
-                                                        Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
-            }
+        if (!needs_updating) {
+            return;
         }
+
+        needs_updating = false;
 
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
@@ -565,8 +590,6 @@ public class Files.File : GLib.Object {
             }
         }
 
-        icon_changed ();
-
         /* permissions */
         has_permissions = info.has_attribute (GLib.FileAttribute.UNIX_MODE);
         permissions = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_MODE);
@@ -599,6 +622,8 @@ public class Files.File : GLib.Object {
         }
 
         update_emblem ();
+
+        icon_changed ();
     }
 
     public void update_full () {
@@ -1053,6 +1078,8 @@ public class Files.File : GLib.Object {
     }
 
     private void clear_info () {
+        needs_updating = true;
+
         target_location = null;
         mount = null;
         utf8_collation_key = null;
@@ -1081,6 +1108,8 @@ public class Files.File : GLib.Object {
         is_mounted = true;
         exists = true;
         is_connected = true;
+        needs_updating = true; // Ensure fully updates properties when needed
+
         try {
             return location.query_info ("*", GLib.FileQueryInfoFlags.NONE);
         } catch (GLib.IOError.NOT_MOUNTED e) {

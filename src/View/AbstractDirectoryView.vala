@@ -3778,7 +3778,7 @@ namespace Files {
 
         protected void on_sort_column_changed () {
             int sort_column_id = 0;
-            Gtk.SortType sort_order = 0;
+            Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
 
             /* Setting file attributes fails when root */
             if (Files.is_admin ()) {
@@ -3801,8 +3801,6 @@ namespace Files {
             info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
 
             /* Make sure directory file info matches metadata (bug 1511307).*/
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
