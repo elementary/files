@@ -398,7 +398,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         set_sort_column_id (col_id, sort_type);
         new_files_added (files_to_add);
-        warning ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+        debug ("FINISHED ADDING TO MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
 
     }
     public void remove_files (List<unowned Files.File> files_to_remove, Files.Directory dir, bool deduplicate = false) {
@@ -425,7 +425,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         set_sort_column_id (col_id, sort_type);
         files_removed (files_to_remove);
-        warning ("FINISHED REMOVING FROM MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
+        debug ("FINISHED REMOVING FROM MODEL - time %f", (double)(get_monotonic_time () - now) / (double)1000000);
 
     }
 

@@ -549,8 +549,6 @@ namespace Files.FileUtils {
                                                    GLib.Cancellable? cancellable = null) throws GLib.Error {
 
         /** TODO Check validity of new name **/
-
-
         GLib.File? new_location = null;
         Files.Directory? dir = Files.Directory.cache_lookup_parent (old_location);
         string? original_name = old_location.get_basename ();
@@ -578,12 +576,6 @@ namespace Files.FileUtils {
             PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
                                           e.message,
                                           null);
-
-            if (dir != null) {
-                /* We emit this signal anyway so callers can know rename failed and disconnect */
-                dir.file_added (null);
-            }
-
             throw e;
         }
 

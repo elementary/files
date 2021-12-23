@@ -65,7 +65,6 @@ public class Files.Directory : Object {
     public signal void files_loaded ();
     public signal void files_added (List <Files.File> files_to_add);
     public signal void files_removed (List <Files.File> files_to_remove);
-    public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
     public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
@@ -872,7 +871,7 @@ public class Files.Directory : Object {
         // Ignore if already removed from caches
         if (remove_file_from_cache (gof, this)) {
             if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
-                file_deleted (gof);
+                schedule_remove (gof);
             }
 
             if (!gof.is_hidden && gof.is_folder ()) {

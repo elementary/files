@@ -119,6 +119,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     /* Count of files current including top level (selected) files other than folders */
     private uint file_count;
 
+    private bool renaming = false; // Avoid duplicate rename events
+
     public PropertiesWindow (GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent) {
         base (_("Properties"), parent);
 
@@ -217,7 +219,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 rename_file (goffile, entry.get_text ());
             });
 
-            entry.focus_out_event.connect (() => {
+            entry.focus_out_event.connect_after (() => {
                 rename_file (goffile, entry.get_text ());
                 return false;
             });
@@ -332,9 +334,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private void rename_file (Files.File file, string _new_name) {
+        if (renaming) {
+            return;
+        }
+
+        renaming = true;
         /* Only rename if name actually changed */
         original_name = file.info.get_name ();
-
         var new_name = _new_name.strip (); // Disallow leading and trailing space
 
         if (new_name != "") { // Do not want a filename consisting of spaces only (even if legal)
@@ -347,15 +353,20 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                         reset_entry_text (new_location.get_basename ());
                         goffile = Files.File.@get (new_location);
                         files.first ().data = goffile;
-                    } catch (Error e) {} // Warning dialog already shown
+                    } catch (Error e) {
+                        reset_entry_text (original_name);
+                    } finally {
+                        renaming = false;
+                    }// Warning dialog already shown
                 });
             }
         } else {
             warning ("Blank name not allowed");
-            new_name = original_name;
+            reset_entry_text (original_name);
+            renaming = false;
         }
 
-        reset_entry_text (new_name);
+
     }
 
     public void reset_entry_text (string? new_name = null) {
