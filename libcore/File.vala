@@ -184,12 +184,7 @@ public class Files.File : GLib.Object {
         debug ("remove_ %s from_caches", location.get_uri ());
         /* remove from file_cache */
         if (file_cache != null && file_cache.remove (location)) {
-            warning ("successfully removed from file_cache %s", uri);
-        } else {
-            warning ("failed to remove from cache. Cache is %s", file_cache != null ? "NOT NULL" : "NULL");
-            if (file_cache != null) {
-                warning ("cache contains location %s:  %s", location.get_uri (), (file_cache.contains (location)).to_string ());
-            }
+            debug ("successfully removed from file_cache %s", uri);
         }
 
         is_gone = true;

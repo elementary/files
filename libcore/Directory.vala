@@ -827,7 +827,7 @@ public class Files.Directory : Object {
             }
         } catch (Error err) {
             last_error_message = err.message;
-            warning ("query info failed, %s %s", err.message, gof.uri);
+            debug ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND) {
                 gof.exists = false;
             }
