@@ -331,9 +331,8 @@ namespace Files {
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
+                    draw_when_idle ();
                 }
-
-                draw_when_idle ();
             });
 
             Files.app_settings.bind ("show-remote-thumbnails",
@@ -1389,17 +1388,8 @@ namespace Files {
                 is_writable = slot.directory.file.is_writable ();
             } else {
                 remove_marlin_icon_info_cache (file);
+                file.query_update (); // Refreshes info and sets initial properties only
                 model.file_changed (file, dir);
-                /* 2nd parameter is for returned request id if required - we do not use it? */
-                /* This is required if we need to dequeue the request */
-                if ((!slot.directory.is_network && !hide_local_thumbnails) ||
-                    (show_remote_thumbnails && slot.directory.can_open_files)) {
-
-                    thumbnailer.queue_file (file, null, large_thumbnails);
-                    if (plugins != null) {
-                        plugins.update_file_info (file);
-                    }
-                }
             }
 
             draw_when_idle ();
@@ -1407,7 +1397,6 @@ namespace Files {
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
             model.file_changed (file, dir);
-            draw_when_idle ();
         }
 
         private void on_directory_file_deleted (Directory dir, Files.File file) {
@@ -1441,7 +1430,11 @@ namespace Files {
         private void on_subdirectory_done_loading (Directory dir) {
             thaw_tree ();
 
-            schedule_thumbnail_color_tag_timeout ();
+            // Call from an idle to ensure does not run before view drawn.
+            Idle.add (() => {
+                schedule_thumbnail_color_tag_timeout (true);
+                return false;
+            });
         }
 
         private void on_directory_done_loading (Directory dir) {
@@ -1463,8 +1456,11 @@ namespace Files {
             }
 
             thaw_tree ();
-
-            schedule_thumbnail_color_tag_timeout ();
+            // Call from an idle to ensure does not run before view drawn.
+            Idle.add (() => {
+                schedule_thumbnail_color_tag_timeout (true);
+                return false;
+            });
         }
 
     /** Handle zoom level change */
@@ -1473,7 +1469,7 @@ namespace Files {
 
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
-                // Files get fully updated on display
+                // File items get fully updated on display
                 schedule_thumbnail_color_tag_timeout ();
             }
 
@@ -2705,13 +2701,11 @@ namespace Files {
 
 
 /** Thumbnail and color tag handling */
-        private void schedule_thumbnail_color_tag_timeout () {
+        private void schedule_thumbnail_color_tag_timeout (bool force_redraw = false) {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
-
-            assert (slot is Files.AbstractSlot && slot.directory != null);
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (thumbnail_source_id != 0 ||
@@ -2721,8 +2715,6 @@ namespace Files {
                     return;
             }
 
-            /* Do not cancel existing requests to avoid missing thumbnails */
-            cancel_timeout (ref thumbnail_source_id);
             /* In order to improve performance of the Icon View when there are a large number of files,
              * we freeze child notifications while the view is being scrolled or resized.
              * The timeout is restarted for each scroll or size allocate event */
@@ -2742,11 +2734,10 @@ namespace Files {
              * we wait longer for scrolling to stop before updating the thumbnails */
             uint delay = uint.min (50 + model.displayed_files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
-
                 /* compute visible item range */
-                Gtk.TreePath start_path, end_path, path;
+                Gtk.TreePath? start_path = null, end_path = null, path = null;
                 Gtk.TreePath sp, ep;
-                Gtk.TreeIter iter;
+                Gtk.TreeIter start_iter, iter;
                 bool valid_iter;
                 Files.File? file;
                 GLib.List<Files.File> visible_files = null;
@@ -2786,6 +2777,7 @@ namespace Files {
                                 /* Ask thumbnailer only if ThumbState UNKNOWN */
                                 if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
                                     visible_files.prepend (file);
+
                                     if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                         actually_visible++;
                                     }
@@ -2795,7 +2787,6 @@ namespace Files {
                             if (plugins != null) {
                                 plugins.update_file_info (file);
                             }
-
                         }
                         /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0) {
@@ -2814,12 +2805,14 @@ namespace Files {
                  */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-                } else {
+                }
+
+                if (force_redraw) {
+                    this.get_window ().invalidate_rect (null, true);
                     draw_when_idle ();
                 }
 
                 thumbnail_source_id = 0;
-
                 return GLib.Source.REMOVE;
             });
         }
@@ -2835,6 +2828,7 @@ namespace Files {
 
             draw_timeout_id = Timeout.add (100, () => {
                 draw_timeout_id = 0;
+                view.get_window ().invalidate_rect (null, true);
                 view.queue_draw ();
                 return GLib.Source.REMOVE;
             });

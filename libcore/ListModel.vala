@@ -224,6 +224,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         }
     }
 
+    // This function is expensive for large data sets - avoid on large numbers of files.
     public void file_changed (Files.File file, Files.Directory dir) {
         bool found = false;
         this.foreach ((model, path, iter) => {

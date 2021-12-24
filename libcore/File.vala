@@ -473,6 +473,7 @@ public class Files.File : GLib.Object {
     // Set basic info required when loaded (fast)
     public void init_info () {
         needs_updating = true;
+        pix = null;
         is_hidden = info.get_is_hidden () || info.get_is_backup ();
         size = info.get_size ();
         file_type = info.get_file_type ();
@@ -497,6 +498,10 @@ public class Files.File : GLib.Object {
             formated_modified = get_formated_time (GLib.FileAttribute.TIME_MODIFIED);
         } else {
             formated_modified = _("Inaccessible");
+        }
+
+        if (info.has_attribute (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT)) {
+            _can_unmount = info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT);
         }
     }
 
@@ -617,13 +622,9 @@ public class Files.File : GLib.Object {
             group = null;
         }
 
-        if (info.has_attribute (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT)) {
-            _can_unmount = info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT);
-        }
-
         update_emblem ();
-
-        icon_changed ();
+        // Do not signal icon-changed here - this is very expensive and should only be used for
+        // limited numbers of updates.
     }
 
     public void update_full () {
@@ -672,7 +673,8 @@ public class Files.File : GLib.Object {
         var _info = query_info ();
         if (_info != null) {
             info = _info;
-            update_full ();
+            needs_updating = true;
+            init_info ();
         }
     }
 
