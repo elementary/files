@@ -157,7 +157,7 @@
           <li>Dark style support</li>
           <li>Mint and Bubblegum color tags</li>
           <li>Do not restore locations that have become inaccessible</li>
-          <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
+          <li>Clicking between thumbnail and text now activates/selects in Grid view</li>
           <li>AFC protocol support</li>
           <li>Add a smaller minimum icon size in list view</li>
           <li>Show emblems inline in list views</li>
@@ -332,7 +332,7 @@
     <release version="4.1.8" date="2019-05-02" urgency="medium">
       <description>
         <ul>
-          <li>Keyboard navigation fix for cherry picking select files in icon view</li>
+          <li>Keyboard navigation fix for cherry picking select files in Grid view</li>
           <li>Don't hardcode search placeholder text style, fixes dark theme issue</li>
           <li>Updated translations</li>
         </ul>
