@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-19 16:52+0000\n"
-"PO-Revision-Date: 2021-12-20 02:16+0000\n"
+"PO-Revision-Date: 2021-12-27 23:40+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -105,18 +105,16 @@ msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Always show Permissions page in Properties dialog"
-msgstr "プロパティーダイアログに権限のページを常に表示するように修正"
+msgstr "“プロパティー”ダイアログに“権限”のページを常に表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
-msgstr ""
-"権限のページでユーザー名とグループ名が利用できない場合は数値のユーザー ID と"
-"グループ ID を表示するように修正"
+msgstr "“権限”のページにおいて、ユーザー名とグループ名が利用できない場合は数値のユーザー ID とグループ ID を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
-msgstr "権限のページで、情報が利用できない場合はメッセージを表示するように修正"
+msgstr "“権限”のページにおいて、情報が利用できない場合はメッセージを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -258,9 +256,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Remove message about reporting issues when running from Terminal"
-msgstr ""
-"ターミナルからアプリを起動した際に表示される、不具合の報告先に関するメッセー"
-"ジを削除"
+msgstr "“ターミナル”からこのアプリを起動した際に表示される、不具合の報告先に関するメッセージを削除"
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Open bookmarks in a new tab with Ctrl + Click"
