@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-19 16:52+0000\n"
+"POT-Creation-Date: 2021-12-28 09:13+0000\n"
 "PO-Revision-Date: 2021-12-28 01:58+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,11 +110,15 @@ msgstr "“プロパティー”ダイアログに“権限”のページを常
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
-msgstr "“権限”のページにおいて、ユーザー名とグループ名が利用できない場合は数値のユーザー ID とグループ ID を表示するように修正"
+msgstr ""
+"“権限”のページにおいて、ユーザー名とグループ名が利用できない場合は数値のユー"
+"ザー ID とグループ ID を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
-msgstr "“権限”のページにおいて、情報が利用できない場合はメッセージを表示するように修正"
+msgstr ""
+"“権限”のページにおいて、情報が利用できない場合はメッセージを表示するように修"
+"正"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -256,7 +260,9 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Remove message about reporting issues when running from Terminal"
-msgstr "“ターミナル”からこのアプリを起動した際に表示される、不具合の報告先に関するメッセージを削除"
+msgstr ""
+"“ターミナル”からこのアプリを起動した際に表示される、不具合の報告先に関する"
+"メッセージを削除"
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Open bookmarks in a new tab with Ctrl + Click"
@@ -302,7 +308,8 @@ msgstr "サイドバーのブックマークを名称変更できない不具合
 
 #: data/io.elementary.files.appdata.xml.in.in:120
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
-msgstr "サムネイルが非表示の場合に発生する、カラータグを表示する機能の不具合を修正"
+msgstr ""
+"サムネイルが非表示の場合に発生する、カラータグを表示する機能の不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
 msgid "Fix freeze when comparing copied files"
@@ -352,7 +359,10 @@ msgstr ""
 "アクセス不可能になった場所をアプリ起動時やタブの復元時に表示しないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
-msgid "Clicking between thumbnail and text now activates/selects in Icon view"
+#, fuzzy
+#| msgid ""
+#| "Clicking between thumbnail and text now activates/selects in Icon view"
+msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr ""
 "グリッド表示において、ファイルのサムネイルと名前の間をクリックした場合にファ"
 "イルを選択するように変更"
@@ -658,7 +668,9 @@ msgstr "フォルダーを日時とサイズで正しく並べ替えるように
 
 #: data/io.elementary.files.appdata.xml.in.in:316
 msgid "Launching Files from Terminal now opens new tab instead of new window"
-msgstr "“ファイル”から“ターミナル”を起動すると、新しいウィンドウではなく新しいタブで開かれるように変更"
+msgstr ""
+"“ファイル”から“ターミナル”を起動すると、新しいウィンドウではなく新しいタブで"
+"開かれるように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:317
 msgid "Improve MTP support"
@@ -713,7 +725,9 @@ msgid "Avoid possible crash in some copy and paste situations"
 msgstr "コピー・貼り付けの際に場合によってはクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:335
-msgid "Keyboard navigation fix for cherry picking select files in icon view"
+#, fuzzy
+#| msgid "Keyboard navigation fix for cherry picking select files in icon view"
+msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr "アイコン表示で、ファイルを一項目ずつ選択する際のキーボード操作を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:336

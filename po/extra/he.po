@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-19 16:52+0000\n"
+"POT-Creation-Date: 2021-12-28 09:13+0000\n"
 "PO-Revision-Date: 2021-12-20 02:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
@@ -318,7 +318,10 @@ msgid "Do not restore locations that have become inaccessible"
 msgstr "לא לשחזר את המיקומים שהפכו לבלתי נגישים"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
-msgid "Clicking between thumbnail and text now activates/selects in Icon view"
+#, fuzzy
+#| msgid ""
+#| "Clicking between thumbnail and text now activates/selects in Icon view"
+msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr "לחיצה בין התמונה הממוזערת והטקסט מעתה מפעילה/בוחרת בתצוגת סמלים"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
@@ -644,7 +647,9 @@ msgid "Avoid possible crash in some copy and paste situations"
 msgstr "הימנעות מקריסה אפשרית בכל מיני מקרים של העתקה והדבקה"
 
 #: data/io.elementary.files.appdata.xml.in.in:335
-msgid "Keyboard navigation fix for cherry picking select files in icon view"
+#, fuzzy
+#| msgid "Keyboard navigation fix for cherry picking select files in icon view"
+msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr "תיקון ניווט בעזרת מקלדת לבחירה נקודתית של קבצים בתצוגת סמלים"
 
 #: data/io.elementary.files.appdata.xml.in.in:336

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-19 16:52+0000\n"
+"POT-Creation-Date: 2021-12-28 09:13+0000\n"
 "PO-Revision-Date: 2021-08-17 10:58+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -328,7 +328,7 @@ msgid "Do not restore locations that have become inaccessible"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:160
-msgid "Clicking between thumbnail and text now activates/selects in Icon view"
+msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:161
@@ -657,7 +657,7 @@ msgid "Avoid possible crash in some copy and paste situations"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:335
-msgid "Keyboard navigation fix for cherry picking select files in icon view"
+msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:336
