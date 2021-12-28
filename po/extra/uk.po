@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-28 09:13+0000\n"
-"PO-Revision-Date: 2021-12-20 02:16+0000\n"
+"PO-Revision-Date: 2021-12-28 10:48+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -346,13 +346,10 @@ msgid "Do not restore locations that have become inaccessible"
 msgstr "Не відновлювати місця, які стали недоступними"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
-#, fuzzy
-#| msgid ""
-#| "Clicking between thumbnail and text now activates/selects in Icon view"
 msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr ""
 "Клацання між ескізом та текстом тепер активує/вибирає в режимі перегляду "
-"піктограм"
+"сіткою"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
 msgid "AFC protocol support"
@@ -716,12 +713,10 @@ msgid "Avoid possible crash in some copy and paste situations"
 msgstr "Уникнення можливих збоїв копіювання та вставлення в деяких випадках"
 
 #: data/io.elementary.files.appdata.xml.in.in:335
-#, fuzzy
-#| msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr ""
 "Виправлення помилок переходів за допомогою клавіатури для вибору вибраних "
-"файлів у вигляді піктограм"
+"файлів у режимі перегляду сіткою"
 
 #: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
