@@ -27,6 +27,12 @@ namespace Files {
 
         public override Gtk.Widget create_editable_widget () {
             textview = new Gtk.Entry ();
+            textview.button_press_event.connect (() => {
+                var cursor_position = textview.get_position ();
+                textview.select_region (cursor_position - 1, cursor_position);
+                return Gdk.EVENT_PROPAGATE;
+            });
+
             return textview as Gtk.Widget;
         }
 
