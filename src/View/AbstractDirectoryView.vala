@@ -215,6 +215,7 @@ namespace Files {
         private Gtk.TreePath? hover_path = null;
 
         public bool renaming {get; protected set; default = false;}
+        public Queue<Files.File> rename_queue;
 
         private bool _is_frozen = false;
         public bool is_frozen {
@@ -297,7 +298,7 @@ namespace Files {
             });
 
             model = new Files.ListModel ();
-
+            rename_queue = new Queue<Files.File> ();
             Files.app_settings.bind ("show-remote-thumbnails",
                                                              this, "show_remote_thumbnails", SettingsBindFlags.GET);
             Files.app_settings.bind ("hide-local-thumbnails",
@@ -340,7 +341,9 @@ namespace Files {
         protected virtual void set_up_name_renderer () {
             name_renderer.editable = false;
             name_renderer.edited.connect (on_name_edited);
-            name_renderer.editing_canceled.connect (on_name_editing_canceled);
+            name_renderer.editing_canceled.connect (() => {
+                on_name_editing_ended (true); // End multi-rename as well
+            });
             name_renderer.editing_started.connect (on_name_editing_started);
         }
 
@@ -1101,13 +1104,13 @@ namespace Files {
                 return;
             }
 
-            if (selected_files.next != null) {
-                warning ("Cannot rename multiple files (yet) - renaming first only");
-            }
+            var selection_copy = get_files_for_action ();
 
-            /* Batch renaming will be provided by a contractor */
+            selection_copy.@foreach ((file) => {
+                rename_queue.push_head (file);
+            });
 
-            rename_file (selected_files.first ().data);
+            rename_file (rename_queue.pop_tail ());
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2398,7 +2401,7 @@ namespace Files {
             bool more_than_one_selected = (is_selected && selection.first ().next != null);
             bool single_folder = false;
             bool only_folders = selection_only_contains_folders (selection);
-            bool can_rename = false;
+            bool can_rename = is_writable;
             bool can_show_properties = false;
             bool can_copy = false;
             bool can_open = false;
@@ -2409,7 +2412,6 @@ namespace Files {
                 file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
-                    can_rename = is_writable;
                     can_paste_into = single_folder && file.is_writable () ;
                 } else {
                     critical ("File in selection is null");
@@ -2433,7 +2435,7 @@ namespace Files {
 
             action_set_enabled (common_actions, "paste-into", can_paste_into);
             action_set_enabled (common_actions, "open-in", only_folders);
-            action_set_enabled (selection_actions, "rename", is_selected && !more_than_one_selected && can_rename);
+            action_set_enabled (selection_actions, "rename", is_selected && can_rename);
             action_set_enabled (selection_actions, "view-in-location", is_selected);
             action_set_enabled (selection_actions, "open", is_selected && !more_than_one_selected && can_open);
             action_set_enabled (selection_actions, "open-with-app", can_open);
@@ -3285,29 +3287,43 @@ namespace Files {
                 editable_widget.select_region (start_offset, end_offset);
             } else {
                 warning ("Editable widget is null");
-                on_name_editing_canceled ();
+                on_name_editing_ended (true); // End multi-rename too
             }
         }
 
-        protected void on_name_editing_canceled () {
+        protected void on_name_editing_ended (bool stop_multi_rename = false) {
             renaming = false;
             name_renderer.editable = false;
             proposed_name = "";
             is_frozen = false;
+            if (rename_queue.peek_tail () != null) {
+                if (stop_multi_rename) {
+                    rename_queue.clear ();
+                    update_menu_actions ();
+                } else {
+                    Idle.add (() => { // Need to wait for renamed file to reappear in view.
+                        rename_file (rename_queue.pop_tail ());
+                        return Source.REMOVE;
+                    });
+                    return;
+                }
+            }
+
             grab_focus ();
         }
 
         protected void on_name_edited (string path_string, string? _new_name) {
             /* Must not re-enter */
-            if (!renaming || _new_name == null) {
-                on_name_editing_canceled (); // no problem rentering this function
+            if (!renaming || _new_name == null) { // Not sure this ever happens in practice
+                critical ("After name edited, name is null or not in renaming mode.  This should not happen");
+                on_name_editing_ended (true); // End multi-rename?
                 return;
             }
 
             var new_name = _new_name.strip (); // Disallow leading and trailing space
             if (new_name == "" || proposed_name == new_name) {
-                warning ("Blank name or name unchanged");
-                on_name_editing_canceled ();
+                debug ("Blank name or name unchanged");
+                on_name_editing_ended ();
                 return;
             }
 
@@ -3328,17 +3344,19 @@ namespace Files {
                     set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
                         try {
                             set_file_display_name.end (res);
-                        } catch (Error e) {} // Warning dialog already shown
-
-                        on_name_editing_canceled ();
+                        } catch (Error e) {
+                            // Warning dialog already shown
+                        } finally {
+                            on_name_editing_ended ();
+                        }
                     });
                 } else {
-                    warning ("Name unchanged");
-                    on_name_editing_canceled ();
+                    debug ("Name unchanged");
+                    on_name_editing_ended ();
                 }
             } else {
-                warning ("No new name");
-                on_name_editing_canceled ();
+                debug ("No new name");
+                on_name_editing_ended ();
             }
 
             /* do not cancel editing here - will be cancelled in rename callback */
@@ -3359,7 +3377,7 @@ namespace Files {
         private void after_renamed_file_added (Files.File? new_file) {
             slot.directory.file_added.disconnect (after_renamed_file_added);
             /* new_file will be null if rename failed */
-            if (new_file != null) {
+            if (new_file != null && rename_queue.peek_tail () == null) {
                 select_and_scroll_to_gof_file (new_file);
             }
         }
