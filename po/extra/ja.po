@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-19 16:52+0000\n"
-"PO-Revision-Date: 2021-12-27 23:40+0000\n"
+"PO-Revision-Date: 2021-12-28 01:58+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -658,9 +658,7 @@ msgstr "フォルダーを日時とサイズで正しく並べ替えるように
 
 #: data/io.elementary.files.appdata.xml.in.in:316
 msgid "Launching Files from Terminal now opens new tab instead of new window"
-msgstr ""
-"ファイルアプリからターミナルを起動した際に、新しいウィンドウではなく新しいタ"
-"ブでターミナルを開くように変更"
+msgstr "“ファイル”から“ターミナル”を起動すると、新しいウィンドウではなく新しいタブで開かれるように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:317
 msgid "Improve MTP support"
@@ -680,7 +678,7 @@ msgstr "シンボリックリンクのコピー・貼り付けを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:321
 msgid "Avoid crash when Templates folder is null"
-msgstr "テンプレートフォルダーが空の場合にクラッシュする不具合を修正"
+msgstr "“テンプレート”フォルダーが空の場合にクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:322
 msgid "Reduce memory footprint of FileChooserDialog"
@@ -716,7 +714,7 @@ msgstr "コピー・貼り付けの際に場合によってはクラッシュす
 
 #: data/io.elementary.files.appdata.xml.in.in:335
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
-msgstr "アイコン表示で、ファイルを1つづつ選択する際のキーボード操作を修正"
+msgstr "アイコン表示で、ファイルを一項目ずつ選択する際のキーボード操作を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
@@ -770,7 +768,7 @@ msgstr "CMake ビルドシステムを削除"
 
 #: data/io.elementary.files.appdata.xml.in.in:375
 msgid "Fix missing File System properties menu"
-msgstr "ファイルシステムに対するプロパティーメニューが表示されない不具合を修正"
+msgstr "ルートフォルダーにおいてプロパティーメニューが表示されない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:376
 msgid "Drop intltool dependency"
@@ -807,7 +805,7 @@ msgstr "カラータグの表示を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:384
 msgid "Show reserved space in Properties window"
-msgstr "プロパティーウィンドウで使用済み領域を表示するように修正"
+msgstr "“プロパティー”ウィンドウで使用済み領域を表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:392
 msgid "Add border radius to text background"
@@ -866,8 +864,7 @@ msgstr "シングルクリックで複数のファイルを選択しないよう
 
 #: data/io.elementary.files.appdata.xml.in.in:425
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
-"ビューとサイドバーのフォーカスの切り替えに `Tab` キーを使用するように変更"
+msgstr "ビューとサイドバー間のフォーカス変更に `Tab` キーを使用するように変更"
 
 #: data/io.elementary.files.appdata.xml.in.in:426
 msgid "Delete color tag database entries for trashed files"
