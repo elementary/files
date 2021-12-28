@@ -26,9 +26,16 @@ namespace Files {
 
         public override Gtk.Widget create_editable_widget () {
             textview = new Gtk.TextView ();
+            /* Cancel selection under cursor to avoid dragging selected text */
+            textview.button_press_event.connect (() => {
+                var start_pos = textview.buffer.cursor_position;
+                select_region (start_pos - 1, start_pos);
+                return false;
+            });
             /* Block propagation of button press event to view as this would cause renaming to end */
-            textview.button_press_event.connect_after (() => {return true;});
-
+            textview.button_press_event.connect_after (() => {
+                return true;
+            });
             scrolled_window = new Gtk.ScrolledWindow (null, null);
             scrolled_window.add (textview);
             return scrolled_window as Gtk.Widget;
