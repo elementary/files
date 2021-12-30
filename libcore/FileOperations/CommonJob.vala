@@ -22,6 +22,11 @@ public class Files.FileOperations.CommonJob {
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
     protected Files.UndoActionData? undo_redo_data;
+    protected GLib.HashTable<GLib.File, unowned GLib.File>? skip_readdir_errors;
+    protected GLib.HashTable<GLib.File, unowned GLib.File>? skipped_files;
+    protected bool skip_all_error;
+    protected GLib.Timer? timer;
+
     protected CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
@@ -58,5 +63,37 @@ public class Files.FileOperations.CommonJob {
 
     protected bool aborted () {
         return cancellable.is_cancelled ();
+    }
+
+    protected bool should_skip_readdir_error (GLib.File dir) {
+        if (skip_readdir_errors != null) {
+            return skip_readdir_errors.contains (dir);
+        }
+
+        return false;
+    }
+
+    protected void skip_readdir_error (GLib.File dir) {
+        if (skip_readdir_errors == null) {
+            skip_readdir_errors = new GLib.HashTable<GLib.File, unowned GLib.File> (GLib.File.hash, GLib.File.equal);
+        }
+
+        skip_readdir_errors.insert (dir, dir);
+    }
+
+    protected bool should_skip_file (GLib.File file) {
+        if (skipped_files != null) {
+            return skipped_files.contains (file);
+        }
+
+        return false;
+    }
+
+    protected void skip_file (GLib.File file) {
+        if (skipped_files == null) {
+            skipped_files = new GLib.HashTable<GLib.File, unowned GLib.File> (GLib.File.hash, GLib.File.equal);
+        }
+
+        skipped_files.insert (file, file);
     }
 }

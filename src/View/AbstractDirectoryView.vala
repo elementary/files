@@ -965,7 +965,6 @@ namespace Files {
                 parent_uri,
                 null,
                 null,
-                0,
                 null,
                 (obj, res) => {
                     try {

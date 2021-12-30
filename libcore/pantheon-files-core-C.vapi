@@ -22,7 +22,7 @@ namespace Files {
         [CCode (cheader_filename = "marlin-file-operations.h")]
         static async bool copy_move_link (GLib.List<GLib.File> files, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, GLib.Cancellable? cancellable = null) throws GLib.Error;
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        static async GLib.File? new_file (Gtk.Widget parent_view, string parent_dir, string? target_filename, string? initial_contents, int length, GLib.Cancellable? cancellable = null) throws GLib.Error;
+        static async GLib.File? new_file (Gtk.Widget parent_view, string parent_dir, string? target_filename, uint8[]? initial_contents, GLib.Cancellable? cancellable = null) throws GLib.Error;
         [CCode (cheader_filename = "marlin-file-operations.h")]
         static async GLib.File? new_file_from_template (Gtk.Widget parent_view, GLib.File parent_dir, string? target_filename, GLib.File template, GLib.Cancellable? cancellable = null) throws GLib.Error;
     }

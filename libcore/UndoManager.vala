@@ -425,7 +425,7 @@ namespace Files {
                     var new_name = GLib.Path.get_basename (Uri.unescape_string (action.target_uri));
                     try {
                         yield Files.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, p_uri,
-                                                              new_name, action.template, 0, cancellable);
+                                                              new_name, action.template.data, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
