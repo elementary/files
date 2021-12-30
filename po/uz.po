@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-28 09:13+0000\n"
+"POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -617,8 +617,10 @@ msgid ""
 msgstr ""
 
 #: libcore/marlin-file-operations.c:842
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+#, fuzzy
+#| msgid "Cannot remove files from here"
+msgid "Cannot move file to trash. Try to delete it?"
+msgstr "Bu yerdan fayllarni o'chirib bo'lmadi"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-28 09:13+0000\n"
+"POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2020-08-29 21:13+0000\n"
 "Last-Translator: Mejans <farga@mejans.fr>\n"
 "Language-Team: Occitan <https://l10n.elementary.io/projects/files/files/oc/"
@@ -642,8 +642,10 @@ msgid ""
 msgstr ""
 
 #: libcore/marlin-file-operations.c:842
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+#, fuzzy
+#| msgid "Cannot move file to trash or delete it"
+msgid "Cannot move file to trash. Try to delete it?"
+msgstr "Podètz pas desplaçar un fichièr sus el meteis"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
