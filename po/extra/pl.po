@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-28 09:13+0000\n"
-"PO-Revision-Date: 2021-12-20 07:03+0000\n"
+"PO-Revision-Date: 2021-12-30 10:41+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -360,12 +360,10 @@ msgid "Do not restore locations that have become inaccessible"
 msgstr "Niedostępne lokalizacje nie są już przywracane"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
-#, fuzzy
-#| msgid ""
-#| "Clicking between thumbnail and text now activates/selects in Icon view"
 msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr ""
-"Klikanie pomiędzy miniaturką a tekstem teraz uruchamia/zaznacza w widoku ikon"
+"Klikanie pomiędzy miniaturką a tekstem teraz uruchamia/zaznacza w widoku "
+"siatki"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
 msgid "AFC protocol support"
@@ -731,12 +729,10 @@ msgstr ""
 "Uniknięto błędów krytycznych przy kopiowaniu i wklejaniu w pewnych sytuacjach"
 
 #: data/io.elementary.files.appdata.xml.in.in:335
-#, fuzzy
-#| msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr ""
 "Naprawiono nawigację przy użyciu klawiatury podczas wybieraniu zaznaczonych "
-"plików w widoku ikon"
+"plików w widoku siatki"
 
 #: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
