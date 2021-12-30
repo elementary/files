@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-28 09:13+0000\n"
+"POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -614,7 +614,7 @@ msgid ""
 msgstr ""
 
 #: libcore/marlin-file-operations.c:842
-msgid "Cannot move file to trash.  Try to delete it?"
+msgid "Cannot move file to trash. Try to delete it?"
 msgstr ""
 
 #: libcore/marlin-file-operations.c:843
