@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-28 09:13+0000\n"
-"PO-Revision-Date: 2021-12-28 10:48+0000\n"
+"PO-Revision-Date: 2021-12-30 14:36+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -364,7 +364,7 @@ msgstr "グリッド表示において、ファイルのサムネイルと名前
 
 #: data/io.elementary.files.appdata.xml.in.in:161
 msgid "AFC protocol support"
-msgstr "AFC プロトコルへのサポート"
+msgstr "AFC プロトコルに対応"
 
 #: data/io.elementary.files.appdata.xml.in.in:162
 msgid "Add a smaller minimum icon size in list view"
@@ -589,7 +589,7 @@ msgstr "新機能:"
 
 #: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Initial git plugin support"
-msgstr "Git プラグインのサポートを追加"
+msgstr "Git プラグインへの対応を開始"
 
 #: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Follow global history setting when restoring and saving tabs"
@@ -627,7 +627,7 @@ msgstr "翻訳を更新"
 
 #: data/io.elementary.files.appdata.xml.in.in:300
 msgid "Initial cloudproviders plugin support"
-msgstr "クラウドプロバイダープラグインのサポートを追加"
+msgstr "クラウドプロバイダープラグインへの対応を開始"
 
 #: data/io.elementary.files.appdata.xml.in.in:301
 msgid "Fix selecting pasted files"
@@ -955,7 +955,7 @@ msgstr "軽微なバグの修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:461
 msgid "Improved networking support"
-msgstr "ネットワークサポートを改善"
+msgstr "ネットワークへの対応を改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:462
 msgid "Correct window geometry when snapping to left or right"
@@ -996,7 +996,7 @@ msgstr "選択されたズームレベルを記憶"
 
 #: data/io.elementary.files.appdata.xml.in.in:476
 msgid "Improved input method support"
-msgstr "インプットメソッドのサポートを改善"
+msgstr "インプットメソッドへの対応を改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:477
 msgid "910x640 minimum window size"
@@ -1016,7 +1016,7 @@ msgstr "検索機能を Ctrl + F に統合"
 
 #: data/io.elementary.files.appdata.xml.in.in:499
 msgid "Improved translation support"
-msgstr "翻訳サポートを改善"
+msgstr "翻訳への対応を改善"
 
 #: data/io.elementary.files.appdata.xml.in.in:523
 msgid "Fix appdata release dates"
