@@ -190,6 +190,7 @@ namespace Files {
         protected bool on_directory = false;
         protected bool one_or_less = true;
         protected bool should_activate = false;
+        protected bool ignore_double_click = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
         protected Gtk.TreePath? click_path = null;
@@ -3436,6 +3437,14 @@ namespace Files {
                 return true;
             }
 
+            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+            if (ignore_double_click && double_click_event) {
+                ignore_double_click = false;
+                return true;
+            }
+
+            ignore_double_click = false;
+
             grab_focus ();
 
             Gtk.TreePath? path = null;
@@ -3455,7 +3464,7 @@ namespace Files {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
              */
@@ -3494,6 +3503,7 @@ namespace Files {
                             /* determine whether should activate on key release (unless pointer moved)*/
                             if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
                                 should_activate = on_directory || double_click_event;
+                                ignore_double_click = should_activate && on_directory;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
@@ -3598,7 +3608,6 @@ namespace Files {
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
             unblock_drag_and_drop ();
-
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
@@ -3616,11 +3625,10 @@ namespace Files {
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 if (should_activate) {
-                    /* Need Idle else can crash with rapid clicking (avoid nested signals) */
-                    Idle.add (() => {
+                    /* Need delay else can crash with rapid clicking (avoid nested signals) */
+                    Timeout.add (200, () => { // Wait half typical double click time to detect double click on folder
                         var flag = event.button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB :
                                                                        Files.OpenFlag.DEFAULT;
-
                         activate_selected_items (flag);
                         return GLib.Source.REMOVE;
                     });
