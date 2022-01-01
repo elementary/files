@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2021-12-31 02:58+0000\n"
+"PO-Revision-Date: 2022-01-01 06:02+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
 "\n"
@@ -1078,7 +1078,7 @@ msgstr "新しいウィンドウで開く(_W)"
 
 #: libcore/PopupMenuBuilder.vala:62
 msgid "Remove"
-msgstr "削除"
+msgstr "ブックマークから削除"
 
 #: libcore/PopupMenuBuilder.vala:66
 msgid "Rename"
@@ -1679,7 +1679,7 @@ msgstr "親フォルダーを開く"
 
 #: src/View/AbstractDirectoryView.vala:2079
 msgid "Remove from History"
-msgstr "履歴から削除"
+msgstr "履歴から消去"
 
 #: src/View/AbstractDirectoryView.vala:2107
 msgid "Rename…"
