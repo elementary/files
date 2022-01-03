@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2021-12-20 02:16+0000\n"
+"PO-Revision-Date: 2022-01-03 01:20+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -646,12 +646,10 @@ msgstr ""
 "Informationen finden Sie in den unten stehenden Details."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr ""
-"Datei konnte nicht in den Papierkorb verschoben werden. Soll die Datei "
-"sofort gelöscht werden?"
+"Datei konnte nicht in den Papierkorb verschoben werden. Soll sie sofort "
+"gelöscht werden?"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
