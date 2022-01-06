@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2021-12-30 14:36+0000\n"
+"PO-Revision-Date: 2022-01-07 01:20+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -613,7 +613,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:290
 msgid "Fix appearance of inactive diskspace indicator"
-msgstr "非アクティブウィンドウのディスク容量バーのコントラストを修正"
+msgstr "非アクティブ状態のディスク容量バーの見た目を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:291
 msgid "Improve pathbar animation"
