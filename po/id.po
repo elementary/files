@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2022-01-07 20:41+0000\n"
-"Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
+"Last-Translator: Deleted User <noreply+2670@weblate.org>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -1486,10 +1486,10 @@ msgid "Permissions"
 msgstr "Hak akses"
 
 #: src/Dialogs/PropertiesWindow.vala:259
-#, fuzzy, c-format
+#, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%I berkas tidak dapat dibaca karena izin atau kesalahan lainnya."
+msgstr[0] "%i berkas tidak dapat dibaca karena izin atau kesalahan lainnya."
 
 #: src/Dialogs/PropertiesWindow.vala:263
 msgid "Actual Size Could Be Larger"
