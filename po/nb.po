@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2021-12-09 23:57+0000\n"
+"PO-Revision-Date: 2021-12-31 02:58+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -338,10 +338,9 @@ msgid "Merge"
 msgstr "Slå sammen"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Kunne ikke fastslå opprinnelig lokasjon for «%s» "
+msgstr "Kunne ikke fastslå opprinnelig plassering for «%s»"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
@@ -635,10 +634,8 @@ msgstr ""
 "informasjon."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr "Kan ikke flytte fil til papirkurv. Prøve å slette den?"
+msgstr "Kan ikke flytte fil til papirkurv. Slett den?"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
@@ -1313,10 +1310,9 @@ msgid "Unable to unmount '%s'"
 msgstr "Kan ikke montere «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Kan ikke løse ut %V"
+msgstr "Kan ikke løse ut «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1371,8 +1367,9 @@ msgid "Delete Selected"
 msgstr "Slett valgte"
 
 #: plugins/send-by-email/plugin.vala:26
+#, fuzzy
 msgid "Send by Email"
-msgstr ""
+msgstr "Send per e-post"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1480,7 +1477,7 @@ msgstr "Bruk som forvalg"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Kunne ikke bestemme fileierskap og tilganger"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1695,17 +1692,15 @@ msgstr "Lim inn"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Velg alt"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Inverter utvalg"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Gjenopprett alle"
+msgstr "Fravelg alt"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1974,10 +1969,9 @@ msgstr "Utløs «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Kan ikke montere «%s»"
+msgstr "Avmonter «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -1993,10 +1987,9 @@ msgstr "%s brukt av %s"
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
@@ -2069,10 +2062,8 @@ msgid "Connect Server…"
 msgstr "Koble til tjener …"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Bind montering"
+msgstr "Bind montering"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200

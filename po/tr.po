@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2021-12-11 19:55+0000\n"
+"PO-Revision-Date: 2021-12-31 07:16+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -635,10 +635,8 @@ msgstr ""
 "Bu dosya çöpe taşınamadı. Daha fazla bilgi için aşağıdaki açıklamalara bakın."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr "Dosya çöpe taşınamıyor.  Silmeyi denemek ister misiniz?"
+msgstr "Dosya çöpe taşınamıyor. Silmeyi denemek ister misiniz?"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
