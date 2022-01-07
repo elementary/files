@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2022-01-07 20:32+0000\n"
-"Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
+"Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -379,7 +379,7 @@ msgstr "Tidak ada berkas di folder ini yang akan dipulihkan"
 
 #: libcore/FileUtils.vala:192
 msgid "Recreate"
-msgstr "Buat kembali"
+msgstr "Buat Ulang"
 
 #: libcore/FileUtils.vala:194
 msgid ""
