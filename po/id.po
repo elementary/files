@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2022-01-07 20:45+0000\n"
+"PO-Revision-Date: 2022-01-07 21:25+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
@@ -29,18 +29,16 @@ msgstr "Batal"
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Buka Berkas sebagai Hanya Baca"
 
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Buka Berkas sebagai Hanya Baca"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " dipilih"
+msgstr "Pilih"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -48,7 +46,7 @@ msgstr "Buka"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Simpan"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -189,34 +187,26 @@ msgid "Failed to parse the desktop file"
 msgstr "Gagal untuk mengurai berkas desktop"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Gagal untuk mengurai berkas desktop: %s"
+msgstr "Gagal untuk mengurai berkas desktop: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Gagal membuat perintah dari berkas: %s"
+msgstr "Gagal membuat perintah dari berkas: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Tidak bisa membuka berkas desktop: %s"
+msgstr "Tidak Dapat Meluncurkan Berkas Desktop: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Berkas kosong"
+msgstr "Kosong"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
+msgstr[0] "%i item"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -351,10 +341,9 @@ msgid "Merge"
 msgstr "Gabung"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
+msgstr "Tidak dapat menentukan lokasi asal \"%s\""
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
@@ -641,8 +630,6 @@ msgstr ""
 "untuk informasi lebih lanjut."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr "Tidak bisa memindahkan berkas ke tong sampah. Coba untuk menghapusnya?"
 
@@ -1063,10 +1050,8 @@ msgid "Setting permissions"
 msgstr "Mengatur hak akses"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Membuang berkas ke tong sampah"
+msgstr "Nol berkas untuk diproses"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
@@ -1133,35 +1118,27 @@ msgstr "Properti"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Copot Media"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Buang"
+msgstr "Lepas Dengan Aman"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
 msgstr "Tambahkan ke Penanda Taut"
 
 #: libcore/PopupMenuBuilder.vala:104
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "Hapus semua barang secara permanen dari Tong Sampah?"
+msgstr "Hapus Permanen Semua Tong Sampah?"
 
 #: libcore/PopupMenuBuilder.vala:104
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete Trash"
-msgstr "Hapus semua barang secara permanen dari Tong Sampah?"
+msgstr "Hapus Permanen Tong Sampah?"
 
 #: libcore/PopupMenuBuilder.vala:117
-#, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Hapus semua barang secara permanen dari Tong Sampah pada kaitan ini?"
+msgstr "Hapus Permanen Tong Sampah pada Kaitan ini?"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1308,16 +1285,14 @@ msgid "Emptying Trash"
 msgstr "Mengosongkan Tong Sampah"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Tidak dapat mengaitkan '%s'"
+msgstr "Tidak dapat melepas kait '%s'"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Tidak dapat mengeluarkan %V"
+msgstr "Tidak dapat mengeluarkan ‘%s’"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1372,7 +1347,7 @@ msgstr "Hapus yang Terpilih"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Kirim dengan Surel"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1479,7 +1454,7 @@ msgstr "Sebagai aplikasi utama"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Tidak dapat menentukan kepemilikan dan izin berkas"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1687,17 +1662,15 @@ msgstr "Tempel"
 
 #: src/View/AbstractDirectoryView.vala:2000
 msgid "Select All"
-msgstr ""
+msgstr "Pilih Semua"
 
 #: src/View/AbstractDirectoryView.vala:2009
 msgid "Invert Selection"
-msgstr ""
+msgstr "Balikkan Seleksi"
 
 #: src/View/AbstractDirectoryView.vala:2018
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Pulihkan Semua"
+msgstr "Batal Pilih Semua"
 
 #: src/View/AbstractDirectoryView.vala:2026
 msgid "Cut"
@@ -1713,10 +1686,8 @@ msgid "Move to Trash"
 msgstr "Pindahkan ke Tong Sampah"
 
 #: src/View/AbstractDirectoryView.vala:2046
-#, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
-msgstr "Hapus permanen"
+msgstr "Hapus Permanen"
 
 #: src/View/AbstractDirectoryView.vala:2053
 msgid "Restore from Trash"
@@ -1950,13 +1921,11 @@ msgstr "Berkas yang dipilih sudah tidak ada lagi."
 
 #: src/View/Window.vala:147
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Batalkan Tutup Tab"
 
 #: src/View/Window.vala:456
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "Tutup"
+msgstr "Tutup Tab"
 
 #: src/View/Window.vala:569 src/View/Window.vala:579
 msgid "(as Administrator)"
@@ -1964,17 +1933,15 @@ msgstr "(sebagai Administrator)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Buang '%s'"
+msgstr "Keluarkan '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Tidak dapat mengaitkan '%s'"
+msgstr "Lepas Kait '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -1990,14 +1957,13 @@ msgstr "%s dari %s"
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Tidak dikaitkan"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2018,16 +1984,18 @@ msgstr "Lihat root dari berkas sistem lokal"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s tidak berisi data yang dapat diakses."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Untuk menggunakan drive ini, Anda mungkin perlu memasangnya ulang, atau "
+"memasukkan media atau memformatnya."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Tidak terformat atau tidak ada media"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2064,10 +2032,8 @@ msgid "Connect Server…"
 msgstr "Sambungkan Server…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "Lepas Kaitan (_U)"
+msgstr "Ikat kaitan"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
@@ -2108,8 +2074,7 @@ msgid "%u folders"
 msgstr "%u folder"
 
 #: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " dan %u item lain (%s) dipilih"
@@ -2125,16 +2090,14 @@ msgstr "%u objek terpilih (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:277
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u subfolder, "
+msgstr[0] "%u sub-folder, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:283
-#, fuzzy, c-format
-#| msgid "%u file, "
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u berkas, "
@@ -2152,8 +2115,7 @@ msgstr "ukuran tidak diketahui"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:300
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u berkas tidak dapat dibaca"
@@ -2172,7 +2134,7 @@ msgstr "Menjalankan"
 
 #: src/View/Widgets/SearchResults.vala:89
 msgid "More Results …"
-msgstr "Hasil Lebih . . ."
+msgstr "Hasil Lebih …"
 
 #: src/View/Widgets/SearchResults.vala:281
 msgid "In This Folder"
