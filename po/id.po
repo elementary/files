@@ -375,7 +375,7 @@ msgstr "Abaikan"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Tidak ada file di folder ini yang akan dipulihkan"
 
 #: libcore/FileUtils.vala:192
 #, fuzzy
