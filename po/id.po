@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2022-01-07 20:37+0000\n"
-"Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
+"Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -1100,7 +1100,7 @@ msgstr "Galat saat membuat berkas %s."
 #: libcore/marlin-file-operations.c:4743
 #, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "Terjadi kesalahan saat membuat direktori di %s."
+msgstr "Terjadi galat saat membuat direktori di %s."
 
 #: libcore/PopupMenuBuilder.vala:54
 msgid "Open in New _Tab"
@@ -1143,7 +1143,7 @@ msgstr "Buang"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
 msgid "Add to Bookmarks"
-msgstr "Tambahkan ke Bookmark"
+msgstr "Tambahkan ke Penanda Taut"
 
 #: libcore/PopupMenuBuilder.vala:104
 #, fuzzy
