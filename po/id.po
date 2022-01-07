@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2022-01-07 20:37+0000\n"
-"Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
+"PO-Revision-Date: 2022-01-07 20:41+0000\n"
+"Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -1627,7 +1627,7 @@ msgstr "Tidak dapat membuka berkas atau URI dengan aplikasi ini"
 #: src/View/AbstractDirectoryView.vala:827
 #: src/View/AbstractDirectoryView.vala:1138
 msgid "Cannot execute this file"
-msgstr "Tidak bisa menjalankan berkas ini"
+msgstr "Tidak bisa membuka berkas ini"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
 #: src/View/AbstractDirectoryView.vala:837
@@ -2000,10 +2000,8 @@ msgid "Not mounted"
 msgstr ""
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "View the home folder"
-msgstr "Gagal membuat folder"
+msgstr "Lihat folder home"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
