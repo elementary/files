@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2022-01-07 20:33+0000\n"
-"Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
+"Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -980,10 +980,10 @@ msgstr "Berkas sumber akan ditimpa oleh tujuan."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2987
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file with the same name in %s."
 msgstr ""
-"Tidak dapat membuang berkas yang sudah ada dengan nama yang sama dalam %F."
+"Tidak dapat membuang berkas yang sudah ada dengan nama yang sama dalam %s."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
