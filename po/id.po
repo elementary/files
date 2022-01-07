@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2022-01-07 20:45+0000\n"
-"Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
+"Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -2013,7 +2013,7 @@ msgstr "Buka Tong Sampah"
 
 #: src/View/Sidebar/DeviceListBox.vala:152
 msgid "View the root of the local filesystem"
-msgstr "Lihat root dari filesystem lokal"
+msgstr "Lihat root dari berkas sistem lokal"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
@@ -2060,10 +2060,8 @@ msgid "Devices and places available via a network"
 msgstr "Perangkat dan tempat yang tersedia melalui jaringan"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "Menyambung ke Server…"
+msgstr "Sambungkan Server…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
