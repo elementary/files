@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
 "PO-Revision-Date: 2022-01-07 20:35+0000\n"
-"Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
+"Last-Translator: Faisal Rachmadin <frachmadin@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -1042,7 +1042,7 @@ msgstr[0] "Membuat tautan menuju %'d berkas"
 #: libcore/marlin-file-operations.c:3917
 #, c-format
 msgid "Error while creating link to %s."
-msgstr "Kesalahan saat membuat tautan menuju %s."
+msgstr "Galat saat membuat tautan menuju %s."
 
 #: libcore/marlin-file-operations.c:3920
 msgid "Symbolic links only supported for local files"
