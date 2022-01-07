@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2022-01-07 20:30+0000\n"
+"PO-Revision-Date: 2022-01-07 20:31+0000\n"
 "Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
@@ -108,10 +108,8 @@ msgid "Share:"
 msgstr "Berbagi:"
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Jalur folder yang dibagikan di server"
+msgstr "Jalur folder yang dibagikan di server (Opsional)"
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
@@ -363,14 +361,13 @@ msgid "The item cannot be restored from trash"
 msgstr "Objek tidak bisa dikembalikan dari tong sampah"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Berkas yang dipilih sudah tidak ada lagi."
+msgstr "Folder asli %s sudah tidak tersedia"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Apakah kamu akan membuatnya kembali?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
