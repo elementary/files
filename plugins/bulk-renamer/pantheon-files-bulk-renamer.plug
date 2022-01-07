@@ -1,0 +1,3 @@
+[Plugin]
+Name=Bulk Renamer
+File=libpantheon-files-bulk-renamer.so
