@@ -68,12 +68,6 @@ namespace Files.FileUtils {
             parent_path = path;
         }
 
-        if ((parent_path.has_prefix (Files.MTP_URI) || parent_path.has_prefix (Files.PTP_URI)) &&
-            !valid_mtp_uri (parent_path)) {
-
-            parent_path = path;
-        }
-
         if (parent_path == Files.SMB_URI) {
             parent_path = parent_path + Path.DIR_SEPARATOR_S;
         }
@@ -438,13 +432,21 @@ namespace Files.FileUtils {
             if (explode_protocol[0] == "mtp" || explode_protocol[0] == "gphoto2" ) {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
                 if (explode_path[0] != null && explode_path[0].has_prefix ("[")) {
+                    // Old form of address
                     protocol = (explode_protocol[0] + "://" + explode_path[0] + "]").replace ("///", "//");
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    debug ("Invalid mtp or ptp path %s", path);
+                    // New form of address
                     protocol = explode_protocol[0] + "://";
                     new_path = explode_protocol[1] ?? "";
+                }
+
+                // Fix issue with colon in server name for some devices
+                var server = new_path.split (Path.DIR_SEPARATOR_S)[0];
+                if (server != null) {
+                    server.replace (":", "%3A");
+                    new_path = server + new_path.slice (server.length, -1);
                 }
             } else {
                 protocol = explode_protocol[0] + "://";
@@ -463,21 +465,6 @@ namespace Files.FileUtils {
         if (new_path.has_suffix (Path.DIR_SEPARATOR_S) && path != Path.DIR_SEPARATOR_S) {
             new_path = new_path.slice (0, new_path.length - 1);
         }
-    }
-
-    private bool valid_mtp_uri (string uri) {
-        if (!uri.contains (Files.MTP_URI) && !uri.contains (Files.PTP_URI)) {
-            return false;
-        }
-
-        string[] explode_protocol = uri.split ("://", 2);
-        if (explode_protocol.length != 2 ||
-            !explode_protocol[1].has_prefix ("[") ||
-            !explode_protocol[1].contains ("]")) {
-            return false;
-        }
-
-        return true;
     }
 
     public string get_smb_share_from_uri (string uri) {
