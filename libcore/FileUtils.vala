@@ -265,7 +265,15 @@ namespace Files.FileUtils {
             rc = rc.replace ("'", "");
         }
 
-        return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
+        var scheme = Uri.parse_scheme (uri);
+        var escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
+        if (scheme == "mtp" || scheme == "gphoto2") {
+            // We want to escape colons except in protocol as some servers have a colon in name
+            escaped_uri = escaped_uri.replace (":", "%3A");
+            escaped_uri = escaped_uri.replace ("%3A//", "://");
+        }
+
+        return escaped_uri;
     }
 
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
@@ -440,13 +448,6 @@ namespace Files.FileUtils {
                     // New form of address
                     protocol = explode_protocol[0] + "://";
                     new_path = explode_protocol[1] ?? "";
-                }
-
-                // Fix issue with colon in server name for some devices
-                var server = new_path.split (Path.DIR_SEPARATOR_S)[0];
-                if (server != null) {
-                    server.replace (":", "%3A");
-                    new_path = server + new_path.slice (server.length, -1);
                 }
             } else {
                 protocol = explode_protocol[0] + "://";
