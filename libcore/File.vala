@@ -54,6 +54,7 @@ public class Files.File : GLib.Object {
     public string? custom_display_name = null;
     public string uri { get; construct; }
     public uint64 size = 0;
+    public int count = -1;
     public string format_size = null;
     public int color = 0;
     public uint64 modified;
@@ -1091,7 +1092,7 @@ public class Files.File : GLib.Object {
 
     private void update_size () {
         if (is_folder () || is_root_network_folder ()) {
-            format_size = item_count ();
+            format_size = format_item_count ();
         } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
             format_size = GLib.format_size (size);
         } else {
@@ -1099,21 +1100,31 @@ public class Files.File : GLib.Object {
         }
     }
 
-    private string item_count () {
-        try {
-            var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
-            var count = 0;
-            while (f_enum.next_file () != null) {
-                count++;
-            }
+    private string format_item_count () {
+        ensure_item_count (true); // Re-count file items
 
-            if (count == 0) {
-                return _("Empty");
-            } else {
-                return ngettext ("%i item", "%i items", count).printf (count);
+        if (count < 0) {
+            return (_("Inaccessible"));
+        } else if (count == 0) {
+            return _("Empty");
+        } else {
+            return ngettext ("%i item", "%i items", count).printf (count);
+        }
+
+    }
+
+    private void ensure_item_count (bool recount) {
+        if (recount || count < 0) {
+            try {
+                var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
+                count = 0;
+                while (f_enum.next_file () != null) {
+                    count++;
+                }
+            } catch (Error e) {
+                count = -1;
+                return;
             }
-        } catch (Error e) {
-            return _("Inaccessible");
         }
     }
 
@@ -1205,21 +1216,10 @@ public class Files.File : GLib.Object {
         return formated_type.collate (other.formated_type);
     }
 
-    private int compare_files_by_size (Files.File other) {
-        if (size < other.size) {
-            return -1;
-        } else if (size > other.size) {
-            return 1;
-        }
-
-        return 0;
-    }
-
     private int compare_by_size (Files.File other) {
         /* As folder files have a fixed standard size (4K) assign them a virtual size of -1 for now
          * so always sorts first. */
 
-        /* TODO Sort folders according to number of files inside like Dolphin? */
         if (is_folder () && !other.is_folder ()) {
             return -1;
         }
@@ -1229,11 +1229,26 @@ public class Files.File : GLib.Object {
         }
 
         if (is_folder () && other.is_folder ()) {
-            return 0;
+            /* Compare folders according to number of files inside */
+            // Ensure we have a count but for performance do not recount items
+            ensure_item_count (false);
+            other.ensure_item_count (false);
+
+            if (count < other.count) {
+                return -1;
+            } else if (count > other.count) {
+                return 1;
+            }
+        } else {
+            /* Only compare sizes for regular files */
+            if (size < other.size) {
+                return -1;
+            } else if (size > other.size) {
+                return 1;
+            }
         }
 
-        /* Only compare sizes for regular files */
-        return compare_files_by_size (other);
+        return 0;
     }
 
     private void update_icon_internal (int size, int scale) {
