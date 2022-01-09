@@ -453,7 +453,9 @@ namespace Files.View {
                 "",
                 null,
                 content,
-                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w")
+                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
+                new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
+                new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
             ) {
                 ellipsize_mode = Pango.EllipsizeMode.MIDDLE
             };
@@ -790,6 +792,14 @@ namespace Files.View {
 
                 case "PREVIOUS":
                     tabs.previous_page ();
+                    break;
+
+                case "TAB":
+                    add_tab (current_tab.location, current_tab.view_mode);
+                    break;
+
+                case "WINDOW":
+                    tabs.tab_moved (tabs.current, 0, 0);
                     break;
 
                 default:
@@ -1224,6 +1234,8 @@ namespace Files.View {
             application.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
             application.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
+            application.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
+            application.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
         }
     }
 }
