@@ -378,7 +378,9 @@ namespace Files {
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
-            prefs.bind_property ("singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT);
+            prefs.bind_property (
+                "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
