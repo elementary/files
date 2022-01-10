@@ -1867,7 +1867,7 @@ namespace Files {
 
             if (common_actions.get_action_enabled ("open-in")) {
                 var new_tab_menuitem = new Gtk.MenuItem ();
-                if (selected_file != null) {
+                if (selected_files != null) {
                     new_tab_menuitem.add (new Granite.AccelLabel (
                         _("New Tab"),
                         "<Shift>Return"
@@ -1876,15 +1876,15 @@ namespace Files {
                 } else {
                     new_tab_menuitem.add (new Granite.AccelLabel.from_action_name (
                         _("New Tab"),
-                        "win.action-tab::TAB"
+                        "win.tab::TAB"
                     ));
-                    new_tab_menuitem.action_name = "win.action-tab";
+                    new_tab_menuitem.action_name = "win.tab";
                 }
 
                 new_tab_menuitem.action_target = "TAB";
 
                 var new_window_menuitem = new Gtk.MenuItem ();
-                if (selected_file != null) {
+                if (selected_files != null) {
                     new_window_menuitem.add (new Granite.AccelLabel (
                         _("New Window"),
                         "<Shift><Ctrl>Return"
@@ -1893,9 +1893,9 @@ namespace Files {
                 } else {
                     new_window_menuitem.add (new Granite.AccelLabel.from_action_name (
                         _("New Window"),
-                        "win.action-tab::WINDOW"
+                        "win.tab::WINDOW"
                     ));
-                    new_window_menuitem.action_name = "win.action-tab";
+                    new_window_menuitem.action_name = "win.tab";
                 }
                 new_window_menuitem.action_target = "WINDOW";
 
