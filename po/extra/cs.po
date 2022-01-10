@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-30 16:30+0000\n"
-"PO-Revision-Date: 2022-01-10 00:58+0000\n"
+"PO-Revision-Date: 2022-01-10 18:03+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
 "Language: cs\n"
@@ -77,15 +77,15 @@ msgstr "Vylepšení:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Close FileChooser with Esc key"
-msgstr ""
+msgstr "Dialog pro výběr souboru zavřete klávesou Esc"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Use new emblems for git status"
-msgstr ""
+msgstr "Použity nové emblémy pro git stav"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Show selection actions in secondary click menu"
-msgstr ""
+msgstr "Zobrazeny akce výběru v kontextové nabídce (pravé tlačítko myši)"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:67
@@ -101,19 +101,21 @@ msgid "Fixes:"
 msgstr "Opravy:"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
-msgstr "Do okna Vlastnosti přidáno zobrazování vyhrazeného místa"
+msgstr "V dialogu Vlastnosti vždy zobrazována stránka Oprávnění"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
+"Na stránce Oprávnění, když nejsou k dispozici jména/názvy, náhradně "
+"zobrazovány číselné identifikátory uživatele a skupiny"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "In Permissions page, show message when no information available"
 msgstr ""
+"Na stránce Oprávnění, když nejsou k dispozici potřebné údaje, zobrazena "
+"zpráva o tom"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:90
@@ -131,11 +133,14 @@ msgstr "Ostatní aktualizace:"
 #: data/io.elementary.files.appdata.xml.in.in:47
 msgid "Only allow one FileChooser per parent window"
 msgstr ""
+"V rámci jednoho nadřazeného okna umožněn pouze jeden dialog pro výběr souboru"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
 msgstr ""
+"Přejít do složky při stisknutí klávesy Enter v dialogu pro výběr souboru "
+"namísto jejího vybrání"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 #: data/io.elementary.files.appdata.xml.in.in:76
@@ -175,184 +180,196 @@ msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
 msgstr ""
+"Použití portálu „Odeslat e-mail“ namísto smlouvy, což zlepšuje kompatibilitu "
+"s alternativními e-mailovými aplikacemi"
 
 #: data/io.elementary.files.appdata.xml.in.in:61
 msgid "Add file filters and New Folder options to file chooser portal"
 msgstr ""
+"Přidány filtry souborů do voleb Nová složka do portálu dialogu výběru souboru"
 
 #: data/io.elementary.files.appdata.xml.in.in:62
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
+"Umožněna prázdná hesla pro vzdálená připojení, např. pro SSH prostřednictvím "
+"soukromého klíče"
 
 #: data/io.elementary.files.appdata.xml.in.in:63
 msgid "Make ejecting devices safer"
-msgstr ""
+msgstr "Bezpečnější odpojování zařízení"
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Add option to stop drive if possible"
-msgstr ""
+msgstr "Přidána volba pro zastavení jednotky, pokud je to možné"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Show unformatted drives and drives without media"
 msgstr ""
+"Zobrazovány nenaformátované jednotky nebo ty, ve kterých se nenachází médium"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
+"Opraveno vkládán vybraného textu z pruhu popisu umístění do jiného okna "
+"použitím kliknutí prostředním tlačítkem"
 
 #: data/io.elementary.files.appdata.xml.in.in:70
-#, fuzzy
-#| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
-msgstr "Opraveno vybírání vložených souborů"
+msgstr "Opraveno vybírání vícero skupin souborů"
 
 #: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr ""
+msgstr "Umožněno přetahování záložky přímo pod Nedávnou záložku"
 
 #: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr ""
+msgstr "Nezobrazován nepoužitelný cíl upuštění pod záložkou Koš"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Fix sidebar showing both drive and volume for same device"
 msgstr ""
+"Opraven postranní panel zobrazující jak jednotku tak hlasitost pro stejné "
+"zařízení"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
 msgstr ""
+"Opraven postranní pruh zobrazující SSH servery jak v sekci Úložiště, tak Síť"
 
 #: data/io.elementary.files.appdata.xml.in.in:86
 msgid "Show translated bookmark names when changing languages"
-msgstr ""
+msgstr "Při změně jazyka zobrazovány přeložené názvy záložek"
 
 #: data/io.elementary.files.appdata.xml.in.in:87
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
 msgstr ""
+"Odstraněno mizení ikon některých souborů se zvukem při posunování nebo změně "
+"pohledu"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
 msgstr ""
+"Odstraněno chvilkové zobrazení stavového překryvu při změně kořenové složky "
+"ve sloupcovém zobrazení"
 
 #: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Remove message about reporting issues when running from Terminal"
-msgstr ""
+msgstr "Odebrána zpráva o hlášení problémů při spouštění z Terminálu"
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr ""
+msgstr "Záložky otevřete v nových panelech přidržením klávesy Ctrl při klikání"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
+"Opraveno upouštění URI adres na úložná zařízení a síťová umístění v "
+"postranním panelu"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Fix restoring tabs after a system restart"
-msgstr ""
+msgstr "Opraveno obnovování panelů po restartu systému"
 
 #: data/io.elementary.files.appdata.xml.in.in:104
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
+"Nerušit výběr při kliknutí pravým tlačítkem na volný prostor okolo souboru "
+"či složky"
 
 #: data/io.elementary.files.appdata.xml.in.in:105
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
+"Zobrazit kontextovou nabídku složky při kliknutí pravým tlačítkem myši mimo "
+"výběr"
 
 #: data/io.elementary.files.appdata.xml.in.in:117
 msgid "Fix small context menus on breadcrumbs"
-msgstr ""
+msgstr "Opraveny malé kontextové nabídky na drobečkové navigaci"
 
 #: data/io.elementary.files.appdata.xml.in.in:118
 msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr ""
+msgstr "Opraveno přidávání do záložek jediné označené položky stisknutím Ctrl+D"
 
 #: data/io.elementary.files.appdata.xml.in.in:119
 msgid "Fix renaming bookmarks in the sidebar"
-msgstr ""
+msgstr "Opraveno přejmenovávání záložek v postranním panelu"
 
 #: data/io.elementary.files.appdata.xml.in.in:120
-#, fuzzy
-#| msgid "Fix color tags disappearing when thumbnails hidden"
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
-msgstr "Opraveno mizení barevných štítků při skrytí náhledů"
+msgstr "Opraven problém se zobrazování barevných štítků při skrytých náhledech"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
-#, fuzzy
-#| msgid "Fix crash when opening multiple video files"
 msgid "Fix freeze when comparing copied files"
-msgstr "Oprava padání při otevírání vícero videosouborů"
+msgstr "Opraveno mrznutí při porovnávání zkopírovaných souborů"
 
 #: data/io.elementary.files.appdata.xml.in.in:133
 msgid "Fix truncation of final column in Column View under some circumstances"
 msgstr ""
+"Opraveno zkracování posledního sloupce ve sloupcovém zobrazení za určitých "
+"podmínek"
 
 #: data/io.elementary.files.appdata.xml.in.in:137
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show more keyboard accelerators in menus"
-msgstr "U položek nabídek už jsou zobrazovány klávesové zkratky"
+msgstr "Zobrazováno více klávesových akcelerátorů v nabídkách"
 
 #: data/io.elementary.files.appdata.xml.in.in:149
 msgid "Fix connecting to AFP servers so that passwords are remembered"
-msgstr ""
+msgstr "Opraveno připojování k AFP serverům, takže jsou zapamatována hesla"
 
 #: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Fix MTP mounts"
-msgstr ""
+msgstr "Opravena MTP připojení"
 
 #: data/io.elementary.files.appdata.xml.in.in:154
 msgid "Launch files with double click instead of single click"
-msgstr ""
+msgstr "Spouštění souborů dvojklikem namísto jediného kliknutí"
 
 #: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Provide a File Chooser portal for Flatpak apps"
 msgstr ""
+"Poskytuje portál pro výběr souborů pro aplikace pocházející z Flatpak balíčků"
 
 #: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Brand new animated Sidebar"
-msgstr ""
+msgstr "Zcela nový animovaný postranní panel"
 
 #: data/io.elementary.files.appdata.xml.in.in:157
 msgid "Dark style support"
-msgstr ""
+msgstr "Podpora pro tmavý vzhled"
 
 #: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Mint and Bubblegum color tags"
-msgstr ""
+msgstr "Mátová a žvýkačková barva pro štítky"
 
 #: data/io.elementary.files.appdata.xml.in.in:159
 msgid "Do not restore locations that have become inaccessible"
-msgstr ""
+msgstr "Neobnovovat umístění, která přestanou být dostupná"
 
 #: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Clicking between thumbnail and text now activates/selects in Grid view"
-msgstr ""
+msgstr "Kliknutí mezi náhled a text nyní v zobrazení v mřížce aktivuje/vybírá"
 
 #: data/io.elementary.files.appdata.xml.in.in:161
 msgid "AFC protocol support"
-msgstr ""
+msgstr "Podpora protokolu AFC"
 
 #: data/io.elementary.files.appdata.xml.in.in:162
 msgid "Add a smaller minimum icon size in list view"
-msgstr ""
+msgstr "Přidána menší minimální velikost ikon v zobrazení v seznamu"
 
 #: data/io.elementary.files.appdata.xml.in.in:163
-#, fuzzy
-#| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
-msgstr "V zobrazení v seznamu zobrazovat počet položek"
+msgstr "V zobrazení v seznamu zobrazovat emblémy"
 
 #: data/io.elementary.files.appdata.xml.in.in:164
-#, fuzzy
-#| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
-msgstr "Vylepšení navigace pomocí klávesnice"
+msgstr "Vylepšení výkonu"
 
 #: data/io.elementary.files.appdata.xml.in.in:165
 msgid "Stability improvements"
@@ -360,7 +377,7 @@ msgstr "Vylepšení stability"
 
 #: data/io.elementary.files.appdata.xml.in.in:169
 msgid "Rename \"Devices\" to \"Storage\""
-msgstr ""
+msgstr "„Zařízení“ přejmenována na „Úložiště“"
 
 #: data/io.elementary.files.appdata.xml.in.in:178
 msgid "Bookmark menu option for network mounts in sidebar"
@@ -698,12 +715,10 @@ msgstr ""
 "Vyhnutí se možnému pádu v některých situacích při kopírování a vkládání"
 
 #: data/io.elementary.files.appdata.xml.in.in:335
-#, fuzzy
-#| msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr ""
 "Opravena navigace pomocí klávesnice pro vybírání jednotlivých souborů v "
-"zobrazení s ikonami"
+"zobrazení v mřížce"
 
 #: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
@@ -1015,10 +1030,8 @@ msgid "Translation updates"
 msgstr "Aktualizovány překlady"
 
 #: data/io.elementary.files.appdata.xml.in.in:545
-#, fuzzy
-#| msgid "elementary LLC."
 msgid "elementary, Inc."
-msgstr "elementary LLC."
+msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
