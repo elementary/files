@@ -281,7 +281,12 @@ public class Files.Application : Gtk.Application {
     private void init_schemas () {
         /* Bind settings with GOFPreferences */
         var prefs = Files.Preferences.get_default ();
+        if (app_settings.settings_schema.has_key ("singleclick-select")) {
+            app_settings.bind ("singleclick-select", prefs, "singleclick-select", GLib.SettingsBindFlags.DEFAULT);
+        }
+
         Files.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+
         Files.app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
         Files.app_settings.bind ("hide-local-thumbnails",

@@ -192,6 +192,7 @@ namespace Files {
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
+        public bool singleclick_select { get; set; }
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
@@ -238,7 +239,6 @@ namespace Files {
                         connect_tree_signals ();
 
                         update_menu_actions ();
-
                     }
                 }
             }
@@ -378,6 +378,7 @@ namespace Files {
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
+            prefs.bind_property ("singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT);
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
@@ -2182,6 +2183,9 @@ namespace Files {
                 var hide_local_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Hide Thumbnails"));
                 hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
 
+                var singleclick_select_menuitem = new Gtk.CheckMenuItem.with_label (_("Select Folders with Single Click"));
+                singleclick_select_menuitem.action_name = "win.singleclick-select";
+
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
                         menu.add (paste_menuitem);
@@ -2197,6 +2201,7 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (singleclick_select_menuitem);
                     menu.add (show_hidden_menuitem);
                     menu.add (hide_local_thumbnails_menuitem);
                 } else {
@@ -2229,6 +2234,7 @@ namespace Files {
                     }
 
                     menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (singleclick_select_menuitem);
                     menu.add (show_hidden_menuitem);
 
                     if (!slot.directory.is_network) {
@@ -3213,7 +3219,7 @@ namespace Files {
                 switch (click_zone) {
                     case ClickZone.ICON:
                     case ClickZone.NAME:
-                        if (on_directory && one_or_less) {
+                        if (on_directory && one_or_less && !singleclick_select) {
                             win.set_cursor (activatable_cursor);
                         }
 
@@ -3493,7 +3499,7 @@ namespace Files {
                             should_deselect = only_control_pressed && path_selected;
                             /* determine whether should activate on key release (unless pointer moved)*/
                             if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
-                                should_activate = on_directory || double_click_event;
+                                should_activate = (on_directory && !singleclick_select) || double_click_event;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
