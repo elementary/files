@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-30 16:30+0000\n"
+"POT-Creation-Date: 2022-01-11 21:18+0000\n"
 "PO-Revision-Date: 2022-01-10 18:03+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
@@ -294,7 +294,8 @@ msgstr "Opraveny malé kontextové nabídky na drobečkové navigaci"
 
 #: data/io.elementary.files.appdata.xml.in.in:118
 msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr "Opraveno přidávání do záložek jediné označené položky stisknutím Ctrl+D"
+msgstr ""
+"Opraveno přidávání do záložek jediné označené položky stisknutím Ctrl+D"
 
 #: data/io.elementary.files.appdata.xml.in.in:119
 msgid "Fix renaming bookmarks in the sidebar"
@@ -563,7 +564,8 @@ msgstr "Opraven problém s drobečkovou navigací ve voliči souborů"
 
 #: data/io.elementary.files.appdata.xml.in.in:270
 msgid "Show a warning when ejecting a volume that's still in use"
-msgstr "Už se zobrazuje varování při odpojování svazku, který je něčím využíván"
+msgstr ""
+"Už se zobrazuje varování při odpojování svazku, který je něčím využíván"
 
 #: data/io.elementary.files.appdata.xml.in.in:271
 msgid "Fix cursor update after horizontal scroll in Column View"
