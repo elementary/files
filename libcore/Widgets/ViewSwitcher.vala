@@ -22,17 +22,11 @@
 ***/
 
 namespace Files.View.Chrome {
-    public class ViewSwitcher : Gtk.Grid {
+    public class ViewSwitcher : Gtk.Box {
         public GLib.SimpleAction action { get; construct; }
 
         public ViewSwitcher (GLib.SimpleAction view_mode_action) {
-            Object (
-                action: view_mode_action,
-                orientation: Gtk.Orientation.HORIZONTAL,
-                margin_top: 4,
-                margin_bottom: 4,
-                column_homogeneous: true
-            );
+            Object (action: view_mode_action);
         }
 
         construct {
@@ -69,9 +63,10 @@ namespace Files.View.Chrome {
             column_view_btn.toggled.connect (on_mode_changed);
             column_view_btn.set_data<ViewMode> ("id", ViewMode.MILLER_COLUMNS);
 
-            attach (grid_view_btn, 0, 0);
-            attach (list_view_btn, 1, 0);
-            attach (column_view_btn, 2, 0);
+            valign = Gtk.Align.CENTER;
+            add (grid_view_btn);
+            add (list_view_btn);
+            add (column_view_btn);
         }
 
         private string get_tooltip_for_id (uint32 id, string description) {
