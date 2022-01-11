@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2021-12-29 06:47+0000\n"
+"PO-Revision-Date: 2022-01-11 23:32+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -76,7 +76,7 @@ msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Double click selects instead of exiting while renaming in list view"
-msgstr ""
+msgstr "לחיצה כפולה בוחרת במקום לצאת תוך שינוי שם בתצוגת רשימה"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:62
