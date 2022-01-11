@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 21:18+0000\n"
-"PO-Revision-Date: 2021-12-31 02:58+0000\n"
+"PO-Revision-Date: 2022-01-11 22:40+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -1155,7 +1155,7 @@ msgstr "Slett alt i papirkurven for godt"
 #, fuzzy
 #| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Slett alle elementer i papirkurven montert her for godt"
+msgstr "Slett alle elementer i papirkurven for denne monteringen"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1304,10 +1304,9 @@ msgid "Emptying Trash"
 msgstr "Tømmer papirkurv"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Kan ikke montere «%s»"
+msgstr "Kan ikke avmontere «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:52
 #, c-format
@@ -1960,10 +1959,8 @@ msgid "Close Tab"
 msgstr "Lukk fane"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "Dupliserer «%s»"
+msgstr "Dupliserer fane"
 
 #: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
