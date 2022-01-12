@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2022-01-10 18:03+0000\n"
+"PO-Revision-Date: 2022-01-12 18:23+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
@@ -1971,10 +1971,8 @@ msgid "Close Tab"
 msgstr "Zavřít panel"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "Duplikuje se „%s“"
+msgstr "Zduplikovat panel"
 
 #: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
