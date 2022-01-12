@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2021-12-31 10:03+0000\n"
+"PO-Revision-Date: 2022-01-12 23:27+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -1989,10 +1989,8 @@ msgid "Close Tab"
 msgstr "Zamknij kartę"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "Duplikowanie „%s”"
+msgstr "Zduplikuj kartę"
 
 #: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
