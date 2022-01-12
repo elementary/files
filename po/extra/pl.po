@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2021-12-30 10:41+0000\n"
+"PO-Revision-Date: 2022-01-12 23:27+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -87,6 +87,8 @@ msgstr "Poprawki:"
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Double click selects instead of exiting while renaming in list view"
 msgstr ""
+"Podwójne kliknięcie zamiast wyjściem jest teraz wybieraniem podczas zmiany "
+"nazwy w widoku listy"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:62
