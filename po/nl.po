@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2020-10-31 21:15+0000\n"
-"Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
+"PO-Revision-Date: 2022-01-13 18:17+0000\n"
+"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:110
@@ -100,20 +100,16 @@ msgid "Type:"
 msgstr "Type:"
 
 #: libcore/ConnectServerDialog.vala:178
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "Naam van share op server"
+msgstr "Naam van share op server (Optioneel)"
 
 #: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "Share:"
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "Pad naar de gedeelde map op de server"
+msgstr "Pad naar de gedeelde map op de server (Optioneel)"
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
@@ -363,10 +359,9 @@ msgid "The item cannot be restored from trash"
 msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Het gekozen bestand bestaat niet meer."
+msgstr "De originele map %s bestaat niet meer."
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
