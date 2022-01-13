@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2022-01-13 18:20+0000\n"
-"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"PO-Revision-Date: 2022-01-13 18:21+0000\n"
+"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -380,6 +380,8 @@ msgstr ""
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Kon map %s niet opnieuw aanmaken. Alle bestanden in deze folder worden "
+"genegeerd"
 
 #: libcore/FileUtils.vala:578
 #, c-format
@@ -1087,10 +1089,8 @@ msgid "Setting permissions"
 msgstr "Toegangsrechten instellen"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "Bestanden in de prullenbak gooien"
+msgstr "Geen bestanden te verwerken"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
