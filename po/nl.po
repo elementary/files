@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2022-01-13 18:29+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1090,7 +1090,7 @@ msgstr "Toegangsrechten instellen"
 
 #: libcore/marlin-file-operations.c:4409
 msgid "Zero files to process"
-msgstr "Geen bestanden te verwerken"
+msgstr "Geen bestanden om te verwerken"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
@@ -1157,36 +1157,27 @@ msgstr "Eigenschappen"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Media Uitwerpen"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Verwijder"
+msgstr "Veilig Verwijderen"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
 msgid "Add to Bookmarks"
 msgstr "Aan bladwijzers toevoegen"
 
 #: libcore/PopupMenuBuilder.vala:104
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
-msgstr "Alle items permanent uit de prullenbak verwijderen?"
+msgstr "Alles in de Prullenbak Permanent Verwijderen"
 
 #: libcore/PopupMenuBuilder.vala:104
-#, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete Trash"
-msgstr "Alle items permanent uit de prullenbak verwijderen?"
+msgstr "Prullenbak Permanent Legen"
 
 #: libcore/PopupMenuBuilder.vala:117
-#, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
-msgstr ""
-"Alle items permanent uit de prullenbak op deze gekoppelde schijf verwijderen?"
+msgstr "Permanent de Inhoud van de Prullenbak op deze Schijf Legen"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1337,16 +1328,14 @@ msgid "Emptying Trash"
 msgstr "Bezig met prullenbak legen"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Kon '%s' niet koppelen"
+msgstr "Kon '%s' niet ontkoppelen"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Kan %V niet uitwerpen"
+msgstr "Kan '%s' niet uitwerpen"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1401,7 +1390,7 @@ msgstr "Selectie verwijderen"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Verstuurd via Email"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1509,7 +1498,7 @@ msgstr "Instellen als standaard"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Kon eigendomsrechten van bestand niet vaststellen"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1728,17 +1717,15 @@ msgstr "Plakken"
 
 #: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
-msgstr ""
+msgstr "Alles Selecteren"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
-msgstr ""
+msgstr "Selectie Omdraaien"
 
 #: src/View/AbstractDirectoryView.vala:2039
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Alles herstellen"
+msgstr "Alles Deselecteren"
 
 #: src/View/AbstractDirectoryView.vala:2047
 msgid "Cut"
@@ -1754,10 +1741,8 @@ msgid "Move to Trash"
 msgstr "Verplaats naar prullenbak"
 
 #: src/View/AbstractDirectoryView.vala:2067
-#, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
-msgstr "Permanent verwijderen"
+msgstr "Permanent Verwijderen"
 
 #: src/View/AbstractDirectoryView.vala:2074
 msgid "Restore from Trash"
@@ -1991,19 +1976,15 @@ msgstr "Het gekozen bestand bestaat niet meer."
 
 #: src/View/Window.vala:182
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Tab Sluiten Ongedaan Maken"
 
 #: src/View/Window.vala:491
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "Sluiten"
+msgstr "Tab Sluiten"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "\"%s\" dupliceren"
+msgstr "Tab Dupliceren"
 
 #: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
@@ -2015,17 +1996,15 @@ msgstr "(als Beheerder)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "‘%s’ _verwijderen"
+msgstr "'%s' uitwerpen"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Kon '%s' niet koppelen"
+msgstr "'%s' ontkoppelen"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2041,14 +2020,13 @@ msgstr "%s van de %s"
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Niet aangekoppeld"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
