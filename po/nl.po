@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2022-01-13 18:35+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -647,8 +647,6 @@ msgstr ""
 "voor meer informatie."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr ""
 "Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand proberen "
@@ -919,7 +917,7 @@ msgstr ""
 #: libcore/marlin-file-operations.c:2073
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Er is een fout opgetreden bij het aanmaken van de map “%s%”."
+msgstr "Er is een fout opgetreden bij het aanmaken van de folder “%s”."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -2090,13 +2088,11 @@ msgstr "Apparaten en locaties beschikbaar via een netwerk"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
-msgstr "Verbinden met server…"
+msgstr "Verbinden met de Server…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Ontkoppelen"
+msgstr "Koppelen"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
@@ -2150,12 +2146,11 @@ msgstr "%u items geselecteerd (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:277
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u submap, "
-msgstr[1] "%u submap, "
+msgstr[0] "%u ondergelegen folder, "
+msgstr[1] "%u ondergelegen folders, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:283
@@ -2178,12 +2173,11 @@ msgstr "onbekende grootte"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:300
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] "%u bestand niet leesbaar"
-msgstr[1] "%u bestand niet leesbaar"
+msgstr[0] "%u bestand is niet leesbaar"
+msgstr[1] "%u bestanden zijn niet leesbaar"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
