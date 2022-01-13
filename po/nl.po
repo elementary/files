@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2022-01-13 18:35+0000\n"
+"PO-Revision-Date: 2022-01-13 23:18+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -1944,7 +1944,7 @@ msgstr "De map kan niet aangekoppeld worden"
 
 #: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
-msgstr "Kon niet met de server verbinden voor deze map."
+msgstr "Kon niet met de server verbinden voor deze folder."
 
 #: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
