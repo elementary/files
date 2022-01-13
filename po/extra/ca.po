@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2021-12-30 19:22+0000\n"
+"PO-Revision-Date: 2022-01-13 12:29+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,6 +85,8 @@ msgstr "Correccions:"
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Double click selects instead of exiting while renaming in list view"
 msgstr ""
+"Doble clic per seleccionar en comptes de sortir mentre es canvia el nom a la "
+"vista de llista"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:62
