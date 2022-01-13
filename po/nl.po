@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2022-01-13 18:17+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -29,18 +29,16 @@ msgstr "Annuleren"
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Bestanden Openen als Alleen Lezen"
 
 #: filechooser-portal/FileChooserDialog.vala:123
 #: filechooser-portal/FileChooserDialog.vala:129
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Bestand Openen als Alleen Lezen"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " geselecteerd"
+msgstr "Geselecteerd"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -48,7 +46,7 @@ msgstr "Openen"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -189,35 +187,27 @@ msgid "Failed to parse the desktop file"
 msgstr "Kon desktopbestand niet verwerken"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Desktop-bestand verwerken is mislukt: %s"
+msgstr "Desktop-bestand verwerken is mislukt: "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "Kon commando niet maken van het bestand: %s"
+msgstr "Kon commando niet maken van het bestand: "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "Kon desktopbestand niet uitvoeren: %s"
+msgstr "Kon Desktop-Bestand Niet Uitvoeren: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Leeg bestand"
+msgstr "Leeg"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i item"
+msgstr[1] "%i items"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -349,10 +339,9 @@ msgid "Merge"
 msgstr "Samenvoegen"
 
 #: libcore/FileUtils.vala:89
-#, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
+msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
