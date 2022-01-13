@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2022-01-13 18:17+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -350,7 +350,7 @@ msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
 #: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr "De originele map %s bestaat niet meer."
+msgstr "De originele map %s bestaat niet meer"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
