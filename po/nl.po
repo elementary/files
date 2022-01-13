@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2022-01-13 18:20+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -354,7 +354,7 @@ msgstr "De originele map %s bestaat niet meer"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr "Wil je dit opnieuw aanmaken?"
+msgstr "Wil u dit opnieuw aanmaken?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -362,7 +362,7 @@ msgstr "Negeren"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Geen van de bestanden die in deze map zaten worden hersteld"
 
 #: libcore/FileUtils.vala:192
 msgid "Recreate"
