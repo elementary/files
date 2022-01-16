@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2021-12-01 09:27+0000\n"
+"PO-Revision-Date: 2022-01-15 20:46+0000\n"
 "Last-Translator: Yuchen Deng <loaden@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -38,10 +38,8 @@ msgid "Open File as Read Only"
 msgstr "只读打开文件"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " 已选中"
+msgstr "选中"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -49,7 +47,7 @@ msgstr "打开"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -190,34 +188,26 @@ msgid "Failed to parse the desktop file"
 msgstr "解析桌面文件 %s 失败"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "解析桌面文件 %s 失败"
+msgstr "解析桌面文件失败： "
 
 #: libcore/File.vala:899
-#, fuzzy
-#| msgid "Failed to create command from file: %s"
 msgid "Failed to create command from file: "
-msgstr "从文件 %s 创建指令失败"
+msgstr "从文件创建指令失败： "
 
 #: libcore/File.vala:908
-#, fuzzy
-#| msgid "Unable to Launch Desktop File: %s"
 msgid "Unable to Launch Desktop File: "
-msgstr "启动桌面文件 %s 失败"
+msgstr "无法启动桌面文件： "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "空白文件"
+msgstr "清空"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
+msgstr[0] "%i 项"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -616,10 +606,8 @@ msgid ""
 msgstr "无法将此文件放入回收站。查看下方详情以获取更多信息。"
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr "无法放入回收站，尝试删除文件吗？"
+msgstr "无法放入回收站。尝试删除它？"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
@@ -1091,13 +1079,11 @@ msgstr "属性"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "弹出媒介"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "删除"
+msgstr "安全移除"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
 msgid "Add to Bookmarks"
@@ -1257,16 +1243,14 @@ msgid "Emptying Trash"
 msgstr "正在清空回收站"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "无法挂载 “%s”"
+msgstr "无法卸载“%s”"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "无法弹出 %V"
+msgstr "无法弹出“%s”"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1321,7 +1305,7 @@ msgstr "删除选中"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "通过电子邮件发送"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1429,7 +1413,7 @@ msgstr "设为默认"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "无法确定文件所有权和权限"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1636,17 +1620,15 @@ msgstr "粘贴"
 
 #: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
-msgstr ""
+msgstr "全选"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
-msgstr ""
+msgstr "反向选择"
 
 #: src/View/AbstractDirectoryView.vala:2039
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "全部恢复"
+msgstr "取消全选"
 
 #: src/View/AbstractDirectoryView.vala:2047
 msgid "Cut"
@@ -1904,10 +1886,8 @@ msgid "Close Tab"
 msgstr "关闭标签"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "正在复制 \"%s\""
+msgstr "重复标签"
 
 #: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
@@ -1919,17 +1899,15 @@ msgstr "(以管理员身份)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "删除 “%s”"
+msgstr "弹出“%s”"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "无法挂载 “%s”"
+msgstr "卸载“%s”"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -1951,7 +1929,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "未挂载"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -1972,16 +1950,16 @@ msgstr "查看系统文件根目录"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s 包含不可访问的数据。"
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
-msgstr ""
+msgstr "要使用此驱动器，您可能需要重新插入它，或者插入媒体或格式化它。"
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "未格式化或没有媒体"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2018,10 +1996,8 @@ msgid "Connect Server…"
 msgstr "服务器…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "卸载"
+msgstr "绑定挂载"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
