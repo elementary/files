@@ -60,8 +60,6 @@ namespace Files {
         }
     }
 
-
-
     public enum ViewMode {
         /* First three modes must match the corresponding mode switch indices */
         ICON = 0,
@@ -145,5 +143,27 @@ namespace Files {
         XDND_DIRECT_SAVE0,
         NETSCAPE_URL,
         BOOKMARK_ROW
+    }
+
+    public enum SortBy {
+        NAME,
+        CREATED,
+        MODIFIED;
+
+        public string to_string () {
+            switch (this) {
+                case SortBy.NAME:
+                    return _("Name");
+
+                case SortBy.CREATED:
+                    return _("Creation Date");
+
+                case SortBy.MODIFIED:
+                    return _("Last modification date");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
     }
 }

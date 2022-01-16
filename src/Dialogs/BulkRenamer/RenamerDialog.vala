@@ -21,131 +21,8 @@
  *
 */
 
-namespace Files {
-    public enum RenameMode {
-        TEXT,
-        NUMBER,
-        DATETIME,
-        INVALID;
 
-        public string to_string () {
-            switch (this) {
-                case RenameMode.NUMBER:
-                    return _("Number sequence");
-
-                case RenameMode.TEXT:
-                    return _("Text");
-
-                case RenameMode.DATETIME:
-                    return _("Date");
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
-    public enum RenamePosition {
-        SUFFIX,
-        PREFIX,
-        REPLACE;
-
-        public string to_string () {
-            switch (this) {
-                case RenamePosition.SUFFIX:
-                    return _("Suffix");
-
-                case RenamePosition.PREFIX:
-                    return _("Prefix");
-
-                case RenamePosition.REPLACE:
-                    return _("Replace");
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-
-        public string to_placeholder () {
-            switch (this) {
-                case RenamePosition.SUFFIX:
-                    return _("Text to put at the end");
-
-                case RenamePosition.PREFIX:
-                    return _("Text to put at the start");
-
-                case RenamePosition.REPLACE:
-                    return _("Text to replace the target");
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
-    public enum RenameSortBy {
-        NAME,
-        CREATED,
-        MODIFIED;
-
-        public string to_string () {
-            switch (this) {
-                case RenameSortBy.NAME:
-                    return _("Name");
-
-                case RenameSortBy.CREATED:
-                    return _("Creation Date");
-
-                case RenameSortBy.MODIFIED:
-                    return _("Last modification date");
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
-    public enum RenameDateFormat {
-        DEFAULT_DATE,
-        DEFAULT_DATETIME,
-        LOCALE,
-        ISO_DATE,
-        ISO_DATETIME;
-
-        public string to_string () {
-            switch (this) {
-                case RenameDateFormat.DEFAULT_DATE:
-                    return _("Default Format - Date only");
-                case RenameDateFormat.DEFAULT_DATETIME:
-                    return _("Default Format - Date and Time");
-                case RenameDateFormat.LOCALE:
-                    return _("Locale Format - Date and Time");
-                case RenameDateFormat.ISO_DATE:
-                    return _("ISO 8601 Format - Date only");
-                case RenameDateFormat.ISO_DATETIME:
-                    return _("ISO 8601 Format - Date and Time");
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
-    public enum RenameDateType {
-        NOW,
-        CHOOSE;
-
-        public string to_string () {
-            switch (this) {
-                case RenameDateType.NOW:
-                    return _("Current Date");
-                case RenameDateType.CHOOSE:
-                    return _("Choose a date");
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
+public class Files.RenamerDialog : Gtk.Dialog {
     public enum RenameBase {
         ORIGINAL,
         CUSTOM;
@@ -161,9 +38,7 @@ namespace Files {
             }
         }
     }
-}
 
-public class Files.RenamerDialog : Gtk.Dialog {
     private Files.Renamer renamer;
     private Gtk.ListBox modifiers_listbox;
     private Gtk.Entry base_name_entry;
@@ -187,7 +62,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         deletable = true;
         set_title (_("Bulk Renamer"));
         renamer = new Renamer ();
-        renamer.sortby = RenameSortBy.NAME;
+        renamer.sortby = SortBy.NAME;
         renamer.is_reversed = false;
 
         /* Dialog actions */
@@ -271,10 +146,10 @@ public class Files.RenamerDialog : Gtk.Dialog {
             valign = Gtk.Align.CENTER,
             margin = 3
         };
-        sort_by_combo.insert (RenameSortBy.NAME, "NAME", RenameSortBy.NAME.to_string ());
-        sort_by_combo.insert (RenameSortBy.CREATED, "CREATED", RenameSortBy.CREATED.to_string ());
-        sort_by_combo.insert (RenameSortBy.MODIFIED, "MODIFIED", RenameSortBy.MODIFIED.to_string ());
-        sort_by_combo.set_active (RenameSortBy.NAME);
+        sort_by_combo.insert (SortBy.NAME, "NAME", SortBy.NAME.to_string ());
+        sort_by_combo.insert (SortBy.CREATED, "CREATED", SortBy.CREATED.to_string ());
+        sort_by_combo.insert (SortBy.MODIFIED, "MODIFIED", SortBy.MODIFIED.to_string ());
+        sort_by_combo.set_active (SortBy.NAME);
         var sort_by_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.END,
             valign = Gtk.Align.CENTER
@@ -400,7 +275,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
 
         /* Connect signals */
         sort_by_combo.changed.connect (() => {
-            renamer.sortby = (RenameSortBy)(sort_by_combo.get_active ());
+            renamer.sortby = (SortBy)(sort_by_combo.get_active ());
             schedule_view_update ();
         });
 
@@ -479,7 +354,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
     }
 
     private void add_modifier (bool allow_remove) {
-        var mod = new Modifier (allow_remove);
+        var mod = new RenamerModifier (allow_remove);
         renamer.modifier_chain.add (mod);
         modifiers_listbox.add (mod);
         mod.update_request.connect (schedule_view_update);

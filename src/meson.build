@@ -26,11 +26,9 @@ pantheon_files_exec = executable (
     'Dialogs/PropertiesWindow.vala',
     'Dialogs/VolumePropertiesWindow.vala',
     
-    'Dialogs/BulkRenamer/BulkRenamer.vala',
-    # 'Dialogs/BulkRenamer/Enums.vala.vala',
-    'Dialogs/BulkRenamer/Modifier.vala',
+    'Dialogs/BulkRenamer/Renamer.vala',
+    'Dialogs/BulkRenamer/RenamerModifier.vala',
     'Dialogs/BulkRenamer/RenamerDialog.vala',
-    # 'Dialogs/BulkRenamer/UndoStack.vala.vala',
 
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
