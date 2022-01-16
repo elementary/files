@@ -45,9 +45,16 @@ public class Files.Renamer : Object {
         file_info_map = new Gee.HashMap<string, FileInfo> ();
         modifier_chain = new Gee.ArrayList<Modifier> ();
         old_files_model = new Gtk.ListStore (1, typeof (string));
-        old_files_model.set_default_sort_func (old_files_model_sorter);
+        set_sort ();
         old_files_model.set_sort_column_id (Gtk.SortColumn.DEFAULT, Gtk.SortType.ASCENDING);
         new_files_model = new Gtk.ListStore (2, typeof (string), typeof (bool));
+
+        notify["is-reversed"].connect (set_sort);
+        notify["sortby"].connect (set_sort);
+    }
+
+    private void set_sort () {
+        old_files_model.set_default_sort_func (old_files_model_sorter);
     }
 
     public void add_files (List<Files.File> files) {
