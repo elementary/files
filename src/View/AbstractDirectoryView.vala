@@ -1093,21 +1093,21 @@ namespace Files {
         }
 
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
-            rename_selected_file ();
+            rename_selection ();
         }
-
-        private void rename_selected_file () {
+        
+        private void rename_selection () {
             if (selected_files == null) {
                 return;
             }
 
             if (selected_files.next != null) {
-                warning ("Cannot rename multiple files (yet) - renaming first only");
+                var rename_dialog = new RenamerDialog (selected_files);
+                rename_dialog.run ();
+                rename_dialog.destroy ();
+            } else {
+                rename_file (selected_files.data);
             }
-
-            /* Batch renaming will be provided by a contractor */
-
-            rename_file (selected_files.first ().data);
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2454,7 +2454,7 @@ namespace Files {
 
             action_set_enabled (common_actions, "paste-into", can_paste_into);
             action_set_enabled (common_actions, "open-in", only_folders);
-            action_set_enabled (selection_actions, "rename", is_selected && !more_than_one_selected && can_rename);
+            action_set_enabled (selection_actions, "rename", is_selected && can_rename);
             action_set_enabled (selection_actions, "view-in-location", is_selected);
             action_set_enabled (selection_actions, "open", is_selected && !more_than_one_selected && can_open);
             action_set_enabled (selection_actions, "open-with-app", can_open);
@@ -2894,23 +2894,6 @@ namespace Files {
         }
 
 /** Keyboard event handling **/
-
-        /** Returns true if the code parameter matches the keycode of the keyval parameter for
-          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
-        protected bool match_keycode (uint keyval, uint code, int level) {
-            Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (get_display ());
-            if (keymap.get_entries_for_keyval (keyval, out keys)) {
-                foreach (var key in keys) {
-                    if (code == key.keycode && level == key.level) {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
             if (is_frozen || event.is_modifier == 1) {
                 return true;
@@ -2918,45 +2901,10 @@ namespace Files {
 
             cancel_hover ();
 
-            uint keyval = event.keyval;
             Gdk.ModifierType consumed_mods = 0;
-
-            /* Leave standard ASCII alone, else try to get Latin hotkey from keyboard state */
-            /* This means that Latin hot keys for Latin Dvorak keyboards (e.g. Spanish Dvorak)
-             * will be in their Dvorak position, not their QWERTY position.
-             * For non-Latin (e.g. Cyrillic) keyboards however, the Latin hotkeys are mapped
-             * to the same position as on a Latin QWERTY keyboard. If the conversion fails, the unprocessed
-             * event.keyval is used. */
-            if (keyval > 127) {
-                int eff_grp, level;
-
-                if (!Gdk.Keymap.get_for_display (get_display ()).translate_keyboard_state (
-                        event.hardware_keycode,
-                        event.state, event.group,
-                        out keyval, out eff_grp,
-                        out level, out consumed_mods)) {
-
-                    warning ("translate keyboard state failed");
-                    keyval = event.keyval;
-                    consumed_mods = 0;
-                } else {
-                    keyval = 0;
-                    for (uint key = 32; key < 128; key++) {
-                        if (match_keycode (key, event.hardware_keycode, level)) {
-                            keyval = key;
-                            break;
-                        }
-                    }
-
-                    if (keyval == 0) {
-                        debug ("Could not match hardware code to ASCII hotkey");
-                        keyval = event.keyval;
-                        consumed_mods = 0;
-                    }
-                }
-            }
-
+            uint keyval = KeyUtils.map_key (event, out consumed_mods);
             var mods = (event.state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
+
             bool no_mods = (mods == 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -2980,7 +2928,7 @@ namespace Files {
 
                 case Gdk.Key.F2:
                     if (no_mods && selection_actions.get_action_enabled ("rename")) {
-                        rename_selected_file ();
+                        rename_selection ();
                         res = true;
                     }
 

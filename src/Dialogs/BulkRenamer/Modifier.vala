@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019-2020      Jeremy Wootten
+ * Copyright (C) 2019-2022 elementary LLC. <https://elementary.io>
  *
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,6 +20,151 @@
 */
 
 public class Modifier : Gtk.ListBoxRow {
+    public enum RenameMode {
+        TEXT,
+        NUMBER,
+        DATETIME,
+        INVALID;
+
+        public string to_string () {
+            switch (this) {
+                case RenameMode.NUMBER:
+                    return _("Number sequence");
+
+                case RenameMode.TEXT:
+                    return _("Text");
+
+                case RenameMode.DATETIME:
+                    return _("Date");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenamePosition {
+        SUFFIX,
+        PREFIX,
+        REPLACE;
+
+        public string to_string () {
+            switch (this) {
+                case RenamePosition.SUFFIX:
+                    return _("Suffix");
+
+                case RenamePosition.PREFIX:
+                    return _("Prefix");
+
+                case RenamePosition.REPLACE:
+                    return _("Replace");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+
+        public string to_placeholder () {
+            switch (this) {
+                case RenamePosition.SUFFIX:
+                    return _("Text to put at the end");
+
+                case RenamePosition.PREFIX:
+                    return _("Text to put at the start");
+
+                case RenamePosition.REPLACE:
+                    return _("Text to replace the target");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenameSortBy {
+        NAME,
+        CREATED,
+        MODIFIED;
+
+        public string to_string () {
+            switch (this) {
+                case RenameSortBy.NAME:
+                    return _("Name");
+
+                case RenameSortBy.CREATED:
+                    return _("Creation Date");
+
+                case RenameSortBy.MODIFIED:
+                    return _("Last modification date");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenameDateFormat {
+        DEFAULT_DATE,
+        DEFAULT_DATETIME,
+        LOCALE,
+        ISO_DATE,
+        ISO_DATETIME;
+
+        public string to_string () {
+            switch (this) {
+                case RenameDateFormat.DEFAULT_DATE:
+                    return _("Default Format - Date only");
+                case RenameDateFormat.DEFAULT_DATETIME:
+                    return _("Default Format - Date and Time");
+                case RenameDateFormat.LOCALE:
+                    return _("Locale Format - Date and Time");
+                case RenameDateFormat.ISO_DATE:
+                    return _("ISO 8601 Format - Date only");
+                case RenameDateFormat.ISO_DATETIME:
+                    return _("ISO 8601 Format - Date and Time");
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenameDateType {
+        NOW,
+        CHOOSE;
+
+        public string to_string () {
+            switch (this) {
+                case RenameDateType.NOW:
+                    return _("Current Date");
+                case RenameDateType.CHOOSE:
+                    return _("Choose a date");
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenameBase {
+        ORIGINAL,
+        CUSTOM;
+
+        public string to_string () {
+            switch (this) {
+                case RenameBase.ORIGINAL:
+                    return _("Original filename");
+                case RenameBase.CUSTOM:
+                    return _("Enter a base name");
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public signal void remove_request ();
+    public signal void update_request ();
+
+    public bool allow_remove { get; set; }
+
     private Gtk.ComboBoxText position_combo;
     private Gtk.ComboBoxText mode_combo;
     private Gtk.ComboBoxText date_format_combo;
@@ -34,10 +179,10 @@ public class Modifier : Gtk.ListBoxRow {
     private Gtk.Entry search_entry;
     private Gtk.Revealer remove_revealer;
 
-    public bool allow_remove { get; set; }
-
-    public signal void remove_request ();
-    public signal void update_request ();
+    public Modifier (bool _allow_remove) {
+        Object (allow_remove: _allow_remove);
+        remove_revealer.reveal_child = allow_remove;
+    }
 
     construct {
         margin_top = 3;
@@ -254,11 +399,6 @@ public class Modifier : Gtk.ListBoxRow {
         search_entry.text = "";
 
         date_format_combo.set_active (RenameDateFormat.DEFAULT_DATE);
-    }
-
-    public Modifier (bool _allow_remove) {
-        Object (allow_remove: _allow_remove);
-        remove_revealer.reveal_child = allow_remove;
     }
 
     public void change_rename_mode () {
