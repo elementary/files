@@ -22,6 +22,10 @@
 */
 
 public class Files.Renamer : Object {
+    private const string QUERY_INFO_STRING = FileAttribute.STANDARD_TARGET_URI + "," +
+                                             FileAttribute.TIME_CREATED + "," +
+                                             FileAttribute.TIME_MODIFIED;
+
     public bool can_rename { get; set; default = false; }
     public string directory { get; private set; default = ""; }
     public Gtk.ListStore old_files_model { get; construct; }
@@ -55,9 +59,6 @@ public class Files.Renamer : Object {
             directory = Path.get_dirname (files.first ().data.location.get_path ());
         }
 
-        string query_info_string = string.join (",", FileAttribute.STANDARD_TARGET_URI,
-                                                     FileAttribute.TIME_CREATED,
-                                                     FileAttribute.TIME_MODIFIED);
         Gtk.TreeIter? iter = null;
         foreach (unowned var f in files) {
             var path = f.location.get_path ();
@@ -69,7 +70,7 @@ public class Files.Renamer : Object {
                 old_files_model.set (iter, 0, basename);
 
                 f.location.query_info_async.begin (
-                    query_info_string,
+                    QUERY_INFO_STRING,
                     FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
                     Priority.DEFAULT,
                     null, /* No cancellable for now */
@@ -84,7 +85,6 @@ public class Files.Renamer : Object {
                         }
                     }
                 );
-
             }
         }
 

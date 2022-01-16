@@ -164,16 +164,14 @@ namespace Files {
 }
 
 public class Files.RenamerDialog : Gtk.Dialog {
-
     private Files.Renamer renamer;
-    private Gtk.Box modifier_box;
+    private Gtk.ListBox modifiers_listbox;
     private Gtk.Entry base_name_entry;
     private Gtk.ComboBoxText base_name_combo;
     private Gtk.Switch sort_type_switch;
     private Gtk.ComboBoxText sort_by_combo;
 
     public RenamerDialog (List<Files.File> files, string? basename = null) {
-        renamer.add_files (files);
         if (basename != null) {
             base_name_combo.set_active (RenameBase.CUSTOM);
             base_name_entry.text = basename;
@@ -181,6 +179,8 @@ public class Files.RenamerDialog : Gtk.Dialog {
             base_name_combo.set_active (RenameBase.ORIGINAL);
             base_name_entry.text = "";
         }
+
+        renamer.add_files (files);
     }
 
     construct {
@@ -190,6 +190,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         renamer.sortby = RenameSortBy.NAME;
         renamer.is_reversed = false;
 
+        /* Dialog actions */
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
         rename_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         renamer.bind_property ("can-rename",
@@ -198,27 +199,72 @@ public class Files.RenamerDialog : Gtk.Dialog {
 
         var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
-        var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        /* Dialog content */
+        /* Base name */
         var base_name_label = new Granite.HeaderLabel (_("Base"));
         base_name_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-
         base_name_combo = new Gtk.ComboBoxText () {
             valign = Gtk.Align.CENTER
         };
         base_name_combo.insert (RenameBase.ORIGINAL, "ORIGINAL", RenameBase.ORIGINAL.to_string ());
         base_name_combo.insert (RenameBase.CUSTOM, "CUSTOM", RenameBase.CUSTOM.to_string ());
-
         base_name_entry = new Gtk.Entry () {
             placeholder_text = _("Enter naming scheme"),
             hexpand = false,
             max_width_chars = 64,
             valign = Gtk.Align.CENTER
         };
-
         var base_name_entry_revealer = new Gtk.Revealer () {
             vexpand = false
         };
         base_name_entry_revealer.add (base_name_entry);
+
+        /* Modifiers */
+        var modifiers_label = new Granite.HeaderLabel (_("Modifiers"));
+        modifiers_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+
+        modifiers_listbox = new Gtk.ListBox ();
+
+        var modifier_add_button = new Gtk.MenuButton () {
+            valign = Gtk.Align.CENTER,
+            image = new Gtk.Image.from_icon_name ("add", Gtk.IconSize.DND),
+            tooltip_text = _("Add another modifier"),
+            sensitive = true
+        };
+        modifier_add_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        var modifiers_action_bar = new Gtk.ActionBar () {
+            margin_top = 12
+        };
+        modifiers_action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
+        modifiers_action_bar.pack_start (modifier_add_button);
+
+        /* Old filename list */
+        var cell = new Gtk.CellRendererText () {
+            ellipsize = Pango.EllipsizeMode.MIDDLE,
+            wrap_mode = Pango.WrapMode.CHAR,
+            width_chars = 64
+        };
+        var old_file_names = new Gtk.TreeView.with_model (renamer.old_files_model) {
+            hexpand = true,
+            headers_visible = false
+        };
+        old_file_names.insert_column_with_attributes (
+            -1,
+            "ORIGINAL",
+            new Gtk.CellRendererText () {
+                ellipsize = Pango.EllipsizeMode.MIDDLE,
+                wrap_mode = Pango.WrapMode.CHAR,
+                width_chars = 64
+            },
+            "text",
+            0
+        );
+
+        /* Old filenames header */
+        var original_label = new Granite.HeaderLabel (_("Original Names")) {
+            valign = Gtk.Align.CENTER
+        };
+        original_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var sort_by_label = new Gtk.Label (_("Sort by:"));
         sort_by_combo = new Gtk.ComboBoxText () {
@@ -248,49 +294,6 @@ public class Files.RenamerDialog : Gtk.Dialog {
         sort_type_box.pack_start (sort_type_switch);
         sort_type_box.pack_start (sort_type_label);
 
-        var modifiers_label = new Granite.HeaderLabel (_("Modifiers"));
-        modifiers_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-        modifier_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-        var modifier_add_button = new Gtk.MenuButton () {
-            valign = Gtk.Align.CENTER,
-            image = new Gtk.Image.from_icon_name ("add", Gtk.IconSize.DND),
-            tooltip_text = _("Add another modifier"),
-            sensitive = true
-        };
-        modifier_add_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        var modifiers_action_bar = new Gtk.ActionBar () {
-            margin_top = 12
-        };
-        modifiers_action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
-        modifiers_action_bar.pack_start (modifier_add_button);
-        /* Old filename list */
-        var cell = new Gtk.CellRendererText () {
-            ellipsize = Pango.EllipsizeMode.MIDDLE,
-            wrap_mode = Pango.WrapMode.CHAR,
-            width_chars = 64
-        };
-        var old_file_names = new Gtk.TreeView.with_model (renamer.old_files_model) {
-            hexpand = true,
-            headers_visible = false
-        };
-        old_file_names.insert_column_with_attributes (
-            -1,
-            "ORIGINAL",
-            new Gtk.CellRendererText () {
-                ellipsize = Pango.EllipsizeMode.MIDDLE,
-                wrap_mode = Pango.WrapMode.CHAR,
-                width_chars = 64
-            },
-            "text",
-            0
-        );
-
-        var original_label = new Granite.HeaderLabel (_("Original Names")) {
-            valign = Gtk.Align.CENTER
-        };
-        original_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-
         var old_files_header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         old_files_header.pack_start (original_label);
         old_files_header.pack_end (sort_type_box);
@@ -301,7 +304,6 @@ public class Files.RenamerDialog : Gtk.Dialog {
             min_content_height = 300,
             max_content_height = 2000
         };
-
         old_scrolled_window.add (old_file_names);
 
         var old_files_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -309,6 +311,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         };
         old_files_box.pack_start (old_files_header);
         old_files_box.pack_start (old_scrolled_window);
+
         /* New filename list */
         var new_cell = new Gtk.CellRendererPixbuf () {
             gicon = new ThemedIcon.with_default_fallbacks ("dialog-warning"),
@@ -353,6 +356,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         new_scrolled_window.add (new_file_names);
         new_scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.EXTERNAL);
 
+        /* New filenames header */
         var new_files_header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         var new_label = new Granite.HeaderLabel (_("New Names"));
         new_label.get_style_context (). add_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -364,6 +368,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         new_files_box.pack_start (new_files_header);
         new_files_box.pack_start (new_scrolled_window);
 
+        /* Assemble content */
         var controls_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.HORIZONTAL,
             column_spacing = 12,
@@ -373,26 +378,27 @@ public class Files.RenamerDialog : Gtk.Dialog {
         controls_grid.attach (base_name_combo, 0, 1, 1, 1);
         controls_grid.attach (base_name_entry_revealer, 1, 1, 1, 1);
 
-        modifier_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+        var modifiers_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             margin_bottom = 12
         };
-        modifier_box.pack_start (modifiers_label);
-        modifier_box.pack_start (modifier_box);
-        modifier_box.pack_start (modifiers_action_bar);
-
+        modifiers_box.pack_start (modifiers_label);
+        modifiers_box.pack_start (modifiers_listbox);
+        modifiers_box.pack_start (modifiers_action_bar);
         var lists_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 32) {
             homogeneous = true,
-            margin = 12
         };
         lists_box.pack_start (old_files_box);
         lists_box.pack_start (new_files_box);
 
         var content_box = get_content_area ();
         content_box.pack_start (controls_grid);
-        content_box.pack_start (modifier_box);
+        content_box.pack_start (modifiers_box);
         content_box.pack_start (lists_box);
+        content_box.margin = 12;
+        content_box.show_all ();
         reset ();
 
+        /* Connect signals */
         sort_by_combo.changed.connect (() => {
             renamer.sortby = (RenameSortBy)(sort_by_combo.get_active ());
             schedule_view_update ();
@@ -465,22 +471,17 @@ public class Files.RenamerDialog : Gtk.Dialog {
             return false;
         });
 
-        // realize.connect (() => {
-        //     resize (500, 300);  //Stops the window being larger than necessary
-        // });
-
         delete_event.connect (() => {
             response (Gtk.ResponseType.REJECT);
         });
 
         add_modifier (false);
-        show_all ();
     }
 
     private void add_modifier (bool allow_remove) {
         var mod = new Modifier (allow_remove);
         renamer.modifier_chain.add (mod);
-        modifier_box.add (mod);
+        modifiers_listbox.add (mod);
         mod.update_request.connect (schedule_view_update);
         mod.remove_request.connect (() => {
             renamer.modifier_chain.remove (mod);

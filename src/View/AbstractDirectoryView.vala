@@ -1095,7 +1095,7 @@ namespace Files {
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
             rename_selection ();
         }
-        
+
         private void rename_selection () {
             if (selected_files == null) {
                 return;
