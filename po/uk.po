@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 21:18+0000\n"
-"PO-Revision-Date: 2021-12-30 17:00+0000\n"
+"POT-Creation-Date: 2022-01-11 22:40+0000\n"
+"PO-Revision-Date: 2022-01-11 23:32+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -1987,10 +1987,8 @@ msgid "Close Tab"
 msgstr "Закрити вкладку"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "Дублювання «%s»"
+msgstr "Дублювати вкладку"
 
 #: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"

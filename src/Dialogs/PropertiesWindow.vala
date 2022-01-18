@@ -250,7 +250,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         size_value.label = format_size (total_size);
         contains_value.label = get_contains_value (folder_count, file_count);
         update_widgets_state ();
-        update_storage_block_size (total_size, Granite.Widgets.StorageBar.ItemDescription.FILES);
+        update_storage_block_size (total_size, Files.StorageBar.ItemDescription.FILES);
 
         if (size_warning > 0) {
             var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
