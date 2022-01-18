@@ -202,7 +202,7 @@ public class Files.Renamer : Object {
     }
 
     private uint update_timeout_id = 0;
-    public void schedule_update (string? custom_basename = null) {
+    public void schedule_update (string? custom_basename) {
         if (update_timeout_id > 0) {
             Source.remove (update_timeout_id);
         }
@@ -235,6 +235,7 @@ public class Files.Renamer : Object {
         Gtk.TreeIter? new_iter = null;
         old_files_model.@foreach ((m, p, iter) => {
             old_files_model.@get (iter, 0, out file_name);
+            var file = file_map.@get (file_name);
 
             if (custom_basename != null) {
                 input_name = custom_basename;
@@ -243,7 +244,7 @@ public class Files.Renamer : Object {
             }
 
             foreach (var mod in modifier_chain) {
-                output_name = mod.rename (input_name, index);
+                output_name = mod.rename (input_name, index, file);
                 input_name = output_name;
             }
 

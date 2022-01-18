@@ -19,398 +19,209 @@
  *
 */
 
-public class RenamerModifier : Gtk.ListBoxRow {
-    public enum RenameMode {
-        TEXT,
-        NUMBER,
-        DATETIME,
-        INVALID;
+public class Files.RenamerModifier : Object {
+    protected class EditWidget : Gtk.Bin {
+        public RenamerModifier modifier { get; construct; }
 
-        public string to_string () {
-            switch (this) {
+        public EditWidget (RenamerModifier modifier) {
+            Object (
+                modifier: modifier
+            );
+        }
+
+        construct {
+            var grid = new Gtk.Grid ();
+            Gtk.Widget controls;
+            var flags = BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE;
+            switch (modifier.mode) {
                 case RenameMode.NUMBER:
-                    return _("Number sequence");
+                    var start_number_label = new Gtk.Label (_("Start Number"));
+                    var start_number_spin_button = new Gtk.SpinButton.with_range (0, int.MAX, 1) {
+                        digits = 0
+                    };
+                    start_number_spin_button.set_value (0.0);
 
-                case RenameMode.TEXT:
-                    return _("Text");
+                    var digits_label = new Gtk.Label (_("Digits"));
+                    var digits_spin_button = new Gtk.SpinButton.with_range (0, 5, 1) {
+                        digits = 0
+                    };
+                    digits_spin_button.set_value (1.0);
 
+                    var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+                    box.add (start_number_label);
+                    box.add (start_number_spin_button);
+                    box.add (digits_label);
+                    box.add (digits_spin_button);
+                    controls = box;
+
+                    digits_spin_button.bind_property ("value", modifier, "digits", flags);
+                    start_number_spin_button.bind_property ("value", modifier, "start", flags);
+
+                    break;
                 case RenameMode.DATETIME:
-                    return _("Date");
+                    var date_source_combo = new Gtk.ComboBoxText () {
+                        valign = Gtk.Align.CENTER
+                    };
+                    date_source_combo.insert (RenameDateSource.DEFAULT, "DEFAULT",
+                                              RenameDateSource.DEFAULT.to_string ());
+                    date_source_combo.insert (RenameDateSource.MODIFIED, "MODIFICATION_DATE",
+                                              RenameDateSource.MODIFIED.to_string ());
+                    date_source_combo.insert (RenameDateSource.NOW, "CURRENT_DATE",
+                                              RenameDateSource.NOW.to_string ());
 
+                    var date_format_combo = new Gtk.ComboBoxText () {
+                        valign = Gtk.Align.CENTER
+                    };
+                    date_format_combo.insert (RenameDateFormat.DEFAULT, "DEFAULT",
+                                              RenameDateFormat.DEFAULT.to_string ());
+
+                    date_format_combo.insert (RenameDateFormat.DEFAULT_DATETIME, "DEFAULT_DATETIME",
+                                              RenameDateFormat.DEFAULT_DATETIME.to_string ());
+
+                    date_format_combo.insert (RenameDateFormat.LOCALE, "LOCALE",
+                                              RenameDateFormat.LOCALE.to_string ());
+
+                    date_format_combo.insert (RenameDateFormat.ISO_DATE, "ISO_DATE",
+                                              RenameDateFormat.ISO_DATE.to_string ());
+
+                    date_format_combo.insert (RenameDateFormat.ISO_DATETIME, "ISO_DATETIME",
+                                              RenameDateFormat.ISO_DATETIME.to_string ());
+
+                    var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+                    box.add (date_format_combo);
+                    controls = box;
+
+                    date_source_combo.bind_property ("active", modifier, "source", flags);
+                    date_format_combo.bind_property ("active", modifier, "format", flags);
+
+                    break;
+                case RenameMode.TEXT:
+                    var text_entry = new Gtk.Entry () {
+                        vexpand = false,
+                        hexpand = false,
+                        max_length = 64,
+                        max_width_chars = 64
+                    };
+                    controls = text_entry;
+                    text_entry.bind_property ("text", modifier, "text", flags);
+
+                    break;
                 default:
                     assert_not_reached ();
-            }
+                    break;
+            };
+
+            var separator_entry = new Gtk.Entry () {
+                halign = Gtk.Align.END,
+                hexpand = true,
+                max_length = 16,
+                placeholder_text = _("Separator"),
+                text = ""
+            };
+
+            var separator_label = new Gtk.Label (_("Separator:")) {
+                halign = Gtk.Align.END,
+                hexpand = false
+            };
+
+            var separator_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            separator_box.pack_start (separator_label);
+            separator_box.pack_start (separator_entry);
+            separator_entry.bind_property ("text", modifier, "separator", flags);
+            grid.attach (separator_box, 0, 0);
+            grid.attach (controls, 0, 1);
+            add (grid);
+            show_all ();
         }
     }
 
-    public enum RenamePosition {
-        SUFFIX,
-        PREFIX,
-        REPLACE;
+    /* -------------------------------end of Edit Widget class----------------------------*/
+    private const int DEFAULT_DIGITS = 1;
+    private const int DEFAULT_START = 1;
 
-        public string to_string () {
-            switch (this) {
-                case RenamePosition.SUFFIX:
-                    return _("Suffix");
+    public EditWidget? edit_widget { get; private set; default = null; }
+    public RenameMode mode { get; construct; }
+    public RenamePosition pos  { get; construct; }
 
-                case RenamePosition.PREFIX:
-                    return _("Prefix");
+    public int start { get; set; default = 1;}
+    public int digits { get; set; default = 1;}
+    public int source { get; set; default = 0;}
+    public int format { get; set; default = 0;}
+    public string text { get; set; default = "";}
+    public string separator { get; set; default = "-";}
 
-                case RenamePosition.REPLACE:
-                    return _("Replace");
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-
-        public string to_placeholder () {
-            switch (this) {
-                case RenamePosition.SUFFIX:
-                    return _("Text to put at the end");
-
-                case RenamePosition.PREFIX:
-                    return _("Text to put at the start");
-
-                case RenamePosition.REPLACE:
-                    return _("Text to replace the target");
-
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
-    public enum RenameDateFormat {
-        DEFAULT_DATE,
-        DEFAULT_DATETIME,
-        LOCALE,
-        ISO_DATE,
-        ISO_DATETIME;
-
-        public string to_string () {
-            switch (this) {
-                case RenameDateFormat.DEFAULT_DATE:
-                    return _("Default Format - Date only");
-                case RenameDateFormat.DEFAULT_DATETIME:
-                    return _("Default Format - Date and Time");
-                case RenameDateFormat.LOCALE:
-                    return _("Locale Format - Date and Time");
-                case RenameDateFormat.ISO_DATE:
-                    return _("ISO 8601 Format - Date only");
-                case RenameDateFormat.ISO_DATETIME:
-                    return _("ISO 8601 Format - Date and Time");
-                default:
-                    assert_not_reached ();
-            }
-        }
-    }
-
-    public signal void remove_request ();
-    public signal void update_request ();
-
-    public bool allow_remove { get; set; }
-
-    private Gtk.ComboBoxText position_combo;
-    private Gtk.ComboBoxText mode_combo;
-    private Gtk.ComboBoxText date_format_combo;
-    private Granite.Widgets.DatePicker date_picker;
-    private Granite.Widgets.TimePicker time_picker;
-    private Gtk.Stack mode_stack;
-    private Gtk.Stack position_stack;
-    private Gtk.SpinButton digits_spin_button;
-    private Gtk.SpinButton start_number_spin_button;
-    private Gtk.Entry text_entry;
-    private Gtk.Entry separator_entry;
-    private Gtk.Entry search_entry;
-    private Gtk.Revealer remove_revealer;
-
-    public RenamerModifier (bool _allow_remove) {
+    public RenamerModifier.default_number (RenamePosition pos) {
         Object (
-            allow_remove: _allow_remove
+            mode: RenameMode.NUMBER,
+            pos: pos
         );
-        remove_revealer.reveal_child = allow_remove;
     }
 
-    construct {
-        margin_top = 3;
-        margin_bottom = 3;
-        hexpand = true;
-
-        var grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL,
-            column_spacing = 12
-        };
-
-        mode_combo = new Gtk.ComboBoxText () {
-            valign = Gtk.Align.CENTER
-        };
-        mode_combo.insert (RenameMode.TEXT, "TEXT", RenameMode.TEXT.to_string ());
-        mode_combo.insert (RenameMode.NUMBER, "NUMBER", RenameMode.NUMBER.to_string ());
-        mode_combo.insert (RenameMode.DATETIME, "DATETIME", RenameMode.DATETIME.to_string ());
-
-        text_entry = new Gtk.Entry () {
-            vexpand = false,
-            hexpand = false,
-            max_length = 64,
-            max_width_chars = 64
-        };
-
-        var start_number_label = new Gtk.Label (_("Start Number"));
-        start_number_spin_button = new Gtk.SpinButton.with_range (0, int.MAX, 1) {
-            digits = 0
-        };
-        start_number_spin_button.set_value (0.0);
-
-        var digits_label = new Gtk.Label (_("Digits"));
-
-        digits_spin_button = new Gtk.SpinButton.with_range (0, 5, 1) {
-            digits = 0
-        };
-
-        digits_spin_button.set_value (1.0);
-
-        var digits_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL,
-            column_spacing = 6
-        };
-
-        digits_grid.add (start_number_label);
-        digits_grid.add (start_number_spin_button);
-        digits_grid.add (digits_label);
-        digits_grid.add (digits_spin_button);
-
-        date_format_combo = new Gtk.ComboBoxText () {
-            valign = Gtk.Align.CENTER
-        };
-        date_format_combo.insert (RenameDateFormat.DEFAULT_DATE, "DEFAULT_DATE",
-                                  RenameDateFormat.DEFAULT_DATE.to_string ());
-
-        date_format_combo.insert (RenameDateFormat.DEFAULT_DATETIME, "DEFAULT_DATETIME",
-                                  RenameDateFormat.DEFAULT_DATETIME.to_string ());
-
-        date_format_combo.insert (RenameDateFormat.LOCALE, "LOCALE",
-                                  RenameDateFormat.LOCALE.to_string ());
-
-        date_format_combo.insert (RenameDateFormat.ISO_DATE, "ISO_DATE",
-                                  RenameDateFormat.ISO_DATE.to_string ());
-
-        date_format_combo.insert (RenameDateFormat.ISO_DATETIME, "ISO_DATETIME",
-                                  RenameDateFormat.ISO_DATETIME.to_string ());
-
-        date_picker = new Granite.Widgets.DatePicker ();
-        time_picker = new Granite.Widgets.TimePicker ();
-
-        var date_time_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL,
-            column_spacing = 6
-        };
-        date_time_grid.add (date_format_combo);
-        date_time_grid.add (date_picker);
-        date_time_grid.add (time_picker);
-
-        mode_stack = new Gtk.Stack () {
-            valign = Gtk.Align.CENTER,
-            homogeneous =false,
-            vexpand = false,
-            hexpand = false
-        };
-        mode_stack.add_named (digits_grid, "NUMBER");
-        mode_stack.add_named (text_entry, "TEXT");
-        mode_stack.add_named (date_time_grid, "DATETIME");
-        mode_stack.set_visible_child_name ("NUMBER");
-
-        separator_entry = new Gtk.Entry () {
-            halign = Gtk.Align.END,
-            hexpand = true,
-            max_length = 16,
-            placeholder_text = _("Separator"),
-            text = ""
-        };
-
-        var separator_label = new Gtk.Label (_("Separator:")) {
-            halign = Gtk.Align.END,
-            hexpand = false
-        };
-
-        var separator_grid = new Gtk.Grid () {
-            hexpand = true,
-            halign = Gtk.Align.END,
-            margin_start = 12,
-            orientation = Gtk.Orientation.HORIZONTAL,
-            column_spacing = 6
-        };
-        separator_grid.add (separator_label);
-        separator_grid.add (separator_entry);
-
-        search_entry = new Gtk.Entry () {
-            hexpand = true,
-            halign = Gtk.Align.END,
-            max_length = 64,
-            max_width_chars = 64,
-            placeholder_text = _("Target text to be replaced")
-        };
-
-        position_stack = new Gtk.Stack () {
-            hexpand = true,
-            valign = Gtk.Align.END
-        };
-        position_stack.add_named (separator_grid, "SEPARATOR");
-        position_stack.add_named (search_entry, "TARGET");
-
-        position_combo = new Gtk.ComboBoxText ();
-        position_combo.insert (RenamePosition.SUFFIX, "NUMBER", RenamePosition.SUFFIX.to_string ());
-        position_combo.insert (RenamePosition.PREFIX, "TEXT", RenamePosition.PREFIX.to_string ());
-        position_combo.insert (RenamePosition.REPLACE, "DATETIME", RenamePosition.REPLACE.to_string ());
-        position_combo.active = RenamePosition.SUFFIX;
-
-        var remove_button = new Gtk.Button.from_icon_name ("process-stop", Gtk.IconSize.LARGE_TOOLBAR) {
-            halign = Gtk.Align.END,
-            valign = Gtk.Align.CENTER,
-            tooltip_text = (_("Remove this modification"))
-
-        };
-        remove_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-
-        remove_revealer = new Gtk.Revealer () {
-            halign = Gtk.Align.END
-        };
-        remove_revealer.add (remove_button);
-
-        grid.add (position_combo);
-        grid.add (mode_combo);
-        grid.add (mode_stack);
-        grid.add (position_stack);
-        grid.add (remove_revealer);
-
-        add (grid);
-
-        show_all ();
-
-        mode_combo.changed.connect (change_rename_mode);
-        position_combo.changed.connect (change_rename_position);
-
-        date_format_combo.changed.connect (() => {
-            update_request ();
-        });
-
-        date_picker.date_changed.connect (() => {
-            update_request ();
-        });
-
-        time_picker.time_changed.connect (() => {
-            update_request ();
-        });
-
-        digits_spin_button.value_changed.connect (() => {
-            update_request ();
-        });
-
-        start_number_spin_button.value_changed.connect (() => {
-            update_request ();
-        });
-
-        search_entry.focus_out_event.connect (() => {
-            update_request ();
-            return Gdk.EVENT_PROPAGATE;
-        });
-
-        search_entry.activate.connect (() => {
-            update_request ();
-        });
-
-        text_entry.changed.connect (() => {
-            update_request ();
-        });
-
-        separator_entry.changed.connect (() => {
-            update_request ();
-        });
-
-        text_entry.placeholder_text = ((RenamePosition)(position_combo.get_active ())).to_placeholder ();
-        position_combo.changed.connect (() => {
-            text_entry.placeholder_text = ((RenamePosition)(position_combo.get_active ())).to_placeholder ();
-            update_request ();
-        });
-
-        remove_button.clicked.connect (() => {
-            remove_request ();
-        });
-
-        reset ();
+    public RenamerModifier.default_date (RenamePosition pos) {
+        Object (
+            mode: RenameMode.DATETIME,
+            pos: pos
+        );
     }
 
-    public void reset () {
-        mode_combo.active = RenameMode.TEXT;
-        text_entry.text = "";
-        separator_entry.text = "";
-        search_entry.text = "";
-
-        date_format_combo.set_active (RenameDateFormat.DEFAULT_DATE);
+    public RenamerModifier.default_text (RenamePosition pos) {
+        Object (
+            mode: RenameMode.TEXT,
+            pos: pos
+        );
     }
 
-    public void change_rename_mode () {
-        switch (mode_combo.get_active ()) {
-            case RenameMode.NUMBER:
-                mode_stack.set_visible_child_name ("NUMBER");
-                break;
-
-            case RenameMode.TEXT:
-                mode_stack.set_visible_child_name ("TEXT");
-                break;
-
-            case RenameMode.DATETIME:
-                mode_stack.set_visible_child_name ("DATETIME");
-                break;
-
-            default:
-                break;
+    public unowned Gtk.Widget get_modifier_widget () {
+        if (edit_widget == null) {
+            edit_widget = new EditWidget (this);
         }
 
-        update_request ();
+        return edit_widget;
     }
 
-   public void change_rename_position () {
-        if (position_combo.get_active () == RenamePosition.REPLACE) {
-            position_stack.visible_child_name = "TARGET";
-        } else {
-            position_stack.visible_child_name = "SEPARATOR";
-        }
-
-        update_request ();
-    }
-
-    public string rename (string input, int index) {
-        var seq = index + (int)(start_number_spin_button.get_value ());
+    public string rename (string input, int index, Files.File file) {
         string new_text = "";
-
-        switch (mode_combo.get_active ()) {
+        switch (mode) {
             case RenameMode.NUMBER:
-                var template = "%%0%id".printf ((int)(digits_spin_button.get_value ()));
-                new_text = template.printf (seq);
+                if (start >= 0 && digits >= 0) {
+                    var template = "%%0%id".printf (digits);
+                    new_text = template.printf (index + start);
+                } else {
+                    critical ("Invalid start number %i or digits %i", start, digits);
+                }
                 break;
 
             case RenameMode.TEXT:
-                new_text = text_entry.text;
+                new_text = text;
                 break;
 
             case RenameMode.DATETIME:
-                new_text = get_formated_date_time (date_picker.date);
+                uint64 dt;
+                switch (source) {
+                    case RenameDateSource.MODIFIED:
+                        dt = file.modified;
+                        break;
+                    case RenameDateSource.NOW:
+                        dt = (uint64)get_monotonic_time ();
+                        break;
+                    default: // Created
+                        dt = file.info.get_attribute_uint64 (GLib.FileAttribute.TIME_CREATED);
+                        break;
+                }
+
+                new_text = get_formated_datetime (dt);
                 break;
 
             default:
                 break;
         }
 
-        switch (position_combo.get_active ()) {
+        switch (pos) {
             case RenamePosition.SUFFIX:
-                return input.concat (separator_entry.text, new_text);
+                return input.concat (separator, new_text);
 
             case RenamePosition.PREFIX:
-                return new_text.concat (separator_entry.text, input);
-
-            case RenamePosition.REPLACE:
-                return input.replace (search_entry.text, new_text);
+                return new_text.concat (separator, input);
 
             default:
                 break;
@@ -419,32 +230,25 @@ public class RenamerModifier : Gtk.ListBoxRow {
         return input;
     }
 
-    public string get_formated_date_time (DateTime? date) {
-        var time = time_picker.time;
-        var date_time = new DateTime.utc (
-            date.get_year (), date.get_month (), date.get_day_of_month (),
-            time.get_hour (), time.get_minute (), time.get_second ()
-        );
-
-        switch (date_format_combo.get_active ()) {
-            case RenameDateFormat.DEFAULT_DATE:
-                return date_time.format (Granite.DateTime.get_default_date_format (false, true, true));
-
+    public string get_formated_datetime (uint64 dt) {
+        var datetime = new DateTime.from_unix_local ((int64)dt);
+        switch ((uint)format) {
             case RenameDateFormat.DEFAULT_DATETIME:
-                return date_time.format (Granite.DateTime.get_default_date_format (false, true, true).
+                return datetime.format (Granite.DateTime.get_default_date_format (false, true, true).
                                   concat (" ", Granite.DateTime.get_default_time_format ()));
 
             case RenameDateFormat.LOCALE:
-                return date_time.format ("%c");
+                return datetime.format ("%c");
 
             case RenameDateFormat.ISO_DATE:
-                return date_time.format ("%Y-%m-%d");
+                return datetime.format ("%Y-%m-%d");
 
             case RenameDateFormat.ISO_DATETIME:
-                return date_time.format ("%Y-%m-%d %H:%M:%S");
+                return datetime.format ("%Y-%m-%d %H:%M:%S");
 
-            default:
-                assert_not_reached ();
+            default: // Default format
+                return datetime.format (Granite.DateTime.get_default_date_format (false, true, true));
         }
     }
+
 }

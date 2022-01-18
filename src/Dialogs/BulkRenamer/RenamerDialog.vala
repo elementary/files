@@ -25,14 +25,17 @@
 public class Files.RenamerDialog : Gtk.Dialog {
     public enum RenameBase {
         ORIGINAL,
+        REPLACE,
         CUSTOM;
 
         public string to_string () {
             switch (this) {
                 case RenameBase.ORIGINAL:
                     return _("Original filename");
+                case RenameBase.REPLACE:
+                    return _("Original filename with replacement");
                 case RenameBase.CUSTOM:
-                    return _("Enter a base name");
+                    return _("Enter a basename");
                 default:
                     assert_not_reached ();
             }
@@ -40,11 +43,19 @@ public class Files.RenamerDialog : Gtk.Dialog {
     }
 
     private Files.Renamer renamer;
-    private Gtk.ListBox modifiers_listbox;
+    private Gtk.Grid controls_grid;
+    private Gtk.Box prefix_box;
+    private Gtk.Box suffix_box;
+    private Gtk.MenuButton prefix_button;
+    private Gtk.MenuButton suffix_button;
     private Gtk.Entry base_name_entry;
     private Gtk.ComboBoxText base_name_combo;
-    private Gtk.Switch sort_type_switch;
-    private Gtk.ComboBoxText sort_by_combo;
+    private SimpleActionGroup actions;
+    private ActionEntry[] ACTION_ENTRIES = {
+        {"add-text", on_action_add_text, "u"},
+        {"add-number", on_action_add_number, "u"},
+        {"add-date", on_action_add_date, "u"}
+    };
 
     public RenamerDialog (List<Files.File> files, string? basename = null) {
         if (basename != null) {
@@ -59,11 +70,13 @@ public class Files.RenamerDialog : Gtk.Dialog {
     }
 
     construct {
+        actions = new SimpleActionGroup ();
+        actions.add_action_entries (ACTION_ENTRIES, this);
+        insert_action_group ("renamer", actions);
+
         deletable = true;
         set_title (_("Bulk Renamer"));
         renamer = new Renamer ();
-        renamer.sortby = SortBy.NAME;
-        renamer.is_reversed = false;
 
         /* Dialog actions */
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
@@ -74,44 +87,47 @@ public class Files.RenamerDialog : Gtk.Dialog {
 
         var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
-        /* Dialog content */
-        /* Base name */
-        var base_name_label = new Granite.HeaderLabel (_("Base"));
-        base_name_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        /* Template Controls */
+        var prefix_menumodel = new Menu ();
+        var prefix_var = new Variant.uint32 ((uint)RenamePosition.PREFIX);
+        var suffix_var = new Variant.uint32 ((uint)RenamePosition.SUFFIX);
+        prefix_menumodel.append (_("Number Sequence"), Action.print_detailed_name ("renamer.add-number", prefix_var));
+        prefix_menumodel.append (_("Creation Date"), Action.print_detailed_name ("renamer.add-date", prefix_var));
+        prefix_menumodel.append (_("Fixed Text"), Action.print_detailed_name ("renamer.add-text", prefix_var));
+        var suffix_menumodel = new Menu ();
+        suffix_menumodel.append (_("Number Sequence"), Action.print_detailed_name ("renamer.add-number", suffix_var));
+        suffix_menumodel.append (_("Creation Date"), Action.print_detailed_name ("renamer.add-date", suffix_var));
+        suffix_menumodel.append (_("Fixed Text"), Action.print_detailed_name ("renamer.add-text", suffix_var));
+
+        prefix_button = new Gtk.MenuButton () {
+            image = new Gtk.Image.from_icon_name ("add-symbolic", Gtk.IconSize.BUTTON),
+            tooltip_text = _("Add Prefix"),
+            menu_model = prefix_menumodel,
+            halign = Gtk.Align.END
+        };
+        prefix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        prefix_box.pack_end (prefix_button, false, false);
+
+        suffix_button = new Gtk.MenuButton () {
+            image = new Gtk.Image.from_icon_name ("add-symbolic", Gtk.IconSize.BUTTON),
+            tooltip_text = _("Add Suffix"),
+            menu_model = suffix_menumodel,
+            halign = Gtk.Align.START
+        };
+        suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        suffix_box.pack_start (suffix_button, false, false);
+
         base_name_combo = new Gtk.ComboBoxText () {
             valign = Gtk.Align.CENTER
         };
         base_name_combo.insert (RenameBase.ORIGINAL, "ORIGINAL", RenameBase.ORIGINAL.to_string ());
+        base_name_combo.insert (RenameBase.REPLACE, "REPLACE", RenameBase.REPLACE.to_string ());
         base_name_combo.insert (RenameBase.CUSTOM, "CUSTOM", RenameBase.CUSTOM.to_string ());
         base_name_entry = new Gtk.Entry () {
-            placeholder_text = _("Enter naming scheme"),
-            hexpand = false,
-            max_width_chars = 64,
-            valign = Gtk.Align.CENTER
+            placeholder_text = _("Enter fixed name to replace the original")
         };
-        var base_name_entry_revealer = new Gtk.Revealer () {
-            vexpand = false
-        };
+        var base_name_entry_revealer = new Gtk.Revealer ();
         base_name_entry_revealer.add (base_name_entry);
-
-        /* Modifiers */
-        var modifiers_label = new Granite.HeaderLabel (_("Modifiers"));
-        modifiers_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-
-        modifiers_listbox = new Gtk.ListBox ();
-
-        var modifier_add_button = new Gtk.MenuButton () {
-            valign = Gtk.Align.CENTER,
-            image = new Gtk.Image.from_icon_name ("add", Gtk.IconSize.DND),
-            tooltip_text = _("Add another modifier"),
-            sensitive = true
-        };
-        modifier_add_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        var modifiers_action_bar = new Gtk.ActionBar () {
-            margin_top = 12
-        };
-        modifiers_action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
-        modifiers_action_bar.pack_start (modifier_add_button);
 
         /* Old filename list */
         var cell = new Gtk.CellRendererText () {
@@ -135,57 +151,12 @@ public class Files.RenamerDialog : Gtk.Dialog {
             0
         );
 
-        /* Old filenames header */
-        var original_label = new Granite.HeaderLabel (_("Original Names")) {
-            valign = Gtk.Align.CENTER
-        };
-        original_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-
-        var sort_by_label = new Gtk.Label (_("Sort by:"));
-        sort_by_combo = new Gtk.ComboBoxText () {
-            valign = Gtk.Align.CENTER,
-            margin = 3
-        };
-        sort_by_combo.insert (SortBy.NAME, "NAME", SortBy.NAME.to_string ());
-        sort_by_combo.insert (SortBy.CREATED, "CREATED", SortBy.CREATED.to_string ());
-        sort_by_combo.insert (SortBy.MODIFIED, "MODIFIED", SortBy.MODIFIED.to_string ());
-        sort_by_combo.set_active (SortBy.NAME);
-        var sort_by_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
-            halign = Gtk.Align.END,
-            valign = Gtk.Align.CENTER
-        };
-        sort_by_box.pack_start (sort_by_label);
-        sort_by_box.pack_start (sort_by_combo);
-
-        var sort_type_label = new Gtk.Label (_("Reverse"));
-        sort_type_switch = new Gtk.Switch () {
-            valign = Gtk.Align.CENTER
-        };
-        var sort_type_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
-            halign = Gtk.Align.END,
-            valign = Gtk.Align.CENTER,
-            margin = 3
-        };
-        sort_type_box.pack_start (sort_type_switch);
-        sort_type_box.pack_start (sort_type_label);
-
-        var old_files_header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        old_files_header.pack_start (original_label);
-        old_files_header.pack_end (sort_type_box);
-        old_files_header.pack_end (sort_by_box);
-
         var old_scrolled_window = new Gtk.ScrolledWindow (null, null) {
             hexpand = true,
             min_content_height = 300,
             max_content_height = 2000
         };
         old_scrolled_window.add (old_file_names);
-
-        var old_files_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            valign = Gtk.Align.START,
-        };
-        old_files_box.pack_start (old_files_header);
-        old_files_box.pack_start (old_scrolled_window);
 
         /* New filename list */
         var new_cell = new Gtk.CellRendererPixbuf () {
@@ -231,59 +202,31 @@ public class Files.RenamerDialog : Gtk.Dialog {
         new_scrolled_window.add (new_file_names);
         new_scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.EXTERNAL);
 
-        /* New filenames header */
-        var new_files_header = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        var new_label = new Granite.HeaderLabel (_("New Names"));
-        new_label.get_style_context (). add_class (Granite.STYLE_CLASS_H2_LABEL);
-        new_files_header.add (new_label);
-
-        var new_files_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            valign = Gtk.Align.END,
-        };
-        new_files_box.pack_start (new_files_header);
-        new_files_box.pack_start (new_scrolled_window);
-
         /* Assemble content */
-        var controls_grid = new Gtk.Grid () {
+        controls_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.HORIZONTAL,
-            column_spacing = 12,
+            column_homogeneous = true,
+            hexpand = true,
             margin_bottom = 12
         };
-        controls_grid.attach (base_name_label, 0, 0, 2, 1);
-        controls_grid.attach (base_name_combo, 0, 1, 1, 1);
+        controls_grid.attach (prefix_box, 0, 0, 1, 1);
+        controls_grid.attach (base_name_combo, 1, 0, 1, 1);
+        controls_grid.attach (suffix_box, 2, 0, 1, 1);
         controls_grid.attach (base_name_entry_revealer, 1, 1, 1, 1);
 
-        var modifiers_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            margin_bottom = 12
-        };
-        modifiers_box.pack_start (modifiers_label);
-        modifiers_box.pack_start (modifiers_listbox);
-        modifiers_box.pack_start (modifiers_action_bar);
         var lists_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 32) {
             homogeneous = true,
         };
-        lists_box.pack_start (old_files_box);
-        lists_box.pack_start (new_files_box);
+        lists_box.pack_start (old_scrolled_window);
+        lists_box.pack_start (new_scrolled_window);
 
         var content_box = get_content_area ();
         content_box.pack_start (controls_grid);
-        content_box.pack_start (modifiers_box);
         content_box.pack_start (lists_box);
         content_box.margin = 12;
         content_box.show_all ();
-        reset ();
 
         /* Connect signals */
-        sort_by_combo.changed.connect (() => {
-            renamer.sortby = (SortBy)(sort_by_combo.get_active ());
-            schedule_view_update ();
-        });
-
-        sort_type_switch.notify ["active"].connect (() => {
-            renamer.is_reversed = sort_type_switch.get_active ();
-            schedule_view_update ();
-        });
-
         base_name_combo.changed.connect (() => {
             base_name_entry_revealer.reveal_child = base_name_combo.get_active () == RenameBase.CUSTOM;
             schedule_view_update ();
@@ -291,10 +234,6 @@ public class Files.RenamerDialog : Gtk.Dialog {
 
         base_name_entry.changed.connect (() => {
             schedule_view_update ();
-        });
-
-        modifier_add_button.clicked.connect (() => {
-            add_modifier (true);
         });
 
         response.connect ((response_id) => {
@@ -350,43 +289,42 @@ public class Files.RenamerDialog : Gtk.Dialog {
             response (Gtk.ResponseType.REJECT);
         });
 
-        add_modifier (false);
+        base_name_combo.grab_focus ();
     }
 
-    private void add_modifier (bool allow_remove) {
-        var mod = new RenamerModifier (allow_remove);
+    private void add_modifier (RenamerModifier mod) {
         renamer.modifier_chain.add (mod);
-        modifiers_listbox.add (mod);
-        mod.update_request.connect (schedule_view_update);
-        mod.remove_request.connect (() => {
-            renamer.modifier_chain.remove (mod);
-            mod.destroy ();
-            queue_draw ();
-            schedule_view_update ();
-        });
+        var mod_button = new Gtk.Button.with_label (mod.mode.to_string ());
 
-        schedule_view_update ();
-    }
-
-    public void reset () {
-        base_name_combo.set_active (RenameBase.ORIGINAL);
-        base_name_entry.text = "";
-
-        bool first = true;
-        foreach (var mod in renamer.modifier_chain) {
-            if (first) {
-                mod.reset ();
-                first = false;
-            } else {
-                mod.destroy ();
-            }
+        if (mod.pos == RenamePosition.PREFIX) {
+            prefix_box.pack_end (mod_button, false, false);
+        } else {
+            suffix_box.pack_start (mod_button, false, false);
         }
 
+        controls_grid.show_all ();
+        controls_grid.queue_draw ();
         schedule_view_update ();
     }
 
     public void schedule_view_update () {
         var custom_basename = base_name_combo.get_active () == RenameBase.CUSTOM ? base_name_entry.text : null;
         renamer.schedule_update (custom_basename);
+    }
+
+    private void on_action_add_number (SimpleAction action, Variant? target) {
+        RenamePosition pos = (RenamePosition)(target.get_uint32 ());
+        var mod = new RenamerModifier.default_number (pos);
+        add_modifier (mod);
+    }
+    private void on_action_add_date (SimpleAction action, Variant? target) {
+        RenamePosition pos = (RenamePosition)(target.get_uint32 ());
+        var mod = new RenamerModifier.default_date (pos);
+        add_modifier (mod);
+    }
+    private void on_action_add_text (SimpleAction action, Variant? target) {
+        RenamePosition pos = (RenamePosition)(target.get_uint32 ());
+        var mod = new RenamerModifier.default_text (pos);
+        add_modifier (mod);
     }
 }
