@@ -20,6 +20,8 @@
 */
 
 public class Files.RenamerModifier : Object {
+    static int modifier_id = 0;
+
     protected class EditWidget : Gtk.Bin {
         public RenamerModifier modifier { get; construct; }
 
@@ -30,29 +32,43 @@ public class Files.RenamerModifier : Object {
         }
 
         construct {
-            var grid = new Gtk.Grid ();
+            var grid = new Gtk.Grid () {
+                column_homogeneous = true,
+                column_spacing = 6,
+                row_spacing = 6,
+                margin = 12
+            };
             Gtk.Widget controls;
-            var flags = BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE;
+            var flags = BindingFlags.DEFAULT;
             switch (modifier.mode) {
                 case RenameMode.NUMBER:
-                    var start_number_label = new Gtk.Label (_("Start Number"));
+                    var start_number_label = new Gtk.Label (_("Start Number")) {
+                        halign = Gtk.Align.END
+                    };
                     var start_number_spin_button = new Gtk.SpinButton.with_range (0, int.MAX, 1) {
-                        digits = 0
+                        halign = Gtk.Align.START,
+                        value = modifier.start
                     };
-                    start_number_spin_button.set_value (0.0);
 
-                    var digits_label = new Gtk.Label (_("Digits"));
-                    var digits_spin_button = new Gtk.SpinButton.with_range (0, 5, 1) {
-                        digits = 0
+                    var digits_label = new Gtk.Label (_("Digits")) {
+                        halign = Gtk.Align.END
                     };
-                    digits_spin_button.set_value (1.0);
 
-                    var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-                    box.add (start_number_label);
-                    box.add (start_number_spin_button);
-                    box.add (digits_label);
-                    box.add (digits_spin_button);
-                    controls = box;
+                    var digits_spin_button = new Gtk.SpinButton.with_range (1, int.MAX, 1) {
+                        halign = Gtk.Align.START,
+                        value = modifier.digits
+                    };
+
+                    var number_grid = new Gtk.Grid () {
+                        column_homogeneous = true,
+                        column_spacing = 6,
+                        row_spacing = 6
+                    };
+                    number_grid.attach (start_number_label, 0, 0);
+                    number_grid.attach (start_number_spin_button, 1, 0);
+                    number_grid.attach (digits_label, 0, 1);
+                    number_grid.attach (digits_spin_button, 1, 1);
+                    controls = number_grid;
 
                     digits_spin_button.bind_property ("value", modifier, "digits", flags);
                     start_number_spin_button.bind_property ("value", modifier, "start", flags);
@@ -60,7 +76,8 @@ public class Files.RenamerModifier : Object {
                     break;
                 case RenameMode.DATETIME:
                     var date_source_combo = new Gtk.ComboBoxText () {
-                        valign = Gtk.Align.CENTER
+                        valign = Gtk.Align.CENTER,
+                        active = modifier.source
                     };
                     date_source_combo.insert (RenameDateSource.DEFAULT, "DEFAULT",
                                               RenameDateSource.DEFAULT.to_string ());
@@ -70,7 +87,8 @@ public class Files.RenamerModifier : Object {
                                               RenameDateSource.NOW.to_string ());
 
                     var date_format_combo = new Gtk.ComboBoxText () {
-                        valign = Gtk.Align.CENTER
+                        valign = Gtk.Align.CENTER,
+                        active = modifier.format
                     };
                     date_format_combo.insert (RenameDateFormat.DEFAULT, "DEFAULT",
                                               RenameDateFormat.DEFAULT.to_string ());
@@ -87,7 +105,8 @@ public class Files.RenamerModifier : Object {
                     date_format_combo.insert (RenameDateFormat.ISO_DATETIME, "ISO_DATETIME",
                                               RenameDateFormat.ISO_DATETIME.to_string ());
 
-                    var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+                    var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+                    box.add (date_source_combo);
                     box.add (date_format_combo);
                     controls = box;
 
@@ -100,7 +119,8 @@ public class Files.RenamerModifier : Object {
                         vexpand = false,
                         hexpand = false,
                         max_length = 64,
-                        max_width_chars = 64
+                        max_width_chars = 15,
+                        text = modifier.text
                     };
                     controls = text_entry;
                     text_entry.bind_property ("text", modifier, "text", flags);
@@ -112,24 +132,20 @@ public class Files.RenamerModifier : Object {
             };
 
             var separator_entry = new Gtk.Entry () {
-                halign = Gtk.Align.END,
-                hexpand = true,
-                max_length = 16,
-                placeholder_text = _("Separator"),
-                text = ""
+                halign = Gtk.Align.START,
+                max_length = 3,
+                text = modifier.separator
             };
 
-            var separator_label = new Gtk.Label (_("Separator:")) {
+            var separator_label = new Gtk.Label (_("Separator")) {
                 halign = Gtk.Align.END,
-                hexpand = false
             };
 
-            var separator_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-            separator_box.pack_start (separator_label);
-            separator_box.pack_start (separator_entry);
             separator_entry.bind_property ("text", modifier, "separator", flags);
-            grid.attach (separator_box, 0, 0);
-            grid.attach (controls, 0, 1);
+
+            grid.attach (separator_label, 0, 0);
+            grid.attach (separator_entry, 1, 0);
+            grid.attach (controls, 0, 1, 2, 1);
             add (grid);
             show_all ();
         }
@@ -147,8 +163,11 @@ public class Files.RenamerModifier : Object {
     public int digits { get; set; default = 1;}
     public int source { get; set; default = 0;}
     public int format { get; set; default = 0;}
+    public int id { get; construct; }
     public string text { get; set; default = "";}
     public string separator { get; set; default = "-";}
+
+    public signal void update_request ();
 
     public RenamerModifier.default_number (RenamePosition pos) {
         Object (
@@ -169,6 +188,10 @@ public class Files.RenamerModifier : Object {
             mode: RenameMode.TEXT,
             pos: pos
         );
+    }
+
+    construct {
+        id = modifier_id++;
     }
 
     public unowned Gtk.Widget get_modifier_widget () {
@@ -246,7 +269,7 @@ public class Files.RenamerModifier : Object {
             case RenameDateFormat.ISO_DATETIME:
                 return datetime.format ("%Y-%m-%d %H:%M:%S");
 
-            default: // Default format
+            default:
                 return datetime.format (Granite.DateTime.get_default_date_format (false, true, true));
         }
     }
