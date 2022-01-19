@@ -233,7 +233,7 @@ namespace Files {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
             Files.Directory? dir = null;
-            if (model.load_subdirectory (path, out dir)) { // Returns true if dir non null
+            if (model.get_subdirectory (path, out dir)) { // Returns true if dir non null
                 connect_directory_handlers (dir);
                 dir.init ();
                 /* Maintain our own reference on dir, independent of the model */
