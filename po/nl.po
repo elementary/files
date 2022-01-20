@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2022-01-20 23:50+0000\n"
+"PO-Revision-Date: 2022-01-21 01:39+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -1265,7 +1265,7 @@ msgstr "Ve_rvangen"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
-msgstr "_Alles Vervangen"
+msgstr "_Alles vervangen"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
