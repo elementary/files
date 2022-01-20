@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2022-01-20 23:50+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1241,7 +1241,7 @@ msgstr "Bestandssysteem"
 
 #: libcore/StockDialogs.vala:20
 msgid "_Cancel"
-msgstr "Annuleren"
+msgstr "_Annuleren"
 
 #: libcore/StockDialogs.vala:21
 msgid "Delete"
@@ -1249,7 +1249,7 @@ msgstr "Verwijderen"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
-msgstr "_Alles Overslaan"
+msgstr "Alles _Overslaan"
 
 #: libcore/StockDialogs.vala:24
 msgid "_Retry"
