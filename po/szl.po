@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-19 16:52+0000\n"
+"POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -659,7 +659,9 @@ msgstr ""
 "informacyji."
 
 #: libcore/marlin-file-operations.c:842
-msgid "Cannot move file to trash.  Try to delete it?"
+#, fuzzy
+#| msgid "Cannot move file to trash.  Try to delete it?"
+msgid "Cannot move file to trash. Try to delete it?"
 msgstr ""
 "Niy idzie przeniyś zbioru do hasioka.  Sprōbować go skasować doimyntnie?"
 
@@ -1167,7 +1169,7 @@ msgid "_Unmount"
 msgstr "Ô_dmōntuj"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Properties"
 msgstr "Włosności"
 
@@ -1181,7 +1183,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Skasuj"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1387,15 +1389,15 @@ msgstr "Wkludź drōga"
 msgid "Type a path"
 msgstr "Wkludź drōga"
 
-#: libcore/Widgets/ViewSwitcher.vala:34
+#: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Pokoż jako nec"
 
-#: libcore/Widgets/ViewSwitcher.vala:41
+#: libcore/Widgets/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Widok listy"
 
-#: libcore/Widgets/ViewSwitcher.vala:48
+#: libcore/Widgets/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Widok kolumn"
 
@@ -1427,7 +1429,8 @@ msgstr "Pokoż wersyjo programu"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Ôtwōrz jedyn abo wiyncyj adres URI, kożdo w ôsobnyj karcie"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1877
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1889
+#: src/View/AbstractDirectoryView.vala:1895
 msgid "New Window"
 msgstr "Nowe ôkno"
 
@@ -1598,7 +1601,7 @@ msgid "Original Location:"
 msgstr "Ôryginalne położynie:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Other Application…"
 msgstr "Inkszy program…"
 
@@ -1721,174 +1724,175 @@ msgstr "Niy idzie ściepnōńć tego zbioru"
 msgid "Invalid file name provided"
 msgstr "Było podano niynoleżne miano zbioru"
 
-#: src/View/AbstractDirectoryView.vala:1871 src/View/Window.vala:146
+#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1878 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "Nowo karta"
 
-#: src/View/AbstractDirectoryView.vala:1891
+#: src/View/AbstractDirectoryView.vala:1912
 msgid "Run"
 msgstr "Ôtwōrz"
 
-#: src/View/AbstractDirectoryView.vala:1898
+#: src/View/AbstractDirectoryView.vala:1919
 #, c-format
 msgid "Open in %s"
 msgstr "Ôtwōrz we %s"
 
-#: src/View/AbstractDirectoryView.vala:1967
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Open in"
 msgstr "Ôtwōrz we"
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1990
 #: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Ôtwōrz ze"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Paste"
 msgstr "Wraź"
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2009
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2018
+#: src/View/AbstractDirectoryView.vala:2039
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "Prziwrōć wszyjsko"
 
-#: src/View/AbstractDirectoryView.vala:2026
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Cut"
 msgstr "Wytnij"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2055
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2062
 msgid "Move to Trash"
 msgstr "Przeniyś do hasioka"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2067
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Skasuj doimyntnie"
 
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Restore from Trash"
 msgstr "Prziwrōć z hasioka"
 
-#: src/View/AbstractDirectoryView.vala:2076
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Open Parent Folder"
 msgstr "Ôtwōrz katalog nadrzyndny"
 
-#: src/View/AbstractDirectoryView.vala:2079
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Remove from History"
 msgstr "Wyciep z historyje"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2128
 msgid "Rename…"
 msgstr "Przemianuj…"
 
-#: src/View/AbstractDirectoryView.vala:2114
+#: src/View/AbstractDirectoryView.vala:2135
 msgid "Copy as Link"
 msgstr "Kopiuj za link"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Paste Link into Folder"
 msgstr "Wraź link do katalogu"
 
-#: src/View/AbstractDirectoryView.vala:2133
+#: src/View/AbstractDirectoryView.vala:2154
 msgid "Paste into Folder"
 msgstr "Wraź do katalogu"
 
-#: src/View/AbstractDirectoryView.vala:2174
+#: src/View/AbstractDirectoryView.vala:2195
 msgid "Show Hidden Files"
 msgstr "Pokoż skryte zbiory"
 
-#: src/View/AbstractDirectoryView.vala:2179
+#: src/View/AbstractDirectoryView.vala:2200
 msgid "Show Remote Thumbnails"
 msgstr "Pokoż miniaturki we zdalnym zasobie"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Hide Thumbnails"
 msgstr "Skryj miniatury"
 
-#: src/View/AbstractDirectoryView.vala:2208
+#: src/View/AbstractDirectoryView.vala:2229
 msgid "Paste Link"
 msgstr "Wraź link"
 
-#: src/View/AbstractDirectoryView.vala:2265
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Name"
 msgstr "Miana"
 
-#: src/View/AbstractDirectoryView.vala:2270 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2291 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Miara"
 
-#: src/View/AbstractDirectoryView.vala:2275 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2296 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Zorta"
 
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2301
 msgid "Date"
 msgstr "Daty"
 
-#: src/View/AbstractDirectoryView.vala:2285
+#: src/View/AbstractDirectoryView.vala:2306
 msgid "Reversed Order"
 msgstr "Ôdwrōcōny porzōndek"
 
-#: src/View/AbstractDirectoryView.vala:2288
+#: src/View/AbstractDirectoryView.vala:2309
 msgid "Folders Before Files"
 msgstr "Katalogi przed zbiorami"
 
-#: src/View/AbstractDirectoryView.vala:2300
+#: src/View/AbstractDirectoryView.vala:2321
 msgid "Sort by"
 msgstr "Zortuj podle"
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2329
 msgid "Folder"
 msgstr "Katalog"
 
-#: src/View/AbstractDirectoryView.vala:2314
+#: src/View/AbstractDirectoryView.vala:2335
 msgid "Empty File"
 msgstr "Prōzny zbiōr"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2386
 msgid "New"
 msgstr "Nowy"
 
-#: src/View/AbstractDirectoryView.vala:2606
+#: src/View/AbstractDirectoryView.vala:2627
 #, c-format
 msgid "Untitled %s"
 msgstr "Niynazwany %s"
 
-#: src/View/AbstractDirectoryView.vala:2971
-#: src/View/AbstractDirectoryView.vala:3149
+#: src/View/AbstractDirectoryView.vala:2992
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot remove files from here"
 msgstr "Niy idzie skasować stōnd zbiorōw"
 
-#: src/View/AbstractDirectoryView.vala:2972
-#: src/View/AbstractDirectoryView.vala:3134
-#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:2993
+#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "You do not have permission to change this location"
 msgstr "Niy styko ci uprawniyń, coby zmiynić to położynie"
 
-#: src/View/AbstractDirectoryView.vala:3103
+#: src/View/AbstractDirectoryView.vala:3126
 msgid "Cannot copy files that are in the trash"
 msgstr "Niy idzie skopiować zbiorōw, co sōm w hasioku"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3127
 msgid "Cutting the selection instead"
 msgstr "Wytnij ôbiōr"
 
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:3156
 msgid "Cannot paste files here"
 msgstr "Niy idzie wrazić sam zbiorōw"
 
@@ -2010,17 +2014,27 @@ msgstr "Niy szło znojś zbioru"
 msgid "The file selected no longer exists."
 msgstr "Ôbrany zbiōr już niy istniyje."
 
-#: src/View/Window.vala:147
+#: src/View/Window.vala:182
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:491
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Zawrzij"
 
-#: src/View/Window.vala:569 src/View/Window.vala:579
+#: src/View/Window.vala:492
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Duplicate Tab"
+msgstr "Tuplowanie „%s”"
+
+#: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
+msgid "Open in New Window"
+msgstr "Ôtwōrz w nowym ôknie"
+
+#: src/View/Window.vala:606 src/View/Window.vala:616
 msgid "(as Administrator)"
 msgstr "(za administratora)"
 
@@ -2146,10 +2160,6 @@ msgstr "Szukej abo wpisz położynie"
 #: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "Ôtwōrz w nowyj karcie"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
-msgid "Open in New Window"
-msgstr "Ôtwōrz w nowym ôknie"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"

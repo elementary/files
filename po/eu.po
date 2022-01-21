@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-19 16:52+0000\n"
+"POT-Creation-Date: 2022-01-11 22:40+0000\n"
 "PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -654,7 +654,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:842
 #, fuzzy
-msgid "Cannot move file to trash.  Try to delete it?"
+msgid "Cannot move file to trash. Try to delete it?"
 msgstr "_Desegin elementu %d zakarrontzira botatzea"
 
 #: libcore/marlin-file-operations.c:843
@@ -1145,7 +1145,7 @@ msgid "_Unmount"
 msgstr "_Desmuntatu"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Properties"
 msgstr "Propietateak"
 
@@ -1159,7 +1159,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Kendu"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
 msgid "Add to Bookmarks"
 msgstr ""
 
@@ -1361,15 +1361,15 @@ msgstr "Mota"
 msgid "Type a path"
 msgstr ""
 
-#: libcore/Widgets/ViewSwitcher.vala:34
+#: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Ikusi sareta gisa"
 
-#: libcore/Widgets/ViewSwitcher.vala:41
+#: libcore/Widgets/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Ikusi zerrenda gisa"
 
-#: libcore/Widgets/ViewSwitcher.vala:48
+#: libcore/Widgets/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Ikusi zutabetan"
 
@@ -1404,7 +1404,8 @@ msgstr "Erakutsi programaren bertsioa."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Ireki URIa(k) fitxa berri(et)an"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1877
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1889
+#: src/View/AbstractDirectoryView.vala:1895
 msgid "New Window"
 msgstr ""
 
@@ -1569,7 +1570,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Other Application…"
 msgstr ""
 
@@ -1685,183 +1686,184 @@ msgstr ""
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1871 src/View/Window.vala:146
+#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1878 src/View/Window.vala:181
 #, fuzzy
 msgid "New Tab"
 msgstr "Ireki fitxa berrian"
 
-#: src/View/AbstractDirectoryView.vala:1891
+#: src/View/AbstractDirectoryView.vala:1912
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1898
+#: src/View/AbstractDirectoryView.vala:1919
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1967
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1990
 #: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "Ireki honekin"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2009
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2018
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2026
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2055
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2062
 #, fuzzy
 msgid "Move to Trash"
 msgstr "Bota '%s' zakarrontzira"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2067
 #, fuzzy
 msgid "Delete Permanently"
 msgstr " hautatuta"
 
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2074
 #, fuzzy
 msgid "Restore from Trash"
 msgstr "Berrezarri '%s' zakarrontzitik"
 
-#: src/View/AbstractDirectoryView.vala:2076
+#: src/View/AbstractDirectoryView.vala:2097
 #, fuzzy
 msgid "Open Parent Folder"
 msgstr "Ireki zure karpeta pertsonala"
 
-#: src/View/AbstractDirectoryView.vala:2079
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2128
 #, fuzzy
 #| msgid "Re_name"
 msgid "Rename…"
 msgstr "Al_datu izena"
 
-#: src/View/AbstractDirectoryView.vala:2114
+#: src/View/AbstractDirectoryView.vala:2135
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2133
+#: src/View/AbstractDirectoryView.vala:2154
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2174
+#: src/View/AbstractDirectoryView.vala:2195
 #, fuzzy
 msgid "Show Hidden Files"
 msgstr "Fitxategiak lekuz aldatzen"
 
-#: src/View/AbstractDirectoryView.vala:2179
+#: src/View/AbstractDirectoryView.vala:2200
 #, fuzzy
 msgid "Show Remote Thumbnails"
 msgstr "Erakutsi _xehetasun gehiago"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2203
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Erakutsi _xehetasun gehiago"
 
-#: src/View/AbstractDirectoryView.vala:2208
+#: src/View/AbstractDirectoryView.vala:2229
 msgid "Paste Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2265
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Name"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2270 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2291 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Tamaina"
 
-#: src/View/AbstractDirectoryView.vala:2275 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2296 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Mota"
 
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2301
 msgid "Date"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2285
+#: src/View/AbstractDirectoryView.vala:2306
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2288
+#: src/View/AbstractDirectoryView.vala:2309
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2300
+#: src/View/AbstractDirectoryView.vala:2321
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2329
 #, fuzzy
 msgid "Folder"
 msgstr "_Karpeta:"
 
-#: src/View/AbstractDirectoryView.vala:2314
+#: src/View/AbstractDirectoryView.vala:2335
 #, fuzzy
 msgid "Empty File"
 msgstr "Fitxategiak kopiatzen"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2386
 #, fuzzy
 msgid "New"
 msgstr "Sarea"
 
-#: src/View/AbstractDirectoryView.vala:2606
+#: src/View/AbstractDirectoryView.vala:2627
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2971
-#: src/View/AbstractDirectoryView.vala:3149
+#: src/View/AbstractDirectoryView.vala:2992
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2972
-#: src/View/AbstractDirectoryView.vala:3134
-#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:2993
+#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3103
+#: src/View/AbstractDirectoryView.vala:3126
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3127
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:3156
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -1987,16 +1989,25 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Window.vala:147
+#: src/View/Window.vala:182
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:491
 #, fuzzy
 msgid "Close Tab"
 msgstr "Ireki fitxa berrian"
 
-#: src/View/Window.vala:569 src/View/Window.vala:579
+#: src/View/Window.vala:492
+#, fuzzy
+msgid "Duplicate Tab"
+msgstr "\"%B\" bikoizten"
+
+#: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
+msgid "Open in New Window"
+msgstr ""
+
+#: src/View/Window.vala:606 src/View/Window.vala:616
 msgid "(as Administrator)"
 msgstr "(administratzaile bezala)"
 
@@ -2120,10 +2131,6 @@ msgstr ""
 #: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "Ireki fitxa berrian"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
-msgid "Open in New Window"
-msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
