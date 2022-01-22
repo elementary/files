@@ -489,7 +489,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
             if (GLib.FileUtils.test (filename, GLib.FileTest.EXISTS) && !GLib.FileUtils.test (filename, GLib.FileTest.IS_SYMLINK)) {
                 var display_filename = GLib.Filename.display_basename (filename);
-                var primary = _("Replace \"%s\"?".printf (display_filename));
+                var primary = _("Replace “%s”?".printf (display_filename));
                 var secondary = _("The file already exists. Replacing it will permanently overwrite its current contents.");
                 var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL) {
                     transient_for = this
