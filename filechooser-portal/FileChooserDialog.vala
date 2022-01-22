@@ -272,12 +272,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
         chooser.file_activated.connect (() => {
              if (!GLib.FileUtils.test (chooser.get_filename (), FileTest.IS_DIR)) {
-                 response (Gtk.ResponseType.OK);
+                 accept ();
              }
         });
 
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
-        accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
+        accept_button.clicked.connect (accept);
 
         // save the dialog size and close after selection
         response.connect_after (() => {
@@ -381,7 +381,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
             entry.activate.connect (() => {
                 if (accept_button.sensitive) {
-                    response (Gtk.ResponseType.OK);
+                    accept ();
                 }
             });
 
@@ -469,6 +469,45 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         if (chooser.list_filters ().search<string> (name, (a, b) => strcmp (a.get_filter_name (), b)) == null) {
             chooser.add_filter (filter);
             filter_box.append (name, name);
+        }
+    }
+
+    private void accept () {
+        if (action == Gtk.FileChooserAction.SAVE || action == Gtk.FileChooserAction.CREATE_FOLDER) {
+            // If an existing file would be overwritten, ask for permission first
+
+            assert (select_multiple == false);
+
+            // TODO handle failed URI conversions
+            var filename = "";
+            try {
+                filename = GLib.Filename.from_uri (get_uri ());
+            } catch (Error e) {
+                warning ("Could not convert URI of selected item to filename");
+                warning (e.message);
+            }
+
+            if (GLib.FileUtils.test (filename, GLib.FileTest.EXISTS) && !GLib.FileUtils.test (filename, GLib.FileTest.IS_SYMLINK)) {
+                var display_filename = GLib.Filename.display_basename (filename);
+                var primary = _("Replace \"%s\"?".printf (display_filename));
+                var secondary = _("The file already exists. Replacing it will permanently overwrite its current contents.");
+                var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL) {
+                    transient_for = this
+                };
+                var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
+                replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+                var replace_response = replace_dialog.run ();
+                if (replace_response == Gtk.ResponseType.YES) {
+                    response (Gtk.ResponseType.OK);
+                }
+                replace_dialog.destroy ();
+            } else {
+                response (Gtk.ResponseType.OK);
+            }
+        } else {
+            // Just selecting an existing item to open: no need to check for overwrite
+            response (Gtk.ResponseType.OK);
         }
     }
 
