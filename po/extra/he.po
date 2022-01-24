@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-01-11 23:32+0000\n"
+"PO-Revision-Date: 2022-01-24 23:11+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -71,10 +71,8 @@ msgid "Improvements:"
 msgstr "שיפורים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr "הצגת קיצורי מקלדת בפריטי תפריט"
+msgstr "הצגת קיצורי מקלדת ללשונית ולחלון חדש בתפריטי ההקשר"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:57
@@ -96,11 +94,11 @@ msgstr "לחיצה כפולה בוחרת במקום לצאת תוך שינוי �
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "הצגת סמל שיתוף ציבורי בפס הנתיב"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
+msgstr "נמנעה קריסה בעת גרירת הסימניות לסידורן מחדש"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 #: data/io.elementary.files.appdata.xml.in.in:68
