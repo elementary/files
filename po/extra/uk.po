@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-01-11 23:32+0000\n"
+"PO-Revision-Date: 2022-01-24 22:26+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -80,10 +80,8 @@ msgid "Improvements:"
 msgstr "Поліпшено:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr "Показувати комбінації клавіш у пунктах меню"
+msgstr "Показ комбінацій клавіш Нова вкладка та Нове вікно у контекстному меню"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:57
@@ -107,11 +105,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "Показ піктограми загального доступу у рядку панелі адреси"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
+msgstr "Запобігання збоям під час перетягування для перевпорядкування закладок"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 #: data/io.elementary.files.appdata.xml.in.in:68
