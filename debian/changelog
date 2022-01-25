@@ -1,3 +1,23 @@
+pantheon-files (6.1.2) bionic; urgency=medium
+
+  * Release 6.1.2 (#1995)
+  * Update translation files
+  * Update translation template
+  * Add suggested-action class to accept button (#1993)
+  * Move StorageBar.vala from Granite to Files (#1985)
+  * SingleLineEditableLabel: Block propagation of button press (#1979)
+  * Show New Tab and New Window accelerators (#1980)
+  * ViewSwitcher.vala: Rewrite without Granite.ModeButton (#1982)
+  * Reference bookmark when iterating list to avoid destruction (#1976)
+  * Fix Public symbolic icon missing in breadcrumb (#1972)
+  * Meson: remove positional arguments from i18n.merge_file (#1973)
+  * Fix double-spaced text (#1967)
+  * AppData: Use "grid" instead of "icon" for consistency with UI
+    (#1963)
+  * AppData: Fix a typo (#1952)
+
+ -- elementary, Inc. <builds@elementary.io>  Tue, 25 Jan 2022 17:31:31 +0000
+
 pantheon-files (6.1.1) bionic; urgency=medium
 
   * Release 6.1.1 (#1933)
