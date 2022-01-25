@@ -318,10 +318,11 @@ public class Files.RenamerDialog : Gtk.Dialog {
                 delete_modifier (mod);
 
             });
-            var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
+            var button_box = new Gtk.ActionBar ();
+            button_box.pack_end (apply_button);
             button_box.pack_start (delete_button);
-            button_box.pack_start (cancel_button);
-            button_box.pack_start (apply_button);
+            button_box.pack_end (cancel_button);
+
 
             var edit_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
             edit_box.pack_start (mod.get_modifier_widget ());
