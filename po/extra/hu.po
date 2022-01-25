@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2021-11-30 18:07+0000\n"
+"PO-Revision-Date: 2022-01-25 12:20+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -79,7 +79,7 @@ msgstr "Fejlesztések:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr ""
+msgstr "Új lap és új ablak gyorsparancsok a menükben"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:57
@@ -98,14 +98,15 @@ msgstr "Javítások:"
 #: data/io.elementary.files.appdata.xml.in.in:39
 msgid "Double click selects instead of exiting while renaming in list view"
 msgstr ""
+"Dupla kattintás kiválaszt ahelyett, hogy kilépne átnevezéskor listanézetben"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "Publikus megosztás ikon kijelzése"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
+msgstr "A könyvjelzők átrendezése közbeni összeomlás megelőzve"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 #: data/io.elementary.files.appdata.xml.in.in:68
