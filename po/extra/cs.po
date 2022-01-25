@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-01-12 18:23+0000\n"
+"PO-Revision-Date: 2022-01-25 22:09+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
 "Language: cs\n"
@@ -77,10 +77,8 @@ msgid "Improvements:"
 msgstr "Vylepšení:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr "U položek nabídek už jsou zobrazovány klávesové zkratky"
+msgstr "V kontextových nabídkách zobrazovány zkratky pro Nový panel a Nové okno"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:57
@@ -104,11 +102,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "V drobečkových navigacích zobrazována ikona veřejného sdílení"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
+msgstr "Zabráněno pádu při změně pořadí záložek jejich přetahováním"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 #: data/io.elementary.files.appdata.xml.in.in:68
