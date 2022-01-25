@@ -20,8 +20,6 @@
 */
 
 public class Files.RenamerModifier : Object {
-    static int modifier_id = 0;
-
     protected class EditWidget : Gtk.Bin {
         public RenamerModifier modifier { get; construct; }
 
@@ -152,22 +150,21 @@ public class Files.RenamerModifier : Object {
     }
 
     /* -------------------------------end of Edit Widget class----------------------------*/
-    private const int DEFAULT_DIGITS = 1;
-    private const int DEFAULT_START = 1;
-
-    public EditWidget? edit_widget { get; private set; default = null; }
     public RenameMode mode { get; construct; }
-    public RenamePosition pos  { get; construct; }
+    public RenamePosition pos { get; construct; }
 
     public int start { get; set; default = 1;}
+    public int old_start { get; set; default = 1;}
     public int digits { get; set; default = 1;}
+    public int old_digits { get; set; default = 1;}
     public int source { get; set; default = 0;}
+    public int old_source { get; set; default = 0;}
     public int format { get; set; default = 0;}
-    public int id { get; construct; }
+    public int old_format { get; set; default = 0;}
     public string text { get; set; default = "";}
+    public string old_text { get; set; default = "";}
     public string separator { get; set; default = "-";}
-
-    public signal void update_request ();
+    public string old_separator { get; set; default = "-";}
 
     public RenamerModifier.default_number (RenamePosition pos) {
         Object (
@@ -190,16 +187,25 @@ public class Files.RenamerModifier : Object {
         );
     }
 
-    construct {
-        id = modifier_id++;
+    public Gtk.Widget get_modifier_widget () {
+        /* Store pre-edit values in case edit is cancelled */
+        old_start = start;
+        old_digits = digits;
+        old_source = source;
+        old_format = format;
+        old_text = text;
+        old_separator = separator;
+        return new EditWidget (this);;
     }
 
-    public unowned Gtk.Widget get_modifier_widget () {
-        if (edit_widget == null) {
-            edit_widget = new EditWidget (this);
-        }
-
-        return edit_widget;
+    public void cancel_edit () {
+        /* Restore pre-edit values */;
+        start = old_start;
+        digits = old_digits;
+        source = old_source;
+        format = old_format;
+        text = old_text;
+        separator = old_separator;
     }
 
     public string rename (string input, int index, Files.File file) {

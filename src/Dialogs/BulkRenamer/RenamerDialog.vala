@@ -42,6 +42,12 @@ public class Files.RenamerDialog : Gtk.Dialog {
         }
     }
 
+    private const ActionEntry[] ACTION_ENTRIES = {
+        {"add-text", on_action_add_text, "u"},
+        {"add-number", on_action_add_number, "u"},
+        {"add-date", on_action_add_date, "u"}
+    };
+
     private Files.Renamer renamer;
     private Gtk.Grid controls_grid;
     private Gtk.Box prefix_box;
@@ -51,13 +57,6 @@ public class Files.RenamerDialog : Gtk.Dialog {
     private Gtk.Entry base_name_entry;
     private Gtk.ComboBoxText base_name_combo;
     private SimpleActionGroup actions;
-    private ActionEntry[] ACTION_ENTRIES = {
-        {"add-text", on_action_add_text, "u"},
-        {"add-number", on_action_add_number, "u"},
-        {"add-date", on_action_add_date, "u"},
-        {"edit-modifier", on_action_edit_modifier, "u"},
-        {"delete-modifier", on_action_delete_modifier, "u"}
-    };
 
     public RenamerDialog (List<Files.File> files, string? basename = null) {
         if (basename != null) {
@@ -296,16 +295,49 @@ public class Files.RenamerDialog : Gtk.Dialog {
 
     private void add_modifier (RenamerModifier mod) {
         renamer.modifier_chain.add (mod);
-        var mod_menumodel = new Menu ();
-        mod_menumodel.append (_("Options"), "renamer.edit-modifier(uint32 " + mod.id.to_string () + ")");
-        mod_menumodel.append (_("Delete"), "renamer.delete-modifier(uint32 " + mod.id.to_string () + ")");
-        var mod_button = new Gtk.MenuButton () {
+        var mod_button = new Gtk.Button.with_label (mod.mode.to_string ()) {
             margin_start = 3,
-            margin_end = 3,
-            menu_model = mod_menumodel
+            margin_end = 3
         };
-        mod_button.set_label (mod.mode.to_string ());
-        mod.set_data<Gtk.MenuButton> ("button", mod_button);
+        mod.set_data<Gtk.Button> ("button", mod_button);
+        mod_button.clicked.connect (() => {
+            var edit_dialog = new Gtk.Popover (mod_button);
+            var apply_button = new Gtk.Button.with_label (_("Apply"));
+            apply_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DEFAULT);
+            apply_button.clicked.connect (() => {
+                edit_dialog.popdown ();
+            });
+            var cancel_button = new Gtk.Button.with_label (_("Cancel"));
+            cancel_button.clicked.connect (() => {
+                mod.cancel_edit ();
+                edit_dialog.popdown ();
+            });
+            var delete_button = new Gtk.Button.with_label (_("Delete"));
+            delete_button.clicked.connect (() => {
+                edit_dialog.popdown ();
+                delete_modifier (mod);
+
+            });
+            var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
+            button_box.pack_start (delete_button);
+            button_box.pack_start (cancel_button);
+            button_box.pack_start (apply_button);
+
+            var edit_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+            edit_box.pack_start (mod.get_modifier_widget ());
+            edit_box.pack_start (button_box);
+
+            edit_dialog.add (edit_box);
+            edit_dialog.closed.connect (() => {
+                schedule_view_update ();
+                edit_dialog.remove (edit_box);
+                edit_dialog.destroy ();
+                edit_box.destroy ();
+            });
+            edit_dialog.show_all ();
+            edit_dialog.popup ();
+            return;
+        });
 
         if (mod.pos == RenamePosition.PREFIX) {
             // In Gtk3 required to keep add buttons on outside. In Gtk4, can use append and prepend
@@ -346,36 +378,11 @@ public class Files.RenamerDialog : Gtk.Dialog {
         add_modifier (mod);
     }
 
-    private void on_action_edit_modifier (SimpleAction action, Variant? target) {
-        var mod_id = target.get_uint32 ();
-        foreach (var mod in renamer.modifier_chain) {
-            if (mod.id == mod_id) {
-                var button = mod.get_data<Gtk.MenuButton> ("button");
-                var edit_dialog = new Gtk.Popover (button);
-                var mod_widget = mod.get_modifier_widget ();
-                edit_dialog.add (mod_widget);
-                edit_dialog.closed.connect (() => {
-                    schedule_view_update ();
-                    edit_dialog.remove (mod_widget);
-                    edit_dialog.destroy ();
-                });
-                edit_dialog.show_all ();
-                edit_dialog.popup ();
-                return;
-            }
-        }
-    }
-
-    private void on_action_delete_modifier (SimpleAction action, Variant? target) {
-        var mod_id = target.get_uint32 ();
-        foreach (var mod in renamer.modifier_chain) {
-            if (mod.id == mod_id) {
-                renamer.modifier_chain.remove (mod);
-                var button = mod.get_data<Gtk.MenuButton> ("button");
-                button.destroy ();
-                schedule_view_update ();
-                return;
-            }
-        }
+    private void delete_modifier (RenamerModifier mod) {
+        renamer.modifier_chain.remove (mod);
+        var button = mod.get_data<Gtk.Button> ("button");
+        button.destroy ();
+        schedule_view_update ();
+        return;
     }
 }
