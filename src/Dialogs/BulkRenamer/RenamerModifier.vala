@@ -108,6 +108,8 @@ public class Files.RenamerModifier : Object {
                     box.add (date_format_combo);
                     controls = box;
 
+                    date_source_combo.active = modifier.source;
+                    date_format_combo.active = modifier.format;
                     date_source_combo.bind_property ("active", modifier, "source", flags);
                     date_format_combo.bind_property ("active", modifier, "format", flags);
 
@@ -195,7 +197,7 @@ public class Files.RenamerModifier : Object {
         old_format = format;
         old_text = text;
         old_separator = separator;
-        return new EditWidget (this);;
+        return new EditWidget (this);
     }
 
     public void cancel_edit () {
