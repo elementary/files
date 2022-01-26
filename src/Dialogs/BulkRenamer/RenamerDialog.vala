@@ -86,6 +86,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         renamer.bind_property (
             "can-rename", rename_button, "sensitive", GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE
         );
+
         var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         /* Template Controls */
@@ -106,6 +107,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
             menu_model = prefix_menumodel,
             halign = Gtk.Align.END
         };
+
         prefix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         prefix_box.pack_end (prefix_button, false, false);
 
@@ -138,7 +140,8 @@ public class Files.RenamerDialog : Gtk.Dialog {
         };
         var old_file_names = new Gtk.TreeView.with_model (renamer.old_files_model) {
             hexpand = true,
-            headers_visible = false
+            headers_visible = false,
+            can_focus = false
         };
         old_file_names.insert_column_with_attributes (
             -1,
@@ -155,7 +158,8 @@ public class Files.RenamerDialog : Gtk.Dialog {
         var old_scrolled_window = new Gtk.ScrolledWindow (null, null) {
             hexpand = true,
             min_content_height = 300,
-            max_content_height = 2000
+            max_content_height = 2000,
+            can_focus = false
         };
         old_scrolled_window.add (old_file_names);
 
@@ -176,7 +180,8 @@ public class Files.RenamerDialog : Gtk.Dialog {
             0
         );
         var new_file_names = new Gtk.TreeView.with_model (renamer.new_files_model) {
-            headers_visible = false
+            headers_visible = false,
+            can_focus = false
         };
         new_file_names.insert_column (text_col, 0);
         new_file_names.insert_column_with_attributes (
@@ -197,7 +202,8 @@ public class Files.RenamerDialog : Gtk.Dialog {
             vadjustment = old_scrolled_window.get_vadjustment (),
             min_content_height = 300,
             max_content_height = 2000,
-            overlay_scrolling = true
+            overlay_scrolling = true,
+            can_focus = false
         };
 
         new_scrolled_window.add (new_file_names);
@@ -216,7 +222,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         controls_grid.attach (base_name_entry_revealer, 1, 1, 1, 1);
 
         var lists_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 32) {
-            homogeneous = true,
+            homogeneous = true
         };
         lists_box.pack_start (old_scrolled_window);
         lists_box.pack_start (new_scrolled_window);
@@ -273,11 +279,8 @@ public class Files.RenamerDialog : Gtk.Dialog {
                     if (mods == 0) {
                         response (Gtk.ResponseType.REJECT);
                     }
-                    break;
-                case Gdk.Key.Return:
-                    if (mods == 0 && renamer.can_rename) {
-                        response (Gtk.ResponseType.APPLY);
-                    }
+
+                    return true;
                 default:
                     break;
             }
@@ -334,6 +337,24 @@ public class Files.RenamerDialog : Gtk.Dialog {
                 edit_dialog.remove (edit_box);
                 edit_dialog.destroy ();
                 edit_box.destroy ();
+            });
+
+            edit_dialog.key_press_event.connect ((event) => {
+                switch (event.keyval) {
+                    case Gdk.Key.Return:
+                    case Gdk.Key.KP_Enter:
+                        edit_dialog.popdown ();
+
+                        return true;
+                    case Gdk.Key.Escape:
+                        mod.cancel_edit ();
+                        edit_dialog.popdown ();
+
+                        return true;
+
+                    default:
+                        return false;
+                }
             });
             edit_dialog.show_all ();
             edit_dialog.popup ();
