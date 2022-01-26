@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-01-12 13:01+0000\n"
+"PO-Revision-Date: 2022-01-26 10:48+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,10 +80,8 @@ msgid "Improvements:"
 msgstr "改善点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr "メニュー項目にキーボードショートカットを表示するように修正"
+msgstr "コンテキストメニューに“新しいタブ”と“新しいウィンドウ”のキーボードショートカットを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:57
@@ -107,11 +105,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "パンくずリストに“公開”フォルダーの共有アイコンが表示されていなかったのを修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
+msgstr "ドラッグしてブックマークを並び替えするとクラッシュする不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 #: data/io.elementary.files.appdata.xml.in.in:68
