@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-01-13 12:29+0000\n"
+"PO-Revision-Date: 2022-01-26 10:48+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,10 +79,10 @@ msgid "Improvements:"
 msgstr "Millores:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr "Es mostren les dreceres de teclat als menús."
+msgstr ""
+"Es mostren les dreceres de la pestanya nova i la finestra nova als menús "
+"contextuals."
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:57
@@ -106,11 +106,12 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "Es mostra la icona de compartició pública a la navegació."
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
 msgstr ""
+"S'evita un bloqueig quan arrossegueu per reorganitzar les adreces d'interès."
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 #: data/io.elementary.files.appdata.xml.in.in:68
