@@ -26,7 +26,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Stack stack;
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Widget header_title;
-    protected Granite.Widgets.StorageBar? storagebar = null;
+    protected Files.StorageBar? storagebar = null;
 
     protected enum PanelType {
         INFO,
@@ -154,8 +154,8 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             uint64 fs_available = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
             uint64 fs_reserved = fs_capacity - fs_used - fs_available;
 
-            storagebar = new Granite.Widgets.StorageBar.with_total_usage (fs_capacity, fs_used + fs_reserved);
-            update_storage_block_size (fs_reserved, Granite.Widgets.StorageBar.ItemDescription.OTHER);
+            storagebar = new Files.StorageBar.with_total_usage (fs_capacity, fs_used + fs_reserved);
+            update_storage_block_size (fs_reserved, Files.StorageBar.ItemDescription.OTHER);
 
             info_grid.attach (storagebar, 0, line + 1, 4, 1);
         } else {
@@ -180,7 +180,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     }
 
     protected void update_storage_block_size (uint64 size,
-                                              Granite.Widgets.StorageBar.ItemDescription item_description) {
+                                              Files.StorageBar.ItemDescription item_description) {
         if (storagebar != null) {
             storagebar.update_block_size (item_description, size);
         }
