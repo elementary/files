@@ -39,7 +39,7 @@ public class Files.RenamerModifier : Object {
             Gtk.Widget controls;
             var flags = BindingFlags.DEFAULT;
             switch (modifier.mode) {
-                case RenameMode.NUMBER:
+                case RenameMode.NUMBER_SEQUENCE:
                     var sortby_label = new Gtk.Label (_("Sort By")) {
                         halign = Gtk.Align.END
                     };
@@ -198,7 +198,7 @@ public class Files.RenamerModifier : Object {
 
     public RenamerModifier.default_number (RenamePosition pos) {
         Object (
-            mode: RenameMode.NUMBER,
+            mode: RenameMode.NUMBER_SEQUENCE,
             pos: pos
         );
     }
@@ -245,7 +245,7 @@ public class Files.RenamerModifier : Object {
     public string rename (string input, int index, Files.File file) {
         string new_text = "";
         switch (mode) {
-            case RenameMode.NUMBER:
+            case RenameMode.NUMBER_SEQUENCE:
                 if (start >= 0 && digits >= 0) {
                     var template = "%%0%id".printf (digits);
                     new_text = template.printf (index + start);

@@ -67,6 +67,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         }
 
         renamer.add_files (files);
+        schedule_view_update ();
     }
 
     construct {

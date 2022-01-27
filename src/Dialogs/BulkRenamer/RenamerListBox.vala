@@ -28,44 +28,41 @@ public class Files.RenamerListBox : Gtk.ListBox {
         public RenamerListRow (Files.File file) {
             Object (
                 file: file,
-                old_name: file.basename,
-                new_name: file.basename
+                old_name: file.basename
             );
         }
 
         construct {
-            selectable = false;
-
-             var oldname_label = new Gtk.Label (old_name) {
+            can_focus = false;
+            var oldname_label = new Gtk.Label (old_name) {
                 xalign = 0.0f,
-                hexpand = true,
                 width_chars = 24
-             };
+            };
 
 
-             var newname_label = new Gtk.Label (new_name) {
+            var newname_label = new Gtk.Label (new_name) {
                 xalign = 0.0f,
-                hexpand = true,
                 width_chars = 24
-             };
+            };
 
-             var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU);
+            var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU);
 
-             var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-             box.pack_start (oldname_label);
-             box.pack_end (newname_label);
-             box.set_center_widget (arrow_image); // Should not pack center widget
-             add (box);
-             show_all ();
+            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            box.pack_start (oldname_label);
+            box.pack_end (newname_label);
+            box.set_center_widget (arrow_image); // Should not pack center widget
+            add (box);
+            show_all ();
 
-             notify["new-name"].connect (() => {
+            notify["new-name"].connect (() => {
                 newname_label.label = new_name;
-             });
+            });
         }
     }
 
     construct {
         vexpand = true;
+        can_focus = false;
         selection_mode = Gtk.SelectionMode.NONE;
         show_all ();
     }

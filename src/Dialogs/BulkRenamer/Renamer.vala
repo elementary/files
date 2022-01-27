@@ -22,29 +22,16 @@
 */
 
 public class Files.Renamer : Object {
-    private const string QUERY_INFO_STRING = FileAttribute.STANDARD_TARGET_URI + "," +
-                                             FileAttribute.TIME_CREATED + "," +
-                                             FileAttribute.TIME_MODIFIED;
-
     public bool can_rename { get; set; default = false; }
     public string directory { get; private set; default = ""; }
     public Gee.ArrayList<RenamerModifier> modifier_chain { get; construct; }
     public RenamerListBox listbox { get; construct; }
-
-    private Gee.HashMap<string, Files.File> file_map;
-    private Gee.HashMap<string, RenamerListBox.RenamerListRow> basename_row_map;
-    private Gee.HashMap<string, FileInfo> file_info_map;
-    private Mutex info_map_mutex;
     public SortBy sortby { get; set; default = SortBy.NAME; }
     public bool is_reversed { get; set; default = false; }
 
     construct {
-        info_map_mutex = Mutex ();
         can_rename = false;
-        file_map = new Gee.HashMap<string, Files.File> ();
-        file_info_map = new Gee.HashMap<string, FileInfo> ();
         modifier_chain = new Gee.ArrayList<RenamerModifier> ();
-
         listbox = new RenamerListBox ();
 
         notify["is-reversed"].connect (set_sort);
@@ -64,32 +51,13 @@ public class Files.Renamer : Object {
             directory = Path.get_dirname (files.first ().data.location.get_path ());
         }
 
-        Gtk.TreeIter? iter = null;
         foreach (unowned var f in files) {
             var path = f.location.get_path ();
             var dir = Path.get_dirname (path);
             if (dir == directory) {
-                var basename = Path.get_basename (path);
-                file_map.@set (basename, f);
+                f.ensure_query_info ();
                 var row = listbox.add_file (f);
-                basename_row_map.@set (basename, row);
-
-                f.location.query_info_async.begin (
-                    QUERY_INFO_STRING,
-                    FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-                    Priority.DEFAULT,
-                    null, /* No cancellable for now */
-                    (object, res) => {
-                        try {
-                            var info = f.location.query_info_async.end (res);
-                            info_map_mutex.@lock ();
-                            file_info_map.@set (basename, info.dup ());
-                            info_map_mutex.@unlock ();
-                        } catch (Error e) {
-                            warning ("Error querying info %s", e.message);
-                        }
-                    }
-                );
+                row.new_name = Path.get_basename (path);
             }
         }
     }
@@ -97,9 +65,8 @@ public class Files.Renamer : Object {
     public void rename_files () {
         listbox.get_children ().@foreach ((child) => {
             var row = (RenamerListBox.RenamerListRow)child;
-            unowned string input_name = row.old_name;
             unowned string output_name = row.new_name;
-            var file = file_map.@get (input_name);
+            var file = row.file;
 
             if (file != null) {
                 Files.FileUtils.set_file_display_name.begin (
@@ -127,12 +94,7 @@ public class Files.Renamer : Object {
         }
     }
 
-    private bool invalid_name (string new_name, string input_name) {
-        var old_file = file_map.@get (input_name);
-        if (old_file == null) {
-            return true;
-        }
-
+    private bool invalid_name (string new_name, Files.File old_file) {
         var new_file = GLib.File.new_for_path (
             Path.build_filename (old_file.location.get_parent ().get_path (), new_name)
         );
@@ -176,7 +138,7 @@ public class Files.Renamer : Object {
         listbox.get_children ().@foreach ((child) => {
             var row = (RenamerListBox.RenamerListRow)child;
             file_name = row.old_name;
-            var file = file_map.@get (file_name);
+            var file = row.file;
 
             if (custom_basename != null) {
                 input_name = custom_basename;
@@ -184,8 +146,11 @@ public class Files.Renamer : Object {
                 input_name = strip_extension (file_name, out extension);
             }
 
+            output_name = input_name;
+
             foreach (var mod in modifier_chain) {
                 output_name = mod.rename (input_name, index, file);
+            warning ("modify %s -> %s", input_name, output_name);
                 input_name = output_name;
             }
 
@@ -194,9 +159,9 @@ public class Files.Renamer : Object {
 
             if (final_name == previous_final_name ||
                 final_name == file_name ||
-                invalid_name (final_name, file_name)) {
+                invalid_name (final_name, file)) {
 
-                debug ("blank or duplicate or existing filename");
+                warning ("blank or duplicate or existing filename %s", final_name);
                 name_invalid = true;
                 can_rename = false;
             }
