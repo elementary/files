@@ -67,7 +67,8 @@ public class Files.Renamer : Object {
             unowned string output_name = row.new_name;
             var file = row.file;
 
-            if (file != null) {
+            /* Ignore files that will not be renamed */
+            if (file != null && file.location.get_basename () != output_name) {
                 Files.FileUtils.set_file_display_name.begin (
                     file.location,
                     output_name,
@@ -98,12 +99,12 @@ public class Files.Renamer : Object {
             Path.build_filename (old_file.location.get_parent ().get_path (), new_name)
         );
 
-        return new_file.query_exists ();
+        return !old_file.location.equal (new_file) && new_file.query_exists ();
     }
 
     private uint update_timeout_id = 0;
     private bool updating = false;
-    public void schedule_update (string? custom_basename) {
+    public void schedule_update (string? custom_basename, string? replacement_text) {
         if (update_timeout_id > 0) {
             Source.remove (update_timeout_id);
         }
@@ -114,13 +115,13 @@ public class Files.Renamer : Object {
             }
 
             update_timeout_id = 0;
-            update_new_filenames (custom_basename);
+            update_new_filenames (custom_basename, replacement_text);
 
             return Source.REMOVE;
         });
     }
 
-    private void update_new_filenames (string? custom_basename) {
+    private void update_new_filenames (string? custom_basename, string? replacement_text) {
         updating = true;
         int index = 0;
         string output_name = "";
@@ -135,10 +136,14 @@ public class Files.Renamer : Object {
             file_name = row.old_name;
             var file = row.file;
 
-            if (custom_basename != null) {
+            if (custom_basename != null && replacement_text == null) {
                 input_name = custom_basename;
             } else {
                 input_name = strip_extension (file_name, out extension);
+            }
+
+            if (replacement_text != null && custom_basename != null && custom_basename != "") {
+                input_name = input_name.replace (custom_basename, replacement_text);
             }
 
             output_name = input_name;
@@ -151,7 +156,6 @@ public class Files.Renamer : Object {
             var final_name = output_name.concat (extension);
 
             if (final_name == previous_final_name ||
-                final_name == file_name ||
                 invalid_name (final_name, file)) {
 
                 debug ("blank or duplicate or existing filename");

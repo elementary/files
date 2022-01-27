@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2010-2017  Vartan Belavejian
- * Copyright (C) 2019-2020 Jeremy Wootten
+ * Copyright (C) 2019-2022 Jeremy Wootten
  *
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +15,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *  Authors:
- *  Vartan Belavejian <https://github.com/VartanBelavejian>
  *  Jeremy Wootten <jeremywootten@gmail.com>
  *
 */
@@ -53,17 +51,18 @@ public class Files.RenamerDialog : Gtk.Dialog {
     private Gtk.Box suffix_box;
     private Gtk.MenuButton prefix_button;
     private Gtk.MenuButton suffix_button;
-    private Gtk.Entry base_name_entry;
-    private Gtk.ComboBoxText base_name_combo;
+    private Gtk.Entry basename_entry;
+    private Gtk.Entry replace_entry;
+    private Gtk.ComboBoxText basename_combo;
     private SimpleActionGroup actions;
 
     public RenamerDialog (List<Files.File> files, string? basename = null) {
         if (basename != null) {
-            base_name_combo.set_active (RenameBase.CUSTOM);
-            base_name_entry.text = basename;
+            basename_combo.set_active (RenameBase.CUSTOM);
+            basename_entry.text = basename;
         } else {
-            base_name_combo.set_active (RenameBase.ORIGINAL);
-            base_name_entry.text = "";
+            basename_combo.set_active (RenameBase.ORIGINAL);
+            basename_entry.text = "";
         }
 
         renamer.add_files (files);
@@ -118,17 +117,20 @@ public class Files.RenamerDialog : Gtk.Dialog {
         suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         suffix_box.pack_start (suffix_button, false, false);
 
-        base_name_combo = new Gtk.ComboBoxText () {
+        basename_combo = new Gtk.ComboBoxText () {
             valign = Gtk.Align.CENTER
         };
-        base_name_combo.insert (RenameBase.ORIGINAL, "ORIGINAL", RenameBase.ORIGINAL.to_string ());
-        base_name_combo.insert (RenameBase.REPLACE, "REPLACE", RenameBase.REPLACE.to_string ());
-        base_name_combo.insert (RenameBase.CUSTOM, "CUSTOM", RenameBase.CUSTOM.to_string ());
-        base_name_entry = new Gtk.Entry () {
-            placeholder_text = _("Enter fixed name to replace the original")
+        basename_combo.insert (RenameBase.ORIGINAL, "ORIGINAL", RenameBase.ORIGINAL.to_string ());
+        basename_combo.insert (RenameBase.REPLACE, "REPLACE", RenameBase.REPLACE.to_string ());
+        basename_combo.insert (RenameBase.CUSTOM, "CUSTOM", RenameBase.CUSTOM.to_string ());
+        basename_entry = new Gtk.Entry ();
+        replace_entry = new Gtk.Entry () {
+            placeholder_text = _("Enter replacement text")
         };
-        var base_name_entry_revealer = new Gtk.Revealer ();
-        base_name_entry_revealer.add (base_name_entry);
+        var basename_entry_revealer = new Gtk.Revealer ();
+        basename_entry_revealer.add (basename_entry);
+        var replace_entry_revealer = new Gtk.Revealer ();
+        replace_entry_revealer.add (replace_entry);
 
         /* Filename list */
         var list_scrolled_window = new Gtk.ScrolledWindow (null, null) {
@@ -148,9 +150,10 @@ public class Files.RenamerDialog : Gtk.Dialog {
             margin_bottom = 12
         };
         controls_grid.attach (prefix_box, 0, 0, 1, 1);
-        controls_grid.attach (base_name_combo, 1, 0, 1, 1);
+        controls_grid.attach (basename_combo, 1, 0, 1, 1);
         controls_grid.attach (suffix_box, 2, 0, 1, 1);
-        controls_grid.attach (base_name_entry_revealer, 1, 1, 1, 1);
+        controls_grid.attach (basename_entry_revealer, 1, 1, 1, 1);
+        controls_grid.attach (replace_entry_revealer, 1, 2, 1, 1);
 
         var content_box = get_content_area ();
         content_box.pack_start (controls_grid);
@@ -159,13 +162,38 @@ public class Files.RenamerDialog : Gtk.Dialog {
         content_box.show_all ();
 
         /* Connect signals */
-        base_name_combo.changed.connect (() => {
-            base_name_entry_revealer.reveal_child = base_name_combo.get_active () == RenameBase.CUSTOM;
+        basename_combo.changed.connect (() => {
+            switch (basename_combo.get_active ()) {
+                case RenameBase.CUSTOM:
+                    basename_entry.placeholder_text = _("Enter fixed name to replace the original");
+                    basename_entry_revealer.reveal_child = true;
+                    break;
+                case RenameBase.REPLACE:
+                    basename_entry.placeholder_text = _("Enter text of original to be replaced");
+                    basename_entry_revealer.reveal_child = true;
+                    replace_entry_revealer.reveal_child = true;
+                    break;
+                default:
+                    basename_entry_revealer.reveal_child = false;
+                    replace_entry_revealer.reveal_child = false;
+                    basename_entry.text = "";
+                    replace_entry.text = "";
+                    break;
+            }
+
             schedule_view_update ();
         });
 
-        base_name_entry.changed.connect (() => {
-            schedule_view_update ();
+        basename_entry.changed.connect (() => {
+            if (basename_entry_revealer.reveal_child) {
+                schedule_view_update ();
+            }
+        });
+
+        replace_entry.changed.connect (() => {
+            if (replace_entry_revealer.reveal_child) {
+                schedule_view_update ();
+            }
         });
 
         response.connect ((response_id) => {
@@ -218,7 +246,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
             response (Gtk.ResponseType.REJECT);
         });
 
-        base_name_combo.grab_focus ();
+        basename_combo.grab_focus ();
     }
 
     private void add_modifier (RenamerModifier mod) {
@@ -303,8 +331,9 @@ public class Files.RenamerDialog : Gtk.Dialog {
     }
 
     public void schedule_view_update () {
-        var custom_basename = base_name_combo.get_active () == RenameBase.CUSTOM ? base_name_entry.text : null;
-        renamer.schedule_update (custom_basename);
+        var custom_basename = basename_combo.get_active () != RenameBase.ORIGINAL ? basename_entry.text : null;
+        var replacement_text = basename_combo.get_active () == RenameBase.REPLACE ? replace_entry.text : null;
+        renamer.schedule_update (custom_basename, replacement_text);
     }
 
     private void on_action_add_number (SimpleAction action, Variant? target) {
