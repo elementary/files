@@ -167,6 +167,12 @@ namespace Files {
         }
     }
 
+    public enum RenameStatus {
+        VALID,
+        IGNORED,
+        INVALID
+    }
+
     public enum RenameMode {
         TEXT,
         NUMBER_SEQUENCE,

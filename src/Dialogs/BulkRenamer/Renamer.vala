@@ -157,12 +157,12 @@ public class Files.Renamer : Object {
 
             if (final_name == previous_final_name ||
                 invalid_name (final_name, file)) {
-
-                debug ("blank or duplicate or existing filename");
-                row.is_invalid = true;
+                row.status = RenameStatus.INVALID;
                 has_invalid = true;
+            } else if (final_name == file_name) {
+                row.status = RenameStatus.IGNORED;
             } else {
-                row.is_invalid = false;
+                row.status = RenameStatus.VALID;
             }
 
             row.new_name = final_name;

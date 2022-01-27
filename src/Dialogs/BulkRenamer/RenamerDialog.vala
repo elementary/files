@@ -147,6 +147,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
             orientation = Gtk.Orientation.HORIZONTAL,
             hexpand = true,
             halign = Gtk.Align.CENTER,
+            column_spacing = 6,
             margin_bottom = 12
         };
         controls_grid.attach (prefix_box, 0, 0, 1, 1);
@@ -167,6 +168,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
                 case RenameBase.CUSTOM:
                     basename_entry.placeholder_text = _("Enter fixed name to replace the original");
                     basename_entry_revealer.reveal_child = true;
+                    replace_entry_revealer.reveal_child = false;
                     break;
                 case RenameBase.REPLACE:
                     basename_entry.placeholder_text = _("Enter text of original to be replaced");
