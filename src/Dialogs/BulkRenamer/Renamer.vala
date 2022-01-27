@@ -30,7 +30,6 @@ public class Files.Renamer : Object {
     public bool is_reversed { get; set; default = false; }
 
     construct {
-        can_rename = false;
         modifier_chain = new Gee.ArrayList<RenamerModifier> ();
         listbox = new RenamerListBox ();
 
@@ -99,14 +98,11 @@ public class Files.Renamer : Object {
             Path.build_filename (old_file.location.get_parent ().get_path (), new_name)
         );
 
-        if (new_file.query_exists ()) {
-            return true;
-        }
-
-        return false;
+        return new_file.query_exists ();
     }
 
     private uint update_timeout_id = 0;
+    private bool updating = false;
     public void schedule_update (string? custom_basename) {
         if (update_timeout_id > 0) {
             Source.remove (update_timeout_id);
@@ -124,16 +120,15 @@ public class Files.Renamer : Object {
         });
     }
 
-    private bool updating = false;
     private void update_new_filenames (string? custom_basename) {
         updating = true;
-        can_rename = true;
         int index = 0;
         string output_name = "";
         string input_name = "";
         string file_name = "";
         string extension = "";
         string previous_final_name = "";
+        bool has_invalid = false;
 
         listbox.get_children ().@foreach ((child) => {
             var row = (RenamerListBox.RenamerListRow)child;
@@ -150,20 +145,20 @@ public class Files.Renamer : Object {
 
             foreach (var mod in modifier_chain) {
                 output_name = mod.rename (input_name, index, file);
-            warning ("modify %s -> %s", input_name, output_name);
                 input_name = output_name;
             }
 
             var final_name = output_name.concat (extension);
-            bool name_invalid = false;
 
             if (final_name == previous_final_name ||
                 final_name == file_name ||
                 invalid_name (final_name, file)) {
 
-                warning ("blank or duplicate or existing filename %s", final_name);
-                name_invalid = true;
-                can_rename = false;
+                debug ("blank or duplicate or existing filename");
+                row.is_invalid = true;
+                has_invalid = true;
+            } else {
+                row.is_invalid = false;
             }
 
             row.new_name = final_name;
@@ -171,6 +166,7 @@ public class Files.Renamer : Object {
             index++;
         });
 
+        can_rename = !has_invalid;
         updating = false;
     }
 }

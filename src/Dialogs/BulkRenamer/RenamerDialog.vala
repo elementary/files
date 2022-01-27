@@ -80,13 +80,12 @@ public class Files.RenamerDialog : Gtk.Dialog {
         renamer = new Renamer ();
 
         /* Dialog actions */
+        var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
         rename_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         renamer.bind_property (
             "can-rename", rename_button, "sensitive", GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE
         );
-
-        var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         /* Template Controls */
         var prefix_menumodel = new Menu ();

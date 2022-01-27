@@ -24,6 +24,7 @@ public class Files.RenamerListBox : Gtk.ListBox {
         public string old_name { get; construct; }
         public string new_name { get; set construct; }
         public Files.File file { get; construct; }
+        public bool is_invalid { get; set; default = false; }
 
         public RenamerListRow (Files.File file) {
             Object (
@@ -46,9 +47,14 @@ public class Files.RenamerListBox : Gtk.ListBox {
             };
 
             var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU);
+            var invalid_image = new Gtk.Image.from_icon_name ("emblem-warning", Gtk.IconSize.MENU);
+            var invalid_revealer = new Gtk.Revealer ();
+            invalid_revealer.add (invalid_image);
+            bind_property ("is-invalid", invalid_revealer, "reveal-child", BindingFlags.DEFAULT);
 
             var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
             box.pack_start (oldname_label);
+            box.pack_end (invalid_revealer);
             box.pack_end (newname_label);
             box.set_center_widget (arrow_image); // Should not pack center widget
             add (box);
