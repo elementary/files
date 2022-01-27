@@ -40,6 +40,25 @@ public class Files.RenamerModifier : Object {
             var flags = BindingFlags.DEFAULT;
             switch (modifier.mode) {
                 case RenameMode.NUMBER:
+                    var sortby_label = new Gtk.Label (_("Sort By")) {
+                        halign = Gtk.Align.END
+                    };
+                    var sortby_combo = new Gtk.ComboBoxText () {
+                        valign = Gtk.Align.CENTER
+                    };
+                    sortby_combo.insert (SortBy.NAME, "NAME", SortBy.NAME.to_string ());
+                    sortby_combo.insert (SortBy.CREATED, "CREATION_DATE", SortBy.CREATED.to_string ());
+                    sortby_combo.insert (SortBy.MODIFIED, "MODIFICATION_DATE", SortBy.MODIFIED.to_string ());
+
+                    var isreversed_label = new Gtk.Label (_("Reverse Order")) {
+                        halign = Gtk.Align.END
+                    };
+                    var is_reversed_check = new Gtk.CheckButton () {
+                        valign = Gtk.Align.CENTER,
+                        active = modifier.is_reversed,
+                        hexpand = false
+                    };
+
                     var start_number_label = new Gtk.Label (_("Start Number")) {
                         halign = Gtk.Align.END
                     };
@@ -66,16 +85,22 @@ public class Files.RenamerModifier : Object {
                     number_grid.attach (start_number_spin_button, 1, 0);
                     number_grid.attach (digits_label, 0, 1);
                     number_grid.attach (digits_spin_button, 1, 1);
+                    number_grid.attach (sortby_label, 0, 2);
+                    number_grid.attach (sortby_combo, 1, 2);
+                    number_grid.attach (isreversed_label, 0, 3);
+                    number_grid.attach (is_reversed_check, 1, 3);
                     controls = number_grid;
 
+                    sortby_combo.active = modifier.sortby;
+                    sortby_combo.bind_property ("active", modifier, "sortby", flags);
+                    is_reversed_check.bind_property ("active", modifier, "is-reversed", flags);
                     digits_spin_button.bind_property ("value", modifier, "digits", flags);
                     start_number_spin_button.bind_property ("value", modifier, "start", flags);
 
                     break;
                 case RenameMode.DATETIME:
                     var date_source_combo = new Gtk.ComboBoxText () {
-                        valign = Gtk.Align.CENTER,
-                        active = modifier.source
+                        valign = Gtk.Align.CENTER
                     };
                     date_source_combo.insert (RenameDateSource.DEFAULT, "DEFAULT",
                                               RenameDateSource.DEFAULT.to_string ());
@@ -85,8 +110,7 @@ public class Files.RenamerModifier : Object {
                                               RenameDateSource.NOW.to_string ());
 
                     var date_format_combo = new Gtk.ComboBoxText () {
-                        valign = Gtk.Align.CENTER,
-                        active = modifier.format
+                        valign = Gtk.Align.CENTER
                     };
                     date_format_combo.insert (RenameDateFormat.DEFAULT, "DEFAULT",
                                               RenameDateFormat.DEFAULT.to_string ());
@@ -162,7 +186,11 @@ public class Files.RenamerModifier : Object {
     public int source { get; set; default = 0;}
     public int old_source { get; set; default = 0;}
     public int format { get; set; default = 0;}
+    public int sortby { get; set; default = 0; }
+    public bool is_reversed { get; set; default = false; }
     public int old_format { get; set; default = 0;}
+    public int old_sortby { get; set; default = 0; }
+    public bool old_is_reversed { get; set; default = false; }
     public string text { get; set; default = "";}
     public string old_text { get; set; default = "";}
     public string separator { get; set; default = "-";}
@@ -197,6 +225,8 @@ public class Files.RenamerModifier : Object {
         old_format = format;
         old_text = text;
         old_separator = separator;
+        old_sortby = sortby;
+        old_is_reversed = is_reversed;
         return new EditWidget (this);
     }
 
@@ -208,6 +238,8 @@ public class Files.RenamerModifier : Object {
         format = old_format;
         text = old_text;
         separator = old_separator;
+        sortby = old_sortby;
+        is_reversed = old_is_reversed;
     }
 
     public string rename (string input, int index, Files.File file) {

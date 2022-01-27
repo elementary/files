@@ -28,11 +28,11 @@ public class Files.Renamer : Object {
 
     public bool can_rename { get; set; default = false; }
     public string directory { get; private set; default = ""; }
-    public Gtk.ListStore old_files_model { get; construct; }
-    public Gtk.ListStore new_files_model { get; construct; }
     public Gee.ArrayList<RenamerModifier> modifier_chain { get; construct; }
+    public RenamerListBox listbox { get; construct; }
 
     private Gee.HashMap<string, Files.File> file_map;
+    private Gee.HashMap<string, RenamerListBox.RenamerListRow> basename_row_map;
     private Gee.HashMap<string, FileInfo> file_info_map;
     private Mutex info_map_mutex;
     public SortBy sortby { get; set; default = SortBy.NAME; }
@@ -44,18 +44,16 @@ public class Files.Renamer : Object {
         file_map = new Gee.HashMap<string, Files.File> ();
         file_info_map = new Gee.HashMap<string, FileInfo> ();
         modifier_chain = new Gee.ArrayList<RenamerModifier> ();
-        old_files_model = new Gtk.ListStore (1, typeof (string));
-        set_sort ();
-        old_files_model.set_sort_column_id (Gtk.SortColumn.DEFAULT, Gtk.SortType.ASCENDING);
-        new_files_model = new Gtk.ListStore (2, typeof (string), typeof (bool));
+
+        listbox = new RenamerListBox ();
 
         notify["is-reversed"].connect (set_sort);
         notify["sortby"].connect (set_sort);
     }
 
     private void set_sort () {
-        old_files_model.set_default_sort_func (old_files_model_sorter);
     }
+
 
     public void add_files (List<Files.File> files) {
         if (files == null) {
@@ -73,8 +71,8 @@ public class Files.Renamer : Object {
             if (dir == directory) {
                 var basename = Path.get_basename (path);
                 file_map.@set (basename, f);
-                old_files_model.append (out iter);
-                old_files_model.set (iter, 0, basename);
+                var row = listbox.add_file (f);
+                basename_row_map.@set (basename, row);
 
                 f.location.query_info_async.begin (
                     QUERY_INFO_STRING,
@@ -94,19 +92,13 @@ public class Files.Renamer : Object {
                 );
             }
         }
-
-        old_files_model.set_default_sort_func (old_files_model_sorter);
     }
 
     public void rename_files () {
-        old_files_model.@foreach ((m, p, i) => {
-            string input_name = "";
-            string output_name = "";
-            Gtk.TreeIter? iter = null;
-            old_files_model.get_iter (out iter, p);
-            old_files_model.@get (iter, 0, out input_name);
-            new_files_model.get_iter (out iter, p);
-            new_files_model.@get (iter, 0, out output_name);
+        listbox.get_children ().@foreach ((child) => {
+            var row = (RenamerListBox.RenamerListRow)child;
+            unowned string input_name = row.old_name;
+            unowned string output_name = row.new_name;
             var file = file_map.@get (input_name);
 
             if (file != null) {
@@ -121,8 +113,6 @@ public class Files.Renamer : Object {
                     }
                 );
             }
-
-            return false; /* Continue iteration (compare HashMap iterator which is opposite!) */
         });
     }
 
@@ -135,53 +125,6 @@ public class Files.Renamer : Object {
             extension = filename [extension_pos : filename.length];
             return filename [0 : extension_pos];
         }
-    }
-
-    public int old_files_model_sorter (Gtk.TreeModel m, Gtk.TreeIter a, Gtk.TreeIter b) {
-        int res = 0;
-        string name_a = "";
-        string name_b = "";
-        m.@get (a, 0, out name_a);
-        m.@get (b, 0, out name_b);
-
-        switch (sortby) {
-            case SortBy.NAME:
-                res = name_a.collate (name_b);
-                break;
-
-            case SortBy.CREATED:
-                var time_a = file_info_map.@get (name_a).get_attribute_uint64 (FileAttribute.TIME_CREATED);
-                var time_b = file_info_map.@get (name_b).get_attribute_uint64 (FileAttribute.TIME_CREATED);
-
-                if (time_a == time_b) {
-                    res = name_a.collate (name_b);
-                } else {
-                    res = time_a > time_b ? 1 : -1;
-                }
-
-                break;
-
-            case SortBy.MODIFIED:
-                var time_a = file_info_map.@get (name_a).get_attribute_uint64 (FileAttribute.TIME_MODIFIED);
-                var time_b = file_info_map.@get (name_b).get_attribute_uint64 (FileAttribute.TIME_MODIFIED);
-
-                if (time_a == time_b) {
-                    res = name_a.collate (name_b);
-                } else {
-                    res = time_a > time_b ? 1 : -1;
-                }
-
-                break;
-
-            default:
-                assert_not_reached ();
-        }
-
-        if (is_reversed) {
-            res = -res;
-        }
-
-        return res;
     }
 
     private bool invalid_name (string new_name, string input_name) {
@@ -230,11 +173,9 @@ public class Files.Renamer : Object {
         string extension = "";
         string previous_final_name = "";
 
-        new_files_model.clear ();
-
-        Gtk.TreeIter? new_iter = null;
-        old_files_model.@foreach ((m, p, iter) => {
-            old_files_model.@get (iter, 0, out file_name);
+        listbox.get_children ().@foreach ((child) => {
+            var row = (RenamerListBox.RenamerListRow)child;
+            file_name = row.old_name;
             var file = file_map.@get (file_name);
 
             if (custom_basename != null) {
@@ -260,12 +201,9 @@ public class Files.Renamer : Object {
                 can_rename = false;
             }
 
-            new_files_model.append (out new_iter);
-            new_files_model.@set (new_iter, 0, final_name, 1, name_invalid);
-
+            row.new_name = final_name;
             previous_final_name = final_name;
             index++;
-            return false;
         });
 
         updating = false;

@@ -21,7 +21,6 @@
  *
 */
 
-
 public class Files.RenamerDialog : Gtk.Dialog {
     public enum RenameBase {
         ORIGINAL,
@@ -79,7 +78,6 @@ public class Files.RenamerDialog : Gtk.Dialog {
         set_title (_("Bulk Renamer"));
         renamer = new Renamer ();
 
-
         /* Dialog actions */
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
         rename_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
@@ -132,88 +130,21 @@ public class Files.RenamerDialog : Gtk.Dialog {
         var base_name_entry_revealer = new Gtk.Revealer ();
         base_name_entry_revealer.add (base_name_entry);
 
-        /* Old filename list */
-        var cell = new Gtk.CellRendererText () {
-            ellipsize = Pango.EllipsizeMode.MIDDLE,
-            wrap_mode = Pango.WrapMode.CHAR,
-            width_chars = 64
-        };
-        var old_file_names = new Gtk.TreeView.with_model (renamer.old_files_model) {
+        /* Filename list */
+        var list_scrolled_window = new Gtk.ScrolledWindow (null, null) {
             hexpand = true,
-            headers_visible = false,
+            min_content_width = 400,
+            min_content_height = 200,
+            hscrollbar_policy = Gtk.PolicyType.NEVER,
             can_focus = false
         };
-        old_file_names.insert_column_with_attributes (
-            -1,
-            "ORIGINAL",
-            new Gtk.CellRendererText () {
-                ellipsize = Pango.EllipsizeMode.MIDDLE,
-                wrap_mode = Pango.WrapMode.CHAR,
-                width_chars = 64
-            },
-            "text",
-            0
-        );
-
-        var old_scrolled_window = new Gtk.ScrolledWindow (null, null) {
-            hexpand = true,
-            min_content_height = 300,
-            max_content_height = 2000,
-            can_focus = false
-        };
-        old_scrolled_window.add (old_file_names);
-
-        /* New filename list */
-        var new_cell = new Gtk.CellRendererPixbuf () {
-            gicon = new ThemedIcon.with_default_fallbacks ("dialog-warning"),
-            visible =false,
-            xalign = 1.0f
-        };
-        var text_col = new Gtk.TreeViewColumn.with_attributes (
-            "NEW",
-            new Gtk.CellRendererText () {
-                ellipsize = Pango.EllipsizeMode.MIDDLE,
-                wrap_mode = Pango.WrapMode.CHAR,
-                width_chars = 64
-            },
-            "text",
-            0
-        );
-        var new_file_names = new Gtk.TreeView.with_model (renamer.new_files_model) {
-            headers_visible = false,
-            can_focus = false
-        };
-        new_file_names.insert_column (text_col, 0);
-        new_file_names.insert_column_with_attributes (
-            -1,
-            "VALID",
-            new_cell,
-            "visible",
-            1
-        );
-        text_col.set_cell_data_func (new_cell, (col, new_cell, model, iter) => {
-            bool invalid;
-            model.@get (iter, 1, out invalid);
-            new_cell.sensitive = !invalid;
-        });
-
-        var new_scrolled_window = new Gtk.ScrolledWindow (null, null) {
-            hexpand = true,
-            vadjustment = old_scrolled_window.get_vadjustment (),
-            min_content_height = 300,
-            max_content_height = 2000,
-            overlay_scrolling = true,
-            can_focus = false
-        };
-
-        new_scrolled_window.add (new_file_names);
-        new_scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.EXTERNAL);
+        list_scrolled_window.add (renamer.listbox);
 
         /* Assemble content */
         controls_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.HORIZONTAL,
-            column_homogeneous = true,
             hexpand = true,
+            halign = Gtk.Align.CENTER,
             margin_bottom = 12
         };
         controls_grid.attach (prefix_box, 0, 0, 1, 1);
@@ -221,15 +152,9 @@ public class Files.RenamerDialog : Gtk.Dialog {
         controls_grid.attach (suffix_box, 2, 0, 1, 1);
         controls_grid.attach (base_name_entry_revealer, 1, 1, 1, 1);
 
-        var lists_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 32) {
-            homogeneous = true
-        };
-        lists_box.pack_start (old_scrolled_window);
-        lists_box.pack_start (new_scrolled_window);
-
         var content_box = get_content_area ();
         content_box.pack_start (controls_grid);
-        content_box.pack_start (lists_box);
+        content_box.pack_start (list_scrolled_window);
         content_box.margin = 12;
         content_box.show_all ();
 
