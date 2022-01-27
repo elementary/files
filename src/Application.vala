@@ -182,6 +182,10 @@ public class Files.Application : Gtk.Application {
         }
 
         /* Handle arguments */
+        if (debug) {
+            GLib.Environment.set_variable ("G_MESSAGES_DEBUG", "all", false);
+        }
+
         if (version) {
             cmd.print ("io.elementary.files %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
