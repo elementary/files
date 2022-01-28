@@ -28,11 +28,17 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="6.1.2" date="2022-01-11" urgency="medium">
+    <release version="6.1.2" date="2022-01-24" urgency="medium">
       <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Show New Tab and New Window shortcuts in context menus</li>
+        </ul>
         <p>Fixes:</p>
         <ul>
           <li>Double click selects instead of exiting while renaming in list view</li>
+          <li>Show public share icon in breadcrumbs</li>
+          <li>Prevent a crash when dragging to re-arrange bookmarks</li>
         </ul>
         <p>Minor updates:</p>
         <ul>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 22:40+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
 "PO-Revision-Date: 2018-06-10 00:11+0000\n"
 "Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
 "Language-Team: Sinhala <https://weblate.elementary.io/projects/files/files/"
@@ -22,13 +22,13 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
 msgstr ""
 
