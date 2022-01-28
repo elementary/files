@@ -148,7 +148,8 @@ namespace Files {
     public enum SortBy {
         NAME,
         CREATED,
-        MODIFIED;
+        MODIFIED,
+        SIZE;
 
         public string to_string () {
             switch (this) {
@@ -160,6 +161,9 @@ namespace Files {
 
                 case SortBy.MODIFIED:
                     return _("Last modification date");
+
+                case SortBy.SIZE:
+                    return _("Size");
 
                 default:
                     assert_not_reached ();

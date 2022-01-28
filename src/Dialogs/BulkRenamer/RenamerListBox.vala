@@ -93,16 +93,38 @@ public class Files.RenamerListBox : Gtk.ListBox {
         }
     }
 
+    /* RenamerListBox */
+
+    public SortBy sortby { get; set; default = SortBy.NAME; }
     construct {
         vexpand = true;
         can_focus = false;
         selection_mode = Gtk.SelectionMode.NONE;
+        set_sort_func (sort_func);
+        invalidate_sort ();
         show_all ();
+
+        notify["sortby"].connect (invalidate_sort);
     }
 
     public RenamerListRow add_file (Files.File file) {
         var row = new RenamerListRow (file);
         add (row);
         return row;
+    }
+
+    private int sort_func (Gtk.ListBoxRow row1, Gtk.ListBoxRow row2) {
+        var file1 = ((RenamerListRow)row1).file;
+        var file2 = ((RenamerListRow)row2).file;
+        switch (sortby) {
+            case SortBy.CREATED:
+                return file1.compare_files_by_created (file2);
+            case SortBy.MODIFIED:
+                return file1.compare_files_by_time (file2);
+            case SortBy.SIZE:
+                return file1.compare_files_by_size (file2);
+            default:
+                return file1.compare_by_display_name (file2);
+        }
     }
 }

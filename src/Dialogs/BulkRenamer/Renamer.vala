@@ -26,18 +26,10 @@ public class Files.Renamer : Object {
     public string directory { get; private set; default = ""; }
     public Gee.ArrayList<RenamerModifier> modifier_chain { get; construct; }
     public RenamerListBox listbox { get; construct; }
-    public SortBy sortby { get; set; default = SortBy.NAME; }
-    public bool is_reversed { get; set; default = false; }
 
     construct {
         modifier_chain = new Gee.ArrayList<RenamerModifier> ();
         listbox = new RenamerListBox ();
-
-        notify["is-reversed"].connect (set_sort);
-        notify["sortby"].connect (set_sort);
-    }
-
-    private void set_sort () {
     }
 
     public void add_files (List<Files.File> files) {

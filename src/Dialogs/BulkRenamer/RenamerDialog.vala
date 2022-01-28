@@ -53,8 +53,11 @@ public class Files.RenamerDialog : Gtk.Dialog {
     private Gtk.MenuButton suffix_button;
     private Gtk.Entry basename_entry;
     private Gtk.Entry replace_entry;
+    private Gtk.Revealer sortby_revealer;
     private Gtk.ComboBoxText basename_combo;
     private SimpleActionGroup actions;
+
+    public int n_number_seq { get; private set; default = 0; }
 
     public RenamerDialog (List<Files.File> files, string? basename = null) {
         if (basename != null) {
@@ -142,6 +145,29 @@ public class Files.RenamerDialog : Gtk.Dialog {
         };
         list_scrolled_window.add (renamer.listbox);
 
+        var sortby_label = new Gtk.Label (_("Number in order of"));
+        var sortby_combo = new Gtk.ComboBoxText ();
+        sortby_combo.insert (SortBy.NAME, "NAME", SortBy.NAME.to_string ());
+        sortby_combo.insert (SortBy.CREATED, "CREATED", SortBy.CREATED.to_string ());
+        sortby_combo.insert (SortBy.MODIFIED, "MODIFIED", SortBy.MODIFIED.to_string ());
+        sortby_combo.insert (SortBy.SIZE, "SIZE", SortBy.SIZE.to_string ());
+        sortby_combo.active = 0;
+
+        var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
+        sortby_box.pack_start (sortby_label);
+        sortby_box.pack_end (sortby_combo);
+
+        sortby_revealer = new Gtk.Revealer () {
+            hexpand = false,
+            reveal_child = false
+        };
+        sortby_revealer.add (sortby_box);
+
+        var list_grid = new Gtk.Grid () {
+            column_homogeneous = true
+        };
+        list_grid.attach (sortby_revealer, 0, 0);
+        list_grid.attach (list_scrolled_window, 0, 1, 2, 1);
         /* Assemble content */
         controls_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.HORIZONTAL,
@@ -158,7 +184,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
 
         var content_box = get_content_area ();
         content_box.pack_start (controls_grid);
-        content_box.pack_start (list_scrolled_window);
+        content_box.pack_start (list_grid);
         content_box.margin = 12;
         content_box.show_all ();
 
@@ -248,10 +274,24 @@ public class Files.RenamerDialog : Gtk.Dialog {
             response (Gtk.ResponseType.REJECT);
         });
 
+        notify["n-number-seq"].connect (() => {
+            sortby_revealer.reveal_child = n_number_seq > 0;
+            if (n_number_seq == 0) {
+                sortby_combo.active = 0;
+            }
+        });
+
+        sortby_combo.changed.connect (() => {
+            renamer.listbox.sortby = (SortBy)(sortby_combo.active);
+        });
+
         basename_combo.grab_focus ();
     }
 
     private void add_modifier (RenamerModifier mod) {
+        if (mod.mode == RenameMode.NUMBER_SEQUENCE) {
+            n_number_seq++;
+        }
         renamer.modifier_chain.add (mod);
         var mod_button = new Gtk.Button.with_label (mod.mode.to_string ()) {
             margin_start = 3,
@@ -280,7 +320,6 @@ public class Files.RenamerDialog : Gtk.Dialog {
             button_box.pack_end (apply_button);
             button_box.pack_start (delete_button);
             button_box.pack_end (cancel_button);
-
 
             var edit_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
             edit_box.pack_start (mod.get_modifier_widget ());
@@ -357,9 +396,13 @@ public class Files.RenamerDialog : Gtk.Dialog {
     }
 
     private void delete_modifier (RenamerModifier mod) {
+        if (mod.mode == RenameMode.NUMBER_SEQUENCE) {
+            n_number_seq--;
+        }
         renamer.modifier_chain.remove (mod);
         var button = mod.get_data<Gtk.Button> ("button");
         button.destroy ();
+
         schedule_view_update ();
         return;
     }
