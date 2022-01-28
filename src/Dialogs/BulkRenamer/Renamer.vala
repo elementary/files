@@ -40,7 +40,6 @@ public class Files.Renamer : Object {
     private void set_sort () {
     }
 
-
     public void add_files (List<Files.File> files) {
         if (files == null) {
             return;
@@ -123,51 +122,57 @@ public class Files.Renamer : Object {
 
     private void update_new_filenames (string? custom_basename, string? replacement_text) {
         updating = true;
-        int index = 0;
-        string output_name = "";
-        string input_name = "";
-        string file_name = "";
-        string extension = "";
+
         string previous_final_name = "";
         bool has_invalid = false;
 
+        /* Apply basename to each item */
         listbox.get_children ().@foreach ((child) => {
             var row = (RenamerListBox.RenamerListRow)child;
-            file_name = row.old_name;
-            var file = row.file;
-
+            string input_name = "";
+            string extension = "";
             if (custom_basename != null && replacement_text == null) {
                 input_name = custom_basename;
             } else {
-                input_name = strip_extension (file_name, out extension);
+                input_name = strip_extension (row.old_name, out extension);
+                row.extension = extension;
             }
 
             if (replacement_text != null && custom_basename != null && custom_basename != "") {
                 input_name = input_name.replace (custom_basename, replacement_text);
             }
 
-            output_name = input_name;
+            row.new_name = input_name;
+        });
 
-            foreach (var mod in modifier_chain) {
-                output_name = mod.rename (input_name, index, file);
-                input_name = output_name;
-            }
+        /* Apply each modifier to each item (in required order) */
+        var n_children = listbox.get_children ().length ();
+        foreach (var mod in modifier_chain) {
+            uint index = mod.is_reversed ? n_children - 1 : 0;
+            int incr = mod.is_reversed ? -1 : 1;
+            listbox.get_children ().@foreach ((child) => {
+                var row = (RenamerListBox.RenamerListRow)child;
+                row.new_name = mod.rename (row.new_name, index, row.file);
+                index += incr;
+            });
+        }
 
-            var final_name = output_name.concat (extension);
+        /* Reapply extension and check validity */
+        listbox.get_children ().@foreach ((child) => {
+            var row = (RenamerListBox.RenamerListRow)child;
+            row.new_name = row.new_name.concat (row.extension);
+            if (row.new_name == previous_final_name ||
+                invalid_name (row.new_name, row.file)) {
 
-            if (final_name == previous_final_name ||
-                invalid_name (final_name, file)) {
                 row.status = RenameStatus.INVALID;
                 has_invalid = true;
-            } else if (final_name == file_name) {
+            } else if (row.new_name == row.old_name) {
                 row.status = RenameStatus.IGNORED;
             } else {
                 row.status = RenameStatus.VALID;
             }
 
-            row.new_name = final_name;
-            previous_final_name = final_name;
-            index++;
+            previous_final_name = row.new_name;
         });
 
         can_rename = !has_invalid;

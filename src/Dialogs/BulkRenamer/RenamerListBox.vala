@@ -24,6 +24,7 @@ public class Files.RenamerListBox : Gtk.ListBox {
         public string old_name { get; construct; }
         public string new_name { get; set construct; }
         public Files.File file { get; construct; }
+        public string extension { get; set; default = ""; }
         public RenameStatus status { get; set; default = RenameStatus.VALID; }
 
         public RenamerListRow (Files.File file) {

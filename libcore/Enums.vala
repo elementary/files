@@ -176,7 +176,6 @@ namespace Files {
     public enum RenameMode {
         TEXT,
         NUMBER_SEQUENCE,
-        CHAR_SEQUENCE,
         DATETIME,
         INVALID;
 
@@ -184,9 +183,6 @@ namespace Files {
             switch (this) {
                 case RenameMode.NUMBER_SEQUENCE:
                     return _("Number sequence");
-
-                case RenameMode.CHAR_SEQUENCE:
-                    return _("Character sequence");
 
                 case RenameMode.TEXT:
                     return _("Text");
