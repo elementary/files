@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2022-01-15 20:46+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
+"PO-Revision-Date: 2022-01-21 01:39+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -26,13 +26,13 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
 msgstr "Bestanden Openen als Alleen Lezen"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
 msgstr "Bestand Openen als Alleen Lezen"
 
@@ -74,7 +74,7 @@ msgstr "WebDAV (HTTP)"
 
 #: libcore/ConnectServerDialog.vala:84
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Beveiligd WebDAV (HTTPS)"
+msgstr "Beveiligde WebDAV (HTTPS)"
 
 #: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
@@ -159,7 +159,7 @@ msgstr "Controleer de gebruikersgegevens."
 
 #: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
-msgstr "De server heeft niet binnen het tijdslimiet gereageerd"
+msgstr "De server heeft niet binnen de tijdslimiet gereageerd"
 
 #: libcore/DndHandler.vala:50
 #, c-format
@@ -1241,7 +1241,7 @@ msgstr "Bestandssysteem"
 
 #: libcore/StockDialogs.vala:20
 msgid "_Cancel"
-msgstr "Annuleren"
+msgstr "_Annuleren"
 
 #: libcore/StockDialogs.vala:21
 msgid "Delete"
@@ -1249,7 +1249,7 @@ msgstr "Verwijderen"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
-msgstr "_Alles Overslaan"
+msgstr "Alles _Overslaan"
 
 #: libcore/StockDialogs.vala:24
 msgid "_Retry"
@@ -1265,7 +1265,7 @@ msgstr "Ve_rvangen"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
-msgstr "_AllesVervangen"
+msgstr "_Alles vervangen"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"

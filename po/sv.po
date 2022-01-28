@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 22:40+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -27,13 +27,13 @@ msgstr ""
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
 msgstr ""
 
