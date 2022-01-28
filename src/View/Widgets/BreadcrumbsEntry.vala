@@ -169,10 +169,7 @@ namespace Files.View.Chrome {
         }
 
         private void cancel_completion_dir () {
-            if (current_completion_dir != null) {
-                current_completion_dir.cancel ();
-                current_completion_dir = null;
-            }
+            current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
         }
 
         protected void complete () {
@@ -515,7 +512,6 @@ namespace Files.View.Chrome {
             }
             menu.show_all ();
             /* Release the Async directory as soon as possible */
-            dir.cancel ();
             dir = null;
         }
 
