@@ -260,7 +260,7 @@ namespace Files.View {
             }
             /* view and slot are unfrozen when done loading signal received */
             is_frozen = true;
-            directory.init ();
+            directory.init.begin ();
         }
 
         public override void reload (bool non_local_only = false) {
@@ -382,7 +382,6 @@ namespace Files.View {
             cancel_timeouts ();
 
             if (directory != null) {
-                directory.cancel ();
                 disconnect_dir_signals ();
             }
 

@@ -49,7 +49,7 @@ public class Files.Directory : Object {
         LOADED,
         TIMED_OUT
     }
-    public State state {get; private set;}
+    public State state {get; private set; default = State.NOT_LOADED;}
 
     private HashTable<GLib.File,Files.File> file_hash;
     public uint displayed_files_count {get; private set;}
@@ -57,7 +57,7 @@ public class Files.Directory : Object {
     public bool permission_denied = false;
     public bool network_available = true;
 
-    private Cancellable cancellable;
+    private Cancellable? cancellable = null;
     private FileMonitor? monitor = null;
     private List<unowned Files.File>? sorted_dirs = null;
 
@@ -94,20 +94,16 @@ public class Files.Directory : Object {
     public bool is_no_info {get; private set;}
     public bool has_mounts {get; private set;}
     public bool has_trash_dirs {get; private set;}
-    public bool can_load {get; private set;}
+    public bool can_load {get; private set; default = false;}
     public bool can_open_files {get; private set;}
     public bool can_stream_files {get; private set;}
     public bool allow_user_interaction {get; set; default = true;}
 
     private bool is_ready = false;
 
-    public bool is_cancelled {
-        get { return cancellable.is_cancelled (); }
-    }
-
     public string last_error_message {get; private set; default = "";}
 
-    public bool loaded_from_cache {get; private set; default = false;}
+    public bool loaded_from_cache {get; private set; default = false;} // Used only for testing
 
     private Directory (GLib.File _file) {
         Object (
@@ -117,10 +113,6 @@ public class Files.Directory : Object {
         location = _file;
         file = Files.File.get (location);
         selected_file = null;
-
-        cancellable = new Cancellable ();
-        state = State.NOT_LOADED;
-        can_load = false;
 
         scheme = location.get_uri_scheme ();
         is_trash = FileUtils.location_is_in_trash (location);
@@ -151,79 +143,144 @@ public class Files.Directory : Object {
 
     ~Directory () {
         debug ("Directory destruct %s", file.uri);
+        /* This is the only place the directory should be cancelled. Clients should not be able to cancel as that
+         * can interfere with another client
+         */
+        if (cancellable !=null) {
+            cancellable.cancel ();
+            cancellable = null;
+        }
+
+        cancel_timeouts ();
 
         if (is_trash) {
             disconnect_volume_monitor_signals ();
         }
 
-        file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        if (file.is_directory) { // When running tests directory could be destroyed before finished init
+            file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        }
     }
 
-    /** Views call the following function with null parameter - file_loaded and done_loading
-      * signals are emitted and cause the view and view container to update.
-      *
-      * LocationBar calls this function, with a callback, on its own Directory instances in order
-      * to perform filename completion.- Emitting a done_loaded signal in that case would cause
-      * the premature ending of text entry.
-     **/
-    public void init (FileLoadedFunc? file_loaded_func = null) {
+    /* Views call the following function with null parameter - file_loaded and done_loading
+     * signals are emitted and cause the view and view container to update.
+     *
+     * LocationBar calls this function, with a callback, on its own Directory instances in order
+     * to perform filename completion.- Emitting a done_loaded signal in that case would cause
+     * the premature ending of text entry.
+     * This is also called when reloading the directory so that another attempt to connect to
+     * the network is made
+     */
+    public async void init (FileLoadedFunc? file_loaded_func = null) {
         if (state == State.LOADING) {
             debug ("Directory Init re-entered - already loading");
             return; /* Do not re-enter */
         }
 
         var previous_state = state;
+        state = State.LOADING;
         loaded_from_cache = false;
-
-        cancellable.cancel ();
-        cancellable = new Cancellable ();
-
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
             list_cached_files (file_loaded_func);
         /* else fully initialise the directory */
         } else {
-            state = State.LOADING;
-            prepare_directory.begin (file_loaded_func);
-        }
-        /* done_loaded signal is emitted when ready */
-    }
-
-    /* This is also called when reloading the directory so that another attempt to connect to
-     * the network is made
-     */
-    private async void prepare_directory (FileLoadedFunc? file_loaded_func) {
-        debug ("Preparing directory for loading");
-        /* Force info to be refreshed - the Files.File may have been created already by another part of the program
-         * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
-         */
-        file.info = null;
-        bool success = yield get_file_info ();
-
-        if (success) {
-            if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
-                critical ("Trying to load a non-folder - finding parent");
-                var parent = file.is_connected ? location.get_parent () : null;
-                if (parent != null) {
-                    file = Files.File.get (parent);
-                    selected_file = location;
-                    location = parent;
-                    success = yield get_file_info ();
-                } else {
-                    debug ("Parent is null for file %s", file.uri);
-                    success = false;
+            /* Get fileinfo if not a scheme that does not permit.
+             * Will switch to file parent if file is not a directory
+             * Force info to be refreshed - the Files.File may have been created already by another part of the program
+             * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
+             */
+            file.info = null;
+            bool have_fileinfo = !is_no_info && yield get_file_info ();
+            if (have_fileinfo) {
+                if (!file.is_folder () && !file.is_root_network_folder ()) {
+                    critical ("Trying to load a non-folder - finding parent");
+                    var parent = file.is_connected ? location.get_parent () : null;
+                    if (parent != null) {
+                        file = Files.File.get (parent);
+                        selected_file = location;
+                        location = parent;
+                        have_fileinfo = yield get_file_info ();
+                    } else {
+                        debug ("Parent is null for file %s", file.uri);
+                        have_fileinfo = false;
+                    }
                 }
             }
+
+            /* Directory is not loadable if we cannot get fileinfo when we expect to or if is Recent folder
+             * and privacysettings forbid showing it.
+             */
+            can_load = (is_no_info || have_fileinfo) &&
+                       (!is_recent || Files.Preferences.get_default ().remember_history);
+
+            if (!can_load) {
+                state = State.NOT_LOADED;
+                directory_cache.remove (creation_key);
+                is_ready = false;
+                after_loading (null);
+                return;
+            }
+            /* On first load (only) add a toggle ref and add to cache */
+            if (!is_ready) {
+                /* This must only be run once for each Directory */
+                is_ready = true;
+                lock (directory_cache) {
+                    this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+
+                    if (!creation_key.equal (location) || directory_cache.lookup (location) == null) {
+                        directory_cache.insert (location, this);
+                    }
+                }
+            }
+
+            /* The following can run on reloading */
+            if (file.mount != null) {
+                debug ("Directory has mount point");
+                var trash_dirs = Files.FileOperations.get_trash_dirs_for_mount (file.mount);
+                has_trash_dirs = (trash_dirs != null);
+            } else {
+                has_trash_dirs = is_local;
+            }
+
+            /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
+            has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
+
+            /* Set_confirm_trash */
+            bool to_confirm = true;
+            if (is_trash) {
+                to_confirm = false;
+                var mounts = VolumeMonitor.get ().get_mounts ();
+                if (mounts != null) {
+                    foreach (unowned var m in mounts) {
+                        to_confirm |= (m.can_eject () && Files.FileOperations.has_trash_files (m));
+                    }
+                }
+            }
+
+            Preferences.get_default ().confirm_trash = to_confirm;
+
+            /* Set up directory monitor for local non-transient directories */
+            if (file_loaded_func == null && is_local) {
+                try {
+                    monitor = location.monitor_directory (0);
+                    monitor.rate_limit = 100;
+                    monitor.changed.connect (directory_changed);
+                } catch (IOError e) {
+                    last_error_message = e.message;
+                    if (!(e is IOError.NOT_MOUNTED)) {
+                        /* Will fail for remote filesystems - not an error */
+                        debug ("directory monitor failed: %s %s", e.message, file.uri);
+                    }
+                }
+            }
+
+            if (is_trash) {
+                connect_volume_monitor_signals ();
+            }
+
+            yield list_directory_async (file_loaded_func);
         }
-
-        if (success) {
-            file.update ();
-        }
-
-        debug ("success %s; enclosing mount %s", success.to_string (),
-                                                 file.mount != null ? file.mount.get_name () : "null");
-
-        yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
 
     /*** Returns false if should be able to get info but were unable to ***/
@@ -258,12 +315,14 @@ public class Files.Directory : Object {
         }
     }
 
-    private async bool try_query_info () {
-        debug ("try_query_info");
+    private async bool try_query_info ()
+        requires (cancellable == null)
+        ensures (cancellable == null) {
+
+        debug ("try_query_info - creating cancellable");
         cancellable = new Cancellable ();
         bool querying = true;
-        assert (load_timeout_id == 0);
-        load_timeout_id = Timeout.add_seconds (QUERY_INFO_TIMEOUT_SEC, () => {
+        var query_timeout_id = Timeout.add_seconds (QUERY_INFO_TIMEOUT_SEC, () => {
             if (querying) {
                 debug ("Cancelled after timeout in query info async %s", file.uri);
                 cancellable.cancel ();
@@ -276,36 +335,36 @@ public class Files.Directory : Object {
 
         bool success = yield query_info_async (file, null, cancellable);
         querying = false;
-        cancel_timeout (ref load_timeout_id);
+        cancel_timeout (ref query_timeout_id);
+
         if (cancellable.is_cancelled ()) {
             debug ("Failed to get info - timed out and cancelled");
             file.is_connected = false;
-            return false;
-        }
-
-        if (success) {
-            debug ("got file info - updating");
-            file.update ();
-            debug ("success %s; enclosing mount %s", success.to_string (),
+            success = false;
+        } else if (success) {
+            file.update (); // This is done by caller
+            debug ("success query info %s; enclosing mount %s", success.to_string (),
                                                      file.mount != null ? file.mount.get_name () : "null");
-            return true;
         } else {
             debug ("Failed to get file info for %s", file.uri);
-            return false;
         }
+
+        cancellable = null;
+        return success;
     }
 
-    private async bool mount_mountable () {
+    private async bool mount_mountable ()
+        requires (cancellable == null && mount_timeout_id == 0)
+        ensures (cancellable == null) {
+
         debug ("mount_mountable");
         bool res = false;
         Gtk.MountOperation? mount_op = null;
+        debug ("mount mountable creating cancellable");
         cancellable = new Cancellable ();
-
         try {
             bool mounting = true;
             bool asking_password = false;
-            assert (mount_timeout_id == 0);
-
             mount_timeout_id = Timeout.add_seconds (MOUNT_TIMEOUT_SEC, () => {
                 if (mounting && !asking_password) {
                     mount_timeout_id = 0;
@@ -353,7 +412,6 @@ public class Files.Directory : Object {
                     debug ("Unable to mount mountable");
                     res = false;
                 }
-
             } else {
                 file.is_connected = false;
                 file.is_mounted = false;
@@ -370,16 +428,21 @@ public class Files.Directory : Object {
 
         debug ("success %s; enclosing mount %s", res.to_string (),
                                                  file.mount != null ? file.mount.get_name () : "null");
+        cancellable = null;
         return res;
     }
 
-    public async bool check_network () {
+    public async bool check_network ()
+        requires (cancellable == null)
+        ensures (cancellable == null) {
+
         debug ("check network");
         unowned var net_mon = GLib.NetworkMonitor.get_default ();
         network_available = net_mon.get_network_available ();
 
         bool success = false;
-
+        debug ("check network creating cancellable");
+        cancellable = new Cancellable ();
         if (network_available) {
             if (!file.is_mounted) {
                 debug ("Network is available");
@@ -399,7 +462,7 @@ public class Files.Directory : Object {
                     } catch (GLib.Error e) {
                         last_error_message = e.message;
                         warning ("Error: could not connect to connectable %s: %s", file.uri, e.message);
-                        return false;
+                        success = false;
                     }
                 } else {
                     success = true;
@@ -412,98 +475,9 @@ public class Files.Directory : Object {
             warning ("No network available");
         }
 
-
         debug ("Attempt to connect to %s %s", file.uri, success ? "succeeded" : "failed");
+        cancellable = null;
         return success;
-    }
-
-
-    private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func = null) {
-        debug ("make ready");
-        can_load = ready;
-
-        if (is_recent) {
-            if (!Files.Preferences.get_default ().remember_history) {
-                state = State.NOT_LOADED;
-                can_load = false;
-            }
-        }
-
-        if (!can_load) {
-            debug ("Cannot load %s.  Connected %s, Mounted %s, Exists %s", file.uri,
-                                                                           file.is_connected.to_string (),
-                                                                           file.is_mounted.to_string (),
-                                                                           file.exists.to_string ());
-            directory_cache.remove (creation_key);
-            is_ready = false;
-            after_loading (file_loaded_func);
-            return;
-        }
-
-        if (!is_ready) {
-            /* This must only be run once for each Directory */
-            is_ready = true;
-
-            /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
-             * in some cases. dir_cache will always have been created via call to public static
-             * functions from_file () or from_gfile (). Do not add toggle until cached. */
-
-            lock (directory_cache) {
-                this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-
-                if (!creation_key.equal (location) || directory_cache.lookup (location) == null) {
-                    directory_cache.insert (location, this);
-                }
-            }
-        }
-
-        /* The following can run on reloading */
-        if (file.mount != null) {
-            debug ("Directory has mount point");
-            var trash_dirs = Files.FileOperations.get_trash_dirs_for_mount (file.mount);
-            has_trash_dirs = (trash_dirs != null);
-        } else {
-            has_trash_dirs = is_local;
-        }
-
-        /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
-        has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
-
-        set_confirm_trash ();
-
-        if (file_loaded_func == null && is_local) {
-            try {
-                monitor = location.monitor_directory (0);
-                monitor.rate_limit = 100;
-                monitor.changed.connect (directory_changed);
-            } catch (IOError e) {
-                last_error_message = e.message;
-                if (!(e is IOError.NOT_MOUNTED)) {
-                    /* Will fail for remote filesystems - not an error */
-                    debug ("directory monitor failed: %s %s", e.message, file.uri);
-                }
-            }
-        }
-
-        if (is_trash) {
-            connect_volume_monitor_signals ();
-        }
-
-        yield list_directory_async (file_loaded_func);
-    }
-
-    private void set_confirm_trash () {
-        bool to_confirm = true;
-        if (is_trash) {
-            to_confirm = false;
-            var mounts = VolumeMonitor.get ().get_mounts ();
-            if (mounts != null) {
-                foreach (unowned var m in mounts) {
-                    to_confirm |= (m.can_eject () && Files.FileOperations.has_trash_files (m));
-                }
-            }
-        }
-        Preferences.get_default ().confirm_trash = to_confirm;
     }
 
     private void connect_volume_monitor_signals () {
@@ -536,35 +510,57 @@ public class Files.Directory : Object {
         }
     }
 
-    public void cancel () {
-        /* This should only be called when closing the view - it will cancel initialisation of the directory */
-        cancellable.cancel ();
-        cancel_timeouts ();
-    }
-
-
-    public void reload () {
-        debug ("Reload - state is %s", state.to_string ());
-        if (state == State.TIMED_OUT && file.is_mounted) {
-            debug ("Unmounting because of timeout");
+    public void reload () { // As this is public function, we cannot guarantee directory state
+        if (cancellable != null) {
             cancellable.cancel ();
-            cancellable = new Cancellable ();
-            file.location.unmount_mountable_with_operation.begin (GLib.MountUnmountFlags.FORCE, null, cancellable);
-            file.mount = null;
-            file.is_mounted = false;
+            cancellable = null;
         }
+
+        debug ("Reload - state is %s", state.to_string ());
+        // If dir is loading need to reset state here to be able to clear the directory
+        // This will not happen fast enough from cancelling the loading.
+        if (state == State.LOADING) {
+            state = State.NOT_LOADED;
+        };
 
         clear_directory_info ();
-        init ();
+
+        if (file.is_mounted) {
+            /* Delay reloading until successfully unmounted and remounted */
+            debug ("Cancelling and Unmounting before reload because of timeout");
+            cancellable = new Cancellable ();
+            file.location.unmount_mountable_with_operation.begin (
+                GLib.MountUnmountFlags.FORCE,
+                null,
+                cancellable,
+                (obj, res) => {
+                    try {
+                        if (file.location.unmount_mountable_with_operation.end (res)) {
+                            file.mount = null;
+                            file.is_mounted = false;
+                            debug ("init after unmount");
+                            init.begin ();
+                        } else {
+                            warning ("Unmount operation failed");
+                        }
+                    } catch (Error e) {
+                        warning ("Error unmounting: %s", e.message);
+                    } finally {
+                        cancellable = null;
+                    }
+                }
+            );
+        } else {
+            file.mount = null;
+            file.is_mounted = false;
+            debug ("init for reload cancellable null %s", cancellable == null ? "TRUE" : "FALSE");
+            init.begin ();
+        }
     }
 
-    /** Called in preparation for a reload **/
+    /** Called in preparation for a reload or if loading failed or timed out **/
     private void clear_directory_info () {
-        if (state == State.LOADING) {
-            return; /* Do not re-enter */
-        }
-
-        cancel ();
+        assert (state != State.LOADING);
         file_hash.remove_all ();
         monitor = null;
         sorted_dirs = null;
@@ -572,10 +568,9 @@ public class Files.Directory : Object {
         can_load = false;
         state = State.NOT_LOADED;
         loaded_from_cache = false;
-        /* Do not change @is_ready to false - we do not want to
-         * perform caching amd adding toggle ref again  */
-
-        /* These will be reconnected if directory still (or now) loadable */
+        /* Do not change @is_ready to false - we do not want to perform caching amd adding toggle ref again
+         * Monitor and volume will be reconnected if directory still (or now) loadable
+         */
         if (monitor != null) {
             monitor.changed.disconnect (directory_changed);
         }
@@ -586,13 +581,6 @@ public class Files.Directory : Object {
     }
 
     private void list_cached_files (FileLoadedFunc? file_loaded_func = null) {
-        debug ("list cached files");
-        if (state != State.LOADED) {
-            critical ("list cached files called in %s state - not expected to happen", state.to_string ());
-            return;
-        }
-
-        state = State.LOADING;
         displayed_files_count = 0;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         foreach (unowned Files.File gof in file_hash.get_values ()) {
@@ -607,35 +595,15 @@ public class Files.Directory : Object {
         after_loading (file_loaded_func);
     }
 
-    private async void list_directory_async (FileLoadedFunc? file_loaded_func) {
-        debug ("list directory async");
-        /* Should only be called after creation and if reloaded */
-        if (!is_ready || file_hash.size () > 0) {
-            critical ("(Re)load directory called when not cleared");
-            return;
-        }
+    private async void list_directory_async (FileLoadedFunc? file_loaded_func)
+        requires (is_ready && can_load && state == State.LOADING && cancellable == null)
+        ensures (state != State.LOADING && load_timeout_id == 0 && cancellable == null) {
 
-        if (!can_load) {
-            critical ("load called when cannot load - not expected to happen");
-            return;
-        }
-
-        if (state == State.LOADED) {
-            critical ("load called when already loaded - not expected to happen");
-            return;
-        }
-        if (load_timeout_id > 0) {
-            critical ("load called when timeout already running - not expected to happen");
-            return;
-        }
-
-        cancellable = new Cancellable ();
         permission_denied = false;
-        can_load = true;
         displayed_files_count = 0;
-        state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-
+        debug ("list dir creating cancellable ");
+        cancellable = new Cancellable ();
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
@@ -648,16 +616,14 @@ public class Files.Directory : Object {
                      * impose a time limit */
                     load_timeout_id = Timeout.add_seconds_full (GLib.Priority.LOW, ENUMERATE_TIMEOUT_SEC, () => {
                         warning ("Load timeout expired");
+                        load_timeout_id = 0;
                         state = State.TIMED_OUT;
-                        load_timeout_id = 0;
                         cancellable.cancel ();
-                        load_timeout_id = 0;
+
                         return GLib.Source.REMOVE;
                     });
 
                     var files = yield e.next_files_async (1000, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
-                    cancel_timeout (ref load_timeout_id);
-
                     if (files == null) {
                         break;
                     } else {
@@ -683,16 +649,22 @@ public class Files.Directory : Object {
                     } else {
                         last_error_message = _("Server did not respond within time limit");
                     }
-                    warning ("Error reported by next_files_async: %s", e.message);
+
+                    if (!(e is IOError.CANCELLED)) {
+                        warning ("Error reported by next_files_async: %s", e.message);
+                    } else {
+                        debug ("List directory was cancelled");
+                    }
+                    can_load = false;
+                } finally {
+                    cancel_timeout (ref load_timeout_id);
                 }
             }
             /* Load as many files as we can get info for */
-            if (!(cancellable.is_cancelled ())) {
-                state = State.LOADED;
-            }
         } catch (Error err) {
-            warning ("Listing directory error: %s, %s %s", last_error_message, err.message, file.uri);
+            debug ("Listing directory error: %s, %s %s", last_error_message, err.message, file.uri);
             can_load = false;
+            clear_directory_info ();
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY) {
                 file.exists = false;
             } else if (err is IOError.PERMISSION_DENIED) {
@@ -702,8 +674,8 @@ public class Files.Directory : Object {
                 file.is_mounted = false;
             }
         } finally {
+            cancellable = null;
             cancel_timeout (ref load_timeout_id);
-            loaded_from_cache = false;
             after_loading (file_loaded_func);
         }
     }
@@ -721,23 +693,18 @@ public class Files.Directory : Object {
     }
 
     private void after_loading (FileLoadedFunc? file_loaded_func) {
-        /* If loading failed reset */
-        debug ("after loading state is %s", state.to_string ());
-        if (state == State.LOADING || state == State.TIMED_OUT) {
-            state = State.TIMED_OUT; /* else clear directory info will fail */
-            can_load = false;
+        if (can_load && file.is_directory) { /* Fails for non-existent directories */
+            file.set_expanded (true);
         }
 
-        if (state != State.LOADED) {
-            clear_directory_info ();
-        }
+        state = can_load ? State.LOADED : State.NOT_LOADED;
 
         if (file_loaded_func == null) {
-            done_loading ();
-        }
-
-        if (file.is_directory) { /* Fails for non-existent directories */
-            file.set_expanded (true);
+            /* Emit signal in idle to avoid race when reloading */
+            Idle.add (() => {
+                done_loading ();
+                return false;
+            });
         }
     }
 
@@ -756,10 +723,14 @@ public class Files.Directory : Object {
     }
 
     public void load_hiddens () {
-        if (!can_load) {
+        if (!can_load || state == State.LOADING) {
             return;
         }
-        if (state != State.LOADED) {
+
+        var previous_state = state;
+        state = State.LOADING;
+        if (previous_state != State.LOADED) {
+            debug ("listing directory for load hiddens");
             list_directory_async.begin (null);
         } else {
             list_cached_files ();

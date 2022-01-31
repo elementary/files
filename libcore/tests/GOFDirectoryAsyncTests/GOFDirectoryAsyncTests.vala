@@ -21,46 +21,22 @@
 namespace Files.DirectoryTest {
 void add_gof_directory_async_tests () {
     /* loading */
-    Test.add_func ("/FilesDirectory/load_non_existent_local", () => {
-        run_load_folder_test (load_non_existent_local_test);
-    });
-    Test.add_func ("/FilesDirectory/load_empty_local", () => {
-        run_load_folder_test (load_empty_local_test);
-    });
-    Test.add_func ("/FilesDirectory/load_populated_local", () => {
-        run_load_folder_test (load_populated_local_test);
-    });
-    Test.add_func ("/FilesDirectory/load_cached_local", () => {
-        run_load_folder_test (load_cached_local_test);
-    });
-    Test.add_func ("/FilesDirectory/reload_populated_local", () => {
-        run_load_folder_test (reload_populated_local_test);
-    });
-}
-
-delegate Directory LoadFolderTest (string path, MainLoop loop);
-void run_load_folder_test (LoadFolderTest test) {
-    var loop = new GLib.MainLoop ();
-    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
-
-    var dir = test (test_dir_path, loop);
-    dir.allow_user_interaction = false;
-
-    assert (dir.state == Directory.State.NOT_LOADED);
-
-    dir.init ();
-    loop.run ();
-
-    /* Tear down test folder*/
-    tear_down_folder (test_dir_path);
+    Test.add_func ("/FilesDirectory/load_non_existent_local", load_non_existent_local_test);
+    Test.add_func ("/FilesDirectory/load_empty_local", load_empty_local_test);
+    Test.add_func ("/FilesDirectory/load_populated_local_test", load_populated_local_test);
+    Test.add_func ("/FilesDirectory/load_cached_local_test", load_cached_local_test);
+    Test.add_func ("/FilesDirectory/reload_populated_local_test", reload_populated_local_test);
+    Test.add_func ("/FilesDirectory/hammer_init_populated_local_test", hammer_init_populated_local_test);
+    Test.add_func ("/FilesDirectory/hammer_reload_populated_local_test", hammer_reload_populated_local_test);
 }
 
 /*** Test functions ***/
-Directory load_non_existent_local_test (string test_dir_path, MainLoop loop) {
+void load_non_existent_local_test () {
+    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
     GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
     assert (!gfile.query_exists (null));
-
     var dir = Directory.from_gfile (gfile);
+    var loop = new GLib.MainLoop ();
     dir.done_loading.connect (() => {
         assert (dir.displayed_files_count == 0);
         assert (!dir.can_load);
@@ -68,13 +44,20 @@ Directory load_non_existent_local_test (string test_dir_path, MainLoop loop) {
         assert (!dir.file.is_mounted);
         assert (!dir.file.exists);
         assert (dir.state == Directory.State.NOT_LOADED);
+        tear_down_folder (test_dir_path);
         loop.quit ();
     });
 
-    return dir;
+
+    dir.init.begin ();
+    loop.run ();
 }
 
-Directory load_empty_local_test (string test_dir_path, MainLoop loop) {
+void load_empty_local_test () {
+    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
+    GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
+    assert (!gfile.query_exists (null));
+    var loop = new GLib.MainLoop ();
     var dir = setup_temp_async (test_dir_path, 0);
 
     dir.done_loading.connect (() => {
@@ -84,16 +67,21 @@ Directory load_empty_local_test (string test_dir_path, MainLoop loop) {
         assert (!dir.file.is_mounted);
         assert (dir.file.exists);
         assert (dir.state == Directory.State.LOADED);
+        tear_down_folder (test_dir_path);
         loop.quit ();
     });
 
-    return dir;
+    dir.init.begin ();
+    loop.run ();
 }
 
-Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
+void load_populated_local_test () {
     uint n_files = 5;
     uint file_loaded_signal_count = 0;
-
+    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
+    GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
+    assert (!gfile.query_exists (null));
+    var loop = new GLib.MainLoop ();
     var dir = setup_temp_async (test_dir_path, n_files);
 
     assert (dir.ref_count == 1); //Extra ref from pending cache;
@@ -107,18 +95,22 @@ Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
         assert (dir.can_load);
         assert (dir.state == Directory.State.LOADED);
         assert (file_loaded_signal_count == n_files);
-
+        tear_down_folder (test_dir_path);
         loop.quit ();
     });
 
-    return dir;
+    dir.init.begin ();
+    loop.run ();
 }
 
-Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
+void load_cached_local_test () {
     uint n_files = 5;
     bool first_load = true;
     uint file_loaded_signal_count = 0;
-
+    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
+    GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
+    assert (!gfile.query_exists (null));
+    var loop = new GLib.MainLoop ();
     var dir = setup_temp_async (test_dir_path, n_files);
 
     dir.done_loading.connect (() => {
@@ -129,56 +121,109 @@ Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
             });
 
             assert (!dir.loaded_from_cache);
-            dir.init ();
+            dir.init.begin ();
         } else {
             assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Directory.State.LOADED);
             assert (file_loaded_signal_count == n_files);
             assert (dir.loaded_from_cache);
+            tear_down_folder (test_dir_path);
             loop.quit ();
         }
     });
-    return dir;
+
+    dir.init.begin ();
+    loop.run ();
 }
 
-Directory reload_populated_local_test (string test_dir_path, MainLoop loop) {
+void reload_populated_local_test () {
     uint n_files = 50;
     uint n_loads = 5; /* Number of times to reload the directory */
     uint loads = 0;
     uint ref_count_before_reload = 0;
     string tmp_pth = get_text_template_path ();
-
+    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
+    GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
+    assert (!gfile.query_exists (null));
+    var loop = new GLib.MainLoop ();
     var dir = setup_temp_async (test_dir_path, n_files, "txt", tmp_pth);
 
     dir.done_loading.connect (() => {
         assert (!dir.loaded_from_cache);
-
         if (loads == 0) {
             ref_count_before_reload = dir.ref_count;
         }
 
         if (loads < n_loads) {
             loads++;
-            dir.cancel ();
             dir.reload ();
         } else {
             assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Directory.State.LOADED);
             assert (dir.ref_count == ref_count_before_reload);
-
+            tear_down_folder (test_dir_path);
             tear_down_file (tmp_pth);
-
-            /* Test for problem with toggle ref after reloading (lp:1665620) */
-            dir.cancel ();
-            dir = null;
-
             loop.quit ();
         }
     });
 
-    return dir;
+    dir.init.begin ();
+    loop.run ();
+}
+
+void hammer_init_populated_local_test () {
+    string tmp_pth = get_text_template_path ();
+    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
+    GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
+    assert (!gfile.query_exists (null));
+    var loop = new GLib.MainLoop ();
+    var dir = setup_temp_async (test_dir_path, 200, "txt", tmp_pth);
+
+    dir.done_loading.connect (() => {
+        tear_down_folder (test_dir_path);
+        tear_down_file (tmp_pth);
+        loop.quit ();
+    });
+
+    // Hammer dir.init while loading. Should still emit "done-loading"
+    var count = 10;
+    Timeout.add (5, () => {
+        dir.init.begin ();
+        count--;
+        assert (count > 0); // Ensure test ends. MainLoop should quit first.
+        return count != 0;
+    });
+
+    dir.init.begin ();
+    loop.run ();
+}
+void hammer_reload_populated_local_test () {
+    string tmp_pth = get_text_template_path ();
+    string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
+    GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
+    assert (!gfile.query_exists (null));
+    var loop = new GLib.MainLoop ();
+    var dir = setup_temp_async (test_dir_path, 200, "txt", tmp_pth);
+
+    dir.done_loading.connect (() => {
+        tear_down_folder (test_dir_path);
+        tear_down_file (tmp_pth);
+        loop.quit ();
+    });
+
+    // Hammer dir.reload while loading. Should still emit "done-loading"
+    var count = 10;
+    Timeout.add (5, () => {
+        dir.reload ();
+        count--;
+        assert (count > 0); // Ensure test ends. MainLoop should quit first.
+        return count != 0;
+    });
+
+    dir.init.begin ();
+    loop.run ();
 }
 
 /*** Helper functions ***/

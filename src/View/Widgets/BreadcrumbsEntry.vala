@@ -160,19 +160,16 @@ namespace Files.View.Chrome {
 
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
                 current_completion_dir = Directory.from_gfile (file);
-                current_completion_dir.init (on_file_loaded);
+                current_completion_dir.init.begin (on_file_loaded);
             } else if (current_completion_dir != null && current_completion_dir.can_load) {
                 clear_completion ();
                 /* Completion text set by on_file_loaded () */
-                current_completion_dir.init (on_file_loaded);
+                current_completion_dir.init.begin (on_file_loaded);
             }
         }
 
         private void cancel_completion_dir () {
-            if (current_completion_dir != null) {
-                current_completion_dir.cancel ();
-                current_completion_dir = null;
-            }
+            current_completion_dir = null;
         }
 
         protected void complete () {
@@ -432,7 +429,7 @@ namespace Files.View.Chrome {
             }
 
             if (files_menu_dir != null) {
-                files_menu_dir.init ();
+                files_menu_dir.init.begin ();
             }
         }
 
@@ -515,7 +512,6 @@ namespace Files.View.Chrome {
             }
             menu.show_all ();
             /* Release the Async directory as soon as possible */
-            dir.cancel ();
             dir = null;
         }
 

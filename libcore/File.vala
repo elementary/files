@@ -488,7 +488,6 @@ public class Files.File : GLib.Object {
                 is_mounted = (mount != null);
             } catch (Error e) {
                 is_mounted = false;
-                debug (e.message);
             }
         }
 

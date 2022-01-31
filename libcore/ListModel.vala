@@ -260,8 +260,6 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         get (iter, ColumnID.FILE_COLUMN, out file);
         if (file != null) {
             var dir = Files.Directory.from_file (file);
-            dir.cancel ();
-
             subdirectory_unloaded (dir);
             return true;
         }
