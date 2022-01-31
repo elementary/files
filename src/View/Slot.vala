@@ -91,6 +91,8 @@ namespace Files.View {
 
         ~Slot () {
             debug ("Slot %i destruct", slot_number);
+            // Ensure destruction of view before it redraws
+            dir_view.destroy ();
         }
 
         private void connect_slot_signals () {
