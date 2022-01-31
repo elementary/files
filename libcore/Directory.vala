@@ -146,7 +146,7 @@ public class Files.Directory : Object {
         /* This is the only place the directory should be cancelled. Clients should not be able to cancel as that
          * can interfere with another client
          */
-        if (cancellable !=null) {
+        if (cancellable != null) {
             cancellable.cancel ();
             cancellable = null;
         }
