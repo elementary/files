@@ -19,7 +19,7 @@
  *
 */
 
-public class Files.RenamerDialog : Gtk.Dialog {
+public class Files.RenamerDialog : Granite.Dialog {
     public enum RenameBase {
         ORIGINAL,
         REPLACE,
@@ -77,12 +77,12 @@ public class Files.RenamerDialog : Gtk.Dialog {
         actions.add_action_entries (ACTION_ENTRIES, this);
         insert_action_group ("renamer", actions);
 
-        deletable = true;
-        set_title (_("Bulk Renamer"));
+        title = _("Bulk Rename");
         renamer = new Renamer ();
 
         /* Dialog actions */
         var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
         rename_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         renamer.bind_property (
@@ -102,8 +102,9 @@ public class Files.RenamerDialog : Gtk.Dialog {
         suffix_menumodel.append (_("Fixed Text"), Action.print_detailed_name ("renamer.add-text", suffix_var));
 
         prefix_button = new Gtk.MenuButton () {
-            image = new Gtk.Image.from_icon_name ("add-symbolic", Gtk.IconSize.BUTTON),
-            tooltip_text = _("Add Prefix"),
+            always_show_image = true,
+            image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON),
+            label = _("Add Prefix"),
             menu_model = prefix_menumodel,
             halign = Gtk.Align.END
         };
@@ -112,8 +113,9 @@ public class Files.RenamerDialog : Gtk.Dialog {
         prefix_box.pack_end (prefix_button, false, false);
 
         suffix_button = new Gtk.MenuButton () {
-            image = new Gtk.Image.from_icon_name ("add-symbolic", Gtk.IconSize.BUTTON),
-            tooltip_text = _("Add Suffix"),
+            always_show_image = true,
+            image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON),
+            label = _("Add Suffix"),
             menu_model = suffix_menumodel,
             halign = Gtk.Align.START
         };
@@ -145,6 +147,9 @@ public class Files.RenamerDialog : Gtk.Dialog {
         };
         list_scrolled_window.add (renamer.listbox);
 
+        var frame = new Gtk.Frame (null);
+        frame.add (list_scrolled_window);
+
         var sortby_label = new Gtk.Label (_("Number in order of"));
         var sortby_combo = new Gtk.ComboBoxText ();
         sortby_combo.insert (SortBy.NAME, "NAME", SortBy.NAME.to_string ());
@@ -153,7 +158,9 @@ public class Files.RenamerDialog : Gtk.Dialog {
         sortby_combo.insert (SortBy.SIZE, "SIZE", SortBy.SIZE.to_string ());
         sortby_combo.active = 0;
 
-        var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
+        var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3) {
+            margin_bottom = 6
+        };
         sortby_box.pack_start (sortby_label);
         sortby_box.pack_end (sortby_combo);
 
@@ -167,7 +174,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
             column_homogeneous = true
         };
         list_grid.attach (sortby_revealer, 0, 0);
-        list_grid.attach (list_scrolled_window, 0, 1, 2, 1);
+        list_grid.attach (frame, 0, 1, 2, 1);
         /* Assemble content */
         controls_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.HORIZONTAL,
@@ -185,7 +192,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
         var content_box = get_content_area ();
         content_box.pack_start (controls_grid);
         content_box.pack_start (list_grid);
-        content_box.margin = 12;
+        content_box.margin = 10;
         content_box.show_all ();
 
         /* Connect signals */
@@ -197,7 +204,7 @@ public class Files.RenamerDialog : Gtk.Dialog {
                     replace_entry_revealer.reveal_child = false;
                     break;
                 case RenameBase.REPLACE:
-                    basename_entry.placeholder_text = _("Enter text of original to be replaced");
+                    basename_entry.placeholder_text = _("Text to be replaced");
                     basename_entry_revealer.reveal_child = true;
                     replace_entry_revealer.reveal_child = true;
                     break;
@@ -294,6 +301,9 @@ public class Files.RenamerDialog : Gtk.Dialog {
         }
         renamer.modifier_chain.add (mod);
         var mod_button = new Gtk.Button.with_label (mod.mode.to_string ()) {
+            always_show_image = true,
+            image = new Gtk.Image.from_icon_name ("pan-down-symbolic", Gtk.IconSize.MENU),
+            image_position = Gtk.PositionType.RIGHT,
             margin_start = 3,
             margin_end = 3
         };

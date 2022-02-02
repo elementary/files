@@ -37,35 +37,25 @@ public class Files.RenamerListBox : Gtk.ListBox {
         construct {
             can_focus = false;
             var oldname_label = new Gtk.Label (old_name) {
-                xalign = 0.0f,
-                width_chars = 24
+                xalign = 0.0f
             };
 
 
             var newname_label = new Gtk.Label (new_name) {
-                xalign = 0.0f,
-                width_chars = 24
+                xalign = 0.0f
             };
 
             var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU);
-            var ignored_image = new Gtk.Image.from_icon_name ("emblem-disabled", Gtk.IconSize.MENU) {
-                tooltip_text = _("Ignored - name is not changed")
+
+            var status_image = new Gtk.Image () {
+                halign = Gtk.Align.END
             };
-            var invalid_image = new Gtk.Image.from_icon_name ("emblem-error", Gtk.IconSize.MENU) {
-                tooltip_text = _("Cannot rename - name is invalid or already exists")
+
+            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+                margin = 6
             };
-            var valid_image = new Gtk.Image.from_icon_name ("emblem-enabled", Gtk.IconSize.MENU) {
-                tooltip_text = _("Will be renamed")
-            };
-            var status_stack = new Gtk.Stack ();
-            status_stack.add (invalid_image);
-            status_stack.add (valid_image);
-            status_stack.add (ignored_image);
-            status_stack.visible_child = valid_image;
-            status_stack.show_all ();
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
             box.pack_start (oldname_label);
-            box.pack_end (status_stack);
+            box.pack_end (status_image);
             box.pack_end (newname_label);
             box.set_center_widget (arrow_image); // Should not pack center widget
             add (box);
@@ -78,13 +68,16 @@ public class Files.RenamerListBox : Gtk.ListBox {
             notify["status"].connect (() => {
                 switch (status) {
                     case RenameStatus.IGNORED:
-                        status_stack.visible_child = ignored_image;
+                        status_image.icon_name = "radio-mixed-symbolic";
+                        status_image.tooltip_markup = _("Ignored") + "\n" + Granite.TOOLTIP_SECONDARY_TEXT_MARKUP.printf (_("Name is not changed"));
                         break;
                     case RenameStatus.INVALID:
-                        status_stack.visible_child = invalid_image;
+                        status_image.icon_name = "process-error-symbolic";
+                        status_image.tooltip_markup = _("Cannot rename") + "\n" + Granite.TOOLTIP_SECONDARY_TEXT_MARKUP.printf (_("Name is invalid or already exists"));
                         break;
                     case RenameStatus.VALID:
-                        status_stack.visible_child = valid_image;
+                        status_image.icon_name = "process-completed-symbolic";
+                        status_image.tooltip_text = _("Will be renamed");
                         break;
                     default:
                         break;
