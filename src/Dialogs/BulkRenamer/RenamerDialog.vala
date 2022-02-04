@@ -169,14 +169,16 @@ public class Files.RenamerDialog : Granite.Dialog {
         sortby_combo.active = 0;
 
         var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3) {
-            margin_bottom = 6
+            margin_bottom = 3,
+            margin_top = 12
         };
         sortby_box.pack_start (sortby_label);
-        sortby_box.pack_end (sortby_combo);
+        sortby_box.pack_start (sortby_combo);
 
         sortby_revealer = new Gtk.Revealer () {
             hexpand = false,
-            reveal_child = false
+            reveal_child = false,
+            halign = Gtk.Align.START
         };
         sortby_revealer.add (sortby_box);
 
@@ -185,6 +187,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         };
         list_grid.attach (sortby_revealer, 0, 0);
         list_grid.attach (frame, 0, 1, 2, 1);
+
         /* Assemble content */
         controls_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.HORIZONTAL,
