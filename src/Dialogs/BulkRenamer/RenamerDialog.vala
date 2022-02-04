@@ -33,9 +33,9 @@ public class Files.RenamerDialog : Granite.Dialog {
                 case RenameBase.ORIGINAL:
                     return _("Original filename");
                 case RenameBase.REPLACE:
-                    return _("Original filename with replacement");
+                    return _("Modified original");
                 case RenameBase.CUSTOM:
-                    return _("Enter a basename");
+                    return _("New basename");
                 default:
                     assert_not_reached ();
             }
@@ -108,7 +108,7 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         var prefix_button = new Gtk.MenuButton () {
             always_show_image = true,
-            image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON),
+            image = new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.BUTTON),
             label = _("Add Prefix"),
             menu_model = prefix_menumodel
         };
@@ -121,7 +121,7 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         var suffix_button = new Gtk.MenuButton () {
             always_show_image = true,
-            image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON),
+            image = new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.BUTTON),
             label = _("Add Suffix"),
             menu_model = suffix_menumodel
         };
@@ -140,7 +140,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         basename_combo.insert (RenameBase.CUSTOM, "CUSTOM", RenameBase.CUSTOM.to_string ());
         basename_entry = new Gtk.Entry ();
         replace_entry = new Gtk.Entry () {
-            placeholder_text = _("Enter replacement text")
+            placeholder_text = _("Replacement text")
         };
         var basename_entry_revealer = new Gtk.Revealer ();
         basename_entry_revealer.add (basename_entry);
@@ -160,7 +160,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         var frame = new Gtk.Frame (null);
         frame.add (list_scrolled_window);
 
-        var sortby_label = new Gtk.Label (_("Number in order of"));
+        var sortby_label = new Gtk.Label (_("Number by"));
         var sortby_combo = new Gtk.ComboBoxText ();
         sortby_combo.insert (SortBy.NAME, "NAME", SortBy.NAME.to_string ());
         sortby_combo.insert (SortBy.CREATED, "CREATED", SortBy.CREATED.to_string ());
@@ -190,16 +190,13 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         /* Assemble content */
         controls_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.HORIZONTAL,
+            column_homogeneous = true,
             hexpand = true,
             halign = Gtk.Align.CENTER,
             column_spacing = 6,
-            margin_bottom = 12
+            margin_bottom = 24
         };
 
-        var controls_grid = new Gtk.Grid () {
-            column_homogeneous = true
-        };
         controls_grid.attach (prefix_box, 0, 0, 1, 1);
         controls_grid.attach (basename_combo, 1, 0, 1, 1);
         controls_grid.attach (suffix_box, 2, 0, 1, 1);
@@ -216,7 +213,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         basename_combo.changed.connect (() => {
             switch (basename_combo.get_active ()) {
                 case RenameBase.CUSTOM:
-                    basename_entry.placeholder_text = _("Enter fixed name to replace the original");
+                    basename_entry.placeholder_text = _("Fixed name");
                     basename_entry_revealer.reveal_child = true;
                     replace_entry_revealer.reveal_child = false;
                     break;
@@ -424,6 +421,10 @@ public class Files.RenamerDialog : Granite.Dialog {
     }
 
     public void schedule_view_update () {
+        foreach (var mod in renamer.modifier_chain) {
+            var button = mod.get_data<Gtk.Button> ("button");
+            button.label = mod.get_button_text ();
+        };
         var custom_basename = basename_combo.get_active () != RenameBase.ORIGINAL ? basename_entry.text : null;
         var replacement_text = basename_combo.get_active () == RenameBase.REPLACE ? replace_entry.text : null;
         renamer.schedule_update (custom_basename, replacement_text);

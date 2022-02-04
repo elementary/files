@@ -1102,7 +1102,9 @@ namespace Files {
             }
 
             if (selected_files.next != null) {
-                var rename_dialog = new Files.RenamerDialog (selected_files);
+                var rename_dialog = new Files.RenamerDialog (selected_files) {
+                    transient_for = slot.window
+                };
                 rename_dialog.run ();
                 rename_dialog.destroy ();
             } else {

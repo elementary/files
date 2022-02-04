@@ -177,8 +177,8 @@ public class Files.RenamerModifier : Object {
     public bool old_is_reversed { get; set; default = false; }
     public string text { get; set; default = "";}
     public string old_text { get; set; default = "";}
-    public string separator { get; set; default = "-";}
-    public string old_separator { get; set; default = "-";}
+    public string separator { get; set; default = "";}
+    public string old_separator { get; set; default = "";}
 
     public RenamerModifier.default_number (RenamePosition pos) {
         Object (
@@ -296,4 +296,23 @@ public class Files.RenamerModifier : Object {
         }
     }
 
+    public string get_button_text () {
+        switch (mode) {
+            case RenameMode.NUMBER_SEQUENCE:
+                return _("%0*d,%0*d,%0*d…").printf (digits, start, digits, start + 1, digits, start + 2);
+
+            case RenameMode.TEXT:
+                if (text == "") {
+                    return _("Text");
+                } else {
+                    return text.slice (0, int.min (text.length - 1, 5)) + "…";
+                }
+
+            case RenameMode.DATETIME:
+                return ((RenameDateSource)source).to_string ();
+
+            default:
+                return "";
+        }
+    }
 }
