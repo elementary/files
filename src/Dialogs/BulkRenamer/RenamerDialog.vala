@@ -160,20 +160,23 @@ public class Files.RenamerDialog : Granite.Dialog {
         var frame = new Gtk.Frame (null);
         frame.add (list_scrolled_window);
 
-        var sortby_label = new Gtk.Label (_("Number by"));
-        var sortby_combo = new Gtk.ComboBoxText ();
-        sortby_combo.insert (SortBy.NAME, "NAME", SortBy.NAME.to_string ());
-        sortby_combo.insert (SortBy.CREATED, "CREATED", SortBy.CREATED.to_string ());
-        sortby_combo.insert (SortBy.MODIFIED, "MODIFIED", SortBy.MODIFIED.to_string ());
-        sortby_combo.insert (SortBy.SIZE, "SIZE", SortBy.SIZE.to_string ());
-        sortby_combo.active = 0;
+        var sortby_label = new Gtk.Label (_("Number in order of:"));
+
+        //TODO Replace RadioButtons with linked ToggleButtons in Gtk4
+        var name_check = new Gtk.RadioButton.with_label (null, _("Name")) {margin_start = 6};
+        var created_check = new Gtk.RadioButton.with_label_from_widget (name_check, _("Date created")) {margin_start = 6};
+        var modified_check = new Gtk.RadioButton.with_label_from_widget (name_check, _("Date modified")) {margin_start = 6};
+        var size_check = new Gtk.RadioButton.with_label_from_widget (name_check, _("Size")) {margin_start = 6};
 
         var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3) {
-            margin_bottom = 3,
+            margin_bottom = 6,
             margin_top = 12
         };
         sortby_box.pack_start (sortby_label);
-        sortby_box.pack_start (sortby_combo);
+        sortby_box.pack_start (name_check);
+        sortby_box.pack_start (created_check);
+        sortby_box.pack_start (modified_check);
+        sortby_box.pack_start (size_check);
 
         sortby_revealer = new Gtk.Revealer () {
             hexpand = false,
@@ -298,12 +301,20 @@ public class Files.RenamerDialog : Granite.Dialog {
         notify["n-number-seq"].connect (() => {
             sortby_revealer.reveal_child = n_number_seq > 0;
             if (n_number_seq == 0) {
-                sortby_combo.active = 0;
+                name_check.active = true;
             }
         });
 
-        sortby_combo.changed.connect (() => {
-            renamer.listbox.sortby = (SortBy)(sortby_combo.active);
+        name_check.toggled.connect (() => {
+            if (size_check.active) {
+                renamer.listbox.sortby = SortBy.SIZE;
+            } else if (created_check.active) {
+                renamer.listbox.sortby = SortBy.CREATED;
+            } else if (modified_check.active) {
+                renamer.listbox.sortby = SortBy.MODIFIED;
+            } else {
+                renamer.listbox.sortby = SortBy.NAME;
+            }
         });
 
         basename_combo.grab_focus ();
