@@ -20,6 +20,9 @@
 */
 
 public class Files.RenamerDialog : Granite.Dialog {
+    private const int MAX_PREFIX = 1;
+    private const int MAX_SUFFIX = 1;
+
     public enum RenameBase {
         ORIGINAL,
         REPLACE,
@@ -49,8 +52,8 @@ public class Files.RenamerDialog : Granite.Dialog {
     private Gtk.Grid controls_grid;
     private Gtk.Box prefix_box;
     private Gtk.Box suffix_box;
-    private Gtk.MenuButton prefix_button;
-    private Gtk.MenuButton suffix_button;
+    private Gtk.Revealer prefix_revealer;
+    private Gtk.Revealer suffix_revealer;
     private Gtk.Entry basename_entry;
     private Gtk.Entry replace_entry;
     private Gtk.Revealer sortby_revealer;
@@ -58,6 +61,8 @@ public class Files.RenamerDialog : Granite.Dialog {
     private SimpleActionGroup actions;
 
     public int n_number_seq { get; private set; default = 0; }
+    public int n_prefix { get; private set; default = 0; }
+    public int n_suffix { get; private set; default = 0; }
 
     public RenamerDialog (List<Files.File> files, string? basename = null) {
         if (basename != null) {
@@ -101,26 +106,31 @@ public class Files.RenamerDialog : Granite.Dialog {
         suffix_menumodel.append (_("Creation Date"), Action.print_detailed_name ("renamer.add-date", suffix_var));
         suffix_menumodel.append (_("Fixed Text"), Action.print_detailed_name ("renamer.add-text", suffix_var));
 
-        prefix_button = new Gtk.MenuButton () {
+        var prefix_button = new Gtk.MenuButton () {
             always_show_image = true,
             image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON),
             label = _("Add Prefix"),
-            menu_model = prefix_menumodel,
-            halign = Gtk.Align.END
+            menu_model = prefix_menumodel
         };
-
+        prefix_revealer = new Gtk.Revealer () {
+            reveal_child = true
+        };
+        prefix_revealer.add (prefix_button);
         prefix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        prefix_box.pack_end (prefix_button, false, false);
+        prefix_box.pack_end (prefix_revealer, false, false);
 
-        suffix_button = new Gtk.MenuButton () {
+        var suffix_button = new Gtk.MenuButton () {
             always_show_image = true,
             image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON),
             label = _("Add Suffix"),
-            menu_model = suffix_menumodel,
-            halign = Gtk.Align.START
+            menu_model = suffix_menumodel
         };
+        suffix_revealer = new Gtk.Revealer () {
+            reveal_child = true
+        };
+        suffix_revealer.add (suffix_button);
         suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        suffix_box.pack_start (suffix_button, false, false);
+        suffix_box.pack_start (suffix_revealer, false, false);
 
         basename_combo = new Gtk.ComboBoxText () {
             valign = Gtk.Align.CENTER
@@ -182,6 +192,10 @@ public class Files.RenamerDialog : Granite.Dialog {
             halign = Gtk.Align.CENTER,
             column_spacing = 6,
             margin_bottom = 12
+        };
+
+        var controls_grid = new Gtk.Grid () {
+            column_homogeneous = true
         };
         controls_grid.attach (prefix_box, 0, 0, 1, 1);
         controls_grid.attach (basename_combo, 1, 0, 1, 1);
@@ -296,6 +310,11 @@ public class Files.RenamerDialog : Granite.Dialog {
     }
 
     private void add_modifier (RenamerModifier mod) {
+        if (mod.pos == RenamePosition.PREFIX) {
+            prefix_revealer.reveal_child = ++n_prefix < MAX_PREFIX;
+        } else {
+            suffix_revealer.reveal_child = ++n_suffix < MAX_SUFFIX;
+        }
         if (mod.mode == RenameMode.NUMBER_SEQUENCE) {
             n_number_seq++;
         }
@@ -365,20 +384,40 @@ public class Files.RenamerDialog : Granite.Dialog {
             return;
         });
 
+        mod_button.show_all ();
+
         if (mod.pos == RenamePosition.PREFIX) {
             // In Gtk3 required to keep add buttons on outside. In Gtk4, can use append and prepend
-            prefix_box.remove (prefix_button);
+            prefix_box.remove (prefix_revealer);
             prefix_box.pack_end (mod_button, false, false);
-            prefix_box.pack_end (prefix_button, false, false);
+            prefix_box.pack_end (prefix_revealer, false, false);
         } else {
-            suffix_box.remove (suffix_button);
+            suffix_box.remove (suffix_revealer);
             suffix_box.pack_start (mod_button, false, false);
-            suffix_box.pack_start (suffix_button, false, false);
+            suffix_box.pack_start (suffix_revealer, false, false);
         }
 
         controls_grid.show_all ();
         controls_grid.queue_draw ();
         schedule_view_update ();
+    }
+
+
+    private void delete_modifier (RenamerModifier mod) {
+        if (mod.pos == RenamePosition.PREFIX) {
+            prefix_revealer.reveal_child = --n_prefix < MAX_PREFIX;
+        } else {
+            suffix_revealer.reveal_child = --n_suffix < MAX_SUFFIX;
+        }
+        if (mod.mode == RenameMode.NUMBER_SEQUENCE) {
+            n_number_seq--;
+        }
+        renamer.modifier_chain.remove (mod);
+        var button = mod.get_data<Gtk.Button> ("button");
+        button.destroy ();
+
+        schedule_view_update ();
+        return;
     }
 
     public void schedule_view_update () {
@@ -403,17 +442,5 @@ public class Files.RenamerDialog : Granite.Dialog {
         RenamePosition pos = (RenamePosition)(target.get_uint32 ());
         var mod = new RenamerModifier.default_text (pos);
         add_modifier (mod);
-    }
-
-    private void delete_modifier (RenamerModifier mod) {
-        if (mod.mode == RenameMode.NUMBER_SEQUENCE) {
-            n_number_seq--;
-        }
-        renamer.modifier_chain.remove (mod);
-        var button = mod.get_data<Gtk.Button> ("button");
-        button.destroy ();
-
-        schedule_view_update ();
-        return;
     }
 }
