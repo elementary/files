@@ -55,9 +55,11 @@ public class Files.RenamerDialog : Granite.Dialog {
     private Gtk.Revealer prefix_revealer;
     private Gtk.Revealer suffix_revealer;
     private Gtk.Entry basename_entry;
-    private Gtk.Entry replace_entry;
+    private Gtk.Entry replacement_entry;
+    private Gtk.RadioButton replace_check;
+    private Gtk.RadioButton new_check;
+    private Gtk.RadioButton original_check;
     private Gtk.Revealer sortby_revealer;
-    private Gtk.ComboBoxText basename_combo;
     private SimpleActionGroup actions;
 
     public int n_number_seq { get; private set; default = 0; }
@@ -65,14 +67,6 @@ public class Files.RenamerDialog : Granite.Dialog {
     public int n_suffix { get; private set; default = 0; }
 
     public RenamerDialog (List<Files.File> files, string? basename = null) {
-        if (basename != null) {
-            basename_combo.set_active (RenameBase.CUSTOM);
-            basename_entry.text = basename;
-        } else {
-            basename_combo.set_active (RenameBase.ORIGINAL);
-            basename_entry.text = "";
-        }
-
         renamer.add_files (files);
         schedule_view_update ();
     }
@@ -132,20 +126,34 @@ public class Files.RenamerDialog : Granite.Dialog {
         suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         suffix_box.pack_start (suffix_revealer, false, false);
 
-        basename_combo = new Gtk.ComboBoxText () {
-            valign = Gtk.Align.CENTER
+        var basename_label = new Gtk.Label (_("Basename:"));
+        original_check = new Gtk.RadioButton.with_label (null, _("Unchanged")) { margin_start = 24 };
+        new_check = new Gtk.RadioButton.with_label_from_widget (original_check, _("New")) { margin_start = 24 };
+        replace_check = new Gtk.RadioButton.with_label_from_widget (original_check, _("Modified")) { margin_start = 24 };
+
+        var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+            halign = Gtk.Align.CENTER,
+            margin_bottom = 24
         };
-        basename_combo.insert (RenameBase.ORIGINAL, "ORIGINAL", RenameBase.ORIGINAL.to_string ());
-        basename_combo.insert (RenameBase.REPLACE, "REPLACE", RenameBase.REPLACE.to_string ());
-        basename_combo.insert (RenameBase.CUSTOM, "CUSTOM", RenameBase.CUSTOM.to_string ());
+
+        basename_box.pack_start (basename_label);
+        basename_box.pack_start (original_check);
+        basename_box.pack_start (replace_check);
+        basename_box.pack_start (new_check);
+
+        var original_label = new Gtk.Label (_("Original Basename"));
         basename_entry = new Gtk.Entry ();
-        replace_entry = new Gtk.Entry () {
+        replacement_entry = new Gtk.Entry () {
             placeholder_text = _("Replacement text")
         };
-        var basename_entry_revealer = new Gtk.Revealer ();
-        basename_entry_revealer.add (basename_entry);
-        var replace_entry_revealer = new Gtk.Revealer ();
-        replace_entry_revealer.add (replace_entry);
+
+        var replacement_entry_stack = new Gtk.Stack () { homogeneous = true };
+        replacement_entry_stack.add_named (replacement_entry, "entry");
+        replacement_entry_stack.add_named (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), "box");
+
+        var basename_entry_stack = new Gtk.Stack ();
+        basename_entry_stack.add_named (original_label, "label");
+        basename_entry_stack.add_named (basename_entry, "entry");
 
         /* Filename list */
         var list_scrolled_window = new Gtk.ScrolledWindow (null, null) {
@@ -201,51 +209,53 @@ public class Files.RenamerDialog : Granite.Dialog {
         };
 
         controls_grid.attach (prefix_box, 0, 0, 1, 1);
-        controls_grid.attach (basename_combo, 1, 0, 1, 1);
+        controls_grid.attach (basename_entry_stack, 1, 0, 1, 1);
         controls_grid.attach (suffix_box, 2, 0, 1, 1);
-        controls_grid.attach (basename_entry_revealer, 1, 1, 1, 1);
-        controls_grid.attach (replace_entry_revealer, 1, 2, 1, 1);
+        controls_grid.attach (replacement_entry_stack, 1, 1, 1, 1);
 
         var content_box = get_content_area ();
+        content_box.pack_start (basename_box);
         content_box.pack_start (controls_grid);
         content_box.pack_start (list_grid);
         content_box.margin = 10;
         content_box.show_all ();
 
-        /* Connect signals */
-        basename_combo.changed.connect (() => {
-            switch (basename_combo.get_active ()) {
-                case RenameBase.CUSTOM:
-                    basename_entry.placeholder_text = _("Fixed name");
-                    basename_entry_revealer.reveal_child = true;
-                    replace_entry_revealer.reveal_child = false;
-                    break;
-                case RenameBase.REPLACE:
-                    basename_entry.placeholder_text = _("Text to be replaced");
-                    basename_entry_revealer.reveal_child = true;
-                    replace_entry_revealer.reveal_child = true;
-                    break;
-                default:
-                    basename_entry_revealer.reveal_child = false;
-                    replace_entry_revealer.reveal_child = false;
-                    basename_entry.text = "";
-                    replace_entry.text = "";
-                    break;
-            }
 
-            schedule_view_update ();
+        basename_entry_stack.visible_child_name = "label";
+        replacement_entry_stack.visible_child_name = "box";
+
+
+        /* Connect signals */
+        original_check.toggled.connect (() => {
+            if (original_check.active) {
+                basename_entry_stack.visible_child_name = "label";
+                replacement_entry_stack.visible_child_name = "box";
+                schedule_view_update ();
+            }
+        });
+        replace_check.toggled.connect (() => {
+            if (replace_check.active) {
+                basename_entry_stack.visible_child_name = "entry";
+                basename_entry.placeholder_text = _("Text to be replaced");
+                replacement_entry_stack.visible_child_name = "entry";
+                schedule_view_update ();
+            }
+        });
+        new_check.toggled.connect (() => {
+            if (new_check.active) {
+                basename_entry_stack.visible_child_name = "entry";
+                basename_entry.placeholder_text = _("New basename");
+                replacement_entry_stack.visible_child_name = "box";
+                schedule_view_update ();
+            }
         });
 
         basename_entry.changed.connect (() => {
-            if (basename_entry_revealer.reveal_child) {
-                schedule_view_update ();
-            }
+            schedule_view_update ();
         });
 
-        replace_entry.changed.connect (() => {
-            if (replace_entry_revealer.reveal_child) {
-                schedule_view_update ();
-            }
+        replacement_entry.changed.connect (() => {
+            schedule_view_update ();
         });
 
         response.connect ((response_id) => {
@@ -316,8 +326,6 @@ public class Files.RenamerDialog : Granite.Dialog {
                 renamer.listbox.sortby = SortBy.NAME;
             }
         });
-
-        basename_combo.grab_focus ();
     }
 
     private void add_modifier (RenamerModifier mod) {
@@ -436,8 +444,9 @@ public class Files.RenamerDialog : Granite.Dialog {
             var button = mod.get_data<Gtk.Button> ("button");
             button.label = mod.get_button_text ();
         };
-        var custom_basename = basename_combo.get_active () != RenameBase.ORIGINAL ? basename_entry.text : null;
-        var replacement_text = basename_combo.get_active () == RenameBase.REPLACE ? replace_entry.text : null;
+
+        var custom_basename = original_check.active ? null : basename_entry.text;
+        var replacement_text = replace_check.active ? replacement_entry.text : null;
         renamer.schedule_update (custom_basename, replacement_text);
     }
 
