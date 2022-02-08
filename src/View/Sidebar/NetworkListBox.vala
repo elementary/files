@@ -74,16 +74,13 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        var row = new NetworkRow (
-                plugin_item.name,
-                plugin_item.uri,
-                plugin_item.icon,
-                this,
-                false,
-                false,
-                null, //uuid fallsback to uri
-                plugin_item.mount
-            );
+        var row = add_bookmark (plugin_item.name,
+                                plugin_item.uri,
+                                plugin_item.icon,
+                                false,
+                                true,
+                                null,
+                                plugin_item.mount);
 
         row.update_plugin_data (plugin_item);
 
