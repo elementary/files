@@ -875,7 +875,10 @@ public class Files.File : GLib.Object {
         }
 
         GLib.AppInfo app_info = null;
-        if (is_desktop_file ()) {
+        var context = Gdk.Display.get_default ().get_app_launch_context ();
+        context.set_timestamp (Gdk.CURRENT_TIME);
+
+        if (is_desktop_file ()) { // Desktop files never executed in practice?
             try {
                 var key_file = FileUtils.key_file_from_file (location, null);
                 app_info = new GLib.DesktopAppInfo.from_keyfile (key_file);
@@ -887,26 +890,34 @@ public class Files.File : GLib.Object {
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to parse the desktop file: "));
                 throw prefixed_error;
             }
-        } else {
+
+            try {
+                app_info.launch (files, context);
+            } catch (GLib.Error e) {
+                GLib.Error prefixed_error;
+                GLib.Error.propagate_prefixed (out prefixed_error, e, _("Unable to Launch Desktop File: "));
+                throw prefixed_error;
+            }
+        } else { // Always launch scripts etc in terminal so can see any output
             try {
                 var path = location.get_path ();
-                app_info = GLib.AppInfo.create_from_commandline (
-                               Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE
-                           );
+                var command = "io.elementary.terminal";
 
+                app_info = GLib.AppInfo.create_from_commandline (
+                    Shell.quote (command), this.basename, GLib.AppInfoCreateFlags.SUPPORTS_URIS
+                );
+
+                context.setenv ("PWD", FileUtils.get_parent_path_from_path (path));
+
+                List<string> uris = null;
+                uris.append ("--commandline=" + Shell.quote (path));
+                warning ("launching in terminal %s", uris.data);
+                app_info.launch_uris (uris, context);
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
                 throw prefixed_error;
             }
-        }
-
-        try {
-            app_info.launch (files, null);
-        } catch (GLib.Error e) {
-            GLib.Error prefixed_error;
-            GLib.Error.propagate_prefixed (out prefixed_error, e, _("Unable to Launch Desktop File: "));
-            throw prefixed_error;
         }
 
         return true;
