@@ -32,10 +32,13 @@ void add_gof_directory_async_tests () {
 
 /*** Test functions ***/
 void load_non_existent_local_test () {
+    debug ("load non existent local test");
     string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
     GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
     assert (!gfile.query_exists (null));
+    debug ("getting Directory %s", gfile.get_uri ());
     var dir = Directory.from_gfile (gfile);
+    debug ("got Directory %s", dir.file.uri);
     var loop = new GLib.MainLoop ();
     dir.done_loading.connect (() => {
         assert (dir.displayed_files_count == 0);
@@ -43,12 +46,12 @@ void load_non_existent_local_test () {
         assert (!dir.file.is_connected);
         assert (!dir.file.is_mounted);
         assert (!dir.file.exists);
-        assert (dir.state == Directory.State.NOT_LOADED);
+        assert (dir.state != Directory.State.NOT_LOADED);
         tear_down_folder (test_dir_path);
         loop.quit ();
     });
 
-
+    debug ("starting async init");
     dir.init.begin ();
     loop.run ();
 }
