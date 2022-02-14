@@ -112,6 +112,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             use_underline = true,
             can_default = true
         };
+        accept_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
         filter_box = new Gtk.ComboBoxText ();
 
