@@ -26,8 +26,8 @@ namespace Files {
 
         public override Gtk.Widget create_editable_widget () {
             textview = new Gtk.TextView ();
-            /* Block propagation of button press event to view as this would cause renaming to end */
-            textview.button_press_event.connect_after (() => {return true;});
+            /* Block propagation of button press event as this would cause renaming to end */
+            textview.button_press_event.connect_after (() => { return true; });
 
             scrolled_window = new Gtk.ScrolledWindow (null, null);
             scrolled_window.add (textview);
