@@ -43,8 +43,7 @@ void existing_local_folder_test () {
     assert (file.is_connected);
     assert (file.is_mounted);
 
-    file.query_update ();
-    file.update_extra (); // Get full info for testing
+    file.update_full ();
     assert (file.exists);
     assert (file.is_connected);
     /* file.is_mounted only true of the file is associated with a mount */
@@ -102,8 +101,7 @@ void new_non_existent_local_test () {
     assert (file.location != null);
     assert (file.exists);
 
-    file.query_update ();
-
+    file.update_full ();
     assert (file.info == null);
     assert (!file.exists); /* is_mounted and is_connected undefined if !exists */
 }
@@ -124,8 +122,7 @@ void new_hidden_local_test () {
     assert (file.is_connected == true);
     assert (file.is_mounted);
 
-    file.query_update ();
-    file.update_extra (); // Get full info for testing
+    file.update_full ();
     assert (file.info != null);
     assert (file.exists);
     assert (file.is_connected);
@@ -154,8 +151,7 @@ void new_symlink_local_test () {
     assert (file.location != null);
     assert (file.exists);
 
-    file.query_update ();
-    file.update_extra (); // Get full info for testing
+    file.update_full ();
     assert (file.info != null);
     assert (file.get_symlink_target () == path);
     assert (file.is_symlink ());

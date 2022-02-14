@@ -202,7 +202,7 @@ public class Files.Directory : Object {
 
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
-                critical ("Trying to load a non-folder - finding parent");
+                debug ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = Files.File.get (parent);

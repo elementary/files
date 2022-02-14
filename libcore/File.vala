@@ -508,7 +508,7 @@ public class Files.File : GLib.Object {
     // Extra info needed when actually displayed
     // Do not update unless needed
     public void update_extra () {
-        if (!needs_updating) {
+        if (!needs_updating || info == null) {
             return;
         }
 
@@ -628,12 +628,11 @@ public class Files.File : GLib.Object {
     }
 
     public void update_full () {
-        GLib.return_if_fail (info != null);
-
-        /* free previously allocated */
-        clear_info ();
-        init_info ();
-        update_extra ();
+        if (ensure_query_info ()) {
+            clear_info ();
+            init_info ();
+            update_extra ();
+        }
     }
 
     public void update_type () {
@@ -673,7 +672,6 @@ public class Files.File : GLib.Object {
         var _info = query_info ();
         if (_info != null) {
             info = _info;
-            needs_updating = true;
             init_info ();
         }
     }
@@ -704,6 +702,7 @@ public class Files.File : GLib.Object {
         update_icon_internal (pix_size, pix_scale);
     }
 
+    /* Ensure basic info present */
     public bool ensure_query_info () {
         if (info == null) {
             query_update ();

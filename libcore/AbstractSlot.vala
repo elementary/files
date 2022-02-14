@@ -57,7 +57,7 @@ namespace Files {
         protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
         public Gtk.Overlay overlay {get; protected set;}
-        public int slot_number { get; protected set; default = -1; }
+        public int slot_number { get; protected set; }
         protected int width;
 
         public signal void active (bool scroll = true, bool animate = true);
