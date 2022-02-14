@@ -36,7 +36,6 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
 
     construct {
         status = new Gtk.Label (info.status) {
-            use_markup = true,
             max_width_chars = 50,
             selectable = true,
             width_chars = 50,
@@ -88,14 +87,13 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
             cancelled (info);
             button.sensitive = false;
         });
+
+        info.bind_property ("status", status, "label");
     }
 
     private void update_data () {
-        status.set_markup (
-            Markup.printf_escaped ("<span font-features='tnum'>%s</span>", info.status)
-        );
         details.set_markup (
-            Markup.printf_escaped ("<span size='small' font-features='tnum'>%s</span>", info.details)
+            Markup.printf_escaped ("<span size='small'>%s</span>", info.details)
         );
     }
 
