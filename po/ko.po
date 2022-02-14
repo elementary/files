@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-30 16:30+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
 "PO-Revision-Date: 2019-09-23 16:23+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
@@ -26,13 +26,13 @@ msgstr ""
 msgid "Cancel"
 msgstr "취소"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
 msgstr ""
 
@@ -1110,7 +1110,7 @@ msgid "_Unmount"
 msgstr "마운트 해제(_U)"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Properties"
 msgstr "속성"
 
@@ -1124,7 +1124,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "제거"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1331,15 +1331,15 @@ msgstr "경로를 입력하세요"
 msgid "Type a path"
 msgstr "경로를 입력하세요"
 
-#: libcore/Widgets/ViewSwitcher.vala:34
+#: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "그리드로 보기"
 
-#: libcore/Widgets/ViewSwitcher.vala:41
+#: libcore/Widgets/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "목록으로 보기"
 
-#: libcore/Widgets/ViewSwitcher.vala:48
+#: libcore/Widgets/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "나란히 보기"
 
@@ -1371,7 +1371,8 @@ msgstr "프로그램의 버전을 보입니다"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "각 탭에서 URI를 엽니다"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1877
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1889
+#: src/View/AbstractDirectoryView.vala:1895
 msgid "New Window"
 msgstr "새 창"
 
@@ -1534,7 +1535,7 @@ msgid "Original Location:"
 msgstr "원본 위치:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Other Application…"
 msgstr "기타 애플리케이션…"
 
@@ -1646,178 +1647,179 @@ msgstr "이 파일을 놓을 수 없음"
 msgid "Invalid file name provided"
 msgstr "잘못된 파일 이름이 사용됨"
 
-#: src/View/AbstractDirectoryView.vala:1871 src/View/Window.vala:146
+#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1878 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "새 탭"
 
-#: src/View/AbstractDirectoryView.vala:1891
+#: src/View/AbstractDirectoryView.vala:1912
 msgid "Run"
 msgstr "실행"
 
-#: src/View/AbstractDirectoryView.vala:1898
+#: src/View/AbstractDirectoryView.vala:1919
 #, c-format
 msgid "Open in %s"
 msgstr "%s에서 열기"
 
-#: src/View/AbstractDirectoryView.vala:1967
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Open in"
 msgstr "열기"
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1990
 #: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "다른 프로그램으로 열기"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Paste"
 msgstr "붙여 넣기"
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2009
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2018
+#: src/View/AbstractDirectoryView.vala:2039
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "모두 복구 시키기"
 
-#: src/View/AbstractDirectoryView.vala:2026
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Cut"
 msgstr "잘라내기"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2055
 msgid "Copy"
 msgstr "복사"
 
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2062
 msgid "Move to Trash"
 msgstr "휴지통으로"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2067
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "완전히 지우기"
 
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Restore from Trash"
 msgstr "휴지통에서 복구 시키기"
 
-#: src/View/AbstractDirectoryView.vala:2076
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Open Parent Folder"
 msgstr "상위 폴더 열기"
 
-#: src/View/AbstractDirectoryView.vala:2079
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Remove from History"
 msgstr "기록에서 지우기"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2128
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "이름 바꾸기"
 
-#: src/View/AbstractDirectoryView.vala:2114
+#: src/View/AbstractDirectoryView.vala:2135
 msgid "Copy as Link"
 msgstr "링크 복사하기"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Paste Link into Folder"
 msgstr "링크를 폴더에 복사하기"
 
-#: src/View/AbstractDirectoryView.vala:2133
+#: src/View/AbstractDirectoryView.vala:2154
 msgid "Paste into Folder"
 msgstr "폴더로 복사하기"
 
-#: src/View/AbstractDirectoryView.vala:2174
+#: src/View/AbstractDirectoryView.vala:2195
 msgid "Show Hidden Files"
 msgstr "숨긴 파일 보이기"
 
-#: src/View/AbstractDirectoryView.vala:2179
+#: src/View/AbstractDirectoryView.vala:2200
 msgid "Show Remote Thumbnails"
 msgstr "원격 썸네일 보이기"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2203
 #, fuzzy
 #| msgid "Hide Local Thumbnails"
 msgid "Hide Thumbnails"
 msgstr "로컬 썸네일 감추기"
 
-#: src/View/AbstractDirectoryView.vala:2208
+#: src/View/AbstractDirectoryView.vala:2229
 msgid "Paste Link"
 msgstr "링크 붙여 넣기"
 
-#: src/View/AbstractDirectoryView.vala:2265
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Name"
 msgstr "이름"
 
-#: src/View/AbstractDirectoryView.vala:2270 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2291 src/View/ListView.vala:27
 msgid "Size"
 msgstr "크기"
 
-#: src/View/AbstractDirectoryView.vala:2275 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2296 src/View/ListView.vala:28
 msgid "Type"
 msgstr "종류"
 
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2301
 msgid "Date"
 msgstr "날짜"
 
-#: src/View/AbstractDirectoryView.vala:2285
+#: src/View/AbstractDirectoryView.vala:2306
 msgid "Reversed Order"
 msgstr "거꾸로"
 
-#: src/View/AbstractDirectoryView.vala:2288
+#: src/View/AbstractDirectoryView.vala:2309
 msgid "Folders Before Files"
 msgstr "파일 이전 폴더"
 
-#: src/View/AbstractDirectoryView.vala:2300
+#: src/View/AbstractDirectoryView.vala:2321
 msgid "Sort by"
 msgstr "정렬 기준"
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2329
 msgid "Folder"
 msgstr "폴더"
 
-#: src/View/AbstractDirectoryView.vala:2314
+#: src/View/AbstractDirectoryView.vala:2335
 msgid "Empty File"
 msgstr "파일"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2386
 msgid "New"
 msgstr "새로 만들기"
 
-#: src/View/AbstractDirectoryView.vala:2606
+#: src/View/AbstractDirectoryView.vala:2627
 #, c-format
 msgid "Untitled %s"
 msgstr "이름 없는 %s"
 
-#: src/View/AbstractDirectoryView.vala:2971
-#: src/View/AbstractDirectoryView.vala:3149
+#: src/View/AbstractDirectoryView.vala:2992
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot remove files from here"
 msgstr "이곳의 파일을 제거할 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:2972
-#: src/View/AbstractDirectoryView.vala:3134
-#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:2993
+#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "You do not have permission to change this location"
 msgstr "이 위치를 바꿀 수 있는 권한이 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:3103
+#: src/View/AbstractDirectoryView.vala:3126
 msgid "Cannot copy files that are in the trash"
 msgstr "휴지통에 있는 파일은 복사할 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3127
 msgid "Cutting the selection instead"
 msgstr "대신 선택한 항목을 잘라냅니다"
 
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:3156
 msgid "Cannot paste files here"
 msgstr "이곳에 파일을 붙여 넣을 수 없습니다"
 
@@ -1939,17 +1941,26 @@ msgstr "파일이 없습니다"
 msgid "The file selected no longer exists."
 msgstr "선택하신 파일이 더이상 존재하지 않습니다."
 
-#: src/View/Window.vala:147
+#: src/View/Window.vala:182
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:491
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "닫기"
 
-#: src/View/Window.vala:569 src/View/Window.vala:579
+#: src/View/Window.vala:492
+#, fuzzy
+msgid "Duplicate Tab"
+msgstr "\"%B\"을(를) 복제하는 중"
+
+#: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
+msgid "Open in New Window"
+msgstr "새 창에서 열기"
+
+#: src/View/Window.vala:606 src/View/Window.vala:616
 msgid "(as Administrator)"
 msgstr "(관리자 권한으로)"
 
@@ -2074,10 +2085,6 @@ msgstr "검색 또는 경로 입력"
 #: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "새 탭에서 열기"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
-msgid "Open in New Window"
-msgstr "새 창에서 열기"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"
