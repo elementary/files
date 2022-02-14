@@ -22,8 +22,8 @@ namespace Files.DirectoryTest {
 void add_gof_directory_async_tests () {
     /* loading */
     Test.add_func ("/FilesDirectory/load_non_existent_local", load_non_existent_local_test);
-    Test.add_func ("/FilesDirectory/load_empty_local", load_empty_local_test);
-    Test.add_func ("/FilesDirectory/load_populated_local_test", load_populated_local_test);
+    // Test.add_func ("/FilesDirectory/load_empty_local", load_empty_local_test);
+    // Test.add_func ("/FilesDirectory/load_populated_local_test", load_populated_local_test);
     // Test.add_func ("/FilesDirectory/load_cached_local_test", load_cached_local_test);
     // Test.add_func ("/FilesDirectory/reload_populated_local_test", reload_populated_local_test);
     // Test.add_func ("/FilesDirectory/hammer_init_populated_local_test", hammer_init_populated_local_test);
