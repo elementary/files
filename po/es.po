@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-02-17 13:18+0000\n"
+"PO-Revision-Date: 2022-02-18 03:01+0000\n"
 "Last-Translator: Jose Manuel Hernandez Farias <ing.josemhf@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
@@ -30,12 +30,12 @@ msgstr "Cancelar"
 #: filechooser-portal/FileChooserDialog.vala:124
 #: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Abrir archivos en modo de sólo lectura"
 
 #: filechooser-portal/FileChooserDialog.vala:124
 #: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Abrir archivo en modo de sólo lectura"
 
 #: filechooser-portal/Main.vala:75
 #, fuzzy
@@ -217,8 +217,8 @@ msgstr "Archivo vacío"
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i elemento"
+msgstr[1] "%i elementos"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -1158,7 +1158,7 @@ msgstr "Propiedades"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Expulsar medio"
 
 #: libcore/PopupMenuBuilder.vala:88
 #, fuzzy
@@ -1395,7 +1395,7 @@ msgstr "Eliminar lo seleccionado"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Enviar por correo electrónico"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1503,7 +1503,7 @@ msgstr "Establecer como predeterminado"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "No se pudieron determinar las propiedades y permisos del archivo"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1720,11 +1720,11 @@ msgstr "Pegar"
 
 #: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
-msgstr ""
+msgstr "Seleccionar todo"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
-msgstr ""
+msgstr "Invertir selección"
 
 #: src/View/AbstractDirectoryView.vala:2039
 #, fuzzy
@@ -2035,7 +2035,7 @@ msgstr "%s (%s, %s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "No montado"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
