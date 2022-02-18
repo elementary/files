@@ -901,18 +901,18 @@ public class Files.File : GLib.Object {
         } else { // Always launch scripts etc in terminal so can see any output
             try {
                 var path = location.get_path ();
-                var command = "io.elementary.terminal";
-
-                app_info = GLib.AppInfo.create_from_commandline (
-                    Shell.quote (command), this.basename, GLib.AppInfoCreateFlags.SUPPORTS_URIS
+                var command = "io.elementary.terminal --working-directory=%s --execute=%s".printf (
+                    Shell.quote (FileUtils.get_parent_path_from_path (path)).replace ("file://", ""),
+                    Shell.quote (path)
                 );
 
-                context.setenv ("PWD", FileUtils.get_parent_path_from_path (path));
+                warning ("command is %s", command);
+                app_info = GLib.AppInfo.create_from_commandline (
+                    command, this.basename, GLib.AppInfoCreateFlags.SUPPORTS_URIS
+                );
 
-                List<string> uris = null;
-                uris.append ("--commandline=" + Shell.quote (path));
-                warning ("launching in terminal %s", uris.data);
-                app_info.launch_uris (uris, context);
+                context.setenv ("PWD", Shell.quote (FileUtils.get_parent_path_from_path (path)));
+                app_info.launch (null, context);
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
