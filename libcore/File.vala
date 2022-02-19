@@ -901,14 +901,15 @@ public class Files.File : GLib.Object {
         } else { // Always launch scripts etc in terminal so can see any output
             try {
                 var path = location.get_path ();
-                var command = "io.elementary.terminal --working-directory=%s --execute=%s".printf (
-                    Shell.quote (FileUtils.get_parent_path_from_path (path)).replace ("file://", ""),
-                    Shell.quote (path)
+                /* While io.elementary.terminal does not deal with spaces in the command (and removes escaping)
+                 * we have to double escape them */
+                var command = "io.elementary.terminal --working-directory=%s --commandline=%s".printf (
+                    FileUtils.get_parent_path_from_path (path).replace ("file://", "").replace (" ", "\\\\ "),
+                    path.replace (" ", "\\\\ ")
                 );
 
-                warning ("command is %s", command);
                 app_info = GLib.AppInfo.create_from_commandline (
-                    command, this.basename, GLib.AppInfoCreateFlags.SUPPORTS_URIS
+                    command, this.basename, GLib.AppInfoCreateFlags.NONE
                 );
 
                 context.setenv ("PWD", Shell.quote (FileUtils.get_parent_path_from_path (path)));
