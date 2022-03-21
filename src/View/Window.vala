@@ -390,14 +390,6 @@ namespace Files.View {
             save_tabs ();
         }
 
-        public Files.AbstractSlot? get_active_slot () {
-            if (current_tab != null) {
-                return current_tab.get_current_slot ();
-            } else {
-                return null;
-            }
-        }
-
         public new void set_title (string title) {
             this.title = title;
         }
