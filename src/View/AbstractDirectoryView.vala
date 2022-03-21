@@ -66,7 +66,8 @@ namespace Files {
             {"cut", on_selection_action_cut},
             {"trash", on_selection_action_trash},
             {"delete", on_selection_action_delete},
-            {"restore", on_selection_action_restore}
+            {"restore", on_selection_action_restore},
+            {"invert-selection", invert_selection}
         };
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
@@ -86,7 +87,8 @@ namespace Files {
             {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
-            {"copy-link", on_common_action_copy_link}
+            {"copy-link", on_common_action_copy_link},
+            {"select-all", toggle_select_all}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -282,7 +284,8 @@ namespace Files {
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
-
+            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
+            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
             thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
@@ -358,8 +361,16 @@ namespace Files {
             scroll_event.connect (on_scroll_event);
 
             get_vadjustment ().value_changed.connect_after (() => {
-                schedule_thumbnail_timeout ();
+                schedule_thumbnail_color_tag_timeout ();
             });
+
+            notify["renaming"].connect (() => {
+                // Suppress ability to scroll with the scrollbar while renaming
+                // No obvious way to disable it so just hide it
+                var vscroll_bar = get_vscrollbar ();
+                vscroll_bar.visible = !renaming;
+            });
+
 
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
@@ -1113,7 +1124,7 @@ namespace Files {
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
-            PF.FileUtils.restore_files_from_trash (selection, window);
+            FileUtils.restore_files_from_trash (selection, window);
 
         }
 
@@ -1149,7 +1160,7 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            window.bookmark_uri (location.get_uri (), null);
+            window.bookmark_uri (location.get_uri ());
         }
 
         /** Background actions */
@@ -1275,6 +1286,15 @@ namespace Files {
             }
         }
 
+        private void toggle_select_all () {
+            update_selected_files_and_menu ();
+            if (all_selected) {
+                unselect_all ();
+            } else {
+                select_all ();
+            }
+        }
+
         private void on_directory_file_added (Directory dir, Files.File? file) {
             if (file != null) {
                 add_file (file, dir, true); /* Always select files added to view after initial load */
@@ -1325,7 +1345,7 @@ namespace Files {
             remove_marlin_icon_info_cache (file);
 
             if (file.get_thumbnail_path () != null) {
-                PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+                FileUtils.remove_thumbnail_paths_for_uri (file.uri);
             }
 
             if (plugins != null) {
@@ -1364,7 +1384,7 @@ namespace Files {
 
             thaw_tree ();
 
-            schedule_thumbnail_timeout ();
+            schedule_thumbnail_color_tag_timeout ();
         }
 
     /** Handle zoom level change */
@@ -1374,7 +1394,7 @@ namespace Files {
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
-                schedule_thumbnail_timeout ();
+                schedule_thumbnail_color_tag_timeout ();
             }
 
             model.icon_size = icon_size;
@@ -1599,7 +1619,7 @@ namespace Files {
             if (info == Files.TargetType.TEXT_URI_LIST && destination_drop_file_list == null) {
                 string? text;
                 if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    destination_drop_file_list = PF.FileUtils.files_from_uris (text);
+                    destination_drop_file_list = FileUtils.files_from_uris (text);
                     destination_data_ready = true;
                 }
             }
@@ -1754,9 +1774,9 @@ namespace Files {
                         current_actions = current_suggested_action;
                     } else {
 
-                        current_actions = PF.FileUtils.file_accepts_drop (drop_target_file,
-                                                                      destination_drop_file_list, context,
-                                                                      out current_suggested_action);
+                        current_actions = FileUtils.file_accepts_drop (drop_target_file,
+                                                                       destination_drop_file_list, context,
+                                                                       out current_suggested_action);
                     }
 
                     highlight_drop_file (drop_target_file, current_actions, get_path_at_pos (x, y));
@@ -1846,15 +1866,36 @@ namespace Files {
 
             if (common_actions.get_action_enabled ("open-in")) {
                 var new_tab_menuitem = new Gtk.MenuItem ();
-                new_tab_menuitem.add (new Granite.AccelLabel (
-                    _("New Tab"),
-                    "<Shift>Return"
-                ));
-                new_tab_menuitem.action_name = "common.open-in";
+                if (selected_files != null) {
+                    new_tab_menuitem.add (new Granite.AccelLabel (
+                        _("New Tab"),
+                        "<Shift>Return"
+                    ));
+                    new_tab_menuitem.action_name = "common.open-in";
+                } else {
+                    new_tab_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("New Tab"),
+                        "win.tab::TAB"
+                    ));
+                    new_tab_menuitem.action_name = "win.tab";
+                }
+
                 new_tab_menuitem.action_target = "TAB";
 
-                var new_window_menuitem = new Gtk.MenuItem.with_label (_("New Window"));
-                new_window_menuitem.action_name = "common.open-in";
+                var new_window_menuitem = new Gtk.MenuItem ();
+                if (selected_files != null) {
+                    new_window_menuitem.add (new Granite.AccelLabel (
+                        _("New Window"),
+                        "<Shift><Ctrl>Return"
+                    ));
+                    new_window_menuitem.action_name = "common.open-in";
+                } else {
+                    new_window_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("New Window"),
+                        "win.tab::WINDOW"
+                    ));
+                    new_window_menuitem.action_name = "win.tab";
+                }
                 new_window_menuitem.action_target = "WINDOW";
 
                 open_submenu.add (new_tab_menuitem);
@@ -1968,7 +2009,38 @@ namespace Files {
             ));
             properties_menuitem.action_name = "common.properties";
 
-            if (get_selected_files () != null) {
+            Gtk.MenuItem? select_all_menuitem = null;
+            Gtk.MenuItem? deselect_all_menuitem = null;
+            Gtk.MenuItem? invert_selection_menuitem = null;
+            if (!all_selected) {
+                select_all_menuitem = new Gtk.MenuItem () {
+                    action_name = "common.select-all"
+                };
+                select_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+                    _("Select All"),
+                    select_all_menuitem.action_name
+                ));
+
+                if (get_selected_files () != null) {
+                    invert_selection_menuitem = new Gtk.MenuItem () {
+                        action_name = "selection.invert-selection"
+                    };
+                    invert_selection_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("Invert Selection"),
+                        invert_selection_menuitem.action_name
+                    ));
+                }
+            } else {
+                deselect_all_menuitem = new Gtk.MenuItem () {
+                    action_name = "common.select-all"
+                };
+                deselect_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+                    _("Deselect All"),
+                    deselect_all_menuitem.action_name
+                ));
+            }
+
+            if (get_selected_files () != null) { // Add selection actions
                 var cut_menuitem = new Gtk.MenuItem ();
                 cut_menuitem.add (new Granite.AccelLabel (
                     _("Cut"),
@@ -2006,6 +2078,18 @@ namespace Files {
                     menu.add (delete_menuitem);
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (cut_menuitem);
+                    if (select_all_menuitem != null) {
+                        menu.add (select_all_menuitem);
+                    }
+
+                    if (deselect_all_menuitem != null) {
+                        menu.add (deselect_all_menuitem);
+                    }
+
+                    if (invert_selection_menuitem != null) {
+                        menu.add (invert_selection_menuitem);
+                    }
+
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 } else if (in_recent) {
@@ -2019,6 +2103,18 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (forget_menuitem);
                     menu.add (copy_menuitem);
+                    if (select_all_menuitem != null) {
+                        menu.add (select_all_menuitem);
+                    }
+
+                    if (deselect_all_menuitem != null) {
+                        menu.add (deselect_all_menuitem);
+                    }
+
+                    if (invert_selection_menuitem != null) {
+                        menu.add (invert_selection_menuitem);
+                    }
+
                     menu.add (trash_menuitem);
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
@@ -2051,7 +2147,6 @@ namespace Files {
                         // Do not display the 'Paste into' menuitem if nothing to paste
                         if (common_actions.get_action_enabled ("paste-into") &&
                             clipboard != null && clipboard.can_paste) {
-
                             if (clipboard.files_linked) {
                                 paste_menuitem.label = _("Paste Link into Folder");
                             } else {
@@ -2061,8 +2156,19 @@ namespace Files {
                             menu.add (paste_menuitem);
                         }
 
-                        menu.add (new Gtk.SeparatorMenuItem ());
+                        if (select_all_menuitem != null) {
+                            menu.add (select_all_menuitem);
+                        }
 
+                        if (deselect_all_menuitem != null) {
+                            menu.add (deselect_all_menuitem);
+                        }
+
+                        if (invert_selection_menuitem != null) {
+                            menu.add (invert_selection_menuitem);
+                        }
+
+                        menu.add (new Gtk.SeparatorMenuItem ());
                         if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
                             menu.add (trash_menuitem);
                         } else {
@@ -2082,8 +2188,12 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 }
-            } else {
-                var show_hidden_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Hidden Files"));
+            } else { // Add background folder actions
+                var show_hidden_menuitem = new Gtk.CheckMenuItem ();
+                show_hidden_menuitem.add (new Granite.AccelLabel (
+                    _("Show Hidden Files"),
+                    "<Ctrl>h"
+                ));
                 show_hidden_menuitem.action_name = "background.show-hidden";
 
                 var show_remote_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Remote Thumbnails"));
@@ -2095,8 +2205,15 @@ namespace Files {
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
                         menu.add (paste_menuitem);
+                        if (select_all_menuitem != null) {
+                            menu.add (select_all_menuitem);
+                        }
                     }
                 } else if (in_recent) {
+                    if (select_all_menuitem != null) {
+                        menu.add (select_all_menuitem);
+                    }
+
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
@@ -2105,14 +2222,16 @@ namespace Files {
                 } else {
                     if (!in_network_root) {
                         menu.add (new Gtk.SeparatorMenuItem ());
-
                         /* If something is pastable in the clipboard, show the option even if it is not enabled */
                         if (clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
                                 paste_menuitem.label = _("Paste Link");
                             }
+                        }
 
-                            menu.add (paste_menuitem);
+                        menu.add (paste_menuitem);
+                        if (select_all_menuitem != null) {
+                            menu.add (select_all_menuitem);
                         }
 
                         if (is_writable) {
@@ -2343,6 +2462,7 @@ namespace Files {
             action_set_enabled (selection_actions, "cut", is_writable && is_selected);
             action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
             action_set_enabled (selection_actions, "delete", is_writable);
+            action_set_enabled (selection_actions, "invert-selection", is_selected);
             action_set_enabled (common_actions, "properties", can_show_properties);
             action_set_enabled (common_actions, "bookmark", can_bookmark);
             action_set_enabled (common_actions, "copy", !in_trash && can_copy);
@@ -2526,7 +2646,7 @@ namespace Files {
 
 
 /** Thumbnail and color tag handling */
-        private void schedule_thumbnail_timeout () {
+        private void schedule_thumbnail_color_tag_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
@@ -2536,8 +2656,6 @@ namespace Files {
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (thumbnail_source_id != 0 ||
-                (slot.directory.is_network && !show_remote_thumbnails) ||
-                (!slot.directory.is_network && hide_local_thumbnails) ||
                 !slot.directory.can_open_files ||
                 slot.directory.is_loading ()) {
 
@@ -2600,16 +2718,20 @@ namespace Files {
                         path = model.get_path (iter);
 
                         if (file != null && !file.is_gone) {
-                            file.query_thumbnail_update (); // Ensure thumbstate up to date
-                            /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                visible_files.prepend (file);
-                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                    actually_visible++;
+                            // Only update thumbnail if it is going to be shown
+                            if ((slot.directory.is_network && show_remote_thumbnails) ||
+                                (!slot.directory.is_network && !hide_local_thumbnails)) {
+
+                                file.query_thumbnail_update (); // Ensure thumbstate up to date
+                                /* Ask thumbnailer only if ThumbState UNKNOWN */
+                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                                    visible_files.prepend (file);
+                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                        actually_visible++;
+                                    }
                                 }
                             }
-
-                            /* This also ensures color-tag info is correct regardless of whether thumbnail is shown */
+                           /* In any case, ensure color-tag info is correct */
                             if (plugins != null) {
                                 plugins.update_file_info (file);
                             }
@@ -2892,6 +3014,8 @@ namespace Files {
                         activate_selected_items (Files.OpenFlag.DEFAULT);
                     } else if (only_shift_pressed) {
                         activate_selected_items (Files.OpenFlag.NEW_TAB);
+                    } else if (shift_pressed && control_pressed && !alt_pressed) {
+                        activate_selected_items (Files.OpenFlag.NEW_WINDOW);
                     } else if (only_alt_pressed) {
                         common_actions.activate_action ("properties", null);
                     } else if (no_mods) {
@@ -2947,29 +3071,6 @@ namespace Files {
                 case Gdk.Key.N:
                     if (control_pressed) {
                         new_empty_folder ();
-                        res = true;
-                    }
-
-                    break;
-
-                case Gdk.Key.a:
-                    if (control_pressed) {
-                        update_selected_files_and_menu (); /* Ensure all_selected correct */
-
-                        if (all_selected) {
-                            unselect_all ();
-                        } else {
-                            select_all ();
-                        }
-
-                        res = true;
-                    }
-
-                    break;
-
-                case Gdk.Key.A:
-                    if (control_pressed) {
-                        invert_selection ();
                         res = true;
                     }
 
@@ -3199,7 +3300,7 @@ namespace Files {
                 int start_offset= 0, end_offset = -1;
                 /* Select whole name if the file is a folder, otherwise do not select the extension */
                 if (!file.is_folder ()) {
-                    PF.FileUtils.get_rename_region (original_name, out start_offset, out end_offset, false);
+                    FileUtils.get_rename_region (original_name, out start_offset, out end_offset, false);
                 }
                 editable_widget.select_region (start_offset, end_offset);
             } else {
@@ -3269,7 +3370,7 @@ namespace Files {
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
             try {
-                return yield PF.FileUtils.set_file_display_name (old_location, new_name, cancellable);
+                return yield FileUtils.set_file_display_name (old_location, new_name, cancellable);
             } catch (GLib.Error e) {
                 throw e;
             }
@@ -3362,13 +3463,7 @@ namespace Files {
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
 
-            click_zone = get_event_position_info (event, out path, true);
-            /* certain positions fake a no path blank zone */
-            if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
-                unselect_path (path);
-                path = null;
-            }
-
+            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY); //Only rubberband with primary button
             click_path = path;
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -3380,84 +3475,73 @@ namespace Files {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-
+            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
              */
             block_drag_and_drop ();
 
-            /* Native Gtk behaviour for all clicks on empty space */
-            if (click_zone == ClickZone.BLANK_NO_PATH) {
-                return false;
-            }
-
-            /* Handle un-modified clicks or control-clicks here else pass on.
-             */
+            /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
                 return false;
             }
 
-            if (!path_selected && click_zone != ClickZone.HELPER) {
-                if (no_mods) {
-                    unselect_all ();
-                }
-                /* If modifier pressed then default handler determines selection */
-                if (no_mods && !on_blank) {
-                    select_path (path, true); /* Cursor follows */
-                }
-            }
-
             bool result = false; // default false so events get passed to Window
             should_activate = false;
+            should_deselect = false;
             should_scroll = true;
 
+            /* Handle all selection and deselection explicitly in the following switch statement */
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY: // button 1
-                    /* Control-click should deselect previously selected path on key release (unless
-                     * pointer moves)
-                     */
-                    should_deselect = only_control_pressed && path_selected;
-
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
+                        case ClickZone.INVALID:
+                            // Maintain existing selection by holding down modifier so we can multi-select
+                            // separate groups with rubberbanding.
+                            if (no_mods) {
+                                unselect_all ();
+                            }
+
                             break;
 
                         case ClickZone.BLANK_PATH:
                         case ClickZone.ICON:
                         case ClickZone.NAME:
-                            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+                            /* Control-click on selected item should deselect it on key release (unless
+                             * pointer moves) */
+                            should_deselect = only_control_pressed && path_selected;
                             /* determine whether should activate on key release (unless pointer moved)*/
-                            update_selected_files_and_menu ();
-                            should_activate = false;
-
                             if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
                                 should_activate = on_directory || double_click_event;
                             }
+
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
-                             * the item is unselected.
-                             */
-
+                             * the item is unselected. */
                             if (!no_mods || (on_blank && !path_selected)) {
-                                update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
+                                if (no_mods && !path_selected) {
+                                    unselect_all ();
+                                }
+
+                                select_path (path);
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
 
+                            update_selected_files_and_menu ();
                             break;
 
                         case ClickZone.HELPER:
-                            bool multi_select = only_control_pressed || only_shift_pressed;
-                            if (multi_select) { /* Treat like modified click on icon */
+                            if (only_control_pressed || only_shift_pressed) { /* Treat like modified click on icon */
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
                                     /* Don't deselect yet, may drag */
                                     should_deselect = true;
                                 } else {
-                                    should_deselect = false;
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
@@ -3468,12 +3552,8 @@ namespace Files {
 
                         case ClickZone.EXPANDER:
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
-                             * on xpad also expands/collapses row (accessibility)*/
+                             * on xpad also expands/collapses row (accessibility). */
                             result = expand_collapse (path);
-                            break;
-
-                        case ClickZone.INVALID:
-                            result = false; /* Allow rubberbanding */
                             break;
 
                         default:
@@ -3494,14 +3574,30 @@ namespace Files {
                     break;
 
                 case Gdk.BUTTON_SECONDARY: // button 3
-                    if (click_zone == ClickZone.NAME ||
-                        click_zone == ClickZone.BLANK_PATH ||
-                        click_zone == ClickZone.ICON ||
-                        click_zone == ClickZone.HELPER) {
+                    switch (click_zone) {
+                        case ClickZone.BLANK_NO_PATH:
+                        case ClickZone.INVALID:
+                            unselect_all ();
+                            break;
 
-                        select_path (path); /* Note: secondary click does not toggle selection */
-                    } else if (click_zone == ClickZone.INVALID) {
-                        unselect_all ();
+                        case ClickZone.BLANK_PATH:
+                            if (!path_selected && no_mods) {
+                                unselect_all (); // Show the background menu on unselected blank areas
+                            }
+
+                            break;
+
+                        case ClickZone.NAME:
+                        case ClickZone.ICON:
+                        case ClickZone.HELPER:
+                            if (!path_selected && no_mods) {
+                                unselect_all ();
+                            }
+                            select_path (path); /* Note: secondary click does not toggle selection */
+                            break;
+
+                        default:
+                            break;
                     }
 
                     /* Ensure selected files list and menu actions are updated before context menu shown */

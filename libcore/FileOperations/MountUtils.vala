@@ -17,7 +17,85 @@
  */
 
 namespace Files.FileOperations {
-    public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) throws GLib.Error {
+    public static async bool unmount_mount (Mount mount, Gtk.Window? parent) {
+        if (mount.can_unmount ()) {
+            var mount_op = new Gtk.MountOperation (parent);
+            try {
+                yield mount.unmount_with_operation (
+                        GLib.MountUnmountFlags.NONE,
+                        mount_op,
+                        null
+                );
+                return true;
+            } catch (GLib.Error e) {
+                PF.Dialogs.show_error_dialog (_("Unable to unmount '%s'").printf (mount.get_name ()),
+                                              e.message,
+                                              null);
+                return false;
+            }
+        } else {
+            return yield eject_mount (mount, parent);
+        }
+    }
+
+    public static async bool eject_mount (Mount mount, Gtk.Window? parent) {
+        if (mount.can_eject ()) {
+            var mount_op = new Gtk.MountOperation (parent);
+            try {
+                yield mount.eject_with_operation (
+                        GLib.MountUnmountFlags.NONE,
+                        mount_op,
+                        null
+                );
+                return true;
+            } catch (GLib.Error e) {
+                PF.Dialogs.show_error_dialog (_("Unable to eject '%s'").printf (mount.get_name ()),
+                                              e.message,
+                                              null);
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public static async void eject_drive (Drive drive, Gtk.Window? parent) {
+        // First unmount any mounted volumes
+        foreach (var vol in drive.get_volumes ()) {
+            var mount = vol.get_mount ();
+            if (mount != null && !yield unmount_mount (mount, parent)) {
+                return;
+            }
+        }
+
+        var mount_op = new Gtk.MountOperation (parent);
+        try {
+            yield drive.eject_with_operation (
+                GLib.MountUnmountFlags.NONE,
+                mount_op,
+                null
+            );
+        } catch (Error e) {
+            warning ("Unable to eject drive %s: %s", drive.get_name (), e.message);
+        }
+    }
+
+    public static async void safely_remove_drive (Drive drive, Gtk.Window? parent) {
+        yield eject_drive (drive, parent);
+
+        var mount_op = new Gtk.MountOperation (parent);
+        try {
+            yield drive.stop (
+                GLib.MountUnmountFlags.NONE,
+                mount_op,
+                null
+            );
+        } catch (Error e) {
+            warning ("Unable to stop drive %s: %s", drive.get_name (), e.message);
+        }
+    }
+
+    public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) {
         var mount_operation = new Gtk.MountOperation (parent_window);
         mount_operation.password_save = GLib.PasswordSave.FOR_SESSION;
         try {
@@ -26,7 +104,7 @@ namespace Files.FileOperations {
             PF.Dialogs.show_error_dialog (_("Unable to mount '%s'").printf (volume.get_name ()),
                                           e.message,
                                           null);
-            throw e;
+            return false;
         }
 
         return true;
@@ -44,6 +122,19 @@ namespace Files.FileOperations {
         var dirs = get_trash_dirs_for_mount (mount);
         foreach (unowned GLib.File dir in dirs) {
             if (dir_has_files (dir)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static bool mount_has_trash (Mount mount) {
+        var root = mount.get_root ();
+        if (root.is_native ()) {
+            var uid = (int)Posix.getuid ();
+            if (root.resolve_relative_path ((".Trash/%d").printf (uid)) != null ||
+                root.resolve_relative_path ((".Trash-%d").printf (uid)) != null) {
                 return true;
             }
         }

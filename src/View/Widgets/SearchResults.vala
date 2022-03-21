@@ -18,6 +18,7 @@
 
 namespace Files.View.Chrome {
     public class SearchResults : Gtk.Window, Searchable {
+        private const string ELLIPSIS_NAME = "ELLIPSIS";
         /* The order of these categories governs the order in which matches appear in the search view.
          * The category represents a first level sort.  Within a category the matches sort alphabetically on name */
         private enum Category {
@@ -67,15 +68,21 @@ namespace Files.View.Chrome {
                         path_string: path_string,
                         file: parent.resolve_relative_path (info.get_name ()),
                         sortkey: category.to_string () + _name);
+
             }
 
             public Match.from_bookmark (Bookmark bookmark, SearchResults.Category category) {
-                Object (name: Markup.escape_text (bookmark.label),
+                var _name = bookmark.custom_name != "" && bookmark.custom_name != bookmark.basename ?
+                    _("%s (%s)").printf (bookmark.custom_name, bookmark.basename) :
+                    bookmark.basename;
+                Object (
+                        name: Markup.escape_text (_name),
                         mime: "inode/directory",
                         icon: bookmark.get_icon (),
                         path_string: "",
                         file: bookmark.get_location (),
-                        sortkey: category.to_string () + bookmark.label);
+                        sortkey: category.to_string () + _name
+                );
             }
 
             public Match.ellipsis (SearchResults.Category category) {
@@ -84,7 +91,7 @@ namespace Files.View.Chrome {
                         icon: null,
                         path_string: "",
                         file: null,
-                        sortkey: category.to_string () + "ELLIPSIS");
+                        sortkey: category.to_string () + ELLIPSIS_NAME);
             }
         }
 
@@ -400,7 +407,7 @@ namespace Files.View.Chrome {
             var bookmarks_matched = new Gee.LinkedList<Match> ();
             var begins_with = false;
             foreach (var bookmark in BookmarkList.get_instance ().list) {
-                if (term_matches (search_term, bookmark.label, out begins_with)) {
+                if (term_matches (search_term, bookmark.basename + bookmark.custom_name, out begins_with)) {
                     var category = begins_with ? Category.BOOKMARK_BEGINS : Category.BOOKMARK_CONTAINS;
                     bookmarks_matched.add (new Match.from_bookmark (bookmark, category));
                 }
@@ -442,12 +449,14 @@ namespace Files.View.Chrome {
             Gtk.TreeIter iter;
 
             view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
-
-            if (path != null) {
+            if (path != null && path.get_depth () > 1) {
                 filter.get_iter (out iter, path);
                 filter.convert_iter_to_child_iter (out iter, iter);
                 accept (iter, e.button > 1); /* This will call cancel () */
+            } else {
+                Gdk.beep ();
             }
+
             return true;
         }
 
@@ -476,7 +485,7 @@ namespace Files.View.Chrome {
                            event.keyval == Gdk.Key.KP_Enter ||
                            event.keyval == Gdk.Key.ISO_Enter) {
 
-                    accept (null, true);
+                    accept (null, true); // Open the selected file in default app
                 } else {
                     return parent.key_press_event (event);
                 }
@@ -486,7 +495,7 @@ namespace Files.View.Chrome {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
-                    accept ();
+                    accept (null, false); // Navigate to the selected file
                     return true;
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
@@ -541,7 +550,6 @@ namespace Files.View.Chrome {
         }
 
         void select_last () {
-            File file;
             Gtk.TreeIter iter;
 
             list.iter_nth_child (out iter, null, filter.iter_n_children (null) - 1);
@@ -552,36 +560,25 @@ namespace Files.View.Chrome {
                 }
 
                 list.iter_nth_child (out iter, iter, list.iter_n_children (iter) - 1);
-                list.@get (iter, 3, out file);
-
-                /* catch the case when we land on an ellipsis */
-                if (file == null) {
-                    list.iter_previous (ref iter);
-                }
 
                 select_iter (iter);
                 break;
             } while (list.iter_previous (ref iter));
         }
 
+        // Assume that each category only contains valid file entries and maybe an ellipsis
         void select_adjacent (bool up) {
-            File? file = null;
             Gtk.TreeIter iter, parent;
             get_iter_at_cursor (out iter);
-
-            var valid = up ? list.iter_previous (ref iter) : list.iter_next (ref iter);
-
-            if (valid) {
-                list.@get (iter, 3, out file);
-                if (file != null) {
-                    select_iter (iter);
-                    return;
-                }
+            // If another child in same category adjacent then select it
+            if (up ? list.iter_previous (ref iter) : list.iter_next (ref iter)) {
+                select_iter (iter);
+                return;
             }
-
+            // Go back to last currently selected iter
             get_iter_at_cursor (out iter);
+            // Find next/previous category with matches, with wrap around
             list.iter_parent (out parent, iter);
-
             do {
                 if (up ? !list.iter_previous (ref parent) : !list.iter_next (ref parent)) {
                     if (up) {
@@ -594,17 +591,10 @@ namespace Files.View.Chrome {
                 }
             } while (!list.iter_has_child (parent));
 
+            // Get first/last child
             list.iter_nth_child (out iter, parent, up ? list.iter_n_children (parent) - 1 : 0);
-
-            /* make sure we haven't hit an ellipsis */
-            if (up) {
-                list.@get (iter, 3, out file);
-                if (file == null) {
-                    list.iter_previous (ref iter);
-                }
-            }
-
             select_iter (iter);
+            return;
         }
 
         bool list_empty () {
@@ -697,7 +687,6 @@ namespace Files.View.Chrome {
             iter = Gtk.TreeIter ();
 
             view.get_cursor (out path, null);
-
             if (path == null || !filter.get_iter (out filter_iter, path)) {
                 return false;
             }
@@ -708,7 +697,6 @@ namespace Files.View.Chrome {
 
         void select_iter (Gtk.TreeIter iter) {
             filter.convert_child_iter_to_iter (out iter, iter);
-
             var path = filter.get_path (iter);
             view.set_cursor (path, null, false);
         }
@@ -849,46 +837,32 @@ namespace Files.View.Chrome {
             }
         }
 
-        void accept (Gtk.TreeIter? accepted = null, bool activate = false) {
-            if (list_empty ()) {
-                Gdk.beep ();
-                return;
-            }
-
-            bool valid_iter = true ;
-            if (accepted == null) {
-                valid_iter = get_iter_at_cursor (out accepted);
-            }
-
-            if (!valid_iter) {
+        void accept (Gtk.TreeIter? accepted, bool activate) {
+            if (accepted == null && !get_iter_at_cursor (out accepted)) {
                 Gdk.beep ();
                 return;
             }
 
             GLib.File? file = null;
             string sortkey = "";
-            /* It is important that the next line is not put into an if clause.
-             * For reasons unknown, doing so causes a segmentation fault on some systems but not
-             * others.  Any changes to the format and content of the accept () function should be
-             * carefully checked for stability on a range of systems which differ in architecture,
-             * speed and configuration.
-             */
-
-
+            // Check whether file match or ellipsis activated
             list.@get (accepted, 3, out file);
             list.@get (accepted, 5, out sortkey);
             if (file == null) {
-                if (sortkey.contains ("ELLIPSIS")) {
+                if (sortkey.has_suffix (ELLIPSIS_NAME)) {
                     max_results += MAX_RESULTS;
                     max_depth += 1;
                     search (search_term, current_root);
                 } else {
+                    critical ("Search match with no associated file and not an ellipsis");
                     Gdk.beep ();
                 }
+
                 return;
             }
 
             cancel ();
+
             if (activate) {
                 file_activated (file);
             } else {

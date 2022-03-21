@@ -20,42 +20,48 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, SidebarItemInterface {
-    protected static Gtk.CssProvider devicerow_provider;
+// Used to determine first level sort order.
+public enum MountableType {
+    VOLUMELESS_MOUNT,
+    VOLUME,
+    EMPTY_DRIVE
+}
 
-    protected Gtk.Stack mount_eject_stack;
-    protected Gtk.Revealer mount_eject_revealer;
-    protected Gtk.Spinner mount_eject_spinner;
-    protected Gtk.Button eject_button;
+public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, SidebarItemInterface {
+    private double storage_capacity = 0;
+    private double storage_free = 0;
+    public string sort_key { get; set construct; default = "";} // Higher index -> further down list
+
+    protected static Gtk.CssProvider devicerow_provider;
+    protected static VolumeMonitor volume_monitor;
+
+    private Gtk.Stack unmount_eject_working_stack;
+    private Gtk.Revealer unmount_eject_revealer;
+    private Gtk.Spinner working_spinner;
+    private Gtk.Button unmount_eject_button;
+    private Gtk.LevelBar storage_levelbar;
+
+    public Mount? mount { get; set construct; default = null; }
+    public Drive? drive { get; construct; default = null; }
 
     protected bool valid = true;
     public string? uuid { get; set construct; }
-    public Drive? drive { get; set construct; }
-    public Volume? volume { get; set construct; }
-    public Mount? mount { get; set construct; }
 
-    protected bool _mounted = false;
-    public bool mounted {
+    public virtual bool is_mounted {
         get {
-            return _mounted;
-        }
-
-        set {
-            _mounted = value;
-            can_eject = _mounted && (mount.can_unmount () || mount.can_eject ());
-            mount_eject_revealer.reveal_child = _mounted && _can_eject;
+            return mount != null;
         }
     }
 
-    protected bool _can_eject = false;
-    public bool can_eject {
+    public virtual bool can_unmount {
         get {
-            return _can_eject;
+            return is_mounted && mount.can_unmount ();
         }
+    }
 
-        set {
-            _can_eject = !permanent && value;
-             mount_eject_revealer.reveal_child = _can_eject && _mounted;
+    public virtual bool can_eject {
+        get {
+            return is_mounted && mount.can_eject ();
         }
     }
 
@@ -73,18 +79,18 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             _working = value;
 
             if (value) {
-                mount_eject_spinner.start ();
-                mount_eject_stack.visible_child = mount_eject_spinner;
+                working_spinner.start ();
+                unmount_eject_working_stack.visible_child = working_spinner;
             } else {
-                mount_eject_stack.visible_child = eject_button;
-                mount_eject_spinner.stop ();
+                unmount_eject_working_stack.visible_child = unmount_eject_revealer;
+                working_spinner.stop ();
             }
         }
     }
 
     protected AbstractMountableRow (string name, string uri, Icon gicon, SidebarListInterface list,
                          bool pinned, bool permanent,
-                         string? _uuid, Drive? drive, Volume? volume, Mount? mount) {
+                         string? _uuid) {
         Object (
             custom_name: name,
             uri: uri,
@@ -92,68 +98,81 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             list: list,
             pinned: pinned,
             permanent: permanent,
-            uuid: _uuid,
-            drive: drive,
-            volume: volume,
-            mount: mount
+            uuid: _uuid
         );
-
-        if (mount != null) {
-            mounted = true;
-        } else if (volume != null) {
-            mounted = volume.get_mount () != null;
-        } else if (drive != null) {
-            //TODO Make drive entries an expandable item?
-            mounted = true;
-            can_eject = drive.can_eject () || drive.can_stop ();
-        }
     }
 
     static construct {
+        volume_monitor = VolumeMonitor.@get ();
         devicerow_provider = new Gtk.CssProvider ();
         devicerow_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
     }
 
     construct {
-        eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
-            tooltip_text = _("Eject '%s'").printf (custom_name)
+        unmount_eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+            tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
         };
-        eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        mount_eject_spinner = new Gtk.Spinner ();
+        unmount_eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        mount_eject_stack = new Gtk.Stack () {
+        working_spinner = new Gtk.Spinner ();
+
+        unmount_eject_revealer = new Gtk.Revealer () {
+            transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
+            valign = Gtk.Align.CENTER,
+            reveal_child = false
+        };
+
+        unmount_eject_revealer.add (unmount_eject_button);
+
+        unmount_eject_working_stack = new Gtk.Stack () {
             margin_start = 6,
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
 
-        mount_eject_stack.add (eject_button);
-        mount_eject_stack.add (mount_eject_spinner);
+        unmount_eject_working_stack.add (unmount_eject_revealer);
+        unmount_eject_working_stack.add (working_spinner);
 
-        mount_eject_revealer = new Gtk.Revealer () {
-            transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
-            valign = Gtk.Align.CENTER
+        content_grid.attach (unmount_eject_working_stack, 1, 0);
+
+        storage_levelbar = new Gtk.LevelBar () {
+            value = 0.5,
+            hexpand = true,
+            no_show_all = true
         };
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
 
-        mount_eject_revealer.add (mount_eject_stack);
-        mount_eject_revealer.reveal_child = false;
+        unowned var storage_style_context = storage_levelbar.get_style_context ();
+        storage_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
+        storage_style_context.add_class ("inverted");
+        storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        content_grid.attach (mount_eject_revealer, 1, 0);
+        icon_label_grid.attach (storage_levelbar, 1, 1);
 
-        working = false;
+        volume_monitor.mount_removed.connect (on_mount_removed);
+        volume_monitor.mount_added.connect (on_mount_added);
+        unmount_eject_button.clicked.connect (() => {
+            if (can_eject) {
+                eject_mount.begin ();
+            } else {
+                unmount_mount.begin ();
+            }
+        });
+
         show_all ();
-
-        var volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.volume_removed.connect (volume_removed);
-        volume_monitor.mount_removed.connect (mount_removed);
-        volume_monitor.mount_added.connect (mount_added);
-        volume_monitor.drive_disconnected.connect (drive_removed);
 
         add_mountable_tooltip.begin ();
 
-        eject_button.clicked.connect (() => {
-            eject ();
-        });
+        update_visibilities ();
+    }
+
+    protected void update_visibilities () {
+        unmount_eject_button.tooltip_text =
+            (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name);
+        unmount_eject_revealer.reveal_child = can_unmount;
+        storage_levelbar.visible = is_mounted;
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -161,220 +180,62 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working = item.show_spinner;
     }
 
-    protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-        if (working) {
-            return;
+    protected async bool unmount_mount () {
+        if (working || !valid || permanent) {
+            return false;
         }
 
-        if (mounted || permanent) { //Permanent devices are always accessible
-            list.open_item (this, flag);
-            return;
-        }
-
-        if (volume != null) {
-            working = true;
-            volume.mount.begin (
-                GLib.MountMountFlags.NONE,
-                new Gtk.MountOperation (Files.get_active_window ()),
-                null,
-                (obj, res) => {
-                    try {
-                        volume.mount.end (res);
-                        mount = volume.get_mount ();
-                        if (mount != null) {
-                            mounted = true;
-                            uri = mount.get_default_location ().get_uri ();
-                            if (volume.get_uuid () == null) {
-                                uuid = uri;
-                            }
-
-                            list.open_item (this, flag);
-                        }
-                    } catch (GLib.Error error) {
-                        var primary = _("Error mounting volume '%s'").printf (volume.get_name ());
-                        PF.Dialogs.show_error_dialog (primary, error.message, Files.get_active_window ());
-                    } finally {
-                        working = false;
-                        add_mountable_tooltip.begin ();
-                    }
-                }
-            );
-        } else if (drive != null && (drive.can_start () || drive.can_start_degraded ())) {
-            working = true;
-            drive.start.begin (
-               DriveStartFlags.NONE,
-               new Gtk.MountOperation (null),
-               null,
-               (obj, res) => {
-                    try {
-                        if (drive.start.end (res)) {
-                            mounted = true;
-                        }
-                    } catch (Error e) {
-                            var primary = _("Unable to start '%s'").printf (drive.get_name ());
-                            PF.Dialogs.show_error_dialog (primary, e.message, Files.get_active_window ());
-                    } finally {
-                        working = false;
-                        add_mountable_tooltip.begin ();
-                    }
-                }
-            );
-        }
+        working = true;
+        var success = yield Files.FileOperations.unmount_mount (mount, Files.get_active_window ());
+        working = false;
+        update_visibilities ();
+        return success;
     }
 
-    private void eject () {
+    protected async bool eject_mount () {
+        if (working || !valid || permanent) {
+            return false;
+        }
+
+        working = true;
+        var success = yield Files.FileOperations.eject_mount (mount, Files.get_active_window ());
+        working = false;
+        update_visibilities ();
+        return success;
+    }
+
+    protected async void safely_remove_drive (Drive drive) {
         if (working || !valid) {
             return;
         }
 
-        var mount_op = new Gtk.MountOperation (Files.get_active_window ());
-        if (!permanent && mounted && mount != null) {
-            if (mount.can_eject ()) {
-                working = true;
-                mount.eject_with_operation.begin (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null,
-                    (obj, res) => {
-                        try {
-                            if (mount != null) {
-                                mount.eject_with_operation.end (res);
-                            }
-                        } catch (GLib.Error error) {
-                            warning ("Error ejecting mount '%s': %s", mount.get_name (), error.message);
-                        } finally {
-                            working = false;
-                        }
-                    }
-                );
-
-                return;
-            } else if (mount.can_unmount ()) {
-                working = true;
-                mount.unmount_with_operation.begin (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null,
-                    (obj, res) => {
-                        try {
-                            if (mount != null) {
-                                mount.unmount_with_operation.end (res);
-                            }
-                        } catch (GLib.Error error) {
-                            warning ("Error while unmounting mount '%s': %s", mount.get_name (), error.message);
-                        } finally {
-                            working = false;
-                        }
-                    }
-                );
-            }
-        } else if (drive != null && (drive.can_eject () || drive.can_stop ())) {
-            working = true;
-            if (drive.can_stop ()) {
-                drive.stop.begin (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null,
-                    (obj, res) => {
-                        try {
-                            if (drive != null) {
-                                drive.stop.end (res);
-                            }
-                        } catch (Error e) {
-                            warning ("Could not stop drive '%s': %s", drive.get_name (), e.message);
-                        } finally {
-                            working = false;
-                        }
-                    }
-                );
-            } else if (drive.can_eject ()) {
-                drive.eject_with_operation.begin (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null,
-                    (obj, res) => {
-                        try {
-                            if (drive != null) {
-                                drive.eject_with_operation.end (res);
-                            }
-                        } catch (Error e) {
-                            warning ("Could not eject drive '%s': %s", drive.get_name (), e.message);
-                        } finally {
-                            working = false;
-                        }
-                    }
-                );
-            }
-        }
-    }
-
-    private void drive_removed (Drive removed_drive) {
-        if (!valid) { //Already removed
-            return;
-        }
-
-        if (drive == removed_drive) {
-            valid = false;
-            list.remove_item_by_id (id);
-        }
-    }
-
-    private void volume_removed (Volume removed_volume) {
-        if (!valid) { //Already removed
-            return;
-        }
-
-        if (volume == removed_volume) {
-            valid = false;
-            list.remove_item_by_id (id);
-        }
-    }
-
-    /* This handler gets spammed by the monitor! */
-    private void mount_removed (Mount removed_mount) {
-        if (!valid || mount == null || !mounted) { //Already removed or unmounted
-            return;
-        }
-
-        if (mount == removed_mount) {
-            if (drive == null && volume == null) { // e.g. network mounts
-                valid = false;
-                list.remove_item_by_id (id);
-            } else {
-                mounted = false;
-                mount = null;
-            }
-        }
-    }
-
-    /* This gets spammed by VolumeMonitor! */
-    private void mount_added (Mount added_mount) {
-        if (working || permanent || volume == null) {
-            return;
-        }
+        debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
+            drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
+            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
 
         working = true;
-        var added_volume = added_mount.get_volume ();
-
-        //Check added mount and volume agains this row's mount and volume details
-        if ((added_volume == null || volume == null || volume.get_name () == added_volume.get_name ()) &&
-            (mount == null || mount.get_name () == added_mount.get_name ())) {
-
-            //Details match
-            mount = added_mount;
-            // If mount is from an auto-mounted volume (e.g. USB stick) we need to set the uri correctly
-            if (uri == "") {
-                uri = mount.get_default_location ().get_uri ();
-            }
-            mounted = true;
-        }
-
-
+        yield Files.FileOperations.safely_remove_drive (drive, Files.get_active_window ());
         working = false;
+        update_visibilities ();
     }
 
-    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-        if (mount != null && mounted) {
+    protected async void eject_drive (Drive drive) {
+        if (working || !valid) {
+            return;
+        }
+        working = true;
+        yield Files.FileOperations.eject_drive (drive, Files.get_active_window ());
+        working = false;
+        update_visibilities ();
+    }
+
+    protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
+        // Do not add items for a volume that is in the middle of being mounted or unmounted
+        if (working) {
+            return;
+        }
+
+        if (mount != null) {
             if (Files.FileOperations.has_trash_files (mount)) {
                 menu_builder
                     .add_separator ()
@@ -385,50 +246,105 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_unmount (() => {eject ();});
-            } else if (mount.can_eject ()) {
-                menu_builder.add_eject (() => {eject ();});
+                menu_builder.add_unmount (() => {unmount_mount.begin ();});
             }
         }
 
         menu_builder
             .add_separator ()
-            .add_drive_property (() => {show_mount_info ();});
+            .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
     }
 
-    private void show_mount_info () {
-        if (!mounted && volume != null) {
-            /* Mount the device if possible, defer showing the dialog after
-             * we're done */
-            working = true;
-            Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
-                try {
-                    mounted = Files.FileOperations.mount_volume_full.end (res);
-                } catch (Error e) {
-                    mounted = false;
-                    mount = null;
-                } finally {
-                    working = false;
-                }
+    protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
+        storage_capacity = 0;
+        storage_free = 0;
 
-                if (mounted) {
-                    new Files.View.VolumePropertiesWindow (
-                        volume.get_mount (),
-                        Files.get_active_window ()
-                    );
-                }
-            });
-        } else if ((mount != null && mounted) || uri == Files.ROOT_FS_URI) {
-            new Files.View.VolumePropertiesWindow (
-                mount,
-                Files.get_active_window ()
-            );
+        string scheme = Uri.parse_scheme (uri);
+        if (scheme == null || "sftp davs".contains (scheme)) {
+            return false; /* Cannot get info from these protocols */
+        }
+
+        if ("smb afp".contains (scheme)) {
+            /* Check network is functional */
+            var net_mon = GLib.NetworkMonitor.get_default ();
+            if (!net_mon.get_network_available ()) {
+                return false;
+            }
+        }
+
+        GLib.FileInfo info;
+        try {
+            info = yield root.query_filesystem_info_async ("filesystem::*", 0, update_cancellable);
+        }
+        catch (GLib.Error error) {
+            if (!(error is IOError.CANCELLED)) {
+                warning ("Error querying filesystem info for '%s': %s", root.get_uri (), error.message);
+            }
+
+            info = null;
+        }
+
+        if (update_cancellable.is_cancelled () || info == null) {
+            return false;
+        } else {
+            if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE)) {
+                storage_capacity = (double)(info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE));
+            }
+            if (info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+                storage_free = (double)(info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE));
+            }
+
+            return true;
         }
     }
 
-    protected virtual async void add_mountable_tooltip () {
-        set_tooltip_markup (PF.FileUtils.sanitize_path (uri, null, false));
+    protected async string get_storage_text () {
+        string storage_text = "";
+        storage_capacity = 0;
+
+        if (yield get_filesystem_space (null)) {
+            if (storage_capacity > 0) {
+                var used_string = _("%s free").printf (format_size ((uint64)storage_free));
+                var size_string = _("%s used of %s").printf (
+                    format_size ((uint64)(storage_capacity - storage_free)),
+                    format_size ((uint64)storage_capacity)
+                );
+
+                storage_text = "\n%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>"
+                    .printf (used_string, size_string);
+
+                storage_levelbar.@value = (storage_capacity - storage_free) / storage_capacity;
+                storage_levelbar.show ();
+            }
+        }
+
+        if (storage_capacity == 0) {
+            storage_levelbar.hide ();
+        }
+
+        return storage_text;
     }
 
-    public virtual void update_free_space () {}
+    public virtual void update_free_space () {
+        add_mountable_tooltip.begin ();
+    }
+
+    protected virtual async void add_mountable_tooltip () {
+        string storage_text = yield get_storage_text ();
+        string mount_text;
+        if (uri != "") {
+            mount_text = Files.FileUtils.sanitize_path (uri, null, false);
+        } else {
+            mount_text = _("%s (%s)").printf (custom_name, _("Not mounted"));
+        }
+
+        set_tooltip_markup (mount_text + storage_text);
+    }
+
+    protected virtual void on_mount_removed (Mount removed_mount) {}
+    protected virtual void on_mount_added (Mount added_mount) {}
+    protected virtual void show_mount_info () {}
+    protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
+        return false;
+    }
 }

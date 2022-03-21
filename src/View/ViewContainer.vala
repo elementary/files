@@ -209,8 +209,8 @@ namespace Files.View {
             if (view.directory.has_parent ()) { /* May not work for some protocols */
                 parent = view.directory.get_parent ();
             } else {
-                var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
-                parent = PF.FileUtils.get_file_for_path (parent_path);
+                var parent_path = FileUtils.get_parent_path_from_path (location.get_uri ());
+                parent = FileUtils.get_file_for_path (parent_path);
             }
 
             /* Certain parents such as ftp:// will be returned as null as they are not browsable */
@@ -358,7 +358,7 @@ namespace Files.View {
 
             if (slot_path != null) {
                 string protocol, path;
-                PF.FileUtils.split_protocol_from_path (slot_path, out protocol, out path);
+                FileUtils.split_protocol_from_path (slot_path, out protocol, out path);
                 if (path == "" || path == Path.DIR_SEPARATOR_S) {
                     tab_name = Files.protocol_to_name (protocol);
                 } else if (protocol == "" && path == Environment.get_home_dir ()) {
@@ -492,7 +492,7 @@ namespace Files.View {
             }
 
             /* Using file_a.equal (file_b) can fail to detect equivalent locations */
-            if (!(view is Miller) && PF.FileUtils.same_location (uri, loc.get_uri ())) {
+            if (!(view is Miller) && FileUtils.same_location (uri, loc.get_uri ())) {
                 return;
             }
 

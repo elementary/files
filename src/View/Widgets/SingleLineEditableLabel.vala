@@ -27,6 +27,8 @@ namespace Files {
 
         public override Gtk.Widget create_editable_widget () {
             textview = new Gtk.Entry ();
+            /* Block propagation of button press event as this would cause renaming to end */
+            textview.button_press_event.connect_after (() => { return true; });
             return textview as Gtk.Widget;
         }
 

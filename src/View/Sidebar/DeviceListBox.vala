@@ -34,19 +34,9 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     construct {
         hexpand = true;
         volume_monitor = VolumeMonitor.@get ();
-        volume_monitor.mount_added.connect_after ((mount) => {
-            /* This delay is needed to ensure that any corresponding volume row has finished updating after
-             * mounting as a result of activating the row. Otherwise may get duplicate mount row e.g. for some MTP or
-             * PTP mounts where the mount name differs from the volume name and get_uuid () yields null.
-            */
-            Timeout.add (100, () => {
-                bookmark_mount_if_not_shadowed (mount);
-                return Source.REMOVE;
-            });
-        });
-
-        volume_monitor.volume_added.connect (refresh);
-        volume_monitor.drive_connected.connect (refresh);
+        volume_monitor.drive_connected.connect (bookmark_drive);
+        volume_monitor.mount_added.connect (bookmark_mount_without_volume);
+        volume_monitor.volume_added.connect (bookmark_volume);
 
         row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
@@ -58,9 +48,18 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 select_item ((SidebarItemInterface) row);
             }
         });
+
+        set_sort_func (device_sort_func);
     }
 
-    private DeviceRow? add_bookmark (string label, string uri, Icon gicon,
+    private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
+        var key1 = (row1 != null && (row1 is AbstractMountableRow)) ? ((AbstractMountableRow)row1).sort_key : "";
+        var key2 = (row2 != null && (row2 is AbstractMountableRow)) ? ((AbstractMountableRow)row2).sort_key : "";
+
+        return strcmp (key1, key2);
+    }
+
+    private AbstractMountableRow add_bookmark (string label, string uri, Icon gicon,
                                     string? uuid = null,
                                     Drive? drive = null,
                                     Volume? volume = null,
@@ -68,28 +67,53 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                                     bool pinned = true,
                                     bool permanent = false) {
 
-        DeviceRow? bm = has_uuid (uuid, uri);
-
-        if (bm == null) {
-            var new_bm = new DeviceRow (
-                label,
-                uri,
-                gicon,
-                this,
-                pinned, // Pin all device rows for now
-                permanent || (bm != null && bm.permanent), //Ensure bind mount matches permanence of uuid
-                uuid != null ? uuid : uri, //uuid fallsback to uri
-                drive,
-                volume,
-                mount
-            );
+        AbstractMountableRow? bm = null; // Existing bookmark with same uuid
+        if (!has_uuid (uuid, uri, out bm) || bm.custom_name != label) { //Could be a bind mount with the same uuid
+            AbstractMountableRow new_bm;
+            if (drive != null && volume == null) {
+                new_bm = new DriveRow (
+                    label,
+                    uri,
+                    gicon,
+                    this,
+                    pinned, // Pin all device rows for now
+                    permanent || (bm != null && bm.permanent), //Ensure bind mount matches permanence of uuid
+                    uuid != null ? uuid : uri, //uuid fallsback to uri
+                    drive
+                );
+            } else if (volume == null ) {
+                new_bm = new VolumelessMountRow (
+                    label,
+                    uri,
+                    gicon,
+                    this,
+                    pinned, // Pin all device rows for now
+                    permanent || (bm != null && bm.permanent), //Ensure bind mount matches permanence of uuid
+                    uuid != null ? uuid : uri, //uuid fallsback to uri
+                    mount
+                );
+            } else {
+                new_bm = new VolumeRow (
+                    label,
+                    uri,
+                    gicon,
+                    this,
+                    pinned, // Pin all device rows for now
+                    permanent || (bm != null && bm.permanent), //Ensure bind mount matches permanence of uuid
+                    uuid != null ? uuid : uri, //uuid fallsback to uri
+                    volume
+                );
+            }
 
             add (new_bm);
 
-            return new_bm;
+            show_all ();
+            bm = new_bm;
+            bm.update_free_space ();
         }
 
-        return bm;
+        assert (bm != null);
+        return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
     public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
@@ -110,10 +134,9 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     public void refresh () {
         clear ();
 
-        SidebarItemInterface? row;
         var root_uri = _(Files.ROOT_FS_URI);
         if (root_uri != "") {
-            row = add_bookmark (
+            var row = add_bookmark (
                 _("File System"),
                 root_uri,
                 new ThemedIcon.with_default_fallbacks (Files.ICON_FILESYSTEM),
@@ -130,87 +153,62 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             );
         }
 
-        foreach (unowned GLib.Drive drive in volume_monitor.get_connected_drives ()) {
-            bookmark_stoppable_or_removeable_drive_if_without_volumes (drive);
-        } // Add drives not otherwise bookmarked
+        foreach (var volume in volume_monitor.get_volumes ()) {
+            bookmark_volume (volume);
+        }
 
-        foreach (unowned Volume volume in volume_monitor.get_volumes ()) {
-            bookmark_volume_if_without_mount (volume);
-        } // Add volumes not otherwise bookmarked
+        foreach (var drive in volume_monitor.get_connected_drives ()) {
+            bookmark_drive (drive);
+        }
 
-        foreach (unowned Mount mount in volume_monitor.get_mounts ()) {
-            bookmark_mount_if_not_shadowed (mount);
-        } // Bookmark all native mount points ();
+        foreach (var mount in volume_monitor.get_mounts ()) {
+            bookmark_mount_without_volume (mount);
+        }
     }
 
     public override void refresh_info () {
         get_children ().@foreach ((item) => {
-            if (item is DeviceRow) {
-                ((DeviceRow)item).update_free_space ();
+            if (item is AbstractMountableRow) {
+                ((AbstractMountableRow)item).update_free_space ();
             }
         });
     }
 
-    private void bookmark_stoppable_or_removeable_drive_if_without_volumes (Drive drive) {
-        /* If the drive has no mountable volumes and we cannot detect media change.. we
-         * display the drive in the sidebar so the user can manually poll the drive by
-         * right clicking and selecting "Rescan..."
-         *
-         * This is mainly for drives like floppies where media detection doesn't
-         * work.. but it's also for human beings who like to turn off media detection
-         * in the OS to save battery juice.
-         */
-
-        if (drive.get_volumes () == null &&
-            drive.can_stop () || (drive.is_media_removable () && !drive.is_media_check_automatic ())) {
-            add_bookmark (
-                drive.get_name (),
-                drive.get_name (),
-                drive.get_icon (),
-                drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
-                drive,
-                null,
-                null
-            );
-        }
+    private void bookmark_drive (Drive drive) {
+        // Bookmark all drives but only those that do not have a volume (unformatted or no media) are shown.
+        add_bookmark (
+            drive.get_name (),
+            "", // No uri available from drive??
+            drive.get_icon (),
+            drive.get_name (), // Unclear what to use as a unique identifier for a drive so use name
+            drive,
+            null,
+            null
+        );
     }
 
-    private void bookmark_volume_if_without_mount (Volume volume) {
+    private void bookmark_volume (Volume volume) {
         var mount = volume.get_mount ();
-        if (mount == null) {
-            /* Do show the unmounted volumes in the sidebar;
-            * this is so the user can mount it (in case automounting
-            * is off).
-            *
-            * Also, even if automounting is enabled, this gives a visual
-            * cue that the user should remember to yank out the media if
-            * he just unmounted it.
-            */
-            add_bookmark (
-                volume.get_name (),
-                "", // Do not know uri until mounted
-                volume.get_icon (),
-                volume.get_uuid (),
-                null,
-                volume,
-                null
-            );
-        }
+        add_bookmark (
+            volume.get_name (),
+            mount != null ? mount.get_default_location ().get_uri () : "",
+            volume.get_icon (),
+            volume.get_uuid (),
+            null,
+            volume,
+            null
+        );
     }
 
-    private void bookmark_mount_if_not_shadowed (Mount mount) {
-        if (mount.is_shadowed ()) {
-            return;
-        };
+    private void bookmark_mount_without_volume (Mount mount) {
+        if (mount.is_shadowed () ||
+            !mount.get_root ().is_native () ||
+            mount.get_volume () != null) {
 
-        var volume = mount.get_volume ();
-        var uuid = mount.get_uuid ();
-        if (uuid == null || uuid == "") {
-            if (volume != null) {
-                uuid = volume.get_uuid ();
-            }
+            return;
         }
 
+        var uuid = mount.get_uuid ();
         var path = mount.get_default_location ().get_uri ();
         if (uuid == null || uuid == "") {
             uuid = path;
@@ -221,29 +219,29 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
             path,
             mount.get_icon (),
             uuid,
-            mount.get_drive (),
-            mount.get_volume (),
+            null,
+            null,
             mount
         );
-        //Show extra info in tooltip
     }
 
-    private DeviceRow? has_uuid (string? uuid, string? fallback = null) {
+    private bool has_uuid (string? uuid, string? fallback, out AbstractMountableRow? row) {
         var searched_uuid = uuid != null ? uuid : fallback;
 
-        if (searched_uuid == null) {
-            return null;
-        }
-
-        foreach (unowned Gtk.Widget child in get_children ()) {
-            if (child is DeviceRow) {
-                if (((DeviceRow)child).uuid == searched_uuid) {
-                    return (DeviceRow)child;
+        if (searched_uuid != null) {
+            foreach (unowned var child in get_children ()) {
+                row = null;
+                if (child is AbstractMountableRow) {
+                    row = (AbstractMountableRow)child;
+                    if (row.uuid == searched_uuid) {
+                        return true;
+                    }
                 }
             }
         }
 
-        return null;
+        row = null;
+        return false;
     }
 
     public SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
@@ -252,12 +250,16 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        unselect_all ();
+        foreach (unowned var child in get_children ()) {
+            if (child is AbstractMountableRow) {
+                unselect_row ((AbstractMountableRow)child);
+            }
+        }
     }
 
     public void select_item (SidebarItemInterface? item) {
-        if (item != null && item is DeviceRow) {
-            select_row ((DeviceRow)item);
+        if (item != null && item is AbstractMountableRow) {
+            select_row ((AbstractMountableRow)item);
         } else {
             unselect_all_items ();
         }

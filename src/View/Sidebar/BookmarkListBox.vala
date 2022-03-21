@@ -23,7 +23,6 @@
 public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private Files.BookmarkList bookmark_list;
     private unowned Files.TrashMonitor trash_monitor;
-    private SidebarItemInterface? trash_bookmark;
 
     public Files.SidebarInterface sidebar {get; construct;}
 
@@ -73,7 +72,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             return null;
         }
 
-        var row = new BookmarkRow (label, uri, gicon, this, pinned, pinned || permanent);
+        var row = new BookmarkRow (label, uri, gicon, this, pinned, permanent);
         if (index >= 0) {
             insert (row, index);
         } else {
@@ -122,57 +121,71 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 _("Home"),
                 home_uri,
                 new ThemedIcon (Files.ICON_HOME),
+                true,
                 true
             );
 
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>Home"}, _("View the home folder"))
             );
+
+            row.can_insert_before = false;
+            row.can_insert_after = false;
         }
 
-        if (PF.FileUtils.protocol_is_supported ("recent")) {
+        if (Files.FileUtils.protocol_is_supported ("recent")) {
             row = add_bookmark (
                 _(Files.PROTOCOL_NAME_RECENT),
                 Files.RECENT_URI,
                 new ThemedIcon (Files.ICON_RECENT),
+                true,
                 true
             );
 
             row.set_tooltip_markup (
                 Granite.markup_accel_tooltip ({"<Alt>R"}, _("View the list of recently used files"))
             );
+
+            row.can_insert_before = false;
+            row.can_insert_after = true;
         }
 
         foreach (unowned Files.Bookmark bm in bookmark_list.list) {
-            row = add_bookmark (bm.label, bm.uri, bm.get_icon ());
-            row.set_tooltip_text (PF.FileUtils.sanitize_path (bm.uri, null, false));
+            row = add_bookmark (bm.custom_name, bm.uri, bm.get_icon ());
+            row.set_tooltip_text (Files.FileUtils.sanitize_path (bm.uri, null, false));
             row.notify["custom-name"].connect (() => {
-                bm.label = row.custom_name;
+                bm.custom_name = row.custom_name;
             });
         }
 
         if (!Files.is_admin ()) {
-            trash_bookmark = add_bookmark (
+            row = add_bookmark (
                 _("Trash"),
                 _(Files.TRASH_URI),
                 trash_monitor.get_icon (),
+                true,
                 true
             );
+
+            row.set_tooltip_markup (
+                Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
+            );
+
+            row.can_insert_before = true;
+            row.can_insert_after = false;
+
+            trash_monitor.notify["is-empty"].connect (() => {
+                row.update_icon (trash_monitor.get_icon ());
+            });
         }
+    }
 
-        trash_bookmark.set_tooltip_markup (
-            Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
-        );
-
-        trash_monitor.notify["is-empty"].connect (() => {
-            if (trash_bookmark != null) {
-                trash_bookmark.update_icon (trash_monitor.get_icon ());
-            }
-        });
+    public virtual void rename_bookmark_by_uri (string uri, string new_name) {
+        bookmark_list.rename_item_with_uri (uri, new_name);
     }
 
     public override bool add_favorite (string uri,
-                                       string? label = null,
+                                       string custom_name = "",
                                        int pos = 0) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
@@ -188,9 +201,9 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             pos = pinned;
         }
 
-        var bm = bookmark_list.insert_uri (uri, pos - pinned, label); //Assume non_builtin items are not pinned
+        var bm = bookmark_list.insert_uri (uri, pos - pinned, custom_name); //Assume non_builtin items are not pinned
         if (bm != null) {
-            insert_bookmark (bm.label, bm.uri, bm.get_icon (), pos);
+            insert_bookmark (bm.custom_name, bm.uri, bm.get_icon (), pos);
             return true;
         } else {
             return false;
@@ -216,6 +229,10 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
     }
 
     public SidebarItemInterface? get_item_at_index (int index) {
+        if (index < 0 || index > get_children ().length ()) {
+            return null;
+        }
+
         return (SidebarItemInterface?)(get_row_at_index (index));
     }
 
@@ -241,4 +258,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
         return true;
     }
+
+    public virtual bool is_drop_target () { return true; }
 }

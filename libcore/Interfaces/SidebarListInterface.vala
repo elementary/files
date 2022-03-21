@@ -45,6 +45,8 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         }
     }
 
+    public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
+
     public virtual void remove_bookmark_by_uri (string uri) {
         SidebarItemInterface? row = null;
         if (has_uri (uri, out row)) {
@@ -70,6 +72,17 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         return false;
     }
 
+    public virtual bool select_uri (string uri) {
+        unselect_all_items ();
+        SidebarItemInterface? row = null;
+        if (has_uri (uri, out row)) {
+            select_item (row);
+            return true;
+        }
+
+        return false;
+    }
+
     public virtual bool remove_item_by_id (uint32 id) {
         foreach (Gtk.Widget child in get_children ()) {
             if (child is SidebarItemInterface) {
@@ -90,7 +103,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
     }
 
     /* Returns true if favorite successfully added */
-    public virtual bool add_favorite (string uri, string? label = null, int index = 0) { return false; }
+    public virtual bool add_favorite (string uri, string label = "", int index = 0) { return false; }
 
     public virtual SidebarItemInterface? get_item_at_index (int index) { return null; }
 
@@ -99,4 +112,5 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         return false;
     } // By default not-reorderable
 
+    public virtual bool is_drop_target () { return false; } // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
 }

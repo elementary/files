@@ -90,7 +90,9 @@ namespace Files.View.Chrome {
         }
 
         private void on_search_results_cursor_changed (GLib.File? file) {
-            schedule_focus_file_request (file);
+            if (file != null) {
+                schedule_focus_file_request (file);
+            }
         }
 
         private void on_search_results_realize () {
@@ -131,7 +133,7 @@ namespace Files.View.Chrome {
         protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
             base.after_bread_focus_in_event (event);
             focus_in_event (event);
-            search_location = PF.FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
             show_navigate_icon ();
             return true;
         }
@@ -285,6 +287,10 @@ namespace Files.View.Chrome {
         }
 
         private void check_home () {
+            if (!((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+                return;
+            }
+
             try {
                 bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
             } catch (Error e) {

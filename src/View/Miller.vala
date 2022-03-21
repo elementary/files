@@ -26,9 +26,10 @@ namespace Files.View {
 
         private Gtk.Box colpane;
 
-        uint scroll_to_slot_timeout_id = 0;
+        private uint scroll_to_slot_timeout_id = 0;
 
-        public Gtk.ScrolledWindow scrolled_window;
+        private Gtk.ScrolledWindow scrolled_window;
+        private Gtk.Viewport viewport;
         public Gtk.Adjustment hadj;
         public unowned View.Slot? current_slot;
         public GLib.List<View.Slot> slot_list = null;
@@ -63,7 +64,7 @@ namespace Files.View {
 
             hadj = scrolled_window.get_hadjustment ();
 
-            var viewport = new Gtk.Viewport (null, null) {
+            viewport = new Gtk.Viewport (null, null) {
                 shadow_type = Gtk.ShadowType.NONE
             };
 
@@ -89,49 +90,37 @@ namespace Files.View {
         }
 
         /** Creates a new slot in the host slot hpane */
-        public void add_location (GLib.File loc, View.Slot? host = null,
-                                  bool scroll = true, bool animate = true) {
-
-            var new_slot = new View.Slot (loc, ctab, ViewMode.MILLER_COLUMNS);
+        public void add_location (GLib.File loc, View.Slot? host = null) {
+            var guest = new View.Slot (loc, ctab, ViewMode.MILLER_COLUMNS);
             /* Notify view container of path change - will set tab to working and change pathbar */
             path_changed ();
-            new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
-            total_width += new_slot.width;
-
-            colpane.set_size_request (total_width, -1);
-
-            nest_slot_in_host_slot (new_slot, host);
-            slot_list.append (new_slot);
-            /* This will set the new slot to be current_slot. Must do this before loading */
-            new_slot.active (scroll, animate);
-        }
-
-        private void nest_slot_in_host_slot (View.Slot slot, View.Slot? host) {
-            var hpane1 = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
+            guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            guest.colpane.set_size_request (guest.width, -1);
+            guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 hexpand = true
             };
 
-            slot.hpane = hpane1;
+            guest.hpane.pack1 (guest.get_directory_view (), false, false);
+            guest.hpane.pack2 (guest.colpane, true, true);
+            guest.hpane.show_all ();
 
-            var box1 = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            slot.colpane = box1;
-            slot.colpane.set_size_request (slot.width, -1);
-
-            unowned Gtk.Widget column = slot.get_directory_view () as Gtk.Widget;
-            hpane1.pack1 (column, false, false);
-            hpane1.pack2 (box1, true, true);
-            hpane1.show_all ();
-
-            connect_slot_signals (slot);
+            connect_slot_signals (guest);
 
             if (host != null) {
                 truncate_list_after_slot (host);
-                host.select_gof_file (slot.file);
-                host.colpane.add (hpane1);
-                slot.initialize_directory ();
+                host.select_gof_file (guest.file);
+                host.colpane.add (guest.hpane);
+                guest.initialize_directory ();
             } else {
-                this.colpane.add (hpane1);
+                this.colpane.add (guest.hpane);
             }
+
+            slot_list.append (guest); // Must add to list before scrolling
+            // Must set the new slot to be  activehere as the tab does not change (which normally sets its slot active)
+            guest.active (true, true);
+
+            update_total_width ();
         }
 
         private void truncate_list_after_slot (View.Slot slot) {
@@ -159,7 +148,7 @@ namespace Files.View {
         }
 
         private void calculate_total_width () {
-            total_width = 100;
+            total_width = 100; // Extra space to allow increasing the size of columns by dragging the edge
             slot_list.@foreach ((slot) => {
                 total_width += slot.width;
             });
@@ -222,7 +211,7 @@ namespace Files.View {
                 truncate_list_after_slot (root);
                 return true;
             }
-            string? relative_path = PF.FileUtils.escape_uri (root.location.get_relative_path (loc), false);
+            string? relative_path = FileUtils.escape_uri (root.location.get_relative_path (loc), false);
             if (relative_path != null && relative_path.length > 0) {
                 truncate_list_after_slot (root);
                 string [] dirs = relative_path.split (Path.DIR_SEPARATOR_S);
@@ -450,61 +439,46 @@ namespace Files.View {
             }
 
             scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
-                if (scroll_to_slot (slot, animate)) {
-                    scroll_to_slot_timeout_id = 0;
-                    return GLib.Source.REMOVE;
-                } else {
-                    return GLib.Source.CONTINUE;
+                /* Wait until slot realized and loaded before scrolling
+                 * Cannot accurately scroll until directory finishes loading because width will change
+                 * according the length of the longest filename */
+                if (!scrolled_window.get_realized () || slot.directory.state != Directory.State.LOADED) {
+                    return Source.CONTINUE;
                 }
-            });
-        }
 
-        private bool scroll_to_slot (View.Slot slot, bool animate = true) {
-            /* Cannot accurately scroll until directory finishes loading because width will change
-             * according the length of the longest filename */
-            if (!scrolled_window.get_realized () || slot.directory.state != Directory.State.LOADED) {
-                return false;
-            }
-
-            int width = 0; /* left edge of active slot */
-            int previous_width = 0; /* left edge of slot before the active slot */
-
-            slot_list.@foreach ((abs) => {
-                if (abs.slot_number < slot.slot_number) {
-                    previous_width = width;
-                    width += abs.width;
+                if (get_animating ()) {
+                    cancel_animation ();
                 }
+
+                // Calculate position to scroll to
+                int total_width_before = 0; /* left edge of active slot */
+                slot_list.@foreach ((abs) => {
+                    if (abs.slot_number < slot.slot_number) {
+                        total_width_before += abs.width;
+                    }
+                });
+
+                int hadj_value = (int) this.hadj.get_value ();
+                int offset = total_width_before - hadj_value;
+                if (offset < 0) { /*scroll until left hand edge of active slot is in view*/
+                    hadj_value += offset;
+                }
+
+                offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
+                if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
+                    hadj_value += offset;
+                }
+
+                // Perform scroll
+                if (animate) {
+                    smooth_adjustment_to (this.hadj, hadj_value);
+                } else { /* On startup we do not want to animate */
+                    hadj.set_value (hadj_value);
+                }
+
+                scroll_to_slot_timeout_id = 0;
+                return Source.REMOVE;
             });
-
-            int page_size = (int) this.hadj.get_page_size ();
-            int current_value = (int) this.hadj.get_value ();
-            int new_value = current_value;
-
-            /* Scroll right until left hand edge of slot before the active slot is in view*/
-            if (current_value > previous_width) {
-                new_value = previous_width;
-            }
-
-            int offset = slot.slot_number < slot_list.length () - 1 ? 90 : 0; //Can be assumed to limited in length
-            int val = page_size - (width + slot.width + offset);
-
-            if (val < 0) { /*scroll left until right hand edge of active slot is in view*/
-                new_value = -val;
-            }
-
-            if (slot.width + offset > page_size) { /*scroll right until left hand edge of active slot is in view*/
-                new_value = width;
-            }
-
-            if (animate) {
-                Animation.smooth_adjustment_to (this.hadj, new_value);
-                return true;
-            } else { /* On startup we do not want to animate */
-                hadj.set_value (new_value);
-                /* On startup the adjustment setting is not always effective because of a race condition.
-                 *  If not, try later.*/
-                return hadj.get_value () == new_value;
-            }
         }
 
         public override unowned Files.AbstractSlot? get_current_slot () {
@@ -586,6 +560,57 @@ namespace Files.View {
 
         public override FileInfo? lookup_file_info (GLib.File loc) {
             return current_slot.lookup_file_info (loc);
+        }
+
+        /* Animation functions */
+
+        private uint animation_timeout_source_id = 0;
+        private void smooth_adjustment_to (Gtk.Adjustment adj, int final) {
+            cancel_animation ();
+
+            var initial = adj.value;
+            var to_do = final - initial;
+
+            int factor;
+            (to_do > 0) ? factor = 1 : factor = -1;
+            to_do = (double) (((int) to_do).abs () + 1);
+
+            var newvalue = 0;
+            var old_adj_value = adj.value;
+
+            animation_timeout_source_id = Timeout.add (1000 / 60, () => {
+                /* If the user move it at the same time, just stop the animation */
+                if (old_adj_value != adj.value) {
+                    animation_timeout_source_id = 0;
+                    return GLib.Source.REMOVE;
+                }
+
+                if (newvalue >= to_do - 10) {
+                    /* to be sure that there is not a little problem */
+                    adj.value = final;
+                    animation_timeout_source_id = 0;
+                    return GLib.Source.REMOVE;
+                }
+
+                newvalue += 10;
+
+                adj.value = initial + factor *
+                            Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
+
+                old_adj_value = adj.value;
+                return GLib.Source.CONTINUE;
+            });
+        }
+
+        private bool get_animating () {
+            return animation_timeout_source_id > 0;
+        }
+
+        private void cancel_animation () {
+            if (animation_timeout_source_id > 0) {
+                Source.remove (animation_timeout_source_id);
+                animation_timeout_source_id = 0;
+            }
         }
     }
 }

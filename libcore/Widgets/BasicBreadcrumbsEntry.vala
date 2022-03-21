@@ -108,9 +108,9 @@ namespace Files.View.Chrome {
         public void set_breadcrumbs_path (string path) {
             string protocol;
             string newpath;
-            string sanitized_path = PF.FileUtils.sanitize_path (path);
+            string sanitized_path = FileUtils.sanitize_path (path);
 
-            PF.FileUtils.split_protocol_from_path (sanitized_path, out protocol, out newpath);
+            FileUtils.split_protocol_from_path (sanitized_path, out protocol, out newpath);
             var newelements = new Gee.ArrayList<BreadcrumbElement> ();
             make_element_list_from_protocol_and_path (protocol, newpath, newelements);
             GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
@@ -229,14 +229,14 @@ namespace Files.View.Chrome {
 
         protected virtual bool on_button_press_event (Gdk.EventButton event) {
             context_menu_showing = has_focus && event.button == Gdk.BUTTON_SECONDARY;
-            return !has_focus;
+            return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
         }
 
          protected virtual bool on_button_release_event (Gdk.EventButton event) {
-            if (icon_event (event)) {
-                return false;
-            } else if (placeholder == "") {
-                /* Only activate breadcrumbs when they are showing and not hidden by placeholder */
+            /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
+             * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
+             * not have focus. */
+            if (event.button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
                 reset_elements_states ();
                 var el = get_element_from_coordinates ((int) event.x, (int) event.y);
                 if (el != null) {
@@ -245,22 +245,17 @@ namespace Files.View.Chrome {
                 }
             }
 
-            grab_focus ();
+            if (!has_focus) {
+                grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
+            }
 
-            return true;
+            return false;
         }
 
-        protected bool icon_event (Gdk.EventButton event) {
+        protected bool is_icon_event (Gdk.EventButton event) {
             /* We need to distinguish whether the event comes from one of the icons.
              * There doesn't seem to be a way of doing this directly so we check the window width */
-            if (event.window.get_width () < ICON_WIDTH) {
-                return true;
-            } else if (is_focus) {
-                base.button_press_event (event);
-                return true;
-            } else {
-                return false;
-            }
+            return (event.window.get_width () <= ICON_WIDTH);
         }
 
         void on_icon_press (Gtk.EntryIconPosition pos) {
@@ -327,7 +322,11 @@ namespace Files.View.Chrome {
                     return true;
                 }
 
-                reset ();
+                // Do not lose entry text if another window is focused
+                if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+                    reset ();
+                }
+
                 return false;
             }
         }
@@ -348,7 +347,7 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void on_activate () {
-            activate_path (PF.FileUtils.sanitize_path (text, current_dir_path));
+            activate_path (FileUtils.sanitize_path (text, current_dir_path));
             text = "";
         }
 
@@ -361,7 +360,7 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void go_up () {
-            text = PF.FileUtils.get_parent_path_from_path (text);
+            text = FileUtils.get_parent_path_from_path (text);
             set_position (-1);
         }
 
@@ -496,7 +495,7 @@ namespace Files.View.Chrome {
                     }
             }
 
-            return PF.FileUtils.sanitize_path (newpath, null, include_file_protocol);
+            return FileUtils.sanitize_path (newpath, null, include_file_protocol);
         }
 
         private void make_element_list_from_protocol_and_path (string protocol,
@@ -504,7 +503,7 @@ namespace Files.View.Chrome {
                                                                Gee.ArrayList<BreadcrumbElement> newelements) {
             /* Ensure the breadcrumb texts are escaped strings whether or not
              * the parameter newpath was supplied escaped */
-            string newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
+            string newpath = FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
             newelements.add (new BreadcrumbElement (protocol, this, get_style_context ()));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {
                 if (dir != "") {

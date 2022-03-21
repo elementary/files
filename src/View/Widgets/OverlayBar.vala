@@ -37,8 +37,10 @@ namespace Files.View {
         private uint deep_count_timeout_id = 0;
 
         public OverlayBar (Gtk.Overlay overlay) {
-            base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
+            base (overlay); /* This adds the overlaybar to the overlay (ViewContainer). */
+        }
 
+        construct {
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
             hide.connect (cancel);
@@ -70,10 +72,14 @@ namespace Files.View {
         }
 
         public void update_hovered (Files.File? file) {
-            hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout */
+            hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout. */
 
-            if (file != null && goffile != null && file.location.equal (goffile.location)) {
+            if (file == null) {
+                real_update (null); //Resets various variables and hides the overlay straightaway
+                return;
+            }
 
+            if (goffile != null && file.location.equal (goffile.location)) {
                 return;
             }
 
@@ -98,8 +104,6 @@ namespace Files.View {
                         list.prepend (file);
                         real_update (list);
                     }
-                } else {
-                    real_update (null);
                 }
 
                 hover_timeout_id = 0;
@@ -107,9 +111,10 @@ namespace Files.View {
             });
         }
 
-        /** Function to be called when view is going to be destroyed or going to show another folder
- *        * and on a selection change.
-*         **/
+        /**
+         * Function to be called when view is going to be destroyed or going to show another folder
+         * and on a selection change.
+         */
         public void cancel () {
             hover_cancel ();
             deep_count_cancel ();
@@ -124,7 +129,7 @@ namespace Files.View {
         }
 
         private void hover_cancel () {
-            /* Do not cancel updating of selected files when hovered file changes */
+            /* Do not cancel updating of selected files when hovered file changes. */
             if (hover_timeout_id > 0) {
                 GLib.Source.remove (hover_timeout_id);
                 hover_timeout_id = 0;
@@ -132,7 +137,7 @@ namespace Files.View {
         }
 
         private void deep_count_cancel () {
-            /* Do not cancel updating of selected files when hovered file changes */
+            /* Do not cancel updating of selected files when hovered file changes. */
             if (deep_count_timeout_id > 0) {
                 GLib.Source.remove (deep_count_timeout_id);
                 deep_count_timeout_id = 0;
@@ -140,14 +145,14 @@ namespace Files.View {
         }
 
         private void cancel_cancellable () {
-            /* if we're still collecting image info or deep counting, cancel */
+            /* If we're still collecting image info or deep counting, cancel. */
             if (cancellable != null) {
                 cancellable.cancel ();
                 cancellable = null;
             }
         }
 
-       private void real_update (GLib.List<unowned Files.File>? files) {
+        private void real_update (GLib.List<unowned Files.File>? files) {
             goffile = null;
             folders_count = 0;
             files_count = 0;
@@ -157,15 +162,15 @@ namespace Files.View {
             if (files != null) {
                 if (files != null && files.data != null) {
                     if (files.next == null) {
-                        /* list contain only one element */
+                        /* List contains only one element. */
                         goffile = files.first ().data;
                     } else {
                         scan_list (files);
                     }
                     /* There is a race between load_resolution and file_real_size for setting status.
-                     * On first hover, file_real_size wins.  On second hover load_resolution
+                     * On first hover, file_real_size wins. On second hover load_resolution
                      * wins because we remembered the resolution. So only set status with string returned by
-                     * update status if it has not already been set by load resolution.*/
+                     * update status if it has not already been set by load resolution. */
                     var s = update_status ();
                     if (label == "") {
                         label = s;
@@ -179,31 +184,31 @@ namespace Files.View {
         private string update_status () {
             string str = "";
             label = "";
-            if (goffile != null) { /* a single file is hovered or selected */
+            if (goffile != null) { /* A single file is hovered or selected. */
                 if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
-                    /* if we have an image, see if we can get its resolution */
+                    /* If we have an image, see if we can get its resolution. */
                     string? type = goffile.get_ftype ();
 
-                    if (goffile.format_size == "" ) { /* No need to keep recalculating it */
+                    if (goffile.format_size == "" ) { /* No need to keep recalculating the formatted size. */
                         goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
                     }
-                    str = "%s- %s (%s)".printf (goffile.info.get_name (),
-                                                goffile.formated_type,
-                                                goffile.format_size);
+                    str = "%s - %s (%s)".printf (goffile.info.get_name (),
+                                                 goffile.formated_type,
+                                                 goffile.format_size);
 
-                    if (type != null && type.substring (0, 6) == "image/" &&     /* file is image and */
-                        (goffile.width > 0 ||                                    /* resolution already determined  or */
-                        !((type in Files.SKIP_IMAGES) || goffile.width < 0))) { /* resolution can be determined. */
+                    if (type != null && type.substring (0, 6) == "image/" &&     /* File is an image and */
+                        (goffile.width > 0 ||                                    /* resolution has already been determined or */
+                        !((type in Files.SKIP_IMAGES) || goffile.width < 0))) {  /* resolution can be determined. */
 
                         load_resolution.begin (goffile);
                     }
-                } else {
+                } else { /* This is a folder. */
                     str = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
                     schedule_deep_count ();
                 }
-            } else { /* hovering over multiple selection */
+            } else { /* Hovering over multiple selection. */
                 var fsize = format_size (files_size);
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
@@ -234,7 +239,7 @@ namespace Files.View {
 
         private void schedule_deep_count () {
             cancel ();
-            /* Show the spinner immediately to indicate that something will happen if hover long enough */
+            /* Show the spinner immediately to indicate that something will happen if the hover lasts long enough. */
             active = true;
             deep_count_cancel ();
 
@@ -317,9 +322,9 @@ namespace Files.View {
             }
         }
 
-        /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
+        /* This code is mostly ported from nautilus' `src/nautilus-image-properties.c`. */
         private async void load_resolution (Files.File goffile) {
-            if (goffile.width > 0) { /* resolution may already have been determined */
+            if (goffile.width > 0) { /* Resolution may already have been determined. */
                 on_size_prepared (goffile.width, goffile.height);
                 return;
             }
@@ -343,7 +348,7 @@ namespace Files.View {
             } catch (Error e) {
                 warning ("Error loading image resolution in OverlayBar: %s", e.message);
             }
-            /* Gdk wants us to always close the loader, so we are nice to it */
+            /* Gdk wants us to always close the loader, so we are nice to it. */
             try {
                 stream.close ();
             } catch (GLib.Error e) {
@@ -351,14 +356,14 @@ namespace Files.View {
             }
             try {
                 loader.close ();
-            } catch (GLib.Error e) { /* Errors expected because may not load whole image */
+            } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
                 debug ("Error closing loader in load resolution: %s", e.message);
             }
             cancellable = null;
         }
 
         private void on_size_prepared (int width, int height) {
-            if (goffile == null) { /* This can occur during rapid rubberband selection */
+            if (goffile == null) { /* This can occur during rapid rubberband selection. */
                 return;
             }
             image_size_loaded = true;
@@ -376,10 +381,10 @@ namespace Files.View {
                     read = yield stream.read_async (buffer, 0, cancellable);
                     count++;
                     if (count > 100) {
-                        goffile.width = -1; /* Flag that resolution is not determinable so do not try again*/
+                        goffile.width = -1; /* Flag that resolution is not determinable so do not try again. */
                         goffile.height = -1;
-                        /* Note that Gdk.PixbufLoader seems to leak memory with some file types. Any file type that
-                         * causes this error should be added to Files.SKIP_IMAGES array */
+                        /* Note that Gdk.PixbufLoader seems to leak memory with some file types.
+                         * Any file type that causes this error should be added to the Files.SKIP_IMAGES array. */
                         critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
                         break;
                     }
@@ -391,7 +396,7 @@ namespace Files.View {
                         warning (e.message);
                     }
                 } catch (Gdk.PixbufError e) {
-                    /* errors while loading are expected, we only need to know the size */
+                    /* Errors while loading are expected; we only need to know the size. */
                 } catch (FileError e) {
                     warning (e.message);
                 } catch (Error e) {

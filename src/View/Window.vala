@@ -80,10 +80,6 @@ namespace Files.View {
                 width_request: 500,
                 window_number: application.window_count
             );
-
-            if (is_first_window) {
-                set_accelerators ();
-            }
         }
 
         static construct {
@@ -92,18 +88,57 @@ namespace Files.View {
 
         construct {
             add_action_entries (WIN_ENTRIES, this);
-
             undo_actions_set_insensitive ();
 
             undo_manager = UndoManager.instance ();
 
-            build_window ();
+            // Setting accels on `application` does not work in construct clause
+            // Must set before building window so ViewSwitcher can lookup the accels for tooltips
+            if (is_first_window) {
+                marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
+                marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
+                marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
+                marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
+                marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
+                marlin_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
+                marlin_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
+                marlin_app.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
+                marlin_app.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
+                marlin_app.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
+                marlin_app.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
+                marlin_app.set_accels_for_action (
+                    GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (0)), {"<Ctrl>1"}
+                );
+                marlin_app.set_accels_for_action (
+                    GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (1)), {"<Ctrl>2"}
+                );
+                marlin_app.set_accels_for_action (
+                    GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (2)), {"<Ctrl>3"}
+                );
+                marlin_app.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
+                marlin_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
+                marlin_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
+                marlin_app.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
+                marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
+                marlin_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
+                marlin_app.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
+                marlin_app.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+                marlin_app.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
+                marlin_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
+                marlin_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
+                marlin_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
+                marlin_app.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
+                marlin_app.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
+                marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
+                marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
+                marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
+            }
 
+            build_window ();
             connect_signals ();
 
             int width, height;
             Files.app_settings.get ("window-size", "(ii)", out width, out height);
-
             default_width = width;
             default_height = height;
 
@@ -124,6 +159,7 @@ namespace Files.View {
                         if (default_x != -1 && default_y != -1) {
                             move (default_x, default_y);
                         }
+
                         break;
                 }
             }
@@ -133,16 +169,18 @@ namespace Files.View {
         }
 
         private void build_window () {
-            view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
-                selected = Files.app_settings.get_enum ("default-viewmode")
-            };
+            view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode"));
+            view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
             top_menu = new Chrome.HeaderBar (view_switcher) {
                 show_close_button = true,
                 custom_title = new Gtk.Label (null)
             };
 
-            tabs = new Granite.Widgets.DynamicNotebook () {
+            tabs = new Granite.Widgets.DynamicNotebook.with_accellabels (
+                new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
+                new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
+            ) {
                 show_tabs = true,
                 allow_restoring = true,
                 allow_duplication = true,
@@ -339,6 +377,8 @@ namespace Files.View {
             if (tabs.n_tabs == 0) {
                 add_tab ();
             }
+
+            save_tabs ();
         }
 
         public Files.AbstractSlot? get_active_slot () {
@@ -355,12 +395,13 @@ namespace Files.View {
 
         private void change_tab (int offset) {
             ViewContainer? old_tab = current_tab;
-            current_tab = (ViewContainer)((tabs.get_tab_by_index (offset)).page) ;
+            current_tab = (ViewContainer)((tabs.get_tab_by_index (offset)).page);
+
             if (current_tab == null || old_tab == current_tab) {
                 return;
             }
 
-            if (restoring_tabs > 0) {
+            if (restoring_tabs > 0) { //Return if some restored tabs still loading
                 return;
             }
 
@@ -373,6 +414,7 @@ namespace Files.View {
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
             sidebar.sync_uri (current_tab.uri);
             top_menu.working = current_tab.is_frozen;
+            save_active_tab_position ();
         }
 
         public void open_tabs (GLib.File[]? files = null,
@@ -442,7 +484,14 @@ namespace Files.View {
 
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
-            var tab = new Granite.Widgets.Tab ("", null, content) {
+            var tab = new Granite.Widgets.Tab.with_accellabels (
+                "",
+                null,
+                content,
+                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
+                new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
+                new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
+            ) {
                 ellipsize_mode = Pango.EllipsizeMode.MIDDLE
             };
 
@@ -469,6 +518,9 @@ namespace Files.View {
 
                 tab.working = is_loading;
                 update_top_menu ();
+                if (restoring_tabs == 0 && !is_loading) {
+                    save_tabs ();
+                }
             });
 
             content.active.connect (() => {
@@ -488,16 +540,16 @@ namespace Files.View {
             string uri = location.get_uri ();
             bool is_folder = location.query_file_type (FileQueryInfoFlags.NONE) == FileType.DIRECTORY;
             /* Ensures consistent format of protocol and path */
-            parent_path = PF.FileUtils.get_parent_path_from_path (location.get_path ());
+            parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
             int existing_position = 0;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var tab_location = ((ViewContainer)(tab.page)).location;
                 string tab_uri = tab_location.get_uri ();
 
-                if (PF.FileUtils.same_location (uri, tab_uri)) {
+                if (FileUtils.same_location (uri, tab_uri)) {
                     return existing_position;
-                } else if (!is_folder && PF.FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
+                } else if (!is_folder && FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
                     is_child = true;
                     return existing_position;
                 }
@@ -576,8 +628,8 @@ namespace Files.View {
 
             /* Add parent directories until path and conflict path differ */
             while (prefix == prefix_conflict) {
-                var parent_path= PF.FileUtils.get_parent_path_from_path (path_temp);
-                var parent_conflict_path = PF.FileUtils.get_parent_path_from_path (conflict_path_temp);
+                var parent_path= FileUtils.get_parent_path_from_path (path_temp);
+                var parent_conflict_path = FileUtils.get_parent_path_from_path (conflict_path_temp);
                 prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
                 prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
                 path_temp= parent_path;
@@ -587,8 +639,8 @@ namespace Files.View {
             return prefix + name;
         }
 
-        public void bookmark_uri (string uri, string? name = null) {
-            sidebar.add_favorite_uri (uri, name);
+        public void bookmark_uri (string uri, string custom_name = "") {
+            sidebar.add_favorite_uri (uri, custom_name);
         }
 
         public bool can_bookmark_uri (string uri) {
@@ -638,7 +690,12 @@ namespace Files.View {
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
             /* Note: Duplicate bookmarks will not be created by BookmarkList */
-            sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            unowned var selected_files = current_tab.view.get_selected_files ();
+            if (selected_files == null) {
+                sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            } else if (selected_files.first ().next == null) {
+                sidebar.add_favorite_uri (selected_files.first ().data.uri);
+            } // Ignore if more than one item selected
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
@@ -772,6 +829,14 @@ namespace Files.View {
                     tabs.previous_page ();
                     break;
 
+                case "TAB":
+                    add_tab (current_tab.location, current_tab.view_mode);
+                    break;
+
+                case "WINDOW":
+                    tabs.tab_moved (tabs.current, 0, 0);
+                    break;
+
                 default:
                     break;
             }
@@ -874,7 +939,7 @@ namespace Files.View {
             });
         }
 
-        private GLib.SimpleAction? get_action (string action_name) {
+        public GLib.SimpleAction? get_action (string action_name) {
             return (GLib.SimpleAction?)(lookup_action (action_name));
         }
 
@@ -896,10 +961,8 @@ namespace Files.View {
         }
 
         public void quit () {
-            if (is_first_window) {
-                save_geometries ();
-                save_tabs ();
-            }
+            save_geometries ();
+            save_tabs ();
 
             top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
@@ -914,6 +977,9 @@ namespace Files.View {
         }
 
         private void save_geometries () {
+            if (!is_first_window) {
+                return; //TODO Save all windows
+            }
             var sidebar_width = lside_pane.get_position ();
             var min_width = Files.app_settings.get_int ("minimum-sidebar-width");
 
@@ -939,6 +1005,10 @@ namespace Files.View {
         }
 
         private void save_tabs () {
+            if (!is_first_window) {
+                return; //TODO Save all windows
+            }
+
             if (!Files.Preferences.get_default ().remember_history) {
                 return;  /* Do not clear existing settings if history is off */
             }
@@ -952,7 +1022,6 @@ namespace Files.View {
                 if (!view_container.can_show_folder) {
                     continue;
                 }
-
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
@@ -962,12 +1031,16 @@ namespace Files.View {
             }
 
             Files.app_settings.set_value ("tab-info-list", vb.end ());
+            save_active_tab_position ();
+        }
+
+        private void save_active_tab_position () {
             Files.app_settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
         }
 
         public uint restore_tabs () {
             /* Do not restore tabs if history off nor more than once */
-            if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) {
+            if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) { //TODO Restore all windows
                 return 0;
             } else {
                 tabs_restored = true;
@@ -1026,7 +1099,7 @@ namespace Files.View {
             }
 
             tabs.current = tabs.get_tab_by_index (active_tab_position);
-            change_tab (active_tab_position);
+            current_tab = (ViewContainer?)(tabs.current.page);
 
             string path = "";
             if (current_tab != null) {
@@ -1047,15 +1120,15 @@ namespace Files.View {
             var tab = tabs.current;
             var view = (ViewContainer)(tab.page) ;
             var mwcols = (Miller)(view.view) ;
-            var unescaped_tip_uri = PF.FileUtils.sanitize_path (tip_uri);
+            var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
 
             if (unescaped_tip_uri == null) {
                 warning ("Invalid tip uri for Miller View");
                 return;
             }
 
-            var tip_location = PF.FileUtils.get_file_for_path (unescaped_tip_uri);
-            var root_location = PF.FileUtils.get_file_for_path (unescaped_root_uri);
+            var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
+            var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             GLib.File gfile;
 
@@ -1067,7 +1140,7 @@ namespace Files.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = get_file_from_uri (uri);
 
-                    mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
+                    mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
                 }
             } else {
                 warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
@@ -1088,7 +1161,7 @@ namespace Files.View {
 
             /* Update viewmode switch, action state and settings */
             var mode = current_tab.view_mode;
-            view_switcher.selected = mode;
+            view_switcher.set_mode (mode);
             view_switcher.sensitive = current_tab.can_show_folder;
             get_action ("view-mode").change_state (new Variant.uint32 (mode));
             Files.app_settings.set_enum ("default-viewmode", mode);
@@ -1148,9 +1221,9 @@ namespace Files.View {
                 current_uri = current_tab.location.get_uri ();
             }
 
-            string path = PF.FileUtils.sanitize_path (uri, current_uri);
+            string path = FileUtils.sanitize_path (uri, current_uri);
             if (path.length > 0) {
-                return GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
+                return GLib.File.new_for_uri (FileUtils.escape_uri (path));
             } else {
                 return null;
             }
@@ -1158,44 +1231,6 @@ namespace Files.View {
 
         public new void grab_focus () {
             current_tab.grab_focus ();
-        }
-
-        private void set_accelerators () {
-            marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
-            application.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
-            application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
-            application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
-            application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            application.set_accels_for_action ("win.find::", {"<Ctrl>F"});
-            application.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
-            application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
-            application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
-            application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
-            application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
-            application.set_accels_for_action (
-                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (0)), {"<Ctrl>1"}
-            );
-            application.set_accels_for_action (
-                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (1)), {"<Ctrl>2"}
-            );
-            application.set_accels_for_action (
-                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (2)), {"<Ctrl>3"}
-            );
-            application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
-            application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
-            application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
-            application.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
-            application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
-            application.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
-            application.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
-            application.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
-            application.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
-            application.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
-            application.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
-            application.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
-            application.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
-            application.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
-            application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
     }
 }

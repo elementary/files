@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-26 08:43+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -14,796 +14,36 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: src/Application.vala:159
-msgid "Show the version of the program"
-msgstr "Dastur talqinini ko'rsatish"
+#: filechooser-portal/FileChooserDialog.vala:110
+#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:188
+#: src/View/Widgets/ProgressInfoWidget.vala:63
+msgid "Cancel"
+msgstr "Bekor qilish"
 
-#: src/Application.vala:161
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Bir yoki bir nechta bog'lamalarni, har birini alohida yorliqda ochish"
-
-#: src/Application.vala:163 src/View/AbstractDirectoryView.vala:1856
-msgid "New Window"
-msgstr "Yangi oyna"
-
-#: src/Application.vala:165
-msgid "Quit Files"
-msgstr "Chiqish"
-
-#: src/Application.vala:167
-msgid "Enable debug logging"
-msgstr "Tahlil qilish uchun jurnalga yozib borishni yoqish"
-
-#: src/Application.vala:170
-msgid "[URI…]"
-msgstr "[URI...]"
-
-#: src/Application.vala:173
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
+msgid "Open Files as Read Only"
 msgstr ""
-"\n"
-"\n"
-"Fayl tizimini fayl menejerida ko'rish"
 
-#: src/Application.vala:201
-msgid "--quit cannot be used with URIs."
-msgstr "Manzillar (URI) bilan birgalikda --quit ni ishlatib bo'lmaydi."
-
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
-msgid "File Operations"
-msgstr "Fayllar bilan ishlash"
-
-#. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:181
-#, c-format
-msgid "Completed %s"
-msgstr "%s bajarildi"
-
-#: src/ProgressUIHandler.vala:184
-msgid "All file operations have ended"
-msgstr "Fayllar bilan barcha operatsiyalar bajarildi"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:49
-msgid "Info"
-msgstr "Ma'lumotlar"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:59
-msgid "General"
-msgstr "Umumiy"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:80
-#: libcore/FileOperations/DialogUtils.vala:54
-msgid "Close"
-msgstr "Yopish"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:144
-msgid "Device Usage"
-msgstr "Qurilmadan foydalanish"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:164
-msgid "Capacity:"
-msgstr "Sig'imi:"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:165
-#: src/Dialogs/AbstractPropertiesDialog.vala:168
-#: src/Dialogs/AbstractPropertiesDialog.vala:171
-#: src/Dialogs/PropertiesWindow.vala:451 src/Dialogs/PropertiesWindow.vala:490
-msgid "Unknown"
-msgstr "Noma'lum"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:167
-msgid "Available:"
-msgstr "Mavjud:"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:170
-msgid "Used:"
-msgstr "Foydalanilgan:"
-
-#: src/Dialogs/ChooseAppDialog.vala:43
-msgid "Set as default"
-msgstr "Asosiy sifatida o'rnatish"
-
-#: src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1966
-#: src/View/Sidebar/PopupMenuBuilder.vala:81
-msgid "Properties"
-msgstr "Xususiyatlar"
-
-#: src/Dialogs/PropertiesWindow.vala:234
-msgid "Permissions"
-msgstr "Huquqlar"
-
-#: src/Dialogs/PropertiesWindow.vala:255
-#, c-format
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i faylini huquq yoki boshqa sabab o'qib bo'lmadi."
-
-#: src/Dialogs/PropertiesWindow.vala:259
-msgid "Actual Size Could Be Larger"
-msgstr "Haqiqiy hajmi kattaroq bo'lishi mumkin"
-
-#: src/Dialogs/PropertiesWindow.vala:279 src/Dialogs/PropertiesWindow.vala:298
-msgid "unknown"
-msgstr "noma'lum"
-
-#: src/Dialogs/PropertiesWindow.vala:462
-msgid "Loading…"
-msgstr "Yuklanmoqda…"
-
-#: src/Dialogs/PropertiesWindow.vala:496
-msgid "Could not be determined"
-msgstr "Aniqlab bo'lmadi"
-
-#: src/Dialogs/PropertiesWindow.vala:522 libcore/FileConflictDialog.vala:99
-#: libcore/FileConflictDialog.vala:133
-msgid "Size:"
-msgstr "Hajmi:"
-
-#: src/Dialogs/PropertiesWindow.vala:529 libcore/ConnectServerDialog.vala:172
-#: libcore/FileConflictDialog.vala:109 libcore/FileConflictDialog.vala:143
-msgid "Type:"
-msgstr "Turi:"
-
-#: src/Dialogs/PropertiesWindow.vala:532
-msgid "Contains:"
-msgstr "Tarkibi:"
-
-#: src/Dialogs/PropertiesWindow.vala:556
-msgid "Created:"
-msgstr "Yaratilgan:"
-
-#: src/Dialogs/PropertiesWindow.vala:567
-msgid "Modified:"
-msgstr "O'zgartirilgan:"
-
-#: src/Dialogs/PropertiesWindow.vala:579
-msgid "Deleted:"
-msgstr "O'chirilgan:"
-
-#: src/Dialogs/PropertiesWindow.vala:589
-msgid "Media type:"
-msgstr "Qurilma turi:"
-
-#: src/Dialogs/PropertiesWindow.vala:596
-msgid "Resolution:"
-msgstr "O'lcham:"
-
-#: src/Dialogs/PropertiesWindow.vala:604
-#: src/Dialogs/VolumePropertiesWindow.vala:80
-msgid "Location:"
-msgstr "Manzil:"
-
-#: src/Dialogs/PropertiesWindow.vala:614
-msgid "Target:"
-msgstr "Joylashuv:"
-
-#: src/Dialogs/PropertiesWindow.vala:622
-msgid "Original Location:"
-msgstr "Asl joylashuvi:"
-
-#: src/Dialogs/PropertiesWindow.vala:645
-#: src/View/AbstractDirectoryView.vala:1934
-msgid "Other Application…"
-msgstr "Boshqa ilova…"
-
-#: src/Dialogs/PropertiesWindow.vala:665
-msgid "Open with:"
-msgstr "Ushbu dastur yordamida ochish:"
-
-#: src/Dialogs/PropertiesWindow.vala:930 src/Dialogs/PropertiesWindow.vala:940
-msgid "Owner:"
-msgstr "Egasi:"
-
-#: src/Dialogs/PropertiesWindow.vala:934 src/Dialogs/PropertiesWindow.vala:943
-msgid "Group:"
-msgstr "Guruh:"
-
-#: src/Dialogs/PropertiesWindow.vala:946
-msgid "Everyone:"
-msgstr "Barcha:"
-
-#: src/Dialogs/PropertiesWindow.vala:1227
-#, c-format
-msgid "%u subfolder"
-msgid_plural "%u subfolders"
-msgstr[0] "%u ostki papkalar"
-
-#: src/Dialogs/PropertiesWindow.vala:1231
-#: src/Dialogs/PropertiesWindow.vala:1253
-#, c-format
-msgid "%u file"
-msgid_plural "%u files"
-msgstr[0] "%u fayl"
-
-#. TRANSLATORS: folders, files
-#. TRANSLATORS The %s will be translated into "x hours, y minutes"
-#: src/Dialogs/PropertiesWindow.vala:1236 libcore/FileUtils.vala:1038
-#, c-format
-msgid "%s, %s"
-msgstr "%s, %s"
-
-#: src/Dialogs/PropertiesWindow.vala:1249 src/View/Widgets/OverlayBar.vala:218
-#, c-format
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] "%u papka"
-
-#: src/Dialogs/PropertiesWindow.vala:1258
-#, c-format
-msgid "%u selected item"
-msgid_plural "%u selected items"
-msgstr[0] "%u elementlar belgilangan"
-
-#. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1260
-#, c-format
-msgid "%s (%s, %s)"
-msgstr "%s (%s, %s)"
-
-#: src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Disk xususiyatlari"
-
-#: src/Dialogs/VolumePropertiesWindow.vala:44
-#: src/View/Sidebar/DeviceListBox.vala:117 libwidgets/Resources.vala:73
-msgid "File System"
-msgstr "Fayl tizimi"
-
-#: src/Dialogs/VolumePropertiesWindow.vala:90
-msgid "Format:"
-msgstr "Format:"
-
-#: src/Utils/MimeActions.vala:282
-msgid "Multiple file types selected"
-msgstr "Bir necha turdagi fayllar belgilangan"
-
-#: src/Utils/MimeActions.vala:283
-msgid "No single app can open all these types of file"
-msgstr "Ushbu tipdagi fayllarni hech qaysi dastur ocha olmaydi"
-
-#: src/Utils/MimeActions.vala:311
-msgid "Failed to open files"
-msgstr "Fayllarni ochib bo'lmadi"
-
-#: src/Utils/MimeActions.vala:321
-msgid "Could not open URIs"
-msgstr "URIlarni ochib bo'lmadi"
-
-#: src/Utils/MimeActions.vala:324
-msgid "Could not open files or URIs with this app"
-msgstr "Ushbu dastur yordamida fayllarni yoki URIni ochib bo'lmadi"
-
-#: src/View/Window.vala:554 src/View/Window.vala:564
-msgid "(as Administrator)"
-msgstr "(administrator huquqi bilan)"
-
-#: src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Fayl nomi"
-
-#: src/View/ListView.vala:27 src/View/AbstractDirectoryView.vala:2171
-msgid "Size"
-msgstr "Hajmi"
-
-#: src/View/ListView.vala:28 src/View/AbstractDirectoryView.vala:2176
-msgid "Type"
-msgstr "Turi"
-
-#: src/View/ListView.vala:29
-msgid "Modified"
-msgstr "O'zgartirilgan"
-
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
-msgid "This Folder Does Not Exist"
-msgstr "Ushbu papka mavjud emas"
-
-#: src/View/DirectoryNotFound.vala:28
-#, c-format
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" papka topilmadi."
-
-#: src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Yaratish"
-
-#: src/View/DirectoryNotFound.vala:30
-#, c-format
-msgid "Create the folder \"%s\""
-msgstr "\"%s\" papkani yaratish"
-
-#: src/View/DirectoryNotFound.vala:45
-msgid "Failed to create the folder"
-msgstr "Papka yaratib bo'lmadi"
-
-#: src/View/AbstractDirectoryView.vala:816
-#: src/View/AbstractDirectoryView.vala:1127
-msgid "Cannot execute this file"
-msgstr "Ushbu faylni ishga tushirib bo'lmadi"
-
-#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:826
-#, c-format
-msgid "“%s” must be moved from Trash before opening"
-msgstr "\"%s\" faylni ochishdan avval Savatchadan chiqarib olish kerak"
-
-#: src/View/AbstractDirectoryView.vala:827
-msgid ""
-"Files inside Trash cannot be opened. To open this file, it must be moved "
-"elsewhere."
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
+msgid "Open File as Read Only"
 msgstr ""
-"Savatchadagi fayllar ochilmaydi. Uni ochish uchun avval boshqa joyga "
-"ko'chirib olish kerak."
 
-#: src/View/AbstractDirectoryView.vala:842
-msgid "Cannot open this file"
-msgstr "Faylni ochib bo'lmadi"
-
-#: src/View/AbstractDirectoryView.vala:855
-msgid "Cannot identify file type to open"
-msgstr "Faylni ochish uchun turini aniqlab bo'lmadi"
-
-#: src/View/AbstractDirectoryView.vala:1573
-msgid "Cannot drop this file"
-msgstr "Ushbu faylga joylashtirib bo'lmadi"
-
-#: src/View/AbstractDirectoryView.vala:1574
-msgid "Invalid file name provided"
-msgstr "Fayl nomi noto'g'ri"
-
-#: src/View/AbstractDirectoryView.vala:1850
-msgid "New Tab"
-msgstr "Yangi yorliq ochish"
-
-#: src/View/AbstractDirectoryView.vala:1870
-msgid "Run"
-msgstr "Ishga tushirish"
-
-#: src/View/AbstractDirectoryView.vala:1877
-#, c-format
-msgid "Open in %s"
-msgstr "\"%s\" da ochish"
-
-#: src/View/AbstractDirectoryView.vala:1946
-msgid "Open in"
-msgstr "Ushbu dasturda ochish"
-
-#: src/View/AbstractDirectoryView.vala:1948
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
-msgid "Open with"
-msgstr "Ushbu dastur yordamida ochish"
-
-#: src/View/AbstractDirectoryView.vala:1954
-msgid "Paste"
-msgstr "Joylashtirish"
-
-#: src/View/AbstractDirectoryView.vala:1959
-#: src/View/Sidebar/PopupMenuBuilder.vala:85
-msgid "Add to Bookmarks"
-msgstr "Xatcho'pga qo'shish"
-
-#: src/View/AbstractDirectoryView.vala:1974
-msgid "Cut"
-msgstr "Qirqib olish"
-
-#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:1982
-msgid "Copy"
-msgstr "Nusxa olish"
-
-#: src/View/AbstractDirectoryView.vala:1989
-msgid "Move to Trash"
-msgstr "Savatchaga o'tkazish"
-
-#: src/View/AbstractDirectoryView.vala:1994
+#: filechooser-portal/Main.vala:75
 #, fuzzy
-#| msgid "Delete permanently"
-msgid "Delete Permanently"
-msgstr "To'liq o'chirib tashlash"
+#| msgid " selected"
+msgid "Select"
+msgstr " belgilandi"
 
-#: src/View/AbstractDirectoryView.vala:2001
-msgid "Restore from Trash"
-msgstr "Savatchadan tiklash"
-
-#: src/View/AbstractDirectoryView.vala:2012
-msgid "Open Parent Folder"
-msgstr "Bosh papkani ochish"
-
-#: src/View/AbstractDirectoryView.vala:2015
-msgid "Remove from History"
-msgstr "Tarixdan tozalash"
-
-#: src/View/AbstractDirectoryView.vala:2031
-msgid "Rename…"
-msgstr "Qaytanomlash…"
-
-#: src/View/AbstractDirectoryView.vala:2038
-msgid "Copy as Link"
-msgstr "Bog'lamasidan nusxa olish"
-
-#: src/View/AbstractDirectoryView.vala:2056
-msgid "Paste Link into Folder"
-msgstr "Papkaga bog'lama joylashtirish"
-
-#: src/View/AbstractDirectoryView.vala:2058
-msgid "Paste into Folder"
-msgstr "Papkaga joylashtirish"
-
-#: src/View/AbstractDirectoryView.vala:2086
-msgid "Show Hidden Files"
-msgstr "Yashirin fayllarni ko'rsatish"
-
-#: src/View/AbstractDirectoryView.vala:2089
-msgid "Show Remote Thumbnails"
-msgstr "Masofadagi miniaturalarni ko'rsatish"
-
-#: src/View/AbstractDirectoryView.vala:2092
-msgid "Hide Thumbnails"
-msgstr "Miniaturalarni yashirish"
-
-#: src/View/AbstractDirectoryView.vala:2112
-msgid "Paste Link"
-msgstr "Bog'lama joylashtirish"
-
-#: src/View/AbstractDirectoryView.vala:2166
-msgid "Name"
-msgstr "Nomi"
-
-#: src/View/AbstractDirectoryView.vala:2181
-msgid "Date"
-msgstr "Sana"
-
-#: src/View/AbstractDirectoryView.vala:2186
-msgid "Reversed Order"
-msgstr "Teskari taribda"
-
-#: src/View/AbstractDirectoryView.vala:2189
-msgid "Folders Before Files"
-msgstr "Papkalar fayllardan oldin"
-
-#: src/View/AbstractDirectoryView.vala:2201
-msgid "Sort by"
-msgstr "Tartiblash"
-
-#: src/View/AbstractDirectoryView.vala:2209
-msgid "Folder"
-msgstr "Papka"
-
-#: src/View/AbstractDirectoryView.vala:2215
-msgid "Empty File"
-msgstr "Bo'sh fayl"
-
-#: src/View/AbstractDirectoryView.vala:2266
-msgid "New"
-msgstr "Yaratish"
-
-#: src/View/AbstractDirectoryView.vala:2504
-#, c-format
-msgid "Untitled %s"
-msgstr "Nomsiz \"%s\""
-
-#: src/View/AbstractDirectoryView.vala:2867
-#: src/View/AbstractDirectoryView.vala:3068
-msgid "Cannot remove files from here"
-msgstr "Bu yerdan fayllarni o'chirib bo'lmadi"
-
-#: src/View/AbstractDirectoryView.vala:2868
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3069
-msgid "You do not have permission to change this location"
-msgstr "Ushbu joylashuvni o'zgartirish uchun sizda huquq yetarli emas"
-
-#: src/View/AbstractDirectoryView.vala:3022
-msgid "Cannot copy files that are in the trash"
-msgstr "Savatchada turgan fayllardan nusxa olib bo'lmaydi"
-
-#: src/View/AbstractDirectoryView.vala:3023
-msgid "Cutting the selection instead"
-msgstr "Belgilanmaganlarni qirqib olish"
-
-#: src/View/AbstractDirectoryView.vala:3052
-msgid "Cannot paste files here"
-msgstr "Bu yerga fayllarni joylashtirib bo'lmadi"
-
-#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:122
-msgid "Home"
-msgstr "Uy papkasi"
-
-#: src/View/ViewContainer.vala:389
-msgid "You cannot create a folder here."
-msgstr "Siz bu yerda papka yarata olmaysiz."
-
-#: src/View/ViewContainer.vala:392
-msgid "The network is unavailable"
-msgstr "Tarmoq ishlamayapti"
-
-#: src/View/ViewContainer.vala:393
-msgid "A working network is needed to reach this folder"
-msgstr "Ushbu papkani ochish uchun tarmoq ishlayotgan bo'lishi kerak"
-
-#: src/View/ViewContainer.vala:396
-msgid "This Folder Does Not Belong to You"
-msgstr "Ushbu papka sizga tegishli emas"
-
-#: src/View/ViewContainer.vala:397
-msgid "You don't have permission to view this folder."
-msgstr "Ushbu papkani ko'rish uchun huquqingiz yo'q."
-
-#: src/View/ViewContainer.vala:399
-msgid "Unable to Mount Folder"
-msgstr "Papkani ulab bo'lmadi"
-
-#: src/View/ViewContainer.vala:400
-msgid "Could not connect to the server for this folder."
-msgstr "Serverdagi ushbu papkaga bog'lanib bo'lmadi."
-
-#: src/View/ViewContainer.vala:403
-msgid "Unable to Display Folder Contents"
-msgstr "Papka tarkibini ko'rsatib bo'lmadi"
-
-#: src/View/ViewContainer.vala:404
-msgid "The operation timed out."
-msgstr "Operatsiyani bajarish vaqti tugadi."
-
-#: src/View/ViewContainer.vala:406
-msgid "Unable to Show Folder"
-msgstr "Papkani ko'rsatib bo'lmadi"
-
-#: src/View/ViewContainer.vala:407
-msgid "The server for this folder could not be located."
-msgstr "Ko'rsatilgan papka serverini aniqlab bo'lmadi."
-
-#: src/View/ViewContainer.vala:418
-msgid "File not Found"
-msgstr "Fayl topilmadi"
-
-#: src/View/ViewContainer.vala:419
-msgid "The file selected no longer exists."
-msgstr "Tanlangan fayl endi mavjud emas."
-
-#: src/View/Sidebar/BookmarkListBox.vala:129
-msgid "View the home folder"
-msgstr "Uy katalogini ko'rish"
-
-#: src/View/Sidebar/BookmarkListBox.vala:142
-msgid "View the list of recently used files"
-msgstr "Yaqin orada foydalanilgan fayllar ro'yxatini ko'rish"
-
-#: src/View/Sidebar/BookmarkListBox.vala:156 libwidgets/Resources.vala:69
-msgid "Trash"
-msgstr "Savatcha"
-
-#: src/View/Sidebar/BookmarkListBox.vala:164
-msgid "Open the Trash"
-msgstr "Savatchani ochish"
-
-#: src/View/Sidebar/DeviceListBox.vala:129
-msgid "View the root of the local filesystem"
-msgstr "Mahalliy fayl tizimining ildiz qismini ko'rish"
-
-#: src/View/Sidebar/DeviceRow.vala:116
-#, c-format
-msgid "%s free"
-msgstr "%s bo'sh"
-
-#: src/View/Sidebar/DeviceRow.vala:117
-#, c-format
-msgid "%s used of %s"
-msgstr "%s dan %s qismi ishlatilgan"
-
-#: src/View/Sidebar/NetworkListBox.vala:93
-msgid "Entire Network"
-msgstr "Butun tarmoq"
-
-#: src/View/Sidebar/NetworkListBox.vala:100
-msgid "Browse the contents of the network"
-msgstr "Tarmoq tarkibini ko'rish"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:49
+#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Ochish"
 
-#: src/View/Sidebar/PopupMenuBuilder.vala:53
-msgid "Open in New _Tab"
-msgstr "Yangi y_orliqda ochish"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:57
-msgid "Open in New _Window"
-msgstr "Yangi _oynada ochish"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:61
-msgid "Remove"
-msgstr "O'chirish"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:65
-msgid "Rename"
-msgstr "Qaytanomlash"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:69
-msgid "_Mount"
-msgstr "_Ulash"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:73
-msgid "_Unmount"
-msgstr "_Uzish"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:77
-msgid "_Eject"
-msgstr "_Chiqarish"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:89
-#, fuzzy
-#| msgid "Empty All Trash"
-msgid "Permanently Delete All Trash"
-msgstr "Savatchani tozalash"
-
-#: src/View/Sidebar/PopupMenuBuilder.vala:95
-#, fuzzy
-#| msgid "Empty Trash on this Mount"
-msgid "Permanently Delete Trash on this Mount"
-msgstr "Ushbu ulangan qurilmaning savatchasini tozalash"
-
-#: src/View/Sidebar/SidebarWindow.vala:45
-#: libwidgets/View/SearchResults.vala:282
-msgid "Bookmarks"
-msgstr "Xatcho'plar"
-
-#: src/View/Sidebar/SidebarWindow.vala:46
-msgid "Common places plus saved folders and files"
-msgstr "Umumiy joylar va qistirilgan papka va fayllar"
-
-#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
-#: src/View/Sidebar/SidebarWindow.vala:53
-msgid "Storage"
-msgstr "Saqlagichlar"
-
-#: src/View/Sidebar/SidebarWindow.vala:54
-msgid "Internal and connected storage devices"
-msgstr "Ichki va ulangan saqlash qurilmalari"
-
-#: src/View/Sidebar/SidebarWindow.vala:60 libwidgets/Resources.vala:66
-msgid "Network"
-msgstr "Tarmoq"
-
-#: src/View/Sidebar/SidebarWindow.vala:61
-msgid "Devices and places available via a network"
-msgstr "Tarmoq orqali mavjud bo'lgan qurilmalar va joylar"
-
-#: src/View/Sidebar/SidebarWindow.vala:84
-msgid "Connect Server…"
-msgstr "Serverga bog'lanish…"
-
-#: src/View/Slot.vala:31
-msgid "This Folder Is Empty"
-msgstr "Papka bo'sh"
-
-#: src/View/Slot.vala:32
-msgid "Trash Is Empty"
-msgstr "Savatcha bo'sh"
-
-#: src/View/Slot.vala:33
-msgid "There Are No Recent Files"
-msgstr "Bu yerda yaqin orada foydalanilgan fayllar yo'q"
-
-#: src/View/Slot.vala:34
-msgid "Access Denied"
-msgstr "Taqiqlangan hudud"
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "Privacy mode is on"
-msgstr "Shaxsiy rejim yoqildi"
-
-#: src/View/PrivacyModeOn.vala:28
-msgid "No recent files are remembered"
-msgstr "Tavsiya qilingan yangi fayllar yo'q"
-
-#: src/View/PrivacyModeOn.vala:30
-msgid "Change security settings"
-msgstr "Havfsizlik sozlamalarini o'zgartirish"
-
-#: src/View/PrivacyModeOn.vala:31
-msgid "Open the system security and privacy settings app"
-msgstr "Xavfsizlik va maxfiylikni sozlash dasturini ochish"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:135
-#: src/View/Widgets/LocationBar.vala:198
-msgid "Search or Type Path"
-msgstr "Yo'lni kiriting yoki izlang"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
-msgid "Open in New Tab"
-msgstr "Yangi yorliqda ochish"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:457
-msgid "Open in New Window"
-msgstr "Yangi oynada ochish"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
-msgid "Open in Other Application…"
-msgstr "Boshqa ilovada ochish…"
-
-#: src/View/Widgets/HeaderBar.vala:66
-msgid "Previous"
-msgstr "Orqaga"
-
-#: src/View/Widgets/HeaderBar.vala:73
-msgid "Next"
-msgstr "Oldinga"
-
-#: src/View/Widgets/LocationBar.vala:194
-msgid "Reload this folder"
-msgstr "Ushbu papkani yangilash"
-
-#: src/View/Widgets/LocationBar.vala:207
-msgid "Searching…"
-msgstr "Qidirilmoqda…"
-
-#: src/View/Widgets/OverlayBar.vala:209
-#, c-format
-msgid "%u folders"
-msgstr "%u papka"
-
-#: src/View/Widgets/OverlayBar.vala:211 src/View/Widgets/OverlayBar.vala:221
-#, c-format
-msgid " and %u other item (%s) selected"
-msgid_plural " and %u other items (%s) selected"
-msgstr[0] " va %u boshqa elementlar (%s) belgilandi"
-
-#: src/View/Widgets/OverlayBar.vala:215 src/View/Widgets/OverlayBar.vala:225
-msgid " selected"
-msgstr " belgilandi"
-
-#: src/View/Widgets/OverlayBar.vala:228
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u elementlar belgilandi (%s)"
-
-#. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:272
-#, c-format
-msgid "%u sub-folder, "
-msgid_plural "%u sub-folders, "
-msgstr[0] "%u ostpapkalar, "
-
-#. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:278
-#, c-format
-msgid "%u file, "
-msgid_plural "%u files, "
-msgstr[0] "%u fayl, "
-
-#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:288
-#, c-format
-msgid "%s approx."
-msgstr "taxminan %s."
-
-#. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:291
-msgid "unknown size"
-msgstr "hajmi noaniq"
-
-#. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:295
-#, c-format
-msgid "%u file not readable"
-msgid_plural "%u files not readable"
-msgstr[0] "%u o'qib bo'lmaydigan fayllar"
-
-#: src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "O'qish"
-
-#: src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Yozish"
-
-#: src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Ishga tushirish"
+#: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
+msgid "Save"
+msgstr ""
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -833,86 +73,90 @@ msgstr "WebDAV (HTTP)"
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Himoyalangan WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:128
+#: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
 msgstr "Server ma'lumotlari"
 
-#: libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
 msgstr "Server nomi yoki IP-manzili"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
 msgstr "Server:"
 
-#: libcore/ConnectServerDialog.vala:143
+#: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:175
+#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
+#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:533
+msgid "Type:"
+msgstr "Turi:"
+
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
 msgstr "Serverdagi umumiy resursning nomi (zaruriy emas)"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "Resurs:"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
 msgstr "Serverdagi umumiy papkaga yo'nalish (zaruriy emas)"
 
-#: libcore/ConnectServerDialog.vala:185
+#: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
 msgstr "Papka:"
 
-#: libcore/ConnectServerDialog.vala:187
+#: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
 msgstr "Foydalanuvchi ma'lumotlari"
 
-#: libcore/ConnectServerDialog.vala:192
+#: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
 msgstr "Windows domeni nomi"
 
-#: libcore/ConnectServerDialog.vala:194
+#: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
 msgstr "Domen:"
 
-#: libcore/ConnectServerDialog.vala:199
+#: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
 msgstr "Serverdagi foydalanuvchi nomi"
 
-#: libcore/ConnectServerDialog.vala:201
+#: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
 msgstr "Foydalanuvchi nomi:"
 
-#: libcore/ConnectServerDialog.vala:208
+#: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
 msgstr "Parol:"
 
-#: libcore/ConnectServerDialog.vala:210
+#: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
 msgstr "Ushbu parolni eslab qolish"
 
-#: libcore/ConnectServerDialog.vala:213 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-msgid "Cancel"
-msgstr "Bekor qilish"
-
-#: libcore/ConnectServerDialog.vala:216
+#: libcore/ConnectServerDialog.vala:225
 msgid "Connect"
 msgstr "Ulanish"
 
-#: libcore/ConnectServerDialog.vala:223
+#: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
 msgstr "Davom etish"
 
-#: libcore/ConnectServerDialog.vala:274
+#: libcore/ConnectServerDialog.vala:283
 msgid "Connecting…"
 msgstr "Bog'lanmoqda…"
 
-#: libcore/ConnectServerDialog.vala:381
+#: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
 msgstr "Foydalanuvchi ma'lumotlarini tekshiring."
+
+#: libcore/Directory.vala:684
+msgid "Server did not respond within time limit"
+msgstr "Kutilgan vaqt mobaynida server javob bermadi"
 
 #: libcore/DndHandler.vala:50
 #, c-format
@@ -931,6 +175,51 @@ msgstr "Bu yerga nusxalash"
 msgid "Link Here"
 msgstr "Bu yerga bog'lama yaratish"
 
+#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1116
+msgid "Inaccessible"
+msgstr ""
+
+#: libcore/File.vala:883
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Failed to parse the desktop file"
+msgstr "Papka yaratib bo'lmadi"
+
+#: libcore/File.vala:887
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Failed to parse the desktop file: "
+msgstr "Papka yaratib bo'lmadi"
+
+#: libcore/File.vala:899
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Failed to create command from file: "
+msgstr "Papka yaratib bo'lmadi"
+
+#: libcore/File.vala:908
+#, fuzzy
+#| msgid "Unable to Mount Folder"
+msgid "Unable to Launch Desktop File: "
+msgstr "Papkani ulab bo'lmadi"
+
+#: libcore/File.vala:1111
+#, fuzzy
+#| msgid "Empty File"
+msgid "Empty"
+msgstr "Bo'sh fayl"
+
+#: libcore/File.vala:1113
+#, c-format
+msgid "%i item"
+msgid_plural "%i items"
+msgstr[0] ""
+
+#: libcore/File.vala:1124
+#, c-format
+msgid "link to %s"
+msgstr ""
+
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
 msgstr "Konflikt fayllar"
@@ -938,6 +227,11 @@ msgstr "Konflikt fayllar"
 #: libcore/FileConflictDialog.vala:97
 msgid "Original file"
 msgstr "Birlamchi fayl"
+
+#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: src/Dialogs/PropertiesWindow.vala:526
+msgid "Size:"
+msgstr "Hajmi:"
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
@@ -1051,7 +345,7 @@ msgstr "Birlashtirish"
 
 #: libcore/FileUtils.vala:89
 #, c-format
-msgid "Could not determine original location of \"%s\" "
+msgid "Could not determine original location of \"%s\""
 msgstr ""
 
 #: libcore/FileUtils.vala:90
@@ -1128,6 +422,13 @@ msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d daqiqa"
 
+#. TRANSLATORS The %s will be translated into "x hours, y minutes"
+#. TRANSLATORS: folders, files
+#: libcore/FileUtils.vala:1038 src/Dialogs/PropertiesWindow.vala:1242
+#, c-format
+msgid "%s, %s"
+msgstr "%s, %s"
+
 #: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
@@ -1159,94 +460,6 @@ msgstr "("
 #: libcore/FileUtils.vala:1056
 msgid ")"
 msgstr ")"
-
-#: libcore/Directory.vala:684
-msgid "Server did not respond within time limit"
-msgstr "Kutilgan vaqt mobaynida server javob bermadi"
-
-#: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
-#: libcore/ProgressInfo.vala:33
-msgid "Preparing"
-msgstr "Tayyorlanmoqda"
-
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_Bekor qilish"
-
-#: libcore/StockDialogs.vala:21
-msgid "Delete"
-msgstr "O'chirish"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Barchasini o'tkazib _yuborish"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "Tak_rorlash"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "Barchasini o'_chirish"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Almashtirish"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "_Barchasini almashtirish"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "B_irlashtirish"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Barchasini bir_lashtirish"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Majburan n_usxalash"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "_Savatchani tozalash"
-
-#: libcore/UndoManager.vala:310
-msgid "Original location could not be determined"
-msgstr ""
-
-#: libcore/UndoManager.vala:311
-msgid "Open trash folder and restore manually"
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:40
-msgid "Permanently delete all items from Trash?"
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:41
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:44
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:45
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:111
-msgid "Emptying Trash"
-msgstr ""
-
-#: libcore/FileOperations/MountUtils.vala:26
-#, c-format
-msgid "Unable to mount '%s'"
-msgstr ""
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1404,8 +617,10 @@ msgid ""
 msgstr ""
 
 #: libcore/marlin-file-operations.c:842
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+#, fuzzy
+#| msgid "Cannot remove files from here"
+msgid "Cannot move file to trash. Try to delete it?"
+msgstr "Bu yerdan fayllarni o'chirib bo'lmadi"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
@@ -1844,94 +1059,253 @@ msgstr ""
 msgid "There was an error creating the directory in %s."
 msgstr ""
 
-#: libwidgets/Chrome/BasicLocationBar.vala:88
-msgid "Type a path"
+#: libcore/PopupMenuBuilder.vala:54
+msgid "Open in New _Tab"
+msgstr "Yangi y_orliqda ochish"
+
+#: libcore/PopupMenuBuilder.vala:58
+msgid "Open in New _Window"
+msgstr "Yangi _oynada ochish"
+
+#: libcore/PopupMenuBuilder.vala:62
+msgid "Remove"
+msgstr "O'chirish"
+
+#: libcore/PopupMenuBuilder.vala:66
+msgid "Rename"
+msgstr "Qaytanomlash"
+
+#: libcore/PopupMenuBuilder.vala:70
+msgid "_Mount"
+msgstr "_Ulash"
+
+#: libcore/PopupMenuBuilder.vala:74
+msgid "_Unmount"
+msgstr "_Uzish"
+
+#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
+#: src/View/AbstractDirectoryView.vala:2008
+msgid "Properties"
+msgstr "Xususiyatlar"
+
+#: libcore/PopupMenuBuilder.vala:83
+msgid "Eject Media"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:178
+#: libcore/PopupMenuBuilder.vala:88
+#, fuzzy
+#| msgid "Remove"
+msgid "Safely Remove"
+msgstr "O'chirish"
+
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
+msgid "Add to Bookmarks"
+msgstr "Xatcho'pga qo'shish"
+
+#: libcore/PopupMenuBuilder.vala:104
+#, fuzzy
+#| msgid "Empty All Trash"
+msgid "Permanently Delete All Trash"
+msgstr "Savatchani tozalash"
+
+#: libcore/PopupMenuBuilder.vala:104
+#, fuzzy
+#| msgid "Empty All Trash"
+msgid "Permanently Delete Trash"
+msgstr "Savatchani tozalash"
+
+#: libcore/PopupMenuBuilder.vala:117
+#, fuzzy
+#| msgid "Empty Trash on this Mount"
+msgid "Permanently Delete Trash on this Mount"
+msgstr "Ushbu ulangan qurilmaning savatchasini tozalash"
+
+#: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
+#: libcore/ProgressInfo.vala:33
+msgid "Preparing"
+msgstr "Tayyorlanmoqda"
+
+#: libcore/Resources.vala:22 src/DesktopLauncher.vala:25
+msgid "Files"
+msgstr ""
+
+#: libcore/Resources.vala:61
+msgid "AFP"
+msgstr ""
+
+#: libcore/Resources.vala:62
+msgid "AFC"
+msgstr ""
+
+#: libcore/Resources.vala:63
+msgid "DAV"
+msgstr ""
+
+#: libcore/Resources.vala:64
+msgid "DAVS"
+msgstr ""
+
+#: libcore/Resources.vala:65
+msgid "FTP"
+msgstr ""
+
+#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:60
+msgid "Network"
+msgstr "Tarmoq"
+
+#: libcore/Resources.vala:67
+msgid "SFTP"
+msgstr ""
+
+#: libcore/Resources.vala:68
+msgid "SMB"
+msgstr ""
+
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+msgid "Trash"
+msgstr "Savatcha"
+
+#: libcore/Resources.vala:70
+msgid "Recent"
+msgstr ""
+
+#: libcore/Resources.vala:71
+msgid "MTP"
+msgstr ""
+
+#: libcore/Resources.vala:72
+msgid "GPHOTO2"
+msgstr ""
+
+#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:44
+#: src/View/Sidebar/DeviceListBox.vala:140
+msgid "File System"
+msgstr "Fayl tizimi"
+
+#: libcore/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_Bekor qilish"
+
+#: libcore/StockDialogs.vala:21
+msgid "Delete"
+msgstr "O'chirish"
+
+#: libcore/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Barchasini o'tkazib _yuborish"
+
+#: libcore/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "Tak_rorlash"
+
+#: libcore/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Barchasini o'_chirish"
+
+#: libcore/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Almashtirish"
+
+#: libcore/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "_Barchasini almashtirish"
+
+#: libcore/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "B_irlashtirish"
+
+#: libcore/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Barchasini bir_lashtirish"
+
+#: libcore/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Majburan n_usxalash"
+
+#: libcore/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "_Savatchani tozalash"
+
+#: libcore/UndoManager.vala:310
+msgid "Original location could not be determined"
+msgstr ""
+
+#: libcore/UndoManager.vala:311
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: libcore/FileOperations/DialogUtils.vala:54
+#: src/Dialogs/AbstractPropertiesDialog.vala:80
+msgid "Close"
+msgstr "Yopish"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:40
+msgid "Permanently delete all items from Trash?"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:41
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:44
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:45
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:111
+msgid "Emptying Trash"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:31
+#, fuzzy, c-format
+#| msgid "Unable to Mount Folder"
+msgid "Unable to unmount '%s'"
+msgstr "Papkani ulab bo'lmadi"
+
+#: libcore/FileOperations/MountUtils.vala:52
+#, fuzzy, c-format
+#| msgid "Failed to execute \"%s\""
+msgid "Unable to eject '%s'"
+msgstr "\"%s\" ni ishga tushirib bo'lmadi"
+
+#: libcore/FileOperations/MountUtils.vala:104
+#, c-format
+msgid "Unable to mount '%s'"
+msgstr ""
+
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:297
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:292
 #, c-format
 msgid "Go to %s"
 msgstr ""
 
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:375
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:374
 msgid "Type Path"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:82
-msgid "More Results …"
+#: libcore/Widgets/BasicLocationBar.vala:88
+msgid "Type a path"
 msgstr ""
 
-#: libwidgets/View/SearchResults.vala:274
-msgid "In This Folder"
-msgstr ""
-
-#: libwidgets/View/SearchResults.vala:278
-msgid "Below This Folder"
-msgstr ""
-
-#: libwidgets/View/SearchResults.vala:287
-msgid "Recently Used"
-msgstr ""
-
-#: libwidgets/Chrome/ViewSwitcher.vala:34
+#: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:41
+#: libcore/Widgets/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr ""
 
-#: libwidgets/Chrome/ViewSwitcher.vala:48
+#: libcore/Widgets/ViewSwitcher.vala:60
 msgid "View in Columns"
-msgstr ""
-
-#: libwidgets/Resources.vala:22
-msgid "Files"
-msgstr ""
-
-#: libwidgets/Resources.vala:61
-msgid "AFP"
-msgstr ""
-
-#: libwidgets/Resources.vala:62
-msgid "AFC"
-msgstr ""
-
-#: libwidgets/Resources.vala:63
-msgid "DAV"
-msgstr ""
-
-#: libwidgets/Resources.vala:64
-msgid "DAVS"
-msgstr ""
-
-#: libwidgets/Resources.vala:65
-msgid "FTP"
-msgstr ""
-
-#: libwidgets/Resources.vala:67
-msgid "SFTP"
-msgstr ""
-
-#: libwidgets/Resources.vala:68
-msgid "SMB"
-msgstr ""
-
-#: libwidgets/Resources.vala:70
-msgid "Recent"
-msgstr ""
-
-#: libwidgets/Resources.vala:71
-msgid "MTP"
-msgstr ""
-
-#: libwidgets/Resources.vala:72
-msgid "GPHOTO2"
 msgstr ""
 
 #: plugins/pantheon-files-trash/plugin.vala:19
@@ -1948,4 +1322,826 @@ msgstr ""
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
+msgstr ""
+
+#: plugins/send-by-email/plugin.vala:26
+msgid "Send by Email"
+msgstr ""
+
+#: src/Application.vala:158
+msgid "Show the version of the program"
+msgstr "Dastur talqinini ko'rsatish"
+
+#: src/Application.vala:160
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Bir yoki bir nechta bog'lamalarni, har birini alohida yorliqda ochish"
+
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1889
+#: src/View/AbstractDirectoryView.vala:1895
+msgid "New Window"
+msgstr "Yangi oyna"
+
+#: src/Application.vala:164
+msgid "Quit Files"
+msgstr "Chiqish"
+
+#: src/Application.vala:166
+msgid "Enable debug logging"
+msgstr "Tahlil qilish uchun jurnalga yozib borishni yoqish"
+
+#: src/Application.vala:169
+msgid "[URI…]"
+msgstr "[URI...]"
+
+#: src/Application.vala:172
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"Fayl tizimini fayl menejerida ko'rish"
+
+#: src/Application.vala:200
+msgid "--quit cannot be used with URIs."
+msgstr "Manzillar (URI) bilan birgalikda --quit ni ishlatib bo'lmaydi."
+
+#: src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr ""
+
+#: src/DesktopLauncher.vala:22
+#, fuzzy
+#| msgid "Filename"
+msgid "File Manager"
+msgstr "Fayl nomi"
+
+#: src/DesktopLauncher.vala:23
+#, fuzzy
+#| msgid "New Window"
+msgid "New _Window"
+msgstr "Yangi oyna"
+
+#: src/DesktopLauncher.vala:24
+#, fuzzy
+#| msgid "(as Administrator)"
+msgid "New Window As _Administrator"
+msgstr "(administrator huquqi bilan)"
+
+#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+msgid "File Operations"
+msgstr "Fayllar bilan ishlash"
+
+#. TRANSLATORS: %s will be replaced by the title of the file operation
+#: src/ProgressUIHandler.vala:181
+#, c-format
+msgid "Completed %s"
+msgstr "%s bajarildi"
+
+#: src/ProgressUIHandler.vala:184
+msgid "All file operations have ended"
+msgstr "Fayllar bilan barcha operatsiyalar bajarildi"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr "Ma'lumotlar"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:59
+msgid "General"
+msgstr "Umumiy"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:144
+msgid "Device Usage"
+msgstr "Qurilmadan foydalanish"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:164
+msgid "Capacity:"
+msgstr "Sig'imi:"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:165
+#: src/Dialogs/AbstractPropertiesDialog.vala:168
+#: src/Dialogs/AbstractPropertiesDialog.vala:171
+#: src/Dialogs/PropertiesWindow.vala:455 src/Dialogs/PropertiesWindow.vala:494
+msgid "Unknown"
+msgstr "Noma'lum"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:167
+msgid "Available:"
+msgstr "Mavjud:"
+
+#: src/Dialogs/AbstractPropertiesDialog.vala:170
+msgid "Used:"
+msgstr "Foydalanilgan:"
+
+#: src/Dialogs/ChooseAppDialog.vala:43
+msgid "Set as default"
+msgstr "Asosiy sifatida o'rnatish"
+
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Unable to determine file ownership and permissions"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:245
+msgid "Permissions"
+msgstr "Huquqlar"
+
+#: src/Dialogs/PropertiesWindow.vala:259
+#, c-format
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] "%i faylini huquq yoki boshqa sabab o'qib bo'lmadi."
+
+#: src/Dialogs/PropertiesWindow.vala:263
+msgid "Actual Size Could Be Larger"
+msgstr "Haqiqiy hajmi kattaroq bo'lishi mumkin"
+
+#: src/Dialogs/PropertiesWindow.vala:283 src/Dialogs/PropertiesWindow.vala:302
+msgid "unknown"
+msgstr "noma'lum"
+
+#: src/Dialogs/PropertiesWindow.vala:466
+msgid "Loading…"
+msgstr "Yuklanmoqda…"
+
+#: src/Dialogs/PropertiesWindow.vala:500
+msgid "Could not be determined"
+msgstr "Aniqlab bo'lmadi"
+
+#: src/Dialogs/PropertiesWindow.vala:536
+msgid "Contains:"
+msgstr "Tarkibi:"
+
+#: src/Dialogs/PropertiesWindow.vala:560
+msgid "Created:"
+msgstr "Yaratilgan:"
+
+#: src/Dialogs/PropertiesWindow.vala:571
+msgid "Modified:"
+msgstr "O'zgartirilgan:"
+
+#: src/Dialogs/PropertiesWindow.vala:583
+msgid "Deleted:"
+msgstr "O'chirilgan:"
+
+#: src/Dialogs/PropertiesWindow.vala:593
+msgid "Media type:"
+msgstr "Qurilma turi:"
+
+#: src/Dialogs/PropertiesWindow.vala:600
+msgid "Resolution:"
+msgstr "O'lcham:"
+
+#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/VolumePropertiesWindow.vala:80
+msgid "Location:"
+msgstr "Manzil:"
+
+#: src/Dialogs/PropertiesWindow.vala:618
+msgid "Target:"
+msgstr "Joylashuv:"
+
+#: src/Dialogs/PropertiesWindow.vala:626
+msgid "Original Location:"
+msgstr "Asl joylashuvi:"
+
+#: src/Dialogs/PropertiesWindow.vala:649
+#: src/View/AbstractDirectoryView.vala:1976
+msgid "Other Application…"
+msgstr "Boshqa ilova…"
+
+#: src/Dialogs/PropertiesWindow.vala:669
+msgid "Open with:"
+msgstr "Ushbu dastur yordamida ochish:"
+
+#: src/Dialogs/PropertiesWindow.vala:938 src/Dialogs/PropertiesWindow.vala:945
+msgid "Owner:"
+msgstr "Egasi:"
+
+#: src/Dialogs/PropertiesWindow.vala:939 src/Dialogs/PropertiesWindow.vala:948
+msgid "Group:"
+msgstr "Guruh:"
+
+#: src/Dialogs/PropertiesWindow.vala:951
+msgid "Everyone:"
+msgstr "Barcha:"
+
+#: src/Dialogs/PropertiesWindow.vala:1233
+#, c-format
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] "%u ostki papkalar"
+
+#: src/Dialogs/PropertiesWindow.vala:1237
+#: src/Dialogs/PropertiesWindow.vala:1259
+#, c-format
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] "%u fayl"
+
+#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:223
+#, c-format
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u papka"
+
+#: src/Dialogs/PropertiesWindow.vala:1264
+#, c-format
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] "%u elementlar belgilangan"
+
+#. TRANSLATORS: total (folders, files)
+#: src/Dialogs/PropertiesWindow.vala:1266
+#, c-format
+msgid "%s (%s, %s)"
+msgstr "%s (%s, %s)"
+
+#: src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Disk xususiyatlari"
+
+#: src/Dialogs/VolumePropertiesWindow.vala:90
+msgid "Format:"
+msgstr "Format:"
+
+#: src/Utils/MimeActions.vala:282
+msgid "Multiple file types selected"
+msgstr "Bir necha turdagi fayllar belgilangan"
+
+#: src/Utils/MimeActions.vala:283
+msgid "No single app can open all these types of file"
+msgstr "Ushbu tipdagi fayllarni hech qaysi dastur ocha olmaydi"
+
+#: src/Utils/MimeActions.vala:311
+msgid "Failed to open files"
+msgstr "Fayllarni ochib bo'lmadi"
+
+#: src/Utils/MimeActions.vala:321
+msgid "Could not open URIs"
+msgstr "URIlarni ochib bo'lmadi"
+
+#: src/Utils/MimeActions.vala:324
+msgid "Could not open files or URIs with this app"
+msgstr "Ushbu dastur yordamida fayllarni yoki URIni ochib bo'lmadi"
+
+#: src/View/AbstractDirectoryView.vala:827
+#: src/View/AbstractDirectoryView.vala:1138
+msgid "Cannot execute this file"
+msgstr "Ushbu faylni ishga tushirib bo'lmadi"
+
+#. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+#: src/View/AbstractDirectoryView.vala:837
+#, c-format
+msgid "“%s” must be moved from Trash before opening"
+msgstr "\"%s\" faylni ochishdan avval Savatchadan chiqarib olish kerak"
+
+#: src/View/AbstractDirectoryView.vala:838
+msgid ""
+"Files inside Trash cannot be opened. To open this file, it must be moved "
+"elsewhere."
+msgstr ""
+"Savatchadagi fayllar ochilmaydi. Uni ochish uchun avval boshqa joyga "
+"ko'chirib olish kerak."
+
+#: src/View/AbstractDirectoryView.vala:853
+msgid "Cannot open this file"
+msgstr "Faylni ochib bo'lmadi"
+
+#: src/View/AbstractDirectoryView.vala:866
+msgid "Cannot identify file type to open"
+msgstr "Faylni ochish uchun turini aniqlab bo'lmadi"
+
+#: src/View/AbstractDirectoryView.vala:1594
+msgid "Cannot drop this file"
+msgstr "Ushbu faylga joylashtirib bo'lmadi"
+
+#: src/View/AbstractDirectoryView.vala:1595
+msgid "Invalid file name provided"
+msgstr "Fayl nomi noto'g'ri"
+
+#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1878 src/View/Window.vala:181
+msgid "New Tab"
+msgstr "Yangi yorliq ochish"
+
+#: src/View/AbstractDirectoryView.vala:1912
+msgid "Run"
+msgstr "Ishga tushirish"
+
+#: src/View/AbstractDirectoryView.vala:1919
+#, c-format
+msgid "Open in %s"
+msgstr "\"%s\" da ochish"
+
+#: src/View/AbstractDirectoryView.vala:1988
+msgid "Open in"
+msgstr "Ushbu dasturda ochish"
+
+#: src/View/AbstractDirectoryView.vala:1990
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
+msgid "Open with"
+msgstr "Ushbu dastur yordamida ochish"
+
+#: src/View/AbstractDirectoryView.vala:1996
+msgid "Paste"
+msgstr "Joylashtirish"
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Select All"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2030
+msgid "Invert Selection"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2039
+msgid "Deselect All"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2047
+msgid "Cut"
+msgstr "Qirqib olish"
+
+#. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
+#: src/View/AbstractDirectoryView.vala:2055
+msgid "Copy"
+msgstr "Nusxa olish"
+
+#: src/View/AbstractDirectoryView.vala:2062
+msgid "Move to Trash"
+msgstr "Savatchaga o'tkazish"
+
+#: src/View/AbstractDirectoryView.vala:2067
+#, fuzzy
+#| msgid "Delete permanently"
+msgid "Delete Permanently"
+msgstr "To'liq o'chirib tashlash"
+
+#: src/View/AbstractDirectoryView.vala:2074
+msgid "Restore from Trash"
+msgstr "Savatchadan tiklash"
+
+#: src/View/AbstractDirectoryView.vala:2097
+msgid "Open Parent Folder"
+msgstr "Bosh papkani ochish"
+
+#: src/View/AbstractDirectoryView.vala:2100
+msgid "Remove from History"
+msgstr "Tarixdan tozalash"
+
+#: src/View/AbstractDirectoryView.vala:2128
+msgid "Rename…"
+msgstr "Qaytanomlash…"
+
+#: src/View/AbstractDirectoryView.vala:2135
+msgid "Copy as Link"
+msgstr "Bog'lamasidan nusxa olish"
+
+#: src/View/AbstractDirectoryView.vala:2152
+msgid "Paste Link into Folder"
+msgstr "Papkaga bog'lama joylashtirish"
+
+#: src/View/AbstractDirectoryView.vala:2154
+msgid "Paste into Folder"
+msgstr "Papkaga joylashtirish"
+
+#: src/View/AbstractDirectoryView.vala:2195
+msgid "Show Hidden Files"
+msgstr "Yashirin fayllarni ko'rsatish"
+
+#: src/View/AbstractDirectoryView.vala:2200
+msgid "Show Remote Thumbnails"
+msgstr "Masofadagi miniaturalarni ko'rsatish"
+
+#: src/View/AbstractDirectoryView.vala:2203
+msgid "Hide Thumbnails"
+msgstr "Miniaturalarni yashirish"
+
+#: src/View/AbstractDirectoryView.vala:2229
+msgid "Paste Link"
+msgstr "Bog'lama joylashtirish"
+
+#: src/View/AbstractDirectoryView.vala:2286
+msgid "Name"
+msgstr "Nomi"
+
+#: src/View/AbstractDirectoryView.vala:2291 src/View/ListView.vala:27
+msgid "Size"
+msgstr "Hajmi"
+
+#: src/View/AbstractDirectoryView.vala:2296 src/View/ListView.vala:28
+msgid "Type"
+msgstr "Turi"
+
+#: src/View/AbstractDirectoryView.vala:2301
+msgid "Date"
+msgstr "Sana"
+
+#: src/View/AbstractDirectoryView.vala:2306
+msgid "Reversed Order"
+msgstr "Teskari taribda"
+
+#: src/View/AbstractDirectoryView.vala:2309
+msgid "Folders Before Files"
+msgstr "Papkalar fayllardan oldin"
+
+#: src/View/AbstractDirectoryView.vala:2321
+msgid "Sort by"
+msgstr "Tartiblash"
+
+#: src/View/AbstractDirectoryView.vala:2329
+msgid "Folder"
+msgstr "Papka"
+
+#: src/View/AbstractDirectoryView.vala:2335
+msgid "Empty File"
+msgstr "Bo'sh fayl"
+
+#: src/View/AbstractDirectoryView.vala:2386
+msgid "New"
+msgstr "Yaratish"
+
+#: src/View/AbstractDirectoryView.vala:2627
+#, c-format
+msgid "Untitled %s"
+msgstr "Nomsiz \"%s\""
+
+#: src/View/AbstractDirectoryView.vala:2992
+#: src/View/AbstractDirectoryView.vala:3172
+msgid "Cannot remove files from here"
+msgstr "Bu yerdan fayllarni o'chirib bo'lmadi"
+
+#: src/View/AbstractDirectoryView.vala:2993
+#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3173
+msgid "You do not have permission to change this location"
+msgstr "Ushbu joylashuvni o'zgartirish uchun sizda huquq yetarli emas"
+
+#: src/View/AbstractDirectoryView.vala:3126
+msgid "Cannot copy files that are in the trash"
+msgstr "Savatchada turgan fayllardan nusxa olib bo'lmaydi"
+
+#: src/View/AbstractDirectoryView.vala:3127
+msgid "Cutting the selection instead"
+msgstr "Belgilanmaganlarni qirqib olish"
+
+#: src/View/AbstractDirectoryView.vala:3156
+msgid "Cannot paste files here"
+msgstr "Bu yerga fayllarni joylashtirib bo'lmadi"
+
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
+msgid "This Folder Does Not Exist"
+msgstr "Ushbu papka mavjud emas"
+
+#: src/View/DirectoryNotFound.vala:28
+#, c-format
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" papka topilmadi."
+
+#: src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Yaratish"
+
+#: src/View/DirectoryNotFound.vala:30
+#, c-format
+msgid "Create the folder \"%s\""
+msgstr "\"%s\" papkani yaratish"
+
+#: src/View/DirectoryNotFound.vala:45
+msgid "Failed to create the folder"
+msgstr "Papka yaratib bo'lmadi"
+
+#: src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Fayl nomi"
+
+#: src/View/ListView.vala:29
+msgid "Modified"
+msgstr "O'zgartirilgan"
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "Privacy mode is on"
+msgstr "Shaxsiy rejim yoqildi"
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "No recent files are remembered"
+msgstr "Tavsiya qilingan yangi fayllar yo'q"
+
+#: src/View/PrivacyModeOn.vala:30
+msgid "Change security settings"
+msgstr "Havfsizlik sozlamalarini o'zgartirish"
+
+#: src/View/PrivacyModeOn.vala:31
+msgid "Open the system security and privacy settings app"
+msgstr "Xavfsizlik va maxfiylikni sozlash dasturini ochish"
+
+#: src/View/Slot.vala:31
+msgid "This Folder Is Empty"
+msgstr "Papka bo'sh"
+
+#: src/View/Slot.vala:32
+msgid "Trash Is Empty"
+msgstr "Savatcha bo'sh"
+
+#: src/View/Slot.vala:33
+msgid "There Are No Recent Files"
+msgstr "Bu yerda yaqin orada foydalanilgan fayllar yo'q"
+
+#: src/View/Slot.vala:34
+msgid "Access Denied"
+msgstr "Taqiqlangan hudud"
+
+#: src/View/ViewContainer.vala:367 src/View/Sidebar/BookmarkListBox.vala:121
+msgid "Home"
+msgstr "Uy papkasi"
+
+#: src/View/ViewContainer.vala:389
+msgid "You cannot create a folder here."
+msgstr "Siz bu yerda papka yarata olmaysiz."
+
+#: src/View/ViewContainer.vala:392
+msgid "The network is unavailable"
+msgstr "Tarmoq ishlamayapti"
+
+#: src/View/ViewContainer.vala:393
+msgid "A working network is needed to reach this folder"
+msgstr "Ushbu papkani ochish uchun tarmoq ishlayotgan bo'lishi kerak"
+
+#: src/View/ViewContainer.vala:396
+msgid "This Folder Does Not Belong to You"
+msgstr "Ushbu papka sizga tegishli emas"
+
+#: src/View/ViewContainer.vala:397
+msgid "You don't have permission to view this folder."
+msgstr "Ushbu papkani ko'rish uchun huquqingiz yo'q."
+
+#: src/View/ViewContainer.vala:399
+msgid "Unable to Mount Folder"
+msgstr "Papkani ulab bo'lmadi"
+
+#: src/View/ViewContainer.vala:400
+msgid "Could not connect to the server for this folder."
+msgstr "Serverdagi ushbu papkaga bog'lanib bo'lmadi."
+
+#: src/View/ViewContainer.vala:403
+msgid "Unable to Display Folder Contents"
+msgstr "Papka tarkibini ko'rsatib bo'lmadi"
+
+#: src/View/ViewContainer.vala:404
+msgid "The operation timed out."
+msgstr "Operatsiyani bajarish vaqti tugadi."
+
+#: src/View/ViewContainer.vala:406
+msgid "Unable to Show Folder"
+msgstr "Papkani ko'rsatib bo'lmadi"
+
+#: src/View/ViewContainer.vala:407
+msgid "The server for this folder could not be located."
+msgstr "Ko'rsatilgan papka serverini aniqlab bo'lmadi."
+
+#: src/View/ViewContainer.vala:418
+msgid "File not Found"
+msgstr "Fayl topilmadi"
+
+#: src/View/ViewContainer.vala:419
+msgid "The file selected no longer exists."
+msgstr "Tanlangan fayl endi mavjud emas."
+
+#: src/View/Window.vala:182
+msgid "Undo Close Tab"
+msgstr ""
+
+#: src/View/Window.vala:491
+#, fuzzy
+#| msgid "Close"
+msgid "Close Tab"
+msgstr "Yopish"
+
+#: src/View/Window.vala:492
+msgid "Duplicate Tab"
+msgstr ""
+
+#: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
+msgid "Open in New Window"
+msgstr "Yangi oynada ochish"
+
+#: src/View/Window.vala:606 src/View/Window.vala:616
+msgid "(as Administrator)"
+msgstr "(administrator huquqi bilan)"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:113
+#: src/View/Sidebar/AbstractMountableRow.vala:173
+#, fuzzy, c-format
+#| msgid "_Eject"
+msgid "Eject '%s'"
+msgstr "_Chiqarish"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:113
+#: src/View/Sidebar/AbstractMountableRow.vala:173
+#, fuzzy, c-format
+#| msgid "_Unmount"
+msgid "Unmount '%s'"
+msgstr "_Uzish"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:307
+#, c-format
+msgid "%s free"
+msgstr "%s bo'sh"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:308
+#, c-format
+msgid "%s used of %s"
+msgstr "%s dan %s qismi ishlatilgan"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:338
+#: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
+#: src/View/Sidebar/VolumelessMountRow.vala:42
+#: src/View/Widgets/SearchResults.vala:76
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s (%s)"
+msgstr "%s (%s, %s)"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:338
+msgid "Not mounted"
+msgstr ""
+
+#: src/View/Sidebar/BookmarkListBox.vala:129
+msgid "View the home folder"
+msgstr "Uy katalogini ko'rish"
+
+#: src/View/Sidebar/BookmarkListBox.vala:146
+msgid "View the list of recently used files"
+msgstr "Yaqin orada foydalanilgan fayllar ro'yxatini ko'rish"
+
+#: src/View/Sidebar/BookmarkListBox.vala:170
+msgid "Open the Trash"
+msgstr "Savatchani ochish"
+
+#: src/View/Sidebar/DeviceListBox.vala:152
+msgid "View the root of the local filesystem"
+msgstr "Mahalliy fayl tizimining ildiz qismini ko'rish"
+
+#: src/View/Sidebar/DriveRow.vala:70
+#, c-format
+msgid "%s contains no accessible data."
+msgstr ""
+
+#: src/View/Sidebar/DriveRow.vala:71
+msgid ""
+"To use this drive you may need to replug it, or insert media or format it."
+msgstr ""
+
+#: src/View/Sidebar/DriveRow.vala:102
+msgid "Unformatted or no media"
+msgstr ""
+
+#: src/View/Sidebar/NetworkListBox.vala:124
+msgid "Entire Network"
+msgstr "Butun tarmoq"
+
+#: src/View/Sidebar/NetworkListBox.vala:134
+msgid "Browse the contents of the network"
+msgstr "Tarmoq tarkibini ko'rish"
+
+#: src/View/Sidebar/SidebarWindow.vala:45
+#: src/View/Widgets/SearchResults.vala:289
+msgid "Bookmarks"
+msgstr "Xatcho'plar"
+
+#: src/View/Sidebar/SidebarWindow.vala:46
+msgid "Common places plus saved folders and files"
+msgstr "Umumiy joylar va qistirilgan papka va fayllar"
+
+#. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
+#: src/View/Sidebar/SidebarWindow.vala:53
+msgid "Storage"
+msgstr "Saqlagichlar"
+
+#: src/View/Sidebar/SidebarWindow.vala:54
+msgid "Internal and connected storage devices"
+msgstr "Ichki va ulangan saqlash qurilmalari"
+
+#: src/View/Sidebar/SidebarWindow.vala:61
+msgid "Devices and places available via a network"
+msgstr "Tarmoq orqali mavjud bo'lgan qurilmalar va joylar"
+
+#: src/View/Sidebar/SidebarWindow.vala:84
+msgid "Connect Server…"
+msgstr "Serverga bog'lanish…"
+
+#: src/View/Sidebar/VolumelessMountRow.vala:42
+#, fuzzy
+#| msgid "_Unmount"
+msgid "Bind mount"
+msgstr "_Uzish"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
+#: src/View/Widgets/LocationBar.vala:200
+msgid "Search or Type Path"
+msgstr "Yo'lni kiriting yoki izlang"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:441
+msgid "Open in New Tab"
+msgstr "Yangi yorliqda ochish"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
+msgid "Open in Other Application…"
+msgstr "Boshqa ilovada ochish…"
+
+#: src/View/Widgets/HeaderBar.vala:66
+msgid "Previous"
+msgstr "Orqaga"
+
+#: src/View/Widgets/HeaderBar.vala:73
+msgid "Next"
+msgstr "Oldinga"
+
+#: src/View/Widgets/LocationBar.vala:196
+msgid "Reload this folder"
+msgstr "Ushbu papkani yangilash"
+
+#: src/View/Widgets/LocationBar.vala:209
+msgid "Searching…"
+msgstr "Qidirilmoqda…"
+
+#: src/View/Widgets/OverlayBar.vala:214
+#, c-format
+msgid "%u folders"
+msgstr "%u papka"
+
+#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#, c-format
+msgid " and %u other item (%s) selected"
+msgid_plural " and %u other items (%s) selected"
+msgstr[0] " va %u boshqa elementlar (%s) belgilandi"
+
+#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
+msgid " selected"
+msgstr " belgilandi"
+
+#: src/View/Widgets/OverlayBar.vala:233
+#, c-format
+msgid "%u items selected (%s)"
+msgstr "%u elementlar belgilandi (%s)"
+
+#. TRANSLATORS: %u will be substituted by the number of sub folders
+#: src/View/Widgets/OverlayBar.vala:277
+#, c-format
+msgid "%u sub-folder, "
+msgid_plural "%u sub-folders, "
+msgstr[0] "%u ostpapkalar, "
+
+#. TRANSLATORS: %u will be substituted by the number of readable files
+#: src/View/Widgets/OverlayBar.vala:283
+#, c-format
+msgid "%u file, "
+msgid_plural "%u files, "
+msgstr[0] "%u fayl, "
+
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: src/View/Widgets/OverlayBar.vala:293
+#, c-format
+msgid "%s approx."
+msgstr "taxminan %s."
+
+#. TRANSLATORS: 'size' refers to disk space
+#: src/View/Widgets/OverlayBar.vala:296
+msgid "unknown size"
+msgstr "hajmi noaniq"
+
+#. TRANSLATORS: %u will be substituted by the number of unreadable files
+#: src/View/Widgets/OverlayBar.vala:300
+#, c-format
+msgid "%u file not readable"
+msgid_plural "%u files not readable"
+msgstr[0] "%u o'qib bo'lmaydigan fayllar"
+
+#: src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "O'qish"
+
+#: src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Yozish"
+
+#: src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Ishga tushirish"
+
+#: src/View/Widgets/SearchResults.vala:89
+msgid "More Results …"
+msgstr ""
+
+#: src/View/Widgets/SearchResults.vala:281
+msgid "In This Folder"
+msgstr ""
+
+#: src/View/Widgets/SearchResults.vala:285
+msgid "Below This Folder"
+msgstr ""
+
+#: src/View/Widgets/SearchResults.vala:294
+msgid "Recently Used"
 msgstr ""

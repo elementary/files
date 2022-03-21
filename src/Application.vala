@@ -68,10 +68,6 @@ public class Files.Application : Gtk.Application {
     public override void startup () {
         base.startup ();
 
-        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG) {
-            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
-        }
-
         init_schemas ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
@@ -130,7 +126,6 @@ public class Files.Application : Gtk.Application {
             return 1;
         };
 
-        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
         this.hold ();
         int result = _command_line (cmd);
         this.release ();
@@ -188,7 +183,7 @@ public class Files.Application : Gtk.Application {
 
         /* Handle arguments */
         if (debug) {
-            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+            GLib.Environment.set_variable ("G_MESSAGES_DEBUG", "all", false);
         }
 
         if (version) {
@@ -210,11 +205,11 @@ public class Files.Application : Gtk.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
+            string path = FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
             GLib.File? file = null;
 
             if (path.length > 0) {
-                file = GLib.File.new_for_uri (PF.FileUtils.escape_uri (path));
+                file = GLib.File.new_for_uri (FileUtils.escape_uri (path));
             }
 
             if (file != null) {

@@ -251,7 +251,7 @@ public class Files.File : GLib.Object {
     }
 
     public bool is_trashed () {
-        return PF.FileUtils.location_is_in_trash (get_target_location ());
+        return FileUtils.location_is_in_trash (get_target_location ());
     }
 
     public bool is_readable () {
@@ -375,7 +375,7 @@ public class Files.File : GLib.Object {
     }
 
     public string? get_formated_time (string attr) {
-        return PF.FileUtils.get_formatted_time_attribute_from_info (info, attr);
+        return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
     public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, Files.File.IconFlags flags) {
@@ -425,7 +425,7 @@ public class Files.File : GLib.Object {
 
         if (gicon != null) {
             icon = Files.IconInfo.lookup (gicon, size, scale);
-            if (icon != null && icon.is_fallback ()) {
+            if (icon == null || icon.is_fallback ()) {
                 icon = Files.IconInfo.get_generic_icon (size, scale);
             }
         } else {
@@ -468,7 +468,7 @@ public class Files.File : GLib.Object {
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
             if (Uri.parse_scheme (target_uri) == "afp") {
-                target_location = GLib.File.new_for_uri (PF.FileUtils.get_afp_target_uri (target_uri, uri));
+                target_location = GLib.File.new_for_uri (FileUtils.get_afp_target_uri (target_uri, uri));
             } else {
                 target_location = GLib.File.new_for_uri (target_uri);
             }
@@ -497,7 +497,7 @@ public class Files.File : GLib.Object {
         is_desktop = is_desktop_file ();
         if (is_desktop) {
             try {
-                var key_file = PF.FileUtils.key_file_from_file (location);
+                var key_file = FileUtils.key_file_from_file (location);
                 custom_icon_name = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_ICON);
                 /* drop any suffix (e.g. '.png') from themed icons */
                 if (!GLib.Path.is_absolute (custom_icon_name)) {
@@ -509,7 +509,7 @@ public class Files.File : GLib.Object {
 
             /* Do not show name from desktop file as this can be used as an exploit (lp:1660742) */
             try {
-                var key_file = PF.FileUtils.key_file_from_file (location);
+                var key_file = FileUtils.key_file_from_file (location);
                 var type = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_TYPE);
                 if (type == GLib.KeyFileDesktop.TYPE_LINK) {
                     var url = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_URL);
@@ -569,7 +569,6 @@ public class Files.File : GLib.Object {
         permissions = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_MODE);
         owner = info.get_attribute_string (GLib.FileAttribute.OWNER_USER);
         group = info.get_attribute_string (GLib.FileAttribute.OWNER_GROUP);
-
         if (info.has_attribute (GLib.FileAttribute.UNIX_UID)) {
             uid = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_UID);
             if (owner == null) {
@@ -577,6 +576,8 @@ public class Files.File : GLib.Object {
             }
         } else if (owner != null) { /* e.g. ftp info yields owner but not uid */
             uid = int.parse (owner);
+        } else {
+            owner = null;
         }
 
         if (info.has_attribute (GLib.FileAttribute.UNIX_GID)) {
@@ -586,6 +587,8 @@ public class Files.File : GLib.Object {
             }
         } else if (group != null) { /* e.g. ftp info yields owner but not uid */
             gid = int.parse (group);
+        } else {
+            group = null;
         }
 
         if (info.has_attribute (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT)) {
@@ -638,10 +641,10 @@ public class Files.File : GLib.Object {
 
     public void query_thumbnail_update () {
         /* Silently ignore invalid requests */
-        if (pix_size <= 1 || pix_scale <= 0)
+        if (pix_size <= 1 || pix_scale <= 0) {
             return;
-
-        if (get_thumbnail_path () == null) {
+        }
+        if (get_thumbnail_path () == null && thumbstate == ThumbState.READY) {
             var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
             var base_name = "%s.png".printf (md5_hash);
 
@@ -671,33 +674,43 @@ public class Files.File : GLib.Object {
     }
 
     public unowned string? get_thumbnail_path () {
+        unowned string? path = null;
         if (thumbnail_path != null) {
-            return thumbnail_path;
+            path = thumbnail_path;
         } else if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
-            return info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
+            path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
         }
 
-        return null;
+        return path;
     }
 
     public bool can_set_owner () {
         /* unknown file uid */
-        if (uid == -1)
-            return false;
+        if (uid == -1 ||
+            owner == null ||
+            uid == uint.parse (owner) ||
+            is_trashed ()) {
 
+            return false;
+        }
         /* root */
         return Posix.geteuid () == 0;
     }
 
     public bool can_set_group () {
-        if (gid == -1)
+        if (gid == -1 ||
+            group == null ||
+            gid == uint.parse (group) ||
+            is_trashed ()) {
+
             return false;
+        }
 
         var user_id = Posix.geteuid ();
-
         /* Owner is allowed to set group (with restrictions). */
-        if (user_id == uid)
+        if (user_id == uid) {
             return true;
+        }
 
         /* Root is also allowed to set group. */
         if (user_id == 0)
@@ -707,7 +720,15 @@ public class Files.File : GLib.Object {
     }
 
     public bool can_set_permissions () {
-        if (uid != -1 && location.is_native ()) {
+        if (uid == -1 ||
+            owner == null ||
+            uid == uint.parse (owner) ||
+            is_trashed ()) {
+
+            return false;
+        }
+
+        if (location.is_native ()) {
             /* Check the user. */
             Posix.uid_t user_id = Posix.geteuid ();
             /* Owner is allowed to set permissions. */
@@ -856,7 +877,7 @@ public class Files.File : GLib.Object {
         GLib.AppInfo app_info = null;
         if (is_desktop_file ()) {
             try {
-                var key_file = PF.FileUtils.key_file_from_file (location, null);
+                var key_file = FileUtils.key_file_from_file (location, null);
                 app_info = new GLib.DesktopAppInfo.from_keyfile (key_file);
                 if (app_info == null) {
                     throw new GLib.FileError.INVAL (_("Failed to parse the desktop file"));
@@ -897,13 +918,16 @@ public class Files.File : GLib.Object {
         }
 
         if (directories_first) {
+            /* When comparing files of different type, need to cancel out the native sorting of the TreeView
+             * so directories always come first. */
             if (is_folder () && !other.is_folder ()) {
-                return -1;
+                return reversed ? 1 : -1;
             } else if (other.is_folder () && !is_folder ()) {
-                return 1;
+                return reversed ? -1 : 1;
             }
         }
 
+        //Always sort files of same type in ASCENDING order as the TreeView will reverse them if needed
         int result = 0;
         switch (sort_type) {
             case Files.ListModel.ColumnID.FILENAME:
@@ -930,13 +954,11 @@ public class Files.File : GLib.Object {
                 }
 
                 break;
+            default:
+                assert_not_reached ();
         }
 
-        if (reversed) {
-            return -result;
-        } else {
-            return result;
-        }
+        return result;
     }
 
     public int compare_by_display_name (Files.File other) {
@@ -1039,7 +1061,10 @@ public class Files.File : GLib.Object {
     }
 
     private GLib.FileInfo? query_info () {
-        GLib.return_val_if_fail (location is GLib.File, null);
+        if (!(location is GLib.File) || location.get_uri ().has_prefix (Files.NETWORK_URI)) {
+            return null;
+        }
+
         is_mounted = true;
         exists = true;
         is_connected = true;
