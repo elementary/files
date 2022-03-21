@@ -733,6 +733,10 @@ namespace Files.View {
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+            if (current_tab == null) { // can occur during startup
+                return;
+            }
+
             ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
