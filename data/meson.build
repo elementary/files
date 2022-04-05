@@ -49,7 +49,6 @@ appdata_in = configure_file(
 )
 
 i18n.merge_file(
-    'policy',
     input: policy_in,
     output: meson.project_name() + '.policy',
     po_dir: join_paths(meson.source_root(), 'po', 'extra'),
@@ -59,7 +58,6 @@ i18n.merge_file(
 )
 
 i18n.merge_file(
-    'desktop',
     input: desktop_in,
     output: meson.project_name() + '.desktop',
     install: true,
@@ -69,7 +67,6 @@ i18n.merge_file(
 )
 
 i18n.merge_file(
-    'appdata',
     input: appdata_in,
     output: meson.project_name() + '.appdata.xml',
     install: true,

@@ -1868,15 +1868,36 @@ namespace Files {
 
             if (common_actions.get_action_enabled ("open-in")) {
                 var new_tab_menuitem = new Gtk.MenuItem ();
-                new_tab_menuitem.add (new Granite.AccelLabel (
-                    _("New Tab"),
-                    "<Shift>Return"
-                ));
-                new_tab_menuitem.action_name = "common.open-in";
+                if (selected_files != null) {
+                    new_tab_menuitem.add (new Granite.AccelLabel (
+                        _("New Tab"),
+                        "<Shift>Return"
+                    ));
+                    new_tab_menuitem.action_name = "common.open-in";
+                } else {
+                    new_tab_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("New Tab"),
+                        "win.tab::TAB"
+                    ));
+                    new_tab_menuitem.action_name = "win.tab";
+                }
+
                 new_tab_menuitem.action_target = "TAB";
 
-                var new_window_menuitem = new Gtk.MenuItem.with_label (_("New Window"));
-                new_window_menuitem.action_name = "common.open-in";
+                var new_window_menuitem = new Gtk.MenuItem ();
+                if (selected_files != null) {
+                    new_window_menuitem.add (new Granite.AccelLabel (
+                        _("New Window"),
+                        "<Shift><Ctrl>Return"
+                    ));
+                    new_window_menuitem.action_name = "common.open-in";
+                } else {
+                    new_window_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("New Window"),
+                        "win.tab::WINDOW"
+                    ));
+                    new_window_menuitem.action_name = "win.tab";
+                }
                 new_window_menuitem.action_target = "WINDOW";
 
                 open_submenu.add (new_tab_menuitem);
@@ -2572,7 +2593,7 @@ namespace Files {
         private bool app_is_this_app (AppInfo ai) {
             string exec_name = ai.get_executable ();
 
-            return (exec_name == Config.APP_NAME || exec_name == Config.TERMINAL_NAME);
+            return (exec_name == Config.APP_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {
@@ -2995,6 +3016,8 @@ namespace Files {
                         activate_selected_items (Files.OpenFlag.DEFAULT);
                     } else if (only_shift_pressed) {
                         activate_selected_items (Files.OpenFlag.NEW_TAB);
+                    } else if (shift_pressed && control_pressed && !alt_pressed) {
+                        activate_selected_items (Files.OpenFlag.NEW_WINDOW);
                     } else if (only_alt_pressed) {
                         common_actions.activate_action ("properties", null);
                     } else if (no_mods) {
