@@ -233,7 +233,6 @@ namespace Files {
                     y -= (int)(get_vadjustment ().value);
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
-                    // model.get_iter (out iter, path);
                     string? text = null;
                     model.@get (iter, ListModel.ColumnID.FILENAME, out text);
 
