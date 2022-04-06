@@ -209,7 +209,6 @@ namespace Files {
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
-            Gtk.TreePath? p = null;
             Gtk.CellRenderer? cell_renderer;
             uint zone;
             int x, y;
@@ -218,16 +217,16 @@ namespace Files {
             x = (int)event.x;
             y = (int)event.y;
 
-            tree.get_item_at_pos (x, y, out p, out cell_renderer);
-            path = p;
-            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
+            tree.get_item_at_pos (x, y, out path, out cell_renderer);
+            zone = (path != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
             if (cell_renderer != null) {
                 Gdk.Rectangle rect, area;
-                tree.get_cell_rect (p, cell_renderer, out rect);
+                tree.get_cell_rect (path, cell_renderer, out rect);
                 area = cell_renderer.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
                 if (cell_renderer is Files.TextRenderer) {
+                    var text_renderer = ((Files.TextRenderer) cell_renderer);
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
@@ -237,25 +236,24 @@ namespace Files {
                     string? text = null;
                     model.@get (iter, ListModel.ColumnID.FILENAME, out text);
 
-                    ((Files.TextRenderer) cell_renderer).set_up_layout (text, area.width);
+                    text_renderer.set_up_layout (text, area.width);
 
-                    if (x >= rect.x &&
-                        x <= rect.x + rect.width &&
-                        y >= rect.y &&
-                        y <= rect.y + ((Files.TextRenderer) cell_renderer).text_height) {
-
-                        zone = ClickZone.NAME;
-                    } else if (rubberband) {
-                        /* Fake location outside centre bottom of item for rubberbanding */
+                    var is_on_blank = (
+                        x < rect.x ||
+                        x >= rect.x + rect.width ||
+                        y < rect.y ||
+                        y >= rect.y + text_renderer.text_height + text_renderer.text_y_offset
+                    );
+                    zone = is_on_blank ? zone : ClickZone.NAME;
+                    if (is_on_blank && rubberband) {
+                        /* Fake location outside centre bottom of item for rubberbanding because IconView
+                         * unlike TreeView will not rubberband if clicked on an item. */
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
-                        zone = ClickZone.BLANK_NO_PATH;
-                    } else {
-                        zone = ClickZone.BLANK_PATH;
                     }
                 } else {
                     bool on_helper = false;
-                    Files.File? file = model.file_for_path (p);
+                    Files.File? file = model.file_for_path (path);
                     if (file != null) {
                         bool on_icon = is_on_icon (x, y, ref on_helper);
 
