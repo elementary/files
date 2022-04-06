@@ -7,7 +7,6 @@
 #define TESTDATA_DIR "@testdata_dir@"
 #define LOCALE_DIR "@locale_dir@"
 #define APP_NAME "@app_name@"
-#define TERMINAL_NAME "@terminal_name@"
 
 #define HAVE_DBUS
 #endif
