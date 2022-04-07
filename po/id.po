@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 22:40+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
 "PO-Revision-Date: 2022-01-07 21:25+0000\n"
 "Last-Translator: ianz56 <ianperdiansah05@gmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
@@ -26,13 +26,13 @@ msgstr ""
 msgid "Cancel"
 msgstr "Batal"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
 msgstr "Buka Berkas sebagai Hanya Baca"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
 msgstr "Buka Berkas sebagai Hanya Baca"
 
