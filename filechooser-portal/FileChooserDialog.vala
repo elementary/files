@@ -475,24 +475,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     private void accept () {
         if (action == Gtk.FileChooserAction.SAVE || action == Gtk.FileChooserAction.CREATE_FOLDER) {
-            if (select_multiple) {
-                var primary = _("Cannot save or create multiple files.");
-                var secondary = _("Saving or creating multiple files is not permitted");
-                var dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                    primary, secondary, "dialog-error", Gtk.ButtonsType.CANCEL) {
-                    transient_for = this
-                };
-                dialog.run ();
-                dialog.destroy ();
-                response (Gtk.ResponseType.CANCEL);
-                return;
-            }
-
+            // We can assume that the portal code prevents `select_multiple` being true.
             var filename = "";
             try {
                 filename = GLib.Filename.from_uri (get_uri ());
             } catch (Error e) {
-                var primary = _("The filename is invalid.");
+                var primary = _("The URI \"%s\" is invalid.");
                 var secondary = _("Cannot convert the URI of the selected item to a valid filename");
                 var dialog = new Granite.MessageDialog.with_image_from_icon_name (
                     primary, secondary, "dialog-error", Gtk.ButtonsType.CANCEL) {
