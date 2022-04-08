@@ -252,12 +252,11 @@ namespace Files {
                             zone = ClickZone.HELPER;
                         } else if (on_icon) {
                             zone = ClickZone.ICON;
-
                         } else {
                             zone = ClickZone.EXPANDER;
                         }
                     } else if (!is_blank) {
-                            zone = ClickZone.NAME;
+                        zone = ClickZone.NAME;
                     }
                 }
             } else if (c != name_column) {

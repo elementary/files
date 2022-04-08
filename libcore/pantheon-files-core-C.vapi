@@ -9,7 +9,6 @@ namespace Config {
     public const string TESTDATA_DIR;
     public const string LOCALE_DIR;
     public const string APP_NAME;
-    public const string TERMINAL_NAME;
 }
 
 namespace Files {
