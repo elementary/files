@@ -475,28 +475,31 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     private void accept () {
         if (action == Gtk.FileChooserAction.SAVE || action == Gtk.FileChooserAction.CREATE_FOLDER) {
-            // We can assume that the portal code prevents `select_multiple` being true.
-            var filename = "";
-            try {
-                filename = GLib.Filename.from_uri (get_uri ());
-            } catch (Error e) {
-                var primary = _("The URI \"%s\" is invalid.");
-                var secondary = _("Cannot convert the URI of the selected item to a valid filename");
-                var dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                    primary, secondary, "dialog-error", Gtk.ButtonsType.CANCEL) {
-                    transient_for = this
-                };
-                dialog.run ();
-                dialog.destroy ();
+            var file = chooser.get_file ();
+            if (file == null) {
                 response (Gtk.ResponseType.CANCEL);
                 return;
             }
 
-            // If an existing file would be overwritten, ask for permission first
-            if (GLib.FileUtils.test (filename, GLib.FileTest.EXISTS) && !GLib.FileUtils.test (filename, GLib.FileTest.IS_SYMLINK)) {
-                var display_filename = GLib.Filename.display_basename (filename);
-                var primary = _("Replace “%s”?".printf (display_filename));
-                var secondary = _("The file already exists. Replacing it will permanently overwrite its current contents.");
+            if (file.query_exists ()) {
+                var display_name = file.get_basename ();
+                var primary = _("Replace “%s”?".printf (display_name));
+                var secondary = _("Replacing this file will overwrite its current contents");
+                if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
+                    try {
+                        var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
+                        if (info != null) {
+                            primary = _("Replace “%s”?".printf (info.get_symlink_target ()));
+                        } else {
+                            primary = _("Replace the target of “%s”?".printf (display_name));
+                        }
+
+                        secondary = _("Replacing the target file for this link will overwrite its current contents.");
+                    } catch (Error e) {
+                        warning ("Could not get info for %s", get_uri ());
+                    }
+                }
+
                 var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
                     primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL) {
                     transient_for = this
