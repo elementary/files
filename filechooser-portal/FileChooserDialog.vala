@@ -475,34 +475,54 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     private void accept () {
         if (action == Gtk.FileChooserAction.SAVE || action == Gtk.FileChooserAction.CREATE_FOLDER) {
-            // If an existing file would be overwritten, ask for permission first
+            if (select_multiple) {
+                var primary = _("Cannot save or create multiple files.");
+                var secondary = _("Saving or creating multiple files is not permitted");
+                var dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                    primary, secondary, "dialog-error", Gtk.ButtonsType.CANCEL) {
+                    transient_for = this
+                };
+                dialog.run ();
+                dialog.destroy ();
+                response (Gtk.ResponseType.CANCEL);
+                return;
+            }
 
-            assert (select_multiple == false);
-
-            // TODO handle failed URI conversions
             var filename = "";
             try {
                 filename = GLib.Filename.from_uri (get_uri ());
             } catch (Error e) {
-                warning ("Could not convert URI of selected item to filename");
-                warning (e.message);
+                var primary = _("The filename is invalid.");
+                var secondary = _("Cannot convert the URI of the selected item to a valid filename");
+                var dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                    primary, secondary, "dialog-error", Gtk.ButtonsType.CANCEL) {
+                    transient_for = this
+                };
+                dialog.run ();
+                dialog.destroy ();
+                response (Gtk.ResponseType.CANCEL);
+                return;
             }
 
+            // If an existing file would be overwritten, ask for permission first
             if (GLib.FileUtils.test (filename, GLib.FileTest.EXISTS) && !GLib.FileUtils.test (filename, GLib.FileTest.IS_SYMLINK)) {
                 var display_filename = GLib.Filename.display_basename (filename);
                 var primary = _("Replace “%s”?".printf (display_filename));
                 var secondary = _("The file already exists. Replacing it will permanently overwrite its current contents.");
-                var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL) {
+                var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                    primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL) {
                     transient_for = this
                 };
                 var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
                 replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 var replace_response = replace_dialog.run ();
+                replace_dialog.destroy ();
                 if (replace_response == Gtk.ResponseType.YES) {
                     response (Gtk.ResponseType.OK);
+                } else {
+                    response (Gtk.ResponseType.CANCEL);
                 }
-                replace_dialog.destroy ();
             } else {
                 response (Gtk.ResponseType.OK);
             }
