@@ -108,12 +108,6 @@ public class Files.FileChooserPortal : Object {
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
-
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -143,6 +137,11 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        if (dialog.register_id != 0) {
+            connection.unregister_object (dialog.register_id);
+        }
+
+        dialog.dispose ();
         response = _response;
         results = _results;
     }
@@ -218,22 +217,20 @@ public class Files.FileChooserPortal : Object {
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
-
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
-                    _results["uris"] = dialog.get_uris ();
-                    _results["choices"] = dialog.get_choices ();
-                    if (dialog.filter != null) {
-                        _results["current_filter"] = dialog.filter.to_gvariant ();
-                    }
+                    if (check_overwrite (dialog.get_file ()) == Gtk.ResponseType.OK) {
+                        _results["uris"] = dialog.get_uris ();
+                        _results["choices"] = dialog.get_choices ();
+                        if (dialog.filter != null) {
+                            _results["current_filter"] = dialog.filter.to_gvariant ();
+                        }
 
-                    _response = 0;
+                        _response = 0;
+                    } else {
+                        return; //Continue showing dialog
+                    }
                     break;
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
@@ -252,6 +249,11 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        if (dialog.register_id != 0) {
+            connection.unregister_object (dialog.register_id);
+        }
+
+        dialog.dispose ();
         response = _response;
         results = _results;
     }
@@ -302,12 +304,6 @@ public class Files.FileChooserPortal : Object {
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
-
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -343,8 +339,56 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        if (dialog.register_id != 0) {
+            connection.unregister_object (dialog.register_id);
+        }
+
+        dialog.dispose ();
         response = _response;
         results = _results;
+    }
+
+    private Gtk.ResponseType check_overwrite (GLib.File? file) {
+        if (file == null) {
+            return Gtk.ResponseType.CANCEL;
+        }
+
+        if (file.query_exists ()) {
+            var display_name = file.get_basename ();
+            var primary = _("Replace XXXX “%s”?").printf (display_name);
+            unowned var secondary = _("Replacing this file will overwrite its current contents");
+            if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
+                try {
+                    var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
+                    if (info != null) {
+                        primary = _("Replace “%s”?".printf (info.get_symlink_target ()));
+                    } else {
+                        primary = _("Replace the target of “%s”?".printf (display_name));
+                    }
+
+                    secondary = _("Replacing the target file for this link will overwrite its current contents.");
+                } catch (Error e) {
+                    warning ("Could not get info for %s", file.get_uri ());
+                }
+            }
+
+            var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL
+            );
+
+            var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
+            replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+            var replace_response = replace_dialog.run ();
+            replace_dialog.destroy ();
+            if (replace_response == Gtk.ResponseType.YES) {
+                return Gtk.ResponseType.OK;
+            } else {
+                return Gtk.ResponseType.CANCEL;
+            }
+        } else {
+            return Gtk.ResponseType.OK;
+        }
     }
 
     private static void on_bus_acquired (DBusConnection connection, string name) {

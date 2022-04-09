@@ -273,12 +273,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
         chooser.file_activated.connect (() => {
              if (!GLib.FileUtils.test (chooser.get_filename (), FileTest.IS_DIR)) {
-                 accept ();
+                 response (Gtk.ResponseType.OK);
              }
         });
 
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
-        accept_button.clicked.connect (accept);
+        accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
 
         // save the dialog size and close after selection
         response.connect_after (() => {
@@ -288,8 +288,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
             settings.set_string ("last-folder-uri", chooser.get_current_folder_uri ());
             settings.set ("window-size", "(ii)", w, h);
-
-            destroy ();
         });
 
         var granite_settings = Granite.Settings.get_default ();
@@ -382,7 +380,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
             entry.activate.connect (() => {
                 if (accept_button.sensitive) {
-                    accept ();
+                    response (Gtk.ResponseType.OK);
                 }
             });
 
@@ -449,6 +447,10 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         return uris;
     }
 
+    public GLib.File get_file () {
+        return chooser.get_file ();
+    }
+
     public void add_choice (FileChooserChoice choice) {
         choices_box.add (choice);
     }
@@ -470,56 +472,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         if (chooser.list_filters ().search<string> (name, (a, b) => strcmp (a.get_filter_name (), b)) == null) {
             chooser.add_filter (filter);
             filter_box.append (name, name);
-        }
-    }
-
-    private void accept () {
-        if (action == Gtk.FileChooserAction.SAVE || action == Gtk.FileChooserAction.CREATE_FOLDER) {
-            var file = chooser.get_file ();
-            if (file == null) {
-                response (Gtk.ResponseType.CANCEL);
-                return;
-            }
-
-            if (file.query_exists ()) {
-                var display_name = file.get_basename ();
-                var primary = _("Replace “%s”?").printf (display_name);
-                unowned var secondary = _("Replacing this file will overwrite its current contents");
-                if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
-                    try {
-                        var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
-                        if (info != null) {
-                            primary = _("Replace “%s”?".printf (info.get_symlink_target ()));
-                        } else {
-                            primary = _("Replace the target of “%s”?".printf (display_name));
-                        }
-
-                        secondary = _("Replacing the target file for this link will overwrite its current contents.");
-                    } catch (Error e) {
-                        warning ("Could not get info for %s", get_uri ());
-                    }
-                }
-
-                var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                    primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL) {
-                    transient_for = this
-                };
-                var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
-                replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-
-                var replace_response = replace_dialog.run ();
-                replace_dialog.destroy ();
-                if (replace_response == Gtk.ResponseType.YES) {
-                    response (Gtk.ResponseType.OK);
-                } else {
-                    response (Gtk.ResponseType.CANCEL);
-                }
-            } else {
-                response (Gtk.ResponseType.OK);
-            }
-        } else {
-            // Just selecting an existing item to open: no need to check for overwrite
-            response (Gtk.ResponseType.OK);
         }
     }
 
