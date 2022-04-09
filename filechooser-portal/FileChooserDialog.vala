@@ -484,7 +484,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             if (file.query_exists ()) {
                 var display_name = file.get_basename ();
                 var primary = _("Replace “%s”?").printf (display_name);
-                var secondary = _("Replacing this file will overwrite its current contents");
+                unowned var secondary = _("Replacing this file will overwrite its current contents");
                 if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
                     try {
                         var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
