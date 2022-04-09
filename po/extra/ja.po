@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-01-26 10:48+0000\n"
+"PO-Revision-Date: 2022-04-09 05:44+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -117,7 +117,7 @@ msgstr "ドラッグしてブックマークを並び替えするとクラッシ
 #: data/io.elementary.files.appdata.xml.in.in:258
 #: data/io.elementary.files.appdata.xml.in.in:272
 msgid "Minor updates:"
-msgstr "軽微なアップデート:"
+msgstr "そのほかのアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 #: data/io.elementary.files.appdata.xml.in.in:70
