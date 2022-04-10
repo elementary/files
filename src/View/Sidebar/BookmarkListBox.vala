@@ -227,7 +227,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 if (row.permanent) {
                     continue;
                 } else if (row.id == id) {
-                    var index = row.get_index ();
                     if (row is BookmarkRow) {
                         remove (((BookmarkRow)row).revealer_row);
                     }

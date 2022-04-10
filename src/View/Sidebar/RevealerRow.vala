@@ -47,13 +47,13 @@ public class Sidebar.RevealerRow : Gtk.ListBoxRow {
         sensitive = false;
 
         var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-            margin_top = 12
+            margin_top = 6,
+            margin_bottom = 6
         };
         drop_revealer = new Gtk.Revealer () {
             transition_type = Gtk.RevealerTransitionType.SLIDE_UP
         };
         drop_revealer.add (drop_revealer_child);
-        drop_revealer.show_all ();
         drop_revealer.reveal_child = false;
         add (drop_revealer);
 
@@ -159,7 +159,7 @@ public class Sidebar.RevealerRow : Gtk.ListBoxRow {
             return true;
         });
 
-        show ();
+        show_all ();
     }
 
     private bool process_dropped_row (Gdk.DragContext ctx, string drop_text) {
