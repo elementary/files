@@ -103,14 +103,12 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
     }
 
     /* Returns true if favorite successfully added */
-    public virtual bool add_favorite (string uri, string label = "", int index = 0) { return false; }
+    public virtual bool add_favorite (string uri, string label = "", SidebarItemInterface? before = null) { return false; }
 
     public virtual SidebarItemInterface? get_item_at_index (int index) { return null; }
 
-    /* Second parameter is index of target after which the item should be inserted */
-    public virtual bool move_item_after (SidebarItemInterface item, int target_index) {
+    /* Second parameter is the item before which the item should be inserted */
+    public virtual bool move_item_before (SidebarItemInterface item, SidebarItemInterface target_item) {
         return false;
     } // By default not-reorderable
-
-    public virtual bool is_drop_target () { return false; } // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
 }

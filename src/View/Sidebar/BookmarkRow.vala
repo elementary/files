@@ -29,12 +29,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     };
 
     /* Targets accepted when dropped onto movable BookmarkRow
-     * Either BookmarkRow id as text or a list of uris as text is accepted at the moment
-     * Depending on where it is dropped (edge or middle) it will either be used to create a
-     * new bookmark or to initiate a file operation with the bookmark uri as target  */
+     * Only a list of uris as text is accepted at the moment. Files can be copied, moved or linked into the bookmarked location */
     static Gtk.TargetEntry[] dest_targets = {
-        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
-        {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW},
+        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST}
     };
 
     static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
@@ -62,7 +59,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected Gtk.Stack label_stack;
     protected Gtk.Entry editable;
     protected Gtk.Label label;
-    protected Gtk.Revealer drop_revealer;
 
     public string custom_name { get; set; default = "";}
     public string display_name {
@@ -76,13 +72,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     public SidebarListInterface list { get; construct; }
+    public Sidebar.RevealerRow revealer_row { get; construct; }
     public uint32 id { get; construct; }
     public string uri { get; set construct; }
     public Icon gicon { get; set construct; }
     public bool pinned { get; construct; } // Cannot be dragged
     public bool permanent { get; construct; } // Cannot be removed
-    public bool can_insert_before { get; set; default = true; }
-    public bool can_insert_after { get; set; default = true; }
+    public bool can_insert_before { get; set; default = false; }
 
     public MenuModel? menu_model {get; set; default = null;}
     public ActionGroup? action_group {get; set; default = null;}
@@ -106,6 +102,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     construct {
+        revealer_row = new Sidebar.RevealerRow (this);
+        bind_property ("can-insert-before", revealer_row, "sensitive");
+
         target_file = Files.File.get_by_uri (uri);
         target_file.ensure_query_info ();
 
@@ -387,19 +386,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     /* Set up as a drag destination. */
     private void set_up_drop () {
-        var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-            margin_top = 12,
-            margin_bottom = 0
-        };
-
-        drop_revealer = new Gtk.Revealer () {
-            transition_type = Gtk.RevealerTransitionType.SLIDE_UP
-        };
-        drop_revealer.add (drop_revealer_child);
-        drop_revealer.show_all ();
-
-        content_grid.attach (drop_revealer, 0, 1);
-
         Gtk.drag_dest_set (
             this,
             Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
@@ -411,10 +397,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             drop_text = null;
             // Extract the require text from info and convert to file list if appropriate
             switch (info) {
-                case Files.TargetType.BOOKMARK_ROW:
-                    drop_text = sel_data.get_text ();
-                    break;
-
                 case Files.TargetType.TEXT_URI_LIST:
                     if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
                         warning ("sel data not uri list");
@@ -432,12 +414,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             if (drop_occurred) {
                 var success = false;
                 switch (info) {
-                    case Files.TargetType.BOOKMARK_ROW:
-                        success = process_dropped_row (ctx, drop_text, drop_revealer.child_revealed);
-                        break;
-
                     case Files.TargetType.TEXT_URI_LIST:
-                        success = process_dropped_uris (ctx, drop_file_list, drop_revealer.child_revealed);
+                        success = process_dropped_uris (ctx, drop_file_list);
                         break;
                 }
 
@@ -458,33 +436,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 return true;
             }
 
-            var pos = get_index ();
-            var previous_item = (BookmarkRow?)(list.get_item_at_index (pos - 1));
-            var next_item = (BookmarkRow?)(list.get_item_at_index (pos + 1));
-
-            if (previous_item != null) {
-                previous_item.reveal_drop_target (false);
-            }
-
-            var row_height = icon_label_grid.get_allocated_height ();
-            bool reveal = false;
-
             current_suggested_action = Gdk.DragAction.DEFAULT;
             switch (target.name ()) {
-                case "text/plain":
-                    reveal = can_insert_after &&
-                             (next_item == null || next_item.can_insert_before) &&
-                              y > row_height / 2;
-
-                    break;
-
                 case "text/uri-list": // File(s) being dragged
-                    reveal = can_insert_after &&
-                             (next_item == null || next_item.can_insert_before) &&
-                              y > row_height - 1;
-
-                    // When dropping onto a row, determine what actions are possible
-                    if (!reveal && drop_file_list != null) {
+                    if (drop_file_list != null) {
                         Files.FileUtils.file_accepts_drop (
                             target_file,
                             drop_file_list, ctx,
@@ -495,16 +450,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     break;
                 default:
                     break;
-            }
-
-            if (reveal_drop_target (reveal)) {
-                current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
-                if (target.name () == "text/uri-list" && drop_text != null &&
-                    list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
-
-                    current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
-                    reveal = false;
-                }
             }
 
             Gdk.drag_status (ctx, current_suggested_action, time);
@@ -536,33 +481,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         drop_text = null;
         drop_occurred = false;
         current_suggested_action = Gdk.DragAction.DEFAULT;
-        reveal_drop_target (false);
-    }
-
-    private bool process_dropped_row (Gdk.DragContext ctx, string drop_text, bool dropped_between) {
-        var id = (uint32)(uint.parse (drop_text));
-        var item = SidebarItemInterface.get_item (id);
-
-        if (item == null ||
-            !dropped_between ||
-            item.list != list) { //Cannot drop on self or different list
-
-            return false;
-        }
-
-        list.move_item_after (item, get_index ()); // List takes care of saving changes
-        return true;
     }
 
     private bool process_dropped_uris (Gdk.DragContext ctx,
-                                       List<GLib.File> drop_file_list,
-                                       bool dropped_between) {
+                                       List<GLib.File> drop_file_list) {
 
-        if (dropped_between && drop_file_list.next == null) { //Only create one new bookmark at a time
-            var pos = get_index ();
-            pos++;
-            return list.add_favorite (drop_file_list.data.get_uri (), "", pos);
-        } else {
             var dnd_handler = new Files.DndHandler ();
             var real_action = ctx.get_selected_action ();
 
@@ -592,15 +515,5 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             );
 
             return true;
-        }
-    }
-
-    protected bool reveal_drop_target (bool reveal) {
-        if (list.is_drop_target ()) {
-            drop_revealer.reveal_child = reveal;
-            return reveal;
-        } else {
-            return false; //Suppress dropping between rows (e.g. for Storage list)
-        }
     }
 }

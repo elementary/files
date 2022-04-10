@@ -50,7 +50,6 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract bool pinned { get; construct; } // Whether can be dragged
     public abstract bool permanent { get; construct; } // Whether can be deleted
     public abstract bool can_insert_before { get; set; default = true; }
-    public abstract bool can_insert_after { get; set; default = true; }
     public abstract int get_index ();
 
     /* Provision of plugin items with additional menu options */

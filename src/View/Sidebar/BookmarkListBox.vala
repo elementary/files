@@ -74,8 +74,12 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
         var row = new BookmarkRow (label, uri, gicon, this, pinned, permanent);
         if (index >= 0) {
-            insert (row, index);
+            // Ensure even index as the revealer is inserted first
+            var insert_index = index / 2 * 2;
+            insert (row.revealer_row, insert_index);
+            insert (row, insert_index + 1);
         } else {
+            add (row.revealer_row);
             add (row);
         }
 
@@ -130,7 +134,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             );
 
             row.can_insert_before = false;
-            row.can_insert_after = false;
         }
 
         if (Files.FileUtils.protocol_is_supported ("recent")) {
@@ -147,7 +150,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             );
 
             row.can_insert_before = false;
-            row.can_insert_after = true;
         }
 
         foreach (unowned Files.Bookmark bm in bookmark_list.list) {
@@ -156,6 +158,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             row.notify["custom-name"].connect (() => {
                 bm.custom_name = row.custom_name;
             });
+            row.can_insert_before = true;
         }
 
         if (!Files.is_admin ()) {
@@ -172,7 +175,6 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
             );
 
             row.can_insert_before = true;
-            row.can_insert_after = false;
 
             trash_monitor.notify["is-empty"].connect (() => {
                 row.update_icon (trash_monitor.get_icon ());
@@ -186,22 +188,30 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
 
     public override bool add_favorite (string uri,
                                        string custom_name = "",
-                                       int pos = 0) {
+                                       SidebarItemInterface? before = null) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
+        int first_unpinned_index = -1;
         foreach (unowned Gtk.Widget child in get_children ()) {
-            if (((SidebarItemInterface)child).pinned) {
-                pinned++;
-            } else {
-                break;
+            if (child is SidebarItemInterface) {
+                if (((SidebarItemInterface)child).pinned) {
+                    pinned++;
+                } else {
+                    first_unpinned_index = ((SidebarItemInterface)child).get_index ();
+                    break;
+                }
             }
         }
 
-        if (pos < pinned) {
-            pos = pinned;
+        int pos;
+        if (before != null && before.can_insert_before) {
+            pos = before.get_index ();
+        } else {
+            pos = first_unpinned_index;
         }
 
-        var bm = bookmark_list.insert_uri (uri, pos - pinned, custom_name); //Assume non_builtin items are not pinned
+        //Assume non_builtin items are not pinned
+        var bm = bookmark_list.insert_uri (uri, (pos - 1) / 2 - pinned, custom_name);
         if (bm != null) {
             insert_bookmark (bm.custom_name, bm.uri, bm.get_icon (), pos);
             return true;
@@ -217,6 +227,11 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 if (row.permanent) {
                     continue;
                 } else if (row.id == id) {
+                    var index = row.get_index ();
+                    if (row is BookmarkRow) {
+                        remove (((BookmarkRow)row).revealer_row);
+                    }
+
                     remove (row);
                     bookmark_list.delete_items_with_uri (row.uri); //Assumes no duplicates
                     row.destroy_bookmark ();
@@ -228,36 +243,33 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         return false;
     }
 
-    public SidebarItemInterface? get_item_at_index (int index) {
-        if (index < 0 || index > get_children ().length ()) {
-            return null;
-        }
-
-        return (SidebarItemInterface?)(get_row_at_index (index));
-    }
-
-    public override bool move_item_after (SidebarItemInterface item, int target_index) {
-        if (item.list != this) { // Only move within one list atm
+    public override bool move_item_before (SidebarItemInterface item, SidebarItemInterface target_item) {
+        if (item.list != this || !target_item.can_insert_before) { // Only move within one list atm
             return false;
         }
 
         var old_index = item.get_index ();
+        var target_index = target_item.get_index ();
+
         if (old_index == target_index) {
             return false;
         }
 
-        remove (item);
-
-        if (old_index > target_index) {
-            insert (item, ++target_index);
-        } else {
-            insert (item, target_index);
+        if (item is BookmarkRow) {
+            remove (((BookmarkRow)item).revealer_row);
         }
 
-        bookmark_list.move_item_uri (item.uri, target_index - old_index);
+        remove (item);
+
+        target_index = target_item.get_index ();
+        if (item is BookmarkRow) {
+            insert (((BookmarkRow)item).revealer_row, target_index - 1);
+        }
+
+        insert (item, target_index);
+
+        bookmark_list.move_item_uri (item.uri, (target_index - old_index) / 2);
 
         return true;
     }
-
-    public virtual bool is_drop_target () { return true; }
 }
