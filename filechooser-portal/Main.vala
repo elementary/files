@@ -170,11 +170,13 @@ public class Files.FileChooserPortal : Object {
             dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
         }
 
+        var supplied_uri = "";
         if ("current_file" in options) {
             dialog.set_uri (FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (),
-                Environment.get_home_dir ()
+                options["current_file"].get_bytestring (), Environment.get_home_dir ()
             ));
+
+            supplied_uri = dialog.get_uri ();
         }
 
         if ("filters" in options) {
@@ -209,21 +211,26 @@ public class Files.FileChooserPortal : Object {
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
-                    check_overwrite_uri.begin (dialog.get_uri (), (obj, res) => {
-                        if (check_overwrite_uri.end (res)) {
-                            _results["uris"] = dialog.get_uris ();
-                            _results["choices"] = dialog.get_choices ();
-                            if (dialog.filter != null) {
-                                _results["current_filter"] = dialog.filter.to_gvariant ();
+                    var chosen_uri = dialog.get_uri ();
+                    if (chosen_uri != supplied_uri) { // No need to check full uri supplied by calling app
+                        check_overwrite_uri.begin (chosen_uri, (obj, res) => {
+                            if (check_overwrite_uri.end (res)) {
+                                _results["uris"] = dialog.get_uris ();
+                                _results["choices"] = dialog.get_choices ();
+                                if (dialog.filter != null) {
+                                    _results["current_filter"] = dialog.filter.to_gvariant ();
+                                }
+
+                                _response = 0;
+                                warning ("Save File callback");
+                                save_file.callback ();
                             }
+                        });
 
-                            _response = 0;
-                            warning ("Save File callback");
-                            save_file.callback ();
-                        }
-                    });
-
-                    return; // Continue showing dialog until check completes
+                        return; // Continue showing dialog until check completes
+                    } else {
+                        break;
+                    }
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
                     break;
