@@ -304,7 +304,7 @@ namespace Files {
         }
 
         protected override bool handle_multi_select (Gtk.TreePath path) {
-            if (selected_files != null && selected_files.first () != null) { //Could be very large - avoid length ()
+            if (selected_files != null && selected_files.first () != null) {
                 linear_select_path (path);
                 return true;
             } else {
