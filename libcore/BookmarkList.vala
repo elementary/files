@@ -177,7 +177,7 @@ namespace Files {
          * only permits one bookmark per uri.
          */
         public void rename_item_with_uri (string uri, string new_name) {
-            foreach (unowned Files.Bookmark bookmark in list) {
+            foreach (unowned var bookmark in list) {
                 if (uri == bookmark.uri) {
                     if (new_name == Path.get_basename (uri)) {
                         // Do not use basename as a custom name
@@ -185,6 +185,7 @@ namespace Files {
                     } else {
                         bookmark.custom_name = new_name;
                     }
+
                     save_bookmarks_file ();
                     return;
                 }
@@ -223,7 +224,7 @@ namespace Files {
             bool list_changed = false;
             int index = 0;
 
-            foreach (unowned Bookmark bm in list) {
+            foreach (var bm in list) {
                 if (uri == bm.uri) {
                     list.remove (bm);
                     list.insert (bm, index + step);

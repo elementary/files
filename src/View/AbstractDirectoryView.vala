@@ -192,6 +192,7 @@ namespace Files {
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
+        protected bool should_select = false;
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
@@ -1867,15 +1868,36 @@ namespace Files {
 
             if (common_actions.get_action_enabled ("open-in")) {
                 var new_tab_menuitem = new Gtk.MenuItem ();
-                new_tab_menuitem.add (new Granite.AccelLabel (
-                    _("New Tab"),
-                    "<Shift>Return"
-                ));
-                new_tab_menuitem.action_name = "common.open-in";
+                if (selected_files != null) {
+                    new_tab_menuitem.add (new Granite.AccelLabel (
+                        _("New Tab"),
+                        "<Shift>Return"
+                    ));
+                    new_tab_menuitem.action_name = "common.open-in";
+                } else {
+                    new_tab_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("New Tab"),
+                        "win.tab::TAB"
+                    ));
+                    new_tab_menuitem.action_name = "win.tab";
+                }
+
                 new_tab_menuitem.action_target = "TAB";
 
-                var new_window_menuitem = new Gtk.MenuItem.with_label (_("New Window"));
-                new_window_menuitem.action_name = "common.open-in";
+                var new_window_menuitem = new Gtk.MenuItem ();
+                if (selected_files != null) {
+                    new_window_menuitem.add (new Granite.AccelLabel (
+                        _("New Window"),
+                        "<Shift><Ctrl>Return"
+                    ));
+                    new_window_menuitem.action_name = "common.open-in";
+                } else {
+                    new_window_menuitem.add (new Granite.AccelLabel.from_action_name (
+                        _("New Window"),
+                        "win.tab::WINDOW"
+                    ));
+                    new_window_menuitem.action_name = "win.tab";
+                }
                 new_window_menuitem.action_target = "WINDOW";
 
                 open_submenu.add (new_tab_menuitem);
@@ -2572,7 +2594,7 @@ namespace Files {
         private bool app_is_this_app (AppInfo ai) {
             string exec_name = ai.get_executable ();
 
-            return (exec_name == Config.APP_NAME || exec_name == Config.TERMINAL_NAME);
+            return (exec_name == Config.APP_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {
@@ -2995,6 +3017,8 @@ namespace Files {
                         activate_selected_items (Files.OpenFlag.DEFAULT);
                     } else if (only_shift_pressed) {
                         activate_selected_items (Files.OpenFlag.NEW_TAB);
+                    } else if (shift_pressed && control_pressed && !alt_pressed) {
+                        activate_selected_items (Files.OpenFlag.NEW_WINDOW);
                     } else if (only_alt_pressed) {
                         common_actions.activate_action ("properties", null);
                     } else if (no_mods) {
@@ -3443,8 +3467,8 @@ namespace Files {
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
-
-            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY); //Only rubberband with primary button
+            //Only rubberband with primary button
+            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY);
             click_path = path;
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -3470,6 +3494,7 @@ namespace Files {
             bool result = false; // default false so events get passed to Window
             should_activate = false;
             should_deselect = false;
+            should_select = false;
             should_scroll = true;
 
             /* Handle all selection and deselection explicitly in the following switch statement */
@@ -3492,9 +3517,11 @@ namespace Files {
                             /* Control-click on selected item should deselect it on key release (unless
                              * pointer moves) */
                             should_deselect = only_control_pressed && path_selected;
-                            /* determine whether should activate on key release (unless pointer moved)*/
-                            if (no_mods && one_or_less) { /* Only activate single files with unmodified button press */
-                                should_activate = on_directory || double_click_event;
+
+                            /* Determine whether should activate on key release (unless pointer moved)*/
+                            /* Only activate single files with unmodified button when not on blank unless double-clicked */
+                            if (no_mods && one_or_less) {
+                                should_activate = (on_directory && !on_blank) || double_click_event;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
@@ -3502,12 +3529,15 @@ namespace Files {
                              * the item is unselected. */
                             if (!no_mods || (on_blank && !path_selected)) {
                                 result = only_shift_pressed && handle_multi_select (path);
+                                // Have to select on button release because IconView, unlike TreeView,
+                                // will not both select and rubberband
+                                should_select = true;
                             } else {
                                 if (no_mods && !path_selected) {
                                     unselect_all ();
                                 }
 
-                                select_path (path);
+                                select_path (path, true);
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
@@ -3574,6 +3604,7 @@ namespace Files {
                             if (!path_selected && no_mods) {
                                 unselect_all ();
                             }
+
                             select_path (path); /* Note: secondary click does not toggle selection */
                             break;
 
@@ -3599,7 +3630,6 @@ namespace Files {
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
             unblock_drag_and_drop ();
-
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
@@ -3632,6 +3662,13 @@ namespace Files {
                         update_selected_files_and_menu ();
                         return GLib.Source.REMOVE;
                     });
+                } else if (should_select && click_path != null) {
+                    select_path (click_path);
+                    /* Only need to update selected files if changed by this handler */
+                    Idle.add (() => {
+                        update_selected_files_and_menu ();
+                        return GLib.Source.REMOVE;
+                    });
                 } else if (event.button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
                 }
@@ -3639,6 +3676,7 @@ namespace Files {
 
             should_activate = false;
             should_deselect = false;
+            should_select = false;
             click_path = null;
             return false;
         }

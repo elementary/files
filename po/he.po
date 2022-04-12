@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-19 16:52+0000\n"
-"PO-Revision-Date: 2021-12-11 15:43+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
+"PO-Revision-Date: 2022-01-11 22:40+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -26,13 +26,13 @@ msgstr ""
 msgid "Cancel"
 msgstr "ביטול"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
 msgstr "פתיחת קבצים לקריאה בלבד"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
 msgstr "פתיחת קובץ לקריאה בלבד"
 
@@ -620,8 +620,8 @@ msgstr ""
 "נוספים."
 
 #: libcore/marlin-file-operations.c:842
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr "לא ניתן להעביר קובץ זה לאשפה.  לנסות למחוק אותו?"
+msgid "Cannot move file to trash. Try to delete it?"
+msgstr "לא ניתן להעביר קובץ זה לאשפה. לנסות למחוק אותו?"
 
 #: libcore/marlin-file-operations.c:843
 msgid ""
@@ -1103,7 +1103,7 @@ msgid "_Unmount"
 msgstr "_ניתוק עיגון"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:1987
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Properties"
 msgstr "מאפיינים"
 
@@ -1115,7 +1115,7 @@ msgstr "שליפת אמצעי אחסון"
 msgid "Safely Remove"
 msgstr "הסרה בטוחה"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:1980
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
 msgid "Add to Bookmarks"
 msgstr "הוספה לסימניות"
 
@@ -1307,15 +1307,15 @@ msgstr "נא להקליד נתיב"
 msgid "Type a path"
 msgstr "נא להקליד נתיב"
 
-#: libcore/Widgets/ViewSwitcher.vala:34
+#: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "הצגה כרשת"
 
-#: libcore/Widgets/ViewSwitcher.vala:41
+#: libcore/Widgets/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "הצגה כרשימה"
 
-#: libcore/Widgets/ViewSwitcher.vala:48
+#: libcore/Widgets/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "הצגה בעמודות"
 
@@ -1347,7 +1347,8 @@ msgstr "הצגת גרסת התכנית"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
 
-#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1877
+#: src/Application.vala:162 src/View/AbstractDirectoryView.vala:1889
+#: src/View/AbstractDirectoryView.vala:1895
 msgid "New Window"
 msgstr "חלון חדש"
 
@@ -1511,7 +1512,7 @@ msgid "Original Location:"
 msgstr "מיקום מקורי:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/View/AbstractDirectoryView.vala:1976
 msgid "Other Application…"
 msgstr "יישום אחר…"
 
@@ -1629,170 +1630,171 @@ msgstr "לא ניתן להשליך קובץ זה"
 msgid "Invalid file name provided"
 msgstr "שם הקובץ שסופק שגוי"
 
-#: src/View/AbstractDirectoryView.vala:1871 src/View/Window.vala:146
+#: src/View/AbstractDirectoryView.vala:1872
+#: src/View/AbstractDirectoryView.vala:1878 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "לשונית חדשה"
 
-#: src/View/AbstractDirectoryView.vala:1891
+#: src/View/AbstractDirectoryView.vala:1912
 msgid "Run"
 msgstr "הפעלה"
 
-#: src/View/AbstractDirectoryView.vala:1898
+#: src/View/AbstractDirectoryView.vala:1919
 #, c-format
 msgid "Open in %s"
 msgstr "פתיחה עם %s"
 
-#: src/View/AbstractDirectoryView.vala:1967
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Open in"
 msgstr "פתיחה עם"
 
-#: src/View/AbstractDirectoryView.vala:1969
+#: src/View/AbstractDirectoryView.vala:1990
 #: src/View/Widgets/BreadcrumbsEntry.vala:484
 msgid "Open with"
 msgstr "פתיחה באמצעות"
 
-#: src/View/AbstractDirectoryView.vala:1975
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Paste"
 msgstr "הדבקה"
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
 msgstr "לבחור הכול"
 
-#: src/View/AbstractDirectoryView.vala:2009
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
 msgstr "היפוך הבחירה"
 
-#: src/View/AbstractDirectoryView.vala:2018
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Deselect All"
 msgstr "ביטול הבחירה"
 
-#: src/View/AbstractDirectoryView.vala:2026
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Cut"
 msgstr "גזירה"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2055
 msgid "Copy"
 msgstr "העתקה"
 
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2062
 msgid "Move to Trash"
 msgstr "העברה לסל האשפה"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2067
 msgid "Delete Permanently"
 msgstr "מחיקה לצמיתות"
 
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Restore from Trash"
 msgstr "שחזור מסל האשפה"
 
-#: src/View/AbstractDirectoryView.vala:2076
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Open Parent Folder"
 msgstr "פתיחת התיקייה העליונה"
 
-#: src/View/AbstractDirectoryView.vala:2079
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Remove from History"
 msgstr "הסרה מההיסטוריה"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2128
 msgid "Rename…"
 msgstr "שינוי שם…"
 
-#: src/View/AbstractDirectoryView.vala:2114
+#: src/View/AbstractDirectoryView.vala:2135
 msgid "Copy as Link"
 msgstr "העתקה כקישור"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Paste Link into Folder"
 msgstr "הדבקת קישור לתוך תיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2133
+#: src/View/AbstractDirectoryView.vala:2154
 msgid "Paste into Folder"
 msgstr "הדבקה לתיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2174
+#: src/View/AbstractDirectoryView.vala:2195
 msgid "Show Hidden Files"
 msgstr "הצגת קבצים מוסתרים"
 
-#: src/View/AbstractDirectoryView.vala:2179
+#: src/View/AbstractDirectoryView.vala:2200
 msgid "Show Remote Thumbnails"
 msgstr "הצגת תמונות ממוזערות לקבצים מרוחקים"
 
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Hide Thumbnails"
 msgstr "הסתרת תמונות ממוזערות"
 
-#: src/View/AbstractDirectoryView.vala:2208
+#: src/View/AbstractDirectoryView.vala:2229
 msgid "Paste Link"
 msgstr "הדבקת קישור"
 
-#: src/View/AbstractDirectoryView.vala:2265
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Name"
 msgstr "שם"
 
-#: src/View/AbstractDirectoryView.vala:2270 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2291 src/View/ListView.vala:27
 msgid "Size"
 msgstr "גודל"
 
-#: src/View/AbstractDirectoryView.vala:2275 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2296 src/View/ListView.vala:28
 msgid "Type"
 msgstr "סוג"
 
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2301
 msgid "Date"
 msgstr "תאריך"
 
-#: src/View/AbstractDirectoryView.vala:2285
+#: src/View/AbstractDirectoryView.vala:2306
 msgid "Reversed Order"
 msgstr "סדר הפוך"
 
-#: src/View/AbstractDirectoryView.vala:2288
+#: src/View/AbstractDirectoryView.vala:2309
 msgid "Folders Before Files"
 msgstr "תיקיות לפני קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2300
+#: src/View/AbstractDirectoryView.vala:2321
 msgid "Sort by"
 msgstr "מיון לפי"
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2329
 msgid "Folder"
 msgstr "תיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2314
+#: src/View/AbstractDirectoryView.vala:2335
 msgid "Empty File"
 msgstr "קובץ ריק"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2386
 msgid "New"
 msgstr "חדש"
 
-#: src/View/AbstractDirectoryView.vala:2606
+#: src/View/AbstractDirectoryView.vala:2627
 #, c-format
 msgid "Untitled %s"
 msgstr "%s ללא שם"
 
-#: src/View/AbstractDirectoryView.vala:2971
-#: src/View/AbstractDirectoryView.vala:3149
+#: src/View/AbstractDirectoryView.vala:2992
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot remove files from here"
 msgstr "לא ניתן להסיר מכאן קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2972
-#: src/View/AbstractDirectoryView.vala:3134
-#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:2993
+#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "You do not have permission to change this location"
 msgstr "אין לך הרשאות לשנות את המיקום הזה"
 
-#: src/View/AbstractDirectoryView.vala:3103
+#: src/View/AbstractDirectoryView.vala:3126
 msgid "Cannot copy files that are in the trash"
 msgstr "לא ניתן להעתיק קבצים שנמצאים באשפה"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3127
 msgid "Cutting the selection instead"
 msgstr "גזירת הבחירה במקום"
 
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:3156
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
@@ -1914,15 +1916,23 @@ msgstr "קובץ לא נמצא"
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
-#: src/View/Window.vala:147
+#: src/View/Window.vala:182
 msgid "Undo Close Tab"
 msgstr "שחזור לשונית"
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:491
 msgid "Close Tab"
 msgstr "סגירת לשונית"
 
-#: src/View/Window.vala:569 src/View/Window.vala:579
+#: src/View/Window.vala:492
+msgid "Duplicate Tab"
+msgstr "שכפול לשונית"
+
+#: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
+msgid "Open in New Window"
+msgstr "פתיחה בחלון חדש"
+
+#: src/View/Window.vala:606 src/View/Window.vala:616
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
@@ -2038,10 +2048,6 @@ msgstr "ניתן לחפש או להקליד נתיב"
 #: src/View/Widgets/BreadcrumbsEntry.vala:441
 msgid "Open in New Tab"
 msgstr "פתיחה בלשונית חדשה"
-
-#: src/View/Widgets/BreadcrumbsEntry.vala:448
-msgid "Open in New Window"
-msgstr "פתיחה בחלון חדש"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:491
 msgid "Open in Other Application…"

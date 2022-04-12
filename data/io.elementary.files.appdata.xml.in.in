@@ -28,6 +28,24 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="6.1.2" date="2022-01-24" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Show New Tab and New Window shortcuts in context menus</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Double click selects instead of exiting while renaming in list view</li>
+          <li>Show public share icon in breadcrumbs</li>
+          <li>Prevent a crash when dragging to re-arrange bookmarks</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.1.1" date="2021-12-09" urgency="medium">
       <description>
         <p>Improvements:</p>
@@ -157,7 +175,7 @@
           <li>Dark style support</li>
           <li>Mint and Bubblegum color tags</li>
           <li>Do not restore locations that have become inaccessible</li>
-          <li>Clicking between thumbnail and text now activates/selects in Icon view</li>
+          <li>Clicking between thumbnail and text now activates/selects in Grid view</li>
           <li>AFC protocol support</li>
           <li>Add a smaller minimum icon size in list view</li>
           <li>Show emblems inline in list views</li>
@@ -332,7 +350,7 @@
     <release version="4.1.8" date="2019-05-02" urgency="medium">
       <description>
         <ul>
-          <li>Keyboard navigation fix for cherry picking select files in icon view</li>
+          <li>Keyboard navigation fix for cherry picking select files in Grid view</li>
           <li>Don't hardcode search placeholder text style, fixes dark theme issue</li>
           <li>Updated translations</li>
         </ul>
