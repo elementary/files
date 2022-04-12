@@ -99,11 +99,7 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        dialog.register_object (connection, handle);
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
@@ -137,11 +133,8 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
-        if (dialog.register_id != 0) {
-            connection.unregister_object (dialog.register_id);
-        }
+        dialog.destroy ();
 
-        dialog.dispose ();
         response = _response;
         results = _results;
     }
@@ -208,11 +201,7 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
@@ -249,11 +238,8 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
-        if (dialog.register_id != 0) {
-            connection.unregister_object (dialog.register_id);
-        }
+        dialog.destroy ();
 
-        dialog.dispose ();
         response = _response;
         results = _results;
     }
@@ -295,11 +281,8 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        //TODO Handle failed registration?
+        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
@@ -339,11 +322,8 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
-        if (dialog.register_id != 0) {
-            connection.unregister_object (dialog.register_id);
-        }
+        dialog.destroy ();
 
-        dialog.dispose ();
         response = _response;
         results = _results;
     }
@@ -355,7 +335,7 @@ public class Files.FileChooserPortal : Object {
 
         if (file.query_exists ()) {
             var display_name = file.get_basename ();
-            var primary = _("Replace XXXX “%s”?").printf (display_name);
+            var primary = _("Replace “%s”?").printf (display_name);
             unowned var secondary = _("Replacing this file will overwrite its current contents");
             if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
                 try {
