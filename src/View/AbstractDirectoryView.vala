@@ -3536,7 +3536,7 @@ namespace Files {
                                     unselect_all ();
                                 }
 
-                                select_path (path);
+                                select_path (path, true);
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
