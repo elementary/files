@@ -567,7 +567,7 @@ namespace Files.FileUtils {
                 var removed_files = new GLib.List<GLib.File> ();
                 removed_files.append (old_location);
                 Files.Directory.notify_files_removed (removed_files);
-                Files.Directory.notify_files_added (added_files);
+                Files.Directory.notify_files_added_internally (added_files);
             } else {
                 warning ("Renamed file has no Files.Directory.Async");
             }
@@ -581,7 +581,7 @@ namespace Files.FileUtils {
 
             if (dir != null) {
                 /* We emit this signal anyway so callers can know rename failed and disconnect */
-                dir.file_added (null);
+                dir.file_added (null, true);
             }
 
             throw e;

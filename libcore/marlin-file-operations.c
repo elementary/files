@@ -2100,7 +2100,7 @@ retry:
         return CREATE_DEST_DIR_FAILED;
     }
 
-    files_file_changes_queue_file_added (*dest);
+    files_file_changes_queue_file_added (*dest, TRUE);
 
     // Start UNDO-REDO
     files_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
@@ -2818,7 +2818,7 @@ retry:
         if (copy_job->is_move) {
             files_file_changes_queue_file_moved (src, dest);
         } else {
-           files_file_changes_queue_file_added (dest);
+           files_file_changes_queue_file_added (dest, TRUE);
         }
 
         // Start UNDO-REDO
@@ -3866,7 +3866,7 @@ retry:
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
-       files_file_changes_queue_file_added (dest);
+       files_file_changes_queue_file_added (dest, TRUE);
 
         g_object_unref (dest);
 
@@ -4646,7 +4646,7 @@ retry:
 
     if (res) {
         job->created_file = g_object_ref (dest);
-       files_file_changes_queue_file_added (dest);
+       files_file_changes_queue_file_added (dest, TRUE);
     } else {
         g_assert (error != NULL);
 

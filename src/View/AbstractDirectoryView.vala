@@ -1297,9 +1297,9 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_added (Directory dir, Files.File? file) {
+        private void on_directory_file_added (Directory dir, Files.File? file, bool is_internal) {
             if (file != null) {
-                add_file (file, dir, true); /* Always select files added to view after initial load */
+                add_file (file, dir, is_internal); /* Only select files added to view by this app */
                 handle_free_space_change ();
             } else {
                 critical ("Null file added");

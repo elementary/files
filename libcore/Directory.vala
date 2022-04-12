@@ -62,7 +62,7 @@ public class Files.Directory : Object {
     private List<unowned Files.File>? sorted_dirs = null;
 
     public signal void file_loaded (Files.File file);
-    public signal void file_added (Files.File? file); /* null used to signal failed operation */
+    public signal void file_added (Files.File? file, bool is_internal); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
     public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
@@ -274,7 +274,7 @@ public class Files.Directory : Object {
             return GLib.Source.REMOVE;
         });
 
-        bool success = yield query_info_async (file, null, cancellable);
+        bool success = yield query_info_async (file, cancellable);
         querying = false;
         cancel_timeout (ref load_timeout_id);
         if (cancellable.is_cancelled ()) {
@@ -824,16 +824,13 @@ public class Files.Directory : Object {
     /**TODO** move this to Files.File */
     private delegate void func_query_info (Files.File gof);
 
-    private async bool query_info_async (Files.File gof, func_query_info? f = null, Cancellable? cancellable = null) {
+    private async bool query_info_async (Files.File gof, Cancellable? cancellable = null) {
         gof.info = null;
         try {
             gof.info = yield gof.location.query_info_async (gio_attrs,
                                                             FileQueryInfoFlags.NONE,
                                                             Priority.DEFAULT,
                                                             cancellable);
-            if (f != null) {
-                f (gof);
-            }
         } catch (Error err) {
             last_error_message = err.message;
             debug ("query info failed, %s %s", err.message, gof.uri);
@@ -841,6 +838,7 @@ public class Files.Directory : Object {
                 gof.exists = false;
             }
         }
+
         return gof.info != null;
     }
 
@@ -853,7 +851,7 @@ public class Files.Directory : Object {
         }
     }
 
-    private void add_and_refresh (Files.File gof) {
+    private void add_and_refresh (Files.File gof, bool is_internal) {
         if (gof.info == null) {
             critical ("FILE INFO null");
         }
@@ -861,7 +859,7 @@ public class Files.Directory : Object {
         gof.update ();
 
         if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-            file_added (gof);
+            file_added (gof, is_internal);
         }
 
         if (!gof.is_hidden && gof.is_folder ()) {
@@ -874,11 +872,15 @@ public class Files.Directory : Object {
     }
 
     private void notify_file_changed (Files.File gof) {
-        query_info_async.begin (gof, changed_and_refresh);
+        query_info_async.begin (gof, null, () => {
+            changed_and_refresh (gof);
+        });
     }
 
-    private void notify_file_added (Files.File gof) {
-        query_info_async.begin (gof, add_and_refresh);
+    private void notify_file_added (Files.File gof, bool is_internal) {
+        query_info_async.begin (gof, null, () => {
+            add_and_refresh (gof, is_internal);
+        });
     }
 
     private void notify_file_removed (Files.File gof) {
@@ -928,10 +930,11 @@ public class Files.Directory : Object {
         }
     }
 
+    // We do not monitor MOVED events as these are also associated with CREATED and DELETED events
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
         case FileMonitorEvent.CREATED:
-            Files.FileChanges.queue_file_added (_file);
+            Files.FileChanges.queue_file_added (_file, false);
             break;
         case FileMonitorEvent.DELETED:
             Files.FileChanges.queue_file_removed (_file);
@@ -996,13 +999,26 @@ public class Files.Directory : Object {
         }
     }
 
-    public static void notify_files_added (List<GLib.File> files) {
+    public static void notify_changes_added (List<Files.FileChanges.Change> changes) {
+        foreach (unowned var change in changes) {
+            unowned var loc = change.from;
+            Directory? dir = cache_lookup_parent (loc);
+
+            if (dir != null) {
+                Files.File gof = dir.file_cache_find_or_insert (loc, true);
+                dir.notify_file_added (gof, change.is_internal);
+            }
+        }
+    }
+
+    // Only call in relation to internal file operations
+    public static void notify_files_added_internally (List<GLib.File> files) {
         foreach (unowned var loc in files) {
             Directory? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
                 Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof);
+                dir.notify_file_added (gof, true);
             }
         }
     }
@@ -1042,6 +1058,7 @@ public class Files.Directory : Object {
         }
     }
 
+    //Only called internally as FileMonitorEvent.MOVED events not handled
     public static void notify_files_moved (List<GLib.Array<GLib.File>> files) {
         var list_from = new List<GLib.File> ();
         var list_to = new List<GLib.File> ();
@@ -1055,7 +1072,7 @@ public class Files.Directory : Object {
         }
 
         notify_files_removed (list_from);
-        notify_files_added (list_to);
+        notify_files_added_internally (list_to);
     }
 
     public static Directory from_gfile (GLib.File file) {
