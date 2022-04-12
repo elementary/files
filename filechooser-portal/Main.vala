@@ -209,18 +209,21 @@ public class Files.FileChooserPortal : Object {
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
-                    if (check_overwrite (dialog.get_file ()) == Gtk.ResponseType.OK) {
-                        _results["uris"] = dialog.get_uris ();
-                        _results["choices"] = dialog.get_choices ();
-                        if (dialog.filter != null) {
-                            _results["current_filter"] = dialog.filter.to_gvariant ();
-                        }
+                    check_overwrite_uri.begin (dialog.get_uri (), (obj, res) => {
+                        if (check_overwrite_uri.end (res)) {
+                            _results["uris"] = dialog.get_uris ();
+                            _results["choices"] = dialog.get_choices ();
+                            if (dialog.filter != null) {
+                                _results["current_filter"] = dialog.filter.to_gvariant ();
+                            }
 
-                        _response = 0;
-                    } else {
-                        return; //Continue showing dialog
-                    }
-                    break;
+                            _response = 0;
+                            warning ("Save File callback");
+                            save_file.callback ();
+                        }
+                    });
+
+                    return; // Continue showing dialog until check completes
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
                     break;
@@ -328,11 +331,12 @@ public class Files.FileChooserPortal : Object {
         results = _results;
     }
 
-    private Gtk.ResponseType check_overwrite (GLib.File? file) {
-        if (file == null) {
-            return Gtk.ResponseType.CANCEL;
+    private async bool check_overwrite_uri (string? uri) {
+        if (uri == null) {
+            return false;
         }
 
+        var file = GLib.File.new_for_uri (uri);
         if (file.query_exists ()) {
             var display_name = file.get_basename ();
             var primary = _("Replace “%s”?").printf (display_name);
@@ -356,18 +360,23 @@ public class Files.FileChooserPortal : Object {
                 primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL
             );
 
+            replace_dialog.set_modal (true);
+
             var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
             replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
-            var replace_response = replace_dialog.run ();
+            var response_ok = false;
+            replace_dialog.response.connect ((id) => {
+                response_ok = id == Gtk.ResponseType.YES;
+                check_overwrite_uri.callback ();
+            });
+
+            replace_dialog.show_all ();
+            yield;
             replace_dialog.destroy ();
-            if (replace_response == Gtk.ResponseType.YES) {
-                return Gtk.ResponseType.OK;
-            } else {
-                return Gtk.ResponseType.CANCEL;
-            }
+            return response_ok;
         } else {
-            return Gtk.ResponseType.OK;
+            return true;
         }
     }
 
