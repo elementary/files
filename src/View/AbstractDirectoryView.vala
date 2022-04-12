@@ -2453,23 +2453,24 @@ namespace Files {
             can_open = can_open_file (file);
             can_show_properties = !(in_recent && more_than_one_selected);
 
-            action_set_enabled (common_actions, "paste-into", can_paste_into);
-            action_set_enabled (common_actions, "open-in", only_folders);
-            action_set_enabled (selection_actions, "rename", is_selected && !more_than_one_selected && can_rename);
-            action_set_enabled (selection_actions, "view-in-location", is_selected);
-            action_set_enabled (selection_actions, "open", is_selected && !more_than_one_selected && can_open);
-            action_set_enabled (selection_actions, "open-with-app", can_open);
-            action_set_enabled (selection_actions, "open-with-default", can_open);
-            action_set_enabled (selection_actions, "open-with-other-app", can_open);
-            action_set_enabled (selection_actions, "cut", is_writable && is_selected);
-            action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
-            action_set_enabled (selection_actions, "delete", is_writable);
-            action_set_enabled (selection_actions, "invert-selection", is_selected);
-            action_set_enabled (common_actions, "properties", can_show_properties);
-            action_set_enabled (common_actions, "bookmark", can_bookmark);
-            action_set_enabled (common_actions, "copy", !in_trash && can_copy);
-            action_set_enabled (common_actions, "copy-link", !in_trash && !in_recent && can_copy);
-            action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
+            action_set_enabled (common_actions, "paste-into", !renaming & can_paste_into);
+            action_set_enabled (common_actions, "open-in", !renaming & only_folders);
+            action_set_enabled (selection_actions, "rename", !renaming & is_selected && !more_than_one_selected && can_rename);
+            action_set_enabled (selection_actions, "view-in-location", !renaming & is_selected);
+            action_set_enabled (selection_actions, "open", !renaming && is_selected && !more_than_one_selected && can_open);
+            action_set_enabled (selection_actions, "open-with-app", !renaming && can_open);
+            action_set_enabled (selection_actions, "open-with-default", !renaming && can_open);
+            action_set_enabled (selection_actions, "open-with-other-app", !renaming && can_open);
+            action_set_enabled (selection_actions, "cut", !renaming && is_writable && is_selected);
+            action_set_enabled (selection_actions, "trash", !renaming && is_writable && slot.directory.has_trash_dirs);
+            action_set_enabled (selection_actions, "delete", !renaming && is_writable);
+            action_set_enabled (selection_actions, "invert-selection", !renaming && is_selected);
+            action_set_enabled (common_actions, "select-all", !renaming && is_selected);
+            action_set_enabled (common_actions, "properties", !renaming && can_show_properties);
+            action_set_enabled (common_actions, "bookmark", !renaming && can_bookmark);
+            action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
+            action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);
+            action_set_enabled (common_actions, "bookmark", !renaming && !more_than_one_selected);
 
             update_default_app (selection);
             update_menu_actions_sort ();
@@ -3291,8 +3292,6 @@ namespace Files {
                 return;
             }
 
-            renaming = true;
-
             var editable_widget = editable as AbstractEditableLabel?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
@@ -3314,10 +3313,12 @@ namespace Files {
         }
 
         protected void on_name_editing_canceled () {
+            is_frozen = false;
             renaming = false;
             name_renderer.editable = false;
             proposed_name = "";
-            is_frozen = false;
+
+            update_menu_actions ();
             grab_focus ();
         }
 
@@ -3698,6 +3699,9 @@ namespace Files {
             }
 
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
+            /* The order of the next three lines must not be changed */
+            renaming = true;
+            update_menu_actions ();
             is_frozen = true;
             Gtk.TreePath path = model.get_path (iter);
 
