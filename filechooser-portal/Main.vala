@@ -366,7 +366,7 @@ public class Files.FileChooserPortal : Object {
                 primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL
             );
 
-            replace_dialog.set_modal (true);
+            replace_dialog.modal = true;
 
             var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
             replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
