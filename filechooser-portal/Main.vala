@@ -222,7 +222,6 @@ public class Files.FileChooserPortal : Object {
                                 }
 
                                 _response = 0;
-                                warning ("Save File callback");
                                 save_file.callback ();
                             }
                         });
