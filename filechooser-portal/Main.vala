@@ -377,7 +377,7 @@ public class Files.FileChooserPortal : Object {
                 check_overwrite_uri.callback ();
             });
 
-            replace_dialog.show_all ();
+            replace_dialog.present ();
             yield;
             replace_dialog.destroy ();
             return response_ok;
