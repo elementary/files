@@ -211,23 +211,23 @@ public class Files.FileChooserPortal : Object {
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
+                    _results["uris"] = dialog.get_uris ();
+                    _results["choices"] = dialog.get_choices ();
+                    if (dialog.filter != null) {
+                        _results["current_filter"] = dialog.filter.to_gvariant ();
+                    }
                     var chosen_uri = dialog.get_uri ();
-                    if (chosen_uri != supplied_uri) { // No need to check full uri supplied by calling app
+                    if (chosen_uri != supplied_uri) {
                         check_overwrite_uri.begin (chosen_uri, (obj, res) => {
                             if (check_overwrite_uri.end (res)) {
-                                _results["uris"] = dialog.get_uris ();
-                                _results["choices"] = dialog.get_choices ();
-                                if (dialog.filter != null) {
-                                    _results["current_filter"] = dialog.filter.to_gvariant ();
-                                }
-
                                 _response = 0;
                                 save_file.callback ();
                             }
                         });
 
                         return; // Continue showing dialog until check completes
-                    } else {
+                    } else { // No need to check full uri supplied by calling app
+                        _response = 0;
                         break;
                     }
                 case Gtk.ResponseType.CANCEL:
