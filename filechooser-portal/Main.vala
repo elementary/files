@@ -172,11 +172,15 @@ public class Files.FileChooserPortal : Object {
 
         var supplied_uri = "";
         if ("current_file" in options) {
-            dialog.set_uri (FileUtils.sanitize_path (
+            supplied_uri = FileUtils.sanitize_path (
                 options["current_file"].get_bytestring (), Environment.get_home_dir ()
-            ));
+            );
 
-            supplied_uri = dialog.get_uri ();
+            if (supplied_uri != null) {
+                dialog.set_uri (supplied_uri);
+            } else {
+                supplied_uri = "";
+            }
         }
 
         if ("filters" in options) {
