@@ -176,10 +176,8 @@ public class Files.FileChooserPortal : Object {
                 options["current_file"].get_bytestring (), Environment.get_home_dir ()
             );
 
-            if (supplied_uri != null) {
+            if (supplied_uri != "") {
                 dialog.set_uri (supplied_uri);
-            } else {
-                supplied_uri = "";
             }
         }
 
