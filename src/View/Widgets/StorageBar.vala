@@ -3,37 +3,6 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-/**
- * An horizontal bar showing the remaining amount of space.
- *
- * {{../doc/images/StorageBar.png}}
- *
- * ''Example''<<BR>>
- * {{{
- * public class StorageView : Gtk.Grid {
- *     construct {
- *         var file_root = GLib.File.new_for_path ("/");
- *
- *         try {
- *             var info = file_root.query_filesystem_info (GLib.FileAttribute.FILESYSTEM_SIZE, null);
- *
- *             var size = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_SIZE);
- *
- *             var storage = new Granite.Widgets.StorageBar.with_total_usage (size, size/2);
- *             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size/40);
- *             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size/30);
- *             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size/20);
- *             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size/10);
- *             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size/5);
- *
- *             add (storage);
- *         } catch (Error e) {
- *             critical (e.message);
- *         }
- *     }
- * }
- * }}}
- */
 public class Files.StorageBar : Gtk.Box {
     public enum ItemDescription {
         OTHER,
@@ -142,16 +111,12 @@ public class Files.StorageBar : Gtk.Box {
         Object (storage: storage, total_usage: total_usage);
     }
 
-    // static construct {
-    //     Granite.init ();
-    // }
-
     construct {
         orientation = Gtk.Orientation.VERTICAL;
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;
         description_label.margin_top = 6;
-        get_style_context ().add_class (Granite.STYLE_CLASS_STORAGEBAR);
+        get_style_context ().add_class ("storage-bar");
         blocks = new GLib.HashTable<int, FillBlock> (null, null);
         fillblock_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         fillblock_box.get_style_context ().add_class (Gtk.STYLE_CLASS_TROUGH);
