@@ -210,7 +210,8 @@ namespace Files {
             int cx, cy, depth;
             path = null;
 
-            if (event.window != tree.get_bin_window ()) {
+            var ewindow = event.get_window ();
+            if (ewindow != tree.get_bin_window ()) {
                 return ClickZone.INVALID;
             }
 
