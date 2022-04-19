@@ -3352,7 +3352,7 @@ namespace Files {
                     return;
                 }
             }
-r
+
             grab_focus ();
         }
 
