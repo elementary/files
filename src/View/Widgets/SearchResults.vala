@@ -464,7 +464,12 @@ namespace Files.View.Chrome {
             if (event.is_modifier == 1) {
                 return true;
             }
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+
+            uint keyval;
+            event.get_keyval (out keyval);
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
@@ -473,7 +478,7 @@ namespace Files.View.Chrome {
 
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed) {
-                    if (event.keyval == Gdk.Key.l) {
+                    if (keyval == Gdk.Key.l) {
                         cancel (); /* release any grab */
                         exit (false); /* Do not exit navigate mode */
                         return true;
@@ -481,9 +486,9 @@ namespace Files.View.Chrome {
                         return parent.key_press_event (event);
                     }
                 } else if (only_alt_pressed &&
-                           event.keyval == Gdk.Key.Return ||
-                           event.keyval == Gdk.Key.KP_Enter ||
-                           event.keyval == Gdk.Key.ISO_Enter) {
+                           keyval == Gdk.Key.Return ||
+                           keyval == Gdk.Key.KP_Enter ||
+                           keyval == Gdk.Key.ISO_Enter) {
 
                     accept (null, true); // Open the selected file in default app
                 } else {
@@ -491,7 +496,7 @@ namespace Files.View.Chrome {
                 }
             }
 
-            switch (event.keyval) {
+            switch (keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
@@ -506,8 +511,8 @@ namespace Files.View.Chrome {
                         return true;
                     }
 
-                    var up = (event.keyval == Gdk.Key.Up) ||
-                             (event.keyval == Gdk.Key.ISO_Left_Tab);
+                    var up = (keyval == Gdk.Key.Up) ||
+                             (keyval == Gdk.Key.ISO_Left_Tab);
 
                     if (view.get_selection ().count_selected_rows () < 1) {
                         if (up) {

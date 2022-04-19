@@ -163,6 +163,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
                 _("Trash"),
                 _(Files.TRASH_URI),
                 trash_monitor.get_icon (),
+                true,
                 true
             );
 

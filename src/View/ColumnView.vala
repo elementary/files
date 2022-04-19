@@ -95,10 +95,14 @@ namespace Files {
         }
 
         protected override bool on_view_key_press_event (Gdk.EventKey event) {
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            uint keyval;
+            event.get_keyval (out keyval);
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
 
-            switch (event.keyval) {
+            switch (keyval) {
                 /* Do not emit alert sound on left and right cursor keys in Miller View */
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
@@ -137,7 +141,8 @@ namespace Files {
             selected_folder = file;
             bool result = true;
 
-            if (event.type == Gdk.EventType.BUTTON_PRESS) {
+            var type = event.get_event_type ();
+            if (type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click) {
                     result = true;
@@ -150,7 +155,7 @@ namespace Files {
                         return GLib.Source.REMOVE;
                     });
                 }
-            } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
+            } else if (type == Gdk.EventType.@2BUTTON_PRESS) {
                 should_activate = false;
                 cancel_await_double_click ();
 

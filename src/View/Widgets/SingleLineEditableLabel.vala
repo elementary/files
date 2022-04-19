@@ -27,6 +27,8 @@ namespace Files {
 
         public override Gtk.Widget create_editable_widget () {
             textview = new Gtk.Entry ();
+            /* Block propagation of button press event as this would cause renaming to end */
+            textview.button_press_event.connect_after (() => { return true; });
             return textview as Gtk.Widget;
         }
 
@@ -66,7 +68,9 @@ namespace Files {
 
         public override bool on_key_press_event (Gdk.EventKey event) {
             /* Ensure rename cancelled on cursor Up/Down */
-            switch (event.keyval) {
+            uint keyval;
+            event.get_keyval (out keyval);
+            switch (keyval) {
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                     end_editing (true);

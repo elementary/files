@@ -22,56 +22,74 @@
 ***/
 
 namespace Files.View.Chrome {
-    public class ViewSwitcher : Granite.Widgets.ModeButton {
-        private const int SWITCH_DELAY_MSEC = 100;
-        public GLib.SimpleAction view_mode_action { get; construct; }
-        private uint mode_change_timeout_id = 0;
-        private ViewMode last_selected;
+    public class ViewSwitcher : Gtk.Box {
+        public GLib.SimpleAction action { get; construct; }
 
-        construct {
-            /* Item 0 */
-            var icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON) {
-                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>1"}, _("View as Grid"))
-            };
-
-            append (icon);
-
-            /* Item 1 */
-            var list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON) {
-                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>2"}, _("View as List"))
-            };
-
-            append (list);
-
-            /* Item 2 */
-            var miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON) {
-                tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>3"}, _("View in Columns"))
-            };
-
-            append (miller);
-
-            mode_changed.connect (() => {
-                last_selected = (ViewMode)selected;
-                if (mode_change_timeout_id > 0) {
-                    return;
-                }
-
-                mode_change_timeout_id = Timeout.add (SWITCH_DELAY_MSEC, () => {
-                    view_mode_action.activate (new GLib.Variant.uint32 (last_selected));
-                    mode_change_timeout_id = 0;
-                    return Source.REMOVE;
-                });
-            });
-
-            margin_top = 4;
-            margin_bottom = 4;
+        public ViewSwitcher (GLib.SimpleAction view_mode_action) {
+            Object (action: view_mode_action);
         }
 
-        public ViewSwitcher (GLib.SimpleAction _view_mode_action) {
-            Object (
-                orientation: Gtk.Orientation.HORIZONTAL,
-                view_mode_action: _view_mode_action
-            );
+        construct {
+            get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+
+            /* Grid View item */
+            var id = (uint32)ViewMode.ICON;
+            var grid_view_btn = new Gtk.RadioButton (null) {
+                image = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON),
+                tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
+            };
+            grid_view_btn.set_mode (false);
+            grid_view_btn.toggled.connect (on_mode_changed);
+            grid_view_btn.set_data<uint32> ("id", id);
+
+            /* List View */
+            id = (uint32)ViewMode.LIST;
+            var list_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
+                image = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON),
+                tooltip_markup = get_tooltip_for_id (id, _("View as List"))
+            };
+            list_view_btn.set_mode (false);
+            list_view_btn.toggled.connect (on_mode_changed);
+            list_view_btn.set_data<uint32> ("id", id);
+
+
+            /* Item 2 */
+            id = (uint32)ViewMode.MILLER_COLUMNS;
+            var column_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
+                image = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON),
+                tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
+            };
+            column_view_btn.set_mode (false);
+            column_view_btn.toggled.connect (on_mode_changed);
+            column_view_btn.set_data<ViewMode> ("id", ViewMode.MILLER_COLUMNS);
+
+            valign = Gtk.Align.CENTER;
+            add (grid_view_btn);
+            add (list_view_btn);
+            add (column_view_btn);
+        }
+
+        private string get_tooltip_for_id (uint32 id, string description) {
+            var app = (Gtk.Application)Application.get_default ();
+            var detailed_name = Action.print_detailed_name ("win." + action.name, new Variant.uint32 (id));
+            var accels = app.get_accels_for_action (detailed_name);
+            return Granite.markup_accel_tooltip (accels, description);
+        }
+
+        private void on_mode_changed (Gtk.ToggleButton source) {
+            if (!source.active) {
+                return;
+            }
+
+            action.activate (source.get_data<uint32> ("id"));
+        }
+
+        public void set_mode (uint32 mode) {
+            this.@foreach ((child) => {
+                if (child.get_data<uint32> ("id") == mode) {
+                    ((Gtk.RadioButton)child).active = true;
+                }
+            });
         }
     }
 }

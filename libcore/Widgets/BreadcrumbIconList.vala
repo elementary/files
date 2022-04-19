@@ -136,6 +136,8 @@ namespace Files.View.Chrome {
                                    Files.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
             add_special_directory (Environment.get_user_special_dir (UserDirectory.TEMPLATES),
                                    Files.ICON_FOLDER_TEMPLATES_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.PUBLIC_SHARE),
+                                   Files.ICON_FOLDER_PUBLICSHARE_SYMBOLIC);
             add_special_directory (PF.UserUtils.get_real_user_home (), Files.ICON_GO_HOME_SYMBOLIC, true);
             add_special_directory ("/media", Files.ICON_FILESYSTEM_SYMBOLIC, true);
             add_special_directory (Path.DIR_SEPARATOR_S, Files.ICON_FILESYSTEM_SYMBOLIC);

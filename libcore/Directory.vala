@@ -940,6 +940,8 @@ public class Files.Directory : Object {
         case FileMonitorEvent.ATTRIBUTE_CHANGED:
             Files.FileChanges.queue_file_changed (_file);
             break;
+        default:
+            break;
         }
 
         if (idle_consume_changes_id == 0) {
