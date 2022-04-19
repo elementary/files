@@ -112,6 +112,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             use_underline = true,
             can_default = true
         };
+        accept_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
         filter_box = new Gtk.ComboBoxText ();
 
@@ -402,7 +403,9 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     }
 
     protected override bool key_release_event (Gdk.EventKey event) {
-        if (event.keyval == Gdk.Key.Escape) {
+        uint keyval;
+        event.get_keyval (out keyval);
+        if (keyval == Gdk.Key.Escape) {
             response (Gtk.ResponseType.DELETE_EVENT);
             return Gdk.EVENT_STOP;
         }

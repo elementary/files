@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2022-01-12 13:01+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
+"PO-Revision-Date: 2022-01-26 07:56+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -26,13 +26,13 @@ msgstr ""
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
 msgstr "Dateien schreibgeschützt öffnen"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
 msgstr "Datei schreibgeschützt öffnen"
 
@@ -1445,7 +1445,7 @@ msgstr "Neues _Fenster"
 
 #: src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
-msgstr "Neues Fenster als _Administrator"
+msgstr "Neues Fenster als Systemverw_alter"
 
 #: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
 msgid "File Operations"
@@ -1999,7 +1999,7 @@ msgstr "In neuem Fenster öffnen"
 
 #: src/View/Window.vala:606 src/View/Window.vala:616
 msgid "(as Administrator)"
-msgstr "(als Administrator)"
+msgstr "(als Systemverwalter)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173

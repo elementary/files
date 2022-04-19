@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 22:40+0000\n"
-"PO-Revision-Date: 2021-11-30 18:07+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
+"PO-Revision-Date: 2022-03-01 00:30+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
@@ -27,21 +27,19 @@ msgstr ""
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Otvoriť súbory iba na čítanie"
 
-#: filechooser-portal/FileChooserDialog.vala:123
-#: filechooser-portal/FileChooserDialog.vala:129
+#: filechooser-portal/FileChooserDialog.vala:124
+#: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Otvoriť súbor iba na čítanie"
 
 #: filechooser-portal/Main.vala:75
-#, fuzzy
-#| msgid " selected"
 msgid "Select"
-msgstr " vybrané"
+msgstr "Vybrať"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -49,7 +47,7 @@ msgstr "Otvoriť"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "Uložiť"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -186,39 +184,32 @@ msgid "Inaccessible"
 msgstr "Neprístupné"
 
 #: libcore/File.vala:883
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Zlyhala analýza súboru plochy: %s"
+msgstr "Zlyhalo spracovanie súboru pracovnej plochy"
 
 #: libcore/File.vala:887
-#, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
-msgstr "Zlyhala analýza súboru plochy: %s"
+msgstr "Zlyhalo spracovanie súboru pracovnej plochy: "
 
 #: libcore/File.vala:899
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "Zlyhala analýza súboru plochy: %s"
+msgstr "Nepodarilo sa vytvoriť príkaz zo súboru: "
 
 #: libcore/File.vala:908
-#, fuzzy
 msgid "Unable to Launch Desktop File: "
-msgstr "Zlyhala analýza súboru plochy: %s"
+msgstr "Nedarí sa spustiť súbor pracovnej plochy: "
 
 #: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Prázdny súbor"
+msgstr "Prázdne"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%i položka"
+msgstr[1] "%i položky"
+msgstr[2] "%i položiek"
 
 #: libcore/File.vala:1124
 #, c-format
@@ -653,8 +644,6 @@ msgstr ""
 "Tento súbor nemôže byť premiestnený do koša. Podrobnosti nájdete nižšie."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr "Súbor sa nedá presunúť do koša. Chcete ho skúsiť zmazať?"
 
@@ -1170,13 +1159,11 @@ msgstr "Vlastnosti"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Vysunúť médium"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Odstrániť"
+msgstr "Bezpečne odobrať"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2001
 msgid "Add to Bookmarks"
@@ -1338,16 +1325,14 @@ msgid "Emptying Trash"
 msgstr "Vyprázdňuje sa Kôš"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Nepodarilo sa pripojiť ‚%s‘"
+msgstr "Nepodarilo sa odpojiť ‚%s‘"
 
 #: libcore/FileOperations/MountUtils.vala:52
-#, fuzzy, c-format
-#| msgid "Unable to eject %V"
+#, c-format
 msgid "Unable to eject '%s'"
-msgstr "Nepodarilo sa vysunúť %V"
+msgstr "Nepodarilo sa vysunúť ‚%s‘"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
@@ -1402,7 +1387,7 @@ msgstr "Odstrániť vybrané"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Odoslať e-mailom"
 
 #: src/Application.vala:158
 msgid "Show the version of the program"
@@ -1510,7 +1495,7 @@ msgstr "Nastaviť ako predvolené"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Nepodarilo sa zistiť vlastníctvo a oprávnenia k súboru"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1735,17 +1720,15 @@ msgstr "Vložiť"
 
 #: src/View/AbstractDirectoryView.vala:2021
 msgid "Select All"
-msgstr ""
+msgstr "Vybrať všetko"
 
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Invert Selection"
-msgstr ""
+msgstr "Invertovať výber"
 
 #: src/View/AbstractDirectoryView.vala:2039
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Obnoviť všetko"
+msgstr "Odznačiť všetko"
 
 #: src/View/AbstractDirectoryView.vala:2047
 msgid "Cut"
@@ -2003,10 +1986,8 @@ msgid "Close Tab"
 msgstr "Zatvoriť kartu"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "Duplikuje sa „%s“"
+msgstr "Duplikovať kartu"
 
 #: src/View/Window.vala:493 src/View/Widgets/BreadcrumbsEntry.vala:448
 msgid "Open in New Window"
@@ -2018,17 +1999,15 @@ msgstr "(ako správca)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "Odstrániť '%s'"
+msgstr "Vysunúť ‚%s‘"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Nepodarilo sa pripojiť ‚%s‘"
+msgstr "Odpojiť ‚%s‘"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2050,7 +2029,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Nepripojené"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2071,16 +2050,18 @@ msgstr "Zobraziť koreňový adresár miestneho súborového systému"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s neobsahuje žiadne prístupné údaje."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Aby ste mohli túto jednotku používať, môže byť potrebné ju znova pripojiť, "
+"vložiť médium alebo ju naformátovať."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Nenaformátované alebo bez médií"
 
 #: src/View/Sidebar/NetworkListBox.vala:124
 msgid "Entire Network"
@@ -2117,10 +2098,8 @@ msgid "Connect Server…"
 msgstr "Pripojiť server…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Odpojiť"
+msgstr "Bind pripojenie"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
