@@ -412,7 +412,9 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             int y0 = (get_allocated_height () - color_button_width) / 2;
             int x0 = COLORBOX_SPACING + color_button_width;
 
-            if (event.y < y0 || event.y > y0 + color_button_width) {
+            double ex, ey;
+            event.get_coords (out ex, out ey);
+            if (ey < y0 || ey > y0 + color_button_width) {
                 return true;
             }
 
@@ -420,7 +422,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 var width = get_allocated_width ();
                 int x = width - 27;
                 for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (event.x <= x && event.x >= x - color_button_width) {
+                    if (ex <= x && ex >= x - color_button_width) {
                         color_changed (i);
                         clear_checks ();
                         check_color (i);
@@ -432,7 +434,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             } else {
                 int x = 27;
                 for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (event.x >= x && event.x <= x + color_button_width) {
+                    if (x >= x && x <= x + color_button_width) {
                         color_changed (i);
                         clear_checks ();
                         check_color (i);
