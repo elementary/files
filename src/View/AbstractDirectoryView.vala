@@ -2923,12 +2923,16 @@ namespace Files {
                 return true;
             }
 
+            if (event.is_modifier == 1) {
+                return true;
+            }
+
             cancel_hover ();
 
             uint original_keyval;
-            Gdk.ModifierType state;
             event.get_keyval (out original_keyval);
             var keyval = original_keyval;
+            Gdk.ModifierType state;
             event.get_state (out state);
             Gdk.ModifierType consumed_mods = 0;
 
