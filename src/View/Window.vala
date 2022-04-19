@@ -80,10 +80,6 @@ namespace Files.View {
                 width_request: 500,
                 window_number: application.window_count
             );
-
-            if (is_first_window) {
-                set_accelerators ();
-            }
         }
 
         static construct {
@@ -92,18 +88,57 @@ namespace Files.View {
 
         construct {
             add_action_entries (WIN_ENTRIES, this);
-
             undo_actions_set_insensitive ();
 
             undo_manager = UndoManager.instance ();
 
-            build_window ();
+            // Setting accels on `application` does not work in construct clause
+            // Must set before building window so ViewSwitcher can lookup the accels for tooltips
+            if (is_first_window) {
+                marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
+                marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
+                marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
+                marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
+                marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
+                marlin_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
+                marlin_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
+                marlin_app.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
+                marlin_app.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
+                marlin_app.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
+                marlin_app.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
+                marlin_app.set_accels_for_action (
+                    GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (0)), {"<Ctrl>1"}
+                );
+                marlin_app.set_accels_for_action (
+                    GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (1)), {"<Ctrl>2"}
+                );
+                marlin_app.set_accels_for_action (
+                    GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (2)), {"<Ctrl>3"}
+                );
+                marlin_app.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
+                marlin_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
+                marlin_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
+                marlin_app.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
+                marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
+                marlin_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
+                marlin_app.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
+                marlin_app.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+                marlin_app.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
+                marlin_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
+                marlin_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
+                marlin_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
+                marlin_app.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
+                marlin_app.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
+                marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
+                marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
+                marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
+            }
 
+            build_window ();
             connect_signals ();
 
             int width, height;
             Files.app_settings.get ("window-size", "(ii)", out width, out height);
-
             default_width = width;
             default_height = height;
 
@@ -124,6 +159,7 @@ namespace Files.View {
                         if (default_x != -1 && default_y != -1) {
                             move (default_x, default_y);
                         }
+
                         break;
                 }
             }
@@ -133,9 +169,8 @@ namespace Files.View {
         }
 
         private void build_window () {
-            view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
-                selected = Files.app_settings.get_enum ("default-viewmode")
-            };
+            view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode"));
+            view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
             top_menu = new Chrome.HeaderBar (view_switcher) {
                 show_close_button = true,
@@ -211,7 +246,11 @@ namespace Files.View {
             undo_manager.request_menu_update.connect (update_undo_actions);
 
             key_press_event.connect ((event) => {
-                var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+                Gdk.ModifierType state;
+                event.get_state (out state);
+                uint keyval;
+                event.get_keyval (out keyval);
+                var mods = state & Gtk.accelerator_get_default_mod_mask ();
                 bool no_mods = (mods == 0);
                 bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
                 bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -220,7 +259,7 @@ namespace Files.View {
                  * because cannot tab out of location bar and also unwanted items tend to get focused.
                  * There are other hotkeys for operating/focusing other widgets.
                  * Using modified Arrow keys no longer works due to recent changes.  */
-                switch (event.keyval) {
+                switch (keyval) {
                     case Gdk.Key.Tab:
                         if (top_menu.locked_focus) {
                             return false;
@@ -243,10 +282,14 @@ namespace Files.View {
             });
 
             key_press_event.connect_after ((event) => {
+                Gdk.ModifierType state;
+                event.get_state (out state);
+                uint keyval;
+                event.get_keyval (out keyval);
                 /* Use find function instead of view interactive search */
-                if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
+                if (state == 0 || state == Gdk.ModifierType.SHIFT_MASK) {
                     /* Use printable characters to initiate search */
-                    var uc = ((unichar)(Gdk.keyval_to_unicode (event.keyval)));
+                    var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
                     if (uc.isprint ()) {
                         activate_action ("find", uc.to_string ());
                         return true;
@@ -257,6 +300,7 @@ namespace Files.View {
             });
 
 
+            //TODO Rewrite for Gtk4
             window_state_event.connect ((event) => {
                 if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
                     top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
@@ -453,7 +497,9 @@ namespace Files.View {
                 "",
                 null,
                 content,
-                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w")
+                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
+                new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
+                new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
             ) {
                 ellipsize_mode = Pango.EllipsizeMode.MIDDLE
             };
@@ -792,6 +838,14 @@ namespace Files.View {
                     tabs.previous_page ();
                     break;
 
+                case "TAB":
+                    add_tab (current_tab.location, current_tab.view_mode);
+                    break;
+
+                case "WINDOW":
+                    tabs.tab_moved (tabs.current, 0, 0);
+                    break;
+
                 default:
                     break;
             }
@@ -894,7 +948,7 @@ namespace Files.View {
             });
         }
 
-        private GLib.SimpleAction? get_action (string action_name) {
+        public GLib.SimpleAction? get_action (string action_name) {
             return (GLib.SimpleAction?)(lookup_action (action_name));
         }
 
@@ -1116,7 +1170,7 @@ namespace Files.View {
 
             /* Update viewmode switch, action state and settings */
             var mode = current_tab.view_mode;
-            view_switcher.selected = mode;
+            view_switcher.set_mode (mode);
             view_switcher.sensitive = current_tab.can_show_folder;
             get_action ("view-mode").change_state (new Variant.uint32 (mode));
             Files.app_settings.set_enum ("default-viewmode", mode);
@@ -1186,44 +1240,6 @@ namespace Files.View {
 
         public new void grab_focus () {
             current_tab.grab_focus ();
-        }
-
-        private void set_accelerators () {
-            marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
-            application.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
-            application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
-            application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
-            application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            application.set_accels_for_action ("win.find::", {"<Ctrl>F"});
-            application.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
-            application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
-            application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
-            application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
-            application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
-            application.set_accels_for_action (
-                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (0)), {"<Ctrl>1"}
-            );
-            application.set_accels_for_action (
-                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (1)), {"<Ctrl>2"}
-            );
-            application.set_accels_for_action (
-                GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (2)), {"<Ctrl>3"}
-            );
-            application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
-            application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
-            application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
-            application.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
-            application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
-            application.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
-            application.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
-            application.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
-            application.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
-            application.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
-            application.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
-            application.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
-            application.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
-            application.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
-            application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
     }
 }

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-04 11:42+0000\n"
-"PO-Revision-Date: 2021-12-03 19:38+0000\n"
+"POT-Creation-Date: 2022-01-24 20:43+0000\n"
+"PO-Revision-Date: 2022-01-26 10:48+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,79 +70,138 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:33
 #: data/io.elementary.files.appdata.xml.in.in:51
-#: data/io.elementary.files.appdata.xml.in.in:123
-#: data/io.elementary.files.appdata.xml.in.in:140
-#: data/io.elementary.files.appdata.xml.in.in:164
-#: data/io.elementary.files.appdata.xml.in.in:188
+#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:153
+#: data/io.elementary.files.appdata.xml.in.in:170
+#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:218
 msgid "Improvements:"
 msgstr "Millores:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
-msgid "Close FileChooser with esc key"
-msgstr "Tanqueu el selector de fitxers amb la tecla esc."
-
-#: data/io.elementary.files.appdata.xml.in.in:36
-msgid "Use new emblems for git status"
+msgid "Show New Tab and New Window shortcuts in context menus"
 msgstr ""
+"Es mostren les dreceres de la pestanya nova i la finestra nova als menús "
+"contextuals."
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:57
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:103
-#: data/io.elementary.files.appdata.xml.in.in:118
-#: data/io.elementary.files.appdata.xml.in.in:135
-#: data/io.elementary.files.appdata.xml.in.in:172
-#: data/io.elementary.files.appdata.xml.in.in:193
-#: data/io.elementary.files.appdata.xml.in.in:213
+#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:102
+#: data/io.elementary.files.appdata.xml.in.in:117
+#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:148
+#: data/io.elementary.files.appdata.xml.in.in:165
+#: data/io.elementary.files.appdata.xml.in.in:202
+#: data/io.elementary.files.appdata.xml.in.in:223
+#: data/io.elementary.files.appdata.xml.in.in:243
 msgid "Fixes:"
 msgstr "Correccions:"
 
+#: data/io.elementary.files.appdata.xml.in.in:39
+msgid "Double click selects instead of exiting while renaming in list view"
+msgstr ""
+"Doble clic per seleccionar en comptes de sortir mentre es canvia el nom a la "
+"vista de llista"
+
 #: data/io.elementary.files.appdata.xml.in.in:40
+msgid "Show public share icon in breadcrumbs"
+msgstr "Es mostra la icona de compartició pública a la navegació."
+
+#: data/io.elementary.files.appdata.xml.in.in:41
+msgid "Prevent a crash when dragging to re-arrange bookmarks"
+msgstr ""
+"S'evita un bloqueig quan arrossegueu per reorganitzar les adreces d'interès."
+
+#: data/io.elementary.files.appdata.xml.in.in:43
+#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:258
+#: data/io.elementary.files.appdata.xml.in.in:272
+msgid "Minor updates:"
+msgstr "Actualitzacions menors:"
+
+#: data/io.elementary.files.appdata.xml.in.in:45
+#: data/io.elementary.files.appdata.xml.in.in:70
+#: data/io.elementary.files.appdata.xml.in.in:96
+#: data/io.elementary.files.appdata.xml.in.in:111
+#: data/io.elementary.files.appdata.xml.in.in:127
+#: data/io.elementary.files.appdata.xml.in.in:142
+#: data/io.elementary.files.appdata.xml.in.in:159
+#: data/io.elementary.files.appdata.xml.in.in:188
+#: data/io.elementary.files.appdata.xml.in.in:212
+#: data/io.elementary.files.appdata.xml.in.in:230
+#: data/io.elementary.files.appdata.xml.in.in:252
+#: data/io.elementary.files.appdata.xml.in.in:266
+#: data/io.elementary.files.appdata.xml.in.in:279
+#: data/io.elementary.files.appdata.xml.in.in:292
+#: data/io.elementary.files.appdata.xml.in.in:324
+#: data/io.elementary.files.appdata.xml.in.in:346
+#: data/io.elementary.files.appdata.xml.in.in:355
+#: data/io.elementary.files.appdata.xml.in.in:364
+#: data/io.elementary.files.appdata.xml.in.in:375
+#: data/io.elementary.files.appdata.xml.in.in:384
+#: data/io.elementary.files.appdata.xml.in.in:403
+#: data/io.elementary.files.appdata.xml.in.in:414
+#: data/io.elementary.files.appdata.xml.in.in:422
+#: data/io.elementary.files.appdata.xml.in.in:454
+msgid "Updated translations"
+msgstr "Traduccions actualitzades"
+
+#: data/io.elementary.files.appdata.xml.in.in:53
+msgid "Close FileChooser with Esc key"
+msgstr "Tanqueu el selector de fitxers amb la tecla ESC."
+
+#: data/io.elementary.files.appdata.xml.in.in:54
+msgid "Use new emblems for git status"
+msgstr "Ús d'emblemes nous per a l'estat de git"
+
+#: data/io.elementary.files.appdata.xml.in.in:55
+msgid "Show selection actions in secondary click menu"
+msgstr "Mostra les accions de selecció al menú de clic secundari."
+
+#: data/io.elementary.files.appdata.xml.in.in:59
+msgid "Always show Permissions page in Properties dialog"
+msgstr "Mostra sempre la pàgina de permisos al diàleg de propietats."
+
+#: data/io.elementary.files.appdata.xml.in.in:60
+msgid ""
+"In Permissions page, show user and group numeric IDs when names not available"
+msgstr ""
+"A la pàgina de permisos, mostra els ID numèrics d'usuari i grup quan els "
+"noms no estiguin disponibles."
+
+#: data/io.elementary.files.appdata.xml.in.in:61
+msgid "In Permissions page, show message when no information available"
+msgstr ""
+"A la pàgina de permisos, mostra el missatge quan no hi hagi informació "
+"disponible."
+
+#: data/io.elementary.files.appdata.xml.in.in:63
+#: data/io.elementary.files.appdata.xml.in.in:108
+#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:157
+#: data/io.elementary.files.appdata.xml.in.in:185
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:228
+#: data/io.elementary.files.appdata.xml.in.in:250
+#: data/io.elementary.files.appdata.xml.in.in:303
+msgid "Other updates:"
+msgstr "Altres actualitzacions:"
+
+#: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Only allow one FileChooser per parent window"
 msgstr "Només es permet un selector de fitxers per finestra principal."
 
-#: data/io.elementary.files.appdata.xml.in.in:41
+#: data/io.elementary.files.appdata.xml.in.in:66
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
 msgstr ""
 "Es navega a la carpeta quan premeu retorn al selector de fitxers en lloc de "
 "seleccionar."
 
-#: data/io.elementary.files.appdata.xml.in.in:43
-#: data/io.elementary.files.appdata.xml.in.in:64
-#: data/io.elementary.files.appdata.xml.in.in:228
-#: data/io.elementary.files.appdata.xml.in.in:242
-msgid "Minor updates:"
-msgstr "Actualitzacions menors:"
-
-#: data/io.elementary.files.appdata.xml.in.in:45
-#: data/io.elementary.files.appdata.xml.in.in:66
-#: data/io.elementary.files.appdata.xml.in.in:81
-#: data/io.elementary.files.appdata.xml.in.in:97
-#: data/io.elementary.files.appdata.xml.in.in:112
-#: data/io.elementary.files.appdata.xml.in.in:129
-#: data/io.elementary.files.appdata.xml.in.in:158
-#: data/io.elementary.files.appdata.xml.in.in:182
-#: data/io.elementary.files.appdata.xml.in.in:200
-#: data/io.elementary.files.appdata.xml.in.in:222
-#: data/io.elementary.files.appdata.xml.in.in:236
-#: data/io.elementary.files.appdata.xml.in.in:249
-#: data/io.elementary.files.appdata.xml.in.in:262
-#: data/io.elementary.files.appdata.xml.in.in:294
-#: data/io.elementary.files.appdata.xml.in.in:316
-#: data/io.elementary.files.appdata.xml.in.in:325
-#: data/io.elementary.files.appdata.xml.in.in:334
-#: data/io.elementary.files.appdata.xml.in.in:345
-#: data/io.elementary.files.appdata.xml.in.in:354
-#: data/io.elementary.files.appdata.xml.in.in:373
-#: data/io.elementary.files.appdata.xml.in.in:384
-#: data/io.elementary.files.appdata.xml.in.in:392
-#: data/io.elementary.files.appdata.xml.in.in:424
-msgid "Updated translations"
-msgstr "Traduccions actualitzades"
-
-#: data/io.elementary.files.appdata.xml.in.in:53
+#: data/io.elementary.files.appdata.xml.in.in:78
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
@@ -150,53 +209,77 @@ msgstr ""
 "Ús del portal \"Envia missatges\" en lloc del contracte: millora de la "
 "compatibilitat amb aplicacions de correu alternatives"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
+#: data/io.elementary.files.appdata.xml.in.in:79
 msgid "Add file filters and New Folder options to file chooser portal"
 msgstr ""
 "Addicció de filtres de fitxers i opcions de carpeta nova al portal de "
 "selecció de fitxers"
 
-#: data/io.elementary.files.appdata.xml.in.in:55
+#: data/io.elementary.files.appdata.xml.in.in:80
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
 "Permet contrasenyes en blanc per a connexions remotes, p. ex. per a SSH "
 "mitjançant una clau privada."
 
-#: data/io.elementary.files.appdata.xml.in.in:59
+#: data/io.elementary.files.appdata.xml.in.in:81
+msgid "Make ejecting devices safer"
+msgstr "Expulsió de dispositius més segura"
+
+#: data/io.elementary.files.appdata.xml.in.in:82
+msgid "Add option to stop drive if possible"
+msgstr "Addició d'una opció per aturar la unitat si és possible"
+
+#: data/io.elementary.files.appdata.xml.in.in:83
+msgid "Show unformatted drives and drives without media"
+msgstr "Mostra unitats sense format i unitats sense mitjans."
+
+#: data/io.elementary.files.appdata.xml.in.in:87
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
 "Correcció de l'enganxament del text de la barra de camí seleccionada a una "
 "altra finestra fent clic amb el botó mitjà"
 
-#: data/io.elementary.files.appdata.xml.in.in:60
+#: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Fix selecting multiple groups of files"
 msgstr "Correcció de la selecció de diversos grups de fitxers"
 
-#: data/io.elementary.files.appdata.xml.in.in:61
+#: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr ""
 "Permet deixar anar el marcador directament a sota del marcador de Recents."
 
-#: data/io.elementary.files.appdata.xml.in.in:62
+#: data/io.elementary.files.appdata.xml.in.in:90
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr ""
 "No es mostra l'objectiu de desplegament inutilitzable a sota de l'adreça "
 "d'interès de la Paperera."
 
-#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:91
+msgid "Fix sidebar showing both drive and volume for same device"
+msgstr ""
+"Correcció de la barra lateral que mostra la unitat i el volum del mateix "
+"dispositiu"
+
+#: data/io.elementary.files.appdata.xml.in.in:92
+msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
+msgstr ""
+"Correcció de la barra lateral que mostra els servidors SSH a les seccions "
+"d'emmagatzematge i xarxa"
+
+#: data/io.elementary.files.appdata.xml.in.in:104
 msgid "Show translated bookmark names when changing languages"
 msgstr ""
 "Es mostren els noms de les adreces d'interès traduïdes en canviar de llengua."
 
-#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
 msgstr ""
 "Atura la desaparició d'icones de fitxers en desplaçaments o canvis de "
 "visualització."
 
-#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:106
 msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
@@ -204,159 +287,147 @@ msgstr ""
 "S'atura l'aparició breu de la superposició d'estat quan es canvia la carpeta "
 "arrel a la vista de columna."
 
-#: data/io.elementary.files.appdata.xml.in.in:78
-#: data/io.elementary.files.appdata.xml.in.in:95
 #: data/io.elementary.files.appdata.xml.in.in:110
-#: data/io.elementary.files.appdata.xml.in.in:127
-#: data/io.elementary.files.appdata.xml.in.in:155
-#: data/io.elementary.files.appdata.xml.in.in:179
-#: data/io.elementary.files.appdata.xml.in.in:198
-#: data/io.elementary.files.appdata.xml.in.in:220
-#: data/io.elementary.files.appdata.xml.in.in:273
-msgid "Other updates:"
-msgstr "Altres actualitzacions:"
-
-#: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Remove message about reporting issues when running from Terminal"
 msgstr ""
 "Supressió del missatge sobre els informes quan s'executa des de Terminal"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:119
 msgid "Open bookmarks in a new tab with Ctrl + Click"
 msgstr "Obriu els marcadors en una pestanya nova amb Ctrl + clic."
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:120
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
 "Correcció de deixar anar URI als dispositius d’emmagatzematge i a les "
 "ubicacions de xarxa de la barra lateral"
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Fix restoring tabs after a system restart"
 msgstr ""
 "Correcció de la restauració de les pestanyes després del reinici del sistema"
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:122
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
 "No s'anul·la la selecció quan feu clic secundari a l'espai en blanc al "
 "voltant d'un fitxer o carpeta."
 
-#: data/io.elementary.files.appdata.xml.in.in:93
+#: data/io.elementary.files.appdata.xml.in.in:123
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
 "Es mostra el menú contextual de la carpeta quan feu clic secundari fora "
 "d'una selecció."
 
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:135
 msgid "Fix small context menus on breadcrumbs"
 msgstr "Correcció de menús contextuals petits a les molles"
 
-#: data/io.elementary.files.appdata.xml.in.in:106
+#: data/io.elementary.files.appdata.xml.in.in:136
 msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgstr "Correcció dels marcadors d'un element seleccionat amb Ctrl + D"
 
-#: data/io.elementary.files.appdata.xml.in.in:107
+#: data/io.elementary.files.appdata.xml.in.in:137
 msgid "Fix renaming bookmarks in the sidebar"
 msgstr ""
 "Correcció del canvi de nom de les adreces d'interès de la barra lateral"
 
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "FIx an issue with showing color tags when thumbnails are hidden"
+#: data/io.elementary.files.appdata.xml.in.in:138
+msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr "Correcció de les etiquetes de colors quan s'amaguen les miniatures"
 
-#: data/io.elementary.files.appdata.xml.in.in:120
+#: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Fix freeze when comparing copied files"
 msgstr "Correcció de la congelació quan es comparen fitxers copiats"
 
-#: data/io.elementary.files.appdata.xml.in.in:121
+#: data/io.elementary.files.appdata.xml.in.in:151
 msgid "Fix truncation of final column in Column View under some circumstances"
 msgstr ""
 "Correcció del truncament de la columna final a la vista de columna en "
 "algunes circumstàncies"
 
-#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Show more keyboard accelerators in menus"
 msgstr "Es mostren més acceleradors de teclat als menús."
 
-#: data/io.elementary.files.appdata.xml.in.in:137
+#: data/io.elementary.files.appdata.xml.in.in:167
 msgid "Fix connecting to AFP servers so that passwords are remembered"
 msgstr ""
 "Correcció de la connexió als servidors d'AFP perquè es recordin les "
 "contrasenyes"
 
-#: data/io.elementary.files.appdata.xml.in.in:138
+#: data/io.elementary.files.appdata.xml.in.in:168
 msgid "Fix MTP mounts"
 msgstr "Correcció dels muntatges d'MTP"
 
-#: data/io.elementary.files.appdata.xml.in.in:142
+#: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Launch files with double click instead of single click"
 msgstr "Obertura de fitxers amb doble clic en lloc de fer un sol clic"
 
-#: data/io.elementary.files.appdata.xml.in.in:143
+#: data/io.elementary.files.appdata.xml.in.in:173
 msgid "Provide a File Chooser portal for Flatpak apps"
 msgstr ""
 "Es proporciona un portal Selector de fitxers per a les aplicacions de "
 "Flatpak."
 
-#: data/io.elementary.files.appdata.xml.in.in:144
+#: data/io.elementary.files.appdata.xml.in.in:174
 msgid "Brand new animated Sidebar"
 msgstr "Barra lateral animada totalment nova"
 
-#: data/io.elementary.files.appdata.xml.in.in:145
+#: data/io.elementary.files.appdata.xml.in.in:175
 msgid "Dark style support"
 msgstr "Admissió de l’estil fosc"
 
-#: data/io.elementary.files.appdata.xml.in.in:146
+#: data/io.elementary.files.appdata.xml.in.in:176
 msgid "Mint and Bubblegum color tags"
 msgstr "Etiquetes de colors Mint i Bubblegum"
 
-#: data/io.elementary.files.appdata.xml.in.in:147
+#: data/io.elementary.files.appdata.xml.in.in:177
 msgid "Do not restore locations that have become inaccessible"
 msgstr "No restauris les ubicacions que han quedat inaccessibles."
 
-#: data/io.elementary.files.appdata.xml.in.in:148
-msgid "Clicking between thumbnail and text now activates/selects in Icon view"
+#: data/io.elementary.files.appdata.xml.in.in:178
+msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr ""
 "Fent clic entre la miniatura i el text, ara s'activa / selecciona la "
-"visualització d'icones."
+"visualització en graella."
 
-#: data/io.elementary.files.appdata.xml.in.in:149
+#: data/io.elementary.files.appdata.xml.in.in:179
 msgid "AFC protocol support"
 msgstr "Admissió del protocol d'AFC"
 
-#: data/io.elementary.files.appdata.xml.in.in:150
+#: data/io.elementary.files.appdata.xml.in.in:180
 msgid "Add a smaller minimum icon size in list view"
 msgstr "Addició d'una mida mínima d'icona més petita a la vista de llista"
 
-#: data/io.elementary.files.appdata.xml.in.in:151
+#: data/io.elementary.files.appdata.xml.in.in:181
 msgid "Show emblems inline in list views"
 msgstr "Es mostren els emblemes en línia a les vistes de llista."
 
-#: data/io.elementary.files.appdata.xml.in.in:152
+#: data/io.elementary.files.appdata.xml.in.in:182
 msgid "Performance improvements"
 msgstr "Millores de rendiment"
 
-#: data/io.elementary.files.appdata.xml.in.in:153
+#: data/io.elementary.files.appdata.xml.in.in:183
 msgid "Stability improvements"
 msgstr "Millores d'estabilitat"
 
-#: data/io.elementary.files.appdata.xml.in.in:157
+#: data/io.elementary.files.appdata.xml.in.in:187
 msgid "Rename \"Devices\" to \"Storage\""
 msgstr "Canvi de nom de \"Dispositius\" a \"Emmagatzematge\""
 
-#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr ""
 "Opció del menú de marcadors per a muntatges de xarxa a la barra lateral"
 
-#: data/io.elementary.files.appdata.xml.in.in:167
+#: data/io.elementary.files.appdata.xml.in.in:197
 msgid "Show folder item count in List View"
 msgstr "Es mostra el recompte d’elements de carpeta a la vista de llista."
 
-#: data/io.elementary.files.appdata.xml.in.in:168
+#: data/io.elementary.files.appdata.xml.in.in:198
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
@@ -364,35 +435,35 @@ msgstr ""
 "Ara es mostren les miniatures en dispositius MTP i PTP muntats localment, "
 "així com en ubicacions de la xarxa per defecte."
 
-#: data/io.elementary.files.appdata.xml.in.in:169
+#: data/io.elementary.files.appdata.xml.in.in:199
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
 "Finestra de propietats: permet que el nom de fitxer es pugui copiar quan no "
 "es pot editar."
 
-#: data/io.elementary.files.appdata.xml.in.in:170
+#: data/io.elementary.files.appdata.xml.in.in:200
 msgid "Improved tooltip formatting for devices in the sidebar"
 msgstr ""
 "Formatació millorada de la informació sobre els dispositius a la barra "
 "lateral"
 
-#: data/io.elementary.files.appdata.xml.in.in:174
+#: data/io.elementary.files.appdata.xml.in.in:204
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr ""
 "Correcció de la fallada en prémer Retorn i una altra tecla al mateix temps"
 
-#: data/io.elementary.files.appdata.xml.in.in:175
+#: data/io.elementary.files.appdata.xml.in.in:205
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr "Correcció de la gestió de la barra de camí de \"~\" i \"..\" al camí"
 
-#: data/io.elementary.files.appdata.xml.in.in:176
+#: data/io.elementary.files.appdata.xml.in.in:206
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
 "La barra de camí del Filechooser ja no es bloca quan s'invoca des d'un "
 "Flatpak."
 
-#: data/io.elementary.files.appdata.xml.in.in:177
+#: data/io.elementary.files.appdata.xml.in.in:207
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
@@ -400,283 +471,283 @@ msgstr ""
 "No es mostra l'estat de git per als repositoris en sistemes de fitxers FUSE "
 "per evitar un possible bloqueig."
 
-#: data/io.elementary.files.appdata.xml.in.in:181
+#: data/io.elementary.files.appdata.xml.in.in:211
 msgid "\"Personal\" is now \"Bookmarks\""
 msgstr "\"Personal\" ara és \"Marcadors\" o \"Adreces d'interès\"."
 
-#: data/io.elementary.files.appdata.xml.in.in:190
+#: data/io.elementary.files.appdata.xml.in.in:220
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
 "Addició de barres d’ús de disc d’alerta i error quan el disc estigui massa "
 "ple"
 
-#: data/io.elementary.files.appdata.xml.in.in:191
+#: data/io.elementary.files.appdata.xml.in.in:221
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
 "S'evita canviar la mida de la finestra quan l'amplada de la columna del nom "
 "de fitxer excedeix l'espai disponible."
 
-#: data/io.elementary.files.appdata.xml.in.in:195
+#: data/io.elementary.files.appdata.xml.in.in:225
 msgid "Fix handling of filenames containing the # character"
 msgstr "Correcció de la gestió dels noms de fitxers amb el caràcter #"
 
-#: data/io.elementary.files.appdata.xml.in.in:196
+#: data/io.elementary.files.appdata.xml.in.in:226
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
 "Correcció de les regressions pel que fa als menús contextuals de la barra de "
 "camins i fer clic"
 
-#: data/io.elementary.files.appdata.xml.in.in:207
+#: data/io.elementary.files.appdata.xml.in.in:237
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
 "S'enganxen les imatges a altres aplicacions en lloc dels camins del fitxer "
 "quan és possible."
 
-#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:238
 msgid "Paste into a selected folder when using Ctrl + V"
 msgstr "S'enganxa en una carpeta seleccionada quan s'usa Ctrl + V."
 
-#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:239
 msgid "Show file info overlay in List View as well"
 msgstr ""
 "Es mostra també la informació de fitxer superposada a la vista de llista."
 
-#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Traverse search results with Tab key"
 msgstr "Travessa pels resultats de la cerca amb la tecla Tab"
 
-#: data/io.elementary.files.appdata.xml.in.in:211
+#: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Show an error message when attempting to open trashed files"
 msgstr ""
 "Es mostra un missatge d'error quan s'intenta obrir fitxers de la paperera."
 
-#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:245
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
 "Correcció de l'àrea no editable a la barra de camí que mostra la ubicació de "
 "la carpeta personal"
 
-#: data/io.elementary.files.appdata.xml.in.in:216
+#: data/io.elementary.files.appdata.xml.in.in:246
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr ""
 "Solució d'un problema que impedia que mostrar les hores de modificació d'un "
 "fitxer"
 
-#: data/io.elementary.files.appdata.xml.in.in:217
+#: data/io.elementary.files.appdata.xml.in.in:247
 msgid "Fix size of restored tiled window"
 msgstr "Correcció de la mida de la finestra de mosaic restaurada"
 
-#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:248
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr ""
 "Correcció de les etiquetes de color que desapareixen quan s'amaguen les "
 "miniatures"
 
-#: data/io.elementary.files.appdata.xml.in.in:230
+#: data/io.elementary.files.appdata.xml.in.in:260
 msgid "Fix crash when a device icon is coming from a file"
 msgstr ""
 "Correcció de la fallada de quan la icona d'un dispositiu ve d'un fitxer"
 
-#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:261
 msgid "Fix device icon sometimes missing"
 msgstr "Correcció de la icona de dispositiu, que a vegades no hi és."
 
-#: data/io.elementary.files.appdata.xml.in.in:232
+#: data/io.elementary.files.appdata.xml.in.in:262
 msgid "Fix occasional view freeze after renaming"
 msgstr "Correcció de la congelació de la vista després d'un canvi de nom"
 
-#: data/io.elementary.files.appdata.xml.in.in:233
+#: data/io.elementary.files.appdata.xml.in.in:263
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
 "Millora de la lògica del canvi de nom quan hi hagi un espai al principi o al "
 "final"
 
-#: data/io.elementary.files.appdata.xml.in.in:234
+#: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Fix breadcrumbs sometimes incorrect at startup"
 msgstr "Correcció de les molles de pa sovint incorrectes a l'inici"
 
-#: data/io.elementary.files.appdata.xml.in.in:235
+#: data/io.elementary.files.appdata.xml.in.in:265
 msgid "Do not show file:// prefix in navigation buttons menus"
 msgstr "No es mostra el prefix file:// als menús dels botons de navegació."
 
-#: data/io.elementary.files.appdata.xml.in.in:244
+#: data/io.elementary.files.appdata.xml.in.in:274
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
 msgstr ""
 "Correcció de l'etiqueta de la drecera de teclat \"carpeta nova\" al menú"
 
-#: data/io.elementary.files.appdata.xml.in.in:245
+#: data/io.elementary.files.appdata.xml.in.in:275
 msgid "Fix navigation with back/forward button context menu"
 msgstr ""
 "Correcció de la navagació amb el botó d'endavant / enrere del menú contextual"
 
-#: data/io.elementary.files.appdata.xml.in.in:246
+#: data/io.elementary.files.appdata.xml.in.in:276
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
 "Correcció de la barra de camins que de vegades mostra el camí equivocat en "
 "tancar una pestanya"
 
-#: data/io.elementary.files.appdata.xml.in.in:247
+#: data/io.elementary.files.appdata.xml.in.in:277
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
 "S'assegura que les dreceres de teclat funcionin immediatament després de "
 "crear o canviar el nom d'un fitxer."
 
-#: data/io.elementary.files.appdata.xml.in.in:248
+#: data/io.elementary.files.appdata.xml.in.in:278
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
 "No s'inclou \"fitxer: //\" al text de la barra de camins o quan s'enganxa "
 "com a text."
 
-#: data/io.elementary.files.appdata.xml.in.in:256
+#: data/io.elementary.files.appdata.xml.in.in:286
 msgid "Show keyboard shortcuts in menu items"
 msgstr "Es mostren les dreceres de teclat als menús."
 
-#: data/io.elementary.files.appdata.xml.in.in:257
+#: data/io.elementary.files.appdata.xml.in.in:287
 msgid "Fix an issue with breadcrumbs in the file chooser"
 msgstr "Correcció de les molles de pa al selector de fitxers"
 
-#: data/io.elementary.files.appdata.xml.in.in:258
+#: data/io.elementary.files.appdata.xml.in.in:288
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr "Es mostra un avís quan s'expulsa un volum que encara s'usa."
 
-#: data/io.elementary.files.appdata.xml.in.in:259
+#: data/io.elementary.files.appdata.xml.in.in:289
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
 "Correcció de l'actualització del cursor després del desplaçament horitzontal "
 "a la vista de columna"
 
-#: data/io.elementary.files.appdata.xml.in.in:260
+#: data/io.elementary.files.appdata.xml.in.in:290
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
 "Correcció de la icona de l'obertura de carpeta que persistia després de "
 "tancar la vista de columna"
 
-#: data/io.elementary.files.appdata.xml.in.in:261
+#: data/io.elementary.files.appdata.xml.in.in:291
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr ""
 "Ús d'estil destructiu d'acció per a alguns botons de diàleg per a la paperera"
 
-#: data/io.elementary.files.appdata.xml.in.in:268
+#: data/io.elementary.files.appdata.xml.in.in:298
 msgid "New features:"
 msgstr "Funcions noves:"
 
-#: data/io.elementary.files.appdata.xml.in.in:270
+#: data/io.elementary.files.appdata.xml.in.in:300
 msgid "Initial git plugin support"
 msgstr "Suport per al connector inicial de git"
 
-#: data/io.elementary.files.appdata.xml.in.in:271
+#: data/io.elementary.files.appdata.xml.in.in:301
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr ""
 "Se segueix la configuració de l’historial global a l’hora de restaurar i "
 "desar pestanyes."
 
-#: data/io.elementary.files.appdata.xml.in.in:275
+#: data/io.elementary.files.appdata.xml.in.in:305
 msgid "Ensure tabs showing same folder remain synchronized"
 msgstr ""
 "S'assegura que les pestanyes que mostren la mateixa carpeta continuïn "
 "sincronitzades."
 
-#: data/io.elementary.files.appdata.xml.in.in:276
+#: data/io.elementary.files.appdata.xml.in.in:306
 msgid "Fix drag with secondary button on empty space"
 msgstr "Correcció de l'arrossegament amb el botó secundari a l'espai buit"
 
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:307
 msgid "Show custom media type icons for installed apps"
 msgstr ""
 "Es mostren les icones personalitzades per a les aplicacions instal·lades."
 
-#: data/io.elementary.files.appdata.xml.in.in:278
+#: data/io.elementary.files.appdata.xml.in.in:308
 msgid "Fix appearance of inactive diskspace indicator"
 msgstr "Correcció de l'aparença de l'indicador d'espai de disc inactiu"
 
-#: data/io.elementary.files.appdata.xml.in.in:279
+#: data/io.elementary.files.appdata.xml.in.in:309
 msgid "Improve pathbar animation"
 msgstr "Millora l’animació de la barra de rutes"
 
-#: data/io.elementary.files.appdata.xml.in.in:280
+#: data/io.elementary.files.appdata.xml.in.in:310
 msgid "Update documentation"
 msgstr "Documentació actualitzada"
 
-#: data/io.elementary.files.appdata.xml.in.in:281
+#: data/io.elementary.files.appdata.xml.in.in:311
 msgid "Update translations"
 msgstr "Traduccions actualitzades"
 
-#: data/io.elementary.files.appdata.xml.in.in:288
+#: data/io.elementary.files.appdata.xml.in.in:318
 msgid "Initial cloudproviders plugin support"
 msgstr "Suport inicial per al connector de cloudproviders"
 
-#: data/io.elementary.files.appdata.xml.in.in:289
+#: data/io.elementary.files.appdata.xml.in.in:319
 msgid "Fix selecting pasted files"
 msgstr "Correcció de la selecció dels fitxers enganxats"
 
-#: data/io.elementary.files.appdata.xml.in.in:290
+#: data/io.elementary.files.appdata.xml.in.in:320
 msgid "Fix color label visibility while using dark theme"
 msgstr ""
 "Correcció de la visibilitat de l'etiqueta de color mentre s'usa el tema fosc"
 
-#: data/io.elementary.files.appdata.xml.in.in:291
+#: data/io.elementary.files.appdata.xml.in.in:321
 msgid "Fix selecting files using Shift key"
 msgstr "Correcció de la selecció dels fitxers mitjançant la tecla Maj."
 
-#: data/io.elementary.files.appdata.xml.in.in:292
+#: data/io.elementary.files.appdata.xml.in.in:322
 msgid "Draw checkerboard background for image items"
 msgstr "Es dibuixa el fons de quadrícula per a elements d’imatge."
 
-#: data/io.elementary.files.appdata.xml.in.in:293
+#: data/io.elementary.files.appdata.xml.in.in:323
 msgid "Improved styling for disk space bars"
 msgstr "Estil millorat per a les barres d’espai de disc"
 
-#: data/io.elementary.files.appdata.xml.in.in:301
+#: data/io.elementary.files.appdata.xml.in.in:331
 msgid "Show more search results"
 msgstr "Es mostren més resultats de cerca."
 
-#: data/io.elementary.files.appdata.xml.in.in:302
+#: data/io.elementary.files.appdata.xml.in.in:332
 msgid "Ensure valid tab name generation"
 msgstr "S'assegura la generació de noms de pestanya vàlids."
 
-#: data/io.elementary.files.appdata.xml.in.in:303
+#: data/io.elementary.files.appdata.xml.in.in:333
 msgid "Properly sort folders by date and size"
 msgstr "S'ordenen correctament les carpetes per data i mida."
 
-#: data/io.elementary.files.appdata.xml.in.in:304
+#: data/io.elementary.files.appdata.xml.in.in:334
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 "Obrir fitxers des del terminal ara obre una pestanya nova en lloc d'una "
 "finestra."
 
-#: data/io.elementary.files.appdata.xml.in.in:305
+#: data/io.elementary.files.appdata.xml.in.in:335
 msgid "Improve MTP support"
 msgstr "Millora del suport d'MTP"
 
-#: data/io.elementary.files.appdata.xml.in.in:306
+#: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Various tagging feature refinements"
 msgstr "Diversos perfeccionaments de funcions d'etiquetatge"
 
-#: data/io.elementary.files.appdata.xml.in.in:307
+#: data/io.elementary.files.appdata.xml.in.in:337
 msgid "Keyboard navigation improvements"
 msgstr "Millores en la navegació del teclat"
 
-#: data/io.elementary.files.appdata.xml.in.in:308
+#: data/io.elementary.files.appdata.xml.in.in:338
 msgid "Symlink copy and paste fixes"
 msgstr "Correccions d'enllaços simbòlics per copiar i enganxar"
 
-#: data/io.elementary.files.appdata.xml.in.in:309
+#: data/io.elementary.files.appdata.xml.in.in:339
 msgid "Avoid crash when Templates folder is null"
 msgstr "S'evita la fallada quan la carpeta Plantilles és nul·la."
 
-#: data/io.elementary.files.appdata.xml.in.in:310
+#: data/io.elementary.files.appdata.xml.in.in:340
 msgid "Reduce memory footprint of FileChooserDialog"
 msgstr "Reducció de la petjada de memòria de FileChooserDialog"
 
-#: data/io.elementary.files.appdata.xml.in.in:311
+#: data/io.elementary.files.appdata.xml.in.in:341
 msgid "Avoid crash when selecting image file in some situations"
 msgstr ""
 "S'evita la fallada quan seleccioneu fitxer d’imatges en algunes situacions."
 
-#: data/io.elementary.files.appdata.xml.in.in:312
+#: data/io.elementary.files.appdata.xml.in.in:342
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
@@ -684,50 +755,50 @@ msgstr ""
 "Correcció de la finestra de progrés que no es pot mostrar mentre es copien "
 "els fitxers de xarxa a l'emmagatzematge extraïble"
 
-#: data/io.elementary.files.appdata.xml.in.in:313
+#: data/io.elementary.files.appdata.xml.in.in:343
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr ""
 "Correcció d'arrossegar i deixar anar després de fer doble clic en una àrea "
 "en blanc"
 
-#: data/io.elementary.files.appdata.xml.in.in:314
+#: data/io.elementary.files.appdata.xml.in.in:344
 msgid "Avoid crash while scrolling over view switcher"
 msgstr "S'evita la fallada mentre es desplaça sobre el commutador de vistes."
 
-#: data/io.elementary.files.appdata.xml.in.in:315
+#: data/io.elementary.files.appdata.xml.in.in:345
 msgid "Avoid possible crash in some copy and paste situations"
 msgstr ""
 "S'eviten fallades possibles en algunes situacions de copiar i enganxar."
 
-#: data/io.elementary.files.appdata.xml.in.in:323
-msgid "Keyboard navigation fix for cherry picking select files in icon view"
+#: data/io.elementary.files.appdata.xml.in.in:353
+msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr ""
 "Correcció de la navegació per teclat per seleccionar certs fitxers a la "
-"vista d'icones"
+"vista de graella"
 
-#: data/io.elementary.files.appdata.xml.in.in:324
+#: data/io.elementary.files.appdata.xml.in.in:354
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
 "L’estil de text de l’espai reservat per a la cerca no es codifica "
 "encastadament, solució del problema del tema fosc"
 
-#: data/io.elementary.files.appdata.xml.in.in:332
+#: data/io.elementary.files.appdata.xml.in.in:362
 msgid "Minor spacing adjustments to location bar"
 msgstr "Ajustos d’espais menors a la barra d’ubicació"
 
-#: data/io.elementary.files.appdata.xml.in.in:333
+#: data/io.elementary.files.appdata.xml.in.in:363
 msgid "Fix F2 renaming behavior"
 msgstr "Correcció del comportament del canvi de nom amb F2"
 
-#: data/io.elementary.files.appdata.xml.in.in:341
+#: data/io.elementary.files.appdata.xml.in.in:371
 msgid "Minor spacing adjustments to location breadcrumbs"
 msgstr "Ajustos d'espaiat menors a les molles de pa de la ubicació"
 
-#: data/io.elementary.files.appdata.xml.in.in:342
+#: data/io.elementary.files.appdata.xml.in.in:372
 msgid "Consistently remember color tags"
 msgstr "Recordatori consistent de les etiquetes de colors"
 
-#: data/io.elementary.files.appdata.xml.in.in:343
+#: data/io.elementary.files.appdata.xml.in.in:373
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
@@ -735,216 +806,216 @@ msgstr ""
 "Es tornen a carregar les miniatures quan canvieu el nivell de zoom per "
 "evitar mostrar el marcador de lloc innecessàriament"
 
-#: data/io.elementary.files.appdata.xml.in.in:344
+#: data/io.elementary.files.appdata.xml.in.in:374
 msgid "Fix running scripts with spaces in filename"
 msgstr "Correcció de l'execució dels scripts amb espais al nom del fitxer"
 
-#: data/io.elementary.files.appdata.xml.in.in:352
+#: data/io.elementary.files.appdata.xml.in.in:382
 msgid "Fix high CPU regression in version 4.1.4"
 msgstr "Correcció de la regressió elevada de la CPU a la versió 4.1.4"
 
-#: data/io.elementary.files.appdata.xml.in.in:353
+#: data/io.elementary.files.appdata.xml.in.in:383
 msgid "File sorting fixes"
 msgstr "Correcció d’ordenació de fitxers"
 
-#: data/io.elementary.files.appdata.xml.in.in:361
+#: data/io.elementary.files.appdata.xml.in.in:391
 msgid "Meson: fix soversion names"
 msgstr "Meson: correcció dels noms de soversió"
 
-#: data/io.elementary.files.appdata.xml.in.in:362
+#: data/io.elementary.files.appdata.xml.in.in:392
 msgid "Remove CMake build system"
 msgstr "Supressió del sistema de construcció de CMake"
 
-#: data/io.elementary.files.appdata.xml.in.in:363
+#: data/io.elementary.files.appdata.xml.in.in:393
 msgid "Fix missing File System properties menu"
 msgstr "Correcció del menú de propietats del sistema de fitxers que falta"
 
-#: data/io.elementary.files.appdata.xml.in.in:364
+#: data/io.elementary.files.appdata.xml.in.in:394
 msgid "Drop intltool dependency"
 msgstr "Baixa de la dependència de l'intltool"
 
-#: data/io.elementary.files.appdata.xml.in.in:365
+#: data/io.elementary.files.appdata.xml.in.in:395
 msgid "Fix default file type handler logic"
 msgstr "Correcció de la lògica del gestor de tipus de fitxer per defecte"
 
-#: data/io.elementary.files.appdata.xml.in.in:366
+#: data/io.elementary.files.appdata.xml.in.in:396
 msgid "Fix initial search window size too small"
 msgstr "Correcció de la mida de la finestra de cerca inicial massa petita"
 
-#: data/io.elementary.files.appdata.xml.in.in:367
+#: data/io.elementary.files.appdata.xml.in.in:397
 msgid "Add option to disable local file thumbnails"
 msgstr "Addició d'una opció per desactivar les miniatures de fitxers locals"
 
-#: data/io.elementary.files.appdata.xml.in.in:368
+#: data/io.elementary.files.appdata.xml.in.in:398
 msgid "Fix crash when opening multiple video files"
 msgstr "Correcció de la fallada de quan s'obren diversos fitxers de vídeo"
 
-#: data/io.elementary.files.appdata.xml.in.in:369
+#: data/io.elementary.files.appdata.xml.in.in:399
 msgid "Fix some timing issues around adding and removing files"
 msgstr ""
 "Correcció d'alguns problemes de sincronització al voltant de l’addició i la "
 "supressió de fitxers"
 
-#: data/io.elementary.files.appdata.xml.in.in:370
+#: data/io.elementary.files.appdata.xml.in.in:400
 msgid "Meson: fix missing library headers"
 msgstr "Meson: correcció de les capçaleres de biblioteca que falten"
 
-#: data/io.elementary.files.appdata.xml.in.in:371
+#: data/io.elementary.files.appdata.xml.in.in:401
 msgid "Fix color tag display"
 msgstr "Correcció de la visualització de les etiquetes de color"
 
-#: data/io.elementary.files.appdata.xml.in.in:372
+#: data/io.elementary.files.appdata.xml.in.in:402
 msgid "Show reserved space in Properties window"
 msgstr "Visualització de l’espai reservat a la finestra de propietats"
 
-#: data/io.elementary.files.appdata.xml.in.in:380
+#: data/io.elementary.files.appdata.xml.in.in:410
 msgid "Add border radius to text background"
 msgstr "Addició del radi de la vora al fons del text"
 
-#: data/io.elementary.files.appdata.xml.in.in:381
+#: data/io.elementary.files.appdata.xml.in.in:411
 msgid "Fix file mimetype association regression"
 msgstr "Correcció de la regressió de l’associació de tipus mime de fitxers"
 
-#: data/io.elementary.files.appdata.xml.in.in:382
+#: data/io.elementary.files.appdata.xml.in.in:412
 msgid "New pathbar tooltips"
 msgstr "Nous consells a la barra de camins"
 
-#: data/io.elementary.files.appdata.xml.in.in:383
+#: data/io.elementary.files.appdata.xml.in.in:413
 msgid "Build fixes"
 msgstr "Correccions de construcció"
 
-#: data/io.elementary.files.appdata.xml.in.in:391
+#: data/io.elementary.files.appdata.xml.in.in:421
 msgid "Plugin build fixes"
 msgstr "Correccions de construcció de connectors"
 
-#: data/io.elementary.files.appdata.xml.in.in:399
+#: data/io.elementary.files.appdata.xml.in.in:429
 msgid "Fix Ctrl+Tab behavior"
 msgstr "Correcció del comportament de Ctrl + Tab"
 
-#: data/io.elementary.files.appdata.xml.in.in:400
+#: data/io.elementary.files.appdata.xml.in.in:430
 msgid "Fix building without Unity library"
 msgstr "Correcció de la construcció sense la biblioteca d'Unity"
 
-#: data/io.elementary.files.appdata.xml.in.in:407
+#: data/io.elementary.files.appdata.xml.in.in:437
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
 "Ocultació de les molles de pa i visualització de la icona de marcador i "
 "cercador a la carpeta personal"
 
-#: data/io.elementary.files.appdata.xml.in.in:408
+#: data/io.elementary.files.appdata.xml.in.in:438
 msgid "Style error dialogs"
 msgstr "Error d'estil als diàlegs"
 
-#: data/io.elementary.files.appdata.xml.in.in:409
+#: data/io.elementary.files.appdata.xml.in.in:439
 msgid "Right click fixes"
 msgstr "Correccions del clic del botó de propietats"
 
-#: data/io.elementary.files.appdata.xml.in.in:410
+#: data/io.elementary.files.appdata.xml.in.in:440
 msgid "Reload recent view when privacy setting changes"
 msgstr ""
 "Recàrrega de la vista recent quan es canvia la configuració de privadesa"
 
-#: data/io.elementary.files.appdata.xml.in.in:411
+#: data/io.elementary.files.appdata.xml.in.in:441
 msgid "`Connect Server` fixes"
 msgstr "Correccions de la connexió amb el servidor"
 
-#: data/io.elementary.files.appdata.xml.in.in:412
+#: data/io.elementary.files.appdata.xml.in.in:442
 msgid "Do not activate multiple files with single click"
 msgstr "No s'activen diversos fitxers amb un sol clic"
 
-#: data/io.elementary.files.appdata.xml.in.in:413
+#: data/io.elementary.files.appdata.xml.in.in:443
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr "Ús de Tab per canviar el focus del teclat i de la barra lateral"
 
-#: data/io.elementary.files.appdata.xml.in.in:414
+#: data/io.elementary.files.appdata.xml.in.in:444
 msgid "Delete color tag database entries for trashed files"
 msgstr ""
 "Supressió de les entrades de la base de dades de les etiquetes de color per "
 "a fitxers enviats a la paperera"
 
-#: data/io.elementary.files.appdata.xml.in.in:415
+#: data/io.elementary.files.appdata.xml.in.in:445
 msgid "Throttle tab closing"
 msgstr "Regulació del tancament de pestanyes"
 
-#: data/io.elementary.files.appdata.xml.in.in:416
+#: data/io.elementary.files.appdata.xml.in.in:446
 msgid "`Ctrl` key fixes"
 msgstr "Correccions de la tecla de Control"
 
-#: data/io.elementary.files.appdata.xml.in.in:417
+#: data/io.elementary.files.appdata.xml.in.in:447
 msgid "Drag and drop fixes"
 msgstr "Correccions de les accions d'arrossegar i deixar anar"
 
-#: data/io.elementary.files.appdata.xml.in.in:418
+#: data/io.elementary.files.appdata.xml.in.in:448
 msgid "Show icons in `Open with` menus"
 msgstr "Es mostren les icones als menús d'Obre amb..."
 
-#: data/io.elementary.files.appdata.xml.in.in:419
+#: data/io.elementary.files.appdata.xml.in.in:449
 msgid "Tooltip fixes"
 msgstr "Correccions de descripcions emergents"
 
-#: data/io.elementary.files.appdata.xml.in.in:420
+#: data/io.elementary.files.appdata.xml.in.in:450
 msgid "Memory leak fixes"
 msgstr "Correccions de fuites de memòria"
 
-#: data/io.elementary.files.appdata.xml.in.in:421
+#: data/io.elementary.files.appdata.xml.in.in:451
 msgid "Crash fixes"
 msgstr "Correccions de fallades"
 
-#: data/io.elementary.files.appdata.xml.in.in:422
+#: data/io.elementary.files.appdata.xml.in.in:452
 msgid "Trash: respect sound setting"
 msgstr "Paperera: es respecta la configuració del so"
 
-#: data/io.elementary.files.appdata.xml.in.in:423
+#: data/io.elementary.files.appdata.xml.in.in:453
 msgid "Localization fixes"
 msgstr "Correccions de localització"
 
-#: data/io.elementary.files.appdata.xml.in.in:431
+#: data/io.elementary.files.appdata.xml.in.in:461
 msgid "Over 100 major and minor bug fixes and improvements"
 msgstr "Més de 100 correccions i millores importants i menors d'errors"
 
-#: data/io.elementary.files.appdata.xml.in.in:438
+#: data/io.elementary.files.appdata.xml.in.in:468
 msgid "Honor 12/24hr system setting"
 msgstr "S'aplica la configuració del sistema 12 / 24 h"
 
-#: data/io.elementary.files.appdata.xml.in.in:439
+#: data/io.elementary.files.appdata.xml.in.in:469
 msgid "Distinguish between tabs with the same name"
 msgstr "Distinció de les pestanyes amb el mateix nom"
 
-#: data/io.elementary.files.appdata.xml.in.in:440
+#: data/io.elementary.files.appdata.xml.in.in:470
 msgid "Support launching from other applications with a target file selected"
 msgstr ""
 "S'admet el llançament des d’altres aplicacions amb un fitxer de destinació "
 "seleccionat"
 
-#: data/io.elementary.files.appdata.xml.in.in:441
-#: data/io.elementary.files.appdata.xml.in.in:454
-#: data/io.elementary.files.appdata.xml.in.in:468
-#: data/io.elementary.files.appdata.xml.in.in:478
-#: data/io.elementary.files.appdata.xml.in.in:489
+#: data/io.elementary.files.appdata.xml.in.in:471
+#: data/io.elementary.files.appdata.xml.in.in:484
+#: data/io.elementary.files.appdata.xml.in.in:498
+#: data/io.elementary.files.appdata.xml.in.in:508
+#: data/io.elementary.files.appdata.xml.in.in:519
 msgid "New translations"
 msgstr "Traduccions noves"
 
-#: data/io.elementary.files.appdata.xml.in.in:442
-#: data/io.elementary.files.appdata.xml.in.in:455
-#: data/io.elementary.files.appdata.xml.in.in:469
-#: data/io.elementary.files.appdata.xml.in.in:479
-#: data/io.elementary.files.appdata.xml.in.in:490
-#: data/io.elementary.files.appdata.xml.in.in:497
-#: data/io.elementary.files.appdata.xml.in.in:504
-#: data/io.elementary.files.appdata.xml.in.in:528
+#: data/io.elementary.files.appdata.xml.in.in:472
+#: data/io.elementary.files.appdata.xml.in.in:485
+#: data/io.elementary.files.appdata.xml.in.in:499
+#: data/io.elementary.files.appdata.xml.in.in:509
+#: data/io.elementary.files.appdata.xml.in.in:520
+#: data/io.elementary.files.appdata.xml.in.in:527
+#: data/io.elementary.files.appdata.xml.in.in:534
+#: data/io.elementary.files.appdata.xml.in.in:558
 msgid "Minor bug fixes"
 msgstr "Correccions d'errors menors"
 
-#: data/io.elementary.files.appdata.xml.in.in:449
+#: data/io.elementary.files.appdata.xml.in.in:479
 msgid "Improved networking support"
 msgstr "Suport de xarxa millorat"
 
-#: data/io.elementary.files.appdata.xml.in.in:450
+#: data/io.elementary.files.appdata.xml.in.in:480
 msgid "Correct window geometry when snapping to left or right"
 msgstr ""
 "Correcció de la geometria de la finestra en moviments d'esquerra a dreta"
 
-#: data/io.elementary.files.appdata.xml.in.in:451
+#: data/io.elementary.files.appdata.xml.in.in:481
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
@@ -952,18 +1023,18 @@ msgstr ""
 "Prémer Ctrl ja no cancel·la el canvi de nom mentre el paràmetre \"Revela el "
 "punter\" està actiu"
 
-#: data/io.elementary.files.appdata.xml.in.in:452
+#: data/io.elementary.files.appdata.xml.in.in:482
 msgid "Switching input language cancels actions"
 msgstr "Canviar la llengua d'entrada cancel·la accions"
 
-#: data/io.elementary.files.appdata.xml.in.in:453
-#: data/io.elementary.files.appdata.xml.in.in:467
-#: data/io.elementary.files.appdata.xml.in.in:477
-#: data/io.elementary.files.appdata.xml.in.in:488
+#: data/io.elementary.files.appdata.xml.in.in:483
+#: data/io.elementary.files.appdata.xml.in.in:497
+#: data/io.elementary.files.appdata.xml.in.in:507
+#: data/io.elementary.files.appdata.xml.in.in:518
 msgid "Various crash fixes"
 msgstr "Diverses correccions de fallades"
 
-#: data/io.elementary.files.appdata.xml.in.in:462
+#: data/io.elementary.files.appdata.xml.in.in:492
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
@@ -971,56 +1042,56 @@ msgstr ""
 "Els navegadors com ara el Firefox ara recorden el directori de baixades més "
 "usat recentment."
 
-#: data/io.elementary.files.appdata.xml.in.in:463
+#: data/io.elementary.files.appdata.xml.in.in:493
 msgid "Remember preferred zoom level"
 msgstr "Recorda el nivell d'ampliació preferit."
 
-#: data/io.elementary.files.appdata.xml.in.in:464
+#: data/io.elementary.files.appdata.xml.in.in:494
 msgid "Improved input method support"
 msgstr "S'ha millorat el suport del mètode d'entrada"
 
-#: data/io.elementary.files.appdata.xml.in.in:465
+#: data/io.elementary.files.appdata.xml.in.in:495
 msgid "910x640 minimum window size"
 msgstr "910x640, mida mínima de la finestra"
 
-#: data/io.elementary.files.appdata.xml.in.in:466
+#: data/io.elementary.files.appdata.xml.in.in:496
 msgid "Security fixes"
 msgstr "Correccions de seguretat"
 
-#: data/io.elementary.files.appdata.xml.in.in:476
+#: data/io.elementary.files.appdata.xml.in.in:506
 msgid "Enable drag and drop tabs between windows"
 msgstr "Habilita poder arrossegar i deixar anar pestanyes entre finestres."
 
-#: data/io.elementary.files.appdata.xml.in.in:486
+#: data/io.elementary.files.appdata.xml.in.in:516
 msgid "Merge search functionality into Ctrl+F"
 msgstr "Fusió de la funcionalitat de cerca amb Ctrl+F"
 
-#: data/io.elementary.files.appdata.xml.in.in:487
+#: data/io.elementary.files.appdata.xml.in.in:517
 msgid "Improved translation support"
 msgstr "Millora del suport de traducció"
 
-#: data/io.elementary.files.appdata.xml.in.in:511
+#: data/io.elementary.files.appdata.xml.in.in:541
 msgid "Fix appdata release dates"
 msgstr "Corregeix les datesde les dades de la versió"
 
-#: data/io.elementary.files.appdata.xml.in.in:518
+#: data/io.elementary.files.appdata.xml.in.in:548
 msgid "Improve file opening over Samba shares"
 msgstr "Millora l'obertura de fitxers a través de comparticions de Samba"
 
-#: data/io.elementary.files.appdata.xml.in.in:519
+#: data/io.elementary.files.appdata.xml.in.in:549
 msgid "Fix a crash when restoring items from the Trash"
 msgstr "Corregeix una fallada en restaurar elements de la paperera"
 
-#: data/io.elementary.files.appdata.xml.in.in:520
+#: data/io.elementary.files.appdata.xml.in.in:550
 msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr ""
 "Millora la sensitivitat de retallar/copiar/enganxar del menú contextual"
 
-#: data/io.elementary.files.appdata.xml.in.in:521
+#: data/io.elementary.files.appdata.xml.in.in:551
 msgid "Translation updates"
 msgstr "Actualitzacions de traducció"
 
-#: data/io.elementary.files.appdata.xml.in.in:533
+#: data/io.elementary.files.appdata.xml.in.in:563
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
