@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '6.1.1',
+    version: '6.1.2',
     meson_version: '>= 0.50.0'
 )
 
@@ -15,7 +15,6 @@ i18n = import('i18n')
 # Define the global directories and variables
 #
 plugin_dir = join_paths(get_option('prefix'), get_option('libdir'), meson.project_name(), 'plugins')
-terminal_name = 'pantheon-terminal'
 
 add_project_arguments(
     ['-DGETTEXT_PACKAGE="' + meson.project_name() + '"',
@@ -91,7 +90,6 @@ config_data.set('plugin_dir', plugin_dir)
 config_data.set('version', meson.project_version())
 config_data.set('testdata_dir', join_paths(meson.source_root(), 'data', 'tests'))
 config_data.set('app_name', meson.project_name())
-config_data.set('terminal_name', terminal_name)
 config_data.set('gettext_package', meson.project_name())
 config_data.set('locale_dir', join_paths(get_option('prefix'), get_option('localedir')))
 

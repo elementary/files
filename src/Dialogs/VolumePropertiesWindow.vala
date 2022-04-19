@@ -97,7 +97,7 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         create_storage_bar (info, 3);
-        update_storage_block_size (used_space, Granite.Widgets.StorageBar.ItemDescription.FILES);
+        update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
         show_all ();
     }
 }
