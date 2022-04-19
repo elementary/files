@@ -1847,15 +1847,17 @@ namespace Files {
 
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
-            var button_event = (Gdk.EventButton)event;
-            drag_button = (int)(button_event.button);
+            uint button;
+            if (event.get_button (out button)) {
+                drag_button = (int)button;
 
-            drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                   300,
-                                                   () => {
-                on_drag_timeout_button_release ((Gdk.EventButton)event);
-                return GLib.Source.REMOVE;
-            });
+                drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
+                                                       300,
+                                                       () => {
+                    on_drag_timeout_button_release ((Gdk.EventButton)event);
+                    return GLib.Source.REMOVE;
+                });
+            }
         }
 
         protected void show_context_menu (Gdk.Event event) {
