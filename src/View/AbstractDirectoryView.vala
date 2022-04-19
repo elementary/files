@@ -1470,10 +1470,10 @@ namespace Files {
             /* Only active during drag timeout */
             Gdk.DragContext context;
             var widget = get_child ();
-            int x = (int)event.x;
-            int y = (int)event.y;
+            double x, y;
+            event.get_coords (out x, out y);
 
-            if (Gtk.drag_check_threshold (widget, (int)drag_x, (int)drag_y, x, y)) {
+            if (Gtk.drag_check_threshold (widget, (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 cancel_drag_timer ();
                 should_activate = false;
                 var target_list = new Gtk.TargetList (DRAG_TARGETS);
@@ -1488,7 +1488,7 @@ namespace Files {
                                                            actions,
                                                            drag_button,
                                                            (Gdk.Event) event,
-                                                            x, y);
+                                                            (int)x, (int)y);
                 return true;
             } else {
                 return false;

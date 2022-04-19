@@ -211,13 +211,12 @@ namespace Files {
                                                          bool rubberband = false) {
             Gtk.CellRenderer? cell_renderer;
             uint zone;
-            int x, y;
             path = null;
 
-            x = (int)event.x;
-            y = (int)event.y;
+            double x, y;
+            event.get_coords (out x, out y);
 
-            tree.get_item_at_pos (x, y, out path, out cell_renderer);
+            tree.get_item_at_pos ((int)x, (int)y, out path, out cell_renderer);
             zone = (path != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
             if (cell_renderer != null) {
@@ -256,7 +255,7 @@ namespace Files {
                     bool on_helper = false;
                     Files.File? file = model.file_for_path (path);
                     if (file != null) {
-                        bool on_icon = is_on_icon (x, y, ref on_helper);
+                        bool on_icon = is_on_icon ((int)x, (int)y, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;

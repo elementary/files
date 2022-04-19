@@ -207,22 +207,22 @@ namespace Files {
             Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
-            int x, y, cx, cy, depth;
+            int cx, cy, depth;
             path = null;
 
             if (event.window != tree.get_bin_window ()) {
                 return ClickZone.INVALID;
             }
 
-            x = (int)event.x;
-            y = (int)event.y;
+            double x, y;
+            event.get_coords (out x, out y);
 
             /* Determine whether there whitespace at this point.  Note: this function returns false when the
              * position is on the edge of the cell, even though this appears to be blank. We
              * deal with this below. */
-            var is_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, null, null, null, null);
+            var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
 
-            tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
+            tree.get_path_at_pos ((int)x, (int)y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
 
@@ -246,7 +246,7 @@ namespace Files {
                     if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) {
                         /* cannot be on name */
                         bool on_helper = false;
-                        bool on_icon = is_on_icon (x, y, ref on_helper);
+                        bool on_icon = is_on_icon ((int)x, (int)y, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;
