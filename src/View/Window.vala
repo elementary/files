@@ -246,7 +246,11 @@ namespace Files.View {
             undo_manager.request_menu_update.connect (update_undo_actions);
 
             key_press_event.connect ((event) => {
-                var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+                Gdk.ModifierType state;
+                event.get_state (out state);
+                uint keyval;
+                event.get_keyval (out keyval);
+                var mods = state & Gtk.accelerator_get_default_mod_mask ();
                 bool no_mods = (mods == 0);
                 bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
                 bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -255,7 +259,7 @@ namespace Files.View {
                  * because cannot tab out of location bar and also unwanted items tend to get focused.
                  * There are other hotkeys for operating/focusing other widgets.
                  * Using modified Arrow keys no longer works due to recent changes.  */
-                switch (event.keyval) {
+                switch (keyval) {
                     case Gdk.Key.Tab:
                         if (top_menu.locked_focus) {
                             return false;
@@ -278,10 +282,14 @@ namespace Files.View {
             });
 
             key_press_event.connect_after ((event) => {
+                Gdk.ModifierType state;
+                event.get_state (out state);
+                uint keyval;
+                event.get_keyval (out keyval);
                 /* Use find function instead of view interactive search */
-                if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
+                if (state == 0 || state == Gdk.ModifierType.SHIFT_MASK) {
                     /* Use printable characters to initiate search */
-                    var uc = ((unichar)(Gdk.keyval_to_unicode (event.keyval)));
+                    var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
                     if (uc.isprint ()) {
                         activate_action ("find", uc.to_string ());
                         return true;
@@ -292,6 +300,7 @@ namespace Files.View {
             });
 
 
+            //TODO Rewrite for Gtk4
             window_state_event.connect ((event) => {
                 if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
                     top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
