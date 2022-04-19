@@ -248,6 +248,7 @@ namespace Files {
                     if (is_on_blank && rubberband) {
                         /* Fake location outside centre bottom of item for rubberbanding because IconView
                          * unlike TreeView will not rubberband if clicked on an item. */
+                         //TODO Rewrite needed for Gtk4 where events are immutable
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                     }
