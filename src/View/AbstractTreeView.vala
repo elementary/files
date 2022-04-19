@@ -364,7 +364,9 @@ namespace Files {
         /* Override base class in order to disable the Gtk.TreeView local search functionality */
         public override bool key_press_event (Gdk.EventKey event) {
             /* We still need the base class to handle cursor keys first */
-            switch (event.keyval) {
+            uint keyval;
+            event.get_keyval (out keyval);
+            switch (keyval) {
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                 case Gdk.Key.KP_Up:
