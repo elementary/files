@@ -64,6 +64,8 @@ namespace Files {
 
         public int text_width;
         public int text_height;
+        public int text_y_offset;
+        public int text_x_offset;
 
         int char_height;
 
@@ -120,17 +122,17 @@ namespace Files {
             style_context.save ();
             style_context.set_state (state);
 
-            int x_offset, y_offset, focus_rect_width, focus_rect_height;
-            draw_focus (cr, cell_area, flags, style_context, state, out x_offset, out y_offset,
+            int focus_rect_width, focus_rect_height;
+            draw_focus (cr, cell_area, flags, style_context, state, out text_x_offset, out text_y_offset,
                         out focus_rect_width, out focus_rect_height);
 
             /* Position text relative to the focus rectangle */
             if (!is_list_view) {
-                x_offset += (focus_rect_width - wrap_width) / 2;
-                y_offset += (focus_rect_height - text_height) / 2;
+                text_x_offset += (focus_rect_width - wrap_width) / 2;
+                text_y_offset += (focus_rect_height - text_height) / 2;
             } else {
-                y_offset = (cell_area.height - char_height) / 2;
-                x_offset += border_radius;
+                text_y_offset = (cell_area.height - char_height) / 2;
+                text_x_offset += border_radius;
             }
 
             if (background_set) {
@@ -161,8 +163,8 @@ namespace Files {
             }
 
             style_context.render_layout (cr,
-                                         cell_area.x + x_offset,
-                                         cell_area.y + y_offset,
+                                         cell_area.x + text_x_offset,
+                                         cell_area.y + text_y_offset,
                                          layout);
 
             style_context.restore (); /* NOTE: This does not remove added classes */
