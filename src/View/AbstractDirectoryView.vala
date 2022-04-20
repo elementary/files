@@ -125,8 +125,8 @@ namespace Files {
         protected bool large_thumbnails = false;
 
         /* Used only when acting as drag source */
-        int drag_x = 0;
-        int drag_y = 0;
+        double drag_x = 0;
+        double drag_y = 0;
         int drag_button;
         uint drag_timer_id = 0;
         protected GLib.List<Files.File> source_drag_file_list = null;
@@ -738,8 +738,12 @@ namespace Files {
                 return true;
             }
 
-            if ((event.state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                switch (event.direction) {
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            Gdk.ScrollDirection direction;
+            event.get_scroll_direction (out direction);
+            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+                switch (direction) {
                     case Gdk.ScrollDirection.UP:
                         zoom_in ();
                         return true;
@@ -1466,10 +1470,10 @@ namespace Files {
             /* Only active during drag timeout */
             Gdk.DragContext context;
             var widget = get_child ();
-            int x = (int)event.x;
-            int y = (int)event.y;
+            double x, y;
+            event.get_coords (out x, out y);
 
-            if (Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
+            if (Gtk.drag_check_threshold (widget, (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 cancel_drag_timer ();
                 should_activate = false;
                 var target_list = new Gtk.TargetList (DRAG_TARGETS);
@@ -1484,7 +1488,7 @@ namespace Files {
                                                            actions,
                                                            drag_button,
                                                            (Gdk.Event) event,
-                                                            x, y);
+                                                            (int)x, (int)y);
                 return true;
             } else {
                 return false;
@@ -1843,15 +1847,17 @@ namespace Files {
 
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
-            var button_event = (Gdk.EventButton)event;
-            drag_button = (int)(button_event.button);
+            uint button;
+            if (event.get_button (out button)) {
+                drag_button = (int)button;
 
-            drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                   300,
-                                                   () => {
-                on_drag_timeout_button_release ((Gdk.EventButton)event);
-                return GLib.Source.REMOVE;
-            });
+                drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
+                                                       300,
+                                                       () => {
+                    on_drag_timeout_button_release ((Gdk.EventButton)event);
+                    return GLib.Source.REMOVE;
+                });
+            }
         }
 
         protected void show_context_menu (Gdk.Event event) {
@@ -2453,23 +2459,24 @@ namespace Files {
             can_open = can_open_file (file);
             can_show_properties = !(in_recent && more_than_one_selected);
 
-            action_set_enabled (common_actions, "paste-into", can_paste_into);
-            action_set_enabled (common_actions, "open-in", only_folders);
-            action_set_enabled (selection_actions, "rename", is_selected && !more_than_one_selected && can_rename);
-            action_set_enabled (selection_actions, "view-in-location", is_selected);
-            action_set_enabled (selection_actions, "open", is_selected && !more_than_one_selected && can_open);
-            action_set_enabled (selection_actions, "open-with-app", can_open);
-            action_set_enabled (selection_actions, "open-with-default", can_open);
-            action_set_enabled (selection_actions, "open-with-other-app", can_open);
-            action_set_enabled (selection_actions, "cut", is_writable && is_selected);
-            action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
-            action_set_enabled (selection_actions, "delete", is_writable);
-            action_set_enabled (selection_actions, "invert-selection", is_selected);
-            action_set_enabled (common_actions, "properties", can_show_properties);
-            action_set_enabled (common_actions, "bookmark", can_bookmark);
-            action_set_enabled (common_actions, "copy", !in_trash && can_copy);
-            action_set_enabled (common_actions, "copy-link", !in_trash && !in_recent && can_copy);
-            action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
+            action_set_enabled (common_actions, "paste-into", !renaming & can_paste_into);
+            action_set_enabled (common_actions, "open-in", !renaming & only_folders);
+            action_set_enabled (selection_actions, "rename", !renaming & is_selected && !more_than_one_selected && can_rename);
+            action_set_enabled (selection_actions, "view-in-location", !renaming & is_selected);
+            action_set_enabled (selection_actions, "open", !renaming && is_selected && !more_than_one_selected && can_open);
+            action_set_enabled (selection_actions, "open-with-app", !renaming && can_open);
+            action_set_enabled (selection_actions, "open-with-default", !renaming && can_open);
+            action_set_enabled (selection_actions, "open-with-other-app", !renaming && can_open);
+            action_set_enabled (selection_actions, "cut", !renaming && is_writable && is_selected);
+            action_set_enabled (selection_actions, "trash", !renaming && is_writable && slot.directory.has_trash_dirs);
+            action_set_enabled (selection_actions, "delete", !renaming && is_writable);
+            action_set_enabled (selection_actions, "invert-selection", !renaming && is_selected);
+            action_set_enabled (common_actions, "select-all", !renaming && is_selected);
+            action_set_enabled (common_actions, "properties", !renaming && can_show_properties);
+            action_set_enabled (common_actions, "bookmark", !renaming && can_bookmark);
+            action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
+            action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);
+            action_set_enabled (common_actions, "bookmark", !renaming && !more_than_one_selected);
 
             update_default_app (selection);
             update_menu_actions_sort ();
@@ -2895,69 +2902,22 @@ namespace Files {
         }
 
 /** Keyboard event handling **/
-
-        /** Returns true if the code parameter matches the keycode of the keyval parameter for
-          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
-        protected bool match_keycode (uint keyval, uint code, int level) {
-            Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (get_display ());
-            if (keymap.get_entries_for_keyval (keyval, out keys)) {
-                foreach (var key in keys) {
-                    if (code == key.keycode && level == key.level) {
-                        return true;
-                    }
-                }
+        protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
+            if (is_frozen) {
+                return true;
             }
 
-            return false;
-        }
-
-        protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-            if (is_frozen || event.is_modifier == 1) {
+            if (event.is_modifier == 1) {
                 return true;
             }
 
             cancel_hover ();
 
-            uint keyval = event.keyval;
-            Gdk.ModifierType consumed_mods = 0;
+            Gdk.ModifierType consumed_mods, state;
+            var keyval = KeyUtils.map_key (event, out consumed_mods);
+            event.get_state (out state);
 
-            /* Leave standard ASCII alone, else try to get Latin hotkey from keyboard state */
-            /* This means that Latin hot keys for Latin Dvorak keyboards (e.g. Spanish Dvorak)
-             * will be in their Dvorak position, not their QWERTY position.
-             * For non-Latin (e.g. Cyrillic) keyboards however, the Latin hotkeys are mapped
-             * to the same position as on a Latin QWERTY keyboard. If the conversion fails, the unprocessed
-             * event.keyval is used. */
-            if (keyval > 127) {
-                int eff_grp, level;
-
-                if (!Gdk.Keymap.get_for_display (get_display ()).translate_keyboard_state (
-                        event.hardware_keycode,
-                        event.state, event.group,
-                        out keyval, out eff_grp,
-                        out level, out consumed_mods)) {
-
-                    warning ("translate keyboard state failed");
-                    keyval = event.keyval;
-                    consumed_mods = 0;
-                } else {
-                    keyval = 0;
-                    for (uint key = 32; key < 128; key++) {
-                        if (match_keycode (key, event.hardware_keycode, level)) {
-                            keyval = key;
-                            break;
-                        }
-                    }
-
-                    if (keyval == 0) {
-                        debug ("Could not match hardware code to ASCII hotkey");
-                        keyval = event.keyval;
-                        consumed_mods = 0;
-                    }
-                }
-            }
-
-            var mods = (event.state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
+            var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -3260,10 +3220,14 @@ namespace Files {
         }
 
         protected virtual bool on_scroll_event (Gdk.EventScroll event) {
-            if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) {
+            Gdk.ScrollDirection direction;
+            event.get_scroll_direction (out direction);
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            if ((state & Gdk.ModifierType.CONTROL_MASK) == 0) {
                 double increment = 0.0;
 
-                switch (event.direction) {
+                switch (direction) {
                     case Gdk.ScrollDirection.LEFT:
                         increment = 5.0;
                         break;
@@ -3282,6 +3246,7 @@ namespace Files {
                         break;
                 }
             }
+
             return handle_scroll_event (event);
         }
 
@@ -3290,8 +3255,6 @@ namespace Files {
             if (renaming) { /* Ignore duplicate editing-started signal*/
                 return;
             }
-
-            renaming = true;
 
             var editable_widget = editable as AbstractEditableLabel?;
             if (editable_widget != null) {
@@ -3314,10 +3277,12 @@ namespace Files {
         }
 
         protected void on_name_editing_canceled () {
+            is_frozen = false;
             renaming = false;
             name_renderer.editable = false;
             proposed_name = "";
-            is_frozen = false;
+
+            update_menu_actions ();
             grab_focus ();
         }
 
@@ -3456,7 +3421,8 @@ namespace Files {
             /* Ignore if second button pressed before first released - not permitted during rubberbanding.
              * Multiple click produces an event without corresponding release event so do not block that.
              */
-            if (dnd_disabled && event.type == Gdk.EventType.BUTTON_PRESS) {
+            var type = event.get_event_type ();
+            if (dnd_disabled && type == Gdk.EventType.BUTTON_PRESS) {
                 return true;
             }
 
@@ -3464,13 +3430,16 @@ namespace Files {
 
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
-            drag_x = (int)(event.x);
-            drag_y = (int)(event.y);
+            event.get_coords (out drag_x, out drag_y);
+            uint button;
+            event.get_button (out button);
             //Only rubberband with primary button
-            click_zone = get_event_position_info (event, out path, event.button == Gdk.BUTTON_PRIMARY);
+            click_zone = get_event_position_info (event, out path, button == Gdk.BUTTON_PRIMARY);
             click_path = path;
 
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
@@ -3479,7 +3448,7 @@ namespace Files {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-            bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
+            bool double_click_event = (type == Gdk.EventType.@2BUTTON_PRESS);
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
              */
@@ -3497,7 +3466,7 @@ namespace Files {
             should_scroll = true;
 
             /* Handle all selection and deselection explicitly in the following switch statement */
-            switch (event.button) {
+            switch (button) {
                 case Gdk.BUTTON_PRIMARY: // button 1
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
@@ -3536,7 +3505,7 @@ namespace Files {
                                     unselect_all ();
                                 }
 
-                                select_path (path);
+                                select_path (path, true);
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
@@ -3639,18 +3608,18 @@ namespace Files {
 
             slot.active (should_scroll);
 
-            Gtk.Widget widget = get_child ();
-            int x = (int)event.x;
-            int y = (int)event.y;
+            // Gtk.Widget widget = ;
+            double x, y;
+            uint button;
+            event.get_coords (out x, out y);
+            event.get_button (out button);
             update_selected_files_and_menu ();
             /* Only take action if pointer has not moved */
-            if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
+            if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {
-                        var flag = event.button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB :
-                                                                       Files.OpenFlag.DEFAULT;
-
+                        var flag = button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB : Files.OpenFlag.DEFAULT;
                         activate_selected_items (flag);
                         return GLib.Source.REMOVE;
                     });
@@ -3668,7 +3637,7 @@ namespace Files {
                         update_selected_files_and_menu ();
                         return GLib.Source.REMOVE;
                     });
-                } else if (event.button == Gdk.BUTTON_SECONDARY) {
+                } else if (button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
                 }
             }
@@ -3698,6 +3667,9 @@ namespace Files {
             }
 
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
+            /* The order of the next three lines must not be changed */
+            renaming = true;
+            update_menu_actions ();
             is_frozen = true;
             Gtk.TreePath path = model.get_path (iter);
 
