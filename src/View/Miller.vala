@@ -250,7 +250,6 @@ namespace Files.View {
             slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
             slot.directory_loaded.connect (on_slot_directory_loaded);
-            slot.item_hovered.connect (on_slot_item_hovered);
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -263,8 +262,6 @@ namespace Files.View {
             slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
-            slot.item_hovered.disconnect (on_slot_item_hovered);
-
         }
 
         private void on_miller_slot_request (View.Slot slot, GLib.File loc, bool make_root) {
@@ -323,10 +320,6 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
-        }
-
-        private void on_slot_item_hovered (Files.File? file) {
-            item_hovered (file);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {

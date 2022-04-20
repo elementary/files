@@ -297,7 +297,6 @@ namespace Files.View {
             aslot.new_container_request.connect (on_slot_new_container_request);
             aslot.selection_changed.connect (on_slot_selection_changed);
             aslot.directory_loaded.connect (on_slot_directory_loaded);
-            aslot.item_hovered.connect (on_slot_item_hovered);
         }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
@@ -306,7 +305,6 @@ namespace Files.View {
             aslot.new_container_request.disconnect (on_slot_new_container_request);
             aslot.selection_changed.disconnect (on_slot_selection_changed);
             aslot.directory_loaded.disconnect (on_slot_directory_loaded);
-            aslot.item_hovered.disconnect (on_slot_item_hovered);
         }
 
         private void on_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
@@ -572,10 +570,6 @@ namespace Files.View {
             } else {
                 content.grab_focus ();
             }
-        }
-
-        private void on_slot_item_hovered (Files.File? file) {
-            overlay_statusbar.update_hovered (file);
         }
 
         private void on_slot_selection_changed (GLib.List<unowned Files.File> files) {
