@@ -185,10 +185,14 @@ namespace Files.View.Chrome {
                 return true;
             }
 
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
-            switch (event.keyval) {
+            uint keyval;
+            event.get_keyval (out keyval);
+            switch (keyval) {
                 /* Do not trap unmodified Down and Up keys - used by some input methods */
                 case Gdk.Key.KP_Down:
                 case Gdk.Key.Down:
@@ -228,7 +232,9 @@ namespace Files.View.Chrome {
         }
 
         protected virtual bool on_button_press_event (Gdk.EventButton event) {
-            context_menu_showing = has_focus && event.button == Gdk.BUTTON_SECONDARY;
+            uint button;
+            event.get_button (out button);
+            context_menu_showing = has_focus && button == Gdk.BUTTON_SECONDARY;
             return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
         }
 
@@ -236,9 +242,13 @@ namespace Files.View.Chrome {
             /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
              * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
              * not have focus. */
-            if (event.button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
+            uint button;
+            event.get_button (out button);
+            if (button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
                 reset_elements_states ();
-                var el = get_element_from_coordinates ((int) event.x, (int) event.y);
+                double x, y;
+                event.get_coords (out x, out y);
+                var el = get_element_from_coordinates ((int)x, (int)y);
                 if (el != null) {
                     activate_path (get_path_from_element (el));
                     return true;
@@ -255,7 +265,7 @@ namespace Files.View.Chrome {
         protected bool is_icon_event (Gdk.EventButton event) {
             /* We need to distinguish whether the event comes from one of the icons.
              * There doesn't seem to be a way of doing this directly so we check the window width */
-            return (event.window.get_width () <= ICON_WIDTH);
+            return (event.get_window ().get_width () <= ICON_WIDTH);
         }
 
         void on_icon_press (Gtk.EntryIconPosition pos) {
@@ -287,7 +297,9 @@ namespace Files.View.Chrome {
 
 
             set_tooltip_markup ("");
-            var el = get_element_from_coordinates ((int)event.x, (int)event.y);
+            double x, y;
+            event.get_coords (out x, out y);
+            var el = get_element_from_coordinates ((int)x, (int)y);
             if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor ("default");

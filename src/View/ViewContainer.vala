@@ -575,9 +575,13 @@ namespace Files.View {
         }
 
         private bool on_button_press_event (Gdk.EventButton event) {
-            Gdk.ModifierType mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            uint button;
+            event.get_button (out button);
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool result = false;
-            switch (event.button) {
+            switch (button) {
                 /* Extra mouse button actions */
                 case 6:
                 case 8:
