@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2018-06-22 12:48+0000\n"
-"Last-Translator: Shawn <syst3mfailur3@gmail.com>\n"
-"Language-Team: English (Canada) <https://weblate.elementary.io/projects/"
-"files/files/en_CA/>\n"
+"PO-Revision-Date: 2022-04-20 10:22+0000\n"
+"Last-Translator: Joel Jose <joel750jose@gmail.com>\n"
+"Language-Team: English (Canada) <https://l10n.elementary.io/projects/files/"
+"files/en_CA/>\n"
 "Language: en_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:110
@@ -370,10 +370,9 @@ msgid "The item cannot be restored from trash"
 msgstr "The item cannot be restored from trash"
 
 #: libcore/FileUtils.vala:184
-#, fuzzy, c-format
-#| msgid "The file selected no longer exists."
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "The file selected no longer exists."
+msgstr "The original folder %s no longer exists"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
@@ -411,21 +410,21 @@ msgstr "Could not rename to '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:669
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "Today at %-H:%M"
+msgstr "Today at %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:677
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Yesterday at %-H:%M"
+msgstr "Yesterday at %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:685
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A at %-H:%M"
+msgstr "%%A at %s"
 
 #: libcore/FileUtils.vala:1027
 #, c-format
@@ -2063,10 +2062,9 @@ msgstr "%S of %S"
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
