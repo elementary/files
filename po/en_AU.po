@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-04-20 10:15+0000\n"
+"PO-Revision-Date: 2022-04-20 10:17+0000\n"
 "Last-Translator: Joel Jose <joel750jose@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
 "files/files/en_AU/>\n"
@@ -909,50 +909,50 @@ msgstr "%s of %s"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1749
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%S of %S — %T left (%S/sec)"
-msgstr[1] "%S of %S — %T left (%S/sec)"
+msgstr[0] "%s of %s — %s left (%s/sec)"
+msgstr[1] "%s of %s — %s left (%s/sec)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2068
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
+"The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2073
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "There was an error creating the folder \"%B\"."
+msgstr "There was an error creating the folder \"%s\"."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2211
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
+"Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2265
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
+"The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -961,9 +961,9 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:2320 libcore/marlin-file-operations.c:2977
 #: libcore/marlin-file-operations.c:3536
-#, fuzzy, c-format
+#, c-format
 msgid "Error while moving \"%s\"."
-msgstr "Error while moving \"%B\"."
+msgstr "Error while moving \"%s\"."
 
 #: libcore/marlin-file-operations.c:2322
 msgid "Could not remove the source folder."
