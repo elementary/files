@@ -211,13 +211,12 @@ namespace Files {
                                                          bool rubberband = false) {
             Gtk.CellRenderer? cell_renderer;
             uint zone;
-            int x, y;
             path = null;
 
-            x = (int)event.x;
-            y = (int)event.y;
+            double x, y;
+            event.get_coords (out x, out y);
 
-            tree.get_item_at_pos (x, y, out path, out cell_renderer);
+            tree.get_item_at_pos ((int)x, (int)y, out path, out cell_renderer);
             zone = (path != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
             if (cell_renderer != null) {
@@ -248,6 +247,7 @@ namespace Files {
                     if (is_on_blank && rubberband) {
                         /* Fake location outside centre bottom of item for rubberbanding because IconView
                          * unlike TreeView will not rubberband if clicked on an item. */
+                         //TODO Rewrite needed for Gtk4 where events are immutable
                         event.x = rect.x + rect.width / 2;
                         event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                     }
@@ -255,7 +255,7 @@ namespace Files {
                     bool on_helper = false;
                     Files.File? file = model.file_for_path (path);
                     if (file != null) {
-                        bool on_icon = is_on_icon (x, y, ref on_helper);
+                        bool on_icon = is_on_icon ((int)x, (int)y, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;
@@ -304,7 +304,7 @@ namespace Files {
         }
 
         protected override bool handle_multi_select (Gtk.TreePath path) {
-            if (selected_files != null && selected_files.first () != null) { //Could be very large - avoid length ()
+            if (selected_files != null && selected_files.first () != null) {
                 linear_select_path (path);
                 return true;
             } else {
