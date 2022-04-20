@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2018-01-06 00:17+0000\n"
-"Last-Translator: javad sajjadi(qezwan) <qezwan@gmail.com>\n"
-"Language-Team: Sorani <https://weblate.elementary.io/projects/files/files/"
-"ckb/>\n"
+"PO-Revision-Date: 2022-04-18 23:03+0000\n"
+"Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
+"Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
+"files/ckb/>\n"
 "Language: ckb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:110
@@ -20,29 +20,29 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:188
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
-msgstr ""
+msgstr "هەڵوەشاندنەوە"
 
 #: filechooser-portal/FileChooserDialog.vala:124
 #: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "کردنەوەی پەڕگەکان بەشێوەی تەنها بینین"
 
 #: filechooser-portal/FileChooserDialog.vala:124
 #: filechooser-portal/FileChooserDialog.vala:130
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "کردنەوەی پەڕگە بە شێوەی تەنها بینین"
 
 #: filechooser-portal/Main.vala:75
 msgid "Select"
-msgstr ""
+msgstr "دیاریکردن"
 
 #: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
-msgstr ""
+msgstr "کردنەوە"
 
 #: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
 msgid "Save"
-msgstr ""
+msgstr "پاشەکەوتکردن"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -58,7 +58,7 @@ msgstr "SSH"
 
 #: libcore/ConnectServerDialog.vala:65
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: libcore/ConnectServerDialog.vala:71
 msgid "Windows share"
@@ -74,184 +74,182 @@ msgstr "ئاسایشێ WebDAV (HTTPS)"
 
 #: libcore/ConnectServerDialog.vala:131
 msgid "Server Details"
-msgstr ""
+msgstr "زانیارییەکانی ڕاژە"
 
 #: libcore/ConnectServerDialog.vala:135
 msgid "Server name or IP address"
-msgstr ""
+msgstr "ناوی ڕاژە یان ناونیشانی ئای پی"
 
 #: libcore/ConnectServerDialog.vala:138
 msgid "Server:"
-msgstr ""
+msgstr "ڕاژە:"
 
 #: libcore/ConnectServerDialog.vala:146
 msgid "Port:"
-msgstr ""
+msgstr "دەرچە:"
 
 #: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
 #: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:533
 msgid "Type:"
-msgstr ""
+msgstr "جۆر:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "ناوی پشک لەسەر ڕاژە (ئارەزوومەندانە)"
 
 #: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
-msgstr ""
+msgstr "هاوبەشیکردن:"
 
 #: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "شوێنی بوخچەی هاوبەشی پێکراو لەسەر ڕاژە (ئارەزوومەندانە)"
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
-msgstr ""
+msgstr "بوخچە:"
 
 #: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
-msgstr ""
+msgstr "زانیارییەکانی بەکارهێنەر"
 
 #: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "ناوی دۆمەینی ویندۆز"
 
 #: libcore/ConnectServerDialog.vala:197
 msgid "Domain name:"
-msgstr ""
+msgstr "ناوی دۆمەین:"
 
 #: libcore/ConnectServerDialog.vala:202
 msgid "Name of user on server"
-msgstr ""
+msgstr "ناوی بەکارهێنەر لەسەر ڕاژە"
 
 #: libcore/ConnectServerDialog.vala:204
 msgid "User name:"
-msgstr ""
+msgstr "ناوی بەکارهێنەر:"
 
 #: libcore/ConnectServerDialog.vala:212
 msgid "Password:"
-msgstr ""
+msgstr "تێپەڕەوشە:"
 
 #: libcore/ConnectServerDialog.vala:214
 msgid "Remember this password"
-msgstr ""
+msgstr "ئەم تێپەڕەوشەیەت لە یاد بێت"
 
 #: libcore/ConnectServerDialog.vala:225
-#, fuzzy
 msgid "Connect"
-msgstr "چاوەڕوانی پەیوەندی..."
+msgstr "پەیوەستبوون"
 
 #: libcore/ConnectServerDialog.vala:232
 msgid "Continue"
-msgstr ""
+msgstr "بەردەوامبوون"
 
 #: libcore/ConnectServerDialog.vala:283
-#, fuzzy
 msgid "Connecting…"
-msgstr "چاوەڕوانی پەیوەندی..."
+msgstr "پەیوەستبوون…"
 
 #: libcore/ConnectServerDialog.vala:391
 msgid "Please verify your user details."
-msgstr ""
+msgstr "تکایە زانیارییەکانی بەکارهێنەرت دڵنیا بکەوە."
 
 #: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "ڕاژە لە کاتی سنوورداردا وەڵامی نەدایەوە"
 
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "کردنەوەی \"%s\" شکستی هێنا"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
-msgstr ""
+msgstr "گواستنەوە بۆ ئێرە"
 
 #: libcore/DndHandler.vala:101
 msgid "Copy Here"
-msgstr ""
+msgstr "کۆپیکردن بۆ ئێرە"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "لینککردنی بێرەوە"
 
 #: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1116
 msgid "Inaccessible"
-msgstr ""
+msgstr "دەست پێ نەگەیشتراو"
 
 #: libcore/File.vala:883
 msgid "Failed to parse the desktop file"
-msgstr ""
+msgstr "پارسکردنی پەڕگەی ڕوومێز شکستی هێنا"
 
 #: libcore/File.vala:887
 msgid "Failed to parse the desktop file: "
-msgstr ""
+msgstr "پارسکردنی پەڕگەی ڕوومێز شکستی هێنا: "
 
 #: libcore/File.vala:899
 msgid "Failed to create command from file: "
-msgstr ""
+msgstr "دروستکردنی فەرمان لە پەڕگەی:  شکستی هێنا "
 
 #: libcore/File.vala:908
 msgid "Unable to Launch Desktop File: "
-msgstr ""
+msgstr "کردنەوەی پەڕگەی ڕوومێز شکستی هێنا: "
 
 #: libcore/File.vala:1111
 msgid "Empty"
-msgstr ""
+msgstr "بەتاڵ"
 
 #: libcore/File.vala:1113
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i دانە"
+msgstr[1] "%i دانە"
 
 #: libcore/File.vala:1124
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "لینککردنی بۆ %s"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
-msgstr ""
+msgstr "کۆنفلیکتی فایل"
 
 #: libcore/FileConflictDialog.vala:97
 msgid "Original file"
-msgstr ""
+msgstr "پەڕگەی ڕەسەن"
 
 #: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
 #: src/Dialogs/PropertiesWindow.vala:526
 msgid "Size:"
-msgstr ""
+msgstr "قەبارە:"
 
 #: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
 msgid "Last modified:"
-msgstr ""
+msgstr "کۆتا دەستکاریکردن:"
 
 #: libcore/FileConflictDialog.vala:131
 msgid "Replace with"
-msgstr ""
+msgstr "ئاڵوگۆڕکردن بە"
 
 #: libcore/FileConflictDialog.vala:165
 msgid "Reset"
-msgstr ""
+msgstr "ڕێکخستنەوە وەکو بنەڕەت"
 
 #: libcore/FileConflictDialog.vala:177
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_ناوێکی تازە بۆ ئامانجەکە دیاریبکە"
 
 #: libcore/FileConflictDialog.vala:180
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "ئەم کردارە بەسەر هەموو پەڕگەکاندا بسەپێنە"
 
 #: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
 msgid "_Skip"
-msgstr ""
+msgstr "_پەڕاندن"
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Re_name"
-msgstr ""
+msgstr "ناونانەوە"
 
 #: libcore/FileConflictDialog.vala:185
 msgid "Keep Newest"
