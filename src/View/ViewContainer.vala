@@ -257,7 +257,9 @@ namespace Files.View {
                 this.view = new Slot (loc, this, mode);
             }
 
-            overlay_statusbar = new View.OverlayBar (view.overlay);
+            overlay_statusbar = new View.OverlayBar (view.overlay) {
+                no_show_all = true
+            };
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
@@ -440,7 +442,6 @@ namespace Files.View {
             }
 
             loading (false); /* Will cause topmenu to update */
-            overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
         private void store_selection () {
