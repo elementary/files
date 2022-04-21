@@ -241,6 +241,7 @@ namespace Files.View {
         }
 
         private void connect_slot_signals (Slot slot) {
+            slot.selection_changed.connect (on_slot_selection_changed);
             slot.frozen_changed.connect (on_slot_frozen_changed);
             slot.active.connect (on_slot_active);
             slot.miller_slot_request.connect (on_miller_slot_request);
@@ -253,6 +254,7 @@ namespace Files.View {
         }
 
         private void disconnect_slot_signals (Slot slot) {
+            slot.selection_changed.disconnect (on_slot_selection_changed);
             slot.frozen_changed.disconnect (on_slot_frozen_changed);
             slot.active.disconnect (on_slot_active);
             slot.miller_slot_request.disconnect (on_miller_slot_request);
@@ -420,6 +422,10 @@ namespace Files.View {
             }
 
             return false;
+        }
+
+        private void on_slot_selection_changed (GLib.List<Files.File> files) {
+            selection_changed (files);
         }
 
         private void on_slot_frozen_changed (Slot slot, bool frozen) {
