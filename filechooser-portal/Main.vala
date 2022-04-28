@@ -339,7 +339,7 @@ public class Files.FileChooserPortal : Object {
         results = _results;
     }
 
-    private async bool check_overwrite_uri (string? uri) {
+    private async bool check_overwrite_uri (string? uri, Gtk.Window parent) {
         if (uri == null) {
             return false;
         }
