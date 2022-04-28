@@ -220,7 +220,7 @@ public class Files.FileChooserPortal : Object {
                     }
                     var chosen_uri = dialog.get_uri ();
                     if (chosen_uri != supplied_uri) {
-                        check_overwrite_uri.begin (chosen_uri, (obj, res) => {
+                        check_overwrite_uri.begin (chosen_uri, dialog, (obj, res) => {
                             if (check_overwrite_uri.end (res)) {
                                 _response = 0;
                                 save_file.callback ();
