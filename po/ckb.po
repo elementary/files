@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-24 20:43+0000\n"
-"PO-Revision-Date: 2022-04-18 23:03+0000\n"
+"PO-Revision-Date: 2022-04-24 03:04+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
 "files/ckb/>\n"
@@ -253,209 +253,214 @@ msgstr "ناونانەوە"
 
 #: libcore/FileConflictDialog.vala:185
 msgid "Keep Newest"
-msgstr ""
+msgstr "هێشتنەوەی نوێترین"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "بیپەڕێنە ئەگەر بەم دواییانە ڕەسەنەکە زیاتر گۆڕانکاری تێدا کرابوو"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
-msgstr ""
+msgstr "ئاڵوگۆڕکردن"
 
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "یەکخستنی بوخچە \"%s\"؟"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"یەکخستن پێویستی بە دڵنیابوونەوە هەیە پێش ئەوەی ئاڵوگۆڕی پەڕگەکان بکات لە "
+"بوخچەکەدا کە پێکداچوون دروست دەکەن لەگەڵ ئەو پەڕگانەی کە لەبەرگیراونەوە."
 
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "بوخچەیەکی کۆنتر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "بوخچەیەکی نوێتر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "بوخچەیەکی تر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
 #: libcore/FileConflictDialog.vala:309
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "ئاڵوگۆڕکردنی بوخچە \"%s\"؟"
 
 #: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "ئاڵوگۆڕکردن هەموو پەڕگەکانی ناو بوخچە دەسڕێتەوە."
 
 #: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "بوخچەیەک بە هەمان ناو لە \"%s\" بوونی هەیە."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "ئاڵوگۆڕکردنی پەڕگە \"%s\"؟"
 
 #: libcore/FileConflictDialog.vala:315
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "ئاڵوگۆڕکردن ئۆڤەرڕایتی ناوەڕۆکەکەی دەکات."
 
 #: libcore/FileConflictDialog.vala:318
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "پەڕگەیەکی کۆنتر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
 #: libcore/FileConflictDialog.vala:320
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "پەڕگەیەکی نوێتر بە هەمان ناو لە \"%s\" هەیە."
 
 #: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "پەڕگەیەکی تر بە هەمان ناو لە \"%s\" هەیە."
 
 #: libcore/FileConflictDialog.vala:348
 msgid "Merge"
-msgstr ""
+msgstr "یەکخستن"
 
 #: libcore/FileUtils.vala:89
 #, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr ""
+msgstr "نەتوانرا شوێنی ڕەسەنی \"%s\" دیاریبکرێت"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "دانەکە لە تەنەکە خۆڵەکەوە ناگەڕێندرێتەوە"
 
 #: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr ""
+msgstr "چیتر بوخچە ڕەسەنەکە %s بوونی نییە"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "حەز دەکەیت دروستی بکەیتەوە؟"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
-msgstr ""
+msgstr "چەپاندن"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "هیچ پەڕگەیەک کە لەم بوخچەیەدا بووە، ناگەڕێندرێتەوە"
 
 #: libcore/FileUtils.vala:192
 msgid "Recreate"
-msgstr ""
+msgstr "دروستکردنەوە"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"بوخچەکە دروست دەکرێتەوە و پەڕگە دیاریکراوەکان کە لە بنچینەدا لەوێ بوون "
+"دەگەڕێندرێنەوە ناوی"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"نەتوانرا بوخچە %s دروستبکرێتەوە. هەموو پەڕگەکان لەم بوخچەیەدا دەچەپێندرێن"
 
 #: libcore/FileUtils.vala:578
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "نەتوانرا ناوی بگۆڕدرێت بۆ '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:669
 #, c-format
 msgid "Today at %s"
-msgstr ""
+msgstr "ئەمڕۆ لە %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:677
 #, c-format
 msgid "Yesterday at %s"
-msgstr ""
+msgstr "دوێنێ لە %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:685
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%% لە %s"
 
 #: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d چرکە"
+msgstr[1] "%'d چرکە"
 
 #: libcore/FileUtils.vala:1031 libcore/FileUtils.vala:1039
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d خولەک"
+msgstr[1] "%'d خولەک"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
 #: libcore/FileUtils.vala:1038 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s، %s"
 
 #: libcore/FileUtils.vala:1038
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d کاتژمێر"
+msgstr[1] "%'d کاتژمێر"
 
 #: libcore/FileUtils.vala:1042
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "بە نزیکەیی %'d کاتژمێر"
+msgstr[1] "بە نزیکەیی %'d کاتژمێر"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:1050
 msgid "copy"
-msgstr ""
+msgstr "لەبەرگرتنەوە"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:1052
 msgid "link"
-msgstr ""
+msgstr "لینک"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1054
 msgid "("
-msgstr ""
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1056
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:285
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr ""
+msgstr "دڵنیای لە ڕەشکردنەوەی \"%s\" بۆ هەمیشە؟"
 
 #: libcore/marlin-file-operations.c:289
 #, c-format
@@ -465,42 +470,42 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "دڵنیای لە ڕەشکردنەوەی دانەی دیاریکراو \"%'d\" بۆ هەمیشە؟"
+msgstr[1] "دڵنیای لە ڕەشکردنەوەی دانە دیاریکراوەکان \"%'d\" بۆ هەمیشە؟"
 
 #: libcore/marlin-file-operations.c:301
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "ئەگەر دانەیەک ڕەش بکەیتەوە، ئەوا بۆ هەمیشە ون دەبێت."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:327
 #, c-format
 msgid "Permanently delete “%s”?"
-msgstr ""
+msgstr "ڕەشکردنەوەی \"%s\" بۆ هەمیشە؟"
 
 #: libcore/marlin-file-operations.c:330
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "دڵنیای لە ڕەشکردنەوەی دانەی دیاریکراو \"%'d\" بۆ هەمیشە؟"
+msgstr[1] "دڵنیای لە ڕەشکردنەوەی دانە دیاریکراوەکان \"%'d\" بۆ هەمیشە؟"
 
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "دانە ڕەشکراوەکان نەخراونەتە تەنەکەوە و ناشگەڕێندرێنەوە."
 
 #: libcore/marlin-file-operations.c:375
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d پەڕگە ماوە بۆ ڕەشکردنەوە"
+msgstr[1] "%'d پەڕگەکان ماوە بۆ ڕەشکردنەوە"
 
 #: libcore/marlin-file-operations.c:380
 msgid "Deleting files"
-msgstr ""
+msgstr "ڕەشکردنەوەی پەڕگەکان"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
@@ -508,14 +513,14 @@ msgstr ""
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ماوە"
+msgstr[1] "%s ماون"
 
 #: libcore/marlin-file-operations.c:464 libcore/marlin-file-operations.c:506
 #: libcore/marlin-file-operations.c:554 libcore/marlin-file-operations.c:638
 #: libcore/marlin-file-operations.c:1139
 msgid "Error while deleting."
-msgstr ""
+msgstr "هەڵە هەیە لە کاتی ڕەشکردنەوە."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -525,6 +530,7 @@ msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"پەڕگەکانی ناو بوخچەی \"%s\" ڕەش نابنەوە چونکە تۆ دەسەڵاتی بینینیانت نییە."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -2010,9 +2016,8 @@ msgid "Devices and places available via a network"
 msgstr ""
 
 #: src/View/Sidebar/SidebarWindow.vala:84
-#, fuzzy
 msgid "Connect Server…"
-msgstr "چاوەڕوانی پەیوەندی..."
+msgstr "پەیوەستکردنی ڕاژە…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"

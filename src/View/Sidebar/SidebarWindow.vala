@@ -86,9 +86,10 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             hexpand = true,
             image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
             no_show_all = Files.is_admin (),
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"}),
-            xalign = 0
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
         };
+
+        connect_server_button.get_child ().halign = Gtk.Align.START;
 
         var action_bar = new Gtk.ActionBar () {
             //For now hide action bar when admin. This might need revisiting if other actions are added
