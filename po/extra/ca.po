@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-05 15:42+0000\n"
-"PO-Revision-Date: 2022-05-06 10:07+0000\n"
+"PO-Revision-Date: 2022-05-06 12:48+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
 "\n"
@@ -110,6 +110,8 @@ msgstr "L'element de la barra lateral de la Paperera ja no es pot eliminar."
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
 msgstr ""
+"Els connectors de xarxa de la barra lateral, com ara NextCloud, s'afegeixen "
+"correctament."
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:60
