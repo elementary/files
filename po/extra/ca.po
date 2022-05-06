@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-05 15:42+0000\n"
-"PO-Revision-Date: 2022-01-26 10:48+0000\n"
+"PO-Revision-Date: 2022-05-06 10:07+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,23 +85,27 @@ msgstr "Correccions:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Renaming with the same name no longer shows an error dialog"
-msgstr ""
+msgstr "El canvi de nom amb el mateix nom ja no mostra cap diàleg d'error."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Ctrl + A when renaming now selects all the text in the entry"
 msgstr ""
+"Teclejar Ctrl + A quan es canvia el nom ara selecciona tot el text de "
+"l'entrada."
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
+"La selecció de diversos elements amb les tecles Maj + fletxa ara funciona "
+"correctament."
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 msgid "The appearance of the cursor now matches the action"
-msgstr ""
+msgstr "Ara l'aspecte del cursor coincideix amb l'acció."
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 msgid "The Trash sidebar item can no longer be removed"
-msgstr ""
+msgstr "L'element de la barra lateral de la Paperera ja no es pot eliminar."
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
