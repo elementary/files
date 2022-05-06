@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-05 15:42+0000\n"
-"PO-Revision-Date: 2022-01-25 22:09+0000\n"
+"PO-Revision-Date: 2022-05-06 09:43+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -87,27 +87,30 @@ msgstr "Poprawki:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Renaming with the same name no longer shows an error dialog"
-msgstr ""
+msgstr "Zmiana nazwy na taką samą nie skutkuje już oknem błędu"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
+msgstr "Ctrl + A podczas zmiany nazwy skutkuje teraz zaznaczeniem całego tekstu"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
+"Wybieranie wielu rzeczy przy użyciu Shift + Strzałki działa teraz poprawnie"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 msgid "The appearance of the cursor now matches the action"
-msgstr ""
+msgstr "Wygląd kursora jest teraz dopasowany do wykonywanej czynności"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 msgid "The Trash sidebar item can no longer be removed"
-msgstr ""
+msgstr "Ikona kosza w panelu bocznym nie może już być usunięta"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
 msgstr ""
+"Wtyczki sieciowe do panelu bocznego, takie jak NextCloud, są teraz dodawane "
+"poprawnie"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:60
