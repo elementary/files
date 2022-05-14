@@ -38,6 +38,7 @@
           <li>The appearance of the cursor now matches the action</li>
           <li>The Trash sidebar item can no longer be removed</li>
           <li>Network sidebar plugins such as NextCloud are now added correctly</li>
+          <li>Duplication of subfolders in ListView under some circumstances is fixed</li>
         </ul>
         <p>Minor updates:</p>
         <ul>
