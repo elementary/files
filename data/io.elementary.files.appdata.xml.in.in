@@ -28,6 +28,41 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="6.1.3" date="2022-01-24" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Renaming with the same name no longer shows an error dialog</li>
+          <li>Ctrl + A when renaming now selects all the text in the entry</li>
+          <li>Selecting multiple items with Shift + Arrow keys now works properly</li>
+          <li>The appearance of the cursor now matches the action</li>
+          <li>The Trash sidebar item can no longer be removed</li>
+          <li>Network sidebar plugins such as NextCloud are now added correctly</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.1.2" date="2022-01-24" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Show New Tab and New Window shortcuts in context menus</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Double click selects instead of exiting while renaming in list view</li>
+          <li>Show public share icon in breadcrumbs</li>
+          <li>Prevent a crash when dragging to re-arrange bookmarks</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.1.1" date="2021-12-09" urgency="medium">
       <description>
         <p>Improvements:</p>

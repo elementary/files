@@ -839,7 +839,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                     can_delete = TRUE;
                 }
             } else {
-                primary = g_strdup (_("Cannot move file to trash.  Try to delete it?"));
+                primary = g_strdup (_("Cannot move file to trash. Try to delete it?"));
                 secondary = g_strdup (_("This file could not be moved to trash. You may not be able to delete it either."));
                 can_delete = TRUE;
             }

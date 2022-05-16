@@ -29,6 +29,7 @@ pantheon_files_exec = executable (
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
     'Utils/AppUtils.vala',
+    'Utils/KeyUtils.vala',
 
     'View/AbstractDirectoryView.vala',
     'View/AbstractTreeView.vala',
@@ -54,6 +55,7 @@ pantheon_files_exec = executable (
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SingleLineEditableLabel.vala',
     'View/Widgets/SearchResults.vala',
+    'View/Widgets/StorageBar.vala',
     'View/Widgets/Welcome.vala',
 
     'View/Sidebar/AbstractMountableRow.vala',
