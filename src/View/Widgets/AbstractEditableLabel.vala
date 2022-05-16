@@ -36,10 +36,14 @@ namespace Files {
         }
 
         public virtual bool on_key_press_event (Gdk.EventKey event) {
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            uint keyval;
+            event.get_keyval (out keyval);
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
-            switch (event.keyval) {
+            switch (keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                     /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
