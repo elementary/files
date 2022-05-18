@@ -760,6 +760,10 @@ public class Files.Directory : Object {
         }
     }
 
+    public List<unowned Files.File> get_files () {
+        return file_hash.get_values ();
+    }
+
     public void load_hiddens () {
         if (!can_load) {
             return;

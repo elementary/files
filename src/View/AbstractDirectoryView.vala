@@ -1410,6 +1410,7 @@ namespace Files {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = ((Files.Preferences) prefs).show_hidden_files;
+            model.show_hidden_files = show;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
@@ -3252,10 +3253,6 @@ namespace Files {
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
-            if (renaming) { /* Ignore duplicate editing-started signal*/
-                return;
-            }
-
             var editable_widget = editable as AbstractEditableLabel?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
