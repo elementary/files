@@ -40,6 +40,7 @@
           <li>Network sidebar plugins such as NextCloud are now added correctly</li>
           <li>Duplication of subfolders in ListView under some circumstances is fixed</li>
           <li>Bookmarks are now highlighted when a file they can accept is dragged onto them</li>
+          <li>Folders not being restored properly under some circumstances is fixed</li>
         </ul>
         <p>Minor updates:</p>
         <ul>
