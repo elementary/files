@@ -1100,21 +1100,26 @@ public class Files.File : GLib.Object {
     }
 
     private string item_count () {
-        try {
-            var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
-            var count = 0;
-            while (f_enum.next_file () != null) {
-                count++;
-            }
+        // Risk of blocking indefinitely on some (broken) remote connections
+        if (!is_remote_uri_scheme () &&
+            is_mounted) {
 
-            if (count == 0) {
-                return _("Empty");
-            } else {
-                return ngettext ("%i item", "%i items", count).printf (count);
-            }
-        } catch (Error e) {
-            return _("Inaccessible");
+            try {
+                var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
+                var count = 0;
+                while (f_enum.next_file () != null) {
+                    count++;
+                }
+
+                if (count == 0) {
+                    return _("Empty");
+                } else {
+                    return ngettext ("%i item", "%i items", count).printf (count);
+                }
+            } catch (Error e) {}
         }
+
+        return _(" --- ");
     }
 
     private void update_formated_type () {
