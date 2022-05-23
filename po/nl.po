@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-05 15:42+0000\n"
-"PO-Revision-Date: 2022-01-21 01:39+0000\n"
+"PO-Revision-Date: 2022-05-22 04:19+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -2089,7 +2089,7 @@ msgstr "Apparaten en locaties beschikbaar via een netwerk"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
-msgstr "Verbinden met de Server…"
+msgstr "Verbind met server…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
