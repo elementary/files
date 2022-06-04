@@ -77,8 +77,9 @@ namespace Files.View.Chrome {
         public override bool on_key_press_event (Gdk.EventKey event) {
             autocompleted = false;
             multiple_completions = false;
-
-            switch (event.keyval) {
+            uint keyval;
+            event.get_keyval (out keyval);
+            switch (keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
@@ -98,7 +99,7 @@ namespace Files.View.Chrome {
         public override void reset () {
             base.reset ();
             clear_completion ();
-            cancel_completion_dir ();
+            current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
         }
 
         protected override bool on_button_release_event (Gdk.EventButton event) {
@@ -165,13 +166,6 @@ namespace Files.View.Chrome {
                 clear_completion ();
                 /* Completion text set by on_file_loaded () */
                 current_completion_dir.init (on_file_loaded);
-            }
-        }
-
-        private void cancel_completion_dir () {
-            if (current_completion_dir != null) {
-                current_completion_dir.cancel ();
-                current_completion_dir = null;
             }
         }
 
@@ -402,13 +396,16 @@ namespace Files.View.Chrome {
 
             var style_context = get_style_context ();
             var padding = style_context.get_padding (style_context.get_state ());
+            double x, y, x_root, y_root;
+            event.get_coords (out x, out y);
+            event.get_root_coords (out x_root, out y_root);
             if (clicked_element.x - BREAD_SPACING < 0) {
-                menu_x_root = event.x_root - event.x + clicked_element.x;
+                menu_x_root = x_root - x + clicked_element.x;
             } else {
-                menu_x_root = event.x_root - event.x + clicked_element.x - BREAD_SPACING;
+                menu_x_root = x_root - x + clicked_element.x - BREAD_SPACING;
             }
 
-            menu_y_root = event.y_root - event.y + get_allocated_height () - padding.bottom - padding.top;
+            menu_y_root = y_root - y + get_allocated_height () - padding.bottom - padding.top;
 
             menu = new Gtk.Menu ();
             menu.cancel.connect (() => {reset_elements_states ();});
@@ -515,7 +512,6 @@ namespace Files.View.Chrome {
             }
             menu.show_all ();
             /* Release the Async directory as soon as possible */
-            dir.cancel ();
             dir = null;
         }
 
@@ -538,7 +534,9 @@ namespace Files.View.Chrome {
             } else {
                 var el = mark_pressed_element (event);
                 if (el != null) {
-                    switch (event.button) {
+                    uint button;
+                    event.get_button (out button);
+                    switch (button) {
                         case 1:
                             break; // Long press support discontinued as provided by system settings
                         case 2:
@@ -558,7 +556,9 @@ namespace Files.View.Chrome {
 
         private BreadcrumbElement? mark_pressed_element (Gdk.EventButton event) {
             reset_elements_states ();
-            BreadcrumbElement? el = get_element_from_coordinates ((int) event.x, (int) event.y);
+            double x, y;
+            event.get_coords (out x, out y);
+            BreadcrumbElement? el = get_element_from_coordinates ((int)x, (int)y);
             if (el != null) {
                 el.pressed = true;
                 queue_draw ();

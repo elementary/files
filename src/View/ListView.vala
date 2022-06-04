@@ -155,11 +155,15 @@ namespace Files {
         }
 
         protected override bool on_view_key_press_event (Gdk.EventKey event) {
-            bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
+            Gdk.ModifierType state;
+            event.get_state (out state);
+            bool control_pressed = ((state & Gdk.ModifierType.CONTROL_MASK) != 0);
+            bool shift_pressed = ((state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
             if (!control_pressed && !shift_pressed) {
-                switch (event.keyval) {
+                uint keyval;
+                event.get_keyval (out keyval);
+                switch (keyval) {
                     case Gdk.Key.Right:
                         Gtk.TreePath? path = null;
                         tree.get_cursor (out path, null);
@@ -233,7 +237,7 @@ namespace Files {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
             Files.Directory? dir = null;
-            if (model.load_subdirectory (path, out dir)) { // Returns true if dir non null
+            if (model.get_subdirectory (path, out dir)) { // Returns true if dir non null
                 connect_directory_handlers (dir);
                 dir.init ();
                 /* Maintain our own reference on dir, independent of the model */

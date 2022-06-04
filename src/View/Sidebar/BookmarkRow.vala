@@ -120,7 +120,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         SidebarItemInterface.item_id_map.@set (id, this);
         item_map_lock.unlock ();
 
-        var label = new Gtk.Label (display_name) {
+        label = new Gtk.Label (display_name) {
             xalign = 0.0f,
             halign = Gtk.Align.START,
             hexpand = true,
@@ -215,7 +215,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected virtual bool on_key_press_event (Gdk.EventKey event) {
-        switch (event.keyval) {
+        uint keyval;
+        event.get_keyval (out keyval);
+        switch (keyval) {
             case Gdk.Key.F2:
                 rename ();
                 return true;
@@ -239,12 +241,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return false;
         }
 
-        var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+        Gdk.ModifierType state;
+        event.get_state (out state);
+        var mods = state & Gtk.accelerator_get_default_mod_mask ();
         var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
         var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
         var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
 
-        switch (event.button) {
+        uint button;
+        event.get_button (out button);
+        switch (button) {
             case Gdk.BUTTON_PRIMARY:
                 if (only_control_pressed) {
                     activated (Files.OpenFlag.NEW_TAB);
@@ -490,6 +496,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                             drop_file_list, ctx,
                             out current_suggested_action
                         );
+
+                        if (current_suggested_action != Gdk.DragAction.DEFAULT) {
+                            highlight (true);
+                        }
+                    } else {
+                        highlight (false);
                     }
 
                     break;
@@ -531,12 +543,21 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         });
     }
 
+    protected void highlight (bool show) {
+        if (show && !get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
+            get_style_context ().add_class (Gtk.STYLE_CLASS_HIGHLIGHT);
+        } else if (!show && get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
+            get_style_context ().remove_class (Gtk.STYLE_CLASS_HIGHLIGHT);
+        }
+    }
+
     private void reset_drag_drop () {
         drop_file_list = null;
         drop_text = null;
         drop_occurred = false;
         current_suggested_action = Gdk.DragAction.DEFAULT;
         reveal_drop_target (false);
+        highlight (false);
     }
 
     private bool process_dropped_row (Gdk.DragContext ctx, string drop_text, bool dropped_between) {
