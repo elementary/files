@@ -391,7 +391,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
     }
 
-    protected override bool key_release_event (Gdk.EventKey event) {
+    protected override bool key_press_event (Gdk.EventKey event) { // Match conflict dialog
         uint keyval;
         event.get_keyval (out keyval);
         if (keyval == Gdk.Key.Escape) {

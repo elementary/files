@@ -218,6 +218,7 @@ public class Files.FileChooserPortal : Object {
                     if (dialog.filter != null) {
                         _results["current_filter"] = dialog.filter.to_gvariant ();
                     }
+
                    _response = 0;
 
                     var chosen_file = dialog.get_file ();
