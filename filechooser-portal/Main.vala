@@ -221,10 +221,10 @@ public class Files.FileChooserPortal : Object {
                    _response = 0;
 
                     var chosen_file = dialog.get_file ();
-                    if (!file.query_exists () || chosen_file.get_uri () == supplied_uri) {
+                    if (!chosen_file.query_exists () || chosen_file.get_uri () == supplied_uri) {
                         break; // No need to check full uri supplied by calling app
                     }
-                    
+
                     var overwrite_dialog = create_overwrite_dialog (dialog, chosen_file);
                     overwrite_dialog.response.connect ((response) => {
                         if (response == Gtk.ResponseType.YES) {
@@ -233,7 +233,7 @@ public class Files.FileChooserPortal : Object {
                             _results.remove_all ();
                             _response = 2;
                         }
-                        
+
                         overwrite_dialog.destroy ();
                     });
                     overwrite_dialog.present ();
@@ -349,7 +349,7 @@ public class Files.FileChooserPortal : Object {
         unowned var primary = _("Replace “%s”?");
         unowned var secondary = _("Replacing this file will overwrite its current contents");
         var display_name = file.get_basename ();
-        
+
         if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
             try {
                 var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
@@ -371,7 +371,7 @@ public class Files.FileChooserPortal : Object {
 
         var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        
+
         return replace_dialog;
     }
 
