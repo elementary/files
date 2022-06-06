@@ -218,20 +218,26 @@ public class Files.FileChooserPortal : Object {
                     if (dialog.filter != null) {
                         _results["current_filter"] = dialog.filter.to_gvariant ();
                     }
-                    var chosen_uri = dialog.get_uri ();
-                    if (chosen_uri != supplied_uri) {
-                        check_overwrite_uri.begin (chosen_uri, dialog, (obj, res) => {
-                            if (check_overwrite_uri.end (res)) {
-                                _response = 0;
-                                save_file.callback ();
-                            }
-                        });
+                   _response = 0;
 
-                        return; // Continue showing dialog until check completes
-                    } else { // No need to check full uri supplied by calling app
-                        _response = 0;
-                        break;
+                    var chosen_file = dialog.get_file ();
+                    if (!file.query_exists () || chosen_file.get_uri () == supplied_uri) {
+                        break; // No need to check full uri supplied by calling app
                     }
+                    
+                    var overwrite_dialog = create_overwrite_dialog (dialog, chosen_file);
+                    overwrite_dialog.response.connect ((response) => {
+                        if (response == Gtk.ResponseType.YES) {
+                            save_file.callback ();
+                        } else {
+                            _results.remove_all ();
+                            _response = 2;
+                        }
+                        
+                        overwrite_dialog.destroy ();
+                    });
+                    overwrite_dialog.present ();
+                    return; // Continue showing dialog until check completes
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
                     break;
@@ -339,51 +345,34 @@ public class Files.FileChooserPortal : Object {
         results = _results;
     }
 
-    private async bool check_overwrite_uri (string? uri, Gtk.Window parent) {
-        if (uri == null) {
-            return false;
-        }
-
-        var file = GLib.File.new_for_uri (uri);
-        if (file.query_exists ()) {
-            var display_name = file.get_basename ();
-            var primary = _("Replace “%s”?").printf (display_name);
-            unowned var secondary = _("Replacing this file will overwrite its current contents");
-            if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
-                try {
-                    var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
-                    primary = _("Replace “%s”?").printf (info.get_symlink_target ());
-                } catch (Error e) {
-                    warning ("Could not get info for %s", file.get_uri ());
-                    primary = _("Replace the target of “%s”?").printf (display_name);
-                }
-
-                secondary = _("Replacing the target file for this link will overwrite its current contents.");
+    private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
+        unowned var primary = _("Replace “%s”?");
+        unowned var secondary = _("Replacing this file will overwrite its current contents");
+        var display_name = file.get_basename ();
+        
+        if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
+            try {
+                var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
+                display_name = info.get_symlink_target ();
+            } catch (Error e) {
+                warning ("Could not get info for %s", file.get_uri ());
+                primary = _("Replace the target of “%s”?");
             }
 
-            var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                primary, secondary, "dialog-warning", Gtk.ButtonsType.CANCEL
+            secondary = _("Replacing the target file for this link will overwrite its current contents.");
+        }
+
+        var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                primary.printf (display_name), secondary, "dialog-warning", Gtk.ButtonsType.CANCEL
             ) {
                 modal = true,
                 transient_for = parent
             };
 
-            var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
-            replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-
-            var response_ok = false;
-            replace_dialog.response.connect ((id) => {
-                response_ok = id == Gtk.ResponseType.YES;
-                check_overwrite_uri.callback ();
-            });
-
-            replace_dialog.present ();
-            yield;
-            replace_dialog.destroy ();
-            return response_ok;
-        } else {
-            return true;
-        }
+        var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
+        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        
+        return replace_dialog;
     }
 
     private static void on_bus_acquired (DBusConnection connection, string name) {
