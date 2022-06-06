@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:42+0000\n"
+"POT-Creation-Date: 2022-06-06 17:52+0000\n"
 "PO-Revision-Date: 2022-01-12 13:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -20,20 +20,20 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:110
+#: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
 msgstr "ファイルを読み取り専用で開く"
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
 msgstr "ファイルを読み取り専用で開く"
 
@@ -45,9 +45,33 @@ msgstr "選択"
 msgid "Open"
 msgstr "開く"
 
-#: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
+#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:281
 msgid "Save"
 msgstr "保存"
+
+#: filechooser-portal/Main.vala:350
+#, fuzzy, c-format
+#| msgid "Replace file \"%s\"?"
+msgid "Replace “%s”?"
+msgstr "ファイル \"%s\" を置き換えますか？"
+
+#: filechooser-portal/Main.vala:351
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid "Replacing this file will overwrite its current contents"
+msgstr "置き換えることで内容が上書きされます。"
+
+#: filechooser-portal/Main.vala:360
+#, c-format
+msgid "Replace the target of “%s”?"
+msgstr ""
+
+#: filechooser-portal/Main.vala:363
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing the target file for this link will overwrite its current contents."
+msgstr "置き換えることで内容が上書きされます。"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1093,7 +1117,7 @@ msgid "_Unmount"
 msgstr "アンマウント(_U)"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Properties"
 msgstr "プロパティ"
 
@@ -1105,7 +1129,7 @@ msgstr "メディアを取り出す"
 msgid "Safely Remove"
 msgstr "安全に取り外す"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2008
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2009
 msgid "Add to Bookmarks"
 msgstr "ブックマークに追加"
 
@@ -1337,8 +1361,8 @@ msgstr "プログラムのバージョンを表示します"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "1 つ以上の URI を、それぞれ別のタブで開きます"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1896
-#: src/View/AbstractDirectoryView.vala:1902
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1897
+#: src/View/AbstractDirectoryView.vala:1903
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
@@ -1501,7 +1525,7 @@ msgid "Original Location:"
 msgstr "元の場所:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1984
 msgid "Other Application…"
 msgstr "ほかのアプリケーション…"
 
@@ -1607,179 +1631,179 @@ msgstr "このファイルを開けません"
 msgid "Cannot identify file type to open"
 msgstr "ファイルタイプを識別できません"
 
-#: src/View/AbstractDirectoryView.vala:1599
+#: src/View/AbstractDirectoryView.vala:1600
 msgid "Cannot drop this file"
 msgstr "このファイルを削除できません"
 
-#: src/View/AbstractDirectoryView.vala:1600
+#: src/View/AbstractDirectoryView.vala:1601
 msgid "Invalid file name provided"
 msgstr "不適切なファイル名が入力されました"
 
-#: src/View/AbstractDirectoryView.vala:1879
-#: src/View/AbstractDirectoryView.vala:1885 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1880
+#: src/View/AbstractDirectoryView.vala:1886 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: src/View/AbstractDirectoryView.vala:1919
+#: src/View/AbstractDirectoryView.vala:1920
 msgid "Run"
 msgstr "実行"
 
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/View/AbstractDirectoryView.vala:1927
 #, c-format
 msgid "Open in %s"
 msgstr "%s で開く"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Open in"
 msgstr "指定した方法で開く"
 
-#: src/View/AbstractDirectoryView.vala:1997
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "このアプリケーションで開く"
 
-#: src/View/AbstractDirectoryView.vala:2003
+#: src/View/AbstractDirectoryView.vala:2004
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/AbstractDirectoryView.vala:2029
 msgid "Select All"
 msgstr "すべて選択"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2038
 msgid "Invert Selection"
 msgstr "選択を反転"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Deselect All"
 msgstr "選択をすべて解除"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2055
 msgid "Cut"
 msgstr "切り取り"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Copy"
 msgstr "コピー"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2070
 msgid "Move to Trash"
 msgstr "ゴミ箱に移動"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Delete Permanently"
 msgstr "完全に削除"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Restore from Trash"
 msgstr "ゴミ箱から復元"
 
-#: src/View/AbstractDirectoryView.vala:2104
+#: src/View/AbstractDirectoryView.vala:2105
 msgid "Open Parent Folder"
 msgstr "親フォルダーを開く"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2108
 msgid "Remove from History"
 msgstr "履歴から消去"
 
-#: src/View/AbstractDirectoryView.vala:2135
+#: src/View/AbstractDirectoryView.vala:2136
 msgid "Rename…"
 msgstr "名前を変更…"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2143
 msgid "Copy as Link"
 msgstr "リンクとしてコピー"
 
-#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2160
 msgid "Paste Link into Folder"
 msgstr "フォルダーの中にリンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2162
 msgid "Paste into Folder"
 msgstr "フォルダーの中に貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Show Hidden Files"
 msgstr "隠しファイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2207
+#: src/View/AbstractDirectoryView.vala:2208
 msgid "Show Remote Thumbnails"
 msgstr "リモートのサムネイルを表示"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Hide Thumbnails"
 msgstr "サムネイルを非表示"
 
-#: src/View/AbstractDirectoryView.vala:2236
+#: src/View/AbstractDirectoryView.vala:2237
 msgid "Paste Link"
 msgstr "リンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2293
+#: src/View/AbstractDirectoryView.vala:2294
 msgid "Name"
 msgstr "ファイル名"
 
-#: src/View/AbstractDirectoryView.vala:2298 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2299 src/View/ListView.vala:27
 msgid "Size"
 msgstr "サイズ"
 
-#: src/View/AbstractDirectoryView.vala:2303 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2304 src/View/ListView.vala:28
 msgid "Type"
 msgstr "形式"
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2309
 msgid "Date"
 msgstr "日付"
 
-#: src/View/AbstractDirectoryView.vala:2313
+#: src/View/AbstractDirectoryView.vala:2314
 msgid "Reversed Order"
 msgstr "逆順"
 
-#: src/View/AbstractDirectoryView.vala:2316
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Folders Before Files"
 msgstr "ファイルの前にフォルダーを表示"
 
-#: src/View/AbstractDirectoryView.vala:2328
+#: src/View/AbstractDirectoryView.vala:2329
 msgid "Sort by"
 msgstr "並べ替え"
 
-#: src/View/AbstractDirectoryView.vala:2336
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Folder"
 msgstr "フォルダー"
 
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2343
 msgid "Empty File"
 msgstr "空のファイル"
 
-#: src/View/AbstractDirectoryView.vala:2393
+#: src/View/AbstractDirectoryView.vala:2394
 msgid "New"
 msgstr "新規作成"
 
-#: src/View/AbstractDirectoryView.vala:2635
+#: src/View/AbstractDirectoryView.vala:2636
 #, c-format
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2953
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:2954
+#: src/View/AbstractDirectoryView.vala:3134
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2954
-#: src/View/AbstractDirectoryView.vala:3118
-#: src/View/AbstractDirectoryView.vala:3134
+#: src/View/AbstractDirectoryView.vala:2955
+#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3135
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3087
+#: src/View/AbstractDirectoryView.vala:3088
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3088
+#: src/View/AbstractDirectoryView.vala:3089
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3117
+#: src/View/AbstractDirectoryView.vala:3118
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
@@ -1913,7 +1937,7 @@ msgstr "タブを閉じる"
 msgid "Duplicate Tab"
 msgstr "タブを複製"
 
-#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "新しいウィンドウで開く"
 
@@ -2030,11 +2054,11 @@ msgstr "バインドマウント"
 msgid "Search or Type Path"
 msgstr "検索するかパスを入力してください"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open in Other Application…"
 msgstr "ほかのアプリケーションで開く…"
 

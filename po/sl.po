@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:42+0000\n"
+"POT-Creation-Date: 2022-06-06 17:52+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -21,20 +21,20 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:110
+#: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
 msgstr ""
 
@@ -48,9 +48,33 @@ msgstr " izbranih"
 msgid "Open"
 msgstr "Odpri"
 
-#: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
+#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:281
 msgid "Save"
 msgstr ""
+
+#: filechooser-portal/Main.vala:350
+#, fuzzy, c-format
+#| msgid "Replace file \"%s\"?"
+msgid "Replace “%s”?"
+msgstr "Ali naj se datoteka \"%s\" prepiše?"
+
+#: filechooser-portal/Main.vala:351
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid "Replacing this file will overwrite its current contents"
+msgstr "Zamenjava bo prepisala njeno vsebino."
+
+#: filechooser-portal/Main.vala:360
+#, c-format
+msgid "Replace the target of “%s”?"
+msgstr ""
+
+#: filechooser-portal/Main.vala:363
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing the target file for this link will overwrite its current contents."
+msgstr "Zamenjava bo prepisala njeno vsebino."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1190,7 +1214,7 @@ msgid "_Unmount"
 msgstr "_Varno odstrani"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Properties"
 msgstr "Lastnosti"
 
@@ -1204,7 +1228,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Odstrani"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2008
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2009
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1448,8 +1472,8 @@ msgstr "Pokaži različico programa"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Odpri URI(je) v novem zavihku"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1896
-#: src/View/AbstractDirectoryView.vala:1902
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1897
+#: src/View/AbstractDirectoryView.vala:1903
 msgid "New Window"
 msgstr "Novo okno"
 
@@ -1619,7 +1643,7 @@ msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1984
 msgid "Other Application…"
 msgstr "Drugo aplikacijo…"
 
@@ -1735,183 +1759,183 @@ msgstr "Te datoteke ni mogoče odpreti"
 msgid "Cannot identify file type to open"
 msgstr "Ni bilo mogoče ugotoviti vrste datoteke"
 
-#: src/View/AbstractDirectoryView.vala:1599
+#: src/View/AbstractDirectoryView.vala:1600
 msgid "Cannot drop this file"
 msgstr "Datoteke ni mogoče spustiti"
 
-#: src/View/AbstractDirectoryView.vala:1600
+#: src/View/AbstractDirectoryView.vala:1601
 msgid "Invalid file name provided"
 msgstr "Ime datoteke je napačno"
 
-#: src/View/AbstractDirectoryView.vala:1879
-#: src/View/AbstractDirectoryView.vala:1885 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1880
+#: src/View/AbstractDirectoryView.vala:1886 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "Nov zavihek"
 
-#: src/View/AbstractDirectoryView.vala:1919
+#: src/View/AbstractDirectoryView.vala:1920
 msgid "Run"
 msgstr "Zaženi"
 
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/View/AbstractDirectoryView.vala:1927
 #, c-format
 msgid "Open in %s"
 msgstr "Odpri v %s"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Open in"
 msgstr "Odpri v"
 
-#: src/View/AbstractDirectoryView.vala:1997
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "Odpri z"
 
-#: src/View/AbstractDirectoryView.vala:2003
+#: src/View/AbstractDirectoryView.vala:2004
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/AbstractDirectoryView.vala:2029
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2038
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2047
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "Obnovi vse"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2055
 msgid "Cut"
 msgstr "Izreži"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2070
 msgid "Move to Trash"
 msgstr "Premakni v smeti"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2075
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Trajno izbriši"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Restore from Trash"
 msgstr "Obnovi s smeti"
 
-#: src/View/AbstractDirectoryView.vala:2104
+#: src/View/AbstractDirectoryView.vala:2105
 msgid "Open Parent Folder"
 msgstr "Odpri nadrejeno mapo"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2108
 msgid "Remove from History"
 msgstr "Odstrani z zgodovine"
 
-#: src/View/AbstractDirectoryView.vala:2135
+#: src/View/AbstractDirectoryView.vala:2136
 msgid "Rename…"
 msgstr "Preimenuj…"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2143
 msgid "Copy as Link"
 msgstr "Kopiraj kot povezavo"
 
-#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2160
 msgid "Paste Link into Folder"
 msgstr "Prilepi povezavo v mapo"
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2162
 msgid "Paste into Folder"
 msgstr "Prilepi v mapo"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Show Hidden Files"
 msgstr "Prikaži skrite datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2207
+#: src/View/AbstractDirectoryView.vala:2208
 msgid "Show Remote Thumbnails"
 msgstr "Prikaži predogled za datoteke na omrežju"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Hide Thumbnails"
 msgstr "Skrij predogled za datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2236
+#: src/View/AbstractDirectoryView.vala:2237
 msgid "Paste Link"
 msgstr "Prilepi povezavo"
 
-#: src/View/AbstractDirectoryView.vala:2293
+#: src/View/AbstractDirectoryView.vala:2294
 msgid "Name"
 msgstr "Imenu"
 
-#: src/View/AbstractDirectoryView.vala:2298 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2299 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Velikost"
 
-#: src/View/AbstractDirectoryView.vala:2303 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2304 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2309
 msgid "Date"
 msgstr "Datumu"
 
-#: src/View/AbstractDirectoryView.vala:2313
+#: src/View/AbstractDirectoryView.vala:2314
 msgid "Reversed Order"
 msgstr "Obratni vrstni red"
 
-#: src/View/AbstractDirectoryView.vala:2316
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Folders Before Files"
 msgstr "Mape pred datotekami"
 
-#: src/View/AbstractDirectoryView.vala:2328
+#: src/View/AbstractDirectoryView.vala:2329
 msgid "Sort by"
 msgstr "Razvrsti po"
 
-#: src/View/AbstractDirectoryView.vala:2336
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Folder"
 msgstr "Mapa"
 
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2343
 msgid "Empty File"
 msgstr "Prazna datoteka"
 
-#: src/View/AbstractDirectoryView.vala:2393
+#: src/View/AbstractDirectoryView.vala:2394
 msgid "New"
 msgstr "Nova"
 
-#: src/View/AbstractDirectoryView.vala:2635
+#: src/View/AbstractDirectoryView.vala:2636
 #, c-format
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: src/View/AbstractDirectoryView.vala:2953
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:2954
+#: src/View/AbstractDirectoryView.vala:3134
 msgid "Cannot remove files from here"
 msgstr "Od tu ni mogoče odstraniti datotek"
 
-#: src/View/AbstractDirectoryView.vala:2954
-#: src/View/AbstractDirectoryView.vala:3118
-#: src/View/AbstractDirectoryView.vala:3134
+#: src/View/AbstractDirectoryView.vala:2955
+#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3135
 msgid "You do not have permission to change this location"
 msgstr "Nimate dovoljenja za spreminjanje te lokacije"
 
-#: src/View/AbstractDirectoryView.vala:3087
+#: src/View/AbstractDirectoryView.vala:3088
 msgid "Cannot copy files that are in the trash"
 msgstr "Datotek v smeteh ni mogoče kopirati"
 
-#: src/View/AbstractDirectoryView.vala:3088
+#: src/View/AbstractDirectoryView.vala:3089
 msgid "Cutting the selection instead"
 msgstr "Režem izbrane predmete"
 
-#: src/View/AbstractDirectoryView.vala:3117
+#: src/View/AbstractDirectoryView.vala:3118
 msgid "Cannot paste files here"
 msgstr "Datotek ni mogoče prilepiti sem"
 
@@ -2049,7 +2073,7 @@ msgstr "Zapri"
 msgid "Duplicate Tab"
 msgstr "Podvajanje \"%s\""
 
-#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "Odpri v novem oknu"
 
@@ -2176,11 +2200,11 @@ msgstr "_Varno odstrani"
 msgid "Search or Type Path"
 msgstr "Iskalni niz ali pot"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
 msgstr "Odpri v novem zavihku"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open in Other Application…"
 msgstr "Odpri v drugi aplikaciji…"
 

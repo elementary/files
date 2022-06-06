@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:42+0000\n"
+"POT-Creation-Date: 2022-06-06 17:52+0000\n"
 "PO-Revision-Date: 2022-01-11 22:40+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -21,20 +21,20 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:110
+#: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
 msgstr "Åpne filer skrivebeskyttet"
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
 msgstr "Åpne fil skrivebeskyttet"
 
@@ -46,9 +46,33 @@ msgstr "Velg"
 msgid "Open"
 msgstr "Åpne"
 
-#: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
+#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:281
 msgid "Save"
 msgstr "Lagre"
+
+#: filechooser-portal/Main.vala:350
+#, fuzzy, c-format
+#| msgid "Replace file \"%s\"?"
+msgid "Replace “%s”?"
+msgstr "Erstatt fil \"%s\"?"
+
+#: filechooser-portal/Main.vala:351
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid "Replacing this file will overwrite its current contents"
+msgstr "Erstatte den vil skrive over innholdet."
+
+#: filechooser-portal/Main.vala:360
+#, c-format
+msgid "Replace the target of “%s”?"
+msgstr ""
+
+#: filechooser-portal/Main.vala:363
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing the target file for this link will overwrite its current contents."
+msgstr "Erstatte den vil skrive over innholdet."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1125,7 +1149,7 @@ msgid "_Unmount"
 msgstr "_Avmonter"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Properties"
 msgstr "Egenskaper"
 
@@ -1137,7 +1161,7 @@ msgstr "Løs ut medie"
 msgid "Safely Remove"
 msgstr "Fjern trygt"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2008
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2009
 msgid "Add to Bookmarks"
 msgstr "Legg til som bokmerke"
 
@@ -1379,8 +1403,8 @@ msgstr "Vis programversjon"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Åpne én eller flere URI-er, i egne faner"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1896
-#: src/View/AbstractDirectoryView.vala:1902
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1897
+#: src/View/AbstractDirectoryView.vala:1903
 msgid "New Window"
 msgstr "Nytt vindu"
 
@@ -1546,7 +1570,7 @@ msgid "Original Location:"
 msgstr "Opprinnelig plassering:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1984
 msgid "Other Application…"
 msgstr "Annet program…"
 
@@ -1656,179 +1680,179 @@ msgstr "Kan ikke åpne denne filen"
 msgid "Cannot identify file type to open"
 msgstr "Kan ikke identifisere filtype å åpne"
 
-#: src/View/AbstractDirectoryView.vala:1599
+#: src/View/AbstractDirectoryView.vala:1600
 msgid "Cannot drop this file"
 msgstr "Kunne ikke slippe denne fila"
 
-#: src/View/AbstractDirectoryView.vala:1600
+#: src/View/AbstractDirectoryView.vala:1601
 msgid "Invalid file name provided"
 msgstr "Ugyldig filnavn angitt"
 
-#: src/View/AbstractDirectoryView.vala:1879
-#: src/View/AbstractDirectoryView.vala:1885 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1880
+#: src/View/AbstractDirectoryView.vala:1886 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "Ny fane"
 
-#: src/View/AbstractDirectoryView.vala:1919
+#: src/View/AbstractDirectoryView.vala:1920
 msgid "Run"
 msgstr "Kjør"
 
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/View/AbstractDirectoryView.vala:1927
 #, c-format
 msgid "Open in %s"
 msgstr "Åpne i %s"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Open in"
 msgstr "Åpne i"
 
-#: src/View/AbstractDirectoryView.vala:1997
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "Åpne med"
 
-#: src/View/AbstractDirectoryView.vala:2003
+#: src/View/AbstractDirectoryView.vala:2004
 msgid "Paste"
 msgstr "Lim inn"
 
-#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/AbstractDirectoryView.vala:2029
 msgid "Select All"
 msgstr "Velg alt"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2038
 msgid "Invert Selection"
 msgstr "Inverter utvalg"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Deselect All"
 msgstr "Fravelg alt"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2055
 msgid "Cut"
 msgstr "Klipp ut"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2070
 msgid "Move to Trash"
 msgstr "Flytt til papirkurv"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Delete Permanently"
 msgstr "Slett for godt"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Restore from Trash"
 msgstr "Gjenopprett fra papirkurv"
 
-#: src/View/AbstractDirectoryView.vala:2104
+#: src/View/AbstractDirectoryView.vala:2105
 msgid "Open Parent Folder"
 msgstr "Åpne overordnet mappe"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2108
 msgid "Remove from History"
 msgstr "Slett fra historikk"
 
-#: src/View/AbstractDirectoryView.vala:2135
+#: src/View/AbstractDirectoryView.vala:2136
 msgid "Rename…"
 msgstr "Gi nytt navn …"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2143
 msgid "Copy as Link"
 msgstr "Kopier som lenke"
 
-#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2160
 msgid "Paste Link into Folder"
 msgstr "Lim inn lenke i mappe"
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2162
 msgid "Paste into Folder"
 msgstr "Lim inn i mappe"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2203
 msgid "Show Hidden Files"
 msgstr "Vis skjulte filer"
 
-#: src/View/AbstractDirectoryView.vala:2207
+#: src/View/AbstractDirectoryView.vala:2208
 msgid "Show Remote Thumbnails"
 msgstr "Vis miniatyrbilder fra andre steder"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2211
 msgid "Hide Thumbnails"
 msgstr "Skjul miniatyrbilder"
 
-#: src/View/AbstractDirectoryView.vala:2236
+#: src/View/AbstractDirectoryView.vala:2237
 msgid "Paste Link"
 msgstr "Lim inn lenke"
 
-#: src/View/AbstractDirectoryView.vala:2293
+#: src/View/AbstractDirectoryView.vala:2294
 msgid "Name"
 msgstr "Navn"
 
-#: src/View/AbstractDirectoryView.vala:2298 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2299 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Størrelse"
 
-#: src/View/AbstractDirectoryView.vala:2303 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2304 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Type"
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2309
 msgid "Date"
 msgstr "Dato"
 
-#: src/View/AbstractDirectoryView.vala:2313
+#: src/View/AbstractDirectoryView.vala:2314
 msgid "Reversed Order"
 msgstr "Omvendt rekkefølge"
 
-#: src/View/AbstractDirectoryView.vala:2316
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Folders Before Files"
 msgstr "Mapper før filer"
 
-#: src/View/AbstractDirectoryView.vala:2328
+#: src/View/AbstractDirectoryView.vala:2329
 msgid "Sort by"
 msgstr "Sorter etter"
 
-#: src/View/AbstractDirectoryView.vala:2336
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Folder"
 msgstr "Mappe"
 
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2343
 msgid "Empty File"
 msgstr "Tom fil"
 
-#: src/View/AbstractDirectoryView.vala:2393
+#: src/View/AbstractDirectoryView.vala:2394
 msgid "New"
 msgstr "Ny"
 
-#: src/View/AbstractDirectoryView.vala:2635
+#: src/View/AbstractDirectoryView.vala:2636
 #, c-format
 msgid "Untitled %s"
 msgstr "Uten navn %s"
 
-#: src/View/AbstractDirectoryView.vala:2953
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:2954
+#: src/View/AbstractDirectoryView.vala:3134
 msgid "Cannot remove files from here"
 msgstr "Filer kan ikke fjernes herfra"
 
-#: src/View/AbstractDirectoryView.vala:2954
-#: src/View/AbstractDirectoryView.vala:3118
-#: src/View/AbstractDirectoryView.vala:3134
+#: src/View/AbstractDirectoryView.vala:2955
+#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3135
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke tilgang til å endre denne plasseringen"
 
-#: src/View/AbstractDirectoryView.vala:3087
+#: src/View/AbstractDirectoryView.vala:3088
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer som er i papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:3088
+#: src/View/AbstractDirectoryView.vala:3089
 msgid "Cutting the selection instead"
 msgstr "Klipper ut utvalget i stedet"
 
-#: src/View/AbstractDirectoryView.vala:3117
+#: src/View/AbstractDirectoryView.vala:3118
 msgid "Cannot paste files here"
 msgstr "Filer kan ikke limes inn her"
 
@@ -1962,7 +1986,7 @@ msgstr "Lukk fane"
 msgid "Duplicate Tab"
 msgstr "Dupliserer fane"
 
-#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "Åpne i et nytt vindu"
 
@@ -2079,11 +2103,11 @@ msgstr "Bind montering"
 msgid "Search or Type Path"
 msgstr "Søk eller skriv inn sti"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
 msgstr "Åpne i ny fane"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open in Other Application…"
 msgstr "Åpne i et annet program…"
 
