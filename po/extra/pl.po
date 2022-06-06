@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:42+0000\n"
+"POT-Creation-Date: 2022-06-06 17:52+0000\n"
 "PO-Revision-Date: 2022-05-06 09:43+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
@@ -91,7 +91,8 @@ msgstr "Zmiana nazwy na taką samą nie skutkuje już oknem błędu"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr "Ctrl + A podczas zmiany nazwy skutkuje teraz zaznaczeniem całego tekstu"
+msgstr ""
+"Ctrl + A podczas zmiany nazwy skutkuje teraz zaznaczeniem całego tekstu"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:42+0000\n"
+"POT-Creation-Date: 2022-06-06 17:52+0000\n"
 "PO-Revision-Date: 2022-06-05 00:24+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,11 +86,15 @@ msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "Renaming with the same name no longer shows an error dialog"
-msgstr "ファイル名変更時に現在と同じファイル名を設定しても、エラーダイアログを表示しないように修正"
+msgstr ""
+"ファイル名変更時に現在と同じファイル名を設定しても、エラーダイアログを表示し"
+"ないように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr "ファイル名変更時に Ctrl + A が押された場合は、エントリー内のテキストを全選択するように修正"
+msgstr ""
+"ファイル名変更時に Ctrl + A が押された場合は、エントリー内のテキストを全選択"
+"するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
@@ -106,7 +110,9 @@ msgstr "サイドバーから“ゴミ箱”の項目を削除できてしまっ
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
-msgstr "NextCloud などのネットワークプラグインがサイドバーに適切に追加されるように修正"
+msgstr ""
+"NextCloud などのネットワークプラグインがサイドバーに適切に追加されるように修"
+"正"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:60
