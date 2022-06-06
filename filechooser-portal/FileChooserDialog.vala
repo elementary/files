@@ -399,7 +399,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             return Gdk.EVENT_STOP;
         }
 
-        return Gdk.EVENT_PROPAGATE;
+        return base.key_press_event (event);
     }
 
     protected override void show () {
