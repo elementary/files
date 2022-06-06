@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 17:52+0000\n"
-"PO-Revision-Date: 2022-01-11 23:32+0000\n"
+"PO-Revision-Date: 2022-06-06 22:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -51,28 +51,24 @@ msgid "Save"
 msgstr "Зберегти"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Замінити файл \"%s\"?"
+msgstr "Замінити «%s»?"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Під час заміни вміст буде перезаписано."
+msgstr "Заміна цього файлу перезапише його поточний вміст"
 
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "Замінити цільовий «%s»?"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "Під час заміни вміст буде перезаписано."
+msgstr ""
+"Заміна цільового файлу для цього посилання перезапише його поточний вміст."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
