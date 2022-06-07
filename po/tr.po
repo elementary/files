@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 17:52+0000\n"
-"PO-Revision-Date: 2022-01-16 17:04+0000\n"
+"PO-Revision-Date: 2022-06-07 22:29+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,28 +50,26 @@ msgid "Save"
 msgstr "Kaydet"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "\"%s\" dosyası değiştirilsin mi?"
+msgstr "“%s” değiştirilsin mi?"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak."
+msgstr ""
+"Bu dosyayı değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak"
 
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "“%s” hedefi değiştirilsin mi?"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "Değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak."
+msgstr ""
+"Bu bağlantıdaki hedef dosyayı değiştirmek, var olan içeriğin üzerine "
+"yazılmasına neden olacak."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
