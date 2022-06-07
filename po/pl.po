@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 17:52+0000\n"
-"PO-Revision-Date: 2022-01-12 23:27+0000\n"
+"PO-Revision-Date: 2022-06-07 15:19+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -50,28 +50,25 @@ msgid "Save"
 msgstr "Zapisz"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Zastąpić plik „%s”?"
+msgstr "Zastąpić „%s”?"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Zastąpienie go spowoduje nadpisanie jego zawartości."
+msgstr "Zastąpienie tego pliku spowoduje nadpisanie jego aktualnej zawartości"
 
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "Zastąp plik docelowy „%s”?"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "Zastąpienie go spowoduje nadpisanie jego zawartości."
+msgstr ""
+"Zastąpienie pliku docelowego tego skrótu spowoduje nadpisanie jego aktualnej "
+"zawartości."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
