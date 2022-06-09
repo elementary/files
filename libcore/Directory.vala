@@ -755,6 +755,10 @@ public class Files.Directory : Object {
         }
     }
 
+    public List<unowned Files.File> get_files () {
+        return file_hash.get_values ();
+    }
+
     public void load_hiddens () {
         if (!can_load) {
             return;
@@ -939,6 +943,8 @@ public class Files.Directory : Object {
         case FileMonitorEvent.CHANGES_DONE_HINT: /* test  last to avoid unnecessary action when file renamed */
         case FileMonitorEvent.ATTRIBUTE_CHANGED:
             Files.FileChanges.queue_file_changed (_file);
+            break;
+        default:
             break;
         }
 
