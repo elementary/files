@@ -346,6 +346,16 @@ public class Files.FileChooserPortal : Object {
         results = _results;
     }
 
+    /** Checks whether the provided URI already exists in the file system.
+     *
+     * If the URI exists, asks the user for permission to overwrite. If the user
+     * agrees, then the URI is considered safe. Otherwise, it should not be
+     * overwritten or passed back to the calling app.
+     *
+     * If it does not exist, the URI is implicitly considered safe.
+     *
+     * Returns: whether the URI is safe to save to.
+     */
     private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
         unowned var primary = _("Replace “%s”?");
         unowned var secondary = _("Replacing this file will overwrite its current contents");
