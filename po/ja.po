@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 17:52+0000\n"
-"PO-Revision-Date: 2022-01-12 13:01+0000\n"
+"PO-Revision-Date: 2022-06-11 01:09+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,28 +50,23 @@ msgid "Save"
 msgstr "保存"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "ファイル \"%s\" を置き換えますか？"
+msgstr "“%s” を置き換えますか？"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "置き換えることで内容が上書きされます。"
+msgstr "このファイルを置き換えると、現在の内容が上書きされます"
 
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "“%s” のリンク先を置き換えますか？"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "置き換えることで内容が上書きされます。"
+msgstr "このリンク先のファイルを置き換えると、現在の内容が上書きされます。"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
