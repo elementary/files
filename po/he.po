@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 17:52+0000\n"
-"PO-Revision-Date: 2022-01-11 22:40+0000\n"
+"PO-Revision-Date: 2022-06-10 09:31+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -49,28 +49,23 @@ msgid "Save"
 msgstr "שמירה"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "להחליף את הקובץ „%s”?"
+msgstr "להחליף את „%s”?"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "ההחלפה תשכתב את התוכן."
+msgstr "החלפת הקובץ הזה תשכתב את התוכן הנוכחי שלו"
 
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "להחליף את היעד של „%s”?"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "ההחלפה תשכתב את התוכן."
+msgstr "החלפת קובץ היעד לקישור הזה תשכתב על התוכן הנוכחי שלו."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
