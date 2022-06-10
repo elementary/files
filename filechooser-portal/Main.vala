@@ -352,15 +352,16 @@ public class Files.FileChooserPortal : Object {
         var display_name = file.get_basename ();
 
         if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
+            primary = _("Replace link “%s”?").printf (display_name);
             try {
                 var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
-                display_name = info.get_symlink_target ();
+                var link_name = info.get_symlink_target ();
+                secondary = _("This file is a link to “%s”. Replacing it will overwrite the original's contents. The link will remain.").printf (link_name);
             } catch (Error e) {
                 warning ("Could not get info for %s", file.get_uri ());
                 primary = _("Replace the target of “%s”?");
             }
-
-            secondary = _("Replacing the target file for this link will overwrite its current contents.");
+            secondary = _("This file is a link. Replacing it will overwrite the original's contents. The link will remain.");
         }
 
         var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
