@@ -3197,42 +3197,40 @@ namespace Files {
 
                     break;
 
-                case Gdk.Key.v:  // Standard paste shortcut action - always paste into background folder
+                case Gdk.Key.v:
+                case Gdk.Key.V:
                     if (only_control_pressed) {
-                        if (!in_recent && is_writable) {
-                            action_set_enabled (common_actions, "paste", true);
-                            common_actions.activate_action ("paste", null);
-                        } else {
-                            PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
-                                                            _("You do not have permission to change this location"),
-                                                            window as Gtk.Window);
-                        }
-
-                        res = true;
-                    }
-
-                    break;
-
-                case Gdk.Key.V: // Alternative paste shortcut action - paste into selected folder if there is one
-                    if (only_control_pressed) {
-                        update_selected_files_and_menu ();
-                        if (!in_recent && is_writable) {
-                            if (selected_files.first () != null && selected_files.first ().next != null) {
-                                //Ignore if multiple files selected
-                                Gdk.beep ();
-                                warning ("Cannot paste into a multiple selection");
+                        if (shift_pressed) {  // Paste into selected folder if there is one
+                            update_selected_files_and_menu ();
+                            if (!in_recent && is_writable) {
+                                if (selected_files.first () != null && selected_files.first ().next != null) {
+                                    //Ignore if multiple files selected
+                                    Gdk.beep ();
+                                    warning ("Cannot paste into a multiple selection");
+                                } else {
+                                    //None or one file selected. Paste into selected file else base directory
+                                    action_set_enabled (common_actions, "paste-into", true);
+                                    common_actions.activate_action ("paste-into", null);
+                                }
                             } else {
-                                //None or one file selected. Paste into selected file else base directory
-                                action_set_enabled (common_actions, "paste-into", true);
-                                common_actions.activate_action ("paste-into", null);
+                                PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                                _("You do not have permission to change this location"),
+                                                                window as Gtk.Window);
                             }
-                        } else {
-                            PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
-                                                            _("You do not have permission to change this location"),
-                                                            window as Gtk.Window);
-                        }
 
-                        res = true;
+                            res = true;
+                        } else { // Paste into background folder
+                            if (!in_recent && is_writable) {
+                                action_set_enabled (common_actions, "paste", true);
+                                common_actions.activate_action ("paste", null);
+                            } else {
+                                PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                                _("You do not have permission to change this location"),
+                                                                window as Gtk.Window);
+                            }
+
+                            res = true;
+                        }
                     }
 
                     break;
