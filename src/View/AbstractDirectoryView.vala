@@ -2165,7 +2165,25 @@ namespace Files {
                         menu.add (copy_menuitem);
                         menu.add (copy_link_menuitem);
 
-                        if (common_actions.get_action_enabled ("paste") &&
+                        // Do not display the 'Paste into' menuitem if nothing to paste
+                        // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
+                        if (common_actions.get_action_enabled ("paste-into") &&
+                            clipboard != null && clipboard.can_paste) {
+                            var paste_into_menuitem = new Gtk.MenuItem ();
+                            if (clipboard.files_linked) {
+                                paste_into_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste Link Into"),
+                                    "<Shift><Ctrl>v"
+                                ));
+                            } else {
+                                paste_into_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste Into"),
+                                    "<Shift><Ctrl>v"
+                                ));
+                            }
+
+                            menu.add (paste_into_menuitem);
+                        } else if (common_actions.get_action_enabled ("paste") &&
                             clipboard != null && clipboard.can_paste) {
 
                             paste_menuitem.add (new Granite.AccelLabel (
@@ -2173,25 +2191,6 @@ namespace Files {
                                 "<Ctrl>v"
                             ));
                             menu.add (paste_menuitem);
-                        }
-
-                        // Do not display the 'Paste into' menuitem if nothing to paste
-                        if (common_actions.get_action_enabled ("paste-into") &&
-                            clipboard != null && clipboard.can_paste) {
-                            var paste_into_menuitem = new Gtk.MenuItem ();
-                            if (clipboard.files_linked) {
-                                paste_into_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste Link into Selected Folder"),
-                                    "<Shift><Ctrl>v"
-                                ));
-                            } else {
-                                paste_into_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste into Selected Folder"),
-                                    "<Shift><Ctrl>v"
-                                ));
-                            }
-
-                            menu.add (paste_into_menuitem);
                         }
 
                         if (select_all_menuitem != null) {
