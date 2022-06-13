@@ -273,7 +273,9 @@ namespace Files.View {
         **/
         public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
-            assert (aslot != null);
+            if (aslot == null) {
+                return;
+            }
 
             if (mode != view_mode) {
                 view_mode = mode;

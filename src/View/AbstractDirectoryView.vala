@@ -1425,6 +1425,7 @@ namespace Files {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = ((Files.Preferences) prefs).show_hidden_files;
+            model.show_hidden_files = show;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
@@ -2944,24 +2945,6 @@ namespace Files {
         }
 
 /** Keyboard event handling **/
-        //NOTE This will need complete rewrite for Gtk4 so not worth removing direct access to event struct (where possible) now.
-
-        /** Returns true if the code parameter matches the keycode of the keyval parameter for
-          * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
-        protected bool match_keycode (uint keyval, uint code, int level) {
-            Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (get_display ());
-            if (keymap.get_entries_for_keyval (keyval, out keys)) {
-                foreach (var key in keys) {
-                    if (code == key.keycode && level == key.level) {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
             if (is_frozen) {
                 return true;
@@ -2973,47 +2956,9 @@ namespace Files {
 
             cancel_hover ();
 
-            uint original_keyval;
-            event.get_keyval (out original_keyval);
-            var keyval = original_keyval;
-            Gdk.ModifierType state;
+            Gdk.ModifierType consumed_mods, state;
+            var keyval = KeyUtils.map_key (event, out consumed_mods);
             event.get_state (out state);
-            Gdk.ModifierType consumed_mods = 0;
-
-            /* Leave standard ASCII alone, else try to get Latin hotkey from keyboard state */
-            /* This means that Latin hot keys for Latin Dvorak keyboards (e.g. Spanish Dvorak)
-             * will be in their Dvorak position, not their QWERTY position.
-             * For non-Latin (e.g. Cyrillic) keyboards however, the Latin hotkeys are mapped
-             * to the same position as on a Latin QWERTY keyboard. If the conversion fails, the unprocessed
-             * event.keyval is used. TODO: Complete rewrite for Gtk4 */
-
-            if (keyval > 127) {
-                int eff_grp, level;
-                if (!Gdk.Keymap.get_for_display (get_display ()).translate_keyboard_state (
-                        event.hardware_keycode,
-                        event.state, event.group,
-                        out keyval, out eff_grp,
-                        out level, out consumed_mods)) {
-
-                    warning ("translate keyboard state failed");
-                    keyval = original_keyval;
-                    consumed_mods = 0;
-                } else {
-                    keyval = 0;
-                    for (uint key = 32; key < 128; key++) {
-                        if (match_keycode (key, event.hardware_keycode, level)) {
-                            keyval = key;
-                            break;
-                        }
-                    }
-
-                    if (keyval == 0) {
-                        debug ("Could not match hardware code to ASCII hotkey");
-                        keyval = original_keyval;
-                        consumed_mods = 0;
-                    }
-                }
-            }
 
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
@@ -3363,10 +3308,6 @@ namespace Files {
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
-            if (renaming) { /* Ignore duplicate editing-started signal*/
-                return;
-            }
-
             var editable_widget = editable as AbstractEditableLabel?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
