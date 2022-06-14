@@ -2173,12 +2173,12 @@ namespace Files {
                             var paste_into_menuitem = new Gtk.MenuItem ();
                             if (clipboard.files_linked) {
                                 paste_into_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste Link Into"),
+                                    _("Paste Link into Folder"),
                                     "<Shift><Ctrl>v"
                                 ));
                             } else {
                                 paste_into_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste Into"),
+                                    _("Paste into Folder"),
                                     "<Shift><Ctrl>v"
                                 ));
                             }
@@ -2243,7 +2243,7 @@ namespace Files {
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
                         paste_menuitem.add (new Granite.AccelLabel (
-                            _("Paste Into"),
+                            _("Paste into Folder"),
                             "<Ctrl>v"
                         ));
                         menu.add (paste_menuitem);
@@ -2268,7 +2268,7 @@ namespace Files {
                         if (clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
                                 paste_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste Link"),
+                                    _("Paste Link into Folder"),
                                     "<Ctrl>v"
                                 ));
                             } else {
