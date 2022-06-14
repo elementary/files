@@ -2243,7 +2243,7 @@ namespace Files {
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
                         paste_menuitem.add (new Granite.AccelLabel (
-                            _("Paste into Trash"),
+                            _("Paste Into"),
                             "<Ctrl>v"
                         ));
                         menu.add (paste_menuitem);
