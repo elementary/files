@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:42+0000\n"
+"POT-Creation-Date: 2022-06-14 17:01+0000\n"
 "PO-Revision-Date: 2022-05-05 19:06+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
@@ -109,7 +109,8 @@ msgstr "Елемент бічної панелі смітник більше н�
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
-msgstr "Плагіни мереж на бічній панелі, як-от NextCloud, тепер додано правильно"
+msgstr ""
+"Плагіни мереж на бічній панелі, як-от NextCloud, тепер додано правильно"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:60
