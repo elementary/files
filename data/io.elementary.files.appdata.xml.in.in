@@ -42,6 +42,8 @@
           <li>Bookmarks are now highlighted when a file they can accept is dragged onto them</li>
           <li>Folders not being restored properly under some circumstances is fixed</li>
           <li>Show confirmation dialog in file chooser before overwriting an existing file</li>
+          <li>Ctrl + V now always pastes into background folder</li>
+          <li>Shift + Ctrl + V now pastes into selected folder if there is one</li>
         </ul>
         <p>Minor updates:</p>
         <ul>
