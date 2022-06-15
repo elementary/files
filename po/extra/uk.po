@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-15 15:53+0000\n"
-"PO-Revision-Date: 2022-05-05 19:06+0000\n"
+"PO-Revision-Date: 2022-06-15 20:16+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -113,36 +113,37 @@ msgstr ""
 "Плагіни мереж на бічній панелі, як-от NextCloud, тепер додано правильно"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid ""
-#| "Fix truncation of final column in Column View under some circumstances"
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr ""
-"Виправлено обрізання останнього стовпчика у поданні стовпчиками за певних "
-"обставин"
+msgstr "Дублювання підтек у поданні списком за деяких обставин виправлено"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
 msgstr ""
+"Закладки тепер підсвічуються, коли файл, який можна до них перетягнути, "
+"перетягується на них"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
+"Усунено проблему, коли за деяких обставин теки не відновлюються належним "
+"чином"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
 msgstr ""
+"Показується діалогове вікно підтвердження в оглядачі файлів перед "
+"перезаписом наявного файлу"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "Ctrl + V відтепер завжди вставляє у фонову теку"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr ""
+msgstr "Shift + Ctrl + V відтепер записує у вибрану теку, якщо вона є"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:66
