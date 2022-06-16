@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-15 15:53+0000\n"
-"PO-Revision-Date: 2022-05-06 12:48+0000\n"
+"PO-Revision-Date: 2022-06-16 14:58+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,36 +114,39 @@ msgstr ""
 "correctament."
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid ""
-#| "Fix truncation of final column in Column View under some circumstances"
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
 msgstr ""
-"Correcció del truncament de la columna final a la vista de columna en "
-"algunes circumstàncies"
+"Es corregeix la duplicació de subcarpetes a vista de llista en algunes "
+"circumstàncies."
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
 msgstr ""
+"Les adreces d'interès ara es ressalten quan s'hi arrossega un fitxer que "
+"poden acceptar."
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
+"Les carpetes que no s'estan restaurant correctament en algunes "
+"circumstàncies s'ha solucionat."
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
 msgstr ""
+"Mostra el diàleg de confirmació al selector de fitxers abans de "
+"sobreescriure un fitxer existent."
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "Ctrl + V ara sempre enganxa a la carpeta de fons."
 
 #: data/io.elementary.files.appdata.xml.in.in:46
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr ""
+msgstr "Maj + Ctrl + V ara enganxa a la carpeta seleccionada si n'hi ha."
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:66
