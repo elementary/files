@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-15 15:53+0000\n"
-"PO-Revision-Date: 2022-05-06 09:43+0000\n"
+"PO-Revision-Date: 2022-06-17 05:12+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -100,17 +100,14 @@ msgid "Network sidebar plugins such as NextCloud are now added correctly"
 msgstr "תוספי רשת בסרגל הצד כגון NextCloud מתווספים כראוי"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid ""
-#| "Fix truncation of final column in Column View under some circumstances"
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr "תוקן החיתוך של העמודה האחרונה בתצוגת העמודות במקרים מסוימים"
+msgstr "שכפול של תת־תיקיות ב־ListView (תצוגת רשימה) בתנאים מסוימים מקובע"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
-msgstr ""
+msgstr "סימניות מודגשות מעתה כאשר קובץ שהן יכולות לקבל נגרר אליהן"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Folders not being restored properly under some circumstances is fixed"
