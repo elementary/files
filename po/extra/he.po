@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-15 15:53+0000\n"
-"PO-Revision-Date: 2022-06-17 05:12+0000\n"
+"PO-Revision-Date: 2022-06-18 07:50+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -111,20 +111,20 @@ msgstr "סימניות מודגשות מעתה כאשר קובץ שהן יכול
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Folders not being restored properly under some circumstances is fixed"
-msgstr ""
+msgstr "תוקנה הבעיה שתיקיות לא משוחזרות כראוי בתנאים מסוימים"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
-msgstr ""
+msgstr "מופיעה חלונית אישור בבוחר הקבצים בטרם שחזור קובץ קיים"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "Ctrl + V תמיד מדביק מעכשיו לתיקיית הרקע"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr ""
+msgstr "Shift + Ctrl + V מדביק מעתה לתיקייה הנבחרת אם אכן נבחרה תיקייה"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:66
