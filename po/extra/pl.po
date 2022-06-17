@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-15 15:53+0000\n"
-"PO-Revision-Date: 2022-05-06 09:43+0000\n"
+"PO-Revision-Date: 2022-06-17 17:43+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -114,36 +114,37 @@ msgstr ""
 "poprawnie"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid ""
-#| "Fix truncation of final column in Column View under some circumstances"
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
 msgstr ""
-"Naprawiono przycinanie ostatniej kolumny w widoku kolumnowym w pewnych "
-"okolicznościach"
+"Naprawiono duplikację podfolderów w widoku listowym w pewnych okolicznościach"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
 msgstr ""
+"Zakładki są teraz podświetlone gdy plik który akceptują jest na nie "
+"przeniesiony"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
+"Naprawiono problem z folderami które czasami nie były poprawnie przywracane"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
 msgstr ""
+"Pokaż dialog potwierdzający w wyborze plików przed nadpisaniem istniejącego "
+"pliku"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "Ctrl + V zawsze wkleja teraz w otwarty folder"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr ""
+msgstr "Shift + Ctrl + V wkleja teraz w zaznaczony folder o ile taki istnieje"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:66
