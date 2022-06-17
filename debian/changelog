@@ -1,3 +1,36 @@
+pantheon-files (6.1.3) bionic; urgency=medium
+
+  * Release 6.1.3 (#2043)
+  * Update translation files
+  * Update translation template
+  * Update appdata for next release (#2042)
+  * Paste into background folder by default (#1829)
+  * Add dialog to ask for overwrite (#1989)
+  * Stop breadcrumbs cancelling directory objects (#2001)
+  * Sidebar.BookmarkRow: Explicitly highlight drop target (#1914)
+  * Fix reloading subdiredctories (#1988)
+  * Ensure view destroyed with associated slot (#2002)
+  * Remove faulty check blocking pre-selection (#2030)
+  * Add next release appdata (#2039)
+  * Ignore rename with same name (#2038)
+  * Remove unused function
+  * Ignore action view mode if no current tab
+  * Check for null slot before mode change
+  * Move key translation to a utility (#2028)
+  * Access button child directly to set align (#2031)
+  * No access event struct (#2027)
+  * Directory.vala: Handle all FileMonitorEvents (#2026)
+  * Remove references to Granite (#2025)
+  * Disable view actions when renaming (#1962)
+  * Ensure cursor follows selection with mouse (#1951)
+  * Action match pointer (#1910)
+  * Drop unnecessary Config.TERMINAL_NAME check (#2019)
+  * Make trash bookmark permanent (no remove option) (#2014)
+  * Correctly add network plugin item (#2007)
+  * Remove references to Granite.Services.Logger (deprecated) (#1998)
+
+ -- elementary, Inc. <builds@elementary.io>  Fri, 17 Jun 2022 14:08:25 +0000
+
 pantheon-files (6.1.2) bionic; urgency=medium
 
   * Release 6.1.2 (#1995)
