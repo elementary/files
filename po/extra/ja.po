@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-15 15:53+0000\n"
-"PO-Revision-Date: 2022-06-05 00:24+0000\n"
+"PO-Revision-Date: 2022-06-18 07:50+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,36 +115,31 @@ msgstr ""
 "正"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid ""
-#| "Fix truncation of final column in Column View under some circumstances"
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr ""
-"特定の状況下において、カラム表示の最後の列が途切れて表示されてしまう不具合を"
-"修正"
+msgstr "特定の状況下において、リスト表示でのサブフォルダーが重複表示されてしまう不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
-msgstr ""
+msgstr "処理可能なファイルをブックマークに対してドラッグした際に、ブックマークがハイライト表示されるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Folders not being restored properly under some circumstances is fixed"
-msgstr ""
+msgstr "特定の状況下において、フォルダーが適切に復元されない不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
-msgstr ""
+msgstr "ファイル選択ダイアログ: 既存のファイルを上書きする前に、確認ダイアログを表示するように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "Ctrl + V キーを使った場合は常に、現在開いているフォルダーへの貼り付けが行われるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr ""
+msgstr "Shift + Ctrl + V キーを使うと、選択中のフォルダーがあればその中に貼り付けするように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:66
