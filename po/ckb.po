@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-15 15:53+0000\n"
-"PO-Revision-Date: 2022-04-24 03:04+0000\n"
+"PO-Revision-Date: 2022-06-18 23:53+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
 "files/ckb/>\n"
@@ -45,28 +45,25 @@ msgid "Save"
 msgstr "پاشەکەوتکردن"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "ئاڵوگۆڕکردنی پەڕگە \"%s\"؟"
+msgstr "ئاڵوگۆڕ بە \"%s\"؟"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "ئاڵوگۆڕکردن ئۆڤەرڕایتی ناوەڕۆکەکەی دەکات."
+msgstr "ئاڵوگۆڕکردن گۆڕانکاری بەسەر ناوەڕۆکەکەیدا دەهێنێت."
 
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "ئاڵوگۆکردنی ئامانجەکەی \"%s\"؟"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "ئاڵوگۆڕکردن ئۆڤەرڕایتی ناوەڕۆکەکەی دەکات."
+msgstr ""
+"ئاڵوگۆڕکردنی پەڕگەی ئامانج بۆ ئەم بەستەرە گۆڕانکاری بەسەر ناوەڕۆکەکەیدا "
+"دەهێنێت."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
