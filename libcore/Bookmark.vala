@@ -76,11 +76,26 @@ namespace Files {
         }
 
         public GLib.Icon get_icon () {
-            if (gof_file.icon == null) {
-                gof_file.get_folder_icon_from_uri_or_path ();
+            if (gof_file.icon != null) {
+                return gof_file.icon;
+            } else {
+                // Get minimal info to determine icon
+                var ftype = gof_file.location.query_file_type (FileQueryInfoFlags.NONE);
+                if (ftype == FileType.DIRECTORY) {
+                    return new ThemedIcon.with_default_fallbacks ("folder");
+                } else if (ftype == FileType.MOUNTABLE) {
+                    return new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
+                } else {
+                    try {
+                        var info = gof_file.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE);
+                        return ContentType.get_icon (info.get_attribute_string (FileAttribute.STANDARD_CONTENT_TYPE));
+                    } catch (Error e) {
+                        return new ThemedIcon.with_default_fallbacks ("unknown");
+                    }
+                }
             }
 
-            return gof_file.icon;
+            assert_not_reached ();
         }
 
         public bool uri_known_not_to_exist () {
