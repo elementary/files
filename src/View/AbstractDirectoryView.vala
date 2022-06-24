@@ -742,36 +742,35 @@ namespace Files {
 
             Gdk.ModifierType state;
             event.get_state (out state);
-            Gdk.ScrollDirection direction;
-            event.get_scroll_direction (out direction);
+
             if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                switch (direction) {
-                    case Gdk.ScrollDirection.UP:
+                Gdk.ScrollDirection direction;
+                double delta_x, delta_y;
+                if (event.get_scroll_direction (out direction)) { // Only true for discrete scrolling
+                    if (direction == Gdk.ScrollDirection.UP) {
                         zoom_in ();
                         return true;
 
-                    case Gdk.ScrollDirection.DOWN:
+                    } else if (direction == Gdk.ScrollDirection.DOWN) {
                         zoom_out ();
                         return true;
+                    }
 
-                    case Gdk.ScrollDirection.SMOOTH:
-                        double delta_x, delta_y;
-                        event.get_scroll_deltas (out delta_x, out delta_y);
-                        /* try to emulate a normal scrolling event by summing deltas.
-                         * step size of 0.5 chosen to match sensitivity */
-                        total_delta_y += delta_y;
+                    return false;
+                } else if (event.get_scroll_deltas (out delta_x, out delta_y)) {
+                    /* try to emulate a normal scrolling event by summing deltas.
+                     * step size of 0.5 chosen to match sensitivity */
+                    total_delta_y += delta_y;
 
-                        if (total_delta_y >= 0.5) {
-                            total_delta_y = 0;
-                            zoom_out ();
-                        } else if (total_delta_y <= -0.5) {
-                            total_delta_y = 0;
-                            zoom_in ();
-                        }
-                        return true;
+                    if (total_delta_y >= 0.5) {
+                        total_delta_y = 0;
+                        zoom_out ();
+                    } else if (total_delta_y <= -0.5) {
+                        total_delta_y = 0;
+                        zoom_in ();
+                    }
 
-                    default:
-                        break;
+                    return true;
                 }
             }
 
