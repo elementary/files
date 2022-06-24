@@ -212,9 +212,16 @@ namespace Files {
             }
 
             cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
-            style_context.render_background (cr,
-                                             draw_rect.x * icon_scale, draw_rect.y * icon_scale,
-                                             draw_rect.width * icon_scale, draw_rect.height * icon_scale);
+
+            var x_pad = ((int) icon_size - draw_rect.width) / 2;
+            var y_pad = ((int) icon_size - draw_rect.height) / 2;
+
+            style_context.render_background (
+                cr,
+                (draw_rect.x - x_pad) * icon_scale,
+                (draw_rect.y - y_pad) * icon_scale,
+                (int) icon_size * icon_scale, (int) icon_size * icon_scale
+            );
 
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
@@ -246,12 +253,12 @@ namespace Files {
                         // Align at start of icon
                         if (is_rtl) {
                             helper_rect.x = int.min (cell_area.x + cell_area.width - helper_size,
-                                                     draw_rect.x + draw_rect.width - h_overlap);
+                                                     (draw_rect.x - x_pad) + draw_rect.width - h_overlap);
                         } else {
-                            helper_rect.x = int.max (cell_area.x, draw_rect.x - helper_size + h_overlap);
+                            helper_rect.x = int.max (cell_area.x, (draw_rect.x - x_pad) - helper_size + h_overlap);
                         }
 
-                        helper_rect.y = int.max (cell_area.y, draw_rect.y - helper_size + v_overlap);
+                        helper_rect.y = int.max (cell_area.y, (draw_rect.y - y_pad) - helper_size + v_overlap);
                         style_context.render_icon (cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale);
                     }
                 }
@@ -286,7 +293,7 @@ namespace Files {
                         continue;
                     }
 
-                    emblem_area.y = draw_rect.y + pix_rect.height - v_overlap;
+                    emblem_area.y = (draw_rect.y + y_pad) + pix_rect.height - v_overlap;
                     emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
 
                     emblem_area.y -= emblem_size * pos;
@@ -294,10 +301,10 @@ namespace Files {
 
                     // Align at end of icon
                     if (is_rtl) {
-                        emblem_area.x = draw_rect.x - emblem_size + h_overlap;
+                        emblem_area.x = (draw_rect.x + x_pad) - emblem_size + h_overlap;
                         emblem_area.x = int.max (emblem_area.x, cell_area.x);
                     } else {
-                        emblem_area.x = draw_rect.x + pix_rect.width - h_overlap;
+                        emblem_area.x = (draw_rect.x + x_pad) + pix_rect.width - h_overlap;
                         emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
                     }
 
