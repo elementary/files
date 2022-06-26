@@ -106,19 +106,7 @@ namespace Files {
 
             pix_rect.width = pixbuf.width / icon_scale;
             pix_rect.height = pixbuf.height / icon_scale;
-            if (show_emblems) {
-                // Only IconView uses IconRenderer to show emblems
-                // Center the icon in available width
-                pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
-            } else {
-                // Align.END
-                if (is_rtl) {
-                    pix_rect.x = cell_area.x;
-                } else {
-                    pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width);
-                }
-            }
-
+            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
             var draw_rect = Gdk.Rectangle ();
@@ -250,10 +238,10 @@ namespace Files {
                     }
 
                     if (pix != null) {
-                        // Align at start of icon
+                        // Align at start of background
                         if (is_rtl) {
                             helper_rect.x = int.min (cell_area.x + cell_area.width - helper_size,
-                                                     (draw_rect.x - x_pad) + draw_rect.width - h_overlap);
+                                                     (draw_rect.x + draw_rect.width + x_pad) - h_overlap);
                         } else {
                             helper_rect.x = int.max (cell_area.x, (draw_rect.x - x_pad) - helper_size + h_overlap);
                         }
