@@ -240,14 +240,26 @@ namespace Files {
                     if (pix != null) {
                         // Align at start of background
                         if (is_rtl) {
-                            helper_rect.x = int.min (cell_area.x + cell_area.width - helper_size,
-                                                     (draw_rect.x + draw_rect.width + x_pad) - h_overlap);
+                            helper_rect.x = int.min (
+                                cell_area.x + cell_area.width - helper_size,
+                                draw_rect.x + draw_rect.width + x_pad - h_overlap
+                            );
                         } else {
-                            helper_rect.x = int.max (cell_area.x, (draw_rect.x - x_pad) - helper_size + h_overlap);
+                            helper_rect.x = int.max (
+                                cell_area.x,
+                                draw_rect.x - x_pad - helper_size + h_overlap
+                            );
                         }
 
-                        helper_rect.y = int.max (cell_area.y, (draw_rect.y - y_pad) - helper_size + v_overlap);
-                        style_context.render_icon (cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale);
+                        // Align at top of background
+                        helper_rect.y = int.max (
+                            cell_area.y,
+                            draw_rect.y - y_pad - helper_size + v_overlap
+                        );
+
+                        style_context.render_icon (
+                            cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale
+                        );
                     }
                 }
 
@@ -281,20 +293,29 @@ namespace Files {
                         continue;
                     }
 
-                    emblem_area.y = (draw_rect.y + y_pad) + pix_rect.height - v_overlap;
-                    emblem_area.y = int.min (emblem_area.y, cell_area.y + cell_area.height - emblem_size);
-
-                    emblem_area.y -= emblem_size * pos;
-                    emblem_area.y = int.max (cell_area.y, emblem_area.y);
-
-                    // Align at end of icon
-                    if (is_rtl) {
-                        emblem_area.x = (draw_rect.x + x_pad) - emblem_size + h_overlap;
-                        emblem_area.x = int.max (emblem_area.x, cell_area.x);
+                    // Align at end of background (code mirrors that for helper)
+                    if (!is_rtl) {
+                        emblem_area.x = int.min (
+                            cell_area.x + cell_area.width - helper_size,
+                            draw_rect.x + draw_rect.width + x_pad - h_overlap
+                        );
                     } else {
-                        emblem_area.x = (draw_rect.x + x_pad) + pix_rect.width - h_overlap;
-                        emblem_area.x = int.min (emblem_area.x, cell_area.x + cell_area.width - emblem_size);
+                        emblem_area.x = int.max (
+                            cell_area.x,
+                            draw_rect.x - x_pad - helper_size + h_overlap
+                        );
                     }
+
+                    // Align at bottom of background
+                    emblem_area.y = int.min (
+                        cell_area.y + cell_area.height - emblem_size,
+                        draw_rect.y + draw_rect.height + y_pad - v_overlap
+                    );
+
+
+                    emblem_area.y = int.max (
+                        cell_area.y, emblem_area.y - emblem_size * pos
+                    );
 
                     style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                     pos++;
