@@ -166,11 +166,13 @@ namespace Files.View.Chrome {
                 current_completion_dir = Directory.from_gfile (file);
             }
 
-            clear_completion ();
-            matching_filename = "";
-            multiple_completions = false;
-            match_found = false;
-            current_completion_dir.init (on_file_loaded, on_done_loading);
+            if (current_completion_dir.can_load) {
+                clear_completion ();
+                matching_filename = "";
+                multiple_completions = false;
+                match_found = false;
+                current_completion_dir.init (on_file_loaded, on_done_loading);
+            }
         }
 
         protected void complete () {
