@@ -235,7 +235,7 @@ namespace Files.View.Chrome {
 
             string file_display_name = file.get_display_name ();
             if (file_display_name.length > to_complete.length) {
-                if (file_display_name.ascii_ncasecmp (to_complete, to_complete.length) == 0) {
+                if (file_display_name.up ().has_prefix (to_complete.up ())) {
                     matching_filename = file_display_name;
                     if (!match_found) {
                         match_found = true;
@@ -258,8 +258,6 @@ namespace Files.View.Chrome {
 
 
                     }
-
-
                 }
             }
         }
@@ -268,14 +266,10 @@ namespace Files.View.Chrome {
             if (multiple_completions) {
                 // We do not change the typed characters if there are multiple matches
                 set_completion_text (common_chars);
-            } else {
-                string? str = null;
+            } else if (match_found) {
+                string str = Path.DIR_SEPARATOR_S;
                 if (text.length >= 1) {
                     str = text.slice (0, text.length - to_complete.length);
-                }
-
-                if (str == null) {
-                    return;
                 }
 
                 // Change the typed characters to the match the filename when only one match.
