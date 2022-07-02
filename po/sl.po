@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-15 15:53+0000\n"
+"POT-Creation-Date: 2022-07-02 19:24+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -1214,7 +1214,7 @@ msgid "_Unmount"
 msgstr "_Varno odstrani"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Properties"
 msgstr "Lastnosti"
 
@@ -1228,7 +1228,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Odstrani"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2024
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2023
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1472,8 +1472,8 @@ msgstr "Pokaži različico programa"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Odpri URI(je) v novem zavihku"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1912
-#: src/View/AbstractDirectoryView.vala:1918
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1911
+#: src/View/AbstractDirectoryView.vala:1917
 msgid "New Window"
 msgstr "Novo okno"
 
@@ -1643,7 +1643,7 @@ msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1999
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Other Application…"
 msgstr "Drugo aplikacijo…"
 
@@ -1734,209 +1734,209 @@ msgstr "Ni bilo mogoče odpreti URIjev"
 msgid "Could not open files or URIs with this app"
 msgstr "S to aplikacijo ni bilo mogoče odpreti datotek/URIjev"
 
-#: src/View/AbstractDirectoryView.vala:834
-#: src/View/AbstractDirectoryView.vala:1145
+#: src/View/AbstractDirectoryView.vala:833
+#: src/View/AbstractDirectoryView.vala:1144
 msgid "Cannot execute this file"
 msgstr "Te datoteke ni mogoče odpreti"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:844
+#: src/View/AbstractDirectoryView.vala:843
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:845
+#: src/View/AbstractDirectoryView.vala:844
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:860
+#: src/View/AbstractDirectoryView.vala:859
 msgid "Cannot open this file"
 msgstr "Te datoteke ni mogoče odpreti"
 
-#: src/View/AbstractDirectoryView.vala:873
+#: src/View/AbstractDirectoryView.vala:872
 msgid "Cannot identify file type to open"
 msgstr "Ni bilo mogoče ugotoviti vrste datoteke"
 
-#: src/View/AbstractDirectoryView.vala:1615
+#: src/View/AbstractDirectoryView.vala:1614
 msgid "Cannot drop this file"
 msgstr "Datoteke ni mogoče spustiti"
 
-#: src/View/AbstractDirectoryView.vala:1616
+#: src/View/AbstractDirectoryView.vala:1615
 msgid "Invalid file name provided"
 msgstr "Ime datoteke je napačno"
 
-#: src/View/AbstractDirectoryView.vala:1895
-#: src/View/AbstractDirectoryView.vala:1901 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1894
+#: src/View/AbstractDirectoryView.vala:1900 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "Nov zavihek"
 
-#: src/View/AbstractDirectoryView.vala:1935
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "Run"
 msgstr "Zaženi"
 
-#: src/View/AbstractDirectoryView.vala:1942
+#: src/View/AbstractDirectoryView.vala:1941
 #, c-format
 msgid "Open in %s"
 msgstr "Odpri v %s"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Open in"
 msgstr "Odpri v"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2012
 #: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "Odpri z"
 
-#: src/View/AbstractDirectoryView.vala:2044
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2061
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "Obnovi vse"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2069
 msgid "Cut"
 msgstr "Izreži"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Move to Trash"
 msgstr "Premakni v smeti"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2089
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Trajno izbriši"
 
-#: src/View/AbstractDirectoryView.vala:2097
+#: src/View/AbstractDirectoryView.vala:2096
 msgid "Restore from Trash"
 msgstr "Obnovi s smeti"
 
-#: src/View/AbstractDirectoryView.vala:2120
+#: src/View/AbstractDirectoryView.vala:2119
 msgid "Open Parent Folder"
 msgstr "Odpri nadrejeno mapo"
 
-#: src/View/AbstractDirectoryView.vala:2123
+#: src/View/AbstractDirectoryView.vala:2122
 msgid "Remove from History"
 msgstr "Odstrani z zgodovine"
 
-#: src/View/AbstractDirectoryView.vala:2149
+#: src/View/AbstractDirectoryView.vala:2148
 msgid "Rename…"
 msgstr "Preimenuj…"
 
-#: src/View/AbstractDirectoryView.vala:2156
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Copy as Link"
 msgstr "Kopiraj kot povezavo"
 
-#: src/View/AbstractDirectoryView.vala:2176
-#: src/View/AbstractDirectoryView.vala:2271
+#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2270
 msgid "Paste Link into Folder"
 msgstr "Prilepi povezavo v mapo"
 
-#: src/View/AbstractDirectoryView.vala:2181
-#: src/View/AbstractDirectoryView.vala:2246
+#: src/View/AbstractDirectoryView.vala:2180
+#: src/View/AbstractDirectoryView.vala:2245
 msgid "Paste into Folder"
 msgstr "Prilepi v mapo"
 
-#: src/View/AbstractDirectoryView.vala:2191
-#: src/View/AbstractDirectoryView.vala:2276
+#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2275
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/View/AbstractDirectoryView.vala:2232
+#: src/View/AbstractDirectoryView.vala:2231
 msgid "Show Hidden Files"
 msgstr "Prikaži skrite datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2237
+#: src/View/AbstractDirectoryView.vala:2236
 msgid "Show Remote Thumbnails"
 msgstr "Prikaži predogled za datoteke na omrežju"
 
-#: src/View/AbstractDirectoryView.vala:2240
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Hide Thumbnails"
 msgstr "Skrij predogled za datoteke"
 
-#: src/View/AbstractDirectoryView.vala:2335
+#: src/View/AbstractDirectoryView.vala:2334
 msgid "Name"
 msgstr "Imenu"
 
-#: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2339 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Velikost"
 
-#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2344 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/View/AbstractDirectoryView.vala:2350
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Date"
 msgstr "Datumu"
 
-#: src/View/AbstractDirectoryView.vala:2355
+#: src/View/AbstractDirectoryView.vala:2354
 msgid "Reversed Order"
 msgstr "Obratni vrstni red"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2357
 msgid "Folders Before Files"
 msgstr "Mape pred datotekami"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Sort by"
 msgstr "Razvrsti po"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2377
 msgid "Folder"
 msgstr "Mapa"
 
-#: src/View/AbstractDirectoryView.vala:2384
+#: src/View/AbstractDirectoryView.vala:2383
 msgid "Empty File"
 msgstr "Prazna datoteka"
 
-#: src/View/AbstractDirectoryView.vala:2435
+#: src/View/AbstractDirectoryView.vala:2434
 msgid "New"
 msgstr "Nova"
 
-#: src/View/AbstractDirectoryView.vala:2678
+#: src/View/AbstractDirectoryView.vala:2677
 #, c-format
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: src/View/AbstractDirectoryView.vala:2996
-#: src/View/AbstractDirectoryView.vala:3189
+#: src/View/AbstractDirectoryView.vala:2995
+#: src/View/AbstractDirectoryView.vala:3188
 msgid "Cannot remove files from here"
 msgstr "Od tu ni mogoče odstraniti datotek"
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "You do not have permission to change this location"
 msgstr "Nimate dovoljenja za spreminjanje te lokacije"
 
-#: src/View/AbstractDirectoryView.vala:3130
+#: src/View/AbstractDirectoryView.vala:3129
 msgid "Cannot copy files that are in the trash"
 msgstr "Datotek v smeteh ni mogoče kopirati"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cutting the selection instead"
 msgstr "Režem izbrane predmete"
 
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3172
+#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot paste files here"
 msgstr "Datotek ni mogoče prilepiti sem"
 
