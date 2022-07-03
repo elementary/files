@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-06-15 20:16+0000\n"
+"PO-Revision-Date: 2022-07-03 02:01+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -87,7 +87,7 @@ msgstr "Виправлення:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
-msgstr ""
+msgstr "Виправлено регресію під час зменшення за допомогою Ctrl + ScrollDown"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:60
