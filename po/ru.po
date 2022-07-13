@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-01-18 17:55+0000\n"
-"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"PO-Revision-Date: 2022-07-12 20:12+0000\n"
+"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,16 +51,13 @@ msgid "Save"
 msgstr "Сохранить"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Заменить файл «%s»?"
+msgstr "Заменить «%s»?"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "При замене файла его содержимое будет перезаписано."
+msgstr "При замене файла его содержимое будет перезаписано"
 
 #: filechooser-portal/Main.vala:360
 #, c-format
@@ -1018,7 +1015,7 @@ msgstr "Нельзя скопировать файл сам в себя."
 
 #: libcore/marlin-file-operations.c:2743
 msgid "The source file would be overwritten by the destination."
-msgstr "Исходный файл будет переписан файлом назначения."
+msgstr "Исходный файл будет перезаписан файлом назначения."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2987
@@ -1121,7 +1118,7 @@ msgstr "Копирование файлов в корзину запрещено
 
 #: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
-msgstr "новая папка"
+msgstr "безымянная папка"
 
 #: libcore/marlin-file-operations.c:4565
 msgid "new file"
@@ -1188,7 +1185,7 @@ msgstr "Добавить в закладки"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr "Окончательно удалить всё из корзины"
+msgstr "Безвозвратно удалить всё из корзины"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
@@ -1346,7 +1343,7 @@ msgstr "Очистка корзины"
 #: libcore/FileOperations/MountUtils.vala:31
 #, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Невозможно размонтировать «%s»"
+msgstr "Не удалось отключить «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:52
 #, c-format
@@ -1681,7 +1678,7 @@ msgstr "Не удается выполнить этот файл"
 #: src/View/AbstractDirectoryView.vala:843
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "“%s” необходимо переместить из Корзины перед открытием"
+msgstr "«%s» необходимо восстановить из корзины перед открытием"
 
 #: src/View/AbstractDirectoryView.vala:844
 msgid ""
@@ -1849,7 +1846,7 @@ msgstr "Создать"
 #: src/View/AbstractDirectoryView.vala:2677
 #, c-format
 msgid "Untitled %s"
-msgstr "Безымянный «%s»"
+msgstr "Безымянный %s"
 
 #: src/View/AbstractDirectoryView.vala:2995
 #: src/View/AbstractDirectoryView.vala:3188
@@ -2025,7 +2022,7 @@ msgstr "Извлечь «%s»"
 #: src/View/Sidebar/AbstractMountableRow.vala:173
 #, c-format
 msgid "Unmount '%s'"
-msgstr "Размонтировать «%s»"
+msgstr "Отключить «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2122,7 +2119,7 @@ msgstr "Связать монтирование"
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
-msgstr "Искать или ввести путь"
+msgstr "Введите путь или поисковой запрос"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
