@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
 "PO-Revision-Date: 2022-07-24 14:16+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -65,11 +65,10 @@ msgid "Replace the target of “%s”?"
 msgstr "Заменить цель «%s»?"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "При замене файла его содержимое будет перезаписано."
+msgstr ""
+"Замена целевого файла для этой ссылки перезапишет его текущее содержимое."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -373,7 +372,7 @@ msgstr "Объект не может быть восстановлен из ко
 #: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr "Оригинальной папки %s больше не существует"
+msgstr "Оригинальной папки «%s» больше не существует"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
@@ -402,7 +401,7 @@ msgstr ""
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr "Не удалось пересоздать папку %s. Игнорировать все файлы в этой папке"
+msgstr "Не удалось пересоздать папку «%s». Игнорировать все файлы в этой папке"
 
 #: libcore/FileUtils.vala:579
 #, c-format
@@ -1663,11 +1662,11 @@ msgstr "Не удалось открыть файлы"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr "Не удается открыть идентификаторы"
+msgstr "Не удалось открыть ссылки URI"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
-msgstr "Не удалось открыть файлы или идентификаторы с помощью этого приложения"
+msgstr "Не удалось открыть файлы или ссылки URI с помощью этого приложения"
 
 #: src/View/AbstractDirectoryView.vala:833
 #: src/View/AbstractDirectoryView.vala:1144
@@ -1685,7 +1684,7 @@ msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
-"Файлы в Корзине не могут быть открыты. Чтобы открыть файл, перенесите его в "
+"Файлы в корзине не могут быть открыты. Чтобы открыть файл, перенесите его в "
 "другое место."
 
 #: src/View/AbstractDirectoryView.vala:859
@@ -2048,7 +2047,7 @@ msgstr "Не смонтирован"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
-msgstr "Посмотреть домашний каталог"
+msgstr "Просмотреть домашнюю папку"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
@@ -2065,14 +2064,14 @@ msgstr "Посмотреть корневую часть локальной фа
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr "%s содержит недоступные данные."
+msgstr "%s не содержит доступных данных."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
-"Чтобы использовать этот носитель, может потребоваться отсоединить или "
-"повторно подсоединить его или форматировать."
+"Чтобы использовать этот носитель, может потребоваться переподключить или "
+"отформатировать его."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
@@ -2092,6 +2091,7 @@ msgid "Bookmarks"
 msgstr "Закладки"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
+#, fuzzy
 msgid "Common places plus saved folders and files"
 msgstr "Общедоступные места а также закрепленые папки и файлы"
 
@@ -2114,7 +2114,7 @@ msgstr "Подключить сервер…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
-msgstr "Связать монтирование"
+msgstr "Привязать подключение"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:200
