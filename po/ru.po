@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-07-12 20:12+0000\n"
+"PO-Revision-Date: 2022-07-24 14:16+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
@@ -62,7 +62,7 @@ msgstr "При замене файла его содержимое будет п
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "Заменить цель «%s»?"
 
 #: filechooser-portal/Main.vala:363
 #, fuzzy
@@ -130,7 +130,7 @@ msgstr "Ресурс:"
 
 #: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
-msgstr "Путь к общей папки на сервере (необязательно)"
+msgstr "Путь к общей папке на сервере (необязательно)"
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
@@ -285,7 +285,7 @@ msgstr "Оставить новый"
 
 #: libcore/FileConflictDialog.vala:186
 msgid "Skip if original was modified more recently"
-msgstr "Пропустить, если оригинал был недавно изменен"
+msgstr "Пропустить, если оригинал был недавно изменён"
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
@@ -536,7 +536,7 @@ msgstr[2] ""
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
-"Удаленные элементы не отправляются в корзину и не подлежат восстановлению."
+"Удалённые элементы не отправляются в корзину и не подлежат восстановлению."
 
 #: libcore/marlin-file-operations.c:375
 #, c-format
@@ -985,13 +985,13 @@ msgstr "Произошла ошибка при копировании «%s»."
 #: libcore/marlin-file-operations.c:2418
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Не удалось удалить файлы из уже существующей папки %s."
+msgstr "Не удалось удалить файлы из уже существующей папки «%s»."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:2471
 #, c-format
 msgid "Could not remove the already existing file %s."
-msgstr "Невозможно удалить уже существующий файл %s."
+msgstr "Невозможно удалить уже существующий файл «%s»."
 
 #: libcore/marlin-file-operations.c:2706 libcore/marlin-file-operations.c:3372
 msgid "You cannot move a folder into itself."
@@ -1672,7 +1672,7 @@ msgstr "Не удалось открыть файлы или идентифик�
 #: src/View/AbstractDirectoryView.vala:833
 #: src/View/AbstractDirectoryView.vala:1144
 msgid "Cannot execute this file"
-msgstr "Не удается выполнить этот файл"
+msgstr "Не удаётся выполнить этот файл"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
 #: src/View/AbstractDirectoryView.vala:843
@@ -2119,7 +2119,7 @@ msgstr "Связать монтирование"
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
-msgstr "Введите путь или поисковой запрос"
+msgstr "Введите путь или поисковый запрос"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
