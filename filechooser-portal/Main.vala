@@ -1,5 +1,5 @@
 /*-
- * Copyright 2020-2021 elementary LLC <https://elementary.io>
+ * Copyright 2020-2022 elementary LLC <https://elementary.io>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -38,6 +38,22 @@ public class Files.FileChooserPortal : Object {
         dialogs = new HashTable<string, FileChooserDialog> (str_hash, str_equal);
     }
 
+    /** open_file: (async):
+     * @handle: Object path for the portal.Request object representing this call
+     * @app_id: Application originating the call (not used)
+     * @parent_window: parent window information
+     * @title: title for the file chooser dialog
+     * @options: "modal", "current-name", "current-folder", "current-file",
+                 "filters", "current-filter", "choices"
+     * @response: (out): the user response
+     * @results: (out): URI to open, choices and read-only information
+
+     * Asynchronously requests the user for a URI to open.
+     * If the URI exists, asks the user for permission to overwrite. If the user
+     * agrees, then the URI is considered safe and added to @results
+     *
+     * If it does not exist, the URI is implicitly considered safe.
+     */
     public async void open_file (
         ObjectPath handle,
         string app_id,
@@ -139,6 +155,22 @@ public class Files.FileChooserPortal : Object {
         results = _results;
     }
 
+    /** save_file: (async):
+     * @handle: Object path for the portal.Request object representing this call
+     * @app_id: Application originating the call (not used)
+     * @parent_window: parent window information
+     * @title: title for the file chooser dialog
+     * @options: "modal", "current-name", "current-folder", "current-file", 
+                 "filters", "current-filter", "choices"
+     * @response: (out): the user response
+     * @results: (out): URI safe to save and user choices
+
+     * Asynchronously requests the user for a URI to save
+     * If the URI exists, asks the user for permission to overwrite. If the user
+     * agrees, then the URI is considered safe and added to @results
+     *
+     * If it does not exist, the URI is implicitly considered safe.
+     */
     public async void save_file (
         ObjectPath handle,
         string app_id,
@@ -262,6 +294,21 @@ public class Files.FileChooserPortal : Object {
         results = _results;
     }
 
+    /** save_files: (async):
+     * @handle: Object path for the portal.Request object representing this call
+     * @app_id: Application originating the call (not used)
+     * @parent_window: parent window information
+     * @title: title for the file chooser dialog
+     * @options: "modal", "current-name", "current-folder", "current-file", "filters", "current-filter", "choices"
+     * @response: (out): the user response
+     * @results: (out): URIs safe to save
+
+     * Asynchronously requests the user for multiple URIs to save
+     * If a URI exists, asks the user for permission to overwrite. If the user
+     * agrees, then the URI is considered safe and added to @results
+     *
+     * If it does not exist, the URI is implicitly considered safe.
+     */
     public async void save_files (
         ObjectPath handle,
         string app_id,
@@ -346,16 +393,6 @@ public class Files.FileChooserPortal : Object {
         results = _results;
     }
 
-    /** Checks whether the provided URI already exists in the file system.
-     *
-     * If the URI exists, asks the user for permission to overwrite. If the user
-     * agrees, then the URI is considered safe. Otherwise, it should not be
-     * overwritten or passed back to the calling app.
-     *
-     * If it does not exist, the URI is implicitly considered safe.
-     *
-     * Returns: whether the URI is safe to save to.
-     */
     private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
         string primary, secondary;
         var display_name = file.get_basename ();
