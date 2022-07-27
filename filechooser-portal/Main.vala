@@ -357,25 +357,30 @@ public class Files.FileChooserPortal : Object {
      * Returns: whether the URI is safe to save to.
      */
     private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
-        unowned var primary = _("Replace “%s”?");
-        unowned var secondary = _("Replacing this file will overwrite its current contents");
+        string primary, secondary;
         var display_name = file.get_basename ();
 
         if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
-            primary = _("Replace link “%s”?").printf (display_name);
             try {
                 var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
                 var link_name = info.get_symlink_target ();
-                secondary = _("This file is a link to “%s”. Replacing it will overwrite the original's contents. The link will remain.").printf (link_name);
+                primary = _("This file is a link to “%s”").printf (display_name);
             } catch (Error e) {
                 warning ("Could not get info for %s", file.get_uri ());
-                primary = _("Replace the target of “%s”?");
+                primary = _("This file is a link.");
             }
-            secondary = _("This file is a link. Replacing it will overwrite the original's contents. The link will remain.");
+
+            secondary = _("Replacing a link will overwrite the target's contents. The link will remain");
+        } else {
+            primary = _("Replace “%s”?").printf (display_name);
+            secondary = _("Replacing this file will overwrite its current contents");
         }
 
         var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                primary.printf (display_name), secondary, "dialog-warning", Gtk.ButtonsType.CANCEL
+                primary,
+                secondary,
+                "dialog-warning",
+                Gtk.ButtonsType.CANCEL
             ) {
                 modal = true,
                 transient_for = parent
