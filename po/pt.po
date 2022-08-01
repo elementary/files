@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-06-12 09:27+0000\n"
+"PO-Revision-Date: 2022-08-01 15:54+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -62,7 +62,7 @@ msgstr "A substituição deste ficheiro irá substituir o seu conteúdo atual"
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "Substituir o alvo de \"%s\"?"
 
 #: filechooser-portal/Main.vala:363
 msgid ""
