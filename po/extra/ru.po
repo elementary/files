@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
 "PO-Revision-Date: 2022-08-01 19:34+0000\n"
-"Last-Translator: Mikhail <semarove@gmail.com>\n"
+"Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -129,27 +129,31 @@ msgstr "Обновлены переводы"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 msgid "Renaming with the same name no longer shows an error dialog"
-msgstr ""
+msgstr "Переименование с тем же именем больше не выдаёт ошибку"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
+msgstr "При переименовании Ctrl + A теперь выделяет весь текст в поле"
 
 #: data/io.elementary.files.appdata.xml.in.in:49
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
+"Выбор нескольких объектов, используя Shift + Стрелки, теперь работает "
+"должным образом"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 msgid "The appearance of the cursor now matches the action"
-msgstr ""
+msgstr "Внешний вид курсора теперь совпадает с действием"
 
 #: data/io.elementary.files.appdata.xml.in.in:51
 msgid "The Trash sidebar item can no longer be removed"
-msgstr ""
+msgstr "Корзина больше не может быть удалена из бокового меню"
 
 #: data/io.elementary.files.appdata.xml.in.in:52
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
 msgstr ""
+"Сетевые плагины для боковой панели, такие как NextCloud, теперь добавляются "
+"правильно"
 
 #: data/io.elementary.files.appdata.xml.in.in:53
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
@@ -162,23 +166,29 @@ msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
 msgstr ""
+"Закладки теперь подсвечиваются, когда на них перетаскивается файл, который "
+"они могут принять"
 
 #: data/io.elementary.files.appdata.xml.in.in:55
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
+"Исправлено неправильное восстановление папок при некоторых обстоятельствах"
 
 #: data/io.elementary.files.appdata.xml.in.in:56
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
 msgstr ""
+"Показывать окно подтверждения в окне выбора файла перед перезаписью "
+"существующего файла"
 
 #: data/io.elementary.files.appdata.xml.in.in:57
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "Ctrl + V теперь всегда вставляет в папку на фоне"
 
 #: data/io.elementary.files.appdata.xml.in.in:58
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
 msgstr ""
+"Shift + Ctrl + V теперь вставляет в выбранную папку, если таковая имеется"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 #: data/io.elementary.files.appdata.xml.in.in:86
