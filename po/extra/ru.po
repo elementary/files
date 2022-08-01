@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
 "PO-Revision-Date: 2022-08-01 19:34+0000\n"
-"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
+"Last-Translator: Mikhail <semarove@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
 "Language: ru\n"
@@ -202,7 +202,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "Показать значок общего доступа в навигации"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
