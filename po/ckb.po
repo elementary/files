@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-07-31 14:11+0000\n"
+"PO-Revision-Date: 2022-08-04 13:03+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
 "files/ckb/>\n"
@@ -1018,266 +1018,266 @@ msgstr "ئامادەکاری بۆ ناو گواستنەوە بۆ \"%s\""
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ئامادەکاری بۆ گواستنەوەی %'d پەڕگە"
+msgstr[1] "ئامادەکاری بۆ گواستنەوەی %'d پەڕگە"
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3540
 #, c-format
 msgid "There was an error moving the file into %s."
-msgstr ""
+msgstr "هەڵەیەک هەبوو لە کاتی گواستنەوەی پەڕگەکە بۆناو %s."
 
 #: libcore/marlin-file-operations.c:3764
 msgid "Moving Files"
-msgstr ""
+msgstr "گواستنەوەی پەڕگەکان"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Creating links in \"%s\""
-msgstr ""
+msgstr "دروستکردنی لینکەکان لە \"%s\""
 
 #: libcore/marlin-file-operations.c:3807
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "دروستکردنی لینک بۆ %'d پەڕگە"
+msgstr[1] "دروستکردنی لینکەکان بۆ %'d پەڕگە"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3917
 #, c-format
 msgid "Error while creating link to %s."
-msgstr ""
+msgstr "هەڵە هەیە لە کاتی دروستکردنی لینک بۆ %s."
 
 #: libcore/marlin-file-operations.c:3920
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "لینکە سمبولییەکان تەنها بۆ پەڕگە ناوخۆییەکان پاڵپشتی کراوە"
 
 #: libcore/marlin-file-operations.c:3923
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "ئامانجەکە پاڵپشتی لینکە سمبولییەکان ناکات."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3928
 #, c-format
 msgid "There was an error creating the symlink in %s."
-msgstr ""
+msgstr "هەڵەیەک ڕوویدا لەکاتی دروستکردنی سیملینک لە %s."
 
 #: libcore/marlin-file-operations.c:4218
 msgid "Setting permissions"
-msgstr ""
+msgstr "دانانی مۆڵەتەکان"
 
 #: libcore/marlin-file-operations.c:4409
 msgid "Zero files to process"
-msgstr ""
+msgstr "سفر پەڕگە هەیە بۆ پرۆسێس"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "ناتوانێت کۆپی بکات بۆ ناو سەبەتەی خۆڵ."
 
 #: libcore/marlin-file-operations.c:4418 libcore/marlin-file-operations.c:4426
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "ڕێگە نەدراوە بۆ کۆپی کردنی پەڕگەکان بۆ ناو سەبەتەی خۆڵ"
 
 #: libcore/marlin-file-operations.c:4557
 msgid "untitled folder"
-msgstr ""
+msgstr "فۆڵدەری بێ ناو"
 
 #: libcore/marlin-file-operations.c:4565
 msgid "new file"
-msgstr ""
+msgstr "پەڕگەی تازە"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4734
 #, c-format
 msgid "Error while creating directory %s."
-msgstr ""
+msgstr "هەڵە هەیە لە کاتی دروستکردنی فۆڵدەری %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4737
 #, c-format
 msgid "Error while creating file %s."
-msgstr ""
+msgstr "هەڵە هەیە لە کاتی دروستکردنی پەڕگە %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:4743
 #, c-format
 msgid "There was an error creating the directory in %s."
-msgstr ""
+msgstr "هەڵەیەک هەبوو لە کاتی دروستکردنی دایرێکتۆرییەکە لە %s دا."
 
 #: libcore/PopupMenuBuilder.vala:54
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "کردنەوەی لە تابێکی نوێدا"
 
 #: libcore/PopupMenuBuilder.vala:58
 msgid "Open in New _Window"
-msgstr ""
+msgstr "کردنەوەی لە پەنجەرەیەکی نوێدا"
 
 #: libcore/PopupMenuBuilder.vala:62
 msgid "Remove"
-msgstr ""
+msgstr "سڕینەوە"
 
 #: libcore/PopupMenuBuilder.vala:66
 msgid "Rename"
-msgstr ""
+msgstr "ناوگۆڕین"
 
 #: libcore/PopupMenuBuilder.vala:70
 msgid "_Mount"
-msgstr ""
+msgstr "_ماونت"
 
 #: libcore/PopupMenuBuilder.vala:74
 msgid "_Unmount"
-msgstr ""
+msgstr "_ئەنماونت"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
 #: src/View/AbstractDirectoryView.vala:2030
 msgid "Properties"
-msgstr ""
+msgstr "تایبەتمەندییەکان"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "دەرکردنی میدیا"
 
 #: libcore/PopupMenuBuilder.vala:88
 msgid "Safely Remove"
-msgstr ""
+msgstr "دەرکردنی سەلامەت"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2023
 msgid "Add to Bookmarks"
-msgstr ""
+msgstr "زیادکردنی بۆ جێدۆز"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr ""
+msgstr "سڕینەوەی هەموو سەبەتەی خۆڵ بەیەکجاری"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
-msgstr ""
+msgstr "سڕینەوەی سەبەتە بەیەکجاری"
 
 #: libcore/PopupMenuBuilder.vala:117
 msgid "Permanently Delete Trash on this Mount"
-msgstr ""
+msgstr "سڕینەوەی هەموو سەبەتەی خۆڵ بەیەکجاری لەسەر ئەم ماونتە"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
 msgid "Preparing"
-msgstr ""
+msgstr "ئامادەکردن"
 
 #: libcore/Resources.vala:22 src/DesktopLauncher.vala:25
 msgid "Files"
-msgstr ""
+msgstr "پەڕگەکان"
 
 #: libcore/Resources.vala:61
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: libcore/Resources.vala:62
 msgid "AFC"
-msgstr ""
+msgstr "AFC"
 
 #: libcore/Resources.vala:63
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: libcore/Resources.vala:64
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: libcore/Resources.vala:65
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:60
 msgid "Network"
-msgstr ""
+msgstr "تۆڕ"
 
 #: libcore/Resources.vala:67
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: libcore/Resources.vala:68
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
 msgid "Trash"
-msgstr ""
+msgstr "سەبەتە"
 
 #: libcore/Resources.vala:70
 msgid "Recent"
-msgstr ""
+msgstr "تازە"
 
 #: libcore/Resources.vala:71
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: libcore/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:44
 #: src/View/Sidebar/DeviceListBox.vala:140
 msgid "File System"
-msgstr ""
+msgstr "فایل سیستەم"
 
 #: libcore/StockDialogs.vala:20
 msgid "_Cancel"
-msgstr ""
+msgstr "_هەڵوەشاندنەوە"
 
 #: libcore/StockDialogs.vala:21
 msgid "Delete"
-msgstr ""
+msgstr "سڕینەوە"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
-msgstr ""
+msgstr "تێپەڕاندنی هەموو"
 
 #: libcore/StockDialogs.vala:24
 msgid "_Retry"
-msgstr ""
+msgstr "_هەوڵدانەوە"
 
 #: libcore/StockDialogs.vala:25
 msgid "Delete _All"
-msgstr ""
+msgstr "سڕینەوەی هەموو"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
-msgstr ""
+msgstr "_جێگرتنەوە"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
-msgstr ""
+msgstr "جێگرتنەوەی هەموو"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
-msgstr ""
+msgstr "یەکخستن"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
-msgstr ""
+msgstr "یەکخستنی هەموو"
 
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "هەرچۆنێک بێت کۆپی بکە"
 
 #: libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
-msgstr ""
+msgstr "بەتاڵکردنی سەبەتە"
 
 #: libcore/UndoManager.vala:310
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "شوێنی ڕەسەن دیاری ناکرێت"
 
 #: libcore/UndoManager.vala:311
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "کردنەوەی فۆڵدەری سەبەتەی خۆڵ و گەڕاندنەوەی دەستی"
 
 #: libcore/FileOperations/DialogUtils.vala:54
 #: src/Dialogs/AbstractPropertiesDialog.vala:80
 msgid "Close"
-msgstr ""
+msgstr "داخستن"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:40
 msgid "Permanently delete all items from Trash?"
