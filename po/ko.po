@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
 "PO-Revision-Date: 2022-08-05 14:46+0000\n"
-"Last-Translator: I'm Not Cry <contact@cryental.com>\n"
+"Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -1641,7 +1641,7 @@ msgstr "이 파일을 실행할 수 없습니다"
 #: src/View/AbstractDirectoryView.vala:843
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "“%s”을 열기 전에 휴지통에서 꺼내야 합니다."
+msgstr "“%s”을 열기 전에 휴지통에서 꺼내야 합니다"
 
 #: src/View/AbstractDirectoryView.vala:844
 msgid ""
