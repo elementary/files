@@ -392,14 +392,6 @@ namespace Files.View {
             save_tabs ();
         }
 
-        public Files.AbstractSlot? get_active_slot () {
-            if (current_tab != null) {
-                return current_tab.get_current_slot ();
-            } else {
-                return null;
-            }
-        }
-
         public new void set_title (string title) {
             this.title = title;
         }
@@ -752,6 +744,10 @@ namespace Files.View {
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+            if (current_tab == null) { // can occur during startup
+                return;
+            }
+
             ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
