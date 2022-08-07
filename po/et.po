@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-15 15:53+0000\n"
+"POT-Creation-Date: 2022-07-02 19:24+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -1179,7 +1179,7 @@ msgid "_Unmount"
 msgstr "_Haagi lahti"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Properties"
 msgstr "Omadused"
 
@@ -1193,7 +1193,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Eemalda järjehoidjatest"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2024
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2023
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1446,8 +1446,8 @@ msgstr "Programmi versiooni näitamine."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "URI-de avamine uues aknas"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1912
-#: src/View/AbstractDirectoryView.vala:1918
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1911
+#: src/View/AbstractDirectoryView.vala:1917
 msgid "New Window"
 msgstr "Uues aknas"
 
@@ -1617,7 +1617,7 @@ msgid "Original Location:"
 msgstr "Originaal asukoht:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1999
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Other Application…"
 msgstr "Teine rakendus…"
 
@@ -1701,215 +1701,215 @@ msgstr "Ümbernimetamine kui '%s' ebaõnnestus"
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:834
-#: src/View/AbstractDirectoryView.vala:1145
+#: src/View/AbstractDirectoryView.vala:833
+#: src/View/AbstractDirectoryView.vala:1144
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Selle faili avamine pole võimalik"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:844
+#: src/View/AbstractDirectoryView.vala:843
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:845
+#: src/View/AbstractDirectoryView.vala:844
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:860
+#: src/View/AbstractDirectoryView.vala:859
 msgid "Cannot open this file"
 msgstr "Selle faili avamine pole võimalik"
 
-#: src/View/AbstractDirectoryView.vala:873
+#: src/View/AbstractDirectoryView.vala:872
 msgid "Cannot identify file type to open"
 msgstr "Avatava faili formaati pole võimalik tuvastada"
 
-#: src/View/AbstractDirectoryView.vala:1615
+#: src/View/AbstractDirectoryView.vala:1614
 msgid "Cannot drop this file"
 msgstr "Faili ümbertõstmine pole võimalik"
 
-#: src/View/AbstractDirectoryView.vala:1616
+#: src/View/AbstractDirectoryView.vala:1615
 msgid "Invalid file name provided"
 msgstr "Vigane faili nimi"
 
-#: src/View/AbstractDirectoryView.vala:1895
-#: src/View/AbstractDirectoryView.vala:1901 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1894
+#: src/View/AbstractDirectoryView.vala:1900 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "Uues kaardis"
 
-#: src/View/AbstractDirectoryView.vala:1935
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "Run"
 msgstr "Käivita"
 
-#: src/View/AbstractDirectoryView.vala:1942
+#: src/View/AbstractDirectoryView.vala:1941
 #, c-format
 msgid "Open in %s"
 msgstr "Ava rakendusega %s"
 
-#: src/View/AbstractDirectoryView.vala:2011
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Open in"
 msgstr "Ava..."
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2012
 #: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "Ava koos"
 
-#: src/View/AbstractDirectoryView.vala:2044
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2061
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "Taasta kõik"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2069
 msgid "Cut"
 msgstr "Lõika"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Copy"
 msgstr "Kopeeri"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Move to Trash"
 msgstr "Pane prügikasti"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2089
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Lõplikult kustutamine..."
 
-#: src/View/AbstractDirectoryView.vala:2097
+#: src/View/AbstractDirectoryView.vala:2096
 msgid "Restore from Trash"
 msgstr "Taasta"
 
-#: src/View/AbstractDirectoryView.vala:2120
+#: src/View/AbstractDirectoryView.vala:2119
 msgid "Open Parent Folder"
 msgstr "Ava faili sisaldav kaust"
 
-#: src/View/AbstractDirectoryView.vala:2123
+#: src/View/AbstractDirectoryView.vala:2122
 msgid "Remove from History"
 msgstr "Eemalda hiljutistest"
 
-#: src/View/AbstractDirectoryView.vala:2149
+#: src/View/AbstractDirectoryView.vala:2148
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Muuda nime"
 
-#: src/View/AbstractDirectoryView.vala:2156
+#: src/View/AbstractDirectoryView.vala:2155
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Aseta"
 
-#: src/View/AbstractDirectoryView.vala:2176
-#: src/View/AbstractDirectoryView.vala:2271
+#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2270
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Aseta kausta"
 
-#: src/View/AbstractDirectoryView.vala:2181
-#: src/View/AbstractDirectoryView.vala:2246
+#: src/View/AbstractDirectoryView.vala:2180
+#: src/View/AbstractDirectoryView.vala:2245
 msgid "Paste into Folder"
 msgstr "Aseta kausta"
 
-#: src/View/AbstractDirectoryView.vala:2191
-#: src/View/AbstractDirectoryView.vala:2276
+#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2275
 msgid "Paste"
 msgstr "Aseta"
 
-#: src/View/AbstractDirectoryView.vala:2232
+#: src/View/AbstractDirectoryView.vala:2231
 msgid "Show Hidden Files"
 msgstr "Näita peidetud faile"
 
-#: src/View/AbstractDirectoryView.vala:2237
+#: src/View/AbstractDirectoryView.vala:2236
 msgid "Show Remote Thumbnails"
 msgstr "Kaugühenduse pisipiltide näitamine"
 
-#: src/View/AbstractDirectoryView.vala:2240
+#: src/View/AbstractDirectoryView.vala:2239
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "Kaugühenduse pisipiltide näitamine"
 
-#: src/View/AbstractDirectoryView.vala:2335
+#: src/View/AbstractDirectoryView.vala:2334
 msgid "Name"
 msgstr "Nimi"
 
-#: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2339 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Suurus"
 
-#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2344 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tüüp"
 
-#: src/View/AbstractDirectoryView.vala:2350
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Date"
 msgstr "Kuupäev"
 
-#: src/View/AbstractDirectoryView.vala:2355
+#: src/View/AbstractDirectoryView.vala:2354
 msgid "Reversed Order"
 msgstr "Vastupidises järjekorras"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2357
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Sort by"
 msgstr "Sorteerimine"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2377
 msgid "Folder"
 msgstr "Kaust"
 
-#: src/View/AbstractDirectoryView.vala:2384
+#: src/View/AbstractDirectoryView.vala:2383
 msgid "Empty File"
 msgstr "Fail"
 
-#: src/View/AbstractDirectoryView.vala:2435
+#: src/View/AbstractDirectoryView.vala:2434
 msgid "New"
 msgstr "Uus"
 
-#: src/View/AbstractDirectoryView.vala:2678
+#: src/View/AbstractDirectoryView.vala:2677
 #, c-format
 msgid "Untitled %s"
 msgstr "Nimetu %s"
 
-#: src/View/AbstractDirectoryView.vala:2996
-#: src/View/AbstractDirectoryView.vala:3189
+#: src/View/AbstractDirectoryView.vala:2995
+#: src/View/AbstractDirectoryView.vala:3188
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3130
+#: src/View/AbstractDirectoryView.vala:3129
 msgid "Cannot copy files that are in the trash"
 msgstr "Prügikastis olevate failide kopeerimine pole võimalik."
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cutting the selection instead"
 msgstr "Valitud failide lõikamine"
 
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3172
+#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot paste files here"
 msgstr ""
 
