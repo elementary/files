@@ -99,20 +99,10 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        dialog.register_object (connection, handle);
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
-
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
 
         dialog.response.connect ((id) => {
             switch (id) {
@@ -143,6 +133,8 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        dialog.destroy ();
+
         response = _response;
         results = _results;
     }
@@ -178,11 +170,15 @@ public class Files.FileChooserPortal : Object {
             dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
         }
 
+        var supplied_uri = "";
         if ("current_file" in options) {
-            dialog.set_uri (FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (),
-                Environment.get_home_dir ()
-            ));
+            supplied_uri = FileUtils.sanitize_path (
+                options["current_file"].get_bytestring (), Environment.get_home_dir ()
+            );
+
+            if (supplied_uri != "") {
+                dialog.set_uri (supplied_uri);
+            }
         }
 
         if ("filters" in options) {
@@ -209,20 +205,10 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
-
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
 
         dialog.response.connect ((id) => {
             switch (id) {
@@ -233,8 +219,26 @@ public class Files.FileChooserPortal : Object {
                         _results["current_filter"] = dialog.filter.to_gvariant ();
                     }
 
-                    _response = 0;
-                    break;
+                   _response = 0;
+
+                    var chosen_file = dialog.get_file ();
+                    if (!chosen_file.query_exists () || chosen_file.get_uri () == supplied_uri) {
+                        break; // No need to check full uri supplied by calling app
+                    }
+
+                    var overwrite_dialog = create_overwrite_dialog (dialog, chosen_file);
+                    overwrite_dialog.response.connect ((response) => {
+                        if (response == Gtk.ResponseType.YES) {
+                            save_file.callback ();
+                        } else {
+                            _results.remove_all ();
+                            _response = 2;
+                        }
+
+                        overwrite_dialog.destroy ();
+                    });
+                    overwrite_dialog.present ();
+                    return; // Continue showing dialog until check completes
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
                     break;
@@ -252,6 +256,8 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        dialog.destroy ();
+
         response = _response;
         results = _results;
     }
@@ -293,20 +299,11 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        //TODO Handle failed registration?
+        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
-
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
 
         dialog.response.connect ((id) => {
             switch (id) {
@@ -343,8 +340,40 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        dialog.destroy ();
+
         response = _response;
         results = _results;
+    }
+
+    private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
+        unowned var primary = _("Replace “%s”?");
+        unowned var secondary = _("Replacing this file will overwrite its current contents");
+        var display_name = file.get_basename ();
+
+        if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
+            try {
+                var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
+                display_name = info.get_symlink_target ();
+            } catch (Error e) {
+                warning ("Could not get info for %s", file.get_uri ());
+                primary = _("Replace the target of “%s”?");
+            }
+
+            secondary = _("Replacing the target file for this link will overwrite its current contents.");
+        }
+
+        var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                primary.printf (display_name), secondary, "dialog-warning", Gtk.ButtonsType.CANCEL
+            ) {
+                modal = true,
+                transient_for = parent
+            };
+
+        var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
+        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+        return replace_dialog;
     }
 
     private static void on_bus_acquired (DBusConnection connection, string name) {

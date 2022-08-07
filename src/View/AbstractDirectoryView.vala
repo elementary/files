@@ -83,7 +83,8 @@ namespace Files {
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
             {"copy", on_common_action_copy},
-            {"paste-into", on_common_action_paste_into},
+            {"paste-into", on_common_action_paste_into}, // Paste into selected folder
+            {"paste", on_common_action_paste}, // Paste into background folder
             {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
@@ -226,6 +227,7 @@ namespace Files {
                         action_set_enabled (selection_actions, "cut", false);
                         action_set_enabled (common_actions, "copy", false);
                         action_set_enabled (common_actions, "paste-into", false);
+                        action_set_enabled (common_actions, "paste", false);
 
                         /* Fix problems when navigating away from directory with large number
                          * of selected files (e.g. OverlayBar critical errors)
@@ -739,36 +741,35 @@ namespace Files {
 
             Gdk.ModifierType state;
             event.get_state (out state);
-            Gdk.ScrollDirection direction;
-            event.get_scroll_direction (out direction);
+
             if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                switch (direction) {
-                    case Gdk.ScrollDirection.UP:
+                Gdk.ScrollDirection direction;
+                double delta_x, delta_y;
+                if (event.get_scroll_direction (out direction)) { // Only true for discrete scrolling
+                    if (direction == Gdk.ScrollDirection.UP) {
                         zoom_in ();
                         return true;
 
-                    case Gdk.ScrollDirection.DOWN:
+                    } else if (direction == Gdk.ScrollDirection.DOWN) {
                         zoom_out ();
                         return true;
+                    }
 
-                    case Gdk.ScrollDirection.SMOOTH:
-                        double delta_x, delta_y;
-                        event.get_scroll_deltas (out delta_x, out delta_y);
-                        /* try to emulate a normal scrolling event by summing deltas.
-                         * step size of 0.5 chosen to match sensitivity */
-                        total_delta_y += delta_y;
+                    return false;
+                } else if (event.get_scroll_deltas (out delta_x, out delta_y)) {
+                    /* try to emulate a normal scrolling event by summing deltas.
+                     * step size of 0.5 chosen to match sensitivity */
+                    total_delta_y += delta_y;
 
-                        if (total_delta_y >= 0.5) {
-                            total_delta_y = 0;
-                            zoom_out ();
-                        } else if (total_delta_y <= -0.5) {
-                            total_delta_y = 0;
-                            zoom_in ();
-                        }
-                        return true;
+                    if (total_delta_y >= 0.5) {
+                        total_delta_y = 0;
+                        zoom_out ();
+                    } else if (total_delta_y <= -0.5) {
+                        total_delta_y = 0;
+                        zoom_in ();
+                    }
 
-                    default:
-                        break;
+                    return true;
                 }
             }
 
@@ -1269,6 +1270,19 @@ namespace Files {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
+        private void on_common_action_paste (GLib.SimpleAction action, GLib.Variant? param) {
+            if (clipboard.can_paste && !(clipboard.files_linked && in_trash)) {
+                var target = slot.location;
+                clipboard.paste_files.begin (target, this as Gtk.Widget, (obj, res) => {
+                    clipboard.paste_files.end (res);
+                    if (target.has_uri_scheme ("trash")) {
+                        /* Pasting files into trash is equivalent to trash or delete action */
+                        after_trash_or_delete ();
+                    }
+                });
+            }
+        }
+
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
             var file = get_files_for_action ().nth_data (0);
 
@@ -1409,6 +1423,7 @@ namespace Files {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = ((Files.Preferences) prefs).show_hidden_files;
+            model.show_hidden_files = show;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
@@ -1999,8 +2014,8 @@ namespace Files {
                 menu.add (open_submenu_item);
             }
 
-            var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
-            paste_menuitem.action_name = "common.paste-into";
+            var paste_menuitem = new Gtk.MenuItem ();
+            paste_menuitem.action_name = "common.paste";
 
             var bookmark_menuitem = new Gtk.MenuItem ();
             bookmark_menuitem.add (new Granite.AccelLabel (
@@ -2126,9 +2141,7 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 } else {
-                    if (slot.directory.file.is_smb_server () && clipboard != null && clipboard.can_paste) {
-                        menu.add (paste_menuitem);
-                    } else if (valid_selection_for_edit ()) {
+                    if (valid_selection_for_edit ()) {
                         var rename_menuitem = new Gtk.MenuItem ();
                         rename_menuitem.add (new Granite.AccelLabel (
                             _("Rename…"),
@@ -2152,14 +2165,30 @@ namespace Files {
                         menu.add (copy_link_menuitem);
 
                         // Do not display the 'Paste into' menuitem if nothing to paste
+                        // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
                         if (common_actions.get_action_enabled ("paste-into") &&
                             clipboard != null && clipboard.can_paste) {
+                            var paste_into_menuitem = new Gtk.MenuItem ();
                             if (clipboard.files_linked) {
-                                paste_menuitem.label = _("Paste Link into Folder");
+                                paste_into_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste Link into Folder"),
+                                    "<Shift><Ctrl>v"
+                                ));
                             } else {
-                                paste_menuitem.label = _("Paste into Folder");
+                                paste_into_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste into Folder"),
+                                    "<Shift><Ctrl>v"
+                                ));
                             }
 
+                            menu.add (paste_into_menuitem);
+                        } else if (common_actions.get_action_enabled ("paste") &&
+                            clipboard != null && clipboard.can_paste) {
+
+                            paste_menuitem.add (new Granite.AccelLabel (
+                                _("Paste"),
+                                "<Ctrl>v"
+                            ));
                             menu.add (paste_menuitem);
                         }
 
@@ -2211,6 +2240,10 @@ namespace Files {
 
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
+                        paste_menuitem.add (new Granite.AccelLabel (
+                            _("Paste into Folder"),
+                            "<Ctrl>v"
+                        ));
                         menu.add (paste_menuitem);
                         if (select_all_menuitem != null) {
                             menu.add (select_all_menuitem);
@@ -2232,7 +2265,15 @@ namespace Files {
                         /* If something is pastable in the clipboard, show the option even if it is not enabled */
                         if (clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
-                                paste_menuitem.label = _("Paste Link");
+                                paste_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste Link into Folder"),
+                                    "<Ctrl>v"
+                                ));
+                            } else {
+                                paste_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste"),
+                                    "<Ctrl>v"
+                                ));
                             }
                         }
 
@@ -2458,6 +2499,7 @@ namespace Files {
             can_open = can_open_file (file);
             can_show_properties = !(in_recent && more_than_one_selected);
 
+            action_set_enabled (common_actions, "paste", !in_recent && is_writable);
             action_set_enabled (common_actions, "paste-into", !renaming & can_paste_into);
             action_set_enabled (common_actions, "open-in", !renaming & only_folders);
             action_set_enabled (selection_actions, "rename", !renaming & is_selected && !more_than_one_selected && can_rename);
@@ -3101,24 +3143,37 @@ namespace Files {
                 case Gdk.Key.v:
                 case Gdk.Key.V:
                     if (only_control_pressed) {
-                        update_selected_files_and_menu ();
-                        if (!in_recent && is_writable) {
-                            if (selected_files.first () != null && selected_files.first ().next != null) {
-                                //Ignore if multiple files selected
-                                Gdk.beep ();
-                                warning ("Cannot paste into a multiple selection");
+                        if (shift_pressed) {  // Paste into selected folder if there is one
+                            update_selected_files_and_menu ();
+                            if (!in_recent && is_writable) {
+                                if (selected_files.first () != null && selected_files.first ().next != null) {
+                                    //Ignore if multiple files selected
+                                    Gdk.beep ();
+                                    warning ("Cannot paste into a multiple selection");
+                                } else {
+                                    //None or one file selected. Paste into selected file else base directory
+                                    action_set_enabled (common_actions, "paste-into", true);
+                                    common_actions.activate_action ("paste-into", null);
+                                }
                             } else {
-                                //None or one file selected. Paste into selected file else base directory
-                                action_set_enabled (common_actions, "paste-into", true);
-                                common_actions.activate_action ("paste-into", null);
+                                PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                                _("You do not have permission to change this location"),
+                                                                window as Gtk.Window);
                             }
-                        } else {
-                            PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
-                                                            _("You do not have permission to change this location"),
-                                                            window as Gtk.Window);
-                        }
 
-                        res = true;
+                            res = true;
+                        } else { // Paste into background folder
+                            if (!in_recent && is_writable) {
+                                action_set_enabled (common_actions, "paste", true);
+                                common_actions.activate_action ("paste", null);
+                            } else {
+                                PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                                _("You do not have permission to change this location"),
+                                                                window as Gtk.Window);
+                            }
+
+                            res = true;
+                        }
                     }
 
                     break;
@@ -3249,10 +3304,6 @@ namespace Files {
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
-            if (renaming) { /* Ignore duplicate editing-started signal*/
-                return;
-            }
-
             var editable_widget = editable as AbstractEditableLabel?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
