@@ -99,7 +99,7 @@ namespace Files.View.Chrome {
         public override void reset () {
             base.reset ();
             clear_completion ();
-            cancel_completion_dir ();
+            current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
         }
 
         protected override bool on_button_release_event (Gdk.EventButton event) {
@@ -166,13 +166,6 @@ namespace Files.View.Chrome {
                 clear_completion ();
                 /* Completion text set by on_file_loaded () */
                 current_completion_dir.init (on_file_loaded);
-            }
-        }
-
-        private void cancel_completion_dir () {
-            if (current_completion_dir != null) {
-                current_completion_dir.cancel ();
-                current_completion_dir = null;
             }
         }
 
@@ -519,7 +512,6 @@ namespace Files.View.Chrome {
             }
             menu.show_all ();
             /* Release the Async directory as soon as possible */
-            dir.cancel ();
             dir = null;
         }
 

@@ -548,13 +548,14 @@ namespace Files.FileUtils {
                                                    string new_name,
                                                    GLib.Cancellable? cancellable = null) throws GLib.Error {
 
+        string? original_name = old_location.get_basename ();
+        if (original_name == new_name) {
+            return null;
+        }
+
         /** TODO Check validity of new name **/
-
-
         GLib.File? new_location = null;
         Files.Directory? dir = Files.Directory.cache_lookup_parent (old_location);
-        string? original_name = old_location.get_basename ();
-
         try {
             new_location = yield old_location.set_display_name_async (new_name, GLib.Priority.DEFAULT, cancellable);
 
