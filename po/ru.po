@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-07-24 14:16+0000\n"
+"PO-Revision-Date: 2022-07-31 14:11+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
@@ -2091,9 +2091,8 @@ msgid "Bookmarks"
 msgstr "Закладки"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
-#, fuzzy
 msgid "Common places plus saved folders and files"
-msgstr "Общедоступные места а также закрепленые папки и файлы"
+msgstr "Стандартные места и сохранённые папки и файлы"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53

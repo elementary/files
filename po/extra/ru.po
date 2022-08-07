@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-02-07 12:10+0000\n"
-"Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
-">\n"
+"PO-Revision-Date: 2022-08-01 19:34+0000\n"
+"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,7 +86,7 @@ msgstr "Исправления:"
 
 #: data/io.elementary.files.appdata.xml.in.in:35
 msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
-msgstr ""
+msgstr "Исправлена ошибка при уменьшении масштаба с помощью Ctrl + ScrollDown"
 
 #: data/io.elementary.files.appdata.xml.in.in:37
 #: data/io.elementary.files.appdata.xml.in.in:60
@@ -129,35 +129,36 @@ msgstr "Обновлены переводы"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 msgid "Renaming with the same name no longer shows an error dialog"
-msgstr ""
+msgstr "Переименование с тем же именем больше не выдаёт ошибку"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
+msgstr "При переименовании Ctrl + A теперь выделяет весь текст в поле"
 
 #: data/io.elementary.files.appdata.xml.in.in:49
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
+"Выбор нескольких объектов, используя Shift + Стрелки, теперь работает "
+"должным образом"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 msgid "The appearance of the cursor now matches the action"
-msgstr ""
+msgstr "Внешний вид курсора теперь совпадает с действием"
 
 #: data/io.elementary.files.appdata.xml.in.in:51
 msgid "The Trash sidebar item can no longer be removed"
-msgstr ""
+msgstr "Корзина больше не может быть удалена из бокового меню"
 
 #: data/io.elementary.files.appdata.xml.in.in:52
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
 msgstr ""
+"Сетевые плагины для боковой панели, такие как NextCloud, теперь добавляются "
+"правильно"
 
 #: data/io.elementary.files.appdata.xml.in.in:53
-#, fuzzy
-#| msgid ""
-#| "Fix truncation of final column in Column View under some circumstances"
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
 msgstr ""
-"Исправление усечения последнего столбца в представлении столбцов при "
+"Исправлено дублирование подпапок, возникавшее в представлении столбцов при "
 "некоторых обстоятельствах"
 
 #: data/io.elementary.files.appdata.xml.in.in:54
@@ -165,23 +166,29 @@ msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
 msgstr ""
+"Закладки теперь подсвечиваются, когда на них перетаскивается файл, который "
+"они могут принять"
 
 #: data/io.elementary.files.appdata.xml.in.in:55
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
+"Исправлено неправильное восстановление папок при некоторых обстоятельствах"
 
 #: data/io.elementary.files.appdata.xml.in.in:56
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
 msgstr ""
+"Показывать окно подтверждения в окне выбора файла перед перезаписью "
+"существующего файла"
 
 #: data/io.elementary.files.appdata.xml.in.in:57
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "Ctrl + V теперь всегда вставляет в папку на фоне"
 
 #: data/io.elementary.files.appdata.xml.in.in:58
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
 msgstr ""
+"Shift + Ctrl + V теперь вставляет в выбранную папку, если таковая имеется"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 #: data/io.elementary.files.appdata.xml.in.in:86
@@ -205,11 +212,11 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Show public share icon in breadcrumbs"
-msgstr ""
+msgstr "Показать значок общего доступа в навигации"
 
 #: data/io.elementary.files.appdata.xml.in.in:76
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
+msgstr "Исправлен сбой при изменении порядка закладок"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Close FileChooser with Esc key"
