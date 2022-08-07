@@ -90,12 +90,12 @@ namespace Files {
                         var info = gof_file.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE);
                         return ContentType.get_icon (info.get_attribute_string (FileAttribute.STANDARD_CONTENT_TYPE));
                     } catch (Error e) {
-                        return new ThemedIcon.with_default_fallbacks ("unknown");
+                        debug ("Unable to get icon for %s", gof_file.uri);
                     }
                 }
             }
 
-            assert_not_reached ();
+            return new ThemedIcon.with_default_fallbacks ("unknown");
         }
 
         public bool uri_known_not_to_exist () {
