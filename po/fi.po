@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-08-11 17:23+0000\n"
+"PO-Revision-Date: 2022-08-11 17:24+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
 "\n"
@@ -55,10 +55,8 @@ msgid "Replace “%s”?"
 msgstr "Korvataanko “%s”?"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Sen korvaaminen ylikirjoittaa sisällön."
+msgstr "Tämän tiedoston korvaaminen ylikirjoittaa sen nykyisen sisällön."
 
 #: filechooser-portal/Main.vala:360
 #, c-format
