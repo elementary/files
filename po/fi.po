@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-01-14 21:26+0000\n"
+"PO-Revision-Date: 2022-08-11 17:23+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
-">\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,10 +50,9 @@ msgid "Save"
 msgstr "Tallenna"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Korvataanko tiedosto \"%s\"?"
+msgstr "Korvataanko “%s”?"
 
 #: filechooser-portal/Main.vala:351
 #, fuzzy
