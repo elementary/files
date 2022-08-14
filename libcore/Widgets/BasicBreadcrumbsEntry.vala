@@ -327,18 +327,21 @@ namespace Files.View.Chrome {
                 return true;
             } else {
                 /* This the delayed propagated event */
-                focus_out_timeout_id = 0;
                 base.focus_out_event (event);
 
                 if (context_menu_showing) {
                     return true;
                 }
 
+                // Reset if window has top level focus or is iconified
                 // Do not lose entry text if another window is focused
-                if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+                var top_level = (Gtk.Window)(get_toplevel ());
+                if (top_level.has_toplevel_focus ||
+                     (top_level.get_window ().get_state () & Gdk.WindowState.ICONIFIED) > 0) {
                     reset ();
                 }
 
+                focus_out_timeout_id = 0;
                 return false;
             }
         }
