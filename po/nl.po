@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-05-22 04:19+0000\n"
+"PO-Revision-Date: 2022-08-14 05:17+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -29,12 +29,12 @@ msgstr "Annuleren"
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr "Bestanden Openen als Alleen Lezen"
+msgstr "Bestanden openen als alleen lezen"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr "Bestand Openen als Alleen Lezen"
+msgstr "Bestand openen als alleen lezen"
 
 #: filechooser-portal/Main.vala:75
 msgid "Select"
@@ -49,28 +49,25 @@ msgid "Save"
 msgstr "Opslaan"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Vervang bestand \"%s\"?"
+msgstr "“%s” vervangen?"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Vervangen zal de inhoud overschrijven."
+msgstr "Door dit bestand te vervangen zal de inhoud worden overschreven"
 
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "Vervang het doel van “%s”?"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "Vervangen zal de inhoud overschrijven."
+msgstr ""
+"Door het doelbestand te vervangen van deze link zal de inhoud ervan worden "
+"overschreven."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -183,7 +180,7 @@ msgstr "Controleer de gebruikersgegevens."
 
 #: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
-msgstr "De server heeft niet binnen de tijdslimiet gereageerd"
+msgstr "De server heeft niet binnen het tijdslimiet gereageerd"
 
 #: libcore/DndHandler.vala:50
 #, c-format
@@ -216,11 +213,11 @@ msgstr "Desktop-bestand verwerken is mislukt: "
 
 #: libcore/File.vala:899
 msgid "Failed to create command from file: "
-msgstr "Kon commando niet maken van het bestand: "
+msgstr "Kon geen commando maken van het bestand: "
 
 #: libcore/File.vala:908
 msgid "Unable to Launch Desktop File: "
-msgstr "Kon Desktop-Bestand Niet Uitvoeren: "
+msgstr "Kon desktop-bestand niet uitvoeren: "
 
 #: libcore/File.vala:1111
 msgid "Empty"
