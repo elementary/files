@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:42+0000\n"
-"PO-Revision-Date: 2022-01-21 01:39+0000\n"
+"POT-Creation-Date: 2022-07-02 19:24+0000\n"
+"PO-Revision-Date: 2022-08-14 05:17+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -19,22 +19,22 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:110
+#: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr "Bestanden Openen als Alleen Lezen"
+msgstr "Bestanden openen als alleen lezen"
 
-#: filechooser-portal/FileChooserDialog.vala:124
-#: filechooser-portal/FileChooserDialog.vala:130
+#: filechooser-portal/FileChooserDialog.vala:126
+#: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr "Bestand Openen als Alleen Lezen"
+msgstr "Bestand openen als alleen lezen"
 
 #: filechooser-portal/Main.vala:75
 msgid "Select"
@@ -44,9 +44,30 @@ msgstr "Geselecteerd"
 msgid "Open"
 msgstr "Openen"
 
-#: filechooser-portal/Main.vala:166 filechooser-portal/Main.vala:275
+#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:281
 msgid "Save"
 msgstr "Opslaan"
+
+#: filechooser-portal/Main.vala:350
+#, c-format
+msgid "Replace “%s”?"
+msgstr "“%s” vervangen?"
+
+#: filechooser-portal/Main.vala:351
+msgid "Replacing this file will overwrite its current contents"
+msgstr "Door dit bestand te vervangen zal de inhoud worden overschreven"
+
+#: filechooser-portal/Main.vala:360
+#, c-format
+msgid "Replace the target of “%s”?"
+msgstr "Vervang het doel van “%s”?"
+
+#: filechooser-portal/Main.vala:363
+msgid ""
+"Replacing the target file for this link will overwrite its current contents."
+msgstr ""
+"Door het doelbestand te vervangen van deze link zal de inhoud ervan worden "
+"overschreven."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -159,7 +180,7 @@ msgstr "Controleer de gebruikersgegevens."
 
 #: libcore/Directory.vala:684
 msgid "Server did not respond within time limit"
-msgstr "De server heeft niet binnen de tijdslimiet gereageerd"
+msgstr "De server heeft niet binnen het tijdslimiet gereageerd"
 
 #: libcore/DndHandler.vala:50
 #, c-format
@@ -192,11 +213,11 @@ msgstr "Desktop-bestand verwerken is mislukt: "
 
 #: libcore/File.vala:899
 msgid "Failed to create command from file: "
-msgstr "Kon commando niet maken van het bestand: "
+msgstr "Kon geen commando maken van het bestand: "
 
 #: libcore/File.vala:908
 msgid "Unable to Launch Desktop File: "
-msgstr "Kon Desktop-Bestand Niet Uitvoeren: "
+msgstr "Kon desktop-bestand niet uitvoeren: "
 
 #: libcore/File.vala:1111
 msgid "Empty"
@@ -1149,7 +1170,7 @@ msgid "_Unmount"
 msgstr "_Ontkoppelen"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -1161,7 +1182,7 @@ msgstr "Media Uitwerpen"
 msgid "Safely Remove"
 msgstr "Veilig Verwijderen"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2008
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2023
 msgid "Add to Bookmarks"
 msgstr "Aan bladwijzers toevoegen"
 
@@ -1396,8 +1417,8 @@ msgstr "Toon programmaversie"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Open 1 of meerdere URI('s), elk in hun eigen tab"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1896
-#: src/View/AbstractDirectoryView.vala:1902
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1911
+#: src/View/AbstractDirectoryView.vala:1917
 msgid "New Window"
 msgstr "Nieuw venster"
 
@@ -1564,7 +1585,7 @@ msgid "Original Location:"
 msgstr "Oorspronkelijke locatie:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Other Application…"
 msgstr "Andere applicaties…"
 
@@ -1647,20 +1668,20 @@ msgstr "Kon URIs niet openen"
 msgid "Could not open files or URIs with this app"
 msgstr "Kon de bestanden of URI's niet openen met deze app"
 
-#: src/View/AbstractDirectoryView.vala:832
-#: src/View/AbstractDirectoryView.vala:1143
+#: src/View/AbstractDirectoryView.vala:833
+#: src/View/AbstractDirectoryView.vala:1144
 msgid "Cannot execute this file"
 msgstr "Kan dit bestand niet openen"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:842
+#: src/View/AbstractDirectoryView.vala:843
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 "“%s” moet eerst uit de Prullenbak worden gehaald voordat dit bestand kan "
 "worden geopend"
 
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:844
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -1668,187 +1689,188 @@ msgstr ""
 "Bestanden in de Prullenbak kunnen niet worden geopend. Om dit bestand te "
 "openen, moet het verplaatst worden naar een andere locatie."
 
-#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:859
 msgid "Cannot open this file"
 msgstr "Kan dit bestand niet openen"
 
-#: src/View/AbstractDirectoryView.vala:871
+#: src/View/AbstractDirectoryView.vala:872
 msgid "Cannot identify file type to open"
 msgstr "Kan het te openen bestandstype niet identificeren"
 
-#: src/View/AbstractDirectoryView.vala:1599
+#: src/View/AbstractDirectoryView.vala:1614
 msgid "Cannot drop this file"
 msgstr "Dit bestand kan niet neergezet worden"
 
-#: src/View/AbstractDirectoryView.vala:1600
+#: src/View/AbstractDirectoryView.vala:1615
 msgid "Invalid file name provided"
 msgstr "Ongeldige bestandsnaam opgegeven"
 
-#: src/View/AbstractDirectoryView.vala:1879
-#: src/View/AbstractDirectoryView.vala:1885 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1894
+#: src/View/AbstractDirectoryView.vala:1900 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "Nieuwe tab"
 
-#: src/View/AbstractDirectoryView.vala:1919
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "Run"
 msgstr "Uitvoeren"
 
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/View/AbstractDirectoryView.vala:1941
 #, c-format
 msgid "Open in %s"
 msgstr "Openen in %s"
 
-#: src/View/AbstractDirectoryView.vala:1995
+#: src/View/AbstractDirectoryView.vala:2010
 msgid "Open in"
 msgstr "Openen in"
 
-#: src/View/AbstractDirectoryView.vala:1997
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "Openen met"
 
-#: src/View/AbstractDirectoryView.vala:2003
-msgid "Paste"
-msgstr "Plakken"
-
-#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Select All"
 msgstr "Alles Selecteren"
 
-#: src/View/AbstractDirectoryView.vala:2037
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Invert Selection"
 msgstr "Selectie Omdraaien"
 
-#: src/View/AbstractDirectoryView.vala:2046
+#: src/View/AbstractDirectoryView.vala:2061
 msgid "Deselect All"
 msgstr "Alles Deselecteren"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2069
 msgid "Cut"
 msgstr "Knippen"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Move to Trash"
 msgstr "Verplaats naar prullenbak"
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Delete Permanently"
 msgstr "Permanent Verwijderen"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2096
 msgid "Restore from Trash"
 msgstr "Herstel uit prullenbak"
 
-#: src/View/AbstractDirectoryView.vala:2104
+#: src/View/AbstractDirectoryView.vala:2119
 msgid "Open Parent Folder"
 msgstr "Open de bovenliggende folder"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2122
 msgid "Remove from History"
 msgstr "Verwijderen uit geschiedenis"
 
-#: src/View/AbstractDirectoryView.vala:2135
+#: src/View/AbstractDirectoryView.vala:2148
 msgid "Rename…"
 msgstr "Hernoemen…"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Copy as Link"
 msgstr "Kopieer als link"
 
-#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2175
+#: src/View/AbstractDirectoryView.vala:2270
 msgid "Paste Link into Folder"
 msgstr "Link plakken in folder"
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2180
+#: src/View/AbstractDirectoryView.vala:2245
 msgid "Paste into Folder"
 msgstr "Plakken in folder"
 
-#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2275
+msgid "Paste"
+msgstr "Plakken"
+
+#: src/View/AbstractDirectoryView.vala:2231
 msgid "Show Hidden Files"
 msgstr "Laat verborgen bestanden zien"
 
-#: src/View/AbstractDirectoryView.vala:2207
+#: src/View/AbstractDirectoryView.vala:2236
 msgid "Show Remote Thumbnails"
 msgstr "Laat externe thumbnails zien"
 
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Hide Thumbnails"
 msgstr "Verberg miniatuurweergaven"
 
-#: src/View/AbstractDirectoryView.vala:2236
-msgid "Paste Link"
-msgstr "Link plakken"
-
-#: src/View/AbstractDirectoryView.vala:2293
+#: src/View/AbstractDirectoryView.vala:2334
 msgid "Name"
 msgstr "Naam"
 
-#: src/View/AbstractDirectoryView.vala:2298 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2339 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Grootte"
 
-#: src/View/AbstractDirectoryView.vala:2303 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2344 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Type"
 
-#: src/View/AbstractDirectoryView.vala:2308
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Date"
 msgstr "Datum"
 
-#: src/View/AbstractDirectoryView.vala:2313
+#: src/View/AbstractDirectoryView.vala:2354
 msgid "Reversed Order"
 msgstr "Omgekeerde volgorde"
 
-#: src/View/AbstractDirectoryView.vala:2316
+#: src/View/AbstractDirectoryView.vala:2357
 msgid "Folders Before Files"
 msgstr "Folders voor bestanden"
 
-#: src/View/AbstractDirectoryView.vala:2328
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Sort by"
 msgstr "Sorteer op"
 
-#: src/View/AbstractDirectoryView.vala:2336
+#: src/View/AbstractDirectoryView.vala:2377
 msgid "Folder"
 msgstr "Folder"
 
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2383
 msgid "Empty File"
 msgstr "Leeg bestand"
 
-#: src/View/AbstractDirectoryView.vala:2393
+#: src/View/AbstractDirectoryView.vala:2434
 msgid "New"
 msgstr "Nieuw"
 
-#: src/View/AbstractDirectoryView.vala:2635
+#: src/View/AbstractDirectoryView.vala:2677
 #, c-format
 msgid "Untitled %s"
 msgstr "%s zonder naam"
 
-#: src/View/AbstractDirectoryView.vala:2953
-#: src/View/AbstractDirectoryView.vala:3133
+#: src/View/AbstractDirectoryView.vala:2995
+#: src/View/AbstractDirectoryView.vala:3188
 msgid "Cannot remove files from here"
 msgstr "Kan de bestanden hier niet verwijderen"
 
-#: src/View/AbstractDirectoryView.vala:2954
-#: src/View/AbstractDirectoryView.vala:3118
-#: src/View/AbstractDirectoryView.vala:3134
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "You do not have permission to change this location"
 msgstr "U heeft geen toestemming om hier wijzigingen aan te brengen"
 
-#: src/View/AbstractDirectoryView.vala:3087
+#: src/View/AbstractDirectoryView.vala:3129
 msgid "Cannot copy files that are in the trash"
 msgstr "Bestanden in de prullenbak kunnen niet gekopieerd worden"
 
-#: src/View/AbstractDirectoryView.vala:3088
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cutting the selection instead"
 msgstr "De geselecteerde objecten worden in plaats daarvan geknipt"
 
-#: src/View/AbstractDirectoryView.vala:3117
+#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot paste files here"
 msgstr "Kan bestanden hier niet plakken"
 
@@ -1983,7 +2005,7 @@ msgstr "Tab Sluiten"
 msgid "Duplicate Tab"
 msgstr "Tab Dupliceren"
 
-#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "Openen in nieuw venster"
 
@@ -2089,7 +2111,7 @@ msgstr "Apparaten en locaties beschikbaar via een netwerk"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
-msgstr "Verbinden met de Server…"
+msgstr "Verbind met server…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
@@ -2100,11 +2122,11 @@ msgstr "Koppelen"
 msgid "Search or Type Path"
 msgstr "Zoek of typ een pad"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
 msgstr "Openen in nieuw tabblad"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:495
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open in Other Application…"
 msgstr "Openen in een andere applicatie…"
 
@@ -2207,6 +2229,9 @@ msgstr "Onder deze folder"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Recent gebruikt"
+
+#~ msgid "Paste Link"
+#~ msgstr "Link plakken"
 
 #~ msgid "_Eject"
 #~ msgstr "Uitw_erpen"
