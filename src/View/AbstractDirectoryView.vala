@@ -275,7 +275,6 @@ namespace Files {
         protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
-        public signal void item_hovered (Files.File? file);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         protected AbstractDirectoryView (View.Slot _slot) {
@@ -3240,7 +3239,6 @@ namespace Files {
                         on_directory = target_file.is_directory;
                     }
 
-                    item_hovered (target_file);
                     hover_path = path;
                 }
             }
@@ -3269,7 +3267,6 @@ namespace Files {
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
-            item_hovered (null); /* Ensure overlay statusbar disappears */
             hover_path = null;
             return false;
         }
@@ -3826,7 +3823,6 @@ namespace Files {
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
-            item_hovered (null);
             return true;
         }
 
@@ -3851,7 +3847,6 @@ namespace Files {
         }
 
         private void cancel_hover () {
-            item_hovered (null);
             hover_path = null;
         }
 
