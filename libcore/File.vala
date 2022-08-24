@@ -1100,21 +1100,25 @@ public class Files.File : GLib.Object {
     }
 
     private string item_count () {
-        try {
-            var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
-            var count = 0;
-            while (f_enum.next_file () != null) {
-                count++;
-            }
+        if (is_mounted && location.is_native ()) {
+            try {
+                var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
+                var count = 0;
+                while (f_enum.next_file () != null) {
+                    count++;
+                }
 
-            if (count == 0) {
-                return _("Empty");
-            } else {
-                return ngettext ("%i item", "%i items", count).printf (count);
+                if (count == 0) {
+                    return _("Empty");
+                } else {
+                    return ngettext ("%i item", "%i items", count).printf (count);
+                }
+            } catch (Error e) {
+                return _("Inaccessible");
             }
-        } catch (Error e) {
-            return _("Inaccessible");
         }
+
+        return _("----");
     }
 
     private void update_formated_type () {

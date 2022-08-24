@@ -417,8 +417,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             (domain_entry.is_valid || !domain_entry.visible) &&
             (password_entry.is_valid || !password_entry.visible);
 
-        info_bar.revealed = !(valid || info_label.label.length < 1);
-
+        info_bar.revealed = !valid || info_label.label.length > 0;
         return valid;
     }
 
