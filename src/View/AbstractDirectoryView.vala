@@ -3843,6 +3843,7 @@ namespace Files {
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
             cancel_timeout (ref set_cursor_timeout_id);
+            cancel_timeout (ref draw_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 

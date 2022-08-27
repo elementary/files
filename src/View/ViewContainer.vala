@@ -280,6 +280,7 @@ namespace Files.View {
             }
 
             if (mode != view_mode) {
+                aslot.close ();
                 view_mode = mode;
                 loading (false);
                 store_selection ();
