@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
-"PO-Revision-Date: 2022-06-07 15:19+0000\n"
+"PO-Revision-Date: 2022-08-24 10:58+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -232,7 +232,7 @@ msgstr[1] "%i elem"
 
 #: libcore/File.vala:1121
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: libcore/File.vala:1128
 #, c-format
