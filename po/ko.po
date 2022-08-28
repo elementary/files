@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-08-06 20:06+0000\n"
+"POT-Creation-Date: 2022-08-20 07:38+0000\n"
+"PO-Revision-Date: 2022-08-07 19:15+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
 "Language: ko\n"
@@ -29,12 +29,12 @@ msgstr "취소"
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "읽기 전용으로 파일 열기"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "읽기 전용으로 파일 열기"
 
 #: filechooser-portal/Main.vala:75
 msgid "Select"
@@ -46,11 +46,10 @@ msgstr "열기"
 
 #: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:281
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 #: filechooser-portal/Main.vala:350
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
 msgstr "\"%s\" 파일을 바꾸시겠습니까?"
 
@@ -61,14 +60,12 @@ msgstr "이 파일을 바꾸면 현재 내용을 덮어씁니다"
 #: filechooser-portal/Main.vala:360
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "\"%s\"의 대상을 바꾸시겠습니까?"
 
 #: filechooser-portal/Main.vala:363
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "바꾸시면 내용을 덮어쓰게 됩니다."
+msgstr "이 링크의 대상 파일을 바꾸면 현재 내용을 덮어씁니다."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -120,20 +117,16 @@ msgid "Type:"
 msgstr "형식:"
 
 #: libcore/ConnectServerDialog.vala:178
-#, fuzzy
-#| msgid "Name of share on server"
 msgid "Name of share on server (Optional)"
-msgstr "서버에 사용할 공유 이름"
+msgstr "서버에 사용할 공유 이름 (선택 사항)"
 
 #: libcore/ConnectServerDialog.vala:181
 msgid "Share:"
 msgstr "공유:"
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
-#| msgid "Path of shared folder on server"
 msgid "Path of shared folder on server (Optional)"
-msgstr "서버에 쓰이는 공유 폴더 경로"
+msgstr "서버에 쓰이는 공유 폴더 경로 (선택 사항)"
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
@@ -183,7 +176,7 @@ msgstr "연결하고 있습니다…"
 msgid "Please verify your user details."
 msgstr "사용자 상세 정보를 확인하십시오."
 
-#: libcore/Directory.vala:684
+#: libcore/Directory.vala:689
 msgid "Server did not respond within time limit"
 msgstr "서버가 제한 시간 안에 응답하지 않았습니다"
 
@@ -204,7 +197,7 @@ msgstr "여기로 복사"
 msgid "Link Here"
 msgstr "여기로 연결"
 
-#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1116
+#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1117
 msgid "Inaccessible"
 msgstr "접근할 수 없음"
 
@@ -224,19 +217,21 @@ msgstr "파일에서 명령 생성 실패: "
 msgid "Unable to Launch Desktop File: "
 msgstr "데스크톱 파일 실행 실패: "
 
-#: libcore/File.vala:1111
-#, fuzzy
-#| msgid "Empty File"
+#: libcore/File.vala:1112
 msgid "Empty"
-msgstr "파일"
+msgstr "비어있음"
 
-#: libcore/File.vala:1113
+#: libcore/File.vala:1114
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
+msgstr[0] "%i 항목"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1121
+msgid "----"
+msgstr ""
+
+#: libcore/File.vala:1128
 #, c-format
 msgid "link to %s"
 msgstr "%s(으)로의 링크"
@@ -380,7 +375,7 @@ msgstr "%s의 원본 폴더가 없습니다"
 
 #: libcore/FileUtils.vala:185
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "다시 생성하시겠습니까?"
 
 #: libcore/FileUtils.vala:190
 msgid "Ignore"
@@ -388,24 +383,22 @@ msgstr "그냥 넘기기"
 
 #: libcore/FileUtils.vala:191
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "이 폴더에 있던 파일이 복원되지 않습니다"
 
 #: libcore/FileUtils.vala:192
-#, fuzzy
-#| msgid "Create"
 msgid "Recreate"
-msgstr "만들기"
+msgstr "다시 만들기"
 
 #: libcore/FileUtils.vala:194
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
-msgstr ""
+msgstr "폴더가 다시 생성되고 원래 있던 선택한 파일이 복원됩니다"
 
 #: libcore/FileUtils.vala:207
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
+msgstr "%s 폴더를 다시 만들 수 없습니다. 이 폴더의 모든 파일을 무시합니다"
 
 #: libcore/FileUtils.vala:579
 #, c-format
@@ -469,7 +462,7 @@ msgstr "사본"
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:1053
 msgid "link"
-msgstr ""
+msgstr "링크"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1055
@@ -479,7 +472,7 @@ msgstr "("
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1057
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -518,7 +511,7 @@ msgstr[0] "정말로 선택한 항목 %'d개를 완전히 지우시겠습니까?
 
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
-msgstr ""
+msgstr "삭제된 항목은 휴지통으로 보내지지 않으며 복구할 수 없습니다."
 
 #: libcore/marlin-file-operations.c:375
 #, c-format
@@ -639,8 +632,6 @@ msgstr ""
 "요."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr "파일을 휴지통에 버릴 수 없습니다. 그냥 지울까요?"
 
@@ -648,7 +639,8 @@ msgstr "파일을 휴지통에 버릴 수 없습니다. 그냥 지울까요?"
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr "이 파일은 휴지통에 버려지지 않습니다. 어쩌면 지워지지도 않을 수 있습니다."
+msgstr ""
+"이 파일은 휴지통에 버려지지 않습니다. 어쩌면 지워지지도 않을 수 있습니다."
 
 #: libcore/marlin-file-operations.c:849
 msgid ""
@@ -723,7 +715,9 @@ msgstr "휴지통에 파일을 버리는 중 오류."
 msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%s\" 폴더 안의 파일을 처리할 수 없습니다."
+msgstr ""
+"읽을 수 있는 접근 권한이 없기 때문에 \"%s\" 폴더 안의 파일을 처리할 수 없습니"
+"다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -877,7 +871,9 @@ msgstr[0] "%s / %s — %s 남음 (%s/초)"
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr "대상 안에 파일이나 폴더를 만들 수 있는 접근 권한이 없기 때문에 \"%s\" 폴더를 복사할 수 없습니다."
+msgstr ""
+"대상 안에 파일이나 폴더를 만들 수 있는 접근 권한이 없기 때문에 \"%s\" 폴더를 "
+"복사할 수 없습니다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -893,7 +889,9 @@ msgstr "\"%s\" 폴더를 만드는 데 오류가 생겼습니다."
 msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%s\" 폴더 내의 파일을 복사할 수 없습니다."
+msgstr ""
+"읽을 수 있는 접근 권한이 없기 때문에 \"%s\" 폴더 내의 파일을 복사할 수 없습니"
+"다."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1046,10 +1044,8 @@ msgid "Setting permissions"
 msgstr "권한을 설정하는 중"
 
 #: libcore/marlin-file-operations.c:4409
-#, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
-msgstr "파일을 휴지통으로 보내는 중"
+msgstr "처리할 파일 없음"
 
 #: libcore/marlin-file-operations.c:4417
 msgid "Cannot copy into trash."
@@ -1110,21 +1106,19 @@ msgid "_Unmount"
 msgstr "마운트 해제(_U)"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2029
 msgid "Properties"
 msgstr "속성"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "미디어 꺼내기"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "제거"
+msgstr "안전하게 제거"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2023
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2022
 msgid "Add to Bookmarks"
 msgstr "책갈피에 추가"
 
@@ -1154,10 +1148,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libcore/Resources.vala:62
-#, fuzzy
-#| msgid "AFP"
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libcore/Resources.vala:63
 msgid "DAV"
@@ -1197,7 +1189,7 @@ msgstr "MTP"
 
 #: libcore/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:44
 #: src/View/Sidebar/DeviceListBox.vala:140
@@ -1209,10 +1201,8 @@ msgid "_Cancel"
 msgstr "취소(_C)"
 
 #: libcore/StockDialogs.vala:21
-#, fuzzy
-#| msgid "_Delete"
 msgid "Delete"
-msgstr "지우기(_D)"
+msgstr "지우기"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1288,10 +1278,9 @@ msgid "Emptying Trash"
 msgstr "휴지통을 비우는 중"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "%s 장치를 마운트할 수 없습니다"
+msgstr "'%s' 장치를 마운트 해제할 수 없습니다"
 
 #: libcore/FileOperations/MountUtils.vala:52
 #, c-format
@@ -1299,8 +1288,7 @@ msgid "Unable to eject '%s'"
 msgstr "'%s' 꺼낼 수 없습니다"
 
 #: libcore/FileOperations/MountUtils.vala:104
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unable to mount '%s'"
 msgstr "%s 장치를 마운트할 수 없습니다"
 
@@ -1352,7 +1340,7 @@ msgstr "선택 항목 지우기"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Email로 보내기"
 
 #: src/Application.vala:154
 msgid "Show the version of the program"
@@ -1362,8 +1350,8 @@ msgstr "프로그램의 버전을 보입니다"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "각 탭에서 URI를 엽니다"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1911
-#: src/View/AbstractDirectoryView.vala:1917
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1910
+#: src/View/AbstractDirectoryView.vala:1916
 msgid "New Window"
 msgstr "새 창"
 
@@ -1460,7 +1448,7 @@ msgstr "기본값으로 설정"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "파일 소유권 및 권한을 확인할 수 없습니다"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1526,7 +1514,7 @@ msgid "Original Location:"
 msgstr "원본 위치:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:1997
 msgid "Other Application…"
 msgstr "기타 애플리케이션…"
 
@@ -1559,7 +1547,7 @@ msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "파일 %u개"
 
-#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:223
+#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1605,207 +1593,207 @@ msgstr "URI를 열 수 없습니다"
 msgid "Could not open files or URIs with this app"
 msgstr "이 앱으로는 파일이나 URI를 열 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:833
-#: src/View/AbstractDirectoryView.vala:1144
+#: src/View/AbstractDirectoryView.vala:832
+#: src/View/AbstractDirectoryView.vala:1143
 msgid "Cannot execute this file"
 msgstr "이 파일을 실행할 수 없습니다"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:842
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "“%s”을 열기 전에 휴지통에서 꺼내야 합니다"
 
-#: src/View/AbstractDirectoryView.vala:844
+#: src/View/AbstractDirectoryView.vala:843
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
-msgstr "휴지통에 있는 파일을 열 수 없습니다. 이 파일을 열려면 다른 곳으로 이동해야합니다."
+msgstr ""
+"휴지통에 있는 파일을 열 수 없습니다. 이 파일을 열려면 다른 곳으로 이동해야합"
+"니다."
 
-#: src/View/AbstractDirectoryView.vala:859
+#: src/View/AbstractDirectoryView.vala:858
 msgid "Cannot open this file"
 msgstr "이 파일을 열 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:872
+#: src/View/AbstractDirectoryView.vala:871
 msgid "Cannot identify file type to open"
 msgstr "열려는 파일의 형식을 알 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:1614
+#: src/View/AbstractDirectoryView.vala:1613
 msgid "Cannot drop this file"
 msgstr "이 파일을 놓을 수 없음"
 
-#: src/View/AbstractDirectoryView.vala:1615
+#: src/View/AbstractDirectoryView.vala:1614
 msgid "Invalid file name provided"
 msgstr "잘못된 파일 이름이 사용됨"
 
-#: src/View/AbstractDirectoryView.vala:1894
-#: src/View/AbstractDirectoryView.vala:1900 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1893
+#: src/View/AbstractDirectoryView.vala:1899 src/View/Window.vala:181
 msgid "New Tab"
 msgstr "새 탭"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1933
 msgid "Run"
 msgstr "실행"
 
-#: src/View/AbstractDirectoryView.vala:1941
+#: src/View/AbstractDirectoryView.vala:1940
 #, c-format
 msgid "Open in %s"
 msgstr "%s에서 열기"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Open in"
 msgstr "열기"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2011
 #: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "다른 프로그램으로 열기"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2042
 msgid "Select All"
-msgstr ""
+msgstr "모두 선택하기"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2051
 msgid "Invert Selection"
-msgstr ""
+msgstr "선택 반전"
 
-#: src/View/AbstractDirectoryView.vala:2061
-#, fuzzy
-#| msgid "Restore All"
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Deselect All"
-msgstr "모두 복구 시키기"
+msgstr "모두 선택 해제"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2068
 msgid "Cut"
 msgstr "잘라내기"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2076
 msgid "Copy"
 msgstr "복사"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2083
 msgid "Move to Trash"
 msgstr "휴지통으로"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Delete Permanently"
 msgstr "완전히 지우기"
 
-#: src/View/AbstractDirectoryView.vala:2096
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Restore from Trash"
 msgstr "휴지통에서 복구 시키기"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2118
 msgid "Open Parent Folder"
 msgstr "상위 폴더 열기"
 
-#: src/View/AbstractDirectoryView.vala:2122
+#: src/View/AbstractDirectoryView.vala:2121
 msgid "Remove from History"
 msgstr "기록에서 지우기"
 
-#: src/View/AbstractDirectoryView.vala:2148
+#: src/View/AbstractDirectoryView.vala:2147
 msgid "Rename…"
 msgstr "이름 바꾸기…"
 
-#: src/View/AbstractDirectoryView.vala:2155
+#: src/View/AbstractDirectoryView.vala:2154
 msgid "Copy as Link"
 msgstr "링크 복사하기"
 
-#: src/View/AbstractDirectoryView.vala:2175
-#: src/View/AbstractDirectoryView.vala:2270
+#: src/View/AbstractDirectoryView.vala:2174
+#: src/View/AbstractDirectoryView.vala:2269
 msgid "Paste Link into Folder"
 msgstr "링크를 폴더에 복사하기"
 
-#: src/View/AbstractDirectoryView.vala:2180
-#: src/View/AbstractDirectoryView.vala:2245
+#: src/View/AbstractDirectoryView.vala:2179
+#: src/View/AbstractDirectoryView.vala:2244
 msgid "Paste into Folder"
 msgstr "폴더로 복사하기"
 
-#: src/View/AbstractDirectoryView.vala:2190
-#: src/View/AbstractDirectoryView.vala:2275
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "붙여 넣기"
 
-#: src/View/AbstractDirectoryView.vala:2231
+#: src/View/AbstractDirectoryView.vala:2230
 msgid "Show Hidden Files"
 msgstr "숨긴 파일 보이기"
 
-#: src/View/AbstractDirectoryView.vala:2236
+#: src/View/AbstractDirectoryView.vala:2235
 msgid "Show Remote Thumbnails"
 msgstr "원격 썸네일 보이기"
 
-#: src/View/AbstractDirectoryView.vala:2239
+#: src/View/AbstractDirectoryView.vala:2238
 msgid "Hide Thumbnails"
 msgstr "썸네일 감추기"
 
-#: src/View/AbstractDirectoryView.vala:2334
+#: src/View/AbstractDirectoryView.vala:2333
 msgid "Name"
 msgstr "이름"
 
-#: src/View/AbstractDirectoryView.vala:2339 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2338 src/View/ListView.vala:27
 msgid "Size"
 msgstr "크기"
 
-#: src/View/AbstractDirectoryView.vala:2344 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2343 src/View/ListView.vala:28
 msgid "Type"
 msgstr "종류"
 
-#: src/View/AbstractDirectoryView.vala:2349
+#: src/View/AbstractDirectoryView.vala:2348
 msgid "Date"
 msgstr "날짜"
 
-#: src/View/AbstractDirectoryView.vala:2354
+#: src/View/AbstractDirectoryView.vala:2353
 msgid "Reversed Order"
 msgstr "거꾸로"
 
-#: src/View/AbstractDirectoryView.vala:2357
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Folders Before Files"
 msgstr "파일 이전 폴더"
 
-#: src/View/AbstractDirectoryView.vala:2369
+#: src/View/AbstractDirectoryView.vala:2368
 msgid "Sort by"
 msgstr "정렬 기준"
 
-#: src/View/AbstractDirectoryView.vala:2377
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Folder"
 msgstr "폴더"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2382
 msgid "Empty File"
 msgstr "파일"
 
-#: src/View/AbstractDirectoryView.vala:2434
+#: src/View/AbstractDirectoryView.vala:2433
 msgid "New"
 msgstr "새로 만들기"
 
-#: src/View/AbstractDirectoryView.vala:2677
+#: src/View/AbstractDirectoryView.vala:2676
 #, c-format
 msgid "Untitled %s"
 msgstr "이름 없는 %s"
 
-#: src/View/AbstractDirectoryView.vala:2995
-#: src/View/AbstractDirectoryView.vala:3188
+#: src/View/AbstractDirectoryView.vala:2994
+#: src/View/AbstractDirectoryView.vala:3187
 msgid "Cannot remove files from here"
 msgstr "이곳의 파일을 제거할 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:2996
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3172
-#: src/View/AbstractDirectoryView.vala:3189
+#: src/View/AbstractDirectoryView.vala:2995
+#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3171
+#: src/View/AbstractDirectoryView.vala:3188
 msgid "You do not have permission to change this location"
 msgstr "이 위치를 바꿀 수 있는 권한이 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:3129
+#: src/View/AbstractDirectoryView.vala:3128
 msgid "Cannot copy files that are in the trash"
 msgstr "휴지통에 있는 파일은 복사할 수 없습니다"
 
-#: src/View/AbstractDirectoryView.vala:3130
+#: src/View/AbstractDirectoryView.vala:3129
 msgid "Cutting the selection instead"
 msgstr "대신 선택한 항목을 잘라냅니다"
 
-#: src/View/AbstractDirectoryView.vala:3160
-#: src/View/AbstractDirectoryView.vala:3171
+#: src/View/AbstractDirectoryView.vala:3159
+#: src/View/AbstractDirectoryView.vala:3170
 msgid "Cannot paste files here"
 msgstr "이곳에 파일을 붙여 넣을 수 없습니다"
 
@@ -1929,18 +1917,15 @@ msgstr "선택하신 파일이 더이상 존재하지 않습니다."
 
 #: src/View/Window.vala:182
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "탭 닫기 실행 취소"
 
 #: src/View/Window.vala:492
-#, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
-msgstr "닫기"
+msgstr "탭 닫기"
 
 #: src/View/Window.vala:493
-#, fuzzy
 msgid "Duplicate Tab"
-msgstr "\"%B\"을(를) 복제하는 중"
+msgstr "탭 복제"
 
 #: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
@@ -1952,22 +1937,20 @@ msgstr "(관리자 권한으로)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Delete '%s'"
+#, c-format
 msgid "Eject '%s'"
-msgstr "'%s' 지우기"
+msgstr "'%s' 꺼내기"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount %s"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "%s 장치를 마운트할 수 없습니다"
+msgstr "%s 마운트 해제"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s 여유 있음"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:308
 #, c-format
@@ -1984,7 +1967,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "마운트 안 됨"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2005,16 +1988,17 @@ msgstr "로컬 파일 시스템 루트 보기"
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s에 접근할 수 있는 데이터가 없습니다."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"이 드라이브를 사용하려면 다시 연결하거나 미디어를 삽입하거나 포맷해야 합니다."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "포맷되지 않았거나 미디어가 없음"
 
 #: src/View/Sidebar/NetworkListBox.vala:121
 msgid "Entire Network"
@@ -2040,23 +2024,19 @@ msgstr "저장소"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "내부 및 연결된 저장 장치"
 
 #: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "네트워크를 통해 사용할 수 있는 장치 및 장소"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
-#, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
-msgstr "서버에 연결하기…"
+msgstr "서버 연결…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "마운트 해제(_U)"
+msgstr "바인드 마운트"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:200
@@ -2087,58 +2067,54 @@ msgstr "이 폴더를 다시 볼러 옴"
 msgid "Searching…"
 msgstr "검색하고 있습니다…"
 
-#: src/View/Widgets/OverlayBar.vala:214
+#: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
 msgstr "%u 폴더들"
 
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
-#, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
+#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " 와 %u 다른 개체 (%s)가 선택됨"
 
-#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
+#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
 msgstr " 선택됨"
 
-#: src/View/Widgets/OverlayBar.vala:233
+#: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u개 항목이 선택되었습니다. (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:277
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
+#: src/View/Widgets/OverlayBar.vala:226
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u 보조-폴더, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:283
-#, fuzzy, c-format
-#| msgid "%u file, "
+#: src/View/Widgets/OverlayBar.vala:232
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] "%u 파일, "
+msgstr[0] "%u개 파일, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:293
+#: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
 msgstr "약 %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:296
+#: src/View/Widgets/OverlayBar.vala:245
 msgid "unknown size"
 msgstr "크기 모름"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:300
-#, fuzzy, c-format
-#| msgid "%u file not readable"
+#: src/View/Widgets/OverlayBar.vala:249
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u개 파일을 읽을 수 없습니다"
@@ -2157,7 +2133,7 @@ msgstr "실행"
 
 #: src/View/Widgets/SearchResults.vala:89
 msgid "More Results …"
-msgstr ""
+msgstr "더 많은 결과…"
 
 #: src/View/Widgets/SearchResults.vala:281
 msgid "In This Folder"
@@ -2168,8 +2144,6 @@ msgid "Below This Folder"
 msgstr "이 폴더에 있음"
 
 #: src/View/Widgets/SearchResults.vala:294
-#, fuzzy
-#| msgid "Recently used"
 msgid "Recently Used"
 msgstr "최근 사용 기록"
 
