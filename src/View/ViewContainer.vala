@@ -25,17 +25,6 @@
 
 namespace Files.View {
     public class ViewContainer : Gtk.Bin {
-        private static int container_id;
-
-        protected static int get_next_container_id () {
-            return ++container_id;
-        }
-
-        static construct {
-            container_id = -1;
-        }
-
-        public int id {get; construct;}
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private View.Window? _window = null;
@@ -113,11 +102,6 @@ namespace Files.View {
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
         public signal void active ();
-        /* path-changed signal no longer used */
-
-        construct {
-            id = ViewContainer.get_next_container_id ();
-        }
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (View.Window win) {
@@ -189,6 +173,8 @@ namespace Files.View {
             }
         }
 
+        // Either the path or a special name or fallback if invalid
+        // Window will use as little as possible to distinguish tabs
         private string label = "";
         public string tab_name {
             private set {
@@ -369,7 +355,7 @@ namespace Files.View {
                 } else if (protocol == "" && path == Environment.get_home_dir ()) {
                     tab_name = _("Home");
                 } else {
-                    tab_name = Path.get_basename (path);
+                    tab_name = path;
                 }
             }
 
