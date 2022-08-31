@@ -34,7 +34,7 @@ namespace Files.View.Chrome {
 
             /* Grid View item */
             var id = (uint32)ViewMode.ICON;
-            var grid_view_btn = new Gtk.RadioButton (null) {
+            var grid_view_btn = new Gtk.ToggleButton (null) {
                 image = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON),
                 tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
             };
@@ -44,7 +44,7 @@ namespace Files.View.Chrome {
 
             /* List View */
             id = (uint32)ViewMode.LIST;
-            var list_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
+            var list_view_btn = new Gtk.ToggleButton.from_widget (grid_view_btn) {
                 image = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON),
                 tooltip_markup = get_tooltip_for_id (id, _("View as List"))
             };
@@ -55,7 +55,7 @@ namespace Files.View.Chrome {
 
             /* Item 2 */
             id = (uint32)ViewMode.MILLER_COLUMNS;
-            var column_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
+            var column_view_btn = new Gtk.ToggleButton.from_widget (grid_view_btn) {
                 image = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON),
                 tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
             };
@@ -87,7 +87,7 @@ namespace Files.View.Chrome {
         public void set_mode (uint32 mode) {
             this.@foreach ((child) => {
                 if (child.get_data<uint32> ("id") == mode) {
-                    ((Gtk.RadioButton)child).active = true;
+                    ((Gtk.ToggleButton)child).active = true;
                 }
             });
         }

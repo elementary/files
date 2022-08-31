@@ -17,12 +17,12 @@
  */
 
 public class Files.FileOperations.CommonJob {
-    protected unowned Gtk.Window? parent_window;
+    protected unowned Gtk.Root? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
     protected Files.UndoActionData? undo_redo_data;
-    protected CommonJob (Gtk.Window? parent_window = null) {
+    protected CommonJob (Gtk.Root? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();

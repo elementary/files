@@ -25,20 +25,20 @@ public class Files.IconInfo : GLib.Object {
         this.pixbuf = pixbuf;
     }
 
-    public Files.IconInfo.for_icon_info (Gtk.IconInfo icon_info) {
-        try {
-            pixbuf = icon_info.load_icon ();
-        } catch (Error e) {
-            critical (e.message);
-        }
+    // public Files.IconInfo.for_icon_info (Gtk.IconInfo icon_info) {
+    //     try {
+    //         pixbuf = icon_info.load_icon ();
+    //     } catch (Error e) {
+    //         critical (e.message);
+    //     }
 
-        var filename = icon_info.get_filename ();
-        if (filename != null) {
-            filename = GLib.Path.get_basename (filename);
-            var last = filename.last_index_of_char ('.');
-            icon_name = filename.substring (0, last);
-        }
-    }
+    //     var filename = icon_info.get_filename ();
+    //     if (filename != null) {
+    //         filename = GLib.Path.get_basename (filename);
+    //         var last = filename.last_index_of_char ('.');
+    //         icon_name = filename.substring (0, last);
+    //     }
+    // }
 
     construct {
         last_use_time = GLib.get_monotonic_time ();
@@ -94,32 +94,32 @@ public class Files.IconInfo : GLib.Object {
                 return icon_info;
             }
 
-            var theme = get_icon_theme ();
-            Gtk.IconInfo? gtkicon_info = null;
-            // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
-            foreach (unowned string name in ((GLib.ThemedIcon) icon).get_names ()) {
-                gtkicon_info = theme.lookup_icon_for_scale (name, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
-                if (gtkicon_info != null)
-                    break;
-            }
+            // var theme = get_icon_theme ();
+            // Gtk.IconInfo? gtkicon_info = null;
+            // // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
+            // foreach (unowned string name in ((GLib.ThemedIcon) icon).get_names ()) {
+            //     gtkicon_info = theme.lookup_icon_for_scale (name, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+            //     if (gtkicon_info != null)
+            //         break;
+            // }
 
-            if (gtkicon_info != null) {
-                icon_info = new Files.IconInfo.for_icon_info (gtkicon_info);
-                themed_icon_cache.insert ((owned) themed_key, icon_info);
-            }
+            // if (gtkicon_info != null) {
+            //     icon_info = new Files.IconInfo.for_icon_info (gtkicon_info);
+            //     themed_icon_cache.insert ((owned) themed_key, icon_info);
+            // }
 
             return icon_info;
         } else {
-            var theme = get_icon_theme ();
-            try {
-                var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
-                                                                     Gtk.IconLookupFlags.GENERIC_FALLBACK);
-                var pixbuf = gtk_icon_info.load_icon ();
-                return new Files.IconInfo.for_pixbuf (pixbuf);
-            } catch (Error e) {
-                critical (e.message);
+            // var theme = get_icon_theme ();
+            // try {
+            //     var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
+            //                                                          Gtk.IconLookupFlags.GENERIC_FALLBACK);
+            //     var pixbuf = gtk_icon_info.load_icon ();
+            //     return new Files.IconInfo.for_pixbuf (pixbuf);
+            // } catch (Error e) {
+            //     critical (e.message);
                 return new Files.IconInfo.for_pixbuf (null);
-            }
+            // }
         }
     }
 
@@ -157,11 +157,12 @@ public class Files.IconInfo : GLib.Object {
      * the "hicolor" theme.
      */
     public static Gtk.IconTheme get_icon_theme () {
-        if (Gdk.Screen.get_default () != null) {
-            return Gtk.IconTheme.get_default ();
+        var display = Gdk.Display.get_default ();
+        if (display != null) {
+            return Gtk.IconTheme.get_for_display (display);
         } else {
             var theme = new Gtk.IconTheme ();
-            theme.set_custom_theme ("hicolor");
+            theme.set_theme_name ("hicolor");
             return theme;
         }
     }

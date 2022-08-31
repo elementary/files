@@ -179,7 +179,7 @@ namespace Files.FileUtils {
         if (file.query_exists ()) {
             return true;
         }
-
+        var exists = false;
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
             _("The original folder %s no longer exists").printf (file.get_path ()),
             _("Would you like to recreate it?"),
@@ -194,33 +194,37 @@ namespace Files.FileUtils {
              _ ("The folder will be recreated and selected files that were originally there will be restored to it");
 
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
+        dialog.modal = true;
+        dialog.response.connect ((response_id) => {
+            dialog.destroy ();
+            switch (response_id) {
+                case Gtk.ResponseType.ACCEPT:
+                    try {
+                        file.make_directory_with_parents ();
+                        exists = true;
+                    } catch (Error e) {
+                        var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                            _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                            e.message,
+                            "dialog-error",
+                            Gtk.ButtonsType.CLOSE
+                        );
 
-        var response = dialog.run ();
-        dialog.destroy ();
-        switch (response) {
-            case Gtk.ResponseType.ACCEPT:
-                try {
-                    file.make_directory_with_parents ();
-                    return true;
-                } catch (Error e) {
-                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
-                        e.message,
-                        "dialog-error",
-                        Gtk.ButtonsType.CLOSE
-                    );
+                        error_dialog.response.connect (() => {
+                            error_dialog.destroy ();
+                        });
+                        error_dialog.present ();
+                    }
 
-                    error_dialog.run ();
-                    error_dialog.destroy ();
-                }
+                    break;
 
-                break;
+                default:
+                    break;
+            }
+        });
 
-            default:
-                break;
-        }
-
-        return false;
+        dialog.show ();
+        return exists;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
@@ -757,15 +761,17 @@ namespace Files.FileUtils {
                  uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
     }
 
-    public Gdk.DragAction file_accepts_drop (Files.File dest,
+
+    public Gdk.DragAction? file_accepts_drop (Files.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
-                                             Gdk.DragContext context,
-                                             out Gdk.DragAction suggested_action_return) {
+                                             Gdk.Drag context,
+                                             // Gdk.DragContext context,
+                                             out Gdk.DragAction? suggested_action_return) {
 
         var actions = context.get_actions ();
-        var suggested_action = context.get_suggested_action ();
+        var suggested_action = context.get_selected_action ();
         var target_location = dest.get_target_location ();
-        suggested_action_return = Gdk.DragAction.PRIVATE;
+        suggested_action_return = null;
 
         if (drop_file_list == null || drop_file_list.data == null) {
             return Gdk.DragAction.DEFAULT;
@@ -773,7 +779,7 @@ namespace Files.FileUtils {
 
         if (dest.is_folder ()) {
             if (!dest.is_writable ()) {
-                actions = Gdk.DragAction.DEFAULT;
+                actions = null;
             } else {
                 /* Modify actions and suggested_action according to source files */
                 actions &= valid_actions_for_file_list (target_location,
@@ -783,14 +789,13 @@ namespace Files.FileUtils {
         } else if (dest.is_executable ()) {
             actions |= (Gdk.DragAction.COPY |
                        Gdk.DragAction.MOVE |
-                       Gdk.DragAction.LINK |
-                       Gdk.DragAction.PRIVATE);
+                       Gdk.DragAction.LINK);
         } else {
-            actions = Gdk.DragAction.DEFAULT;
+            actions = null;
         }
 
-        if (actions == Gdk.DragAction.DEFAULT) { // No point asking if no other valid actions
-            return Gdk.DragAction.DEFAULT;
+        if (actions == null) { // No point asking if no other valid actions
+            return null;
         } else if (location_is_in_trash (target_location)) { // cannot copy or link to trash
             actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
@@ -811,12 +816,11 @@ namespace Files.FileUtils {
     }
 
     private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
-    private Gdk.DragAction valid_actions_for_file_list (GLib.File target_location,
+    private Gdk.DragAction? valid_actions_for_file_list (GLib.File target_location,
                                                         GLib.List<GLib.File> drop_file_list,
                                                         ref Gdk.DragAction suggested_action) {
 
-        var valid_actions = Gdk.DragAction.DEFAULT |
-                            Gdk.DragAction.COPY |
+        var valid_actions = Gdk.DragAction.COPY |
                             Gdk.DragAction.MOVE |
                             Gdk.DragAction.LINK;
 
@@ -834,7 +838,7 @@ namespace Files.FileUtils {
                 from_trash = true;
 
                 if (location_is_in_trash (target_location)) {
-                    valid_actions = Gdk.DragAction.DEFAULT; // No DnD within trash
+                    valid_actions = null; // No DnD within trash
                 }
             }
 
@@ -850,7 +854,7 @@ namespace Files.FileUtils {
             }
 
             if (++count > MAX_FILES_CHECKED ||
-                valid_actions == Gdk.DragAction.DEFAULT) {
+                valid_actions == null) {
 
                 break;
             }
@@ -867,7 +871,7 @@ namespace Files.FileUtils {
             suggested_action = Gdk.DragAction.MOVE;
         }
 
-        if (valid_actions != Gdk.DragAction.DEFAULT) {
+        if (valid_actions != null) {
             valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
         }
 

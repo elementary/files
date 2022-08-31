@@ -18,12 +18,12 @@
 ***/
 
 public class PopupMenuBuilder : Object {
-    public delegate void MenuitemCallback (Gtk.MenuItem menu_item);
-    Gtk.MenuItem[] menu_items = {};
+    public delegate void MenuitemCallback (MenuItem menu_item);
+    MenuItem[] menu_items = {};
     public uint n_items { get { return menu_items.length; }}
 
-    public Gtk.Menu build () {
-        var popupmenu = new Gtk.Menu ();
+    public Menu build () {
+        var popupmenu = new Menu ();
         foreach (var menu_item in menu_items) {
             popupmenu.append (menu_item);
         }
@@ -31,11 +31,11 @@ public class PopupMenuBuilder : Object {
         return popupmenu;
     }
 
-    public Gtk.Menu build_from_model (MenuModel model,
+    public Menu build_from_model (MenuModel model,
                                       string? action_group_namespace = null,
                                       ActionGroup? action_group = null) {
 
-        var menu = new Gtk.Menu.from_model (model);
+        var menu = new Menu.from_model (model);
         menu.insert_action_group (action_group_namespace, action_group);
 
         for (int i = 0; i < menu_items.length; i++) {
@@ -123,7 +123,7 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.SeparatorMenuItem ());
     }
 
-    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? cb = null) {
+    public PopupMenuBuilder add_item (MenuItem menu_item, MenuitemCallback? cb = null) {
         if (cb != null) {
             menu_item.activate.connect ((menu_item) => {
                 cb (menu_item);

@@ -21,7 +21,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarListInterface : Gtk.Container {
+public interface Sidebar.SidebarListInterface : Gtk.Box {
     public abstract Files.SidebarInterface sidebar { get; construct; }
 
     public abstract void select_item (SidebarItemInterface? item);

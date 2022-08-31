@@ -222,7 +222,7 @@ namespace Files {
                     if (uris != null && confirm_delete) {
                         try {
                             yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                                      uris, widget.get_root (), false, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -275,7 +275,7 @@ namespace Files {
                     if (uris != null && confirm_delete) {
                         try {
                             yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                                      uris, widget.get_root (), false, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -309,7 +309,7 @@ namespace Files {
                     } else {
                         PF.Dialogs.show_error_dialog (_("Original location could not be determined"),
                                                       _("Open trash folder and restore manually"),
-                                                      widget.get_toplevel () as Gtk.Window);
+                                                      widget.get_root ());
                     }
 
                     undo_redo_done_transfer (action);
@@ -320,7 +320,7 @@ namespace Files {
                     if (uris != null ) {
                         try {
                             yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
+                                      uris, widget.get_root (), true, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -424,7 +424,7 @@ namespace Files {
                     var p_uri = GLib.File.new_for_uri (action.target_uri).get_parent ().get_uri ();
                     var new_name = GLib.Path.get_basename (Uri.unescape_string (action.target_uri));
                     try {
-                        yield Files.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, p_uri,
+                        yield Files.FileOperations.new_file (widget.get_root (), p_uri,
                                                               new_name, action.template, 0, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
@@ -437,7 +437,7 @@ namespace Files {
                     var fparent = GLib.File.new_for_uri (action.target_uri).get_parent ();
                     try {
                         yield Files.FileOperations.new_folder (
-                                  widget.get_toplevel () as Gtk.Window, fparent, cancellable
+                                  widget.get_root (), fparent, cancellable
                               );
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
@@ -454,7 +454,7 @@ namespace Files {
 
                         try {
                             yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
+                                      uris, widget.get_root (), true, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);

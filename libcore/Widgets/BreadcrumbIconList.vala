@@ -52,31 +52,32 @@ namespace Files.View.Chrome {
             text_displayed = mount.get_name ();
         }
 
-        public Gdk.Pixbuf? render_icon (Gtk.StyleContext context) {
-            var theme = Gtk.IconTheme.get_default ();
-            Gdk.Pixbuf? icon = null;
-            Gtk.IconInfo? gtk_icon_info = null;
-            var scale = context.get_scale ();
+        // public Gdk.Pixbuf? render_icon (Gtk.StyleContext context) {
+        //     var theme = Gtk.IconTheme.get_default ();
+        //     Gdk.Pixbuf? icon = null;
+        //     Gtk.IconPaintable gtk_icon_info;
+        //     var scale = context.get_scale ();
 
-            if (gicon == null) {
-                gicon = new ThemedIcon.with_default_fallbacks ("image-missing");
-            }
+        //     if (gicon == null) {
+        //         gicon = new ThemedIcon.with_default_fallbacks ("image-missing");
+        //     }
 
-            var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
-            gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
+        //     gtk_icon_info = theme.lookup_by_gicon (
+        //         gicon, 16, scale, TextDirection.NONE, Gtk.IconLookupFlags.FORCE_SYMBOLIC
+        //     );
 
-            if (gtk_icon_info != null) {
-                try {
-                    icon = gtk_icon_info.load_symbolic_for_context (context);
-                    icon_width = icon.get_width () / scale;
-                    icon_height = icon.get_height () / scale;
-                } catch (Error e) {
-                    warning ("Filed to load icon for %s: %s", text_displayed, e.message);
-                }
-            }
+        //     if (gtk_icon_info != null) {
+        //         try {
+        //             icon = gtk_icon_info.load_symbolic_for_context (context);
+        //             icon_width = icon.get_width () / scale;
+        //             icon_height = icon.get_height () / scale;
+        //         } catch (Error e) {
+        //             warning ("Filed to load icon for %s: %s", text_displayed, e.message);
+        //         }
+        //     }
 
-            return icon;
-        }
+        //     return icon;
+        // }
 
         public void set_path (string path) {
             this.path = path;

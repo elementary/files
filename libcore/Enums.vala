@@ -19,46 +19,46 @@
  ***/
 
 namespace Files {
-    public enum WindowState {
-        NORMAL,
-        TILED_START,
-        TILED_END,
-        MAXIMIZED,
-        INVALID;
+    // public enum WindowState {
+    //     NORMAL,
+    //     TILED_START,
+    //     TILED_END,
+    //     MAXIMIZED,
+    //     INVALID;
 
-        public string to_string () {
-            switch (this) {
-                case NORMAL:
-                    return "Marlin.WindowState.NORMAL";
-                case TILED_START:
-                    return "Marlin.WindowState.TILED_START";
-                case TILED_END:
-                    return "Marlin.WindowState.TILED_END";
-                case MAXIMIZED:
-                    return "Marlin.WindowState.MAXIMIZED";
-                default:
-                    return "Marlin.WindowState.INVALID";
-            }
-        }
+    //     public string to_string () {
+    //         switch (this) {
+    //             case NORMAL:
+    //                 return "Marlin.WindowState.NORMAL";
+    //             case TILED_START:
+    //                 return "Marlin.WindowState.TILED_START";
+    //             case TILED_END:
+    //                 return "Marlin.WindowState.TILED_END";
+    //             case MAXIMIZED:
+    //                 return "Marlin.WindowState.MAXIMIZED";
+    //             default:
+    //                 return "Marlin.WindowState.INVALID";
+    //         }
+    //     }
 
-        public static Files.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
-            if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
-                return Files.WindowState.MAXIMIZED;
-            } else if (Gdk.WindowState.TILED in state) {
-                return start ? Files.WindowState.TILED_START : Files.WindowState.TILED_END;
-            } else {
-                return Files.WindowState.NORMAL;
-            }
-        }
+    //     public static Files.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
+    //         if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
+    //             return Files.WindowState.MAXIMIZED;
+    //         } else if (Gdk.WindowState.TILED in state) {
+    //             return start ? Files.WindowState.TILED_START : Files.WindowState.TILED_END;
+    //         } else {
+    //             return Files.WindowState.NORMAL;
+    //         }
+    //     }
 
-        public bool is_tiled () {
-            return this == TILED_START | this == TILED_END;
-        }
+    //     public bool is_tiled () {
+    //         return this == TILED_START | this == TILED_END;
+    //     }
 
-        public bool is_maximized () {
-            return this == MAXIMIZED;
-        }
-    }
+    //     public bool is_maximized () {
+    //         return this == MAXIMIZED;
+    //     }
+    // }
 
 
 
