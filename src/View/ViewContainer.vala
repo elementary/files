@@ -24,7 +24,7 @@
 ***/
 
 namespace Files.View {
-    public class ViewContainer : Gtk.Bin {
+    public class ViewContainer : Gtk.Box {
         private static int container_id;
 
         protected static int get_next_container_id () {
