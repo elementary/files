@@ -17,7 +17,7 @@
  */
 
 public class Files.FileOperations.CommonJob {
-    protected unowned Gtk.Window? parent_window;
+    protected unowned Gtk.Root? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
@@ -26,7 +26,7 @@ public class Files.FileOperations.CommonJob {
     protected bool skip_all_error;
     private GLib.GenericSet<GLib.File>? skip_readdir_error_set;
     protected GLib.GenericSet<GLib.File>? skip_files;
-    protected CommonJob (Gtk.Window? parent_window = null) {
+    protected CommonJob (Gtk.Root? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();

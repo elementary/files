@@ -29,7 +29,6 @@
  */
 
 namespace Files.View.Chrome {
-
     /**
      * ButtonWithMenu
      * - support long click / right click with depressed button states
@@ -38,7 +37,7 @@ namespace Files.View.Chrome {
      */
     public class ButtonWithMenu : Gtk.ToggleButton {
 
-        public signal void right_click (Gdk.EventButton ev);
+
 
         /**
          * VMenuPosition:
@@ -82,18 +81,19 @@ namespace Files.View.Chrome {
         public ulong toggled_sig_id;
 
         public signal void slow_press ();
+        public signal void right_click ();
 
-        private Gtk.Menu _menu;
-        public Gtk.Menu menu {
-            get {
-                return _menu;
-            }
+        // private Gtk.Menu _menu;
+        // public Gtk.Menu menu {
+        //     get {
+        //         return _menu;
+        //     }
 
-            set {
-                _menu = value;
-                update_menu_properties ();
-            }
-        }
+        //     set {
+        //         _menu = value;
+        //         update_menu_properties ();
+        //     }
+        // }
 
         private int long_press_time = Gtk.Settings.get_default ().gtk_double_click_time * 2;
         private uint timeout = 0;
@@ -119,87 +119,87 @@ namespace Files.View.Chrome {
             image = new Gtk.Image.from_icon_name (icon_name, size);
         }
 
-        private void update_menu_properties () {
-            menu.attach_to_widget (this, null);
-            menu.deactivate.connect ( () => {
-                deactivate_menu ();
-            });
-            menu.deactivate.connect (popdown_menu);
-        }
+        // private void update_menu_properties () {
+        //     menu.attach_to_widget (this, null);
+        //     menu.deactivate.connect ( () => {
+        //         deactivate_menu ();
+        //     });
+        //     menu.deactivate.connect (popdown_menu);
+        // }
 
         public ButtonWithMenu () {
             use_underline = true;
             can_focus = true;
 
-            this.menu = new Gtk.Menu ();
+            // this.menu = new Gtk.Menu ();
 
             mnemonic_activate.connect (on_mnemonic_activate);
 
-            events |= Gdk.EventMask.BUTTON_PRESS_MASK |
-                      Gdk.EventMask.BUTTON_RELEASE_MASK |
-                      Gdk.EventMask.BUTTON_MOTION_MASK;
+            // events |= Gdk.EventMask.BUTTON_PRESS_MASK |
+            //           Gdk.EventMask.BUTTON_RELEASE_MASK |
+            //           Gdk.EventMask.BUTTON_MOTION_MASK;
 
-            button_press_event.connect (on_button_press_event);
-            button_release_event.connect (on_button_release_event);
-            motion_notify_event.connect (() => {
-                if (timeout > 0) {
-                    Source.remove (timeout);
-                    timeout = 0;
-                    active = false;
-                }
+            // button_press_event.connect (on_button_press_event);
+            // button_release_event.connect (on_button_release_event);
+            // motion_notify_event.connect (() => {
+            //     if (timeout > 0) {
+            //         Source.remove (timeout);
+            //         timeout = 0;
+            //         active = false;
+            //     }
 
-                return Gdk.EVENT_PROPAGATE;
-            });
-        }
+            //     return Gdk.EVENT_PROPAGATE;
+            // });
+        // }
 
-        public override void show_all () {
-            menu.show_all ();
-            base.show_all ();
+        // public override void show_all () {
+        //     menu.show_all ();
+        //     base.show_all ();
         }
 
         private void deactivate_menu () {
             active = false;
         }
 
-        private bool on_button_release_event (Gdk.EventButton ev) {
-            if (ev.time - last_click_time < long_press_time) {
-                slow_press ();
-                active = false;
-            }
+        // private bool on_button_release_event (Gdk.EventButton ev) {
+        //     if (ev.time - last_click_time < long_press_time) {
+        //         slow_press ();
+        //         active = false;
+        //     }
 
-            if (timeout > 0) {
-                Source.remove (timeout);
-                timeout = 0;
-            }
+        //     if (timeout > 0) {
+        //         Source.remove (timeout);
+        //         timeout = 0;
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
-        private bool on_button_press_event (Gdk.EventButton ev) {
-            /* If the button is kept pressed, don't make the user wait when there's no action */
-            int max_press_time = long_press_time;
-            if (ev.button == 1 || ev.button == 3) {
-                active = true;
-            }
+        // private bool on_button_press_event (Gdk.EventButton ev) {
+        //     /* If the button is kept pressed, don't make the user wait when there's no action */
+        //     int max_press_time = long_press_time;
+        //     if (ev.button == 1 || ev.button == 3) {
+        //         active = true;
+        //     }
 
-            if (timeout == 0 && ev.button == 1) {
-                last_click_time = ev.time;
-                timeout = Timeout.add (max_press_time, () => {
-                    /* long click */
-                    timeout = 0;
-                    popup_menu (ev);
-                    return GLib.Source.REMOVE;
-                });
-            }
+        //     if (timeout == 0 && ev.button == 1) {
+        //         last_click_time = ev.time;
+        //         timeout = Timeout.add (max_press_time, () => {
+        //             /* long click */
+        //             timeout = 0;
+        //             popup_menu (ev);
+        //             return GLib.Source.REMOVE;
+        //         });
+        //     }
 
-            if (ev.button == 3) {
-                /* right_click */
-                right_click (ev);
-                popup_menu (ev);
-            }
-            return true;
+        //     if (ev.button == 3) {
+        //         /* right_click */
+        //         right_click (ev);
+        //         popup_menu (ev);
+        //     }
+        //     return true;
 
-        }
+        // }
 
         private bool on_mnemonic_activate (bool group_cycling) {
             /* ToggleButton always grabs focus away from the editor,
@@ -215,14 +215,14 @@ namespace Files.View.Chrome {
             return true;
         }
 
-        protected new void popup_menu (Gdk.EventButton? ev = null) {
-            menu.popup_at_widget (this, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, ev);
+        // protected new void popup_menu (Gdk.EventButton? ev = null) {
+        //     menu.popup_at_widget (this, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, ev);
 
-            menu.select_first (false);
-        }
+        //     menu.select_first (false);
+        // }
 
-        protected void popdown_menu () {
-            menu.popdown ();
-        }
+        // protected void popdown_menu () {
+        //     menu.popdown ();
+        // }
     }
 }

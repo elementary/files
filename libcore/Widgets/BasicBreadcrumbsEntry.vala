@@ -61,7 +61,7 @@ namespace Files.View.Chrome {
         protected const int BREAD_SPACING = 12;
         protected const double YPAD = 0; /* y padding */
 
-        private Gdk.Window? entry_window = null;
+        // private Gdk.Window? entry_window = null;
 
         protected bool context_menu_showing = false;
 
@@ -82,7 +82,7 @@ namespace Files.View.Chrome {
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
             old_elements = new Gee.ArrayList<BreadcrumbElement> ();
-            connect_signals ();
+            // connect_signals ();
 
             minimum_width = 100;
             notify["scale-factor"].connect (() => {
@@ -90,18 +90,18 @@ namespace Files.View.Chrome {
             });
         }
 
-        protected virtual void connect_signals () {
-            realize.connect_after (after_realize);
-            activate.connect (on_activate);
-            button_release_event.connect (on_button_release_event);
-            button_press_event.connect (on_button_press_event);
-            icon_press.connect (on_icon_press);
-            motion_notify_event.connect_after (after_motion_notify);
-            focus_in_event.connect (on_focus_in);
-            focus_out_event.connect (on_focus_out);
-            key_press_event.connect (on_key_press_event);
-            changed.connect (on_entry_text_changed);
-        }
+        // protected virtual void connect_signals () {
+        //     realize.connect_after (after_realize);
+        //     activate.connect (on_activate);
+        //     button_release_event.connect (on_button_release_event);
+        //     button_press_event.connect (on_button_press_event);
+        //     icon_press.connect (on_icon_press);
+        //     motion_notify_event.connect_after (after_motion_notify);
+        //     focus_in_event.connect (on_focus_in);
+        //     focus_out_event.connect (on_focus_out);
+        //     key_press_event.connect (on_key_press_event);
+        //     changed.connect (on_entry_text_changed);
+        // }
 
     /** Navigatable Interface **/
     /***************************/
@@ -180,183 +180,183 @@ namespace Files.View.Chrome {
 
     /** Signal handling **/
     /*********************/
-        public virtual bool on_key_press_event (Gdk.EventKey event) {
-            if (event.is_modifier == 1) {
-                return true;
-            }
+        // public virtual bool on_key_press_event (Gdk.EventKey event) {
+        //     if (event.is_modifier == 1) {
+        //         return true;
+        //     }
 
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                /* Do not trap unmodified Down and Up keys - used by some input methods */
-                case Gdk.Key.KP_Down:
-                case Gdk.Key.Down:
-                    if (only_control_pressed) {
-                        go_down ();
-                        return true;
-                    }
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         /* Do not trap unmodified Down and Up keys - used by some input methods */
+        //         case Gdk.Key.KP_Down:
+        //         case Gdk.Key.Down:
+        //             if (only_control_pressed) {
+        //                 go_down ();
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.KP_Up:
-                case Gdk.Key.Up:
-                    if (only_control_pressed) {
-                        go_up ();
-                        return true;
-                    }
+        //         case Gdk.Key.KP_Up:
+        //         case Gdk.Key.Up:
+        //             if (only_control_pressed) {
+        //                 go_up ();
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.Escape:
-                    activate_path ("");
-                    return true;
+        //         case Gdk.Key.Escape:
+        //             activate_path ("");
+        //             return true;
 
-                case Gdk.Key.l:
-                    if (only_control_pressed) {
-                        set_entry_text (current_dir_path);
-                        grab_focus ();
-                        return true;
-                    } else {
-                        break;
-                    }
-                default:
-                    break;
-            }
+        //         case Gdk.Key.l:
+        //             if (only_control_pressed) {
+        //                 set_entry_text (current_dir_path);
+        //                 grab_focus ();
+        //                 return true;
+        //             } else {
+        //                 break;
+        //             }
+        //         default:
+        //             break;
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
-        protected virtual bool on_button_press_event (Gdk.EventButton event) {
-            uint button;
-            event.get_button (out button);
-            context_menu_showing = has_focus && button == Gdk.BUTTON_SECONDARY;
-            return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
-        }
+        // protected virtual bool on_button_press_event (Gdk.EventButton event) {
+        //     uint button;
+        //     event.get_button (out button);
+        //     context_menu_showing = has_focus && button == Gdk.BUTTON_SECONDARY;
+        //     return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
+        // }
 
-         protected virtual bool on_button_release_event (Gdk.EventButton event) {
-            /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
-             * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
-             * not have focus. */
-            uint button;
-            event.get_button (out button);
-            if (button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
-                reset_elements_states ();
-                double x, y;
-                event.get_coords (out x, out y);
-                var el = get_element_from_coordinates ((int)x, (int)y);
-                if (el != null) {
-                    activate_path (get_path_from_element (el));
-                    return true;
-                }
-            }
+        //  protected virtual bool on_button_release_event (Gdk.EventButton event) {
+        //     /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
+        //      * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
+        //      * not have focus. */
+        //     uint button;
+        //     event.get_button (out button);
+        //     if (button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
+        //         reset_elements_states ();
+        //         double x, y;
+        //         event.get_coords (out x, out y);
+        //         var el = get_element_from_coordinates ((int)x, (int)y);
+        //         if (el != null) {
+        //             activate_path (get_path_from_element (el));
+        //             return true;
+        //         }
+        //     }
 
-            if (!has_focus) {
-                grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
-            }
+        //     if (!has_focus) {
+        //         grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
-        protected bool is_icon_event (Gdk.EventButton event) {
-            /* We need to distinguish whether the event comes from one of the icons.
-             * There doesn't seem to be a way of doing this directly so we check the window width */
-            return (event.get_window ().get_width () <= ICON_WIDTH);
-        }
+        // protected bool is_icon_event (Gdk.EventButton event) {
+        //     /* We need to distinguish whether the event comes from one of the icons.
+        //      * There doesn't seem to be a way of doing this directly so we check the window width */
+        //     return (event.get_window ().get_width () <= ICON_WIDTH);
+        // }
 
-        void on_icon_press (Gtk.EntryIconPosition pos) {
-            if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                action_icon_press ();
-            } else {
-                primary_icon_press ();
-            }
-        }
+        // void on_icon_press (Gtk.EntryIconPosition pos) {
+        //     if (pos == Gtk.EntryIconPosition.SECONDARY) {
+        //         action_icon_press ();
+        //     } else {
+        //         primary_icon_press ();
+        //     }
+        // }
 
-        void after_realize () {
-            /* After realizing, we take a reference on the Gdk.Window of the Entry so
-             * we can set the cursor icon as needed. This relies on Gtk storing the
-             * owning widget as the user data on a Gdk.Window. The required window
-             * will be the first child of the entry.
-             */
-            entry_window = get_window ().get_children_with_user_data (this).data;
-        }
+        // void after_realize () {
+        //     /* After realizing, we take a reference on the Gdk.Window of the Entry so
+        //      * we can set the cursor icon as needed. This relies on Gtk storing the
+        //      * owning widget as the user data on a Gdk.Window. The required window
+        //      * will be the first child of the entry.
+        //      */
+        //     entry_window = get_window ().get_children_with_user_data (this).data;
+        // }
 
-        bool after_motion_notify (Gdk.EventMotion event) {
-            if (is_focus) {
-                return false;
-            }
+        // bool after_motion_notify (Gdk.EventMotion event) {
+        //     if (is_focus) {
+        //         return false;
+        //     }
 
-            string? tip = null;
-            if (secondary_icon_pixbuf != null) {
-                tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
-            }
+        //     string? tip = null;
+        //     if (secondary_icon_pixbuf != null) {
+        //         tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
+        //     }
 
 
-            set_tooltip_markup ("");
-            double x, y;
-            event.get_coords (out x, out y);
-            var el = get_element_from_coordinates ((int)x, (int)y);
-            if (el != null && !hide_breadcrumbs) {
-                set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
-                set_entry_cursor ("default");
-            } else {
-                set_entry_cursor ("text");
-                set_default_entry_tooltip ();
-            }
+        //     set_tooltip_markup ("");
+        //     double x, y;
+        //     event.get_coords (out x, out y);
+        //     var el = get_element_from_coordinates ((int)x, (int)y);
+        //     if (el != null && !hide_breadcrumbs) {
+        //         set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
+        //         set_entry_cursor ("default");
+        //     } else {
+        //         set_entry_cursor ("text");
+        //         set_default_entry_tooltip ();
+        //     }
 
-            if (tip != null) {
-            /* We must reset the icon tooltip as the above line turns all tooltips off */
-                set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
-            }
-            return false;
-        }
+        //     if (tip != null) {
+        //     /* We must reset the icon tooltip as the above line turns all tooltips off */
+        //         set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
+        //     }
+        //     return false;
+        // }
 
-        private uint focus_out_timeout_id = 0;
-        protected virtual bool on_focus_out (Gdk.EventFocus event) {
-            if (focus_out_timeout_id == 0) {
-                /* Delay acting on focus out - may be temporary, due to keyboard layout change */
-                focus_out_timeout_id = GLib.Timeout.add (10, () => {
-                    focus_out_event (event);
-                    return GLib.Source.REMOVE;
-                });
+        // private uint focus_out_timeout_id = 0;
+        // protected virtual bool on_focus_out (Gdk.EventFocus event) {
+        //     if (focus_out_timeout_id == 0) {
+        //         /* Delay acting on focus out - may be temporary, due to keyboard layout change */
+        //         focus_out_timeout_id = GLib.Timeout.add (10, () => {
+        //             focus_out_event (event);
+        //             return GLib.Source.REMOVE;
+        //         });
 
-                return true;
-            } else {
-                /* This the delayed propagated event */
-                focus_out_timeout_id = 0;
-                base.focus_out_event (event);
+        //         return true;
+        //     } else {
+        //         /* This the delayed propagated event */
+        //         focus_out_timeout_id = 0;
+        //         base.focus_out_event (event);
 
-                if (context_menu_showing) {
-                    return true;
-                }
+        //         if (context_menu_showing) {
+        //             return true;
+        //         }
 
-                // Do not lose entry text if another window is focused
-                if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
-                    reset ();
-                }
+        //         // Do not lose entry text if another window is focused
+        //         if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+        //             reset ();
+        //         }
 
-                return false;
-            }
-        }
+        //         return false;
+        //     }
+        // }
 
-        protected virtual bool on_focus_in (Gdk.EventFocus event) {
-            if (focus_out_timeout_id > 0) {
-                /* There was a temporary focus out due to keyboard layout change.
-                 * Cancel propagation of focus out event and ignore focus in event */
-                GLib.Source.remove (focus_out_timeout_id);
-                focus_out_timeout_id = 0;
-                return true;
-            } else {
-                context_menu_showing = false;
-                current_dir_path = get_breadcrumbs_path (false);
-                set_entry_text (current_dir_path);
-                return false;
-            }
-        }
+        // protected virtual bool on_focus_in (Gdk.EventFocus event) {
+        //     if (focus_out_timeout_id > 0) {
+        //         /* There was a temporary focus out due to keyboard layout change.
+        //          * Cancel propagation of focus out event and ignore focus in event */
+        //         GLib.Source.remove (focus_out_timeout_id);
+        //         focus_out_timeout_id = 0;
+        //         return true;
+        //     } else {
+        //         context_menu_showing = false;
+        //         current_dir_path = get_breadcrumbs_path (false);
+        //         set_entry_text (current_dir_path);
+        //         return false;
+        //     }
+        // }
 
         protected virtual void on_activate () {
             activate_path (FileUtils.sanitize_path (text, current_dir_path));

@@ -776,7 +776,7 @@ delete_job (GTask *task,
 
 void
 marlin_file_operations_delete (GList               *files,
-                               GtkWindow           *parent_window,
+                               GtkRoot           *parent_window,
                                gboolean             try_trash,
                                GCancellable        *cancellable,
                                GAsyncReadyCallback  callback,

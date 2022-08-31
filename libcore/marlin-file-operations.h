@@ -31,7 +31,7 @@
 /* Sidebar uses Marlin.FileOperations to mount volumes but handles unmounting itself */
 
 void marlin_file_operations_delete (GList               *files,
-                                    GtkWindow           *parent_window,
+                                    GtkRoot           *parent_window,
                                     gboolean             try_trash,
                                     GCancellable        *cancellable,
                                     GAsyncReadyCallback  callback,
