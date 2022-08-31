@@ -2794,8 +2794,8 @@ report_move_progress (FilesFileOperationsCopyMoveJob *move_job, int total, int l
 typedef struct {
     GFile *file;
     gboolean overwrite;
-    gboolean has_position;
-    GdkPoint position;
+    // gboolean has_position;
+    // GdkPoint position;
 } MoveFileCopyFallback;
 
 static MoveFileCopyFallback *
