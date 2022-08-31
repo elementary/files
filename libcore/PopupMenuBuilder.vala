@@ -25,71 +25,82 @@ public class PopupMenuBuilder : Object {
     public Menu build () {
         var popupmenu = new Menu ();
         foreach (var menu_item in menu_items) {
-            popupmenu.append (menu_item);
+            popupmenu.append_item (menu_item);
         }
 
         return popupmenu;
     }
 
-    public Menu build_from_model (MenuModel model,
-                                      string? action_group_namespace = null,
-                                      ActionGroup? action_group = null) {
+    // public Menu build_from_model (MenuModel model,
+    //                                   string? action_group_namespace = null,
+    //                                   ActionGroup? action_group = null) {
 
-        var menu = new Menu.from_model (model);
-        menu.insert_action_group (action_group_namespace, action_group);
+    //     var menu = new Menu.from_model (model);
+    //     menu.insert_action_group (action_group_namespace, action_group);
 
-        for (int i = 0; i < menu_items.length; i++) {
-            menu.append (menu_items[i]);
-            menu.reorder_child (menu_items[i], i);
-        }
+    //     for (int i = 0; i < menu_items.length; i++) {
+    //         menu.append (menu_items[i]);
+    //         menu.reorder_child (menu_items[i], i);
+    //     }
 
-        return menu;
-    }
+    //     return menu;
+    // }
 
     public PopupMenuBuilder add_open (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), cb);
     }
 
     public PopupMenuBuilder add_open_tab (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab")), cb);
     }
 
     public PopupMenuBuilder add_open_window (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Window")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Window")), cb);
     }
 
     public PopupMenuBuilder add_remove (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Remove")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_label (_("Remove")), cb);
     }
 
     public PopupMenuBuilder add_rename (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
     }
 
     public PopupMenuBuilder add_mount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Mount")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("_Mount")), cb);
     }
 
     public PopupMenuBuilder add_unmount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Unmount")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("_Unmount")), cb);
     }
 
     public PopupMenuBuilder add_drive_property (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
     }
 
     public PopupMenuBuilder add_eject_drive (MenuitemCallback cb) {
+        return add_item (new MenuItem ("Dummy", null), null);
         // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), cb);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), cb);
     }
 
     public PopupMenuBuilder add_safely_remove (MenuitemCallback cb) {
+        return add_item (new MenuItem ("Dummy", null), null);
         // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Safely Remove")), cb);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("Safely Remove")), cb);
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), cb);
+        return add_item (new MenuItem ("Dummy", null), null);
+        // return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), cb);
     }
 
     public PopupMenuBuilder add_empty_all_trash (MenuitemCallback cb) {
@@ -102,35 +113,37 @@ public class PopupMenuBuilder : Object {
         }
 
         var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
-        var menu_item = new Gtk.MenuItem.with_mnemonic (text);
+        var menu_item = new MenuItem (text, null);
 
         if (Files.TrashMonitor.get_default ().is_empty) {
-            menu_item.sensitive = false;
+            // menu_item.sensitive = false;
         } else {
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+            // menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
         }
 
         return add_item (menu_item, cb);
     }
 
     public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback cb) {
-        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
-        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        var menu_item = new MenuItem (_("Permanently Delete Trash on this Mount"), null);
+        // menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
         return add_item (menu_item, cb);
     }
 
     public PopupMenuBuilder add_separator () {
-        return add_item (new Gtk.SeparatorMenuItem ());
+        //TODO Use add section
+        return add_item (new MenuItem ("---", null));
     }
 
+    //TODO Link MenuItems to actions not callbacks
     public PopupMenuBuilder add_item (MenuItem menu_item, MenuitemCallback? cb = null) {
-        if (cb != null) {
-            menu_item.activate.connect ((menu_item) => {
-                cb (menu_item);
-            });
-        }
+        // if (cb != null) {
+        //     menu_item.activate.connect ((menu_item) => {
+        //         cb (menu_item);
+        //     });
+        // }
 
-        menu_item.show ();
+        // menu_item.show ();
         menu_items += menu_item;
         return this;
     }

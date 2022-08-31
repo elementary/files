@@ -37,7 +37,8 @@ public interface Sidebar.SidebarListInterface : Gtk.Box {
     public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {return 0;}
 
     public virtual void clear () {
-        foreach (Gtk.Widget child in get_children ()) {
+        Gtk.Widget? child;
+        while ((child = get_first_child ()) != null) {
             remove (child);
             if (child is SidebarItemInterface) {
                 ((SidebarItemInterface)child).destroy_bookmark ();
@@ -60,13 +61,18 @@ public interface Sidebar.SidebarListInterface : Gtk.Box {
 
     public virtual bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
         row = null;
-        foreach (unowned Gtk.Widget child in get_children ()) {
+        Gtk.Widget? child = get_first_child ();
+        bool uri_found = false;
+        while (child != null) {
             if (child is SidebarItemInterface) {
                 if (((SidebarItemInterface)child).uri == uri) {
                     row = (SidebarItemInterface)child;
-                    return true;
+                    uri_found = true;
+                    break;
                 }
             }
+
+            child = child.get_next_sibling ();
         }
 
         return false;
@@ -84,22 +90,21 @@ public interface Sidebar.SidebarListInterface : Gtk.Box {
     }
 
     public virtual bool remove_item_by_id (uint32 id) {
-        foreach (Gtk.Widget child in get_children ()) {
+        Gtk.Widget? child = get_first_child ();
+        bool removed = false;
+        while (child != null) {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
-                if (row.permanent) {
-                    continue;
-                }
-
-                if (row.id == id) {
+                if (!row.permanent && row.id == id) {
                     remove (row);
                     row.destroy_bookmark ();
-                    return true;
+                    removed = true;
+                    break;
                 }
             }
         }
 
-        return false;
+        return removed;
     }
 
     /* Returns true if favorite successfully added */

@@ -54,11 +54,17 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
 
             message_dialog.transient_for = parent_window;
             unowned Gtk.Widget empty_button = message_dialog.add_button (EMPTY_TRASH, Gtk.ResponseType.YES);
-            empty_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-            Gtk.ResponseType response = (Gtk.ResponseType) message_dialog.run ();
-            message_dialog.destroy ();
+            //TODO Correct css class
+            empty_button.add_css_class ("destructive-action");
+            bool confirmed = false;
+            // Gtk.ResponseType response = (Gtk.ResponseType) message_dialog.run ();
+            message_dialog.response.connect ((response_id) => {
+                confirmed = response_id == Gtk.ResponseType.YES;
+                message_dialog.destroy ();
+            });
 
-            return response == Gtk.ResponseType.YES;
+            message_dialog.show ();
+            return confirmed;
         }
 
         return true;

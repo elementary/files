@@ -191,7 +191,7 @@ public class Files.PluginManager : Object {
 
     private void drop_plugin_menuitems () {
         foreach (var menu_item in menuitem_references) {
-            menu_item.parent.remove (menu_item);
+            menu_item.unparent ();
         }
 
         menuitem_references.clear ();

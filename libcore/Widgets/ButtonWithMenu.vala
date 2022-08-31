@@ -37,8 +37,6 @@ namespace Files.View.Chrome {
      */
     public class ButtonWithMenu : Gtk.ToggleButton {
 
-
-
         /**
          * VMenuPosition:
          */
@@ -102,21 +100,21 @@ namespace Files.View.Chrome {
         construct {
             timeout = 0;
 
-            realize.connect (() => {
-                get_toplevel ().configure_event.connect (() => {
-                    if (timeout > 0) {
-                        Source.remove (timeout);
-                        timeout = 0;
-                    }
+            // realize.connect (() => {
+            //     get_toplevel ().configure_event.connect (() => {
+            //         if (timeout > 0) {
+            //             Source.remove (timeout);
+            //             timeout = 0;
+            //         }
 
-                    return false;
-                });
-            });
+            //         return false;
+            //     });
+            // });
         }
 
         public ButtonWithMenu.from_icon_name (string icon_name, Gtk.IconSize size) {
             this ();
-            image = new Gtk.Image.from_icon_name (icon_name, size);
+            child = new Gtk.Image.from_icon_name (icon_name);
         }
 
         // private void update_menu_properties () {

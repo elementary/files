@@ -52,10 +52,11 @@ namespace Files.View.Chrome {
             }
         }
 
-        public override void get_preferred_width (out int minimum_width, out int natural_width) {
-            minimum_width = this.minimum_width;
-            natural_width = 3000;
-        }
+        //TODO Replace with measure ()
+        // public override void get_preferred_width (out int minimum_width, out int natural_width) {
+        //     minimum_width = this.minimum_width;
+        //     natural_width = 3000;
+        // }
 
         construct {
             margin_start = 3;
@@ -70,7 +71,7 @@ namespace Files.View.Chrome {
             }
 
             widget = _bread as Gtk.Widget;
-            pack_start (bread, true, true, 0);
+            append (bread);
             connect_signals ();
             can_focus = false;
         }

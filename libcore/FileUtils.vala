@@ -771,15 +771,15 @@ namespace Files.FileUtils {
         var actions = context.get_actions ();
         var suggested_action = context.get_selected_action ();
         var target_location = dest.get_target_location ();
-        suggested_action_return = null;
+        suggested_action_return = Gdk.DragAction.ASK;
 
         if (drop_file_list == null || drop_file_list.data == null) {
-            return Gdk.DragAction.DEFAULT;
+            return Gdk.DragAction.ASK;
         }
 
         if (dest.is_folder ()) {
             if (!dest.is_writable ()) {
-                actions = null;
+                actions = Gdk.DragAction.ASK;
             } else {
                 /* Modify actions and suggested_action according to source files */
                 actions &= valid_actions_for_file_list (target_location,
@@ -791,10 +791,10 @@ namespace Files.FileUtils {
                        Gdk.DragAction.MOVE |
                        Gdk.DragAction.LINK);
         } else {
-            actions = null;
+            actions = Gdk.DragAction.ASK;
         }
 
-        if (actions == null) { // No point asking if no other valid actions
+        if (actions == Gdk.DragAction.ASK) { // No point asking if no other valid actions
             return null;
         } else if (location_is_in_trash (target_location)) { // cannot copy or link to trash
             actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
@@ -838,7 +838,7 @@ namespace Files.FileUtils {
                 from_trash = true;
 
                 if (location_is_in_trash (target_location)) {
-                    valid_actions = null; // No DnD within trash
+                    valid_actions = Gdk.DragAction.ASK; // No DnD within trash
                 }
             }
 
@@ -854,7 +854,7 @@ namespace Files.FileUtils {
             }
 
             if (++count > MAX_FILES_CHECKED ||
-                valid_actions == null) {
+                valid_actions == Gdk.DragAction.ASK) {
 
                 break;
             }
@@ -871,7 +871,9 @@ namespace Files.FileUtils {
             suggested_action = Gdk.DragAction.MOVE;
         }
 
-        if (valid_actions != null) {
+        if (valid_actions == Gdk.DragAction.ASK) {
+            return null;
+        } else {
             valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
         }
 

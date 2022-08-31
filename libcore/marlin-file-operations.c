@@ -128,7 +128,7 @@ static char * query_fs_type (GFile *file,
 
 static gpointer
 init_common (gsize job_size,
-             GtkWindow *parent_window)
+             GtkRoot *parent_window)
 {
     CommonJob *common;
 
