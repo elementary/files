@@ -112,11 +112,11 @@ resources = gnome.compile_resources(
 )
 
 subdir('libcore')
-subdir('src')
+# subdir('src')
 subdir('data')
 subdir('pantheon-files-daemon')
 subdir('plugins')
-subdir('filechooser-portal')
+# subdir('filechooser-portal')
 meson.add_install_script('meson/post_install.py')
 
 subdir('po')
