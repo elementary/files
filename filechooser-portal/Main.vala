@@ -394,7 +394,7 @@ public class Files.FileChooserPortal : Object {
         /* Avoid pointless and confusing recursion */
         Environment.unset_variable ("GTK_USE_PORTAL");
 
-        Gtk.init (ref args);
+        // Gtk.init (ref args);
 
         var context = new OptionContext ("- FileChooser portal");
         context.add_main_entries (ENTRIES, null);

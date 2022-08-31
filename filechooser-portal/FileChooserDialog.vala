@@ -8,7 +8,7 @@ public interface Xdp.Request : Object {
     public abstract void close () throws DBusError, IOError;
 }
 
-public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
+public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
     public signal void response (Gtk.ResponseType response);
 
     public string parent_window { get; construct; }
@@ -47,7 +47,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         }
     }
 
-    private Hdy.HeaderBar header;
+    private Adw.HeaderBar header;
     private View.Chrome.BasicLocationBar location_bar;
     private Gtk.FileChooserWidget chooser;
     private Gtk.TreeView tree_view;
@@ -81,7 +81,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     construct {
         previous_paths = new Queue<string> ();
         next_paths = new Queue<string> ();
-        Hdy.init ();
 
         location_bar = new View.Chrome.BasicLocationBar ();
 
@@ -97,7 +96,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         };
         next_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        header = new Hdy.HeaderBar () {
+        header = new Adw.HeaderBar () {
             custom_title = location_bar,
             title = title
         };
@@ -293,26 +292,28 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
     }
 
-    private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
+    private static T find_child_by_name<T> (Gtk.Widget root, string path) {
         var paths = path.has_prefix ("/") ? path[1 : path.length].split ("/") : path.split ("/");
         Gtk.Widget? widget = null;
         string name = paths[0];
 
         /* `find_custom ()` and `search ()` do not work if the element is unowned */
-        ((Gtk.Container) root).get_children ().foreach ((w) => {
-            if (widget == null) {
-                if (name.has_prefix ("<")) {
-                    var c_type = Type.from_name (name[1 : name.length - 1]);
-                    var w_type = w.get_type ();
+        var child = root.get_first_child ();
+        while (child != null && widget == null) {
+        // ((Gtk.Container) root).get_children ().foreach ((w) => {
+            if (name.has_prefix ("<")) {
+                var c_type = Type.from_name (name[1 : name.length - 1]);
+                var w_type = child.get_type ();
 
-                    widget = w_type.is_a (c_type) ? w : null;
-                } else if (w is Gtk.Buildable) {
-                    widget = ((Gtk.Buildable) w).get_name () == name ? w : null;
-                } else {
-                    widget = w.name == name ? w : null;
-                }
+                widget = w_type.is_a (c_type) ? child : null;
+            } else if (child is Gtk.Buildable) {
+                widget = ((Gtk.Buildable) w).get_name () == name ? w : null;
+            } else {
+                widget = child.name == name ? child : null;
             }
-        });
+
+            child = child.get_next_sibling ();
+        }
 
         if (widget != null) {
             if (paths.length > 1) {
@@ -391,16 +392,16 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
     }
 
-    protected override bool key_press_event (Gdk.EventKey event) { // Match conflict dialog
-        uint keyval;
-        event.get_keyval (out keyval);
-        if (keyval == Gdk.Key.Escape) {
-            response (Gtk.ResponseType.DELETE_EVENT);
-            return Gdk.EVENT_STOP;
-        }
+    // protected override bool key_press_event (Gdk.EventKey event) { // Match conflict dialog
+    //     uint keyval;
+    //     event.get_keyval (out keyval);
+    //     if (keyval == Gdk.Key.Escape) {
+    //         response (Gtk.ResponseType.DELETE_EVENT);
+    //         return Gdk.EVENT_STOP;
+    //     }
 
-        return base.key_press_event (event);
-    }
+    //     return base.key_press_event (event);
+    // }
 
     protected override void show () {
         base.show ();

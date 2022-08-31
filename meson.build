@@ -49,7 +49,7 @@ gtk_dep = dependency('gtk4')
 granite_dep = dependency('granite-7', version: '>=7.0.0')
 adwaita_dep = dependency('libadwaita-1')
 # Handy dep kept temporarily while porting
-handy_dep = dependency('libhandy-1', version: '>=1.4.0')
+# handy_dep = dependency('libhandy-1', version: '>=1.4.0')
 
 common_deps = [
     glib_dep,
@@ -59,7 +59,8 @@ common_deps = [
     gmodule_dep,
     gee_dep,
     gtk_dep,
-    granite_dep
+    granite_dep,
+    adwaita_dep
 ]
 
 pango_dep = dependency('pango', version: '>=1.1.2')
@@ -116,7 +117,7 @@ subdir('libcore')
 subdir('data')
 subdir('pantheon-files-daemon')
 subdir('plugins')
-# subdir('filechooser-portal')
+subdir('filechooser-portal')
 meson.add_install_script('meson/post_install.py')
 
 subdir('po')
