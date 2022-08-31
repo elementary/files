@@ -60,8 +60,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         Object (
             title: _("File conflict"),
             transient_for: parent,
-            resizable: false,
-            skip_taskbar_hint: true
+            resizable: false
         );
 
         source = Files.File.@get (_source);

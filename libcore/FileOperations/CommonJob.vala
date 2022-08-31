@@ -17,7 +17,7 @@
  */
 
 public class Files.FileOperations.CommonJob {
-    protected unowned Gtk.Root? parent_window;
+    protected unowned Gtk.Window? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
@@ -27,7 +27,7 @@ public class Files.FileOperations.CommonJob {
     private GLib.GenericSet<GLib.File>? skip_readdir_error_set;
     protected GLib.GenericSet<GLib.File>? skip_files;
     protected CommonJob (Gtk.Root? parent_window = null) {
-        this.parent_window = parent_window;
+        this.parent_window = (parent_window is Gtk.Window) ? (Gtk.Window)parent_window : null;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
@@ -44,6 +44,7 @@ public class Files.FileOperations.CommonJob {
     }
 
     protected void inhibit_power_manager (string message) {
+        
         weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
         inhibit_cookie = app.inhibit (
             parent_window,
