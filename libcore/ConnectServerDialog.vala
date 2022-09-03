@@ -23,7 +23,7 @@ public class PF.ConnectServerDialog : Gtk.Widget {
 // Gtk.Dialog is final type and cannot be subclassed.
 // public class PF.ConnectServerDialog : Granite.Dialog {
 
-    
+
     [Flags]
     private enum WidgetsFlag {
         NONE,

@@ -62,12 +62,12 @@ public class ExternalWindowX11 : ExternalWindow, GLib.Object {
 
         int xid;
         if (!int.try_parse (handle, out xid, null, 16)) {
-            throw new IOError.FAILED ("Failed to reference external X11 window, invalid XID %s", handle);
+            throw new IOError.FAILED ("Failed to reference external X11 surface, invalid XID %s", handle);
         }
 
-        foreign_gdk_window = new Gdk.X11.Window.foreign_for_display ((Gdk.X11.Display)display, xid);
+        foreign_gdk_window = Gdk.X11.Surface.lookup_for_display ((Gdk.X11.Display)display, xid);
         if (foreign_gdk_window == null) {
-            throw new IOError.FAILED ("Failed to create foreign window for XID %d", xid);
+            throw new IOError.FAILED ("Failed to create X11 Surface for XID %d", xid);
         }
     }
 
@@ -90,7 +90,9 @@ public class ExternalWindowX11 : ExternalWindow, GLib.Object {
     }
 
     public void set_parent_of (Gdk.Surface child_window) {
-        child_window.set_transient_for (foreign_gdk_window);
+        if (child_window is Gdk.Toplevel) {
+            ((Gdk.Toplevel)child_window).set_transient_for (foreign_gdk_window);
+        }
     }
 }
 
@@ -114,7 +116,9 @@ public class ExternalWindowWayland : ExternalWindow, GLib.Object {
         }
 
         Gdk.set_allowed_backends ("wayland");
+        //FIXME This should not have a null parameter
         wayland_display = Gdk.Display.open (null);
+        //FIXME This should not have a null parameter
         Gdk.set_allowed_backends (null);
 
         if (wayland_display == null) {
