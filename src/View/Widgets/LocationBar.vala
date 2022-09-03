@@ -121,22 +121,23 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            base.after_bread_focus_out_event (event);
-            search_mode = false;
-            hide_search_icon ();
-            show_refresh_icon ();
-            focus_out_event (event);
-            check_home ();
-            return true;
-        }
-        protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
-            base.after_bread_focus_in_event (event);
-            focus_in_event (event);
-            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-            show_navigate_icon ();
-            return true;
-        }
+        //TODO Rework focus handling
+        // protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_out_event (event);
+        //     search_mode = false;
+        //     hide_search_icon ();
+        //     show_refresh_icon ();
+        //     focus_out_event (event);
+        //     check_home ();
+        //     return true;
+        // }
+        // protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_in_event (event);
+        //     focus_in_event (event);
+        //     search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+        //     show_navigate_icon ();
+        //     return true;
+        // }
 
         private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
             Files.MimeActions.open_glib_file_request (file, this, app);

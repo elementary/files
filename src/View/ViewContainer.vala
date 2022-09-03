@@ -24,7 +24,7 @@
 ***/
 
 namespace Files.View {
-    public class ViewContainer : Gtk.Bin {
+    public class ViewContainer : Gtk.Box {
         private static int container_id;
 
         protected static int get_next_container_id () {
@@ -62,6 +62,7 @@ namespace Files.View {
                 return slot != null ? slot.location : null;
             }
         }
+
         public string uri {
             get {
                 return slot != null ? slot.uri : "";
@@ -578,36 +579,38 @@ namespace Files.View {
             overlay_statusbar.selection_changed (files);
         }
 
-        private bool on_button_press_event (Gdk.EventButton event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint button;
-            event.get_button (out button);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool result = false;
-            switch (button) {
-                /* Extra mouse button actions */
-                case 6:
-                case 8:
-                    if (mods == 0) {
-                        result = true;
-                        go_back ();
-                    }
-                    break;
+    //TODO Use EventController
+    //     private bool on_button_press_event (Gdk.EventButton event) {
+    //         Gdk.ModifierType state;
+    //         event.get_state (out state);
+    //         uint button;
+    //         event.get_button (out button);
+    //         var mods = state & Gtk.accelerator_get_default_mod_mask ();
+    //         bool result = false;
+    //         switch (button) {
+    //             /* Extra mouse button actions */
+    //             case 6:
+    //             case 8:
+    //                 if (mods == 0) {
+    //                     result = true;
+    //                     go_back ();
+    //                 }
+    //                 break;
 
-                case 7:
-                case 9:
-                    if (mods == 0) {
-                        result = true;
-                        go_forward ();
-                    }
-                    break;
+    //             case 7:
+    //             case 9:
+    //                 if (mods == 0) {
+    //                     result = true;
+    //                     go_forward ();
+    //                 }
+    //                 break;
 
-                default:
-                    break;
-            }
+    //             default:
+    //                 break;
+    //         }
 
-            return result;
-        }
-    }
+    //         return result;
+    //     }
+    // }
+}
 }
