@@ -73,26 +73,26 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
         }
     }
 
-    public Gdk.Pixbuf? render_icon (string icon_name, Gtk.StyleContext context) {
+    public Gtk.IconPaintable? render_icon (string icon_name, Gtk.StyleContext context) {
         var theme = Gtk.IconTheme.get_default ();
-        Gdk.Pixbuf? pix = null;
-        Gtk.IconInfo? gtk_icon_info = null;
+        // Gtk.IconPaintable? pix = null;
+        Gtk.IconPaintable? gtk_icon_info = null;
         var scale = context.get_scale ();
-
+        var direction = context.get_direction ();
         var gicon = new ThemedIcon.with_default_fallbacks (icon_name);
 
         var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
-        gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
+        gtk_icon_info = theme.lookup_by_gicon (gicon, 16, scale, direction, flags);
 
-        if (gtk_icon_info != null) {
-            try {
-                pix = gtk_icon_info.load_symbolic_for_context (context);
-            } catch (Error e) {
-                warning ("Failed to load icon for %s: %s", icon_name, e.message);
-            }
-        }
+        // if (gtk_icon_info != null) {
+        //     try {
+        //         pix = gtk_icon_info.load_symbolic_for_context (context);
+        //     } catch (Error e) {
+        //         warning ("Failed to load icon for %s: %s", icon_name, e.message);
+        //     }
+        // }
 
-        return pix;
+        return gtk_icon_info;
     }
 
     public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {

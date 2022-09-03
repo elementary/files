@@ -35,44 +35,45 @@ namespace Files {
             get_real_editable ().key_press_event.connect (on_key_press_event);
         }
 
-        public virtual bool on_key_press_event (Gdk.EventKey event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+        //TODO Use EventControllers
+        // public virtual bool on_key_press_event (Gdk.EventKey event) {
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
-            switch (keyval) {
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                    /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
-                     *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
-                     */
-                    if (mods == 0) {
-                        end_editing (false);
-                        return true;
-                    }
+        //     switch (keyval) {
+        //         case Gdk.Key.Return:
+        //         case Gdk.Key.KP_Enter:
+        //             /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
+        //              *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
+        //              */
+        //             if (mods == 0) {
+        //                 end_editing (false);
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.Escape:
-                    end_editing (true);
-                    return true;
+        //         case Gdk.Key.Escape:
+        //             end_editing (true);
+        //             return true;
 
-                case Gdk.Key.z:
-                    /* Undo with Ctrl-Z only */
-                    if (only_control_pressed) {
-                        set_text (original_name);
-                        return true;
-                    }
-                    break;
+        //         case Gdk.Key.z:
+        //             /* Undo with Ctrl-Z only */
+        //             if (only_control_pressed) {
+        //                 set_text (original_name);
+        //                 return true;
+        //             }
+        //             break;
 
-                default:
-                    break;
-            }
-            return false;
-        }
+        //         default:
+        //             break;
+        //     }
+        //     return false;
+        // }
 
         public void end_editing (bool cancelled) {
             editing_canceled = cancelled;
