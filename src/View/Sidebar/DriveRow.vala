@@ -119,7 +119,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         set_tooltip_markup (custom_name);
     }
 
-    protected override void popup_context_menu (Gdk.EventButton event) {
+    protected override void popup_context_menu (Gdk.Event event) {
         // At present, this type of row only shows when there is no media or unformatted so there are no
         // usable actions.  In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();

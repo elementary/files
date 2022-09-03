@@ -18,7 +18,7 @@
 ***/
 
 namespace Files.View {
-    public class OverlayBar : Granite.Widgets.OverlayBar {
+    public class OverlayBar : Granite.OverlayBar {
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
         Cancellable? cancellable = null;

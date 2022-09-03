@@ -66,22 +66,23 @@ namespace Files {
             return textview.get_text ();
         }
 
-        public override bool on_key_press_event (Gdk.EventKey event) {
-            /* Ensure rename cancelled on cursor Up/Down */
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                    end_editing (true);
-                    return true;
+        //TODO Use EventControllers
+        // public override bool on_key_press_event (Gdk.EventKey event) {
+        //     /* Ensure rename cancelled on cursor Up/Down */
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         case Gdk.Key.Up:
+        //         case Gdk.Key.Down:
+        //             end_editing (true);
+        //             return true;
 
-                default:
-                    break;
-            }
+        //         default:
+        //             break;
+        //     }
 
-            return base.on_key_press_event (event);
-        }
+        //     return base.on_key_press_event (event);
+        // }
 
         /** Gtk.Editable interface */
 

@@ -286,7 +286,8 @@ namespace Files {
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
             var app = (Files.Application)(GLib.Application.get_default ());
-            clipboard = app.get_clipboard_manager ();
+            // clipboard = app.get_clipboard_manager ();
+            clipboard = ClipboardManager.get_instance ();
             recent = app.get_recent_manager ();
             app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
             app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});

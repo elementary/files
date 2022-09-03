@@ -62,6 +62,7 @@ namespace Files {
                                                      Gdk.DragAction possible_actions) {
 
             add_action (win);
+            //TODO Rework for GLib.Menu or Popover
             // var ask_menu = build_menu (possible_actions);
             // ask_menu.set_screen (dest_widget.get_screen ());
             // ask_menu.show_all ();
@@ -268,31 +269,41 @@ namespace Files {
         // }
 
 
-        // public static bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
-        //     text = null;
+        public static bool selection_data_is_uri_list (
+            Gdk.ContentProvider cp, uint info, out string? text) {
+            text = null;
 
-        //     if (info == Files.TargetType.TEXT_URI_LIST &&
-        //         selection_data != null &&
-        //         selection_data.get_length () > 0 && //No other way to get length?
-        //         selection_data.get_format () == 8) {
+            if (info == Files.TargetType.TEXT_URI_LIST &&
+                cp != null) {
+                // cp.contain_gtype (typeof string)) {
+                // selection_data.get_length () > 0 && //No other way to get length?
+                // selection_data.get_format () == 8) {
 
-        //         /* selection_data.get_data () does not work for some reason (returns nothing) */
-        //         text = DndHandler.data_to_string (selection_data.get_data_with_length ());
-        //     }
-
-        //     debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
-        //     return (text != null);
-        // }
-
-        public static string data_to_string (uchar [] cdata) {
-            var sb = new StringBuilder ("");
-
-            foreach (uchar u in cdata) {
-                sb.append_c ((char)u);
+                /* selection_data.get_data () does not work for some reason (returns nothing) */
+                // text = DndHandler.data_to_string (selection_data.get_data_with_length ());
+                var string_val = Value (typeof (string));
+                try {
+                    if (cp.get_value (out string_val)) { //FIXME Valadoc has ref instead of out
+                        text = string_val.get_string ();
+                    }
+                } catch (Error e) {
+                    warning ("Could not get string from Value. %s", e.message);
+                }
             }
 
-            return sb.str;
+            debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
+            return (text != null);
         }
+
+        // public static string data_to_string (uchar [] cdata) {
+        //     var sb = new StringBuilder ("");
+
+        //     foreach (uchar u in cdata) {
+        //         sb.append_c ((char)u);
+        //     }
+
+        //     return sb.str;
+        // }
 
         // public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
         //                                                       GLib.List<Files.File> file_list,

@@ -201,7 +201,7 @@ namespace Files {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override uint get_event_position_info (double x, double y,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
@@ -210,13 +210,19 @@ namespace Files {
             int cx, cy, depth;
             path = null;
 
-            var ewindow = event.get_window ();
-            if (ewindow != tree.get_bin_window ()) {
-                return ClickZone.INVALID;
-            }
+            // var ewindow = event.get_window ();
+            // if (ewindow != tree.get_bin_window ()) {
+            //     return ClickZone.INVALID;
+            // }
 
-            double x, y;
-            event.get_coords (out x, out y);
+            // double x, y;
+            // event.get_coords (out x, out y);
+
+            /* Determine whether there whitespace at this point.  Note: this function returns false when the
+             * position is on the edge of the cell, even though this appears to be blank. We
+             * deal with this below. */
+            var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
+
             tree.get_path_at_pos ((int)x, (int)y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
@@ -392,29 +398,30 @@ namespace Files {
             }
         }
 
-        /* Override base class in order to disable the Gtk.TreeView local search functionality */
-        public override bool key_press_event (Gdk.EventKey event) {
-            /* We still need the base class to handle cursor keys first */
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.KP_Up:
-                case Gdk.Key.KP_Down:
-                case Gdk.Key.Page_Up:
-                case Gdk.Key.Page_Down:
-                case Gdk.Key.KP_Page_Up:
-                case Gdk.Key.KP_Page_Down:
-                case Gdk.Key.Home:
-                case Gdk.Key.End:
+        //TODO Use EventControllers
+        // /* Override base class in order to disable the Gtk.TreeView local search functionality */
+        // public override bool key_press_event (Gdk.EventKey event) {
+        //     /* We still need the base class to handle cursor keys first */
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         case Gdk.Key.Up:
+        //         case Gdk.Key.Down:
+        //         case Gdk.Key.KP_Up:
+        //         case Gdk.Key.KP_Down:
+        //         case Gdk.Key.Page_Up:
+        //         case Gdk.Key.Page_Down:
+        //         case Gdk.Key.KP_Page_Up:
+        //         case Gdk.Key.KP_Page_Down:
+        //         case Gdk.Key.Home:
+        //         case Gdk.Key.End:
 
-                    return base.key_press_event (event);
+        //             return base.key_press_event (event);
 
-                default:
+        //         default:
 
-                    return false; // Pass event to Window handler.
-            }
-        }
+        //             return false; // Pass event to Window handler.
+        //     }
+        // }
     }
 }
