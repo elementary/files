@@ -24,7 +24,7 @@ public class Files.FileChooserPortal : Object {
     private static bool opt_replace = false;
     private static bool show_version = false;
 
-    private HashTable<string, FileChooserDialog> dialogs;
+    private HashTable<string, Files.FileChooserDialog> dialogs;
     private DBusConnection connection;
 
     private const OptionEntry[] ENTRIES = {
@@ -35,7 +35,7 @@ public class Files.FileChooserPortal : Object {
 
     public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
-        dialogs = new HashTable<string, FileChooserDialog> (str_hash, str_equal);
+        dialogs = new HashTable<string, Files.FileChooserDialog> (str_hash, str_equal);
     }
 
     public async void open_file (
@@ -129,7 +129,6 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -253,7 +252,6 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -337,7 +335,6 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -372,7 +369,7 @@ public class Files.FileChooserPortal : Object {
             };
 
         var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
-        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        replace_button.get_style_context ().add_class ("destructive-action");
 
         return replace_dialog;
     }

@@ -39,7 +39,7 @@ public class Files.FileOperations.CommonJob {
     }
 
     protected void inhibit_power_manager (string message) {
-        
+
         weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
         inhibit_cookie = app.inhibit (
             parent_window,
