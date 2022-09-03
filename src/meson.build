@@ -40,9 +40,9 @@ pantheon_files_exec = executable (
     'View/ListView.vala',
     'View/Miller.vala',
     'View/PrivacyModeOn.vala',
-    'View/Slot.vala',
     'View/ViewContainer.vala',
     'View/Window.vala',
+    'View/Slot.vala',
 
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/BreadcrumbsEntry.vala',

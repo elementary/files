@@ -105,7 +105,7 @@ public class Files.Progress.UIHandler : Object {
         ensure_window ();
 
         var progress_widget = new Progress.InfoWidget (info);
-        window_vbox.pack_start (progress_widget, false, false, 6);
+        window_vbox.prepend (progress_widget);
 
         progress_widget.cancelled.connect ((info) => {
             progress_info_finished_cb (info);
@@ -129,14 +129,14 @@ public class Files.Progress.UIHandler : Object {
 
             window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
 
-            progress_window.get_content_area ().set_border_width (10);
-            progress_window.get_content_area ().add (this.window_vbox);
+            // progress_window.get_content_area ().set_border_width (10);
+            progress_window.get_content_area ().append (window_vbox);
             this.window_vbox.show ();
 
-            progress_window.delete_event.connect ((widget, event) => {
-                widget.hide ();
-                return true;
-            });
+            // progress_window.delete_event.connect ((widget, event) => {
+            // progress_window.close.connect ((widget) => {
+            //     widget.hide ();
+            // });
         }
 
         progress_window.set_transient_for (application.get_active_window ());
@@ -158,7 +158,7 @@ public class Files.Progress.UIHandler : Object {
             if (!info.is_cancelled) {
                 var title = info.title;  /* Do not keep ref to info */
                 Timeout.add (100, () => {
-                    if (!application.get_active_window ().has_toplevel_focus) {
+                    if (!(((Gtk.Root)(application.get_active_window ()).get_focus () != null))) { //??Gtk4
                         show_operation_complete_notification (title, active_infos < 1);
                     }
 
