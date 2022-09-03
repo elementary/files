@@ -22,7 +22,7 @@ namespace Files.View.Chrome {
     public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
         /** Breadcrumb context menu support **/
         ulong files_menu_dir_handler_id = 0;
-        Gtk.Menu menu;
+        GLib.Menu menu;
 
         /** Completion support **/
         Directory? current_completion_dir = null;
@@ -61,52 +61,52 @@ namespace Files.View.Chrome {
         }
 
         private void set_up_drag_drop () {
-            /* Drag and drop */
-            Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Files.TargetType.TEXT_URI_LIST};
-            Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION,
-                               {target_uri_list},
-                               Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
+            //TODO Set up DnD
+            // /* Drag and drop */
+            // Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Files.TargetType.TEXT_URI_LIST};
+            // Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION,
+            //                    {target_uri_list},
+            //                    Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
 
-            drag_leave.connect (on_drag_leave);
-            drag_motion.connect (on_drag_motion);
-            drag_data_received.connect (on_drag_data_received);
-            drag_drop.connect (on_drag_drop);
+            // drag_leave.connect (on_drag_leave);
+            // drag_motion.connect (on_drag_motion);
+            // drag_data_received.connect (on_drag_data_received);
+            // drag_drop.connect (on_drag_drop);
         }
 
     /** Overridden Navigatable interface functions **/
     /************************************************/
-        public override bool on_key_press_event (Gdk.EventKey event) {
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                case Gdk.Key.ISO_Enter:
-                    if (search_mode) {
-                        return true;
-                    }
-                    break;
-                case Gdk.Key.KP_Tab:
-                case Gdk.Key.Tab:
-                    complete ();
-                    return true;
-            }
+        //TODO Use EventController
+        // public override bool on_key_press_event (Gdk.EventKey event) {
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         case Gdk.Key.Return:
+        //         case Gdk.Key.KP_Enter:
+        //         case Gdk.Key.ISO_Enter:
+        //             if (search_mode) {
+        //                 return true;
+        //             }
+        //             break;
+        //         case Gdk.Key.KP_Tab:
+        //         case Gdk.Key.Tab:
+        //             complete ();
+        //             return true;
+        //     }
+        //     return base.on_key_press_event (event);
+        // }
+        // protected override bool on_button_release_event (Gdk.Event event) {
+        //     if (drop_file_list != null) {
+        //         return true;
+        //     }
 
-            return base.on_key_press_event (event);
-        }
+        //     return base.on_button_release_event (event);
+        // }
 
         public override void reset () {
             base.reset ();
             clear_completion ();
             current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
-        }
-
-        protected override bool on_button_release_event (Gdk.EventButton event) {
-            if (drop_file_list != null) {
-                return true;
-            }
-
-            return base.on_button_release_event (event);
         }
 
 
@@ -283,125 +283,126 @@ namespace Files.View.Chrome {
     /** Drag-drop functions **/
     /****************************/
 
-        protected bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
-            if (!drop_data_ready) {
-                Gtk.TargetList list = null;
-                Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
-                if (target != Gdk.Atom.NONE) {
-                    Gtk.drag_get_data (this, context, target, time); /* emits "drag_data_received" */
-                }
-            }
+        //TODO Reimplement DnD for Gtk4
+        // protected bool on_drag_motion (Gdk.DragContext context, int x, int y, uint time) {
+        //     if (!drop_data_ready) {
+        //         Gtk.TargetList list = null;
+        //         Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
+        //         if (target != Gdk.Atom.NONE) {
+        //             Gtk.drag_get_data (this, context, target, time); /* emits "drag_data_received" */
+        //         }
+        //     }
 
-            Gtk.drag_unhighlight (this);
-            GLib.Signal.stop_emission_by_name (this, "drag-motion");
+        //     Gtk.drag_unhighlight (this);
+        //     GLib.Signal.stop_emission_by_name (this, "drag-motion");
 
-            foreach (BreadcrumbElement element in elements) {
-                element.pressed = false;
-            }
+        //     foreach (BreadcrumbElement element in elements) {
+        //         element.pressed = false;
+        //     }
 
-            var el = get_element_from_coordinates (x, y);
-            current_suggested_action = Gdk.DragAction.DEFAULT;
-            if (el != null && drop_file_list != null) {
-                el.pressed = true;
-                drop_target_file = get_target_location (x, y);
-                current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
-                                                               context,
-                                                               out current_suggested_action);
-            }
+        //     var el = get_element_from_coordinates (x, y);
+        //     current_suggested_action = Gdk.DragAction.DEFAULT;
+        //     if (el != null && drop_file_list != null) {
+        //         el.pressed = true;
+        //         drop_target_file = get_target_location (x, y);
+        //         current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
+        //                                                        context,
+        //                                                        out current_suggested_action);
+        //     }
 
-            Gdk.drag_status (context, current_suggested_action, time);
-            queue_draw ();
-            return true;
-        }
+        //     Gdk.drag_status (context, current_suggested_action, time);
+        //     queue_draw ();
+        //     return true;
+        // }
 
-        protected bool on_drag_drop (Gdk.DragContext context,
-                                     int x,
-                                     int y,
-                                     uint timestamp) {
-            Gtk.TargetList list = null;
-            bool ok_to_drop = false;
+        // protected bool on_drag_drop (Gdk.DragContext context,
+        //                              int x,
+        //                              int y,
+        //                              uint timestamp) {
+        //     Gtk.TargetList list = null;
+        //     bool ok_to_drop = false;
 
-            Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
+        //     Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
 
-            ok_to_drop = (target != Gdk.Atom.NONE);
-            if (ok_to_drop) {
-                drop_occurred = true;
-                Gtk.drag_get_data (this, context, target, timestamp);
-            }
+        //     ok_to_drop = (target != Gdk.Atom.NONE);
+        //     if (ok_to_drop) {
+        //         drop_occurred = true;
+        //         Gtk.drag_get_data (this, context, target, timestamp);
+        //     }
 
-            return ok_to_drop;
-        }
+        //     return ok_to_drop;
+        // }
 
-        protected void on_drag_data_received (Gdk.DragContext context,
-                                            int x,
-                                            int y,
-                                            Gtk.SelectionData selection_data,
-                                            uint info,
-                                            uint timestamp
-                                            ) {
-            bool success = false;
+        // protected void on_drag_data_received (Gdk.DragContext context,
+        //                                     int x,
+        //                                     int y,
+        //                                     Gtk.SelectionData selection_data,
+        //                                     uint info,
+        //                                     uint timestamp
+        //                                     ) {
+        //     bool success = false;
 
-            if (!drop_data_ready) {
-                /* We don't have the drop data - extract uri list from selection data */
-                string? text;
-                if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = FileUtils.files_from_uris (text);
-                    drop_data_ready = true;
-                }
-            }
+        //     if (!drop_data_ready) {
+        //         /* We don't have the drop data - extract uri list from selection data */
+        //         string? text;
+        //         if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
+        //             drop_file_list = FileUtils.files_from_uris (text);
+        //             drop_data_ready = true;
+        //         }
+        //     }
 
-            GLib.Signal.stop_emission_by_name (this, "drag-data-received");
-            if (drop_data_ready && drop_occurred && info == Files.TargetType.TEXT_URI_LIST) {
-                drop_occurred = false;
-                current_actions = 0;
-                current_suggested_action = 0;
-                drop_target_file = get_target_location (x, y);
-                if (drop_target_file != null) {
-                    current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
-                                                                     context,
-                                                                     out current_suggested_action);
+        //     GLib.Signal.stop_emission_by_name (this, "drag-data-received");
+        //     if (drop_data_ready && drop_occurred && info == Files.TargetType.TEXT_URI_LIST) {
+        //         drop_occurred = false;
+        //         current_actions = 0;
+        //         current_suggested_action = 0;
+        //         drop_target_file = get_target_location (x, y);
+        //         if (drop_target_file != null) {
+        //             current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
+        //                                                              context,
+        //                                                              out current_suggested_action);
 
-                    if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
-                        success = dnd_handler.handle_file_drag_actions (
-                            this,
-                            context,
-                            drop_target_file,
-                            drop_file_list,
-                            current_actions,
-                            current_suggested_action,
-                            (Gtk.ApplicationWindow)Files.get_active_window (),
-                            timestamp
-                        );
-                    }
-                }
-                Gtk.drag_finish (context, success, false, timestamp);
-                on_drag_leave (context, timestamp);
-            }
-        }
+        //             if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
+        //                 success = dnd_handler.handle_file_drag_actions (
+        //                     this,
+        //                     context,
+        //                     drop_target_file,
+        //                     drop_file_list,
+        //                     current_actions,
+        //                     current_suggested_action,
+        //                     (Gtk.ApplicationWindow)Files.get_active_window (),
+        //                     timestamp
+        //                 );
+        //             }
+        //         }
+        //         Gtk.drag_finish (context, success, false, timestamp);
+        //         on_drag_leave (context, timestamp);
+        //     }
+        // }
 
-        protected void on_drag_leave (Gdk.DragContext drag_context, uint time) {
-            foreach (BreadcrumbElement element in elements) {
-                if (element.pressed) {
-                    element.pressed = false;
-                    break;
-                }
-            }
+        // protected void on_drag_leave (Gdk.DragContext drag_context, uint time) {
+        //     foreach (BreadcrumbElement element in elements) {
+        //         if (element.pressed) {
+        //             element.pressed = false;
+        //             break;
+        //         }
+        //     }
 
-            drop_occurred = false;
-            drop_data_ready = false;
-            drop_file_list = null;
+        //     drop_occurred = false;
+        //     drop_data_ready = false;
+        //     drop_file_list = null;
 
-            queue_draw ();
-        }
+        //     queue_draw ();
+        // }
 
-        public void right_click_menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
+        public void right_click_menu_position_func (GLib.Menu menu, out int x, out int y, out bool push_in) {
             x = (int) menu_x_root;
             y = (int) menu_y_root;
             push_in = true;
         }
     /** Context menu functions **/
     /****************************/
-        private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
+        private void load_right_click_menu (Gdk.Event event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
             string parent_path = FileUtils.get_parent_path_from_path (path);
             GLib.File? root = FileUtils.get_file_for_path (parent_path);
@@ -419,7 +420,7 @@ namespace Files.View.Chrome {
 
             menu_y_root = y_root - y + get_allocated_height () - padding.bottom - padding.top;
 
-            menu = new Gtk.Menu ();
+            menu = new GLib.Menu ();
             menu.cancel.connect (() => {reset_elements_states ();});
             menu.deactivate.connect (() => {reset_elements_states ();});
 
@@ -445,16 +446,16 @@ namespace Files.View.Chrome {
             }
         }
 
-        private void build_base_menu (Gtk.Menu menu, string path) {
+        private void build_base_menu (GLib.Menu menu, string path) {
             /* First the "Open in new tab" menuitem is added to the menu. */
-            var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
+            var menuitem_newtab = new GLib.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
             menuitem_newtab.activate.connect (() => {
                 activate_path (path, Files.OpenFlag.NEW_TAB);
             });
 
             /* "Open in new window" menuitem is added to the menu. */
-            var menuitem_newwin = new Gtk.MenuItem.with_label (_("Open in New Window"));
+            var menuitem_newwin = new GLib.MenuItem.with_label (_("Open in New Window"));
             menu.append (menuitem_newwin);
             menuitem_newwin.activate.connect (() => {
                 activate_path (path, Files.OpenFlag.NEW_WINDOW);
@@ -462,7 +463,7 @@ namespace Files.View.Chrome {
 
             menu.append (new Gtk.SeparatorMenuItem ());
 
-            var submenu_open_with = new Gtk.Menu ();
+            var submenu_open_with = new GLib.Menu ();
             var loc = GLib.File.new_for_uri (FileUtils.escape_uri (path));
             var root = Files.File.get_by_uri (path);
             var app_info_list = MimeActions.get_applications_for_folder (root);
@@ -477,7 +478,7 @@ namespace Files.View.Chrome {
 
                     item_grid.add (img);
                     item_grid.add (new Gtk.Label (app_info.get_name ()));
-                     var menu_item = new Gtk.MenuItem ();
+                     var menu_item = new GLib.MenuItem ();
                     menu_item.add (item_grid);
                     menu_item.set_data ("appinfo", app_info);
                     menu_item.activate.connect (() => {
@@ -490,14 +491,14 @@ namespace Files.View.Chrome {
 
             if (at_least_one) {
                 /* Then the "Open with" menuitem is added to the menu. */
-                var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
+                var menu_open_with = new GLib.MenuItem.with_label (_("Open with"));
                 menu.append (menu_open_with);
                 menu_open_with.set_submenu (submenu_open_with);
                 submenu_open_with.append (new Gtk.SeparatorMenuItem ());
             }
 
             /* Then the "Open with other application ..." menuitem is added to the menu. */
-            var open_with_other_item = new Gtk.MenuItem.with_label (_("Open in Other Application…"));
+            var open_with_other_item = new GLib.MenuItem.with_label (_("Open in Other Application…"));
             open_with_other_item.activate.connect (() => {
                 open_with_request (loc, null);
             });
@@ -505,7 +506,7 @@ namespace Files.View.Chrome {
             submenu_open_with.append (open_with_other_item);
         }
 
-        private void append_subdirectories (Gtk.Menu menu, Directory dir) {
+        private void append_subdirectories (GLib.Menu menu, Directory dir) {
             /* Append list of directories at the same level */
             if (dir.can_load) {
                 unowned List<unowned Files.File>? sorted_dirs = dir.get_sorted_dirs ();
@@ -513,7 +514,7 @@ namespace Files.View.Chrome {
                 if (sorted_dirs != null) {
                     menu.append (new Gtk.SeparatorMenuItem ());
                     foreach (unowned Files.File gof in sorted_dirs) {
-                        var menuitem = new Gtk.MenuItem.with_label (gof.get_display_name ());
+                        var menuitem = new GLib.MenuItem.with_label (gof.get_display_name ());
                         menuitem.set_data ("location", gof.uri);
                         menu.append (menuitem);
                         menuitem.activate.connect ((mi) => {
@@ -538,7 +539,7 @@ namespace Files.View.Chrome {
             return null;
         }
 
-        protected override bool on_button_press_event (Gdk.EventButton event) {
+        protected override bool on_button_press_event (Gdk.Event event) {
             /* Only handle if not on icon and breadcrumbs are visible.
              * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/
             if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
@@ -566,7 +567,7 @@ namespace Files.View.Chrome {
             return true;
         }
 
-        private BreadcrumbElement? mark_pressed_element (Gdk.EventButton event) {
+        private BreadcrumbElement? mark_pressed_element (Gdk.Event event) {
             reset_elements_states ();
             double x, y;
             event.get_coords (out x, out y);
@@ -578,13 +579,13 @@ namespace Files.View.Chrome {
             return el;
         }
 
-        protected void handle_middle_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
+        protected void handle_middle_button_press (Gdk.Event event, BreadcrumbElement? el) {
             if (el != null) {
                 activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
             }
         }
 
-        protected void handle_secondary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
+        protected void handle_secondary_button_press (Gdk.Event event, BreadcrumbElement? el) {
             load_right_click_menu (event, el);
         }
     }

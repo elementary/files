@@ -433,108 +433,109 @@ namespace Files.View.Chrome {
             }
         }
 
-        bool on_button_press_event (Gdk.EventButton e) {
-            if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
-                view.event (e);
-                return true;
-            } else {
-                cancel ();
-                exit ();
-                return false;
-            }
-        }
+        //TODO Use EventControllers
+        // bool on_button_press_event (Gdk.EventButton e) {
+        //     if (e.x >= 0 && e.y >= 0 && e.x < get_allocated_width () && e.y < get_allocated_height ()) {
+        //         view.event (e);
+        //         return true;
+        //     } else {
+        //         cancel ();
+        //         exit ();
+        //         return false;
+        //     }
+        // }
 
-        bool on_view_button_press_event (Gdk.EventButton e) {
-            Gtk.TreePath path;
-            Gtk.TreeIter iter;
+        // bool on_view_button_press_event (Gdk.EventButton e) {
+        //     Gtk.TreePath path;
+        //     Gtk.TreeIter iter;
 
-            view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
-            if (path != null && path.get_depth () > 1) {
-                filter.get_iter (out iter, path);
-                filter.convert_iter_to_child_iter (out iter, iter);
-                accept (iter, e.button > 1); /* This will call cancel () */
-            } else {
-                Gdk.beep ();
-            }
+        //     view.get_path_at_pos ((int) e.x, (int) e.y, out path, null, null, null);
+        //     if (path != null && path.get_depth () > 1) {
+        //         filter.get_iter (out iter, path);
+        //         filter.convert_iter_to_child_iter (out iter, iter);
+        //         accept (iter, e.button > 1); /* This will call cancel () */
+        //     } else {
+        //         Gdk.beep ();
+        //     }
 
-            return true;
-        }
+        //     return true;
+        // }
 
-        bool on_key_press_event (Gdk.EventKey event) {
-            if (event.is_modifier == 1) {
-                return true;
-            }
+        // bool on_key_press_event (Gdk.EventKey event) {
+        //     if (event.is_modifier == 1) {
+        //         return true;
+        //     }
 
-            uint keyval;
-            event.get_keyval (out keyval);
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
-            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-            bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
-            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
-            bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+        //     bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+        //     bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
+        //     bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+        //     bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
 
-            if (mods != 0 && !only_shift_pressed) {
-                if (only_control_pressed) {
-                    if (keyval == Gdk.Key.l) {
-                        cancel (); /* release any grab */
-                        exit (false); /* Do not exit navigate mode */
-                        return true;
-                    } else {
-                        return parent.key_press_event (event);
-                    }
-                } else if (only_alt_pressed &&
-                           keyval == Gdk.Key.Return ||
-                           keyval == Gdk.Key.KP_Enter ||
-                           keyval == Gdk.Key.ISO_Enter) {
+        //     if (mods != 0 && !only_shift_pressed) {
+        //         if (only_control_pressed) {
+        //             if (keyval == Gdk.Key.l) {
+        //                 cancel (); /* release any grab */
+        //                 exit (false); /* Do not exit navigate mode */
+        //                 return true;
+        //             } else {
+        //                 return parent.key_press_event (event);
+        //             }
+        //         } else if (only_alt_pressed &&
+        //                    keyval == Gdk.Key.Return ||
+        //                    keyval == Gdk.Key.KP_Enter ||
+        //                    keyval == Gdk.Key.ISO_Enter) {
 
-                    accept (null, true); // Open the selected file in default app
-                } else {
-                    return parent.key_press_event (event);
-                }
-            }
+        //             accept (null, true); // Open the selected file in default app
+        //         } else {
+        //             return parent.key_press_event (event);
+        //         }
+        //     }
 
-            switch (keyval) {
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                case Gdk.Key.ISO_Enter:
-                    accept (null, false); // Navigate to the selected file
-                    return true;
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.Tab:
-                case Gdk.Key.ISO_Left_Tab:
-                    if (list_empty ()) {
-                        Gdk.beep ();
-                        return true;
-                    }
+        //     switch (keyval) {
+        //         case Gdk.Key.Return:
+        //         case Gdk.Key.KP_Enter:
+        //         case Gdk.Key.ISO_Enter:
+        //             accept (null, false); // Navigate to the selected file
+        //             return true;
+        //         case Gdk.Key.Up:
+        //         case Gdk.Key.Down:
+        //         case Gdk.Key.Tab:
+        //         case Gdk.Key.ISO_Left_Tab:
+        //             if (list_empty ()) {
+        //                 Gdk.beep ();
+        //                 return true;
+        //             }
 
-                    var up = (keyval == Gdk.Key.Up) ||
-                             (keyval == Gdk.Key.ISO_Left_Tab);
+        //             var up = (keyval == Gdk.Key.Up) ||
+        //                      (keyval == Gdk.Key.ISO_Left_Tab);
 
-                    if (view.get_selection ().count_selected_rows () < 1) {
-                        if (up) {
-                            select_last ();
-                        } else {
-                            select_first ();
-                        }
+        //             if (view.get_selection ().count_selected_rows () < 1) {
+        //                 if (up) {
+        //                     select_last ();
+        //                 } else {
+        //                     select_first ();
+        //                 }
 
-                        return true;
-                    }
+        //                 return true;
+        //             }
 
-                    select_adjacent (up);
-                    return true;
-                case Gdk.Key.Escape:
-                    cancel (); /* release any grab */
-                    exit ();
-                    return true;
-                default:
-                    break;
-            }
-            return parent.key_press_event (event);
-        }
+        //             select_adjacent (up);
+        //             return true;
+        //         case Gdk.Key.Escape:
+        //             cancel (); /* release any grab */
+        //             exit ();
+        //             return true;
+        //         default:
+        //             break;
+        //     }
+        //     return parent.key_press_event (event);
+        // }
 
         void select_first () {
             Gtk.TreeIter iter;

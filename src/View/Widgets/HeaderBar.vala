@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
+public class Files.View.Chrome.HeaderBar : Adw.HeaderBar {
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);

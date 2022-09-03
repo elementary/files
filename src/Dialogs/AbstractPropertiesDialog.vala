@@ -128,7 +128,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         }
     }
 
-    protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
+    protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Widget content) {
         if (content != null) {
             stack.add_titled (content, name, title);
         }

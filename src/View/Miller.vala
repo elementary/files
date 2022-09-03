@@ -359,80 +359,81 @@ namespace Files.View {
             }
         }
 
-        private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
-            /* Only handle unmodified keys */
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
-                return false;
-            }
+        //TODO Use EventController
+        // private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
+        //     /* Only handle unmodified keys */
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
+        //         return false;
+        //     }
 
-            int current_position = slot_list.index (current_slot);
+        //     int current_position = slot_list.index (current_slot);
 
-            if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
-                return false;
-            }
+        //     if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
+        //         return false;
+        //     }
 
-            View.Slot to_activate = null;
+        //     View.Slot to_activate = null;
 
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Left:
-                    if (current_position > 0) {
-                        to_activate = slot_list.nth_data (current_position - 1);
-                    }
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         case Gdk.Key.Left:
+        //             if (current_position > 0) {
+        //                 to_activate = slot_list.nth_data (current_position - 1);
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.Right:
-                    if (current_slot.get_selected_files () == null) {
-                        return true;
-                    }
+        //         case Gdk.Key.Right:
+        //             if (current_slot.get_selected_files () == null) {
+        //                 return true;
+        //             }
 
-                    Files.File? selected_file = current_slot.get_selected_files ().data;
+        //             Files.File? selected_file = current_slot.get_selected_files ().data;
 
-                    if (selected_file == null) {
-                        return true;
-                    }
+        //             if (selected_file == null) {
+        //                 return true;
+        //             }
 
-                    GLib.File current_location = selected_file.location;
-                    GLib.File? next_location = null;
+        //             GLib.File current_location = selected_file.location;
+        //             GLib.File? next_location = null;
 
-                    if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
-                        next_location = slot_list.nth_data (current_position + 1).location;
-                    }
+        //             if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
+        //                 next_location = slot_list.nth_data (current_position + 1).location;
+        //             }
 
-                    if (next_location != null && next_location.equal (current_location)) {
-                        to_activate = slot_list.nth_data (current_position + 1);
-                    } else if (selected_file.is_folder ()) {
-                        add_location (current_location, current_slot);
-                        return true;
-                    }
+        //             if (next_location != null && next_location.equal (current_location)) {
+        //                 to_activate = slot_list.nth_data (current_position + 1);
+        //             } else if (selected_file.is_folder ()) {
+        //                 add_location (current_location, current_slot);
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.BackSpace:
-                        if (current_position > 0) {
-                            truncate_list_after_slot (slot_list.nth_data (current_position - 1));
-                        } else {
-                            ctab.go_up ();
-                            return true;
-                        }
+        //         case Gdk.Key.BackSpace:
+        //                 if (current_position > 0) {
+        //                     truncate_list_after_slot (slot_list.nth_data (current_position - 1));
+        //                 } else {
+        //                     ctab.go_up ();
+        //                     return true;
+        //                 }
 
-                    break;
+        //             break;
 
-                default:
-                    break;
-            }
+        //         default:
+        //             break;
+        //     }
 
-            if (to_activate != null) {
-                to_activate.active ();
-                to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
-            }
+        //     if (to_activate != null) {
+        //         to_activate.active ();
+        //         to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
         private void on_slot_selection_changed (GLib.List<Files.File> files) {
             selection_changed (files);
