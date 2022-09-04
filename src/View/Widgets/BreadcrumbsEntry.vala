@@ -22,7 +22,7 @@ namespace Files.View.Chrome {
     public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
         /** Breadcrumb context menu support **/
         ulong files_menu_dir_handler_id = 0;
-        GLib.Menu menu;
+        // Gtk.PopoverMenu menu;
 
         /** Completion support **/
         Directory? current_completion_dir = null;
@@ -119,7 +119,7 @@ namespace Files.View.Chrome {
         }
 
         public void hide_primary_icon () {
-            primary_icon_pixbuf = null;
+            primary_icon_paintable = null;
         }
 
         protected override void set_default_entry_tooltip () {
@@ -397,23 +397,25 @@ namespace Files.View.Chrome {
             GLib.File? root = FileUtils.get_file_for_path (parent_path);
 
             var style_context = get_style_context ();
-            var padding = style_context.get_padding (style_context.get_state ());
+            var padding = style_context.get_padding ();
             double x, y, x_root, y_root;
-            event.get_coords (out x, out y);
-            event.get_root_coords (out x_root, out y_root);
-            if (clicked_element.x - BREAD_SPACING < 0) {
-                menu_x_root = x_root - x + clicked_element.x;
-            } else {
-                menu_x_root = x_root - x + clicked_element.x - BREAD_SPACING;
-            }
+            event.get_position (out x, out y);
+            //TODO Rework getting menu position
+            // event.get_root_coords (out x_root, out y_root);
+            // if (clicked_element.x - BREAD_SPACING < 0) {
+            //     menu_x_root = x_root - x + clicked_element.x;
+            // } else {
+            //     menu_x_root = x_root - x + clicked_element.x - BREAD_SPACING;
+            // }
 
-            menu_y_root = y_root - y + get_allocated_height () - padding.bottom - padding.top;
+            // menu_y_root = y_root - y + get_allocated_height () - padding.bottom - padding.top;
 
-            menu = new GLib.Menu ();
-            menu.cancel.connect (() => {reset_elements_states ();});
-            menu.deactivate.connect (() => {reset_elements_states ();});
 
-            build_base_menu (menu, path);
+            // menu.deactivate.connect (() => {reset_elements_states ();});
+
+            var menu = build_base_menu (path);
+            var popover_menu = new Gtk.PopoverMenu.from_model (menu);
+            popover_menu.closed.connect (() => {reset_elements_states ();});
             Directory? files_menu_dir = null;
             if (root != null) {
                 files_menu_dir = Directory.from_gfile (root);
@@ -421,13 +423,12 @@ namespace Files.View.Chrome {
                     append_subdirectories (menu, files_menu_dir);
                     files_menu_dir.disconnect (files_menu_dir_handler_id);
                     // Do not show popup until all children have been appended.
-                    menu.show_all ();
-                    menu.popup_at_pointer (event);
+                    // menu.show_all ();
+                    popover_menu.popup ();
                 });
             } else {
                 warning ("Root directory null for %s", path);
-                menu.show_all ();
-                menu.popup_at_pointer (event);
+                popover_menu.popup ();
             }
 
             if (files_menu_dir != null) {
@@ -435,22 +436,24 @@ namespace Files.View.Chrome {
             }
         }
 
-        private void build_base_menu (GLib.Menu menu, string path) {
+        private Menu build_base_menu (string path) {
             /* First the "Open in new tab" menuitem is added to the menu. */
-            var menuitem_newtab = new GLib.MenuItem.with_label (_("Open in New Tab"));
-            menu.append (menuitem_newtab);
-            menuitem_newtab.activate.connect (() => {
-                activate_path (path, Files.OpenFlag.NEW_TAB);
-            });
+            var menuitem_newtab = new GLib.MenuItem (_("Open in New Tab"), null);
+            //TODO Create actions
+            var menu = new Menu ();
+            menu.append (_("Open in New Tab"), null);
+            // menuitem_newtab.activate.connect (() => {
+            //     activate_path (path, Files.OpenFlag.NEW_TAB);
+            // });
 
             /* "Open in new window" menuitem is added to the menu. */
-            var menuitem_newwin = new GLib.MenuItem.with_label (_("Open in New Window"));
-            menu.append (menuitem_newwin);
-            menuitem_newwin.activate.connect (() => {
-                activate_path (path, Files.OpenFlag.NEW_WINDOW);
-            });
+            // var menuitem_newwin = new GLib.MenuItem.with_label (_("Open in New Window"));
+            menu.append (_("Open in New Window"), null);
+            // menuitem_newwin.activate.connect (() => {
+            //     activate_path (path, Files.OpenFlag.NEW_WINDOW);
+            // });
 
-            menu.append (new Gtk.SeparatorMenuItem ());
+            // menu.append (new Gtk.SeparatorMenuItem ());
 
             var submenu_open_with = new GLib.Menu ();
             var loc = GLib.File.new_for_uri (FileUtils.escape_uri (path));
@@ -460,59 +463,61 @@ namespace Files.View.Chrome {
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
-                    var item_grid = new Gtk.Grid ();
-                    var img = new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU) {
-                        pixel_size = 16
-                    };
+                    // var item_grid = new Gtk.Grid ();
+                    // var img = new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU) {
+                    //     pixel_size = 16
+                    // };
 
-                    item_grid.add (img);
-                    item_grid.add (new Gtk.Label (app_info.get_name ()));
-                     var menu_item = new GLib.MenuItem ();
-                    menu_item.add (item_grid);
+                    // item_grid.add (img);
+                    // item_grid.add (new Gtk.Label (app_info.get_name ()));
+                    var menu_item = new GLib.MenuItem (app_info.get_name (), null);
+                    // menu_item.add (item_grid);
+                    menu_item.set_icon (app_info.get_icon ());
                     menu_item.set_data ("appinfo", app_info);
-                    menu_item.activate.connect (() => {
-                        open_with_request (loc, app_info);
-                    });
+                    // menu_item.activate.connect (() => {
+                    //     open_with_request (loc, app_info);
+                    // });
 
-                    submenu_open_with.append (menu_item);
+                    submenu_open_with.append_item (menu_item);
                 }
             }
 
             if (at_least_one) {
                 /* Then the "Open with" menuitem is added to the menu. */
-                var menu_open_with = new GLib.MenuItem.with_label (_("Open with"));
-                menu.append (menu_open_with);
+                // var menu_open_with = new GLib.MenuItem.with_label (_("Open with"));
+                var menu_open_with = new GLib.MenuItem (_("Open with"), null);
+                menu.append_item (menu_open_with);
                 menu_open_with.set_submenu (submenu_open_with);
-                submenu_open_with.append (new Gtk.SeparatorMenuItem ());
+                // submenu_open_with.append (new Gtk.SeparatorMenuItem ());
             }
 
             /* Then the "Open with other application ..." menuitem is added to the menu. */
-            var open_with_other_item = new GLib.MenuItem.with_label (_("Open in Other Application…"));
-            open_with_other_item.activate.connect (() => {
-                open_with_request (loc, null);
-            });
+            var open_with_other_item = new GLib.MenuItem (_("Open in Other Application…"), null);
+            // open_with_other_item.activate.connect (() => {
+            //     open_with_request (loc, null);
+            // });
 
-            submenu_open_with.append (open_with_other_item);
+            submenu_open_with.append_item (open_with_other_item);
         }
 
-        private void append_subdirectories (GLib.Menu menu, Directory dir) {
+        private void append_subdirectories (Menu menu, Directory dir) {
             /* Append list of directories at the same level */
             if (dir.can_load) {
                 unowned List<unowned Files.File>? sorted_dirs = dir.get_sorted_dirs ();
 
                 if (sorted_dirs != null) {
-                    menu.append (new Gtk.SeparatorMenuItem ());
+                    // menu.append (new Gtk.SeparatorMenuItem ());
                     foreach (unowned Files.File gof in sorted_dirs) {
-                        var menuitem = new GLib.MenuItem.with_label (gof.get_display_name ());
+                        var menuitem = new GLib.MenuItem (gof.get_display_name (), null);
                         menuitem.set_data ("location", gof.uri);
-                        menu.append (menuitem);
-                        menuitem.activate.connect ((mi) => {
-                            activate_path (mi.get_data ("location"));
-                        });
+                        menu.append_item (menuitem);
+                        // menuitem.activate.connect ((mi) => {
+                        //     activate_path (mi.get_data ("location"));
+                        // });
                     }
                 }
             }
-            menu.show_all ();
+            // menu.show_all ();
             /* Release the Async directory as soon as possible */
             dir = null;
         }
@@ -528,54 +533,59 @@ namespace Files.View.Chrome {
             return null;
         }
 
-        protected override bool on_button_press_event (Gdk.Event event) {
-            /* Only handle if not on icon and breadcrumbs are visible.
-             * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/
-            if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
-                return base.on_button_press_event (event);
-            } else {
-                var el = mark_pressed_element (event);
-                if (el != null) {
-                    uint button;
-                    event.get_button (out button);
-                    switch (button) {
-                        case 1:
-                            break; // Long press support discontinued as provided by system settings
-                        case 2:
-                            handle_middle_button_press (event, el);
-                            break;
-                        case 3:
-                            handle_secondary_button_press (event, el);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
+        //TODO Use EventControllers and icon_press signal
+        // protected void on_icon_press_event () {
+        // 
+        // }
+        // 
+        // protected override bool on_button_press_event (Gdk.Event event) {
+        //     /* Only handle if not on icon and breadcrumbs are visible.
+        //      * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/
+        //     if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
+        //         return base.on_button_press_event (event);
+        //     } else {
+        //         var el = mark_pressed_element (event);
+        //         if (el != null) {
+        //             uint button;
+        //             event.get_button (out button);
+        //             switch (button) {
+        //                 case 1:
+        //                     break; // Long press support discontinued as provided by system settings
+        //                 case 2:
+        //                     handle_middle_button_press (event, el);
+        //                     break;
+        //                 case 3:
+        //                     handle_secondary_button_press (event, el);
+        //                     break;
+        //                 default:
+        //                     break;
+        //             }
+        //         }
+        //     }
 
-            return true;
-        }
+        //     return true;
+        // }
 
-        private BreadcrumbElement? mark_pressed_element (Gdk.Event event) {
-            reset_elements_states ();
-            double x, y;
-            event.get_coords (out x, out y);
-            BreadcrumbElement? el = get_element_from_coordinates ((int)x, (int)y);
-            if (el != null) {
-                el.pressed = true;
-                queue_draw ();
-            }
-            return el;
-        }
+        // private BreadcrumbElement? mark_pressed_element (Gdk.Event event) {
+        //     reset_elements_states ();
+        //     double x, y;
+        //     event.get_coords (out x, out y);
+        //     BreadcrumbElement? el = get_element_from_coordinates ((int)x, (int)y);
+        //     if (el != null) {
+        //         el.pressed = true;
+        //         queue_draw ();
+        //     }
+        //     return el;
+        // }
 
-        protected void handle_middle_button_press (Gdk.Event event, BreadcrumbElement? el) {
-            if (el != null) {
-                activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
-            }
-        }
+        // protected void handle_middle_button_press (Gdk.Event event, BreadcrumbElement? el) {
+        //     if (el != null) {
+        //         activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
+        //     }
+        // }
 
-        protected void handle_secondary_button_press (Gdk.Event event, BreadcrumbElement? el) {
-            load_right_click_menu (event, el);
-        }
+        // protected void handle_secondary_button_press (Gdk.Event event, BreadcrumbElement? el) {
+        //     load_right_click_menu (event, el);
+        // }
     }
 }
