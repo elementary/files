@@ -182,7 +182,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         // .with_accellabels (
         //     new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
         //     new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
-        // ) 
+        // )
         // {
             // show_tabs = true,
             // allow_restoring = true,
@@ -238,12 +238,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             var flags = get_state_flags ();
             if (Gtk.StateFlags.FOCUSED in flags &&
                 !(Gtk.StateFlags.FOCUSED in previous_flags)) {
-            
+
                 //Focus in
                 current_container.is_frozen = true;
             } else if (Gtk.StateFlags.FOCUSED in previous_flags &&
                 !(Gtk.StateFlags.FOCUSED in flags)) {
-                
+
                 //Focus out
                 current_container.is_frozen = false;
             }
@@ -336,7 +336,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //TODO Implement handlers for new signals
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
-        
+
         tab_view.close_page.connect ((tab) => {
             var view_container = (ViewContainer)(tab.child);
             // tab.restore_data = view_container.location.get_uri ();
@@ -350,7 +350,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
             view_container.close ();
             tab_view.close_page_finish (tab, false); // No need to confirm
-            
+
             if (tab_view.n_pages == 1) {
                 add_tab ();
             }
@@ -516,7 +516,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //     new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
         //     new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
         //     new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
-        // ) 
+        // )
         // {
         //     child = content
         // };
@@ -677,7 +677,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     public void remove_content (ViewContainer view_container) {
-        for (uint i = 0; i< tab_view.n_pages; i++) {
+        for (uint i = 0; i < tab_view.n_pages; i++) {
             var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
             if (tab.child == view_container) {
                 remove_tab (tab);
@@ -963,7 +963,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 uri_path_change_request (server_uri, Files.OpenFlag.DEFAULT);
             }
         });
-        
+
         dialog.show ();
     }
 
@@ -1074,7 +1074,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
     private void save_active_tab_position () {
         Files.app_settings.set_int (
-            "active-tab-position", 
+            "active-tab-position",
             tab_view.get_page_position (tab_view.selected_page)
         );
     }
@@ -1272,4 +1272,3 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         current_container.grab_focus ();
     }
 }
-

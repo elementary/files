@@ -146,7 +146,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 label_stack.visible_child_name = "label";
             });
         }
-        
+
         label_stack.visible_child_name = "label";
 
         icon = new Gtk.Image.from_gicon (gicon);

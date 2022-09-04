@@ -25,7 +25,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
     public Files.SidebarInterface sidebar { get; construct; }
     public signal void refresh_freespace ();
-    
+
     public DeviceListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
@@ -236,7 +236,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                         return true;
                     }
                 }
-                
+
                 child = child.get_next_sibling ();
             }
         }
