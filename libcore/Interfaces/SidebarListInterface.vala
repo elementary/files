@@ -43,7 +43,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
             if (child is SidebarItemInterface) {
                 ((SidebarItemInterface)child).destroy_bookmark ();
             }
-            
+
             child = child.get_next_sibling ();
         }
     }
@@ -56,7 +56,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
             if (row.permanent) {
                 return;
             }
-            
+
             row.unparent ();
             row.destroy_bookmark ();
         }

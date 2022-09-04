@@ -426,4 +426,3 @@ public class Files.View.Slot : Files.AbstractSlot {
         return msg;
     }
 }
-
