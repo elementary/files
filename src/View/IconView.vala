@@ -332,24 +332,24 @@ namespace Files {
                     if (only_shift_pressed && selected_files != null) {
                         linear_select_path (path);
                     } else if (control_pressed) {
-                        set_cursor (path, false, false, false);
+                        set_view_cursor (path, false, false, false);
                         previous_linear_selection_path = path;
                     } else {
                         unselect_all ();
-                        set_cursor (path, false, true, false);
+                        set_view_cursor (path, false, true, false);
                         previous_linear_selection_path = path;
                     }
                 }
             } else {
                 path = new Gtk.TreePath.from_indices (0);
-                set_cursor (path, false, !control_pressed, false);
+                set_view_cursor (path, false, !control_pressed, false);
                 previous_linear_selection_path = path;
             }
 
             return true;
         }
 
-        public override void set_cursor (Gtk.TreePath? path,
+        public override void set_view_cursor (Gtk.TreePath? path,
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
