@@ -144,14 +144,14 @@ namespace Files {
                 var selection = tree.get_selection ();
                 selection.select_path (path);
                 if (cursor_follows) {
-                    /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
+                    /* Unlike for IconView, set_view_cursor unselects previously selected paths (Gtk bug?),
                      * so we have to remember them and reselect afterwards */
                     GLib.List<Gtk.TreePath> selected_paths = null;
                     selection.selected_foreach ((m, p, i) => {
                         selected_paths.prepend (p);
                     });
                     /* Ensure cursor follows last selection */
-                    tree.set_cursor (path, null, false); /* This selects path but unselects rest! */
+                    tree.set_view_cursor (path, null, false); /* This selects path but unselects rest! */
 
                     selected_paths.@foreach ((p) => {
                        selection.select_path (p);
@@ -316,7 +316,7 @@ namespace Files {
             tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
         }
 
-        public override void set_cursor (Gtk.TreePath? path,
+        public override void set_view_cursor (Gtk.TreePath? path,
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
