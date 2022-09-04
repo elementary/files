@@ -173,40 +173,39 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             custom_title = new Gtk.Label (null)
         };
 
-        tab_view = new Adw.TabView ()
+        tab_view = new Adw.TabView ();
         // .with_accellabels (
         //     new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
         //     new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
         // ) 
-        {
-            show_tabs = true,
-            allow_restoring = true,
-            allow_duplication = true,
-            allow_new_window = true,
-            group_name = Config.APP_NAME
-        };
+        // {
+            // show_tabs = true,
+            // allow_restoring = true,
+            // allow_duplication = true,
+            // allow_new_window = true,
+            // group_name = Config.APP_NAME
+        // };
 
-        this.configure_event.connect_after ((e) => {
-            tab_view.set_size_request (e.width / 2, -1);
-            return false;
-        });
+        //TODO Reimplement if needed
+        // this.configure_event.connect_after ((e) => {
+        //     tab_view.set_size_request (e.width / 2, -1);
+        //     return false;
+        // });
 
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            expand = true,
             position = Files.app_settings.get_int ("sidebar-width")
         };
-        lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (tab_view, true, true);
+        lside_pane.start_child = sidebar;
+        lside_pane.end_child = tab_view;
 
         var grid = new Gtk.Grid ();
         grid.attach (top_menu, 0, 0);
         grid.attach (lside_pane, 0, 1);
-        grid.show_all ();
 
-        add (grid);
+        set_child (grid);
 
         /** Apply preferences */
         var prefs = Files.app_settings;
@@ -230,93 +229,112 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         top_menu.focus_location_request.connect ((loc) => {
             current_tab.focus_location_if_in_current_directory (loc, true);
         });
-        top_menu.focus_in_event.connect (() => {
-            current_tab.is_frozen = true;
-            return true;
+        top_menu.state_flags_changed.connect ((previous_flags) => {
+            var flags = get_state_flags ();
+            if (Gtk.StateFlags.FOCUSED in flags &&
+                !(Gtk.StateFlags.FOCUSED in previous_flags)) {
+            
+                //Focus in
+                current_tab.is_frozen = true;
+            } else if (Gtk.StateFlags.FOCUSED in previous_flags &&
+                !(Gtk.StateFlags.FOCUSED in flags)) {
+                
+                //Focus out
+                current_tab.is_frozen = false;
+            }
         });
-        top_menu.focus_out_event.connect (() => {
-            current_tab.is_frozen = false;
-            return true;
-        });
+
+        // top_menu.focus_in_event.connect (() => {
+        //     current_tab.is_frozen = true;
+        //     return true;
+        // });
+        // top_menu.focus_out_event.connect (() => {
+        //     current_tab.is_frozen = false;
+        //     return true;
+        // });
 
         undo_manager.request_menu_update.connect (update_undo_actions);
 
-        key_press_event.connect ((event) => {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool no_mods = (mods == 0);
-            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+        //TODO Use EventController
+        // key_press_event.connect ((event) => {
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool no_mods = (mods == 0);
+        //     bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+        //     bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
 
-            /* Use Tab to toggle View and Sidebar keyboard focus.  This works better than using a focus chain
-             * because cannot tab out of location bar and also unwanted items tend to get focused.
-             * There are other hotkeys for operating/focusing other widgets.
-             * Using modified Arrow keys no longer works due to recent changes.  */
-            switch (keyval) {
-                case Gdk.Key.Tab:
-                    if (top_menu.locked_focus) {
-                        return false;
-                    }
+        //     /* Use Tab to toggle View and Sidebar keyboard focus.  This works better than using a focus chain
+        //      * because cannot tab out of location bar and also unwanted items tend to get focused.
+        //      * There are other hotkeys for operating/focusing other widgets.
+        //      * Using modified Arrow keys no longer works due to recent changes.  */
+        //     switch (keyval) {
+        //         case Gdk.Key.Tab:
+        //             if (top_menu.locked_focus) {
+        //                 return false;
+        //             }
 
-                    if (no_mods || only_shift_pressed) {
-                        if (!sidebar.has_focus) {
-                            sidebar.grab_focus ();
-                        } else {
-                            current_tab.grab_focus ();
-                        }
+        //             if (no_mods || only_shift_pressed) {
+        //                 if (!sidebar.has_focus) {
+        //                     sidebar.grab_focus ();
+        //                 } else {
+        //                     current_tab.grab_focus ();
+        //                 }
 
-                        return true;
-                    }
+        //                 return true;
+        //             }
 
-                    break;
-            }
+        //             break;
+        //     }
 
-            return false;
-        });
+        //     return false;
+        // });
 
-        key_press_event.connect_after ((event) => {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
-            /* Use find function instead of view interactive search */
-            if (state == 0 || state == Gdk.ModifierType.SHIFT_MASK) {
-                /* Use printable characters to initiate search */
-                var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                if (uc.isprint ()) {
-                    activate_action ("find", uc.to_string ());
-                    return true;
-                }
-            }
+        //TODO Use EventController
+        // key_press_event.connect_after ((event) => {
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     /* Use find function instead of view interactive search */
+        //     if (state == 0 || state == Gdk.ModifierType.SHIFT_MASK) {
+        //         /* Use printable characters to initiate search */
+        //         var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+        //         if (uc.isprint ()) {
+        //             activate_action ("find", uc.to_string ());
+        //             return true;
+        //         }
+        //     }
 
-            return false;
-        });
+        //     return false;
+        // });
 
 
         //TODO Rewrite for Gtk4
-        window_state_event.connect ((event) => {
-            if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
+        var surface = get_surface ();
+        surface.layout.connect ((w, h) => {
+            if (((Gdk.Toplevel)surface).state == Gdk.ToplevelState.MINIMIZED) {
                 top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
             }
-
-            return false;
         });
 
-        delete_event.connect (() => {
+        close_request.connect (() => {
             quit ();
             return false;
         });
 
-        tab_view.new_tab_requested.connect (() => {
-            add_tab ();
-        });
-
-        tab_view.close_tab_requested.connect ((tab) => {
-            var view_container = (ViewContainer)(tab.page);
-            tab.restore_data = view_container.location.get_uri ();
+        // tab_view.new_tab_requested.connect (() => {
+        //     add_tab ();
+        // });
+        //TODO Implement handlers for new signals
+        tab_view.indicator_activated.connect (() => {});
+        tab_view.setup_menu.connect (() => {});
+        
+        tab_view.close_page.connect ((tab) => {
+            var view_container = (ViewContainer)(tab.child);
+            // tab.restore_data = view_container.location.get_uri ();
 
             /* If closing tab is current, set current_tab to null to ensure
              * closed ViewContainer is destroyed. It will be reassigned in tab_changed
@@ -327,44 +345,48 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
             view_container.close ();
 
-            if (tab_view.n_tabs == 1) {
+            if (tab_view.n_pages == 1) {
                 add_tab ();
             }
 
             return true;
         });
 
-        tab_view.tab_switched.connect ((old_tab, new_tab) => {
-            change_tab (tab_view.get_tab_position (new_tab));
+        tab_view.page_reordered.connect ((tab, position) => {
+            change_tab (position);
         });
 
-        tab_view.tab_restored.connect ((label, restore_data, icon) => {
-            add_tab_by_uri (restore_data);
+        //TODO Implement in Gtk4 (Signal absent in TabBar)
+        // tab_view.tab_restored.connect ((label, restore_data, icon) => {
+        //     add_tab_by_uri (restore_data);
+        // });
+
+        //TODO Implement in Gtk4 (Signal absent in TabBar)
+        // tab_view.tab_duplicated.connect ((tab) => {
+        //     add_tab_by_uri (((ViewContainer)(tab.page)).uri);
+        // });
+
+        //TODO Reimplement in Gtk4
+        tab_view.create_window.connect (() => {
+            // /* Called when tab dragged out of notebook */
+            // var vc = (ViewContainer)(tab.page) ;
+            // /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
+            // vc.close ();
+
+            // marlin_app.create_window (vc.location, real_mode (vc.view_mode));
+
+            // /* remove_tab function uses Idle loop to close tab */
+            // remove_tab (tab);
+            return marlin_app.create_window ().tab_view;
         });
 
-        tab_view.tab_duplicated.connect ((tab) => {
-            add_tab_by_uri (((ViewContainer)(tab.page)).uri);
-        });
 
-        tab_view.tab_moved.connect ((tab) => {
-            /* Called when tab dragged out of notebook */
-            var vc = (ViewContainer)(tab.page) ;
-            /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
-            vc.close ();
-
-            marlin_app.create_window (vc.location, real_mode (vc.view_mode));
-
-            /* remove_tab function uses Idle loop to close tab */
-            remove_tab (tab);
-        });
-
-
-        tab_view.tab_added.connect ((tab) => {
-            var vc = (ViewContainer)(tab.page) ;
+        tab_view.page_attached.connect ((tab, pos) => {
+            var vc = (ViewContainer)(tab.child) ;
             vc.window = this;
         });
 
-        tab_view.tab_removed.connect (on_tab_removed);
+        tab_view.page_detached.connect (on_page_detached);
 
         sidebar.request_focus.connect (() => {
             return !current_tab.locked_focus && !top_menu.locked_focus;
@@ -378,8 +400,8 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         sidebar.connect_server_request.connect (connect_to_server);
     }
 
-    private void on_tab_removed () {
-        if (tab_view.n_tabs == 0) {
+    private void on_page_detached () {
+        if (tab_view.n_pages == 0) {
             add_tab ();
         }
 
@@ -428,7 +450,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
                 add_tab (location, mode);
                 /* Ensure default tab's slot is active so it can be focused */
-                current_tab = (ViewContainer)(tab_view.current.page);
+                current_tab = (ViewContainer)(tab_view.selected_page.page);
                 current_tab.set_active_state (true, false);
             }
         } else {
@@ -467,12 +489,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             bool is_child;
             var existing_tab_position = location_is_duplicate (location, out is_child);
             if (existing_tab_position >= 0) {
-                tab_view.current = tab_view.get_tab_by_index (existing_tab_position);
+                tab_view.selected_page = tab_view.get_tab_by_index (existing_tab_position);
                 change_tab (existing_tab_position);
 
                 if (is_child) {
                     /* Select the child  */
-                    ((ViewContainer)(tab_view.current.page)).focus_location_if_in_current_directory (location);
+                    ((ViewContainer)(tab_view.selected_page.page)).focus_location_if_in_current_directory (location);
                 }
 
                 return;
@@ -495,7 +517,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         };
 
         change_tab ((int)tab_view.insert_tab (tab, -1));
-        tab_view.current = tab;
+        tab_view.selected_page = tab;
         /* Capturing ViewContainer object reference in closure prevents its proper destruction
          * so capture its unique id instead */
         var id = content.id;
@@ -731,7 +753,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
     private void action_reload () {
         /* avoid spawning reload when key kept pressed */
-        if (tab_view.current.working) {
+        if (((ViewContainer)(tab_view.selected_page.child)).working) {
             warning ("Too rapid reloading suppressed");
             return;
         }
@@ -821,15 +843,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 break;
 
             case "CLOSE":
-                remove_tab (tab_view.current);
+                remove_tab (tab_view.selected_page);
                 break;
 
             case "NEXT":
-                tab_view.next_page ();
+                tab_view.select_next_page ();
                 break;
 
             case "PREVIOUS":
-                tab_view.previous_page ();
+                tab_view.select_previous_page ();
                 break;
 
             case "TAB":
@@ -837,7 +859,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 break;
 
             case "WINDOW":
-                tab_view.tab_moved (tab_view.current, 0, 0);
+                tab_view.create_window ();
                 break;
 
             default:
@@ -921,15 +943,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         var dialog = new PF.ConnectServerDialog ((Gtk.Window) this);
         string server_uri = "";
 
-        if (dialog.run () == Gtk.ResponseType.OK) {
+        dialog.response.connect ((response_id) => {
             server_uri = dialog.server_uri;
-        }
-
-        dialog.destroy ();
-
-        if (server_uri != "") {
-            uri_path_change_request (dialog.server_uri, Files.OpenFlag.DEFAULT);
-        }
+            dialog.destroy ();
+            if (response_id == Gtk.ResponseType.OK && server_uri != "") {
+                uri_path_change_request (server_uri, Files.OpenFlag.DEFAULT);
+            }
+        });
+        
+        dialog.show ();
     }
 
     void show_app_help () {
@@ -969,11 +991,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
         top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
-        tab_view.tab_removed.disconnect (on_tab_removed); /* Avoid infinite loop */
+        tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
 
-        foreach (var tab in tab_view.tabs) {
-            current_tab = null;
-            ((View.ViewContainer)(tab.page)).close ();
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab_page = (Adw.TabPage)(tab_view.pages.get_item (i));
+            ((View.ViewContainer)(tab_page.child)).close ();
         }
 
         this.destroy ();
@@ -995,13 +1017,13 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         get_size (out width, out height);
         get_position (out x, out y);
 
-        var gdk_state = get_window ().get_state ();
+        var toplevel_state = ((Gdk.Toplevel)get_surface ()).get_state ();
         // If window is tiled, is it on left (start = true) or right (start = false)?
         var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
         var start = x + width < rect.width;
 
         Files.app_settings.set_enum ("window-state",
-                                       Files.WindowState.from_gdk_window_state (gdk_state, start));
+                                       toplevel_state);
 
         Files.app_settings.set ("window-size", "(ii)", width, height);
         Files.app_settings.set ("window-position", "(ii)", x, y);
@@ -1038,7 +1060,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void save_active_tab_position () {
-        Files.app_settings.set_int ("active-tab-position", tab_view.get_tab_position (tab_view.current));
+        Files.app_settings.set_int ("active-tab-position", tab_view.get_tab_position (tab_view.selected_page));
     }
 
     public uint restore_tabs () {
@@ -1101,8 +1123,8 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             active_tab_position = 0;
         }
 
-        tab_view.current = tab_view.get_tab_by_index (active_tab_position);
-        current_tab = (ViewContainer?)(tab_view.current.page);
+        tab_view.selected_page = tab_view.get_tab_by_index (active_tab_position);
+        current_tab = (ViewContainer?)(tab_view.selected_page.page);
 
         string path = "";
         if (current_tab != null) {
@@ -1120,7 +1142,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
     private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
         /* It might be more elegant for Miller.vala to handle this */
-        var tab = tab_view.current;
+        var tab = tab_view.selected_page;
         var view = (ViewContainer)(tab.page) ;
         var mwcols = (Miller)(view.view) ;
         var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
@@ -1182,8 +1204,9 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         debug ("Mount %s removed", mount.get_name ());
         GLib.File root = mount.get_root ();
 
-        foreach (var page in tab_view.get_children ()) {
-            var view_container = (View.ViewContainer)page ;
+        for (uint i = 0; i < tab_view.pages.get_n_items (); i++) {
+        // foreach (var page in tab_view.get_children ()) {
+            var view_container = (View.ViewContainer)(tab_view.pages.get_item (i)) ;
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {

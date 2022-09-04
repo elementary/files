@@ -144,9 +144,9 @@ namespace Files.View.Chrome {
         Gtk.ScrolledWindow scroll;
 
         public SearchResults (Gtk.Widget parent_widget) {
-            Object (resizable: false,
-                    type_hint: Gdk.WindowTypeHint.COMBO,
-                    type: Gtk.WindowType.POPUP);
+            Object (resizable: false);
+                    // type_hint: Gdk.WindowTypeHint.COMBO,
+                    // type: Gtk.WindowType.POPUP);
 
             parent = parent_widget;
         }
@@ -166,11 +166,9 @@ namespace Files.View.Chrome {
 
             zg_index = new Zeitgeist.Index ();
 #endif
-            var frame = new Gtk.Frame (null) {
-                shadow_type = Gtk.ShadowType.ETCHED_IN
-            };
+            var frame = new Gtk.Frame (null);
 
-            scroll = new Gtk.ScrolledWindow (null, null) {
+            scroll = new Gtk.ScrolledWindow () {
                 hscrollbar_policy = Gtk.PolicyType.NEVER
             };
 
@@ -249,13 +247,14 @@ namespace Files.View.Chrome {
             list.append (out zeitgeist_results, null);
 #endif
 
-            scroll.add (view);
-            frame.add (scroll);
-            add (frame);
+            scroll.set_child (view);
+            frame.set_child (scroll);
+            set_child (frame);
 
-            button_press_event.connect (on_button_press_event);
-            view.button_press_event.connect (on_view_button_press_event);
-            key_press_event.connect (on_key_press_event);
+            //TODO Use EventControllers
+            // button_press_event.connect (on_button_press_event);
+            // view.button_press_event.connect (on_view_button_press_event);
+            // key_press_event.connect (on_key_press_event);
         }
 
         private void update_category_headers () {
@@ -310,16 +309,16 @@ namespace Files.View.Chrome {
         public void search (string term, GLib.File folder) {
             update_category_headers (); // Ensure category header color matches theme.
 
-            device = Gtk.get_current_event_device ();
+            // device = Gtk.get_current_event_device ();
             if (term.normalize ().casefold () != search_term) {
                 search_term = term.normalize ().casefold ();
                 max_results = MAX_RESULTS;
                 max_depth = MAX_DEPTH;
             }
 
-            if (device != null && device.input_source == Gdk.InputSource.KEYBOARD) {
-                device = device.associated_device;
-            }
+            // if (device != null && device.input_source == Gdk.InputSource.KEYBOARD) {
+            //     device = device.associated_device;
+            // }
 
             if (!current_operation.is_cancelled ()) {
                 current_operation.cancel ();
@@ -632,8 +631,8 @@ namespace Files.View.Chrome {
         }
 
         void resize_popup () {
-            var parent_window = parent.get_window ();
-            if (parent_window == null) {
+            var parent_surface = get_root ().get_surface ();
+            if (parent_surface == null) {
                 return;
             }
 
@@ -660,31 +659,32 @@ namespace Files.View.Chrome {
                 return;
             }
 
-            /* Ensure window remains fully on screen */
-            var workarea = Gdk.Display.get_default ()
-                                      .get_monitor_at_window (parent_window)
-                                      .get_workarea ();
+            //TODO Rework for Gtk4 (if needed)
+            // /* Ensure window remains fully on screen */
+            // var workarea = Gdk.Display.get_default ()
+            //                           .get_monitor_at_surface (parent_surface)
+            //                           .get_geometry ();
 
-            int x, y;
-            Gtk.Allocation parent_alloc;
-            parent_window.get_origin (out x, out y);
-            parent.get_allocation (out parent_alloc);
+            // int x, y;
+            // Gtk.Allocation parent_alloc;
+            // parent_surface.get_origin (out x, out y);
+            // parent.get_allocation (out parent_alloc);
 
-            x = (x + parent_alloc.x).clamp (workarea.x, workarea.x + workarea.width - width_request);
-            y += parent_alloc.y + parent_alloc.height;
+            // x = (x + parent_alloc.x).clamp (workarea.x, workarea.x + workarea.width - width_request);
+            // y += parent_alloc.y + parent_alloc.height;
 
-            int separator_height;
-            Gdk.Rectangle cell_area;
-            view.style_get ("vertical-separator", out separator_height);
-            view.get_cell_area (new Gtk.TreePath.from_indices (0), null, out cell_area);
-            var total = int.max ((items + headers), 2);
-            var height = total * (cell_area.height + separator_height);
-            height = height.clamp (0, workarea.y + workarea.height - y - 12);
+            // int separator_height;
+            // Gdk.Rectangle cell_area;
+            // view.style_get ("vertical-separator", out separator_height);
+            // view.get_cell_area (new Gtk.TreePath.from_indices (0), null, out cell_area);
+            // var total = int.max ((items + headers), 2);
+            // var height = total * (cell_area.height + separator_height);
+            // height = height.clamp (0, workarea.y + workarea.height - y - 12);
 
-            scroll.set_min_content_height (height);
-            set_size_request (int.min (parent_alloc.width, workarea.width), height);
-            move (x, y);
-            resize (width_request, height_request);
+            // scroll.set_min_content_height (height);
+            // set_size_request (int.min (parent_alloc.width, workarea.width), height);
+            // move (x, y);
+            // resize (width_request, height_request);
         }
 
         bool get_iter_at_cursor (out Gtk.TreeIter iter) {
@@ -708,22 +708,22 @@ namespace Files.View.Chrome {
         }
 
         void popup () {
-            if (get_mapped ()) {
-                return;
-            }
+            // if (get_mapped ()) {
+            //     return;
+            // }
 
-            set_screen (parent.get_screen ());
-            show_all ();
-            view.grab_focus ();
+            // set_screen (parent.get_screen ());
+            // show_all ();
+            // view.grab_focus ();
 
-            /* Ensure device grab and ungrab are paired */
-            if (!is_grabbing && device != null) {
-                Gtk.device_grab_add (this, device, true);
-                device.get_seat ().grab (get_window (), Gdk.SeatCapabilities.ALL_POINTING,
-                                         true, null, null, null);
+            // /* Ensure device grab and ungrab are paired */
+            // if (!is_grabbing && device != null) {
+            //     Gtk.device_grab_add (this, device, true);
+            //     device.get_seat ().grab (get_window (), Gdk.SeatCapabilities.ALL_POINTING,
+            //                              true, null, null, null);
 
-                is_grabbing = true;
-            }
+            //     is_grabbing = true;
+            // }
             /* Paired with disconnect function in popdown () */
             connect_view_cursor_changed_signal ();
         }
@@ -731,19 +731,20 @@ namespace Files.View.Chrome {
         void popdown () {
             /* Paired with connect function in popup () */
             disconnect_view_cursor_changed_signal ();
-            if (is_grabbing) {
-                if (device == null) {
-                    /* 'device' can become null during searching for reasons as yet unidentified. This ensures
-                     * that grab and ungrab are matched (else interface freezes after some searches)
-                     */
-                    device = Gtk.get_current_event_device ();
-                    debug ("Reference to device was lost while grabbing - should not happen");
-                }
+            //TODO Rework event and grab handling
+            // if (is_grabbing) {
+            //     if (device == null) {
+            //         /* 'device' can become null during searching for reasons as yet unidentified. This ensures
+            //          * that grab and ungrab are matched (else interface freezes after some searches)
+            //          */
+            //         device = Gtk.get_current_event_device ();
+            //         debug ("Reference to device was lost while grabbing - should not happen");
+            //     }
 
-                device.get_seat ().ungrab ();
-                Gtk.device_grab_remove (this, device);
-                is_grabbing = false;
-            }
+            //     device.get_seat ().ungrab ();
+            //     Gtk.device_grab_remove (this, device);
+            //     is_grabbing = false;
+            // }
 
             hide ();
         }
@@ -845,7 +846,7 @@ namespace Files.View.Chrome {
 
         void accept (Gtk.TreeIter? accepted, bool activate) {
             if (accepted == null && !get_iter_at_cursor (out accepted)) {
-                Gdk.beep ();
+                Gdk.Display.get_default ().beep ();
                 return;
             }
 
@@ -861,7 +862,7 @@ namespace Files.View.Chrome {
                     search (search_term, current_root);
                 } else {
                     critical ("Search match with no associated file and not an ellipsis");
-                    Gdk.beep ();
+                    Gdk.Display.get_default ().beep ();
                 }
 
                 return;
