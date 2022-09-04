@@ -22,18 +22,16 @@ public class PopupMenuBuilder : Object {
     MenuItem[] menu_items = {};
     public uint n_items { get { return menu_items.length; }}
 
-    public Menu build () {
-        var popupmenu = new Menu ();
+    public Gtk.PopoverMenu build () {
+        var menu = new Menu ();
         foreach (var menu_item in menu_items) {
-            popupmenu.append_item (menu_item);
+            menu.append_item (menu_item);
         }
 
-        return popupmenu;
+        return new Gtk.PopoverMenu.from_model (menu);
     }
 
-    // public Menu build_from_model (MenuModel model,
-    //                                   string? action_group_namespace = null,
-    //                                   ActionGroup? action_group = null) {
+    // public Gtk.PopoverMenu build_from_model (MenuModel model) {
 
     //     var menu = new Menu.from_model (model);
     //     menu.insert_action_group (action_group_namespace, action_group);

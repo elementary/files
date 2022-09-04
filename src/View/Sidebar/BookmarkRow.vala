@@ -57,10 +57,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private List<GLib.File> drop_file_list = null;
     private string? drop_text = null;
     private bool drop_occurred = false;
-    private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private Gdk.DragAction? current_suggested_action = null;
 
     protected Gtk.Grid content_grid;
-    protected Gtk.Grid icon_label_grid;
+    protected Gtk.Box icon_label_grid;
     protected Gtk.Stack label_stack;
     protected Gtk.Entry editable;
     protected Gtk.Label label;
@@ -129,9 +129,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             ellipsize = Pango.EllipsizeMode.END
         };
 
-        label_stack = new Gtk.Stack () {
-            homogeneous = false
-        };
+        label_stack = new Gtk.Stack ();
         label_stack.add_named (label, "label");
 
         if (!pinned) {
@@ -142,47 +140,42 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     custom_name = editable.text;
                     list.rename_bookmark_by_uri (uri, custom_name);
                 }
-                label_stack.visible_child_name = "label";
             });
 
-            editable.focus_out_event.connect (() =>{
+            editable.editing_done.connect (() =>{
                 label_stack.visible_child_name = "label";
             });
         }
+        
         label_stack.visible_child_name = "label";
 
-        icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU);
+        icon = new Gtk.Image.from_gicon (gicon);
 
-        icon_label_grid = new Gtk.Grid () {
-            column_spacing = 6
-        };
-        icon_label_grid.attach (icon, 0, 0, 1, 2);
-        icon_label_grid.add (label_stack);
+        icon_label_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        icon_label_grid.append (icon);
+        icon_label_grid.append (label_stack);
 
-        var event_box = new Gtk.EventBox () {
-            above_child = false
-        };
-        event_box.add (icon_label_grid);
+
 
         content_grid = new Gtk.Grid ();
-        content_grid.attach (event_box, 0, 0);
+        content_grid.attach (icon_label_grid, 0, 0);
 
-        add (content_grid);
-        show_all ();
+        set_child (content_grid);
 
-        key_press_event.connect (on_key_press_event);
-        button_release_event.connect_after (after_button_release_event);
+        //TODO Use EventControllers
+        // key_press_event.connect (on_key_press_event);
+        // button_release_event.connect_after (after_button_release_event);
 
         notify["gicon"].connect (() => {
-            icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
+            icon.set_from_gicon (gicon);
         });
 
         notify["custom-name"].connect (() => {
             label.label = display_name;
         });
 
-        set_up_drag ();
-        set_up_drop ();
+        // set_up_drag ();
+        // set_up_drop ();
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -276,22 +269,22 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     // }
 
     protected virtual void popup_context_menu (Gdk.Event event) {
-        var menu_builder = new PopupMenuBuilder ()
-            .add_open (() => {activated ();})
-            .add_separator ()
-            .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
-            .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
 
-        add_extra_menu_items (menu_builder);
 
         if (menu_model != null) {
-            menu_builder
-                .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (event);
+            new Gtk.PopoverMenu.from_model (menu_model).popup ();
         } else {
+            var menu_builder = new PopupMenuBuilder ()
+                .add_open (() => {activated ();})
+                .add_separator ()
+                .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
+                .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
+
+            add_extra_menu_items (menu_builder);
+
             menu_builder
                 .build ()
-                .popup_at_pointer (event);
+                .popup ();
         }
     }
 
@@ -395,19 +388,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     // }
 
     // /* Set up as a drag destination. */
-    // private void set_up_drop () {
-    //     var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-    //         margin_top = 12,
-    //         margin_bottom = 0
-    //     };
+    private void set_up_drop () {
+        var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+            margin_top = 12,
+            margin_bottom = 0
+        };
 
-    //     drop_revealer = new Gtk.Revealer () {
-    //         transition_type = Gtk.RevealerTransitionType.SLIDE_UP
-    //     };
-    //     drop_revealer.add (drop_revealer_child);
-    //     drop_revealer.show_all ();
+        drop_revealer = new Gtk.Revealer () {
+            transition_type = Gtk.RevealerTransitionType.SLIDE_UP
+        };
+        drop_revealer.set_child (drop_revealer_child);
 
-    //     content_grid.attach (drop_revealer, 0, 1);
+        content_grid.attach (drop_revealer, 0, 1);
 
     //     Gtk.drag_dest_set (
     //         this,
@@ -544,7 +536,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     //         return true;
     //     });
-    // }
+    }
 
     // protected void highlight (bool show) {
     //     if (show && !get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
@@ -604,9 +596,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 );
             }
 
-            if (real_action == Gdk.DragAction.DEFAULT) {
-                return false;
-            }
+            // if (real_action == null) {
+            //     return false;
+            // }
 
             dnd_handler.dnd_perform (
                 this,
