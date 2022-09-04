@@ -109,7 +109,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     construct {
-        unmount_eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+        unmount_eject_button = new Gtk.Button () {
+            icon_name = "media-eject-symbolic",
             tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
         };
 
@@ -123,29 +124,28 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             reveal_child = false
         };
 
-        unmount_eject_revealer.add (unmount_eject_button);
+        unmount_eject_revealer.set_child (unmount_eject_button);
 
         unmount_eject_working_stack = new Gtk.Stack () {
             margin_start = 6,
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
 
-        unmount_eject_working_stack.add (unmount_eject_revealer);
-        unmount_eject_working_stack.add (working_spinner);
+        unmount_eject_working_stack.add_child (unmount_eject_revealer);
+        unmount_eject_working_stack.add_child (working_spinner);
 
         content_grid.attach (unmount_eject_working_stack, 1, 0);
 
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
-            hexpand = true,
-            no_show_all = true
+            hexpand = true
         };
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
 
         unowned var storage_style_context = storage_levelbar.get_style_context ();
-        storage_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
+        storage_style_context.add_class ("flat");
         storage_style_context.add_class ("inverted");
         storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
@@ -160,8 +160,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                 unmount_mount.begin ();
             }
         });
-
-        show_all ();
 
         add_mountable_tooltip.begin ();
 

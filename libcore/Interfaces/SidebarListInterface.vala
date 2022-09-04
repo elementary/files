@@ -21,7 +21,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarListInterface : Gtk.Box {
+public interface Sidebar.SidebarListInterface : Gtk.Widget {
     public abstract Files.SidebarInterface sidebar { get; construct; }
 
     public abstract void select_item (SidebarItemInterface? item);
@@ -39,10 +39,12 @@ public interface Sidebar.SidebarListInterface : Gtk.Box {
     public virtual void clear () {
         Gtk.Widget? child;
         while ((child = get_first_child ()) != null) {
-            remove (child);
+            child.unparent ();
             if (child is SidebarItemInterface) {
                 ((SidebarItemInterface)child).destroy_bookmark ();
             }
+            
+            child = child.get_next_sibling ();
         }
     }
 
@@ -54,7 +56,8 @@ public interface Sidebar.SidebarListInterface : Gtk.Box {
             if (row.permanent) {
                 return;
             }
-            remove (row);
+            
+            row.unparent ();
             row.destroy_bookmark ();
         }
     }
@@ -96,7 +99,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Box {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
                 if (!row.permanent && row.id == id) {
-                    remove (row);
+                    row.unparent ();
                     row.destroy_bookmark ();
                     removed = true;
                     break;
