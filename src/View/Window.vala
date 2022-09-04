@@ -58,7 +58,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
-    public ViewContainer? current_tab = null;
+    public ViewContainer? current_container {
+        get {
+            return tab_view.selected_page != null ?
+                (ViewContainer)(tab_view.selected_page.child) : null;
+        }
+    }
 
     private bool tabs_restored = false;
     private int restoring_tabs = 0;
@@ -218,16 +223,16 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         /* Connect and abstract signals to local ones
         /*/
 
-        top_menu.forward.connect ((steps) => { current_tab.go_forward (steps); });
-        top_menu.back.connect ((steps) => { current_tab.go_back (steps); });
+        top_menu.forward.connect ((steps) => { current_container.go_forward (steps); });
+        top_menu.back.connect ((steps) => { current_container.go_back (steps); });
         top_menu.escape.connect (grab_focus);
         top_menu.path_change_request.connect ((loc, flag) => {
-            current_tab.is_frozen = false;
+            current_container.is_frozen = false;
             uri_path_change_request (loc, flag);
         });
         top_menu.reload_request.connect (action_reload);
         top_menu.focus_location_request.connect ((loc) => {
-            current_tab.focus_location_if_in_current_directory (loc, true);
+            current_container.focus_location_if_in_current_directory (loc, true);
         });
         top_menu.state_flags_changed.connect ((previous_flags) => {
             var flags = get_state_flags ();
@@ -235,21 +240,21 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 !(Gtk.StateFlags.FOCUSED in previous_flags)) {
             
                 //Focus in
-                current_tab.is_frozen = true;
+                current_container.is_frozen = true;
             } else if (Gtk.StateFlags.FOCUSED in previous_flags &&
                 !(Gtk.StateFlags.FOCUSED in flags)) {
                 
                 //Focus out
-                current_tab.is_frozen = false;
+                current_container.is_frozen = false;
             }
         });
 
         // top_menu.focus_in_event.connect (() => {
-        //     current_tab.is_frozen = true;
+        //     current_container.is_frozen = true;
         //     return true;
         // });
         // top_menu.focus_out_event.connect (() => {
-        //     current_tab.is_frozen = false;
+        //     current_container.is_frozen = false;
         //     return true;
         // });
 
@@ -280,7 +285,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //                 if (!sidebar.has_focus) {
         //                     sidebar.grab_focus ();
         //                 } else {
-        //                     current_tab.grab_focus ();
+        //                     current_container.grab_focus ();
         //                 }
 
         //                 return true;
@@ -336,15 +341,16 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             var view_container = (ViewContainer)(tab.child);
             // tab.restore_data = view_container.location.get_uri ();
 
-            /* If closing tab is current, set current_tab to null to ensure
-             * closed ViewContainer is destroyed. It will be reassigned in tab_changed
-             */
-            if (view_container == current_tab) {
-                current_tab = null;
-            }
+            // /* If closing tab is current, set current_container to null to ensure
+            //  * closed ViewContainer is destroyed. It will be reassigned in tab_changed
+            //  */
+            // if (view_container == current_container) {
+            //     current_container = null;
+            // }
 
             view_container.close ();
-
+            tab_view.close_page_finish (tab, false); // No need to confirm
+            
             if (tab_view.n_pages == 1) {
                 add_tab ();
             }
@@ -363,13 +369,13 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
         //TODO Implement in Gtk4 (Signal absent in TabBar)
         // tab_view.tab_duplicated.connect ((tab) => {
-        //     add_tab_by_uri (((ViewContainer)(tab.page)).uri);
+        //     add_tab_by_uri (((ViewContainer)(tab.child)).uri);
         // });
 
         //TODO Reimplement in Gtk4
         tab_view.create_window.connect (() => {
             // /* Called when tab dragged out of notebook */
-            // var vc = (ViewContainer)(tab.page) ;
+            // var vc = (ViewContainer)(tab.child) ;
             // /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
             // vc.close ();
 
@@ -389,11 +395,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         tab_view.page_detached.connect (on_page_detached);
 
         sidebar.request_focus.connect (() => {
-            return !current_tab.locked_focus && !top_menu.locked_focus;
+            return !current_container.locked_focus && !top_menu.locked_focus;
         });
 
         sidebar.sync_needed.connect (() => {
-            loading_uri (current_tab.uri);
+            loading_uri (current_container.uri);
         });
 
         sidebar.path_change_request.connect (uri_path_change_request);
@@ -413,10 +419,10 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void change_tab (int offset) {
-        ViewContainer? old_tab = current_tab;
-        current_tab = (ViewContainer)((tab_view.get_tab_by_index (offset)).page);
+        ViewContainer? old_tab = current_container;
+        tab_view.selected_page = tab_view.get_nth_page (offset);
 
-        if (current_tab == null || old_tab == current_tab) {
+        if (current_container == null || old_tab == current_container) {
             return;
         }
 
@@ -429,10 +435,10 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             old_tab.is_frozen = false;
         }
 
-        loading_uri (current_tab.uri);
-        current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
-        sidebar.sync_uri (current_tab.uri);
-        top_menu.working = current_tab.is_frozen;
+        loading_uri (current_container.uri);
+        current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+        sidebar.sync_uri (current_container.uri);
+        top_menu.working = current_container.is_frozen;
         save_active_tab_position ();
     }
 
@@ -450,8 +456,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
                 add_tab (location, mode);
                 /* Ensure default tab's slot is active so it can be focused */
-                current_tab = (ViewContainer)(tab_view.selected_page.page);
-                current_tab.set_active_state (true, false);
+                current_container.set_active_state (true, false);
             }
         } else {
             /* Open tabs at each requested location */
@@ -489,12 +494,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             bool is_child;
             var existing_tab_position = location_is_duplicate (location, out is_child);
             if (existing_tab_position >= 0) {
-                tab_view.selected_page = tab_view.get_tab_by_index (existing_tab_position);
+                tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
                 change_tab (existing_tab_position);
 
                 if (is_child) {
                     /* Select the child  */
-                    ((ViewContainer)(tab_view.selected_page.page)).focus_location_if_in_current_directory (location);
+                    current_container.focus_location_if_in_current_directory (location);
                 }
 
                 return;
@@ -503,7 +508,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
         mode = real_mode (mode);
         var content = new View.ViewContainer (this);
-        var tab = new Adw.TabPage ()
+        // var tab = new Adw.TabPage ()
         // .with_accellabels (
         //     "",
         //     null,
@@ -512,11 +517,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //     new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
         //     new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
         // ) 
-        {
-            ellipsize_mode = Pango.EllipsizeMode.MIDDLE
-        };
+        // {
+        //     child = content
+        // };
 
-        change_tab ((int)tab_view.insert_tab (tab, -1));
+        // change_tab ((int)tab_view.insert_tab (tab, -1));
+        var tab = tab_view.append (content);
         tab_view.selected_page = tab;
         /* Capturing ViewContainer object reference in closure prevents its proper destruction
          * so capture its unique id instead */
@@ -537,7 +543,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 }
             }
 
-            tab.working = is_loading;
+            content.working = is_loading;
             update_top_menu ();
             if (restoring_tabs == 0 && !is_loading) {
                 save_tabs ();
@@ -564,8 +570,9 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
         int existing_position = 0;
 
-        foreach (Adw.TabPage tab in tab_view.tabs) {
-            var tab_location = ((ViewContainer)(tab.page)).location;
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
+            var tab_location = ((ViewContainer)(tab.child)).location;
             string tab_uri = tab_location.get_uri ();
 
             if (FileUtils.same_location (uri, tab_uri)) {
@@ -587,15 +594,16 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
 
         var new_label = Path.get_basename (path);
-        foreach (Adw.TabPage tab in tab_view.tabs) {
-            var content = (ViewContainer)(tab.page);
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
+            var content = (ViewContainer)(tab.child);
             if (content.id != id) {
                 string content_path = content.tab_name;
                 string content_label = Path.get_basename (content_path);
-                if (tab.label == new_label) {
+                if (tab.title == new_label) {
                     if (content_path != path) {
                         new_label = disambiguate_name (new_label, path, content_path); /*Relabel calling tab */
-                        if (content_label == tab.label) {
+                        if (content_label == tab.title) {
                             /* Also relabel conflicting tab (but not before this function finishes) */
                             Idle.add_full (GLib.Priority.LOW, () => {
                                 var unique_name = disambiguate_name (content_label, content_path, path);
@@ -606,7 +614,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                     }
                 } else if (content_label == new_label &&
                            content_path == path &&
-                           content_label != tab.label) {
+                           content_label != tab.title) {
 
                     /* Revert to short label when possible */
                     Idle.add_full (GLib.Priority.LOW, () => {
@@ -627,7 +635,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             lab += (" " + _("(as Administrator)"));
         }
 
-        tab.label = lab;
+        tab.title = lab;
 
         /* Needs change to Granite to allow (visible) tooltip amendment.
          * This compiles because tab is a widget but the tootip is overridden by that set internally */
@@ -637,7 +645,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 tt += (" " + _("(as Administrator)"));
             }
 
-            tab.set_tooltip_text (tt);
+            tab.tooltip = tt;
         }
     }
 
@@ -668,16 +676,21 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         return !sidebar.has_favorite_uri (uri);
     }
 
-
     public void remove_content (ViewContainer view_container) {
-        remove_tab (tab_view.get_tab_by_widget ((Gtk.Widget)view_container));
+        for (uint i = 0; i< tab_view.n_pages; i++) {
+            var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
+            if (tab.child == view_container) {
+                remove_tab (tab);
+                break;
+            }
+        }
     }
 
     private void remove_tab (Adw.TabPage? tab) {
         if (tab != null) {
             /* Use Idle in case of rapid closing of multiple tabs during restore */
             Idle.add_full (Priority.LOW, () => {
-                tab.close ();
+                tab_view.close_page (tab);
                 return GLib.Source.REMOVE;
             });
         }
@@ -711,9 +724,9 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
     private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
-        unowned var selected_files = current_tab.view.get_selected_files ();
+        unowned var selected_files = current_container.view.get_selected_files ();
         if (selected_files == null) {
-            sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            sidebar.add_favorite_uri (current_container.location.get_uri ());
         } else if (selected_files.first ().next == null) {
             sidebar.add_favorite_uri (selected_files.first ().data.uri);
         } // Ignore if more than one item selected
@@ -721,7 +734,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
     private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
         /* Do not initiate search while slot is frozen e.g. during loading */
-        if (current_tab == null || current_tab.is_frozen) {
+        if (current_container == null || current_container.is_frozen) {
             return;
         }
 
@@ -757,17 +770,17 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             warning ("Too rapid reloading suppressed");
             return;
         }
-        current_tab.reload ();
+        current_container.reload ();
         sidebar.reload ();
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_tab == null) { // can occur during startup
+        if (current_container == null) { // can occur during startup
             return;
         }
 
         ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
-        current_tab.change_view_mode (mode);
+        current_container.change_view_mode (mode);
         /* ViewContainer takes care of changing appearance */
     }
 
@@ -798,15 +811,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 break;
 
             case "UP":
-                current_tab.go_up ();
+                current_container.go_up ();
                 break;
 
             case "FORWARD":
-                current_tab.go_forward ();
+                current_container.go_forward ();
                 break;
 
             case "BACK":
-                current_tab.go_back ();
+                current_container.go_back ();
                 break;
 
             default:
@@ -815,19 +828,19 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void action_zoom (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_tab != null) {
-            assert (current_tab.view != null);
+        if (current_container != null) {
+            assert (current_container.view != null);
             switch (param.get_string ()) {
                 case "ZOOM_IN":
-                    current_tab.view.zoom_in ();
+                    current_container.view.zoom_in ();
                     break;
 
                 case "ZOOM_OUT":
-                    current_tab.view.zoom_out ();
+                    current_container.view.zoom_out ();
                     break;
 
                 case "ZOOM_NORMAL":
-                    current_tab.view.zoom_normal ();
+                    current_container.view.zoom_normal ();
                     break;
 
                 default:
@@ -855,7 +868,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 break;
 
             case "TAB":
-                add_tab (current_tab.location, current_tab.view_mode);
+                add_tab (current_container.location, current_container.view_mode);
                 break;
 
             case "WINDOW":
@@ -914,8 +927,8 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     public void after_undo_redo () {
-        if (current_tab.slot.directory.is_recent) {
-            current_tab.reload ();
+        if (current_container.slot.directory.is_recent) {
+            current_container.reload ();
         }
 
         doing_undo_redo = false;
@@ -976,7 +989,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 return mode;
 
             case ViewMode.CURRENT:
-                return current_tab.view_mode;
+                return current_container.view_mode;
 
             default:
                 break;
@@ -1014,19 +1027,19 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         int width, height, x, y;
 
         // Includes shadow for normal windows (but not maximized or tiled)
-        get_size (out width, out height);
-        get_position (out x, out y);
+        // get_size (out width, out height);
+        // get_position (out x, out y);
 
         var toplevel_state = ((Gdk.Toplevel)get_surface ()).get_state ();
         // If window is tiled, is it on left (start = true) or right (start = false)?
-        var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
-        var start = x + width < rect.width;
+        // var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
+        // var start = x + width < rect.width;
 
         Files.app_settings.set_enum ("window-state",
                                        toplevel_state);
 
-        Files.app_settings.set ("window-size", "(ii)", width, height);
-        Files.app_settings.set ("window-position", "(ii)", x, y);
+        Files.app_settings.set ("window-size", "(ii)", get_width (), get_height ());
+        // Files.app_settings.set ("window-position", "(ii)", x, y);
     }
 
     private void save_tabs () {
@@ -1039,9 +1052,9 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
-        foreach (var tab in tab_view.tabs) {
-            assert (tab != null);
-            var view_container = (ViewContainer)(tab.page) ;
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
+            var view_container = (ViewContainer)(tab.child) ;
 
             /* Do not save if "File does not exist" or "Does not belong to you" */
             if (!view_container.can_show_folder) {
@@ -1060,7 +1073,10 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void save_active_tab_position () {
-        Files.app_settings.set_int ("active-tab-position", tab_view.get_tab_position (tab_view.selected_page));
+        Files.app_settings.set_int (
+            "active-tab-position", 
+            tab_view.get_page_position (tab_view.selected_page)
+        );
     }
 
     public uint restore_tabs () {
@@ -1123,15 +1139,14 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             active_tab_position = 0;
         }
 
-        tab_view.selected_page = tab_view.get_tab_by_index (active_tab_position);
-        current_tab = (ViewContainer?)(tab_view.selected_page.page);
+        tab_view.selected_page = tab_view.get_nth_page (active_tab_position);
 
         string path = "";
-        if (current_tab != null) {
-            path = current_tab.get_tip_uri ();
+        if (current_container != null) {
+            path = current_container.get_tip_uri ();
 
             if (path == null || path == "") {
-                path = current_tab.get_root_uri ();
+                path = current_container.get_root_uri ();
             }
         }
 
@@ -1142,9 +1157,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
     private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
         /* It might be more elegant for Miller.vala to handle this */
-        var tab = tab_view.selected_page;
-        var view = (ViewContainer)(tab.page) ;
-        var mwcols = (Miller)(view.view) ;
+        var mwcols = (Miller)(current_container.view) ;
         var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
 
         if (unescaped_tip_uri == null) {
@@ -1173,28 +1186,28 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void update_top_menu () {
-        if (restoring_tabs > 0 || current_tab == null) {
+        if (restoring_tabs > 0 || current_container == null) {
             return;
         }
 
         /* Update browser buttons */
-        top_menu.set_back_menu (current_tab.get_go_back_path_list ());
-        top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-        top_menu.can_go_back = current_tab.can_go_back;
-        top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
-        top_menu.working = current_tab.is_loading;
+        top_menu.set_back_menu (current_container.get_go_back_path_list ());
+        top_menu.set_forward_menu (current_container.get_go_forward_path_list ());
+        top_menu.can_go_back = current_container.can_go_back;
+        top_menu.can_go_forward = (current_container.can_show_folder && current_container.can_go_forward);
+        top_menu.working = current_container.is_loading;
 
         /* Update viewmode switch, action state and settings */
-        var mode = current_tab.view_mode;
+        var mode = current_container.view_mode;
         view_switcher.set_mode (mode);
-        view_switcher.sensitive = current_tab.can_show_folder;
+        view_switcher.sensitive = current_container.can_show_folder;
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
     private void update_labels (string uri) {
-        if (current_tab != null) { /* Can happen during restore */
-            set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
+        if (current_container != null) { /* Can happen during restore */
+            set_title (current_container.tab_name); /* Not actually visible on elementaryos */
             top_menu.update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
@@ -1210,7 +1223,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {
-                if (view_container == current_tab) {
+                if (view_container == current_container) {
                     view_container.focus_location (GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()));
                 } else {
                     remove_content (view_container);
@@ -1225,14 +1238,14 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         if (file != null) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
-                    add_tab (file, current_tab.view_mode);
+                    add_tab (file, current_container.view_mode);
                     break;
                 case Files.OpenFlag.NEW_WINDOW:
-                    add_window (file, current_tab.view_mode);
+                    add_window (file, current_container.view_mode);
                     break;
                 default:
                     grab_focus ();
-                    current_tab.focus_location (file);
+                    current_container.focus_location (file);
                     break;
             }
         } else {
@@ -1243,8 +1256,8 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     /** Use this function to standardise how locations are generated from uris **/
     private GLib.File? get_file_from_uri (string uri) {
         string? current_uri = null;
-        if (current_tab != null && current_tab.location != null) {
-            current_uri = current_tab.location.get_uri ();
+        if (current_container != null && current_container.location != null) {
+            current_uri = current_container.location.get_uri ();
         }
 
         string path = FileUtils.sanitize_path (uri, current_uri);
@@ -1256,7 +1269,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     public new void grab_focus () {
-        current_tab.grab_focus ();
+        current_container.grab_focus ();
     }
 }
 
