@@ -20,9 +20,9 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
+public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     Gtk.ScrolledWindow scrolled_window;
-    Gtk.Grid bookmarklists_grid;
+    // Gtk.Box bookmarklists_grid;
     SidebarListInterface bookmark_listbox;
     SidebarListInterface device_listbox;
     SidebarListInterface network_listbox;
@@ -38,6 +38,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
     }
 
     construct {
+        orientation = Gtk.Orientation.VERTICAL;
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
@@ -47,7 +48,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         };
 
         var bookmark_revealer = new Gtk.Revealer ();
-        bookmark_revealer.add (bookmark_listbox);
+        bookmark_revealer.set_child (bookmark_listbox);
 
         /// TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
         var device_expander = new SidebarExpander (_("Storage")) {
@@ -55,61 +56,56 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         };
 
         var device_revealer = new Gtk.Revealer ();
-        device_revealer.add (device_listbox);
+        device_revealer.set_child (device_listbox);
 
         var network_expander = new SidebarExpander (_("Network")) {
             tooltip_text = _("Devices and places available via a network"),
-            no_show_all = Files.is_admin ()
+            visible = !Files.is_admin ()
         };
 
         var network_revealer = new Gtk.Revealer ();
-        network_revealer.add (network_listbox);
+        network_revealer.set_child (network_listbox);
 
-        bookmarklists_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.VERTICAL,
+        var bookmarklists_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
         };
-        bookmarklists_grid.add (bookmark_expander);
-        bookmarklists_grid.add (bookmark_revealer);
-        bookmarklists_grid.add (device_expander);
-        bookmarklists_grid.add (device_revealer);
-        bookmarklists_grid.add (network_expander);
-        bookmarklists_grid.add (network_revealer);
+        bookmarklists_grid.append (bookmark_expander);
+        bookmarklists_grid.append (bookmark_revealer);
+        bookmarklists_grid.append (device_expander);
+        bookmarklists_grid.append (device_revealer);
+        bookmarklists_grid.append (network_expander);
+        bookmarklists_grid.append (network_revealer);
 
-        scrolled_window = new Gtk.ScrolledWindow (null, null) {
+        scrolled_window = new Gtk.ScrolledWindow () {
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
-        scrolled_window.add (bookmarklists_grid);
+        scrolled_window.set_child (bookmarklists_grid);
 
         var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
-            always_show_image = true,
             hexpand = true,
-            image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
-            no_show_all = Files.is_admin (),
+            icon_name = "network-server-symbolic",
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
         };
 
-        connect_server_button.get_child ().halign = Gtk.Align.START;
+        // connect_server_button.get_child ().halign = Gtk.Align.START;
 
         var action_bar = new Gtk.ActionBar () {
+            visible = !Files.is_admin ()
             //For now hide action bar when admin. This might need revisiting if other actions are added
-            no_show_all = Files.is_admin ()
         };
 
-        action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        action_bar.add (connect_server_button);
+        action_bar.add_css_class ("flat");
+        action_bar.pack_start (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");
-        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
-        add (scrolled_window);
-        add (action_bar);
+        add_css_class ("sidebar");
+        append (scrolled_window);
+        append (action_bar);
 
         plugins.sidebar_loaded (this);
 
         reload ();
-
-        show_all ();
 
         Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
@@ -272,19 +268,19 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             var arrow = new Gtk.Spinner ();
 
             unowned Gtk.StyleContext arrow_style_context = arrow.get_style_context ();
-            arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
-            arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            arrow.add_css_class ("arrow");
+            arrow.get_style_context ().add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            var grid = new Gtk.Grid ();
-            grid.add (title);
-            grid.add (arrow);
+            var grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            grid.append (title);
+            grid.append (arrow);
 
-            add (grid);
+            set_child (grid);
 
-            unowned Gtk.StyleContext style_context = get_style_context ();
-            style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
-            style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
-            style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            // unowned Gtk.StyleContext style_context = get_style_context ();
+            add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+            add_css_class ("expander");
+            get_style_context ().add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
     }
 }

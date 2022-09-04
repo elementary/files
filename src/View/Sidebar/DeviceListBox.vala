@@ -24,7 +24,8 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     private VolumeMonitor volume_monitor;
 
     public Files.SidebarInterface sidebar { get; construct; }
-
+    public signal void refresh_freespace ();
+    
     public DeviceListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
@@ -105,14 +106,16 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 );
             }
 
-            add (new_bm);
+            append (new_bm);
 
-            show_all ();
             bm = new_bm;
             bm.update_free_space ();
         }
 
         assert (bm != null);
+        refresh_freespace.connect (() => {
+            bm.update_free_space ();
+        });
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
@@ -167,11 +170,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public override void refresh_info () {
-        get_children ().@foreach ((item) => {
-            if (item is AbstractMountableRow) {
-                ((AbstractMountableRow)item).update_free_space ();
-            }
-        });
+        refresh_freespace ();
     }
 
     private void bookmark_drive (Drive drive) {
@@ -227,20 +226,21 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
     private bool has_uuid (string? uuid, string? fallback, out AbstractMountableRow? row) {
         var searched_uuid = uuid != null ? uuid : fallback;
-
+        row = null;
         if (searched_uuid != null) {
-            foreach (unowned var child in get_children ()) {
-                row = null;
+            var child = get_first_child ();
+            while (child != null) {
                 if (child is AbstractMountableRow) {
-                    row = (AbstractMountableRow)child;
-                    if (row.uuid == searched_uuid) {
+                    if (((AbstractMountableRow)child).uuid == searched_uuid) {
+                        row = ((AbstractMountableRow)child);
                         return true;
                     }
                 }
+                
+                child = child.get_next_sibling ();
             }
         }
 
-        row = null;
         return false;
     }
 
@@ -250,18 +250,20 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        foreach (unowned var child in get_children ()) {
-            if (child is AbstractMountableRow) {
-                unselect_row ((AbstractMountableRow)child);
-            }
-        }
+        unselect_all ();
+        // foreach (unowned var child in get_children ()) {
+        //     if (child is AbstractMountableRow) {
+        //         unselect_row ((AbstractMountableRow)child);
+        //     }
+        // }
     }
 
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is AbstractMountableRow) {
             select_row ((AbstractMountableRow)item);
         } else {
-            unselect_all_items ();
+            unselect_all ();
+            // unselect_all_items ();
         }
     }
 }
