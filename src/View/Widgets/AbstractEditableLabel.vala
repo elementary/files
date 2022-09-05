@@ -26,13 +26,12 @@ namespace Files {
         public string original_name;
         public bool draw_outline {get; set;}
 
-        private Gtk.Widget editable_widget;
+        // private Gtk.Widget editable_widget;
 
-        protected AbstractEditableLabel () {
-            editable_widget = create_editable_widget ();
-            add (editable_widget);
-            show_all ();
-            get_real_editable ().key_press_event.connect (on_key_press_event);
+        construct {
+            init_delegate ();
+            set_child (get_delegate ());
+            // get_delegate ().key_press_event.connect (on_key_press_event);
         }
 
         //TODO Use EventControllers
@@ -91,8 +90,8 @@ namespace Files {
         public virtual void set_padding (int xpad, int ypad) {}
 
         public abstract new void set_size_request (int width, int height);
-        public abstract Gtk.Widget create_editable_widget ();
-        public abstract string get_text ();
+        public abstract void init_delegate ();
+        // public abstract string get_text ();
         public abstract void select_region (int start_pos, int end_pos);
         public abstract void do_delete_text (int start_pos, int end_pos);
         public abstract void do_insert_text (string new_text, int new_text_length, ref int position);
@@ -100,10 +99,20 @@ namespace Files {
         public abstract int get_position ();
         public abstract bool get_selection_bounds (out int start_pos, out int end_pos);
         public abstract void set_position (int position);
-        public abstract Gtk.Widget get_real_editable ();
-
 
         /** CellEditable interface */
         public virtual void start_editing (Gdk.Event? event) {}
+        
+        /** Editable interface */
+        public string text { get; set; }
+        public bool editable { get; set; }
+        public bool enable_undo { get; set; }
+        public int max_width_chars { get; set; }
+        public int selection_bound { get;}
+        public int cursor_position { get; }
+        public int width_chars { get; set; }
+        public abstract unowned string get_text ();
+        public abstract unowned Gtk.Editable? get_delegate ();
+        
     }
 }

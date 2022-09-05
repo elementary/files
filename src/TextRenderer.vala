@@ -59,7 +59,7 @@ namespace Files {
             }
         }
 
-        private bool is_list_view;
+        public bool is_list_view { get; construct; }
 
         public int text_width;
         public int text_height;
@@ -73,20 +73,22 @@ namespace Files {
         AbstractEditableLabel entry;
 
         construct {
-            this.mode = Gtk.CellRendererMode.EDITABLE;
+            if (is_list_view) {
+                entry = new SingleLineEditableLabel ();
+            } else {
+                entry = new MultiLineEditableLabel ();
+            }
+            
+            mode = Gtk.CellRendererMode.EDITABLE;
             text_css = new Gtk.CssProvider ();
             previous_background_rgba = { 0, 0, 0, 0 };
             previous_contrasting_rgba = { 0, 0, 0, 0 };
         }
 
         public TextRenderer (ViewMode viewmode) {
-            if (viewmode == ViewMode.ICON) {
-                entry = new MultiLineEditableLabel ();
-                is_list_view = false;
-            } else {
-                entry = new SingleLineEditableLabel ();
-                is_list_view = true;
-            }
+            Object (
+                is_list_view: viewmode != ViewMode.ICON
+            );
 
             entry.editing_done.connect (on_entry_editing_done);
         }
@@ -254,15 +256,9 @@ namespace Files {
                 return;
             }
 
-            /* disconnect from the previously set widget */
-            if (widget != null) {
-                disconnect_widget_signals ();
-            }
-
             widget = _widget;
 
             if (widget != null) {
-                connect_widget_signals ();
                 context = widget.get_pango_context ();
                 layout = new Pango.Layout (context);
 
@@ -279,22 +275,6 @@ namespace Files {
                 layout = null;
                 char_height = 0;
             }
-        }
-
-        private void connect_widget_signals () {
-            widget.destroy.connect (invalidate);
-            widget.style_updated.connect (invalidate);
-        }
-
-        private void disconnect_widget_signals () {
-            widget.destroy.disconnect (invalidate);
-            widget.style_updated.disconnect (invalidate);
-        }
-
-        private void invalidate () {
-            disconnect_widget_signals ();
-            set_widget (null);
-            file = null;
         }
 
         private void on_entry_editing_done () {

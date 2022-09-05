@@ -24,18 +24,18 @@ namespace Files {
 
         public MultiLineEditableLabel () {}
 
-        public override Gtk.Widget create_editable_widget () {
+        public override void init_delegate () {
             textview = new Gtk.TextView ();
             /* Block propagation of button press event as this would cause renaming to end */
-            textview.button_press_event.connect_after (() => { return true; });
+            //TODO Use EventController if required
+            // textview.button_press_event.connect_after (() => { return true; });
 
-            scrolled_window = new Gtk.ScrolledWindow (null, null);
-            scrolled_window.add (textview);
-            return scrolled_window as Gtk.Widget;
+            scrolled_window = new Gtk.ScrolledWindow ();
+            scrolled_window.set_child (textview);
         }
 
-        public override Gtk.Widget get_real_editable () {
-            return textview;
+        public override unowned Gtk.Editable? get_delegate () {
+            return (Gtk.Editable?)textview;
         }
 
         public override void set_text (string text) {
@@ -81,13 +81,14 @@ namespace Files {
             textview.set_margin_bottom (ypad);
         }
 
-        public override string get_text () {
+        public override unowned string get_text () {
             var buffer = textview.get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
             buffer.get_start_iter (out start);
             buffer.get_end_iter (out end);
-            return buffer.get_text (start, end, false);
+            text = buffer.get_text (start, end, false);
+            return text;
         }
 
         /** Gtk.Editable interface */
@@ -178,23 +179,24 @@ namespace Files {
             buffer.place_cursor (iter);
         }
 
-        public override bool draw (Cairo.Context cr) {
-            bool result = base.draw (cr);
-            if (draw_outline) {
-                Gtk.Allocation allocation;
-                Gdk.RGBA color;
-                Gdk.Rectangle outline;
+        //TODO Use snapshot if necessary
+        // public override bool draw (Cairo.Context cr) {
+        //     bool result = base.draw (cr);
+        //     if (draw_outline) {
+        //         Gtk.Allocation allocation;
+        //         Gdk.RGBA color;
+        //         Gdk.Rectangle outline;
 
-                get_allocation (out allocation);
-                color = get_style_context ().get_color (get_state_flags ());
-                Gdk.cairo_set_source_rgba (cr, color);
-                cr.set_line_width (1.0);
-                outline = {0, 0, allocation.width, allocation.height};
-                Gdk.cairo_rectangle (cr, outline);
-                cr.stroke ();
-            }
-            return result;
-        }
+        //         get_allocation (out allocation);
+        //         color = get_style_context ().get_color (get_state_flags ());
+        //         Gdk.cairo_set_source_rgba (cr, color);
+        //         cr.set_line_width (1.0);
+        //         outline = {0, 0, allocation.width, allocation.height};
+        //         Gdk.cairo_rectangle (cr, outline);
+        //         cr.stroke ();
+        //     }
+        //     return result;
+        // }
 
         public override void set_size_request (int width, int height) {
             textview.set_size_request (width, height);
