@@ -25,15 +25,15 @@ namespace Files {
 
         public SingleLineEditableLabel () {}
 
-        public override Gtk.Widget create_editable_widget () {
+        public override void init_delegate () {
             textview = new Gtk.Entry ();
             /* Block propagation of button press event as this would cause renaming to end */
-            textview.button_press_event.connect_after (() => { return true; });
-            return textview as Gtk.Widget;
+            // textview.button_press_event.connect_after (() => { return true; });
+            // return textview as Gtk.Widget;
         }
 
-        public override Gtk.Widget get_real_editable () {
-            return textview;
+        public override unowned Gtk.Editable? get_delegate () {
+            return (Gtk.Editable?)textview;
         }
 
         public override void set_text (string text) {
@@ -62,8 +62,9 @@ namespace Files {
             }
         }
 
-        public override string get_text () {
-            return textview.get_text ();
+        public override unowned string get_text () {
+            text = textview.get_text ();
+            return text;
         }
 
         //TODO Use EventControllers
