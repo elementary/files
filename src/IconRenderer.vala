@@ -77,7 +77,7 @@ namespace Files {
         private ClipboardManager clipboard;
 
         construct {
-            clipboard = ClipboardManager.get_for_display ();
+            clipboard = ClipboardManager.get_instance ();
             hover_rect = {0, 0, (int) Files.IconSize.NORMAL, (int) Files.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Files.IconSize.EMBLEM, (int) Files.IconSize.EMBLEM};
         }
@@ -87,7 +87,7 @@ namespace Files {
             xpad = 0;
         }
 
-        public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
+        public override void snapshot (Gtk.Snapshot ss, Gtk.Widget widget, Gdk.Rectangle background_area,
                                      Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
 
             if (file == null || pixbuf == null) {
@@ -101,13 +101,14 @@ namespace Files {
 
             bool is_rtl = widget.get_direction () == Gtk.TextDirection.RTL;
             Gdk.Pixbuf? pb = pixbuf;
+            // var pb = Gdk.Texture.for_pixbuf ();
 
-            var pix_rect = Gdk.Rectangle ();
-
-            pix_rect.width = pixbuf.width / icon_scale;
-            pix_rect.height = pixbuf.height / icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
-            pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
+            var pix_rect = Gdk.Rectangle () {
+                x = cell_area.x + (cell_area.width - pixbuf.width) / 2,
+                y = cell_area.y + (cell_area.height - pixbuf.height) / 2,
+                width = pixbuf.width / icon_scale,
+                height = pixbuf.height / icon_scale
+            };
 
             var draw_rect = Gdk.Rectangle ();
             if (!cell_area.intersect (pix_rect, out draw_rect)) {
@@ -150,7 +151,7 @@ namespace Files {
                     special_icon_name = null;
                 }
             }
-
+            
             if (clipboard.has_cutted_file (file)) {
                 /* 50% translucent for cutted files */
                 pb = PF.PixbufUtils.lucent (pixbuf, 50);
@@ -179,14 +180,22 @@ namespace Files {
                 }
 
                 if (focused) {
-                    var bg = style_context.get_property ("background-color", state);
-                    if (bg.holds (typeof (Gdk.RGBA))) {
-                        var color = (Gdk.RGBA) bg;
-                        /* if background-color is black something probably is wrong */
-                        if (color.red != 0 || color.green != 0 || color.blue != 0) {
-                            pb = PF.PixbufUtils.colorize (pb, color);
-                        }
-                    }
+                    //TODO Use new Widget not requiring renderer.
+                    ss.render_focus (
+                        style_context, 
+                        draw_rect.x,
+                        draw_rect.y,
+                        draw_rect.width,
+                        draw_rect.height
+                    );
+                    // var bg = style_context.get_property ("background-color", state);
+                    // if (bg.holds (typeof (Gdk.RGBA))) {
+                    //     var color = (Gdk.RGBA) bg;
+                    //     /* if background-color is black something probably is wrong */
+                    //     if (color.red != 0 || color.green != 0 || color.blue != 0) {
+                    //         pb = PF.PixbufUtils.colorize (pb, color);
+                    //     }
+                    // }
                 }
 
                 if (prelit || focused) {
@@ -199,19 +208,31 @@ namespace Files {
                 style_context.add_class (Granite.STYLE_CLASS_CARD);
             }
 
-            cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
+            ss.scale ((float)(1.0 / icon_scale), (float)(1.0 / icon_scale));
 
             var x_pad = ((int) icon_size - draw_rect.width) / 2;
             var y_pad = ((int) icon_size - draw_rect.height) / 2;
 
-            style_context.render_background (
-                cr,
-                (draw_rect.x - x_pad) * icon_scale,
+            ss.render_background (
+                style_context, 
+                (draw_rect.x - x_pad) * icon_scale, 
                 (draw_rect.y - y_pad) * icon_scale,
-                (int) icon_size * icon_scale, (int) icon_size * icon_scale
+                (int) icon_size * icon_scale,
+                (int) icon_size * icon_scale
             );
+            // style_context.render_background (
+            //     cr,
+            //     (draw_rect.x - x_pad) * icon_scale,
+            //     (draw_rect.y - y_pad) * icon_scale,
+            //     (int) icon_size * icon_scale, (int) icon_size * icon_scale
+            // );
 
-            style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
+            // No render_icon methof for snapshot ;(
+            var dr = Graphene.Rect ();
+            dr.init (draw_rect.x * icon_scale, draw_rect.y * icon_scale, draw_rect.width, draw_rect.height);
+            ss.append_texture (Gdk.Texture.for_pixbuf (pb), dr);
+            
+            // ss.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
             style_context.restore ();
 
@@ -257,9 +278,17 @@ namespace Files {
                             draw_rect.y - y_pad - helper_size + v_overlap
                         );
 
-                        style_context.render_icon (
-                            cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale
+                        var hr = Graphene.Rect ();
+                        hr.init (
+                            helper_rect.x,
+                            helper_rect.y,
+                            helper_rect.width,
+                            helper_rect.height
                         );
+                        ss.append_texture (Gdk.Texture.for_pixbuf (pix), hr);
+                        // style_context.render_icon (
+                        //     cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale
+                        // );
                     }
                 }
 
@@ -273,7 +302,8 @@ namespace Files {
             if (show_emblems) {
                 int emblem_size = (int) Files.IconSize.EMBLEM;
                 int pos = 0;
-                var emblem_area = Gdk.Rectangle ();
+
+                int ex, ey, ew, eh;
 
                 foreach (string emblem in file.emblems_list) {
                     if (pos - 1 > zoom_level) {
@@ -293,31 +323,35 @@ namespace Files {
                         continue;
                     }
 
+                    
                     // Align at end of background (code mirrors that for helper)
                     if (!is_rtl) {
-                        emblem_area.x = int.min (
+                        ex = int.min (
                             cell_area.x + cell_area.width - helper_size,
                             draw_rect.x + draw_rect.width + x_pad - h_overlap
                         );
                     } else {
-                        emblem_area.x = int.max (
+                        ex = int.max (
                             cell_area.x,
                             draw_rect.x - x_pad - helper_size + h_overlap
                         );
                     }
 
                     // Align at bottom of background
-                    emblem_area.y = int.min (
+                    ey = int.min (
                         cell_area.y + cell_area.height - emblem_size,
                         draw_rect.y + draw_rect.height + y_pad - v_overlap
                     );
 
 
-                    emblem_area.y = int.max (
-                        cell_area.y, emblem_area.y - emblem_size * pos
+                    ey = int.max (
+                        cell_area.y, ey - emblem_size * pos
                     );
 
-                    style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+                    var emblem_area = Graphene.Rect ();
+                    emblem_area.init (ex, ey, pix.width, pix.height);
+                    ss.append_texture (Gdk.Texture.for_pixbuf (pix), emblem_area);
+                    // style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                     pos++;
                 }
             }
@@ -333,21 +367,21 @@ namespace Files {
             minimum_size = natural_size;
         }
 
-        /* We still have to implement this even though it is deprecated, else compiler complains.
-         * It is not called (in Juno)  */
-        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                       out int x_offset, out int y_offset,
-                                       out int width, out int height) {
+        // /* We still have to implement this even though it is deprecated, else compiler complains.
+        //  * It is not called (in Juno)  */
+        // public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+        //                                out int x_offset, out int y_offset,
+        //                                out int width, out int height) {
 
-            /* Just return some default values for offsets */
-            x_offset = 0;
-            y_offset = 0;
-            int mw, nw, mh, nh;
-            get_preferred_width (widget, out mw, out nw);
-            get_preferred_height (widget, out mh, out nh);
+        //     /* Just return some default values for offsets */
+        //     x_offset = 0;
+        //     y_offset = 0;
+        //     int mw, nw, mh, nh;
+        //     get_preferred_width (widget, out mw, out nw);
+        //     get_preferred_height (widget, out mh, out nh);
 
-            width = nw;
-            height = nh;
-        }
+        //     width = nw;
+        //     height = nh;
+        // }
     }
 }

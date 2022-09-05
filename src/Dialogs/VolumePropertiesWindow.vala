@@ -20,9 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-namespace Files.View {
-
-public class VolumePropertiesWindow : AbstractPropertiesDialog {
+public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
 
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);
@@ -54,8 +52,7 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         /* Build the header box */
-        var file_icon = new Gtk.Image ();
-        file_icon.set_from_gicon (mount_icon, Gtk.IconSize.DIALOG);
+        var file_icon = new Gtk.Image.from_gicon (mount_icon);
 
         if (file_icon != null) {
             var emblems_list = new GLib.List<string> ();
@@ -97,7 +94,6 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         create_storage_bar (info, 3);
-        show_all ();
+        update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
     }
-}
 }

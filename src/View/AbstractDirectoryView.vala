@@ -329,7 +329,7 @@ namespace Files {
                 // view.draw.connect (on_view_draw);
             }
 
-            freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
+            // freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
 
             connect_directory_handlers (slot.directory);
@@ -683,7 +683,7 @@ namespace Files {
         private void clear () {
             /* after calling this (prior to reloading), the directory must be re-initialised so
              * we reconnect the file_loaded and done_loading signals */
-            freeze_tree ();
+            // freeze_tree ();
             block_model ();
             model.clear ();
             all_selected = false;
@@ -1406,12 +1406,6 @@ namespace Files {
             } else {
                 is_writable = false;
             }
-
-            Idle.add (() => {
-                thaw_tree ();
-                return Source.REMOVE;
-            });
-
 
             schedule_thumbnail_color_tag_timeout ();
         }
@@ -2538,13 +2532,13 @@ namespace Files {
              * we freeze child notifications while the view is being scrolled or resized.
              * The timeout is restarted for each scroll or size allocate event */
             cancel_timeout (ref freeze_source_id);
-            freeze_child_notify ();
+            // freeze_child_notify ();
             freeze_source_id = Timeout.add (100, () => {
                 if (thumbnail_source_id > 0) {
                     return GLib.Source.CONTINUE;
                 }
 
-                thaw_child_notify ();
+                // thaw_child_notify ();
                 freeze_source_id = 0;
                 return GLib.Source.REMOVE;
             });
@@ -3779,10 +3773,10 @@ namespace Files {
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top);
-        protected abstract void freeze_tree ();
-        protected abstract void thaw_tree ();
-        protected new abstract void freeze_child_notify ();
-        protected new abstract void thaw_child_notify ();
+        // protected abstract void freeze_tree ();
+        // protected abstract void thaw_tree ();
+        // protected new abstract void freeze_child_notify ();
+        // protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
 

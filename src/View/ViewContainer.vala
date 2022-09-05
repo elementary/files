@@ -110,7 +110,6 @@ namespace Files.View {
             window = win;
             browser = new Browser ();
 
-            set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             connect_signals ();
         }
 
@@ -122,8 +121,8 @@ namespace Files.View {
             loading.connect ((loading) => {
                 is_loading = loading;
             });
-
-            button_press_event.connect (on_button_press_event);
+            //TODO Use EventController
+            // button_press_event.connect (on_button_press_event);
         }
 
         private void connect_window_signals () {
@@ -166,8 +165,7 @@ namespace Files.View {
                 content_item = value;
 
                 if (content_item != null) {
-                    add (content_item);
-                    content_item.show_all ();
+                    append (content_item);
                 }
             }
             get {
@@ -245,14 +243,11 @@ namespace Files.View {
                 this.view = new Slot (loc, this, mode);
             }
 
-            overlay_statusbar = new View.OverlayBar (view.overlay) {
-                no_show_all = true
-            };
+            overlay_statusbar = new View.OverlayBar (view.overlay);
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
             slot.initialize_directory ();
-            show_all ();
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */

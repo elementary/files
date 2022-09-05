@@ -22,9 +22,10 @@
 
 namespace Files.View {
     public class Welcome : Granite.Placeholder {
-
-        public Welcome (string primary, string secondary) {
-            base (primary, secondary);
+        //TODO Rework for Granite.Placeholder
+        public Welcome (string title, string secondary) {
+            base (title);
+            // base (primary, secondary);
             // this.button_press_event.connect (on_button_press_event);
             // show_all ();
         }

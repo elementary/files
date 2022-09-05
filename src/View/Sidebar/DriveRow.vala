@@ -53,7 +53,6 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     construct {
-        no_show_all = true;
         visible = false;
         set_visibility ();
         sort_key = drive.get_sort_key ();
@@ -119,7 +118,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         set_tooltip_markup (custom_name);
     }
 
-    protected override void popup_context_menu (Gdk.Event event) {
+    protected override void popup_context_menu () {
         // At present, this type of row only shows when there is no media or unformatted so there are no
         // usable actions.  In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();
@@ -131,7 +130,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
 
             menu_builder
             .build ()
-            .popup_at_pointer (event);
+            .popup ();
         }
     }
 }

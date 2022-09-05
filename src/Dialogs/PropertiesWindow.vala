@@ -119,7 +119,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     /* Count of files current including top level (selected) files other than folders */
     private uint file_count;
 
-    public PropertiesWindow (GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent) {
+    public PropertiesWindow (
+        GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent
+    ) {
         base (_("Properties"), parent);
 
         if (_files == null) {
@@ -135,10 +137,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         view = _view;
 
         /* Connect signal before creating any DeepCount directories */
-        this.destroy.connect (() => {
+        this.close_request.connect (() => {
             foreach (var dir in deep_count_directories) {
                 dir.cancel ();
             }
+
+            return false;
         });
 
         /* The properties window may outlive the passed-in file object
@@ -193,7 +197,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
         if (file_pix != null) {
-            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
+            var file_icon = new Gtk.Image.from_gicon (file_pix);
             overlay_emblems (file_icon, goffile.emblems_list);
         }
 
@@ -217,10 +221,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 rename_file (goffile, entry.get_text ());
             });
 
-            entry.focus_out_event.connect (() => {
-                rename_file (goffile, entry.get_text ());
-                return false;
-            });
+            // entry.focus_out_event.connect (() => {
+            //     rename_file (goffile, entry.get_text ());
+            //     return false;
+            // });
 
             header_title = entry;
         }
@@ -230,20 +234,22 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* Permissions */
         if (construct_perm_panel () != null) {
             if (!goffile.can_set_permissions ()) {
-                foreach (var widget in perm_grid.get_children ()) {
-                    widget.set_sensitive (false);
+                var child = perm_grid.get_first_child ();
+                while (child != null) {
+                    child.set_sensitive (false);
+                    child = child.get_next_sibling ();
                 }
             }
         } else {
             perm_grid = new Gtk.Grid () {
-                expand = true,
                 valign = Gtk.Align.CENTER
             };
-            perm_grid.add (new Gtk.Label (_("Unable to determine file ownership and permissions")));
+            
+            var label = new Gtk.Label (_("Unable to determine file ownership and permissions"));
+            perm_grid.attach (label, 0, 0);
         }
 
         add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
-        show_all ();
     }
 
     private void update_size_value () {
@@ -252,17 +258,19 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         update_widgets_state ();
 
         if (size_warning > 0) {
-            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-            size_warning_image.halign = Gtk.Align.START;
-            size_warning_image.hexpand = true;
-            var warning = ngettext ("%i file could not be read due to permissions or other errors.",
-                                    "%i files could not be read due to permissions or other errors.",
-                                    (ulong) size_warning).printf (size_warning);
+            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic") {
+                halign = Gtk.Align.START,
+                hexpand = true
+            };
+            var warning = ngettext (
+                "%i file could not be read due to permissions or other errors.",
+                "%i files could not be read due to permissions or other errors.",
+                (ulong) size_warning
+            ).printf (size_warning);
 
             size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + warning
                                                 ;
             info_grid.attach_next_to (size_warning_image, size_value, Gtk.PositionType.RIGHT);
-            info_grid.show_all ();
         }
     }
 
@@ -535,11 +543,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         contains_key_label = new KeyLabel (_("Contains:"));
         contains_value = new ValueLabel ("");
 
-        /* Dialog may get displayed after these labels are hidden so we set no_show_all to true */
-        type_key_label.no_show_all = true;
-        type_value.no_show_all = true;
-        contains_key_label.no_show_all = true;
-        contains_value.no_show_all = true;
+        // /* Dialog may get displayed after these labels are hidden so we set no_show_all to true */
+        // type_key_label.no_show_all = true;
+        // type_value.no_show_all = true;
+        // contains_key_label.no_show_all = true;
+        // contains_value.no_show_all = true;
 
         info_grid.attach (size_key_label, 0, 1, 1, 1);
         info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
