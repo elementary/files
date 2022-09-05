@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class Files.StorageBar : Gtk.Box {
+//Moved here from Granite
+public class Files.StorageBar : Gtk.CenterBox {
     public enum ItemDescription {
         OTHER,
         AUDIO,
@@ -119,48 +120,49 @@ public class Files.StorageBar : Gtk.Box {
         get_style_context ().add_class ("storage-bar");
         blocks = new GLib.HashTable<int, FillBlock> (null, null);
         fillblock_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        fillblock_box.get_style_context ().add_class (Gtk.STYLE_CLASS_TROUGH);
+        fillblock_box.add_css_class ("trough");
         fillblock_box.hexpand = true;
         inner_margin_sides = 12;
         legend_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-        legend_box.expand = true;
-        var legend_center_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        var legend_center_box = new Gtk.CenterBox ();
         legend_center_box.set_center_widget (legend_box);
-        var legend_scrolled = new Gtk.ScrolledWindow (null, null);
-        legend_scrolled.vscrollbar_policy = Gtk.PolicyType.NEVER;
-        legend_scrolled.hexpand = true;
-        legend_scrolled.add (legend_center_box);
-        var grid = new Gtk.Grid ();
-        grid.attach (legend_scrolled, 0, 0, 1, 1);
-        grid.attach (fillblock_box, 0, 1, 1, 1);
-        grid.attach (description_label, 0, 2, 1, 1);
-        set_center_widget (grid);
+        var legend_scrolled = new Gtk.ScrolledWindow () {
+            vscrollbar_policy = Gtk.PolicyType.NEVER,
+            hexpand = true
+        };
+        legend_scrolled.set_child (legend_center_box);
+        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        box.append (legend_scrolled);
+        box.append (fillblock_box);
+        box.append (description_label);
+        set_center_widget (box);
 
-        fillblock_box.size_allocate.connect ((allocation) => {
-            // lost_size is here because we use truncation so that it is possible for a full device to have a filed bar.
-            double lost_size = 0;
-            int current_x = allocation.x;
-            for (int i = 0; i < blocks.length; i++) {
-                weak FillBlock block = blocks.get (i);
-                if (block == null || block.visible == false)
-                    continue;
 
-                var new_allocation = Gtk.Allocation ();
-                new_allocation.x = current_x;
-                new_allocation.y = allocation.y;
-                double width = (((double)allocation.width) * (double) block.size / (double) storage) + lost_size;
-                lost_size -= GLib.Math.trunc (lost_size);
-                new_allocation.width = (int) GLib.Math.trunc (width);
-                new_allocation.height = allocation.height;
-                block.size_allocate_with_baseline (new_allocation, block.get_allocated_baseline ());
-
-                lost_size = width - new_allocation.width;
-                current_x += new_allocation.width;
-            }
-        });
 
         create_default_blocks ();
     }
+
+    //TODO Work out what is needed in Gtk4
+    // public override void size_allocate (int width, int height, int baseline) {
+    //     // lost_size is here because we use truncation so that it is possible for a full device to have a filled bar.
+    //     double lost_size = 0;
+    //     for (int i = 0; i < blocks.length; i++) {
+    //         weak FillBlock block = blocks.get (i);
+    //         if (block == null || block.visible == false)
+    //             continue;
+
+    //         new_allocation.x = current_x;
+    //         new_allocation.y = allocation.y;
+    //         double width = (((double)allocation.width) * (double) block.size / (double) storage) + lost_size;
+    //         lost_size -= GLib.Math.trunc (lost_size);
+    //         new_allocation.width = (int) GLib.Math.trunc (width);
+    //         new_allocation.height = allocation.height;
+    //         block.size_allocate_with_baseline (new_allocation, block.get_allocated_baseline ());
+
+    //         lost_size = width - new_allocation.width;
+    //         current_x += new_allocation.width;
+    //     }
+    // }
 
     private void create_default_blocks () {
         var seq = new Sequence<ItemDescription> ();
@@ -180,8 +182,8 @@ public class Files.StorageBar : Gtk.Box {
 
         seq.foreach ((description) => {
             var fill_block = new FillBlock (description, 0);
-            fillblock_box.add (fill_block);
-            legend_box.add (fill_block.legend_item);
+            fillblock_box.append (fill_block);
+            legend_box.append (fill_block.legend_item);
             blocks.set (index, fill_block);
             index++;
         });
@@ -193,8 +195,8 @@ public class Files.StorageBar : Gtk.Box {
         used_space.get_style_context ().remove_class ("files");
         blocks.set (index++, used_space);
         blocks.set (index++, free_space);
-        fillblock_box.add (used_space);
-        fillblock_box.add (free_space);
+        fillblock_box.append (used_space);
+        fillblock_box.append (free_space);
 
         update_size_description ();
     }
@@ -245,14 +247,10 @@ public class Files.StorageBar : Gtk.Box {
             set {
                 _size = value;
                 if (_size == 0) {
-                    no_show_all = true;
                     visible = false;
-                    legend_item.no_show_all = true;
                     legend_item.visible = false;
                 } else {
-                    no_show_all = false;
                     visible = true;
-                    legend_item.no_show_all = false;
                     legend_item.visible = true;
                     size_label.label = GLib.format_size (_size);
                     queue_resize ();
@@ -278,7 +276,6 @@ public class Files.StorageBar : Gtk.Box {
         }
 
         construct {
-            show_all ();
             legend_item = new Gtk.Grid ();
             legend_item.column_spacing = 6;
             name_label = new Gtk.Label (null);
@@ -288,7 +285,7 @@ public class Files.StorageBar : Gtk.Box {
             size_label.halign = Gtk.Align.START;
             legend_fill = new FillRound ();
             legend_fill.get_style_context ().add_class ("legend");
-            var legend_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            var legend_box = new Gtk.CenterBox ();
             legend_box.set_center_widget (legend_fill);
             legend_item.attach (legend_box, 0, 0, 1, 2);
             legend_item.attach (name_label, 1, 0, 1, 1);
@@ -297,42 +294,44 @@ public class Files.StorageBar : Gtk.Box {
     }
 
     internal class FillRound : Gtk.Widget {
-        internal FillRound () {
+        // internal FillRound () {
 
-        }
+        // }
 
         construct {
-            set_has_window (false);
-            var style_context = get_style_context ();
-            style_context.add_class ("fill-block");
-            expand = true;
+            // set_has_window (false);
+            add_css_class ("fill-block");
         }
 
-        public override bool draw (Cairo.Context cr) {
+        public override void snapshot (Gtk.Snapshot ss) {
+        // public override bool draw (Cairo.Context cr) {
             var width = get_allocated_width ();
             var height = get_allocated_height ();
             var context = get_style_context ();
-            context.render_background (cr, 0, 0, width, height);
-            context.render_frame (cr, 0, 0, width, height);
-            return true;
+            ss.render_background (context, 0, 0, width, height);
+            ss.render_frame (context, 0, 0, width, height);
         }
 
-        public override void get_preferred_width (out int minimum_width, out int natural_width) {
-            base.get_preferred_width (out minimum_width, out natural_width);
-            var context = get_style_context ();
-            var padding = context.get_padding (get_state_flags ());
-            minimum_width = int.max (padding.left + padding.right, minimum_width);
-            minimum_width = int.max (1, minimum_width);
-            natural_width = int.max (minimum_width, natural_width);
-        }
+        //TODO Implement get_preferred_size if required
+        // public override void get_preferred_size (out Gtk.Requisition min_size, out Gtk.Requisition nat_size) {
 
-        public override void get_preferred_height (out int minimum_height, out int natural_height) {
-            base.get_preferred_height (out minimum_height, out natural_height);
-            var context = get_style_context ();
-            var padding = context.get_padding (get_state_flags ());
-            minimum_height = int.max (padding.top + padding.bottom, minimum_height);
-            minimum_height = int.max (1, minimum_height);
-            natural_height = int.max (minimum_height, natural_height);
-        }
+        // }
+        // public override void get_preferred_width (out int minimum_width, out int natural_width) {
+        //     base.get_preferred_width (out minimum_width, out natural_width);
+        //     var context = get_style_context ();
+        //     var padding = context.get_padding (get_state_flags ());
+        //     minimum_width = int.max (padding.left + padding.right, minimum_width);
+        //     minimum_width = int.max (1, minimum_width);
+        //     natural_width = int.max (minimum_width, natural_width);
+        // }
+
+        // public override void get_preferred_height (out int minimum_height, out int natural_height) {
+        //     base.get_preferred_height (out minimum_height, out natural_height);
+        //     var context = get_style_context ();
+        //     var padding = context.get_padding (get_state_flags ());
+        //     minimum_height = int.max (padding.top + padding.bottom, minimum_height);
+        //     minimum_height = int.max (1, minimum_height);
+        //     natural_height = int.max (minimum_height, natural_height);
+        // }
     }
 }

@@ -38,7 +38,6 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
                 transient_for: parent,
                 resizable: false,
                 deletable: false,
-                window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
                 destroy_with_parent: true
         );
     }
@@ -59,14 +58,14 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         stack.add_titled (info_grid, PanelType.INFO.to_string (), _("General"));
 
         stack_switcher = new Gtk.StackSwitcher () {
-            homogeneous = true,
             margin_top = 12,
-            no_show_all = true,
             stack = stack
         };
 
         layout = new Gtk.Grid () {
-            margin = 12,
+            margin_bottom = 12,
+            margin_start = 12,
+            margin_end = 12,
             margin_top = 0,
             column_spacing = 12,
             row_spacing = 6
@@ -75,7 +74,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         layout.attach (stack_switcher, 0, 1, 2, 1);
         layout.attach (stack, 0, 2, 2, 1);
 
-        ((Gtk.Box) get_content_area ()).add (layout);
+        get_content_area ().append (layout);
 
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -98,15 +97,14 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
         if (emblems_list != null) {
             int pos = 0;
-            var emblem_grid = new Gtk.Grid () {
-                orientation = Gtk.Orientation.VERTICAL,
+            var emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
                 halign = Gtk.Align.END,
                 valign = Gtk.Align.END
             };
 
             foreach (string emblem_name in emblems_list) {
-                var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
-                emblem_grid.add (emblem);
+                var emblem = new Gtk.Image.from_icon_name (emblem_name);
+                emblem_box.append (emblem);
 
                 pos++;
                 if (pos > 3) { /* Only room for 3 emblems */
@@ -121,7 +119,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             };
 
             file_img.add_overlay (file_icon);
-            file_img.add_overlay (emblem_grid);
+            file_img.add_overlay (emblem_box);
 
             layout.attach (file_img, 0, 0, 1, 1);
         } else {
@@ -135,7 +133,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         }
 
         /* Only show the stack switcher when there's more than a single tab */
-        if (stack.get_children () != null) {
+        if (stack.get_pages ().get_n_items () > 1) {
             stack_switcher.show ();
         }
     }

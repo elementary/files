@@ -17,7 +17,7 @@
 * Boston, MA 02110-1335 USA.
 */
 
-public class PermissionButton : Gtk.Grid {
+public class PermissionButton : Gtk.Box {
     public Gtk.ToggleButton btn_read;
     public Gtk.ToggleButton btn_write;
     public Gtk.ToggleButton btn_exe;
@@ -35,6 +35,8 @@ public class PermissionButton : Gtk.Grid {
     }
 
     construct {
+        orientation = Gtk.Orientation.HORIZONTAL;
+
         btn_read = new Gtk.ToggleButton.with_label (_("Read"));
         btn_read.set_data ("permissiontype", permission_type);
         btn_read.set_data ("permissionvalue", Permissions.Value.READ);
@@ -47,11 +49,10 @@ public class PermissionButton : Gtk.Grid {
         btn_exe.set_data ("permissiontype", permission_type);
         btn_exe.set_data ("permissionvalue", Permissions.Value.EXE);
 
-        column_homogeneous = true;
-        get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        add (btn_read);
-        add (btn_write);
-        add (btn_exe);
+        add_css_class ("linked");
+        append (btn_read);
+        append (btn_write);
+        append (btn_exe);
     }
 
     public void update_buttons (uint32 permissions) {
