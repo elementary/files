@@ -21,9 +21,9 @@
 ***/
 
 public class Files.EmblemRenderer : Gtk.CellRenderer {
-    private static Gee.HashMap<string, Gdk.Pixbuf> emblem_pixbuf_map;
+    private static Gee.HashMap<string, Gdk.Texture> emblem_pixbuf_map;
     static construct {
-        emblem_pixbuf_map = new Gee.HashMap<string, Gdk.Pixbuf> ();
+        emblem_pixbuf_map = new Gee.HashMap<string, Gdk.Texture> ();
     }
 
     public static void clear_cache () {
@@ -34,7 +34,11 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
     private const int RIGHT_MARGIN = 12;
     private int icon_scale = 1;
 
-    public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
+    // public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
+    //                              Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
+
+    //     if (file == null) {
+    public override void snapshot (Gtk.Snapshot ss, Gtk.Widget widget, Gdk.Rectangle background_area,
                                  Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
 
         if (file == null) {
@@ -48,16 +52,16 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
         var style_context = widget.get_parent ().get_style_context ();
 
         int pos = 1;
-        var emblem_area = Gdk.Rectangle ();
+
 
         foreach (string emblem in file.emblems_list) {
-            Gdk.Pixbuf? pix = null;
+            Gdk.Texture? pix = null;
             var key = emblem + "-symbolic";
 
             if (emblem_pixbuf_map.has_key (key)) {
                 pix = emblem_pixbuf_map.@get (key);
             } else {
-                pix = render_icon (key, style_context);
+                pix = render_icon (key, style_context, widget);
                 if (pix == null) {
                     continue;
                 }
@@ -65,24 +69,27 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
                 emblem_pixbuf_map.@set (key, pix);
             }
 
-            emblem_area.y = cell_area.y + (cell_area.height - Files.IconSize.EMBLEM) / 2;
-            emblem_area.x = cell_area.x + cell_area.width - (pos * Files.IconSize.EMBLEM) - RIGHT_MARGIN;
+            var emblem_area = Graphene.Rect ();
+            var y = cell_area.y + (cell_area.height - Files.IconSize.EMBLEM) / 2;
+            var x = cell_area.x + cell_area.width - (pos * Files.IconSize.EMBLEM) - RIGHT_MARGIN;
+            emblem_area.init (x, y, pix.width, pix.height);
 
-            style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+            ss.append_texture (pix, emblem_area);
+            // pix.snapshot (ss, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
             pos++;
         }
     }
 
-    public Gtk.IconPaintable? render_icon (string icon_name, Gtk.StyleContext context) {
-        var theme = Gtk.IconTheme.get_default ();
+    public Gdk.Texture? render_icon (string icon_name, Gtk.StyleContext context, Gtk.Widget widget) {
+        var theme = Gtk.IconTheme.get_for_display (widget.get_display ());
         // Gtk.IconPaintable? pix = null;
-        Gtk.IconPaintable? gtk_icon_info = null;
+        Gtk.IconPaintable? paintable = null;
         var scale = context.get_scale ();
-        var direction = context.get_direction ();
+        var direction = widget.get_direction ();
         var gicon = new ThemedIcon.with_default_fallbacks (icon_name);
 
-        var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
-        gtk_icon_info = theme.lookup_by_gicon (gicon, 16, scale, direction, flags);
+        var flags = Gtk.IconLookupFlags.FORCE_SYMBOLIC;
+        paintable = theme.lookup_by_gicon (gicon, 16, scale, direction, flags);
 
         // if (gtk_icon_info != null) {
         //     try {
@@ -92,7 +99,11 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
         //     }
         // }
 
-        return gtk_icon_info;
+        try {
+            return Gdk.Texture.from_file (paintable.get_file ());
+        } catch (Error e) {
+            return null;
+        }
     }
 
     public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
@@ -110,20 +121,20 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
         minimum_size = natural_size;
     }
 
-    /* We still have to implement this even though it is deprecated, else compiler complains.
-     * It is not called (in Juno)  */
-    public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                   out int x_offset, out int y_offset,
-                                   out int width, out int height) {
+    // /* We still have to implement this even though it is deprecated, else compiler complains.
+    //  * It is not called (in Juno)  */
+    // public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+    //                                out int x_offset, out int y_offset,
+    //                                out int width, out int height) {
 
-        /* Just return some default values for offsets */
-        x_offset = 0;
-        y_offset = 0;
-        int mw, nw, mh, nh;
-        get_preferred_width (widget, out mw, out nw);
-        get_preferred_height (widget, out mh, out nh);
+    //     /* Just return some default values for offsets */
+    //     x_offset = 0;
+    //     y_offset = 0;
+    //     int mw, nw, mh, nh;
+    //     get_preferred_width (widget, out mw, out nw);
+    //     get_preferred_height (widget, out mh, out nh);
 
-        width = nw;
-        height = nh;
-    }
+    //     width = nw;
+    //     height = nh;
+    // }
 }

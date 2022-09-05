@@ -248,8 +248,8 @@ namespace Files {
                         /* Fake location outside centre bottom of item for rubberbanding because IconView
                          * unlike TreeView will not rubberband if clicked on an item. */
                          //TODO Rewrite needed for Gtk4 where events are immutable
-                        event.x = rect.x + rect.width / 2;
-                        event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
+                        // event.x = rect.x + rect.width / 2;
+                        // event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                     }
                 } else {
                     bool on_helper = false;
@@ -378,27 +378,27 @@ namespace Files {
 
         /* These two functions accelerate the loading of Views especially for large folders
          * Views are not displayed until fully loaded */
-        protected override void freeze_tree () {
-            tree_frozen = true;
-            tree.freeze_child_notify ();
-            tree.set_model (null);
-        }
+        // protected override void freeze_tree () {
+            // tree_frozen = true;
+            // tree.freeze_child_notify ();
+            // tree.set_model (null);
+        // }
 
-        protected override void thaw_tree () {
-            if (tree_frozen) {
-                tree.set_model (model);
-                tree.thaw_child_notify ();
-                tree_frozen = false;
-            }
-        }
+        // protected override void thaw_tree () {
+            // if (tree_frozen) {
+            //     tree.set_model (model);
+            //     tree.thaw_child_notify ();
+            //     tree_frozen = false;
+            // }
+        // }
 
-        protected override void freeze_child_notify () {
-            tree.freeze_child_notify ();
-        }
+        // protected override void freeze_child_notify () {
+            // tree.freeze_child_notify ();
+        // }
 
-        protected override void thaw_child_notify () {
-            tree.thaw_child_notify ();
-        }
+        // protected override void thaw_child_notify () {
+            // tree.thaw_child_notify ();
+        // }
 
         protected void linear_select_path (Gtk.TreePath path) {
             /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */

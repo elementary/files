@@ -167,7 +167,7 @@ public class Files.Application : Gtk.Application {
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
-        context.add_group (Gtk.get_option_group (true));
+        // context.add_group (Gtk.get_option_group (true));
 
         string[] args = cmd.get_arguments ();
         /* We need to store arguments in an unowned variable for context.parse */

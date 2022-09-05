@@ -33,6 +33,7 @@ namespace Files {
         }
 
         private static GLib.Quark marlin_clipboard_manager_quark;
+        private static ClipboardManager manager;
         //TODO Replace with ContentTypes / ContentProviders
         // private static Gdk.Atom x_special_gnome_copied_files;
         // private const Gtk.TargetEntry[] CLIPBOARD_TARGETS = {
@@ -54,7 +55,7 @@ namespace Files {
 
         static construct {
             marlin_clipboard_manager_quark = GLib.Quark.from_string ("marlin-clipboard-manager");
-            x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
+            // x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
         }
 
         // private ClipboardManager () {
@@ -78,16 +79,16 @@ namespace Files {
             // var clipboard = Gtk.Clipboard.get_for_display (display, Gdk.SELECTION_CLIPBOARD);
             // ClipboardManager? manager = clipboard.get_qdata (marlin_clipboard_manager_quark);
 
-            if (manager != null) {
-                return manager;
-            } else {
-                return new ClipboardManager ();
+            if (manager == null) {
+                manager = new ClipboardManager ();
             }
+            
+            return manager;
         }
 
         ~ClipboardManager () {
             release_pending_files ();
-            clipboard.owner_change.disconnect (owner_changed);
+            // clipboard.owner_change.disconnect (owner_changed);
         }
 
         /** If @file is null, returns whether there are ANY cut files
@@ -155,7 +156,7 @@ namespace Files {
             /* check whether the retrieval worked */
             string? text;
             if (!DndHandler.selection_data_is_uri_list (
-                    sd, Files.TargetType.TEXT_URI_LIST, out text
+                    cp, Files.TargetType.TEXT_URI_LIST, out text
                 )) {
                 warning ("Selection data not uri_list in Files.ClipboardManager contents_received");
                 return;
@@ -167,20 +168,20 @@ namespace Files {
             }
 
             //TODO Rework DnD for Gtk4
-            // Gdk.DragAction action = 0;
-            // if (text.has_prefix ("copy")) {
-            //     action = Gdk.DragAction.COPY;
-            //     text = text.substring (4);
-            // } else if (text.has_prefix ("cut")) {
-            //     action = Gdk.DragAction.MOVE;
-            //     text = text.substring (3);
-            // } else if (text.has_prefix ("link")) {
-            //     action = Gdk.DragAction.LINK;
-            //     text = text.substring (4);
-            // } else {
-            //     warning ("Invalid selection data in Files.ClipboardManager contents_received");
-            //     return;
-            // }
+            Gdk.DragAction? action = null;
+            if (text.has_prefix ("copy")) {
+                action = Gdk.DragAction.COPY;
+                text = text.substring (4);
+            } else if (text.has_prefix ("cut")) {
+                action = Gdk.DragAction.MOVE;
+                text = text.substring (3);
+            } else if (text.has_prefix ("link")) {
+                action = Gdk.DragAction.LINK;
+                text = text.substring (4);
+            } else {
+                warning ("Invalid selection data in Files.ClipboardManager contents_received");
+                return;
+            }
 
             var file_list = FileUtils.files_from_uris (text);
 
@@ -200,13 +201,13 @@ namespace Files {
              * the selection if we don't own it)
              */
             if (action != Gdk.DragAction.COPY) {
-                clipboard.clear ();
+                clipboard.set_content (null);
             }
-            /* check the contents of the clipboard again if either the Xserver or
-             * our GTK+ version doesn't support the XFixes extension */
-            if (!clipboard.get_display ().supports_selection_notification ()) {
-                owner_changed (null);
-            }
+            // /* check the contents of the clipboard again if either the Xserver or
+            //  * our GTK+ version doesn't support the XFixes extension */
+            // if (!clipboard.get_display ().supports_selection_notification ()) {
+            //     owner_changed (null);
+            // }
         }
 
         private void owner_changed (Gdk.Event? owner_change_event) {
@@ -216,7 +217,7 @@ namespace Files {
                 // Gdk.Atom[] targets = null;
 
                 // sd.get_targets (out targets);
-                var formats = cp.get_formats ();
+                // var formats = cp.formats;
 
                 //TODO Rework for ContentFormat
                 // foreach (var target in targets) {

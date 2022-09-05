@@ -67,7 +67,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
                 mount
             );
 
-            add (row);
+            append (row);
         }
 
         return row;

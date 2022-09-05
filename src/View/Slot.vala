@@ -115,19 +115,19 @@ public class Files.View.Slot : Files.AbstractSlot {
 
     private void connect_dir_view_signals () {
         dir_view.path_change_request.connect (on_dir_view_path_change_request);
-        dir_view.size_allocate.connect (on_dir_view_size_allocate);
+        // dir_view.size_allocate.connect (on_dir_view_size_allocate);
         dir_view.selection_changed.connect (on_dir_view_selection_changed);
     }
 
     private void disconnect_dir_view_signals () {
         dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
-        dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
+        // dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
         dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
     }
 
-    private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
-        width = alloc.width;
-    }
+    // private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
+    //     width = alloc.width;
+    // }
 
     private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
         selection_changed (files);
@@ -168,7 +168,6 @@ public class Files.View.Slot : Files.AbstractSlot {
 
             size_change ();
             hpane.set_position (width);
-            colpane.show_all ();
 
             if (colpane.get_realized ()) {
                 colpane.queue_draw ();

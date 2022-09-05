@@ -19,31 +19,31 @@
 ***/
 
 namespace Files.View {
-    public class PrivacyModeOn : Files.View.Welcome {
+    public class PrivacyModeOn : Granite.Placeholder {
         public Directory dir_saved;
         public ViewContainer ctab;
         public bool remember_history {get; set;}
-
+        //TODO Rework for Granite.Placeholder
         public PrivacyModeOn (ViewContainer tab) {
-            base (_("Privacy mode is on"), _("No recent files are remembered"));
+            base (_("Privacy mode is on"));
 
-            append ("preferences-system-privacy", _("Change security settings"),
-                    _("Open the system security and privacy settings app"));
+            // append ("preferences-system-privacy", _("Change security settings"),
+            //         _("Open the system security and privacy settings app"));
 
-            this.activated.connect ((index) => {
-                switch (index) {
-                    case 0:
-                        var ctx = get_window ().get_display ().get_app_launch_context ();
-                        try {
-                            AppInfo.launch_default_for_uri ("settings://security", ctx);
-                        } catch (Error e) {
-                            critical ("No default security app found");
-                        }
-                        break;
-                }
-            });
+            // this.activated.connect ((index) => {
+            //     switch (index) {
+            //         case 0:
+            //             var ctx = get_window ().get_display ().get_app_launch_context ();
+            //             try {
+            //                 AppInfo.launch_default_for_uri ("settings://security", ctx);
+            //             } catch (Error e) {
+            //                 critical ("No default security app found");
+            //             }
+            //             break;
+            //     }
+            // });
 
-            show_all ();
+            // show_all ();
         }
     }
 }
