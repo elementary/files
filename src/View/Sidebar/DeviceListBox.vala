@@ -20,10 +20,17 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
+    public Gtk.Widget list_widget { get; construct; }
+    public Files.SidebarInterface sidebar { get; construct; }
+
+    private Gtk.ListBox list_box {
+        get {
+            return (Gtk.ListBox)list_widget;
+        }
+    }
     private VolumeMonitor volume_monitor;
 
-    public Files.SidebarInterface sidebar { get; construct; }
     public signal void refresh_freespace ();
 
     public DeviceListBox (Files.SidebarInterface sidebar) {
@@ -33,24 +40,30 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     construct {
-        hexpand = true;
+        list_widget = new Gtk.ListBox () {
+            hexpand = true,
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+
+        append (list_widget);
+
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.drive_connected.connect (bookmark_drive);
         volume_monitor.mount_added.connect (bookmark_mount_without_volume);
         volume_monitor.volume_added.connect (bookmark_volume);
 
-        row_activated.connect ((row) => {
+        list_box.row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
                 ((SidebarItemInterface) row).activated ();
             }
         });
-        row_selected.connect ((row) => {
+        list_box.row_selected.connect ((row) => {
             if (row is SidebarItemInterface) {
                 select_item ((SidebarItemInterface) row);
             }
         });
 
-        set_sort_func (device_sort_func);
+        list_box.set_sort_func (device_sort_func);
     }
 
     private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
@@ -106,7 +119,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 );
             }
 
-            append (new_bm);
+            list_box.append (new_bm);
 
             bm = new_bm;
             bm.update_free_space ();
@@ -135,7 +148,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void refresh () {
-        clear ();
+        clear_list ();
 
         var root_uri = _(Files.ROOT_FS_URI);
         if (root_uri != "") {
@@ -228,7 +241,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         var searched_uuid = uuid != null ? uuid : fallback;
         row = null;
         if (searched_uuid != null) {
-            var child = get_first_child ();
+            var child = list_box.get_first_child ();
             while (child != null) {
                 if (child is AbstractMountableRow) {
                     if (((AbstractMountableRow)child).uuid == searched_uuid) {
@@ -250,7 +263,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        unselect_all ();
+        list_box.unselect_all ();
         // foreach (unowned var child in get_children ()) {
         //     if (child is AbstractMountableRow) {
         //         unselect_row ((AbstractMountableRow)child);
@@ -260,10 +273,9 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is AbstractMountableRow) {
-            select_row ((AbstractMountableRow)item);
+            list_box.select_row ((AbstractMountableRow)item);
         } else {
-            unselect_all ();
-            // unselect_all_items ();
+            unselect_all_items ();
         }
     }
 }

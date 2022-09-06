@@ -23,6 +23,7 @@
 
 public interface Sidebar.SidebarListInterface : Gtk.Widget {
     public abstract Files.SidebarInterface sidebar { get; construct; }
+    public abstract Gtk.Widget list_widget { get; construct; }
 
     public abstract void select_item (SidebarItemInterface? item);
     public abstract void unselect_all_items ();
@@ -36,9 +37,9 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
 
     public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {return 0;}
 
-    public virtual void clear () {
+    public virtual void clear_list () {
         Gtk.Widget? child;
-        while ((child = get_first_child ()) != null) {
+        while ((child = list_widget.get_first_child ()) != null) {
             child.unparent ();
             if (child is SidebarItemInterface) {
                 ((SidebarItemInterface)child).destroy_bookmark ();
