@@ -41,7 +41,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             hexpand = true,
             selection_mode = Gtk.SelectionMode.SINGLE
         };
-        
+
         append (list_widget);
 
         var volume_monitor = VolumeMonitor.@get ();

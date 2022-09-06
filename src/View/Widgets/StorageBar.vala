@@ -4,7 +4,8 @@
  */
 
 //Moved here from Granite
-public class Files.StorageBar : Gtk.CenterBox {
+public class Files.StorageBar : Gtk.Widget {
+    private Gtk.CenterBox center_box;
     public enum ItemDescription {
         OTHER,
         AUDIO,
@@ -113,7 +114,10 @@ public class Files.StorageBar : Gtk.CenterBox {
     }
 
     construct {
-        orientation = Gtk.Orientation.VERTICAL;
+        center_box = new Gtk.CenterBox ();
+
+        center_box.set_parent (this);
+        // orientation = Gtk.Orientation.VERTICAL;
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;
         description_label.margin_top = 6;
@@ -135,7 +139,7 @@ public class Files.StorageBar : Gtk.CenterBox {
         box.append (legend_scrolled);
         box.append (fillblock_box);
         box.append (description_label);
-        set_center_widget (box);
+        center_box.set_center_widget (box);
 
 
 

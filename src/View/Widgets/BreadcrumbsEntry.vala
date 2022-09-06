@@ -498,7 +498,7 @@ namespace Files.View.Chrome {
             // });
 
             submenu_open_with.append_item (open_with_other_item);
-            
+
             return menu;
         }
 
@@ -537,9 +537,9 @@ namespace Files.View.Chrome {
 
         //TODO Use EventControllers and icon_press signal
         // protected void on_icon_press_event () {
-        // 
+        //
         // }
-        // 
+        //
         // protected override bool on_button_press_event (Gdk.Event event) {
         //     /* Only handle if not on icon and breadcrumbs are visible.
         //      * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/

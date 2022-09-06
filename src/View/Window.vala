@@ -788,11 +788,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     private void action_forward (GLib.SimpleAction action, GLib.Variant? param) {
         current_container.go_back (param.get_int32 ());
     }
-    
+
     private void action_back (GLib.SimpleAction action, GLib.Variant? param) {
         current_container.go_back (param.get_int32 ());
     }
-    
+
     private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "RECENT":

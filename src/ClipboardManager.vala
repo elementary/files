@@ -82,7 +82,7 @@ namespace Files {
             if (manager == null) {
                 manager = new ClipboardManager ();
             }
-            
+
             return manager;
         }
 

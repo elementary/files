@@ -151,7 +151,7 @@ namespace Files {
                     special_icon_name = null;
                 }
             }
-            
+
             if (clipboard.has_cutted_file (file)) {
                 /* 50% translucent for cutted files */
                 pb = PF.PixbufUtils.lucent (pixbuf, 50);
@@ -182,7 +182,7 @@ namespace Files {
                 if (focused) {
                     //TODO Use new Widget not requiring renderer.
                     ss.render_focus (
-                        style_context, 
+                        style_context,
                         draw_rect.x,
                         draw_rect.y,
                         draw_rect.width,
@@ -214,8 +214,8 @@ namespace Files {
             var y_pad = ((int) icon_size - draw_rect.height) / 2;
 
             ss.render_background (
-                style_context, 
-                (draw_rect.x - x_pad) * icon_scale, 
+                style_context,
+                (draw_rect.x - x_pad) * icon_scale,
                 (draw_rect.y - y_pad) * icon_scale,
                 (int) icon_size * icon_scale,
                 (int) icon_size * icon_scale
@@ -231,7 +231,7 @@ namespace Files {
             var dr = Graphene.Rect ();
             dr.init (draw_rect.x * icon_scale, draw_rect.y * icon_scale, draw_rect.width, draw_rect.height);
             ss.append_texture (Gdk.Texture.for_pixbuf (pb), dr);
-            
+
             // ss.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
             style_context.restore ();
@@ -323,7 +323,7 @@ namespace Files {
                         continue;
                     }
 
-                    
+
                     // Align at end of background (code mirrors that for helper)
                     if (!is_rtl) {
                         ex = int.min (

@@ -77,7 +77,7 @@ namespace Files {
             } else {
                 entry = new MultiLineEditableLabel ();
             }
-            
+
             mode = Gtk.CellRendererMode.EDITABLE;
             text_css = new Gtk.CssProvider ();
             previous_background_rgba = { 0, 0, 0, 0 };

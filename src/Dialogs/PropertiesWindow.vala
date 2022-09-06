@@ -244,7 +244,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             perm_grid = new Gtk.Grid () {
                 valign = Gtk.Align.CENTER
             };
-            
+
             var label = new Gtk.Label (_("Unable to determine file ownership and permissions"));
             perm_grid.attach (label, 0, 0);
         }
