@@ -26,8 +26,10 @@
 */
 
 namespace Files {
-    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+    // public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+    public abstract class AbstractDirectoryView : Gtk.Box {
 
+        protected Gtk.ScrolledWindow scrolled_window;
         protected enum ClickZone {
             EXPANDER,
             HELPER,
@@ -282,6 +284,8 @@ namespace Files {
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
+            scrolled_window = new Gtk.ScrolledWindow ();
+            append (scrolled_window);
             editable_cursor = new Gdk.Cursor.from_name ("text", null);
             activatable_cursor = new Gdk.Cursor.from_name ("pointer", null);
             selectable_cursor = new Gdk.Cursor.from_name ("default", null);
@@ -317,7 +321,7 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
-                set_child (view);
+                scrolled_window.set_child (view);
                 // connect_drag_drop_signals (view);
 
                 //TODO Use EventControllers
@@ -347,7 +351,7 @@ namespace Files {
         }
 
         private void set_up_directory_view () {
-            set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+            scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             // set_shadow_type (Gtk.ShadowType.NONE);
 
             // popup_menu.connect (on_popup_menu);
@@ -362,16 +366,16 @@ namespace Files {
             });
 
             //TODO Use EventControllerScroll
-            scroll_child.connect (on_scroll_child_event); //?Needed
+            scrolled_window.scroll_child.connect (on_scroll_child_event); //?Needed
 
-            get_vadjustment ().value_changed.connect_after (() => {
+            scrolled_window.get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_color_tag_timeout ();
             });
 
             notify["renaming"].connect (() => {
                 // Suppress ability to scroll with the scrollbar while renaming
                 // No obvious way to disable it so just hide it
-                var vscroll_bar = get_vscrollbar ();
+                var vscroll_bar = scrolled_window.get_vscrollbar ();
                 vscroll_bar.visible = !renaming;
             });
 
@@ -2137,10 +2141,10 @@ namespace Files {
                         }
 
                         if (is_writable) {
-                            menu.append_item (new NewSubMenuItem ());
+                            menu.append_item (make_newsubmenu_item ());
                         }
 
-                        menu.append_item (new SortSubMenuItem ());
+                        menu.append_item (make_newsubmenu_item ());
                     }
 
                     /* Do  not offer to bookmark if location is already bookmarked */
@@ -2172,81 +2176,79 @@ namespace Files {
             new Gtk.PopoverMenu.from_model (menu).popup ();
         }
 
-        private class SortSubMenuItem : GLib.MenuItem {
-            construct {
-                var name_radioitem = new MenuItem (_("Name"), "background.sort-by::name");
-                var size_radioitem = new MenuItem (_("Size"), "background.sort-by::size");
-                var type_radioitem = new MenuItem (_("Type"), "background.sort-by::type");
-                var date_radioitem = new MenuItem (_("Date"), "background.sort-by::modified");
-                var reversed_checkitem = new MenuItem (_("Reversed Order"), "background.reverse");
-                var folders_first_checkitem = new MenuItem (_("Folders Before Files"), "background.folders-first");
+        private MenuItem make_sortsubmenu_item () {
+            var sort_submenu = new GLib.Menu ();
+            var menu_item = new MenuItem.submenu (_("Sortby"), sort_submenu);
+            var name_radioitem = new MenuItem (_("Name"), "background.sort-by::name");
+            var size_radioitem = new MenuItem (_("Size"), "background.sort-by::size");
+            var type_radioitem = new MenuItem (_("Type"), "background.sort-by::type");
+            var date_radioitem = new MenuItem (_("Date"), "background.sort-by::modified");
+            var reversed_checkitem = new MenuItem (_("Reversed Order"), "background.reverse");
+            var folders_first_checkitem = new MenuItem (_("Folders Before Files"), "background.folders-first");
 
-                var sort_submenu = new GLib.Menu ();
-                sort_submenu.append_item (name_radioitem);
-                sort_submenu.append_item (size_radioitem);
-                sort_submenu.append_item (type_radioitem);
-                sort_submenu.append_item (date_radioitem);
-                sort_submenu.append_item (reversed_checkitem);
-                sort_submenu.append_item (folders_first_checkitem);
 
-                set_submenu (sort_submenu);
-                set_label (_("Sort by"));
-            }
+            sort_submenu.append_item (name_radioitem);
+            sort_submenu.append_item (size_radioitem);
+            sort_submenu.append_item (type_radioitem);
+            sort_submenu.append_item (date_radioitem);
+            sort_submenu.append_item (reversed_checkitem);
+            sort_submenu.append_item (folders_first_checkitem);
+
+            return menu_item;
         }
 
-        private class NewSubMenuItem : GLib.MenuItem {
-            construct {
-                //TODO Show accelerators
-                var folder_menuitem = new GLib.MenuItem (_("Folder"), "background.new::FOLDER");
-                // folder_menuitem.add (new Granite.AccelLabel (
-                //     _("Folder"),
-                //     "<Ctrl><Shift>n"
-                // ));
+        private MenuItem make_newsubmenu_item () {
 
-                var file_menuitem = new GLib.MenuItem (_("Empty File"), "background.new::FILE");
+            //TODO Show accelerators
+            var folder_menuitem = new GLib.MenuItem (_("Folder"), "background.new::FOLDER");
+            // folder_menuitem.add (new Granite.AccelLabel (
+            //     _("Folder"),
+            //     "<Ctrl><Shift>n"
+            // ));
 
-                var new_submenu = new Menu ();
-                new_submenu.append_item (folder_menuitem);
-                new_submenu.append_item (file_menuitem);
-                this.set_submenu (new_submenu);
-                /* Potential optimisation - do just once when app starts or view created */
-                templates = null;
-                unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
-                if (template_path != null) {
-                    var template_folder = GLib.File.new_for_path (template_path);
-                    load_templates_from_folder (template_folder);
+            var file_menuitem = new GLib.MenuItem (_("Empty File"), "background.new::FILE");
 
-                    if (templates.length () > 0) { //Can be assumed to be limited length
-                        // We need to get directories first
-                        templates.reverse ();
+            var new_submenu = new Menu ();
+            var menu_item = new MenuItem.submenu (_("New"), new_submenu);
+            new_submenu.append_item (folder_menuitem);
+            new_submenu.append_item (file_menuitem);
+            /* Potential optimisation - do just once when app starts or view created */
+            templates = null;
+            unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            if (template_path != null) {
+                var template_folder = GLib.File.new_for_path (template_path);
+                load_templates_from_folder (template_folder);
 
-                        var active_submenu = new_submenu;
-                        int index = 0;
-                        foreach (unowned GLib.File template in templates) {
-                            var label = template.get_basename ();
-                            var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-                            if (ftype == GLib.FileType.DIRECTORY) {
-                                if (template == template_folder) {
-                                    active_submenu = new_submenu;
-                                } else {
-                                    active_submenu = new Menu ();
-                                    var submenu_item = new GLib.MenuItem (label, null);
-                                    submenu_item.set_submenu (active_submenu);
-                                    active_submenu.append_item (submenu_item);
-                                }
+                if (templates.length () > 0) { //Can be assumed to be limited length
+                    // We need to get directories first
+                    templates.reverse ();
+
+                    var active_submenu = new_submenu;
+                    int index = 0;
+                    foreach (unowned GLib.File template in templates) {
+                        var label = template.get_basename ();
+                        var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                        if (ftype == GLib.FileType.DIRECTORY) {
+                            if (template == template_folder) {
+                                active_submenu = new_submenu;
                             } else {
-                                var action_name = "background.create-from::%s".printf (index.to_string ());
-                                var template_menuitem = new GLib.MenuItem (label, action_name);
-                                active_submenu.append_item (template_menuitem);
+                                active_submenu = new Menu ();
+                                var submenu_item = new GLib.MenuItem (label, null);
+                                submenu_item.set_submenu (active_submenu);
+                                active_submenu.append_item (submenu_item);
                             }
-
-                            index++;
+                        } else {
+                            var action_name = "background.create-from::%s".printf (index.to_string ());
+                            var template_menuitem = new GLib.MenuItem (label, action_name);
+                            active_submenu.append_item (template_menuitem);
                         }
+
+                        index++;
                     }
                 }
-
-                set_label (_("New"));
             }
+
+            return menu_item;
         }
 
         private bool valid_selection_for_edit () {
@@ -2673,7 +2675,7 @@ namespace Files {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
-                Gtk.Widget? widget = get_child ();
+                Gtk.Widget? widget = scrolled_window.get_child ();
                 if (widget != null) {
                     Gdk.Device pointer = context.get_device ();
                     var window = widget.get_root ().get_surface ();
@@ -2683,8 +2685,8 @@ namespace Files {
                     window.get_device_position (pointer, out x, out y, null);
                     // window.get_geometry (null, null, out w, out h);
 
-                    scroll_if_near_edge (y, window.height, 20, get_vadjustment ());
-                    scroll_if_near_edge (x, window.width, 20, get_hadjustment ());
+                    scroll_if_near_edge (y, window.height, 20, scrolled_window.get_vadjustment ());
+                    scroll_if_near_edge (x, window.width, 20, scrolled_window.get_hadjustment ());
                     return GLib.Source.CONTINUE;
                 } else {
                     return GLib.Source.REMOVE;
