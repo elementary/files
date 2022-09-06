@@ -74,8 +74,8 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
 
         create_header_title ();
 
-        var location_label = new KeyLabel (_("Location:"));
-        var location_value = new ValueLabel ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) +
+        var location_label = Files.make_key_label (_("Location:"));
+        var location_value = Files.make_value_label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) +
                                              "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
 
         info_grid.attach (location_label, 0, 1, 1, 1);
@@ -84,8 +84,8 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
         uint64 used_space = 0;
 
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-            var key_label = new KeyLabel (_("Format:"));
-            var value_label = new ValueLabel (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
+            var key_label = Files.make_key_label (_("Format:"));
+            var value_label = Files.make_value_label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
 
             info_grid.attach (key_label, 0, 2, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT);
