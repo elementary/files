@@ -21,13 +21,15 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Chrome.HeaderBar : Adw.HeaderBar {
+public class Files.View.Chrome.HeaderBar : Gtk.Box {
+
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
     public signal void path_change_request (string path, Files.OpenFlag flag);
     public signal void escape ();
     public signal void reload_request ();
+
 
     public ViewSwitcher? view_switcher { get; construct; }
     public bool locked_focus { get; private set; default = false; }
@@ -50,6 +52,13 @@ public class Files.View.Chrome.HeaderBar : Adw.HeaderBar {
         }
     }
 
+    public Gtk.Widget? custom_title {
+        set {
+            headerbar.set_title_widget (value);
+        }
+    }
+    
+    private Adw.HeaderBar headerbar;
     private LocationBar? location_bar;
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
@@ -59,29 +68,27 @@ public class Files.View.Chrome.HeaderBar : Adw.HeaderBar {
     }
 
     construct {
-        button_back = new View.Chrome.ButtonWithMenu.from_icon_name (
-            "go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR
-        );
+        headerbar = new Adw.HeaderBar ();
+        button_back = new View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
-        button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_back.add_css_class ("flat");
 
-        button_forward = new View.Chrome.ButtonWithMenu.from_icon_name (
-            "go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR
-        );
+        button_forward = new View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic");
 
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
-        button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_forward.add_css_class ("flat");
 
         view_switcher.margin_end = 20;
 
         location_bar = new LocationBar ();
 
-        pack_start (button_back);
-        pack_start (button_forward);
-        pack_start (view_switcher);
-        pack_start (location_bar);
-        show_all ();
+        headerbar.pack_start (button_back);
+        headerbar.pack_start (button_forward);
+        headerbar.pack_start (view_switcher);
+        headerbar.pack_start (location_bar);
+        
+        append (headerbar);
 
         button_forward.slow_press.connect (() => {
             forward (1);
@@ -99,15 +106,16 @@ public class Files.View.Chrome.HeaderBar : Adw.HeaderBar {
             focus_location_request (file);
         });
 
-        location_bar.focus_in_event.connect ((event) => {
-            locked_focus = true;
-            return focus_in_event (event);
-        });
+        //TODO Implement focus tracking for Gtk4 if required
+        // location_bar.focus_in_event.connect ((event) => {
+        //     locked_focus = true;
+        //     return focus_in_event (event);
+        // });
 
-        location_bar.focus_out_event.connect ((event) => {
-            locked_focus = false;
-            return focus_out_event (event);
-        });
+        // location_bar.focus_out_event.connect ((event) => {
+        //     locked_focus = false;
+        //     return focus_out_event (event);
+        // });
 
         location_bar.path_change_request.connect ((path, flag) => {
             path_change_request (path, flag);
@@ -126,41 +134,31 @@ public class Files.View.Chrome.HeaderBar : Adw.HeaderBar {
 
     public void set_back_menu (Gee.List<string> path_list) {
         /* Clear the back menu and re-add the correct entries. */
-        var back_menu = new Gtk.Menu ();
-        var n = 1;
-        foreach (string path in path_list) {
-            int cn = n++; /* No i'm not mad, thats just how closures work in vala (and other langs).
-                           * You see if I would just use back(n) the reference to n would be passed
-                           * in the closure, resulting in a value of n which would always be n=1. So
-                           * by introducting a new variable I can bypass this anoyance.
-                           */
-            var item = new Gtk.MenuItem.with_label (FileUtils.sanitize_path (path, null, false));
-            item.activate.connect (() => {
-                back (cn);
-            });
-
-            back_menu.insert (item, -1);
+        var back_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("win.back", new Variant.int32 (i))
+            );
+            back_menu.append_item (item);
         }
 
-        back_menu.show_all ();
         button_back.menu = back_menu;
     }
 
     public void set_forward_menu (Gee.List<string> path_list) {
         /* Same for the forward menu */
-        var forward_menu = new Gtk.Menu ();
-        var n = 1;
-        foreach (string path in path_list) {
-            int cn = n++; /* For explanation look up */
-            var item = new Gtk.MenuItem.with_label (FileUtils.sanitize_path (path, null, false));
-            item.activate.connect (() => {
-                forward (cn);
-            });
-
-            forward_menu.insert (item, -1);
+        var forward_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("win.forward", new Variant.int32 (i))
+            );;
+            forward_menu.append_item (item);
         }
 
-        forward_menu.show_all ();
         button_forward.menu = forward_menu;
     }
 

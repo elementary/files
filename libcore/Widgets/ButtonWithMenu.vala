@@ -81,17 +81,17 @@ namespace Files.View.Chrome {
         public signal void slow_press ();
         public signal void right_click ();
 
-        // private Gtk.Menu _menu;
-        // public Gtk.Menu menu {
-        //     get {
-        //         return _menu;
-        //     }
+        private Menu _menu;
+        public Menu menu {
+            get {
+                return _menu;
+            }
 
-        //     set {
-        //         _menu = value;
-        //         update_menu_properties ();
-        //     }
-        // }
+            set {
+                _menu = value;
+                update_menu_properties ();
+            }
+        }
 
         private int long_press_time = Gtk.Settings.get_default ().gtk_double_click_time * 2;
         private uint timeout = 0;
@@ -112,18 +112,18 @@ namespace Files.View.Chrome {
             // });
         }
 
-        public ButtonWithMenu.from_icon_name (string icon_name, Gtk.IconSize size) {
+        public ButtonWithMenu.from_icon_name (string icon_name) {
             this ();
             child = new Gtk.Image.from_icon_name (icon_name);
         }
 
-        // private void update_menu_properties () {
-        //     menu.attach_to_widget (this, null);
-        //     menu.deactivate.connect ( () => {
-        //         deactivate_menu ();
-        //     });
-        //     menu.deactivate.connect (popdown_menu);
-        // }
+        private void update_menu_properties () {
+            // menu.attach_to_widget (this, null);
+            // menu.deactivate.connect ( () => {
+            //     deactivate_menu ();
+            // });
+            // menu.deactivate.connect (popdown_menu);
+        }
 
         public ButtonWithMenu () {
             use_underline = true;

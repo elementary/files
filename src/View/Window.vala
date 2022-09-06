@@ -38,7 +38,9 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         {"view-mode", action_view_mode, "u", "0" },
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-        {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+        {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails},
+        {"forward", action_forward, "i"},
+        {"back", action_back, "i"}
     };
 
     public uint window_number { get; construct; }
@@ -174,7 +176,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
         top_menu = new Chrome.HeaderBar (view_switcher) {
-            show_close_button = true,
             custom_title = new Gtk.Label (null)
         };
 
@@ -784,6 +785,14 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         /* ViewContainer takes care of changing appearance */
     }
 
+    private void action_forward (GLib.SimpleAction action, GLib.Variant? param) {
+        current_container.go_back (param.get_int32 ());
+    }
+    
+    private void action_back (GLib.SimpleAction action, GLib.Variant? param) {
+        current_container.go_back (param.get_int32 ());
+    }
+    
     private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "RECENT":
@@ -815,11 +824,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                 break;
 
             case "FORWARD":
-                current_container.go_forward ();
+                current_container.go_forward (1);
                 break;
 
             case "BACK":
-                current_container.go_back ();
+                current_container.go_back (1);
                 break;
 
             default:

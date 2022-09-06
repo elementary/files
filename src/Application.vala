@@ -70,7 +70,7 @@ public class Files.Application : Gtk.Application {
 
         init_schemas ();
 
-        Gtk.IconTheme.get_default ().changed.connect (() => {
+        Gtk.IconTheme.get_for_display (Gdk.Display.get_default ()).changed.connect (() => {
             Files.IconInfo.clear_caches ();
         });
 

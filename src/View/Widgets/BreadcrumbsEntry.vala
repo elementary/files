@@ -498,6 +498,8 @@ namespace Files.View.Chrome {
             // });
 
             submenu_open_with.append_item (open_with_other_item);
+            
+            return menu;
         }
 
         private void append_subdirectories (Menu menu, Directory dir) {

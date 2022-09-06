@@ -222,7 +222,7 @@ namespace Files.View {
             }
         }
 
-        public void go_back (int n = 1) {
+        public void go_back (uint n) {
             string? path = browser.go_back (n);
 
             if (path != null) {
@@ -232,7 +232,7 @@ namespace Files.View {
             }
         }
 
-        public void go_forward (int n = 1) {
+        public void go_forward (uint n) {
             string? path = browser.go_forward (n);
 
             if (path != null) {
