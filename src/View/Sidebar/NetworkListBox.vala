@@ -20,8 +20,16 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
+    public Gtk.Widget list_widget { get; construct; }
     public Files.SidebarInterface sidebar { get; construct; }
+
+    private Gtk.ListBox list_box {
+        get {
+            return (Gtk.ListBox)list_widget;
+        }
+    }
+
     public NetworkListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
@@ -29,20 +37,27 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     construct {
+        list_widget = new Gtk.ListBox () {
+            hexpand = true,
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+        
+        append (list_widget);
+
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
-        row_activated.connect ((row) => {
+        list_box.row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
                 ((SidebarItemInterface) row).activated ();
             }
         });
-        row_selected.connect ((row) => {
+        list_box.row_selected.connect ((row) => {
             if (row is SidebarItemInterface) {
                 select_item ((SidebarItemInterface) row);
             }
         });
 
-        set_sort_func (network_sort_func);
+        list_box.set_sort_func (network_sort_func);
     }
 
     private int network_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
@@ -67,7 +82,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
                 mount
             );
 
-            append (row);
+            list_box.append (row);
         }
 
         return row;
@@ -111,7 +126,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     public void refresh () {
-        clear ();
+        clear_list ();
 
         if (Files.is_admin ()) { //Network operations fail for administrators
             return;
@@ -137,12 +152,12 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     public void unselect_all_items () {
-        unselect_all ();
+        list_box.unselect_all ();
     }
 
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is NetworkRow) {
-            select_row ((NetworkRow)item);
+            list_box.select_row ((NetworkRow)item);
         } else {
             unselect_all_items ();
         }
