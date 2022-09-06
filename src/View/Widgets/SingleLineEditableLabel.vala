@@ -17,32 +17,44 @@
 ***/
 
 namespace Files {
-    public class SingleLineEditableLabel : AbstractEditableLabel {
+    public class SingleLineEditableLabel : Gtk.Frame, EditableLabelInterface {
+
+        public bool small_size { get; set; }
+        public bool draw_outline { get; set; }
+        public float yalign { get; set; }
+        public float xalign { get; set; }
+        
+        // public signal void editing_done ();
+        // public signal void remove_widget ();
 
         protected Gtk.Entry textview;
         private int select_start = 0;
         private int select_end = 0;
+        // private string original_name;
 
-        public SingleLineEditableLabel () {}
+        construct {
+            init_delegate ();
+            set_child (textview);
+        }
 
-        public override void init_delegate () {
+        public void init_delegate () {
             textview = new Gtk.Entry ();
             /* Block propagation of button press event as this would cause renaming to end */
             // textview.button_press_event.connect_after (() => { return true; });
             // return textview as Gtk.Widget;
         }
 
-        public override unowned Gtk.Editable? get_delegate () {
+        public unowned Gtk.Editable? get_delegate () {
             return (Gtk.Editable?)textview;
         }
 
-        public override void set_text (string text) {
+        public void set_text (string text) {
             textview.set_text (text);
-            original_name = text;
+            // original_name = text;
         }
 
 
-        public override void set_justify (Gtk.Justification jtype) {
+        public void set_justify (Gtk.Justification jtype) {
             switch (jtype) {
                 case Gtk.Justification.LEFT:
                     textview.set_alignment (0.0f);
@@ -62,13 +74,12 @@ namespace Files {
             }
         }
 
-        public override unowned string get_text () {
-            text = textview.get_text ();
-            return text;
+        public string get_text () {
+            return textview.get_text ();
         }
 
         //TODO Use EventControllers
-        // public override bool on_key_press_event (Gdk.EventKey event) {
+        // public bool on_key_press_event (Gdk.EventKey event) {
         //     /* Ensure rename cancelled on cursor Up/Down */
         //     uint keyval;
         //     event.get_keyval (out keyval);
@@ -87,7 +98,7 @@ namespace Files {
 
         /** Gtk.Editable interface */
 
-        public override void select_region (int start_pos, int end_pos) {
+        public void select_region (int start_pos, int end_pos) {
             /* Cannot select textview region here because it is not realised yet and the selected region
              * will be overridden when keyboard focus is grabbed after realising. So just remember start and end.
              */
@@ -95,23 +106,23 @@ namespace Files {
             select_end = end_pos;
         }
 
-        public override void do_delete_text (int start_pos, int end_pos) {
+        public void do_delete_text (int start_pos, int end_pos) {
             textview.delete_text (start_pos, end_pos);
         }
 
-        public override void do_insert_text (string new_text, int new_text_length, ref int position) {
+        public void do_insert_text (string new_text, int new_text_length, ref int position) {
             textview.insert_text (new_text, new_text_length, ref position);
         }
 
-        public override string get_chars (int start_pos, int end_pos) {
+        public string get_chars (int start_pos, int end_pos) {
             return textview.get_chars (start_pos, end_pos);
         }
 
-        public override int get_position () {
+        public int get_position () {
             return textview.get_position ();
         }
 
-        public override bool get_selection_bounds (out int start_pos, out int end_pos) {
+        public bool get_selection_bounds (out int start_pos, out int end_pos) {
             int start, end;
             bool result = textview.get_selection_bounds (out start, out end);
             start_pos = start;
@@ -119,18 +130,28 @@ namespace Files {
             return result;
         }
 
-        public override void set_position (int position) {
+        public void set_position (int position) {
             textview.set_position (position);
         }
 
-        public override void set_size_request (int width, int height) {
-            textview.set_size_request (width, height);
-        }
+        // public void set_size_request (int width, int height) {
+        //     textview.set_size_request (width, height);
+        // }
 
-        public override void start_editing (Gdk.Event? event) {
+        // CellEditable interface (abstract part)
+        [NoAccessorMethod]
+        public bool editing_canceled { get; set; }
+        public void start_editing (Gdk.Event? event) {
             /* Now realised.  Grab keyboard focus first and then select region */
             textview.grab_focus ();
             textview.select_region (select_start, select_end);
+        }
+        
+        //EditableLabelInterface (abstract)
+        public void end_editing (bool cancelled) {
+            editing_canceled = cancelled;
+            remove_widget ();
+            editing_done ();
         }
     }
 }
