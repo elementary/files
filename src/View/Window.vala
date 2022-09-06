@@ -55,7 +55,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
     public Chrome.HeaderBar top_menu;
-    public Chrome.ViewSwitcher view_switcher;
     public Adw.TabView tab_view;
     public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
@@ -172,12 +171,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void build_window () {
-        view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode"));
-        view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
-
-        top_menu = new Chrome.HeaderBar (view_switcher) {
-            custom_title = new Gtk.Label (null)
-        };
+        top_menu = new Chrome.HeaderBar ();
 
         tab_view = new Adw.TabView ();
         // .with_accellabels (
@@ -207,11 +201,8 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         lside_pane.start_child = sidebar;
         lside_pane.end_child = tab_view;
 
-        var grid = new Gtk.Grid ();
-        grid.attach (top_menu, 0, 0);
-        grid.attach (lside_pane, 0, 1);
-
-        set_child (grid);
+        set_titlebar (top_menu);
+        set_child (lside_pane);
 
         /** Apply preferences */
         var prefs = Files.app_settings;
@@ -1208,8 +1199,8 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
-        view_switcher.set_mode (mode);
-        view_switcher.sensitive = current_container.can_show_folder;
+        top_menu.view_switcher.set_mode (mode);
+        top_menu.view_switcher.sensitive = current_container.can_show_folder;
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
     }

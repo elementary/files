@@ -52,7 +52,9 @@ namespace Files.View.Chrome {
         public signal void escape ();
 
         public LocationBar () {
-            var _bread = new BreadcrumbsEntry ();
+            var _bread = new BreadcrumbsEntry () {
+                hexpand = true
+            };
             base (_bread as Navigatable);
             bread = _bread;
             search_results = new SearchResults (bread);

@@ -65,7 +65,9 @@ namespace Files.View.Chrome {
 
         public BasicLocationBar (Navigatable? _bread = null) {
             if (_bread == null) {
-                bread = new BasicBreadcrumbsEntry ();
+                bread = new BasicBreadcrumbsEntry () {
+                    hexpand = true
+                };
             } else {
                 bread = _bread;
             }

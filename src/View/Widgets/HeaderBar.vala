@@ -22,7 +22,6 @@
 */
 
 public class Files.View.Chrome.HeaderBar : Gtk.Box {
-
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
@@ -52,43 +51,39 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
         }
     }
 
-    public Gtk.Widget? custom_title {
-        set {
-            headerbar.set_title_widget (value);
-        }
-    }
-
     private Adw.HeaderBar headerbar;
     private LocationBar? location_bar;
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
 
-    public HeaderBar (ViewSwitcher switcher) {
-        Object (view_switcher: switcher);
-    }
-
     construct {
-        headerbar = new Adw.HeaderBar ();
-        button_back = new View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
+        headerbar = new Adw.HeaderBar () {
+            hexpand = true,
 
+        };
+        headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
+        append (headerbar);
+
+        button_back = new View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.add_css_class ("flat");
 
         button_forward = new View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic");
-
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.add_css_class ("flat");
 
         view_switcher.margin_end = 20;
 
-        location_bar = new LocationBar ();
+        location_bar = new LocationBar () {
+            hexpand = true
+        };
 
+        view_switcher = new Chrome.ViewSwitcher ("win.view-mode");
+        view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
         headerbar.pack_start (button_back);
         headerbar.pack_start (button_forward);
-        headerbar.pack_start (view_switcher);
-        headerbar.pack_start (location_bar);
-
-        append (headerbar);
+        headerbar.pack_end (view_switcher);
+        headerbar.set_title_widget (location_bar);
 
         button_forward.slow_press.connect (() => {
             forward (1);

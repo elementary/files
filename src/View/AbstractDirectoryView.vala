@@ -284,7 +284,10 @@ namespace Files {
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
-            scrolled_window = new Gtk.ScrolledWindow ();
+            scrolled_window = new Gtk.ScrolledWindow () {
+                hexpand = true,
+                vexpand = true
+            };
             append (scrolled_window);
             editable_cursor = new Gdk.Cursor.from_name ("text", null);
             activatable_cursor = new Gdk.Cursor.from_name ("pointer", null);
@@ -321,6 +324,8 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
+                // view.hexpand = true;
+                // view.vexpand = true;
                 scrolled_window.set_child (view);
                 // connect_drag_drop_signals (view);
 

@@ -23,32 +23,44 @@
 
 namespace Files.View.Chrome {
     public class ViewSwitcher : Gtk.Box {
-        public GLib.SimpleAction action { get; construct; }
+        public string action_name { get; construct; }
         private GLib.ListModel children;
-        public ViewSwitcher (GLib.SimpleAction view_mode_action) {
-            Object (action: view_mode_action);
+        public ViewSwitcher (string action_name) {
+            Object (action_name: action_name);
         }
 
         construct {
-            children = observe_children ();
+            // children = observe_children ();
             add_css_class ("linked");
 
             /* Grid View item */
             var id = (uint32)ViewMode.ICON;
             var grid_view_btn = new Gtk.ToggleButton () {
                 child = new Gtk.Image.from_icon_name ("view-grid-symbolic"),
-                tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
+                tooltip_markup = get_tooltip_for_id (id, _("View as Grid")),
+                action_name = this.action_name,
+                action_target = new Variant.uint32 (id)
             };
-            grid_view_btn.toggled.connect (on_mode_changed);
+            grid_view_btn.toggled.connect (() => {
+                if (grid_view_btn.active) {
+                    set_mode ((uint32)ViewMode.ICON);
+                }
+            });
             grid_view_btn.set_data<uint32> ("id", id);
 
             /* List View */
             id = (uint32)ViewMode.LIST;
             var list_view_btn = new Gtk.ToggleButton () {
                 child = new Gtk.Image.from_icon_name ("view-list-symbolic"),
-                tooltip_markup = get_tooltip_for_id (id, _("View as List"))
+                tooltip_markup = get_tooltip_for_id (id, _("View as List")),
+                action_name = this.action_name,
+                action_target = new Variant.uint32 (id)
             };
-            list_view_btn.toggled.connect (on_mode_changed);
+            list_view_btn.toggled.connect (() => {
+                if (list_view_btn.active) {
+                    set_mode ((uint32)ViewMode.LIST);
+                }
+            });
             list_view_btn.set_data<uint32> ("id", id);
 
 
@@ -56,10 +68,16 @@ namespace Files.View.Chrome {
             id = (uint32)ViewMode.MILLER_COLUMNS;
             var column_view_btn = new Gtk.ToggleButton () {
                 child = new Gtk.Image.from_icon_name ("view-column-symbolic"),
-                tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
+                tooltip_markup = get_tooltip_for_id (id, _("View in Columns")),
+                action_name = this.action_name,
+                action_target = new Variant.uint32 (id)
             };
-            column_view_btn.toggled.connect (on_mode_changed);
-            column_view_btn.set_data<ViewMode> ("id", ViewMode.MILLER_COLUMNS);
+            column_view_btn.toggled.connect (() => {
+                if (column_view_btn.active) {
+                    set_mode ((uint32)ViewMode.MILLER_COLUMNS);
+                }
+            });
+            column_view_btn.set_data<uint32> ("id", ViewMode.MILLER_COLUMNS);
 
             valign = Gtk.Align.CENTER;
             append (grid_view_btn);
@@ -69,25 +87,21 @@ namespace Files.View.Chrome {
 
         private string get_tooltip_for_id (uint32 id, string description) {
             var app = (Gtk.Application)Application.get_default ();
-            var detailed_name = Action.print_detailed_name ("win." + action.name, new Variant.uint32 (id));
+            var detailed_name = Action.print_detailed_name (action_name, new Variant.uint32 (id));
             var accels = app.get_accels_for_action (detailed_name);
             return Granite.markup_accel_tooltip (accels, description);
         }
 
-        private void on_mode_changed (Gtk.ToggleButton source) {
-            if (!source.active) {
-                return;
-            }
-
-            action.activate (source.get_data<uint32> ("id"));
-        }
-
         public void set_mode (uint32 mode) {
-            for (uint i = 0; i < children.get_n_items (); i++) {
-                var child = children.get_item (i);
-                if (child.get_data<uint32> ("id") == mode) {
+            var child = get_first_child ();
+            while (child != null) {
+                if (child.get_data<uint32> ("id") != mode) {
+                    ((Gtk.ToggleButton)child).active = false;
+                } else {
                     ((Gtk.ToggleButton)child).active = true;
                 }
+
+                child = child.get_next_sibling ();
             }
         }
     }
