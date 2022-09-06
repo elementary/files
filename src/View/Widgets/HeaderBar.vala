@@ -57,7 +57,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
             headerbar.set_title_widget (value);
         }
     }
-    
+
     private Adw.HeaderBar headerbar;
     private LocationBar? location_bar;
     private Chrome.ButtonWithMenu button_forward;
@@ -95,7 +95,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
         headerbar.pack_start (button_forward);
         headerbar.pack_start (view_switcher);
         headerbar.pack_start (location_bar);
-        
+
         append (headerbar);
 
         // Connect to all view settings rather than try to connect and disconnect
@@ -224,7 +224,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
             var item = new MenuItem (
                 FileUtils.sanitize_path (path, null, false),
                 Action.print_detailed_name ("win.forward", new Variant.int32 (i))
-            );;
+            );
             forward_menu.append_item (item);
         }
 

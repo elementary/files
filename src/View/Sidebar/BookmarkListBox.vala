@@ -44,9 +44,9 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             hexpand = true,
             selection_mode = Gtk.SelectionMode.SINGLE
         };
-        
+
         append (list_widget);
-        
+
         trash_monitor = Files.TrashMonitor.get_default ();
         bookmark_list = Files.BookmarkList.get_instance ();
         bookmark_list.loaded.connect (() => {
@@ -129,7 +129,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     //         child = child.get_next_sibling ();
     //     }
     // }
-    
+
     public void refresh () {
         clear_list ();
         SidebarItemInterface? row;

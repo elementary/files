@@ -24,7 +24,7 @@ namespace Files {
         public abstract bool draw_outline { get; set; }
         public abstract float yalign { get; set; }
         public abstract float xalign { get; set; }
-        
+
         // public virtual signal void editing_done ();
         // public virtual signal void remove_widget ();
 
@@ -100,7 +100,7 @@ namespace Files {
         public abstract void set_position (int position);
         public abstract string get_text ();
         public abstract void set_text (string text);
-        
+
         // public abstract void start_editing (Gdk.Event? event);
 
         public abstract bool editing_canceled { get; set; }

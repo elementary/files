@@ -23,7 +23,7 @@ namespace Files {
         public bool draw_outline { get; set; }
         public float yalign { get; set; }
         public float xalign { get; set; }
-        
+
         // public signal void editing_done ();
         // public signal void remove_widget ();
 
@@ -146,7 +146,7 @@ namespace Files {
             textview.grab_focus ();
             textview.select_region (select_start, select_end);
         }
-        
+
         //EditableLabelInterface (abstract)
         public void end_editing (bool cancelled) {
             editing_canceled = cancelled;

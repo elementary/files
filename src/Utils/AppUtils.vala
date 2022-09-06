@@ -32,7 +32,7 @@ namespace Files {
             margin_start = 12
         };
     }
-    
+
     public static Gtk.Label make_value_label (string label) {
         return new Gtk.Label (label) {
             can_focus = true,
