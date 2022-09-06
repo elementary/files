@@ -31,9 +31,11 @@ class PF.ChooseAppDialog : Object {
     }
 
     construct {
-        dialog = new Gtk.AppChooserDialog (parent,
-                                             Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                             file_to_open) {
+        dialog = new Gtk.AppChooserDialog (
+            parent,
+            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+            file_to_open
+        ) {
             deletable = false
         };
 
@@ -48,30 +50,30 @@ class PF.ChooseAppDialog : Object {
 
         check_default.show ();
 
-        dialog.get_content_area ().add (check_default);
-
-        dialog.show ();
+        dialog.get_content_area ().append (check_default);
     }
 
     public AppInfo? get_app_info () {
         AppInfo? app = null;
-        int response = dialog.run ();
-
-        if (response == Gtk.ResponseType.OK) {
+        dialog.response.connect ((response_id) => {
             app = dialog.get_app_info ();
-            if (check_default.get_active ()) {
-                try {
-                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-                                                        FileQueryInfoFlags.NONE, null);
+            dialog.destroy ();
+            if (response_id == Gtk.ResponseType.OK) {
+                if (check_default.get_active ()) {
+                    try {
+                        var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
+                                                            FileQueryInfoFlags.NONE, null);
 
-                    app.set_as_default_for_type (info.get_content_type ());
-                }
-                catch (GLib.Error error) {
-                    critical ("Could not set as default: %s", error.message);
+                        app.set_as_default_for_type (info.get_content_type ());
+                    }
+                    catch (GLib.Error error) {
+                        critical ("Could not set as default: %s", error.message);
+                    }
                 }
             }
-        }
-        dialog.destroy ();
+        });
+
+        dialog.show ();
         return app;
     }
 }

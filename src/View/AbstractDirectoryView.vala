@@ -3119,6 +3119,7 @@ namespace Files {
         //     }
 
         //     return handle_scroll_event (event);
+            return false;
         }
 
     /** name renderer signals */
