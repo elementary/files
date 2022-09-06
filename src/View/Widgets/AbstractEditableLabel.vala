@@ -17,22 +17,26 @@
 ***/
 
 namespace Files {
-    public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
+    public interface EditableLabelInterface : Gtk.Widget {
+        // [NoAccessorMethod]
+        // public abstract bool editing_canceled { get; set; }
+        public abstract bool small_size { get; set; }
+        public abstract bool draw_outline { get; set; }
+        public abstract float yalign { get; set; }
+        public abstract float xalign { get; set; }
+        
+        // public virtual signal void editing_done ();
+        // public virtual signal void remove_widget ();
 
-        public bool editing_canceled { get; set; }
-        public bool small_size { get; set; }
-        public float yalign {get; set;}
-        public float xalign {get; set;}
-        public string original_name;
-        public bool draw_outline {get; set;}
+        // public bool draw_outline {get; set;}
 
         // private Gtk.Widget editable_widget;
 
-        construct {
-            init_delegate ();
-            set_child (get_delegate ());
-            // get_delegate ().key_press_event.connect (on_key_press_event);
-        }
+        // construct {
+        //     init_delegate ();
+        //     set_child (get_delegate ());
+        //     // get_delegate ().key_press_event.connect (on_key_press_event);
+        // }
 
         //TODO Use EventControllers
         // public virtual bool on_key_press_event (Gdk.EventKey event) {
@@ -74,14 +78,10 @@ namespace Files {
         //     return false;
         // }
 
-        public void end_editing (bool cancelled) {
+        public virtual void end_editing (bool cancelled) {
             editing_canceled = cancelled;
             remove_widget ();
             editing_done ();
-        }
-
-        public virtual void set_text (string text) {
-            original_name = text;
         }
 
         public virtual void set_line_wrap (bool wrap) {}
@@ -91,7 +91,6 @@ namespace Files {
 
         public abstract new void set_size_request (int width, int height);
         public abstract void init_delegate ();
-        // public abstract string get_text ();
         public abstract void select_region (int start_pos, int end_pos);
         public abstract void do_delete_text (int start_pos, int end_pos);
         public abstract void do_insert_text (string new_text, int new_text_length, ref int position);
@@ -99,20 +98,14 @@ namespace Files {
         public abstract int get_position ();
         public abstract bool get_selection_bounds (out int start_pos, out int end_pos);
         public abstract void set_position (int position);
+        public abstract string get_text ();
+        public abstract void set_text (string text);
+        
+        // public abstract void start_editing (Gdk.Event? event);
 
-        /** CellEditable interface */
-        public virtual void start_editing (Gdk.Event? event) {}
-        
-        /** Editable interface */
-        public string text { get; set; }
-        public bool editable { get; set; }
-        public bool enable_undo { get; set; }
-        public int max_width_chars { get; set; }
-        public int selection_bound { get;}
-        public int cursor_position { get; }
-        public int width_chars { get; set; }
-        public abstract unowned string get_text ();
-        public abstract unowned Gtk.Editable? get_delegate ();
-        
+        public abstract bool editing_canceled { get; set; }
+        public abstract void start_editing (Gdk.Event? event);
+        public signal void editing_done ();
+        public signal void remove_widget ();
     }
 }

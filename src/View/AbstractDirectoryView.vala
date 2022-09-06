@@ -3124,7 +3124,7 @@ namespace Files {
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
-            var editable_widget = editable as AbstractEditableLabel?;
+            var editable_widget = editable as EditableLabelInterface?;
             if (editable_widget != null) {
                 original_name = editable_widget.get_chars (0, -1);
                 var path = new Gtk.TreePath.from_string (path_string);

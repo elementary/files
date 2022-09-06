@@ -18,7 +18,6 @@
 
 namespace Files {
     public class TextRenderer: Gtk.CellRendererText {
-
         const int MAX_LINES = 5;
         private int border_radius { get; private set; }
         public int double_border_radius { get; private set; }
@@ -70,7 +69,7 @@ namespace Files {
 
         Pango.Layout layout;
         Gtk.Widget widget;
-        AbstractEditableLabel entry;
+        EditableLabelInterface entry;
 
         construct {
             if (is_list_view) {
@@ -241,7 +240,7 @@ namespace Files {
             entry.set_data ("marlin-text-renderer-path", path.dup ());
 
             base.start_editing (event, widget, path, background_area, cell_area, flags);
-            return entry;
+            return (Gtk.CellEditable?)entry;
         }
 
         public void end_editing (bool cancel) {
