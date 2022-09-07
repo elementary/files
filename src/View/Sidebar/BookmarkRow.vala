@@ -60,7 +60,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private Gdk.DragAction? current_suggested_action = null;
 
     protected Gtk.Grid content_grid;
-    protected Gtk.Box icon_label_grid;
+    protected Gtk.Box icon_label_box;
     protected Gtk.Stack label_stack;
     protected Gtk.Entry editable;
     protected Gtk.Label label;
@@ -151,14 +151,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         icon = new Gtk.Image.from_gicon (gicon);
 
-        icon_label_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        icon_label_grid.append (icon);
-        icon_label_grid.append (label_stack);
+        icon_label_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6); // Must be grid in order to show storage bar if required
+        icon_label_box.append (icon);
+        icon_label_box.append (label_stack);
 
 
 
         content_grid = new Gtk.Grid ();
-        content_grid.attach (icon_label_grid, 0, 0);
+        content_grid.attach (icon_label_box, 0, 0);
 
         set_child (content_grid);
 
@@ -465,7 +465,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     //             previous_item.reveal_drop_target (false);
     //         }
 
-    //         var row_height = icon_label_grid.get_allocated_height ();
+    //         var row_height = icon_label_box.get_allocated_height ();
     //         bool reveal = false;
 
     //         current_suggested_action = Gdk.DragAction.DEFAULT;

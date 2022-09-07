@@ -138,7 +138,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
-            hexpand = true
+            hexpand = true,
+            margin_top = 3
         };
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
@@ -149,7 +150,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         storage_style_context.add_class ("inverted");
         storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        icon_label_grid.append (storage_levelbar);
+        content_grid.attach (storage_levelbar, 0, 1, 2, 1);
 
         volume_monitor.mount_removed.connect (on_mount_removed);
         volume_monitor.mount_added.connect (on_mount_added);
