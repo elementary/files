@@ -9,9 +9,8 @@ executable(
 
     dependencies : [
         pantheon_files_core_dep,
-        # dependency('gdk-x11-4'),
-        # dependency('gdk-wayland-4'),
-        # handy_dep,
+        dependency('gtk4-wayland'),
+        dependency('gtk4-x11'),
         project_config_dep
     ],
     install: true,
