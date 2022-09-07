@@ -58,6 +58,8 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         });
 
         list_box.set_sort_func (network_sort_func);
+
+        refresh ();
     }
 
     private int network_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {

@@ -21,7 +21,6 @@
  */
 
 public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
-// public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     public Gtk.Widget list_widget { get; construct; }
     private Gtk.ListBox list_box {
         get {
@@ -49,9 +48,16 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         trash_monitor = Files.TrashMonitor.get_default ();
         bookmark_list = Files.BookmarkList.get_instance ();
-        bookmark_list.loaded.connect (() => {
+        if (bookmark_list.loaded) {
             refresh ();
+        }
+
+        bookmark_list.notify["loaded"].connect (() => {
+            if (bookmark_list.loaded) {
+                refresh ();
+            }
         });
+
         list_box.row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
                 ((SidebarItemInterface) row).activated ();
@@ -117,18 +123,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public void unselect_all_items () {
         list_box.unselect_all ();
     }
-
-    // public void clear_list () {
-    //     Gtk.Widget? child;
-    //     while ((child = list_box.get_first_child ()) != null) {
-    //         child.unparent ();
-    //         if (child is SidebarItemInterface) {
-    //             ((SidebarItemInterface)child).destroy_bookmark ();
-    //         }
-
-    //         child = child.get_next_sibling ();
-    //     }
-    // }
 
     public void refresh () {
         clear_list ();

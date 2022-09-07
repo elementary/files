@@ -103,9 +103,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         append (scrolled_window);
         append (action_bar);
 
-        plugins.sidebar_loaded (this);
-
-        reload ();
+        // Do not need to reload as the lists load themselves on creation
 
         Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
@@ -124,29 +122,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         connect_server_button.clicked.connect (() => {
             connect_server_request ();
         });
-    }
 
-    private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
-        //Do not refresh if already refreshing or if will be reloaded anyway
-        if (loading || reload_timeout_id > 0) {
-            return;
-        }
-
-        loading = true;
-
-        if (bookmarks) {
-            bookmark_listbox.refresh ();
-        }
-
-        if (devices) {
-            device_listbox.refresh ();
-        }
-
-        if (network) {
-            network_listbox.refresh ();
-        }
-
-        loading = false;
+        plugins.sidebar_loaded (this);
     }
 
     /* SidebarInterface */
@@ -217,17 +194,19 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     /* Throttle rate of destroying and re-adding listbox rows */
-    uint reload_timeout_id = 0;
+    // uint reload_timeout_id = 0;
     public void reload () {
-        if (reload_timeout_id > 0) {
+        if (loading) {
             return;
         }
 
-        reload_timeout_id = Timeout.add (300, () => {
-            reload_timeout_id = 0;
-            refresh ();
-
-            plugins.update_sidebar (this);
+        loading = true;
+        Timeout.add (100, () => {
+            bookmark_listbox.refresh ();
+            device_listbox.refresh ();
+            network_listbox.refresh ();
+            loading = false;
+            // plugins.update_sidebar (this);
             sync_uri (selected_uri);
             return false;
         });

@@ -79,8 +79,9 @@ public class Files.Application : Gtk.Application {
         // this.clipboard = ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
-        /* Global static variable "plugins" declared in PluginManager.vala */
-        plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
+        // Deactivate plugins while porting main to Gtk4
+        // /* Global static variable "plugins" declared in PluginManager.vala */
+        // plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */

@@ -64,6 +64,8 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         });
 
         list_box.set_sort_func (device_sort_func);
+
+        refresh ();
     }
 
     private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
