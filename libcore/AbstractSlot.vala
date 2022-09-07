@@ -81,7 +81,11 @@ namespace Files {
         }
 
         construct {
-            content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+                vexpand = true,
+                hexpand = true
+            };
+
             extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             content_box.prepend (extra_location_widgets);
 
