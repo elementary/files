@@ -58,14 +58,14 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             var row = get_item_by_id (param.get_uint32 ());
             if (row != null) {
                 open_item (row, Files.OpenFlag.NEW_TAB);
-            } 
+            }
         });
         var open_window_action = new SimpleAction ("open-window", new VariantType ("u"));
         open_window_action.activate.connect ((param) => {
             var row = get_item_by_id (param.get_uint32 ());
             if (row != null) {
                 open_item (row, Files.OpenFlag.NEW_WINDOW);
-            } 
+            }
         });
         var bookmark_action_group = new SimpleActionGroup ();
         bookmark_action_group.add_action (open_bookmark_action);

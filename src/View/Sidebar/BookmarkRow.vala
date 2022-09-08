@@ -282,7 +282,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         } else {
             var menu_builder = new PopupMenuBuilder ()
                 .add_open (Action.print_detailed_name ("bm.open-bookmark", new Variant.uint32 (id)))
-                .add_separator () 
+                .add_separator ()
                 .add_open_tab (Action.print_detailed_name ("bm.open-tab", new Variant.uint32 (id)))
                 .add_open_window (Action.print_detailed_name ("bm.open-window", new Variant.uint32 (id)));
 

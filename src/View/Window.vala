@@ -174,6 +174,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         top_menu = new Chrome.HeaderBar ();
 
         tab_view = new Adw.TabView ();
+        tab_bar = new Adw.TabBar () {
+            view = tab_view,
+            inverted = true,
+            autohide = false,
+            expand_tabs = false
+        };
+        var tab_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        tab_box.append (tab_bar);
+        tab_box.append (tab_view);
         // .with_accellabels (
         //     new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
         //     new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
@@ -199,7 +208,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             position = Files.app_settings.get_int ("sidebar-width")
         };
         lside_pane.start_child = sidebar;
-        lside_pane.end_child = tab_view;
+        lside_pane.end_child = tab_box;
 
         set_titlebar (top_menu);
         set_child (lside_pane);
@@ -328,28 +337,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //TODO Implement handlers for new signals
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
-
         tab_view.close_page.connect ((tab) => {
+            // tab_view.close_page_finish (tab, false); // No need to confirm
             var view_container = (ViewContainer)(tab.child);
+            view_container.close ();
+            view_container.destroy ();
             // tab.restore_data = view_container.location.get_uri ();
 
-            // /* If closing tab is current, set current_container to null to ensure
-            //  * closed ViewContainer is destroyed. It will be reassigned in tab_changed
-            //  */
-            // if (view_container == current_container) {
-            //     current_container = null;
-            // }
-
-            view_container.close ();
-            tab_view.close_page_finish (tab, false); // No need to confirm
-
-            if (tab_view.n_pages == 1) {
-                add_tab ();
-            }
-
-            return true;
+            return false;
         });
-
         tab_view.page_reordered.connect ((tab, position) => {
             change_tab (position);
         });

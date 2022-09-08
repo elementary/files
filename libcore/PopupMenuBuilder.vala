@@ -85,7 +85,8 @@ public class PopupMenuBuilder : Object {
             }
         }
 
-        var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
+        var text = mounts_with_trash > 0 ?
+        _("Permanently Delete All Trash") : _("Permanently Delete Trash");
 
         return add_item (text, detailed_action_name);
     }
@@ -102,7 +103,7 @@ public class PopupMenuBuilder : Object {
 
     //TODO Link MenuItems to actions not callbacks
     public PopupMenuBuilder add_item (string name, string? detailed_action_name) {
-        menu_items += new MenuItem (name, detailed_action_name);;
+        menu_items += new MenuItem (name, detailed_action_name);
         return this;
     }
 }
