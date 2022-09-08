@@ -155,8 +155,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         icon_label_box.append (icon);
         icon_label_box.append (label_stack);
 
-
-
         content_grid = new Gtk.Grid ();
         content_grid.attach (icon_label_box, 0, 0);
 
@@ -283,12 +281,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             popover = new Gtk.PopoverMenu.from_model (menu_model);
         } else {
             var menu_builder = new PopupMenuBuilder ()
-                .add_open (() => { activated (); })
-                .add_separator ()
-                .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
-                .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
+                .add_open (Action.print_detailed_name ("bm.open-bookmark", new Variant.uint32 (id)));
+                // .add_separator ()
+                // .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
+                // .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
 
-            add_extra_menu_items (menu_builder);
+            // add_extra_menu_items (menu_builder);
 
             popover = menu_builder.build ();
         }
@@ -299,29 +297,29 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-    /* Rows under "Bookmarks" can be removed or renamed */
-        if (!permanent) {
-            menu_builder
-                .add_separator ()
-                .add_remove (() => {list.remove_item_by_id (id);});
-        }
+    // /* Rows under "Bookmarks" can be removed or renamed */
+    //     if (!permanent) {
+    //         menu_builder
+    //             .add_separator ()
+    //             .add_remove (() => {list.remove_item_by_id (id);});
+    //     }
 
-        if (!pinned) {
-            menu_builder.add_rename (() => {
-                rename ();
-            });
-        }
+    //     if (!pinned) {
+    //         menu_builder.add_rename (() => {
+    //             rename ();
+    //         });
+    //     }
 
-        if (Uri.parse_scheme (uri) == "trash") {
-            menu_builder
-                .add_separator ()
-                .add_empty_all_trash (() => {
-                    new Files.FileOperations.EmptyTrashJob (
-                        (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-                    )).empty_trash.begin ();
-                })
-            ;
-        }
+    //     if (Uri.parse_scheme (uri) == "trash") {
+    //         menu_builder
+    //             .add_separator ()
+    //             .add_empty_all_trash (() => {
+    //                 new Files.FileOperations.EmptyTrashJob (
+    //                     (Gtk.Window)get_ancestor (typeof (Gtk.Window)
+    //                 )).empty_trash.begin ();
+    //             })
+    //         ;
+    //     }
     }
 
     /* DRAG DROP IMPLEMENTATION */

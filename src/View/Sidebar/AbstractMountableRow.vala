@@ -229,29 +229,29 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
-        // Do not add items for a volume that is in the middle of being mounted or unmounted
-        if (working) {
-            return;
-        }
+        // // Do not add items for a volume that is in the middle of being mounted or unmounted
+        // if (working) {
+        //     return;
+        // }
 
-        if (mount != null) {
-            if (Files.FileOperations.has_trash_files (mount)) {
-                menu_builder
-                    .add_separator ()
-                    .add_empty_mount_trash (() => {
-                        Files.FileOperations.empty_trash_for_mount (this, mount);
-                    })
-                ;
-            }
+        // if (mount != null) {
+        //     if (Files.FileOperations.has_trash_files (mount)) {
+        //         menu_builder
+        //             .add_separator ()
+        //             .add_empty_mount_trash (() => {
+        //                 Files.FileOperations.empty_trash_for_mount (this, mount);
+        //             })
+        //         ;
+        //     }
 
-            if (mount.can_unmount ()) {
-                menu_builder.add_unmount (() => {unmount_mount.begin ();});
-            }
-        }
+        //     if (mount.can_unmount ()) {
+        //         menu_builder.add_unmount (() => {unmount_mount.begin ();});
+        //     }
+        // }
 
-        menu_builder
-            .add_separator ()
-            .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
+        // menu_builder
+        //     .add_separator ()
+        //     .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {

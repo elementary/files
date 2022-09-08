@@ -149,24 +149,24 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     protected void add_extra_menu_items_for_drive (Drive? drive, PopupMenuBuilder menu_builder) {
-        if (drive == null) {
-            return;
-        }
+        // if (drive == null) {
+        //     return;
+        // }
 
-        var sort_key = drive.get_sort_key ();
-        if (sort_key != null && sort_key.contains ("hotplug")) {
-            menu_builder
-                .add_separator ()
-                .add_safely_remove (() => {
-                    safely_remove_drive.begin (volume.get_drive ());
-                });
-        } else if (mount == null && drive.can_eject ()) {
-            menu_builder
-                .add_separator ()
-                .add_eject_drive (() => {
-                    eject_drive.begin (volume.get_drive ());
-                });
-        }
+        // var sort_key = drive.get_sort_key ();
+        // if (sort_key != null && sort_key.contains ("hotplug")) {
+        //     menu_builder
+        //         .add_separator ()
+        //         .add_safely_remove (() => {
+        //             safely_remove_drive.begin (volume.get_drive ());
+        //         });
+        // } else if (mount == null && drive.can_eject ()) {
+        //     menu_builder
+        //         .add_separator ()
+        //         .add_eject_drive (() => {
+        //             eject_drive.begin (volume.get_drive ());
+        //         });
+        // }
     }
 
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {

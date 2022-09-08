@@ -93,22 +93,33 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
         return false;
     }
 
+
     public virtual bool remove_item_by_id (uint32 id) {
-        Gtk.Widget? child = get_first_child ();
-        bool removed = false;
+        var row = get_item_by_id (id);
+        if (row != null) {
+            row.unparent ();
+            row.destroy ();
+            return true;
+        }
+        
+        return false;
+    }
+
+    public virtual unowned SidebarItemInterface? get_item_by_id (uint32 id) {
+        Gtk.Widget? child = list_widget.get_first_child ();
         while (child != null) {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
-                if (!row.permanent && row.id == id) {
-                    row.unparent ();
-                    row.destroy_bookmark ();
-                    removed = true;
-                    break;
+                warning ("examine row %u", row.id); 
+                if (row.id == id) {
+                    return row;
                 }
             }
+            
+            child = child.get_next_sibling ();
         }
 
-        return removed;
+        return null;
     }
 
     /* Returns true if favorite successfully added */

@@ -123,14 +123,15 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         // usable actions.  In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
-             var menu_builder = new PopupMenuBuilder ()
-            .add_safely_remove (() => {
-                safely_remove_drive.begin (drive);
-            });
+             var menu_builder = new PopupMenuBuilder ();
+            // .add_safely_remove (() => {
+            //     safely_remove_drive.begin (drive);
+            // });
 
-            menu_builder
-            .build ()
-            .popup ();
+            var popup = menu_builder
+            .build ();
+            popup.set_parent (label);
+            popup.popup ();
         }
     }
 }
