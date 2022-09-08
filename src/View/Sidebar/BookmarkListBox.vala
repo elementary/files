@@ -50,13 +50,27 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         open_bookmark_action.activate.connect ((param) => {
             var row = get_item_by_id (param.get_uint32 ());
             if (row != null) {
-                open_item (row);
-            } else {
-                critical ("Open bookmark action, row %u not found", param.get_uint32 ());
+                open_item (row, Files.OpenFlag.DEFAULT);
             }
+        });
+        var open_tab_action = new SimpleAction ("open-tab", new VariantType ("u"));
+        open_tab_action.activate.connect ((param) => {
+            var row = get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                open_item (row, Files.OpenFlag.NEW_TAB);
+            } 
+        });
+        var open_window_action = new SimpleAction ("open-window", new VariantType ("u"));
+        open_window_action.activate.connect ((param) => {
+            var row = get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                open_item (row, Files.OpenFlag.NEW_WINDOW);
+            } 
         });
         var bookmark_action_group = new SimpleActionGroup ();
         bookmark_action_group.add_action (open_bookmark_action);
+        bookmark_action_group.add_action (open_tab_action);
+        bookmark_action_group.add_action (open_window_action);
         insert_action_group ("bm", bookmark_action_group);
 
         trash_monitor = Files.TrashMonitor.get_default ();

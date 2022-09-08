@@ -101,7 +101,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
             row.destroy ();
             return true;
         }
-        
+
         return false;
     }
 
@@ -110,12 +110,11 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
         while (child != null) {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
-                warning ("examine row %u", row.id); 
                 if (row.id == id) {
                     return row;
                 }
             }
-            
+
             child = child.get_next_sibling ();
         }
 
