@@ -94,7 +94,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         var collapse_all_action = new SimpleAction ("collapse-all", null);
         collapse_all_action.activate.connect (() => {
-            warning ("Collapse all");
             bookmark_expander.set_active (false);
             device_expander.set_active (false);
             network_expander.set_active (false);

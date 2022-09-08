@@ -162,6 +162,15 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         set_child (content_grid);
 
+        var secondary_click_controller = new Gtk.GestureClick ();
+        secondary_click_controller.set_button (Gdk.BUTTON_SECONDARY);
+        secondary_click_controller.released.connect ((n_press, x, y) => {
+            if (n_press == 1) {
+                popup_context_menu ();
+            }
+        });
+
+        add_controller (secondary_click_controller);
         //TODO Use EventControllers
         // key_press_event.connect (on_key_press_event);
         // button_release_event.connect_after (after_button_release_event);
@@ -269,21 +278,24 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     // }
 
     protected virtual void popup_context_menu () {
+        Gtk.PopoverMenu popover;
         if (menu_model != null) {
-            new Gtk.PopoverMenu.from_model (menu_model).popup ();
+            popover = new Gtk.PopoverMenu.from_model (menu_model);
         } else {
             var menu_builder = new PopupMenuBuilder ()
-                .add_open (() => {activated ();})
+                .add_open (() => { activated (); })
                 .add_separator ()
                 .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
                 .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
 
             add_extra_menu_items (menu_builder);
 
-            menu_builder
-                .build ()
-                .popup ();
+            popover = menu_builder.build ();
         }
+
+        popover.set_parent (label);
+        popover.position = Gtk.PositionType.RIGHT;
+        popover.popup ();
     }
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
