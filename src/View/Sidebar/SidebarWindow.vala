@@ -81,21 +81,43 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         };
         scrolled_window.set_child (bookmarklists_grid);
 
-        var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
+        var connect_server_button = new Gtk.Button () {
             hexpand = true,
-            icon_name = "network-server-symbolic",
+            visible = !Files.is_admin (),
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
         };
 
-        // connect_server_button.get_child ().halign = Gtk.Align.START;
+        var csb_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        csb_box.append (new Gtk.Image.from_icon_name ("network-server-symbolic"));
+        csb_box.append (new Gtk.Label (_("Connect Server…")));
+        connect_server_button.set_child (csb_box);
+
+        var collapse_all_action = new SimpleAction ("collapse-all", null);
+        collapse_all_action.activate.connect (() => {
+            warning ("Collapse all");
+            bookmark_expander.set_active (false);
+            device_expander.set_active (false);
+            network_expander.set_active (false);
+        });
+        var sidebar_action_group = new SimpleActionGroup ();
+        sidebar_action_group.add_action (collapse_all_action);
+        this.insert_action_group ("sb", sidebar_action_group);
+
+        var sidebar_menu = new Menu ();
+        sidebar_menu.append (_("Collapse all"), "sb.collapse-all");
+
+        var sidebar_menu_button = new Gtk.MenuButton () {
+            icon_name = "view-more-symbolic",
+            menu_model = sidebar_menu
+        };
 
         var action_bar = new Gtk.ActionBar () {
-            visible = !Files.is_admin ()
-            //For now hide action bar when admin. This might need revisiting if other actions are added
+            hexpand = true,
         };
 
         action_bar.add_css_class ("flat");
         action_bar.pack_start (connect_server_button);
+        action_bar.pack_end (sidebar_menu_button);
 
         orientation = Gtk.Orientation.VERTICAL;
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");
