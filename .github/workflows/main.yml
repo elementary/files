@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: elementary/docker:odin-unstable
+      image: elementary/docker:next-unstable
 
     steps:
     - uses: actions/checkout@v2
     - name: Install Dependencies
       run: |
         apt update
-        apt install -y libgala-dev libgee-0.8-dev libglib2.0-dev libgranite-dev libgtk4-dev libadwaita-dev libhandy-1-dev libcanberra-dev
+        apt install -y libgala-dev libgee-0.8-dev libglib2.0-dev libgranite-7-dev libgtk-4-dev libadwaita-1-dev libhandy-1-dev libcanberra-dev
         apt install -y libcloudproviders-dev libdbus-glib-1-dev libnotify-dev libpango1.0-dev libplank-dev
         apt install -y libsqlite3-dev libunity-dev libzeitgeist-2.0-dev policykit-1 libgit2-glib-1.0-dev
         apt install -y meson valac
