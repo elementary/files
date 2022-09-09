@@ -1032,8 +1032,10 @@ warning ("WIN action reload");
         // var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
         // var start = x + width < rect.width;
 
-        Files.app_settings.set_enum ("window-state",
-                                       toplevel_state);
+        Files.app_settings.set_enum (
+            "window-state",
+             Files.WindowState.from_gdk_toplevel_state (toplevel_state)
+        );
 
         Files.app_settings.set ("window-size", "(ii)", get_width (), get_height ());
         // Files.app_settings.set ("window-position", "(ii)", x, y);

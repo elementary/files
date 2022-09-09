@@ -26,6 +26,8 @@
     <value value="1" nick="tiled-start"/>
     <value value="2" nick="tiled-end"/>
     <value value="3" nick="maximized"/>
+    <value value="4" nick="tiled-left"/>
+    <value value="5" nick="tiled-right"/>
   </enum>
 
   <schema path="/io/elementary/files/preferences/" id="io.elementary.files.preferences">
