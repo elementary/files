@@ -32,16 +32,19 @@ namespace Files {
 
         construct {
             init_delegate ();
-            set_child (textview);
         }
-        public void init_delegate () {
-            textview = new Gtk.TextView ();
-            /* Block propagation of button press event as this would cause renaming to end */
-            //TODO Use EventController if required
-            // textview.button_press_event.connect_after (() => { return true; });
 
-            scrolled_window = new Gtk.ScrolledWindow ();
-            scrolled_window.set_child (textview);
+        public void init_delegate () {
+            if (textview == null) {
+                textview = new Gtk.TextView ();
+                /* Block propagation of button press event as this would cause renaming to end */
+                //TODO Use EventController if required
+                // textview.button_press_event.connect_after (() => { return true; });
+
+                scrolled_window = new Gtk.ScrolledWindow ();
+                scrolled_window.set_child (textview);
+                set_child (scrolled_window);
+            }
         }
 
         public unowned Gtk.Editable? get_delegate () {
@@ -84,6 +87,7 @@ namespace Files {
         }
 
         public void set_padding (int xpad, int ypad) {
+warning ("SET PADDING");
             textview.set_margin_start (xpad);
             textview.set_margin_end (xpad);
             textview.set_margin_top (ypad);

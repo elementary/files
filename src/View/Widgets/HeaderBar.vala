@@ -59,7 +59,6 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
     construct {
         headerbar = new Adw.HeaderBar () {
             hexpand = true,
-
         };
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
         append (headerbar);
@@ -71,8 +70,6 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
         button_forward = new View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic");
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.add_css_class ("flat");
-
-        view_switcher.margin_end = 20;
 
         location_bar = new LocationBar () {
             hexpand = true
