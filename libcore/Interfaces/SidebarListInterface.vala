@@ -40,9 +40,8 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
     public virtual void clear_list () {
         Gtk.Widget? child;
         while ((child = list_widget.get_first_child ()) != null) {
-            child.unparent ();
             if (child is SidebarItemInterface) {
-                ((SidebarItemInterface)child).destroy_bookmark ();
+                remove_item ((SidebarItemInterface)child, true);
             }
 
             child = child.get_next_sibling ();
@@ -58,8 +57,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
                 return;
             }
 
-            row.unparent ();
-            row.destroy_bookmark ();
+            remove_item (row, false);
         }
     }
 
@@ -93,38 +91,10 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
         return false;
     }
 
-
-    public virtual bool remove_item_by_id (uint32 id) {
-        var row = get_item_by_id (id);
-        if (row != null) {
-            row.unparent ();
-            row.destroy ();
-            return true;
-        }
-
-        return false;
-    }
-
-    public virtual unowned SidebarItemInterface? get_item_by_id (uint32 id) {
-        Gtk.Widget? child = list_widget.get_first_child ();
-        while (child != null) {
-            if (child is SidebarItemInterface) {
-                unowned var row = (SidebarItemInterface)child;
-                if (row.id == id) {
-                    return row;
-                }
-            }
-
-            child = child.get_next_sibling ();
-        }
-
-        return null;
-    }
+    public abstract void remove_item (SidebarItemInterface item, bool force);
 
     /* Returns true if favorite successfully added */
     public virtual bool add_favorite (string uri, string label = "", int index = 0) { return false; }
-
-    public virtual SidebarItemInterface? get_item_at_index (int index) { return null; }
 
     /* Second parameter is index of target after which the item should be inserted */
     public virtual bool move_item_after (SidebarItemInterface item, int target_index) {

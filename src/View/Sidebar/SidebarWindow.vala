@@ -170,26 +170,19 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         return id;
     }
 
-    public bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) {
-        if (item_id == 0) {
+    public bool update_plugin_item (Files.SidebarPluginItem plugin_item, uint32 id) {
+        if (id == 0) {
             return false;
         }
 
-        SidebarItemInterface? row = SidebarItemInterface.get_item (item_id);
-        if (row == null) {
+        SidebarItemInterface? item = SidebarItemInterface.get_item_by_id (id);
+        if (item == null) {
             return false;
         }
 
-        row.update_plugin_data (item);
+        item.update_plugin_data (plugin_item);
 
         return true;
-    }
-
-    public bool remove_item_by_id (uint32 item_id) {
-        // We do not know which listbox the row is in so try remove from each in turn
-        return bookmark_listbox.remove_item_by_id (item_id) ||
-               device_listbox.remove_item_by_id (item_id) ||
-               network_listbox.remove_item_by_id (item_id);
     }
 
     uint sync_timeout_id = 0;

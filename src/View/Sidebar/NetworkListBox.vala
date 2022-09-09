@@ -164,4 +164,9 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             unselect_all_items ();
         }
     }
+
+    public void remove_item (SidebarItemInterface item, bool force) {
+        list_box.remove (item);
+        item.destroy_item ();
+    }
 }

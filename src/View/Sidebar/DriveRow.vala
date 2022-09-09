@@ -78,7 +78,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
 
         if (drive == removed_drive) {
             valid = false;
-            list.remove_item_by_id (id);
+            list.remove_item (this, true);
         }
     }
 
@@ -119,17 +119,16 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     protected override void popup_context_menu () {
-        // At present, this type of row only shows when there is no media or unformatted so there are no
-        // usable actions.  In future, actions like "Format" might be added.
+        // At present, this type of row only shows when there is no media or unformatted
+        // In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
              var menu_builder = new PopupMenuBuilder ();
-            // .add_safely_remove (() => {
-            //     safely_remove_drive.begin (drive);
-            // });
+            menu_builder.add_safely_remove (
+                Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
+            );
 
-            var popup = menu_builder
-            .build ();
+            var popup = menu_builder.build ();
             popup.set_parent (label);
             popup.popup ();
         }

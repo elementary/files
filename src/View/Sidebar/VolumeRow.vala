@@ -121,7 +121,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
         if (volume == removed_volume) {
             valid = false;
-            list.remove_item_by_id (id);
+            list.remove_item (this, true);
         }
     }
 

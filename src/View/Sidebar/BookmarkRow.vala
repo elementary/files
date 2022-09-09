@@ -207,15 +207,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         grab_focus ();
     }
 
-    public void destroy_bookmark () {
-        /* We destroy all bookmarks - even permanent ones when refreshing */
-        valid = false;
-        item_map_lock.@lock ();
-        SidebarItemInterface.item_id_map.unset (id);
-        item_map_lock.unlock ();
-        base.destroy ();
-    }
-
     //TODO Use EventControllers
     // protected virtual bool on_key_press_event (Gdk.EventKey event) {
     //     uint keyval;
@@ -282,9 +273,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         } else {
             var menu_builder = new PopupMenuBuilder ()
                 .add_open (Action.print_detailed_name ("bm.open-bookmark", new Variant.uint32 (id)))
-                .add_separator ()
                 .add_open_tab (Action.print_detailed_name ("bm.open-tab", new Variant.uint32 (id)))
-                .add_open_window (Action.print_detailed_name ("bm.open-window", new Variant.uint32 (id)));
+                .add_open_window (Action.print_detailed_name ("bm.open-window", new Variant.uint32 (id)))
+                .add_remove (Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id)));
 
             // add_extra_menu_items (menu_builder);
 
@@ -298,11 +289,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
     // /* Rows under "Bookmarks" can be removed or renamed */
-    //     if (!permanent) {
-    //         menu_builder
-    //             .add_separator ()
-    //             .add_remove (() => {list.remove_item_by_id (id);});
-    //     }
+        if (!permanent) {
+            menu_builder
+                .add_separator ()
+                .add_remove (
+                    Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id))
+            );
+        }
 
     //     if (!pinned) {
     //         menu_builder.add_rename (() => {
@@ -565,7 +558,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     private bool process_dropped_row (Gdk.Drag ctx, string drop_text, bool dropped_between) {
         var id = (uint32)(uint.parse (drop_text));
-        var item = SidebarItemInterface.get_item (id);
+        var item = SidebarItemInterface.get_item_by_id (id);
 
         if (item == null ||
             !dropped_between ||

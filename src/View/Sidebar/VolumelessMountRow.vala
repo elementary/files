@@ -66,7 +66,7 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
 
         if (mount == removed_mount) {
             valid = false;
-            list.remove_item_by_id (id);
+            list.remove_item (this, true);
         }
     }
 

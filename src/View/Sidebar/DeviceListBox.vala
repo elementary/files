@@ -47,6 +47,17 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         append (list_widget);
 
+        var safely_remove_action = new SimpleAction ("safely-remove", new VariantType ("u"));
+        safely_remove_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                ((AbstractMountableRow)row).safely_remove_drive.begin ();
+            }
+        });
+        var device_action_group = new SimpleActionGroup ();
+        device_action_group.add_action (safely_remove_action);
+        insert_action_group ("device", device_action_group);
+
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.drive_connected.connect (bookmark_drive);
         volume_monitor.mount_added.connect (bookmark_mount_without_volume);
@@ -266,11 +277,6 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
     public void unselect_all_items () {
         list_box.unselect_all ();
-        // foreach (unowned var child in get_children ()) {
-        //     if (child is AbstractMountableRow) {
-        //         unselect_row ((AbstractMountableRow)child);
-        //     }
-        // }
     }
 
     public void select_item (SidebarItemInterface? item) {
@@ -280,4 +286,10 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
             unselect_all_items ();
         }
     }
+
+    public void remove_item (SidebarItemInterface item, bool force) {
+        list_box.remove (item);
+        item.destroy_item ();
+    }
+
 }

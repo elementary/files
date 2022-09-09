@@ -203,7 +203,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         return success;
     }
 
-    protected async void safely_remove_drive (Drive drive) {
+    public async void safely_remove_drive () {
         if (working || !valid) {
             return;
         }

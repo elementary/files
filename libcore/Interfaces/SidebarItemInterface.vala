@@ -31,7 +31,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
         return ++row_id; //Must be > 0
     }
 
-    public static SidebarItemInterface? get_item (uint32 id) {
+    public static SidebarItemInterface? get_item_by_id (uint32 id) {
         if (id == 0) {
             return null;
         }
@@ -59,7 +59,13 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract ActionGroup? action_group {get; set; default = null;}
     public abstract string? action_group_namespace { get; set; default = null;}
 
-    public abstract void destroy_bookmark ();
+    public virtual void destroy_item () {
+        item_map_lock.@lock ();
+        SidebarItemInterface.item_id_map.unset (id);
+        item_map_lock.unlock ();
+        destroy ();
+    }
+
     public virtual void update_icon (Icon icon) {
         gicon = icon;
     }
