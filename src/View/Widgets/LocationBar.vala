@@ -290,7 +290,8 @@ namespace Files.View.Chrome {
         }
 
         private void check_home () {
-            if (!(((Gdk.Toplevel)get_root ()).get_state () == Gdk.ToplevelState.FOCUSED)) {
+warning ("LB CHECK HOME");
+            if (!(((Gdk.Toplevel)(get_root ().get_surface ())).get_state () == Gdk.ToplevelState.FOCUSED)) {
                 return;
             }
 

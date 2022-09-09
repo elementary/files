@@ -321,6 +321,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //TODO Rewrite for Gtk4
         var surface = get_surface ();
         surface.layout.connect ((w, h) => {
+warning ("WINDOW SURFACE LAYOUT");
             if (((Gdk.Toplevel)surface).state == Gdk.ToplevelState.MINIMIZED) {
                 top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
             }
@@ -1026,7 +1027,7 @@ warning ("WIN action reload");
         // Includes shadow for normal windows (but not maximized or tiled)
         // get_size (out width, out height);
         // get_position (out x, out y);
-
+warning ("SAVE GEOMETRY");
         var toplevel_state = ((Gdk.Toplevel)get_surface ()).get_state ();
         // If window is tiled, is it on left (start = true) or right (start = false)?
         // var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
