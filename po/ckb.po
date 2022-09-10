@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
-"PO-Revision-Date: 2022-09-09 08:16+0000\n"
+"PO-Revision-Date: 2022-09-10 10:09+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
 "files/ckb/>\n"
@@ -2005,63 +2005,65 @@ msgstr "ماونت نەکراوە"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
-msgstr ""
+msgstr "بینینی بوخچەی سەرەتا"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "بینینی لیستی ئەو پەڕگانەی کە بەم دواییە بەکارهاتوون"
 
 #: src/View/Sidebar/BookmarkListBox.vala:171
 msgid "Open the Trash"
-msgstr ""
+msgstr "کردنەوەی تەنەکە"
 
 #: src/View/Sidebar/DeviceListBox.vala:152
 msgid "View the root of the local filesystem"
-msgstr ""
+msgstr "بینینی ڕەگی فایل سیستەمی ناوخۆیی"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s داتای دەست پێ نەگەیشتووی تێدایە."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"بۆ بەکارهێنانی ئەم درایڤە، لەوانەیە پێویست بێت کە دەری بکەیت و، دوبارە "
+"بیخەیتەوە ناو کۆمپیتەرەکە یان فۆڕماتی بکەیت."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "ئەن فۆڕماتد یان میدیا نییە"
 
 #: src/View/Sidebar/NetworkListBox.vala:121
 msgid "Entire Network"
-msgstr ""
+msgstr "تەواوی تۆڕ"
 
 #: src/View/Sidebar/NetworkListBox.vala:131
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "بینینی ناوەڕۆکەکانی تۆڕەکە"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: src/View/Widgets/SearchResults.vala:289
 msgid "Bookmarks"
-msgstr ""
+msgstr "جێدۆزەکان"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "شوێنە باوەکان و، پەڕگە و بوخچە پاشەکەوتکراوەکان"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr ""
+msgstr "بیرگە"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "ئامێرە بیرگەییە ناوخۆیی و پەیوەستکراوەکان"
 
 #: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "شوێن و ئامێرە بەردەستەکان بەهۆی تۆڕێکەوە"
 
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
@@ -2069,117 +2071,117 @@ msgstr "پەیوەستکردنی ڕاژە…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
-msgstr ""
+msgstr "بایند ماونت"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
-msgstr ""
+msgstr "لێرە بگەڕێ یان شوێنێک بنووسە"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
-msgstr ""
+msgstr "کردنەوە لە تابێکی نوێدا"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "کردنەوە لە ئەپڵیکەیشنەکانی تر…"
 
 #: src/View/Widgets/HeaderBar.vala:66
 msgid "Previous"
-msgstr ""
+msgstr "پێشتر"
 
 #: src/View/Widgets/HeaderBar.vala:73
 msgid "Next"
-msgstr ""
+msgstr "دواتر"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
-msgstr ""
+msgstr "ئەم بوخچەیە ئامادە بکەوە"
 
 #: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
-msgstr ""
+msgstr "گەڕان…"
 
 #: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u بوخچە"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " و %u دانەکەی تر (%s) دیاریکران"
+msgstr[1] " و %u دانەکانی تر (%s) دیاریکران"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
-msgstr ""
+msgstr " دیاریکراو"
 
 #: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u دانە دیاریکرا (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u لابوخچە، "
+msgstr[1] "%u لابوخچەکان، "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u پەڕگە، "
+msgstr[1] "%u پەڕگە، "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s بە نزیکەیی"
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:245
 msgid "unknown size"
-msgstr ""
+msgstr "قەبارە نەزانراوە"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:249
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "پەڕگەی %u ناخوێندرێتەوە"
+msgstr[1] "%u پەڕگە ناخوێندرێتەوە"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
-msgstr ""
+msgstr "خوێندنەوە"
 
 #: src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr ""
+msgstr "نووسین"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr ""
+msgstr "ئێکسکیوت"
 
 #: src/View/Widgets/SearchResults.vala:89
 msgid "More Results …"
-msgstr ""
+msgstr "ئەنجامی زیاتر…"
 
 #: src/View/Widgets/SearchResults.vala:281
 msgid "In This Folder"
-msgstr ""
+msgstr "لەم بوخچەیەدا"
 
 #: src/View/Widgets/SearchResults.vala:285
 msgid "Below This Folder"
-msgstr ""
+msgstr "لەخوار ئەم بوخچەیەوە"
 
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
-msgstr ""
+msgstr "بەکارهاتووی ئەم دواییە"
