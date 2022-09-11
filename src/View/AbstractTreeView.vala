@@ -18,9 +18,11 @@
 
 /* Implement common features of ColumnView and ListView */
 public abstract class Files.AbstractTreeView : AbstractDirectoryView {
-    protected Files.TreeView tree;
+    protected TreeView tree;
     protected Files.IconRenderer icon_renderer;
     protected Files.TextRenderer? name_renderer = null;
+    protected Files.File? active_file = null;
+
     public Files.ListModel model { get; construct; }
     protected Gtk.TreeViewColumn name_column;
 
@@ -39,13 +41,27 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
         model.row_deleted.connect (on_row_deleted);
         // /* Sort order of model is set after loading */
 
-        tree = new Files.TreeView () {
+        tree = new TreeView () {
             model = model,
             headers_visible = false,
-            rubber_banding = true
+            rubber_banding = true,
+            activate_on_single_click = true
         };
 
         tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+
+        tree.row_activated.connect ((path, column) => {
+            Gtk.TreeIter? iter;
+            model.get_iter (out iter, path);
+            model.@get (iter, Files.ColumnID.FILE_COLUMN, out active_file, -1);
+            if (active_file.is_directory) {
+            warning ("directory");
+                activate_file (active_file);
+                active_file = null;
+            } else {
+            warning ("other");
+            }
+        });
 
         name_renderer = new Files.TextRenderer (ViewMode.LIST);
         name_renderer.editable = false;
@@ -96,12 +112,25 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
         });
 
         view = tree;
-        
-        //Set up EventControllers
+
+        /* Set up eventcontrollers for view widget */
+        var view_primary_click_controller = new Gtk.GestureClick ();
+        view_primary_click_controller.set_propagation_phase (Gtk.PropagationPhase.TARGET);
+        view_primary_click_controller.set_button (Gdk.BUTTON_PRIMARY);
+        view_primary_click_controller.pressed.connect (on_view_press);
+        view.add_controller (view_primary_click_controller);
     }
 
     ~AbstractTreeView () {
         debug ("ATV destruct");
+    }
+
+    protected virtual void on_view_press (Gtk.GestureClick controller, int n_press, double x, double y) {
+        // Activate non-directory files on double click (directories already activated natively)
+        if (n_press == 2 && active_file != null) {
+            activate_file (active_file);
+            active_file = null;
+        }
     }
 
     protected override void add_file (
@@ -208,13 +237,11 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
 
     protected override void invert_selection () {
         GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
-
         foreach (Gtk.TreePath p in get_selected_paths ()) {
             selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
         }
 
         select_all ();
-
         if (selected_row_refs != null) {
             foreach (Gtk.TreeRowReference r in selected_row_refs) {
                 var p = r.get_path ();
@@ -721,49 +748,50 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
     // protected abstract void disconnect_tree_signals ();
 
     // protected virtual void set_up_icon_renderer () {}
-}
 
-protected class TreeView : Gtk.TreeView { // Not a final class
-    private ZoomLevel _zoom_level = ZoomLevel.INVALID;
-    public ZoomLevel zoom_level {
-        set {
-            if (_zoom_level == value || !get_realized ()) {
-                return;
-            } else {
-                _zoom_level = value;
+
+    protected class TreeView : Gtk.TreeView { // Not a final class
+        private ZoomLevel _zoom_level = ZoomLevel.INVALID;
+        public ZoomLevel zoom_level {
+            set {
+                if (_zoom_level == value || !get_realized ()) {
+                    return;
+                } else {
+                    _zoom_level = value;
+                }
+            }
+
+            get {
+                return _zoom_level;
             }
         }
 
-        get {
-            return _zoom_level;
-        }
+        //TODO Use EventControllers
+        // /* Override base class in order to disable the Gtk.TreeView local search functionality */
+        // public override bool key_press_event (Gdk.EventKey event) {
+        //     /* We still need the base class to handle cursor keys first */
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         case Gdk.Key.Up:
+        //         case Gdk.Key.Down:
+        //         case Gdk.Key.KP_Up:
+        //         case Gdk.Key.KP_Down:
+        //         case Gdk.Key.Page_Up:
+        //         case Gdk.Key.Page_Down:
+        //         case Gdk.Key.KP_Page_Up:
+        //         case Gdk.Key.KP_Page_Down:
+        //         case Gdk.Key.Home:
+        //         case Gdk.Key.End:
+
+        //             return base.key_press_event (event);
+
+        //         default:
+
+        //             return false; // Pass event to Window handler.
+        //     }
+        // }
     }
-
-    //TODO Use EventControllers
-    // /* Override base class in order to disable the Gtk.TreeView local search functionality */
-    // public override bool key_press_event (Gdk.EventKey event) {
-    //     /* We still need the base class to handle cursor keys first */
-    //     uint keyval;
-    //     event.get_keyval (out keyval);
-    //     switch (keyval) {
-    //         case Gdk.Key.Up:
-    //         case Gdk.Key.Down:
-    //         case Gdk.Key.KP_Up:
-    //         case Gdk.Key.KP_Down:
-    //         case Gdk.Key.Page_Up:
-    //         case Gdk.Key.Page_Down:
-    //         case Gdk.Key.KP_Page_Up:
-    //         case Gdk.Key.KP_Page_Down:
-    //         case Gdk.Key.Home:
-    //         case Gdk.Key.End:
-
-    //             return base.key_press_event (event);
-
-    //         default:
-
-    //             return false; // Pass event to Window handler.
-    //     }
-    // }
-
-
 }
+
+

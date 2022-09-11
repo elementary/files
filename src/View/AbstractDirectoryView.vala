@@ -272,6 +272,16 @@ namespace Files {
 
         protected Gtk.ScrolledWindow scrolled_window;
 
+        protected AbstractDirectoryView (View.Slot slot) {
+            Object (
+                slot: slot
+            );
+        }
+
+        ~AbstractDirectoryView () {
+            debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
+        }
+
         construct {
             scrolled_window = new Gtk.ScrolledWindow () {
                 hexpand = true,
@@ -361,36 +371,10 @@ namespace Files {
                 "hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET
             );
 
-
-        }
-
-        protected AbstractDirectoryView (View.Slot slot) {
-            Object (
-                slot: slot
-            );
-
-            if (view != null) {
-                scrolled_window.set_child (view);
-                // connect_drag_drop_signals (view);
-
-                //TODO Use EventControllers
-                // view.motion_notify_event.connect (on_motion_notify_event);
-                // view.leave_notify_event.connect (on_leave_notify_event);
-                // view.key_press_event.connect (on_view_key_press_event);
-                // view.button_press_event.connect (on_view_button_press_event);
-                // view.button_release_event.connect (on_view_button_release_event);
-                // view.draw.connect (on_view_draw);
-            }
-
-            // freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
-
             connect_directory_handlers (slot.directory);
         }
 
-        ~AbstractDirectoryView () {
-            debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
-        }
 
         public void zoom_in () {
             zoom_level = zoom_level + 1;
@@ -722,7 +706,9 @@ namespace Files {
 /*** Private methods */
     /** File operations */
 
-        private void activate_file (Files.File _file, Files.OpenFlag flag, bool only_one_file) {
+        protected void activate_file (
+            Files.File _file, Files.OpenFlag flag = Files.OpenFlag.DEFAULT, bool only_one_file = true
+        ) {
             if (is_frozen) {
                 return;
             }
