@@ -583,6 +583,7 @@ namespace Files {
         //     return index;
         // }
 
+        protected override void add_gof_file_to_selection (Files.File file) {}
         protected override void remove_gof_file (Files.File file) {}
         protected override uint select_gof_files (
             Gee.LinkedList<Files.File> files_to_select, GLib.File? focus_file

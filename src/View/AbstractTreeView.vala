@@ -503,6 +503,7 @@ warning ("set view cursor - select %s", select.to_string ());
 
     // protected override ZoomLevel get_normal_zoom_level () {}
 
+    protected override void add_gof_file_to_selection (Files.File file) {}
     protected override void remove_gof_file (Files.File file) {}
     protected override void scroll_to_file (Files.File file, bool scroll_to_top) {}
 

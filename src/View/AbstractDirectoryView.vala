@@ -535,37 +535,10 @@ namespace Files {
         }
 
         public abstract void select_gof_file (Files.File file);
-        // public void select_gof_file (Files.File file) {
-        //     Gtk.TreeIter? iter;
-        //     if (!model.get_first_iter_for_file (file, out iter)) {
-        //         return; /* file not in model */
-        //     }
-
-        //     var path = model.get_path (iter);
-        //     set_view_cursor (path, false, true, false);
-        // }
 
         protected abstract void select_and_scroll_to_gof_file (Files.File file);
-        // protected void select_and_scroll_to_gof_file (Files.File file) {
-        //     Gtk.TreeIter iter;
-        //     if (!model.get_first_iter_for_file (file, out iter)) {
-        //         return; /* file not in model */
-        //     }
 
-        //     var path = model.get_path (iter);
-        //     set_view_cursor (path, false, true, true);
-        // }
-
-        // protected abstract add_gof_file_to_selection (Files.File file);
-        // protected void add_gof_file_to_selection (Files.File file) {
-        //     Gtk.TreeIter iter;
-        //     if (!model.get_first_iter_for_file (file, out iter)) {
-        //         return; /* file not in model */
-        //     }
-
-        //     var path = model.get_path (iter);
-        //     select_path (path); /* Cursor does not follow */
-        // }
+        protected abstract void add_gof_file_to_selection (Files.File file);
 
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
@@ -621,17 +594,6 @@ namespace Files {
         }
 
         protected abstract void clear ();
-        // private void clear () {
-        //     /* after calling this (prior to reloading), the directory must be re-initialised so
-        //      * we reconnect the file_loaded and done_loading signals */
-        //     // freeze_tree ();
-        //     block_model ();
-        //     model.clear ();
-        //     all_selected = false;
-        //     unblock_model ();
-        // }
-
-
 
         protected void cancel_thumbnailing () {
             if (thumbnail_request >= 0) {
@@ -820,10 +782,6 @@ namespace Files {
                 });
             }
 
-            // Gtk.TreeIter? iter = null;
-            // model.get_first_iter_for_file (file_list.first ().data, out iter);
-            // deleted_path = model.get_path (iter);
-
             if (locations != null) {
                 locations.reverse ();
 
@@ -852,20 +810,8 @@ namespace Files {
         }
 
         private int file_compare_func (Files.File file_a, Files.File file_b) {
-            // Files.File? file_a = null;
-            // Files.File? file_b = null;
-            // get (a, ColumnID.FILE_COLUMN, out file_a);
-            // get (b, ColumnID.FILE_COLUMN, out file_b);
-
             if (file_a != null && file_b != null &&
                 file_a.location != null && file_b.location != null) {
-
-                // int sort_column_id;
-                // Gtk.SortType order;
-                // if (!get_sort_column_id (out sort_column_id, out order)) {
-                //     sort_column_id = ColumnID.FILENAME;
-                //     order = Gtk.SortType.ASCENDING;
-                // }
 
                 return file_a.compare_for_sort (
                     file_b, sort_column_id, sort_directories_first, sort_order == Gtk.SortType.DESCENDING
@@ -880,18 +826,6 @@ namespace Files {
         protected abstract void add_file (
             Files.File file, Directory dir, bool select = true, bool sorted = false
         );
-        // private void add_file (Files.File file, Directory dir, bool select = true, bool sorted = false) {
-        //     var liststore = selection_model.get_model ();
-        //     if (sorted) {
-        //         liststore.insert_sorted (file, file_compare_func);
-        //     } else {
-        //         liststore.append (file);
-        //     }
-
-        //     if (select) { /* This true once view finished loading */
-        //         select_item (file);
-        //     }
-        // }
 
         private void handle_free_space_change () {
             /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
@@ -1173,27 +1107,19 @@ namespace Files {
         protected int sort_column_id = Files.ColumnID.FILENAME;
         protected Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
         private void set_sort (string? col_name, bool reverse = false) {
-warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
-            // if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                if (col_name != null) {
-                    // sort_column_id = Files.ColumnID.from_string (col_name);
-                    sort_column_id = Files.ColumnID.from_string (col_name);
-                }
+            if (col_name != null) {
+                sort_column_id = Files.ColumnID.from_string (col_name);
+            }
 
-                if (reverse) {
-                    if (sort_order == Gtk.SortType.ASCENDING) {
-                        sort_order = Gtk.SortType.DESCENDING;
-                    } else {
-                        sort_order = Gtk.SortType.ASCENDING;
-                    }
+            if (reverse) {
+                if (sort_order == Gtk.SortType.ASCENDING) {
+                    sort_order = Gtk.SortType.DESCENDING;
+                } else {
+                    sort_order = Gtk.SortType.ASCENDING;
                 }
+            }
 
-                // model.set_sort_column_id (sort_column_id, sort_order);
-            // } else {
-            //     warning ("Set Sort: The model is unsorted - this should not happen");
-            // }
             resort ();
-            // multiselection.get_model ().sort (file_compare_func);
         }
 
         private void update_sort () {
@@ -1322,13 +1248,6 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
              * that does not matter.  */
             file.exists = false;
             remove_gof_file (file);
-            // var liststore = multiselect.get_model ();
-            // int pos;
-            // if (liststore.find (file, out pos)) { //Inefficient?
-            //     liststore.remove (pos);
-            // }
-            // // model.remove_file (file, dir);
-
             remove_marlin_icon_info_cache (file);
 
             if (file.get_thumbnail_path () != null) {
@@ -1361,14 +1280,11 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
-                    // model.set_sort_column_id (Files.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
                     sort_column_id = Files.ColumnID.MODIFIED;
                     sort_order = slot.directory.file.sort_order;
                 } else if (slot.directory.file.info != null) {
                     sort_column_id = slot.directory.file.sort_column_id;
                     sort_order = slot.directory.file.sort_order;
-                    // model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
-                    // set_sort (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
                 }
             } else {
                 is_writable = false;
