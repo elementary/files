@@ -33,7 +33,7 @@ namespace Files {
 
         const int MAX_TEMPLATES = 32;
 
-        private Gtk.ScrolledWindow scrolled_window;
+        protected Gtk.ScrolledWindow scrolled_window;
         /* Menu Handling */
         const GLib.ActionEntry [] SELECTION_ENTRIES = {
             {"open", on_selection_action_open_executable},
@@ -191,7 +191,19 @@ namespace Files {
         protected bool hide_local_thumbnails {get; set; default = false;}
 
         /* View is Gtk.GridView, or Gtk.TreeView */
-        public Gtk.Widget view {get; construct; }
+        public Gtk.Widget? view {
+            get {
+                return scrolled_window.child;
+            }
+
+            set {
+                if (view != null) {
+                    view.unparent ();
+                }
+warning ("setting scrolled window child");
+                scrolled_window.child = value;
+            }
+        }
         public ClipboardManager clipboard  { get; construct; }
         public Thumbnailer thumbnailer { get; construct; }
         public View.Slot slot { get; construct; } // Must be unowned else cyclic reference stops destruction
@@ -240,8 +252,6 @@ namespace Files {
 
 
             /* Set up actions */
-
-
             selection_actions = new GLib.SimpleActionGroup ();
             selection_actions.add_action_entries (SELECTION_ENTRIES, this);
             insert_action_group ("selection", selection_actions);
@@ -284,7 +294,6 @@ namespace Files {
                 vscroll_bar.visible = !renaming;
             });
 
-
             /* Settings */
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
@@ -304,8 +313,6 @@ namespace Files {
             // model.sort_column_changed.connect (on_sort_column_changed);
 
             // set_up_directory_view ();
-
-
         }
 
         protected AbstractDirectoryView (View.Slot slot) {
@@ -336,12 +343,12 @@ namespace Files {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
-        protected virtual void set_up_name_renderer () {
+        // protected virtual void set_up_name_renderer () {
             // name_renderer.editable = false;
             // name_renderer.edited.connect (on_name_edited);
             // name_renderer.editing_canceled.connect (on_name_editing_canceled);
             // name_renderer.editing_started.connect (on_name_editing_started);
-        }
+        // }
 
         public void zoom_in () {
             zoom_level = zoom_level + 1;
@@ -448,7 +455,7 @@ namespace Files {
         }
 
         public new void grab_focus () {
-            if (view.get_realized ()) {
+            if (view != null && view.get_realized ()) {
                 /* In Column View, maybe clicked on an inactive column */
                 if (!slot.is_active) {
                     set_active_slot ();
@@ -550,6 +557,7 @@ namespace Files {
         //     set_view_cursor (path, false, true, true);
         // }
 
+        // protected abstract add_gof_file_to_selection (Files.File file);
         // protected void add_gof_file_to_selection (Files.File file) {
         //     Gtk.TreeIter iter;
         //     if (!model.get_first_iter_for_file (file, out iter)) {
@@ -868,7 +876,9 @@ namespace Files {
             }
         }
 
-        protected abstract void add_file (Files.File file, Directory dir, bool select = true, bool sorted = false);
+        protected abstract void add_file (
+            Files.File file, Directory dir, bool select = true, bool sorted = false
+        );
         // private void add_file (Files.File file, Directory dir, bool select = true, bool sorted = false) {
         //     var liststore = selection_model.get_model ();
         //     if (sorted) {
@@ -3678,7 +3688,7 @@ namespace Files {
             }
         }
 
-        protected abstract Gtk.Widget? create_view ();
+        // protected abstract Gtk.Widget? create_view ();
         protected abstract void set_up_zoom_level ();
         protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();

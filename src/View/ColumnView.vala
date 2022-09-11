@@ -28,10 +28,9 @@ namespace Files {
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }
 
-        protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS) {
-                lpad = 6
-            };
+        construct {
+            model.has_child = false;
+            tree.show_expanders = false;
         }
 
         protected new void on_view_selection_changed () {
@@ -88,13 +87,6 @@ namespace Files {
             Files.column_view_settings.set_enum ("zoom-level", zoom);
 
             return (ZoomLevel)zoom;
-        }
-
-        protected override Gtk.Widget? create_view () {
-            model.has_child = false;
-            base.create_view ();
-            tree.show_expanders = false;
-            return tree as Gtk.Widget;
         }
 
         //TODO Use EventControllers

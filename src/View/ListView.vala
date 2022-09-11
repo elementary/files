@@ -37,11 +37,19 @@ namespace Files {
             base (_slot);
         }
 
-        protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.LIST) {
-                lpad = 6
-            };
+        construct {
+            model.has_child = true;
+            tree.set_show_expanders (true);
+            tree.set_headers_visible (true);
+            tree.set_rubber_banding (true);
+            append_extra_tree_columns ();
         }
+
+        // protected override void set_up_icon_renderer () {
+        //     icon_renderer = new IconRenderer (ViewMode.LIST) {
+        //         lpad = 6
+        //     };
+        // }
 
         // private void connect_additional_signals () {
         //     tree.row_expanded.connect (on_row_expanded);
@@ -196,17 +204,15 @@ namespace Files {
         //     return base.on_view_key_press_event (event);
         // }
 
-        protected override Gtk.Widget? create_view () {
-            model.has_child = true;
-            base.create_view ();
-            tree.set_show_expanders (true);
-            tree.set_headers_visible (true);
-            tree.set_rubber_banding (true);
-            append_extra_tree_columns ();
-            // connect_additional_signals ();
+        // protected override Gtk.Widget? create_view () {
+        //     model.has_child = true;
+        //     tree.set_show_expanders (true);
+        //     tree.set_headers_visible (true);
+        //     tree.set_rubber_banding (true);
+        //     append_extra_tree_columns ();
+        //     // connect_additional_signals ();
 
-            return tree as Gtk.Widget;
-        }
+        // }
 
         protected override void set_up_zoom_level () {
             Files.list_view_settings.bind (

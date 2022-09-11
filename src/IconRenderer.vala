@@ -63,7 +63,7 @@ namespace Files {
         private int h_overlap; // Horizontal overlap between helper and icon
         private int v_overlap; // Vertical overlap between helper and icon
         private int helper_size;
-        private bool show_emblems;
+        public bool show_emblems { get; set; default = false; }
         private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         private Files.File? _file;
         private Files.IconSize icon_size;
@@ -80,11 +80,6 @@ namespace Files {
             clipboard = ClipboardManager.get_instance ();
             hover_rect = {0, 0, (int) Files.IconSize.NORMAL, (int) Files.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Files.IconSize.EMBLEM, (int) Files.IconSize.EMBLEM};
-        }
-
-        public IconRenderer (ViewMode view_mode) {
-            show_emblems = view_mode == ViewMode.ICON;
-            xpad = 0;
         }
 
         public override void snapshot (Gtk.Snapshot ss, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -299,7 +294,7 @@ namespace Files {
                 }
             }
 
-            if (show_emblems) {
+            if (show_emblems) { // Only on IconView
                 int emblem_size = (int) Files.IconSize.EMBLEM;
                 int pos = 0;
 

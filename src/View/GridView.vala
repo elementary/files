@@ -45,6 +45,8 @@ namespace Files {
                 multiselection,
                 item_factory
             );
+
+            view = gridview;
         }
 
         private void set_up_view () {
@@ -71,12 +73,12 @@ namespace Files {
             // });
         }
 
-        protected override void set_up_name_renderer () {
+        // protected override void set_up_name_renderer () {
             // base.set_up_name_renderer ();
             // name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
             // name_renderer.xalign = 0.5f;
             // name_renderer.yalign = 0.0f;
-        }
+        // }
 
         // protected override void connect_tree_signals () {
         //     // tree.selection_changed.connect (on_view_selection_changed);
@@ -86,11 +88,11 @@ namespace Files {
         //     // tree.selection_changed.disconnect (on_view_selection_changed);
         // }
 
-        protected override Gtk.Widget? create_view () {
-            set_up_view ();
+        // protected override Gtk.Widget? create_view () {
+        //     set_up_view ();
 
-            return gridview as Gtk.Widget;
-        }
+        //     return gridview as Gtk.Widget;
+        // }
 
         protected override void set_up_zoom_level () {
             // Files.icon_view_settings.bind (
