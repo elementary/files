@@ -180,15 +180,14 @@ namespace Files {
         bool signal_free_space_change = false;
 
         /* Rename support */
-        protected Files.TextRenderer? name_renderer = null;
+
         public string original_name = "";
         public string proposed_name = "";
 
         /* Support for zoom by smooth scrolling */
         private double total_delta_y = 0.0;
 
-        /* Support for keeping cursor position after delete */
-        private Gtk.TreePath deleted_path;
+
 
         /* UI options for button press handling */
         protected bool right_margin_unselects_all = false;
@@ -198,7 +197,7 @@ namespace Files {
         protected bool should_scroll = true;
         protected bool should_deselect = false;
         protected bool should_select = false;
-        protected Gtk.TreePath? click_path = null;
+
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
 
@@ -218,7 +217,7 @@ namespace Files {
         private static GLib.List<GLib.File> templates = null;
 
         private GLib.AppInfo default_app;
-        private Gtk.TreePath? hover_path = null;
+
 
         public bool renaming {get; protected set; default = false;}
 
@@ -236,13 +235,13 @@ namespace Files {
                         /* Fix problems when navigating away from directory with large number
                          * of selected files (e.g. OverlayBar critical errors)
                          */
-                        disconnect_tree_signals ();
+                        // disconnect_tree_signals ();
                         clipboard.changed.disconnect (on_clipboard_changed);
                         // view.key_press_event.disconnect (on_view_key_press_event);
                     } else {
                         // view.key_press_event.connect (on_view_key_press_event);
                         clipboard.changed.connect (on_clipboard_changed);
-                        connect_tree_signals ();
+                        // connect_tree_signals ();
 
                         update_menu_actions ();
 
@@ -270,8 +269,9 @@ namespace Files {
 
         private Gtk.Widget view;
         private ClipboardManager clipboard;
-        protected Files.ListModel model;
-        protected Files.IconRenderer icon_renderer;
+        // protected Files.ListModel model;
+        // protected Gtk.MultiSelection selection_model;
+
         protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
         protected unowned View.Window window; /*For convenience - this can be derived from slot */
         protected static DndHandler dnd_handler = new DndHandler ();
@@ -308,7 +308,8 @@ namespace Files {
                 draw_when_idle ();
             });
 
-            model = new Files.ListModel ();
+            // selection_model = new Gtk.MultiSelection (new ListStore ());
+            // model = new Files.ListModel ();
 
             Files.app_settings.bind ("show-remote-thumbnails",
                                                              this, "show_remote_thumbnails", SettingsBindFlags.GET);
@@ -349,10 +350,10 @@ namespace Files {
         }
 
         protected virtual void set_up_name_renderer () {
-            name_renderer.editable = false;
-            name_renderer.edited.connect (on_name_edited);
-            name_renderer.editing_canceled.connect (on_name_editing_canceled);
-            name_renderer.editing_started.connect (on_name_editing_started);
+            // name_renderer.editable = false;
+            // name_renderer.edited.connect (on_name_edited);
+            // name_renderer.editing_canceled.connect (on_name_editing_canceled);
+            // name_renderer.editing_started.connect (on_name_editing_started);
         }
 
         private void set_up_directory_view () {
@@ -391,10 +392,10 @@ namespace Files {
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
-            model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
-            model.row_deleted.connect (on_row_deleted);
-            /* Sort order of model is set after loading */
-            model.sort_column_changed.connect (on_sort_column_changed);
+            // model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
+            // model.row_deleted.connect (on_row_deleted);
+            // /* Sort order of model is set after loading */
+            // model.sort_column_changed.connect (on_sort_column_changed);
         }
 
         private void set_up__menu_actions () {
@@ -435,19 +436,20 @@ namespace Files {
         }
 
         private uint set_cursor_timeout_id = 0;
-        public void focus_first_for_empty_selection (bool select) {
-            if (selected_files == null) {
-                set_cursor_timeout_id = Idle.add_full (GLib.Priority.LOW, () => {
-                    if (!tree_frozen) {
-                        set_cursor_timeout_id = 0;
-                        set_view_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
-                        return GLib.Source.REMOVE;
-                    } else {
-                        return GLib.Source.CONTINUE;
-                    }
-                });
-            }
-        }
+        // public void focus_first_for_empty_selection (bool select) {
+        public virtual void focus_first_for_empty_selection (bool select) {}
+        //     if (selected_files == null) {
+        //         set_cursor_timeout_id = Idle.add_full (GLib.Priority.LOW, () => {
+        //             if (!tree_frozen) {
+        //                 set_cursor_timeout_id = 0;
+        //                 set_view_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
+        //                 return GLib.Source.REMOVE;
+        //             } else {
+        //                 return GLib.Source.CONTINUE;
+        //             }
+        //         });
+        //     }
+        // }
 
         /* This function is only called by Slot in order to select a file item after loading has completed.
          * If called before initial loading is complete then tree_frozen is true.  Otherwise, e.g. when selecting search items
@@ -486,31 +488,34 @@ namespace Files {
                 select_source_handler = 0;
             }
 
-            disconnect_tree_signals (); /* Avoid unnecessary signal processing */
+            // disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
 
-            uint count = 0;
-            Gtk.TreeIter? iter;
-
-            foreach (Files.File f in files_to_select) {
-                /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-                if (model.get_first_iter_for_file (f, out iter)) {
-                    count++;
-                    var path = model.get_path (iter);
-                    /* Cursor follows if matches focus location*/
-                    select_path (path, focus_file != null && focus_file.equal (f.location));
-                }
-            }
+            uint count = select_gof_files (files_to_select, focus_file);
+            // Gtk.TreeIter? iter;
+            // foreach (Files.File f in files_to_select) {
+            //     /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
+            //     if (model.get_first_iter_for_file (f, out iter)) {
+            //         count++;
+            //         var path = model.get_path (iter);
+            //         /* Cursor follows if matches focus location*/
+            //         select_path (path, focus_file != null && focus_file.equal (f.location));
+            //     }
+            // }
 
             if (count == 0) {
                 focus_first_for_empty_selection (false);
             }
 
-            connect_tree_signals ();
+            // connect_tree_signals ();
             on_view_selection_changed (); /* Mark selected_file list as invalid */
             /* Update menu and selected file list now in case autoselected */
             update_selected_files_and_menu ();
         }
+
+        protected abstract uint select_gof_files (
+            Gee.LinkedList<Files.File> files_to_select, GLib.File? focus_file
+            );
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
             return open_with_apps;
@@ -601,35 +606,37 @@ namespace Files {
             }
         }
 
-        public void select_gof_file (Files.File file) {
-            Gtk.TreeIter? iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
+        public abstract void select_gof_file (Files.File file);
+        // public void select_gof_file (Files.File file) {
+        //     Gtk.TreeIter? iter;
+        //     if (!model.get_first_iter_for_file (file, out iter)) {
+        //         return; /* file not in model */
+        //     }
 
-            var path = model.get_path (iter);
-            set_view_cursor (path, false, true, false);
-        }
+        //     var path = model.get_path (iter);
+        //     set_view_cursor (path, false, true, false);
+        // }
 
-        protected void select_and_scroll_to_gof_file (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
+        protected abstract void select_and_scroll_to_gof_file (Files.File file);
+        // protected void select_and_scroll_to_gof_file (Files.File file) {
+        //     Gtk.TreeIter iter;
+        //     if (!model.get_first_iter_for_file (file, out iter)) {
+        //         return; /* file not in model */
+        //     }
 
-            var path = model.get_path (iter);
-            set_view_cursor (path, false, true, true);
-        }
+        //     var path = model.get_path (iter);
+        //     set_view_cursor (path, false, true, true);
+        // }
 
-        protected void add_gof_file_to_selection (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
+        // protected void add_gof_file_to_selection (Files.File file) {
+        //     Gtk.TreeIter iter;
+        //     if (!model.get_first_iter_for_file (file, out iter)) {
+        //         return; /* file not in model */
+        //     }
 
-            var path = model.get_path (iter);
-            select_path (path); /* Cursor does not follow */
-        }
+        //     var path = model.get_path (iter);
+        //     select_path (path); /* Cursor does not follow */
+        // }
 
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
@@ -684,15 +691,16 @@ namespace Files {
             connect_directory_loading_handlers (dir);
         }
 
-        private void clear () {
-            /* after calling this (prior to reloading), the directory must be re-initialised so
-             * we reconnect the file_loaded and done_loading signals */
-            // freeze_tree ();
-            block_model ();
-            model.clear ();
-            all_selected = false;
-            unblock_model ();
-        }
+        protected abstract void clear ();
+        // private void clear () {
+        //     /* after calling this (prior to reloading), the directory must be re-initialised so
+        //      * we reconnect the file_loaded and done_loading signals */
+        //     // freeze_tree ();
+        //     block_model ();
+        //     model.clear ();
+        //     all_selected = false;
+        //     unblock_model ();
+        // }
 
         //TODO Reimplement DnD for Gtk4
         // protected void connect_drag_drop_signals (Gtk.Widget widget) {
@@ -906,9 +914,9 @@ namespace Files {
                 });
             }
 
-            Gtk.TreeIter? iter = null;
-            model.get_first_iter_for_file (file_list.first ().data, out iter);
-            deleted_path = model.get_path (iter);
+            // Gtk.TreeIter? iter = null;
+            // model.get_first_iter_for_file (file_list.first ().data, out iter);
+            // deleted_path = model.get_path (iter);
 
             if (locations != null) {
                 locations.reverse ();
@@ -937,13 +945,45 @@ namespace Files {
             }
         }
 
-        private void add_file (Files.File file, Directory dir, bool select = true) {
-            model.add_file (file, dir);
+        private int file_compare_func (Files.File file_a, Files.File file_b) {
+            // Files.File? file_a = null;
+            // Files.File? file_b = null;
+            // get (a, ColumnID.FILE_COLUMN, out file_a);
+            // get (b, ColumnID.FILE_COLUMN, out file_b);
 
-            if (select) { /* This true once view finished loading */
-                add_gof_file_to_selection (file);
+            if (file_a != null && file_b != null &&
+                file_a.location != null && file_b.location != null) {
+
+                // int sort_column_id;
+                // Gtk.SortType order;
+                // if (!get_sort_column_id (out sort_column_id, out order)) {
+                //     sort_column_id = ColumnID.FILENAME;
+                //     order = Gtk.SortType.ASCENDING;
+                // }
+
+                return file_a.compare_for_sort (
+                    file_b, sort_column_id, sort_directories_first, sort_order == Gtk.SortType.DESCENDING
+                );
+            } else if (file_a == null || file_a.location == null) {
+                return -1;
+            } else {
+                return 1;
             }
         }
+
+        protected abstract void add_file (Files.File file, Directory dir, bool select = true, bool sorted = false);
+        // private void add_file (Files.File file, Directory dir, bool select = true, bool sorted = false) {
+        //     var liststore = selection_model.get_model ();
+        //     if (sorted) {
+        //         liststore.insert_sorted (file, file_compare_func);
+        //     } else {
+        //         liststore.append (file);
+        //     }
+
+        //     if (select) { /* This true once view finished loading */
+        //         select_item (file);
+        //     }
+        // }
 
         private void handle_free_space_change () {
             /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
@@ -1038,7 +1078,7 @@ namespace Files {
         public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
-                set_view_cursor (deleted_path, false, false, false);
+                // set_view_cursor (deleted_path, false, false, false);
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
             });
@@ -1222,12 +1262,13 @@ namespace Files {
             prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
-        private void set_sort (string? col_name, bool reverse) {
-            int sort_column_id;
-            Gtk.SortType sort_order;
+        private int sort_column_id = Files.ListModel.ColumnID.FILENAME;
+        private Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
+        private void set_sort (string? col_name, bool reverse = false) {
 
-            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
+            // if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
+                    // sort_column_id = Files.ListModel.ColumnID.from_string (col_name);
                     sort_column_id = Files.ListModel.ColumnID.from_string (col_name);
                 }
 
@@ -1239,10 +1280,16 @@ namespace Files {
                     }
                 }
 
-                model.set_sort_column_id (sort_column_id, sort_order);
-            } else {
-                warning ("Set Sort: The model is unsorted - this should not happen");
-            }
+                // model.set_sort_column_id (sort_column_id, sort_order);
+            // } else {
+            //     warning ("Set Sort: The model is unsorted - this should not happen");
+            // }
+            resort ();
+            // multiselection.get_model ().sort (file_compare_func);
+        }
+
+        private void update_sort () {
+
         }
 
         /** Common actions */
@@ -1340,7 +1387,7 @@ namespace Files {
                 is_writable = slot.directory.file.is_writable ();
             } else {
                 remove_marlin_icon_info_cache (file);
-                model.file_changed (file, dir);
+                // model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
                 if ((!slot.directory.is_network && !hide_local_thumbnails) ||
@@ -1357,15 +1404,22 @@ namespace Files {
         }
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
-            model.file_changed (file, dir);
+            // model.file_changed (file, dir);
             draw_when_idle ();
         }
 
+        protected abstract void remove_gof_file (Files.File file);
         private void on_directory_file_deleted (Directory dir, Files.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
-            model.remove_file (file, dir);
+            remove_gof_file (file);
+            // var liststore = multiselect.get_model ();
+            // int pos;
+            // if (liststore.find (file, out pos)) { //Inefficient?
+            //     liststore.remove (pos);
+            // }
+            // // model.remove_file (file, dir);
 
             remove_marlin_icon_info_cache (file);
 
@@ -1399,9 +1453,14 @@ namespace Files {
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
-                    model.set_sort_column_id (Files.ListModel.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
+                    // model.set_sort_column_id (Files.ListModel.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
+                    sort_column_id = Files.ListModel.ColumnID.MODIFIED;
+                    sort_order = slot.directory.file.sort_order;
                 } else if (slot.directory.file.info != null) {
-                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                    sort_column_id = slot.directory.file.sort_column_id;
+                    sort_order = slot.directory.file.sort_order;
+                    // model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                    // set_sort (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
                 }
             } else {
                 is_writable = false;
@@ -1414,38 +1473,41 @@ namespace Files {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (ZoomLevel zoom) {
-            var size = icon_size * get_scale_factor ();
+            // var size = icon_size * get_scale_factor ();
 
-            if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
-                large_thumbnails = size > 128;
-                slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
-                schedule_thumbnail_color_tag_timeout ();
-            }
+            // if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
+            //     large_thumbnails = size > 128;
+            //     slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
+            //     schedule_thumbnail_color_tag_timeout ();
+            // }
 
-            model.icon_size = icon_size;
-            change_zoom_level ();
+            // model.icon_size = icon_size;
+            // // model.icon_size = icon_size;
+            // change_zoom_level ();
         }
 
     /** Handle Preference changes */
+        public bool show_hidden_files { get; set; default = false; }
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            bool show = ((Files.Preferences) prefs).show_hidden_files;
-            model.show_hidden_files = show;
-            cancel ();
-            /* As directory may reload, for consistent behaviour always lose selection */
+            show_hidden_files = ((Files.Preferences) prefs).show_hidden_files;
+
+            // model.show_hidden_files = show;
+            // cancel ();
+            // /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
 
-            if (!show) {
-                block_model ();
-                model.clear ();
-            }
+            // if (!show) {
+                // gridview.set_model
+            //     model.clear ();
+            // }
 
-            directory_hidden_changed (slot.directory, show);
+            // directory_hidden_changed (slot.directory, show);
 
-            if (!show) {
-                unblock_model ();
-            }
+            // if (!show) {
+            //     unblock_model ();
+            // }
 
-            action_set_state (background_actions, "show-hidden", show);
+            // action_set_state (background_actions, "show-hidden", show);
         }
 
         private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
@@ -1460,10 +1522,15 @@ namespace Files {
             slot.reload ();
         }
 
+        private bool sort_directories_first = true;
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
-            model.set_should_sort_directories_first (sort_directories_first);
+            sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
+            resort ();
+            // gridview.get_model.sort (file_compare_func);
+            // model.set_should_sort_directories_first (sort_directories_first);
         }
+
+        protected abstract void resort ();
 
         private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
@@ -1517,7 +1584,8 @@ namespace Files {
         // }
 
 /** Handle TreeModel events */
-        protected virtual void on_row_deleted (Gtk.TreePath path) {
+        // protected virtual void on_row_deleted (Gtk.TreePath path) {
+        protected virtual void on_row_deleted () {
             unselect_all ();
         }
 
@@ -1836,19 +1904,20 @@ namespace Files {
         //     }
         // }
 
-        private void highlight_drop_file (Files.File drop_file, Gdk.DragAction? action, Gtk.TreePath? path) {
-            bool can_drop = (action != null);
+        protected virtual void highlight_drop_file (Files.File drop_file, Gdk.DragAction? action) {}
+        // private void highlight_drop_file (Files.File drop_file, Gdk.DragAction? action, Gtk.TreePath? path) {
+        //     bool can_drop = (action != null);
 
-            if (drop_highlight != can_drop) {
-                drop_highlight = can_drop;
-                queue_draw ();
-            }
+        //     if (drop_highlight != can_drop) {
+        //         drop_highlight = can_drop;
+        //         queue_draw ();
+        //     }
 
-            /* Set the icon_renderer drop-file if there is an action */
-            icon_renderer.drop_file = can_drop ? drop_file : null;
+        //     /* Set the icon_renderer drop-file if there is an action */
+        //     icon_renderer.drop_file = can_drop ? drop_file : null;
 
-            highlight_path (can_drop ? path : null);
-        }
+        //     highlight_path (can_drop ? path : null);
+        // }
 
 /** MENU FUNCTIONS */
 
@@ -2351,19 +2420,19 @@ namespace Files {
         }
 
         private void update_menu_actions_sort () {
-            int sort_column_id;
-            Gtk.SortType sort_order;
+            // int sort_column_id;
+            // Gtk.SortType sort_order;
 
-            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                GLib.Variant val = new GLib.Variant.string (((Files.ListModel.ColumnID)sort_column_id).to_string ());
-                action_set_state (background_actions, "sort-by", val);
-                val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
-                action_set_state (background_actions, "reverse", val);
-                val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
-                action_set_state (background_actions, "folders-first", val);
-            } else {
-                warning ("Update menu actions sort: The model is unsorted - this should not happen");
-            }
+            // if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
+            //     GLib.Variant val = new GLib.Variant.string (((Files.ListModel.ColumnID)sort_column_id).to_string ());
+            //     action_set_state (background_actions, "sort-by", val);
+            //     val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
+            //     action_set_state (background_actions, "reverse", val);
+            //     val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
+            //     action_set_state (background_actions, "folders-first", val);
+            // } else {
+            //     warning ("Update menu actions sort: The model is unsorted - this should not happen");
+            // }
         }
 
         private void update_default_app (GLib.List<Files.File> selection) {
@@ -2524,120 +2593,120 @@ namespace Files {
 
 /** Thumbnail and color tag handling */
         private void schedule_thumbnail_color_tag_timeout () {
-            /* delay creating the idle until the view has finished loading.
-             * this is done because we only can tell the visible range reliably after
-             * all items have been added and we've perhaps scrolled to the file remembered
-             * the last time */
+            // /* delay creating the idle until the view has finished loading.
+            //  * this is done because we only can tell the visible range reliably after
+            //  * all items have been added and we've perhaps scrolled to the file remembered
+            //  * the last time */
 
-            assert (slot is Files.AbstractSlot && slot.directory != null);
+            // assert (slot is Files.AbstractSlot && slot.directory != null);
 
-            /* Check all known conditions preventing thumbnailing at earliest possible stage */
-            if (thumbnail_source_id != 0 ||
-                !slot.directory.can_open_files ||
-                slot.directory.is_loading ()) {
+            // /* Check all known conditions preventing thumbnailing at earliest possible stage */
+            // if (thumbnail_source_id != 0 ||
+            //     !slot.directory.can_open_files ||
+            //     slot.directory.is_loading ()) {
 
-                    return;
-            }
+            //         return;
+            // }
 
-            /* Do not cancel existing requests to avoid missing thumbnails */
-            cancel_timeout (ref thumbnail_source_id);
-            /* In order to improve performance of the Icon View when there are a large number of files,
-             * we freeze child notifications while the view is being scrolled or resized.
-             * The timeout is restarted for each scroll or size allocate event */
-            cancel_timeout (ref freeze_source_id);
-            // freeze_child_notify ();
-            freeze_source_id = Timeout.add (100, () => {
-                if (thumbnail_source_id > 0) {
-                    return GLib.Source.CONTINUE;
-                }
+            // /* Do not cancel existing requests to avoid missing thumbnails */
+            // cancel_timeout (ref thumbnail_source_id);
+            // /* In order to improve performance of the Icon View when there are a large number of files,
+            //  * we freeze child notifications while the view is being scrolled or resized.
+            //  * The timeout is restarted for each scroll or size allocate event */
+            // cancel_timeout (ref freeze_source_id);
+            // // freeze_child_notify ();
+            // freeze_source_id = Timeout.add (100, () => {
+            //     if (thumbnail_source_id > 0) {
+            //         return GLib.Source.CONTINUE;
+            //     }
 
-                // thaw_child_notify ();
-                freeze_source_id = 0;
-                return GLib.Source.REMOVE;
-            });
+            //     // thaw_child_notify ();
+            //     freeze_source_id = 0;
+            //     return GLib.Source.REMOVE;
+            // });
 
-            /* Views with a large number of files take longer to redraw (especially IconView) so
-             * we wait longer for scrolling to stop before updating the thumbnails */
-            uint delay = uint.min (50 + slot.displayed_files_count / 10, 500);
-            thumbnail_source_id = GLib.Timeout.add (delay, () => {
+            // /* Views with a large number of files take longer to redraw (especially IconView) so
+            //  * we wait longer for scrolling to stop before updating the thumbnails */
+            // uint delay = uint.min (50 + slot.displayed_files_count / 10, 500);
+            // thumbnail_source_id = GLib.Timeout.add (delay, () => {
 
-                /* compute visible item range */
-                Gtk.TreePath start_path, end_path, path;
-                Gtk.TreePath sp, ep;
-                Gtk.TreeIter iter;
-                bool valid_iter;
-                Files.File? file;
-                GLib.List<Files.File> visible_files = null;
-                uint actually_visible = 0;
+            //     /* compute visible item range */
+            //     Gtk.TreePath start_path, end_path, path;
+            //     Gtk.TreePath sp, ep;
+            //     Gtk.TreeIter iter;
+            //     bool valid_iter;
+            //     Files.File? file;
+            //     GLib.List<Files.File> visible_files = null;
+            //     uint actually_visible = 0;
 
-                if (get_visible_range (out start_path, out end_path)) {
-                    sp = start_path;
-                    ep = end_path;
+            //     if (get_visible_range (out start_path, out end_path)) {
+            //         sp = start_path;
+            //         ep = end_path;
 
-                    /* To improve performance for large folders we thumbnail files on either side of visible region
-                     * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
-                     * redraws necessary when scrolling */
-                    int count = 50;
-                    while (start_path.prev () && count > 0) {
-                        count--;
-                    }
+            //         /* To improve performance for large folders we thumbnail files on either side of visible region
+            //          * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
+            //          * redraws necessary when scrolling */
+            //         int count = 50;
+            //         while (start_path.prev () && count > 0) {
+            //             count--;
+            //         }
 
-                    count = 50;
-                    while (count > 0) {
-                        end_path.next ();
-                        count--;
-                    }
+            //         count = 50;
+            //         while (count > 0) {
+            //             end_path.next ();
+            //             count--;
+            //         }
 
-                    /* iterate over the range to collect all files */
-                    valid_iter = model.get_iter (out iter, start_path);
-                    while (valid_iter && thumbnail_source_id > 0) {
-                        file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
-                        path = model.get_path (iter);
+            //         /* iterate over the range to collect all files */
+            //         valid_iter = model.get_iter (out iter, start_path);
+            //         while (valid_iter && thumbnail_source_id > 0) {
+            //             file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
+            //             path = model.get_path (iter);
 
-                        if (file != null && !file.is_gone) {
-                            // Only update thumbnail if it is going to be shown
-                            if ((slot.directory.is_network && show_remote_thumbnails) ||
-                                (!slot.directory.is_network && !hide_local_thumbnails)) {
+            //             if (file != null && !file.is_gone) {
+            //                 // Only update thumbnail if it is going to be shown
+            //                 if ((slot.directory.is_network && show_remote_thumbnails) ||
+            //                     (!slot.directory.is_network && !hide_local_thumbnails)) {
 
-                                file.query_thumbnail_update (); // Ensure thumbstate up to date
-                                /* Ask thumbnailer only if ThumbState UNKNOWN */
-                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                    visible_files.prepend (file);
-                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                        actually_visible++;
-                                    }
-                                }
-                            }
-                           /* In any case, ensure color-tag info is correct */
-                            if (plugins != null) {
-                                plugins.update_file_info (file);
-                            }
-                        }
-                        /* check if we've reached the end of the visible range */
-                        if (path.compare (end_path) != 0) {
-                            valid_iter = get_next_visible_iter (ref iter);
-                        } else {
-                            valid_iter = false;
-                        }
-                    }
-                }
+            //                     file.query_thumbnail_update (); // Ensure thumbstate up to date
+            //                     /* Ask thumbnailer only if ThumbState UNKNOWN */
+            //                     if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+            //                         visible_files.prepend (file);
+            //                         if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+            //                             actually_visible++;
+            //                         }
+            //                     }
+            //                 }
+            //                /* In any case, ensure color-tag info is correct */
+            //                 if (plugins != null) {
+            //                     plugins.update_file_info (file);
+            //                 }
+            //             }
+            //             /* check if we've reached the end of the visible range */
+            //             if (path.compare (end_path) != 0) {
+            //                 valid_iter = get_next_visible_iter (ref iter);
+            //             } else {
+            //                 valid_iter = false;
+            //             }
+            //         }
+            //     }
 
-                /* This is the only place that new thumbnail files are created */
-                /* Do not trigger a thumbnail request unless:
-                    * there are unthumbnailed files actually visible
-                    * there has not been another event (which would zero the thumbnail_source_id)
-                    * thumbnails are not hidden by settings
-                 */
-                if (actually_visible > 0 && thumbnail_source_id > 0) {
-                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-                } else {
-                    draw_when_idle ();
-                }
+            //     /* This is the only place that new thumbnail files are created */
+            //     /* Do not trigger a thumbnail request unless:
+            //         * there are unthumbnailed files actually visible
+            //         * there has not been another event (which would zero the thumbnail_source_id)
+            //         * thumbnails are not hidden by settings
+            //      */
+            //     if (actually_visible > 0 && thumbnail_source_id > 0) {
+            //         thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
+            //     } else {
+            //         draw_when_idle ();
+            //     }
 
-                thumbnail_source_id = 0;
+            //     thumbnail_source_id = 0;
 
-                return GLib.Source.REMOVE;
-            });
+            //     return GLib.Source.REMOVE;
+            // });
         }
 
 
@@ -2657,11 +2726,11 @@ namespace Files {
         }
 
         protected void block_model () {
-            model.row_deleted.disconnect (on_row_deleted);
+            // model.row_deleted.disconnect (on_row_deleted);
         }
 
         protected void unblock_model () {
-            model.row_deleted.connect (on_row_deleted);
+            // model.row_deleted.connect (on_row_deleted);
         }
 
         private void connect_drag_timeout_motion_and_release_events () {
@@ -3137,79 +3206,79 @@ namespace Files {
 
     /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
-            var editable_widget = editable as EditableLabelInterface?;
-            if (editable_widget != null) {
-                original_name = editable_widget.get_chars (0, -1);
-                var path = new Gtk.TreePath.from_string (path_string);
-                Gtk.TreeIter? iter = null;
-                model.get_iter (out iter, path);
-                Files.File? file = null;
-                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
-                int start_offset= 0, end_offset = -1;
-                /* Select whole name if the file is a folder, otherwise do not select the extension */
-                if (!file.is_folder ()) {
-                    FileUtils.get_rename_region (original_name, out start_offset, out end_offset, false);
-                }
-                editable_widget.select_region (start_offset, end_offset);
-            } else {
-                warning ("Editable widget is null");
-                on_name_editing_canceled ();
-            }
+            // var editable_widget = editable as EditableLabelInterface?;
+            // if (editable_widget != null) {
+            //     original_name = editable_widget.get_chars (0, -1);
+            //     var path = new Gtk.TreePath.from_string (path_string);
+            //     Gtk.TreeIter? iter = null;
+            //     model.get_iter (out iter, path);
+            //     Files.File? file = null;
+            //     model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
+            //     int start_offset= 0, end_offset = -1;
+            //     /* Select whole name if the file is a folder, otherwise do not select the extension */
+            //     if (!file.is_folder ()) {
+            //         FileUtils.get_rename_region (original_name, out start_offset, out end_offset, false);
+            //     }
+            //     editable_widget.select_region (start_offset, end_offset);
+            // } else {
+            //     warning ("Editable widget is null");
+            //     on_name_editing_canceled ();
+            // }
         }
 
         protected void on_name_editing_canceled () {
-            is_frozen = false;
-            renaming = false;
-            name_renderer.editable = false;
-            proposed_name = "";
+            // is_frozen = false;
+            // renaming = false;
+            // name_renderer.editable = false;
+            // proposed_name = "";
 
-            update_menu_actions ();
-            grab_focus ();
+            // update_menu_actions ();
+            // grab_focus ();
         }
 
         protected void on_name_edited (string path_string, string? _new_name) {
             /* Must not re-enter */
-            if (!renaming || _new_name == null) {
-                on_name_editing_canceled (); // no problem rentering this function
-                return;
-            }
+            // if (!renaming || _new_name == null) {
+            //     on_name_editing_canceled (); // no problem rentering this function
+            //     return;
+            // }
 
-            var new_name = _new_name.strip (); // Disallow leading and trailing space
-            if (new_name == "" || proposed_name == new_name) {
-                warning ("Blank name or name unchanged");
-                on_name_editing_canceled ();
-                return;
-            }
+            // var new_name = _new_name.strip (); // Disallow leading and trailing space
+            // if (new_name == "" || proposed_name == new_name) {
+            //     warning ("Blank name or name unchanged");
+            //     on_name_editing_canceled ();
+            //     return;
+            // }
 
-            proposed_name = "";
-            if (new_name != "") {
-                var path = new Gtk.TreePath.from_string (path_string);
-                Gtk.TreeIter? iter = null;
-                model.get_iter (out iter, path);
+            // proposed_name = "";
+            // if (new_name != "") {
+            //     var path = new Gtk.TreePath.from_string (path_string);
+            //     Gtk.TreeIter? iter = null;
+            //     model.get_iter (out iter, path);
 
-                Files.File? file = null;
-                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
+            //     Files.File? file = null;
+            //     model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
 
-                /* Only rename if name actually changed */
-                /* Because Files.File.rename does not work correctly for remote files we handle ourselves */
+            //     /* Only rename if name actually changed */
+            //     /* Because Files.File.rename does not work correctly for remote files we handle ourselves */
 
-                if (new_name != original_name) {
-                    proposed_name = new_name;
-                    set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
-                        try {
-                            set_file_display_name.end (res);
-                        } catch (Error e) {} // Warning dialog already shown
+            //     if (new_name != original_name) {
+            //         proposed_name = new_name;
+            //         set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
+            //             try {
+            //                 set_file_display_name.end (res);
+            //             } catch (Error e) {} // Warning dialog already shown
 
-                        on_name_editing_canceled ();
-                    });
-                } else {
-                    warning ("Name unchanged");
-                    on_name_editing_canceled ();
-                }
-            } else {
-                warning ("No new name");
-                on_name_editing_canceled ();
-            }
+            //             on_name_editing_canceled ();
+            //         });
+            //     } else {
+            //         warning ("Name unchanged");
+            //         on_name_editing_canceled ();
+            //     }
+            // } else {
+            //     warning ("No new name");
+            //     on_name_editing_canceled ();
+            // }
 
             /* do not cancel editing here - will be cancelled in rename callback */
         }
@@ -3268,7 +3337,8 @@ namespace Files {
         //     return false;
         // }
 
-        protected virtual bool handle_primary_button_click (Gtk.TreePath? path) {
+        protected virtual bool handle_primary_button_click () {
+        // protected virtual bool handle_primary_button_click (Gtk.TreePath? path) {
             return true;
         }
 
@@ -3532,60 +3602,61 @@ namespace Files {
         //     return false;
         // }
 
-        public virtual void change_zoom_level () {
-            icon_renderer.zoom_level = zoom_level;
-            name_renderer.zoom_level = zoom_level;
+        public abstract void change_zoom_level ();
+        // public virtual void change_zoom_level () {
+            // icon_renderer.zoom_level = zoom_level;
+            // name_renderer.zoom_level = zoom_level;
             // view.style_updated ();
-        }
+        // }
 
         private void start_renaming_file (Files.File file) {
-            if (is_frozen) {
-                warning ("Trying to rename when frozen");
-                return;
-            }
-            Gtk.TreeIter? iter = null;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                critical ("Failed to find rename file in model");
-                return;
-            }
+            // if (is_frozen) {
+            //     warning ("Trying to rename when frozen");
+            //     return;
+            // }
+            // Gtk.TreeIter? iter = null;
+            // if (!model.get_first_iter_for_file (file, out iter)) {
+            //     critical ("Failed to find rename file in model");
+            //     return;
+            // }
 
-            /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-            /* The order of the next three lines must not be changed */
-            renaming = true;
-            update_menu_actions ();
-            is_frozen = true;
-            Gtk.TreePath path = model.get_path (iter);
+            // /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
+            // /* The order of the next three lines must not be changed */
+            // renaming = true;
+            // update_menu_actions ();
+            // is_frozen = true;
+            // Gtk.TreePath path = model.get_path (iter);
 
-            uint count = 0;
-            bool ok_next_time = false;
-            Gtk.TreePath? start_path = null;
-            /* Scroll to row to be renamed and then start renaming after a delay
-             * so that file to be renamed is on screen.  This avoids the renaming being
-             * cancelled */
-            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, false, false);
-            GLib.Timeout.add (50, () => {
-                /* Wait until view stops scrolling before starting to rename (up to 1 second)
-                 * Scrolling is deemed to have stopped when the starting visible path is stable
-                 * over two cycles */
-                Gtk.TreePath? start = null;
-                Gtk.TreePath? end = null;
-                get_visible_range (out start, out end);
-                count++;
+            // uint count = 0;
+            // bool ok_next_time = false;
+            // Gtk.TreePath? start_path = null;
+            // /* Scroll to row to be renamed and then start renaming after a delay
+            //  * so that file to be renamed is on screen.  This avoids the renaming being
+            //  * cancelled */
+            // set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, false, false);
+            // GLib.Timeout.add (50, () => {
+            //     /* Wait until view stops scrolling before starting to rename (up to 1 second)
+            //      * Scrolling is deemed to have stopped when the starting visible path is stable
+            //      * over two cycles */
+            //     Gtk.TreePath? start = null;
+            //     Gtk.TreePath? end = null;
+            //     get_visible_range (out start, out end);
+            //     count++;
 
-                if (start_path == null || (count < 20 && start.compare (start_path) != 0)) {
-                    start_path = start;
-                    ok_next_time = false;
-                    return GLib.Source.CONTINUE;
-                } else if (!ok_next_time) {
-                    ok_next_time = true;
-                    return GLib.Source.CONTINUE;
-                }
+            //     if (start_path == null || (count < 20 && start.compare (start_path) != 0)) {
+            //         start_path = start;
+            //         ok_next_time = false;
+            //         return GLib.Source.CONTINUE;
+            //     } else if (!ok_next_time) {
+            //         ok_next_time = true;
+            //         return GLib.Source.CONTINUE;
+            //     }
 
-                /* set cursor_on_cell also triggers editing-started */
-                name_renderer.editable = true;
-                set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
-                return GLib.Source.REMOVE;
-            });
+            //     /* set cursor_on_cell also triggers editing-started */
+            //     name_renderer.editable = true;
+            //     set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
+            //     return GLib.Source.REMOVE;
+            // });
 
         }
 
@@ -3602,7 +3673,10 @@ namespace Files {
              * the directory file metadata incorrectly (bug 1511307). Also ignore when the model may temporarily
              * become unsorted.
              */
-            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
+            // if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
+            //     return;
+            // }
+            if (tree_frozen) {
                 return;
             }
 
@@ -3642,37 +3716,40 @@ namespace Files {
             }
         }
 
+        protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
         protected void update_selected_files_and_menu () {
             if (selected_files_invalid) {
                 selected_files = null;
-
+                // update_selected_files ();
+                // var selected_count = multiselection.n_items;
                 var selected_count = get_selected_files_from_model (out selected_files);
                 all_selected = selected_count == slot.displayed_files_count;
-                selected_files.reverse ();
+                // selected_files.reverse ();
                 selected_files_invalid = false;
                 update_menu_actions ();
-                selection_changed (selected_files);
+                // selection_changed (selected_files);
             }
 
             one_or_less = (selected_files == null || selected_files.next == null);
         }
 
-        protected virtual bool expand_collapse (Gtk.TreePath? path) {
-            return true;
-        }
+        protected virtual bool expand_collapse (Files.File dir) {return true;}
+        // protected virtual bool expand_collapse (Gtk.TreePath? path) {
+            // return true;
+        // }
 
         protected virtual bool handle_default_button_click () {
             /* pass unhandled events to the View.Window */
             return false;
         }
 
-        protected virtual bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
-            return model.iter_next (ref iter);
-        }
+        // protected virtual bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
+        //     return model.iter_next (ref iter);
+        // }
 
         protected virtual void cancel () {
             grab_focus (); /* Cancel any renaming */
-            cancel_hover ();
+            // cancel_hover ();
             cancel_thumbnailing ();
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
@@ -3682,9 +3759,9 @@ namespace Files {
             /* List View will take care of unloading subdirectories */
         }
 
-        private void cancel_hover () {
-            hover_path = null;
-        }
+        // private void cancel_hover () {
+        //     hover_path = null;
+        // }
 
         public void close () {
             is_frozen = true; /* stop signal handlers running during destruction */
@@ -3692,24 +3769,25 @@ namespace Files {
             unselect_all ();
         }
 
-        protected void invert_selection () {
-            GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
+        protected abstract void invert_selection ();
+        // protected void invert_selection () {
+        //     GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
 
-            foreach (Gtk.TreePath p in get_selected_paths ()) {
-                selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
-            }
+        //     foreach (Gtk.TreePath p in get_selected_paths ()) {
+        //         selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
+        //     }
 
-            select_all ();
+        //     select_all ();
 
-            if (selected_row_refs != null) {
-                foreach (Gtk.TreeRowReference r in selected_row_refs) {
-                    var p = r.get_path ();
-                    if (p != null) {
-                        unselect_path (p);
-                    }
-                }
-            }
-        }
+        //     if (selected_row_refs != null) {
+        //         foreach (Gtk.TreeRowReference r in selected_row_refs) {
+        //             var p = r.get_path ();
+        //             if (p != null) {
+        //                 unselect_path (p);
+        //             }
+        //         }
+        //     }
+        // }
 
         public void select_all () {
             tree_select_all ();
@@ -3726,25 +3804,18 @@ namespace Files {
             update_selected_files_and_menu ();
         }
 
-        public virtual void highlight_path (Gtk.TreePath? path) {}
-        protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
-        protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
+        // public virtual void highlight_path (Gtk.TreePath? path) {}
+        // protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
+        // protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
 
 /** Abstract methods - must be overridden*/
-        public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
-        public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
-        public abstract Gtk.TreePath? get_path_at_cursor ();
+        // public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
+
         public abstract void tree_select_all ();
         public abstract void tree_unselect_all ();
         public virtual void tree_unselect_others () {}
-        public abstract void select_path (Gtk.TreePath? path, bool cursor_follows = false);
-        public abstract void unselect_path (Gtk.TreePath? path);
-        public abstract bool path_is_selected (Gtk.TreePath? path);
-        public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
-        public abstract void set_view_cursor (Gtk.TreePath? path,
-                                         bool start_editing,
-                                         bool select,
-                                         bool scroll_to_top);
+
+
 
         /* By default use the native widget cursor handling by returning false */
         protected virtual bool move_cursor (uint keyval, bool only_shift_pressed, bool control_pressed) {
@@ -3760,39 +3831,17 @@ namespace Files {
             }
         }
 
-        protected bool is_on_icon (int x, int y, ref bool on_helper) {
-            /* x and y must be in same coordinate system as used by the IconRenderer */
-            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
-            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
-            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
-            return on_icon;
-        }
-
-        /* Multi-select could be by rubberbanding or modified clicking. Returning false
-         * invokes the default widget handler.  IconView requires special handler */
-        protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
-
         protected abstract Gtk.Widget? create_view ();
         protected abstract void set_up_zoom_level ();
         protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
-        protected abstract uint get_event_position_info (double x, double y,
-                                                         out Gtk.TreePath? path,
-                                                         bool rubberband = false);
+        protected abstract uint get_event_position_info (double x, double y);
 
-        protected abstract void scroll_to_cell (Gtk.TreePath? path,
-                                                bool scroll_to_top);
-        protected abstract void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.CellRenderer renderer,
-                                                    bool start_editing,
-                                                    bool scroll_to_top);
-        // protected abstract void freeze_tree ();
-        // protected abstract void thaw_tree ();
-        // protected new abstract void freeze_child_notify ();
-        // protected new abstract void thaw_child_notify ();
-        protected abstract void connect_tree_signals ();
-        protected abstract void disconnect_tree_signals ();
+        protected abstract void scroll_to_file (Files.File file, bool scroll_to_top);
+        protected virtual void set_cursor_on_file
+            (Files.File file, bool start_editing, bool scroll_to_top
+        ) {}
+
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

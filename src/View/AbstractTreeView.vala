@@ -20,10 +20,17 @@ namespace Files {
     /* Implement common features of ColumnView and ListView */
     public abstract class AbstractTreeView : AbstractDirectoryView {
         protected Files.TreeView tree;
+        protected Files.IconRenderer icon_renderer;
+        protected Files.TextRenderer? name_renderer = null;
+        public Files.ListModel model { get; construct; }
         protected Gtk.TreeViewColumn name_column;
 
         protected AbstractTreeView (View.Slot _slot) {
             base (_slot);
+        }
+
+        construct {
+            model = new Files.ListModel ();
         }
 
         ~AbstractTreeView () {
@@ -60,8 +67,6 @@ namespace Files {
             tree.append_column (name_column);
         }
 
-        protected abstract void set_up_icon_renderer ();
-
         protected void set_up_view () {
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -81,10 +86,10 @@ namespace Files {
             name_renderer.yalign = 0.5f;
         }
 
-        protected override void connect_tree_signals () {
+        protected void connect_tree_signals () {
             tree.get_selection ().changed.connect (on_view_selection_changed);
         }
-        protected override void disconnect_tree_signals () {
+        protected void disconnect_tree_signals () {
             tree.get_selection ().changed.disconnect (on_view_selection_changed);
         }
 
@@ -110,15 +115,15 @@ namespace Files {
             }
         }
 
-        public override GLib.List<Gtk.TreePath> get_selected_paths () {
-            return tree.get_selection ().get_selected_rows (null);
-        }
+        // public virtual GLib.List<Gtk.TreePath> get_selected_paths () {
+        //     return tree.get_selection ().get_selected_rows (null);
+        // }
 
-        public override void highlight_path (Gtk.TreePath? path) {
+        public void highlight_path (Gtk.TreePath? path) {
             tree.set_drag_dest_row (path, Gtk.TreeViewDropPosition.INTO_OR_AFTER);
         }
 
-        public override Gtk.TreePath? get_path_at_pos (int x, int y) {
+        public Gtk.TreePath? get_path_at_pos (int x, int y) {
             Gtk.TreePath? path = null;
 
             if (x >= 0 && y >= 0 && tree.get_dest_row_at_pos (x, y, out path, null)) {
@@ -139,7 +144,7 @@ namespace Files {
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
          */
-        public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
+        public void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
                 var selection = tree.get_selection ();
                 selection.select_path (path);
@@ -159,13 +164,13 @@ namespace Files {
                 }
             }
         }
-        public override void unselect_path (Gtk.TreePath? path) {
+        public void unselect_path (Gtk.TreePath? path) {
             if (path != null) {
                 tree.get_selection ().unselect_path (path);
             }
         }
 
-        public override bool path_is_selected (Gtk.TreePath? path) {
+        public bool path_is_selected (Gtk.TreePath? path) {
             if (path != null) {
                 return tree.get_selection ().path_is_selected (path);
             } else {
@@ -173,7 +178,7 @@ namespace Files {
             }
         }
 
-        public override bool get_visible_range (out Gtk.TreePath? start_path,
+        public bool get_visible_range (out Gtk.TreePath? start_path,
                                                 out Gtk.TreePath? end_path) {
             start_path = null;
             end_path = null;
@@ -201,14 +206,12 @@ namespace Files {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (double x, double y,
-                                                         out Gtk.TreePath? path,
-                                                         bool rubberband = false) {
+        protected override uint get_event_position_info (double x, double y) {
             Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
             int cx, cy, depth;
-            path = null;
+            // Gtk.TreePath? path = null;
 
             // var ewindow = event.get_window ();
             // if (ewindow != tree.get_bin_window ()) {
@@ -224,7 +227,7 @@ namespace Files {
             var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
 
             tree.get_path_at_pos ((int)x, (int)y, out p, out c, out cx, out cy);
-            path = p;
+            click_path = p;
             depth = p != null ? p.get_depth () : 0;
 
             /* Determine whether on edge of cell and designate as blank */
@@ -268,7 +271,7 @@ namespace Files {
             return zone;
         }
 
-        protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
+        protected void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
             /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
             if (tree == null || path == null || slot == null || slot.directory == null ||
                 slot.directory.permission_denied || slot.directory.is_empty ()) {
@@ -279,7 +282,7 @@ namespace Files {
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
 
-        protected override void set_cursor_on_cell (Gtk.TreePath path,
+        protected void set_cursor_on_cell (Gtk.TreePath path,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
@@ -287,7 +290,7 @@ namespace Files {
             tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
         }
 
-        public override void set_view_cursor (Gtk.TreePath? path,
+        public void set_view_cursor (Gtk.TreePath? path,
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
@@ -317,7 +320,7 @@ namespace Files {
             }
         }
 
-        public override Gtk.TreePath? get_path_at_cursor () {
+        public Gtk.TreePath? get_path_at_cursor () {
             Gtk.TreePath? path;
             tree.get_cursor (out path, null);
             return path;
@@ -344,6 +347,80 @@ namespace Files {
         // protected override void thaw_child_notify () {
         //     tree.thaw_child_notify ();
         // }
+        //Moved from AbstractDirectoryView - only relevant to TreeView, not GridView
+
+        /* Support for keeping cursor position after delete */
+        // private Gtk.TreePath deleted_path;
+        protected Gtk.TreePath? click_path = null;
+        private Gtk.TreePath? hover_path = null;
+
+        protected bool is_on_icon (int x, int y, ref bool on_helper) {
+            /* x and y must be in same coordinate system as used by the IconRenderer */
+            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
+            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
+            return on_icon;
+        }
+
+
+        /* Multi-select could be by rubberbanding or modified clicking. Returning false
+         * invokes the default widget handler.  IconView requires special handler */
+        protected virtual bool handle_multi_select (Gtk.TreePath path) { return false; }
+
+        protected override void select_and_scroll_to_gof_file (Files.File file) {
+            Gtk.TreeIter iter;
+            if (!model.get_first_iter_for_file (file, out iter)) {
+                return; /* file not in model */
+            }
+
+            var path = model.get_path (iter);
+            set_view_cursor (path, false, true, true);
+        }
+
+        public override void select_gof_file (Files.File file) {
+            Gtk.TreeIter? iter;
+            if (!model.get_first_iter_for_file (file, out iter)) {
+                return; /* file not in model */
+            }
+
+            var path = model.get_path (iter);
+            set_view_cursor (path, false, true, false);
+        }
+
+        protected override uint select_gof_files (
+            Gee.LinkedList<Files.File> files_to_select, GLib.File? focus_file
+        ) {
+            Gtk.TreeIter? iter;
+            var count = 0;
+            foreach (Files.File f in files_to_select) {
+                /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
+                if (model.get_first_iter_for_file (f, out iter)) {
+                    count++;
+                    var path = model.get_path (iter);
+                    /* Cursor follows if matches focus location*/
+                    select_path (path, focus_file != null && focus_file.equal (f.location));
+                }
+            }
+
+            return count;
+        }
+
+        // protected override ZoomLevel get_normal_zoom_level () {}
+
+        protected override void remove_gof_file (Files.File file) {}
+        protected override void scroll_to_file (Files.File file, bool scroll_to_top) {}
+        protected override void invert_selection () {}
+        protected override void clear () {}
+        protected override void resort () {}
+        protected override void add_file (Files.File file, Directory dir, bool select = true, bool sorted = false) {}
+        // protected abstract void freeze_tree ();
+        // protected abstract void thaw_tree ();
+        // protected new abstract void freeze_child_notify ();
+        // protected new abstract void thaw_child_notify ();
+        // protected abstract void connect_tree_signals ();
+        // protected abstract void disconnect_tree_signals ();
+
+        protected virtual void set_up_icon_renderer () {}
     }
 
     protected class TreeView : Gtk.TreeView {
@@ -387,5 +464,7 @@ namespace Files {
         //             return false; // Pass event to Window handler.
         //     }
         // }
+
+
     }
 }

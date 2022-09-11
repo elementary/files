@@ -18,7 +18,6 @@
 
 namespace Files {
     public class ListView : AbstractTreeView {
-
         /* We wait two seconds after row is collapsed to unload the subdirectory */
         const int COLLAPSE_TO_UNLOAD_DELAY = 2;
 
@@ -44,11 +43,11 @@ namespace Files {
             };
         }
 
-        private void connect_additional_signals () {
-            tree.row_expanded.connect (on_row_expanded);
-            tree.row_collapsed.connect (on_row_collapsed);
-            model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
-        }
+        // private void connect_additional_signals () {
+        //     tree.row_expanded.connect (on_row_expanded);
+        //     tree.row_collapsed.connect (on_row_collapsed);
+        //     model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
+        // }
 
         private void append_extra_tree_columns () {
             int fnc = ListModel.ColumnID.FILENAME;
@@ -204,7 +203,7 @@ namespace Files {
             tree.set_headers_visible (true);
             tree.set_rubber_banding (true);
             append_extra_tree_columns ();
-            connect_additional_signals ();
+            // connect_additional_signals ();
 
             return tree as Gtk.Widget;
         }
@@ -257,43 +256,44 @@ namespace Files {
             }
         }
 
-        protected override bool expand_collapse (Gtk.TreePath? path) {
-            if (tree.is_row_expanded (path)) {
-                tree.collapse_row (path);
-            } else {
-                tree.expand_row (path, false);
-            }
+        protected override bool expand_collapse (Files.File dir) {
+            //TODO get path
+            // if (tree.is_row_expanded (path)) {
+            //     tree.collapse_row (path);
+            // } else {
+            //     tree.expand_row (path, false);
+            // }
 
             return true;
         }
 
-        protected override bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
-            Gtk.TreePath? path = model.get_path (iter);
-            Gtk.TreeIter start = iter;
+        // protected override bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
+        //     Gtk.TreePath? path = model.get_path (iter);
+        //     Gtk.TreeIter start = iter;
 
-            if (path == null) {
-                return false;
-            }
+        //     if (path == null) {
+        //         return false;
+        //     }
 
-            if (recurse && tree.is_row_expanded (path)) {
-                Gtk.TreeIter? child_iter = null;
-                if (model.iter_children (out child_iter, iter)) {
-                    iter = child_iter;
-                    return true;
-                }
-            }
+        //     if (recurse && tree.is_row_expanded (path)) {
+        //         Gtk.TreeIter? child_iter = null;
+        //         if (model.iter_children (out child_iter, iter)) {
+        //             iter = child_iter;
+        //             return true;
+        //         }
+        //     }
 
-            if (model.iter_next (ref iter)) {
-                return true;
-            } else {
-                Gtk.TreeIter? parent = null;
-                if (model.iter_parent (out parent, start)) {
-                    iter = parent;
-                    return get_next_visible_iter (ref iter, false);
-                }
-            }
-            return false;
-        }
+        //     if (model.iter_next (ref iter)) {
+        //         return true;
+        //     } else {
+        //         Gtk.TreeIter? parent = null;
+        //         if (model.iter_parent (out parent, start)) {
+        //             iter = parent;
+        //             return get_next_visible_iter (ref iter, false);
+        //         }
+        //     }
+        //     return false;
+        // }
 
         public override void cancel () {
             cancel_file_timeout ();

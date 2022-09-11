@@ -279,7 +279,7 @@ public class Files.View.Slot : Files.AbstractSlot {
                 break;
 
             case ViewMode.ICON:
-                dir_view = new Files.IconView (this);
+                dir_view = new Files.GridView (this);
                 break;
 
             default:
