@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2020 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2022 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -39,27 +39,16 @@ namespace Files {
 
         construct {
             model.has_child = true;
+            model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
+
             tree.set_show_expanders (true);
             tree.set_headers_visible (true);
             tree.set_rubber_banding (true);
-            append_extra_tree_columns ();
-        }
+            tree.row_expanded.connect (on_row_expanded);
+            tree.row_collapsed.connect (on_row_collapsed);
 
-        // protected override void set_up_icon_renderer () {
-        //     icon_renderer = new IconRenderer (ViewMode.LIST) {
-        //         lpad = 6
-        //     };
-        // }
-
-        // private void connect_additional_signals () {
-        //     tree.row_expanded.connect (on_row_expanded);
-        //     tree.row_collapsed.connect (on_row_collapsed);
-        //     model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
-        // }
-
-        private void append_extra_tree_columns () {
+            /* Set up columns in addition to filename (set up by parent class) */
             int fnc = ColumnID.FILENAME;
-
             int preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
             for (int k = fnc; k < ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
@@ -90,7 +79,16 @@ namespace Files {
 
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
             set_path_expanded (path, true);
-            add_subdirectory_at_path (path);
+            /* If a new subdirectory is loaded, connect it, load it
+             * and add it to the list of subdirectories */
+            Files.Directory? dir = null;
+            if (model.get_subdirectory (path, out dir)) { // Returns true if dir non null
+                connect_directory_handlers (dir);
+                dir.init ();
+                /* Maintain our own reference on dir, independent of the model */
+                /* Also needed for updating show hidden status */
+                loaded_subdirectories.prepend (dir);
+            }
         }
 
         private void on_row_collapsed (Gtk.TreeIter iter, Gtk.TreePath path) {
@@ -100,7 +98,13 @@ namespace Files {
 
         private void on_model_subdirectory_unloaded (Directory dir) {
             /* ensure the model and our list of subdirectories are kept in sync */
-            remove_subdirectory (dir);
+            if (dir != null) {
+                disconnect_directory_handlers (dir);
+                /* Release our reference on dir */
+                loaded_subdirectories.remove (dir);
+            } else {
+                warning ("List View: directory null in remove_subdirectory");
+            }
         }
 
         private void schedule_unload_subdirectory_at_path (Gtk.TreePath path) {
@@ -210,7 +214,7 @@ namespace Files {
         //     tree.set_headers_visible (true);
         //     tree.set_rubber_banding (true);
         //     append_extra_tree_columns ();
-        //     // connect_additional_signals ();
+
 
         // }
 
@@ -239,30 +243,7 @@ namespace Files {
             return (ZoomLevel)zoom;
         }
 
-        private void add_subdirectory_at_path (Gtk.TreePath path) {
-            /* If a new subdirectory is loaded, connect it, load it
-             * and add it to the list of subdirectories */
-            Files.Directory? dir = null;
-            if (model.get_subdirectory (path, out dir)) { // Returns true if dir non null
-                connect_directory_handlers (dir);
-                dir.init ();
-                /* Maintain our own reference on dir, independent of the model */
-                /* Also needed for updating show hidden status */
-                loaded_subdirectories.prepend (dir);
-            }
-        }
-
-        private void remove_subdirectory (Directory? dir) {
-            if (dir != null) {
-                disconnect_directory_handlers (dir);
-                /* Release our reference on dir */
-                loaded_subdirectories.remove (dir);
-            } else {
-                warning ("List View: directory null in remove_subdirectory");
-            }
-        }
-
-        protected override bool expand_collapse (Files.File dir) {
+        protected bool expand_collapse (Files.File dir) {
             //TODO get path
             // if (tree.is_row_expanded (path)) {
             //     tree.collapse_row (path);
@@ -305,7 +286,7 @@ namespace Files {
             cancel_file_timeout ();
             base.cancel ();
             loaded_subdirectories.@foreach ((dir) => {
-                remove_subdirectory (dir);
+                on_model_subdirectory_unloaded (dir);
             });
         }
     }

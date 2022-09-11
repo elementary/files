@@ -1,5 +1,5 @@
 /*
-* Copyright 2015-2020 elementary, Inc. (https://elementary.io)
+* Copyright 2015-2022 elementary, Inc. (https://elementary.io)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -20,7 +20,7 @@
 */
 
 /* Implementations of AbstractDirectoryView are
-     * IconView
+     * GridView
      * ListView
      * ColumnView
 */
@@ -3156,252 +3156,8 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
         }
 
 
-        //TODO Use EventControllers
-        // protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
-        //     if (renaming) {
-        //         /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
-        //         name_renderer.end_editing (false);
-        //     }
-
-        //     cancel_hover (); /* cancel overlay statusbar cancellables */
-
-        //     /* Ignore if second button pressed before first released - not permitted during rubberbanding.
-        //      * Multiple click produces an event without corresponding release event so do not block that.
-        //      */
-        //     var type = event.get_event_type ();
-        //     if (dnd_disabled && type == Gdk.EventType.BUTTON_PRESS) {
-        //         return true;
-        //     }
-
-        //     grab_focus ();
-
-        //     Gtk.TreePath? path = null;
-        //     /* Remember position of click for detecting drag motion*/
-        //     event.get_coords (out drag_x, out drag_y);
-        //     uint button;
-        //     event.get_button (out button);
-        //     //Only rubberband with primary button
-        //     click_zone = get_event_position_info (event, out path, button == Gdk.BUTTON_PRIMARY);
-        //     click_path = path;
-
-        //     Gdk.ModifierType state;
-        //     event.get_state (out state);
-        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
-        //     bool no_mods = (mods == 0);
-        //     bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
-        //     bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-        //     bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
-        //     bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-        //     bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
-        //     bool path_selected = (path != null ? path_is_selected (path) : false);
-        //     bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-        //     bool double_click_event = (type == Gdk.EventType.@2BUTTON_PRESS);
-        //     /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
-        //      * dragging on blank areas
-        //      */
-        //     block_drag_and_drop ();
-
-        //     /* Handle un-modified clicks or control-clicks here else pass on. */
-        //     if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
-        //         return false;
-        //     }
-
-        //     bool result = false; // default false so events get passed to Window
-        //     should_activate = false;
-        //     should_deselect = false;
-        //     should_select = false;
-        //     should_scroll = true;
-
-        //     /* Handle all selection and deselection explicitly in the following switch statement */
-        //     switch (button) {
-        //         case Gdk.BUTTON_PRIMARY: // button 1
-        //             switch (click_zone) {
-        //                 case ClickZone.BLANK_NO_PATH:
-        //                 case ClickZone.INVALID:
-        //                     // Maintain existing selection by holding down modifier so we can multi-select
-        //                     // separate groups with rubberbanding.
-        //                     if (no_mods) {
-        //                         unselect_all ();
-        //                     }
-
-        //                     break;
-
-        //                 case ClickZone.BLANK_PATH:
-        //                 case ClickZone.ICON:
-        //                 case ClickZone.NAME:
-        //                     /* Control-click on selected item should deselect it on key release (unless
-        //                      * pointer moves) */
-        //                     should_deselect = only_control_pressed && path_selected;
-
-        //                     /* Determine whether should activate on key release (unless pointer moved)*/
-        //                     /* Only activate single files with unmodified button when not on blank unless double-clicked */
-        //                     if (no_mods && one_or_less) {
-        //                         should_activate = (on_directory && !on_blank) || double_click_event;
-        //                     }
-
-        //                     /* We need to decide whether to rubberband or drag&drop.
-        //                      * Rubberband if modifer pressed or if not on the icon and either
-        //                      * the item is unselected. */
-        //                     if (!no_mods || (on_blank && !path_selected)) {
-        //                         result = only_shift_pressed && handle_multi_select (path);
-        //                         // Have to select on button release because IconView, unlike TreeView,
-        //                         // will not both select and rubberband
-        //                         should_select = true;
-        //                     } else {
-        //                         if (no_mods && !path_selected) {
-        //                             unselect_all ();
-        //                         }
-
-        //                         select_path (path, true);
-        //                         unblock_drag_and_drop ();
-        //                         result = handle_primary_button_click (event, path);
-        //                     }
-
-        //                     update_selected_files_and_menu ();
-        //                     break;
-
-        //                 case ClickZone.HELPER:
-        //                     if (only_control_pressed || only_shift_pressed) { /* Treat like modified click on icon */
-        //                         result = only_shift_pressed && handle_multi_select (path);
-        //                     } else {
-        //                         if (path_selected) {
-        //                             /* Don't deselect yet, may drag */
-        //                             should_deselect = true;
-        //                         } else {
-        //                             select_path (path, true); /* Cursor follow and selection preserved */
-        //                         }
-
-        //                         unblock_drag_and_drop ();
-        //                         result = true; /* Prevent rubberbanding and deselection of other paths */
-        //                     }
-        //                     break;
-
-        //                 case ClickZone.EXPANDER:
-        //                     /* on expanders (if any) or xpad. Handle ourselves so that clicking
-        //                      * on xpad also expands/collapses row (accessibility). */
-        //                     result = expand_collapse (path);
-        //                     break;
-
-        //                 default:
-        //                     break;
-        //             }
-
-        //             break;
-
-        //         case Gdk.BUTTON_MIDDLE: // button 2
-        //             if (!path_is_selected (path)) {
-        //                 select_path (path, true);
-        //             }
-
-        //             should_activate = true;
-        //             unblock_drag_and_drop ();
-        //             result = true;
-
-        //             break;
-
-        //         case Gdk.BUTTON_SECONDARY: // button 3
-        //             switch (click_zone) {
-        //                 case ClickZone.BLANK_NO_PATH:
-        //                 case ClickZone.INVALID:
-        //                     unselect_all ();
-        //                     break;
-
-        //                 case ClickZone.BLANK_PATH:
-        //                     if (!path_selected && no_mods) {
-        //                         unselect_all (); // Show the background menu on unselected blank areas
-        //                     }
-
-        //                     break;
-
-        //                 case ClickZone.NAME:
-        //                 case ClickZone.ICON:
-        //                 case ClickZone.HELPER:
-        //                     if (!path_selected && no_mods) {
-        //                         unselect_all ();
-        //                     }
-
-        //                     select_path (path); /* Note: secondary click does not toggle selection */
-        //                     break;
-
-        //                 default:
-        //                     break;
-        //             }
-
-        //             /* Ensure selected files list and menu actions are updated before context menu shown */
-        //             update_selected_files_and_menu ();
-        //             unblock_drag_and_drop ();
-        //             start_drag_timer (event);
-
-        //             result = handle_secondary_button_click (event);
-        //             break;
-
-        //         default:
-        //             result = handle_default_button_click (event);
-        //             break;
-        //     }
-
-        //     return result;
-        // }
-
-        // protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
-        //     unblock_drag_and_drop ();
-        //     /* Ignore button release from click that started renaming.
-        //      * View may lose focus during a drag if another tab is hovered, in which case
-        //      * we do not want to refocus this view.
-        //      * Under both these circumstances, 'should_activate' will be false */
-        //     if (renaming || !view_has_focus ()) {
-        //         return true;
-        //     }
-
-        //     slot.active (should_scroll);
-
-        //     // Gtk.Widget widget = ;
-        //     double x, y;
-        //     uint button;
-        //     event.get_coords (out x, out y);
-        //     event.get_button (out button);
-        //     update_selected_files_and_menu ();
-        //     /* Only take action if pointer has not moved */
-        //     if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
-        //         if (should_activate) {
-        //             /* Need Idle else can crash with rapid clicking (avoid nested signals) */
-        //             Idle.add (() => {
-        //                 var flag = button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB : Files.OpenFlag.DEFAULT;
-        //                 activate_selected_items (flag);
-        //                 return GLib.Source.REMOVE;
-        //             });
-        //         } else if (should_deselect && click_path != null) {
-        //             unselect_path (click_path);
-        //             /* Only need to update selected files if changed by this handler */
-        //             Idle.add (() => {
-        //                 update_selected_files_and_menu ();
-        //                 return GLib.Source.REMOVE;
-        //             });
-        //         } else if (should_select && click_path != null) {
-        //             select_path (click_path);
-        //             /* Only need to update selected files if changed by this handler */
-        //             Idle.add (() => {
-        //                 update_selected_files_and_menu ();
-        //                 return GLib.Source.REMOVE;
-        //             });
-        //         } else if (button == Gdk.BUTTON_SECONDARY) {
-        //             show_context_menu (event);
-        //         }
-        //     }
-
-        //     should_activate = false;
-        //     should_deselect = false;
-        //     should_select = false;
-        //     click_path = null;
-        //     return false;
-        // }
-
         public abstract void change_zoom_level ();
-        // public virtual void change_zoom_level () {
-            // icon_renderer.zoom_level = zoom_level;
-            // name_renderer.zoom_level = zoom_level;
-            // view.style_updated ();
-        // }
+
 
         private void start_renaming_file (Files.File file) {
             // if (is_frozen) {
@@ -3526,7 +3282,7 @@ warning ("sort_col_s %s, sort_order_s %s", sort_col_s, sort_order_s);
             one_or_less = (selected_files == null || selected_files.next == null);
         }
 
-        protected virtual bool expand_collapse (Files.File dir) {return true;}
+        // protected virtual bool expand_collapse (Files.File dir) {return true;}
         // protected virtual bool expand_collapse (Gtk.TreePath? path) {
             // return true;
         // }
@@ -3563,24 +3319,7 @@ warning ("sort_col_s %s, sort_order_s %s", sort_col_s, sort_order_s);
         }
 
         protected abstract void invert_selection ();
-        // protected void invert_selection () {
-        //     GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
 
-        //     foreach (Gtk.TreePath p in get_selected_paths ()) {
-        //         selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
-        //     }
-
-        //     select_all ();
-
-        //     if (selected_row_refs != null) {
-        //         foreach (Gtk.TreeRowReference r in selected_row_refs) {
-        //             var p = r.get_path ();
-        //             if (p != null) {
-        //                 unselect_path (p);
-        //             }
-        //         }
-        //     }
-        // }
 
         public void select_all () {
             tree_select_all ();
