@@ -127,7 +127,7 @@ namespace Files {
         //     }
 
         //     if (iter != null) {
-        //         model.@get (iter, ListModel.ColumnID.FILE_COLUMN, out file, -1);
+        //         model.@get (iter, ColumnID.FILE_COLUMN, out file, -1);
         //     }
 
         //     if (file == null || !file.is_folder ()) {

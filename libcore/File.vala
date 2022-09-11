@@ -66,7 +66,7 @@ public class Files.File : GLib.Object {
     public int pix_scale = -1;
     public int width = 0;
     public int height = 0;
-    public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
+    public int sort_column_id = Files.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
     public bool is_hidden = false;
@@ -449,7 +449,7 @@ public class Files.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = Files.ListModel.ColumnID.from_string (
+                sort_column_id = Files.ColumnID.from_string (
                                      info.get_attribute_string ("metadata::marlin-sort-column-id")
                                  );
             }
@@ -930,24 +930,24 @@ public class Files.File : GLib.Object {
         //Always sort files of same type in ASCENDING order as the TreeView will reverse them if needed
         int result = 0;
         switch (sort_type) {
-            case Files.ListModel.ColumnID.FILENAME:
+            case Files.ColumnID.FILENAME:
                 result = compare_by_display_name (other);
                 break;
-            case Files.ListModel.ColumnID.SIZE:
+            case Files.ColumnID.SIZE:
                 result = compare_by_size (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case Files.ListModel.ColumnID.TYPE:
+            case Files.ColumnID.TYPE:
                 result = compare_by_type (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case Files.ListModel.ColumnID.MODIFIED:
+            case Files.ColumnID.MODIFIED:
                 result = compare_files_by_time (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);

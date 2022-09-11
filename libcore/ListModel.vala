@@ -17,48 +17,6 @@
  */
 
 public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
-    public enum ColumnID {
-        FILE_COLUMN,
-        COLOR,
-        PIXBUF,
-        FILENAME,
-        SIZE,
-        TYPE,
-        MODIFIED,
-        NUM_COLUMNS;
-
-        public static ColumnID from_string (string column_id) {
-            switch (column_id) {
-                case "name":
-                    return ColumnID.FILENAME;
-                case "size":
-                    return ColumnID.SIZE;
-                case "type":
-                    return ColumnID.TYPE;
-                case "modified":
-                    return ColumnID.MODIFIED;
-                default:
-                    return (ColumnID) (-1);
-            }
-        }
-
-        public unowned string to_string () {
-            switch (this) {
-                case ColumnID.FILENAME:
-                    return "name";
-                case ColumnID.SIZE:
-                    return "size";
-                case ColumnID.TYPE:
-                    return "type";
-                case ColumnID.MODIFIED:
-                    return "modified";
-                default:
-                    critical ("COLUMN id %u unsupported", this);
-                    return "";
-            }
-        }
-    }
-
     public bool show_hidden_files { get; set; default = false; }
 
     private enum PrivColumnID {

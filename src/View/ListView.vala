@@ -58,10 +58,10 @@ namespace Files {
         // }
 
         private void append_extra_tree_columns () {
-            int fnc = ListModel.ColumnID.FILENAME;
+            int fnc = ColumnID.FILENAME;
 
             int preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-            for (int k = fnc; k < ListModel.ColumnID.NUM_COLUMNS; k++) {
+            for (int k = fnc; k < ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
                     name_column.set_title (column_titles [0]);
@@ -77,7 +77,7 @@ namespace Files {
                         min_width = 24
                     };
 
-                    if (k == ListModel.ColumnID.SIZE || k == ListModel.ColumnID.MODIFIED) {
+                    if (k == ColumnID.SIZE || k == ColumnID.MODIFIED) {
                         renderer.@set ("xalign", 1.0f);
                     } else {
                         renderer.@set ("xalign", 0.0f);

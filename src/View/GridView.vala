@@ -62,10 +62,10 @@ namespace Files {
             // tree.pack_start (icon_renderer, false);
             // tree.pack_end (name_renderer, false);
 
-            // tree.add_attribute (name_renderer, "text", ListModel.ColumnID.FILENAME);
-            // tree.add_attribute (name_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
-            // tree.add_attribute (name_renderer, "background", ListModel.ColumnID.COLOR);
-            // tree.add_attribute (icon_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
+            // tree.add_attribute (name_renderer, "text", ColumnID.FILENAME);
+            // tree.add_attribute (name_renderer, "file", ColumnID.FILE_COLUMN);
+            // tree.add_attribute (name_renderer, "background", ColumnID.COLOR);
+            // tree.add_attribute (icon_renderer, "file", ColumnID.FILE_COLUMN);
 
             // connect_tree_signals ();
             // tree.realize.connect ((w) => {
@@ -246,7 +246,7 @@ namespace Files {
             //         Gtk.TreeIter iter;
             //         model.get_iter (out iter, path);
             //         string? text = null;
-            //         model.@get (iter, ListModel.ColumnID.FILENAME, out text);
+            //         model.@get (iter, ColumnID.FILENAME, out text);
 
             //         text_renderer.set_up_layout (text, area.width);
 

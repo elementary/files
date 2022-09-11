@@ -31,6 +31,11 @@ namespace Files {
 
         construct {
             model = new Files.ListModel ();
+            model.sort_column_changed.connect (() => {
+                model.get_sort_column_id (out sort_column_id, out sort_order);
+                on_sort_column_changed ();
+            });
+
             tree = new Files.TreeView () {
                 model = model,
                 headers_visible = false,
@@ -60,23 +65,23 @@ namespace Files {
             };
 
             name_column = new Gtk.TreeViewColumn () {
-                sort_column_id = Files.ListModel.ColumnID.FILENAME,
+                sort_column_id = Files.ColumnID.FILENAME,
                 expand = true,
                 resizable = true
             };
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,
-                                        "file", Files.ListModel.ColumnID.FILE_COLUMN);
+                                        "file", Files.ColumnID.FILE_COLUMN);
 
             name_column.pack_start (name_renderer, true);
             name_column.set_attributes (name_renderer,
-                                        "text", Files.ListModel.ColumnID.FILENAME,
-                                        "file", Files.ListModel.ColumnID.FILE_COLUMN,
-                                        "background", Files.ListModel.ColumnID.COLOR);
+                                        "text", Files.ColumnID.FILENAME,
+                                        "file", Files.ColumnID.FILE_COLUMN,
+                                        "background", Files.ColumnID.COLOR);
 
             name_column.pack_start (emblem_renderer, false);
             name_column.set_attributes (emblem_renderer,
-                                        "file", Files.ListModel.ColumnID.FILE_COLUMN);
+                                        "file", Files.ColumnID.FILE_COLUMN);
 
             tree.append_column (name_column);
 
@@ -97,7 +102,6 @@ namespace Files {
         protected override void add_file (
             Files.File file, Directory dir, bool select = true, bool sorted = false
         ) {
-warning ("add file %s", file.uri);
             model.add_file (file, dir);
 
             if (select) { /* This true once view finished loading */
@@ -111,15 +115,6 @@ warning ("add file %s", file.uri);
             }
         }
 
-        // protected void add_gof_file_to_selection (Files.File file) {
-        //     Gtk.TreeIter iter;
-        //     if (!model.get_first_iter_for_file (file, out iter)) {
-        //         return; /* file not in model */
-        //     }
-
-        //     var path = model.get_path (iter);
-        //     select_path (path); /* Cursor does not follow */
-        // }
         protected void connect_tree_signals () {
             tree.get_selection ().changed.connect (on_view_selection_changed);
         }
@@ -211,7 +206,7 @@ warning ("add file %s", file.uri);
             GLib.List<Files.File> list = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 Files.File? file; /* can be null if click on blank row in list view */
-                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file, -1);
+                model.@get (iter, Files.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null) {
                     list.prepend ((owned) file);
                     count++;
@@ -349,15 +344,15 @@ warning ("add file %s", file.uri);
         /* These two functions accelerate the loading of Views especially for large folders
          * Views are not displayed until fully loaded */
         // protected override void freeze_tree () {
-            // tree.freeze_child_notify ();
-            // tree_frozen = true;
+        //     tree.freeze_child_notify ();
+        //     tree_frozen = true;
         // }
 
         // protected override void thaw_tree () {
-            // if (tree_frozen) {
-            //     tree.thaw_child_notify ();
-            //     tree_frozen = false;
-            // }
+        //     if (tree_frozen) {
+        //         tree.thaw_child_notify ();
+        //         tree_frozen = false;
+        //     }
         // }
 
         // protected override void freeze_child_notify () {

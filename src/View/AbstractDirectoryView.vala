@@ -310,7 +310,7 @@ warning ("setting scrolled window child");
             // model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             // model.row_deleted.connect (on_row_deleted);
             // /* Sort order of model is set after loading */
-            // model.sort_column_changed.connect (on_sort_column_changed);
+
 
             // set_up_directory_view ();
         }
@@ -1169,14 +1169,14 @@ warning ("setting scrolled window child");
             prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
-        private int sort_column_id = Files.ListModel.ColumnID.FILENAME;
-        private Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
+        protected int sort_column_id = Files.ColumnID.FILENAME;
+        protected Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
         private void set_sort (string? col_name, bool reverse = false) {
-
+warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
             // if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
-                    // sort_column_id = Files.ListModel.ColumnID.from_string (col_name);
-                    sort_column_id = Files.ListModel.ColumnID.from_string (col_name);
+                    // sort_column_id = Files.ColumnID.from_string (col_name);
+                    sort_column_id = Files.ColumnID.from_string (col_name);
                 }
 
                 if (reverse) {
@@ -1360,8 +1360,8 @@ warning ("setting scrolled window child");
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
-                    // model.set_sort_column_id (Files.ListModel.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
-                    sort_column_id = Files.ListModel.ColumnID.MODIFIED;
+                    // model.set_sort_column_id (Files.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
+                    sort_column_id = Files.ColumnID.MODIFIED;
                     sort_order = slot.directory.file.sort_order;
                 } else if (slot.directory.file.info != null) {
                     sort_column_id = slot.directory.file.sort_column_id;
@@ -2316,7 +2316,7 @@ warning ("setting scrolled window child");
             // Gtk.SortType sort_order;
 
             // if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-            //     GLib.Variant val = new GLib.Variant.string (((Files.ListModel.ColumnID)sort_column_id).to_string ());
+            //     GLib.Variant val = new GLib.Variant.string (((Files.ColumnID)sort_column_id).to_string ());
             //     action_set_state (background_actions, "sort-by", val);
             //     val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
             //     action_set_state (background_actions, "reverse", val);
@@ -3084,7 +3084,7 @@ warning ("setting scrolled window child");
             //     Gtk.TreeIter? iter = null;
             //     model.get_iter (out iter, path);
             //     Files.File? file = null;
-            //     model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
+            //     model.@get (iter, Files.ColumnID.FILE_COLUMN, out file);
             //     int start_offset= 0, end_offset = -1;
             //     /* Select whole name if the file is a folder, otherwise do not select the extension */
             //     if (!file.is_folder ()) {
@@ -3128,7 +3128,7 @@ warning ("setting scrolled window child");
             //     model.get_iter (out iter, path);
 
             //     Files.File? file = null;
-            //     model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file);
+            //     model.@get (iter, Files.ColumnID.FILE_COLUMN, out file);
 
             //     /* Only rename if name actually changed */
             //     /* Because Files.File.rename does not work correctly for remote files we handle ourselves */
@@ -3518,9 +3518,7 @@ warning ("setting scrolled window child");
         }
 
         protected void on_sort_column_changed () {
-            int sort_column_id = 0;
-            Gtk.SortType sort_order = 0;
-
+warning ("on sort col changed");
             /* Setting file attributes fails when root */
             if (Files.is_admin ()) {
                 return;
@@ -3539,8 +3537,9 @@ warning ("setting scrolled window child");
 
             var info = new GLib.FileInfo ();
             var dir = slot.directory;
-            unowned string sort_col_s = ((Files.ListModel.ColumnID) sort_column_id).to_string ();
+            unowned string sort_col_s = ((Files.ColumnID) sort_column_id).to_string ();
             unowned string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
+warning ("sort_col_s %s, sort_order_s %s", sort_col_s, sort_order_s);
             info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
             info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
 

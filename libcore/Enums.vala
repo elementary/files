@@ -19,6 +19,49 @@
  ***/
 
 namespace Files {
+    public enum ColumnID {
+        FILE_COLUMN,
+        COLOR,
+        PIXBUF,
+        FILENAME,
+        SIZE,
+        TYPE,
+        MODIFIED,
+        NUM_COLUMNS;
+
+        public static ColumnID from_string (string column_id) {
+            switch (column_id) {
+                case "name":
+                    return ColumnID.FILENAME;
+                case "size":
+                    return ColumnID.SIZE;
+                case "type":
+                    return ColumnID.TYPE;
+                case "modified":
+                    return ColumnID.MODIFIED;
+                default:
+                    critical ("invalid sort name %s", column_id);
+                    return ColumnID.FILENAME;
+            }
+        }
+
+        public unowned string to_string () {
+            switch (this) {
+                case ColumnID.FILENAME:
+                    return "name";
+                case ColumnID.SIZE:
+                    return "size";
+                case ColumnID.TYPE:
+                    return "type";
+                case ColumnID.MODIFIED:
+                    return "modified";
+                default:
+                    critical ("COLUMN id %u unsupported", this);
+                    return "";
+            }
+        }
+    }
+
     // Indicates where on a view a click occurred
     protected enum ClickZone {
         EXPANDER,
