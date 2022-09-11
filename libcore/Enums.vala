@@ -19,6 +19,17 @@
  ***/
 
 namespace Files {
+    // Indicates where on a view a click occurred
+    protected enum ClickZone {
+        EXPANDER,
+        HELPER,
+        ICON,
+        NAME,
+        BLANK_PATH,
+        BLANK_NO_PATH,
+        INVALID
+    }
+
     public enum WindowState {
         NORMAL,
         TILED_LEFT,

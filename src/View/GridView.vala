@@ -19,9 +19,9 @@
 namespace Files {
     public class GridView : AbstractDirectoryView {
         public Gtk.GridView gridview { get; construct; }
-         public ListStore list_model { get; set; }
-         public Gtk.SignalListItemFactory item_factory { get; set; }
-         public Gtk.MultiSelection multiselection { get; set; }
+        public ListStore list_model { get; set; }
+        public Gtk.SignalListItemFactory item_factory { get; set; }
+        public Gtk.MultiSelection multiselection { get; set; }
         /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
         protected bool previous_selection_was_linear = false;
         // protected Gtk.TreePath? previous_linear_selection_path = null;

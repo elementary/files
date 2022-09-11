@@ -54,7 +54,10 @@ namespace Files {
                 double_click_timeout_id = 0;
                 is_frozen = false;
 
-                if (source_drag_file_list == null && selection_only_contains_folders (get_selected_files ())) {
+                // if (source_drag_file_list == null && selection_only_contains_folders (get_selected_files ())) {
+                //     activate_selected_items ();
+                // }
+                if (selection_only_contains_folders (get_selected_files ())) {
                     activate_selected_items ();
                 }
             }
