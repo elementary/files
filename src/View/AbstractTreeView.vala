@@ -44,22 +44,27 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
         tree = new TreeView () {
             model = model,
             headers_visible = false,
-            rubber_banding = true,
             activate_on_single_click = true
         };
 
-        tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+        var selection = tree.get_selection ();
+        selection.set_mode (Gtk.SelectionMode.MULTIPLE);
+        selection.changed.connect (() => {
+        warning ("selection changed - %u selected", selection.get_selected_rows (null).length ());
+        });
+
+        // Does not currently work due to upstream issue
+        // https://gitlab.gnome.org/GNOME/gtk/-/issues/3985
+        tree.set_rubber_banding (true);
 
         tree.row_activated.connect ((path, column) => {
             Gtk.TreeIter? iter;
             model.get_iter (out iter, path);
             model.@get (iter, Files.ColumnID.FILE_COLUMN, out active_file, -1);
-            if (active_file.is_directory) {
-            warning ("directory");
+            // Active directories with single click on name column
+            if (active_file.is_directory && column == name_column) {
                 activate_file (active_file);
                 active_file = null;
-            } else {
-            warning ("other");
             }
         });
 
@@ -108,7 +113,7 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
         tree.realize.connect ((w) => {
             tree.grab_focus ();
             tree.columns_autosize ();
-            tree.zoom_level = zoom_level;
+            // tree.zoom_level = zoom_level;
         });
 
         view = tree;
@@ -187,10 +192,12 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
     }
 
     public override void tree_select_all () {
+warning ("select all");
         tree.get_selection ().select_all ();
     }
 
     public override void tree_unselect_all () {
+warning ("unselect all");
         tree.get_selection ().unselect_all ();
     }
 
@@ -218,6 +225,7 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
         }
     }
     public void unselect_path (Gtk.TreePath? path) {
+warning ("UNSELECT PATH");
         if (path != null) {
             tree.get_selection ().unselect_path (path);
         }
@@ -400,6 +408,7 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
                                      bool start_editing,
                                      bool select,
                                      bool scroll_to_top) {
+warning ("set view cursor - select %s", select.to_string ());
         if (path == null) {
             return;
         }
@@ -751,20 +760,20 @@ public abstract class Files.AbstractTreeView : AbstractDirectoryView {
 
 
     protected class TreeView : Gtk.TreeView { // Not a final class
-        private ZoomLevel _zoom_level = ZoomLevel.INVALID;
-        public ZoomLevel zoom_level {
-            set {
-                if (_zoom_level == value || !get_realized ()) {
-                    return;
-                } else {
-                    _zoom_level = value;
-                }
-            }
+        // private ZoomLevel _zoom_level = ZoomLevel.INVALID;
+        // public ZoomLevel zoom_level {
+        //     set {
+        //         if (_zoom_level == value || !get_realized ()) {
+        //             return;
+        //         } else {
+        //             _zoom_level = value;
+        //         }
+        //     }
 
-            get {
-                return _zoom_level;
-            }
-        }
+        //     get {
+        //         return _zoom_level;
+        //     }
+        // }
 
         //TODO Use EventControllers
         // /* Override base class in order to disable the Gtk.TreeView local search functionality */
