@@ -36,6 +36,10 @@ namespace Files {
                 on_sort_column_changed ();
             });
 
+            model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
+            model.row_deleted.connect (on_row_deleted);
+            // /* Sort order of model is set after loading */
+
             tree = new Files.TreeView () {
                 model = model,
                 headers_visible = false,
@@ -113,6 +117,13 @@ namespace Files {
                 var path = model.get_path (iter);
                 select_path (path); /* Cursor does not follow */
             }
+        }
+
+        protected override void clear () {
+            model.row_deleted.disconnect (on_row_deleted);
+            model.clear ();
+            all_selected = false;
+            model.row_deleted.connect (on_row_deleted);
         }
 
         protected void connect_tree_signals () {
@@ -420,12 +431,26 @@ namespace Files {
             return count;
         }
 
+        public override void focus_first_for_empty_selection (bool select) {
+            if (selected_files == null) {
+                set_cursor_timeout_id = Idle.add_full (GLib.Priority.LOW, () => {
+                    if (!tree_frozen) {
+                        set_cursor_timeout_id = 0;
+                        set_view_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
+                        return GLib.Source.REMOVE;
+                    } else {
+                        return GLib.Source.CONTINUE;
+                    }
+                });
+            }
+        }
+
         // protected override ZoomLevel get_normal_zoom_level () {}
 
         protected override void remove_gof_file (Files.File file) {}
         protected override void scroll_to_file (Files.File file, bool scroll_to_top) {}
         protected override void invert_selection () {}
-        protected override void clear () {}
+
         protected override void resort () {}
 
         // protected abstract void freeze_tree ();
@@ -438,7 +463,7 @@ namespace Files {
         // protected virtual void set_up_icon_renderer () {}
     }
 
-    protected class TreeView : Gtk.TreeView {
+    protected class TreeView : Gtk.TreeView { // Not a final class
         private ZoomLevel _zoom_level = ZoomLevel.INVALID;
         public ZoomLevel zoom_level {
             set {
