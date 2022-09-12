@@ -49,9 +49,9 @@ public abstract class Files.AbstractTreeView : Files.AbstractDirectoryView {
 
         var selection = tree.get_selection ();
         selection.set_mode (Gtk.SelectionMode.MULTIPLE);
-        selection.changed.connect (() => {
-        warning ("selection changed - %u selected", selection.get_selected_rows (null).length ());
-        });
+        // selection.changed.connect (() => {
+        // warning ("selection changed - %u selected", selection.get_selected_rows (null).length ());
+        // });
 
         // Does not currently work due to upstream issue
         // https://gitlab.gnome.org/GNOME/gtk/-/issues/3985
@@ -169,12 +169,10 @@ public abstract class Files.AbstractTreeView : Files.AbstractDirectoryView {
 
 
     public override void change_zoom_level () {
-warning ("change zoom level");
         model.icon_size = icon_size;
         icon_renderer.zoom_level = zoom_level;
         name_renderer.zoom_level = zoom_level;
         tree.columns_autosize ();
-        tree.set_property ("zoom-level", zoom_level);
     }
 
     public void highlight_path (Gtk.TreePath? path) {
@@ -223,7 +221,7 @@ warning ("change zoom level");
         }
     }
     public void unselect_path (Gtk.TreePath? path) {
-warning ("UNSELECT PATH");
+// warning ("UNSELECT PATH");
         if (path != null) {
             tree.get_selection ().unselect_path (path);
         }
@@ -325,14 +323,6 @@ warning ("UNSELECT PATH");
         int cx, cy, depth;
         // Gtk.TreePath? path = null;
 
-        // var ewindow = event.get_window ();
-        // if (ewindow != tree.get_bin_window ()) {
-        //     return ClickZone.INVALID;
-        // }
-
-        // double x, y;
-        // event.get_coords (out x, out y);
-
         /* Determine whether there whitespace at this point.  Note: this function returns false when the
          * position is on the edge of the cell, even though this appears to be blank. We
          * deal with this below. */
@@ -406,7 +396,6 @@ warning ("UNSELECT PATH");
                                      bool start_editing,
                                      bool select,
                                      bool scroll_to_top) {
-warning ("set view cursor - select %s", select.to_string ());
         if (path == null) {
             return;
         }
@@ -439,27 +428,7 @@ warning ("set view cursor - select %s", select.to_string ());
         return path;
     }
 
-    /* These two functions accelerate the loading of Views especially for large folders
-     * Views are not displayed until fully loaded */
-    // protected override void freeze_tree () {
-    //     tree.freeze_child_notify ();
-    //     tree_frozen = true;
-    // }
 
-    // protected override void thaw_tree () {
-    //     if (tree_frozen) {
-    //         tree.thaw_child_notify ();
-    //         tree_frozen = false;
-    //     }
-    // }
-
-    // protected override void freeze_child_notify () {
-    //     tree.freeze_child_notify ();
-    // }
-
-    // protected override void thaw_child_notify () {
-    //     tree.thaw_child_notify ();
-    // }
     //Moved from AbstractDirectoryView - only relevant to TreeView, not GridView
 
     /* Support for keeping cursor position after delete */
@@ -500,14 +469,78 @@ warning ("set view cursor - select %s", select.to_string ());
         set_view_cursor (path, false, true, false);
     }
 
+    protected override List<Files.File> get_visible_files () {
+        Gtk.TreePath start_path, end_path, path;
+        Gtk.TreePath sp, ep;
+        Gtk.TreeIter iter;
+        bool iter_is_valid;
+        Files.File? file;
+        GLib.List<Files.File> visible_files = null;
+        // uint actually_visible = 0;
 
-    // protected override ZoomLevel get_normal_zoom_level () {}
+        if (get_visible_range (out start_path, out end_path)) {
+            sp = start_path;
+            ep = end_path;
+
+            /* To improve performance for large folders we thumbnail files on either side of visible region
+             * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
+             * redraws necessary when scrolling */
+            int count = 50;
+            while (start_path.prev () && count > 0) {
+                count--;
+            }
+
+            count = 50;
+            while (count > 0) {
+                end_path.next ();
+                count--;
+            }
+
+            /* iterate over the range to collect all files */
+            iter_is_valid = model.get_iter (out iter, start_path);
+            while (iter_is_valid && thumbnail_source_id > 0) {
+                file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
+                path = model.get_path (iter);
+                visible_files.prepend (file);
+                /* check if we've reached the end of the visible range */
+                if (path.compare (end_path) != 0) {
+                    iter_is_valid = model.iter_next (ref iter);
+                } else {
+                    iter_is_valid = false;
+                }
+            }
+        }
+
+        return visible_files;
+    }
 
     protected override void add_gof_file_to_selection (Files.File file) {}
     protected override void remove_gof_file (Files.File file) {}
     protected override void scroll_to_file (Files.File file, bool scroll_to_top) {}
-
     protected override void resort () {}
+
+    /* These two functions accelerate the loading of Views especially for large folders
+     * Views are not displayed until fully loaded
+     * May not be need for Gtk4 widgets */
+    // protected override void freeze_tree () {
+    //     tree.freeze_child_notify ();
+    //     tree_frozen = true;
+    // }
+
+    // protected override void thaw_tree () {
+    //     if (tree_frozen) {
+    //         tree.thaw_child_notify ();
+    //         tree_frozen = false;
+    //     }
+    // }
+
+    // protected override void freeze_child_notify () {
+    //     tree.freeze_child_notify ();
+    // }
+
+    // protected override void thaw_child_notify () {
+    //     tree.thaw_child_notify ();
+    // }
 
     // protected abstract void freeze_tree ();
     // protected abstract void thaw_tree ();
@@ -515,8 +548,6 @@ warning ("set view cursor - select %s", select.to_string ());
     // protected new abstract void thaw_child_notify ();
     // protected abstract void connect_tree_signals ();
     // protected abstract void disconnect_tree_signals ();
-
-    // protected virtual void set_up_icon_renderer () {}
 
 
     protected class TreeView : Gtk.TreeView { // Not a final class

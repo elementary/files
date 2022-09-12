@@ -130,19 +130,16 @@
         protected unowned Gtk.RecentManager recent;
 
         /* Thumnail / Zoom / Icon Size handling */
-
-
-
         private double total_delta_y = 0.0; // Smooth scrolling support
-        private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
+        protected ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
         protected bool large_thumbnails = false;
 
         /* support for generating thumbnails */
-        int thumbnail_request = -1;
-        uint thumbnail_source_id = 0;
-        uint freeze_source_id = 0;
+        protected int thumbnail_request = -1;
+        protected uint thumbnail_source_id = 0;
+        protected uint freeze_source_id = 0;
 
         /* Free space signal support */
         uint add_remove_file_timeout_id = 0;
@@ -175,7 +172,7 @@
         private bool selected_files_invalid = true;
 
         /* Various state flags */
-        private bool _is_frozen = false;
+        protected bool _is_frozen = false;
         private bool in_trash = false;
         private bool in_network_root = false;
         protected bool is_writable = false;
@@ -283,6 +280,7 @@
         }
 
         construct {
+warning ("construct ADV");
             scrolled_window = new Gtk.ScrolledWindow () {
                 hexpand = true,
                 vexpand = true
@@ -313,7 +311,6 @@
 
             var app = (Files.Application)(GLib.Application.get_default ());
             recent = app.get_recent_manager ();
-
 
             /* Set up actions */
             selection_actions = new GLib.SimpleActionGroup ();
@@ -349,6 +346,7 @@
             realize.connect (() => {
                 clipboard.changed.connect (on_clipboard_changed);
                 on_clipboard_changed ();
+                set_up_zoom_level ();
             });
 
             notify["renaming"].connect (() => {
@@ -371,8 +369,8 @@
                 "hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET
             );
 
-            set_up_zoom_level ();
             connect_directory_handlers (slot.directory);
+warning ("done construct");
         }
 
 
@@ -2322,6 +2320,7 @@ warning ("zoom changed - icon size %u ", icon_size);
         //     }
         // }
 
+        protected abstract List<Files.File> get_visible_files ();
         protected virtual void highlight_drop_file (Files.File drop_file, Gdk.DragAction? action) {}
         // private void highlight_drop_file (Files.File drop_file, Gdk.DragAction? action, Gtk.TreePath? path) {
         //     bool can_drop = (action != null);
@@ -2340,23 +2339,23 @@ warning ("zoom changed - icon size %u ", icon_size);
 /** Thumbnail and color tag handling */
         private void schedule_thumbnail_color_tag_timeout () {
 // warning ("schedule_thumbnail_color_tag_timout");
-            // /* delay creating the idle until the view has finished loading.
-            //  * this is done because we only can tell the visible range reliably after
-            //  * all items have been added and we've perhaps scrolled to the file remembered
-            //  * the last time */
+            /* delay creating the idle until the view has finished loading.
+             * this is done because we only can tell the visible range reliably after
+             * all items have been added and we've perhaps scrolled to the file remembered
+             * the last time */
 
-            // assert (slot is Files.AbstractSlot && slot.directory != null);
+            assert (slot is Files.AbstractSlot && slot.directory != null);
 
-            // /* Check all known conditions preventing thumbnailing at earliest possible stage */
-            // if (thumbnail_source_id != 0 ||
-            //     !slot.directory.can_open_files ||
-            //     slot.directory.is_loading ()) {
+            /* Check all known conditions preventing thumbnailing at earliest possible stage */
+            if (thumbnail_source_id != 0 ||
+                !slot.directory.can_open_files ||
+                slot.directory.is_loading ()) {
 
-            //         return;
-            // }
+                    return;
+            }
 
-            // /* Do not cancel existing requests to avoid missing thumbnails */
-            // cancel_timeout (ref thumbnail_source_id);
+            /* Do not cancel existing requests to avoid missing thumbnails */
+            cancel_timeout (ref thumbnail_source_id);
             // /* In order to improve performance of the Icon View when there are a large number of files,
             //  * we freeze child notifications while the view is being scrolled or resized.
             //  * The timeout is restarted for each scroll or size allocate event */
@@ -2372,12 +2371,14 @@ warning ("zoom changed - icon size %u ", icon_size);
             //     return GLib.Source.REMOVE;
             // });
 
-            // /* Views with a large number of files take longer to redraw (especially IconView) so
-            //  * we wait longer for scrolling to stop before updating the thumbnails */
-            // uint delay = uint.min (50 + slot.displayed_files_count / 10, 500);
-            // thumbnail_source_id = GLib.Timeout.add (delay, () => {
+            /* Views with a large number of files take longer to redraw (especially IconView) so
+             * we wait longer for scrolling to stop before updating the thumbnails */
+            uint delay = uint.min (50 + slot.displayed_files_count / 10, 500);
+            thumbnail_source_id = GLib.Timeout.add (delay, () => {
 
             //     /* compute visible item range */
+
+                var visible_files = get_visible_files ();
             //     Gtk.TreePath start_path, end_path, path;
             //     Gtk.TreePath sp, ep;
             //     Gtk.TreeIter iter;
@@ -2410,24 +2411,7 @@ warning ("zoom changed - icon size %u ", icon_size);
             //             file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
             //             path = model.get_path (iter);
 
-            //             if (file != null && !file.is_gone) {
-            //                 // Only update thumbnail if it is going to be shown
-            //                 if ((slot.directory.is_network && show_remote_thumbnails) ||
-            //                     (!slot.directory.is_network && !hide_local_thumbnails)) {
-
-            //                     file.query_thumbnail_update (); // Ensure thumbstate up to date
-            //                     /* Ask thumbnailer only if ThumbState UNKNOWN */
-            //                     if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-            //                         visible_files.prepend (file);
-            //                         if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-            //                             actually_visible++;
-            //                         }
-            //                     }
-            //                 }
-            //                /* In any case, ensure color-tag info is correct */
-            //                 if (plugins != null) {
-            //                     plugins.update_file_info (file);
-            //                 }
+            //
             //             }
             //             /* check if we've reached the end of the visible range */
             //             if (path.compare (end_path) != 0) {
@@ -2438,22 +2422,41 @@ warning ("zoom changed - icon size %u ", icon_size);
             //         }
             //     }
 
-            //     /* This is the only place that new thumbnail files are created */
-            //     /* Do not trigger a thumbnail request unless:
-            //         * there are unthumbnailed files actually visible
-            //         * there has not been another event (which would zero the thumbnail_source_id)
-            //         * thumbnails are not hidden by settings
-            //      */
-            //     if (actually_visible > 0 && thumbnail_source_id > 0) {
-            //         thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-            //     } else {
-            //         draw_when_idle ();
-            //     }
+                var need_thumb = new List<Files.File> ();
+                foreach (File file in visible_files) {
+                    if (!file.is_gone) {
+                        // Only update thumbnail if it is going to be shown
+                        if ((slot.directory.is_network && show_remote_thumbnails) ||
+                            (!slot.directory.is_network && !hide_local_thumbnails)) {
 
-            //     thumbnail_source_id = 0;
+                            file.query_thumbnail_update (); // Ensure thumbstate up to date
+                            /* Ask thumbnailer only if ThumbState UNKNOWN */
+                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                                need_thumb.prepend (file);
+                            }
+                        }
 
-            //     return GLib.Source.REMOVE;
-            // });
+                       /* In any case, ensure color-tag info is correct */
+                        if (plugins != null) {
+                            plugins.update_file_info (file);
+                        }
+                    }
+                }
+
+                /* This is the only place that new thumbnail files are created */
+                /* Do not trigger a thumbnail request unless:
+                    * there has not been another event (which would zero the thumbnail_source_id)
+                    * thumbnails are not hidden by settings
+                 */
+                if (thumbnail_source_id > 0 && need_thumb.length () > 0) {
+                    thumbnailer.queue_files (need_thumb, out thumbnail_request, large_thumbnails);
+                } else {
+                    draw_when_idle ();
+                }
+
+                thumbnail_source_id = 0;
+                return GLib.Source.REMOVE;
+            });
         }
 
 
@@ -3201,10 +3204,6 @@ warning ("sort_col_s %s, sort_order_s %s", sort_col_s, sort_order_s);
             /* pass unhandled events to the View.Window */
             return false;
         }
-
-        // protected virtual bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
-        //     return model.iter_next (ref iter);
-        // }
 
         protected virtual void cancel () {
             grab_focus (); /* Cancel any renaming */
