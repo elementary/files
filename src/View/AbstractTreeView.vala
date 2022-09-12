@@ -17,7 +17,7 @@
 ***/
 
 /* Implement common features of ColumnView and ListView */
-public abstract class Files.AbstractTreeView : AbstractDirectoryView {
+public abstract class Files.AbstractTreeView : Files.AbstractDirectoryView {
     protected TreeView tree;
     protected Files.IconRenderer icon_renderer;
     protected Files.TextRenderer? name_renderer = null;

@@ -25,9 +25,9 @@
      * ColumnView
 */
 
-namespace Files {
+// namespace Files {
     // public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
-    public abstract class AbstractDirectoryView : Gtk.Box {
+    public abstract class Files.AbstractDirectoryView : Gtk.Box {
         private static GLib.List<GLib.File> templates = null;
         private static void load_templates_from_folder (GLib.File template_folder) {
             GLib.List<GLib.File> file_list = null;
@@ -809,7 +809,10 @@ namespace Files {
             }
         }
 
-        private int file_compare_func (Files.File file_a, Files.File file_b) {
+        protected int file_compare_func (Object a, Object b) {
+            assert (a is Files.File && b is Files.File);
+            var file_a = (Files.File)a;
+            var file_b = (Files.File)b;
             if (file_a != null && file_b != null &&
                 file_a.location != null && file_b.location != null) {
 
@@ -823,6 +826,9 @@ namespace Files {
             }
         }
 
+        // protected abstract void add_file (
+        //     Files.File file, Directory dir, bool select = true, bool sorted = false
+        // );
         protected abstract void add_file (
             Files.File file, Directory dir, bool select = true, bool sorted = false
         );
@@ -1203,6 +1209,7 @@ namespace Files {
 
         private void on_directory_file_added (Directory dir, Files.File? file) {
             if (file != null) {
+                // add_file (file, dir, true); /* Always select files added to view after initial load */
                 add_file (file, dir, true); /* Always select files added to view after initial load */
                 handle_free_space_change ();
             } else {
@@ -1211,6 +1218,7 @@ namespace Files {
         }
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
+            // add_file (file, dir, false); /* Do not select files added during initial load */
             add_file (file, dir, false); /* Do not select files added during initial load */
             /* no freespace change signal required */
         }
@@ -1297,6 +1305,7 @@ namespace Files {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (ZoomLevel zoom) {
+warning ("zoom changed - icon size %u ", icon_size);
             var size = icon_size * get_scale_factor ();
 
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
@@ -3418,4 +3427,4 @@ warning ("sort_col_s %s, sort_order_s %s", sort_col_s, sort_order_s);
         //     cancel_timeout (ref drag_timer_id);
         // }
     }
-}
+// }
