@@ -36,16 +36,20 @@ public class Files.GridView : Files.AbstractDirectoryView {
     // }
 
     construct {
+        margin_start = 12;
+        margin_top = 12;
+
         list_store = new ListStore (typeof (Files.File));
         item_factory = new Gtk.SignalListItemFactory ();
 
         item_factory.setup.connect ((factory, list_item) => {
-            var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-            var file_image = new Gtk.Image.from_icon_name ("image-missing") {
-                margin_top = 12,
+            var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6) {
+                margin_start = 12,
+                margin_end = 12
+            };
+            var file_image = new Gtk.Image () {
                 margin_bottom = 6
             };
-
             var filename_label = new Gtk.Label (null) {
                 lines = 5,
                 wrap = true,
@@ -59,12 +63,34 @@ public class Files.GridView : Files.AbstractDirectoryView {
             var box = (Gtk.Box)(list_item.child);
             var file = (Files.File)(list_item.get_item ());
             var image = (Gtk.Image)(box.get_first_child ());
-            image.pixel_size = this.icon_size;
+            image.pixel_size = icon_size * this.scale_factor;
+            var tp = file.get_thumbnail_path ();
+            if (tp != null) {
+                image.file = tp;
+            } else if (file.pix != null) {
+                image.paintable = Gdk.Texture.for_pixbuf (file.pix);
+            } else if (file.icon != null) {
+                image.gicon = file.icon;
+            } else {
+                image.icon_name = "image-missing";
+            }
+
+            box.margin_start = image.pixel_size / 2;
+            box.margin_end = box.margin_start;
             var label = (Gtk.Label)(image.get_next_sibling ());
             label.label = file.basename;
         });
-        item_factory.teardown.connect (() => {warning ("Item teardown");});
-        item_factory.unbind.connect (() => {warning ("Item unbind");});
+        item_factory.teardown.connect ((factory, list_item) => {
+            //warning ("Item teardown");
+
+        });
+        item_factory.unbind.connect ((factory, list_item) => {
+            warning ("Item unbind");
+            var box = (Gtk.Box)(list_item.child);
+            var file = (Files.File)(list_item.get_item ());
+            var image = (Gtk.Image)(box.get_first_child ());
+            image.clear ();
+        });
         multiselection = new Gtk.MultiSelection (list_store);
         gridview = new Gtk.GridView (
             multiselection,

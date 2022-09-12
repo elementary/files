@@ -2339,6 +2339,7 @@ warning ("zoom changed - icon size %u ", icon_size);
 
 /** Thumbnail and color tag handling */
         private void schedule_thumbnail_color_tag_timeout () {
+// warning ("schedule_thumbnail_color_tag_timout");
             // /* delay creating the idle until the view has finished loading.
             //  * this is done because we only can tell the visible range reliably after
             //  * all items have been added and we've perhaps scrolled to the file remembered
