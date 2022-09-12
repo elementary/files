@@ -25,10 +25,10 @@ public class Files.GridView : Files.AbstractDirectoryView {
     protected uint first_pos = uint.MAX;
     /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
     protected bool previous_selection_was_linear = false;
-    // protected Gtk.TreePath? previous_linear_selection_path = null;
+    protected int previous_linear_selection_pos = -1;
     protected int previous_linear_selection_direction = 0;
     protected bool linear_select_required = false;
-    // protected Gtk.TreePath? most_recently_selected = null;
+    protected int most_recently_selected_pos = -1;
 
     public GridView (View.Slot _slot) {
         base (_slot);

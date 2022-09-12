@@ -593,5 +593,3 @@ public abstract class Files.AbstractTreeView : Files.AbstractDirectoryView {
         // }
     }
 }
-
-

@@ -124,7 +124,7 @@
         static GLib.SimpleActionGroup background_actions;
 
         /* Instance members */
-        public ClipboardManager clipboard  { get; construct; }
+        public ClipboardManager clipboard { get; construct; }
         public Thumbnailer thumbnailer { get; construct; }
         public View.Slot slot { get; construct; } // Must be unowned else cyclic reference stops destruction
         protected unowned Gtk.RecentManager recent;
@@ -256,7 +256,7 @@
             }
         }
 
-        public View.Window window  {
+        public View.Window window {
             get {
                 return slot.window;
             }
