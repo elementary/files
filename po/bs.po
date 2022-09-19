@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
 "PO-Revision-Date: 2022-09-19 03:03+0000\n"
-"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"Last-Translator: Issa1553 <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian <https://l10n.elementary.io/projects/files/files/bs/>"
 "\n"
 "Language: bs\n"
@@ -730,12 +730,12 @@ msgstr "Brisanje datoteka"
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1073
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Pripremam %'d datoteku za kopiranje (%S)"
-msgstr[1] "Pripremam %'d datoteke za kopiranje (%S)"
-msgstr[2] "Pripremam %'d datoteka za kopiranje (%S)"
+msgstr[0] "Pripremam %'d datoteku za kopiranje (%s)"
+msgstr[1] "Pripremam %'d datoteke za kopiranje (%s)"
+msgstr[2] "Pripremam %'d datoteka za kopiranje (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
