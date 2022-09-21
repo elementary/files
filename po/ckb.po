@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
-"PO-Revision-Date: 2022-09-10 10:09+0000\n"
+"PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
 "files/ckb/>\n"
@@ -209,7 +209,7 @@ msgstr "پارسکردنی پەڕگەی ڕوومێز شکستی هێنا: "
 
 #: libcore/File.vala:899
 msgid "Failed to create command from file: "
-msgstr "دروستکردنی فەرمان لە پەڕگەی:  شکستی هێنا "
+msgstr "دروستکردنی فەرمان شکستی هێنا لە پەڕگەی: "
 
 #: libcore/File.vala:908
 msgid "Unable to Launch Desktop File: "
