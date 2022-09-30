@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-30 16:28+0000\n"
-"PO-Revision-Date: 2022-06-18 22:14+0000\n"
+"PO-Revision-Date: 2022-09-30 22:17+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -234,7 +234,7 @@ msgstr[1] "%i elementer"
 
 #: libcore/File.vala:1121
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: libcore/File.vala:1128
 #, c-format
@@ -1789,8 +1789,9 @@ msgid "Hide Thumbnails"
 msgstr "Skjul miniatyrbilder"
 
 #: src/View/AbstractDirectoryView.vala:2244
+#, fuzzy
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Velg mapper med ett klikk"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
