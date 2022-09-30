@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
 "PO-Revision-Date: 2022-09-30 10:55+0000\n"
-"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
+"Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -1188,7 +1188,7 @@ msgstr "Добавить в закладки"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr "Безвозвратно удалить всё из корзины"
+msgstr "Безвозвратно очистить корзину"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
