@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
-"PO-Revision-Date: 2022-09-30 10:55+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"PO-Revision-Date: 2022-09-30 10:57+0000\n"
+"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -1740,7 +1740,7 @@ msgstr "Инвертировать выделение"
 
 #: src/View/AbstractDirectoryView.vala:2060
 msgid "Deselect All"
-msgstr "Снять выделение со всех"
+msgstr "Снять выделение со всего"
 
 #: src/View/AbstractDirectoryView.vala:2068
 msgid "Cut"
