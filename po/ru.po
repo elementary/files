@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
-"PO-Revision-Date: 2022-09-30 10:51+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"PO-Revision-Date: 2022-09-30 10:55+0000\n"
+"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -1414,7 +1414,7 @@ msgstr "Показать версию программы"
 
 #: src/Application.vala:156
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Открыть одну или несколько ссылок, каждую в новой вкладке"
+msgstr "Открыть одну или несколько ссылок URI, каждую в новой вкладке"
 
 #: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1910
 #: src/View/AbstractDirectoryView.vala:1916
@@ -1445,7 +1445,7 @@ msgstr ""
 
 #: src/Application.vala:196
 msgid "--quit cannot be used with URIs."
-msgstr "параметр --quit нельзя использовать с адресами (URI)."
+msgstr "Параметр --quit нельзя использовать с ссылками URI."
 
 #: src/DesktopLauncher.vala:21
 msgid "Browse your files"
