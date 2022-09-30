@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-30 16:28+0000\n"
-"PO-Revision-Date: 2022-09-26 21:57+0000\n"
+"PO-Revision-Date: 2022-09-30 22:17+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -1817,7 +1817,7 @@ msgstr "Сховати зовнішні ескізи"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Вибір тек одинарним клацанням миші"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
