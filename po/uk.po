@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
-"PO-Revision-Date: 2022-08-20 23:06+0000\n"
+"PO-Revision-Date: 2022-09-26 21:57+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -495,7 +495,7 @@ msgstr ")"
 #: libcore/marlin-file-operations.c:285
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "Ви справді бажаєте остаточно видалити \"%s\" зі смітника?"
+msgstr "Ви справді бажаєте остаточно видалити «%s» зі смітника?"
 
 #: libcore/marlin-file-operations.c:289
 #, c-format
@@ -533,7 +533,7 @@ msgstr[2] "Ви дійсно хочете остаточно видалити %'
 #: libcore/marlin-file-operations.c:341
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
-"Видалені елементи не надсилаються да кошика та не можуть бути відновлені."
+"Видалені елементи не надсилаються до смітника й не можуть бути відновлені."
 
 #: libcore/marlin-file-operations.c:375
 #, c-format
@@ -1342,7 +1342,7 @@ msgstr ""
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
-"Всі елементи зі смітника цього змонтованого пристрою буде безповоротно "
+"Усі елементи зі смітника цього змонтованого пристрою буде безповоротно "
 "видалено."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:111

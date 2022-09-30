@@ -24,7 +24,7 @@
 ***/
 
 namespace Files.View {
-    public class ViewContainer : Gtk.Bin {
+    public class ViewContainer : Gtk.Box {
         private static int container_id;
 
         protected static int get_next_container_id () {
@@ -280,6 +280,7 @@ namespace Files.View {
             }
 
             if (mode != view_mode) {
+                aslot.close ();
                 view_mode = mode;
                 loading (false);
                 store_selection ();

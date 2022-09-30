@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-20 07:38+0000\n"
-"PO-Revision-Date: 2022-08-24 09:13+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"PO-Revision-Date: 2022-09-30 10:59+0000\n"
+"Last-Translator: Ivan Hornovski <underclassity@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
 "Language: ru\n"
@@ -1188,7 +1188,7 @@ msgstr "Добавить в закладки"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr "Безвозвратно удалить всё из корзины"
+msgstr "Безвозвратно очистить корзину"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
@@ -1229,7 +1229,7 @@ msgstr "FTP"
 
 #: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:60
 msgid "Network"
-msgstr "Обзор сети"
+msgstr "Сеть"
 
 #: libcore/Resources.vala:67
 msgid "SFTP"
@@ -1414,7 +1414,7 @@ msgstr "Показать версию программы"
 
 #: src/Application.vala:156
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Открыть одну или несколько ссылок, каждую в новой вкладке"
+msgstr "Открыть одну или несколько ссылок URI, каждую в новой вкладке"
 
 #: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1910
 #: src/View/AbstractDirectoryView.vala:1916
@@ -1445,7 +1445,7 @@ msgstr ""
 
 #: src/Application.vala:196
 msgid "--quit cannot be used with URIs."
-msgstr "параметр --quit нельзя использовать с адресами (URI)."
+msgstr "Параметр --quit нельзя использовать с ссылками URI."
 
 #: src/DesktopLauncher.vala:21
 msgid "Browse your files"
@@ -1565,7 +1565,7 @@ msgstr "Удалён:"
 
 #: src/Dialogs/PropertiesWindow.vala:593
 msgid "Media type:"
-msgstr "Тип носителя:"
+msgstr "Тип медиа:"
 
 #: src/Dialogs/PropertiesWindow.vala:600
 msgid "Resolution:"
@@ -1688,7 +1688,7 @@ msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
-"Файлы в корзине не могут быть открыты. Чтобы открыть файл, перенесите его в "
+"Файлы в Корзине не могут быть открыты. Чтобы открыть файл, перенесите его в "
 "другое место."
 
 #: src/View/AbstractDirectoryView.vala:858
@@ -1740,7 +1740,7 @@ msgstr "Инвертировать выделение"
 
 #: src/View/AbstractDirectoryView.vala:2060
 msgid "Deselect All"
-msgstr "Снять выделение со всех"
+msgstr "Снять выделение со всего"
 
 #: src/View/AbstractDirectoryView.vala:2068
 msgid "Cut"
@@ -1908,15 +1908,15 @@ msgstr "Изменён"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "Приватный режим включен"
+msgstr "Приватный режим включён"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr "Нет новых рекомендованных файлов"
+msgstr "Последние файлы не запоминаются"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr "Изменить настройки безопасности"
+msgstr "Изменить параметры безопастности"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
@@ -2101,11 +2101,11 @@ msgstr "Стандартные места и сохранённые папки �
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
 msgid "Storage"
-msgstr "Накопитель"
+msgstr "Накопители"
 
 #: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Internal and connected storage devices"
-msgstr "Внутренние и подключенные устройства хранения"
+msgstr "Внутренние и подключённые устройства хранения"
 
 #: src/View/Sidebar/SidebarWindow.vala:61
 msgid "Devices and places available via a network"
