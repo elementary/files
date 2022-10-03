@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 16:28+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-01-25 22:09+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
@@ -35,11 +35,6 @@ msgstr "složka;správce;procházet;disk;souborový systém;"
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Správce souborů"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -1133,6 +1128,9 @@ msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Pro spuštění aplikace Soubory s oprávněními na úrovni správce systému je "
 "vyžadováno ověření se"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #~ msgid "About Files"
 #~ msgstr "O aplikaci Soubory"

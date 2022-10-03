@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 16:28+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2019-01-05 00:54+0000\n"
 "Last-Translator: Simon Dagfinrud <semonje@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://weblate.elementary.io/projects/"
@@ -29,11 +29,6 @@ msgstr "mappe;behandlar;handsamar;utforsk;disk;filsystem;harddisk;"
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Filbehandlar"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -1032,3 +1027,6 @@ msgstr "Nytt vindauge som administrator"
 #, fuzzy
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Nytt vindauge som administrator"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"

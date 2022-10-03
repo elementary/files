@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 16:28+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2021-11-05 09:33+0000\n"
 "Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
@@ -37,11 +37,6 @@ msgstr ""
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Dateiverwaltung"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -1154,6 +1149,9 @@ msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Damit Dateien als Systemverwalter ausgeführt werden kann, ist eine "
 "Legitimierung nötig"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #~ msgid "About Files"
 #~ msgstr "Info zu Dateien"

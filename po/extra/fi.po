@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 16:28+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2021-10-08 11:50+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/extra/fi/"
@@ -38,11 +38,6 @@ msgstr ""
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Tiedostonhallinta"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -1055,6 +1050,9 @@ msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Tiedostonhallinnan suorittaminen ylläpitäjän oikeuksin vaatii "
 "tunnistautumisen"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #~ msgid "About Files"
 #~ msgstr "Tietoja - Tiedostot"
