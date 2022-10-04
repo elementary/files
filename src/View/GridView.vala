@@ -44,25 +44,21 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var selection_model = new Gtk.MultiSelection (sorted_model);
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
-            var label = new Gtk.Label ("Unbound");
-            ((Gtk.ListItem)obj).child = label;
+            var file_item = new FileItem (96);
+            ((Gtk.ListItem)obj).child = file_item;
         });
         item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file = (Files.File)list_item.get_item ();
-            var label = (Gtk.Label)list_item.child;
-            label.label = file.basename;
+            var file_item = (FileItem)list_item.child;
+            file_item.label.label = file.basename;
         });
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var label = (Gtk.Label)list_item.child;
-            label.label = "Unbound";
+            var file_item = (FileItem)list_item.child;
+            file_item.label.label = "Unbound";
         });
         item_factory.teardown.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var label = (Gtk.Label)list_item.child;
-            label.unparent ();
-            label.dispose ();
         });
 
         grid_view = new Gtk.GridView (selection_model, item_factory);
@@ -148,5 +144,46 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         Files.icon_view_settings.set_enum ("zoom-level", zoom);
 
         return (ZoomLevel)zoom;
+    }
+
+    private class FileItem : Gtk.Box {
+        public Gtk.Image image { get; set; }
+        public Gtk.Label label { get; set; }
+        public int pixel_size {
+            get {
+                return image.pixel_size;
+            }
+
+            set {
+                image.pixel_size = value;
+                var marg = value / 3;
+                margin_top = marg;
+                margin_bottom = marg;
+                margin_start = marg;
+                margin_end = marg;
+            }
+        }
+
+        public FileItem (int size) {
+            pixel_size = size;
+        }
+
+        construct {
+            orientation = Gtk.Orientation.VERTICAL;
+            spacing = 6;
+
+
+            image = new Gtk.Image () {
+                icon_name = "image-missing",
+            };
+
+            label = new Gtk.Label ("Unbound") {
+                wrap = true,
+                wrap_mode = Pango.WrapMode.WORD_CHAR
+            };
+
+            append (image);
+            append (label);
+        }
     }
 }
