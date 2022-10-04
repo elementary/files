@@ -202,6 +202,8 @@ namespace Files {
 
         construct {
             set_layout_manager (new Gtk.BinLayout ());
+            hexpand = true;
+            vexpand = true;
 
             switch (mode) {
                 case ViewMode.ICON:
@@ -220,10 +222,7 @@ namespace Files {
 
             view_widget.set_up_zoom_level ();
 
-            scrolled_window = new Gtk.ScrolledWindow () {
-                hexpand = true,
-                vexpand = true
-            };
+            scrolled_window = new Gtk.ScrolledWindow ();
             scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             //TODO Use EventControllerScroll
             scrolled_window.scroll_child.connect (on_scroll_child_event); //?Needed
