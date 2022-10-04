@@ -44,7 +44,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var selection_model = new Gtk.MultiSelection (sorted_model);
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
-            var file_item = new FileItem (96);
+            var file_item = new FileItem (zoom_level);
+            bind_property ("zoom-level", file_item, "zoom-level", BindingFlags.DEFAULT);
             ((Gtk.ListItem)obj).child = file_item;
         });
         item_factory.bind.connect ((obj) => {
@@ -70,6 +71,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
 
         grid_view.set_parent (this);
+
+        notify["zoom-level"].connect (() => {
+            change_zoom_level (zoom_level);
+        });
     }
 
     public override void add_file (Files.File file) {
@@ -80,7 +85,32 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         model.remove_all ();
     }
 
-    public override void change_zoom_level (ZoomLevel zoom) {}
+    public override void change_zoom_level (ZoomLevel zoom) {
+        zoom_level = zoom;
+        queue_resize ();
+    }
+
+    public override void zoom_in () {
+        if (zoom_level < maximum_zoom) {
+            zoom_level = zoom_level + 1;
+        }
+    }
+    public override void zoom_out () {
+        if (zoom_level > minimum_zoom) {
+            zoom_level = zoom_level - 1;
+        }
+    }
+    public override void zoom_normal () {
+        zoom_level = get_normal_zoom_level ();
+    }
+
+    private ZoomLevel get_normal_zoom_level () {
+        var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
+        Files.icon_view_settings.set_enum ("zoom-level", zoom);
+
+        return (ZoomLevel)zoom;
+    }
+
     public override void show_and_select_file (Files.File file, bool show, bool select) {}
     public override void invert_selection () {}
     public override void set_should_sort_directories_first (bool sort_directories_first) {}
@@ -88,9 +118,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public override void set_sort (Files.ListModel.ColumnID? col_name, Gtk.SortType reverse) {}
     public override void get_sort (out string sort_column_id, out string sort_order) {}
     public override void start_renaming_file (Files.File file) {}
-    public override void zoom_in () {}
-    public override void zoom_out () {}
-    public override void zoom_normal () {}
+
     public override void focus_first_for_empty_selection (bool select) {}
     public override void select_all () {}
     public override void unselect_all () {}
@@ -139,24 +167,16 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
-    public override ZoomLevel get_normal_zoom_level () {
-        var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
-        Files.icon_view_settings.set_enum ("zoom-level", zoom);
 
-        return (ZoomLevel)zoom;
-    }
 
     private class FileItem : Gtk.Box {
         public Gtk.Image image { get; set; }
         public Gtk.Label label { get; set; }
-        public int pixel_size {
-            get {
-                return image.pixel_size;
-            }
-
+        public ZoomLevel zoom_level {
             set {
-                image.pixel_size = value;
-                var marg = value / 3;
+                var size = value.to_icon_size ();
+                image.pixel_size = size;
+                var marg = size / 3;
                 margin_top = marg;
                 margin_bottom = marg;
                 margin_start = marg;
@@ -164,8 +184,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             }
         }
 
-        public FileItem (int size) {
-            pixel_size = size;
+        public FileItem (ZoomLevel zoom) {
+            zoom_level = zoom;
         }
 
         construct {

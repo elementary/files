@@ -26,7 +26,6 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     public virtual void set_up_zoom_level () {}
     public virtual void change_zoom_level (ZoomLevel zoom) {}
-    public virtual ZoomLevel get_normal_zoom_level () { return ZoomLevel.NORMAL; }
     public virtual void show_and_select_file (Files.File file, bool show, bool select) {}
     public virtual void invert_selection () {}
     public virtual void set_should_sort_directories_first (bool sort_directories_first) {}
