@@ -32,8 +32,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     ~GridView () {
         warning ("Grid View destruct");
-        grid_view.unparent ();
-        grid_view.dispose ();
+        while (this.get_last_child () != null) {
+            this.get_last_child ().unparent ();
+        }
     }
 
     construct {
