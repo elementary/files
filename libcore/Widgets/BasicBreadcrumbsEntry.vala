@@ -18,7 +18,7 @@
 * Boston, MA 02110-1301 USA
 */
 
-namespace Files.View.Chrome {
+namespace Files.Chrome {
     public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable {
         public enum TargetType {
             TEXT_URI_LIST,

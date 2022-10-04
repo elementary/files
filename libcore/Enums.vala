@@ -28,22 +28,9 @@ namespace Files {
         MAXIMIZED,
         INVALID;
 
-        // public string to_string () {
-        //     switch (this) {
-        //         case NORMAL:
-        //             return "Marlin.WindowState.NORMAL";
-        //         case TILED_LEFT:
-        //             return "Marlin.WindowState.TILED_LEFT";
-        //         case TILED_RIGHT:
-        //             return "Marlin.WindowState.TILED_RIGHT";
-        //         case MAXIMIZED:
-        //             return "Marlin.WindowState.MAXIMIZED";
-        //         default:
-        //             return "Marlin.WindowState.INVALID";
-        //     }
-        // }
-
-        public static Files.WindowState from_gdk_toplevel_state (Gdk.ToplevelState state) {
+        public static Files.WindowState from_gdk_toplevel_state (
+            Gdk.ToplevelState state
+        ) {
 
             if (Gdk.ToplevelState.MAXIMIZED in state) {
                 return Files.WindowState.MAXIMIZED;
@@ -61,7 +48,10 @@ namespace Files {
         }
 
         public bool is_tiled () {
-            return this == TILED_LEFT | this == TILED_RIGHT || this == TILED_BOTTOM || this == TILED_TOP;
+            return this == TILED_LEFT ||
+                   this == TILED_RIGHT ||
+                   this == TILED_BOTTOM ||
+                   this == TILED_TOP;
         }
 
         public bool is_maximized () {
@@ -74,8 +64,8 @@ namespace Files {
     public enum ViewMode {
         /* First three modes must match the corresponding mode switch indices */
         ICON = 0,
-        LIST = 1,
-        MILLER_COLUMNS = 2,
+        LIST,
+        MILLER_COLUMNS,
         CURRENT,
         PREFERRED,
         INVALID

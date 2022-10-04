@@ -28,7 +28,7 @@
  *
  */
 
-namespace Files.View.Chrome {
+namespace Files.Chrome {
     /**
      * ButtonWithMenu
      * - support long click / right click with depressed button states

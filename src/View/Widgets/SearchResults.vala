@@ -16,8 +16,8 @@
     Authors :
 ***/
 
-namespace Files.View.Chrome {
-    public class SearchResults : Gtk.Window, Searchable {
+namespace Files {
+    public class SearchResults : Gtk.Window, Chrome.Searchable {
         private const string ELLIPSIS_NAME = "ELLIPSIS";
         /* The order of these categories governs the order in which matches appear in the search view.
          * The category represents a first level sort.  Within a category the matches sort alphabetically on name */

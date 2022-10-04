@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Chrome.HeaderBar : Gtk.Box {
+public class Files.HeaderBar : Gtk.Box {
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
@@ -30,7 +30,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
     public signal void reload_request ();
 
 
-    public ViewSwitcher? view_switcher { get; construct; }
+    public Chrome.ViewSwitcher? view_switcher { get; construct; }
     public bool locked_focus { get; private set; default = false; }
 
     public bool working {
@@ -63,11 +63,11 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
         append (headerbar);
 
-        button_back = new View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
+        button_back = new Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.add_css_class ("flat");
 
-        button_forward = new View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic");
+        button_forward = new Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic");
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.add_css_class ("flat");
 

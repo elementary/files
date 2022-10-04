@@ -178,7 +178,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     private void open_volume_property_window () {
-        new Files.View.VolumePropertiesWindow (
+        new Files.VolumePropertiesWindow (
             volume.get_mount (),
             Files.get_active_window ()
         );

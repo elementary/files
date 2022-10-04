@@ -16,7 +16,7 @@
 * Boston, MA 02110-1335 USA.
 */
 
-namespace Files.View.Chrome {
+namespace Files.Chrome {
     public class BreadcrumbIconInfo {
         public string path;
         public bool protocol;

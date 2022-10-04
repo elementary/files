@@ -23,7 +23,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1335 USA.
 ***/
 
-namespace Files.View {
+namespace Files {
     public class ViewContainer : Gtk.Box {
         private static int container_id;
 
@@ -38,9 +38,9 @@ namespace Files.View {
         public int id {get; construct;}
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
-        private View.Window? _window = null;
+        private Files.Window? _window = null;
         public bool working { get; set; }
-        public View.Window window {
+        public Files.Window window {
             get {
                 return _window;
             }
@@ -56,7 +56,7 @@ namespace Files.View {
         }
 
         public Files.AbstractSlot? view = null;
-        public ViewMode view_mode = ViewMode.INVALID;
+        public ViewMode view_mode = ViewMode.ICON;
 
         public GLib.File? location {
             get {
@@ -108,7 +108,7 @@ namespace Files.View {
 
         public bool is_loading {get; private set; default = false;}
 
-        private View.OverlayBar overlay_statusbar;
+        private OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -122,7 +122,7 @@ namespace Files.View {
         }
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (View.Window win) {
+        public ViewContainer (Window win) {
             window = win;
             browser = new Browser ();
 
@@ -251,13 +251,13 @@ namespace Files.View {
                 }
             }
 
-            if (mode == ViewMode.MILLER_COLUMNS) {
-                this.view = new Miller (loc, this, mode);
-            } else {
+            // if (mode == ViewMode.MILLER_COLUMNS) {
+            //     this.view = new Miller (loc, this, mode);
+            // } else {
                 this.view = new Slot (loc, this, mode);
-            }
+            // }
 
-            overlay_statusbar = new View.OverlayBar (view.overlay);
+            overlay_statusbar = new OverlayBar (view.overlay);
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
@@ -380,30 +380,30 @@ namespace Files.View {
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
-                    content = new View.PrivacyModeOn (this);
+                    content = new PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {
-                        content = new View.Welcome (_("This Folder Does Not Exist"),
+                        content = new Welcome (_("This Folder Does Not Exist"),
                                                     _("You cannot create a folder here."));
                     }
                 } else if (!dir.network_available) {
-                    content = new View.Welcome (_("The network is unavailable"),
+                    content = new Welcome (_("The network is unavailable"),
                                                 _("A working network is needed to reach this folder") + "\n\n" +
                                                 dir.last_error_message);
                 } else if (dir.permission_denied) {
-                    content = new View.Welcome (_("This Folder Does Not Belong to You"),
+                    content = new Welcome (_("This Folder Does Not Belong to You"),
                                                 _("You don't have permission to view this folder."));
                 } else if (!dir.file.is_connected) {
-                    content = new View.Welcome (_("Unable to Mount Folder"),
+                    content = new Welcome (_("Unable to Mount Folder"),
                                                 _("Could not connect to the server for this folder.") + "\n\n" +
                                                 dir.last_error_message);
                 } else if (slot.directory.state == Directory.State.TIMED_OUT) {
-                    content = new View.Welcome (_("Unable to Display Folder Contents"),
+                    content = new Welcome (_("Unable to Display Folder Contents"),
                                                 _("The operation timed out.") + "\n\n" + dir.last_error_message);
                 } else {
-                    content = new View.Welcome (_("Unable to Show Folder"),
+                    content = new Welcome (_("Unable to Show Folder"),
                                                 _("The server for this folder could not be located.") + "\n\n" +
                                                 dir.last_error_message);
                 }
@@ -415,7 +415,7 @@ namespace Files.View {
                 if (dir.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (dir.selected_file);
                 } else {
-                    content = new View.Welcome (_("File not Found"),
+                    content = new Welcome (_("File not Found"),
                                                 _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
@@ -493,7 +493,8 @@ namespace Files.View {
             }
 
             /* Using file_a.equal (file_b) can fail to detect equivalent locations */
-            if (!(view is Miller) && FileUtils.same_location (uri, loc.get_uri ())) {
+            // if (!(view is Miller) && FileUtils.same_location (uri, loc.get_uri ())) {
+            if (FileUtils.same_location (uri, loc.get_uri ())) {
                 return;
             }
 

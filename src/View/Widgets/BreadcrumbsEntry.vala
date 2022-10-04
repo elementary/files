@@ -18,8 +18,8 @@
 
 ***/
 
-namespace Files.View.Chrome {
-    public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
+namespace Files {
+    public class BreadcrumbsEntry : Chrome.BasicBreadcrumbsEntry {
         /** Breadcrumb context menu support **/
         ulong files_menu_dir_handler_id = 0;
         // Gtk.PopoverMenu menu;
@@ -391,7 +391,7 @@ namespace Files.View.Chrome {
         }
     /** Context menu functions **/
     /****************************/
-        private void load_right_click_menu (Gdk.Event event, BreadcrumbElement clicked_element) {
+        private void load_right_click_menu (Gdk.Event event, Chrome.BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
             string parent_path = FileUtils.get_parent_path_from_path (path);
             GLib.File? root = FileUtils.get_file_for_path (parent_path);

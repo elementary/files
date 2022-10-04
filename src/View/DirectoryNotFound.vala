@@ -18,7 +18,7 @@
 
 ***/
 
-namespace Files.View {
+namespace Files {
     public class DirectoryNotFound : Granite.Placeholder {
         public Directory dir_saved;
         public ViewContainer ctab;

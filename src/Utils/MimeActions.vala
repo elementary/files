@@ -254,7 +254,7 @@ public class Files.MimeActions {
 
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
         /* Note: This function should be only called if file_to_open is not an executable or it is not
-         * intended to execute it (AbstractDirectoryView takes care of this) */
+         * intended to execute it (DirectoryView takes care of this) */
         if (app == null) {
             var choice = choose_app_for_glib_file (file_to_open, parent);
             if (choice != null) {
@@ -269,7 +269,7 @@ public class Files.MimeActions {
                                                         Gtk.Widget parent,
                                                         AppInfo? app = null) {
         /* Note: This function should be only called if files_to_open are not executables or it is not
-         * intended to execute them (AbstractDirectoryView takes care of this) */
+         * intended to execute them (DirectoryView takes care of this) */
         AppInfo? app_info = null;
         if (app == null) {
             app_info = get_default_application_for_files (gofs_to_open);

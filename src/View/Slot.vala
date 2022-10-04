@@ -16,12 +16,12 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-
-public class Files.View.Slot : Files.AbstractSlot {
-    private unowned Files.View.ViewContainer ctab;
+namespace Files {
+public class Slot : Files.AbstractSlot {
+    private unowned Files.ViewContainer ctab;
     private ViewMode mode;
     private int preferred_column_width;
-    private Files.AbstractDirectoryView? dir_view = null;
+    private Files.DirectoryView? dir_view = null;
 
     private uint reload_timeout_id = 0;
     private uint path_change_timeout_id = 0;
@@ -43,7 +43,7 @@ public class Files.View.Slot : Files.AbstractSlot {
         }
     }
 
-    public unowned Files.View.Window window {
+    public unowned Files.Window window {
         get {return ctab.window;}
     }
 
@@ -73,7 +73,7 @@ public class Files.View.Slot : Files.AbstractSlot {
     public signal void miller_slot_request (GLib.File file, bool make_root);
     public signal void size_change ();
 
-    public Slot (GLib.File _location, View.ViewContainer _ctab, ViewMode _mode) {
+    public Slot (GLib.File _location, ViewContainer _ctab, ViewMode _mode) {
         ctab = _ctab;
         mode = _mode;
         is_active = false;
@@ -270,26 +270,22 @@ public class Files.View.Slot : Files.AbstractSlot {
         assert (dir_view == null);
 
         switch (mode) {
-            case ViewMode.MILLER_COLUMNS:
-                dir_view = new Files.ColumnView (this);
-                break;
-
-            case ViewMode.LIST:;
-                dir_view = new Files.ListView (this);
-                break;
-
             case ViewMode.ICON:
-                dir_view = new Files.IconView (this);
+                dir_view = new Files.DirectoryView (mode, this);
                 break;
 
             default:
+warning ("mode %s, created IconView instead", mode.to_string ());
+                dir_view = new Files.DirectoryView (mode, this);
                 break;
         }
 
         /* Miller View creates its own overlay and handles packing of the directory view */
-        if (mode != ViewMode.MILLER_COLUMNS) {
+        if (dir_view != null && mode != ViewMode.MILLER_COLUMNS) {
             add_overlay (dir_view);
         }
+
+        assert (dir_view != null);
     }
 
     public override bool set_all_selected (bool select_all) {
@@ -343,7 +339,7 @@ public class Files.View.Slot : Files.AbstractSlot {
         return this as Files.AbstractSlot;
     }
 
-    public unowned Files.AbstractDirectoryView? get_directory_view () {
+    public unowned Files.DirectoryView? get_directory_view () {
         return dir_view;
     }
 
@@ -424,4 +420,5 @@ public class Files.View.Slot : Files.AbstractSlot {
         }
         return msg;
     }
+}
 }

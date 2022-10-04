@@ -19,8 +19,8 @@
 * Boston, MA 02110-1301 USA
 */
 
-namespace Files.View.Chrome {
-    public class LocationBar : BasicLocationBar {
+namespace Files {
+    public class LocationBar : Chrome.BasicLocationBar {
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
         private GLib.File? search_location = null;
@@ -55,7 +55,7 @@ namespace Files.View.Chrome {
             var _bread = new BreadcrumbsEntry () {
                 hexpand = true
             };
-            base (_bread as Navigatable);
+            base (_bread as Chrome.Navigatable);
             bread = _bread;
             search_results = new SearchResults (bread);
             connect_additional_signals ();

@@ -15,7 +15,7 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
-namespace Files.View.Chrome {
+namespace Files.Chrome {
     /* Interface implemented by BasicLocationBar and LocationBar */
     public interface Locatable : Gtk.Box {
         public signal void path_change_request (string path, Files.OpenFlag flag = Files.OpenFlag.DEFAULT);

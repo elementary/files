@@ -16,9 +16,9 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Files.View {
+namespace Files {
     public class Miller : Files.AbstractSlot {
-        private unowned View.ViewContainer ctab;
+        private unowned ViewContainer ctab;
 
         /* Need private copy of initial location as Miller
          * does not have its own Asyncdirectory object */
@@ -47,7 +47,7 @@ namespace Files.View {
             }
         }
 
-        public Miller (GLib.File loc, View.ViewContainer ctab, ViewMode mode) {
+        public Miller (GLib.File loc, ViewContainer ctab, ViewMode mode) {
             this.ctab = ctab;
             this.root_location = loc;
 

@@ -32,7 +32,6 @@ public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
-    // private ClipboardManager clipboard;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -106,7 +105,7 @@ public class Files.Application : Gtk.Application {
 
         granite_settings.notify["prefers-color-scheme"].connect (() => {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-            Files.EmblemRenderer.clear_cache ();
+            // Files.EmblemRenderer.clear_cache ();
         });
     }
 
@@ -224,7 +223,7 @@ public class Files.Application : Gtk.Application {
                 /* Open window with tabs at each requested location. */
                 create_window_with_tabs (files);
             } else {
-                var win = (View.Window)(get_active_window ());
+                var win = (Files.Window)(get_active_window ());
                 win.open_tabs (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
             }
         } else if (create_new_window || window_count == 0) {
@@ -255,7 +254,7 @@ public class Files.Application : Gtk.Application {
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((View.Window)window).quit ();
+            ((Files.Window)window).quit ();
         });
 
         base.quit ();
@@ -264,14 +263,14 @@ public class Files.Application : Gtk.Application {
     public void folder_deleted (GLib.File file) {
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((View.Window)window).folder_deleted (file);
+            ( (Files.Window)window).folder_deleted (file);
         });
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Notify each window */
         foreach (var window in this.get_windows ()) {
-            ((View.Window)window).mount_removed (mount);
+            ( (Files.Window)window).mount_removed (mount);
         }
     }
 
@@ -294,21 +293,21 @@ public class Files.Application : Gtk.Application {
                                         prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
-    public View.Window? create_window (GLib.File? location = null,
+    public Files.Window? create_window (GLib.File? location = null,
                                        ViewMode viewmode = ViewMode.PREFERRED) {
 
         return create_window_with_tabs ({location}, viewmode);
     }
 
     /* All window creation should be done via this function */
-    private View.Window? create_window_with_tabs (GLib.File[] locations = {},
+    private Files.Window? create_window_with_tabs (GLib.File[] locations = {},
                                                   ViewMode viewmode = ViewMode.PREFERRED) {
 
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
             return null;
         }
 
-        var win = new View.Window (this);
+        var win = new Files.Window (this);
         add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
         win.open_tabs (locations, viewmode);

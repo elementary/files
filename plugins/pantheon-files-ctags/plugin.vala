@@ -128,7 +128,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
     private async void consume_unknowns_queue () {
         Files.File gof = null;
-        /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
+        /* Length of unknowns queue limited to visible files by DirectoryView.
          * Avoid querying whole directory in case very large. */
         while ((gof = unknowns.pop_head ()) != null) {
             try {

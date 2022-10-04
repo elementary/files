@@ -20,9 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-namespace Files.View {
-
-public class PropertiesWindow : AbstractPropertiesDialog {
+public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
     private Gtk.Entry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
@@ -39,7 +37,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private bool only_one;
     private Files.File goffile;
 
-    public Files.AbstractDirectoryView view {get; private set;}
+    public Files.DirectoryView view {get; private set;}
     public Gtk.Entry entry {get; private set;}
     private string original_name {
         get {
@@ -120,7 +118,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private uint file_count;
 
     public PropertiesWindow (
-        GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent
+        GLib.List<Files.File> _files, Files.DirectoryView _view, Gtk.Window parent
     ) {
         base (_("Properties"), parent);
 
@@ -1314,5 +1312,4 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             contains_value.show ();
         }
     }
-}
 }

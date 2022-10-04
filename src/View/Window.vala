@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Window : Gtk.ApplicationWindow {
+public class Files.Window : Gtk.ApplicationWindow {
     const GLib.ActionEntry [] WIN_ENTRIES = {
         {"new-window", action_new_window},
         {"quit", action_quit},
@@ -54,7 +54,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
-    public Chrome.HeaderBar top_menu;
+    public HeaderBar top_menu;
     public Adw.TabView tab_view;
     public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
@@ -171,7 +171,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void build_window () {
-        top_menu = new Chrome.HeaderBar ();
+        top_menu = new HeaderBar ();
 
         tab_view = new Adw.TabView ();
         tab_bar = new Adw.TabBar () {
@@ -496,7 +496,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
 
         mode = real_mode (mode);
-        var content = new View.ViewContainer (this);
+        var content = new ViewContainer (this);
         // var tab = new Adw.TabPage ()
         // .with_accellabels (
         //     "",
@@ -1006,7 +1006,7 @@ warning ("WIN action reload");
 
         for (uint i = 0; i < tab_view.n_pages; i++) {
             var tab_page = (Adw.TabPage)(tab_view.pages.get_item (i));
-            ((View.ViewContainer)(tab_page.child)).close ();
+            ((ViewContainer)(tab_page.child)).close ();
         }
 
         this.destroy ();
@@ -1089,7 +1089,7 @@ warning ("WIN action reload");
         GLib.Variant tab_info_array = Files.app_settings.get_value ("tab-info-list");
         GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
 
-        ViewMode mode = ViewMode.INVALID;
+        ViewMode mode = ViewMode.ICON;
         string? root_uri = null;
         string? tip_uri = null;
 
@@ -1115,10 +1115,10 @@ warning ("WIN action reload");
             add_tab_by_uri (root_uri, mode);
 
             if (mode == ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
-                expand_miller_view (tip_uri, root_uri);
+                // expand_miller_view (tip_uri, root_uri);
             }
 
-            mode = ViewMode.INVALID;
+            mode = ViewMode.ICON;
             root_uri = null;
             tip_uri = null;
 
@@ -1154,35 +1154,35 @@ warning ("WIN action reload");
         return restoring_tabs;
     }
 
-    private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
-        /* It might be more elegant for Miller.vala to handle this */
-        var mwcols = (Miller)(current_container.view) ;
-        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
+    // private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
+    //     /* It might be more elegant for Miller.vala to handle this */
+    //     var mwcols = (Miller)(current_container.view) ;
+    //     var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
 
-        if (unescaped_tip_uri == null) {
-            warning ("Invalid tip uri for Miller View");
-            return;
-        }
+    //     if (unescaped_tip_uri == null) {
+    //         warning ("Invalid tip uri for Miller View");
+    //         return;
+    //     }
 
-        var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
-        var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
-        var relative_path = root_location.get_relative_path (tip_location);
-        GLib.File gfile;
+    //     var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
+    //     var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
+    //     var relative_path = root_location.get_relative_path (tip_location);
+    //     GLib.File gfile;
 
-        if (relative_path != null) {
-            string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
-            string uri = root_location.get_uri ();
+    //     if (relative_path != null) {
+    //         string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
+    //         string uri = root_location.get_uri ();
 
-            foreach (string dir in dirs) {
-                uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                gfile = get_file_from_uri (uri);
+    //         foreach (string dir in dirs) {
+    //             uri += (GLib.Path.DIR_SEPARATOR_S + dir);
+    //             gfile = get_file_from_uri (uri);
 
-                mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
-            }
-        } else {
-            warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
-        }
-    }
+    //             mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
+    //         }
+    //     } else {
+    //         warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
+    //     }
+    // }
 
     private void update_top_menu () {
         if (restoring_tabs > 0 || current_container == null) {
@@ -1218,7 +1218,7 @@ warning ("WIN action reload");
 
         for (uint i = 0; i < tab_view.pages.get_n_items (); i++) {
         // foreach (var page in tab_view.get_children ()) {
-            var view_container = (View.ViewContainer)(tab_view.pages.get_item (i)) ;
+            var view_container = (ViewContainer)(tab_view.pages.get_item (i)) ;
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {

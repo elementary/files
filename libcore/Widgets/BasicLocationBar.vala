@@ -19,7 +19,7 @@
 
 ***/
 
-namespace Files.View.Chrome {
+namespace Files.Chrome {
     public class BasicLocationBar : Gtk.Box, Locatable {
         private Navigatable bread;
         protected Gtk.Widget widget;

@@ -65,7 +65,7 @@ public class Files.Directory : Object {
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
-    public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
+    public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by DirectoryView
                                                         Gets emitted for any kind of file operation */
 
     public signal void done_loading ();

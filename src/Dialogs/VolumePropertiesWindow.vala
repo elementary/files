@@ -20,7 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
+public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
 
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);

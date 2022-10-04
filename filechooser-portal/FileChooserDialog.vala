@@ -48,7 +48,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
     }
 
     private Adw.HeaderBar header;
-    private View.Chrome.BasicLocationBar location_bar;
+    private Chrome.BasicLocationBar location_bar;
     private Gtk.FileChooserWidget chooser;
     private Gtk.TreeView tree_view;
 
@@ -82,7 +82,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
         previous_files = new Queue<GLib.File> ();
         next_paths = new Queue<GLib.File> ();
 
-        location_bar = new View.Chrome.BasicLocationBar ();
+        location_bar = new Chrome.BasicLocationBar ();
         var title_label = new Gtk.Label (title);
         var title_widget = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         title_widget.prepend (title_label);

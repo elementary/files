@@ -20,7 +20,7 @@
 
 ***/
 
-namespace Files.View {
+namespace Files {
     public class Welcome : Granite.Placeholder {
         //TODO Rework for Granite.Placeholder
         public Welcome (string title, string secondary) {
