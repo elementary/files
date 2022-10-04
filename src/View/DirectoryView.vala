@@ -20,7 +20,10 @@
 */
 
 namespace Files {
-    public class DirectoryView : Gtk.Box {
+    public class DirectoryView : Gtk.Widget {
+        static construct {
+            set_layout_manager_type (typeof (Gtk.BinLayout));
+        }
         public Files.ViewInterface view_widget { get; construct; }
         public Gtk.Stack stack { get; construct; }
 
@@ -198,6 +201,8 @@ namespace Files {
         }
 
         construct {
+            set_layout_manager (new Gtk.BinLayout ());
+
             switch (mode) {
                 case ViewMode.ICON:
                 case ViewMode.LIST:
@@ -226,15 +231,13 @@ namespace Files {
                 schedule_thumbnail_color_tag_timeout ();
             });
 
-
-
             stack = new Gtk.Stack ();
             stack.add_named (new Gtk.Label ("EMPTY"), "empty-label");
             stack.add_child (view_widget);
             stack.visible_child_name = "empty-label";
 
             scrolled_window.set_child (stack);
-            append (scrolled_window);
+            scrolled_window.set_parent (this);
 
             editable_cursor = new Gdk.Cursor.from_name ("text", null);
             activatable_cursor = new Gdk.Cursor.from_name ("pointer", null);
@@ -284,7 +287,6 @@ namespace Files {
                 vscroll_bar.visible = !renaming;
             });
 
-
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
@@ -292,6 +294,12 @@ namespace Files {
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             connect_directory_handlers (slot.directory);
+        }
+
+        ~DirectoryView () {
+            while (this.get_last_child () != null) {
+                this.get_last_child ().unparent ();
+            }
         }
 // }}
 
