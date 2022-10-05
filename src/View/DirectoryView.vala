@@ -1102,7 +1102,7 @@ warning ("adding file");
 
         private void on_directory_done_loading (Directory dir) {
 //             /* Should only be called on directory creation or reload */
-//             disconnect_directory_loading_handlers (dir);
+            disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
