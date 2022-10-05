@@ -214,6 +214,9 @@ namespace Files {
             }
 
             view_widget.set_up_zoom_level ();
+            view_widget.path_change_request.connect ((uri) => {
+                path_change_request (uri, Files.OpenFlag.DEFAULT, false);
+            });
 
             scrolled_window = new Gtk.ScrolledWindow () {
                 can_focus = true,

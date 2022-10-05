@@ -31,7 +31,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public signal void selection_changed ();
 
     ~GridView () {
-        warning ("Grid View destruct");
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
         }
@@ -43,12 +42,19 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var sorter = new Gtk.StringSorter (null); //TODO Provide expression to get strings from File
         var sorted_model = new Gtk.SortListModel (model, sorter);
         var selection_model = new Gtk.MultiSelection (sorted_model);
+        selection_model.selection_changed.connect (() => {
+
+        });
+
         var item_factory = new Gtk.SignalListItemFactory ();
 
         item_factory.setup.connect ((obj) => {
+            var list_item = ((Gtk.ListItem)obj);
             var file_item = new FileItem ();
             bind_property ("zoom-level", file_item, "zoom-level", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
-            ((Gtk.ListItem)obj).child = file_item;
+            list_item.child = file_item;
+            list_item.activatable = true;
+            list_item.selectable = true;
         });
 
         item_factory.bind.connect ((obj) => {
@@ -71,7 +77,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             orientation = Gtk.Orientation.VERTICAL
         };
         grid_view.activate.connect ((pos) => {
-
+            var file = (Files.File)grid_view.model.get_item (pos);
+            path_change_request (file.location);
         });
 
         grid_view.set_parent (this);
@@ -196,6 +203,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
             image.set_parent (this);
             label.set_parent (this);
+
+            Thumbnailer.@get ().finished.connect ((req) => {
+                if (req == thumbnail_request) {
+                    thumbnail_request = -1;
+                }
+
+                update_pix ();
+            });
         }
 
         public void set_file (Files.File? file) {
@@ -219,6 +234,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             } else {
                 label.label = "Unbound";
                 image.icon_name = "image-missing";
+                thumbnail_request = -1;
             }
         }
 
@@ -242,14 +258,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             if (thumbnail_request > -1) {
                 return;
             }
-
-            Thumbnailer.@get ().finished.connect ((req) => {
-                if (req == thumbnail_request) {
-                    thumbnail_request = -1;
-                }
-
-                update_pix ();
-            });
 
             Thumbnailer.@get ().queue_file (file, out thumbnail_request, image.pixel_size > 128);
         }
