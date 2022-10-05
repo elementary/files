@@ -23,7 +23,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
-    
+
     public signal void path_change_request (GLib.File location);
 
     public virtual void set_up_zoom_level () {}

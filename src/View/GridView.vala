@@ -78,7 +78,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         };
         grid_view.activate.connect ((pos) => {
             var file = (Files.File)grid_view.model.get_item (pos);
-            path_change_request (file.location);
+            if (file.is_folder ()) {
+                path_change_request (file.location);
+            }
         });
 
         grid_view.set_parent (this);
@@ -263,7 +265,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         ~FileItem () {
-            warning ("FileItem destruct");
+            // warning ("FileItem destruct");
             while (this.get_last_child () != null) {
                 this.get_last_child ().unparent ();
             }
