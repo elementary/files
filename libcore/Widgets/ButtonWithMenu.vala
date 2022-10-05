@@ -155,9 +155,9 @@ namespace Files.Chrome {
         //     base.show_all ();
         }
 
-        private void deactivate_menu () {
-            active = false;
-        }
+        // private void deactivate_menu () {
+        //     active = false;
+        // }
 
         // private bool on_button_release_event (Gdk.EventButton ev) {
         //     if (ev.time - last_click_time < long_press_time) {

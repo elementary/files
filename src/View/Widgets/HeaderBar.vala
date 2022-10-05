@@ -82,11 +82,11 @@ public class Files.HeaderBar : Gtk.Box {
         headerbar.pack_end (view_switcher);
         headerbar.set_title_widget (location_bar);
 
-        button_forward.slow_press.connect (() => {
+        button_forward.toggled.connect (() => {
             forward (1);
         });
 
-        button_back.slow_press.connect (() => {
+        button_back.toggled.connect (() => {
             back (1);
         });
 
