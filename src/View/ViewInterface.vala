@@ -25,7 +25,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract ZoomLevel maximum_zoom { get; set; }
 
     public virtual void set_up_zoom_level () {}
-    public virtual void change_zoom_level (ZoomLevel zoom) {}
+    // public virtual void change_zoom_level (ZoomLevel zoom) {}
     public virtual void zoom_in () {}
     public virtual void zoom_out () {}
     public virtual void zoom_normal () {}
@@ -43,7 +43,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void file_icon_changed (Files.File file) {}
     public virtual void file_deleted (Files.File file) {}
     public virtual void file_changed (Files.File file) {}
-    public virtual List<Files.File>? get_files_to_thumbnail (out uint actually_visible) { return null; }
     public virtual void add_file (Files.File file) {}
     public virtual void clear () {}
 

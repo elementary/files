@@ -44,38 +44,37 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var sorted_model = new Gtk.SortListModel (model, sorter);
         var selection_model = new Gtk.MultiSelection (sorted_model);
         var item_factory = new Gtk.SignalListItemFactory ();
+
         item_factory.setup.connect ((obj) => {
-            var file_item = new FileItem (zoom_level);
-            bind_property ("zoom-level", file_item, "zoom-level", BindingFlags.DEFAULT);
+            var file_item = new FileItem ();
+            bind_property ("zoom-level", file_item, "zoom-level", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
             ((Gtk.ListItem)obj).child = file_item;
         });
+
         item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file = (Files.File)list_item.get_item ();
             var file_item = (FileItem)list_item.child;
-            file_item.label.label = file.basename;
+            file_item.set_file (file);
         });
+
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (FileItem)list_item.child;
-            file_item.label.label = "Unbound";
+            file_item.set_file (null);
         });
+
         item_factory.teardown.connect ((obj) => {
         });
 
-        grid_view = new Gtk.GridView (selection_model, item_factory);
+        grid_view = new Gtk.GridView (selection_model, item_factory) {
+            orientation = Gtk.Orientation.VERTICAL
+        };
         grid_view.activate.connect ((pos) => {
 
         });
-        grid_view.realize.connect ((w) => {
-            grid_view.grab_focus ();
-        });
 
         grid_view.set_parent (this);
-
-        notify["zoom-level"].connect (() => {
-            change_zoom_level (zoom_level);
-        });
     }
 
     public override void add_file (Files.File file) {
@@ -84,11 +83,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public override void clear () {
         model.remove_all ();
-    }
-
-    public override void change_zoom_level (ZoomLevel zoom) {
-        zoom_level = zoom;
-        queue_resize ();
     }
 
     public override void zoom_in () {
@@ -125,8 +119,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public override void unselect_all () {}
     public override void file_icon_changed (Files.File file) {}
     public override void file_deleted (Files.File file) {}
-    public override void file_changed (Files.File file) {}
-    public override List<Files.File>? get_files_to_thumbnail (out uint actually_visible) { return null; }
+    public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
     public uint get_selected_files (out GLib.List<Files.File> selected_files) {
         selected_files = null;
@@ -168,31 +161,27 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
+    private class FileItem : Gtk.Widget {
+        static construct {
+            set_layout_manager_type (typeof (Gtk.BoxLayout));
+        }
 
+        int thumbnail_request = -1;
 
-    private class FileItem : Gtk.Box {
+        private Files.File? file = null;
         public Gtk.Image image { get; set; }
         public Gtk.Label label { get; set; }
         public ZoomLevel zoom_level {
             set {
                 var size = value.to_icon_size ();
                 image.pixel_size = size;
-                var marg = size / 3;
-                margin_top = marg;
-                margin_bottom = marg;
-                margin_start = marg;
-                margin_end = marg;
+                update_pix ();
             }
         }
 
-        public FileItem (ZoomLevel zoom) {
-            zoom_level = zoom;
-        }
-
         construct {
-            orientation = Gtk.Orientation.VERTICAL;
-            spacing = 6;
-
+            var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
+            set_layout_manager (lm);
 
             image = new Gtk.Image () {
                 icon_name = "image-missing",
@@ -200,11 +189,76 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
             label = new Gtk.Label ("Unbound") {
                 wrap = true,
-                wrap_mode = Pango.WrapMode.WORD_CHAR
+                wrap_mode = Pango.WrapMode.WORD_CHAR,
+                ellipsize = Pango.EllipsizeMode.END,
+                lines = 5
             };
 
-            append (image);
-            append (label);
+            image.set_parent (this);
+            label.set_parent (this);
+        }
+
+        public void set_file (Files.File? file) {
+            this.file = file;
+            if (file != null) {
+                file.ensure_query_info ();
+                label.label = file.custom_display_name ?? file.basename;
+                image.icon_name = "image-missing";
+                update_pix ();
+
+                if (file.pix == null) {
+                    file.query_thumbnail_update (); // Ensure thumbstate up to date
+                    if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                        get_thumbnail ();
+                    }
+
+                    if (file.icon != null) {
+                        image.gicon = file.icon;
+                    }
+                }
+            } else {
+                label.label = "Unbound";
+                image.icon_name = "image-missing";
+            }
+        }
+
+        private void update_pix () {
+            if (file == null) {
+                return;
+            }
+
+            file.update_icon (image.pixel_size, 1); //TODO Deal with scale
+            if (file.pix != null) {
+                image.paintable = Gdk.Texture.for_pixbuf (file.pix);
+                queue_draw ();
+            }
+        }
+
+        public void get_color_tag () {
+
+        }
+
+        private void get_thumbnail () {
+            if (thumbnail_request > -1) {
+                return;
+            }
+
+            Thumbnailer.@get ().finished.connect ((req) => {
+                if (req == thumbnail_request) {
+                    thumbnail_request = -1;
+                }
+
+                update_pix ();
+            });
+
+            Thumbnailer.@get ().queue_file (file, out thumbnail_request, image.pixel_size > 128);
+        }
+
+        ~FileItem () {
+            warning ("FileItem destruct");
+            while (this.get_last_child () != null) {
+                this.get_last_child ().unparent ();
+            }
         }
     }
 }

@@ -51,7 +51,7 @@ public class Files.File : GLib.Object {
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
     public string basename { get; construct; }
-    public string? custom_display_name = null;
+    public string? custom_display_name { get; set; default = null; }
     public string uri { get; construct; }
     public uint64 size = 0;
     public string format_size = null;
@@ -60,10 +60,10 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    public Gdk.Pixbuf? pix = null;
+    public Gdk.Pixbuf? pix { get; set; default = null; }
     public string? custom_icon_name = null;
     public int pix_size = -1;
-    public int pix_scale = -1;
+    public int pix_scale = 1;
     public int width = 0;
     public int height = 0;
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
