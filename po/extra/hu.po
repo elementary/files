@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-06 12:12+0000\n"
-"Last-Translator: Ju Li Ahn <milestone2@keemail.me>\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
 "Language: hu\n"
@@ -152,7 +152,8 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:53
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr "Listanézetben az almappák többszörözése bizonyos esetekben javítva lett"
+msgstr ""
+"Listanézetben az almappák többszöröződése bizonyos esetekben javítva lett"
 
 #: data/io.elementary.files.appdata.xml.in.in:54
 msgid ""
