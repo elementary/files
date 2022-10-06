@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-06 12:11+0000\n"
-"Last-Translator: Ju Li Ahn <milestone2@keemail.me>\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
 "Language: hu\n"
@@ -142,7 +142,7 @@ msgstr "A kurzor megjelenése igazodik a művelethez"
 
 #: data/io.elementary.files.appdata.xml.in.in:51
 msgid "The Trash sidebar item can no longer be removed"
-msgstr "A Szemetes oldalsáveleme többé nem távolítható el"
+msgstr "A Kuka oldalsáveleme többé nem távolítható el"
 
 #: data/io.elementary.files.appdata.xml.in.in:52
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
