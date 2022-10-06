@@ -74,7 +74,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
 
         grid_view = new Gtk.GridView (selection_model, item_factory) {
-            orientation = Gtk.Orientation.VERTICAL
+            orientation = Gtk.Orientation.VERTICAL,
+            // Setting min and max columns affects row spacing unexpectedly!
+            // Also depends on size of model!!
+            min_columns = 5,
+            max_columns = 20
         };
         grid_view.activate.connect ((pos) => {
             var file = (Files.File)grid_view.model.get_item (pos);
@@ -185,6 +189,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 var size = value.to_icon_size ();
                 image.pixel_size = size;
                 update_pix ();
+                image.margin_start = size / 2;
+                image.margin_end = size / 2;
+                image.margin_top = size / 4;
             }
         }
 
@@ -200,7 +207,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 wrap = true,
                 wrap_mode = Pango.WrapMode.WORD_CHAR,
                 ellipsize = Pango.EllipsizeMode.END,
-                lines = 5
+                lines = 5,
+                margin_top = 3,
+                margin_bottom = 3,
+                margin_start = 3,
+                margin_end = 3,
             };
 
             image.set_parent (this);

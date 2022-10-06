@@ -220,7 +220,7 @@ namespace Files {
 
             scrolled_window = new Gtk.ScrolledWindow () {
                 can_focus = true,
-                hscrollbar_policy = Gtk.PolicyType.NEVER,
+                hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
                 vscrollbar_policy = Gtk.PolicyType.AUTOMATIC
             };
 
