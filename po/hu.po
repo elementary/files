@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-08-24 10:58+0000\n"
+"PO-Revision-Date: 2022-10-06 16:31+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -1769,7 +1769,7 @@ msgstr "Miniatűrök elrejtése"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Mappák kiválasztása egy kattintással"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
