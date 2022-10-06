@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-10-06 12:13+0000\n"
+"PO-Revision-Date: 2022-10-06 16:31+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -165,20 +165,22 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:55
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
-"A nem megfelelően helyreállított mappák bizonyos esetekben javítva lettek"
+"A bizonyos esetekben nem megfelelően helyreállított mappák javítva lettek"
 
 #: data/io.elementary.files.appdata.xml.in.in:56
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
-msgstr ""
+msgstr "Megerősítés kérése fájlok felülírása előtt a fájlválasztóban"
 
 #: data/io.elementary.files.appdata.xml.in.in:57
 msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
+msgstr "A Ctrl + V mostantól mindig a háttérben lévő mappába illeszt be"
 
 #: data/io.elementary.files.appdata.xml.in.in:58
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
 msgstr ""
+"A Shift + Ctrl + V mostantól mindig a kiválasztott mappába illeszt be, ha "
+"van ilyen"
 
 #: data/io.elementary.files.appdata.xml.in.in:68
 #: data/io.elementary.files.appdata.xml.in.in:86
@@ -209,7 +211,7 @@ msgstr "A könyvjelzők átrendezése közbeni összeomlás megelőzve"
 
 #: data/io.elementary.files.appdata.xml.in.in:88
 msgid "Close FileChooser with Esc key"
-msgstr ""
+msgstr "A fájlválasztó bezárása az Esc billentyűvel"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Use new emblems for git status"
