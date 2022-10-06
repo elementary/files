@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-10-06 12:09+0000\n"
+"PO-Revision-Date: 2022-10-06 12:10+0000\n"
 "Last-Translator: Ju Li Ahn <milestone2@keemail.me>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -124,15 +124,16 @@ msgstr "Frissített fordítások"
 
 #: data/io.elementary.files.appdata.xml.in.in:47
 msgid "Renaming with the same name no longer shows an error dialog"
-msgstr ""
+msgstr "Nem jelzi többé hibaként, ha olyan nevet ad, ami már létezik"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
+msgstr "Átnevezéskor a Ctrl + A a bejegyzés összes szövegét kijelöli"
 
 #: data/io.elementary.files.appdata.xml.in.in:49
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
+"Több elem kijelölése a Shift + Arrow kombinációval most megfelelően működik"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 msgid "The appearance of the cursor now matches the action"
