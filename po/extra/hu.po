@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-06 12:10+0000\n"
-"Last-Translator: Ju Li Ahn <milestone2@keemail.me>\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
 "Language: hu\n"
@@ -133,11 +133,12 @@ msgstr "Átnevezéskor a Ctrl + A a bejegyzés összes szövegét kijelöli"
 #: data/io.elementary.files.appdata.xml.in.in:49
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
-"Több elem kijelölése a Shift + Arrow kombinációval most megfelelően működik"
+"Több elem kijelölése a Shift + Nyílbillentyű kombinációval most megfelelően "
+"működik"
 
 #: data/io.elementary.files.appdata.xml.in.in:50
 msgid "The appearance of the cursor now matches the action"
-msgstr ""
+msgstr "A kurzor megjelenése igazodik a művelethez"
 
 #: data/io.elementary.files.appdata.xml.in.in:51
 msgid "The Trash sidebar item can no longer be removed"
