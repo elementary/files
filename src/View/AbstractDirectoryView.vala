@@ -686,6 +686,8 @@ namespace Files {
             block_model ();
             model.clear ();
             all_selected = false;
+            /* Prevent unexpected file activation after navigation with double-click in mixed mode */
+            on_directory = false;
             unblock_model ();
         }
 
@@ -3509,7 +3511,6 @@ namespace Files {
              * dragging on blank areas
              */
             block_drag_and_drop ();
-
             /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
                 return false;
