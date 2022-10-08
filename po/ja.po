@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-08-24 15:29+0000\n"
+"PO-Revision-Date: 2022-10-08 04:50+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1739,7 +1739,7 @@ msgstr "サムネイルを非表示"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "シングルクリックでフォルダーを選択"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
