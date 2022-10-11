@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-08-25 03:14+0000\n"
+"PO-Revision-Date: 2022-10-12 12:57+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1780,7 +1780,7 @@ msgstr "Küçük Resimleri Gizle"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Tek Tıklamayla Klasörleri Seç"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
