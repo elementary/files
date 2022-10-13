@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-07-21 13:28+0000\n"
+"PO-Revision-Date: 2022-10-13 04:38+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -230,7 +230,7 @@ msgstr[0] "%i 项"
 
 #: libcore/File.vala:1121
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: libcore/File.vala:1128
 #, c-format
@@ -1114,15 +1114,15 @@ msgstr "加入书签"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr "永久清空回收站"
+msgstr "清空回收站"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
-msgstr "永久清空回收站"
+msgstr "清空回收站"
 
 #: libcore/PopupMenuBuilder.vala:117
 msgid "Permanently Delete Trash on this Mount"
-msgstr "永久清空此分卷回收站"
+msgstr "清空此分卷回收站"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1715,7 +1715,7 @@ msgstr "隐藏缩略图"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "单击选中"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
