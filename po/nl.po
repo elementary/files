@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-08-14 05:17+0000\n"
+"PO-Revision-Date: 2022-10-15 15:57+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -232,7 +232,7 @@ msgstr[1] "%i items"
 
 #: libcore/File.vala:1121
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: libcore/File.vala:1128
 #, c-format
@@ -1492,7 +1492,7 @@ msgstr "Algemeen"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:144
 msgid "Device Usage"
-msgstr "Apparaatgebruik"
+msgstr "Schijfgebruik"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:164
 msgid "Capacity:"
@@ -1569,7 +1569,7 @@ msgstr "Verwijderd:"
 
 #: src/Dialogs/PropertiesWindow.vala:593
 msgid "Media type:"
-msgstr "Media type:"
+msgstr "Mediatype:"
 
 #: src/Dialogs/PropertiesWindow.vala:600
 msgid "Resolution:"
@@ -1810,7 +1810,7 @@ msgstr "Verberg miniatuurweergaven"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Folders selecteren met een enkele klik"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
