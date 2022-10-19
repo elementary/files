@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2021-07-28 00:16+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/extra/pa/"
@@ -29,11 +29,6 @@ msgstr "ਫ਼ੋਲਡਰ;ਮੈਨੇਜਰ;ਫਰੋਲੋ;ਡਿਸਕ; ਫ�
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "ਫ਼ਾਇਲ ਮੈਨੇਜਰ"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"

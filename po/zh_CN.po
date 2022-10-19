@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-07-21 13:28+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
+"PO-Revision-Date: 2022-10-13 04:38+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -45,25 +45,25 @@ msgstr "选中"
 msgid "Open"
 msgstr "打开"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:281
+#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
 msgid "Save"
 msgstr "保存"
 
-#: filechooser-portal/Main.vala:350
+#: filechooser-portal/Main.vala:351
 #, c-format
 msgid "Replace “%s”?"
 msgstr "替换 “%s”？"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:352
 msgid "Replacing this file will overwrite its current contents"
 msgstr "若选择替换文件，其内容将被覆盖"
 
-#: filechooser-portal/Main.vala:360
+#: filechooser-portal/Main.vala:361
 #, c-format
 msgid "Replace the target of “%s”?"
 msgstr "替换 “%s” 的目标文件?"
 
-#: filechooser-portal/Main.vala:363
+#: filechooser-portal/Main.vala:364
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
 msgstr "若选择替换目标文件，其内容将被覆盖。"
@@ -177,7 +177,7 @@ msgstr "正在连接…"
 msgid "Please verify your user details."
 msgstr "请验检查您的用户信息。"
 
-#: libcore/Directory.vala:684
+#: libcore/Directory.vala:689
 msgid "Server did not respond within time limit"
 msgstr "服务器响应超时"
 
@@ -198,7 +198,7 @@ msgstr "复制至此处"
 msgid "Link Here"
 msgstr "链接到此处"
 
-#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1116
+#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1117
 msgid "Inaccessible"
 msgstr "无法访问"
 
@@ -218,17 +218,21 @@ msgstr "从文件创建指令失败： "
 msgid "Unable to Launch Desktop File: "
 msgstr "无法启动桌面文件： "
 
-#: libcore/File.vala:1111
+#: libcore/File.vala:1112
 msgid "Empty"
 msgstr "清空"
 
-#: libcore/File.vala:1113
+#: libcore/File.vala:1114
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
 msgstr[0] "%i 项"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1121
+msgid "----"
+msgstr "----"
+
+#: libcore/File.vala:1128
 #, c-format
 msgid "link to %s"
 msgstr "链接到 %s"
@@ -1092,7 +1096,7 @@ msgid "_Unmount"
 msgstr "卸载"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Properties"
 msgstr "属性"
 
@@ -1104,21 +1108,21 @@ msgstr "弹出媒介"
 msgid "Safely Remove"
 msgstr "安全移除"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2023
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2025
 msgid "Add to Bookmarks"
 msgstr "加入书签"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr "永久清空回收站"
+msgstr "清空回收站"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
-msgstr "永久清空回收站"
+msgstr "清空回收站"
 
 #: libcore/PopupMenuBuilder.vala:117
 msgid "Permanently Delete Trash on this Mount"
-msgstr "永久清空此分卷回收站"
+msgstr "清空此分卷回收站"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1334,8 +1338,8 @@ msgstr "显示程序版本"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "在独立标签中分别打开一个或多个 URI"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1911
-#: src/View/AbstractDirectoryView.vala:1917
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1913
+#: src/View/AbstractDirectoryView.vala:1919
 msgid "New Window"
 msgstr "新建窗口"
 
@@ -1498,7 +1502,7 @@ msgid "Original Location:"
 msgstr "原始位置："
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:2000
 msgid "Other Application…"
 msgstr "其他应用…"
 
@@ -1531,7 +1535,7 @@ msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u 个文件"
 
-#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:223
+#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1577,209 +1581,213 @@ msgstr "无法打开 URI"
 msgid "Could not open files or URIs with this app"
 msgstr "无法使用此应用打开文件或 URI"
 
-#: src/View/AbstractDirectoryView.vala:833
-#: src/View/AbstractDirectoryView.vala:1144
+#: src/View/AbstractDirectoryView.vala:835
+#: src/View/AbstractDirectoryView.vala:1146
 msgid "Cannot execute this file"
 msgstr "不能执行此文件"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:845
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "在打开 “%s” 前需要将其移出回收站"
 
-#: src/View/AbstractDirectoryView.vala:844
+#: src/View/AbstractDirectoryView.vala:846
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr "无法直接打开回收站中的文件。要打开此文件，请将其移出回收站。"
 
-#: src/View/AbstractDirectoryView.vala:859
+#: src/View/AbstractDirectoryView.vala:861
 msgid "Cannot open this file"
 msgstr "不能打开此文件"
 
-#: src/View/AbstractDirectoryView.vala:872
+#: src/View/AbstractDirectoryView.vala:874
 msgid "Cannot identify file type to open"
 msgstr "不能识别文件类型并打开"
 
-#: src/View/AbstractDirectoryView.vala:1614
+#: src/View/AbstractDirectoryView.vala:1616
 msgid "Cannot drop this file"
 msgstr "无法放置此文件"
 
-#: src/View/AbstractDirectoryView.vala:1615
+#: src/View/AbstractDirectoryView.vala:1617
 msgid "Invalid file name provided"
 msgstr "提供的文件名无效"
 
-#: src/View/AbstractDirectoryView.vala:1894
-#: src/View/AbstractDirectoryView.vala:1900 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1896
+#: src/View/AbstractDirectoryView.vala:1902 src/View/Window.vala:182
 msgid "New Tab"
 msgstr "新标签"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1936
 msgid "Run"
 msgstr "运行"
 
-#: src/View/AbstractDirectoryView.vala:1941
+#: src/View/AbstractDirectoryView.vala:1943
 #, c-format
 msgid "Open in %s"
 msgstr "在 %s 中打开"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2012
 msgid "Open in"
 msgstr "打开方式"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2014
 #: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "打开方式"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2045
 msgid "Select All"
 msgstr "全选"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Invert Selection"
 msgstr "反向选择"
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Deselect All"
 msgstr "取消全选"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2071
 msgid "Cut"
 msgstr "剪切"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2079
 msgid "Copy"
 msgstr "复制"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Move to Trash"
 msgstr "移至回收站"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Delete Permanently"
 msgstr "永久删除"
 
-#: src/View/AbstractDirectoryView.vala:2096
+#: src/View/AbstractDirectoryView.vala:2098
 msgid "Restore from Trash"
 msgstr "从回收站恢复"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2121
 msgid "Open Parent Folder"
 msgstr "打开上级文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2122
+#: src/View/AbstractDirectoryView.vala:2124
 msgid "Remove from History"
 msgstr "从历史中删除"
 
-#: src/View/AbstractDirectoryView.vala:2148
+#: src/View/AbstractDirectoryView.vala:2150
 msgid "Rename…"
 msgstr "重命名…"
 
-#: src/View/AbstractDirectoryView.vala:2155
+#: src/View/AbstractDirectoryView.vala:2157
 msgid "Copy as Link"
 msgstr "复制为链接"
 
-#: src/View/AbstractDirectoryView.vala:2175
-#: src/View/AbstractDirectoryView.vala:2270
+#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2276
 msgid "Paste Link into Folder"
 msgstr "粘贴链接到文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2180
-#: src/View/AbstractDirectoryView.vala:2245
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2250
 msgid "Paste into Folder"
 msgstr "粘贴到文件夹中"
 
-#: src/View/AbstractDirectoryView.vala:2190
-#: src/View/AbstractDirectoryView.vala:2275
+#: src/View/AbstractDirectoryView.vala:2192
+#: src/View/AbstractDirectoryView.vala:2281
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/View/AbstractDirectoryView.vala:2231
+#: src/View/AbstractDirectoryView.vala:2233
 msgid "Show Hidden Files"
 msgstr "显示隐藏文件"
 
-#: src/View/AbstractDirectoryView.vala:2236
+#: src/View/AbstractDirectoryView.vala:2238
 msgid "Show Remote Thumbnails"
 msgstr "显示远程缩略图"
 
-#: src/View/AbstractDirectoryView.vala:2239
+#: src/View/AbstractDirectoryView.vala:2241
 msgid "Hide Thumbnails"
 msgstr "隐藏缩略图"
 
-#: src/View/AbstractDirectoryView.vala:2334
+#: src/View/AbstractDirectoryView.vala:2244
+msgid "Select Folders with Single Click"
+msgstr "单击选中"
+
+#: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
 msgstr "名称"
 
-#: src/View/AbstractDirectoryView.vala:2339 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:27
 msgid "Size"
 msgstr "大小"
 
-#: src/View/AbstractDirectoryView.vala:2344 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2351 src/View/ListView.vala:28
 msgid "Type"
 msgstr "类型"
 
-#: src/View/AbstractDirectoryView.vala:2349
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Date"
 msgstr "日期"
 
-#: src/View/AbstractDirectoryView.vala:2354
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Reversed Order"
 msgstr "倒序"
 
-#: src/View/AbstractDirectoryView.vala:2357
+#: src/View/AbstractDirectoryView.vala:2364
 msgid "Folders Before Files"
 msgstr "文件夹在前"
 
-#: src/View/AbstractDirectoryView.vala:2369
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Sort by"
 msgstr "排序方式"
 
-#: src/View/AbstractDirectoryView.vala:2377
+#: src/View/AbstractDirectoryView.vala:2384
 msgid "Folder"
 msgstr "文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2390
 msgid "Empty File"
 msgstr "空白文件"
 
-#: src/View/AbstractDirectoryView.vala:2434
+#: src/View/AbstractDirectoryView.vala:2441
 msgid "New"
 msgstr "新建"
 
-#: src/View/AbstractDirectoryView.vala:2677
+#: src/View/AbstractDirectoryView.vala:2684
 #, c-format
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: src/View/AbstractDirectoryView.vala:2995
-#: src/View/AbstractDirectoryView.vala:3188
+#: src/View/AbstractDirectoryView.vala:3002
+#: src/View/AbstractDirectoryView.vala:3195
 msgid "Cannot remove files from here"
 msgstr "无法从此处删除文件"
 
-#: src/View/AbstractDirectoryView.vala:2996
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3172
-#: src/View/AbstractDirectoryView.vala:3189
+#: src/View/AbstractDirectoryView.vala:3003
+#: src/View/AbstractDirectoryView.vala:3168
+#: src/View/AbstractDirectoryView.vala:3179
+#: src/View/AbstractDirectoryView.vala:3196
 msgid "You do not have permission to change this location"
 msgstr "您没有更改此位置的权限"
 
-#: src/View/AbstractDirectoryView.vala:3129
+#: src/View/AbstractDirectoryView.vala:3136
 msgid "Cannot copy files that are in the trash"
 msgstr "无法复制回收站中的文件"
 
-#: src/View/AbstractDirectoryView.vala:3130
+#: src/View/AbstractDirectoryView.vala:3137
 msgid "Cutting the selection instead"
 msgstr "更改选中项为剪切"
 
-#: src/View/AbstractDirectoryView.vala:3160
-#: src/View/AbstractDirectoryView.vala:3171
+#: src/View/AbstractDirectoryView.vala:3167
+#: src/View/AbstractDirectoryView.vala:3178
 msgid "Cannot paste files here"
 msgstr "无法在此处粘贴文件"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:390
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
 msgid "This Folder Does Not Exist"
 msgstr "此文件夹不存在"
 
@@ -1841,79 +1849,79 @@ msgstr "无最近使用的文件"
 msgid "Access Denied"
 msgstr "拒绝访问"
 
-#: src/View/ViewContainer.vala:369 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "主目录"
 
-#: src/View/ViewContainer.vala:391
+#: src/View/ViewContainer.vala:392
 msgid "You cannot create a folder here."
 msgstr "无法在此位置新建文件夹。"
 
-#: src/View/ViewContainer.vala:394
+#: src/View/ViewContainer.vala:395
 msgid "The network is unavailable"
 msgstr "网络不可用"
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:396
 msgid "A working network is needed to reach this folder"
 msgstr "需要网络连接才能打开此文件夹"
 
-#: src/View/ViewContainer.vala:398
+#: src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Belong to You"
 msgstr "此文件夹不属于您"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You don't have permission to view this folder."
 msgstr "您没有权限查看该文件夹。"
 
-#: src/View/ViewContainer.vala:401
+#: src/View/ViewContainer.vala:402
 msgid "Unable to Mount Folder"
 msgstr "无法挂载文件夹"
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "Could not connect to the server for this folder."
 msgstr "无法连接到此文件夹所在服务器。"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Display Folder Contents"
 msgstr "无法显示文件夹内容"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "The operation timed out."
 msgstr "操作超时。"
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "Unable to Show Folder"
 msgstr "无法显示文件夹"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "The server for this folder could not be located."
 msgstr "无法定位此文件夹的位置。"
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "File not Found"
 msgstr "文件未找到"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:422
 msgid "The file selected no longer exists."
 msgstr "选中的文件已不存在。"
 
-#: src/View/Window.vala:182
+#: src/View/Window.vala:183
 msgid "Undo Close Tab"
 msgstr "还原关闭的标签"
 
-#: src/View/Window.vala:492
+#: src/View/Window.vala:494
 msgid "Close Tab"
 msgstr "关闭标签"
 
-#: src/View/Window.vala:493
+#: src/View/Window.vala:495
 msgid "Duplicate Tab"
 msgstr "重复标签"
 
-#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "在新窗口中打开"
 
-#: src/View/Window.vala:607 src/View/Window.vala:617
+#: src/View/Window.vala:609 src/View/Window.vala:619
 msgid "(as Administrator)"
 msgstr "(以管理员身份)"
 
@@ -2048,53 +2056,53 @@ msgstr "重新载入"
 msgid "Searching…"
 msgstr "正在搜索…"
 
-#: src/View/Widgets/OverlayBar.vala:214
+#: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
 msgstr "%u 个文件夹"
 
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " 和 %u 个其他项目- (%s) 已选中"
 
-#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
+#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
 msgstr " 已选中"
 
-#: src/View/Widgets/OverlayBar.vala:233
+#: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "已选中 %u 个项目 (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:277
+#: src/View/Widgets/OverlayBar.vala:226
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u 个子文件夹， "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:283
+#: src/View/Widgets/OverlayBar.vala:232
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u 个文件， "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:293
+#: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
 msgstr "大约 %s。"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:296
+#: src/View/Widgets/OverlayBar.vala:245
 msgid "unknown size"
 msgstr "未知大小"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:300
+#: src/View/Widgets/OverlayBar.vala:249
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"

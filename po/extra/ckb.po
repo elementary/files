@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-08-04 13:03+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
+"PO-Revision-Date: 2022-09-08 15:41+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
 "extra/ckb/>\n"
@@ -20,7 +20,7 @@ msgstr "پەڕگەکان"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr ""
+msgstr "گەڕان بەناو پەڕگەکانتدا"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
@@ -28,16 +28,11 @@ msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr ""
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr ""
+msgstr "بەڕێوەبەری پەڕگە"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr ""
+msgstr "پەنجەرەی تازە"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"

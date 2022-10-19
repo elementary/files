@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-07-21 13:28+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -36,11 +36,6 @@ msgstr "文件夹;管理;浏览;磁盘;文件系统;"
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "文件管理器"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -1041,6 +1036,9 @@ msgstr "以管理员身份运行文件管理器"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "以管理员身份运行文件管理器需要进行验证"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #~ msgid "About Files"
 #~ msgstr "关于 文件"

@@ -193,6 +193,7 @@ namespace Files {
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
+        public bool singleclick_select { get; set; }
         protected bool should_select = false;
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
@@ -241,7 +242,6 @@ namespace Files {
                         connect_tree_signals ();
 
                         update_menu_actions ();
-
                     }
                 }
             }
@@ -380,6 +380,9 @@ namespace Files {
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
+            prefs.bind_property (
+                "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
@@ -683,6 +686,8 @@ namespace Files {
             block_model ();
             model.clear ();
             all_selected = false;
+            /* Prevent unexpected file activation after navigation with double-click in mixed mode */
+            on_directory = false;
             unblock_model ();
         }
 
@@ -2238,6 +2243,9 @@ namespace Files {
                 var hide_local_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Hide Thumbnails"));
                 hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
 
+                var singleclick_select_menuitem = new Gtk.CheckMenuItem.with_label (_("Select Folders with Single Click"));
+                singleclick_select_menuitem.action_name = "win.singleclick-select";
+
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
                         paste_menuitem.add (new Granite.AccelLabel (
@@ -2257,6 +2265,7 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (singleclick_select_menuitem);
                     menu.add (show_hidden_menuitem);
                     menu.add (hide_local_thumbnails_menuitem);
                 } else {
@@ -2297,6 +2306,7 @@ namespace Files {
                     }
 
                     menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.add (singleclick_select_menuitem);
                     menu.add (show_hidden_menuitem);
 
                     if (!slot.directory.is_network) {
@@ -3250,7 +3260,7 @@ namespace Files {
                 switch (click_zone) {
                     case ClickZone.ICON:
                     case ClickZone.NAME:
-                        if (on_directory && one_or_less) {
+                        if (on_directory && one_or_less && !singleclick_select) {
                             win.set_cursor (activatable_cursor);
                         }
 
@@ -3501,7 +3511,6 @@ namespace Files {
              * dragging on blank areas
              */
             block_drag_and_drop ();
-
             /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
                 return false;
@@ -3537,7 +3546,7 @@ namespace Files {
                             /* Determine whether should activate on key release (unless pointer moved)*/
                             /* Only activate single files with unmodified button when not on blank unless double-clicked */
                             if (no_mods && one_or_less) {
-                                should_activate = (on_directory && !on_blank) || double_click_event;
+                                should_activate = (on_directory && !on_blank && !singleclick_select) || double_click_event;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
@@ -3843,6 +3852,7 @@ namespace Files {
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
             cancel_timeout (ref set_cursor_timeout_id);
+            cancel_timeout (ref draw_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 

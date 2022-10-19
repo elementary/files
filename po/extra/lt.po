@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2019-07-25 12:24+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/extra/"
@@ -38,11 +38,6 @@ msgstr "aplankas;tvarkytuvė;naršyti;diskas;failų sistema;"
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Failų tvarkytuvė"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -1070,6 +1065,9 @@ msgstr "Vykdyti Pantheon failus kaip administratorius"
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Norint vykdyti Failus administratoriaus teisėmis, reikia nustatyti tapatybę"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #, fuzzy
 #~| msgid "Fix missing File System properties menu"

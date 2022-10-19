@@ -228,6 +228,7 @@ public class Files.FileChooserPortal : Object {
 
                     var overwrite_dialog = create_overwrite_dialog (dialog, chosen_file);
                     overwrite_dialog.response.connect ((response) => {
+                        overwrite_dialog.destroy ();
                         if (response == Gtk.ResponseType.YES) {
                             save_file.callback ();
                         } else {
@@ -235,7 +236,7 @@ public class Files.FileChooserPortal : Object {
                             _response = 2;
                         }
 
-                        overwrite_dialog.destroy ();
+
                     });
                     overwrite_dialog.present ();
                     return; // Continue showing dialog until check completes

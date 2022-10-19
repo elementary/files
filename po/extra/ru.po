@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
-"PO-Revision-Date: 2022-08-01 19:34+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
+"PO-Revision-Date: 2022-10-09 21:57+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -32,16 +32,13 @@ msgstr "Просматривайте свои файлы"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr "папка;менеджер;обзор;диск;файловая система;"
+msgstr ""
+"folder;manager;explore;disk;filesystem;папка;каталог;менеджер;обзор;диск;"
+"файловая система;"
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Файловый менеджер"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -65,7 +62,7 @@ msgstr ""
 "Без труда управляйте вашими файлами и используйте папки для их организации. "
 "Вы можете использовать ваш любимый тип отображения: значки, список или "
 "таблицу. Имейте доступ ко всем вашим файлам, включая локальные, на внешнем "
-"или на удаленном устройстве, используя FTP, SFTP, AFP, Webdav или доступ к "
+"или на удалённом устройстве, используя FTP, SFTP, AFP, WebDAV или доступ к "
 "Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:33
@@ -263,7 +260,7 @@ msgstr "Остальные обновления:"
 
 #: data/io.elementary.files.appdata.xml.in.in:100
 msgid "Only allow one FileChooser per parent window"
-msgstr "Разрешен только один диалог выбора файлов на родительское окно"
+msgstr "Разрешён только один диалог выбора файлов на родительское окно"
 
 #: data/io.elementary.files.appdata.xml.in.in:101
 msgid ""
@@ -286,7 +283,7 @@ msgstr "Добавлены фильтры файлов и опции «Нова�
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
-"Разрешены пустые пароли для удалённых подключений, напр. для SSH через "
+"Разрешены пустые пароли для удалённых подключений, например для SSH через "
 "приватный ключ"
 
 #: data/io.elementary.files.appdata.xml.in.in:116
@@ -337,7 +334,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:139
 msgid "Show translated bookmark names when changing languages"
-msgstr "Отображение переведенных названий закладок при смене языка"
+msgstr "Отображение переведённых названий закладок при смене языка"
 
 #: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
@@ -359,7 +356,7 @@ msgstr "Удалено сообщение о проблемах при запу�
 
 #: data/io.elementary.files.appdata.xml.in.in:154
 msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr "Открытие закладок в новой вкладке с помощью Ctrl + щелчок"
+msgstr "Открытие закладок в новой вкладке с помощью Ctrl + Щелчок"
 
 #: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
@@ -391,7 +388,8 @@ msgstr "Исправлены мелкие контекстные меню на �
 
 #: data/io.elementary.files.appdata.xml.in.in:171
 msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr "Исправлено создание закладки одного выделенного элемента"
+msgstr ""
+"Исправлено создание закладки одного выделенного элемента с помощью Ctrl + D"
 
 #: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Fix renaming bookmarks in the sidebar"
@@ -422,7 +420,7 @@ msgstr "Исправлено подключение к серверам AFP, ч�
 
 #: data/io.elementary.files.appdata.xml.in.in:203
 msgid "Fix MTP mounts"
-msgstr "Исправление монтирований MTP"
+msgstr "Исправлено монтирование MTP"
 
 #: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Launch files with double click instead of single click"
@@ -438,7 +436,7 @@ msgstr "Совершенно новая анимированная бокова�
 
 #: data/io.elementary.files.appdata.xml.in.in:210
 msgid "Dark style support"
-msgstr "Поддержка темного стиля"
+msgstr "Поддержка тёмного стиля"
 
 #: data/io.elementary.files.appdata.xml.in.in:211
 msgid "Mint and Bubblegum color tags"
@@ -491,14 +489,14 @@ msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
 msgstr ""
-"Теперь по умолчанию отображаются миниатюры на локально подключенных "
+"Теперь по умолчанию отображаются миниатюры на локально подключённых "
 "устройствах MTP и PTP, а также в сетевых расположениях"
 
 #: data/io.elementary.files.appdata.xml.in.in:234
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
-"Окно свойств: Разрешино копировать имя файла, если его нельзя редактировать"
+"Окно свойств: Разрешено копировать имя файла, если его нельзя редактировать"
 
 #: data/io.elementary.files.appdata.xml.in.in:235
 msgid "Improved tooltip formatting for devices in the sidebar"
@@ -586,7 +584,7 @@ msgstr "Исправлена проблема предотвращающая п�
 
 #: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Fix size of restored tiled window"
-msgstr "Исправлен размер востановленного мозаичного окна"
+msgstr "Исправлен размер восстановленного мозаичного окна"
 
 #: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Fix color tags disappearing when thumbnails hidden"
@@ -625,7 +623,7 @@ msgstr "Исправлена надпись сочетания клавиш «Н
 
 #: data/io.elementary.files.appdata.xml.in.in:310
 msgid "Fix navigation with back/forward button context menu"
-msgstr "Исправлена навигация с помощью контекстного меню кнопки «Назад/вперед»"
+msgstr "Исправлена навигация с помощью контекстного меню кнопки «Назад/вперёд»"
 
 #: data/io.elementary.files.appdata.xml.in.in:311
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
@@ -683,7 +681,7 @@ msgstr "Новые возможности:"
 
 #: data/io.elementary.files.appdata.xml.in.in:335
 msgid "Initial git plugin support"
-msgstr "Начальная поддержка плагина git"
+msgstr "Начальная поддержка плагина Git"
 
 #: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Follow global history setting when restoring and saving tabs"
@@ -732,7 +730,7 @@ msgstr "Исправлен выбор вставленных файлов"
 
 #: data/io.elementary.files.appdata.xml.in.in:355
 msgid "Fix color label visibility while using dark theme"
-msgstr "Исправление видимости цветной метки при использовании темной темы"
+msgstr "Исправление видимости цветной метки при использовании тёмной темы"
 
 #: data/io.elementary.files.appdata.xml.in.in:356
 msgid "Fix selecting files using Shift key"
@@ -761,7 +759,7 @@ msgstr "Правильная сортировка папок по дате и р
 #: data/io.elementary.files.appdata.xml.in.in:369
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
-"Запуск файлов из терминала теперь открывает новую вкладку вместо нового окна"
+"Запуск Файлов из Терминала теперь открывает новую вкладку вместо нового окна"
 
 #: data/io.elementary.files.appdata.xml.in.in:370
 msgid "Improve MTP support"
@@ -789,7 +787,7 @@ msgstr "Уменьшен объем памяти FileChooserDialog"
 
 #: data/io.elementary.files.appdata.xml.in.in:376
 msgid "Avoid crash when selecting image file in some situations"
-msgstr "Предотвращен сбой при выборе файла изображения в некоторых ситуациях"
+msgstr "Предотвращён сбой при выборе файла изображения в некоторых ситуациях"
 
 #: data/io.elementary.files.appdata.xml.in.in:377
 msgid ""
@@ -797,7 +795,7 @@ msgid ""
 "storage"
 msgstr ""
 "Исправлено окно прогресса, которое нельзя было закрыть, при копировании "
-"сетевых файлов на съемные носители"
+"сетевых файлов на съёмные носители"
 
 #: data/io.elementary.files.appdata.xml.in.in:378
 msgid "Fix drag and drop after double clicking a blank area"
@@ -805,7 +803,7 @@ msgstr "Исправление перетаскивания после двой�
 
 #: data/io.elementary.files.appdata.xml.in.in:379
 msgid "Avoid crash while scrolling over view switcher"
-msgstr "Предотвращен сбой при прокрутке над переключателеля вида"
+msgstr "Предотвращён сбой при прокрутке над переключателем вида"
 
 #: data/io.elementary.files.appdata.xml.in.in:380
 msgid "Avoid possible crash in some copy and paste situations"
@@ -822,7 +820,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:389
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
-"Исправлен код стиля текста-заполнителя, решающий проблему с темной темой"
+"Исправлен код стиля текста-заполнителя, решающий проблему с тёмной темой"
 
 #: data/io.elementary.files.appdata.xml.in.in:397
 msgid "Minor spacing adjustments to location bar"
@@ -928,7 +926,7 @@ msgstr "Исправления сборки"
 
 #: data/io.elementary.files.appdata.xml.in.in:456
 msgid "Plugin build fixes"
-msgstr "Исправления плагина сборки"
+msgstr "Исправления сборки плагинов"
 
 #: data/io.elementary.files.appdata.xml.in.in:464
 msgid "Fix Ctrl+Tab behavior"
@@ -944,7 +942,7 @@ msgstr "Навигационная цепочка в домашней папке
 
 #: data/io.elementary.files.appdata.xml.in.in:473
 msgid "Style error dialogs"
-msgstr "Обновлен внешний вид диалоговых окон ошибок"
+msgstr "Обновлён внешний вид диалоговых окон ошибок"
 
 #: data/io.elementary.files.appdata.xml.in.in:474
 msgid "Right click fixes"
@@ -1115,7 +1113,7 @@ msgstr "Улучшение открытия файлов через Samba"
 
 #: data/io.elementary.files.appdata.xml.in.in:584
 msgid "Fix a crash when restoring items from the Trash"
-msgstr "Исправление падения после восстановления элементов из корзины"
+msgstr "Исправление падения после восстановления элементов из Корзины"
 
 #: data/io.elementary.files.appdata.xml.in.in:585
 msgid "Improve cut/copy/paste sensitivity in context menu"
@@ -1140,6 +1138,9 @@ msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Для запуска файлового менеджера с правами администратора требуется "
 "аутентификация"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #~ msgid "About Files"
 #~ msgstr "О программе"

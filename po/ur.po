@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -46,28 +46,28 @@ msgstr " منتخب کردہ"
 msgid "Open"
 msgstr "کهولیں"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:281
+#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
 msgid "Save"
 msgstr ""
 
-#: filechooser-portal/Main.vala:350
+#: filechooser-portal/Main.vala:351
 #, fuzzy, c-format
 #| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "فائل \"%s\" تبدیل کردی جائے؟"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:352
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
 msgstr "اسے بدلنے سے اس کے مواد کو overwrite  کر دیا جائے گا۔"
 
-#: filechooser-portal/Main.vala:360
+#: filechooser-portal/Main.vala:361
 #, c-format
 msgid "Replace the target of “%s”?"
 msgstr ""
 
-#: filechooser-portal/Main.vala:363
+#: filechooser-portal/Main.vala:364
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid ""
@@ -194,7 +194,7 @@ msgstr "جڑ رہا ہے۔۔۔"
 msgid "Please verify your user details."
 msgstr "صارف کی تفصیلات کی تصدیق کریں۔"
 
-#: libcore/Directory.vala:684
+#: libcore/Directory.vala:689
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgstr "یہاں کاپی کریں"
 msgid "Link Here"
 msgstr "یہاں ربط بنائیں"
 
-#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1116
+#: libcore/File.vala:542 libcore/File.vala:1098 libcore/File.vala:1117
 msgid "Inaccessible"
 msgstr ""
 
@@ -240,20 +240,24 @@ msgstr "یہ ڈیسک ٹاپ فائل پارس کرنے میں ناکامی: %s"
 msgid "Unable to Launch Desktop File: "
 msgstr "یہ ڈیسک ٹاپ فائل پارس کرنے میں ناکامی: %s"
 
-#: libcore/File.vala:1111
+#: libcore/File.vala:1112
 #, fuzzy
 #| msgid "Empty File"
 msgid "Empty"
 msgstr "خالی فائل"
 
-#: libcore/File.vala:1113
+#: libcore/File.vala:1114
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1121
+msgid "----"
+msgstr ""
+
+#: libcore/File.vala:1128
 #, c-format
 msgid "link to %s"
 msgstr "ربط تا %s"
@@ -1172,7 +1176,7 @@ msgid "_Unmount"
 msgstr "_ان ماؤنٹ کریں"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2030
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Properties"
 msgstr "_خصوصیات"
 
@@ -1186,7 +1190,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "حذف کریں"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2023
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2025
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1435,8 +1439,8 @@ msgstr "پروگرام کا ورژن دکھائیں."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "uri کو نئی ٹیب میں کھولیں"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1911
-#: src/View/AbstractDirectoryView.vala:1917
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1913
+#: src/View/AbstractDirectoryView.vala:1919
 msgid "New Window"
 msgstr "نئی ونڈو"
 
@@ -1602,7 +1606,7 @@ msgid "Original Location:"
 msgstr "اصل مقام:"
 
 #: src/Dialogs/PropertiesWindow.vala:649
-#: src/View/AbstractDirectoryView.vala:1998
+#: src/View/AbstractDirectoryView.vala:2000
 msgid "Other Application…"
 msgstr "دیگر اطلاقیے۔۔۔"
 
@@ -1637,7 +1641,7 @@ msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:223
+#: src/Dialogs/PropertiesWindow.vala:1255 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1686,219 +1690,223 @@ msgstr "'‏%'s پہ نام نہیں بدلا جا سکتا"
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:833
-#: src/View/AbstractDirectoryView.vala:1144
+#: src/View/AbstractDirectoryView.vala:835
+#: src/View/AbstractDirectoryView.vala:1146
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "یہ فائل کھولی نہیں کی جاسکتی"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:843
+#: src/View/AbstractDirectoryView.vala:845
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:844
+#: src/View/AbstractDirectoryView.vala:846
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:859
+#: src/View/AbstractDirectoryView.vala:861
 msgid "Cannot open this file"
 msgstr "یہ فائل کھولی نہیں کی جاسکتی"
 
-#: src/View/AbstractDirectoryView.vala:872
+#: src/View/AbstractDirectoryView.vala:874
 msgid "Cannot identify file type to open"
 msgstr "کھولنے کے لیے فائل کی نوعیت کی شناخت نہیں کی جاسکی"
 
-#: src/View/AbstractDirectoryView.vala:1614
+#: src/View/AbstractDirectoryView.vala:1616
 msgid "Cannot drop this file"
 msgstr "یہ فائل ڈراپ نہیں کی جاسکتی"
 
-#: src/View/AbstractDirectoryView.vala:1615
+#: src/View/AbstractDirectoryView.vala:1617
 msgid "Invalid file name provided"
 msgstr "فائل کا نام ناموزوں ہے"
 
-#: src/View/AbstractDirectoryView.vala:1894
-#: src/View/AbstractDirectoryView.vala:1900 src/View/Window.vala:181
+#: src/View/AbstractDirectoryView.vala:1896
+#: src/View/AbstractDirectoryView.vala:1902 src/View/Window.vala:182
 msgid "New Tab"
 msgstr "نئی ٹیب"
 
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1936
 msgid "Run"
 msgstr "چلائیں"
 
-#: src/View/AbstractDirectoryView.vala:1941
+#: src/View/AbstractDirectoryView.vala:1943
 #, c-format
 msgid "Open in %s"
 msgstr "%s میں کھولیں"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2012
 msgid "Open in"
 msgstr "کھولیں بذریعہ"
 
-#: src/View/AbstractDirectoryView.vala:2012
+#: src/View/AbstractDirectoryView.vala:2014
 #: src/View/Widgets/BreadcrumbsEntry.vala:481
 msgid "Open with"
 msgstr "کھولیں بذریعہ"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2045
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2063
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "تمام واپس لائیں"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2071
 msgid "Cut"
 msgstr "کاٹیں"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2079
 msgid "Copy"
 msgstr "کاپی کریں"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Move to Trash"
 msgstr "ردی میں منتقل کریں"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2091
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "ہمیشہ کے لیے حذف کریں"
 
-#: src/View/AbstractDirectoryView.vala:2096
+#: src/View/AbstractDirectoryView.vala:2098
 msgid "Restore from Trash"
 msgstr "ردی سے بحالی کریں"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2121
 msgid "Open Parent Folder"
 msgstr "آبائی فولڈر کھولیں"
 
-#: src/View/AbstractDirectoryView.vala:2122
+#: src/View/AbstractDirectoryView.vala:2124
 msgid "Remove from History"
 msgstr "ہسٹری سے ہٹائیں"
 
-#: src/View/AbstractDirectoryView.vala:2148
+#: src/View/AbstractDirectoryView.vala:2150
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "نام بدلیں"
 
-#: src/View/AbstractDirectoryView.vala:2155
+#: src/View/AbstractDirectoryView.vala:2157
 #, fuzzy
 msgid "Copy as Link"
 msgstr "پیسٹ"
 
-#: src/View/AbstractDirectoryView.vala:2175
-#: src/View/AbstractDirectoryView.vala:2270
+#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2276
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "فولڈر کے اندر پیسٹ کریں"
 
-#: src/View/AbstractDirectoryView.vala:2180
-#: src/View/AbstractDirectoryView.vala:2245
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2250
 msgid "Paste into Folder"
 msgstr "فولڈر کے اندر پیسٹ کریں"
 
-#: src/View/AbstractDirectoryView.vala:2190
-#: src/View/AbstractDirectoryView.vala:2275
+#: src/View/AbstractDirectoryView.vala:2192
+#: src/View/AbstractDirectoryView.vala:2281
 msgid "Paste"
 msgstr "پیسٹ"
 
-#: src/View/AbstractDirectoryView.vala:2231
+#: src/View/AbstractDirectoryView.vala:2233
 msgid "Show Hidden Files"
 msgstr "پوشیدہ فائلیں ظاہر کریں"
 
-#: src/View/AbstractDirectoryView.vala:2236
+#: src/View/AbstractDirectoryView.vala:2238
 msgid "Show Remote Thumbnails"
 msgstr "ریموٹ تھمب نیل دکھائیں"
 
-#: src/View/AbstractDirectoryView.vala:2239
+#: src/View/AbstractDirectoryView.vala:2241
 #, fuzzy
 msgid "Hide Thumbnails"
 msgstr "ریموٹ تھمب نیل دکھائیں"
 
-#: src/View/AbstractDirectoryView.vala:2334
+#: src/View/AbstractDirectoryView.vala:2244
+msgid "Select Folders with Single Click"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
 msgstr "نام"
 
-#: src/View/AbstractDirectoryView.vala:2339 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:27
 msgid "Size"
 msgstr "سائز"
 
-#: src/View/AbstractDirectoryView.vala:2344 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2351 src/View/ListView.vala:28
 msgid "Type"
 msgstr "نوعیت"
 
-#: src/View/AbstractDirectoryView.vala:2349
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Date"
 msgstr "تاریخ"
 
-#: src/View/AbstractDirectoryView.vala:2354
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2357
+#: src/View/AbstractDirectoryView.vala:2364
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2369
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Sort by"
 msgstr "ترتیب دیں بطور"
 
-#: src/View/AbstractDirectoryView.vala:2377
+#: src/View/AbstractDirectoryView.vala:2384
 msgid "Folder"
 msgstr "فولڈر"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2390
 msgid "Empty File"
 msgstr "خالی فائل"
 
-#: src/View/AbstractDirectoryView.vala:2434
+#: src/View/AbstractDirectoryView.vala:2441
 msgid "New"
 msgstr "نیا"
 
-#: src/View/AbstractDirectoryView.vala:2677
+#: src/View/AbstractDirectoryView.vala:2684
 #, c-format
 msgid "Untitled %s"
 msgstr "بے عُنوان %s"
 
-#: src/View/AbstractDirectoryView.vala:2995
-#: src/View/AbstractDirectoryView.vala:3188
+#: src/View/AbstractDirectoryView.vala:3002
+#: src/View/AbstractDirectoryView.vala:3195
 msgid "Cannot remove files from here"
 msgstr "یہاں سے فائلیں نہیں ہٹا سکتا"
 
-#: src/View/AbstractDirectoryView.vala:2996
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3172
-#: src/View/AbstractDirectoryView.vala:3189
+#: src/View/AbstractDirectoryView.vala:3003
+#: src/View/AbstractDirectoryView.vala:3168
+#: src/View/AbstractDirectoryView.vala:3179
+#: src/View/AbstractDirectoryView.vala:3196
 msgid "You do not have permission to change this location"
 msgstr "آپکو اس مقام کو بدلنے کی اجازت نہیں ہے"
 
-#: src/View/AbstractDirectoryView.vala:3129
+#: src/View/AbstractDirectoryView.vala:3136
 msgid "Cannot copy files that are in the trash"
 msgstr "ردی میں پڑی فائلوں کو کاپی نہیں کر سکتا"
 
-#: src/View/AbstractDirectoryView.vala:3130
+#: src/View/AbstractDirectoryView.vala:3137
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3160
-#: src/View/AbstractDirectoryView.vala:3171
+#: src/View/AbstractDirectoryView.vala:3167
+#: src/View/AbstractDirectoryView.vala:3178
 msgid "Cannot paste files here"
 msgstr "یہاں سے فائلیں پیسٹ نہیں کر سکتا"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:390
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
 msgid "This Folder Does Not Exist"
 msgstr "یہ فولڈر موجود نہیں ہے"
 
@@ -1961,82 +1969,82 @@ msgstr "کوئی حالیہ فائلیں نہیں"
 msgid "Access Denied"
 msgstr "رسائی روک دی گئی."
 
-#: src/View/ViewContainer.vala:369 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "گھر"
 
-#: src/View/ViewContainer.vala:391
+#: src/View/ViewContainer.vala:392
 msgid "You cannot create a folder here."
 msgstr "آپ یہاں پر فولڈر نہیں بنا سکتے"
 
-#: src/View/ViewContainer.vala:394
+#: src/View/ViewContainer.vala:395
 msgid "The network is unavailable"
 msgstr "نیٹ ورک دستیاب نہیں"
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:396
 msgid "A working network is needed to reach this folder"
 msgstr "اس فولڈر تک رسائی کے لیے نیٹ ورک کنکشن کی ضرورت ہے"
 
-#: src/View/ViewContainer.vala:398
+#: src/View/ViewContainer.vala:399
 msgid "This Folder Does Not Belong to You"
 msgstr "یہ فولڈر آپکی ملکیت نہیں ہے"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:400
 msgid "You don't have permission to view this folder."
 msgstr "آپ کو اس فولڈر کو دیکھنے کی اجازت نہیں ہے"
 
-#: src/View/ViewContainer.vala:401
+#: src/View/ViewContainer.vala:402
 msgid "Unable to Mount Folder"
 msgstr "فولڈر کو ماؤنٹ کرنے سے قاصر"
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:403
 msgid "Could not connect to the server for this folder."
 msgstr "اس فولڈر کے سرور سے جڑنے میں ناکام"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:407
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:408
+#: src/View/ViewContainer.vala:409
 msgid "Unable to Show Folder"
 msgstr "فولڈر دکھانے میں ناکام"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:410
 msgid "The server for this folder could not be located."
 msgstr "اس فولڈر کا سرور نہیں مل سکا."
 
-#: src/View/ViewContainer.vala:420
+#: src/View/ViewContainer.vala:421
 msgid "File not Found"
 msgstr "فائل نہیں پائی گئی"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:422
 msgid "The file selected no longer exists."
 msgstr "منتخب کردہ فائل اب موجود نہیں"
 
-#: src/View/Window.vala:182
+#: src/View/Window.vala:183
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:492
+#: src/View/Window.vala:494
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "بند کریں"
 
-#: src/View/Window.vala:493
+#: src/View/Window.vala:495
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "‏\"%B\" کی نقل بنائی جارہی ہے"
 
-#: src/View/Window.vala:494 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "نئی ونڈو میں کھولیں"
 
-#: src/View/Window.vala:607 src/View/Window.vala:617
+#: src/View/Window.vala:609 src/View/Window.vala:619
 msgid "(as Administrator)"
 msgstr "(بطور ایڈمنسٹریٹر)"
 
@@ -2182,12 +2190,12 @@ msgstr "فولڈر دوبارہ لوڈ کریں"
 msgid "Searching…"
 msgstr "لوڈ کر رہا ہے۔۔۔"
 
-#: src/View/Widgets/OverlayBar.vala:214
+#: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
 msgstr "%u فولڈر"
 
-#: src/View/Widgets/OverlayBar.vala:216 src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, fuzzy, c-format
 #| msgid " and %u other item (%s) selected"
 msgid " and %u other item (%s) selected"
@@ -2195,17 +2203,17 @@ msgid_plural " and %u other items (%s) selected"
 msgstr[0] " اور %u دیگر عنصر (%s) منتخب کردہ"
 msgstr[1] " اور %u دیگر عنصر (%s) منتخب کردہ"
 
-#: src/View/Widgets/OverlayBar.vala:220 src/View/Widgets/OverlayBar.vala:230
+#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
 msgstr " منتخب کردہ"
 
-#: src/View/Widgets/OverlayBar.vala:233
+#: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u عناصر منتخب کردہ (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:277
+#: src/View/Widgets/OverlayBar.vala:226
 #, fuzzy, c-format
 #| msgid "%u sub-folder, "
 msgid "%u sub-folder, "
@@ -2214,7 +2222,7 @@ msgstr[0] "%u سب-فولڈر، "
 msgstr[1] "%u سب-فولڈر، "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:283
+#: src/View/Widgets/OverlayBar.vala:232
 #, fuzzy, c-format
 #| msgid "%u file, "
 msgid "%u file, "
@@ -2223,18 +2231,18 @@ msgstr[0] "%u فائل، "
 msgstr[1] "%u فائل، "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:293
+#: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
 msgstr "%s تقریباً"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:296
+#: src/View/Widgets/OverlayBar.vala:245
 msgid "unknown size"
 msgstr "نامعلوم سائز"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:300
+#: src/View/Widgets/OverlayBar.vala:249
 #, fuzzy, c-format
 #| msgid "%u file not readable"
 msgid "%u file not readable"

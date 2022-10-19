@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-02 19:24+0000\n"
+"POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2021-09-29 22:21+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
@@ -36,11 +36,6 @@ msgstr "carpeta;gestor;explorar;disco;sistema de archivos;sistema de ficheros;"
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Gestor de archivos"
-
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -1181,6 +1176,9 @@ msgstr "Ejecutar Archivos como administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Es necesario autenticarse para lanzar Archivos como administrador"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #, fuzzy
 #~| msgid "Fix missing File System properties menu"
