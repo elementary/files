@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-08-01 15:54+0000\n"
+"PO-Revision-Date: 2022-10-19 12:18+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -222,21 +222,19 @@ msgid "Unable to Launch Desktop File: "
 msgstr "Não é possível iniciar o ficheiro: "
 
 #: libcore/File.vala:1112
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Ficheiro vazio"
+msgstr "Vazio"
 
 #: libcore/File.vala:1114
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i item"
+msgstr[1] "%i itens"
 
 #: libcore/File.vala:1121
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: libcore/File.vala:1128
 #, c-format
@@ -671,8 +669,6 @@ msgstr ""
 "consulte os detalhes abaixo."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr "Não foi possível mover o ficheiro para o lixo. Tentar eliminá-lo?"
 
@@ -1176,13 +1172,11 @@ msgstr "Propriedades"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Ejetar"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Remover"
+msgstr "Remover com segurança"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2025
 msgid "Add to Bookmarks"
@@ -1344,10 +1338,9 @@ msgid "Emptying Trash"
 msgstr "A esvaziar o lixo"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Não foi possível montar '%s'"
+msgstr "Não foi possível desmontar '%s'"
 
 #: libcore/FileOperations/MountUtils.vala:52
 #, c-format
@@ -1407,7 +1400,7 @@ msgstr "Eliminar a Seleção"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Enviar por E-mail"
 
 #: src/Application.vala:154
 msgid "Show the version of the program"
@@ -1515,7 +1508,7 @@ msgstr "Definir como predefinição"
 
 #: src/Dialogs/PropertiesWindow.vala:242
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Não foi possível determinar o autor e as permissões do ficheiro"
 
 #: src/Dialogs/PropertiesWindow.vala:245
 msgid "Permissions"
@@ -1726,17 +1719,15 @@ msgstr "Abrir com"
 
 #: src/View/AbstractDirectoryView.vala:2045
 msgid "Select All"
-msgstr ""
+msgstr "Selecionar tudo"
 
 #: src/View/AbstractDirectoryView.vala:2054
 msgid "Invert Selection"
-msgstr ""
+msgstr "Inverter seleção"
 
 #: src/View/AbstractDirectoryView.vala:2063
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Restaurar tudo"
+msgstr "Desselecionar tudo"
 
 #: src/View/AbstractDirectoryView.vala:2071
 msgid "Cut"
@@ -1804,7 +1795,7 @@ msgstr "Ocultar miniaturas"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Selecionar pastas com um só clique"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
@@ -2004,10 +1995,8 @@ msgid "Close Tab"
 msgstr "Fechar separador"
 
 #: src/View/Window.vala:495
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "A duplicar \"%s\""
+msgstr "Duplicar separador"
 
 #: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
@@ -2025,10 +2014,9 @@ msgstr "Ejectar '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Não foi possível montar '%s'"
+msgstr "Desmontar '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
@@ -2050,7 +2038,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 msgid "Not mounted"
-msgstr ""
+msgstr "Não montado"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
@@ -2066,21 +2054,23 @@ msgstr "Abrir o lixo"
 
 #: src/View/Sidebar/DeviceListBox.vala:152
 msgid "View the root of the local filesystem"
-msgstr "Ver a raiz do sistema de ficheiros local"
+msgstr "Ver o root do sistema de ficheiros local"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s não contém dados acessíveis."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Para utilizar esta unidade pode ser necessário voltar a ligá-la, ou inserir "
+"suporte ou formatá-la."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Não formatado ou sem mídia"
 
 #: src/View/Sidebar/NetworkListBox.vala:121
 msgid "Entire Network"
