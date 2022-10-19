@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-19 12:18+0000\n"
-"Last-Translator: Tony Silva <tonysilvatsd@gmail.com>\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -2054,19 +2054,19 @@ msgstr "Abrir o lixo"
 
 #: src/View/Sidebar/DeviceListBox.vala:152
 msgid "View the root of the local filesystem"
-msgstr "Ver a raiz do sistema de ficheiros local"
+msgstr "Ver o root do sistema de ficheiros local"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr "%s não contém dados acessíveis"
+msgstr "%s não contém dados acessíveis."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
-"Para usar esta unidade talvez seja necessário reconectá-la, inserir mídia ou "
-"formatá-la."
+"Para utilizar esta unidade pode ser necessário voltar a ligá-la, ou inserir "
+"suporte ou formatá-la."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
