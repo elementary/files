@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-19 12:14+0000\n"
-"Last-Translator: David Lopes <david.cantiga.lopes@gmail.com>\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -1727,7 +1727,7 @@ msgstr "Inverter seleção"
 
 #: src/View/AbstractDirectoryView.vala:2063
 msgid "Deselect All"
-msgstr "Desselecionar Tudo"
+msgstr "Desselecionar tudo"
 
 #: src/View/AbstractDirectoryView.vala:2071
 msgid "Cut"
@@ -1795,7 +1795,7 @@ msgstr "Ocultar miniaturas"
 
 #: src/View/AbstractDirectoryView.vala:2244
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Selecionar pastas com um só clique"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Name"
