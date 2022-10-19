@@ -89,8 +89,7 @@ typedef struct {
 typedef enum {
     OP_KIND_COPY,
     OP_KIND_MOVE,
-    OP_KIND_DELETE,
-    OP_KIND_TRASH
+    OP_KIND_DELETE
 } OpKind;
 
 typedef struct {
@@ -1105,12 +1104,6 @@ report_count_progress (CommonJob *job,
                              source_info->num_files, num_bytes_format);
         g_free (num_bytes_format);
         break;
-    case OP_KIND_TRASH:
-        s = g_strdup_printf (ngettext("Preparing to trash %'d file",
-                                      "Preparing to trash %'d files",
-                                      source_info->num_files),
-                             source_info->num_files);
-        break;
     }
 
     pf_progress_info_take_details (job->progress, s);
@@ -1142,8 +1135,6 @@ get_scan_primary (OpKind kind)
         return g_strdup (_("Error while moving."));
     case OP_KIND_DELETE:
         return g_strdup (_("Error while deleting."));
-    case OP_KIND_TRASH:
-        return g_strdup (_("Error while moving files to trash."));
     }
 }
 
