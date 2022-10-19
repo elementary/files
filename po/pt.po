@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-08-01 15:54+0000\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"PO-Revision-Date: 2022-10-19 12:12+0000\n"
+"Last-Translator: Tony Silva <tonysilvatsd@gmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -1407,7 +1407,7 @@ msgstr "Eliminar a Seleção"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Enviar por Email"
 
 #: src/Application.vala:154
 msgid "Show the version of the program"
