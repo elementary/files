@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-19 12:16+0000\n"
-"Last-Translator: David Lopes <david.cantiga.lopes@gmail.com>\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -1996,7 +1996,7 @@ msgstr "Fechar separador"
 
 #: src/View/Window.vala:495
 msgid "Duplicate Tab"
-msgstr "Duplicar Separador"
+msgstr "Duplicar separador"
 
 #: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
@@ -2014,10 +2014,9 @@ msgstr "Ejectar '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Não foi possível montar '%s'"
+msgstr "Desmontar '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
