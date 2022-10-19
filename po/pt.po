@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-10-19 12:18+0000\n"
+"PO-Revision-Date: 2022-10-20 13:57+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -2070,7 +2070,7 @@ msgstr ""
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr "Não formatado ou sem mídia"
+msgstr "Não formatado ou sem meio de suporte"
 
 #: src/View/Sidebar/NetworkListBox.vala:121
 msgid "Entire Network"
@@ -2107,10 +2107,8 @@ msgid "Connect Server…"
 msgstr "Ligar Servidor…"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
-msgstr "_Desmontar"
+msgstr "Ligar montagem"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:200
